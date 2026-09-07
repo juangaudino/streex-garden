@@ -1,0 +1,91 @@
+Use case: ui-mockup.
+Create ONE exceptionally polished, high-resolution master product design board for "Streex Garden", a private personal indoor hydroponic gardening app. This is an independent premium product-design exploration for stakeholder review, not production UI. Generate a single landscape 4:3 image, ideally 3840 x 2880 or the highest practical resolution. Make real, convincing app screens with legible Spanish UI, not wireframes or paragraphs describing screens. Every requested screen must be clearly distinguishable and present exactly once. Do not crop any screen. Large enough to zoom and inspect.
+
+COMPOSITION:
+An editorial design board on warm ivory. Header "Streex Garden" with a very small restrained leaf symbol and subtitle "Un jardín, una historia." Subheading "Concepto visual independiente · 01". Clear unobtrusive disclosure "Datos y fotografías ilustrativos · Mapas provisionales".
+Exactly NINE numbered screen views, arranged with an intelligent asymmetric but strictly aligned grid: top band contains FOUR tall mobile screens numbered 01–04; lower band contains THREE tall mobile screens numbered 05–07 on the left, and TWO wide tablet/desktop screens numbered 08 and 09 stacked on the right. Keep ALL seven mobile screens the same physical size, aspect ratio close to 1:2, without excessive hardware bezels. Give desktop screens actual wide canvas and readable information, not miniature phone tables. Allocate remaining top-right space to a compact beautiful palette/type/component key, not an extra screen or more prose. Consistent gutters, generous outer margins, crisp fine typography. The screens occupy most of the image, not decorative background. Labels outside each screen name its purpose. Design must be sophisticated through restraint and proportion.
+
+VISUAL LANGUAGE:
+Warm ivory #F5F3EB, rich forest green #193B2A, pale sage #E1E9DC, ink #26362D, subtle warm gray dividers, tiny muted amber highlights for waiting. No loud red alerts without a real issue. No gradients, neon, glossy chrome, purple AI, medical symbols, cartoon plants, excessive shadows, generic SaaS metric tiles, charts or robot avatars. Restrained soft corner radius, larger bottom touch targets, thin consistent rounded line icons. Beautiful editorial serif for a FEW large headings, highly legible modern humanist sans for controls and data. Warm daylight natural photographic images of genuine-looking living basil seedlings, chives, lettuces and white compact tabletop hydroponic reservoirs, photographed as documentary evidence not plastic plant stock art. Every garden card has its own distinct photo. Macro leaf photographs and dated photos make plants the hero. Make photography consistent across a single basil grow cycle.
+Across mobile screens bottom navigation "Jardines", "Hoy", "Preguntar"; a clearly accessible large "+ Registrar" action near bottom, leaving content unobscured. Dense report only on desktop, large airy touch rows on mobile. Desktop uses discreet sidebar with same navigation.
+
+SCREEN 01 — "Jardines":
+Heading "Tus jardines", small date "6 septiembre".
+Elegant narrow section "Desde la última vez", two short event rows "1 observación registrada" and "1 revisión pendiente". NOT fabricated growth.
+Two generously photographic cards:
+"Jardín de hierbas" / "URUQ · 8 posiciones" / "Revisión manual · hace 2 días" / link "Ver jardín".
+"Jardín mixto" / "URUQ · 12 posiciones" / "3 sin evaluar" / link "Ver jardín".
+Small "Atención" row "Evaluar aclareo · Albahaca" with soft amber dot. No health percentage, no invented nutrient meter. Clear age of evidence.
+
+SCREEN 02 — "Jardín / posiciones":
+Title "Jardín mixto"; subtitle "URUQ · 12 posiciones".
+Photo of a simple white indoor hydroponic system above a schematic top-view footprint containing twelve circular growing positions. To avoid claiming a real layout: the schematic positions have NO definitive numbers. Clearly label the schematic "Esquema provisional" and "Orientación por confirmar". Distinguish a selected position by a subtle forest outline; below the diagram use an explicitly separate selected-record card "Pod 1 · Albahaca genovesa", not a fixed mapping of pod 1 onto the physical diagram. A toggle "Mapa / Lista". Show a small system maintenance record "Último cambio de agua · 31 ago." tagged "Registro de ejemplo". Button "Iniciar revisión". The photo and schematic clearly communicate system vs individual slots. Never imply this exact reservoir geometry is the confirmed URUQ layout.
+
+SCREEN 03 — "Perfil / ciclo":
+Large beautiful basil photograph taking roughly top third of screen.
+"Genovese Basil" and "(albahaca genovesa)".
+"Jardín mixto · Pod 1".
+"13 días" and "Siembra · 24 ago." (all are illustrative data).
+Evidence pill "Revisión manual · hoy" and status "Tranquilizadora".
+"Cosecha · Evaluar" in neutral sage.
+Large quick action buttons "Cosechar", "Aclarar", "Foto".
+A short timeline "Hoy · Revisión visual", "28 ago. · Germinación registrada", "24 ago. · Siembra". Use coherent tiny thumbnails, no huge statistics.
+
+SCREEN 04 — "Hoy / atención":
+Title "Hoy"; subtitle "Una sola lista, todo tu jardín".
+One consistent list with the SAME row/card grammar and source labels rather than three separate dashboards.
+Row "Cambio de agua" / "Ambos jardines" / chip "Programada · 15 sep. · ejemplo".
+Row "Evaluar aclareo" / "Albahaca · Pod 1" / chip "Desarrollo · sin fecha".
+Row "Revisar tallo" / "Albahaca · Pod 1" / chip "Sugerencia IA · por aceptar", with small button "Revisar propuesta".
+Accepted tasks and proposals visibly distinct, same list. No checked boxes for actions not done. Upcoming reminders are not red health warnings.
+
+SCREEN 05 — "Quick Check / AI Check":
+Title "Revisar albahaca". Moderate photo of leaning basil, with "Foto guardada" label. User comment field "El tallo se inclina.".
+A restrained evidence panel with small text label "Análisis IA", NOT a large AI logo.
+Clearly separated concise rows:
+"Visible: tallo inclinado."
+"Interpretación: causa no determinada."
+"Límite: no se ve la base."
+"Propuesta: tomar otra foto lateral."
+Evidence links "Foto de hoy · Ver anterior".
+Large outlined action "Crear tarea de revisión" for accepting a future recommendation, not a completed intervention.
+Then a compact separate manual-confirmation area: an UNCHECKED checkbox followed by exact text "Esto coincide con lo que observo", and a visibly disabled low-contrast button "Guardar revisión manual". This distinction is CRITICAL: accepting AI interpretation never creates a personal observation. No prechecked checkbox. User-confirmed physical action must not appear already completed.
+If needed use an expanded phone height equally with other phones, keep type readable and choose concise copy. Do not omit limitation, evidence, user observation or personal-confirmation checkbox.
+
+SCREEN 06 — "Mantenimiento":
+Header "Revisión del jardín", small link "Pausar".
+"Jardín mixto · Pod 3".
+Segmented understated progress bar and text "5 de 20 revisados".
+Photograph of young rosemary in a hydroponic basket.
+"Rosemary (romero)".
+Two large obvious touch buttons "Se ve bien →" (solid forest) and "Omitir →" (neutral outline).
+Secondary buttons "Foto" and "Acción rápida".
+At bottom "Anterior" and "Siguiente". Small status "Progreso guardado · Puedes retomar".
+Do not mark skipped pods healthy. No forced photographs or forms.
+
+SCREEN 07 — "Ask Garden":
+Header "Preguntar"; clear context chip "Jardín mixto".
+User question bubble "¿Cuándo cambié el agua?".
+Assistant answer with NO robot icon: small label "Según tus registros", then "El 31 de agosto." Below it a tappable evidence card "Cambio de agua · 31 ago. ↗" and a miniature record icon.
+Second user bubble "¿Puedo cosechar la albahaca?".
+Assistant separates "Registrado: siembra el 24 ago." and "Para evaluar: necesito una foto actual." with button "Añadir foto".
+Small footnote "Conversación de ejemplo".
+Bottom input "Pregunta sobre tu jardín…" with microphone icon. Calm useful conversational UI; no AI sparkle branding, no claims of real verified user history since these are illustrative records.
+
+SCREEN 08 — "Control V2 · escritorio / tablet":
+Wide application window, same palette and tiny sidebar with "Jardines", "Hoy", "Preguntar", "Control".
+Header "Control del jardín" and filter "Jardín mixto", date "6 sep. · Datos de ejemplo", "Exportar".
+Compact expertly typeset data table columns:
+"Pod", "Planta", "Siembra", "Edad", "Últ. aclareo", "Próx. evaluación", "Cosecha", "Estado", "Acción".
+Three or four readable illustrative rows, e.g. Basil 24ago/13d/sin registro/evaluar, Lettuce dateunknown/unknown, Chives28ago/9d. Use short common Spanish labels in table. State pills with labels, never bare color.
+Footer short status group "TODO BIEN" and "PENDIENTE / VIGILAR" plus neutral "SIN EVALUAR". No empty red section. This is a compact secondary report, not the visual language of the phone home.
+
+SCREEN 09 — "Historia fotográfica / comparar":
+Wide tablet/desktop window. Title "La historia de tu albahaca", small subtitle "Mismo ciclo · Fotografías ilustrativas".
+Two large side-by-side natural basil photos from same camera angle: "28 agosto" with smaller seedling and "6 septiembre" with modestly more developed seedling. A chronological filmstrip below, three dated thumbnails "28 ago.", "2 sep.", "6 sep." and selected-date outlines. Small label "Comparación manual". No growth percentage, morph effect or generated intermediate evidence inside the product.
+
+COMPACT BRAND KEY:
+Five small swatches labeled "Marfil", "Bosque", "Salvia", "Tinta", "Ámbar"; small serif heading specimen "Cultivar con calma." and sans label "Claridad en cada registro". Tiny component examples for a primary button, a neutral evidence date label and an unselected outline icon. Do not add marketing claims, prices, logos from other companies, fake notifications, decorative desktop objects or external watermarks.
+
+FINAL CHECK:
+All 9 views, rich prominent photography, consistent polished cross-device UI, Spanish text sharp and correctly accented, all elements contained in canvas, map unmistakably provisional, mock records explicitly illustrative, explicit manual observation checkbox unchecked, reassuring rather than alarmist visual language. Produce ONE finished visual board image, not a textual explanation.

@@ -1,0 +1,85 @@
+import { useCallback, useEffect, useState } from 'react'
+import { Check, ImageOff, Images } from 'lucide-react'
+import { Link, useParams } from 'react-router-dom'
+import { AppShell } from '../../components/AppShell'
+import { StatePanel } from '../../components/StatePanel'
+import { canCompare, toggleComparedPhoto } from '../../domain/photo-comparison'
+import type { CycleHistoryEvent, GrowCycleDetail, PhotoEvidence } from '../../domain/types'
+import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
+
+type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
+
+function evidenceDate(photo: PhotoEvidence): string {
+  if (!photo.captured_at) return 'Captura: fecha desconocida'
+  const date = new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(photo.captured_at))
+  return photo.captured_at_precision === 'approximate' ? `Captura aproximada: ${date}` : `Capturada: ${date}`
+}
+
+function recordedDate(event: CycleHistoryEvent): string {
+  return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(event.occurred_at))
+}
+
+function PhotoTile({ event, selected, disabled, onToggle }: { event: PhotoEvent; selected: boolean; disabled: boolean; onToggle: () => void }) {
+  const [url, setUrl] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  useEffect(() => {
+    let active = true
+    void getSignedPhotoUrl(event.photo.storage_path).then((nextUrl) => { if (active) setUrl(nextUrl) }).catch(() => { if (active) setError('No se pudo abrir este original.') })
+    return () => { active = false }
+  }, [event.photo.storage_path])
+
+  return <article className={`gallery-tile${selected ? ' gallery-tile--selected' : ''}`}>
+    <button type="button" className="gallery-tile__button" aria-pressed={selected} disabled={disabled} onClick={onToggle}>
+      {url && <img src={url} alt={`Seleccionar ${event.photo.original_filename} para comparar`} />}
+      {!url && <div className="gallery-tile__loading"><ImageOff size={22} aria-hidden="true" />{error ?? 'Abriendo original…'}</div>}
+      {selected && <span className="gallery-tile__selected"><Check size={16} aria-hidden="true" /> Seleccionada</span>}
+    </button>
+    <div className="gallery-tile__meta"><strong>{evidenceDate(event.photo)}</strong><span>Registrada: {recordedDate(event)}</span><span>{event.photo.original_filename} · {event.photo.content_type.replace('image/', '').toUpperCase()}</span></div>
+  </article>
+}
+
+function ComparisonPhoto({ event }: { event: PhotoEvent }) {
+  const [url, setUrl] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  useEffect(() => {
+    let active = true
+    void getSignedPhotoUrl(event.photo.storage_path).then((nextUrl) => { if (active) setUrl(nextUrl) }).catch(() => { if (active) setError('Original no disponible.') })
+    return () => { active = false }
+  }, [event.photo.storage_path])
+
+  return <figure className="comparison-photo"><figcaption><strong>{evidenceDate(event.photo)}</strong><span>Registrada: {recordedDate(event)}</span><span>{event.photo.original_filename}</span></figcaption>{url && <img src={url} alt={`Comparación: ${event.photo.original_filename}`} />}{!url && <div className="comparison-photo__unavailable"><ImageOff size={22} aria-hidden="true" />{error ?? 'Abriendo original…'}</div>}</figure>
+}
+
+export function PhotoGalleryPage() {
+  const { cycleId } = useParams()
+  const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const [showComparison, setShowComparison] = useState(false)
+  const load = useCallback(async () => {
+    if (!cycleId) return
+    setError(null)
+    try { setCycle(await getCycle(cycleId)) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo abrir la galería.') }
+  }, [cycleId])
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- the async loader writes after the remote RPC settles.
+  useEffect(() => { void load() }, [load])
+
+  const photos = (cycle?.history ?? []).filter((event): event is PhotoEvent => event.photo?.upload_status === 'uploaded')
+  const selected = photos.filter((event) => selectedIds.includes(event.photo.id))
+  const toggle = (photoId: string) => {
+    setSelectedIds((current) => toggleComparedPhoto(current, photoId))
+    setShowComparison(false)
+  }
+
+  return <AppShell title="Fotos" subtitle={cycle ? `${cycle.crop_name} · ${cycle.garden.name} · Posición ${cycle.position.position_number}` : 'Cargando evidencia'} backTo={cycle ? `/cycle/${cycle.id}` : '/'}>
+    {!cycle && !error && <StatePanel kind="loading" title="Abriendo galería" />}
+    {error && <StatePanel kind="error" title="No se pudo abrir la galería" onRetry={() => void load()}>{error}</StatePanel>}
+    {cycle && <>
+      <section className="gallery-intro"><Images size={22} aria-hidden="true" /><div><h2>Comparar fotografías</h2><p>Elige exactamente dos originales confirmados. Sus fechas de evidencia permanecen visibles durante la comparación.</p></div></section>
+      {photos.length < 2 && <StatePanel kind="empty" title="Aún no hay dos fotos disponibles">Las fotos pendientes de subir no se usan para comparar.</StatePanel>}
+      {photos.length >= 2 && <><div className="gallery-grid">{photos.map((event) => <PhotoTile key={event.photo.id} event={event} selected={selectedIds.includes(event.photo.id)} disabled={!selectedIds.includes(event.photo.id) && selectedIds.length >= 2} onToggle={() => toggle(event.photo.id)} />)}</div><div className="comparison-actions"><span>{selectedIds.length}/2 seleccionadas</span><button className="primary-button" type="button" disabled={!canCompare(selectedIds)} onClick={() => setShowComparison(true)}>Comparar fotos</button></div></>}
+      {showComparison && selected.length === 2 && <section className="comparison-section" aria-labelledby="comparison-title"><div className="section-heading"><h2 id="comparison-title">Comparación</h2><span>Mismo ciclo · {cycle.crop_name}</span></div><p className="quiet-copy">Las fotos pertenecen al mismo ciclo. Esta vista no infiere crecimiento ni modifica los originales.</p><div className="comparison-grid"><ComparisonPhoto event={selected[0]} /><ComparisonPhoto event={selected[1]} /></div></section>}
+      <Link className="text-link" to={`/cycle/${cycle.id}`}>Volver al historial de {cycle.crop_name}</Link>
+    </>}
+  </AppShell>
+}

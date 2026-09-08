@@ -197,3 +197,10 @@ El proyecto gestionado de Streex Garden está separado en Streex Labs. Sus crede
 - Las URLs firmadas de originales tienen una vigencia de cinco minutos. La duración se aplica únicamente en la capa de acceso a Storage; no altera originales, metadatos, eventos ni estados de sincronización.
 - La exportación del propietario sigue siendo una herramienta de recuperación manual y no se presenta como backup. Una copia diaria independiente de base de datos y Storage, retención de 30 días y restauración comprobada son requisitos externos antes de un lanzamiento público.
 - Auth remoto, URLs de redirección, configuración del bucket, RLS efectivo y hosting HTTPS se validarán en el entorno elegido. Esta fase no crea secretos, no conecta el CLI al proyecto remoto y no despliega la aplicación.
+
+## Phase 16 — Publicación controlada
+
+- El hosting estático es Vercel, con Node 22, build Vite y una regla de rewrite a `index.html` para conservar las rutas SPA al recargar.
+- `garden.getstreex.com` se delega mediante un CNAME DNS-only en Cloudflare al destino específico de Vercel. No se modificaron los nameservers de `getstreex.com` ni otros registros del dominio.
+- Supabase Auth usa exclusivamente `https://garden.getstreex.com` como Site URL y Redirect URL. El cliente ya no expone alta pública de cuentas; el proyecto remoto desactiva registro público y acceso anónimo.
+- La evidencia de producción confirma inicio de sesión, lectura de jardines y creación/persistencia de una observación con foto desde iPhone. No reemplaza las pruebas pendientes de recuperación, segunda cuenta y backup/restauración.

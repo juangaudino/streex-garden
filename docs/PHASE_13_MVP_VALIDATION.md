@@ -22,6 +22,7 @@
 | Home, Atención, Control y mantenimiento | Separación de Home, tarea manual, pausa/reanudación y semántica de Omitir verificadas en iPhone. Phase 13 confirmó que un recorrido existente se reanuda sin crear uno nuevo. | Aprobado en fases 7–9 y Phase 13. |
 | Exportación | CSV y JSON descargables probados; el JSON recibido conserva las secciones esperadas. | Aprobado en fase 11. |
 | Importación selectiva | Candidato confirmado sólo tras confirmación explícita; evento, ciclo y fecha civil comprobados por SQL y PWA. El acceso desde la importación abrió el ciclo exacto. | Aprobado en fases 12 y 13. |
+| Publicación | En `garden.getstreex.com`: HTTPS, rutas internas, inicio de sesión, apertura de jardines, observación con foto, Historial y recarga confirmados desde iPhone/Safari. | Aprobado en fase 16. |
 | Calidad local | Typecheck, 16 pruebas Vitest, lint, build y `git diff --check`. | Aprobado localmente. |
 
 ## Tanda única pendiente para iPhone/PWA
@@ -44,7 +45,6 @@ Ejecutar esta tanda sobre datos de prueba o acciones reales pertinentes. No crea
 - Mapas físicos definitivos: falta orientación/numeración confirmada de ambos URUQ.
 - Backups de datos **y originales** con restauración probada: la exportación existente no sustituye ese ensayo.
 - Recuperación de cuenta/Auth de producción y prueba completa de aislamiento de Storage: requieren la tanda de dispositivo/cuenta secundaria.
-- Hosting, dominio y QA autenticada de producción: no hay despliegue autorizado todavía.
 - AI Check, Ask Garden, piloto de IA, retención de chat y presupuesto: deliberadamente diferidos hasta elegir proveedor y autorizar gasto.
 
 ## Resultado de salida de esta fase

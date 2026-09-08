@@ -53,10 +53,10 @@ export function AppShell({ children, title, subtitle, backTo, actions }: AppShel
   }
   return (
     <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}`}>
-      {showEntry && <div className="app-entry" aria-hidden="true"><GrowthRings /><div className="app-entry__wordmark"><Leaf size={24} /> Streex <span>Garden</span></div></div>}
+      {showEntry && <div className="app-entry" aria-hidden="true"><GrowthRings /><img className="app-entry__logo" src="/brand/garden-x-logo.png" alt="" /></div>}
       {pendingSignOut && <section className="signout-dialog" role="dialog" aria-modal="true" aria-labelledby="signout-title"><div className="signout-dialog__panel"><h2 id="signout-title">Hay borradores pendientes</h2><p>Antes de cerrar sesión, sincronízalos desde su ciclo, expórtalos en este dispositivo o descártalos. Al salir se borra el almacenamiento local para que otra cuenta no pueda verlos.</p>{signOutError && <p className="inline-message inline-message--error" role="alert">{signOutError}</p>}<div className="button-row"><button className="secondary-button" type="button" disabled={signingOut} onClick={() => setPendingSignOut(false)}>Volver a sincronizar</button><button className="secondary-button" type="button" disabled={signingOut} onClick={() => void exportDraftsThenSignOut()}><Download size={16} aria-hidden="true" /> Exportar y cerrar</button><button className="primary-button" type="button" disabled={signingOut} onClick={() => void completeSignOut()}>{signingOut ? 'Cerrando…' : 'Descartar y cerrar'}</button></div></div></section>}
       <header className="topbar">
-        <Link className="brand" to="/" aria-label="Ir a Jardines"><Leaf aria-hidden="true" size={20} />Streex <span>Garden</span></Link>
+        <Link className="brand" to="/" aria-label="Ir a Jardines"><img className="brand__mark" src="/brand/garden-x-mark.png" alt="" /><span>Garden</span><b>X</b></Link>
         <button className="icon-button" type="button" disabled={signingOut} onClick={() => void handleSignOut()} aria-label="Cerrar sesión"><LogOut size={18} aria-hidden="true" /></button>
       </header>
       {(title || backTo || actions) && (

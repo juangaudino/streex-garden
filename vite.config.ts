@@ -26,11 +26,14 @@ export default defineConfig({
         background_color: '#f5f3eb',
         display: 'standalone',
         lang: 'es',
-        icons: [{ src: '/app-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }],
+        icons: [
+          { src: '/icons/garden-x-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: '/icons/garden-x-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+        ],
       },
       workbox: {
         navigateFallback: '/index.html',
-        globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,woff2}'],
       },
     }),
   ],

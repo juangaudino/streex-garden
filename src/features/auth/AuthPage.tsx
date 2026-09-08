@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react'
-import { Leaf } from 'lucide-react'
 import { requestPasswordRecovery, signIn, updatePassword } from '../../lib/garden-api'
 
 export function AuthPage() {
@@ -26,7 +25,7 @@ export function AuthPage() {
   return (
     <main className="auth-page">
       <section className="auth-intro">
-        <div className="brand brand--large"><Leaf aria-hidden="true" />Streex <span>Garden</span></div>
+        <img className="auth-brand-logo" src="/brand/garden-x-logo.png" alt="Garden X" />
         <h1>La historia de tus jardines, en un solo lugar.</h1>
         <p>Registra lo que ves, conserva la evidencia y vuelve a cada planta con contexto.</p>
       </section>
@@ -61,7 +60,7 @@ export function PasswordRecoveryPage({ onComplete }: { onComplete: () => void })
     catch (reason) { setError(reason instanceof Error ? reason.message : 'No fue posible cambiar la contraseña.') }
     finally { setBusy(false) }
   })()}>
-    <div className="brand brand--large"><Leaf aria-hidden="true" />Streex <span>Garden</span></div>
+    <div className="brand brand--large"><img className="brand__mark" src="/brand/garden-x-mark.png" alt="" /><span>Garden</span><b>X</b></div>
     <h2>Crea una nueva contraseña</h2>
     <label>Nueva contraseña<input type="password" autoComplete="new-password" minLength={8} required value={password} onChange={(event) => setPassword(event.target.value)} /></label>
     <label>Repite la contraseña<input type="password" autoComplete="new-password" minLength={8} required value={confirmation} onChange={(event) => setConfirmation(event.target.value)} /></label>

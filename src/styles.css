@@ -47,8 +47,10 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 
 .app-shell { margin: 0 auto; max-width: 1160px; padding: 0 20px 88px; }
 .topbar { align-items: center; display: flex; height: 72px; justify-content: space-between; }
-.brand, .wordmark { align-items: center; color: var(--forest); display: inline-flex; font-family: 'Fraunces', ui-serif, Georgia, serif; font-size: 1.2rem; font-weight: 600; gap: 7px; letter-spacing: -.04em; }
-.brand span, .wordmark span { color: var(--sage-dark); font-weight: 500; }
+.brand, .wordmark { align-items: center; color: var(--forest); display: inline-flex; font-family: 'Fraunces', ui-serif, Georgia, serif; font-size: 1.2rem; font-weight: 600; gap: 3px; letter-spacing: -.04em; }
+.brand span, .wordmark span { color: var(--forest); font-weight: 500; }
+.brand b { color: #5b8f48; font-weight: 600; }
+.brand__mark { height: 32px; margin-right: 4px; object-fit: contain; width: 32px; }
 .brand--large { font-size: 1.8rem; }
 .icon-button { align-items: center; background: transparent; border: 0; border-radius: 50%; color: var(--forest); display: inline-flex; justify-content: center; padding: 10px; width: 44px; }
 .icon-button:hover { background: var(--sage); }
@@ -209,6 +211,7 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .auth-intro p { color: #d7e2d4; margin-bottom: 0; max-width: 480px; }
 .auth-form { align-content: center; display: grid; gap: 16px; margin: 0 auto; max-width: 480px; padding: 36px 24px; width: 100%; }
 .auth-form h2 { margin-bottom: 4px; }
+.auth-brand-logo { display: block; margin: 0 0 28px; max-width: min(100%, 480px); width: 100%; }
 .configuration-required, .center-state { align-items: center; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; padding: 24px; text-align: center; }
 .configuration-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); margin-top: 20px; max-width: 520px; padding: 26px; }
 .configuration-card h1 { margin-bottom: 12px; }
@@ -305,8 +308,7 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .app-entry { align-items: center; animation: entry-out .8s both; background: radial-gradient(circle at 62% 38%, rgba(99, 131, 88, .46), transparent 42%), #0c2419; color: #fff; display: flex; inset: 0; justify-content: center; overflow: hidden; position: fixed; z-index: 100; }
 .app-entry::after { background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.07), transparent 65%); content: ''; inset: 0; position: absolute; }
 .app-entry .growth-rings { color: #b9cfb1; height: min(78vw, 480px); opacity: .58; position: absolute; width: min(78vw, 480px); }
-.app-entry__wordmark { align-items: center; animation: entry-word .54s .09s both; display: flex; font-family: 'Fraunces', serif; font-size: clamp(2rem, 9vw, 4.4rem); gap: 10px; letter-spacing: -.055em; position: relative; z-index: 1; }
-.app-entry__wordmark span { color: #b9cdb4; font-weight: 500; }
+.app-entry__logo { animation: entry-word .54s .09s both; max-width: min(76vw, 660px); position: relative; width: 100%; z-index: 1; }
 .signout-dialog { align-items: center; background: rgba(13, 29, 20, .48); display: flex; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 80; }
 .signout-dialog__panel { background: var(--paper); border-radius: 24px; box-shadow: 0 22px 60px rgba(0,0,0,.24); max-width: 520px; padding: 26px; width: 100%; }
 .signout-dialog__panel h2 { margin-bottom: 10px; }.signout-dialog__panel p { color: var(--muted); font-size: .91rem; }
@@ -320,7 +322,10 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .garden-card:hover { border: 0; box-shadow: 0 20px 38px rgba(26,54,40,.12); transform: translateY(-3px); }
 .garden-card__art { background: linear-gradient(145deg, #294d37, #143726); border-radius: 0 32px 32px 0; color: #fff; overflow: hidden; position: relative; }
 .garden-card:nth-child(2n) .garden-card__art { background: linear-gradient(145deg, #6b3d30, #2c2c20); }
-.garden-card__art .growth-rings { color: #dbe7d4; height: 165px; opacity: .5; position: absolute; right: -42px; top: -12px; width: 165px; }
+.garden-card__art > img { height: 100%; object-fit: cover; object-position: center; position: absolute; transition: transform .65s cubic-bezier(.2,.75,.2,1); width: 100%; }
+.garden-card--environment:hover .garden-card__art > img { transform: scale(1.04); }
+.garden-card__overlay { align-items: flex-start; background: linear-gradient(135deg, rgba(9,31,21,.72), rgba(9,31,21,.12) 68%, rgba(255,255,255,.12)); display: flex; flex-direction: column; height: 100%; justify-content: flex-end; padding: 17px 15px; position: relative; }
+.garden-card__art .growth-rings { color: #e4efdc; height: 170px; opacity: .54; position: absolute; right: -38px; top: -18px; width: 170px; }
 .garden-card__art span { font-size: clamp(3.3rem, 13vw, 5rem); letter-spacing: -.11em; line-height: .8; position: relative; z-index: 1; }
 .garden-card__art small { letter-spacing: .02em; position: relative; z-index: 1; }
 .garden-card__copy { align-self: end; padding: 20px 18px; position: relative; z-index: 1; }
@@ -341,6 +346,12 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .provisional-note { background: transparent; border-left: 2px solid var(--moss); border-radius: 0; padding: 4px 0 4px 13px; }
 .garden-heading-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 .physical-map-section { margin: 30px 0 34px; }
+.garden-environment { background: var(--night); border-radius: 24px; box-shadow: 0 14px 34px rgba(20,44,30,.13); margin: 0 0 28px; overflow: hidden; position: relative; }
+.garden-environment::after { background: linear-gradient(90deg, rgba(10,29,19,.38), transparent 56%); content: ''; inset: 0; pointer-events: none; position: absolute; }
+.garden-environment img { display: block; height: clamp(180px, 36vw, 320px); object-fit: cover; object-position: center; width: 100%; }
+.garden-environment figcaption { bottom: 0; color: #fff; display: grid; gap: 2px; left: 0; padding: 18px 20px; position: absolute; z-index: 1; }
+.garden-environment figcaption span { font-size: .67rem; font-weight: 700; letter-spacing: .1em; opacity: .8; text-transform: uppercase; }
+.garden-environment figcaption strong { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 500; }
 .physical-map-section .section-heading > div { min-width: 0; }
 .physical-map-section .quiet-copy { font-size: .78rem; margin-top: 4px; }
 .physical-map { background: linear-gradient(145deg, #fbfaf5, #f1f4ec); border: 1px solid var(--hairline); border-radius: 24px; display: grid; gap: 12px 8px; grid-template-columns: repeat(var(--map-columns), minmax(0, 1fr)); grid-template-rows: repeat(var(--map-rows), minmax(84px, auto)); overflow: hidden; padding: 42px 14px 38px; position: relative; }
@@ -454,6 +465,6 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 @keyframes entry-word { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes entry-out { 0%, 64% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) {
-  .page-content, .app-entry__wordmark, .cycle-hero__image--photo img { animation: none; }
+  .page-content, .app-entry__logo, .cycle-hero__image--photo img { animation: none; }
   .app-entry { animation-duration: .01ms; }
 }

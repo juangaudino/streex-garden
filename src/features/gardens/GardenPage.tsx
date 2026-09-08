@@ -10,6 +10,7 @@ import { StartCycleForm } from './StartCycleForm'
 import { GrowthRings } from '../../components/GrowthRings'
 import { activeGrowPositionIds } from '../../domain/layout-config'
 import { PhysicalMap } from './PhysicalMap'
+import { gardenVisual } from './garden-visuals'
 
 function PositionRow({ position, onStart }: { position: Position; onStart: (position: Position) => void }) {
   const history = <div className="position-history" aria-label={`Historial de la posición ${position.position_number}`}><strong>Historial de esta posición</strong>{position.previous_cycles.length > 0 ? <div className="previous-cycles">{position.previous_cycles.map((cycle) => <Link key={cycle.id} to={`/cycle/${cycle.id}`}>Ver {cycle.crop_name}</Link>)}</div> : <span>Aún no hay ciclos anteriores</span>}</div>
@@ -57,12 +58,14 @@ export function GardenPage() {
   const visibleGrowIds = garden ? activeGrowPositionIds(garden.layout_sites) : new Set<string>()
   const visiblePositions = garden?.positions.filter((position) => visibleGrowIds.has(position.id)) ?? []
   const hasConfirmedMap = garden?.map_layout === 'uruq_8_v1' || garden?.map_layout === 'uruq_12_v1'
+  const visual = garden ? gardenVisual(garden) : null
   return <AppShell title={garden?.name ?? 'Jardín'} subtitle={garden?.system_model ?? 'Sistema'} backTo="/" actions={actions}>
     {garden === null && !error && <StatePanel kind="loading" title="Cargando el jardín" />}
     {error && <StatePanel kind="error" title="No se pudo abrir el jardín" onRetry={() => void load()}>{error}</StatePanel>}
     {garden && <>
       {!hasConfirmedMap && <section className="provisional-note"><MapPin size={18} aria-hidden="true" /><div><strong>Mapa configurable</strong><p>La distribución puede ajustarse desde Editar sistema. Las posiciones se mantienen identificadas por su número.</p></div></section>}
       {startingAt && <StartCycleForm positionId={startingAt.id} positionNumber={startingAt.position_number} onCancel={() => setStartingAt(null)} onCreated={(cycleId) => navigate(`/cycle/${cycleId}`)} />}
+      {visual?.referenceImage && <figure className="garden-environment"><img src={visual.referenceImage} alt={visual.referenceLabel ?? ''} /><figcaption><span>Vista del sistema</span><strong>{garden.system_model} · {garden.position_capacity} posiciones</strong></figcaption></figure>}
       <PhysicalMap garden={garden} onStart={setStartingAt} />
       <section aria-labelledby="positions-title">
         <div className="section-heading"><h2 id="positions-title">Detalle de posiciones</h2><span>{visiblePositions.length}</span></div>

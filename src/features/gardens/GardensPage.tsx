@@ -10,6 +10,7 @@ import { acknowledgeHomeSnapshot, getHomeDashboard, getOpenMaintenanceSession, s
 import { CreateGardenForm } from './CreateGardenForm'
 import { AttentionTaskEditor } from './AttentionTaskTools'
 import { GrowthRings } from '../../components/GrowthRings'
+import { gardenVisual } from './garden-visuals'
 
 function dateLabel(value: string): string {
   return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
@@ -123,7 +124,13 @@ export function GardensPage({ user }: { user: User }) {
         <div className="section-heading"><h2 id="garden-list">Jardines</h2>{gardens && <span>{gardens.length}</span>}</div>
         {gardens === null && !error && <StatePanel kind="loading" title="Cargando tus jardines" />}
         {gardens?.length === 0 && !creating && <StatePanel kind="empty" title="Empieza con tu primer jardín">Crea el sistema y sus posiciones para registrar su historia.</StatePanel>}
-        {gardens && gardens.length > 0 && <div className="garden-list">{gardens.map((garden, index) => <Link className="garden-card" to={`/garden/${garden.id}`} key={garden.id}><div className="garden-card__art" aria-hidden="true"><GrowthRings /><span>{String(index + 1).padStart(2, '0')}</span><small>{garden.active_positions} activas</small></div><div className="garden-card__copy"><h3>{garden.name}</h3><p>{garden.system_model ?? 'Sistema sin especificar'} · {garden.position_capacity} posiciones</p><span className="card-link">Abrir jardín <ArrowRight size={16} aria-hidden="true" /></span></div></Link>)}</div>}
+        {gardens && gardens.length > 0 && <div className="garden-list">{gardens.map((garden, index) => {
+          const visual = gardenVisual(garden)
+          return <Link className={`garden-card${visual.referenceImage ? ' garden-card--environment' : ''}`} to={`/garden/${garden.id}`} key={garden.id}>
+            <div className="garden-card__art" aria-hidden="true">{visual.referenceImage && <img src={visual.referenceImage} alt="" />}<div className="garden-card__overlay"><GrowthRings /><span>{String(index + 1).padStart(2, '0')}</span><small>{garden.active_positions} activas</small></div></div>
+            <div className="garden-card__copy"><h3>{garden.name}</h3><p>{garden.system_model ?? 'Sistema sin especificar'} · {garden.position_capacity} posiciones</p><span className="card-link">Abrir jardín <ArrowRight size={16} aria-hidden="true" /></span></div>
+          </Link>
+        })}</div>}
       </section>
       <section className="home-section home-section--secondary" aria-labelledby="since-last-time">
         <div className="section-heading"><h2 id="since-last-time">Desde la última vez</h2>{dashboard && <span>{dashboard.visit.first_visit ? 'Tu primera vista' : `${changes.length} novedades`}</span>}</div>

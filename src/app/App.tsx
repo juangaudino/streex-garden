@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import type { User } from '@supabase/supabase-js'
-import { AuthPage } from '../features/auth/AuthPage'
+import { AuthPage, PasswordRecoveryPage } from '../features/auth/AuthPage'
 import { CyclePage } from '../features/cycles/CyclePage'
 import { PhotoGalleryPage } from '../features/cycles/PhotoGalleryPage'
 import { GardenPage } from '../features/gardens/GardenPage'
@@ -28,6 +28,7 @@ function ConfigurationRequired() {
 export function App() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(hasSupabaseConfiguration)
+  const [recoveringPassword, setRecoveringPassword] = useState(false)
 
   useEffect(() => {
     if (!hasSupabaseConfiguration()) {
@@ -41,8 +42,9 @@ export function App() {
     }).finally(() => {
       if (active) setLoading(false)
     })
-    const { data } = getSupabaseClient().auth.onAuthStateChange((_event, session) => {
+    const { data } = getSupabaseClient().auth.onAuthStateChange((event, session) => {
       if (active) setUser(session?.user ?? null)
+      if (active && event === 'PASSWORD_RECOVERY') setRecoveringPassword(true)
     })
     return () => {
       active = false
@@ -52,6 +54,7 @@ export function App() {
 
   if (!hasSupabaseConfiguration()) return <ConfigurationRequired />
   if (loading) return <main className="center-state" aria-live="polite">Abriendo tu jardín…</main>
+  if (recoveringPassword) return <PasswordRecoveryPage onComplete={() => setRecoveringPassword(false)} />
   if (!user) return <AuthPage />
 
   return (

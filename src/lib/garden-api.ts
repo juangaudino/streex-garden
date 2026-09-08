@@ -57,6 +57,18 @@ export async function signIn(email: string, password: string): Promise<void> {
   if (error) throw new Error(error.message)
 }
 
+export async function requestPasswordRecovery(email: string): Promise<void> {
+  const { error } = await getSupabaseClient().auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin,
+  })
+  if (error) throw new Error(error.message)
+}
+
+export async function updatePassword(password: string): Promise<void> {
+  const { error } = await getSupabaseClient().auth.updateUser({ password })
+  if (error) throw new Error(error.message)
+}
+
 export async function signOut(): Promise<void> {
   const { error } = await getSupabaseClient().auth.signOut()
   if (error) throw new Error(error.message)

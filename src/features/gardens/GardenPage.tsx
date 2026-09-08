@@ -61,7 +61,6 @@ export function GardenPage() {
     {garden === null && !error && <StatePanel kind="loading" title="Cargando el jardín" />}
     {error && <StatePanel kind="error" title="No se pudo abrir el jardín" onRetry={() => void load()}>{error}</StatePanel>}
     {garden && <>
-      <section className="garden-editorial-hero" aria-label={`${garden.name}, ${garden.position_capacity} posiciones`}><GrowthRings /><p className="garden-editorial-hero__eyebrow">Sistema hidroponico</p><span>{String(garden.position_capacity).padStart(2, '0')}</span><div><h2>{garden.name}</h2><p>{garden.system_model ?? 'Sistema sin especificar'} · {hasConfirmedMap ? 'Mapa físico confirmado' : 'Mapa configurable'}</p></div></section>
       {!hasConfirmedMap && <section className="provisional-note"><MapPin size={18} aria-hidden="true" /><div><strong>Mapa configurable</strong><p>La distribución puede ajustarse desde Editar sistema. Las posiciones se mantienen identificadas por su número.</p></div></section>}
       {startingAt && <StartCycleForm positionId={startingAt.id} positionNumber={startingAt.position_number} onCancel={() => setStartingAt(null)} onCreated={(cycleId) => navigate(`/cycle/${cycleId}`)} />}
       <PhysicalMap garden={garden} onStart={setStartingAt} />

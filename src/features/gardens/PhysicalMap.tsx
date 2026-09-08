@@ -22,10 +22,11 @@ export function PhysicalMap({ garden, onStart, editable = false, onSelectSite }:
   const activeSites = garden.layout_sites.filter((site) => site.is_active)
   const positionsBySite = new Map(activeSites.map((site) => [site.id, sitePosition(site, garden.positions)]))
   const growIds = activeGrowPositionIds(garden.layout_sites)
+  const mapRows = Math.max(1, ...activeSites.map((site) => site.grid_y))
 
   return <section className="physical-map-section" aria-labelledby="physical-map-title">
     <div className="section-heading"><div><h2 id="physical-map-title">Mapa del sistema</h2><p className="quiet-copy">Parte trasera arriba · frente abajo</p></div><span>{growIds.size} cultivos</span></div>
-    <div className="physical-map" style={{ '--map-columns': MAP_GRID_COLUMNS } as CSSProperties} aria-label={`Mapa físico de ${garden.name}`}>
+    <div className="physical-map" style={{ '--map-columns': MAP_GRID_COLUMNS, '--map-rows': mapRows } as CSSProperties} aria-label={`Mapa físico de ${garden.name}`}>
       <GrowthRings className="physical-map__rings" />
       <span className="physical-map__edge physical-map__edge--back">Parte trasera</span>
       <span className="physical-map__edge physical-map__edge--front">Frente</span>

@@ -343,17 +343,18 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .physical-map-section { margin: 30px 0 34px; }
 .physical-map-section .section-heading > div { min-width: 0; }
 .physical-map-section .quiet-copy { font-size: .78rem; margin-top: 4px; }
-.physical-map { background: linear-gradient(145deg, #eef2e9, #dfe9dc); border: 1px solid var(--hairline); border-radius: 24px; display: grid; gap: 8px; grid-template-columns: repeat(var(--map-columns), minmax(0, 1fr)); grid-template-rows: repeat(9, minmax(48px, auto)); min-height: 465px; overflow: hidden; padding: 38px 14px 34px; position: relative; }
-.physical-map__rings { color: var(--forest); height: 310px; opacity: .12; pointer-events: none; position: absolute; right: -66px; top: -34px; width: 310px; }
+.physical-map { background: linear-gradient(145deg, #fbfaf5, #f1f4ec); border: 1px solid var(--hairline); border-radius: 24px; display: grid; gap: 12px 8px; grid-template-columns: repeat(var(--map-columns), minmax(0, 1fr)); grid-template-rows: repeat(var(--map-rows), minmax(84px, auto)); overflow: hidden; padding: 42px 14px 38px; position: relative; }
+.physical-map__rings { color: var(--forest); height: 250px; opacity: .055; pointer-events: none; position: absolute; right: -68px; top: -66px; width: 250px; }
 .physical-map__edge { color: var(--moss); font-size: .67rem; font-weight: 700; left: 18px; letter-spacing: .09em; position: absolute; text-transform: uppercase; z-index: 2; }
 .physical-map__edge--back { top: 14px; }.physical-map__edge--front { bottom: 13px; }
-.map-site { align-items: center; background: rgba(255,253,247,.87); border: 1px solid rgba(25,59,42,.17); border-radius: 15px; color: var(--forest); display: grid; font: inherit; gap: 2px; grid-template-columns: auto 1fr auto; min-height: 52px; overflow: hidden; padding: 8px; position: relative; text-align: left; transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease; z-index: 1; }
+.map-site { align-items: center; background: #fffdf7; border: 1px solid rgba(25,59,42,.17); border-radius: 19px; color: var(--forest); display: grid; font: inherit; gap: 1px 6px; grid-template-columns: 1fr auto; min-height: 0; overflow: hidden; padding: 10px 11px; position: relative; text-align: left; transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease; z-index: 1; }
 .map-site:hover { border-color: var(--forest); box-shadow: 0 8px 18px rgba(25,59,42,.1); transform: translateY(-1px); }
 .map-site:focus-visible { outline: 3px solid #d3a230; outline-offset: 2px; }
-.map-site__number { color: var(--forest); font-family: 'Fraunces', serif; font-size: 1.22rem; letter-spacing: -.06em; line-height: 1; }
-.map-site strong, .map-site > span:not(.map-site__number) { font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.map-site--occupied { background: rgba(255,253,247,.96); border-left: 3px solid var(--forest); text-decoration: none; }
-.map-site--empty { cursor: pointer; }.map-site--empty > span:not(.map-site__number) { color: var(--muted); }
+.map-site__number { color: var(--forest); font-family: 'Fraunces', serif; font-size: clamp(1.45rem, 6vw, 2rem); letter-spacing: -.075em; line-height: .9; }
+.map-site strong { color: var(--moss); font-size: .67rem; font-weight: 700; grid-column: 1 / -1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.map-site > span:not(.map-site__number) { font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.map-site--occupied { background: #fffdf7; border: 2px solid var(--forest); box-shadow: 0 8px 16px rgba(25,59,42,.07); text-decoration: none; }
+.map-site--empty { cursor: pointer; }.map-site--empty > span:not(.map-site__number) { display: none; }
 .map-site--utility { background: rgba(230,237,225,.96); cursor: pointer; grid-template-columns: auto 1fr; }
 .map-site--utility span { font-size: .69rem; font-weight: 700; overflow-wrap: anywhere; }
 .physical-map__edit-hint { margin: 12px 2px 0; }
@@ -434,8 +435,8 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
   .history-photo img { max-height: 600px; }
   .control-table { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 38px; }
   .maintenance-summary { max-width: 760px; }
-  .physical-map { grid-template-rows: repeat(9, minmax(56px, auto)); padding-left: 24px; padding-right: 24px; }
-  .map-site { border-radius: 17px; padding: 10px; }
+  .physical-map { grid-template-rows: repeat(var(--map-rows), minmax(96px, auto)); padding-left: 24px; padding-right: 24px; }
+  .map-site { border-radius: 20px; padding: 13px 15px; }
 }
 @media (max-width: 540px) {
   .garden-heading-actions { justify-content: flex-start; width: 100%; }

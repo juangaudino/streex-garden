@@ -1,37 +1,23 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Check, ImageOff, Images } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Check, ImageOff } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import { canCompare, toggleComparedPhoto } from '../../domain/photo-comparison'
 import type { CycleHistoryEvent, GrowCycleDetail, PhotoEvidence } from '../../domain/types'
+import { DocumentaryPhoto } from './DocumentaryPhoto'
+import { captureLabel, recordLabel, storyInterval } from './photo-presentation'
 import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
 
 type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
 
-function evidenceDate(photo: PhotoEvidence): string {
-  if (!photo.captured_at) return 'Captura: fecha desconocida'
-  const date = new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(photo.captured_at))
-  return photo.captured_at_precision === 'approximate' ? `Captura aproximada: ${date}` : `Capturada: ${date}`
-}
-
-function recordedDate(event: CycleHistoryEvent): string {
-  return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(event.occurred_at))
-}
+const evidenceDate = captureLabel
+const recordedDate = recordLabel
 
 function PhotoTile({ event, selected, disabled, onToggle }: { event: PhotoEvent; selected: boolean; disabled: boolean; onToggle: () => void }) {
-  const [url, setUrl] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  useEffect(() => {
-    let active = true
-    void getSignedPhotoUrl(event.photo.storage_path).then((nextUrl) => { if (active) setUrl(nextUrl) }).catch(() => { if (active) setError('No se pudo abrir este original.') })
-    return () => { active = false }
-  }, [event.photo.storage_path])
-
   return <article className={`gallery-tile${selected ? ' gallery-tile--selected' : ''}`}>
-    <button type="button" className="gallery-tile__button" aria-pressed={selected} disabled={disabled} onClick={onToggle}>
-      {url && <img src={url} alt={`Seleccionar ${event.photo.original_filename} para comparar`} />}
-      {!url && <div className="gallery-tile__loading"><ImageOff size={22} aria-hidden="true" />{error ?? 'Abriendo original…'}</div>}
+    <button type="button" className="gallery-tile__button" aria-label={`Seleccionar ${event.photo.original_filename}, registro ${recordedDate(event)}, para comparar`} aria-pressed={selected} disabled={disabled} onClick={onToggle}>
+      <DocumentaryPhoto photo={event.photo} caption={false} />
       {selected && <span className="gallery-tile__selected"><Check size={16} aria-hidden="true" /> Seleccionada</span>}
     </button>
     <div className="gallery-tile__meta"><strong>{evidenceDate(event.photo)}</strong><span>Registrada: {recordedDate(event)}</span><span>{event.photo.original_filename} · {event.photo.content_type.replace('image/', '').toUpperCase()}</span></div>
@@ -52,10 +38,22 @@ function ComparisonPhoto({ event }: { event: PhotoEvent }) {
 
 export function PhotoGalleryPage() {
   const { cycleId } = useParams()
+  return <PhotoGalleryScreen key={cycleId} />
+}
+
+function PhotoGalleryScreen() {
+  const { cycleId } = useParams()
   const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [showComparison, setShowComparison] = useState(false)
+  const comparison = useRef<HTMLElement>(null)
+  useEffect(() => {
+    if (showComparison) {
+      comparison.current?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      comparison.current?.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true })
+    }
+  }, [showComparison])
   const load = useCallback(async () => {
     if (!cycleId) return
     setError(null)
@@ -71,14 +69,18 @@ export function PhotoGalleryPage() {
     setShowComparison(false)
   }
 
-  return <AppShell title="Fotos" subtitle={cycle ? `${cycle.crop_name} · ${cycle.garden.name} · Posición ${cycle.position.position_number}` : 'Cargando evidencia'} backTo={cycle ? `/cycle/${cycle.id}` : '/'}>
+  return <AppShell presentation="story" title={cycle ? `La historia de tu ${cycle.crop_name}` : 'Historia fotográfica'} subtitle={cycle ? `${cycle.crop_name} · ${cycle.garden.name} · Posición ${cycle.position.position_number}` : 'Cargando evidencia'} backTo={cycle ? `/cycle/${cycle.id}` : '/'}>
     {!cycle && !error && <StatePanel kind="loading" title="Abriendo galería" />}
     {error && <StatePanel kind="error" title="No se pudo abrir la galería" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
-      <section className="gallery-intro"><Images size={22} aria-hidden="true" /><div><h2>Comparar fotografías</h2><p>Elige exactamente dos originales confirmados. Sus fechas de evidencia permanecen visibles durante la comparación.</p></div></section>
-      {photos.length < 2 && <StatePanel kind="empty" title="Aún no hay dos fotos disponibles">Las fotos pendientes de subir no se usan para comparar.</StatePanel>}
-      {photos.length >= 2 && <><div className="gallery-grid">{photos.map((event) => <PhotoTile key={event.photo.id} event={event} selected={selectedIds.includes(event.photo.id)} disabled={!selectedIds.includes(event.photo.id) && selectedIds.length >= 2} onToggle={() => toggle(event.photo.id)} />)}</div><div className="comparison-actions"><span>{selectedIds.length}/2 seleccionadas</span><button className="primary-button" type="button" disabled={!canCompare(selectedIds)} onClick={() => setShowComparison(true)}>Comparar fotos</button></div></>}
-      {showComparison && selected.length === 2 && <section className="comparison-section" aria-labelledby="comparison-title"><div className="section-heading"><h2 id="comparison-title">Comparación</h2><span>Mismo ciclo · {cycle.crop_name}</span></div><p className="quiet-copy">Las fotos pertenecen al mismo ciclo. Esta vista no infiere crecimiento ni modifica los originales.</p><div className="comparison-grid"><ComparisonPhoto event={selected[0]} /><ComparisonPhoto event={selected[1]} /></div></section>}
+      <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>
+        {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} expandable />{event.note && <p>{event.note}</p>}</li>)}</ol>}
+      </section>
+      <section className="photo-comparison" aria-label="Comparar dos momentos"><div className="story-comparison-intro"><h2>Comparar dos momentos</h2><p>Selecciona exactamente dos originales confirmados del recorrido.</p></div>
+      {photos.length < 2 && <StatePanel kind="empty" title={photos.length === 1 ? 'Una fotografía, el comienzo de su historia' : 'Todavía sin fotografías confirmadas'}>La comparación estará disponible cuando haya dos originales confirmados. Las fotos pendientes de subir no se usan para comparar.</StatePanel>}
+      {photos.length >= 2 && <><div className="comparison-actions"><span>{selectedIds.length}/2 seleccionadas</span><button className="primary-button" type="button" disabled={!canCompare(selectedIds)} onClick={() => setShowComparison(true)}>Comparar fotos</button></div><div className="gallery-grid">{photos.map((event) => <PhotoTile key={event.photo.id} event={event} selected={selectedIds.includes(event.photo.id)} disabled={!selectedIds.includes(event.photo.id) && selectedIds.length >= 2} onToggle={() => toggle(event.photo.id)} />)}</div></>}
+      {showComparison && selected.length === 2 && <section className="comparison-section" ref={comparison} aria-labelledby="comparison-title"><div className="section-heading"><h2 id="comparison-title" tabIndex={-1}>Comparación</h2><span>Mismo ciclo · {cycle.crop_name}</span></div><p className="quiet-copy">Las fotos pertenecen al mismo ciclo. Esta vista no infiere crecimiento ni modifica los originales.</p><div className="comparison-grid"><ComparisonPhoto key={selected[0].photo.id} event={selected[0]} /><ComparisonPhoto key={selected[1].photo.id} event={selected[1]} /></div></section>}
+      </section>
       <Link className="text-link" to={`/cycle/${cycle.id}`}>Volver al historial de {cycle.crop_name}</Link>
     </>}
   </AppShell>

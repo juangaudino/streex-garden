@@ -1,5 +1,6 @@
 import { ChevronRight, Droplets, Plus } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { PlaceLink } from '../../components/PlaceLink'
+import { PlaceIdentity } from '../../components/PlaceIdentity'
 import type { CSSProperties } from 'react'
 import type { GardenDetail, PhysicalSite, Position } from '../../domain/types'
 import { activeGrowPositionIds, MAP_GRID_COLUMNS, siteLabel } from '../../domain/layout-config'
@@ -44,9 +45,9 @@ export function PhysicalMap({ garden, onStart, editable = false, onSelectSite }:
         }
         if (!position) return null
         if (position.current_cycle) {
-          return <Link className="map-site map-site--occupied" key={site.id} style={positionStyle(site)} to={`/cycle/${position.current_cycle.id}`} aria-label={`Abrir ${position.current_cycle.crop_name}, posición ${position.position_number}`}>
-            <span className="map-site__number">{String(position.position_number).padStart(2, '0')}</span><strong>{position.current_cycle.crop_name}</strong><ChevronRight size={16} aria-hidden="true" />
-          </Link>
+          return <PlaceLink place={{ placeId: position.id, number: position.position_number, gardenId: garden.id, cropName: position.current_cycle.crop_name }} className="map-site map-site--occupied" key={site.id} style={positionStyle(site)} to={`/cycle/${position.current_cycle.id}`} aria-label={`Abrir ${position.current_cycle.crop_name}, posición ${position.position_number}`}>
+            <PlaceIdentity number={position.position_number} placeId={position.id} origin="map" /><strong>{position.current_cycle.crop_name}</strong><ChevronRight size={16} aria-hidden="true" />
+          </PlaceLink>
         }
         return <button className="map-site map-site--empty" type="button" key={site.id} style={positionStyle(site)} onClick={() => onStart?.(position)} aria-label={`Iniciar cultivo en posición ${position.position_number}`}>
           <span className="map-site__number">{String(position.position_number).padStart(2, '0')}</span><span>Vacía</span><Plus size={15} aria-hidden="true" />

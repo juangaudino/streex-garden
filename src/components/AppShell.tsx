@@ -3,18 +3,20 @@ import { ArrowLeft, Download, Leaf, LogOut } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { signOut } from '../lib/garden-api'
 import { PwaUpdateNotice } from './PwaUpdateNotice'
+import { PlaceBackLink } from './PlaceLink'
 import { GrowthRings } from './GrowthRings'
 import { clearObservationDrafts, getObservationDrafts } from '../lib/offline-observation-store'
 import { downloadObservationDrafts } from '../lib/export-download'
 
 interface AppShellProps extends PropsWithChildren {
+  presentation?: 'cycle' | 'maintenance' | 'story'
   title?: string
   subtitle?: string
   backTo?: string
   actions?: React.ReactNode
 }
 
-export function AppShell({ children, title, subtitle, backTo, actions }: AppShellProps) {
+export function AppShell({ children, title, subtitle, backTo, actions, presentation }: AppShellProps) {
   const navigate = useNavigate()
   const location = useLocation()
   const [showEntry, setShowEntry] = useState(() => window.sessionStorage.getItem('streex-garden-entry-seen') !== '1')
@@ -52,7 +54,7 @@ export function AppShell({ children, title, subtitle, backTo, actions }: AppShel
     catch (reason) { setSignOutError(reason instanceof Error ? reason.message : 'No se pudieron exportar los borradores.') ; setSigningOut(false) }
   }
   return (
-    <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}`}>
+    <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}${presentation ? ` app-shell--${presentation}` : ''}`}>
       {showEntry && <div className="app-entry" aria-hidden="true"><GrowthRings /><img className="app-entry__logo" src="/brand/garden-x-logo.png" alt="" /></div>}
       {pendingSignOut && <section className="signout-dialog" role="dialog" aria-modal="true" aria-labelledby="signout-title"><div className="signout-dialog__panel"><h2 id="signout-title">Hay borradores pendientes</h2><p>Antes de cerrar sesión, sincronízalos desde su ciclo, expórtalos en este dispositivo o descártalos. Al salir se borra el almacenamiento local para que otra cuenta no pueda verlos.</p>{signOutError && <p className="inline-message inline-message--error" role="alert">{signOutError}</p>}<div className="button-row"><button className="secondary-button" type="button" disabled={signingOut} onClick={() => setPendingSignOut(false)}>Volver a sincronizar</button><button className="secondary-button" type="button" disabled={signingOut} onClick={() => void exportDraftsThenSignOut()}><Download size={16} aria-hidden="true" /> Exportar y cerrar</button><button className="primary-button" type="button" disabled={signingOut} onClick={() => void completeSignOut()}>{signingOut ? 'Cerrando…' : 'Descartar y cerrar'}</button></div></div></section>}
       <header className="topbar">
@@ -62,7 +64,7 @@ export function AppShell({ children, title, subtitle, backTo, actions }: AppShel
       {(title || backTo || actions) && (
         <section className="page-heading">
           <div className="heading-copy">
-            {backTo && <Link className="back-link" to={backTo}><ArrowLeft size={16} aria-hidden="true" /> Volver</Link>}
+            {backTo && <PlaceBackLink className="back-link" to={backTo}><ArrowLeft size={16} aria-hidden="true" /> Volver</PlaceBackLink>}
             {title && <h1>{title}</h1>}
             {subtitle && <p>{subtitle}</p>}
           </div>

@@ -9,10 +9,12 @@ import { getGarden, getOpenMaintenanceSession, startMaintenanceSession } from '.
 import { StartCycleForm } from './StartCycleForm'
 import { GrowthRings } from '../../components/GrowthRings'
 import { activeGrowPositionIds } from '../../domain/layout-config'
+import { PlaceLink } from '../../components/PlaceLink'
+import { PlaceIdentity } from '../../components/PlaceIdentity'
 import { PhysicalMap } from './PhysicalMap'
 import { gardenVisual } from './garden-visuals'
 
-function PositionRow({ position, onStart }: { position: Position; onStart: (position: Position) => void }) {
+function PositionRow({ position, gardenId, onStart }: { position: Position; gardenId: string; onStart: (position: Position) => void }) {
   const history = <div className="position-history" aria-label={`Historial de la posición ${position.position_number}`}><strong>Historial de esta posición</strong>{position.previous_cycles.length > 0 ? <div className="previous-cycles">{position.previous_cycles.map((cycle) => <Link key={cycle.id} to={`/cycle/${cycle.id}`}>Ver {cycle.crop_name}</Link>)}</div> : <span>Aún no hay ciclos anteriores</span>}</div>
   if (!position.current_cycle) {
     return <article className="position-row position-row--empty">
@@ -22,9 +24,9 @@ function PositionRow({ position, onStart }: { position: Position; onStart: (posi
     </article>
   }
   return <article className="position-row">
-    <span className="position-number position-number--ring"><GrowthRings />{String(position.position_number).padStart(2, '0')}</span>
+    <PlaceIdentity number={position.position_number} placeId={position.id} origin="row" />
     <div><h3>{position.current_cycle.crop_name}</h3><p>Posición {position.position_number}</p><HarvestReadiness value={position.current_cycle.harvest_readiness} /></div>
-    <Link className="icon-button" aria-label={`Abrir ciclo de ${position.current_cycle.crop_name}`} to={`/cycle/${position.current_cycle.id}`}><ChevronRight aria-hidden="true" /></Link>
+    <PlaceLink origin="row" place={{ placeId: position.id, number: position.position_number, gardenId, cropName: position.current_cycle.crop_name }} className="icon-button" aria-label={`Abrir ciclo de ${position.current_cycle.crop_name}`} to={`/cycle/${position.current_cycle.id}`}><ChevronRight aria-hidden="true" /></PlaceLink>
     {history}
   </article>
 }
@@ -69,7 +71,7 @@ export function GardenPage() {
       <PhysicalMap garden={garden} onStart={setStartingAt} />
       <section aria-labelledby="positions-title">
         <div className="section-heading"><h2 id="positions-title">Detalle de posiciones</h2><span>{visiblePositions.length}</span></div>
-        <div className="position-list">{visiblePositions.map((position) => <PositionRow key={position.id} position={position} onStart={setStartingAt} />)}</div>
+        <div className="position-list">{visiblePositions.map((position) => <PositionRow gardenId={garden.id} key={position.id} position={position} onStart={setStartingAt} />)}</div>
       </section>
     </>}
   </AppShell>

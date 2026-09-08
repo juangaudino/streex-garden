@@ -1,4 +1,4 @@
-import type { ControlRow } from '../domain/types'
+import type { ControlProjection } from '../domain/types'
 import type { ObservationDraft } from '../domain/types'
 
 function timestampForFilename(value = new Date()): string {
@@ -25,9 +25,15 @@ function csvCell(value: string | number | null): string {
   return `"${raw.replaceAll('"', '""')}"`
 }
 
-export function downloadControlCsv(rows: ControlRow[]): void {
-  const header = ['jardin', 'posicion', 'cultivo', 'fecha_siembra', 'preparacion_cosecha', 'atenciones_abiertas']
-  const content = rows.map((row) => [row.garden_name, row.position_number, row.crop_name, row.planted_on, row.harvest_readiness, row.attention_count].map(csvCell).join(',')).join('\r\n')
+export function downloadControlCsv(projection: ControlProjection): void {
+  const header = ['fecha_referencia', 'jardin', 'posicion', 'cultivo', 'fecha_siembra', 'precision_siembra', 'edad_dias', 'ultimo_raleo', 'proximo_raleo_evaluacion', 'preparacion_cosecha', 'estado', 'accion_pendiente', 'germinacion', 'conteo_plantas']
+  const content = projection.gardens.flatMap((garden) => garden.positions.map((row) => [
+    projection.reference_date, garden.garden_name, row.position.number, row.plant?.name ?? null,
+    row.planting?.date ?? null, row.planting?.precision ?? null, row.age.days,
+    row.last_thinning?.occurred_on ?? null, row.next_thinning_evaluation.kind,
+    row.harvest_readiness?.value ?? null, row.current_state?.kind ?? null,
+    row.action?.title ?? null, row.germination?.status ?? null, row.plant_count?.count ? String(row.plant_count.count) : null,
+  ].map(csvCell).join(','))).join('\r\n')
   download(new Blob([[header.join(','), content].filter(Boolean).join('\r\n')], { type: 'text/csv;charset=utf-8' }), `streex-garden-control-${timestampForFilename()}.csv`)
 }
 

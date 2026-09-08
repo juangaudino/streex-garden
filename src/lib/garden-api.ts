@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlRow, CycleFactType, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -158,7 +158,13 @@ export async function setMaintenanceSessionState(requestId: string, sessionId: s
   const { error } = await getSupabaseClient().rpc('garden_set_maintenance_session_state', { p_request_id: requestId, p_session_id: sessionId, p_state: state })
   if (error) throw new Error(error.message)
 }
-export async function getControlV2(): Promise<ControlRow[]> {
+export async function getControlV2(referenceDate?: string): Promise<ControlProjection> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_control_v2', { p_reference_date: referenceDate ?? new Intl.DateTimeFormat('en-CA').format(new Date()) })
+  return unwrap(data as ControlProjection | null, error)
+}
+
+/** Temporary reader for an older deployed Control V2 client only. */
+export async function getControlV2Legacy(): Promise<ControlRow[]> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_control_v2')
   return unwrap(data as ControlRow[] | null, error)
 }

@@ -77,6 +77,38 @@ export interface MaintenancePosition {
   ordinal: number
 }
 export interface MaintenanceSession { id: string; state: 'in_progress' | 'paused' | 'completed' | 'abandoned'; started_at: string; cursor_position: number; positions: MaintenancePosition[] }
+export interface ControlEvidence { event_id: string; occurred_on: string; note: string | null; [key: string]: unknown }
+export interface ControlAction { task_id: string; purpose: AttentionPurpose; title: string; due_on: string | null; next_review_on: string | null; origin: AttentionOrigin }
+export interface ControlPosition {
+  position: { id: string; number: number }
+  grow_cycle_id: string | null
+  plant: { name: string | null } | null
+  planting: { date: string | null; precision: DatePrecision | null } | null
+  age: { days: number | null; status: 'known' | 'unknown' | 'outside_reference_date'; precision: DatePrecision | null }
+  last_thinning: ControlEvidence | null
+  next_thinning_evaluation: { kind: 'pending' | 'evaluate_today' | 'scheduled' | 'evaluate' | 'not_required' | 'not_scheduled'; task: ControlAction | null; evidence: ControlEvidence | null }
+  harvest_readiness: { value: HarvestReadiness; reason: string | null; evidence: ControlEvidence | null } | null
+  current_state: { kind: 'reassuring' | 'watch' | 'action_required' | 'insufficient_evidence'; evidence: ControlEvidence | null; reason: string | null; change_after_evidence?: ControlEvidence } | null
+  germination: { status: 'confirmed' | 'no_observation'; evidence: ControlEvidence | null } | null
+  plant_count: ControlEvidence | null
+  action: ControlAction | null
+}
+export interface ControlGarden {
+  garden_id: string
+  garden_name: string
+  summary: Partial<Record<'todo_bien' | 'pendiente_vigilar' | 'requiere_atencion' | 'sin_evaluacion_suficiente', { count: number; positions: number[] }>>
+  germination_coverage: { occupied_positions: number; confirmed_positions: number }
+  shared_actions: ControlAction[]
+  relevant_facts: Array<ControlEvidence & { event_type: CycleEventType }>
+  positions: ControlPosition[]
+}
+export interface ControlProjection {
+  reference_date: string
+  interpretation: string
+  gardens: ControlGarden[]
+  positions: ControlPosition[]
+}
+/** Compatibility shape retained for pre-GX-00 CSV consumers. */
 export interface ControlRow { garden_id: string; garden_name: string; position_id: string; position_number: number; grow_cycle_id: string | null; crop_name: string | null; planted_on: string | null; harvest_readiness: HarvestReadiness | null; attention_count: number }
 export interface ImportCandidate { id: string; batch_id: string; source_label: string; candidate_key: string; candidate_type: 'observation' | 'recommendation' | 'conflict'; grow_cycle_id: string | null; occurred_on: string | null; occurred_on_precision: 'exact' | 'unknown'; note: string; source_data: Record<string, unknown>; decision: 'pending' | 'confirmed' | 'rejected'; decision_note: string | null; confirmed_event_id: string | null; created_at: string; decided_at: string | null }
 

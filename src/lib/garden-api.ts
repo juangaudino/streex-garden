@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlRow, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlRow, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -208,6 +208,22 @@ export async function createGarden(input: {
     p_position_capacity: input.positionCapacity,
   })
   return unwrap(data as { garden_id: string } | null, error)
+}
+
+export async function addLayoutSite(input: { requestId: string; gardenId: string; gridX: number; gridY: number; siteKind: PhysicalSiteKind; label?: string }): Promise<{ site_id: string; position_id: string | null; position_number: number | null }> {
+  const { data, error } = await getSupabaseClient().rpc('garden_add_layout_site', {
+    p_request_id: input.requestId, p_garden_id: input.gardenId, p_grid_x: input.gridX, p_grid_y: input.gridY,
+    p_site_kind: input.siteKind, p_label: input.label ?? null,
+  })
+  return unwrap(data as { site_id: string; position_id: string | null; position_number: number | null } | null, error)
+}
+
+export async function updateLayoutSite(input: { requestId: string; siteId: string; gridX: number; gridY: number; siteKind: PhysicalSiteKind; active: boolean; label?: string }): Promise<{ site_id: string; position_id: string | null; position_number: number | null }> {
+  const { data, error } = await getSupabaseClient().rpc('garden_update_layout_site', {
+    p_request_id: input.requestId, p_site_id: input.siteId, p_grid_x: input.gridX, p_grid_y: input.gridY,
+    p_site_kind: input.siteKind, p_active: input.active, p_label: input.label ?? null,
+  })
+  return unwrap(data as { site_id: string; position_id: string | null; position_number: number | null } | null, error)
 }
 
 export async function startCycle(input: {

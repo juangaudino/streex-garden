@@ -5,6 +5,7 @@ import { AuthPage, PasswordRecoveryPage } from '../features/auth/AuthPage'
 import { CyclePage } from '../features/cycles/CyclePage'
 import { PhotoGalleryPage } from '../features/cycles/PhotoGalleryPage'
 import { GardenPage } from '../features/gardens/GardenPage'
+import { GardenSystemPage } from '../features/gardens/GardenSystemPage'
 import { GardensPage } from '../features/gardens/GardensPage'
 import { TodayPage } from '../features/gardens/TodayPage'
 import { MaintenancePage } from '../features/gardens/MaintenancePage'
@@ -61,6 +62,7 @@ export function App() {
     <Routes>
       <Route path="/" element={<GardensPage user={user} />} />
       <Route path="/garden/:gardenId" element={<GardenPage />} />
+      <Route path="/garden/:gardenId/system" element={<GardenSystemPage />} />
       <Route path="/today" element={<TodayPage />} />
       <Route path="/maintenance/:sessionId" element={<MaintenancePage />} />
       <Route path="/control" element={<ControlPage />} />

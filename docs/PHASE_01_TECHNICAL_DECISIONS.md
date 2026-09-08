@@ -2,9 +2,9 @@
 
 ## Base y límites
 
-- La aplicación usa React, TypeScript, Vite y PWA. No incluye IA, Ask Garden, la cola completa de atención, Insights, Realtime ni mapas geométricos de URUQ.
+- La aplicación usa React, TypeScript, Vite y PWA. No incluye IA, Ask Garden, la cola completa de atención, Insights ni Realtime.
 - La navegación implementada es Jardines → Jardín → Posición → Ciclo actual → Observación/foto → Historial.
-- La orientación del sistema se representa únicamente como una lista numérica provisional. El número identifica la posición; no presupone una ubicación física.
+- La orientación empezó como una lista numérica provisional. Phase 20 la reemplaza por mapas físicos configurables sin cambiar los identificadores de posición.
 
 ## Datos y seguridad
 
@@ -66,7 +66,7 @@ El proyecto gestionado de Streex Garden está separado en Streex Labs. Sus crede
 - La vista de ciclo expone acciones compuestas mediante RPC explícitas: cosechar, cerrar, reemplazar/resembrar, trasladar, corregir siembra, reabrir e invalidar un evento seleccionado. Cada acción conserva la revisión esperada y muestra los conflictos del servidor sin aplicar cambios parciales.
 - Las acciones no se ofrecen como operaciones offline: si no hay conectividad, la interfaz informa que debe reintentarse cuando el servidor esté disponible. Las observaciones y fotos mantienen su flujo offline independiente.
 - Garden Detail muestra siempre el bloque `Historial de esta posición`, incluido el estado vacío. Los ciclos anteriores enlazan a su propia vista y nunca reutilizan el ciclo activo.
-- El mapa URUQ continúa siendo una lista numérica provisional y configurable. No se presenta ninguna orientación física definitiva.
+- El mapa URUQ se incorporó inicialmente como lista provisional. La orientación física confirmada y el editor de sistemas se documentan en Phase 20.
 - La PWA usa registro explícito desde React (`virtual:pwa-register/react`) con actualización confirmada por el usuario. Cuando existe un nuevo service worker aparece un aviso accesible con el botón `Actualizar`, evitando que una instalación conserve silenciosamente una interfaz antigua.
 
 ### Evidencia manual
@@ -156,7 +156,7 @@ El proyecto gestionado de Streex Garden está separado en Streex Labs. Sus crede
 
 - La elevación visual no modifica migraciones, tablas, RLS, RPC, rutas, contratos de tipos ni flujos. `GrowthRings` es un componente SVG exclusivamente presentacional: no codifica progreso, salud, porcentaje ni estado de dominio.
 - Home prioriza los jardines visualmente y mantiene **Desde la última vez** y **Atención** como lecturas separadas. Como el contrato actual no devuelve una fotografía ambiental de jardín, su composición utiliza numeral, anillos y superficie editorial; nunca reutiliza la fotografía de un ciclo como si fuera evidencia ambiental.
-- Garden mantiene la lista numérica provisional configurable. Cycle toma sólo la fotografía más reciente ya confirmada de su propio historial para el retrato visual; su ausencia usa el estado editorial de numeral y anillos. No se infieren especie bilingüe, edad ni revisión vigente.
+- Garden usa el mapa físico confirmado o personalizado de su sistema. Cycle toma sólo la fotografía más reciente ya confirmada de su propio historial para el retrato visual; su ausencia usa el estado editorial de numeral y anillos. No se infieren especie bilingüe, edad ni revisión vigente.
 - Historial usa una línea temporal visual con nodos para ordenar evidencia ya existente. Las fechas y precisiones de fotografías permanecen en la interfaz; el diseño no inventa hechos futuros ni convierte una fecha desconocida en una ocurrencia.
 - La entrada de sesión se reproduce una vez por sesión de navegador y no bloquea interacción. Las acciones tienen respuesta táctil breve; la foto de ciclo entra con una escala mínima. `prefers-reduced-motion` elimina transformaciones y reduce la entrada a un cambio directo. La navegación Garden → Cycle conserva una transición de vista breve; la continuidad fotográfica sólo se aplica dentro de Cycle porque el modelo no relaciona una foto ambiental de Garden con una foto de Cycle.
 - Mantenimiento conserva el encabezado persistente Garden + Position y expresa en su línea visual **Revisada**, **Omitida** y **Pendiente** mediante texto, forma y color. `Skip` no se presenta como revisión completada. Control V2 conserva densidad de información y pasa a dos columnas sólo cuando hay espacio suficiente.

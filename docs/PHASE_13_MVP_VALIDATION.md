@@ -6,7 +6,7 @@
 
 - La app expone únicamente rutas manuales autenticadas: Jardines, Jardín, Ciclo, Hoy, Mantenimiento, Control, Importar historia y Comparar fotos.
 - El cliente utiliza sólo la clave publicable de Supabase. No hay `service_role`, clave de proveedor IA, gateway IA ni llamadas a modelos en `src/`.
-- Los mapas permanecen en lista provisional numerada. No hay geometría de URUQ inventada.
+- Al cerrar esta fase los mapas eran listas provisionales. La geometría real confirmada de los URUQ se incorpora posteriormente en Phase 20.
 - Recomendaciones y contradicciones de importación no pueden crear eventos; una observación requiere ciclo, fecha exacta y confirmación separada.
 - El viewport móvil fija escala 1 por decisión del producto. Los grupos de botones, encabezados, historial y avisos se ajustan o envuelven bajo 420 px para evitar desbordes horizontales.
 - Un recorrido de mantenimiento abierto bloquea la creación de otro. Jardines y Jardín muestran `Reanudar` en vez de intentar iniciar uno nuevo; Jardines permite cancelar de forma explícita, preservando las revisiones u omisiones ya registradas.

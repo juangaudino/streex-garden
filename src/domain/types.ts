@@ -4,13 +4,15 @@ export type DraftStatus = 'draft' | 'queued' | 'syncing' | 'synced' | 'retryable
 export type PhotoContentType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/heif' | 'image/webp'
 export type CycleState = 'active' | 'closed'
 export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
+export type MapLayout = 'provisional_list' | 'uruq_8_v1' | 'uruq_12_v1' | 'custom_grid'
+export type PhysicalSiteKind = 'grow' | 'utility'
 
 export interface GardenSummary {
   id: string
   name: string
   system_model: string | null
   position_capacity: number
-  map_layout: 'provisional_list'
+  map_layout: MapLayout
   active_positions: number
 }
 
@@ -88,6 +90,18 @@ export interface Position {
   previous_cycles: PreviousCycle[]
 }
 
+/** A point on the actual equipment. It can be a planting space or a technical element. */
+export interface PhysicalSite {
+  id: string
+  position_id: string | null
+  position_number: number | null
+  site_kind: PhysicalSiteKind
+  is_active: boolean
+  grid_x: number
+  grid_y: number
+  label: string | null
+}
+
 export interface PreviousCycle extends GrowCycleSummary {
   state: CycleState
   last_occupied_on: string | null
@@ -95,6 +109,7 @@ export interface PreviousCycle extends GrowCycleSummary {
 
 export interface GardenDetail extends Omit<GardenSummary, 'active_positions'> {
   positions: Position[]
+  layout_sites: PhysicalSite[]
 }
 
 export interface PhotoEvidence {

@@ -437,6 +437,10 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
   .physical-map { grid-template-rows: repeat(9, minmax(56px, auto)); padding-left: 24px; padding-right: 24px; }
   .map-site { border-radius: 17px; padding: 10px; }
 }
+@media (max-width: 540px) {
+  .garden-heading-actions { justify-content: flex-start; width: 100%; }
+  .garden-heading-actions > * { flex: 1 1 calc(50% - 4px); min-width: 0; }
+}
 @media (min-width: 1080px) {
   .app-shell { padding-left: max(44px, calc((100vw - 1120px) / 2)); padding-right: max(44px, calc((100vw - 1120px) / 2)); }
   .app-shell--detail .page-content { max-width: 1120px; }

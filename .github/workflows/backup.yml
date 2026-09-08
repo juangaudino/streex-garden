@@ -48,6 +48,8 @@ jobs:
           secret_access_key = $R2_SECRET_ACCESS_KEY
           endpoint = $R2_ENDPOINT
           region = auto
+          acl = private
+          no_check_bucket = true
           EOF
           export RCLONE_CONFIG="$workdir/rclone.conf"
           docker run --rm --network host \

@@ -31,3 +31,7 @@ Restaurar primero el dump en un proyecto aislado y después copiar el prefijo de
 El workflow manual `Garden restore drill` exige una fecha y la confirmación literal `RESTORE-YYYY-MM-DD`. Rechaza por código el proyecto de producción y compara cada ruta y tamaño del manifiesto con los objetos restaurados.
 
 Los event triggers internos de Supabase se omiten durante la restauración: pertenecen a la plataforma del proyecto de destino, no al dominio Garden, y el rol de conexión no puede reemplazarlos. El proyecto aislado conserva sus componentes base de Supabase; cada simulacro requiere un proyecto de destino nuevo y el workflow elimina solo el esquema `garden` antes de reponer el snapshot.
+
+## Simulacro comprobado
+
+El 8 de septiembre de 2026 (UTC), `Garden restore drill` restauró correctamente el snapshot `2026-09-08` en el proyecto aislado. La verificación comparó cada ruta y tamaño del manifiesto fuente con el destino y confirmó 2 jardines, 9 fotos y 7 objetos en `garden-originals`. Los avisos de objetos internos ya presentes en Supabase se registraron como conflictos de plataforma esperados; las verificaciones de dominio y Storage terminaron correctamente.

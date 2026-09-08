@@ -32,7 +32,8 @@ export function downloadControlCsv(projection: ControlProjection): void {
     row.planting?.date ?? null, row.planting?.precision ?? null, row.age.days,
     row.last_thinning?.occurred_on ?? null, row.next_thinning_evaluation.kind,
     row.harvest_readiness?.value ?? null, row.current_state?.kind ?? null,
-    row.action?.title ?? null, row.germination?.status ?? null, row.plant_count?.count ? String(row.plant_count.count) : null,
+    row.action?.title ?? null, row.germination?.status ?? null,
+    row.plant_count?.count === undefined || row.plant_count?.count === null ? null : String(row.plant_count.count),
   ].map(csvCell).join(','))).join('\r\n')
   download(new Blob([[header.join(','), content].filter(Boolean).join('\r\n')], { type: 'text/csv;charset=utf-8' }), `streex-garden-control-${timestampForFilename()}.csv`)
 }

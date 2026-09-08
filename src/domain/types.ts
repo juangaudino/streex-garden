@@ -35,7 +35,12 @@ export interface HomeChange {
 export interface AttentionItem {
   id: string
   garden_id: string | null
+  garden_name?: string | null
   grow_cycle_id: string | null
+  /** Derived from the active occupancy only for a cycle-scoped task. */
+  position_id?: string | null
+  position_number?: number | null
+  crop_name?: string | null
   purpose: AttentionPurpose
   subject_key: string
   title: string

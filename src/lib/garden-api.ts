@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlRow, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlRow, CycleFactType, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -193,6 +193,26 @@ export async function getGarden(gardenId: string): Promise<GardenDetail> {
 export async function getCycle(cycleId: string): Promise<GrowCycleDetail> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_cycle', { p_grow_cycle_id: cycleId })
   return unwrap(data as GrowCycleDetail | null, error)
+}
+
+/** Records a confirmed, dated fact for the active cycle. It never infers a fact from a recommendation. */
+export async function recordCycleFact(input: {
+  requestId: string
+  growCycleId: string
+  factType: CycleFactType
+  occurredOn: string
+  note?: string
+  factData?: Record<string, unknown>
+}): Promise<{ event_id: string }> {
+  const { data, error } = await getSupabaseClient().rpc('garden_record_cycle_fact', {
+    p_request_id: input.requestId,
+    p_grow_cycle_id: input.growCycleId,
+    p_fact_type: input.factType,
+    p_occurred_on: input.occurredOn,
+    p_note: input.note ?? null,
+    p_fact_data: input.factData ?? {},
+  })
+  return unwrap(data as { event_id: string } | null, error)
 }
 
 export async function createGarden(input: {

@@ -3,7 +3,7 @@ export type HarvestReadiness = 'not_yet' | 'evaluate' | 'ready' | 'not_applicabl
 export type DraftStatus = 'draft' | 'queued' | 'syncing' | 'synced' | 'retryable_error' | 'needs_review'
 export type PhotoContentType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/heif' | 'image/webp'
 export type CycleState = 'active' | 'closed'
-export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
+export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'seeds_added' | 'germination_observed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
 export type MapLayout = 'provisional_list' | 'uruq_8_v1' | 'uruq_12_v1' | 'custom_grid'
 export type PhysicalSiteKind = 'grow' | 'utility'
 
@@ -136,9 +136,12 @@ export interface CycleHistoryEvent {
   occurred_at_precision?: 'timestamp' | 'date'
   occurred_on?: string | null
   note: string | null
+  event_data?: Record<string, unknown>
   revision: number
   photo: PhotoEvidence | null
 }
+
+export type CycleFactType = 'germination_observed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'readiness_review' | 'intervention' | 'incident_opened' | 'incident_resolved'
 
 export interface GrowCycleDetail extends GrowCycleSummary {
   state: CycleState

@@ -18,7 +18,11 @@ No se escriben en logs, repositorio, Vercel ni cliente web.
 
 ## Ejecución
 
-La tarea se programa diariamente a las 07:17 UTC y puede iniciarse desde Actions con `Run workflow`. Antes de confiar en la programación se ejecutará una vez manualmente y se comprobarán los tres artefactos en R2.
+La tarea se programa diariamente a las 07:17 UTC y puede iniciarse desde Actions con `Run workflow`.
+
+## Primera verificación
+
+El 8 de septiembre de 2026 (UTC), la ejecución manual `Garden backup` terminó correctamente en GitHub Actions. El flujo generó el dump, copió el bucket privado de originales y escribió el manifiesto; además verificó en R2 la presencia de `database.dump` y `storage-manifest.json` antes de finalizar.
 
 ## Restauración
 

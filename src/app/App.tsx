@@ -4,6 +4,7 @@ import type { User } from '@supabase/supabase-js'
 import { AuthPage, PasswordRecoveryPage } from '../features/auth/AuthPage'
 import { CyclePage } from '../features/cycles/CyclePage'
 import { PhotoGalleryPage } from '../features/cycles/PhotoGalleryPage'
+import { RegisterPage } from '../features/cycles/RegisterPage'
 import { GardenPage } from '../features/gardens/GardenPage'
 import { GardenSystemPage } from '../features/gardens/GardenSystemPage'
 import { GardensPage } from '../features/gardens/GardensPage'
@@ -69,6 +70,7 @@ export function App() {
       <Route path="/import" element={<ImportPage />} />
       <Route path="/cycle/:cycleId" element={<CyclePage />} />
       <Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

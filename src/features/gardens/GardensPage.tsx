@@ -32,7 +32,10 @@ export function AttentionList({ items, compact = false, onChanged }: { items: At
   return <div className={`attention-list${compact ? ' attention-list--compact' : ''}`}>{items.map((item) => {
     const timing = attentionTimingLabel(item, today)
     const target = item.grow_cycle_id ? `/cycle/${item.grow_cycle_id}` : item.garden_id ? `/garden/${item.garden_id}` : null
-    const body = <><span className="attention-item__icon" aria-hidden="true"><CircleAlert size={18} /></span><span><strong>{item.title}</strong><small>{timing}</small></span></>
+    const context = item.grow_cycle_id
+      ? [item.garden_name, item.position_number ? `Posición ${item.position_number}` : null, item.crop_name].filter(Boolean).join(' · ')
+      : item.garden_name ?? 'Sistema'
+    const body = <><span className="attention-item__icon" aria-hidden="true"><CircleAlert size={18} /></span><span><strong>{item.title}</strong><small>{context} · {timing}</small></span></>
     if (onChanged) return <article className="attention-item attention-item--managed" key={item.id}>{body}<div className="attention-item__manage"><AttentionTaskEditor task={item} onChanged={onChanged} /></div></article>
     return target ? <Link className="attention-item" to={target} key={item.id}>{body}<ArrowRight size={16} aria-hidden="true" /></Link> : <article className="attention-item" key={item.id}>{body}</article>
   })}</div>

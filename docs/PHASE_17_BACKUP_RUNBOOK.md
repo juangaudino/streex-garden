@@ -29,3 +29,5 @@ El 8 de septiembre de 2026 (UTC), la ejecución manual `Garden backup` terminó 
 Restaurar primero el dump en un proyecto aislado y después copiar el prefijo de Storage de la misma fecha al bucket privado restaurado. Confirmar tablas, conteos, un objeto y su referencia en el manifiesto. No restaurar directamente sobre producción.
 
 El workflow manual `Garden restore drill` exige una fecha y la confirmación literal `RESTORE-YYYY-MM-DD`. Rechaza por código el proyecto de producción y compara cada ruta y tamaño del manifiesto con los objetos restaurados.
+
+Los event triggers internos de Supabase se omiten durante la restauración: pertenecen a la plataforma del proyecto de destino, no al dominio Garden, y el rol de conexión no puede reemplazarlos.

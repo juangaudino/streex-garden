@@ -75,7 +75,7 @@ jobs:
 
           docker run --rm --network host postgres:17 \
             psql "$RESTORE_TARGET_SUPABASE_DB_URL" --set ON_ERROR_STOP=1 \
-              --command "drop schema if exists garden cascade; delete from storage.objects where bucket_id = 'garden-originals'; delete from storage.buckets where id = 'garden-originals';"
+              --command "drop schema if exists garden cascade;"
 
           set +e
           docker run --rm --network host \

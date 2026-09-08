@@ -1,6 +1,6 @@
 # Phase 13 — Validación MVP sin IA
 
-**Estado:** en curso. Esta fase valida el núcleo manual y documenta evidencia. AI Check y Ask Garden permanecen deliberadamente fuera de ejecución: no hay proveedor, credenciales ni llamadas de IA configuradas.
+**Estado:** cerrada. Esta fase validó el núcleo manual y documentó la evidencia. AI Check y Ask Garden permanecen deliberadamente fuera de ejecución: no hay proveedor, credenciales ni llamadas de IA configuradas.
 
 ## Límites verificados en código
 
@@ -40,12 +40,16 @@ Ejecutar esta tanda sobre datos de prueba o acciones reales pertinentes. No crea
 9. **PWA y accesibilidad:** con zoom de iPhone aumentado, comprobar controles principales, texto de estados y la actualización PWA. Verificar que los estados siguen comprendibles sin depender sólo del color.
 10. **Visual:** revisar Home, Garden, Cycle, Today, Maintenance, History/Compare y Control en móvil; revisar Home/Cycle/Control en tablet o escritorio. La decisión pendiente es fidelidad de Living Botanical Cinema, no una nueva dirección visual.
 
-## No aprobable todavía
+## Diferido o pendiente de decisión de producto
 
 - Mapas físicos definitivos: falta orientación/numeración confirmada de ambos URUQ.
-- Backups de datos **y originales** con restauración probada: la exportación existente no sustituye ese ensayo.
+- Backups de datos y originales: ya cuentan con backup diario y restauración aislada comprobada en Phases 17–18.
 - Recuperación de cuenta/Auth de producción y prueba completa de aislamiento de Storage: requieren la tanda de dispositivo/cuenta secundaria.
 - AI Check, Ask Garden, piloto de IA, retención de chat y presupuesto: deliberadamente diferidos hasta elegir proveedor y autorizar gasto.
+
+## Actualización posterior al cierre
+
+La publicación, el backup diario independiente y el simulacro de restauración aislado se completaron posteriormente en Phases 16–18. La tanda de uso real queda como mantenimiento operativo, no como bloqueo del MVP desplegado.
 
 ## Resultado de salida de esta fase
 

@@ -1,7 +1,7 @@
 # Phase 14 — Preparación para lanzamiento sin IA
 
 Fecha: 7 de septiembre de 2026
-Estado: preparación técnica completada; despliegue y operación externa pendientes.
+Estado: completada; despliegue y operación externa comprobados posteriormente en Phases 16–18.
 
 ## Alcance de esta fase
 
@@ -19,7 +19,7 @@ Esta fase no despliega la aplicación, no activa un proveedor de IA, no crea cre
 
 ## Evidencia que sigue siendo local
 
-Los controles anteriores no sustituyen una comprobación del proyecto alojado. No hay un entorno de producción desplegado ni una conexión autenticada de Supabase CLI en este equipo, por lo que esta fase no confirma la configuración remota ni el historial remoto de migraciones.
+Los controles anteriores fueron evidencia local en el momento de esta fase. La configuración remota, el dominio, la autenticación, los backups y la restauración se comprobaron posteriormente en las fases de publicación y operación.
 
 ## Requisitos antes de desplegar
 

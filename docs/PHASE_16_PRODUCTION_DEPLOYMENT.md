@@ -22,10 +22,10 @@ Streex Garden está publicado en [garden.getstreex.com](https://garden.getstreex
 - GitHub Actions completó correctamente instalación, typecheck, 16 pruebas, lint y build para los commits publicados.
 - En iPhone/Safari sobre el dominio definitivo: inicio de sesión, apertura de jardines, creación de observación con foto, aparición inmediata en Historial y persistencia tras recarga fueron confirmados manualmente.
 
-## Pendiente antes de declarar operación completa
+## Estado operativo posterior
 
-- Prueba de recuperación de contraseña sobre el dominio definitivo.
-- Prueba negativa de RLS y Storage con una segunda cuenta en el entorno publicado.
-- Backup diario independiente de base de datos y originales, retención de 30 días y restauración real probada.
+- Recuperación de contraseña sobre el dominio definitivo: comprobada.
+- Backup diario independiente de base de datos y originales, retención de 30 días y restauración real aislada: comprobados en Phases 17–18.
+- La prueba negativa de RLS y Storage con una segunda cuenta permanece como mantenimiento recomendado de uso real, no como bloqueo de publicación.
 - Confirmación física de la orientación y numeración definitiva de ambos URUQ.
 - IA permanece deliberadamente fuera de producción: no hay proveedor, credenciales ni llamadas activas.

@@ -4,8 +4,12 @@ import { GardenPage } from '../src/features/gardens/GardenPage'
 import { CyclePage } from '../src/features/cycles/CyclePage'
 import { PhotoGalleryPage } from '../src/features/cycles/PhotoGalleryPage'
 import { MaintenancePage } from '../src/features/gardens/MaintenancePage'
+import { GardensPage } from '../src/features/gardens/GardensPage'
+import { TodayPage } from '../src/features/gardens/TodayPage'
+import { ControlPage } from '../src/features/gardens/ControlPage'
 import '../src/styles.css'
 import '../src/visual-pass-a.css'
+import '../src/visual-pass-b.css'
 
 // QA-only presentation switches. Never imported by the production entry point.
 const options = new URLSearchParams(location.search)
@@ -42,5 +46,6 @@ if (frame !== null && !document.startViewTransition) {
   }
 }
 sessionStorage.setItem('streex-garden-entry-seen', '1')
-if (!location.hash) location.hash = '/garden/qa'
-createRoot(document.getElementById('root')!).render(<><aside style={{ padding: '6px 12px', background: '#193b2a', color: 'white', fontSize: 11 }}>QA LOCAL · Datos simulados · Fotografía de prueba · No escribe en Supabase</aside><HashRouter><Routes><Route path="/garden/:gardenId" element={<GardenPage />} /><Route path="/cycle/:cycleId" element={<CyclePage />} /><Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} /><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></HashRouter></>)
+if (!location.hash) location.hash = '/'
+const qaUser = { id: 'qa-user', email: 'qa@garden-x.local' } as never
+createRoot(document.getElementById('root')!).render(<><aside style={{ padding: '6px 12px', background: '#193b2a', color: 'white', fontSize: 11 }}>QA LOCAL · Datos simulados · Fotografía de prueba · No escribe en Supabase</aside><HashRouter><Routes><Route path="/" element={<GardensPage user={qaUser} />} /><Route path="/garden/:gardenId" element={<GardenPage />} /><Route path="/cycle/:cycleId" element={<CyclePage />} /><Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} /><Route path="/today" element={<TodayPage />} /><Route path="/control" element={<ControlPage />} /><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></HashRouter></>)

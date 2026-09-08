@@ -1,0 +1,135 @@
+/* Pass B: compositional refinement. Presentation only; no product-state meaning. */
+:root {
+  --cinema-shadow: 0 22px 54px rgba(15, 42, 29, .09), 0 2px 0 rgba(25, 59, 42, .05);
+  --cinema-shadow-soft: 0 14px 34px rgba(15, 42, 29, .065);
+  --cinema-edge: rgba(25, 59, 42, .13);
+}
+
+/* Shared surfaces: fewer independent cards and a quieter, deeper canvas. */
+.app-shell::before {
+  background: radial-gradient(circle at 90% 14%, rgba(210, 226, 204, .44), transparent 26rem);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+.section-heading { align-items: baseline; }
+.section-heading > span { color: var(--sage-dark); font-size: .72rem; letter-spacing: .035em; }
+.page-heading { gap: 28px; }
+.page-heading h1 { letter-spacing: -.06em; }
+.page-heading p { max-width: 38rem; }
+.secondary-button, .primary-button, .file-button { box-shadow: 0 1px 0 rgba(255,255,255,.55) inset; }
+.secondary-button:hover:not(:disabled) { background: rgba(225,233,220,.74); }
+.primary-button:hover:not(:disabled) { box-shadow: 0 6px 15px rgba(15, 52, 31, .16), 0 1px 0 rgba(255,255,255,.16) inset; }
+
+/* Home: gardens lead as distinct editorial scenes; operational content remains secondary. */
+.app-shell--home .page-heading { padding-bottom: 26px; }
+.app-shell--home .page-heading h1 { font-size: clamp(3rem, 9vw, 5.7rem); line-height: .9; max-width: 8ch; }
+.app-shell--home .page-heading::after { max-width: 136px; width: 20%; }
+.app-shell--home .heading-actions__row { align-self: end; }
+.home-section--gardens { margin-bottom: 48px; }
+.home-section--gardens > .section-heading { margin-bottom: 14px; }
+.garden-list { gap: 14px; }
+.garden-card { border: 1px solid transparent; box-shadow: var(--cinema-shadow-soft); isolation: isolate; }
+.garden-card::after { border: 1px solid var(--cinema-edge); border-radius: inherit; content: ''; inset: 0; pointer-events: none; position: absolute; }
+.garden-card:hover { box-shadow: var(--cinema-shadow); }
+.garden-card__art { border-radius: 0 40px 40px 0; }
+.garden-card__overlay { background: linear-gradient(142deg, rgba(8,34,22,.78), rgba(16,49,31,.36) 58%, rgba(250,248,238,.04)); padding: 19px 17px; }
+.garden-card__art .growth-rings { height: 190px; opacity: .38; right: -44px; top: -27px; width: 190px; }
+.garden-card__art span { text-shadow: 0 2px 20px rgba(0,0,0,.18); }
+.garden-card__copy { padding: 22px 19px 20px; }
+.garden-card__copy h3 { font-size: 1.5rem; line-height: 1; margin-bottom: 8px; }
+.garden-card__copy p { line-height: 1.35; }
+.garden-card .card-link { border-bottom: 1px solid rgba(25,59,42,.28); display: inline-flex; padding-bottom: 3px; }
+.home-section--secondary { margin-left: 2px; margin-right: 2px; padding-top: 27px; }
+.home-change, .attention-item { min-height: 72px; transition: background-color .18s ease, padding .18s ease, border-color .18s ease; }
+.home-change:hover, .attention-item:hover { background: rgba(255,252,245,.56); padding-left: 10px; padding-right: 10px; }
+.home-cache-notice { border: 1px solid rgba(25,59,42,.08); box-shadow: 0 8px 20px rgba(25,59,42,.035); }
+
+/* Garden: the environmental opening and physical map read as one place. */
+.garden-editorial-hero { box-shadow: var(--cinema-shadow-soft); overflow: hidden; }
+.garden-editorial-hero::after { border: 1px solid rgba(255,255,255,.38); border-radius: inherit; content: ''; inset: 0; pointer-events: none; position: absolute; }
+.garden-editorial-hero .growth-rings { opacity: .16; }
+.physical-map { background: linear-gradient(144deg, rgba(230,239,227,.86), rgba(222,233,217,.64)); border: 1px solid rgba(25,59,42,.11); box-shadow: var(--cinema-shadow-soft); }
+.physical-map::before { opacity: .16; }
+.map-site { box-shadow: 0 1px 0 rgba(25,59,42,.07); }
+.map-site--occupied { background: rgba(255,253,247,.9); }
+.map-site--occupied:hover { box-shadow: 0 9px 20px rgba(25,59,42,.11); transform: translateY(-2px); }
+.map-site--occupied .place-identity > .growth-rings { opacity: .19; }
+.position-row { position: relative; }
+.position-row::after { background: linear-gradient(90deg, transparent, rgba(25,59,42,.1), transparent); bottom: 0; content: ''; height: 1px; left: 12px; position: absolute; right: 12px; }
+.position-row:last-child::after { display: none; }
+
+/* Cycle: photo, identity and information now overlap as a single portrait. */
+.botanical-portrait { filter: drop-shadow(0 16px 28px rgba(15,42,29,.055)); }
+.botanical-portrait__scene::after { background: linear-gradient(180deg, transparent 56%, rgba(11,34,23,.16)); content: ''; inset: 0; pointer-events: none; position: absolute; }
+.botanical-portrait__scene .documentary-photo { position: relative; z-index: 1; }
+.botanical-portrait__scene > .place-identity { box-shadow: 0 8px 20px rgba(15,42,29,.12); }
+.botanical-portrait--photo .botanical-portrait__scene > .place-identity { border: 1px solid rgba(25,59,42,.1); }
+.botanical-portrait__surface { box-shadow: -12px -11px 28px rgba(15,42,29,.04); }
+.botanical-portrait__surface::before { background: linear-gradient(90deg, var(--forest), transparent); content: ''; height: 1px; left: 16px; opacity: .22; position: absolute; top: 13px; width: 64px; }
+.botanical-portrait__eyebrow { letter-spacing: .055em; text-transform: uppercase; }
+.botanical-portrait__metadata { border-top: 1px solid var(--hairline); padding-top: 12px; }
+.portrait-photo-action { transition: color .16s ease, border-color .16s ease, transform .16s ease; }
+.portrait-photo-action:hover { border-color: var(--sage-dark); color: var(--sage-dark); transform: translateX(2px); }
+.botanical-portrait--bare .botanical-portrait__scene::after { background: radial-gradient(circle at 82% 65%, rgba(25,59,42,.08), transparent 35%); }
+
+/* Maintenance: a review tray, rather than another page card. */
+.app-shell--maintenance .maintenance-current { border-bottom: 1px solid var(--hairline); margin-bottom: 26px; padding-bottom: 16px; }
+.maintenance-current > .maintenance-context { box-shadow: 0 10px 21px rgba(8,35,23,.14); }
+.maintenance-current .botanical-portrait__surface { box-shadow: -10px -9px 22px rgba(15,42,29,.055); }
+.maintenance-current > .button-row { gap: 10px; }
+.maintenance-summary { box-shadow: var(--cinema-shadow-soft); }
+.maintenance-rail::before { background: linear-gradient(var(--forest), var(--hairline) 64%); opacity: .55; }
+.maintenance-rail__item[aria-current="step"] > span { background: var(--paper); }
+
+/* Today and Control retain dense utility but belong to the same visual family. */
+.today-intro { background: linear-gradient(110deg, rgba(225,233,220,.84), rgba(255,252,245,.4)); border: 1px solid rgba(25,59,42,.08); box-shadow: var(--cinema-shadow-soft); }
+.today-create { border-top: 1px solid var(--hairline); padding-top: 24px; }
+.control-export { background: linear-gradient(105deg, var(--sage), rgba(255,252,245,.8)); box-shadow: var(--cinema-shadow-soft); }
+.control-table { gap: 10px; }
+.control-table article { border: 1px solid transparent; box-shadow: 0 1px 0 var(--hairline); }
+.control-table article:hover { border-color: var(--cinema-edge); box-shadow: var(--cinema-shadow-soft); }
+.control-table__number { color: rgba(25,59,42,.72); }
+
+/* Temporal family: rings mark place only; time is deliberately linear. */
+.history-list { border-left-color: rgba(25,59,42,.28); }
+.history-event::before { transition: box-shadow .18s ease, transform .18s ease; }
+.history-event:hover::before { box-shadow: 0 0 0 4px rgba(225,233,220,.9); transform: scale(1.08); }
+.photo-story__rail { scrollbar-color: var(--sage-dark) transparent; }
+.photo-story__rail > li { border-top-color: rgba(25,59,42,.4); }
+.photo-story__rail > li::before { box-shadow: 0 0 0 4px var(--ivory); }
+
+@media (min-width: 720px) {
+  .app-shell--home .page-heading { align-items: flex-end; padding-top: 44px; }
+  .app-shell--home .page-heading h1 { font-size: clamp(4rem, 8.4vw, 6.25rem); }
+  .home-section--gardens .garden-list { gap: 20px; }
+  .garden-card { min-height: 290px; }
+  .garden-card__copy { padding: 30px 28px; }
+  .garden-card__copy h3 { font-size: 2rem; }
+  .garden-card__art { border-radius: 0 56px 56px 0; }
+  .garden-card__art .growth-rings { height: 258px; right: -58px; top: -38px; width: 258px; }
+  .home-section--secondary { padding-top: 30px; }
+  .physical-map { padding: 30px; }
+  .botanical-portrait__surface { border-radius: 64px 0 0 0; margin-left: -58px; padding: 54px 32px 34px 48px; }
+  .botanical-portrait__surface::before { left: 48px; top: 23px; width: 94px; }
+  .botanical-portrait__metadata { margin-top: 24px; }
+  .maintenance-current .botanical-portrait__surface { margin-left: 26px; }
+  .app-shell--story .photo-story { margin-bottom: 46px; }
+}
+
+@media (min-width: 1080px) {
+  .app-shell--home .page-content { max-width: none; }
+  .app-shell--home .home-section--gardens .garden-card:first-child { min-height: 360px; }
+  .app-shell--home .home-section--gardens .garden-card:first-child .garden-card__copy h3 { font-size: 2.5rem; }
+  .garden-card__copy { padding: 34px 30px; }
+  .physical-map { padding: 38px; }
+  .app-shell--maintenance .maintenance-summary { margin-top: 6px; }
+  .control-table article { min-height: 94px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .garden-card, .home-change, .attention-item, .map-site, .portrait-photo-action, .history-event::before { transition: none; }
+  .garden-card:hover, .map-site--occupied:hover, .portrait-photo-action:hover, .history-event:hover::before { transform: none; }
+}

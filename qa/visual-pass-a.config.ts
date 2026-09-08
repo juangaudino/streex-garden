@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const fixture = resolve('qa/visual-pass-a-api.ts')
-const overrides = ['getCycle', 'getGarden', 'getSignedPhotoUrl', 'getOpenMaintenanceSession', 'getMaintenanceSession', 'progressMaintenancePosition', 'setMaintenanceSessionState']
+const overrides = ['getCycle', 'getGarden', 'getSignedPhotoUrl', 'getHome', 'getHomeDashboard', 'getAttention', 'getControlV2', 'acknowledgeHomeSnapshot', 'getOpenMaintenanceSession', 'getMaintenanceSession', 'progressMaintenancePosition', 'setMaintenanceSessionState']
 const names = [...readFileSync('src/lib/garden-api.ts', 'utf8').matchAll(/export (?:async )?function (\w+)/g)].map((match) => match[1])
 export default defineConfig({
   plugins: [react(), { name: 'isolated-presentation-fixtures', enforce: 'pre',

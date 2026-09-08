@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { App } from './app/App'
 import './styles.css'
 import './visual-pass-a.css'
+import './visual-pass-b.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

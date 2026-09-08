@@ -211,7 +211,7 @@ as $$
       'shared_actions', coalesce((select jsonb_agg(jsonb_build_object('task_id', a.id, 'purpose', a.purpose, 'title', a.title, 'due_on', a.due_on, 'next_review_on', a.next_review_on, 'origin', a.origin) order by coalesce(a.next_review_on, a.due_on) nulls last, a.created_at, a.id) from garden.attention_items a where a.owner_id = public.garden_owner_id() and a.garden_id = gv.garden_id and a.grow_cycle_id is null and a.status = 'open' and a.created_at::date <= (select value from reference_date)), '[]'::jsonb),
       'relevant_facts', coalesce((select jsonb_agg(jsonb_build_object('event_id', e.id, 'event_type', e.event_type, 'occurred_on', coalesce(nullif(e.event_data->>'occurred_on', '')::date, (e.occurred_at at time zone 'UTC')::date), 'note', e.note) order by e.occurred_at desc, e.id desc) from (select e.* from garden.events e where e.garden_id = gv.garden_id and e.invalidated_at is null and e.event_type in ('harvest', 'intervention', 'system_maintenance') and coalesce(nullif(e.event_data->>'occurred_on', '')::date, (e.occurred_at at time zone 'UTC')::date) <= (select value from reference_date) order by e.occurred_at desc, e.id desc limit 5) e), '[]'::jsonb),
       'positions', gv.positions
-    ) order by gv.garden_name), '[]'::jsonb),
+    ) order by gv.garden_name)), '[]'::jsonb),
     'positions', coalesce((select jsonb_agg(position order by garden_name, position_number) from projected_positions), '[]'::jsonb)
   );
 $$;

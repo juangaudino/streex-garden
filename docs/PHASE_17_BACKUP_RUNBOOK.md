@@ -30,4 +30,4 @@ Restaurar primero el dump en un proyecto aislado y después copiar el prefijo de
 
 El workflow manual `Garden restore drill` exige una fecha y la confirmación literal `RESTORE-YYYY-MM-DD`. Rechaza por código el proyecto de producción y compara cada ruta y tamaño del manifiesto con los objetos restaurados.
 
-Los event triggers internos de Supabase se omiten durante la restauración: pertenecen a la plataforma del proyecto de destino, no al dominio Garden, y el rol de conexión no puede reemplazarlos.
+Los event triggers internos de Supabase se omiten durante la restauración: pertenecen a la plataforma del proyecto de destino, no al dominio Garden, y el rol de conexión no puede reemplazarlos. El proyecto aislado conserva sus componentes base de Supabase; el workflow elimina solo el esquema `garden` y los metadatos de `garden-originals` antes de reponer el snapshot.

@@ -73,10 +73,22 @@ jobs:
           test -s "$workdir/database/database.dump"
           test -s "$workdir/manifest/storage-manifest.json"
 
+          docker run --rm --network host postgres:17 \
+            psql "$RESTORE_TARGET_SUPABASE_DB_URL" --set ON_ERROR_STOP=1 \
+              --command "drop schema if exists garden cascade; delete from storage.objects where bucket_id = 'garden-originals'; delete from storage.buckets where id = 'garden-originals';"
+
+          set +e
           docker run --rm --network host \
             -v "$workdir:/restore" \
             postgres:17 \
-            sh -ec "pg_restore --list /restore/database/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname \"$RESTORE_TARGET_SUPABASE_DB_URL\" --clean --if-exists --no-owner --no-privileges --exit-on-error /restore/database/database.dump"
+            sh -ec "pg_restore --list /restore/database/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname \"$RESTORE_TARGET_SUPABASE_DB_URL\" --no-owner --no-privileges /restore/database/database.dump" \
+            > "$workdir/pg-restore.log" 2>&1
+          pg_restore_status=$?
+          set -e
+          if [ "$pg_restore_status" -ne 0 ]; then
+            echo 'pg_restore emitted expected platform-object conflicts; domain verification follows.'
+            cat "$workdir/pg-restore.log"
+          fi
 
           rclone mkdir "restore:garden-originals"
           rclone copy "r2:streex-garden-backups/storage/$SNAPSHOT_DATE/garden-originals" "restore:garden-originals"

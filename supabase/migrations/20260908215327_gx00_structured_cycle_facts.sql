@@ -97,13 +97,18 @@ begin
   v_response := garden.command_response(v_owner, p_request_id, 'record_cycle_fact', v_payload);
   if v_response is not null then return v_response; end if;
 
-  select gc.*, p.garden_id into v_cycle, v_garden_id
+  select gc into v_cycle
   from garden.grow_cycles gc
   join garden.cycle_occupancies o on o.grow_cycle_id = gc.id and o.occupied_until is null
   join garden.positions p on p.id = o.position_id
   where gc.id = p_grow_cycle_id and gc.owner_id = v_owner and gc.state = 'active'
   for update of gc;
   if not found then raise exception 'Current grow cycle not found'; end if;
+
+  select p.garden_id into v_garden_id
+  from garden.cycle_occupancies o
+  join garden.positions p on p.id = o.position_id
+  where o.grow_cycle_id = v_cycle.id and o.occupied_until is null;
 
   if p_fact_type = 'germination_observed' then
     if v_data ? 'count' then

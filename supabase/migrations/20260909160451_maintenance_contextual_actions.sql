@@ -16,6 +16,12 @@ where progress = 'reviewed' and inspected_at is null;
 alter table garden.maintenance_session_positions
   drop constraint if exists maintenance_session_positions_check;
 
+-- Some environments already carry the simplified progress constraint under
+-- the final name. Drop it as well so this migration can be safely re-run
+-- before replacing it with the inspection-aware invariant below.
+alter table garden.maintenance_session_positions
+  drop constraint if exists maintenance_session_positions_progress_check;
+
 alter table garden.maintenance_session_positions
   add constraint maintenance_session_positions_progress_check
   check (

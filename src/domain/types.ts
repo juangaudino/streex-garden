@@ -230,6 +230,21 @@ export interface GuestPlantStory {
   history: GuestPlantStoryEvent[]
 }
 
+export interface GuestGardenStorySummary {
+  id: string
+  created_at: string
+  revoked_at: string | null
+  active: boolean
+}
+
+export interface GuestGardenStory {
+  id: string
+  garden: { id: string; name: string; system_model: string | null }
+  cycles: Array<{ grow_cycle_id: string; crop_name: string; planted_on: string | null; planted_on_precision: DatePrecision; state: string; position_number: number }>
+  created_at: string
+  history: Array<GuestPlantStoryEvent & { grow_cycle_id: string | null; crop_name: string | null; position_number: number | null; event_data?: Record<string, unknown> }>
+}
+
 export interface ObservationInput {
   requestId: string
   growCycleId: string

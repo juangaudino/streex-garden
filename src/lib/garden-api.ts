@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestGardenStory, GuestGardenStorySummary, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -459,5 +459,34 @@ export async function getGuestPlantStory(token: string): Promise<{ story: GuestP
   })
   const body = await response.json().catch(() => null) as { story?: GuestPlantStory; expires_in?: number; error?: string } | null
   if (!response.ok || !body?.story || !body.expires_in) throw new Error(body?.error ?? 'La historia compartida no está disponible.')
+  return { story: body.story, expires_in: body.expires_in }
+}
+
+export async function createGuestGardenStory(requestId: string, gardenId: string): Promise<{ story_id: string; url: string }> {
+  const token = crypto.randomUUID().toLowerCase()
+  const { data, error } = await getSupabaseClient().rpc('garden_create_guest_garden_story', {
+    p_request_id: requestId, p_garden_id: gardenId, p_token_hash: await hashShareToken(token),
+  })
+  const result = unwrap(data as { story_id: string } | null, error)
+  return { story_id: result.story_id, url: `${window.location.origin}/guest/garden/${token}` }
+}
+
+export async function getGuestGardenStories(gardenId: string): Promise<GuestGardenStorySummary[]> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_guest_garden_stories', { p_garden_id: gardenId })
+  return unwrap(data as GuestGardenStorySummary[] | null, error)
+}
+
+export async function revokeGuestGardenStory(requestId: string, storyId: string): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_revoke_guest_garden_story', { p_request_id: requestId, p_story_id: storyId })
+  if (error) throw new Error(error.message)
+}
+
+export async function getGuestGardenStory(token: string): Promise<{ story: GuestGardenStory; expires_in: number }> {
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/guest-garden-story`, {
+    method: 'POST', headers: { apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string, Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string}`, 'content-type': 'application/json' },
+    body: JSON.stringify({ token }),
+  })
+  const body = await response.json().catch(() => null) as { story?: GuestGardenStory; expires_in?: number; error?: string } | null
+  if (!response.ok || !body?.story || !body.expires_in) throw new Error(body?.error ?? 'El jardín compartido no está disponible.')
   return { story: body.story, expires_in: body.expires_in }
 }

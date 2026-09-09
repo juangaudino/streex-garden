@@ -10,6 +10,30 @@ function eventDate(event: GuestPlantStoryEvent): string {
   return event.occurred_at ? new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(event.occurred_at)) : 'Fecha no registrada'
 }
 
+function eventLabel(eventType: string): string {
+  return ({
+    observation: 'Observación',
+    planting: 'Siembra',
+    harvest: 'Cosecha',
+    cycle_started: 'Ciclo iniciado',
+    cycle_ended: 'Ciclo cerrado',
+    cycle_moved: 'Ciclo trasladado',
+    seeds_added: 'Siembra adicional',
+    germination_observed: 'Germinación observada',
+    germination_confirmed: 'Germinación confirmada',
+    plant_count_observed: 'Cantidad de plantas observada',
+    visual_review: 'Revisión visual',
+    development_review: 'Revisión de desarrollo',
+    intervention: 'Intervención',
+    incident_opened: 'Incidencia abierta',
+    incident_resolved: 'Incidencia resuelta',
+    system_maintenance: 'Mantenimiento',
+    measurement: 'Medición',
+    readiness_review: 'Evaluación de cosecha',
+    photo_evidence: 'Fotografía documental',
+  } as Record<string, string>)[eventType] ?? eventType
+}
+
 function GuestPhoto({ event }: { event: GuestPlantStoryEvent }) {
   const [failed, setFailed] = useState(false)
   if (!event.photo || failed) return <div className="guest-story-photo guest-story-photo--unavailable"><ImageOff size={20} aria-hidden="true" />Fotografía no disponible</div>
@@ -39,7 +63,7 @@ export function GuestPlantStoryPage() {
     {!loading && story && <>
       <section className="guest-story-hero"><span className="eyebrow">Historia de una planta</span><h1>La historia de tu {story.crop_name}</h1><p>{story.garden.name} · Posición {story.position.position_number}</p>{story.planted_on && <small>Plantada: {new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${story.planted_on}T12:00:00`))}</small>}</section>
       {expiresIn && <p className="guest-story-expiry" role="status">Las fotografías se muestran con acceso temporal. Si alguna no carga, actualiza esta página.</p>}
-      <section className="guest-story-timeline" aria-label="Historia del ciclo">{history.length === 0 && <p className="empty-copy">Todavía no hay registros compartidos para este ciclo.</p>}{history.map((event) => <article className="guest-story-event" key={event.id}><div className="guest-story-event__date"><strong>{event.event_type}</strong><time>{eventDate(event)}</time></div><div className="guest-story-event__body">{event.photo && <GuestPhoto event={event} />}{event.note && <p>{event.note}</p>}</div></article>)}</section>
+      <section className="guest-story-timeline" aria-label="Historia del ciclo">{history.length === 0 && <p className="empty-copy">Todavía no hay registros compartidos para este ciclo.</p>}{history.map((event) => <article className="guest-story-event" key={event.id}><div className="guest-story-event__date"><strong>{eventLabel(event.event_type)}</strong><time>{eventDate(event)}</time></div><div className="guest-story-event__body">{event.photo && <GuestPhoto event={event} />}{event.note && <p>{event.note}</p>}</div></article>)}</section>
       <footer className="guest-story-page__footer"><RefreshCw size={15} aria-hidden="true" /> Vista compartida de solo lectura · <button type="button" onClick={() => void load()}>Actualizar</button></footer>
     </>}
   </main>

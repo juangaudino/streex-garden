@@ -7,10 +7,10 @@ import { MaintenancePortrait } from '../gardens/MaintenancePortrait'
 import { MaintenancePage } from '../gardens/MaintenancePage'
 import { PhotoGalleryPage } from './PhotoGalleryPage'
 import { captureLabel, isToday, storyInterval } from './photo-presentation'
-import { getCycle, getSignedPhotoUrl, getMaintenanceSession, progressMaintenancePosition } from '../../lib/garden-api'
+import { getCycle, getSignedPhotoUrl, getMaintenanceSession, progressMaintenancePosition, setGardenCover, setHomeHero } from '../../lib/garden-api'
 import type { GrowCycleDetail, MaintenancePosition, MaintenanceSession, PhotoEvidence } from '../../domain/types'
 
-vi.mock('../../lib/garden-api', () => ({ getCycle: vi.fn(), getSignedPhotoUrl: vi.fn(), getMaintenanceSession: vi.fn(), markMaintenancePositionInspected: vi.fn(), progressMaintenancePosition: vi.fn(), setMaintenanceSessionState: vi.fn() }))
+vi.mock('../../lib/garden-api', () => ({ getCycle: vi.fn(), getSignedPhotoUrl: vi.fn(), getMaintenanceSession: vi.fn(), markMaintenancePositionInspected: vi.fn(), progressMaintenancePosition: vi.fn(), setMaintenanceSessionState: vi.fn(), setGardenCover: vi.fn(), setHomeHero: vi.fn() }))
 vi.mock('../../components/AppShell', () => ({ AppShell: ({ children, title }: { children: React.ReactNode; title?: string }) => <main><h1>{title}</h1>{children}</main> }))
 const photo: PhotoEvidence = { id: 'photo-a', storage_path: 'a', original_filename: 'a.jpeg', content_type: 'image/jpeg', byte_size: 1, checksum_sha256: null, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
 const event = { id: 'event', event_type: 'observation' as const, occurred_at: '2026-06-12T00:00:00Z', occurred_at_precision: 'date' as const, occurred_on: '2026-06-12', note: 'Nota completa', revision: 1, photo }
@@ -83,4 +83,15 @@ it('shows a one-photo story while keeping comparison unavailable', async () => {
   expect(screen.getByRole('button', { name: 'Abrir fotografía a.jpeg' })).toBeTruthy()
   expect(screen.queryByRole('button', { name: 'Comparar fotos' })).toBeNull()
   expect(screen.getByText('Nota completa')).toBeTruthy()
+})
+it('offers garden and Home cover actions from the photo viewer', async () => {
+  vi.mocked(setGardenCover).mockResolvedValue()
+  vi.mocked(setHomeHero).mockResolvedValue()
+  Object.defineProperty(HTMLDialogElement.prototype, 'showModal', { configurable: true, value: vi.fn() })
+  render(<MemoryRouter initialEntries={['/cycle/cycle-a/photos']}><Routes><Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} /></Routes></MemoryRouter>)
+  fireEvent.click(await screen.findByRole('button', { name: 'Abrir fotografía a.jpeg' }))
+  fireEvent.click(screen.getByRole('button', { name: 'Portada del jardín', hidden: true }))
+  await waitFor(() => expect(setGardenCover).toHaveBeenCalledWith(expect.objectContaining({ gardenId: 'garden', photoId: 'photo-a' })))
+  fireEvent.click(screen.getByRole('button', { name: 'Portada Home', hidden: true }))
+  await waitFor(() => expect(setHomeHero).toHaveBeenCalledWith(expect.objectContaining({ photoId: 'photo-a' })))
 })

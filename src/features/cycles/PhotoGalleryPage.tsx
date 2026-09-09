@@ -7,7 +7,7 @@ import { canCompare, toggleComparedPhoto } from '../../domain/photo-comparison'
 import type { CycleHistoryEvent, GrowCycleDetail, PhotoEvidence } from '../../domain/types'
 import { DocumentaryPhoto } from './DocumentaryPhoto'
 import { captureLabel, recordLabel, storyInterval } from './photo-presentation'
-import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
+import { getCycle, getSignedPhotoUrl, setGardenCover, setHomeHero } from '../../lib/garden-api'
 
 type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
 
@@ -41,12 +41,28 @@ export function PhotoGalleryPage() {
   return <PhotoGalleryScreen key={cycleId} />
 }
 
+function PhotoCoverActions({ gardenId, photoId, onMessage }: { gardenId: string; photoId: string; onMessage: (message: string) => void }) {
+  const [busy, setBusy] = useState(false)
+  const run = async (action: 'garden' | 'home') => {
+    setBusy(true)
+    try {
+      if (action === 'garden') await setGardenCover({ requestId: crypto.randomUUID(), gardenId, photoId })
+      else await setHomeHero({ requestId: crypto.randomUUID(), photoId })
+      onMessage(action === 'garden' ? 'Foto establecida como portada del jardín.' : 'Foto establecida como portada de Home.')
+    } catch (reason) {
+      onMessage(reason instanceof Error ? reason.message : 'No se pudo establecer la portada.')
+    } finally { setBusy(false) }
+  }
+  return <div className="documentary-photo__actions-row"><button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('garden')}>Portada del jardín</button><button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('home')}>Portada Home</button></div>
+}
+
 function PhotoGalleryScreen() {
   const { cycleId } = useParams()
   const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [showComparison, setShowComparison] = useState(false)
+  const [coverMessage, setCoverMessage] = useState<string | null>(null)
   const comparison = useRef<HTMLElement>(null)
   useEffect(() => {
     if (showComparison) {
@@ -73,8 +89,8 @@ function PhotoGalleryScreen() {
     {!cycle && !error && <StatePanel kind="loading" title="Abriendo galería" />}
     {error && <StatePanel kind="error" title="No se pudo abrir la galería" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
-      <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>
-        {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} expandable />{event.note && <p>{event.note}</p>}</li>)}</ol>}
+      <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>{coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
+        {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} expandable actions={<PhotoCoverActions gardenId={cycle.garden.id} photoId={event.photo.id} onMessage={setCoverMessage} />} />{event.note && <p>{event.note}</p>}</li>)}</ol>}
       </section>
       <section className="photo-comparison" aria-label="Comparar dos momentos"><div className="story-comparison-intro"><h2>Comparar dos momentos</h2><p>Selecciona exactamente dos originales confirmados del recorrido.</p></div>
       {photos.length < 2 && <StatePanel kind="empty" title={photos.length === 1 ? 'Una fotografía, el comienzo de su historia' : 'Todavía sin fotografías confirmadas'}>La comparación estará disponible cuando haya dos originales confirmados. Las fotos pendientes de subir no se usan para comparar.</StatePanel>}

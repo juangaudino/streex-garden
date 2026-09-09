@@ -562,6 +562,8 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .guest-garden-cycle-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(25,59,42,.1); }
 .guest-garden-cycle-card > span { color: var(--accent, #4f7546); font-family: Georgia, serif; font-size: 1.8rem; }
 .guest-garden-cycle-card div { display: grid; gap: .2rem; }
+.documentary-photo__actions { border-top: 1px solid var(--hairline); padding: 12px 0 0; }
+.documentary-photo__actions-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .guest-garden-cycle-grid small { color: var(--muted, #667064); }
 @media (max-width: 640px) {
   .guest-share-intro, .guest-share-link__field { display: grid; }

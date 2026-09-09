@@ -423,9 +423,23 @@ export async function retryPendingPhoto(photo: PhotoEvidence, file: File): Promi
   if (confirmation.error) throw new Error(`La foto se subió, pero no pudo confirmarse: ${confirmation.error.message}`)
 }
 
+const signedPhotoUrlCache = new Map<string, { url: string; expiresAt: number }>()
+const signedPhotoUrlPending = new Map<string, Promise<string>>()
+
 export async function getSignedPhotoUrl(storagePath: string): Promise<string> {
-  const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5)
-  return unwrap(data?.signedUrl ?? null, error)
+  const cached = signedPhotoUrlCache.get(storagePath)
+  if (cached && cached.expiresAt > Date.now()) return cached.url
+  const pending = signedPhotoUrlPending.get(storagePath)
+  if (pending) return pending
+  const request = getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5)
+    .then(({ data, error }) => {
+      const url = unwrap(data?.signedUrl ?? null, error)
+      signedPhotoUrlCache.set(storagePath, { url, expiresAt: Date.now() + 4 * 60 * 1000 })
+      return url
+    })
+    .finally(() => { signedPhotoUrlPending.delete(storagePath) })
+  signedPhotoUrlPending.set(storagePath, request)
+  return request
 }
 
 async function hashShareToken(value: string): Promise<string> {

@@ -608,5 +608,6 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .photo-library__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .75rem; max-height: 64vh; overflow: auto; }
 .photo-library__item { display: grid; gap: .4rem; padding: .35rem; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); color: var(--ink); text-align: left; cursor: pointer; }
 .photo-library__item.is-selected { outline: 2px solid var(--forest); }
-.photo-library__item img, .photo-library__loading { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--sage); }
-.photo-library__item > span { display: flex; align-items: center; gap: .25rem; font-size: .82rem; }
+.photo-library__media, .photo-library__item img, .photo-library__loading { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--sage); }
+.photo-library__media { overflow: hidden; }
+.photo-library__item > span.photo-library__label { display: flex; align-items: center; gap: .25rem; font-size: .82rem; }

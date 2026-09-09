@@ -558,9 +558,10 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .guest-garden-cycles { max-width: 920px; margin: 0 auto 2.5rem; }
 .guest-garden-cycles h2 { margin-bottom: 1rem; }
 .guest-garden-cycle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
-.guest-garden-cycle-grid article { display: flex; gap: .8rem; align-items: center; padding: .85rem 1rem; border: 1px solid var(--line, #dfe5dc); border-radius: .9rem; background: rgba(255,252,245,.72); }
-.guest-garden-cycle-grid article > span { color: var(--accent, #4f7546); font-family: Georgia, serif; font-size: 1.8rem; }
-.guest-garden-cycle-grid article div { display: grid; gap: .2rem; }
+.guest-garden-cycle-card { display: flex; gap: .8rem; align-items: center; padding: .85rem 1rem; border: 1px solid var(--line, #dfe5dc); border-radius: .9rem; background: rgba(255,252,245,.72); color: inherit; text-decoration: none; transition: transform .16s ease, box-shadow .16s ease; }
+.guest-garden-cycle-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(25,59,42,.1); }
+.guest-garden-cycle-card > span { color: var(--accent, #4f7546); font-family: Georgia, serif; font-size: 1.8rem; }
+.guest-garden-cycle-card div { display: grid; gap: .2rem; }
 .guest-garden-cycle-grid small { color: var(--muted, #667064); }
 @media (max-width: 640px) {
   .guest-share-intro, .guest-share-link__field { display: grid; }

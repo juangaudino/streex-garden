@@ -35,7 +35,7 @@ function ConfigurationRequired() {
 
 export function App() {
   const location = useLocation()
-  const guestRoute = /^\/guest\/(?:garden\/)?[^/]+$/.test(location.pathname)
+  const guestRoute = /^\/guest\/(?:garden\/[^/]+(?:\/cycle\/[^/]+)?|[^/]+)$/.test(location.pathname)
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(hasSupabaseConfiguration)
   const [recoveringPassword, setRecoveringPassword] = useState(false)
@@ -63,7 +63,7 @@ export function App() {
   }, [])
 
   if (!hasSupabaseConfiguration()) return <ConfigurationRequired />
-  if (guestRoute) return <Routes><Route path="/guest/:token" element={<GuestPlantStoryPage />} /><Route path="/guest/garden/:token" element={<GuestGardenStoryPage />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes>
+  if (guestRoute) return <Routes><Route path="/guest/:token" element={<GuestPlantStoryPage />} /><Route path="/guest/garden/:token" element={<GuestGardenStoryPage />} /><Route path="/guest/garden/:token/cycle/:cycleId" element={<GuestGardenStoryPage />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes>
   if (loading) return <main className="center-state" aria-live="polite">Abriendo tu jardín…</main>
   if (recoveringPassword) return <PasswordRecoveryPage onComplete={() => setRecoveringPassword(false)} />
   if (!user) return <AuthPage />

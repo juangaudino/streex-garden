@@ -47,5 +47,5 @@ if (frame !== null && !document.startViewTransition) {
 }
 sessionStorage.setItem('streex-garden-entry-seen', '1')
 if (!location.hash) location.hash = '/'
-const qaUser = { id: 'qa-user', email: 'qa@garden-x.local' } as never
+const qaUser = { id: 'qa-user', email: 'demo@example.invalid' } as never
 createRoot(document.getElementById('root')!).render(<><aside style={{ padding: '6px 12px', background: '#193b2a', color: 'white', fontSize: 11 }}>QA LOCAL · Datos simulados · Fotografía de prueba · No escribe en Supabase</aside><HashRouter><Routes><Route path="/" element={<GardensPage user={qaUser} />} /><Route path="/garden/:gardenId" element={<GardenPage />} /><Route path="/cycle/:cycleId" element={<CyclePage />} /><Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} /><Route path="/today" element={<TodayPage />} /><Route path="/control" element={<ControlPage />} /><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></HashRouter></>)

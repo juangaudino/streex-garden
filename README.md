@@ -10,16 +10,17 @@ La propuesta no es convertir el cuidado en una lista genérica de recordatorios.
 
 La interfaz está diseñada para móvil, tablet y escritorio, con una dirección visual editorial inspirada en una historia botánica documental.
 
-La sección queda preparada para incorporar capturas seleccionadas antes de publicar el proyecto como pieza de portfolio:
+Las siguientes imágenes muestran una cuenta demo genérica y vacía: no hay jardines, ciclos, fotografías ni tareas cargadas. El correo visible es `demo@example.invalid`, un dominio reservado para ejemplos; no corresponde a una cuenta real.
 
-| Vista | Captura pendiente | Qué debería mostrar |
-| --- | --- | --- |
-| Home | _Por añadir_ | Portada, jardines, cambios desde la última visita y atención actual |
-| Garden | _Por añadir_ | Mapa físico, posiciones activas, ciclos y acceso a configuración |
-| Cycle | _Por añadir_ | Identidad de la posición, estado del ciclo, hechos e historial |
-| Maintenance | _Por añadir_ | Recorrido de revisión con contexto persistente y pausa/reanudación |
-| Control | _Por añadir_ | Proyección operativa por jardín y posición |
-| Photo Story / Compare | _Por añadir_ | Línea temporal fotográfica y comparación de dos originales |
+<table>
+  <tr>
+    <td align="center"><strong>Home · estado inicial</strong><br><img src="docs/screenshots/empty-home.jpg" alt="Vista Home de una cuenta demo vacía" width="220"></td>
+    <td align="center"><strong>Hoy · sin pendientes</strong><br><img src="docs/screenshots/empty-today.jpg" alt="Vista Hoy sin pendientes" width="220"></td>
+    <td align="center"><strong>Control · sin evidencia</strong><br><img src="docs/screenshots/empty-control.jpg" alt="Vista Control sin jardines ni evidencia" width="220"></td>
+  </tr>
+</table>
+
+Las imágenes se prepararon a partir del estado vacío verificado en el arnés visual local. Se incluyen como material de portfolio para mostrar la jerarquía de la interfaz sin exponer información personal, datos de uso ni contenido de una cuenta cargada.
 
 **Demo desplegada:** [garden.getstreex.com](https://garden.getstreex.com) — requiere una cuenta autorizada; no se publican credenciales de prueba en este repositorio.
 
@@ -200,11 +201,11 @@ Las pruebas cubren, entre otros aspectos:
 - sesiones de mantenimiento y confirmación remota antes de avanzar;
 - comportamiento visual con ocupantes reemplazados, ciclos trasladados y movimiento reducido.
 
-Durante la auditoría para este README pasaron 31 pruebas en 11 archivos, `typecheck` y `lint`. El build está configurado en CI y documentado en las validaciones del proyecto; una pasada visual puede producir un aviso no bloqueante por tamaño del bundle principal.
+Durante la auditoría para este README pasaron 34 pruebas en 12 archivos, `typecheck`, `lint` y `build`. El build completa correctamente y deja únicamente un aviso no bloqueante por tamaño del bundle principal.
 
 ### QA visual
 
-`qa/` contiene un arnés local con fixtures simulados. Sustituye las operaciones remotas para revisar layouts, navegación, fotografías y movimiento sin escribir en Supabase. Sus capturas se guardan en `artifacts/`, una carpeta ignorada por Git, y no constituyen evidencia de producción ni de un dispositivo físico.
+`qa/` contiene un arnés local con fixtures simulados. Sustituye las operaciones remotas para revisar layouts, navegación, fotografías y movimiento sin escribir en Supabase. El modo `?empty` devuelve una cuenta genérica sin jardines, ciclos, fotografías ni atención cargada para revisar estados iniciales. Sus capturas se guardan en `artifacts/`, una carpeta ignorada por Git, y no constituyen evidencia de producción ni de un dispositivo físico.
 
 ### Validaciones operativas documentadas
 
@@ -227,6 +228,7 @@ Durante la auditoría para este README pasaron 31 pruebas en 11 archivos, `typec
 │   └── verification/         # Consultas y batches de verificación SQL
 ├── qa/                       # Fixtures y harness de QA visual local
 ├── docs/                     # Decisiones, validaciones, despliegue y operación
+│   └── screenshots/          # Capturas seleccionadas de QA para portfolio
 ├── design/                   # Dirección visual y referencias de diseño
 ├── public/                   # Marca, iconos y referencias visuales públicas
 ├── .github/workflows/        # CI, backup y restore drill
@@ -301,7 +303,7 @@ No coloques en `.env.local`, en el bundle ni en un pull request:
 
 ## Estado actual y limitaciones conocidas
 
-Streex Garden tiene un núcleo manual implementado y documentado como MVP operativo. La aplicación puede registrar evidencia, mantener el historial y organizar acciones sin depender de IA. La auditoría comenzó con la rama `main` limpia; el único cambio introducido en este trabajo es este README. El repositorio cuenta además con una cadena de verificación local y CI.
+Streex Garden tiene un núcleo manual implementado y documentado como MVP operativo. La aplicación puede registrar evidencia, mantener el historial y organizar acciones sin depender de IA. El repositorio cuenta además con una cadena de verificación local, CI y un fixture visual separado para preparar material de portfolio sin usar una cuenta con datos.
 
 Las principales limitaciones son:
 

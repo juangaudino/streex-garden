@@ -4,6 +4,8 @@
 interface ImportMetaEnv {
   readonly VITE_SUPABASE_URL?: string
   readonly VITE_SUPABASE_PUBLISHABLE_KEY?: string
+  /** Enable only on plans where Supabase Storage image transformations are available. */
+  readonly VITE_SUPABASE_IMAGE_TRANSFORMS?: string
 }
 
 interface ImportMeta {

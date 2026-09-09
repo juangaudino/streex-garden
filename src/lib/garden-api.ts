@@ -426,22 +426,26 @@ export async function retryPendingPhoto(photo: PhotoEvidence, file: File): Promi
 
 const signedPhotoUrlCache = new Map<string, { url: string; expiresAt: number }>()
 const signedPhotoUrlPending = new Map<string, Promise<string>>()
+const storageImageTransformsEnabled = import.meta.env.VITE_SUPABASE_IMAGE_TRANSFORMS === 'true'
 
 export async function getSignedPhotoUrl(storagePath: string, rendition: PhotoRendition = 'original'): Promise<string> {
-  const cacheKey = `${storagePath}:${rendition}`
+  // Supabase Storage transformations require a paid plan. On Free, all visual
+  // surfaces deliberately share the one signed original URL instead of first
+  // issuing a failing transformed-URL request for every rendition.
+  const transform = storageImageTransformsEnabled ? photoTransformFor(rendition) : null
+  const cacheKey = `${storagePath}:${transform ? rendition : 'original'}`
   const cached = signedPhotoUrlCache.get(cacheKey)
   if (cached && cached.expiresAt > Date.now()) return cached.url
   const pending = signedPhotoUrlPending.get(cacheKey)
   if (pending) return pending
-  const transform = photoTransformFor(rendition)
   const sign = async (withTransform: boolean) => {
     const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5, withTransform && transform ? { transform } : undefined)
     return unwrap(data?.signedUrl ?? null, error)
   }
   const request = sign(Boolean(transform)).catch(async (reason) => {
     if (!transform) throw reason
-    // A private original must remain viewable while Storage transformations are
-    // unavailable or an unsupported source format is encountered.
+    // A private original must remain viewable when a configured transformation
+    // is temporarily unavailable or the source format is unsupported.
     return sign(false)
   }).then((url) => {
     signedPhotoUrlCache.set(cacheKey, { url, expiresAt: Date.now() + 4 * 60 * 1000 })

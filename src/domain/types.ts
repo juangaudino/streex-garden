@@ -76,6 +76,9 @@ export interface MaintenancePosition {
   current_grow_cycle_id: string | null
   crop_name: string | null
   progress: 'not_reviewed' | 'reviewed' | 'skipped'
+  inspected_at: string | null
+  inspection_source: 'healthy_review' | 'observation' | 'fact' | 'manual' | null
+  health_confirmed: boolean
   ordinal: number
 }
 export interface MaintenanceSession { id: string; state: 'in_progress' | 'paused' | 'completed' | 'abandoned'; started_at: string; cursor_position: number; positions: MaintenancePosition[] }

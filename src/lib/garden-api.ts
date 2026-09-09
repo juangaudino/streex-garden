@@ -154,6 +154,12 @@ export async function progressMaintenancePosition(requestId: string, sessionPosi
   const { error } = await getSupabaseClient().rpc('garden_progress_maintenance_position', { p_request_id: requestId, p_session_position_id: sessionPositionId, p_progress: progress })
   if (error) throw new Error(error.message)
 }
+export async function markMaintenancePositionInspected(requestId: string, sessionPositionId: string, source: 'observation' | 'fact' | 'manual'): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_mark_maintenance_position_inspected', {
+    p_request_id: requestId, p_session_position_id: sessionPositionId, p_inspection_source: source,
+  })
+  if (error) throw new Error(error.message)
+}
 export async function setMaintenanceSessionState(requestId: string, sessionId: string, state: 'paused' | 'in_progress' | 'completed' | 'abandoned'): Promise<void> {
   const { error } = await getSupabaseClient().rpc('garden_set_maintenance_session_state', { p_request_id: requestId, p_session_id: sessionId, p_state: state })
   if (error) throw new Error(error.message)

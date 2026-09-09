@@ -208,6 +208,30 @@ export async function setGardenCover(input: { requestId: string; gardenId: strin
   if (error) throw new Error(error.message)
 }
 
+export async function uploadScopedPhoto(input: { requestId: string; scope: 'garden_cover' | 'home_hero'; gardenId: string | null; file: File }): Promise<PhotoEvidence> {
+  const contentType = photoContentType(input.file)
+  if (!contentType) throw new Error('El formato de la fotografía no es compatible.')
+  const bytes = await input.file.arrayBuffer()
+  const checksum = await sha256Hex(bytes)
+  const client = getSupabaseClient()
+  const { data, error } = await client.rpc('garden_prepare_media_photo', { p_request_id: input.requestId, p_scope: input.scope, p_garden_id: input.gardenId, p_original_filename: input.file.name, p_content_type: contentType, p_byte_size: input.file.size, p_checksum_sha256: checksum })
+  const created = unwrap(data as { photo_id: string; storage_path: string } | null, error)
+  await uploadOriginalBytes(created.storage_path, contentType, bytes)
+  const confirmation = await client.rpc('garden_mark_photo_uploaded', { p_photo_id: created.photo_id, p_checksum_sha256: checksum, p_width: null, p_height: null })
+  if (confirmation.error) throw new Error(confirmation.error.message)
+  return { id: created.photo_id, storage_path: created.storage_path, original_filename: input.file.name, content_type: contentType, byte_size: input.file.size, checksum_sha256: checksum, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
+}
+
+export async function getHomeMedia(): Promise<{ home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] }> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_home_media')
+  return unwrap(data as { home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] } | null, error)
+}
+
+export async function setHomeHero(input: { requestId: string; photoId: string | null }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_set_home_hero', { p_request_id: input.requestId, p_photo_id: input.photoId })
+  if (error) throw new Error(error.message)
+}
+
 export async function getCycle(cycleId: string): Promise<GrowCycleDetail> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_cycle', { p_grow_cycle_id: cycleId })
   return unwrap(data as GrowCycleDetail | null, error)

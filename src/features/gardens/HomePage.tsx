@@ -1,32 +1,39 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { User } from '@supabase/supabase-js'
-import { ArrowRight, Clock3, Sprout } from 'lucide-react'
+import { ArrowRight, Clock3, ImagePlus, Sprout, Upload, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { GrowthRings } from '../../components/GrowthRings'
 import { StatePanel } from '../../components/StatePanel'
-import type { HomeDashboard } from '../../domain/types'
-import { getHome, getHomeDashboard } from '../../lib/garden-api'
+import type { HomeDashboard, PhotoEvidence } from '../../domain/types'
+import { getHome, getHomeDashboard, getHomeMedia, setHomeHero, uploadScopedPhoto } from '../../lib/garden-api'
 import { GardenCoverImage } from './GardenCover'
 import { AttentionList } from './GardensPage'
 
 export function HomePage({ user }: { user: User }) {
   const [dashboard, setDashboard] = useState<HomeDashboard | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [heroPhoto, setHeroPhoto] = useState<PhotoEvidence | null>(null)
+  const [heroChoices, setHeroChoices] = useState<PhotoEvidence[]>([])
+  const [heroOpen, setHeroOpen] = useState(false)
+  const [heroBusy, setHeroBusy] = useState(false)
   const load = useCallback(async () => {
     setError(null)
     try {
-      const [next, summaries] = await Promise.all([getHomeDashboard(null), getHome()])
+      const [next, summaries, media] = await Promise.all([getHomeDashboard(null), getHome(), getHomeMedia()])
       const coverByGarden = new Map(summaries.map((garden) => [garden.id, garden.cover_photo ?? null]))
       next.gardens = next.gardens.map((garden) => ({ ...garden, cover_photo: coverByGarden.get(garden.id) ?? null }))
       setDashboard(next)
+      setHeroPhoto(media.home_hero_photo); setHeroChoices(media.home_hero_choices)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo abrir Home.') }
   }, [])
   // eslint-disable-next-line react-hooks/set-state-in-effect -- only writes after the remote dashboard settles.
   useEffect(() => { void load() }, [load])
   const gardens = dashboard?.gardens ?? []
+  const chooseHero = async (photoId: string | null) => { setHeroBusy(true); try { await setHomeHero({ requestId: crypto.randomUUID(), photoId }); await load(); setHeroOpen(false) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo cambiar la portada de Home.') } finally { setHeroBusy(false) } }
+  const uploadHero = async (file: File | null) => { if (!file) return; setHeroBusy(true); try { const photo = await uploadScopedPhoto({ requestId: crypto.randomUUID(), scope: 'home_hero', gardenId: null, file }); await setHomeHero({ requestId: crypto.randomUUID(), photoId: photo.id }); await load(); setHeroOpen(false) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo subir la portada de Home.') } finally { setHeroBusy(false) } }
   return <AppShell>
-    <section className="home-hero"><GrowthRings /><p>Garden X</p><h1>Tu jardín, vivo.</h1><span>{user.email ?? 'Tu espacio privado'}</span><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link></section>
+    <section className={`home-hero${heroPhoto ? ' home-hero--photo' : ''}`}>{heroPhoto && <GardenCoverImage photo={heroPhoto} alt="" className="home-hero__photo" />}<GrowthRings /><p>Garden X</p><h1>Tu jardín, vivo.</h1><span>{user.email ?? 'Tu espacio privado'}</span><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link><button className="home-hero__configure" type="button" onClick={() => setHeroOpen((value) => !value)} aria-label="Cambiar fotografía de Home"><ImagePlus size={16} aria-hidden="true" /></button>{heroOpen && <div className="home-hero__picker"><strong>Portada de Home</strong><p>Representa Garden X como conjunto. No se elige automáticamente.</p><label className="file-button secondary-button--compact"><Upload size={15} aria-hidden="true" /> Subir fotografía<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" disabled={heroBusy} onChange={(event) => void uploadHero(event.target.files?.[0] ?? null)} /></label>{heroChoices.length > 0 && <div className="garden-cover-picker__grid">{heroChoices.map((photo) => <button className={`garden-cover-choice${heroPhoto?.id === photo.id ? ' garden-cover-choice--selected' : ''}`} type="button" key={photo.id} disabled={heroBusy} onClick={() => void chooseHero(photo.id)}><GardenCoverImage photo={photo} alt="" /><span>{heroPhoto?.id === photo.id ? 'Portada actual' : 'Usar portada'}</span></button>)}</div>}{heroPhoto && <button className="text-button" type="button" disabled={heroBusy} onClick={() => void chooseHero(null)}><X size={15} aria-hidden="true" /> Quitar portada</button>}</div>}</section>
     {!dashboard && !error && <StatePanel kind="loading" title="Preparando Home" />}
     {error && <StatePanel kind="error" title="No se pudo abrir Home" onRetry={() => void load()}>{error}</StatePanel>}
     {dashboard && <>

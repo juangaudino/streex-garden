@@ -61,7 +61,7 @@ describe('Guest Plant Story', () => {
   it('renders signed historical photos in the public story', async () => {
     vi.mocked(getGuestPlantStory).mockResolvedValue({ story: storyWithPhoto, expires_in: 300 })
     render(<MemoryRouter initialEntries={['/guest/token']}><Routes><Route path="/guest/:token" element={<GuestPlantStoryPage />} /></Routes></MemoryRouter>)
-    const image = await screen.findByRole('img', { name: 'Fotografía documental: chives.jpg' })
+    const image = (await screen.findAllByRole('img', { name: 'Fotografía documental: chives.jpg' }))[0]
     expect(image.getAttribute('src')).toBe('https://signed.example/chives.jpg')
   })
 

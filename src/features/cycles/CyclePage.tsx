@@ -16,6 +16,7 @@ import { BotanicalPortrait } from './BotanicalPortrait'
 import { PlaceBackLink, type PlaceContext } from '../../components/PlaceLink'
 import { isToday } from './photo-presentation'
 import { CycleFactRecorder } from './CycleFactRecorder'
+import { PhotoCoverActions } from './PhotoCoverActions'
 
 function eventDate(event: GrowCycleDetail['history'][number]): string {
   if (event.occurred_at_precision === 'date' && event.occurred_on) {
@@ -37,6 +38,7 @@ function CycleScreen() {
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
   const [refreshing, setRefreshing] = useState(false)
+  const [coverMessage, setCoverMessage] = useState<string | null>(null)
   const [eventToInvalidate, setEventToInvalidate] = useState<GrowCycleDetail['history'][number] | null>(null)
   const location = useLocation()
   const arrival = (location.state as { place?: PlaceContext } | null)?.place
@@ -156,7 +158,8 @@ function CycleScreen() {
       {cycle.state === 'active' && <div id="cycle-observation"><ObservationComposer growCycleId={cycle.id} onSaved={async () => { await load(); await loadDrafts() }} onDraftQueued={loadDrafts} /></div>}
       <section className="history-section" aria-labelledby="history-title"><div className="section-heading"><h2 id="history-title">Historial</h2><span>{cycle.history.length}</span></div>
         {cycle.history.length === 0 && <StatePanel kind="empty" title="Aún no hay observaciones">La primera nota o fotografía aparecerá aquí inmediatamente después de guardarse.</StatePanel>}
-        <div className="history-list">{cycle.history.map((event) => <article className={`history-event${isToday(event) ? ' history-event--today' : ''}`} key={event.id}><div className="history-event__meta"><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{isToday(event) && <b className="history-today">Hoy · </b>}{eventDate(event)}</time><span>{eventLabel(event)}</span></div>{event.note && <p>{event.note}</p>}{event.event_data && eventDetail(event) && <p className="history-event__detail">{eventDetail(event)}</p>}{event.photo && <PhotoEvidence photo={event.photo} onRecovered={async () => { await load(); await loadDrafts() }} />}<details className="history-event__menu"><summary aria-label="Más acciones"><MoreHorizontal size={17} aria-hidden="true" /></summary><button className="text-button" type="button" onClick={() => setEventToInvalidate(event)}>Invalidar registro</button></details></article>)}</div>
+        <div className="history-list">{cycle.history.map((event) => <article className={`history-event${isToday(event) ? ' history-event--today' : ''}`} key={event.id}><div className="history-event__meta"><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{isToday(event) && <b className="history-today">Hoy · </b>}{eventDate(event)}</time><span>{eventLabel(event)}</span></div>{event.note && <p>{event.note}</p>}{event.event_data && eventDetail(event) && <p className="history-event__detail">{eventDetail(event)}</p>}{event.photo && <PhotoEvidence photo={event.photo} actions={<PhotoCoverActions gardenId={cycle.garden.id} photoId={event.photo.id} onMessage={setCoverMessage} />} onRecovered={async () => { await load(); await loadDrafts() }} />}<details className="history-event__menu"><summary aria-label="Más acciones"><MoreHorizontal size={17} aria-hidden="true" /></summary><button className="text-button" type="button" onClick={() => setEventToInvalidate(event)}>Invalidar registro</button></details></article>)}</div>
+        {coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
       </section>
       {cycle.corrections.length > 0 && <section className="history-section"><div className="section-heading"><h2>Correcciones</h2><span>{cycle.corrections.length}</span></div><div className="correction-list">{cycle.corrections.map((correction) => <article key={correction.id}><strong>{correction.operation}</strong><p>{correction.reason}</p><time dateTime={correction.created_at}>{new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(correction.created_at))}</time></article>)}</div></section>}
       <PlaceBackLink className="text-link" to={`/garden/${cycle.garden.id}`}>Volver a las posiciones de {cycle.garden.name}</PlaceBackLink>

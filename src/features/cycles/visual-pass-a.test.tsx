@@ -6,18 +6,22 @@ import { DocumentaryPhoto } from './DocumentaryPhoto'
 import { MaintenancePortrait } from '../gardens/MaintenancePortrait'
 import { MaintenancePage } from '../gardens/MaintenancePage'
 import { PhotoGalleryPage } from './PhotoGalleryPage'
+import { CyclePage } from './CyclePage'
 import { captureLabel, isToday, storyInterval } from './photo-presentation'
 import { getCycle, getSignedPhotoUrl, getMaintenanceSession, progressMaintenancePosition, setGardenCover, setHomeHero } from '../../lib/garden-api'
+import { getObservationDrafts } from '../../lib/offline-observation-store'
 import type { GrowCycleDetail, MaintenancePosition, MaintenanceSession, PhotoEvidence } from '../../domain/types'
 
 vi.mock('../../lib/garden-api', () => ({ getCycle: vi.fn(), getSignedPhotoUrl: vi.fn(), getMaintenanceSession: vi.fn(), markMaintenancePositionInspected: vi.fn(), progressMaintenancePosition: vi.fn(), setMaintenanceSessionState: vi.fn(), setGardenCover: vi.fn(), setHomeHero: vi.fn() }))
+vi.mock('../../lib/offline-observation-store', () => ({ getObservationDrafts: vi.fn().mockResolvedValue([]), saveObservationDraft: vi.fn() }))
+vi.mock('../../lib/observation-sync', () => ({ syncObservationDraft: vi.fn() }))
 vi.mock('../../components/AppShell', () => ({ AppShell: ({ children, title }: { children: React.ReactNode; title?: string }) => <main><h1>{title}</h1>{children}</main> }))
 const photo: PhotoEvidence = { id: 'photo-a', storage_path: 'a', original_filename: 'a.jpeg', content_type: 'image/jpeg', byte_size: 1, checksum_sha256: null, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
 const event = { id: 'event', event_type: 'observation' as const, occurred_at: '2026-06-12T00:00:00Z', occurred_at_precision: 'date' as const, occurred_on: '2026-06-12', note: 'Nota completa', revision: 1, photo }
 const cycle: GrowCycleDetail = { id: 'cycle-a', crop_name: 'Chives', planted_on: null, planted_on_precision: 'unknown', harvest_readiness: 'not_yet', state: 'active', revision: 1, position: { id: 'place-a', position_number: 7 }, garden: { id: 'garden', name: 'Jardín' }, history: [event], corrections: [] }
 const position: MaintenancePosition = { id: 'step-a', garden_id: 'garden', garden_name: 'Jardín', position_id: 'place-a', position_number: 7, captured_grow_cycle_id: 'cycle-a', current_grow_cycle_id: 'cycle-a', crop_name: 'Chives', progress: 'not_reviewed', inspected_at: null, inspection_source: null, health_confirmed: false, ordinal: 1 }
 const session: MaintenanceSession = { id: 'session', state: 'in_progress', started_at: '2026-09-07T12:00:00Z', cursor_position: 1, positions: [position] }
-beforeEach(() => { vi.resetAllMocks(); vi.mocked(getSignedPhotoUrl).mockResolvedValue('/photo-a.jpeg'); vi.mocked(getCycle).mockResolvedValue(cycle); Object.defineProperty(window, 'matchMedia', { configurable: true, value: () => ({ matches: true }) }) })
+beforeEach(() => { vi.resetAllMocks(); vi.mocked(getSignedPhotoUrl).mockResolvedValue('/photo-a.jpeg'); vi.mocked(getCycle).mockResolvedValue(cycle); vi.mocked(getObservationDrafts).mockResolvedValue([]); Object.defineProperty(window, 'matchMedia', { configurable: true, value: () => ({ matches: true }) }) })
 afterEach(cleanup)
 
 describe('Evidence provenance in presentation', () => {
@@ -94,4 +98,13 @@ it('offers garden and Home cover actions from the photo viewer', async () => {
   await waitFor(() => expect(setGardenCover).toHaveBeenCalledWith(expect.objectContaining({ gardenId: 'garden', photoId: 'photo-a' })))
   fireEvent.click(screen.getByRole('button', { name: 'Portada Home', hidden: true }))
   await waitFor(() => expect(setHomeHero).toHaveBeenCalledWith(expect.objectContaining({ photoId: 'photo-a' })))
+})
+it('offers cover actions from the photo viewer opened in Cycle history', async () => {
+  vi.mocked(setGardenCover).mockResolvedValue()
+  vi.mocked(setHomeHero).mockResolvedValue()
+  Object.defineProperty(HTMLDialogElement.prototype, 'showModal', { configurable: true, value: vi.fn() })
+  render(<MemoryRouter initialEntries={['/cycle/cycle-a']}><Routes><Route path="/cycle/:cycleId" element={<CyclePage />} /></Routes></MemoryRouter>)
+  fireEvent.click(await screen.findByRole('button', { name: 'Abrir fotografía a.jpeg' }))
+  fireEvent.click(screen.getByRole('button', { name: 'Portada del jardín', hidden: true }))
+  await waitFor(() => expect(setGardenCover).toHaveBeenCalledWith(expect.objectContaining({ gardenId: 'garden', photoId: 'photo-a' })))
 })

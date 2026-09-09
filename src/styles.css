@@ -565,6 +565,10 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .documentary-photo__actions { border-top: 1px solid var(--hairline); padding: 12px 0 0; }
 .documentary-photo__actions-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .guest-garden-cycle-grid small { color: var(--muted, #667064); }
+.guest-photo-story { max-width: 920px; margin: 0 auto 2.5rem; }
+.guest-photo-story__media { aspect-ratio: 4 / 5; cursor: default; }
+.guest-photo-story__media img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.guest-photo-story__media .documentary-photo__expand-hint { background: var(--forest); border-radius: 4px; bottom: 5px; color: #fff; font-size: .85rem; line-height: 1; padding: 4px 5px; position: absolute; right: 5px; }
 @media (max-width: 640px) {
   .guest-share-intro, .guest-share-link__field { display: grid; }
   .guest-share-link__field .secondary-button { justify-self: start; }

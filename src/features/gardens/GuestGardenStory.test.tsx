@@ -69,4 +69,12 @@ describe('Guest Garden Story', () => {
     expect(await screen.findByRole('heading', { name: 'La historia de tu Chives' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '← Volver al jardín completo' })).toBeTruthy()
   })
+
+  it('uses the photo-story composition for a plant opened from a garden link', async () => {
+    vi.mocked(getGuestGardenStory).mockResolvedValue({ story: storyWithPhoto, expires_in: 300 })
+    render(<MemoryRouter initialEntries={['/guest/garden/token/cycle/cycle-1']}><Routes><Route path="/guest/garden/:token/cycle/:cycleId" element={<GuestGardenStoryPage />} /></Routes></MemoryRouter>)
+    expect(await screen.findByRole('region', { name: 'Recorrido fotográfico' })).toBeTruthy()
+    expect(screen.getByRole('img', { name: 'Fotografía documental: chives.jpg' })).toBeTruthy()
+    expect(screen.getByText('Un mismo ciclo, a través de tus fotografías.')).toBeTruthy()
+  })
 })

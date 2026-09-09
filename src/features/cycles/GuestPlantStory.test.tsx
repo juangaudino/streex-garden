@@ -22,6 +22,18 @@ const story: GuestPlantStory = {
   history: [{ id: 'event-guest', event_type: 'observation', occurred_at: '2026-09-01T12:00:00Z', occurred_at_precision: 'timestamp', occurred_on: null, note: 'Observar hojas nuevas', photo: null }],
 }
 
+const storyWithPhoto: GuestPlantStory = {
+  ...story,
+  history: [{
+    ...story.history[0],
+    photo: {
+      id: 'photo-guest', original_filename: 'chives.jpg', content_type: 'image/jpeg', byte_size: 42, checksum_sha256: null,
+      captured_at: '2026-09-01T12:00:00Z', captured_at_precision: 'exact', upload_status: 'uploaded',
+      url: 'https://signed.example/chives.jpg',
+    },
+  }],
+}
+
 describe('Guest Plant Story', () => {
   beforeEach(() => { vi.resetAllMocks(); vi.mocked(getCycle).mockResolvedValue(cycle); vi.mocked(getGuestPlantStories).mockResolvedValue([]) })
   afterEach(cleanup)
@@ -44,6 +56,13 @@ describe('Guest Plant Story', () => {
     expect(screen.queryByText('Home')).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: 'Actualizar' }))
     await waitFor(() => expect(getGuestPlantStory).toHaveBeenCalledTimes(2))
+  })
+
+  it('renders signed historical photos in the public story', async () => {
+    vi.mocked(getGuestPlantStory).mockResolvedValue({ story: storyWithPhoto, expires_in: 300 })
+    render(<MemoryRouter initialEntries={['/guest/token']}><Routes><Route path="/guest/:token" element={<GuestPlantStoryPage />} /></Routes></MemoryRouter>)
+    const image = await screen.findByRole('img', { name: 'Fotografía documental: chives.jpg' })
+    expect(image.getAttribute('src')).toBe('https://signed.example/chives.jpg')
   })
 
   it('revokes an active link from the owner screen', async () => {

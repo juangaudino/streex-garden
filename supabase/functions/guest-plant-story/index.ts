@@ -73,7 +73,9 @@ Deno.serve(async (request) => {
   if (paths.length > 0) {
     const signed = await admin.storage.from('garden-originals').createSignedUrls(paths, signedUrlLifetimeSeconds)
     if (signed.error) return json({ error: 'Guest story temporarily unavailable' }, 503)
-    signedByPath = new Map((signed.data?.signedUrls ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
+    // storage-js returns the signed URL entries directly in `data` for
+    // createSignedUrls (there is no nested `signedUrls` property).
+    signedByPath = new Map((signed.data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
   }
 
   const safeHistory = history.map((event) => {

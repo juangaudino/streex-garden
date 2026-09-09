@@ -518,7 +518,7 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .guest-share-selection, .guest-share-existing { margin-top: 1.5rem; }
 .guest-share-list { display: grid; gap: 0.6rem; }
 .guest-share-item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.85rem 0.95rem; border: 1px solid var(--line, #dfe5dc); border-radius: 0.85rem; background: var(--surface, #fff); cursor: pointer; }
-.guest-share-item input { margin-top: 0.2rem; accent-color: var(--accent, #4f7546); }
+.guest-share-item input { width: 18px; min-width: 18px; height: 18px; min-height: 18px; flex: 0 0 18px; margin-top: 0.2rem; accent-color: var(--accent, #4f7546); }
 .guest-share-item span { display: grid; gap: 0.2rem; }
 .guest-share-item strong { font-size: 0.9rem; text-transform: capitalize; }
 .guest-share-item small { color: var(--muted, #667064); }

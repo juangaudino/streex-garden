@@ -297,6 +297,12 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .position-history { color: var(--muted); display: grid; font-size: .74rem; gap: 4px; grid-column: 2 / -1; margin-top: -5px; }
 .position-history strong { color: var(--forest); font-size: .75rem; }
 .history-event__invalidate { color: var(--muted); font-size: .78rem; margin-top: 4px; }
+.history-event__menu { justify-self: start; margin-top: 2px; position: relative; }
+.history-event__menu summary { align-items: center; border-radius: 999px; color: var(--muted); cursor: pointer; display: inline-flex; list-style: none; padding: 6px; }
+.history-event__menu summary::-webkit-details-marker { display: none; }
+.history-event__menu summary:hover { background: var(--sage); color: var(--forest); }
+.history-event__menu[open] { background: var(--paper); border-radius: 10px; box-shadow: 0 8px 20px rgba(16,40,28,.12); padding: 2px; }
+.history-event__menu .text-button { display: block; white-space: nowrap; }
 .correction-list { display: grid; gap: 9px; }
 .correction-list article { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 13px; }
 .correction-list strong { color: var(--forest); font-size: .84rem; text-transform: capitalize; }

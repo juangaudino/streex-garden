@@ -8,6 +8,7 @@ export const cycleAttentionPurposes: Array<{ value: AttentionPurpose; label: str
   { value: 'perform_thinning', label: 'Realizar aclareo' },
   { value: 'perform_pruning', label: 'Realizar poda' },
   { value: 'perform_support', label: 'Instalar soporte' },
+  { value: 'perform_support_remove', label: 'Retirar soporte' },
   { value: 'perform_harvest', label: 'Realizar cosecha' },
 ]
 

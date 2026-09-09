@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { CycleFactRecorder } from './CycleFactRecorder'
 import { recordCycleFact } from '../../lib/garden-api'
 import type { GrowCycleDetail } from '../../domain/types'
@@ -13,6 +13,7 @@ const cycle: GrowCycleDetail = {
 }
 
 describe('CycleFactRecorder', () => {
+  beforeEach(() => cleanup())
   it('records a confirmed plant count as evidence, not as a task or recommendation', async () => {
     vi.mocked(recordCycleFact).mockResolvedValue({ event_id: 'count-event' })
     const onSaved = vi.fn().mockResolvedValue(undefined)
@@ -25,5 +26,20 @@ describe('CycleFactRecorder', () => {
       growCycleId: 'cycle-7', factType: 'plant_count_observed', factData: { count: 3, count_kind: 'seedlings_visible' },
     })))
     expect(onSaved).toHaveBeenCalledOnce()
+  })
+
+  it.each([
+    ['installed', 'Soporte instalado'],
+    ['adjusted', 'Soporte ajustado'],
+    ['removed', 'Soporte retirado'],
+  ])('persists the explicit support operation: %s', async (operation) => {
+    vi.mocked(recordCycleFact).mockResolvedValue({ event_id: 'support-event' })
+    render(<CycleFactRecorder cycle={cycle} onSaved={vi.fn()} />)
+    fireEvent.click(screen.getByRole('button', { name: 'Registrar hecho' }))
+    fireEvent.change(screen.getByLabelText('Qué confirmé'), { target: { value: 'intervention' } })
+    fireEvent.change(screen.getByLabelText('Intervención realizada'), { target: { value: 'support' } })
+    fireEvent.change(screen.getByLabelText('Operación del soporte'), { target: { value: operation } })
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar hecho' }))
+    await waitFor(() => expect(recordCycleFact).toHaveBeenCalledWith(expect.objectContaining({ factType: 'intervention', factData: { class: 'support', operation } })))
   })
 })

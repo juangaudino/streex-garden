@@ -21,6 +21,7 @@ export type AttentionOrigin = 'manual' | 'rule' | 'follow_up' | 'visual_review' 
 export type AttentionPurpose =
   | 'evaluate_visual_review' | 'evaluate_thinning' | 'evaluate_pruning' | 'evaluate_support'
   | 'perform_thinning' | 'perform_pruning' | 'perform_support' | 'perform_harvest'
+  | 'perform_support_remove'
   | 'perform_water_change' | 'perform_refill' | 'perform_nutrients' | 'perform_cleaning'
 
 export interface HomeChange {

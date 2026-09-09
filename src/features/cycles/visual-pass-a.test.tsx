@@ -88,6 +88,12 @@ it('shows a one-photo story while keeping comparison unavailable', async () => {
   expect(screen.queryByRole('button', { name: 'Comparar fotos' })).toBeNull()
   expect(screen.getByText('Nota completa')).toBeTruthy()
 })
+it('uses the cycle already loaded by the detail page while refreshing in the background', async () => {
+  render(<MemoryRouter initialEntries={[{ pathname: '/cycle/cycle-a/photos', state: { cycle } }]}><Routes><Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} /></Routes></MemoryRouter>)
+  expect(screen.getByRole('heading', { name: 'La historia de tu Chives' })).toBeTruthy()
+  expect(screen.queryByText('Abriendo galería')).toBeNull()
+  await waitFor(() => expect(getCycle).toHaveBeenCalledWith('cycle-a'))
+})
 it('offers garden and Home cover actions from the photo viewer', async () => {
   vi.mocked(setGardenCover).mockResolvedValue()
   vi.mocked(setHomeHero).mockResolvedValue()

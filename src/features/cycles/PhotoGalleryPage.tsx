@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Check, ImageOff } from 'lucide-react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import { canCompare, toggleComparedPhoto } from '../../domain/photo-comparison'
@@ -40,12 +40,14 @@ function ComparisonPhoto({ event }: { event: PhotoEvent }) {
 
 export function PhotoGalleryPage() {
   const { cycleId } = useParams()
-  return <PhotoGalleryScreen key={cycleId} />
+  const location = useLocation()
+  const initialCycle = (location.state as { cycle?: GrowCycleDetail } | null)?.cycle
+  return <PhotoGalleryScreen key={cycleId} initialCycle={initialCycle && initialCycle.id === cycleId ? initialCycle : null} />
 }
 
-function PhotoGalleryScreen() {
+function PhotoGalleryScreen({ initialCycle }: { initialCycle: GrowCycleDetail | null }) {
   const { cycleId } = useParams()
-  const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
+  const [cycle, setCycle] = useState<GrowCycleDetail | null>(initialCycle)
   const [error, setError] = useState<string | null>(null)
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [showComparison, setShowComparison] = useState(false)
@@ -78,7 +80,7 @@ function PhotoGalleryScreen() {
     {cycle && <>
       <section className="plant-story-milestones" aria-labelledby="plant-story-milestones-title"><div className="section-heading"><div><span className="eyebrow">Historia de la planta</span><h2 id="plant-story-milestones-title">Momentos importantes</h2></div><span>{buildPlantStoryMilestones(cycle).length}</span></div><ol>{buildPlantStoryMilestones(cycle).map((milestone) => <li key={milestone.id}><time>{milestone.date ? new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${milestone.date.slice(0, 10)}T12:00:00`)) : 'Fecha no registrada'}</time><strong>{milestone.label}</strong>{milestone.note && <p>{milestone.note}</p>}</li>)}</ol></section>
       <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>{coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
-        {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} expandable actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={event.photo.id} onMessage={setCoverMessage} />} />{event.note && <p>{event.note}</p>}</li>)}</ol>}
+        {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} eager={index === 0} expandable actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={event.photo.id} onMessage={setCoverMessage} />} />{event.note && <p>{event.note}</p>}</li>)}</ol>}
       </section>
       <section className="photo-comparison" aria-label="Comparar dos momentos"><div className="story-comparison-intro"><h2>Comparar dos momentos</h2><p>Selecciona exactamente dos originales confirmados del recorrido.</p></div>
       {photos.length < 2 && <StatePanel kind="empty" title={photos.length === 1 ? 'Una fotografía, el comienzo de su historia' : 'Todavía sin fotografías confirmadas'}>La comparación estará disponible cuando haya dos originales confirmados. Las fotos pendientes de subir no se usan para comparar.</StatePanel>}

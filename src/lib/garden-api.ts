@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -152,6 +152,12 @@ export async function getOpenMaintenanceSession(): Promise<{ id: string; state: 
 }
 export async function progressMaintenancePosition(requestId: string, sessionPositionId: string, progress: 'reviewed' | 'skipped'): Promise<void> {
   const { error } = await getSupabaseClient().rpc('garden_progress_maintenance_position', { p_request_id: requestId, p_session_position_id: sessionPositionId, p_progress: progress })
+  if (error) throw new Error(error.message)
+}
+export async function markMaintenancePositionInspected(requestId: string, sessionPositionId: string, source: 'observation' | 'fact' | 'manual'): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_mark_maintenance_position_inspected', {
+    p_request_id: requestId, p_session_position_id: sessionPositionId, p_inspection_source: source,
+  })
   if (error) throw new Error(error.message)
 }
 export async function setMaintenanceSessionState(requestId: string, sessionId: string, state: 'paused' | 'in_progress' | 'completed' | 'abandoned'): Promise<void> {
@@ -412,4 +418,46 @@ export async function retryPendingPhoto(photo: PhotoEvidence, file: File): Promi
 export async function getSignedPhotoUrl(storagePath: string): Promise<string> {
   const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5)
   return unwrap(data?.signedUrl ?? null, error)
+}
+
+async function hashShareToken(value: string): Promise<string> {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))
+  return Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, '0')).join('')
+}
+
+export async function createGuestPlantStory(input: { requestId: string; growCycleId: string; itemSelection: Array<{ event_id?: string; photo_id?: string; include_note?: boolean }> }): Promise<{ story_id: string; url: string }> {
+  const token = crypto.randomUUID().toLowerCase()
+  const { data, error } = await getSupabaseClient().rpc('garden_create_guest_plant_story', {
+    p_request_id: input.requestId,
+    p_grow_cycle_id: input.growCycleId,
+    p_token_hash: await hashShareToken(token),
+    p_item_selection: input.itemSelection,
+  })
+  const result = unwrap(data as { story_id: string } | null, error)
+  return { story_id: result.story_id, url: `${window.location.origin}/guest/${token}` }
+}
+
+export async function getGuestPlantStories(growCycleId: string): Promise<GuestPlantStorySummary[]> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_guest_plant_stories', { p_grow_cycle_id: growCycleId })
+  return unwrap(data as GuestPlantStorySummary[] | null, error)
+}
+
+export async function revokeGuestPlantStory(requestId: string, storyId: string): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_revoke_guest_plant_story', { p_request_id: requestId, p_story_id: storyId })
+  if (error) throw new Error(error.message)
+}
+
+export async function getGuestPlantStory(token: string): Promise<{ story: GuestPlantStory; expires_in: number }> {
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/guest-plant-story`, {
+    method: 'POST',
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ token }),
+  })
+  const body = await response.json().catch(() => null) as { story?: GuestPlantStory; expires_in?: number; error?: string } | null
+  if (!response.ok || !body?.story || !body.expires_in) throw new Error(body?.error ?? 'La historia compartida no está disponible.')
+  return { story: body.story, expires_in: body.expires_in }
 }

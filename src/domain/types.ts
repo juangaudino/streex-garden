@@ -3,7 +3,7 @@ export type HarvestReadiness = 'not_yet' | 'evaluate' | 'ready' | 'not_applicabl
 export type DraftStatus = 'draft' | 'queued' | 'syncing' | 'synced' | 'retryable_error' | 'needs_review'
 export type PhotoContentType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/heif' | 'image/webp'
 export type CycleState = 'active' | 'closed'
-export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'seeds_added' | 'germination_observed' | 'germination_confirmed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
+export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'seeds_added' | 'germination_observed' | 'germination_confirmed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review' | 'photo_evidence'
 export type MapLayout = 'provisional_list' | 'uruq_8_v1' | 'uruq_12_v1' | 'custom_grid'
 export type PhysicalSiteKind = 'grow' | 'utility'
 
@@ -76,6 +76,9 @@ export interface MaintenancePosition {
   current_grow_cycle_id: string | null
   crop_name: string | null
   progress: 'not_reviewed' | 'reviewed' | 'skipped'
+  inspected_at: string | null
+  inspection_source: 'healthy_review' | 'observation' | 'fact' | 'manual' | null
+  health_confirmed: boolean
   ordinal: number
 }
 export interface MaintenanceSession { id: string; state: 'in_progress' | 'paused' | 'completed' | 'abandoned'; started_at: string; cursor_position: number; positions: MaintenancePosition[] }
@@ -192,6 +195,39 @@ export interface GrowCycleDetail extends GrowCycleSummary {
   garden: Pick<GardenSummary, 'id' | 'name'>
   history: CycleHistoryEvent[]
   corrections: Array<{ id: string; operation: string; revision: number; reason: string; created_at: string }>
+}
+
+export interface GuestPlantStorySummary {
+  id: string
+  created_at: string
+  revoked_at: string | null
+  active: boolean
+}
+
+export interface GuestPlantStoryPhoto extends Omit<PhotoEvidence, 'storage_path'> {
+  url: string
+}
+
+export interface GuestPlantStoryEvent {
+  id: string
+  event_type: string
+  occurred_at: string | null
+  occurred_at_precision: 'timestamp' | 'date' | 'unknown'
+  occurred_on: string | null
+  note: string | null
+  photo: GuestPlantStoryPhoto | null
+}
+
+export interface GuestPlantStory {
+  id: string
+  crop_name: string
+  planted_on: string | null
+  planted_on_precision: DatePrecision
+  state: string
+  garden: { name: string }
+  position: { position_number: number }
+  created_at: string
+  history: GuestPlantStoryEvent[]
 }
 
 export interface ObservationInput {

@@ -71,10 +71,11 @@ describe('Guest Garden Story', () => {
   })
 
   it('uses the photo-story composition for a plant opened from a garden link', async () => {
-    vi.mocked(getGuestGardenStory).mockResolvedValue({ story: storyWithPhoto, expires_in: 300 })
+    const secondPhotoStory: GuestGardenStory = { ...storyWithPhoto, history: [{ ...storyWithPhoto.history[0], id: 'event-photo-2', occurred_at: '2026-09-07T12:00:00Z', photo: { ...storyWithPhoto.history[0].photo!, id: 'photo-2', original_filename: 'chives-2.jpg', url: 'https://signed.example/chives-2.jpg' } }, storyWithPhoto.history[0]] }
+    vi.mocked(getGuestGardenStory).mockResolvedValue({ story: secondPhotoStory, expires_in: 300 })
     render(<MemoryRouter initialEntries={['/guest/garden/token/cycle/cycle-1']}><Routes><Route path="/guest/garden/:token/cycle/:cycleId" element={<GuestGardenStoryPage />} /></Routes></MemoryRouter>)
     expect(await screen.findByRole('region', { name: 'Recorrido fotográfico' })).toBeTruthy()
-    expect(screen.getByRole('img', { name: 'Fotografía documental: chives.jpg' })).toBeTruthy()
+    expect(screen.getAllByRole('img', { name: /Fotografía documental: chives/ })).toHaveLength(2)
     expect(screen.getByText('Un mismo ciclo, a través de tus fotografías.')).toBeTruthy()
   })
 })

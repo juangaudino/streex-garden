@@ -24,7 +24,7 @@ function evidenceDate(position: ControlPosition): string {
 function PositionControl({ row }: { row: ControlPosition }) {
   const cycleLink = row.grow_cycle_id ? `/cycle/${row.grow_cycle_id}` : null
   const content = <>
-    <header className="control-position__heading"><span className="control-table__number" aria-hidden="true">{String(row.position.number).padStart(2, '0')}</span><div><strong>Posición {row.position.number}</strong><span>{row.plant?.name ?? 'Sin ciclo activo'}</span></div>{cycleLink && <ExternalLink size={16} aria-hidden="true" />}</header>
+    <header className="control-position__heading"><span className="control-table__number" aria-hidden="true">{String(row.position.number).padStart(2, '0')}</span><div><strong>Posición {row.position.number}</strong><span>{row.plant?.name ?? 'Sin ciclo activo'}</span></div>{cycleLink && <Link className="icon-button control-position__open" to={cycleLink} aria-label={`Abrir ciclo de la posición ${row.position.number}`}><ExternalLink size={16} aria-hidden="true" /></Link>}</header>
     {row.grow_cycle_id && <div className="control-position__facts">
       <div><small>Siembra</small><b>{date(row.planting?.date)}{row.planting?.precision === 'approximate' ? ' · aprox.' : row.planting?.precision === 'unknown' ? ' · desconocida' : ''}</b></div>
       <div><small>Edad</small><b>{row.age.status === 'known' ? `${row.age.days} días` : '—'}</b></div>

@@ -16,6 +16,7 @@ function PhotoThumbnail({ photo }: { photo: PhotoEvidence }) {
   const [near, setNear] = useState(false)
   const [url, setUrl] = useState<string | null>(null)
   const [failed, setFailed] = useState(false)
+  const [servingOriginal, setServingOriginal] = useState(false)
   useEffect(() => {
     if (near) return
     if (!('IntersectionObserver' in window)) {
@@ -34,10 +35,14 @@ function PhotoThumbnail({ photo }: { photo: PhotoEvidence }) {
   useEffect(() => {
     if (!near || photo.upload_status !== 'uploaded') return
     let active = true
-    void getSignedPhotoUrl(photo.storage_path)
+    void getSignedPhotoUrl(photo.storage_path, servingOriginal ? 'original' : 'thumbnail')
       .then((next) => { if (active) setUrl(next) })
       .catch(() => { if (active) setFailed(true) })
     return () => { active = false }
-  }, [near, photo.storage_path, photo.upload_status])
-  return <span ref={root} className="photo-library__media">{url && !failed ? <img src={url} alt="" loading="lazy" onError={() => setFailed(true)} /> : <span className="photo-library__loading">{failed ? 'No disponible' : 'Abriendo…'}</span>}</span>
+  }, [near, photo.storage_path, photo.upload_status, servingOriginal])
+  const recoverOriginal = () => {
+    if (!servingOriginal) setServingOriginal(true)
+    else setFailed(true)
+  }
+  return <span ref={root} className="photo-library__media">{url && !failed ? <img src={url} alt="" loading="lazy" decoding="async" onError={recoverOriginal} /> : <span className="photo-library__loading">{failed ? 'No disponible' : 'Abriendo…'}</span>}</span>
 }

@@ -77,7 +77,7 @@ export function GardenPage() {
       {!hasConfirmedMap && <section className="provisional-note"><MapPin size={18} aria-hidden="true" /><div><strong>Mapa configurable</strong><p>La distribución puede ajustarse desde Editar sistema. Las posiciones se mantienen identificadas por su número.</p></div></section>}
       {startingAt && <StartCycleForm positionId={startingAt.id} positionNumber={startingAt.position_number} onCancel={() => setStartingAt(null)} onCreated={(cycleId) => navigate(`/cycle/${cycleId}`)} />}
       <figure className={`garden-environment${coverPhoto ? ' garden-environment--cover' : ' garden-environment--fallback'}`}>
-        {coverPhoto ? <GardenCoverImage photo={coverPhoto} alt={`Portada de ${garden.name}`} /> : <><GrowthRings /><span>{String(garden.position_capacity).padStart(2, '0')}</span></>}
+        {coverPhoto ? <GardenCoverImage photo={coverPhoto} alt={`Portada de ${garden.name}`} rendition="hero" /> : <><GrowthRings /><span>{String(garden.position_capacity).padStart(2, '0')}</span></>}
         <figcaption><span>{coverPhoto ? 'Portada del jardín' : 'Sistema físico'}</span><strong>{garden.system_model} · {garden.position_capacity} posiciones</strong><GardenCoverPicker gardenId={garden.id} onChanged={load} /></figcaption>
       </figure>
       <PhysicalMap garden={garden} onStart={setStartingAt} />

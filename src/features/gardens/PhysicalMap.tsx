@@ -47,7 +47,7 @@ export function PhysicalMap({ garden, onStart, editable = false, onSelectSite }:
         if (!position) return null
         if (position.current_cycle) {
           return <PlaceLink place={{ placeId: position.id, number: position.position_number, gardenId: garden.id, cropName: position.current_cycle.crop_name }} className="map-site map-site--occupied" key={site.id} style={positionStyle(site)} to={`/cycle/${position.current_cycle.id}`} aria-label={`Abrir ${position.current_cycle.crop_name}, posición ${position.position_number}`}>
-            {position.current_cycle.photo && <GardenCoverImage photo={position.current_cycle.photo} alt="" className="map-site__photo" />}
+            {position.current_cycle.photo && <GardenCoverImage photo={position.current_cycle.photo} alt="" className="map-site__photo" rendition="thumbnail" />}
             <PlaceIdentity number={position.position_number} placeId={position.id} origin="map" /><strong>{position.current_cycle.crop_name}</strong><ChevronRight size={16} aria-hidden="true" />
           </PlaceLink>
         }

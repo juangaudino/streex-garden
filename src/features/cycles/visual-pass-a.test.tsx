@@ -41,6 +41,15 @@ describe('Evidence provenance in presentation', () => {
     await act(async () => resolveFirst('/a.jpeg'))
     expect(screen.getByRole('img').getAttribute('src')).toBe('/b.jpeg')
   })
+  it('uses a compact story rendition and requests the private original only when opened', async () => {
+    vi.mocked(getSignedPhotoUrl).mockImplementation((_path, rendition) => Promise.resolve(rendition === 'original' ? '/original.jpeg' : '/story.jpeg'))
+    Object.defineProperty(HTMLDialogElement.prototype, 'showModal', { configurable: true, value: vi.fn() })
+    render(<DocumentaryPhoto photo={photo} eager expandable rendition="story" />)
+    await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith('a', 'story'))
+    expect(screen.getByRole('img', { name: 'Fotografía documental: a.jpeg' }).getAttribute('src')).toBe('/story.jpeg')
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir fotografía a.jpeg' }))
+    await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith('a', 'original'))
+  })
   it('does not request documentary evidence for a replaced occupant', () => {
     render(<MaintenancePortrait position={{ ...position, current_grow_cycle_id: 'successor' }} />)
     expect(getCycle).not.toHaveBeenCalled()

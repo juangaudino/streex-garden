@@ -37,7 +37,7 @@ describe('PhotoLibraryDialog', () => {
     expect(screen.getByText('Abriendo…')).toBeTruthy()
 
     await act(async () => intersection?.([{ isIntersecting: true }]))
-    await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith(photo.storage_path))
+    await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith(photo.storage_path, 'thumbnail'))
     await waitFor(() => expect(document.querySelector('.photo-library__media img')?.getAttribute('src')).toBe('/signed/a.jpg'))
   })
 })

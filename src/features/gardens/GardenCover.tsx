@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
 import { ImagePlus, Upload, X } from 'lucide-react'
 import type { GardenCoverPhoto, PhotoEvidence } from '../../domain/types'
+import type { PhotoRendition } from '../../domain/photo-renditions'
 import { getGardenCoverPhotos, getSignedPhotoUrl, setGardenCover, uploadScopedPhoto } from '../../lib/garden-api'
 import { PhotoLibraryDialog } from './PhotoLibraryDialog'
 
-export function GardenCoverImage({ photo, alt, className }: { photo: PhotoEvidence; alt: string; className?: string }) {
+export function GardenCoverImage({ photo, alt, className, rendition = 'card' }: { photo: PhotoEvidence; alt: string; className?: string; rendition?: PhotoRendition }) {
   const [url, setUrl] = useState<string | null>(null)
-  useEffect(() => { let active = true; void getSignedPhotoUrl(photo.storage_path).then((next) => { if (active) setUrl(next) }).catch(() => { if (active) setUrl(null) }); return () => { active = false } }, [photo.storage_path])
-  return url ? <img className={className} src={url} alt={alt} /> : null
+  const [servingOriginal, setServingOriginal] = useState(false)
+  useEffect(() => { let active = true; void getSignedPhotoUrl(photo.storage_path, servingOriginal ? 'original' : rendition).then((next) => { if (active) setUrl(next) }).catch(() => { if (active) setUrl(null) }); return () => { active = false } }, [photo.storage_path, rendition, servingOriginal])
+  return url ? <img className={className} src={url} alt={alt} loading={rendition === 'hero' ? 'eager' : 'lazy'} decoding="async" onError={() => { if (!servingOriginal) setServingOriginal(true); else setUrl(null) }} /> : null
 }
 
 export function GardenCoverPicker({ gardenId, onChanged }: { gardenId: string; onChanged: () => Promise<void> }) {

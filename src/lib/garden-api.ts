@@ -1,5 +1,6 @@
 import type { User } from '@supabase/supabase-js'
 import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestGardenStory, GuestGardenStorySummary, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import { photoTransformFor, type PhotoRendition } from '../domain/photo-renditions'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -426,19 +427,27 @@ export async function retryPendingPhoto(photo: PhotoEvidence, file: File): Promi
 const signedPhotoUrlCache = new Map<string, { url: string; expiresAt: number }>()
 const signedPhotoUrlPending = new Map<string, Promise<string>>()
 
-export async function getSignedPhotoUrl(storagePath: string): Promise<string> {
-  const cached = signedPhotoUrlCache.get(storagePath)
+export async function getSignedPhotoUrl(storagePath: string, rendition: PhotoRendition = 'original'): Promise<string> {
+  const cacheKey = `${storagePath}:${rendition}`
+  const cached = signedPhotoUrlCache.get(cacheKey)
   if (cached && cached.expiresAt > Date.now()) return cached.url
-  const pending = signedPhotoUrlPending.get(storagePath)
+  const pending = signedPhotoUrlPending.get(cacheKey)
   if (pending) return pending
-  const request = getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5)
-    .then(({ data, error }) => {
-      const url = unwrap(data?.signedUrl ?? null, error)
-      signedPhotoUrlCache.set(storagePath, { url, expiresAt: Date.now() + 4 * 60 * 1000 })
-      return url
-    })
-    .finally(() => { signedPhotoUrlPending.delete(storagePath) })
-  signedPhotoUrlPending.set(storagePath, request)
+  const transform = photoTransformFor(rendition)
+  const sign = async (withTransform: boolean) => {
+    const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5, withTransform && transform ? { transform } : undefined)
+    return unwrap(data?.signedUrl ?? null, error)
+  }
+  const request = sign(Boolean(transform)).catch(async (reason) => {
+    if (!transform) throw reason
+    // A private original must remain viewable while Storage transformations are
+    // unavailable or an unsupported source format is encountered.
+    return sign(false)
+  }).then((url) => {
+    signedPhotoUrlCache.set(cacheKey, { url, expiresAt: Date.now() + 4 * 60 * 1000 })
+    return url
+  }).finally(() => { signedPhotoUrlPending.delete(cacheKey) })
+  signedPhotoUrlPending.set(cacheKey, request)
   return request
 }
 

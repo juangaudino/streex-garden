@@ -125,6 +125,7 @@ export interface GrowCycleSummary {
   planted_on_precision: DatePrecision
   harvest_readiness: HarvestReadiness
   photo?: PhotoEvidence | null
+  cover_photo?: PhotoEvidence | null
 }
 
 export interface Position {
@@ -255,6 +256,9 @@ export interface ObservationInput {
     contentType: PhotoContentType
     byteSize: number
   }
+  capturedAt?: string | null
+  capturedAtPrecision?: DatePrecision
+  captureSource?: 'camera' | 'picker'
 }
 
 export interface ObservationDraft extends ObservationInput {

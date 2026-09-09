@@ -136,7 +136,7 @@ export function MaintenancePositionActions({
   return <section className="maintenance-actions" aria-label={`Acciones para ${position.garden_name} posición ${position.position_number}`}>
     <div className="maintenance-actions__buttons">
       <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'observation' ? null : 'observation')}><Camera size={16} aria-hidden="true" /> Foto / observación</button>
-      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'fact' ? null : 'fact')}><ClipboardPenLine size={16} aria-hidden="true" /> Registrar hecho</button>
+      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'fact' ? null : 'fact')}><ClipboardPenLine size={16} aria-hidden="true" /> Registrar estado o acción</button>
       <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'attention' ? null : 'attention')}><Plus size={16} aria-hidden="true" /> Seguimiento</button>
     </div>
     {action === 'observation' && <ObservationComposer growCycleId={cycle.id} onSaved={async () => { await recordAndContinue('observation'); await loadDrafts() }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Pendiente de subir: se guardó en este dispositivo. Esta posición seguirá pendiente hasta confirmarse.') }} />}

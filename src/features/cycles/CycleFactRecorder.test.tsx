@@ -18,10 +18,10 @@ describe('CycleFactRecorder', () => {
     vi.mocked(recordCycleFact).mockResolvedValue({ event_id: 'count-event' })
     const onSaved = vi.fn().mockResolvedValue(undefined)
     render(<CycleFactRecorder cycle={cycle} onSaved={onSaved} />)
-    fireEvent.click(screen.getByRole('button', { name: 'Registrar hecho' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Registrar estado o acción' }))
     fireEvent.change(screen.getByLabelText('Qué confirmé'), { target: { value: 'count' } })
     fireEvent.change(screen.getByLabelText('Cantidad observada'), { target: { value: '3' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Guardar hecho' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar registro' }))
     await waitFor(() => expect(recordCycleFact).toHaveBeenCalledWith(expect.objectContaining({
       growCycleId: 'cycle-7', factType: 'plant_count_observed', factData: { count: 3, count_kind: 'seedlings_visible' },
     })))
@@ -35,11 +35,11 @@ describe('CycleFactRecorder', () => {
   ])('persists the explicit support operation: %s', async (operation) => {
     vi.mocked(recordCycleFact).mockResolvedValue({ event_id: 'support-event' })
     render(<CycleFactRecorder cycle={cycle} onSaved={vi.fn()} />)
-    fireEvent.click(screen.getByRole('button', { name: 'Registrar hecho' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Registrar estado o acción' }))
     fireEvent.change(screen.getByLabelText('Qué confirmé'), { target: { value: 'intervention' } })
     fireEvent.change(screen.getByLabelText('Intervención realizada'), { target: { value: 'support' } })
     fireEvent.change(screen.getByLabelText('Operación del soporte'), { target: { value: operation } })
-    fireEvent.click(screen.getByRole('button', { name: 'Guardar hecho' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar registro' }))
     await waitFor(() => expect(recordCycleFact).toHaveBeenCalledWith(expect.objectContaining({ factType: 'intervention', factData: { class: 'support', operation } })))
   })
 })

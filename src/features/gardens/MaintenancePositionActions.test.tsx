@@ -37,7 +37,7 @@ describe('Maintenance contextual canonical actions', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Guardar observación canónica' }))
     await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('observation'))
 
-    fireEvent.click(screen.getByRole('button', { name: 'Registrar hecho' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Registrar estado o acción' }))
     fireEvent.click(screen.getByRole('button', { name: 'Guardar hecho canónico' }))
     await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('fact'))
 

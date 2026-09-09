@@ -6,7 +6,7 @@ import { DocumentaryPhoto } from './DocumentaryPhoto'
 import type { PlaceContext } from '../../components/PlaceLink'
 
 export function BotanicalPortrait({ cycle, place, review = false }: { cycle?: GrowCycleDetail | null; place: PlaceContext; review?: boolean }) {
-  const photo = cycle?.history.find((event) => event.photo?.upload_status === 'uploaded')?.photo
+  const photo = cycle?.cover_photo ?? cycle?.history.find((event) => event.photo?.upload_status === 'uploaded')?.photo
   const planting = !cycle?.planted_on || cycle.planted_on_precision === 'unknown' ? 'Siembra: fecha desconocida' : `${cycle.planted_on_precision === 'approximate' ? 'Siembra aproximada' : 'Siembra'}: ${new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${cycle.planted_on}T12:00:00`))}`
   const Title = review ? 'h2' : 'h1'
   return <section className={`botanical-portrait ${photo || !cycle ? 'botanical-portrait--photo' : 'botanical-portrait--bare'}${review ? ' botanical-portrait--review' : ''}`} aria-busy={!cycle} aria-label={review ? 'Planta de la posición actual' : 'Perfil del cultivo'}>

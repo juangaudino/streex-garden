@@ -243,6 +243,11 @@ export async function getCycle(cycleId: string): Promise<GrowCycleDetail> {
   return unwrap(data as GrowCycleDetail | null, error)
 }
 
+export async function setCycleCover(input: { requestId: string; growCycleId: string; photoId: string | null }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_set_cycle_cover', { p_request_id: input.requestId, p_grow_cycle_id: input.growCycleId, p_photo_id: input.photoId })
+  if (error) throw new Error(error.message)
+}
+
 /** Records a confirmed, dated fact for the active cycle. It never infers a fact from a recommendation. */
 export async function recordCycleFact(input: {
   requestId: string
@@ -252,6 +257,9 @@ export async function recordCycleFact(input: {
   note?: string
   factData?: Record<string, unknown>
 }): Promise<{ event_id: string }> {
+  if (typeof input.growCycleId !== 'string' || !/^[0-9a-f-]{36}$/i.test(input.growCycleId)) {
+    throw new Error('El ciclo seleccionado no es válido. Vuelve a abrir la planta e inténtalo de nuevo.')
+  }
   const { data, error } = await getSupabaseClient().rpc('garden_record_cycle_fact', {
     p_request_id: input.requestId,
     p_grow_cycle_id: input.growCycleId,
@@ -366,8 +374,8 @@ export async function createObservation(input: ObservationInput): Promise<Create
     p_original_filename: input.photoMetadata?.originalFilename ?? null,
     p_content_type: input.photoMetadata?.contentType ?? null,
     p_byte_size: input.photoMetadata?.byteSize ?? null,
-    p_captured_at: null,
-    p_captured_at_precision: 'unknown',
+    p_captured_at: input.capturedAt ?? null,
+    p_captured_at_precision: input.capturedAtPrecision ?? 'unknown',
     p_checksum_sha256: checksum,
   })
   const response = unwrap(data as { event_id?: string; photo_id?: string; storage_path?: string } | null, error)

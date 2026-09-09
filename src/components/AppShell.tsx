@@ -19,7 +19,7 @@ interface AppShellProps extends PropsWithChildren {
 export function AppShell({ children, title, subtitle, backTo, actions, presentation }: AppShellProps) {
   const navigate = useNavigate()
   const location = useLocation()
-  const cycleRegisterTarget = /^\/cycle\/[^/]+$/.test(location.pathname) ? '#cycle-observation' : '/register'
+  const cycleRegisterTarget = /^\/cycle\/[^/]+$/.test(location.pathname) ? `${location.pathname}#cycle-observation` : '/register'
   const [showEntry, setShowEntry] = useState(() => window.sessionStorage.getItem('streex-garden-entry-seen') !== '1')
   const [pendingSignOut, setPendingSignOut] = useState(false)
   const [signingOut, setSigningOut] = useState(false)

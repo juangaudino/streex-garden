@@ -5,11 +5,12 @@ import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import type { ControlGarden, ControlPosition, ControlProjection, HarvestReadiness } from '../../domain/types'
 import { seedCountLabel } from '../../domain/precision-semantics'
+import { eventLabel } from '../../domain/event-presentation'
 import { exportOwnerData, getControlV2 } from '../../lib/garden-api'
 import { downloadControlCsv, downloadOwnerExport } from '../../lib/export-download'
 
 const stateLabel = { reassuring: 'Desarrollo estable', watch: 'Vigilar', action_required: 'Requiere atención', insufficient_evidence: 'Sin evaluación suficiente' }
-const readinessLabel: Record<HarvestReadiness, string> = { not_yet: 'Todavía no', evaluate: 'Evaluar', ready: 'Lista', not_applicable: 'No aplica' }
+const readinessLabel: Record<HarvestReadiness, string> = { not_yet: 'Todavía no', evaluate: 'Evaluar preparación', ready: 'Lista para cosecha', not_applicable: 'No aplica' }
 const nextLabel = { pending: 'Pendiente', evaluate_today: 'Evaluar hoy', scheduled: 'Programada', evaluate: 'Evaluar', not_required: 'No requiere', not_scheduled: 'Sin programar' }
 const summaryLabel = { todo_bien: 'Todo bien', pendiente_vigilar: 'Pendiente / Vigilar', requiere_atencion: 'Requiere atención', sin_evaluacion_suficiente: 'Sin evaluación suficiente' }
 
@@ -46,7 +47,7 @@ function GardenControl({ garden }: { garden: ControlGarden }) {
     {categories.length > 0 && <div className="control-summary" aria-label={`Resumen de ${garden.garden_name}`}>{categories.map((key) => <div className={`control-summary__item control-summary__item--${key}`} key={key}><strong>{summaryLabel[key]}</strong><span>{garden.summary[key]?.count} · posiciones {garden.summary[key]?.positions.join(', ')}</span></div>)}</div>}
     {garden.shared_actions.length > 0 && <div className="control-shared-actions"><strong>Acciones del sistema</strong>{garden.shared_actions.map((action) => <Link key={action.task_id} to="/today">{action.title}{action.due_on ? ` · ${date(action.due_on)}` : ''}</Link>)}</div>}
     <div className="control-positions">{garden.positions.map((position) => <PositionControl key={position.position.id} row={position} />)}</div>
-    {garden.relevant_facts.length > 0 && <div className="control-facts"><strong>Hechos recientes</strong>{garden.relevant_facts.map((fact) => <span key={fact.event_id}>{date(fact.occurred_on)} · {fact.note ?? fact.event_type}</span>)}</div>}
+    {garden.relevant_facts.length > 0 && <div className="control-facts"><strong>Hechos recientes</strong>{garden.relevant_facts.map((fact) => <span key={fact.event_id}>{date(fact.occurred_on)} · {fact.note ?? eventLabel(fact)}</span>)}</div>}
   </section>
 }
 

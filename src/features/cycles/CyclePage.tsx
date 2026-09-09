@@ -14,7 +14,8 @@ import { CycleActions } from './CycleActions'
 import { AttentionTaskForm } from '../gardens/AttentionTaskTools'
 import { BotanicalPortrait } from './BotanicalPortrait'
 import { PlaceBackLink, type PlaceContext } from '../../components/PlaceLink'
-import { isToday } from './photo-presentation'
+import { captureLabel, isToday } from './photo-presentation'
+import { eventDetail as formatEventDetail, eventLabel as formatEventLabel } from '../../domain/event-presentation'
 import { CycleFactRecorder } from './CycleFactRecorder'
 import { PhotoCoverActions } from './PhotoCoverActions'
 
@@ -158,7 +159,7 @@ function CycleScreen() {
       {cycle.state === 'active' && <div id="cycle-observation"><ObservationComposer growCycleId={cycle.id} onSaved={async () => { await load(); await loadDrafts() }} onDraftQueued={loadDrafts} /></div>}
       <section className="history-section" aria-labelledby="history-title"><div className="section-heading"><h2 id="history-title">Historial</h2><span>{cycle.history.length}</span></div>
         {cycle.history.length === 0 && <StatePanel kind="empty" title="Aún no hay observaciones">La primera nota o fotografía aparecerá aquí inmediatamente después de guardarse.</StatePanel>}
-        <div className="history-list">{cycle.history.map((event) => <article className={`history-event${isToday(event) ? ' history-event--today' : ''}`} key={event.id}><div className="history-event__meta"><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{isToday(event) && <b className="history-today">Hoy · </b>}{eventDate(event)}</time><span>{eventLabel(event)}</span></div>{event.note && <p>{event.note}</p>}{event.event_data && eventDetail(event) && <p className="history-event__detail">{eventDetail(event)}</p>}{event.photo && <PhotoEvidence photo={event.photo} actions={<PhotoCoverActions gardenId={cycle.garden.id} photoId={event.photo.id} onMessage={setCoverMessage} />} onRecovered={async () => { await load(); await loadDrafts() }} />}<details className="history-event__menu"><summary aria-label="Más acciones"><MoreHorizontal size={17} aria-hidden="true" /></summary><button className="text-button" type="button" onClick={() => setEventToInvalidate(event)}>Invalidar registro</button></details></article>)}</div>
+        <div className="history-list">{cycle.history.map((event) => <article className={`history-event${isToday(event) ? ' history-event--today' : ''}`} key={event.id}><div className="history-event__meta"><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{isToday(event) && <b className="history-today">Hoy · </b>}{eventDate(event)}</time><span>{eventLabel(event)}</span></div>{event.note && <p>{event.note}</p>}{event.event_data && eventDetail(event) && <p className="history-event__detail">{eventDetail(event)}</p>}{event.photo && <>{!event.note && <p className="history-event__photo-caption">Evidencia fotográfica · {captureLabel(event.photo)}</p>}<PhotoEvidence photo={event.photo} actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={event.photo.id} onMessage={setCoverMessage} />} onRecovered={async () => { await load(); await loadDrafts() }} /></>}<details className="history-event__menu"><summary aria-label="Más acciones"><MoreHorizontal size={17} aria-hidden="true" /></summary><button className="text-button" type="button" onClick={() => setEventToInvalidate(event)}>Invalidar registro</button></details></article>)}</div>
         {coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
       </section>
       {cycle.corrections.length > 0 && <section className="history-section"><div className="section-heading"><h2>Correcciones</h2><span>{cycle.corrections.length}</span></div><div className="correction-list">{cycle.corrections.map((correction) => <article key={correction.id}><strong>{correction.operation}</strong><p>{correction.reason}</p><time dateTime={correction.created_at}>{new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(correction.created_at))}</time></article>)}</div></section>}
@@ -169,21 +170,10 @@ function CycleScreen() {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function eventLabel(event: GrowCycleDetail['history'][number]): string {
-  const data = event.event_data ?? {}
-  if (event.event_type === 'intervention') {
-    if (data.class === 'thinning') return 'Aclareo realizado'
-    if (data.class === 'pruning') return 'Poda realizada'
-    if (data.class === 'support') return ({ installed: 'Soporte instalado', adjusted: 'Soporte ajustado', removed: 'Soporte retirado' } as Record<string, string>)[String(data.operation)] ?? 'Intervención de soporte'
-  }
-  return ({ observation: 'Observación', planting: 'Siembra', harvest: 'Cosecha', action: 'Acción', cycle_started: 'Ciclo iniciado', cycle_ended: 'Ciclo cerrado', cycle_moved: 'Ciclo trasladado', seeds_added: 'Siembra adicional', germination_observed: 'Germinación observada', germination_confirmed: 'Germinación confirmada hasta una fecha', plant_count_observed: 'Cantidad de plantas observada', visual_review: 'Revisión visual', development_review: 'Revisión de desarrollo', intervention: 'Intervención', incident_opened: 'Incidencia abierta', incident_resolved: 'Incidencia resuelta', system_maintenance: 'Mantenimiento', measurement: 'Medición', readiness_review: 'Preparación para cosecha', photo_evidence: 'Fotografía documental' })[event.event_type]
+  return formatEventLabel(event)
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function eventDetail(event: GrowCycleDetail['history'][number]): string {
-  const data = event.event_data ?? {}
-  if (event.event_type === 'plant_count_observed' && data.count !== undefined) return `Cantidad: ${data.count} ${data.count_kind === 'plants_kept' ? 'conservadas' : 'visibles'}`
-  if (event.event_type === 'germination_observed' && data.count !== undefined) return `Plántulas observadas: ${data.count}`
-  if (event.event_type === 'development_review' && data.purpose) return `Evaluación: ${String(data.purpose).replace('evaluate_', '')}`
-  if (event.event_type === 'incident_opened' && data.severity) return `Severidad: ${data.severity === 'action_required' ? 'requiere acción' : 'vigilar'}`
-  return ''
+  return formatEventDetail(event)
 }

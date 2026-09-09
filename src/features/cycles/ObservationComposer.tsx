@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'r
 import { Camera, ImagePlus, Send } from 'lucide-react'
 import type { ObservationDraft, ObservationInput } from '../../domain/types'
 import { validatesObservation } from '../../domain/invariants'
-import { photoContentType } from '../../domain/photo-integrity'
+import { photoContentType, readExifCapture } from '../../domain/photo-integrity'
 import { saveObservationDraft } from '../../lib/offline-observation-store'
 import { syncObservationDraft } from '../../lib/observation-sync'
 
@@ -19,6 +19,8 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
   const previewUrlRef = useRef<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [capturedAt, setCapturedAt] = useState<string | null>(null)
+  const [captureSource, setCaptureSource] = useState<'camera' | 'picker'>('picker')
 
   useEffect(() => () => {
     if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current)
@@ -31,6 +33,10 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
     previewUrlRef.current = nextPreviewUrl
     setFile(nextFile)
     setPreviewUrl(nextPreviewUrl)
+    const source = event.target.capture ? 'camera' : 'picker'
+    setCaptureSource(source)
+    setCapturedAt(null)
+    if (nextFile) void readExifCapture(nextFile).then((exif) => { if (exif) setCapturedAt(exif); else if (source === 'camera') setCapturedAt(new Date().toISOString()) })
     setMessage(nextFile && !getPhotoMetadata(nextFile) ? 'Usa una imagen JPEG, PNG, HEIC, HEIF o WebP.' : null)
   }
 
@@ -42,11 +48,12 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
     previewUrlRef.current = null
     setFile(null)
     setPreviewUrl(null)
+    setCapturedAt(null)
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const input: ObservationInput = { requestId: crypto.randomUUID(), growCycleId, note, photo: file ?? undefined, photoMetadata: file ? getPhotoMetadata(file) : undefined }
+    const input: ObservationInput = { requestId: crypto.randomUUID(), growCycleId, note, photo: file ?? undefined, photoMetadata: file ? getPhotoMetadata(file) : undefined, capturedAt, capturedAtPrecision: capturedAt ? (captureSource === 'camera' ? 'exact' : 'approximate') : 'unknown', captureSource }
     const validation = validatesObservation(input)
     if (validation) { setMessage(validation); return }
     setBusy(true)

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { setGardenCover, setHomeHero } from '../../lib/garden-api'
+import { setCycleCover, setGardenCover, setHomeHero } from '../../lib/garden-api'
 
-export function PhotoCoverActions({ gardenId, photoId, onMessage }: { gardenId: string; photoId: string; onMessage: (message: string) => void }) {
+export function PhotoCoverActions({ gardenId, cycleId, photoId, onMessage }: { gardenId: string; cycleId?: string; photoId: string; onMessage: (message: string) => void }) {
   const [busy, setBusy] = useState(false)
   const run = async (action: 'garden' | 'home') => {
     setBusy(true)
@@ -16,5 +16,5 @@ export function PhotoCoverActions({ gardenId, photoId, onMessage }: { gardenId: 
     }
   }
 
-  return <div className="documentary-photo__actions-row"><button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('garden')}>Portada del jardín</button><button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('home')}>Portada Home</button></div>
+  return <div className="documentary-photo__actions-row">{cycleId && <button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => { setBusy(true); void setCycleCover({ requestId: crypto.randomUUID(), growCycleId: cycleId, photoId }).then(() => onMessage('Foto establecida como portada de la planta.')).catch((reason) => onMessage(reason instanceof Error ? reason.message : 'No se pudo establecer la portada.')).finally(() => setBusy(false)) }}>Portada de la planta</button>}<button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('garden')}>Portada del jardín</button><button type="button" className="secondary-button secondary-button--compact" disabled={busy} onClick={() => void run('home')}>Portada Home</button></div>
 }

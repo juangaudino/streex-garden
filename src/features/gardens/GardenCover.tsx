@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ImagePlus, Upload, X } from 'lucide-react'
 import type { GardenCoverPhoto, PhotoEvidence } from '../../domain/types'
 import { getGardenCoverPhotos, getSignedPhotoUrl, setGardenCover, uploadScopedPhoto } from '../../lib/garden-api'
+import { PhotoLibraryDialog } from './PhotoLibraryDialog'
 
 export function GardenCoverImage({ photo, alt, className }: { photo: PhotoEvidence; alt: string; className?: string }) {
   const [url, setUrl] = useState<string | null>(null)
@@ -12,6 +13,7 @@ export function GardenCoverImage({ photo, alt, className }: { photo: PhotoEviden
 export function GardenCoverPicker({ gardenId, onChanged }: { gardenId: string; onChanged: () => Promise<void> }) {
   const [photos, setPhotos] = useState<GardenCoverPhoto[] | null>(null)
   const [open, setOpen] = useState(false)
+  const [libraryOpen, setLibraryOpen] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const load = async () => { setError(null); try { setPhotos(await getGardenCoverPhotos(gardenId)) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudieron cargar las fotografías disponibles.') } }
@@ -29,8 +31,9 @@ export function GardenCoverPicker({ gardenId, onChanged }: { gardenId: string; o
       {photos === null && !error && <p className="quiet-copy">Cargando fotografías…</p>}
       <label className="file-button secondary-button--compact"><Upload size={15} aria-hidden="true" /> Subir fotografía del jardín<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" disabled={busy} onChange={(event) => void upload(event.target.files?.[0] ?? null)} /></label>
       {photos?.length === 0 && <p className="quiet-copy">Puedes subir una fotografía ambiental del jardín o elegir una evidencia existente.</p>}
-      {photos && photos.length > 0 && <div className="garden-cover-picker__grid">{photos.map((photo) => <button className={`garden-cover-choice${photo.is_cover ? ' garden-cover-choice--selected' : ''}`} key={photo.id} type="button" disabled={busy} onClick={() => void choose(photo.id)}><GardenCoverImage photo={photo} alt="" /><span>{photo.is_cover ? 'Portada actual' : 'Usar como portada'}</span></button>)}</div>}
+      {photos && photos.length > 0 && <button className="secondary-button secondary-button--compact" type="button" disabled={busy} onClick={() => setLibraryOpen(true)}>Elegir de Garden X</button>}
       {photos?.some((photo) => photo.is_cover) && <button className="text-button" type="button" disabled={busy} onClick={() => void choose(null)}><X size={15} aria-hidden="true" /> Quitar portada</button>}
     </div>}
+    <PhotoLibraryDialog open={libraryOpen} photos={photos ?? []} selectedId={photos?.find((photo) => photo.is_cover)?.id} title="Elegir portada del jardín" onSelect={(id) => { setLibraryOpen(false); void choose(id) }} onClose={() => setLibraryOpen(false)} />
   </section>
 }

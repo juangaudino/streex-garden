@@ -6,9 +6,10 @@ import { AppShell } from '../../components/AppShell'
 import { GrowthRings } from '../../components/GrowthRings'
 import { StatePanel } from '../../components/StatePanel'
 import type { HomeDashboard, PhotoEvidence } from '../../domain/types'
-import { getHome, getHomeDashboard, getHomeMedia, setHomeHero, uploadScopedPhoto } from '../../lib/garden-api'
+import { getGardenCoverPhotos, getHome, getHomeDashboard, getHomeMedia, setHomeHero, uploadScopedPhoto } from '../../lib/garden-api'
 import { GardenCoverImage } from './GardenCover'
 import { AttentionList } from './GardensPage'
+import { PhotoLibraryDialog } from './PhotoLibraryDialog'
 
 export function HomePage({ user }: { user: User }) {
   const [dashboard, setDashboard] = useState<HomeDashboard | null>(null)
@@ -17,12 +18,16 @@ export function HomePage({ user }: { user: User }) {
   const [heroChoices, setHeroChoices] = useState<PhotoEvidence[]>([])
   const [heroOpen, setHeroOpen] = useState(false)
   const [heroBusy, setHeroBusy] = useState(false)
+  const [libraryPhotos, setLibraryPhotos] = useState<PhotoEvidence[]>([])
+  const [libraryOpen, setLibraryOpen] = useState(false)
   const load = useCallback(async () => {
     setError(null)
     try {
       const [next, summaries, media] = await Promise.all([getHomeDashboard(null), getHome(), getHomeMedia()])
       const coverByGarden = new Map(summaries.map((garden) => [garden.id, garden.cover_photo ?? null]))
       next.gardens = next.gardens.map((garden) => ({ ...garden, cover_photo: coverByGarden.get(garden.id) ?? null }))
+      const coverLists = await Promise.all(summaries.map((garden) => getGardenCoverPhotos(garden.id)))
+      setLibraryPhotos(coverLists.flat().filter((photo, index, list) => list.findIndex((candidate) => candidate.id === photo.id) === index))
       setDashboard(next)
       setHeroPhoto(media.home_hero_photo); setHeroChoices(media.home_hero_choices)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo abrir Home.') }
@@ -33,7 +38,7 @@ export function HomePage({ user }: { user: User }) {
   const chooseHero = async (photoId: string | null) => { setHeroBusy(true); try { await setHomeHero({ requestId: crypto.randomUUID(), photoId }); await load(); setHeroOpen(false) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo cambiar la portada de Home.') } finally { setHeroBusy(false) } }
   const uploadHero = async (file: File | null) => { if (!file) return; setHeroBusy(true); try { const photo = await uploadScopedPhoto({ requestId: crypto.randomUUID(), scope: 'home_hero', gardenId: null, file }); await setHomeHero({ requestId: crypto.randomUUID(), photoId: photo.id }); await load(); setHeroOpen(false) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo subir la portada de Home.') } finally { setHeroBusy(false) } }
   return <AppShell>
-    <section className={`home-hero${heroPhoto ? ' home-hero--photo' : ''}`}>{heroPhoto && <GardenCoverImage photo={heroPhoto} alt="" className="home-hero__photo" />}<GrowthRings /><p>Garden X</p><h1>Tu jardín, vivo.</h1><span>{user.email ?? 'Tu espacio privado'}</span><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link><button className="home-hero__configure" type="button" onClick={() => setHeroOpen((value) => !value)} aria-label="Cambiar fotografía de Home"><ImagePlus size={16} aria-hidden="true" /></button>{heroOpen && <div className="home-hero__picker"><strong>Portada de Home</strong><p>Representa Garden X como conjunto. No se elige automáticamente.</p><label className="file-button secondary-button--compact"><Upload size={15} aria-hidden="true" /> Subir fotografía<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" disabled={heroBusy} onChange={(event) => void uploadHero(event.target.files?.[0] ?? null)} /></label>{heroChoices.length > 0 && <div className="garden-cover-picker__grid">{heroChoices.map((photo) => <button className={`garden-cover-choice${heroPhoto?.id === photo.id ? ' garden-cover-choice--selected' : ''}`} type="button" key={photo.id} disabled={heroBusy} onClick={() => void chooseHero(photo.id)}><GardenCoverImage photo={photo} alt="" /><span>{heroPhoto?.id === photo.id ? 'Portada actual' : 'Usar portada'}</span></button>)}</div>}{heroPhoto && <button className="text-button" type="button" disabled={heroBusy} onClick={() => void chooseHero(null)}><X size={15} aria-hidden="true" /> Quitar portada</button>}</div>}</section>
+    <section className={`home-hero${heroPhoto ? ' home-hero--photo' : ''}`}>{heroPhoto && <GardenCoverImage photo={heroPhoto} alt="" className="home-hero__photo" />}<GrowthRings /><p>Garden X</p><h1>Tu jardín, vivo.</h1><span>{user.email ?? 'Tu espacio privado'}</span><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link><button className="home-hero__configure" type="button" onClick={() => setHeroOpen((value) => !value)} aria-label="Cambiar fotografía de Home"><ImagePlus size={16} aria-hidden="true" /></button>{heroOpen && <div className="home-hero__picker"><strong>Portada de Home</strong><p>Representa Garden X como conjunto. No se elige automáticamente.</p><label className="file-button secondary-button--compact"><Upload size={15} aria-hidden="true" /> Subir fotografía<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" disabled={heroBusy} onChange={(event) => void uploadHero(event.target.files?.[0] ?? null)} /></label><button className="secondary-button secondary-button--compact" type="button" onClick={() => setLibraryOpen(true)}>Elegir de Garden X</button>{heroChoices.length > 0 && <div className="garden-cover-picker__grid">{heroChoices.map((photo) => <button className={`garden-cover-choice${heroPhoto?.id === photo.id ? ' garden-cover-choice--selected' : ''}`} type="button" key={photo.id} disabled={heroBusy} onClick={() => void chooseHero(photo.id)}><GardenCoverImage photo={photo} alt="" /><span>{heroPhoto?.id === photo.id ? 'Portada actual' : 'Usar portada'}</span></button>)}</div>}{heroPhoto && <button className="text-button" type="button" disabled={heroBusy} onClick={() => void chooseHero(null)}><X size={15} aria-hidden="true" /> Quitar portada</button>}</div>}<PhotoLibraryDialog open={libraryOpen} photos={libraryPhotos} selectedId={heroPhoto?.id} title="Elegir portada de Home" onSelect={(id) => { setLibraryOpen(false); void chooseHero(id) }} onClose={() => setLibraryOpen(false)} /></section>
     {!dashboard && !error && <StatePanel kind="loading" title="Preparando Home" />}
     {error && <StatePanel kind="error" title="No se pudo abrir Home" onRetry={() => void load()}>{error}</StatePanel>}
     {dashboard && <>

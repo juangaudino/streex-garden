@@ -9,6 +9,7 @@ import { DocumentaryPhoto } from './DocumentaryPhoto'
 import { captureLabel, recordLabel, storyInterval } from './photo-presentation'
 import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
 import { PhotoCoverActions } from './PhotoCoverActions'
+import { buildPlantStoryMilestones } from './plant-story'
 
 type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
 
@@ -75,6 +76,7 @@ function PhotoGalleryScreen() {
     {!cycle && !error && <StatePanel kind="loading" title="Abriendo galería" />}
     {error && <StatePanel kind="error" title="No se pudo abrir la galería" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
+      <section className="plant-story-milestones" aria-labelledby="plant-story-milestones-title"><div className="section-heading"><div><span className="eyebrow">Historia de la planta</span><h2 id="plant-story-milestones-title">Momentos importantes</h2></div><span>{buildPlantStoryMilestones(cycle).length}</span></div><ol>{buildPlantStoryMilestones(cycle).map((milestone) => <li key={milestone.id}><time>{milestone.date ? new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${milestone.date.slice(0, 10)}T12:00:00`)) : 'Fecha no registrada'}</time><strong>{milestone.label}</strong>{milestone.note && <p>{milestone.note}</p>}</li>)}</ol></section>
       <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>{coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
         {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} expandable actions={<PhotoCoverActions gardenId={cycle.garden.id} photoId={event.photo.id} onMessage={setCoverMessage} />} />{event.note && <p>{event.note}</p>}</li>)}</ol>}
       </section>

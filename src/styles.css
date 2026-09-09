@@ -575,4 +575,25 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
   .guest-share-intro, .guest-share-link__field { display: grid; }
   .guest-share-link__field .secondary-button { justify-self: start; }
   .guest-story-event { grid-template-columns: 1fr; gap: 0.8rem; }
+  .plant-story-milestones li { grid-template-columns: 1fr; }
+  .plant-story-milestones p { grid-column: 1; }
 }
+.plant-story-milestones { margin: 1.5rem 0 2rem; }
+.plant-story-milestones ol { display: grid; gap: .85rem; margin: 0; padding: 0; list-style: none; }
+.plant-story-milestones li { display: grid; grid-template-columns: minmax(7.5rem, 10rem) 1fr; gap: .2rem 1rem; padding: .8rem 0; border-top: 1px solid var(--line); }
+.plant-story-milestones time { color: var(--muted); font-size: .9rem; }
+.plant-story-milestones strong { color: var(--ink); }
+.plant-story-milestones p { grid-column: 2; margin: 0; color: var(--muted); }
+.history-event__photo-caption { margin: .5rem 0; color: var(--muted); font-size: .9rem; }
+.photo-library { width: min(960px, calc(100vw - 2rem)); max-height: min(88vh, 900px); padding: 1.25rem; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); color: var(--ink); box-shadow: 0 24px 80px rgba(25,59,42,.24); }
+.photo-library::backdrop { background: rgba(25,59,42,.28); backdrop-filter: blur(4px); }
+.photo-library header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.photo-library header h2 { margin: .2rem 0 0; }
+.photo-library__filters { display: flex; gap: .4rem; margin: 1rem 0; overflow-x: auto; }
+.photo-library__filters button { border: 1px solid var(--line); border-radius: 999px; background: transparent; padding: .45rem .8rem; color: var(--ink); cursor: pointer; }
+.photo-library__filters button.is-active { background: var(--forest); color: white; }
+.photo-library__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .75rem; max-height: 64vh; overflow: auto; }
+.photo-library__item { display: grid; gap: .4rem; padding: .35rem; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); color: var(--ink); text-align: left; cursor: pointer; }
+.photo-library__item.is-selected { outline: 2px solid var(--forest); }
+.photo-library__item img, .photo-library__loading { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--sage); }
+.photo-library__item > span { display: flex; align-items: center; gap: .25rem; font-size: .82rem; }

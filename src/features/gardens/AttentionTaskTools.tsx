@@ -38,8 +38,8 @@ export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = 
   return <form className="editor-card attention-editor" onSubmit={(event) => void submit(event)}>
     <div className="section-heading"><h2>Nuevo seguimiento</h2><button className="text-button" type="button" onClick={() => { setOpen(false); setMessage(null) }}>Cancelar</button></div>
     <label>Qué requiere seguimiento<select value={purpose} onChange={(event) => setPurpose(event.target.value as AttentionPurpose)}>{choices.map((choice) => <option key={choice.value} value={choice.value}>{choice.label}</option>)}</select></label>
-    <label>Fecha comprometida <span className="field-optional">opcional</span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
-    <label className="choice"><input type="checkbox" checked={distinct} onChange={(event) => setDistinct(event.target.checked)} />Es un seguimiento distinto</label>
+    <label>Fecha prevista <span className="field-optional">opcional</span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
+    <label className="choice"><input type="checkbox" checked={distinct} onChange={(event) => setDistinct(event.target.checked)} />Crear por separado</label>
     {distinct && <label>Asunto que lo diferencia<input required value={subjectKey} maxLength={160} onChange={(event) => setSubjectKey(event.target.value)} placeholder="Por ejemplo: hojas externas" /></label>}
     {message && <p className={message === 'Atención creada.' ? 'inline-message' : 'inline-message inline-message--error'} role="status">{message}</p>}
     <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : 'Crear atención'}</button>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import type { ControlGarden, ControlPosition, ControlProjection, HarvestReadiness } from '../../domain/types'
+import { seedCountLabel } from '../../domain/precision-semantics'
 import { exportOwnerData, getControlV2 } from '../../lib/garden-api'
 import { downloadControlCsv, downloadOwnerExport } from '../../lib/export-download'
 
@@ -30,7 +31,8 @@ function PositionControl({ row }: { row: ControlPosition }) {
       <div><small>Último aclareo</small><b>{row.last_thinning ? date(row.last_thinning.occurred_on) : 'Sin registro'}</b></div>
       <div><small>Próximo aclareo</small><b>{nextLabel[row.next_thinning_evaluation.kind]}{row.next_thinning_evaluation.task?.due_on ? ` · ${date(row.next_thinning_evaluation.task.due_on)}` : ''}</b></div>
       <div><small>Cosecha</small><b>{row.harvest_readiness ? readinessLabel[row.harvest_readiness.value] : '—'}</b></div>
-      <div><small>Germinación</small><b>{row.germination?.status === 'confirmed' ? 'Confirmada' : 'Sin observación'}</b></div>
+      <div><small>Germinación</small><b>{row.germination?.status === 'confirmed' ? (row.germination.evidence?.confirmed_by ? `Confirmada hasta ${date(String(row.germination.evidence.confirmed_by))}` : 'Confirmada') : 'Sin observación'}</b></div>
+      <div><small>Semillas</small><b>{seedCountLabel(row.seed_count)}</b></div>
       <div><small>Conteo</small><b>{row.plant_count && row.plant_count.count !== undefined && row.plant_count.count !== null ? `${row.plant_count.count} ${row.plant_count.count_kind === 'plants_kept' ? 'conservadas' : 'visibles'}` : 'Sin observación'}</b></div>
     </div>}
     {row.grow_cycle_id && <footer className="control-position__status"><span className={`control-state control-state--${row.current_state?.kind ?? 'insufficient_evidence'}`}>{stateLabel[row.current_state?.kind ?? 'insufficient_evidence']}</span><small>{evidenceDate(row)}</small>{row.action && <Link className="text-link" to={cycleLink ?? '/today'}>{row.action.title} <ExternalLink size={14} aria-hidden="true" /></Link>}</footer>}

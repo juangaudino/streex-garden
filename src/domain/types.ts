@@ -3,7 +3,7 @@ export type HarvestReadiness = 'not_yet' | 'evaluate' | 'ready' | 'not_applicabl
 export type DraftStatus = 'draft' | 'queued' | 'syncing' | 'synced' | 'retryable_error' | 'needs_review'
 export type PhotoContentType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/heif' | 'image/webp'
 export type CycleState = 'active' | 'closed'
-export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'seeds_added' | 'germination_observed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
+export type CycleEventType = 'observation' | 'planting' | 'harvest' | 'action' | 'cycle_started' | 'cycle_ended' | 'cycle_moved' | 'seeds_added' | 'germination_observed' | 'germination_confirmed' | 'plant_count_observed' | 'visual_review' | 'development_review' | 'intervention' | 'incident_opened' | 'incident_resolved' | 'system_maintenance' | 'measurement' | 'readiness_review'
 export type MapLayout = 'provisional_list' | 'uruq_8_v1' | 'uruq_12_v1' | 'custom_grid'
 export type PhysicalSiteKind = 'grow' | 'utility'
 
@@ -78,7 +78,7 @@ export interface MaintenancePosition {
   ordinal: number
 }
 export interface MaintenanceSession { id: string; state: 'in_progress' | 'paused' | 'completed' | 'abandoned'; started_at: string; cursor_position: number; positions: MaintenancePosition[] }
-export interface ControlEvidence { event_id: string; occurred_on: string; note: string | null; [key: string]: unknown }
+export interface ControlEvidence { event_id: string; occurred_on: string | null; note: string | null; [key: string]: unknown }
 export interface ControlAction { task_id: string; purpose: AttentionPurpose; title: string; due_on: string | null; next_review_on: string | null; origin: AttentionOrigin }
 export interface ControlPosition {
   position: { id: string; number: number }
@@ -91,6 +91,7 @@ export interface ControlPosition {
   harvest_readiness: { value: HarvestReadiness; reason: string | null; evidence: ControlEvidence | null } | null
   current_state: { kind: 'reassuring' | 'watch' | 'action_required' | 'insufficient_evidence'; evidence: ControlEvidence | null; reason: string | null; change_after_evidence?: ControlEvidence } | null
   germination: { status: 'confirmed' | 'no_observation'; evidence: ControlEvidence | null } | null
+  seed_count?: { count: number | null; count_min: number | null; count_precision: 'exact' | 'minimum' | 'unknown'; event_id?: string; occurred_on?: string | null; note?: string | null } | null
   plant_count: ControlEvidence | null
   action: ControlAction | null
 }

@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -194,6 +194,18 @@ export async function updateImportCandidate(input: { requestId: string; candidat
 export async function getGarden(gardenId: string): Promise<GardenDetail> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_garden', { p_garden_id: gardenId })
   return unwrap(data as GardenDetail | null, error)
+}
+
+export async function getGardenCoverPhotos(gardenId: string): Promise<GardenCoverPhoto[]> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_garden_cover_photos', { p_garden_id: gardenId })
+  return unwrap(data as GardenCoverPhoto[] | null, error)
+}
+
+export async function setGardenCover(input: { requestId: string; gardenId: string; photoId: string | null }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_set_garden_cover', {
+    p_request_id: input.requestId, p_garden_id: input.gardenId, p_photo_id: input.photoId,
+  })
+  if (error) throw new Error(error.message)
 }
 
 export async function getCycle(cycleId: string): Promise<GrowCycleDetail> {

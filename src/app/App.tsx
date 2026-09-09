@@ -8,6 +8,7 @@ import { RegisterPage } from '../features/cycles/RegisterPage'
 import { GardenPage } from '../features/gardens/GardenPage'
 import { GardenSystemPage } from '../features/gardens/GardenSystemPage'
 import { GardensPage } from '../features/gardens/GardensPage'
+import { HomePage } from '../features/gardens/HomePage'
 import { TodayPage } from '../features/gardens/TodayPage'
 import { MaintenancePage } from '../features/gardens/MaintenancePage'
 import { ControlPage } from '../features/gardens/ControlPage'
@@ -61,7 +62,8 @@ export function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<GardensPage user={user} />} />
+      <Route path="/" element={<HomePage user={user} />} />
+      <Route path="/gardens" element={<GardensPage user={user} />} />
       <Route path="/garden/:gardenId" element={<GardenPage />} />
       <Route path="/garden/:gardenId/system" element={<GardenSystemPage />} />
       <Route path="/today" element={<TodayPage />} />

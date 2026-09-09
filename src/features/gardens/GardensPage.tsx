@@ -6,11 +6,11 @@ import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import { attentionTimingLabel, homeVisitStorageKey, validVisitId } from '../../domain/home-visit'
 import type { AttentionItem, HomeChange, HomeDashboard } from '../../domain/types'
-import { acknowledgeHomeSnapshot, getHomeDashboard, getOpenMaintenanceSession, setMaintenanceSessionState, startMaintenanceSession } from '../../lib/garden-api'
+import { acknowledgeHomeSnapshot, getHome, getHomeDashboard, getOpenMaintenanceSession, setMaintenanceSessionState, startMaintenanceSession } from '../../lib/garden-api'
 import { CreateGardenForm } from './CreateGardenForm'
 import { AttentionTaskEditor } from './AttentionTaskTools'
 import { GrowthRings } from '../../components/GrowthRings'
-import { gardenVisual } from './garden-visuals'
+import { GardenCoverImage } from './GardenCover'
 
 function dateLabel(value: string): string {
   return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
@@ -68,7 +68,9 @@ export function GardensPage({ user }: { user: User }) {
     setCached(false)
     try {
       const visitId = validVisitId(window.localStorage.getItem(storageKey))
-      const next = await getHomeDashboard(visitId)
+      const [next, gardenCards] = await Promise.all([getHomeDashboard(visitId), getHome()])
+      const coverByGarden = new Map(gardenCards.map((garden) => [garden.id, garden.cover_photo ?? null]))
+      next.gardens = next.gardens.map((garden) => ({ ...garden, cover_photo: coverByGarden.get(garden.id) ?? null }))
       window.localStorage.setItem(storageKey, next.visit.id)
       window.localStorage.setItem(`${storageKey}:snapshot`, JSON.stringify(next))
       setDashboard(next)
@@ -128,9 +130,9 @@ export function GardensPage({ user }: { user: User }) {
         {gardens === null && !error && <StatePanel kind="loading" title="Cargando tus jardines" />}
         {gardens?.length === 0 && !creating && <StatePanel kind="empty" title="Empieza con tu primer jardín">Crea el sistema y sus posiciones para registrar su historia.</StatePanel>}
         {gardens && gardens.length > 0 && <div className="garden-list">{gardens.map((garden, index) => {
-          const visual = gardenVisual(garden)
-          return <Link className={`garden-card${visual.referenceImage ? ' garden-card--environment' : ''}`} to={`/garden/${garden.id}`} key={garden.id}>
-            <div className="garden-card__art" aria-hidden="true">{visual.referenceImage && <img src={visual.referenceImage} alt="" />}<div className="garden-card__overlay"><GrowthRings /><span>{String(index + 1).padStart(2, '0')}</span><small>{garden.active_positions} activas</small></div></div>
+          const cover = garden.cover_photo ?? null
+          return <Link className={`garden-card${cover ? ' garden-card--environment' : ''}`} to={`/garden/${garden.id}`} key={garden.id}>
+            <div className="garden-card__art" aria-hidden="true">{cover && <GardenCoverImage photo={cover} alt="" />}<div className="garden-card__overlay"><GrowthRings /><span>{String(index + 1).padStart(2, '0')}</span><small>{garden.active_positions} activas</small></div></div>
             <div className="garden-card__copy"><h3>{garden.name}</h3><p>{garden.system_model ?? 'Sistema sin especificar'} · {garden.position_capacity} posiciones</p><span className="card-link">Abrir jardín <ArrowRight size={16} aria-hidden="true" /></span></div>
           </Link>
         })}</div>}

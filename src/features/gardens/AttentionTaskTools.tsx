@@ -34,9 +34,9 @@ export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = 
     } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo crear la atención.') } finally { setBusy(false) }
   }
 
-  if (!open) return <button className={compact ? 'secondary-button secondary-button--compact' : 'secondary-button'} type="button" onClick={() => setOpen(true)}><Plus size={17} aria-hidden="true" /> Añadir atención</button>
+  if (!open) return <button className={compact ? 'secondary-button secondary-button--compact' : 'secondary-button'} type="button" onClick={() => setOpen(true)}><Plus size={17} aria-hidden="true" /> Añadir seguimiento</button>
   return <form className="editor-card attention-editor" onSubmit={(event) => void submit(event)}>
-    <div className="section-heading"><h2>Nueva atención</h2><button className="text-button" type="button" onClick={() => { setOpen(false); setMessage(null) }}>Cancelar</button></div>
+    <div className="section-heading"><h2>Nuevo seguimiento</h2><button className="text-button" type="button" onClick={() => { setOpen(false); setMessage(null) }}>Cancelar</button></div>
     <label>Qué requiere seguimiento<select value={purpose} onChange={(event) => setPurpose(event.target.value as AttentionPurpose)}>{choices.map((choice) => <option key={choice.value} value={choice.value}>{choice.label}</option>)}</select></label>
     <label>Fecha comprometida <span className="field-optional">opcional</span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
     <label className="choice"><input type="checkbox" checked={distinct} onChange={(event) => setDistinct(event.target.checked)} />Es un seguimiento distinto</label>

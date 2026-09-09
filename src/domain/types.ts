@@ -14,6 +14,7 @@ export interface GardenSummary {
   position_capacity: number
   map_layout: MapLayout
   active_positions: number
+  cover_photo?: PhotoEvidence | null
 }
 
 export type AttentionOrigin = 'manual' | 'rule' | 'follow_up' | 'visual_review' | 'incident' | 'ai_proposal'
@@ -118,6 +119,7 @@ export interface GrowCycleSummary {
   planted_on: string | null
   planted_on_precision: DatePrecision
   harvest_readiness: HarvestReadiness
+  photo?: PhotoEvidence | null
 }
 
 export interface Position {
@@ -159,6 +161,12 @@ export interface PhotoEvidence {
   captured_at: string | null
   captured_at_precision: DatePrecision
   upload_status: 'pending' | 'uploaded' | 'failed'
+}
+
+export interface GardenCoverPhoto extends PhotoEvidence {
+  event_id: string
+  event_type: CycleEventType
+  is_cover: boolean
 }
 
 export interface CycleHistoryEvent {

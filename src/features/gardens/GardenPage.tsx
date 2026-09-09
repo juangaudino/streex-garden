@@ -5,14 +5,15 @@ import { AppShell } from '../../components/AppShell'
 import { HarvestReadiness } from '../../components/HarvestReadiness'
 import { StatePanel } from '../../components/StatePanel'
 import type { GardenDetail, Position } from '../../domain/types'
-import { getGarden, getOpenMaintenanceSession, startMaintenanceSession } from '../../lib/garden-api'
+import { getGarden, getGardenCoverPhotos, getOpenMaintenanceSession, startMaintenanceSession } from '../../lib/garden-api'
 import { StartCycleForm } from './StartCycleForm'
 import { GrowthRings } from '../../components/GrowthRings'
 import { activeGrowPositionIds } from '../../domain/layout-config'
 import { PlaceLink } from '../../components/PlaceLink'
 import { PlaceIdentity } from '../../components/PlaceIdentity'
 import { PhysicalMap } from './PhysicalMap'
-import { gardenVisual } from './garden-visuals'
+import type { GardenCoverPhoto } from '../../domain/types'
+import { GardenCoverImage, GardenCoverPicker } from './GardenCover'
 
 function PositionRow({ position, gardenId, onStart }: { position: Position; gardenId: string; onStart: (position: Position) => void }) {
   const history = <div className="position-history" aria-label={`Historial de la posición ${position.position_number}`}><strong>Historial de esta posición</strong>{position.previous_cycles.length > 0 ? <div className="previous-cycles">{position.previous_cycles.map((cycle) => <Link key={cycle.id} to={`/cycle/${cycle.id}`}>Ver {cycle.crop_name}</Link>)}</div> : <span>Aún no hay ciclos anteriores</span>}</div>
@@ -38,13 +39,14 @@ export function GardenPage() {
   const [startingAt, setStartingAt] = useState<Position | null>(null)
   const [startingMaintenance, setStartingMaintenance] = useState(false)
   const [openMaintenanceId, setOpenMaintenanceId] = useState<string | null>(null)
+  const [coverPhotos, setCoverPhotos] = useState<GardenCoverPhoto[]>([])
   const navigate = useNavigate()
   const load = useCallback(async () => {
     if (!gardenId) return
     setError(null)
     try {
-      const [nextGarden, openSession] = await Promise.all([getGarden(gardenId), getOpenMaintenanceSession()])
-      setGarden(nextGarden); setOpenMaintenanceId(openSession?.id ?? null)
+      const [nextGarden, openSession, nextCoverPhotos] = await Promise.all([getGarden(gardenId), getOpenMaintenanceSession(), getGardenCoverPhotos(gardenId)])
+      setGarden(nextGarden); setOpenMaintenanceId(openSession?.id ?? null); setCoverPhotos(nextCoverPhotos)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo cargar el jardín.') }
   }, [gardenId])
   // eslint-disable-next-line react-hooks/set-state-in-effect -- load writes only after the RPC settles.
@@ -60,14 +62,17 @@ export function GardenPage() {
   const visibleGrowIds = garden ? activeGrowPositionIds(garden.layout_sites) : new Set<string>()
   const visiblePositions = garden?.positions.filter((position) => visibleGrowIds.has(position.id)) ?? []
   const hasConfirmedMap = garden?.map_layout === 'uruq_8_v1' || garden?.map_layout === 'uruq_12_v1'
-  const visual = garden ? gardenVisual(garden) : null
+  const coverPhoto = coverPhotos.find((photo) => photo.is_cover) ?? null
   return <AppShell title={garden?.name ?? 'Jardín'} subtitle={garden?.system_model ?? 'Sistema'} backTo="/" actions={actions}>
     {garden === null && !error && <StatePanel kind="loading" title="Cargando el jardín" />}
     {error && <StatePanel kind="error" title="No se pudo abrir el jardín" onRetry={() => void load()}>{error}</StatePanel>}
     {garden && <>
       {!hasConfirmedMap && <section className="provisional-note"><MapPin size={18} aria-hidden="true" /><div><strong>Mapa configurable</strong><p>La distribución puede ajustarse desde Editar sistema. Las posiciones se mantienen identificadas por su número.</p></div></section>}
       {startingAt && <StartCycleForm positionId={startingAt.id} positionNumber={startingAt.position_number} onCancel={() => setStartingAt(null)} onCreated={(cycleId) => navigate(`/cycle/${cycleId}`)} />}
-      {visual?.referenceImage && <figure className="garden-environment"><img src={visual.referenceImage} alt={visual.referenceLabel ?? ''} /><figcaption><span>Vista del sistema</span><strong>{garden.system_model} · {garden.position_capacity} posiciones</strong></figcaption></figure>}
+      <figure className={`garden-environment${coverPhoto ? ' garden-environment--cover' : ' garden-environment--fallback'}`}>
+        {coverPhoto ? <GardenCoverImage photo={coverPhoto} alt={`Portada de ${garden.name}`} /> : <><GrowthRings /><span>{String(garden.position_capacity).padStart(2, '0')}</span></>}
+        <figcaption><span>{coverPhoto ? 'Portada del jardín' : 'Sistema físico'}</span><strong>{garden.system_model} · {garden.position_capacity} posiciones</strong><GardenCoverPicker gardenId={garden.id} onChanged={load} /></figcaption>
+      </figure>
       <PhysicalMap garden={garden} onStart={setStartingAt} />
       <section aria-labelledby="positions-title">
         <div className="section-heading"><h2 id="positions-title">Detalle de posiciones</h2><span>{visiblePositions.length}</span></div>

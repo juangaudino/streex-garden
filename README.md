@@ -78,6 +78,11 @@ La interfaz usa la identidad **Garden X** en algunas superficies visuales, pero 
 - No se exponen equipos multiusuario, roles, notificaciones push ni recordatorios externos.
 - No existe backend propio ni una API de aplicación separada de Supabase.
 
+### Roadmap futuro aprobado
+
+- **Guest Plant Story:** compartir la historia de un Grow Cycle concreto mediante un enlace de solo lectura. El alcance incluirá fotografías, fechas, eventos y notas seleccionadas, sin exponer otros jardines, Control, Hoy, Mantenimiento, Registrar ni el correo del propietario. El enlace deberá poder revocarse y usar URLs temporales para las fotografías.
+- Esta iniciativa comenzará después del Historical PHOTOS y de la validación de Plant Story con fotografías reales. No forma parte del MVP actual ni habilita colaboración o edición multiusuario.
+
 ## Experiencia principal del usuario
 
 1. La persona inicia sesión y llega a **Home**, donde ve sus jardines, los cambios confirmados desde su última visita y la atención vigente.

@@ -46,6 +46,7 @@ Ejecutar esta tanda sobre datos de prueba o acciones reales pertinentes. No crea
 - Backups de datos y originales: ya cuentan con backup diario y restauración aislada comprobada en Phases 17–18.
 - Recuperación de cuenta/Auth de producción y prueba completa de aislamiento de Storage: requieren la tanda de dispositivo/cuenta secundaria.
 - AI Check, Ask Garden, piloto de IA, retención de chat y presupuesto: deliberadamente diferidos hasta elegir proveedor y autorizar gasto.
+- Guest Plant Story: aprobado como iniciativa futura posterior al Historical PHOTOS. Será un enlace revocable de solo lectura para un Grow Cycle, con fotografías, fechas, eventos y notas seleccionadas; no habilitará acceso al resto de la cuenta ni edición multiusuario.
 
 ## Actualización posterior al cierre
 

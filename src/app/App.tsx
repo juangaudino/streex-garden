@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import type { User } from '@supabase/supabase-js'
 import { AuthPage, PasswordRecoveryPage } from '../features/auth/AuthPage'
 import { CyclePage } from '../features/cycles/CyclePage'
@@ -13,6 +14,8 @@ import { TodayPage } from '../features/gardens/TodayPage'
 import { MaintenancePage } from '../features/gardens/MaintenancePage'
 import { ControlPage } from '../features/gardens/ControlPage'
 import { ImportPage } from '../features/gardens/ImportPage'
+import { GuestPlantStoryManager } from '../features/cycles/GuestPlantStoryManager'
+import { GuestPlantStoryPage } from '../features/cycles/GuestPlantStoryPage'
 import { getCurrentUser } from '../lib/garden-api'
 import { getSupabaseClient, hasSupabaseConfiguration } from '../lib/supabase'
 
@@ -29,6 +32,8 @@ function ConfigurationRequired() {
 }
 
 export function App() {
+  const location = useLocation()
+  const guestRoute = /^\/guest\/[^/]+$/.test(location.pathname)
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(hasSupabaseConfiguration)
   const [recoveringPassword, setRecoveringPassword] = useState(false)
@@ -56,6 +61,7 @@ export function App() {
   }, [])
 
   if (!hasSupabaseConfiguration()) return <ConfigurationRequired />
+  if (guestRoute) return <Routes><Route path="/guest/:token" element={<GuestPlantStoryPage />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes>
   if (loading) return <main className="center-state" aria-live="polite">Abriendo tu jardín…</main>
   if (recoveringPassword) return <PasswordRecoveryPage onComplete={() => setRecoveringPassword(false)} />
   if (!user) return <AuthPage />
@@ -72,6 +78,7 @@ export function App() {
       <Route path="/import" element={<ImportPage />} />
       <Route path="/cycle/:cycleId" element={<CyclePage />} />
       <Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} />
+      <Route path="/cycle/:cycleId/share" element={<GuestPlantStoryManager />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

@@ -128,6 +128,11 @@ file_size_limit = "50MiB"
 [storage.s3_protocol]
 enabled = true
 
+# The guest link is authenticated by its high-entropy, revocable story token.
+# The Edge Function validates that token before asking the database for a story.
+[functions.guest-plant-story]
+verify_jwt = false
+
 # Image transformation API is available to Supabase Pro plan.
 # [storage.image_transformation]
 # enabled = true

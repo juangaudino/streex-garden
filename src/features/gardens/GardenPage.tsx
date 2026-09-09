@@ -15,8 +15,15 @@ import { PhysicalMap } from './PhysicalMap'
 import type { GardenCoverPhoto } from '../../domain/types'
 import { GardenCoverImage, GardenCoverPicker } from './GardenCover'
 
+function PositionHistory({ position }: { position: Position }) {
+  const previous = position.previous_cycles
+  const formatDate = (value: string | null) => value ? new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${value.slice(0, 10)}T12:00:00`)) : 'Fecha no registrada'
+  if (previous.length === 0) return <div className="position-history" aria-label={`Historial de la posición ${position.position_number}`}><strong>Historia de la posición</strong><span>Aún no hay ciclos anteriores</span></div>
+  return <details className="position-history" open><summary>Historia de la posición · {previous.length} ciclo{previous.length === 1 ? '' : 's'} anterior{previous.length === 1 ? '' : 'es'}</summary><div className="previous-cycles">{previous.map((cycle) => <Link key={cycle.id} to={`/cycle/${cycle.id}`}><strong>{cycle.crop_name}</strong><span>{formatDate(cycle.planted_on)} → {cycle.state === 'closed' ? formatDate(cycle.last_occupied_on) : 'Actual'}</span></Link>)}</div></details>
+}
+
 function PositionRow({ position, gardenId, onStart }: { position: Position; gardenId: string; onStart: (position: Position) => void }) {
-  const history = <div className="position-history" aria-label={`Historial de la posición ${position.position_number}`}><strong>Historial de esta posición</strong>{position.previous_cycles.length > 0 ? <div className="previous-cycles">{position.previous_cycles.map((cycle) => <Link key={cycle.id} to={`/cycle/${cycle.id}`}>Ver {cycle.crop_name}</Link>)}</div> : <span>Aún no hay ciclos anteriores</span>}</div>
+  const history = <PositionHistory position={position} />
   if (!position.current_cycle) {
     return <article className="position-row position-row--empty">
       <span className="position-number position-number--ring"><GrowthRings />{String(position.position_number).padStart(2, '0')}</span>

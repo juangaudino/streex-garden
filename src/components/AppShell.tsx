@@ -19,7 +19,7 @@ interface AppShellProps extends PropsWithChildren {
 export function AppShell({ children, title, subtitle, backTo, actions, presentation }: AppShellProps) {
   const navigate = useNavigate()
   const location = useLocation()
-  const cycleRegisterTarget = /^\/cycle\/[^/]+$/.test(location.pathname) ? `${location.pathname}#cycle-observation` : '/register'
+  const isCycleRoute = /^\/cycle\/[^/]+$/.test(location.pathname)
   const [showEntry, setShowEntry] = useState(() => window.sessionStorage.getItem('streex-garden-entry-seen') !== '1')
   const [pendingSignOut, setPendingSignOut] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
@@ -54,13 +54,18 @@ export function AppShell({ children, title, subtitle, backTo, actions, presentat
     try { await downloadObservationDrafts(await getObservationDrafts()); await completeSignOut() }
     catch (reason) { setSignOutError(reason instanceof Error ? reason.message : 'No se pudieron exportar los borradores.') ; setSigningOut(false) }
   }
+  const openCycleRegister = () => {
+    const target = document.getElementById('cycle-observation')
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    target?.querySelector<HTMLElement>('textarea, input, button')?.focus({ preventScroll: true })
+  }
   return (
     <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}${presentation ? ` app-shell--${presentation}` : ''}`}>
       {showEntry && <div className="app-entry" aria-hidden="true"><GrowthRings /><img className="app-entry__logo" src="/brand/garden-x-logo.png" alt="" /></div>}
       {pendingSignOut && <section className="signout-dialog" role="dialog" aria-modal="true" aria-labelledby="signout-title"><div className="signout-dialog__panel"><h2 id="signout-title">Hay borradores pendientes</h2><p>Antes de cerrar sesión, sincronízalos desde su ciclo, expórtalos en este dispositivo o descártalos. Al salir se borra el almacenamiento local para que otra cuenta no pueda verlos.</p>{signOutError && <p className="inline-message inline-message--error" role="alert">{signOutError}</p>}<div className="button-row"><button className="secondary-button" type="button" disabled={signingOut} onClick={() => setPendingSignOut(false)}>Volver a sincronizar</button><button className="secondary-button" type="button" disabled={signingOut} onClick={() => void exportDraftsThenSignOut()}><Download size={16} aria-hidden="true" /> Exportar y cerrar</button><button className="primary-button" type="button" disabled={signingOut} onClick={() => void completeSignOut()}>{signingOut ? 'Cerrando…' : 'Descartar y cerrar'}</button></div></div></section>}
       <header className="topbar">
         <Link className="brand" to="/" aria-label="Ir a Home"><span>Garden</span><img className="brand__mark" src="/brand/garden-x-mark.png" alt="" /></Link>
-        <div className="topbar__actions"><Link className="topbar__register" to={cycleRegisterTarget}><Plus size={16} aria-hidden="true" /> Registrar</Link><button className="icon-button" type="button" disabled={signingOut} onClick={() => void handleSignOut()} aria-label="Cerrar sesión"><LogOut size={18} aria-hidden="true" /></button></div>
+        <div className="topbar__actions">{isCycleRoute ? <button className="topbar__register" type="button" onClick={openCycleRegister}><Plus size={16} aria-hidden="true" /> Registrar</button> : <Link className="topbar__register" to="/register"><Plus size={16} aria-hidden="true" /> Registrar</Link>}<button className="icon-button" type="button" disabled={signingOut} onClick={() => void handleSignOut()} aria-label="Cerrar sesión"><LogOut size={18} aria-hidden="true" /></button></div>
       </header>
       {(title || backTo || actions) && (
         <section className="page-heading">

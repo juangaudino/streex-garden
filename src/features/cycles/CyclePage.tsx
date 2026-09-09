@@ -109,6 +109,16 @@ function CycleScreen() {
     void syncDrafts()
   }, [cycleId, drafts, syncDrafts])
 
+  useEffect(() => {
+    if (!eventToInvalidate) return
+    const frame = window.requestAnimationFrame(() => {
+      const editor = document.querySelector<HTMLElement>('.action-editor')
+      editor?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      editor?.querySelector<HTMLElement>('textarea, input, button')?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [eventToInvalidate])
+
   const retryableDrafts = drafts.filter((draft) => draft.status !== 'needs_review')
   const reviewDrafts = drafts.filter((draft) => draft.status === 'needs_review')
   const restoreDraftOriginal = async (draft: ObservationDraft, event: ChangeEvent<HTMLInputElement>) => {

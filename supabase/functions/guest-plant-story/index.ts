@@ -9,6 +9,11 @@ const corsHeaders = {
 }
 const signedUrlLifetimeSeconds = 5 * 60
 
+function displayPath(originalPath: string): string {
+  const separator = originalPath.lastIndexOf('/')
+  return separator < 0 ? originalPath : `${originalPath.slice(0, separator)}/display.jpg`
+}
+
 type StoryPhoto = {
   id: string
   storage_path: string
@@ -68,20 +73,20 @@ Deno.serve(async (request) => {
   const story = data as { history?: StoryEvent[]; [key: string]: unknown }
   const history = story.history ?? []
   const photoEvents = history.filter((event) => event.photo?.upload_status === 'uploaded' && event.photo.storage_path)
-  const paths = photoEvents.map((event) => event.photo!.storage_path)
+  const originalPaths = photoEvents.map((event) => event.photo!.storage_path)
+  const paths = [...new Set(originalPaths.flatMap((path) => [displayPath(path), path]))]
   let signedByPath = new Map<string, string>()
   if (paths.length > 0) {
     const signed = await admin.storage.from('garden-originals').createSignedUrls(paths, signedUrlLifetimeSeconds)
     if (signed.error) return json({ error: 'Guest story temporarily unavailable' }, 503)
-    // storage-js returns the signed URL entries directly in `data` for
-    // createSignedUrls (there is no nested `signedUrls` property).
     signedByPath = new Map((signed.data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
   }
 
   const safeHistory = history.map((event) => {
     if (!event.photo) return event
-    const signedUrl = signedByPath.get(event.photo.storage_path)
-    return { ...event, photo: signedUrl ? { ...event.photo, url: signedUrl, storage_path: undefined } : null }
+    const originalUrl = signedByPath.get(event.photo.storage_path)
+    const displayUrl = signedByPath.get(displayPath(event.photo.storage_path))
+    return { ...event, photo: originalUrl ? { ...event.photo, url: displayUrl ?? originalUrl, original_url: displayUrl ? originalUrl : undefined, storage_path: undefined } : null }
   })
   return json({ story: { ...story, history: safeHistory }, expires_in: signedUrlLifetimeSeconds })
 })

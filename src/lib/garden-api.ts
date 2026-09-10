@@ -1,6 +1,7 @@
 import type { User } from '@supabase/supabase-js'
 import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestGardenStory, GuestGardenStorySummary, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
-import { photoTransformFor, type PhotoRendition } from '../domain/photo-renditions'
+import { photoRenditionPath, storedRenditionFor, photoTransformFor, type PhotoRendition } from '../domain/photo-renditions'
+import { createPhotoRenditions } from './photo-renditions'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
 import { getSupabaseClient } from './supabase'
 
@@ -20,14 +21,14 @@ function withTimeout<T>(operation: Promise<T>, milliseconds: number, message: st
   })
 }
 
-async function uploadOriginalBytes(path: string, contentType: string, bytes: ArrayBuffer): Promise<void> {
+async function uploadPrivateBytes(path: string, contentType: string, bytes: ArrayBuffer, timeoutMessage: string): Promise<void> {
   const client = getSupabaseClient()
   const { data, error } = await client.auth.getSession()
   if (error || !data.session) throw new Error('Tu sesión expiró antes de subir la foto. Vuelve a iniciar sesión.')
 
   // storage-js 2.115 serializes a Blob as multipart with an empty field name.
-  // This project rejects that payload as empty. Send the exact bytes to the
-  // documented Storage object endpoint while retaining the user's JWT and RLS.
+  // This project rejects that payload as empty. Send exact bytes while retaining
+  // the user's JWT and Storage RLS, for originals and their private derivatives.
   const response = await withTimeout(fetch(
     `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/garden-originals/${path}`,
     {
@@ -41,10 +42,27 @@ async function uploadOriginalBytes(path: string, contentType: string, bytes: Arr
       },
       body: bytes,
     },
-  ), 20_000, 'La carga de la foto tardó demasiado. Puedes reintentarla.')
+  ), 20_000, timeoutMessage)
   if (response.ok || response.status === 409) return
   const detail = await response.json().catch(() => null) as { message?: string } | null
   throw new Error(detail?.message ?? `Storage devolvió HTTP ${response.status}.`)
+}
+
+async function uploadOriginalBytes(path: string, contentType: string, bytes: ArrayBuffer): Promise<void> {
+  await uploadPrivateBytes(path, contentType, bytes, 'La carga de la foto tardó demasiado. Puedes reintentarla.')
+}
+
+async function uploadPhotoRenditions(originalPath: string, contentType: string, originalBytes: ArrayBuffer): Promise<void> {
+  try {
+    const renditions = await createPhotoRenditions(originalBytes, contentType)
+    await Promise.all(renditions.map(({ rendition, bytes }) => uploadPrivateBytes(
+      photoRenditionPath(originalPath, rendition), 'image/jpeg', bytes,
+      'La preparación de las vistas rápidas tardó demasiado.',
+    )))
+  } catch {
+    // The original has already been preserved. A later retry/backfill can add
+    // renditions; presentation falls back safely to that original meanwhile.
+  }
 }
 
 export async function getCurrentUser(): Promise<User | null> {
@@ -224,6 +242,7 @@ export async function uploadScopedPhoto(input: { requestId: string; scope: 'gard
   const { data, error } = await client.rpc('garden_prepare_media_photo', { p_request_id: input.requestId, p_scope: input.scope, p_garden_id: input.gardenId, p_original_filename: input.file.name, p_content_type: contentType, p_byte_size: input.file.size, p_checksum_sha256: checksum })
   const created = unwrap(data as { photo_id: string; storage_path: string } | null, error)
   await uploadOriginalBytes(created.storage_path, contentType, bytes)
+  await uploadPhotoRenditions(created.storage_path, contentType, bytes)
   const confirmation = await client.rpc('garden_mark_photo_uploaded', { p_photo_id: created.photo_id, p_checksum_sha256: checksum, p_width: null, p_height: null })
   if (confirmation.error) throw new Error(confirmation.error.message)
   return { id: created.photo_id, storage_path: created.storage_path, original_filename: input.file.name, content_type: contentType, byte_size: input.file.size, checksum_sha256: checksum, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
@@ -389,6 +408,7 @@ export async function createObservation(input: ObservationInput): Promise<Create
   // Blob body through fetch. Reading its bytes first preserves the original
   // payload and gives Storage a concrete request body.
   await uploadOriginalBytes(response.storage_path, input.photoMetadata?.contentType ?? input.photo.type, originalBytes)
+  await uploadPhotoRenditions(response.storage_path, input.photoMetadata?.contentType ?? input.photo.type, originalBytes)
   const confirmation = await withTimeout(Promise.resolve(client.rpc('garden_mark_photo_uploaded', {
     p_photo_id: response.photo_id,
     p_checksum_sha256: checksum,
@@ -415,6 +435,7 @@ export async function retryPendingPhoto(photo: PhotoEvidence, file: File): Promi
     throw new Error('El archivo no coincide exactamente con el original pendiente. Selecciona la misma foto.')
   }
   await uploadOriginalBytes(photo.storage_path, photo.content_type, originalBytes)
+  await uploadPhotoRenditions(photo.storage_path, photo.content_type, originalBytes)
   const confirmation = await withTimeout(Promise.resolve(getSupabaseClient().rpc('garden_mark_photo_uploaded', {
     p_photo_id: photo.id,
     p_checksum_sha256: checksum,
@@ -433,13 +454,15 @@ export async function getSignedPhotoUrl(storagePath: string, rendition: PhotoRen
   // surfaces deliberately share the one signed original URL instead of first
   // issuing a failing transformed-URL request for every rendition.
   const transform = storageImageTransformsEnabled ? photoTransformFor(rendition) : null
-  const cacheKey = `${storagePath}:${transform ? rendition : 'original'}`
+  const storedRendition = transform ? null : storedRenditionFor(rendition)
+  const servedPath = storedRendition ? photoRenditionPath(storagePath, storedRendition) : storagePath
+  const cacheKey = `${servedPath}:${transform ? rendition : 'original'}`
   const cached = signedPhotoUrlCache.get(cacheKey)
   if (cached && cached.expiresAt > Date.now()) return cached.url
   const pending = signedPhotoUrlPending.get(cacheKey)
   if (pending) return pending
   const sign = async (withTransform: boolean) => {
-    const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(storagePath, 60 * 5, withTransform && transform ? { transform } : undefined)
+    const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(servedPath, 60 * 5, withTransform && transform ? { transform } : undefined)
     return unwrap(data?.signedUrl ?? null, error)
   }
   const request = sign(Boolean(transform)).catch(async (reason) => {

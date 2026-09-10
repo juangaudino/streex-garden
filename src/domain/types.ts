@@ -207,6 +207,8 @@ export interface GuestPlantStorySummary {
 
 export interface GuestPlantStoryPhoto extends Omit<PhotoEvidence, 'storage_path'> {
   url: string
+  /** Temporary original URL used only if a private derivative is unavailable. */
+  original_url?: string
 }
 
 export interface GuestPlantStoryEvent {

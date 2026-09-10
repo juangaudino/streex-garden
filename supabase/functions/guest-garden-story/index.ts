@@ -8,6 +8,11 @@ const corsHeaders = {
   'Content-Type': 'application/json; charset=utf-8',
 }
 const lifetime = 5 * 60
+
+function displayPath(originalPath: string): string {
+  const separator = originalPath.lastIndexOf('/')
+  return separator < 0 ? originalPath : `${originalPath.slice(0, separator)}/display.jpg`
+}
 const urlHash = async (value: string) => {
   const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))
   return Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, '0')).join('')
@@ -28,18 +33,19 @@ Deno.serve(async (request) => {
   const { data, error } = await admin.rpc('garden_get_guest_garden_story', { p_token_hash: await urlHash(body.token.toLowerCase()) })
   if (error || !data) return json({ error: 'Guest garden story not found' }, 404)
   const story = data as { history?: Array<{ photo?: { storage_path?: string; [key: string]: unknown } | null }>; [key: string]: unknown }
-  const paths = (story.history ?? []).flatMap((event) => event.photo?.storage_path ? [event.photo.storage_path] : [])
-  const uniquePaths = [...new Set(paths)]
+  const originalPaths = (story.history ?? []).flatMap((event) => event.photo?.storage_path ? [event.photo.storage_path] : [])
+  const paths = [...new Set(originalPaths.flatMap((path) => [displayPath(path), path]))]
   let signedByPath = new Map<string, string>()
-  if (uniquePaths.length > 0) {
-    const signed = await admin.storage.from('garden-originals').createSignedUrls(uniquePaths, lifetime)
+  if (paths.length > 0) {
+    const signed = await admin.storage.from('garden-originals').createSignedUrls(paths, lifetime)
     if (signed.error) return json({ error: 'Guest garden story temporarily unavailable' }, 503)
     signedByPath = new Map((signed.data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
   }
   const safeHistory = (story.history ?? []).map((event) => {
     if (!event.photo?.storage_path) return event
-    const signedUrl = signedByPath.get(event.photo.storage_path)
-    return { ...event, photo: signedUrl ? { ...event.photo, url: signedUrl, storage_path: undefined } : null }
+    const originalUrl = signedByPath.get(event.photo.storage_path)
+    const displayUrl = signedByPath.get(displayPath(event.photo.storage_path))
+    return { ...event, photo: originalUrl ? { ...event.photo, url: displayUrl ?? originalUrl, original_url: displayUrl ? originalUrl : undefined, storage_path: undefined } : null }
   })
   return json({ story: { ...story, history: safeHistory }, expires_in: lifetime })
 })

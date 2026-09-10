@@ -49,7 +49,14 @@ export function estimateCostUsd(usage: { input_tokens?: number; output_tokens?: 
   return Number((((usage.input_tokens ?? 0) / 1_000_000) * pricing.inputPerMillionUsd + ((usage.output_tokens ?? 0) / 1_000_000) * pricing.outputPerMillionUsd).toFixed(6))
 }
 
-export async function runAiBenchmarkMatrix(providers: AiBenchmarkProvider[], fixtures: AiBenchmarkFixture[]): Promise<AiBenchmarkResult[]> {
+export async function runAiBenchmarkMatrix(providers: AiBenchmarkProvider[], fixtures: AiBenchmarkFixture[], budget: { maxInputTokensPerFixture?: number; maxOutputTokensPerFixture?: number; maxBudgetUsd?: number } = {}): Promise<AiBenchmarkResult[]> {
+  assertBenchmarkBudget({
+    providers,
+    fixtureCount: fixtures.length,
+    maxInputTokensPerFixture: budget.maxInputTokensPerFixture ?? 2500,
+    maxOutputTokensPerFixture: budget.maxOutputTokensPerFixture ?? 500,
+    maxBudgetUsd: budget.maxBudgetUsd,
+  })
   const runs = await Promise.all(providers.map((provider) => runAiBenchmark(provider.adapter, fixtures, provider.pricing)))
   return runs.flat()
 }

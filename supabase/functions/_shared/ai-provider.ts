@@ -44,8 +44,9 @@ export class OpenAiResponsesAdapter implements AiProviderAdapter {
       } catch { /* preserve the status when the provider body is not JSON */ }
       throw new Error(`AI provider HTTP ${response.status}${detail ? `: ${detail}` : ''}`)
     }
-    const body = await response.json() as { output_text?: string; usage?: AiProviderResponse['usage'] }
-    let raw: unknown = body.output_text
+    const body = await response.json() as { output_text?: string; output?: Array<{ content?: Array<{ text?: string }> }>; usage?: AiProviderResponse['usage'] }
+    const nestedText = body.output?.flatMap((item) => item.content ?? []).map((item) => item.text).find((text): text is string => typeof text === 'string')
+    let raw: unknown = body.output_text ?? nestedText
     if (typeof raw === 'string') {
       try { raw = JSON.parse(raw) } catch { /* the caller's schema validator will reject this */ }
     }

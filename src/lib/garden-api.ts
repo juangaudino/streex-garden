@@ -253,9 +253,19 @@ export async function uploadScopedPhoto(input: { requestId: string; scope: 'gard
   return { id: created.photo_id, storage_path: created.storage_path, original_filename: input.file.name, content_type: contentType, byte_size: input.file.size, checksum_sha256: checksum, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
 }
 
-export async function getHomeMedia(): Promise<{ home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] }> {
+export async function getHomeMedia(): Promise<{ home_headline: string; home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] }> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_home_media')
-  return unwrap(data as { home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] } | null, error)
+  return unwrap(data as { home_headline: string; home_hero_photo: PhotoEvidence | null; home_hero_choices: PhotoEvidence[] } | null, error)
+}
+
+export async function setHomeHeadline(input: { requestId: string; headline: string }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_set_home_headline', { p_request_id: input.requestId, p_home_headline: input.headline })
+  if (error) throw new Error(error.message)
+}
+
+export async function updateGardenName(input: { requestId: string; gardenId: string; name: string }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc('garden_update_garden_name', { p_request_id: input.requestId, p_garden_id: input.gardenId, p_name: input.name })
+  if (error) throw new Error(error.message)
 }
 
 export async function setHomeHero(input: { requestId: string; photoId: string | null }): Promise<void> {

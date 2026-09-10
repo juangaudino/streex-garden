@@ -5,6 +5,8 @@ import { validatesObservation } from '../../domain/invariants'
 import { photoContentType, readExifCapture } from '../../domain/photo-integrity'
 import { saveObservationDraft } from '../../lib/offline-observation-store'
 import { syncObservationDraft } from '../../lib/observation-sync'
+import { requestDraftAiCheck } from '../../lib/ai-gateway'
+import type { GardenAiCheckProposalV1 } from '../../domain/ai'
 
 function getPhotoMetadata(file: File): ObservationInput['photoMetadata'] | undefined {
   const contentType = photoContentType(file)
@@ -12,7 +14,7 @@ function getPhotoMetadata(file: File): ObservationInput['photoMetadata'] | undef
   return { originalFilename: file.name || 'captura', contentType, byteSize: file.size }
 }
 
-export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { growCycleId: string; onSaved: () => Promise<void>; onDraftQueued: () => Promise<void> }) {
+export function ObservationComposer({ growCycleId, onSaved, onDraftQueued, compact = false, onDraftAiProposal }: { growCycleId: string; onSaved: () => Promise<void>; onDraftQueued: () => Promise<void>; compact?: boolean; onDraftAiProposal?: (proposal: GardenAiCheckProposalV1) => void }) {
   const [note, setNote] = useState('')
   const [file, setFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
@@ -20,6 +22,7 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
   const [message, setMessage] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [capturedAt, setCapturedAt] = useState<string | null>(null)
+  const [draftAiBusy, setDraftAiBusy] = useState(false)
   const [captureSource, setCaptureSource] = useState<'camera' | 'picker'>('picker')
 
   useEffect(() => () => {
@@ -38,6 +41,14 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
     setCapturedAt(null)
     if (nextFile) void readExifCapture(nextFile).then((exif) => { if (exif) setCapturedAt(exif); else if (source === 'camera') setCapturedAt(new Date().toISOString()) })
     setMessage(nextFile && !getPhotoMetadata(nextFile) ? 'Usa una imagen JPEG, PNG, HEIC, HEIF o WebP.' : null)
+  }
+
+  const analyzeDraft = async () => {
+    if (!file) return
+    setDraftAiBusy(true); setMessage(null)
+    try { const proposal = await requestDraftAiCheck({ growCycleId, file, requestKey: `ai-check-draft:${growCycleId}:${crypto.randomUUID()}` }); onDraftAiProposal?.(proposal); setMessage('Análisis listo. La foto aún no se ha guardado.') }
+    catch (reason) { setMessage(reason instanceof Error ? reason.message : 'Garden AI no está disponible ahora.') }
+    finally { setDraftAiBusy(false) }
   }
 
   const saveDraft = (draft: ObservationDraft): Promise<IDBValidKey> => saveObservationDraft(draft)
@@ -97,14 +108,14 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued }: { g
   }
 
   return <form className="observation-composer" onSubmit={(event) => void handleSubmit(event)}>
-    <div className="section-heading"><h2>Registrar observación</h2><span>Manual</span></div>
+    {!compact && <div className="section-heading"><h2>Añadir observación</h2></div>}
     <label className="sr-only" htmlFor="observation-note">Lo que observas</label>
     <textarea id="observation-note" value={note} onChange={(event) => setNote(event.target.value)} placeholder="¿Qué observas hoy?" rows={3} maxLength={1000} />
     {previewUrl && <div className="photo-preview"><img src={previewUrl} alt="Vista previa de la fotografía que guardarás" /><button className="secondary-button secondary-button--compact" type="button" onClick={() => { if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current); previewUrlRef.current = null; setFile(null); setPreviewUrl(null) }}>Quitar foto</button></div>}
     <div className="composer-actions">
       <label className="file-button"><ImagePlus size={18} aria-hidden="true" /> Elegir foto<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={handleFile} /></label>
       <label className="file-button file-button--camera"><Camera size={18} aria-hidden="true" /> Cámara<input type="file" accept="image/*" capture="environment" onChange={handleFile} /></label>
-      <button className="primary-button primary-button--compact" type="submit" disabled={busy}><Send size={17} aria-hidden="true" />{busy ? 'Guardando…' : 'Guardar'}</button>
+      {file && onDraftAiProposal && <button className="secondary-button secondary-button--compact" type="button" disabled={busy || draftAiBusy} onClick={() => void analyzeDraft()}>{draftAiBusy ? 'Analizando…' : 'Analizar con Garden AI'}</button>}<button className="primary-button primary-button--compact" type="submit" disabled={busy}><Send size={17} aria-hidden="true" />{busy ? 'Guardando…' : 'Guardar'}</button>
     </div>
     {message && <p className={message.startsWith('Error:') ? 'inline-message inline-message--error' : 'inline-message'} role="status">{message}</p>}
   </form>

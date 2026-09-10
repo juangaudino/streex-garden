@@ -6,6 +6,7 @@ export interface AiProviderRequest {
   standardVersion: string
   promptVersion: string
   jsonSchema?: Record<string, unknown>
+  instructions?: string
 }
 
 export interface AiProviderResponse {
@@ -29,7 +30,7 @@ export class OpenAiResponsesAdapter implements AiProviderAdapter {
     const content: Array<Record<string, unknown>> = [{ type: 'input_text', text: JSON.stringify({ operation: request.operation, context: request.context, standard_version: request.standardVersion, prompt_version: request.promptVersion }) }]
     const imageDataUrls = request.imageDataUrls ?? (request.imageDataUrl ? [request.imageDataUrl] : [])
     for (const imageDataUrl of imageDataUrls) content.push({ type: 'input_image', image_url: imageDataUrl, detail: 'high' })
-    const payload: Record<string, unknown> = { model: this.model, input: [{ role: 'user', content }], store: false }
+    const payload: Record<string, unknown> = { model: this.model, input: [{ role: 'user', content }], store: false, ...(request.instructions ? { instructions: request.instructions } : {}) }
     if (request.jsonSchema) payload.text = { format: { type: 'json_schema', name: 'garden_ai_output', strict: true, schema: request.jsonSchema } }
     const response = await this.fetchImpl('https://api.openai.com/v1/responses', {
       method: 'POST',

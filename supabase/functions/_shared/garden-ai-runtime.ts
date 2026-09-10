@@ -22,6 +22,7 @@ export async function runAiCheckRuntime(input: {
   standardVersion: string
   promptVersion: string
   jsonSchema?: Record<string, unknown>
+  instructions?: string
 }): Promise<{ providerRequest: AiProviderRequest; context: Record<string, unknown> }> {
   const { data, error } = await input.userClient.rpc('garden_get_ai_cycle_context', {
     p_grow_cycle_id: input.growCycleId,
@@ -71,6 +72,7 @@ export async function runAiCheckRuntime(input: {
     standardVersion: input.standardVersion,
     promptVersion: input.promptVersion,
     jsonSchema: input.jsonSchema,
+    instructions: input.instructions,
   }
   return { providerRequest, context }
 }

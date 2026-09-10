@@ -9,7 +9,7 @@ import { ObservationComposer } from '../cycles/ObservationComposer'
 import { CycleFactRecorder, type FactChoice } from '../cycles/CycleFactRecorder'
 import { AttentionTaskForm } from './AttentionTaskTools'
 import { AiCheckPanel } from '../cycles/AiCheckPanel'
-import type { GardenAiCanonicalAction } from '../../domain/ai'
+import type { GardenAiCanonicalAction, GardenAiCheckProposalV1 } from '../../domain/ai'
 
 type InspectionSource = 'observation' | 'fact' | 'manual'
 
@@ -30,6 +30,7 @@ export function MaintenancePositionActions({
   const [drafts, setDrafts] = useState<ObservationDraft[]>([])
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
+  const [draftAiProposal, setDraftAiProposal] = useState<GardenAiCheckProposalV1 | null>(null)
 
   const cycleId = position.current_grow_cycle_id === position.captured_grow_cycle_id
     ? position.captured_grow_cycle_id
@@ -133,6 +134,8 @@ export function MaintenancePositionActions({
     }
   }
 
+  const handleDraftAiProposal = (proposal: GardenAiCheckProposalV1) => { setDraftAiProposal(proposal); setSyncMessage('Análisis listo. Guarda la observación si quieres conservar esta foto en Garden X.') }
+
   const handleAiAction = (nextAction: GardenAiCanonicalAction) => {
     if (nextAction.kind === 'create_follow_up') {
       const label = nextAction.label.toLowerCase()
@@ -155,7 +158,7 @@ export function MaintenancePositionActions({
       <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => { setAttentionPurpose(undefined); setAction(action === 'attention' ? null : 'attention') }}><Plus size={16} aria-hidden="true" /> Seguimiento</button>
       <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'ai_check' ? null : 'ai_check')}><Sparkles size={16} aria-hidden="true" /> AI Check</button>
     </div>
-    {action === 'observation' && <ObservationComposer growCycleId={cycle.id} onSaved={async () => { await recordAndContinue('observation'); await loadDrafts() }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Pendiente de subir: se guardó en este dispositivo. Esta posición seguirá pendiente hasta confirmarse.') }} />}
+    {action === 'observation' && <><ObservationComposer growCycleId={cycle.id} onDraftAiProposal={handleDraftAiProposal} onSaved={async () => { await recordAndContinue('observation'); await loadDrafts() }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Pendiente de subir: se guardó en este dispositivo. Esta posición seguirá pendiente hasta confirmarse.') }} />{draftAiProposal && <section className="ai-check-result"><strong>Garden AI · foto sin guardar</strong><p>{draftAiProposal.summary}</p>{draftAiProposal.observations.slice(0, 3).map((item) => <p key={item}>{item}</p>)}<small>Es una sugerencia. Guarda o registra cualquier acción por separado.</small></section>}</>}
     {action === 'fact' && <CycleFactRecorder cycle={cycle} initialChoice={factChoice} initialOpen onSaved={async () => { await recordAndContinue('fact'); setFactChoice(undefined) }} />}
     {action === 'attention' && <div className="maintenance-action-panel"><p className="quiet-copy">Crear una atención no declara por sí sola que la planta haya sido inspeccionada.</p><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} initialPurpose={attentionPurpose} initialOpen onCreated={() => { setAttentionPurpose(undefined); setSyncMessage('Seguimiento guardado. Marca la posición como inspeccionada cuando hayas terminado de observarla.') }} compact /></div>}
     {action === 'ai_check' && <AiCheckPanel cycle={cycle} onCanonicalAction={handleAiAction} onContinue={() => setAction(null)} />}

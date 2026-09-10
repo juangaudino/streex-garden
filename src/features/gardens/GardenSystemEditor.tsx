@@ -2,7 +2,7 @@ import { useMemo, useState, type FormEvent } from 'react'
 import { Check, Leaf, Plus, Wrench } from 'lucide-react'
 import type { GardenDetail, PhysicalSite, PhysicalSiteKind } from '../../domain/types'
 import { MAP_GRID_COLUMNS, MAP_GRID_ROWS, siteLabel } from '../../domain/layout-config'
-import { addLayoutSite, updateLayoutSite } from '../../lib/garden-api'
+import { addLayoutSite, updateGardenName, updateLayoutSite } from '../../lib/garden-api'
 import { PhysicalMap } from './PhysicalMap'
 
 function firstFreeCoordinate(sites: PhysicalSite[]): { x: number; y: number } {
@@ -19,6 +19,14 @@ export function GardenSystemEditor({ garden, onSaved }: { garden: GardenDetail; 
   const [notice, setNotice] = useState<string | null>(null)
   const selected = garden.layout_sites.find((site) => site.id === selectedId) ?? null
   const free = useMemo(() => firstFreeCoordinate(garden.layout_sites), [garden.layout_sites])
+
+  const saveGardenName = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); setBusy('garden-name'); setError(null); setNotice(null)
+    const name = String(new FormData(event.currentTarget).get('garden_name') ?? '')
+    try { await updateGardenName({ requestId: crypto.randomUUID(), gardenId: garden.id, name }); await onSaved(); setNotice('Nombre del jardín guardado.') }
+    catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo guardar el nombre del jardín.') }
+    finally { setBusy(null) }
+  }
 
   const saveSite = async (event: FormEvent<HTMLFormElement>, site: PhysicalSite) => {
     event.preventDefault(); setBusy(site.id); setError(null); setNotice(null)
@@ -41,6 +49,7 @@ export function GardenSystemEditor({ garden, onSaved }: { garden: GardenDetail; 
 
   return <>
     <section className="system-editor-intro"><Wrench size={19} aria-hidden="true" /><div><h2>Editar sistema</h2><p>Los cambios describen el equipo físico. No cambian ciclos ni fotografías. Para retirar un punto con una planta activa, primero trasládala o cierra su ciclo.</p></div></section>
+    <section className="editor-card"><div><h2>Nombre del jardín</h2><p>Puedes cambiarlo cuando lo necesites. No afecta posiciones ni ciclos.</p></div><form className="button-row" onSubmit={(event) => void saveGardenName(event)}><label className="sr-only" htmlFor="garden-name">Nombre del jardín</label><input id="garden-name" name="garden_name" defaultValue={garden.name} maxLength={80} required /><button className="primary-button secondary-button--compact" disabled={busy !== null}>Guardar nombre</button></form></section>
     <PhysicalMap garden={garden} editable onSelectSite={(site) => setSelectedId(site.id)} />
     {error && <p className="inline-message inline-message--error" role="alert">{error}</p>}
     {notice && <p className="inline-message" role="status"><Check size={16} aria-hidden="true" /> {notice}</p>}

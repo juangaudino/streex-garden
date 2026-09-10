@@ -1,4 +1,3 @@
-import { Camera } from 'lucide-react'
 import type { GrowCycleDetail } from '../../domain/types'
 import { PlaceIdentity } from '../../components/PlaceIdentity'
 import { HarvestReadiness } from '../../components/HarvestReadiness'
@@ -13,11 +12,6 @@ export function BotanicalPortrait({ cycle, place, review = false }: { cycle?: Gr
     <div className="botanical-portrait__scene">{photo && <DocumentaryPhoto photo={photo} eager rendition="portrait" />}<PlaceIdentity placeId={place.placeId} number={place.number} origin={review ? 'review' : 'profile'} /></div>
     <div className="botanical-portrait__surface"><p className="botanical-portrait__eyebrow">{cycle?.garden.name ?? 'Cargando jardín'} · Posición {place.number}</p><Title tabIndex={-1}>{cycle?.crop_name ?? place.cropName}</Title>
       {cycle ? <><div className="botanical-portrait__metadata"><span>{planting}</span><HarvestReadiness value={cycle.harvest_readiness} /></div>{!photo && <p className="botanical-portrait__absence">Todavía sin fotografía documental</p>}</> : <p className="botanical-portrait__absence" role="status">Cargando evidencia del ciclo…</p>}
-      {!review && cycle?.state === 'active' && <button className="portrait-photo-action" onClick={() => {
-        const composer = document.getElementById('cycle-observation')
-        composer?.scrollIntoView({ block: 'start', behavior: 'instant' })
-        composer?.querySelector<HTMLElement>('textarea,button,input')?.focus({ preventScroll: true })
-      }}><Camera size={16} aria-hidden="true" />{photo ? 'Registrar fotografía' : 'Añadir primera fotografía'}</button>}
     </div>
   </section>
 }

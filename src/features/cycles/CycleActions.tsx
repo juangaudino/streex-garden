@@ -1,16 +1,18 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { Archive, ArrowRightLeft, Calendar, RotateCcw, Sprout, Wheat } from 'lucide-react'
+import { Archive, ArrowRightLeft, Calendar, ClipboardPenLine, ImagePlus, RotateCcw, Sprout, Wheat } from 'lucide-react'
 import type { CycleHistoryEvent, GrowCycleDetail, GardenDetail } from '../../domain/types'
 import { closeCycle, correctCyclePlanting, getGarden, invalidateEvent, moveCycle, recordHarvest, reopenCycle, replaceCycle } from '../../lib/garden-api'
 
 const today = () => new Date().toISOString().slice(0, 10)
 type Action = 'harvest' | 'close' | 'replace' | 'move' | 'correct' | 'reopen' | 'invalidate' | null
 
-export function CycleActions({ cycle, onChanged, onReplaced, selectedEvent }: {
+export function CycleActions({ cycle, onChanged, onReplaced, selectedEvent, onOpenFact, onOpenObservation }: {
   cycle: GrowCycleDetail
   onChanged: () => Promise<void>
   onReplaced: (cycleId: string) => void
   selectedEvent?: CycleHistoryEvent | null
+  onOpenFact?: () => void
+  onOpenObservation?: () => void
 }) {
   const [action, setAction] = useState<Action>(selectedEvent ? 'invalidate' : null)
   const [note, setNote] = useState('')
@@ -50,13 +52,13 @@ export function CycleActions({ cycle, onChanged, onReplaced, selectedEvent }: {
     } catch (error) { setMessage(error instanceof Error ? error.message : 'No se pudo confirmar el cambio.') } finally { setBusy(false) }
   }
 
-  if (action === null) return <section className="quick-actions" aria-labelledby="actions-title"><div className="section-heading"><h2 id="actions-title">Acciones rápidas</h2><span>Manual</span></div>
+  if (action === null) return <section className="quick-actions" aria-labelledby="actions-title"><div className="section-heading"><h2 id="actions-title">Acciones</h2></div>
     {cycle.state === 'active' ? <div className="quick-actions__grid">
       <button type="button" onClick={() => setAction('harvest')}><Wheat size={18} />Cosechar</button>
       <button type="button" onClick={() => { setDate(cycle.planted_on ?? ''); setPrecision(cycle.planted_on_precision); setAction('correct') }}><Calendar size={18} />Corregir siembra</button>
       <button type="button" onClick={() => { setDate(today()); setAction('move') }}><ArrowRightLeft size={18} />Trasladar</button>
       <button type="button" onClick={() => { setDate(today()); setReason('productive_end'); setAction('close') }}><Archive size={18} />Cerrar ciclo</button>
-      <button className="quick-actions__replace" type="button" onClick={() => { setDate(today()); setPrecision('exact'); setAction('replace') }}><Sprout size={18} />Reemplazar / resembrar</button>
+      <button className="quick-actions__replace" type="button" onClick={() => { setDate(today()); setPrecision('exact'); setAction('replace') }}><Sprout size={18} />Reemplazar / resembrar</button><button type="button" onClick={onOpenFact}><ClipboardPenLine size={18} />Registrar estado o acción</button><button type="button" onClick={onOpenObservation}><ImagePlus size={18} />Añadir observación</button>
     </div> : <div className="closed-actions"><p>Este ciclo está cerrado. Su historial permanece disponible.</p><button className="secondary-button" type="button" onClick={() => setAction('reopen')}><RotateCcw size={17} />Solicitar reapertura</button></div>}
   </section>
 

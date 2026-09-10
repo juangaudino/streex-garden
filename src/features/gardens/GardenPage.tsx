@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { ChartNoAxesColumnIncreasing, ChevronRight, Link2, MapPin, Plus, SlidersHorizontal, Wrench } from 'lucide-react'
+import { ChevronRight, Link2, MapPin, Plus, SlidersHorizontal } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { HarvestReadiness } from '../../components/HarvestReadiness'
 import { StatePanel } from '../../components/StatePanel'
 import type { GardenDetail, Position } from '../../domain/types'
-import { getGarden, getGardenCoverPhotos, getOpenMaintenanceSession, startMaintenanceSession } from '../../lib/garden-api'
+import { getGarden, getGardenCoverPhotos } from '../../lib/garden-api'
 import { StartCycleForm } from './StartCycleForm'
 import { GrowthRings } from '../../components/GrowthRings'
 import { activeGrowPositionIds } from '../../domain/layout-config'
@@ -44,28 +44,20 @@ export function GardenPage() {
   const [garden, setGarden] = useState<GardenDetail | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [startingAt, setStartingAt] = useState<Position | null>(null)
-  const [startingMaintenance, setStartingMaintenance] = useState(false)
-  const [openMaintenanceId, setOpenMaintenanceId] = useState<string | null>(null)
   const [coverPhotos, setCoverPhotos] = useState<GardenCoverPhoto[]>([])
   const navigate = useNavigate()
   const load = useCallback(async () => {
     if (!gardenId) return
     setError(null)
     try {
-      const [nextGarden, openSession, nextCoverPhotos] = await Promise.all([getGarden(gardenId), getOpenMaintenanceSession(), getGardenCoverPhotos(gardenId)])
-      setGarden(nextGarden); setOpenMaintenanceId(openSession?.id ?? null); setCoverPhotos(nextCoverPhotos)
+      const [nextGarden, nextCoverPhotos] = await Promise.all([getGarden(gardenId), getGardenCoverPhotos(gardenId)])
+      setGarden(nextGarden); setCoverPhotos(nextCoverPhotos)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo cargar el jardín.') }
   }, [gardenId])
   // eslint-disable-next-line react-hooks/set-state-in-effect -- load writes only after the RPC settles.
   useEffect(() => { void load() }, [load])
 
-  const startMaintenance = async () => {
-    if (!garden || !navigator.onLine) return
-    if (openMaintenanceId) { navigate(`/maintenance/${openMaintenanceId}`); return }
-    setStartingMaintenance(true)
-    try { const result = await startMaintenanceSession(crypto.randomUUID(), [garden.id]); navigate(`/maintenance/${result.session_id}`) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo iniciar mantenimiento.') } finally { setStartingMaintenance(false) }
-  }
-  const actions = <div className="garden-heading-actions"><Link className="secondary-button secondary-button--compact" to="/control"><ChartNoAxesColumnIncreasing size={16} aria-hidden="true" /> Control</Link><Link className="secondary-button secondary-button--compact" to={gardenId ? `/garden/${gardenId}/share` : '/'}><Link2 size={16} aria-hidden="true" /> Compartir</Link><Link className="secondary-button secondary-button--compact" to={gardenId ? `/garden/${gardenId}/system` : '/'}><SlidersHorizontal size={16} aria-hidden="true" /> Editar sistema</Link>{openMaintenanceId ? <Link className="secondary-button secondary-button--compact" to={`/maintenance/${openMaintenanceId}`}><Wrench size={16} aria-hidden="true" /> Continuar</Link> : <button className="secondary-button secondary-button--compact" disabled={startingMaintenance} type="button" onClick={() => void startMaintenance()}><Wrench size={16} aria-hidden="true" />{startingMaintenance ? 'Iniciando…' : 'Iniciar mantenimiento'}</button>}</div>
+  const actions = <div className="garden-heading-actions"><Link className="secondary-button secondary-button--compact" to={gardenId ? `/garden/${gardenId}/share` : '/'}><Link2 size={16} aria-hidden="true" /> Compartir</Link><Link className="secondary-button secondary-button--compact" to={gardenId ? `/garden/${gardenId}/system` : '/'}><SlidersHorizontal size={16} aria-hidden="true" /> Editar sistema</Link></div>
   const visibleGrowIds = garden ? activeGrowPositionIds(garden.layout_sites) : new Set<string>()
   const visiblePositions = garden?.positions.filter((position) => visibleGrowIds.has(position.id)) ?? []
   const hasConfirmedMap = garden?.map_layout === 'uruq_8_v1' || garden?.map_layout === 'uruq_12_v1'

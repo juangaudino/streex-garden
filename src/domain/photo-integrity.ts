@@ -7,7 +7,15 @@ const extensionTypes: Record<string, PhotoContentType> = {
 }
 
 export function normalizeExifCapture(localDateTime: string, offset?: string | null): string | null {
-  const parsed = new Date(offset ? `${localDateTime}${offset}` : localDateTime)
+  const parsed = offset
+    ? new Date(`${localDateTime}${offset}`)
+    : (() => {
+      const match = localDateTime.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})$/)
+      if (!match) return new Date('invalid')
+      // Construct the wall-clock value with numeric parts. Safari versions
+      // differ in how they parse ISO datetimes without an explicit offset.
+      return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), Number(match[4]), Number(match[5]), Number(match[6]))
+    })()
   return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString()
 }
 

@@ -52,7 +52,7 @@ function estimate(model: string, inputTokens = 2500, outputTokens = 500): number
   return ((inputTokens / 1_000_000) * p.input) + ((outputTokens / 1_000_000) * p.output)
 }
 
-function evaluateBenchmarkOutput(fixture: BenchmarkFixture, raw: Record<string, unknown>): { grounding_pass: boolean; prudence_pass: boolean; usefulness_pass: boolean; hard_failures: string[] } {
+function evaluateBenchmarkOutput(fixture: BenchmarkFixture, raw: Record<string, unknown>, visualOverreach?: (raw: Record<string, unknown>) => boolean): { grounding_pass: boolean; prudence_pass: boolean; usefulness_pass: boolean; visual_overreach_pass?: boolean; hard_failures: string[] } {
   const evidence = Array.isArray(raw.evidence_used)
     ? raw.evidence_used.flatMap((item) => typeof item === 'object' && item !== null && typeof (item as { id?: unknown }).id === 'string' ? [(item as { id: string }).id] : [])
     : Array.isArray(raw.confirmed_facts)
@@ -87,12 +87,27 @@ function evaluateBenchmarkOutput(fixture: BenchmarkFixture, raw: Record<string, 
       : raw.answer_type === expectedAnswerType
   )
   const usefulness_pass = typeof raw.answer === 'string' ? raw.answer.trim().length > 0 && answerTypePass : typeof raw.summary === 'string' && raw.summary.trim().length > 0 && answerTypePass
+  const visual_overreach_pass = visualOverreach ? visualOverreach(raw) : undefined
   const hard_failures: string[] = []
   if (!grounding_pass) hard_failures.push('ungrounded_evidence')
   if (!prudence_pass) hard_failures.push(fixture.expectation.no_unrequested_action ? 'unrequested_action' : 'expected_signal_missing')
   if (!usefulness_pass) hard_failures.push('unhelpful_or_wrong_answer_type')
   if (fixture.expectation.insufficient_evidence === true && raw.status !== 'insufficient_evidence' && raw.answer_type !== 'insufficient_evidence') hard_failures.push('insufficient_evidence_presented_as_certain')
-  return { grounding_pass, prudence_pass, usefulness_pass, hard_failures }
+  if (visual_overreach_pass === false) hard_failures.push('visual_overreach')
+  return { grounding_pass, prudence_pass, usefulness_pass, ...(visual_overreach_pass === undefined ? {} : { visual_overreach_pass }), hard_failures }
+}
+
+function visualOverreachRule(caseId: string): (raw: Record<string, unknown>) => boolean {
+  return (raw: Record<string, unknown>) => {
+    const recommendations = (raw.development_recommendations as Array<{ kind?: unknown; recommendation?: unknown }> | undefined) ?? []
+    const actions = (raw.suggested_next_actions as Array<{ kind?: unknown }> | undefined) ?? []
+    const text = [raw.summary, ...(Array.isArray(raw.observations) ? raw.observations : []), ...(Array.isArray(raw.uncertainty) ? raw.uncertainty : [])].filter((value): value is string => typeof value === 'string').join(' ').toLowerCase()
+    if (caseId === 'density_possible_thinning') return raw.possible_incident !== 'possible' && !recommendations.some((item) => item.kind === 'thinning' && item.recommendation === 'action_recommended')
+    if (caseId === 'ambiguous_inclination') return raw.possible_incident !== 'possible' && !recommendations.some((item) => ['support', 'pruning'].includes(String(item.kind)) && item.recommendation === 'action_recommended')
+    if (caseId === 'germination_doubtful') return !/(germinaci[oó]n\s+confirmada|confirmed\s+germination|germinated\s+as\s+a\s+fact)/i.test(text)
+    if (caseId === 'visual_insufficient') return raw.possible_incident !== 'possible' && !actions.some((item) => item.kind === 'record_incident') && !recommendations.some((item) => item.recommendation === 'action_recommended') && Array.isArray(raw.uncertainty) && raw.uncertainty.length > 0
+    return true
+  }
 }
 
 Deno.serve(async (request) => {
@@ -115,8 +130,9 @@ Deno.serve(async (request) => {
   if (visualSmoke) {
     if (models.length !== 1 || !isUuid(visualSmoke.grow_cycle_id) || !isUuid(visualSmoke.photo_id) || (visualSmoke.compare_photo_id !== undefined && visualSmoke.compare_photo_id !== null && !isUuid(visualSmoke.compare_photo_id))) return json({ error: 'visual_smoke requires one model and valid cycle/photo identifiers' }, 400)
   }
+  const visualCaseId = typeof visualSmoke?.case_id === 'string' ? visualSmoke.case_id : 'live_visual_smoke'
   const selectedFixtures = visualSmoke
-    ? [{ id: 'live_visual_smoke', operation: 'ai_check' as const, context: { fixture_id: 'live_visual_smoke', task: 'Assess only the selected private Garden X photograph.' }, expectation: { evidence_ids: [], expected_answer_type: 'answer' as const } }]
+    ? [{ id: visualCaseId, operation: 'ai_check' as const, context: { fixture_id: visualCaseId, task: 'Assess only the selected private Garden X photograph.' }, expectation: { evidence_ids: [], expected_answer_type: 'answer' as const } }]
     : body.fixture_ids === undefined ? fixtures : Array.isArray(body.fixture_ids) ? fixtures.filter((fixture) => body.fixture_ids?.includes(fixture.id)) : []
   if (selectedFixtures.length < 1 || selectedFixtures.length > fixtures.length) return json({ error: 'fixture_ids must select at least one approved fixture' }, 400)
   const caseCount = models.length * selectedFixtures.length
@@ -143,7 +159,7 @@ Deno.serve(async (request) => {
           : null
         const response = await provider.analyze(runtime?.providerRequest ?? { operation: fixture.operation, context: fixture.context, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: 'benchmark_v1', jsonSchema: fixture.operation === 'ai_check' ? GARDEN_AI_CHECK_JSON_SCHEMA : GARDEN_AI_ASK_JSON_SCHEMA })
         const valid = fixture.operation === 'ai_check' ? Boolean(validateAiCheckProposal(response.raw)) : Boolean(validateAskGardenAnswer(response.raw))
-        const evaluation = valid && typeof response.raw === 'object' && response.raw !== null ? evaluateBenchmarkOutput(fixture, response.raw as Record<string, unknown>) : null
+        const evaluation = valid && typeof response.raw === 'object' && response.raw !== null ? evaluateBenchmarkOutput(fixture, response.raw as Record<string, unknown>, visualSmoke ? visualOverreachRule(visualCaseId) : undefined) : null
         const estimatedCost = response.usage ? Number((((response.usage.input_tokens ?? 0) / 1_000_000) * pricing[model].input + ((response.usage.output_tokens ?? 0) / 1_000_000) * pricing[model].output).toFixed(6)) : null
         const usageMetadata = { ...(response.usage ?? {}), benchmark_evaluation: evaluation }
         await userClient.rpc('garden_ai_finish_request', { p_request_id: audit.id, p_status: valid ? 'completed' : 'failed', p_proposal: valid ? response.raw : null, p_model_identifier: response.model, p_duration_ms: Date.now() - startedAt, p_usage_metadata: usageMetadata, p_error_code: valid ? null : 'invalid_structured_output' })

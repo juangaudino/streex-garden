@@ -8,6 +8,8 @@ Estado: infraestructura preparada, proveedor real desactivado.
 
 La Edge Function valida sesión, operación, identificadores y tamaño de pregunta, y permanece fail-closed mientras `GARDEN_AI_ENABLED` no sea `true`. No recibe `owner_id` del cliente, no escribe hechos y no firma ni publica fotografías.
 
+La migración `20260910013617_ai_runtime_owner_context.sql` añade `public.garden_get_ai_cycle_context(...)`: comprueba `auth.uid()`, ciclo, foto y foto comparativa, y después invoca el resolver interno. Sólo `authenticated` puede ejecutarla; `anon`, `public` y `service_role` no tienen `EXECUTE`. Devuelve metadata privada, nunca URLs firmadas.
+
 El contrato y el validador viven en `src/domain/ai.ts`. Las acciones resultantes son descriptores para abrir los flujos existentes: seguimiento, incidencia, cantidad y evaluación de cosecha. Ninguna acción guarda por sí misma.
 
 ## Base reutilizada
@@ -36,6 +38,8 @@ La migración `20260910010126_ai_foundation_mvp.sql` añade `garden.ai_requests`
 
 `MockAiProvider` permite ejecutar tests sin red ni costo. `OpenAiResponsesAdapter` está preparado sólo para servidor; recibe la key por inyección, envía `store: false` y no está importado por el cliente.
 
+`readAuthorizedPhoto()` descarga únicamente la ruta owner-scoped que devolvió el wrapper y prefiere la rendition privada `display.jpg`, con fallback al original y límite de 5 MiB.
+
 La función `garden-ai` no activa ningún provider real. Con la flag apagada responde `503` de forma segura.
 
 ## Benchmark
@@ -48,6 +52,10 @@ El catálogo contiene 15 fixtures: 10 de AI Check y 5 de Ask Garden. `runAiBench
 - errores.
 
 Los criterios de evaluación posteriores deben añadir grounding, falsas recomendaciones de intervención y comparación visual. El benchmark debe usar fixtures sin datos productivos y conservar versiones del estándar, contexto, prompt, adapter y modelo.
+
+La matriz conserva los candidatos solicitados `gpt-5.6-luna`, `gpt-5.6-terra` y `gpt-5.6-sol`; no se ejecutan automáticamente. Como esos identificadores pueden no estar disponibles como IDs de API, la corrida debe comenzar con una comprobación de modelos habilitados en el proyecto.
+
+El harness exige precio explícito para cada candidato y calcula un peor caso antes de comenzar. El primer benchmark queda limitado a **USD 2.00** (`GARDEN_AI_FIRST_RUN_BUDGET_USD`); si la envolvente supera ese límite, no inicia llamadas. La estimación usa 15 fixtures, 2.500 tokens de entrada y 500 de salida por fixture/modelo; la facturación real depende del precio vigente y del uso reportado.
 
 ## Modelo mínimo recomendado
 
@@ -79,7 +87,7 @@ Ask Garden usa preguntas independientes y un catálogo fijo de intenciones. No s
 2. Billing/créditos y límites de gasto.
 3. Permisos sólo para modelos evaluados.
 4. Service account y key específica del proyecto.
-5. Secret `OPENAI_API_KEY` sólo en Supabase Edge Functions.
+5. Secret `OPENAI_API_KEY` sólo en Supabase Edge Functions (Dashboard → Project Settings → Edge Functions → Secrets; nunca en `.env` del cliente).
 6. `GARDEN_AI_ENABLED=false` hasta el rollout aprobado.
 7. Revisión de retención y controles de datos antes de enviar fotografías. [OpenAI data controls](https://platform.openai.com/docs/guides/your-data)
 

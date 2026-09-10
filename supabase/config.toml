@@ -133,6 +133,11 @@ enabled = true
 [functions.guest-plant-story]
 verify_jwt = false
 
+# Garden AI is owner/session-authenticated and remains disabled until the
+# provider and administrative spend controls are approved.
+[functions.garden-ai]
+verify_jwt = true
+
 # Image transformation API is available to Supabase Pro plan.
 # [storage.image_transformation]
 # enabled = true

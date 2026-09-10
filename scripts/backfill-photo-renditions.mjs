@@ -61,8 +61,11 @@ async function putIfMissing(path, bytes) {
     body: bytes,
   })
   if (response.ok) return 'created'
-  if (response.status === 409) return 'skipped'
-  await responseBody(response, `No se pudo cargar ${path}`)
+  // Storage's object endpoint may wrap a duplicate as HTTP 400 while retaining
+  // the underlying KeyAlreadyExists/409 detail. Both forms are a safe skip.
+  const detail = await response.text().catch(() => '')
+  if (response.status === 409 || (response.status === 400 && /KeyAlreadyExists|Duplicate/.test(detail))) return 'skipped'
+  throw new Error(`No se pudo cargar ${path}: HTTP ${response.status}${detail ? ` — ${detail.slice(0, 240)}` : ''}`)
 }
 
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'))

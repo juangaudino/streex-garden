@@ -1,5 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from './_shared/ai-provider.ts'
+import { runAiCheckRuntime } from './_shared/garden-ai-runtime.ts'
 import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from './_shared/ai-contract.ts'
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL')
@@ -104,12 +105,19 @@ Deno.serve(async (request) => {
   const token = authorization.slice('Bearer '.length)
   const { data: userData, error: userError } = await userClient.auth.getUser(token)
   if (userError || !userData.user) return json({ error: 'Authentication required' }, 401)
-  let body: { run_key?: unknown; models?: unknown; fixture_ids?: unknown }
+  let body: { run_key?: unknown; models?: unknown; fixture_ids?: unknown; visual_smoke?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (typeof body.run_key !== 'string' || body.run_key.length < 16 || body.run_key.length > 120 || !/^[a-zA-Z0-9:_-]+$/.test(body.run_key)) return json({ error: 'A valid run_key is required' }, 400)
   const models = body.models === undefined ? [...candidateModels] : Array.isArray(body.models) ? body.models : []
   if (models.length < 1 || models.some((model) => !candidateModels.includes(model as typeof candidateModels[number]))) return json({ error: 'Only the approved benchmark models are allowed' }, 400)
-  const selectedFixtures = body.fixture_ids === undefined ? fixtures : Array.isArray(body.fixture_ids) ? fixtures.filter((fixture) => body.fixture_ids?.includes(fixture.id)) : []
+  const visualSmoke = body.visual_smoke && typeof body.visual_smoke === 'object' ? body.visual_smoke as Record<string, unknown> : null
+  const isUuid = (value: unknown): value is string => typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)
+  if (visualSmoke) {
+    if (models.length !== 1 || !isUuid(visualSmoke.grow_cycle_id) || !isUuid(visualSmoke.photo_id) || (visualSmoke.compare_photo_id !== undefined && visualSmoke.compare_photo_id !== null && !isUuid(visualSmoke.compare_photo_id))) return json({ error: 'visual_smoke requires one model and valid cycle/photo identifiers' }, 400)
+  }
+  const selectedFixtures = visualSmoke
+    ? [{ id: 'live_visual_smoke', operation: 'ai_check' as const, context: { fixture_id: 'live_visual_smoke', task: 'Assess only the selected private Garden X photograph.' }, expectation: { evidence_ids: [], expected_answer_type: 'answer' as const } }]
+    : body.fixture_ids === undefined ? fixtures : Array.isArray(body.fixture_ids) ? fixtures.filter((fixture) => body.fixture_ids?.includes(fixture.id)) : []
   if (selectedFixtures.length < 1 || selectedFixtures.length > fixtures.length) return json({ error: 'fixture_ids must select at least one approved fixture' }, 400)
   const caseCount = models.length * selectedFixtures.length
   if (caseCount > maxCasesPerInvocation) return json({ error: 'Benchmark batch too large', code: 'batch_too_large', case_count: caseCount, max_cases_per_invocation: maxCasesPerInvocation, hint: 'Run one model at a time or split fixture_ids into smaller batches.' }, 400)
@@ -130,7 +138,10 @@ Deno.serve(async (request) => {
       if (audit.status === 'completed') { results.push({ fixture_id: fixture.id, model, idempotent: true, valid_structured_output: fixture.operation === 'ai_check' ? Boolean(validateAiCheckProposal(audit.proposal)) : Boolean(validateAskGardenAnswer(audit.proposal)) }); continue }
       const startedAt = Date.now()
       try {
-        const response = await provider.analyze({ operation: fixture.operation, context: fixture.context, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: 'benchmark_v1', jsonSchema: fixture.operation === 'ai_check' ? GARDEN_AI_CHECK_JSON_SCHEMA : GARDEN_AI_ASK_JSON_SCHEMA })
+        const runtime = visualSmoke
+          ? await runAiCheckRuntime({ userClient, storageClient: userClient, ownerId: userData.user.id, growCycleId: visualSmoke.grow_cycle_id as string, photoId: visualSmoke.photo_id as string, comparePhotoId: visualSmoke.compare_photo_id as string | null | undefined, provider, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: 'benchmark_visual_smoke_v1', jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA })
+          : null
+        const response = await provider.analyze(runtime?.providerRequest ?? { operation: fixture.operation, context: fixture.context, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: 'benchmark_v1', jsonSchema: fixture.operation === 'ai_check' ? GARDEN_AI_CHECK_JSON_SCHEMA : GARDEN_AI_ASK_JSON_SCHEMA })
         const valid = fixture.operation === 'ai_check' ? Boolean(validateAiCheckProposal(response.raw)) : Boolean(validateAskGardenAnswer(response.raw))
         const evaluation = valid && typeof response.raw === 'object' && response.raw !== null ? evaluateBenchmarkOutput(fixture, response.raw as Record<string, unknown>) : null
         const estimatedCost = response.usage ? Number((((response.usage.input_tokens ?? 0) / 1_000_000) * pricing[model].input + ((response.usage.output_tokens ?? 0) / 1_000_000) * pricing[model].output).toFixed(6)) : null
@@ -138,7 +149,7 @@ Deno.serve(async (request) => {
         await userClient.rpc('garden_ai_finish_request', { p_request_id: audit.id, p_status: valid ? 'completed' : 'failed', p_proposal: valid ? response.raw : null, p_model_identifier: response.model, p_duration_ms: Date.now() - startedAt, p_usage_metadata: usageMetadata, p_error_code: valid ? null : 'invalid_structured_output' })
         const recordedCost = estimatedCost === null ? null : await userClient.rpc('garden_ai_record_cost', { p_request_id: audit.id, p_estimated_cost_usd: estimatedCost })
         const rawText = typeof response.raw === 'string' ? response.raw : JSON.stringify(response.raw) ?? String(response.raw)
-        results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: valid, evaluation, latency_ms: Date.now() - startedAt, usage: response.usage ?? {}, estimated_cost_usd: estimatedCost, audit_cost_recorded: estimatedCost === null ? null : !recordedCost?.error, ...(recordedCost?.error ? { audit_cost_warning: 'estimated_cost_not_recorded' } : {}), ...(valid ? {} : { raw_preview: rawText.slice(0, 600) }) })
+        results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: valid, evaluation, visual_input: Boolean(runtime), photo_id: visualSmoke?.photo_id ?? null, latency_ms: Date.now() - startedAt, usage: response.usage ?? {}, estimated_cost_usd: estimatedCost, audit_cost_recorded: estimatedCost === null ? null : !recordedCost?.error, ...(recordedCost?.error ? { audit_cost_warning: 'estimated_cost_not_recorded' } : {}), ...(valid ? {} : { raw_preview: rawText.slice(0, 600) }) })
       } catch (error) {
         await userClient.rpc('garden_ai_finish_request', { p_request_id: audit.id, p_status: 'failed', p_error_code: error instanceof Error ? error.message.slice(0, 120) : 'provider_error' })
         results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: false, latency_ms: Date.now() - startedAt, error: error instanceof Error ? error.message : 'provider_error' })

@@ -1,7 +1,7 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
-import { OpenAiResponsesAdapter } from './_shared/ai-provider.ts'
-import { runAiCheckRuntime } from './_shared/garden-ai-runtime.ts'
-import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from './_shared/ai-contract.ts'
+import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
+import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
+import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from '../_shared/ai-contract.ts'
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL')
 const anonKey = Deno.env.get('SUPABASE_ANON_KEY')

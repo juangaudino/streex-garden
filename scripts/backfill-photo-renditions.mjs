@@ -20,6 +20,7 @@ const ownerId = args.get('owner-id')
 const baseUrl = process.env.GARDEN_RENDERING_SUPABASE_URL ?? process.env.VITE_SUPABASE_URL
 const dryRun = args.has('dry-run')
 const manifestPath = args.get('manifest')
+const existingManifestPath = args.get('existing-manifest')
 if (!ownerId || !/^[0-9a-f-]{36}$/i.test(ownerId)) throw new Error('Se requiere --owner-id con un UUID válido.')
 if (!baseUrl) throw new Error('Falta GARDEN_RENDERING_SUPABASE_URL en el entorno.')
 if (!manifestPath) throw new Error('Se requiere --manifest con la salida JSON administrativa de garden.photos.')
@@ -74,6 +75,8 @@ if (!Array.isArray(photos)) throw new Error('El manifiesto no contiene una lista
 if (photos.some((photo) => typeof photo.storage_path !== 'string' || !photo.storage_path.startsWith(`${ownerId}/`))) {
   throw new Error('El manifiesto contiene una foto fuera del owner indicado; no se realizó ninguna carga.')
 }
+const existingManifest = existingManifestPath ? JSON.parse(await readFile(existingManifestPath, 'utf8')) : []
+const existingPaths = new Set((Array.isArray(existingManifest) ? existingManifest : existingManifest.rows ?? []).map((entry) => typeof entry === 'string' ? entry : entry.name).filter((name) => typeof name === 'string'))
 const temp = await mkdtemp(join(tmpdir(), 'garden-renditions-'))
 const counts = { photos: 0, previewCreated: 0, displayCreated: 0, skipped: 0, failed: 0 }
 try {
@@ -81,6 +84,12 @@ try {
     counts.photos += 1
     const label = `${counts.photos}/${photos.length} ${photo.id}`
     try {
+      const requiredPaths = ['preview', 'display'].map((kind) => derivativePath(photo.storage_path, kind))
+      if (requiredPaths.every((path) => existingPaths.has(path))) {
+        counts.skipped += requiredPaths.length
+        console.log(`${label} already present`)
+        continue
+      }
       if (dryRun) { console.log(`${label} dry-run ${photo.storage_path}`); continue }
       const originalResponse = await fetch(`${baseUrl}/storage/v1/object/garden-originals/${photo.storage_path}`, { headers: headers() })
       const original = Buffer.from(await (await responseBody(originalResponse, `No se pudo leer ${photo.storage_path}`)).arrayBuffer())
@@ -88,9 +97,14 @@ try {
       const sourcePath = join(temp, `${randomUUID()}.source`)
       await writeFile(sourcePath, original)
       for (const [kind, maxEdge, quality] of [['preview', 640, 0.68], ['display', 1600, 0.78]]) {
+        const targetPath = derivativePath(photo.storage_path, kind)
+        if (existingPaths.has(targetPath)) {
+          counts.skipped += 1
+          continue
+        }
         const outputPath = join(temp, `${randomUUID()}.${kind}.jpg`)
         await runSips(sourcePath, outputPath, maxEdge, quality)
-        const outcome = await putIfMissing(derivativePath(photo.storage_path, kind), await readFile(outputPath))
+        const outcome = await putIfMissing(targetPath, await readFile(outputPath))
         if (outcome === 'created') counts[`${kind}Created`] += 1
         else counts.skipped += 1
         await rm(outputPath, { force: true })

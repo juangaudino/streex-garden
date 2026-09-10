@@ -8,7 +8,7 @@ import { MaintenancePage } from '../gardens/MaintenancePage'
 import { PhotoGalleryPage } from './PhotoGalleryPage'
 import { CyclePage } from './CyclePage'
 import { captureLabel, isToday, storyInterval } from './photo-presentation'
-import { getCycle, getSignedPhotoUrl, getMaintenanceSession, progressMaintenancePosition, setGardenCover, setHomeHero } from '../../lib/garden-api'
+import { getCycle, getSignedPhotoUrl, getMaintenanceSession, markMaintenancePositionInspected, progressMaintenancePosition, setGardenCover, setHomeHero } from '../../lib/garden-api'
 import { getObservationDrafts } from '../../lib/offline-observation-store'
 import type { GrowCycleDetail, MaintenancePosition, MaintenanceSession, PhotoEvidence } from '../../domain/types'
 
@@ -69,12 +69,21 @@ describe('Evidence provenance in presentation', () => {
   })
 })
 describe('Maintenance confirmed feedback', () => {
+  it('marks a healthy-looking position without creating a visual review fact', async () => {
+    vi.mocked(getMaintenanceSession).mockResolvedValue(session)
+    vi.mocked(markMaintenancePositionInspected).mockResolvedValue(undefined)
+    render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
+    fireEvent.click(await screen.findByRole('button', { name: 'Está bien' }))
+    await waitFor(() => expect(markMaintenancePositionInspected).toHaveBeenCalledWith(expect.any(String), 'step-a', 'manual'))
+    expect(progressMaintenancePosition).not.toHaveBeenCalled()
+  })
+
   it('does not advance or claim success before remote confirmation or on failure', async () => {
     vi.mocked(getMaintenanceSession).mockResolvedValue(session)
     let reject!: (reason: Error) => void
-    vi.mocked(progressMaintenancePosition).mockImplementation(() => new Promise((_, failure) => { reject = failure }))
+    vi.mocked(markMaintenancePositionInspected).mockImplementation(() => new Promise((_, failure) => { reject = failure }))
     render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
-    fireEvent.click(await screen.findByRole('button', { name: 'Se ve bien' }))
+    fireEvent.click(await screen.findByRole('button', { name: 'Está bien' }))
     expect(screen.queryByText(/revisión guardada/)).toBeNull()
     expect(getMaintenanceSession).toHaveBeenCalledTimes(1)
     await act(async () => reject(new Error('Sin conexión')))

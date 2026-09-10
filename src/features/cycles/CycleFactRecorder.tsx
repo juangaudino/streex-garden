@@ -18,7 +18,7 @@ const choiceLabels: Record<FactChoice, string> = {
   resolve_incident: 'Resolver incidencia',
 }
 
-export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean }) {
+export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false, heading = 'Registrar estado o acción', description = 'Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.', submitLabel = 'Guardar registro' }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean; heading?: string; description?: string; submitLabel?: string }) {
   const [open, setOpen] = useState(initialOpen)
   const [choice, setChoice] = useState<FactChoice>(initialChoice ?? 'germination')
   const [occurredOn, setOccurredOn] = useState(today())
@@ -67,11 +67,11 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
     finally { setBusy(false) }
   }
 
-  if (!open) return <section className="cycle-fact-entry"><button className="secondary-button secondary-button--compact" type="button" onClick={() => setOpen(true)}><ClipboardPenLine size={17} aria-hidden="true" /> Registrar estado o acción</button><p className="quiet-copy">Germinación, conteos, evaluaciones e intervenciones confirmadas. Las recomendaciones no se registran aquí.</p></section>
+  if (!open) return <section className="cycle-fact-entry"><button className="secondary-button secondary-button--compact" type="button" onClick={() => setOpen(true)}><ClipboardPenLine size={17} aria-hidden="true" /> {heading}</button><p className="quiet-copy">Germinación, conteos, evaluaciones e intervenciones confirmadas. Las recomendaciones no se registran aquí.</p></section>
 
   return <form className="editor-card action-editor" onSubmit={(event) => void submit(event)}>
-    <div className="section-heading"><h2><Sprout size={19} aria-hidden="true" /> Registrar estado o acción</h2><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>
-    <p className="quiet-copy">Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.</p>
+    <div className="section-heading"><h2><Sprout size={19} aria-hidden="true" /> {heading}</h2><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>
+    <p className="quiet-copy">{description}</p>
     <label>Qué confirmé<select value={choice} onChange={(event) => { setChoice(event.target.value as FactChoice); setMessage(null) }}>{(Object.keys(choiceLabels) as FactChoice[]).filter((value) => value !== 'resolve_incident' || incidents.length > 0).map((value) => <option value={value} key={value}>{choiceLabels[value]}</option>)}</select></label>
     <label>Fecha del hecho<input type="date" required value={occurredOn} onChange={(event) => setOccurredOn(event.target.value)} /></label>
     {choice === 'germination' && <label>Plántulas germinadas <span className="field-optional">opcional</span><input min="0" step="1" inputMode="numeric" value={count} onChange={(event) => setCount(event.target.value)} placeholder="Cantidad observada" /></label>}
@@ -84,6 +84,6 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
     {choice === 'resolve_incident' && <label>Incidencia resuelta<select required value={incidentId} onChange={(event) => setIncidentId(event.target.value)}><option value="">Selecciona una incidencia</option>{incidents.map((incident) => <option key={incident.id} value={incident.id}>{incident.note ?? 'Incidencia registrada'}</option>)}</select></label>}
     <label>Nota {choice === 'incident' || (choice === 'state' && visualResult === 'action_required') || (choice === 'intervention' && interventionClass === 'other') ? 'requerida' : 'opcional'}<textarea required={choice === 'incident' || (choice === 'state' && visualResult === 'action_required') || (choice === 'intervention' && interventionClass === 'other')} value={note} maxLength={1000} onChange={(event) => setNote(event.target.value)} placeholder={choice === 'count' ? 'Por ejemplo: se distinguen dos plántulas.' : choice === 'incident' ? 'Describe brevemente qué ocurrió.' : choice === 'readiness' ? 'Por ejemplo: hojas con buen tamaño para evaluar cosecha.' : choice === 'intervention' && interventionClass === 'support' ? 'Por ejemplo: ajusté el soporte al tallo.' : choice === 'intervention' ? 'Por ejemplo: retiré la plántula más pequeña.' : 'Describe lo que observaste.'} /></label>
     {message && <p className="inline-message inline-message--error" role="alert">{message}</p>}
-    <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : 'Guardar registro'}</button>
+    <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : submitLabel}</button>
   </form>
 }

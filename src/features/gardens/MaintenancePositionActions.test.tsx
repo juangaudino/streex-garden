@@ -11,7 +11,8 @@ vi.mock('../../lib/garden-api', () => ({ getCycle: vi.fn() }))
 vi.mock('../../lib/offline-observation-store', () => ({ getObservationDrafts: vi.fn().mockResolvedValue([]), saveObservationDraft: vi.fn() }))
 vi.mock('../../lib/observation-sync', () => ({ syncObservationDraft: vi.fn() }))
 vi.mock('../cycles/ObservationComposer', () => ({ ObservationComposer: ({ onSaved }: { onSaved: () => Promise<void> }) => <button type="button" onClick={() => void onSaved()}>Guardar observación canónica</button> }))
-vi.mock('../cycles/CycleFactRecorder', () => ({ CycleFactRecorder: ({ onSaved }: { onSaved: () => Promise<void> }) => <button type="button" onClick={() => void onSaved()}>Guardar hecho canónico</button> }))
+vi.mock('../cycles/CycleFactRecorder', () => ({ CycleFactRecorder: ({ onSaved, heading }: { onSaved: () => Promise<void>; heading?: string }) => <button type="button" onClick={() => void onSaved()}>{heading ? 'Guardar acción canónica' : 'Guardar hecho canónico'}</button> }))
+vi.mock('../cycles/CycleActions', () => ({ CycleActions: ({ onChanged }: { onChanged: () => Promise<void> }) => <button type="button" onClick={() => void onChanged()}>Guardar cosecha canónica</button> }))
 vi.mock('./AttentionTaskTools', () => ({ AttentionTaskForm: ({ onCreated }: { onCreated: () => void }) => <button type="button" onClick={onCreated}>Crear Attention canónico</button> }))
 
 afterEach(cleanup)
@@ -27,31 +28,28 @@ const cycle: GrowCycleDetail = {
 }
 
 describe('Maintenance contextual canonical actions', () => {
-  it('exposes observation, fact and Attention progressively without duplicating a domain flow', async () => {
+  it('keeps observation separate from the three operational decisions', async () => {
     vi.mocked(getCycle).mockResolvedValue(cycle)
     const onInspectionRecorded = vi.fn().mockResolvedValue(undefined)
     render(<MaintenancePositionActions position={position} onInspectionRecorded={onInspectionRecorded} />)
 
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Foto / observación' })).toBeTruthy())
-    fireEvent.click(screen.getByRole('button', { name: 'Foto / observación' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Guardar observación canónica' }))
-    await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('observation'))
+    fireEvent.click(await screen.findByRole('button', { name: 'Guardar observación canónica' }))
+    await waitFor(() => expect(onInspectionRecorded).not.toHaveBeenCalled())
 
-    fireEvent.click(screen.getByRole('button', { name: 'Registrar estado o acción' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Guardar hecho canónico' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Hacer algo ahora' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar acción canónica' }))
     await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('fact'))
 
-    fireEvent.click(screen.getByRole('button', { name: 'Seguimiento' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Planificar algo' }))
     fireEvent.click(screen.getByRole('button', { name: 'Crear Attention canónico' }))
-    expect(onInspectionRecorded).not.toHaveBeenCalledWith('manual')
-    expect(screen.getByText(/no declara por sí sola/)).toBeTruthy()
+    await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('manual'))
   })
 
-  it('offers an explicit inspected-only completion for a future task or a failed session update', async () => {
+  it('finishes a reviewed position without creating a canonical fact', async () => {
     vi.mocked(getCycle).mockResolvedValue(cycle)
     const onInspectionRecorded = vi.fn().mockResolvedValue(undefined)
     render(<MaintenancePositionActions position={position} onInspectionRecorded={onInspectionRecorded} />)
-    fireEvent.click(await screen.findByRole('button', { name: 'Marcar inspeccionada sin declarar salud' }))
+    fireEvent.click(await screen.findByRole('button', { name: 'Está bien' }))
     await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('manual'))
   })
 
@@ -69,6 +67,6 @@ describe('Maintenance contextual canonical actions', () => {
     fireEvent.change(input, { target: { files: [new File(['x'], 'tomato.jpg', { type: 'image/jpeg' })] } })
     await waitFor(() => expect(saveObservationDraft).toHaveBeenCalled())
     await waitFor(() => expect(syncObservationDraft).toHaveBeenCalled())
-    expect(onInspectionRecorded).toHaveBeenCalledWith('observation')
+    expect(onInspectionRecorded).not.toHaveBeenCalledWith('observation')
   })
 })

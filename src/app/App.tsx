@@ -18,6 +18,8 @@ import { GuestPlantStoryManager } from '../features/cycles/GuestPlantStoryManage
 import { GuestPlantStoryPage } from '../features/cycles/GuestPlantStoryPage'
 import { GuestGardenStoryManager } from '../features/gardens/GuestGardenStoryManager'
 import { GuestGardenStoryPage } from '../features/gardens/GuestGardenStoryPage'
+import { AskGardenPage } from '../features/gardens/AskGardenPage'
+import { GrowthFilmPage } from '../features/cycles/GrowthFilmPage'
 import { getCurrentUser } from '../lib/garden-api'
 import { getSupabaseClient, hasSupabaseConfiguration } from '../lib/supabase'
 
@@ -76,11 +78,13 @@ export function App() {
       <Route path="/garden/:gardenId/share" element={<GuestGardenStoryManager />} />
       <Route path="/garden/:gardenId/system" element={<GardenSystemPage />} />
       <Route path="/today" element={<TodayPage />} />
+      <Route path="/ask-garden" element={<AskGardenPage />} />
       <Route path="/maintenance/:sessionId" element={<MaintenancePage />} />
       <Route path="/control" element={<ControlPage />} />
       <Route path="/import" element={<ImportPage />} />
       <Route path="/cycle/:cycleId" element={<CyclePage />} />
       <Route path="/cycle/:cycleId/photos" element={<PhotoGalleryPage />} />
+      <Route path="/cycle/:cycleId/film" element={<GrowthFilmPage />} />
       <Route path="/cycle/:cycleId/share" element={<GuestPlantStoryManager />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />

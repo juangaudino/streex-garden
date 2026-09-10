@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Check, ImageOff } from 'lucide-react'
+import { Check, ImageOff, Film } from 'lucide-react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
@@ -41,15 +41,16 @@ function ComparisonPhoto({ event }: { event: PhotoEvent }) {
 export function PhotoGalleryPage() {
   const { cycleId } = useParams()
   const location = useLocation()
-  const initialCycle = (location.state as { cycle?: GrowCycleDetail } | null)?.cycle
-  return <PhotoGalleryScreen key={cycleId} initialCycle={initialCycle && initialCycle.id === cycleId ? initialCycle : null} />
+  const locationState = location.state as { cycle?: GrowCycleDetail; preselectedIds?: string[] } | null
+  const initialCycle = locationState?.cycle
+  return <PhotoGalleryScreen key={cycleId} initialCycle={initialCycle && initialCycle.id === cycleId ? initialCycle : null} preselectedIds={locationState?.preselectedIds} />
 }
 
-function PhotoGalleryScreen({ initialCycle }: { initialCycle: GrowCycleDetail | null }) {
+function PhotoGalleryScreen({ initialCycle, preselectedIds = [] }: { initialCycle: GrowCycleDetail | null; preselectedIds?: string[] }) {
   const { cycleId } = useParams()
   const [cycle, setCycle] = useState<GrowCycleDetail | null>(initialCycle)
   const [error, setError] = useState<string | null>(null)
-  const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const [selectedIds, setSelectedIds] = useState<string[]>(preselectedIds.slice(0, 2))
   const [showComparison, setShowComparison] = useState(false)
   const [coverMessage, setCoverMessage] = useState<string | null>(null)
   const comparison = useRef<HTMLElement>(null)
@@ -79,7 +80,7 @@ function PhotoGalleryScreen({ initialCycle }: { initialCycle: GrowCycleDetail | 
     {error && <StatePanel kind="error" title="No se pudo abrir la galería" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
       <section className="plant-story-milestones" aria-labelledby="plant-story-milestones-title"><div className="section-heading"><div><span className="eyebrow">Historia de la planta</span><h2 id="plant-story-milestones-title">Momentos importantes</h2></div><span>{buildPlantStoryMilestones(cycle).length}</span></div><ol>{buildPlantStoryMilestones(cycle).map((milestone) => <li key={milestone.id}><time>{milestone.date ? new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${milestone.date.slice(0, 10)}T12:00:00`)) : 'Fecha no registrada'}</time><strong>{milestone.label}</strong>{milestone.note && <p>{milestone.note}</p>}</li>)}</ol></section>
-      <section className="photo-story" aria-label="Recorrido fotográfico"><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p>{coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
+      <section className="photo-story" aria-label="Recorrido fotográfico"><div className="story-toolbar"><div><p className="story-interval">{storyInterval(photos)}</p><p className="quiet-copy">Un mismo ciclo, a través de tus fotografías.</p></div><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/film`}><Film size={15} aria-hidden="true" /> Growth Film</Link></div>{coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
         {photos.length > 0 && <ol className="photo-story__rail">{[...photos].reverse().map((event, index) => <li key={event.id}><div className="photo-story__date"><span>{String(index + 1).padStart(2, '0')}</span><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{recordedDate(event)}</time></div><DocumentaryPhoto photo={event.photo} eager={index === 0} expandable rendition="story" actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={event.photo.id} onMessage={setCoverMessage} />} />{event.note && <p>{event.note}</p>}</li>)}</ol>}
       </section>
       <section className="photo-comparison" aria-label="Comparar dos momentos"><div className="story-comparison-intro"><h2>Comparar dos momentos</h2><p>Selecciona exactamente dos originales confirmados del recorrido.</p></div>

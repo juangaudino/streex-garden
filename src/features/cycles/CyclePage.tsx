@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react'
-import { Images, MoreHorizontal, RefreshCw, Share2 } from 'lucide-react'
+import { Film, Images, MoreHorizontal, RefreshCw, Share2 } from 'lucide-react'
 import { useLocation, useNavigate, useParams, Link } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
@@ -18,6 +18,7 @@ import { captureLabel, isToday } from './photo-presentation'
 import { eventDetail as formatEventDetail, eventLabel as formatEventLabel } from '../../domain/event-presentation'
 import { CycleFactRecorder } from './CycleFactRecorder'
 import { PhotoCoverActions } from './PhotoCoverActions'
+import { AiCheckPanel } from './AiCheckPanel'
 
 function eventDate(event: GrowCycleDetail['history'][number]): string {
   if (event.occurred_at_precision === 'date' && event.occurred_on) {
@@ -43,6 +44,7 @@ function CycleScreen() {
   const [eventToInvalidate, setEventToInvalidate] = useState<GrowCycleDetail['history'][number] | null>(null)
   const location = useLocation()
   const arrival = (location.state as { place?: PlaceContext } | null)?.place
+  const aiAction = (location.state as { aiAction?: string } | null)?.aiAction
   const syncingRef = useRef(false)
   const initialSyncAttemptedFor = useRef<string | null>(null)
   const navigate = useNavigate()
@@ -161,11 +163,12 @@ function CycleScreen() {
     {error && <StatePanel kind="error" title="No se pudo abrir el ciclo" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
       <BotanicalPortrait cycle={cycle} place={{ placeId: cycle.position.id, number: cycle.position.position_number, gardenId: cycle.garden.id, cropName: cycle.crop_name }} />
-      <section className="cycle-story-entry"><div><span>Historia de la planta</span><h2>La historia de tu {cycle.crop_name}</h2><p>{cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 0 ? 'Comienza aquí con la primera fotografía documental.' : cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 1 ? 'Ya hay un momento registrado. Recorre su evidencia.' : 'Recorre sus momentos y compara dos fotografías cuando quieras.'}</p></div><div className="cycle-story-entry__actions"><Link className="primary-button" to={`/cycle/${cycle.id}/photos`} state={{ cycle }}><Images size={17} aria-hidden="true" /> Ver historia</Link><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/share`}><Share2 size={16} aria-hidden="true" /> Compartir</Link></div></section>
+      <AiCheckPanel cycle={cycle} />
+      <section className="cycle-story-entry"><div><span>Historia de la planta</span><h2>La historia de tu {cycle.crop_name}</h2><p>{cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 0 ? 'Comienza aquí con la primera fotografía documental.' : cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 1 ? 'Ya hay un momento registrado. Recorre su evidencia.' : 'Recorre sus momentos y compara dos fotografías cuando quieras.'}</p></div><div className="cycle-story-entry__actions"><Link className="primary-button" to={`/cycle/${cycle.id}/photos`} state={{ cycle }}><Images size={17} aria-hidden="true" /> Ver historia</Link><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/film`}><Film size={16} aria-hidden="true" /> Growth Film</Link><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/share`}><Share2 size={16} aria-hidden="true" /> Compartir</Link></div></section>
       {drafts.length > 0 && <section className="sync-notice" aria-live="polite"><strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong><p>{syncMessage ?? 'Se guardaron en este dispositivo. Se validarán antes de confirmar el registro remoto.'}</p>{reviewDrafts.length > 0 && <p className="sync-notice__error" role="alert">Revisar conflicto: {reviewDrafts.length} observación{reviewDrafts.length === 1 ? '' : 'es'} no se volverá{reviewDrafts.length === 1 ? '' : 'n'} a enviar automáticamente.</p>}{drafts.some((draft) => draft.lastError) && <p className="sync-notice__error" role="alert">Detalle: {drafts.find((draft) => draft.lastError)?.lastError}</p>}{retryableDrafts.some((draft) => draft.photo && draft.photoMetadata) && <label className="file-button secondary-button--compact">Volver a elegir el original<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={(event) => void restoreDraftOriginal(retryableDrafts.find((draft) => draft.photo && draft.photoMetadata)!, event)} /></label>}{retryableDrafts.length > 0 && <button className="secondary-button" type="button" disabled={syncing || !navigator.onLine} onClick={() => void syncDrafts()}>{syncing ? 'Sincronizando…' : navigator.onLine ? 'Reintentar ahora' : 'Sin conexión'}</button>}</section>}
       <CycleActions key={eventToInvalidate?.id ?? 'actions'} cycle={cycle} selectedEvent={eventToInvalidate} onChanged={async () => { setEventToInvalidate(null); await load() }} onReplaced={(nextCycleId) => navigate(`/cycle/${nextCycleId}`)} />
       {cycle.state === 'active' && <CycleFactRecorder cycle={cycle} onSaved={load} />}
-      {cycle.state === 'active' && <section className="cycle-attention"><div className="section-heading"><h2>Seguimiento</h2><span>Manual</span></div><p className="quiet-copy">Crea una atención solo si este ciclo necesita una revisión o acción posterior. Una observación corriente no abre una tarea.</p><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} onCreated={load} compact /></section>}
+      {cycle.state === 'active' && <section className="cycle-attention" id="cycle-attention"><div className="section-heading"><h2>Seguimiento</h2><span>Manual</span></div><p className="quiet-copy">Crea una atención solo si este ciclo necesita una revisión o acción posterior. Una observación corriente no abre una tarea.</p><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} onCreated={load} compact initialOpen={Boolean(aiAction?.startsWith('evaluate_'))} initialPurpose={aiAction?.startsWith('evaluate_') ? aiAction as 'evaluate_visual_review' | 'evaluate_thinning' | 'evaluate_pruning' | 'evaluate_support' : undefined} /></section>}
       {cycle.state === 'active' && <div id="cycle-observation"><ObservationComposer growCycleId={cycle.id} onSaved={async () => { await load(); await loadDrafts() }} onDraftQueued={loadDrafts} /></div>}
       <section className="history-section" aria-labelledby="history-title"><div className="section-heading"><h2 id="history-title">Historial</h2><span>{cycle.history.length}</span></div>
         {cycle.history.length === 0 && <StatePanel kind="empty" title="Aún no hay observaciones">La primera nota o fotografía aparecerá aquí inmediatamente después de guardarse.</StatePanel>}

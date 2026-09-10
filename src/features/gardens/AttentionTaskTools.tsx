@@ -7,15 +7,17 @@ import { completeAttentionItem, createAttentionItem, deferAttentionItem, dismiss
 function isVisualReview(task: AttentionItem): boolean { return task.purpose === 'evaluate_visual_review' }
 function isDevelopmentReview(task: AttentionItem): boolean { return task.purpose.startsWith('evaluate_') && !isVisualReview(task) }
 
-export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = false }: {
+export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = false, initialPurpose, initialOpen = false }: {
   gardenId: string
   growCycleId?: string | null
   onCreated: () => Promise<void> | void
   compact?: boolean
+  initialPurpose?: AttentionPurpose
+  initialOpen?: boolean
 }) {
   const choices = growCycleId ? cycleAttentionPurposes : gardenAttentionPurposes
-  const [open, setOpen] = useState(false)
-  const [purpose, setPurpose] = useState<AttentionPurpose>(choices[0].value)
+  const [open, setOpen] = useState(initialOpen)
+  const [purpose, setPurpose] = useState<AttentionPurpose>(initialPurpose ?? choices[0].value)
   const [dueOn, setDueOn] = useState('')
   const [distinct, setDistinct] = useState(false)
   const [subjectKey, setSubjectKey] = useState('')

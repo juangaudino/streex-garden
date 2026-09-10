@@ -704,3 +704,11 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 @keyframes growth-film-drift { from { transform:scale(1); } to { transform:scale(1.035); } }
 @media (prefers-reduced-motion: reduce) { .growth-film-frame__layer--current { animation:none; } .ask-garden-thread { scroll-behavior:auto; } }
 @media (max-width:540px) { .ask-garden-thread { min-height:340px; padding:15px; } .ask-garden-question,.ask-garden-answer { max-width:94%; } .ask-garden-compose { align-items:stretch; flex-direction:column; } .ask-garden-compose .primary-button { width:100%; } }
+
+.settings-card { align-items:center; background:var(--sage); border-radius:var(--radius); display:flex; gap:14px; margin-bottom:22px; padding:18px; }
+.settings-card h2,.settings-card p { margin:0; } .settings-card p { color:var(--muted); margin-top:3px; }
+.settings-cover { align-items:center; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:12px; padding-top:15px; } .settings-cover span { color:var(--muted); font-size:.85rem; }
+.growth-film-player--immersive { background:#102018; border:0; border-radius:0; display:grid; inset:0; margin:0; padding:clamp(14px,3vw,34px); position:fixed; z-index:40; }
+.growth-film-player--immersive .growth-film-frame { align-self:center; height:min(76svh,900px); justify-self:center; max-width:min(100%,720px); width:100%; }
+.growth-film-player--immersive .growth-film-controls,.growth-film-player--immersive .growth-film-timeline { color:#fff; margin-left:auto; margin-right:auto; max-width:720px; width:100%; }
+.growth-film-player--immersive .growth-film-controls span,.growth-film-player--immersive .growth-film-timeline__point { color:#d7e5d5; }

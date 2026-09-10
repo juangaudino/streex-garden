@@ -1,5 +1,5 @@
 import { useEffect, useState, type PropsWithChildren } from 'react'
-import { ArrowLeft, Download, House, Leaf, LogOut, MessageCircle, Plus, Sun } from 'lucide-react'
+import { ArrowLeft, Download, House, Leaf, LogOut, MessageCircle, Plus, Settings, Sun } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { signOut } from '../lib/garden-api'
 import { PwaUpdateNotice } from './PwaUpdateNotice'
@@ -66,7 +66,7 @@ export function AppShell({ children, title, subtitle, backTo, actions, presentat
       <header className="topbar">
         <Link className="brand" to="/" aria-label="Ir a Home"><span>Garden</span><img className="brand__mark" src="/brand/garden-x-mark.png" alt="" /></Link>
         <nav className="topbar__nav" aria-label="Navegación principal"><Link className={location.pathname === '/' ? 'topbar__nav-link topbar__nav-link--active' : 'topbar__nav-link'} to="/">Home</Link><Link className={location.pathname.startsWith('/garden') || location.pathname === '/gardens' ? 'topbar__nav-link topbar__nav-link--active' : 'topbar__nav-link'} to="/gardens">Jardines</Link><Link className={location.pathname === '/today' ? 'topbar__nav-link topbar__nav-link--active' : 'topbar__nav-link'} to="/today">Hoy</Link><Link className={location.pathname === '/ask-garden' ? 'topbar__nav-link topbar__nav-link--active' : 'topbar__nav-link'} to="/ask-garden">Ask Garden</Link></nav>
-        <div className="topbar__actions">{isCycleRoute ? <button className="topbar__register" type="button" onClick={openCycleRegister}><Plus size={16} aria-hidden="true" /> Registrar</button> : <Link className="topbar__register" to="/register"><Plus size={16} aria-hidden="true" /> Registrar</Link>}<button className="icon-button" type="button" disabled={signingOut} onClick={() => void handleSignOut()} aria-label="Cerrar sesión"><LogOut size={18} aria-hidden="true" /></button></div>
+        <div className="topbar__actions">{isCycleRoute ? <button className="topbar__register" type="button" onClick={openCycleRegister}><Plus size={16} aria-hidden="true" /> Registrar</button> : <Link className="topbar__register" to="/register"><Plus size={16} aria-hidden="true" /> Registrar</Link>}<Link className="icon-button" to="/settings" aria-label="Ajustes"><Settings size={18} aria-hidden="true" /></Link><button className="icon-button" type="button" disabled={signingOut} onClick={() => void handleSignOut()} aria-label="Cerrar sesión"><LogOut size={18} aria-hidden="true" /></button></div>
       </header>
       {(title || backTo || actions) && (
         <section className="page-heading">

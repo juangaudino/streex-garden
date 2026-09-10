@@ -20,6 +20,7 @@ import { GuestGardenStoryManager } from '../features/gardens/GuestGardenStoryMan
 import { GuestGardenStoryPage } from '../features/gardens/GuestGardenStoryPage'
 import { AskGardenPage } from '../features/gardens/AskGardenPage'
 import { GrowthFilmPage } from '../features/cycles/GrowthFilmPage'
+import { SettingsPage } from '../features/gardens/SettingsPage'
 import { getCurrentUser } from '../lib/garden-api'
 import { getSupabaseClient, hasSupabaseConfiguration } from '../lib/supabase'
 
@@ -77,6 +78,7 @@ export function App() {
       <Route path="/garden/:gardenId" element={<GardenPage />} />
       <Route path="/garden/:gardenId/share" element={<GuestGardenStoryManager />} />
       <Route path="/garden/:gardenId/system" element={<GardenSystemPage />} />
+      <Route path="/settings" element={<SettingsPage />} />
       <Route path="/today" element={<TodayPage />} />
       <Route path="/ask-garden" element={<AskGardenPage />} />
       <Route path="/maintenance/:sessionId" element={<MaintenancePage />} />

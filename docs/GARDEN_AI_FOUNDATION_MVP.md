@@ -55,8 +55,8 @@ Todavía no corresponde fijar el modelo de producción sin ejecutar el benchmark
 
 | Capability | Mínimo para probar | Preferido si el benchmark demuestra mejora | Excesivo para MVP |
 |---|---|---|---|
-| AI Check | Modelo económico multimodal con JSON Schema estricto | Modelo multimodal de mayor razonamiento sólo si reduce falsos positivos | Modelo flagship para cada consulta |
-| Ask Garden | Modelo económico de texto con buen seguimiento de instrucciones | Modelo de razonamiento medio sólo para preguntas ambiguas | Visión o agente multi-herramienta autónomo |
+| AI Check | `gpt-4.1-mini` como candidato mínimo de benchmark: entrada de imagen + Structured Outputs | `gpt-5-mini` sólo si reduce falsos positivos de forma material | Modelo flagship para cada consulta |
+| Ask Garden | `gpt-4.1-nano` como candidato económico inicial; `gpt-4.1-mini` si falla grounding o intención | Modelo de razonamiento medio sólo para preguntas ambiguas | Visión o agente multi-herramienta autónomo |
 
 Umbrales sugeridos antes de elegir:
 

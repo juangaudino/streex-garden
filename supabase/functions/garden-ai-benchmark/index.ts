@@ -33,12 +33,14 @@ Deno.serve(async (request) => {
   const token = authorization.slice('Bearer '.length)
   const { data: userData, error: userError } = await userClient.auth.getUser(token)
   if (userError || !userData.user) return json({ error: 'Authentication required' }, 401)
-  let body: { run_key?: unknown; models?: unknown }
+  let body: { run_key?: unknown; models?: unknown; fixture_ids?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (typeof body.run_key !== 'string' || body.run_key.length < 16 || body.run_key.length > 120 || !/^[a-zA-Z0-9:_-]+$/.test(body.run_key)) return json({ error: 'A valid run_key is required' }, 400)
   const models = body.models === undefined ? [...candidateModels] : Array.isArray(body.models) ? body.models : []
   if (models.length < 1 || models.some((model) => !candidateModels.includes(model as typeof candidateModels[number]))) return json({ error: 'Only the approved benchmark models are allowed' }, 400)
-  const upperBound = models.reduce((sum, model) => sum + fixtures.length * estimate(String(model)), 0)
+  const selectedFixtures = body.fixture_ids === undefined ? fixtures : Array.isArray(body.fixture_ids) ? fixtures.filter((fixture) => body.fixture_ids?.includes(fixture.id)) : []
+  if (selectedFixtures.length < 1 || selectedFixtures.length > fixtures.length) return json({ error: 'fixture_ids must select at least one approved fixture' }, 400)
+  const upperBound = models.reduce((sum, model) => sum + selectedFixtures.length * estimate(String(model)), 0)
   if (upperBound > maxBudgetUsd) return json({ error: 'Benchmark budget guard exceeded', upper_bound_usd: Number(upperBound.toFixed(6)) }, 400)
   const apiKey = Deno.env.get('OPENAI_API_KEY')
   if (!apiKey) return json({ error: 'OPENAI_API_KEY is not configured' }, 503)
@@ -46,7 +48,7 @@ Deno.serve(async (request) => {
   const results: Array<Record<string, unknown>> = []
   for (const model of models as string[]) {
     const provider = new OpenAiResponsesAdapter(apiKey, model)
-    for (const fixture of fixtures) {
+    for (const fixture of selectedFixtures) {
       const requestKey = `benchmark:${body.run_key}:${model}:${fixture.id}`.slice(0, 160)
       const started = await userClient.rpc('garden_ai_start_request', { p_request_key: requestKey, p_request_type: fixture.operation, p_evidence_refs: [], p_proposal_schema_version: fixture.operation === 'ai_check' ? GARDEN_AI_PROPOSAL_SCHEMA_VERSION : 'garden_ai_ask_v1' })
       if (started.error || !started.data || typeof started.data !== 'object') return json({ error: 'Could not create benchmark audit row', fixture_id: fixture.id, model }, 502)
@@ -58,12 +60,12 @@ Deno.serve(async (request) => {
         const response = await provider.analyze({ operation: fixture.operation, context: fixture.context, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: 'benchmark_v1', jsonSchema: fixture.operation === 'ai_check' ? GARDEN_AI_CHECK_JSON_SCHEMA : GARDEN_AI_ASK_JSON_SCHEMA })
         const valid = fixture.operation === 'ai_check' ? Boolean(validateAiCheckProposal(response.raw)) : Boolean(validateAskGardenAnswer(response.raw))
         await userClient.rpc('garden_ai_finish_request', { p_request_id: audit.id, p_status: valid ? 'completed' : 'failed', p_proposal: valid ? response.raw : null, p_model_identifier: response.model, p_duration_ms: Date.now() - startedAt, p_usage_metadata: response.usage ?? {}, p_error_code: valid ? null : 'invalid_structured_output' })
-        results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: valid, latency_ms: Date.now() - startedAt, usage: response.usage ?? {}, estimated_cost_usd: response.usage ? Number((((response.usage.input_tokens ?? 0) / 1_000_000) * pricing[model].input + ((response.usage.output_tokens ?? 0) / 1_000_000) * pricing[model].output).toFixed(6)) : null })
+        results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: valid, latency_ms: Date.now() - startedAt, usage: response.usage ?? {}, estimated_cost_usd: response.usage ? Number((((response.usage.input_tokens ?? 0) / 1_000_000) * pricing[model].input + ((response.usage.output_tokens ?? 0) / 1_000_000) * pricing[model].output).toFixed(6)) : null, ...(valid ? {} : { raw_preview: typeof response.raw === 'string' ? response.raw.slice(0, 600) : JSON.stringify(response.raw).slice(0, 600) }) })
       } catch (error) {
         await userClient.rpc('garden_ai_finish_request', { p_request_id: audit.id, p_status: 'failed', p_error_code: error instanceof Error ? error.message.slice(0, 120) : 'provider_error' })
         results.push({ fixture_id: fixture.id, model, idempotent: false, valid_structured_output: false, latency_ms: Date.now() - startedAt, error: error instanceof Error ? error.message : 'provider_error' })
       }
     }
   }
-  return json({ run_key: body.run_key, owner_id: userData.user.id, fixture_count: fixtures.length, models, upper_bound_usd: Number(upperBound.toFixed(6)), results })
+  return json({ run_key: body.run_key, owner_id: userData.user.id, fixture_count: selectedFixtures.length, models, upper_bound_usd: Number(upperBound.toFixed(6)), results })
 })

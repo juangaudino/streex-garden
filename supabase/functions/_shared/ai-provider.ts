@@ -34,7 +34,16 @@ export class OpenAiResponsesAdapter implements AiProviderAdapter {
       headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-    if (!response.ok) throw new Error(`AI provider HTTP ${response.status}`)
+    if (!response.ok) {
+      let detail = ''
+      try {
+        const errorBody = await response.json() as { error?: { code?: unknown; message?: unknown } }
+        const code = typeof errorBody.error?.code === 'string' ? errorBody.error.code : ''
+        const message = typeof errorBody.error?.message === 'string' ? errorBody.error.message : ''
+        detail = [code, message].filter(Boolean).join(': ').slice(0, 240)
+      } catch { /* preserve the status when the provider body is not JSON */ }
+      throw new Error(`AI provider HTTP ${response.status}${detail ? `: ${detail}` : ''}`)
+    }
     const body = await response.json() as { output_text?: string; usage?: AiProviderResponse['usage'] }
     let raw: unknown = body.output_text
     if (typeof raw === 'string') {

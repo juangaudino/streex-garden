@@ -8,7 +8,7 @@ export const GARDEN_AI_CHECK_JSON_SCHEMA: Record<string, unknown> = {
   additionalProperties: false,
   required: ['schema_version', 'status', 'summary', 'evidence_used', 'overall_visible_state', 'development_recommendations', 'possible_harvest_readiness', 'possible_incident', 'observations', 'uncertainty', 'questions', 'suggested_next_actions', 'confidence'],
   properties: {
-    schema_version: { const: GARDEN_AI_PROPOSAL_SCHEMA_VERSION },
+    schema_version: { type: 'string', enum: [GARDEN_AI_PROPOSAL_SCHEMA_VERSION] },
     status: { enum: ['complete', 'insufficient_evidence'] },
     summary: { type: 'string' },
     evidence_used: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['kind', 'id'], properties: { kind: { enum: ['photo', 'event', 'control'] }, id: { type: 'string' } } } },
@@ -29,7 +29,7 @@ export const GARDEN_AI_ASK_JSON_SCHEMA: Record<string, unknown> = {
   additionalProperties: false,
   required: ['schema_version', 'answer_type', 'answer', 'confirmed_facts', 'suggested_next_actions'],
   properties: {
-    schema_version: { const: GARDEN_AI_ASK_SCHEMA_VERSION },
+    schema_version: { type: 'string', enum: [GARDEN_AI_ASK_SCHEMA_VERSION] },
     answer_type: { enum: ['answer', 'insufficient_evidence', 'needs_clarification'] },
     answer: { type: 'string' },
     confirmed_facts: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['source', 'claim'], properties: { source: { type: 'object', additionalProperties: false, required: ['kind', 'id'], properties: { kind: { enum: ['photo', 'event', 'control'] }, id: { type: 'string' } } }, claim: { type: 'string' } } } },

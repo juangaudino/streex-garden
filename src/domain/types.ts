@@ -114,6 +114,18 @@ export interface ControlProjection {
   gardens: ControlGarden[]
   positions: ControlPosition[]
 }
+export interface GardenHarvestRecord {
+  event_id: string
+  grow_cycle_id: string
+  garden_id: string
+  garden_name: string
+  position_id: string | null
+  position_number: number | null
+  crop_name: string
+  occurred_on: string
+  occurred_at: string
+  note: string | null
+}
 /** Compatibility shape retained for pre-GX-00 CSV consumers. */
 export interface ControlRow { garden_id: string; garden_name: string; position_id: string; position_number: number; grow_cycle_id: string | null; crop_name: string | null; planted_on: string | null; harvest_readiness: HarvestReadiness | null; attention_count: number }
 export interface ImportCandidate { id: string; batch_id: string; source_label: string; candidate_key: string; candidate_type: 'observation' | 'recommendation' | 'conflict'; grow_cycle_id: string | null; occurred_on: string | null; occurred_on_precision: 'exact' | 'unknown'; note: string; source_data: Record<string, unknown>; decision: 'pending' | 'confirmed' | 'rejected'; decision_note: string | null; confirmed_event_id: string | null; created_at: string; decided_at: string | null }

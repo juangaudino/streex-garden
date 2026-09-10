@@ -7,6 +7,7 @@ describe('Ask Garden bounded intent catalog', () => {
     expect(resolveAskGardenIntent('¿Qué pasó con el Pod 7?')).toBe('cycle_history')
     expect(resolveAskGardenIntent('¿Qué incidencias siguen abiertas?')).toBe('open_incidents')
     expect(resolveAskGardenIntent('¿Qué cambió desde mi última revisión?')).toBe('recent_changes')
+    expect(resolveAskGardenIntent('¿Cuándo fue la última cosecha de Cilantro?')).toBe('last_harvest')
   })
 
   it('returns clarification for unsupported or empty questions', () => {

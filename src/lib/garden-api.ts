@@ -1,5 +1,5 @@
 import type { User } from '@supabase/supabase-js'
-import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenSummary, GrowCycleDetail, GuestGardenStory, GuestGardenStorySummary, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
+import type { AttentionItem, AttentionPurpose, ControlProjection, ControlRow, CycleFactType, GardenCoverPhoto, GardenDetail, GardenHarvestRecord, GardenSummary, GrowCycleDetail, GuestGardenStory, GuestGardenStorySummary, GuestPlantStory, GuestPlantStorySummary, HomeDashboard, ImportCandidate, MaintenanceSession, ObservationInput, PhotoEvidence, PhysicalSiteKind } from '../domain/types'
 import { photoRenditionPath, storedRenditionFor, photoTransformFor, type PhotoRendition } from '../domain/photo-renditions'
 import { createPhotoRenditions } from './photo-renditions'
 import { photoContentType, sha256Hex } from '../domain/photo-integrity'
@@ -114,6 +114,11 @@ export async function acknowledgeHomeSnapshot(visitId: string, snapshotCursor: n
 export async function getAttention(): Promise<AttentionItem[]> {
   const { data, error } = await getSupabaseClient().rpc('garden_get_attention')
   return unwrap(data as AttentionItem[] | null, error)
+}
+
+export async function getHarvestHistory(): Promise<GardenHarvestRecord[]> {
+  const { data, error } = await getSupabaseClient().rpc('garden_get_harvest_history')
+  return unwrap(data as GardenHarvestRecord[] | null, error)
 }
 
 export async function createAttentionItem(input: {

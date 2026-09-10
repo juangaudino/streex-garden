@@ -1,4 +1,4 @@
-export type AskGardenIntent = 'today_attention' | 'cycle_history' | 'missing_germination' | 'open_incidents' | 'harvest_candidates' | 'recent_changes'
+export type AskGardenIntent = 'today_attention' | 'cycle_history' | 'missing_germination' | 'open_incidents' | 'harvest_candidates' | 'last_harvest' | 'recent_changes'
 
 export interface AskGardenToolDefinition {
   intent: AskGardenIntent
@@ -12,6 +12,7 @@ export const ASK_GARDEN_TOOLS: readonly AskGardenToolDefinition[] = [
   { intent: 'missing_germination', description: 'Posiciones ocupadas sin germinación confirmada', maxRows: 100 },
   { intent: 'open_incidents', description: 'Incidencias abiertas por Garden/Cycle', maxRows: 100 },
   { intent: 'harvest_candidates', description: 'Ciclos con readiness que requiere evaluación o está listo', maxRows: 100 },
+  { intent: 'last_harvest', description: 'Última cosecha registrada, opcionalmente filtrada por planta', maxRows: 200 },
   { intent: 'recent_changes', description: 'Cambios desde la última visita', maxRows: 100 },
 ]
 
@@ -20,6 +21,7 @@ const patterns: Array<[AskGardenIntent, RegExp]> = [
   ['cycle_history', /qu[eé] pas[oó]|historia|historial|evolucion[oó]?|ciclo/i],
   ['missing_germination', /sin germinaci[oó]n|no tienen germinaci[oó]n|germinaci[oó]n confirmada/i],
   ['open_incidents', /incidencia|incidencias|problema abierto|abiertas/i],
+  ['last_harvest', /(?:[uú]ltim[ao].*cosech|cu[aá]ndo.*cosech|cosech.*[uú]ltim)/i],
   ['harvest_candidates', /cosech|harvest|lista.*cosech|evaluar.*cosech/i],
   ['recent_changes', /cambi[oó]|desde.*[úu]ltima|[úu]ltima revisi[oó]n|since last/i],
 ]

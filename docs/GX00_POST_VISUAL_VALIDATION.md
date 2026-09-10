@@ -1,3 +1,5 @@
+> **Registro histórico:** validación GX-00 previa a Garden AI y a los pases posteriores de UX. Para QA actual consulta [QA_FIELD_CHECKLIST.md](QA_FIELD_CHECKLIST.md).
+
 # GX-00 + UX post-visual validation
 
 ## Automated evidence

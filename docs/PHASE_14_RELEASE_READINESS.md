@@ -1,3 +1,5 @@
+> **Registro histórico:** estos requisitos correspondían al lanzamiento sin IA. La operación actual se documenta en [OPERATIONS_AND_DEPLOYMENT.md](OPERATIONS_AND_DEPLOYMENT.md).
+
 # Phase 14 — Preparación para lanzamiento sin IA
 
 Fecha: 7 de septiembre de 2026

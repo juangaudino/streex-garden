@@ -1,3 +1,5 @@
+> **Registro histórico:** evidencia del primer despliegue. No describe por sí sola el runtime actual; consulta [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
 # Phase 16 — Publicación controlada
 
 Fecha: 7 de septiembre de 2026

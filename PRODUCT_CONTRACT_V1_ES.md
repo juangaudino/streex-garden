@@ -1,3 +1,5 @@
+> **Nota de estado (10 sep 2026):** este contrato conserva las decisiones V1 de su fecha. Para el estado implementado y los límites actuales consulta [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md).
+
 # STREEX GARDEN — PRODUCT CONTRACT v1
 
 **Fecha:** 6 de septiembre de 2026. **Idioma del contrato y de la experiencia inicial:** español.

@@ -1,3 +1,5 @@
+> **Registro histórico:** esta fase validó deliberadamente el núcleo sin IA. Garden AI V1 se implementó después; consulta [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
 # Phase 13 — Validación MVP sin IA
 
 **Estado:** cerrada. Esta fase validó el núcleo manual y documentó la evidencia. AI Check y Ask Garden permanecen deliberadamente fuera de ejecución: no hay proveedor, credenciales ni llamadas de IA configuradas.

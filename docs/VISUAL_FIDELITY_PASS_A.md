@@ -1,3 +1,5 @@
+> **Registro histórico:** Pass A quedó seguido por Pass B y pases de coherencia posteriores. La dirección vigente debe verificarse en el producto y en [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
 # Garden X — Pasada A
 
 Implementación: 8 de septiembre de 2026. Pendiente de aprobación visual del propietario. Pasada B no iniciada.

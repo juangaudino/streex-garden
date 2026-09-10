@@ -1,3 +1,5 @@
+> **Registro histórico:** este runbook preparó el primer despliegue. Para procedimiento vigente consulta [OPERATIONS_AND_DEPLOYMENT.md](OPERATIONS_AND_DEPLOYMENT.md).
+
 # Phase 15 — Despliegue controlado y respaldo operativo
 
 ## Estado

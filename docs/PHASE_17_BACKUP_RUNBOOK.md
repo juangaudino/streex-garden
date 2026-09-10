@@ -1,3 +1,5 @@
+> **Registro operativo histórico:** el diseño y simulacro se conservaron como evidencia. Antes de operar, revisar secretos y destino vigentes conforme a [OPERATIONS_AND_DEPLOYMENT.md](OPERATIONS_AND_DEPLOYMENT.md).
+
 # Phase 17 — Backup operativo
 
 ## Diseño

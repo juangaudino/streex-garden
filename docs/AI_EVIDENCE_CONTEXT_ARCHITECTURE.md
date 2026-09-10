@@ -1,39 +1,34 @@
-# AI Evidence / Context architecture
+# Garden AI — Evidence / Context architecture
 
-Garden X Core remains the source of truth: Grow Cycles, valid events,
-corrections/invalidation, provenance, Control V2 and Attention determine facts.
-`garden.resolve_cycle_evidence` is a small internal context resolver. It accepts
-an already-authorized owner and cycle, a temporal boundary, and explicit note /
-historical-photo selection. It returns structured evidence and private photo
-identity/metadata only. It has no model, proposal, delivery URL, grant, or write
-behavior.
+Garden X Core mantiene la fuente de verdad: Grow Cycles, eventos vigentes, invalidaciones, provenance, Control V2 y Attention. La capa de contexto compone evidencia mínima y autorizada; no decide hechos ni entrega contenido público.
 
-## Consumers
+## Frontera compartida
 
-- **AI Check** will authorize the owner and selected cycle/photo, ask the
-  resolver for the pertinent evidence, then produce a non-canonical proposal.
-  Only a later explicit user action can call existing canonical Garden RPCs.
-- **Ask Garden** will authorize its internal scope, use Control V2, Attention,
-  Home Dashboard and Cycle APIs as canonical projections, then use this resolver
-  only for evidence/history/photo context relevant to the question.
-- **Guest Plant Story** already uses the resolver, then adapts its output to the
-  unchanged human story contract. Its Edge Function remains responsible for
-  short-lived signed URLs.
-- **Sofi / external sharing** is deferred. If later justified, it should add an
-  authorization and delivery adapter outside this resolver; it must not make
-  internal AI depend on external grants or signed URLs.
+```text
+Authorization by consumer
+  → owner-scoped context wrapper
+  → garden.resolve_cycle_evidence (internal)
+  → consumer-specific delivery
+```
 
-## Deliberately deferred decisions
+La composición puede reutilizarse; la autorización no se unifica artificialmente.
 
-No provider/model, prompt, proposal persistence/versioning, retention, image
-budget, conversation policy, or final AI privacy policy is chosen here. The
-future phase must define proposal schema, owner authorization scopes, question
-context selection and `as_of` semantics before adding public AI endpoints.
+- **AI Check / AI Compare:** autorización de dueño/sesión, ciclo y fotos explícitas. La función server-side obtiene sólo la rendition privada necesaria.
+- **Ask Garden:** autorización de dueño/sesión y consultas canónicas acotadas: Control V2, Attention, germinación, cosechas, cambios, incidencias e historial limitado.
+- **Guest Plant/Garden Story:** token revocable y contrato público específico. Sólo estas funciones generan URLs firmadas temporales de foto.
 
-## Photo delivery
+## Resolver interno
 
-Private Storage is unchanged and files are never duplicated. The resolver emits
-photo identity, capture precision, provenance and private storage metadata to a
-trusted server boundary. Each consumer chooses delivery later: server-side bytes
-for AI Check, metadata-first retrieval for Ask Garden, signed URLs for Guest,
-and an independently approved mechanism for any future external consumer.
+`garden.resolve_cycle_evidence(p_owner_id, p_grow_cycle_id, p_as_of, p_note_event_ids, p_historical_photo_ids)` es interno, estable y read-only. Valida owner/cycle, omite eventos invalidados o posteriores a `p_as_of`, y devuelve hechos estructurados con metadata privada de fotos. No tiene `EXECUTE` público, no llama modelos, no crea propuestas, no firma URLs y no escribe datos.
+
+## Invariantes
+
+- Un consumidor nunca recibe evidencia de otro owner.
+- Una foto seleccionada no habilita una galería completa por defecto.
+- Los datos confirmados prevalecen sobre notas, fotos e interpretación AI.
+- Una ausencia de evidencia no se convierte en evidencia negativa.
+- Historical Photos conservan checksum, provenance, precision temporal y mapping sin reinterpretación.
+
+## Extensiones deliberadamente fuera de alcance
+
+MCP, OAuth, Sofi/ChatGPT Bridge, autorización externa y proveedores adicionales requieren su propia decisión de autorización y privacidad. No deben ampliar permisos del resolver interno.

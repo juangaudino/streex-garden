@@ -1,3 +1,5 @@
+> **Nota de estado (10 sep 2026):** este documento conserva una propuesta fechada. Para funcionalidades y operación actuales consulta [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md).
+
 # Streex Garden — Propuesta de producto y arquitectura
 
 Fecha: 6 de septiembre de 2026. Estado: propuesta para revisión; no constituye aprobación de implementación.

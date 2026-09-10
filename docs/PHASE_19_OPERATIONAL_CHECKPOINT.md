@@ -1,3 +1,5 @@
+> **Registro histórico:** checkpoint automático del 8 de septiembre. Para estado de producto actual consulta [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
 # Phase 19 — Punto de control operativo
 
 Fecha: 8 de septiembre de 2026

@@ -1,36 +1,50 @@
-# Garden AI V1 — implementación
+# Garden AI V1 — runtime actual
 
-Garden X continúa siendo la fuente de verdad. La IA sólo interpreta evidencia y propone acciones; cualquier escritura canónica requiere confirmación humana mediante los flujos existentes.
+Garden X es la fuente de verdad. Garden AI interpreta evidencia autorizada, explica y propone. No confirma ni guarda automáticamente hechos canónicos.
 
 ## Estado
 
-- Modelo de producción V1: **GPT-5.6 Luna** para AI Check, AI Compare y síntesis de Ask Garden.
-- Intenciones determinísticas de Ask Garden: sin proveedor.
-- `GARDEN_AI_ENABLED=false` durante esta fase. La activación controlada es una decisión posterior.
-- Responses API, Structured Outputs, `store:false`, Storage privado y contexto owner-scoped.
-- Las propuestas AI son auditables y no se convierten en eventos de Plant Story automáticamente.
+Garden AI V1 está implementado y su activación depende de la flag server-side `GARDEN_AI_ENABLED`. El runtime operativo usa `gpt-5.6-luna` mediante la Edge Function autenticada `garden-ai` y OpenAI Responses API con Structured Outputs y `store: false`.
+
+La flag es una decisión explícita de operación, no una constante de cliente: Garden X debe seguir funcionando correctamente con IA apagada.
 
 ## Superficies
 
-- **AI Check** vive dentro del Grow Cycle y analiza una fotografía ya guardada. No exige una segunda carga. Expone como máximo una acción canónica prellenada.
-- **AI Compare** recibe exactamente dos fotografías explícitas del mismo ciclo.
-- **Ask Garden** es una ruta principal. Resuelve primero intents canónicos (Hoy, germinación, cosecha, historial y cambios). La síntesis Luna es opcional y usa contexto ya resuelto.
-- **Growth Film** es determinista: reproduce fotografías reales e hitos confirmados de un único Grow Cycle. No genera imágenes ni llama a IA.
+- **Ask Garden:** chat de sesión no persistente. Resuelve primero intenciones determinísticas —Atención, Control V2, germinación, cosechas, cambios e incidencias— y usa síntesis grounded para preguntas abiertas. No genera SQL ni recibe acceso libre a la base.
+- **AI Check:** analiza una foto ya almacenada y autorizada de un Grow Cycle. La propuesta es estructurada, validada y no canónica.
+- **AI Check temporal:** durante Maintenance puede analizar una rendition local antes de guardar. La foto original permanece local hasta la confirmación explícita de Guardar; la IA no crea Storage, fotos, eventos ni hechos.
+- **AI Compare:** compara exactamente dos fotos seleccionadas del mismo ciclo. No busca ni analiza una galería completa de forma automática.
+- **Growth Film:** no es IA. Reproduce fotos reales e hitos confirmados de un solo ciclo; no inventa imágenes ni datos.
 
-## Integridad y evidencia
+## Flujo de seguridad
 
-La jerarquía es: hecho confirmado, observación humana, foto, interpretación AI y conocimiento general. Ausencia de evidencia no prueba salud, ausencia de incidencia ni cero plantas. Se conserva la precisión temporal, los conteos mínimos y el provenance de fotografías históricas.
+```text
+Sesión autenticada
+  → autorización owner-scoped
+  → contexto/evidencia mínima
+  → garden-ai Edge Function
+  → adapter OpenAI server-side
+  → Structured Output validado
+  → propuesta privada no canónica
+  → flujo canónico existente con confirmación humana
+```
 
-## Costes y fallos
+El navegador no envía `owner_id`. El resolver interno `garden.resolve_cycle_evidence(...)` sigue restringido; los wrappers autenticados validan dueño, ciclo y foto antes de construir contexto. Las fotos proceden de Storage privado o de una rendition temporal; nunca de URLs públicas o permanentes.
 
-El presupuesto interno inicial es configurable y bloquea nuevas llamadas al alcanzar 100%. Las solicitudes llevan propósito (`production`, `benchmark`, `development`), idempotencia y metadatos de uso. Un fallo de proveedor nunca modifica hechos, ciclos, atención, fotos ni mantenimiento. Ask Garden determinístico, Growth Film y el resto de Garden X siguen funcionando con IA apagada.
+## Propuesta y auditoría
 
-## Reglas visuales
+La propuesta V1 conserva versiones de estándar, contexto, contrato, prompt y adapter, además de evidencia usada, duración, uso/coste cuando esté disponible y un error seguro. No persiste prompts completos, razonamiento interno, signed URLs ni bytes de imágenes. La propuesta no se convierte en Plant Story ni en un evento.
 
-La salida debe ser breve, contextual (Garden · Pod · planta), prudente y con incertidumbre explícita. No se debe declarar germinación, daño, enfermedad, conteo o intervención a partir de una imagen ambigua. La ausencia de señales visibles se expresa como `no_visible_signs`, no como una certificación.
+Una acción sugerida puede abrir un flujo existente prellenado —seguimiento, incidencia, conteo o readiness—. El usuario revisa y confirma el formulario normal de Garden X antes de cualquier escritura.
 
-## Activación posterior
+## Límites de V1
 
-Antes de activar: revisar el panel de coste, confirmar límites del proyecto OpenAI, comprobar secretos server-side, ejecutar smoke controlado con una cuenta de prueba y validar que la UI distingue hechos confirmados de sugerencias AI. No activar el flag como parte de un deploy rutinario.
+- Sin memoria persistente ni conversación larga almacenada.
+- Sin acciones autónomas, tareas programadas ni análisis masivo de fotos.
+- Sin MCP, OAuth, Sofi/ChatGPT Bridge ni proveedor múltiple.
+- Sin hechos, ciclos, Attention o fotos creados por la IA.
+- Sin interpretación de Historical Photos que cambie fechas, mapping o hechos existentes.
 
-El benchmark/model-selection phase quedó cerrado en el commit `b3178bc`; sus resultados permanecen como evidencia histórica de la elección de Luna.
+## Operación
+
+Los secretos se configuran sólo en Supabase Edge Functions. Consulta [OPERATIONS_AND_DEPLOYMENT.md](OPERATIONS_AND_DEPLOYMENT.md). Las pruebas de uso real están en [QA_FIELD_CHECKLIST.md](QA_FIELD_CHECKLIST.md).

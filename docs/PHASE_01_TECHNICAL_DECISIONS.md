@@ -1,3 +1,5 @@
+> **Registro histórico:** las decisiones de esta fase describen su momento de implementación. El producto actual, incluido Garden AI V1, se documenta en [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
 # Phase 1 — Decisiones técnicas
 
 ## Base y límites

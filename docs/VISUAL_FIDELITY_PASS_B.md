@@ -1,3 +1,5 @@
+> **Registro histórico:** esta pasada visual es evidencia local de su fecha. No sustituye QA con datos reales ni los refinamientos posteriores de Garden AI.
+
 # Visual Fidelity Pass B — Refinement Pass
 
 ## Scope

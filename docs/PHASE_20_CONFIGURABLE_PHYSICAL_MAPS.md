@@ -1,3 +1,5 @@
+> **Estado:** mapas configurables incorporados. Las instrucciones de aplicación sirven para entornos nuevos; no reaplicar SQL en producción sin reconciliar migraciones. Consulta [OPERATIONS_AND_DEPLOYMENT.md](OPERATIONS_AND_DEPLOYMENT.md).
+
 # Phase 20 — Mapas físicos configurables
 
 ## Decisión técnica

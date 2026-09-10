@@ -10,6 +10,7 @@ import { captureLabel, recordLabel, storyInterval } from './photo-presentation'
 import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
 import { PhotoCoverActions } from './PhotoCoverActions'
 import { buildPlantStoryMilestones } from './plant-story'
+import { AiCheckPanel } from './AiCheckPanel'
 
 type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
 
@@ -87,6 +88,7 @@ function PhotoGalleryScreen({ initialCycle, preselectedIds = [] }: { initialCycl
       {photos.length < 2 && <StatePanel kind="empty" title={photos.length === 1 ? 'Una fotografía, el comienzo de su historia' : 'Todavía sin fotografías confirmadas'}>La comparación estará disponible cuando haya dos originales confirmados. Las fotos pendientes de subir no se usan para comparar.</StatePanel>}
       {photos.length >= 2 && <><div className="comparison-actions"><span>{selectedIds.length}/2 seleccionadas</span><button className="primary-button" type="button" disabled={!canCompare(selectedIds)} onClick={() => setShowComparison(true)}>Comparar fotos</button></div><div className="gallery-grid">{photos.map((event) => <PhotoTile key={event.photo.id} event={event} selected={selectedIds.includes(event.photo.id)} disabled={!selectedIds.includes(event.photo.id) && selectedIds.length >= 2} onToggle={() => toggle(event.photo.id)} />)}</div></>}
       {showComparison && selected.length === 2 && <section className="comparison-section" ref={comparison} aria-labelledby="comparison-title"><div className="section-heading"><h2 id="comparison-title" tabIndex={-1}>Comparación</h2><span>Mismo ciclo · {cycle.crop_name}</span></div><p className="quiet-copy">Las fotos pertenecen al mismo ciclo. Esta vista no infiere crecimiento ni modifica los originales.</p><div className="comparison-grid"><ComparisonPhoto key={selected[0].photo.id} event={selected[0]} /><ComparisonPhoto key={selected[1].photo.id} event={selected[1]} /></div></section>}
+      {selected.length === 2 && <AiCheckPanel key={selected.map((event) => event.photo.id).join(':')} cycle={cycle} photoId={selected[0].photo.id} comparePhotoId={selected[1].photo.id} title="Analizar esta comparación" />}
       </section>
       <Link className="text-link" to={`/cycle/${cycle.id}`}>Volver al historial de {cycle.crop_name}</Link>
     </>}

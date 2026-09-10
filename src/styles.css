@@ -226,6 +226,9 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .ai-check-result__context { color: var(--moss); font-size: .78rem; font-weight: 700; }
 .ai-check-result details { background: var(--sage); border-radius: 12px; padding: 10px 12px; }
 .ai-check-result details summary { color: var(--forest); cursor: pointer; font-weight: 700; }
+.ai-check-loading { align-items: center; background: var(--sage); border-radius: 14px; color: var(--forest); display: flex; font-size: .86rem; font-weight: 700; gap: 10px; padding: 12px; }
+.ai-check-loading__mark { align-items: center; animation: ai-check-pulse 1.25s ease-in-out infinite; background: var(--paper); border-radius: 50%; display: inline-flex; height: 32px; justify-content: center; width: 32px; }
+@keyframes ai-check-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(87,116,82,.12); transform: scale(1); } 50% { box-shadow: 0 0 0 8px rgba(87,116,82,.04); transform: scale(1.06); } }
 .ask-garden-hero, .growth-film-intro { align-items: flex-start; display: flex; gap: 12px; }
 .ask-garden-hero { background: var(--sage); border-radius: var(--radius); color: var(--forest); margin-bottom: 24px; padding: 18px; }
 .ask-garden-hero h2, .growth-film-intro h2 { font-family: 'DM Sans', sans-serif; font-size: 1.08rem; letter-spacing: 0; margin-bottom: 5px; }
@@ -257,6 +260,7 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .growth-film-timeline__point span { border-top: 2px solid var(--line); color: var(--forest); font-family: 'Fraunces', serif; font-size: 1.2rem; padding-top: 5px; }
 .growth-film-timeline__point--active span { border-color: var(--forest); }
 .growth-film-timeline__point small { font-size: .68rem; }
+.growth-film-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .growth-film-milestones ul { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
 .growth-film-milestones li { border-bottom: 1px solid var(--line); display: grid; gap: 3px; padding-bottom: 10px; }
 .growth-film-milestones li:last-child { border-bottom: 0; padding-bottom: 0; }

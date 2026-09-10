@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useState, type ChangeEvent } from 'react'
-import { Camera, ClipboardPenLine, Plus, RefreshCw } from 'lucide-react'
-import type { GrowCycleDetail, MaintenancePosition, ObservationDraft } from '../../domain/types'
+import { Camera, ClipboardPenLine, Plus, RefreshCw, Sparkles } from 'lucide-react'
+import type { AttentionPurpose, GrowCycleDetail, MaintenancePosition, ObservationDraft } from '../../domain/types'
 import { photoContentType } from '../../domain/photo-integrity'
 import { getObservationDrafts, saveObservationDraft } from '../../lib/offline-observation-store'
 import { getCycle } from '../../lib/garden-api'
 import { syncObservationDraft } from '../../lib/observation-sync'
 import { ObservationComposer } from '../cycles/ObservationComposer'
-import { CycleFactRecorder } from '../cycles/CycleFactRecorder'
+import { CycleFactRecorder, type FactChoice } from '../cycles/CycleFactRecorder'
 import { AttentionTaskForm } from './AttentionTaskTools'
+import { AiCheckPanel } from '../cycles/AiCheckPanel'
+import type { GardenAiCanonicalAction } from '../../domain/ai'
 
 type InspectionSource = 'observation' | 'fact' | 'manual'
 
@@ -22,7 +24,9 @@ export function MaintenancePositionActions({
 }) {
   const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
   const [cycleError, setCycleError] = useState<string | null>(null)
-  const [action, setAction] = useState<'observation' | 'fact' | 'attention' | null>(null)
+  const [action, setAction] = useState<'observation' | 'fact' | 'attention' | 'ai_check' | null>(null)
+  const [factChoice, setFactChoice] = useState<FactChoice | undefined>()
+  const [attentionPurpose, setAttentionPurpose] = useState<AttentionPurpose | undefined>()
   const [drafts, setDrafts] = useState<ObservationDraft[]>([])
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
@@ -129,6 +133,17 @@ export function MaintenancePositionActions({
     }
   }
 
+  const handleAiAction = (nextAction: GardenAiCanonicalAction) => {
+    if (nextAction.kind === 'create_follow_up') {
+      const label = nextAction.label.toLowerCase()
+      setAttentionPurpose(label.includes('poda') ? 'evaluate_pruning' : label.includes('soporte') ? 'evaluate_support' : 'evaluate_thinning')
+      setAction('attention')
+      return
+    }
+    setFactChoice(nextAction.kind === 'record_incident' ? 'incident' : nextAction.kind === 'confirm_plant_count' ? 'count' : 'readiness')
+    setAction('fact')
+  }
+
   if (!cycleId) return null
   if (!cycle) return <p className={cycleError ? 'inline-message inline-message--error' : 'quiet-copy'}>{cycleError ?? 'Consultando acciones del ciclo…'}</p>
 
@@ -136,12 +151,14 @@ export function MaintenancePositionActions({
   return <section className="maintenance-actions" aria-label={`Acciones para ${position.garden_name} posición ${position.position_number}`}>
     <div className="maintenance-actions__buttons">
       <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'observation' ? null : 'observation')}><Camera size={16} aria-hidden="true" /> Foto / observación</button>
-      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'fact' ? null : 'fact')}><ClipboardPenLine size={16} aria-hidden="true" /> Registrar estado o acción</button>
-      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'attention' ? null : 'attention')}><Plus size={16} aria-hidden="true" /> Seguimiento</button>
+      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => { setFactChoice(undefined); setAction(action === 'fact' ? null : 'fact') }}><ClipboardPenLine size={16} aria-hidden="true" /> Registrar estado o acción</button>
+      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => { setAttentionPurpose(undefined); setAction(action === 'attention' ? null : 'attention') }}><Plus size={16} aria-hidden="true" /> Seguimiento</button>
+      <button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'ai_check' ? null : 'ai_check')}><Sparkles size={16} aria-hidden="true" /> AI Check</button>
     </div>
     {action === 'observation' && <ObservationComposer growCycleId={cycle.id} onSaved={async () => { await recordAndContinue('observation'); await loadDrafts() }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Pendiente de subir: se guardó en este dispositivo. Esta posición seguirá pendiente hasta confirmarse.') }} />}
-    {action === 'fact' && <CycleFactRecorder cycle={cycle} onSaved={async () => { await recordAndContinue('fact') }} />}
-    {action === 'attention' && <div className="maintenance-action-panel"><p className="quiet-copy">Crear una atención no declara por sí sola que la planta haya sido inspeccionada.</p><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} onCreated={() => setSyncMessage('Seguimiento guardado. Marca la posición como inspeccionada cuando hayas terminado de observarla.')} compact /></div>}
+    {action === 'fact' && <CycleFactRecorder cycle={cycle} initialChoice={factChoice} initialOpen onSaved={async () => { await recordAndContinue('fact'); setFactChoice(undefined) }} />}
+    {action === 'attention' && <div className="maintenance-action-panel"><p className="quiet-copy">Crear una atención no declara por sí sola que la planta haya sido inspeccionada.</p><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} initialPurpose={attentionPurpose} initialOpen onCreated={() => { setAttentionPurpose(undefined); setSyncMessage('Seguimiento guardado. Marca la posición como inspeccionada cuando hayas terminado de observarla.') }} compact /></div>}
+    {action === 'ai_check' && <AiCheckPanel cycle={cycle} onCanonicalAction={handleAiAction} onContinue={() => setAction(null)} />}
     {drafts.length > 0 && <div className="maintenance-sync" aria-live="polite"><strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong>{drafts.some((draft) => draft.status === 'needs_review') && <span>Hay una observación que requiere revisión manual por cambio de ciclo.</span>}{syncMessage && <span>{syncMessage}</span>}{retryableDrafts.some((draft) => draft.photo && draft.photoMetadata) && <label className="file-button secondary-button--compact">Volver a elegir original<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={(event) => void restoreDraftOriginal(retryableDrafts.find((draft) => draft.photo && draft.photoMetadata)!, event)} /></label>}{retryableDrafts.length > 0 && <button className="secondary-button secondary-button--compact" type="button" disabled={syncing || !navigator.onLine} onClick={() => void syncDrafts()}><RefreshCw size={15} aria-hidden="true" />{syncing ? 'Sincronizando…' : 'Reintentar ahora'}</button>}</div>}
     <button className="text-button maintenance-actions__manual" type="button" disabled={disabled} onClick={() => void markManually()}>Marcar inspeccionada sin declarar salud</button>
   </section>

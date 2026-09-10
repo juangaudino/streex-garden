@@ -5,7 +5,7 @@ import { recordCycleFact } from '../../lib/garden-api'
 
 const today = () => new Date().toISOString().slice(0, 10)
 
-type FactChoice = 'germination' | 'count' | 'state' | 'development' | 'readiness' | 'intervention' | 'incident' | 'resolve_incident'
+export type FactChoice = 'germination' | 'count' | 'state' | 'development' | 'readiness' | 'intervention' | 'incident' | 'resolve_incident'
 
 const choiceLabels: Record<FactChoice, string> = {
   germination: 'Germinación confirmada',
@@ -18,9 +18,9 @@ const choiceLabels: Record<FactChoice, string> = {
   resolve_incident: 'Resolver incidencia',
 }
 
-export function CycleFactRecorder({ cycle, onSaved }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void }) {
-  const [open, setOpen] = useState(false)
-  const [choice, setChoice] = useState<FactChoice>('germination')
+export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean }) {
+  const [open, setOpen] = useState(initialOpen)
+  const [choice, setChoice] = useState<FactChoice>(initialChoice ?? 'germination')
   const [occurredOn, setOccurredOn] = useState(today())
   const [note, setNote] = useState('')
   const [count, setCount] = useState('')

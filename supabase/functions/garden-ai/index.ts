@@ -1,7 +1,7 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
-import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
-import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
-import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from '../_shared/ai-contract.ts'
+import { OpenAiResponsesAdapter } from './_shared/ai-provider.ts'
+import { runAiCheckRuntime } from './_shared/garden-ai-runtime.ts'
+import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from './_shared/ai-contract.ts'
 
 const allowedOrigin = Deno.env.get('GARDEN_AI_ALLOWED_ORIGIN') ?? 'https://garden.getstreex.com'
 const corsHeaders = { 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Origin': allowedOrigin, 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' }

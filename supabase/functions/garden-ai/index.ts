@@ -12,9 +12,9 @@ const supabaseUrl = Deno.env.get('SUPABASE_URL')
 const anonKey = Deno.env.get('SUPABASE_ANON_KEY')
 const featureEnabled = Deno.env.get('GARDEN_AI_ENABLED') === 'true'
 const providerName = Deno.env.get('GARDEN_AI_PROVIDER') ?? 'openai'
-// Luna is the reviewed V1 default; an explicit secret may still override it
-// for a controlled benchmark or staged rollout without changing the client.
-const model = Deno.env.get('GARDEN_AI_MODEL') ?? 'gpt-5.6-luna'
+// Luna is the only normal V1 model. Benchmark candidates are isolated in the
+// garden-ai-benchmark function and cannot change this production capability.
+const model = 'gpt-5.6-luna'
 if (!supabaseUrl || !anonKey) throw new Error('Missing Supabase server configuration')
 
 async function startRequest(client: ReturnType<typeof createClient>, ownerId: string, key: string, type: 'ai_check' | 'ask_garden', evidenceRefs: unknown[]) {

@@ -775,3 +775,40 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .growth-film-player--immersive .growth-film-frame { box-shadow:none; }
 @media (prefers-reduced-motion: reduce) { .growth-film-frame__layer--previous, .growth-film-frame__layer--current, .ask-garden-thinking i { animation:none; } }
 @media (max-width:540px) { .ask-garden-chat__header { align-items:flex-start; } .ask-garden-chat__header-actions > span { display:none; } .ask-garden-thread { max-height:calc(74svh - 136px); min-height:390px; } .ask-garden-question { max-width:88%; } .ask-garden-answer { max-width:92%; } .ask-garden-empty { padding-left:0; } .ask-garden-compose { bottom:calc(env(safe-area-inset-bottom) + 6px); } .growth-film-export { align-items:flex-start; flex-direction:column; } }
+
+
+/* Ask Garden owns its scroll area on phone-sized screens. The composer stays
+   visible while only the message list scrolls, preventing nested page scroll. */
+@media (max-width: 719px) {
+  .app-shell:has(.ask-garden-chat) { padding-bottom: 0; }
+  .app-shell:has(.ask-garden-chat) .page-content { padding-top: 8px; }
+  .ask-garden-chat {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: calc(100svh - 78px - 70px - env(safe-area-inset-bottom));
+    min-height: 0;
+    overflow: hidden;
+  }
+  .ask-garden-thread {
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 22px 0;
+  }
+  .ask-garden-compose {
+    bottom: auto;
+    margin: 0 0 max(8px, env(safe-area-inset-bottom));
+    position: relative;
+  }
+}
+@media (min-width: 720px) {
+  .ask-garden-chat {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    height: min(72svh, 760px);
+    min-height: 0;
+    overflow: hidden;
+  }
+  .ask-garden-thread { max-height: none; min-height: 0; }
+  .ask-garden-compose { bottom: 0; position: relative; }
+}

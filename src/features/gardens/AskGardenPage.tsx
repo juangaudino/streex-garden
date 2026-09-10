@@ -14,6 +14,13 @@ function normalizeSearch(value: string): string {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 }
 
+function sourceLabel(source: string): string {
+  if (source === 'control') return 'Control V2'
+  if (source === 'event') return 'Historial confirmado'
+  if (source === 'photo') return 'Evidencia fotográfica'
+  return source
+}
+
 function harvestDate(value: string): string {
   return new Intl.DateTimeFormat('es-US', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`))
 }
@@ -96,7 +103,7 @@ export function AskGardenPage() {
     {loading && <StatePanel kind="loading" title="Preparando contexto de tu jardín" />}
     {error && <StatePanel kind="error" title="Ask Garden no está disponible" onRetry={() => void load()}>{error}</StatePanel>}
     {control && <section className="ask-garden-chat" aria-label="Conversación con Ask Garden">
-      <div className="ask-garden-thread" aria-live="polite">{messages.length === 0 && <div className="ask-garden-empty"><MessageCircle size={22} aria-hidden="true" /><p>Pregunta por tu jardín. Usaré primero los datos confirmados.</p><div className="ask-garden-suggestions">{suggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => { setQuestion(suggestion); void submit(suggestion) }}>{suggestion}</button>)}</div></div>}{messages.map((message) => <article key={message.id} className="ask-garden-message"><p className="ask-garden-question">{message.question}</p><div className="ask-garden-answer"><p>{message.answer}</p><small>{message.mode === 'ai' ? 'Interpretación de Garden AI · ' : ''}Basado en {message.sources.filter(Boolean).join(' · ') || 'Garden X'}</small>{message.action && <Link className="text-link" to={message.action.to}>{message.action.label} <ArrowRight size={14} aria-hidden="true" /></Link>}</div></article>)}{busy && <article className="ask-garden-message"><div className="ask-garden-answer ask-garden-answer--loading">Consultando Garden X…</div></article>}<div ref={threadEndRef} /></div>
+      <div className="ask-garden-thread" aria-live="polite">{messages.length === 0 && <div className="ask-garden-empty"><MessageCircle size={22} aria-hidden="true" /><p>Pregunta por tu jardín. Usaré primero los datos confirmados.</p><div className="ask-garden-suggestions">{suggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => { setQuestion(suggestion); void submit(suggestion) }}>{suggestion}</button>)}</div></div>}{messages.map((message) => <article key={message.id} className="ask-garden-message"><p className="ask-garden-question">{message.question}</p><div className="ask-garden-answer"><p>{message.answer}</p><small>{message.mode === 'ai' ? 'Interpretación de Garden AI · ' : ''}Basado en {message.sources.filter(Boolean).map(sourceLabel).join(' · ') || 'Garden X'}</small>{message.action && <Link className="text-link" to={message.action.to}>{message.action.label} <ArrowRight size={14} aria-hidden="true" /></Link>}</div></article>)}{busy && <article className="ask-garden-message"><div className="ask-garden-answer ask-garden-answer--loading">Consultando Garden X…</div></article>}<div ref={threadEndRef} /></div>
       <form className="ask-garden-compose" onSubmit={(event) => { event.preventDefault(); void submit() }}><label className="sr-only" htmlFor="ask-garden-input">Pregunta para Ask Garden</label><textarea id="ask-garden-input" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); void submit() } }} placeholder="Pregunta sobre tus jardines…" rows={1} maxLength={2000} /><button className="primary-button" type="submit" disabled={busy || question.trim().length < 2}><MessageCircle size={17} aria-hidden="true" />{busy ? 'Consultando…' : 'Enviar'}</button></form>
     </section>}
   </AppShell>

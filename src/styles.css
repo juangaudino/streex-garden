@@ -813,3 +813,33 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
   .ask-garden-compose { bottom: 0; position: relative; }
 }
 .ask-garden-request-error { background:#fffaf5; border:1px solid #e6a18d; border-radius:14px; color:#8f3927; font-size:.9rem; margin:0; padding:11px 13px; }
+
+
+/* Ask Garden: quiet editorial conversation, with compact mobile composition. */
+.ask-garden-chat__header { padding:6px 2px 14px; }
+.ask-garden-chat__header h1 { font-size:clamp(2.1rem,6vw,4rem); line-height:1; }
+.ask-garden-thread { background:linear-gradient(180deg,rgba(225,233,220,.16),transparent 24%); gap:18px; padding:28px 0; }
+.ask-garden-empty { align-content:start; gap:11px; min-height:0; padding-top:18px; }
+.ask-garden-empty__mark { height:38px; width:38px; }
+.ask-garden-empty h2 { font-size:clamp(1.55rem,4vw,2.25rem); line-height:1.08; margin:2px 0 0; }
+.ask-garden-empty p { font-size:.94rem; line-height:1.5; max-width:330px; }
+.ask-garden-suggestions { display:grid; gap:8px; margin-top:7px; max-width:500px; }
+.ask-garden-suggestions__label { color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.ask-garden-suggestions button { border-color:rgba(25,59,42,.16); border-radius:14px; box-shadow:0 3px 12px rgba(25,59,42,.045); font-size:.9rem; line-height:1.35; padding:10px 13px; }
+.ask-garden-message { gap:8px; }
+.ask-garden-question { border-radius:16px 16px 5px 16px; box-shadow:0 5px 14px rgba(25,59,42,.11); font-size:.9rem; line-height:1.42; max-width:min(68%,480px); padding:10px 13px; }
+.ask-garden-answer { background:rgba(255,252,245,.62); border:1px solid rgba(87,116,82,.15); border-left:2px solid #b8cfb3; border-radius:5px 16px 16px 16px; box-shadow:0 5px 18px rgba(25,59,42,.035); max-width:min(78%,610px); padding:12px 15px; }
+.ask-garden-answer p { font-size:.97rem; line-height:1.58; margin:0; }
+.ask-garden-compose { align-items:center; border-radius:16px; box-shadow:0 8px 22px rgba(25,59,42,.1); gap:8px; padding:6px 7px 6px 14px; }
+.ask-garden-compose textarea { flex:1; font-size:.95rem; line-height:1.35; min-height:40px; padding:9px 0; }
+.ask-garden-compose__send { height:40px; min-height:40px; width:40px; }
+@media (max-width:719px) {
+  .ask-garden-chat__header h1 { font-size:clamp(2rem,10vw,2.65rem); }
+  .ask-garden-thread { padding:24px 0; }
+  .ask-garden-empty { padding-top:12px; }
+  .ask-garden-question { max-width:78%; }
+  .ask-garden-answer { max-width:88%; }
+  .ask-garden-compose { align-items:center; flex-direction:row; }
+  .ask-garden-compose textarea { min-width:0; }
+  .ask-garden-compose__send { width:40px; }
+}

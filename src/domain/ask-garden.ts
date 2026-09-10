@@ -36,3 +36,40 @@ export function resolveAskGardenIntent(question: string): AskGardenIntent | 'nee
 export function toolForAskGardenIntent(intent: AskGardenIntent): AskGardenToolDefinition {
   return ASK_GARDEN_TOOLS.find((tool) => tool.intent === intent) as AskGardenToolDefinition
 }
+
+export interface AskGardenSuggestionInput {
+  positions: Array<{
+    position: { number: number }
+    plant: { name: string | null } | null
+    germination: { status: 'confirmed' | 'no_observation' } | null
+    harvest_readiness: { value: 'not_yet' | 'evaluate' | 'ready' | 'not_applicable' } | null
+    current_state: { kind: 'reassuring' | 'watch' | 'action_required' | 'insufficient_evidence' } | null
+  }>
+  activeAttentionCount: number
+}
+
+/**
+ * Produces concise, non-duplicated opening questions from canonical status.
+ * `rotation` is client session state only; it never changes Garden data.
+ */
+export function buildAskGardenSuggestions(input: AskGardenSuggestionInput, rotation = 0): string[] {
+  const missingGermination = input.positions.filter((position) => position.germination?.status === 'no_observation')
+  const harvestCandidates = input.positions.filter((position) => ['evaluate', 'ready'].includes(position.harvest_readiness?.value ?? ''))
+  const actionRequired = input.positions.find((position) => position.current_state?.kind === 'action_required')
+  const watch = input.positions.find((position) => position.current_state?.kind === 'watch')
+  const activePlant = input.positions.find((position) => position.plant?.name)
+  const candidates = [
+    input.activeAttentionCount > 0 ? '¿Qué debería atender hoy?' : null,
+    missingGermination.length > 0 ? '¿Qué posiciones siguen sin germinación confirmada?' : null,
+    harvestCandidates.length > 0 ? '¿Hay algo que valga la pena evaluar para cosecha?' : null,
+    actionRequired?.plant?.name ? `¿Qué requiere atención en ${actionRequired.plant.name}, Posición ${actionRequired.position.number}?` : null,
+    watch?.plant?.name ? `¿Qué debería vigilar en ${watch.plant.name}, Posición ${watch.position.number}?` : null,
+    activePlant?.plant?.name ? `¿Cómo va ${activePlant.plant.name} en la Posición ${activePlant.position.number}?` : null,
+    '¿Qué cambió desde mi última revisión?',
+    '¿Hay incidencias abiertas que debería revisar?',
+  ].filter((candidate): candidate is string => Boolean(candidate))
+  const unique = [...new Set(candidates)]
+  if (unique.length <= 3) return unique
+  const start = ((rotation % unique.length) + unique.length) % unique.length
+  return Array.from({ length: 3 }, (_, index) => unique[(start + index) % unique.length])
+}

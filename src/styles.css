@@ -812,3 +812,4 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
   .ask-garden-thread { max-height: none; min-height: 0; }
   .ask-garden-compose { bottom: 0; position: relative; }
 }
+.ask-garden-request-error { background:#fffaf5; border:1px solid #e6a18d; border-radius:14px; color:#8f3927; font-size:.9rem; margin:0; padding:11px 13px; }

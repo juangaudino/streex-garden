@@ -41,10 +41,33 @@ export async function runAiCheckRuntime(input: {
     content_type: photo.content_type,
     byte_size: photo.byte_size,
   })
+  const comparison = context.comparison_photo
+  const comparisonPhoto = input.comparePhotoId
+    ? comparison && typeof comparison === 'object'
+      ? comparison as { id?: unknown; storage_path?: unknown; content_type?: unknown; byte_size?: unknown }
+      : null
+    : null
+  if (input.comparePhotoId && (!comparisonPhoto || comparisonPhoto.id !== input.comparePhotoId || typeof comparisonPhoto.storage_path !== 'string' || typeof comparisonPhoto.content_type !== 'string' || typeof comparisonPhoto.byte_size !== 'number')) throw new Error('Comparison photo metadata is invalid')
+  const comparisonByteSize = comparisonPhoto?.byte_size as number | undefined
+  if (comparisonByteSize !== undefined && comparisonByteSize > maxPhotoBytes) throw new Error('Comparison photo exceeds the AI image limit')
+  const comparisonDownloaded = comparisonPhoto
+    ? await readAuthorizedPhoto(input.storageClient, input.ownerId, {
+      id: input.comparePhotoId!,
+      storage_path: comparisonPhoto.storage_path as string,
+      content_type: comparisonPhoto.content_type as string,
+      byte_size: comparisonByteSize!,
+    })
+    : null
+  const contextWithoutPaths = {
+    ...context,
+    selected_photo: { ...photo, storage_path: undefined },
+    ...(comparisonPhoto ? { comparison_photo: { ...comparisonPhoto, storage_path: undefined } } : {}),
+  }
   const providerRequest: AiProviderRequest = {
     operation: 'ai_check',
-    context: { ...context, selected_photo: { ...photo, storage_path: undefined } },
+    context: contextWithoutPaths,
     imageDataUrl: `data:${downloaded.contentType};base64,${base64(downloaded.bytes)}`,
+    ...(comparisonDownloaded ? { imageDataUrls: [`data:${downloaded.contentType};base64,${base64(downloaded.bytes)}`, `data:${comparisonDownloaded.contentType};base64,${base64(comparisonDownloaded.bytes)}`] } : {}),
     standardVersion: input.standardVersion,
     promptVersion: input.promptVersion,
     jsonSchema: input.jsonSchema,

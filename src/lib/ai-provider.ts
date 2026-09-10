@@ -4,6 +4,7 @@ export interface AiProviderRequest {
   operation: 'ai_check' | 'ask_garden'
   context: unknown
   imageDataUrl?: string
+  imageDataUrls?: string[]
   standardVersion: string
   promptVersion: string
 }

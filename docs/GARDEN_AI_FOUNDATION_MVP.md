@@ -8,7 +8,7 @@ Estado: infraestructura preparada, proveedor real desactivado.
 
 La Edge Function valida sesión, operación, identificadores y tamaño de pregunta, y permanece fail-closed mientras `GARDEN_AI_ENABLED` no sea `true`. No recibe `owner_id` del cliente, no escribe hechos y no firma ni publica fotografías.
 
-La migración `20260910013617_ai_runtime_owner_context.sql` añade `public.garden_get_ai_cycle_context(...)`: comprueba `auth.uid()`, ciclo, foto y foto comparativa, y después invoca el resolver interno. Sólo `authenticated` puede ejecutarla; `anon`, `public` y `service_role` no tienen `EXECUTE`. Devuelve metadata privada, nunca URLs firmadas.
+La migración `20260910013617_ai_runtime_owner_context.sql` añade `public.garden_get_ai_cycle_context(...)`: comprueba `auth.uid()`, ciclo, foto y foto comparativa, y después invoca el resolver interno. Sólo `authenticated` puede ejecutarla; `anon`, `public` y `service_role` no tienen `EXECUTE`. Devuelve metadata privada, nunca URLs firmadas. La migración `20260910021000_ai_runtime_request_rpc.sql` añade los puentes owner-scoped para iniciar y finalizar auditoría sin exponer la tabla `garden.ai_requests`.
 
 El contrato y el validador viven en `src/domain/ai.ts`. Las acciones resultantes son descriptores para abrir los flujos existentes: seguimiento, incidencia, cantidad y evaluación de cosecha. Ninguna acción guarda por sí misma.
 
@@ -19,7 +19,7 @@ El contrato y el validador viven en `src/domain/ai.ts`. Las acciones resultantes
 - Fotos privadas y renditions `display`/`preview`.
 - provenance, precisión temporal, correcciones e invalidación.
 
-El resolver interno conserva su ejecución restringida. Antes del proveedor real deberá añadirse un wrapper owner-scoped autenticado que valide `auth.uid()` y limite las fotos/notas seleccionadas.
+El resolver interno conserva su ejecución restringida. El wrapper owner-scoped autenticado ya valida `auth.uid()` y limita las fotos/notas seleccionadas antes de construir contexto para AI.
 
 ## Persistencia y retención
 
@@ -40,7 +40,7 @@ La migración `20260910010126_ai_foundation_mvp.sql` añade `garden.ai_requests`
 
 `readAuthorizedPhoto()` descarga únicamente la ruta owner-scoped que devolvió el wrapper y prefiere la rendition privada `display.jpg`, con fallback al original y límite de 5 MiB.
 
-La función `garden-ai` no activa ningún provider real. Con la flag apagada responde `503` de forma segura.
+La función `garden-ai` ya está desplegada con JWT obligatorio, adapter OpenAI server-side, validación estructurada y auditoría owner-scoped. Con la flag apagada responde `503` de forma segura y no activa ningún provider real.
 
 ## Benchmark
 

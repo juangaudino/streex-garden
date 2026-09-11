@@ -32,6 +32,8 @@ export function MaintenancePositionActions({
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
   const [draftAiProposal, setDraftAiProposal] = useState<GardenAiCheckProposalV1 | null>(null)
+  const [canContinue, setCanContinue] = useState(false)
+  const [continuing, setContinuing] = useState(false)
   const actionPanelRef = useRef<HTMLDivElement>(null)
 
   const cycleId = position.current_grow_cycle_id === position.captured_grow_cycle_id
@@ -73,6 +75,7 @@ export function MaintenancePositionActions({
         }
       }
       if (synced > 0 && synced === pending.length) setSyncMessage('Observación guardada. Elige cómo continuar con esta posición.')
+      if (synced > 0) setCanContinue(true)
       if (synced > 0) setCycle(await getCycle(cycleId!))
       await loadDrafts()
     } catch (reason) {
@@ -119,6 +122,7 @@ export function MaintenancePositionActions({
       const result = await syncObservationDraft(repaired)
       if (result.result === 'synced') {
         setSyncMessage('Original recuperado. Elige cómo continuar con esta posición.')
+        setCanContinue(true)
         setCycle(await getCycle(cycleId!))
       } else {
         setSyncMessage(`${result.result === 'needs_review' ? 'Revisar conflicto' : 'Pendiente de subir'}: ${result.error}`)
@@ -130,6 +134,7 @@ export function MaintenancePositionActions({
   }
 
   const finishAsOkay = async () => {
+    setCanContinue(false)
     try {
       await onInspectionRecorded('manual')
     } catch (reason) {
@@ -140,6 +145,7 @@ export function MaintenancePositionActions({
   const refreshAfterObservation = async () => {
     try {
       setCycle(await getCycle(cycleId!))
+      setCanContinue(true)
       setSyncMessage('Observación guardada. Elige cómo continuar con esta posición.')
     } catch (reason) {
       setSyncMessage(`La observación quedó guardada, pero no se pudo actualizar la vista: ${reason instanceof Error ? reason.message : 'vuelve a intentarlo.'}`)
@@ -152,6 +158,8 @@ export function MaintenancePositionActions({
     // and explicitly choose Está bien, Omitir, or another action.
     try {
       setCycle(await getCycle(cycleId!))
+      setAction(null)
+      setCanContinue(true)
       setSyncMessage('Acción guardada. Esta posición sigue abierta para continuar revisándola.')
     } catch (reason) { setSyncMessage(reason instanceof Error ? reason.message : 'La acción se guardó, pero no se pudo actualizar la vista.') }
   }
@@ -169,8 +177,21 @@ export function MaintenancePositionActions({
     try {
       setCycle(await getCycle(cycleId!))
       setAction(null)
+      setCanContinue(true)
       setSyncMessage('Seguimiento guardado. Esta posición sigue abierta para continuar revisándola.')
     } catch (reason) { setSyncMessage(reason instanceof Error ? reason.message : 'El plan se guardó, pero no se pudo actualizar la vista.') }
+  }
+
+  const continueInspection = async () => {
+    setCanContinue(false)
+    setContinuing(true)
+    try {
+      await onInspectionRecorded('manual')
+    } catch (reason) {
+      setSyncMessage(reason instanceof Error ? reason.message : 'No se pudo continuar con la siguiente posición.')
+    } finally {
+      setContinuing(false)
+    }
   }
 
   const handleAiAction = (nextAction: GardenAiCanonicalAction) => {
@@ -197,10 +218,11 @@ export function MaintenancePositionActions({
       {draftAiProposal && <div className="ai-check-result maintenance-draft-ai-result" aria-live="polite"><p className="ai-check-result__context">Análisis temporal · la foto todavía no se guardó</p><h3>{draftAiProposal.summary}</h3>{draftAiProposal.observations.slice(0, 3).map((observation) => <p key={observation}>{observation}</p>)}{draftAiProposal.uncertainty.length > 0 && <p className="quiet-copy">{draftAiProposal.uncertainty[0]}</p>}{draftActions.slice(0, 1).map((nextAction) => <button className="secondary-button secondary-button--compact" key={nextAction.kind} type="button" onClick={() => handleAiAction(nextAction)}><Sparkles size={15} aria-hidden="true" />{nextAction.label}</button>)}<button className="text-button" type="button" onClick={() => setDraftAiProposal(null)}>Cerrar análisis</button></div>}
       {hasStoredPhoto && <div className="maintenance-photo-ai"><span>Hay una fotografía guardada en este ciclo.</span><button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'ai_check' ? null : 'ai_check')}><Sparkles size={16} aria-hidden="true" /> Analizar con Garden AI</button></div>}
     </section>
-    <section className="maintenance-decision" aria-labelledby="maintenance-decision-title"><div className="section-heading"><div><h2 id="maintenance-decision-title">¿Qué sigue?</h2><p className="quiet-copy">Termina esta posición, actúa ahora o déjalo planificado.</p></div></div><div className="maintenance-decision__buttons"><button className="primary-button" type="button" disabled={disabled} onClick={() => void finishAsOkay()}><Check size={17} aria-hidden="true" /> Está bien</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setFactChoice('intervention'); setAction(action === 'now' ? null : 'now') }}><Hammer size={17} aria-hidden="true" /> Hacer algo ahora</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setAttentionPurpose(undefined); setAction(action === 'attention' ? null : 'attention') }}><CalendarClock size={17} aria-hidden="true" /> Planificar algo</button></div></section>
+    <section className="maintenance-decision" aria-labelledby="maintenance-decision-title"><div className="section-heading"><div><h2 id="maintenance-decision-title">¿Qué sigue?</h2><p className="quiet-copy">Termina esta posición, actúa ahora o déjalo planificado.</p></div></div><div className="maintenance-decision__buttons"><button className="primary-button" type="button" disabled={disabled} onClick={() => void finishAsOkay()}><Check size={17} aria-hidden="true" /> Está bien</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setCanContinue(false); setFactChoice('intervention'); setAction(action === 'now' ? null : 'now') }}><Hammer size={17} aria-hidden="true" /> Hacer algo ahora</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setCanContinue(false); setAttentionPurpose(undefined); setAction(action === 'attention' ? null : 'attention') }}><CalendarClock size={17} aria-hidden="true" /> Planificar algo</button></div></section>
     {action === 'now' && <div className="maintenance-action-panel" ref={actionPanelRef}><CycleActions cycle={cycle} maintenanceMode onChanged={recordFactAndContinue} onMaintenanceStructuralChange={finishAfterStructuralChange} onReplaced={() => undefined} onOpenFact={() => { setFactChoice(undefined); setAction('now') }} onOpenObservation={() => document.getElementById('maintenance-observation-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} /><CycleFactRecorder cycle={cycle} initialChoice={factChoice} initialOpen heading="Hacer algo ahora" description="Confirma la acción que estás realizando en esta posición." submitLabel="Guardar acción" onSaved={recordFactAndContinue} /></div>}
     {action === 'attention' && <div className="maintenance-action-panel" ref={actionPanelRef}><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} initialPurpose={attentionPurpose} initialOpen onCreated={recordPlanAndContinue} compact /></div>}
     {action === 'ai_check' && <div ref={actionPanelRef}><AiCheckPanel cycle={cycle} onCanonicalAction={handleAiAction} onContinue={() => setAction(null)} title="Analizar una foto guardada" /></div>}
+    {canContinue && <div className="maintenance-continue" role="status"><p>La acción quedó guardada. Puedes continuar con la siguiente posición cuando quieras.</p><button className="primary-button" type="button" disabled={disabled || continuing} onClick={() => void continueInspection()}><Check size={17} aria-hidden="true" />{continuing ? 'Continuando…' : 'Continuar'}</button></div>}
     {(drafts.length > 0 || syncMessage) && <div className="maintenance-sync" aria-live="polite">{drafts.length > 0 && <strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong>}{drafts.some((draft) => draft.status === 'needs_review') && <span>Hay una observación que requiere revisión manual por cambio de ciclo.</span>}{syncMessage && <span>{syncMessage}</span>}{retryableDrafts.some((draft) => draft.photo && draft.photoMetadata) && <label className="file-button secondary-button--compact">Volver a elegir original<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={(event) => void restoreDraftOriginal(retryableDrafts.find((draft) => draft.photo && draft.photoMetadata)!, event)} /></label>}{retryableDrafts.length > 0 && <button className="secondary-button secondary-button--compact" type="button" disabled={syncing || !navigator.onLine} onClick={() => void syncDrafts()}><RefreshCw size={15} aria-hidden="true" />{syncing ? 'Sincronizando…' : 'Reintentar ahora'}</button>}</div>}
   </section>
 }

@@ -40,11 +40,15 @@ describe('Maintenance contextual canonical actions', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Guardar acción canónica' }))
     await waitFor(() => expect(getCycle).toHaveBeenCalled())
     expect(onInspectionRecorded).not.toHaveBeenCalledWith('fact')
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar' }))
+    await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('manual'))
+    const manualCallsAfterContinue = vi.mocked(onInspectionRecorded).mock.calls.filter(([source]) => source === 'manual').length
 
     fireEvent.click(screen.getByRole('button', { name: 'Planificar algo' }))
     fireEvent.click(screen.getByRole('button', { name: 'Crear Attention canónico' }))
     await waitFor(() => expect(getCycle).toHaveBeenCalled())
-    expect(onInspectionRecorded).not.toHaveBeenCalledWith('manual')
+    expect(vi.mocked(onInspectionRecorded).mock.calls.filter(([source]) => source === 'manual')).toHaveLength(manualCallsAfterContinue)
+    expect(screen.getByRole('button', { name: 'Continuar' })).toBeTruthy()
   })
 
   it('finishes a reviewed position without creating a canonical fact', async () => {

@@ -115,7 +115,11 @@ export function GrowthFilmPage() {
   }, [])
   useEffect(() => {
     document.body.classList.toggle('growth-film-immersive-open', immersive)
-    return () => { document.body.classList.remove('growth-film-immersive-open') }
+    document.documentElement.classList.toggle('growth-film-immersive-open', immersive)
+    return () => {
+      document.body.classList.remove('growth-film-immersive-open')
+      document.documentElement.classList.remove('growth-film-immersive-open')
+    }
   }, [immersive])
   useEffect(() => () => exportAbort.current?.abort(), [])
   const exportClip = async () => {

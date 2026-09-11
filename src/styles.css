@@ -114,6 +114,8 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .maintenance-actions__manual { justify-self: start; }
 .maintenance-action-panel { display: grid; gap: 10px; }
 .maintenance-actions .editor-card, .maintenance-actions .observation-composer { margin-bottom: 0; }
+.maintenance-continue { align-items: center; background: var(--sage); border-radius: 12px; display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: space-between; padding: 11px 13px; }
+.maintenance-continue p { color: var(--forest); font-size: .86rem; margin: 0; max-width: 560px; }
 .maintenance-sync { align-items: flex-start; background: var(--sage); border-radius: 12px; display: grid; gap: 6px; padding: 11px 13px; }
 .maintenance-sync strong { color: var(--forest); font-size: .82rem; }
 .maintenance-sync span { color: var(--muted); font-size: .8rem; }
@@ -707,7 +709,7 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .settings-card { align-items:center; background:var(--sage); border-radius:var(--radius); display:flex; gap:14px; margin-bottom:22px; padding:18px; }
 .settings-card h2,.settings-card p { margin:0; } .settings-card p { color:var(--muted); margin-top:3px; }
 .settings-cover { align-items:center; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:12px; padding-top:15px; } .settings-cover span { color:var(--muted); font-size:.85rem; }
-.growth-film-player--immersive { background:#102018; border:0; border-radius:0; display:grid; inset:0; margin:0; padding:clamp(14px,3vw,34px); position:fixed; z-index:40; }
+.growth-film-player--immersive { background:#102018; border:0; border-radius:0; display:grid; inset:0; margin:0; padding:clamp(14px,3vw,34px); position:fixed; width:100vw; z-index:40; }
 .growth-film-player--immersive .growth-film-frame { align-self:center; height:min(76svh,900px); justify-self:center; max-width:min(100%,720px); width:100%; }
 .growth-film-player--immersive .growth-film-controls,.growth-film-player--immersive .growth-film-timeline { color:#fff; margin-left:auto; margin-right:auto; max-width:720px; width:100%; }
 .growth-film-player--immersive .growth-film-controls span,.growth-film-player--immersive .growth-film-timeline__point { color:#d7e5d5; }
@@ -774,10 +776,13 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .growth-film-export__actions { align-items:center; display:flex; flex-wrap:wrap; gap:10px; }
 .growth-film-export__actions span { color:#d4e2d2; font-size:.78rem; }
 .growth-film-export .secondary-button { border-color:rgba(255,255,255,.6); color:#fff; }
-.growth-film-player--immersive { background:#071008; height:100dvh; min-height:100svh; padding: max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left)); }
+.growth-film-player--immersive { background:#071008; height:100vh; height:100dvh; left:0; min-height:100svh; padding: max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left)); right:0; top:0; z-index:70; }
 .growth-film-player--immersive .growth-film-frame { box-shadow:none; }
 .growth-film-reduced-motion { color:var(--muted); display:inline-block; font-size:.78rem; font-weight:700; margin-top:6px; }
-body.growth-film-immersive-open { overflow:hidden; }
+html.growth-film-immersive-open, body.growth-film-immersive-open { overflow:hidden; overscroll-behavior:none; }
+@supports (-webkit-touch-callout: none) {
+  .growth-film-player--immersive { height:-webkit-fill-available; min-height:-webkit-fill-available; }
+}
 @media (prefers-reduced-motion: reduce) { .growth-film-frame__layer--previous, .growth-film-frame__layer--current, .ask-garden-thinking i { animation:none; } }
 @media (max-width:540px) { .ask-garden-chat__header { align-items:flex-start; } .ask-garden-chat__header-actions > span { display:none; } .ask-garden-thread { max-height:calc(74svh - 136px); min-height:390px; } .ask-garden-question { max-width:88%; } .ask-garden-answer { max-width:92%; } .ask-garden-empty { padding-left:0; } .ask-garden-compose { bottom:calc(env(safe-area-inset-bottom) + 6px); } .growth-film-export { align-items:flex-start; flex-direction:column; } }
 

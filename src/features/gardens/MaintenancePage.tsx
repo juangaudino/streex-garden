@@ -17,14 +17,15 @@ export function MaintenancePage() {
   // eslint-disable-next-line react-hooks/set-state-in-effect -- loader writes after the RPC settles.
   useEffect(() => { void load() }, [load])
   const current = session?.positions.find((position) => position.progress === 'not_reviewed') ?? null
-  const recordInspection = async (source: 'observation' | 'fact' | 'manual') => {
+  const recordInspection = async (source: 'observation' | 'fact' | 'manual' | 'structural') => {
     if (!current) return
     setBusy(true)
     try {
-      await markMaintenancePositionInspected(crypto.randomUUID(), current.id, source)
+      if (source === 'structural') await progressMaintenancePosition(crypto.randomUUID(), current.id, 'skipped')
+      else await markMaintenancePositionInspected(crypto.randomUUID(), current.id, source)
       const next = await getMaintenanceSession(sessionId!)
       setSession(next)
-      setFeedback({ kind: 'reviewed', text: `${current.garden_name} · Posición ${current.position_number}: inspección guardada${source === 'manual' ? '' : ' desde el ciclo'}.` })
+      setFeedback({ kind: source === 'structural' ? 'skipped' : 'reviewed', text: `${current.garden_name} · Posición ${current.position_number}: ${source === 'structural' ? 'cambio guardado; posición omitida para revisar al siguiente ocupante' : `inspección guardada${source === 'manual' ? '' : ' desde el ciclo'}`}.` })
     } catch (reason) {
       throw reason instanceof Error ? reason : new Error('No se pudo marcar la posición como inspeccionada.')
     } finally { setBusy(false) }

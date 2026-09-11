@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ChangeEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { CalendarClock, Check, Hammer, RefreshCw, Sparkles } from 'lucide-react'
 import type { AttentionPurpose, GrowCycleDetail, MaintenancePosition, ObservationDraft } from '../../domain/types'
 import { photoContentType } from '../../domain/photo-integrity'
@@ -10,9 +10,9 @@ import { CycleFactRecorder, type FactChoice } from '../cycles/CycleFactRecorder'
 import { CycleActions } from '../cycles/CycleActions'
 import { AttentionTaskForm } from './AttentionTaskTools'
 import { AiCheckPanel } from '../cycles/AiCheckPanel'
-import type { GardenAiCanonicalAction } from '../../domain/ai'
+import { buildCanonicalActions, type GardenAiCanonicalAction, type GardenAiCheckProposalV1 } from '../../domain/ai'
 
-type InspectionSource = 'observation' | 'fact' | 'manual'
+type InspectionSource = 'observation' | 'fact' | 'manual' | 'structural'
 
 export function MaintenancePositionActions({
   position,
@@ -31,6 +31,8 @@ export function MaintenancePositionActions({
   const [drafts, setDrafts] = useState<ObservationDraft[]>([])
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
+  const [draftAiProposal, setDraftAiProposal] = useState<GardenAiCheckProposalV1 | null>(null)
+  const actionPanelRef = useRef<HTMLDivElement>(null)
 
   const cycleId = position.current_grow_cycle_id === position.captured_grow_cycle_id
     ? position.captured_grow_cycle_id
@@ -93,6 +95,15 @@ export function MaintenancePositionActions({
     }
   }, [syncDrafts])
 
+  useEffect(() => {
+    if (!action) return
+    const frame = window.requestAnimationFrame(() => {
+      const node = actionPanelRef.current
+      if (node && typeof node.scrollIntoView === 'function') node.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [action])
+
   const restoreDraftOriginal = async (draft: ObservationDraft, event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     event.target.value = ''
@@ -140,6 +151,14 @@ export function MaintenancePositionActions({
     catch (reason) { setSyncMessage(reason instanceof Error ? reason.message : 'No se pudo actualizar el recorrido.') }
   }
 
+  const finishAfterStructuralChange = async () => {
+    try {
+      await onInspectionRecorded('structural')
+    } catch (reason) {
+      setSyncMessage(reason instanceof Error ? reason.message : 'El cambio se guardó, pero no se pudo avanzar el recorrido.')
+    }
+  }
+
   const recordPlanAndContinue = async () => {
     setAttentionPurpose(undefined)
     try { await onInspectionRecorded('manual') }
@@ -162,16 +181,18 @@ export function MaintenancePositionActions({
 
   const retryableDrafts = drafts.filter((draft) => draft.status !== 'needs_review')
   const hasStoredPhoto = cycle.history.some((event) => event.photo?.upload_status === 'uploaded' && event.photo)
+  const draftActions = draftAiProposal ? buildCanonicalActions(draftAiProposal, { growCycleId: cycle.id, gardenId: cycle.garden.id, positionId: cycle.position.id, evidenceRef: { kind: 'photo', id: 'pending_observation' } }) : []
   return <section className="maintenance-actions" aria-label={`Recorrido de ${position.garden_name} posición ${position.position_number}`}>
     <section className="maintenance-observation" aria-labelledby="maintenance-observation-title">
       <div className="section-heading"><div><h2 id="maintenance-observation-title">Observación actual</h2><p className="quiet-copy">Describe lo que estás viendo ahora. La foto es opcional.</p></div></div>
-      <ObservationComposer compact growCycleId={cycle.id} onSaved={async () => { await refreshAfterObservation(); await loadDrafts() }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Observación guardada en este dispositivo. Se sincronizará antes de continuar.') }} />
+      <ObservationComposer compact growCycleId={cycle.id} onSaved={async () => { await refreshAfterObservation(); await loadDrafts(); setDraftAiProposal(null) }} onDraftQueued={async () => { await loadDrafts(); setSyncMessage('Observación guardada en este dispositivo. Se sincronizará antes de continuar.') }} onDraftAiProposal={setDraftAiProposal} />
+      {draftAiProposal && <div className="ai-check-result maintenance-draft-ai-result" aria-live="polite"><p className="ai-check-result__context">Análisis temporal · la foto todavía no se guardó</p><h3>{draftAiProposal.summary}</h3>{draftAiProposal.observations.slice(0, 3).map((observation) => <p key={observation}>{observation}</p>)}{draftAiProposal.uncertainty.length > 0 && <p className="quiet-copy">{draftAiProposal.uncertainty[0]}</p>}{draftActions.slice(0, 1).map((nextAction) => <button className="secondary-button secondary-button--compact" key={nextAction.kind} type="button" onClick={() => handleAiAction(nextAction)}><Sparkles size={15} aria-hidden="true" />{nextAction.label}</button>)}<button className="text-button" type="button" onClick={() => setDraftAiProposal(null)}>Cerrar análisis</button></div>}
       {hasStoredPhoto && <div className="maintenance-photo-ai"><span>Hay una fotografía guardada en este ciclo.</span><button className="secondary-button secondary-button--compact" type="button" disabled={disabled} onClick={() => setAction(action === 'ai_check' ? null : 'ai_check')}><Sparkles size={16} aria-hidden="true" /> Analizar con Garden AI</button></div>}
     </section>
     <section className="maintenance-decision" aria-labelledby="maintenance-decision-title"><div className="section-heading"><div><h2 id="maintenance-decision-title">¿Qué sigue?</h2><p className="quiet-copy">Termina esta posición, actúa ahora o déjalo planificado.</p></div></div><div className="maintenance-decision__buttons"><button className="primary-button" type="button" disabled={disabled} onClick={() => void finishAsOkay()}><Check size={17} aria-hidden="true" /> Está bien</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setFactChoice('intervention'); setAction(action === 'now' ? null : 'now') }}><Hammer size={17} aria-hidden="true" /> Hacer algo ahora</button><button className="secondary-button" type="button" disabled={disabled} onClick={() => { setAttentionPurpose(undefined); setAction(action === 'attention' ? null : 'attention') }}><CalendarClock size={17} aria-hidden="true" /> Planificar algo</button></div></section>
-    {action === 'now' && <div className="maintenance-action-panel"><CycleActions cycle={cycle} maintenanceMode onChanged={recordFactAndContinue} onReplaced={() => undefined} /><CycleFactRecorder cycle={cycle} initialChoice={factChoice} initialOpen heading="Hacer algo ahora" description="Confirma la acción que estás realizando en esta posición." submitLabel="Guardar y siguiente" onSaved={recordFactAndContinue} /></div>}
-    {action === 'attention' && <div className="maintenance-action-panel"><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} initialPurpose={attentionPurpose} initialOpen onCreated={recordPlanAndContinue} compact /></div>}
-    {action === 'ai_check' && <AiCheckPanel cycle={cycle} onCanonicalAction={handleAiAction} onContinue={() => setAction(null)} title="Analizar una foto guardada" />}
+    {action === 'now' && <div className="maintenance-action-panel" ref={actionPanelRef}><CycleActions cycle={cycle} maintenanceMode onChanged={recordFactAndContinue} onMaintenanceStructuralChange={finishAfterStructuralChange} onReplaced={() => undefined} onOpenFact={() => { setFactChoice(undefined); setAction('now') }} onOpenObservation={() => document.getElementById('maintenance-observation-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} /><CycleFactRecorder cycle={cycle} initialChoice={factChoice} initialOpen heading="Hacer algo ahora" description="Confirma la acción que estás realizando en esta posición." submitLabel="Guardar y siguiente" onSaved={recordFactAndContinue} /></div>}
+    {action === 'attention' && <div className="maintenance-action-panel" ref={actionPanelRef}><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} initialPurpose={attentionPurpose} initialOpen onCreated={recordPlanAndContinue} compact /></div>}
+    {action === 'ai_check' && <div ref={actionPanelRef}><AiCheckPanel cycle={cycle} onCanonicalAction={handleAiAction} onContinue={() => setAction(null)} title="Analizar una foto guardada" /></div>}
     {(drafts.length > 0 || syncMessage) && <div className="maintenance-sync" aria-live="polite">{drafts.length > 0 && <strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong>}{drafts.some((draft) => draft.status === 'needs_review') && <span>Hay una observación que requiere revisión manual por cambio de ciclo.</span>}{syncMessage && <span>{syncMessage}</span>}{retryableDrafts.some((draft) => draft.photo && draft.photoMetadata) && <label className="file-button secondary-button--compact">Volver a elegir original<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={(event) => void restoreDraftOriginal(retryableDrafts.find((draft) => draft.photo && draft.photoMetadata)!, event)} /></label>}{retryableDrafts.length > 0 && <button className="secondary-button secondary-button--compact" type="button" disabled={syncing || !navigator.onLine} onClick={() => void syncDrafts()}><RefreshCw size={15} aria-hidden="true" />{syncing ? 'Sincronizando…' : 'Reintentar ahora'}</button>}</div>}
   </section>
 }

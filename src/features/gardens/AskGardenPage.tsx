@@ -8,7 +8,7 @@ import { buildAskGardenSuggestions, resolveAskGardenIntent } from '../../domain/
 import { askGarden, aiGatewayStatus } from '../../lib/ai-gateway'
 import { getAttention, getControlV2, getHarvestHistory } from '../../lib/garden-api'
 
-type Message = { id: string; question: string; answer: string; sources: string[]; action?: { label: string; to: string }; mode: 'deterministic' | 'ai' }
+type Message = { id: string; question: string; answer: string; sources: string[]; action?: { label: string; to: string }; mode: 'deterministic' | 'ai'; pending?: boolean }
 
 function normalizeSearch(value: string): string {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
@@ -91,18 +91,25 @@ export function AskGardenPage() {
   const suggestions = useMemo(() => control ? buildAskGardenSuggestions({ positions: control.positions, activeAttentionCount: attention.length }, suggestionRotation) : [], [attention.length, control, suggestionRotation])
   const submit = async (value = question) => {
     if (!control || value.trim().length < 2 || busy) return
+    const trimmed = value.trim()
+    const messageId = crypto.randomUUID()
+    setMessages((current) => [...current, { id: messageId, question: trimmed, answer: '', sources: [], mode: 'deterministic', pending: true }])
+    setQuestion('')
     setBusy(true); setRequestError(null)
     try {
-      const intent = resolveAskGardenIntent(value)
+      const intent = resolveAskGardenIntent(trimmed)
       let result: Omit<Message, 'id' | 'question' | 'mode'> & { mode?: Message['mode'] }
-      if (intent !== 'needs_clarification' || aiGatewayStatus() === 'disabled') result = deterministicAnswer(value, control, attention, harvests)
+      if (intent !== 'needs_clarification' || aiGatewayStatus() === 'disabled') result = deterministicAnswer(trimmed, control, attention, harvests)
       else {
-        const answer = await askGarden({ question: value, requestKey: `ask-garden:${crypto.randomUUID()}`, conversation: messages.slice(-4).map((message) => ({ question: message.question.slice(0, 300), answer: message.answer.slice(0, 500) })) })
+        const answer = await askGarden({ question: trimmed, requestKey: `ask-garden:${crypto.randomUUID()}`, conversation: messages.slice(-4).filter((message) => !message.pending).map((message) => ({ question: message.question.slice(0, 300), answer: message.answer.slice(0, 500) })) })
         result = { answer: answer.answer, sources: answer.confirmed_facts.map((fact) => fact.source.kind), mode: 'ai' }
       }
-      setMessages((current) => [...current, { id: crypto.randomUUID(), question: value.trim(), ...result, mode: result.mode ?? 'deterministic' }])
-      setQuestion('')
-    } catch (reason) { setRequestError(reason instanceof Error ? reason.message : 'Ask Garden no está disponible ahora.') }
+      setMessages((current) => current.map((message) => message.id === messageId ? { ...message, ...result, mode: result.mode ?? 'deterministic', pending: false } : message))
+    } catch (reason) {
+      const error = reason instanceof Error ? reason.message : 'Ask Garden no está disponible ahora.'
+      setRequestError(error)
+      setMessages((current) => current.map((message) => message.id === messageId ? { ...message, answer: 'No pude completar esta consulta. Puedes reintentarlo sin perder la pregunta.', pending: false } : message))
+    }
     finally { setBusy(false) }
   }
   return <AppShell>
@@ -110,7 +117,7 @@ export function AskGardenPage() {
     {loadError && <StatePanel kind="error" title="Ask Garden no está disponible" onRetry={() => void load()}>{loadError}</StatePanel>}
     {control && <section className="ask-garden-chat" aria-label="Conversación con Ask Garden">
       <header className="ask-garden-chat__header"><div><span className="eyebrow">Garden X</span><h1>Ask Garden</h1></div><div className="ask-garden-chat__header-actions"><span>Datos confirmados primero</span><button className="icon-button" type="button" onClick={() => { setMessages([]); setQuestion('') }} aria-label="Nueva sesión"><RefreshCw size={17} aria-hidden="true" /></button></div></header>
-      <div className="ask-garden-thread" aria-live="polite">{requestError && <p className="ask-garden-request-error" role="alert">{requestError}</p>}{messages.length === 0 && <div className="ask-garden-empty"><span className="ask-garden-empty__mark"><Sparkles size={20} aria-hidden="true" /></span><h2>¿Qué quieres saber?</h2><p>Te ayudo a interpretar tu jardín sin cambiar sus registros.</p><div className="ask-garden-suggestions"><span className="ask-garden-suggestions__label">Sugerencias para hoy</span>{suggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => { setQuestion(suggestion); void submit(suggestion) }}>{suggestion}</button>)}</div></div>}{messages.map((message) => <article key={message.id} className="ask-garden-message"><p className="ask-garden-question">{message.question}</p><div className="ask-garden-answer"><p>{message.answer}</p>{message.sources.length > 0 && <details className="ask-garden-sources"><summary>{message.mode === 'ai' ? 'Interpretación de Garden AI' : 'Fuentes confirmadas'}</summary><span>{message.sources.filter(Boolean).map(sourceLabel).join(' · ')}</span></details>}{message.action && <Link className="text-link" to={message.action.to}>{message.action.label} <ArrowRight size={14} aria-hidden="true" /></Link>}</div></article>)}{busy && <article className="ask-garden-message"><div className="ask-garden-answer ask-garden-answer--loading"><span className="ask-garden-thinking" aria-hidden="true"><i /><i /><i /></span> Consultando Garden X…</div></article>}<div ref={threadEndRef} /></div>
+      <div className="ask-garden-thread" aria-live="polite">{requestError && <p className="ask-garden-request-error" role="alert">{requestError}</p>}{messages.length === 0 && <div className="ask-garden-empty"><span className="ask-garden-empty__mark"><Sparkles size={20} aria-hidden="true" /></span><h2>¿Qué quieres saber?</h2><p>Te ayudo a interpretar tu jardín sin cambiar sus registros.</p><div className="ask-garden-suggestions"><span className="ask-garden-suggestions__label">Sugerencias para hoy</span>{suggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => void submit(suggestion)}>{suggestion}</button>)}</div></div>}{messages.map((message) => <article key={message.id} className="ask-garden-message"><p className="ask-garden-question">{message.question}</p><div className={`ask-garden-answer${message.pending ? ' ask-garden-answer--loading' : ''}`}>{message.pending ? <><span className="ask-garden-thinking" aria-hidden="true"><i /><i /><i /></span> Consultando Garden X…</> : <><p>{message.answer}</p>{message.sources.length > 0 && <details className="ask-garden-sources"><summary>{message.mode === 'ai' ? 'Interpretación de Garden AI' : 'Fuentes confirmadas'}</summary><span>{message.sources.filter(Boolean).map(sourceLabel).join(' · ')}</span></details>}{message.action && <Link className="text-link" to={message.action.to}>{message.action.label} <ArrowRight size={14} aria-hidden="true" /> </Link>}</>}</div></article>)}<div ref={threadEndRef} /></div>
       <form className="ask-garden-compose" onSubmit={(event) => { event.preventDefault(); void submit() }}><label className="sr-only" htmlFor="ask-garden-input">Pregunta para Ask Garden</label><textarea id="ask-garden-input" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); void submit() } }} placeholder="Pregunta sobre tu jardín…" rows={1} maxLength={2000} /><button className="icon-button ask-garden-compose__send" type="submit" disabled={busy || question.trim().length < 2} aria-label={busy ? 'Consultando' : 'Enviar pregunta'}><Send size={18} aria-hidden="true" /></button></form>
     </section>}
   </AppShell>

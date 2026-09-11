@@ -21,6 +21,7 @@ export function GrowthFilmPage() {
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [immersive, setImmersive] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(false)
   const [sources, setSources] = useState<Record<string, string>>({})
   const [exporting, setExporting] = useState(false)
   const [exportProgress, setExportProgress] = useState<{ completed: number; total: number } | null>(null)
@@ -66,11 +67,21 @@ export function GrowthFilmPage() {
   const toggleImmersive = async () => {
     const player = playerRef.current
     if (!player) return
-    if (document.fullscreenElement) { await document.exitFullscreen?.(); setImmersive(false); return }
+    if (immersive) { if (document.fullscreenElement) await document.exitFullscreen?.(); setImmersive(false); return }
     try { if (player.requestFullscreen) { await player.requestFullscreen(); setImmersive(true) } else setImmersive((value) => !value) }
     catch { setImmersive((value) => !value) }
   }
   useEffect(() => { const sync = () => setImmersive(Boolean(document.fullscreenElement)); document.addEventListener('fullscreenchange', sync); return () => document.removeEventListener('fullscreenchange', sync) }, [])
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReducedMotion(media.matches)
+    sync(); media.addEventListener?.('change', sync)
+    return () => media.removeEventListener?.('change', sync)
+  }, [])
+  useEffect(() => {
+    document.body.classList.toggle('growth-film-immersive-open', immersive)
+    return () => { document.body.classList.remove('growth-film-immersive-open') }
+  }, [immersive])
   useEffect(() => () => exportAbort.current?.abort(), [])
   const exportClip = async () => {
     if (exporting) return
@@ -92,7 +103,7 @@ export function GrowthFilmPage() {
   return <AppShell presentation="story" title={cycle ? `Growth Film · ${cycle.crop_name}` : 'Growth Film'} subtitle={cycle ? `${cycle.garden.name} · Pod ${cycle.position.position_number}` : 'Cargando evidencia'} backTo={cycle ? `/cycle/${cycle.id}` : '/'}>
     {!cycle && !error && <StatePanel kind="loading" title="Preparando Growth Film" />}{error && <StatePanel kind="error" title="No se pudo abrir Growth Film" onRetry={() => void load()}>{error}</StatePanel>}
     {cycle && <>
-      <section className="growth-film-intro"><Sparkles size={20} aria-hidden="true" /><div><h2>Una película hecha con momentos reales</h2><p>Fotografías privadas, en orden cronológico. No inventa etapas ni altera tu evidencia.</p></div></section>
+      <section className="growth-film-intro"><Sparkles size={20} aria-hidden="true" /><div><h2>Una película hecha con momentos reales</h2><p>Fotografías privadas, en orden cronológico. No inventa etapas ni altera tu evidencia.</p>{reducedMotion && <span className="growth-film-reduced-motion" role="status">Movimiento reducido activo</span>}</div></section>
       {photos.length === 0 ? <StatePanel kind="empty" title="Aún no hay fotografías confirmadas">Growth Film aparecerá cuando este ciclo tenga evidencia fotográfica.</StatePanel> : <section ref={playerRef} className={`growth-film-player${immersive ? ' growth-film-player--immersive' : ''}`} aria-label="Reproductor de Growth Film">
         <div className="growth-film-frame" aria-live="polite">
           {prior && priorUrl && <img className="growth-film-frame__layer growth-film-frame__layer--previous" src={priorUrl} alt="" aria-hidden="true" />}

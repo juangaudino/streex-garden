@@ -23,29 +23,23 @@ function withTimeout<T>(operation: Promise<T>, milliseconds: number, message: st
 
 async function uploadPrivateBytes(path: string, contentType: string, bytes: ArrayBuffer, timeoutMessage: string): Promise<void> {
   const client = getSupabaseClient()
-  const { data, error } = await client.auth.getSession()
-  if (error || !data.session) throw new Error('Tu sesión expiró antes de subir la foto. Vuelve a iniciar sesión.')
-
-  // storage-js 2.115 serializes a Blob as multipart with an empty field name.
-  // This project rejects that payload as empty. Send exact bytes while retaining
-  // the user's JWT and Storage RLS, for originals and their private derivatives.
-  const response = await withTimeout(fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/garden-originals/${path}`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
-        Authorization: `Bearer ${data.session.access_token}`,
-        'content-type': contentType,
-        'cache-control': 'max-age=3600',
-        'x-upsert': 'false',
-      },
-      body: bytes,
-    },
-  ), 20_000, timeoutMessage)
-  if (response.ok || response.status === 409) return
-  const detail = await response.json().catch(() => null) as { message?: string } | null
-  throw new Error(detail?.message ?? `Storage devolvió HTTP ${response.status}.`)
+  let lastMessage = timeoutMessage
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const { data, error } = await client.auth.getSession()
+    if (error || !data.session) throw new Error('Tu sesión expiró antes de subir la foto. Vuelve a iniciar sesión.')
+    // storage-js 2.115 serializes a Blob as multipart with an empty field name.
+    // Send exact bytes while retaining the user's JWT and Storage RLS.
+    const response = await withTimeout(fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/garden-originals/${path}`,
+      { method: 'POST', headers: { apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string, Authorization: `Bearer ${data.session.access_token}`, 'content-type': contentType, 'cache-control': 'max-age=3600', 'x-upsert': 'false' }, body: bytes },
+    ), 20_000, timeoutMessage)
+    if (response.ok || response.status === 409) return
+    const detail = await response.json().catch(() => null) as { message?: string } | null
+    lastMessage = detail?.message ?? `Storage devolvió HTTP ${response.status}.`
+    if (response.status === 401 || response.status === 403) await client.auth.refreshSession().catch(() => undefined)
+    if (![401, 403, 408, 429, 500, 502, 503, 504].includes(response.status)) break
+  }
+  throw new Error(lastMessage)
 }
 
 async function uploadOriginalBytes(path: string, contentType: string, bytes: ArrayBuffer): Promise<void> {

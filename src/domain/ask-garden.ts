@@ -58,18 +58,18 @@ export function buildAskGardenSuggestions(input: AskGardenSuggestionInput, rotat
   const actionRequired = input.positions.find((position) => position.current_state?.kind === 'action_required')
   const watch = input.positions.find((position) => position.current_state?.kind === 'watch')
   const activePlant = input.positions.find((position) => position.plant?.name)
-  const candidates = [
-    input.activeAttentionCount > 0 ? '¿Qué debería atender hoy?' : null,
-    missingGermination.length > 0 ? '¿Qué posiciones siguen sin germinación confirmada?' : null,
-    harvestCandidates.length > 0 ? '¿Hay algo que valga la pena evaluar para cosecha?' : null,
-    actionRequired?.plant?.name ? `¿Qué requiere atención en ${actionRequired.plant.name}, Posición ${actionRequired.position.number}?` : null,
-    watch?.plant?.name ? `¿Qué debería vigilar en ${watch.plant.name}, Posición ${watch.position.number}?` : null,
-    activePlant?.plant?.name ? `¿Cómo va ${activePlant.plant.name} en la Posición ${activePlant.position.number}?` : null,
-    '¿Qué cambió desde mi última revisión?',
-    '¿Hay incidencias abiertas que debería revisar?',
-  ].filter((candidate): candidate is string => Boolean(candidate))
-  const unique = [...new Set(candidates)]
-  if (unique.length <= 3) return unique
+  const candidates: Array<{ key: string; text: string }> = [
+    input.activeAttentionCount > 0 ? { key: 'attention', text: '¿Qué debería atender hoy?' } : null,
+    missingGermination.length > 0 ? { key: 'germination', text: '¿Qué posiciones siguen sin germinación confirmada?' } : null,
+    harvestCandidates.length > 0 ? { key: 'harvest', text: '¿Hay algo que valga la pena evaluar para cosecha?' } : null,
+    actionRequired?.plant?.name ? { key: 'action_required', text: `¿Qué requiere atención en ${actionRequired.plant.name}, Posición ${actionRequired.position.number}?` } : null,
+    watch?.plant?.name ? { key: 'watch', text: `¿Qué debería vigilar en ${watch.plant.name}, Posición ${watch.position.number}?` } : null,
+    activePlant?.plant?.name ? { key: 'plant', text: `¿Cómo va ${activePlant.plant.name} en la Posición ${activePlant.position.number}?` } : null,
+    { key: 'changes', text: '¿Qué cambió desde mi última revisión?' },
+    { key: 'incidents', text: '¿Hay incidencias abiertas que debería revisar?' },
+  ].filter((candidate): candidate is { key: string; text: string } => Boolean(candidate))
+  const unique = candidates.filter((candidate, index, all) => all.findIndex((item) => item.key === candidate.key) === index)
+  if (unique.length <= 3) return unique.map((candidate) => candidate.text)
   const start = ((rotation % unique.length) + unique.length) % unique.length
-  return Array.from({ length: 3 }, (_, index) => unique[(start + index) % unique.length])
+  return Array.from({ length: 3 }, (_, index) => unique[(start + index * 2) % unique.length].text)
 }

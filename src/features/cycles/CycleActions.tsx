@@ -6,10 +6,11 @@ import { closeCycle, correctCyclePlanting, getGarden, invalidateEvent, moveCycle
 const today = () => new Date().toISOString().slice(0, 10)
 type Action = 'harvest' | 'close' | 'replace' | 'move' | 'correct' | 'reopen' | 'invalidate' | null
 
-export function CycleActions({ cycle, onChanged, onReplaced, selectedEvent, onOpenFact, onOpenObservation, maintenanceMode = false }: {
+export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStructuralChange, selectedEvent, onOpenFact, onOpenObservation, maintenanceMode = false }: {
   cycle: GrowCycleDetail
   onChanged: () => Promise<void>
   onReplaced: (cycleId: string) => void
+  onMaintenanceStructuralChange?: (action: 'close' | 'move' | 'replace') => Promise<void>
   selectedEvent?: CycleHistoryEvent | null
   onOpenFact?: () => void
   onOpenObservation?: () => void
@@ -43,25 +44,27 @@ export function CycleActions({ cycle, onChanged, onReplaced, selectedEvent, onOp
       if (action === 'close') await closeCycle({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, endedOn: date || today(), reason, note })
       if (action === 'replace') {
         const result = await replaceCycle({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, cropName, plantedOn: precision === 'unknown' ? null : date, plantedOnPrecision: precision })
-        onReplaced(result.grow_cycle_id); return
+        if (onMaintenanceStructuralChange) await onMaintenanceStructuralChange('replace')
+        else onReplaced(result.grow_cycle_id)
+        return
       }
       if (action === 'move') await moveCycle({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, targetPositionId, movedOn: date || today() })
       if (action === 'correct') await correctCyclePlanting({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, plantedOn: precision === 'unknown' ? null : date, plantedOnPrecision: precision, reason })
       if (action === 'reopen') await reopenCycle({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, reason })
       if (action === 'invalidate' && selectedEvent) await invalidateEvent({ requestId, eventId: selectedEvent.id, expectedRevision: selectedEvent.revision, reason })
-      await onChanged(); reset()
+      if (onMaintenanceStructuralChange && (action === 'close' || action === 'move')) await onMaintenanceStructuralChange(action)
+      else await onChanged()
+      reset()
     } catch (error) { setMessage(error instanceof Error ? error.message : 'No se pudo confirmar el cambio.') } finally { setBusy(false) }
   }
 
   if (action === null) return <section className={`quick-actions${maintenanceMode ? ' quick-actions--maintenance' : ''}`} aria-labelledby="actions-title"><div className="section-heading"><h2 id="actions-title">{maintenanceMode ? 'Acciones disponibles' : 'Acciones'}</h2></div>
     {cycle.state === 'active' ? <div className="quick-actions__grid">
       <button type="button" onClick={() => setAction('harvest')}><Wheat size={18} />Cosechar</button>
-      {!maintenanceMode && <>
       <button type="button" onClick={() => { setDate(cycle.planted_on ?? ''); setPrecision(cycle.planted_on_precision); setAction('correct') }}><Calendar size={18} />Corregir siembra</button>
       <button type="button" onClick={() => { setDate(today()); setAction('move') }}><ArrowRightLeft size={18} />Trasladar</button>
       <button type="button" onClick={() => { setDate(today()); setReason('productive_end'); setAction('close') }}><Archive size={18} />Cerrar ciclo</button>
       <button className="quick-actions__replace" type="button" onClick={() => { setDate(today()); setPrecision('exact'); setAction('replace') }}><Sprout size={18} />Reemplazar / resembrar</button><button type="button" onClick={onOpenFact}><ClipboardPenLine size={18} />Registrar estado o acción</button><button type="button" onClick={onOpenObservation}><ImagePlus size={18} />Añadir observación</button>
-      </>}
     </div> : <div className="closed-actions"><p>Este ciclo está cerrado. Su historial permanece disponible.</p><button className="secondary-button" type="button" onClick={() => setAction('reopen')}><RotateCcw size={17} />Solicitar reapertura</button></div>}
   </section>
 

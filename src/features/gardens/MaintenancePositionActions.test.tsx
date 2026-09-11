@@ -38,11 +38,13 @@ describe('Maintenance contextual canonical actions', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Hacer algo ahora' }))
     fireEvent.click(screen.getByRole('button', { name: 'Guardar acción canónica' }))
-    await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('fact'))
+    await waitFor(() => expect(getCycle).toHaveBeenCalled())
+    expect(onInspectionRecorded).not.toHaveBeenCalledWith('fact')
 
     fireEvent.click(screen.getByRole('button', { name: 'Planificar algo' }))
     fireEvent.click(screen.getByRole('button', { name: 'Crear Attention canónico' }))
-    await waitFor(() => expect(onInspectionRecorded).toHaveBeenCalledWith('manual'))
+    await waitFor(() => expect(getCycle).toHaveBeenCalled())
+    expect(onInspectionRecorded).not.toHaveBeenCalledWith('manual')
   })
 
   it('finishes a reviewed position without creating a canonical fact', async () => {

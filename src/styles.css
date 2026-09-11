@@ -104,8 +104,8 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .attention-resolution .section-heading { margin-bottom: 0; }
 .attention-editor { margin-top: 14px; }
 .field-optional { color: var(--muted); font-size: .78rem; font-weight: 500; }
-.today-create, .cycle-attention { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); display: grid; gap: 13px; margin-bottom: 22px; padding: 18px; }
-.today-create .section-heading, .cycle-attention .section-heading { margin-bottom: 0; }
+.today-create, .cycle-attention, .cycle-fact-section { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); display: grid; gap: 13px; margin-bottom: 22px; padding: 18px; }
+.today-create .section-heading, .cycle-attention .section-heading, .cycle-fact-section .section-heading { margin-bottom: 0; }
 .maintenance-current, .maintenance-summary { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); display: grid; gap: 16px; margin-bottom: 20px; padding: 20px; }
 .maintenance-context { background: var(--forest); border-radius: 15px; color: #fff; display: grid; gap: 3px; padding: 14px; position: sticky; top: 8px; z-index: 2; }
 .maintenance-context strong { font-size: 1rem; }.maintenance-context span { color: #d7e2d4; font-size: .82rem; }
@@ -514,7 +514,7 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .history-photo figcaption { border-bottom: 1px solid var(--hairline); padding-bottom: 6px; }
 
 .today-intro, .gallery-intro { background: linear-gradient(120deg, #e5ecdf, #f7f6f0); border-radius: 22px; }
-.today-create, .cycle-attention { background: transparent; border: 1px solid var(--hairline); border-radius: 0; border-width: 1px 0; padding: 21px 0; }
+.today-create, .cycle-attention, .cycle-fact-section { background: transparent; border: 1px solid var(--hairline); border-radius: 0; border-width: 1px 0; padding: 21px 0; }
 .maintenance-current, .maintenance-summary { background: var(--paper); border: 0; border-radius: 24px; box-shadow: 0 1px 0 var(--hairline), 0 12px 28px rgba(25,59,42,.06); }
 .maintenance-context { background: var(--night); border-radius: 18px; }
 .maintenance-rail { display: grid; gap: 0; list-style: none; margin: 2px 0 0 6px; padding: 0; position: relative; }

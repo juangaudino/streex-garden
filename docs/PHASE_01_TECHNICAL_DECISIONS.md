@@ -51,7 +51,7 @@ El proyecto gestionado de Streex Garden está separado en Streex Labs. Sus crede
 ## Phase 3 — Dominio, acceso e historia
 
 - Los ciclos usan exclusivamente `active` y `closed`, con una revisión monotónica. Cerrar, reemplazar, mover, corregir siembra y reabrir requieren la revisión esperada; un conflicto no aplica una parte de la operación.
-- Reemplazo cierra la ocupación y ciclo anterior, registra su auditoría y crea un ciclo/ocupación/evento de inicio nuevos en la misma transacción. Fotos y eventos del ciclo previo no se reasignan. El traslado sólo permite una posición vacía del mismo jardín.
+- Reemplazo cierra la ocupación y ciclo anterior, registra su auditoría y crea un ciclo/ocupación/evento de inicio nuevos en la misma transacción. Fotos y eventos del ciclo previo no se reasignan. El traslado funciona dentro del mismo jardín: puede usar una posición vacía o intercambiar dos posiciones ocupadas, dejando un evento y una revisión auditada para cada ciclo.
 - `cycle_revisions` y `event_revisions` conservan correcciones e invalidaciones. Las vistas corrientes omiten eventos invalidados, mientras que las revisiones permanecen aisladas por propietario mediante RLS.
 - Cada comando nuevo guarda un payload canónico junto con su recibo. Repetir la misma intención devuelve el resultado original; reutilizar su ID con contenido distinto se rechaza. Los recibos heredados sin payload siguen siendo reproducibles por compatibilidad, pero no pueden compararse retrospectivamente.
 - Una corrección posterior `20260907061404_phase3_deterministic_occupancy_order.sql` fija el orden determinista de posiciones históricas cuando varias operaciones comparten un mismo timestamp de transacción.

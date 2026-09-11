@@ -18,7 +18,7 @@ const choiceLabels: Record<FactChoice, string> = {
   resolve_incident: 'Resolver incidencia',
 }
 
-export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false, heading = 'Registrar estado o acción', description = 'Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.', submitLabel = 'Guardar registro' }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean; heading?: string; description?: string; submitLabel?: string }) {
+export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false, heading = 'Registrar estado o acción', description = 'Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.', submitLabel = 'Guardar registro', entryLabel = heading }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean; heading?: string; description?: string; submitLabel?: string; entryLabel?: string }) {
   const [open, setOpen] = useState(initialOpen)
   const [choice, setChoice] = useState<FactChoice>(initialChoice ?? 'germination')
   const [occurredOn, setOccurredOn] = useState(today())
@@ -67,7 +67,7 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
     finally { setBusy(false) }
   }
 
-  if (!open) return <section className="cycle-fact-entry"><button className="secondary-button secondary-button--compact" type="button" onClick={() => setOpen(true)}><ClipboardPenLine size={17} aria-hidden="true" /> {heading}</button><p className="quiet-copy">Germinación, conteos, evaluaciones e intervenciones confirmadas. Las recomendaciones no se registran aquí.</p></section>
+  if (!open) return <section className="cycle-fact-entry"><button className="secondary-button" type="button" onClick={() => setOpen(true)}><ClipboardPenLine size={17} aria-hidden="true" /> {entryLabel}</button><p className="quiet-copy">Aquí registras un hecho canónico que confirmaste personalmente: germinación, conteo, estado, evaluación, intervención o incidencia. Las recomendaciones de Garden AI no se guardan aquí.</p></section>
 
   return <form className="editor-card action-editor" onSubmit={(event) => void submit(event)}>
     <div className="section-heading"><h2><Sprout size={19} aria-hidden="true" /> {heading}</h2><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>

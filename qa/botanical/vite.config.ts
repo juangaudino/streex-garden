@@ -22,12 +22,22 @@ export default defineConfig({
         res.end(readFileSync(path))
       })
       server.middlewares.use((req, res, next) => {
-        const asset = req.url ? previewAssets[req.url.split('?')[0]] : undefined
+        const pathname = req.url?.split('?')[0] ?? ''
+        const asset = previewAssets[pathname]
         if (!asset) { next(); return }
         if (!existsSync(asset.path)) { res.statusCode = 404; res.end(); return }
         res.setHeader('Content-Type', asset.type)
         res.setHeader('Cache-Control', 'private, max-age=3600')
         res.end(readFileSync(asset.path))
+      })
+      server.middlewares.use((req, res, next) => {
+        const pathname = req.url?.split('?')[0] ?? ''
+        if (/\.(?:png|jpe?g|webp|avif|wav|json|env|md|sql)$/i.test(pathname) && !pathname.startsWith('/qa/botanical/')) {
+          res.statusCode = 404
+          res.end()
+          return
+        }
+        next()
       })
     },
   }],

@@ -10,6 +10,13 @@ import { createPrivateGrowthFilm, downloadPrivateGrowthFilm, nearbyFilmIndexes, 
 import { groupedGrowthFilmNarratives, growthFilmNarrative } from './growth-film-narrative'
 
 type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
+type SafariFullscreenDocument = Document & {
+  webkitFullscreenElement?: Element | null
+  webkitExitFullscreen?: () => Promise<void> | void
+}
+type SafariFullscreenElement = HTMLElement & {
+  webkitRequestFullscreen?: () => Promise<void> | void
+}
 const frameDurationMs = 5_600
 
 export function GrowthFilmPage() {
@@ -67,11 +74,39 @@ export function GrowthFilmPage() {
   const toggleImmersive = async () => {
     const player = playerRef.current
     if (!player) return
-    if (immersive) { if (document.fullscreenElement) await document.exitFullscreen?.(); setImmersive(false); return }
-    try { if (player.requestFullscreen) { await player.requestFullscreen(); setImmersive(true) } else setImmersive((value) => !value) }
-    catch { setImmersive((value) => !value) }
+    const fullscreenDocument = document as SafariFullscreenDocument
+    if (immersive) {
+      try {
+        if (fullscreenDocument.fullscreenElement) await fullscreenDocument.exitFullscreen?.()
+        else if (fullscreenDocument.webkitFullscreenElement) await fullscreenDocument.webkitExitFullscreen?.()
+      } catch {
+        // The fixed immersive layout remains the reliable fallback when Safari rejects exit.
+      }
+      setImmersive(false)
+      return
+    }
+
+    // Activate the viewport layout first. This keeps the control usable on Safari/iOS,
+    // where arbitrary elements may not expose the standard Fullscreen API.
+    setImmersive(true)
+    const requestFullscreen = player.requestFullscreen ?? (player as SafariFullscreenElement).webkitRequestFullscreen
+    if (!requestFullscreen) return
+    try { await requestFullscreen.call(player) } catch {
+      // Native fullscreen is optional; the CSS immersive view is already active.
+    }
   }
-  useEffect(() => { const sync = () => setImmersive(Boolean(document.fullscreenElement)); document.addEventListener('fullscreenchange', sync); return () => document.removeEventListener('fullscreenchange', sync) }, [])
+  useEffect(() => {
+    const sync = () => {
+      const fullscreenDocument = document as SafariFullscreenDocument
+      setImmersive(Boolean(fullscreenDocument.fullscreenElement ?? fullscreenDocument.webkitFullscreenElement))
+    }
+    document.addEventListener('fullscreenchange', sync)
+    document.addEventListener('webkitfullscreenchange', sync)
+    return () => {
+      document.removeEventListener('fullscreenchange', sync)
+      document.removeEventListener('webkitfullscreenchange', sync)
+    }
+  }, [])
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     const sync = () => setReducedMotion(media.matches)

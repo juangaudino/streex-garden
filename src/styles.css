@@ -782,6 +782,9 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .growth-film-export__actions { align-items:center; display:flex; flex-wrap:wrap; gap:10px; }
 .growth-film-export__actions span { color:#d4e2d2; font-size:.78rem; }
 .growth-film-export .secondary-button { border-color:rgba(255,255,255,.6); color:#fff; }
+.growth-film-music-select { color:#e4efe2; display:grid; font-size:.78rem; font-weight:700; gap:6px; min-width:220px; }
+.growth-film-music-select select { background:#f7fbf5; border:1px solid rgba(255,255,255,.45); border-radius:10px; color:#173829; font:inherit; min-height:42px; padding:0 34px 0 12px; }
+.growth-film-music-select select:focus-visible { outline:2px solid #dcead8; outline-offset:2px; }
 .growth-film-clip-picker { background:rgba(247,251,245,.92); border:1px solid rgba(255,255,255,.28); border-radius:18px; color:#173829; display:grid; gap:14px; margin-top:8px; padding:16px; width:100%; }
 .growth-film-clip-picker__header { align-items:start; display:flex; gap:12px; justify-content:space-between; }
 .growth-film-clip-picker__header h3 { color:#173829; font-family:'Fraunces',serif; font-size:1.32rem; margin:0 0 3px; }

@@ -782,6 +782,25 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .growth-film-export__actions { align-items:center; display:flex; flex-wrap:wrap; gap:10px; }
 .growth-film-export__actions span { color:#d4e2d2; font-size:.78rem; }
 .growth-film-export .secondary-button { border-color:rgba(255,255,255,.6); color:#fff; }
+.growth-film-clip-picker { background:rgba(247,251,245,.92); border:1px solid rgba(255,255,255,.28); border-radius:18px; color:#173829; display:grid; gap:14px; margin-top:8px; padding:16px; width:100%; }
+.growth-film-clip-picker__header { align-items:start; display:flex; gap:12px; justify-content:space-between; }
+.growth-film-clip-picker__header h3 { color:#173829; font-family:'Fraunces',serif; font-size:1.32rem; margin:0 0 3px; }
+.growth-film-clip-picker__header p { color:#4f6857; font-size:.84rem; margin:0; }
+.growth-film-clip-picker__header strong { background:#dcead8; border-radius:999px; color:#173829; font-size:.78rem; padding:6px 9px; white-space:nowrap; }
+.growth-film-clip-picker__actions { display:flex; flex-wrap:wrap; gap:12px; }
+.growth-film-clip-picker__actions .text-button { color:#173829; }
+.growth-film-clip-picker__list { display:grid; gap:7px; max-height:360px; overflow:auto; padding-right:2px; }
+.growth-film-clip-picker__item { align-items:center; background:#fffdf7; border:1px solid #c8d8c5; border-radius:12px; cursor:pointer; display:grid; gap:10px; grid-template-columns:auto auto 1fr auto; padding:10px 12px; }
+.growth-film-clip-picker__item.is-selected { background:#e5f0e2; border-color:#3b7958; }
+.growth-film-clip-picker__item input { accent-color:#2f7956; height:18px; width:18px; }
+.growth-film-clip-picker__item > svg { color:#2f7956; opacity:0; }
+.growth-film-clip-picker__item.is-selected > svg { opacity:1; }
+.growth-film-clip-picker__number { color:#3b7958; font-family:'Fraunces',serif; font-size:1.05rem; }
+.growth-film-clip-picker__item span:nth-child(3) { display:grid; gap:2px; }
+.growth-film-clip-picker__item strong { font-size:.88rem; }
+.growth-film-clip-picker__item small { color:#5b7062; font-size:.72rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.growth-film-clip-picker__footer { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
+.growth-film-clip-picker__footer .primary-button:disabled { cursor:not-allowed; opacity:.5; }
 .growth-film-player--immersive { background:#071008; height:100vh; height:100dvh; left:0; min-height:100svh; padding: max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left)); right:0; top:0; z-index:70; }
 .growth-film-player--immersive .growth-film-frame { box-shadow:none; }
 .growth-film-reduced-motion { color:var(--muted); display:inline-block; font-size:.78rem; font-weight:700; margin-top:6px; }
@@ -790,7 +809,7 @@ html.growth-film-immersive-open, body.growth-film-immersive-open { overflow:hidd
   .growth-film-player--immersive { height:-webkit-fill-available; min-height:-webkit-fill-available; }
 }
 @media (prefers-reduced-motion: reduce) { .growth-film-frame__layer--previous, .growth-film-frame__layer--current, .ask-garden-thinking i { animation:none; } }
-@media (max-width:540px) { .ask-garden-chat__header { align-items:flex-start; } .ask-garden-chat__header-actions > span { display:none; } .ask-garden-thread { max-height:calc(74svh - 136px); min-height:390px; } .ask-garden-question { max-width:88%; } .ask-garden-answer { max-width:92%; } .ask-garden-empty { padding-left:0; } .ask-garden-compose { bottom:calc(env(safe-area-inset-bottom) + 6px); } .growth-film-export { align-items:flex-start; flex-direction:column; } }
+@media (max-width:540px) { .ask-garden-chat__header { align-items:flex-start; } .ask-garden-chat__header-actions > span { display:none; } .ask-garden-thread { max-height:calc(74svh - 136px); min-height:390px; } .ask-garden-question { max-width:88%; } .ask-garden-answer { max-width:92%; } .ask-garden-empty { padding-left:0; } .ask-garden-compose { bottom:calc(env(safe-area-inset-bottom) + 6px); } .growth-film-export { align-items:flex-start; flex-direction:column; } .growth-film-clip-picker__footer { justify-content:stretch; } .growth-film-clip-picker__footer > * { flex:1; } }
 
 
 /* Ask Garden owns its scroll area on phone-sized screens. The composer stays

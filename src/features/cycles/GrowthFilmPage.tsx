@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowLeft, Download, Maximize2, Minimize2, Pause, Play, Sparkles, X } from 'lucide-react'
+import { ArrowLeft, Check, Download, Maximize2, Minimize2, Pause, Play, Sparkles, Volume2, VolumeX, X } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
@@ -23,6 +23,7 @@ type SafariVideoElement = HTMLVideoElement & {
 }
 const supportsNativeVideoFullscreen = typeof HTMLVideoElement !== 'undefined' && 'webkitEnterFullscreen' in HTMLVideoElement.prototype
 const frameDurationMs = 5_600
+const growthFilmAudioUrl = '/audio/garden-x-ambient.wav'
 
 export function GrowthFilmPage() {
   const { cycleId } = useParams()
@@ -41,6 +42,9 @@ export function GrowthFilmPage() {
   const [filmVideoUrl, setFilmVideoUrl] = useState<string | null>(null)
   const [filmVideoLoading, setFilmVideoLoading] = useState(false)
   const [filmVideoError, setFilmVideoError] = useState<string | null>(null)
+  const [musicEnabled, setMusicEnabled] = useState(false)
+  const [clipPickerOpen, setClipPickerOpen] = useState(false)
+  const [clipSelectionIds, setClipSelectionIds] = useState<string[]>([])
   const playerRef = useRef<HTMLElement>(null)
   const videoRef = useRef<SafariVideoElement>(null)
   const exportAbort = useRef<AbortController | null>(null)
@@ -50,7 +54,7 @@ export function GrowthFilmPage() {
   useEffect(() => { void load() }, [load])
   const photos = useMemo<PhotoEvent[]>(() => [...(cycle?.history ?? [])].filter((event): event is PhotoEvent => Boolean(event.photo?.upload_status === 'uploaded')).sort((a, b) => (a.photo.captured_at ?? a.occurred_at).localeCompare(b.photo.captured_at ?? b.occurred_at)), [cycle])
   // eslint-disable-next-line react-hooks/set-state-in-effect -- a newly resolved cycle must reset its local film queue.
-  useEffect(() => { setSources({}); setIndex(0); setPreviousIndex(null); setQueuedIndex(null) }, [photos])
+  useEffect(() => { setSources({}); setIndex(0); setPreviousIndex(null); setQueuedIndex(null); setClipPickerOpen(false); setClipSelectionIds([]); setMusicEnabled(false) }, [photos])
   const warm = useCallback((targetIndex: number) => {
     const event = photos[targetIndex]
     if (!event || sources[event.photo.id]) return
@@ -73,7 +77,7 @@ export function GrowthFilmPage() {
     filmVideoAbort.current = controller
     try {
       const urls = await Promise.all(photos.map((event) => getSignedPhotoUrl(event.photo.storage_path, 'story')))
-      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal })
+      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal, audioUrl: growthFilmAudioUrl })
       setFilmVideoUrl(URL.createObjectURL(video.blob))
     } catch (reason) {
       filmVideoReady.current = false
@@ -202,15 +206,26 @@ export function GrowthFilmPage() {
     }
   }, [immersive])
   useEffect(() => () => exportAbort.current?.abort(), [])
+  const openClipPicker = () => {
+    const defaultIndexes = selectFilmFrameIndexes(photos.length)
+    setClipSelectionIds(defaultIndexes.map((frameIndex) => photos[frameIndex].photo.id))
+    setClipPickerOpen(true)
+    defaultIndexes.forEach(warm)
+  }
+  const toggleClipSelection = (photoId: string) => {
+    setClipSelectionIds((current) => current.includes(photoId) ? current.filter((id) => id !== photoId) : current.length >= GROWTH_FILM_MAX_EXPORT_FRAMES ? current : [...current, photoId])
+  }
   const exportClip = async () => {
     if (exporting) return
-    const frameEvents = selectFilmFrameIndexes(photos.length).map((frameIndex) => photos[frameIndex])
+    const frameEvents = photos.filter((photo) => clipSelectionIds.includes(photo.photo.id))
+    if (frameEvents.length < 2) { setExportError('Selecciona al menos dos momentos para crear el clip.'); return }
     setExporting(true); setExportError(null); setExportProgress({ completed: 0, total: frameEvents.length })
     const controller = new AbortController(); exportAbort.current = controller
     try {
       const urls = await Promise.all(frameEvents.map(async (event) => sources[event.photo.id] ?? getSignedPhotoUrl(event.photo.storage_path, 'story')))
-      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal, onProgress: (completed, total) => setExportProgress({ completed, total }) })
+      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal, audioUrl: growthFilmAudioUrl, onProgress: (completed, total) => setExportProgress({ completed, total }) })
       downloadPrivateGrowthFilm(video.blob, video.mimeType, `garden-x-${cycle?.crop_name.toLowerCase().replace(/[^a-z0-9]+/gi, '-') ?? 'growth-film'}`)
+      setClipPickerOpen(false)
     } catch (reason) {
       if (!(reason instanceof DOMException && reason.name === 'AbortError')) setExportError(reason instanceof Error ? reason.message : 'No se pudo crear el clip.')
     } finally { exportAbort.current = null; setExporting(false); setExportProgress(null) }
@@ -228,13 +243,13 @@ export function GrowthFilmPage() {
       {photos.length === 0 ? <StatePanel kind="empty" title="Aún no hay fotografías confirmadas">Growth Film aparecerá cuando este ciclo tenga evidencia fotográfica.</StatePanel> : <section ref={playerRef} className={`growth-film-player${immersive ? ' growth-film-player--immersive' : ''}`} aria-label="Reproductor de Growth Film">
         <div className="growth-film-frame" aria-live="polite">
           {prior && priorUrl && <img className="growth-film-frame__layer growth-film-frame__layer--previous" src={priorUrl} alt="" aria-hidden="true" />}
-          {filmVideoUrl ? <video ref={videoRef} className="growth-film-video" src={filmVideoUrl} muted playsInline preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => { setPlaying(false); setIndex(photos.length - 1) }} onTimeUpdate={(event) => { const nextIndex = Math.min(photos.length - 1, Math.floor((event.currentTarget.currentTime * 1_000) / GROWTH_FILM_MOMENT_DURATION_MS)); if (nextIndex !== index) setIndex(nextIndex) }} aria-label="Video del crecimiento de la planta" /> : currentUrl ? <img key={`current-${current.photo.id}`} className="growth-film-frame__layer growth-film-frame__layer--current" src={currentUrl} alt={`Fotografía documental: ${current.photo.original_filename}`} /> : <div className="growth-film-frame__loading">Preparando el siguiente momento…</div>}
+          {filmVideoUrl ? <video ref={videoRef} className="growth-film-video" src={filmVideoUrl} muted={!musicEnabled} playsInline preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => { setPlaying(false); setIndex(photos.length - 1) }} onTimeUpdate={(event) => { const nextIndex = Math.min(photos.length - 1, Math.floor((event.currentTarget.currentTime * 1_000) / GROWTH_FILM_MOMENT_DURATION_MS)); if (nextIndex !== index) setIndex(nextIndex) }} aria-label="Video del crecimiento de la planta" /> : currentUrl ? <img key={`current-${current.photo.id}`} className="growth-film-frame__layer growth-film-frame__layer--current" src={currentUrl} alt={`Fotografía documental: ${current.photo.original_filename}`} /> : <div className="growth-film-frame__loading">Preparando el siguiente momento…</div>}
           <div className="growth-film-frame__caption"><strong>{currentNarrative?.title ?? 'Un momento más en su historia.'}</strong><span>{currentNarrative?.detail ?? 'Fotografía real de este ciclo.'}</span><small>{captureLabel(current.photo)} · {String(index + 1).padStart(2, '0')} de {photos.length}</small></div>
         </div>
-        <div className="growth-film-controls"><button className="icon-button" type="button" aria-label={immersive ? 'Salir de la vista inmersiva' : 'Abrir pantalla completa'} title={filmVideoLoading ? 'Preparando video…' : immersive ? 'Salir de pantalla completa' : 'Abrir pantalla completa'} disabled={filmVideoLoading} onClick={() => void toggleImmersive()}>{immersive ? <Minimize2 size={17} /> : <Maximize2 size={17} />}</button>{immersive && !supportsNativeVideoFullscreen && <button className="growth-film-close-immersive" type="button" onClick={() => void toggleImmersive()}><X size={16} aria-hidden="true" /> Salir</button>}<button className="secondary-button secondary-button--compact" type="button" disabled={filmVideoLoading} onClick={() => void togglePlaying()}>{playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}{playing ? 'Pausar' : filmVideoLoading ? 'Preparando video…' : 'Reproducir'}</button><input aria-label="Posición en Growth Film" type="range" min="0" max={photos.length - 1} value={index} onChange={(event) => { setPlaying(false); show(Number(event.target.value)) }} /><span>{index + 1}/{photos.length}</span></div>
+        <div className="growth-film-controls"><button className="icon-button" type="button" aria-label={immersive ? 'Salir de la vista inmersiva' : 'Abrir pantalla completa'} title={filmVideoLoading ? 'Preparando video…' : immersive ? 'Salir de pantalla completa' : 'Abrir pantalla completa'} disabled={filmVideoLoading} onClick={() => void toggleImmersive()}>{immersive ? <Minimize2 size={17} /> : <Maximize2 size={17} />}</button>{immersive && !supportsNativeVideoFullscreen && <button className="growth-film-close-immersive" type="button" onClick={() => void toggleImmersive()}><X size={16} aria-hidden="true" /> Salir</button>}<button className="secondary-button secondary-button--compact" type="button" aria-pressed={musicEnabled} disabled={filmVideoLoading || !filmVideoUrl} onClick={() => setMusicEnabled((enabled) => !enabled)}>{musicEnabled ? <Volume2 size={16} aria-hidden="true" /> : <VolumeX size={16} aria-hidden="true" />}{musicEnabled ? 'Música activa' : 'Activar música'}</button><button className="secondary-button secondary-button--compact" type="button" disabled={filmVideoLoading} onClick={() => void togglePlaying()}>{playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}{playing ? 'Pausar' : filmVideoLoading ? 'Preparando video…' : 'Reproducir'}</button><input aria-label="Posición en Growth Film" type="range" min="0" max={photos.length - 1} value={index} onChange={(event) => { setPlaying(false); show(Number(event.target.value)) }} /><span>{index + 1}/{photos.length}</span></div>
         <ol className="growth-film-timeline">{photos.map((photo, photoIndex) => <li key={photo.id}><button type="button" className={photoIndex === index ? 'growth-film-timeline__point growth-film-timeline__point--active' : 'growth-film-timeline__point'} onClick={() => { setPlaying(false); show(photoIndex) }}><span>{String(photoIndex + 1).padStart(2, '0')}</span><small>{growthFilmNarrative(photo).title}</small></button></li>)}</ol>
       </section>}
-      {photos.length >= 2 && <><div className="growth-film-actions"><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index - 1) }}>Anterior</button><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index + 1) }}>Siguiente</button><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/photos`} state={{ cycle, preselectedIds: [current.photo.id, photos[Math.min(index + 1, photos.length - 1)].photo.id] }}>Comparar estas fotos</Link></div><section className="growth-film-export"><div><span className="eyebrow">Clip privado</span><h2>Crear video de recuerdos</h2><p>Genera y descarga en este dispositivo un clip de hasta {GROWTH_FILM_MAX_EXPORT_FRAMES} momentos reales. No se sube ni se guarda en Garden X.</p></div><div className="growth-film-export__actions">{exporting ? <button className="secondary-button" type="button" onClick={() => exportAbort.current?.abort()}><X size={16} aria-hidden="true" /> Cancelar</button> : <button className="primary-button" type="button" onClick={() => void exportClip()}><Download size={16} aria-hidden="true" /> Crear clip</button>}{exportProgress && <span aria-live="polite">Preparando {exportProgress.completed}/{exportProgress.total}</span>}</div>{exportError && <p className="inline-message inline-message--error" role="alert">{exportError}</p>}</section></>}
+      {photos.length >= 2 && <><div className="growth-film-actions"><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index - 1) }}>Anterior</button><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index + 1) }}>Siguiente</button><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/photos`} state={{ cycle, preselectedIds: [current.photo.id, photos[Math.min(index + 1, photos.length - 1)].photo.id] }}>Comparar estas fotos</Link></div><section className="growth-film-export"><div><span className="eyebrow">Clip privado</span><h2>Crear video de recuerdos</h2><p>Elige los momentos que quieres conservar y descarga un clip con música ambiental original de Garden X. Todo se prepara en este dispositivo.</p></div>{!clipPickerOpen && !exporting && <div className="growth-film-export__actions"><button className="primary-button" type="button" onClick={openClipPicker}><Download size={16} aria-hidden="true" /> Crear clip</button></div>}{clipPickerOpen && !exporting && <div className="growth-film-clip-picker" aria-label="Elegir momentos del clip"><div className="growth-film-clip-picker__header"><div><h3>Elige los momentos</h3><p>Selecciona entre 2 y {GROWTH_FILM_MAX_EXPORT_FRAMES} fotografías reales.</p></div><strong>{clipSelectionIds.length}/{GROWTH_FILM_MAX_EXPORT_FRAMES}</strong></div><div className="growth-film-clip-picker__actions"><button className="text-button" type="button" onClick={() => setClipSelectionIds(photos.slice(0, GROWTH_FILM_MAX_EXPORT_FRAMES).map((photo) => photo.photo.id))}>Seleccionar primeras</button><button className="text-button" type="button" onClick={() => setClipSelectionIds([])}>Limpiar</button></div><div className="growth-film-clip-picker__list">{photos.map((photo, photoIndex) => { const narrative = growthFilmNarrative(photo); const selected = clipSelectionIds.includes(photo.photo.id); return <label className={`growth-film-clip-picker__item${selected ? ' is-selected' : ''}`} key={photo.photo.id}><input type="checkbox" checked={selected} onChange={() => toggleClipSelection(photo.photo.id)} /><span className="growth-film-clip-picker__number">{String(photoIndex + 1).padStart(2, '0')}</span><span><strong>{narrative.title}</strong><small>{captureLabel(photo.photo)} · {photo.photo.original_filename}</small></span><Check size={17} aria-hidden="true" /></label> })}</div><div className="growth-film-clip-picker__footer"><button className="secondary-button" type="button" onClick={() => setClipPickerOpen(false)}>Cancelar</button><button className="primary-button" type="button" disabled={clipSelectionIds.length < 2} onClick={() => void exportClip()}><Download size={16} aria-hidden="true" /> Crear clip con {clipSelectionIds.length} momentos</button></div></div>}{exporting && <div className="growth-film-export__actions"><button className="secondary-button" type="button" onClick={() => exportAbort.current?.abort()}><X size={16} aria-hidden="true" /> Cancelar</button>{exportProgress && <span aria-live="polite">Preparando {exportProgress.completed}/{exportProgress.total}</span>}</div>}{exportError && <p className="inline-message inline-message--error" role="alert">{exportError}</p>}</section></>}
       <section className="growth-film-milestones"><div className="section-heading"><h2>Momentos confirmados</h2><span>{filmMilestones.length + (cycle.planted_on ? 1 : 0)}</span></div><ul>{cycle.planted_on && <li><strong>Aquí comienza su historia.</strong><span>{cycle.crop_name} fue plantado.</span></li>}{filmMilestones.map((milestone) => <li key={milestone.id}><strong>{milestone.title}</strong>{milestone.count > 1 ? <span>{milestone.detail ?? 'Varios registros de seguimiento confirmados en este momento.'}</span> : milestone.detail && <span>{milestone.detail}</span>}</li>)}</ul></section>
       <Link className="text-link" to={`/cycle/${cycle.id}`}><ArrowLeft size={14} aria-hidden="true" /> Volver al historial</Link>
     </>}

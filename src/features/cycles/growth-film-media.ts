@@ -76,7 +76,41 @@ async function renderMoment(context: CanvasRenderingContext2D, current: DecodedI
   }
 }
 
-export async function createPrivateGrowthFilm(input: { urls: string[]; signal: AbortSignal; onProgress?: (completed: number, total: number) => void }): Promise<{ blob: Blob; mimeType: string }> {
+type AudioContextWithWebkit = typeof AudioContext & { new(): AudioContext }
+
+type FilmAudio = {
+  context: AudioContext
+  source: AudioBufferSourceNode
+  track: MediaStreamTrack
+}
+
+async function prepareFilmAudio(url: string, signal: AbortSignal): Promise<FilmAudio | null> {
+  const AudioContextCtor = window.AudioContext ?? (window as Window & { webkitAudioContext?: AudioContextWithWebkit }).webkitAudioContext
+  if (!AudioContextCtor) return null
+  const context = new AudioContextCtor()
+  try {
+    const response = await fetch(url)
+    if (!response.ok) throw new Error('No se pudo cargar la música ambiental.')
+    const buffer = await context.decodeAudioData(await response.arrayBuffer())
+    if (signal.aborted) throw new DOMException('La creación del clip fue cancelada.', 'AbortError')
+    const destination = context.createMediaStreamDestination()
+    const source = context.createBufferSource()
+    source.buffer = buffer
+    source.loop = true
+    source.connect(destination)
+    source.start()
+    const track = destination.stream.getAudioTracks()[0]
+    if (!track) throw new Error('No se pudo preparar la pista de música ambiental.')
+    await context.resume().catch(() => undefined)
+    return { context, source, track }
+  } catch (reason) {
+    await context.close().catch(() => undefined)
+    if (reason instanceof DOMException && reason.name === 'AbortError') throw reason
+    return null
+  }
+}
+
+export async function createPrivateGrowthFilm(input: { urls: string[]; signal: AbortSignal; audioUrl?: string; onProgress?: (completed: number, total: number) => void }): Promise<{ blob: Blob; mimeType: string }> {
   const mimeType = preferredFilmMimeType()
   if (!mimeType || typeof HTMLCanvasElement === 'undefined' || !HTMLCanvasElement.prototype.captureStream) throw new Error('Este navegador no puede crear un clip local. Puedes seguir reproduciendo Growth Film.')
   if (input.urls.length < 2) throw new Error('Se necesitan al menos dos fotografías para crear un clip.')
@@ -89,6 +123,8 @@ export async function createPrivateGrowthFilm(input: { urls: string[]; signal: A
   const context = canvas.getContext('2d', { alpha: false })
   if (!context) throw new Error('El navegador no puede preparar el lienzo del clip.')
   const stream = canvas.captureStream(30)
+  const audio = input.audioUrl ? await prepareFilmAudio(input.audioUrl, input.signal) : null
+  if (audio) stream.addTrack(audio.track)
   const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 5_500_000 })
   const chunks: BlobPart[] = []
   const completed = new Promise<Blob>((resolve, reject) => {
@@ -111,6 +147,8 @@ export async function createPrivateGrowthFilm(input: { urls: string[]; signal: A
     throw reason
   } finally {
     stream.getTracks().forEach((track) => track.stop())
+    try { audio?.source.stop() } catch { /* already stopped */ }
+    await audio?.context.close().catch(() => undefined)
     images.forEach((image) => { if ('close' in image) image.close() })
   }
 }

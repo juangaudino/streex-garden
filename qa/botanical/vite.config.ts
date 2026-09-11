@@ -17,6 +17,7 @@ export default defineConfig({
       })
     },
   }],
-  server: { host: '127.0.0.1', port: 4190, strictPort: true },
+  // Only the temporary preview domain may reach this isolated dev server.
+  server: { host: '127.0.0.1', port: 4190, strictPort: true, allowedHosts: ['.loca.lt'] },
   build: { outDir: 'artifacts/botanical/build', emptyOutDir: true, rollupOptions: { input: resolve('qa/botanical/index.html') } },
 })

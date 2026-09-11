@@ -47,7 +47,7 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 4190,
     strictPort: true,
-    allowedHosts: ['.loca.lt'],
+    allowedHosts: ['.loca.lt', '.trycloudflare.com'],
     fs: { strict: true, allow: [resolve('qa/botanical')] },
   },
   build: { outDir: 'artifacts/botanical/build', emptyOutDir: true, rollupOptions: { input: resolve('qa/botanical/index.html') } },

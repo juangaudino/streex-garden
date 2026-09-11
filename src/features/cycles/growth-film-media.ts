@@ -1,4 +1,5 @@
 export const GROWTH_FILM_MAX_EXPORT_FRAMES = 12
+export const GROWTH_FILM_MOMENT_DURATION_MS = 2_600
 
 /**
  * Keeps a generated film concise while retaining the first and last moments.
@@ -99,7 +100,7 @@ export async function createPrivateGrowthFilm(input: { urls: string[]; signal: A
   try {
     for (let index = 0; index < images.length; index += 1) {
       input.onProgress?.(index, images.length)
-      await renderMoment(context, images[index], images[index + 1] ?? null, 2_600, input.signal)
+      await renderMoment(context, images[index], images[index + 1] ?? null, GROWTH_FILM_MOMENT_DURATION_MS, input.signal)
     }
     input.onProgress?.(images.length, images.length)
     recorder.stop()

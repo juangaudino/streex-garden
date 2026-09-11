@@ -703,6 +703,7 @@ body { background: linear-gradient(115deg, #f6f4ed 0%, #f3f3eb 48%, #eef1e9 100%
 .growth-film-frame__layer { inset:0; position:absolute; }
 .growth-film-frame__layer figure, .growth-film-frame__layer img { height:100%; margin:0; width:100%; }
 .growth-film-frame__layer img { object-fit:contain; }
+.growth-film-video { background:#0b1710; display:block; height:100%; object-fit:contain; width:100%; }
 .growth-film-frame__layer--previous { opacity:.25; transform:scale(1.025); }
 .growth-film-frame__layer--current { animation:growth-film-arrive .78s cubic-bezier(.22,.61,.36,1) both, growth-film-drift 5.6s ease-out both; z-index:1; }
 .growth-film-frame__caption { z-index:2; }

@@ -39,4 +39,8 @@ Standalone prototype for the Garden X plant knowledge layer.
 - Common issues / Problemas comunes
 - Sources / evidence
 
+## QA note
+
+The bilingual feature itself passed the repository Verify workflow on commit `bfd6d2d`. A later run on the external-preview support commit hit an unrelated pre-existing Plant Story photo timing test while the signed image was still loading; no production Garden code was changed to mask that failure.
+
 This folder is intentionally separate from the production app. The draft PR is **DO NOT MERGE** until User Zero validates the product experience.

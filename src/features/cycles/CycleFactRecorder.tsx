@@ -1,7 +1,8 @@
-import { useMemo, useState, type FormEvent } from 'react'
+import { useMemo, useRef, useState, type FormEvent } from 'react'
 import { ClipboardPenLine, Sprout } from 'lucide-react'
 import type { CycleFactType, GrowCycleDetail, HarvestReadiness } from '../../domain/types'
 import { recordCycleFact } from '../../lib/garden-api'
+import { eventLabel } from '../../domain/event-presentation'
 
 const today = () => new Date().toISOString().slice(0, 10)
 
@@ -18,7 +19,7 @@ const choiceLabels: Record<FactChoice, string> = {
   resolve_incident: 'Resolver incidencia',
 }
 
-export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false, heading = 'Registrar estado o acción', description = 'Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.', submitLabel = 'Guardar registro', entryLabel = heading }: { cycle: GrowCycleDetail; onSaved: () => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean; heading?: string; description?: string; submitLabel?: string; entryLabel?: string }) {
+export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen = false, heading = 'Registrar estado o acción', description = 'Guardarás evidencia fechada del ciclo. Esto no crea una tarea salvo una revisión que requiera seguimiento.', submitLabel = 'Guardar registro', entryLabel = heading, embedded = false, onCancel, onBusyChange }: { cycle: GrowCycleDetail; onSaved: (label?: string) => Promise<void> | void; initialChoice?: FactChoice; initialOpen?: boolean; heading?: string; description?: string; submitLabel?: string; entryLabel?: string; embedded?: boolean; onCancel?: () => void; onBusyChange?: (busy: boolean) => void }) {
   const [open, setOpen] = useState(initialOpen)
   const [choice, setChoice] = useState<FactChoice>(initialChoice ?? 'germination')
   const [occurredOn, setOccurredOn] = useState(today())
@@ -35,12 +36,15 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
   const [incidentId, setIncidentId] = useState('')
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const saving = useRef(false)
+  const request = useRef({ key: '', id: '' })
   const incidents = useMemo(() => {
     const resolved = new Set(cycle.history.filter((event) => event.event_type === 'incident_resolved').map((event) => String(event.event_data?.incident_event_id ?? '')))
     return cycle.history.filter((event) => event.event_type === 'incident_opened' && !resolved.has(event.id))
   }, [cycle.history])
 
   const reset = () => {
+    onCancel?.()
     setOpen(false); setMessage(null); setNote(''); setCount(''); setOccurredOn(today()); setIncidentId('')
   }
   const fact = (): { type: CycleFactType; data: Record<string, unknown> } => {
@@ -55,22 +59,27 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
   }
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    if (saving.current) return
     if (!navigator.onLine) { setMessage('Este registro estructurado requiere conexión. No se guardó ningún cambio.'); return }
     if ((choice === 'count' && !count) || (choice === 'resolve_incident' && !incidentId)) { setMessage('Completa el dato requerido antes de guardar.'); return }
-    setBusy(true); setMessage(null)
+    saving.current = true
+    setBusy(true); onBusyChange?.(true); setMessage(null)
     try {
       const next = fact()
-      await recordCycleFact({ requestId: crypto.randomUUID(), growCycleId: cycle.id, factType: next.type, occurredOn, note, factData: next.data })
-      await onSaved()
+      const key = JSON.stringify([cycle.id, next, occurredOn, note])
+      if (request.current.key !== key) request.current = { key, id: crypto.randomUUID() }
+      await recordCycleFact({ requestId: request.current.id, growCycleId: cycle.id, factType: next.type, occurredOn, note, factData: next.data })
+      await onSaved(eventLabel({ event_type: next.type, event_data: next.data }))
+      request.current = { key: '', id: '' }
       reset()
     } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo registrar este hecho.') }
-    finally { setBusy(false) }
+    finally { saving.current = false; setBusy(false); onBusyChange?.(false) }
   }
 
   if (!open) return <section className="cycle-fact-entry"><button className="secondary-button" type="button" onClick={() => setOpen(true)}><ClipboardPenLine size={17} aria-hidden="true" /> {entryLabel}</button><p className="quiet-copy">Aquí registras un hecho canónico que confirmaste personalmente: germinación, conteo, estado, evaluación, intervención o incidencia. Las recomendaciones de Garden AI no se guardan aquí.</p></section>
 
-  return <form className="editor-card action-editor" onSubmit={(event) => void submit(event)}>
-    <div className="section-heading"><h2><Sprout size={19} aria-hidden="true" /> {heading}</h2><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>
+  return <form className={`editor-card action-editor${embedded ? ' bs-embedded-form' : ''}`} onSubmit={(event) => void submit(event)}>
+    {!embedded && <div className="section-heading"><h2><Sprout size={19} aria-hidden="true" /> {heading}</h2><button className="text-button" type="button" disabled={busy} onClick={reset}>Cancelar</button></div>}
     <p className="quiet-copy">{description}</p>
     <label>Qué confirmé<select value={choice} onChange={(event) => { setChoice(event.target.value as FactChoice); setMessage(null) }}>{(Object.keys(choiceLabels) as FactChoice[]).filter((value) => value !== 'resolve_incident' || incidents.length > 0).map((value) => <option value={value} key={value}>{choiceLabels[value]}</option>)}</select></label>
     <label>Fecha del hecho<input type="date" required value={occurredOn} onChange={(event) => setOccurredOn(event.target.value)} /></label>
@@ -84,6 +93,6 @@ export function CycleFactRecorder({ cycle, onSaved, initialChoice, initialOpen =
     {choice === 'resolve_incident' && <label>Incidencia resuelta<select required value={incidentId} onChange={(event) => setIncidentId(event.target.value)}><option value="">Selecciona una incidencia</option>{incidents.map((incident) => <option key={incident.id} value={incident.id}>{incident.note ?? 'Incidencia registrada'}</option>)}</select></label>}
     <label>Nota {choice === 'incident' || (choice === 'state' && visualResult === 'action_required') || (choice === 'intervention' && interventionClass === 'other') ? 'requerida' : 'opcional'}<textarea required={choice === 'incident' || (choice === 'state' && visualResult === 'action_required') || (choice === 'intervention' && interventionClass === 'other')} value={note} maxLength={1000} onChange={(event) => setNote(event.target.value)} placeholder={choice === 'count' ? 'Por ejemplo: se distinguen dos plántulas.' : choice === 'incident' ? 'Describe brevemente qué ocurrió.' : choice === 'readiness' ? 'Por ejemplo: hojas con buen tamaño para evaluar cosecha.' : choice === 'intervention' && interventionClass === 'support' ? 'Por ejemplo: ajusté el soporte al tallo.' : choice === 'intervention' ? 'Por ejemplo: retiré la plántula más pequeña.' : 'Describe lo que observaste.'} /></label>
     {message && <p className="inline-message inline-message--error" role="alert">{message}</p>}
-    <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : submitLabel}</button>
+    <div className={embedded ? 'bs-sheet-footer' : 'button-row'}>{embedded && <button className="secondary-button" type="button" disabled={busy} onClick={reset}>Cancelar</button>}<button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : submitLabel}</button></div>
   </form>
 }

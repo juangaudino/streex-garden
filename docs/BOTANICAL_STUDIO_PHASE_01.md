@@ -129,13 +129,13 @@ Los títulos actuales son ejemplos de presentación. La integración debe utiliz
 | `qa/botanical/model.ts` | Fixtures y pistas existentes. | Sustituir fixtures por adaptadores de lectura; no trasladar datos de ejemplo. |
 | `main.tsx`, `index.html`, `vite.config.ts`, `tsconfig.json` | Entrada y validación independientes. | Herramientas de prototipado, fuera de la app publicada. |
 
-Orden recomendado para la fase siguiente:
+Orden de integración aprobado tras la revisión móvil de la Fase 01:
 
-1. Resolver visualmente la dirección con estas tres experiencias y fotografías representativas del usuario.
-2. Extraer los componentes compartidos y conectar Planta al ciclo real, conservando todos los tipos de registro y sus límites.
-3. Trasladar la presentación de Maintenance a sus acciones existentes y validar guardar, cancelar, pausar, continuar y omitir.
-4. Conectar el editor de Growth Film a la generación real del video, las dos pistas, el fullscreen nativo y la variante de jardín. Validar en Safari de un iPhone físico.
-5. Extender el lenguaje a Home, Jardines, Hoy y Ask Garden; medir legibilidad, tiempos de carga y continuidad de navegación.
+1. **Fase 02.1 — Maintenance y base compartida.** Conectar la presentación a los formularios y operaciones existentes. Separar «Se ve bien» de navegación, conservar la posición después de guardar y compactar las hojas móviles. [Informe de cierre](BOTANICAL_STUDIO_PHASE_02_1.md).
+2. **Fase 02.2 — Growth Film.** Pendiente. Preservar en el video exportado títulos, encuadre, selección, música, orden y narrativa de la vista previa, con validación en Safari de un iPhone físico.
+3. **Fase 02.3 — Planta.** Pendiente. Conservar la composición aprobada e incorporar nombre en inglés y científico debajo del nombre principal.
+
+La dirección visual está cerrada. Home, Jardines, Hoy y Ask Garden no forman parte de esta integración de Maintenance; cualquier extensión posterior se delimitará por separado.
 
 El estudio anterior `qa/depth-study*` permanece independiente y sin modificaciones en esta entrega. No se fusionaron sus estilos con esta propuesta.
 

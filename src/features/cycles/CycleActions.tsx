@@ -1,12 +1,12 @@
-import { useEffect, useState, type FormEvent } from 'react'
-import { Archive, ArrowRightLeft, Calendar, ClipboardPenLine, ImagePlus, RotateCcw, Sprout, Wheat } from 'lucide-react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { Archive, ArrowRightLeft, Calendar, ClipboardPenLine, ImagePlus, RotateCcw, Scissors, Sprout, Wheat } from 'lucide-react'
 import type { CycleHistoryEvent, GrowCycleDetail, GardenDetail } from '../../domain/types'
 import { closeCycle, correctCyclePlanting, getGarden, invalidateEvent, moveCycle, recordHarvest, reopenCycle, replaceCycle } from '../../lib/garden-api'
 
 const today = () => new Date().toISOString().slice(0, 10)
 type Action = 'harvest' | 'close' | 'replace' | 'move' | 'correct' | 'reopen' | 'invalidate' | null
 
-export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStructuralChange, selectedEvent, onOpenFact, onOpenObservation, maintenanceMode = false }: {
+export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStructuralChange, selectedEvent, onOpenFact, onOpenObservation, onOpenCare, maintenanceMode = false, embedded = false, onCancel, onBusyChange }: {
   cycle: GrowCycleDetail
   onChanged: () => Promise<void>
   onReplaced: (cycleId: string) => void
@@ -14,7 +14,11 @@ export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStruct
   selectedEvent?: CycleHistoryEvent | null
   onOpenFact?: () => void
   onOpenObservation?: () => void
+  onOpenCare?: () => void
   maintenanceMode?: boolean
+  embedded?: boolean
+  onCancel?: () => void
+  onBusyChange?: (busy: boolean) => void
 }) {
   const [action, setAction] = useState<Action>(selectedEvent ? 'invalidate' : null)
   const [note, setNote] = useState('')
@@ -26,20 +30,28 @@ export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStruct
   const [garden, setGarden] = useState<GardenDetail | null>(null)
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const saving = useRef(false)
+  const request = useRef<{ key: string; id: string } | null>(null)
+  const formHeading = useRef<HTMLHeadingElement>(null)
+  useEffect(() => { if (embedded && action) formHeading.current?.focus({ preventScroll: true }) }, [action, embedded])
 
   useEffect(() => {
     if (action !== 'move' || garden) return
     void getGarden(cycle.garden.id).then(setGarden).catch((error: unknown) => setMessage(error instanceof Error ? error.message : 'No se pudieron cargar las posiciones.'))
   }, [action, cycle.garden.id, garden])
 
-  const reset = () => { setAction(null); setMessage(null); setNote(''); setReason(''); setCropName(''); setTargetPositionId('') }
+  const reset = () => { onCancel?.(); setAction(null); setMessage(null); setNote(''); setReason(''); setCropName(''); setTargetPositionId('') }
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    if (saving.current) return
     if (!navigator.onLine) { setMessage('Esta acción estructural requiere conexión. No se guardó ningún cambio.'); return }
     if ((action === 'correct' || action === 'replace') && ((precision === 'unknown' && date) || (precision !== 'unknown' && !date))) { setMessage('La precisión y fecha de siembra no coinciden.'); return }
-    setBusy(true); setMessage(null)
+    saving.current = true
+    setBusy(true); onBusyChange?.(true); setMessage(null)
     try {
-      const requestId = crypto.randomUUID()
+      const key = JSON.stringify({ action, cycleId: cycle.id, revision: cycle.revision, event: selectedEvent?.id, eventRevision: selectedEvent?.revision, note, reason, date, precision, cropName, targetPositionId })
+      if (request.current?.key !== key) request.current = { key, id: crypto.randomUUID() }
+      const requestId = request.current.id
       if (action === 'harvest') await recordHarvest({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, note })
       if (action === 'close') await closeCycle({ requestId, growCycleId: cycle.id, expectedRevision: cycle.revision, endedOn: date || today(), reason, note })
       if (action === 'replace') {
@@ -55,11 +67,12 @@ export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStruct
       if (onMaintenanceStructuralChange && (action === 'close' || action === 'move')) await onMaintenanceStructuralChange(action)
       else await onChanged()
       reset()
-    } catch (error) { setMessage(error instanceof Error ? error.message : 'No se pudo confirmar el cambio.') } finally { setBusy(false) }
+    } catch (error) { setMessage(error instanceof Error ? error.message : 'No se pudo confirmar el cambio.') } finally { saving.current = false; setBusy(false); onBusyChange?.(false) }
   }
 
-  if (action === null) return <section className={`quick-actions${maintenanceMode ? ' quick-actions--maintenance' : ''}`} aria-labelledby="actions-title"><div className="section-heading"><h2 id="actions-title">{maintenanceMode ? 'Acciones disponibles' : 'Acciones'}</h2></div>
+  if (action === null) return <section className={`quick-actions${maintenanceMode ? ' quick-actions--maintenance' : ''}`} aria-label={embedded ? 'Acciones disponibles' : undefined} aria-labelledby={embedded ? undefined : 'actions-title'}>{!embedded && <div className="section-heading"><h2 id="actions-title">{maintenanceMode ? 'Acciones disponibles' : 'Acciones'}</h2></div>}
     {cycle.state === 'active' ? <div className="quick-actions__grid">
+      {onOpenCare && <button type="button" onClick={onOpenCare}><Scissors size={18} />Registrar un cuidado</button>}
       <button type="button" onClick={() => setAction('harvest')}><Wheat size={18} />Cosechar</button>
       <button type="button" onClick={() => { setDate(cycle.planted_on ?? ''); setPrecision(cycle.planted_on_precision); setAction('correct') }}><Calendar size={18} />Corregir siembra</button>
       <button type="button" onClick={() => { setDate(today()); setAction('move') }}><ArrowRightLeft size={18} />Trasladar</button>
@@ -69,7 +82,7 @@ export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStruct
   </section>
 
   const title: Record<Exclude<Action, null>, string> = { harvest: 'Registrar cosecha', close: 'Cerrar ciclo', replace: 'Reemplazar ciclo', move: 'Trasladar ciclo', correct: 'Corregir fecha de siembra', reopen: 'Reabrir ciclo', invalidate: 'Invalidar registro' }
-  return <form className="editor-card action-editor" onSubmit={(event) => void submit(event)}><div className="section-heading"><h2>{title[action]}</h2><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>
+  return <form className={`editor-card action-editor${embedded ? ' bs-embedded-form' : ''}`} onSubmit={(event) => void submit(event)}><div className="section-heading"><h2 ref={formHeading} tabIndex={embedded ? -1 : undefined}>{title[action]}</h2>{!embedded && <button className="text-button" type="button" disabled={busy} onClick={reset}>Cancelar</button>}</div>
     {(action === 'harvest') && <><p>Registrarás una cosecha realizada hoy en {cycle.crop_name}. La cantidad es opcional y se añadirá en una etapa posterior.</p><label>Nota opcional<textarea value={note} maxLength={1000} onChange={(event) => setNote(event.target.value)} placeholder="Por ejemplo: cosecha ligera" /></label></>}
     {(action === 'close') && <><p>Finalizarás la ocupación de esta posición. El historial y las fotos se conservarán.</p><label>Fecha de cierre<input type="date" required value={date} onChange={(event) => setDate(event.target.value)} /></label><label>Motivo<select value={reason} onChange={(event) => setReason(event.target.value)}><option value="productive_end">Fin productivo</option><option value="failure">Fallo</option><option value="removal">Retirada</option><option value="other">Otro</option></select></label><label>Nota {reason === 'other' ? 'requerida' : 'opcional'}<textarea required={reason === 'other'} value={note} maxLength={500} onChange={(event) => setNote(event.target.value)} /></label></>}
     {(action === 'replace') && <><p>Cerrarás {cycle.crop_name} e iniciarás un ciclo nuevo en la misma posición. Las fotos anteriores permanecerán en este ciclo.</p><label>Nuevo cultivo<input required value={cropName} maxLength={100} onChange={(event) => setCropName(event.target.value)} /></label><DatePrecision precision={precision} setPrecision={setPrecision} date={date} setDate={setDate} /></>}
@@ -77,7 +90,7 @@ export function CycleActions({ cycle, onChanged, onReplaced, onMaintenanceStruct
     {(action === 'correct') && <><p>La corrección conserva la fecha anterior y el motivo en el historial.</p><DatePrecision precision={precision} setPrecision={setPrecision} date={date} setDate={setDate} /><label>Motivo de la corrección<textarea required value={reason} maxLength={500} onChange={(event) => setReason(event.target.value)} /></label></>}
     {(action === 'reopen') && <><p>Solo se reabrirá si la última posición sigue vacía. No eliminará ningún ciclo sucesor.</p><label>Motivo<textarea required value={reason} maxLength={500} onChange={(event) => setReason(event.target.value)} /></label></>}
     {(action === 'invalidate' && selectedEvent) && <><p>Este registro dejará de contar como hecho vigente. No se borrará su auditoría.</p><label>Motivo de la invalidación<textarea required value={reason} maxLength={500} onChange={(event) => setReason(event.target.value)} /></label></>}
-    {message && <p className="inline-message inline-message--error" role="alert">{message}</p>}<button className="primary-button" disabled={busy} type="submit">{busy ? 'Confirmando…' : action === 'invalidate' ? 'Invalidar registro' : 'Confirmar cambio'}</button>
+    {message && <p className="inline-message inline-message--error" role="alert">{message}</p>}<div className={embedded ? 'bs-sheet-footer' : 'button-row'}>{embedded && <button className="secondary-button" type="button" disabled={busy} onClick={reset}>Cancelar</button>}<button className="primary-button" disabled={busy} type="submit">{busy ? 'Confirmando…' : action === 'invalidate' ? 'Invalidar registro' : 'Confirmar cambio'}</button></div>
   </form>
 }
 

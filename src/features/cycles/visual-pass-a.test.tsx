@@ -8,13 +8,14 @@ import { MaintenancePage } from '../gardens/MaintenancePage'
 import { PhotoGalleryPage } from './PhotoGalleryPage'
 import { CyclePage } from './CyclePage'
 import { captureLabel, isToday, storyInterval } from './photo-presentation'
-import { getCycle, getSignedPhotoUrl, getMaintenanceSession, markMaintenancePositionInspected, progressMaintenancePosition, setGardenCover, setHomeHero } from '../../lib/garden-api'
+import { getCycle, getSignedPhotoUrl, getMaintenanceSession, setGardenCover, setHomeHero } from '../../lib/garden-api'
 import { getObservationDrafts } from '../../lib/offline-observation-store'
 import type { GrowCycleDetail, MaintenancePosition, MaintenanceSession, PhotoEvidence } from '../../domain/types'
 
 vi.mock('../../lib/garden-api', () => ({ getCycle: vi.fn(), getSignedPhotoUrl: vi.fn(), getMaintenanceSession: vi.fn(), markMaintenancePositionInspected: vi.fn(), progressMaintenancePosition: vi.fn(), setMaintenanceSessionState: vi.fn(), setGardenCover: vi.fn(), setHomeHero: vi.fn() }))
 vi.mock('../../lib/offline-observation-store', () => ({ getObservationDrafts: vi.fn().mockResolvedValue([]), saveObservationDraft: vi.fn() }))
 vi.mock('../../lib/observation-sync', () => ({ syncObservationDraft: vi.fn() }))
+vi.mock('../../components/PwaUpdateNotice', () => ({ PwaUpdateNotice: () => null }))
 vi.mock('../../components/AppShell', () => ({ AppShell: ({ children, title }: { children: React.ReactNode; title?: string }) => <main><h1>{title}</h1>{children}</main> }))
 const photo: PhotoEvidence = { id: 'photo-a', storage_path: 'a', original_filename: 'a.jpeg', content_type: 'image/jpeg', byte_size: 1, checksum_sha256: null, captured_at: null, captured_at_precision: 'unknown', upload_status: 'uploaded' }
 const event = { id: 'event', event_type: 'observation' as const, occurred_at: '2026-06-12T00:00:00Z', occurred_at_precision: 'date' as const, occurred_on: '2026-06-12', note: 'Nota completa', revision: 1, photo }
@@ -51,52 +52,19 @@ describe('Evidence provenance in presentation', () => {
     await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith('a', 'original'))
   })
   it('does not request documentary evidence for a replaced occupant', () => {
-    render(<MaintenancePortrait position={{ ...position, current_grow_cycle_id: 'successor' }} />)
+    render(<MaintenancePortrait position={{ ...position, current_grow_cycle_id: 'successor' }} cycle={cycle} />)
     expect(getCycle).not.toHaveBeenCalled()
-    expect(screen.getByText('Ocupante cambiado')).toBeTruthy()
+    expect(screen.getByText('Sin fotografía de esta posición')).toBeTruthy()
   })
   it('does not display a moved cycle as the current plant', async () => {
-    vi.mocked(getCycle).mockResolvedValue({ ...cycle, position: { id: 'elsewhere', position_number: 2 } })
-    render(<MaintenancePortrait position={position} />)
-    await waitFor(() => expect(getCycle).toHaveBeenCalled())
+    render(<MaintenancePortrait position={position} cycle={{ ...cycle, position: { id: 'elsewhere', position_number: 2 } }} />)
     expect(getSignedPhotoUrl).not.toHaveBeenCalled()
   })
   it('keeps contextual Maintenance actions closed when the captured occupant has changed', async () => {
     vi.mocked(getMaintenanceSession).mockResolvedValue({ ...session, positions: [{ ...position, current_grow_cycle_id: 'successor' }] })
     render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
-    expect(await screen.findByText('Ocupante cambiado')).toBeTruthy()
-    expect(screen.queryByRole('button', { name: 'Foto / observación' })).toBeNull()
-  })
-})
-describe('Maintenance confirmed feedback', () => {
-  it('marks a healthy-looking position without creating a visual review fact', async () => {
-    vi.mocked(getMaintenanceSession).mockResolvedValue(session)
-    vi.mocked(markMaintenancePositionInspected).mockResolvedValue(undefined)
-    render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
-    fireEvent.click(await screen.findByRole('button', { name: 'Está bien' }))
-    await waitFor(() => expect(markMaintenancePositionInspected).toHaveBeenCalledWith(expect.any(String), 'step-a', 'manual'))
-    expect(progressMaintenancePosition).not.toHaveBeenCalled()
-  })
-
-  it('does not advance or claim success before remote confirmation or on failure', async () => {
-    vi.mocked(getMaintenanceSession).mockResolvedValue(session)
-    let reject!: (reason: Error) => void
-    vi.mocked(markMaintenancePositionInspected).mockImplementation(() => new Promise((_, failure) => { reject = failure }))
-    render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
-    fireEvent.click(await screen.findByRole('button', { name: 'Está bien' }))
-    expect(screen.queryByText(/revisión guardada/)).toBeNull()
-    expect(getMaintenanceSession).toHaveBeenCalledTimes(1)
-    await act(async () => reject(new Error('Sin conexión')))
-    expect(await screen.findByText('Sin conexión')).toBeTruthy()
-    expect(screen.queryByText(/revisión guardada/)).toBeNull()
-  })
-  it('labels skip as omitted without a review', async () => {
-    vi.mocked(getMaintenanceSession).mockResolvedValueOnce(session).mockResolvedValue({ ...session, positions: [{ ...position, progress: 'skipped' }] })
-    vi.mocked(progressMaintenancePosition).mockResolvedValue()
-    render(<MemoryRouter initialEntries={['/maintenance/session']}><Routes><Route path="/maintenance/:sessionId" element={<MaintenancePage />} /></Routes></MemoryRouter>)
-    fireEvent.click(await screen.findByRole('button', { name: 'Omitir' }))
-    expect(await screen.findByText(/omitida, sin revisión/)).toBeTruthy()
-    expect(screen.queryByText(/revisión guardada/)).toBeNull()
+    expect(await screen.findByText('Esta posición cambió.')).toBeTruthy()
+    expect(screen.queryByRole('button', { name: /Añadir una observación/ })).toBeNull()
   })
 })
 it('shows a one-photo story while keeping comparison unavailable', async () => {

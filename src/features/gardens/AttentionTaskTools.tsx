@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { CalendarClock, Check, CircleOff, Plus } from 'lucide-react'
 import type { AttentionItem, AttentionPurpose } from '../../domain/types'
 import { attentionPurposeLabel, cycleAttentionPurposes, gardenAttentionPurposes } from '../../domain/attention-purpose'
@@ -7,13 +7,16 @@ import { completeAttentionItem, createAttentionItem, deferAttentionItem, dismiss
 function isVisualReview(task: AttentionItem): boolean { return task.purpose === 'evaluate_visual_review' }
 function isDevelopmentReview(task: AttentionItem): boolean { return task.purpose.startsWith('evaluate_') && !isVisualReview(task) }
 
-export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = false, initialPurpose, initialOpen = false }: {
+export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = false, initialPurpose, initialOpen = false, embedded = false, onCancel, onBusyChange }: {
   gardenId: string
   growCycleId?: string | null
-  onCreated: () => Promise<void> | void
+  onCreated: (result: { created: boolean; purpose: AttentionPurpose; dueOn: string | null }) => Promise<void> | void
   compact?: boolean
   initialPurpose?: AttentionPurpose
   initialOpen?: boolean
+  embedded?: boolean
+  onCancel?: () => void
+  onBusyChange?: (busy: boolean) => void
 }) {
   const choices = growCycleId ? cycleAttentionPurposes : gardenAttentionPurposes
   const [open, setOpen] = useState(initialOpen)
@@ -23,28 +26,36 @@ export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = 
   const [subjectKey, setSubjectKey] = useState('')
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const saving = useRef(false)
+  const request = useRef({ key: '', id: '' })
 
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    if (saving.current) return
     if (!navigator.onLine) { setMessage('Crear atención requiere conexión. No se guardó ningún cambio.'); return }
-    setBusy(true); setMessage(null)
+    saving.current = true
+    setBusy(true); onBusyChange?.(true); setMessage(null)
     try {
-      const result = await createAttentionItem({ requestId: crypto.randomUUID(), gardenId, growCycleId: growCycleId ?? null, purpose, subjectKey: distinct ? subjectKey.trim() || 'general' : 'general', dueOn: dueOn || null })
+      const input = { gardenId, growCycleId: growCycleId ?? null, purpose, subjectKey: distinct ? subjectKey.trim() || 'general' : 'general', dueOn: dueOn || null }
+      const key = JSON.stringify(input)
+      if (request.current.key !== key) request.current = { key, id: crypto.randomUUID() }
+      const result = await createAttentionItem({ requestId: request.current.id, ...input })
       setMessage(result.created ? 'Atención creada.' : 'Ya había una atención abierta con este mismo propósito y asunto.')
-      await onCreated()
+      await onCreated({ created: result.created, purpose, dueOn: dueOn || null })
+      request.current = { key: '', id: '' }
       if (result.created) { setDueOn(''); setSubjectKey(''); setDistinct(false); setOpen(false) }
-    } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo crear la atención.') } finally { setBusy(false) }
+    } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo crear la atención.') } finally { saving.current = false; setBusy(false); onBusyChange?.(false) }
   }
 
   if (!open) return <button className={compact ? 'secondary-button secondary-button--compact' : 'secondary-button'} type="button" onClick={() => setOpen(true)}><Plus size={17} aria-hidden="true" /> Añadir seguimiento</button>
-  return <form className="editor-card attention-editor" onSubmit={(event) => void submit(event)}>
-    <div className="section-heading"><h2>Nuevo seguimiento</h2><button className="text-button" type="button" onClick={() => { setOpen(false); setMessage(null) }}>Cancelar</button></div>
+  return <form className={`editor-card attention-editor${embedded ? ' bs-embedded-form' : ''}`} onSubmit={(event) => void submit(event)}>
+    {!embedded && <div className="section-heading"><h2>Nuevo seguimiento</h2><button className="text-button" type="button" disabled={busy} onClick={() => { setOpen(false); setMessage(null); onCancel?.() }}>Cancelar</button></div>}
     <label>Qué requiere seguimiento<select value={purpose} onChange={(event) => setPurpose(event.target.value as AttentionPurpose)}>{choices.map((choice) => <option key={choice.value} value={choice.value}>{choice.label}</option>)}</select></label>
-    <label>Fecha prevista <span className="field-optional">opcional</span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
+    <label><span className="bs-field-label">Fecha prevista <span className="field-optional">opcional</span></span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
     <label className="choice"><input type="checkbox" checked={distinct} onChange={(event) => setDistinct(event.target.checked)} />Crear por separado</label>
     {distinct && <label>Asunto que lo diferencia<input required value={subjectKey} maxLength={160} onChange={(event) => setSubjectKey(event.target.value)} placeholder="Por ejemplo: hojas externas" /></label>}
     {message && <p className={message === 'Atención creada.' ? 'inline-message' : 'inline-message inline-message--error'} role="status">{message}</p>}
-    <button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : 'Crear atención'}</button>
+    <div className={embedded ? 'bs-sheet-footer' : 'button-row'}>{embedded && <button className="secondary-button" type="button" disabled={busy} onClick={onCancel}>Cancelar</button>}<button className="primary-button" type="submit" disabled={busy}>{busy ? 'Guardando…' : embedded ? 'Crear seguimiento' : 'Crear atención'}</button></div>
   </form>
 }
 

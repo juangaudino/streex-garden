@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400,10,1;0,9..144,500,10,1;0,9..144,600,10,1;1,9..144,400,10,1&display=swap');
+
+/* Phase 01 tokens. Scoped so the integration cannot restyle other routes. */
+.botanical-surface {
+  --paper: #f4f5ee; --surface: #fdfdf7; --ink: #193a30; --muted: #66746b;
+  --line: #dbe0d5; --forest: #254b39; --sage: #e7ecdf; --moss: #526e49;
+  --serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light; color: var(--ink); background: var(--paper); font-family: var(--sans);
+  font-synthesis: none; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.botanical-surface :is(h1,h2,h3,p) { margin: 0; }
+.botanical-surface :is(h1,h2,h3) { font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; color: var(--ink); }
+.botanical-surface button { color: inherit; font-family: inherit; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.botanical-surface button svg { flex-shrink: 0; }
+.botanical-surface :focus-visible { outline: 2px solid #647e43; outline-offset: 4px; }
+.botanical-surface .bs-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; line-height: 1.4; letter-spacing: .16em; text-transform: uppercase; }
+.botanical-surface :is(.bs-button,.primary-button,.secondary-button) { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 23px; background: var(--forest); color: #f9fbf1; border: 1px solid transparent; border-radius: 14px; font-size: 14px; font-weight: 550; line-height: 1.3; box-shadow: none; transition: background .15s, transform .15s; }
+.botanical-surface :is(.bs-button--secondary,.secondary-button) { background: transparent; color: var(--ink); border-color: var(--line); }
+.botanical-surface button:disabled { opacity: .45; cursor: not-allowed; }
+.botanical-surface .bs-icon-button { display: inline-grid; place-items: center; width: 44px; height: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; border-radius: 50%; flex-shrink: 0; }
+.botanical-surface :is(.bs-text-button,.text-button) { min-height: 44px; padding: 9px 0; display: inline-flex; align-items: center; justify-content: flex-start; gap: 9px; font-size: 13px; font-weight: 550; border: 0; background: none; box-shadow: none; }
+.botanical-surface .bs-notice { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border-radius: 12px; background: var(--sage); font-size: 13px; line-height: 1.5; }
+.botanical-surface .bs-notice--error { background: #f2e5dc; color: #85432d; }
+.botanical-surface .bs-notice svg { flex-shrink: 0; margin-top: 1px; }
+.botanical-surface .bs-notice > div { display: grid; gap: 10px; min-width: 0; }
+.botanical-surface.bs-sheet { border: 1px solid #ffffffaa; border-radius: 25px; padding: 0; width: min(540px,calc(100vw - 48px)); max-height: min(90dvh,900px); overflow-y: auto; overscroll-behavior: contain; background: var(--surface); box-shadow: 0 30px 100px #10251d3d; }
+.bs-sheet::backdrop { background: #16282070; backdrop-filter: blur(10px); }
+.bs-sheet .bs-sheet-header { position: sticky; top: 0; background: var(--surface); z-index: 5; padding: 27px 30px 22px; display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; border-bottom: 1px solid var(--line); }
+.bs-sheet .bs-sheet-header .bs-eyebrow { color: var(--muted); line-height: 1.7; overflow-wrap: anywhere; }
+.bs-sheet .bs-sheet-header h2 { font-size: 30px; margin-top: 8px; line-height: 1.1; }
+.bs-sheet h2[tabindex="-1"]:focus { outline: none; }
+.bs-sheet .bs-sheet-header .bs-icon-button { background: var(--sage); }
+.bs-sheet .bs-sheet-copy { padding: 25px 30px; font-size: 15px; line-height: 1.7; color: var(--muted); }
+.bs-sheet .bs-sheet-copy strong { color: var(--ink); font-weight: 550; }
+.bs-sheet .bs-sheet-body { padding: 25px 30px; }
+.bs-sheet .bs-sheet-footer { display: flex; align-items: center; gap: 12px; padding: 20px 30px; position: sticky; bottom: 0; z-index: 4; background: var(--surface); border-top: 1px solid var(--line); }
+.bs-sheet .bs-sheet-footer > button { flex: 1; }
+.bs-sheet .bs-notice { margin: 16px 30px; }
+
+/* Existing canonical forms, with the approved sheet presentation. */
+.bs-sheet :is(.editor-card,.observation-composer,.quick-actions) { background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 24px 30px; margin: 0; }
+.bs-sheet .bs-embedded-form { display: flex; flex-direction: column; gap: 18px; }
+.bs-sheet .bs-embedded-form > .bs-sheet-footer { margin: 4px -30px -24px; }
+.bs-sheet :is(label,legend) { font-size: 13px; font-weight: 550; color: var(--ink); }
+.bs-sheet label { gap: 8px; }
+.bs-sheet :is(input,select,textarea) { background: #f6f7ef; color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 16px; line-height: 1.5; font-weight: 400; min-width: 0; }
+.bs-sheet :is(.quiet-copy,.field-optional) { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.bs-sheet .field-optional { display: inline; font-weight: 400; }
+.bs-sheet .inline-message--error { color: #85432d; }
+.bs-sheet .bs-field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.bs-sheet .choice { min-height: 44px; gap: 12px; line-height: 1.5; }
+.bs-sheet .choice input { width: 20px; height: 20px; flex-shrink: 0; padding: 0; accent-color: var(--forest); }
+.bs-sheet textarea { min-height: 96px; }
+.bs-sheet .bs-embedded-form > .section-heading { margin: 0; }
+.bs-sheet .bs-embedded-form > .section-heading h2 { font-size: 24px; }
+.bs-sheet .quick-actions .section-heading { margin: 0 0 18px; }
+.bs-sheet .quick-actions h2 { font-size: 25px; }
+.bs-sheet .quick-actions__grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+.bs-sheet .quick-actions__grid button { border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 0; text-align: left; justify-content: flex-start; min-height: 60px; font-size: 14px; font-weight: 500; padding: 16px 0; box-shadow: none; }
+.bs-sheet .quick-actions__replace { grid-column: auto; }
+.bs-sheet .composer-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bs-sheet .file-button { background: transparent; border: 1px dashed #aebca4; box-shadow: none; border-radius: 12px; padding: 12px; font-size: 13px; }
+.bs-sheet .file-button--camera { display: flex; }
+.bs-sheet .composer-actions > button { grid-column: 1 / -1; }
+.bs-sheet .photo-preview img { max-height: 190px; object-fit: contain; }
+.bs-sheet .ai-check-panel { padding: 24px 30px; box-shadow: none; border: 0; margin: 0; background: transparent; }
+.bs-sheet .ai-check-panel h2 { font-size: 25px; }
+.bs-sheet .ai-check-panel .documentary-photo { width: 100%; max-height: 220px; border-radius: 13px; overflow: hidden; }
+.bs-sheet .ai-check-panel .documentary-photo img { width: 100%; max-height: 220px; object-fit: contain; }
+.bs-sheet .bs-ai-result { padding: 0 30px 24px; font-size: 14px; line-height: 1.65; display: grid; gap: 16px; }
+.bs-sheet .bs-ai-result h3 { font-size: 22px; }
+.bs-sheet .observation-composer > .bs-ai-result { padding: 0; }
+@media (max-width: 699px) {
+  .botanical-surface.bs-sheet { width: 100%; max-width: 100%; max-height: calc(100dvh - 20px); margin: auto 0 0; border-radius: 23px 23px 0 0; border: 0; padding-bottom: env(safe-area-inset-bottom); }
+  .bs-sheet .bs-sheet-header { padding: 20px 23px 17px; }
+  .bs-sheet .bs-sheet-header h2 { font-size: 29px; }
+  .bs-sheet :is(.editor-card,.observation-composer,.quick-actions,.bs-sheet-body) { padding: 20px 23px; }
+  .bs-sheet .bs-sheet-copy { padding: 23px; }
+  .bs-sheet .bs-sheet-footer { padding: 16px 23px max(20px,env(safe-area-inset-bottom)); }
+  .bs-sheet .bs-embedded-form > .bs-sheet-footer { margin: 2px -23px -20px; }
+  .bs-sheet .bs-sheet-footer > button { padding: 12px 14px; font-size: 13px; }
+  .bs-sheet .bs-notice { margin: 16px 23px; }
+}
+@media (prefers-reduced-motion: reduce) { .botanical-surface *, .botanical-surface *::before, .botanical-surface *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-transparency: reduce) { .bs-sheet::backdrop { backdrop-filter: none; background: #14271fca; } }
+@media (prefers-contrast: more) { .botanical-surface { --muted: #435747; --line: #9aab91; } }

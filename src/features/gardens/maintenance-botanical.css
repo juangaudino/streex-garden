@@ -1,0 +1,108 @@
+.botanical-maintenance { min-height: 100dvh; display: flex; flex-direction: column; background: var(--paper); color: var(--ink); }
+.botanical-maintenance .bm-active { flex: 1; display: flex; flex-direction: column; }
+.botanical-maintenance .bm-active[hidden] { display: none; }
+.botanical-maintenance .bm-context { position: sticky; top: 0; z-index: 10; background: #f4f5eef0; backdrop-filter: blur(20px); border-bottom: 1px solid var(--line); outline: none; }
+.botanical-maintenance .bm-context-top { max-width: 1170px; margin: auto; padding: 18px 40px; display: flex; align-items: center; gap: 20px; }
+.bm-context-top > div { min-width: 0; }
+.bm-context-top strong { display: block; font-size: 15px; font-weight: 550; margin-top: 5px; }
+.botanical-maintenance .bm-count { margin-left: auto; flex: 0 0 auto; border: 0; background: none; color: var(--ink); font: 28px 'Fraunces', Georgia, serif; min-height: 44px; padding: 0 4px; }
+.bm-count span { font: 12px 'DM Sans', sans-serif; color: var(--muted); }
+.bm-progress { display: flex; gap: 4px; padding: 0 40px; height: 3px; max-width: 1170px; margin: auto; }
+.bm-progress > span { flex: 1; background: #e3e8dc; }
+.bm-progress > .is-complete { background: #637e50; }
+.bm-progress > .is-current { background: #aabd91; }
+.botanical-maintenance .bm-main { flex: 1; width: 100%; max-width: 1170px; margin: 0 auto; padding: 42px 40px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 68px; align-items: start; }
+.botanical-maintenance .bm-photo { position: sticky; top: 128px; height: 550px; border-radius: 18px; overflow: hidden; background: #e2e8d9; }
+.bm-photo .documentary-photo { width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+.bm-photo .documentary-photo img { width: 100%; height: 100%; object-fit: cover; }
+.bm-photo .documentary-photo__open { height: 100%; border-radius: 0; }
+.bm-photo .evidence-viewer img { height: auto; object-fit: contain; }
+.bm-photo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg,transparent 35%,#132d248a 100%); }
+.bm-photo-label { position: absolute; top: 18px; left: 18px; z-index: 1; background: #eef3e2e6; color: #254530; padding: 8px 11px; border-radius: 8px; font-size: 11px; max-width: calc(100% - 36px); display: flex; gap: 7px; align-items: center; pointer-events: none; }
+.bm-photo-copy { position: absolute; left: 32px; right: 20px; bottom: 35px; color: #f5f9ed; z-index: 1; pointer-events: none; }
+.bm-photo-copy .bs-eyebrow { color: #edf3df; }
+.botanical-maintenance .bm-photo-copy h2 { font-size: 44px; line-height: 1.05; margin: 17px 0 0; color: inherit; }
+.bm-photo-empty { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #47644d; }
+.bm-photo-empty p { max-width: 240px; text-align: center; font-size: 14px; }
+.bm-photo:has(.bm-photo-empty)::after { display: none; }
+.bm-inspection { min-width: 0; padding-top: 18px; }
+.botanical-maintenance .bm-intro h1 { font-size: 43px; line-height: 1.1; margin: 14px 0 0; }
+.bm-intro p { font-size: 14px; line-height: 1.75; max-width: 320px; margin: 17px 0 0; color: var(--muted); }
+.botanical-surface .bm-actions { margin-top: 29px; }
+.botanical-surface .bm-actions > button { width: 100%; display: flex; text-align: left; align-items: center; gap: 17px; min-height: 90px; padding: 21px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink); font-family: inherit; }
+.bm-actions > button:first-child { border-top: 1px solid var(--line); }
+.bm-actions > button > svg:last-child { margin-left: auto; flex-shrink: 0; }
+.bm-actions strong { display: block; font-size: 14px; font-weight: 550; }
+.bm-actions small { display: block; font-size: 11px; line-height: 1.5; color: var(--muted); margin-top: 6px; }
+.bm-action-icon { display: grid; place-items: center; flex: 0 0 46px; height: 46px; border-radius: 13px; background: #e9edde; }
+.botanical-surface .bm-ai { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 17px 0; width: 100%; border: 0; background: none; text-align: left; color: #596f45; font-size: 11px; font-family: inherit; }
+.bm-ai svg { flex-shrink: 0; }
+.bm-ai > svg:last-child { margin-left: auto; }
+.bm-saved { display: flex; align-items: center; gap: 12px; margin-top: 22px; padding: 15px; border-radius: 12px; background: #e5ecda; }
+.bm-saved > span { display: grid; place-items: center; flex: 0 0 33px; height: 33px; border-radius: 50%; background: #d2dfc3; }
+.bm-saved strong { display: block; font-size: 13px; font-weight: 550; }
+.bm-saved small { display: block; font-size: 11px; line-height: 1.6; color: var(--muted); margin-top: 4px; }
+.bm-log { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 5px; font-size: 13px; }
+.bm-log summary { min-height: 44px; padding: 14px 0; cursor: pointer; font-size: 12px; }
+.bm-log p { margin: 0; padding: 12px 0; }
+.bm-log ul { list-style: none; margin: 0; padding: 0; }
+.bm-log li { border-top: 1px solid var(--line); padding: 12px 0; display: grid; gap: 5px; font-size: 13px; }
+.bm-log li small { color: var(--muted); font-size: 11px; line-height: 1.6; }
+.botanical-maintenance .bm-footer { position: sticky; bottom: 0; z-index: 9; width: 100%; margin-top: auto; background: #f8faf1ed; backdrop-filter: blur(22px); border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 25px; padding: 21px max(40px,calc((100vw - 1090px)/2)); padding-bottom: max(21px,env(safe-area-inset-bottom)); }
+.bm-footer-copy { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 12px; }
+.bm-navigation { display: flex; gap: 12px; }
+.bm-navigation > .bs-button { min-width: 150px; }
+.bm-navigation > .bs-button--secondary { border-color: transparent; }
+.bm-page-notice { width: calc(100% - 46px); max-width: 1090px; margin: 23px auto; }
+.bm-loading { min-height: 65dvh; align-content: center; text-align: center; color: var(--muted); }
+.botanical-maintenance .bm-main.bm-loading { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.botanical-maintenance .bm-finished { flex: 1; min-height: 80dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px 24px; gap: 25px; }
+.botanical-maintenance .bm-finished h1 { font-size: clamp(32px,4vw,48px); line-height: 1.12; max-width: 700px; margin: 0; }
+.bm-finished > p { font-size: 14px; line-height: 1.75; max-width: 440px; color: var(--muted); margin: 0; }
+.bm-completion-mark { width: 80px; height: 80px; display: grid; place-items: center; border-radius: 50%; background: #e1e9d5; }
+.bm-stats { display: flex; justify-content: center; gap: 38px; padding: 25px 0; }
+.bm-stats strong { font: 35px 'Fraunces',Georgia,serif; display: block; }
+.bm-stats span { font-size: 11px; color: var(--muted); display: block; margin-top: 7px; }
+.bm-rail { list-style: none; padding: 0; margin: 0; width: 100%; text-align: left; }
+.bm-rail li { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); align-items: center; }
+.bm-rail li > span { font: 24px 'Fraunces',Georgia,serif; min-width: 32px; color: var(--muted); }
+.bm-rail li[aria-current] > span { color: var(--ink); }
+.bm-rail strong { font-size: 13px; font-weight: 550; display: block; }
+.bm-rail small { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+@media (max-width: 1000px) {
+  .botanical-maintenance .bm-main { gap: 35px; padding: 30px; }
+  .botanical-maintenance .bm-photo { height: 490px; }
+  .botanical-maintenance .bm-intro h1 { font-size: 36px; }
+  .botanical-maintenance .bm-footer { padding-left: 30px; padding-right: 30px; justify-content: flex-end; }
+  .bm-footer-copy { display: none; }
+}
+@media (max-width: 699px) {
+  .botanical-maintenance .bm-context-top { padding: 13px 17px; gap: 9px; }
+  .bm-context-top .bs-eyebrow { font-size: 10px; }
+  .bm-context-top strong { font-size: 13px; max-width: 225px; line-height: 1.3; }
+  .botanical-maintenance .bm-count { font-size: 26px; }
+  .bm-count span { font-size: 11px; }
+  .bm-progress { padding: 0 23px; }
+  .botanical-maintenance .bm-main { display: flex; flex-direction: column; padding: 23px 23px 18px; gap: 0; }
+  .botanical-maintenance .bm-photo { position: relative; top: auto; height: 195px; width: 100%; border-radius: 13px; flex-shrink: 0; }
+  .bm-photo .documentary-photo img { object-position: center 30%; }
+  .bm-photo-label { left: auto; right: 10px; top: 11px; padding: 7px 8px; max-width: calc(100% - 20px); }
+  .bm-photo-copy { left: 18px; bottom: 17px; }
+  .botanical-maintenance .bm-photo-copy h2 { font-size: 26px; line-height: 1.08; margin-top: 9px; }
+  .bm-inspection { padding-top: 27px; width: 100%; }
+  .botanical-maintenance .bm-intro h1 { font-size: 33px; margin-top: 10px; }
+  .bm-intro p { font-size: 15px; line-height: 1.65; max-width: 270px; margin-top: 12px; }
+  .botanical-surface .bm-actions { margin-top: 22px; }
+  .botanical-surface .bm-actions > button { padding: 16px 0; min-height: 78px; gap: 13px; }
+  .bm-action-icon { flex-basis: 40px; height: 40px; border-radius: 11px; }
+  .bm-actions strong { font-size: 15px; }
+  .bm-actions small { font-size: 12px; }
+  .bm-saved { margin-top: 20px; padding: 12px; }
+  .bm-saved strong { font-size: 12px; }
+  .botanical-maintenance .bm-footer { padding: 15px 23px max(26px,env(safe-area-inset-bottom)); }
+  .bm-navigation { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; width: 100%; }
+  .bm-navigation > .bs-button { min-width: 0; padding: 11px 12px; min-height: 50px; border-radius: 12px; font-size: 14px; }
+  .bm-navigation > .bs-button--secondary { font-size: 12px; border-color: var(--line); }
+  .bm-stats { gap: 27px; }
+}
+@media (prefers-reduced-transparency: reduce) { .botanical-maintenance :is(.bm-context,.bm-footer) { backdrop-filter: none; background: var(--paper); } }

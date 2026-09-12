@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,30 +14,36 @@
   <div class="app-shell">
     <header class="topbar">
       <div>
-        <p class="eyebrow">GARDEN X · PROTOTYPE</p>
-        <h1>Grow Guide</h1>
+        <p class="eyebrow" data-i18n="prototype">GARDEN X · PROTOTIPO</p>
+        <h1 data-i18n="title">Grow Guide</h1>
       </div>
-      <button id="installButton" class="ghost-button" hidden>Install</button>
+      <div class="topbar-actions">
+        <div class="language-toggle" aria-label="Language / Idioma">
+          <button type="button" class="language-button active" data-language="es" aria-pressed="true">ES</button>
+          <button type="button" class="language-button" data-language="en" aria-pressed="false">EN</button>
+        </div>
+        <button id="installButton" class="ghost-button" data-i18n="install" hidden>Instalar</button>
+      </div>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <span class="hero-kicker">Knowledge that knows its limits.</span>
-          <h2>Know what to do with the plant in front of you.</h2>
-          <p>Structured guidance for thinning, pruning, harvesting and hydroponic care — with evidence kept separate from Garden adaptations.</p>
+          <span class="hero-kicker" data-i18n="kicker">Conocimiento que sabe dónde están sus límites.</span>
+          <h2 data-i18n="heroTitle">Sabe qué hacer con la planta que tienes delante.</h2>
+          <p data-i18n="heroBody">Guía estructurada para raleo, poda, cosecha y manejo hidropónico, manteniendo la evidencia separada de las adaptaciones de Garden.</p>
         </div>
-        <div class="trust-legend" aria-label="Evidence legend">
-          <span class="legend-chip source-backed">● Source-backed</span>
-          <span class="legend-chip garden-adaptation">● Garden adaptation</span>
-          <span class="legend-chip needs-validation">● Needs validation</span>
+        <div class="trust-legend" aria-label="Leyenda de evidencia">
+          <span class="legend-chip source-backed">● <span data-i18n="sourceBacked">Respaldado por fuente</span></span>
+          <span class="legend-chip garden-adaptation">● <span data-i18n="gardenAdaptation">Adaptación de Garden</span></span>
+          <span class="legend-chip needs-validation">● <span data-i18n="needsValidation">Necesita validación</span></span>
         </div>
       </section>
 
-      <section class="controls" aria-label="Guide filters">
+      <section class="controls" aria-label="Filtros de la guía">
         <label class="search-box">
           <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Search basil, albahaca, lettuce…" autocomplete="off" />
+          <input id="searchInput" type="search" placeholder="Busca albahaca, basil, lechuga…" autocomplete="off" />
         </label>
         <div id="categoryFilters" class="filter-row"></div>
       </section>
@@ -45,10 +51,10 @@
       <section class="library-section">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">USER ZERO LIBRARY</p>
-            <h3 id="resultCount">Loading plants…</h3>
+            <p class="eyebrow" data-i18n="library">BIBLIOTECA USER ZERO</p>
+            <h3 id="resultCount">Cargando plantas…</h3>
           </div>
-          <p class="muted">V0.2 · 17 current crops</p>
+          <p class="muted" data-i18n="version">V0.3 · 17 cultivos actuales · ES/EN</p>
         </div>
         <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
       </section>
@@ -57,7 +63,7 @@
 
   <dialog id="plantDialog" class="plant-dialog">
     <div class="dialog-frame">
-      <button id="closeDialog" class="close-button" aria-label="Close guide">×</button>
+      <button id="closeDialog" class="close-button" aria-label="Cerrar guía">×</button>
       <div id="plantDetail"></div>
     </div>
   </dialog>

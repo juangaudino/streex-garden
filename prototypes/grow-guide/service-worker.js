@@ -1,4 +1,4 @@
-const CACHE_NAME = "garden-grow-guide-v0-1";
+const CACHE_NAME = "garden-grow-guide-v0-2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,7 +7,9 @@ const APP_SHELL = [
   "./manifest.json",
   "./assets/icon.svg",
   "./data/plants.json",
-  "./data/sources.json"
+  "./data/plants-current-gardens.json",
+  "./data/sources.json",
+  "./data/sources-current-gardens.json"
 ];
 
 self.addEventListener("install", (event) => {

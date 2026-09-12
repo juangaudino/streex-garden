@@ -1,0 +1,843 @@
+[
+  {
+    "id": "italian-oregano",
+    "name": "Italian Oregano",
+    "spanishName": "Orégano italiano",
+    "scientificName": "Origanum spp. — packet taxonomy pending",
+    "variety": "Italian Oregano",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 67,
+    "tags": ["oregano", "orégano", "italian oregano", "herb"],
+    "summary": "A branching Mediterranean-type herb that responds well to tip harvesting. Garden intentionally keeps the exact botanical identity unresolved until the seed packet/cultivar can be confirmed.",
+    "metrics": [
+      { "label": "Reference germination", "value": "7–14 days", "note": "Greek oregano reference; not yet packet-specific" },
+      { "label": "First structural cue", "value": "~4 true leaves", "note": "Useful checkpoint before stronger handling" },
+      { "label": "Harvest style", "value": "Stem tips", "note": "Supports branching" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "No accepted crop-specific hydro source yet" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Small seed; light-sensitive reference",
+        "guidance": "Johnny's Greek oregano reference reports 7–14 day germination at 65–70°F and surface sowing because the seeds need light. This is useful genus-level context, but Garden should not claim the packet is Greek oregano.",
+        "items": ["Treat actual emergence as the canonical event.", "Keep the seed zone moist rather than saturated."],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      },
+      "thinning": {
+        "short": "Thin by vigor and pod crowding",
+        "guidance": "The source transplants oregano after seedlings develop about four true leaves. For a compact hydroponic pod, Garden should use actual crowding and stem vigor to decide how many seedlings to retain rather than copying field spacing.",
+        "items": ["Favor upright, vigorous seedlings with good separation.", "Cut unwanted seedlings at the base if pulling would disturb neighboring roots."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      },
+      "pruning": {
+        "short": "Pinch new growth to keep the plant branching",
+        "guidance": "Johnny's recommends pinching back new oregano growth to keep plants healthy. In a countertop system, repeated tip harvests can serve the same structural purpose without aggressive shaping.",
+        "items": ["Cut above a healthy leaf pair or branching point.", "Prefer several light cuts over one severe reduction on a young plant."],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      },
+      "harvest": {
+        "short": "Harvest stems; strongest reference is near bloom",
+        "guidance": "Johnny's field guidance harvests whole stems just as plants come into bloom. Garden should translate that into lighter stem-tip harvests for an actively growing indoor plant unless a full cut is intentionally chosen.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      },
+      "flowering": {
+        "short": "Flowering can be a harvest cue, not automatically a problem",
+        "guidance": "The reference uses the start of bloom as a harvest point. If the user's goal is sustained leafy production, Garden may recommend earlier tip harvests, but flowering itself remains an observed stage.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      },
+      "hydroponics": {
+        "short": "Crop-specific nutrient range still unresolved",
+        "guidance": "The V0 does not assign a hydroponic pH or EC range to this packet until a source appropriate to its exact oregano identity is accepted.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Watch crowding and weak elongated growth",
+        "guidance": "Garden should eventually evaluate stem spacing, light exposure and canopy density from photos rather than diagnose from plant age alone.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-oregano-greek"]
+      }
+    }
+  },
+  {
+    "id": "english-thyme",
+    "name": "English Thyme",
+    "spanishName": "Tomillo inglés",
+    "scientificName": "Thymus vulgaris",
+    "variety": "English Thyme",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 74,
+    "tags": ["thyme", "tomillo", "english thyme", "tea", "herb"],
+    "summary": "A slow young herb that benefits from patience and light tip pinching. Garden should distinguish a young hydroponic plant from the aggressive cut-back practices used on established perennial thyme.",
+    "metrics": [
+      { "label": "Germination", "value": "14–21 days", "note": "65–70°F reference" },
+      { "label": "Handling cue", "value": "4 true leaves", "note": "Johnny's transplant checkpoint" },
+      { "label": "Pruning style", "value": "Tip pinch", "note": "For upright types" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Needs hydro-specific validation" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Slow compared with basil",
+        "guidance": "Johnny's lists thyme germination at about 14–21 days at 65–70°F. Garden should avoid prematurely labeling a thyme pod failed just because faster neighboring herbs emerged first.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "thinning": {
+        "short": "Wait for enough structure to compare seedlings",
+        "guidance": "Johnny's moves seedlings to individual containers around four true leaves. For the hydroponic pod, Garden can use that developmental point to assess vigor, then thin only if competition is evident.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "pruning": {
+        "short": "Pinch upright tips for bushier growth",
+        "guidance": "Johnny's explicitly recommends pinching the growing tips of upright thyme varieties to encourage bushier plants.",
+        "items": ["Pinch or cut just above a leaf pair once the plant is established enough to recover.", "Do not apply mature-perennial cut-back heights to a tiny first-cycle pod."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "harvest": {
+        "short": "Light stem harvest while young",
+        "guidance": "Johnny's advises only a few stems in the first year and a larger cut near flowering in later years. Garden should therefore prefer conservative stem harvests for a young indoor thyme plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "flowering": {
+        "short": "Near bloom is a traditional harvest stage",
+        "guidance": "Established thyme is commonly harvested as flowers begin to open. For Garden, visible buds should be recorded as a stage and interpreted according to whether the goal is leaf production, flowers, or plant longevity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "hydroponics": {
+        "short": "Do not invent a generic herb target",
+        "guidance": "The current source pack does not yet establish thyme-specific hydroponic pH/EC targets, so those fields remain unresolved.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Slow start is normal; wet roots are not",
+        "guidance": "Thyme is naturally adapted to well-drained conditions. Future Garden checks should distinguish normal slow juvenile growth from signs associated with poor root-zone oxygen or weak light.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-thyme"]
+      }
+    }
+  },
+  {
+    "id": "italian-giant-parsley",
+    "name": "Italian Giant Parsley",
+    "spanishName": "Perejil italiano gigante",
+    "scientificName": "Petroselinum crispum",
+    "variety": "Italian Giant / flat-leaf type",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 72,
+    "tags": ["parsley", "perejil", "italian parsley", "flat leaf", "herb"],
+    "summary": "Parsley is slow to germinate and is managed mostly through selective leaf/stem harvest rather than shaping. Garden should be especially conservative during the long seedling phase.",
+    "metrics": [
+      { "label": "Germination", "value": "14–30 days", "note": "65–70°F reference" },
+      { "label": "Harvest", "value": "Clip as needed", "note": "After establishment" },
+      { "label": "Growth habit", "value": "Rosette", "note": "Protect the central crown" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Crop-specific hydro source still needed" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Patience crop: 14–30 days",
+        "guidance": "Johnny's lists parsley germination at 14–30 days at 65–70°F and notes that seeds can take at least three weeks. Garden should keep a broad expected window.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-parsley"]
+      },
+      "thinning": {
+        "short": "Thin only after seedlings can be compared",
+        "guidance": "Field guidance thins parsley to substantial spacing, but that number does not map directly to a pod. In Garden, retain the strongest seedlings until crowding begins to compromise the rosette, then reduce carefully.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-parsley"]
+      },
+      "pruning": {
+        "short": "Harvest is the pruning system",
+        "guidance": "Parsley does not need basil-style apical pruning. Maintenance should focus on taking mature outer stems while preserving the central crown and new leaves.",
+        "avoid": ["Cutting the center of the rosette as if it were a branching basil stem."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-parsley"]
+      },
+      "harvest": {
+        "short": "Clip mature stems as needed",
+        "guidance": "Johnny's recommends clipping parsley leaves as needed. For repeat harvest in a pod, Garden should prioritize mature outer stems and leave active central growth intact.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-parsley"]
+      },
+      "flowering": {
+        "short": "A biennial crop; flowering changes leaf production",
+        "guidance": "Parsley is biennial. If reproductive growth eventually appears, Garden should treat it as a stage transition rather than an ordinary pruning event.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-parsley"]
+      },
+      "hydroponics": {
+        "short": "Nutrient targets still need a dedicated source",
+        "guidance": "No parsley-specific hydroponic pH/EC target has been accepted into the prototype yet.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Slow germination and crown damage are key risks",
+        "guidance": "Garden should avoid interpreting slow emergence as failure and should distinguish normal outer-leaf aging from damage to the central crown.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-parsley"]
+      }
+    }
+  },
+  {
+    "id": "common-chives",
+    "name": "Chives",
+    "spanishName": "Cebollín / ciboulette",
+    "scientificName": "Allium schoenoprasum",
+    "variety": "Common chives",
+    "category": "herbs",
+    "emoji": "🌱",
+    "guideCompletion": 83,
+    "tags": ["chives", "cebollin", "cebollín", "ciboulette", "allium", "herb"],
+    "summary": "Chives are a critical exception to the simplistic 'one plant per pod' rule: reputable production guidance intentionally starts and grows them in small seedling clusters.",
+    "metrics": [
+      { "label": "Germination", "value": "7–14 days", "note": "65–70°F reference" },
+      { "label": "Seedling cluster", "value": "3–4 per plug", "note": "Johnny's transplant reference" },
+      { "label": "Harvest", "value": "Cut leaves low", "note": "Established plants regrow" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Hydro-specific target not yet accepted" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Multiple seedlings per plug are normal",
+        "guidance": "Johnny's lists 7–14 day germination and starts several seeds per plug, thinning to roughly 3–4 seedlings per plug for transplant culture.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-chives"]
+      },
+      "thinning": {
+        "short": "Do not automatically thin chives to one",
+        "guidance": "Unlike head lettuce or tomato, chives are commonly cultured in clusters. A pod with several healthy chive seedlings is therefore not automatically overcrowded.",
+        "items": ["Use canopy density and vigor to decide whether reduction is necessary.", "A working target of a small cluster is more defensible than a universal one-seedling rule."],
+        "context": "Johnny's explicitly uses 3–4 seedlings per transplant plug; exact hydroponic pod capacity still depends on system geometry.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-chives", "usu-chives"]
+      },
+      "pruning": {
+        "short": "No shaping prune; cutting is harvest",
+        "guidance": "Chives do not need node-based pruning. Established foliage can be cut back and allowed to regrow.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-chives", "usu-chives"]
+      },
+      "harvest": {
+        "short": "Cut leaves low once established",
+        "guidance": "USU recommends harvesting with scissors or a knife and cutting leaves back to roughly 1–2 inches above the soil; Johnny's describes cutting established leaves at ground level. Garden should translate this conservatively for a hydroponic crown so the basal growing tissue is not damaged.",
+        "items": ["Harvest a portion of the clump if continuous fresh growth is the goal.", "Use clean scissors and avoid cutting into the crown/root interface."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-chives", "usu-chives"]
+      },
+      "flowering": {
+        "short": "Flower stalks are a different texture than leaves",
+        "guidance": "USU notes that chives commonly flower and that the flower stalks become less palatable. Garden should distinguish ordinary leaf harvest from flower-stalk management.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-chives"]
+      },
+      "hydroponics": {
+        "short": "Cluster culture is supported; nutrient range still pending",
+        "guidance": "The growth form supports multiple seedlings in one position, but the prototype still lacks a strong chive-specific hydroponic pH/EC reference.",
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-chives"]
+      },
+      "problems": {
+        "short": "Crowding should be judged as a clump, not as individual stems",
+        "guidance": "Future AI Check should evaluate clump density, leaf color and lodging rather than count every chive seedling as an error.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-chives"]
+      }
+    }
+  },
+  {
+    "id": "dill-bouquet",
+    "name": "Dill Bouquet",
+    "spanishName": "Eneldo Bouquet",
+    "scientificName": "Anethum graveolens",
+    "variety": "Bouquet",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 82,
+    "tags": ["dill", "eneldo", "bouquet dill", "bouquet", "herb"],
+    "summary": "A tall dill cultivar where the correct density depends on the intended product. Source guidance ranges from multi-seed cells to much wider field spacing, so Garden must preserve context instead of pretending there is one universal thinning number.",
+    "metrics": [
+      { "label": "Germination", "value": "7–21 days", "note": "65–70°F reference" },
+      { "label": "Leaf harvest", "value": "After establishment", "note": "Through flowering" },
+      { "label": "Typical maturity", "value": "~6–8 weeks", "note": "USU garden reference" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Specific indoor-hydro target unresolved" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "7–21 days; direct sowing is common",
+        "guidance": "Johnny's and USU both report emergence around 7–21 days. Garden should treat this as a range and use observed emergence as the actual event.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-dill", "usu-dill"]
+      },
+      "thinning": {
+        "short": "Source context matters: cell culture ≠ field spacing",
+        "guidance": "Johnny's notes that thinning is not necessary in one dense direct-seed system and starts 3–5 seeds per transplant cell, while USU recommends much wider final field spacing. A hydroponic pod sits between those production contexts.",
+        "items": ["Do not force a one-seedling rule.", "Thin only when stems are clearly competing for light or the desired plant form requires more space."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-dill", "usu-dill"]
+      },
+      "pruning": {
+        "short": "Light cutting can encourage a fuller plant",
+        "guidance": "USU notes pruning can promote lush, bushy growth. For a young pod, Garden should recommend light stem-tip harvest rather than severe cutting.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-dill"]
+      },
+      "harvest": {
+        "short": "Leaves are harvestable once established",
+        "guidance": "Johnny's allows foliage harvest after establishment up to flowering; USU says leaves can be harvested after seedlings emerge and flavor is strongest around the start of flowering.",
+        "items": ["Cut leaves at the stem or take tender stems.", "If seed is the goal, allow flower heads to mature instead of continually removing them."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-dill", "usu-dill"]
+      },
+      "flowering": {
+        "short": "Flowering may be desired for flavor, seed or Bouquet flowers",
+        "guidance": "Bouquet is specifically valued for its flower heads. Garden must ask the crop goal before treating flowering as something to stop.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-dill"]
+      },
+      "hydroponics": {
+        "short": "No accepted Bouquet-specific pH/EC yet",
+        "guidance": "The prototype intentionally leaves hydroponic nutrient targets unresolved until a suitable crop/system reference is added.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Heat, crowding and overwatering can accelerate decline",
+        "guidance": "USU notes heat/crowding can promote bolting and overwatering increases disease risk. Garden should combine those risks with actual environment and photos, not infer them from age alone.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-dill"]
+      }
+    }
+  },
+  {
+    "id": "rosemary",
+    "name": "Rosemary",
+    "spanishName": "Romero",
+    "scientificName": "Salvia rosmarinus",
+    "variety": "Rosemary — packet cultivar unspecified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 69,
+    "tags": ["rosemary", "romero", "herb", "tea"],
+    "summary": "A woody Mediterranean herb with a slow seedling phase. Garden should avoid early aggressive harvesting and should keep hydroponic nutrient targets unresolved until crop-specific evidence is stronger.",
+    "metrics": [
+      { "label": "Germination", "value": "14–21 days", "note": "Johnny's reference" },
+      { "label": "Thin / transplant cue", "value": "4 true leaves", "note": "Johnny's seedling checkpoint" },
+      { "label": "Stem-tip harvest", "value": "~80–100 days", "note": "Production reference, not a hard pod timer" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Needs crop-specific hydro validation" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Slow, light-assisted germination",
+        "guidance": "Johnny's reports 14–21 day germination and notes that rosemary seed needs light. Garden should use a broad window because seed-grown rosemary can be uneven.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "thinning": {
+        "short": "Assess around four true leaves",
+        "guidance": "Johnny's thins or moves rosemary seedlings when they have about four true leaves. In a small pod, Garden can use that checkpoint to select the most vigorous plant if multiple seedlings begin competing.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "pruning": {
+        "short": "Tip harvest becomes structural pruning later",
+        "guidance": "Young rosemary should establish before repeated cutting. Once branching is active, harvesting tender stem tips can double as light shaping while woody framework is preserved.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "harvest": {
+        "short": "Production reference starts stem tips around 80–100 days",
+        "guidance": "Johnny's lists roughly 80–100 days from planting for stem-tip harvest. Garden should treat this as context, not a countdown: visible vigor and branching matter more than age alone.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "flowering": {
+        "short": "Flowering is normal on mature rosemary",
+        "guidance": "The current guide does not require flower removal. Garden should interpret blooms according to the user's goal rather than assume they are undesirable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "hydroponics": {
+        "short": "Root-zone aeration matters; numeric targets pending",
+        "guidance": "Rosemary's source preference for light, well-drained media is a warning against persistently oxygen-poor roots, but the prototype does not translate soil pH into a hydroponic nutrient target without direct evidence.",
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-rosemary"]
+      },
+      "problems": {
+        "short": "Do not confuse slow juvenile growth with failure",
+        "guidance": "Future AI Check should pay attention to root-zone symptoms, weak elongation and tip dieback while respecting rosemary's naturally slower early growth.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-rosemary"]
+      }
+    }
+  },
+  {
+    "id": "lavender-vera",
+    "name": "Lavender Vera",
+    "spanishName": "Lavanda Vera",
+    "scientificName": "Lavandula angustifolia 'Vera'",
+    "variety": "Vera",
+    "category": "herbs",
+    "emoji": "🪻",
+    "guideCompletion": 78,
+    "tags": ["lavender", "lavanda", "vera", "tea", "flower", "herb"],
+    "summary": "English lavender is slow from seed and naturally prefers very well-aerated roots. Vera is explicitly listed among English lavender varieties by USU, giving Garden stronger cultivar confidence than several other packet labels.",
+    "metrics": [
+      { "label": "Germination", "value": "14–21 days", "note": "65–70°F reference" },
+      { "label": "Best harvest stage", "value": "Buds / first flowers", "note": "Depends on intended use" },
+      { "label": "Root preference", "value": "High aeration", "note": "Strong drainage preference in soil references" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Do not translate soil pH directly" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Slow seed crop; light helps germination",
+        "guidance": "Johnny's lists 14–21 day germination at 65–70°F. USU likewise reports roughly 14–21 days around 70°F and specifically names Vera among English lavender varieties.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+      },
+      "thinning": {
+        "short": "Give individual plants room once identifiable",
+        "guidance": "Field references eventually space lavender widely because it becomes a woody shrub. In a countertop pod, Garden should select the strongest individual plant once multiple seedlings begin competing rather than trying to sustain a dense cluster long-term.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+      },
+      "pruning": {
+        "short": "Young plant strategy differs from mature lavender",
+        "guidance": "USU describes clipping first-year branches to encourage lateral shoots and pruning established lavender after flowering. Garden should not blindly apply mature half-size shearing to a juvenile hydroponic plant.",
+        "items": ["For a young plant, favor light tip management only after clear establishment.", "Never treat woody mature-plant pruning percentages as a seedling instruction."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["usu-lavender"]
+      },
+      "harvest": {
+        "short": "Flower harvest timing depends on use",
+        "guidance": "Johnny's harvests flower spikes just as flowers are about to open; USU recommends cutting for dried flowers when the first flowers on the spike have opened. Garden should present the timing together with the intended use.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+      },
+      "flowering": {
+        "short": "Flowers are a desired crop, not a default problem",
+        "guidance": "For Juan's tea/aromatic use case, flowering can be the target. Garden should never copy basil's 'remove flowers' behavior into lavender.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["usu-lavender"]
+      },
+      "hydroponics": {
+        "short": "High-aeration preference is clear; pH/EC is not",
+        "guidance": "Both major sources emphasize very well-drained conditions. That supports caution around root oxygen in hydroponics, but soil pH recommendations must not be copied directly into nutrient-solution targets.",
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+      },
+      "problems": {
+        "short": "Excessively wet roots are a key risk",
+        "guidance": "USU specifically warns against saturated conditions and root-rot risk. Future Garden checks should combine root appearance and system conditions before diagnosing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-lavender"]
+      }
+    }
+  },
+  {
+    "id": "bibb-lettuce",
+    "name": "Bibb Lettuce",
+    "spanishName": "Lechuga Bibb",
+    "scientificName": "Lactuca sativa",
+    "variety": "Bibb / butterhead type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 88,
+    "tags": ["bibb", "lettuce", "lechuga", "butterhead", "hydroponic"],
+    "summary": "A butterhead lettuce where Garden can support either selective outer-leaf harvest or a complete soft-head harvest. One final plant per compact pod is a Garden system adaptation, not a universal agronomic law.",
+    "metrics": [
+      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
+      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS non-circulating example" },
+      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
+      { "label": "Harvest mode", "value": "Outer leaf / head", "note": "Choose the desired strategy" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Cool germination conditions",
+        "guidance": "General lettuce guidance places optimum germination around 60–68°F. UF/IFAS uses one to two seeds per cube in a small hydroponic lettuce method.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "thinning": {
+        "short": "Favor one head-forming plant in a compact pod",
+        "guidance": "For full-size Bibb structure, Garden's working rule is to retain one strong plant per compact position once establishment is clear. This is an adaptation from spacing and canopy needs, not a quoted source rule.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "pruning": {
+        "short": "No shaping prune",
+        "guidance": "Bibb lettuce is managed through harvest and removal of damaged tissue, not through node-based pruning. Preserve the central growing point during repeat harvest.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "harvest": {
+        "short": "Outer leaves for continuity or harvest the whole head",
+        "guidance": "Garden should let the user choose between ongoing outer-leaf harvest and a complete butterhead harvest. That choice changes what 'ready' means.",
+        "items": ["For repeat harvest, take mature outer leaves and preserve the center.", "For full harvest, cut the plant at the base when desired size and quality are reached."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "flowering": {
+        "short": "Bolting reduces leaf quality",
+        "guidance": "A rising central seed stalk is a meaningful stage change in lettuce. Garden should flag it as an observation and explain likely quality decline.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "hydroponics": {
+        "short": "Use source context rather than false precision",
+        "guidance": "UF/IFAS demonstrates lettuce around pH 5.5–6.0 and ~1.25 mS/cm in one non-circulating method; OSU lists a wider lettuce EC range of 1.2–1.8 mS/cm. Garden should preserve both contexts.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Heat and crown damage are high-value checks",
+        "guidance": "Future AI Check should distinguish ordinary outer-leaf aging from crown injury, heat stress, root issues and tip damage using images plus history.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lettuce"]
+      }
+    }
+  },
+  {
+    "id": "iceberg-lettuce",
+    "name": "Iceberg Lettuce",
+    "spanishName": "Lechuga iceberg",
+    "scientificName": "Lactuca sativa",
+    "variety": "Iceberg / crisphead type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 84,
+    "tags": ["iceberg", "lettuce", "lechuga", "crisphead", "hydroponic"],
+    "summary": "A crisphead lettuce whose natural goal is a denser head. Garden should not assume that the same repeated outer-leaf harvest strategy used for looseleaf lettuce is optimal if the user wants a true head.",
+    "metrics": [
+      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
+      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS lettuce system example" },
+      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
+      { "label": "Preferred goal", "value": "Head", "note": "Harvest strategy should protect head formation" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Cool germination; heat reduces reliability",
+        "guidance": "Iceberg follows the same general lettuce germination biology: cool conditions around 60–68°F are favorable and excessive heat can reduce germination.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "thinning": {
+        "short": "A head-forming crop needs its own space",
+        "guidance": "Garden should normally retain one vigorous plant in a compact hydroponic position when the goal is a formed iceberg head.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "pruning": {
+        "short": "Do not prune the center",
+        "guidance": "There is no shaping prune. Remove only clearly damaged/senescent outer tissue when useful and preserve the central head-forming growth.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "harvest": {
+        "short": "Full-head harvest is the default goal",
+        "guidance": "If a compact crisp head is the goal, repeated removal of healthy outer leaves should be more conservative than with looseleaf varieties. Harvest the full plant at the base once the head reaches acceptable density and quality.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "flowering": {
+        "short": "Bolting ends the head-quality trajectory",
+        "guidance": "A rising seed stalk indicates the plant has shifted toward reproduction. Garden should flag the stage and explain the likely loss of head quality.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "hydroponics": {
+        "short": "General lettuce ranges, system context preserved",
+        "guidance": "Use the same lettuce references as other Lactuca types while keeping system and cultivar differences visible: UF/IFAS pH 5.5–6.0 in one method and OSU EC 1.2–1.8 mS/cm.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Heat and space constraints matter strongly for heading",
+        "guidance": "A countertop system may produce a healthy lettuce plant without producing a supermarket-sized iceberg head. Garden should separate plant health from whether the system supports the desired morphology.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      }
+    }
+  },
+  {
+    "id": "buttercrunch-lettuce",
+    "name": "Buttercrunch Lettuce",
+    "spanishName": "Lechuga Buttercrunch",
+    "scientificName": "Lactuca sativa 'Buttercrunch'",
+    "variety": "Buttercrunch / butterhead",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 88,
+    "tags": ["buttercrunch", "lettuce", "lechuga", "butterhead", "hydroponic"],
+    "summary": "A butterhead-type lettuce that works naturally with either repeated outer-leaf harvest or a compact whole-head harvest. Garden should make the user's harvest mode explicit.",
+    "metrics": [
+      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
+      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS system example" },
+      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
+      { "label": "Harvest mode", "value": "Outer leaf / head", "note": "Both are useful" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Cool-season lettuce germination",
+        "guidance": "Use the general lettuce germination model: cool conditions around 60–68°F are favorable, and actual emergence is the canonical event.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "thinning": {
+        "short": "One plant for a compact butterhead",
+        "guidance": "Garden's working hydroponic rule is one strong final plant per compact position when the intended product is a recognizable Buttercrunch head.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "pruning": {
+        "short": "Harvest, don't shape-prune",
+        "guidance": "Preserve the center. Remove mature outer leaves for eating or clearly damaged tissue; do not top the plant like an herb.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "harvest": {
+        "short": "Excellent candidate for cut-and-come-again outer leaves",
+        "guidance": "For continuous use, take mature outer leaves while protecting the center. If a whole butterhead is preferred, allow the plant to size up and harvest at the base.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "flowering": {
+        "short": "Bolting is a quality warning",
+        "guidance": "A rising central stalk is a stage change. Garden should surface it early because eating quality can decline as lettuce bolts.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "hydroponics": {
+        "short": "General lettuce hydro references apply with context",
+        "guidance": "UF/IFAS and OSU provide useful lettuce-level solution ranges. Garden should not pretend they are Buttercrunch-specific optimums.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Watch heat, tip damage and crown health",
+        "guidance": "Future vision checks should compare outer-leaf damage with central growth and root history before recommending nutrient changes.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lettuce"]
+      }
+    }
+  },
+  {
+    "id": "broadleaf-sage",
+    "name": "Broadleaf Sage",
+    "spanishName": "Salvia de hoja ancha",
+    "scientificName": "Salvia officinalis",
+    "variety": "Broadleaf / common sage type",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 79,
+    "tags": ["sage", "salvia", "broadleaf sage", "herb", "tea"],
+    "summary": "A perennial woody herb where the source itself supports thinning to one plant per container and allows individual-leaf harvest after establishment. Mature cut-back rules should not be applied to a young pod.",
+    "metrics": [
+      { "label": "Germination", "value": "7–21 days", "note": "65–70°F reference" },
+      { "label": "Seed start", "value": "2–3 seeds", "note": "Thin to one per container in Johnny's reference" },
+      { "label": "First-year harvest", "value": "Individual leaves", "note": "After establishment" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "No accepted sage-specific hydro target yet" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "7–21 day emergence window",
+        "guidance": "Johnny's lists common sage germination at 7–21 days at 65–70°F.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "thinning": {
+        "short": "Strong source support for one final plant",
+        "guidance": "Johnny's starts 2–3 sage seeds in individual containers and thins to one plant after germination. That makes one final plant per compact hydroponic position a stronger adaptation here than for cluster-forming chives.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "pruning": {
+        "short": "Young plants: leaf harvest; mature plants: stem cut-back",
+        "guidance": "The source separates first-year individual-leaf harvest from later-year stem cutting near flowering. Garden should mirror that age distinction.",
+        "avoid": ["Cutting a juvenile sage back to the mature six-inch reference height."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "harvest": {
+        "short": "Individual leaves once established",
+        "guidance": "Johnny's supports individual leaf harvest during the first year once the plant is established. Larger stem harvests belong to more mature plants.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "flowering": {
+        "short": "Flower opening is a mature harvest cue",
+        "guidance": "In second and later years, Johnny's cuts stems as flowers begin opening. Garden should use this as maturity context rather than force a flowering response in a young indoor plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "hydroponics": {
+        "short": "Drainage preference is clear; solution targets are not",
+        "guidance": "Sage prefers well-drained growing conditions, but the V0 has not accepted sage-specific hydroponic pH/EC values.",
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-sage"]
+      },
+      "problems": {
+        "short": "Woody growth is normal with age",
+        "guidance": "Garden should separate normal perennial woodiness from stress. The source notes older sage plants eventually become woody and are often replaced after several years.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-sage"]
+      }
+    }
+  },
+  {
+    "id": "black-seeded-simpson",
+    "name": "Black Seeded Simpson",
+    "spanishName": "Lechuga Black Seeded Simpson",
+    "scientificName": "Lactuca sativa",
+    "variety": "Black Seeded Simpson / looseleaf",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 89,
+    "tags": ["black seeded simpson", "lettuce", "lechuga", "looseleaf", "leaf lettuce", "hydroponic"],
+    "summary": "A looseleaf lettuce particularly compatible with repeated outer-leaf harvest. Garden should not treat its open form as a failure to make a head.",
+    "metrics": [
+      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
+      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS system example" },
+      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
+      { "label": "Harvest mode", "value": "Outer leaf", "note": "Natural looseleaf use" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Cool-season lettuce germination",
+        "guidance": "Use the general lettuce model with optimum germination around 60–68°F and avoid using age alone to declare failure.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "thinning": {
+        "short": "One vigorous looseleaf plant for a full-size pod crop",
+        "guidance": "Garden's default for a full-size Black Seeded Simpson plant is one strong seedling per compact position. Baby-leaf production would be a separate grow mode and can intentionally use higher density.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "pruning": {
+        "short": "No shaping prune; protect the center",
+        "guidance": "Do not top looseleaf lettuce. Harvest mature outer leaves and remove damaged tissue while leaving the central growing point intact.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "harvest": {
+        "short": "Strong fit for cut-and-come-again",
+        "guidance": "Looseleaf lettuce is well suited to selective mature-leaf harvest. Garden should prioritize outer leaves and continue monitoring center growth and overall plant vigor.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "flowering": {
+        "short": "Bolting is a quality and morphology change",
+        "guidance": "A central seed stalk is not a new leaf flush; it marks reproductive transition. Garden should surface that clearly and explain likely bitterness/quality decline.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      },
+      "hydroponics": {
+        "short": "General lettuce solution references",
+        "guidance": "Use UF/IFAS and OSU lettuce ranges as evidence with explicit system context, not as cultivar-specific precision.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Open form is normal for this variety",
+        "guidance": "Garden should recognize that Black Seeded Simpson is looseleaf. Failing to form a tight head is not itself a symptom.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce"]
+      }
+    }
+  }
+]

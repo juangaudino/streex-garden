@@ -9,10 +9,10 @@
   "theme_color": "#0b1230",
   "icons": [
     {
-      "src": "./assets/lab-icon-512.png",
+      "src": "./assets/lab-icon-approved-512.jpg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }

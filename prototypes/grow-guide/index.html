@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./language.css" />
   <link rel="stylesheet" href="./visual.css" />
+  <link rel="stylesheet" href="./inventory-neighbors.css" />
   <title>Garden X · Grow Guide</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
       <section class="controls" aria-label="Filtros de la guía">
         <label class="search-box">
           <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Busca albahaca, basil, lechuga…" autocomplete="off" />
+          <input id="searchInput" type="search" placeholder="Busca albahaca, basil, lechuga, Jolly Jester…" autocomplete="off" />
         </label>
         <div id="categoryFilters" class="filter-row"></div>
       </section>
@@ -53,10 +54,10 @@
       <section class="library-section">
         <div class="section-heading">
           <div>
-            <p class="eyebrow" data-i18n="library">BIBLIOTECA USER ZERO</p>
-            <h3 id="resultCount">Cargando plantas…</h3>
+            <p class="eyebrow" data-i18n="library">BIBLIOTECA DE SEMILLAS USER ZERO</p>
+            <h3 id="resultCount">Cargando semillas…</h3>
           </div>
-          <p class="muted" data-i18n="version">V0.4 · 17 cultivos actuales · ES/EN · refs visuales</p>
+          <p class="muted" data-i18n="version">V0.5 · 29 semillas disponibles · ES/EN · visual + vecinas</p>
         </div>
         <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
       </section>

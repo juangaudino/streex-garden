@@ -1,14 +1,34 @@
 # Botanical Studio — Fase 02.2 · Growth Film
 
-Estado al 12 de septiembre de 2026: **núcleo y conexión React implementados; traslado del CSS aprobado y QA visual pendientes**.
+Estado al 12 de septiembre de 2026: **implementación y QA responsive cerrados y aceptados por el usuario**. **Pendiente explícito: QA autenticada con fotos reales y fullscreen nativo en Safari de un iPhone físico.**
 
-La Fase 01 y Maintenance 02.1 siguen aprobadas. Este tramo comenzó desde `9b42fea` en la rama `codex/botanical-growth-film-integration`. El núcleo está en `28b368f`. El montaje de Sol sustituye la ruta de Growth Film, añade `/garden/:gardenId/film` y su invitación dentro del jardín. No modifica flujos de Maintenance, Planta, Supabase ni la publicación. `BotanicalSheet` admite una clase CSS opcional, sin cambiar su comportamiento existente. Los archivos de `depth-study` que ya estaban sin seguimiento quedaron intactos.
+La Fase 01 y Maintenance 02.1 siguen aprobadas. Este tramo comenzó desde `9b42fea` en la rama `codex/botanical-growth-film-integration`. El núcleo está en `28b368f`, el montaje React en `77f6959` y el traslado visual/entorno de QA en `69654f3`. El montaje de Sol sustituye la ruta de Growth Film, añade `/garden/:gardenId/film` y su invitación dentro del jardín. No modifica flujos de Maintenance, Planta, Supabase ni la publicación. `BotanicalSheet` admite una clase CSS opcional, sin cambiar su comportamiento existente. Los archivos de `depth-study` que ya estaban sin seguimiento quedaron intactos.
 
 ## Punto de relevo de modelo
 
-El usuario autorizó Sol High para la conexión y pidió detenerse cuando bastara un modelo inferior. **El siguiente tramo corresponde a Terra High**: trasladar y aislar el CSS de la maqueta aprobada, ajustar densidad/tamaños y realizar QA visual responsive. No reabrir benchmarking ni la dirección visual. Si aparece un problema nuevo de codificación, ciclo/provenance o Safari que requiera replantear el motor, detener ese tramo para elevar el modelo antes de improvisar una solución.
+Los tramos de Astra, Sol High y Terra High de implementación y QA responsive están terminados. El usuario autorizó preparar **Planta 02.3 con Astra Extra High**, manteniendo el requisito de detenerse antes de cambiar de modelo. La preparación y el siguiente relevo se recogen en [la guía de Planta](BOTANICAL_STUDIO_PHASE_02_3.md). No reabrir benchmarking ni la dirección visual.
 
-Esta entrega no cierra toda la Fase 02.2. La ruta utiliza ahora el núcleo nuevo; el exportador anterior queda sin uso en esta ruta, conservado para evitar una limpieza fuera de alcance. **Aún no está trasladado el CSS de Film al producto**: no presentar la ruta como demo visual terminado ni desplegar este corte. El prototipo Fase 01 conserva la dirección aprobada.
+La ruta utiliza el núcleo nuevo y el CSS aprobado, aislado en `src/features/cycles/growth-film.css`. El exportador anterior queda sin uso en esta ruta, conservado para evitar una limpieza fuera de alcance. El cierre aceptado corresponde a implementación y QA responsive; no acredita fotos reales, autenticación ni fullscreen físico. Si esa validación revela una complejidad nueva del motor o del dominio, explicar el problema y detenerse para acordar el modelo correspondiente.
+
+## Cierre visual y responsive de Terra
+
+`69654f3` incorpora el CSS aprobado y su importación desde `GrowthFilmStudio.tsx`, además de `qa/growth-film-integration/*`, que monta los componentes reales con medios sintéticos y resolución de fotografías simulada. La dirección visual no se replanteó.
+
+Registro de la verificación del corte anterior, aceptado por el usuario:
+
+| Comprobación | Evidencia y alcance |
+| --- | --- |
+| Tests finales | 30 archivos / 114 pruebas aprobadas. |
+| Build del producto y del entorno aislado | Correctos; ESLint dirigido correcto. |
+| 390 px | Inspección y capturas de sala, momentos, música y vista previa. |
+| 320 px | Revisión de controles y extremo inferior; `scrollWidth` de 320 px, sin exceder el viewport de 320 px. La barra vertical reduce el área cliente a 305 px; no confundir ambas medidas. |
+| 820 px | Comprobación de disposición y anchura: viewport 820 px, cliente y contenido 805 px. La captura parcial no acredita toda la pantalla. |
+| 1440 px | Medición de desbordamiento horizontal; no sustituye una inspección visual exhaustiva de escritorio. |
+| Exportación desde la UI nueva | Clip silencioso de 20,4 s completado, vista previa reproducible y descarga disponible. |
+
+El entorno aislado usa `publicDir: false`: la revisión visual del selector de música en ese entorno **no verifica la reproducción de los WAV**. La evidencia de audio del núcleo consta más abajo; falta comprobarlo con el flujo real autenticado en iPhone. Tampoco estos resultados equivalen a una auditoría completa de accesibilidad.
+
+Esta actualización de estado no repite tests/build: conserva su evidencia histórica y la aceptación explícita del usuario, dejando separados los pendientes de dispositivo y cuenta.
 
 ## Conexión entregada por Sol
 
@@ -41,9 +61,9 @@ Se mantienen 720 × 900 y fotografía completa (`contain`); 3,4 segundos nominal
 
 Una fotografía no hereda una cosecha o una intervención cercana sólo por fecha. Su texto procede del mismo registro que la contiene. Los hitos sin foto permanecen en `milestones`, con sus fuentes originales. La agrupación de revisiones menores conserva IDs, notas y datos; no cruza ciclos. Una foto histórica sin evento mantiene `eventId: null`; una captura sin fecha mantiene esa incertidumbre. La última ubicación del ciclo no se presenta como ubicación de captura. Entre ciclos diferentes siempre hay corte; con movimiento reducido no hay fundidos.
 
-## Contratos del montaje — preservar en Terra
+## Contratos del montaje — conservar tras el cierre
 
-1. La estructura React ya está conectada. Falta trasladar las reglas de `qa/botanical/design.css` (Film/editor y sus breakpoints), conservando exactamente la dirección aprobada. Crear CSS de producción aislado a `.film-page`/`.film-sheet` e importarlo desde Growth Film; adaptar controles a `.bs-button`, `.bs-icon-button`, `.bs-text-button`, `.bs-sheet-header`/footer y fotos a `.film-photo img`. No importar todo el CSS de la maqueta ni alterar Maintenance. La hoja amplia requiere anchura propia; la vista final usa video real y debe mantener el encuadre 4:5/contain. Añadir estilo a la invitación de jardín.
+1. La estructura React y las reglas de Film/editor ya están conectadas. Mantener `growth-film.css` aislado a `.film-page`/`.film-sheet`, los controles `.bs-button`, `.bs-icon-button`, `.bs-text-button`, `.bs-sheet-header`/footer y las fotos `.film-photo img`. No importar todo el CSS de la maqueta ni alterar Maintenance. La hoja amplia conserva anchura propia y la vista final usa video real con encuadre 4:5/contain. Conservar el estilo de la invitación de jardín.
 2. Conectar `loadFilmCatalogue(scope, { getCycle, getGarden }, signal)` a las funciones existentes de `garden-api`. Componer las variantes de ciclo y jardín y añadir su entrada de navegación. No cambiar RPCs o esquema para el montaje visual.
 3. Mantener la sala principal con foto protagonista, controles, miniaturas y panel de origen. Mostrar todas las fuentes de un hito agrupado. Usar `currentLocation` sólo como última ubicación registrada. No llamar a una foto histórica un hecho nuevo.
 4. Montar Momentos → Música → Vista previa. Las fotos deben salir del catálogo real; «Usar mis fotos» en el prototipo era una facilidad de QA, no autorización para publicar fotos o crear eventos desde el editor de clips.
@@ -83,8 +103,8 @@ Los archivos de video de esta prueba están en `~/Downloads/garden-x-core-{silen
 
 - **Safari en iPhone físico:** no verificado. Se implementó la llamada nativa y se probaron sus precondiciones, pero el navegador integrado no confirmó un estado fullscreen nativo. No marcar este requisito como resuelto hasta probar el flujo final en el dispositivo. Referencia de plataforma: [Apple — video para Safari](https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari) y [WebKit — MediaRecorder](https://webkit.org/blog/11353/mediarecorder-api/).
 - **Jardín y traslados entre jardines:** el endpoint de ciclo informa su última ubicación; no proporciona aquí la ocupación física en cada captura. El loader no atribuye al jardín de origen las fotos posteriores de un ciclo trasladado. Devuelve `excludedCycleIds` y la UI debe explicar la exclusión y ofrecer abrir esos ciclos. No ocultar este caso ni afirmar cobertura histórica completa del jardín. Una ampliación por ocupación histórica requiere otra decisión técnica, no CSS.
-- **Datos autenticados y capacidades de dominio:** pendiente la QA del montaje con lectura real, ciclos cerrados/trasladados, fuentes, notas extensas y fotos históricas. La capa nueva no llama a mutaciones, pero esa propiedad debe preservarse al conectarla.
+- **Datos autenticados y capacidades de dominio:** pendiente la QA del montaje conectado con lectura real, ciclos cerrados/trasladados, fuentes, notas extensas y fotos históricas. La capa nueva no llama a mutaciones; verificar esa propiedad en el flujo autenticado, no sólo en pruebas simuladas.
 - **Rendimiento móvil:** probar el máximo de doce momentos y diarios largos en dispositivo; el renderer decodifica las imágenes antes de grabar. La captura se cancela al pasar a segundo plano o ante una interrupción prolongada, en lugar de entregar un archivo incompleto.
-- **UI y accesibilidad:** pendientes 320/390/820/1440 px, hojas de tres pasos, foco, salida/cancelación, error de música y contraste. No están cubiertos por esta pantalla técnica.
+- **UI y accesibilidad:** QA responsive cerrada con el alcance descrito arriba. La accesibilidad completa, teclado móvil físico, errores reales de audio y comportamiento con medios de la cuenta conservan sus límites de verificación; no presentar las medidas de anchura como evidencia de todos esos casos.
 - **Avisos previos del build:** bundle principal mayor a 500 kB e import dinámico inefectivo de `photo-renditions`. Persisten; los módulos nuevos ya están importados por la ruta del producto. JSDOM también emite el aviso previo de navegación a otro documento.
-- Sin deploy, sin push y sin cambios de base de datos. No avanzar a Fase 02.3 Planta.
+- Sin deploy, sin push y sin cambios de base de datos en estos cortes. El usuario autorizó preparar Fase 02.3 Planta; esa autorización no elimina el pendiente de QA autenticada/física de Growth Film.

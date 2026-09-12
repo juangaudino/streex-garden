@@ -132,8 +132,8 @@ Los títulos actuales son ejemplos de presentación. La integración debe utiliz
 Orden de integración aprobado tras la revisión móvil de la Fase 01:
 
 1. **Fase 02.1 — Maintenance y base compartida.** Conectar la presentación a los formularios y operaciones existentes. Separar «Se ve bien» de navegación, conservar la posición después de guardar y compactar las hojas móviles. [Informe de cierre](BOTANICAL_STUDIO_PHASE_02_1.md).
-2. **Fase 02.2 — Growth Film.** Pendiente. Preservar en el video exportado títulos, encuadre, selección, música, orden y narrativa de la vista previa, con validación en Safari de un iPhone físico.
-3. **Fase 02.3 — Planta.** Pendiente. Conservar la composición aprobada e incorporar nombre en inglés y científico debajo del nombre principal.
+2. **Fase 02.2 — Growth Film.** Implementación y QA responsive cerrados y aceptados. Se conserva la composición entre preview y archivo exportado. **Pendiente explícito: QA autenticada con fotos reales y fullscreen nativo en Safari de un iPhone físico.** [Informe y alcance de verificación](BOTANICAL_STUDIO_PHASE_02_2.md).
+3. **Fase 02.3 — Planta.** Preparación autorizada y terminada; siguiente tramo de implementación con Sol High, tras el cambio de modelo. Conservar la composición aprobada e incorporar nombre en inglés y científico debajo del nombre principal, sobre las capacidades reales existentes. [Guía de integración y relevo](BOTANICAL_STUDIO_PHASE_02_3.md).
 
 La dirección visual está cerrada. Home, Jardines, Hoy y Ask Garden no forman parte de esta integración de Maintenance; cualquier extensión posterior se delimitará por separado.
 

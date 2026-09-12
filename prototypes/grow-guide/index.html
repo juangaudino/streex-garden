@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#183c2c" />
+  <meta name="description" content="Garden X Grow Guide prototype — structured, sourced plant care guidance." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Garden X · Grow Guide</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">GARDEN X · PROTOTYPE</p>
+        <h1>Grow Guide</h1>
+      </div>
+      <button id="installButton" class="ghost-button" hidden>Install</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="hero-kicker">Knowledge that knows its limits.</span>
+          <h2>Know what to do with the plant in front of you.</h2>
+          <p>Structured guidance for thinning, pruning, harvesting and hydroponic care — with evidence kept separate from Garden adaptations.</p>
+        </div>
+        <div class="trust-legend" aria-label="Evidence legend">
+          <span class="legend-chip source-backed">● Source-backed</span>
+          <span class="legend-chip garden-adaptation">● Garden adaptation</span>
+          <span class="legend-chip needs-validation">● Needs validation</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Guide filters">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search basil, albahaca, lettuce…" autocomplete="off" />
+        </label>
+        <div id="categoryFilters" class="filter-row"></div>
+      </section>
+
+      <section class="library-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PILOT LIBRARY</p>
+            <h3 id="resultCount">Loading plants…</h3>
+          </div>
+          <p class="muted">V0 · 5 pilot crops</p>
+        </div>
+        <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="plantDialog" class="plant-dialog">
+    <div class="dialog-frame">
+      <button id="closeDialog" class="close-button" aria-label="Close guide">×</button>
+      <div id="plantDetail"></div>
+    </div>
+  </dialog>
+
+  <template id="plantCardTemplate">
+    <article class="plant-card">
+      <button class="plant-card-button">
+        <div class="plant-card-top">
+          <span class="plant-emoji"></span>
+          <span class="category-pill"></span>
+        </div>
+        <div>
+          <p class="plant-spanish"></p>
+          <h4 class="plant-name"></h4>
+          <p class="plant-scientific"></p>
+        </div>
+        <div class="plant-card-footer">
+          <span class="guide-status"></span>
+          <span aria-hidden="true">→</span>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

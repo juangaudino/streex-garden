@@ -44,6 +44,7 @@ Examples:
 - JSON plant library
 - JSON source registry
 - JSON locale layer
+- JSON visual-reference registry
 - PWA manifest
 - Offline service worker
 - No database
@@ -53,7 +54,7 @@ Examples:
 
 This is deliberate. For a curated library of ~60 plants, structured retrieval is cheaper, more deterministic and easier to audit than semantic retrieval.
 
-## Bilingual contract — V0.3
+## Bilingual contract — V0.3+
 
 The prototype supports Spanish and English through an explicit `ES / EN` control.
 
@@ -65,6 +66,34 @@ The prototype supports Spanish and English through an explicit `ES / EN` control
 - Scientific names are never translated.
 - Publisher names and source document titles remain in their original form so evidence identity is not rewritten.
 - English agronomic content remains the base canonical editorial layer for this prototype; Spanish lives in a separate locale file and must not change facts, ranges, confidence or evidence classification.
+
+## Visual Guide contract — V0.4
+
+Visual guidance is a separate evidence surface, not decorative plant photography.
+
+A visual reference may be a real instructional photo, diagram, video demonstration, or authoritative guide when it materially improves understanding of an action such as thinning or pruning.
+
+Each visual reference stores:
+- crop association,
+- action (`thinning`, `pruning`, etc.),
+- media type,
+- bilingual explanatory copy,
+- source name and URL,
+- credit,
+- optional remote thumbnail URL,
+- rights status.
+
+Rights states currently used:
+- `source_link_only`: Garden links to the authoritative source and does not reproduce the source asset.
+- `review_before_production`: a remote thumbnail may be used in the private prototype for UX evaluation, but production reuse requires explicit rights/licensing review or replacement with a permitted asset.
+
+Third-party visual files are **not committed to this repository** and the service worker does **not cache cross-origin visual assets**. Garden can therefore validate whether the visual treatment is useful without treating external educational media as owned content.
+
+Initial V0.4 visual references include:
+- hydroponic tomato sucker-removal photography from Oklahoma State University Extension,
+- tomato sucker/cut-location diagram from University of Wisconsin–Madison Division of Extension,
+- basil pruning demonstration from Johnny's Selected Seeds,
+- seedling-thinning guidance from Utah State University Extension for crowded lettuce/cilantro-style seedlings.
 
 ## Data model
 
@@ -101,7 +130,7 @@ Each section contains:
 - confidence
 - source IDs
 
-Sources live separately so evidence can be reused and updated without duplicating URLs across plant records.
+Sources live separately so evidence can be reused and updated without duplicating URLs across plant records. Visual references also live separately so media/rights can evolve without rewriting agronomic claims.
 
 ## Current User Zero library
 
@@ -118,6 +147,8 @@ This diversity is intentional: it has already shown that Garden cannot use a uni
 5. Does the guide answer `where / when / how much` clearly enough?
 6. Which actions require a visual CUT / KEEP / REMOVE guide?
 7. Does language switching preserve comprehension without changing agronomic meaning?
+8. Do sourced visual references resolve ambiguity faster than text alone?
+9. Which external visuals are worth licensing/replacing for production?
 
 ## Future Garden X integration
 

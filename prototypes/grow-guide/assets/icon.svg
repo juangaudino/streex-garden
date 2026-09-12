@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Garden X Grow Guide icon">
+  <rect width="512" height="512" rx="118" fill="#183c2c"/>
+  <circle cx="256" cy="256" r="164" fill="#f4f1e8" opacity="0.08"/>
+  <path d="M256 374c-17-76-13-143 12-200" fill="none" stroke="#e9f2df" stroke-width="24" stroke-linecap="round"/>
+  <path d="M270 201c24-67 77-91 130-83-5 61-45 110-118 111" fill="#8fbe79"/>
+  <path d="M247 259c-17-61-66-89-121-77 9 62 54 104 121 101" fill="#b7d89e"/>
+  <path d="M279 307c29-46 72-57 109-44-12 47-48 78-101 72" fill="#6fa267"/>
+</svg>

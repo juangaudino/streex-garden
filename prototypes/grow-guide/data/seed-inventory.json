@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-09-12",
+  "source": "User Zero uploaded packet photos",
+  "count": 29,
+  "items": [
+    {"plantId":"genovese-basil","packetName":"Basil: Genovese","brand":"Home Grown","germinationRatePct":80,"purityPct":99,"aliases":["Genovese Basil"]},
+    {"plantId":"sweet-basil","packetName":"Basil: Sweet","brand":"Home Grown","germinationRatePct":91,"purityPct":99,"aliases":["Sweet Basil"]},
+    {"plantId":"curled-chervil","packetName":"Chervil: Curled","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Curled Chervil"]},
+    {"plantId":"common-chives","packetName":"Chives","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Chives"]},
+    {"plantId":"cilantro","packetName":"Cilantro","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Coriander","Cilantro"]},
+    {"plantId":"dill-bouquet","packetName":"Dill: Bouquet","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Bouquet Dill"]},
+    {"plantId":"garlic-chives","packetName":"Garlic Chives","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Chinese Chives"]},
+    {"plantId":"lavender-vera","packetName":"Lavender: Vera","brand":"Home Grown","germinationRatePct":88,"purityPct":99,"aliases":["Lavender Vera"]},
+    {"plantId":"common-mint","packetName":"Mint: Common","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Common Mint"]},
+    {"plantId":"italian-oregano","packetName":"Oregano: Italian","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Italian Oregano"]},
+    {"plantId":"evergreen-bunching-onion-nabuka","packetName":"Onion: Evergreen Bunching Nabuka","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Evergreen Bunching Onion","Nabuka"]},
+    {"plantId":"italian-giant-parsley","packetName":"Parsley: Italian Giant","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Italian Giant Parsley"]},
+    {"plantId":"rosemary","packetName":"Rosemary","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Rosemary"]},
+    {"plantId":"broadleaf-sage","packetName":"Sage: Broadleaf","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Broadleaf Sage"]},
+    {"plantId":"english-thyme","packetName":"Thyme","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Thyme"],"note":"Packet does not specify cultivar; current Grow Guide record remains English Thyme until identity is explicitly reconciled."},
+
+    {"plantId":"bibb-lettuce","packetName":"Bibb","brand":"Home Grown","collection":"5 Lettuce Seeds Pack","approxSeedCount":790,"aliases":["Bibb Lettuce"]},
+    {"plantId":"black-seeded-simpson","packetName":"Black Seeded Simpson","brand":"Home Grown","collection":"5 Lettuce Seeds Pack","approxSeedCount":790,"aliases":["Black Seeded Simpson Lettuce"]},
+    {"plantId":"buttercrunch-lettuce","packetName":"Buttercrunch","brand":"Home Grown","collection":"5 Lettuce Seeds Pack","approxSeedCount":790,"aliases":["Buttercrunch Lettuce"]},
+    {"plantId":"iceberg-lettuce","packetName":"Iceberg","brand":"Home Grown","collection":"5 Lettuce Seeds Pack","approxSeedCount":790,"aliases":["Iceberg Lettuce"]},
+    {"plantId":"red-romaine-lettuce","packetName":"Red Romaine","brand":"Home Grown","collection":"5 Lettuce Seeds Pack","approxSeedCount":790,"aliases":["Red Romaine Lettuce"]},
+
+    {"plantId":"petunia-dwarf-bedding-mixed","packetName":"Petunia — Dwarf Bedding, Mixed Colors","brand":"Ferry-Morse","packetWeight":"120 mg","daysToBloom":45,"aliases":["Dwarf Bedding Petunia","Mixed Colors Petunia"]},
+    {"plantId":"sunflower-american-giant-hybrid","packetName":"Sunflower — American Giant Hybrid","brand":"Ferry-Morse","packetWeight":"1 g","daysToBloom":65,"aliases":["American Giant Sunflower"]},
+    {"plantId":"sunflower-autumn-beauty","packetName":"Sunflower — Autumn Beauty, Mixed Colors","brand":"Ferry-Morse","daysToBloom":75,"aliases":["Autumn Beauty Sunflower"]},
+    {"plantId":"marigold-jolly-jester","packetName":"Marigold — Jolly Jester","brand":"Ferry-Morse","packetWeight":"240 mg","daysToBloom":45,"aliases":["Jolly Jester Marigold"]},
+    {"plantId":"zinnia-lilliput-mixed","packetName":"Zinnia — Lilliput Mixed Colors","brand":"Ferry-Morse","packetWeight":"400 mg","daysToBloom":60,"aliases":["Lilliput Zinnia"]},
+    {"plantId":"delphinium-magic-fountains-dwarf","packetName":"Delphinium — Magic Fountains Mixed Color Dwarf","brand":"Ferry-Morse","packetWeight":"100 mg","lifecycle":"Perennial","aliases":["Magic Fountains Delphinium"]},
+
+    {"plantId":"cherry-tomato","packetName":"Tomato — Large Red Cherry","brand":"Ferry-Morse","line":"Organic","packetWeight":"150 mg","daysToHarvest":70,"aliases":["Large Red Cherry Tomato"],"note":"Owned packet is the exact Large Red Cherry variety; this inventory fact does not retroactively change a growing plant identity without confirmation."},
+    {"plantId":"dark-green-zucchini","packetName":"Squash Summer — Dark Green Zucchini","brand":"Ferry-Morse","line":"Organic","packetWeight":"2.5 g","daysToHarvest":50,"aliases":["Dark Green Zucchini","Summer Squash"]},
+    {"plantId":"crimson-giant-radish","packetName":"Radish — Crimson Giant","brand":"Ferry-Morse","line":"Organic","packetWeight":"1.3 g","daysToHarvest":30,"aliases":["Crimson Giant Radish"]}
+  ]
+}

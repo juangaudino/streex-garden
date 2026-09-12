@@ -36,11 +36,11 @@ if (plants.length !== 29 || uniquePlantIds.size !== 29) {
 }
 
 const manifest = JSON.parse(await readFile(resolve(source, 'manifest.json'), 'utf8'));
-const approvedIconPath = './assets/lab-icon-512.png';
+const approvedIconPath = './assets/lab-icon-approved-512.jpg';
 if (!manifest.icons?.some((icon) => icon.src === approvedIconPath)) {
-  throw new Error('Grow Guide Lab manifest is not using the approved flask-leaf PWA icon.');
+  throw new Error('Grow Guide Lab manifest is not using the exact User Zero-approved Lab PWA icon.');
 }
-await access(resolve(source, 'assets/lab-icon-512.png'));
+await access(resolve(source, 'assets/lab-icon-approved-512.jpg'));
 
 await rm(destination, { recursive: true, force: true });
 await mkdir(destination, { recursive: true });
@@ -53,5 +53,5 @@ await cp(resolve(source, 'assets'), resolve(destination, 'assets'), { recursive:
 await cp(resolve(source, 'data'), resolve(destination, 'data'), { recursive: true });
 
 console.log(`Validated ${plants.length} unique Grow Guide Lab seed records.`);
-console.log('Validated approved flask-leaf PWA icon.');
+console.log('Validated exact User Zero-approved Grow Guide Lab PWA icon.');
 console.log('Synced Grow Guide Lab to public/grow-guide-lab');

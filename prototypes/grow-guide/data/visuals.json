@@ -1,0 +1,144 @@
+{
+  "genovese-basil": [
+    {
+      "id": "basil-pruning-johnnys-video",
+      "action": "pruning",
+      "mediaType": "video",
+      "title": {
+        "en": "See exactly where basil is pinched",
+        "es": "Mira exactamente dónde se pinza la albahaca"
+      },
+      "description": {
+        "en": "Johnny's demonstrates the first cut on a real basil plant, returning the stem to a strong set of side shoots rather than plucking random leaves.",
+        "es": "Johnny's muestra el primer corte sobre una planta real de albahaca, recortando el tallo hasta un par fuerte de brotes laterales en vez de arrancar hojas al azar."
+      },
+      "sourceName": "Johnny's Selected Seeds",
+      "sourceUrl": "https://www.johnnyseeds.com/growers-library/herbs/basil/video-v391.html",
+      "thumbnailUrl": null,
+      "credit": "Johnny's Selected Seeds",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "cherry-tomato": [
+    {
+      "id": "tomato-sucker-osu-photo",
+      "action": "pruning",
+      "mediaType": "photo",
+      "title": {
+        "en": "Identify and remove a tomato sucker",
+        "es": "Identifica y elimina un chupón del tomate"
+      },
+      "description": {
+        "en": "Oklahoma State Extension shows a real hydroponic tomato sucker being removed by hand from the leaf axil.",
+        "es": "Oklahoma State Extension muestra un chupón real de tomate hidropónico siendo retirado con la mano desde la axila de la hoja."
+      },
+      "sourceName": "Oklahoma State University Extension",
+      "sourceUrl": "https://extension.okstate.edu/fact-sheets/pruning-hydroponic-crops",
+      "thumbnailUrl": "https://extension.okstate.edu/fact-sheets/images/pruning-hydroponic-crops/tomatoes.png",
+      "credit": "Oklahoma State University Extension",
+      "rightsStatus": "review_before_production"
+    },
+    {
+      "id": "tomato-sucker-wisconsin-diagram",
+      "action": "pruning",
+      "mediaType": "diagram",
+      "title": {
+        "en": "Where the sucker sits — and where to cut",
+        "es": "Dónde está el chupón y dónde cortar"
+      },
+      "description": {
+        "en": "Wisconsin Extension labels the main stem, leaf branch and sucker in the axil, including the cut location.",
+        "es": "Wisconsin Extension identifica el tallo principal, la rama de la hoja y el chupón en la axila, incluyendo el punto de corte."
+      },
+      "sourceName": "University of Wisconsin–Madison Division of Extension",
+      "sourceUrl": "https://hort.extension.wisc.edu/articles/tomato-pruning/",
+      "thumbnailUrl": "https://hort.extension.wisc.edu/files/2021/07/tomato-prune-2.png",
+      "credit": "University of Wisconsin–Madison Division of Extension",
+      "rightsStatus": "review_before_production"
+    }
+  ],
+  "red-romaine-lettuce": [
+    {
+      "id": "lettuce-thinning-usu-seedling-guide",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Thin seedlings at the base", "es": "Ralea las plántulas cortando en la base"},
+      "description": {"en": "USU's seed-starting guide instructs growers to cut crowded seedlings with small scissors at the growing-medium line after true leaves emerge.", "es": "La guía de semilleros de USU indica cortar las plántulas amontonadas con tijeras pequeñas a nivel del medio de cultivo después de que aparezcan hojas verdaderas."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "bibb-lettuce": [
+    {
+      "id": "bibb-thinning-usu-seedling-guide",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Thin seedlings at the base", "es": "Ralea las plántulas cortando en la base"},
+      "description": {"en": "USU's seed-starting guide shows the same base-cutting principle used when a lettuce pod has more seedlings than the final head can support.", "es": "La guía de semilleros de USU muestra el mismo principio de cortar en la base cuando un pod de lechuga tiene más plántulas de las que puede soportar la cabeza final."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "iceberg-lettuce": [
+    {
+      "id": "iceberg-thinning-usu-seedling-guide",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Thin seedlings at the base", "es": "Ralea las plántulas cortando en la base"},
+      "description": {"en": "Use small scissors at the growing-medium line instead of pulling crowded seedlings and disturbing neighboring roots.", "es": "Usa tijeras pequeñas a nivel del medio de cultivo en vez de arrancar las plántulas amontonadas y alterar las raíces vecinas."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "buttercrunch-lettuce": [
+    {
+      "id": "buttercrunch-thinning-usu-seedling-guide",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Thin seedlings at the base", "es": "Ralea las plántulas cortando en la base"},
+      "description": {"en": "USU recommends cutting unwanted crowded seedlings at the base with small scissors after true leaves emerge.", "es": "USU recomienda cortar las plántulas sobrantes y amontonadas en la base con tijeras pequeñas después de que aparezcan hojas verdaderas."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "black-seeded-simpson": [
+    {
+      "id": "bss-thinning-usu-seedling-guide",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Thin seedlings at the base", "es": "Ralea las plántulas cortando en la base"},
+      "description": {"en": "The visual reference reinforces the safest removal method when crowded seedlings share a small root zone.", "es": "La referencia visual refuerza el método más seguro para retirar plántulas cuando comparten una zona de raíces pequeña."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "cilantro": [
+    {
+      "id": "cilantro-thinning-usu-general",
+      "action": "thinning",
+      "mediaType": "guide",
+      "title": {"en": "Cut crowded seedlings; do not pull", "es": "Corta las plántulas sobrantes; no las arranques"},
+      "description": {"en": "USU's seedling guidance supports cutting crowded seedlings with scissors to avoid disturbing young roots — directly relevant to dense hydroponic pods.", "es": "La guía de plántulas de USU respalda cortar con tijeras las plántulas amontonadas para no alterar raíces jóvenes, algo directamente útil en pods hidropónicos densos."},
+      "sourceName": "Utah State University Extension",
+      "sourceUrl": "https://extension.usu.edu/yardandgarden/files/SeedsHandout-OY-Mar2017.pdf",
+      "thumbnailUrl": null,
+      "credit": "Utah State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ]
+}

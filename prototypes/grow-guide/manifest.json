@@ -1,17 +1,17 @@
 {
-  "name": "Garden X Grow Guide",
-  "short_name": "Grow Guide",
-  "description": "Evidence-aware plant growing guidance prototype for Garden X.",
+  "name": "Garden X Grow Guide Lab",
+  "short_name": "Grow Guide Lab",
+  "description": "Garden X laboratory prototype for evidence-aware plant growing guidance.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4f1e8",
-  "theme_color": "#183c2c",
+  "background_color": "#0b1230",
+  "theme_color": "#0b1230",
   "icons": [
     {
-      "src": "./assets/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "./assets/lab-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

@@ -3,6 +3,8 @@ const state = {
   sources: {},
   translations: {},
   visuals: {},
+  seedInventory: {},
+  neighborData: { meta: {}, profiles: {} },
   query: "",
   category: "all",
   language: localStorage.getItem("growGuideLanguage") || "es",
@@ -33,14 +35,16 @@ const ui = {
     heroTitle: "Know what to do with the plant in front of you.",
     heroBody: "Structured guidance for thinning, pruning, harvesting and hydroponic care — with evidence kept separate from Garden adaptations.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
-    searchPlaceholder: "Search basil, albahaca, lettuce…", filterLabel: "Guide filters", library: "USER ZERO LIBRARY", version: "V0.4 · 17 current crops · ES/EN · visual refs",
-    allPlants: "All plants", plant: "plant", plants: "plants", guide: "guide", noMatches: "No plant matches that search yet.", unavailable: "Guide unavailable", loadError: "The prototype data could not be loaded.", close: "Close guide", avoid: "Avoid", context: "Context", confidence: "Confidence",
+    searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "USER ZERO SEED LIBRARY", version: "V0.5 · 29 owned seeds · ES/EN · visual + neighbors",
+    allPlants: "All seeds", plant: "seed variety", plants: "seed varieties", guide: "guide", noMatches: "No seed variety matches that search yet.", unavailable: "Guide unavailable", loadError: "The prototype data could not be loaded.", close: "Close guide", avoid: "Avoid", context: "Context", confidence: "Confidence",
     confidence_high: "high", confidence_medium: "medium", confidence_pending: "pending",
     visualGuide: "Visual guide", visualGuideNote: "External references selected for the action itself — not decorative plant photos.", openSource: "Open source", sourceLinkOnly: "Open at source", rightsReview: "Rights review before production", externalReference: "External reference",
     media_photo: "Photo", media_diagram: "Diagram", media_video: "Video", media_guide: "Guide",
     actions: { thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering", hydroponics: "Hydroponics" },
-    categories: { herbs: "herbs", "leafy greens": "leafy greens", fruiting: "fruiting" },
+    categories: { herbs: "herbs", "leafy greens": "leafy greens", fruiting: "fruiting", flowers: "flowers", alliums: "alliums", "root vegetables": "root vegetables" },
     sections: { germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
+    ownedSeed: "In your seed collection", packet: "Packet", germinationRate: "Packet germination rate", purity: "Purity", seedCount: "Approx. seeds", daysToBloom: "Days to bloom", daysToHarvest: "Days to harvest", packetEvidence: "Inventory fact from your packet photo",
+    neighbors: "Neighbors", neighborsNote: "Garden scores real growing compatibility first. A traditional companion claim is only promoted when a credible source supports it.", goodNeighbors: "Good neighbors", separateNeighbors: "Better separate", noStrongGood: "No strong positive matches yet.", noStrongBad: "No strong separation flags yet.", researchPair: "Research-backed companion pair", systemPair: "System-fit inference", nearbyRole: "Useful nearby outdoors", neighborDisclaimer: "‘Better separate’ usually means poor light / space / root / nutrient fit — not that one plant chemically harms the other.",
   },
   es: {
     prototype: "GARDEN X · PROTOTIPO", title: "Grow Guide", install: "Instalar",
@@ -48,14 +52,16 @@ const ui = {
     heroTitle: "Sabe qué hacer con la planta que tienes delante.",
     heroBody: "Guía estructurada para raleo, poda, cosecha y manejo hidropónico, manteniendo la evidencia separada de las adaptaciones de Garden.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
-    searchPlaceholder: "Busca albahaca, basil, lechuga…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA USER ZERO", version: "V0.4 · 17 cultivos actuales · ES/EN · refs visuales",
-    allPlants: "Todas", plant: "planta", plants: "plantas", guide: "ficha", noMatches: "Todavía no hay una planta que coincida con esa búsqueda.", unavailable: "Guía no disponible", loadError: "No se pudieron cargar los datos del prototipo.", close: "Cerrar guía", avoid: "Evitar", context: "Contexto", confidence: "Confianza",
+    searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA DE SEMILLAS USER ZERO", version: "V0.5 · 29 semillas disponibles · ES/EN · visual + vecinas",
+    allPlants: "Todas", plant: "variedad", plants: "variedades", guide: "ficha", noMatches: "Todavía no hay una variedad que coincida con esa búsqueda.", unavailable: "Guía no disponible", loadError: "No se pudieron cargar los datos del prototipo.", close: "Cerrar guía", avoid: "Evitar", context: "Contexto", confidence: "Confianza",
     confidence_high: "alta", confidence_medium: "media", confidence_pending: "pendiente",
     visualGuide: "Guía visual", visualGuideNote: "Referencias externas elegidas por la acción que enseñan, no como fotos decorativas de la planta.", openSource: "Abrir fuente", sourceLinkOnly: "Ver en la fuente", rightsReview: "Revisar derechos antes de producción", externalReference: "Referencia externa",
     media_photo: "Foto", media_diagram: "Diagrama", media_video: "Video", media_guide: "Guía",
     actions: { thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración", hydroponics: "Hidroponía" },
-    categories: { herbs: "hierbas", "leafy greens": "hojas verdes", fruiting: "cultivos de fruto" },
+    categories: { herbs: "hierbas", "leafy greens": "hojas verdes", fruiting: "cultivos de fruto", flowers: "flores", alliums: "alliums", "root vegetables": "raíces" },
     sections: { germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
+    ownedSeed: "Disponible en tus semillas", packet: "Sobre", germinationRate: "Germinación del sobre", purity: "Pureza", seedCount: "Semillas aprox.", daysToBloom: "Días a floración", daysToHarvest: "Días a cosecha", packetEvidence: "Dato de inventario leído de tu foto del sobre",
+    neighbors: "Vecinas", neighborsNote: "Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube de nivel cuando una fuente confiable la respalda.", goodNeighbors: "Buenas vecinas", separateNeighbors: "Mejor separar", noStrongGood: "Todavía no hay coincidencias positivas fuertes.", noStrongBad: "No hay alertas fuertes de separación.", researchPair: "Pareja respaldada por investigación", systemPair: "Inferencia por compatibilidad del sistema", nearbyRole: "Útil cerca en exterior", neighborDisclaimer: "‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces / nutrientes; no que una planta envenene químicamente a la otra.",
   },
 };
 
@@ -64,20 +70,28 @@ const evidenceClasses = { source_backed: "source-backed", garden_adaptation: "ga
 const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "📖" };
 
 async function init() {
-  const [pilotPlantResponse, currentPlantResponse, sourceResponse, currentSourceResponse, spanishResponse, visualsResponse] = await Promise.all([
+  const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, spanishResponse, ownedSpanishResponse, visualsResponse, inventoryResponse, neighborResponse] = await Promise.all([
     fetch(assetUrl("data/plants.json")),
     fetch(assetUrl("data/plants-current-gardens.json")),
+    fetch(assetUrl("data/plants-owned-seeds.json")),
     fetch(assetUrl("data/sources.json")),
     fetch(assetUrl("data/sources-current-gardens.json")),
+    fetch(assetUrl("data/sources-owned-seeds.json")),
     fetch(assetUrl("data/translations-es.json")),
+    fetch(assetUrl("data/translations-owned-seeds-es.json")),
     fetch(assetUrl("data/visuals.json")),
+    fetch(assetUrl("data/seed-inventory.json")),
+    fetch(assetUrl("data/neighbor-profiles.json")),
   ]);
 
-  state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json()];
-  const sources = [...await sourceResponse.json(), ...await currentSourceResponse.json()];
+  state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json(), ...await ownedPlantResponse.json()];
+  const sources = [...await sourceResponse.json(), ...await currentSourceResponse.json(), ...await ownedSourceResponse.json()];
   state.sources = Object.fromEntries(sources.map((source) => [source.id, source]));
-  state.translations = await spanishResponse.json();
+  state.translations = { ...await spanishResponse.json(), ...await ownedSpanishResponse.json() };
   state.visuals = await visualsResponse.json();
+  const inventory = await inventoryResponse.json();
+  state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
+  state.neighborData = await neighborResponse.json();
   bindEvents();
   applyLanguage();
   registerServiceWorker();
@@ -128,7 +142,8 @@ function buildFilters() {
 function getFilteredPlants() {
   return state.plants.filter((plant) => {
     const categoryMatch = state.category === "all" || plant.category === state.category;
-    const haystack = [plant.name, plant.spanishName, plant.scientificName, plant.variety, ...(plant.tags || [])].join(" ").toLowerCase();
+    const seed = state.seedInventory[plant.id] || {};
+    const haystack = [plant.name, plant.spanishName, plant.scientificName, plant.variety, seed.packetName, ...(seed.aliases || []), ...(plant.tags || [])].join(" ").toLowerCase();
     return categoryMatch && (!state.query || haystack.includes(state.query));
   });
 }
@@ -154,7 +169,7 @@ function renderPlants() {
     fragment.querySelector(".plant-spanish").textContent = secondaryName;
     fragment.querySelector(".plant-name").textContent = primaryName;
     fragment.querySelector(".plant-scientific").textContent = plant.scientificName;
-    fragment.querySelector(".guide-status").textContent = `${localized.guideCompletion}% ${text.guide}`;
+    fragment.querySelector(".guide-status").textContent = state.seedInventory[plant.id] ? `🌱 ${localized.guideCompletion}% ${text.guide}` : `${localized.guideCompletion}% ${text.guide}`;
     fragment.querySelector(".plant-card-button").addEventListener("click", () => openPlant(plant));
     refs.plantGrid.append(fragment);
   });
@@ -165,9 +180,79 @@ function openPlant(plant) { state.activePlantId = plant.id; refs.detail.innerHTM
 function buildPlantDetail(plant) {
   const localized = getLocalizedPlant(plant); const primaryName = state.language === "es" ? plant.spanishName : plant.name; const secondaryName = state.language === "es" ? plant.name : plant.spanishName;
   const metrics = (localized.metrics || []).map((metric) => `<div class="metric-card"><div class="metric-label">${escapeHtml(metric.label)}</div><div class="metric-value">${escapeHtml(metric.value)}</div>${metric.note ? `<div class="metric-note">${escapeHtml(metric.note)}</div>` : ""}</div>`).join("");
+  const seedCard = buildSeedInventoryCard(plant.id);
+  const neighbors = buildNeighborGuide(plant.id);
   const visuals = buildVisualGuide(plant.id);
-  const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key, index) => buildSection(localized.sections[key], key, index === 0 && !visuals)).join("");
-  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section><section class="quick-facts">${metrics}</section>${visuals}<section class="guide-stack">${sections}</section>`;
+  const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key) => buildSection(localized.sections[key], key, false)).join("");
+  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section>${seedCard}<section class="quick-facts">${metrics}</section>${neighbors}${visuals}<section class="guide-stack">${sections}</section>`;
+}
+
+function buildSeedInventoryCard(plantId) {
+  const seed = state.seedInventory[plantId];
+  if (!seed) return "";
+  const text = ui[state.language];
+  const facts = [];
+  if (seed.germinationRatePct != null) facts.push(`${text.germinationRate}: ${seed.germinationRatePct}%`);
+  if (seed.purityPct != null) facts.push(`${text.purity}: ${seed.purityPct}%`);
+  if (seed.approxSeedCount != null) facts.push(`${text.seedCount}: ${seed.approxSeedCount}`);
+  if (seed.daysToBloom != null) facts.push(`${text.daysToBloom}: ${seed.daysToBloom}`);
+  if (seed.daysToHarvest != null) facts.push(`${text.daysToHarvest}: ${seed.daysToHarvest}`);
+  return `<section class="seed-inventory-card"><div><p class="eyebrow">🌱 ${escapeHtml(text.ownedSeed)}</p><h3>${escapeHtml(seed.packetName)}</h3><p>${escapeHtml(seed.brand)}${seed.line ? ` · ${escapeHtml(seed.line)}` : ""}${seed.packetWeight ? ` · ${escapeHtml(seed.packetWeight)}` : ""}</p></div>${facts.length ? `<div class="seed-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : ""}<small>${escapeHtml(text.packetEvidence)}</small>${seed.note ? `<small>${escapeHtml(seed.note)}</small>` : ""}</section>`;
+}
+
+function buildNeighborGuide(plantId) {
+  const profile = state.neighborData.profiles?.[plantId];
+  if (!profile) return "";
+  const text = ui[state.language];
+  const ranked = state.plants
+    .filter((other) => other.id !== plantId && state.neighborData.profiles?.[other.id])
+    .map((other) => scoreNeighbor(plantId, other.id))
+    .sort((a, b) => b.score - a.score);
+  const good = ranked.filter((item) => item.score >= 2).slice(0, 4);
+  const separate = [...ranked].sort((a, b) => a.score - b.score).filter((item) => item.score <= -2).slice(0, 4);
+  return `<section class="neighbor-guide"><div class="neighbor-heading"><div><p class="eyebrow">↔ ${escapeHtml(text.neighbors)}</p><h3>${escapeHtml(text.goodNeighbors)} / ${escapeHtml(text.separateNeighbors)}</h3></div><p>${escapeHtml(text.neighborsNote)}</p></div><div class="neighbor-columns"><div class="neighbor-column good"><h4>✓ ${escapeHtml(text.goodNeighbors)}</h4>${good.length ? good.map((item) => buildNeighborItem(item)).join("") : `<p class="muted">${escapeHtml(text.noStrongGood)}</p>`}</div><div class="neighbor-column separate"><h4>↔ ${escapeHtml(text.separateNeighbors)}</h4>${separate.length ? separate.map((item) => buildNeighborItem(item)).join("") : `<p class="muted">${escapeHtml(text.noStrongBad)}</p>`}</div></div><p class="neighbor-disclaimer">${escapeHtml(text.neighborDisclaimer)}</p></section>`;
+}
+
+function scoreNeighbor(aId, bId) {
+  const a = state.neighborData.profiles[aId]; const b = state.neighborData.profiles[bId];
+  let score = 0; const reasons = []; let basis = "system";
+  const explicit = (state.neighborData.meta?.researchPairs || []).find((pair) => (pair.a === aId && pair.b === bId) || (pair.a === bId && pair.b === aId));
+  if (explicit) { score += 4; basis = "research"; reasons.push(state.language === "es" ? "Existe una relación de companion planting respaldada por Extension." : "An Extension source supports this companion relationship."); }
+
+  if (a.climate === b.climate) { score += 2; reasons.push(state.language === "es" ? "Prefieren una temporada térmica parecida." : "They prefer a similar temperature season."); }
+  else if (a.climate === "moderate" || b.climate === "moderate") score += 1;
+  else { score -= 2; reasons.push(state.language === "es" ? "Uno es de clima cálido y el otro de clima fresco." : "One is warm-season and the other cool-season."); }
+
+  const nutrientGap = Math.abs(a.nutrient - b.nutrient);
+  if (nutrientGap === 0) score += 1;
+  if (nutrientGap >= 2) { score -= 2; reasons.push(state.language === "es" ? "La demanda de nutrientes es muy distinta para compartir un depósito pequeño." : "Their nutrient demand is very different for a small shared reservoir."); }
+
+  const heightGap = Math.abs(a.height - b.height);
+  if (heightGap >= 2) { score -= 2; reasons.push(state.language === "es" ? "La diferencia de altura aumenta el riesgo de sombra." : "The height gap increases shading risk."); }
+  if (a.spread >= 4 || b.spread >= 4) { score -= 2; reasons.push(state.language === "es" ? "Una de las plantas ocupa muchísimo espacio lateral." : "One plant has a very large horizontal footprint."); }
+  else if (Math.max(a.spread, b.spread) >= 3 && Math.min(a.spread, b.spread) <= 1) score -= 1;
+  if (a.root <= 2 && b.root <= 2 && Math.abs(a.root - b.root) <= 1) score += 1;
+  if ((a.traits.includes("giant") || b.traits.includes("giant")) && !(a.traits.includes("giant") && b.traits.includes("giant"))) score -= 2;
+  if ((a.traits.includes("ornamental-only") && b.traits.includes("edible")) || (b.traits.includes("ornamental-only") && a.traits.includes("edible"))) { score -= 1; reasons.push(state.language === "es" ? "Conviene separar un ornamental no comestible de zonas de cosecha culinaria." : "Keeping a non-edible ornamental away from culinary harvest zones is cleaner and safer."); }
+
+  const roleA = state.neighborData.meta?.beneficialRoles?.[aId];
+  const roleB = state.neighborData.meta?.beneficialRoles?.[bId];
+  if ((roleA && b.traits.includes("edible")) || (roleB && a.traits.includes("edible"))) {
+    score += 1;
+    if (basis !== "research") basis = "nearby";
+    reasons.push(state.language === "es" ? "Puede aportar valor cerca en exterior por polinizadores o insectos benéficos." : "It can be useful nearby outdoors for pollinators or beneficial insects.");
+  }
+
+  if (!reasons.length) reasons.push(state.language === "es" ? "Compatibilidad calculada por tamaño, raíces y demanda del cultivo." : "Compatibility is calculated from size, roots and crop demand.");
+  return { plant: state.plants.find((plant) => plant.id === bId), score, reasons: reasons.slice(0, 2), basis, explicit };
+}
+
+function buildNeighborItem(item) {
+  const text = ui[state.language]; const plant = item.plant;
+  const primaryName = state.language === "es" ? plant.spanishName : plant.name;
+  const label = item.basis === "research" ? text.researchPair : item.basis === "nearby" ? text.nearbyRole : text.systemPair;
+  const source = item.explicit ? state.sources[item.explicit.sourceId] : null;
+  return `<article class="neighbor-item"><div class="neighbor-name"><span>${plant.emoji}</span><strong>${escapeHtml(primaryName)}</strong></div><p>${escapeHtml(item.reasons.join(" "))}</p><div class="neighbor-meta"><span>${escapeHtml(label)}</span>${source ? `<a href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.publisher)} ↗</a>` : ""}</div></article>`;
 }
 
 function buildVisualGuide(plantId) {

@@ -6,6 +6,7 @@ import { FILM_MOMENT_MS, type FilmCatalogue, type FilmSource } from './growth-fi
 import { GrowthFilmClipEditor } from './GrowthFilmClipEditor'
 import { GrowthFilmPhoto } from './GrowthFilmPhoto'
 import { resolveFilmPhoto } from './growth-film-photo'
+import './growth-film.css'
 
 export function GrowthFilmStudio({ catalogue, backTo }: { catalogue: FilmCatalogue; backTo: string }) {
   const [index, setIndex] = useState(0)

@@ -43,6 +43,7 @@ Examples:
 - Vanilla JavaScript
 - JSON plant library
 - JSON source registry
+- JSON locale layer
 - PWA manifest
 - Offline service worker
 - No database
@@ -51,6 +52,19 @@ Examples:
 - No embeddings / RAG
 
 This is deliberate. For a curated library of ~60 plants, structured retrieval is cheaper, more deterministic and easier to audit than semantic retrieval.
+
+## Bilingual contract — V0.3
+
+The prototype supports Spanish and English through an explicit `ES / EN` control.
+
+- Spanish is the initial User Zero language unless a previous choice exists in local storage.
+- The selected language persists on the device.
+- Search remains bilingual regardless of interface language.
+- In Spanish, the common Spanish name is primary and the English name secondary; in English the hierarchy is reversed.
+- Section titles, UI labels, metric labels/notes, guidance, evidence states and confidence labels switch language.
+- Scientific names are never translated.
+- Publisher names and source document titles remain in their original form so evidence identity is not rewritten.
+- English agronomic content remains the base canonical editorial layer for this prototype; Spanish lives in a separate locale file and must not change facts, ranges, confidence or evidence classification.
 
 ## Data model
 
@@ -87,36 +101,23 @@ Each section contains:
 - confidence
 - source IDs
 
-Sources live separately in `data/sources.json` so evidence can be reused and updated without duplicating URLs across plant records.
+Sources live separately so evidence can be reused and updated without duplicating URLs across plant records.
 
-## V0 pilot crops
+## Current User Zero library
 
-1. Genovese Basil
-2. Cilantro
-3. Red Romaine Lettuce
-4. Common Mint
-5. Cherry Tomato
+The prototype currently contains 17 crops/varieties from the two active hydroponic gardens, spanning branching herbs, slow perennial herbs, cluster-forming alliums, leafy greens and a fruiting crop.
 
-These intentionally represent different management patterns:
+This diversity is intentional: it has already shown that Garden cannot use a universal thinning or pruning rule across crops.
 
-- branching herb
-- cool-season herb
-- leafy green
-- aggressive perennial herb
-- fruiting crop
+## Validation questions
 
-## Next validation step
-
-Use the V0 as a real reference during maintenance and answer:
-
-1. Can the user find the plant quickly?
+1. Can the user find the plant quickly in either language?
 2. Is the first useful action obvious?
 3. Are guide sections too long or too shallow?
 4. Is evidence labeling useful or noisy?
-5. Does the guide answer "where / when / how much" clearly enough?
+5. Does the guide answer `where / when / how much` clearly enough?
 6. Which actions require a visual CUT / KEEP / REMOVE guide?
-
-Only after the information architecture passes this test should the library expand to the complete current Garden crop set and then toward ~60 curated plants.
+7. Does language switching preserve comprehension without changing agronomic meaning?
 
 ## Future Garden X integration
 
@@ -129,3 +130,7 @@ Potential consumers of this structured knowledge:
 - future visual cut/keep/remove guidance
 
 AI should receive selected structured facts from Grow Guide as context. AI should not become the canonical source of agronomic facts.
+
+## Integration gate
+
+This prototype remains **DO NOT MERGE** until User Zero validates the experience in real use. A successful prototype does not by itself authorize changes to Garden X production architecture.

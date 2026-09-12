@@ -1,4 +1,4 @@
-const CACHE_NAME = "garden-grow-guide-v0-5-1";
+const CACHE_NAME = "garden-grow-guide-v0-5-2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -8,7 +8,7 @@ const APP_SHELL = [
   "./inventory-neighbors.css",
   "./app.js",
   "./manifest.json",
-  "./assets/lab-icon-512.png",
+  "./assets/lab-icon-approved-512.jpg",
   "./data/plants.json",
   "./data/plants-current-gardens.json",
   "./data/plants-owned-seeds.json",

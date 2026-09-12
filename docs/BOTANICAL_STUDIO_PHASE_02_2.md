@@ -1,14 +1,28 @@
 # Botanical Studio — Fase 02.2 · Growth Film
 
-Estado al 12 de septiembre de 2026: **núcleo implementado y verificado; integración visual pendiente**.
+Estado al 12 de septiembre de 2026: **núcleo y conexión React implementados; traslado del CSS aprobado y QA visual pendientes**.
 
-La Fase 01 y Maintenance 02.1 siguen aprobadas. Este tramo comenzó desde `9b42fea` en la rama `codex/botanical-growth-film-integration`. No modifica Maintenance, Planta, las rutas del producto, Supabase ni la publicación. Los archivos de `depth-study` que ya estaban sin seguimiento quedaron intactos.
+La Fase 01 y Maintenance 02.1 siguen aprobadas. Este tramo comenzó desde `9b42fea` en la rama `codex/botanical-growth-film-integration`. El núcleo está en `28b368f`. El montaje de Sol sustituye la ruta de Growth Film, añade `/garden/:gardenId/film` y su invitación dentro del jardín. No modifica flujos de Maintenance, Planta, Supabase ni la publicación. `BotanicalSheet` admite una clase CSS opcional, sin cambiar su comportamiento existente. Los archivos de `depth-study` que ya estaban sin seguimiento quedaron intactos.
 
 ## Punto de relevo de modelo
 
-El usuario pidió detener Astra cuando el siguiente trabajo pudiera resolverse con un modelo inferior. **El siguiente tramo corresponde a Sol High**: montaje de la interfaz aprobada sobre los contratos siguientes, pruebas de componentes y QA responsive. Terra High sirve para tareas acotadas de CSS/componentes; Luna para documentación y ajustes mecánicos. No reabrir benchmarking ni la dirección visual. Si aparece un problema nuevo de codificación, ciclo/provenance o Safari que requiera replantear el motor, detener ese tramo antes de improvisar una solución.
+El usuario autorizó Sol High para la conexión y pidió detenerse cuando bastara un modelo inferior. **El siguiente tramo corresponde a Terra High**: trasladar y aislar el CSS de la maqueta aprobada, ajustar densidad/tamaños y realizar QA visual responsive. No reabrir benchmarking ni la dirección visual. Si aparece un problema nuevo de codificación, ciclo/provenance o Safari que requiera replantear el motor, detener ese tramo para elevar el modelo antes de improvisar una solución.
 
-Esta entrega no cierra toda la Fase 02.2. El `GrowthFilmPage.tsx` y el exportador anterior siguen activos en el producto, hasta realizar el montaje con Sol. No hay un nuevo demo visual de producto que aprobar en este corte.
+Esta entrega no cierra toda la Fase 02.2. La ruta utiliza ahora el núcleo nuevo; el exportador anterior queda sin uso en esta ruta, conservado para evitar una limpieza fuera de alcance. **Aún no está trasladado el CSS de Film al producto**: no presentar la ruta como demo visual terminado ni desplegar este corte. El prototipo Fase 01 conserva la dirección aprobada.
+
+## Conexión entregada por Sol
+
+| Archivo | Responsabilidad |
+| --- | --- |
+| `GrowthFilmPage.tsx` | Lectura real por ciclo/jardín, carga/error/reintento, descarte de respuestas tardías y desmontaje por cambio de ruta. |
+| `GrowthFilmStudio.tsx` | Sala de fotografías, reproducción sin render automático, scrub, todas las miniaturas, hitos/fuentes y diarios trasladados separados. Decodifica el siguiente momento antes de sustituir la foto. |
+| `GrowthFilmClipEditor.tsx` | Momentos → Música → Vista previa; selección cronológica de 2–12, pistas existentes, escucha opcional, volumen/títulos, sesión única y descarga del mismo artefacto. Variante de diario completo para fullscreen, sin límite de doce. |
+| `GrowthFilmVideo.tsx` | Video final con audio y narrativa incorporados, progreso/cancelación, error/reintento y fullscreen nativo tras datos cargados y un toque directo. Eventos nativos sincronizan el estado. |
+| `GrowthFilmPhoto.tsx`, `growth-film-photo.ts` | Miniaturas privadas al aproximarse al área visible, renovación limitada ante error y URLs nuevas para el exportador. |
+| `GrowthFilmStudio.test.tsx` | Ocho pruebas de conexión: no mutaciones, no render automático, paridad preview/descarga, invalidación, opciones/cronología, cancelación tardía, fullscreen, jardín/traslados, decodificación y desmontaje. |
+| `src/app/App.tsx`, `GardenPage.tsx` | Nueva ruta e invitación de jardín; Compartir/Editar sistema conservan su composición en el encabezado. |
+
+La duración real procede de `loadedmetadata`/`durationchange` y queda vinculada a la URL del artefacto. Si el navegador todavía no devuelve duración finita, la interfaz sigue indicando duración **estimada**. `FilmArtifact.durationMs` permanece nominal; no confundirlo con metadata del archivo.
 
 ## Núcleo entregado
 
@@ -27,9 +41,9 @@ Se mantienen 720 × 900 y fotografía completa (`contain`); 3,4 segundos nominal
 
 Una fotografía no hereda una cosecha o una intervención cercana sólo por fecha. Su texto procede del mismo registro que la contiene. Los hitos sin foto permanecen en `milestones`, con sus fuentes originales. La agrupación de revisiones menores conserva IDs, notas y datos; no cruza ciclos. Una foto histórica sin evento mantiene `eventId: null`; una captura sin fecha mantiene esa incertidumbre. La última ubicación del ciclo no se presenta como ubicación de captura. Entre ciclos diferentes siempre hay corte; con movimiento reducido no hay fundidos.
 
-## Montaje que debe continuar Sol
+## Contratos del montaje — preservar en Terra
 
-1. Sustituir la presentación de `GrowthFilmPage.tsx` por `qa/botanical/Film.tsx` y sus reglas de `qa/botanical/design.css`, conservando exactamente la dirección aprobada. Usar los controles compartidos de `src/components/botanical/`. Implementar el estado oscuro sin alterar Maintenance.
+1. La estructura React ya está conectada. Falta trasladar las reglas de `qa/botanical/design.css` (Film/editor y sus breakpoints), conservando exactamente la dirección aprobada. Crear CSS de producción aislado a `.film-page`/`.film-sheet` e importarlo desde Growth Film; adaptar controles a `.bs-button`, `.bs-icon-button`, `.bs-text-button`, `.bs-sheet-header`/footer y fotos a `.film-photo img`. No importar todo el CSS de la maqueta ni alterar Maintenance. La hoja amplia requiere anchura propia; la vista final usa video real y debe mantener el encuadre 4:5/contain. Añadir estilo a la invitación de jardín.
 2. Conectar `loadFilmCatalogue(scope, { getCycle, getGarden }, signal)` a las funciones existentes de `garden-api`. Componer las variantes de ciclo y jardín y añadir su entrada de navegación. No cambiar RPCs o esquema para el montaje visual.
 3. Mantener la sala principal con foto protagonista, controles, miniaturas y panel de origen. Mostrar todas las fuentes de un hito agrupado. Usar `currentLocation` sólo como última ubicación registrada. No llamar a una foto histórica un hecho nuevo.
 4. Montar Momentos → Música → Vista previa. Las fotos deben salir del catálogo real; «Usar mis fotos» en el prototipo era una facilidad de QA, no autorización para publicar fotos o crear eventos desde el editor de clips.
@@ -39,6 +53,8 @@ Una fotografía no hereda una cosecha o una intervención cercana sólo por fech
 8. No generar todo el diario automáticamente al abrir la página. La codificación actual ocurre en tiempo real y requiere que la app permanezca abierta. Mantener visibles progreso y Cancelar. La duración antes de generar es aproximada; tras cargar el video, mostrar su duración real de metadata. El contenedor/codec puede añadir una fracción de segundo.
 
 ## Verificación realizada
+
+Sol: suite completa **30 archivos / 114 pruebas aprobadas** antes del ajuste final de metadata; TypeScript/build/Vite/PWA final correctos. ESLint de los TSX y adaptador modificados correcto. La suite específica final incluye las ocho pruebas de conexión y las dieciocho del núcleo. Estas pruebas usan lecturas/render/audio simulados: no sustituyen QA autenticada, visual o de Safari físico. No se inició otro servidor ni túnel en este relevo.
 
 | Prueba | Resultado |
 | --- | --- |
@@ -70,5 +86,5 @@ Los archivos de video de esta prueba están en `~/Downloads/garden-x-core-{silen
 - **Datos autenticados y capacidades de dominio:** pendiente la QA del montaje con lectura real, ciclos cerrados/trasladados, fuentes, notas extensas y fotos históricas. La capa nueva no llama a mutaciones, pero esa propiedad debe preservarse al conectarla.
 - **Rendimiento móvil:** probar el máximo de doce momentos y diarios largos en dispositivo; el renderer decodifica las imágenes antes de grabar. La captura se cancela al pasar a segundo plano o ante una interrupción prolongada, en lugar de entregar un archivo incompleto.
 - **UI y accesibilidad:** pendientes 320/390/820/1440 px, hojas de tres pasos, foco, salida/cancelación, error de música y contraste. No están cubiertos por esta pantalla técnica.
-- **Avisos previos del build:** bundle principal mayor a 500 kB e import dinámico inefectivo de `photo-renditions`. No son nuevos de este tramo; los módulos todavía no están importados por la ruta del producto.
+- **Avisos previos del build:** bundle principal mayor a 500 kB e import dinámico inefectivo de `photo-renditions`. Persisten; los módulos nuevos ya están importados por la ruta del producto. JSDOM también emite el aviso previo de navegación a otro documento.
 - Sin deploy, sin push y sin cambios de base de datos. No avanzar a Fase 02.3 Planta.

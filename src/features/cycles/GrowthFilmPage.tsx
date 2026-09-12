@@ -1,262 +1,35 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowLeft, Check, Download, Maximize2, Minimize2, Pause, Play, Sparkles, Volume2, VolumeX, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
-import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
-import type { CycleHistoryEvent, GrowCycleDetail, PhotoEvidence } from '../../domain/types'
-import { getCycle, getSignedPhotoUrl } from '../../lib/garden-api'
-import { captureLabel } from './photo-presentation'
-import { createPrivateGrowthFilm, downloadPrivateGrowthFilm, nearbyFilmIndexes, selectFilmFrameIndexes, GROWTH_FILM_MAX_EXPORT_FRAMES, GROWTH_FILM_MOMENT_DURATION_MS } from './growth-film-media'
-import { groupedGrowthFilmNarratives, growthFilmNarrative } from './growth-film-narrative'
-
-type PhotoEvent = CycleHistoryEvent & { photo: PhotoEvidence }
-type SafariFullscreenDocument = Document & {
-  webkitFullscreenElement?: Element | null
-  webkitExitFullscreen?: () => Promise<void> | void
-}
-type SafariFullscreenElement = HTMLElement & {
-  webkitRequestFullscreen?: () => Promise<void> | void
-}
-type SafariVideoElement = HTMLVideoElement & {
-  webkitEnterFullscreen?: () => void
-  webkitExitFullscreen?: () => void
-}
-const supportsNativeVideoFullscreen = typeof HTMLVideoElement !== 'undefined' && 'webkitEnterFullscreen' in HTMLVideoElement.prototype
-const frameDurationMs = 5_600
-const growthFilmTracks = [
-  { id: 'growing-light', label: 'Growing Light', url: '/audio/garden-growing-light-v1-loop.wav' },
-  { id: 'track-4', label: 'Garden Track 4', url: '/audio/garden-track-4-v1-loop.wav' },
-] as const
+import { getCycle, getGarden } from '../../lib/garden-api'
+import { loadFilmCatalogue } from './growth-film-loader'
+import type { FilmCatalogue } from './growth-film-composition'
+import { GrowthFilmStudio } from './GrowthFilmStudio'
 
 export function GrowthFilmPage() {
-  const { cycleId } = useParams()
-  const [cycle, setCycle] = useState<GrowCycleDetail | null>(null)
-  const [index, setIndex] = useState(0)
-  const [previousIndex, setPreviousIndex] = useState<number | null>(null)
-  const [queuedIndex, setQueuedIndex] = useState<number | null>(null)
-  const [playing, setPlaying] = useState(false)
+  const { cycleId, gardenId } = useParams()
+  const kind = cycleId ? 'cycle' : 'garden'
+  const id = cycleId ?? gardenId
+  if (!id) return <StatePanel kind="error" title="No se encontró esta película" />
+  // Route changes unmount the entire private diary/editor and dispose their resources.
+  return <FilmRoute key={`${kind}:${id}`} kind={kind} id={id} />
+}
+
+function FilmRoute({ kind, id }: { kind: 'cycle' | 'garden'; id: string }) {
+  const [catalogue, setCatalogue] = useState<FilmCatalogue | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [immersive, setImmersive] = useState(false)
-  const [reducedMotion, setReducedMotion] = useState(false)
-  const [sources, setSources] = useState<Record<string, string>>({})
-  const [exporting, setExporting] = useState(false)
-  const [exportProgress, setExportProgress] = useState<{ completed: number; total: number } | null>(null)
-  const [exportError, setExportError] = useState<string | null>(null)
-  const [filmVideoUrl, setFilmVideoUrl] = useState<string | null>(null)
-  const [filmVideoLoading, setFilmVideoLoading] = useState(false)
-  const [filmVideoError, setFilmVideoError] = useState<string | null>(null)
-  const [musicEnabled, setMusicEnabled] = useState(false)
-  const [selectedMusicId, setSelectedMusicId] = useState<string>(growthFilmTracks[0].id)
-  const [clipPickerOpen, setClipPickerOpen] = useState(false)
-  const [clipSelectionIds, setClipSelectionIds] = useState<string[]>([])
-  const playerRef = useRef<HTMLElement>(null)
-  const videoRef = useRef<SafariVideoElement>(null)
-  const exportAbort = useRef<AbortController | null>(null)
-  const filmVideoAbort = useRef<AbortController | null>(null)
-  const load = useCallback(async () => { if (!cycleId) return; try { setCycle(await getCycle(cycleId)) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo abrir Growth Film.') } }, [cycleId])
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates after remote cycle data settles.
-  useEffect(() => { void load() }, [load])
-  const photos = useMemo<PhotoEvent[]>(() => [...(cycle?.history ?? [])].filter((event): event is PhotoEvent => Boolean(event.photo?.upload_status === 'uploaded')).sort((a, b) => (a.photo.captured_at ?? a.occurred_at).localeCompare(b.photo.captured_at ?? b.occurred_at)), [cycle])
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- a newly resolved cycle must reset its local film queue.
-  useEffect(() => { setSources({}); setIndex(0); setPreviousIndex(null); setQueuedIndex(null); setClipPickerOpen(false); setClipSelectionIds([]); setMusicEnabled(false) }, [photos])
-  const selectedMusic = growthFilmTracks.find((track) => track.id === selectedMusicId) ?? null
-  const warm = useCallback((targetIndex: number) => {
-    const event = photos[targetIndex]
-    if (!event || sources[event.photo.id]) return
-    void getSignedPhotoUrl(event.photo.storage_path, 'story').then((url) => {
-      const image = new Image()
-      image.decoding = 'async'
-      image.src = url
-      void image.decode?.().catch(() => undefined)
-      setSources((current) => current[event.photo.id] ? current : { ...current, [event.photo.id]: url })
-    }).catch(() => undefined)
-  }, [photos, sources])
-  useEffect(() => { nearbyFilmIndexes(photos.length, index).forEach(warm) }, [photos.length, index, warm])
-  const filmVideoReady = useRef(false)
-  const prepareFilmVideo = useCallback(async () => {
-    if (photos.length < 2 || filmVideoReady.current || filmVideoAbort.current) return
-    filmVideoReady.current = true
-    setFilmVideoLoading(true)
-    setFilmVideoError(null)
+  const [attempt, setAttempt] = useState(0)
+  const backTo = `/${kind}/${id}`
+  useEffect(() => {
     const controller = new AbortController()
-    filmVideoAbort.current = controller
-    try {
-      const urls = await Promise.all(photos.map((event) => getSignedPhotoUrl(event.photo.storage_path, 'story')))
-      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal, audioUrl: selectedMusic?.url })
-      setFilmVideoUrl(URL.createObjectURL(video.blob))
-    } catch (reason) {
-      filmVideoReady.current = false
-      if (!(reason instanceof DOMException && reason.name === 'AbortError')) setFilmVideoError(reason instanceof Error ? reason.message : 'No se pudo preparar el video de Growth Film.')
-    } finally {
-      filmVideoAbort.current = null
-      setFilmVideoLoading(false)
-    }
-  }, [photos, selectedMusic])
-  useEffect(() => {
-    filmVideoReady.current = false
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- generated media resets when the evidence set changes.
-    setFilmVideoUrl(null)
-    setFilmVideoError(null)
-    if (photos.length >= 2) void prepareFilmVideo()
-    return () => { filmVideoAbort.current?.abort() }
-  }, [photos, prepareFilmVideo])
-  useEffect(() => () => { if (filmVideoUrl) URL.revokeObjectURL(filmVideoUrl) }, [filmVideoUrl])
-  const show = useCallback((targetIndex: number) => {
-    if (targetIndex < 0 || targetIndex >= photos.length || targetIndex === index) return
-    if (filmVideoUrl && videoRef.current) {
-      videoRef.current.currentTime = (targetIndex * GROWTH_FILM_MOMENT_DURATION_MS) / 1_000
-      videoRef.current.pause()
-      setPlaying(false)
-      setPreviousIndex(index)
-      setIndex(targetIndex)
-      return
-    }
-    const target = photos[targetIndex]
-    if (!sources[target.photo.id]) { setQueuedIndex(targetIndex); warm(targetIndex); return }
-    setPreviousIndex(index)
-    setIndex(targetIndex)
-  }, [filmVideoUrl, index, photos, sources, warm])
-  useEffect(() => {
-    if (queuedIndex === null || !photos[queuedIndex] || !sources[photos[queuedIndex].photo.id] || queuedIndex === index) return
-    const frame = window.requestAnimationFrame(() => {
-      setPreviousIndex(index)
-      setIndex(queuedIndex)
-      setQueuedIndex(null)
+    void loadFilmCatalogue({ kind, id }, { getCycle, getGarden }, controller.signal).then(value => {
+      if (!controller.signal.aborted) setCatalogue(value)
+    }).catch(reason => {
+      if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : 'No se pudo abrir Growth Film.')
     })
-    return () => window.cancelAnimationFrame(frame)
-  }, [index, photos, queuedIndex, sources])
-  const advance = useCallback(() => show(index >= photos.length - 1 ? 0 : index + 1), [index, photos.length, show])
-  useEffect(() => { if (!playing || filmVideoUrl || photos.length < 2) return undefined; const timer = window.setTimeout(advance, frameDurationMs); return () => window.clearTimeout(timer) }, [playing, filmVideoUrl, index, advance, photos.length])
-  const togglePlaying = async () => {
-    const video = videoRef.current
-    if (!filmVideoUrl || !video) { setPlaying((value) => !value); return }
-    try {
-      if (video.paused) await video.play()
-      else video.pause()
-    } catch (reason) {
-      setFilmVideoError(reason instanceof Error ? reason.message : 'No se pudo reproducir el video.')
-    }
-  }
-  const toggleImmersive = async () => {
-    const player = playerRef.current
-    if (!player) return
-    const fullscreenDocument = document as SafariFullscreenDocument
-    if (immersive) {
-      try {
-        if (videoRef.current?.webkitExitFullscreen && !fullscreenDocument.fullscreenElement && !fullscreenDocument.webkitFullscreenElement) videoRef.current.webkitExitFullscreen()
-        else if (fullscreenDocument.fullscreenElement) await fullscreenDocument.exitFullscreen?.()
-        else if (fullscreenDocument.webkitFullscreenElement) await fullscreenDocument.webkitExitFullscreen?.()
-      } catch {
-        // The fixed immersive layout remains the reliable fallback when Safari rejects exit.
-      }
-      setImmersive(false)
-      return
-    }
-
-    const video = videoRef.current
-    if (video?.webkitEnterFullscreen) {
-      try {
-        video.webkitEnterFullscreen()
-        return
-      } catch {
-        // Fall through to the app immersive view if native video fullscreen is unavailable.
-      }
-    }
-
-    // Activate the viewport layout first. This keeps the control usable on Safari/iOS,
-    // where arbitrary elements may not expose the standard Fullscreen API.
-    setImmersive(true)
-    const requestFullscreen = player.requestFullscreen ?? (player as SafariFullscreenElement).webkitRequestFullscreen
-    if (!requestFullscreen) return
-    try { await requestFullscreen.call(player) } catch {
-      // Native fullscreen is optional; the CSS immersive view is already active.
-    }
-  }
-  useEffect(() => {
-    const sync = () => {
-      const fullscreenDocument = document as SafariFullscreenDocument
-      setImmersive(Boolean(fullscreenDocument.fullscreenElement ?? fullscreenDocument.webkitFullscreenElement))
-    }
-    document.addEventListener('fullscreenchange', sync)
-    document.addEventListener('webkitfullscreenchange', sync)
-    return () => {
-      document.removeEventListener('fullscreenchange', sync)
-      document.removeEventListener('webkitfullscreenchange', sync)
-    }
-  }, [])
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-    const begin = () => setImmersive(true)
-    const end = () => { setImmersive(false); setPlaying(false) }
-    video.addEventListener('webkitbeginfullscreen', begin)
-    video.addEventListener('webkitendfullscreen', end)
-    return () => {
-      video.removeEventListener('webkitbeginfullscreen', begin)
-      video.removeEventListener('webkitendfullscreen', end)
-    }
-  }, [filmVideoUrl])
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const sync = () => setReducedMotion(media.matches)
-    sync(); media.addEventListener?.('change', sync)
-    return () => media.removeEventListener?.('change', sync)
-  }, [])
-  useEffect(() => {
-    document.body.classList.toggle('growth-film-immersive-open', immersive)
-    document.documentElement.classList.toggle('growth-film-immersive-open', immersive)
-    return () => {
-      document.body.classList.remove('growth-film-immersive-open')
-      document.documentElement.classList.remove('growth-film-immersive-open')
-    }
-  }, [immersive])
-  useEffect(() => () => exportAbort.current?.abort(), [])
-  const openClipPicker = () => {
-    const defaultIndexes = selectFilmFrameIndexes(photos.length)
-    setClipSelectionIds(defaultIndexes.map((frameIndex) => photos[frameIndex].photo.id))
-    setClipPickerOpen(true)
-    defaultIndexes.forEach(warm)
-  }
-  const toggleClipSelection = (photoId: string) => {
-    setClipSelectionIds((current) => current.includes(photoId) ? current.filter((id) => id !== photoId) : current.length >= GROWTH_FILM_MAX_EXPORT_FRAMES ? current : [...current, photoId])
-  }
-  const exportClip = async () => {
-    if (exporting) return
-    const frameEvents = photos.filter((photo) => clipSelectionIds.includes(photo.photo.id))
-    if (frameEvents.length < 2) { setExportError('Selecciona al menos dos momentos para crear el clip.'); return }
-    setExporting(true); setExportError(null); setExportProgress({ completed: 0, total: frameEvents.length })
-    const controller = new AbortController(); exportAbort.current = controller
-    try {
-      const urls = await Promise.all(frameEvents.map(async (event) => sources[event.photo.id] ?? getSignedPhotoUrl(event.photo.storage_path, 'story')))
-      const video = await createPrivateGrowthFilm({ urls, signal: controller.signal, audioUrl: selectedMusic?.url, onProgress: (completed, total) => setExportProgress({ completed, total }) })
-      downloadPrivateGrowthFilm(video.blob, video.mimeType, `garden-x-${cycle?.crop_name.toLowerCase().replace(/[^a-z0-9]+/gi, '-') ?? 'growth-film'}`)
-      setClipPickerOpen(false)
-    } catch (reason) {
-      if (!(reason instanceof DOMException && reason.name === 'AbortError')) setExportError(reason instanceof Error ? reason.message : 'No se pudo crear el clip.')
-    } finally { exportAbort.current = null; setExporting(false); setExportProgress(null) }
-  }
-  const current = photos[index]
-  const prior = previousIndex === null ? null : photos[previousIndex]
-  const currentUrl = current ? sources[current.photo.id] : null
-  const priorUrl = prior ? sources[prior.photo.id] : null
-  const currentNarrative = current ? growthFilmNarrative(current) : null
-  const filmMilestones = useMemo(() => groupedGrowthFilmNarratives([...(cycle?.history.filter((event) => ['germination_observed', 'germination_confirmed', 'incident_opened', 'incident_resolved', 'intervention', 'harvest', 'cycle_ended', 'development_review', 'readiness_review', 'plant_count_observed', 'photo_evidence'].includes(event.event_type)) ?? [])].sort((a, b) => a.occurred_at.localeCompare(b.occurred_at))), [cycle])
-  return <AppShell presentation="story" title={cycle ? `Growth Film · ${cycle.crop_name}` : 'Growth Film'} subtitle={cycle ? `${cycle.garden.name} · Pod ${cycle.position.position_number}` : 'Cargando evidencia'} backTo={cycle ? `/cycle/${cycle.id}` : '/'}>
-    {!cycle && !error && <StatePanel kind="loading" title="Preparando Growth Film" />}{error && <StatePanel kind="error" title="No se pudo abrir Growth Film" onRetry={() => void load()}>{error}</StatePanel>}
-    {cycle && <>
-      <section className="growth-film-intro"><Sparkles size={20} aria-hidden="true" /><div><h2>El diario visual de tu {cycle.crop_name}</h2><p>Una secuencia de fotografías reales para recorrer su crecimiento, momento a momento.</p>{filmVideoLoading && <span className="growth-film-reduced-motion" role="status">Preparando video para pantalla completa…</span>}{reducedMotion && <span className="growth-film-reduced-motion" role="status">Movimiento reducido activo</span>}{filmVideoError && <p className="inline-message inline-message--error" role="alert">No se pudo preparar el video. Puedes seguir recorriendo las fotografías.</p>}</div></section>
-      {photos.length === 0 ? <StatePanel kind="empty" title="Aún no hay fotografías confirmadas">Growth Film aparecerá cuando este ciclo tenga evidencia fotográfica.</StatePanel> : <section ref={playerRef} className={`growth-film-player${immersive ? ' growth-film-player--immersive' : ''}`} aria-label="Reproductor de Growth Film">
-        <div className="growth-film-frame" aria-live="polite">
-          {prior && priorUrl && <img className="growth-film-frame__layer growth-film-frame__layer--previous" src={priorUrl} alt="" aria-hidden="true" />}
-          {filmVideoUrl ? <video ref={videoRef} className="growth-film-video" src={filmVideoUrl} muted={!musicEnabled} playsInline preload="auto" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => { setPlaying(false); setIndex(photos.length - 1) }} onTimeUpdate={(event) => { const nextIndex = Math.min(photos.length - 1, Math.floor((event.currentTarget.currentTime * 1_000) / GROWTH_FILM_MOMENT_DURATION_MS)); if (nextIndex !== index) setIndex(nextIndex) }} aria-label="Video del crecimiento de la planta" /> : currentUrl ? <img key={`current-${current.photo.id}`} className="growth-film-frame__layer growth-film-frame__layer--current" src={currentUrl} alt={`Fotografía documental: ${current.photo.original_filename}`} /> : <div className="growth-film-frame__loading">Preparando el siguiente momento…</div>}
-          <div className="growth-film-frame__caption"><strong>{currentNarrative?.title ?? 'Un momento más en su historia.'}</strong><span>{currentNarrative?.detail ?? 'Fotografía real de este ciclo.'}</span><small>{captureLabel(current.photo)} · {String(index + 1).padStart(2, '0')} de {photos.length}</small></div>
-        </div>
-        <div className="growth-film-controls"><button className="icon-button" type="button" aria-label={immersive ? 'Salir de la vista inmersiva' : 'Abrir pantalla completa'} title={filmVideoLoading ? 'Preparando video…' : immersive ? 'Salir de pantalla completa' : 'Abrir pantalla completa'} disabled={filmVideoLoading} onClick={() => void toggleImmersive()}>{immersive ? <Minimize2 size={17} /> : <Maximize2 size={17} />}</button>{immersive && !supportsNativeVideoFullscreen && <button className="growth-film-close-immersive" type="button" onClick={() => void toggleImmersive()}><X size={16} aria-hidden="true" /> Salir</button>}<button className="secondary-button secondary-button--compact" type="button" aria-pressed={musicEnabled} disabled={filmVideoLoading || !filmVideoUrl || !selectedMusic} onClick={() => setMusicEnabled((enabled) => !enabled)}>{musicEnabled ? <Volume2 size={16} aria-hidden="true" /> : <VolumeX size={16} aria-hidden="true" />}{!selectedMusic ? 'Sin música' : musicEnabled ? 'Música activa' : 'Activar música'}</button><button className="secondary-button secondary-button--compact" type="button" disabled={filmVideoLoading} onClick={() => void togglePlaying()}>{playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}{playing ? 'Pausar' : filmVideoLoading ? 'Preparando video…' : 'Reproducir'}</button><input aria-label="Posición en Growth Film" type="range" min="0" max={photos.length - 1} value={index} onChange={(event) => { setPlaying(false); show(Number(event.target.value)) }} /><span>{index + 1}/{photos.length}</span></div>
-        <ol className="growth-film-timeline">{photos.map((photo, photoIndex) => <li key={photo.id}><button type="button" className={photoIndex === index ? 'growth-film-timeline__point growth-film-timeline__point--active' : 'growth-film-timeline__point'} onClick={() => { setPlaying(false); show(photoIndex) }}><span>{String(photoIndex + 1).padStart(2, '0')}</span><small>{growthFilmNarrative(photo).title}</small></button></li>)}</ol>
-      </section>}
-      {photos.length >= 2 && <><div className="growth-film-actions"><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index - 1) }}>Anterior</button><button className="secondary-button secondary-button--compact" type="button" onClick={() => { setPlaying(false); show(index + 1) }}>Siguiente</button><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/photos`} state={{ cycle, preselectedIds: [current.photo.id, photos[Math.min(index + 1, photos.length - 1)].photo.id] }}>Comparar estas fotos</Link></div><section className="growth-film-export"><div><span className="eyebrow">Clip privado</span><h2>Crear video de recuerdos</h2><p>Elige los momentos que quieres conservar y descarga un clip con la música que prefieras. Todo se prepara en este dispositivo.</p></div><label className="growth-film-music-select"><span>Música del clip</span><select value={selectedMusicId} disabled={exporting} onChange={(event) => { setMusicEnabled(false); setSelectedMusicId(event.target.value) }}><option value="none">Sin música</option>{growthFilmTracks.map((track) => <option value={track.id} key={track.id}>{track.label}</option>)}</select></label>{!clipPickerOpen && !exporting && <div className="growth-film-export__actions"><button className="primary-button" type="button" onClick={openClipPicker}><Download size={16} aria-hidden="true" /> Crear clip</button></div>}{clipPickerOpen && !exporting && <div className="growth-film-clip-picker" aria-label="Elegir momentos del clip"><div className="growth-film-clip-picker__header"><div><h3>Elige los momentos</h3><p>Selecciona entre 2 y {GROWTH_FILM_MAX_EXPORT_FRAMES} fotografías reales.</p></div><strong>{clipSelectionIds.length}/{GROWTH_FILM_MAX_EXPORT_FRAMES}</strong></div><div className="growth-film-clip-picker__actions"><button className="text-button" type="button" onClick={() => setClipSelectionIds(photos.slice(0, GROWTH_FILM_MAX_EXPORT_FRAMES).map((photo) => photo.photo.id))}>Seleccionar primeras</button><button className="text-button" type="button" onClick={() => setClipSelectionIds([])}>Limpiar</button></div><div className="growth-film-clip-picker__list">{photos.map((photo, photoIndex) => { const narrative = growthFilmNarrative(photo); const selected = clipSelectionIds.includes(photo.photo.id); return <label className={`growth-film-clip-picker__item${selected ? ' is-selected' : ''}`} key={photo.photo.id}><input type="checkbox" checked={selected} onChange={() => toggleClipSelection(photo.photo.id)} /><span className="growth-film-clip-picker__number">{String(photoIndex + 1).padStart(2, '0')}</span><span><strong>{narrative.title}</strong><small>{captureLabel(photo.photo)} · {photo.photo.original_filename}</small></span><Check size={17} aria-hidden="true" /></label> })}</div><div className="growth-film-clip-picker__footer"><button className="secondary-button" type="button" onClick={() => setClipPickerOpen(false)}>Cancelar</button><button className="primary-button" type="button" disabled={clipSelectionIds.length < 2} onClick={() => void exportClip()}><Download size={16} aria-hidden="true" /> Crear clip con {clipSelectionIds.length} momentos</button></div></div>}{exporting && <div className="growth-film-export__actions"><button className="secondary-button" type="button" onClick={() => exportAbort.current?.abort()}><X size={16} aria-hidden="true" /> Cancelar</button>{exportProgress && <span aria-live="polite">Preparando {exportProgress.completed}/{exportProgress.total}</span>}</div>}{exportError && <p className="inline-message inline-message--error" role="alert">{exportError}</p>}</section></>}
-      <section className="growth-film-milestones"><div className="section-heading"><h2>Momentos confirmados</h2><span>{filmMilestones.length + (cycle.planted_on ? 1 : 0)}</span></div><ul>{cycle.planted_on && <li><strong>Aquí comienza su historia.</strong><span>{cycle.crop_name} fue plantado.</span></li>}{filmMilestones.map((milestone) => <li key={milestone.id}><strong>{milestone.title}</strong>{milestone.count > 1 ? <span>{milestone.detail ?? 'Varios registros de seguimiento confirmados en este momento.'}</span> : milestone.detail && <span>{milestone.detail}</span>}</li>)}</ul></section>
-      <Link className="text-link" to={`/cycle/${cycle.id}`}><ArrowLeft size={14} aria-hidden="true" /> Volver al historial</Link>
-    </>}
-  </AppShell>
+    return () => controller.abort()
+  }, [kind, id, attempt])
+  if (catalogue) return <GrowthFilmStudio catalogue={catalogue} backTo={backTo} />
+  return <div className="botanical-surface film-page"><header className="film-header"><Link className="bs-text-button" to={backTo}><ArrowLeft size={18} aria-hidden="true" />Volver</Link><span className="film-wordmark">GROWTH FILM</span></header><StatePanel kind={error ? 'error' : 'loading'} title={error ? 'No pudimos abrir tu diario.' : 'Abriendo tu diario…'} onRetry={error ? () => { setError(null); setAttempt(old => old + 1) } : undefined}>{error}</StatePanel></div>
 }

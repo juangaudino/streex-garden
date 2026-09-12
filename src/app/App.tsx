@@ -76,6 +76,7 @@ export function App() {
       <Route path="/" element={<HomePage user={user} />} />
       <Route path="/gardens" element={<GardensPage user={user} />} />
       <Route path="/garden/:gardenId" element={<GardenPage />} />
+      <Route path="/garden/:gardenId/film" element={<GrowthFilmPage />} />
       <Route path="/garden/:gardenId/share" element={<GuestGardenStoryManager />} />
       <Route path="/garden/:gardenId/system" element={<GardenSystemPage />} />
       <Route path="/settings" element={<SettingsPage />} />

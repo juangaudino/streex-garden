@@ -7,8 +7,8 @@ export function BotanicalButton({ secondary = false, className = '', type = 'but
 }
 
 /** Native modal with keyboard containment, Escape and focus restoration. */
-export function BotanicalSheet({ title, context, children, onClose, busy = false }: {
-  title: string; context?: string; children: ReactNode; onClose: () => void; busy?: boolean
+export function BotanicalSheet({ title, context, children, onClose, busy = false, className = '' }: {
+  title: string; context?: string; children: ReactNode; onClose: () => void; busy?: boolean; className?: string
 }) {
   const ref = useRef<HTMLDialogElement>(null)
   const heading = useRef<HTMLHeadingElement>(null)
@@ -32,7 +32,7 @@ export function BotanicalSheet({ title, context, children, onClose, busy = false
     }
   }, [])
   useEffect(() => { heading.current?.focus({ preventScroll: true }) }, [title])
-  return <dialog ref={ref} className="botanical-surface bs-sheet" aria-labelledby={titleId} aria-busy={busy} onKeyDown={event => {
+  return <dialog ref={ref} className={`botanical-surface bs-sheet ${className}`} aria-labelledby={titleId} aria-busy={busy} onKeyDown={event => {
     if (event.key !== 'Tab') return
     const elements = [...event.currentTarget.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input:not(:disabled):not([type="hidden"]), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]')].filter(element => element.getClientRects().length > 0)
     const first = elements[0], last = elements.at(-1)

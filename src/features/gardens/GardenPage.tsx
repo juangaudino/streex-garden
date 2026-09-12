@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { ChevronRight, Link2, MapPin, Plus, SlidersHorizontal } from 'lucide-react'
+import { ChevronRight, Film, Link2, MapPin, Plus, SlidersHorizontal } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { HarvestReadiness } from '../../components/HarvestReadiness'
@@ -73,6 +73,7 @@ export function GardenPage() {
         <figcaption><span>{coverPhoto ? 'Portada del jardín' : 'Sistema físico'}</span><strong>{garden.system_model} · {garden.position_capacity} posiciones</strong><GardenCoverPicker gardenId={garden.id} onChanged={load} /></figcaption>
       </figure>
       <PhysicalMap garden={garden} onStart={setStartingAt} />
+      <section className="garden-film-invitation"><div><span className="eyebrow">Growth Film</span><h2>El diario visual de tu jardín.</h2><p>Recorre sus fotografías y guarda una película con los momentos que elijas.</p></div><Link className="secondary-button" to={`/garden/${garden.id}/film`}><Film size={18} aria-hidden="true" /> Abrir Growth Film</Link></section>
       <section aria-labelledby="positions-title">
         <div className="section-heading"><h2 id="positions-title">Detalle de posiciones</h2><span>{visiblePositions.length}</span></div>
         <div className="position-list">{visiblePositions.map((position) => <PositionRow gardenId={garden.id} key={position.id} position={position} onStart={setStartingAt} />)}</div>

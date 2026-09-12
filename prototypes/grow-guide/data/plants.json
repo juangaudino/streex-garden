@@ -1,0 +1,376 @@
+[
+  {
+    "id": "genovese-basil",
+    "name": "Genovese Basil",
+    "spanishName": "Albahaca genovesa",
+    "scientificName": "Ocimum basilicum",
+    "variety": "Genovese",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 92,
+    "tags": ["basil", "albahaca", "genovese", "pesto", "hydroponic"],
+    "summary": "A fast, productive herb that benefits from early, repeated pinching. Garden should treat pruning guidance as a structural rule: cut above healthy side shoots and preserve enough foliage for recovery.",
+    "metrics": [
+      { "label": "Germination", "value": "5–10 days", "note": "65–70°F reference range" },
+      { "label": "Hydro pH", "value": "5.8–6.2", "note": "Johnny's hydroponic production reference" },
+      { "label": "Hydro EC", "value": "1.0–1.6 mS/cm", "note": "OSU hydroponics reference table" },
+      { "label": "Light", "value": "≥14 h/day", "note": "Johnny's hydroponic basil guidance" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Fast emergence in warm conditions",
+        "guidance": "Basil commonly germinates in about 5–10 days when kept warm. In Garden, germination timing should remain a range rather than a hard deadline.",
+        "items": ["Reference temperature: 65–70°F (18–21°C).", "A delayed seedling is an observation; do not mark a pod failed from age alone."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-basil-key"]
+      },
+      "thinning": {
+        "short": "Pod-specific decision, not a universal basil rule",
+        "guidance": "Johnny's field guidance says thinning is not inherently required for basil, but a small hydroponic pod creates a different space constraint. Garden should evaluate crowding rather than blindly enforcing a fixed seedling count.",
+        "items": ["Prefer the most vigorous, upright seedlings when crowding becomes obvious.", "If roots and stems are already intertwined, cutting unwanted seedlings at the base is safer than pulling them."],
+        "avoid": ["Presenting 'leave exactly one basil plant' as a sourced universal fact."],
+        "context": "The pod-specific recommendation is a Garden adaptation that still needs validation against the actual systems used by User Zero.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-basil-key"]
+      },
+      "pruning": {
+        "short": "Begin early; cut above strong side shoots",
+        "guidance": "A strong first pruning point is when the plant is roughly 6–8 inches tall with about 3–4 sets of leaves. Pinch or cut back to a healthy set of side shoots, removing no more than about one third of the plant at once.",
+        "items": ["Cut the stem just above a healthy node / pair of side shoots.", "Repeat light pruning as new branches develop.", "Use the trimmings as a harvest rather than plucking random single leaves if the goal is to promote branching."],
+        "avoid": ["Removing more than about one third of the plant in a single session."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-basil-pruning", "okstate-pruning"]
+      },
+      "harvest": {
+        "short": "Light harvest once established; fuller cut before bloom",
+        "guidance": "Begin with light harvesting after the plant is established. For an ongoing plant, stem cuts above healthy side shoots support continued branching better than repeatedly stripping isolated leaves.",
+        "items": ["Handle leaves gently; basil bruises easily.", "A larger harvest is traditionally taken before flowering.", "For a production-style full cut, Johnny's notes cutting 4–6 inches above ground to encourage regrowth; Garden should not automatically apply that aggressive method to every countertop pod."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-basil-key", "johnnys-basil-pruning"]
+      },
+      "flowering": {
+        "short": "Pinch flowers to favor leaf production",
+        "guidance": "If the goal is continued leaf production, remove developing flower spikes and keep pruning for branching. Flowering is a real plant event and should be recorded separately from the recommendation to remove it.",
+        "items": ["Treat visible flower buds as an observation.", "Record flower removal only after the user confirms the action."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-basil-pruning"]
+      },
+      "hydroponics": {
+        "short": "Warm, bright and moderately acidic",
+        "guidance": "Hydroponic basil performs well with warm temperatures, moderately acidic nutrient solution and strong light. Reference values are useful guardrails, not automatic diagnoses.",
+        "items": ["Johnny's reference pH: 5.8–6.2.", "OSU reference EC: 1.0–1.6 mS/cm.", "Johnny's suggests at least 14 hours of light per day under production conditions."],
+        "context": "Ranges can vary by system, nutrient formulation, cultivar and growth stage.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-basil-hydro", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Watch crowding, flowering and weak structure",
+        "guidance": "The prototype should eventually connect symptoms to the real plant history. For V0, the guide only flags common management risks rather than diagnosing from text alone.",
+        "items": ["Crowding can reduce airflow.", "Delayed pruning can produce a tall, less-branched plant.", "Flowering shifts the plant away from maximum tender-leaf production."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-basil-pruning"]
+      }
+    }
+  },
+  {
+    "id": "cilantro",
+    "name": "Cilantro",
+    "spanishName": "Cilantro",
+    "scientificName": "Coriandrum sativum",
+    "variety": "Leaf cilantro",
+    "category": "herbs",
+    "emoji": "☘️",
+    "guideCompletion": 76,
+    "tags": ["cilantro", "coriander", "coriandro", "herb", "cool season"],
+    "summary": "A cool-season herb where crowding, root disturbance and bolting matter more than elaborate pruning. The current pilot deliberately avoids inventing hydroponic pH/EC ranges until a stronger crop-specific source is added.",
+    "metrics": [
+      { "label": "Germination", "value": "~21 days", "note": "USU garden reference" },
+      { "label": "Leaf harvest", "value": "4–6 in", "note": "USU harvest guidance" },
+      { "label": "Leaf spacing", "value": "2 in", "note": "Field/soil reference, not a pod rule" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Not yet crop-validated in this prototype" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Slower than basil; avoid premature failure labels",
+        "guidance": "USU notes cilantro seed can take about three weeks to germinate. Garden should use that as a broad expectation and combine it with actual emergence observations.",
+        "items": ["Minimize root disturbance once seedlings establish.", "Cooler growing conditions help cilantro remain vegetative longer."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro"]
+      },
+      "thinning": {
+        "short": "Reduce crowding without disturbing the roots",
+        "guidance": "USU recommends approximately 2-inch spacing for leaf production in soil. A countertop hydroponic pod does not map perfectly to that spacing, so Garden should translate crowding visually rather than copy the field number as a hard pod rule.",
+        "items": ["If several seedlings compete tightly in one pod, keep the strongest cluster or seedlings according to available canopy space.", "Cut unwanted seedlings at the base when pulling would disturb neighboring roots."],
+        "context": "The 2-inch source value is confirmed for garden production; the exact number of seedlings per hydroponic pod remains a Garden adaptation.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["usu-cilantro"]
+      },
+      "pruning": {
+        "short": "Harvest management matters more than shaping",
+        "guidance": "Cilantro is not managed like basil. Garden should avoid suggesting decorative or branching-focused pruning. The practical intervention is harvesting leaves while monitoring the transition to flowering.",
+        "avoid": ["Applying basil-style node pruning rules to cilantro."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro"]
+      },
+      "harvest": {
+        "short": "Begin once foliage reaches useful size",
+        "guidance": "USU recommends harvesting cilantro foliage when leaves are roughly 4–6 inches tall. Garden should still inspect plant vigor before recommending a heavy cut.",
+        "items": ["Favor usable outer foliage while preserving enough active growth for continued production.", "Record the harvest only after the user confirms it happened."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro"]
+      },
+      "flowering": {
+        "short": "Bolting changes the crop goal",
+        "guidance": "Cilantro is a cool-season crop and eventually shifts toward flowering and coriander seed production. If the user's goal is leaves, Garden should flag bolting as a meaningful stage change rather than simply calling it a problem.",
+        "items": ["Cool conditions and avoiding stress help extend leaf production.", "If seed is the goal, flowering is expected and should not be suppressed."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro"]
+      },
+      "hydroponics": {
+        "short": "Crop-specific nutrient targets still need sourcing",
+        "guidance": "This pilot intentionally leaves cilantro-specific hydroponic pH and EC targets unresolved rather than borrowing a generic herb range without evidence.",
+        "items": ["Garden can still track the system's measured pH/EC as facts.", "Recommendations should remain conservative until a crop-specific hydroponic source is added."],
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Heat, bolting and root disturbance",
+        "guidance": "The most relevant management risks are premature bolting, excessive moisture and damage during thinning/transplanting. Future AI Check integration should connect those risks to photos and history rather than infer them from age alone.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-cilantro"]
+      }
+    }
+  },
+  {
+    "id": "red-romaine-lettuce",
+    "name": "Red Romaine Lettuce",
+    "spanishName": "Lechuga romana roja",
+    "scientificName": "Lactuca sativa",
+    "variety": "Red Romaine",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 90,
+    "tags": ["lettuce", "lechuga", "romaine", "red romaine", "leafy green", "hydroponic"],
+    "summary": "A cool-season leafy crop that can be managed either for repeated outer-leaf harvest or for a fuller head. Garden must know the intended harvest style before recommending cuts.",
+    "metrics": [
+      { "label": "Best germination", "value": "60–68°F", "note": "Johnny's lettuce reference" },
+      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS non-circulating example" },
+      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU reference table" },
+      { "label": "Harvest mode", "value": "Leaf or head", "note": "Different cut strategy" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Cool conditions improve germination",
+        "guidance": "Lettuce germinates best under cool conditions. Johnny's notes optimum germination around 60–68°F and poorer germination at high temperatures.",
+        "items": ["UF/IFAS starts one to two seeds per grow cube in its non-circulating hydroponic method.", "Seedlings in that method can be ready to move into the system after roughly one to three weeks."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "thinning": {
+        "short": "One head needs room; baby-leaf culture is different",
+        "guidance": "For a head-style lettuce plant in a compact pod, Garden should generally favor one vigorous plant after establishment. That is a system adaptation built from the crop's spacing needs and the UF/IFAS one-to-two-seed start, not a direct source statement saying 'one per pod'.",
+        "items": ["Select the strongest, centered seedling when the goal is a full romaine plant.", "For baby-leaf production, denser culture follows a different set of rules and should be treated as another grow mode."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+      },
+      "pruning": {
+        "short": "No shaping prune; remove damaged leaves selectively",
+        "guidance": "Romaine does not need basil-style pruning. Management is primarily harvest plus sanitation. Garden should not recommend cutting the growing center unless the selected harvest method specifically calls for a full harvest.",
+        "avoid": ["Cutting into the central growing point during an outer-leaf harvest."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+      },
+      "harvest": {
+        "short": "Outer leaves for continuity, or cut the head",
+        "guidance": "USU notes that leaf lettuce can be harvested after leaves form, with older outer leaves removed first so younger leaves continue growing. Romaine can also be harvested as a head in the early heading stage.",
+        "items": ["For repeated harvest, remove mature outer leaves and preserve the center.", "For a head harvest, cut at the base when the plant has reached the desired size."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+      },
+      "flowering": {
+        "short": "Bolting is a stage change and quality warning",
+        "guidance": "Lettuce quality declines as the plant transitions toward a seed stalk, especially under heat stress. Garden should flag a visible central stalk as a stage observation and explain the likely effect on eating quality.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-lettuce"]
+      },
+      "hydroponics": {
+        "short": "Cool leafy-green targets with system-specific ranges",
+        "guidance": "UF/IFAS demonstrates non-circulating lettuce near pH 5.5–6.0 and about 1.25 mS/cm EC. OSU lists a broader lettuce reference of EC 1.2–1.8 mS/cm and pH 6.0–7.0. Garden should preserve the source context rather than collapse those into false precision.",
+        "items": ["Use the nutrient manufacturer's instructions as part of the operating context.", "Treat measured pH/EC as canonical observations; treatment recommendations remain separate."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+      },
+      "problems": {
+        "short": "Heat stress, bitterness and tip issues matter",
+        "guidance": "Lettuce is highly sensitive to heat and stress. The V0 guide should flag environmental context without pretending that a text rule can diagnose tip burn, nutrient imbalance or root problems from age alone.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+      }
+    }
+  },
+  {
+    "id": "common-mint",
+    "name": "Common Mint",
+    "spanishName": "Menta común",
+    "scientificName": "Mentha spp.",
+    "variety": "Common mint",
+    "category": "herbs",
+    "emoji": "🍃",
+    "guideCompletion": 70,
+    "tags": ["mint", "menta", "tea", "herb"],
+    "summary": "A vigorous perennial herb that tolerates regular harvesting. The general pruning pattern is well documented, but this pilot still needs stronger crop-specific hydroponic nutrient references.",
+    "metrics": [
+      { "label": "First harvest", "value": "3–4 in", "note": "USU plant-height reference" },
+      { "label": "Harvest style", "value": "Leaves + stems", "note": "Repeated cutting is normal" },
+      { "label": "Flower control", "value": "Pinch blooms", "note": "Supports leaf flavor" },
+      { "label": "Hydro pH / EC", "value": "Pending", "note": "Not yet crop-validated in V0" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Seed behavior varies by mint type",
+        "guidance": "USU notes that mint can be grown from seed or transplants, but seed-grown plants may not remain true to a named variety because mints hybridize readily. Garden should avoid promising a cultivar identity from seed unless it is known.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-mint"]
+      },
+      "thinning": {
+        "short": "Manage canopy crowding, not just seedling count",
+        "guidance": "The current source set does not define a hydroponic pod thinning rule for mint. Garden should base any thinning recommendation on actual crowding, vigor and available canopy space.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": ["usu-mint"]
+      },
+      "pruning": {
+        "short": "Mint handles repeated cutting well",
+        "guidance": "USU describes mint as tolerant of substantial pruning and recommends pinching blossoms when they appear if leaf quality is the goal. In soil production, plants can be cut back heavily several times a season.",
+        "items": ["For a countertop hydroponic plant, begin with lighter stem harvests and evaluate regrowth.", "Use the aggressive one-inch cut-back reference as context, not an automatic instruction for a small pod."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["usu-mint"]
+      },
+      "harvest": {
+        "short": "Harvest once plants are established and 3–4 in tall",
+        "guidance": "USU notes that fresh leaves and stems can be harvested throughout the season once plants reach roughly 3–4 inches tall. Younger leaves and stems are described as especially flavorful.",
+        "items": ["Use clean scissors or a sharp knife for stem harvests.", "Preserve enough active growth for rapid regrowth in a small indoor system."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-mint"]
+      },
+      "flowering": {
+        "short": "Pinch blooms when leaf flavor is the goal",
+        "guidance": "USU notes that allowing mint to bloom can reduce leaf oil content and flavor. Pinching blossoms is therefore a practical recommendation when growing for culinary leaves or tea.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-mint"]
+      },
+      "hydroponics": {
+        "short": "Nutrient targets intentionally unresolved",
+        "guidance": "This prototype has not yet accepted a mint-specific pH/EC range as canonical. The interface therefore shows the gap instead of silently copying a generic herb target.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Fast growth can become crowding",
+        "guidance": "Mint's vigor is an advantage until it overwhelms neighboring plants or blocks airflow. In Garden, this should eventually be evaluated from canopy photos plus system geometry rather than a generic timer.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["usu-mint"]
+      }
+    }
+  },
+  {
+    "id": "cherry-tomato",
+    "name": "Cherry Tomato",
+    "spanishName": "Tomate cherry",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Cherry type — cultivar not yet specified",
+    "category": "fruiting",
+    "emoji": "🍅",
+    "guideCompletion": 86,
+    "tags": ["tomato", "tomate", "cherry tomato", "fruiting", "hydroponic"],
+    "summary": "A fruiting crop where the first question is not 'how do I prune?' but 'is this cultivar determinate or indeterminate?'. Garden should make that identity explicit before applying sucker-removal rules.",
+    "metrics": [
+      { "label": "Germination", "value": "5–7 days", "note": "Johnny's tomato reference" },
+      { "label": "Hydro pH", "value": "6.0–6.5", "note": "OSU reference table" },
+      { "label": "Hydro EC", "value": "2.0–4.0 mS/cm", "note": "OSU reference table" },
+      { "label": "Pruning", "value": "Conditional", "note": "Depends on growth habit" }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Fast germination under warm propagation conditions",
+        "guidance": "Johnny's notes tomatoes typically germinate in about 5–7 days. Garden should still use visible emergence as the canonical event rather than infer germination from age.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-tomato"]
+      },
+      "thinning": {
+        "short": "One fruiting plant usually needs the pod's full capacity",
+        "guidance": "A compact hydroponic opening has limited root and canopy capacity. Garden's working adaptation is to select one vigorous tomato plant per final growing position unless the specific system explicitly supports more.",
+        "avoid": ["Treating this adaptation as a universal tomato spacing fact."],
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-tomato"]
+      },
+      "pruning": {
+        "short": "First identify determinate vs. indeterminate",
+        "guidance": "Johnny's states determinate tomatoes generally do not need pruning, while indeterminate plants benefit from support and pruning. OSU's hydroponic guidance for indeterminate tomatoes favors one main stem with suckers removed regularly.",
+        "items": ["Confirm growth habit before recommending sucker removal.", "For indeterminate hydroponic tomatoes, remove small side shoots while they are easy to detach.", "Remove older yellow lower leaves as part of sanitation and airflow management."],
+        "avoid": ["Removing more than about one third of the plant at one time as a general pruning safety rule."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-tomato", "okstate-pruning"]
+      },
+      "harvest": {
+        "short": "For home use, allow fruit to ripen on the vine",
+        "guidance": "Johnny's recommends fully vine-ripened tomatoes for local use. Garden can use fruit color and cultivar expectations as observations, but should not mark fruit harvested until the user confirms the action.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-tomato"]
+      },
+      "flowering": {
+        "short": "Flowering is expected; fruit set changes maintenance needs",
+        "guidance": "For tomato, flowering is not something to suppress by default. It marks the transition into reproductive growth and should affect support, pruning and nutrient context.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["okstate-pruning", "johnnys-tomato"]
+      },
+      "hydroponics": {
+        "short": "Higher nutrient demand than leafy greens",
+        "guidance": "OSU's hydroponic reference table lists tomato around pH 6.0–6.5 and EC 2.0–4.0 mS/cm. Those values are broad crop references and should be contextualized by growth stage and nutrient program.",
+        "items": ["Provide physical support as the plant and fruit load increase.", "Track lower-leaf condition and sucker growth during routine maintenance."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["okstate-ecph", "okstate-pruning"]
+      },
+      "problems": {
+        "short": "Support, vigor and pruning errors compound quickly",
+        "guidance": "Tomato management should eventually combine variety, growth habit, photos and maintenance history. A generic timer cannot reliably decide whether a shoot is a sucker, a main leader or a damaged branch.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": ["okstate-pruning"]
+      }
+    }
+  }
+]

@@ -2,6 +2,7 @@ const state = {
   plants: [],
   sources: {},
   translations: {},
+  visuals: {},
   query: "",
   category: "all",
   language: localStorage.getItem("growGuideLanguage") || "es",
@@ -32,9 +33,12 @@ const ui = {
     heroTitle: "Know what to do with the plant in front of you.",
     heroBody: "Structured guidance for thinning, pruning, harvesting and hydroponic care — with evidence kept separate from Garden adaptations.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
-    searchPlaceholder: "Search basil, albahaca, lettuce…", filterLabel: "Guide filters", library: "USER ZERO LIBRARY", version: "V0.3 · 17 current crops · ES/EN",
+    searchPlaceholder: "Search basil, albahaca, lettuce…", filterLabel: "Guide filters", library: "USER ZERO LIBRARY", version: "V0.4 · 17 current crops · ES/EN · visual refs",
     allPlants: "All plants", plant: "plant", plants: "plants", guide: "guide", noMatches: "No plant matches that search yet.", unavailable: "Guide unavailable", loadError: "The prototype data could not be loaded.", close: "Close guide", avoid: "Avoid", context: "Context", confidence: "Confidence",
     confidence_high: "high", confidence_medium: "medium", confidence_pending: "pending",
+    visualGuide: "Visual guide", visualGuideNote: "External references selected for the action itself — not decorative plant photos.", openSource: "Open source", sourceLinkOnly: "Open at source", rightsReview: "Rights review before production", externalReference: "External reference",
+    media_photo: "Photo", media_diagram: "Diagram", media_video: "Video", media_guide: "Guide",
+    actions: { thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering", hydroponics: "Hydroponics" },
     categories: { herbs: "herbs", "leafy greens": "leafy greens", fruiting: "fruiting" },
     sections: { germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
   },
@@ -44,9 +48,12 @@ const ui = {
     heroTitle: "Sabe qué hacer con la planta que tienes delante.",
     heroBody: "Guía estructurada para raleo, poda, cosecha y manejo hidropónico, manteniendo la evidencia separada de las adaptaciones de Garden.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
-    searchPlaceholder: "Busca albahaca, basil, lechuga…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA USER ZERO", version: "V0.3 · 17 cultivos actuales · ES/EN",
+    searchPlaceholder: "Busca albahaca, basil, lechuga…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA USER ZERO", version: "V0.4 · 17 cultivos actuales · ES/EN · refs visuales",
     allPlants: "Todas", plant: "planta", plants: "plantas", guide: "ficha", noMatches: "Todavía no hay una planta que coincida con esa búsqueda.", unavailable: "Guía no disponible", loadError: "No se pudieron cargar los datos del prototipo.", close: "Cerrar guía", avoid: "Evitar", context: "Contexto", confidence: "Confianza",
     confidence_high: "alta", confidence_medium: "media", confidence_pending: "pendiente",
+    visualGuide: "Guía visual", visualGuideNote: "Referencias externas elegidas por la acción que enseñan, no como fotos decorativas de la planta.", openSource: "Abrir fuente", sourceLinkOnly: "Ver en la fuente", rightsReview: "Revisar derechos antes de producción", externalReference: "Referencia externa",
+    media_photo: "Foto", media_diagram: "Diagrama", media_video: "Video", media_guide: "Guía",
+    actions: { thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración", hydroponics: "Hidroponía" },
     categories: { herbs: "hierbas", "leafy greens": "hojas verdes", fruiting: "cultivos de fruto" },
     sections: { germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
   },
@@ -54,20 +61,23 @@ const ui = {
 
 const sectionIcons = { germination: "🌱", thinning: "✂️", pruning: "🌿", harvest: "🥬", flowering: "🌸", hydroponics: "💧", problems: "⚠️" };
 const evidenceClasses = { source_backed: "source-backed", garden_adaptation: "garden-adaptation", needs_validation: "needs-validation" };
+const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "📖" };
 
 async function init() {
-  const [pilotPlantResponse, currentPlantResponse, sourceResponse, currentSourceResponse, spanishResponse] = await Promise.all([
+  const [pilotPlantResponse, currentPlantResponse, sourceResponse, currentSourceResponse, spanishResponse, visualsResponse] = await Promise.all([
     fetch(assetUrl("data/plants.json")),
     fetch(assetUrl("data/plants-current-gardens.json")),
     fetch(assetUrl("data/sources.json")),
     fetch(assetUrl("data/sources-current-gardens.json")),
     fetch(assetUrl("data/translations-es.json")),
+    fetch(assetUrl("data/visuals.json")),
   ]);
 
   state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json()];
   const sources = [...await sourceResponse.json(), ...await currentSourceResponse.json()];
   state.sources = Object.fromEntries(sources.map((source) => [source.id, source]));
   state.translations = await spanishResponse.json();
+  state.visuals = await visualsResponse.json();
   bindEvents();
   applyLanguage();
   registerServiceWorker();
@@ -155,8 +165,30 @@ function openPlant(plant) { state.activePlantId = plant.id; refs.detail.innerHTM
 function buildPlantDetail(plant) {
   const localized = getLocalizedPlant(plant); const primaryName = state.language === "es" ? plant.spanishName : plant.name; const secondaryName = state.language === "es" ? plant.name : plant.spanishName;
   const metrics = (localized.metrics || []).map((metric) => `<div class="metric-card"><div class="metric-label">${escapeHtml(metric.label)}</div><div class="metric-value">${escapeHtml(metric.value)}</div>${metric.note ? `<div class="metric-note">${escapeHtml(metric.note)}</div>` : ""}</div>`).join("");
-  const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key, index) => buildSection(localized.sections[key], key, index === 0)).join("");
-  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section><section class="quick-facts">${metrics}</section><section class="guide-stack">${sections}</section>`;
+  const visuals = buildVisualGuide(plant.id);
+  const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key, index) => buildSection(localized.sections[key], key, index === 0 && !visuals)).join("");
+  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section><section class="quick-facts">${metrics}</section>${visuals}<section class="guide-stack">${sections}</section>`;
+}
+
+function buildVisualGuide(plantId) {
+  const items = state.visuals[plantId] || [];
+  if (!items.length) return "";
+  const text = ui[state.language];
+  const cards = items.map((item) => buildVisualCard(item)).join("");
+  return `<section class="visual-guide"><div class="visual-guide-heading"><div><p class="eyebrow">${escapeHtml(text.externalReference)}</p><h3>${escapeHtml(text.visualGuide)}</h3></div><p>${escapeHtml(text.visualGuideNote)}</p></div><div class="visual-grid">${cards}</div></section>`;
+}
+
+function buildVisualCard(item) {
+  const text = ui[state.language];
+  const localizedTitle = item.title?.[state.language] || item.title?.en || "";
+  const localizedDescription = item.description?.[state.language] || item.description?.en || "";
+  const mediaLabel = text[`media_${item.mediaType}`] || item.mediaType;
+  const actionLabel = text.actions[item.action] || item.action;
+  const rightsLabel = item.rightsStatus === "review_before_production" ? text.rightsReview : text.sourceLinkOnly;
+  const media = item.thumbnailUrl
+    ? `<img class="visual-thumb" src="${escapeAttribute(item.thumbnailUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.visual-media').classList.add('visual-media--failed');this.remove();" />`
+    : `<div class="visual-placeholder" aria-hidden="true"><span>${visualIcons[item.mediaType] || "↗"}</span><small>${escapeHtml(mediaLabel)}</small></div>`;
+  return `<article class="visual-card"><a class="visual-media" href="${escapeAttribute(item.sourceUrl)}" target="_blank" rel="noreferrer">${media}<span class="visual-action">${escapeHtml(actionLabel)}</span></a><div class="visual-card-body"><div class="visual-meta"><span>${escapeHtml(mediaLabel)}</span><span>·</span><span>${escapeHtml(item.sourceName)}</span></div><h4>${escapeHtml(localizedTitle)}</h4><p>${escapeHtml(localizedDescription)}</p><div class="visual-credit">${escapeHtml(item.credit || item.sourceName)}</div><div class="visual-card-footer"><span class="rights-note">${escapeHtml(rightsLabel)}</span><a href="${escapeAttribute(item.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(text.openSource)} ↗</a></div></div></article>`;
 }
 
 function buildSection(section, key, open = false) {
@@ -170,6 +202,7 @@ function buildSection(section, key, open = false) {
 }
 
 function escapeHtml(value = "") { return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
+function escapeAttribute(value = "") { return escapeHtml(value); }
 function registerServiceWorker() { if (!window.GROW_GUIDE_DISABLE_SW && "serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(() => {}); }
 
 let deferredInstallPrompt;

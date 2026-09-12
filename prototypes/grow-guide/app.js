@@ -34,13 +34,20 @@ const evidenceLabels = {
 };
 
 async function init() {
-  const [plantResponse, sourceResponse] = await Promise.all([
+  const [pilotPlantResponse, currentPlantResponse, sourceResponse, currentSourceResponse] = await Promise.all([
     fetch("./data/plants.json"),
+    fetch("./data/plants-current-gardens.json"),
     fetch("./data/sources.json"),
+    fetch("./data/sources-current-gardens.json"),
   ]);
 
-  state.plants = await plantResponse.json();
-  const sources = await sourceResponse.json();
+  const pilotPlants = await pilotPlantResponse.json();
+  const currentPlants = await currentPlantResponse.json();
+  state.plants = [...pilotPlants, ...currentPlants];
+
+  const baseSources = await sourceResponse.json();
+  const currentSources = await currentSourceResponse.json();
+  const sources = [...baseSources, ...currentSources];
   state.sources = Object.fromEntries(sources.map((source) => [source.id, source]));
 
   buildFilters();

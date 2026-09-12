@@ -1,0 +1,158 @@
+{
+  "sweet-basil": {
+    "summary":"Una albahaca de temporada cálida y crecimiento ramificado, con la misma lógica estructural que la Genovese: pinzado temprano, cosechas repetidas de tallos y retiro de flores cuando el objetivo son las hojas.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Madurez","note":"Referencia Ferry-Morse"},{"label":"Altura","note":"Referencia exterior"},{"label":"GR de tu semilla","note":"Sobre Home Grown"}],
+    "sections":{
+      "germination":{"short":"Germinación rápida con calor","guidance":"La albahaca dulce suele germinar en unos 5–10 días con condiciones cálidas de semillero."},
+      "thinning":{"short":"Ralear por competencia, no por una regla universal de una plántula","guidance":"En un pod compacto, conserva los tallos más fuertes y reduce competencia cuando las hojas se superponen demasiado o varios tallos compiten por la misma luz."},
+      "pruning":{"short":"Pinza sobre un nodo sano para estimular ramificación","guidance":"Trátala como otras albahacas ramificadas: retira la punta de crecimiento sobre un par de hojas sano una vez establecida y repite cortes ligeros a medida que aparecen ramas."},
+      "harvest":{"short":"Cosecha tallos preservando nodos activos","guidance":"La cosecha regular de hojas exteriores y tallos mantiene la producción; deja suficiente follaje y nodos activos para que se recupere rápido."},
+      "flowering":{"short":"Retira botones si buscas producción de hojas","guidance":"Ferry-Morse recomienda quitar los botones florales para favorecer una planta más llena y frondosa cuando las hojas culinarias son la prioridad."},
+      "hydroponics":{"short":"Usa las mismas referencias de albahaca y valida el sistema real","guidance":"La albahaca funciona muy bien en hidroponía, pero Garden debe mantener el pH/EC específico ligado a fuentes hidropónicas y no al sobre de semillas."},
+      "problems":{"short":"Vigila floración, hacinamiento y tallos débiles o alargados","guidance":"AI Check debería combinar forma de la copa e historial, no diagnosticar solo por edad."}
+    }
+  },
+  "curled-chervil": {
+    "summary":"Hierba delicada de clima fresco que prefiere humedad constante y se espiga con calor. Se maneja mejor con cosechas ligeras que con podas estructurales.",
+    "metrics":[{"label":"Germinación","note":"Referencia Johnny's"},{"label":"Altura","note":"Referencia Johnny's"},{"label":"Momento de cosecha","note":"Mejor sabor antes de floración"},{"label":"GR de tu semilla","note":"Sobre Home Grown"}],
+    "sections":{
+      "germination":{"short":"La luz ayuda a germinar","guidance":"Johnny's recomienda cubrir apenas la semilla de perifollo porque la luz favorece la germinación; la emergencia esperada es de unos 10–14 días."},
+      "thinning":{"short":"Dale espacio cuando ya puedas comparar plántulas","guidance":"La guía de campo habla de unos 15 cm de separación. En un pod, eso se traduce en evitar un racimo demasiado denso, no en copiar literalmente la distancia de suelo."},
+      "pruning":{"short":"No necesita poda tipo albahaca","guidance":"Se cosecha principalmente por sus hojas tiernas; evita podas estructurales agresivas en una planta joven."},
+      "harvest":{"short":"Mejor justo antes de florecer","guidance":"Johnny's indica que el mejor sabor de las hojas ocurre justo antes de la floración. Antes de eso puedes hacer cosechas ligeras según necesidad."},
+      "flowering":{"short":"El calor acelera el espigado y termina la mejor fase de hojas","guidance":"El clima cálido puede provocar espigado; registra la floración como cambio de etapa y espera menor calidad foliar."},
+      "hydroponics":{"short":"El objetivo nutricional hidropónico aún requiere validación","guidance":"Garden mantiene el perifollo en la biblioteca, pero no asigna un EC hidropónico preciso sin una fuente específica del cultivo."},
+      "problems":{"short":"Calor y sequedad son los principales riesgos","guidance":"El perifollo prefiere condiciones ricas y húmedas y es sensible al calor."}
+    }
+  },
+  "garlic-chives": {
+    "summary":"Allium perenne que forma matas, con hojas planas y flores comestibles. Como el cebollín común, no debe forzarse a una regla de una sola plántula por pod.",
+    "metrics":[{"label":"Germinación","note":"UNH Extension"},{"label":"Madurez","note":"UNH Extension"},{"label":"Altura","note":"UNH Extension"},{"label":"GR de tu semilla","note":"Sobre Home Grown"}],
+    "sections":{
+      "germination":{"short":"Emergencia moderada de 7–14 días","guidance":"UNH Extension indica 7–14 días de germinación para garlic chives."},
+      "thinning":{"short":"Una mata es normal; el problema es el exceso de densidad","guidance":"Esta planta forma matas naturalmente. Garden debe ralear solo si la densidad limita aire o luz, no para quedarse automáticamente con un solo tallo."},
+      "pruning":{"short":"Corta hojas bajas y deja que rebrote","guidance":"Trata el corte como cosecha, no como poda de ramificación; las hojas establecidas rebrotan desde la base."},
+      "harvest":{"short":"Las hojas jóvenes pueden cosecharse tras el establecimiento","guidance":"UNH Extension señala que las hojas jóvenes pueden cosecharse y que las flores también son comestibles poco después de abrir."},
+      "flowering":{"short":"Las flores son comestibles, pero puede auto-sembrarse","guidance":"Las flores blancas son comestibles; retíralas antes de formar semilla si quieres controlar su expansión."},
+      "hydroponics":{"short":"Las matas compactas son viables; el rango nutricional exacto está pendiente","guidance":"V0.5 todavía no acepta un rango específico de pH/EC para garlic chives."},
+      "problems":{"short":"El exceso de densidad y la auto-siembra son los riesgos estructurales","guidance":"Las matas densas se benefician de división periódica en cultivos de larga duración."}
+    }
+  },
+  "evergreen-bunching-onion-nabuka": {
+    "summary":"Tipo de cebolla de verdeo/scallion cultivada por sus tallos verdes repetidos y no por un gran bulbo de almacenamiento. El cultivo en grupos es normal en esta clase.",
+    "metrics":[{"label":"Especie","note":"Referencia de bunching onion"},{"label":"Inicio en grupo","note":"Referencia de trasplante de Johnny's"},{"label":"pH de suelo ref.","note":"No es objetivo hidropónico"},{"label":"GR de tu semilla","note":"Sobre Home Grown"}],
+    "sections":{
+      "germination":{"short":"Cultivo naturalmente agrupado","guidance":"Johnny's inicia 6–8 semillas por celda en bunching onions, lo que confirma que el crecimiento en grupos es intencional."},
+      "thinning":{"short":"No reducir automáticamente a una planta","guidance":"Ralea solo cuando el grupo se vuelva demasiado denso para el grosor de tallo deseado y el volumen de raíces disponible."},
+      "pruning":{"short":"No requiere poda de ramificación","guidance":"El manejo es de cosecha; no cortes el centro como si fuera una hierba ramificada."},
+      "harvest":{"short":"Cosecha tallos verdes o manojos según el objetivo","guidance":"Se cosecha como scallion. En un contenedor regenerativo puede probarse corte selectivo externo, pero la cosecha de planta completa sigue siendo el método de producción más estándar."},
+      "flowering":{"short":"La floración no es el objetivo culinario","guidance":"La floración desvía energía de la producción de tallos tiernos y debe tratarse como un cambio de etapa."},
+      "hydroponics":{"short":"Arquitectura apta para hidro, rango nutricional exacto pendiente","guidance":"El hábito vertical y agrupado encaja bien en sistemas compactos, pero V0.5 no asigna aún un EC específico."},
+      "problems":{"short":"El exceso de densidad puede reducir el grosor","guidance":"La luz máxima y el volumen de raíz importan más que perseguir un número fijo de plántulas."}
+    }
+  },
+  "petunia-dwarf-bedding-mixed": {
+    "summary":"Anual ornamental compacta seleccionada por floración continua. En Garden se considera principalmente una planta de contenedor/suelo y no una prioridad hidropónica.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Floración","note":"45 días en tu sobre; la referencia online da un rango mayor"},{"label":"Altura","note":"Referencia Ferry-Morse"},{"label":"Luz","note":"Referencia Ferry-Morse"}],
+    "sections":{
+      "germination":{"short":"Semilla pequeña con referencia de 7–12 días","guidance":"Ferry-Morse indica 7–12 días de germinación para esta petunia."},
+      "thinning":{"short":"Ralea cuando las plántulas ya estén establecidas","guidance":"El fabricante indica ralear cuando las plantas alcanzan unas 2 pulgadas. En contenedor, deja espacio suficiente para aire y luz alrededor de cada corona."},
+      "pruning":{"short":"Da forma solo si se vuelve demasiado alargada","guidance":"V0.5 todavía no trata la poda de petunia como una regla canónica; el retiro de flores gastadas y ajustes ligeros pueden recomendarse según contexto."},
+      "harvest":{"short":"Cultivo ornamental; la floración es el objetivo","guidance":"Se mantiene principalmente por su exhibición continua, no por cosecha comestible."},
+      "flowering":{"short":"Floración continua desde primavera hacia las heladas","guidance":"La variedad se vende por su floración abundante y continua; retirar flores gastadas ayuda a mantener una presentación limpia."},
+      "hydroponics":{"short":"No es objetivo hidropónico de V1","guidance":"Garden debe priorizar guía de contenedor/suelo para esta ornamental hasta que exista un caso real de hidroponía."},
+      "problems":{"short":"Poca luz y hacinamiento reducen la calidad","guidance":"Evita ponerla detrás de cultivos altos que le quiten luz."}
+    }
+  },
+  "sunflower-american-giant-hybrid": {
+    "summary":"Girasol realmente gigante que puede alcanzar aproximadamente 12–16 pies en exterior. Es un mal vecino físico para cultivos bajos en espacios pequeños por sombra y demanda de raíces.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Floración","note":"65 días en tu sobre; referencia online 65–75"},{"label":"Altura","note":"Referencia Ferry-Morse"},{"label":"Separación","note":"Referencia exterior"}],
+    "sections":{
+      "germination":{"short":"Semilla grande con emergencia moderada","guidance":"Ferry-Morse indica 14–21 días de germinación."},
+      "thinning":{"short":"La separación final importa por su enorme tamaño","guidance":"Conserva las plántulas más fuertes y evita una separación final estrecha; esta variedad está seleccionada para gran altura."},
+      "pruning":{"short":"No despuntar por defecto","guidance":"Garden no debe asumir lógica de poda de ramificación en un girasol gigante sin un objetivo de producción específico."},
+      "harvest":{"short":"Flores y cabezas maduras con semillas son los puntos útiles","guidance":"Sirve para flor ornamental y para cosecha de semillas cuando las cabezas maduran y secan."},
+      "flowering":{"short":"Grandes flores atractivas para polinizadores","guidance":"Ferry-Morse destaca valor para polinizadores y aves en flores y cabezas maduras."},
+      "hydroponics":{"short":"No apropiado para hidroponía pequeña de sobremesa","guidance":"La altura adulta, soporte y demanda radicular lo convierten en cultivo de suelo o gran contenedor."},
+      "problems":{"short":"Viento, soporte, sombra y espacio dominan el manejo","guidance":"Ubícalo donde la planta adulta no sombree cultivos bajos ni interfiera con estructuras."}
+    }
+  },
+  "sunflower-autumn-beauty": {
+    "summary":"Mezcla de girasol ramificado de 5–6 pies con fuerte valor para polinizadores. Sigue siendo lo bastante alto para generar sombra importante sobre cultivos bajos.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Floración","note":"75 días en tu sobre; referencia online 75–90"},{"label":"Altura","note":"Referencia Ferry-Morse"},{"label":"Hábito","note":"Ramificación múltiple"}],
+    "sections":{
+      "germination":{"short":"Referencia de 14–21 días","guidance":"Ferry-Morse indica 14–21 días de germinación."},
+      "thinning":{"short":"Dale espacio a cada planta para ramificar","guidance":"Evita densidad final excesiva si buscas ramificación completa y buen flujo de aire."},
+      "pruning":{"short":"Retirar flores gastadas puede prolongar la exhibición","guidance":"El fabricante recomienda quitar flores marchitas para prolongar la floración; la poda estructural no es una acción por defecto en V0.5."},
+      "harvest":{"short":"Sirve como flor de corte y luego como recurso para aves/semillas","guidance":"Corta flores o deja madurar cabezas para semillas y aves."},
+      "flowering":{"short":"Flores ramificadas en dorado, óxido, naranja y rojo","guidance":"La variedad se cultiva por una larga exhibición multicolor y valor para polinizadores."},
+      "hydroponics":{"short":"Mejor en suelo o contenedor grande exterior","guidance":"Su estructura de 5–6 pies y ramificación hace poco adecuada la hidroponía compacta."},
+      "problems":{"short":"La sombra y la exposición al viento importan","guidance":"Ubícala con intención para que los tallos adultos no tapen la luz de cultivos bajos."}
+    }
+  },
+  "marigold-jolly-jester": {
+    "summary":"Marigold ornamental compacto de tu colección. Garden ya puede usarlo como candidato vecino para polinizadores/manejo de plagas, mientras el cuidado exacto del cultivar sigue necesitando una fuente primaria más fuerte.",
+    "metrics":[{"label":"Floración","note":"Dato del sobre"},{"label":"Luz","note":"Dato del sobre"},{"label":"Uso","note":"Sobre + contexto de Extension"},{"label":"Hidro","note":"Prioridad suelo/contenedor"}],
+    "sections":{
+      "germination":{"short":"El tiempo exacto del cultivar aún necesita validación","guidance":"Tu sobre confirma cultivar y objetivo de floración, pero V0.5 mantiene la germinación específica abierta hasta aceptar una fuente primaria mejor."},
+      "thinning":{"short":"Ralea para aire y una corona compacta","guidance":"Conserva las plántulas más fuertes y evita densidad final excesiva en contenedor."},
+      "pruning":{"short":"Retira flores gastadas en vez de podar agresivamente","guidance":"Quita flores pasadas si quieres mantener floración; una poda estructural fuerte todavía no es canónica."},
+      "harvest":{"short":"Cultivo ornamental","guidance":"El objetivo principal es floración y hábitat para polinizadores, no cosecha comestible."},
+      "flowering":{"short":"Útil cerca de vegetales vulnerables en diseños exteriores","guidance":"USU Extension incluye marigolds entre plantas usadas para ayudar en manejo de plagas, sin que Garden convierta todos los emparejamientos tradicionales en hechos demostrados."},
+      "hydroponics":{"short":"Cultivo de suelo/contenedor en V0.5","guidance":"No priorizar hidroponía de depósito compartido para esta ornamental sin un caso real."},
+      "problems":{"short":"La densidad excesiva reduce aire y calidad de flor","guidance":"Mantén buena luz alrededor de la copa y evita enterrarla bajo vecinos altos."}
+    }
+  },
+  "zinnia-lilliput-mixed": {
+    "summary":"Zinnia anual compacta de 16–18 pulgadas, germinación rápida y gran valor para polinizadores. Funciona bien en contenedores y diseños exteriores sin el riesgo de sombra extrema de un girasol gigante.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Floración","note":"60 días en tu sobre; referencia online 60–75"},{"label":"Altura","note":"Referencia Ferry-Morse"},{"label":"Luz","note":"Referencia Ferry-Morse"}],
+    "sections":{
+      "germination":{"short":"Emergencia rápida de 5–10 días","guidance":"Ferry-Morse indica 5–10 días de germinación."},
+      "thinning":{"short":"Ralea cuando tengan unas pulgadas de altura","guidance":"La guía del fabricante indica ralear cuando las plántulas ya tienen varias pulgadas."},
+      "pruning":{"short":"Retira flores gastadas para prolongar floración","guidance":"Quita las flores marchitas a lo largo de la temporada; es la principal tarea de mantenimiento de V0.5."},
+      "harvest":{"short":"Muy buena flor de corte","guidance":"La variedad se vende para flor de corte duradera además de uso en macizos."},
+      "flowering":{"short":"Color prolongado de verano con valor para polinizadores","guidance":"Las zinnias atraen abejas, mariposas y otros polinizadores."},
+      "hydroponics":{"short":"No es prioridad de hidroponía compacta","guidance":"Primero suelo o contenedor; V0.5 no acepta un objetivo hidropónico específico para esta flor."},
+      "problems":{"short":"El flujo de aire y el follaje mojado importan","guidance":"Evita hacinamiento y deja luz alrededor del follaje."}
+    }
+  },
+  "delphinium-magic-fountains-dwarf": {
+    "summary":"Delphinium perenne enano para uso ornamental en clima fresco. A diferencia de los cultivos comestibles, esta planta es explícitamente no comestible y no debe mezclarse con lógica de cosecha culinaria.",
+    "metrics":[{"label":"Ciclo","note":"Sobre/listado del producto"},{"label":"Luz","note":"Listado del producto"},{"label":"Contenedor","note":"Listado del producto"},{"label":"Comestibilidad","note":"Seguridad del producto"}],
+    "sections":{
+      "germination":{"short":"Puede ser lenta; evita marcar fallo demasiado pronto","guidance":"La germinación de delphinium puede ser lenta e irregular. V0.5 mantiene un rango prudente en vez de inventar una fecha rígida."},
+      "thinning":{"short":"Ralea cuando puedas comparar vigor","guidance":"Conserva plántulas fuertes con suficiente espacio final para desarrollar la corona."},
+      "pruning":{"short":"El manejo del tallo floral viene después","guidance":"V0.5 todavía no codifica reglas específicas de corte post-floración para este cultivar."},
+      "harvest":{"short":"Solo flor de corte; nunca cosecha culinaria","guidance":"Trata todo el material como ornamental; el producto advierte no ingerir semillas ni plantas."},
+      "flowering":{"short":"Espigas perennes compactas en mezcla de colores","guidance":"Magic Fountains produce espigas compactas útiles en jardines pequeños y zonas expuestas."},
+      "hydroponics":{"short":"No es cultivo alimentario hidropónico","guidance":"Mantén esta ornamental fuera de sistemas compartidos destinados a cosecha culinaria en V0.5."},
+      "problems":{"short":"La seguridad y el clima importan","guidance":"No mezcles lógica de plantas ornamentales no comestibles con recomendaciones de cosecha alimentaria."}
+    }
+  },
+  "dark-green-zucchini": {
+    "summary":"Calabacín de verano rápido y productivo que necesita mucho más espacio horizontal que las hierbas de sobremesa. Polinización, aire y espacio son restricciones centrales.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Cosecha","note":"Tu sobre + Ferry-Morse"},{"label":"Altura","note":"La expansión horizontal es mucho mayor de lo que sugiere la altura"},{"label":"Separación exterior","note":"Referencia Johnny's"}],
+    "sections":{
+      "germination":{"short":"Emergencia rápida de temporada cálida","guidance":"Ferry-Morse indica 8–10 días de germinación para esta variedad."},
+      "thinning":{"short":"La planta final necesita mucho espacio","guidance":"No es un cultivo de varias plantas en un pod pequeño. Conserva la planta más fuerte por posición final salvo que el sistema grande esté diseñado para más."},
+      "pruning":{"short":"No aplicar poda de chupones de tomate","guidance":"El retiro de hojas debe ser conservador y por sanidad; V0.5 no considera la poda agresiva de zucchini como regla rutinaria."},
+      "harvest":{"short":"Cosecha frutos jóvenes con frecuencia","guidance":"Tu sobre marca alrededor de 50 días a cosecha. Una recolección frecuente ayuda a mantener la producción una vez inicia la fructificación."},
+      "flowering":{"short":"La polinización afecta directamente el cuajado","guidance":"Johnny's señala que un desarrollo deficiente del fruto puede indicar polinización insuficiente; la floración debe activar una etapa de mantenimiento consciente de polinización."},
+      "hydroponics":{"short":"Posible solo en un sistema grande y dedicado","guidance":"OSU da como referencia para courgette/zucchini un EC cercano a 1.8–2.4 mS/cm y pH 6.0, pero el tamaño físico hace inapropiado un pequeño sistema compartido con hierbas."},
+      "problems":{"short":"Oídio, aire y polinización son riesgos importantes","guidance":"Johnny's destaca oídio, mildiu, marchitez bacteriana y la importancia del drenaje/aireación."}
+    }
+  },
+  "crimson-giant-radish": {
+    "summary":"Raíz de clima fresco y crecimiento rápido con objetivo de 30 días en tu sobre. Humedad constante y cosecha puntual importan mucho más que cualquier poda.",
+    "metrics":[{"label":"Germinación","note":"Referencia Ferry-Morse"},{"label":"Cosecha","note":"Tu sobre + Ferry-Morse"},{"label":"Profundidad","note":"Referencia de siembra directa Johnny's"},{"label":"Clima","note":"El calor reduce calidad"}],
+    "sections":{
+      "germination":{"short":"Emergencia rápida de 5–10 días","guidance":"Ferry-Morse indica 5–10 días de germinación para Crimson Giant."},
+      "thinning":{"short":"El espacio de raíz es esencial","guidance":"A diferencia de las hierbas de hoja, el rábano necesita volumen individual para engrosar. Ralea plántulas amontonadas en vez de dejar varias raíces competir en el mismo espacio pequeño."},
+      "pruning":{"short":"No requiere poda rutinaria","guidance":"No podes el follaje para darle forma; las hojas alimentan el desarrollo de la raíz."},
+      "harvest":{"short":"Cosecha puntualmente cuando la raíz tenga buen tamaño","guidance":"Johnny's advierte que puede volverse esponjoso o duro si se deja demasiado; tu sobre apunta a unos 30 días."},
+      "flowering":{"short":"El espigado indica que pasó la fase ideal de raíz","guidance":"Calor y cosecha tardía pueden sacar al rábano de su mejor calidad de raíz y llevarlo a reproducción."},
+      "hydroponics":{"short":"La geometría de la raíz es la principal restricción","guidance":"La hidroponía necesita suficiente medio y espacio para que la raíz engrose. No lo trates como una lechuga en net cup sin validar espacio físico."},
+      "problems":{"short":"Calor, sequedad y cosecha tardía reducen calidad","guidance":"Johnny's indica que el calor y la sequedad pueden volver las raíces duras, esponjosas y demasiado picantes."}
+    }
+  }
+}

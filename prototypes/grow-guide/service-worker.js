@@ -1,9 +1,10 @@
-const CACHE_NAME = "garden-grow-guide-v0-3";
+const CACHE_NAME = "garden-grow-guide-v0-4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
   "./language.css",
+  "./visual.css",
   "./app.js",
   "./manifest.json",
   "./assets/icon.svg",
@@ -11,7 +12,8 @@ const APP_SHELL = [
   "./data/plants-current-gardens.json",
   "./data/sources.json",
   "./data/sources-current-gardens.json",
-  "./data/translations-es.json"
+  "./data/translations-es.json",
+  "./data/visuals.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -36,7 +38,9 @@ self.addEventListener("fetch", (event) => {
       if (cached) return cached;
       return fetch(event.request).then((response) => {
         const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        if (new URL(event.request.url).origin === self.location.origin) {
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
         return response;
       });
     })

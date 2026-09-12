@@ -1,19 +1,25 @@
-const CACHE_NAME = "garden-grow-guide-v0-4";
+const CACHE_NAME = "garden-grow-guide-v0-5";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
   "./language.css",
   "./visual.css",
+  "./inventory-neighbors.css",
   "./app.js",
   "./manifest.json",
   "./assets/icon.svg",
   "./data/plants.json",
   "./data/plants-current-gardens.json",
+  "./data/plants-owned-seeds.json",
   "./data/sources.json",
   "./data/sources-current-gardens.json",
+  "./data/sources-owned-seeds.json",
   "./data/translations-es.json",
-  "./data/visuals.json"
+  "./data/translations-owned-seeds-es.json",
+  "./data/visuals.json",
+  "./data/seed-inventory.json",
+  "./data/neighbor-profiles.json"
 ];
 
 self.addEventListener("install", (event) => {

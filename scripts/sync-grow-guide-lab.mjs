@@ -13,6 +13,7 @@ const files = [
   'inventory-neighbors.css',
   'garden-labs.css',
   'app.js',
+  'demo-shell.js',
   'manifest.json',
   'service-worker.js',
 ];
@@ -37,15 +38,17 @@ if (plants.length !== 29 || uniquePlantIds.size !== 29) {
 }
 
 const manifest = JSON.parse(await readFile(resolve(source, 'manifest.json'), 'utf8'));
-const approvedIconPath = './assets/lab-icon-approved-512.jpg';
-if (!manifest.icons?.some((icon) => icon.src === approvedIconPath)) {
-  throw new Error('Garden Labs manifest is not using the exact User Zero-approved Lab PWA icon.');
+const gardenTouchIconPath = '/apple-touch-icon.png';
+if (!manifest.icons?.some((icon) => icon.src === gardenTouchIconPath && icon.type === 'image/png')) {
+  throw new Error('Garden Labs manifest is not using the Garden PNG touch icon for install surfaces.');
 }
 if (manifest.short_name !== 'Garden Labs') {
   throw new Error(`Garden Labs manifest validation failed: expected short_name "Garden Labs", got "${manifest.short_name}".`);
 }
-await access(resolve(source, 'assets/lab-icon-approved-512.jpg'));
+await access(resolve(root, 'public/apple-touch-icon.png'));
+await access(resolve(root, 'public/app-icon.svg'));
 await access(resolve(source, 'garden-labs.css'));
+await access(resolve(source, 'demo-shell.js'));
 
 await rm(destination, { recursive: true, force: true });
 await mkdir(destination, { recursive: true });
@@ -58,5 +61,5 @@ await cp(resolve(source, 'assets'), resolve(destination, 'assets'), { recursive:
 await cp(resolve(source, 'data'), resolve(destination, 'data'), { recursive: true });
 
 console.log(`Validated ${plants.length} unique Garden Library guide records.`);
-console.log('Validated exact User Zero-approved Garden Labs PWA icon and manifest name.');
-console.log('Synced Garden Labs / Garden Library prototype to public/grow-guide-lab');
+console.log('Validated Garden Labs manifest name, Garden PNG install icon, and demo shell assets.');
+console.log('Synced Garden Labs prototype to public/grow-guide-lab');

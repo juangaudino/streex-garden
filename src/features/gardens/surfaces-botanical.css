@@ -1,0 +1,45 @@
+/* Phase 03 collection surfaces. Scoped to Home and Jardines only. */
+.botanical-collection { --bc-paper: #f4f5ee; --bc-surface: #fdfdf7; --bc-ink: #193a30; --bc-muted: #66746b; --bc-line: #dbe0d5; --bc-forest: #254b39; --bc-sage: #e7ecdf; }
+.botanical-collection .page-heading { border-bottom: 0; max-width: 1180px; padding: clamp(28px,5vw,60px) clamp(20px,5vw,48px) 18px; }
+.botanical-collection .page-heading h1 { font-size: clamp(2.6rem,7vw,4.8rem); line-height: .96; }
+.botanical-collection .page-heading::after { background: var(--bc-line); max-width: none; width: 100%; }
+.botanical-collection .page-content { display: grid; gap: clamp(28px,5vw,58px); max-width: 1180px; padding: 0 clamp(20px,5vw,48px) calc(106px + env(safe-area-inset-bottom)); }
+.botanical-collection .bc-home-hero { align-items: end; background: linear-gradient(132deg,#e7ecdf,#fdfdf7); border: 1px solid rgba(25,59,42,.11); border-radius: 28px; box-shadow: 0 18px 48px rgba(15,42,29,.07); display: grid; min-height: clamp(330px,48vw,520px); overflow: hidden; padding: clamp(24px,5vw,58px); position: relative; }
+.botanical-collection .bc-home-hero.home-hero--photo::after { background: linear-gradient(90deg,rgba(12,37,25,.87),rgba(12,37,25,.57) 52%,rgba(12,37,25,.14)); content: ''; inset: 0; position: absolute; z-index: -1; }
+.botanical-collection .bc-home-hero__copy { align-items: start; display: grid; gap: 18px; max-width: min(540px,100%); position: relative; z-index: 1; }
+.botanical-collection .bc-home-hero .bs-eyebrow { color: var(--bc-muted); }
+.botanical-collection .bc-home-hero--photo .bs-eyebrow { color: #e8efe1; }
+.botanical-collection .bc-home-hero h1 { color: var(--bc-ink); font-size: clamp(2.65rem,8vw,6.4rem); letter-spacing: -.065em; line-height: .88; max-width: 8.5ch; }
+.botanical-collection .bc-home-hero--photo h1 { color: #fffdf5; text-shadow: 0 2px 18px rgba(0,0,0,.16); }
+.botanical-collection .bc-home-hero .primary-button { margin-top: 6px; width: fit-content; }
+.botanical-collection .bc-section { border-top: 1px solid var(--bc-line); display: grid; gap: 18px; padding-top: 22px; min-width: 0; }
+.botanical-collection .bc-section > .section-heading { margin: 0; }
+.botanical-collection .bc-section h2, .botanical-collection .bc-maintenance h2 { font-size: clamp(1.65rem,4vw,2.45rem); line-height: 1; }
+.botanical-collection .bc-garden-grid { display: grid; gap: 14px; }
+.botanical-collection .bc-garden-card { background: var(--bc-surface); border: 1px solid rgba(25,59,42,.12); border-radius: 20px; color: var(--bc-ink); display: grid; overflow: hidden; text-decoration: none; transition: box-shadow .18s ease,transform .18s ease,border-color .18s ease; }
+.botanical-collection .bc-garden-card:hover { border-color: rgba(25,59,42,.28); box-shadow: 0 14px 28px rgba(15,42,29,.09); transform: translateY(-2px); }
+.botanical-collection .bc-garden-card__photo { aspect-ratio: 16 / 10; background: #dfe7d8; overflow: hidden; }
+.botanical-collection .bc-garden-card__photo img { height: 100%; object-fit: cover; width: 100%; }
+.botanical-collection .bc-garden-card__photo--empty { align-items: center; color: #657c5e; display: grid; justify-content: center; background: linear-gradient(140deg,#e9eee3,#d9e4d4); }
+.botanical-collection .bc-garden-card__copy { display: grid; gap: 7px; padding: 18px; }
+.botanical-collection .bc-garden-card h3 { font-size: 1.45rem; line-height: 1.04; overflow-wrap: anywhere; }
+.botanical-collection .bc-garden-card p { color: var(--bc-muted); font-size: .86rem; line-height: 1.38; }
+.botanical-collection .bc-garden-card__system { color: var(--bc-ink)!important; font-weight: 600; }
+.botanical-collection .bc-garden-card__link { align-items: center; display: inline-flex; font-size: .84rem; font-weight: 700; gap: 7px; margin-top: 7px; width: fit-content; }
+.botanical-collection .bc-summary-grid { display: grid; gap: clamp(28px,5vw,58px); }
+.botanical-collection .bc-catalog-empty { display: grid; gap: 14px; justify-items: start; }
+.botanical-collection .bc-catalog-empty .state-panel { width: 100%; }
+.botanical-collection .bc-maintenance { background: linear-gradient(120deg,rgba(231,236,223,.92),rgba(253,253,247,.8)); border: 1px solid rgba(25,59,42,.1); border-radius: 22px; display: grid; gap: 16px; padding: clamp(18px,3vw,30px); }
+.botanical-collection .bc-maintenance > .section-heading { align-items: center; margin: 0; }
+.botanical-collection .bc-maintenance .home-maintenance-notice { background: transparent; border: 0; box-shadow: none; margin: 0; padding: 0; }
+.botanical-collection .bc-maintenance .maintenance-start { background: rgba(253,253,247,.78); box-shadow: none; margin: 0; }
+.botanical-collection .bc-create .editor-card { box-shadow: 0 10px 26px rgba(15,42,29,.055); }
+.botanical-collection .home-change, .botanical-collection .attention-item { border-color: rgba(25,59,42,.11); }
+.botanical-collection .home-change:hover, .botanical-collection .attention-item:hover { background: rgba(231,236,223,.42); padding-left: 10px; padding-right: 10px; }
+.botanical-collection .state-panel { background: rgba(253,253,247,.64); border-color: rgba(25,59,42,.1); min-height: 0; }
+.botanical-collection .state-panel--loading { min-height: 180px; }
+@media (min-width: 620px) { .botanical-collection .bc-garden-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .botanical-collection .bc-summary-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width: 820px) { .botanical-collection .bc-garden-grid { gap: 20px; grid-template-columns: repeat(3,minmax(0,1fr)); } .botanical-collection .bc-garden-card__photo { aspect-ratio: 4 / 3; } .botanical-collection .bc-garden-card__copy { padding: 22px; } .botanical-collection .bc-maintenance { grid-template-columns: minmax(0,1fr); } }
+@media (min-width: 1100px) { .botanical-collection .bc-catalog .bc-garden-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .botanical-collection .bc-home-hero { min-height: 540px; } }
+@media (max-width: 480px) { .botanical-collection .page-heading { padding-top: 22px; } .botanical-collection .heading-actions__row { gap: 8px; } .botanical-collection .heading-actions__row > * { padding-left: 11px; padding-right: 11px; } .botanical-collection .bc-home-hero { border-radius: 22px; min-height: 388px; } .botanical-collection .bc-home-hero h1 { font-size: clamp(2.45rem,13vw,3.35rem); } .botanical-collection .bc-maintenance > .section-heading { align-items: start; flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .botanical-collection .bc-garden-card, .botanical-collection .home-change, .botanical-collection .attention-item { transition: none; } .botanical-collection .bc-garden-card:hover { transform: none; } }

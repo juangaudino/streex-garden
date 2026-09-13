@@ -246,7 +246,7 @@ El mapeo, límites, cambios visuales, lista de archivos y matriz de QA quedan de
 
 ## Entrega 03.A — conexión funcional de Home y Jardines
 
-Estado: **terminada localmente la conexión funcional; presentación visual final todavía pendiente**. No es un cierre de Fase 03 ni una aprobación visual de las dos superficies.
+Estado: **terminada localmente la conexión funcional; la capa visual de Home y Jardines se cierra en la entrega 03.B**. No es un cierre de Fase 03 completa ni una aprobación de Hoy o Ask Garden.
 
 ### Implementación
 
@@ -275,7 +275,7 @@ npx tsc -p qa/surfaces-integration/tsconfig.json --pretty false
 npx vite build --config qa/surfaces-integration/vite.config.ts
 ```
 
-El servidor propuesto se limita a `127.0.0.1:4198` y se detiene con Ctrl+C. **No se levantó servidor ni se publicó preview en esta entrega.** La UI muestra expresamente «CSS final pendiente»: no evaluarla como acabado final. No trasladar este harness al build del producto.
+El servidor se limita a `127.0.0.1:4198` y se detiene con Ctrl+C. No se publica preview y el harness no se traslada al build del producto. La UI identifica que usa CSS de colección aplicada, pero continúa siendo una superficie sintética.
 
 ### Validación realizada
 
@@ -292,12 +292,44 @@ El servidor propuesto se limita a `127.0.0.1:4198` y se detiene con Ctrl+C. **No
 
 El build avisa de un chunk de producto superior a 500 kB y de import dinámico inefectivo de `photo-renditions.ts`, también importado estáticamente por la API. No se cambió esa arquitectura para esta integración. La suite imprime el aviso de jsdom «navigation to another Document» sin fallar; no equivale a prueba de navegación física.
 
-### Pendientes y relevo
+### Entrega 03.B — cierre visual de Home y Jardines
 
-1. **CSS y QA visual/responsive de Home/Jardines:** implementar `surfaces-botanical.css` con scope de colección. La composición DOM está conectada, pero faltan tamaños, encuadres, grid, contraste, densidad, shell y estados de imagen. No certificar V01–V04/H01–H02/R01–R02 sólo con tests de React.
-2. Verificar 320/390/820/1440 px, horizontal, texto 200%, foco y movimiento reducido; revisar los formularios y avisos operativos, no sólo la apertura. Inspeccionar red del harness y comprobar regresiones de estilos en las fases 02 ya terminadas.
-3. QA autenticada: media/portadas reales, efectos de dashboard/visitas y operaciones guardadas de jardines/sesiones. Pendiente; ninguna operación real ejecutada aquí.
-4. Persisten las limitaciones ya identificadas: cancelación de creación después del envío no aborta la petición, Home espera consultas de biblioteca, y las URLs firmadas requieren validación independiente.
-5. Hoy y Ask Garden quedan para sus bloques posteriores. Los pendientes físicos/autenticados de Film y Planta se conservan en sus respectivos informes.
+Estado: **cerrada localmente la presentación de Home y Jardines**. `surfaces-botanical.css` aporta una capa estrictamente acotada a `botanical-collection`; no cambia datos, rutas, formularios, lógica de visita ni los contratos funcionales de `fbdce7b`.
 
-**Parada natural cumplida. Siguiente bloque recomendado: Terra High para CSS aprobado y QA visual/responsive de Home/Jardines.** Los datos, estados, formularios y fronteras de visita ya están conectados y probados; no queda una decisión nueva de arquitectura o dominio en ese tramo. Si la QA revela un problema funcional que exija cambiar una frontera, detenerse y documentar la evidencia antes de volver a Sol High. No continuar implementando hasta que el usuario confirme el cambio de modelo.
+#### Ajustes aplicados
+
+- Apertura editorial con fotografía existente como protagonista, gradiente de legibilidad, jerarquía tipográfica y acción primaria contenida.
+- Tarjetas de jardín con encuadre consistente, portada vacía expresiva, datos de sistema secundarios y grid progresivo: una columna móvil, dos desde 620 px y tres desde 820 px.
+- Diario, Atención, estados vacíos y bloque operativo de Maintenance con superficies de papel, borde suave y densidad acorde a cada tamaño.
+- Espaciado, tamaños y tipografía fluidos en 320/390/820/1440 px mediante `clamp`, columnas `minmax(0, 1fr)`, `overflow-wrap:anywhere` y padding con `safe-area-inset-bottom`.
+- Foco y reducción de movimiento se conservan: no se elimina el foco nativo; las transiciones de tarjeta se desactivan con `prefers-reduced-motion`.
+
+#### Evidencia de QA local
+
+| Comprobación | Resultado |
+| --- | --- |
+| Scope y regresión funcional | El diff contiene únicamente import de CSS, stylesheet acotado y etiqueta del harness; no hay cambios de TypeScript funcional, APIs, navegación ni formularios. |
+| 320 px | Captura headless local de Home vacío; `scrollWidth=320`, controles fuera de viewport `0`, seis headings y sin carga/error persistente. |
+| 390 px | Captura headless local de Home normal con dos tarjetas; `scrollWidth=390`, controles fuera de viewport `0`. La variante `read-error` también renderiza el estado de error sin overflow. |
+| 820 px | Captura headless local de Jardines denso con siete tarjetas y el grid de tres columnas; `scrollWidth=805` frente a viewport 820 y controles fuera de viewport `0`. |
+| 1440 px | Captura headless local de Jardines sin portada; `scrollWidth=1425` frente a viewport 1440, controles fuera de viewport `0` y sin estiramiento horizontal. |
+| Foco y movimiento reducido | Tab enfoca el enlace de marca con `:focus-visible`, outline sólido de 2 px; emulación `prefers-reduced-motion: reduce` devuelve transición de tarjeta `0s`. |
+| Estados densos, vacío, sin portada, lectura lenta/error y sesión | Nueve fixtures del harness y 16 pruebas de colección; las capturas cubren vacío, normal, denso, sin portada y error. La composición aplica al mismo DOM de los estados restantes. |
+| Carga visual local | Harness real servido en `127.0.0.1:4198`, aislado de cuenta y APIs: Home abre con hero, colección, diario, Atención y navegación. Capturas sin controles de QA mediante `embed=1`. |
+| `npm test` | 32 archivos, 160 pruebas aprobadas. |
+| `npm run build` | Aprobado. |
+| Typecheck/build del harness | Ambos aprobados. |
+| `git diff --check` | Aprobado. |
+
+Las cuatro medidas se verificaron mediante Chromium headless local con el DOM real de Home/Jardines, capturas y métricas de viewport. Safari local mantiene deshabilitada su automatización remota; no se cambió ningún ajuste del navegador. La evidencia anterior no sustituye la comprobación física/autenticada en Safari de iPhone.
+
+#### Riesgos y pendientes
+
+1. **QA autenticada/física:** portadas reales, teclado y safe area iPhone, efectos de dashboard/visita y operaciones guardadas de jardines/sesiones siguen pendientes. Ninguna operación real se ejecutó aquí.
+2. **Prueba física:** comprobar Safari de iPhone, teclado/safe area y zoom de texto 200 % con una cuenta de prueba; los cuatro breakpoints ya tienen evidencia local headless, pero no sustituyen el dispositivo real.
+3. Se conservan los límites anteriores: crear tras enviar no aborta la petición, Home espera consultas de biblioteca y URLs firmadas requieren comprobación independiente.
+4. El build aún avisa por un chunk de producto mayor a 500 kB y un import dinámico inefectivo previo de `photo-renditions.ts`; no pertenecen a esta capa visual.
+
+Hoy y Ask Garden quedan sin cambios para el siguiente bloque. Los pendientes físicos/autenticados de Film y Planta se mantienen separados.
+
+**Parada natural cumplida. Siguiente bloque recomendado: GPT-5.6 Sol High para Hoy + Ask Garden.** El trabajo será una extensión visual sobre flujos ya existentes, pero Hoy reúne estados operativos y Ask Garden requiere conservar con precisión sus garantías de lectura/propuesta sin escrituras implícitas. Sol High ofrece revisión suficiente de esos contratos y la aplicación de patrones aprobados. Elevar a Astra sólo si la inspección muestra una frontera nueva de AI, navegación o persistencia que no esté cubierta por los contratos actuales. No avanzar sin confirmación del usuario.

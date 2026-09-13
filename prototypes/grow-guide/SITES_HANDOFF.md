@@ -1,9 +1,11 @@
 # Garden Labs — ChatGPT Sites handoff
 
 ## Current status
-The runtime migration is **complete and validated by User Zero**.
+The runtime migration and **Sites Storage V1 are complete and validated by User Zero**.
 
 - Garden Labs V0.7.3 is published as a private ChatGPT Site.
+- Sites Storage V1 is deployed on that same private Site as saved version 2 (`b80002a2425538aa750382e7555fa7995e528f19`), with hosted D1 binding `DB`.
+- User Zero approved the hosted persistence QA, including persistence between clients/devices. The implementation is synced to this branch; the runtime-specific API/schema/migration source is retained in `sites-storage-runtime/`.
 - Library ↔ Seeds, ES/EN, Mobile/Tablet/Desktop preview, frameless mode, DEMO return, exact purchase date and all 29 records were validated.
 - Offline mode does not work in Sites, but User Zero explicitly confirmed that offline is **not a requirement** for Garden Labs.
 - Future Vercel auto-deploys for `prototype/grow-guide` are disabled on the prototype branch. Do not alter the production Garden X Vercel project.
@@ -34,8 +36,8 @@ Validated behavior to preserve:
 - discreet `DEMO` return control
 - exact User Zero-approved Garden Labs icon artwork
 
-## Active next phase — Sites Storage V1
-The next lab experiment is **durable Sites-native persistence for Seeds personal state** so the same inventory state can be seen from iPhone and desktop.
+## Completed phase — Sites Storage V1
+The lab's durable Sites-native persistence for Seeds personal state has been implemented in the existing private Site and approved by User Zero. The same inventory state is available across clients/devices.
 
 Implementation contract:
 - `SITES_STORAGE_V1.md`
@@ -61,7 +63,8 @@ Persist only experimental personal-state fields such as:
 4. Save a reviewable version first.
 5. Run the cross-device acceptance tests in `SITES_STORAGE_V1.md`.
 6. Deploy the approved saved version to the existing Site URL.
-7. Record the resulting storage binding/migrations in source control where Sites exposes them (for example `.openai/hosting.json` and migration files).
+7. Record the resulting storage binding/migrations in source control where Sites exposes them (for example `sites-storage-runtime/.openai/hosting.json` and migration files).
+8. For this completed phase, the Sites source commit is `b80002a2425538aa750382e7555fa7995e528f19`; this prototype branch contains the synchronized client and runtime persistence source.
 
 ## Guardrails
 This remains an infrastructure/data-persistence experiment, not a product redesign.

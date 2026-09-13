@@ -1,7 +1,7 @@
 # Garden Labs — Sites Storage V1
 
 ## Status
-Runtime migration to ChatGPT Sites is already validated by User Zero. This document defines the **next lab experiment only**: durable Sites-native persistence for Seeds personal state.
+Sites Storage V1 is implemented and deployed to the existing private Garden Labs Site. User Zero approved the hosted QA, including persistence across clients/devices. The corresponding validated Sites source commit is `b80002a2425538aa750382e7555fa7995e528f19`; the synchronized API/schema/migration source is retained under `sites-storage-runtime/`.
 
 ## Goal
 Replace device-only persistence for mutable Seeds state with ChatGPT Sites **D1 durable structured storage**, while preserving `localStorage` as a fallback/cache during the experiment.

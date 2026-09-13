@@ -1,17 +1,18 @@
-const CACHE_NAME = "garden-labs-v0-7-1";
+const CACHE_NAME = "garden-labs-v0-7-2";
 const APP_SHELL = [
   "./",
-  "./index.html?v=0.7.1",
-  "./styles.css?v=0.7.0",
-  "./language.css?v=0.7.0",
-  "./visual.css?v=0.7.0",
-  "./inventory-neighbors.css?v=0.7.0",
-  "./garden-labs.css?v=0.7.0",
-  "./app.js?v=0.7.0",
-  "./demo-shell.js?v=0.7.0",
-  "./manifest.json?v=0.7.1",
-  "./assets/lab-icon-approved-180.png",
-  "./assets/lab-icon-approved-512.jpg",
+  "./index.html?v=0.7.2",
+  "./styles.css?v=0.7.2",
+  "./language.css?v=0.7.2",
+  "./visual.css?v=0.7.2",
+  "./inventory-neighbors.css?v=0.7.2",
+  "./garden-labs.css?v=0.7.2",
+  "./app.js?v=0.7.2",
+  "./seed-purchase-date.js?v=0.7.2",
+  "./demo-shell.js?v=0.7.2",
+  "./manifest.json?v=0.7.2",
+  "./assets/lab-icon-approved-180.png?v=0.7.2",
+  "./assets/lab-icon-approved-512.jpg?v=0.7.2",
   "./data/plants.json",
   "./data/plants-current-gardens.json",
   "./data/plants-owned-seeds.json",
@@ -54,7 +55,7 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(async () => {
-          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.1"));
+          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.2"));
         })
     );
     return;

@@ -1,7 +1,12 @@
 # Garden Labs — ChatGPT Sites handoff
 
-## Purpose
-Migrate the **runtime only** of the current Garden Labs prototype to ChatGPT Sites.
+## Current status
+The runtime migration is **complete and validated by User Zero**.
+
+- Garden Labs V0.7.3 is published as a private ChatGPT Site.
+- Library ↔ Seeds, ES/EN, Mobile/Tablet/Desktop preview, frameless mode, DEMO return, exact purchase date and all 29 records were validated.
+- Offline mode does not work in Sites, but User Zero explicitly confirmed that offline is **not a requirement** for Garden Labs.
+- Future Vercel auto-deploys for `prototype/grow-guide` are disabled on the prototype branch. Do not alter the production Garden X Vercel project.
 
 ## Source of truth
 - Repository: `juangaudino/streex-garden`
@@ -10,61 +15,32 @@ Migrate the **runtime only** of the current Garden Labs prototype to ChatGPT Sit
 - GitHub remains the property and memory of the code.
 - Do **not** move or copy the prototype to another repository.
 - Do **not** merge into `main`.
-- Do **not** add Supabase.
+- Do **not** connect the Lab to Garden X Supabase.
 
-## Current validated prototype
-Garden Labs currently contains a reusable Demo Shell with two sibling demos:
+## Validated prototype
+Garden Labs contains a reusable Demo Shell with two sibling demos:
 - **Library** — Grow Guide / Plant Knowledge
 - **Seeds** — Seed Inventory lab
 
-Current behavior to preserve:
+Validated behavior to preserve:
 - 29 User Zero guide/seed records
 - ES / EN
 - Visual Guide
 - Neighbors
-- Seed inventory with local personal state
+- Seed inventory
 - exact purchase date field (`purchaseDate`) while preserving legacy `purchaseYear` until replaced
 - Mobile / Tablet / Desktop preview controls
 - “Abrir sin marco” / frameless mode
 - discreet `DEMO` return control
-- PWA/offline behavior
 - exact User Zero-approved Garden Labs icon artwork
 
-## Migration constraints
-This is an **infrastructure migration, not a product redesign**.
+## Active next phase — Sites Storage V1
+The next lab experiment is **durable Sites-native persistence for Seeds personal state** so the same inventory state can be seen from iPhone and desktop.
 
-Do not:
-- redesign the UI
-- expand features
-- alter the 29-record catalog
-- modify canonical evidence
-- change the relationship between Library and Seeds
-- add production auth/schema
-- connect to Garden X Supabase
-- implement the Home Grown enrichment phase yet
+Implementation contract:
+- `SITES_STORAGE_V1.md`
 
-## Sites objective
-1. Create a ChatGPT Site from the current branch/path.
-2. Preserve the current UX and behavior.
-3. Verify the Site before changing any Vercel configuration.
-4. Return the Site URL.
-
-## Validation checklist on Sites
-- [ ] Garden Labs shell loads
-- [ ] Library opens
-- [ ] Seeds opens
-- [ ] Library ↔ Seeds switching works
-- [ ] 29 records are present
-- [ ] ES / EN works
-- [ ] Mobile / Tablet / Desktop preview works
-- [ ] “Abrir sin marco” works
-- [ ] `DEMO` returns to shell
-- [ ] PWA icon uses the approved Garden Labs artwork
-- [ ] Purchase date supports day/month/year
-- [ ] Existing lab state is not silently promoted to canonical/product data
-
-## Storage experiment after runtime verification
-Once the Site itself is verified, the next lab step is to evaluate Sites-native persistence for **Seeds personal state** so the same inventory can be seen from iPhone and desktop.
+Use ChatGPT Sites **D1** for durable structured state. Keep packet/manufacturer evidence separate and immutable. Do not write to Garden X canonical data or Supabase.
 
 Persist only experimental personal-state fields such as:
 - opened / unopened
@@ -73,12 +49,37 @@ Persist only experimental personal-state fields such as:
 - purchase date
 - germination test date/result
 - notes
+- archive/restore state
+- manually added Lab seeds
 
-Keep packet/manufacturer evidence separate from mutable personal state.
-Do not write to Garden X canonical data or Supabase.
+`localStorage` may remain as fallback/cache during the experiment, but after successful migration D1 is the Lab source of truth for mutable Seeds state.
 
-## Vercel rule
-Keep the current Vercel preview alive until the ChatGPT Site has been created and verified. Only then retire prototype-only Vercel runtime/configuration.
+## Sites update workflow
+1. Open the **existing** Garden Labs Site in Sites/Work/Codex.
+2. Use the current `prototype/grow-guide` branch and `SITES_STORAGE_V1.md` as the implementation contract.
+3. Add D1 durable storage to the existing Site; do not create a second Site unless technically unavoidable.
+4. Save a reviewable version first.
+5. Run the cross-device acceptance tests in `SITES_STORAGE_V1.md`.
+6. Deploy the approved saved version to the existing Site URL.
+7. Record the resulting storage binding/migrations in source control where Sites exposes them (for example `.openai/hosting.json` and migration files).
+
+## Guardrails
+This remains an infrastructure/data-persistence experiment, not a product redesign.
+
+Do not:
+- redesign the UI
+- expand the 29-record catalog
+- modify canonical evidence
+- change the relationship between Library and Seeds
+- add Garden X production auth/schema
+- connect to Garden X Supabase
+- implement Home Grown enrichment during Storage V1
+- add monetization, OCR, AI inventory recognition, automatic decrement, or pod integration
+
+## Vercel status
+Do not delete or reconfigure the production `streex-garden` Vercel project. The prototype was a branch preview, not a separate production project.
+
+Future Vercel deployments from `prototype/grow-guide` are disabled on that branch. Historical preview deployments may remain until removed through a Vercel surface with deletion permission.
 
 ## Later phase — intentionally deferred
 After Sites + shared persistence are validated, a separate phase will enrich the 20 Home Grown-covered varieties using:
@@ -87,4 +88,4 @@ After Sites + shared persistence are validated, a separate phase will enrich the
 - explicit provenance
 - conflict detection / source reconciliation
 
-Do not execute that phase during the Sites migration.
+Do not execute that phase during Sites Storage V1.

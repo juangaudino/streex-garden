@@ -1,8 +1,8 @@
 # Botanical Studio — Fase 03: extensión del sistema visual
 
-Fecha de preparación: 13 de septiembre de 2026. Estado actual: **Home/Jardines cerrados localmente; Hoy + Ask Garden conectados y validados funcionalmente**. CSS y QA visual/responsive final de Hoy/Ask, QA cruzada de Fase 03 y validación autenticada/física siguen pendientes.
+Fecha de preparación: 13 de septiembre de 2026. Estado actual: **Fase 03 cerrada localmente y aceptada en `6cc1eba`**, incluyendo CSS y QA visual/responsive de Home, Jardines, Hoy y Ask Garden. La validación autenticada/física permanece pendiente; la consolidación transversal se prepara por separado en el [preflight de Fase 04](BOTANICAL_STUDIO_PHASE_04_PREFLIGHT.md).
 
-Modelo autorizado para el tramo funcional de Hoy + Ask Garden: **GPT-5.6 Sol High**. No se ha identificado una complejidad nueva que requiera Astra Extra High. El siguiente bloque recomendado es **Terra High para CSS + QA visual/responsive**, pendiente de confirmación del usuario.
+Modelo del tramo funcional de Hoy + Ask Garden: **GPT-5.6 Sol High**; CSS y QA visual/responsive posteriores constan en el cierre al final. Las recomendaciones de parada de entregas anteriores se conservan como registro histórico. La recomendación vigente para Fase 04 se documenta en su preflight.
 
 ## Alcance y base aprobada
 

@@ -38,13 +38,18 @@ if (plants.length !== 29 || uniquePlantIds.size !== 29) {
 }
 
 const manifest = JSON.parse(await readFile(resolve(source, 'manifest.json'), 'utf8'));
+const approvedTouchIconPath = './assets/lab-icon-approved-180.png';
 const approvedIconPath = './assets/lab-icon-approved-512.jpg';
+if (!manifest.icons?.some((icon) => icon.src === approvedTouchIconPath && icon.type === 'image/png')) {
+  throw new Error('Garden Labs manifest is not using the exact User Zero-approved PNG touch icon.');
+}
 if (!manifest.icons?.some((icon) => icon.src === approvedIconPath && icon.type === 'image/jpeg')) {
   throw new Error('Garden Labs manifest is not using the exact User Zero-approved Lab icon artwork.');
 }
 if (manifest.short_name !== 'Garden Labs') {
   throw new Error(`Garden Labs manifest validation failed: expected short_name "Garden Labs", got "${manifest.short_name}".`);
 }
+await access(resolve(source, 'assets/lab-icon-approved-180.png'));
 await access(resolve(source, 'assets/lab-icon-approved-512.jpg'));
 await access(resolve(source, 'garden-labs.css'));
 await access(resolve(source, 'demo-shell.js'));
@@ -60,5 +65,5 @@ await cp(resolve(source, 'assets'), resolve(destination, 'assets'), { recursive:
 await cp(resolve(source, 'data'), resolve(destination, 'data'), { recursive: true });
 
 console.log(`Validated ${plants.length} unique Garden Library guide records.`);
-console.log('Validated exact User Zero-approved Garden Labs icon artwork and manifest name.');
+console.log('Validated exact User Zero-approved Garden Labs PNG touch icon, source artwork, and manifest name.');
 console.log('Synced Garden Labs prototype to public/grow-guide-lab');

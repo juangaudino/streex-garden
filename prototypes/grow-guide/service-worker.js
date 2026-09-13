@@ -10,6 +10,7 @@ const APP_SHELL = [
   "./app.js?v=0.7.0",
   "./demo-shell.js?v=0.7.0",
   "./manifest.json?v=0.7.1",
+  "./assets/lab-icon-approved-180.png",
   "./assets/lab-icon-approved-512.jpg",
   "./data/plants.json",
   "./data/plants-current-gardens.json",

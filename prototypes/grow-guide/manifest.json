@@ -9,6 +9,12 @@
   "theme_color": "#16113b",
   "icons": [
     {
+      "src": "./assets/lab-icon-approved-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "./assets/lab-icon-approved-512.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",

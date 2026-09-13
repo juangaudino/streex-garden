@@ -403,3 +403,48 @@ Se cerraron navegador y servidor al terminar. Para retomar el harness: `npx vite
 5. Build conserva avisos previos de chunk >500 kB e import dinámico inefectivo de `photo-renditions.ts`. La suite conserva el aviso no fatal de jsdom sobre navegación a otro documento.
 
 **Parada natural: recomendar Terra High para CSS + QA visual/responsive de Hoy y Ask Garden.** La dirección, datos y operaciones ya están definidos y probados; el siguiente trabajo consiste en aplicar estilos acotados, resolver las colisiones documentadas y obtener evidencia de navegador en los tamaños previstos. No hay una complejidad nueva de arquitectura o AI que justifique Astra. No continuar ni publicar hasta nueva autorización.
+
+### Cierre — Hoy + Ask Garden: CSS y QA visual/responsive
+
+Estado: **Fase 03 cerrada localmente para código y presentación.** La dirección Living Botanical Cinema se extendió sin rediseñar las superficies ni modificar contratos, rutas, APIs, persistencia o el resolver de Ask Garden.
+
+#### Ajustes aplicados
+
+- `surfaces-botanical.css` incorpora scopes exclusivos `botanical-today` y `botanical-ask`: jerarquía editorial, tarjetas y formularios de Hoy; hilo, fuentes, sugerencias y compositor de Ask Garden.
+- Los controles operativos permanecen diferenciados: en Hoy, abrir, guardar, posponer o descartar sigue usando los formularios y confirmaciones existentes; la nueva presentación no convierte una vista o navegación en una escritura.
+- Ask Garden conserva su composición y las fuentes desplegables. La interfaz sigue mostrando que interpreta datos confirmados; no habilita Garden AI ni añade una vía de modificación canónica.
+- Los formularios de resolución usan `scroll-margin` para quedar fuera de la navegación fija. En 1440 px, el botón «Confirmar y completar» quedó visible y clicable con margen de 225 px respecto de la navegación inferior.
+- Se asignaron etiquetas distintas a las navegaciones superior e inferior para eliminar landmarks duplicados en lectores de pantalla.
+
+#### Evidencia visual y de accesibilidad local
+
+| Área | Evidencia |
+| --- | --- |
+| Hoy — 320 px | Cola mixta sin overflow horizontal (`scrollWidth=320`); encabezado, creación de seguimiento y navegación inferior conservan aire y jerarquía. |
+| Hoy — 820 px | Estado vacío «Sin pendientes» con creador de seguimiento y navegación sin estiramiento (`scrollWidth=820`). |
+| Hoy — 1440 px | Formulario de evaluación abierto: botón de confirmar visible, no cubierto por la navegación, y sin overflow (`scrollWidth=1440`). |
+| Ask Garden — 320 px | Vista conversacional de altura acotada; el compositor queda sobre la navegación y el hilo interno conserva scroll propio (`scrollWidth=320`). |
+| Ask Garden — 390 px | Respuesta larga en el hilo único, compositor separado de la navegación, sin desbordamiento; la respuesta se desplaza dentro del hilo. |
+| Ask Garden — 820/1440 px | Estados vacío, respuesta determinística y respuesta simulada con fuentes renderizados sin overflow (`scrollWidth` igual al viewport). |
+| Foco y movimiento reducido | Foco visible de 3 px para controles de ambas superficies. Con `prefers-reduced-motion: reduce`, transición de sugerencias `0s` y scroll JS `auto`. |
+| Axe | 35 reglas aprobadas, 0 violaciones. Quedó 1 resultado incompleto de contraste porque Axe no puede calcular fondos con gradientes/pseudo-elementos; requiere revisión visual física, no señala una violación. |
+
+Las pruebas se hicieron con el harness aislado y el DOM real de las superficies, usando Chromium local. Las respuestas `ai-*` son fixtures: no se contactó Garden AI, Supabase ni datos de una cuenta.
+
+#### Validación de cierre
+
+| Comprobación | Resultado |
+| --- | --- |
+| `npm test` | 33 archivos y 187 pruebas aprobadas. Persiste el aviso conocido de jsdom sobre navegación a otro documento. |
+| `npm run lint` | Aprobado sin errores ni advertencias. |
+| `npm run build` | Aprobado. Se mantienen los avisos históricos: chunk de producto mayor de 500 kB e import dinámico inefectivo de `photo-renditions.ts`; no los produce esta fase. |
+| Typecheck/build del harness | `npx tsc -p qa/surfaces-integration/tsconfig.json --pretty false` y `npx vite build --config qa/surfaces-integration/vite.config.ts` aprobados. |
+| `git diff --check` | Aprobado. |
+
+#### Pendientes explícitos
+
+1. **QA autenticada/física:** cola y operaciones reales de Attention, persistencia tras recargar, comparación de conteos antes/después de Ask Garden y fuente/provenance con datos reales.
+2. **Safari de iPhone:** safe area, teclado físico, zoom de texto y objetivos táctiles de Hoy/Ask. La verificación headless no sustituye el dispositivo.
+3. Los QA físicos ya separados de Planta y Growth Film, incluido fullscreen nativo de Safari y exportación real de Film, no se alteran.
+
+**Parada antes de Fase 04 — Experience Consolidation. Recomendación: GPT-5.6 Sol High para iniciar el mapa transversal y la consolidación de flujos.** El siguiente tramo exige comprobar continuidad entre Home, Jardines, Hoy, Ask Garden, Planta, Maintenance y Growth Film, preservando las acciones canónicas mientras se resuelven inconsistencias entre superficies. Sol High es adecuado para ese trabajo de integración y contratos ya conocidos. Tras cerrar su mapa y lista de cambios, detenerse para reevaluar: si sólo quedan ajustes CSS visuales, bajar a Terra High; si aparece una frontera nueva de datos, AI, exportación o navegación no cubierta por los contratos actuales, detenerse y justificar una posible subida a Astra.

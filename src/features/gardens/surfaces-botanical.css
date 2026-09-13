@@ -43,3 +43,67 @@
 @media (min-width: 1100px) { .botanical-collection .bc-catalog .bc-garden-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .botanical-collection .bc-home-hero { min-height: 540px; } }
 @media (max-width: 480px) { .botanical-collection .page-heading { padding-top: 22px; } .botanical-collection .heading-actions__row { gap: 8px; } .botanical-collection .heading-actions__row > * { padding-left: 11px; padding-right: 11px; } .botanical-collection .bc-home-hero { border-radius: 22px; min-height: 388px; } .botanical-collection .bc-home-hero h1 { font-size: clamp(2.45rem,13vw,3.35rem); } .botanical-collection .bc-maintenance > .section-heading { align-items: start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .botanical-collection .bc-garden-card, .botanical-collection .home-change, .botanical-collection .attention-item { transition: none; } .botanical-collection .bc-garden-card:hover { transform: none; } }
+
+/* Phase 03 operational surfaces. These rules only compose existing Today and
+   Ask Garden controls; their data, mutations and navigation remain unchanged. */
+.botanical-today, .botanical-ask { --bc-paper: #f4f5ee; --bc-surface: #fdfdf7; --bc-ink: #193a30; --bc-muted: #66746b; --bc-line: #dbe0d5; --bc-forest: #254b39; --bc-sage: #e7ecdf; }
+.botanical-today .page-heading { border-bottom: 0; max-width: 980px; padding: clamp(28px,5vw,60px) clamp(20px,5vw,48px) 16px; }
+.botanical-today .page-heading h1 { font-size: clamp(2.6rem,7vw,4.8rem); line-height: .96; }
+.botanical-today .page-heading p, .botanical-today .state-panel > div > p { color: #5f6f65; }
+.botanical-today .page-heading::after { background: var(--bc-line); max-width: none; width: 100%; }
+.botanical-today .page-content { display: grid; gap: clamp(28px,5vw,52px); max-width: 980px; padding: 0 clamp(20px,5vw,48px) calc(154px + env(safe-area-inset-bottom)); }
+.botanical-today .today-create, .botanical-today .today-queue { border-top: 1px solid var(--bc-line); display: grid; gap: 18px; min-width: 0; padding-top: 22px; }
+.botanical-today .today-create { background: linear-gradient(125deg,rgba(231,236,223,.9),rgba(253,253,247,.8)); border: 1px solid rgba(25,59,42,.1); border-radius: 22px; box-shadow: 0 14px 34px rgba(15,42,29,.045); padding: clamp(18px,3vw,28px); }
+.botanical-today .today-create > .section-heading, .botanical-today .today-queue > .section-heading { align-items: baseline; margin: 0; }
+.botanical-today .today-create h2, .botanical-today .today-queue h2 { font-size: clamp(1.7rem,4vw,2.35rem); line-height: 1; }
+.botanical-today .today-create .editor-card { background: rgba(253,253,247,.76); border-color: rgba(25,59,42,.12); box-shadow: none; margin: 0; }
+.botanical-today .attention-list { display: grid; gap: 12px; }
+.botanical-today .attention-item { background: rgba(253,253,247,.78); border: 1px solid rgba(25,59,42,.11); border-radius: 18px; box-shadow: 0 8px 18px rgba(15,42,29,.035); margin: 0; padding: clamp(16px,2.5vw,22px); transition: border-color .18s ease, box-shadow .18s ease; }
+.botanical-today .attention-item:hover { border-color: rgba(25,59,42,.25); box-shadow: 0 13px 26px rgba(15,42,29,.07); }
+.botanical-today .attention-item__icon { background: var(--bc-sage); border-color: rgba(25,59,42,.12); color: var(--bc-forest); }
+.botanical-today .attention-item strong { color: var(--bc-ink); font-size: 1.03rem; line-height: 1.22; }
+.botanical-today .attention-item small { color: var(--bc-muted); overflow-wrap: anywhere; }
+.botanical-today .attention-item__manage { color: var(--bc-forest); }
+.botanical-today .attention-item__actions { align-items: stretch; display: grid; gap: 10px; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 16px; }
+.botanical-today .attention-item__actions > button, .botanical-today .attention-item__actions > a { align-items: center; justify-content: center; margin: 0; min-height: 46px; text-align: center; width: 100%; }
+.botanical-today .attention-item__actions .text-button { background: transparent; border: 1px solid rgba(25,59,42,.27); border-radius: 999px; color: var(--bc-forest); font-weight: 700; padding: 10px 14px; text-decoration: none; }
+.botanical-today .attention-resolution { background: var(--bc-surface); border: 1px solid rgba(25,59,42,.13); border-radius: 18px; box-shadow: 0 12px 28px rgba(15,42,29,.05); margin-top: 16px; padding: clamp(18px,3vw,26px); scroll-margin-block-end: calc(164px + env(safe-area-inset-bottom)); }
+.botanical-today .attention-resolution > .section-heading { border-bottom: 1px solid var(--bc-line); margin: 0 0 18px; padding-bottom: 14px; }
+.botanical-today .attention-resolution h3 { font-size: clamp(1.4rem,3vw,1.9rem); line-height: 1.06; }
+.botanical-today .attention-resolution fieldset { border-color: var(--bc-line); }
+.botanical-today .attention-resolution .button-row { align-items: stretch; gap: 10px; }
+.botanical-today .attention-resolution .button-row > * { min-height: 46px; }
+.botanical-today .attention-editor { scroll-margin-block-end: calc(164px + env(safe-area-inset-bottom)); }
+.botanical-today :is(button,a,select,textarea,input):focus-visible, .botanical-ask :is(button,a,select,textarea,input):focus-visible { outline: 3px solid #b66a13; outline-offset: 3px; }
+
+.botanical-ask .page-content { max-width: 1040px; padding: clamp(10px,2vw,22px) clamp(16px,5vw,48px) calc(142px + env(safe-area-inset-bottom)); }
+.botanical-ask .ask-garden-chat { background: linear-gradient(145deg,rgba(253,253,247,.72),rgba(231,236,223,.48)); border: 1px solid rgba(25,59,42,.1); border-radius: clamp(22px,3vw,32px); box-shadow: 0 18px 44px rgba(15,42,29,.055); min-height: min(72svh,760px); overflow: hidden; padding: clamp(18px,3.6vw,38px); }
+.botanical-ask .ask-garden-chat__header { border-bottom: 1px solid var(--bc-line); gap: 12px; padding-bottom: 19px; }
+.botanical-ask .ask-garden-chat__header .eyebrow { color: #63805f; letter-spacing: .12em; }
+.botanical-ask .ask-garden-chat__header h1 { color: var(--bc-ink); font-size: clamp(2.15rem,5vw,4.1rem); letter-spacing: -.055em; line-height: .92; }
+.botanical-ask .ask-garden-chat__header-actions { align-items: center; gap: 10px; }
+.botanical-ask .ask-garden-chat__header-actions > span { background: rgba(231,236,223,.85); border: 1px solid rgba(25,59,42,.1); border-radius: 999px; color: var(--bc-forest); font-size: .78rem; font-weight: 700; padding: 7px 10px; }
+.botanical-ask .ask-garden-thread { min-width: 0; padding: clamp(20px,4vw,42px) 0; scrollbar-color: rgba(37,75,57,.32) transparent; }
+.botanical-ask .ask-garden-empty { align-content: center; margin: auto; max-width: 710px; min-height: 100%; padding: clamp(14px,4vw,34px) 0; }
+.botanical-ask .ask-garden-empty__mark { background: var(--bc-sage); color: var(--bc-forest); }
+.botanical-ask .ask-garden-empty h2 { color: var(--bc-ink); font-size: clamp(2rem,4.5vw,3.4rem); letter-spacing: -.05em; line-height: .95; }
+.botanical-ask .ask-garden-empty > p { color: var(--bc-muted); font-size: clamp(1rem,2vw,1.14rem); max-width: 49ch; }
+.botanical-ask .ask-garden-suggestion-group { border-top: 1px solid var(--bc-line); margin-top: 10px; padding-top: 19px; width: min(100%,650px); }
+.botanical-ask .ask-garden-suggestions__label { color: #63805f; font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
+.botanical-ask .ask-garden-suggestions button { background: rgba(253,253,247,.86); border-color: rgba(25,59,42,.13); box-shadow: 0 7px 16px rgba(15,42,29,.035); color: var(--bc-ink); min-height: 54px; text-align: left; }
+.botanical-ask .ask-garden-suggestions button:hover { background: #fffef9; border-color: rgba(25,59,42,.29); box-shadow: 0 11px 22px rgba(15,42,29,.07); transform: translateY(-1px); }
+.botanical-ask .ask-garden-message { max-width: min(100%,720px); }
+.botanical-ask .ask-garden-question { background: var(--bc-forest); box-shadow: 0 10px 22px rgba(15,42,29,.12); overflow-wrap: anywhere; }
+.botanical-ask .ask-garden-answer { background: rgba(253,253,247,.9); border-color: rgba(25,59,42,.12); box-shadow: 0 10px 24px rgba(15,42,29,.045); overflow-wrap: anywhere; }
+.botanical-ask .ask-garden-answer p, .botanical-ask .ask-garden-answer li { overflow-wrap: anywhere; }
+.botanical-ask .ask-garden-sources { border-top-color: var(--bc-line); }
+.botanical-ask .ask-garden-answer .text-link { color: var(--bc-forest); }
+.botanical-ask .ask-garden-compose { background: rgba(253,253,247,.94); border: 1px solid rgba(25,59,42,.13); border-radius: 20px; box-shadow: 0 12px 30px rgba(15,42,29,.075); padding: 8px; z-index: 1; }
+.botanical-ask .ask-garden-compose textarea { background: transparent; color: var(--bc-ink); min-height: 50px; padding: 12px 14px; resize: vertical; }
+.botanical-ask .ask-garden-compose textarea::placeholder { color: #728077; }
+.botanical-ask .ask-garden-compose__send { background: var(--bc-forest); color: #fffdf7; flex: 0 0 48px; height: 48px; width: 48px; }
+.botanical-ask .ask-garden-compose__send:disabled { background: #9aaca0; }
+.botanical-ask .ask-garden-compose__send:hover:not(:disabled) { background: #193a30; }
+@media (min-width: 720px) { .botanical-today .today-queue { gap: 20px; } .botanical-ask .ask-garden-chat { min-height: min(74svh,820px); } }
+@media (max-width: 640px) { .botanical-today .page-heading { padding-top: 22px; } .botanical-today .page-content { gap: 26px; padding-bottom: calc(154px + env(safe-area-inset-bottom)); } .botanical-today .attention-item__actions { grid-template-columns: 1fr; } .botanical-today .attention-item__manage { width: 100%; } .botanical-today .attention-resolution .button-row { display: grid; grid-template-columns: 1fr; } .botanical-ask .page-content { padding-bottom: 0; } .botanical-ask .ask-garden-chat { border-radius: 0; border-width: 0; box-shadow: none; height: calc(100svh - 78px - 70px - env(safe-area-inset-bottom)); min-height: 0; padding: 20px 16px 8px; } .botanical-ask .ask-garden-chat__header h1 { font-size: clamp(2.05rem,11vw,2.7rem); } .botanical-ask .ask-garden-chat__header-actions > span { display: none; } .botanical-ask .ask-garden-thread { padding: 22px 0; } .botanical-ask .ask-garden-empty { align-content: start; padding-top: 22px; } .botanical-ask .ask-garden-suggestions button { min-height: 58px; } .botanical-ask .ask-garden-compose { border-radius: 18px; margin-bottom: max(8px,env(safe-area-inset-bottom)); } .botanical-ask .ask-garden-compose textarea { resize: none; } }
+@media (prefers-reduced-motion: reduce) { .botanical-today .attention-item, .botanical-ask .ask-garden-suggestions button { transition: none; } .botanical-ask .ask-garden-suggestions button:hover { transform: none; } }

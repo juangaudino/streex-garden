@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1230" />
-  <meta name="description" content="Garden X Grow Guide Lab — structured, sourced plant care guidance." />
+  <meta name="description" content="Garden Labs — experimental Garden X experiences for User Zero validation." />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" href="./assets/lab-icon-approved-512.jpg" type="image/jpeg" />
   <link rel="apple-touch-icon" href="./assets/lab-icon-approved-512.jpg" />
@@ -12,14 +12,19 @@
   <link rel="stylesheet" href="./language.css" />
   <link rel="stylesheet" href="./visual.css" />
   <link rel="stylesheet" href="./inventory-neighbors.css" />
-  <title>Garden X · Grow Guide Lab</title>
+  <link rel="stylesheet" href="./garden-labs.css" />
+  <title>Garden Labs · Garden Library</title>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div>
-        <p class="eyebrow" data-i18n="prototype">GARDEN X · PROTOTIPO</p>
-        <h1 data-i18n="title">Grow Guide</h1>
+      <div class="lab-brand">
+        <img class="lab-brand-mark" src="./assets/lab-icon-approved-512.jpg" alt="" />
+        <div>
+          <p class="eyebrow" data-i18n="prototype">GARDEN LABS · EXPERIMENTAL</p>
+          <h1 data-i18n="title">Garden Library</h1>
+          <span class="lab-status" data-i18n="labStatus">Laboratorio activo · User Zero</span>
+        </div>
       </div>
       <div class="topbar-actions">
         <div class="language-toggle" aria-label="Language / Idioma">
@@ -33,34 +38,88 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <span class="hero-kicker" data-i18n="kicker">Conocimiento que sabe dónde están sus límites.</span>
-          <h2 data-i18n="heroTitle">Sabe qué hacer con la planta que tienes delante.</h2>
-          <p data-i18n="heroBody">Guía estructurada para raleo, poda, cosecha y manejo hidropónico, manteniendo la evidencia separada de las adaptaciones de Garden.</p>
+          <span class="hero-kicker" data-i18n="kicker">Garden X prueba aquí antes de producir.</span>
+          <h2 data-i18n="heroTitle">Lo que Garden sabe y lo que tú tienes, juntos sin mezclar su verdad.</h2>
+          <p data-i18n="heroBody">Garden Library reúne conocimiento de cultivo e inventario personal dentro de Garden Labs. Cada capa conserva su propia fuente de verdad.</p>
         </div>
-        <div class="trust-legend" aria-label="Leyenda de evidencia">
-          <span class="legend-chip source-backed">● <span data-i18n="sourceBacked">Respaldado por fuente</span></span>
-          <span class="legend-chip garden-adaptation">● <span data-i18n="gardenAdaptation">Adaptación de Garden</span></span>
-          <span class="legend-chip needs-validation">● <span data-i18n="needsValidation">Necesita validación</span></span>
+        <div class="lab-proof-row" aria-label="Principios del laboratorio">
+          <span class="lab-proof">🧪 <span data-i18n="labProofExperiment">Experimento aislado</span></span>
+          <span class="lab-proof">🌱 <span data-i18n="labProofUserZero">Validación User Zero</span></span>
+          <span class="lab-proof">↔ <span data-i18n="labProofSeparation">Fuentes separadas</span></span>
         </div>
       </section>
 
-      <section class="controls" aria-label="Filtros de la guía">
-        <label class="search-box">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Busca albahaca, basil, lechuga, Jolly Jester…" autocomplete="off" />
-        </label>
-        <div id="categoryFilters" class="filter-row"></div>
-      </section>
+      <nav class="library-tabs" aria-label="Garden Library">
+        <button id="guideTab" class="library-tab active" type="button" data-view="guide" data-i18n="guideTab">Guía</button>
+        <button id="seedsTab" class="library-tab" type="button" data-view="seeds" data-i18n="seedsTab">Semillas</button>
+      </nav>
 
-      <section class="library-section">
-        <div class="section-heading">
+      <section id="guideSurface" data-surface="guide">
+        <div class="surface-intro">
           <div>
-            <p class="eyebrow" data-i18n="library">BIBLIOTECA DE SEMILLAS USER ZERO</p>
-            <h3 id="resultCount">Cargando semillas…</h3>
+            <p class="eyebrow" data-i18n="guideEyebrow">GARDEN LIBRARY · GUÍA</p>
+            <h2 data-i18n="guideTitle">Grow Guide</h2>
           </div>
-          <p class="muted" data-i18n="version">V0.5 · 29 semillas disponibles · ES/EN · visual + vecinas</p>
+          <p data-i18n="guideIntro">Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.</p>
         </div>
-        <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
+
+        <div class="guide-evidence-bar">
+          <div class="trust-legend" aria-label="Leyenda de evidencia">
+            <span class="legend-chip source-backed">● <span data-i18n="sourceBacked">Respaldado por fuente</span></span>
+            <span class="legend-chip garden-adaptation">● <span data-i18n="gardenAdaptation">Adaptación de Garden</span></span>
+            <span class="legend-chip needs-validation">● <span data-i18n="needsValidation">Necesita validación</span></span>
+          </div>
+        </div>
+
+        <section class="controls" aria-label="Filtros de la guía">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Busca albahaca, basil, lechuga, Jolly Jester…" autocomplete="off" />
+          </label>
+          <div id="categoryFilters" class="filter-row"></div>
+        </section>
+
+        <section class="library-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="library">BIBLIOTECA DE CULTIVOS USER ZERO</p>
+              <h3 id="resultCount">Cargando variedades…</h3>
+            </div>
+            <p class="muted" data-i18n="version">V0.6 · 29 guías · ES/EN · visual + vecinas + inventario</p>
+          </div>
+          <div id="plantGrid" class="plant-grid" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section id="seedsSurface" data-surface="seeds" hidden>
+        <div class="surface-intro">
+          <div>
+            <p class="eyebrow" data-i18n="seedsEyebrow">GARDEN LIBRARY · SEMILLAS</p>
+            <h2 data-i18n="seedsTitle">Tus semillas</h2>
+          </div>
+          <p data-i18n="seedsIntro">Qué paquetes tienes realmente, su estado aproximado y dónde están. Los cambios de este Lab se guardan solo en este dispositivo.</p>
+        </div>
+
+        <div class="seed-toolbar">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="seedSearchInput" type="search" placeholder="Busca tomate, basil, Ferry-Morse…" autocomplete="off" />
+          </label>
+          <button id="addSeedButton" class="lab-primary-button" type="button" data-i18n="addSeed">+ Añadir semilla</button>
+        </div>
+
+        <div id="seedFilters" class="seed-filter-row" aria-label="Filtros de semillas"></div>
+
+        <section class="seed-library-section">
+          <div class="seed-section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="seedInventoryEyebrow">INVENTARIO USER ZERO</p>
+              <h3 id="seedResultCount">Cargando paquetes…</h3>
+            </div>
+            <p class="muted" data-i18n="seedStorageNote">Estado personal local · evidencia del sobre separada</p>
+          </div>
+          <div id="seedGrid" class="seed-grid" aria-live="polite"></div>
+        </section>
       </section>
     </main>
   </div>
@@ -69,6 +128,13 @@
     <div class="dialog-frame">
       <button id="closeDialog" class="close-button" aria-label="Cerrar guía">×</button>
       <div id="plantDetail"></div>
+    </div>
+  </dialog>
+
+  <dialog id="seedDialog" class="seed-dialog">
+    <div class="seed-dialog-frame">
+      <button id="closeSeedDialog" class="close-button" aria-label="Cerrar semilla">×</button>
+      <div id="seedDetail"></div>
     </div>
   </dialog>
 

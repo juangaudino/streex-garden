@@ -224,3 +224,45 @@ Los tests nuevos cubren identidad/proyecciones, navegación sin mutación, formu
 7. **Growth Film 02.2** mantiene pendiente la QA autenticada con fotos reales y el fullscreen nativo en Safari de un iPhone físico.
 
 Sin migraciones, deploy, push ni escrituras sobre datos de usuario. Los archivos `VISUAL_DEPTH_STUDY`/`depth-study*` ajenos se preservaron. Se entrega un corte local de integración funcional, no un cierre visual ni una validación en producción.
+
+## Cierre visual Terra High — 12 de septiembre de 2026
+
+### Implementado
+
+- `plant-botanical.css` aplica la dirección aprobada sólo a `.plant-page`, `.plant-sheet` y la variante de shell de Planta. No se modificaron tokens, CSS ni componentes de Maintenance, Growth Film u otras rutas.
+- El retrato documental, posición, identidad, nombre común, nombre inglés/científico, hechos de siembra y diario conservan la composición aprobada. La imagen ocupa el protagonismo sin duplicar el pie de captura.
+- Presente, estado de cosecha, invitación a Growth Film, AI, historia, foto-strip, línea temporal, correcciones y colofón reciben jerarquía editorial y se adaptan sin quitar accesos ni datos canónicos.
+- Las hojas reutilizadas conservan los formularios reales. Se ajustaron elección de registro, revisión, seguimientos, detalle/procedencia, AI y formularios extensos para legibilidad móvil, áreas táctiles y pie de acciones estable.
+
+### QA visual y responsive completada
+
+Se ejecutó el entorno aislado en `127.0.0.1:4196`, con servicios, fotos y errores simulados; no hubo cuenta, RPC, Storage, `public/`, endpoints internos ni datos de usuario.
+
+| Cobertura | Resultado |
+| --- | --- |
+| 320 px | Retrato y cabecera sin recorte ni desborde visible; foto, posición, identidad y navegación inferior legibles. |
+| 390 px | Presente, diario, estado vacío, ciclo cerrado, nombre largo y hoja de observación/planning visibles y legibles. |
+| 820 px | Retrato y fotografía horizontal mantienen proporción, identidad y acciones sin colisión. |
+| 1440 px | Composición editorial de dos columnas, hechos y retrato equilibrados. |
+| Nombre largo e identidad no confirmada | Conserva el `crop_name` y «Nombre botánico sin confirmar», con salto de línea seguro. |
+| Historia abundante | Muestra diez registros iniciales, cuatro fotografías y el acceso «Ver 10 más» sin cambiar el modelo de historial. |
+| Hojas, foco y teclado | El foco abre en el título de la hoja; `Escape` la cierra y lo devuelve al disparador de opciones. La hoja de planificación conserva campos y pie de acciones sin densidad excesiva. |
+| Movimiento/transparencia/contraste | Reglas específicas respetan las preferencias del sistema además de los resguardos botánicos existentes. |
+| Consola del navegador QA | Sin errores ni avisos. |
+
+La marca de imagen del shell puede aparecer ausente en QA porque `publicDir: false` bloquea deliberadamente los assets del producto; la marca no es parte de la evidencia de Planta ni se modificó para ocultar esa separación.
+
+### Validación técnica de cierre
+
+| Comprobación | Resultado |
+| --- | --- |
+| Suite completa `npm test` | **31 archivos, 144 pruebas aprobadas**. |
+| `npm run build` | **Aprobado**. Persisten los avisos previos de bundle mayor a 500 kB e import dinámico inefectivo de `photo-renditions`. |
+| TypeScript QA | **Aprobado** con `npx tsc -p qa/plant-integration/tsconfig.json`. |
+| Build QA aislado | **Aprobado** con `npx vite build --config qa/plant-integration/vite.config.ts`. |
+| ESLint de Planta y QA | **Aprobado sin errores ni avisos**. |
+| `git diff --check` | **Aprobado**. |
+
+### Validación autenticada pendiente
+
+La fase visual está cerrada localmente. Aún requiere una pasada autenticada e independiente para confirmar: carga de fotografías y originales reales; URL firmada, Storage y recuperación; datos de ciclos y correcciones reales; operaciones canónicas contra el backend; portadas planta/jardín/Home; y presentación física en Safari/iPhone. Esta comprobación no se sustituyó con mocks ni se ejecutó sobre datos del usuario.

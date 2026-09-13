@@ -10,6 +10,7 @@ import { recordLabel } from './photo-presentation'
 import { plantPresentation } from './plant-presentation'
 import { PlantHistory } from './PlantHistory'
 import type { PlantSheetIntent } from './plant-intents'
+import './plant-botanical.css'
 
 export function PlantStudio({ cycle, onOpen, onCoverChanged, onMessage }: {
   cycle: GrowCycleDetail; onOpen: (intent: PlantSheetIntent) => void; onCoverChanged: () => Promise<void>; onMessage: (message: string) => void

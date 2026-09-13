@@ -1,7 +1,7 @@
 const demoRefs = {
   shell: document.querySelector("#demoShell"),
   frame: document.querySelector("#demoDeviceFrame"),
-  deviceButtons: [...document.querySelectorAll("[data-device]")],
+  deviceButtons: [...document.querySelectorAll(".demo-device-button[data-device]")],
   deviceLabel: document.querySelector("#demoDeviceLabel"),
   openFrameless: document.querySelector("#openFrameless"),
   returnToDemo: document.querySelector("#returnToDemo"),
@@ -9,6 +9,7 @@ const demoRefs = {
   seedsTab: document.querySelector("#seedsTab"),
   productEyebrow: document.querySelector("#productEyebrow"),
   productTitle: document.querySelector("#productTitle"),
+  versionLabel: document.querySelector("[data-i18n='version']"),
   languageButtons: [...document.querySelectorAll("[data-language]")],
 };
 
@@ -24,6 +25,7 @@ const shellCopy = {
     seedsEyebrow: "GARDEN LABS · SEEDS",
     libraryTitle: "Garden Library",
     seedsTitle: "Seeds",
+    version: "V0.7 · 29 guías · ES/EN · visual + vecinas + inventario",
   },
   en: {
     studio: "PROTOTYPE STUDIO · 01",
@@ -36,6 +38,7 @@ const shellCopy = {
     seedsEyebrow: "GARDEN LABS · SEEDS",
     libraryTitle: "Garden Library",
     seedsTitle: "Seeds",
+    version: "V0.7 · 29 guides · ES/EN · visual + neighbors + inventory",
   },
 };
 
@@ -62,7 +65,7 @@ function applyShellLanguage() {
   if (mode) mode.textContent = text.mode;
   if (open) open.textContent = text.open;
 
-  // Lab projects keep product names stable across languages.
+  // Lab project names remain stable across languages.
   if (demoRefs.guideTab) {
     demoRefs.guideTab.removeAttribute("data-i18n");
     demoRefs.guideTab.textContent = text.library;
@@ -70,6 +73,10 @@ function applyShellLanguage() {
   if (demoRefs.seedsTab) {
     demoRefs.seedsTab.removeAttribute("data-i18n");
     demoRefs.seedsTab.textContent = text.seeds;
+  }
+  if (demoRefs.versionLabel) {
+    demoRefs.versionLabel.removeAttribute("data-i18n");
+    demoRefs.versionLabel.textContent = text.version;
   }
   updateProductHeader();
 }
@@ -97,9 +104,7 @@ function setDevice(device) {
 function setFrameless(frameless) {
   document.body.classList.toggle("demo-frameless", frameless);
   if (demoRefs.returnToDemo) demoRefs.returnToDemo.hidden = !frameless;
-  if (frameless) {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }
+  if (frameless) window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 demoRefs.deviceButtons.forEach((button) => {
@@ -111,7 +116,7 @@ demoRefs.returnToDemo?.addEventListener("click", () => setFrameless(false));
 
 [demoRefs.guideTab, demoRefs.seedsTab].forEach((button) => {
   button?.addEventListener("click", () => {
-    // app.js owns the actual surface switch; this only updates the Lab shell label.
+    // app.js owns the actual surface switch; this only updates Lab chrome.
     window.setTimeout(updateProductHeader, 0);
   });
 });
@@ -122,4 +127,4 @@ demoRefs.languageButtons.forEach((button) => {
 
 setDevice(localStorage.getItem("gardenLabsDemoDevice") || "mobile");
 applyShellLanguage();
-window.setTimeout(updateProductHeader, 0);
+window.setTimeout(applyShellLanguage, 300);

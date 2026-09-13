@@ -1,7 +1,7 @@
-const CACHE_NAME = "garden-labs-v0-7-0";
+const CACHE_NAME = "garden-labs-v0-7-1";
 const APP_SHELL = [
   "./",
-  "./index.html?v=0.7.0",
+  "./index.html?v=0.7.1",
   "./styles.css?v=0.7.0",
   "./language.css?v=0.7.0",
   "./visual.css?v=0.7.0",
@@ -9,9 +9,8 @@ const APP_SHELL = [
   "./garden-labs.css?v=0.7.0",
   "./app.js?v=0.7.0",
   "./demo-shell.js?v=0.7.0",
-  "./manifest.json?v=0.7.0",
-  "/app-icon.svg",
-  "/apple-touch-icon.png",
+  "./manifest.json?v=0.7.1",
+  "./assets/lab-icon-approved-512.jpg",
   "./data/plants.json",
   "./data/plants-current-gardens.json",
   "./data/plants-owned-seeds.json",
@@ -54,7 +53,7 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(async () => {
-          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.0"));
+          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.1"));
         })
     );
     return;

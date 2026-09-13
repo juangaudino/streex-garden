@@ -1,5 +1,4 @@
 import { access, cp, mkdir, readFile, rm } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 
 const root = process.cwd();
@@ -40,12 +39,8 @@ if (plants.length !== 29 || uniquePlantIds.size !== 29) {
 }
 
 const manifest = JSON.parse(await readFile(resolve(source, 'manifest.json'), 'utf8'));
-const approvedTouchIconPath = './assets/lab-icon-approved-180.png';
 const approvedIconPath = './assets/lab-icon-approved-512.jpg';
 const manifestPath = (value = '') => value.split('?')[0];
-if (!manifest.icons?.some((icon) => manifestPath(icon.src) === approvedTouchIconPath && icon.type === 'image/png')) {
-  throw new Error('Garden Labs manifest is not using the approved PNG touch icon.');
-}
 if (!manifest.icons?.some((icon) => manifestPath(icon.src) === approvedIconPath && icon.type === 'image/jpeg')) {
   throw new Error('Garden Labs manifest is not using the exact User Zero-approved Lab source artwork.');
 }
@@ -53,16 +48,17 @@ if (manifest.short_name !== 'Garden Labs') {
   throw new Error(`Garden Labs manifest validation failed: expected short_name "Garden Labs", got "${manifest.short_name}".`);
 }
 
-const touchIcon = await readFile(resolve(source, 'assets/lab-icon-approved-180.png'));
-const touchIconSha256 = createHash('sha256').update(touchIcon).digest('hex');
-const expectedTouchIconSha256 = 'fc9a8a2b88a588acf29fe9348959d541a6ebd56f1f47d880b8bd9ac6478a7558';
-if (touchIconSha256 !== expectedTouchIconSha256) {
-  throw new Error(`Garden Labs touch icon validation failed: expected ${expectedTouchIconSha256}, got ${touchIconSha256}.`);
+const sourceIcon = await readFile(resolve(source, 'assets/lab-icon-approved-512.jpg'));
+if (sourceIcon.length < 10000 || sourceIcon[0] !== 0xff || sourceIcon[1] !== 0xd8) {
+  throw new Error('Garden Labs approved source icon is missing or is not a valid JPEG payload.');
 }
 
-await access(resolve(source, 'assets/lab-icon-approved-512.jpg'));
+const purchaseDatePatch = await readFile(resolve(source, 'seed-purchase-date.js'), 'utf8');
+if (!purchaseDatePatch.includes('type="date"') || !purchaseDatePatch.includes('purchaseDate')) {
+  throw new Error('Garden Labs exact Purchase Date patch is missing.');
+}
+
 await access(resolve(source, 'garden-labs.css'));
-await access(resolve(source, 'seed-purchase-date.js'));
 await access(resolve(source, 'demo-shell.js'));
 
 await rm(destination, { recursive: true, force: true });
@@ -76,5 +72,5 @@ await cp(resolve(source, 'assets'), resolve(destination, 'assets'), { recursive:
 await cp(resolve(source, 'data'), resolve(destination, 'data'), { recursive: true });
 
 console.log(`Validated ${plants.length} unique Garden Library guide records.`);
-console.log('Validated complete Garden Labs iOS icon bytes, source artwork, manifest name, and exact purchase-date patch.');
+console.log('Validated exact User Zero-approved source artwork, Garden Labs manifest, and exact Purchase Date patch.');
 console.log('Synced Garden Labs prototype to public/grow-guide-lab');

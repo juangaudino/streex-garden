@@ -1,17 +1,23 @@
 {
-  "name": "Garden Labs — Garden Library",
+  "name": "Garden Labs",
   "short_name": "Garden Labs",
-  "description": "Garden X experimental laboratory for validating Garden Library with User Zero.",
-  "start_url": "./index.html",
+  "description": "Garden X experimental laboratory for User Zero product validation.",
+  "start_url": "./index.html?v=0.7.0",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0b1230",
-  "theme_color": "#0b1230",
+  "background_color": "#f4f1e8",
+  "theme_color": "#16113b",
   "icons": [
     {
-      "src": "./assets/lab-icon-approved-512.jpg",
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon.svg",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]

@@ -2,20 +2,14 @@
   "name": "Garden Labs",
   "short_name": "Garden Labs",
   "description": "Garden X experimental laboratory for User Zero product validation.",
-  "start_url": "./index.html?v=0.7.2",
+  "start_url": "./index.html?v=0.7.3",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f1e8",
   "theme_color": "#16113b",
   "icons": [
     {
-      "src": "./assets/lab-icon-approved-180.png?v=0.7.2",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./assets/lab-icon-approved-512.jpg?v=0.7.2",
+      "src": "./assets/lab-icon-approved-512.jpg?v=0.7.3",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any"

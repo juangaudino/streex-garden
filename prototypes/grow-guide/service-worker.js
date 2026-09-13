@@ -1,15 +1,17 @@
-const CACHE_NAME = "garden-labs-library-v0-6-0";
+const CACHE_NAME = "garden-labs-v0-7-0";
 const APP_SHELL = [
   "./",
-  "./index.html",
-  "./styles.css",
-  "./language.css",
-  "./visual.css",
-  "./inventory-neighbors.css",
-  "./garden-labs.css",
-  "./app.js",
-  "./manifest.json",
-  "./assets/lab-icon-approved-512.jpg",
+  "./index.html?v=0.7.0",
+  "./styles.css?v=0.7.0",
+  "./language.css?v=0.7.0",
+  "./visual.css?v=0.7.0",
+  "./inventory-neighbors.css?v=0.7.0",
+  "./garden-labs.css?v=0.7.0",
+  "./app.js?v=0.7.0",
+  "./demo-shell.js?v=0.7.0",
+  "./manifest.json?v=0.7.0",
+  "/app-icon.svg",
+  "/apple-touch-icon.png",
   "./data/plants.json",
   "./data/plants-current-gardens.json",
   "./data/plants-owned-seeds.json",
@@ -40,16 +42,33 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        const copy = response.clone();
-        if (new URL(event.request.url).origin === self.location.origin) {
+  const requestUrl = new URL(event.request.url);
+  const sameOrigin = requestUrl.origin === self.location.origin;
+
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        }
+          return response;
+        })
+        .catch(async () => {
+          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.0"));
+        })
+    );
+    return;
+  }
+
+  if (!sameOrigin) return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(event.request))
   );
 });

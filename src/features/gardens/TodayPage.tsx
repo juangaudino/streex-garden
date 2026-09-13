@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import { CheckCircle2 } from 'lucide-react'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import type { AttentionItem, GardenSummary } from '../../domain/types'
@@ -23,11 +22,10 @@ export function TodayPage() {
   // eslint-disable-next-line react-hooks/set-state-in-effect -- the async loader writes only after the server settles.
   useEffect(() => { void load() }, [load])
 
-  return <AppShell title="Hoy" subtitle="Lo que requiere atención ahora">
-    <section className="today-intro"><CheckCircle2 size={22} aria-hidden="true" /><div><h2>Atención</h2><p>Esta es la misma cola canónica que aparece en Jardines. Las novedades de visitas se consultan por separado.</p></div></section>
-    {gardens && gardens.length > 0 && <section className="today-create"><div className="section-heading"><h2>Añadir seguimiento</h2><span>Manual</span></div>{gardens.length > 1 && <label>Jardín<select value={gardenId} onChange={(event) => setGardenId(event.target.value)}>{gardens.map((garden) => <option key={garden.id} value={garden.id}>{garden.name}</option>)}</select></label>}{gardenId && <AttentionTaskForm gardenId={gardenId} onCreated={load} compact />}</section>}
+  return <AppShell presentation="today" title="Hoy" subtitle="Revisa lo que dejaste pendiente.">
+    {gardens && gardens.length > 0 && <section className="today-create" aria-labelledby="today-create-title"><div className="section-heading"><h2 id="today-create-title">Añadir seguimiento</h2><span>Manual</span></div>{gardens.length > 1 && <label>Jardín<select value={gardenId} onChange={(event) => setGardenId(event.target.value)}>{gardens.map((garden) => <option key={garden.id} value={garden.id}>{garden.name}</option>)}</select></label>}{gardenId && <AttentionTaskForm gardenId={gardenId} onCreated={load} compact />}</section>}
     {!items && !error && <StatePanel kind="loading" title="Consultando atención" />}
     {error && <StatePanel kind="error" title="No se pudo cargar Atención" onRetry={() => void load()}>{error}</StatePanel>}
-    {items && <AttentionList items={items} onChanged={load} />}
+    {items && <section className="today-queue" aria-labelledby="today-queue-title"><div className="section-heading"><h2 id="today-queue-title">Pendientes</h2></div><AttentionList items={items} onChanged={load} /></section>}
   </AppShell>
 }

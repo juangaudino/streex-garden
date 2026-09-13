@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 
 const root = resolve('qa/surfaces-integration')
 const fixtures = resolve(root, 'fixtures.ts')
-const isolated = new Set(['garden-api', 'offline-observation-store', 'export-download'])
+const isolated = new Set(['garden-api', 'ai-gateway', 'offline-observation-store', 'export-download'])
 const brands = ['garden-x-mark.png', 'garden-x-logo.png']
 export default defineConfig({
   root, publicDir: false,

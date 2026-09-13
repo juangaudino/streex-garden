@@ -1,8 +1,8 @@
 # Botanical Studio — Fase 03: extensión del sistema visual
 
-Fecha de preparación: 13 de septiembre de 2026. Estado actual: **03.A funcional terminado; CSS y QA visual/responsive de Home/Jardines pendientes**. Hoy y Ask Garden no se han implementado.
+Fecha de preparación: 13 de septiembre de 2026. Estado actual: **Home/Jardines cerrados localmente; Hoy + Ask Garden conectados y validados funcionalmente**. CSS y QA visual/responsive final de Hoy/Ask, QA cruzada de Fase 03 y validación autenticada/física siguen pendientes.
 
-Modelo autorizado para este tramo: **GPT-5.6 Sol High**. No se ha identificado una complejidad nueva que requiera Astra Extra High. El siguiente bloque necesita confirmación del usuario antes de comenzar.
+Modelo autorizado para el tramo funcional de Hoy + Ask Garden: **GPT-5.6 Sol High**. No se ha identificado una complejidad nueva que requiera Astra Extra High. El siguiente bloque recomendado es **Terra High para CSS + QA visual/responsive**, pendiente de confirmación del usuario.
 
 ## Alcance y base aprobada
 
@@ -10,7 +10,7 @@ Extender Living Botanical Cinema a Home, Jardines, Hoy y Ask Garden sobre los co
 
 La integración de [Maintenance 02.1](BOTANICAL_STUDIO_PHASE_02_1.md), [Growth Film 02.2](BOTANICAL_STUDIO_PHASE_02_2.md) y [Planta 02.3](BOTANICAL_STUDIO_PHASE_02_3.md) es la referencia de ejecución. Esta fase no modifica esas superficies. Siguen pendientes sus validaciones autenticadas/físicas que constan en los informes; en particular, fotos reales y fullscreen nativo de Growth Film en Safari de iPhone.
 
-El tramo inicial de mapeo se basó en lectura del código, componentes compartidos y documentación aprobada, sin crear fixtures, estilos ni componentes. La implementación posterior 03.A se documenta al final. Ninguna de estas entregas constituye QA visual en navegador, prueba autenticada ni prueba de backend.
+El tramo inicial de mapeo se basó en lectura del código, componentes compartidos y documentación aprobada, sin crear fixtures, estilos ni componentes. Las implementaciones y sus validaciones posteriores se documentan al final. Los tramos funcionales no sustituyen la QA visual, y ninguna prueba local con fixtures constituye validación autenticada o del backend.
 
 Base inspeccionada: `a3460d9`, rama `codex/botanical-plant-integration`. El worktree separado de Maintenance y los archivos no rastreados `docs/VISUAL_DEPTH_STUDY.md` y `qa/depth-study*` quedan fuera del alcance.
 
@@ -182,7 +182,7 @@ Sol High sigue siendo adecuado para comenzar 03.A: la dirección está resuelta 
 
 ## Matriz de QA prevista
 
-La matriz es un plan; **ninguna fila está aprobada por este documento**. No repetir como pendientes los controles que el usuario ya aprobó en fases anteriores. Aquí se comprueban la extensión y sus regresiones concretas.
+La matriz siguiente es el plan original. Las entregas al final registran la evidencia local alcanzada; una prueba con mocks no aprueba su contraparte autenticada/física. No repetir como pendientes los controles que el usuario ya aprobó en fases anteriores. Aquí se comprueban la extensión y sus regresiones concretas.
 
 | ID | Superficie / escenario | Resultado esperado | Evidencia necesaria |
 | --- | --- | --- | --- |
@@ -330,6 +330,76 @@ Las cuatro medidas se verificaron mediante Chromium headless local con el DOM re
 3. Se conservan los límites anteriores: crear tras enviar no aborta la petición, Home espera consultas de biblioteca y URLs firmadas requieren comprobación independiente.
 4. El build aún avisa por un chunk de producto mayor a 500 kB y un import dinámico inefectivo previo de `photo-renditions.ts`; no pertenecen a esta capa visual.
 
-Hoy y Ask Garden quedan sin cambios para el siguiente bloque. Los pendientes físicos/autenticados de Film y Planta se mantienen separados.
+Al cerrar 03.B, Hoy y Ask Garden quedaron sin cambios para el siguiente bloque. La entrega funcional posterior figura a continuación. Los pendientes físicos/autenticados de Film y Planta se mantienen separados.
 
 **Parada natural cumplida. Siguiente bloque recomendado: GPT-5.6 Sol High para Hoy + Ask Garden.** El trabajo será una extensión visual sobre flujos ya existentes, pero Hoy reúne estados operativos y Ask Garden requiere conservar con precisión sus garantías de lectura/propuesta sin escrituras implícitas. Sol High ofrece revisión suficiente de esos contratos y la aplicación de patrones aprobados. Elevar a Astra sólo si la inspección muestra una frontera nueva de AI, navegación o persistencia que no esté cubierta por los contratos actuales. No avanzar sin confirmación del usuario.
+
+### Entrega — Hoy + Ask Garden: tramo funcional
+
+Estado: **tramo funcional cerrado localmente**, sobre base `9627fae`. El usuario autorizó reunir ambas superficies en este bloque; se mantiene la separación respecto del siguiente tramo de CSS/QA visual. No se considera cerrada toda la Fase 03.
+
+#### Conexión aplicada
+
+- `AppShell` añade variantes `today` y `ask`, con scopes `botanical-today` y `botanical-ask`. No reciben el scope de colección; Home/Jardines mantienen sus clases, navegación y reglas de visita.
+- Hoy adopta la introducción aprobada «Revisa lo que dejaste pendiente.» y secciones etiquetadas de creación y cola. Conserva `getAttention`/`getHome`, orden completo, jardín seleccionado válido y todos los editores canónicos existentes. No hay una nueva capa de tareas, prioridades o persistencia.
+- Ask Garden separa la etiqueta de las tres sugerencias y expone un marcador del mensaje pendiente para ajustar su tamaño posteriormente. Conserva composición, fuentes desplegables, enlaces y composer. El scroll JS usa `auto` con movimiento reducido y `smooth` en el resto.
+- El resolver determinístico, textos de respuesta, rotación, condición del gateway, request keys, contexto acotado y submit permanecen intactos. **Garden AI no se activó**. Las respuestas AI de las pruebas y del harness son fixtures locales.
+- `AttentionList`, `AttentionTaskForm` y `AttentionTaskEditor` no fueron modificados. Se probaron desde Hoy: evaluación explícita, acción realizada, posposición, descarte y creación siguen llamando a las mismas operaciones sólo tras confirmar.
+
+#### Archivos de esta entrega
+
+| Archivo | Cambio |
+| --- | --- |
+| `src/components/AppShell.tsx` | Variantes aditivas de presentación, sin modificar rutas/acciones del shell. |
+| `src/features/gardens/TodayPage.tsx` | Introducción y secciones accesibles alrededor de la cola/formularios existentes. |
+| `src/features/gardens/AskGardenPage.tsx` | Sugerencias separadas, marcador de pendiente y scroll con movimiento reducido. |
+| `src/features/gardens/OperationalPages.test.tsx` | 27 pruebas de los componentes reales con servicios/gateway simulados. |
+| `qa/surfaces-integration/QaCollections.tsx` | Rutas Hoy/Ask y selector de escenarios. |
+| `qa/surfaces-integration/fixtures.ts` | Cola mixta de trece propósitos, contexto parcial, tareas vacías, proyección/cosecha sintéticas y respuestas AI simuladas. |
+| `qa/surfaces-integration/main.tsx` | Inicialización del escenario fuera del render para cumplir las reglas de hooks. |
+| `qa/surfaces-integration/vite.config.ts` | También sustituye el gateway por fixtures; mantiene el bloqueo de imports Supabase. |
+| `qa/surfaces-integration/index.html` | Etiqueta del harness de Fase 03. |
+| Este documento | Cierre funcional, evidencia, riesgos y siguiente parada. |
+
+No se modificaron CSS, rutas de producto, APIs, dominio, contratos V1, variables de entorno, migraciones ni dependencias. Los archivos no rastreados de `depth-study` siguen fuera de alcance.
+
+#### Evidencia funcional
+
+| Matriz | Evidencia alcanzada | Validación restante |
+| --- | --- | --- |
+| T01–T02 | Vacío/sin jardines, orden/fechas/contexto parcial y trece propósitos con editores correctos; pruebas de DOM. Harness mixto renderiza 13 tareas. | Presentación final en los cuatro tamaños; cola real autenticada. |
+| T03 | Payload de seguimiento distinto, fecha opcional, respuesta ya existente, conservación de jardín válido y fallback si desaparece. | Operación/persistencia real y densidad del formulario. |
+| T04–T05 | Cuatro resultados visuales y cuatro de desarrollo; acción realizada con `reviewResult:null`; nada se escribe al elegir/visualizar. | Resultado/evento canónico real tras confirmar. |
+| T06–T07 | Fecha/motivo requerido comprobados mediante validez nativa del DOM; cancelar no escribe; payloads de posponer/descartar; offline, error, request ID reutilizado y doble submit bloqueado durante busy. | Interacción nativa en Safari y persistencia autenticada. |
+| A01–A03 | Carga/error/reintento, tres sugerencias separadas, ruta determinística aunque gateway esté ready, fallback disabled, cosecha confirmada y destino, AI lenta/aclaración/fuentes/no fuentes con mocks. Rotación/resolver conservan las pruebas de dominio existentes. | Fuentes reales autenticadas; no habilitar AI por esta entrega. |
+| A04–A06 | Pregunta optimista durante espera, render de respuesta larga, contexto limitado a cuatro preguntas/respuestas y longitudes 300/500, request keys nuevas, error conservando pregunta, Enter/Shift+Enter, maxlength y Nueva sesión sin escrituras. | Tamaño de burbujas, selección/copia, lectura/scroll y teclado físico. |
+| V03 / R03 | Scroll JS `auto` con movimiento reducido; tests de navegación/Ask sin llamadas de escritura de Attention; diff sin cambios de dominio/gateway/persistencia. | Foco/objetivos táctiles y comparación de conteos reales. |
+
+**Prueba de carga e interacción en Chromium local:** harness en `127.0.0.1:4198`, sin errores de navegador ni overlay de Vite. Hoy mostró trece tareas; tras seleccionar «Vigilar» y confirmar, el registro simulado contiene una sola llamada `completeAttentionItem` con `reviewResult:"watch"` y quedan doce tareas. Ask recibió una pregunta por Enter y produjo una llamada `askGarden (SIMULATED)`, fuentes de interpretación y cero operaciones de escritura. Los recursos externos observados fueron las hojas de Google Fonts existentes, no servicios de Garden ni proveedores AI.
+
+Capturas locales de carga, **no aprobación visual final**:
+
+- `artifacts/surfaces-integration/phase03-functional/garden-phase03-hoy-smoke.png`
+- `artifacts/surfaces-integration/phase03-functional/garden-phase03-ask-smoke.png`
+
+Se cerraron navegador y servidor al terminar. Para retomar el harness: `npx vite --config qa/surfaces-integration/vite.config.ts`; entradas locales `/?surface=today&scenario=mixed-attention&embed=1` y `/?surface=ask-garden&scenario=ai-answer&embed=1`. No son URLs remotas ni despliegues. Los escenarios `ai-*` sustituyen el gateway, nunca configuran el AI real. El checkbox de lectura lenta permite observar la espera; los botones de fallar lectura/guardado sólo afectan fixtures.
+
+| Validación final | Resultado |
+| --- | --- |
+| `npm test` | 33 archivos, 187 pruebas aprobadas (27 nuevas). |
+| `npm run build` | Aprobado; incluye typecheck del producto. |
+| `npm run lint` | Aprobado sin errores ni advertencias. |
+| Typecheck del harness | `npx tsc -p qa/surfaces-integration/tsconfig.json --pretty false` aprobado. |
+| Build del harness | `npx vite build --config qa/surfaces-integration/vite.config.ts` aprobado. |
+| Revisión React | Keys de tareas/mensajes/sugerencias conservadas; sin nuevos efectos de datos, estado duplicado o formularios alternativos; secciones/input etiquetados; render del harness sin acceso a refs. |
+| `git diff --check` | Aprobado. |
+
+#### Riesgos y límites
+
+1. **CSS y QA visual/responsive pendientes.** En la prueba de Hoy a 1280×720, un botón de confirmación quedó bajo la navegación fija en su punto de clic; después de centrarlo con scroll se pudo confirmar normalmente. El siguiente tramo debe garantizar que navegación/composer no cubran controles, sin recurrir a clics forzados. Se conservan las colisiones CSS ya identificadas para sugerencias y los tamaños de mensajes pendientes.
+2. V01/V02/V04 y la parte visual de A04/R01/R02 no se cierran aquí: faltan 320/390/820/1440 px, zoom 200%, teclado/foco, tamaños táctiles, contenidos abundantes y regresiones visuales cruzadas.
+3. **QA autenticada/física pendiente:** tareas reales, persistencia de evaluaciones/acciones/posposición/descarte y conteos antes/después de Ask; teclado/safe area y Safari de iPhone. Mocks/build/browser sintético no prueban el backend, RLS ni el dispositivo.
+4. Se mantienen los límites de comportamiento existentes: Nueva sesión no aborta una consulta AI en curso; Hoy puede conservar contenido previo junto al error de recarga; cambiar presentación no modifica esos contratos. Los fixtures ilustran estados, no reproducen toda la idempotencia/semántica del servidor.
+5. Build conserva avisos previos de chunk >500 kB e import dinámico inefectivo de `photo-renditions.ts`. La suite conserva el aviso no fatal de jsdom sobre navegación a otro documento.
+
+**Parada natural: recomendar Terra High para CSS + QA visual/responsive de Hoy y Ask Garden.** La dirección, datos y operaciones ya están definidos y probados; el siguiente trabajo consiste en aplicar estilos acotados, resolver las colisiones documentadas y obtener evidencia de navegador en los tamaños previstos. No hay una complejidad nueva de arquitectura o AI que justifique Astra. No continuar ni publicar hasta nueva autorización.

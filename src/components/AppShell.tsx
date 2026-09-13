@@ -9,7 +9,7 @@ import { clearObservationDrafts, getObservationDrafts } from '../lib/offline-obs
 import { downloadObservationDrafts } from '../lib/export-download'
 
 interface AppShellProps extends PropsWithChildren {
-  presentation?: 'cycle' | 'maintenance' | 'story' | 'plant'
+  presentation?: 'cycle' | 'maintenance' | 'story' | 'plant' | 'collection-home' | 'collection-gardens'
   title?: string
   subtitle?: string
   backTo?: string
@@ -22,6 +22,7 @@ export function AppShell({ children, title, subtitle, backTo, actions, presentat
   const navigate = useNavigate()
   const location = useLocation()
   const isCycleRoute = /^\/cycle\/[^/]+$/.test(location.pathname)
+  const isCollection = presentation === 'collection-home' || presentation === 'collection-gardens'
   const [showEntry, setShowEntry] = useState(() => window.sessionStorage.getItem('streex-garden-entry-seen') !== '1')
   const [pendingSignOut, setPendingSignOut] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
@@ -62,7 +63,7 @@ export function AppShell({ children, title, subtitle, backTo, actions, presentat
     target?.querySelector<HTMLElement>('textarea, input, button')?.focus({ preventScroll: true })
   }
   return (
-    <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}${presentation ? ` app-shell--${presentation}` : ''}`}>
+    <div className={`app-shell app-shell--${location.pathname === '/' ? 'home' : 'detail'}${presentation ? ` app-shell--${presentation}` : ''}${isCollection ? ' botanical-surface botanical-collection' : ''}`}>
       {showEntry && <div className="app-entry" aria-hidden="true"><GrowthRings /><img className="app-entry__logo" src="/brand/garden-x-logo.png" alt="" /></div>}
       {pendingSignOut && <section className="signout-dialog" role="dialog" aria-modal="true" aria-labelledby="signout-title"><div className="signout-dialog__panel"><h2 id="signout-title">Hay borradores pendientes</h2><p>Antes de cerrar sesión, sincronízalos desde su ciclo, expórtalos en este dispositivo o descártalos. Al salir se borra el almacenamiento local para que otra cuenta no pueda verlos.</p>{signOutError && <p className="inline-message inline-message--error" role="alert">{signOutError}</p>}<div className="button-row"><button className="secondary-button" type="button" disabled={signingOut} onClick={() => setPendingSignOut(false)}>Volver a sincronizar</button><button className="secondary-button" type="button" disabled={signingOut} onClick={() => void exportDraftsThenSignOut()}><Download size={16} aria-hidden="true" /> Exportar y cerrar</button><button className="primary-button" type="button" disabled={signingOut} onClick={() => void completeSignOut()}>{signingOut ? 'Cerrando…' : 'Descartar y cerrar'}</button></div></div></section>}
       <header className="topbar">

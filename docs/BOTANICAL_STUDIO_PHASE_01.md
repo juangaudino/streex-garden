@@ -133,9 +133,10 @@ Orden de integración aprobado tras la revisión móvil de la Fase 01:
 
 1. **Fase 02.1 — Maintenance y base compartida.** Conectar la presentación a los formularios y operaciones existentes. Separar «Se ve bien» de navegación, conservar la posición después de guardar y compactar las hojas móviles. [Informe de cierre](BOTANICAL_STUDIO_PHASE_02_1.md).
 2. **Fase 02.2 — Growth Film.** Implementación y QA responsive cerrados y aceptados. Se conserva la composición entre preview y archivo exportado. **Pendiente explícito: QA autenticada con fotos reales y fullscreen nativo en Safari de un iPhone físico.** [Informe y alcance de verificación](BOTANICAL_STUDIO_PHASE_02_2.md).
-3. **Fase 02.3 — Planta.** Preparación e integración funcional con Sol High terminadas; siguiente tramo de CSS aprobado y QA visual/responsive con Terra High, tras el cambio de modelo. Conservar la composición aprobada e incorporar nombre en inglés y científico debajo del nombre principal, sobre las capacidades reales existentes. [Guía de integración y relevo](BOTANICAL_STUDIO_PHASE_02_3.md).
+3. **Fase 02.3 — Planta.** Integración funcional, CSS aprobado y QA visual/responsive cerrados localmente y aceptados. Se conserva la composición aprobada con nombre en inglés y científico debajo del nombre principal y las capacidades reales existentes. La validación autenticada/física pendiente permanece explícita en el [informe de cierre](BOTANICAL_STUDIO_PHASE_02_3.md).
+4. **Fase 03 — extensión del sistema visual.** Mapeo de las cuatro superficies y conexión funcional de Home/Jardines terminados con Sol High. Siguiente tramo: CSS aprobado y QA visual/responsive de esas dos superficies con Terra High, tras confirmación. Hoy y Ask Garden no se han implementado. [Guía, entrega 03.A y matriz de QA](BOTANICAL_STUDIO_PHASE_03.md).
 
-La dirección visual está cerrada. Home, Jardines, Hoy y Ask Garden no forman parte de esta integración de Maintenance; cualquier extensión posterior se delimitará por separado.
+La dirección visual está cerrada. Home, Jardines, Hoy y Ask Garden no forman parte de la integración de Maintenance; su extensión se delimita por separado en Fase 03.
 
 El estudio anterior `qa/depth-study*` permanece independiente y sin modificaciones en esta entrega. No se fusionaron sus estilos con esta propuesta.
 

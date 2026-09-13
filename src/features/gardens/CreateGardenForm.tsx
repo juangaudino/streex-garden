@@ -31,7 +31,7 @@ export function CreateGardenForm({ onCreated, onCancel }: { onCreated: (gardenId
   return (
     <form className="editor-card" onSubmit={(event) => void handleSubmit(event)}>
       <h2>Configura el jardín</h2>
-      <p>Podrás editar el mapa físico después de crearlo: añade espacios de cultivo, puntos técnicos y la distribución real de tu equipo.</p>
+      <p>Después podrás ajustar los espacios de cultivo, los puntos técnicos y la distribución de tu equipo.</p>
       <label>Nombre<input autoFocus required maxLength={80} value={name} onChange={(event) => setName(event.target.value)} placeholder="Por ejemplo, Jardín 1" /></label>
       <label>Modelo o sistema<input maxLength={80} value={systemModel} onChange={(event) => setSystemModel(event.target.value)} /></label>
       <fieldset>

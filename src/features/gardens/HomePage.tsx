@@ -3,12 +3,12 @@ import type { User } from '@supabase/supabase-js'
 import { ArrowRight, Clock3, Sprout } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
-import { GrowthRings } from '../../components/GrowthRings'
 import { StatePanel } from '../../components/StatePanel'
 import type { HomeDashboard, PhotoEvidence } from '../../domain/types'
 import { getGardenCoverPhotos, getHome, getHomeDashboard, getHomeMedia } from '../../lib/garden-api'
 import { GardenCoverImage } from './GardenCover'
 import { AttentionList } from './GardensPage'
+import { BotanicalGardenCard } from './BotanicalGardenCard'
 
 export function HomePage({ user }: { user: User }) {
   void user
@@ -30,14 +30,19 @@ export function HomePage({ user }: { user: User }) {
   // eslint-disable-next-line react-hooks/set-state-in-effect -- only writes after the remote dashboard settles.
   useEffect(() => { void load() }, [load])
   const gardens = dashboard?.gardens ?? []
-  return <AppShell>
-    <section className={`home-hero${heroPhoto ? ' home-hero--photo' : ''}`}>{heroPhoto && <GardenCoverImage photo={heroPhoto} alt="" className="home-hero__photo" rendition="hero" />}<GrowthRings /><p>Garden X</p><h1>{headline}</h1><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link></section>
+  return <AppShell presentation="collection-home">
+    <section className={`home-hero bc-home-hero${heroPhoto ? ' home-hero--photo' : ''}`} aria-labelledby="home-title">
+      {heroPhoto && <GardenCoverImage photo={heroPhoto} alt="" className="home-hero__photo" rendition="hero" />}
+      <div className="bc-home-hero__copy"><p className="bs-eyebrow">Garden X</p><h1 id="home-title">{headline}</h1><Link className="primary-button" to="/gardens">Ver jardines <ArrowRight size={17} aria-hidden="true" /></Link></div>
+    </section>
     {!dashboard && !error && <StatePanel kind="loading" title="Preparando Home" />}
     {error && <StatePanel kind="error" title="No se pudo abrir Home" onRetry={() => void load()}>{error}</StatePanel>}
     {dashboard && <>
-      <section className="home-scene" aria-labelledby="home-gardens"><div className="section-heading"><h2 id="home-gardens">Tus jardines</h2><Link className="text-link" to="/gardens">Ver todos <ArrowRight size={15} aria-hidden="true" /></Link></div><div className="home-scene__gardens">{gardens.map((garden, index) => <Link to={`/garden/${garden.id}`} key={garden.id} className="home-scene__garden">{garden.cover_photo && <GardenCoverImage photo={garden.cover_photo} alt="" />}<div><span>{String(index + 1).padStart(2, '0')}</span><strong>{garden.name}</strong><small>{garden.active_positions} activas · {garden.position_capacity} posiciones</small></div></Link>)}</div></section>
-      <section className="home-summary-grid"><div><div className="section-heading"><h2>Desde la última vez</h2><Clock3 size={17} aria-hidden="true" /></div>{dashboard.since_last_time.changes.length > 0 ? <div className="home-change-list">{dashboard.since_last_time.changes.slice(0, 3).map((change) => <Link className="home-change" key={change.cursor} to={change.grow_cycle_id ? `/cycle/${change.grow_cycle_id}` : change.garden_id ? `/garden/${change.garden_id}` : '/gardens'}><strong>{change.summary}</strong><ArrowRight size={16} aria-hidden="true" /></Link>)}</div> : <p className="quiet-copy">No hay novedades confirmadas desde tu última visita.</p>}</div>
-        <div><div className="section-heading"><h2>Para hoy</h2><Sprout size={17} aria-hidden="true" /></div><AttentionList compact items={dashboard.attention.items} />{dashboard.attention.items.length > 0 && <Link className="text-link" to="/today">Ver pendientes <ArrowRight size={15} aria-hidden="true" /></Link>}</div></section>
+      <section className="bc-section" aria-labelledby="home-gardens"><div className="section-heading"><h2 id="home-gardens">Tus jardines</h2><Link className="text-link" to="/gardens">Ver todos <ArrowRight size={15} aria-hidden="true" /></Link></div>
+        {gardens.length > 0 ? <div className="bc-garden-grid">{gardens.map(garden => <BotanicalGardenCard key={garden.id} garden={garden} />)}</div> : <div className="bc-catalog-empty"><StatePanel kind="empty" title="Tu jardín empieza aquí">Configura tu primer sistema para empezar a registrar su historia.</StatePanel><Link className="secondary-button" to="/gardens">Ver jardines <ArrowRight size={16} aria-hidden="true" /></Link></div>}
+      </section>
+      <div className="bc-summary-grid"><section className="bc-section" aria-labelledby="home-changes"><div className="section-heading"><h2 id="home-changes">Desde la última vez</h2><Clock3 size={17} aria-hidden="true" /></div>{dashboard.since_last_time.changes.length > 0 ? <div className="home-change-list">{dashboard.since_last_time.changes.slice(0, 3).map((change) => <Link className="home-change" key={change.cursor} to={change.grow_cycle_id ? `/cycle/${change.grow_cycle_id}` : change.garden_id ? `/garden/${change.garden_id}` : '/gardens'}><strong>{change.summary}</strong><ArrowRight size={16} aria-hidden="true" /></Link>)}</div> : <p className="quiet-copy">No hay novedades confirmadas desde tu última visita.</p>}</section>
+        <section className="bc-section" aria-labelledby="home-attention"><div className="section-heading"><h2 id="home-attention">Atención</h2><Sprout size={17} aria-hidden="true" /></div><AttentionList compact items={dashboard.attention.items} />{dashboard.attention.items.length > 0 && <Link className="text-link" to="/today">Ver pendientes <ArrowRight size={15} aria-hidden="true" /></Link>}</section></div>
     </>}
   </AppShell>
 }

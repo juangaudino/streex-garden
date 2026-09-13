@@ -9,8 +9,7 @@ import type { AttentionItem, HomeChange, HomeDashboard } from '../../domain/type
 import { acknowledgeHomeSnapshot, getHome, getHomeDashboard, getOpenMaintenanceSession, setMaintenanceSessionState, startMaintenanceSession } from '../../lib/garden-api'
 import { CreateGardenForm } from './CreateGardenForm'
 import { AttentionTaskEditor } from './AttentionTaskTools'
-import { GrowthRings } from '../../components/GrowthRings'
-import { GardenCoverImage } from './GardenCover'
+import { BotanicalGardenCard } from './BotanicalGardenCard'
 
 function dateLabel(value: string): string {
   return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
@@ -119,25 +118,21 @@ export function GardensPage({ user }: { user: User }) {
   }
 
   return (
-    <AppShell title="Tus jardines" actions={<div className="heading-actions__row"><Link className="secondary-button secondary-button--compact" to="/control"><ChartNoAxesColumnIncreasing size={16} aria-hidden="true" /> Control</Link>{openMaintenanceId ? <Link className="secondary-button secondary-button--compact" to={`/maintenance/${openMaintenanceId}`}><Wrench size={16} aria-hidden="true" /> Reanudar</Link> : <button className="secondary-button secondary-button--compact" type="button" onClick={() => { setMaintenanceGardenIds(gardens?.map((garden) => garden.id) ?? []); setSelectingMaintenance(true) }}><Wrench size={16} aria-hidden="true" /> Mantenimiento</button>}<button className="primary-button primary-button--compact" type="button" onClick={() => setCreating(true)}><Plus size={17} aria-hidden="true" /> Añadir</button></div>}>
-      {creating && <CreateGardenForm onCancel={() => setCreating(false)} onCreated={(gardenId) => navigate(`/garden/${gardenId}`)} />}
+    <AppShell presentation="collection-gardens" title="Tus jardines" actions={<div className="heading-actions__row"><Link className="secondary-button secondary-button--compact" to="/control"><ChartNoAxesColumnIncreasing size={16} aria-hidden="true" /> Control</Link><button className="primary-button primary-button--compact" type="button" onClick={() => setCreating(true)}><Plus size={17} aria-hidden="true" /> Añadir jardín</button></div>}>
+      {creating && <div className="bc-create"><CreateGardenForm onCancel={() => setCreating(false)} onCreated={(gardenId) => navigate(`/garden/${gardenId}`)} /></div>}
+      <section className="bc-maintenance" aria-labelledby="maintenance-access"><div className="section-heading"><h2 id="maintenance-access">Recorrido de mantenimiento</h2>{!openMaintenanceId && <button className="secondary-button" type="button" onClick={() => { setMaintenanceGardenIds(gardens?.map((garden) => garden.id) ?? []); setSelectingMaintenance(true) }}><Wrench size={16} aria-hidden="true" /> Mantenimiento</button>}</div>
       {openMaintenanceId && <section className="home-cache-notice home-maintenance-notice"><Wrench size={18} aria-hidden="true" /><div><strong>Tienes un recorrido de mantenimiento abierto.</strong><span>Reanúdalo para continuar donde quedaste o cancélalo. Lo ya registrado se conserva.</span><div className="button-row"><Link className="primary-button primary-button--compact" to={`/maintenance/${openMaintenanceId}`}>Reanudar recorrido</Link><button className="secondary-button secondary-button--compact" type="button" disabled={abandoningMaintenance} onClick={() => setConfirmAbandonMaintenance(true)}>Cancelar recorrido</button></div></div></section>}
       {confirmAbandonMaintenance && <section className="editor-card maintenance-start"><div className="section-heading"><h2>¿Cancelar este recorrido?</h2><button className="text-button" type="button" disabled={abandoningMaintenance} onClick={() => setConfirmAbandonMaintenance(false)}>Volver</button></div><p>Se cerrará este recorrido sin marcar las posiciones pendientes. Las revisiones u omisiones que ya guardaste se conservan.</p><button className="secondary-button" type="button" disabled={abandoningMaintenance} onClick={() => void abandonMaintenance()}>{abandoningMaintenance ? 'Cancelando…' : 'Sí, cancelar recorrido'}</button></section>}
-      {selectingMaintenance && <section className="editor-card maintenance-start"><div className="section-heading"><h2>Iniciar mantenimiento</h2><button className="text-button" type="button" onClick={() => setSelectingMaintenance(false)}>Cancelar</button></div><p>Selecciona uno o ambos jardines. Las posiciones y ocupantes actuales quedarán capturados al iniciar.</p>{gardens?.map((garden) => <label className="choice" key={garden.id}><input type="checkbox" checked={maintenanceGardenIds.includes(garden.id)} onChange={(event) => setMaintenanceGardenIds((current) => event.target.checked ? [...current, garden.id] : current.filter((id) => id !== garden.id))} />{garden.name}</label>)}<button className="primary-button" type="button" disabled={startingMaintenance || maintenanceGardenIds.length === 0 || !navigator.onLine} onClick={() => void startMaintenance()}>{startingMaintenance ? 'Iniciando…' : 'Iniciar recorrido'}</button></section>}
+      {selectingMaintenance && <section className="editor-card maintenance-start"><div className="section-heading"><h2>Iniciar mantenimiento</h2><button className="text-button" type="button" onClick={() => setSelectingMaintenance(false)}>Cancelar</button></div><p>Selecciona los jardines que quieres recorrer. Las posiciones y ocupantes actuales quedarán capturados al iniciar.</p>{gardens?.map((garden) => <label className="choice" key={garden.id}><input type="checkbox" checked={maintenanceGardenIds.includes(garden.id)} onChange={(event) => setMaintenanceGardenIds((current) => event.target.checked ? [...current, garden.id] : current.filter((id) => id !== garden.id))} />{garden.name}</label>)}<button className="primary-button" type="button" disabled={startingMaintenance || maintenanceGardenIds.length === 0 || !navigator.onLine} onClick={() => void startMaintenance()}>{startingMaintenance ? 'Iniciando…' : 'Iniciar recorrido'}</button></section>}
+      </section>
       {cached && dashboard && <div className="home-cache-notice"><Clock3 size={18} aria-hidden="true" /><span>Mostrando la última instantánea guardada: {dateLabel(dashboard.visit.snapshot_at)}. Al reconectar se recuperará el intervalo real.</span></div>}
-      <section className="home-section home-section--gardens" aria-labelledby="garden-list">
+      <section className="bc-section bc-catalog" aria-labelledby="garden-list">
         <div className="section-heading"><h2 id="garden-list">Jardines</h2>{gardens && <span>{gardens.length}</span>}</div>
         {gardens === null && !error && <StatePanel kind="loading" title="Cargando tus jardines" />}
-        {gardens?.length === 0 && !creating && <StatePanel kind="empty" title="Empieza con tu primer jardín">Crea el sistema y sus posiciones para registrar su historia.</StatePanel>}
-        {gardens && gardens.length > 0 && <div className="garden-list">{gardens.map((garden, index) => {
-          const cover = garden.cover_photo ?? null
-          return <Link className={`garden-card${cover ? ' garden-card--environment' : ''}`} to={`/garden/${garden.id}`} key={garden.id}>
-            <div className="garden-card__art" aria-hidden="true">{cover && <GardenCoverImage photo={cover} alt="" />}<div className="garden-card__overlay"><GrowthRings /><span>{String(index + 1).padStart(2, '0')}</span><small>{garden.active_positions} activas</small></div></div>
-            <div className="garden-card__copy"><h3>{garden.name}</h3><p>{garden.system_model ?? 'Sistema sin especificar'} · {garden.position_capacity} posiciones</p><span className="card-link">Abrir jardín <ArrowRight size={16} aria-hidden="true" /></span></div>
-          </Link>
-        })}</div>}
+        {gardens?.length === 0 && !creating && <div className="bc-catalog-empty"><StatePanel kind="empty" title="Empieza con tu primer jardín">Crea el sistema y sus posiciones para registrar su historia.</StatePanel><button className="secondary-button" type="button" onClick={() => setCreating(true)}><Plus size={16} aria-hidden="true" /> Crear primer jardín</button></div>}
+        {gardens && gardens.length > 0 && <div className="bc-garden-grid">{gardens.map(garden => <BotanicalGardenCard key={garden.id} garden={garden} showSystem />)}</div>}
       </section>
-      <section className="home-section home-section--secondary" aria-labelledby="since-last-time">
+      <div className="bc-summary-grid"><section className="bc-section" aria-labelledby="since-last-time">
         <div className="section-heading"><h2 id="since-last-time">Desde la última vez</h2>{dashboard && <span>{dashboard.visit.first_visit ? 'Tu primera vista' : `${changes.length} novedades`}</span>}</div>
         {!dashboard && !error && <StatePanel kind="loading" title="Preparando tu resumen" />}
         {error && <StatePanel kind="error" title="No se pudo cargar el inicio" onRetry={() => void load()}>{error}</StatePanel>}
@@ -145,12 +140,12 @@ export function GardensPage({ user }: { user: User }) {
         {dashboard && !dashboard.visit.first_visit && changes.length === 0 && <StatePanel kind="empty" title="No hay cambios registrados">No se registraron novedades desde tu última visita a Jardines.</StatePanel>}
         {dashboard && !dashboard.visit.first_visit && changes.length > 0 && <div className="home-change-list">{changes.map((change) => <ChangeRow key={change.cursor} change={change} />)}</div>}
       </section>
-      <section className="home-section home-section--secondary" aria-labelledby="attention">
+      <section className="bc-section" aria-labelledby="attention">
         <div className="section-heading"><h2 id="attention">Atención</h2>{dashboard && <span>{attention.length === 0 ? 'Sin pendientes' : `${attention.length} pendientes`}</span>}</div>
         {!dashboard && !error && <StatePanel kind="loading" title="Consultando atención" />}
         {dashboard && <AttentionList items={attention} compact />}
         {dashboard && attention.length > 0 && <Link className="text-link" to="/today">Ver toda la atención <ArrowRight size={16} aria-hidden="true" /></Link>}
-      </section>
+      </section></div>
     </AppShell>
   )
 }

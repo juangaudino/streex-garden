@@ -1,7 +1,7 @@
 {
-  "name": "Garden X Grow Guide Lab",
-  "short_name": "Grow Guide Lab",
-  "description": "Garden X laboratory prototype for evidence-aware plant growing guidance.",
+  "name": "Garden Labs — Garden Library",
+  "short_name": "Garden Labs",
+  "description": "Garden X experimental laboratory for validating Garden Library with User Zero.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

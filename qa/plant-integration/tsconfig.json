@@ -1,0 +1,1 @@
+{"extends":"../../tsconfig.app.json","compilerOptions":{"tsBuildInfoFile":"../../node_modules/.tmp/tsconfig.plant-qa.tsbuildinfo"},"include":["*.ts","*.tsx","../../src/vite-env.d.ts"]}

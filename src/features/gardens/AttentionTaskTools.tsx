@@ -59,26 +59,33 @@ export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = 
   </form>
 }
 
-export function AttentionTaskEditor({ task, onChanged }: { task: AttentionItem; onChanged: () => Promise<void> | void }) {
+export function AttentionTaskEditor({ task, onChanged, onBusyChange }: { task: AttentionItem; onChanged: () => Promise<void> | void; onBusyChange?: (busy: boolean) => void }) {
   const [action, setAction] = useState<'complete' | 'defer' | 'dismiss' | null>(null)
   const [date, setDate] = useState('')
   const [note, setNote] = useState('')
   const [result, setResult] = useState(isVisualReview(task) ? 'reassuring' : 'ready')
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const saving = useRef(false)
+  const request = useRef({ key: '', id: '' })
   const reset = () => { setAction(null); setMessage(null); setNote(''); setDate('') }
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    if (saving.current || !action) return
     if (!navigator.onLine) { setMessage('Esta acción requiere conexión. No se guardó ningún cambio.'); return }
-    setBusy(true); setMessage(null)
+    saving.current = true
+    setBusy(true); onBusyChange?.(true); setMessage(null)
     try {
-      const requestId = crypto.randomUUID()
+      const key = JSON.stringify([task.id, action, date, note, result])
+      if (request.current.key !== key) request.current = { key, id: crypto.randomUUID() }
+      const requestId = request.current.id
       if (action === 'defer') await deferAttentionItem({ requestId, taskId: task.id, nextReviewOn: date, reason: note || undefined })
       if (action === 'dismiss') await dismissAttentionItem({ requestId, taskId: task.id, reason: note })
       if (action === 'complete') await completeAttentionItem({ requestId, taskId: task.id, note: note || undefined, reviewResult: task.purpose.startsWith('evaluate_') ? result : null })
       await onChanged()
+      request.current = { key: '', id: '' }
       reset()
-    } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo actualizar la atención.') } finally { setBusy(false) }
+    } catch (reason) { setMessage(reason instanceof Error ? reason.message : 'No se pudo actualizar la atención.') } finally { saving.current = false; setBusy(false); onBusyChange?.(false) }
   }
 
   if (action === null) return <div className="attention-item__actions">
@@ -89,7 +96,7 @@ export function AttentionTaskEditor({ task, onChanged }: { task: AttentionItem; 
 
   const title = action === 'complete' ? (isVisualReview(task) ? 'Guardar mi observación visual' : isDevelopmentReview(task) ? 'Guardar evaluación' : `Registrar y completar: ${attentionPurposeLabel(task.purpose)}`) : action === 'defer' ? 'Posponer atención' : 'Descartar atención'
   return <form className="attention-resolution" onSubmit={(event) => void submit(event)}>
-    <div className="section-heading"><h3>{title}</h3><button className="text-button" type="button" onClick={reset}>Cancelar</button></div>
+    <div className="section-heading"><h3>{title}</h3><button className="text-button" type="button" disabled={busy} onClick={reset}>Cancelar</button></div>
     {action === 'defer' && <><label>Volver a destacar el<input required type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label><label>Nota <span className="field-optional">opcional</span><input value={note} maxLength={500} onChange={(event) => setNote(event.target.value)} /></label></>}
     {action === 'dismiss' && <label>Por qué no hace falta<textarea required value={note} maxLength={500} onChange={(event) => setNote(event.target.value)} /></label>}
     {action === 'complete' && <>

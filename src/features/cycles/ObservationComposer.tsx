@@ -24,11 +24,13 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued, compa
   const [capturedAt, setCapturedAt] = useState<string | null>(null)
   const [draftAiBusy, setDraftAiBusy] = useState(false)
   const [captureSource, setCaptureSource] = useState<'camera' | 'picker'>('picker')
+  const alive = useRef(true)
   const working = useRef(false)
   const photoVersion = useRef(0)
 
-  useEffect(() => () => {
-    if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current)
+  useEffect(() => {
+    alive.current = true
+    return () => { alive.current = false; if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current) }
   }, [])
 
   const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +46,7 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued, compa
     const source = event.target.capture ? 'camera' : 'picker'
     setCaptureSource(source)
     setCapturedAt(null)
-    if (nextFile) void readExifCapture(nextFile).then((exif) => { if (version !== photoVersion.current) return; if (exif) setCapturedAt(exif); else if (source === 'camera') setCapturedAt(new Date().toISOString()) })
+    if (nextFile) void readExifCapture(nextFile).then((exif) => { if (!alive.current || version !== photoVersion.current) return; if (exif) setCapturedAt(exif); else if (source === 'camera') setCapturedAt(new Date().toISOString()) })
     setMessage(nextFile && !getPhotoMetadata(nextFile) ? 'Usa una imagen JPEG, PNG, HEIC, HEIF o WebP.' : null)
   }
 
@@ -52,7 +54,7 @@ export function ObservationComposer({ growCycleId, onSaved, onDraftQueued, compa
     if (!file || working.current) return
     working.current = true
     setDraftAiBusy(true); onBusyChange?.(true); setMessage(null)
-    try { const proposal = await requestDraftAiCheck({ growCycleId, file, requestKey: `ai-check-draft:${growCycleId}:${crypto.randomUUID()}` }); onDraftAiProposal?.(proposal); setMessage('Análisis listo. La foto aún no se ha guardado.') }
+    try { const proposal = await requestDraftAiCheck({ growCycleId, file, requestKey: `ai-check-draft:${growCycleId}:${crypto.randomUUID()}` }); if (!alive.current) return; onDraftAiProposal?.(proposal); setMessage('Análisis listo. La foto aún no se ha guardado.') }
     catch (reason) { setMessage(reason instanceof Error ? reason.message : 'Garden AI no está disponible ahora.') }
     finally { working.current = false; setDraftAiBusy(false); onBusyChange?.(false) }
   }

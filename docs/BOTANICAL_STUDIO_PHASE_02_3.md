@@ -1,8 +1,8 @@
 # Botanical Studio — Fase 02.3 · Planta
 
-Estado al 12 de septiembre de 2026: **preparación de integración terminada; implementación pendiente del relevo a Sol High**.
+Estado al 12 de septiembre de 2026: **integración funcional y validación automatizada de Sol High terminadas; CSS aprobado y QA visual/responsive pendientes de Terra High**. La Fase 02.3 todavía no está cerrada.
 
-El usuario aprobó la dirección de la Fase 01 y autorizó preparar Planta con Astra Extra High. No se abre otra exploración visual. Esta guía conecta la maqueta aprobada con las capacidades existentes; no introduce otra fuente de verdad.
+El usuario aprobó la dirección de la Fase 01, la preparación con Astra Extra High y la integración funcional con Sol High. No se abre otra exploración visual. Esta guía conecta la maqueta aprobada con las capacidades existentes; no introduce otra fuente de verdad.
 
 ## Base y alcance
 
@@ -169,17 +169,58 @@ La prueba autenticada requiere fotos/ciclos reales y confirmar cambios efectivam
 
 | Tramo | Modelo recomendado | Punto de detención |
 | --- | --- | --- |
-| Preparación: contratos, capacidades, composición y matriz de validación | Astra Extra High | **Terminado en esta entrega.** No se ha modificado código de producto. |
-| Integración de datos, componentes, formularios y pruebas de comportamiento | **Sol High** | Es el siguiente tramo. Esperar el ajuste del usuario antes de implementar. |
-| Traslado fiel del CSS y QA responsive con contratos funcionales resueltos | Terra High | Detenerse cuando el trabajo restante sea principalmente presentación y revisión responsive. |
+| Preparación: contratos, capacidades, composición y matriz de validación | Astra Extra High | **Terminado en el corte previo `3ac29e4`.** |
+| Integración de datos, componentes, formularios y pruebas de comportamiento | **Sol High** | **Terminado en este corte.** Componentes reales conectados y pruebas de comportamiento aprobadas. |
+| Traslado fiel del CSS y QA responsive con contratos funcionales resueltos | Terra High | **Siguiente tramo. Detención para cambio de modelo.** Aplicar CSS aprobado y completar QA visual/responsive. |
 | Consolidación mecánica del informe/checklist con evidencia ya obtenida | Luna, si sólo queda esa tarea | Avisar antes; no delegarle una incertidumbre de datos, concurrencia, media o UX por ahorro. |
 
 Si durante Sol/Terra aparece un contrato insuficiente que exija cambiar el modelo de evidencia, permisos, ocupaciones/ciclos o transacciones, detener ese tramo y explicar el problema concreto antes de recomendar Astra Extra High. Un error localizado con contrato ya definido puede corresponder a Sol High. No elevar por rutina ni seguir a escondidas con un modelo distinto del acordado.
 
-No hay ahora una dependencia nueva que requiera rediseñar el dominio. Las carencias de nombres y lista de seguimientos tienen una adaptación delimitada arriba. El siguiente trabajo es implementar esos contratos con Sol High.
+No hay ahora una dependencia nueva que requiera rediseñar el dominio. Las carencias de nombres y lista de seguimientos tienen una adaptación delimitada arriba. Los contratos funcionales ya están implementados. El siguiente trabajo corresponde a Terra High: extracción fiel del CSS aprobado y revisión visual/responsive.
 
-## Evidencia de esta preparación
+## Evidencia del corte previo de preparación
 
 Revisión del estado Git/worktrees, de la maqueta aprobada, de `CyclePage` y los componentes/interfaces citados. Se contrastaron los accesos con formularios reales, no sólo con los menús del prototipo. Se actualizaron el estado de Growth Film y el orden de integración.
 
 Este corte cambia documentación únicamente. No se ejecutan ni se atribuyen nuevos tests/build de la aplicación a esta preparación; esas comprobaciones corresponden a los cortes de implementación. Sin migraciones, deploy, push ni cambios a datos de usuario.
+
+
+## Corte funcional Sol High — 12 de septiembre de 2026
+
+### Implementado
+
+- `CyclePage` conserva carga, sincronización, revisión de conflictos y recuperación del original; ahora monta la estructura aprobada de `PlantStudio`, `PlantHistory` y una sola `PlantRecordSheet`.
+- Las hojas reutilizan `CycleFactRecorder`, `CycleActions`, `ObservationComposer`, `AttentionTaskForm` y `AttentionTaskEditor`. Se conservan tipos, payloads, revisiones, fechas, restricciones y operaciones reales. «Registrar estado o acción» hace encontrables germinación, conteos e incidencias.
+- `plant-presentation`, `plant-names` y `plant-intents` adaptan datos y accesos sin escribir. Portada elegida por ID, fotos disponibles únicas, precisión de siembra, ciclos cerrados y última observación mantienen su semántica.
+- Enlaces contextuales y Registrar abren el formulario inmediatamente. Una propuesta AI no escribe; la foto/nota pendientes se conservan al abrir, guardar o cancelar una propuesta. Una selección anterior no recibe el resultado de otra foto.
+- Guardados permanecen en Planta; reemplazo usa el ID devuelto. Un error de lectura posterior no repite una escritura exitosa. Peticiones tardías de un ciclo anterior no sustituyen ni navegan sobre el siguiente.
+- Portadas de planta/jardín/Home mantienen el ID de foto y tienen callback opcional de actualización. El editor de seguimiento añade ocupación y protección de doble envío como props/comportamiento compatibles con Hoy.
+- Historia ofrece diez registros, ampliación/contracción, originales, recuperación, datos/procedencia, revisiones e invalidación elegible. Los IDs de fotos históricas sin evento canónico no se envían como eventos.
+- `qa/plant-integration` monta estos componentes con servicios simulados, medios sintéticos y escenarios de datos/errores. No importa Supabase, no usa cuenta, IndexedDB real ni `public/`; una importación de Supabase falla el build. El bundle sólo contiene URLs de bibliotecas y namespaces, no endpoints del servicio.
+
+### Evidencia obtenida
+
+| Comprobación | Resultado |
+| --- | --- |
+| Suite completa `npm test` | **31 archivos, 144 pruebas aprobadas**, incluidas **30 pruebas nuevas de Planta** y regresiones existentes de Maintenance/Film. |
+| `npm run build` | **Aprobado**, TypeScript y build Vite/PWA. |
+| TypeScript del entorno aislado | **Aprobado** con `npx tsc -p qa/plant-integration/tsconfig.json`. |
+| ESLint de todos los archivos nuevos/modificados de código y QA | **Aprobado sin errores ni avisos**. |
+| Build QA `npx vite build --config qa/plant-integration/vite.config.ts` | **Aprobado**; salida local en `artifacts/plant-integration/build`. |
+| `git diff --check` | **Aprobado**. |
+| Navegador / QA visual responsive | **Pendiente de Terra High.** No se atribuye evidencia visual al build ni a JSDOM. |
+| Cuenta, RPC/Storage y dispositivo real | **Pendiente.** Las lecturas/escrituras de los tests están simuladas. |
+
+Los tests nuevos cubren identidad/proyecciones, navegación sin mutación, formularios de germinación/conteo/intervención/incidencia/resolución, double submit y request ID de reintento, error de lectura tras éxito, enlaces de la misma ruta, seguimiento/evaluación filtrados por ciclo, traslado vacío/ocupado, reemplazo/reapertura/cosecha/cierre/corrección, foto/nota y AI conservadas, portada, historial/correcciones/invalidación, offline, recuperación del original y respuestas tardías. También comprueban que un borrador interrumpido en `syncing` se reintenta, mientras `needs_review` nunca se envía automáticamente.
+
+### Pendientes y límites concretos
+
+1. **Terra High:** crear/importar `plant-botanical.css` extraído de la referencia. La estructura está conectada, pero aún no tiene el acabado visual aprobado. Mantener ámbitos `.plant-page`/`.plant-sheet` y la variante del shell; no importar globalmente el CSS del prototipo.
+2. Ejecutar la matriz visual indicada arriba en 320/390/820/1440 px, incluyendo hojas largas, errores, teclado/foco, accesibilidad y movimiento reducido. El entorno aislado está preparado; no se abrió un servidor ni se publicó preview en este corte.
+3. Catálogo de nombres: únicamente la correspondencia aprobada Genovese Basil está confirmada. Los demás cultivos conservan `crop_name` y «Nombre botánico sin confirmar»; ampliar especies sólo con correspondencias verificadas, sin cambiar datos del servicio.
+4. El contrato actual no tiene `evaluate_harvest_readiness` como propósito de seguimiento. «Guardar mi evaluación» usa el hecho `readiness_review`; «Planificar revisión» abre el seguimiento existente `evaluate_visual_review`. No se introdujo otro propósito ni RPC.
+5. Fotos del entorno aislado y análisis son sintéticos. Su sincronizador simulado no conserva el contenido del archivo elegido; sirve para probar presentación/retornos. Originales reales, integridad, guardado remoto y permisos necesitan QA autenticada independiente.
+6. Persisten los avisos previamente documentados: bundle principal mayor a 500 kB e import dinámico inefectivo de `photo-renditions`; JSDOM avisa de navegación a otro documento. Tests/build terminan correctamente. No se abrió una refactorización del empaquetado.
+7. **Growth Film 02.2** mantiene pendiente la QA autenticada con fotos reales y el fullscreen nativo en Safari de un iPhone físico.
+
+Sin migraciones, deploy, push ni escrituras sobre datos de usuario. Los archivos `VISUAL_DEPTH_STUDY`/`depth-study*` ajenos se preservaron. Se entrega un corte local de integración funcional, no un cierre visual ni una validación en producción.

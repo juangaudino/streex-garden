@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'react'
-import { Film, Images, MoreHorizontal, RefreshCw, Share2 } from 'lucide-react'
-import { useLocation, useNavigate, useParams, Link } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import { photoContentType } from '../../domain/photo-integrity'
@@ -8,24 +7,10 @@ import type { GrowCycleDetail, ObservationDraft } from '../../domain/types'
 import { getCycle } from '../../lib/garden-api'
 import { getObservationDrafts, saveObservationDraft } from '../../lib/offline-observation-store'
 import { syncObservationDraft } from '../../lib/observation-sync'
-import { ObservationComposer } from './ObservationComposer'
-import { PhotoEvidence } from './PhotoEvidence'
-import { CycleActions } from './CycleActions'
-import { AttentionTaskForm } from '../gardens/AttentionTaskTools'
-import { BotanicalPortrait } from './BotanicalPortrait'
-import { PlaceBackLink, type PlaceContext } from '../../components/PlaceLink'
-import { captureLabel, isToday } from './photo-presentation'
 import { eventDetail as formatEventDetail, eventLabel as formatEventLabel } from '../../domain/event-presentation'
-import { CycleFactRecorder } from './CycleFactRecorder'
-import { PhotoCoverActions } from './PhotoCoverActions'
-import { AiCheckPanel } from './AiCheckPanel'
-
-function eventDate(event: GrowCycleDetail['history'][number]): string {
-  if (event.occurred_at_precision === 'date' && event.occurred_on) {
-    return `Fecha del hecho: ${new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(new Date(`${event.occurred_on}T12:00:00`))} · Hora no registrada`
-  }
-  return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(event.occurred_at))
-}
+import { PlantStudio } from './PlantStudio'
+import { PlantRecordSheet } from './PlantRecordSheet'
+import { plantArrivalIntent, type PlantSheetIntent } from './plant-intents'
 
 export function CyclePage() {
   const { cycleId } = useParams()
@@ -39,26 +24,39 @@ function CycleScreen() {
   const [drafts, setDrafts] = useState<ObservationDraft[]>([])
   const [syncing, setSyncing] = useState(false)
   const [syncMessage, setSyncMessage] = useState<string | null>(null)
-  const [refreshing, setRefreshing] = useState(false)
-  const [coverMessage, setCoverMessage] = useState<string | null>(null)
-  const [eventToInvalidate, setEventToInvalidate] = useState<GrowCycleDetail['history'][number] | null>(null)
-  const [activityEditor, setActivityEditor] = useState<'observation' | null>(null)
-  const [historyLimit, setHistoryLimit] = useState(10)
+  const [message, setMessage] = useState<string | null>(null)
+  const [sheet, setSheet] = useState<{ key: string; intent: PlantSheetIntent } | null>(null)
+  const [formBusy, setFormBusy] = useState(false)
+  const formBusyRef = useRef(false)
+  const setWorking = useCallback((busy: boolean) => { formBusyRef.current = busy; setFormBusy(busy) }, [])
   const location = useLocation()
-  const arrival = (location.state as { place?: PlaceContext } | null)?.place
-  const aiAction = (location.state as { aiAction?: string } | null)?.aiAction
+  const consumedArrival = useRef<string | null>(null)
+  const alive = useRef(true)
+  const loadVersion = useRef(0)
+  const draftVersion = useRef(0)
+  useEffect(() => { alive.current = true; return () => { alive.current = false } }, [])
   const syncingRef = useRef(false)
   const initialSyncAttemptedFor = useRef<string | null>(null)
   const navigate = useNavigate()
   const load = useCallback(async () => {
-    if (!cycleId) return
-    setError(null)
-    try { setCycle(await getCycle(cycleId)) } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo cargar el ciclo.') }
+    if (!cycleId || !alive.current) return
+    const version = ++loadVersion.current
+    try {
+      const next = await getCycle(cycleId)
+      if (alive.current && version === loadVersion.current) { setCycle(next); setError(null) }
+    } catch (reason) {
+      if (alive.current && version === loadVersion.current) setError(reason instanceof Error ? reason.message : 'No se pudo cargar el ciclo.')
+    }
   }, [cycleId])
   const loadDrafts = useCallback(async () => {
-    if (!cycleId) return
-    const all = await getObservationDrafts()
-    setDrafts(all.filter((draft) => draft.growCycleId === cycleId && draft.status !== 'synced'))
+    if (!cycleId || !alive.current) return
+    const version = ++draftVersion.current
+    try {
+      const all = await getObservationDrafts()
+      if (alive.current && version === draftVersion.current) setDrafts(all.filter(draft => draft.growCycleId === cycleId && draft.status !== 'synced'))
+    } catch {
+      if (alive.current && version === draftVersion.current) setSyncMessage('No se pudieron consultar los borradores de este dispositivo. Vuelve a intentarlo antes de registrar otra observación.')
+    }
   }, [cycleId])
   // eslint-disable-next-line react-hooks/set-state-in-effect -- both loaders write after independent async sources settle.
   useEffect(() => { void load(); void loadDrafts() }, [load, loadDrafts])
@@ -66,15 +64,17 @@ function CycleScreen() {
 
   const syncDrafts = useCallback(async () => {
     const pendingDrafts = drafts.filter((draft) => draft.status !== 'needs_review')
-    if (syncingRef.current || pendingDrafts.length === 0 || !navigator.onLine) return
+    if (!alive.current || formBusyRef.current || syncingRef.current || pendingDrafts.length === 0 || !navigator.onLine) return
     syncingRef.current = true
     setSyncing(true)
     setSyncMessage('Sincronizando la observación y su fotografía…')
     try {
       const results = []
       for (const draft of pendingDrafts) {
+        if (!alive.current) return
         results.push(await syncObservationDraft(draft))
       }
+      if (!alive.current) return
       const resolved = results.filter((result) => result.result === 'synced').length
       const needsReview = results.filter((result) => result.result === 'needs_review').length
       if (needsReview > 0) {
@@ -86,9 +86,11 @@ function CycleScreen() {
       }
       await loadDrafts()
       await load()
+    } catch (reason) {
+      if (alive.current) setSyncMessage(`No se pudo sincronizar: ${reason instanceof Error ? reason.message : 'Reintenta cuando haya conexión.'}`)
     } finally {
       syncingRef.current = false
-      setSyncing(false)
+      if (alive.current) setSyncing(false)
     }
   }, [drafts, load, loadDrafts])
 
@@ -108,27 +110,30 @@ function CycleScreen() {
   }, [syncDrafts])
 
   useEffect(() => {
-    if (!cycleId || initialSyncAttemptedFor.current === cycleId || !navigator.onLine || !drafts.some((draft) => draft.status !== 'needs_review')) return
+    if (!cycleId || formBusy || initialSyncAttemptedFor.current === cycleId || !navigator.onLine || !drafts.some((draft) => draft.status !== 'needs_review')) return
     initialSyncAttemptedFor.current = cycleId
     void syncDrafts()
-  }, [cycleId, drafts, syncDrafts])
+  }, [cycleId, drafts, syncDrafts, formBusy])
 
   useEffect(() => {
-    if (!eventToInvalidate) return
-    const frame = window.requestAnimationFrame(() => {
-      const editor = document.querySelector<HTMLElement>('.action-editor')
-      editor?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      editor?.querySelector<HTMLElement>('textarea, input, button')?.focus({ preventScroll: true })
-    })
-    return () => window.cancelAnimationFrame(frame)
-  }, [eventToInvalidate])
+    if (!cycle || consumedArrival.current === location.key || formBusy) return
+    consumedArrival.current = location.key
+    const state = location.state as { aiAction?: unknown; [key: string]: unknown } | null
+    const intent = plantArrivalIntent(location.hash, state?.aiAction, cycle)
+    if (!intent) return
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- consume an explicit router arrival, never a saved fact.
+    setSheet({ key: crypto.randomUUID(), intent })
+    const nextState = { ...state }
+    delete nextState.aiAction
+    navigate({ pathname: location.pathname, search: location.search, hash: '' }, { replace: true, state: nextState })
+  }, [cycle, location.key, location.hash, location.pathname, location.search, location.state, navigate, formBusy])
 
   const retryableDrafts = drafts.filter((draft) => draft.status !== 'needs_review')
   const reviewDrafts = drafts.filter((draft) => draft.status === 'needs_review')
   const restoreDraftOriginal = async (draft: ObservationDraft, event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     event.target.value = ''
-    if (!file || !draft.photoMetadata) return
+    if (!file || !draft.photoMetadata || syncingRef.current || formBusyRef.current) return
     if (photoContentType(file) !== draft.photoMetadata.contentType || file.size !== draft.photoMetadata.byteSize) {
       setSyncMessage('El archivo no coincide con el tipo o tamaño del original pendiente.')
       return
@@ -139,6 +144,8 @@ function CycleScreen() {
       status: 'queued',
       lastError: undefined,
     }
+    syncingRef.current = true
+    setSyncing(true)
     try {
       await saveObservationDraft(repairedDraft)
       setSyncMessage('Original restaurado en este dispositivo. Sincronizando…')
@@ -147,38 +154,28 @@ function CycleScreen() {
       await loadDrafts()
       await load()
     } catch (reason) {
-      setSyncMessage(`Pendiente de subir: ${reason instanceof Error ? reason.message : 'No se pudo restaurar el original.'}`)
-    }
+      if (alive.current) setSyncMessage(`Pendiente de subir: ${reason instanceof Error ? reason.message : 'No se pudo restaurar el original.'}`)
+    } finally { syncingRef.current = false; if (alive.current) setSyncing(false) }
   }
 
-  const refreshCycle = async () => {
-    setRefreshing(true)
-    try {
-      await Promise.all([load(), loadDrafts()])
-    } finally {
-      setRefreshing(false)
-    }
+  const afterSaved = async (notice: string) => {
+    if (!alive.current) return
+    setMessage(notice)
+    // Read failures are handled by their loaders, never thrown back into a successful form write.
+    await Promise.all([load(), loadDrafts()])
   }
-
-  return <AppShell presentation="cycle" backTo={cycle ? `/garden/${cycle.garden.id}` : '/'} actions={<button className="secondary-button secondary-button--compact" type="button" onClick={() => void refreshCycle()} disabled={refreshing}><RefreshCw size={16} aria-hidden="true" /> {refreshing ? 'Actualizando…' : 'Actualizar'}</button>}>
-      {cycle === null && !error && (arrival ? <BotanicalPortrait place={arrival} /> : <StatePanel kind="loading" title="Cargando el ciclo" />)}
-    {error && <StatePanel kind="error" title="No se pudo abrir el ciclo" onRetry={() => void load()}>{error}</StatePanel>}
+  const open = (intent: PlantSheetIntent) => {
+    if (!formBusyRef.current) setSheet({ key: crypto.randomUUID(), intent })
+  }
+  return <AppShell presentation="plant" onRegister={() => open({ kind: 'choose' })} registerDisabled={!cycle || cycle.state !== 'active' || formBusy}>
+    {cycle === null && !error && <StatePanel kind="loading" title="Abriendo su historia…" />}
+    {error && <StatePanel kind="error" title={cycle ? 'La vista necesita actualizarse' : 'No se pudo abrir el ciclo'} onRetry={() => void load()}>{cycle ? `Los registros confirmados siguen guardados. ${error}` : error}</StatePanel>}
+    {message && <p className="bs-notice" role="status">{message}</p>}
+    {syncMessage && drafts.length === 0 && <p className="bs-notice" role="status">{syncMessage}</p>}
     {cycle && <>
-      <BotanicalPortrait cycle={cycle} place={{ placeId: cycle.position.id, number: cycle.position.position_number, gardenId: cycle.garden.id, cropName: cycle.crop_name }} />
-      <AiCheckPanel cycle={cycle} />
-      <section className="cycle-story-entry"><div><span>Historia de la planta</span><h2>La historia de tu {cycle.crop_name}</h2><p>{cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 0 ? 'Comienza aquí con la primera fotografía documental.' : cycle.history.filter((event) => event.photo?.upload_status === 'uploaded').length === 1 ? 'Ya hay un momento registrado. Recorre su evidencia.' : 'Recorre sus momentos y compara dos fotografías cuando quieras.'}</p></div><div className="cycle-story-entry__actions"><Link className="primary-button" to={`/cycle/${cycle.id}/photos`} state={{ cycle }}><Images size={17} aria-hidden="true" /> Ver historia</Link><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/film`}><Film size={16} aria-hidden="true" /> Growth Film</Link><Link className="secondary-button secondary-button--compact" to={`/cycle/${cycle.id}/share`}><Share2 size={16} aria-hidden="true" /> Compartir</Link></div></section>
-      {drafts.length > 0 && <section className="sync-notice" aria-live="polite"><strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong><p>{syncMessage ?? 'Se guardaron en este dispositivo. Se validarán antes de confirmar el registro remoto.'}</p>{reviewDrafts.length > 0 && <p className="sync-notice__error" role="alert">Revisar conflicto: {reviewDrafts.length} observación{reviewDrafts.length === 1 ? '' : 'es'} no se volverá{reviewDrafts.length === 1 ? '' : 'n'} a enviar automáticamente.</p>}{drafts.some((draft) => draft.lastError) && <p className="sync-notice__error" role="alert">Detalle: {drafts.find((draft) => draft.lastError)?.lastError}</p>}{retryableDrafts.some((draft) => draft.photo && draft.photoMetadata) && <label className="file-button secondary-button--compact">Volver a elegir el original<input type="file" accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={(event) => void restoreDraftOriginal(retryableDrafts.find((draft) => draft.photo && draft.photoMetadata)!, event)} /></label>}{retryableDrafts.length > 0 && <button className="secondary-button" type="button" disabled={syncing || !navigator.onLine} onClick={() => void syncDrafts()}>{syncing ? 'Sincronizando…' : navigator.onLine ? 'Reintentar ahora' : 'Sin conexión'}</button>}</section>}
-      <CycleActions key={eventToInvalidate?.id ?? 'actions'} cycle={cycle} selectedEvent={eventToInvalidate} onChanged={async () => { setEventToInvalidate(null); await load() }} onReplaced={(nextCycleId) => navigate(`/cycle/${nextCycleId}`)} onOpenFact={() => document.getElementById('cycle-fact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} onOpenObservation={() => setActivityEditor('observation')} />
-      {cycle.state === 'active' && <section id="cycle-fact" className="cycle-fact-section" aria-labelledby="cycle-fact-title"><div className="section-heading"><div><span className="eyebrow">Registro canónico</span><h2 id="cycle-fact-title">Hecho canónico</h2><p className="quiet-copy">Un hecho canónico es un dato que tú confirmas y que pasa a formar parte de la historia oficial de este ciclo.</p></div></div><CycleFactRecorder cycle={cycle} entryLabel="Registrar hecho canónico" onSaved={async () => { await load() }} /></section>}
-      {cycle.state === 'active' && activityEditor === 'observation' && <div id="cycle-observation"><ObservationComposer compact growCycleId={cycle.id} onSaved={async () => { setActivityEditor(null); await load(); await loadDrafts() }} onDraftQueued={loadDrafts} /></div>}
-      {cycle.state === 'active' && <section className="cycle-attention" id="cycle-attention"><div className="section-heading"><h2>Seguimiento</h2></div><AttentionTaskForm gardenId={cycle.garden.id} growCycleId={cycle.id} onCreated={load} compact initialOpen={Boolean(aiAction?.startsWith('evaluate_'))} initialPurpose={aiAction?.startsWith('evaluate_') ? aiAction as 'evaluate_visual_review' | 'evaluate_thinning' | 'evaluate_pruning' | 'evaluate_support' : undefined} /></section>}
-      <section className="history-section" aria-labelledby="history-title"><div className="section-heading"><h2 id="history-title">Historial</h2><span>{cycle.history.length}</span></div>
-        {cycle.history.length === 0 && <StatePanel kind="empty" title="Aún no hay observaciones">La primera nota o fotografía aparecerá aquí inmediatamente después de guardarse.</StatePanel>}
-        <div className="history-list">{cycle.history.slice(0, historyLimit).map((event) => <article className={`history-event${isToday(event) ? ' history-event--today' : ''}`} key={event.id}><div className="history-event__meta"><time dateTime={event.occurred_at_precision === 'date' ? event.occurred_on ?? event.occurred_at : event.occurred_at}>{isToday(event) && <b className="history-today">Hoy · </b>}{eventDate(event)}</time><span>{eventLabel(event)}</span></div>{event.note && <p>{event.note}</p>}{event.event_data && eventDetail(event) && <p className="history-event__detail">{eventDetail(event)}</p>}{event.photo && <>{!event.note && <p className="history-event__photo-caption">Evidencia fotográfica · {captureLabel(event.photo)}</p>}<PhotoEvidence photo={event.photo} actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={event.photo.id} onMessage={setCoverMessage} />} onRecovered={async () => { await load(); await loadDrafts() }} /></>}<details className="history-event__menu"><summary aria-label="Más acciones"><MoreHorizontal size={17} aria-hidden="true" /></summary><button className="text-button" type="button" onClick={() => setEventToInvalidate(event)}>Invalidar registro</button></details></article>)}</div>{cycle.history.length > 10 && <div className="history-more">{historyLimit < cycle.history.length && <button className="secondary-button secondary-button--compact" type="button" onClick={() => setHistoryLimit((current) => Math.min(current + 10, cycle.history.length))}>Ver {Math.min(10, cycle.history.length - historyLimit)} más</button>}{historyLimit > 10 && <button className="text-button" type="button" onClick={() => setHistoryLimit(10)}>Mostrar menos</button>}</div>}
-        {coverMessage && <p className="inline-message" role="status">{coverMessage}</p>}
-      </section>
-      {cycle.corrections.length > 0 && <section className="history-section"><div className="section-heading"><h2>Correcciones</h2><span>{cycle.corrections.length}</span></div><div className="correction-list">{cycle.corrections.map((correction) => <article key={correction.id}><strong>{correction.operation}</strong><p>{correction.reason}</p><time dateTime={correction.created_at}>{new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(correction.created_at))}</time></article>)}</div></section>}
-      <PlaceBackLink className="text-link" to={`/garden/${cycle.garden.id}`}>Volver a las posiciones de {cycle.garden.name}</PlaceBackLink>
+      <PlantStudio cycle={cycle} onOpen={open} onCoverChanged={load} onMessage={setMessage} />
+      {drafts.length > 0 && <section className="sync-notice" aria-live="polite"><strong>{syncing ? 'Sincronizando observación pendiente' : `Pendiente de subir: ${retryableDrafts.length} observación${retryableDrafts.length === 1 ? '' : 'es'}.`}</strong><p>{syncMessage ?? 'Se guardaron en este dispositivo. Se validarán antes de confirmar el registro remoto.'}</p>{reviewDrafts.length > 0 && <p className="sync-notice__error" role="alert">Revisar conflicto: {reviewDrafts.length} observación{reviewDrafts.length === 1 ? '' : 'es'} no se volverá{reviewDrafts.length === 1 ? '' : 'n'} a enviar automáticamente.</p>}{drafts.some(draft => draft.lastError) && <p className="sync-notice__error" role="alert">Detalle: {drafts.find(draft => draft.lastError)?.lastError}</p>}{retryableDrafts.filter(draft => draft.photoMetadata).map(draft => <label className="file-button secondary-button--compact" key={draft.id}>Volver a elegir el original<input type="file" disabled={syncing || formBusy} accept="image/jpeg,image/png,image/heic,image/heif,image/webp" onChange={event => void restoreDraftOriginal(draft, event)} /></label>)}{retryableDrafts.length > 0 && <button className="secondary-button" type="button" disabled={syncing || formBusy || !navigator.onLine} onClick={() => void syncDrafts()}>{syncing ? 'Sincronizando…' : navigator.onLine ? 'Reintentar ahora' : 'Sin conexión'}</button>}</section>}
+      {sheet && <PlantRecordSheet key={sheet.key} initial={sheet.intent} cycle={cycle} onClose={() => setSheet(null)} onSaved={afterSaved} onDraftQueued={loadDrafts} onBusyChange={setWorking} onReplaced={id => { if (alive.current) navigate(`/cycle/${id}`) }} onCoverChanged={load} onMessage={setMessage} />}
     </>}
   </AppShell>
 }

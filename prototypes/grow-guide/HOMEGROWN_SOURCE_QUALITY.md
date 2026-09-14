@@ -22,5 +22,16 @@ Status: **manufacturer guidance; reconcile per plant**.
 
 No blanket trust is assigned to the guide. Each plant claim is compared with the existing Garden source layer before promotion. Soil/outdoor spacing is never converted directly into a hydroponic pod rule.
 
+### Evergreen Bunching onion naming + bulb-language anomaly
+The guide identifies the crop as **Evergreen Bunching Nabuka** and correctly lists the species as `Allium fistulosum`, but two issues require explicit reconciliation:
+- Garden/User Zero history and external seed/research references consistently use the cultivar spelling **Nebuka**. Garden keeps `Nabuka` only as manufacturer/packet provenance and uses `Nebuka` as normalized search/display identity.
+- The Home Grown section later refers to spacing for **“bulb development”** and to leaving **“bulbs”** in the ground. This conflicts with the non-bulbing bunching-onion identity of `A. fistulosum` described by Extension/research references and with Johnny's bunching-onion production guidance.
+
+Garden handling:
+- do not promote the bulb-development language;
+- do not convert Home Grown's 6–12 inch outdoor spacing into a hydroponic pod rule;
+- preserve the manufacturer wording in provenance so the discrepancy remains inspectable;
+- retain the existing internal plant ID for storage compatibility even though the display/search normalization uses Nebuka.
+
 ## Product implication
-This anomaly validates Garden's V0.8 architecture: source provenance and reconciliation are not optional metadata. Garden must be able to say that a source contains useful guidance while rejecting a specific erroneous section from the same source.
+These anomalies validate Garden's V0.8 architecture: source provenance and reconciliation are not optional metadata. Garden must be able to say that a source contains useful guidance while rejecting a specific erroneous section from the same source.

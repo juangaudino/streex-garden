@@ -48,7 +48,7 @@ export function AttentionTaskForm({ gardenId, growCycleId, onCreated, compact = 
   }
 
   if (!open) return <button className={compact ? 'secondary-button secondary-button--compact' : 'secondary-button'} type="button" onClick={() => setOpen(true)}><Plus size={17} aria-hidden="true" /> Añadir seguimiento</button>
-  return <form className={`editor-card attention-editor${embedded ? ' bs-embedded-form' : ''}`} onSubmit={(event) => void submit(event)}>
+  return <form className={`editor-card attention-editor${embedded ? ' bs-embedded-form' : ''}`} aria-busy={busy} onSubmit={(event) => void submit(event)}>
     {!embedded && <div className="section-heading"><h2>Nuevo seguimiento</h2><button className="text-button" type="button" disabled={busy} onClick={() => { setOpen(false); setMessage(null); onCancel?.() }}>Cancelar</button></div>}
     <label>Qué requiere seguimiento<select value={purpose} onChange={(event) => setPurpose(event.target.value as AttentionPurpose)}>{choices.map((choice) => <option key={choice.value} value={choice.value}>{choice.label}</option>)}</select></label>
     <label><span className="bs-field-label">Fecha prevista <span className="field-optional">opcional</span></span><input type="date" value={dueOn} onChange={(event) => setDueOn(event.target.value)} /></label>
@@ -95,7 +95,7 @@ export function AttentionTaskEditor({ task, onChanged, onBusyChange }: { task: A
   </div>
 
   const title = action === 'complete' ? (isVisualReview(task) ? 'Guardar mi observación visual' : isDevelopmentReview(task) ? 'Guardar evaluación' : `Registrar y completar: ${attentionPurposeLabel(task.purpose)}`) : action === 'defer' ? 'Posponer atención' : 'Descartar atención'
-  return <form className="attention-resolution" onSubmit={(event) => void submit(event)}>
+  return <form className="attention-resolution" aria-busy={busy} onSubmit={(event) => void submit(event)}>
     <div className="section-heading"><h3>{title}</h3><button className="text-button" type="button" disabled={busy} onClick={reset}>Cancelar</button></div>
     {action === 'defer' && <><label>Volver a destacar el<input required type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label><label>Nota <span className="field-optional">opcional</span><input value={note} maxLength={500} onChange={(event) => setNote(event.target.value)} /></label></>}
     {action === 'dismiss' && <label>Por qué no hace falta<textarea required value={note} maxLength={500} onChange={(event) => setNote(event.target.value)} /></label>}

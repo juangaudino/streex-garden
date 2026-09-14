@@ -1,0 +1,90 @@
+{
+  "version": "0.9-batch-a1",
+  "source": "homegrown-30-herb-guide",
+  "policy": "Manufacturer guidance only. Reconcile by claim; do not overwrite stronger evidence or convert field spacing directly into pod rules.",
+  "pilotPlants": {
+    "thai-basil": {
+      "identityMatch": "cultivar_family_match_with_taxonomy_difference",
+      "sourceLocators": ["homegrown-30-herb-guide pp.31-33"],
+      "manufacturerFacts": [
+        {"field":"manufacturer_name","value":"Basil: Thai","context":"Home Grown variety name"},
+        {"field":"taxonomy","value":"Ocimum basilicum var. thyrsiflorum","context":"manufacturer nomenclature; Garden keeps a more conservative display identity"},
+        {"field":"germination","value":"5-10 days","context":"warm soil / indoor seed-starting guidance"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"height","value":"12-18 in","context":"manufacturer variety profile"},
+        {"field":"harvest_style","value":"pinch from the top; regular harvest encourages bushier growth","context":"manufacturer harvest guidance"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"corroborates","gardenValue":"5-10 days from Johnny's Sweet Thai / basil references","homeGrownValue":"5-10 days","resolution":"Strong agreement; keep the current Garden value and add manufacturer corroboration."},
+        {"topic":"identity / taxonomy","status":"context_difference","gardenValue":"Ocimum basilicum — Thai basil type","homeGrownValue":"Ocimum basilicum var. thyrsiflorum","resolution":"Preserve the manufacturer nomenclature as provenance but keep Garden's conservative display identity until cultivar taxonomy is independently resolved."},
+        {"topic":"height","status":"material_conflict","gardenValue":"Thai basil references can reach roughly 24-36 in depending on cultivar/source","homeGrownValue":"12-18 in","resolution":"Treat as cultivar/source variation. Do not collapse into one universal mature-height claim."}
+      ]
+    },
+    "italian-large-leaf-basil": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-30-herb-guide pp.25-27"],
+      "manufacturerFacts": [
+        {"field":"species","value":"Ocimum basilicum","context":"manufacturer variety profile"},
+        {"field":"germination","value":"5-10 days","context":"manufacturer seed-starting guidance"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"6-8 in plant height","context":"manufacturer harvest guidance"},
+        {"field":"cut_location","value":"just above a leaf node","context":"manufacturer says node-based stem cuts encourage bushier growth"},
+        {"field":"field_spacing","value":"12-18 in","context":"outdoor final spacing; not a pod rule"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"corroborates","gardenValue":"5-10 days from general basil grower reference","homeGrownValue":"5-10 days","resolution":"Strong agreement."},
+        {"topic":"harvest/pruning structure","status":"corroborates","gardenValue":"harvest above healthy nodes once established","homeGrownValue":"harvest around 6-8 in; cut stems just above leaf node","resolution":"Strong agreement; useful manufacturer corroboration."},
+        {"topic":"spacing/thinning","status":"context_conflict","gardenValue":"pod decisions use vigor, canopy and root competition","homeGrownValue":"12-18 in outdoor final spacing","resolution":"Do not turn outdoor spacing into a hydroponic pod count."}
+      ]
+    },
+    "florence-fennel": {
+      "identityMatch": "variety_type_match",
+      "sourceLocators": ["homegrown-30-herb-guide pp.53-55"],
+      "manufacturerFacts": [
+        {"field":"manufacturer_name","value":"Fennel: Florence","context":"Home Grown variety label"},
+        {"field":"taxonomy","value":"Foeniculum vulgare","context":"manufacturer species-level label; Garden uses Florence variety-level taxonomy"},
+        {"field":"germination","value":"7-14 days","context":"manufacturer guidance"},
+        {"field":"harvest_window","value":"90-120 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"bulb reaches a suitable size","context":"manufacturer harvest guidance"},
+        {"field":"field_spacing","value":"12-18 in","context":"outdoor field guidance; not a pod rule"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"near_match","gardenValue":"7-10 days from USU Florence fennel","homeGrownValue":"7-14 days","resolution":"Compatible ranges; keep the more specific Extension range as primary and preserve the broader manufacturer range."},
+        {"topic":"maturity","status":"material_conflict","gardenValue":"60-90 days from USU Florence fennel","homeGrownValue":"90-120 days","resolution":"Preserve both with source context. Maturity varies by cultivar, environment and the endpoint being measured."},
+        {"topic":"harvest cue","status":"context_difference","gardenValue":"firm bulbous base before it exceeds about 4 in across","homeGrownValue":"harvest bulb when it reaches suitable size, typically 90-120 days","resolution":"Garden prioritizes the physical harvest cue over calendar age while keeping manufacturer timing as context."}
+      ]
+    },
+    "lemongrass-homegrown": {
+      "identityMatch": "genus_only_hold",
+      "sourceLocators": ["homegrown-30-herb-guide pp.63-66"],
+      "manufacturerFacts": [
+        {"field":"taxonomy","value":"Cymbopogon spp.","context":"manufacturer does not specify species"},
+        {"field":"germination","value":"7-21 days","context":"manufacturer summary; around 70F in detailed guidance"},
+        {"field":"harvest_window","value":"75-100 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"about 1 ft tall; stalks at least 1/4 in thick","context":"manufacturer harvest guidance"},
+        {"field":"growth_form","value":"large tropical clump","context":"manufacturer profile"}
+      ],
+      "reconciliation": [
+        {"topic":"identity / species","status":"context_difference","gardenValue":"Cymbopogon spp. — exact species unresolved; USU and Johnny's references cover different species","homeGrownValue":"Cymbopogon spp.","resolution":"Genus-level identity matches, but the exact species stays unresolved. Do not map species-specific traits from C. citratus or C. flexuosus onto the packet automatically."},
+        {"topic":"germination","status":"context_difference","gardenValue":"7-14 days in Johnny's C. flexuosus reference","homeGrownValue":"7-21 days around 70F","resolution":"Preserve both because one source is species-specific and the manufacturer source is genus-level."},
+        {"topic":"harvest threshold","status":"material_conflict","gardenValue":"USU C. citratus reference uses mature outer stalks around 1/2 in thick","homeGrownValue":"start around 1 ft tall; stalks at least 1/4 in thick","resolution":"Do not force one diameter while species identity is unresolved. Use establishment and actual stalk maturity as the safer Garden cue."}
+      ]
+    },
+    "spearmint": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-30-herb-guide pp.110-113"],
+      "manufacturerFacts": [
+        {"field":"species","value":"Mentha spicata","context":"manufacturer variety profile"},
+        {"field":"germination","value":"7-14 days","context":"manufacturer guidance; surface sow"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"height","value":"12-36 in","context":"manufacturer profile"},
+        {"field":"harvest_style","value":"pinch leaves just above a leaf node to encourage bushier growth","context":"manufacturer harvest guidance"}
+      ],
+      "reconciliation": [
+        {"topic":"identity","status":"corroborates","gardenValue":"Mentha spicata","homeGrownValue":"Mentha spicata","resolution":"Exact species agreement."},
+        {"topic":"germination","status":"near_match","gardenValue":"10-14 days from Johnny's generic mint reference","homeGrownValue":"7-14 days","resolution":"Ranges overlap strongly; keep the variety-specific manufacturer range as context without replacing the broader mint reference."},
+        {"topic":"harvest/pruning structure","status":"corroborates","gardenValue":"pinch top leaves / stems above healthy nodes for repeated harvest","homeGrownValue":"pinch leaves just above a leaf node to encourage bushier growth","resolution":"Strong practical agreement."}
+      ]
+    }
+  }
+}

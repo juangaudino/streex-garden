@@ -1,5 +1,6 @@
 (() => {
   const DATA_URL = "./data/homegrown-manufacturer-guidance.json";
+  const EXPANSION_DATA_URL = "./data/homegrown-manufacturer-guidance-expansion-a1.json";
   const PLANT_BY_NAME = new Map([
     ["genovese basil", "genovese-basil"],
     ["albahaca genovesa", "genovese-basil"],
@@ -17,6 +18,19 @@
     ["cebolla de verdeo evergreen bunching nabuka", "evergreen-bunching-onion-nabuka"],
     ["cebolla de verdeo evergreen bunching nebuka", "evergreen-bunching-onion-nabuka"],
     ["cebollin largo evergreen bunching nebuka", "evergreen-bunching-onion-nabuka"],
+    ["thai basil", "thai-basil"],
+    ["albahaca tailandesa", "thai-basil"],
+    ["italian large leaf basil", "italian-large-leaf-basil"],
+    ["albahaca italiana de hoja grande", "italian-large-leaf-basil"],
+    ["florence fennel", "florence-fennel"],
+    ["hinojo de florencia", "florence-fennel"],
+    ["lemongrass", "lemongrass-homegrown"],
+    ["hierba limon lemongrass", "lemongrass-homegrown"],
+    ["hierba limon", "lemongrass-homegrown"],
+    ["spearmint", "spearmint"],
+    ["hierbabuena menta verde", "spearmint"],
+    ["hierbabuena", "spearmint"],
+    ["menta verde", "spearmint"],
   ]);
 
   const STATUS_BY_PLANT = {
@@ -27,6 +41,11 @@
     "buttercrunch-lettuce": "adds",
     "black-seeded-simpson": "matches",
     "evergreen-bunching-onion-nabuka": "differs",
+    "thai-basil": "differs",
+    "italian-large-leaf-basil": "matches",
+    "florence-fennel": "differs",
+    "lemongrass-homegrown": "differs",
+    spearmint: "matches",
   };
 
   const COPY = {
@@ -46,6 +65,11 @@
         "buttercrunch-lettuce": "Coincide en modo de cosecha y añade contexto de tolerancia relativa al calor.",
         "black-seeded-simpson": "Coincide en hábito loose-leaf y cosecha repetida de hojas externas.",
         "evergreen-bunching-onion-nabuka": "La especie coincide, pero Garden normaliza Nebuka y rechaza convertir spacing/bulb language del fabricante en reglas del pod.",
+        "thai-basil": "Coincide en germinación y manejo tipo basil; difiere en nomenclatura y altura según fuente/cultivar.",
+        "italian-large-leaf-basil": "Coincide en germinación, cosecha desde 6–8 in y corte sobre nodo.",
+        "florence-fennel": "La germinación es compatible, pero madurez y punto de cosecha requieren conservar el contexto de cada fuente.",
+        "lemongrass-homegrown": "El género coincide, pero la especie exacta sigue abierta y los umbrales de cosecha cambian entre fuentes.",
+        spearmint: "Coincide en identidad, germinación aproximada y lógica de pinzado/cosecha repetida.",
       },
       topics: {
         germination: "Germinación",
@@ -62,6 +86,12 @@
         "identity / spelling": "Identidad / nombre",
         "cluster / thinning": "Cultivo en grupo / raleo",
         "bulb language": "Referencia a bulbo",
+        "identity / taxonomy": "Identidad / taxonomía",
+        height: "Altura",
+        maturity: "Madurez",
+        "identity / species": "Identidad / especie",
+        "harvest threshold": "Umbral de cosecha",
+        identity: "Identidad",
       },
       resolutions: {
         corroborates: "Coincide con la guía actual; se conserva como corroboración del fabricante.",
@@ -89,6 +119,11 @@
         "buttercrunch-lettuce": "Matches on harvest mode and adds relative heat-tolerance context.",
         "black-seeded-simpson": "Matches on loose-leaf habit and repeated outer-leaf harvesting.",
         "evergreen-bunching-onion-nabuka": "Species matches, but Garden normalizes Nebuka and does not turn manufacturer spacing/bulb wording into pod rules.",
+        "thai-basil": "Matches on germination and basil-style handling; taxonomy and mature height vary by source/cultivar.",
+        "italian-large-leaf-basil": "Matches on germination, 6–8 in harvest cue and node-based cutting.",
+        "florence-fennel": "Germination is compatible, while maturity and harvest timing remain source-context dependent.",
+        "lemongrass-homegrown": "Genus identity matches, but exact species remains open and harvest thresholds vary across species-specific references.",
+        spearmint: "Matches on identity, overlapping germination range and repeated pinch/harvest structure.",
       },
       topics: {},
       resolutions: {},
@@ -208,19 +243,36 @@
     injecting = false;
   }
 
-  async function init() {
+  async function loadJson(url) {
     try {
-      const response = await fetch(DATA_URL, { cache: "no-store" });
-      if (!response.ok) return;
-      guidance = await response.json();
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) return null;
+      return await response.json();
     } catch {
-      return;
+      return null;
     }
+  }
+
+  async function init() {
+    const [baseGuidance, expansionGuidance] = await Promise.all([
+      loadJson(DATA_URL),
+      loadJson(EXPANSION_DATA_URL),
+    ]);
+
+    if (!baseGuidance && !expansionGuidance) return;
+    guidance = {
+      ...(baseGuidance || {}),
+      pilotPlants: {
+        ...(baseGuidance?.pilotPlants || {}),
+        ...(expansionGuidance?.pilotPlants || {}),
+      },
+    };
 
     const detail = document.querySelector("#plantDetail");
     if (!detail) return;
     new MutationObserver(() => queueMicrotask(inject)).observe(detail, { childList: true, subtree: true });
     document.querySelectorAll("[data-language]").forEach((button) => button.addEventListener("click", () => setTimeout(inject, 0)));
+    window.addEventListener("garden-labs:expansion-loaded", () => setTimeout(inject, 0));
     inject();
   }
 

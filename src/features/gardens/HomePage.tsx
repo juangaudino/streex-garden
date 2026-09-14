@@ -7,7 +7,7 @@ import { StatePanel } from '../../components/StatePanel'
 import type { HomeDashboard, PhotoEvidence } from '../../domain/types'
 import { getGardenCoverPhotos, getHome, getHomeDashboard, getHomeMedia } from '../../lib/garden-api'
 import { GardenCoverImage } from './GardenCover'
-import { AttentionList } from './GardensPage'
+import { AttentionList } from './AttentionList'
 import { BotanicalGardenCard } from './BotanicalGardenCard'
 
 export function HomePage({ user }: { user: User }) {

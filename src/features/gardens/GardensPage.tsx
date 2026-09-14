@@ -1,43 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { User } from '@supabase/supabase-js'
-import { ArrowRight, ChartNoAxesColumnIncreasing, CircleAlert, Clock3, Plus, Wrench } from 'lucide-react'
+import { ArrowRight, ChartNoAxesColumnIncreasing, Clock3, Plus, Wrench } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
-import { attentionTimingLabel, homeVisitStorageKey, validVisitId } from '../../domain/home-visit'
-import type { AttentionItem, HomeChange, HomeDashboard } from '../../domain/types'
+import { homeVisitStorageKey, validVisitId } from '../../domain/home-visit'
+import type { HomeChange, HomeDashboard } from '../../domain/types'
 import { acknowledgeHomeSnapshot, getHome, getHomeDashboard, getOpenMaintenanceSession, setMaintenanceSessionState, startMaintenanceSession } from '../../lib/garden-api'
 import { CreateGardenForm } from './CreateGardenForm'
-import { AttentionTaskEditor } from './AttentionTaskTools'
+import { AttentionList } from './AttentionList'
 import { BotanicalGardenCard } from './BotanicalGardenCard'
 
 function dateLabel(value: string): string {
   return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
-}
-
-function todayLocal(): string {
-  return new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date())
-}
-
-function ChangeRow({ change }: { change: HomeChange }) {
-  const body = <><strong>{change.summary}</strong><span>{dateLabel(change.occurred_at)}</span></>
-  const target = change.grow_cycle_id ? `/cycle/${change.grow_cycle_id}` : change.garden_id ? `/garden/${change.garden_id}` : null
-  return target ? <Link className="home-change" to={target}>{body}<ArrowRight size={16} aria-hidden="true" /></Link> : <article className="home-change">{body}</article>
-}
-
-export function AttentionList({ items, compact = false, onChanged }: { items: AttentionItem[]; compact?: boolean; onChanged?: () => Promise<void> | void }) {
-  const today = todayLocal()
-  if (items.length === 0) return <StatePanel kind="empty" title="Sin pendientes">No hay acciones aceptadas que requieran atención ahora.</StatePanel>
-  return <div className={`attention-list${compact ? ' attention-list--compact' : ''}`}>{items.map((item) => {
-    const timing = attentionTimingLabel(item, today)
-    const target = item.grow_cycle_id ? `/cycle/${item.grow_cycle_id}` : item.garden_id ? `/garden/${item.garden_id}` : null
-    const context = item.grow_cycle_id
-      ? [item.garden_name, item.position_number ? `Posición ${item.position_number}` : null, item.crop_name].filter(Boolean).join(' · ')
-      : item.garden_name ?? 'Sistema'
-    const body = <><span className="attention-item__icon" aria-hidden="true"><CircleAlert size={18} /></span><span><strong>{item.title}</strong><small>{context} · {timing}</small></span></>
-    if (onChanged) return <article className="attention-item attention-item--managed" key={item.id}>{body}<div className="attention-item__manage"><AttentionTaskEditor task={item} onChanged={onChanged} /></div></article>
-    return target ? <Link className="attention-item" to={target} key={item.id}>{body}<ArrowRight size={16} aria-hidden="true" /></Link> : <article className="attention-item" key={item.id}>{body}</article>
-  })}</div>
 }
 
 function readCachedDashboard(userId: string): HomeDashboard | null {

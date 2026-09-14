@@ -3,7 +3,7 @@ import { AppShell } from '../../components/AppShell'
 import { StatePanel } from '../../components/StatePanel'
 import type { AttentionItem, GardenSummary } from '../../domain/types'
 import { getAttention, getHome } from '../../lib/garden-api'
-import { AttentionList } from './GardensPage'
+import { AttentionList } from './AttentionList'
 import { AttentionTaskForm } from './AttentionTaskTools'
 
 export function TodayPage() {

@@ -1,5 +1,5 @@
 {
-  "version": "0.8-pilot-1",
+  "version": "0.8.1",
   "baselineCommit": "18a3354a564e2d865baf55821c37b51d0e6b3fbb",
   "purpose": "Manufacturer-guidance layer for Garden Labs. This file records Home Grown guidance and reconciliation candidates without overwriting Grow Guide facts, packet evidence, or canonical Garden X data.",
   "policy": {
@@ -45,7 +45,7 @@
       "publisher": "Home Grown",
       "title": "7 Easy Steps for Starting a Thriving Herb Garden",
       "kind": "manufacturer_blog",
-      "url": "https://homegrown-garden.com/blogs/blog/how-to-start-a-herb-garden",
+      "url": "https://homegrown-garden.com/blogs/blog/how-to-start-an-herb-garden",
       "accessed": "2026-09-13",
       "scope": "secondary manufacturer editorial; candidate context only"
     }
@@ -142,10 +142,28 @@
         {"topic":"growth form","status":"corroborates","gardenValue":"looseleaf; open form is normal","homeGrownValue":"loose-leaf variety","resolution":"Strong agreement."},
         {"topic":"repeat harvest","status":"corroborates","gardenValue":"repeated outer-leaf harvest","homeGrownValue":"individual leaves / cut-and-come-again","resolution":"Strong agreement; high-value User Zero guidance."}
       ]
+    },
+    "evergreen-bunching-onion-nabuka": {
+      "identityMatch": "exact_species_name_variant",
+      "sourceLocators": ["homegrown-30-herb-guide pp.79-84"],
+      "manufacturerFacts": [
+        {"field":"manufacturer_name","value":"Evergreen Bunching Nabuka","context":"Home Grown spelling; packet evidence retained exactly"},
+        {"field":"species","value":"Allium fistulosum","context":"manufacturer scientific name; independently supported by Extension/research sources"},
+        {"field":"germination","value":"7-14 days","context":"manufacturer soil germination guidance"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"6-8 in green stalks","context":"manufacturer harvest guidance"},
+        {"field":"field_spacing","value":"6-12 in","context":"manufacturer outdoor thinning/transplant guidance; not a hydroponic pod rule"},
+        {"field":"regrowth_claim","value":"cut green stalks as needed, leave base in place","context":"manufacturer repeated-harvest guidance"}
+      ],
+      "reconciliation": [
+        {"topic":"identity / spelling","status":"context_difference","gardenValue":"Evergreen Bunching Nebuka; Allium fistulosum","homeGrownValue":"Evergreen Bunching Nabuka; Allium fistulosum","resolution":"Preserve ‘Nabuka’ as manufacturer/packet evidence and ‘Nebuka’ as Garden display/search normalization. Stable internal plantId remains unchanged."},
+        {"topic":"cluster / thinning","status":"context_conflict","gardenValue":"Johnny's: 6-8 seeds/cell; thin only if larger diameter is desired","homeGrownValue":"thin/space 6-12 in outdoors","resolution":"Do not translate Home Grown field spacing into a hydroponic pod count. Cluster culture remains supported by the stronger crop-specific grower reference."},
+        {"topic":"bulb language","status":"material_conflict","gardenValue":"A. fistulosum is treated as a non-bulbing bunching onion/scallion","homeGrownValue":"guide mentions spacing for ‘bulb development’ and leaving ‘bulbs’ in the ground","resolution":"Flag as an internal manufacturer inconsistency. Do not promote bulb-development wording into Garden guidance."}
+      ]
     }
   },
   "deferred": {
     "thyme": "Home Grown guide labels English thyme while User Zero's corrected Huerto 1 identity is German Thyme. Do not map this source to that live plant without an explicit identity reconciliation.",
-    "remainingHomeGrownVarieties": "Process only after User Zero reviews the pilot reconciliation UX/data model."
+    "remainingHomeGrownVarieties": "Process as staged expansion candidates under Source Matrix V1; do not bulk-promote manufacturer claims without claim-level reconciliation."
   }
 }

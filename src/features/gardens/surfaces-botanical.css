@@ -56,7 +56,7 @@
 .botanical-today .today-create { background: linear-gradient(125deg,rgba(231,236,223,.9),rgba(253,253,247,.8)); border: 1px solid rgba(25,59,42,.1); border-radius: 22px; box-shadow: 0 14px 34px rgba(15,42,29,.045); padding: clamp(18px,3vw,28px); }
 .botanical-today .today-create > .section-heading, .botanical-today .today-queue > .section-heading { align-items: baseline; margin: 0; }
 .botanical-today .today-create h2, .botanical-today .today-queue h2 { font-size: clamp(1.7rem,4vw,2.35rem); line-height: 1; }
-.botanical-today .today-create .editor-card { background: rgba(253,253,247,.76); border-color: rgba(25,59,42,.12); box-shadow: none; margin: 0; }
+.botanical-today .today-create .editor-card { background: transparent; border: 0; box-shadow: none; margin: 0; padding: 0; }
 .botanical-today .attention-list { display: grid; gap: 12px; }
 .botanical-today .attention-item { background: rgba(253,253,247,.78); border: 1px solid rgba(25,59,42,.11); border-radius: 18px; box-shadow: 0 8px 18px rgba(15,42,29,.035); margin: 0; padding: clamp(16px,2.5vw,22px); transition: border-color .18s ease, box-shadow .18s ease; }
 .botanical-today .attention-item:hover { border-color: rgba(25,59,42,.25); box-shadow: 0 13px 26px rgba(15,42,29,.07); }

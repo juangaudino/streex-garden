@@ -123,7 +123,7 @@ try {
   report.observations.askShortHeight = {}
   for (const width of [390, 690]) { viewport(width, 480); report.observations.askShortHeight[width] = evaluate(geometry) }
   if (continuity) for (const [width,g] of Object.entries(report.observations.askShortHeight)) { assert.ok(g.composer.bottom <= g.nav.top, `Short composer covered at ${width}`); assert.ok(g.documentHeight <= g.height+1, `Short external scroll at ${width}`) }
-  viewport(690); ab('fill', '#ask-garden-input', '¿Qué posiciones siguen sin germinación confirmada?'); ab('press', 'Enter'); settle(); ab('wait', '.ask-garden-answer')
+  viewport(690); ab('fill', '#ask-garden-input', '¿Qué posiciones siguen sin germinación confirmada?'); ab('click', '.ask-garden-compose__send'); settle(); ab('wait', '.ask-garden-answer')
   report.observations.askDeterministic = evaluate(`({answer:document.querySelector('.ask-garden-answer').textContent,geometry:${geometry}})`); shot('ask-answer-690')
   unchanged(before, 'Hoy/Ask determinístico: navegar y consultar conserva datos y servicios AI bloqueados')
   // Representative direct-entry states. Full visual closure remains 04.E.

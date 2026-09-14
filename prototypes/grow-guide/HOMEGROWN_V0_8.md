@@ -1,23 +1,29 @@
 # Garden Labs V0.8 — Home Grown enrichment
 
 ## Status
-Active pilot. Garden Labs continues as the validation surface; this phase does **not** promote Library/Seeds into Garden X production.
+User Zero QA **approved** for the published six-plant source-comparison pilot in Site v3. Garden Labs continues as the validation surface; this phase does **not** promote Library/Seeds into Garden X production.
+
+The branch now also prepares V0.8.1 work for Evergreen Bunching Nebuka, Source Matrix V1 and the curated path toward ~60 guides. Those newer branch changes are not implied to be published until the next batched Sites deployment.
 
 ## Frozen baseline
 - Validated baseline before Home Grown enrichment: `18a3354a564e2d865baf55821c37b51d0e6b3fbb`.
 - Sites Storage V1 is already validated separately.
 - `main`, Garden X Supabase and production remain out of scope.
-- The 29-guide catalog remains intact.
+- The validated 29-guide catalog remains intact in the published baseline; expansion work is staged only in the prototype branch until deployment.
 
 ## Objective
 Add Home Grown as a **manufacturer-guidance layer** with explicit provenance and conflict handling. Home Grown guidance may corroborate, supplement or conflict with existing Extension/grower references, but it never silently replaces them.
 
 ## Source hierarchy for this phase
-1. Existing university Extension / strong grower references remain visible as their own evidence.
-2. Home Grown PDFs are classified as `manufacturer_guidance`.
-3. Home Grown blog posts are secondary manufacturer editorial and are candidates/context unless independently reconciled.
-4. Garden adaptations remain clearly labeled as adaptations.
-5. Missing information remains missing rather than being inferred.
+1. Existing university Extension / research references remain visible as their own evidence.
+2. Crop/system-specific hydroponic university / CEA references are preferred for pH, EC and hydro-specific operating claims.
+3. Strong grower references such as Johnny's are used for practical crop handling when appropriate.
+4. Home Grown PDFs are classified as `manufacturer_guidance`.
+5. Home Grown blog posts are secondary manufacturer editorial and are candidates/context unless independently reconciled.
+6. Garden adaptations remain clearly labeled as adaptations.
+7. Missing information remains missing rather than being inferred.
+
+See `SOURCE_MATRIX_V1.md` for the claim-level source-selection model.
 
 ## Guardrails
 - Never rewrite packet evidence from `data/seed-inventory.json`.
@@ -25,10 +31,10 @@ Add Home Grown as a **manufacturer-guidance layer** with explicit provenance and
 - Never convert soil/container spacing directly into a hydroponic pod rule.
 - Never convert a manufacturer statement into an Extension/research statement.
 - Never auto-resolve source conflicts.
-- Do not add precise hydroponic pH/EC values from these Home Grown guides unless the source explicitly supports hydroponics.
+- Do not add precise hydroponic pH/EC values from Home Grown guides unless the source explicitly supports hydroponics.
 - A recommendation may be promoted later only after reconciliation and User Zero validation.
 
-## Pilot 1 — six live/relevant varieties
+## Pilot 1 — six published varieties + one V0.8.1 addition
 Structured evidence lives in `data/homegrown-manufacturer-guidance.json`.
 
 ### 1. Genovese Basil
@@ -80,6 +86,15 @@ Structured evidence lives in `data/homegrown-manufacturer-guidance.json`.
 
 **Decision:** strong candidate for visible manufacturer corroboration in Labs.
 
+### 7. Evergreen Bunching Nebuka — staged for V0.8.1
+**Result:** existing guide discovered; identity/search gap rather than missing plant data.
+- Internal ID remains `evergreen-bunching-onion-nabuka` to preserve compatibility with stored Lab state.
+- UI/search aliases now include Nebuka, Nabuka, scallion, green onion, cebolla de verdeo and cebollín largo.
+- The Home Grown manufacturer guide is retained as a source layer, while identity and biological claims are reconciled against stronger references.
+- Manufacturer wording implying meaningful bulb development is not promoted as a Garden fact for this bunching onion.
+
+**Decision:** preserve the existing record, improve discoverability, and show the same claim-level source comparison pattern after the next batched deploy.
+
 ## Important identity hold — Thyme
 Do **not** apply the Home Grown English Thyme pages to the corrected live Huerto 1 plant automatically.
 
@@ -94,6 +109,17 @@ Initial Home Grown blog review found useful secondary context around:
 
 These blog claims are intentionally lower in the hierarchy than the supplied manufacturer PDFs and Extension references. Do not promote them merely because they agree with an existing statement.
 
+## User Zero QA — approved 14 Sep 2026
+The published Site v3 comparison surface was reviewed by User Zero and accepted as-is.
+
+Approved behavior:
+- compact source-comparison card is understandable;
+- `Coincide / Complementa / Difiere` pattern is acceptable;
+- current density and labels do not require a blocking redesign;
+- explicit source disagreement can remain visible instead of being flattened into one answer.
+
+This approval clears the pattern for controlled expansion. It does **not** automatically promote manufacturer claims into the primary Grow Guide.
+
 ## Next execution steps
 - [x] Freeze the pre-V0.8 baseline.
 - [x] Register the two supplied Home Grown guides with explicit manufacturer provenance.
@@ -101,10 +127,14 @@ These blog claims are intentionally lower in the hierarchy than the supplied man
 - [x] Build Pilot 1 reconciliation for six relevant varieties.
 - [x] Record explicit conflicts instead of overwriting Garden guidance.
 - [x] Put English Thyme on identity hold because User Zero's live plant is German Thyme.
-- [ ] Add a compact **Manufacturer guidance / Source comparison** surface to the six pilot plant details in Garden Labs.
-- [ ] User Zero reviews whether that comparison helps during real maintenance.
-- [ ] Adjust information density/labels based on that review.
-- [ ] Expand reconciliation to the remaining Home Grown-covered varieties.
+- [x] Add the compact **Manufacturer guidance / Source comparison** surface to the six published pilot plant details.
+- [x] User Zero reviews and approves the source-comparison UX in real use.
+- [x] Accept current information density/labels for expansion; no blocking redesign required.
+- [x] Prepare Evergreen Bunching Nebuka reconciliation/search correction in the prototype branch.
+- [x] Define Source Matrix V1.
+- [x] Stage a curated expansion plan toward ~60 plants in `EXPANSION_TO_60.md`.
+- [ ] Build the first curated five-plant expansion batch.
+- [ ] Batch the next Sites deployment rather than deploying each microchange.
 - [ ] Only after the layer is useful, decide whether any reconciled facts should be promoted into the primary Grow Guide.
 
 ## Promotion rule

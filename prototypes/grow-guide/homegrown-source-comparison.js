@@ -12,6 +12,11 @@
     ["lechuga buttercrunch", "buttercrunch-lettuce"],
     ["black seeded simpson", "black-seeded-simpson"],
     ["lechuga black seeded simpson", "black-seeded-simpson"],
+    ["evergreen bunching onion nabuka", "evergreen-bunching-onion-nabuka"],
+    ["evergreen bunching nebuka scallion", "evergreen-bunching-onion-nabuka"],
+    ["cebolla de verdeo evergreen bunching nabuka", "evergreen-bunching-onion-nabuka"],
+    ["cebolla de verdeo evergreen bunching nebuka", "evergreen-bunching-onion-nabuka"],
+    ["cebollin largo evergreen bunching nebuka", "evergreen-bunching-onion-nabuka"],
   ]);
 
   const STATUS_BY_PLANT = {
@@ -21,6 +26,7 @@
     "red-romaine-lettuce": "matches",
     "buttercrunch-lettuce": "adds",
     "black-seeded-simpson": "matches",
+    "evergreen-bunching-onion-nabuka": "differs",
   };
 
   const COPY = {
@@ -39,6 +45,7 @@
         "red-romaine-lettuce": "Coincide en cosecha por hojas o cabeza; el rango térmico del fabricante es más amplio.",
         "buttercrunch-lettuce": "Coincide en modo de cosecha y añade contexto de tolerancia relativa al calor.",
         "black-seeded-simpson": "Coincide en hábito loose-leaf y cosecha repetida de hojas externas.",
+        "evergreen-bunching-onion-nabuka": "La especie coincide, pero Garden normaliza Nebuka y rechaza convertir spacing/bulb language del fabricante en reglas del pod.",
       },
       topics: {
         germination: "Germinación",
@@ -52,6 +59,9 @@
         "heat tolerance": "Tolerancia al calor",
         "growth form": "Forma de crecimiento",
         "repeat harvest": "Cosecha repetida",
+        "identity / spelling": "Identidad / nombre",
+        "cluster / thinning": "Cultivo en grupo / raleo",
+        "bulb language": "Referencia a bulbo",
       },
       resolutions: {
         corroborates: "Coincide con la guía actual; se conserva como corroboración del fabricante.",
@@ -59,7 +69,7 @@
         material_conflict: "Difieren materialmente; Garden conserva ambos valores con su contexto.",
         context_conflict: "Difieren por contexto o método; no se convierte en una regla del pod.",
         manufacturer_only_candidate: "Dato exclusivo del fabricante; no se promueve todavía a la guía principal.",
-        context_difference: "El fabricante da un rango más amplio; Garden conserva su formulación óptima actual.",
+        context_difference: "El fabricante da una formulación distinta; Garden conserva el contexto y la fuente de cada una.",
         manufacturer_context: "Contexto útil de variedad; no elimina las advertencias actuales de Garden.",
       },
     },
@@ -78,6 +88,7 @@
         "red-romaine-lettuce": "Matches on leaf vs head harvest; manufacturer temperature range is broader.",
         "buttercrunch-lettuce": "Matches on harvest mode and adds relative heat-tolerance context.",
         "black-seeded-simpson": "Matches on loose-leaf habit and repeated outer-leaf harvesting.",
+        "evergreen-bunching-onion-nabuka": "Species matches, but Garden normalizes Nebuka and does not turn manufacturer spacing/bulb wording into pod rules.",
       },
       topics: {},
       resolutions: {},

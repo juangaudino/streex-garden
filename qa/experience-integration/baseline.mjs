@@ -50,10 +50,14 @@ function targetAudit(selector) {
   return targets
 }
 function unchanged(before, label) {
-  const after = evaluate('window.__gardenQa.snapshot()')
+  const state = evaluate(`({
+    after: window.__gardenQa.snapshot(),
+    blockedRequests: window.__gardenQa.blockedRequests
+  })`)
+  const after = state.after
   assert.deepEqual(after.dataset, before, `${label}: fixture data changed`)
   assert.deepEqual(after.calls.filter(c => c.kind === 'blocked'), [], `${label}: attempted write or unexpected service`)
-  assert.deepEqual(evaluate('window.__gardenQa.blockedRequests'), [], `${label}: remote request`)
+  assert.deepEqual(state.blockedRequests, [], `${label}: remote request`)
   report.journeys.push({ label, calls: after.calls, canonicalDataUnchanged: true })
 }
 const geometry = `(()=>{const box=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,width:r.width,height:r.height}};return {width:innerWidth,height:innerHeight,documentHeight:document.documentElement.scrollHeight,scrollWidth:document.documentElement.scrollWidth,scrollY,mainPadding:getComputedStyle(document.querySelector('main')).paddingBottom,chat:box('.ask-garden-chat'),thread:box('.ask-garden-thread'),composer:box('.ask-garden-compose'),nav:box('.bottom-nav'),focus:document.activeElement?.outerHTML.slice(0,180)}})()`

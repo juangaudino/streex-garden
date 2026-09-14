@@ -160,16 +160,16 @@
 .switch-visual::before { display: block; width: 16px; height: 16px; border-radius: 50%; background: #e9f0dd; content: ''; transition: transform .15s; }
 .title-toggle input:checked + .switch-visual { background: #9cb77d; }
 .title-toggle input:checked + .switch-visual::before { transform: translateX(14px); }
-.record-detail { padding: 27px 30px; color: #dce6d2; }
-.record-detail > p { margin: 0 0 20px; color: #b6c2a9; line-height: 1.7; }
-.record-detail section + section { margin-top: 24px; }
-.record-detail dl { margin: 16px 0; }
-.record-detail dl > div { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 18px; padding: 13px 0; border-top: 1px solid rgba(156,175,133,.16); font-size: 12px; line-height: 1.5; }
-.record-detail dt { color: #acbd9a; }
-.record-detail dd { margin: 0; overflow-wrap: anywhere; }
-.record-detail details { margin-top: 18px; color: #b6c2a9; font-size: 12px; }
-.record-detail summary { cursor: pointer; }
-.record-detail pre { overflow: auto; padding: 12px; border-radius: 9px; background: #142017; color: #cbd7be; font: 10px/1.55 var(--sans); white-space: pre-wrap; }
+.film-sheet .record-detail { padding: 27px 30px; color: #dce6d2; }
+.film-sheet .record-detail > p { margin: 0 0 20px; color: #b6c2a9; line-height: 1.7; }
+.film-sheet .record-detail section + section { margin-top: 24px; }
+.film-sheet .record-detail dl { margin: 16px 0; }
+.film-sheet .record-detail dl > div { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 18px; padding: 13px 0; border-top: 1px solid rgba(156,175,133,.16); font-size: 12px; line-height: 1.5; }
+.film-sheet .record-detail dt { color: #acbd9a; }
+.film-sheet .record-detail dd { margin: 0; overflow-wrap: anywhere; }
+.film-sheet .record-detail details { margin-top: 18px; color: #b6c2a9; font-size: 12px; }
+.film-sheet .record-detail summary { cursor: pointer; }
+.film-sheet .record-detail pre { overflow: auto; padding: 12px; border-radius: 9px; background: #142017; color: #cbd7be; font: 10px/1.55 var(--sans); white-space: pre-wrap; }
 
 .garden-film-invitation { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 28px 0; padding: 26px 28px; overflow: hidden; border: 1px solid rgba(25,59,42,.11); border-radius: 22px; background: linear-gradient(120deg,rgba(25,59,42,.96),rgba(43,74,55,.9)); color: #eff5e7; }
 .garden-film-invitation .eyebrow { color: #bed1ad; }

@@ -13,7 +13,7 @@
     {"plantId":"lavender-vera","packetName":"Lavender: Vera","brand":"Home Grown","germinationRatePct":88,"purityPct":99,"aliases":["Lavender Vera"]},
     {"plantId":"common-mint","packetName":"Mint: Common","brand":"Home Grown","germinationRatePct":85,"purityPct":99,"aliases":["Common Mint"]},
     {"plantId":"italian-oregano","packetName":"Oregano: Italian","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Italian Oregano"]},
-    {"plantId":"evergreen-bunching-onion-nabuka","packetName":"Onion: Evergreen Bunching Nabuka","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Evergreen Bunching Onion","Nabuka"]},
+    {"plantId":"evergreen-bunching-onion-nabuka","packetName":"Onion: Evergreen Bunching Nabuka","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Evergreen Bunching Onion","Evergreen Bunching Nebuka","Evergreen Bunching Nebuka Scallion","Nebuka","Nebula","Nabuka","Scallion","Green onion","Cebolla de verdeo","Cebollín largo"],"note":"Packet/manufacturer guide spells the variety ‘Nabuka’. Garden keeps that as packet evidence but normalizes the plant identity/search alias to the widely used ‘Nebuka’; stable plantId is preserved to avoid breaking Lab state."},
     {"plantId":"italian-giant-parsley","packetName":"Parsley: Italian Giant","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Italian Giant Parsley"]},
     {"plantId":"rosemary","packetName":"Rosemary","brand":"Home Grown","germinationRatePct":90,"purityPct":99,"aliases":["Rosemary"]},
     {"plantId":"broadleaf-sage","packetName":"Sage: Broadleaf","brand":"Home Grown","germinationRatePct":85,"purityPct":100,"aliases":["Broadleaf Sage"]},

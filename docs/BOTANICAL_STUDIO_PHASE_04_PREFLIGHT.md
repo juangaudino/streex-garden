@@ -4,6 +4,8 @@ Fecha: 13 de septiembre de 2026. Base: **`6cc1eba`**, rama `codex/botanical-plan
 
 **Preflight terminado; consolidación todavía no iniciada.** No se modificaron componentes, estilos, rutas, datos, configuración AI, contratos ni infraestructura. Sin deploy, publicación o cambios remotos. Los archivos preexistentes `docs/VISUAL_DEPTH_STUDY.md` y `qa/depth-study*` permanecen fuera del alcance.
 
+**Actualización posterior:** [Fase 04.A — baseline integrado y propietarios](BOTANICAL_STUDIO_PHASE_04_A.md) establece la evidencia sobre el producto completo y la siguiente parada, antes de 04.B. Este preflight conserva su plan histórico. En particular, 04.A confirma V02 por color/espaciado, pero descarta el padding como ejemplo demostrado en el sheet de Planta medido.
+
 La dirección Botanical Studio / Living Botanical Cinema y las decisiones V1 están congeladas. La Fase 04 debe reparar continuidad y reducir inconsistencias conservando las composiciones aprobadas. No debe producir otro diseño conceptual ni sustituir formularios canónicos.
 
 Referencias: [dirección 01](BOTANICAL_STUDIO_PHASE_01.md), [Maintenance 02.1](BOTANICAL_STUDIO_PHASE_02_1.md), [Growth Film 02.2](BOTANICAL_STUDIO_PHASE_02_2.md), [Planta 02.3](BOTANICAL_STUDIO_PHASE_02_3.md), [superficies 03](BOTANICAL_STUDIO_PHASE_03.md). Sus cierres locales se conservan; los pendientes autenticados/físicos no se cierran en este documento.

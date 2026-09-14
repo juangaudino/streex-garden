@@ -42,7 +42,7 @@ export async function invoke(name: string, args: unknown[] = []): Promise<unknow
     getMaintenanceSession: () => find([dataset.session], args[0]),
     getOpenMaintenanceSession: () => scenario === 'empty' ? null : ({ id: dataset.session.id, state: dataset.session.state, started_at: dataset.session.started_at }),
     getSignedPhotoUrl: () => syntheticPhoto(String(args[0])),
-    getObservationDrafts: () => [],
+    getObservationDrafts: () => dataset.drafts,
     getGuestPlantStories: () => [],
     getGuestGardenStories: () => [],
   }

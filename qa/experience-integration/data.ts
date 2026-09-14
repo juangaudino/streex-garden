@@ -1,6 +1,6 @@
-import type { AttentionItem, ControlPosition, ControlProjection, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, MaintenanceSession, PhotoEvidence } from '../../src/domain/types'
+import type { AttentionItem, ControlPosition, ControlProjection, GardenDetail, GardenSummary, GrowCycleDetail, HomeDashboard, MaintenanceSession, ObservationDraft, PhotoEvidence } from '../../src/domain/types'
 
-export const scenarios = ['normal', 'dense', 'empty', 'no-photo', 'read-error', 'slow'] as const
+export const scenarios = ['normal', 'dense', 'empty', 'no-photo', 'read-error', 'slow', 'pending-drafts'] as const
 export type Scenario = typeof scenarios[number]
 export const ownerId = '44444444-4444-4444-8444-444444444404'
 export const visitId = '44444444-4444-4444-8444-444444444405'
@@ -31,7 +31,8 @@ export function createDataset(scenario: Scenario = 'normal') {
   const positions: ControlPosition[] = cycles.filter(c => c.state === 'active').map(c => ({ position: { id: c.position.id, number: c.position.position_number }, grow_cycle_id: c.id, plant: { name: c.crop_name }, planting: { date: c.planted_on, precision: c.planted_on_precision }, age: { days: 43, status: 'known', precision: 'exact' }, last_thinning: null, next_thinning_evaluation: { kind: 'not_scheduled', task: null, evidence: null }, harvest_readiness: { value: c.harvest_readiness, reason: null, evidence: null }, current_state: { kind: 'insufficient_evidence', reason: null, evidence: null }, germination: { status: 'no_observation', evidence: null }, plant_count: null, action: null }))
   const control: ControlProjection = { reference_date: referenceDate, interpretation: 'Proyección sintética. No describe plantas reales.', positions: scenario === 'empty' ? [] : positions, gardens: scenario === 'empty' ? [] : gardens.map(g => ({ garden_id: g.id, garden_name: g.name, summary: {}, germination_coverage: { occupied_positions: g.positions.filter(p => p.current_cycle).length, confirmed_positions: 0 }, shared_actions: [], relevant_facts: [], positions: positions.filter(p => cycles.find(c => c.id === p.grow_cycle_id)?.garden.id === g.id) })) }
   const dashboard: HomeDashboard = { visit: { id: visitId, base_cursor: 1, snapshot_cursor: 12, snapshot_at: instant, first_visit: false, visit_gap_minutes: 30 }, gardens: summaries, attention: { items: attention }, since_last_time: { changes: scenario === 'empty' ? [] : cycles.slice(0, 3).map((c, i) => ({ cursor: i + 2, kind: 'event', garden_id: c.garden.id, grow_cycle_id: c.id, occurred_at: instant, committed_at: instant, summary: `Un momento en ${c.crop_name} · QA sintética` })) } }
-  return { cycles, gardens, attention, session, control, dashboard }
+  const drafts: ObservationDraft[] = scenario === 'pending-drafts' ? [{ id: 'qa-draft', requestId: '44444444-4444-4444-8444-444444444406', growCycleId: cycles[0].id, note: 'Borrador sintético sin guardar', createdAt: instant, status: 'queued' }] : []
+  return { cycles, gardens, attention, session, control, dashboard, drafts }
 }
 
 export function syntheticPhoto(path: string): string {

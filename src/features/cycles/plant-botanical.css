@@ -21,6 +21,7 @@
 }
 
 .plant-page .breadcrumb {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -251,7 +252,7 @@
 .plant-page .care-status div { display: grid; gap: 4px; min-width: 0; }
 .plant-page .care-status small { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
 .plant-page .care-status strong { font-size: 14px; font-weight: 650; line-height: 1.35; }
-.plant-page .care-status .bs-text-button { min-height: 38px; font-size: 12px; }
+.plant-page .care-status .bs-text-button { min-height: 44px; font-size: 12px; }
 
 .plant-page .film-invitation {
   position: relative;
@@ -274,7 +275,7 @@
 .plant-page .film-invitation h2 { margin-top: 14px; color: #f8f9f2; font-size: clamp(34px, 4.2vw, 53px); line-height: .94; }
 .plant-page .film-invitation h2 em { color: #d4e1c7; }
 .plant-page .film-invitation p { margin-top: 16px; color: #e7eddf; font-size: 13px; line-height: 1.55; }
-.plant-page .glass-button { display: inline-flex; align-items: center; gap: 8px; min-height: 43px; margin-top: 21px; padding: 10px 0; border-bottom: 1px solid #d8e5cb; color: #f9fbf1; font-size: 13px; font-weight: 650; text-decoration: none; }
+.plant-page .glass-button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 21px; padding: 10px 0; border-bottom: 1px solid #d8e5cb; color: #f9fbf1; font-size: 13px; font-weight: 650; text-decoration: none; }
 
 .plant-page .ai-invitation {
   display: grid;
@@ -455,3 +456,5 @@
   .plant-page .portrait-position { border: 1px solid var(--ink); }
   .plant-page .film-invitation::after { background: rgba(18, 49, 35, .88); }
 }
+
+.plant-page .plant-identity h1:focus { outline: none; }

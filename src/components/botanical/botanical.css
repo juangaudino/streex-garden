@@ -85,3 +85,8 @@
 @media (prefers-reduced-motion: reduce) { .botanical-surface *, .botanical-surface *::before, .botanical-surface *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media (prefers-reduced-transparency: reduce) { .bs-sheet::backdrop { backdrop-filter: none; background: #14271fca; } }
 @media (prefers-contrast: more) { .botanical-surface { --muted: #435747; --line: #9aab91; } }
+
+/* Shell targets retain their typography and fit the existing header clearance. */
+.app-shell .topbar__register, .app-shell .topbar__actions .icon-button,
+.app-shell .topbar__nav-link, .app-shell .brand { min-height: 44px; }
+.app-shell .topbar__nav-link { min-width: 44px; }

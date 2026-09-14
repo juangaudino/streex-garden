@@ -1,5 +1,10 @@
 # Botanical Studio — preflight de Fase 04: Experience Consolidation
 
+> Continuidad: 04.A cerrada en `78a8385`. Política actual y B1–B7 en
+> [Fase 04.B](BOTANICAL_STUDIO_PHASE_04_B.md); las recomendaciones históricas de
+> Astra obligatorio quedan superadas por la evaluación técnica aprobada.
+
+
 Fecha: 13 de septiembre de 2026. Base: **`6cc1eba`**, rama `codex/botanical-plant-integration`. Tramo autorizado: **GPT-5.6 Sol High, mapeo y preparación exclusivamente**.
 
 **Preflight terminado; consolidación todavía no iniciada.** No se modificaron componentes, estilos, rutas, datos, configuración AI, contratos ni infraestructura. Sin deploy, publicación o cambios remotos. Los archivos preexistentes `docs/VISUAL_DEPTH_STUDY.md` y `qa/depth-study*` permanecen fuera del alcance.
@@ -223,3 +228,12 @@ Sol High fue adecuado para este mapa y sigue siendo candidato para implementaci�
 Siguiente paso propuesto: **04.A con Astra xhigh** — fijar baseline integrado, propietarios de cascade/foco/scroll y límites de cada corrección; continuar con 04.B sólo dentro de ese alcance. Detenerse al cerrar el bloque sistémico si el siguiente tramo puede resolverse con Sol/Terra, o ante una complejidad nueva que requiera elevar nivel. Explicar evidencia y esperar ajuste del usuario.
 
 **Parada actual: no empezar Fase 04 ni modificar la experiencia global hasta confirmación del usuario.** QA autenticada/física de Growth Film, Planta y Fase 03 permanece separada y pendiente.
+
+## Continuidad aprobada tras 04.A
+
+La evaluación técnica y ejecución acotada de B1–B7 se documentan en
+[BOTANICAL_STUDIO_PHASE_04_B.md](BOTANICAL_STUDIO_PHASE_04_B.md).
+La política actual reemplaza Astra xhigh obligatorio: B Sol High; C/D Terra High
+según alcance real; E Sol High. Subidas requieren evidencia concreta y parada previa.
+Cadence aprobada: B commit local; evaluar push/preview acumulados tras C; D sin
+deploy automático; E cierre/push candidato. No se publica en B.

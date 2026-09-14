@@ -21,7 +21,7 @@ hojas CSS. Es una herramienta local de caracterización, no un demo publicable.
 - CSP y un guard de fetch rechazan destinos ajenos al harness. No reemplazan una
   frontera de seguridad de producción: ésta es una herramienta de QA local.
 - PWA se sustituye por un estado sin actualización; no se instala service worker.
-  El viewport del producto se conserva, incluido el bloqueo de zoom pendiente A01.
+  El viewport del producto se conserva; 04.B retira el bloqueo de zoom A01.
 - No implementa un segundo backend canónico. Guardar, completar, avanzar sesión,
   confirmar salud, cerrar sesión o solicitar AI **no son operaciones disponibles**.
   Esas capacidades se validan con las pruebas del producto y, después, QA autenticada.
@@ -108,3 +108,18 @@ Artefactos ignorados por Git. Esta evidencia no sustituye QA autenticada, iPhone
 teclado, safe areas físicas, audio, fullscreen Safari ni la revisión global 04.E.
 
 Guía y decisiones: [Fase 04.A](../../docs/BOTANICAL_STUDIO_PHASE_04_A.md).
+
+## Regresión de continuidad 04.B
+
+```sh
+QA_PHASE=04b node qa/experience-integration/baseline.mjs
+```
+
+Usa `QA_BROWSER_EXECUTABLE` para el navegador y, opcionalmente, `QA_BROWSER_CLI`
+para un binario instalado de agent-browser (evita invocar npx en cada operación).
+Escribe en `artifacts/phase04-b/integrated`, sin sobrescribir evidencia de 04.A.
+Exige foco/retorno corregidos, seams Ask, áreas de controles, zoom local y cancelación
+del sheet de borradores. V01/V02 siguen registrados como pendientes de 04.C.
+El escenario `pending-drafts` expone copias de borradores sintéticos; no habilita
+exportación, cierre de cuenta ni escritura. Esos caminos se prueban con mocks en
+AppShell.test.tsx, conservando orden y fallos. No usar cuentas reales en este harness.

@@ -84,3 +84,11 @@ it('feeds the real Film loader with current and historical cycles and preserves 
   }
   expect(snapshot().dataset).toEqual(before)
 })
+
+it('exposes only cloned pending drafts for the explicit exit-dialog scenario', async () => {
+  reset('pending-drafts'); const before = snapshot().dataset
+  const drafts = await invoke('getObservationDrafts') as typeof before.drafts
+  expect(drafts[0].growCycleId).toBe(before.cycles[0].id)
+  drafts.length = 0; expect(snapshot().dataset).toEqual(before)
+  await expect(invoke('downloadObservationDrafts')).rejects.toThrow('bloqueado')
+})

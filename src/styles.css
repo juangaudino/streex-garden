@@ -881,3 +881,7 @@ html.growth-film-immersive-open, body.growth-film-immersive-open { overflow:hidd
   .ask-garden-compose textarea { min-width:0; }
   .ask-garden-compose__send { width:40px; }
 }
+
+/* Pending-draft exit keeps the shared sheet lifecycle and its own three choices. */
+.bs-signout-sheet .bs-sheet-footer { display: grid; grid-template-columns: 1fr; }
+.bs-signout-sheet .bs-sheet-footer .bs-button { width: 100%; }

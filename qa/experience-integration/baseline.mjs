@@ -7,12 +7,13 @@ import { resolve } from 'node:path'
 import assert from 'node:assert/strict'
 
 const base = 'http://127.0.0.1:4204'
-const output = resolve('artifacts/experience-integration/baseline')
+const continuity = process.env.QA_PHASE === '04b'
+const output = resolve(continuity ? 'artifacts/phase04-b/integrated' : 'artifacts/experience-integration/baseline')
 mkdirSync(output, { recursive: true })
-const session = 'garden04a-baseline'
-const report = { base: '6cc1eba', generatedAt: new Date().toISOString(), observations: {}, screenshots: [], journeys: [], errors: [], fontChecks: [] }
+const session = continuity ? 'garden04b-integrated' : 'garden04a-baseline'
+const report = { base: continuity ? '78a8385 + B1–B7' : '6cc1eba', generatedAt: new Date().toISOString(), observations: {}, screenshots: [], journeys: [], errors: [], fontChecks: [] }
 function ab(...args) {
-  const raw = execFileSync('npx', ['--yes', 'agent-browser', '--session', session, '--json', ...args], { encoding: 'utf8', timeout: 45000, maxBuffer: 8 * 1024 * 1024 })
+  const raw = execFileSync(process.env.QA_BROWSER_CLI || 'npx', [...(process.env.QA_BROWSER_CLI ? [] : ['--yes', 'agent-browser']), '--session', session, '--json', ...args], { encoding: 'utf8', timeout: 45000, maxBuffer: 8 * 1024 * 1024 })
   const value = JSON.parse(raw)
   if (!value.success) throw new Error(JSON.stringify(value.error))
   return value.data
@@ -32,7 +33,21 @@ function click(selector) {
   evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'center',behavior:'instant'})`)
   const hittable = evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e.getBoundingClientRect();return e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2))})()`)
   assert.equal(hittable, true, `Target covered after centering: ${selector}`)
+  evaluate(`document.addEventListener('click',()=>{window.__qaActualClickY=scrollY},{once:true,capture:true})`)
   ab('click', selector)
+  return evaluate('window.__qaActualClickY')
+}
+function targetAudit(selector) {
+  const count = evaluate(`document.querySelectorAll(${JSON.stringify(selector)}).length`)
+  const targets = []
+  for (let i=0; i<count; i++) {
+    const target = evaluate(`(()=>{const e=document.querySelectorAll(${JSON.stringify(selector)})[${i}];if(!e.getBoundingClientRect().width)return null;e.scrollIntoView({block:'center',behavior:'instant'});const r=e.getBoundingClientRect();return {name:e.getAttribute('aria-label')||e.textContent,width:r.width,height:r.height,centerHit:e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2))}})()`)
+    if (!target) continue
+    assert.ok(target.width >= 43.99 && target.height >= 43.99, `Small target: ${JSON.stringify(target)}`)
+    assert.equal(target.centerHit, true, `Covered target: ${target.name}`)
+    targets.push(target)
+  }
+  return targets
 }
 function unchanged(before, label) {
   const after = evaluate('window.__gardenQa.snapshot()')
@@ -57,16 +72,21 @@ try {
   // Real row link, real PlantStudio, ordinary browser route transitions.
   evaluate(`document.querySelector('.position-row a[href="/cycle/qa-cycle-1"]').scrollIntoView({block:'center',behavior:'instant'})`)
   const origin = evaluate(`({y:scrollY,href:document.querySelector('.position-row a[href="/cycle/qa-cycle-1"]').getAttribute('href')})`)
-  click('.position-row a[href="/cycle/qa-cycle-1"]'); settle(); ab('wait', '.plant-identity h1')
+  origin.y = click('.position-row a[href="/cycle/qa-cycle-1"]'); settle(); ab('wait', '.plant-identity h1')
   report.observations.N01 = { origin, arrival: evaluate(`({path:location.pathname,profileIdentity:!!document.querySelector('[data-place-origin="profile"]'),oldHeading:!!document.querySelector('.botanical-portrait h1'),heading:document.querySelector('.plant-identity h1').textContent,focusedHeading:document.activeElement===document.querySelector('.plant-identity h1'),scrollY,placeClones:document.querySelectorAll('.place-flight').length})`) }
+  if (continuity) { assert.equal(report.observations.N01.arrival.profileIdentity, true); assert.equal(report.observations.N01.arrival.focusedHeading, true); assert.equal(report.observations.N01.arrival.scrollY, 0); assert.equal(report.observations.N01.arrival.placeClones, 0) }
   shot('plant-arrival-390')
+  if (continuity) report.observations.plantTargets = targetAudit('.topbar__register,.topbar__actions .icon-button,.plant-page .breadcrumb,.plant-page .care-status .bs-text-button,.plant-page .glass-button')
   click('.plant-page .breadcrumb'); settle(); ab('wait', '.physical-map')
   report.observations.N01.return = evaluate(`({path:location.pathname,scrollY,focusedRow:document.activeElement===document.querySelector('.position-row a[href="/cycle/qa-cycle-1"]')})`)
+  if (continuity) { assert.equal(report.observations.N01.return.focusedRow, true); assert.equal(report.observations.N01.return.scrollY, origin.y) }
   // Map origin as well as row origin.
   click('.map-site[href="/cycle/qa-cycle-1"]'); settle(); ab('wait', '.plant-identity h1')
   report.observations.N01.mapArrival = evaluate(`({scrollY,profileIdentity:!!document.querySelector('[data-place-origin="profile"]'),focusedHeading:document.activeElement===document.querySelector('.plant-identity h1')})`)
+  if (continuity) assert.equal(report.observations.N01.mapArrival.focusedHeading, true)
   ab('back'); settle(); ab('wait', '.physical-map')
   report.observations.N01.browserReturn = evaluate(`({path:location.pathname,scrollY,focusedMap:document.activeElement===document.querySelector('.map-site[href="/cycle/qa-cycle-1"]')})`)
+  if (continuity) assert.equal(report.observations.N01.browserReturn.focusedMap, true)
   click('.map-site[href="/cycle/qa-cycle-1"]'); settle(); ab('wait', '.plant-identity h1')
   click('.portrait-history-link'); ab('wait', '.timeline button'); click('.timeline button'); ab('wait', '.plant-sheet[open]')
   report.observations.V02 = { baseline: evaluate(detailStyle) }; shot('plant-event-390')
@@ -81,6 +101,7 @@ try {
   assert.equal(report.observations.plantSheetReturn.focusedTrigger, true)
   assert.equal(report.observations.plantSheetReturn.bodyOverflow, '')
   click('[role="tab"][id$="-overview"]'); click('.plant-page a[href="/cycle/qa-cycle-1/film"]'); settle(); ab('wait', '.cinema-photo'); shot('film-390')
+  if (continuity) report.observations.filmTargets = targetAudit('.film-page input[type=range],.film-page .bs-text-button')
   ab('click', 'button[aria-label="Información de esta película"]'); ab('wait', '.film-sheet[open]'); shot('film-source-390')
   report.observations.filmSource = evaluate(`({text:document.querySelector('.film-sheet').textContent,sourceLink:document.querySelector('.film-sheet a').getAttribute('href')})`)
   click('.film-sheet a[href="/cycle/qa-cycle-1"]'); settle(); ab('wait', '.plant-portrait')
@@ -96,10 +117,12 @@ try {
   report.observations.V03 = {}
   for (const width of [320, 390, 640, 641, 690, 719, 720, 820, 1440]) {
     viewport(width); report.observations.V03[width] = evaluate(geometry)
+    if (continuity && width < 720) { const g=report.observations.V03[width]; assert.equal(g.mainPadding, '0px'); assert.ok(g.composer.bottom <= g.nav.top, `Composer covered at ${width}`); assert.ok(g.documentHeight <= g.height+1, `Redundant external scroll at ${width}`) }
     if ([390, 690, 820, 1440].includes(width)) shot(`ask-empty-${width}`)
   }
   report.observations.askShortHeight = {}
   for (const width of [390, 690]) { viewport(width, 480); report.observations.askShortHeight[width] = evaluate(geometry) }
+  if (continuity) for (const [width,g] of Object.entries(report.observations.askShortHeight)) { assert.ok(g.composer.bottom <= g.nav.top, `Short composer covered at ${width}`); assert.ok(g.documentHeight <= g.height+1, `Short external scroll at ${width}`) }
   viewport(690); ab('fill', '#ask-garden-input', '¿Qué posiciones siguen sin germinación confirmada?'); ab('press', 'Enter'); settle(); ab('wait', '.ask-garden-answer')
   report.observations.askDeterministic = evaluate(`({answer:document.querySelector('.ask-garden-answer').textContent,geometry:${geometry}})`); shot('ask-answer-690')
   unchanged(before, 'Hoy/Ask determinístico: navegar y consultar conserva datos y servicios AI bloqueados')
@@ -116,8 +139,27 @@ try {
     viewport(width); open(path); ab('wait', selector); shot(`${name}-${width}`)
     before = evaluate('window.__gardenQa.initialDataset'); unchanged(before, `${name}: entrada directa`)
   }
+  if (continuity) {
+    viewport(390); open('/?qaScenario=pending-drafts'); ab('wait', '.bc-home-hero')
+    before = evaluate('window.__gardenQa.initialDataset')
+    ab('click', 'button[aria-label="Cerrar sesión"]'); ab('wait', '.bs-signout-sheet[open]'); shot('pending-drafts-390')
+    report.observations.draftSheet = evaluate(`({focus:document.activeElement.tagName,overflow:document.body.style.overflow,buttons:[...document.querySelectorAll('.bs-signout-sheet button')].map(e=>({name:e.textContent||e.getAttribute('aria-label'),width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height})),dialogWidth:document.querySelector('.bs-signout-sheet').getBoundingClientRect().width})`)
+    assert.equal(report.observations.draftSheet.focus, 'H2'); assert.equal(report.observations.draftSheet.overflow, 'hidden')
+    ab('press', 'Escape'); assert.equal(evaluate(`document.activeElement===document.querySelector('button[aria-label="Cerrar sesión"]')`), true)
+    unchanged(before, 'B6: salida con borradores, Escape sin exportar/salir/borrar')
+    open('/garden/qa-garden-1'); ab('wait', '.physical-map'); before = evaluate('window.__gardenQa.initialDataset')
+    evaluate('window.__gardenQa.setDelay(1500)'); click('.map-site[href="/cycle/qa-cycle-1"]'); ab('wait', '.plant-identity h1'); settle()
+    assert.equal(evaluate('document.activeElement===document.querySelector(".plant-identity h1")'), true)
+    unchanged(before, 'B1: llegada lenta 1500ms al ciclo correcto')
+    viewport(820); open('/cycle/qa-cycle-1'); ab('wait', '.plant-portrait')
+    evaluate(`document.body.style.zoom='2'`)
+    report.observations.zoomReflow = evaluate(`({zoom:getComputedStyle(document.body).zoom,viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth})`)
+    assert.ok(report.observations.zoomReflow.scrollWidth <= 820, '200% local reflow overflow')
+    shot('plant-zoom-200'); evaluate(`document.body.style.zoom=''`)
+  }
   report.browserErrors = ab('errors')
-  console.log('04.A characterization complete. Known defects are recorded separately from passing invariants.')
+  if (continuity) assert.deepEqual(report.browserErrors.errors, [])
+  console.log(continuity ? '04.B continuity regression complete; V01/V02 remain reserved for 04.C.' : '04.A characterization complete. Known defects are recorded separately from passing invariants.')
 } catch (error) {
   report.errors.push(String(error))
   try { report.failureContext = { url: ab('get', 'url'), snapshot: ab('snapshot', '-i'), browserErrors: ab('errors') } } catch { /* Preserve the first failure. */ }

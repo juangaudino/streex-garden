@@ -1,5 +1,10 @@
 # Botanical Studio — Fase 04.A: baseline integrado y propietarios
 
+> Continuidad: 04.A cerrada en `78a8385`. Política actual y B1–B7 en
+> [Fase 04.B](BOTANICAL_STUDIO_PHASE_04_B.md); las recomendaciones históricas de
+> Astra obligatorio quedan superadas por la evaluación técnica aprobada.
+
+
 Fecha: 13 de septiembre de 2026. Modelo del bloque: **GPT-6 Astra xhigh**.
 Producto de referencia: **`6cc1eba`**. Guía: [preflight](BOTANICAL_STUDIO_PHASE_04_PREFLIGHT.md), commit `2a11e61`.
 
@@ -241,3 +246,12 @@ y volver a detenerse para recomendar Astra xhigh.
 Maintenance, Planta, Growth Film y Fase 03 permanece pendiente y separada, igual
 que safe areas/teclado/zoom y fullscreen nativo Safari iPhone. No se considera
 cerrada Fase 04 ni se autoriza deploy/publicación por este baseline.
+
+## Continuidad aprobada tras 04.A
+
+La evaluación técnica y ejecución acotada de B1–B7 se documentan en
+[BOTANICAL_STUDIO_PHASE_04_B.md](BOTANICAL_STUDIO_PHASE_04_B.md).
+La política actual reemplaza Astra xhigh obligatorio: B Sol High; C/D Terra High
+según alcance real; E Sol High. Subidas requieren evidencia concreta y parada previa.
+Cadence aprobada: B commit local; evaluar push/preview acumulados tras C; D sin
+deploy automático; E cierre/push candidato. No se publica en B.

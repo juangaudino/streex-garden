@@ -1,0 +1,92 @@
+{
+  "thai-basil": {
+    "summary": "Albahaca de temporada cálida y crecimiento ramificado, con perfil de anís y clavo. Garden la maneja estructuralmente como albahaca, pero conserva visibles las diferencias de altura y nomenclatura entre fuentes.",
+    "metrics": [
+      {"label": "Germinación", "note": "Home Grown + referencia Thai de Johnny's"},
+      {"label": "Ventana de cosecha", "note": "Depende de fuente/cultivar"},
+      {"label": "Altura de referencia", "note": "Home Grown vs. contexto varietal de UMN"},
+      {"label": "pH / EC hidro", "note": "Referencia OSU para cultivo de albahaca"}
+    ],
+    "sections": {
+      "germination": {"short": "Germinación rápida de albahaca con calor", "guidance": "La albahaca tailandesa es de temporada cálida. La referencia Sweet Thai de Johnny's y Home Grown apoyan unos 5–10 días de germinación con condiciones cálidas de semillero."},
+      "thinning": {"short": "Ralear por vigor y hacinamiento, no por pulgadas de campo", "guidance": "Las fuentes de campo usan separaciones finales amplias, pero un pod compacto no debe copiar ese número literalmente. Conserva los tallos más fuertes y reduce solo cuando compitan claramente por la misma ruta de luz o volumen radicular."},
+      "pruning": {"short": "Pinza sobre un nodo sano para estimular ramificación", "guidance": "Usa la lógica normal de ramificación de la albahaca: una vez establecida, retira una punta de crecimiento justo sobre un par de hojas o nodo sano. Las cosechas regulares de puntas ayudan a mantenerla compacta y productiva."},
+      "harvest": {"short": "Empieza ligero tras el establecimiento y cosecha puntas con regularidad", "guidance": "Home Grown inicia la cosecha tras varios pares de hojas y alrededor de 12–18 pulgadas, mientras fuentes más fuertes de albahaca permiten una cosecha ligera cuando la planta ya está establecida. Garden debe usar estructura y capacidad de recuperación, no solo edad."},
+      "flowering": {"short": "La floración marca un cambio fuera del pico de producción de hojas", "guidance": "Si el objetivo son hojas, cosecha antes de una floración intensa y mantén la planta ramificando. Los botones visibles siguen siendo una etapa real, no un error."},
+      "hydroponics": {"short": "Usa objetivos de albahaca como referencia de cultivo", "guidance": "OSU ubica la albahaca alrededor de EC 1.0–1.6 mS/cm y pH 5.5–6.0. Johnny's también identifica tipos Thai como aptos para hidroponía/contenedor. En reservorios compartidos hay que respetar también los otros cultivos."},
+      "problems": {"short": "Vigila floración por estrés, hacinamiento y respuesta a poca luz", "guidance": "El estrés hídrico y el calor alto pueden acelerar la floración en albahaca, mientras el crecimiento interior denso reduce ventilación. Garden debe interpretar estas señales junto con historial y fotos."}
+    }
+  },
+  "italian-large-leaf-basil": {
+    "summary": "Albahaca culinaria de hojas grandes que sigue la misma lógica de ramificación por nodos que la Genovese, conservando a la vez su perfil varietal específico del fabricante.",
+    "metrics": [
+      {"label": "Germinación", "note": "Home Grown; consistente con referencia general de albahaca"},
+      {"label": "Punto de cosecha", "note": "Guía varietal Home Grown"},
+      {"label": "Altura", "note": "Referencia varietal del fabricante"},
+      {"label": "pH / EC hidro", "note": "Referencia OSU para cultivo de albahaca"}
+    ],
+    "sections": {
+      "germination": {"short": "Emergencia rápida de albahaca: 5–10 días", "guidance": "Home Grown indica 5–10 días para Italian Large Leaf, en línea con la ventana general de albahaca de Johnny's en condiciones cálidas."},
+      "thinning": {"short": "Conserva tallos vigorosos; gestiona hacinamiento sin copiar spacing de campo", "guidance": "Home Grown usa 12–18 pulgadas de separación exterior, pero Garden debe traducir eso a competencia de copa y raíces en un pod, no a una regla literal de interior."},
+      "pruning": {"short": "Corta sobre un nodo para conservar puntos de ramificación", "guidance": "Una vez establecida, cosecha o pinza tallos justo sobre un nodo sano. Esto mantiene brotes laterales activos y coincide entre Home Grown, Johnny's y USU."},
+      "harvest": {"short": "Empieza cerca de 6–8 pulgadas cuando pueda recuperarse", "guidance": "Home Grown permite cosechar alrededor de 6–8 pulgadas y recomienda hojas individuales o tallos sobre un nodo. Garden debe preferir varias cosechas ligeras de tallos antes que deshojar una planta joven."},
+      "flowering": {"short": "Mantén la producción de hojas por delante de la floración", "guidance": "La cosecha regular antes de una floración fuerte favorece la producción continua. Los botones son una señal de etapa que debe influir, no dictar automáticamente, el siguiente corte."},
+      "hydroponics": {"short": "Ya existe referencia hidropónica específica para albahaca", "guidance": "OSU ubica la albahaca alrededor de EC 1.0–1.6 mS/cm y pH 5.5–6.0. Úsalo como referencia de cultivo, no como orden de reemplazar la receta actual de un reservorio compartido."},
+      "problems": {"short": "Hacinamiento, estrés hídrico y floración reducen calidad de hojas", "guidance": "La albahaca necesita buena luz, humedad estable y ventilación. Garden debe distinguir floración madura normal de declive por estrés usando historial y evidencia visual."}
+    }
+  },
+  "florence-fennel": {
+    "summary": "Hinojo de clima fresco cultivado por sus bases foliares engrosadas y también por las frondas. El daño de raíces, el calor y la humedad irregular importan más que cualquier poda.",
+    "metrics": [
+      {"label": "Germinación", "note": "USU Extension; Home Grown 7–14"},
+      {"label": "Madurez", "note": "USU; fabricante indica 90–120"},
+      {"label": "Punto de cosecha", "note": "USU Florence fennel"},
+      {"label": "pH / EC hidro", "note": "Sin objetivo hidropónico específico aceptado"}
+    ],
+    "sections": {
+      "germination": {"short": "Cultivo fresco con referencia Extension de 7–10 días", "guidance": "USU indica unos 7–10 días de germinación para Florence fennel con suelo entre 50–75°F. Home Grown da una ventana compatible, algo más amplia, de 7–14 días."},
+      "thinning": {"short": "Un cultivo de bulbo necesita una corona final fuerte por posición", "guidance": "A diferencia de chives o bunching onion, Florence fennel necesita espacio para una base engrosada. En pod o contenedor, conserva la plántula final más fuerte y no copies literalmente la separación exterior en pulgadas."},
+      "pruning": {"short": "No requiere poda rutinaria de forma", "guidance": "No podes Florence fennel como albahaca. Conserva corona y frondas activas; si aparece un tallo floral temprano, trátalo como espigado, no como oportunidad normal de dar forma."},
+      "harvest": {"short": "Cosecha la base firme antes de sobremadurar", "guidance": "USU recomienda cosechar Florence fennel cuando la base bulbosa está firme y mide menos de unas 4 pulgadas de ancho. Las frondas pueden usarse antes como guarnición sin sacrificar la corona central."},
+      "flowering": {"short": "Calor, días largos y estrés de raíces pueden disparar espigado", "guidance": "Florence fennel rinde mejor en condiciones frescas. El calor, los días largos, el estrés hídrico o alterar raíces pueden acelerar el espigado y reducir la calidad del bulbo."},
+      "hydroponics": {"short": "Primero hay que validar geometría de raíz y bulbo", "guidance": "Garden no asigna todavía un EC/pH hidropónico preciso. Antes de recomendar hidro compacta, hay que validar que cesta y zona radicular soporten la base engrosada y la raíz principal sin estrés crónico."},
+      "problems": {"short": "Espigado, rajado y bulbos pequeños son los principales riesgos", "guidance": "Mantén humedad consistente y evita daño radicular. Si produce sobre todo frondas sin base útil, puede deberse a calor, estrés, variedad incorrecta o falta de espacio físico."}
+    }
+  },
+  "lemongrass-homegrown": {
+    "summary": "Gramínea tropical cálida que forma macollas. La guía Home Grown solo identifica Cymbopogon spp., así que Garden conserva la especie exacta sin resolver en vez de elegir silenciosamente lemongrass East- o West-Indian.",
+    "metrics": [
+      {"label": "Identidad", "note": "Especie exacta aún sin resolver"},
+      {"label": "Germinación", "note": "Guía Home Grown a nivel de género"},
+      {"label": "Punto de cosecha", "note": "El diámetro varía por fuente/especie"},
+      {"label": "pH / EC hidro", "note": "Sin objetivo hidropónico específico aceptado"}
+    ],
+    "sections": {
+      "germination": {"short": "Germinación cálida; la especie exacta importa", "guidance": "Home Grown indica 7–21 días alrededor de 70°F. Johnny's para East Indian lemongrass indica 7–14 días y señala que la luz ayuda. Garden conserva el rango más amplio a nivel de género hasta resolver la especie del paquete."},
+      "thinning": {"short": "El crecimiento en macolla es normal", "guidance": "Lemongrass puede crecer en grupos. Retira solo plántulas débiles o claramente competidoras cuando el grupo joven esté hacinado; no impongas una regla universal de un tallo."},
+      "pruning": {"short": "No hay poda por nodos; maneja tallos externos viejos", "guidance": "Lemongrass no necesita poda de ramificación. El mantenimiento es sobre todo cosecha y retiro de material externo viejo o dañado, preservando la macolla central activa."},
+      "harvest": {"short": "Toma tallos externos maduros de una macolla establecida", "guidance": "USU y Johnny's apoyan cosechar tallos externos maduros tras el establecimiento. Home Grown usa un diámetro menor que USU, así que Garden conserva esa diferencia por especie/contexto en lugar de imponer un único diámetro."},
+      "flowering": {"short": "La floración es poco común en cultivo anual corto", "guidance": "Johnny's señala que East Indian lemongrass rara vez florece cuando se cultiva como anual. Garden debe registrar una eventual floración como etapa real, pero no como hito interior rutinario."},
+      "hydroponics": {"short": "La arquitectura de macolla grande vuelve especial la hidro compacta", "guidance": "No hay aún un objetivo nutricional hidropónico específico aceptado. La planta puede volverse grande y densa de raíces, así que Garden debe validar encaje físico y comportamiento del reservorio antes de recomendarla para un sistema pequeño."},
+      "problems": {"short": "Frío, poca luz y poco volumen radicular son grandes límites", "guidance": "Lemongrass es sensible a heladas y favorece condiciones cálidas y luminosas. En Utah, USU la trata como perenne tierna que suele cultivarse como anual o invernarse en contenedor."}
+    }
+  },
+  "spearmint": {
+    "summary": "Menta perenne vigorosa, apropiada para cosecha repetida de hojas y uso en té. El pinzado favorece ramificación; a largo plazo importan más el hacinamiento y expansión de raíces que un número fijo de plántulas.",
+    "metrics": [
+      {"label": "Germinación", "note": "Home Grown; referencia genérica de menta 10–14"},
+      {"label": "Ventana de cosecha", "note": "Referencia varietal Home Grown"},
+      {"label": "Altura", "note": "Fabricante + referencias de menta"},
+      {"label": "pH / EC hidro", "note": "Sin objetivo específico de spearmint aceptado"}
+    ],
+    "sections": {
+      "germination": {"short": "Menta de siembra superficial con referencia varietal de 7–14 días", "guidance": "Home Grown indica 7–14 días para spearmint. Johnny's da 10–14 días para menta genérica y confirma que la semilla necesita luz, por lo que Garden considera ambos rangos compatibles."},
+      "thinning": {"short": "Gestiona la mata por vigor y hacinamiento radicular", "guidance": "La menta se expande y ramifica naturalmente. En un pod, conserva tallos sanos mientras la copa esté abierta y reduce o divide cuando la masa de raíces, ventilación o competencia por luz se vuelva limitante."},
+      "pruning": {"short": "Pinza puntas con regularidad para crecimiento más tupido", "guidance": "Johnny's recomienda pinzar los pares superiores de hojas desde la etapa de plántula. Home Grown también recomienda tomar hojas justo sobre un nodo, lo que encaja con la misma lógica de ramificación."},
+      "harvest": {"short": "La cosecha regular favorece producción continua", "guidance": "Cosecha hojas individuales y tallos tiernos cuando la planta esté establecida. Para cortes mayores, toma tallos sobre nodos sanos y deja crecimiento activo suficiente para la recuperación."},
+      "flowering": {"short": "La cosecha completa alcanza su mejor punto justo antes de florecer", "guidance": "Johnny's recomienda cosecha de planta completa justo antes de floración, mientras hojas individuales pueden tomarse antes. Garden mantiene la floración como señal de etapa, no como condición de falla."},
+      "hydroponics": {"short": "Los objetivos nutricionales específicos de spearmint siguen sin resolver", "guidance": "Garden no asigna todavía un rango preciso de EC/pH para spearmint. En un sistema pequeño, la limitación práctica puede ser la expansión vigorosa de raíces y copa antes que la nutrición sola."},
+      "problems": {"short": "La expansión vigorosa y el hacinamiento son los principales riesgos estructurales", "guidance": "USU y Johnny's describen la menta como agresiva o invasiva en suelo. En un pod hidropónico, traduce eso a revisiones periódicas de hacinamiento de raíz/copa, no a una advertencia de invasión exterior."}
+    }
+  }
+}

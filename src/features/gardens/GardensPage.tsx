@@ -15,6 +15,12 @@ function dateLabel(value: string): string {
   return new Intl.DateTimeFormat('es', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
 }
 
+function ChangeRow({ change }: { change: HomeChange }) {
+  const body = <><strong>{change.summary}</strong><span>{dateLabel(change.occurred_at)}</span></>
+  const target = change.grow_cycle_id ? `/cycle/${change.grow_cycle_id}` : change.garden_id ? `/garden/${change.garden_id}` : null
+  return target ? <Link className="home-change" to={target}>{body}<ArrowRight size={16} aria-hidden="true" /></Link> : <article className="home-change">{body}</article>
+}
+
 function readCachedDashboard(userId: string): HomeDashboard | null {
   try {
     const saved = window.localStorage.getItem(`${homeVisitStorageKey(userId)}:snapshot`)

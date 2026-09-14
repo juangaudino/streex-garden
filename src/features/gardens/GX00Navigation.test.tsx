@@ -2,7 +2,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
-import { AttentionList } from './GardensPage'
+import { AttentionList } from './AttentionList'
 import { RegisterPage } from '../cycles/RegisterPage'
 import { getGarden, getHome } from '../../lib/garden-api'
 

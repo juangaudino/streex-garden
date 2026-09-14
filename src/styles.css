@@ -46,7 +46,7 @@ legend { color: var(--forest); font-size: .88rem; font-weight: 600; margin-botto
 .sr-only { height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; clip: rect(0, 0, 0, 0); }
 
 .app-shell { margin: 0 auto; max-width: 1160px; padding: 0 20px 88px; }
-.topbar { align-items: center; display: flex; height: 72px; justify-content: space-between; }
+.topbar { align-items: center; display: flex; flex-wrap: wrap; height: auto; justify-content: space-between; min-height: 72px; row-gap: 8px; }
 .topbar__actions { align-items: center; display: flex; gap: 8px; }
 .topbar__register { align-items: center; appearance: none; background: rgba(255,252,245,.7); border: 1px solid rgba(25,59,42,.16); border-radius: 999px; box-shadow: 0 5px 14px rgba(25,59,42,.08), inset 0 1px 0 rgba(255,255,255,.72); color: var(--forest); display: inline-flex; font-family: inherit; font-size: .8rem; font-weight: 700; gap: 5px; min-height: 37px; padding: 7px 11px; text-decoration: none; }
 .brand, .wordmark { align-items: center; color: var(--forest); display: inline-flex; font-family: 'Fraunces', ui-serif, Georgia, serif; font-size: 1.2rem; font-weight: 600; gap: 3px; letter-spacing: -.04em; }
@@ -885,3 +885,8 @@ html.growth-film-immersive-open, body.growth-film-immersive-open { overflow:hidd
 /* Pending-draft exit keeps the shared sheet lifecycle and its own three choices. */
 .bs-signout-sheet .bs-sheet-footer { display: grid; grid-template-columns: 1fr; }
 .bs-signout-sheet .bs-sheet-footer .bs-button { width: 100%; }
+
+/* Phase 04.E — preserve topbar actions during text resize. */
+@media (max-width: 719px) {
+  .topbar__actions { margin-left: auto; }
+}

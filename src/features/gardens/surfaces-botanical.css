@@ -113,3 +113,22 @@
   .botanical-ask .page-content { padding-bottom: 0; }
   .botanical-ask .ask-garden-chat { min-height: 0; }
 }
+
+/* Phase 04.E — allow Today chrome to reflow under enlarged text. */
+.botanical-today .today-create,
+.botanical-today .today-create > .section-heading,
+.botanical-today .today-create h2 {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.botanical-today .today-create h2 {
+  overflow-wrap: anywhere;
+}
+
+.botanical-today .today-create > .secondary-button {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+}

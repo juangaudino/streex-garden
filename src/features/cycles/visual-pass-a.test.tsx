@@ -47,7 +47,7 @@ describe('Evidence provenance in presentation', () => {
     Object.defineProperty(HTMLDialogElement.prototype, 'showModal', { configurable: true, value: vi.fn() })
     render(<DocumentaryPhoto photo={photo} eager expandable rendition="story" />)
     await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith('a', 'story'))
-    expect(screen.getByRole('img', { name: 'Fotografía documental: a.jpeg' }).getAttribute('src')).toBe('/story.jpeg')
+    expect((await screen.findByRole('img', { name: 'Fotografía documental: a.jpeg' })).getAttribute('src')).toBe('/story.jpeg')
     fireEvent.click(screen.getByRole('button', { name: 'Abrir fotografía a.jpeg' }))
     await waitFor(() => expect(getSignedPhotoUrl).toHaveBeenCalledWith('a', 'original'))
   })

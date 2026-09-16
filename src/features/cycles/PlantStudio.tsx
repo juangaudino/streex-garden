@@ -7,7 +7,7 @@ import { harvestReadinessLabel } from '../../domain/invariants'
 import { BotanicalButton } from '../../components/botanical/BotanicalControls'
 import { DocumentaryPhoto } from './DocumentaryPhoto'
 import { PhotoCoverActions } from './PhotoCoverActions'
-import { recordLabel } from './photo-presentation'
+import { captureLabel, recordLabel } from './photo-presentation'
 import { plantPresentation } from './plant-presentation'
 import { PlantHistory } from './PlantHistory'
 import type { PlantSheetIntent } from './plant-intents'
@@ -30,7 +30,7 @@ export function PlantStudio({ cycle, onOpen, onCoverChanged, onMessage }: {
   return <div className="plant-page botanical-surface content-shell">
     <div className="page-utility"><PlaceBackLink className="breadcrumb" to={`/garden/${cycle.garden.id}`}>{cycle.garden.name}<ChevronRight size={13} />Posición {cycle.position.position_number}</PlaceBackLink><button className="bs-icon-button" type="button" aria-label="Opciones de la planta" onClick={() => onOpen({ kind: 'options' })}><MoreHorizontal size={21} /></button></div>
     <section className="plant-portrait" aria-label="Perfil del cultivo">
-      <div className="portrait-image">{portrait ? <DocumentaryPhoto photo={portrait} eager expandable rendition="portrait" actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={portrait.id} onMessage={onMessage} onChanged={onCoverChanged} />} /> : <div className="photo-placeholder"><Leaf size={34} /><span>Todavía sin fotografía documental</span></div>}<div className="portrait-position" data-place-id={cycle.position.id} data-place-origin="profile" data-place-cycle-id={cycle.id}><span>POSICIÓN</span><strong>{String(cycle.position.position_number).padStart(2, '0')}</strong></div><div className="portrait-reference">UNA MIRADA MÁS CERCA</div></div>
+      <div className="portrait-image">{portrait ? <DocumentaryPhoto photo={portrait} eager expandable rendition="portrait" actions={<PhotoCoverActions gardenId={cycle.garden.id} cycleId={cycle.id} photoId={portrait.id} onMessage={onMessage} onChanged={onCoverChanged} />} /> : <div className="photo-placeholder"><Leaf size={34} /><span>Todavía sin fotografía documental</span></div>}{portrait && <div className="portrait-closer">UNA MIRADA MÁS CERCA</div>}<div className="portrait-position" data-place-id={cycle.position.id} data-place-origin="profile" data-place-cycle-id={cycle.id}><span>POSICIÓN</span><strong>{String(cycle.position.position_number).padStart(2, '0')}</strong></div><div className="portrait-reference">{portrait ? captureLabel(portrait) : 'Aún sin fotografía documental'}</div></div>
       <div className="plant-identity"><div className="bs-eyebrow"><span className="status-dot" />{cycle.state === 'active' ? 'CICLO ACTIVO' : 'CICLO CERRADO'}</div><h1 tabIndex={-1}>{name.common}</h1><p className="botanical-name">{name.subtitle}</p><p className="plant-lede">Cada hoja, parte de su historia.</p><div className="plant-facts"><div><strong>{planting.value}<span>{planting.unit}</span></strong><small>{planting.label}</small></div><div><strong>{photos.length}<span>fotografías</span></strong><small>disponibles en su diario</small></div></div>{cycle.state === 'active' && <BotanicalButton onClick={() => onOpen({ kind: 'choose' })}><Plus size={19} />Registrar un momento</BotanicalButton>}<button className="portrait-history-link" type="button" onClick={history}>Recorrer su historia<ArrowDown size={16} /></button></div>
     </section>
     <section ref={section} className="plant-sections">

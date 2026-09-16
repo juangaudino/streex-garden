@@ -1,0 +1,464 @@
+/*
+ * Visual Fidelity Pass 02
+ * Targeted corrections against the approved Codex visual demo.
+ * Presentation only: no domain, data, route or persistence changes.
+ */
+
+/* Desktop/tablet shell: once the top navigation is present, the mobile dock
+   must not coexist with it. */
+@media (min-width: 720px) {
+  .bottom-nav { display: none; }
+  .app-shell { padding-bottom: 40px; }
+}
+
+/* The old 820px three-column jump leaves two-garden accounts with cramped,
+   editorially broken cards. Keep two generous columns until the full desktop
+   breakpoint where the home surface gets its dedicated composition. */
+@media (min-width: 820px) and (max-width: 1099px) {
+  .botanical-collection .bc-garden-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Full desktop: one stable header row, a landscape editorial hero and garden
+   cards with enough width to read as places instead of narrow catalogue tiles. */
+@media (min-width: 1100px) {
+  .app-shell--collection-home {
+    max-width: 1320px;
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  .app-shell--collection-home .topbar {
+    flex-wrap: nowrap;
+    column-gap: 22px;
+  }
+
+  .app-shell--collection-home .topbar__nav {
+    flex: 0 1 auto;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+
+  .app-shell--collection-home .topbar__actions {
+    flex: 0 0 auto;
+  }
+
+  .app-shell--collection-home .page-content {
+    width: 100%;
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .app-shell--collection-home .bc-home-hero {
+    width: 100%;
+    height: clamp(430px, 38vw, 540px);
+    min-height: 0;
+    margin-bottom: 10px;
+    padding: clamp(42px, 5vw, 64px);
+  }
+
+  .app-shell--collection-home .bc-home-hero__copy {
+    max-width: 620px;
+  }
+
+  .app-shell--collection-home .bc-home-hero h1 {
+    font-size: clamp(4.5rem, 7vw, 6.4rem);
+    max-width: 7.5ch;
+  }
+
+  .app-shell--collection-home .bc-garden-grid {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+  }
+
+  .app-shell--collection-home .bc-garden-card {
+    grid-template-columns: minmax(210px, .92fr) minmax(0, 1.08fr);
+    min-height: 248px;
+  }
+
+  .app-shell--collection-home .bc-garden-card__photo {
+    height: 100%;
+    min-height: 248px;
+    aspect-ratio: auto;
+  }
+
+  .app-shell--collection-home .bc-garden-card__copy {
+    align-content: end;
+    padding: 28px;
+  }
+
+  .app-shell--collection-home .bc-garden-card h3 {
+    font-size: clamp(1.8rem, 2.5vw, 2.35rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .app-shell--collection-home .bc-garden-card p {
+    font-size: .95rem;
+  }
+}
+
+/* Plant journal: match the approved mobile composition — compact add action,
+   four-photo visual strip, then the canonical timeline. */
+@media (max-width: 699px) {
+  .plant-page .journal-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+
+  .plant-page .journal-heading > div { min-width: 0; }
+
+  .plant-page .journal-heading h2 {
+    margin-top: 12px;
+    font-size: clamp(38px, 11.5vw, 48px);
+    line-height: .94;
+  }
+
+  .plant-page .journal-heading .bs-button {
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    padding: 9px 13px;
+    border-radius: 16px;
+    white-space: nowrap;
+  }
+
+  .plant-page .journal-photo-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .plant-page .journal-photo-strip .documentary-photo {
+    min-width: 0;
+  }
+
+  .plant-page .journal-photo-strip .documentary-photo__open {
+    aspect-ratio: .78;
+    border-radius: 12px;
+  }
+
+  .plant-page .journal-photo-strip figcaption {
+    padding-top: 7px;
+    font-size: 8px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .plant-page .journal > .bs-text-button {
+    margin-bottom: 28px;
+  }
+
+  .plant-page .timeline-marker {
+    background: rgba(253,253,247,.9);
+    border: 1px solid rgba(25,59,42,.16);
+    color: var(--moss);
+  }
+
+  .plant-page .timeline-marker--action {
+    background: rgba(253,253,247,.96);
+    color: var(--forest);
+  }
+}
+
+/* Plant profile: preserve the canonical composition while matching the demo's
+   calmer proportions and editorial rhythm. */
+@media (max-width: 699px) {
+  .app-shell--plant .plant-page {
+    padding-top: 10px;
+  }
+
+  .app-shell--plant .plant-page .page-utility {
+    margin-bottom: 20px;
+  }
+
+  .app-shell--plant .plant-page .portrait-image {
+    aspect-ratio: 1.08 / 1;
+    border-radius: 22px;
+  }
+
+  .app-shell--plant .portrait-image > .documentary-photo,
+  .app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open,
+  .app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open > img {
+    border-radius: inherit;
+  }
+
+  .app-shell--plant .portrait-position {
+    bottom: 48px;
+    left: 18px;
+    min-width: 74px;
+    padding: 11px 13px 10px;
+  }
+
+  .app-shell--plant .portrait-position span {
+    font-size: 9px;
+    letter-spacing: .15em;
+  }
+
+  .app-shell--plant .portrait-position strong {
+    font-size: 37px;
+    line-height: .86;
+  }
+
+  .app-shell--plant .portrait-closer {
+    top: 18px;
+    left: 18px;
+    padding: 8px 13px;
+  }
+
+  .app-shell--plant .portrait-reference {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+  .app-shell--plant .plant-page .plant-portrait {
+    gap: 28px;
+    padding-bottom: 50px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity .bs-eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity h1 {
+    margin-top: 8px;
+    font-size: clamp(52px, 15vw, 66px);
+    line-height: .90;
+  }
+
+  .app-shell--plant .plant-page .botanical-name {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+
+  .app-shell--plant .plant-page .plant-lede {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .app-shell--plant .plant-page .plant-facts {
+    margin: 24px 0 26px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity > .bs-button {
+    min-height: 56px;
+    border-radius: 16px;
+  }
+}
+
+/* Maintenance: match the approved "guided garden walk" demo rather than a
+   generic form. The photo leads, the review stays calm, and the footer remains
+   operationally obvious. */
+.botanical-maintenance .bm-context-top {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-progress {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-main {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-inspection {
+  max-width: 520px;
+}
+
+.botanical-maintenance .bm-actions > button {
+  transition: background .16s ease, padding .16s ease;
+}
+
+@media (hover: hover) {
+  .botanical-maintenance .bm-actions > button:hover:not(:disabled) {
+    background: rgba(231,236,223,.36);
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 699px) {
+  .botanical-maintenance .bm-context-top {
+    padding: 14px 18px 12px;
+  }
+
+  .botanical-maintenance .bm-progress {
+    padding: 0 18px;
+  }
+
+  .botanical-maintenance .bm-main {
+    padding: 22px 18px 16px;
+  }
+
+  .botanical-maintenance .bm-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.42 / 1;
+    border-radius: 18px;
+  }
+
+  .botanical-maintenance .bm-photo .documentary-photo,
+  .botanical-maintenance .bm-photo .documentary-photo__open,
+  .botanical-maintenance .bm-photo .documentary-photo__open > img {
+    border-radius: inherit;
+  }
+
+  .botanical-maintenance .bm-photo-label {
+    top: 12px;
+    right: 12px;
+    left: auto;
+    max-width: calc(100% - 24px);
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 10px;
+  }
+
+  .botanical-maintenance .bm-photo-copy {
+    right: 18px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .botanical-maintenance .bm-photo-copy .bs-eyebrow {
+    font-size: 9px;
+    letter-spacing: .17em;
+  }
+
+  .botanical-maintenance .bm-photo-copy h2 {
+    margin-top: 8px;
+    font-size: 30px;
+    line-height: .98;
+  }
+
+  .botanical-maintenance .bm-inspection {
+    max-width: none;
+    padding-top: 28px;
+  }
+
+  .botanical-maintenance .bm-intro .bs-eyebrow {
+    font-size: 10px;
+    letter-spacing: .17em;
+  }
+
+  .botanical-maintenance .bm-intro h1 {
+    margin-top: 10px;
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .botanical-maintenance .bm-intro p {
+    max-width: 310px;
+    margin-top: 13px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .botanical-maintenance .bm-actions {
+    margin-top: 24px;
+  }
+
+  .botanical-maintenance .bm-actions > button {
+    min-height: 84px;
+    padding: 17px 0;
+    gap: 14px;
+  }
+
+  .botanical-maintenance .bm-action-icon {
+    flex-basis: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .botanical-maintenance .bm-actions strong {
+    font-size: 14px;
+  }
+
+  .botanical-maintenance .bm-actions small {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .botanical-maintenance .bm-ai {
+    min-height: 60px;
+    font-size: 11px;
+  }
+
+  .botanical-maintenance .bm-footer {
+    padding: 14px 18px max(18px, env(safe-area-inset-bottom));
+  }
+
+  .botanical-maintenance .bm-navigation {
+    grid-template-columns: .9fr 1.5fr;
+    gap: 10px;
+  }
+
+  .botanical-maintenance .bm-navigation > .bs-button {
+    min-height: 54px;
+    border-radius: 16px;
+  }
+}
+
+/* The original-photo viewer is part of the visual story, not a generic utility
+   modal. Keep the current safe loading/actions contract, but tune the stage to
+   the approved dark editorial reference. */
+.evidence-viewer {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(210,223,207,.30) transparent;
+}
+
+.evidence-viewer header {
+  min-height: 116px;
+}
+
+.evidence-viewer > img {
+  border-radius: 0;
+}
+
+.evidence-viewer__meta {
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.evidence-viewer .documentary-photo__actions-row {
+  align-items: center;
+}
+
+@media (max-width: 699px) {
+  .evidence-viewer {
+    max-height: 96svh;
+  }
+
+  .evidence-viewer header {
+    min-height: 104px;
+  }
+
+  .evidence-viewer > img {
+    max-height: 64svh;
+  }
+
+  .evidence-viewer__meta {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 379px) {
+  .plant-page .journal-heading { gap: 10px; }
+  .plant-page .journal-heading h2 { font-size: 36px; }
+  .plant-page .journal-heading .bs-button { padding-inline: 10px; }
+  .plant-page .journal-photo-strip { gap: 6px; }
+
+  .botanical-maintenance .bm-photo-copy h2 { font-size: 27px; }
+  .botanical-maintenance .bm-intro h1 { font-size: 33px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plant-page .journal-photo-strip *,
+  .plant-page .timeline *,
+  .botanical-maintenance .bm-actions > button { transition: none !important; }
+}

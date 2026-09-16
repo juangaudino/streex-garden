@@ -112,20 +112,52 @@
   .map-site:active { transform: translateY(2px); }
 }
 
-/* Plant: preserve the approved two-column composition; add depth, not layout. */
+/* Plant: keep canonical content, but restore the approved editorial portrait. */
 .app-shell--plant .portrait-image {
   filter: drop-shadow(0 18px 30px rgba(15,42,29,.10));
 }
 .app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open {
   border: 1px solid rgba(255,255,255,.62);
+  border-radius: 24px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.34);
 }
 .app-shell--plant .portrait-position {
+  top: auto;
+  bottom: 58px;
+  left: 24px;
   border: 1px solid rgba(255,255,255,.72);
-  background: rgba(250,252,244,.88);
+  border-radius: 16px;
+  background: rgba(250,252,244,.92);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 10px 28px rgba(23,49,38,.13);
   backdrop-filter: blur(14px) saturate(115%);
   -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+.app-shell--plant .portrait-closer {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+  width: fit-content;
+  max-width: calc(100% - 48px);
+  padding: 9px 14px;
+  border: 1px solid rgba(255,255,255,.20);
+  border-radius: 999px;
+  background: rgba(16,31,27,.62);
+  color: #f7f8ef;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .18em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  backdrop-filter: blur(16px) saturate(115%);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+}
+.app-shell--plant .portrait-reference {
+  color: #75837a;
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: .02em;
+  text-transform: none;
 }
 .app-shell--plant .plant-facts {
   border-color: rgba(25,59,42,.16);
@@ -134,12 +166,198 @@
   box-shadow: 0 22px 44px -24px rgba(9,39,29,.34);
 }
 
+/* Maintenance: bring the operational walk closer to the approved botanical demo. */
+.botanical-maintenance .bm-context {
+  background: rgba(244,245,238,.92);
+  box-shadow: 0 8px 28px rgba(19,46,35,.035);
+  backdrop-filter: blur(22px) saturate(115%);
+  -webkit-backdrop-filter: blur(22px) saturate(115%);
+}
+.botanical-maintenance .bm-photo {
+  border: 1px solid rgba(255,255,255,.72);
+  box-shadow: 0 24px 42px -26px rgba(12,42,31,.42), inset 0 1px 0 rgba(255,255,255,.36);
+}
+.botanical-maintenance .bm-photo-label {
+  background: rgba(238,243,226,.90);
+  border: 1px solid rgba(255,255,255,.58);
+  box-shadow: 0 8px 22px rgba(8,35,27,.10);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+.botanical-maintenance .bm-photo-copy h2 {
+  text-shadow: 0 3px 26px rgba(0,0,0,.20);
+}
+.botanical-maintenance .bm-action-icon {
+  border: 1px solid rgba(255,255,255,.62);
+  background: rgba(233,237,222,.88);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+}
+.botanical-maintenance .bm-footer {
+  background: rgba(248,250,241,.91);
+  box-shadow: 0 -16px 42px rgba(23,56,42,.06);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+/* Original-photo viewer: dark editorial stage from the approved demo. */
+.evidence-viewer {
+  width: min(760px, calc(100% - 24px));
+  max-width: 760px;
+  max-height: 94svh;
+  overflow: auto;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 30px;
+  background: #172c22;
+  color: #f5f6ec;
+  box-shadow: 0 32px 90px rgba(4,18,13,.42);
+}
+.evidence-viewer::backdrop {
+  background: rgba(8,22,15,.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.evidence-viewer header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  align-items: center;
+  padding: 30px 36px 24px;
+  background: rgba(23,44,34,.97);
+  border-bottom: 0;
+}
+.evidence-viewer header > div {
+  display: grid;
+  gap: 10px;
+}
+.evidence-viewer .evidence-viewer__eyebrow {
+  display: block;
+  color: #aebaaa;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+}
+.evidence-viewer header strong {
+  color: #f4f4e8;
+  font-family: var(--serif);
+  font-size: clamp(32px,5vw,48px);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: .98;
+}
+.evidence-viewer header .icon-button {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border: 2px solid #718d42;
+  border-radius: 50%;
+  background: rgba(58,76,49,.46);
+  color: #edf2df;
+  box-shadow: 0 0 0 4px rgba(113,141,66,.16);
+}
+.evidence-viewer > img {
+  display: block;
+  width: calc(100% - 32px);
+  max-height: 68svh;
+  margin: 0 16px;
+  object-fit: contain;
+  background: #0f2019;
+}
+.evidence-viewer__meta {
+  display: grid;
+  gap: 8px;
+  padding: 22px 36px 25px;
+  color: #aebaaa;
+}
+.evidence-viewer__meta strong {
+  color: #b9c5b6;
+  font-size: 13px;
+  font-weight: 500;
+}
+.evidence-viewer__meta span {
+  color: #8fa091;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.evidence-viewer .documentary-photo__actions {
+  padding: 0 36px 30px;
+  border-top: 0;
+  background: #172c22;
+}
+.evidence-viewer .documentary-photo__actions :is(button,.secondary-button,.primary-button) {
+  border-color: rgba(233,239,223,.28);
+  background: rgba(247,248,239,.96);
+  color: #17382a;
+}
+
 /* Keep keyboard focus explicit over the richer surfaces. */
 :is(.botanical-collection,.app-shell--plant) :is(a,button):focus-visible,
 .garden-environment :is(a,button):focus-visible,
-.physical-map :is(a,button):focus-visible {
+.physical-map :is(a,button):focus-visible,
+.botanical-maintenance :is(a,button):focus-visible,
+.evidence-viewer :is(a,button):focus-visible {
   outline: 3px solid #b88428;
   outline-offset: 4px;
+}
+
+@media (max-width: 699px) {
+  .app-shell--plant .plant-page .portrait-image {
+    height: auto;
+    aspect-ratio: 1.04 / 1;
+  }
+  .app-shell--plant .portrait-position {
+    bottom: 52px;
+    left: 18px;
+  }
+  .app-shell--plant .portrait-closer {
+    top: 18px;
+    left: 18px;
+    max-width: calc(100% - 36px);
+  }
+  .app-shell--plant .plant-page .plant-portrait {
+    gap: 27px;
+  }
+  .app-shell--plant .plant-page .plant-identity h1 {
+    font-size: clamp(52px,15vw,64px);
+  }
+  .botanical-maintenance .bm-main {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .botanical-maintenance .bm-photo {
+    height: min(86vw,340px);
+    border-radius: 22px;
+  }
+  .botanical-maintenance .bm-inspection {
+    padding-top: 32px;
+  }
+  .botanical-maintenance .bm-action-icon {
+    border-radius: 14px;
+  }
+  .evidence-viewer {
+    width: calc(100% - 18px);
+    border-radius: 26px;
+  }
+  .evidence-viewer header {
+    padding: 26px 24px 20px;
+  }
+  .evidence-viewer header strong {
+    font-size: 34px;
+  }
+  .evidence-viewer header .icon-button {
+    width: 50px;
+    height: 50px;
+  }
+  .evidence-viewer > img {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+  .evidence-viewer__meta {
+    padding: 20px 24px 23px;
+  }
+  .evidence-viewer .documentary-photo__actions {
+    padding: 0 24px 26px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -158,4 +376,6 @@
   .bottom-nav { background: #f8f6ed; }
   .botanical-collection .bc-home-hero.home-hero--photo .primary-button { background: #f4f5ea; }
   .app-shell--plant .portrait-position { background: #fafcf4; }
+  .app-shell--plant .portrait-closer { background: #20372e; }
+  .botanical-maintenance :is(.bm-context,.bm-footer) { background: #f8faf1; }
 }

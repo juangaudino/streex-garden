@@ -14,23 +14,11 @@
     return new Promise((resolve, reject) => {
       const check = () => {
         try {
-          if (
-            typeof state !== "undefined" &&
-            typeof applyLanguage === "function" &&
-            Array.isArray(state.plants) &&
-            state.plants.length > 0 &&
-            state.sources && Object.keys(state.sources).length > 0
-          ) {
-            resolve();
-            return;
+          if (typeof state !== "undefined" && typeof applyLanguage === "function" && Array.isArray(state.plants) && state.plants.length > 0 && state.sources && Object.keys(state.sources).length > 0) {
+            resolve(); return;
           }
-        } catch {
-          // Base app may still be hydrating/loading.
-        }
-        if (Date.now() - started >= timeoutMs) {
-          reject(new Error("Garden Labs base app did not become ready in time."));
-          return;
-        }
+        } catch {}
+        if (Date.now() - started >= timeoutMs) { reject(new Error("Garden Labs base app did not become ready in time.")); return; }
         setTimeout(check, 40);
       };
       check();
@@ -44,15 +32,8 @@
     return additions.length;
   }
 
-  function mergeSources(incoming) {
-    incoming.forEach((source) => {
-      if (source?.id) state.sources[source.id] = source;
-    });
-  }
-
-  function mergeTranslations(incoming) {
-    state.translations = { ...state.translations, ...incoming };
-  }
+  function mergeSources(incoming) { incoming.forEach((source) => { if (source?.id) state.sources[source.id] = source; }); }
+  function mergeTranslations(incoming) { state.translations = { ...state.translations, ...incoming }; }
 
   function updateUiMetadata() {
     if (typeof ui === "undefined") return;
@@ -62,6 +43,15 @@
     ui.es.version = "V0.9 · 34 guías · ES/EN · fuentes reconciliadas + inventario";
   }
 
+  function loadNextBatch() {
+    if (document.querySelector('script[data-garden-batch="b1"]')) return;
+    const script = document.createElement("script");
+    script.src = assetUrl("expansion-batch-b1.js?v=0.10");
+    script.defer = true;
+    script.dataset.gardenBatch = "b1";
+    document.body.appendChild(script);
+  }
+
   async function loadBatch() {
     try {
       const [plantsResponse, sourcesResponse, translationsResponse] = await Promise.all([
@@ -69,17 +59,8 @@
         fetch(assetUrl(DATA.sources), { cache: "no-store" }),
         fetch(assetUrl(DATA.translations), { cache: "no-store" }),
       ]);
-
-      if (!plantsResponse.ok || !sourcesResponse.ok || !translationsResponse.ok) {
-        throw new Error("Expansion Batch A1 data could not be loaded.");
-      }
-
-      const [plants, sources, translations] = await Promise.all([
-        plantsResponse.json(),
-        sourcesResponse.json(),
-        translationsResponse.json(),
-      ]);
-
+      if (!plantsResponse.ok || !sourcesResponse.ok || !translationsResponse.ok) throw new Error("Expansion Batch A1 data could not be loaded.");
+      const [plants, sources, translations] = await Promise.all([plantsResponse.json(), sourcesResponse.json(), translationsResponse.json()]);
       await waitForBaseApp();
       const added = mergeUniquePlants(plants);
       mergeSources(sources);
@@ -88,6 +69,7 @@
       applyLanguage();
       document.documentElement.dataset.gardenLabsExpansion = BATCH_VERSION;
       window.dispatchEvent(new CustomEvent("garden-labs:expansion-loaded", { detail: { version: BATCH_VERSION, added } }));
+      loadNextBatch();
     } catch (error) {
       console.warn("Garden Labs expansion batch A1 skipped:", error);
     }

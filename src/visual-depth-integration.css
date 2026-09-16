@@ -1,0 +1,161 @@
+/*
+ * Visual Depth Study — controlled integration preview.
+ *
+ * This layer is intentionally additive and isolated on the visual-depth branch.
+ * It ports the approved depth language onto the current Phase 04 markup without
+ * changing domain behavior, component structure, geometry contracts or data.
+ * If the preview is approved, rules can be folded back into their owning
+ * Botanical Studio stylesheets before the release candidate.
+ */
+
+/* Shared navigation: smoked paper glass without changing sizing or placement. */
+.bottom-nav {
+  background: rgba(248, 246, 237, .88);
+  border-color: rgba(255, 255, 255, .9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 18px 48px rgba(23,56,42,.17);
+  backdrop-filter: blur(22px) saturate(125%);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+}
+.bottom-nav__item { color: #4f6659; }
+.bottom-nav__item--active {
+  color: #17382a;
+  background: rgba(220, 232, 214, .68);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.66);
+}
+
+/* Home: photography leads; depth comes from light, edge and elevation only. */
+.botanical-collection .bc-home-hero {
+  border-color: rgba(255,255,255,.55);
+  box-shadow: 0 26px 50px -18px rgba(11,38,25,.34), inset 0 1px 0 rgba(255,255,255,.38);
+  isolation: isolate;
+}
+.botanical-collection .bc-home-hero.home-hero--photo::after {
+  background:
+    linear-gradient(90deg, rgba(6,28,24,.86) 0%, rgba(6,28,24,.44) 60%, rgba(6,28,24,.10)),
+    linear-gradient(0deg, rgba(6,28,24,.50), transparent 60%);
+}
+.botanical-collection .bc-home-hero.home-hero--photo .primary-button {
+  background: rgba(244,245,234,.92);
+  border-color: rgba(255,255,255,.72);
+  color: #17382a;
+  box-shadow: inset 0 1px 0 #fff, 0 8px 24px rgba(0,0,0,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.botanical-collection .bc-home-hero.home-hero--photo .primary-button:hover {
+  background: rgba(252,252,245,.97);
+  color: #17382a;
+}
+.botanical-collection .bc-garden-card {
+  border-color: rgba(255,255,255,.72);
+  box-shadow: 0 16px 30px -16px rgba(20,47,41,.33), 0 2px 3px rgba(18,39,30,.09);
+}
+.botanical-collection .bc-garden-card__photo {
+  position: relative;
+}
+.botanical-collection .bc-garden-card__photo::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(7,30,24,.18));
+  content: '';
+  pointer-events: none;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .botanical-collection .bc-garden-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 23px 34px -15px rgba(20,47,41,.34);
+  }
+}
+
+/* Garden: physical system reads as a real tray, without moving any position. */
+.garden-environment {
+  border-color: rgba(255,255,255,.56);
+  box-shadow: 0 20px 40px -24px rgba(19,44,35,.40);
+}
+.garden-environment--cover figcaption {
+  background: rgba(11,38,27,.73);
+  border-top-color: rgba(255,255,255,.27);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.physical-map {
+  background: radial-gradient(ellipse at 15% 0%, #597264, #233e34 55%, #132d25);
+  border-color: #71867b;
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,.38),
+    inset 0 -9px 14px rgba(4,27,24,.33),
+    0 9px 0 #10271e,
+    0 11px 0 #617266,
+    0 30px 36px -12px rgba(10,34,28,.33);
+  margin-bottom: 36px;
+}
+.physical-map__edge {
+  color: #e1e9df;
+  letter-spacing: .14em;
+}
+.physical-map__rings { opacity: .10; }
+.map-site {
+  background: linear-gradient(140deg, #fafbf0, #d6ddcf);
+  border-color: rgba(255,255,255,.60);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,.88),
+    inset 0 -3px 5px rgba(48,72,53,.19),
+    0 5px 0 #9caa99,
+    0 10px 12px rgba(5,31,29,.33);
+}
+.map-site--occupied {
+  background: linear-gradient(135deg, #e2edd9, #bbd1ae);
+  border-color: #efffdf;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .map-site:hover { transform: translateY(-3px); }
+  .map-site:active { transform: translateY(2px); }
+}
+
+/* Plant: preserve the approved two-column composition; add depth, not layout. */
+.app-shell--plant .portrait-image {
+  filter: drop-shadow(0 18px 30px rgba(15,42,29,.10));
+}
+.app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open {
+  border: 1px solid rgba(255,255,255,.62);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.34);
+}
+.app-shell--plant .portrait-position {
+  border: 1px solid rgba(255,255,255,.72);
+  background: rgba(250,252,244,.88);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 10px 28px rgba(23,49,38,.13);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+.app-shell--plant .plant-facts {
+  border-color: rgba(25,59,42,.16);
+}
+.app-shell--plant .film-invitation {
+  box-shadow: 0 22px 44px -24px rgba(9,39,29,.34);
+}
+
+/* Keep keyboard focus explicit over the richer surfaces. */
+:is(.botanical-collection,.app-shell--plant) :is(a,button):focus-visible,
+.garden-environment :is(a,button):focus-visible,
+.physical-map :is(a,button):focus-visible {
+  outline: 3px solid #b88428;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botanical-collection .bc-garden-card,
+  .map-site {
+    transition: none;
+  }
+  .botanical-collection .bc-garden-card:hover,
+  .map-site:hover,
+  .map-site:active {
+    transform: none;
+  }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .bottom-nav { background: #f8f6ed; }
+  .botanical-collection .bc-home-hero.home-hero--photo .primary-button { background: #f4f5ea; }
+  .app-shell--plant .portrait-position { background: #fafcf4; }
+}

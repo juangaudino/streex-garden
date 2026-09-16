@@ -8,6 +8,7 @@ import './visual-pass-b.css'
 import './features/gardens/surfaces-botanical.css'
 import './visual-depth-integration.css'
 import './visual-fidelity-pass.css'
+import './visual-fidelity-final.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

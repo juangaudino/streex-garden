@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "principle": "Model specs are reference data; My Machine fields belong to each physical instance and are user-editable.",
+  "ratingScale": {"min": 1, "max": 5},
+  "ratingDimensions": [
+    {"id":"buildQuality","en":"Build Quality","es":"Calidad de construcción"},
+    {"id":"easeOfUse","en":"Ease of Use","es":"Facilidad de uso"},
+    {"id":"growPerformance","en":"Grow Performance","es":"Rendimiento de cultivo"},
+    {"id":"lighting","en":"Lighting","es":"Iluminación"},
+    {"id":"waterSystem","en":"Water System","es":"Sistema de agua"},
+    {"id":"maintenance","en":"Maintenance","es":"Mantenimiento"},
+    {"id":"valueForMoney","en":"Value for Money","es":"Relación calidad-precio"}
+  ],
+  "models": [
+    {"id":"uruq-hp-gc001","brand":"URUQ","name":"URUQ 8-Pod","model":"HP-GC001","color":"black","pods":8,"tankLiters":{"min":2.5,"max":3},"light":{"spectrum":"full","modes":["Vegetables","Flowers/Fruits"],"automaticTimer":true,"maxHeightIn":15.7,"maxHeightCm":40},"pump":{"automatic":true,"noiseDbMax":40,"lowWaterSafetyShutoff":true},"dimensions":{"in":"11.02 × 6.69 × 20.5 extended","weightLb":3.51},"purchaseUrl":"https://a.co/d/0iFhWOeV"},
+    {"id":"uruq-hp-gc202","brand":"URUQ","name":"URUQ 12-Pod","model":"HP-GC202","color":"black","pods":12,"tankLiters":6.5,"light":{"spectrum":"full","modes":["Vegetables","Herbs","Flower/Fruit"],"maxHeightIn":21,"rotationDegrees":180,"remoteControl":true},"pump":{"ceramicCore":true,"continuousIntermittent":true,"noiseDbMax":20},"dimensions":{"in":"11 × 7 × 8 base; adjustable above 21 in"},"purchaseUrl":"https://a.co/d/0ifTrB0k"},
+    {"id":"ahopegarden-hsxa1","brand":"Ahopegarden","name":"Ahopegarden 10-Pod","model":"HSXA1","color":"black","pods":10,"tankLiters":3,"light":{"spectrum":"full","modes":["Vegetables","Fruits/Flowers"],"cycle":"16h on / 8h off","maxGrowHeightIn":{"min":14.5,"max":15.3}},"pump":{"cycle":"30 min on / 30 min off"},"dimensions":{"in":"11.97 × 6.69 × 6.69 base","weightLb":3.66},"purchaseUrl":"https://a.co/d/04bbWOSc"},
+    {"id":"aerogarden-sprout","brand":"AeroGarden","name":"AeroGarden Sprout","model":"900824-1100 gray unit; family also includes 900824-1200 black","color":"gray","pods":3,"tankLiters":{"min":1,"max":1.2},"tankGallonsApprox":0.3,"light":{"watts":10,"automaticTimer":true,"maxHeightIn":10},"pump":{"compactInternalAeration":true,"quiet":true},"dimensions":{"heightIn":"10.5–15 extended","widthIn":3.5,"depthIn":11},"purchaseUrl":"https://a.co/d/05Po1OxO"}
+  ],
+  "instances": [
+    {"id":"uruq-8-01","modelId":"uruq-hp-gc001","label":"URUQ 8 #1","status":"active","purchase":{"date":null,"seller":null,"channel":null,"priceUsd":null},"receivedDate":null,"firstUseDate":null,"location":null,"gardenId":null,"notes":"","ratings":{},"overallRating":null,"wouldBuyAgain":null},
+    {"id":"uruq-12-01","modelId":"uruq-hp-gc202","label":"URUQ 12 #1","status":"active","purchase":{"date":null,"seller":null,"channel":null,"priceUsd":null},"receivedDate":null,"firstUseDate":null,"location":null,"gardenId":null,"notes":"","ratings":{},"overallRating":null,"wouldBuyAgain":null},
+    {"id":"ahopegarden-10-01","modelId":"ahopegarden-hsxa1","label":"Ahopegarden 10 #1","status":"active","purchase":{"date":null,"seller":null,"channel":null,"priceUsd":null},"receivedDate":null,"firstUseDate":null,"location":null,"gardenId":null,"notes":"","ratings":{},"overallRating":null,"wouldBuyAgain":null},
+    {"id":"aerogarden-sprout-01","modelId":"aerogarden-sprout","label":"AeroGarden Sprout #1","status":"ordered","purchase":{"date":null,"seller":null,"channel":"online","priceUsd":null},"receivedDate":null,"firstUseDate":null,"location":null,"gardenId":null,"notes":"","ratings":{},"overallRating":null,"wouldBuyAgain":null}
+  ],
+  "allowedStatuses":["ordered","active","stored","retired"],
+  "purchaseChannels":["online","physical_store"],
+  "wouldBuyAgainValues":["yes","maybe","no"]
+}

@@ -13,10 +13,90 @@
 
 /* The old 820px three-column jump leaves two-garden accounts with cramped,
    editorially broken cards. Keep two generous columns until the full desktop
-   breakpoint where three columns have enough room. */
+   breakpoint where the home surface gets its dedicated composition. */
 @media (min-width: 820px) and (max-width: 1099px) {
   .botanical-collection .bc-garden-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Full desktop: one stable header row, a landscape editorial hero and garden
+   cards with enough width to read as places instead of narrow catalogue tiles. */
+@media (min-width: 1100px) {
+  .app-shell--collection-home {
+    max-width: 1320px;
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  .app-shell--collection-home .topbar {
+    flex-wrap: nowrap;
+    column-gap: 22px;
+  }
+
+  .app-shell--collection-home .topbar__nav {
+    flex: 0 1 auto;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+
+  .app-shell--collection-home .topbar__actions {
+    flex: 0 0 auto;
+  }
+
+  .app-shell--collection-home .page-content {
+    width: 100%;
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .app-shell--collection-home .bc-home-hero {
+    width: 100%;
+    height: clamp(430px, 38vw, 540px);
+    min-height: 0;
+    margin-bottom: 10px;
+    padding: clamp(42px, 5vw, 64px);
+  }
+
+  .app-shell--collection-home .bc-home-hero__copy {
+    max-width: 620px;
+  }
+
+  .app-shell--collection-home .bc-home-hero h1 {
+    font-size: clamp(4.5rem, 7vw, 6.4rem);
+    max-width: 7.5ch;
+  }
+
+  .app-shell--collection-home .bc-garden-grid {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+  }
+
+  .app-shell--collection-home .bc-garden-card {
+    grid-template-columns: minmax(210px, .92fr) minmax(0, 1.08fr);
+    min-height: 248px;
+  }
+
+  .app-shell--collection-home .bc-garden-card__photo {
+    height: 100%;
+    min-height: 248px;
+    aspect-ratio: auto;
+  }
+
+  .app-shell--collection-home .bc-garden-card__copy {
+    align-content: end;
+    padding: 28px;
+  }
+
+  .app-shell--collection-home .bc-garden-card h3 {
+    font-size: clamp(1.8rem, 2.5vw, 2.35rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .app-shell--collection-home .bc-garden-card p {
+    font-size: .95rem;
   }
 }
 

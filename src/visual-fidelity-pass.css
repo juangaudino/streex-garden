@@ -168,14 +168,297 @@
   }
 }
 
+/* Plant profile: preserve the canonical composition while matching the demo's
+   calmer proportions and editorial rhythm. */
+@media (max-width: 699px) {
+  .app-shell--plant .plant-page {
+    padding-top: 10px;
+  }
+
+  .app-shell--plant .plant-page .page-utility {
+    margin-bottom: 20px;
+  }
+
+  .app-shell--plant .plant-page .portrait-image {
+    aspect-ratio: 1.08 / 1;
+    border-radius: 22px;
+  }
+
+  .app-shell--plant .portrait-image > .documentary-photo,
+  .app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open,
+  .app-shell--plant .portrait-image > .documentary-photo > .documentary-photo__open > img {
+    border-radius: inherit;
+  }
+
+  .app-shell--plant .portrait-position {
+    bottom: 48px;
+    left: 18px;
+    min-width: 74px;
+    padding: 11px 13px 10px;
+  }
+
+  .app-shell--plant .portrait-position span {
+    font-size: 9px;
+    letter-spacing: .15em;
+  }
+
+  .app-shell--plant .portrait-position strong {
+    font-size: 37px;
+    line-height: .86;
+  }
+
+  .app-shell--plant .portrait-closer {
+    top: 18px;
+    left: 18px;
+    padding: 8px 13px;
+  }
+
+  .app-shell--plant .portrait-reference {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+  .app-shell--plant .plant-page .plant-portrait {
+    gap: 28px;
+    padding-bottom: 50px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity .bs-eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity h1 {
+    margin-top: 8px;
+    font-size: clamp(52px, 15vw, 66px);
+    line-height: .90;
+  }
+
+  .app-shell--plant .plant-page .botanical-name {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+
+  .app-shell--plant .plant-page .plant-lede {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .app-shell--plant .plant-page .plant-facts {
+    margin: 24px 0 26px;
+  }
+
+  .app-shell--plant .plant-page .plant-identity > .bs-button {
+    min-height: 56px;
+    border-radius: 16px;
+  }
+}
+
+/* Maintenance: match the approved "guided garden walk" demo rather than a
+   generic form. The photo leads, the review stays calm, and the footer remains
+   operationally obvious. */
+.botanical-maintenance .bm-context-top {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-progress {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-main {
+  max-width: 1080px;
+}
+
+.botanical-maintenance .bm-inspection {
+  max-width: 520px;
+}
+
+.botanical-maintenance .bm-actions > button {
+  transition: background .16s ease, padding .16s ease;
+}
+
+@media (hover: hover) {
+  .botanical-maintenance .bm-actions > button:hover:not(:disabled) {
+    background: rgba(231,236,223,.36);
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 699px) {
+  .botanical-maintenance .bm-context-top {
+    padding: 14px 18px 12px;
+  }
+
+  .botanical-maintenance .bm-progress {
+    padding: 0 18px;
+  }
+
+  .botanical-maintenance .bm-main {
+    padding: 22px 18px 16px;
+  }
+
+  .botanical-maintenance .bm-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.42 / 1;
+    border-radius: 18px;
+  }
+
+  .botanical-maintenance .bm-photo .documentary-photo,
+  .botanical-maintenance .bm-photo .documentary-photo__open,
+  .botanical-maintenance .bm-photo .documentary-photo__open > img {
+    border-radius: inherit;
+  }
+
+  .botanical-maintenance .bm-photo-label {
+    top: 12px;
+    right: 12px;
+    left: auto;
+    max-width: calc(100% - 24px);
+    padding: 8px 10px;
+    border-radius: 14px;
+    font-size: 10px;
+  }
+
+  .botanical-maintenance .bm-photo-copy {
+    right: 18px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .botanical-maintenance .bm-photo-copy .bs-eyebrow {
+    font-size: 9px;
+    letter-spacing: .17em;
+  }
+
+  .botanical-maintenance .bm-photo-copy h2 {
+    margin-top: 8px;
+    font-size: 30px;
+    line-height: .98;
+  }
+
+  .botanical-maintenance .bm-inspection {
+    max-width: none;
+    padding-top: 28px;
+  }
+
+  .botanical-maintenance .bm-intro .bs-eyebrow {
+    font-size: 10px;
+    letter-spacing: .17em;
+  }
+
+  .botanical-maintenance .bm-intro h1 {
+    margin-top: 10px;
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .botanical-maintenance .bm-intro p {
+    max-width: 310px;
+    margin-top: 13px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .botanical-maintenance .bm-actions {
+    margin-top: 24px;
+  }
+
+  .botanical-maintenance .bm-actions > button {
+    min-height: 84px;
+    padding: 17px 0;
+    gap: 14px;
+  }
+
+  .botanical-maintenance .bm-action-icon {
+    flex-basis: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .botanical-maintenance .bm-actions strong {
+    font-size: 14px;
+  }
+
+  .botanical-maintenance .bm-actions small {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .botanical-maintenance .bm-ai {
+    min-height: 60px;
+    font-size: 11px;
+  }
+
+  .botanical-maintenance .bm-footer {
+    padding: 14px 18px max(18px, env(safe-area-inset-bottom));
+  }
+
+  .botanical-maintenance .bm-navigation {
+    grid-template-columns: .9fr 1.5fr;
+    gap: 10px;
+  }
+
+  .botanical-maintenance .bm-navigation > .bs-button {
+    min-height: 54px;
+    border-radius: 16px;
+  }
+}
+
+/* The original-photo viewer is part of the visual story, not a generic utility
+   modal. Keep the current safe loading/actions contract, but tune the stage to
+   the approved dark editorial reference. */
+.evidence-viewer {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(210,223,207,.30) transparent;
+}
+
+.evidence-viewer header {
+  min-height: 116px;
+}
+
+.evidence-viewer > img {
+  border-radius: 0;
+}
+
+.evidence-viewer__meta {
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.evidence-viewer .documentary-photo__actions-row {
+  align-items: center;
+}
+
+@media (max-width: 699px) {
+  .evidence-viewer {
+    max-height: 96svh;
+  }
+
+  .evidence-viewer header {
+    min-height: 104px;
+  }
+
+  .evidence-viewer > img {
+    max-height: 64svh;
+  }
+
+  .evidence-viewer__meta {
+    gap: 6px;
+  }
+}
+
 @media (max-width: 379px) {
   .plant-page .journal-heading { gap: 10px; }
   .plant-page .journal-heading h2 { font-size: 36px; }
   .plant-page .journal-heading .bs-button { padding-inline: 10px; }
   .plant-page .journal-photo-strip { gap: 6px; }
+
+  .botanical-maintenance .bm-photo-copy h2 { font-size: 27px; }
+  .botanical-maintenance .bm-intro h1 { font-size: 33px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .plant-page .journal-photo-strip *,
-  .plant-page .timeline * { transition: none !important; }
+  .plant-page .timeline *,
+  .botanical-maintenance .bm-actions > button { transition: none !important; }
 }

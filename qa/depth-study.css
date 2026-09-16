@@ -1,0 +1,59 @@
+/* Isolated design study. No production import. */
+.study-toolbar { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 6px 12px; background: #193b2a; color: white; font: 11px sans-serif; }
+.study-toolbar nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.study-toolbar button,.study-toolbar a { font: inherit; color: white; background: #ffffff16; border: 1px solid #ffffff50; padding: 7px 10px; border-radius: 8px; text-decoration: none; cursor: pointer; }
+.study-toolbar__choice--active { background: #f7f6eb !important; color: #17382a !important; border-color: #fff !important; box-shadow: inset 0 1px 0 #fff, 0 2px 8px #00180f55; }
+[data-depth="proposal"] .app-shell { background: radial-gradient(ellipse at 100% 5%, #b8c6ae66, transparent 45%), #f2f1e9; }
+[data-depth="proposal"] .topbar { border-bottom-color: #193b2a16; }
+[data-depth="proposal"] .bottom-nav { background: #f8f6edcf; color: #17382a; border: 1px solid #fffffff0; box-shadow: inset 0 1px 0 #fff, 0 18px 48px #17382a2b; backdrop-filter: blur(22px) saturate(125%); -webkit-backdrop-filter: blur(22px) saturate(125%); }
+[data-depth="proposal"] .bottom-nav__item { color: #4f6659; }
+[data-depth="proposal"] .bottom-nav__item--active { color: #17382a; background: #dce8d6ae; box-shadow: inset 0 1px 0 #ffffffa8; }
+[data-depth="proposal"] .home-hero { box-shadow: 0 26px 50px -18px #0b261957, inset 0 1px 0 #fff6; isolation: isolate; }
+[data-depth="proposal"] .home-hero--photo::after { background: linear-gradient(90deg,#061c18d9 0%,#061c1870 60%,#061c181a), linear-gradient(0deg,#061c1880,transparent 60%); }
+[data-depth="proposal"] .home-hero > h1 { font-size: clamp(2.8rem,6vw,5.7rem); letter-spacing: -.055em; max-width: 9ch; line-height: .98; text-shadow: 0 3px 28px #0003; }
+[data-depth="proposal"] .home-hero > span { visibility: hidden; }
+[data-depth="proposal"] .home-hero .primary-button { background: #f4f5eae8; border: 1px solid #fff8; box-shadow: inset 0 1px 0 white, 0 8px 24px #0003; backdrop-filter: blur(14px); }
+[data-depth="proposal"] .home-hero__configure { background: #102c2366; border-color: #ffffff70; backdrop-filter: blur(18px); }
+[data-depth="proposal"] .home-scene__garden { border: 1px solid #ffffffb0; border-radius: 24px; box-shadow: 0 16px 30px -16px #142f2955, 0 2px 3px #12271e18; transition: transform 240ms, box-shadow 240ms; }
+[data-depth="proposal"] .home-scene__garden > div { justify-content: flex-end; align-items: flex-start; text-align: left; padding: 24px; background: linear-gradient(0deg,#071e18e8, #071e1820 90%); }
+[data-depth="proposal"] .home-scene__garden > div > span { font-size: 2rem; opacity: .75; line-height: 1; }
+[data-depth="proposal"] .home-scene__garden strong { font-size: clamp(1.5rem,3vw,2.3rem); }
+[data-depth="proposal"] .home-scene__garden small { font-size: .8rem; }
+[data-depth="proposal"] .home-summary-grid > div { padding: 24px; background: #fffdf5b0; border: 1px solid #fff; border-radius: 22px; box-shadow: 0 10px 30px -22px #193b2a55; }
+[data-depth="proposal"] .garden-environment { border: 1px solid #ffffff90; box-shadow: 0 20px 40px -24px #132c2366; }
+[data-depth="proposal"] .garden-environment figcaption { background: #0b261bbb; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid #ffffff45; }
+[data-depth="proposal"] .physical-map { background: radial-gradient(ellipse at 15% 0%,#597264,#233e34 55%,#132d25); border: 1px solid #71867b; box-shadow: inset 0 2px 1px #ffffff60, inset 0 -9px 14px #041b1855, 0 9px 0 #10271e, 0 11px 0 #617266, 0 30px 36px -12px #0a221c55; margin-bottom: 36px; }
+[data-depth="proposal"] .physical-map__edge { color: #e1e9df; letter-spacing: .14em; }
+[data-depth="proposal"] .physical-map__rings { opacity: .1; }
+[data-depth="proposal"] .map-site { background: linear-gradient(140deg,#fafbf0,#d6ddcf); border: 1px solid #fff9; box-shadow: inset 0 2px 1px #ffffffe0, inset 0 -3px 5px #30483530, 0 5px 0 #9caa99, 0 10px 12px #051f1d55; transition: transform 180ms, box-shadow 180ms; }
+[data-depth="proposal"] .map-site--occupied { background: linear-gradient(135deg,#e2edd9,#bbd1ae); border-color: #efffdf; }
+[data-depth="proposal"] .botanical-portrait--photo { position: relative; isolation: isolate; overflow: hidden; border-radius: 28px; background: #122c23; box-shadow: 0 25px 44px -22px #09271d66; }
+[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__scene { min-height: 510px; }
+[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__surface { align-self: end; position: relative; z-index: 2; margin: 30px 30px 30px -76px; padding: 28px; border: 1px solid #ffffffe0; border-radius: 22px; background: #f8f6eddb; color: #17382a; backdrop-filter: blur(22px) saturate(120%); -webkit-backdrop-filter: blur(22px) saturate(120%); box-shadow: inset 0 1px 0 #fff, 0 16px 40px #001d2238; }
+[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__surface h1 { color: #17382a; font-size: clamp(2.4rem,4vw,4.4rem); }
+[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__eyebrow,[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__metadata { color: #486151; }
+[data-depth="proposal"] .botanical-portrait--photo .portrait-photo-action { color: #17382a; background: #ffffff94; border-color: #ffffffd9; padding: 10px 14px; border-radius: 12px; }
+[data-depth="proposal"] :is(a,button):focus-visible { outline: 3px solid #b88428; outline-offset: 4px; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+ [data-depth="proposal"] .home-scene__garden:hover { transform: translateY(-4px); box-shadow: 0 23px 34px -15px #142f2955; }
+ [data-depth="proposal"] .map-site:hover { transform: translateY(-3px); }
+ [data-depth="proposal"] .map-site:active { transform: translateY(2px); }
+}
+@media(max-width:719px) {
+ [data-depth="proposal"] .home-scene__garden > div { padding: 16px; }
+ [data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__scene { min-height: 360px; }
+ [data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__surface { margin: -70px 14px 16px; padding: 22px; }
+ [data-depth="proposal"] .home-summary-grid > div { padding: 18px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ [data-depth="proposal"] *,[data-depth="proposal"] *::before,[data-depth="proposal"] *::after { animation: none!important; transition: none!important; scroll-behavior: auto!important; }
+}
+@supports not (backdrop-filter:blur(1px)) {
+ [data-depth="proposal"] .bottom-nav,[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__surface { background: #f8f6ed; }
+}
+[data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__metadata :is(span,p,svg) { color: #486151; opacity: 1; }
+@media(min-width:720px) {
+ [data-depth="proposal"] .botanical-portrait--photo { display: flex; align-items: flex-end; min-height: 510px; }
+ [data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__scene { position: absolute; inset: 0; min-height: 100%; width: 100%; }
+ [data-depth="proposal"] .botanical-portrait--photo .botanical-portrait__surface { width: 54%; margin: 30px 30px 30px auto; }
+}

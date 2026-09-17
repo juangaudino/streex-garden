@@ -2,13 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "git": {
     "deploymentEnabled": {
-      "prototype/grow-guide": false
+      "prototype/grow-guide": true
     }
   },
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/",
+      "destination": "/grow-guide-lab/index.html"
+    },
+    {
+      "source": "/((?!grow-guide-lab/).*)",
+      "destination": "/grow-guide-lab/$1"
     }
   ]
 }

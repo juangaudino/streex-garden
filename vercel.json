@@ -4,11 +4,5 @@
     "deploymentEnabled": {
       "prototype/grow-guide": true
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  }
 }

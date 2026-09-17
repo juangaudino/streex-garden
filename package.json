@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/sync-grow-guide-lab.mjs",
+    "prebuild": "node scripts/prepare-grow-guide-lab.mjs",
     "build": "tsc -b && vite build && node scripts/publish-grow-guide-lab.mjs",
     "preview": "vite preview",
     "test": "vitest run",

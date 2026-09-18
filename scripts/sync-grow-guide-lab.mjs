@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 const root = process.cwd();
 const source = resolve(root, 'prototypes/grow-guide');
 const destination = resolve(root, 'public/grow-guide-lab');
-const files = ['index.html','styles.css','language.css','visual.css','inventory-neighbors.css','garden-labs.css','app.js','seed-purchase-date.js','demo-shell.js','manifest.json','service-worker.js','sites-storage-bootstrap.js','sites-storage-v1.js','machines-v1.js','machines-v1.css','homegrown-source-comparison.js','homegrown-source-comparison.css','expansion-batch-a1.js','expansion-batch-b1.js','vercel-storage-loader-v1.js'];
+const files = ['index.html','styles.css','language.css','visual.css','inventory-neighbors.css','garden-labs.css','app.js','seed-purchase-date.js','demo-shell.js','manifest.json','service-worker.js','sites-storage-bootstrap.js','sites-storage-v1.js','machines-v1.js','machines-v1.css','homegrown-source-comparison.js','homegrown-source-comparison.css','expansion-batch-a1.js','expansion-batch-b1.js','vercel-storage-loader-v1.js','harvest-use-v0.1.js','harvest-use-v0.1.css'];
 const plantFiles = ['data/plants.json','data/plants-current-gardens.json','data/plants-owned-seeds.json'];
 const plantGroups = await Promise.all(plantFiles.map(async (file) => JSON.parse(await readFile(resolve(source,file),'utf8'))));
 const plants = plantGroups.flat(); const plantIds = plants.map((plant)=>plant.id); const uniquePlantIds = new Set(plantIds);

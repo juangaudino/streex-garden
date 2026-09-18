@@ -109,3 +109,5 @@
   .neighbor-heading { flex-direction: column; align-items: start; }
   .neighbor-columns { grid-template-columns: 1fr; }
 }
+
+.neighbor-meta strong{display:inline-flex;align-items:center;padding:.28rem .5rem;border:1px solid currentColor;border-radius:999px;font-size:.72rem;line-height:1.1}.neighbor-meta{flex-wrap:wrap;gap:.4rem .55rem}

@@ -613,14 +613,16 @@ function scoreNeighbor(aId, bId) {
     reasons.push(state.language === "es" ? "Puede aportar valor cerca en exterior por polinizadores o insectos benéficos." : "It can be useful nearby outdoors for pollinators or beneficial insects.");
   }
   if (!reasons.length) reasons.push(state.language === "es" ? "Compatibilidad calculada por tamaño, raíces y demanda del cultivo." : "Compatibility is calculated from size, roots and crop demand.");
-  const placement = basis === "nearby" ? "outdoor" : score <= -2 ? "separate" : (a.spread >= 3 || b.spread >= 3 || a.height >= 3 || b.height >= 3) ? "spacing" : "shared";\n  return { plant: state.plants.find((plant) => plant.id === bId), score, reasons: reasons.slice(0, 3), basis, explicit, placement };
+  const placement = basis === "nearby" ? "outdoor" : score <= -2 ? "separate" : (a.spread >= 3 || b.spread >= 3 || a.height >= 3 || b.height >= 3) ? "spacing" : "shared";
+  return { plant: state.plants.find((plant) => plant.id === bId), score, reasons: reasons.slice(0, 3), basis, explicit, placement };
 }
 
 function buildNeighborItem(item) {
   const text = ui[state.language];
   const plant = item.plant;
   const primaryName = state.language === "es" ? plant.spanishName : plant.name;
-  const label = item.basis === "research" ? text.researchPair : item.basis === "nearby" ? text.nearbyRole : text.systemPair;\n  const action = item.placement === "outdoor" ? text.outdoorNearby : item.placement === "separate" ? text.keepSeparate : item.placement === "spacing" ? text.manageSpacing : text.shareSystem;
+  const label = item.basis === "research" ? text.researchPair : item.basis === "nearby" ? text.nearbyRole : text.systemPair;
+  const action = item.placement === "outdoor" ? text.outdoorNearby : item.placement === "separate" ? text.keepSeparate : item.placement === "spacing" ? text.manageSpacing : text.shareSystem;
   const source = item.explicit ? state.sources[item.explicit.sourceId] : null;
   return `<article class="neighbor-item"><div class="neighbor-name"><span>${plant.emoji}</span><strong>${escapeHtml(primaryName)}</strong></div><p>${escapeHtml(item.reasons.join(" "))}</p><div class="neighbor-meta"><strong>${escapeHtml(action)}</strong><span>${escapeHtml(label)}</span>${source ? `<a href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.publisher)} ↗</a>` : ""}</div></article>`;
 }

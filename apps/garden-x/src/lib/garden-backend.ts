@@ -91,7 +91,7 @@ function maintenanceType(purpose: string, subject: string): MaintenanceType {
 }
 async function signedUrls(paths: string[]): Promise<Map<string, string>> {
   if (!paths.length) return new Map();
-  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, 60 * 10);
+  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, 60 * 60);
   if (error) throw error;
   return new Map((data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as const] : []));
 }

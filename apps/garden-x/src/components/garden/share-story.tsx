@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
+import { toast } from "sonner";
 import type { Photo, Plant, PlantEvent } from "@/lib/garden-data";
 import { chronological, eventLabels, formatDate } from "@/lib/garden-logic";
 import { ProvenanceTag } from "@/components/garden/atoms";
@@ -62,10 +63,9 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
           onOpenChange(false);
           void navigate({ to: "/shared/$storyId", params: { storyId: token } });
         })
-        .catch(() => {
-          savePublicStory(story);
-          onOpenChange(false);
-          void navigate({ to: "/shared/$storyId", params: { storyId: story.id } });
+        .catch((error: unknown) => {
+          const message = error instanceof Error ? error.message : "Could not create the public story.";
+          toast.error(message);
         });
       return;
     }

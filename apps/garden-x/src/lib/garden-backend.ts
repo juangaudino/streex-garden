@@ -539,3 +539,30 @@ export async function replacePlantRecord(oldPlant: Plant, newPlant: Plant): Prom
   });
   if (error) throw new Error(error.message);
 }
+
+
+export async function askGardenAi(question: string, conversation: Array<{ question: string; answer: string }> = []) {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      operation: "ask_garden",
+      question,
+      conversation,
+      request_key: `ask:${crypto.randomUUID()}`,
+    }),
+  });
+  const body = await response.json().catch(() => null) as {
+    answer?: { answer_type: string; answer: string; confirmed_facts: Array<{ source: { kind: string; id: string }; claim: string }>; suggested_next_actions: string[] };
+    error?: string;
+  } | null;
+  if (!response.ok || !body?.answer) throw new Error(body?.error ?? "Garden AI could not answer.");
+  return body.answer;
+}

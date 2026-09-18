@@ -475,3 +475,67 @@ export async function persistMoment(plant: Plant, event: Omit<PlantEvent, "id">,
 
   if (photo && eventId) await uploadEventPhoto(eventId, photo);
 }
+
+
+export async function createGardenRecord(garden: Garden, systemDefinitionKey?: string): Promise<void> {
+  const systemId = garden.backendSystemInstanceId ?? crypto.randomUUID();
+  const capacity = Math.max(1, Math.min(36, garden.machine?.pods ?? garden.backendPositions?.length ?? 1));
+  const { error } = await getSupabaseClient().rpc("garden_x_create_garden", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: garden.id,
+    p_system_instance_id: systemId,
+    p_name: garden.name,
+    p_kind: garden.kind,
+    p_place: garden.place,
+    p_note: garden.note,
+    p_system_definition_key: systemDefinitionKey ?? null,
+    p_system_name: garden.machine?.name ?? null,
+    p_position_capacity: capacity,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function updateGardenRecord(garden: Garden): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_garden", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: garden.id,
+    p_name: garden.name,
+    p_kind: garden.kind,
+    p_place: garden.place,
+    p_note: garden.note,
+    p_archived: Boolean(garden.archived),
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function reorderGardenRecords(gardenIds: string[]): Promise<void> {
+  if (!gardenIds.length) return;
+  const { error } = await getSupabaseClient().rpc("garden_x_reorder_gardens", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_ids: gardenIds,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function deleteGardenRecord(gardenId: string): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_delete_garden", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: gardenId,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function replacePlantRecord(oldPlant: Plant, newPlant: Plant): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_replace_plant", {
+    p_request_id: crypto.randomUUID(),
+    p_old_plant_instance_id: oldPlant.id,
+    p_new_plant_instance_id: newPlant.id,
+    p_nickname: newPlant.name,
+    p_common_name: newPlant.species,
+    p_scientific_name: newPlant.scientific || null,
+    p_cultivar: newPlant.variety || null,
+    p_reference_key: newPlant.knowledgeId || null,
+    p_started_on: isoDateFromDaysAgo(newPlant.plantedDaysAgo),
+  });
+  if (error) throw new Error(error.message);
+}

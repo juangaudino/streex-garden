@@ -65,7 +65,7 @@ const ui = {
     categories: { herbs: "herbs", "leafy greens": "leafy greens", fruiting: "fruiting", flowers: "flowers", alliums: "alliums", "root vegetables": "root vegetables" },
     sections: { germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
     ownedSeed: "In your seed inventory", packetArchived: "Packet documented · removed from active inventory", packet: "Packet", germinationRate: "Packet germination rate", purity: "Purity", seedCount: "Approx. seeds", daysToBloom: "Days to bloom", daysToHarvest: "Days to harvest", packetEvidence: "Inventory fact from your packet photo", openInSeeds: "Open in Seeds",
-    neighbors: "Neighbors", neighborsNote: "Garden scores real growing compatibility first. A traditional companion claim is only promoted when a credible source supports it.", goodNeighbors: "Good neighbors", separateNeighbors: "Better separate", noStrongGood: "No strong positive matches yet.", noStrongBad: "No strong separation flags yet.", researchPair: "Research-backed companion pair", systemPair: "System-fit inference", nearbyRole: "Useful nearby outdoors", neighborDisclaimer: "‘Better separate’ usually means poor light / space / root / nutrient fit — not that one plant chemically harms the other.",
+    neighbors: "Neighbors", neighborsNote: "Garden scores real growing compatibility first. A traditional companion claim is only promoted when a credible source supports it.", goodNeighbors: "Good neighbors", separateNeighbors: "Better separate", noStrongGood: "No strong positive matches yet.", noStrongBad: "No strong separation flags yet.", researchPair: "Research-backed companion pair", systemPair: "System-fit inference", nearbyRole: "Useful nearby outdoors", neighborDisclaimer: "‘Better separate’ usually means poor light / space / root / nutrient fit — not that one plant chemically harms the other.", shareSystem:"Can share a system", manageSpacing:"Compatible with spacing management", keepSeparate:"Prefer separate systems / zones", outdoorNearby:"Keep nearby outdoors",
     addSeed: "+ Add seed", seedSearchPlaceholder: "Search tomato, basil, Ferry-Morse…", seedInventoryEyebrow: "USER ZERO INVENTORY", seedStorageNote: "Personal state is local · packet evidence stays separate", seedPackage: "packet", seedPackages: "packets", noSeedMatches: "No seed packets match this view.",
     seedFilters: { all: "All", opened: "Opened", unopened: "Unopened", low: "Low inventory", unset: "Needs status", removed: "Removed" },
     seedStatus: { opened: "Opened", unopened: "Unopened", unknown: "Not set" },
@@ -91,7 +91,7 @@ const ui = {
     categories: { herbs: "hierbas", "leafy greens": "hojas verdes", fruiting: "cultivos de fruto", flowers: "flores", alliums: "alliums", "root vegetables": "raíces" },
     sections: { germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
     ownedSeed: "En tu inventario de semillas", packetArchived: "Sobre documentado · retirado del inventario activo", packet: "Sobre", germinationRate: "Germinación del sobre", purity: "Pureza", seedCount: "Semillas aprox.", daysToBloom: "Días a floración", daysToHarvest: "Días a cosecha", packetEvidence: "Dato de inventario leído de tu foto del sobre", openInSeeds: "Abrir en Semillas",
-    neighbors: "Vecinas", neighborsNote: "Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube de nivel cuando una fuente confiable la respalda.", goodNeighbors: "Buenas vecinas", separateNeighbors: "Mejor separar", noStrongGood: "Todavía no hay coincidencias positivas fuertes.", noStrongBad: "No hay alertas fuertes de separación.", researchPair: "Pareja respaldada por investigación", systemPair: "Inferencia por compatibilidad del sistema", nearbyRole: "Útil cerca en exterior", neighborDisclaimer: "‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces / nutrientes; no que una planta envenene químicamente a la otra.",
+    neighbors: "Vecinas", neighborsNote: "Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube de nivel cuando una fuente confiable la respalda.", goodNeighbors: "Buenas vecinas", separateNeighbors: "Mejor separar", noStrongGood: "Todavía no hay coincidencias positivas fuertes.", noStrongBad: "No hay alertas fuertes de separación.", researchPair: "Pareja respaldada por investigación", systemPair: "Inferencia por compatibilidad del sistema", nearbyRole: "Útil cerca en exterior", neighborDisclaimer: "‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces / nutrientes; no que una planta envenene químicamente a la otra.", shareSystem:"Pueden compartir sistema", manageSpacing:"Compatibles manejando el espacio", keepSeparate:"Preferir sistemas / zonas separadas", outdoorNearby:"Mantener cerca en exterior",
     addSeed: "+ Añadir semilla", seedSearchPlaceholder: "Busca tomate, basil, Ferry-Morse…", seedInventoryEyebrow: "INVENTARIO USER ZERO", seedStorageNote: "Estado personal local · evidencia del sobre separada", seedPackage: "paquete", seedPackages: "paquetes", noSeedMatches: "No hay paquetes que coincidan con esta vista.",
     seedFilters: { all: "Todas", opened: "Abiertas", unopened: "Sin abrir", low: "Poco inventario", unset: "Sin definir", removed: "Retiradas" },
     seedStatus: { opened: "Abierto", unopened: "Sin abrir", unknown: "Sin definir" },
@@ -575,14 +575,17 @@ function scoreNeighbor(aId, bId) {
   }
   if (a.climate === b.climate) {
     score += 2;
-    reasons.push(state.language === "es" ? "Prefieren una temporada térmica parecida." : "They prefer a similar temperature season.");
-  } else if (a.climate === "moderate" || b.climate === "moderate") score += 1;
+    reasons.push(state.language === "es" ? "Comparten una preferencia térmica similar." : "They share a similar temperature preference.");
+  } else if (a.climate === "moderate" || b.climate === "moderate") {
+    score += 1;
+    reasons.push(state.language === "es" ? "Sus rangos térmicos pueden solaparse con manejo." : "Their temperature ranges can overlap with management.");
+  }
   else {
     score -= 2;
     reasons.push(state.language === "es" ? "Uno es de clima cálido y el otro de clima fresco." : "One is warm-season and the other cool-season.");
   }
   const nutrientGap = Math.abs(a.nutrient - b.nutrient);
-  if (nutrientGap === 0) score += 1;
+  if (nutrientGap === 0) { score += 1; reasons.push(state.language === "es" ? "Tienen una demanda de nutrientes parecida." : "They have similar nutrient demand."); }
   if (nutrientGap >= 2) {
     score -= 2;
     reasons.push(state.language === "es" ? "La demanda de nutrientes es muy distinta para compartir un depósito pequeño." : "Their nutrient demand is very different for a small shared reservoir.");
@@ -596,7 +599,7 @@ function scoreNeighbor(aId, bId) {
     score -= 2;
     reasons.push(state.language === "es" ? "Una de las plantas ocupa muchísimo espacio lateral." : "One plant has a very large horizontal footprint.");
   } else if (Math.max(a.spread, b.spread) >= 3 && Math.min(a.spread, b.spread) <= 1) score -= 1;
-  if (a.root <= 2 && b.root <= 2 && Math.abs(a.root - b.root) <= 1) score += 1;
+  if (a.root <= 2 && b.root <= 2 && Math.abs(a.root - b.root) <= 1) { score += 1; reasons.push(state.language === "es" ? "El volumen de raíces es compatible en sistemas compactos." : "Their root volume is compatible in compact systems."); }
   if ((a.traits.includes("giant") || b.traits.includes("giant")) && !(a.traits.includes("giant") && b.traits.includes("giant"))) score -= 2;
   if ((a.traits.includes("ornamental-only") && b.traits.includes("edible")) || (b.traits.includes("ornamental-only") && a.traits.includes("edible"))) {
     score -= 1;
@@ -610,16 +613,16 @@ function scoreNeighbor(aId, bId) {
     reasons.push(state.language === "es" ? "Puede aportar valor cerca en exterior por polinizadores o insectos benéficos." : "It can be useful nearby outdoors for pollinators or beneficial insects.");
   }
   if (!reasons.length) reasons.push(state.language === "es" ? "Compatibilidad calculada por tamaño, raíces y demanda del cultivo." : "Compatibility is calculated from size, roots and crop demand.");
-  return { plant: state.plants.find((plant) => plant.id === bId), score, reasons: reasons.slice(0, 2), basis, explicit };
+  const placement = basis === "nearby" ? "outdoor" : score <= -2 ? "separate" : (a.spread >= 3 || b.spread >= 3 || a.height >= 3 || b.height >= 3) ? "spacing" : "shared";\n  return { plant: state.plants.find((plant) => plant.id === bId), score, reasons: reasons.slice(0, 3), basis, explicit, placement };
 }
 
 function buildNeighborItem(item) {
   const text = ui[state.language];
   const plant = item.plant;
   const primaryName = state.language === "es" ? plant.spanishName : plant.name;
-  const label = item.basis === "research" ? text.researchPair : item.basis === "nearby" ? text.nearbyRole : text.systemPair;
+  const label = item.basis === "research" ? text.researchPair : item.basis === "nearby" ? text.nearbyRole : text.systemPair;\n  const action = item.placement === "outdoor" ? text.outdoorNearby : item.placement === "separate" ? text.keepSeparate : item.placement === "spacing" ? text.manageSpacing : text.shareSystem;
   const source = item.explicit ? state.sources[item.explicit.sourceId] : null;
-  return `<article class="neighbor-item"><div class="neighbor-name"><span>${plant.emoji}</span><strong>${escapeHtml(primaryName)}</strong></div><p>${escapeHtml(item.reasons.join(" "))}</p><div class="neighbor-meta"><span>${escapeHtml(label)}</span>${source ? `<a href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.publisher)} ↗</a>` : ""}</div></article>`;
+  return `<article class="neighbor-item"><div class="neighbor-name"><span>${plant.emoji}</span><strong>${escapeHtml(primaryName)}</strong></div><p>${escapeHtml(item.reasons.join(" "))}</p><div class="neighbor-meta"><strong>${escapeHtml(action)}</strong><span>${escapeHtml(label)}</span>${source ? `<a href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.publisher)} ↗</a>` : ""}</div></article>`;
 }
 
 function buildVisualGuide(plantId) {

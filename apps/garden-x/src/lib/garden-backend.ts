@@ -21,7 +21,7 @@ type BootstrapEvent = {
   note: string | null; event_data: Record<string, unknown>; revision: number;
 };
 type BootstrapPhoto = {
-  id: string; plant_instance_id: string; grow_cycle_id: string; event_id: string; storage_path: string; original_filename: string;
+  id: string; plant_instance_id: string; grow_cycle_id: string; event_id: string | null; storage_path: string; original_filename: string;
   content_type: string; byte_size: number; captured_at: string | null; captured_at_precision: string; width: number | null; height: number | null;
   media_scope: string;
 };
@@ -102,8 +102,11 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const filmsResponse = await getSupabaseClient().rpc("garden_x_get_saved_films");
   if (filmsResponse.error) throw new Error(filmsResponse.error.message);
   const savedFilms = (filmsResponse.data ?? []) as Array<{ id: string; plant_instance_id: string; title: string; photo_ids: string[]; music: string; created_at: string }>;
+  const historicalResponse = await getSupabaseClient().rpc("garden_x_get_historical_photos");
+  if (historicalResponse.error) throw new Error(historicalResponse.error.message);
+  const allPhotos = [...(b.photos ?? []), ...((historicalResponse.data ?? []) as BootstrapPhoto[])].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
 
-  const urlEntries = await Promise.all((b.photos ?? []).map(async p => [p.id, await signedUrl(p.storage_path)] as const));
+  const urlEntries = await Promise.all(allPhotos.map(async p => [p.id, await signedUrl(p.storage_path)] as const));
   const photoUrl = new Map(urlEntries);
 
   const gardens: Garden[] = (b.gardens ?? []).map(g => ({
@@ -157,17 +160,17 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   }));
 
   const eventById = new Map((b.events ?? []).map(e => [e.id, e]));
-  const photos: Photo[] = (b.photos ?? []).map(p => {
+  const photos: Photo[] = allPhotos.map(p => {
     const e = eventById.get(p.event_id);
     return {
       id: p.id,
       plantId: p.plant_instance_id,
       src: photoUrl.get(p.id) ?? "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
-      caption: e?.note?.trim() || "Garden photo",
+      caption: e?.note?.trim() || "Historical garden photo",
       metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
       backendStoragePath: p.storage_path,
-      backendEventId: p.event_id,
+      ...(p.event_id ? { backendEventId: p.event_id } : {}),
     };
   });
 

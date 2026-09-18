@@ -13,6 +13,7 @@
       eyebrow: "AFTER HARVEST · HARVEST USE",
       title: "What can you do with it now?",
       edible: "Edible part",
+      culinary: "Culinary status",
       best: "Best use",
       quick: "Quick uses",
       sources: "Sources",
@@ -23,6 +24,7 @@
       eyebrow: "DESPUÉS DE COSECHAR · HARVEST USE",
       title: "¿Qué puedes hacer ahora?",
       edible: "Parte comestible",
+      culinary: "Estado culinario",
       best: "Mejor uso",
       quick: "Usos rápidos",
       sources: "Fuentes",
@@ -81,17 +83,20 @@
     const text = labels[lang] || labels.en;
     const quickUses = (record.quickUses?.[lang] || record.quickUses?.en || []).map((item) => `<span>${esc(item)}</span>`).join("");
     const methods = (record.methods || []).map((method) => methodCard(method, lang)).join("");
+    const recordSources = sourceLinks(record.referenceSourceIds || [], lang);
+    const edibleLabel = record.culinaryStatus === "ornamental_or_unresolved" ? text.culinary : text.edible;
     return `<section class="harvest-use">
       <div class="harvest-use-heading">
         <div><p class="eyebrow">${esc(text.eyebrow)}</p><h3>${esc(text.title)}</h3></div>
-        <span class="harvest-use-version">V0.1 · Source-backed</span>
+        <span class="harvest-use-version">V0.2 · Source-backed</span>
       </div>
       <div class="harvest-best">
-        <div class="harvest-fact"><span>${esc(text.edible)}</span><strong>${esc(pick(record.edibleParts, lang))}</strong></div>
+        <div class="harvest-fact"><span>${esc(edibleLabel)}</span><strong>${esc(pick(record.edibleParts, lang))}</strong></div>
         <div class="harvest-fact primary"><span>${esc(text.best)}</span><strong>${esc(pick(record.bestUse, lang))}</strong></div>
       </div>
       ${quickUses ? `<div class="harvest-quick"><span>${esc(text.quick)}</span><div>${quickUses}</div></div>` : ""}
-      <div class="harvest-method-grid">${methods}</div>
+      ${methods ? `<div class="harvest-method-grid">${methods}</div>` : ""}
+      ${recordSources}
       ${record.safetyNote ? `<aside class="harvest-safety"><strong>⚠ ${esc(text.safety)}</strong><p>${esc(pick(record.safetyNote, lang))}</p></aside>` : ""}
     </section>`;
   }

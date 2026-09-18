@@ -191,3 +191,5 @@ El repositorio se desarrolló mediante un workflow AI-assisted para explorar el 
 ## Licencia
 
 Este repositorio no declara una licencia open source. El producto, marca, fotografías y datos permanecen sujetos a autorización de su propietario.
+
+<!-- garden-x-production-deploy-trigger -->

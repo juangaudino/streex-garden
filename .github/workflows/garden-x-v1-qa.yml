@@ -1,0 +1,24 @@
+name: Garden X V1 QA
+on:
+  push:
+    branches: [garden-x/v1-migration-current]
+  pull_request:
+    paths:
+      - "apps/garden-x/**"
+      - "supabase/migrations/**"
+jobs:
+  golden-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/garden-x
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/garden-x/package-lock.json
+      - run: npm install --package-lock-only
+      - run: npm ci
+      - run: npm run build

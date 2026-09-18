@@ -43,13 +43,9 @@ function Compare() {
 
   const a = store.photos.find((p) => p.id === aId);
   const b = store.photos.find((p) => p.id === bId);
-  if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">Two recorded photos are needed to compare change.</div>;
-  const deterministic = comparePhotos(a, b, plant);
-  const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
-  const hasRecordedMeasurements = [a.metrics.heightCm,a.metrics.leafCount,a.metrics.density,a.metrics.greenness,b.metrics.heightCm,b.metrics.leafCount,b.metrics.density,b.metrics.greenness].some((value) => value !== 0);
   useEffect(() => {
     setAiComparison(null);
-    if (!plant.backendGrowCycleId || !a.backendStoragePath || !b.backendStoragePath || a.id === b.id) return;
+    if (!plant.backendGrowCycleId || !a?.backendStoragePath || !b?.backendStoragePath || a.id === b.id) return;
     void runAiCheck(plant.backendGrowCycleId, b.id, a.id)
       .then(({ proposal }) => {
         const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
@@ -62,8 +58,12 @@ function Compare() {
         });
       })
       .catch(() => undefined);
-  }, [a.id, b.id, plant.backendGrowCycleId]);
+  }, [a?.id, b?.id, plant.backendGrowCycleId]);
 
+  if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">Two recorded photos are needed to compare change.</div>;
+  const deterministic = comparePhotos(a, b, plant);
+  const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
+  const hasRecordedMeasurements = [a.metrics.heightCm,a.metrics.leafCount,a.metrics.density,a.metrics.greenness,b.metrics.heightCm,b.metrics.leafCount,b.metrics.density,b.metrics.greenness].some((value) => value !== 0);
   const earlier = a.daysAgo > b.daysAgo ? a : b;
   const later = a.daysAgo > b.daysAgo ? b : a;
   const context = eventsBetween(store.events, plant.id, earlier.daysAgo, later.daysAgo).filter((event) => event.type !== "photo" && event.type !== "ai");

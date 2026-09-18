@@ -253,6 +253,8 @@ function renderPlants() {
   const plants = getFilteredPlants();
   refs.plantGrid.innerHTML = "";
   refs.resultCount.textContent = `${plants.length} ${plants.length === 1 ? text.plant : text.plants}`;
+  const qualityOverview = document.querySelector("#qualityOverview");
+  if (qualityOverview && window.GARDEN_KNOWLEDGE) qualityOverview.innerHTML = window.GARDEN_KNOWLEDGE.overview(state.plants, state.language);
   if (!plants.length) {
     refs.plantGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.noMatches)}</div>`;
     return;
@@ -289,8 +291,10 @@ function buildPlantDetail(plant) {
   const neighbors = buildNeighborGuide(plant.id);
   const visuals = buildVisualGuide(plant.id);
   const harvestUse = window.GARDEN_HARVEST_USE?.render?.(plant.id, state.language) || "";
+  const growTimeline = window.GARDEN_KNOWLEDGE?.timeline?.(localized, state.language) || "";
+  const evidenceHealth = window.GARDEN_KNOWLEDGE?.health?.(localized, state.language) || "";
   const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key) => buildSection(localized.sections[key], key, false)).join("");
-  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section>${seedCard}<section class="quick-facts">${metrics}</section>${harvestUse}${neighbors}${visuals}<section class="guide-stack">${sections}</section>`;
+  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section>${seedCard}<section class="quick-facts">${metrics}</section>${growTimeline}${evidenceHealth}${harvestUse}${neighbors}${visuals}<section class="guide-stack">${sections}</section>`;
 }
 
 function buildSeedInventoryCard(plantId) {

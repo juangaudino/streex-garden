@@ -3,7 +3,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ScanLine, Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { analysePhoto, formatDate, plantEvents, plantPhotos } from "@/lib/garden-logic";
+import { analysePhoto, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
+import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
 
@@ -43,13 +44,34 @@ function Check_() {
   const [selected, setSelected] = useState(photos[photos.length - 1]?.id ?? "");
   const [phase, setPhase] = useState<"idle" | "scanning" | "done">("idle");
   const [saved, setSaved] = useState(false);
+  const [aiResult, setAiResult] = useState<AnalysisResult | null>(null);
   const photo = store.photos.find((p) => p.id === selected)!;
-  const result = analysePhoto(plant, photo, events);
+  const fallbackResult = analysePhoto(plant, photo, events);
+  const result = aiResult ?? fallbackResult;
 
   const run = () => {
     setPhase("scanning");
     setSaved(false);
-    window.setTimeout(() => setPhase("done"), 2200);
+    setAiResult(null);
+    if (!plant.backendGrowCycleId || !photo.backendEventId) {
+      window.setTimeout(() => { setAiResult(fallbackResult); setPhase("done"); }, 700);
+      return;
+    }
+    void runAiCheck(plant.backendGrowCycleId, photo.id)
+      .then(({ proposal }) => {
+        const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
+        const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
+        const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
+        const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations as Array<Record<string, unknown>> : [];
+        const findings: AnalysisResult["findings"] = [
+          ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? "Visible state" : "Observation", body })),
+          ...uncertainty.map((body) => ({ kind: "inference" as const, title: "Uncertainty", body, confidence })),
+          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: String(item.kind ?? "Next step"), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
+        ];
+        setAiResult({ headline: String(proposal.summary ?? "Garden AI check"), confidence, findings, grounding: [`Photo · ${formatDate(photo.daysAgo)}`, `${events.length} recorded events`] });
+      })
+      .catch(() => setAiResult(fallbackResult))
+      .finally(() => setPhase("done"));
   };
 
   return (

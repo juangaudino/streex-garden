@@ -180,6 +180,12 @@
       "title": "Flowers — Uses",
       "url": "https://extension.illinois.edu/flowers/uses",
       "type": "extension"
+    },
+    "psu-herbs-home": {
+      "publisher": "Penn State Extension",
+      "title": "Herbs for the Home Gardener",
+      "url": "https://extension.psu.edu/herbs-for-the-home-gardener",
+      "type": "extension"
     }
   },
   "plants": {
@@ -3540,7 +3546,8 @@
       "methods": [],
       "referenceSourceIds": [
         "illinois-flower-uses"
-      ]
+      ],
+      "culinaryStatus": "ornamental_or_unresolved"
     },
     "sunflower-american-giant-hybrid": {
       "edibleParts": {
@@ -3562,7 +3569,8 @@
       "methods": [],
       "referenceSourceIds": [
         "illinois-flower-uses"
-      ]
+      ],
+      "culinaryStatus": "ornamental_or_unresolved"
     },
     "sunflower-autumn-beauty": {
       "edibleParts": {
@@ -3584,7 +3592,8 @@
       "methods": [],
       "referenceSourceIds": [
         "illinois-flower-uses"
-      ]
+      ],
+      "culinaryStatus": "ornamental_or_unresolved"
     },
     "marigold-jolly-jester": {
       "edibleParts": {
@@ -3606,7 +3615,8 @@
       "methods": [],
       "referenceSourceIds": [
         "csu-edible-flowers"
-      ]
+      ],
+      "culinaryStatus": "ornamental_or_unresolved"
     },
     "zinnia-lilliput-mixed": {
       "edibleParts": {
@@ -3680,7 +3690,8 @@
       "safetyNote": {
         "en": "Delphinium contains toxic alkaloids and is poisonous to humans and other mammals. Do not eat any part.",
         "es": "Delphinium contiene alcaloides tóxicos y es venenoso para humanos y otros mamíferos. No comas ninguna parte."
-      }
+      },
+      "culinaryStatus": "ornamental_or_unresolved"
     },
     "fragrant-dwarf-dianthus-mix": {
       "edibleParts": {
@@ -3777,7 +3788,8 @@
       "methods": [],
       "referenceSourceIds": [
         "illinois-flower-uses"
-      ]
+      ],
+      "culinaryStatus": "ornamental_or_unresolved"
     }
   },
   "catalogCoverage": {

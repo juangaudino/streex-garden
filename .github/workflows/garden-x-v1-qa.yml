@@ -6,6 +6,9 @@ on:
     paths:
       - "apps/garden-x/**"
       - "supabase/migrations/**"
+concurrency:
+  group: garden-x-v1-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
   issues: write

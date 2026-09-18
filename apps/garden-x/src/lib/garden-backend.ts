@@ -6,6 +6,7 @@ type BootstrapGarden = {
   id: string; name: string; system_instance_id: string; system_instance_name: string;
   system_definition_key: string | null; legacy_system_model: string | null;
   position_capacity: number; map_layout: string; cover_photo_id: string | null;
+  kind: Garden["kind"]; place: string; note: string; sort_order: number; archived_at: string | null;
   positions: Array<{ id: string; position_number: number; layout: { site_id: string; site_kind: string; is_active: boolean; grid_x: number; grid_y: number; label: string | null } | null }>;
 };
 type BootstrapPlant = {
@@ -113,11 +114,12 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const gardens: Garden[] = (b.gardens ?? []).map(g => ({
     id: g.id,
     name: g.name,
-    kind: "hydroponic",
+    kind: g.kind ?? "hydroponic",
     cover: "",
     coverPhotoId: g.cover_photo_id,
-    place: "",
-    note: "",
+    place: g.place ?? "",
+    note: g.note ?? "",
+    archived: Boolean(g.archived_at),
     machine: { name: g.system_instance_name || g.legacy_system_model || "Growing system", pods: g.position_capacity },
     backendSystemInstanceId: g.system_instance_id,
     backendPositions: (g.positions ?? []).map((p) => ({

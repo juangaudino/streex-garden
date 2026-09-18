@@ -59,7 +59,7 @@ function Check_() {
     }
     void runAiCheck(plant.backendGrowCycleId, photo.id)
       .then(({ proposal }) => {
-        const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
+        const confidence: AnalysisResult["confidence"] = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
         const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations : [];

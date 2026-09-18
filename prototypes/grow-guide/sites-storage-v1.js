@@ -121,7 +121,7 @@
       }
       persistCache(state);
     } catch (error) {
-      console.warn("Garden Labs is using its device cache because D1 could not be reached", error);
+      console.warn("Garden Labs is using its device cache because private storage could not be reached", error);
       setMode("local");
     }
   }
@@ -166,8 +166,8 @@
     get mode() { return mode; },
   };
 
-  ui.en.seedsIntro = "The packets you own, their approximate state and where they are. Personal Lab state is shared through this private Site.";
-  ui.es.seedsIntro = "Qué paquetes tienes realmente, su estado aproximado y dónde están. El estado personal del Lab se comparte en este Site privado.";
+  ui.en.seedsIntro = "The packets you own, their approximate state and where they are. Personal Lab state is shared through Garden Labs private storage.";
+  ui.es.seedsIntro = "Qué paquetes tienes realmente, su estado aproximado y dónde están. El estado personal del Lab se comparte mediante el almacenamiento privado de Garden Labs.";
   ui.en.personalStateNote = "Personal Lab state is stored separately from packet evidence and Grow Guide knowledge.";
   ui.es.personalStateNote = "El estado personal del Lab se guarda por separado de la evidencia del sobre y del conocimiento de Grow Guide.";
   setMode("checking");

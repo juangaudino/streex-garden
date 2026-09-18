@@ -107,6 +107,7 @@ const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "�
 
 async function init() {
   if (window.GARDEN_LABS_STORAGE_HYDRATE) await window.GARDEN_LABS_STORAGE_HYDRATE(state);
+  if (window.GARDEN_HARVEST_USE?.load) await window.GARDEN_HARVEST_USE.load();
   const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, spanishResponse, ownedSpanishResponse, visualsResponse, inventoryResponse, neighborResponse] = await Promise.all([
     fetch(assetUrl("data/plants.json")),
     fetch(assetUrl("data/plants-current-gardens.json")),

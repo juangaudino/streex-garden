@@ -1,4 +1,5 @@
 import type { GardenState, Garden, Plant, Photo, PlantEvent, CareTask, EventType, MaintenanceType, Provenance, Film } from "./garden-data";
+import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 
 type BootstrapGarden = {
@@ -606,4 +607,66 @@ export async function saveFilmRecord(film: Omit<Film, "id" | "createdDaysAgo"> &
     p_music: film.music,
   });
   if (error) throw new Error(error.message);
+}
+
+
+async function hashShareToken(value: string): Promise<string> {
+  const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+export async function createPublicPlantStory(
+  plant: Plant,
+  selection: Array<{ event_id?: string; photo_id?: string; include_note?: boolean }>,
+): Promise<string> {
+  if (!plant.backendGrowCycleId) throw new Error("Plant history is not connected.");
+  const token = crypto.randomUUID().toLowerCase();
+  const { error } = await getSupabaseClient().rpc("garden_create_guest_plant_story", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: plant.backendGrowCycleId,
+    p_token_hash: await hashShareToken(token),
+    p_item_selection: selection,
+  });
+  if (error) throw new Error(error.message);
+  return token;
+}
+
+export async function loadPublicPlantStory(token: string): Promise<PublicStory> {
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/guest-plant-story`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ token }),
+  });
+  const body = await response.json().catch(() => null) as { story?: Record<string, unknown>; error?: string } | null;
+  if (!response.ok || !body?.story) throw new Error(body?.error ?? "Story unavailable.");
+  const s = body.story as {
+    id: string; crop_name?: string; planted_on?: string | null; created_at?: string;
+    history?: Array<{ id: string; event_type: string; occurred_at?: string | null; note?: string | null; photo?: { id: string; url?: string } | null }>;
+  };
+  const plantedDaysAgo = daysAgo(s.planted_on);
+  const moments: PublicStoryMoment[] = [];
+  for (const item of s.history ?? []) {
+    const momentDays = daysAgo(item.occurred_at);
+    if (item.photo?.url) {
+      moments.push({ id: `photo:${item.photo.id}`, daysAgo: momentDays, kind: "photo", photo: {
+        id: item.photo.id, plantId: s.id, src: item.photo.url, daysAgo: momentDays, caption: item.note ?? "Garden photo",
+        metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
+      } });
+    }
+    if (item.note) {
+      moments.push({ id: `event:${item.id}`, daysAgo: momentDays, kind: "event", event: {
+        id: item.id, plantId: s.id, daysAgo: momentDays, type: eventType(item.event_type, {}), title: item.note,
+        provenance: provenance(item.event_type),
+      } });
+    }
+  }
+  return {
+    id: token,
+    plant: { id: s.id, name: s.crop_name ?? "Plant", species: s.crop_name ?? "Plant", scientific: "", variety: "", plantedDaysAgo },
+    moments,
+  };
 }

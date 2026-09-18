@@ -31,6 +31,15 @@ Deno.serve(async (request) => {
   if (user.error || !user.data.user) return json({ error: 'Authentication required' }, 401, origin)
   if (!openAiKey) return json({ error: 'Identification is temporarily unavailable' }, 503, origin)
 
+  const requestKey = 'identify:' + crypto.randomUUID()
+  const started = await userClient.rpc('garden_ai_start_request', {
+    p_request_key: requestKey,
+    p_request_type: 'identify',
+    p_evidence_refs: [{ kind: 'ephemeral_photo', id: 'identify_upload' }],
+    p_proposal_schema_version: 'garden_identify_v1',
+  })
+  const auditId = !started.error && started.data && typeof started.data === 'object' ? (started.data as { id?: string }).id : undefined
+
   let body: { image_data_url?: unknown }
   try { body = await request.json() } catch { return json({ error: 'Invalid request' }, 400, origin) }
   if (typeof body.image_data_url !== 'string' || !body.image_data_url.startsWith('data:image/') || body.image_data_url.length > 7_000_000) {
@@ -79,6 +88,10 @@ Deno.serve(async (request) => {
     for (const part of content) if (typeof part.text === 'string') text += part.text
   }
   let result: unknown
-  try { result = JSON.parse(text) } catch { return json({ error: 'Identification returned an invalid result' }, 502, origin) }
+  try { result = JSON.parse(text) } catch {
+    if (auditId) await userClient.rpc('garden_ai_finish_request', { p_request_id: auditId, p_status: 'failed', p_proposal: null, p_model_identifier: 'gpt-5.6-luna', p_duration_ms: null, p_usage_metadata: {}, p_error_code: 'invalid_structured_output' })
+    return json({ error: 'Identification returned an invalid result' }, 502, origin)
+  }
+  if (auditId) await userClient.rpc('garden_ai_finish_request', { p_request_id: auditId, p_status: 'completed', p_proposal: result, p_model_identifier: 'gpt-5.6-luna', p_duration_ms: null, p_usage_metadata: {}, p_error_code: null })
   return json({ result }, 200, origin)
 })

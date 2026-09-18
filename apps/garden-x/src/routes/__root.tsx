@@ -8,13 +8,15 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GardenProvider, useGarden } from "@/lib/garden-store";
 import { AppShell } from "@/components/garden/shell";
 import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
+import { getSupabaseClient, hasSupabaseConfiguration } from "@/lib/supabase";
 
 function NotFoundComponent() {
   return (
@@ -139,6 +141,16 @@ function RootComponent() {
 function GardenExperience() {
   const { language, appearance } = useGarden();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const [authReady, setAuthReady] = useState(!hasSupabaseConfiguration());
+  const [signedIn, setSignedIn] = useState(!hasSupabaseConfiguration());
+
+  useEffect(() => {
+    if (!hasSupabaseConfiguration()) return;
+    const client = getSupabaseClient();
+    void client.auth.getSession().then(({ data }) => { setSignedIn(Boolean(data.session)); setAuthReady(true); });
+    const { data } = client.auth.onAuthStateChange((_event, session) => { setSignedIn(Boolean(session)); setAuthReady(true); });
+    return () => data.subscription.unsubscribe();
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -152,10 +164,39 @@ function GardenExperience() {
     return () => media.removeEventListener("change", apply);
   }, [appearance]);
 
+  if (pathname.startsWith("/shared/")) return <><Outlet /><Toaster position="top-center" /></>;
+  if (!authReady) return <main className="grid min-h-screen place-items-center bg-background"><span className="breathe font-display text-xl text-primary">Garden X</span></main>;
+  if (!signedIn) return <><SignInGate /><Toaster position="top-center" /></>;
+
   return (
     <>
-      {pathname.startsWith("/shared/") ? <Outlet /> : <AppShell><Outlet /></AppShell>}
+      <AppShell><Outlet /></AppShell>
       <Toaster position="top-center" />
     </>
   );
+}
+
+function SignInGate() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    setBusy(true); setError("");
+    void getSupabaseClient().auth.signInWithPassword({ email: email.trim(), password })
+      .then(({ error: authError }) => { if (authError) setError(authError.message); })
+      .finally(() => setBusy(false));
+  };
+  return <main className="grid min-h-screen place-items-center bg-background px-5">
+    <form onSubmit={submit} className="surface w-full max-w-sm p-6 sm:p-8">
+      <p className="eyebrow">Garden X</p>
+      <h1 className="mt-2 font-display text-3xl font-medium">Your garden is waiting.</h1>
+      <p className="mt-2 text-sm text-muted-foreground">Sign in to your private plant history.</p>
+      <label className="mt-6 block text-sm"><span className="mb-2 block text-muted-foreground">Email</span><input type="email" required autoComplete="email" className="input-soft" value={email} onChange={(e) => setEmail(e.target.value)} /></label>
+      <label className="mt-4 block text-sm"><span className="mb-2 block text-muted-foreground">Password</span><input type="password" required autoComplete="current-password" className="input-soft" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+      {error ? <p className="mt-3 text-xs text-destructive">{error}</p> : null}
+      <Button type="submit" disabled={busy} className="mt-5 w-full rounded-full">{busy ? "Signing in…" : "Sign in"}</Button>
+    </form>
+  </main>;
 }

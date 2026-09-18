@@ -29,6 +29,15 @@ export default async function handler(req, res) {
       return json(res, 200, data || { ok: true });
     }
 
+    if (kind === 'machine-performance') {
+      if (req.method !== 'GET') return json(res, 405, { error: 'method_not_allowed' });
+      const gardenId = String(req.query?.gardenId || '');
+      if (!/^[0-9a-f-]{36}$/i.test(gardenId)) return json(res, 400, { error: 'invalid_garden_id' });
+      const { data, error } = await db.rpc('garden_lab_service_get_machine_performance', { p_owner: ownerId, p_garden_id: gardenId });
+      if (error) throw error;
+      return json(res, 200, data || null);
+    }
+
     if (kind === 'machines') {
       if (req.method === 'GET') {
         const { data, error } = await db.rpc('garden_lab_service_get_machine_storage', { p_owner: ownerId });

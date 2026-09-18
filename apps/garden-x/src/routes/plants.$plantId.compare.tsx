@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ArrowRight, MoveHorizontal } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { ageLabel, comparePhotos, eventsBetween, formatDate, plantPhotos } from "@/lib/garden-logic";
+import { ageLabel, comparePhotos, eventsBetween, formatDate, plantPhotos, type CompareResult } from "@/lib/garden-logic";
+import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
 
@@ -38,11 +39,31 @@ function Compare() {
   const [aId, setAId] = useState(photos[0]?.id ?? "");
   const [bId, setBId] = useState(photos[photos.length - 1]?.id ?? "");
   const [slider, setSlider] = useState(50);
+  const [aiComparison, setAiComparison] = useState<{ observations: string[]; inference: string; confidence: "high" | "moderate" | "low" } | null>(null);
 
   const a = store.photos.find((p) => p.id === aId);
   const b = store.photos.find((p) => p.id === bId);
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">Two recorded photos are needed to compare change.</div>;
-  const result = comparePhotos(a, b, plant);
+  const deterministic = comparePhotos(a, b, plant);
+  const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
+  const hasRecordedMeasurements = [a.metrics.heightCm,a.metrics.leafCount,a.metrics.density,a.metrics.greenness,b.metrics.heightCm,b.metrics.leafCount,b.metrics.density,b.metrics.greenness].some((value) => value !== 0);
+  useEffect(() => {
+    setAiComparison(null);
+    if (!plant.backendGrowCycleId || !a.backendStoragePath || !b.backendStoragePath || a.id === b.id) return;
+    void runAiCheck(plant.backendGrowCycleId, b.id, a.id)
+      .then(({ proposal }) => {
+        const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
+        const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
+        const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
+        setAiComparison({
+          observations,
+          inference: [String(proposal.summary ?? ""), ...uncertainty].filter(Boolean).join(" "),
+          confidence,
+        });
+      })
+      .catch(() => undefined);
+  }, [a.id, b.id, plant.backendGrowCycleId]);
+
   const earlier = a.daysAgo > b.daysAgo ? a : b;
   const later = a.daysAgo > b.daysAgo ? b : a;
   const context = eventsBetween(store.events, plant.id, earlier.daysAgo, later.daysAgo).filter((event) => event.type !== "photo" && event.type !== "ai");
@@ -148,7 +169,7 @@ function Compare() {
             <h2 className="min-w-0 font-display text-lg">Recorded measurements</h2>
             <ProvenanceTag kind="observed" />
           </div>
-          <ul className="space-y-4">
+          {hasRecordedMeasurements ? <ul className="space-y-4">
             {result.deltas.map((d) => {
               const diff = d.to - d.from;
               const pct = Math.min(100, Math.round((d.to / Math.max(d.from, d.to, 1)) * 100));
@@ -175,7 +196,7 @@ function Compare() {
                 </li>
               );
             })}
-          </ul>
+          </ul> : <p className="text-sm text-muted-foreground">No numeric measurements were recorded for these two moments.</p>}
         </div>
 
         <div className="space-y-4">

@@ -62,7 +62,7 @@ function Check_() {
         const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
-        const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations as Array<Record<string, unknown>> : [];
+        const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations : [];
         const findings: AnalysisResult["findings"] = [
           ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? "Visible state" : "Observation", body })),
           ...uncertainty.map((body) => ({ kind: "inference" as const, title: "Uncertainty", body, confidence })),

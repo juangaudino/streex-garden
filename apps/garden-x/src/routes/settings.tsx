@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/garden/shell";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getSupabaseClient, hasSupabaseConfiguration } from "@/lib/supabase";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({ meta: [
@@ -25,7 +26,10 @@ function SettingsPage() {
   return <div className="rise pb-20"><PageHeader eyebrow="Your Garden X" title="Settings" subtitle="A few personal choices for how your garden feels and reads." />
     <div className="mx-auto grid max-w-3xl gap-8 px-5 sm:px-8 lg:px-12">
       <SettingsSection icon={UserRound} title="Account">
-        <div className="flex items-center gap-4"><Avatar className="h-12 w-12"><AvatarFallback className="bg-accent font-display text-lg">{initials}</AvatarFallback></Avatar><div className="min-w-0 flex-1">{store.profile.signedIn ? <><input aria-label="Profile name" className="w-full bg-transparent font-medium outline-none" value={store.profile.name} onChange={(event) => store.updateProfile({ name: event.target.value })} /><p className="truncate text-xs text-muted-foreground">{store.profile.email}</p></> : <><p className="font-medium">Your garden, on this device</p><p className="text-xs text-muted-foreground">Sign in is simulated in this prototype.</p></>}</div><Button variant="outline" className="rounded-full" onClick={() => store.updateProfile({ signedIn: !store.profile.signedIn })}>{store.profile.signedIn ? <><LogOut /> Sign out</> : <><LogIn /> Sign in</>}</Button></div>
+        <div className="flex items-center gap-4"><Avatar className="h-12 w-12"><AvatarFallback className="bg-accent font-display text-lg">{initials}</AvatarFallback></Avatar><div className="min-w-0 flex-1">{store.profile.signedIn ? <><input aria-label="Profile name" className="w-full bg-transparent font-medium outline-none" value={store.profile.name} onChange={(event) => store.updateProfile({ name: event.target.value })} /><p className="truncate text-xs text-muted-foreground">{store.profile.email}</p></> : <><p className="font-medium">Your garden, on this device</p><p className="text-xs text-muted-foreground">Sign in is simulated in this prototype.</p></>}</div><Button variant="outline" className="rounded-full" onClick={() => {
+          if (store.profile.signedIn && hasSupabaseConfiguration()) { void getSupabaseClient().auth.signOut(); return; }
+          store.updateProfile({ signedIn: !store.profile.signedIn });
+        }}>{store.profile.signedIn ? <><LogOut /> Sign out</> : <><LogIn /> Sign in</>}</Button></div>
       </SettingsSection>
       <SettingsSection icon={Globe2} title="Language"><Segmented options={[{ value: "en", label: "English" }, { value: "es", label: "Español" }]} value={store.language} onChange={store.setLanguage} /></SettingsSection>
       <SettingsSection icon={Moon} title="Appearance"><Segmented options={[{ value: "light", label: "Light", icon: Sun }, { value: "dark", label: "Dark", icon: Moon }, { value: "system", label: "System" }]} value={store.appearance} onChange={store.setAppearance} /></SettingsSection>

@@ -16,12 +16,17 @@ import type { PublicStory } from "./public-story";
 import {
   closePlantCycleRecord,
   completeAttention,
+  createGardenRecord,
+  deleteGardenRecord,
   correctPlantingRecord,
   createFollowUpRecord,
   createPlantRecord,
   loadGardenState,
+  reorderGardenRecords,
+  replacePlantRecord,
   movePlantRecord,
   persistMoment,
+  updateGardenRecord,
   updatePlantIdentityRecord,
 } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
@@ -217,73 +222,86 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           films: [...s.films, { ...f, id: uid("film"), createdDaysAgo: 0 }],
         })),
       addPlant: (p, photo) => {
-        const id = uid("plant");
+        const id = crypto.randomUUID();
+        const nextPlant: Plant = { ...p, id };
+        const garden = state.gardens.find((g) => g.id === p.gardenId);
+        const positionNumber = Number(p.slot.match(/\d+/)?.[0] ?? "");
+        const position = garden?.backendPositions?.find((item) => item.number === positionNumber);
+        if (position) {
+          const canonicalPhoto = photo ? { ...photo, id: crypto.randomUUID(), plantId: id } : undefined;
+          void createPlantRecord(nextPlant, position.id, canonicalPhoto)
+            .then(refreshFromBackend)
+            .catch(() => undefined);
+        }
         setState((s) => {
           const photoId = photo ? uid("photo") : undefined;
           return {
             ...s,
-            plants: [...s.plants, { ...p, id, heroPhotoId: photoId ?? p.heroPhotoId }],
+            plants: [...s.plants, { ...nextPlant, heroPhotoId: photoId ?? p.heroPhotoId }],
             photos: photo && photoId ? [...s.photos, { ...photo, id: photoId, plantId: id }] : s.photos,
-            events: [
-              ...s.events,
-              {
-                id: uid("ev"),
-                plantId: id,
-                daysAgo: 0,
-                type: "planted" as EventType,
-                title: "Added to garden",
-                detail: "Identity confirmed by you.",
-                milestone: true,
-                provenance: "recorded",
-              },
-            ],
+            events: [...s.events, { id: uid("ev"), plantId: id, daysAgo: 0, type: "planted" as EventType,
+              title: "Added to garden", detail: "Identity confirmed by you.", milestone: true, provenance: "recorded" }],
           };
         });
         return id;
       },
-      updatePlant: (id, patch) =>
-        setState((s) => ({
-          ...s,
-          plants: s.plants.map((p) => (p.id === id ? { ...p, ...patch } : p)),
-        })),
-      updateGarden: (id, patch) =>
-        setState((s) => ({
-          ...s,
-          gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, ...patch } : garden)),
-        })),
-      setGardenArchived: (id, archived) =>
-        setState((s) => ({
-          ...s,
-          gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, archived } : garden)),
-        })),
-      deleteGarden: (id) =>
+      updatePlant: (id, patch) => {
+        const current = state.plants.find((p) => p.id === id);
+        if (current?.backendGrowCycleId) {
+          const next = { ...current, ...patch };
+          if (patch.plantedDaysAgo !== undefined && patch.plantedDaysAgo !== current.plantedDaysAgo) {
+            void correctPlantingRecord(current, patch.plantedDaysAgo, "Corrected in Garden X").then(refreshFromBackend).catch(() => undefined);
+          }
+          const targetGarden = patch.gardenId ? state.gardens.find((g) => g.id === patch.gardenId) : undefined;
+          const targetNumber = patch.slot ? Number(patch.slot.match(/\d+/)?.[0] ?? "") : undefined;
+          const targetPosition = targetGarden?.backendPositions?.find((item) => item.number === targetNumber);
+          if (targetPosition && targetPosition.id !== current.backendPositionId) {
+            void movePlantRecord(id, targetPosition.id, 0).then(refreshFromBackend).catch(() => undefined);
+          }
+          if (patch.name !== undefined || patch.species !== undefined || patch.scientific !== undefined || patch.variety !== undefined || patch.knowledgeId !== undefined) {
+            void updatePlantIdentityRecord(next).then(refreshFromBackend).catch(() => undefined);
+          }
+          if (patch.cycleClosed === true && !current.cycleClosed) {
+            void closePlantCycleRecord(current, 0, "closed", "Closed in Garden X").then(refreshFromBackend).catch(() => undefined);
+          }
+        }
+        setState((s) => ({ ...s, plants: s.plants.map((p) => (p.id === id ? { ...p, ...patch } : p)) }));
+      },
+      updateGarden: (id, patch) => {
+        const current = state.gardens.find((g) => g.id === id);
+        if (current?.backendSystemInstanceId) void updateGardenRecord({ ...current, ...patch }).then(refreshFromBackend).catch(() => undefined);
+        setState((s) => ({ ...s, gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, ...patch } : garden)) }));
+      },
+      setGardenArchived: (id, archived) => {
+        const current = state.gardens.find((g) => g.id === id);
+        if (current?.backendSystemInstanceId) void updateGardenRecord({ ...current, archived }).then(refreshFromBackend).catch(() => undefined);
+        setState((s) => ({ ...s, gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, archived } : garden)) }));
+      },
+      deleteGarden: (id) => {
+        const current = state.gardens.find((g) => g.id === id);
+        if (current?.backendSystemInstanceId) void deleteGardenRecord(id).catch(() => undefined);
         setState((s) => {
           const plantIds = new Set(s.plants.filter((p) => p.gardenId === id).map((p) => p.id));
-          return {
-            ...s,
-            gardens: s.gardens.filter((garden) => garden.id !== id),
-            plants: s.plants.filter((p) => !plantIds.has(p.id)),
-            photos: s.photos.filter((photo) => !plantIds.has(photo.plantId)),
-            events: s.events.filter((event) => !plantIds.has(event.plantId)),
-            tasks: s.tasks.filter((task) => !plantIds.has(task.plantId)),
-            films: s.films.filter((film) => !plantIds.has(film.plantId)),
-          };
-        }),
+          return { ...s, gardens: s.gardens.filter((garden) => garden.id !== id),
+            plants: s.plants.filter((p) => !plantIds.has(p.id)), photos: s.photos.filter((photo) => !plantIds.has(photo.plantId)),
+            events: s.events.filter((event) => !plantIds.has(event.plantId)), tasks: s.tasks.filter((task) => !plantIds.has(task.plantId)),
+            films: s.films.filter((film) => !plantIds.has(film.plantId)) };
+        });
+      },
       addGarden: (g) => {
-        const id = uid("garden");
-        setState((s) => ({ ...s, gardens: [...s.gardens, { ...g, id }] }));
+        const id = crypto.randomUUID();
+        const next: Garden = { ...g, id, backendSystemInstanceId: crypto.randomUUID() };
+        void createGardenRecord(next).then(refreshFromBackend).catch(() => undefined);
+        setState((s) => ({ ...s, gardens: [...s.gardens, next] }));
         return id;
       },
-      reorderGardens: (orderedIds) =>
-        setState((s) => ({
-          ...s,
-          gardens: [
-            ...orderedIds
-              .map((id) => s.gardens.find((garden) => garden.id === id))
-              .filter((garden): garden is Garden => Boolean(garden)),
-            ...s.gardens.filter((garden) => !orderedIds.includes(garden.id)),
-          ],
-        })),
+      reorderGardens: (orderedIds) => {
+        void reorderGardenRecords(orderedIds).catch(() => undefined);
+        setState((s) => ({ ...s, gardens: [
+          ...orderedIds.map((id) => s.gardens.find((garden) => garden.id === id)).filter((garden): garden is Garden => Boolean(garden)),
+          ...s.gardens.filter((garden) => !orderedIds.includes(garden.id)),
+        ] }));
+      },
     }),
     [preferences, publicStories, refreshFromBackend, state],
   );

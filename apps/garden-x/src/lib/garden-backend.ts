@@ -111,6 +111,15 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     place: "",
     note: "",
     machine: { name: g.system_instance_name || g.legacy_system_model || "Growing system", pods: g.position_capacity },
+    backendSystemInstanceId: g.system_instance_id,
+    backendPositions: (g.positions ?? []).map((p) => ({
+      id: p.id,
+      number: p.position_number,
+      gridX: p.layout?.grid_x,
+      gridY: p.layout?.grid_y,
+      label: p.layout?.label,
+      active: p.layout?.is_active ?? true,
+    })),
   }));
 
   const plants: Plant[] = (b.plants ?? []).filter(p => p.cycle_state === "active").map(p => ({

@@ -6,6 +6,7 @@ import { useGarden } from "@/lib/garden-store";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { identifyPlant } from "@/lib/garden-backend";
 
 export const Route = createFileRoute("/identify")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/identify")({
   component: Identify,
 });
 
-const candidates = [
+const fallbackCandidates = [
   { species: "Basil", scientific: "Ocimum basilicum", variety: "Genovese", knowledgeId: "basil", score: 0.71 },
   { species: "Lemon basil", scientific: "Ocimum × africanum", variety: "Lime", knowledgeId: "basil", score: 0.18 },
   { species: "Mint", scientific: "Mentha spicata", variety: "Spearmint", knowledgeId: "basil", score: 0.07 },
@@ -39,6 +40,7 @@ function Identify() {
   const navigate = useNavigate();
   const [phase, setPhase] = useState<"idle" | "scanning" | "done">("idle");
   const [pick, setPick] = useState(0);
+  const [candidates, setCandidates] = useState(fallbackCandidates);
   const [gardenId, setGardenId] = useState(store.gardens[1]?.id ?? store.gardens[0]?.id ?? "");
   const [name, setName] = useState("Sage");
   const [photoSrc, setPhotoSrc] = useState<string>();
@@ -100,7 +102,14 @@ function Identify() {
             onClick={() => {
               if (!photoSrc) return;
               setPhase("scanning");
-              window.setTimeout(() => setPhase("done"), 2000);
+              setPick(0);
+              void identifyPlant(photoSrc)
+                .then((matches) => {
+                  setCandidates(matches);
+                  setName(matches[0]?.species ?? name);
+                })
+                .catch(() => setCandidates(fallbackCandidates))
+                .finally(() => setPhase("done"));
             }}
             disabled={!photoSrc || phase === "scanning"}
             className="mt-2 w-full rounded-full"

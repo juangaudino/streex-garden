@@ -23,7 +23,6 @@ import {
   createPlantRecord,
   loadGardenState,
   reorderGardenRecords,
-  replacePlantRecord,
   movePlantRecord,
   persistMoment,
   updateGardenRecord,

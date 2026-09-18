@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   initialState,
   knowledge,
@@ -13,7 +13,17 @@ import {
   type EventType,
 } from "./garden-data";
 import type { PublicStory } from "./public-story";
-import { completeAttention, loadGardenState } from "./garden-backend";
+import {
+  closePlantCycleRecord,
+  completeAttention,
+  correctPlantingRecord,
+  createFollowUpRecord,
+  createPlantRecord,
+  loadGardenState,
+  movePlantRecord,
+  persistMoment,
+  updatePlantIdentityRecord,
+} from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 
 interface StoreApi extends GardenState {
@@ -76,6 +86,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<GardenState>(initialState);
   const [preferences, setPreferences] = useState<Preferences>(defaults);
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
+  const pendingPhotos = useRef(new Map<string, Photo>());
 
   const refreshFromBackend = useCallback(async () => {
     if (!hasSupabaseConfiguration()) return;
@@ -124,7 +135,21 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       publicStories,
       savePublicStory: (story) =>
         setPublicStories((stories) => [...stories.filter((item) => item.id !== story.id), story]),
-      addEvent: (e) =>
+      addEvent: (e) => {
+        const plant = state.plants.find((p) => p.id === e.plantId);
+        const pendingPhoto = e.photoId ? pendingPhotos.current.get(e.photoId) : undefined;
+        if (plant?.backendGrowCycleId) {
+          const skipSynthetic =
+            (e.title === "Cycle closed" || e.title === "Planting record corrected" || e.title.startsWith("Follow-up set:"));
+          if (!skipSynthetic) {
+            void persistMoment(plant, e, pendingPhoto)
+              .then(() => {
+                if (e.photoId) pendingPhotos.current.delete(e.photoId);
+                return refreshFromBackend();
+              })
+              .catch(() => undefined);
+          }
+        }
         setState((s) => {
           const event: PlantEvent = {
             id: uid("ev"),
@@ -138,14 +163,22 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             ...(e.photoId !== undefined && { photoId: e.photoId }),
           };
           return { ...s, events: [...s.events, event] };
-        }),
+        });
+      },
       addPhoto: (photo) => {
         const id = uid("photo");
-        setState((s) => ({ ...s, photos: [...s.photos, { ...photo, id }] }));
+        const next = { ...photo, id };
+        pendingPhotos.current.set(id, next);
+        setState((s) => ({ ...s, photos: [...s.photos, next] }));
         return id;
       },
-      addTask: (t) =>
-        setState((s) => ({ ...s, tasks: [...s.tasks, { ...t, id: uid("task"), done: false }] })),
+      addTask: (t) => {
+        const plant = state.plants.find((p) => p.id === t.plantId);
+        if (plant?.backendGrowCycleId) {
+          void createFollowUpRecord(plant, t.label, t.dueInDays).then(refreshFromBackend).catch(() => undefined);
+        }
+        setState((s) => ({ ...s, tasks: [...s.tasks, { ...t, id: uid("task"), done: false }] }));
+      },
       completeTask: (id, note) => {
         const task = state.tasks.find((t) => t.id === id);
         if (task?.backendAttentionId) {

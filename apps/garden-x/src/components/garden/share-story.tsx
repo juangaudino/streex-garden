@@ -51,11 +51,11 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
   };
 
   const openPublicLink = () => {
-    const canonicalSelection = chosen.flatMap((item) => {
-      if (item.kind === "photo" && item.photo.backendStoragePath) return [{ photo_id: item.photo.id }];
-      if (item.kind === "event" && item.event.backendEventType) return [{ event_id: item.event.id, include_note: true }];
-      return [];
-    });
+    const canonicalSelection: Array<{ event_id?: string; photo_id?: string; include_note?: boolean }> = [];
+    for (const item of chosen) {
+      if (item.kind === "photo" && item.photo.backendStoragePath) canonicalSelection.push({ photo_id: item.photo.id });
+      if (item.kind === "event" && item.event.backendEventType) canonicalSelection.push({ event_id: item.event.id, include_note: true });
+    }
     if (plant.backendGrowCycleId && canonicalSelection.length) {
       void createPublicPlantStory(plant, canonicalSelection)
         .then((token) => {

@@ -1,4 +1,4 @@
-const CACHE_NAME = "garden-labs-v0-7-3";
+const CACHE_NAME = "garden-labs-harvest-use-v0-1";
 const APP_SHELL = [
   "./",
   "./index.html?v=0.7.3",
@@ -7,7 +7,9 @@ const APP_SHELL = [
   "./visual.css?v=0.7.3",
   "./inventory-neighbors.css?v=0.7.3",
   "./garden-labs.css?v=0.7.3",
-  "./app.js?v=0.7.3",
+  "./harvest-use-v0.1.css?v=0.1",
+  "./harvest-use-v0.1.js?v=0.1",
+  "./app.js?v=1.0",
   "./seed-purchase-date.js?v=0.7.3",
   "./demo-shell.js?v=0.7.3",
   "./manifest.json?v=0.7.3",
@@ -22,7 +24,8 @@ const APP_SHELL = [
   "./data/translations-owned-seeds-es.json",
   "./data/visuals.json",
   "./data/seed-inventory.json",
-  "./data/neighbor-profiles.json"
+  "./data/neighbor-profiles.json",
+  "./data/harvest-use-v0.1.json"
 ];
 
 self.addEventListener("install", (event) => {

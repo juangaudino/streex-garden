@@ -287,8 +287,9 @@ function buildPlantDetail(plant) {
   const seedCard = buildSeedInventoryCard(plant.id);
   const neighbors = buildNeighborGuide(plant.id);
   const visuals = buildVisualGuide(plant.id);
+  const harvestUse = window.GARDEN_HARVEST_USE?.render?.(plant.id, state.language) || "";
   const sections = Object.keys(sectionIcons).filter((key) => localized.sections?.[key]).map((key) => buildSection(localized.sections[key], key, false)).join("");
-  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section>${seedCard}<section class="quick-facts">${metrics}</section>${neighbors}${visuals}<section class="guide-stack">${sections}</section>`;
+  return `<section class="detail-hero"><div class="detail-icon">${plant.emoji}</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h2>${escapeHtml(primaryName)}</h2><p class="scientific">${escapeHtml(plant.scientificName)}</p></div><p class="detail-summary">${escapeHtml(localized.summary)}</p></section>${seedCard}<section class="quick-facts">${metrics}</section>${harvestUse}${neighbors}${visuals}<section class="guide-stack">${sections}</section>`;
 }
 
 function buildSeedInventoryCard(plantId) {

@@ -1,0 +1,829 @@
+{
+  "version": "0.1",
+  "purpose": "Source-backed post-harvest choices for Gardenpedia. Not a recipe collection.",
+  "sourcePolicy": {
+    "safety": "Food-safety and preservation instructions must be source-backed; no inferred shelf life.",
+    "quality": "Quality guidance may compare methods when sources support the comparison.",
+    "missing": "Unknown is preferred to invented precision."
+  },
+  "sources": {
+    "umn-basil-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing basil in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/growing-basil",
+      "type": "extension"
+    },
+    "usu-basil": {
+      "publisher": "Utah State University Extension",
+      "title": "How to Grow Basil in Your Garden",
+      "url": "https://extension.usu.edu/yardandgarden/research/basil-in-the-garden",
+      "type": "extension"
+    },
+    "illinois-fresh-herbs": {
+      "publisher": "University of Illinois Extension",
+      "title": "Using Fresh Herbs in the Kitchen",
+      "url": "https://extension.illinois.edu/news-releases/using-fresh-herbs-kitchen",
+      "type": "extension"
+    },
+    "usu-cilantro": {
+      "publisher": "Utah State University Extension",
+      "title": "Fruit and Vegetable Guide Series: Cilantro",
+      "url": "https://extension.usu.edu/nutrition/research/cilantro",
+      "type": "extension"
+    },
+    "psu-freezing-herbs": {
+      "publisher": "Penn State Extension",
+      "title": "Freezing Herbs",
+      "url": "https://extension.psu.edu/freezing-herbs",
+      "type": "extension"
+    },
+    "nchfp-herbs": {
+      "publisher": "National Center for Home Food Preservation",
+      "title": "Herbs",
+      "url": "https://nchfp.uga.edu/how/dry/recipes/herbs/",
+      "type": "food_preservation"
+    },
+    "illinois-rosemary": {
+      "publisher": "University of Illinois Extension",
+      "title": "Rosemary adds a strong, assertive flavor to your plate",
+      "url": "https://extension.illinois.edu/blogs/simply-nutritious-quick-and-delicious/2022-08-12-rosemary-adds-strong-assertive-flavor-your",
+      "type": "extension"
+    },
+    "usu-leafy-storage": {
+      "publisher": "Utah State University Extension",
+      "title": "Harvest and Storage — Leafy Greens",
+      "url": "https://extension.usu.edu/vegetableguide/leafy-greens/harvest-storage",
+      "type": "extension"
+    },
+    "psu-fridge-freezer": {
+      "publisher": "Penn State Extension",
+      "title": "Refrigerator and Freezer Storage Guidelines",
+      "url": "https://extension.psu.edu/refrigerator-and-freezer-storage-guidelines",
+      "type": "extension"
+    },
+    "osu-bunching-onions": {
+      "publisher": "Oregon State University Extension",
+      "title": "Onions, Bunching",
+      "url": "https://extension.oregonstate.edu/imported-publication/onions-bunching",
+      "type": "extension"
+    },
+    "nchfp-freezing-onions": {
+      "publisher": "National Center for Home Food Preservation",
+      "title": "Freezing Onions",
+      "url": "https://nchfp.uga.edu/how/freeze/vegetable/freezing-onions/",
+      "type": "food_preservation"
+    },
+    "usu-tomatoes-preserve": {
+      "publisher": "Utah State University Extension",
+      "title": "How to Preserve Tomatoes",
+      "url": "https://extension.usu.edu/preserve-the-harvest/research/tomatoes",
+      "type": "food_preservation"
+    },
+    "usu-tomatoes-garden": {
+      "publisher": "Utah State University Extension",
+      "title": "How to Grow Tomatoes in Your Garden",
+      "url": "https://extension.usu.edu/yardandgarden/research/tomatoes-in-the-garden",
+      "type": "extension"
+    }
+  },
+  "plants": {
+    "genovese-basil": {
+      "edibleParts": {
+        "en": "Leaves and tender tips",
+        "es": "Hojas y puntas tiernas"
+      },
+      "bestUse": {
+        "en": "Use fresh for the best texture and aroma. If you need longer storage, freezing generally preserves a fresher basil character than air-drying.",
+        "es": "Úsala fresca para conservar mejor textura y aroma. Si necesitas guardarla por más tiempo, congelar suele conservar un carácter más parecido a la albahaca fresca que secarla al aire."
+      },
+      "quickUses": {
+        "en": [
+          "Pasta and sauces",
+          "Pizza",
+          "Salads",
+          "Sandwiches",
+          "Pesto"
+        ],
+        "es": [
+          "Pasta y salsas",
+          "Pizza",
+          "Ensaladas",
+          "Sándwiches",
+          "Pesto"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🌿",
+          "status": "best",
+          "title": {
+            "en": "Use fresh",
+            "es": "Usar fresca"
+          },
+          "summary": {
+            "en": "Best overall quality.",
+            "es": "Mejor calidad general."
+          },
+          "steps": {
+            "en": [
+              "Harvest clean, healthy leaves or tender tips.",
+              "Use soon after cutting when aroma and texture are strongest."
+            ],
+            "es": [
+              "Cosecha hojas o puntas tiernas sanas y limpias.",
+              "Úsala pronto después del corte, cuando aroma y textura están en su mejor punto."
+            ]
+          },
+          "sourceIds": [
+            "umn-basil-2026"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🥛",
+          "status": "good",
+          "title": {
+            "en": "Short-term storage",
+            "es": "Guardar a corto plazo"
+          },
+          "summary": {
+            "en": "Keep cut stems like a small bouquet.",
+            "es": "Mantén los tallos cortados como un pequeño ramo."
+          },
+          "steps": {
+            "en": [
+              "Re-cut stems and place them in water away from direct sunlight.",
+              "Extension guidance differs on refrigerating basil, so Gardenpedia does not set one universal refrigerator duration here."
+            ],
+            "es": [
+              "Recorta los tallos y colócalos en agua lejos del sol directo.",
+              "Las recomendaciones de Extension difieren sobre refrigerar albahaca, así que Gardenpedia no fija aquí una duración universal en nevera."
+            ]
+          },
+          "sourceIds": [
+            "usu-basil",
+            "illinois-fresh-herbs"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "good",
+          "title": {
+            "en": "Freeze",
+            "es": "Congelar"
+          },
+          "summary": {
+            "en": "A strong option when fresh use is not possible.",
+            "es": "Una buena opción cuando no puedes usarla fresca."
+          },
+          "steps": {
+            "en": [
+              "Freeze whole leaves in small portions, or chop and freeze in ice-cube trays with a little water.",
+              "Expect softer texture after thawing; use mainly in cooked dishes."
+            ],
+            "es": [
+              "Congela hojas enteras en porciones pequeñas, o pícalas y congélalas en cubeteras con un poco de agua.",
+              "Espera una textura más blanda al descongelar; úsala principalmente en preparaciones cocidas."
+            ]
+          },
+          "sourceIds": [
+            "umn-basil-2026",
+            "psu-freezing-herbs"
+          ]
+        },
+        {
+          "id": "dry",
+          "icon": "🌬️",
+          "status": "possible",
+          "title": {
+            "en": "Dry",
+            "es": "Secar"
+          },
+          "summary": {
+            "en": "Works, but air-dried basil may lose color and quality.",
+            "es": "Funciona, pero la albahaca secada al aire puede perder color y calidad."
+          },
+          "steps": {
+            "en": [
+              "Dry only healthy leaves in a warm, dry, well-ventilated place.",
+              "Store only when fully dry, in an airtight container away from heat and bright light."
+            ],
+            "es": [
+              "Seca solo hojas sanas en un lugar cálido, seco y bien ventilado.",
+              "Guarda únicamente cuando esté completamente seca, en un recipiente hermético lejos del calor y la luz intensa."
+            ]
+          },
+          "sourceIds": [
+            "umn-basil-2026",
+            "nchfp-herbs"
+          ]
+        }
+      ]
+    },
+    "cilantro": {
+      "edibleParts": {
+        "en": "Leaves and tender stems",
+        "es": "Hojas y tallos tiernos"
+      },
+      "bestUse": {
+        "en": "Prioritize fresh use. Cilantro is highly perishable, so good short-term refrigeration matters.",
+        "es": "Prioriza el uso fresco. El cilantro es muy perecedero, así que importa mucho guardarlo bien a corto plazo."
+      },
+      "quickUses": {
+        "en": [
+          "Tacos",
+          "Salsa",
+          "Rice",
+          "Soups",
+          "Fresh garnish"
+        ],
+        "es": [
+          "Tacos",
+          "Salsa",
+          "Arroz",
+          "Sopas",
+          "Toque fresco al servir"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🌿",
+          "status": "best",
+          "title": {
+            "en": "Use fresh",
+            "es": "Usar fresco"
+          },
+          "summary": {
+            "en": "Best for fresh aroma and texture.",
+            "es": "Mejor para aroma y textura frescos."
+          },
+          "steps": {
+            "en": [
+              "Wash just before using rather than before long storage.",
+              "Dry the leaves well before chopping."
+            ],
+            "es": [
+              "Lávalo justo antes de usar en vez de hacerlo antes de guardarlo por varios días.",
+              "Seca bien las hojas antes de picarlas."
+            ]
+          },
+          "sourceIds": [
+            "usu-cilantro"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🧊",
+          "status": "good",
+          "title": {
+            "en": "Refrigerate",
+            "es": "Refrigerar"
+          },
+          "summary": {
+            "en": "Keep cool and humid without trapping excess moisture.",
+            "es": "Mantenlo frío y húmedo sin atrapar exceso de humedad."
+          },
+          "steps": {
+            "en": [
+              "For several days, cover loosely with a plastic bag and paper towels.",
+              "For longer short-term storage, keep the bunch in a container of water like flowers, cover loosely, refrigerate and refresh the water regularly."
+            ],
+            "es": [
+              "Para varios días, cúbrelo de forma suelta con una bolsa plástica y papel absorbente.",
+              "Para un poco más de duración, coloca el manojo en un recipiente con agua como flores, cubre de forma suelta, refrigera y renueva el agua regularmente."
+            ]
+          },
+          "note": {
+            "en": "USU describes up to about 1 week with the water-container method.",
+            "es": "USU describe hasta aproximadamente 1 semana con el método del recipiente con agua."
+          },
+          "sourceIds": [
+            "usu-cilantro"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "possible",
+          "title": {
+            "en": "Freeze for cooked use",
+            "es": "Congelar para uso cocido"
+          },
+          "summary": {
+            "en": "Useful for flavor, not for crisp garnish texture.",
+            "es": "Útil por el sabor, no para mantener textura de adorno fresco."
+          },
+          "steps": {
+            "en": [
+              "Freeze chopped herbs in small portions or in ice-cube trays with water.",
+              "Frozen herbs become limp after thawing; prefer them in cooked dishes."
+            ],
+            "es": [
+              "Congela la hierba picada en porciones pequeñas o en cubeteras con agua.",
+              "Las hierbas congeladas quedan blandas al descongelar; prefiérelas en preparaciones cocidas."
+            ]
+          },
+          "sourceIds": [
+            "psu-freezing-herbs"
+          ]
+        }
+      ]
+    },
+    "rosemary": {
+      "edibleParts": {
+        "en": "Leaves / needles and tender sprigs",
+        "es": "Hojas y ramitas tiernas"
+      },
+      "bestUse": {
+        "en": "Excellent fresh, but rosemary is also one of the strongest herbs for drying and long-term storage.",
+        "es": "Excelente fresco, pero el romero también es una de las hierbas que mejor se presta para secar y guardar a largo plazo."
+      },
+      "quickUses": {
+        "en": [
+          "Roasted vegetables",
+          "Potatoes",
+          "Soups and stews",
+          "Bread",
+          "Meat or fish seasoning"
+        ],
+        "es": [
+          "Vegetales asados",
+          "Papas",
+          "Sopas y guisos",
+          "Panes",
+          "Condimento para carnes o pescado"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🌿",
+          "status": "best",
+          "title": {
+            "en": "Use fresh",
+            "es": "Usar fresco"
+          },
+          "summary": {
+            "en": "Strong aroma; hardy enough for cooking.",
+            "es": "Aroma intenso; resistente para cocinar."
+          },
+          "steps": {
+            "en": [
+              "Use clean sprigs or strip the leaves from the stem.",
+              "Hardy herbs such as rosemary tolerate cooking better than delicate herbs."
+            ],
+            "es": [
+              "Usa ramitas limpias o separa las hojas del tallo.",
+              "Las hierbas resistentes como el romero toleran mejor la cocción que las hierbas delicadas."
+            ]
+          },
+          "sourceIds": [
+            "illinois-rosemary",
+            "illinois-fresh-herbs"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🧊",
+          "status": "good",
+          "title": {
+            "en": "Refrigerate",
+            "es": "Refrigerar"
+          },
+          "summary": {
+            "en": "A practical short-term option.",
+            "es": "Una opción práctica a corto plazo."
+          },
+          "steps": {
+            "en": [
+              "Wrap stems in a damp paper towel and place in an opened bag in the refrigerator, or keep stems in a glass of water loosely covered in the refrigerator."
+            ],
+            "es": [
+              "Envuelve los tallos en papel absorbente húmedo y colócalos en una bolsa abierta en el refrigerador, o guarda los tallos en un vaso con agua cubiertos de forma suelta."
+            ]
+          },
+          "note": {
+            "en": "Illinois Extension gives up to about one week as a quality guideline.",
+            "es": "Illinois Extension indica hasta aproximadamente una semana como guía de calidad."
+          },
+          "sourceIds": [
+            "illinois-rosemary"
+          ]
+        },
+        {
+          "id": "dry",
+          "icon": "🌬️",
+          "status": "best",
+          "title": {
+            "en": "Dry",
+            "es": "Secar"
+          },
+          "summary": {
+            "en": "One of the easiest sturdy herbs to air-dry.",
+            "es": "Una de las hierbas resistentes más fáciles de secar al aire."
+          },
+          "steps": {
+            "en": [
+              "Tie small bundles and hang in a dry, well-ventilated area.",
+              "Store only when leaves are fully dry and crumble easily.",
+              "Keep dried rosemary airtight, cool, dry and dark."
+            ],
+            "es": [
+              "Ata pequeños manojos y cuélgalos en un lugar seco y bien ventilado.",
+              "Guarda solo cuando las hojas estén completamente secas y se desmoronen con facilidad.",
+              "Conserva el romero seco hermético, fresco, seco y oscuro."
+            ]
+          },
+          "sourceIds": [
+            "nchfp-herbs",
+            "illinois-rosemary"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "good",
+          "title": {
+            "en": "Freeze",
+            "es": "Congelar"
+          },
+          "summary": {
+            "en": "Works well when you want ready-to-cook portions.",
+            "es": "Funciona bien si quieres porciones listas para cocinar."
+          },
+          "steps": {
+            "en": [
+              "Freeze whole sprigs in freezer-safe bags or containers, or chop into ice-cube trays with water or oil."
+            ],
+            "es": [
+              "Congela ramitas enteras en bolsas o recipientes aptos para congelador, o pícalo en cubeteras con agua o aceite."
+            ]
+          },
+          "sourceIds": [
+            "illinois-rosemary"
+          ]
+        }
+      ]
+    },
+    "red-romaine-lettuce": {
+      "edibleParts": {
+        "en": "Leaves",
+        "es": "Hojas"
+      },
+      "bestUse": {
+        "en": "Eat fresh and store cold. Lettuce quality depends heavily on keeping leaves cool, moist and unbruised.",
+        "es": "Cómela fresca y mantenla fría. La calidad de la lechuga depende mucho de conservar las hojas frías, húmedas y sin golpes."
+      },
+      "quickUses": {
+        "en": [
+          "Salads",
+          "Sandwiches",
+          "Wraps",
+          "Fresh side"
+        ],
+        "es": [
+          "Ensaladas",
+          "Sándwiches",
+          "Wraps",
+          "Acompañamiento fresco"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🥬",
+          "status": "best",
+          "title": {
+            "en": "Use fresh",
+            "es": "Usar fresca"
+          },
+          "summary": {
+            "en": "Best texture and quality.",
+            "es": "Mejor textura y calidad."
+          },
+          "steps": {
+            "en": [
+              "Handle gently to avoid bruising.",
+              "Remove damaged or unattractive leaves before storage or use."
+            ],
+            "es": [
+              "Manipúlala con cuidado para evitar golpes.",
+              "Retira hojas dañadas o poco atractivas antes de guardar o usar."
+            ]
+          },
+          "sourceIds": [
+            "usu-leafy-storage"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🧊",
+          "status": "best",
+          "title": {
+            "en": "Refrigerate cold and humid",
+            "es": "Refrigerar fría y húmeda"
+          },
+          "summary": {
+            "en": "Cold, high-humidity storage helps prevent wilting.",
+            "es": "El almacenamiento frío y con alta humedad ayuda a evitar que se marchite."
+          },
+          "steps": {
+            "en": [
+              "Cool promptly after harvest.",
+              "Keep leaves protected from crushing and excess drying in the refrigerator."
+            ],
+            "es": [
+              "Enfría pronto después de cosechar.",
+              "Mantén las hojas protegidas de aplastamiento y de secarse en exceso dentro del refrigerador."
+            ]
+          },
+          "note": {
+            "en": "USU commercial guidance uses near-freezing temperatures and very high humidity; a home refrigerator is an approximation, not the same environment.",
+            "es": "La guía comercial de USU usa temperaturas cercanas a congelación y humedad muy alta; una nevera doméstica es una aproximación, no el mismo ambiente."
+          },
+          "sourceIds": [
+            "usu-leafy-storage"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "avoid",
+          "title": {
+            "en": "Do not freeze for fresh texture",
+            "es": "No congelar si quieres textura fresca"
+          },
+          "summary": {
+            "en": "Lettuce does not freeze well for normal fresh use.",
+            "es": "La lechuga no congela bien para un uso fresco normal."
+          },
+          "steps": {
+            "en": [
+              "Prefer refrigeration and prompt fresh use instead of freezing."
+            ],
+            "es": [
+              "Prefiere refrigeración y consumo fresco pronto en vez de congelarla."
+            ]
+          },
+          "sourceIds": [
+            "psu-fridge-freezer"
+          ]
+        }
+      ]
+    },
+    "evergreen-bunching-onion-nabuka": {
+      "edibleParts": {
+        "en": "Green tops and white lower stalk",
+        "es": "Hojas verdes y parte blanca inferior del tallo"
+      },
+      "bestUse": {
+        "en": "Use fresh when you want crisp texture. Refrigerate for short-term storage; freeze extras for cooked dishes.",
+        "es": "Úsala fresca cuando quieras textura crujiente. Refrigera a corto plazo y congela el excedente para platos cocidos."
+      },
+      "quickUses": {
+        "en": [
+          "Soups",
+          "Stir-fries",
+          "Salads",
+          "Garnish",
+          "Grilled whole"
+        ],
+        "es": [
+          "Sopas",
+          "Salteados",
+          "Ensaladas",
+          "Toque final",
+          "A la parrilla entera"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🌿",
+          "status": "best",
+          "title": {
+            "en": "Use fresh",
+            "es": "Usar fresca"
+          },
+          "summary": {
+            "en": "Best for crisp texture.",
+            "es": "Mejor para textura crujiente."
+          },
+          "steps": {
+            "en": [
+              "Rinse and dry before using or storing.",
+              "Use both the green and white portions according to taste."
+            ],
+            "es": [
+              "Enjuaga y seca antes de usar o guardar.",
+              "Usa tanto la parte verde como la blanca según el sabor que buscas."
+            ]
+          },
+          "sourceIds": [
+            "osu-bunching-onions"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🧊",
+          "status": "good",
+          "title": {
+            "en": "Refrigerate",
+            "es": "Refrigerar"
+          },
+          "summary": {
+            "en": "Short-term storage for fresh use.",
+            "es": "Almacenamiento corto para seguir usándola fresca."
+          },
+          "steps": {
+            "en": [
+              "Place cleaned, dry bunching onions in a plastic bag in the refrigerator."
+            ],
+            "es": [
+              "Coloca los cebollines limpios y secos en una bolsa plástica en el refrigerador."
+            ]
+          },
+          "note": {
+            "en": "OSU gives about 1 week as a practical guideline.",
+            "es": "OSU indica alrededor de 1 semana como guía práctica."
+          },
+          "sourceIds": [
+            "osu-bunching-onions"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "good",
+          "title": {
+            "en": "Freeze chopped",
+            "es": "Congelar picada"
+          },
+          "summary": {
+            "en": "Good for cooked dishes; it will not stay crisp.",
+            "es": "Buena para platos cocidos; no conservará la textura crujiente."
+          },
+          "steps": {
+            "en": [
+              "Chop the green onions.",
+              "Freeze pieces on a tray until firm, then transfer to a labeled freezer container or bag.",
+              "Use from frozen in cooked dishes."
+            ],
+            "es": [
+              "Pica la cebolla de verdeo.",
+              "Congela los trozos sobre una bandeja hasta que estén firmes y luego pásalos a un recipiente o bolsa etiquetada.",
+              "Úsala congelada en preparaciones cocidas."
+            ]
+          },
+          "sourceIds": [
+            "osu-bunching-onions",
+            "nchfp-freezing-onions"
+          ]
+        }
+      ]
+    },
+    "cherry-tomato": {
+      "edibleParts": {
+        "en": "Ripe fruit",
+        "es": "Fruto maduro"
+      },
+      "bestUse": {
+        "en": "Best flavor comes from fully ripe fruit used fresh. For surplus, freezing or drying are useful; safe canning requires a tested preservation recipe.",
+        "es": "El mejor sabor viene de frutos bien maduros usados frescos. Para excedentes, congelar o secar son opciones útiles; para enlatar de forma segura hace falta una receta de conservación probada."
+      },
+      "quickUses": {
+        "en": [
+          "Salads",
+          "Snacks",
+          "Pasta",
+          "Sauces",
+          "Roasted dishes"
+        ],
+        "es": [
+          "Ensaladas",
+          "Snack",
+          "Pasta",
+          "Salsas",
+          "Preparaciones asadas"
+        ]
+      },
+      "methods": [
+        {
+          "id": "fresh",
+          "icon": "🍅",
+          "status": "best",
+          "title": {
+            "en": "Use ripe and fresh",
+            "es": "Usar maduro y fresco"
+          },
+          "summary": {
+            "en": "Best flavor and texture.",
+            "es": "Mejor sabor y textura."
+          },
+          "steps": {
+            "en": [
+              "Pick fruit fully colored but still firm.",
+              "Use as it ripens rather than holding ripe fruit for long periods."
+            ],
+            "es": [
+              "Cosecha el fruto con color completo pero todavía firme.",
+              "Úsalo a medida que madura en vez de guardar fruto maduro por períodos largos."
+            ]
+          },
+          "sourceIds": [
+            "usu-tomatoes-garden"
+          ]
+        },
+        {
+          "id": "store",
+          "icon": "🏠",
+          "status": "good",
+          "title": {
+            "en": "Store cool, not too cold",
+            "es": "Guardar fresco, no demasiado frío"
+          },
+          "summary": {
+            "en": "Tomatoes are sensitive to chilling injury.",
+            "es": "Los tomates son sensibles al daño por frío."
+          },
+          "steps": {
+            "en": [
+              "Keep ripe tomatoes cool and use them relatively soon.",
+              "Avoid long refrigerator storage when quality matters; colder temperatures can reduce quality."
+            ],
+            "es": [
+              "Mantén los tomates maduros en un lugar fresco y úsalos relativamente pronto.",
+              "Evita almacenamiento prolongado en nevera cuando importa la calidad; temperaturas demasiado frías pueden reducirla."
+            ]
+          },
+          "note": {
+            "en": "USU gives roughly 1–2 weeks at 50–55°F for ripe tomatoes; typical home refrigerators are colder than that.",
+            "es": "USU indica aproximadamente 1–2 semanas a 50–55°F para tomates maduros; una nevera doméstica típica es más fría que eso."
+          },
+          "sourceIds": [
+            "usu-tomatoes-garden"
+          ]
+        },
+        {
+          "id": "freeze",
+          "icon": "❄️",
+          "status": "good",
+          "title": {
+            "en": "Freeze for cooking",
+            "es": "Congelar para cocinar"
+          },
+          "summary": {
+            "en": "Frozen ripe tomatoes become soft after thawing.",
+            "es": "Los tomates maduros congelados quedan blandos al descongelar."
+          },
+          "steps": {
+            "en": [
+              "Freeze surplus ripe tomatoes when texture after thawing is not important.",
+              "Plan to use thawed tomatoes in soups, casseroles, sauces or purees rather than as fresh slices."
+            ],
+            "es": [
+              "Congela excedentes de tomates maduros cuando la textura al descongelar no sea importante.",
+              "Planea usar los tomates descongelados en sopas, guisos, salsas o purés en vez de como rodajas frescas."
+            ]
+          },
+          "sourceIds": [
+            "usu-tomatoes-preserve"
+          ]
+        },
+        {
+          "id": "dry",
+          "icon": "🌬️",
+          "status": "good",
+          "title": {
+            "en": "Dry",
+            "es": "Secar"
+          },
+          "summary": {
+            "en": "A valid long-term preservation route.",
+            "es": "Una opción válida de conservación a largo plazo."
+          },
+          "steps": {
+            "en": [
+              "Use sound, ripe tomatoes and follow a tested dehydration method.",
+              "Store only when properly dried and protected from moisture."
+            ],
+            "es": [
+              "Usa tomates sanos y maduros y sigue un método probado de deshidratación.",
+              "Guarda únicamente cuando estén correctamente secos y protegidos de la humedad."
+            ]
+          },
+          "sourceIds": [
+            "usu-tomatoes-preserve"
+          ]
+        }
+      ],
+      "safetyNote": {
+        "en": "Canning is intentionally not reduced to a quick card. Tomato canning requires tested acidification and processing instructions; open the preservation source before canning.",
+        "es": "El enlatado no se reduce intencionalmente a una tarjeta rápida. Conservar tomates en frascos requiere instrucciones probadas de acidificación y procesamiento; abre la fuente de conservación antes de enlatar."
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 // Only the deployment target changes on Vercel; the frontend remains the Golden Reference.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const isVercel = Boolean(process.env.VERCEL);
+const isVercel = Boolean(process.env["VERCEL"]);
 
 export default defineConfig({
   tanstackStart: {

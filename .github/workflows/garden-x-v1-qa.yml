@@ -1,0 +1,36 @@
+name: Garden X V1 QA
+on:
+  push:
+    branches: [garden-x/v1-migration-current]
+  pull_request:
+concurrency:
+  group: garden-x-v1-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+jobs:
+  golden-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/garden-x
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Typecheck Golden integration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! npx tsc --noEmit --pretty false > /tmp/garden-x-tsc.txt 2>&1; then
+            echo "### Garden X typecheck" > /tmp/garden-x-comment.txt
+            echo "" >> /tmp/garden-x-comment.txt
+            head -c 12000 /tmp/garden-x-tsc.txt >> /tmp/garden-x-comment.txt
+            gh pr comment 3 --body-file /tmp/garden-x-comment.txt
+            exit 1
+          fi
+      - run: npm run build

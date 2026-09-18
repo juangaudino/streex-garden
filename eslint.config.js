@@ -4,7 +4,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', 'supabase/.temp'] },
+  { ignores: ['dist', 'node_modules', 'supabase/.temp', 'apps/garden-x/**', 'supabase/functions/garden-identify/**', 'prototypes/grow-guide/sites-storage-runtime/**'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

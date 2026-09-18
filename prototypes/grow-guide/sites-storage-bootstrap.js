@@ -79,7 +79,7 @@
       if (remaining.length) window.GARDEN_LABS_STORAGE_MODE = "local";
       persist(state);
     } catch (error) {
-      console.warn("Garden Labs is using device-local data because D1 is unavailable", error);
+      console.warn("Garden Labs is using device-local data because private storage is unavailable", error);
       window.GARDEN_LABS_STORAGE_MODE = "local";
     }
   };

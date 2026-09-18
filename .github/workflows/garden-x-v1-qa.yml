@@ -6,6 +6,10 @@ on:
     paths:
       - "apps/garden-x/**"
       - "supabase/migrations/**"
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 jobs:
   golden-build:
     runs-on: ubuntu-latest
@@ -18,5 +22,15 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
-      - run: npx tsc --noEmit
+      - name: Typecheck Golden integration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! npx tsc --noEmit --pretty false > /tmp/garden-x-tsc.txt 2>&1; then
+            echo "### Garden X typecheck" > /tmp/garden-x-comment.txt
+            echo "" >> /tmp/garden-x-comment.txt
+            head -c 12000 /tmp/garden-x-tsc.txt >> /tmp/garden-x-comment.txt
+            gh pr comment 3 --body-file /tmp/garden-x-comment.txt
+            exit 1
+          fi
       - run: npm run build

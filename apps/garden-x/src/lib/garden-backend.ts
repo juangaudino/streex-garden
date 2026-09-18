@@ -54,7 +54,7 @@ function eventType(type: string, data: Record<string, unknown>): EventType {
   if (type === "incident_resolved") return "recovery";
   if (type === "cycle_moved") return "transplant";
   if (type === "intervention") {
-    const action = String(data.action ?? data.class ?? "").toLowerCase();
+    const action = String(data["action"] ?? data["class"] ?? "").toLowerCase();
     if (action.includes("prun")) return "pruning";
     if (action.includes("thin")) return "thinning";
     if (action.includes("transplant") || action.includes("move")) return "transplant";
@@ -93,7 +93,7 @@ async function signedUrls(paths: string[]): Promise<Map<string, string>> {
   if (!paths.length) return new Map();
   const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, 60 * 60);
   if (error) throw error;
-  return new Map((data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as const] : []));
+  return new Map((data ?? []).flatMap((item) => item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : []));
 }
 
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
@@ -123,9 +123,9 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     backendPositions: (g.positions ?? []).map((p) => ({
       id: p.id,
       number: p.position_number,
-      gridX: p.layout?.grid_x,
-      gridY: p.layout?.grid_y,
-      label: p.layout?.label,
+      ...(p.layout?.grid_x !== undefined ? { gridX: p.layout.grid_x } : {}),
+      ...(p.layout?.grid_y !== undefined ? { gridY: p.layout.grid_y } : {}),
+      ...(p.layout?.label !== undefined ? { label: p.layout.label } : {}),
       active: p.layout?.is_active ?? true,
     })),
   }));
@@ -154,7 +154,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     daysAgo: daysAgo(e.occurred_at),
     type: eventType(e.event_type, e.event_data ?? {}),
     title: titleFor(e),
-    detail: e.note ?? undefined,
+    ...(e.note ? { detail: e.note } : {}),
     provenance: provenance(e.event_type),
     backendEventType: e.event_type,
     backendRevision: e.revision,
@@ -162,7 +162,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
 
   const eventById = new Map((b.events ?? []).map(e => [e.id, e]));
   const photos: Photo[] = allPhotos.map(p => {
-    const e = eventById.get(p.event_id);
+    const e = p.event_id ? eventById.get(p.event_id) : undefined;
     return {
       id: p.id,
       plantId: p.plant_instance_id,
@@ -244,7 +244,7 @@ function decodeDataUrl(src: string): { mime: string; bytes: Uint8Array } | null 
 }
 
 async function sha256Hex(bytes: Uint8Array): Promise<string> {
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const digest = await crypto.subtle.digest("SHA-256", bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer);
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
@@ -270,17 +270,17 @@ async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
   const response = await fetch(
-    `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/garden-originals/${prepared.storage_path}`,
+    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
     {
       method: "POST",
       headers: {
-        apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
         Authorization: `Bearer ${session.access_token}`,
         "content-type": decoded.mime,
         "cache-control": "max-age=3600",
         "x-upsert": "false",
       },
-      body: decoded.bytes,
+      body: decoded.bytes.buffer.slice(decoded.bytes.byteOffset, decoded.bytes.byteOffset + decoded.bytes.byteLength) as ArrayBuffer,
     },
   );
   if (!response.ok && response.status !== 409) throw new Error("Photo upload failed.");
@@ -558,10 +558,10 @@ export async function askGardenAi(question: string, conversation: Array<{ questi
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
-  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-ai`, {
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
     method: "POST",
     headers: {
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
       Authorization: `Bearer ${session.access_token}`,
       "content-type": "application/json",
     },
@@ -585,10 +585,10 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
-  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-ai`, {
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
     method: "POST",
     headers: {
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
       Authorization: `Bearer ${session.access_token}`,
       "content-type": "application/json",
     },
@@ -641,11 +641,11 @@ export async function createPublicPlantStory(
 }
 
 export async function loadPublicPlantStory(token: string): Promise<PublicStory> {
-  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/guest-plant-story`, {
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/guest-plant-story`, {
     method: "POST",
     headers: {
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
-      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string}`,
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+      Authorization: `Bearer ${import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string}`,
       "content-type": "application/json",
     },
     body: JSON.stringify({ token }),
@@ -685,10 +685,10 @@ export async function identifyPlant(imageDataUrl: string): Promise<Array<{ speci
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
-  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-identify`, {
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-identify`, {
     method: "POST",
     headers: {
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
       Authorization: `Bearer ${session.access_token}`,
       "content-type": "application/json",
     },

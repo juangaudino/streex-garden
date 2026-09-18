@@ -204,3 +204,274 @@ export async function completeAttention(taskId: string, note?: string) {
   });
   if (error) throw new Error(error.message);
 }
+
+
+function isoDateFromDaysAgo(value: number): string {
+  const d = new Date();
+  d.setHours(12, 0, 0, 0);
+  d.setDate(d.getDate() - Math.max(0, value));
+  return d.toISOString().slice(0, 10);
+}
+
+async function cycleDetail(growCycleId: string): Promise<{ revision: number; history?: Array<{ id: string; event_type: string; occurred_at: string }> }> {
+  const { data, error } = await getSupabaseClient().rpc("garden_get_cycle", { p_grow_cycle_id: growCycleId });
+  if (error) throw new Error(error.message);
+  const row = data as { revision?: number; history?: Array<{ id: string; event_type: string; occurred_at: string }> } | null;
+  if (!row || typeof row.revision !== "number") throw new Error("Cycle revision unavailable.");
+  return { revision: row.revision, history: row.history ?? [] };
+}
+
+function decodeDataUrl(src: string): { mime: string; bytes: Uint8Array } | null {
+  const match = src.match(/^data:([^;,]+);base64,(.+)$/);
+  if (!match) return null;
+  const raw = atob(match[2]!);
+  const bytes = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i += 1) bytes[i] = raw.charCodeAt(i);
+  return { mime: match[1]!, bytes };
+}
+
+async function sha256Hex(bytes: Uint8Array): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
+  const decoded = decodeDataUrl(photo.src);
+  if (!decoded) return;
+  const photoId = crypto.randomUUID();
+  const checksum = await sha256Hex(decoded.bytes);
+  const capturedDate = isoDateFromDaysAgo(photo.daysAgo);
+  const { data, error } = await getSupabaseClient().rpc("garden_x_prepare_event_photo", {
+    p_photo_id: photoId,
+    p_event_id: eventId,
+    p_original_filename: "garden-photo",
+    p_content_type: decoded.mime,
+    p_byte_size: decoded.bytes.byteLength,
+    p_captured_at: capturedDate + "T12:00:00Z",
+    p_captured_at_precision: "approximate",
+    p_checksum_sha256: checksum,
+  });
+  if (error) throw new Error(error.message);
+  const prepared = data as { storage_path: string };
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(
+    `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/garden-originals/${prepared.storage_path}`,
+    {
+      method: "POST",
+      headers: {
+        apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+        Authorization: `Bearer ${session.access_token}`,
+        "content-type": decoded.mime,
+        "cache-control": "max-age=3600",
+        "x-upsert": "false",
+      },
+      body: decoded.bytes,
+    },
+  );
+  if (!response.ok && response.status !== 409) throw new Error("Photo upload failed.");
+  const confirmation = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
+    p_photo_id: photoId,
+    p_checksum_sha256: checksum,
+    p_width: null,
+    p_height: null,
+  });
+  if (confirmation.error) throw new Error(confirmation.error.message);
+}
+
+export async function createPlantRecord(plant: Plant, positionId: string, photo?: Photo): Promise<void> {
+  const plantedOn = isoDateFromDaysAgo(plant.plantedDaysAgo);
+  const { data, error } = await getSupabaseClient().rpc("garden_x_create_plant", {
+    p_request_id: crypto.randomUUID(),
+    p_plant_instance_id: plant.id,
+    p_position_id: positionId,
+    p_nickname: plant.name,
+    p_common_name: plant.species,
+    p_scientific_name: plant.scientific || null,
+    p_cultivar: plant.variety || null,
+    p_reference_key: plant.knowledgeId || null,
+    p_planted_on: plantedOn,
+    p_planted_on_precision: "exact",
+  });
+  if (error) throw new Error(error.message);
+  if (photo) {
+    const created = data as { event_id: string };
+    await uploadEventPhoto(created.event_id, photo);
+  }
+}
+
+export async function updatePlantIdentityRecord(plant: Plant): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_plant_identity", {
+    p_request_id: crypto.randomUUID(),
+    p_plant_instance_id: plant.id,
+    p_nickname: plant.name,
+    p_common_name: plant.species,
+    p_scientific_name: plant.scientific || null,
+    p_cultivar: plant.variety || null,
+    p_reference_key: plant.knowledgeId || null,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function movePlantRecord(plantId: string, targetPositionId: string, movedDaysAgo: number): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_move_plant", {
+    p_request_id: crypto.randomUUID(),
+    p_plant_instance_id: plantId,
+    p_target_position_id: targetPositionId,
+    p_moved_on: isoDateFromDaysAgo(movedDaysAgo),
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function correctPlantingRecord(plant: Plant, newDaysAgo: number, reason?: string): Promise<void> {
+  if (!plant.backendGrowCycleId) return;
+  const cycle = await cycleDetail(plant.backendGrowCycleId);
+  const { error } = await getSupabaseClient().rpc("garden_correct_cycle_planting", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: plant.backendGrowCycleId,
+    p_expected_revision: cycle.revision,
+    p_planted_on: isoDateFromDaysAgo(newDaysAgo),
+    p_planted_on_precision: "exact",
+    p_reason: reason?.trim() || "Corrected in Garden X",
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function closePlantCycleRecord(plant: Plant, daysAgoValue: number, reason: string, note?: string): Promise<void> {
+  if (!plant.backendGrowCycleId) return;
+  const cycle = await cycleDetail(plant.backendGrowCycleId);
+  const { error } = await getSupabaseClient().rpc("garden_close_cycle", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: plant.backendGrowCycleId,
+    p_expected_revision: cycle.revision,
+    p_ended_on: isoDateFromDaysAgo(daysAgoValue),
+    p_reason: reason || "closed",
+    p_note: note?.trim() || null,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function createFollowUpRecord(plant: Plant, label: string, dueInDays: number): Promise<void> {
+  if (!plant.backendGrowCycleId) return;
+  const due = new Date();
+  due.setHours(12,0,0,0);
+  due.setDate(due.getDate() + Math.max(0, dueInDays));
+  const subject = label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "general";
+  const value = label.toLowerCase();
+  const purpose =
+    value.includes("nutrient") ? "perform_nutrients" :
+    value.includes("water") || value.includes("reservoir") ? "perform_water_change" :
+    value.includes("harvest") ? "perform_harvest" :
+    value.includes("prun") ? "evaluate_pruning" :
+    value.includes("thin") ? "evaluate_thinning" :
+    "evaluate_visual_review";
+  const { error } = await getSupabaseClient().rpc("garden_create_attention_item", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: plant.gardenId,
+    p_grow_cycle_id: plant.backendGrowCycleId,
+    p_purpose: purpose,
+    p_subject_key: subject,
+    p_due_on: due.toISOString().slice(0,10),
+  });
+  if (error) throw new Error(error.message);
+}
+
+async function recordFact(
+  growCycleId: string,
+  factType: string,
+  occurredDaysAgo: number,
+  note: string | undefined,
+  factData: Record<string, unknown>,
+): Promise<string> {
+  const { data, error } = await getSupabaseClient().rpc("garden_record_cycle_fact", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: growCycleId,
+    p_fact_type: factType,
+    p_occurred_on: isoDateFromDaysAgo(occurredDaysAgo),
+    p_note: note?.trim() || null,
+    p_fact_data: factData,
+  });
+  if (error) throw new Error(error.message);
+  return (data as { event_id: string }).event_id;
+}
+
+async function recordObservation(growCycleId: string, event: Omit<PlantEvent, "id">): Promise<string> {
+  const note = [event.title, event.detail].filter(Boolean).join(" — ").slice(0, 1000);
+  const occurred = isoDateFromDaysAgo(event.daysAgo);
+  const { data, error } = await getSupabaseClient().rpc("garden_create_observation", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: growCycleId,
+    p_note: note || "Observation",
+    p_original_filename: null,
+    p_content_type: null,
+    p_byte_size: null,
+    p_captured_at: null,
+    p_captured_at_precision: "unknown",
+    p_checksum_sha256: null,
+  });
+  if (error) throw new Error(error.message);
+  const eventId = (data as { event_id: string }).event_id;
+  // Preserve the user-selected moment date as a correction of the event timestamp.
+  if (event.daysAgo > 0) {
+    const { error: dateError } = await getSupabaseClient().rpc("garden_correct_event_date", {
+      p_request_id: crypto.randomUUID(),
+      p_event_id: eventId,
+      p_occurred_on: occurred,
+      p_reason: "Date selected in Garden X Record a moment",
+    });
+    if (dateError) {
+      // Older deployments may not expose this helper; the observation remains canonical.
+    }
+  }
+  return eventId;
+}
+
+export async function persistMoment(plant: Plant, event: Omit<PlantEvent, "id">, photo?: Photo): Promise<void> {
+  if (!plant.backendGrowCycleId) return;
+  const cycleId = plant.backendGrowCycleId;
+  let eventId: string;
+
+  if (event.type === "germinated") {
+    eventId = await recordFact(cycleId, "germination_observed", event.daysAgo, event.detail || event.title, {});
+  } else if (event.type === "problem") {
+    eventId = await recordFact(cycleId, "incident_opened", event.daysAgo, event.detail || event.title, { severity: "watch" });
+  } else if (event.type === "recovery") {
+    const detail = await cycleDetail(cycleId);
+    const history = [...(detail.history ?? [])].sort((a,b) => new Date(b.occurred_at).getTime() - new Date(a.occurred_at).getTime());
+    const incident = history.find(h => h.event_type === "incident_opened");
+    eventId = incident
+      ? await recordFact(cycleId, "incident_resolved", event.daysAgo, event.detail || event.title, { incident_event_id: incident.id })
+      : await recordObservation(cycleId, event);
+  } else if (event.type === "pruning" || event.type === "thinning") {
+    eventId = await recordFact(cycleId, "intervention", event.daysAgo, event.detail || event.title, {
+      class: event.type === "pruning" ? "pruning" : "thinning",
+      action: event.title.toLowerCase().replace(/[^a-z0-9]+/g, "_"),
+    });
+  } else if (event.type === "harvest") {
+    const detail = await cycleDetail(cycleId);
+    const { data, error } = await getSupabaseClient().rpc("garden_record_harvest", {
+      p_request_id: crypto.randomUUID(),
+      p_grow_cycle_id: cycleId,
+      p_expected_revision: detail.revision,
+      p_note: event.detail || event.title,
+    });
+    if (error) throw new Error(error.message);
+    eventId = (data as { event_id?: string } | null)?.event_id ?? "";
+    if (!eventId) {
+      const refreshed = await cycleDetail(cycleId);
+      eventId = refreshed.history?.find(h => h.event_type === "harvest")?.id ?? "";
+    }
+  } else if (event.type === "maintenance") {
+    eventId = await recordFact(cycleId, "intervention", event.daysAgo, event.detail || event.title, {
+      class: "other",
+      action: event.title.toLowerCase().replace(/[^a-z0-9]+/g, "_"),
+    });
+  } else if (event.type === "transplant" && event.title === "Relocated") {
+    return;
+  } else {
+    eventId = await recordObservation(cycleId, event);
+  }
+
+  if (photo && eventId) await uploadEventPhoto(eventId, photo);
+}

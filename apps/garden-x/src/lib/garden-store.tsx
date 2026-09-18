@@ -23,6 +23,7 @@ import {
   createPlantRecord,
   loadGardenState,
   reorderGardenRecords,
+  saveFilmRecord,
   movePlantRecord,
   persistMoment,
   updateGardenRecord,
@@ -215,11 +216,13 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           ...s,
           tasks: s.tasks.map((t) => (t.id === id ? { ...t, done: false } : t)),
         })),
-      addFilm: (f) =>
-        setState((s) => ({
-          ...s,
-          films: [...s.films, { ...f, id: uid("film"), createdDaysAgo: 0 }],
-        })),
+      addFilm: (f) => {
+        const id = crypto.randomUUID();
+        const film = { ...f, id, createdDaysAgo: 0 };
+        const plant = state.plants.find((p) => p.id === f.plantId);
+        if (plant?.backendGrowCycleId) void saveFilmRecord({ ...f, id }).then(refreshFromBackend).catch(() => undefined);
+        setState((s) => ({ ...s, films: [...s.films, film] }));
+      },
       addPlant: (p, photo) => {
         const id = crypto.randomUUID();
         const nextPlant: Plant = { ...p, id };

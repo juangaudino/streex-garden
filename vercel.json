@@ -1,8 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "cd apps/garden-x && npm install --no-audit --no-fund && npm run build",
+  "outputDirectory": "apps/garden-x/.vercel/output",
   "git": {
     "deploymentEnabled": {
-      "prototype/grow-guide": true
+      "prototype/grow-guide": true,
+      "garden-x/v1-migration-current": true
     }
   }
 }

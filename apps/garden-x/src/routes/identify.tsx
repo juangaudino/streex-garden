@@ -197,6 +197,13 @@ function Identify() {
                 <button
                   onClick={() => {
                     if (!photoSrc || !gardenId) return;
+                    const targetGarden = store.gardens.find((garden) => garden.id === gardenId);
+                    const occupied = new Set(store.plants.filter((plant) => plant.gardenId === gardenId && plant.backendPositionId).map((plant) => plant.backendPositionId));
+                    const openPosition = targetGarden?.backendPositions?.find((position) => position.active !== false && !occupied.has(position.id));
+                    if (targetGarden?.backendPositions?.length && !openPosition) {
+                      toast.error("This garden has no empty position. Free or add a position first.");
+                      return;
+                    }
                     const id = store.addPlant(
                       {
                         gardenId,
@@ -210,7 +217,7 @@ function Identify() {
                         statusNote: "Just added, no history yet.",
                         heroPhotoId: "",
                         identityConfirmed: true,
-                        slot: "New addition",
+                        slot: openPosition ? `Pod ${openPosition.number}` : "New addition",
                       },
                       { src: photoSrc, daysAgo: 0, caption: "First photo", metrics: sample?.metrics ?? { heightCm: 0, leafCount: 0, greenness: 0, density: 0 } },
                     );

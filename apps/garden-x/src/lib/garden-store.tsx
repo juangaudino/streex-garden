@@ -278,7 +278,10 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       },
       deleteGarden: (id) => {
         const current = state.gardens.find((g) => g.id === id);
-        if (current?.backendSystemInstanceId) void deleteGardenRecord(id).catch(() => undefined);
+        if (current?.backendSystemInstanceId) {
+          void deleteGardenRecord(id).then(refreshFromBackend).catch(() => undefined);
+          return;
+        }
         setState((s) => {
           const plantIds = new Set(s.plants.filter((p) => p.gardenId === id).map((p) => p.id));
           return { ...s, gardens: s.gardens.filter((garden) => garden.id !== id),

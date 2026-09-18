@@ -1,4 +1,4 @@
-import type { GardenState, Garden, Plant, Photo, PlantEvent, CareTask, EventType, MaintenanceType, Provenance } from "./garden-data";
+import type { GardenState, Garden, Plant, Photo, PlantEvent, CareTask, EventType, MaintenanceType, Provenance, Film } from "./garden-data";
 import { getSupabaseClient } from "./supabase";
 
 type BootstrapGarden = {
@@ -98,6 +98,9 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const { data, error } = await getSupabaseClient().rpc("garden_x_get_bootstrap");
   if (error) throw new Error(error.message);
   const b = data as Bootstrap;
+  const filmsResponse = await getSupabaseClient().rpc("garden_x_get_saved_films");
+  if (filmsResponse.error) throw new Error(filmsResponse.error.message);
+  const savedFilms = (filmsResponse.data ?? []) as Array<{ id: string; plant_instance_id: string; title: string; photo_ids: string[]; music: string; created_at: string }>;
 
   const urlEntries = await Promise.all((b.photos ?? []).map(async p => [p.id, await signedUrl(p.storage_path)] as const));
   const photoUrl = new Map(urlEntries);
@@ -188,7 +191,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   });
 
   return {
-    state: { gardens, plants, photos, events, tasks, films: [] },
+    state: { gardens, plants, photos, events, tasks, films: savedFilms.map((film) => ({ id: film.id, plantId: film.plant_instance_id, title: film.title, photoIds: film.photo_ids, music: film.music, createdDaysAgo: daysAgo(film.created_at) })) },
     index: {
       growCycleByPlantId: new Map((b.plants ?? []).map(p => [p.id, p.grow_cycle_id])),
       positionByPlantId: new Map((b.plants ?? []).map(p => [p.id, p.position_id])),
@@ -590,4 +593,17 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
   const body = await response.json().catch(() => null) as { proposal?: Record<string, unknown>; request_id?: string; error?: string } | null;
   if (!response.ok || !body?.proposal) throw new Error(body?.error ?? "Garden AI could not analyse this photo.");
   return { proposal: body.proposal, requestId: body.request_id ?? "" };
+}
+
+
+export async function saveFilmRecord(film: Omit<Film, "id" | "createdDaysAgo"> & { id: string }): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_save_film", {
+    p_request_id: crypto.randomUUID(),
+    p_film_id: film.id,
+    p_plant_instance_id: film.plantId,
+    p_title: film.title,
+    p_photo_ids: film.photoIds,
+    p_music: film.music,
+  });
+  if (error) throw new Error(error.message);
 }

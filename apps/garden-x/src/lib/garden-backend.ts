@@ -670,3 +670,28 @@ export async function loadPublicPlantStory(token: string): Promise<PublicStory> 
     moments,
   };
 }
+
+
+export async function identifyPlant(imageDataUrl: string): Promise<Array<{ species: string; scientific: string; variety: string; knowledgeId: string; score: number }>> {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-identify`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ image_data_url: imageDataUrl }),
+  });
+  const body = await response.json().catch(() => null) as { result?: { candidates?: Array<{ species?: string; scientific?: string; variety?: string; confidence?: number }> }; error?: string } | null;
+  if (!response.ok || !body?.result?.candidates?.length) throw new Error(body?.error ?? "Identification failed.");
+  return body.result.candidates.map((candidate) => ({
+    species: candidate.species?.trim() || "Unknown plant",
+    scientific: candidate.scientific?.trim() || "",
+    variety: candidate.variety?.trim() || "",
+    knowledgeId: "",
+    score: Math.max(0, Math.min(1, Number(candidate.confidence ?? 0))),
+  }));
+}

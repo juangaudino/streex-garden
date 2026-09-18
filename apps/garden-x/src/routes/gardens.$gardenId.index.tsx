@@ -37,12 +37,20 @@ function GardenDetail() {
   const plants = store.plants.filter((p) => p.gardenId === garden.id);
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const tasks = openTasks(store.tasks.filter((t) => plants.some((p) => p.id === t.plantId)));
-  const pods = garden.machine
-    ? Array.from({ length: garden.machine.pods }, (_, i) => {
-        const label = `Pod ${i + 1}`;
-        return { label, plant: plants.find((p) => p.slot === label) };
-      })
-    : null;
+  const pods = garden.backendPositions?.length
+    ? [...garden.backendPositions]
+        .filter((position) => position.active !== false)
+        .sort((a, b) => (a.gridY ?? 0) - (b.gridY ?? 0) || (a.gridX ?? 0) - (b.gridX ?? 0) || a.number - b.number)
+        .map((position) => {
+          const label = `Pod ${position.number}`;
+          return { label, plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label) };
+        })
+    : garden.machine
+      ? Array.from({ length: garden.machine.pods }, (_, i) => {
+          const label = `Pod ${i + 1}`;
+          return { label, plant: plants.find((p) => p.slot === label) };
+        })
+      : null;
   const occupiedPods = pods?.filter(({ plant }) => plant).length ?? 0;
 
   return (

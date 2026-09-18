@@ -413,33 +413,14 @@ async function recordFact(
 
 async function recordObservation(growCycleId: string, event: Omit<PlantEvent, "id">): Promise<string> {
   const note = [event.title, event.detail].filter(Boolean).join(" — ").slice(0, 1000);
-  const occurred = isoDateFromDaysAgo(event.daysAgo);
-  const { data, error } = await getSupabaseClient().rpc("garden_create_observation", {
+  const { data, error } = await getSupabaseClient().rpc("garden_x_create_observation", {
     p_request_id: crypto.randomUUID(),
     p_grow_cycle_id: growCycleId,
+    p_occurred_on: isoDateFromDaysAgo(event.daysAgo),
     p_note: note || "Observation",
-    p_original_filename: null,
-    p_content_type: null,
-    p_byte_size: null,
-    p_captured_at: null,
-    p_captured_at_precision: "unknown",
-    p_checksum_sha256: null,
   });
   if (error) throw new Error(error.message);
-  const eventId = (data as { event_id: string }).event_id;
-  // Preserve the user-selected moment date as a correction of the event timestamp.
-  if (event.daysAgo > 0) {
-    const { error: dateError } = await getSupabaseClient().rpc("garden_correct_event_date", {
-      p_request_id: crypto.randomUUID(),
-      p_event_id: eventId,
-      p_occurred_on: occurred,
-      p_reason: "Date selected in Garden X Record a moment",
-    });
-    if (dateError) {
-      // Older deployments may not expose this helper; the observation remains canonical.
-    }
-  }
-  return eventId;
+  return (data as { event_id: string }).event_id;
 }
 
 export async function persistMoment(plant: Plant, event: Omit<PlantEvent, "id">, photo?: Photo): Promise<void> {

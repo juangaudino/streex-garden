@@ -60,6 +60,8 @@ export interface Garden {
   place: string;
   note: string;
   machine?: { name: string; pods: number };
+  backendSystemInstanceId?: string;
+  backendPositions?: Array<{ id: string; number: number; gridX?: number; gridY?: number; label?: string | null; active?: boolean }>;
   archived?: boolean;
 }
 

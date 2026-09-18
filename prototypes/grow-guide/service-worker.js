@@ -1,15 +1,16 @@
-const CACHE_NAME = "garden-labs-harvest-use-v0-1";
+const CACHE_NAME = "garden-labs-timeline-evidence-v0-1";
 const APP_SHELL = [
   "./",
-  "./index.html?v=0.7.3",
+  "./index.html?v=0.9",
   "./styles.css?v=0.7.3",
   "./language.css?v=0.7.3",
   "./visual.css?v=0.7.3",
-  "./inventory-neighbors.css?v=0.7.3",
+  "./inventory-neighbors.css?v=1.1",
   "./garden-labs.css?v=0.7.3",
   "./harvest-use-v0.1.css?v=0.1",
   "./harvest-use-v0.1.js?v=0.1",
-  "./app.js?v=1.0",
+  "./timeline-quality-v0.1.js?v=0.1",
+  "./app.js?v=1.2",
   "./seed-purchase-date.js?v=0.7.3",
   "./demo-shell.js?v=0.7.3",
   "./manifest.json?v=0.7.3",
@@ -57,7 +58,7 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(async () => {
-          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.7.3"));
+          return (await caches.match(event.request)) || (await caches.match("./index.html?v=0.9"));
         })
     );
     return;

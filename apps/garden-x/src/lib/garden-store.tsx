@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   initialState,
   knowledge,
@@ -13,6 +13,8 @@ import {
   type EventType,
 } from "./garden-data";
 import type { PublicStory } from "./public-story";
+import { completeAttention, loadGardenState } from "./garden-backend";
+import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 
 interface StoreApi extends GardenState {
   language: "en" | "es";
@@ -75,6 +77,24 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [preferences, setPreferences] = useState<Preferences>(defaults);
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
 
+  const refreshFromBackend = useCallback(async () => {
+    if (!hasSupabaseConfiguration()) return;
+    const client = getSupabaseClient();
+    const { data: sessionData } = await client.auth.getSession();
+    if (!sessionData.session) return;
+    const { state: next } = await loadGardenState();
+    setState(next);
+    const user = sessionData.session.user;
+    setPreferences((current) => ({
+      ...current,
+      profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
+    }));
+  }, []);
+
+  useEffect(() => {
+    void refreshFromBackend().catch(() => undefined);
+  }, [refreshFromBackend]);
+
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(preferenceKey);
@@ -126,17 +146,23 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       },
       addTask: (t) =>
         setState((s) => ({ ...s, tasks: [...s.tasks, { ...t, id: uid("task"), done: false }] })),
-      completeTask: (id, note) =>
+      completeTask: (id, note) => {
+        const task = state.tasks.find((t) => t.id === id);
+        if (task?.backendAttentionId) {
+          void completeAttention(task.backendAttentionId, note)
+            .then(refreshFromBackend)
+            .catch(() => undefined);
+        }
         setState((s) => {
-          const task = s.tasks.find((t) => t.id === id);
-          if (!task) return s;
-          const detail = note ?? task.hint;
+          const current = s.tasks.find((t) => t.id === id);
+          if (!current) return s;
+          const detail = note ?? current.hint;
           const event: PlantEvent = {
             id: uid("ev"),
-            plantId: task.plantId,
+            plantId: current.plantId,
             daysAgo: 0,
-            type: maintenanceEventType(task.type),
-            title: task.label,
+            type: maintenanceEventType(current.type),
+            title: current.label,
             provenance: "recorded",
             ...(detail !== undefined && { detail }),
           };
@@ -145,7 +171,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             tasks: s.tasks.map((t) => (t.id === id ? { ...t, done: true } : t)),
             events: [...s.events, event],
           };
-        }),
+        });
+      },
       reopenTask: (id) =>
         setState((s) => ({
           ...s,
@@ -225,7 +252,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           ],
         })),
     }),
-    [preferences, publicStories, state],
+    [preferences, publicStories, refreshFromBackend, state],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

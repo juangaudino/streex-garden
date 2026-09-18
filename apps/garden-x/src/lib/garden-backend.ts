@@ -581,6 +581,14 @@ export async function askGardenAi(question: string, conversation: Array<{ questi
 }
 
 
+export interface AiCheckProposal {
+  summary: string;
+  confidence: "low" | "medium" | "high";
+  observations: string[];
+  uncertainty: string[];
+  development_recommendations: Array<{ kind: string; recommendation: string; rationale: string; confidence: "low" | "medium" | "high" }>;
+}
+
 export async function runAiCheck(growCycleId: string, photoId: string, comparePhotoId?: string) {
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
@@ -600,7 +608,7 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
       request_key: `check:${crypto.randomUUID()}`,
     }),
   });
-  const body = await response.json().catch(() => null) as { proposal?: Record<string, unknown>; request_id?: string; error?: string } | null;
+  const body = await response.json().catch(() => null) as { proposal?: AiCheckProposal; request_id?: string; error?: string } | null;
   if (!response.ok || !body?.proposal) throw new Error(body?.error ?? "Garden AI could not analyse this photo.");
   return { proposal: body.proposal, requestId: body.request_id ?? "" };
 }

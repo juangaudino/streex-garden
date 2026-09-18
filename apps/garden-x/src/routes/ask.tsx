@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronLeft, Leaf } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import { askSuggestions, askWholeGarden, type AskAnswer } from "@/lib/garden-logic";
+import { askGardenAi } from "@/lib/garden-backend";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import {
   Conversation,
@@ -46,11 +47,22 @@ function GardenWideAsk() {
     const clean = question.trim();
     if (!clean || thinking) return;
     setThinking(true);
-    const answer = askWholeGarden(clean, store);
-    window.setTimeout(() => {
-      setThread((current) => [...current, answer]);
-      setThinking(false);
-    }, 900);
+    const conversation = thread.slice(-4).map((item) => ({ question: item.question, answer: [...item.grounded, item.inference].filter(Boolean).join(" ") }));
+    void askGardenAi(clean, conversation)
+      .then((result) => {
+        const answer: AskAnswer = {
+          question: clean,
+          grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],
+          evidence: result.confirmed_facts.map((fact) => `${fact.source.kind} · ${fact.source.id.slice(0, 8)}`),
+          ...(result.confirmed_facts.length && result.answer ? { inference: result.answer } : {}),
+        };
+        setThread((current) => [...current, answer]);
+      })
+      .catch(() => {
+        // Deterministic Garden logic remains the safe fallback if AI is temporarily unavailable.
+        setThread((current) => [...current, askWholeGarden(clean, store)]);
+      })
+      .finally(() => setThinking(false));
   };
 
   useEffect(() => {

@@ -3,9 +3,6 @@ on:
   push:
     branches: [garden-x/v1-migration-current]
   pull_request:
-    paths:
-      - "apps/garden-x/**"
-      - "supabase/migrations/**"
 concurrency:
   group: garden-x-v1-${{ github.ref }}
   cancel-in-progress: true

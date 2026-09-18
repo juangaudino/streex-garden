@@ -174,6 +174,11 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     };
   });
 
+  for (const plant of plants) {
+    const latest = photos.filter((photo) => photo.plantId === plant.id).sort((a,b) => a.daysAgo-b.daysAgo)[0];
+    if (latest) plant.heroPhotoId = latest.id;
+  }
+
   for (const g of gardens) {
     const own = plants.filter(p => p.gardenId === g.id).map(p => photos.find(ph => ph.id === p.heroPhotoId)).filter(Boolean) as Photo[];
     g.cover = own.sort((a,b) => a.daysAgo-b.daysAgo)[0]?.src ?? "";

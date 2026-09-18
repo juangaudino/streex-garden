@@ -108,7 +108,25 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!hasSupabaseConfiguration()) return;
+    const client = getSupabaseClient();
     void refreshFromBackend().catch(() => undefined);
+    const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        const user = session.user;
+        setPreferences((current) => ({
+          ...current,
+          profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
+        }));
+        void refreshFromBackend().catch(() => undefined);
+      } else {
+        setPreferences((current) => ({
+          ...current,
+          profile: { ...current.profile, signedIn: false },
+        }));
+      }
+    });
+    return () => authListener.subscription.unsubscribe();
   }, [refreshFromBackend]);
 
   useEffect(() => {

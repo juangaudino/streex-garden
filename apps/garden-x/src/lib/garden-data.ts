@@ -1,15 +1,16 @@
-import gardenIndoor from "@/assets/garden-indoor.jpg";
-import gardenBackyard from "@/assets/garden-backyard.jpg";
-import gardenBalcony from "@/assets/garden-balcony.jpg";
-import tomato1 from "@/assets/tomato-1.jpg";
-import tomato2 from "@/assets/tomato-2.jpg";
-import tomato3 from "@/assets/tomato-3.jpg";
-import basil1 from "@/assets/basil-1.jpg";
-import basil2 from "@/assets/basil-2.jpg";
-import monstera1 from "@/assets/monstera-1.jpg";
-import monstera2 from "@/assets/monstera-2.jpg";
-import lettuce1 from "@/assets/lettuce-1.jpg";
-import pepper1 from "@/assets/pepper-1.jpg";
+const EMPTY_IMAGE = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+const gardenIndoor = EMPTY_IMAGE;
+const gardenBackyard = EMPTY_IMAGE;
+const gardenBalcony = EMPTY_IMAGE;
+const tomato1 = EMPTY_IMAGE;
+const tomato2 = EMPTY_IMAGE;
+const tomato3 = EMPTY_IMAGE;
+const basil1 = EMPTY_IMAGE;
+const basil2 = EMPTY_IMAGE;
+const monstera1 = EMPTY_IMAGE;
+const monstera2 = EMPTY_IMAGE;
+const lettuce1 = EMPTY_IMAGE;
+const pepper1 = EMPTY_IMAGE;
 
 export const covers = { gardenIndoor, gardenBackyard, gardenBalcony };
 
@@ -76,6 +77,8 @@ export interface Photo {
   daysAgo: number;
   caption: string;
   metrics: PlantMetrics;
+  backendStoragePath?: string;
+  backendEventId?: string;
 }
 
 export interface PlantEvent {
@@ -88,6 +91,8 @@ export interface PlantEvent {
   milestone?: boolean;
   photoId?: string;
   provenance: Provenance;
+  backendEventType?: string;
+  backendRevision?: number;
 }
 
 export interface CareTask {
@@ -98,6 +103,7 @@ export interface CareTask {
   dueInDays: number; // negative = overdue
   done: boolean;
   hint?: string;
+  backendAttentionId?: string;
 }
 
 export interface Plant {
@@ -116,6 +122,8 @@ export interface Plant {
   heroPhotoId: string;
   identityConfirmed: boolean;
   cycleClosed?: boolean;
+  backendGrowCycleId?: string;
+  backendPositionId?: string;
 }
 
 export interface KnowledgeEntry {

@@ -566,3 +566,28 @@ export async function askGardenAi(question: string, conversation: Array<{ questi
   if (!response.ok || !body?.answer) throw new Error(body?.error ?? "Garden AI could not answer.");
   return body.answer;
 }
+
+
+export async function runAiCheck(growCycleId: string, photoId: string, comparePhotoId?: string) {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      operation: "ai_check",
+      grow_cycle_id: growCycleId,
+      photo_id: photoId,
+      compare_photo_id: comparePhotoId ?? null,
+      request_key: `check:${crypto.randomUUID()}`,
+    }),
+  });
+  const body = await response.json().catch(() => null) as { proposal?: Record<string, unknown>; request_id?: string; error?: string } | null;
+  if (!response.ok || !body?.proposal) throw new Error(body?.error ?? "Garden AI could not analyse this photo.");
+  return { proposal: body.proposal, requestId: body.request_id ?? "" };
+}

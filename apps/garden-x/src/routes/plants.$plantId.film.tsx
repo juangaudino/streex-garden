@@ -69,7 +69,6 @@ function GrowthFilm() {
     window.setTimeout(() => {
       const title = `${plant.name} · ${ageLabel(plant.plantedDaysAgo).toLowerCase()}`;
       store.addFilm({ plantId: plant.id, title, photoIds: sequence.map((photo) => photo.id), music });
-      store.addEvent({ plantId: plant.id, daysAgo: 0, type: "note", title: "Growth film saved", detail: `${sequence.length} moments, ${music.toLowerCase()}.`, provenance: "recorded" });
       setSaving(false);
       setShareFilm(title);
       toast.success("Growth Film saved");

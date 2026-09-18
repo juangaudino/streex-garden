@@ -89,10 +89,11 @@ function maintenanceType(purpose: string, subject: string): MaintenanceType {
   if (value.includes("clean") || value.includes("pump")) return "cleaning";
   return "custom";
 }
-async function signedUrl(path: string): Promise<string> {
-  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrl(path, 60 * 10);
+async function signedUrls(paths: string[]): Promise<Map<string, string>> {
+  if (!paths.length) return new Map();
+  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, 60 * 10);
   if (error) throw error;
-  return data.signedUrl;
+  return new Map((data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as const] : []));
 }
 
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
@@ -106,8 +107,8 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   if (historicalResponse.error) throw new Error(historicalResponse.error.message);
   const allPhotos = [...(b.photos ?? []), ...((historicalResponse.data ?? []) as BootstrapPhoto[])].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
 
-  const urlEntries = await Promise.all(allPhotos.map(async p => [p.id, await signedUrl(p.storage_path)] as const));
-  const photoUrl = new Map(urlEntries);
+  const signedByPath = await signedUrls([...new Set(allPhotos.map((photo) => photo.storage_path))]);
+  const photoUrl = new Map(allPhotos.map((photo) => [photo.id, signedByPath.get(photo.storage_path) ?? ""]));
 
   const gardens: Garden[] = (b.gardens ?? []).map(g => ({
     id: g.id,

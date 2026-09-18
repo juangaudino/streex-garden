@@ -227,7 +227,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const id = crypto.randomUUID();
         const nextPlant: Plant = { ...p, id };
         const garden = state.gardens.find((g) => g.id === p.gardenId);
-        const positionNumber = Number(p.slot.match(/\d+/)?.[0] ?? "");
+        const positionNumber = Number(p.slot?.match(/\d+/)?.[0] ?? "");
         const position = garden?.backendPositions?.find((item) => item.number === positionNumber);
         if (position) {
           const canonicalPhoto = photo ? { ...photo, id: crypto.randomUUID(), plantId: id } : undefined;

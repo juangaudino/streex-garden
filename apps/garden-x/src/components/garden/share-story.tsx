@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { cn } from "@/lib/utils";
 import { useGarden } from "@/lib/garden-store";
 import type { PublicStory, PublicStoryMoment } from "@/lib/public-story";
+import { createPublicPlantStory } from "@/lib/garden-backend";
 
 type ShareItem =
   | { id: string; daysAgo: number; kind: "photo"; photo: Photo }
@@ -50,6 +51,24 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
   };
 
   const openPublicLink = () => {
+    const canonicalSelection = chosen.flatMap((item) => {
+      if (item.kind === "photo" && item.photo.backendStoragePath) return [{ photo_id: item.photo.id }];
+      if (item.kind === "event" && item.event.backendEventType) return [{ event_id: item.event.id, include_note: true }];
+      return [];
+    });
+    if (plant.backendGrowCycleId && canonicalSelection.length) {
+      void createPublicPlantStory(plant, canonicalSelection)
+        .then((token) => {
+          onOpenChange(false);
+          void navigate({ to: "/shared/$storyId", params: { storyId: token } });
+        })
+        .catch(() => {
+          savePublicStory(story);
+          onOpenChange(false);
+          void navigate({ to: "/shared/$storyId", params: { storyId: story.id } });
+        });
+      return;
+    }
     savePublicStory(story);
     onOpenChange(false);
     void navigate({ to: "/shared/$storyId", params: { storyId: story.id } });

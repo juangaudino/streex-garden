@@ -30,8 +30,11 @@ import {
   updatePlantIdentityRecord,
 } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
+import { chooseSessionHighlight } from "./garden-logic";
 
 interface StoreApi extends GardenState {
+  hydration: "loading" | "ready" | "error" | "offline";
+  highlightedPlantId: string | null;
   language: "en" | "es";
   setLanguage: (language: "en" | "es") => void;
   appearance: Appearance;
@@ -81,34 +84,76 @@ const defaults: Preferences = {
 };
 
 const preferenceKey = "garden-x-preferences";
+const highlightedPlantKey = "garden-x-last-highlighted-plant";
 
 const Ctx = createContext<StoreApi | null>(null);
+
+const emptyState: GardenState = { gardens: [], plants: [], photos: [], events: [], tasks: [], films: [] };
+const demoPlantIds = new Set(initialState.plants.map((plant) => plant.id));
 
 let seq = 0;
 const uid = (p: string) => `${p}-${Date.now().toString(36)}-${seq++}`;
 
 export function GardenProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<GardenState>(initialState);
+  const backendConfigured = hasSupabaseConfiguration();
+  const [state, setState] = useState<GardenState>(() => (backendConfigured ? emptyState : initialState));
+  const [hydration, setHydration] = useState<StoreApi["hydration"]>(backendConfigured ? "loading" : "offline");
+  const [highlightedPlantId, setHighlightedPlantId] = useState<string | null>(null);
   const [preferences, setPreferences] = useState<Preferences>(defaults);
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
   const pendingPhotos = useRef(new Map<string, Photo>());
+  const highlightResolved = useRef(false);
 
-  const refreshFromBackend = useCallback(async () => {
-    if (!hasSupabaseConfiguration()) return;
-    const client = getSupabaseClient();
-    const { data: sessionData } = await client.auth.getSession();
-    if (!sessionData.session) return;
-    const { state: next } = await loadGardenState();
-    setState(next);
-    const user = sessionData.session.user;
-    setPreferences((current) => ({
-      ...current,
-      profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
-    }));
+  const resetHighlight = useCallback(() => {
+    highlightResolved.current = false;
+    setHighlightedPlantId(null);
   }, []);
 
+  const resolveHighlight = useCallback((plantsForSession: Plant[]) => {
+    if (highlightResolved.current) return;
+    const candidates = backendConfigured
+      ? plantsForSession.filter((plant) => !demoPlantIds.has(plant.id))
+      : plantsForSession;
+    let previousId: string | null = null;
+    try { previousId = window.localStorage.getItem(highlightedPlantKey); } catch { /* no-op */ }
+    const selected = chooseSessionHighlight(candidates, previousId);
+    if (!selected) return;
+    highlightResolved.current = true;
+    setHighlightedPlantId(selected.id);
+    try { window.localStorage.setItem(highlightedPlantKey, selected.id); } catch { /* no-op */ }
+  }, [backendConfigured]);
+
+  const refreshFromBackend = useCallback(async () => {
+    if (!backendConfigured) return;
+    setHydration("loading");
+    const client = getSupabaseClient();
+    const { data: sessionData } = await client.auth.getSession();
+    if (!sessionData.session) {
+      setState(emptyState);
+      resetHighlight();
+      setHydration("ready");
+      return;
+    }
+    try {
+      const { state: next } = await loadGardenState();
+      resolveHighlight(next.plants);
+      setState(next);
+      setHydration("ready");
+      const user = sessionData.session.user;
+      setPreferences((current) => ({
+        ...current,
+        profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
+      }));
+    } catch (error) {
+      setState(emptyState);
+      resetHighlight();
+      setHydration("error");
+      throw error;
+    }
+  }, [backendConfigured, resetHighlight, resolveHighlight]);
+
   useEffect(() => {
-    if (!hasSupabaseConfiguration()) return;
+    if (!backendConfigured) return;
     const client = getSupabaseClient();
     void refreshFromBackend().catch(() => undefined);
     const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
@@ -120,6 +165,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
         void refreshFromBackend().catch(() => undefined);
       } else {
+        setState(emptyState);
+        resetHighlight();
+        setHydration("ready");
         setPreferences((current) => ({
           ...current,
           profile: { ...current.profile, signedIn: false },
@@ -127,7 +175,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       }
     });
     return () => authListener.subscription.unsubscribe();
-  }, [refreshFromBackend]);
+  }, [backendConfigured, refreshFromBackend, resetHighlight]);
 
   useEffect(() => {
     try {
@@ -149,6 +197,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const api = useMemo<StoreApi>(
     () => ({
       ...state,
+      hydration,
+      highlightedPlantId,
       ...preferences,
       setLanguage: (language) => updatePreferences({ language }),
       setAppearance: (appearance) => updatePreferences({ appearance }),
@@ -326,7 +376,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         ] }));
       },
     }),
-    [preferences, publicStories, refreshFromBackend, state],
+    [highlightedPlantId, hydration, preferences, publicStories, refreshFromBackend, state],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

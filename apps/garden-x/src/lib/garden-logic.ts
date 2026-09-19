@@ -84,6 +84,21 @@ export const chronological = <T extends { daysAgo: number }>(items: T[]) =>
 export const plantPhotos = (photos: Photo[], plantId: string) =>
   chronological(photos.filter((p) => p.plantId === plantId));
 
+/** Pick one active plant for the lifetime of an app session. */
+export function chooseSessionHighlight<T extends Pick<Plant, "id" | "cycleClosed">>(
+  plants: T[],
+  previousId: string | null,
+  random = Math.random,
+): T | undefined {
+  const active = plants.filter((plant) => !plant.cycleClosed);
+  if (!active.length) return undefined;
+  const withoutPrevious = active.length > 1 && previousId
+    ? active.filter((plant) => plant.id !== previousId)
+    : active;
+  const pool = withoutPrevious.length ? withoutPrevious : active;
+  return pool[Math.floor(random() * pool.length)];
+}
+
 export const plantEvents = (events: PlantEvent[], plantId: string) =>
   byRecency(events.filter((e) => e.plantId === plantId));
 

@@ -45,6 +45,18 @@ export const Route = createFileRoute("/")({
 function Home() {
   const store = useGarden();
   const isSpanish = store.language === "es";
+  if (store.hydration === "loading") {
+    return <HomeStatus message={isSpanish ? "Cargando tu jardín…" : "Loading your garden…"} />;
+  }
+  if (store.hydration === "error") {
+    return <HomeStatus message={isSpanish ? "No pudimos cargar tu jardín." : "We couldn't load your garden."} error />;
+  }
+
+  const hero = store.highlightedPlantId
+    ? store.plants.find((plant) => plant.id === store.highlightedPlantId)
+    : undefined;
+  if (!hero) return <HomeEmpty isSpanish={isSpanish} />;
+
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const plantById = (id: string) => store.plants.find((p) => p.id === id)!;
   const due = openTasks(store.tasks).filter((t) => t.dueInDays <= 1);
@@ -68,7 +80,6 @@ function Home() {
     cmp: ReturnType<typeof comparePhotos>;
   }>;
 
-  const hero = store.plants.find((p) => p.id === "aurora") ?? store.plants[0]!;
   const heroPhoto = photoById(hero.heroPhotoId);
   const heroPics = plantPhotos(store.photos, hero.id);
   const greeting = new Date().getHours() < 12
@@ -333,5 +344,44 @@ function Home() {
         </Link>
       </div>
     </div>
+  );
+}
+
+function HomeStatus({ message, error = false }: { message: string; error?: boolean }) {
+  return (
+    <main className="grid min-h-[70vh] place-items-center bg-background px-5 text-center">
+      <div className="surface max-w-md p-8">
+        <div className={`mx-auto grid h-12 w-12 place-items-center rounded-full ${error ? "bg-clay/12 text-clay" : "bg-secondary text-primary"}`}>
+          {error ? "!" : <span className="breathe font-display text-xl">✦</span>}
+        </div>
+        <p className="mt-5 font-display text-2xl">{message}</p>
+        {error ? <p className="mt-2 text-sm text-muted-foreground">Try refreshing to reconnect.</p> : null}
+      </div>
+    </main>
+  );
+}
+
+function HomeEmpty({ isSpanish }: { isSpanish: boolean }) {
+  return (
+    <main className="rise pb-16">
+      <PageHeader
+        eyebrow={isSpanish ? "Tu jardín" : "Your garden"}
+        title={isSpanish ? "Todavía no hay plantas" : "No plants yet"}
+        subtitle={isSpanish ? "Crea tu primer jardín para empezar a guardar su historia." : "Create your first garden to begin keeping its story."}
+      />
+      <section className="px-5 sm:px-8 lg:px-12">
+        <div className="surface grid min-h-64 place-items-center p-8 text-center">
+          <div className="max-w-md">
+            <p className="font-display text-2xl">{isSpanish ? "Empieza desde cero" : "Start from a clear beginning"}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {isSpanish ? "Tus plantas reales aparecerán aquí después de crear un jardín." : "Your real plants will appear here after you create a garden."}
+            </p>
+            <Link to="/gardens" className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground">
+              {isSpanish ? "Crear jardín" : "Create garden"} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

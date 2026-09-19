@@ -16,7 +16,8 @@ export function PhotoImage({ photo, alt, className, loading = "lazy", ...props }
   useEffect(() => {
     let active = true;
     setSrc(photoSrc);
-    void resolvePhotoUrl({ src: photoSrc, backendStoragePath })
+    const photoRef = backendStoragePath ? { src: photoSrc, backendStoragePath } : { src: photoSrc };
+    void resolvePhotoUrl(photoRef)
       .then((url) => {
         if (active && url) setSrc(url);
       })

@@ -3,6 +3,12 @@
   "framework": null,
   "buildCommand": "cd apps/garden-x && npm install --no-audit --no-fund && npm run build",
   "outputDirectory": "apps/garden-x/.vercel/output",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/__server"
+    }
+  ],
   "git": {
     "deploymentEnabled": {
       "prototype/grow-guide": true,

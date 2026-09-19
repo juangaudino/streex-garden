@@ -81,6 +81,36 @@ export const byRecency = <T extends { daysAgo: number }>(items: T[]) =>
 export const chronological = <T extends { daysAgo: number }>(items: T[]) =>
   [...items].sort((a, b) => b.daysAgo - a.daysAgo);
 
+export type SortOrder = "newest" | "oldest";
+
+function timestamp(value: string | null | undefined) {
+  if (!value) return null;
+  const parsed = Date.parse(value);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+function compareTemporal(
+  aTimestamp: string | null | undefined,
+  bTimestamp: string | null | undefined,
+  aDaysAgo: number,
+  bDaysAgo: number,
+  order: SortOrder,
+) {
+  const aTime = timestamp(aTimestamp);
+  const bTime = timestamp(bTimestamp);
+  const direction = order === "newest" ? -1 : 1;
+  if (aTime !== null && bTime !== null && aTime !== bTime) return (aTime - bTime) * direction;
+  if (aDaysAgo !== bDaysAgo) return (aDaysAgo - bDaysAgo) * (order === "newest" ? 1 : -1);
+  return 0;
+}
+
+export function sortPhotosByCapturedAt(photos: Photo[], order: SortOrder = "newest") {
+  return photos
+    .map((photo, index) => ({ photo, index }))
+    .sort((a, b) => compareTemporal(a.photo.capturedAt, b.photo.capturedAt, a.photo.daysAgo, b.photo.daysAgo, order) || a.index - b.index)
+    .map(({ photo }) => photo);
+}
+
 export const plantPhotos = (photos: Photo[], plantId: string) =>
   chronological(photos.filter((p) => p.plantId === plantId));
 
@@ -111,7 +141,12 @@ export type PlantTimelineEntry =
  * no event row. Evidence-only photos remain evidence; this function never
  * manufactures a PlantEvent or changes the persisted domain model.
  */
-export function plantTimeline(events: PlantEvent[], photos: Photo[], plantId: string): PlantTimelineEntry[] {
+export function plantTimeline(
+  events: PlantEvent[],
+  photos: Photo[],
+  plantId: string,
+  order: SortOrder = "newest",
+): PlantTimelineEntry[] {
   const plantEventsById = new Map(
     events.filter((event) => event.plantId === plantId).map((event) => [event.id, event]),
   );
@@ -140,7 +175,16 @@ export function plantTimeline(events: PlantEvent[], photos: Photo[], plantId: st
       daysAgo: photo.daysAgo,
     })),
   ];
-  return entries.sort((a, b) => b.daysAgo - a.daysAgo || (a.kind === "photo" ? -1 : 1));
+  return entries
+    .map((entry, index) => ({ entry, index }))
+    .sort((a, b) => {
+      const aTimestamp = a.entry.kind === "photo" ? a.entry.photo.capturedAt : a.entry.event.occurredAt;
+      const bTimestamp = b.entry.kind === "photo" ? b.entry.photo.capturedAt : b.entry.event.occurredAt;
+      return compareTemporal(aTimestamp, bTimestamp, a.entry.daysAgo, b.entry.daysAgo, order)
+        || (a.entry.kind === "photo" ? -1 : 1) - (b.entry.kind === "photo" ? -1 : 1)
+        || a.index - b.index;
+    })
+    .map(({ entry }) => entry);
 }
 
 export function eventsBetween(events: PlantEvent[], plantId: string, aDaysAgo: number, bDaysAgo: number) {

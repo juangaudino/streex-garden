@@ -91,6 +91,7 @@ export interface PlantEvent {
   id: string;
   plantId: string;
   daysAgo: number;
+  occurredAt?: string | null;
   type: EventType;
   title: string;
   detail?: string;

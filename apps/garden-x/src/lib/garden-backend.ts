@@ -212,6 +212,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       id: e.id,
       plantId: e.plant_instance_id,
       daysAgo: daysAgo(e.occurred_at),
+      occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
       title: titleFor(e),
       ...(e.note ? { detail: e.note } : {}),

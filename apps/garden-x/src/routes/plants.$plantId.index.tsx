@@ -28,6 +28,8 @@ import {
   plantCompanions,
   latestPlantPhoto,
   plantTimeline,
+  sortPhotosByCapturedAt,
+  type SortOrder,
 } from "@/lib/garden-logic";
 import type { MaintenanceType } from "@/lib/garden-data";
 import { ProvenanceTag, SectionTitle, StatusDot, eventIcons, maintenanceIcons } from "@/components/garden/atoms";
@@ -37,6 +39,7 @@ import { usePhotoViewer } from "@/components/garden/photo-viewer";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ChronologySelect } from "@/components/garden/chronology-select";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -72,6 +75,7 @@ function PlantProfile() {
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>(undefined);
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>(undefined);
   const [shareOpen, setShareOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
   const photoViewer = usePhotoViewer();
 
   const openRecord = (flow?: MomentFlow, care?: MaintenanceType) => {
@@ -89,7 +93,11 @@ function PlantProfile() {
   const reference = knowledgeById(plant.knowledgeId);
   const companions = plantCompanions(plant.knowledgeId);
   const history = useMemo(() => chronological(events), [events]);
-  const timeline = useMemo(() => plantTimeline(store.events, store.photos, plant.id), [store.events, store.photos, plant.id]);
+  const timeline = useMemo(
+    () => plantTimeline(store.events, store.photos, plant.id, sortOrder),
+    [store.events, store.photos, plant.id, sortOrder],
+  );
+  const orderedPhotos = useMemo(() => sortPhotosByCapturedAt(photos, sortOrder), [photos, sortOrder]);
 
   const first = photos[0];
   const latest = photos[photos.length - 1];
@@ -281,7 +289,9 @@ function PlantProfile() {
         {/* ------------------------------------------------ TIMELINE */}
         {tab === "Timeline" ? (
           <div className="rise max-w-3xl">
-            <SectionTitle>Everything recorded</SectionTitle>
+            <SectionTitle action={<ChronologySelect value={sortOrder} onChange={setSortOrder} />}>
+              Everything recorded
+            </SectionTitle>
             <ul className="space-y-2">
               {timeline.map((entry) => {
                 if (entry.kind === "photo") {
@@ -350,15 +360,18 @@ function PlantProfile() {
           <div className="rise">
             <SectionTitle
               action={
-                <Link to="/plants/$plantId/film" params={{ plantId: plant.id }} className="text-primary hover:underline">
-                  Make a film
-                </Link>
+                <div className="flex items-center gap-2">
+                  <ChronologySelect value={sortOrder} onChange={setSortOrder} />
+                  <Link to="/plants/$plantId/film" params={{ plantId: plant.id }} className="text-primary hover:underline">
+                    Make a film
+                  </Link>
+                </div>
               }
             >
               Photographic evidence
             </SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {chronological(photos).map((photo) => (
+              {orderedPhotos.map((photo) => (
                 <figure key={photo.id} className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
                   <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="block w-full">
                     <PhotoImage photo={photo} alt={photo.caption} className="aspect-square w-full object-cover" />

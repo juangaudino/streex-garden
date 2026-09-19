@@ -18,6 +18,7 @@ import {
   completeAttention,
   createGardenRecord,
   deleteGardenRecord,
+  deletePhotoRecord,
   correctPlantingRecord,
   createFollowUpRecord,
   createPlantRecord,
@@ -26,9 +27,11 @@ import {
   saveFilmRecord,
   movePlantRecord,
   persistMoment,
+  invalidateEventRecord,
   updateGardenRecord,
   updatePlantIdentityRecord,
 } from "./garden-backend";
+import type { DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight } from "./garden-logic";
 
@@ -56,6 +59,8 @@ interface StoreApi extends GardenState {
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
   setGardenArchived: (id: string, archived: boolean) => void;
   deleteGarden: (id: string) => void;
+  deleteEvent: (id: string) => Promise<void>;
+  deletePhoto: (id: string) => Promise<DeletePhotoResult>;
   addGarden: (g: Omit<Garden, "id">) => string;
   reorderGardens: (orderedIds: string[]) => void;
   publicStories: PublicStory[];
@@ -358,6 +363,32 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             events: s.events.filter((event) => !plantIds.has(event.plantId)), tasks: s.tasks.filter((task) => !plantIds.has(task.plantId)),
             films: s.films.filter((film) => !plantIds.has(film.plantId)) };
         });
+      },
+      deleteEvent: async (id) => {
+        const current = state.events.find((event) => event.id === id);
+        if (!current) return;
+        if (current.backendEventType && current.backendRevision !== undefined) {
+          await invalidateEventRecord(id, current.backendRevision);
+          setState((s) => ({ ...s, events: s.events.filter((event) => event.id !== id) }));
+          void refreshFromBackend().catch(() => undefined);
+          return;
+        }
+        // Offline/fixture events are removed from the projection only. Their
+        // photos remain available as independent evidence, matching backend
+        // invalidation semantics.
+        setState((s) => ({ ...s, events: s.events.filter((event) => event.id !== id) }));
+      },
+      deletePhoto: async (id) => {
+        const current = state.photos.find((photo) => photo.id === id);
+        if (!current) return {};
+        let result: DeletePhotoResult = {};
+        if (current.backendStoragePath) {
+          result = await deletePhotoRecord(id);
+          void refreshFromBackend().catch(() => undefined);
+        }
+        pendingPhotos.current.delete(id);
+        setState((s) => ({ ...s, photos: s.photos.filter((photo) => photo.id !== id) }));
+        return result;
       },
       addGarden: (g) => {
         const id = crypto.randomUUID();

@@ -1,6 +1,7 @@
 import type { GardenState, Garden, Plant, Photo, PlantEvent, CareTask, EventType, MaintenanceType, Provenance, Film } from "./garden-data";
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
+import { photoStoragePaths } from "./delete-logic";
 
 type BootstrapGarden = {
   id: string; name: string; system_instance_id: string; system_instance_name: string;
@@ -157,7 +158,13 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const savedFilms = (filmsResponse.data ?? []) as Array<{ id: string; plant_instance_id: string; title: string; photo_ids: string[]; music: string; created_at: string }>;
   const historicalResponse = await getSupabaseClient().rpc("garden_x_get_historical_photos");
   if (historicalResponse.error) throw new Error(historicalResponse.error.message);
-  const allPhotos = [...(b.photos ?? []), ...((historicalResponse.data ?? []) as BootstrapPhoto[])].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
+  const invalidatedEventPhotosResponse = await getSupabaseClient().rpc("garden_x_get_invalidated_event_photos");
+  if (invalidatedEventPhotosResponse.error) throw new Error(invalidatedEventPhotosResponse.error.message);
+  const allPhotos = [
+    ...(b.photos ?? []),
+    ...((historicalResponse.data ?? []) as BootstrapPhoto[]),
+    ...((invalidatedEventPhotosResponse.data ?? []) as BootstrapPhoto[]),
+  ].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
 
   const gardens: Garden[] = (b.gardens ?? []).map(g => ({
     id: g.id,
@@ -585,6 +592,38 @@ export async function deleteGardenRecord(gardenId: string): Promise<void> {
     p_garden_id: gardenId,
   });
   if (error) throw new Error(error.message);
+}
+
+/**
+ * Events cannot be physically deleted in V1: event_revisions and attention
+ * history intentionally retain their audit links. This calls the existing
+ * owner-scoped invalidation command, which removes the event from current
+ * projections while preserving its audit record and any attached evidence.
+ */
+export async function invalidateEventRecord(eventId: string, expectedRevision: number): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_invalidate_event", {
+    p_request_id: crypto.randomUUID(),
+    p_event_id: eventId,
+    p_expected_revision: expectedRevision,
+    p_reason: "Removed from Garden X timeline",
+  });
+  if (error) throw new Error(error.message);
+}
+
+export type DeletePhotoResult = { storageCleanupWarning?: string };
+
+/** Delete one owner-scoped photo row, then remove only its exact Storage objects. */
+export async function deletePhotoRecord(photoId: string): Promise<DeletePhotoResult> {
+  const { data, error } = await getSupabaseClient().rpc("garden_x_delete_photo", {
+    p_request_id: crypto.randomUUID(),
+    p_photo_id: photoId,
+  });
+  if (error) throw new Error(error.message);
+  const response = data as { storage_path?: string } | null;
+  if (!response?.storage_path) return {};
+  const paths = photoStoragePaths(response.storage_path);
+  const { error: storageError } = await getSupabaseClient().storage.from("garden-originals").remove(paths);
+  return storageError ? { storageCleanupWarning: storageError.message } : {};
 }
 
 export async function replacePlantRecord(oldPlant: Plant, newPlant: Plant): Promise<void> {

@@ -40,6 +40,7 @@ import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChronologySelect } from "@/components/garden/chronology-select";
+import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -98,6 +99,32 @@ function PlantProfile() {
     [store.events, store.photos, plant.id, sortOrder],
   );
   const orderedPhotos = useMemo(() => sortPhotosByCapturedAt(photos, sortOrder), [photos, sortOrder]);
+
+  const removeEvent = async (event: (typeof events)[number], attachedPhotoCount: number) => {
+    try {
+      await store.deleteEvent(event.id);
+      toast.success(attachedPhotoCount ? "Event removed; its photos remain as evidence." : "Event removed from history.");
+      return true;
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "The event could not be removed.");
+      return false;
+    }
+  };
+
+  const removePhoto = async (photo: (typeof photos)[number]) => {
+    try {
+      const result = await store.deletePhoto(photo.id);
+      if (result.storageCleanupWarning) {
+        toast.warning("Photo removed from Garden X, but its Storage cleanup needs attention.");
+      } else {
+        toast.success("Photo removed.");
+      }
+      return true;
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "The photo could not be removed.");
+      return false;
+    }
+  };
 
   const first = photos[0];
   const latest = photos[photos.length - 1];
@@ -297,7 +324,7 @@ function PlantProfile() {
                 if (entry.kind === "photo") {
                   const photo = entry.photo;
                   return (
-                    <li key={`photo-${photo.id}`} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 rounded-2xl border border-border/60 bg-card p-4">
+                    <li key={`photo-${photo.id}`} className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-2xl border border-border/60 bg-card p-4">
                       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground"><Film className="h-4 w-4" /></span>
                       <div className="min-w-0">
                         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2"><p className="truncate text-sm font-medium">Photo</p><span className="numeral shrink-0 text-xs text-muted-foreground">{formatDate(photo.daysAgo)}</span></div>
@@ -306,6 +333,13 @@ function PlantProfile() {
                         <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="press mt-3 block"><PhotoImage photo={photo} alt={photo.caption} className="h-24 w-24 rounded-xl object-cover" /></button>
                         <div className="mt-2.5"><ProvenanceTag kind="observed" /></div>
                       </div>
+                      <DeleteActionMenu
+                        itemLabel="photo"
+                        actionLabel="Delete photo"
+                        title="Delete this photo?"
+                        description="This removes the photo from the gallery and keeps any related event in the history."
+                        onConfirm={() => removePhoto(photo)}
+                      />
                     </li>
                   );
                 }
@@ -315,7 +349,7 @@ function PlantProfile() {
                 return (
                   <li
                     key={e.id}
-                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 rounded-2xl border border-border/60 bg-card p-4"
+                    className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-2xl border border-border/60 bg-card p-4"
                   >
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground">
                       <Icon className="h-4 w-4" />
@@ -347,6 +381,15 @@ function PlantProfile() {
                         />
                       </div>
                     </div>
+                    <DeleteActionMenu
+                      itemLabel="event"
+                      actionLabel="Delete event"
+                      title="Delete this event?"
+                      description={entry.photos.length
+                        ? `This removes the event from the history. ${entry.photos.length} attached ${entry.photos.length === 1 ? "photo remains" : "photos remain"} as photographic evidence.`
+                        : "This removes the event from the history. Your audit history keeps the correction recorded."}
+                      onConfirm={() => removeEvent(e, entry.photos.length)}
+                    />
                   </li>
                 );
               })}
@@ -377,8 +420,21 @@ function PlantProfile() {
                     <PhotoImage photo={photo} alt={photo.caption} className="aspect-square w-full object-cover" />
                   </button>
                   <figcaption className="p-3.5">
-                    <p className="eyebrow">{formatDate(photo.daysAgo)}</p>
-                    <p className="mt-1 text-sm leading-snug">{photo.caption}</p>
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="eyebrow">{formatDate(photo.daysAgo)}</p>
+                        <p className="mt-1 text-sm leading-snug">{photo.caption}</p>
+                      </div>
+                      <DeleteActionMenu
+                        itemLabel="photo"
+                        actionLabel="Delete photo"
+                        title="Delete this photo?"
+                        description={photo.backendEventId
+                          ? "This removes the photo from the gallery. Its related event remains in the history."
+                          : "This removes the photo from the gallery and its exact Storage files."}
+                        onConfirm={() => removePhoto(photo)}
+                      />
+                    </div>
                     <p className="numeral mt-2 text-xs text-muted-foreground">
                       {photo.metrics.heightCm}cm · {photo.metrics.leafCount} leaves · density {photo.metrics.density}
                     </p>

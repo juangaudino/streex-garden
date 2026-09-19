@@ -1,14 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "cd apps/garden-x && npm install --no-audit --no-fund && npm run build",
-  "outputDirectory": "apps/garden-x/.vercel/output",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/__server"
-    }
-  ],
+  "buildCommand": "cd apps/garden-x && npm install --no-audit --no-fund && npm run build && cd ../.. && rm -rf .vercel/output && mkdir -p .vercel && cp -R apps/garden-x/.vercel/output .vercel/output",
   "git": {
     "deploymentEnabled": {
       "prototype/grow-guide": true,

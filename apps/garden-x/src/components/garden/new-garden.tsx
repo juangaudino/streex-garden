@@ -8,6 +8,7 @@ import { gardenSetups, setupById } from "@/lib/garden-systems";
 import { useGarden } from "@/lib/garden-store";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { CustomSystemBuilder } from "@/components/garden/custom-system-builder";
 import { cn } from "@/lib/utils";
 
 const coverChoices: { id: string; label: string; src: string }[] = [
@@ -27,27 +28,23 @@ export function NewGarden() {
   const [name, setName] = useState("");
   const [place, setPlace] = useState("");
   const [setupId, setSetupId] = useState<string | null>(null);
-  const [positions, setPositions] = useState(6);
   const [coverId, setCoverId] = useState<string | null>(null);
+  const [customOpen, setCustomOpen] = useState(false);
 
   const setup = setupId ? setupById(setupId) : undefined;
-  const needsPositions = Boolean(setup?.manualPositions);
 
   const start = () => {
     setStep(0);
     setName("");
     setPlace("");
     setSetupId(null);
-    setPositions(6);
     setCoverId(null);
     setOpen(true);
   };
 
   const create = () => {
     const kind = setup?.kind ?? "indoor";
-    const machine = setup?.manualPositions
-      ? { name: "Custom system", pods: Math.max(1, Math.min(24, positions)) }
-      : setup?.system;
+    const machine = setup?.system;
     const id = addGarden({
       name: name.trim() || "New garden",
       kind,
@@ -127,7 +124,14 @@ export function NewGarden() {
                 <button
                   key={choice.id}
                   type="button"
-                  onClick={() => setSetupId(choice.id)}
+                  onClick={() => {
+                    if (choice.id === "custom") {
+                      setOpen(false);
+                      setCustomOpen(true);
+                      return;
+                    }
+                    setSetupId(choice.id);
+                  }}
                   className={cn(
                     "press grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border bg-background px-4 py-3.5 text-left",
                     setupId === choice.id ? "border-primary" : "border-border/60",
@@ -140,19 +144,6 @@ export function NewGarden() {
                   {setupId === choice.id ? <Check className="h-4 w-4 shrink-0 text-primary" /> : null}
                 </button>
               ))}
-              {needsPositions ? (
-                <label className="mt-1 min-w-0 text-sm">
-                  <span className="mb-2 block text-muted-foreground">Number of positions</span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={24}
-                    className="input-soft min-w-0 px-3"
-                    value={positions}
-                    onChange={(event) => setPositions(Number(event.target.value))}
-                  />
-                </label>
-              ) : null}
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 <Button variant="outline" className="rounded-full" onClick={create}>
                   Create garden
@@ -188,6 +179,7 @@ export function NewGarden() {
           ) : null}
         </DialogContent>
       </Dialog>
+      <CustomSystemBuilder open={customOpen} onOpenChange={setCustomOpen} />
     </>
   );
 }

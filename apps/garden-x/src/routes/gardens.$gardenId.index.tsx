@@ -41,18 +41,21 @@ function GardenDetail() {
   const pods = garden.backendPositions?.length
     ? [...garden.backendPositions]
         .filter((position) => position.active !== false)
-        .sort((a, b) => (a.gridY ?? 0) - (b.gridY ?? 0) || (a.gridX ?? 0) - (b.gridX ?? 0) || a.number - b.number)
+        .sort((a, b) => (a.levelNumber ?? 1) - (b.levelNumber ?? 1) || (a.rowNumber ?? a.gridY ?? 0) - (b.rowNumber ?? b.gridY ?? 0) || (a.columnNumber ?? a.gridX ?? 0) - (b.columnNumber ?? b.gridX ?? 0) || a.number - b.number)
         .map((position) => {
           const label = `Pod ${position.number}`;
-          return { label, plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label) };
+          return { label, position, plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label) };
         })
     : garden.machine
       ? Array.from({ length: garden.machine.pods }, (_, i) => {
           const label = `Pod ${i + 1}`;
-          return { label, plant: plants.find((p) => p.slot === label) };
+          return { label, position: { number: i + 1, levelNumber: 1 }, plant: plants.find((p) => p.slot === label) };
         })
       : null;
   const occupiedPods = pods?.filter(({ plant }) => plant).length ?? 0;
+  const podLevels = pods
+    ? Array.from(new Set(pods.map(({ position }) => position.levelNumber ?? 1))).sort((a, b) => a - b)
+    : [];
 
   return (
     <div className="rise pb-16">
@@ -142,9 +145,14 @@ function GardenDetail() {
                 </div>
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
               </div>
-              <div className="bg-secondary/35 p-4 sm:p-8">
-                <div className={cn("mx-auto grid max-w-3xl gap-2.5 sm:gap-4", mapColumns(pods.length))}>
-                  {pods.map(({ label, plant }) =>
+              <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8">
+                {podLevels.map((levelNumber) => {
+                  const levelPods = pods.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber);
+                  const levelColumns = garden.customSystemLevels?.find((level) => level.levelNumber === levelNumber)?.columns;
+                  return <div key={levelNumber}>
+                    {podLevels.length > 1 ? <p className="eyebrow mb-3">Level {levelNumber}</p> : null}
+                    <div className={cn("mx-auto grid max-w-3xl gap-2.5 sm:gap-4", mapColumns(levelColumns ?? levelPods.length))}>
+                  {levelPods.map(({ label, plant }) =>
                     plant ? (
                       <Link
                         key={label}
@@ -182,7 +190,9 @@ function GardenDetail() {
                       </button>
                     ),
                   )}
-                </div>
+                    </div>
+                  </div>;
+                })}
               </div>
             </div>
           ) : (
@@ -329,5 +339,7 @@ function mapColumns(positionCount: number) {
   if (columns === 3) return "grid-cols-3";
   if (columns === 4) return "grid-cols-4";
   if (columns === 5) return "grid-cols-5";
-  return "grid-cols-6";
+  if (columns === 6) return "grid-cols-6";
+  if (columns === 7) return "grid-cols-7";
+  return "grid-cols-8";
 }

@@ -3,7 +3,7 @@ import type { GardenKind } from "./garden-data";
 /**
  * Known growing setups. A known system already defines its own physical
  * position count and layout — the user never types a pod number for these.
- * Manual position configuration belongs only to the custom entry.
+ * The custom entry opens its dedicated builder; it never changes a preset.
  */
 export interface GardenSetup {
   id: string;
@@ -12,8 +12,6 @@ export interface GardenSetup {
   kind: GardenKind;
   /** Systems with positions declare them here. */
   system?: { name: string; pods: number };
-  /** True only for the custom/other entry, which asks for a position count. */
-  manualPositions?: boolean;
 }
 
 export const gardenSetups: GardenSetup[] = [
@@ -43,10 +41,9 @@ export const gardenSetups: GardenSetup[] = [
   { id: "herb", label: "Herb corner", hint: "A small indoor herb collection", kind: "herb" },
   {
     id: "custom",
-    label: "Custom system",
-    hint: "Another system — you set the number of positions",
+    label: "Custom System",
+    hint: "Build your own layout",
     kind: "hydroponic",
-    manualPositions: true,
   },
 ];
 

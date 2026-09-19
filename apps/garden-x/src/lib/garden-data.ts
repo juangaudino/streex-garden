@@ -61,7 +61,19 @@ export interface Garden {
   note: string;
   machine?: { name: string; pods: number };
   backendSystemInstanceId?: string;
-  backendPositions?: Array<{ id: string; number: number; gridX?: number; gridY?: number; label?: string | null; active?: boolean }>;
+  backendPositions?: Array<{
+    id: string;
+    number: number;
+    gridX?: number;
+    gridY?: number;
+    levelNumber?: number;
+    rowNumber?: number;
+    columnNumber?: number;
+    label?: string | null;
+    active?: boolean;
+  }>;
+  customSystemDefinitionId?: string | null;
+  customSystemLevels?: Array<{ levelNumber: number; rows: number; columns: number }>;
   archived?: boolean;
 }
 

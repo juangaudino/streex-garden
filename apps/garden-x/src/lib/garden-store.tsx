@@ -16,6 +16,7 @@ import type { PublicStory } from "./public-story";
 import {
   closePlantCycleRecord,
   completeAttention,
+  createCustomSystemRecord,
   createGardenRecord,
   deleteGardenRecord,
   deletePhotoRecord,
@@ -31,7 +32,7 @@ import {
   updateGardenRecord,
   updatePlantIdentityRecord,
 } from "./garden-backend";
-import type { DeletePhotoResult } from "./garden-backend";
+import type { CustomSystemDraft, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight } from "./garden-logic";
 
@@ -62,6 +63,7 @@ interface StoreApi extends GardenState {
   deleteEvent: (id: string) => Promise<void>;
   deletePhoto: (id: string) => Promise<DeletePhotoResult>;
   addGarden: (g: Omit<Garden, "id">) => string;
+  createCustomSystem: (draft: CustomSystemDraft) => Promise<{ gardenId: string; photoWarning?: string }>;
   reorderGardens: (orderedIds: string[]) => void;
   publicStories: PublicStory[];
   savePublicStory: (story: PublicStory) => void;
@@ -396,6 +398,11 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         void createGardenRecord(next).then(refreshFromBackend).catch(() => undefined);
         setState((s) => ({ ...s, gardens: [...s.gardens, next] }));
         return id;
+      },
+      createCustomSystem: async (draft) => {
+        const result = await createCustomSystemRecord(draft);
+        await refreshFromBackend();
+        return result;
       },
       reorderGardens: (orderedIds) => {
         void reorderGardenRecords(orderedIds).catch(() => undefined);

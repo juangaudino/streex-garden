@@ -2,13 +2,18 @@ import type { GardenState, Garden, Plant, Photo, PlantEvent, CareTask, EventType
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
+import type { CustomSystemLevel } from "./custom-system";
 
 type BootstrapGarden = {
   id: string; name: string; system_instance_id: string; system_instance_name: string;
-  system_definition_key: string | null; legacy_system_model: string | null;
+  system_definition_key: string | null; legacy_system_model: string | null; custom_definition_id?: string | null;
   position_capacity: number; map_layout: string; cover_photo_id: string | null;
   kind: Garden["kind"]; place: string; note: string; sort_order: number; archived_at: string | null;
-  positions: Array<{ id: string; position_number: number; layout: { site_id: string; site_kind: string; is_active: boolean; grid_x: number; grid_y: number; label: string | null } | null }>;
+  levels?: Array<{ level_number: number; row_count: number; column_count: number }>;
+  positions: Array<{ id: string; position_number: number; layout: {
+    site_id: string; site_kind: string; is_active: boolean; grid_x: number; grid_y: number;
+    level_number?: number; row_number?: number; column_number?: number; label: string | null;
+  } | null }>;
 };
 type BootstrapPlant = {
   id: string; nickname: string | null; reference_key: string | null; common_name: string; scientific_name: string | null;
@@ -23,7 +28,7 @@ type BootstrapEvent = {
   note: string | null; event_data: Record<string, unknown>; revision: number;
 };
 type BootstrapPhoto = {
-  id: string; plant_instance_id: string; grow_cycle_id: string; event_id: string | null; storage_path: string; original_filename: string;
+  id: string; plant_instance_id: string | null; grow_cycle_id: string | null; event_id: string | null; storage_path: string; original_filename: string;
   content_type: string; byte_size: number; captured_at: string | null; captured_at_precision: string; width: number | null; height: number | null;
   media_scope: string; provenance?: string | null;
 };
@@ -177,11 +182,20 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     archived: Boolean(g.archived_at),
     machine: { name: g.system_instance_name || g.legacy_system_model || "Growing system", pods: g.position_capacity },
     backendSystemInstanceId: g.system_instance_id,
+    customSystemDefinitionId: g.custom_definition_id ?? null,
+    customSystemLevels: (g.levels ?? []).map((level) => ({
+      levelNumber: level.level_number,
+      rows: level.row_count,
+      columns: level.column_count,
+    })),
     backendPositions: (g.positions ?? []).map((p) => ({
       id: p.id,
       number: p.position_number,
       ...(p.layout?.grid_x !== undefined ? { gridX: p.layout.grid_x } : {}),
       ...(p.layout?.grid_y !== undefined ? { gridY: p.layout.grid_y } : {}),
+      ...(p.layout?.level_number !== undefined ? { levelNumber: p.layout.level_number } : {}),
+      ...(p.layout?.row_number !== undefined ? { rowNumber: p.layout.row_number } : {}),
+      ...(p.layout?.column_number !== undefined ? { columnNumber: p.layout.column_number } : {}),
       ...(p.layout?.label !== undefined ? { label: p.layout.label } : {}),
       active: p.layout?.is_active ?? true,
     })),
@@ -236,7 +250,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     const e = p.event_id ? eventById.get(p.event_id) : undefined;
     return {
       id: p.id,
-      plantId: p.plant_instance_id,
+      plantId: p.plant_instance_id ?? "",
       src: "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
       caption: e?.note?.trim() || "Photo",
@@ -562,6 +576,85 @@ export async function createGardenRecord(garden: Garden, systemDefinitionKey?: s
     p_position_capacity: capacity,
   });
   if (error) throw new Error(error.message);
+}
+
+export type CustomSystemDraft = {
+  name: string;
+  levels: CustomSystemLevel[];
+  photoDataUrl?: string | null;
+};
+
+async function uploadGardenCoverPhoto(gardenId: string, definitionId: string, src: string): Promise<void> {
+  const decoded = decodeDataUrl(src);
+  if (!decoded) throw new Error("System photo could not be read.");
+  const checksum = await sha256Hex(decoded.bytes);
+  const { data, error } = await getSupabaseClient().rpc("garden_prepare_media_photo", {
+    p_request_id: crypto.randomUUID(),
+    p_scope: "garden_cover",
+    p_garden_id: gardenId,
+    p_original_filename: "custom-system-photo",
+    p_content_type: decoded.mime,
+    p_byte_size: decoded.bytes.byteLength,
+    p_checksum_sha256: checksum,
+  });
+  if (error) throw new Error(error.message);
+  const prepared = data as { photo_id: string; storage_path: string };
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(
+    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
+    {
+      method: "POST",
+      headers: {
+        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+        Authorization: `Bearer ${session.access_token}`,
+        "content-type": decoded.mime,
+        "cache-control": "max-age=3600",
+        "x-upsert": "false",
+      },
+      body: decoded.bytes.buffer.slice(decoded.bytes.byteOffset, decoded.bytes.byteOffset + decoded.bytes.byteLength) as ArrayBuffer,
+    },
+  );
+  if (!response.ok && response.status !== 409) throw new Error("System photo upload failed.");
+  const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
+    p_photo_id: prepared.photo_id,
+    p_checksum_sha256: checksum,
+    p_width: null,
+    p_height: null,
+  });
+  if (uploaded.error) throw new Error(uploaded.error.message);
+  const attached = await getSupabaseClient().rpc("garden_x_set_custom_system_photo", {
+    p_request_id: crypto.randomUUID(),
+    p_definition_id: definitionId,
+    p_photo_id: prepared.photo_id,
+  });
+  if (attached.error) throw new Error(attached.error.message);
+}
+
+/** Creates the user-owned definition, instance, levels and positions atomically. */
+export async function createCustomSystemRecord(draft: CustomSystemDraft): Promise<{ gardenId: string; photoWarning?: string }> {
+  const gardenId = crypto.randomUUID();
+  const systemInstanceId = crypto.randomUUID();
+  const definitionId = crypto.randomUUID();
+  const { data, error } = await getSupabaseClient().rpc("garden_x_create_custom_system", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: gardenId,
+    p_system_instance_id: systemInstanceId,
+    p_definition_id: definitionId,
+    p_name: draft.name,
+    p_levels: draft.levels,
+  });
+  if (error) throw new Error(error.message);
+  let photoWarning: string | undefined;
+  if (draft.photoDataUrl) {
+    try {
+      await uploadGardenCoverPhoto(gardenId, definitionId, draft.photoDataUrl);
+    } catch (uploadError) {
+      photoWarning = uploadError instanceof Error ? uploadError.message : "The system was created, but its photo could not be uploaded.";
+    }
+  }
+  return { gardenId: (data as { garden_id?: string } | null)?.garden_id ?? gardenId, ...(photoWarning ? { photoWarning } : {}) };
 }
 
 export async function updateGardenRecord(garden: Garden): Promise<void> {

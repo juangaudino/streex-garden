@@ -21,6 +21,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { statusMeta, type Confidence } from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Photo, Plant, PlantStatus } from "@/lib/garden-data";
 
@@ -144,7 +145,7 @@ export function PlantThumb({
       )}
     >
       {photo ? (
-        <img src={photo.src} alt={plant.name} loading="lazy" className="h-full w-full object-cover" />
+        <PhotoImage photo={photo} alt={plant.name} className="h-full w-full object-cover" />
       ) : (
         <div className="grid h-full w-full place-items-center text-muted-foreground">
           <Leaf className="h-5 w-5" />
@@ -171,10 +172,9 @@ export function PlantCard({
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
         {photo ? (
-          <img
-            src={photo.src}
+          <PhotoImage
+            photo={photo}
             alt={`${plant.name}, ${plant.species}`}
-            loading="lazy"
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
         ) : null}

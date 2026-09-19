@@ -2,6 +2,7 @@ import { CalendarDays, Leaf } from "lucide-react";
 import type { PublicStory as PublicStoryData } from "@/lib/public-story";
 import { eventLabels, formatDate } from "@/lib/garden-logic";
 import { ProvenanceTag } from "@/components/garden/atoms";
+import { PhotoImage } from "@/components/garden/photo-image";
 
 export function PublicStoryView({ story, preview = false }: { story: PublicStoryData; preview?: boolean }) {
   const photos = story.moments.filter((moment) => moment.kind === "photo");
@@ -13,7 +14,7 @@ export function PublicStoryView({ story, preview = false }: { story: PublicStory
     <article className="min-h-screen bg-background text-foreground">
       <header className="relative min-h-[70svh] overflow-hidden bg-secondary">
         {cover?.kind === "photo" ? (
-          <img src={cover.photo.src} alt={`${story.plant.name}, ${cover.photo.caption}`} className="absolute inset-0 h-full w-full object-cover" />
+          <PhotoImage photo={cover.photo} alt={`${story.plant.name}, ${cover.photo.caption}`} className="absolute inset-0 h-full w-full object-cover" loading="eager" />
         ) : (
           <div className="absolute inset-0 grid place-items-center text-muted-foreground"><Leaf className="h-10 w-10" strokeWidth={1.25} /></div>
         )}
@@ -51,7 +52,7 @@ export function PublicStoryView({ story, preview = false }: { story: PublicStory
                 {moment.kind === "photo" ? (
                   <figure>
                     <div className="overflow-hidden rounded-2xl bg-secondary">
-                      <img src={moment.photo.src} alt={moment.photo.caption} loading="lazy" className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" />
+                      <PhotoImage photo={moment.photo} alt={moment.photo.caption} className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" />
                     </div>
                     <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{moment.photo.caption}</figcaption>
                   </figure>

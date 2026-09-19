@@ -6,6 +6,7 @@ import { useGarden } from "@/lib/garden-store";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { PhotoImage } from "@/components/garden/photo-image";
 
 export function EditGarden({ garden, plants, photos, className }: { garden: Garden; plants: Plant[]; photos: Photo[]; className?: string }) {
   const { updateGarden, updatePlant, deleteGarden } = useGarden();
@@ -76,7 +77,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
             <p className="mt-1 text-xs text-muted-foreground">Automatic always follows the newest real photograph available.</p>
             <div className="no-scrollbar mt-3 flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1">
               <Button type="button" variant="ghost" onClick={() => setCoverPhotoId("auto")} className={cn("h-24 w-24 shrink-0 rounded-2xl border text-xs", coverPhotoId === "auto" ? "border-primary bg-accent" : "border-border")}><span>Automatic</span>{coverPhotoId === "auto" ? <Check /> : null}</Button>
-              {choices.map((photo) => <Button type="button" key={photo.id} variant="ghost" onClick={() => setCoverPhotoId(photo.id)} className={cn("relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 p-1", coverPhotoId === photo.id ? "border-primary" : "border-transparent")}><img src={photo.src} alt={photo.caption} className="h-full w-full rounded-xl object-cover" />{coverPhotoId === photo.id ? <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-card text-primary"><Check className="h-3 w-3" /></span> : null}</Button>)}
+              {choices.map((photo) => <Button type="button" key={photo.id} variant="ghost" onClick={() => setCoverPhotoId(photo.id)} className={cn("relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 p-1", coverPhotoId === photo.id ? "border-primary" : "border-transparent")}><PhotoImage photo={photo} alt={photo.caption} className="h-full w-full rounded-xl object-cover" />{coverPhotoId === photo.id ? <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-card text-primary"><Check className="h-3 w-3" /></span> : null}</Button>)}
             </div>
           </div>
           <div className="min-w-0 border-t border-border/70 pt-5">
@@ -88,7 +89,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
                 const editing = selectedPlantId === plant.id;
                 return <div key={plant.id} className="min-w-0 rounded-2xl border border-border/70 bg-card p-2.5">
                   <Button type="button" variant="ghost" onClick={() => { setSelectedPlantId(editing ? null : plant.id); setPersonalName(plant.name); }} className="grid h-auto w-full min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl p-1 text-left">
-                    {plantPhoto ? <img src={plantPhoto.src} alt="" className="h-11 w-11 shrink-0 rounded-xl object-cover" /> : <span className="h-11 w-11 shrink-0 rounded-xl bg-secondary" />}
+                    {plantPhoto ? <PhotoImage photo={plantPhoto} alt="" className="h-11 w-11 shrink-0 rounded-xl object-cover" /> : <span className="h-11 w-11 shrink-0 rounded-xl bg-secondary" />}
                     <span className="min-w-0"><span className="block truncate font-medium">{plant.name}</span><span className="block truncate text-xs font-normal text-muted-foreground">{plant.species} · <span className="italic">{plant.scientific}</span></span></span>
                     <ChevronRight className={cn("h-4 w-4 shrink-0 transition-transform", editing && "rotate-90")} />
                   </Button>

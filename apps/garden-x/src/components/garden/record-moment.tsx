@@ -17,11 +17,12 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { formatDate, maintenanceLabels, plantPhotos } from "@/lib/garden-logic";
+import { formatDate, gardenCoverPhoto, maintenanceLabels, plantPhotos } from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Plant } from "@/lib/garden-data";
 import { maintenanceIcons, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PhotoImage } from "@/components/garden/photo-image";
 
 export type MomentFlow =
   | "observation"
@@ -336,7 +337,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                           photoId === p.id ? "ring-primary" : "ring-transparent",
                         )}
                       >
-                        <img src={p.src} alt={p.caption} loading="lazy" className="h-full w-full object-cover" />
+                        <PhotoImage photo={p} alt={p.caption} className="h-full w-full object-cover" />
                         <span className="absolute inset-x-0 bottom-0 bg-black/45 px-1 py-0.5 text-[0.6rem] text-white">
                           {formatDate(p.daysAgo)}
                         </span>
@@ -548,7 +549,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                         gardenId === g.id ? "border-primary/60 bg-primary/8" : "border-border/60 bg-background",
                       )}
                     >
-                      <img src={g.cover} alt={g.name} className="h-10 w-10 rounded-xl object-cover" />
+                      {gardenCoverPhoto(g, store.plants, store.photos) ? <PhotoImage photo={gardenCoverPhoto(g, store.plants, store.photos)!} alt={g.name} className="h-10 w-10 rounded-xl object-cover" /> : <span className="h-10 w-10 rounded-xl bg-secondary" />}
                       <span className="min-w-0">
                         <span className="block truncate text-sm">{g.name}</span>
                         <span className="block truncate text-xs text-muted-foreground">

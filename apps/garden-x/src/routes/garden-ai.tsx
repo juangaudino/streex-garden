@@ -12,6 +12,8 @@ import { PlantThumb, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { useGarden } from "@/lib/garden-store";
 import { cn } from "@/lib/utils";
+import { gardenCoverPhoto } from "@/lib/garden-logic";
+import { PhotoImage } from "@/components/garden/photo-image";
 
 export const Route = createFileRoute("/garden-ai")({
   head: () => ({
@@ -42,7 +44,7 @@ function GardenAI() {
   const selected = activePlants.find((plant) => plant.id === plantId);
   const selectedPhoto = selected ? store.photos.find((photo) => photo.id === selected.heroPhotoId) : undefined;
   const contextGarden = store.gardens.find((garden) => garden.id === gardenId) ?? store.gardens[0];
-  const contextGardenPhoto = contextGarden?.cover;
+  const contextGardenPhoto = contextGarden ? gardenCoverPhoto(contextGarden, store.plants, store.photos) : undefined;
   const selectedEvents = selected ? store.events.filter((event) => event.plantId === selected.id) : [];
   const selectedPhotos = selected ? store.photos.filter((photo) => photo.plantId === selected.id) : [];
   const selectedTasks = selected ? store.tasks.filter((task) => task.plantId === selected.id && !task.done) : [];
@@ -127,7 +129,7 @@ function GardenAI() {
 
           {selected ? (
             <div className="relative col-span-2 min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:col-span-1 sm:col-start-1 sm:row-start-1">
-              {selectedPhoto ? <img src={selectedPhoto.src} alt={selected.name} className="aspect-[16/9] w-full object-cover" /> : null}
+              {selectedPhoto ? <PhotoImage photo={selectedPhoto} alt={selected.name} className="aspect-[16/9] w-full object-cover" loading="eager" /> : null}
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 p-4 sm:block sm:p-5">
                 <div className="min-w-0">
                   <p className="eyebrow">Selected plant</p>
@@ -139,7 +141,7 @@ function GardenAI() {
             </div>
           ) : contextGarden && contextGardenPhoto ? (
             <div className="relative hidden min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:col-start-1 sm:row-start-1 sm:block">
-              <img src={contextGardenPhoto} alt={`${contextGarden.name} garden`} className="aspect-[16/9] w-full object-cover" />
+              <PhotoImage photo={contextGardenPhoto} alt={`${contextGarden.name} garden`} className="aspect-[16/9] w-full object-cover" />
               <div className="p-5">
                 <p className="eyebrow">Garden context</p>
                 <p className="mt-1 font-display text-xl">{contextGarden.name}</p>

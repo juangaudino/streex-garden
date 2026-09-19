@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import type { Photo } from "@/lib/garden-data";
+import { resolvePhotoUrl } from "@/lib/garden-backend";
 
 /** A clean full-screen look at one photograph. Nothing else. */
 export function PhotoViewer({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
@@ -37,6 +39,11 @@ export function usePhotoViewer() {
   const [photo, setPhoto] = useState<{ src: string; alt: string } | null>(null);
   return {
     open: (src: string, alt: string) => setPhoto({ src, alt }),
+    openPhoto: (photo: Photo, alt = photo.caption) => {
+      void resolvePhotoUrl(photo).then((src) => {
+        if (src) setPhoto({ src, alt });
+      }).catch(() => undefined);
+    },
     viewer: photo ? <PhotoViewer src={photo.src} alt={photo.alt} onClose={() => setPhoto(null)} /> : null,
   };
 }

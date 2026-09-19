@@ -27,6 +27,15 @@ export function gardenCover(garden: Garden, plants: Plant[], photos: Photo[]) {
   return photos.filter((photo) => plantIds.has(photo.plantId)).sort((a, b) => a.daysAgo - b.daysAgo)[0]?.src ?? garden.cover;
 }
 
+export function gardenCoverPhoto(garden: Garden, plants: Plant[], photos: Photo[]) {
+  if (garden.coverPhotoId) {
+    const selected = photos.find((photo) => photo.id === garden.coverPhotoId);
+    if (selected) return selected;
+  }
+  const plantIds = new Set(plants.filter((plant) => plant.gardenId === garden.id).map((plant) => plant.id));
+  return photos.filter((photo) => plantIds.has(photo.plantId)).sort((a, b) => a.daysAgo - b.daysAgo)[0];
+}
+
 export function dateFromDaysAgo(daysAgo: number) {
   return new Date(Date.now() - daysAgo * dayMs);
 }
@@ -77,6 +86,47 @@ export const plantPhotos = (photos: Photo[], plantId: string) =>
 
 export const plantEvents = (events: PlantEvent[], plantId: string) =>
   byRecency(events.filter((e) => e.plantId === plantId));
+
+export type PlantTimelineEntry =
+  | { kind: "event"; event: PlantEvent; photos: Photo[]; daysAgo: number }
+  | { kind: "photo"; photo: Photo; photos: Photo[]; daysAgo: number };
+
+/**
+ * Projects the canonical event stream together with photo evidence that has
+ * no event row. Evidence-only photos remain evidence; this function never
+ * manufactures a PlantEvent or changes the persisted domain model.
+ */
+export function plantTimeline(events: PlantEvent[], photos: Photo[], plantId: string): PlantTimelineEntry[] {
+  const plantEventsById = new Map(
+    events.filter((event) => event.plantId === plantId).map((event) => [event.id, event]),
+  );
+  const photosByEventId = new Map<string, Photo[]>();
+  const evidenceOnly: Photo[] = [];
+  for (const photo of photos.filter((item) => item.plantId === plantId)) {
+    if (photo.backendEventId && plantEventsById.has(photo.backendEventId)) {
+      const group = photosByEventId.get(photo.backendEventId) ?? [];
+      group.push(photo);
+      photosByEventId.set(photo.backendEventId, group);
+    } else {
+      evidenceOnly.push(photo);
+    }
+  }
+  const entries: PlantTimelineEntry[] = [
+    ...plantEventsById.values().map((event) => ({
+      kind: "event" as const,
+      event,
+      photos: photosByEventId.get(event.id) ?? [],
+      daysAgo: event.daysAgo,
+    })),
+    ...evidenceOnly.map((photo) => ({
+      kind: "photo" as const,
+      photo,
+      photos: [photo],
+      daysAgo: photo.daysAgo,
+    })),
+  ];
+  return entries.sort((a, b) => b.daysAgo - a.daysAgo || (a.kind === "photo" ? -1 : 1));
+}
 
 export function eventsBetween(events: PlantEvent[], plantId: string, aDaysAgo: number, bDaysAgo: number) {
   const oldest = Math.max(aDaysAgo, bDaysAgo);

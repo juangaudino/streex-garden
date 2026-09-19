@@ -7,7 +7,8 @@ import { PageHeader } from "@/components/garden/shell";
 import { StatusDot } from "@/components/garden/atoms";
 import { NewGarden } from "@/components/garden/new-garden";
 import { EditGarden } from "@/components/garden/edit-garden";
-import { gardenCover } from "@/lib/garden-logic";
+import { gardenCoverPhoto } from "@/lib/garden-logic";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -82,14 +83,13 @@ function Gardens() {
           const body = (
             <>
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={gardenCover(garden, store.plants, store.photos)}
+                {gardenCoverPhoto(garden, store.plants, store.photos) ? <PhotoImage
+                  photo={gardenCoverPhoto(garden, store.plants, store.photos)!}
                   alt={garden.name}
-                  loading="lazy"
                   width={1280}
                   height={960}
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-                />
+                /> : <div className="h-full w-full bg-secondary" />}
                 <div className="veil absolute inset-0" />
                 <div className="absolute inset-x-0 bottom-0 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3 p-5">
                   <div className="min-w-0">

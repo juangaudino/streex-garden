@@ -6,6 +6,7 @@ import { useGarden } from "@/lib/garden-store";
 import { analysePhoto, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/plants/$plantId/check")({
@@ -96,7 +97,7 @@ function Check_() {
         {/* photo pane */}
         <div>
           <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
-            <img src={photo.src} alt={photo.caption} className="aspect-[4/5] w-full object-cover" />
+            <PhotoImage photo={photo} alt={photo.caption} className="aspect-[4/5] w-full object-cover" loading="eager" />
             {phase === "scanning" ? (
               <>
                 <div className="absolute inset-0 bg-primary/10" />
@@ -130,7 +131,7 @@ function Check_() {
                   p.id === selected ? "border-primary" : "border-transparent opacity-70",
                 )}
               >
-                <img src={p.src} alt={p.caption} loading="lazy" className="h-full w-full object-cover" />
+                <PhotoImage photo={p} alt={p.caption} className="h-full w-full object-cover" />
               </button>
             ))}
           </div>

@@ -27,12 +27,14 @@ import {
   storyFacts,
   plantCompanions,
   latestPlantPhoto,
+  plantTimeline,
 } from "@/lib/garden-logic";
 import type { MaintenanceType } from "@/lib/garden-data";
 import { ProvenanceTag, SectionTitle, StatusDot, eventIcons, maintenanceIcons } from "@/components/garden/atoms";
 import { RecordMomentSheet, careShortcuts, type MomentFlow } from "@/components/garden/record-moment";
 import { HistoryShareDialog } from "@/components/garden/share-story";
 import { usePhotoViewer } from "@/components/garden/photo-viewer";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -87,6 +89,7 @@ function PlantProfile() {
   const reference = knowledgeById(plant.knowledgeId);
   const companions = plantCompanions(plant.knowledgeId);
   const history = useMemo(() => chronological(events), [events]);
+  const timeline = useMemo(() => plantTimeline(store.events, store.photos, plant.id), [store.events, store.photos, plant.id]);
 
   const first = photos[0];
   const latest = photos[photos.length - 1];
@@ -97,8 +100,8 @@ function PlantProfile() {
       <div className="relative">
         <div className="relative aspect-[4/5] sm:aspect-[21/9]">
           {hero ? (
-            <img
-              src={hero.src}
+            <PhotoImage
+              photo={hero}
               alt={`${plant.name}, ${plant.species}`}
               width={1024}
               height={1280}
@@ -225,8 +228,8 @@ function PlantProfile() {
                 <div className="grid grid-cols-2 gap-1 bg-border/60">
                   {[first, latest].map((p, i) => (
                     <figure key={p.id} className="relative bg-card">
-                      <button type="button" onClick={() => photoViewer.open(p.src, p.caption)} aria-label={`View ${p.caption} larger`} className="block w-full">
-                        <img src={p.src} alt={p.caption} loading="lazy" className="aspect-[3/4] w-full object-cover sm:aspect-[4/3]" />
+                      <button type="button" onClick={() => photoViewer.openPhoto(p)} aria-label={`View ${p.caption} larger`} className="block w-full">
+                        <PhotoImage photo={p} alt={p.caption} className="aspect-[3/4] w-full object-cover sm:aspect-[4/3]" />
                       </button>
                       <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                         <p className="text-[0.65rem] tracking-[0.14em] text-white/70 uppercase">
@@ -250,12 +253,13 @@ function PlantProfile() {
             <ol className="space-y-5">
               {history.map((e, i) => {
                 const Icon = eventIcons[e.type];
-                const photo = store.photos.find((p) => p.id === e.photoId);
+                const eventPhotos = (e.photoIds ?? (e.photoId ? [e.photoId] : [])).map((id) => store.photos.find((p) => p.id === id)).filter(Boolean) as typeof store.photos;
+                const photo = eventPhotos[0];
                 const day = plant.plantedDaysAgo - e.daysAgo;
                 return (
                   <li key={e.id} className={cn("grid gap-5 border-t border-border/70 pt-5", photo && "sm:grid-cols-[minmax(0,1fr)_minmax(15rem,0.8fr)] sm:items-center", !e.milestone && !photo && "ml-3 border-l border-t-0 py-1 pl-5")}>
                     <div className="min-w-0"><p className="eyebrow">Day {Math.max(day, 0)} · {formatDate(e.daysAgo)}</p><div className={cn("flex items-start gap-3", e.milestone ? "mt-3" : "mt-2")}><span className={cn("grid shrink-0 place-items-center rounded-full bg-secondary text-primary", e.milestone ? "h-8 w-8" : "h-6 w-6")}><Icon className={e.milestone ? "h-4 w-4" : "h-3 w-3"} /></span><div><h3 className={cn(e.milestone ? "font-display text-2xl" : "text-sm font-medium")}>{e.title}</h3>{e.detail ? <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{e.detail}</p> : null}<div className="mt-3"><ProvenanceTag kind={e.provenance === "recorded" ? "recorded" : e.provenance === "observed" ? "observed" : "inferred"} /></div></div></div></div>
-                    {photo ? <figure className="overflow-hidden rounded-2xl shadow-soft"><button type="button" onClick={() => photoViewer.open(photo.src, photo.caption)} aria-label={`View ${photo.caption} larger`} className="block w-full"><img src={photo.src} alt={photo.caption} loading="lazy" className="aspect-[4/3] w-full object-cover" /></button><figcaption className="bg-card px-3 py-2 text-xs text-muted-foreground">{photo.caption}</figcaption></figure> : null}
+                    {photo ? <figure className="overflow-hidden rounded-2xl shadow-soft"><button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="block w-full"><PhotoImage photo={photo} alt={photo.caption} className="aspect-[4/3] w-full object-cover" /></button><figcaption className="bg-card px-3 py-2 text-xs text-muted-foreground">{photo.caption}{eventPhotos.length > 1 ? ` · +${eventPhotos.length - 1} more` : ""}</figcaption></figure> : null}
                     {i === history.length - 1 ? (
                       <p className="font-display text-lg text-primary sm:col-span-2">
                         …and {relativeDay(e.daysAgo).toLowerCase()} the story is still open.
@@ -279,9 +283,25 @@ function PlantProfile() {
           <div className="rise max-w-3xl">
             <SectionTitle>Everything recorded</SectionTitle>
             <ul className="space-y-2">
-              {events.map((e) => {
+              {timeline.map((entry) => {
+                if (entry.kind === "photo") {
+                  const photo = entry.photo;
+                  return (
+                    <li key={`photo-${photo.id}`} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 rounded-2xl border border-border/60 bg-card p-4">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground"><Film className="h-4 w-4" /></span>
+                      <div className="min-w-0">
+                        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2"><p className="truncate text-sm font-medium">Photo</p><span className="numeral shrink-0 text-xs text-muted-foreground">{formatDate(photo.daysAgo)}</span></div>
+                        <p className="mt-0.5 text-xs text-muted-foreground">Photographic evidence · {relativeDay(photo.daysAgo)}</p>
+                        <p className="mt-2 text-sm text-muted-foreground">{photo.caption}</p>
+                        <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="press mt-3 block"><PhotoImage photo={photo} alt={photo.caption} className="h-24 w-24 rounded-xl object-cover" /></button>
+                        <div className="mt-2.5"><ProvenanceTag kind="observed" /></div>
+                      </div>
+                    </li>
+                  );
+                }
+                const e = entry.event;
                 const Icon = eventIcons[e.type];
-                const photo = store.photos.find((p) => p.id === e.photoId);
+                const photo = entry.photos[0];
                 return (
                   <li
                     key={e.id}
@@ -304,16 +324,11 @@ function PlantProfile() {
                       {photo ? (
                         <button
                           type="button"
-                          onClick={() => photoViewer.open(photo.src, photo.caption)}
+                          onClick={() => photoViewer.openPhoto(photo)}
                           aria-label={`View ${photo.caption} larger`}
                           className="press mt-3 block"
                         >
-                          <img
-                            src={photo.src}
-                            alt={photo.caption}
-                            loading="lazy"
-                            className="h-24 w-24 rounded-xl object-cover"
-                          />
+                          <span className="relative block h-24 w-24"><PhotoImage photo={photo} alt={photo.caption} className="h-24 w-24 rounded-xl object-cover" />{entry.photos.length > 1 ? <span className="absolute right-1 bottom-1 rounded-full bg-ink/70 px-1.5 py-0.5 text-[0.6rem] text-white">+{entry.photos.length - 1}</span> : null}</span>
                         </button>
                       ) : null}
                       <div className="mt-2.5">
@@ -345,8 +360,8 @@ function PlantProfile() {
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {chronological(photos).map((photo) => (
                 <figure key={photo.id} className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
-                  <button type="button" onClick={() => photoViewer.open(photo.src, photo.caption)} aria-label={`View ${photo.caption} larger`} className="block w-full">
-                    <img src={photo.src} alt={photo.caption} loading="lazy" className="aspect-square w-full object-cover" />
+                  <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="block w-full">
+                    <PhotoImage photo={photo} alt={photo.caption} className="aspect-square w-full object-cover" />
                   </button>
                   <figcaption className="p-3.5">
                     <p className="eyebrow">{formatDate(photo.daysAgo)}</p>
@@ -359,8 +374,8 @@ function PlantProfile() {
               ))}
             </div>
             <p className="mt-5 max-w-xl text-xs text-muted-foreground">
-              Adding a photo creates a timeline event automatically, so the series stays honest about when each
-              frame was taken.
+              Recorded moments and historical photo evidence appear together here. Each frame keeps its capture
+              date and provenance.
             </p>
           </div>
         ) : null}

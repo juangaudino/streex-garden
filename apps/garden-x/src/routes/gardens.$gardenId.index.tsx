@@ -2,11 +2,12 @@ import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, Cpu, Film, LayoutGrid, List, Plus } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { ageLabel, dueLabel, gardenCover, openTasks } from "@/lib/garden-logic";
+import { ageLabel, dueLabel, gardenCoverPhoto, openTasks } from "@/lib/garden-logic";
 import { PlantCard, SectionTitle } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
+import { PhotoImage } from "@/components/garden/photo-image";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -57,13 +58,14 @@ function GardenDetail() {
     <div className="rise pb-16">
       <div className="relative">
         <div className="relative aspect-[4/3] sm:aspect-[21/9]">
-          <img
-            src={gardenCover(garden, store.plants, store.photos)}
+          {gardenCoverPhoto(garden, store.plants, store.photos) ? <PhotoImage
+            photo={gardenCoverPhoto(garden, store.plants, store.photos)!}
             alt={garden.name}
             width={1280}
             height={960}
             className="h-full w-full object-cover"
-          />
+            loading="eager"
+          /> : <div className="h-full w-full bg-secondary" />}
           <div className="veil absolute inset-0" />
         </div>
         <Link
@@ -153,12 +155,11 @@ function GardenDetail() {
                       >
                         <span className="eyebrow mb-2 block">{label}</span>
                         <span className="block aspect-square w-full max-w-24 overflow-hidden rounded-full border-4 border-background shadow-soft">
-                          <img
-                            src={photoById(plant.heroPhotoId)?.src}
+                          {photoById(plant.heroPhotoId) ? <PhotoImage
+                            photo={photoById(plant.heroPhotoId)!}
                             alt=""
-                            loading="lazy"
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
+                          /> : null}
                         </span>
                         <span className="mt-2 block min-w-0 max-w-full">
                           <span className="block truncate text-sm font-medium">{plant.name}</span>
@@ -219,12 +220,11 @@ function GardenDetail() {
                       className="press overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
                     >
                       <div className="aspect-square overflow-hidden bg-secondary">
-                        <img
-                          src={photoById(plant.heroPhotoId)?.src}
+                        {photoById(plant.heroPhotoId) ? <PhotoImage
+                          photo={photoById(plant.heroPhotoId)!}
                           alt={plant.name}
-                          loading="lazy"
                           className="h-full w-full object-cover"
-                        />
+                        /> : null}
                       </div>
                       <div className="p-3">
                         <p className="eyebrow">{label}</p>

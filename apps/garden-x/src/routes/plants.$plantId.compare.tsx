@@ -5,6 +5,7 @@ import { useGarden } from "@/lib/garden-store";
 import { ageLabel, comparePhotos, eventsBetween, formatDate, plantPhotos, type CompareResult } from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/plants/$plantId/compare")({
@@ -91,10 +92,10 @@ function Compare() {
       {/* wipe comparison */}
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="relative overflow-hidden rounded-3xl border border-border/70 shadow-lift select-none">
-          <img src={b.src} alt={b.caption} className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" />
+          <PhotoImage photo={b} alt={b.caption} className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" loading="eager" />
           <div className="absolute inset-0 overflow-hidden" style={{ width: `${slider}%` }}>
-            <img
-              src={a.src}
+            <PhotoImage
+              photo={a}
               alt={a.caption}
               className="h-full w-full object-cover"
               style={{ width: `${(100 / Math.max(slider, 1)) * 100}%`, maxWidth: "none" }}
@@ -149,7 +150,7 @@ function Compare() {
                     p.id === picker.value ? "border-primary" : "border-transparent opacity-70",
                   )}
                 >
-                  <img src={p.src} alt={p.caption} loading="lazy" className="h-16 w-16 object-cover" />
+                  <PhotoImage photo={p} alt={p.caption} className="h-16 w-16 object-cover" />
                   <span className="numeral block px-1 pb-1 text-[0.6rem] text-muted-foreground">
                     {formatDate(p.daysAgo)}
                   </span>

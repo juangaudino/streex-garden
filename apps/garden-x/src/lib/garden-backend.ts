@@ -24,7 +24,7 @@ type BootstrapEvent = {
 type BootstrapPhoto = {
   id: string; plant_instance_id: string; grow_cycle_id: string; event_id: string | null; storage_path: string; original_filename: string;
   content_type: string; byte_size: number; captured_at: string | null; captured_at_precision: string; width: number | null; height: number | null;
-  media_scope: string;
+  media_scope: string; provenance?: string | null;
 };
 type BootstrapAttention = {
   id: string; plant_instance_id: string; grow_cycle_id: string; garden_id: string | null; purpose: string; subject_key: string;
@@ -90,11 +90,62 @@ function maintenanceType(purpose: string, subject: string): MaintenanceType {
   if (value.includes("clean") || value.includes("pump")) return "cleaning";
   return "custom";
 }
-async function signedUrls(paths: string[]): Promise<Map<string, string>> {
-  if (!paths.length) return new Map();
-  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, 60 * 60);
-  if (error) throw error;
-  return new Map((data ?? []).flatMap((item) => item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : []));
+const signedUrlTtlSeconds = 60 * 60;
+const signedUrlRefreshSkewMs = 60 * 1000;
+const signedUrlCache = new Map<string, { url: string; expiresAt: number }>();
+const signedUrlPending = new Map<string, Array<{ resolve: (url: string) => void; reject: (error: unknown) => void }>>();
+let signedUrlFlushScheduled = false;
+const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, lastDurationMs: 0 };
+
+function scheduleSignedUrlFlush() {
+  if (signedUrlFlushScheduled) return;
+  signedUrlFlushScheduled = true;
+  queueMicrotask(() => {
+    signedUrlFlushScheduled = false;
+    void flushSignedUrlRequests();
+  });
+}
+
+async function flushSignedUrlRequests() {
+  const paths = [...signedUrlPending.keys()];
+  if (!paths.length) return;
+  const started = typeof performance !== "undefined" ? performance.now() : Date.now();
+  photoUrlMetrics.signRequests += 1;
+  photoUrlMetrics.pathsRequested += paths.length;
+  const { data, error } = await getSupabaseClient().storage.from("garden-originals").createSignedUrls(paths, signedUrlTtlSeconds);
+  photoUrlMetrics.lastDurationMs = (typeof performance !== "undefined" ? performance.now() : Date.now()) - started;
+  const signedByPath = new Map((data ?? []).flatMap((item) => item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : []));
+  for (const path of paths) {
+    const waiters = signedUrlPending.get(path) ?? [];
+    signedUrlPending.delete(path);
+    if (error) {
+      for (const waiter of waiters) waiter.reject(error);
+      continue;
+    }
+    const url = signedByPath.get(path) ?? "";
+    if (url) signedUrlCache.set(path, { url, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
+    for (const waiter of waiters) waiter.resolve(url);
+  }
+}
+
+/** Resolve one private photo only when a rendered surface needs it. */
+export function resolvePhotoUrl(photo: Pick<Photo, "src" | "backendStoragePath">): Promise<string> {
+  if (!photo.backendStoragePath) return Promise.resolve(photo.src);
+  const cached = signedUrlCache.get(photo.backendStoragePath);
+  if (cached && cached.expiresAt - Date.now() > signedUrlRefreshSkewMs) {
+    photoUrlMetrics.cacheHits += 1;
+    return Promise.resolve(cached.url);
+  }
+  return new Promise<string>((resolve, reject) => {
+    const waiters = signedUrlPending.get(photo.backendStoragePath!) ?? [];
+    waiters.push({ resolve, reject });
+    signedUrlPending.set(photo.backendStoragePath!, waiters);
+    scheduleSignedUrlFlush();
+  });
+}
+
+export function getPhotoUrlMetrics() {
+  return { ...photoUrlMetrics };
 }
 
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
@@ -107,9 +158,6 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const historicalResponse = await getSupabaseClient().rpc("garden_x_get_historical_photos");
   if (historicalResponse.error) throw new Error(historicalResponse.error.message);
   const allPhotos = [...(b.photos ?? []), ...((historicalResponse.data ?? []) as BootstrapPhoto[])].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
-
-  const signedByPath = await signedUrls([...new Set(allPhotos.map((photo) => photo.storage_path))]);
-  const photoUrl = new Map(allPhotos.map((photo) => [photo.id, signedByPath.get(photo.storage_path) ?? ""]));
 
   const gardens: Garden[] = (b.gardens ?? []).map(g => ({
     id: g.id,
@@ -150,17 +198,30 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     backendPositionId: p.position_id,
   }));
 
-  const events: PlantEvent[] = (b.events ?? []).map(e => ({
-    id: e.id,
-    plantId: e.plant_instance_id,
-    daysAgo: daysAgo(e.occurred_at),
-    type: eventType(e.event_type, e.event_data ?? {}),
-    title: titleFor(e),
-    ...(e.note ? { detail: e.note } : {}),
-    provenance: provenance(e.event_type),
-    backendEventType: e.event_type,
-    backendRevision: e.revision,
-  }));
+  const photosByEventId = new Map<string, string[]>();
+  for (const photo of allPhotos) {
+    if (!photo.event_id) continue;
+    const ids = photosByEventId.get(photo.event_id) ?? [];
+    ids.push(photo.id);
+    photosByEventId.set(photo.event_id, ids);
+  }
+
+  const events: PlantEvent[] = (b.events ?? []).map((e) => {
+    const eventPhotoIds = photosByEventId.get(e.id);
+    return {
+      id: e.id,
+      plantId: e.plant_instance_id,
+      daysAgo: daysAgo(e.occurred_at),
+      type: eventType(e.event_type, e.event_data ?? {}),
+      title: titleFor(e),
+      ...(e.note ? { detail: e.note } : {}),
+      provenance: provenance(e.event_type),
+      backendEventType: e.event_type,
+      backendRevision: e.revision,
+      ...(eventPhotoIds ? { photoIds: eventPhotoIds } : {}),
+      ...(eventPhotoIds?.[0] ? { photoId: eventPhotoIds[0] } : {}),
+    };
+  });
 
   const eventById = new Map((b.events ?? []).map(e => [e.id, e]));
   const photos: Photo[] = allPhotos.map(p => {
@@ -168,11 +229,15 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     return {
       id: p.id,
       plantId: p.plant_instance_id,
-      src: photoUrl.get(p.id) ?? "",
+      src: "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
-      caption: e?.note?.trim() || "Historical garden photo",
+      caption: e?.note?.trim() || "Photo",
       metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
       backendStoragePath: p.storage_path,
+      capturedAt: p.captured_at,
+      capturedAtPrecision: p.captured_at_precision,
+      provenance: p.provenance ?? (p.event_id ? "recorded" : "historical_evidence"),
+      isHistoricalEvidence: !p.event_id,
       ...(p.event_id ? { backendEventId: p.event_id } : {}),
     };
   });

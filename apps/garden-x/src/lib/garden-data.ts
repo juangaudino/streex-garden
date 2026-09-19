@@ -81,6 +81,10 @@ export interface Photo {
   metrics: PlantMetrics;
   backendStoragePath?: string;
   backendEventId?: string;
+  capturedAt?: string | null;
+  capturedAtPrecision?: string;
+  provenance?: string;
+  isHistoricalEvidence?: boolean;
 }
 
 export interface PlantEvent {
@@ -92,6 +96,7 @@ export interface PlantEvent {
   detail?: string;
   milestone?: boolean;
   photoId?: string;
+  photoIds?: string[];
   provenance: Provenance;
   backendEventType?: string;
   backendRevision?: number;

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { formatDate, gardenPhotos } from "@/lib/garden-logic";
 import { Button } from "@/components/ui/button";
+import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/gardens/$gardenId/film")({
@@ -44,7 +45,7 @@ function GardenFilm() {
       <div>
         <div className="relative overflow-hidden rounded-3xl bg-ink shadow-lift">
           <div className="relative aspect-[4/5] sm:aspect-[16/10]">
-            {moments.map((moment, index) => <img key={moment.id} src={moment.src} alt={moment.caption} className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-1000", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} />)}
+            {moments.map((moment, index) => <PhotoImage key={moment.id} photo={moment} alt={moment.caption} className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-1000", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} loading={index === frame ? "eager" : "lazy"} />)}
             <div className="veil absolute inset-0" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground"><p className="text-xs opacity-75">{frame + 1} of {moments.length} · {current ? formatDate(current.daysAgo) : "No moments"}</p><h2 className="mt-1 font-display text-3xl">{plant?.name ?? garden.name}</h2><p className="mt-1 text-sm opacity-80">{current?.caption}</p></div>
           </div>
@@ -56,7 +57,7 @@ function GardenFilm() {
           <Button variant="ghost" size="icon" className="ml-auto rounded-full" onClick={() => toast.success("Garden film share preview ready")}><Share2 /><span className="sr-only">Share garden film</span></Button>
         </div>
       </div>
-      <aside><p className="eyebrow">Across the garden</p><h2 className="mt-2 font-display text-2xl">Many plants, one season</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Each frame remains attached to the plant and date it came from. This sequence shows the garden changing as a whole.</p><div className="no-scrollbar mt-5 flex gap-2 overflow-x-auto lg:grid lg:grid-cols-2">{moments.map((moment, index) => <Button key={moment.id} variant="ghost" onClick={() => { setFrame(index); setPlaying(false); }} className={cn("h-auto min-w-24 overflow-hidden rounded-2xl border p-1", index === frame ? "border-primary" : "border-border/70 opacity-65")}><img src={moment.src} alt="" className="aspect-square w-full rounded-xl object-cover" /></Button>)}</div></aside>
+      <aside><p className="eyebrow">Across the garden</p><h2 className="mt-2 font-display text-2xl">Many plants, one season</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Each frame remains attached to the plant and date it came from. This sequence shows the garden changing as a whole.</p><div className="no-scrollbar mt-5 flex gap-2 overflow-x-auto lg:grid lg:grid-cols-2">{moments.map((moment, index) => <Button key={moment.id} variant="ghost" onClick={() => { setFrame(index); setPlaying(false); }} className={cn("h-auto min-w-24 overflow-hidden rounded-2xl border p-1", index === frame ? "border-primary" : "border-border/70 opacity-65")}><PhotoImage photo={moment} alt="" className="aspect-square w-full rounded-xl object-cover" /></Button>)}</div></aside>
     </div>
   </div>;
 }

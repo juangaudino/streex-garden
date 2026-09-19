@@ -111,9 +111,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
 
   const resolveHighlight = useCallback((plantsForSession: Plant[]) => {
     if (highlightResolved.current) return;
-    const candidates = backendConfigured
-      ? plantsForSession.filter((plant) => !demoPlantIds.has(plant.id))
-      : plantsForSession;
+    const candidates = plantsForSession.filter((plant) => !demoPlantIds.has(plant.id));
     let previousId: string | null = null;
     try { previousId = window.localStorage.getItem(highlightedPlantKey); } catch { /* no-op */ }
     const selected = chooseSessionHighlight(candidates, previousId);
@@ -121,7 +119,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     highlightResolved.current = true;
     setHighlightedPlantId(selected.id);
     try { window.localStorage.setItem(highlightedPlantKey, selected.id); } catch { /* no-op */ }
-  }, [backendConfigured]);
+  }, []);
 
   const refreshFromBackend = useCallback(async () => {
     if (!backendConfigured) return;

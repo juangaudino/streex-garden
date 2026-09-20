@@ -133,6 +133,9 @@ async function init() {
   bindEvents();
   applyLanguage();
   switchView(state.view, false);
+  const requestedPlantId = decodeURIComponent(window.location.hash.replace(/^#/, "")).trim();
+  const requestedPlant = state.plants.find((plant) => plant.id === requestedPlantId);
+  if (requestedPlant) requestAnimationFrame(() => openPlant(requestedPlant));
   window.GARDENPEDIA_READY = true;
   window.dispatchEvent(new Event("gardenpedia:ready"));
   registerServiceWorker();

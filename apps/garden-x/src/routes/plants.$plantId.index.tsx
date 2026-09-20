@@ -825,7 +825,10 @@ function PlantProfile() {
                     Full catalog
                   </Link>
                   {libraryEntry ? (
-                    <a href="/gardenpedia" className="text-primary hover:underline">
+                    <a
+                      href={`/gardenpedia#${encodeURIComponent(libraryEntry.libraryPlantId)}`}
+                      className="text-primary hover:underline"
+                    >
                       Open Gardenpedia
                     </a>
                   ) : null}

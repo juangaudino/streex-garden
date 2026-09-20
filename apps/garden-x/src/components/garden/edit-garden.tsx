@@ -104,8 +104,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
               })}
             </div>
           </div>
-          {(
-            <div className="min-w-0 rounded-2xl border border-destructive/30 bg-destructive/5 p-4">
+          <div className="min-w-0 rounded-2xl border border-destructive/30 bg-destructive/5 p-4">
               <p className="text-sm font-medium text-destructive">{ui(language, "dangerZone")}</p>
               <p className="mt-1 text-xs text-muted-foreground">{ui(language, "deleteGardenWarning")}</p>
               <label className="mt-3 block min-w-0 text-sm">
@@ -136,8 +135,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
               >
                 <Trash2 /> {ui(language, "deletePermanently")}
               </Button>
-            </div>
-          ) : null}
+          </div>
           <Button className="rounded-full" onClick={save}>{ui(language, "saveGarden")}</Button>
         </DialogContent>
       </Dialog>

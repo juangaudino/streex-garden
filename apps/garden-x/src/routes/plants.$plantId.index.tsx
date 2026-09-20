@@ -51,7 +51,8 @@ import { cn } from "@/lib/utils";
 import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
 import { LibraryIdentityResolution } from "@/components/garden/library-identity-resolution";
-import { loadGardenLibraryCatalog, type GardenLibraryManifest } from "@/lib/garden-library";
+import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManifest } from "@/lib/garden-library";
+import { ui } from "@/lib/ui-copy";
 import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
 
 export const Route = createFileRoute("/plants/$plantId/")({
@@ -95,6 +96,7 @@ function PlantProfile() {
 
   useEffect(() => {
     let active = true;
+    setLibraryCatalogError(undefined);
     void loadGardenLibraryCatalog()
       .then((catalog) => {
         if (active) setLibraryCatalog(catalog);
@@ -108,7 +110,7 @@ function PlantProfile() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [plant.libraryPlantId]);
 
   const openRecord = (flow?: MomentFlow, care?: MaintenanceType) => {
     setRecordFlow(flow);
@@ -125,32 +127,35 @@ function PlantProfile() {
   const libraryEntry =
     libraryCatalog?.entries.find((entry) => entry.libraryPlantId === plant.libraryPlantId) || null;
   const identity = plantIdentityParts(plant, libraryEntry);
+  const language = store.language;
+  const displayCommonName =
+    language === "es" && libraryEntry?.spanishName ? libraryEntry.spanishName : identity.commonName;
   const referenceFields: Array<[string, string | null]> = libraryEntry
     ? [
-        ["Common name", libraryEntry.commonName],
-        ["Scientific name", libraryEntry.scientificName],
-        ["Variety", libraryEntry.cultivar],
-        ["Germination", libraryEntry.reference.germination],
-        ["Light", libraryEntry.reference.light],
-        ["Temperature", libraryEntry.reference.temperature],
+        [ui(language, "commonName"), localizedLibraryName(libraryEntry, language)],
+        [ui(language, "scientificName"), libraryEntry.scientificName],
+        [ui(language, "variety"), libraryEntry.cultivar],
+        [ui(language, "germination"), libraryEntry.reference.germination],
+        [ui(language, "light"), libraryEntry.reference.light],
+        [ui(language, "temperature"), libraryEntry.reference.temperature],
         ["pH", libraryEntry.reference.ph],
         ["EC", libraryEntry.reference.ec],
-        ["Spacing", libraryEntry.reference.spacing],
-        ["Pruning", libraryEntry.reference.pruning],
-        ["Harvest", libraryEntry.reference.harvest],
-        ["Expected cycle", libraryEntry.reference.expectedCycle],
+        [ui(language, "spacing"), libraryEntry.reference.spacing],
+        [ui(language, "pruning"), libraryEntry.reference.pruning],
+        [ui(language, "harvest"), libraryEntry.reference.harvest],
+        [ui(language, "expectedCycle"), libraryEntry.reference.expectedCycle],
       ]
     : [];
   const guidanceCards: Array<[string, readonly string[]]> = libraryEntry
     ? [
-        ["Common problems", libraryEntry.reference.commonProblems],
-        ["Recommendations", libraryEntry.reference.recommendations],
+        [ui(language, "commonProblems"), libraryEntry.reference.commonProblems],
+        [ui(language, "recommendations"), libraryEntry.reference.recommendations],
       ]
     : [];
   const neighborCards: Array<[string, readonly string[]]> = libraryEntry
     ? [
-        ["Good neighbors", libraryEntry.reference.goodNeighborIds],
-        ["Better separate", libraryEntry.reference.betterSeparateIds],
+        [ui(language, "goodNeighbors"), libraryEntry.reference.goodNeighborIds],
+        [ui(language, "betterSeparate"), libraryEntry.reference.betterSeparateIds],
       ]
     : [];
   const history = useMemo(() => chronological(events), [events]);
@@ -234,7 +239,7 @@ function PlantProfile() {
           </div>
           <h1 className="mt-1.5 font-display text-4xl text-white sm:text-6xl">{plant.name}</h1>
           <p className="mt-1 text-sm text-white/80">
-            {identity.commonName}
+            {displayCommonName}
             {identity.scientificName ? (
               <>
                 <span aria-hidden="true"> · </span>
@@ -821,25 +826,21 @@ function PlantProfile() {
             <SectionTitle
               action={
                 <div className="flex items-center gap-3">
-                  <Link to="/library" className="text-primary hover:underline">
-                    Full catalog
-                  </Link>
                   {libraryEntry ? (
                     <a
                       href={`/gardenpedia#${encodeURIComponent(libraryEntry.libraryPlantId)}`}
                       className="text-primary hover:underline"
                     >
-                      Open Gardenpedia
+                      {ui(language, "fullCatalog")}
                     </a>
                   ) : null}
                 </div>
               }
             >
-              Garden Library reference
+              {ui(language, "reference")}
             </SectionTitle>
             <p className="mb-5 text-sm text-muted-foreground">
-              Knowledge from Gardenpedia. Your recorded history and current observations remain
-              separate.
+              {ui(language, "referenceSeparation")}
             </p>
             {!plant.libraryPlantId ? (
               <LibraryIdentityResolution
@@ -854,7 +855,7 @@ function PlantProfile() {
             ) : null}
             {plant.libraryPlantId && !libraryCatalog && !libraryCatalogError ? (
               <p className="rounded-3xl border border-border/70 bg-card p-5 text-sm text-muted-foreground">
-                Loading Gardenpedia reference…
+                {ui(language, "loadingReference")}
               </p>
             ) : null}
             {plant.libraryPlantId && libraryCatalogError ? (
@@ -869,7 +870,7 @@ function PlantProfile() {
                     <div key={label} className="bg-card px-4 py-3.5">
                       <dt className="eyebrow">{label}</dt>
                       <dd className={cn("mt-1 text-sm", !value && "text-muted-foreground")}>
-                        {value || "Not documented in Gardenpedia"}
+                        {value || ui(language, "notDocumented")}
                       </dd>
                     </div>
                   ))}
@@ -886,7 +887,7 @@ function PlantProfile() {
                         </ul>
                       ) : (
                         <p className="mt-2.5 text-sm text-muted-foreground">
-                          No documented guidance yet.
+                          {ui(language, "noGuidance")}
                         </p>
                       )}
                     </div>
@@ -897,13 +898,17 @@ function PlantProfile() {
                     const names = ids.map(
                       (id) =>
                         libraryCatalog!.entries.find((entry) => entry.libraryPlantId === id)
-                          ?.commonName || id,
+                          ? localizedLibraryName(
+                              libraryCatalog!.entries.find((entry) => entry.libraryPlantId === id)!,
+                              language,
+                            )
+                          : id,
                     );
                     return (
                       <div key={label} className="bg-card p-5">
                         <p className="eyebrow">{label}</p>
                         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {names.length ? names.join(" · ") : "No documented relationships yet."}
+                          {names.length ? names.join(" · ") : ui(language, "noRelationships")}
                         </p>
                       </div>
                     );
@@ -911,7 +916,7 @@ function PlantProfile() {
                 </div>
                 {libraryEntry.reference.sources.length ? (
                   <div className="mt-5 rounded-3xl border border-border/70 bg-card p-5">
-                    <p className="eyebrow">Sources</p>
+                    <p className="eyebrow">{ui(language, "sources")}</p>
                     <ul className="mt-2.5 space-y-1.5 text-sm text-muted-foreground">
                       {libraryEntry.reference.sources.slice(0, 6).map((source) => (
                         <li key={source.id}>

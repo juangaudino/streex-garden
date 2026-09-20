@@ -6,6 +6,7 @@ import {
   physicalNeighbors,
   resolvePlantingContext,
   searchGardenLibrary,
+  localizedLibraryName,
 } from "./garden-library";
 import type { Garden, Plant } from "./garden-data";
 
@@ -55,6 +56,7 @@ describe("Garden Library catalog and planting guidance", () => {
     expect(
       catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")?.reference.ph,
     ).toBeTruthy();
+    expect(localizedLibraryName(catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")!, "es")).toBe("Albahaca genovesa");
   });
 
   it("searches common, scientific, cultivar, and aliases without plant-specific UI code", () => {

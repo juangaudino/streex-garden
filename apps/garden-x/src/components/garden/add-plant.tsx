@@ -10,6 +10,7 @@ import {
   loadGardenLibraryCatalog,
   resolvePlantingContext,
   searchGardenLibrary,
+  localizedLibraryName,
   type GardenLibraryEntry,
   type GardenLibraryManifest,
 } from "@/lib/garden-library";
@@ -27,6 +28,7 @@ const todayInputValue = () => new Date().toISOString().slice(0, 10);
 
 export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Props) {
   const store = useGarden();
+  const language = store.language;
   const navigate = useNavigate();
   const fileRef = useRef<HTMLInputElement>(null);
   const [catalog, setCatalog] = useState<GardenLibraryManifest | null>(null);
@@ -135,7 +137,11 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
           : {}),
       });
       onClose();
-      toast.success(`${selected.commonName} added${slot ? ` to ${slot}` : ""}`);
+      toast.success(
+        language === "es"
+          ? `${localizedLibraryName(selected, language)} añadida${slot ? ` a ${slot}` : ""}`
+          : `${localizedLibraryName(selected, language)} added${slot ? ` to ${slot}` : ""}`,
+      );
       await navigate({ to: "/plants/$plantId", params: { plantId: id } });
     } catch (error) {
       setSaveError(
@@ -164,7 +170,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               {garden?.name}
               {slot ? ` · ${slot}` : ""}
             </p>
-            <p className="truncate font-display text-lg">Add a plant</p>
+            <p className="truncate font-display text-lg">{language === "es" ? "Añadir una planta" : "Add a plant"}</p>
           </div>
           <button
             onClick={onClose}
@@ -186,7 +192,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
             <>
               <div>
                 <p className="eyebrow">Garden Library</p>
-                <h2 className="mt-1 font-display text-2xl">What are you planting?</h2>
+                <h2 className="mt-1 font-display text-2xl">{language === "es" ? "¿Qué vas a plantar?" : "What are you planting?"}</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Choose a documented plant identity. Your personal details come next.
                 </p>
@@ -201,7 +207,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                     setQuery(event.target.value);
                     setShowSuggestions(false);
                   }}
-                  placeholder="Search basil, Ocimum, Genovese…"
+                  placeholder={language === "es" ? "Buscar albahaca, Ocimum, Genovese…" : "Search basil, Ocimum, Genovese…"}
                 />
               </label>
               {!query && context ? (
@@ -211,7 +217,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   className="flex w-full items-center gap-2 rounded-2xl border border-primary/20 bg-primary/5 p-3 text-left text-sm font-medium text-primary"
                 >
                   <Sparkles className="h-4 w-4" />
-                  What could I plant here?
+                  {language === "es" ? "¿Qué podría plantar aquí?" : "What could I plant here?"}
                 </button>
               ) : null}
               {catalogError ? (
@@ -224,7 +230,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               ) : null}
               {!catalog && !catalogError ? (
                 <p className="py-8 text-center text-sm text-muted-foreground">
-                  Loading Garden Library…
+                  {language === "es" ? "Cargando Garden Library…" : "Loading Garden Library…"}
                 </p>
               ) : null}
               {catalog ? (
@@ -236,7 +242,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                       onClick={() => choose(entry)}
                       className="press w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-left"
                     >
-                      <p className="font-medium">{entry.commonName}</p>
+                      <p className="font-medium">{localizedLibraryName(entry, language)}</p>
                       <p className="mt-0.5 text-sm text-muted-foreground">
                         {[entry.cultivar, entry.scientificName].filter(Boolean).join(" · ")}
                       </p>
@@ -244,8 +250,9 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   ))}
                   {query && !results.length ? (
                     <p className="rounded-2xl bg-secondary/70 p-4 text-sm text-muted-foreground">
-                      Not found in Garden Library. Garden only creates plants from documented
-                      Library identities.
+                      {language === "es"
+                        ? "No está en Garden Library. Garden solo crea plantas a partir de identidades documentadas."
+                        : "Not found in Garden Library. Garden only creates plants from documented Library identities."}
                     </p>
                   ) : null}
                 </div>
@@ -264,26 +271,26 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               </button>
               <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
                 <p className="eyebrow">Garden Library identity</p>
-                <p className="mt-1 font-display text-2xl">{selected.commonName}</p>
+                <p className="mt-1 font-display text-2xl">{localizedLibraryName(selected, language)}</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {[selected.cultivar, selected.scientificName].filter(Boolean).join(" · ")}
                 </p>
               </div>
               <label className="block text-sm">
                 <span className="mb-2 block text-muted-foreground">
-                  Personal name <span className="text-xs">optional</span>
+                  {language === "es" ? "Nombre personal" : "Personal name"} <span className="text-xs">{language === "es" ? "opcional" : "optional"}</span>
                 </span>
                 <input
                   className="input-soft"
                   value={nickname}
                   onChange={(event) => setNickname(event.target.value)}
-                  placeholder={selected.commonName}
+                  placeholder={localizedLibraryName(selected, language)}
                   maxLength={32}
                 />
               </label>
               <div className="grid gap-3 sm:grid-cols-2">
                 <label className="block text-sm">
-                  <span className="mb-2 block text-muted-foreground">Planting date</span>
+                  <span className="mb-2 block text-muted-foreground">{language === "es" ? "Fecha de plantación" : "Planting date"}</span>
                   <input
                     type="date"
                     max={todayInputValue()}
@@ -294,29 +301,29 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   />
                 </label>
                 <label className="block text-sm">
-                  <span className="mb-2 block text-muted-foreground">Date precision</span>
+                  <span className="mb-2 block text-muted-foreground">{language === "es" ? "Precisión de fecha" : "Date precision"}</span>
                   <select
                     className="input-soft px-3"
                     value={precision}
                     onChange={(event) => setPrecision(event.target.value as typeof precision)}
                   >
-                    <option value="exact">Exact</option>
-                    <option value="approximate">Approximate</option>
-                    <option value="unknown">Unknown</option>
+                    <option value="exact">{language === "es" ? "Exacta" : "Exact"}</option>
+                    <option value="approximate">{language === "es" ? "Aproximada" : "Approximate"}</option>
+                    <option value="unknown">{language === "es" ? "Desconocida" : "Unknown"}</option>
                   </select>
                 </label>
               </div>
               <div className="rounded-2xl bg-secondary/70 p-4">
-                <p className="text-sm font-medium">Planting guidance</p>
+                <p className="text-sm font-medium">{language === "es" ? "Orientación de plantación" : "Planting guidance"}</p>
                 <div className="mt-2 space-y-2">
                   {guidance.map((item, index) => (
                     <p key={`${item.kind}-${index}`} className="text-sm text-muted-foreground">
                       <span className="font-medium text-foreground">
                         {item.kind === "evidence-backed fit"
-                          ? "Good fit"
+                          ? language === "es" ? "Buen encaje" : "Good fit"
                           : item.kind === "consideration"
-                            ? "Consideration"
-                            : "Unknown"}
+                            ? language === "es" ? "Consideración" : "Consideration"
+                            : language === "es" ? "Sin evidencia suficiente" : "Unknown"}
                         .
                       </span>{" "}
                       {item.message}
@@ -324,7 +331,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   ))}
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">
-                  Guidance is a recommendation. It never blocks your choice.
+                  {language === "es" ? "La orientación es una recomendación. Nunca bloquea tu elección." : "Guidance is a recommendation. It never blocks your choice."}
                 </p>
               </div>
               <div>
@@ -342,7 +349,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   onClick={() => fileRef.current?.click()}
                 >
                   <Camera className="mr-2 h-4 w-4" />
-                  {photo ? "Photo selected" : "Add first photo"}
+                  {photo ? (language === "es" ? "Foto seleccionada" : "Photo selected") : language === "es" ? "Añadir primera foto" : "Add first photo"}
                 </Button>
               </div>
               {saveError ? (
@@ -355,7 +362,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                 onClick={() => void save()}
                 className="w-full rounded-full"
               >
-                {busy ? "Adding to Garden…" : "Add to this position"}
+                {busy ? (language === "es" ? "Añadiendo al jardín…" : "Adding to Garden…") : language === "es" ? "Añadir a esta posición" : "Add to this position"}
               </Button>
             </>
           )}

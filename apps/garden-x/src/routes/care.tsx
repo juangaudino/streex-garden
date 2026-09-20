@@ -27,6 +27,7 @@ import {
 import { PageHeader } from "@/components/garden/shell";
 import { SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
 import type { MaintenanceType, Plant } from "@/lib/garden-data";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/care")({
   head: () => ({
@@ -59,6 +60,7 @@ const emptySummary = (): SessionSummary => ({ reviewed: 0, observations: 0, care
 
 function Care() {
   const store = useGarden();
+  const language = store.language;
   const tasks = openTasks(store.tasks);
   const [queue, setQueue] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
@@ -122,18 +124,19 @@ function Care() {
       <div className="min-h-screen pb-24">
         <header className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-border/70 px-5 py-4 sm:px-8 lg:px-12">
           <div className="min-w-0">
-            <p className="eyebrow">Care session</p>
+            <p className="eyebrow">{ui(language, "careSession")}</p>
             <p className="numeral mt-0.5 text-sm text-muted-foreground">
-              {summary.reviewed} of {queue.length} plants reviewed
+              {summary.reviewed} / {queue.length} {ui(language, "plantsReviewed")}
             </p>
           </div>
-          <Button variant="ghost" size="sm" onClick={leaveSession}>End</Button>
+          <Button variant="ghost" size="sm" onClick={leaveSession}>{ui(language, "end")}</Button>
         </header>
 
         {finished || !current ? (
-          <SessionComplete summary={summary} onDone={leaveSession} />
+          <SessionComplete language={language} summary={summary} onDone={leaveSession} />
         ) : (
           <PlantReview
+            language={language}
             plant={current}
             gardenName={store.gardens.find((garden) => garden.id === current.gardenId)?.name ?? "Garden"}
             lastReview={lastReview(store.events, current.id)}
@@ -175,8 +178,8 @@ function Care() {
   return (
     <div className="rise pb-16">
       <PageHeader
-        eyebrow="Care"
-        title="Check on your plants"
+        eyebrow={ui(language, "care")}
+        title={ui(language, "checkOnPlants")}
         subtitle="Take a quiet pass through the garden. Notice what changed, record what matters, and decide what deserves another look."
       />
 
@@ -184,8 +187,8 @@ function Care() {
         <div className="overflow-hidden rounded-3xl bg-primary text-primary-foreground shadow-soft">
           <div className="grid gap-6 px-6 py-7 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:px-8">
             <div className="max-w-xl">
-              <p className="text-xs uppercase text-primary-foreground/70">Guided review</p>
-              <h1 className="mt-2 font-display text-3xl">See each plant as it is today.</h1>
+              <p className="text-xs uppercase text-primary-foreground/70">{ui(language, "guidedReview")}</p>
+              <h1 className="mt-2 font-display text-3xl">{ui(language, "seeEachPlant")}</h1>
               <p className="mt-2 text-sm text-primary-foreground/75">
                 {activePlants.length} {activePlants.length === 1 ? "plant" : "plants"} to check · {needingLook} {needingLook === 1 ? "needs" : "need"} a closer look · {routine} routine {routine === 1 ? "review" : "reviews"}
               </p>
@@ -194,14 +197,14 @@ function Care() {
               onClick={() => startSession()}
               className="w-full bg-background text-foreground hover:bg-background/90 sm:w-auto"
             >
-              Start care session <ArrowRight className="h-4 w-4" />
+              {ui(language, "startCareSession")} <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
         </div>
       </section>
 
       <section className="mt-10 px-5 sm:px-8 lg:px-12">
-        <SectionTitle>Worth a closer look</SectionTitle>
+        <SectionTitle>{ui(language, "worthCloserLook")}</SectionTitle>
         <div className="divide-y divide-border/70 border-y border-border/70">
           {tasks.map((task) => {
             const plant = store.plants.find((item) => item.id === task.plantId);
@@ -217,12 +220,12 @@ function Care() {
                   <p className="truncate text-xs text-muted-foreground">{dueLabel(task.dueInDays)}{task.hint ? ` · ${task.hint}` : ""}</p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={() => startSession(plant.id)}>
-                  Review <ChevronRight className="h-4 w-4" />
+                  {ui(language, "review")} <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
             );
           })}
-          {tasks.length === 0 ? <p className="py-8 text-center text-sm text-muted-foreground">Nothing is asking for attention right now.</p> : null}
+          {tasks.length === 0 ? <p className="py-8 text-center text-sm text-muted-foreground">{ui(language, "nothingAttention")}</p> : null}
         </div>
       </section>
     </div>
@@ -231,6 +234,7 @@ function Care() {
 
 function PlantReview({
   plant,
+  language,
   gardenName,
   lastReview,
   photoSrc,
@@ -242,6 +246,7 @@ function PlantReview({
   onSkip,
 }: {
   plant: Plant;
+  language: "en" | "es";
   gardenName: string;
   lastReview?: { title: string; daysAgo: number } | undefined;
   photoSrc?: string | undefined;
@@ -266,72 +271,72 @@ function PlantReview({
 
       <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border/70 bg-border/70">
         <div className="bg-card px-4 py-3">
-          <p className="eyebrow">Growing</p>
+          <p className="eyebrow">{ui(language, "growing")}</p>
           <p className="mt-1 text-sm">{ageLabel(plant.plantedDaysAgo)}</p>
         </div>
         <div className="bg-card px-4 py-3">
-          <p className="eyebrow">Last review</p>
-          <p className="mt-1 text-sm">{lastReview ? relativeDay(lastReview.daysAgo) : "Not yet"}</p>
+          <p className="eyebrow">{ui(language, "lastReview")}</p>
+          <p className="mt-1 text-sm">{lastReview ? relativeDay(lastReview.daysAgo) : ui(language, "notYet")}</p>
         </div>
       </div>
 
       {(attention || recentEvent) ? (
         <div className="mt-5 border-l-2 border-primary/30 pl-4">
-          {attention ? <p className="text-sm">For this review: {attention.label} · <span className="text-muted-foreground">{dueLabel(attention.dueInDays)}</span></p> : null}
-          {recentEvent ? <p className="mt-1 text-xs text-muted-foreground">Recently: {recentEvent.title} · {relativeDay(recentEvent.daysAgo)}</p> : null}
+          {attention ? <p className="text-sm">{ui(language, "forThisReview")}: {attention.label} · <span className="text-muted-foreground">{dueLabel(attention.dueInDays)}</span></p> : null}
+          {recentEvent ? <p className="mt-1 text-xs text-muted-foreground">{ui(language, "recently")}: {recentEvent.title} · {relativeDay(recentEvent.daysAgo)}</p> : null}
         </div>
       ) : null}
 
       <div className="mt-8 text-center">
-        <p className="font-display text-3xl">How does it look today?</p>
+        <p className="font-display text-3xl">{ui(language, "howLooksToday")}</p>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-2">
         <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("observation")}>
-          <StickyNote className="h-4 w-4 text-primary" /> Add observation
+          <StickyNote className="h-4 w-4 text-primary" /> {ui(language, "addObservation")}
         </Button>
         <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("care")}>
-          <Leaf className="h-4 w-4 text-primary" /> Record care
+          <Leaf className="h-4 w-4 text-primary" /> {ui(language, "recordCare")}
         </Button>
         <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("followup")}>
-          <CalendarClock className="h-4 w-4 text-primary" /> Review later
+          <CalendarClock className="h-4 w-4 text-primary" /> {ui(language, "reviewLater")}
         </Button>
         <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord()}>
-          <MoreHorizontal className="h-4 w-4 text-primary" /> More
+          <MoreHorizontal className="h-4 w-4 text-primary" /> {ui(language, "more")}
         </Button>
       </div>
 
       <Button variant="outline" asChild className="mt-3 w-full">
         <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: undefined, prompt: undefined }}>
-          <MessageCircle className="h-4 w-4 text-primary" /> Ask Garden AI for a second look
+          <MessageCircle className="h-4 w-4 text-primary" /> {ui(language, "askGardenSecondLook")}
         </Link>
       </Button>
 
       <Button className="mt-6 w-full" onClick={onLooksGood}>
-        <Check className="h-4 w-4" /> Looks good · no action needed
+        <Check className="h-4 w-4" /> {ui(language, "looksGoodNoAction")}
       </Button>
       <div className="mt-3 grid grid-cols-2 gap-3">
-        <Button variant="outline" onClick={onNext}>Next plant <ArrowRight className="h-4 w-4" /></Button>
-        <Button variant="ghost" className="text-muted-foreground" onClick={onSkip}>Skip for now <SkipForward className="h-4 w-4" /></Button>
+        <Button variant="outline" onClick={onNext}>{ui(language, "nextPlant")} <ArrowRight className="h-4 w-4" /></Button>
+        <Button variant="ghost" className="text-muted-foreground" onClick={onSkip}>{ui(language, "skipForNow")} <SkipForward className="h-4 w-4" /></Button>
       </div>
     </main>
   );
 }
 
-function SessionComplete({ summary, onDone }: { summary: SessionSummary; onDone: () => void }) {
+function SessionComplete({ language, summary, onDone }: { language: "en" | "es"; summary: SessionSummary; onDone: () => void }) {
   const outcomes = [
-    { label: "Plants reviewed", value: summary.reviewed },
-    { label: "Observations", value: summary.observations },
-    { label: "Care actions", value: summary.care },
-    { label: "Follow-ups", value: summary.followups },
+    { label: ui(language, "plantsReviewed"), value: summary.reviewed },
+    { label: ui(language, "observations"), value: summary.observations },
+    { label: ui(language, "careActions"), value: summary.care },
+    { label: ui(language, "followUps"), value: summary.followups },
   ];
   return (
     <main className="mx-auto grid min-h-[70vh] w-full max-w-xl place-items-center px-5 py-12 text-center">
       <div className="w-full">
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent text-primary"><Sparkles className="h-5 w-5" /></span>
-        <p className="eyebrow mt-5">Session complete</p>
-        <h1 className="mt-2 font-display text-3xl">The garden has been seen.</h1>
-        <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">Only what you chose to record was added to plant history.</p>
+        <p className="eyebrow mt-5">{ui(language, "sessionComplete")}</p>
+        <h1 className="mt-2 font-display text-3xl">{ui(language, "gardenSeen")}</h1>
+        <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">{ui(language, "onlyRecorded")}</p>
         <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border/70 bg-border/70 text-left">
           {outcomes.map((outcome) => (
             <div key={outcome.label} className="bg-card p-4">
@@ -340,7 +345,7 @@ function SessionComplete({ summary, onDone }: { summary: SessionSummary; onDone:
             </div>
           ))}
         </dl>
-        <Button className="mt-7" onClick={onDone}>Back to Care <ArrowRight className="h-4 w-4" /></Button>
+        <Button className="mt-7" onClick={onDone}>{ui(language, "backToCare")} <ArrowRight className="h-4 w-4" /></Button>
       </div>
     </main>
   );

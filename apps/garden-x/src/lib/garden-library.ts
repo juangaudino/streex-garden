@@ -30,6 +30,7 @@ export type GardenLibraryReference = {
 export type GardenLibraryEntry = {
   libraryPlantId: string;
   commonName: string;
+  spanishName?: string | null;
   scientificName: string | null;
   cultivar: string | null;
   aliases: readonly string[];
@@ -39,6 +40,10 @@ export type GardenLibraryEntry = {
   guidanceProfile: LibraryGuidanceProfile | null;
   reference: GardenLibraryReference;
 };
+
+export function localizedLibraryName(entry: GardenLibraryEntry, language: "en" | "es") {
+  return language === "es" ? entry.spanishName || entry.commonName : entry.commonName;
+}
 
 export type GardenLibraryManifest = {
   schemaVersion: number;

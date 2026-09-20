@@ -200,6 +200,7 @@ function buildCatalogManifest(plants) {
     .map((plant) => ({
       libraryPlantId: plant.id,
       commonName: plant.name,
+      spanishName: plant.spanishName || null,
       scientificName: plant.scientificName || null,
       cultivar: plant.variety || null,
       aliases: uniqueStrings([

@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Sprout } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/garden/shell";
+import { useGarden } from "@/lib/garden-store";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/library")({
   head: () => ({
@@ -24,12 +26,13 @@ export const Route = createFileRoute("/library")({
 });
 
 function GardenLibrary() {
+  const { language } = useGarden();
   return (
     <div className="rise pb-20">
       <PageHeader
-        eyebrow="Library"
-        title="Garden Library"
-        subtitle="A deeper catalog for plants and growing systems is taking root here."
+        eyebrow={ui(language, "library")}
+        title={language === "es" ? "Garden Library" : "Garden Library"}
+        subtitle={ui(language, "gardenLibrarySubtitle")}
       />
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="space-y-4">
@@ -38,28 +41,30 @@ function GardenLibrary() {
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-primary">
                 <BookOpen className="h-5 w-5" />
               </span>
-              <p className="mt-4 font-display text-2xl">The full catalog is coming later</p>
+              <p className="mt-4 font-display text-2xl">{ui(language, "fullCatalogComing")}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                For now, each plant profile keeps its concise, trusted reference close to the living
-                record.
+                {language === "es"
+                  ? "Por ahora, cada perfil de planta mantiene su referencia breve y confiable junto a su historial vivo."
+                  : "For now, each plant profile keeps its concise, trusted reference close to the living record."}
               </p>
               <Sprout className="mx-auto mt-6 h-4 w-4 text-moss" />
             </div>
           </div>
           <div className="surface flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="max-w-xl">
-              <p className="eyebrow">Garden Labs</p>
-              <h2 className="mt-2 font-display text-2xl">Explore Garden Library</h2>
+              <p className="eyebrow">{ui(language, "gardenLabs")}</p>
+              <h2 className="mt-2 font-display text-2xl">{ui(language, "exploreGardenLibrary")}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Explore the experimental version of Garden Library, with its complete public plant
-                knowledge and sources.
+                {language === "es"
+                  ? "Explora la versión experimental de Garden Library, con su conocimiento público completo y sus fuentes."
+                  : "Explore the experimental version of Garden Library, with its complete public plant knowledge and sources."}
               </p>
             </div>
             <Link
               to="/gardenpedia"
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-primary px-5 py-3 text-sm font-medium text-primary transition-colors hover:bg-accent"
             >
-              Entrar a Garden Labs <ArrowRight className="h-4 w-4" />
+              {ui(language, "enterGardenLabs")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

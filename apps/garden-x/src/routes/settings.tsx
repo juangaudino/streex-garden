@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getSupabaseClient, hasSupabaseConfiguration } from "@/lib/supabase";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({ meta: [
@@ -22,19 +23,20 @@ export const Route = createFileRoute("/settings")({
 
 function SettingsPage() {
   const store = useGarden();
+  const language = store.language;
   const initials = store.profile.name.split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "GX";
-  return <div className="rise pb-20"><PageHeader eyebrow="Your Garden X" title="Settings" subtitle="A few personal choices for how your garden feels and reads." />
+  return <div className="rise pb-20"><PageHeader eyebrow={language === "es" ? "Tu Garden X" : "Your Garden X"} title={ui(language, "settings")} subtitle={language === "es" ? "Algunas preferencias personales para la forma en que se siente y se lee tu jardín." : "A few personal choices for how your garden feels and reads."} />
     <div className="mx-auto grid max-w-3xl gap-8 px-5 sm:px-8 lg:px-12">
-      <SettingsSection icon={UserRound} title="Account">
+      <SettingsSection icon={UserRound} title={language === "es" ? "Cuenta" : "Account"}>
         <div className="flex items-center gap-4"><Avatar className="h-12 w-12"><AvatarFallback className="bg-accent font-display text-lg">{initials}</AvatarFallback></Avatar><div className="min-w-0 flex-1">{store.profile.signedIn ? <><input aria-label="Profile name" className="w-full bg-transparent font-medium outline-none" value={store.profile.name} onChange={(event) => store.updateProfile({ name: event.target.value })} /><p className="truncate text-xs text-muted-foreground">{store.profile.email}</p></> : <><p className="font-medium">Your garden, on this device</p><p className="text-xs text-muted-foreground">Sign in is simulated in this prototype.</p></>}</div><Button variant="outline" className="rounded-full" onClick={() => {
           if (store.profile.signedIn && hasSupabaseConfiguration()) { void getSupabaseClient().auth.signOut(); return; }
           store.updateProfile({ signedIn: !store.profile.signedIn });
         }}>{store.profile.signedIn ? <><LogOut /> Sign out</> : <><LogIn /> Sign in</>}</Button></div>
       </SettingsSection>
-      <SettingsSection icon={Globe2} title="Language"><Segmented options={[{ value: "en", label: "English" }, { value: "es", label: "Español" }]} value={store.language} onChange={store.setLanguage} /></SettingsSection>
-      <SettingsSection icon={Moon} title="Appearance"><Segmented options={[{ value: "light", label: "Light", icon: Sun }, { value: "dark", label: "Dark", icon: Moon }, { value: "system", label: "System" }]} value={store.appearance} onChange={store.setAppearance} /></SettingsSection>
-      <SettingsSection icon={Ruler} title="Units">
-        <div className="grid gap-5 sm:grid-cols-2"><div><p className="mb-2 text-xs text-muted-foreground">Measurements</p><Segmented options={[{ value: "metric", label: "Metric" }, { value: "imperial", label: "Imperial" }]} value={store.measurementSystem} onChange={store.setMeasurementSystem} /></div><div><p className="mb-2 text-xs text-muted-foreground">Temperature</p><Segmented options={[{ value: "c", label: "°C" }, { value: "f", label: "°F" }]} value={store.temperatureUnit} onChange={store.setTemperatureUnit} /></div></div>
+      <SettingsSection icon={Globe2} title={language === "es" ? "Idioma" : "Language"}><Segmented options={[{ value: "en", label: "English" }, { value: "es", label: "Español" }]} value={store.language} onChange={store.setLanguage} /></SettingsSection>
+      <SettingsSection icon={Moon} title={language === "es" ? "Apariencia" : "Appearance"}><Segmented options={[{ value: "light", label: language === "es" ? "Claro" : "Light", icon: Sun }, { value: "dark", label: language === "es" ? "Oscuro" : "Dark", icon: Moon }, { value: "system", label: language === "es" ? "Sistema" : "System" }]} value={store.appearance} onChange={store.setAppearance} /></SettingsSection>
+      <SettingsSection icon={Ruler} title={language === "es" ? "Unidades" : "Units"}>
+        <div className="grid gap-5 sm:grid-cols-2"><div><p className="mb-2 text-xs text-muted-foreground">{language === "es" ? "Mediciones" : "Measurements"}</p><Segmented options={[{ value: "metric", label: language === "es" ? "Métrico" : "Metric" }, { value: "imperial", label: language === "es" ? "Imperial" : "Imperial" }]} value={store.measurementSystem} onChange={store.setMeasurementSystem} /></div><div><p className="mb-2 text-xs text-muted-foreground">{language === "es" ? "Temperatura" : "Temperature"}</p><Segmented options={[{ value: "c", label: "°C" }, { value: "f", label: "°F" }]} value={store.temperatureUnit} onChange={store.setTemperatureUnit} /></div></div>
       </SettingsSection>
     </div>
   </div>;

@@ -18,6 +18,7 @@ import {
   PromptInputTextarea,
 } from "@/components/ai-elements/prompt-input";
 import { Shimmer } from "@/components/ai-elements/shimmer";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/ask")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -38,6 +39,7 @@ export const Route = createFileRoute("/ask")({
 
 function GardenWideAsk() {
   const store = useGarden();
+  const language = store.language;
   const { prompt } = Route.useSearch();
   const [thread, setThread] = useState<AskAnswer[]>([]);
   const [thinking, setThinking] = useState(false);
@@ -74,12 +76,12 @@ function GardenWideAsk() {
   return (
     <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] flex-col lg:h-screen">
       <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
-        <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label="Back to Garden AI">
+        <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={language === "es" ? "Volver a Garden AI" : "Back to Garden AI"}>
           <ChevronLeft className="h-4 w-4" />
         </Link>
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium">Ask Garden</p>
-          <p className="numeral truncate text-[0.7rem] text-muted-foreground">All gardens · {store.plants.filter((plant) => !plant.cycleClosed).length} active plants</p>
+          <p className="truncate text-sm font-medium">{ui(language, "askGarden")}</p>
+          <p className="numeral truncate text-[0.7rem] text-muted-foreground">{ui(language, "allGardens")} · {store.plants.filter((plant) => !plant.cycleClosed).length} {ui(language, "activePlants")}</p>
         </div>
         <Leaf className="h-4 w-4 text-primary" />
       </header>
@@ -88,8 +90,8 @@ function GardenWideAsk() {
         <ConversationContent className="px-5 py-8 sm:px-8">
           {thread.length === 0 ? (
             <div className="rise">
-              <h1 className="font-display text-3xl">What do you want to know about your garden?</h1>
-              <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">I can read across recorded plant histories, care, photos and open follow-ups. Anything beyond those records stays clearly marked as inference.</p>
+              <h1 className="font-display text-3xl">{ui(language, "whatKnow")}</h1>
+              <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">{ui(language, "askDescription")}</p>
             </div>
           ) : null}
           {thread.map((answer, index) => (
@@ -114,7 +116,7 @@ function GardenWideAsk() {
               </Message>
             </div>
           ))}
-          {thinking ? <Shimmer className="text-sm">Reading the garden record…</Shimmer> : null}
+          {thinking ? <Shimmer className="text-sm">{ui(language, "readingRecord")}</Shimmer> : null}
         </ConversationContent>
         <ConversationScrollButton />
       </Conversation>
@@ -122,12 +124,12 @@ function GardenWideAsk() {
       <div className="border-t border-border/70 bg-background/90 px-4 pt-3 pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl">
           <div className="no-scrollbar mb-2.5 flex gap-2 overflow-x-auto">
-            {["What needs attention today?", "What changed recently?", ...askSuggestions.slice(4)].map((suggestion) => (
+            {[ui(language, "whatNeedsAttention"), ui(language, "whatChangedRecently"), ...askSuggestions.slice(4)].map((suggestion) => (
               <button key={suggestion} type="button" onClick={() => send(suggestion)} className="press shrink-0 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{suggestion}</button>
             ))}
           </div>
           <PromptInput onSubmit={({ text }) => send(text)} className="rounded-2xl bg-card">
-            <PromptInputTextarea placeholder="Ask about your garden…" disabled={thinking} />
+            <PromptInputTextarea placeholder={ui(language, "askPlaceholder")} disabled={thinking} />
             <PromptInputFooter className="justify-end">
               <PromptInputSubmit status={thinking ? "submitted" : "ready"} disabled={thinking} />
             </PromptInputFooter>

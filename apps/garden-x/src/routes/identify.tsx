@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
+import { ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { identifyPlant } from "@/lib/garden-backend";
 import {
@@ -64,6 +65,7 @@ const fallbackCandidates = [
 
 function Identify() {
   const store = useGarden();
+  const language = store.language;
   const navigate = useNavigate();
   const [phase, setPhase] = useState<"idle" | "scanning" | "done">("idle");
   const [pick, setPick] = useState(0);
@@ -128,12 +130,12 @@ function Identify() {
         <Link
           to="/garden-ai"
           className="press mt-1 grid h-9 w-9 place-items-center rounded-full border border-border/70 bg-card"
-          aria-label="Back to Garden AI"
+          aria-label={language === "es" ? "Volver a Garden AI" : "Back to Garden AI"}
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
         <div className="min-w-0 pb-6">
-          <p className="eyebrow">Identification</p>
+          <p className="eyebrow">{language === "es" ? "Identificación" : "Identification"}</p>
           <h1 className="mt-1.5 font-display text-[1.75rem] leading-tight sm:text-4xl">
             What is this plant?
           </h1>
@@ -166,7 +168,7 @@ function Identify() {
                 <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent text-primary">
                   <Camera className="h-5 w-5" />
                 </span>
-                <p className="mt-4 font-display text-xl">Start with a photo</p>
+                <p className="mt-4 font-display text-xl">{language === "es" ? "Empieza con una foto" : "Start with a photo"}</p>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Take one now or choose a clear image from your library.
                 </p>
@@ -186,7 +188,7 @@ function Identify() {
             className="mt-4 w-full rounded-full"
           >
             <ImagePlus className="h-4 w-4" />{" "}
-            {photoSrc ? "Choose another photo" : "Take or choose photo"}
+            {photoSrc ? (language === "es" ? "Elegir otra foto" : "Choose another photo") : (language === "es" ? "Tomar o elegir foto" : "Take or choose photo")}
           </Button>
           <Button
             type="button"
@@ -210,8 +212,8 @@ function Identify() {
             {phase === "scanning"
               ? "Looking…"
               : phase === "done"
-                ? "Identify again"
-                : "Identify this photo"}
+                ? (language === "es" ? "Identificar de nuevo" : "Identify again")
+                : (language === "es" ? "Identificar esta foto" : "Identify this photo")}
           </Button>
         </div>
 
@@ -230,7 +232,7 @@ function Identify() {
                 <p className="mt-4 font-display text-xl">
                   {phase === "scanning"
                     ? "Comparing leaf shape and venation"
-                    : "No identity claimed"}
+                    : (language === "es" ? "No se confirmó una identidad" : "No identity claimed")}
                 </p>
               </div>
             </div>
@@ -238,7 +240,7 @@ function Identify() {
             <div className="rise space-y-4">
               <div className="surface p-5">
                 <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                  <h2 className="min-w-0 font-display text-lg">Possible matches</h2>
+                  <h2 className="min-w-0 font-display text-lg">{language === "es" ? "Coincidencias posibles" : "Possible matches"}</h2>
                   <ProvenanceTag kind="inferred" confidence="moderate" />
                 </div>
                 <ul className="space-y-2">
@@ -271,18 +273,18 @@ function Identify() {
 
               <div className="surface p-5">
                 <SectionTitle>Add to a garden</SectionTitle>
-                <label className="eyebrow block">Name it</label>
+                <label className="eyebrow block">{language === "es" ? "Ponle un nombre" : "Name it"}</label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-1.5 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
                 />
-                <label className="eyebrow mt-4 block">Garden Library identity</label>
+                <label className="eyebrow mt-4 block">{language === "es" ? "Identidad de Garden Library" : "Garden Library identity"}</label>
                 {catalogError ? (
                   <p className="mt-1.5 text-sm text-destructive">{catalogError}</p>
                 ) : null}
                 {!catalog ? (
-                  <p className="mt-1.5 text-sm text-muted-foreground">Checking Garden Library…</p>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{language === "es" ? "Comprobando Garden Library…" : "Checking Garden Library…"}</p>
                 ) : null}
                 {selectedIdentity ? (
                   <div className="mt-1.5 rounded-2xl border border-border/70 bg-accent/35 px-4 py-3 text-sm">
@@ -295,13 +297,13 @@ function Identify() {
                   </div>
                 ) : (
                   <p className="mt-1.5 text-sm text-muted-foreground">
-                    Choose a documented Library identity before adding this plant.
+                    {language === "es" ? "Elige una identidad documentada antes de añadir esta planta." : "Choose a documented Library identity before adding this plant."}
                   </p>
                 )}
                 <input
                   value={libraryQuery}
                   onChange={(event) => setLibraryQuery(event.target.value)}
-                  placeholder="Search Garden Library"
+                  placeholder={language === "es" ? "Buscar en Garden Library" : "Search Garden Library"}
                   className="mt-2 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
                 />
                 {libraryQuery && catalog ? (
@@ -324,12 +326,12 @@ function Identify() {
                     ))}
                     {!libraryResults.length ? (
                       <p className="text-sm text-muted-foreground">
-                        Not found in Garden Library. Choose the correct documented identity.
+                        {language === "es" ? "No está en Garden Library. Elige la identidad documentada correcta." : "Not found in Garden Library. Choose the correct documented identity."}
                       </p>
                     ) : null}
                   </div>
                 ) : null}
-                <label className="eyebrow mt-4 block">Garden</label>
+                <label className="eyebrow mt-4 block">{language === "es" ? "Jardín" : "Garden"}</label>
                 <div className="mt-1.5 flex flex-wrap gap-2">
                   {store.gardens.map((g) => (
                     <button
@@ -376,7 +378,7 @@ function Identify() {
                       return;
                     }
                     if (!selectedIdentity) {
-                      toast.error("Choose a Garden Library identity before adding this plant.");
+                      toast.error(language === "es" ? "Elige una identidad de Garden Library antes de añadir esta planta." : "Choose a Garden Library identity before adding this plant.");
                       return;
                     }
                     setSaving(true);
@@ -401,21 +403,21 @@ function Identify() {
                         },
                       })
                       .then((id) => {
-                        toast.success("Added to your garden");
+                        toast.success(language === "es" ? "Añadida a tu jardín" : "Added to your garden");
                         navigate({ to: "/plants/$plantId", params: { plantId: id } });
                       })
                       .catch((error: unknown) =>
                         toast.error(
                           error instanceof Error
                             ? error.message
-                            : "Garden could not save this plant. Try again.",
+                            : (language === "es" ? "Garden no pudo guardar esta planta. Inténtalo de nuevo." : "Garden could not save this plant. Try again."),
                         ),
                       )
                       .finally(() => setSaving(false));
                   }}
                   className="press mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-sm font-medium text-primary-foreground"
                 >
-                  {saving ? "Saving…" : "Confirm identity and add"}
+                  {saving ? (language === "es" ? "Guardando…" : "Saving…") : (language === "es" ? "Confirmar identidad y añadir" : "Confirm identity and add")}
                 </button>
               </div>
             </div>

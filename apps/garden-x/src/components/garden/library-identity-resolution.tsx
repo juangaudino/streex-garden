@@ -2,12 +2,14 @@ import { useMemo, useState } from "react";
 import { Check, Search } from "lucide-react";
 import type { Plant } from "@/lib/garden-data";
 import {
+  localizedLibraryName,
   searchGardenLibrary,
   type GardenLibraryEntry,
   type GardenLibraryManifest,
 } from "@/lib/garden-library";
 import { classifyLegacyIdentity } from "@/lib/library-identity-resolver";
 import { Button } from "@/components/ui/button";
+import { useGarden } from "@/lib/garden-store";
 
 type Props = {
   plant: Plant;
@@ -17,6 +19,7 @@ type Props = {
 };
 
 export function LibraryIdentityResolution({ plant, catalog, catalogError, onConfirm }: Props) {
+  const { language } = useGarden();
   const [query, setQuery] = useState("");
   const [savingId, setSavingId] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -50,16 +53,15 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
   return (
     <section className="mb-5 rounded-3xl border border-border/70 bg-card p-5 shadow-soft">
       <p className="eyebrow">Garden Library identity</p>
-      <h3 className="mt-1 font-display text-2xl">Identity not confirmed</h3>
+      <h3 className="mt-1 font-display text-2xl">{language === "es" ? "Identidad no confirmada" : "Identity not confirmed"}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        This plant predates Library identity. Garden will preserve its history and only link it
-        after you confirm the documented identity.
+        {language === "es" ? "Esta planta es anterior a la identidad de Library. Garden conservará su historia y solo la vinculará después de que confirmes la identidad documentada." : "This plant predates Library identity. Garden will preserve its history and only link it after you confirm the documented identity."}
       </p>
       {catalogError ? <p className="mt-3 text-sm text-destructive">{catalogError}</p> : null}
       {match?.kind === "exact" && match.candidates[0] ? (
         <div className="mt-4 rounded-2xl border border-primary/25 bg-primary/5 p-4">
-          <p className="eyebrow text-primary">Match found in Garden Library</p>
-          <p className="mt-1 font-medium">{match.candidates[0].commonName}</p>
+          <p className="eyebrow text-primary">{language === "es" ? "Coincidencia encontrada en Garden Library" : "Match found in Garden Library"}</p>
+          <p className="mt-1 font-medium">{localizedLibraryName(match.candidates[0], language)}</p>
           <p className="text-sm text-muted-foreground">
             {match.candidates[0].scientificName || "Scientific name not documented"}
             {match.candidates[0].cultivar ? ` · “${match.candidates[0].cultivar}”` : ""}
@@ -70,29 +72,29 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
             disabled={savingId !== null}
             onClick={() => void confirm(match.candidates[0]!)}
           >
-            <Check className="mr-2 h-4 w-4" /> Confirm identity
+            <Check className="mr-2 h-4 w-4" /> {language === "es" ? "Confirmar identidad" : "Confirm identity"}
           </Button>
         </div>
       ) : null}
       {match?.kind === "ambiguous" ? (
         <p className="mt-4 text-sm text-muted-foreground">
-          Several Library identities could match this plant. Choose the documented identity below.
+          {language === "es" ? "Varias identidades de Library podrían coincidir con esta planta. Elige abajo la identidad documentada." : "Several Library identities could match this plant. Choose the documented identity below."}
         </p>
       ) : null}
       {match?.kind === "none" ? (
         <p className="mt-4 text-sm text-muted-foreground">
-          No unique match was found. Search Garden Library to resolve this plant manually.
+          {language === "es" ? "No se encontró una coincidencia única. Busca en Garden Library para resolver esta planta manualmente." : "No unique match was found. Search Garden Library to resolve this plant manually."}
         </p>
       ) : null}
       {match && match.kind !== "exact" ? (
         <label className="mt-4 block">
-          <span className="eyebrow">Search Garden Library</span>
+          <span className="eyebrow">{language === "es" ? "Buscar en Garden Library" : "Search Garden Library"}</span>
           <span className="relative mt-1.5 block">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Common, scientific or cultivar name"
+              placeholder={language === "es" ? "Nombre común, científico o cultivar" : "Common, scientific or cultivar name"}
               className="w-full rounded-2xl border border-border bg-background py-2.5 pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
             />
           </span>
@@ -106,7 +108,7 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
               className="flex items-center justify-between gap-3 rounded-2xl border border-border/70 px-3 py-2.5"
             >
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium">{entry.commonName}</p>
+                <p className="truncate text-sm font-medium">{localizedLibraryName(entry, language)}</p>
                 <p className="truncate text-xs text-muted-foreground">
                   {entry.scientificName || "Scientific name not documented"}
                   {entry.cultivar ? ` · “${entry.cultivar}”` : ""}
@@ -119,7 +121,7 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
                 disabled={savingId !== null}
                 onClick={() => void confirm(entry)}
               >
-                Confirm
+                {language === "es" ? "Confirmar" : "Confirm"}
               </Button>
             </div>
           ))}

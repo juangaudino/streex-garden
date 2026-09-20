@@ -14,6 +14,7 @@ import { useGarden } from "@/lib/garden-store";
 import { cn } from "@/lib/utils";
 import { gardenCoverPhoto } from "@/lib/garden-logic";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/garden-ai")({
   head: () => ({
@@ -36,6 +37,7 @@ const plantTools = [
 
 function GardenAI() {
   const store = useGarden();
+  const language = store.language;
   const navigate = useNavigate();
   const activePlants = store.plants.filter((plant) => !plant.cycleClosed);
   const [plantId, setPlantId] = useState("");
@@ -83,10 +85,10 @@ function GardenAI() {
     <div className="pb-64 lg:pb-52">
       <div className="px-5 pt-6 pb-4 sm:hidden">
         <p className="eyebrow">Garden AI</p>
-        <h1 className="mt-1 font-display text-3xl">A second look</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Grounded in what your garden has recorded.</p>
+        <h1 className="mt-1 font-display text-3xl">{language === "es" ? "Una segunda mirada" : "A second look"}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{language === "es" ? "Basado en lo que tu jardín ha registrado." : "Grounded in what your garden has recorded."}</p>
       </div>
-      <div className="hidden sm:block"><PageHeader eyebrow="Garden AI" title="A second look, when you need it" subtitle="AI supports what you observe. Recorded facts stay separate, and you confirm any identity change." /></div>
+      <div className="hidden sm:block"><PageHeader eyebrow="Garden AI" title={language === "es" ? "Una segunda mirada, cuando la necesites" : "A second look, when you need it"} subtitle={language === "es" ? "La IA acompaña lo que observas. Los hechos registrados permanecen separados y tú confirmas cualquier cambio de identidad." : "AI supports what you observe. Recorded facts stay separate, and you confirm any identity change."} /></div>
 
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="mb-4 hidden items-center gap-2 sm:flex">
@@ -96,10 +98,10 @@ function GardenAI() {
 
         <section className="grid grid-cols-2 gap-2 sm:gap-3">
           <div className={cn("surface col-span-2 min-w-0 p-4 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:block sm:p-5", selected && "hidden")}>
-            <div className="flex items-center justify-between gap-3"><p className="eyebrow">Choose a plant</p>{selected ? <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground">Clear</Button> : null}</div>
+            <div className="flex items-center justify-between gap-3"><p className="eyebrow">{ui(language, "choosePlant")}</p>{selected ? <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground">{ui(language, "clear")}</Button> : null}</div>
             <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
-              <label className="relative min-w-0"><Search className="absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search plants" className="input-soft w-full pl-9 text-sm" /></label>
-              <label className="relative"><select value={gardenId} onChange={(event) => setGardenId(event.target.value)} aria-label="Filter by garden" className="input-soft h-full max-w-32 appearance-none pr-8 text-xs"><option value="all">All gardens</option>{store.gardens.map((garden) => <option key={garden.id} value={garden.id}>{garden.name}</option>)}</select><ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></label>
+              <label className="relative min-w-0"><Search className="absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={ui(language, "searchPlants")} className="input-soft w-full pl-9 text-sm" /></label>
+              <label className="relative"><select value={gardenId} onChange={(event) => setGardenId(event.target.value)} aria-label={ui(language, "allGardens")} className="input-soft h-full max-w-32 appearance-none pr-8 text-xs"><option value="all">{ui(language, "allGardens")}</option>{store.gardens.map((garden) => <option key={garden.id} value={garden.id}>{garden.name}</option>)}</select><ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></label>
             </div>
             <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 sm:max-h-80 sm:flex-col sm:overflow-y-auto">
               {filtered.map((plant) => {
@@ -123,7 +125,7 @@ function GardenAI() {
                   </Button>
                 );
               })}
-              {filtered.length === 0 ? <p className="py-3 text-sm text-muted-foreground">No plants match that search.</p> : null}
+              {filtered.length === 0 ? <p className="py-3 text-sm text-muted-foreground">{ui(language, "noPlantsMatch")}</p> : null}
             </div>
           </div>
 
@@ -132,18 +134,18 @@ function GardenAI() {
               {selectedPhoto ? <PhotoImage photo={selectedPhoto} alt={selected.name} className="aspect-[16/9] w-full object-cover" loading="eager" /> : null}
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 p-4 sm:block sm:p-5">
                 <div className="min-w-0">
-                  <p className="eyebrow">Selected plant</p>
+                  <p className="eyebrow">{ui(language, "selectedPlant")}</p>
                   <p className="mt-1 truncate font-display text-xl">{selected.name}</p>
                   <p className="truncate text-sm text-muted-foreground">{selected.species} · {selected.slot}</p>
                 </div>
-                <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground sm:hidden">Clear</Button>
+                <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground sm:hidden">{ui(language, "clear")}</Button>
               </div>
             </div>
           ) : contextGarden && contextGardenPhoto ? (
             <div className="relative hidden min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:col-start-1 sm:row-start-1 sm:block">
               <PhotoImage photo={contextGardenPhoto} alt={`${contextGarden.name} garden`} className="aspect-[16/9] w-full object-cover" />
               <div className="p-5">
-                <p className="eyebrow">Garden context</p>
+                <p className="eyebrow">{ui(language, "gardenContext")}</p>
                 <p className="mt-1 font-display text-xl">{contextGarden.name}</p>
                 <p className="text-sm text-muted-foreground">{contextGarden.place}</p>
               </div>
@@ -154,8 +156,8 @@ function GardenAI() {
         <section className="mt-3 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
           <Link to="/identify" search={{ from: "garden-ai" }} className="press surface p-4 sm:p-5">
             <Camera className="h-5 w-5 text-primary" />
-            <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">Identify</h2>
-            <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">Identify a plant from a photo, then confirm it yourself.</p>
+            <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{ui(language, "identify")}</h2>
+            <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{language === "es" ? "Identifica una planta a partir de una foto y confírmala tú mismo." : "Identify a plant from a photo, then confirm it yourself."}</p>
           </Link>
           {plantTools.map((tool) => (
             selected ? (
@@ -172,7 +174,7 @@ function GardenAI() {
               </div>
             )
           ))}
-          {!selected ? <p className="col-span-3 mt-1 text-xs text-muted-foreground">Choose a plant for AI Check or AI Compare.</p> : null}
+          {!selected ? <p className="col-span-3 mt-1 text-xs text-muted-foreground">{ui(language, "choosePlantForAi")}</p> : null}
         </section>
       </div>
 
@@ -186,7 +188,7 @@ function GardenAI() {
             ))}
           </div>
           <PromptInput onSubmit={({ text }) => openConversation(text)} className="rounded-2xl bg-card shadow-soft">
-            <PromptInputTextarea placeholder={selected ? `Ask about ${selected.name}…` : "Ask about your garden…"} />
+            <PromptInputTextarea placeholder={selected ? `${language === "es" ? "Pregunta sobre" : "Ask about"} ${selected.name}…` : ui(language, "askPlaceholder")} />
             <PromptInputFooter className="justify-end">
               <PromptInputSubmit />
             </PromptInputFooter>

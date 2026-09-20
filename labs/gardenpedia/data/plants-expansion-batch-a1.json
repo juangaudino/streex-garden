@@ -1,0 +1,137 @@
+[
+  {
+    "id": "thai-basil",
+    "name": "Thai Basil",
+    "spanishName": "Albahaca tailandesa",
+    "scientificName": "Ocimum basilicum — Thai basil type",
+    "variety": "Thai / Thai sweet basil",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 91,
+    "tags": ["thai basil", "thai sweet basil", "asian basil", "albahaca tailandesa", "ocimum basilicum"],
+    "summary": "A warm-season branching basil with a distinct anise-clove profile. Garden treats it as basil structurally, while keeping cultivar-level height and naming differences visible across sources.",
+    "metrics": [
+      {"label": "Germination", "value": "5–10 days", "note": "Home Grown + Johnny's Thai reference"},
+      {"label": "Harvest window", "value": "~64–90 days", "note": "Source/cultivar dependent"},
+      {"label": "Height reference", "value": "12–36 in", "note": "Home Grown vs. UMN variety context"},
+      {"label": "Hydro pH / EC", "value": "5.5–6.0 / 1.0–1.6", "note": "OSU basil crop reference"}
+    ],
+    "sections": {
+      "germination": {"short": "Fast basil germination in warmth", "guidance": "Thai basil is a warm-season basil. Johnny's Sweet Thai reference and Home Grown both support about 5–10 days to germination under warm seed-starting conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-sweet-thai-basil", "johnnys-basil-key"]},
+      "thinning": {"short": "Thin by vigor and canopy crowding, not field inches", "guidance": "Field sources use wide final spacing, but a compact pod should not copy that number literally. Keep the strongest stems and reduce only when seedlings compete strongly for the same light path or root volume.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-sweet-thai-basil", "usu-basil"]},
+      "pruning": {"short": "Pinch above a healthy node to branch", "guidance": "Use basil's normal branching logic: once established, remove a growing tip just above a healthy leaf pair or node. Regular top harvests can keep the plant compact and productive.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-pruning", "usu-basil"]},
+      "harvest": {"short": "Begin lightly after establishment; harvest tops regularly", "guidance": "Home Grown starts harvest after several sets of leaves and about 12–18 inches, while stronger basil guidance allows light harvest once plants are established. Garden should use structure and recovery capacity rather than age alone.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-sweet-thai-basil", "usu-basil"]},
+      "flowering": {"short": "Flowering marks a shift away from peak leaf production", "guidance": "For leaf-focused use, harvest before heavy flowering and keep the plant actively branching. Visible buds should still be recorded as a real stage, not treated as an error.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-key", "usu-basil"]},
+      "hydroponics": {"short": "Use basil hydro targets as a crop-level reference", "guidance": "OSU lists basil at about EC 1.0–1.6 mS/cm and pH 5.5–6.0. Johnny's also identifies Thai basil types as suitable for hydroponic/container production. Shared-reservoir targets still need to respect the other crops in the system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["okstate-ecph", "johnnys-basil-hydro"]},
+      "problems": {"short": "Watch stress-driven flowering, crowding and weak light response", "guidance": "Water stress and high heat can accelerate flowering in basil, while dense indoor growth can reduce airflow. Garden should interpret these signs together with actual history and photos.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-basil"]}
+    }
+  },
+  {
+    "id": "italian-large-leaf-basil",
+    "name": "Italian Large Leaf Basil",
+    "spanishName": "Albahaca italiana de hoja grande",
+    "scientificName": "Ocimum basilicum",
+    "variety": "Italian Large Leaf",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 92,
+    "tags": ["italian large leaf basil", "large leaf basil", "albahaca italiana", "albahaca de hoja grande", "ocimum basilicum"],
+    "summary": "A large-leaf culinary basil that follows the same node-based branching logic as Genovese while retaining its own manufacturer variety profile.",
+    "metrics": [
+      {"label": "Germination", "value": "5–10 days", "note": "Home Grown; consistent with basil grower reference"},
+      {"label": "Harvest cue", "value": "6–8 in", "note": "Home Grown variety guidance"},
+      {"label": "Height", "value": "12–24 in", "note": "Manufacturer variety reference"},
+      {"label": "Hydro pH / EC", "value": "5.5–6.0 / 1.0–1.6", "note": "OSU basil crop reference"}
+    ],
+    "sections": {
+      "germination": {"short": "Fast 5–10 day basil emergence", "guidance": "Home Grown lists 5–10 days for Italian Large Leaf, matching Johnny's general basil window under warm seed-starting conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-key"]},
+      "thinning": {"short": "Keep vigorous stems; manage crowding rather than copying field spacing", "guidance": "Home Grown uses 12–18 inch field spacing, but Garden should translate that into canopy and root competition in a pod instead of a literal indoor spacing rule.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-basil-key", "usu-basil"]},
+      "pruning": {"short": "Cut above a node to preserve branching points", "guidance": "Once the plant is established, harvest or pinch stems just above a healthy node. This preserves active side shoots and is consistent across Home Grown, Johnny's and USU basil guidance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-pruning", "usu-basil"]},
+      "harvest": {"short": "Start around 6–8 inches when the plant can recover", "guidance": "Home Grown specifically allows harvest around 6–8 inches and recommends individual leaves or stems above a node. Garden should favor repeated light stem harvests over stripping a young plant.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-basil", "johnnys-basil-key"]},
+      "flowering": {"short": "Keep leaf production ahead of flowering", "guidance": "Regular harvest before heavy flowering supports continued leaf production. Flower buds are a stage signal that should influence, not automatically dictate, the next cut.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-key", "usu-basil"]},
+      "hydroponics": {"short": "Basil-specific hydro reference is available", "guidance": "OSU lists basil at about EC 1.0–1.6 mS/cm and pH 5.5–6.0. Use this as a crop-level reference, not as a command to override a shared reservoir's current recipe.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["okstate-ecph", "johnnys-basil-hydro"]},
+      "problems": {"short": "Crowding, water stress and flowering reduce leaf quality", "guidance": "Basil needs strong light, steady moisture and airflow. Garden should distinguish ordinary mature flowering from stress-driven decline by using history and visual evidence together.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-basil"]}
+    }
+  },
+  {
+    "id": "florence-fennel",
+    "name": "Florence Fennel",
+    "spanishName": "Hinojo de Florencia",
+    "scientificName": "Foeniculum vulgare var. azoricum",
+    "variety": "Florence / bulb fennel",
+    "category": "vegetables",
+    "emoji": "🌱",
+    "guideCompletion": 93,
+    "tags": ["florence fennel", "bulb fennel", "finocchio", "hinojo de florencia", "hinojo bulbo", "foeniculum vulgare"],
+    "summary": "A cool-season bulbing fennel grown for its swollen leaf bases as well as fronds. Root disturbance, heat and uneven moisture matter more than pruning.",
+    "metrics": [
+      {"label": "Germination", "value": "7–10 days", "note": "USU Extension; Home Grown 7–14"},
+      {"label": "Maturity", "value": "60–90 days", "note": "USU; manufacturer gives 90–120"},
+      {"label": "Harvest cue", "value": "Firm base <4 in across", "note": "USU Florence fennel"},
+      {"label": "Hydro pH / EC", "value": "Pending", "note": "No accepted crop-specific hydro target"}
+    ],
+    "sections": {
+      "germination": {"short": "Cool-season seed with 7–10 day Extension reference", "guidance": "USU lists Florence fennel germination at about 7–10 days when soil is 50–75°F. Home Grown gives a compatible broader 7–14 day window.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb"]},
+      "thinning": {"short": "A bulbing crop needs one strong final crown per position", "guidance": "Unlike chives or bunching onion, Florence fennel needs room for one swollen base. In a pod or container, keep the strongest final seedling and avoid copying outdoor inch spacing literally.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb"]},
+      "pruning": {"short": "No routine shaping prune", "guidance": "Do not prune Florence fennel like basil. Preserve the active crown and fronds; if a seed stalk forms early, treat that as bolting rather than a normal shaping opportunity.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-fennel-bulb", "usu-fennel"]},
+      "harvest": {"short": "Harvest the firm bulbous base before it overmatures", "guidance": "USU recommends harvesting Florence fennel when the bulbous base is firm and less than about 4 inches across. Fronds may be used earlier as garnish without sacrificing the central crown.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel"]},
+      "flowering": {"short": "Heat, long days and root stress can trigger bolting", "guidance": "Florence fennel performs best in cooler conditions. Heat, long days, water stress or root disturbance can accelerate bolting and reduce bulb quality.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb"]},
+      "hydroponics": {"short": "Physical root and bulb geometry need validation first", "guidance": "Garden does not assign a precise hydroponic EC/pH target yet. Before recommending compact hydro culture, validate that the basket and root zone can accommodate a swollen base and taproot without chronic stress.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
+      "problems": {"short": "Bolting, splitting and undersized bulbs are the main quality risks", "guidance": "Keep moisture consistent and avoid root damage. A plant producing mostly fronds without a useful base may reflect heat, stress, variety mismatch or insufficient physical room.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel"]}
+    }
+  },
+  {
+    "id": "lemongrass-homegrown",
+    "name": "Lemongrass",
+    "spanishName": "Hierba limón / lemongrass",
+    "scientificName": "Cymbopogon spp. — exact species unresolved",
+    "variety": "Home Grown lemongrass — species pending",
+    "category": "herbs",
+    "emoji": "🌾",
+    "guideCompletion": 82,
+    "tags": ["lemongrass", "lemon grass", "hierba limon", "hierba limón", "zacate limón", "cymbopogon"],
+    "summary": "A warm tropical clumping grass. The Home Grown guide identifies only Cymbopogon spp., so Garden keeps the exact species unresolved instead of silently choosing East- or West-Indian lemongrass.",
+    "metrics": [
+      {"label": "Identity", "value": "Cymbopogon spp.", "note": "Exact species still unresolved"},
+      {"label": "Germination", "value": "7–21 days", "note": "Home Grown group-level guidance"},
+      {"label": "Harvest cue", "value": "Established outer stalks", "note": "Diameter varies by source/species"},
+      {"label": "Hydro pH / EC", "value": "Pending", "note": "No accepted crop-specific hydro target"}
+    ],
+    "sections": {
+      "germination": {"short": "Warm germination; exact species matters", "guidance": "Home Grown gives 7–21 days at about 70°F. Johnny's East Indian lemongrass reference gives 7–14 days and notes that light aids germination. Garden keeps the broader group-level range until the packet species is resolved.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-lemongrass", "usu-lemongrass"]},
+      "thinning": {"short": "Clump-forming growth is normal", "guidance": "Lemongrass can be grown as a clump. Remove only weak or strongly competing seedlings when the young cluster is overcrowded; do not force a universal one-stem rule.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-lemongrass"]},
+      "pruning": {"short": "No branching prune; manage older outer stalks", "guidance": "Lemongrass does not need node-based pruning. Maintenance is mainly harvest and removal of older or damaged outer material while preserving the active central clump.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["usu-lemongrass", "johnnys-lemongrass"]},
+      "harvest": {"short": "Take mature outer stalks from an established clump", "guidance": "USU and Johnny's both support harvesting mature outer stalks after establishment. Home Grown uses a smaller stalk-diameter cue than USU, so Garden preserves the species/context difference instead of enforcing one universal diameter.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-lemongrass", "johnnys-lemongrass"]},
+      "flowering": {"short": "Flowering is uncommon in short-season culture", "guidance": "Johnny's notes East Indian lemongrass rarely flowers when grown as an annual. Garden should treat any flowering as a real stage but not as a routine indoor milestone.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-lemongrass"]},
+      "hydroponics": {"short": "Large clump architecture makes compact hydro a special case", "guidance": "No crop-specific hydroponic nutrient target is accepted yet. The plant can become large and root-dense, so Garden should validate physical fit and reservoir behavior before recommending it for a small countertop system.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
+      "problems": {"short": "Cold, low light and cramped root volume are major constraints", "guidance": "Lemongrass is frost sensitive and strongly favors warm, bright conditions. In Utah, USU treats it as a tender perennial commonly grown as an annual or overwintered in containers.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-lemongrass"]}
+    }
+  },
+  {
+    "id": "spearmint",
+    "name": "Spearmint",
+    "spanishName": "Hierbabuena / menta verde",
+    "scientificName": "Mentha spicata",
+    "variety": "Spearmint",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 90,
+    "tags": ["spearmint", "hierbabuena", "menta verde", "mentha spicata", "tea herb"],
+    "summary": "A vigorous perennial mint suited to repeated leaf harvest and tea use. Pinching encourages branching, while long-term crowding and root spread are more important than a fixed seedling count.",
+    "metrics": [
+      {"label": "Germination", "value": "7–14 days", "note": "Home Grown; generic mint reference 10–14"},
+      {"label": "Harvest window", "value": "60–90 days", "note": "Home Grown variety reference"},
+      {"label": "Height", "value": "12–36 in", "note": "Manufacturer + mint references"},
+      {"label": "Hydro pH / EC", "value": "Pending", "note": "No accepted spearmint-specific hydro target"}
+    ],
+    "sections": {
+      "germination": {"short": "Surface-sown mint with a 7–14 day variety reference", "guidance": "Home Grown lists 7–14 days for spearmint. Johnny's generic mint reference gives 10–14 days and confirms that mint seed needs light, so Garden treats the ranges as compatible rather than conflicting.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-mint", "usu-mint"]},
+      "thinning": {"short": "Manage the clump by vigor and root crowding", "guidance": "Mint naturally spreads and branches. In a pod, retain healthy stems while the canopy is open, then reduce or divide when root mass, airflow or light competition becomes limiting.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-mint", "usu-mint"]},
+      "pruning": {"short": "Pinch tops regularly for bushier growth", "guidance": "Johnny's recommends pinching top sets of leaves from the seedling stage onward. Home Grown also recommends taking leaves just above a node, which fits the same branching logic.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-mint"]},
+      "harvest": {"short": "Regular harvest supports continued production", "guidance": "Harvest individual leaves and tender stems once the plant is established. For larger cuts, take stems above healthy nodes and leave enough active growth for recovery.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-mint", "usu-mint"]},
+      "flowering": {"short": "Whole-plant harvest peaks just before flowering", "guidance": "Johnny's recommends whole-plant harvest just before flowering, while individual leaves can be taken earlier. Garden should keep flowering as a stage cue rather than a failure condition.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-mint"]},
+      "hydroponics": {"short": "Spearmint-specific nutrient targets remain unresolved", "guidance": "Garden does not assign a precise spearmint EC/pH range yet. The bigger practical constraint in a small system may be vigorous root and canopy spread rather than nutrient demand alone.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
+      "problems": {"short": "Vigorous spread and crowding are the main structural risks", "guidance": "USU and Johnny's both describe mint as aggressive or invasive in soil. In a hydroponic pod, translate that into periodic root/canopy crowding checks rather than an outdoor containment warning.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["usu-mint", "johnnys-mint"]}
+    }
+  }
+]

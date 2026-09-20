@@ -1,0 +1,308 @@
+{
+  "genovese-basil": {
+    "summary": "Una hierba de crecimiento rápido y muy productiva que se beneficia del pinzado temprano y repetido. Garden debe tratar la poda como una regla estructural: cortar sobre brotes laterales sanos y conservar suficiente follaje para que la planta se recupere.",
+    "metrics": [
+      {"label":"Germinación","value":"5–10 días","note":"Referencia a 65–70°F"},
+      {"label":"pH hidro","value":"5.8–6.2","note":"Referencia de producción hidropónica de Johnny's"},
+      {"label":"EC hidro","value":"1.0–1.6 mS/cm","note":"Tabla de referencia hidropónica de OSU"},
+      {"label":"Luz","value":"≥14 h/día","note":"Guía hidropónica de albahaca de Johnny's"}
+    ],
+    "sections": {
+      "germination": {"short":"Emergencia rápida en condiciones cálidas","guidance":"La albahaca suele germinar en unos 5–10 días cuando se mantiene cálida. Garden debe tratar ese tiempo como un rango y no como una fecha límite.","items":["Temperatura de referencia: 65–70°F (18–21°C).","Una plántula retrasada es una observación; no debe marcarse el pod como fallido solo por la edad."]},
+      "thinning": {"short":"Decisión según el pod, no una regla universal","guidance":"La guía de Johnny's indica que el raleo no siempre es necesario en albahaca, pero un pod hidropónico pequeño tiene otra limitación de espacio. Garden debe evaluar el hacinamiento en lugar de imponer un número fijo de plántulas.","items":["Priorizar las plántulas más vigorosas y erguidas cuando el espacio empiece a ser insuficiente.","Si raíces y tallos ya están entrelazados, cortar las plántulas descartadas en la base es más seguro que arrancarlas."],"avoid":["Presentar 'deja exactamente una planta de albahaca' como una regla universal respaldada por la fuente."],"context":"La recomendación específica para el pod es una adaptación de Garden que debe validarse con los sistemas reales de User Zero."},
+      "pruning": {"short":"Empezar temprano; cortar sobre brotes laterales fuertes","guidance":"Un buen momento para la primera poda es cuando la planta mide aproximadamente 6–8 pulgadas y tiene unas 3–4 series de hojas. Pinza o corta hasta un par sano de brotes laterales, retirando como máximo cerca de un tercio de la planta de una sola vez.","items":["Cortar el tallo justo por encima de un nodo sano o de un par de brotes laterales.","Repetir podas ligeras a medida que aparecen nuevas ramas.","Si el objetivo es fomentar ramificación, usar los recortes como cosecha en vez de arrancar hojas sueltas al azar."],"avoid":["Retirar más de aproximadamente un tercio de la planta en una sola sesión."]},
+      "harvest": {"short":"Cosecha ligera al establecerse; corte mayor antes de florecer","guidance":"Comienza con cosechas ligeras una vez que la planta esté establecida. Para una planta que seguirá produciendo, los cortes de tallo sobre brotes laterales sanos favorecen mejor la ramificación que quitar hojas aisladas repetidamente.","items":["Manipular las hojas con cuidado; la albahaca se magulla con facilidad.","Una cosecha mayor suele hacerse antes de la floración."]},
+      "flowering": {"short":"Retirar flores para favorecer la producción de hojas","guidance":"Si el objetivo es seguir produciendo hojas, retira las espigas florales que aparezcan y mantén la poda para favorecer la ramificación. La floración es un evento real de la planta y debe registrarse por separado de la recomendación de retirarla."},
+      "hydroponics": {"short":"Cálida, luminosa y moderadamente ácida","guidance":"La albahaca hidropónica funciona bien con temperaturas cálidas, solución nutritiva moderadamente ácida y buena intensidad de luz. Estos valores sirven como límites de referencia, no como diagnósticos automáticos.","items":["pH de referencia de Johnny's: 5.8–6.2.","EC de referencia de OSU: 1.0–1.6 mS/cm.","Johnny's sugiere al menos 14 horas de luz por día en condiciones de producción."]},
+      "problems": {"short":"Vigilar hacinamiento, floración y estructura débil","guidance":"Con el tiempo, el prototipo deberá conectar los síntomas con la historia real de la planta. En V0, la guía solo señala riesgos comunes de manejo y no diagnostica únicamente a partir del texto."}
+    }
+  },
+  "cilantro": {
+    "summary": "Una hierba de clima fresco donde el hacinamiento, la alteración de raíces y el espigado importan más que una poda elaborada. El piloto evita inventar rangos hidropónicos de pH/EC hasta contar con una fuente específica más fuerte.",
+    "metrics": [
+      {"label":"Germinación","value":"~21 días","note":"Referencia de USU"},
+      {"label":"Cosecha de hojas","value":"4–6 in","note":"Guía de cosecha de USU"},
+      {"label":"Espaciado de hojas","value":"2 in","note":"Referencia de suelo, no una regla para pods"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Aún no validado por cultivo"}
+    ],
+    "sections": {
+      "germination":{"short":"Más lento que la albahaca; evitar declarar fallas demasiado pronto","guidance":"USU señala que la semilla de cilantro puede tardar cerca de tres semanas en germinar. Garden debe usarlo como expectativa amplia y combinarlo con la emergencia observada."},
+      "thinning":{"short":"Reducir hacinamiento sin perturbar las raíces","guidance":"USU recomienda aproximadamente 2 pulgadas de separación para producción de hojas en suelo. Un pod hidropónico de encimera no equivale directamente a ese espacio, así que Garden debe traducir el hacinamiento de forma visual y no copiar el número como regla rígida."},
+      "pruning":{"short":"El manejo por cosecha importa más que la poda estructural","guidance":"El cilantro no se maneja como la albahaca. Garden debe evitar sugerir podas orientadas a ramificar; la intervención práctica es cosechar hojas y vigilar la transición a floración."},
+      "harvest":{"short":"Comenzar cuando el follaje alcanza un tamaño útil","guidance":"USU recomienda cosechar el follaje cuando las hojas miden aproximadamente 4–6 pulgadas. Garden aún debe evaluar el vigor antes de sugerir un corte fuerte."},
+      "flowering":{"short":"El espigado cambia el objetivo del cultivo","guidance":"El cilantro termina pasando a floración y producción de semilla de coriandro. Si el objetivo son hojas, Garden debe tratar el espigado como un cambio de etapa relevante, no simplemente como un problema."},
+      "hydroponics":{"short":"Los objetivos de nutrientes específicos aún necesitan fuente","guidance":"Este piloto deja sin resolver a propósito los rangos de pH y EC específicos para cilantro en hidroponía, en lugar de copiar un rango genérico de hierbas sin evidencia suficiente."},
+      "problems":{"short":"Calor, espigado y alteración de raíces","guidance":"La futura integración con AI Check debe conectar estos riesgos con fotos e historial, en vez de inferirlos solo por la edad."}
+    }
+  },
+  "red-romaine-lettuce": {
+    "summary":"Una hoja verde de clima fresco que puede manejarse para cosecha repetida de hojas externas o para formar una cabeza más completa. Garden debe conocer el estilo de cosecha deseado antes de recomendar cortes.",
+    "metrics":[
+      {"label":"Germinación óptima","value":"60–68°F","note":"Referencia de Johnny's"},
+      {"label":"pH hidro","value":"5.5–6.0*","note":"Ejemplo no circulante de UF/IFAS"},
+      {"label":"EC hidro","value":"1.2–1.8 mS/cm","note":"Tabla de referencia de OSU"},
+      {"label":"Modo de cosecha","value":"Hoja o cabeza","note":"La estrategia de corte cambia"}
+    ],
+    "sections":{
+      "germination":{"short":"Las condiciones frescas mejoran la germinación","guidance":"La lechuga germina mejor con temperaturas frescas. Johnny's sitúa el óptimo alrededor de 60–68°F."},
+      "thinning":{"short":"Una cabeza necesita espacio; baby leaf es otro modo","guidance":"Para una lechuga destinada a formar cabeza en un pod compacto, Garden normalmente debe favorecer una planta vigorosa una vez establecida. La producción baby leaf sigue reglas distintas."},
+      "pruning":{"short":"Sin poda de formación; retirar hojas dañadas selectivamente","guidance":"La romana no necesita una poda tipo albahaca. El manejo es principalmente cosecha y saneamiento; debe protegerse el centro de crecimiento."},
+      "harvest":{"short":"Hojas externas para continuidad o corte de la cabeza","guidance":"USU señala que la lechuga de hoja puede cosecharse retirando primero las hojas externas maduras para que las jóvenes sigan creciendo. La romana también puede cosecharse como cabeza."},
+      "flowering":{"short":"El espigado es un cambio de etapa y una alerta de calidad","guidance":"La calidad de la lechuga disminuye cuando la planta empieza a producir un tallo floral, especialmente bajo estrés por calor."},
+      "hydroponics":{"short":"Objetivos de cultivo fresco con rangos dependientes del sistema","guidance":"UF/IFAS muestra un sistema de lechuga no circulante cerca de pH 5.5–6.0 y ~1.25 mS/cm; OSU ofrece un rango más amplio de EC de 1.2–1.8 mS/cm. Garden debe conservar el contexto de cada fuente."},
+      "problems":{"short":"El calor, el amargor y el daño de puntas importan","guidance":"La V0 debe señalar el contexto ambiental sin fingir que una regla de texto puede diagnosticar por sí sola problemas de nutrientes, raíces o tip burn."}
+    }
+  },
+  "common-mint": {
+    "summary":"Una hierba perenne vigorosa que tolera cosechas regulares. El patrón general de poda está bien documentado, pero aún faltan mejores referencias hidropónicas específicas de pH y EC.",
+    "metrics":[
+      {"label":"Primera cosecha","value":"3–4 in","note":"Referencia de altura de USU"},
+      {"label":"Estilo de cosecha","value":"Hojas + tallos","note":"Los cortes repetidos son normales"},
+      {"label":"Control de floración","value":"Pinzar flores","note":"Favorece la calidad de la hoja"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Aún no validado en V0"}
+    ],
+    "sections":{
+      "germination":{"short":"El comportamiento de semilla varía según la menta","guidance":"USU señala que la menta puede cultivarse desde semilla o trasplante, pero las plantas de semilla pueden no conservar fielmente una variedad concreta."},
+      "thinning":{"short":"Manejar el hacinamiento del follaje, no solo contar plántulas","guidance":"Las fuentes actuales no definen una regla de raleo para menta en pods hidropónicos. Garden debe basarse en hacinamiento, vigor y espacio de copa."},
+      "pruning":{"short":"La menta tolera cortes repetidos","guidance":"USU describe la menta como tolerante a podas importantes y recomienda pinzar las flores si el objetivo es la calidad de las hojas."},
+      "harvest":{"short":"Cosechar cuando esté establecida y mida 3–4 in","guidance":"USU indica que hojas y tallos frescos pueden cosecharse durante la temporada una vez que la planta alcanza aproximadamente 3–4 pulgadas."},
+      "flowering":{"short":"Pinzar flores cuando el objetivo son hojas sabrosas","guidance":"USU señala que dejar florecer la menta puede reducir el contenido de aceites y el sabor de las hojas."},
+      "hydroponics":{"short":"Objetivos nutritivos aún sin resolver","guidance":"El prototipo todavía no acepta un rango de pH/EC hidropónico específico para menta como dato canónico."},
+      "problems":{"short":"El crecimiento rápido puede convertirse en hacinamiento","guidance":"El vigor de la menta es una ventaja hasta que invade plantas vecinas o bloquea el flujo de aire."}
+    }
+  },
+  "cherry-tomato": {
+    "summary":"Un cultivo de fruto donde la primera pregunta no es '¿cómo lo podo?' sino '¿esta variedad es determinada o indeterminada?'. Garden debe aclarar ese hábito antes de aplicar reglas de eliminación de chupones.",
+    "metrics":[
+      {"label":"Germinación","value":"5–7 días","note":"Referencia de Johnny's"},
+      {"label":"pH hidro","value":"6.0–6.5","note":"Tabla de referencia de OSU"},
+      {"label":"EC hidro","value":"2.0–4.0 mS/cm","note":"Tabla de referencia de OSU"},
+      {"label":"Poda","value":"Condicional","note":"Depende del hábito de crecimiento"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación rápida con propagación cálida","guidance":"Johnny's señala que los tomates normalmente germinan en unos 5–7 días. Garden debe usar la emergencia visible como evento canónico."},
+      "thinning":{"short":"Una planta de fruto suele necesitar toda la capacidad del pod","guidance":"La adaptación de trabajo de Garden es seleccionar una sola planta vigorosa por posición final, salvo que el sistema esté diseñado explícitamente para más."},
+      "pruning":{"short":"Primero identificar si es determinado o indeterminado","guidance":"Johnny's indica que los tomates determinados normalmente no necesitan poda, mientras los indeterminados se benefician de soporte y poda. OSU favorece un tallo principal en tomates hidropónicos indeterminados y la eliminación regular de chupones."},
+      "harvest":{"short":"Para consumo doméstico, dejar madurar en la planta","guidance":"Johnny's recomienda tomates plenamente maduros en la planta para uso local. Garden no debe marcar cosecha hasta que el usuario confirme la acción."},
+      "flowering":{"short":"La floración es esperada; el cuajado cambia el mantenimiento","guidance":"En tomate la floración no debe suprimirse por defecto. Marca la transición al crecimiento reproductivo y cambia necesidades de soporte y manejo."},
+      "hydroponics":{"short":"Mayor demanda nutritiva que las hojas verdes","guidance":"La tabla hidropónica de OSU sitúa el tomate cerca de pH 6.0–6.5 y EC 2.0–4.0 mS/cm. Son rangos amplios que deben contextualizarse por etapa y programa nutritivo."},
+      "problems":{"short":"Soporte, vigor y errores de poda se acumulan rápido","guidance":"Un temporizador genérico no puede decidir de forma fiable si un brote es chupón, tallo principal o rama dañada."}
+    }
+  },
+  "italian-oregano": {
+    "summary":"Una hierba mediterránea ramificada que responde bien a cosechas de puntas. Garden mantiene la identidad botánica exacta pendiente hasta confirmar el paquete o cultivar.",
+    "metrics":[
+      {"label":"Germinación de referencia","value":"7–14 días","note":"Referencia de orégano griego; aún no específica del paquete"},
+      {"label":"Primer indicador estructural","value":"~4 hojas verdaderas","note":"Buen punto para manejo más activo"},
+      {"label":"Estilo de cosecha","value":"Puntas de tallo","note":"Favorece ramificación"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Sin fuente específica aceptada todavía"}
+    ],
+    "sections":{
+      "germination":{"short":"Semilla pequeña; referencia sensible a la luz","guidance":"La referencia de orégano griego de Johnny's reporta 7–14 días a 65–70°F y siembra superficial porque la semilla necesita luz. Es contexto útil, pero Garden no debe afirmar que este paquete sea orégano griego."},
+      "thinning":{"short":"Ralear según vigor y hacinamiento del pod","guidance":"La fuente trasplanta el orégano alrededor de cuatro hojas verdaderas. En un pod compacto, Garden debe decidir cuántas conservar según vigor y espacio real."},
+      "pruning":{"short":"Pinzar crecimiento nuevo para mantener ramificación","guidance":"Johnny's recomienda pinzar el crecimiento nuevo. En un sistema de encimera, cosechas repetidas de puntas pueden cumplir la misma función sin una poda agresiva."},
+      "harvest":{"short":"Cosechar tallos; cerca de floración es una referencia fuerte","guidance":"La guía de campo corta tallos completos al inicio de floración. Garden debe traducirlo a cosechas más ligeras de puntas en una planta de interior activa, salvo que se busque un corte completo."},
+      "flowering":{"short":"La floración puede ser una señal de cosecha, no un problema automático","guidance":"La fuente usa el inicio de floración como momento de cosecha. Si el objetivo son hojas continuas, Garden puede sugerir cortes más tempranos, pero la floración sigue siendo una etapa observada."},
+      "hydroponics":{"short":"El rango nutritivo específico sigue sin resolverse","guidance":"V0 no asigna pH ni EC hidropónicos a este paquete hasta tener una fuente apropiada para su identidad exacta."},
+      "problems":{"short":"Vigilar hacinamiento y crecimiento débil o alargado","guidance":"Garden deberá evaluar separación de tallos, luz y densidad de follaje a partir de fotos en vez de diagnosticar solo por edad."}
+    }
+  },
+  "english-thyme": {
+    "summary":"Una hierba joven de crecimiento lento que se beneficia de paciencia y pinzados ligeros. Garden debe distinguir una planta hidropónica joven de las podas fuertes usadas en tomillo perenne establecido.",
+    "metrics":[
+      {"label":"Germinación","value":"14–21 días","note":"Referencia a 65–70°F"},
+      {"label":"Punto de manejo","value":"4 hojas verdaderas","note":"Referencia de trasplante de Johnny's"},
+      {"label":"Estilo de poda","value":"Pinzado de puntas","note":"Para tipos erguidos"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Necesita validación hidropónica específica"}
+    ],
+    "sections":{
+      "germination":{"short":"Lento comparado con la albahaca","guidance":"Johnny's sitúa la germinación del tomillo en 14–21 días a 65–70°F. Garden debe evitar declarar fallido un pod solo porque otras hierbas germinaron antes."},
+      "thinning":{"short":"Esperar suficiente estructura para comparar plántulas","guidance":"Johnny's traslada plántulas a recipientes individuales alrededor de cuatro hojas verdaderas. Garden puede usar ese punto para evaluar vigor y ralear solo si hay competencia real."},
+      "pruning":{"short":"Pinzar puntas erguidas para una planta más tupida","guidance":"Johnny's recomienda explícitamente pinzar los puntos de crecimiento de tipos erguidos para estimular un porte más tupido."},
+      "harvest":{"short":"Cosecha ligera de tallos mientras es joven","guidance":"Johnny's aconseja tomar pocos tallos durante el primer año y realizar cortes mayores cerca de floración en plantas más maduras. Garden debe ser conservador con una planta joven de interior."},
+      "flowering":{"short":"Cerca de floración es una etapa tradicional de cosecha","guidance":"El tomillo establecido suele cosecharse cuando las flores empiezan a abrir. Garden debe interpretar los botones según el objetivo del usuario."},
+      "hydroponics":{"short":"No inventar un rango genérico de hierbas","guidance":"Las fuentes actuales no establecen objetivos hidropónicos específicos de pH/EC para tomillo, por lo que siguen pendientes."},
+      "problems":{"short":"Un inicio lento puede ser normal; raíces permanentemente mojadas no","guidance":"El tomillo está adaptado a condiciones muy drenantes. Los futuros checks deben separar crecimiento juvenil lento de problemas de oxígeno en raíces o falta de luz."}
+    }
+  },
+  "italian-giant-parsley": {
+    "summary":"El perejil germina lentamente y se maneja principalmente mediante cosecha selectiva de hojas y tallos, no mediante poda de formación. Garden debe ser especialmente conservador durante la fase de plántula.",
+    "metrics":[
+      {"label":"Germinación","value":"14–30 días","note":"Referencia a 65–70°F"},
+      {"label":"Cosecha","value":"Cortar según necesidad","note":"Después de establecerse"},
+      {"label":"Hábito de crecimiento","value":"Roseta","note":"Proteger la corona central"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Falta fuente hidropónica específica"}
+    ],
+    "sections":{
+      "germination":{"short":"Cultivo de paciencia: 14–30 días","guidance":"Johnny's sitúa la germinación del perejil en 14–30 días y señala que puede tardar tres semanas o más. Garden debe manejar una ventana amplia."},
+      "thinning":{"short":"Ralear solo cuando puedan compararse las plántulas","guidance":"El espaciado de campo no se traduce directamente a un pod. Garden debe conservar las plántulas más fuertes hasta que el hacinamiento empiece a comprometer la roseta."},
+      "pruning":{"short":"La cosecha es el sistema de poda","guidance":"El perejil no necesita poda apical tipo albahaca. El mantenimiento debe tomar tallos externos maduros y conservar la corona central y hojas nuevas.","avoid":["Cortar el centro de la roseta como si fuera un tallo ramificado de albahaca."]},
+      "harvest":{"short":"Cortar tallos maduros según necesidad","guidance":"Johnny's recomienda cortar hojas de perejil según necesidad. Para cosecha repetida en un pod, Garden debe priorizar tallos externos maduros y dejar intacto el crecimiento central."},
+      "flowering":{"short":"Es bienal; la floración cambia la producción de hojas","guidance":"El perejil es bienal. Si aparece crecimiento reproductivo, Garden debe tratarlo como cambio de etapa y no como una poda ordinaria."},
+      "hydroponics":{"short":"Los objetivos nutritivos necesitan una fuente dedicada","guidance":"El prototipo todavía no acepta valores específicos de pH/EC hidropónicos para perejil."},
+      "problems":{"short":"Germinación lenta y daño de corona son riesgos clave","guidance":"Garden debe evitar interpretar emergencia lenta como falla y distinguir envejecimiento normal de hojas externas de daño en la corona central."}
+    }
+  },
+  "common-chives": {
+    "summary":"El cebollín es una excepción crítica a la regla simplista de 'una planta por pod': referencias de producción fiables lo inician y cultivan intencionalmente en pequeños grupos de plántulas.",
+    "metrics":[
+      {"label":"Germinación","value":"7–14 días","note":"Referencia a 65–70°F"},
+      {"label":"Grupo de plántulas","value":"3–4 por plug","note":"Referencia de trasplante de Johnny's"},
+      {"label":"Cosecha","value":"Cortar hojas bajas","note":"Las plantas establecidas rebrotan"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Aún sin objetivo hidropónico específico"}
+    ],
+    "sections":{
+      "germination":{"short":"Varias plántulas por plug son normales","guidance":"Johnny's sitúa la germinación en 7–14 días y comienza con varias semillas por plug, raleando a unas 3–4 plántulas por plug para trasplante."},
+      "thinning":{"short":"No ralear automáticamente a una sola planta","guidance":"A diferencia de una lechuga de cabeza o un tomate, el cebollín se cultiva habitualmente en grupos. Varias plántulas sanas en un pod no significan automáticamente hacinamiento."},
+      "pruning":{"short":"Sin poda de forma; cortar es cosechar","guidance":"El cebollín no necesita poda por nodos. El follaje establecido puede cortarse y dejarse rebrotar."},
+      "harvest":{"short":"Cortar hojas bajas una vez establecido","guidance":"USU recomienda cosechar con tijeras o cuchillo dejando aproximadamente 1–2 pulgadas; Johnny's describe cortes más bajos en plantas establecidas. Garden debe adaptarlo con cuidado para no dañar la corona hidropónica."},
+      "flowering":{"short":"Los tallos florales tienen otra textura","guidance":"USU señala que el cebollín florece habitualmente y que los tallos florales se vuelven menos agradables para comer. Garden debe distinguir cosecha de hoja de manejo de tallos florales."},
+      "hydroponics":{"short":"El cultivo en grupos está respaldado; el rango nutritivo sigue pendiente","guidance":"La forma de crecimiento permite varias plántulas por posición, pero aún falta una referencia fuerte de pH/EC específica para cebollín."},
+      "problems":{"short":"El hacinamiento debe juzgarse como mata, no por tallo individual","guidance":"AI Check deberá evaluar densidad del grupo, color y caída de hojas sin tratar cada plántula de cebollín como un error."}
+    }
+  },
+  "dill-bouquet": {
+    "summary":"Una variedad alta de eneldo cuya densidad correcta depende del producto buscado. Las fuentes van desde varias semillas por celda hasta espaciamientos amplios en campo; Garden debe conservar ese contexto.",
+    "metrics":[
+      {"label":"Germinación","value":"7–21 días","note":"Referencia a 65–70°F"},
+      {"label":"Cosecha de hojas","value":"Tras establecerse","note":"Hasta la floración"},
+      {"label":"Madurez típica","value":"~6–8 semanas","note":"Referencia de USU"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Objetivo específico de interior aún sin resolver"}
+    ],
+    "sections":{
+      "germination":{"short":"7–21 días; la siembra directa es común","guidance":"Johnny's y USU reportan emergencia alrededor de 7–21 días. Garden debe usarlo como rango y registrar la emergencia observada como evento real."},
+      "thinning":{"short":"El contexto importa: celda de producción ≠ espaciamiento de campo","guidance":"Johnny's usa sistemas densos y 3–5 semillas por celda, mientras USU recomienda mucho más espacio en campo. Un pod hidropónico se sitúa entre esos contextos.","items":["No imponer una regla de una sola plántula.","Ralear solo cuando los tallos compitan claramente por luz o el objetivo requiera más espacio."]},
+      "pruning":{"short":"Cortes ligeros pueden favorecer una planta más llena","guidance":"USU señala que la poda puede promover un crecimiento más frondoso. En un pod joven, Garden debe preferir cosechas ligeras de puntas en lugar de cortes severos."},
+      "harvest":{"short":"Las hojas pueden cosecharse una vez establecido","guidance":"Johnny's permite cosechar follaje desde el establecimiento hasta la floración; USU señala que el sabor es especialmente bueno alrededor del inicio de floración."},
+      "flowering":{"short":"La floración puede ser deseada por sabor, semilla o flores Bouquet","guidance":"Bouquet se valora precisamente por sus cabezas florales. Garden debe conocer el objetivo antes de tratar la floración como algo que detener."},
+      "hydroponics":{"short":"Sin pH/EC específico de Bouquet aceptado todavía","guidance":"El prototipo deja pendientes los objetivos nutritivos hidropónicos hasta añadir una referencia apropiada."},
+      "problems":{"short":"Calor, hacinamiento y exceso de agua pueden acelerar el declive","guidance":"USU señala que calor y hacinamiento pueden favorecer el espigado y que el exceso de agua eleva el riesgo de enfermedad. Garden debe combinar esos riesgos con el entorno real."}
+    }
+  },
+  "rosemary": {
+    "summary":"Una hierba mediterránea leñosa con fase de plántula lenta. Garden debe evitar cosechas agresivas tempranas y mantener pendientes los objetivos hidropónicos hasta contar con evidencia específica más sólida.",
+    "metrics":[
+      {"label":"Germinación","value":"14–21 días","note":"Referencia de Johnny's"},
+      {"label":"Punto de raleo/trasplante","value":"4 hojas verdaderas","note":"Referencia de plántula"},
+      {"label":"Cosecha de puntas","value":"~80–100 días","note":"Referencia de producción, no temporizador rígido"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Necesita validación específica"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación lenta y favorecida por luz","guidance":"Johnny's reporta 14–21 días y señala que la semilla de romero necesita luz. Garden debe usar una ventana amplia porque la emergencia puede ser irregular."},
+      "thinning":{"short":"Evaluar alrededor de cuatro hojas verdaderas","guidance":"Johnny's ralea o traslada plántulas cuando tienen aproximadamente cuatro hojas verdaderas. En un pod pequeño, Garden puede usar ese punto para seleccionar la planta más vigorosa si hay competencia."},
+      "pruning":{"short":"La cosecha de puntas se convierte luego en poda estructural","guidance":"El romero joven debe establecerse antes de cortes repetidos. Cuando ramifica activamente, cosechar puntas tiernas puede funcionar como modelado ligero conservando la estructura leñosa."},
+      "harvest":{"short":"La referencia de producción inicia puntas alrededor de 80–100 días","guidance":"Johnny's sitúa la cosecha de puntas aproximadamente a los 80–100 días desde siembra. Garden debe tratarlo como contexto: vigor y ramificación visible importan más que la edad sola."},
+      "flowering":{"short":"La floración es normal en romero maduro","guidance":"La guía actual no exige retirar flores. Garden debe interpretarlas según el objetivo del usuario."},
+      "hydroponics":{"short":"La aireación de raíces importa; los números siguen pendientes","guidance":"La preferencia por medios ligeros y drenantes advierte contra raíces pobres en oxígeno, pero el prototipo no traduce pH de suelo a solución hidropónica sin evidencia directa."},
+      "problems":{"short":"No confundir crecimiento juvenil lento con falla","guidance":"AI Check deberá observar raíces, elongación débil y muerte de puntas respetando el crecimiento naturalmente lento del romero joven."}
+    }
+  },
+  "lavender-vera": {
+    "summary":"La lavanda inglesa crece lentamente desde semilla y prefiere raíces muy aireadas. Vera está identificada por USU entre las variedades de lavanda inglesa, lo que da una confianza de cultivar mayor que en otros paquetes.",
+    "metrics":[
+      {"label":"Germinación","value":"14–21 días","note":"Referencia a 65–70°F"},
+      {"label":"Mejor etapa de cosecha","value":"Botones / primeras flores","note":"Depende del uso previsto"},
+      {"label":"Preferencia radicular","value":"Alta aireación","note":"Fuerte preferencia por drenaje en referencias de suelo"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"No traducir directamente desde pH de suelo"}
+    ],
+    "sections":{
+      "germination":{"short":"Cultivo lento desde semilla; la luz ayuda","guidance":"Johnny's y USU sitúan la germinación aproximadamente en 14–21 días cerca de 65–70°F. USU además identifica Vera como lavanda inglesa."},
+      "thinning":{"short":"Dar espacio a plantas individuales una vez identificables","guidance":"Las referencias de campo separan ampliamente las lavandas adultas. En un pod, Garden debe seleccionar la planta más fuerte cuando varias empiecen a competir."},
+      "pruning":{"short":"La estrategia joven difiere de la lavanda madura","guidance":"USU describe cortes ligeros en el primer año para favorecer laterales y podas más fuertes después de floración en plantas establecidas. Garden no debe aplicar ese manejo maduro a una plántula."},
+      "harvest":{"short":"El momento de cosecha floral depende del uso","guidance":"Johnny's cosecha espigas justo cuando las flores van a abrir; USU recomienda cortar para secado cuando empiezan a abrir las primeras flores. Garden debe mostrar el momento junto al uso previsto."},
+      "flowering":{"short":"Las flores son un producto deseado, no un problema","guidance":"Para el uso aromático o de té, la floración puede ser el objetivo. Garden nunca debe copiar automáticamente el comportamiento de 'retirar flores' de la albahaca."},
+      "hydroponics":{"short":"La necesidad de aireación es clara; pH/EC no","guidance":"Las fuentes enfatizan un drenaje excelente. Eso respalda cautela con el oxígeno radicular en hidroponía, pero no permite copiar directamente rangos de suelo a la solución nutritiva."},
+      "problems":{"short":"Las raíces excesivamente húmedas son un riesgo importante","guidance":"USU advierte sobre condiciones saturadas y riesgo de pudrición. Garden debe combinar aspecto de raíces y condiciones del sistema antes de diagnosticar."}
+    }
+  },
+  "bibb-lettuce": {
+    "summary":"Una lechuga tipo butterhead que puede manejarse para hojas externas repetidas o para cosechar una cabeza blanda completa. Una planta final por pod compacto es una adaptación de Garden, no una ley universal.",
+    "metrics":[
+      {"label":"Germinación","value":"60–68°F óptimo","note":"Referencia general de lechuga"},
+      {"label":"pH hidro","value":"5.5–6.0*","note":"Ejemplo no circulante de UF/IFAS"},
+      {"label":"EC hidro","value":"1.2–1.8 mS/cm","note":"Referencia de lechuga de OSU"},
+      {"label":"Modo de cosecha","value":"Hoja externa / cabeza","note":"Elegir estrategia"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación en condiciones frescas","guidance":"La guía general de lechuga sitúa el óptimo alrededor de 60–68°F. UF/IFAS usa una o dos semillas por cubo en un método hidropónico pequeño."},
+      "thinning":{"short":"Favorecer una planta formadora de cabeza en un pod compacto","guidance":"Para una Bibb de tamaño completo, la regla de trabajo de Garden es conservar una planta fuerte por posición una vez que el establecimiento sea claro."},
+      "pruning":{"short":"Sin poda de forma","guidance":"Bibb se maneja mediante cosecha y eliminación de tejido dañado, no por poda de nodos. Proteger el centro durante cosechas repetidas."},
+      "harvest":{"short":"Hojas externas para continuidad o cosecha de cabeza","guidance":"Garden debe permitir elegir entre cosecha continua de hojas externas y cosecha completa tipo butterhead. Esa elección cambia lo que significa 'lista'."},
+      "flowering":{"short":"El espigado reduce calidad de hoja","guidance":"Un tallo central creciente es un cambio de etapa importante. Garden debe señalarlo y explicar la probable disminución de calidad."},
+      "hydroponics":{"short":"Usar contexto de fuente en vez de precisión falsa","guidance":"UF/IFAS muestra lechuga cerca de pH 5.5–6.0 y ~1.25 mS/cm en un método no circulante; OSU lista EC 1.2–1.8 mS/cm. Garden debe conservar ambos contextos."},
+      "problems":{"short":"Calor y daño de corona son checks de alto valor","guidance":"AI Check deberá distinguir envejecimiento normal de hojas externas de lesión de corona, estrés térmico, raíces problemáticas y daño de puntas usando imágenes e historial."}
+    }
+  },
+  "iceberg-lettuce": {
+    "summary":"Una lechuga crisphead cuyo objetivo natural es formar una cabeza densa. Garden no debe asumir que la misma cosecha repetida de hojas externas usada en looseleaf sea óptima si se busca una cabeza verdadera.",
+    "metrics":[
+      {"label":"Germinación","value":"60–68°F óptimo","note":"Referencia general de lechuga"},
+      {"label":"pH hidro","value":"5.5–6.0*","note":"Ejemplo de sistema de UF/IFAS"},
+      {"label":"EC hidro","value":"1.2–1.8 mS/cm","note":"Referencia de OSU"},
+      {"label":"Objetivo preferido","value":"Cabeza","note":"Proteger formación de cabeza"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación fresca; el calor reduce confiabilidad","guidance":"Iceberg sigue la biología general de la lechuga: alrededor de 60–68°F favorece la germinación y el calor excesivo puede reducirla."},
+      "thinning":{"short":"Un cultivo de cabeza necesita su propio espacio","guidance":"Garden normalmente debe conservar una planta vigorosa por posición compacta cuando el objetivo es formar una cabeza de iceberg."},
+      "pruning":{"short":"No podar el centro","guidance":"No existe poda de formación. Retirar solo tejido externo claramente dañado o envejecido y conservar el crecimiento central que forma la cabeza."},
+      "harvest":{"short":"La cosecha completa de cabeza es el objetivo por defecto","guidance":"Si se busca una cabeza compacta, la retirada repetida de hojas sanas debe ser más conservadora que en una looseleaf. Cosechar la planta completa en la base cuando alcance densidad y calidad aceptables."},
+      "flowering":{"short":"El espigado termina la trayectoria de calidad de cabeza","guidance":"Un tallo de semilla ascendente indica transición reproductiva. Garden debe señalar la etapa y explicar la probable pérdida de calidad."},
+      "hydroponics":{"short":"Rangos generales de lechuga, conservando contexto","guidance":"Usar referencias generales de lechuga manteniendo visibles las diferencias de sistema y variedad: UF/IFAS pH 5.5–6.0 en un método y OSU EC 1.2–1.8 mS/cm."},
+      "problems":{"short":"Calor y limitación de espacio afectan mucho el heading","guidance":"Un sistema de encimera puede producir una planta de lechuga sana sin formar una cabeza de supermercado. Garden debe separar salud de planta de capacidad del sistema para lograr la forma deseada."}
+    }
+  },
+  "buttercrunch-lettuce": {
+    "summary":"Una lechuga butterhead compatible tanto con cosecha repetida de hojas externas como con una cabeza compacta completa. Garden debe hacer explícito el modo de cosecha elegido.",
+    "metrics":[
+      {"label":"Germinación","value":"60–68°F óptimo","note":"Referencia general de lechuga"},
+      {"label":"pH hidro","value":"5.5–6.0*","note":"Ejemplo de UF/IFAS"},
+      {"label":"EC hidro","value":"1.2–1.8 mS/cm","note":"Referencia de OSU"},
+      {"label":"Modo de cosecha","value":"Hoja externa / cabeza","note":"Ambos son útiles"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación de lechuga de clima fresco","guidance":"Usar el modelo general de lechuga: alrededor de 60–68°F es favorable y la emergencia real es el evento canónico."},
+      "thinning":{"short":"Una planta para un butterhead compacto","guidance":"La regla hidropónica de trabajo de Garden es una planta fuerte por posición compacta cuando se busca una cabeza reconocible de Buttercrunch."},
+      "pruning":{"short":"Cosechar, no dar forma","guidance":"Conservar el centro. Retirar hojas externas maduras para comer o tejido claramente dañado; no despuntar la planta como una hierba."},
+      "harvest":{"short":"Excelente candidata para cosecha continua de hojas externas","guidance":"Para uso continuo, tomar hojas externas maduras y proteger el centro. Si se prefiere una cabeza completa, dejar que gane tamaño y cortar en la base."},
+      "flowering":{"short":"El espigado es una alerta de calidad","guidance":"Un tallo central ascendente es un cambio de etapa. Garden debe mostrarlo pronto porque la calidad puede caer al espigar."},
+      "hydroponics":{"short":"Referencias generales de lechuga con contexto","guidance":"UF/IFAS y OSU ofrecen rangos útiles para lechuga. Garden no debe presentarlos como óptimos específicos de Buttercrunch."},
+      "problems":{"short":"Vigilar calor, daño de puntas y salud de corona","guidance":"La visión futura debe comparar daño de hojas externas con crecimiento central e historial de raíces antes de recomendar cambios nutritivos."}
+    }
+  },
+  "broadleaf-sage": {
+    "summary":"Una hierba perenne leñosa cuya fuente sí respalda ralear a una planta por recipiente y cosechar hojas individuales tras establecerse. Las podas fuertes de plantas maduras no deben aplicarse a un pod joven.",
+    "metrics":[
+      {"label":"Germinación","value":"7–21 días","note":"Referencia a 65–70°F"},
+      {"label":"Inicio de semilla","value":"2–3 semillas","note":"Johnny's ralea a una por recipiente"},
+      {"label":"Cosecha primer año","value":"Hojas individuales","note":"Después de establecerse"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Aún sin objetivo específico de salvia"}
+    ],
+    "sections":{
+      "germination":{"short":"Ventana de emergencia de 7–21 días","guidance":"Johnny's sitúa la germinación de salvia común en 7–21 días a 65–70°F."},
+      "thinning":{"short":"Fuerte respaldo para una planta final","guidance":"Johnny's inicia 2–3 semillas por recipiente y ralea a una planta después de germinar. Aquí la adaptación de una planta final por pod compacto es más sólida que en especies agrupadas como cebollín."},
+      "pruning":{"short":"Plantas jóvenes: cosecha de hojas; maduras: corte de tallos","guidance":"La fuente distingue la cosecha de hojas individuales del primer año de los cortes de tallos en años posteriores. Garden debe conservar esa diferencia de edad."},
+      "harvest":{"short":"Hojas individuales una vez establecida","guidance":"Johnny's respalda cosechar hojas individuales durante el primer año cuando la planta ya está establecida. Los cortes grandes corresponden a plantas más maduras."},
+      "flowering":{"short":"La apertura de flores es una señal de cosecha madura","guidance":"En años posteriores, Johnny's corta tallos cuando las flores empiezan a abrir. Garden debe tratarlo como contexto de madurez, no imponerlo a una planta joven de interior."},
+      "hydroponics":{"short":"La preferencia por drenaje es clara; la solución no","guidance":"La salvia prefiere condiciones muy drenantes, pero V0 aún no acepta valores hidropónicos específicos de pH/EC."},
+      "problems":{"short":"La lignificación es normal con la edad","guidance":"Garden debe distinguir la lignificación normal de una perenne del estrés. Las plantas viejas de salvia se vuelven leñosas con el tiempo."}
+    }
+  },
+  "black-seeded-simpson": {
+    "summary":"Una lechuga looseleaf especialmente compatible con cosecha repetida de hojas externas. Garden no debe tratar su forma abierta como una falla por no formar cabeza.",
+    "metrics":[
+      {"label":"Germinación","value":"60–68°F óptimo","note":"Referencia general de lechuga"},
+      {"label":"pH hidro","value":"5.5–6.0*","note":"Ejemplo de UF/IFAS"},
+      {"label":"EC hidro","value":"1.2–1.8 mS/cm","note":"Referencia de OSU"},
+      {"label":"Modo de cosecha","value":"Hoja externa","note":"Uso natural de looseleaf"}
+    ],
+    "sections":{
+      "germination":{"short":"Germinación de lechuga de clima fresco","guidance":"Usar el modelo general de lechuga con óptimo alrededor de 60–68°F y evitar declarar fallas solo por edad."},
+      "thinning":{"short":"Una planta looseleaf vigorosa para un cultivo de tamaño completo","guidance":"El modo por defecto de Garden para una Black Seeded Simpson de tamaño completo es una plántula fuerte por posición compacta. Baby leaf sería otro modo de cultivo y puede usar mayor densidad."},
+      "pruning":{"short":"Sin poda de forma; proteger el centro","guidance":"No despuntar una looseleaf. Cosechar hojas externas maduras y retirar tejido dañado dejando intacto el punto central de crecimiento."},
+      "harvest":{"short":"Muy apta para cosecha continua","guidance":"La lechuga looseleaf funciona muy bien con cosecha selectiva de hojas maduras. Garden debe priorizar las hojas externas y vigilar el crecimiento del centro y el vigor general."},
+      "flowering":{"short":"El espigado cambia calidad y morfología","guidance":"Un tallo central de semilla no es un nuevo brote de hojas; marca transición reproductiva. Garden debe mostrarlo claramente y explicar la probable pérdida de calidad."},
+      "hydroponics":{"short":"Referencias generales de solución para lechuga","guidance":"Usar UF/IFAS y OSU como evidencia con contexto explícito de sistema, no como precisión específica de cultivar."},
+      "problems":{"short":"La forma abierta es normal en esta variedad","guidance":"Garden debe reconocer que Black Seeded Simpson es looseleaf. No formar una cabeza compacta no es por sí mismo un síntoma."}
+    }
+  }
+}

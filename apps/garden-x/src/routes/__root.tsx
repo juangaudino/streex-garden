@@ -127,7 +127,20 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const { queryClient } = Route.useRouteContext();
+
+  // Gardenpedia is a public, read-only laboratory surface. Keep it outside
+  // the authenticated GardenProvider so it cannot hydrate private gardens,
+  // photos, or session state while it is being viewed anonymously.
+  if (pathname === "/gardenpedia" || pathname.startsWith("/gardenpedia/")) {
+    return (
+      <>
+        <Outlet />
+        <Toaster position="top-center" />
+      </>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>

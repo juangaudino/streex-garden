@@ -1,0 +1,182 @@
+[
+  {
+    "id":"sweet-basil","name":"Sweet Basil","spanishName":"Albahaca dulce","scientificName":"Ocimum basilicum","variety":"Sweet Basil","category":"herbs","emoji":"🌿","guideCompletion":84,
+    "tags":["sweet basil","albahaca dulce","basil","owned seed"],
+    "summary":"A warm-season branching basil with the same structural logic as Genovese: early pinching, repeated stem harvests, and flower removal when leaf production is the goal.",
+    "metrics":[{"label":"Germination","value":"5–10 days","note":"Ferry-Morse reference"},{"label":"Maturity","value":"~85 days","note":"Ferry-Morse reference"},{"label":"Height","value":"18–24 in","note":"Outdoor reference"},{"label":"Owned seed GR","value":"91%","note":"Home Grown packet"}],
+    "sections":{
+      "germination":{"short":"Warm, fast basil germination","guidance":"Sweet basil commonly germinates in about 5–10 days under warm seed-starting conditions.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sweet-basil"]},
+      "thinning":{"short":"Thin by crowding, not by a universal one-seedling rule","guidance":"In a compact pod, keep the strongest stems and remove crowding when leaves begin to overlap heavily or stems compete for the same light path.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ferry-sweet-basil"]},
+      "pruning":{"short":"Pinch above a healthy node to branch","guidance":"Treat Sweet Basil like other branching basils: remove the growing tip above a healthy leaf pair once established, then repeat light cuts as branches develop.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sweet-basil"]},
+      "harvest":{"short":"Harvest stems while preserving active nodes","guidance":"Regular outer-leaf and stem harvest supports continued production; leave enough foliage and active nodes for rapid recovery.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ferry-sweet-basil"]},
+      "flowering":{"short":"Remove buds for leaf-focused production","guidance":"Ferry-Morse recommends removing flower buds to encourage fuller, leafier growth when culinary leaves are the priority.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sweet-basil"]},
+      "hydroponics":{"short":"Use the same basil family guardrails, then validate the actual system","guidance":"Basil is a proven hydroponic crop, but Garden should keep system-specific pH/EC recommendations tied to the hydroponic source layer rather than the seed packet.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["osu-hydro-ecph"]},
+      "problems":{"short":"Watch flowering, crowding and weak elongated stems","guidance":"Future AI Check should combine canopy shape and history instead of diagnosing from age alone.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]}
+    }
+  },
+  {
+    "id":"curled-chervil","name":"Curled Chervil","spanishName":"Perifollo rizado","scientificName":"Anthriscus cerefolium","variety":"Curled","category":"herbs","emoji":"🌿","guideCompletion":76,
+    "tags":["chervil","perifollo","curled chervil","french parsley","owned seed"],
+    "summary":"A cool-season delicate herb that prefers moist conditions and bolts in heat. It is better managed by light leaf harvest than by structural pruning.",
+    "metrics":[{"label":"Germination","value":"10–14 days","note":"Johnny's reference"},{"label":"Height","value":"10–16 in","note":"Johnny's reference"},{"label":"Harvest cue","value":"Before flowering","note":"Peak flavor reference"},{"label":"Owned seed GR","value":"85%","note":"Home Grown packet"}],
+    "sections":{
+      "germination":{"short":"Light helps germination","guidance":"Johnny's recommends barely covering chervil seed because light supports germination; expected emergence is about 10–14 days.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]},
+      "thinning":{"short":"Give individual plants room once they can be handled","guidance":"Field guidance thins to about 6 inches. In a pod, translate that into avoiding a dense cluster rather than copying the soil spacing literally.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-chervil"]},
+      "pruning":{"short":"No basil-style shaping needed","guidance":"Chervil is primarily harvested for tender leaves; avoid aggressive structural pruning on a young plant.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-chervil"]},
+      "harvest":{"short":"Best just before flowering","guidance":"Johnny's notes peak leaf flavor just before flowering. Use light leaf/stem harvests earlier as needed.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]},
+      "flowering":{"short":"Heat-driven bolting ends the prime leaf phase","guidance":"Hot weather can trigger bolting; record flowering as a stage transition and expect leaf quality to decline.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]},
+      "hydroponics":{"short":"Hydro-specific nutrient targets still need validation","guidance":"Keep chervil in the structured library, but do not assign a precise hydroponic EC range until a crop-specific source is accepted.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "problems":{"short":"Heat and dryness are the main management risks","guidance":"Chervil prefers rich, moist conditions and is sensitive to hot weather.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]}
+    }
+  },
+  {
+    "id":"garlic-chives","name":"Garlic Chives","spanishName":"Cebollín de ajo / cebollino chino","scientificName":"Allium tuberosum","variety":"Garlic Chives","category":"herbs","emoji":"🌱","guideCompletion":82,
+    "tags":["garlic chives","cebollin de ajo","cebollino chino","allium tuberosum","owned seed"],
+    "summary":"A perennial clump-forming allium with flat leaves and edible flowers. Like common chives, it should not be forced into a one-seedling-per-pod rule.",
+    "metrics":[{"label":"Germination","value":"7–14 days","note":"UNH Extension"},{"label":"Maturity","value":"80–90 days","note":"UNH Extension"},{"label":"Height","value":"18–24 in","note":"UNH Extension"},{"label":"Owned seed GR","value":"85%","note":"Home Grown packet"}],
+    "sections":{
+      "germination":{"short":"Moderate 7–14 day emergence","guidance":"UNH Extension lists 7–14 day germination for garlic chives.","evidenceType":"source_backed","confidence":"high","sourceIds":["unh-garlic-chives"]},
+      "thinning":{"short":"A clump is normal; overcrowding is the trigger","guidance":"Garlic chives naturally form clumps. Garden should thin only when crowding limits airflow or light rather than aiming for a single stem.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["unh-garlic-chives"]},
+      "pruning":{"short":"Harvest leaves low and allow regrowth","guidance":"Treat cutting as harvest rather than branching pruning; established allium leaves regrow from the base.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["unh-garlic-chives"]},
+      "harvest":{"short":"Young leaves are harvestable anytime after establishment","guidance":"UNH Extension notes young leaves can be harvested anytime and flowers are edible shortly after opening.","evidenceType":"source_backed","confidence":"high","sourceIds":["unh-garlic-chives"]},
+      "flowering":{"short":"Flowers are edible but can self-seed aggressively","guidance":"White flowers are edible; deadhead before seed set when spread control matters.","evidenceType":"source_backed","confidence":"high","sourceIds":["unh-garlic-chives"]},
+      "hydroponics":{"short":"Compact clumps are plausible; exact nutrient range pending","guidance":"No crop-specific hydroponic EC/pH target is accepted in V0.5 yet.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "problems":{"short":"Overcrowding and self-seeding are the main structural risks","guidance":"Dense clumps benefit from periodic division in long-lived culture.","evidenceType":"source_backed","confidence":"medium","sourceIds":["unh-garlic-chives"]}
+    }
+  },
+  {
+    "id":"evergreen-bunching-onion-nabuka","name":"Evergreen Bunching Onion Nabuka","spanishName":"Cebolla de verdeo Evergreen Bunching Nabuka","scientificName":"Allium fistulosum","variety":"Evergreen Bunching Nabuka","category":"alliums","emoji":"🧅","guideCompletion":74,
+    "tags":["bunching onion","scallion","green onion","cebolla de verdeo","nabuka","owned seed"],
+    "summary":"A bunching onion / scallion type grown for repeated green stalk harvest rather than a large storage bulb. Cluster culture is normal for this crop class.",
+    "metrics":[{"label":"Species","value":"Allium fistulosum","note":"Bunching onion reference"},{"label":"Cluster start","value":"6–8 seeds/cell","note":"Johnny's transplant reference"},{"label":"Soil pH ref.","value":"6.2–6.8","note":"Not a hydro target"},{"label":"Owned seed GR","value":"85%","note":"Home Grown packet"}],
+    "sections":{
+      "germination":{"short":"Grow as a cluster crop","guidance":"Johnny's bunching-onion guidance starts 6–8 seeds per cell for transplant culture, confirming that cluster growth is intentional.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
+      "thinning":{"short":"Do not automatically reduce to one plant","guidance":"For bunching onions, thin only when the cluster becomes too dense for the target stalk size and available root volume.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
+      "pruning":{"short":"No branching prune","guidance":"Management is harvest-oriented; do not cut the center as if this were a branching herb.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
+      "harvest":{"short":"Harvest green stalks / whole bunches by intended use","guidance":"Bunching onions are harvested as scallions. In a regenerative container, selective outer-stalk cutting can be tested, but whole-plant harvest remains the canonical production method.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-bunching-onion"]},
+      "flowering":{"short":"Flowering is not the culinary target","guidance":"Allowing flowering shifts energy away from tender scallion production and should be treated as a stage change.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-bunching-onion"]},
+      "hydroponics":{"short":"Suitable architecture for hydro, exact nutrient target pending","guidance":"The upright, clustered growth habit is compatible with compact systems, but V0.5 does not assign a precise crop-specific EC range.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "problems":{"short":"Crowding can reduce stalk diameter","guidance":"Maximum light and enough root volume matter more than chasing a fixed seedling count.","evidenceType":"source_backed","confidence":"medium","sourceIds":["johnnys-bunching-onion"]}
+    }
+  },
+  {
+    "id":"petunia-dwarf-bedding-mixed","name":"Dwarf Bedding Petunia — Mixed Colors","spanishName":"Petunia enana de macizo — mezcla de colores","scientificName":"Petunia spp.","variety":"Dwarf Bedding Mixed Colors","category":"flowers","emoji":"🌺","guideCompletion":69,
+    "tags":["petunia","dwarf bedding","mixed colors","flower","owned seed"],
+    "summary":"A compact annual ornamental selected for continuous bloom. This is primarily a container/soil crop in the current Garden library rather than a hydroponic priority.",
+    "metrics":[{"label":"Germination","value":"7–12 days","note":"Ferry-Morse reference"},{"label":"Bloom","value":"45 days on owned packet","note":"Online reference gives a broader range"},{"label":"Height","value":"12–18 in","note":"Ferry-Morse reference"},{"label":"Light","value":"Full sun","note":"Ferry-Morse reference"}],
+    "sections":{
+      "germination":{"short":"Small seed with 7–12 day reference","guidance":"Ferry-Morse lists 7–12 day germination for Dwarf Bedding Petunia.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-petunia-dwarf"]},
+      "thinning":{"short":"Thin once seedlings are established","guidance":"The manufacturer directs thinning when plants are about 2 inches high. For containers, keep enough spacing to preserve airflow and light around each crown.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ferry-petunia-dwarf"]},
+      "pruning":{"short":"Shape lightly if plants become leggy","guidance":"V0.5 does not yet treat petunia pruning as a canonical rule; deadheading and light shaping can be recommended contextually.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "harvest":{"short":"Cut flowers are optional; display bloom is the main goal","guidance":"This ornamental is primarily maintained for continuous display rather than edible harvest.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-petunia-dwarf"]},
+      "flowering":{"short":"Continuous bloom from spring toward frost","guidance":"The variety is sold for heavy, continuous flowering; spent-bloom management can be used to keep the display tidy.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-petunia-dwarf"]},
+      "hydroponics":{"short":"Not a V1 hydroponic target","guidance":"Garden should favor container/soil guidance for this ornamental until a specific hydroponic use case exists.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
+      "problems":{"short":"Legginess and reduced bloom under poor light","guidance":"Compact form depends on adequate light and balanced growth; avoid crowding behind taller crops.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ferry-petunia-dwarf"]}
+    }
+  },
+  {
+    "id":"sunflower-american-giant-hybrid","name":"American Giant Hybrid Sunflower","spanishName":"Girasol American Giant Hybrid","scientificName":"Helianthus annuus","variety":"American Giant Hybrid","category":"flowers","emoji":"🌻","guideCompletion":77,
+    "tags":["sunflower","girasol","american giant","giant sunflower","owned seed"],
+    "summary":"A truly giant sunflower that can reach roughly 12–16 feet outdoors. It is a poor physical neighbor for low crops in tight spaces because shade and root demand dominate the decision.",
+    "metrics":[{"label":"Germination","value":"14–21 days","note":"Ferry-Morse reference"},{"label":"Bloom","value":"65 days on owned packet","note":"Online reference: 65–75 days"},{"label":"Height","value":"12–16 ft","note":"Ferry-Morse reference"},{"label":"Spacing","value":"18–24 in","note":"Outdoor reference"}],
+    "sections":{
+      "germination":{"short":"Large seed, moderate emergence window","guidance":"Ferry-Morse lists 14–21 days to germination.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
+      "thinning":{"short":"Final spacing matters because mature size is enormous","guidance":"Keep the strongest seedlings and avoid close final spacing; this variety is selected for giant stature.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
+      "pruning":{"short":"Do not top by default","guidance":"Garden should not assume branching-prune logic for a giant sunflower without a specific production goal.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "harvest":{"short":"Flowers and mature seed heads are the useful endpoints","guidance":"This variety is suitable for ornamental bloom and edible seed harvest after heads mature and dry.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ferry-sunflower-american-giant"]},
+      "flowering":{"short":"Large pollinator-attracting blooms","guidance":"Ferry-Morse lists strong pollinator and songbird value for the mature flowers and seed heads.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
+      "hydroponics":{"short":"Not appropriate for a small countertop hydro system","guidance":"The mature height, support requirement and root demand make this a soil/large-container crop for Garden planning.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
+      "problems":{"short":"Wind, support, shade and space dominate management","guidance":"Place where the mature plant cannot shade shorter crops or interfere with structures.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]}
+    }
+  },
+  {
+    "id":"sunflower-autumn-beauty","name":"Autumn Beauty Sunflower — Mixed Colors","spanishName":"Girasol Autumn Beauty — mezcla de colores","scientificName":"Helianthus annuus","variety":"Autumn Beauty Mixed Colors","category":"flowers","emoji":"🌻","guideCompletion":76,
+    "tags":["sunflower","girasol","autumn beauty","mixed colors","owned seed"],
+    "summary":"A multi-branching 5–6 foot sunflower mix with strong pollinator value. Still tall enough to create meaningful shade for low neighboring crops.",
+    "metrics":[{"label":"Germination","value":"14–21 days","note":"Ferry-Morse reference"},{"label":"Bloom","value":"75 days on owned packet","note":"Online reference: 75–90 days"},{"label":"Height","value":"5–6 ft","note":"Ferry-Morse reference"},{"label":"Habit","value":"Multi-branching","note":"Ferry-Morse reference"}],
+    "sections":{
+      "germination":{"short":"14–21 day reference","guidance":"Ferry-Morse lists 14–21 day germination.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "thinning":{"short":"Give each final plant room to branch","guidance":"Avoid dense final stands if the goal is full branching and airflow.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "pruning":{"short":"Deadheading can extend display","guidance":"The manufacturer recommends removing faded flowers to prolong bloom; structural pruning is otherwise not a default V0.5 action.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "harvest":{"short":"Suitable as a cut flower and later bird/seed resource","guidance":"Use flowers for cutting or leave mature heads for seed and songbirds.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "flowering":{"short":"Gold, rust, orange and red branching blooms","guidance":"This variety is grown for a long multicolor flowering display and pollinator value.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "hydroponics":{"short":"Better suited to soil or a large outdoor container","guidance":"Its 5–6 foot mature frame and branching habit make compact hydroponics a poor fit.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
+      "problems":{"short":"Shade and wind exposure matter","guidance":"Position intentionally so mature stems do not shade low edible crops.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]}
+    }
+  },
+  {
+    "id":"marigold-jolly-jester","name":"Jolly Jester Marigold","spanishName":"Caléndula francesa Jolly Jester","scientificName":"Tagetes patula — packet variety","variety":"Jolly Jester","category":"flowers","emoji":"🌼","guideCompletion":52,
+    "tags":["marigold","jolly jester","tagetes","flower","pollinator","owned seed"],
+    "summary":"A compact ornamental marigold in the owned seed collection. Garden can already use it as a pollinator/pest-management neighbor candidate, while exact cultivar care still needs a stronger primary source.",
+    "metrics":[{"label":"Bloom","value":"45 days on owned packet","note":"Packet evidence"},{"label":"Light","value":"Full sun","note":"Packet evidence"},{"label":"Use","value":"Container / pollinator","note":"Owned packet + Extension context"},{"label":"Hydro","value":"Not priority","note":"Soil/container first"}],
+    "sections":{
+      "germination":{"short":"Exact cultivar timing still needs source validation","guidance":"The owned packet confirms the cultivar and bloom target, but V0.5 keeps germination specifics unresolved until a stronger cultivar source is accepted.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "thinning":{"short":"Thin for airflow and a compact crown","guidance":"Keep the strongest seedlings and prevent dense final crowding in containers.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]},
+      "pruning":{"short":"Deadhead rather than aggressively shape","guidance":"Remove spent blooms when the goal is continued display; stronger structural pruning is not canonical yet.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]},
+      "harvest":{"short":"Ornamental flower crop","guidance":"Primary use is bloom and pollinator habitat rather than edible harvest.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["usu-companion-2025"]},
+      "flowering":{"short":"Useful near vulnerable vegetables in outdoor companion layouts","guidance":"USU Extension includes marigolds among pest-repellent companion plants used near vulnerable vegetables, while Garden should avoid claiming every traditional pairing is proven.","evidenceType":"source_backed","confidence":"medium","sourceIds":["usu-companion-2025"]},
+      "hydroponics":{"short":"Container/soil crop in V0.5","guidance":"Do not prioritize shared-reservoir hydroponics for this ornamental until there is a real use case.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
+      "problems":{"short":"Crowding reduces airflow and bloom quality","guidance":"Keep enough light around the canopy and avoid burying it under taller neighbors.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]}
+    }
+  },
+  {
+    "id":"zinnia-lilliput-mixed","name":"Lilliput Zinnia — Mixed Colors","spanishName":"Zinnia Lilliput — mezcla de colores","scientificName":"Zinnia elegans","variety":"Lilliput Mixed Colors","category":"flowers","emoji":"🌸","guideCompletion":80,
+    "tags":["zinnia","lilliput","mixed colors","pollinator","cut flower","owned seed"],
+    "summary":"A compact 16–18 inch annual zinnia with fast germination and strong pollinator value. Useful in containers and outdoor companion layouts without the extreme shade risk of giant sunflowers.",
+    "metrics":[{"label":"Germination","value":"5–10 days","note":"Ferry-Morse reference"},{"label":"Bloom","value":"60 days on owned packet","note":"Online reference: 60–75 days"},{"label":"Height","value":"16–18 in","note":"Ferry-Morse reference"},{"label":"Light","value":"Sun / part shade","note":"Ferry-Morse reference"}],
+    "sections":{
+      "germination":{"short":"Fast 5–10 day emergence","guidance":"Ferry-Morse lists 5–10 day germination for Lilliput Zinnia.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
+      "thinning":{"short":"Thin once plants are a few inches tall","guidance":"Manufacturer guidance explicitly thins after seedlings gain a few inches of height.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
+      "pruning":{"short":"Deadhead faded blooms to prolong flowering","guidance":"Remove faded blossoms through the season; this is the primary maintenance action in V0.5.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
+      "harvest":{"short":"Excellent cut-flower candidate","guidance":"The variety is marketed for long-lasting cut flowers as well as bedding use.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
+      "flowering":{"short":"Long summer color with pollinator value","guidance":"Zinnia flowers attract bees, butterflies and other pollinators.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
+      "hydroponics":{"short":"Not a compact-hydro priority","guidance":"Use container or bed culture first; no crop-specific hydroponic target is accepted in V0.5.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
+      "problems":{"short":"Airflow and leaf wetness matter","guidance":"Avoid overcrowding; zinnias perform best when foliage has room and light.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ferry-zinnia-lilliput"]}
+    }
+  },
+  {
+    "id":"delphinium-magic-fountains-dwarf","name":"Magic Fountains Dwarf Delphinium — Mixed Colors","spanishName":"Delphinium Magic Fountains enano — mezcla de colores","scientificName":"Delphinium elatum","variety":"Magic Fountains Mixed Color Dwarf","category":"flowers","emoji":"💜","guideCompletion":55,
+    "tags":["delphinium","magic fountains","dwarf","perennial","flower","owned seed"],
+    "summary":"A dwarf perennial delphinium for cool-climate ornamental use. Unlike the edible crops, this plant is explicitly non-edible and should remain segregated from culinary-harvest assumptions.",
+    "metrics":[{"label":"Lifecycle","value":"Perennial","note":"Owned packet / retailer listing"},{"label":"Light","value":"Partial shade","note":"Retailer listing"},{"label":"Container","value":"18 in+","note":"Retailer / Ferry-Morse listing"},{"label":"Edibility","value":"Do not ingest","note":"Packet/product safety"}],
+    "sections":{
+      "germination":{"short":"Can be slow; avoid early failure labels","guidance":"Delphinium seed may germinate slowly and unevenly. V0.5 keeps exact timing cautious rather than inventing a tight deadline.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["walmart-delphinium-magic-fountains"]},
+      "thinning":{"short":"Thin once seedlings are strong enough to compare","guidance":"Retain vigorous seedlings with enough final room for crown development.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["walmart-delphinium-magic-fountains"]},
+      "pruning":{"short":"Flower-stem management is a later-stage task","guidance":"V0.5 does not yet encode cultivar-specific post-bloom cutback rules.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "harvest":{"short":"Cut flower only — never culinary harvest","guidance":"Treat all plant material as ornamental; the product listing warns not to ingest seeds or plants.","evidenceType":"source_backed","confidence":"high","sourceIds":["walmart-delphinium-magic-fountains"]},
+      "flowering":{"short":"Dwarf perennial spikes in mixed colors","guidance":"Magic Fountains produces compact flower spikes suited to smaller gardens and exposed sites.","evidenceType":"source_backed","confidence":"medium","sourceIds":["walmart-delphinium-magic-fountains"]},
+      "hydroponics":{"short":"Not a food-hydroponic crop","guidance":"Keep this ornamental outside culinary shared systems in V0.5.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
+      "problems":{"short":"Safety and climate fit matter","guidance":"Do not mix ornamental/non-edible harvest logic with edible Garden recommendations.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["walmart-delphinium-magic-fountains"]}
+    }
+  },
+  {
+    "id":"dark-green-zucchini","name":"Dark Green Zucchini","spanishName":"Calabacín verde oscuro / zucchini","scientificName":"Cucurbita pepo","variety":"Dark Green Zucchini","category":"fruiting","emoji":"🥒","guideCompletion":88,
+    "tags":["zucchini","calabacin","calabacín","summer squash","dark green zucchini","owned seed"],
+    "summary":"A fast, high-yield summer squash that needs far more horizontal room than the countertop herb crops. Pollination, airflow and space are central management constraints.",
+    "metrics":[{"label":"Germination","value":"8–10 days","note":"Ferry-Morse reference"},{"label":"Harvest","value":"50 days","note":"Owned packet + Ferry-Morse"},{"label":"Height","value":"18–24 in","note":"Spread is much larger than height suggests"},{"label":"Outdoor spacing","value":"18–24 in+","note":"Johnny's reference"}],
+    "sections":{
+      "germination":{"short":"Fast warm-season emergence","guidance":"Ferry-Morse lists 8–10 day germination for this variety.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-dark-green-zucchini"]},
+      "thinning":{"short":"Give the final plant substantial room","guidance":"Zucchini is not a multi-plant countertop crop. Keep the strongest final plant per intended growing position unless a large system is explicitly designed otherwise.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-zucchini"]},
+      "pruning":{"short":"Do not apply tomato sucker pruning","guidance":"Leaf removal should be conservative and sanitation-driven; V0.5 does not encode aggressive zucchini pruning as a routine rule.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-zucchini"]},
+      "harvest":{"short":"Harvest young fruit frequently for quality","guidance":"The owned packet targets about 50 days to harvest. Regular picking helps maintain production once fruiting begins.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-dark-green-zucchini"]},
+      "flowering":{"short":"Pollination directly affects fruit set","guidance":"Johnny's notes poor fruit development can indicate insufficient pollination; flowering should trigger a pollination-aware maintenance state.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-zucchini"]},
+      "hydroponics":{"short":"Possible only in a large dedicated system","guidance":"OSU lists courgette/zucchini-type crops around EC 1.8–2.4 mS/cm and pH 6.0 as a reference, but the plant's physical size makes a small shared herb system inappropriate.","evidenceType":"source_backed","confidence":"medium","sourceIds":["osu-hydro-ecph"]},
+      "problems":{"short":"Powdery mildew, airflow and pollination are major risks","guidance":"Johnny's highlights powdery mildew, downy mildew, bacterial wilt and drainage/airflow as key production concerns.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-zucchini"]}
+    }
+  },
+  {
+    "id":"crimson-giant-radish","name":"Crimson Giant Radish","spanishName":"Rábano Crimson Giant","scientificName":"Raphanus sativus","variety":"Crimson Giant","category":"root vegetables","emoji":"🔴","guideCompletion":87,
+    "tags":["radish","rabano","rábano","crimson giant","root vegetable","owned seed"],
+    "summary":"A fast cool-season root crop with a 30-day packet target. Consistent moisture and prompt harvest matter more than pruning.",
+    "metrics":[{"label":"Germination","value":"5–10 days","note":"Ferry-Morse reference"},{"label":"Harvest","value":"30 days","note":"Owned packet + Ferry-Morse"},{"label":"Depth","value":"~1/2 in","note":"Johnny's direct-seed reference"},{"label":"Climate","value":"Cool season","note":"Heat reduces quality"}],
+    "sections":{
+      "germination":{"short":"Fast 5–10 day emergence","guidance":"Ferry-Morse lists 5–10 day germination for Crimson Giant.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-crimson-giant-radish"]},
+      "thinning":{"short":"Root spacing is essential","guidance":"Unlike leafy herbs, radish needs enough individual root volume to swell. Thin crowded seedlings rather than allowing multiple roots to compete in one tight position.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-radish"]},
+      "pruning":{"short":"No routine pruning","guidance":"Do not prune radish foliage as a shaping strategy; leaf area powers root development.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
+      "harvest":{"short":"Harvest promptly at useful root size","guidance":"Johnny's warns radishes can turn pithy or tough when left too long; the owned packet targets about 30 days.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-crimson-giant-radish","johnnys-radish"]},
+      "flowering":{"short":"Bolting means the root crop has moved past its ideal phase","guidance":"Heat and delayed harvest can push radish out of prime root quality and toward reproductive growth.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
+      "hydroponics":{"short":"Root geometry is the main design constraint","guidance":"Hydroponic culture requires enough media/root space for the swollen root. Do not treat it like a lettuce net-cup without validating physical clearance.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
+      "problems":{"short":"Heat, dryness and delayed harvest reduce quality","guidance":"Johnny's notes hot, dry weather can make roots tough, pithy and overly spicy.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-radish"]}
+    }
+  }
+]

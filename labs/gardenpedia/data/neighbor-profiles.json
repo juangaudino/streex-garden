@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "purpose": "Deterministic neighborhood compatibility for Garden X. Scores physical/system fit first; research-backed companion pairs are explicit boosts. Traditional companion charts are not treated as canonical facts.",
+    "researchPairs": [
+      {"a":"cherry-tomato","b":"genovese-basil","sourceId":"usu-companion-2025","label":"tomato + basil"},
+      {"a":"cherry-tomato","b":"sweet-basil","sourceId":"usu-companion-2025","label":"tomato + basil"},
+      {"a":"crimson-giant-radish","b":"red-romaine-lettuce","sourceId":"umn-companion","label":"radish + lettuce space use"},
+      {"a":"crimson-giant-radish","b":"bibb-lettuce","sourceId":"umn-companion","label":"radish + lettuce space use"},
+      {"a":"crimson-giant-radish","b":"buttercrunch-lettuce","sourceId":"umn-companion","label":"radish + lettuce space use"},
+      {"a":"crimson-giant-radish","b":"iceberg-lettuce","sourceId":"umn-companion","label":"radish + lettuce space use"},
+      {"a":"crimson-giant-radish","b":"black-seeded-simpson","sourceId":"umn-companion","label":"radish + lettuce space use"}
+    ],
+    "beneficialRoles": {
+      "marigold-jolly-jester":{"role":"pest-management / pollinator flower","sourceId":"usu-companion-2025"},
+      "zinnia-lilliput-mixed":{"role":"pollinator flower","sourceId":"ferry-zinnia-lilliput"},
+      "petunia-dwarf-bedding-mixed":{"role":"pollinator flower","sourceId":"ferry-petunia-dwarf"}
+    }
+  },
+  "profiles": {
+    "genovese-basil":{"climate":"warm","height":2,"spread":2,"nutrient":2,"root":2,"traits":["herb","aromatic","edible"]},
+    "sweet-basil":{"climate":"warm","height":2,"spread":2,"nutrient":2,"root":2,"traits":["herb","aromatic","edible"]},
+    "cilantro":{"climate":"cool","height":2,"spread":1,"nutrient":1,"root":1,"traits":["herb","edible"]},
+    "curled-chervil":{"climate":"cool","height":1,"spread":1,"nutrient":1,"root":1,"traits":["herb","edible"]},
+    "italian-oregano":{"climate":"moderate","height":1,"spread":2,"nutrient":1,"root":2,"traits":["herb","aromatic","edible"]},
+    "english-thyme":{"climate":"moderate","height":1,"spread":1,"nutrient":1,"root":1,"traits":["herb","aromatic","edible"]},
+    "italian-giant-parsley":{"climate":"cool","height":2,"spread":2,"nutrient":2,"root":2,"traits":["herb","edible"]},
+    "common-chives":{"climate":"moderate","height":1,"spread":1,"nutrient":1,"root":1,"traits":["herb","allium","aromatic","edible"]},
+    "garlic-chives":{"climate":"moderate","height":2,"spread":1,"nutrient":1,"root":1,"traits":["herb","allium","aromatic","edible"]},
+    "evergreen-bunching-onion-nabuka":{"climate":"cool","height":2,"spread":1,"nutrient":2,"root":1,"traits":["allium","aromatic","edible"]},
+    "dill-bouquet":{"climate":"cool","height":3,"spread":1,"nutrient":1,"root":2,"traits":["herb","edible","beneficial-insects"]},
+    "rosemary":{"climate":"moderate","height":2,"spread":2,"nutrient":1,"root":2,"traits":["herb","aromatic","edible"]},
+    "lavender-vera":{"climate":"moderate","height":2,"spread":2,"nutrient":1,"root":2,"traits":["herb","aromatic","pollinator"]},
+    "common-mint":{"climate":"moderate","height":2,"spread":3,"nutrient":2,"root":2,"traits":["herb","aromatic","edible","aggressive"]},
+    "broadleaf-sage":{"climate":"moderate","height":2,"spread":2,"nutrient":1,"root":2,"traits":["herb","aromatic","edible"]},
+
+    "red-romaine-lettuce":{"climate":"cool","height":1,"spread":2,"nutrient":1,"root":1,"traits":["leafy","edible"]},
+    "bibb-lettuce":{"climate":"cool","height":1,"spread":2,"nutrient":1,"root":1,"traits":["leafy","edible"]},
+    "iceberg-lettuce":{"climate":"cool","height":1,"spread":2,"nutrient":1,"root":1,"traits":["leafy","edible"]},
+    "buttercrunch-lettuce":{"climate":"cool","height":1,"spread":2,"nutrient":1,"root":1,"traits":["leafy","edible"]},
+    "black-seeded-simpson":{"climate":"cool","height":1,"spread":2,"nutrient":1,"root":1,"traits":["leafy","edible"]},
+    "crimson-giant-radish":{"climate":"cool","height":1,"spread":1,"nutrient":1,"root":2,"traits":["root-crop","edible"]},
+
+    "cherry-tomato":{"climate":"warm","height":3,"spread":3,"nutrient":3,"root":3,"traits":["fruiting","edible","pollinator"]},
+    "dark-green-zucchini":{"climate":"warm","height":2,"spread":4,"nutrient":3,"root":3,"traits":["fruiting","edible","pollinator","large-footprint"]},
+
+    "petunia-dwarf-bedding-mixed":{"climate":"warm","height":2,"spread":2,"nutrient":1,"root":1,"traits":["flower","pollinator"]},
+    "sunflower-american-giant-hybrid":{"climate":"warm","height":4,"spread":3,"nutrient":3,"root":3,"traits":["flower","pollinator","giant","large-footprint"]},
+    "sunflower-autumn-beauty":{"climate":"warm","height":3,"spread":3,"nutrient":2,"root":3,"traits":["flower","pollinator","large-footprint"]},
+    "marigold-jolly-jester":{"climate":"warm","height":1,"spread":2,"nutrient":1,"root":1,"traits":["flower","pollinator","companion-role"]},
+    "zinnia-lilliput-mixed":{"climate":"warm","height":2,"spread":2,"nutrient":2,"root":1,"traits":["flower","pollinator"]},
+    "delphinium-magic-fountains-dwarf":{"climate":"cool","height":2,"spread":2,"nutrient":2,"root":2,"traits":["flower","ornamental-only","non-edible"]}
+  }
+}

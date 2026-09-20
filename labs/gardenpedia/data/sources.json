@@ -1,0 +1,101 @@
+[
+  {
+    "id": "johnnys-basil-key",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Basil — Key Growing Information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/herbs/basil/basil-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-basil-pruning",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "How and When to Prune (Pinch) Basil",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/basil/video-v391.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-basil-hydro",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Hydroponic & Container Basil Guide",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/basil/hydroponic-container-basil-guide.html",
+    "type": "grower_reference",
+    "scope": "hydroponic",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-cilantro",
+    "publisher": "Utah State University Extension",
+    "title": "Cilantro/Coriander in the Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/cilantro-coriander-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-mint",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Mint in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/Mint-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-lettuce",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Lettuce in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/lettuce-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-lettuce",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Lettuce — Key Growing Information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetables/lettuce/lettuce-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "uf-hydro-lettuce",
+    "publisher": "UF/IFAS Extension",
+    "title": "Set It and Forget It Hydroponic Lettuce",
+    "url": "https://ask.ifas.ufl.edu/publication/HS1488",
+    "type": "university_extension",
+    "scope": "hydroponic_non_circulating",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "okstate-ecph",
+    "publisher": "Oklahoma State University Extension",
+    "title": "Electrical Conductivity and pH Guide for Hydroponics",
+    "url": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+    "type": "university_extension",
+    "scope": "hydroponic",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "okstate-pruning",
+    "publisher": "Oklahoma State University Extension",
+    "title": "Pruning Hydroponic Crops",
+    "url": "https://extension.okstate.edu/fact-sheets/pruning-hydroponic-crops",
+    "type": "university_extension",
+    "scope": "hydroponic",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-tomato",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Tomatoes — Key Growing Information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetables/tomatoes/tomatoes-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  }
+]

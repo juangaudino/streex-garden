@@ -1,0 +1,199 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const source = path.join(root, "labs", "gardenpedia");
+const destination = path.join(root, "apps", "garden-x", "public", "gardenpedia");
+
+const plantFiles = [
+  "data/plants.json",
+  "data/plants-current-gardens.json",
+  "data/plants-owned-seeds.json",
+  "data/plants-expansion-batch-a1.json",
+  "data/plants-expansion-batch-b1.json",
+];
+
+const publicFiles = [
+  "styles.css",
+  "language.css",
+  "visual.css",
+  "inventory-neighbors.css",
+  "garden-labs.css",
+  "harvest-use-v0.1.css",
+  "harvest-use-v0.1.js",
+  "timeline-quality-v0.1.js",
+  "app.js",
+  "expansion-batch-a1.js",
+  "expansion-batch-b1.js",
+  "demo-shell.js",
+  "manifest.json",
+];
+
+const dataFiles = [
+  ...plantFiles,
+  "data/sources.json",
+  "data/sources-current-gardens.json",
+  "data/sources-owned-seeds.json",
+  "data/sources-expansion-batch-a1.json",
+  "data/sources-expansion-batch-b1.json",
+  "data/translations-es.json",
+  "data/translations-owned-seeds-es.json",
+  "data/translations-expansion-batch-a1-es.json",
+  "data/translations-expansion-batch-b1-es.json",
+  "data/visuals.json",
+  "data/neighbor-profiles.json",
+  "data/harvest-use-v0.1.json",
+];
+
+function readJson(relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(source, relativePath), "utf8"));
+}
+
+function writeJson(relativePath, value) {
+  const target = path.join(destination, relativePath);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function publicize(value) {
+  if (typeof value === "string") {
+    return value
+      .replaceAll(/User Zero/gi, "the grower")
+      .replaceAll(/purchase listing/gi, "seller listing")
+      .replaceAll(/packet evidence/gi, "source evidence");
+  }
+  if (Array.isArray(value)) return value.map(publicize);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, publicize(item)]));
+  }
+  return value;
+}
+
+function copy(relativePath) {
+  const from = path.join(source, relativePath);
+  const to = path.join(destination, relativePath);
+  fs.mkdirSync(path.dirname(to), { recursive: true });
+  fs.copyFileSync(from, to);
+}
+
+function filterPublicSources(relativePath) {
+  const records = readJson(relativePath);
+  return records.filter((record) => {
+    const text = JSON.stringify(record).toLowerCase();
+    return !text.includes("user zero")
+      && !text.includes("purchase_listing")
+      && !text.includes("purchase listing")
+      && !text.includes("etsy.com");
+  });
+}
+
+function prepare() {
+  const allPlants = plantFiles.flatMap((file) => readJson(file));
+  const ids = new Set(allPlants.map((plant) => plant.id));
+  if (allPlants.length !== 41 || ids.size !== 41) {
+    throw new Error(`Gardenpedia library must contain 41 unique varieties; got ${allPlants.length}/${ids.size}.`);
+  }
+
+  fs.rmSync(destination, { recursive: true, force: true });
+  fs.mkdirSync(destination, { recursive: true });
+  for (const file of publicFiles) copy(file);
+  fs.cpSync(path.join(source, "assets"), path.join(destination, "assets"), { recursive: true });
+
+  for (const file of ["expansion-batch-a1.js", "expansion-batch-b1.js", "harvest-use-v0.1.js"]) {
+    const target = path.join(destination, file);
+    fs.writeFileSync(target, fs.readFileSync(target, "utf8").replaceAll("Garden Labs", "Gardenpedia"));
+  }
+
+  for (const file of dataFiles) {
+    if (file.startsWith("data/sources-")) writeJson(file, publicize(filterPublicSources(file)));
+    else if (file === "data/seed-inventory.json") continue;
+    else writeJson(file, publicize(readJson(file)));
+  }
+  writeJson("data/seed-inventory.json", { capturedAt: null, source: "public Gardenpedia", count: 0, items: [] });
+
+  let index = fs.readFileSync(path.join(source, "index.html"), "utf8");
+  index = index
+    .replace(/<link rel="stylesheet" href="\.\/machines-v1\.css[^"]*" \/>/, "")
+    .replace(/<link rel="stylesheet" href="\.\/homegrown-source-comparison\.css[^"]*" \/>/, "")
+    .replace(/<button id="machinesTab"[\s\S]*?<\/button>/, "")
+    .replace(/<section id="machinesSurface"[\s\S]*?<\/section>/, "")
+    .replace(/<dialog id="machineDialog"[\s\S]*?<\/dialog>/, "")
+    .replace(/<script src="\.\/sites-storage-bootstrap[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/sites-storage-v1[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/vercel-storage-loader-v1[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/machines-v1[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/homegrown-source-comparison[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/seed-purchase-date[^>]*><\/script>/, "")
+    .replace(/<link rel="manifest" href="[^"]+"/, '<link rel="manifest" href="./manifest.json"')
+    .replace(/<title>[^<]*<\/title>/, "<title>Gardenpedia · Garden X</title>")
+    .replaceAll("PROTOTYPE STUDIO · 01", "PUBLIC LIBRARY")
+    .replaceAll("PROTOTIPO INTERACTIVO · DATOS DE DEMOSTRACIÓN", "BIBLIOTECA PÚBLICA · CONOCIMIENTO ESTRUCTURADO")
+    .replaceAll("INTERACTIVE PROTOTYPE · DEMO DATA", "PUBLIC LIBRARY · STRUCTURED KNOWLEDGE")
+    .replace(/Garden Labs — experimental Garden X experiences for User Zero validation\./g, "Gardenpedia — public plant knowledge from Garden X.")
+    .replace(/Garden Labs/g, "Gardenpedia")
+    .replace(/Laboratorio activo · User Zero/g, "Biblioteca pública · Garden X")
+    .replace(/GARDEN LABS · LIBRARY/g, "GARDENPEDIA · LIBRARY")
+    .replace(/GARDEN LABS · SEEDS/g, "GARDENPEDIA · LOCAL NOTES")
+    .replace(/GARDEN LABS · GUÍA/g, "GARDENPEDIA · GUÍA")
+    .replace(/BIBLIOTECA DE CULTIVOS USER ZERO/g, "BIBLIOTECA PÚBLICA DE CULTIVOS")
+    .replace(/Tu inventario real de semillas y material de cultivo, separado de la evidencia del Grow Guide\./g, "Notas locales de semillas, guardadas sólo en este dispositivo.")
+    .replace(/INVENTARIO USER ZERO/g, "NOTAS LOCALES")
+    .replace(/Estado personal · evidencia separada/g, "Sólo en este dispositivo · sin datos de Garden X");
+  fs.writeFileSync(path.join(destination, "index.html"), index);
+
+  let app = fs.readFileSync(path.join(destination, "app.js"), "utf8");
+  app = app
+    .replaceAll("gardenLabsSeedStateV1", "gardenpediaPublicSeedStateV1")
+    .replaceAll("gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1")
+    .replaceAll("gardenLabsLibraryView", "gardenpediaPublicLibraryView")
+    .replaceAll("growGuideLanguage", "gardenpediaPublicLanguage")
+    .replaceAll("if (window.GARDEN_LABS_STORAGE_HYDRATE) await window.GARDEN_LABS_STORAGE_HYDRATE(state);", "")
+    .replaceAll("GARDEN LABS · EXPERIMENTAL", "GARDENPEDIA · PUBLIC")
+    .replaceAll("Active lab · User Zero", "Public knowledge library")
+    .replaceAll("Laboratorio activo · User Zero", "Biblioteca pública")
+    .replaceAll("USER ZERO validation", "Public source layers")
+    .replaceAll("User Zero validation", "Public source layers")
+    .replaceAll("Validación User Zero", "Fuentes públicas")
+    .replaceAll("User Zero", "the grower")
+    .replaceAll("Garden Labs", "Gardenpedia")
+    .replaceAll("USER ZERO CROP LIBRARY", "PUBLIC PLANT LIBRARY")
+    .replaceAll("BIBLIOTECA DE CULTIVOS USER ZERO", "BIBLIOTECA PÚBLICA DE CULTIVOS")
+    .replaceAll("USER ZERO INVENTORY", "LOCAL SEED NOTES")
+    .replaceAll("INVENTARIO USER ZERO", "NOTAS LOCALES")
+    .replaceAll("The packets you actually own, their approximate state and where they are. Lab changes are stored only on this device.", "Local seed notes are stored only on this device; Garden X account data is never read.")
+    .replaceAll("Qué paquetes tienes realmente, su estado aproximado y dónde están. Los cambios de este Lab se guardan solo en este dispositivo.", "Notas locales de semillas, guardadas sólo en este dispositivo; no se lee la cuenta de Garden X.")
+    .replaceAll("Garden Library brings growing knowledge and personal inventory together inside Garden Labs. Each layer keeps its own source of truth.", "Gardenpedia shares structured plant knowledge and sources without accessing private Garden X history.")
+    .replaceAll("Garden Library reúne conocimiento de cultivo e inventario personal dentro de Garden Labs. Cada capa conserva su propia fuente de verdad.", "Gardenpedia comparte conocimiento estructurado y fuentes sin acceder al historial privado de Garden X.")
+    .replaceAll("function registerServiceWorker() { if (!window.GROW_GUIDE_DISABLE_SW && \"serviceWorker\" in navigator) navigator.serviceWorker.register(\"./service-worker.js\").catch(() => {}); }", "function registerServiceWorker() {}")
+    .replaceAll("V0.6 · 29 guides", "V1.0 · 41 guides")
+    .replaceAll("V0.6 · 29 guías", "V1.0 · 41 guías")
+    .replaceAll("V0.10 · 41 guides · ES/EN · source-aware + 36 inventory items", "V1.0 · 41 guides · ES/EN · public knowledge")
+    .replaceAll("V0.10 · 41 guías · ES/EN · fuentes reconciliadas + 36 materiales", "V1.0 · 41 guías · ES/EN · conocimiento público");
+  fs.writeFileSync(path.join(destination, "app.js"), app);
+
+  let shell = fs.readFileSync(path.join(destination, "demo-shell.js"), "utf8")
+    .replaceAll("gardenLabsLibraryView", "gardenpediaPublicLibraryView")
+    .replaceAll("growGuideLanguage", "gardenpediaPublicLanguage")
+    .replaceAll("gardenLabsDemoDevice", "gardenpediaPublicDemoDevice")
+    .replaceAll("GARDEN LABS", "GARDENPEDIA")
+    .replaceAll("Garden Labs", "Gardenpedia")
+    .replaceAll("User Zero", "the grower")
+    .replaceAll("PROTOTYPE STUDIO · 01", "PUBLIC LIBRARY")
+    .replaceAll("PROTOTIPO INTERACTIVO · DATOS DE DEMOSTRACIÓN", "BIBLIOTECA PÚBLICA · CONOCIMIENTO ESTRUCTURADO")
+    .replaceAll("INTERACTIVE PROTOTYPE · DEMO DATA", "PUBLIC LIBRARY · STRUCTURED KNOWLEDGE");
+  fs.writeFileSync(path.join(destination, "demo-shell.js"), shell);
+
+  let manifest = fs.readFileSync(path.join(destination, "manifest.json"), "utf8")
+    .replaceAll("Garden Labs", "Gardenpedia")
+    .replaceAll("Garden X experimental laboratory for User Zero product validation.", "Public plant knowledge from Garden X.");
+  fs.writeFileSync(path.join(destination, "manifest.json"), manifest);
+  console.log(`Prepared public Gardenpedia artifact with ${ids.size} varieties.`);
+}
+
+function clean() {
+  fs.rmSync(destination, { recursive: true, force: true });
+}
+
+if (process.argv.includes("--clean")) clean();
+else prepare();

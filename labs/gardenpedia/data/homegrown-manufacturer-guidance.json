@@ -1,0 +1,169 @@
+{
+  "version": "0.8.1",
+  "baselineCommit": "18a3354a564e2d865baf55821c37b51d0e6b3fbb",
+  "purpose": "Manufacturer-guidance layer for Garden Labs. This file records Home Grown guidance and reconciliation candidates without overwriting Grow Guide facts, packet evidence, or canonical Garden X data.",
+  "policy": {
+    "sourceClass": "manufacturer_guidance",
+    "canonical": false,
+    "overwriteExistingGuide": false,
+    "promoteConflictAutomatically": false,
+    "hydroponicAssumptionAllowed": false,
+    "notes": "Home Grown guidance is preserved with provenance. Soil/container/outdoor instructions are not silently converted into hydroponic rules. Conflicts remain explicit until reviewed."
+  },
+  "sources": [
+    {
+      "id": "homegrown-30-herb-guide",
+      "publisher": "Home Grown",
+      "title": "30 Herb Grow Guide",
+      "kind": "manufacturer_guide",
+      "file": "30 Herb Grow Guide 2.pdf",
+      "accessed": "2026-09-13",
+      "scope": "manufacturer guidance; primarily soil/container/outdoor unless explicitly stated",
+      "publicSite": "https://homegrown-garden.com"
+    },
+    {
+      "id": "homegrown-5-lettuce-guide",
+      "publisher": "Home Grown",
+      "title": "Lettuce 5-Pack Grow Guide",
+      "kind": "manufacturer_guide",
+      "file": "HG_5 Lettuce_Grow Guide_.pdf",
+      "accessed": "2026-09-13",
+      "scope": "manufacturer guidance for five lettuce varieties; primarily soil/container/outdoor",
+      "publicSite": "https://homegrown-garden.com"
+    },
+    {
+      "id": "homegrown-blog-indoor-edibles",
+      "publisher": "Home Grown",
+      "title": "11 Easy Edible Indoor Plants for Year-Round Harvests",
+      "kind": "manufacturer_blog",
+      "url": "https://homegrown-garden.com/blogs/blog/edible-indoor-plants",
+      "accessed": "2026-09-13",
+      "scope": "secondary manufacturer editorial; candidate context only"
+    },
+    {
+      "id": "homegrown-blog-herb-garden",
+      "publisher": "Home Grown",
+      "title": "7 Easy Steps for Starting a Thriving Herb Garden",
+      "kind": "manufacturer_blog",
+      "url": "https://homegrown-garden.com/blogs/blog/how-to-start-an-herb-garden",
+      "accessed": "2026-09-13",
+      "scope": "secondary manufacturer editorial; candidate context only"
+    }
+  ],
+  "pilotPlants": {
+    "genovese-basil": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-30-herb-guide pp.22-24"],
+      "manufacturerFacts": [
+        {"field":"germination","value":"5-10 days","context":"warm, consistently moist soil; indoor/outdoor seed-starting guidance"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"6-8 in plant height","context":"leaves or stems may be harvested"},
+        {"field":"cut_location","value":"just above a leaf node","context":"manufacturer says stem cuts above a node encourage bushier growth"},
+        {"field":"planting_depth","value":"1/4-1/2 in","context":"soil seed-starting guidance"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"corroborates","gardenValue":"5-10 days","homeGrownValue":"5-10 days","resolution":"Keep existing Garden value; add manufacturer provenance only."},
+        {"topic":"harvest/pruning structure","status":"corroborates","gardenValue":"cut above healthy node/side shoots; begin around 6-8 in","homeGrownValue":"harvest at 6-8 in; cut stems just above leaf node","resolution":"Strong agreement. Candidate for visible manufacturer corroboration in Labs."}
+      ]
+    },
+    "cilantro": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-30-herb-guide pp.43-46"],
+      "manufacturerFacts": [
+        {"field":"germination","value":"7-10 days","context":"indoor sowing around 70F; soil moist, not wet"},
+        {"field":"harvest_window","value":"30-40 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"6 in or taller","context":"snip leaves and small stems as needed"},
+        {"field":"transplanting","value":"avoid transplanting","context":"manufacturer says cilantro is best sown directly"},
+        {"field":"heat_response","value":"bolts quickly in very hot weather","context":"leaf-focused production"},
+        {"field":"field_thinning","value":"6-8 in","context":"outdoor soil guidance; not a hydroponic pod rule"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"material_conflict","gardenValue":"about 21 days from USU garden reference","homeGrownValue":"7-10 days around 70F indoors","resolution":"Preserve both with context. Do not replace the USU value; likely method/temperature/source-context difference."},
+        {"topic":"harvest cue","status":"near_match","gardenValue":"4-6 in foliage","homeGrownValue":"6 in or taller","resolution":"Treat as compatible ranges, not a conflict."},
+        {"topic":"spacing/thinning","status":"context_conflict","gardenValue":"USU ~2 in for leaf production in soil; pod uses visual crowding adaptation","homeGrownValue":"6-8 in outdoor thinning","resolution":"Do not promote either as a pod count/spacing rule. Keep hydroponic adaptation contextual."}
+      ]
+    },
+    "rosemary": {
+      "identityMatch": "exact_at_species_level",
+      "sourceLocators": ["homegrown-30-herb-guide pp.95-102"],
+      "manufacturerFacts": [
+        {"field":"germination","value":"14-28 days","context":"manufacturer summary; seed-grown rosemary may be irregular"},
+        {"field":"stratification","value":"cold-moist 10-12 weeks","context":"manufacturer-specific recommendation"},
+        {"field":"germination_temperature","value":"65-75F","context":"manufacturer germination guidance"},
+        {"field":"light_for_germination","value":"required / do not bury deeply","context":"manufacturer says rosemary seeds need light"},
+        {"field":"indoor_seed_count","value":"3-4 seeds","context":"soil container guidance; thin weak seedlings at 2-3 in"}
+      ],
+      "reconciliation": [
+        {"topic":"germination","status":"near_match","gardenValue":"14-21 days from Johnny's","homeGrownValue":"14-28 days","resolution":"Keep current Garden range and expose manufacturer range as corroborating but broader."},
+        {"topic":"light for germination","status":"corroborates","gardenValue":"light-assisted germination","homeGrownValue":"seeds need light; avoid deep burial","resolution":"Strong agreement."},
+        {"topic":"cold stratification","status":"manufacturer_only_candidate","gardenValue":"not currently required in Grow Guide","homeGrownValue":"cold-moist 10-12 weeks","resolution":"Do not promote to Garden recommendation until independently reconciled; retain as manufacturer guidance."}
+      ]
+    },
+    "red-romaine-lettuce": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-5-lettuce-guide pp.9,13-17"],
+      "manufacturerFacts": [
+        {"field":"type","value":"romaine","context":"variety profile"},
+        {"field":"height","value":"10-12 in","context":"manufacturer variety profile"},
+        {"field":"days_to_harvest","value":"55-70 days","context":"manufacturer variety profile"},
+        {"field":"germination_temperature","value":"60-75F","context":"lettuce 5-pack germination guidance"},
+        {"field":"harvest_modes","value":"individual leaves or full head","context":"manufacturer lettuce guide"}
+      ],
+      "reconciliation": [
+        {"topic":"harvest modes","status":"corroborates","gardenValue":"outer-leaf repeat harvest or head harvest","homeGrownValue":"individual leaves or full heads","resolution":"Strong agreement; useful manufacturer corroboration."},
+        {"topic":"germination temperature","status":"context_difference","gardenValue":"60-68F optimum","homeGrownValue":"60-75F maintained range","resolution":"Keep Garden optimum wording; manufacturer range can be shown as a broader operating range, not a replacement."}
+      ]
+    },
+    "buttercrunch-lettuce": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-5-lettuce-guide pp.11,13-17"],
+      "manufacturerFacts": [
+        {"field":"type","value":"butterhead","context":"variety profile"},
+        {"field":"height","value":"8-10 in","context":"manufacturer variety profile"},
+        {"field":"days_to_harvest","value":"50-60 days","context":"manufacturer variety profile"},
+        {"field":"heat_tolerance","value":"described as heat tolerant","context":"manufacturer variety profile / warm-weather FAQ"},
+        {"field":"harvest_modes","value":"individual leaves or full head","context":"manufacturer lettuce guide"}
+      ],
+      "reconciliation": [
+        {"topic":"harvest modes","status":"corroborates","gardenValue":"outer leaf / head","homeGrownValue":"individual leaves / full head","resolution":"Strong agreement."},
+        {"topic":"heat tolerance","status":"manufacturer_context","gardenValue":"bolting remains a quality warning","homeGrownValue":"Buttercrunch presented as more heat tolerant","resolution":"Useful variety-specific context, but do not imply immunity to bolting."}
+      ]
+    },
+    "black-seeded-simpson": {
+      "identityMatch": "exact",
+      "sourceLocators": ["homegrown-5-lettuce-guide pp.8,13-17"],
+      "manufacturerFacts": [
+        {"field":"type","value":"loose-leaf","context":"variety profile"},
+        {"field":"height","value":"6-10 in","context":"manufacturer variety profile"},
+        {"field":"days_to_harvest","value":"28-50 days","context":"manufacturer variety profile"},
+        {"field":"harvest_style","value":"cut-and-come-again / individual outer leaves","context":"manufacturer guide and blog both support repeated leaf harvest"}
+      ],
+      "reconciliation": [
+        {"topic":"growth form","status":"corroborates","gardenValue":"looseleaf; open form is normal","homeGrownValue":"loose-leaf variety","resolution":"Strong agreement."},
+        {"topic":"repeat harvest","status":"corroborates","gardenValue":"repeated outer-leaf harvest","homeGrownValue":"individual leaves / cut-and-come-again","resolution":"Strong agreement; high-value User Zero guidance."}
+      ]
+    },
+    "evergreen-bunching-onion-nabuka": {
+      "identityMatch": "exact_species_name_variant",
+      "sourceLocators": ["homegrown-30-herb-guide pp.79-84"],
+      "manufacturerFacts": [
+        {"field":"manufacturer_name","value":"Evergreen Bunching Nabuka","context":"Home Grown spelling; packet evidence retained exactly"},
+        {"field":"species","value":"Allium fistulosum","context":"manufacturer scientific name; independently supported by Extension/research sources"},
+        {"field":"germination","value":"7-14 days","context":"manufacturer soil germination guidance"},
+        {"field":"harvest_window","value":"60-90 days","context":"manufacturer summary metric"},
+        {"field":"harvest_cue","value":"6-8 in green stalks","context":"manufacturer harvest guidance"},
+        {"field":"field_spacing","value":"6-12 in","context":"manufacturer outdoor thinning/transplant guidance; not a hydroponic pod rule"},
+        {"field":"regrowth_claim","value":"cut green stalks as needed, leave base in place","context":"manufacturer repeated-harvest guidance"}
+      ],
+      "reconciliation": [
+        {"topic":"identity / spelling","status":"context_difference","gardenValue":"Evergreen Bunching Nebuka; Allium fistulosum","homeGrownValue":"Evergreen Bunching Nabuka; Allium fistulosum","resolution":"Preserve ‘Nabuka’ as manufacturer/packet evidence and ‘Nebuka’ as Garden display/search normalization. Stable internal plantId remains unchanged."},
+        {"topic":"cluster / thinning","status":"context_conflict","gardenValue":"Johnny's: 6-8 seeds/cell; thin only if larger diameter is desired","homeGrownValue":"thin/space 6-12 in outdoors","resolution":"Do not translate Home Grown field spacing into a hydroponic pod count. Cluster culture remains supported by the stronger crop-specific grower reference."},
+        {"topic":"bulb language","status":"material_conflict","gardenValue":"A. fistulosum is treated as a non-bulbing bunching onion/scallion","homeGrownValue":"guide mentions spacing for ‘bulb development’ and leaving ‘bulbs’ in the ground","resolution":"Flag as an internal manufacturer inconsistency. Do not promote bulb-development wording into Garden guidance."}
+      ]
+    }
+  },
+  "deferred": {
+    "thyme": "Home Grown guide labels English thyme while User Zero's corrected Huerto 1 identity is German Thyme. Do not map this source to that live plant without an explicit identity reconciliation.",
+    "remainingHomeGrownVarieties": "Process as staged expansion candidates under Source Matrix V1; do not bulk-promote manufacturer claims without claim-level reconciliation."
+  }
+}

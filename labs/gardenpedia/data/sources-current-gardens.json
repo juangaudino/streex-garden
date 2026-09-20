@@ -1,0 +1,101 @@
+[
+  {
+    "id": "johnnys-oregano-greek",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Oregano (Greek) — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/oregano/oregano-greek-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general; closest validated oregano reference, not packet-level Italian oregano identity",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-thyme",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Thyme — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/thyme/thyme-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-parsley",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Parsley — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/parsley/parsley-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-chives",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Chives — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/chives/chives-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-chives",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Chives in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/chives-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-dill",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Dill — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/dill/dill-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-dill",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Dill in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/dill-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-rosemary",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Rosemary from Seed — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/rosemary/rosemary-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-lavender",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Lavender — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/lavender/lavender-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "usu-lavender",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow English Lavender in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/english-lavender-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil",
+    "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-sage",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Common Sage — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/sage/sage-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "general",
+    "accessed": "2026-09-12"
+  }
+]

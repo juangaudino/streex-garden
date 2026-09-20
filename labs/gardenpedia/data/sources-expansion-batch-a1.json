@@ -1,0 +1,74 @@
+[
+  {
+    "id": "usu-basil",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Basil in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/basil-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil; includes Thai among culinary varieties",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "umn-basil",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing basil in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/growing-basil",
+    "type": "university_extension",
+    "scope": "general_soil; variety table lists Thai basil at 24–36 in",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "johnnys-sweet-thai-basil",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Sweet Thai Basil Seed — Growing Information",
+    "url": "https://www.johnnyseeds.com/herbs/basil/asian-basil/sweet-thai-basil-seed-945.30.html",
+    "type": "grower_reference",
+    "scope": "thai_basil_variety; general + container/hydro context",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "usu-fennel",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Fennel in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/fennel-in-the-garden",
+    "type": "university_extension",
+    "scope": "general_soil; explicitly distinguishes Florence fennel",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "johnnys-fennel-bulb",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Fennel — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/vegetables/fennel/fennel-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "bulb_fennel / finocchio",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "usu-lemongrass",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Lemongrass in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/lemongrass-in-the-garden",
+    "type": "university_extension",
+    "scope": "Cymbopogon citratus; species-specific context, not automatic packet identity",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "johnnys-lemongrass",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "East Indian Lemon Grass — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/lemon-grass/lemon-grass-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "Cymbopogon flexuosus; species-specific context, not automatic packet identity",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "johnnys-mint",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Mint — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/mint/mint-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "Mentha spp.; generic mint culture",
+    "accessed": "2026-09-14"
+  }
+]

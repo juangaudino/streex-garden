@@ -1,0 +1,124 @@
+.harvest-use {
+  margin: 28px 0;
+  padding: clamp(18px, 4vw, 26px);
+  border: 1px solid rgba(46,107,77,.16);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(169,128,59,.10), transparent 30%),
+    linear-gradient(145deg, rgba(255,253,248,.98), rgba(242,246,238,.96));
+}
+.harvest-use-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.harvest-use-heading h3 { margin: 0; font-size: clamp(23px, 4vw, 32px); letter-spacing: -.035em; }
+.harvest-use-version { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.harvest-best {
+  display: grid;
+  grid-template-columns: minmax(150px,.55fr) minmax(0,1.45fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.harvest-fact {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.76);
+}
+.harvest-fact span, .harvest-quick > span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.harvest-fact strong { font-size: 14px; line-height: 1.45; }
+.harvest-fact.primary { background: rgba(237,242,234,.88); border-color: rgba(46,107,77,.18); }
+.harvest-quick {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+.harvest-quick > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.harvest-quick > div span {
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  font-size: 12px;
+  font-weight: 700;
+}
+.harvest-method-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+}
+.harvest-method-card {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.84);
+}
+.harvest-method-card.best { border-color: rgba(46,107,77,.26); }
+.harvest-method-card.avoid { background: rgba(248,242,239,.88); border-color: rgba(154,90,75,.22); }
+.harvest-method-top { display: flex; gap: 10px; align-items: flex-start; }
+.harvest-method-icon { font-size: 24px; line-height: 1; }
+.harvest-method-card h4 { margin: 4px 0 0; font-size: 17px; letter-spacing: -.02em; }
+.harvest-status {
+  display: inline-flex;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: #f0f1ec;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.harvest-status.best { background: rgba(46,107,77,.12); color: var(--accent); }
+.harvest-status.good { background: rgba(34,211,238,.10); color: #176373; }
+.harvest-status.possible { background: rgba(169,128,59,.12); color: #806023; }
+.harvest-status.avoid { background: rgba(154,90,75,.12); color: var(--danger); }
+.harvest-method-summary { margin: 10px 0; color: #52645b; font-size: 13px; line-height: 1.5; }
+.harvest-steps { margin: 0; padding-left: 20px; color: #41564b; font-size: 12px; line-height: 1.5; }
+.harvest-steps li + li { margin-top: 5px; }
+.harvest-method-note {
+  margin: 10px 0 0;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: rgba(237,242,234,.65);
+  color: #52645b;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.harvest-method-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 8px;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+}
+.harvest-method-sources span { color: var(--muted); font-weight: 750; }
+.harvest-method-sources a { color: var(--accent); text-underline-offset: 2px; }
+.harvest-safety {
+  margin-top: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(154,90,75,.2);
+  border-radius: var(--radius-md);
+  background: rgba(248,242,239,.78);
+}
+.harvest-safety strong { font-size: 12px; color: var(--danger); }
+.harvest-safety p { margin: 6px 0 0; color: #5c5a54; font-size: 12px; line-height: 1.5; }
+@media (max-width: 700px) {
+  .harvest-use-heading { align-items: start; flex-direction: column; gap: 6px; }
+  .harvest-best, .harvest-method-grid { grid-template-columns: 1fr; }
+  .harvest-use-version { white-space: normal; }
+}

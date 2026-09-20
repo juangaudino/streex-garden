@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AskRouteImport } from './routes/ask'
 import { Route as CareRouteImport } from './routes/care'
 import { Route as GardenAiRouteImport } from './routes/garden-ai'
+import { Route as GardenpediaRouteImport } from './routes/gardenpedia'
 import { Route as IdentifyRouteImport } from './routes/identify'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as LibraryRouteImport } from './routes/library'
@@ -47,6 +48,11 @@ const CareRoute = CareRouteImport.update({
 const GardenAiRoute = GardenAiRouteImport.update({
   id: '/garden-ai',
   path: '/garden-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GardenpediaRoute = GardenpediaRouteImport.update({
+  id: '/gardenpedia',
+  path: '/gardenpedia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdentifyRoute = IdentifyRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/ask': typeof AskRoute
   '/care': typeof CareRoute
   '/garden-ai': typeof GardenAiRoute
+  '/gardenpedia': typeof GardenpediaRoute
   '/identify': typeof IdentifyRoute
   '/knowledge': typeof KnowledgeRoute
   '/library': typeof LibraryRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/ask': typeof AskRoute
   '/care': typeof CareRoute
   '/garden-ai': typeof GardenAiRoute
+  '/gardenpedia': typeof GardenpediaRoute
   '/identify': typeof IdentifyRoute
   '/knowledge': typeof KnowledgeRoute
   '/library': typeof LibraryRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/ask': typeof AskRoute
   '/care': typeof CareRoute
   '/garden-ai': typeof GardenAiRoute
+  '/gardenpedia': typeof GardenpediaRoute
   '/identify': typeof IdentifyRoute
   '/knowledge': typeof KnowledgeRoute
   '/library': typeof LibraryRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/ask'
     | '/care'
     | '/garden-ai'
+    | '/gardenpedia'
     | '/identify'
     | '/knowledge'
     | '/library'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/ask'
     | '/care'
     | '/garden-ai'
+    | '/gardenpedia'
     | '/identify'
     | '/knowledge'
     | '/library'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/ask'
     | '/care'
     | '/garden-ai'
+    | '/gardenpedia'
     | '/identify'
     | '/knowledge'
     | '/library'
@@ -256,6 +268,7 @@ export interface RootRouteChildren {
   AskRoute: typeof AskRoute
   CareRoute: typeof CareRoute
   GardenAiRoute: typeof GardenAiRoute
+  GardenpediaRoute: typeof GardenpediaRoute
   IdentifyRoute: typeof IdentifyRoute
   KnowledgeRoute: typeof KnowledgeRoute
   LibraryRoute: typeof LibraryRoute
@@ -294,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/garden-ai'
       fullPath: '/garden-ai'
       preLoaderRoute: typeof GardenAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gardenpedia': {
+      id: '/gardenpedia'
+      path: '/gardenpedia'
+      fullPath: '/gardenpedia'
+      preLoaderRoute: typeof GardenpediaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/identify': {
@@ -443,6 +463,7 @@ const rootRouteChildren: RootRouteChildren = {
   AskRoute: AskRoute,
   CareRoute: CareRoute,
   GardenAiRoute: GardenAiRoute,
+  GardenpediaRoute: GardenpediaRoute,
   IdentifyRoute: IdentifyRoute,
   KnowledgeRoute: KnowledgeRoute,
   LibraryRoute: LibraryRoute,

@@ -75,5 +75,9 @@
     $("#addMaintenance")?.addEventListener("click",async()=>{ const date=$("#maintenanceDate")?.value; if(!date)return; i.maintenanceEvents=i.maintenanceEvents||[]; i.maintenanceEvents.push({id:`maint-${Date.now()}`,date,type:$("#maintenanceType")?.value||"inspection",note:String($("#maintenanceNote")?.value||"").trim()||null}); await saveInstance(i);open(i.id); });
     $("#machineForm").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.currentTarget);i.ownershipStatus=String(f.get("ownershipStatus"));i.operationalStatus=String(f.get("operationalStatus"));i.purchase={date:f.get("purchaseDate")||null,seller:f.get("seller")||null,channel:f.get("channel")||null,priceUsd:f.get("price")?Number(f.get("price")):null};i.receivedDate=f.get("receivedDate")||null;i.firstUseDate=f.get("firstUseDate")||null;i.location=String(f.get("location")||"").trim()||null;i.notes=String(f.get("notes")||"").trim();i.ratings=i.ratings||{};catalog.ratingDimensions.forEach(r=>{const v=f.get(`rating-${r.id}`);if(v)i.ratings[r.id]=Number(v);else delete i.ratings[r.id]});i.overallRating=f.get("overall")?Number(f.get("overall")):null;i.wouldBuyAgain=f.get("buyAgain")||null;await saveInstance(i);$("#machineDialog").close();}; $("#machineDialog").showModal();
   }
-  window.GardenMachinesV1={load,render}; document.addEventListener("DOMContentLoaded",load);
+  window.GardenMachinesV1={load,render};
+  let started = false;
+  const start = () => { if (started) return; started = true; load(); };
+  if (window.GARDENPEDIA_READY) start();
+  else window.addEventListener("gardenpedia:ready", start, { once: true });
 })();

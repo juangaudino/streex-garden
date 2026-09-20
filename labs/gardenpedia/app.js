@@ -133,6 +133,8 @@ async function init() {
   bindEvents();
   applyLanguage();
   switchView(state.view, false);
+  window.GARDENPEDIA_READY = true;
+  window.dispatchEvent(new Event("gardenpedia:ready"));
   registerServiceWorker();
 }
 

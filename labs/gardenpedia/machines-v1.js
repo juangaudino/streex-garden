@@ -1,8 +1,8 @@
 (() => {
-  const STORAGE_KEY = "garden-labs-machines-v1";
-  const PENDING_KEY = "garden-labs-machines-pending-v1";
-  const ENDPOINT = "/api/lab-storage?kind=machines";
-  const PERFORMANCE_ENDPOINT = "/api/lab-storage?kind=machine-performance";
+  let storageKey = "garden-x-machines-v1";
+  let pendingKey = "garden-x-machines-pending-v1";
+  const ENDPOINT = "/api/machine-state";
+  const PERFORMANCE_ENDPOINT = "/api/gardenpedia-machine-performance";
   const performanceCache = new Map();
   let catalog = null;
   let instances = [];
@@ -15,7 +15,7 @@
     en: { machines: "Machines", subtitle: "Growing hardware you own: model specifications kept separate from each unit's personal data and evaluation.", inventory: "USER ZERO INVENTORY", onHand: "on hand", ordered: "ordered", active: "Active", idle: "Idle", maintenance: "Maintenance", unknown: "Not set", retired: "Retired", orderedStatus: "Ordered", onHandStatus: "On hand", noRating: "Not rated", pods: "pods", positions: "positions", myMachine: "MY MACHINE", myUnit: "My unit", ownership: "Ownership", operation: "Operation", purchaseDate: "Purchase date", seller: "Seller / place", channel: "Channel", price: "Price paid (USD)", received: "Received date", firstUse: "First use", location: "Location", evaluation: "My rating", overall: "Overall Rating", buyAgain: "Would buy again?", notes: "Notes", specs: "Model Specs", tank: "Tank", color: "Color", light: "Lighting", save: "Save changes", online: "Online", physical: "Physical store", yes: "Yes", maybe: "Maybe", no: "No", synced: "Personal state · synced in private storage", local: "Sync unavailable · saved on this device", checking: "Connecting storage…", modelSource: "Model source", now:"Now", currentGarden:"Current Garden", noGarden:"No garden linked", gardenId:"Garden / Cycle ID", gardenSince:"Since", machineMaintenance:"Machine Maintenance", addMaintenance:"Log maintenance", maintenanceType:"Type", maintenanceDate:"Date", maintenanceNote:"Note", cleaning:"Cleaning", waterChange:"Full water change", pump:"Pump / circulation", lightCare:"Light / structure", partReplacement:"Part replacement", inspection:"Inspection", history:"Unit History", noMaintenance:"No maintenance events yet.", noHistory:"No history events yet.", saveGarden:"Save link", unlinkGarden:"Unlink", days:"days", events:"events", currentCycle:"current cycle", performance:"Performance", evidence:"Evidence", available:"Available", buildingEvidence:"Building evidence", notTracked:"Not tracked yet", cycleAge:"Garden link age", maintenanceEvidence:"Maintenance events", cleaningInterval:"Average cleaning interval", completedCycles:"Completed cycles", germinationRate:"Germination", harvestActivity:"Harvests", incidents:"Incidents", canonicalGarden:"Canonical Garden X", canonicalEvidence:"Canonical Garden X evidence", evidenceUnavailable:"Canonical evidence unavailable", evidenceGrowing:"Garden X will build evidence as you record real cycles and outcomes. Metrics will appear when enough information exists." }
   };
   function safeRead(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || "null") ?? fallback; } catch { return fallback; } }
-  function persistLocal() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(instances)); } catch {} }
+  function persistLocal() { try { localStorage.setItem(storageKey, JSON.stringify(instances)); } catch {} }
   function model(instance) { return catalog.models.find((item) => item.id === instance.modelId); }
   function ownershipLabel(value) { const t = copy[lang()]; return value === "ordered" ? t.orderedStatus : value === "retired" ? t.retired : t.onHandStatus; }
   function operationLabel(value) { const t = copy[lang()]; return ({ active:t.active, idle:t.idle, maintenance:t.maintenance, unknown:t.unknown, retired:t.retired, "n/a":"N/A" })[value] || t.unknown; }
@@ -23,24 +23,36 @@
   function setMachineView(on) {
     const ms=$("#machinesSurface"), gs=$("#guideSurface"), ss=$("#seedsSurface"), mt=$("#machinesTab"), gt=$("#guideTab"), st=$("#seedsTab"); if(!ms) return;
     ms.hidden=!on;
-    if(on){ gs.hidden=true; ss.hidden=true; mt.classList.add("active"); mt.setAttribute("aria-pressed","true"); [gt,st].forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")}); localStorage.setItem("gardenLabsLibraryView","machines"); updateHeader(); render(); }
+    if(on){ gs.hidden=true; ss.hidden=true; mt.classList.add("active"); mt.setAttribute("aria-pressed","true"); [gt,st].forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")}); localStorage.setItem("gardenpediaPublicLibraryView","machines"); updateHeader(); render(); }
     else { mt.classList.remove("active"); mt.setAttribute("aria-pressed","false"); }
   }
-  function updateHeader(){ if(localStorage.getItem("gardenLabsLibraryView")!=="machines") return; const t=copy[lang()]; $("#productEyebrow").textContent="GARDEN LABS · MACHINES"; $("#productTitle").textContent=t.machines; const intro=$("#machinesSurface .surface-intro p:last-child"); if(intro) intro.textContent=t.subtitle; const eyebrow=$("#machinesSurface .seed-section-heading .eyebrow"); if(eyebrow) eyebrow.textContent=t.inventory; const note=$("#machineStorageNote"); if(note) note.textContent=t[syncMode] || t.local; }
-  function bindNav(){ $("#machinesTab")?.addEventListener("click",()=>setMachineView(true)); ["#guideTab","#seedsTab"].forEach(s=>$(s)?.addEventListener("click",()=>setMachineView(false))); document.querySelectorAll("[data-language]").forEach(b=>b.addEventListener("click",()=>setTimeout(()=>{updateHeader();render()},0))); if(localStorage.getItem("gardenLabsLibraryView")==="machines") setMachineView(true); }
+  function updateHeader(){ if(localStorage.getItem("gardenpediaPublicLibraryView")!=="machines") return; const t=copy[lang()]; $("#productEyebrow").textContent="GARDEN LABS · MACHINES"; $("#productTitle").textContent=t.machines; const intro=$("#machinesSurface .surface-intro p:last-child"); if(intro) intro.textContent=t.subtitle; const eyebrow=$("#machinesSurface .seed-section-heading .eyebrow"); if(eyebrow) eyebrow.textContent=t.inventory; const note=$("#machineStorageNote"); if(note) note.textContent=t[syncMode] || t.local; }
+  function bindNav(){ $("#machinesTab")?.addEventListener("click",()=>setMachineView(true)); ["#guideTab","#seedsTab"].forEach(s=>$(s)?.addEventListener("click",()=>setMachineView(false))); document.querySelectorAll("[data-language]").forEach(b=>b.addEventListener("click",()=>setTimeout(()=>{updateHeader();render()},0))); if(localStorage.getItem("gardenpediaPublicLibraryView")==="machines") setMachineView(true); }
   async function post(payload){ const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),cache:"no-store"}); if(!response.ok) throw new Error(`machine storage ${response.status}`); return response.json(); }
   async function hydrate(){
-    const local=safeRead(STORAGE_KEY, null); if(Array.isArray(local)) instances=local;
+    const local=safeRead(storageKey, null); if(Array.isArray(local)) instances=local;
     try{
       const response=await fetch(ENDPOINT,{cache:"no-store"}); if(!response.ok) throw new Error("machine storage unavailable"); const remote=await response.json();
-      if(Array.isArray(remote.instances) && remote.instances.length){ const byId=Object.fromEntries(instances.map(i=>[i.id,i])); remote.instances.forEach(r=>{ if(byId[r.id]) Object.assign(byId[r.id],r); }); instances=Object.values(byId); }
+      if(Array.isArray(remote.instances)){ const byId=Object.fromEntries(instances.map(i=>[i.id,i])); remote.instances.forEach(r=>{ if(byId[r.id]) Object.assign(byId[r.id],r); else byId[r.id]=r; }); instances=Object.values(byId); }
       syncMode="synced";
-      const pending=safeRead(PENDING_KEY,[]); const remaining=[]; for(const operation of pending){ try{await post(operation)}catch{remaining.push(operation)} } localStorage.setItem(PENDING_KEY,JSON.stringify(remaining)); if(remaining.length) syncMode="local";
+      const pending=safeRead(pendingKey,[]); const remaining=[]; for(const operation of pending){ try{await post(operation)}catch{remaining.push(operation)} } localStorage.setItem(pendingKey,JSON.stringify(remaining)); if(remaining.length) syncMode="local";
     }catch(error){ console.warn("Machines private storage unavailable; using local cache",error); syncMode="local"; }
     persistLocal(); updateHeader(); render();
   }
-  async function saveInstance(instance){ persistLocal(); const operation={operation:"save",instance}; try{await post(operation);syncMode="synced";}catch(error){console.warn("Machine saved locally; private sync pending",error);syncMode="local";const pending=safeRead(PENDING_KEY,[]).filter(x=>x.instance?.id!==instance.id);pending.push(operation);localStorage.setItem(PENDING_KEY,JSON.stringify(pending));} updateHeader(); render(); }
-  async function load(){ catalog=await fetch("./data/machine-inventory-v1.json").then(r=>r.json()); instances=structuredClone(catalog.instances); bindNav(); await hydrate(); }
+  async function saveInstance(instance){ persistLocal(); const operation={operation:"save",instance}; try{await post(operation);syncMode="synced";}catch(error){console.warn("Machine saved locally; private sync pending",error);syncMode="local";const pending=safeRead(pendingKey,[]).filter(x=>x.instance?.id!==instance.id);pending.push(operation);localStorage.setItem(pendingKey,JSON.stringify(pending));} updateHeader(); render(); }
+  async function load(){
+    const session = await window.GARDEN_X_AUTH?.getSession?.();
+    const tab = $("#machinesTab");
+    if (!session) { if (tab) tab.hidden = true; return; }
+    const ownerId = session.user?.id || "session";
+    storageKey = `garden-x-machines-v1:${ownerId}`;
+    pendingKey = `garden-x-machines-pending-v1:${ownerId}`;
+    if (tab) tab.hidden = false;
+    catalog=await fetch("./data/machine-inventory-v1.json").then(r=>r.json());
+    instances=structuredClone(catalog.instances || []);
+    bindNav();
+    await hydrate();
+  }
   function render(){
     const grid=$("#machineGrid"); if(!grid||!catalog)return; const t=copy[lang()]; const totalPods=catalog.models.reduce((a,m)=>a+m.pods,0); const onHand=instances.filter(i=>i.ownershipStatus==="on_hand").length; const ordered=instances.filter(i=>i.ownershipStatus==="ordered").length;
     $("#machineResultCount").textContent=`${instances.length} ${t.machines.toLowerCase()} · ${totalPods} ${t.positions} · ${onHand} ${t.onHand} · ${ordered} ${t.ordered}`;

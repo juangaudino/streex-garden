@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/gardenpedia")({
   head: () => ({
@@ -14,14 +15,15 @@ export const Route = createFileRoute("/gardenpedia")({
 });
 
 function Gardenpedia() {
+  useEffect(() => {
+    // Production serves the generated public artifact directly. This route is
+    // only a development/SSR fallback and must not introduce an iframe shell.
+    if (window.location.pathname === "/gardenpedia") window.location.replace("/gardenpedia/");
+  }, []);
+
   return (
-    <main className="min-h-screen bg-[#f4f1e8]">
-      <iframe
-        title="Gardenpedia"
-        src="/gardenpedia/index.html"
-        className="block h-screen w-full border-0"
-        loading="eager"
-      />
+    <main className="grid min-h-screen place-items-center bg-[#f4f1e8] px-6 text-center">
+      <p className="font-display text-xl text-[#17352a]">Opening Gardenpedia…</p>
     </main>
   );
 }

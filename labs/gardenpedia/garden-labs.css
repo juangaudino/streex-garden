@@ -101,6 +101,32 @@ body {
   box-shadow: 0 8px 22px rgba(3,7,30,.22);
 }
 
+/* The public route keeps the original surface tabs without the old demo chrome. */
+.lab-view-switcher {
+  display: flex;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255,253,248,.78);
+}
+.lab-view-button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.lab-view-button.active {
+  background: var(--accent-strong);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(24,60,44,.16);
+}
+
 .demo-device-switcher {
   display: flex;
   justify-content: flex-end;

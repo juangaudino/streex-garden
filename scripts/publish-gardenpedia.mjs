@@ -26,7 +26,9 @@ const publicFiles = [
   "app.js",
   "expansion-batch-a1.js",
   "expansion-batch-b1.js",
-  "demo-shell.js",
+  "machines-v1.css",
+  "machines-v1.js",
+  "supabase-lab-transport.js",
   "manifest.json",
 ];
 
@@ -43,6 +45,7 @@ const dataFiles = [
   "data/translations-expansion-batch-b1-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
+  "data/machine-inventory-v1.json",
   "data/harvest-use-v0.1.json",
 ];
 
@@ -108,22 +111,23 @@ function prepare() {
   for (const file of dataFiles) {
     if (file.startsWith("data/sources-")) writeJson(file, publicize(filterPublicSources(file)));
     else if (file === "data/seed-inventory.json") continue;
-    else writeJson(file, publicize(readJson(file)));
+    else if (file === "data/machine-inventory-v1.json") {
+      const catalog = publicize(readJson(file));
+      writeJson(file, { ...catalog, instances: [] });
+    } else writeJson(file, publicize(readJson(file)));
   }
   writeJson("data/seed-inventory.json", { capturedAt: null, source: "public Gardenpedia", count: 0, items: [] });
 
   let index = fs.readFileSync(path.join(source, "index.html"), "utf8");
   index = index
     .replace("<head>", '<head><base href="/gardenpedia/" />')
-    .replace(/<link rel="stylesheet" href="\.\/machines-v1\.css[^"]*" \/>/, "")
     .replace(/<link rel="stylesheet" href="\.\/homegrown-source-comparison\.css[^"]*" \/>/, "")
-    .replace(/<button id="machinesTab"[\s\S]*?<\/button>/, "")
-    .replace(/<section id="machinesSurface"[\s\S]*?<\/section>/, "")
-    .replace(/<dialog id="machineDialog"[\s\S]*?<\/dialog>/, "")
+    .replace(/<button id="machinesTab"[\s\S]*?<\/button>/, (match) => match.includes(" hidden") ? match : match.replace(" type=\"button\"", " type=\"button\" hidden"))
     .replace(/<script src="\.\/sites-storage-bootstrap[^>]*><\/script>/, "")
     .replace(/<script src="\.\/sites-storage-v1[^>]*><\/script>/, "")
     .replace(/<script src="\.\/vercel-storage-loader-v1[^>]*><\/script>/, "")
-    .replace(/<script src="\.\/machines-v1[^>]*><\/script>/, "")
+    .replace(/<script src="\.\/machines-v1[^>]*><\/script>/, '<script src="./machines-v1.js?v=1.7" defer></script>')
+    .replace(/<script src="\.\/demo-shell[^>]*><\/script>/, "")
     .replace(/<script src="\.\/homegrown-source-comparison[^>]*><\/script>/, "")
     .replace(/<script src="\.\/seed-purchase-date[^>]*><\/script>/, "")
     .replace(/<link rel="manifest" href="[^"]+"/, '<link rel="manifest" href="./manifest.json"')
@@ -166,24 +170,12 @@ function prepare() {
     .replaceAll("Qué paquetes tienes realmente, su estado aproximado y dónde están. Los cambios de este Lab se guardan solo en este dispositivo.", "Notas locales de semillas, guardadas sólo en este dispositivo; no se lee la cuenta de Garden X.")
     .replaceAll("Garden Library brings growing knowledge and personal inventory together inside Garden Labs. Each layer keeps its own source of truth.", "Gardenpedia shares structured plant knowledge and sources without accessing private Garden X history.")
     .replaceAll("Garden Library reúne conocimiento de cultivo e inventario personal dentro de Garden Labs. Cada capa conserva su propia fuente de verdad.", "Gardenpedia comparte conocimiento estructurado y fuentes sin acceder al historial privado de Garden X.")
-    .replaceAll("function registerServiceWorker() { if (!window.GROW_GUIDE_DISABLE_SW && \"serviceWorker\" in navigator) navigator.serviceWorker.register(\"./service-worker.js\").catch(() => {}); }", "function registerServiceWorker() {}")
+    .replaceAll("function registerServiceWorker() { if (!window.GROW_GUIDE_DISABLE_SW && \"serviceWorker\" in navigator) navigator.serviceWorker.register(\"./service-worker.js\").catch(() => {}); }", 'function registerServiceWorker() { if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then((registrations) => registrations.filter((registration) => registration.scope.includes("/gardenpedia/")).forEach((registration) => registration.unregister())).catch(() => {}); }')
     .replaceAll("V0.6 · 29 guides", "V1.0 · 41 guides")
     .replaceAll("V0.6 · 29 guías", "V1.0 · 41 guías")
     .replaceAll("V0.10 · 41 guides · ES/EN · source-aware + 36 inventory items", "V1.0 · 41 guides · ES/EN · public knowledge")
     .replaceAll("V0.10 · 41 guías · ES/EN · fuentes reconciliadas + 36 materiales", "V1.0 · 41 guías · ES/EN · conocimiento público");
   fs.writeFileSync(path.join(destination, "app.js"), app);
-
-  let shell = fs.readFileSync(path.join(destination, "demo-shell.js"), "utf8")
-    .replaceAll("gardenLabsLibraryView", "gardenpediaPublicLibraryView")
-    .replaceAll("growGuideLanguage", "gardenpediaPublicLanguage")
-    .replaceAll("gardenLabsDemoDevice", "gardenpediaPublicDemoDevice")
-    .replaceAll("GARDEN LABS", "GARDENPEDIA")
-    .replaceAll("Garden Labs", "Gardenpedia")
-    .replaceAll("User Zero", "the grower")
-    .replaceAll("PROTOTYPE STUDIO · 01", "PUBLIC LIBRARY")
-    .replaceAll("PROTOTIPO INTERACTIVO · DATOS DE DEMOSTRACIÓN", "BIBLIOTECA PÚBLICA · CONOCIMIENTO ESTRUCTURADO")
-    .replaceAll("INTERACTIVE PROTOTYPE · DEMO DATA", "PUBLIC LIBRARY · STRUCTURED KNOWLEDGE");
-  fs.writeFileSync(path.join(destination, "demo-shell.js"), shell);
 
   let manifest = fs.readFileSync(path.join(destination, "manifest.json"), "utf8")
     .replaceAll("Garden Labs", "Gardenpedia")

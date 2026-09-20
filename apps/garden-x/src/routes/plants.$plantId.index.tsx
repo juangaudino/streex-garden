@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ChevronLeft,
@@ -11,7 +11,7 @@ import {
   Share2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useGarden, knowledgeById } from "@/lib/garden-store";
+import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
   chronological,
@@ -25,15 +25,24 @@ import {
   relativeDay,
   statusMeta,
   storyFacts,
-  plantCompanions,
   latestPlantPhoto,
   plantTimeline,
   sortPhotosByCapturedAt,
   type SortOrder,
 } from "@/lib/garden-logic";
 import type { MaintenanceType } from "@/lib/garden-data";
-import { ProvenanceTag, SectionTitle, StatusDot, eventIcons, maintenanceIcons } from "@/components/garden/atoms";
-import { RecordMomentSheet, careShortcuts, type MomentFlow } from "@/components/garden/record-moment";
+import {
+  ProvenanceTag,
+  SectionTitle,
+  StatusDot,
+  eventIcons,
+  maintenanceIcons,
+} from "@/components/garden/atoms";
+import {
+  RecordMomentSheet,
+  careShortcuts,
+  type MomentFlow,
+} from "@/components/garden/record-moment";
 import { HistoryShareDialog } from "@/components/garden/share-story";
 import { usePhotoViewer } from "@/components/garden/photo-viewer";
 import { PhotoImage } from "@/components/garden/photo-image";
@@ -41,6 +50,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
+import { LibraryIdentityResolution } from "@/components/garden/library-identity-resolution";
+import { loadGardenLibraryCatalog, type GardenLibraryManifest } from "@/lib/garden-library";
+import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -77,7 +89,26 @@ function PlantProfile() {
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>(undefined);
   const [shareOpen, setShareOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+  const [libraryCatalog, setLibraryCatalog] = useState<GardenLibraryManifest | null>(null);
+  const [libraryCatalogError, setLibraryCatalogError] = useState<string | undefined>(undefined);
   const photoViewer = usePhotoViewer();
+
+  useEffect(() => {
+    let active = true;
+    void loadGardenLibraryCatalog()
+      .then((catalog) => {
+        if (active) setLibraryCatalog(catalog);
+      })
+      .catch((error) => {
+        if (active)
+          setLibraryCatalogError(
+            error instanceof Error ? error.message : "Garden Library is unavailable.",
+          );
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const openRecord = (flow?: MomentFlow, care?: MaintenanceType) => {
     setRecordFlow(flow);
@@ -91,19 +122,55 @@ function PlantProfile() {
   const events = plantEvents(store.events, plant.id);
   const tasks = openTasks(store.tasks.filter((t) => t.plantId === plant.id));
   const doneTasks = store.tasks.filter((t) => t.plantId === plant.id && t.done);
-  const reference = knowledgeById(plant.knowledgeId);
-  const companions = plantCompanions(plant.knowledgeId);
+  const libraryEntry =
+    libraryCatalog?.entries.find((entry) => entry.libraryPlantId === plant.libraryPlantId) || null;
+  const identity = plantIdentityParts(plant, libraryEntry);
+  const referenceFields: Array<[string, string | null]> = libraryEntry
+    ? [
+        ["Common name", libraryEntry.commonName],
+        ["Scientific name", libraryEntry.scientificName],
+        ["Variety", libraryEntry.cultivar],
+        ["Germination", libraryEntry.reference.germination],
+        ["Light", libraryEntry.reference.light],
+        ["Temperature", libraryEntry.reference.temperature],
+        ["pH", libraryEntry.reference.ph],
+        ["EC", libraryEntry.reference.ec],
+        ["Spacing", libraryEntry.reference.spacing],
+        ["Pruning", libraryEntry.reference.pruning],
+        ["Harvest", libraryEntry.reference.harvest],
+        ["Expected cycle", libraryEntry.reference.expectedCycle],
+      ]
+    : [];
+  const guidanceCards: Array<[string, readonly string[]]> = libraryEntry
+    ? [
+        ["Common problems", libraryEntry.reference.commonProblems],
+        ["Recommendations", libraryEntry.reference.recommendations],
+      ]
+    : [];
+  const neighborCards: Array<[string, readonly string[]]> = libraryEntry
+    ? [
+        ["Good neighbors", libraryEntry.reference.goodNeighborIds],
+        ["Better separate", libraryEntry.reference.betterSeparateIds],
+      ]
+    : [];
   const history = useMemo(() => chronological(events), [events]);
   const timeline = useMemo(
     () => plantTimeline(store.events, store.photos, plant.id, sortOrder),
     [store.events, store.photos, plant.id, sortOrder],
   );
-  const orderedPhotos = useMemo(() => sortPhotosByCapturedAt(photos, sortOrder), [photos, sortOrder]);
+  const orderedPhotos = useMemo(
+    () => sortPhotosByCapturedAt(photos, sortOrder),
+    [photos, sortOrder],
+  );
 
   const removeEvent = async (event: (typeof events)[number], attachedPhotoCount: number) => {
     try {
       await store.deleteEvent(event.id);
-      toast.success(attachedPhotoCount ? "Event removed; its photos remain as evidence." : "Event removed from history.");
+      toast.success(
+        attachedPhotoCount
+          ? "Event removed; its photos remain as evidence."
+          : "Event removed from history.",
+      );
       return true;
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "The event could not be removed.");
@@ -167,12 +234,23 @@ function PlantProfile() {
           </div>
           <h1 className="mt-1.5 font-display text-4xl text-white sm:text-6xl">{plant.name}</h1>
           <p className="mt-1 text-sm text-white/80">
-            {plant.species} · <span className="italic">{plant.scientific}</span> · “{plant.variety}”
+            {identity.commonName}
+            {identity.scientificName ? (
+              <>
+                <span aria-hidden="true"> · </span>
+                <span className="italic">{identity.scientificName}</span>
+              </>
+            ) : null}
+            {identity.cultivar ? (
+              <>
+                <span aria-hidden="true"> · </span>“{identity.cultivar}”
+              </>
+            ) : null}
           </p>
           <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 ring-1 ring-white/20 backdrop-blur-md">
             <span className={cn("h-1.5 w-1.5 rounded-full", statusMeta[plant.status].dot)} />
             <span className="text-xs text-white">
-              {statusMeta[plant.status].label} — {plant.statusNote}
+              {formatStatusLine(statusMeta[plant.status].label, plant.statusNote)}
             </span>
           </div>
         </div>
@@ -263,8 +341,17 @@ function PlantProfile() {
                 <div className="grid grid-cols-2 gap-1 bg-border/60">
                   {[first, latest].map((p, i) => (
                     <figure key={p.id} className="relative bg-card">
-                      <button type="button" onClick={() => photoViewer.openPhoto(p)} aria-label={`View ${p.caption} larger`} className="block w-full">
-                        <PhotoImage photo={p} alt={p.caption} className="aspect-[3/4] w-full object-cover sm:aspect-[4/3]" />
+                      <button
+                        type="button"
+                        onClick={() => photoViewer.openPhoto(p)}
+                        aria-label={`View ${p.caption} larger`}
+                        className="block w-full"
+                      >
+                        <PhotoImage
+                          photo={p}
+                          alt={p.caption}
+                          className="aspect-[3/4] w-full object-cover sm:aspect-[4/3]"
+                        />
                       </button>
                       <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                         <p className="text-[0.65rem] tracking-[0.14em] text-white/70 uppercase">
@@ -276,25 +363,122 @@ function PlantProfile() {
                   ))}
                 </div>
                 <div className="grid gap-4 p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-                  <div><p className="eyebrow">A real passage of time</p><p className="mt-1 font-display text-2xl">{Math.round((first.daysAgo - latest.daysAgo) / 7)} weeks, held in two photographs</p><p className="mt-1.5 text-sm text-muted-foreground">{first.caption} → {latest.caption}</p></div>
-                  <Link to="/plants/$plantId/compare" params={{ plantId: plant.id }} search={{ from: undefined }} className="text-sm text-primary hover:underline">Look closer</Link>
+                  <div>
+                    <p className="eyebrow">A real passage of time</p>
+                    <p className="mt-1 font-display text-2xl">
+                      {Math.round((first.daysAgo - latest.daysAgo) / 7)} weeks, held in two
+                      photographs
+                    </p>
+                    <p className="mt-1.5 text-sm text-muted-foreground">
+                      {first.caption} → {latest.caption}
+                    </p>
+                  </div>
+                  <Link
+                    to="/plants/$plantId/compare"
+                    params={{ plantId: plant.id }}
+                    search={{ from: undefined }}
+                    className="text-sm text-primary hover:underline"
+                  >
+                    Look closer
+                  </Link>
                 </div>
               </div>
             ) : null}
 
-            <SectionTitle action={<button onClick={() => setShareOpen(true)} className="inline-flex items-center gap-1.5 text-primary hover:underline"><Share2 className="h-3.5 w-3.5" /> Share selection</button>}>What this plant has lived through</SectionTitle>
-            <p className="mb-9 max-w-2xl text-sm leading-relaxed text-muted-foreground">A reading of recorded moments, not a rewritten biography. The complete log remains in Timeline.</p>
+            <SectionTitle
+              action={
+                <button
+                  onClick={() => setShareOpen(true)}
+                  className="inline-flex items-center gap-1.5 text-primary hover:underline"
+                >
+                  <Share2 className="h-3.5 w-3.5" /> Share selection
+                </button>
+              }
+            >
+              What this plant has lived through
+            </SectionTitle>
+            <p className="mb-9 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              A reading of recorded moments, not a rewritten biography. The complete log remains in
+              Timeline.
+            </p>
 
             <ol className="space-y-5">
               {history.map((e, i) => {
                 const Icon = eventIcons[e.type];
-                const eventPhotos = (e.photoIds ?? (e.photoId ? [e.photoId] : [])).map((id) => store.photos.find((p) => p.id === id)).filter(Boolean) as typeof store.photos;
+                const eventPhotos = (e.photoIds ?? (e.photoId ? [e.photoId] : []))
+                  .map((id) => store.photos.find((p) => p.id === id))
+                  .filter(Boolean) as typeof store.photos;
                 const photo = eventPhotos[0];
                 const day = plant.plantedDaysAgo - e.daysAgo;
                 return (
-                  <li key={e.id} className={cn("grid gap-5 border-t border-border/70 pt-5", photo && "sm:grid-cols-[minmax(0,1fr)_minmax(15rem,0.8fr)] sm:items-center", !e.milestone && !photo && "ml-3 border-l border-t-0 py-1 pl-5")}>
-                    <div className="min-w-0"><p className="eyebrow">Day {Math.max(day, 0)} · {formatDate(e.daysAgo)}</p><div className={cn("flex items-start gap-3", e.milestone ? "mt-3" : "mt-2")}><span className={cn("grid shrink-0 place-items-center rounded-full bg-secondary text-primary", e.milestone ? "h-8 w-8" : "h-6 w-6")}><Icon className={e.milestone ? "h-4 w-4" : "h-3 w-3"} /></span><div><h3 className={cn(e.milestone ? "font-display text-2xl" : "text-sm font-medium")}>{e.title}</h3>{e.detail ? <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{e.detail}</p> : null}<div className="mt-3"><ProvenanceTag kind={e.provenance === "recorded" ? "recorded" : e.provenance === "observed" ? "observed" : "inferred"} /></div></div></div></div>
-                    {photo ? <figure className="overflow-hidden rounded-2xl shadow-soft"><button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="block w-full"><PhotoImage photo={photo} alt={photo.caption} className="aspect-[4/3] w-full object-cover" /></button><figcaption className="bg-card px-3 py-2 text-xs text-muted-foreground">{photo.caption}{eventPhotos.length > 1 ? ` · +${eventPhotos.length - 1} more` : ""}</figcaption></figure> : null}
+                  <li
+                    key={e.id}
+                    className={cn(
+                      "grid gap-5 border-t border-border/70 pt-5",
+                      photo && "sm:grid-cols-[minmax(0,1fr)_minmax(15rem,0.8fr)] sm:items-center",
+                      !e.milestone && !photo && "ml-3 border-l border-t-0 py-1 pl-5",
+                    )}
+                  >
+                    <div className="min-w-0">
+                      <p className="eyebrow">
+                        Day {Math.max(day, 0)} · {formatDate(e.daysAgo)}
+                      </p>
+                      <div className={cn("flex items-start gap-3", e.milestone ? "mt-3" : "mt-2")}>
+                        <span
+                          className={cn(
+                            "grid shrink-0 place-items-center rounded-full bg-secondary text-primary",
+                            e.milestone ? "h-8 w-8" : "h-6 w-6",
+                          )}
+                        >
+                          <Icon className={e.milestone ? "h-4 w-4" : "h-3 w-3"} />
+                        </span>
+                        <div>
+                          <h3
+                            className={cn(
+                              e.milestone ? "font-display text-2xl" : "text-sm font-medium",
+                            )}
+                          >
+                            {e.title}
+                          </h3>
+                          {e.detail ? (
+                            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                              {e.detail}
+                            </p>
+                          ) : null}
+                          <div className="mt-3">
+                            <ProvenanceTag
+                              kind={
+                                e.provenance === "recorded"
+                                  ? "recorded"
+                                  : e.provenance === "observed"
+                                    ? "observed"
+                                    : "inferred"
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {photo ? (
+                      <figure className="overflow-hidden rounded-2xl shadow-soft">
+                        <button
+                          type="button"
+                          onClick={() => photoViewer.openPhoto(photo)}
+                          aria-label={`View ${photo.caption} larger`}
+                          className="block w-full"
+                        >
+                          <PhotoImage
+                            photo={photo}
+                            alt={photo.caption}
+                            className="aspect-[4/3] w-full object-cover"
+                          />
+                        </button>
+                        <figcaption className="bg-card px-3 py-2 text-xs text-muted-foreground">
+                          {photo.caption}
+                          {eventPhotos.length > 1 ? ` · +${eventPhotos.length - 1} more` : ""}
+                        </figcaption>
+                      </figure>
+                    ) : null}
                     {i === history.length - 1 ? (
                       <p className="font-display text-lg text-primary sm:col-span-2">
                         …and {relativeDay(e.daysAgo).toLowerCase()} the story is still open.
@@ -307,8 +491,31 @@ function PlantProfile() {
 
             <div className="mt-12 rounded-3xl border border-border/70 bg-card p-5 shadow-soft">
               <SectionTitle>Journal entry</SectionTitle>
-              <textarea value={note} onChange={(e) => setNote(e.target.value)} rows={3} placeholder="What did you notice today?" className="w-full resize-none rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40" />
-              <Button onClick={() => { if (!note.trim()) return; store.addEvent({ plantId: plant.id, daysAgo: 0, type: "note", title: note.trim().slice(0, 60), detail: note.trim(), provenance: "recorded" }); setNote(""); toast.success("Journal entry added to history"); }} className="mt-3 rounded-full"><Plus className="h-4 w-4" /> Save entry</Button>
+              <textarea
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                rows={3}
+                placeholder="What did you notice today?"
+                className="w-full resize-none rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
+              />
+              <Button
+                onClick={() => {
+                  if (!note.trim()) return;
+                  store.addEvent({
+                    plantId: plant.id,
+                    daysAgo: 0,
+                    type: "note",
+                    title: note.trim().slice(0, 60),
+                    detail: note.trim(),
+                    provenance: "recorded",
+                  });
+                  setNote("");
+                  toast.success("Journal entry added to history");
+                }}
+                className="mt-3 rounded-full"
+              >
+                <Plus className="h-4 w-4" /> Save entry
+              </Button>
             </div>
           </div>
         ) : null}
@@ -324,14 +531,39 @@ function PlantProfile() {
                 if (entry.kind === "photo") {
                   const photo = entry.photo;
                   return (
-                    <li key={`photo-${photo.id}`} className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-2xl border border-border/60 bg-card p-4">
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground"><Film className="h-4 w-4" /></span>
+                    <li
+                      key={`photo-${photo.id}`}
+                      className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-2xl border border-border/60 bg-card p-4"
+                    >
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground">
+                        <Film className="h-4 w-4" />
+                      </span>
                       <div className="min-w-0">
-                        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2"><p className="truncate text-sm font-medium">Photo</p><span className="numeral shrink-0 text-xs text-muted-foreground">{formatDate(photo.daysAgo)}</span></div>
-                        <p className="mt-0.5 text-xs text-muted-foreground">Photographic evidence · {relativeDay(photo.daysAgo)}</p>
+                        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
+                          <p className="truncate text-sm font-medium">Photo</p>
+                          <span className="numeral shrink-0 text-xs text-muted-foreground">
+                            {formatDate(photo.daysAgo)}
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          Photographic evidence · {relativeDay(photo.daysAgo)}
+                        </p>
                         <p className="mt-2 text-sm text-muted-foreground">{photo.caption}</p>
-                        <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="press mt-3 block"><PhotoImage photo={photo} alt={photo.caption} className="h-24 w-24 rounded-xl object-cover" /></button>
-                        <div className="mt-2.5"><ProvenanceTag kind="observed" /></div>
+                        <button
+                          type="button"
+                          onClick={() => photoViewer.openPhoto(photo)}
+                          aria-label={`View ${photo.caption} larger`}
+                          className="press mt-3 block"
+                        >
+                          <PhotoImage
+                            photo={photo}
+                            alt={photo.caption}
+                            className="h-24 w-24 rounded-xl object-cover"
+                          />
+                        </button>
+                        <div className="mt-2.5">
+                          <ProvenanceTag kind="observed" />
+                        </div>
                       </div>
                       <DeleteActionMenu
                         itemLabel="photo"
@@ -364,7 +596,9 @@ function PlantProfile() {
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {eventLabels[e.type]} · {relativeDay(e.daysAgo)}
                       </p>
-                      {e.detail ? <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p> : null}
+                      {e.detail ? (
+                        <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
+                      ) : null}
                       {photo ? (
                         <button
                           type="button"
@@ -372,12 +606,29 @@ function PlantProfile() {
                           aria-label={`View ${photo.caption} larger`}
                           className="press mt-3 block"
                         >
-                          <span className="relative block h-24 w-24"><PhotoImage photo={photo} alt={photo.caption} className="h-24 w-24 rounded-xl object-cover" />{entry.photos.length > 1 ? <span className="absolute right-1 bottom-1 rounded-full bg-ink/70 px-1.5 py-0.5 text-[0.6rem] text-white">+{entry.photos.length - 1}</span> : null}</span>
+                          <span className="relative block h-24 w-24">
+                            <PhotoImage
+                              photo={photo}
+                              alt={photo.caption}
+                              className="h-24 w-24 rounded-xl object-cover"
+                            />
+                            {entry.photos.length > 1 ? (
+                              <span className="absolute right-1 bottom-1 rounded-full bg-ink/70 px-1.5 py-0.5 text-[0.6rem] text-white">
+                                +{entry.photos.length - 1}
+                              </span>
+                            ) : null}
+                          </span>
                         </button>
                       ) : null}
                       <div className="mt-2.5">
                         <ProvenanceTag
-                          kind={e.provenance === "recorded" ? "recorded" : e.provenance === "observed" ? "observed" : "inferred"}
+                          kind={
+                            e.provenance === "recorded"
+                              ? "recorded"
+                              : e.provenance === "observed"
+                                ? "observed"
+                                : "inferred"
+                          }
                         />
                       </div>
                     </div>
@@ -385,16 +636,17 @@ function PlantProfile() {
                       itemLabel="event"
                       actionLabel="Delete event"
                       title="Delete this event?"
-                      description={entry.photos.length
-                        ? `This removes the event from the history. ${entry.photos.length} attached ${entry.photos.length === 1 ? "photo remains" : "photos remain"} as photographic evidence.`
-                        : "This removes the event from the history. Your audit history keeps the correction recorded."}
+                      description={
+                        entry.photos.length
+                          ? `This removes the event from the history. ${entry.photos.length} attached ${entry.photos.length === 1 ? "photo remains" : "photos remain"} as photographic evidence.`
+                          : "This removes the event from the history. Your audit history keeps the correction recorded."
+                      }
                       onConfirm={() => removeEvent(e, entry.photos.length)}
                     />
                   </li>
                 );
               })}
             </ul>
-
           </div>
         ) : null}
 
@@ -405,7 +657,11 @@ function PlantProfile() {
               action={
                 <div className="flex items-center gap-2">
                   <ChronologySelect value={sortOrder} onChange={setSortOrder} />
-                  <Link to="/plants/$plantId/film" params={{ plantId: plant.id }} className="text-primary hover:underline">
+                  <Link
+                    to="/plants/$plantId/film"
+                    params={{ plantId: plant.id }}
+                    className="text-primary hover:underline"
+                  >
                     Make a film
                   </Link>
                 </div>
@@ -415,9 +671,21 @@ function PlantProfile() {
             </SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {orderedPhotos.map((photo) => (
-                <figure key={photo.id} className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
-                  <button type="button" onClick={() => photoViewer.openPhoto(photo)} aria-label={`View ${photo.caption} larger`} className="block w-full">
-                    <PhotoImage photo={photo} alt={photo.caption} className="aspect-square w-full object-cover" />
+                <figure
+                  key={photo.id}
+                  className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft"
+                >
+                  <button
+                    type="button"
+                    onClick={() => photoViewer.openPhoto(photo)}
+                    aria-label={`View ${photo.caption} larger`}
+                    className="block w-full"
+                  >
+                    <PhotoImage
+                      photo={photo}
+                      alt={photo.caption}
+                      className="aspect-square w-full object-cover"
+                    />
                   </button>
                   <figcaption className="p-3.5">
                     <div className="flex items-start justify-between gap-2">
@@ -429,22 +697,25 @@ function PlantProfile() {
                         itemLabel="photo"
                         actionLabel="Delete photo"
                         title="Delete this photo?"
-                        description={photo.backendEventId
-                          ? "This removes the photo from the gallery. Its related event remains in the history."
-                          : "This removes the photo from the gallery and its exact Storage files."}
+                        description={
+                          photo.backendEventId
+                            ? "This removes the photo from the gallery. Its related event remains in the history."
+                            : "This removes the photo from the gallery and its exact Storage files."
+                        }
                         onConfirm={() => removePhoto(photo)}
                       />
                     </div>
                     <p className="numeral mt-2 text-xs text-muted-foreground">
-                      {photo.metrics.heightCm}cm · {photo.metrics.leafCount} leaves · density {photo.metrics.density}
+                      {photo.metrics.heightCm}cm · {photo.metrics.leafCount} leaves · density{" "}
+                      {photo.metrics.density}
                     </p>
                   </figcaption>
                 </figure>
               ))}
             </div>
             <p className="mt-5 max-w-xl text-xs text-muted-foreground">
-              Recorded moments and historical photo evidence appear together here. Each frame keeps its capture
-              date and provenance.
+              Recorded moments and historical photo evidence appear together here. Each frame keeps
+              its capture date and provenance.
             </p>
           </div>
         ) : null}
@@ -466,7 +737,10 @@ function PlantProfile() {
                 tasks.map((task) => {
                   const Icon = maintenanceIcons[task.type];
                   return (
-                    <li key={task.id} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5">
+                    <li
+                      key={task.id}
+                      className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5"
+                    >
                       <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
                       <div className="min-w-0">
                         <p className="truncate text-sm">{task.label}</p>
@@ -504,7 +778,8 @@ function PlantProfile() {
                 Log something now
               </SectionTitle>
               <p className="mb-3 text-xs text-muted-foreground">
-                Shortcuts chosen for {plant.name} right now — each one opens the same recording flow.
+                Shortcuts chosen for {plant.name} right now — each one opens the same recording
+                flow.
               </p>
               <div className="flex flex-wrap gap-2">
                 {careShortcuts(plant).map((type) => {
@@ -527,7 +802,10 @@ function PlantProfile() {
                 <SectionTitle>Completed in this session</SectionTitle>
                 <ul className="space-y-2">
                   {doneTasks.map((t) => (
-                    <li key={t.id} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <li
+                      key={t.id}
+                      className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
                       <Check className="h-4 w-4 text-primary" /> {t.label}
                     </li>
                   ))}
@@ -542,76 +820,119 @@ function PlantProfile() {
           <div className="rise max-w-3xl">
             <SectionTitle
               action={
-                <Link to="/library" className="text-primary hover:underline">
-                  Full catalog
-                </Link>
+                <div className="flex items-center gap-3">
+                  <Link to="/library" className="text-primary hover:underline">
+                    Full catalog
+                  </Link>
+                  {libraryEntry ? (
+                    <a href="/gardenpedia" className="text-primary hover:underline">
+                      Open Gardenpedia
+                    </a>
+                  ) : null}
+                </div>
               }
             >
-              Reference data
+              Garden Library reference
             </SectionTitle>
             <p className="mb-5 text-sm text-muted-foreground">
-              Deterministic species reference. It never changes because of a photo or an AI reading.
+              Knowledge from Gardenpedia. Your recorded history and current observations remain
+              separate.
             </p>
-            {reference ? (
-              <dl className="grid gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-2">
-                {[
-                  ["Common name", reference.common],
-                  ["Scientific name", reference.scientific],
-                  ["Variety", reference.variety],
-                  ["Germination", reference.germinationDays],
-                  ["Light", reference.light],
-                  ["Temperature", reference.temperature],
-                  ["pH", reference.ph],
-                  ...(reference.ec ? [["EC", reference.ec]] : []),
-                  ["Spacing", reference.spacing],
-                  ["Pruning", reference.pruning],
-                  ["Harvest", reference.harvest],
-                  ["Expected cycle", reference.cycle],
-                ].map(([k, v]) => (
-                  <div key={k} className="bg-card px-4 py-3.5">
-                    <dt className="eyebrow">{k}</dt>
-                    <dd className="mt-1 text-sm">{v}</dd>
+            {!plant.libraryPlantId ? (
+              <LibraryIdentityResolution
+                plant={plant}
+                catalog={libraryCatalog}
+                catalogError={libraryCatalogError}
+                onConfirm={async (entry) => {
+                  await store.confirmPlantLibraryIdentity(plant.id, entry.libraryPlantId);
+                  toast.success("Garden Library identity confirmed.");
+                }}
+              />
+            ) : null}
+            {plant.libraryPlantId && !libraryCatalog && !libraryCatalogError ? (
+              <p className="rounded-3xl border border-border/70 bg-card p-5 text-sm text-muted-foreground">
+                Loading Gardenpedia reference…
+              </p>
+            ) : null}
+            {plant.libraryPlantId && libraryCatalogError ? (
+              <p className="rounded-3xl border border-border/70 bg-card p-5 text-sm text-destructive">
+                {libraryCatalogError}
+              </p>
+            ) : null}
+            {plant.libraryPlantId && libraryEntry ? (
+              <>
+                <dl className="grid gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-2">
+                  {referenceFields.map(([label, value]) => (
+                    <div key={label} className="bg-card px-4 py-3.5">
+                      <dt className="eyebrow">{label}</dt>
+                      <dd className={cn("mt-1 text-sm", !value && "text-muted-foreground")}>
+                        {value || "Not documented in Gardenpedia"}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {guidanceCards.map(([label, values]) => (
+                    <div key={label} className="rounded-3xl border border-border/70 bg-card p-5">
+                      <p className="eyebrow">{label}</p>
+                      {values.length ? (
+                        <ul className="mt-2.5 space-y-1.5 text-sm text-muted-foreground">
+                          {values.slice(0, 6).map((value) => (
+                            <li key={value}>· {value}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="mt-2.5 text-sm text-muted-foreground">
+                          No documented guidance yet.
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 grid gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-2">
+                  {neighborCards.map(([label, ids]) => {
+                    const names = ids.map(
+                      (id) =>
+                        libraryCatalog!.entries.find((entry) => entry.libraryPlantId === id)
+                          ?.commonName || id,
+                    );
+                    return (
+                      <div key={label} className="bg-card p-5">
+                        <p className="eyebrow">{label}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          {names.length ? names.join(" · ") : "No documented relationships yet."}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+                {libraryEntry.reference.sources.length ? (
+                  <div className="mt-5 rounded-3xl border border-border/70 bg-card p-5">
+                    <p className="eyebrow">Sources</p>
+                    <ul className="mt-2.5 space-y-1.5 text-sm text-muted-foreground">
+                      {libraryEntry.reference.sources.slice(0, 6).map((source) => (
+                        <li key={source.id}>
+                          <a
+                            className="hover:text-foreground hover:underline"
+                            href={source.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {source.title}
+                          </a>
+                          <span> · {source.publisher}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                ))}
-              </dl>
-            ) : null}
-            {reference ? (
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-3xl border border-border/70 bg-card p-5">
-                  <p className="eyebrow">Common problems</p>
-                  <ul className="mt-2.5 space-y-1.5 text-sm text-muted-foreground">
-                    {reference.problems.map((p) => (
-                      <li key={p}>· {p}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-3xl border border-border/70 bg-card p-5">
-                  <p className="eyebrow">Recommendations</p>
-                  <ul className="mt-2.5 space-y-1.5 text-sm text-muted-foreground">
-                    {reference.recommendations.map((p) => (
-                      <li key={p}>· {p}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ) : null}
-            {reference ? (
-              <div className="mt-5 grid gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-2">
-                <div className="bg-card p-5">
-                  <p className="eyebrow">Good neighbors</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{companions.good.join(" · ")}</p>
-                </div>
-                <div className="bg-card p-5">
-                  <p className="eyebrow">Better separate</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{companions.separate.join(" · ")}</p>
-                </div>
-              </div>
+                ) : null}
+              </>
             ) : null}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <StatusDot status={plant.status} />
               <span className="text-xs text-muted-foreground">
-                Identity {plant.identityConfirmed ? "confirmed by you" : "unconfirmed"} · canonical data is only
-                changed with your confirmation.
+                Identity {plant.libraryPlantId ? "confirmed by you" : "not confirmed"} · canonical
+                data changes only with your confirmation.
               </span>
             </div>
           </div>
@@ -625,7 +946,13 @@ function PlantProfile() {
         initialCareType={recordCare}
         onClose={() => setRecordOpen(false)}
       />
-      <HistoryShareDialog plant={plant} photos={photos} events={events} open={shareOpen} onOpenChange={setShareOpen} />
+      <HistoryShareDialog
+        plant={plant}
+        photos={photos}
+        events={events}
+        open={shareOpen}
+        onOpenChange={setShareOpen}
+      />
       {photoViewer.viewer}
     </div>
   );

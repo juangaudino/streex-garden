@@ -105,8 +105,97 @@ function uniqueStrings(values) {
   ];
 }
 
+function metricValue(plant, labels) {
+  const metric = (plant.metrics || []).find((item) =>
+    labels.includes(item.label),
+  );
+  return metric?.value || null;
+}
+
+function sectionItems(plant, sectionNames) {
+  return uniqueStrings(
+    sectionNames.flatMap((name) => [
+      plant.sections?.[name]?.short,
+      ...(plant.sections?.[name]?.items || []),
+    ]),
+  );
+}
+
+function firstTemperature(plant) {
+  const values = sectionItems(plant, ["germination", "hydroponics"]);
+  return (
+    values.find((value) => /temperature|°f|°c|warm|cool/i.test(value)) || null
+  );
+}
+
+function buildReference(plant, neighborData, sourceById) {
+  const problems = sectionItems(plant, ["problems"]);
+  const recommendations = uniqueStrings([
+    ...sectionItems(plant, [
+      "pruning",
+      "harvest",
+      "germination",
+      "hydroponics",
+    ]),
+  ]).filter((value) => !problems.includes(value));
+  const goodNeighborIds = uniqueStrings(
+    (neighborData.meta?.researchPairs || [])
+      .filter((pair) => pair.a === plant.id || pair.b === plant.id)
+      .map((pair) => (pair.a === plant.id ? pair.b : pair.a)),
+  );
+  const sourceIds = uniqueStrings(
+    Object.values(plant.sections || {}).flatMap(
+      (section) => section?.sourceIds || [],
+    ),
+  );
+  return {
+    germination: metricValue(plant, ["Germination", "Best germination"]),
+    light: metricValue(plant, ["Light"]),
+    temperature: firstTemperature(plant),
+    ph: metricValue(plant, ["Hydro pH", "Hydro pH / EC"]),
+    ec: metricValue(plant, ["Hydro EC", "Hydro pH / EC"]),
+    spacing: metricValue(plant, ["Leaf spacing"]),
+    pruning:
+      metricValue(plant, ["Pruning"]) || plant.sections?.pruning?.short || null,
+    harvest:
+      metricValue(plant, [
+        "First harvest",
+        "Harvest mode",
+        "Harvest style",
+        "Leaf harvest",
+      ]) ||
+      plant.sections?.harvest?.short ||
+      null,
+    expectedCycle: null,
+    commonProblems: problems,
+    recommendations,
+    goodNeighborIds,
+    betterSeparateIds: [],
+    sourceIds,
+    sources: sourceIds
+      .map((id) => sourceById.get(id))
+      .filter(Boolean)
+      .map((source) => ({
+        id: source.id,
+        title: source.title || source.name || source.id,
+        publisher: source.publisher || source.type || "Gardenpedia source",
+        url: source.url,
+      })),
+  };
+}
+
 function buildCatalogManifest(plants) {
   const neighborData = readJson("data/neighbor-profiles.json");
+  const sourceRecords = [
+    "data/sources.json",
+    "data/sources-current-gardens.json",
+    "data/sources-owned-seeds.json",
+    "data/sources-expansion-batch-a1.json",
+    "data/sources-expansion-batch-b1.json",
+  ].flatMap((file) => filterPublicSources(file));
+  const sourceById = new Map(
+    sourceRecords.map((source) => [source.id, source]),
+  );
   const entries = plants
     .map((plant) => ({
       libraryPlantId: plant.id,
@@ -128,6 +217,7 @@ function buildCatalogManifest(plants) {
         ),
       ),
       guidanceProfile: neighborData.profiles?.[plant.id] || null,
+      reference: buildReference(plant, neighborData, sourceById),
     }))
     .sort((a, b) => a.libraryPlantId.localeCompare(b.libraryPlantId));
   const identityDigest = crypto

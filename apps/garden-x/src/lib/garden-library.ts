@@ -9,6 +9,24 @@ export type LibraryGuidanceProfile = {
   traits: readonly string[];
 };
 
+export type GardenLibraryReference = {
+  germination: string | null;
+  light: string | null;
+  temperature: string | null;
+  ph: string | null;
+  ec: string | null;
+  spacing: string | null;
+  pruning: string | null;
+  harvest: string | null;
+  expectedCycle: string | null;
+  commonProblems: readonly string[];
+  recommendations: readonly string[];
+  goodNeighborIds: readonly string[];
+  betterSeparateIds: readonly string[];
+  sourceIds: readonly string[];
+  sources: readonly { id: string; title: string; publisher: string; url: string }[];
+};
+
 export type GardenLibraryEntry = {
   libraryPlantId: string;
   commonName: string;
@@ -19,6 +37,7 @@ export type GardenLibraryEntry = {
   status: "active" | "retired";
   provenance: readonly string[];
   guidanceProfile: LibraryGuidanceProfile | null;
+  reference: GardenLibraryReference;
 };
 
 export type GardenLibraryManifest = {

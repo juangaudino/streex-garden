@@ -41,6 +41,7 @@ import {
   invalidateEventRecord,
   updateGardenRecord,
   updatePlantIdentityRecord,
+  confirmPlantLibraryIdentityRecord,
 } from "./garden-backend";
 import type { CustomSystemDraft, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
@@ -75,6 +76,7 @@ interface StoreApi extends GardenState {
     plantedOnPrecision: "exact" | "approximate" | "unknown";
     photo?: Omit<Photo, "id" | "plantId">;
   }) => Promise<string>;
+  confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
   setGardenArchived: (id: string, archived: boolean) => void;
@@ -410,6 +412,12 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         });
         await refreshFromBackend();
         return id;
+      },
+      confirmPlantLibraryIdentity: async (plantId, libraryPlantId) => {
+        const current = state.plants.find((item) => item.id === plantId);
+        if (!current) throw new Error("Plant not found.");
+        await confirmPlantLibraryIdentityRecord(current, libraryPlantId);
+        await refreshFromBackend();
       },
       updatePlant: (id, patch) => {
         const current = state.plants.find((p) => p.id === id);

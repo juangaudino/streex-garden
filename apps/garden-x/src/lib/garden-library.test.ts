@@ -49,6 +49,12 @@ describe("Garden Library catalog and planting guidance", () => {
   it("publishes 41 unique stable identities", () => {
     expect(catalog.entries).toHaveLength(41);
     expect(new Set(catalog.entries.map((entry) => entry.libraryPlantId)).size).toBe(41);
+    expect(
+      catalog.entries.every((entry) => entry.reference && Array.isArray(entry.reference.sourceIds)),
+    ).toBe(true);
+    expect(
+      catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")?.reference.ph,
+    ).toBeTruthy();
   });
 
   it("searches common, scientific, cultivar, and aliases without plant-specific UI code", () => {

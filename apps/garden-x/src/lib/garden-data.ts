@@ -130,6 +130,7 @@ export interface Plant {
   id: string;
   gardenId: string;
   name: string;
+  nickname?: string | null;
   species: string;
   scientific: string;
   variety: string;

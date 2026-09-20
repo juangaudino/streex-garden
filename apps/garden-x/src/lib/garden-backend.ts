@@ -335,6 +335,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       id: p.id,
       gardenId: p.garden_id,
       name: p.nickname?.trim() || p.common_name,
+      nickname: p.nickname ?? null,
       species: p.common_name,
       scientific: p.scientific_name ?? "",
       variety: p.cultivar ?? "",
@@ -353,7 +354,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       status: (b.attention ?? []).some((a) => a.plant_instance_id === p.id) ? "watching" : "steady",
       statusNote: p.harvest_readiness === "ready" ? "Ready to harvest." : "",
       heroPhotoId: p.latest_photo_id ?? "",
-      identityConfirmed: true,
+      identityConfirmed: Boolean(p.library_plant_id),
       backendGrowCycleId: p.grow_cycle_id,
       backendPositionId: p.position_id,
     }));
@@ -633,6 +634,19 @@ export async function updatePlantIdentityRecord(plant: Plant): Promise<void> {
     p_scientific_name: plant.scientific || null,
     p_cultivar: plant.variety || null,
     p_reference_key: plant.knowledgeId || null,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function confirmPlantLibraryIdentityRecord(
+  plant: Plant,
+  libraryPlantId: string,
+): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_library_plant_identity", {
+    p_request_id: crypto.randomUUID(),
+    p_plant_instance_id: plant.id,
+    p_nickname: plant.nickname ?? null,
+    p_library_plant_id: libraryPlantId,
   });
   if (error) throw new Error(error.message);
 }

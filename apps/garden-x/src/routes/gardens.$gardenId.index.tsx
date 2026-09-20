@@ -18,10 +18,14 @@ export const Route = createFileRoute("/gardens/$gardenId/")({
       { title: "Garden detail — Garden X" },
       {
         name: "description",
-        content: "Plants, pod positions and open care for one garden, with its conditions and history.",
+        content:
+          "Plants, pod positions and open care for one garden, with its conditions and history.",
       },
       { property: "og:title", content: "Garden detail — Garden X" },
-      { property: "og:description", content: "Plants, pod positions and open care for one garden." },
+      {
+        property: "og:description",
+        content: "Plants, pod positions and open care for one garden.",
+      },
     ],
   }),
   component: GardenDetail,
@@ -31,7 +35,9 @@ function GardenDetail() {
   const { gardenId } = Route.useParams();
   const { view } = Route.useSearch();
   const store = useGarden();
-  const [adding, setAdding] = useState<{ slot?: string } | null>(null);
+  const [adding, setAdding] = useState<{ slot?: string; positionId?: string | undefined } | null>(
+    null,
+  );
   const garden = store.gardens.find((g) => g.id === gardenId);
   if (!garden) throw notFound();
 
@@ -41,34 +47,54 @@ function GardenDetail() {
   const pods = garden.backendPositions?.length
     ? [...garden.backendPositions]
         .filter((position) => position.active !== false)
-        .sort((a, b) => (a.levelNumber ?? 1) - (b.levelNumber ?? 1) || (a.rowNumber ?? a.gridY ?? 0) - (b.rowNumber ?? b.gridY ?? 0) || (a.columnNumber ?? a.gridX ?? 0) - (b.columnNumber ?? b.gridX ?? 0) || a.number - b.number)
+        .sort(
+          (a, b) =>
+            (a.levelNumber ?? 1) - (b.levelNumber ?? 1) ||
+            (a.rowNumber ?? a.gridY ?? 0) - (b.rowNumber ?? b.gridY ?? 0) ||
+            (a.columnNumber ?? a.gridX ?? 0) - (b.columnNumber ?? b.gridX ?? 0) ||
+            a.number - b.number,
+        )
         .map((position) => {
           const label = `Pod ${position.number}`;
-          return { label, position, plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label) };
+          return {
+            label,
+            position,
+            plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label),
+          };
         })
     : garden.machine
       ? Array.from({ length: garden.machine.pods }, (_, i) => {
           const label = `Pod ${i + 1}`;
-          return { label, position: { number: i + 1, levelNumber: 1 }, plant: plants.find((p) => p.slot === label) };
+          return {
+            label,
+            position: { number: i + 1, levelNumber: 1 },
+            plant: plants.find((p) => p.slot === label),
+          };
         })
       : null;
   const occupiedPods = pods?.filter(({ plant }) => plant).length ?? 0;
   const podLevels = pods
-    ? Array.from(new Set(pods.map(({ position }) => position.levelNumber ?? 1))).sort((a, b) => a - b)
+    ? Array.from(new Set(pods.map(({ position }) => position.levelNumber ?? 1))).sort(
+        (a, b) => a - b,
+      )
     : [];
 
   return (
     <div className="rise pb-16">
       <div className="relative">
         <div className="relative aspect-[4/3] sm:aspect-[21/9]">
-          {gardenCoverPhoto(garden, store.plants, store.photos) ? <PhotoImage
-            photo={gardenCoverPhoto(garden, store.plants, store.photos)!}
-            alt={garden.name}
-            width={1280}
-            height={960}
-            className="h-full w-full object-cover"
-            loading="eager"
-          /> : <div className="h-full w-full bg-secondary" />}
+          {gardenCoverPhoto(garden, store.plants, store.photos) ? (
+            <PhotoImage
+              photo={gardenCoverPhoto(garden, store.plants, store.photos)!}
+              alt={garden.name}
+              width={1280}
+              height={960}
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
+          ) : (
+            <div className="h-full w-full bg-secondary" />
+          )}
           <div className="veil absolute inset-0" />
         </div>
         <Link
@@ -81,7 +107,12 @@ function GardenDetail() {
           aria-label="Garden view"
           className="absolute top-5 right-5 flex rounded-lg border border-border/50 bg-card/90 p-1 shadow-soft backdrop-blur-md"
         >
-          <Button asChild variant="ghost" size="sm" className={cn("h-7 px-2.5", view === "overview" && "bg-background shadow-soft")}>
+          <Button
+            asChild
+            variant="ghost"
+            size="sm"
+            className={cn("h-7 px-2.5", view === "overview" && "bg-background shadow-soft")}
+          >
             <Link
               to="/gardens/$gardenId"
               params={{ gardenId }}
@@ -92,7 +123,12 @@ function GardenDetail() {
               <List className="h-3.5 w-3.5" /> Overview
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="sm" className={cn("h-7 px-2.5", view === "map" && "bg-background shadow-soft")}>
+          <Button
+            asChild
+            variant="ghost"
+            size="sm"
+            className={cn("h-7 px-2.5", view === "map" && "bg-background shadow-soft")}
+          >
             <Link
               to="/gardens/$gardenId"
               params={{ gardenId }}
@@ -105,7 +141,9 @@ function GardenDetail() {
           </Button>
         </nav>
         <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 lg:px-12">
-          <p className="text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">{garden.kind} garden</p>
+          <p className="text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">
+            {garden.kind} garden
+          </p>
           <h1 className="mt-1.5 font-display text-3xl text-white sm:text-5xl">{garden.name}</h1>
           <p className="mt-1 max-w-lg text-sm text-white/80">
             {garden.place} · {garden.note}
@@ -141,57 +179,85 @@ function GardenDetail() {
               <div className="flex items-center justify-between gap-4 border-b border-border/70 px-4 py-3.5 sm:px-6">
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium">{garden.machine.name}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">Physical pod arrangement · front view</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    Physical pod arrangement · front view
+                  </p>
                 </div>
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
               </div>
               <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8">
                 {podLevels.map((levelNumber) => {
-                  const levelPods = pods.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber);
-                  const levelColumns = garden.customSystemLevels?.find((level) => level.levelNumber === levelNumber)?.columns;
-                  return <div key={levelNumber}>
-                    {podLevels.length > 1 ? <p className="eyebrow mb-3">Level {levelNumber}</p> : null}
-                    <div className={cn("mx-auto grid max-w-3xl gap-2.5 sm:gap-4", mapColumns(levelColumns ?? levelPods.length))}>
-                  {levelPods.map(({ label, plant }) =>
-                    plant ? (
-                      <Link
-                        key={label}
-                        to="/plants/$plantId"
-                        params={{ plantId: plant.id }}
-                        aria-label={`${label}: ${plant.name}, ${plant.species}`}
-                        className="press group grid min-w-0 place-items-center rounded-lg border border-border bg-card p-2.5 text-center shadow-soft transition-colors hover:border-primary/40 sm:p-4"
+                  const levelPods = pods.filter(
+                    ({ position }) => (position.levelNumber ?? 1) === levelNumber,
+                  );
+                  const levelColumns = garden.customSystemLevels?.find(
+                    (level) => level.levelNumber === levelNumber,
+                  )?.columns;
+                  return (
+                    <div key={levelNumber}>
+                      {podLevels.length > 1 ? (
+                        <p className="eyebrow mb-3">Level {levelNumber}</p>
+                      ) : null}
+                      <div
+                        className={cn(
+                          "mx-auto grid max-w-3xl gap-2.5 sm:gap-4",
+                          mapColumns(levelColumns ?? levelPods.length),
+                        )}
                       >
-                        <span className="eyebrow mb-2 block">{label}</span>
-                        <span className="block aspect-square w-full max-w-24 overflow-hidden rounded-full border-4 border-background shadow-soft">
-                          {photoById(plant.heroPhotoId) ? <PhotoImage
-                            photo={photoById(plant.heroPhotoId)!}
-                            alt=""
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          /> : null}
-                        </span>
-                        <span className="mt-2 block min-w-0 max-w-full">
-                          <span className="block truncate text-sm font-medium">{plant.name}</span>
-                          <span className="block truncate text-[0.65rem] text-muted-foreground">{plant.species}</span>
-                        </span>
-                      </Link>
-                    ) : (
-                      <button
-                        key={label}
-                        type="button"
-                        onClick={() => setAdding({ slot: label })}
-                        aria-label={`${label} is empty — add a plant here`}
-                        className="press grid min-w-0 place-items-center rounded-lg border border-dashed border-border bg-background/45 p-2.5 text-center transition-colors hover:border-primary/50 sm:p-4"
-                      >
-                        <span className="eyebrow mb-2 block">{label}</span>
-                        <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground">
-                          <Plus className="h-4 w-4" />
-                        </span>
-                        <span className="mt-2 block text-xs text-muted-foreground">Empty · add plant</span>
-                      </button>
-                    ),
-                  )}
+                        {levelPods.map(({ label, plant, position }) =>
+                          plant ? (
+                            <Link
+                              key={label}
+                              to="/plants/$plantId"
+                              params={{ plantId: plant.id }}
+                              aria-label={`${label}: ${plant.name}, ${plant.species}`}
+                              className="press group grid min-w-0 place-items-center rounded-lg border border-border bg-card p-2.5 text-center shadow-soft transition-colors hover:border-primary/40 sm:p-4"
+                            >
+                              <span className="eyebrow mb-2 block">{label}</span>
+                              <span className="block aspect-square w-full max-w-24 overflow-hidden rounded-full border-4 border-background shadow-soft">
+                                {photoById(plant.heroPhotoId) ? (
+                                  <PhotoImage
+                                    photo={photoById(plant.heroPhotoId)!}
+                                    alt=""
+                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  />
+                                ) : null}
+                              </span>
+                              <span className="mt-2 block min-w-0 max-w-full">
+                                <span className="block truncate text-sm font-medium">
+                                  {plant.name}
+                                </span>
+                                <span className="block truncate text-[0.65rem] text-muted-foreground">
+                                  {plant.species}
+                                </span>
+                              </span>
+                            </Link>
+                          ) : (
+                            <button
+                              key={label}
+                              type="button"
+                              onClick={() =>
+                                setAdding({
+                                  slot: label,
+                                  positionId: "id" in position ? position.id : undefined,
+                                })
+                              }
+                              aria-label={`${label} is empty — add a plant here`}
+                              className="press grid min-w-0 place-items-center rounded-lg border border-dashed border-border bg-background/45 p-2.5 text-center transition-colors hover:border-primary/50 sm:p-4"
+                            >
+                              <span className="eyebrow mb-2 block">{label}</span>
+                              <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground">
+                                <Plus className="h-4 w-4" />
+                              </span>
+                              <span className="mt-2 block text-xs text-muted-foreground">
+                                Empty · add plant
+                              </span>
+                            </button>
+                          ),
+                        )}
+                      </div>
                     </div>
-                  </div>;
+                  );
                 })}
               </div>
             </div>
@@ -221,7 +287,7 @@ function GardenDetail() {
                 Pod positions
               </SectionTitle>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-                {pods.map(({ label, plant }) =>
+                {pods.map(({ label, plant, position }) =>
                   plant ? (
                     <Link
                       key={label}
@@ -230,11 +296,13 @@ function GardenDetail() {
                       className="press overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
                     >
                       <div className="aspect-square overflow-hidden bg-secondary">
-                        {photoById(plant.heroPhotoId) ? <PhotoImage
-                          photo={photoById(plant.heroPhotoId)!}
-                          alt={plant.name}
-                          className="h-full w-full object-cover"
-                        /> : null}
+                        {photoById(plant.heroPhotoId) ? (
+                          <PhotoImage
+                            photo={photoById(plant.heroPhotoId)!}
+                            alt={plant.name}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : null}
                       </div>
                       <div className="p-3">
                         <p className="eyebrow">{label}</p>
@@ -248,7 +316,12 @@ function GardenDetail() {
                     <button
                       key={label}
                       type="button"
-                      onClick={() => setAdding({ slot: label })}
+                      onClick={() =>
+                        setAdding({
+                          slot: label,
+                          positionId: "id" in position ? position.id : undefined,
+                        })
+                      }
                       aria-label={`${label} is empty — add a plant here`}
                       className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
                     >
@@ -275,16 +348,22 @@ function GardenDetail() {
                   meta={ageLabel(plant.plantedDaysAgo)}
                 />
               ))}
-              <button
-                type="button"
-                onClick={() => setAdding({})}
-                className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
-              >
-                <span className="text-muted-foreground">
-                  <Plus className="mx-auto h-4 w-4" />
-                  <span className="mt-1.5 block text-xs">Add plant</span>
-                </span>
-              </button>
+              {pods?.find((pod) => !pod.plant && "id" in pod.position) ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const empty = pods.find((pod) => !pod.plant && "id" in pod.position);
+                    if (empty && "id" in empty.position)
+                      setAdding({ slot: empty.label, positionId: empty.position.id });
+                  }}
+                  className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
+                >
+                  <span className="text-muted-foreground">
+                    <Plus className="mx-auto h-4 w-4" />
+                    <span className="mt-1.5 block text-xs">Add plant</span>
+                  </span>
+                </button>
+              ) : null}
             </div>
           </section>
 
@@ -304,19 +383,26 @@ function GardenDetail() {
                   const plant = plants.find((p) => p.id === task.plantId);
                   if (!plant) return null;
                   return (
-                    <li key={task.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5">
+                    <li
+                      key={task.id}
+                      className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5"
+                    >
                       <div className="min-w-0">
                         <p className="truncate text-sm">{task.label}</p>
                         <p className="truncate text-xs text-muted-foreground">{plant.name}</p>
                       </div>
-                      <span className={`numeral shrink-0 text-xs ${task.dueInDays < 0 ? "text-clay" : "text-muted-foreground"}`}>
+                      <span
+                        className={`numeral shrink-0 text-xs ${task.dueInDays < 0 ? "text-clay" : "text-muted-foreground"}`}
+                      >
                         {dueLabel(task.dueInDays)}
                       </span>
                     </li>
                   );
                 })
               ) : (
-                <li className="px-4 py-6 text-center text-sm text-muted-foreground">Nothing open here.</li>
+                <li className="px-4 py-6 text-center text-sm text-muted-foreground">
+                  Nothing open here.
+                </li>
               )}
             </ul>
           </section>
@@ -325,6 +411,7 @@ function GardenDetail() {
 
       <AddPlantSheet
         gardenId={garden.id}
+        positionId={adding?.positionId}
         slot={adding?.slot}
         open={Boolean(adding)}
         onClose={() => setAdding(null)}

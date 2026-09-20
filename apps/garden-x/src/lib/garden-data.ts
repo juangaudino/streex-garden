@@ -134,6 +134,13 @@ export interface Plant {
   scientific: string;
   variety: string;
   knowledgeId: string;
+  libraryPlantId?: string | null;
+  libraryCatalogVersion?: string | null;
+  libraryIdentitySnapshot?: {
+    commonName: string;
+    scientificName: string | null;
+    cultivar: string | null;
+  } | null;
   plantedDaysAgo: number;
   acquired?: string;
   slot?: string;
@@ -432,15 +439,42 @@ export const events: PlantEvent[] = [
   ev("aurora", 18, "fruiting", "First fruit set", "Four fruits on truss 1.", true),
   ev("aurora", 9, "maintenance", "Watering", "12L, drip line 40 min."),
   ev("aurora", 4, "photo", "Growth photo", undefined, false, "aurora-p3"),
-  ev("aurora", 4, "ai", "AI check: healthy vigour", "Density up, no stress signals found.", false, "aurora-p3", "inferred"),
+  ev(
+    "aurora",
+    4,
+    "ai",
+    "AI check: healthy vigour",
+    "Density up, no stress signals found.",
+    false,
+    "aurora-p3",
+    "inferred",
+  ),
   // Ember
   ev("ember", 74, "planted", "Planted as seedling", "Nursery start, 12cm tall.", true),
   ev("ember", 55, "maintenance", "Nutrients", "Balanced feed 5-5-5."),
   ev("ember", 38, "flowering", "First flowers", undefined, true),
   ev("ember", 21, "photo", "Lower leaf photo", undefined, false, "ember-p1"),
-  ev("ember", 12, "note", "Noticed pale patches", "Only lower third of the plant.", false, undefined, "observed"),
+  ev(
+    "ember",
+    12,
+    "note",
+    "Noticed pale patches",
+    "Only lower third of the plant.",
+    false,
+    undefined,
+    "observed",
+  ),
   ev("ember", 3, "photo", "Follow-up photo", undefined, false, "ember-p2"),
-  ev("ember", 3, "ai", "AI check: possible magnesium shortfall", "Pattern between veins, older leaves first.", false, "ember-p2", "inferred"),
+  ev(
+    "ember",
+    3,
+    "ai",
+    "AI check: possible magnesium shortfall",
+    "Pattern between veins, older leaves first.",
+    false,
+    "ember-p2",
+    "inferred",
+  ),
   // Rex
   ev("rex", 61, "planted", "Sown in tray", undefined, true),
   ev("rex", 54, "germinated", "Germinated", "Day 7, warm windowsill.", true),
@@ -455,7 +489,16 @@ export const events: PlantEvent[] = [
   ev("ora", 412, "planted", "Adopted as a cutting", "Rooted in water for 5 weeks.", true),
   ev("ora", 300, "transplant", "Potted up to 30cm", undefined, true),
   ev("ora", 240, "photo", "Growth photo", undefined, false, "ora-p1"),
-  ev("ora", 180, "note", "First fenestrated leaf", "Leaf 6 opened with holes.", true, undefined, "observed"),
+  ev(
+    "ora",
+    180,
+    "note",
+    "First fenestrated leaf",
+    "Leaf 6 opened with holes.",
+    true,
+    undefined,
+    "observed",
+  ),
   ev("ora", 120, "maintenance", "Cleaning", "Dusted leaves, wiped both sides."),
   ev("ora", 64, "problem", "Two lower leaves yellowed", "Likely overwatering in winter."),
   ev("ora", 40, "recovery", "Stabilised", "Watering interval moved to 12 days.", true),
@@ -579,7 +622,12 @@ export const knowledge: KnowledgeEntry[] = [
     pruning: "Remove the first king flower to build structure",
     harvest: "70–90 days from transplant",
     cycle: "Annual in cold climates, perennial in mild ones",
-    problems: ["Magnesium deficiency on older leaves", "Aphids", "Sunscald", "Blossom drop in heat"],
+    problems: [
+      "Magnesium deficiency on older leaves",
+      "Aphids",
+      "Sunscald",
+      "Blossom drop in heat",
+    ],
     recommendations: [
       "Correct interveinal yellowing with magnesium, not more nitrogen",
       "Stake early, branches get brittle when loaded",
@@ -635,7 +683,11 @@ export const knowledge: KnowledgeEntry[] = [
     pruning: "Remove damaged leaves, guide aerial roots to a pole",
     harvest: "Not applicable",
     cycle: "Perennial, decades",
-    problems: ["Overwatering and root rot", "Small leaves without fenestration in low light", "Spider mites"],
+    problems: [
+      "Overwatering and root rot",
+      "Small leaves without fenestration in low light",
+      "Spider mites",
+    ],
     recommendations: [
       "Let the top 5cm dry before watering",
       "Fenestration follows light and maturity, not fertiliser",

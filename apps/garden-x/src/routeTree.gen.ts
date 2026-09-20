@@ -23,6 +23,7 @@ import { Route as GardensIndexRouteImport } from './routes/gardens.index'
 import { Route as GardensGardenIdRouteImport } from './routes/gardens.$gardenId'
 import { Route as PlantsPlantIdRouteImport } from './routes/plants.$plantId'
 import { Route as SharedStoryIdRouteImport } from './routes/shared.$storyId'
+import { Route as ApiGardenLibraryCatalogRouteImport } from './routes/api.garden-library.catalog'
 import { Route as GardensGardenIdIndexRouteImport } from './routes/gardens.$gardenId.index'
 import { Route as GardensGardenIdFilmRouteImport } from './routes/gardens.$gardenId.film'
 import { Route as PlantsPlantIdIndexRouteImport } from './routes/plants.$plantId.index'
@@ -102,6 +103,11 @@ const SharedStoryIdRoute = SharedStoryIdRouteImport.update({
   path: '/shared/$storyId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGardenLibraryCatalogRoute = ApiGardenLibraryCatalogRouteImport.update({
+  id: '/api/garden-library/catalog',
+  path: '/api/garden-library/catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GardensGardenIdIndexRoute = GardensGardenIdIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/plants/$plantId': typeof PlantsPlantIdRouteWithChildren
   '/shared/$storyId': typeof SharedStoryIdRoute
   '/gardens/': typeof GardensIndexRoute
+  '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
   '/plants/$plantId/ask': typeof PlantsPlantIdAskRoute
   '/plants/$plantId/check': typeof PlantsPlantIdCheckRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/api/gardenpedia-machine-performance': typeof ApiGardenpediaMachinePerformanceRoute
   '/shared/$storyId': typeof SharedStoryIdRoute
   '/gardens': typeof GardensIndexRoute
+  '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
   '/plants/$plantId/ask': typeof PlantsPlantIdAskRoute
   '/plants/$plantId/check': typeof PlantsPlantIdCheckRoute
@@ -198,6 +206,7 @@ export interface FileRoutesById {
   '/plants/$plantId': typeof PlantsPlantIdRouteWithChildren
   '/shared/$storyId': typeof SharedStoryIdRoute
   '/gardens/': typeof GardensIndexRoute
+  '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
   '/plants/$plantId/ask': typeof PlantsPlantIdAskRoute
   '/plants/$plantId/check': typeof PlantsPlantIdCheckRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/plants/$plantId'
     | '/shared/$storyId'
     | '/gardens/'
+    | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
     | '/plants/$plantId/ask'
     | '/plants/$plantId/check'
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/api/gardenpedia-machine-performance'
     | '/shared/$storyId'
     | '/gardens'
+    | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
     | '/plants/$plantId/ask'
     | '/plants/$plantId/check'
@@ -267,6 +278,7 @@ export interface FileRouteTypes {
     | '/plants/$plantId'
     | '/shared/$storyId'
     | '/gardens/'
+    | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
     | '/plants/$plantId/ask'
     | '/plants/$plantId/check'
@@ -291,6 +303,7 @@ export interface RootRouteChildren {
   PlantsPlantIdRoute: typeof PlantsPlantIdRouteWithChildren
   SharedStoryIdRoute: typeof SharedStoryIdRoute
   GardensIndexRoute: typeof GardensIndexRoute
+  ApiGardenLibraryCatalogRoute: typeof ApiGardenLibraryCatalogRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -391,6 +404,13 @@ declare module '@tanstack/react-router' {
       path: '/shared/$storyId'
       fullPath: '/shared/$storyId'
       preLoaderRoute: typeof SharedStoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/garden-library/catalog': {
+      id: '/api/garden-library/catalog'
+      path: '/api/garden-library/catalog'
+      fullPath: '/api/garden-library/catalog'
+      preLoaderRoute: typeof ApiGardenLibraryCatalogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gardens/$gardenId/': {
@@ -494,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   PlantsPlantIdRoute: PlantsPlantIdRouteWithChildren,
   SharedStoryIdRoute: SharedStoryIdRoute,
   GardensIndexRoute: GardensIndexRoute,
+  ApiGardenLibraryCatalogRoute: ApiGardenLibraryCatalogRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

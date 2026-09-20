@@ -88,6 +88,7 @@ function Gardens() {
                   alt={garden.name}
                   width={1280}
                   height={960}
+                  rendition="preview"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
                 /> : <div className="h-full w-full bg-secondary" />}
                 <div className="veil absolute inset-0" />

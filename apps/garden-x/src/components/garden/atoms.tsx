@@ -145,7 +145,7 @@ export function PlantThumb({
       )}
     >
       {photo ? (
-        <PhotoImage photo={photo} alt={plant.name} className="h-full w-full object-cover" />
+        <PhotoImage photo={photo} alt={plant.name} rendition="preview" className="h-full w-full object-cover" />
       ) : (
         <div className="grid h-full w-full place-items-center text-muted-foreground">
           <Leaf className="h-5 w-5" />
@@ -175,6 +175,7 @@ export function PlantCard({
           <PhotoImage
             photo={photo}
             alt={`${plant.name}, ${plant.species}`}
+            rendition="preview"
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
         ) : null}

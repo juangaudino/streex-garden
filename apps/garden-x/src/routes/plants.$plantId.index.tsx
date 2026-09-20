@@ -212,6 +212,9 @@ function PlantProfile() {
               alt={`${plant.name}, ${plant.species}`}
               width={1024}
               height={1280}
+              fetchPriority="high"
+              loading="eager"
+              rendition="display"
               className="h-full w-full object-cover"
             />
           ) : null}
@@ -355,6 +358,8 @@ function PlantProfile() {
                         <PhotoImage
                           photo={p}
                           alt={p.caption}
+                          rendition="display"
+                          loading="eager"
                           className="aspect-[3/4] w-full object-cover sm:aspect-[4/3]"
                         />
                       </button>
@@ -475,6 +480,7 @@ function PlantProfile() {
                           <PhotoImage
                             photo={photo}
                             alt={photo.caption}
+                            rendition="display"
                             className="aspect-[4/3] w-full object-cover"
                           />
                         </button>
@@ -563,6 +569,7 @@ function PlantProfile() {
                           <PhotoImage
                             photo={photo}
                             alt={photo.caption}
+                            rendition="preview"
                             className="h-24 w-24 rounded-xl object-cover"
                           />
                         </button>
@@ -615,6 +622,7 @@ function PlantProfile() {
                             <PhotoImage
                               photo={photo}
                               alt={photo.caption}
+                              rendition="preview"
                               className="h-24 w-24 rounded-xl object-cover"
                             />
                             {entry.photos.length > 1 ? (
@@ -689,6 +697,7 @@ function PlantProfile() {
                     <PhotoImage
                       photo={photo}
                       alt={photo.caption}
+                      rendition="preview"
                       className="aspect-square w-full object-cover"
                     />
                   </button>

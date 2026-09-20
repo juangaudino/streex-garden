@@ -89,6 +89,8 @@ function GardenDetail() {
               alt={garden.name}
               width={1280}
               height={960}
+              fetchPriority="high"
+              rendition="display"
               className="h-full w-full object-cover"
               loading="eager"
             />
@@ -219,6 +221,7 @@ function GardenDetail() {
                                   <PhotoImage
                                     photo={photoById(plant.heroPhotoId)!}
                                     alt=""
+                                    rendition="preview"
                                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                   />
                                 ) : null}
@@ -300,6 +303,7 @@ function GardenDetail() {
                           <PhotoImage
                             photo={photoById(plant.heroPhotoId)!}
                             alt={plant.name}
+                            rendition="preview"
                             className="h-full w-full object-cover"
                           />
                         ) : null}

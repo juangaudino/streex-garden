@@ -100,7 +100,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
               {items.map((item) => {
                 const on = selected.includes(item.id);
                 return <Button key={item.id} variant="ghost" onClick={() => setSelected((value) => on ? value.filter((id) => id !== item.id) : [...value, item.id])} className={cn("h-auto w-full justify-start rounded-2xl border p-3 text-left", on ? "border-primary bg-accent/40" : "border-border/70")}>
-                  {item.kind === "photo" ? <PhotoImage photo={item.photo} alt="" className="h-14 w-14 rounded-xl object-cover" /> : <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-secondary"><Check className="h-4 w-4" /></span>}
+                  {item.kind === "photo" ? <PhotoImage photo={item.photo} alt="" rendition="preview" className="h-14 w-14 rounded-xl object-cover" /> : <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-secondary"><Check className="h-4 w-4" /></span>}
                   <span className="min-w-0 flex-1 whitespace-normal">
                     <span className="block text-xs text-muted-foreground">{formatDate(item.daysAgo)} · {item.kind === "photo" ? "Photo" : eventLabels[item.event.type]}</span>
                     <span className="mt-0.5 block text-sm">{item.kind === "photo" ? item.photo.caption : item.event.title}</span>

@@ -115,6 +115,8 @@ function Home() {
                 width={1024}
                 height={1280}
                 loading="eager"
+                fetchPriority="high"
+                rendition="display"
                 className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
               />
             ) : null}
@@ -213,13 +215,13 @@ function Home() {
             >
               <div className="flex gap-2">
                 <div className="relative min-w-0 flex-1 overflow-hidden rounded-2xl">
-                  <PhotoImage photo={a} alt="" className="aspect-square w-full object-cover" />
+                  <PhotoImage photo={a} alt="" rendition="preview" className="aspect-square w-full object-cover" />
                   <span className="absolute bottom-1 left-1 rounded-full bg-black/45 px-2 py-0.5 text-[0.6rem] text-white backdrop-blur">
                     {formatDate(a.daysAgo)}
                   </span>
                 </div>
                 <div className="relative min-w-0 flex-1 overflow-hidden rounded-2xl">
-                  <PhotoImage photo={b} alt="" className="aspect-square w-full object-cover" />
+                  <PhotoImage photo={b} alt="" rendition="preview" className="aspect-square w-full object-cover" />
                   <span className="absolute bottom-1 left-1 rounded-full bg-black/45 px-2 py-0.5 text-[0.6rem] text-white backdrop-blur">
                     {formatDate(b.daysAgo)}
                   </span>
@@ -306,7 +308,7 @@ function Home() {
                 params={{ plantId: photo.plantId }}
                 className="press group relative overflow-hidden rounded-2xl"
               >
-                <PhotoImage photo={photo} alt={photo.caption} className="aspect-square w-full object-cover" />
+                <PhotoImage photo={photo} alt={photo.caption} rendition="preview" className="aspect-square w-full object-cover" />
                 <span className="absolute inset-x-0 bottom-0 flex items-center gap-1 bg-gradient-to-t from-black/60 to-transparent px-2 py-1.5 text-[0.6rem] text-white">
                   <Camera className="h-3 w-3" /> {relativeDay(photo.daysAgo)}
                 </span>

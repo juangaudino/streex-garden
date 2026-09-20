@@ -201,15 +201,45 @@ function maintenanceType(purpose: string, subject: string): MaintenanceType {
   if (value.includes("clean") || value.includes("pump")) return "cleaning";
   return "custom";
 }
+export type PhotoRendition = "preview" | "display" | "original";
+
 const signedUrlTtlSeconds = 60 * 60;
 const signedUrlRefreshSkewMs = 60 * 1000;
 const signedUrlCache = new Map<string, { url: string; expiresAt: number }>();
 const signedUrlPending = new Map<
   string,
-  Array<{ resolve: (url: string) => void; reject: (error: unknown) => void }>
+  {
+    photo: Pick<Photo, "id" | "src" | "backendStoragePath">;
+    rendition: PhotoRendition;
+    paths: string[];
+    waiters: Array<{ resolve: (url: string) => void; reject: (error: unknown) => void }>;
+  }
 >();
 let signedUrlFlushScheduled = false;
 const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, lastDurationMs: 0 };
+
+function derivativePath(originalPath: string, rendition: PhotoRendition) {
+  if (rendition === "original") return originalPath;
+  const separator = originalPath.lastIndexOf("/");
+  if (separator < 0) return originalPath;
+  return `${originalPath.slice(0, separator)}/${rendition}.jpg`;
+}
+
+export function photoRenditionCandidates(
+  originalPath: string,
+  rendition: PhotoRendition,
+) {
+  const ordered = rendition === "preview"
+    ? ["preview", "display", "original"] as const
+    : rendition === "display"
+      ? ["display", "original"] as const
+      : ["original"] as const;
+  return ordered.map((kind) => derivativePath(originalPath, kind));
+}
+
+function photoCacheKey(photoId: string, rendition: PhotoRendition) {
+  return `${photoId}:${rendition}`;
+}
 
 function scheduleSignedUrlFlush() {
   if (signedUrlFlushScheduled) return;
@@ -221,8 +251,9 @@ function scheduleSignedUrlFlush() {
 }
 
 async function flushSignedUrlRequests() {
-  const paths = [...signedUrlPending.keys()];
-  if (!paths.length) return;
+  const requests = [...signedUrlPending.values()];
+  if (!requests.length) return;
+  const paths = [...new Set(requests.flatMap((request) => request.paths))];
   const started = typeof performance !== "undefined" ? performance.now() : Date.now();
   photoUrlMetrics.signRequests += 1;
   photoUrlMetrics.pathsRequested += paths.length;
@@ -236,31 +267,45 @@ async function flushSignedUrlRequests() {
       item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : [],
     ),
   );
-  for (const path of paths) {
-    const waiters = signedUrlPending.get(path) ?? [];
-    signedUrlPending.delete(path);
+  for (const request of requests) {
+    const key = photoCacheKey(request.photo.id, request.rendition);
+    signedUrlPending.delete(key);
     if (error) {
-      for (const waiter of waiters) waiter.reject(error);
+      for (const waiter of request.waiters) waiter.reject(error);
       continue;
     }
-    const url = signedByPath.get(path) ?? "";
-    if (url) signedUrlCache.set(path, { url, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
-    for (const waiter of waiters) waiter.resolve(url);
+    const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean) ?? "";
+    if (url) {
+      signedUrlCache.set(key, { url, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
+    }
+    for (const waiter of request.waiters) waiter.resolve(url);
   }
 }
 
 /** Resolve one private photo only when a rendered surface needs it. */
-export function resolvePhotoUrl(photo: Pick<Photo, "src" | "backendStoragePath">): Promise<string> {
+export function resolvePhotoUrl(
+  photo: Pick<Photo, "id" | "src" | "backendStoragePath">,
+  rendition: PhotoRendition = "original",
+): Promise<string> {
   if (!photo.backendStoragePath) return Promise.resolve(photo.src);
-  const cached = signedUrlCache.get(photo.backendStoragePath);
+  const key = photoCacheKey(photo.id, rendition);
+  const cached = signedUrlCache.get(key);
   if (cached && cached.expiresAt - Date.now() > signedUrlRefreshSkewMs) {
     photoUrlMetrics.cacheHits += 1;
     return Promise.resolve(cached.url);
   }
   return new Promise<string>((resolve, reject) => {
-    const waiters = signedUrlPending.get(photo.backendStoragePath!) ?? [];
-    waiters.push({ resolve, reject });
-    signedUrlPending.set(photo.backendStoragePath!, waiters);
+    const pending = signedUrlPending.get(key);
+    if (pending) {
+      pending.waiters.push({ resolve, reject });
+    } else {
+      signedUrlPending.set(key, {
+        photo,
+        rendition,
+        paths: photoRenditionCandidates(photo.backendStoragePath!, rendition),
+        waiters: [{ resolve, reject }],
+      });
+    }
     scheduleSignedUrlFlush();
   });
 }
@@ -513,11 +558,36 @@ async function sha256Hex(bytes: Uint8Array): Promise<string> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+async function imageDimensions(
+  bytes: Uint8Array,
+  mime: string,
+): Promise<{ width: number; height: number } | null> {
+  if (typeof createImageBitmap !== "function") return null;
+  try {
+    const bitmap = await createImageBitmap(
+      new Blob([
+        bytes.buffer.slice(
+          bytes.byteOffset,
+          bytes.byteOffset + bytes.byteLength,
+        ) as ArrayBuffer,
+      ], { type: mime }),
+    );
+    const dimensions = { width: bitmap.width, height: bitmap.height };
+    bitmap.close();
+    return dimensions;
+  } catch {
+    // Some browser decoders cannot inspect formats such as HEIC. Uploading
+    // remains valid; dimensions are simply left unknown for that asset.
+    return null;
+  }
+}
+
 async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
   const decoded = decodeDataUrl(photo.src);
   if (!decoded) return;
   const photoId = crypto.randomUUID();
   const checksum = await sha256Hex(decoded.bytes);
+  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
   const capturedDate = isoDateFromDaysAgo(photo.daysAgo);
   const { data, error } = await getSupabaseClient().rpc("garden_x_prepare_event_photo", {
     p_photo_id: photoId,
@@ -555,8 +625,8 @@ async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
   const confirmation = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
     p_photo_id: photoId,
     p_checksum_sha256: checksum,
-    p_width: null,
-    p_height: null,
+    p_width: dimensions?.width ?? null,
+    p_height: dimensions?.height ?? null,
   });
   if (confirmation.error) throw new Error(confirmation.error.message);
 }
@@ -892,6 +962,7 @@ async function uploadGardenCoverPhoto(
   const decoded = decodeDataUrl(src);
   if (!decoded) throw new Error("System photo could not be read.");
   const checksum = await sha256Hex(decoded.bytes);
+  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
   const { data, error } = await getSupabaseClient().rpc("garden_prepare_media_photo", {
     p_request_id: crypto.randomUUID(),
     p_scope: "garden_cover",
@@ -927,8 +998,8 @@ async function uploadGardenCoverPhoto(
   const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
     p_photo_id: prepared.photo_id,
     p_checksum_sha256: checksum,
-    p_width: null,
-    p_height: null,
+    p_width: dimensions?.width ?? null,
+    p_height: dimensions?.height ?? null,
   });
   if (uploaded.error) throw new Error(uploaded.error.message);
   const attached = await getSupabaseClient().rpc("garden_x_set_custom_system_photo", {

@@ -40,7 +40,7 @@ export function usePhotoViewer() {
   return {
     open: (src: string, alt: string) => setPhoto({ src, alt }),
     openPhoto: (photo: Photo, alt = photo.caption) => {
-      void resolvePhotoUrl(photo).then((src) => {
+      void resolvePhotoUrl(photo, "display").then((src) => {
         if (src) setPhoto({ src, alt });
       }).catch(() => undefined);
     },

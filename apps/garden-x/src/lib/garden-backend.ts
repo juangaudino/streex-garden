@@ -13,7 +13,7 @@ import type {
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
-import { defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
+import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 
 type BootstrapGarden = {
   id: string;
@@ -31,7 +31,7 @@ type BootstrapGarden = {
   note: string;
   sort_order: number;
   archived_at: string | null;
-  levels?: Array<{ level_number: number; row_count: number; column_count: number }>;
+  levels?: Array<{ level_number: number; row_count: number; column_count: number; active_cells?: Array<{ row: number; column: number }> }>;
   positions: Array<{
     id: string;
     position_number: number;
@@ -318,16 +318,16 @@ function inferRectangularLevels(
   positions: Array<{ levelNumber?: number; rowNumber?: number; columnNumber?: number }>,
 ) {
   if (!positions.length || positions.some((position) => position.rowNumber === undefined || position.columnNumber === undefined)) return [];
-  const byLevel = new Map<number, { rows: number; columns: number }>();
+  const byLevel = new Map<number, { rows: number; columns: number; activeCells: Array<{ row: number; column: number }> }>();
   for (const position of positions) {
     const level = position.levelNumber ?? 1;
-    const current = byLevel.get(level) ?? { rows: 0, columns: 0 };
+    const current = byLevel.get(level) ?? { rows: 0, columns: 0, activeCells: [] };
     current.rows = Math.max(current.rows, position.rowNumber ?? 0);
     current.columns = Math.max(current.columns, position.columnNumber ?? 0);
+    current.activeCells.push({ row: position.rowNumber!, column: position.columnNumber! });
     byLevel.set(level, current);
   }
-  const levels = [...byLevel.entries()].sort(([a], [b]) => a - b).map(([levelNumber, value]) => ({ levelNumber, rows: value.rows, columns: value.columns }));
-  return levels.reduce((total, level) => total + level.rows * level.columns, 0) === positions.length ? levels : [];
+  return [...byLevel.entries()].sort(([a], [b]) => a - b).map(([levelNumber, value]) => ({ levelNumber, rows: value.rows, columns: value.columns, activeCells: value.activeCells }));
 }
 
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
@@ -373,13 +373,14 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       levelNumber: level.level_number,
       rows: level.row_count,
       columns: level.column_count,
+      activeCells: level.active_cells?.length ? level.active_cells : allGridCells({ rows: level.row_count, columns: level.column_count }),
     }));
     const physicalLevels = inferRectangularLevels(backendPositions);
     const systemLayoutLevels = persistedLevels.length
       ? persistedLevels
       : physicalLevels.length
         ? physicalLevels
-        : defaultRectangularLevels(g.position_capacity).map((level, index) => ({ ...level, levelNumber: index + 1 }));
+        : defaultRectangularLevels(g.position_capacity).map((level, index) => ({ ...level, activeCells: activeGridCells(level), levelNumber: index + 1 }));
     return {
     id: g.id,
     name: g.name,
@@ -1050,7 +1051,11 @@ export async function createCustomSystemRecord(
     p_system_instance_id: systemInstanceId,
     p_definition_id: definitionId,
     p_name: draft.name,
-    p_levels: draft.levels,
+    p_levels: draft.levels.map((level) => ({
+      rows: level.rows,
+      columns: level.columns,
+      active_cells: level.activeCells ?? allGridCells(level),
+    })),
   });
   if (error) throw new Error(error.message);
   let photoWarning: string | undefined;
@@ -1077,7 +1082,11 @@ export async function updateCustomSystemLayoutRecord(
   const { error } = await getSupabaseClient().rpc("garden_x_update_custom_system_layout", {
     p_request_id: crypto.randomUUID(),
     p_garden_id: gardenId,
-    p_levels: levels,
+    p_levels: levels.map((level) => ({
+      rows: level.rows,
+      columns: level.columns,
+      active_cells: level.activeCells ?? allGridCells(level),
+    })),
   });
   if (error) throw new Error(error.message);
 }
@@ -1104,12 +1113,22 @@ export async function reorderGardenRecords(gardenIds: string[]): Promise<void> {
   if (error) throw new Error(error.message);
 }
 
-export async function deleteGardenRecord(gardenId: string): Promise<void> {
-  const { error } = await getSupabaseClient().rpc("garden_x_delete_garden", {
+export type DeleteGardenResult = { storageCleanupWarning?: string; storagePathCount?: number };
+
+export async function deleteGardenRecord(gardenId: string): Promise<DeleteGardenResult> {
+  const { data, error } = await getSupabaseClient().rpc("garden_x_delete_garden", {
     p_request_id: crypto.randomUUID(),
     p_garden_id: gardenId,
   });
   if (error) throw new Error(error.message);
+  const result = (data ?? {}) as { storage_paths?: string[]; storage_path_count?: number };
+  const paths = Array.isArray(result.storage_paths) ? result.storage_paths.filter((path): path is string => typeof path === "string" && path.length > 0) : [];
+  if (!paths.length) return { storagePathCount: result.storage_path_count ?? 0 };
+  const { error: storageError } = await getSupabaseClient().storage.from("garden-originals").remove(paths);
+  return {
+    storagePathCount: result.storage_path_count ?? paths.length,
+    ...(storageError ? { storageCleanupWarning: storageError.message } : {}),
+  };
 }
 
 /**

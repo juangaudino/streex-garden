@@ -44,12 +44,12 @@ import {
   updatePlantIdentityRecord,
   confirmPlantLibraryIdentityRecord,
 } from "./garden-backend";
-import type { CustomSystemDraft, DeletePhotoResult } from "./garden-backend";
+import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight } from "./garden-logic";
 
 interface StoreApi extends GardenState {
-  hydration: "loading" | "ready" | "error" | "offline";
+  hydration: "loading" | "ready" | "reconnecting" | "error" | "offline";
   highlightedPlantId: string | null;
   language: "en" | "es";
   setLanguage: (language: "en" | "es") => void;
@@ -81,14 +81,14 @@ interface StoreApi extends GardenState {
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
   setGardenArchived: (id: string, archived: boolean) => Promise<void>;
-  deleteGarden: (id: string) => Promise<void>;
+  deleteGarden: (id: string) => Promise<DeleteGardenResult>;
   deleteEvent: (id: string) => Promise<void>;
   deletePhoto: (id: string) => Promise<DeletePhotoResult>;
   addGarden: (g: Omit<Garden, "id">) => string;
   createCustomSystem: (
     draft: CustomSystemDraft,
   ) => Promise<{ gardenId: string; photoWarning?: string }>;
-  updateCustomSystemLayout: (gardenId: string, levels: Array<{ rows: number; columns: number }>) => Promise<void>;
+  updateCustomSystemLayout: (gardenId: string, levels: Array<{ rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>) => Promise<void>;
   reorderGardens: (orderedIds: string[]) => void;
   publicStories: PublicStory[];
   savePublicStory: (story: PublicStory) => void;
@@ -132,6 +132,10 @@ const emptyState: GardenState = {
   tasks: [],
   films: [],
 };
+
+export function hydrationAfterRefreshFailure(hasSnapshot: boolean): "reconnecting" | "error" {
+  return hasSnapshot ? "reconnecting" : "error";
+}
 const demoPlantIds = new Set(initialState.plants.map((plant) => plant.id));
 
 let seq = 0;
@@ -150,6 +154,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
   const pendingPhotos = useRef(new Map<string, Photo>());
   const highlightResolved = useRef(false);
+  const hasSuccessfulSnapshot = useRef(!backendConfigured);
+  const refreshInFlight = useRef<Promise<void> | null>(null);
+  const refreshSequence = useRef(0);
 
   const resetHighlight = useCallback(() => {
     highlightResolved.current = false;
@@ -176,39 +183,48 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const refreshFromBackend = useCallback(async () => {
+  const refreshFromBackend = useCallback(async (reason: "initial" | "reconnect" | "auth" = "initial") => {
     if (!backendConfigured) return;
-    setHydration("loading");
-    const client = getSupabaseClient();
-    const { data: sessionData } = await client.auth.getSession();
-    if (!sessionData.session) {
-      setState(emptyState);
-      resetHighlight();
-      setHydration("ready");
-      return;
-    }
-    try {
+    if (refreshInFlight.current) return refreshInFlight.current;
+    const sequence = ++refreshSequence.current;
+    const run = (async () => {
+      setHydration(hasSuccessfulSnapshot.current && reason !== "initial" ? "reconnecting" : "loading");
+      const client = getSupabaseClient();
+      const { data: sessionData, error: sessionError } = await client.auth.getSession();
+      if (sessionError) throw sessionError;
+      if (!sessionData.session) {
+        if (hasSuccessfulSnapshot.current) throw new Error("Garden session is temporarily unavailable.");
+        setState(emptyState);
+        resetHighlight();
+        setHydration("ready");
+        return;
+      }
       const { state: next } = await loadGardenState();
+      if (sequence !== refreshSequence.current) return;
       resolveHighlight(next.plants);
       setState(next);
+      hasSuccessfulSnapshot.current = true;
       setHydration("ready");
       const user = sessionData.session.user;
       setPreferences((current) => ({
         ...current,
         profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
       }));
-    } catch (error) {
-      setState(emptyState);
-      resetHighlight();
-      setHydration("error");
-      throw error;
-    }
+    })();
+    refreshInFlight.current = run;
+    run.catch(() => {
+      if (sequence !== refreshSequence.current) return;
+      setHydration(hydrationAfterRefreshFailure(hasSuccessfulSnapshot.current));
+    }).finally(() => {
+      if (refreshInFlight.current === run) refreshInFlight.current = null;
+    });
+    return run;
   }, [backendConfigured, resetHighlight, resolveHighlight]);
 
   useEffect(() => {
     if (!backendConfigured) return;
     const client = getSupabaseClient();
-    void refreshFromBackend().catch(() => undefined);
+    void refreshFromBackend("initial").catch(() => undefined);
     const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
       if (session) {
         const user = session.user;
@@ -220,8 +236,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             signedIn: true,
           },
         }));
-        void refreshFromBackend().catch(() => undefined);
+        void refreshFromBackend("auth").catch(() => undefined);
       } else {
+        hasSuccessfulSnapshot.current = false;
         setState(emptyState);
         resetHighlight();
         setHydration("ready");
@@ -231,7 +248,27 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
       }
     });
-    return () => authListener.subscription.unsubscribe();
+    const refreshOnResume = () => {
+      if (document.visibilityState === "hidden") return;
+      void refreshFromBackend("reconnect").catch(() => undefined);
+    };
+    const onVisibility = () => { if (document.visibilityState === "visible") refreshOnResume(); };
+    const onPageShow = () => refreshOnResume();
+    const onOnline = () => refreshOnResume();
+    const onOffline = () => {
+      if (hasSuccessfulSnapshot.current) setHydration("offline");
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pageshow", onPageShow);
+    window.addEventListener("online", onOnline);
+    window.addEventListener("offline", onOffline);
+    return () => {
+      authListener.subscription.unsubscribe();
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pageshow", onPageShow);
+      window.removeEventListener("online", onOnline);
+      window.removeEventListener("offline", onOffline);
+    };
   }, [backendConfigured, refreshFromBackend, resetHighlight]);
 
   useEffect(() => {
@@ -313,7 +350,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const plant = state.plants.find((p) => p.id === t.plantId);
         if (plant?.backendGrowCycleId) {
           void createFollowUpRecord(plant, t.label, t.dueInDays)
-            .then(refreshFromBackend)
+            .then(() => refreshFromBackend("auth"))
             .catch(() => undefined);
         }
         setState((s) => ({ ...s, tasks: [...s.tasks, { ...t, id: uid("task"), done: false }] }));
@@ -322,7 +359,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const task = state.tasks.find((t) => t.id === id);
         if (task?.backendAttentionId) {
           void completeAttention(task.backendAttentionId, note)
-            .then(refreshFromBackend)
+            .then(() => refreshFromBackend("auth"))
             .catch(() => undefined);
         }
         setState((s) => {
@@ -356,7 +393,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const plant = state.plants.find((p) => p.id === f.plantId);
         if (plant?.backendGrowCycleId)
           void saveFilmRecord({ ...f, id })
-            .then(refreshFromBackend)
+            .then(() => refreshFromBackend("auth"))
             .catch(() => undefined);
         setState((s) => ({ ...s, films: [...s.films, film] }));
       },
@@ -371,7 +408,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             ? { ...photo, id: crypto.randomUUID(), plantId: id }
             : undefined;
           void createPlantRecord(nextPlant, position.id, canonicalPhoto)
-            .then(refreshFromBackend)
+            .then(() => refreshFromBackend("auth"))
             .catch(() => undefined);
         }
         setState((s) => {
@@ -430,7 +467,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             patch.plantedDaysAgo !== current.plantedDaysAgo
           ) {
             void correctPlantingRecord(current, patch.plantedDaysAgo, "Corrected in Garden X")
-              .then(refreshFromBackend)
+              .then(() => refreshFromBackend("auth"))
               .catch(() => undefined);
           }
           const targetGarden = patch.gardenId
@@ -442,7 +479,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           );
           if (targetPosition && targetPosition.id !== current.backendPositionId) {
             void movePlantRecord(id, targetPosition.id, 0)
-              .then(refreshFromBackend)
+              .then(() => refreshFromBackend("auth"))
               .catch(() => undefined);
           }
           if (
@@ -453,12 +490,12 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             patch.knowledgeId !== undefined
           ) {
             void updatePlantIdentityRecord(next)
-              .then(refreshFromBackend)
+              .then(() => refreshFromBackend("auth"))
               .catch(() => undefined);
           }
           if (patch.cycleClosed === true && !current.cycleClosed) {
             void closePlantCycleRecord(current, 0, "closed", "Closed in Garden X")
-              .then(refreshFromBackend)
+              .then(() => refreshFromBackend("auth"))
               .catch(() => undefined);
           }
         }
@@ -471,7 +508,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const current = state.gardens.find((g) => g.id === id);
         if (current?.backendSystemInstanceId)
           void updateGardenRecord({ ...current, ...patch })
-            .then(refreshFromBackend)
+            .then(() => refreshFromBackend("auth"))
             .catch(() => undefined);
         setState((s) => ({
           ...s,
@@ -500,9 +537,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       deleteGarden: async (id) => {
         const current = state.gardens.find((g) => g.id === id);
         if (current?.backendSystemInstanceId) {
-          await deleteGardenRecord(id);
+          const result = await deleteGardenRecord(id);
           await refreshFromBackend();
-          return;
+          return result;
         }
         setState((s) => {
           const plantIds = new Set(s.plants.filter((p) => p.gardenId === id).map((p) => p.id));
@@ -516,6 +553,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             films: s.films.filter((film) => !plantIds.has(film.plantId)),
           };
         });
+        return {};
       },
       deleteEvent: async (id) => {
         const current = state.events.find((event) => event.id === id);
@@ -547,7 +585,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const id = crypto.randomUUID();
         const next: Garden = { ...g, id, backendSystemInstanceId: crypto.randomUUID() };
         void createGardenRecord(next)
-          .then(refreshFromBackend)
+          .then(() => refreshFromBackend("auth"))
           .catch(() => undefined);
         setState((s) => ({ ...s, gardens: [...s.gardens, next] }));
         return id;

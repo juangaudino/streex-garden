@@ -56,6 +56,32 @@ describe("custom system geometry", () => {
     expect(after[2]).toMatchObject({ number: 3, row: 2, column: 1 });
   });
 
+  it("supports an irregular lattice with inactive cells", () => {
+    const activeCells = [
+      { row: 1, column: 2 },
+      { row: 2, column: 1 }, { row: 2, column: 2 }, { row: 2, column: 3 }, { row: 2, column: 4 },
+      { row: 3, column: 2 }, { row: 3, column: 3 }, { row: 3, column: 4 },
+      { row: 4, column: 1 }, { row: 4, column: 2 }, { row: 4, column: 3 }, { row: 4, column: 4 },
+    ];
+    const positions = customSystemPositions([{ rows: 4, columns: 4, activeCells }]);
+    expect(customSystemPositionCount([{ rows: 4, columns: 4, activeCells }])).toBe(12);
+    expect(positions).toHaveLength(12);
+    expect(positions[0]).toEqual({ number: 1, level: 1, row: 1, column: 2 });
+    expect(positions[11]).toEqual({ number: 12, level: 1, row: 4, column: 4 });
+  });
+
+  it("keeps inactive cells out of position numbering while preserving coordinates", () => {
+    const levels = [{ rows: 2, columns: 3, activeCells: [{ row: 1, column: 1 }, { row: 2, column: 3 }] }];
+    expect(customSystemPositions(levels)).toEqual([
+      { number: 1, level: 1, row: 1, column: 1 },
+      { number: 2, level: 1, row: 2, column: 3 },
+    ]);
+  });
+
+  it("requires at least one active cell per level", () => {
+    expect(canCreateCustomSystem([{ rows: 2, columns: 2, activeCells: [] }])).toBe(false);
+  });
+
   it("chooses a stable rectangular starting point for legacy capacities", () => {
     expect(defaultRectangularLevels(8)).toEqual([{ rows: 2, columns: 4 }]);
     expect(defaultRectangularLevels(12)).toEqual([{ rows: 3, columns: 4 }]);

@@ -21,6 +21,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
+import { RouteLoading } from "@/components/garden/route-loading";
 
 export const Route = createFileRoute("/gardens/")({
   head: () => ({
@@ -43,6 +44,8 @@ export const Route = createFileRoute("/gardens/")({
 
 function Gardens() {
   const store = useGarden();
+  if (store.hydration === "loading") return <RouteLoading label={store.language === "es" ? "Cargando tus jardines…" : "Loading your gardens…"} />;
+  if (store.hydration === "reconnecting" || store.hydration === "offline") return <RouteLoading label={store.language === "es" ? "Reconectando con tus jardines…" : "Reconnecting to your gardens…"} />;
   const [editing, setEditing] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
   const [archiveId, setArchiveId] = useState<string | null>(null);

@@ -104,16 +104,13 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
               })}
             </div>
           </div>
-          {garden.archived ? (
+          {(
             <div className="min-w-0 rounded-2xl border border-destructive/30 bg-destructive/5 p-4">
-              <p className="text-sm font-medium text-destructive">Danger zone</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Deleting this garden permanently removes its plants, photographs, events, history and Growth Films. This
-                cannot be undone.
-              </p>
+              <p className="text-sm font-medium text-destructive">{ui(language, "dangerZone")}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{ui(language, "deleteGardenWarning")}</p>
               <label className="mt-3 block min-w-0 text-sm">
                 <span className="mb-2 block text-muted-foreground">
-                  Type <span className="font-medium text-foreground">{garden.name}</span> to confirm
+                  {ui(language, "typeNameToConfirm")}: <span className="font-medium text-foreground">{garden.name}</span>
                 </span>
                 <input
                   className="input-soft min-w-0"
@@ -129,14 +126,15 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
                 disabled={confirmName.trim() !== garden.name}
                 onClick={() => {
                   void deleteGarden(garden.id)
-                    .then(() => {
+                    .then((result) => {
                       setOpen(false);
-                      toast.success(`${garden.name} deleted permanently`);
+                      toast.success(`${garden.name} · ${ui(language, "gardenDeleted")}`);
+                      if (result.storageCleanupWarning) toast.warning(result.storageCleanupWarning);
                     })
-                    .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be deleted."));
+                    .catch((error: unknown) => toast.error(error instanceof Error ? error.message : ui(language, "gardenDeleteFailed")));
                 }}
               >
-                <Trash2 /> Delete permanently
+                <Trash2 /> {ui(language, "deletePermanently")}
               </Button>
             </div>
           ) : null}

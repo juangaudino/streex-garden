@@ -22,6 +22,7 @@ import {
   maintenanceIcons,
 } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,10 +47,13 @@ function Home() {
   const store = useGarden();
   const isSpanish = store.language === "es";
   if (store.hydration === "loading") {
-    return <HomeStatus message={isSpanish ? "Cargando tu jardín…" : "Loading your garden…"} />;
+    return <HomeStatus language={store.language} message={isSpanish ? "Cargando tu jardín…" : "Loading your garden…"} />;
+  }
+  if (store.hydration === "reconnecting" || store.hydration === "offline") {
+    return <HomeStatus language={store.language} message={isSpanish ? "Reconectando con tu jardín…" : "Reconnecting to your garden…"} />;
   }
   if (store.hydration === "error") {
-    return <HomeStatus message={isSpanish ? "No pudimos cargar tu jardín." : "We couldn't load your garden."} error />;
+    return <HomeStatus language={store.language} message={isSpanish ? "No pudimos cargar tu jardín." : "We couldn't load your garden."} error />;
   }
 
   const hero = store.highlightedPlantId
@@ -349,7 +353,7 @@ function Home() {
   );
 }
 
-function HomeStatus({ message, error = false }: { message: string; error?: boolean }) {
+function HomeStatus({ message, error = false, language }: { message: string; error?: boolean; language: "en" | "es" }) {
   return (
     <main className="grid min-h-[70vh] place-items-center bg-background px-5 text-center">
       <div className="surface max-w-md p-8">
@@ -357,7 +361,7 @@ function HomeStatus({ message, error = false }: { message: string; error?: boole
           {error ? "!" : <span className="breathe font-display text-xl">✦</span>}
         </div>
         <p className="mt-5 font-display text-2xl">{message}</p>
-        {error ? <p className="mt-2 text-sm text-muted-foreground">Try refreshing to reconnect.</p> : null}
+          {error ? <p className="mt-2 text-sm text-muted-foreground">{ui(language, "retryReconnect")}</p> : null}
       </div>
     </main>
   );

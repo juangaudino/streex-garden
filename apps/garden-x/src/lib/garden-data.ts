@@ -73,8 +73,8 @@ export interface Garden {
     active?: boolean;
   }>;
   customSystemDefinitionId?: string | null;
-  customSystemLevels?: Array<{ levelNumber: number; rows: number; columns: number }>;
-  systemLayoutLevels?: Array<{ levelNumber: number; rows: number; columns: number }>;
+  customSystemLevels?: Array<{ levelNumber: number; rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>;
+  systemLayoutLevels?: Array<{ levelNumber: number; rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>;
   archived?: boolean;
 }
 

@@ -1,4 +1,6 @@
-export type CustomSystemLevel = { rows: number; columns: number };
+export type GridCell = { row: number; column: number };
+
+export type CustomSystemLevel = { rows: number; columns: number; activeCells?: GridCell[] };
 
 export type CustomSystemPosition = {
   number: number;
@@ -6,6 +8,8 @@ export type CustomSystemPosition = {
   row: number;
   column: number;
 };
+
+export type GeometryLevel = CustomSystemLevel;
 
 export const maxCustomSystemPositions = 36;
 export const maxCustomSystemLevels = 12;
@@ -19,12 +23,44 @@ export function normalizeCustomSystemLevels(levels: CustomSystemLevel[]): Custom
   }));
 }
 
-export function customSystemPositionCount(levels: CustomSystemLevel[]) {
-  return normalizeCustomSystemLevels(levels).reduce((total, level) => total + level.rows * level.columns, 0);
+export function allGridCells(level: CustomSystemLevel): GridCell[] {
+  const cells: GridCell[] = [];
+  for (let row = 1; row <= level.rows; row += 1) {
+    for (let column = 1; column <= level.columns; column += 1) cells.push({ row, column });
+  }
+  return cells;
 }
 
-export function canCreateCustomSystem(levels: CustomSystemLevel[]) {
-  return levels.length >= 1 && levels.length <= maxCustomSystemLevels && customSystemPositionCount(levels) <= maxCustomSystemPositions;
+export function normalizeGeometryLevels(levels: GeometryLevel[]): GeometryLevel[] {
+  return levels.slice(0, maxCustomSystemLevels).map((level) => {
+    const normalized = {
+      rows: Math.max(1, Math.min(maxCustomSystemRows, Math.floor(level.rows) || 1)),
+      columns: Math.max(1, Math.min(maxCustomSystemColumns, Math.floor(level.columns) || 1)),
+    };
+    const cells = level.activeCells
+      ? level.activeCells.filter((cell, index, list) =>
+          cell.row >= 1 && cell.row <= normalized.rows &&
+          cell.column >= 1 && cell.column <= normalized.columns &&
+          list.findIndex((candidate) => candidate.row === cell.row && candidate.column === cell.column) === index,
+        )
+      : allGridCells(normalized);
+    return { ...normalized, activeCells: cells };
+  });
+}
+
+export function activeGridCells(level: GeometryLevel): GridCell[] {
+  return normalizeGeometryLevels([level])[0]?.activeCells ?? [];
+}
+
+export function customSystemPositionCount(levels: GeometryLevel[]) {
+  return normalizeGeometryLevels(levels).reduce((total, level) => total + activeGridCells(level).length, 0);
+}
+
+export function canCreateCustomSystem(levels: GeometryLevel[]) {
+  const normalized = normalizeGeometryLevels(levels);
+  return normalized.length >= 1 && normalized.length <= maxCustomSystemLevels &&
+    normalized.every((level) => activeGridCells(level).length > 0) &&
+    customSystemPositionCount(normalized) <= maxCustomSystemPositions;
 }
 
 /** Picks a deterministic rectangular editor starting point for legacy systems
@@ -41,16 +77,14 @@ export function defaultRectangularLevels(positionCount: number): CustomSystemLev
 }
 
 /** Left-to-right, top-to-bottom, with numbering continuing across levels. */
-export function customSystemPositions(levels: CustomSystemLevel[]): CustomSystemPosition[] {
+export function customSystemPositions(levels: GeometryLevel[]): CustomSystemPosition[] {
   const positions: CustomSystemPosition[] = [];
   let number = 0;
-  normalizeCustomSystemLevels(levels).forEach((level, levelIndex) => {
-    for (let row = 1; row <= level.rows; row += 1) {
-      for (let column = 1; column <= level.columns; column += 1) {
-        number += 1;
-        positions.push({ number, level: levelIndex + 1, row, column });
-      }
-    }
+  normalizeGeometryLevels(levels).forEach((level, levelIndex) => {
+    activeGridCells(level).forEach(({ row, column }) => {
+      number += 1;
+      positions.push({ number, level: levelIndex + 1, row, column });
+    });
   });
   return positions;
 }

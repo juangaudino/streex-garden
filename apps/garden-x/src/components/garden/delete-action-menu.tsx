@@ -17,6 +17,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useGarden } from "@/lib/garden-store";
+import { ui } from "@/lib/ui-copy";
 
 interface DeleteActionMenuProps {
   itemLabel: string;
@@ -34,6 +36,7 @@ export function DeleteActionMenu({
   description,
   onConfirm,
 }: DeleteActionMenuProps) {
+  const { language } = useGarden();
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
 
@@ -67,7 +70,7 @@ export function DeleteActionMenu({
             <AlertDialogDescription>{description}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={busy}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel disabled={busy}>{ui(language, "cancel")}</AlertDialogCancel>
             <AlertDialogAction
               disabled={busy}
               className={cn(
@@ -85,7 +88,7 @@ export function DeleteActionMenu({
                 }
               }}
             >
-              {busy ? "Deleting…" : "Delete"}
+              {busy ? ui(language, "deleting") : ui(language, "deleteAction")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

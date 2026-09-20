@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { activeGridCells, allGridCells } from "@/lib/custom-system";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -77,7 +78,15 @@ function GardenDetail() {
     ? Array.from(new Set(pods.map(({ position }) => position.levelNumber ?? 1))).sort(
         (a, b) => a - b,
       )
-    : [];
+      : [];
+  const layoutLevels = garden.systemLayoutLevels?.length
+    ? garden.systemLayoutLevels
+    : podLevels.map((levelNumber) => ({
+        levelNumber,
+        rows: Math.max(...(pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => position.rowNumber ?? position.gridY ?? 1) ?? [1])),
+        columns: Math.max(...(pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => position.columnNumber ?? position.gridX ?? 1) ?? [1])),
+        activeCells: (pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => ({ row: position.rowNumber ?? position.gridY ?? 1, column: position.columnNumber ?? position.gridX ?? 1 })) ?? []),
+      }));
 
   return (
     <div className="rise pb-16">
@@ -188,13 +197,13 @@ function GardenDetail() {
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
               </div>
               <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8">
-                {podLevels.map((levelNumber) => {
+                {layoutLevels.map((level) => {
+                  const levelNumber = level.levelNumber;
                   const levelPods = pods.filter(
                     ({ position }) => (position.levelNumber ?? 1) === levelNumber,
                   );
-                  const levelColumns = garden.systemLayoutLevels?.find(
-                    (level) => level.levelNumber === levelNumber,
-                  )?.columns;
+                  const podByCoordinate = new Map(levelPods.map((pod) => [`${pod.position.rowNumber ?? pod.position.gridY ?? 1}:${pod.position.columnNumber ?? pod.position.gridX ?? 1}`, pod]));
+                  const activeCells = activeGridCells(level);
                   return (
                     <div key={levelNumber}>
                       {podLevels.length > 1 ? (
@@ -203,16 +212,17 @@ function GardenDetail() {
                       <div
                         className={cn(
                           "mx-auto grid max-w-3xl gap-2.5 sm:gap-4",
-                          mapColumns(
-                            levelColumns ??
-                              (levelPods.length <= 3
-                                ? levelPods.length
-                                : Math.ceil(levelPods.length / 2)),
-                          ),
+                          mapColumns(level.columns),
                         )}
                       >
-                        {levelPods.map(({ label, plant, position }) =>
-                          plant ? (
+                        {allGridCells(level).map((cell) => {
+                          if (!activeCells.some((active) => active.row === cell.row && active.column === cell.column)) {
+                            return <span key={`${cell.row}:${cell.column}`} aria-hidden="true" className="aspect-square rounded-lg border border-dashed border-border/40 bg-background/20" />;
+                          }
+                          const pod = podByCoordinate.get(`${cell.row}:${cell.column}`);
+                          if (!pod) return <span key={`${cell.row}:${cell.column}`} aria-hidden="true" className="aspect-square rounded-lg border border-dashed border-border/40 bg-background/20" />;
+                          const { label, plant, position } = pod;
+                          return plant ? (
                             <Link
                               key={label}
                               to="/plants/$plantId"
@@ -244,25 +254,16 @@ function GardenDetail() {
                             <button
                               key={label}
                               type="button"
-                              onClick={() =>
-                                setAdding({
-                                  slot: label,
-                                  positionId: "id" in position ? position.id : undefined,
-                                })
-                              }
+                              onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
                               aria-label={`${label} is empty — add a plant here`}
                               className="press grid min-w-0 place-items-center rounded-lg border border-dashed border-border bg-background/45 p-2.5 text-center transition-colors hover:border-primary/50 sm:p-4"
                             >
                               <span className="eyebrow mb-2 block">{label}</span>
-                              <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground">
-                                <Plus className="h-4 w-4" />
-                              </span>
-                              <span className="mt-2 block text-xs text-muted-foreground">
-                                Empty · add plant
-                              </span>
+                              <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground"><Plus className="h-4 w-4" /></span>
+                              <span className="mt-2 block text-xs text-muted-foreground">Empty · add plant</span>
                             </button>
-                          ),
-                        )}
+                          );
+                        })}
                       </div>
                     </div>
                   );

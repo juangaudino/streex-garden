@@ -24,7 +24,10 @@ describe("custom system backend boundary", () => {
     expect(rpc).toHaveBeenCalledTimes(1);
     expect(rpc).toHaveBeenCalledWith("garden_x_create_custom_system", expect.objectContaining({
       p_name: "Kitchen shelf",
-      p_levels: [{ rows: 3, columns: 4 }, { rows: 2, columns: 3 }],
+      p_levels: [
+        { rows: 3, columns: 4, active_cells: Array.from({ length: 12 }, (_, index) => ({ row: Math.floor(index / 4) + 1, column: (index % 4) + 1 })) },
+        { rows: 2, columns: 3, active_cells: Array.from({ length: 6 }, (_, index) => ({ row: Math.floor(index / 3) + 1, column: (index % 3) + 1 })) },
+      ],
       p_garden_id: expect.any(String),
       p_system_instance_id: expect.any(String),
       p_definition_id: expect.any(String),

@@ -74,6 +74,7 @@ export interface Garden {
   }>;
   customSystemDefinitionId?: string | null;
   customSystemLevels?: Array<{ levelNumber: number; rows: number; columns: number }>;
+  systemLayoutLevels?: Array<{ levelNumber: number; rows: number; columns: number }>;
   archived?: boolean;
 }
 

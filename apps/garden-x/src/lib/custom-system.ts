@@ -27,6 +27,19 @@ export function canCreateCustomSystem(levels: CustomSystemLevel[]) {
   return levels.length >= 1 && levels.length <= maxCustomSystemLevels && customSystemPositionCount(levels) <= maxCustomSystemPositions;
 }
 
+/** Picks a deterministic rectangular editor starting point for legacy systems
+ * that predate persisted level geometry. It never changes data by itself. */
+export function defaultRectangularLevels(positionCount: number): CustomSystemLevel[] {
+  const total = Math.max(1, Math.min(maxCustomSystemPositions, Math.floor(positionCount) || 1));
+  const candidates: CustomSystemLevel[] = [];
+  for (let rows = 1; rows <= maxCustomSystemRows; rows += 1) {
+    for (let columns = 1; columns <= maxCustomSystemColumns; columns += 1) {
+      if (rows * columns === total) candidates.push({ rows, columns });
+    }
+  }
+  return [candidates.sort((a, b) => Math.abs(a.rows - a.columns) - Math.abs(b.rows - b.columns) || a.rows - b.rows)[0] ?? { rows: 1, columns: total }];
+}
+
 /** Left-to-right, top-to-bottom, with numbering continuing across levels. */
 export function customSystemPositions(levels: CustomSystemLevel[]): CustomSystemPosition[] {
   const positions: CustomSystemPosition[] = [];

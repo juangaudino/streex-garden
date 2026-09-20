@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { canCreateCustomSystem, customSystemPositionCount, customSystemPositions } from "./custom-system";
+import { canCreateCustomSystem, customSystemPositionCount, customSystemPositions, defaultRectangularLevels } from "./custom-system";
 
 describe("custom system geometry", () => {
   it("supports a 1×1 system", () => {
@@ -26,5 +26,39 @@ describe("custom system geometry", () => {
   it("keeps the V1 total within the canonical position capacity", () => {
     expect(canCreateCustomSystem([{ rows: 4, columns: 8 }, { rows: 1, columns: 4 }])).toBe(true);
     expect(canCreateCustomSystem([{ rows: 5, columns: 8 }, { rows: 1, columns: 1 }])).toBe(false);
+  });
+
+  it("preserves deterministic coordinates across the supported rectangular geometries", () => {
+    for (const level of [
+      { rows: 1, columns: 3 },
+      { rows: 2, columns: 4 },
+      { rows: 4, columns: 2 },
+      { rows: 2, columns: 6 },
+      { rows: 6, columns: 2 },
+    ]) {
+      const positions = customSystemPositions([level]);
+      expect(positions).toHaveLength(level.rows * level.columns);
+      expect(positions[0]).toEqual({ number: 1, level: 1, row: 1, column: 1 });
+      expect(positions.at(-1)).toEqual({
+        number: level.rows * level.columns,
+        level: 1,
+        row: level.rows,
+        column: level.columns,
+      });
+    }
+  });
+
+  it("keeps position identity while changing only coordinates when totals match", () => {
+    const before = customSystemPositions([{ rows: 2, columns: 4 }]);
+    const after = customSystemPositions([{ rows: 4, columns: 2 }]);
+    expect(after.map((position) => position.number)).toEqual(before.map((position) => position.number));
+    expect(after[1]).toMatchObject({ number: 2, row: 1, column: 2 });
+    expect(after[2]).toMatchObject({ number: 3, row: 2, column: 1 });
+  });
+
+  it("chooses a stable rectangular starting point for legacy capacities", () => {
+    expect(defaultRectangularLevels(8)).toEqual([{ rows: 2, columns: 4 }]);
+    expect(defaultRectangularLevels(12)).toEqual([{ rows: 3, columns: 4 }]);
+    expect(defaultRectangularLevels(3)).toEqual([{ rows: 1, columns: 3 }]);
   });
 });

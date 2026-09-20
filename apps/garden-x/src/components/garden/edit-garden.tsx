@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
+import { CustomSystemLayoutEditor } from "@/components/garden/custom-system-layout-editor";
 
 export function EditGarden({ garden, plants, photos, className }: { garden: Garden; plants: Plant[]; photos: Photo[]; className?: string }) {
   const { updateGarden, updatePlant, deleteGarden, language } = useGarden();
@@ -81,6 +82,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
               {choices.map((photo) => <Button type="button" key={photo.id} variant="ghost" onClick={() => setCoverPhotoId(photo.id)} className={cn("relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 p-1", coverPhotoId === photo.id ? "border-primary" : "border-transparent")}><PhotoImage photo={photo} alt={photo.caption} rendition="preview" className="h-full w-full rounded-xl object-cover" />{coverPhotoId === photo.id ? <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-card text-primary"><Check className="h-3 w-3" /></span> : null}</Button>)}
             </div>
           </div>
+          <CustomSystemLayoutEditor garden={garden} />
           <div className="min-w-0 border-t border-border/70 pt-5">
             <p className="text-sm font-medium">{ui(language, "plants")}</p>
             <p className="mt-1 text-xs text-muted-foreground">{language === "es" ? "Edita nombres personales sin cambiar la identidad botánica registrada." : "Edit personal names without changing recorded botanical identity."}</p>
@@ -126,9 +128,12 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
                 className="mt-3 rounded-full"
                 disabled={confirmName.trim() !== garden.name}
                 onClick={() => {
-                  deleteGarden(garden.id);
-                  setOpen(false);
-                  toast.success(`${garden.name} deleted permanently`);
+                  void deleteGarden(garden.id)
+                    .then(() => {
+                      setOpen(false);
+                      toast.success(`${garden.name} deleted permanently`);
+                    })
+                    .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be deleted."));
                 }}
               >
                 <Trash2 /> Delete permanently

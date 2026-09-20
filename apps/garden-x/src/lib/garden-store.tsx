@@ -40,6 +40,7 @@ import {
   persistMoment,
   invalidateEventRecord,
   updateGardenRecord,
+  updateCustomSystemLayoutRecord,
   updatePlantIdentityRecord,
   confirmPlantLibraryIdentityRecord,
 } from "./garden-backend";
@@ -79,14 +80,15 @@ interface StoreApi extends GardenState {
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
-  setGardenArchived: (id: string, archived: boolean) => void;
-  deleteGarden: (id: string) => void;
+  setGardenArchived: (id: string, archived: boolean) => Promise<void>;
+  deleteGarden: (id: string) => Promise<void>;
   deleteEvent: (id: string) => Promise<void>;
   deletePhoto: (id: string) => Promise<DeletePhotoResult>;
   addGarden: (g: Omit<Garden, "id">) => string;
   createCustomSystem: (
     draft: CustomSystemDraft,
   ) => Promise<{ gardenId: string; photoWarning?: string }>;
+  updateCustomSystemLayout: (gardenId: string, levels: Array<{ rows: number; columns: number }>) => Promise<void>;
   reorderGardens: (orderedIds: string[]) => void;
   publicStories: PublicStory[];
   savePublicStory: (story: PublicStory) => void;
@@ -476,23 +478,30 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, ...patch } : garden)),
         }));
       },
-      setGardenArchived: (id, archived) => {
+      setGardenArchived: async (id, archived) => {
         const current = state.gardens.find((g) => g.id === id);
-        if (current?.backendSystemInstanceId)
-          void updateGardenRecord({ ...current, archived })
-            .then(refreshFromBackend)
-            .catch(() => undefined);
+        if (!current) return;
         setState((s) => ({
           ...s,
           gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, archived } : garden)),
         }));
+        if (!current.backendSystemInstanceId) return;
+        try {
+          await updateGardenRecord({ ...current, archived });
+          await refreshFromBackend();
+        } catch (error) {
+          setState((s) => ({
+            ...s,
+            gardens: s.gardens.map((garden) => (garden.id === id ? current : garden)),
+          }));
+          throw error;
+        }
       },
-      deleteGarden: (id) => {
+      deleteGarden: async (id) => {
         const current = state.gardens.find((g) => g.id === id);
         if (current?.backendSystemInstanceId) {
-          void deleteGardenRecord(id)
-            .then(refreshFromBackend)
-            .catch(() => undefined);
+          await deleteGardenRecord(id);
+          await refreshFromBackend();
           return;
         }
         setState((s) => {
@@ -547,6 +556,10 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const result = await createCustomSystemRecord(draft);
         await refreshFromBackend();
         return result;
+      },
+      updateCustomSystemLayout: async (gardenId, levels) => {
+        await updateCustomSystemLayoutRecord(gardenId, levels);
+        await refreshFromBackend();
       },
       reorderGardens: (orderedIds) => {
         void reorderGardenRecords(orderedIds).catch(() => undefined);

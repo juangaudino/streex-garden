@@ -149,8 +149,9 @@ function Gardens() {
                     aria-label={garden.archived ? `Restore ${garden.name}` : `Archive ${garden.name}`}
                     onClick={() => {
                       if (garden.archived) {
-                        store.setGardenArchived(garden.id, false);
-                        toast.success(`${garden.name} restored`);
+                        void store.setGardenArchived(garden.id, false)
+                          .then(() => toast.success(`${garden.name} restored`))
+                          .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be restored."));
                       } else {
                         setArchiveId(garden.id);
                       }
@@ -249,9 +250,12 @@ function Gardens() {
               className="rounded-full"
               onClick={() => {
                 if (!archiveTarget) return;
-                store.setGardenArchived(archiveTarget.id, true);
-                toast.success(`${archiveTarget.name} archived`);
-                setArchiveId(null);
+                void store.setGardenArchived(archiveTarget.id, true)
+                  .then(() => {
+                    toast.success(`${archiveTarget.name} archived`);
+                    setArchiveId(null);
+                  })
+                  .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be archived."));
               }}
             >
               Archive garden

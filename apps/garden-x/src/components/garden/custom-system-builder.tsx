@@ -148,6 +148,6 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
   );
 }
 
-function SystemPreview({ positions, levels }: { positions: ReturnType<typeof customSystemPositions>; levels: CustomSystemLevel[] }) {
+export function SystemPreview({ positions, levels }: { positions: ReturnType<typeof customSystemPositions>; levels: CustomSystemLevel[] }) {
   return <div className="rounded-2xl border border-border/70 bg-secondary/35 p-4"><div className="flex items-center justify-between gap-3"><p className="text-sm font-medium">Layout preview</p><span className="numeral text-xs text-muted-foreground">{positions.length} positions</span></div><div className="mt-3 grid gap-4">{levels.map((level, index) => <div key={index}><p className="eyebrow mb-2">Level {index + 1}</p><div className="grid gap-1.5" style={{ gridTemplateColumns: `repeat(${level.columns}, minmax(0, 1fr))` }}>{positions.filter((position) => position.level === index + 1).map((position) => <span key={position.number} className="grid aspect-square place-items-center rounded-lg border border-border bg-background text-xs numeral">{position.number}</span>)}</div></div>)}</div></div>;
 }

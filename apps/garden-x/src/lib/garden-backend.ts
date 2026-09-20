@@ -13,7 +13,7 @@ import type {
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
-import type { CustomSystemLevel } from "./custom-system";
+import { defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 
 type BootstrapGarden = {
   id: string;
@@ -314,6 +314,22 @@ export function getPhotoUrlMetrics() {
   return { ...photoUrlMetrics };
 }
 
+function inferRectangularLevels(
+  positions: Array<{ levelNumber?: number; rowNumber?: number; columnNumber?: number }>,
+) {
+  if (!positions.length || positions.some((position) => position.rowNumber === undefined || position.columnNumber === undefined)) return [];
+  const byLevel = new Map<number, { rows: number; columns: number }>();
+  for (const position of positions) {
+    const level = position.levelNumber ?? 1;
+    const current = byLevel.get(level) ?? { rows: 0, columns: 0 };
+    current.rows = Math.max(current.rows, position.rowNumber ?? 0);
+    current.columns = Math.max(current.columns, position.columnNumber ?? 0);
+    byLevel.set(level, current);
+  }
+  const levels = [...byLevel.entries()].sort(([a], [b]) => a - b).map(([levelNumber, value]) => ({ levelNumber, rows: value.rows, columns: value.columns }));
+  return levels.reduce((total, level) => total + level.rows * level.columns, 0) === positions.length ? levels : [];
+}
+
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
   const { data, error } = await getSupabaseClient().rpc("garden_x_get_bootstrap");
   if (error) throw new Error(error.message);
@@ -341,7 +357,30 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     ...((invalidatedEventPhotosResponse.data ?? []) as BootstrapPhoto[]),
   ].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
 
-  const gardens: Garden[] = (b.gardens ?? []).map((g) => ({
+  const gardens: Garden[] = (b.gardens ?? []).map((g) => {
+    const backendPositions = (g.positions ?? []).map((p) => ({
+      id: p.id,
+      number: p.position_number,
+      ...(p.layout?.grid_x !== undefined ? { gridX: p.layout.grid_x } : {}),
+      ...(p.layout?.grid_y !== undefined ? { gridY: p.layout.grid_y } : {}),
+      ...(p.layout?.level_number !== undefined ? { levelNumber: p.layout.level_number } : {}),
+      ...(p.layout?.row_number !== undefined ? { rowNumber: p.layout.row_number } : {}),
+      ...(p.layout?.column_number !== undefined ? { columnNumber: p.layout.column_number } : {}),
+      ...(p.layout?.label !== undefined ? { label: p.layout.label } : {}),
+      active: p.layout?.is_active ?? true,
+    }));
+    const persistedLevels = (g.levels ?? []).map((level) => ({
+      levelNumber: level.level_number,
+      rows: level.row_count,
+      columns: level.column_count,
+    }));
+    const physicalLevels = inferRectangularLevels(backendPositions);
+    const systemLayoutLevels = persistedLevels.length
+      ? persistedLevels
+      : physicalLevels.length
+        ? physicalLevels
+        : defaultRectangularLevels(g.position_capacity).map((level, index) => ({ ...level, levelNumber: index + 1 }));
+    return {
     id: g.id,
     name: g.name,
     kind: g.kind ?? "hydroponic",
@@ -356,23 +395,11 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     },
     backendSystemInstanceId: g.system_instance_id,
     customSystemDefinitionId: g.custom_definition_id ?? null,
-    customSystemLevels: (g.levels ?? []).map((level) => ({
-      levelNumber: level.level_number,
-      rows: level.row_count,
-      columns: level.column_count,
-    })),
-    backendPositions: (g.positions ?? []).map((p) => ({
-      id: p.id,
-      number: p.position_number,
-      ...(p.layout?.grid_x !== undefined ? { gridX: p.layout.grid_x } : {}),
-      ...(p.layout?.grid_y !== undefined ? { gridY: p.layout.grid_y } : {}),
-      ...(p.layout?.level_number !== undefined ? { levelNumber: p.layout.level_number } : {}),
-      ...(p.layout?.row_number !== undefined ? { rowNumber: p.layout.row_number } : {}),
-      ...(p.layout?.column_number !== undefined ? { columnNumber: p.layout.column_number } : {}),
-      ...(p.layout?.label !== undefined ? { label: p.layout.label } : {}),
-      active: p.layout?.is_active ?? true,
-    })),
-  }));
+    ...(g.custom_definition_id ? { customSystemLevels: persistedLevels } : {}),
+    systemLayoutLevels,
+    backendPositions,
+  };
+  });
 
   const plants: Plant[] = (b.plants ?? [])
     .filter((p) => p.cycle_state === "active")
@@ -1041,6 +1068,18 @@ export async function createCustomSystemRecord(
     gardenId: (data as { garden_id?: string } | null)?.garden_id ?? gardenId,
     ...(photoWarning ? { photoWarning } : {}),
   };
+}
+
+export async function updateCustomSystemLayoutRecord(
+  gardenId: string,
+  levels: CustomSystemLevel[],
+): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_custom_system_layout", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: gardenId,
+    p_levels: levels,
+  });
+  if (error) throw new Error(error.message);
 }
 
 export async function updateGardenRecord(garden: Garden): Promise<void> {

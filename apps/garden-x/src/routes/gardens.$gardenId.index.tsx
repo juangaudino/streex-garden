@@ -192,7 +192,7 @@ function GardenDetail() {
                   const levelPods = pods.filter(
                     ({ position }) => (position.levelNumber ?? 1) === levelNumber,
                   );
-                  const levelColumns = garden.customSystemLevels?.find(
+                  const levelColumns = garden.systemLayoutLevels?.find(
                     (level) => level.levelNumber === levelNumber,
                   )?.columns;
                   return (
@@ -203,7 +203,12 @@ function GardenDetail() {
                       <div
                         className={cn(
                           "mx-auto grid max-w-3xl gap-2.5 sm:gap-4",
-                          mapColumns(levelColumns ?? levelPods.length),
+                          mapColumns(
+                            levelColumns ??
+                              (levelPods.length <= 3
+                                ? levelPods.length
+                                : Math.ceil(levelPods.length / 2)),
+                          ),
                         )}
                       >
                         {levelPods.map(({ label, plant, position }) =>
@@ -425,8 +430,9 @@ function GardenDetail() {
 }
 
 function mapColumns(positionCount: number) {
-  const columns = positionCount <= 3 ? positionCount : Math.ceil(positionCount / 2);
-  if (columns <= 2) return "grid-cols-2";
+  const columns = Math.max(1, Math.min(8, positionCount));
+  if (columns === 1) return "grid-cols-1";
+  if (columns === 2) return "grid-cols-2";
   if (columns === 3) return "grid-cols-3";
   if (columns === 4) return "grid-cols-4";
   if (columns === 5) return "grid-cols-5";

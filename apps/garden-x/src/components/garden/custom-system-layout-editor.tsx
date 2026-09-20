@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import type { Garden } from "@/lib/garden-data";
 import { activeGridCells, allGridCells, canCreateCustomSystem, customSystemPositionCount, customSystemPositions, type CustomSystemLevel } from "@/lib/custom-system";
 import { useGarden } from "@/lib/garden-store";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { SystemPreview } from "@/components/garden/custom-system-builder";
 
@@ -45,7 +45,7 @@ export function CustomSystemLayoutEditor({ garden }: { garden: Garden }) {
       await updateCustomSystemLayout(garden.id, levels);
       toast.success(ui(language, "layoutUpdated"));
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : ui(language, "layoutUpdateFailed"));
+      toast.error(localizeKnownError(error, language, ui(language, "layoutUpdateFailed")));
     } finally {
       setSaving(false);
     }
@@ -58,7 +58,7 @@ export function CustomSystemLayoutEditor({ garden }: { garden: Garden }) {
           <p className="text-sm font-medium">{ui(language, "systemLayout")}</p>
           <p className="mt-1 text-xs text-muted-foreground">{ui(language, "rearrangeLayout")}</p>
         </div>
-        <span className="numeral shrink-0 text-xs text-muted-foreground">{expectedTotal} positions</span>
+        <span className="numeral shrink-0 text-xs text-muted-foreground">{expectedTotal} {ui(language, "positions").toLowerCase()}</span>
       </div>
       <div className="mt-3 grid gap-3">
         {levels.map((level, index) => (
@@ -85,7 +85,7 @@ export function CustomSystemLayoutEditor({ garden }: { garden: Garden }) {
         ))}
       </div>
       <SystemPreview language={language} positions={positions} levels={levels} interactive onToggleCell={toggleCell} />
-      {!valid ? <p className="mt-2 text-xs text-clay">{ui(language, "keepSamePositions")} ({expectedTotal}) para guardar.</p> : null}
+      {!valid ? <p className="mt-2 text-xs text-clay">{ui(language, "keepSamePositions")} ({expectedTotal}) {ui(language, "toSave")}</p> : null}
       <Button type="button" className="mt-3 w-full rounded-full" onClick={() => void save()} disabled={!valid || saving}>
         {saving ? ui(language, "savingLayout") : ui(language, "saveLayout")}
       </Button>

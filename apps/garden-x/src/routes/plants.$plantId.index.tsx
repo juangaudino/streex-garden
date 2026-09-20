@@ -16,14 +16,15 @@ import {
   ageLabel,
   chronological,
   dueLabel,
-  eventLabels,
+  localizedEventLabel,
   formatDate,
-  maintenanceLabels,
+  localizedMaintenanceLabel,
   openTasks,
   plantEvents,
   plantPhotos,
   relativeDay,
   statusMeta,
+  localizedStatusLabel,
   storyFacts,
   latestPlantPhoto,
   plantTimeline,
@@ -52,7 +53,7 @@ import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
 import { LibraryIdentityResolution } from "@/components/garden/library-identity-resolution";
 import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManifest } from "@/lib/garden-library";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
 
 export const Route = createFileRoute("/plants/$plantId/")({
@@ -104,7 +105,7 @@ function PlantProfile() {
       .catch((error) => {
         if (active)
           setLibraryCatalogError(
-            error instanceof Error ? error.message : "Garden Library is unavailable.",
+            localizeKnownError(error, language, ui(language, "libraryUnavailable")),
           );
       });
     return () => {
@@ -173,12 +174,12 @@ function PlantProfile() {
       await store.deleteEvent(event.id);
       toast.success(
         attachedPhotoCount
-          ? "Event removed; its photos remain as evidence."
-          : "Event removed from history.",
+          ? ui(language, "deleteEventKeepPhotos")
+          : ui(language, "eventRemovedFromHistory"),
       );
       return true;
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "The event could not be removed.");
+            toast.error(localizeKnownError(error, language, ui(language, "eventRemoveFailed")));
       return false;
     }
   };
@@ -187,13 +188,13 @@ function PlantProfile() {
     try {
       const result = await store.deletePhoto(photo.id);
       if (result.storageCleanupWarning) {
-        toast.warning("Photo removed from Garden X, but its Storage cleanup needs attention.");
+        toast.warning(ui(language, "photoStorageWarning"));
       } else {
-        toast.success("Photo removed.");
+        toast.success(ui(language, "photoRemoved"));
       }
       return true;
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "The photo could not be removed.");
+      toast.error(localizeKnownError(error, language, ui(language, "photoRemoveFailed")));
       return false;
     }
   };
@@ -232,7 +233,7 @@ function PlantProfile() {
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">
             <span>{ageLabel(plant.plantedDaysAgo)}</span>
             <span>·</span>
-            <span>Day {plant.plantedDaysAgo}</span>
+            <span>{ui(language, "dayLabel")} {plant.plantedDaysAgo}</span>
             {plant.slot ? (
               <>
                 <span>·</span>
@@ -258,7 +259,7 @@ function PlantProfile() {
           <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 ring-1 ring-white/20 backdrop-blur-md">
             <span className={cn("h-1.5 w-1.5 rounded-full", statusMeta[plant.status].dot)} />
             <span className="text-xs text-white">
-              {formatStatusLine(statusMeta[plant.status].label, plant.statusNote)}
+              {formatStatusLine(localizedStatusLabel(plant.status, language), plant.statusNote)}
             </span>
           </div>
         </div>
@@ -271,7 +272,7 @@ function PlantProfile() {
           className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
         >
           <Plus className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          Record a Moment
+          {ui(language, "recordMoment")}
         </button>
         {[
           { to: "/plants/$plantId/check", label: "AI Check", icon: ScanLine },
@@ -285,7 +286,7 @@ function PlantProfile() {
             className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
           >
             <tool.icon className="h-4 w-4 text-primary" strokeWidth={1.8} />
-            {tool.label}
+          {tool.label === "AI Check" ? ui(language, "aiCheck") : tool.label === "Compare" ? ui(language, "compare") : "Growth Film"}
           </Link>
         ))}
         <button
@@ -293,7 +294,7 @@ function PlantProfile() {
           className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
         >
           <Share2 className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          Share Story
+          {ui(language, "shareStory")}
         </button>
         <Link
           to="/plants/$plantId/ask"
@@ -302,15 +303,15 @@ function PlantProfile() {
           className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
         >
           <MessageCircle className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          Ask Garden
+          {ui(language, "askGarden")}
         </Link>
       </div>
 
       {/* identity strip */}
       <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-4 mx-5 sm:mx-8 lg:mx-12">
         {[
-          { k: "Planted", v: formatDate(plant.plantedDaysAgo) },
-          ...storyFacts(plant, store.events).map((f) => ({ k: f.label, v: f.value })),
+          { k: ui(language, "planted"), v: formatDate(plant.plantedDaysAgo) },
+          ...storyFacts(plant, store.events, language).map((f) => ({ k: f.label, v: f.value })),
         ].map((cell) => (
           <div key={cell.k} className="bg-card px-4 py-3.5">
             <p className="eyebrow">{cell.k}</p>
@@ -331,7 +332,7 @@ function PlantProfile() {
                 tab === t ? "text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              {t}
+              {t === "History" ? ui(language, "history") : t === "Timeline" ? ui(language, "timeline") : t === "Photos" ? ui(language, "photos") : t === "Care" ? ui(language, "care") : ui(language, "reference")}
               {tab === t ? (
                 <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-primary" />
               ) : null}
@@ -352,7 +353,7 @@ function PlantProfile() {
                       <button
                         type="button"
                         onClick={() => photoViewer.openPhoto(p)}
-                        aria-label={`View ${p.caption} larger`}
+                        aria-label={`${ui(language, "viewPhotoLarger")}: ${p.caption}`}
                         className="block w-full"
                       >
                         <PhotoImage
@@ -365,7 +366,7 @@ function PlantProfile() {
                       </button>
                       <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                         <p className="text-[0.65rem] tracking-[0.14em] text-white/70 uppercase">
-                          {i === 0 ? "Then" : "Now"}
+          {i === 0 ? ui(language, "then") : ui(language, "now")}
                         </p>
                         <p className="text-xs text-white">{formatDate(p.daysAgo)}</p>
                       </figcaption>
@@ -374,10 +375,9 @@ function PlantProfile() {
                 </div>
                 <div className="grid gap-4 p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
                   <div>
-                    <p className="eyebrow">A real passage of time</p>
+                    <p className="eyebrow">{ui(language, "realPassage")}</p>
                     <p className="mt-1 font-display text-2xl">
-                      {Math.round((first.daysAgo - latest.daysAgo) / 7)} weeks, held in two
-                      photographs
+                      {Math.round((first.daysAgo - latest.daysAgo) / 7)} {ui(language, "weeksHeld")}
                     </p>
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       {first.caption} → {latest.caption}
@@ -389,7 +389,7 @@ function PlantProfile() {
                     search={{ from: undefined }}
                     className="text-sm text-primary hover:underline"
                   >
-                    Look closer
+                    {ui(language, "lookCloser")}
                   </Link>
                 </div>
               </div>
@@ -401,15 +401,14 @@ function PlantProfile() {
                   onClick={() => setShareOpen(true)}
                   className="inline-flex items-center gap-1.5 text-primary hover:underline"
                 >
-                  <Share2 className="h-3.5 w-3.5" /> Share selection
+                  <Share2 className="h-3.5 w-3.5" /> {ui(language, "shareSelection")}
                 </button>
               }
             >
-              What this plant has lived through
+              {ui(language, "livedThrough")}
             </SectionTitle>
             <p className="mb-9 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              A reading of recorded moments, not a rewritten biography. The complete log remains in
-              Timeline.
+              {ui(language, "timelineReading")}
             </p>
 
             <ol className="space-y-5">
@@ -431,7 +430,7 @@ function PlantProfile() {
                   >
                     <div className="min-w-0">
                       <p className="eyebrow">
-                        Day {Math.max(day, 0)} · {formatDate(e.daysAgo)}
+                        {ui(language, "dayLabel")} {Math.max(day, 0)} · {formatDate(e.daysAgo)}
                       </p>
                       <div className={cn("flex items-start gap-3", e.milestone ? "mt-3" : "mt-2")}>
                         <span
@@ -474,7 +473,7 @@ function PlantProfile() {
                         <button
                           type="button"
                           onClick={() => photoViewer.openPhoto(photo)}
-                          aria-label={`View ${photo.caption} larger`}
+                          aria-label={`${ui(language, "viewPhotoLarger")}: ${photo.caption}`}
                           className="block w-full"
                         >
                           <PhotoImage
@@ -501,12 +500,12 @@ function PlantProfile() {
             </ol>
 
             <div className="mt-12 rounded-3xl border border-border/70 bg-card p-5 shadow-soft">
-              <SectionTitle>Journal entry</SectionTitle>
+              <SectionTitle>{ui(language, "journalEntry")}</SectionTitle>
               <textarea
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 rows={3}
-                placeholder="What did you notice today?"
+                placeholder={ui(language, "journalPlaceholder")}
                 className="w-full resize-none rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
               />
               <Button
@@ -521,11 +520,11 @@ function PlantProfile() {
                     provenance: "recorded",
                   });
                   setNote("");
-                  toast.success("Journal entry added to history");
+                  toast.success(ui(language, "journalAdded"));
                 }}
                 className="mt-3 rounded-full"
               >
-                <Plus className="h-4 w-4" /> Save entry
+                <Plus className="h-4 w-4" /> {ui(language, "saveEntry")}
               </Button>
             </div>
           </div>
@@ -535,7 +534,7 @@ function PlantProfile() {
         {tab === "Timeline" ? (
           <div className="rise max-w-3xl">
             <SectionTitle action={<ChronologySelect value={sortOrder} onChange={setSortOrder} />}>
-              Everything recorded
+              {ui(language, "everythingRecorded")}
             </SectionTitle>
             <ul className="space-y-2">
               {timeline.map((entry) => {
@@ -551,19 +550,19 @@ function PlantProfile() {
                       </span>
                       <div className="min-w-0">
                         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
-                          <p className="truncate text-sm font-medium">Photo</p>
+                          <p className="truncate text-sm font-medium">{ui(language, "photo")}</p>
                           <span className="numeral shrink-0 text-xs text-muted-foreground">
                             {formatDate(photo.daysAgo)}
                           </span>
                         </div>
                         <p className="mt-0.5 text-xs text-muted-foreground">
-                          Photographic evidence · {relativeDay(photo.daysAgo)}
+                          {ui(language, "photographicEvidence")} · {relativeDay(photo.daysAgo)}
                         </p>
                         <p className="mt-2 text-sm text-muted-foreground">{photo.caption}</p>
                         <button
                           type="button"
                           onClick={() => photoViewer.openPhoto(photo)}
-                          aria-label={`View ${photo.caption} larger`}
+                          aria-label={`${ui(language, "viewPhotoLarger")}: ${photo.caption}`}
                           className="press mt-3 block"
                         >
                           <PhotoImage
@@ -579,9 +578,9 @@ function PlantProfile() {
                       </div>
                       <DeleteActionMenu
                         itemLabel="photo"
-                        actionLabel="Delete photo"
-                        title="Delete this photo?"
-                        description="This removes the photo from the gallery and keeps any related event in the history."
+                        actionLabel={ui(language, "deletePhoto")}
+                        title={ui(language, "deletePhotoQuestion")}
+                        description={ui(language, "deletePhotoKeepEvent")}
                         onConfirm={() => removePhoto(photo)}
                       />
                     </li>
@@ -606,7 +605,7 @@ function PlantProfile() {
                         </span>
                       </div>
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {eventLabels[e.type]} · {relativeDay(e.daysAgo)}
+                        {localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
                       </p>
                       {e.detail ? (
                         <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
@@ -615,7 +614,7 @@ function PlantProfile() {
                         <button
                           type="button"
                           onClick={() => photoViewer.openPhoto(photo)}
-                          aria-label={`View ${photo.caption} larger`}
+                          aria-label={`${ui(language, "viewPhotoLarger")}: ${photo.caption}`}
                           className="press mt-3 block"
                         >
                           <span className="relative block h-24 w-24">
@@ -647,12 +646,12 @@ function PlantProfile() {
                     </div>
                     <DeleteActionMenu
                       itemLabel="event"
-                      actionLabel="Delete event"
-                      title="Delete this event?"
+                      actionLabel={ui(language, "deleteEvent")}
+                      title={ui(language, "deleteEventQuestion")}
                       description={
                         entry.photos.length
-                          ? `This removes the event from the history. ${entry.photos.length} attached ${entry.photos.length === 1 ? "photo remains" : "photos remain"} as photographic evidence.`
-                          : "This removes the event from the history. Your audit history keeps the correction recorded."
+                          ? `${ui(language, "deleteEventKeepPhotos")} ${entry.photos.length} ${ui(language, "photoEvidence").toLowerCase()}.`
+                          : ui(language, "deleteEventNoPhotos")
                       }
                       onConfirm={() => removeEvent(e, entry.photos.length)}
                     />
@@ -675,12 +674,12 @@ function PlantProfile() {
                     params={{ plantId: plant.id }}
                     className="text-primary hover:underline"
                   >
-                    Make a film
+                    {ui(language, "makeFilm")}
                   </Link>
                 </div>
               }
             >
-              Photographic evidence
+              {ui(language, "photographicEvidence")}
             </SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {orderedPhotos.map((photo) => (
@@ -691,7 +690,7 @@ function PlantProfile() {
                   <button
                     type="button"
                     onClick={() => photoViewer.openPhoto(photo)}
-                    aria-label={`View ${photo.caption} larger`}
+                    aria-label={`${ui(language, "viewPhotoLarger")}: ${photo.caption}`}
                     className="block w-full"
                   >
                     <PhotoImage
@@ -709,12 +708,12 @@ function PlantProfile() {
                       </div>
                       <DeleteActionMenu
                         itemLabel="photo"
-                        actionLabel="Delete photo"
-                        title="Delete this photo?"
+                        actionLabel={ui(language, "deletePhoto")}
+                        title={ui(language, "deletePhotoQuestion")}
                         description={
                           photo.backendEventId
-                            ? "This removes the photo from the gallery. Its related event remains in the history."
-                            : "This removes the photo from the gallery and its exact Storage files."
+                            ? ui(language, "deletePhotoKeepEvent")
+                            : ui(language, "deletePhotoStorage")
                         }
                         onConfirm={() => removePhoto(photo)}
                       />
@@ -728,8 +727,7 @@ function PlantProfile() {
               ))}
             </div>
             <p className="mt-5 max-w-xl text-xs text-muted-foreground">
-              Recorded moments and historical photo evidence appear together here. Each frame keeps
-              its capture date and provenance.
+              {ui(language, "recordedMomentsAndEvidence")}
             </p>
           </div>
         ) : null}
@@ -740,11 +738,11 @@ function PlantProfile() {
             <SectionTitle
               action={
                 <Link to="/care" className="text-primary hover:underline">
-                  Guided session
+                  {ui(language, "guidedSession")}
                 </Link>
               }
             >
-              Open actions
+              {ui(language, "openActions")}
             </SectionTitle>
             <ul className="surface divide-y divide-border/70 overflow-hidden">
               {tasks.length ? (
@@ -759,24 +757,24 @@ function PlantProfile() {
                       <div className="min-w-0">
                         <p className="truncate text-sm">{task.label}</p>
                         <p className="truncate text-xs text-muted-foreground">
-                          {maintenanceLabels[task.type]} · {dueLabel(task.dueInDays)}
+                          {localizedMaintenanceLabel(task.type, language)} · {dueLabel(task.dueInDays)}
                         </p>
                       </div>
                       <button
                         onClick={() => {
                           store.completeTask(task.id);
-                          toast.success(`${task.label} logged`);
+                          toast.success(`${task.label} ${ui(language, "logged")}`);
                         }}
                         className="press inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs text-primary-foreground"
                       >
-                        <Check className="h-3.5 w-3.5" /> Done
+                        <Check className="h-3.5 w-3.5" /> {ui(language, "done")}
                       </button>
                     </li>
                   );
                 })
               ) : (
                 <li className="px-4 py-6 text-center text-sm text-muted-foreground">
-                  Nothing open for {plant.name}.
+                  {ui(language, "nothingOpenFor")} {plant.name}.
                 </li>
               )}
             </ul>
@@ -785,15 +783,14 @@ function PlantProfile() {
               <SectionTitle
                 action={
                   <button onClick={() => openRecord()} className="text-primary hover:underline">
-                    All ways to record
+                    {ui(language, "allWaysToRecord")}
                   </button>
                 }
               >
-                Log something now
+                {ui(language, "logSomethingNow")}
               </SectionTitle>
               <p className="mb-3 text-xs text-muted-foreground">
-                Shortcuts chosen for {plant.name} right now — each one opens the same recording
-                flow.
+                {ui(language, "shortcutsChosenFor")} {plant.name} {ui(language, "eachOpensRecording")}
               </p>
               <div className="flex flex-wrap gap-2">
                 {careShortcuts(plant).map((type) => {
@@ -804,7 +801,7 @@ function PlantProfile() {
                       onClick={() => openRecord("care", type)}
                       className="press inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
                     >
-                      <Icon className="h-4 w-4 text-primary" /> {maintenanceLabels[type]}
+                      <Icon className="h-4 w-4 text-primary" /> {localizedMaintenanceLabel(type, language)}
                     </button>
                   );
                 })}
@@ -813,7 +810,7 @@ function PlantProfile() {
 
             {doneTasks.length ? (
               <div className="mt-8">
-                <SectionTitle>Completed in this session</SectionTitle>
+                <SectionTitle>{ui(language, "completedSession")}</SectionTitle>
                 <ul className="space-y-2">
                   {doneTasks.map((t) => (
                     <li
@@ -858,7 +855,7 @@ function PlantProfile() {
                 catalogError={libraryCatalogError}
                 onConfirm={async (entry) => {
                   await store.confirmPlantLibraryIdentity(plant.id, entry.libraryPlantId);
-                  toast.success("Garden Library identity confirmed.");
+                  toast.success(ui(language, "identityConfirmed"));
                 }}
               />
             ) : null}
@@ -948,8 +945,7 @@ function PlantProfile() {
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <StatusDot status={plant.status} />
               <span className="text-xs text-muted-foreground">
-                Identity {plant.libraryPlantId ? "confirmed by you" : "not confirmed"} · canonical
-                data changes only with your confirmation.
+                {ui(language, "identity")} {plant.libraryPlantId ? ui(language, "identityConfirmedByYou") : ui(language, "identityStatusNotConfirmed")} · {ui(language, "canonicalDataConfirmation")}
               </span>
             </div>
           </div>

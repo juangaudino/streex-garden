@@ -31,8 +31,8 @@ export const Route = createFileRoute("/garden-ai")({
 });
 
 const plantTools = [
-  { to: "/plants/$plantId/check", title: "AI Check", description: "Review the current state of a plant from its latest photo.", icon: ScanLine },
-  { to: "/plants/$plantId/compare", title: "AI Compare", description: "Compare the same plant across two recorded moments.", icon: GitCompareArrows },
+  { to: "/plants/$plantId/check", titleKey: "aiCheckTitle", descriptionKey: "aiCheckDescription", icon: ScanLine },
+  { to: "/plants/$plantId/compare", titleKey: "aiCompareTitle", descriptionKey: "aiCompareDescription", icon: GitCompareArrows },
 ] as const;
 
 function GardenAI() {
@@ -57,13 +57,13 @@ function GardenAI() {
   });
   const suggestions = selected
     ? [
-        ...(selectedTasks.length ? ["What should I do today?"] : []),
-        ...(selectedPhotos.length > 1 ? ["Did it improve since last week?"] : []),
-        ...(selectedEvents.some((event) => event.type === "problem") ? ["Has it ever had a problem?"] : []),
-        ...(selectedEvents.some((event) => event.type === "maintenance") ? ["When did I last care for this plant?"] : []),
-        `What do the records say about ${selected.name}?`,
+        ...(selectedTasks.length ? [ui(language, "suggestionToday")] : []),
+        ...(selectedPhotos.length > 1 ? [ui(language, "suggestionImproved")] : []),
+        ...(selectedEvents.some((event) => event.type === "problem") ? [ui(language, "suggestionProblem")] : []),
+        ...(selectedEvents.some((event) => event.type === "maintenance") ? [ui(language, "suggestionLastCare")] : []),
+        `${ui(language, "suggestionRecords")} ${selected.name}?`,
       ].slice(0, 3)
-    : ["What needs attention today?", "What changed recently?", "Which plants need a closer look?"];
+    : [ui(language, "suggestionAttention"), ui(language, "suggestionChanged"), ui(language, "suggestionCloserLook")];
 
   const openConversation = (question: string) => {
     const prompt = question.trim();
@@ -85,10 +85,10 @@ function GardenAI() {
     <div className="pb-64 lg:pb-52">
       <div className="px-5 pt-6 pb-4 sm:hidden">
         <p className="eyebrow">Garden AI</p>
-        <h1 className="mt-1 font-display text-3xl">{language === "es" ? "Una segunda mirada" : "A second look"}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">{language === "es" ? "Basado en lo que tu jardín ha registrado." : "Grounded in what your garden has recorded."}</p>
+        <h1 className="mt-1 font-display text-3xl">{ui(language, "secondLook")}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{ui(language, "groundedInRecorded")}</p>
       </div>
-      <div className="hidden sm:block"><PageHeader eyebrow="Garden AI" title={language === "es" ? "Una segunda mirada, cuando la necesites" : "A second look, when you need it"} subtitle={language === "es" ? "La IA acompaña lo que observas. Los hechos registrados permanecen separados y tú confirmas cualquier cambio de identidad." : "AI supports what you observe. Recorded facts stay separate, and you confirm any identity change."} /></div>
+      <div className="hidden sm:block"><PageHeader eyebrow="Garden AI" title={ui(language, "secondLookWhenNeeded")} subtitle={ui(language, "aiSupportsObservation")} /></div>
 
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="mb-4 hidden items-center gap-2 sm:flex">
@@ -157,20 +157,20 @@ function GardenAI() {
           <Link to="/identify" search={{ from: "garden-ai" }} className="press surface p-4 sm:p-5">
             <Camera className="h-5 w-5 text-primary" />
             <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{ui(language, "identify")}</h2>
-            <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{language === "es" ? "Identifica una planta a partir de una foto y confírmala tú mismo." : "Identify a plant from a photo, then confirm it yourself."}</p>
+            <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{ui(language, "identifyDescriptionShort")}</p>
           </Link>
           {plantTools.map((tool) => (
             selected ? (
-              <Link key={tool.title} to={tool.to} params={{ plantId: selected.id }} search={{ from: "garden-ai" }} className="press surface p-4 sm:p-5">
+              <Link key={tool.titleKey} to={tool.to} params={{ plantId: selected.id }} search={{ from: "garden-ai" }} className="press surface p-4 sm:p-5">
                 <tool.icon className="h-5 w-5 text-primary" />
-                <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{tool.title}</h2>
-                <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{tool.description}</p>
+                <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{ui(language, tool.titleKey)}</h2>
+                <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{ui(language, tool.descriptionKey)}</p>
               </Link>
             ) : (
-              <div key={tool.title} aria-disabled="true" className="surface p-4 opacity-45 sm:p-5">
+              <div key={tool.titleKey} aria-disabled="true" className="surface p-4 opacity-45 sm:p-5">
                 <tool.icon className="h-5 w-5 text-primary" />
-                <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{tool.title}</h2>
-                <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{tool.description}</p>
+                <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{ui(language, tool.titleKey)}</h2>
+                <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">{ui(language, tool.descriptionKey)}</p>
               </div>
             )
           ))}

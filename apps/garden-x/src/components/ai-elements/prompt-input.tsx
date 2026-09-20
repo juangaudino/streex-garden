@@ -40,6 +40,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 import type { ChatStatus, FileUIPart, SourceDocumentUIPart } from "ai";
 import {
   CornerDownLeftIcon,
@@ -415,7 +416,7 @@ export type PromptInputActionAddAttachmentsProps = ComponentProps<
 };
 
 export const PromptInputActionAddAttachments = ({
-  label = "Add photos or files",
+  label,
   ...props
 }: PromptInputActionAddAttachmentsProps) => {
   const attachments = usePromptInputAttachments();
@@ -430,7 +431,8 @@ export const PromptInputActionAddAttachments = ({
 
   return (
     <DropdownMenuItem {...props} onSelect={handleSelect}>
-      <ImageIcon className="mr-2 size-4" /> {label}
+      <ImageIcon className="mr-2 size-4" />
+      {label ?? ui(preferredLanguage(), "addPhotosFiles")}
     </DropdownMenuItem>
   );
 };
@@ -442,7 +444,7 @@ export type PromptInputActionAddScreenshotProps = ComponentProps<
 };
 
 export const PromptInputActionAddScreenshot = ({
-  label = "Take screenshot",
+  label,
   onSelect,
   ...props
 }: PromptInputActionAddScreenshotProps) => {
@@ -476,7 +478,7 @@ export const PromptInputActionAddScreenshot = ({
   return (
     <DropdownMenuItem {...props} onSelect={handleSelect}>
       <Monitor className="mr-2 size-4" />
-      {label}
+      {label ?? ui(preferredLanguage(), "takeScreenshot")}
     </DropdownMenuItem>
   );
 };
@@ -582,7 +584,7 @@ export const PromptInput = ({
       if (incoming.length && accepted.length === 0) {
         onError?.({
           code: "accept",
-          message: "No files match the accepted types.",
+          message: ui(preferredLanguage(), "filesMatchTypes"),
         });
         return;
       }
@@ -592,7 +594,7 @@ export const PromptInput = ({
       if (accepted.length > 0 && sized.length === 0) {
         onError?.({
           code: "max_file_size",
-          message: "All files exceed the maximum size.",
+          message: ui(preferredLanguage(), "filesTooLarge"),
         });
         return;
       }
@@ -607,7 +609,7 @@ export const PromptInput = ({
         if (typeof capacity === "number" && sized.length > capacity) {
           onError?.({
             code: "max_files",
-            message: "Too many files. Some were not added.",
+            message: ui(preferredLanguage(), "tooManyFiles"),
           });
         }
         const next: (FileUIPart & { id: string })[] = [];
@@ -646,7 +648,7 @@ export const PromptInput = ({
       if (incoming.length && accepted.length === 0) {
         onError?.({
           code: "accept",
-          message: "No files match the accepted types.",
+          message: ui(preferredLanguage(), "filesMatchTypes"),
         });
         return;
       }
@@ -656,7 +658,7 @@ export const PromptInput = ({
       if (accepted.length > 0 && sized.length === 0) {
         onError?.({
           code: "max_file_size",
-          message: "All files exceed the maximum size.",
+          message: ui(preferredLanguage(), "filesTooLarge"),
         });
         return;
       }
@@ -671,7 +673,7 @@ export const PromptInput = ({
       if (typeof capacity === "number" && sized.length > capacity) {
         onError?.({
           code: "max_files",
-          message: "Too many files. Some were not added.",
+            message: ui(preferredLanguage(), "tooManyFiles"),
         });
       }
 
@@ -907,12 +909,12 @@ export const PromptInput = ({
     <>
       <input
         accept={accept}
-        aria-label="Upload files"
+        aria-label={ui(preferredLanguage(), "uploadFiles")}
         className="hidden"
         multiple={multiple}
         onChange={handleChange}
         ref={inputRef}
-        title="Upload files"
+        title={ui(preferredLanguage(), "uploadFiles")}
         type="file"
       />
       <form

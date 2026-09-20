@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { identifyPlant } from "@/lib/garden-backend";
 import {
@@ -109,7 +109,7 @@ function Identify() {
     void loadGardenLibraryCatalog()
       .then(setCatalog)
       .catch((error: unknown) =>
-        setCatalogError(error instanceof Error ? error.message : "Garden Library is unavailable."),
+        setCatalogError(localizeKnownError(error, language, ui(language, "libraryUnavailable"))),
       );
   }, [phase, catalog]);
 
@@ -130,18 +130,17 @@ function Identify() {
         <Link
           to="/garden-ai"
           className="press mt-1 grid h-9 w-9 place-items-center rounded-full border border-border/70 bg-card"
-          aria-label={language === "es" ? "Volver a Garden AI" : "Back to Garden AI"}
+            aria-label={ui(language, "backToGardenAI")}
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
         <div className="min-w-0 pb-6">
-          <p className="eyebrow">{language === "es" ? "Identificación" : "Identification"}</p>
+          <p className="eyebrow">{ui(language, "identification")}</p>
           <h1 className="mt-1.5 font-display text-[1.75rem] leading-tight sm:text-4xl">
-            What is this plant?
+            {ui(language, "whatPlant")}
           </h1>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            A suggestion is only a suggestion. Species and variety become canonical data on your
-            plant only after you confirm.
+            {ui(language, "identificationDescription")}
           </p>
         </div>
       </div>
@@ -160,7 +159,7 @@ function Identify() {
             {photoSrc ? (
               <img
                 src={photoSrc}
-                alt="Plant selected for identification"
+                alt={ui(language, "identification")}
                 className="absolute inset-0 h-full w-full object-cover"
               />
             ) : (
@@ -168,9 +167,9 @@ function Identify() {
                 <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent text-primary">
                   <Camera className="h-5 w-5" />
                 </span>
-                <p className="mt-4 font-display text-xl">{language === "es" ? "Empieza con una foto" : "Start with a photo"}</p>
+                <p className="mt-4 font-display text-xl">{ui(language, "startWithPhoto")}</p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Take one now or choose a clear image from your library.
+                  {ui(language, "chooseClearImage")}
                 </p>
               </div>
             )}
@@ -188,7 +187,7 @@ function Identify() {
             className="mt-4 w-full rounded-full"
           >
             <ImagePlus className="h-4 w-4" />{" "}
-            {photoSrc ? (language === "es" ? "Elegir otra foto" : "Choose another photo") : (language === "es" ? "Tomar o elegir foto" : "Take or choose photo")}
+            {photoSrc ? ui(language, "chooseAnotherPhoto") : ui(language, "takeChoosePhoto")}
           </Button>
           <Button
             type="button"
@@ -210,10 +209,8 @@ function Identify() {
           >
             <ScanLine className="h-4 w-4" />
             {phase === "scanning"
-              ? "Looking…"
-              : phase === "done"
-                ? (language === "es" ? "Identificar de nuevo" : "Identify again")
-                : (language === "es" ? "Identificar esta foto" : "Identify this photo")}
+              ? ui(language, "looking")
+              : phase === "done" ? ui(language, "identifyAgain") : ui(language, "identifyPhoto")}
           </Button>
         </div>
 
@@ -231,8 +228,7 @@ function Identify() {
                 </span>
                 <p className="mt-4 font-display text-xl">
                   {phase === "scanning"
-                    ? "Comparing leaf shape and venation"
-                    : (language === "es" ? "No se confirmó una identidad" : "No identity claimed")}
+                    ? ui(language, "comparingLeaves") : ui(language, "noIdentityClaimed")}
                 </p>
               </div>
             </div>
@@ -240,7 +236,7 @@ function Identify() {
             <div className="rise space-y-4">
               <div className="surface p-5">
                 <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                  <h2 className="min-w-0 font-display text-lg">{language === "es" ? "Coincidencias posibles" : "Possible matches"}</h2>
+                  <h2 className="min-w-0 font-display text-lg">{ui(language, "possibleMatches")}</h2>
                   <ProvenanceTag kind="inferred" confidence="moderate" />
                 </div>
                 <ul className="space-y-2">
@@ -272,19 +268,19 @@ function Identify() {
               </div>
 
               <div className="surface p-5">
-                <SectionTitle>Add to a garden</SectionTitle>
-                <label className="eyebrow block">{language === "es" ? "Ponle un nombre" : "Name it"}</label>
+                <SectionTitle>{ui(language, "addToGarden")}</SectionTitle>
+                <label className="eyebrow block">{ui(language, "nameIt")}</label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-1.5 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
                 />
-                <label className="eyebrow mt-4 block">{language === "es" ? "Identidad de Garden Library" : "Garden Library identity"}</label>
+                <label className="eyebrow mt-4 block">{ui(language, "gardenLibraryIdentityLabel")}</label>
                 {catalogError ? (
                   <p className="mt-1.5 text-sm text-destructive">{catalogError}</p>
                 ) : null}
                 {!catalog ? (
-                  <p className="mt-1.5 text-sm text-muted-foreground">{language === "es" ? "Comprobando Garden Library…" : "Checking Garden Library…"}</p>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{ui(language, "checkingLibrary")}</p>
                 ) : null}
                 {selectedIdentity ? (
                   <div className="mt-1.5 rounded-2xl border border-border/70 bg-accent/35 px-4 py-3 text-sm">
@@ -297,13 +293,13 @@ function Identify() {
                   </div>
                 ) : (
                   <p className="mt-1.5 text-sm text-muted-foreground">
-                    {language === "es" ? "Elige una identidad documentada antes de añadir esta planta." : "Choose a documented Library identity before adding this plant."}
+                    {ui(language, "chooseIdentityBeforeAdd")}
                   </p>
                 )}
                 <input
                   value={libraryQuery}
                   onChange={(event) => setLibraryQuery(event.target.value)}
-                  placeholder={language === "es" ? "Buscar en Garden Library" : "Search Garden Library"}
+                  placeholder={ui(language, "searchLibraryShort")}
                   className="mt-2 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
                 />
                 {libraryQuery && catalog ? (
@@ -326,12 +322,12 @@ function Identify() {
                     ))}
                     {!libraryResults.length ? (
                       <p className="text-sm text-muted-foreground">
-                        {language === "es" ? "No está en Garden Library. Elige la identidad documentada correcta." : "Not found in Garden Library. Choose the correct documented identity."}
+                        {ui(language, "libraryNoMatch")}
                       </p>
                     ) : null}
                   </div>
                 ) : null}
-                <label className="eyebrow mt-4 block">{language === "es" ? "Jardín" : "Garden"}</label>
+                <label className="eyebrow mt-4 block">{ui(language, "gardenLabel")}</label>
                 <div className="mt-1.5 flex flex-wrap gap-2">
                   {store.gardens.map((g) => (
                     <button
@@ -350,11 +346,11 @@ function Identify() {
                 <div className="mt-5 flex items-start gap-2 rounded-2xl border border-fact/25 bg-fact/6 p-4 text-xs leading-relaxed text-muted-foreground">
                   <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-fact" />
                   <span>
-                    Confirming saves{" "}
+                    {ui(language, "confirmingSaves")} {" "}
                     <span className="text-foreground">
                       {chosen.species} “{chosen.variety}”
                     </span>{" "}
-                    as this plant's canonical identity. You can change it later; AI cannot.
+                    {ui(language, "canonicalIdentity")} {ui(language, "canChangeLaterAiCannot")}
                   </span>
                 </div>
 
@@ -373,12 +369,12 @@ function Identify() {
                     );
                     if (!openPosition) {
                       toast.error(
-                        "This garden has no empty position. Free or add a position first.",
+                        ui(language, "noEmptyPosition"),
                       );
                       return;
                     }
                     if (!selectedIdentity) {
-                      toast.error(language === "es" ? "Elige una identidad de Garden Library antes de añadir esta planta." : "Choose a Garden Library identity before adding this plant.");
+                      toast.error(ui(language, "chooseIdentityBeforeAdd"));
                       return;
                     }
                     setSaving(true);
@@ -393,7 +389,7 @@ function Identify() {
                         photo: {
                           src: photoSrc,
                           daysAgo: 0,
-                          caption: "First photo",
+                          caption: ui(language, "firstPhoto"),
                           metrics: sample?.metrics ?? {
                             heightCm: 0,
                             leafCount: 0,
@@ -403,21 +399,21 @@ function Identify() {
                         },
                       })
                       .then((id) => {
-                        toast.success(language === "es" ? "Añadida a tu jardín" : "Added to your garden");
+                      toast.success(ui(language, "addedToGarden"));
                         navigate({ to: "/plants/$plantId", params: { plantId: id } });
                       })
                       .catch((error: unknown) =>
                         toast.error(
                           error instanceof Error
-                            ? error.message
-                            : (language === "es" ? "Garden no pudo guardar esta planta. Inténtalo de nuevo." : "Garden could not save this plant. Try again."),
+                            ? localizeKnownError(error, language, ui(language, "savePlantFailed"))
+                            : ui(language, "savePlantFailed"),
                         ),
                       )
                       .finally(() => setSaving(false));
                   }}
                   className="press mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-sm font-medium text-primary-foreground"
                 >
-                  {saving ? (language === "es" ? "Guardando…" : "Saving…") : (language === "es" ? "Confirmar identidad y añadir" : "Confirm identity and add")}
+                  {saving ? ui(language, "saving") : ui(language, "confirmIdentityAdd")}
                 </button>
               </div>
             </div>

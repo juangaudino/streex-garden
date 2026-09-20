@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { activeGridCells, allGridCells } from "@/lib/custom-system";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -36,6 +37,7 @@ function GardenDetail() {
   const { gardenId } = Route.useParams();
   const { view } = Route.useSearch();
   const store = useGarden();
+  const language = store.language;
   const [adding, setAdding] = useState<{ slot?: string; positionId?: string | undefined } | null>(
     null,
   );
@@ -68,7 +70,7 @@ function GardenDetail() {
           const label = `Pod ${i + 1}`;
           return {
             label,
-            position: { number: i + 1, levelNumber: 1 },
+            position: { number: i + 1, levelNumber: 1, rowNumber: i + 1, columnNumber: 1, gridY: i + 1, gridX: 1 },
             plant: plants.find((p) => p.slot === label),
           };
         })
@@ -112,10 +114,10 @@ function GardenDetail() {
           to="/gardens"
           className="absolute top-5 left-5 inline-flex items-center gap-1 rounded-full bg-black/35 px-3 py-1.5 text-xs text-white backdrop-blur-md"
         >
-          <ChevronLeft className="h-3.5 w-3.5" /> Gardens
+          <ChevronLeft className="h-3.5 w-3.5" /> {ui(language, "gardensTitle")}
         </Link>
         <nav
-          aria-label="Garden view"
+          aria-label={ui(language, "overview")}
           className="absolute top-5 right-5 flex rounded-lg border border-border/50 bg-card/90 p-1 shadow-soft backdrop-blur-md"
         >
           <Button
@@ -131,7 +133,7 @@ function GardenDetail() {
               resetScroll={false}
               aria-current={view === "overview" ? "page" : undefined}
             >
-              <List className="h-3.5 w-3.5" /> Overview
+              <List className="h-3.5 w-3.5" /> {ui(language, "overview")}
             </Link>
           </Button>
           <Button
@@ -147,7 +149,7 @@ function GardenDetail() {
               resetScroll={false}
               aria-current={view === "map" ? "page" : undefined}
             >
-              <LayoutGrid className="h-3.5 w-3.5" /> Map
+              <LayoutGrid className="h-3.5 w-3.5" /> {ui(language, "map")}
             </Link>
           </Button>
         </nav>
@@ -166,7 +168,7 @@ function GardenDetail() {
               search={{ view: "overview" }}
               className="inline-flex items-center gap-2 rounded-full bg-card/15 px-3.5 py-2 text-xs text-primary-foreground ring-1 ring-card/25 backdrop-blur-md"
             >
-              <Film className="h-3.5 w-3.5" /> Garden Growth Film
+            <Film className="h-3.5 w-3.5" /> {ui(language, "gardenGrowthFilm")}
             </Link>
           </div>
         </div>
@@ -178,12 +180,12 @@ function GardenDetail() {
             action={
               garden.machine ? (
                 <span className="numeral text-xs text-muted-foreground">
-                  {occupiedPods} of {garden.machine.pods} occupied
+                  {occupiedPods} / {garden.machine.pods} {ui(language, "occupied")}
                 </span>
               ) : null
             }
           >
-            System map
+            {ui(language, "systemMap")}
           </SectionTitle>
           {pods && garden.machine ? (
             <div className="surface overflow-hidden">
@@ -191,7 +193,7 @@ function GardenDetail() {
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium">{garden.machine.name}</p>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    Physical pod arrangement · front view
+                    {ui(language, "physicalPodArrangement")}
                   </p>
                 </div>
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
@@ -207,7 +209,7 @@ function GardenDetail() {
                   return (
                     <div key={levelNumber}>
                       {podLevels.length > 1 ? (
-                        <p className="eyebrow mb-3">Level {levelNumber}</p>
+                        <p className="eyebrow mb-3">{ui(language, "level")} {levelNumber}</p>
                       ) : null}
                       <div
                         className={cn(
@@ -255,12 +257,12 @@ function GardenDetail() {
                               key={label}
                               type="button"
                               onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
-                              aria-label={`${label} is empty — add a plant here`}
+                              aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
                               className="press grid min-w-0 place-items-center rounded-lg border border-dashed border-border bg-background/45 p-2.5 text-center transition-colors hover:border-primary/50 sm:p-4"
                             >
                               <span className="eyebrow mb-2 block">{label}</span>
                               <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground"><Plus className="h-4 w-4" /></span>
-                              <span className="mt-2 block text-xs text-muted-foreground">Empty · add plant</span>
+                              <span className="mt-2 block text-xs text-muted-foreground">{ui(language, "emptyAddPlant")}</span>
                             </button>
                           );
                         })}
@@ -274,9 +276,9 @@ function GardenDetail() {
             <div className="surface grid min-h-64 place-items-center px-6 text-center">
               <div className="max-w-sm">
                 <LayoutGrid className="mx-auto h-5 w-5 text-muted-foreground" />
-                <h2 className="mt-3 font-display text-xl">No system layout</h2>
+                <h2 className="mt-3 font-display text-xl">{ui(language, "noSystemLayout")}</h2>
                 <p className="mt-1.5 text-sm text-muted-foreground">
-                  This garden does not have a defined physical position map yet.
+                  {ui(language, "noSystemLayoutBody")}
                 </p>
               </div>
             </div>
@@ -293,7 +295,7 @@ function GardenDetail() {
                   </span>
                 }
               >
-                Pod positions
+                {ui(language, "podPositions")}
               </SectionTitle>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
                 {pods.map(({ label, plant, position }) =>
@@ -332,13 +334,13 @@ function GardenDetail() {
                           positionId: "id" in position ? position.id : undefined,
                         })
                       }
-                      aria-label={`${label} is empty — add a plant here`}
+                      aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
                       className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
                     >
                       <div className="text-muted-foreground">
                         <Plus className="mx-auto h-4 w-4" />
                         <p className="mt-1.5 text-xs">{label}</p>
-                        <p className="text-[0.65rem]">Empty · add plant</p>
+                        <p className="text-[0.65rem]">{ui(language, "emptyAddPlant")}</p>
                       </div>
                     </button>
                   ),
@@ -348,7 +350,7 @@ function GardenDetail() {
           ) : null}
 
           <section className="mt-12 px-5 sm:px-8 lg:px-12">
-            <SectionTitle>Plants</SectionTitle>
+            <SectionTitle>{ui(language, "plantsSection")}</SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {plants.map((plant) => (
                 <PlantCard
@@ -370,7 +372,7 @@ function GardenDetail() {
                 >
                   <span className="text-muted-foreground">
                     <Plus className="mx-auto h-4 w-4" />
-                    <span className="mt-1.5 block text-xs">Add plant</span>
+                    <span className="mt-1.5 block text-xs">{ui(language, "addPlant")}</span>
                   </span>
                 </button>
               ) : null}
@@ -381,11 +383,11 @@ function GardenDetail() {
             <SectionTitle
               action={
                 <Link to="/care" className="text-primary hover:underline">
-                  Care session
+                  {ui(language, "careSession")}
                 </Link>
               }
             >
-              Open care in this garden
+              {ui(language, "openCareGarden")}
             </SectionTitle>
             <ul className="surface divide-y divide-border/70 overflow-hidden">
               {tasks.length ? (
@@ -411,7 +413,7 @@ function GardenDetail() {
                 })
               ) : (
                 <li className="px-4 py-6 text-center text-sm text-muted-foreground">
-                  Nothing open here.
+                  {ui(language, "nothingOpenHere")}
                 </li>
               )}
             </ul>

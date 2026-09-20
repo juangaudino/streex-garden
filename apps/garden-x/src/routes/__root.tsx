@@ -52,9 +52,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-xl">This page didn't load</h1>
+        <h1 className="font-display text-xl">{ui(preferredLanguage(), "pageDidntLoad")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          {ui(preferredLanguage(), "genericLoadError")}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -64,13 +64,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            {ui(preferredLanguage(), "tryAgain")}
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-full border border-input bg-background px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
           >
-            Go home
+            {ui(preferredLanguage(), "goHome")}
           </a>
         </div>
       </div>
@@ -192,6 +192,7 @@ function GardenExperience() {
 }
 
 function SignInGate() {
+  const language = preferredLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -200,18 +201,18 @@ function SignInGate() {
     event.preventDefault();
     setBusy(true); setError("");
     void getSupabaseClient().auth.signInWithPassword({ email: email.trim(), password })
-      .then(({ error: authError }) => { if (authError) setError(authError.message); })
+      .then(({ error: authError }) => { if (authError) setError(ui(language, "signInFailed")); })
       .finally(() => setBusy(false));
   };
   return <main className="grid min-h-screen place-items-center bg-background px-5">
     <form onSubmit={submit} className="surface w-full max-w-sm p-6 sm:p-8">
       <p className="eyebrow">Garden X</p>
-      <h1 className="mt-2 font-display text-3xl font-medium">Your garden is waiting.</h1>
-      <p className="mt-2 text-sm text-muted-foreground">Sign in to your private plant history.</p>
-      <label className="mt-6 block text-sm"><span className="mb-2 block text-muted-foreground">Email</span><input type="email" required autoComplete="email" className="input-soft" value={email} onChange={(e) => setEmail(e.target.value)} /></label>
-      <label className="mt-4 block text-sm"><span className="mb-2 block text-muted-foreground">Password</span><input type="password" required autoComplete="current-password" className="input-soft" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+      <h1 className="mt-2 font-display text-3xl font-medium">{ui(language, "gardenWaiting")}</h1>
+      <p className="mt-2 text-sm text-muted-foreground">{ui(language, "signInPrivateHistory")}</p>
+      <label className="mt-6 block text-sm"><span className="mb-2 block text-muted-foreground">{ui(language, "email")}</span><input type="email" required autoComplete="email" className="input-soft" value={email} onChange={(e) => setEmail(e.target.value)} /></label>
+      <label className="mt-4 block text-sm"><span className="mb-2 block text-muted-foreground">{ui(language, "password")}</span><input type="password" required autoComplete="current-password" className="input-soft" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
       {error ? <p className="mt-3 text-xs text-destructive">{error}</p> : null}
-      <Button type="submit" disabled={busy} className="mt-5 w-full rounded-full">{busy ? "Signing in…" : "Sign in"}</Button>
+      <Button type="submit" disabled={busy} className="mt-5 w-full rounded-full">{busy ? ui(language, "signingIn") : ui(language, "signInAction")}</Button>
     </form>
   </main>;
 }

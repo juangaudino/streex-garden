@@ -155,13 +155,15 @@ export function evaluatePlanting(
   candidate: GardenLibraryEntry,
   catalog: GardenLibraryManifest,
   context: PlantingContext,
+  language: "en" | "es" = "en",
 ): PlantingGuidance[] {
   if (!context.neighbors.length) {
     return [
       {
         kind: "insufficient evidence",
-        message:
-          "No occupied physical neighbors yet. Garden will keep evaluating this position as the system fills.",
+        message: language === "es"
+          ? "Todavía no hay vecinos físicos ocupados. Garden seguirá evaluando esta posición mientras se llena el sistema."
+          : "No occupied physical neighbors yet. Garden will keep evaluating this position as the system fills.",
       },
     ];
   }
@@ -174,7 +176,7 @@ export function evaluatePlanting(
         kind: "evidence-backed fit",
         neighborPlantId: neighbor.plant.id,
         sourceId: pair.sourceId,
-        message: `Evidence-backed pairing with ${neighbor.plant.name}: ${pair.label}.`,
+        message: language === "es" ? `Asociación respaldada por evidencia con ${neighbor.plant.name}: ${pair.label}.` : `Evidence-backed pairing with ${neighbor.plant.name}: ${pair.label}.`,
       });
       continue;
     }
@@ -183,14 +185,14 @@ export function evaluatePlanting(
       guidance.push({
         kind: "consideration",
         neighborPlantId: neighbor.plant.id,
-        message: `${candidate.commonName} has a documented spreading or large-footprint trait. Garden has no spacing model for this system, so review the available room near ${neighbor.plant.name}.`,
+        message: language === "es" ? `${candidate.commonName} tiene un rasgo documentado de expansión o gran huella. Garden no tiene un modelo de espaciado para este sistema, así que revisa el espacio disponible cerca de ${neighbor.plant.name}.` : `${candidate.commonName} has a documented spreading or large-footprint trait. Garden has no spacing model for this system, so review the available room near ${neighbor.plant.name}.`,
       });
       continue;
     }
     guidance.push({
       kind: "insufficient evidence",
       neighborPlantId: neighbor.plant.id,
-      message: `Garden has no evidence-backed compatibility rule for ${candidate.commonName} next to ${neighbor.plant.name}.`,
+      message: language === "es" ? `Garden no tiene una regla de compatibilidad respaldada por evidencia para ${candidate.commonName} junto a ${neighbor.plant.name}.` : `Garden has no evidence-backed compatibility rule for ${candidate.commonName} next to ${neighbor.plant.name}.`,
     });
   }
   return guidance;

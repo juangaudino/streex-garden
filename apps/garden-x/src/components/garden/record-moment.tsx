@@ -17,12 +17,13 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { formatDate, gardenCoverPhoto, maintenanceLabels, plantPhotos } from "@/lib/garden-logic";
+import { formatDate, gardenCoverPhoto, plantPhotos } from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Plant } from "@/lib/garden-data";
 import { maintenanceIcons, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { ui } from "@/lib/ui-copy";
 
 export type MomentFlow =
   | "observation"
@@ -51,6 +52,54 @@ const flows: FlowMeta[] = [
   { key: "replace", label: "Replace / reseed", hint: "Start a new record, keep the old story", icon: Repeat },
   { key: "other", label: "Record another state or action", hint: "Anything else worth remembering", icon: Sparkles },
 ];
+
+function flowLabel(key: MomentFlow, language: "en" | "es") {
+  const labels: Record<MomentFlow, [string, string]> = {
+    observation: ["Add an observation", "Añadir una observación"], care: ["Record care or something I did", "Registrar un cuidado o algo que hice"], followup: ["Schedule a follow-up", "Programar un seguimiento"], planting: ["Correct planting information", "Corregir información de plantación"], move: ["Move / relocate", "Mover / trasladar"], close: ["Close cycle", "Cerrar ciclo"], replace: ["Replace / reseed", "Reemplazar / resembrar"], other: ["Record another state or action", "Registrar otro estado o acción"],
+  };
+  return labels[key][language === "es" ? 1 : 0];
+}
+
+function flowHint(key: MomentFlow, language: "en" | "es") {
+  const hints: Record<MomentFlow, [string, string]> = {
+    observation: ["A note, with a photo if you have one", "Una nota, con una foto si la tienes"], care: ["Water, feed, prune, harvest, and more", "Regar, nutrir, podar, cosechar y más"], followup: ["Decide what to review, and when", "Decide qué revisar y cuándo"], planting: ["Fix a setup record that was wrong", "Corrige un registro de configuración incorrecto"], move: ["New garden, system, pod or position", "Nuevo jardín, sistema, pod o posición"], close: ["End this cycle, keep the whole history", "Termina este ciclo y conserva todo el historial"], replace: ["Start a new record, keep the old story", "Inicia un registro nuevo y conserva la historia anterior"], other: ["Anything else worth remembering", "Cualquier otra cosa que valga la pena recordar"],
+  };
+  return hints[key][language === "es" ? 1 : 0];
+}
+
+function localizedMaintenanceLabel(type: MaintenanceType, language: "en" | "es") {
+  const labels: Record<MaintenanceType, [string, string]> = {
+    watering: ["Watering", "Riego"], nutrients: ["Nutrients", "Nutrientes"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], thinning: ["Thinning", "Aclareo"], transplant: ["Transplant", "Trasplante"], cleaning: ["Cleaning", "Limpieza"], pest: ["Pest treatment", "Tratamiento de plagas"], light: ["Light adjustment", "Ajuste de luz"], custom: ["Custom", "Personalizado"],
+  };
+  return labels[type][language === "es" ? 1 : 0];
+}
+
+function localizedFollowUp(value: string, language: "en" | "es") {
+  const es: Record<string, string> = { "Check leaf colour": "Revisar color de las hojas", "Check for pests": "Revisar plagas", "Water level / reservoir": "Nivel de agua / depósito", "Nutrient mix": "Mezcla de nutrientes", "Ready to harvest?": "¿Lista para cosechar?", "Support and staking": "Soporte y tutores" };
+  return language === "es" ? es[value] ?? value : value;
+}
+
+function localizedWhen(days: number, language: "en" | "es") {
+  if (days === 1) return ui(language, "tomorrow");
+  if (days === 3) return ui(language, "inThreeDays");
+  if (days === 7) return ui(language, "inAWeek");
+  return ui(language, "inTwoWeeks");
+}
+
+function localizedOtherState(type: EventType, language: "en" | "es") {
+  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem appeared", "Apareció un problema"], recovery: ["Recovered", "Recuperada"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Something else", "Algo más"] };
+  return labels[type][language === "es" ? 1 : 0];
+}
+
+function localizedCloseReason(value: string, language: "en" | "es") {
+  const labels: Record<string, [string, string]> = {
+    "Harvest complete": ["Harvest complete", "Cosecha completada"],
+    "End of season": ["End of season", "Fin de temporada"],
+    "Plant lost": ["Plant lost", "Planta perdida"],
+    "Making room": ["Making room", "Hacer espacio"],
+  };
+  return labels[value]?.[language === "es" ? 1 : 0] ?? value;
+}
 
 const careTypes: MaintenanceType[] = [
   "watering",
@@ -138,6 +187,7 @@ interface Props {
 
 export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, onRecorded, onClose }: Props) {
   const store = useGarden();
+  const language = store.language;
   const [flow, setFlow] = useState<MomentFlow | null>(initialFlow ?? null);
   const [done, setDone] = useState<{ title: string; lines: string[] } | null>(null);
 
@@ -182,7 +232,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const finish = (title: string, lines: string[]) => {
     setDone({ title, lines });
     if (flow) onRecorded?.(flow);
-    toast.success(`${title} · added to ${plant.name}'s history`);
+    toast.success(`${title} · ${ui(language, "addedToHistoryToast")} ${plant.name}`);
   };
 
   const currentFlow = flows.find((f) => f.key === flow);
@@ -201,7 +251,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
       <button
-        aria-label="Close"
+        aria-label={ui(language, "close")}
         onClick={onClose}
         className="absolute inset-0 bg-ink/45 backdrop-blur-[3px]"
       />
@@ -221,9 +271,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
             </span>
           )}
           <div className="min-w-0">
-            <p className="eyebrow">{plant.name} · day {plant.plantedDaysAgo}</p>
+            <p className="eyebrow">{plant.name} · {language === "es" ? "día" : "day"} {plant.plantedDaysAgo}</p>
             <p className="truncate font-display text-lg">
-              {done ? "Recorded" : (currentFlow?.label ?? "Record a moment")}
+              {done ? ui(language, "recorded") : (currentFlow ? flowLabel(currentFlow.key, language) : ui(language, "recordMoment"))}
             </p>
           </div>
           <button
@@ -243,7 +293,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               </span>
               <h3 className="mt-4 font-display text-2xl">{done.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">
-                Written into {plant.name}'s timeline. Nothing is ever overwritten.
+                {ui(language, "writtenTimeline")}
               </p>
               <ul className="mt-5 space-y-1.5 rounded-3xl border border-border/70 bg-secondary/50 p-4 text-left text-sm text-muted-foreground">
                 {done.lines.map((l) => (
@@ -264,13 +314,13 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   }}
                   className="press rounded-full border border-border/70 px-5 py-3 text-sm"
                 >
-                  Record another moment
+                  {ui(language, "recordAnotherMoment")}
                 </button>
                 <button
                   onClick={onClose}
                   className="press rounded-full bg-primary px-6 py-3 text-sm text-primary-foreground"
                 >
-                  Done
+                  {ui(language, "done")}
                 </button>
               </div>
             </div>
@@ -280,7 +330,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {!done && !flow ? (
             <div className="rise">
               <p className="mb-4 text-sm text-muted-foreground">
-                Everything you record here becomes part of this plant's story.
+                {ui(language, "everythingRecordedStory")}
               </p>
               <ul className="grid gap-2">
                 {flows.map((f) => (
@@ -293,8 +343,8 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                         <f.icon className="h-4 w-4" strokeWidth={1.8} />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-sm font-medium">{f.label}</span>
-                        <span className="block truncate text-xs text-muted-foreground">{f.hint}</span>
+                        <span className="block text-sm font-medium">{flowLabel(f.key, language)}</span>
+                        <span className="block truncate text-xs text-muted-foreground">{flowHint(f.key, language)}</span>
                       </span>
                     </button>
                   </li>
@@ -306,16 +356,17 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {/* ---------------------------------------- observation */}
           {!done && flow === "observation" ? (
             <div className="rise space-y-4">
-              <Field label="What did you notice?">
+              <Field label={ui(language, "whatNoticed")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={4}
-                  placeholder="Lower leaves paler than last week, new growth still tight…"
+                  placeholder={language === "es" ? "Hojas inferiores más pálidas que la semana pasada, brotes nuevos aún cerrados…" : "Lower leaves paler than last week, new growth still tight…"}
                   className="input-soft resize-none"
                 />
               </Field>
               <PhotoAttachment
+                language={language}
                 photo={newPhoto}
                 onPhoto={(src) => {
                   setNewPhoto(src);
@@ -323,7 +374,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                 }}
               />
               {photos.length ? (
-                <Field label="Or use an existing Garden photo">
+                <Field label={ui(language, "useExistingPhoto")}>
                   <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
                     {photos.map((p) => (
                       <button
@@ -346,10 +397,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   </div>
                 </Field>
               ) : null}
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
                 disabled={!note.trim()}
-                label="Save observation"
+                label={ui(language, "saveObservation")}
                 onClick={() => {
                    const attachedPhotoId = saveNewPhoto(note.trim().slice(0, 60) || "Observation photo") ?? photoId;
                   store.addEvent({
@@ -361,10 +412,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     provenance: "recorded",
                      ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
                   });
-                  finish("Observation added", [
-                    formatDate(momentDaysAgo),
+                  finish(ui(language, "observationAdded"), [
+                    formatDate(momentDaysAgo, language),
                     note.trim(),
-                     attachedPhotoId ? "One photo attached as evidence" : "No photo attached",
+                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />
@@ -374,7 +425,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {/* ---------------------------------------- care */}
           {!done && flow === "care" ? (
             <div className="rise space-y-4">
-              <Field label="What did you do?">
+              <Field label={ui(language, "whatDidYouDo")}>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {careTypes.map((t) => {
                     const Icon = maintenanceIcons[t];
@@ -390,40 +441,40 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                         )}
                       >
                         <Icon className="h-4 w-4 text-primary" strokeWidth={1.8} />
-                        <span className="truncate">{maintenanceLabels[t]}</span>
+                        <span className="truncate">{localizedMaintenanceLabel(t, language)}</span>
                       </button>
                     );
                   })}
                 </div>
               </Field>
-              <Field label="Details (optional)">
+              <Field label={ui(language, "detailsOptional")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
-                  placeholder="2 litres, half-strength mix…"
+                  placeholder={language === "es" ? "2 litros, mezcla a media concentración…" : "2 litres, half-strength mix…"}
                   className="input-soft resize-none"
                 />
               </Field>
-              <PhotoAttachment photo={newPhoto} onPhoto={setNewPhoto} />
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <PhotoAttachment language={language} photo={newPhoto} onPhoto={setNewPhoto} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
-                label={`Log ${maintenanceLabels[careType].toLowerCase()}`}
+                label={`${ui(language, "logAction")} ${localizedMaintenanceLabel(careType, language).toLowerCase()}`}
                 onClick={() => {
-                   const attachedPhotoId = saveNewPhoto(`${maintenanceLabels[careType]} · ${plant.name}`);
+                   const attachedPhotoId = saveNewPhoto(`${localizedMaintenanceLabel(careType, language)} · ${plant.name}`);
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
                     type: careEventType(careType),
-                    title: maintenanceLabels[careType],
-                    detail: note.trim() || "Recorded from Record a moment.",
+                    title: localizedMaintenanceLabel(careType, language),
+                    detail: note.trim() || ui(language, "recordedFromMoment"),
                     provenance: "recorded",
                      ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
                   });
-                  finish(`${maintenanceLabels[careType]} logged`, [
+                  finish(`${localizedMaintenanceLabel(careType, language)} ${ui(language, "logged")}`, [
                     formatDate(momentDaysAgo),
-                    note.trim() || "No extra detail",
-                     attachedPhotoId ? "One photo attached" : "No photo attached",
+                    note.trim() || ui(language, "noExtraDetail"),
+                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />
@@ -433,35 +484,35 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {/* ---------------------------------------- follow-up */}
           {!done && flow === "followup" ? (
             <div className="rise space-y-4">
-              <Field label="What should be reviewed?">
+              <Field label={ui(language, "whatReviewed")}>
                 <div className="flex flex-wrap gap-2">
                   {followUps.map((s) => (
                     <Chip key={s} active={subject === s} onClick={() => setSubject(s)}>
-                      {s}
+                      {localizedFollowUp(s, language)}
                     </Chip>
                   ))}
                 </div>
               </Field>
-              <Field label="When?">
+              <Field label={ui(language, "when")}>
                 <div className="flex flex-wrap gap-2">
                   {whenOptions.map((w) => (
                     <Chip key={w.label} active={when === w.days} onClick={() => setWhen(w.days)}>
-                      {w.label}
+                      {localizedWhen(w.days, language)}
                     </Chip>
                   ))}
                 </div>
               </Field>
-              <Field label="Note (optional)">
+              <Field label={ui(language, "noteOptional")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={2}
-                  placeholder="If it hasn't improved, move it closer to the window."
+                  placeholder={language === "es" ? "Si no mejora, acércala a la ventana." : "If it hasn't improved, move it closer to the window."}
                   className="input-soft resize-none"
                 />
               </Field>
               <Submit
-                label="Schedule follow-up"
+                label={ui(language, "scheduleFollowupAction")}
                 onClick={() => {
                   store.addTask({
                     plantId: plant.id,
@@ -478,7 +529,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     detail: `Due ${formatDate(-when)}. ${note.trim()}`.trim(),
                     provenance: "recorded",
                   });
-                  finish("Follow-up scheduled", [subject, `Due ${formatDate(-when)}`]);
+                  finish(ui(language, "followupScheduled"), [localizedFollowUp(subject, language), `${ui(language, "when")} ${formatDate(-when)}`]);
                 }}
               />
             </div>
@@ -488,10 +539,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {!done && flow === "planting" ? (
             <div className="rise space-y-4">
               <p className="text-sm text-muted-foreground">
-                The original record says planted {formatDate(plant.plantedDaysAgo)}. Corrections are kept visible in
-                the timeline — the old entry is never silently replaced.
+                {ui(language, "originalRecordCorrection")} {formatDate(plant.plantedDaysAgo)}. {ui(language, "correctionsStayVisible")}
               </p>
-              <Field label="Actually planted (days ago)">
+              <Field label={ui(language, "actuallyPlanted")}>
                 <input
                   type="number"
                   min={0}
@@ -501,18 +551,18 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                 />
                 <p className="mt-2 text-xs text-muted-foreground">= {formatDate(plantedDays)}</p>
               </Field>
-              <Field label="Why the change?">
+              <Field label={ui(language, "whyChange")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
-                  placeholder="I sowed it a week earlier than I logged."
+                  placeholder={language === "es" ? "Lo sembré una semana antes de lo que registré." : "I sowed it a week earlier than I logged."}
                   className="input-soft resize-none"
                 />
               </Field>
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
-                label="Correct the record"
+                label={ui(language, "correctRecord")}
                 onClick={() => {
                   store.updatePlant(plant.id, { plantedDaysAgo: plantedDays });
                   store.addEvent({
@@ -525,10 +575,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     )}. ${note.trim()}`.trim(),
                     provenance: "recorded",
                   });
-                  finish("Planting record corrected", [
-                    `Now planted ${formatDate(plantedDays)}`,
-                    `Correction recorded ${formatDate(momentDaysAgo)}`,
-                    "Correction visible in the timeline",
+                  finish(ui(language, "plantingRecordCorrected"), [
+                    `${ui(language, "nowPlanted")} ${formatDate(plantedDays)}`,
+                    `${ui(language, "correctionRecorded")} ${formatDate(momentDaysAgo)}`,
+                    ui(language, "correctionVisible"),
                   ]);
                 }}
               />
@@ -538,7 +588,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {/* ---------------------------------------- move */}
           {!done && flow === "move" ? (
             <div className="rise space-y-4">
-              <Field label="Move to">
+              <Field label={ui(language, "moveTo")}>
                 <div className="grid gap-2">
                   {store.gardens.map((g) => (
                     <button
@@ -553,24 +603,24 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                       <span className="min-w-0">
                         <span className="block truncate text-sm">{g.name}</span>
                         <span className="block truncate text-xs text-muted-foreground">
-                          {g.machine ? `${g.machine.name} · ${g.machine.pods} positions` : g.place}
+                          {g.machine ? `${g.machine.name} · ${g.machine.pods} ${ui(language, "positions").toLowerCase()}` : g.place}
                         </span>
                       </span>
                     </button>
                   ))}
                 </div>
               </Field>
-              <Field label="Position / pod">
+              <Field label={ui(language, "positionPod")}>
                 <input
                   value={slot}
                   onChange={(e) => setSlot(e.target.value)}
-                  placeholder="Pod 4"
+                  placeholder={language === "es" ? "Posición 4" : "Position 4"}
                   className="input-soft"
                 />
               </Field>
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
-                label="Record the move"
+                label={ui(language, "recordMove")}
                 onClick={() => {
                   const target = store.gardens.find((g) => g.id === gardenId);
                   store.updatePlant(plant.id, { gardenId, ...(slot.trim() ? { slot: slot.trim() } : {}) });
@@ -583,10 +633,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     milestone: true,
                     provenance: "recorded",
                   });
-                  finish("Move recorded", [
-                    `${target?.name ?? "New garden"}${slot.trim() ? ` · ${slot.trim()}` : ""}`,
+                  finish(ui(language, "moveRecorded"), [
+                    `${target?.name ?? ui(language, "newGarden")}${slot.trim() ? ` · ${slot.trim()}` : ""}`,
                     formatDate(momentDaysAgo),
-                    "Added as a milestone",
+                    ui(language, "addedMilestone"),
                   ]);
                 }}
               />
@@ -597,29 +647,29 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {!done && flow === "close" ? (
             <div className="rise space-y-4">
               <p className="text-sm text-muted-foreground">
-                Closing a cycle ends the active record. Every photo, event and milestone stays exactly where it is.
+                {ui(language, "closeCycleBody")}
               </p>
-              <Field label="Reason">
+              <Field label={ui(language, "reason")}>
                 <div className="flex flex-wrap gap-2">
                   {["Harvest complete", "End of season", "Plant lost", "Making room"].map((r) => (
                     <Chip key={r} active={closeReason === r} onClick={() => setCloseReason(r)}>
-                      {r}
+                      {r === "Harvest complete" ? ui(language, "reasonHarvestComplete") : r === "End of season" ? ui(language, "reasonEndSeason") : r === "Plant lost" ? ui(language, "reasonPlantLost") : ui(language, "reasonMakingRoom")}
                     </Chip>
                   ))}
                 </div>
               </Field>
-              <Field label="Closing note (optional)">
+              <Field label={ui(language, "closingNote")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
-                  placeholder="Four harvests over 96 days. Worth repeating."
+                  placeholder={language === "es" ? "Cuatro cosechas en 96 días. Vale la pena repetirlo." : "Four harvests over 96 days. Worth repeating."}
                   className="input-soft resize-none"
                 />
               </Field>
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
-                label="Close this cycle"
+                label={ui(language, "closeThisCycle")}
                 onClick={() => {
                   store.updatePlant(plant.id, {
                     cycleClosed: true,
@@ -634,7 +684,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     milestone: true,
                     provenance: "recorded",
                   });
-                  finish("Cycle closed", [closeReason, formatDate(momentDaysAgo), `${plant.plantedDaysAgo} days of history preserved`]);
+                  finish(ui(language, "cycleClosed"), [localizedCloseReason(closeReason, language), formatDate(momentDaysAgo), `${plant.plantedDaysAgo} ${ui(language, "days")} ${ui(language, "historyPreserved")}`]);
                 }}
               />
             </div>
@@ -644,9 +694,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {!done && flow === "replace" ? (
             <div className="rise space-y-4">
               <p className="text-sm text-muted-foreground">
-                {plant.name}'s story is kept and closed. A new record starts in the same place, ready to build its own.
+                {ui(language, "replacedStoryBody")}
               </p>
-              <Field label="Name the new plant">
+              <Field label={ui(language, "nameNewPlant")}>
                 <input
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
@@ -654,13 +704,13 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   className="input-soft"
                 />
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Inherits {plant.species} · {plant.variety}
-                  {plant.slot ? ` · ${plant.slot}` : ""} — you can correct it later.
+                  {ui(language, "inherits")} {plant.species} · {plant.variety}
+                  {plant.slot ? ` · ${plant.slot}` : ""} {ui(language, "canCorrectLater")}
                 </p>
               </Field>
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
-                label="Reseed this position"
+                label={ui(language, "reseedPosition")}
                 onClick={() => {
                   const name = newName.trim() || `${plant.name} II`;
                   store.updatePlant(plant.id, { cycleClosed: true, statusNote: "Cycle closed · replaced" });
@@ -687,7 +737,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     identityConfirmed: true,
                     ...(plant.slot ? { slot: plant.slot } : {}),
                   });
-                  finish("Reseeded", [`${name} started ${formatDate(momentDaysAgo)}`, `${plant.name}'s history kept intact`]);
+                  finish(ui(language, "reseeded"), [language === "es" ? `${name} comenzó ${formatDate(momentDaysAgo)}` : `${name} started ${formatDate(momentDaysAgo)}`, language === "es" ? `El historial de ${plant.name} se conserva` : `${plant.name}'s history kept intact`]);
                 }}
               />
             </div>
@@ -696,37 +746,37 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
           {/* ---------------------------------------- other */}
           {!done && flow === "other" ? (
             <div className="rise space-y-4">
-              <Field label="What kind of moment?">
+              <Field label={ui(language, "whatKindMoment")}>
                 <div className="flex flex-wrap gap-2">
                   {otherStates.map((s) => (
                     <Chip key={s.type} active={otherType === s.type} onClick={() => setOtherType(s.type)}>
-                      {s.label}
+                      {localizedOtherState(s.type, language)}
                     </Chip>
                   ))}
                 </div>
               </Field>
-              <Field label="Title">
+              <Field label={ui(language, "title")}>
                 <input
                   value={otherTitle}
                   onChange={(e) => setOtherTitle(e.target.value)}
-                  placeholder="First flower opened"
+                  placeholder={language === "es" ? "Se abrió la primera flor" : "First flower opened"}
                   className="input-soft"
                 />
               </Field>
-              <Field label="Detail (optional)">
+              <Field label={ui(language, "detailOptional")}>
                 <textarea
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={3}
-                  placeholder="Two trusses, both on the sunny side."
+                  placeholder={language === "es" ? "Dos racimos, ambos del lado soleado." : "Two trusses, both on the sunny side."}
                   className="input-soft resize-none"
                 />
               </Field>
-              <PhotoAttachment photo={newPhoto} onPhoto={setNewPhoto} />
-              <MomentDateField value={momentDate} onChange={setMomentDate} />
+              <PhotoAttachment language={language} photo={newPhoto} onPhoto={setNewPhoto} />
+              <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
                 disabled={!otherTitle.trim()}
-                label="Add to history"
+                label={ui(language, "addToHistory")}
                 onClick={() => {
                    const attachedPhotoId = saveNewPhoto(otherTitle.trim());
                   store.addEvent({
@@ -739,11 +789,11 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     provenance: "recorded",
                      ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
                   });
-                  finish("Moment recorded", [
+                  finish(ui(language, "momentRecorded"), [
                     otherTitle.trim(),
                     formatDate(momentDaysAgo),
-                    otherStates.find((s) => s.type === otherType)?.label ?? "Event",
-                     attachedPhotoId ? "One photo attached" : "No photo attached",
+                    localizedOtherState(otherType, language) || ui(language, "eventLabel"),
+                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />
@@ -756,7 +806,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   );
 }
 
-function PhotoAttachment({ photo, onPhoto }: { photo: string | null; onPhoto: (photo: string | null) => void }) {
+function PhotoAttachment({ photo, onPhoto, language }: { photo: string | null; onPhoto: (photo: string | null) => void; language: "en" | "es" }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const pickPhoto = (file: File | undefined) => {
@@ -767,7 +817,7 @@ function PhotoAttachment({ photo, onPhoto }: { photo: string | null; onPhoto: (p
   };
 
   return (
-    <Field label="Add a photo (optional)">
+    <Field label={ui(language, "addPhotoOptional")}>
       <input
         ref={fileRef}
         type="file"
@@ -780,7 +830,7 @@ function PhotoAttachment({ photo, onPhoto }: { photo: string | null; onPhoto: (p
       />
       <div className="flex items-center gap-3">
         {photo ? (
-          <img src={photo} alt="New moment" className="h-20 w-20 rounded-2xl object-cover" />
+          <img src={photo} alt={ui(language, "newMomentImage")} className="h-20 w-20 rounded-2xl object-cover" />
         ) : (
           <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-dashed border-border bg-secondary/50 text-muted-foreground">
             <Camera className="h-4 w-4" />
@@ -788,11 +838,11 @@ function PhotoAttachment({ photo, onPhoto }: { photo: string | null; onPhoto: (p
         )}
         <div className="flex min-w-0 flex-wrap gap-2">
           <Button type="button" variant="outline" className="rounded-full" onClick={() => fileRef.current?.click()}>
-            {photo ? "Choose another photo" : "Add a photo"}
+            {photo ? ui(language, "chooseAnotherPhoto") : ui(language, "addPhoto")}
           </Button>
           {photo ? (
             <Button type="button" variant="ghost" className="rounded-full text-muted-foreground" onClick={() => onPhoto(null)}>
-              Remove
+              {ui(language, "removePhoto")}
             </Button>
           ) : null}
         </div>
@@ -801,20 +851,20 @@ function PhotoAttachment({ photo, onPhoto }: { photo: string | null; onPhoto: (p
   );
 }
 
-function MomentDateField({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+function MomentDateField({ value, onChange, language }: { value: string; onChange: (value: string) => void; language: "en" | "es" }) {
   const isToday = value === todayInputValue();
   return (
     <div className="flex items-center justify-between gap-3 border-t border-border/50 pt-3">
-      <span className="text-xs text-muted-foreground">When?</span>
+      <span className="text-xs text-muted-foreground">{ui(language, "when")}</span>
       <label className="flex items-center gap-2 text-xs">
-        <span className="text-muted-foreground">{isToday ? "Today" : "Earlier date"}</span>
+        <span className="text-muted-foreground">{isToday ? ui(language, "today") : ui(language, "earlierDate")}</span>
         <input
           type="date"
           value={value}
           max={todayInputValue()}
           onChange={(event) => onChange(event.target.value)}
           className="rounded-full border border-border/70 bg-background px-3 py-1.5 text-xs outline-none focus:ring-2 focus:ring-ring/40"
-          aria-label="When this moment happened"
+          aria-label={ui(language, "when")}
         />
       </label>
     </div>

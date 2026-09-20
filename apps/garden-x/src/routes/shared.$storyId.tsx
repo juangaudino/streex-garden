@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useGarden } from "@/lib/garden-store";
 import { loadPublicPlantStory } from "@/lib/garden-backend";
 import type { PublicStory } from "@/lib/public-story";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/shared/$storyId")({
   head: () => ({
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/shared/$storyId")({
 
 function SharedStoryPage() {
   const { storyId } = Route.useParams();
-  const { publicStories } = useGarden();
+  const { publicStories, language } = useGarden();
   const localStory = publicStories.find((item) => item.id === storyId);
   const [remoteStory, setRemoteStory] = useState<PublicStory | null>(null);
   const [loading, setLoading] = useState(!localStory);
@@ -45,9 +46,9 @@ function SharedStoryPage() {
       <main className="grid min-h-screen place-items-center bg-background px-5 text-center">
         <div className="max-w-sm">
           <Leaf className="mx-auto h-7 w-7 text-primary" strokeWidth={1.5} />
-          <h1 className="mt-5 font-display text-3xl font-light">This story isn't available</h1>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">This story may have been revoked or is no longer available.</p>
-          <Button asChild variant="outline" className="mt-6 rounded-full"><Link to="/">Return to Garden</Link></Button>
+          <h1 className="mt-5 font-display text-3xl font-light">{ui(language, "storyUnavailable")}</h1>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{ui(language, "storyUnavailableBody")}</p>
+          <Button asChild variant="outline" className="mt-6 rounded-full"><Link to="/">{ui(language, "returnToGarden")}</Link></Button>
         </div>
       </main>
     );
@@ -57,7 +58,7 @@ function SharedStoryPage() {
     <div className="relative">
       <PublicStoryView story={story} />
       <div className="fixed inset-x-0 bottom-5 z-30 flex justify-center px-5">
-        <Button className="rounded-full shadow-lift" onClick={() => { void navigator.clipboard.writeText(window.location.href); toast.success("Public story link copied"); } }><Copy /> Copy story link</Button>
+        <Button className="rounded-full shadow-lift" onClick={() => { void navigator.clipboard.writeText(window.location.href); toast.success(ui(language, "publicStoryLinkCopied")); } }><Copy /> {ui(language, "copyStoryLink")}</Button>
       </div>
     </div>
   );

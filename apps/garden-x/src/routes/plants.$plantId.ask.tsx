@@ -4,6 +4,7 @@ import { ChevronLeft, Send, Sparkles } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import { askGarden, askSuggestions, plantEvents, plantPhotos, type AskAnswer } from "@/lib/garden-logic";
 import { ProvenanceTag } from "@/components/garden/atoms";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/plants/$plantId/ask")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -31,6 +32,7 @@ function Ask() {
   const { plantId } = Route.useParams();
   const { from, prompt } = Route.useSearch();
   const store = useGarden();
+  const language = store.language;
   const plant = store.plants.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
@@ -48,7 +50,7 @@ function Ask() {
       events: store.events,
       photos: store.photos,
       tasks: store.tasks,
-    });
+    }, language);
     window.setTimeout(() => {
       setThread((t) => [...t, answer]);
       setThinking(false);
@@ -69,18 +71,18 @@ function Ask() {
       {/* compact header */}
       <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
-          <Link to="/garden-ai" className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label="Back to Garden AI">
+          <Link to="/garden-ai" className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         ) : (
-          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`Back to ${plant.name}`}>
+          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`${ui(language, "backToPlant")}: ${plant.name}`}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         )}
         <div className="min-w-0">
           <p className="truncate text-sm font-medium">Ask Garden · {plant.name}</p>
           <p className="numeral truncate text-[0.7rem] text-muted-foreground">
-            {events.length} events · {photos.length} photos in context
+            {events.length} {ui(language, "eventsInContext")} · {photos.length} {ui(language, "photosInContext")}
           </p>
         </div>
         <Sparkles className="h-4 w-4 shrink-0 text-primary" />
@@ -89,10 +91,9 @@ function Ask() {
       <div className="mx-auto w-full max-w-3xl flex-1 px-5 py-8 sm:px-8">
         {thread.length === 0 && !thinking ? (
           <div className="rise">
-            <h1 className="font-display text-3xl">What do you want to know about {plant.name}?</h1>
+            <h1 className="font-display text-3xl">{ui(language, "askPlantQuestion")} {plant.name}?</h1>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              I read {plant.name}'s recorded events, maintenance, photos and past problems. Anything I cannot
-              ground in that record, I mark as inference.
+              {ui(language, "askPlantDescription")}
             </p>
           </div>
         ) : null}
@@ -132,7 +133,7 @@ function Ask() {
           ))}
           {thinking ? (
             <div className="surface flex items-center gap-3 p-5 text-sm text-muted-foreground">
-              <Sparkles className="breathe h-4 w-4 text-primary" /> Reading the record…
+              <Sparkles className="breathe h-4 w-4 text-primary" /> {ui(language, "readingRecordShort")}
             </div>
           ) : null}
         </div>
@@ -142,7 +143,7 @@ function Ask() {
       <div className="sticky bottom-0 border-t border-border/70 bg-background/90 px-4 pt-3 pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl">
           <div className="no-scrollbar mb-2.5 flex gap-2 overflow-x-auto">
-            {askSuggestions.map((s) => (
+            {askSuggestions(language).map((s) => (
               <button
                 key={s}
                 onClick={() => send(s)}
@@ -162,13 +163,13 @@ function Ask() {
             <input
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
-              placeholder={`Ask about ${plant.name}…`}
+              placeholder={`${ui(language, "askAbout")} ${plant.name}…`}
               className="min-w-0 rounded-full border border-input bg-card px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
             />
             <button
               type="submit"
               className="press grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground"
-              aria-label="Send question"
+              aria-label={ui(language, "sendQuestion")}
             >
               <Send className="h-4 w-4" />
             </button>

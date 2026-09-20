@@ -62,7 +62,7 @@ function GardenWideAsk() {
       })
       .catch(() => {
         // Deterministic Garden logic remains the safe fallback if AI is temporarily unavailable.
-        setThread((current) => [...current, askWholeGarden(clean, store)]);
+        setThread((current) => [...current, askWholeGarden(clean, store, language)]);
       })
       .finally(() => setThinking(false));
   };
@@ -76,7 +76,7 @@ function GardenWideAsk() {
   return (
     <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] flex-col lg:h-screen">
       <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
-        <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={language === "es" ? "Volver a Garden AI" : "Back to Garden AI"}>
+        <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
           <ChevronLeft className="h-4 w-4" />
         </Link>
         <div className="min-w-0">
@@ -124,7 +124,7 @@ function GardenWideAsk() {
       <div className="border-t border-border/70 bg-background/90 px-4 pt-3 pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl">
           <div className="no-scrollbar mb-2.5 flex gap-2 overflow-x-auto">
-            {[ui(language, "whatNeedsAttention"), ui(language, "whatChangedRecently"), ...askSuggestions.slice(4)].map((suggestion) => (
+            {[ui(language, "whatNeedsAttention"), ui(language, "whatChangedRecently"), ...askSuggestions(language).slice(4)].map((suggestion) => (
               <button key={suggestion} type="button" onClick={() => send(suggestion)} className="press shrink-0 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{suggestion}</button>
             ))}
           </div>

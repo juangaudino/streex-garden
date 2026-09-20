@@ -31,7 +31,7 @@ function GardenLibrary() {
     <div className="rise pb-20">
       <PageHeader
         eyebrow={ui(language, "library")}
-        title={language === "es" ? "Garden Library" : "Garden Library"}
+        title="Garden Library"
         subtitle={ui(language, "gardenLibrarySubtitle")}
       />
       <div className="px-5 sm:px-8 lg:px-12">
@@ -43,9 +43,7 @@ function GardenLibrary() {
               </span>
               <p className="mt-4 font-display text-2xl">{ui(language, "fullCatalogComing")}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {language === "es"
-                  ? "Por ahora, cada perfil de planta mantiene su referencia breve y confiable junto a su historial vivo."
-                  : "For now, each plant profile keeps its concise, trusted reference close to the living record."}
+                {ui(language, "libraryPlaceholderBody")}
               </p>
               <Sprout className="mx-auto mt-6 h-4 w-4 text-moss" />
             </div>
@@ -55,9 +53,7 @@ function GardenLibrary() {
               <p className="eyebrow">{ui(language, "gardenLabs")}</p>
               <h2 className="mt-2 font-display text-2xl">{ui(language, "exploreGardenLibrary")}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {language === "es"
-                  ? "Explora la versión experimental de Garden Library, con su conocimiento público completo y sus fuentes."
-                  : "Explore the experimental version of Garden Library, with its complete public plant knowledge and sources."}
+                {ui(language, "gardenLabsBody")}
               </p>
             </div>
             <Link

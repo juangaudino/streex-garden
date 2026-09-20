@@ -13,7 +13,7 @@ import {
   type CustomSystemLevel,
 } from "@/lib/custom-system";
 import { useGarden } from "@/lib/garden-store";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -24,7 +24,7 @@ const initialLevels: CustomSystemLevel[] = [{ rows: 2, columns: 3, activeCells: 
 function readFile(file: File) {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
-    reader.onerror = () => reject(new Error("System photo could not be read."));
+    reader.onerror = () => reject(new Error("PHOTO_READ_ERROR"));
     reader.onload = () => resolve(String(reader.result));
     reader.readAsDataURL(file);
   });
@@ -70,12 +70,12 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
     setCreating(true);
     try {
       const result = await store.createCustomSystem({ name: name.trim(), levels, photoDataUrl: photo });
-      toast.success(language === "es" ? "Tu sistema está listo. Añade tu primera planta." : "Your system is ready. Add your first plant.");
-      if (result.photoWarning) toast.warning(result.photoWarning);
+      toast.success(ui(language, "systemReadyAddPlant"));
+      if (result.photoWarning) toast.warning(localizeKnownError(new Error(result.photoWarning), language, ui(language, "photoStorageWarning")));
       close(false);
       await navigate({ to: "/gardens/$gardenId", params: { gardenId: result.gardenId }, search: { view: "map" } });
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : ui(language, "layoutUpdateFailed"));
+      toast.error(localizeKnownError(error, language, ui(language, "layoutUpdateFailed")));
     } finally {
       setCreating(false);
     }
@@ -87,7 +87,7 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
         <DialogHeader className="text-left">
           <div className="flex items-center gap-2">
             {step > 0 ? (
-              <button type="button" aria-label="Back" onClick={() => setStep((current) => current - 1)} className="press grid h-7 w-7 place-items-center rounded-full bg-secondary text-muted-foreground">
+              <button type="button" aria-label={ui(language, "back")} onClick={() => setStep((current) => current - 1)} className="press grid h-7 w-7 place-items-center rounded-full bg-secondary text-muted-foreground">
                 <ArrowLeft className="h-3.5 w-3.5" />
               </button>
             ) : <span className="grid h-7 w-7 place-items-center rounded-full bg-secondary text-primary"><Layers className="h-3.5 w-3.5" /></span>}
@@ -104,16 +104,16 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
         {step === 0 ? (
           <div className="grid gap-4">
             <label className="text-sm"><span className="mb-2 block text-muted-foreground">{ui(language, "systemName")}</span>
-              <input className="input-soft" value={name} onChange={(event) => setName(event.target.value)} placeholder="Kitchen grow shelf" autoFocus />
+              <input className="input-soft" value={name} onChange={(event) => setName(event.target.value)} placeholder={ui(language, "systemNamePlaceholder")} autoFocus />
             </label>
             <label className="press grid cursor-pointer place-items-center overflow-hidden rounded-2xl border border-dashed border-border bg-secondary/35 p-4 text-center">
               {photo ? <img src={photo} alt={ui(language, "systemPhoto")} className="h-28 w-full rounded-xl object-cover" /> : <><ImagePlus className="h-5 w-5 text-primary" /><span className="mt-2 text-sm">{ui(language, "systemPhoto")}</span><span className="mt-1 text-xs text-muted-foreground">{ui(language, "optional")}</span></>}
               <input className="sr-only" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" onChange={(event) => {
                 const file = event.target.files?.[0];
-                if (file) void readFile(file).then(setPhoto).catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Photo could not be read."));
+                if (file) void readFile(file).then(setPhoto).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "photoCouldNotRead"))));
               }} />
             </label>
-            {photo ? <Button variant="ghost" size="sm" className="justify-self-start rounded-full" onClick={() => setPhoto(null)}>{ui(language, "remove")} photo</Button> : null}
+            {photo ? <Button variant="ghost" size="sm" className="justify-self-start rounded-full" onClick={() => setPhoto(null)}>{ui(language, "remove")} {ui(language, "photo").toLowerCase()}</Button> : null}
             <Button className="rounded-full" disabled={!name.trim()} onClick={() => setStep(1)}>{ui(language, "continueAction")}</Button>
           </div>
         ) : null}
@@ -142,7 +142,7 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
               const nextCells = exists ? active.filter((cell) => cell.row !== row || cell.column !== column) : [...active, { row, column }];
               return { ...level, activeCells: nextCells };
             }))} />
-            {total > maxCustomSystemPositions ? <p className="text-sm text-clay">A custom system can have up to {maxCustomSystemPositions} positions.</p> : null}
+            {total > maxCustomSystemPositions ? <p className="text-sm text-clay">{ui(language, "maxPositions")}</p> : null}
             <Button className="rounded-full" disabled={!canCreateCustomSystem(levels)} onClick={() => setStep(2)}>{ui(language, "reviewLayout")}</Button>
           </div>
         ) : null}

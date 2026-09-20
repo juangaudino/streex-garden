@@ -22,8 +22,9 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
-import { statusMeta, type Confidence } from "@/lib/garden-logic";
+import { localizedStatusLabel, statusMeta, type Confidence } from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Photo, Plant, PlantStatus } from "@/lib/garden-data";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 
 export const eventIcons: Record<EventType, typeof Leaf> = {
   planted: Sprout,
@@ -59,7 +60,7 @@ export function StatusDot({ status, className }: { status: PlantStatus; classNam
   return (
     <span className={cn("inline-flex items-center gap-1.5 text-xs", statusMeta[status].tone, className)}>
       <span className={cn("h-1.5 w-1.5 rounded-full", statusMeta[status].dot)} />
-      {statusMeta[status].label}
+      {localizedStatusLabel(status)}
     </span>
   );
 }
@@ -72,11 +73,12 @@ export function ProvenanceTag({
   kind: "recorded" | "observed" | "inferred" | "recommendation";
   confidence?: Confidence;
 }) {
+  const language = preferredLanguage();
   const map = {
-    recorded: { label: "Recorded fact", cls: "border-fact/30 bg-fact/8 text-fact" },
-    observed: { label: "Visual observation", cls: "border-observation/30 bg-observation/8 text-observation" },
-    inferred: { label: "Inference", cls: "border-inference/40 bg-inference/10 text-inference" },
-    recommendation: { label: "Recommendation", cls: "border-advice/30 bg-advice/8 text-advice" },
+    recorded: { label: language === "es" ? "Hecho registrado" : "Recorded fact", cls: "border-fact/30 bg-fact/8 text-fact" },
+    observed: { label: language === "es" ? "Observación visual" : "Visual observation", cls: "border-observation/30 bg-observation/8 text-observation" },
+    inferred: { label: language === "es" ? "Inferencia" : "Inference", cls: "border-inference/40 bg-inference/10 text-inference" },
+    recommendation: { label: language === "es" ? "Recomendación" : "Recommendation", cls: "border-advice/30 bg-advice/8 text-advice" },
   }[kind];
 
   return (
@@ -87,18 +89,19 @@ export function ProvenanceTag({
       )}
     >
       {map.label}
-      {confidence ? <span className="opacity-70">· {confidence}</span> : null}
+      {confidence ? <span className="opacity-70">· {ui(language, confidence === "high" ? "confidenceHigh" : confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</span> : null}
     </span>
   );
 }
 
 export function ConfidenceBar({ confidence }: { confidence: Confidence }) {
+  const language = preferredLanguage();
   const pct = confidence === "high" ? 86 : confidence === "moderate" ? 58 : 27;
   return (
     <div className="min-w-0">
       <div className="flex items-baseline justify-between gap-3">
-        <span className="eyebrow">Confidence</span>
-        <span className="numeral text-sm capitalize">{confidence}</span>
+        <span className="eyebrow">{ui(language, "confidence")}</span>
+        <span className="numeral text-sm capitalize">{ui(language, confidence === "high" ? "confidenceHigh" : confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</span>
       </div>
       <div className="mt-2 h-1 overflow-hidden rounded-full bg-border">
         <div
@@ -107,7 +110,7 @@ export function ConfidenceBar({ confidence }: { confidence: Confidence }) {
         />
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
-        Derived from image signal quality and how much recorded history backs it.
+        {language === "es" ? "Derivado de la calidad de la imagen y del respaldo del historial registrado." : "Derived from image signal quality and how much recorded history backs it."}
       </p>
     </div>
   );

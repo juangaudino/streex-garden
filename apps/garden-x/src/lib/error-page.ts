@@ -3,7 +3,7 @@ export function renderErrorPage(): string {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>This page didn't load</title>
+    <title data-en="This page didn't load" data-es="Esta página no cargó">This page didn't load</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body { font: 15px/1.5 system-ui, -apple-system, sans-serif; background: #fafafa; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1.5rem; }
@@ -18,13 +18,21 @@ export function renderErrorPage(): string {
   </head>
   <body>
     <div class="card">
-      <h1>This page didn't load</h1>
-      <p>Something went wrong on our end. You can try refreshing or head back home.</p>
+      <h1 data-en="This page didn't load" data-es="Esta página no cargó">This page didn't load</h1>
+      <p data-en="Something went wrong on our end. You can try refreshing or head back home." data-es="Algo salió mal. Puedes actualizar o volver al inicio.">Something went wrong on our end. You can try refreshing or head back home.</p>
       <div class="actions">
-        <button class="primary" onclick="location.reload()">Try again</button>
-        <a class="secondary" href="/">Go home</a>
+        <button class="primary" onclick="location.reload()" data-en="Try again" data-es="Intentar de nuevo">Try again</button>
+        <a class="secondary" href="/" data-en="Go home" data-es="Ir al inicio">Go home</a>
       </div>
     </div>
   </body>
+  <script>
+    try {
+      var preferences = JSON.parse(localStorage.getItem('garden-x-preferences') || '{}');
+      var language = preferences.language === 'es' ? 'es' : 'en';
+      document.documentElement.lang = language;
+      document.querySelectorAll('[data-en][data-es]').forEach(function (node) { node.textContent = node.getAttribute('data-' + language) || node.textContent; });
+    } catch (_) {}
+  </script>
 </html>`;
 }

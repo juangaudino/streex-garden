@@ -8,6 +8,7 @@ import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/plants/$plantId/check")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -37,6 +38,7 @@ function Check_() {
   const { plantId } = Route.useParams();
   const { from } = Route.useSearch();
   const store = useGarden();
+  const language = store.language;
   const plant = store.plants.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
@@ -47,7 +49,7 @@ function Check_() {
   const [saved, setSaved] = useState(false);
   const [aiResult, setAiResult] = useState<AnalysisResult | null>(null);
   const photo = store.photos.find((p) => p.id === selected)!;
-  const fallbackResult = analysePhoto(plant, photo, events);
+  const fallbackResult = analysePhoto(plant, photo, events, language);
   const result = aiResult ?? fallbackResult;
 
   const run = () => {
@@ -65,11 +67,11 @@ function Check_() {
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
         const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations : [];
         const findings: AnalysisResult["findings"] = [
-          ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? "Visible state" : "Observation", body })),
-          ...uncertainty.map((body) => ({ kind: "inference" as const, title: "Uncertainty", body, confidence })),
-          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: String(item.kind ?? "Next step"), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
+          ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? ui(language, "visibleState") : ui(language, "observation"), body })),
+          ...uncertainty.map((body) => ({ kind: "inference" as const, title: ui(language, "uncertainty"), body, confidence })),
+          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: String(item.kind ?? ui(language, "nextStep")), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
         ];
-        setAiResult({ headline: String(proposal.summary ?? "Garden AI check"), confidence, findings, grounding: [`Photo · ${formatDate(photo.daysAgo)}`, `${events.length} recorded events`] });
+        setAiResult({ headline: String(proposal.summary ?? ui(language, "gardenAiCheckResult")), confidence, findings, grounding: [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`] });
       })
       .catch(() => setAiResult(fallbackResult))
       .finally(() => setPhase("done"));
@@ -79,16 +81,16 @@ function Check_() {
     <div className="rise pb-20">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 px-5 pt-7 pb-5 sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
-          <Link to="/garden-ai" className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label="Back to Garden AI">
+          <Link to="/garden-ai" className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         ) : (
-          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`Back to ${plant.name}`}>
+          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`${ui(language, "backToPlant")}: ${plant.name}`}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         )}
         <div className="min-w-0">
-          <p className="eyebrow">AI check</p>
+          <p className="eyebrow">{ui(language, "aiCheck")}</p>
           <h1 className="truncate font-display text-2xl">{plant.name}</h1>
         </div>
       </div>
@@ -103,13 +105,13 @@ function Check_() {
                 <div className="absolute inset-0 bg-primary/10" />
                 <div className="scan-sweep absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/55 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 bg-black/45 px-4 py-3 text-xs text-white backdrop-blur-md">
-                  Reading colour, density and leaf edges…
+                  {ui(language, "readingImage")}
                 </div>
               </>
             ) : null}
             {phase === "done" ? (
               <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-black/45 px-4 py-3 text-xs text-white backdrop-blur-md">
-                <Sparkles className="h-3.5 w-3.5" /> Analysis refined against {events.length} recorded events
+                <Sparkles className="h-3.5 w-3.5" /> {ui(language, "analysisRefinedAgainst")} {events.length} {ui(language, "recordedEvents")}
               </div>
             ) : null}
           </div>
@@ -142,7 +144,7 @@ function Check_() {
             className="press mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-sm font-medium text-primary-foreground disabled:opacity-70"
           >
             <ScanLine className="h-4 w-4" />
-            {phase === "idle" ? "Analyse this photo" : phase === "scanning" ? "Analysing…" : "Analyse again"}
+            {phase === "idle" ? ui(language, "analysePhoto") : phase === "scanning" ? ui(language, "analysing") : ui(language, "analyseAgain")}
           </button>
         </div>
 
@@ -155,19 +157,17 @@ function Check_() {
                   <Sparkles className="h-5 w-5" />
                 </span>
                 <p className="mt-4 font-display text-xl">
-                  {phase === "scanning" ? "Refining the reading" : "Nothing claimed yet"}
+                  {phase === "scanning" ? ui(language, "refiningReading") : ui(language, "nothingClaimed")}
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {phase === "scanning"
-                    ? "First the image, then the history. Observations are separated from guesses."
-                    : "Pick a photo and run the check. Results are split into what is visible, what it might mean, and what to do."}
+                  {phase === "scanning" ? ui(language, "checkScanningInstruction") : ui(language, "checkInstruction")}
                 </p>
               </div>
             </div>
           ) : (
             <div className="rise space-y-4">
               <div className="surface p-5">
-                <p className="eyebrow">Headline</p>
+                <p className="eyebrow">{ui(language, "headline")}</p>
                 <p className="mt-1.5 font-display text-2xl">{result.headline}</p>
                 <div className="mt-4">
                   <ConfidenceBar confidence={result.confidence} />
@@ -177,8 +177,7 @@ function Check_() {
               {(["observed", "inference", "recommendation"] as const).map((kind) => {
                 const items = result.findings.filter((f) => f.kind === kind);
                 if (!items.length) return null;
-                const heading =
-                  kind === "observed" ? "Observed" : kind === "inference" ? "Possible explanation" : "Recommended action";
+                  const heading = kind === "observed" ? ui(language, "observed") : kind === "inference" ? ui(language, "possibleMeaning") : ui(language, "recommendations");
                 return (
                   <div key={kind} className="surface p-5">
                     <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
@@ -191,7 +190,7 @@ function Check_() {
                           <p className="text-sm font-medium">{f.title}</p>
                           <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                           {f.confidence ? (
-                            <p className="mt-1 text-xs text-inference capitalize">Confidence: {f.confidence}</p>
+                    <p className="mt-1 text-xs text-inference capitalize">{ui(language, "confidence")}: {f.confidence}</p>
                           ) : null}
                         </li>
                       ))}
@@ -201,15 +200,14 @@ function Check_() {
               })}
 
               <div className="surface p-5">
-                <p className="eyebrow">What this reading is grounded in</p>
+                <p className="eyebrow">{ui(language, "groundedIn")}</p>
                 <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
                   {result.grounding.map((g) => (
                     <li key={g}>· {g}</li>
                   ))}
                 </ul>
                 <p className="mt-4 text-xs text-muted-foreground">
-                  Saving stores the analysis as its own timeline event. It does not change {plant.name}'s identity,
-                  species, or status.
+                  {ui(language, "savingDoesNotChange")}
                 </p>
                 <button
                   onClick={() => {
@@ -224,12 +222,12 @@ function Check_() {
                       provenance: "inferred",
                     });
                     setSaved(true);
-                    toast.success("Analysis saved to the timeline");
+                    toast.success(ui(language, "analysisSaved"));
                   }}
                   disabled={saved}
                   className="press mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm disabled:opacity-60"
                 >
-                  <Check className="h-4 w-4 text-primary" /> {saved ? "Saved to timeline" : "Save to timeline"}
+                  <Check className="h-4 w-4 text-primary" /> {saved ? ui(language, "savedTimeline") : ui(language, "saveTimeline")}
                 </button>
               </div>
             </div>
@@ -238,7 +236,7 @@ function Check_() {
       </div>
 
       <div className="mt-10 px-5 sm:px-8 lg:px-12">
-        <SectionTitle>Keep going</SectionTitle>
+        <SectionTitle>{ui(language, "keepGoing")}</SectionTitle>
         <div className="flex flex-wrap gap-2">
           <Link
             to="/plants/$plantId/compare"
@@ -246,7 +244,7 @@ function Check_() {
             search={{ from }}
             className="press rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm"
           >
-            Compare two dates
+            {ui(language, "compareDates")}
           </Link>
           <Link
             to="/plants/$plantId/ask"
@@ -254,7 +252,7 @@ function Check_() {
             search={{ from, prompt: undefined }}
             className="press rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm"
           >
-            Ask about {plant.name}
+            {ui(language, "askAbout")} {plant.name}
           </Link>
         </div>
       </div>

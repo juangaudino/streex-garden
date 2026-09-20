@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import type { Photo, Plant, PlantEvent } from "@/lib/garden-data";
-import { chronological, eventLabels, formatDate } from "@/lib/garden-logic";
+import { chronological, formatDate, localizedEventLabel } from "@/lib/garden-logic";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import { PublicStoryView } from "@/components/garden/public-story";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import { PhotoImage } from "@/components/garden/photo-image";
 import { useGarden } from "@/lib/garden-store";
 import type { PublicStory, PublicStoryMoment } from "@/lib/public-story";
 import { createPublicPlantStory } from "@/lib/garden-backend";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 
 type ShareItem =
   | { id: string; daysAgo: number; kind: "photo"; photo: Photo }
@@ -26,7 +27,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
   onOpenChange: (open: boolean) => void;
 }) {
   const navigate = useNavigate();
-  const { savePublicStory } = useGarden();
+  const { savePublicStory, language } = useGarden();
   const items = useMemo<ShareItem[]>(() => chronological([
     ...photos.map((photo) => ({ id: `photo:${photo.id}`, daysAgo: photo.daysAgo, kind: "photo" as const, photo })),
     ...events.filter((event) => event.milestone).map((event) => ({ id: `event:${event.id}`, daysAgo: event.daysAgo, kind: "event" as const, event })),
@@ -65,8 +66,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
           void navigate({ to: "/shared/$storyId", params: { storyId: token } });
         })
         .catch((error: unknown) => {
-          const message = error instanceof Error ? error.message : "Could not create the public story.";
-          toast.error(message);
+          toast.error(localizeKnownError(error, language, ui(language, "createStoryFailed")));
         });
       return;
     }
@@ -81,20 +81,20 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
         {preview ? (
           <div className="relative">
             <div className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-border/70 bg-background/90 px-4 py-3 backdrop-blur-xl sm:px-6">
-              <Button variant="ghost" className="rounded-full" onClick={() => setPreview(false)}><ArrowLeft /> Edit selection</Button>
+              <Button variant="ghost" className="rounded-full" onClick={() => setPreview(false)}><ArrowLeft /> {ui(language, "editSelection")}</Button>
               <div className="hidden text-center sm:block">
-                <p className="text-sm font-medium">Public Story Preview</p>
-                <p className="text-xs text-muted-foreground">This is what visitors will see.</p>
+                <p className="text-sm font-medium">{ui(language, "publicStoryPreview")}</p>
+                <p className="text-xs text-muted-foreground">{ui(language, "storyVisitorsSee")}</p>
               </div>
-              <Button className="rounded-full" onClick={openPublicLink}><ExternalLink /> Share link</Button>
+              <Button className="rounded-full" onClick={openPublicLink}><ExternalLink /> {ui(language, "shareLink")}</Button>
             </div>
             <PublicStoryView story={story} preview />
           </div>
         ) : (
           <div className="p-6">
             <DialogHeader className="pr-8 text-left">
-              <DialogTitle className="font-display text-2xl font-medium">Choose the story to share</DialogTitle>
-              <DialogDescription>Select real photos and milestones. Their recorded order stays intact.</DialogDescription>
+              <DialogTitle className="font-display text-2xl font-medium">{ui(language, "chooseStoryToShare")}</DialogTitle>
+              <DialogDescription>{ui(language, "storySelectionDescription")}</DialogDescription>
             </DialogHeader>
             <div className="mt-5 space-y-2">
               {items.map((item) => {
@@ -102,7 +102,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
                 return <Button key={item.id} variant="ghost" onClick={() => setSelected((value) => on ? value.filter((id) => id !== item.id) : [...value, item.id])} className={cn("h-auto w-full justify-start rounded-2xl border p-3 text-left", on ? "border-primary bg-accent/40" : "border-border/70")}>
                   {item.kind === "photo" ? <PhotoImage photo={item.photo} alt="" rendition="preview" className="h-14 w-14 rounded-xl object-cover" /> : <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-secondary"><Check className="h-4 w-4" /></span>}
                   <span className="min-w-0 flex-1 whitespace-normal">
-                    <span className="block text-xs text-muted-foreground">{formatDate(item.daysAgo)} · {item.kind === "photo" ? "Photo" : eventLabels[item.event.type]}</span>
+                    <span className="block text-xs text-muted-foreground">{formatDate(item.daysAgo)} · {item.kind === "photo" ? (language === "es" ? "Foto" : "Photo") : localizedEventLabel(item.event.type, language)}</span>
                     <span className="mt-0.5 block text-sm">{item.kind === "photo" ? item.photo.caption : item.event.title}</span>
                     {item.kind === "event" ? <span className="mt-1.5 block"><ProvenanceTag kind={item.event.provenance === "recorded" ? "recorded" : item.event.provenance === "observed" ? "observed" : "inferred"} /></span> : null}
                   </span>
@@ -110,7 +110,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
                 </Button>;
               })}
             </div>
-            <Button className="mt-5 w-full rounded-full" disabled={!chosen.length} onClick={openPreview}>Preview public story · {chosen.length}</Button>
+            <Button className="mt-5 w-full rounded-full" disabled={!chosen.length} onClick={openPreview}>{ui(language, "previewPublicStory")} · {chosen.length}</Button>
           </div>
         )}
       </DialogContent>

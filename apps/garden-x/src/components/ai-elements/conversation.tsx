@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 import type { UIMessage } from "ai";
 import { ArrowDownIcon, DownloadIcon } from "lucide-react";
 import type { ComponentProps } from "react";
@@ -42,8 +43,8 @@ export type ConversationEmptyStateProps = ComponentProps<"div"> & {
 
 export const ConversationEmptyState = ({
   className,
-  title = "No messages yet",
-  description = "Start a conversation to see messages here",
+  title,
+  description,
   icon,
   children,
   ...props
@@ -59,9 +60,13 @@ export const ConversationEmptyState = ({
       <>
         {icon && <div className="text-muted-foreground">{icon}</div>}
         <div className="space-y-1">
-          <h3 className="font-medium text-sm">{title}</h3>
-          {description && (
-            <p className="text-muted-foreground text-sm">{description}</p>
+          <h3 className="font-medium text-sm">
+            {title ?? ui(preferredLanguage(), "noMessagesYet")}
+          </h3>
+          {(description ?? ui(preferredLanguage(), "startConversation")) && (
+            <p className="text-muted-foreground text-sm">
+              {description ?? ui(preferredLanguage(), "startConversation")}
+            </p>
           )}
         </div>
       </>

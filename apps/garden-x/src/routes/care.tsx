@@ -149,11 +149,11 @@ function Care() {
                 plantId: current.id,
                 daysAgo: 0,
                 type: "note",
-                title: "Reviewed — looks good",
-                detail: "No action needed during today's care review.",
+                title: ui(language, "reviewedLooksGood"),
+                detail: ui(language, "noActionToday"),
                 provenance: "recorded",
               });
-              toast.success(`${current.name} reviewed`);
+              toast.success(`${current.name} ${ui(language, "reviewed")}`);
               advance(true);
             }}
             onNext={() => advance(true)}
@@ -180,7 +180,7 @@ function Care() {
       <PageHeader
         eyebrow={ui(language, "care")}
         title={ui(language, "checkOnPlants")}
-        subtitle="Take a quiet pass through the garden. Notice what changed, record what matters, and decide what deserves another look."
+        subtitle={ui(language, "startCareSubtitle")}
       />
 
       <section className="px-5 sm:px-8 lg:px-12">
@@ -190,7 +190,7 @@ function Care() {
               <p className="text-xs uppercase text-primary-foreground/70">{ui(language, "guidedReview")}</p>
               <h1 className="mt-2 font-display text-3xl">{ui(language, "seeEachPlant")}</h1>
               <p className="mt-2 text-sm text-primary-foreground/75">
-                {activePlants.length} {activePlants.length === 1 ? "plant" : "plants"} to check · {needingLook} {needingLook === 1 ? "needs" : "need"} a closer look · {routine} routine {routine === 1 ? "review" : "reviews"}
+                {activePlants.length} {activePlants.length === 1 ? (language === "es" ? "planta" : "plant") : ui(language, "plants").toLowerCase()} {language === "es" ? "para revisar" : "to check"} · {needingLook} {language === "es" ? (needingLook === 1 ? "necesita" : "necesitan") : (needingLook === 1 ? "needs" : "need")} {ui(language, "worthCloserLook").toLowerCase()} · {routine} {language === "es" ? "revisión" : "routine review"}{routine === 1 ? "" : language === "es" ? "es" : "s"}
               </p>
             </div>
             <Button

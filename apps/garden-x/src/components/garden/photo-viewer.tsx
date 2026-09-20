@@ -3,9 +3,11 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import type { Photo } from "@/lib/garden-data";
 import { resolvePhotoUrl } from "@/lib/garden-backend";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 
 /** A clean full-screen look at one photograph. Nothing else. */
 export function PhotoViewer({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  const language = preferredLanguage();
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => event.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -16,7 +18,7 @@ export function PhotoViewer({ src, alt, onClose }: { src: string; alt: string; o
 
   return createPortal(
     <div role="dialog" aria-modal="true" aria-label={alt} className="fixed inset-0 z-[60] grid place-items-center">
-      <button aria-label="Close photo" onClick={onClose} className="absolute inset-0 bg-ink/90 backdrop-blur-sm" />
+      <button aria-label={ui(language, "closePhoto")} onClick={onClose} className="absolute inset-0 bg-ink/90 backdrop-blur-sm" />
       <img
         src={src}
         alt={alt}
@@ -24,7 +26,7 @@ export function PhotoViewer({ src, alt, onClose }: { src: string; alt: string; o
       />
       <button
         onClick={onClose}
-        aria-label="Close photo"
+        aria-label={ui(language, "closePhoto")}
         className="press absolute top-5 right-5 grid h-10 w-10 place-items-center rounded-full bg-white/15 text-white backdrop-blur-md"
       >
         <X className="h-5 w-5" />

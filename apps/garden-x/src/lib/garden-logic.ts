@@ -9,6 +9,7 @@ import {
   type EventType,
   type PlantStatus,
 } from "./garden-data";
+import { preferredLanguage, ui, type UiLanguage } from "./ui-copy";
 
 /* ------------------------------------------------------------- time */
 
@@ -40,37 +41,40 @@ export function dateFromDaysAgo(daysAgo: number) {
   return new Date(Date.now() - daysAgo * dayMs);
 }
 
-export function formatDate(daysAgo: number) {
-  return dateFromDaysAgo(daysAgo).toLocaleDateString("en-US", {
+export function formatDate(daysAgo: number, language = preferredLanguage()) {
+  return dateFromDaysAgo(daysAgo).toLocaleDateString(language === "es" ? "es-ES" : "en-US", {
     month: "short",
     day: "numeric",
     year: dateFromDaysAgo(daysAgo).getFullYear() === new Date().getFullYear() ? undefined : "numeric",
   });
 }
 
-export function relativeDay(daysAgo: number) {
-  if (daysAgo <= 0) return "Today";
-  if (daysAgo === 1) return "Yesterday";
-  if (daysAgo < 7) return `${daysAgo} days ago`;
-  if (daysAgo < 35) return `${Math.round(daysAgo / 7)} weeks ago`;
-  if (daysAgo < 365) return `${Math.round(daysAgo / 30)} months ago`;
+export function relativeDay(daysAgo: number, language = preferredLanguage()) {
+  const es = language === "es";
+  if (daysAgo <= 0) return es ? "Hoy" : "Today";
+  if (daysAgo === 1) return es ? "Ayer" : "Yesterday";
+  if (daysAgo < 7) return es ? `hace ${daysAgo} días` : `${daysAgo} days ago`;
+  if (daysAgo < 35) return es ? `hace ${Math.round(daysAgo / 7)} semanas` : `${Math.round(daysAgo / 7)} weeks ago`;
+  if (daysAgo < 365) return es ? `hace ${Math.round(daysAgo / 30)} meses` : `${Math.round(daysAgo / 30)} months ago`;
   const y = (daysAgo / 365).toFixed(1);
-  return `${y} years ago`;
+  return es ? `hace ${y} años` : `${y} years ago`;
 }
 
-export function dueLabel(dueInDays: number) {
-  if (dueInDays < -1) return `${Math.abs(dueInDays)} days overdue`;
-  if (dueInDays === -1) return "1 day overdue";
-  if (dueInDays === 0) return "Today";
-  if (dueInDays === 1) return "Tomorrow";
-  return `In ${dueInDays} days`;
+export function dueLabel(dueInDays: number, language = preferredLanguage()) {
+  const es = language === "es";
+  if (dueInDays < -1) return es ? `${Math.abs(dueInDays)} días de retraso` : `${Math.abs(dueInDays)} days overdue`;
+  if (dueInDays === -1) return es ? "1 día de retraso" : "1 day overdue";
+  if (dueInDays === 0) return es ? "Hoy" : "Today";
+  if (dueInDays === 1) return es ? "Mañana" : "Tomorrow";
+  return es ? `En ${dueInDays} días` : `In ${dueInDays} days`;
 }
 
-export function ageLabel(plantedDaysAgo: number) {
-  if (plantedDaysAgo < 60) return `Day ${plantedDaysAgo}`;
-  if (plantedDaysAgo < 365) return `${Math.round(plantedDaysAgo / 30)} months together`;
+export function ageLabel(plantedDaysAgo: number, language = preferredLanguage()) {
+  const es = language === "es";
+  if (plantedDaysAgo < 60) return es ? `Día ${plantedDaysAgo}` : `Day ${plantedDaysAgo}`;
+  if (plantedDaysAgo < 365) return es ? `${Math.round(plantedDaysAgo / 30)} meses juntas` : `${Math.round(plantedDaysAgo / 30)} months together`;
   const years = plantedDaysAgo / 365;
-  return `${years.toFixed(1)} years together`;
+  return es ? `${years.toFixed(1)} años juntas` : `${years.toFixed(1)} years together`;
 }
 
 /* ------------------------------------------------------------- selectors */
@@ -251,6 +255,21 @@ export const eventLabels: Record<EventType, string> = {
   note: "Note",
 };
 
+export function localizedStatusLabel(status: PlantStatus, language = preferredLanguage()) {
+  const labels: Record<PlantStatus, [string, string]> = { thriving: ["Thriving", "Floreciente"], steady: ["Steady", "Estable"], watching: ["Watching", "En observación"], recovering: ["Recovering", "En recuperación"] };
+  return labels[status][language === "es" ? 1 : 0];
+}
+
+export function localizedMaintenanceLabel(type: MaintenanceType, language = preferredLanguage()) {
+  const labels: Record<MaintenanceType, [string, string]> = { watering: ["Watering", "Riego"], nutrients: ["Nutrients", "Nutrientes"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], thinning: ["Thinning", "Aclareo"], transplant: ["Transplant", "Trasplante"], cleaning: ["Cleaning", "Limpieza"], pest: ["Pest treatment", "Tratamiento de plagas"], light: ["Light adjustment", "Ajuste de luz"], custom: ["Custom", "Personalizado"] };
+  return labels[type][language === "es" ? 1 : 0];
+}
+
+export function localizedEventLabel(type: EventType, language = preferredLanguage()) {
+  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem", "Problema"], recovery: ["Recovery", "Recuperación"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Note", "Nota"] };
+  return labels[type][language === "es" ? 1 : 0];
+}
+
 /* ------------------------------------------------------------- story facts */
 
 export interface StoryFact {
@@ -274,7 +293,7 @@ export function plantCompanions(knowledgeId: string): PlantCompanions {
   return companions[knowledgeId] ?? { good: ["Plants with similar light and water needs"], separate: ["Plants with conflicting care needs"] };
 }
 
-export function storyFacts(plant: Plant, events: PlantEvent[]): StoryFact[] {
+export function storyFacts(plant: Plant, events: PlantEvent[], language = preferredLanguage()): StoryFact[] {
   const history = plantEvents(events, plant.id);
 
   const last = (type: EventType, titleIncludes?: string) => {
@@ -283,51 +302,63 @@ export function storyFacts(plant: Plant, events: PlantEvent[]): StoryFact[] {
         e.type === type &&
         (!titleIncludes || e.title.toLowerCase().includes(titleIncludes.toLowerCase())),
     );
-    return found ? formatDate(found.daysAgo) : "Not yet";
+    return found ? formatDate(found.daysAgo, language) : ui(language, "notYet");
+  };
+  const labels = {
+    waterChange: language === "es" ? "Último cambio de agua" : "Last water change",
+    thinning: language === "es" ? "Último aclareo" : "Last thinning",
+    nutrients: language === "es" ? "Últimos nutrientes" : "Last nutrients",
+    pruning: language === "es" ? "Última poda" : "Last pruning",
+    harvest: language === "es" ? "Última cosecha" : "Last harvest",
+    watering: language === "es" ? "Último riego" : "Last watering",
+    ai: language === "es" ? "Última comprobación de IA" : "Last AI check",
+    cleaning: language === "es" ? "Última limpieza" : "Last cleaning",
+    transplant: language === "es" ? "Último trasplante" : "Last transplant",
+    feed: language === "es" ? "Último abonado" : "Last feed",
   };
 
   switch (plant.id) {
     case "willow":
       return [
-        { label: "Last water change", value: last("maintenance", "Water change") },
-        { label: "Last thinning", value: last("thinning") },
-        { label: "Last nutrients", value: last("maintenance", "Nutrients") },
+        { label: labels.waterChange, value: last("maintenance", "Water change") },
+        { label: labels.thinning, value: last("thinning") },
+        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
       ];
     case "nova":
       return [
-        { label: "Last nutrients", value: last("maintenance", "Nutrients") },
-        { label: "Last water change", value: last("maintenance", "Water change") },
-        { label: "Last thinning", value: last("thinning") },
+        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
+        { label: labels.waterChange, value: last("maintenance", "Water change") },
+        { label: labels.thinning, value: last("thinning") },
       ];
     case "aurora":
       return [
-        { label: "Last pruning", value: last("pruning") },
-        { label: "Last harvest", value: last("harvest") },
-        { label: "Last watering", value: last("maintenance", "Watering") },
+        { label: labels.pruning, value: last("pruning") },
+        { label: labels.harvest, value: last("harvest") },
+        { label: labels.watering, value: last("maintenance", "Watering") },
       ];
     case "rex":
       return [
-        { label: "Last harvest", value: last("harvest") },
-        { label: "Last pruning", value: last("pruning") },
-        { label: "Last watering", value: last("maintenance", "Watering") },
+        { label: labels.harvest, value: last("harvest") },
+        { label: labels.pruning, value: last("pruning") },
+        { label: labels.watering, value: last("maintenance", "Watering") },
       ];
     case "ember":
       return [
-        { label: "Last nutrients", value: last("maintenance", "Nutrients") },
-        { label: "Last AI check", value: last("ai") },
-        { label: "Last harvest", value: last("harvest") },
+        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
+        { label: labels.ai, value: last("ai") },
+        { label: labels.harvest, value: last("harvest") },
       ];
     case "ora":
       return [
-        { label: "Last cleaning", value: last("maintenance", "Cleaning") },
-        { label: "Last transplant", value: last("transplant") },
-        { label: "Last feed", value: last("maintenance", "Nutrients") },
+        { label: labels.cleaning, value: last("maintenance", "Cleaning") },
+        { label: labels.transplant, value: last("transplant") },
+        { label: labels.feed, value: last("maintenance", "Nutrients") },
       ];
     default:
       return [
-        { label: "Last pruning", value: last("pruning") },
-        { label: "Last harvest", value: last("harvest") },
-        { label: "Last watering", value: last("maintenance", "Watering") },
+        { label: labels.pruning, value: last("pruning") },
+        { label: labels.harvest, value: last("harvest") },
+        { label: labels.watering, value: last("maintenance", "Watering") },
       ];
   }
 }
@@ -355,7 +386,7 @@ export interface AnalysisResult {
  * Observations describe pixels; inferences are always labelled and never
  * written back to the plant record without confirmation.
  */
-export function analysePhoto(plant: Plant, photo: Photo, history: PlantEvent[]): AnalysisResult {
+export function analysePhoto(plant: Plant, photo: Photo, history: PlantEvent[], language = preferredLanguage()): AnalysisResult {
   const previous = null as Photo | null;
   void previous;
   const k = knowledge.find((e) => e.id === plant.knowledgeId);
@@ -363,39 +394,53 @@ export function analysePhoto(plant: Plant, photo: Photo, history: PlantEvent[]):
 
   findings.push({
     kind: "observed",
-    title: "Colour",
+    title: ui(language, "colour"),
     body:
       photo.metrics.greenness >= 76
-        ? `Even saturation across the canopy (index ${photo.metrics.greenness}/100). No pale zones isolated.`
-        : `Reduced saturation (index ${photo.metrics.greenness}/100), concentrated on older growth.`,
+        ? language === "es"
+          ? `Saturación uniforme en la copa (índice ${photo.metrics.greenness}/100). No se aislaron zonas pálidas.`
+          : `Even saturation across the canopy (index ${photo.metrics.greenness}/100). No pale zones isolated.`
+        : language === "es"
+          ? `Saturación reducida (índice ${photo.metrics.greenness}/100), concentrada en el crecimiento más viejo.`
+          : `Reduced saturation (index ${photo.metrics.greenness}/100), concentrated on older growth.`,
   });
   findings.push({
     kind: "observed",
-    title: "Density and structure",
-    body: `Canopy fill ${photo.metrics.density}/100, roughly ${photo.metrics.leafCount} leaves visible, height about ${photo.metrics.heightCm}cm.`,
+    title: ui(language, "densityStructure"),
+    body: language === "es"
+      ? `Volumen de copa ${photo.metrics.density}/100, aproximadamente ${photo.metrics.leafCount} hojas visibles y una altura de ${photo.metrics.heightCm} cm.`
+      : `Canopy fill ${photo.metrics.density}/100, roughly ${photo.metrics.leafCount} leaves visible, height about ${photo.metrics.heightCm}cm.`,
   });
 
   const damage = plant.status === "watching" || plant.status === "recovering";
   findings.push({
     kind: "observed",
-    title: "Damaged tissue",
+    title: ui(language, "damagedTissue"),
     body: damage
-      ? "Pale interveinal patches on 3–4 lower leaves. Margins intact, no necrotic edges."
-      : "No holes, bite marks, or necrosis found in the frame.",
+      ? language === "es"
+        ? "Manchas pálidas entre las nervaduras de 3–4 hojas inferiores. Bordes intactos, sin zonas necróticas."
+        : "Pale interveinal patches on 3–4 lower leaves. Margins intact, no necrotic edges."
+      : language === "es"
+        ? "No se observan agujeros, mordeduras ni necrosis en la imagen."
+        : "No holes, bite marks, or necrosis found in the frame.",
   });
 
   if (photo.metrics.greenness < 70) {
     findings.push({
       kind: "inference",
-      title: "Possible explanation",
-      body: "The pattern — older leaves first, yellowing between veins, veins still green — is consistent with a magnesium shortfall. A light shortfall or early pest pressure could look similar in one frame.",
+      title: ui(language, "possibleExplanation"),
+      body: language === "es"
+        ? "El patrón — primero las hojas viejas, amarilleo entre nervaduras y nervaduras aún verdes — es compatible con una carencia de magnesio. Una falta de luz o una presión inicial de plagas podrían verse parecidas en una sola imagen."
+        : "The pattern — older leaves first, yellowing between veins, veins still green — is consistent with a magnesium shortfall. A light shortfall or early pest pressure could look similar in one frame.",
       confidence: "moderate",
     });
   } else {
     findings.push({
       kind: "inference",
-      title: "Possible explanation",
-      body: "Colour and density are in the range this plant has held for the last few weeks. Nothing in this frame suggests active stress.",
+      title: ui(language, "possibleExplanation"),
+      body: language === "es"
+        ? "El color y la densidad están dentro del rango que esta planta ha mantenido durante las últimas semanas. Nada en esta imagen sugiere estrés activo."
+        : "Colour and density are in the range this plant has held for the last few weeks. Nothing in this frame suggests active stress.",
       confidence: "high",
     });
   }
@@ -404,32 +449,38 @@ export function analysePhoto(plant: Plant, photo: Photo, history: PlantEvent[]):
   if (problem) {
     findings.push({
       kind: "inference",
-      title: "Historical context",
-      body: `A problem was recorded ${relativeDay(problem.daysAgo)} (“${problem.title}”). This photo is read against that, not in isolation.`,
+      title: ui(language, "historicalContext"),
+      body: language === "es"
+        ? `Se registró un problema ${relativeDay(problem.daysAgo, language)} (“${problem.title}”). Esta foto se interpreta junto con ese registro, no de forma aislada.`
+        : `A problem was recorded ${relativeDay(problem.daysAgo)} (“${problem.title}”). This photo is read against that, not in isolation.`,
       confidence: "high",
     });
   }
 
   findings.push({
     kind: "recommendation",
-    title: "Recommended action",
+    title: ui(language, "recommendedAction"),
     body:
       photo.metrics.greenness < 70
-        ? `Apply a magnesium correction (1g/L Epsom salts at the root), then re-photograph the same leaf in 7 days. Reference range for ${k?.common ?? "this species"}: pH ${k?.ph ?? "6.0–6.8"}.`
-        : "No intervention. Keep the current rhythm and take the next photo in about a week to hold the series even.",
+        ? language === "es"
+          ? `Aplica una corrección de magnesio (1 g/L de sales de Epsom en la raíz) y vuelve a fotografiar la misma hoja en 7 días. Rango de referencia para ${k?.common ?? "esta especie"}: pH ${k?.ph ?? "6.0–6.8"}.`
+          : `Apply a magnesium correction (1g/L Epsom salts at the root), then re-photograph the same leaf in 7 days. Reference range for ${k?.common ?? "this species"}: pH ${k?.ph ?? "6.0–6.8"}.`
+        : language === "es"
+          ? "No intervengas. Mantén el ritmo actual y toma la siguiente foto aproximadamente en una semana para conservar la serie."
+          : "No intervention. Keep the current rhythm and take the next photo in about a week to hold the series even.",
   });
 
   return {
     headline:
       photo.metrics.greenness < 70
-        ? "Visible stress on older leaves"
-        : "No stress signals in this frame",
+        ? ui(language, "visibleStressOlderLeaves")
+        : ui(language, "noStressSignals"),
     confidence: photo.metrics.greenness < 70 ? "moderate" : "high",
     findings,
     grounding: [
-      `Photo taken ${relativeDay(photo.daysAgo)}`,
-      `${history.length} recorded events for ${plant.name}`,
-      `Reference entry: ${k?.common ?? "unknown"}`,
+      `${ui(language, "photoTaken")} ${relativeDay(photo.daysAgo, language)}`,
+      `${history.length} ${ui(language, "eventsForPlant")} ${plant.name}`,
+      `${ui(language, "referenceEntry")}: ${k?.common ?? (language === "es" ? "desconocida" : "unknown")}`,
     ],
   };
 }
@@ -452,36 +503,40 @@ export interface CompareResult {
   confidence: Confidence;
 }
 
-export function comparePhotos(a: Photo, b: Photo, plant: Plant): CompareResult {
+export function comparePhotos(a: Photo, b: Photo, plant: Plant, language = preferredLanguage()): CompareResult {
   const [earlier, later] = a.daysAgo > b.daysAgo ? [a, b] : [b, a];
   const days = earlier.daysAgo - later.daysAgo;
   const deltas: Delta[] = [
-    { label: "Height", from: earlier.metrics.heightCm, to: later.metrics.heightCm, unit: "cm", higherIsBetter: true },
-    { label: "Leaves (approx.)", from: earlier.metrics.leafCount, to: later.metrics.leafCount, unit: "", higherIsBetter: true },
-    { label: "Canopy density", from: earlier.metrics.density, to: later.metrics.density, unit: "/100", higherIsBetter: true },
-    { label: "Colour saturation", from: earlier.metrics.greenness, to: later.metrics.greenness, unit: "/100", higherIsBetter: true },
+    { label: ui(language, "height"), from: earlier.metrics.heightCm, to: later.metrics.heightCm, unit: "cm", higherIsBetter: true },
+    { label: ui(language, "leavesApprox"), from: earlier.metrics.leafCount, to: later.metrics.leafCount, unit: "", higherIsBetter: true },
+    { label: ui(language, "canopyDensity"), from: earlier.metrics.density, to: later.metrics.density, unit: "/100", higherIsBetter: true },
+    { label: ui(language, "colourSaturation"), from: earlier.metrics.greenness, to: later.metrics.greenness, unit: "/100", higherIsBetter: true },
   ];
 
   const growth = later.metrics.heightCm - earlier.metrics.heightCm;
   const colour = later.metrics.greenness - earlier.metrics.greenness;
   const observations = [
     growth > 0
-      ? `Height increased ${growth}cm over ${days} days (about ${(growth / Math.max(days, 1)).toFixed(2)}cm/day).`
-      : "No measurable height change between the two frames.",
-    `Visible leaf count moved from ${earlier.metrics.leafCount} to ${later.metrics.leafCount}.`,
+      ? language === "es"
+        ? `${ui(language, "heightIncreased")} ${growth} cm ${ui(language, "overDays")} ${days} ${ui(language, "daysAbout")} ${(growth / Math.max(days, 1)).toFixed(2)} cm ${ui(language, "perDay")}`
+        : `${ui(language, "heightIncreased")} ${growth}cm ${ui(language, "overDays")} ${days} ${ui(language, "daysAbout")} ${(growth / Math.max(days, 1)).toFixed(2)}cm/day).`
+      : ui(language, "noHeightChange"),
+    `${ui(language, "visibleLeafCount")} ${earlier.metrics.leafCount} ${language === "es" ? "a" : "to"} ${later.metrics.leafCount}.`,
     colour < -4
-      ? `Colour saturation dropped ${Math.abs(colour)} points, strongest on lower leaves.`
+      ? language === "es" ? `${ui(language, "saturationDropped")} ${Math.abs(colour)} puntos, sobre todo en las hojas inferiores.` : `${ui(language, "saturationDropped")} ${Math.abs(colour)} points, strongest on lower leaves.`
       : colour > 4
-        ? `Colour deepened ${colour} points across the canopy.`
-        : "Colour is effectively unchanged.",
+        ? language === "es" ? `${ui(language, "colourDeepened")} ${colour} puntos en toda la copa.` : `${ui(language, "colourDeepened")} ${colour} points across the canopy.`
+        : ui(language, "colourUnchanged"),
   ];
 
   const inference =
     colour < -4
-      ? `The shape of the change — growth continuing while colour fades on older leaves — points to a nutrient issue rather than water or light. Not confirmed: one leaf photographed twice is thin evidence for the whole plant.`
+      ? language === "es"
+        ? "La forma del cambio — el crecimiento continúa mientras el color se desvanece en las hojas viejas — apunta a un problema de nutrientes más que de agua o luz. No está confirmado: fotografiar dos veces una hoja es poca evidencia para toda la planta."
+        : `The shape of the change — growth continuing while colour fades on older leaves — points to a nutrient issue rather than water or light. Not confirmed: one leaf photographed twice is thin evidence for the whole plant.`
       : growth > 0 && later.metrics.density > earlier.metrics.density
-        ? `${plant.name} is in an expansion phase: height, leaf count, and fill all moved the same direction. That is consistent with the maintenance recorded in between.`
-        : "The two frames are close enough that no meaningful change can be claimed.";
+        ? `${plant.name} ${ui(language, "expansionPhase")}`
+        : ui(language, "noMeaningfulChange");
 
   return {
     days,
@@ -504,6 +559,7 @@ export interface AskAnswer {
 export function askGarden(
   question: string,
   ctx: { plant: Plant; events: PlantEvent[]; photos: Photo[]; tasks: CareTask[] },
+  language = preferredLanguage(),
 ): AskAnswer {
   const q = question.toLowerCase();
   const evts = plantEvents(ctx.events, ctx.plant.id);
@@ -522,13 +578,13 @@ export function askGarden(
     const last = evts.find((e) => /nutrient|feed|epsom/i.test(e.title) || /nutrient/i.test(e.detail ?? ""));
     return answer(
       last
-        ? [`Last feed for ${ctx.plant.name}: ${last.title} — ${formatDate(last.daysAgo)} (${relativeDay(last.daysAgo)}).`,
-           last.detail ? `Logged detail: ${last.detail}` : `No extra detail was logged.`]
-        : [`No nutrient event is recorded for ${ctx.plant.name}.`],
+        ? [language === "es" ? `Último abonado de ${ctx.plant.name}: ${last.title} — ${formatDate(last.daysAgo, language)} (${relativeDay(last.daysAgo, language)}).` : `Last feed for ${ctx.plant.name}: ${last.title} — ${formatDate(last.daysAgo, language)} (${relativeDay(last.daysAgo, language)}).`,
+           last.detail ? `${language === "es" ? "Detalle registrado" : "Logged detail"}: ${last.detail}` : (language === "es" ? "No se registró ningún detalle adicional." : "No extra detail was logged.")]
+        : [language === "es" ? `No hay ningún evento de nutrientes registrado para ${ctx.plant.name}.` : `No nutrient event is recorded for ${ctx.plant.name}.`],
       last && last.daysAgo > 14
-        ? `That is ${last.daysAgo} days ago. For ${k?.common ?? "this species"} a feed every 10–14 days is typical in active growth, so it is probably due — but I have no leaf or water reading to confirm need.`
+        ? language === "es" ? `Fue hace ${last.daysAgo} días. Para ${k?.common ?? "esta especie"}, abonar cada 10–14 días suele ser habitual durante el crecimiento activo, así que probablemente corresponda — pero no tengo una lectura de hojas o agua que confirme la necesidad.` : `That is ${last.daysAgo} days ago. For ${k?.common ?? "this species"} a feed every 10–14 days is typical in active growth, so it is probably due — but I have no leaf or water reading to confirm need.`
         : undefined,
-      last ? [`Event · ${formatDate(last.daysAgo)}`] : [],
+      last ? [`${ui(language, "recordedEventEvidence")} · ${formatDate(last.daysAgo, language)}`] : [],
     );
   }
 
@@ -536,10 +592,10 @@ export function askGarden(
     const last = evts.find((e) => /water/i.test(e.title));
     return answer(
       last
-        ? [`Last watering: ${formatDate(last.daysAgo)} (${relativeDay(last.daysAgo)}).`, last.detail ?? ""].filter(Boolean)
-        : ["No watering event is recorded yet."],
+        ? [language === "es" ? `Último riego: ${formatDate(last.daysAgo, language)} (${relativeDay(last.daysAgo, language)}).` : `Last watering: ${formatDate(last.daysAgo, language)} (${relativeDay(last.daysAgo, language)}).`, last.detail ?? ""].filter(Boolean)
+        : [language === "es" ? "Todavía no hay ningún evento de riego registrado." : "No watering event is recorded yet."],
       undefined,
-      last ? [`Event · ${formatDate(last.daysAgo)}`] : [],
+      last ? [`${ui(language, "recordedEventEvidence")} · ${formatDate(last.daysAgo, language)}`] : [],
     );
   }
 
@@ -547,34 +603,34 @@ export function askGarden(
     if (pics.length >= 2) {
       const a = pics[pics.length - 2]!;
       const b = pics[pics.length - 1]!;
-      const cmp = comparePhotos(a, b, ctx.plant);
+      const cmp = comparePhotos(a, b, ctx.plant, language);
       return answer(
-        [`Between ${formatDate(a.daysAgo)} and ${formatDate(b.daysAgo)}:`, ...cmp.observations],
+        [language === "es" ? `Entre el ${formatDate(a.daysAgo, language)} y el ${formatDate(b.daysAgo, language)}:` : `Between ${formatDate(a.daysAgo, language)} and ${formatDate(b.daysAgo, language)}:`, ...cmp.observations],
         cmp.inference,
-        [`Photo · ${formatDate(a.daysAgo)}`, `Photo · ${formatDate(b.daysAgo)}`],
+        [`${ui(language, "photo")} · ${formatDate(a.daysAgo, language)}`, `${ui(language, "photo")} · ${formatDate(b.daysAgo, language)}`],
       );
     }
-    return answer(["Only one photo exists, so there is nothing to compare against."]);
+    return answer([language === "es" ? "Sólo existe una foto, así que no hay otra con la que comparar." : "Only one photo exists, so there is nothing to compare against."]);
   }
 
   if (/today|now|next|should i do/.test(q)) {
     return answer(
       open.length
-        ? open.slice(0, 3).map((t) => `${t.label} — ${dueLabel(t.dueInDays)}${t.hint ? ` (${t.hint})` : ""}`)
-        : [`Nothing is scheduled for ${ctx.plant.name} today.`],
-      open.length ? undefined : `Based on cadence alone, the next thing due will likely be watering. Not scheduled, just a pattern.`,
-      open.map((t) => `Task · ${t.label}`),
+        ? open.slice(0, 3).map((t) => `${t.label} — ${dueLabel(t.dueInDays, language)}${t.hint ? ` (${t.hint})` : ""}`)
+        : [language === "es" ? `Hoy no hay nada programado para ${ctx.plant.name}.` : `Nothing is scheduled for ${ctx.plant.name} today.`],
+      open.length ? undefined : language === "es" ? "Sólo por el ritmo habitual, lo siguiente probablemente sea regar. No está programado; es sólo un patrón." : "Based on cadence alone, the next thing due will likely be watering. Not scheduled, just a pattern.",
+      open.map((t) => `${ui(language, "taskEvidence")} · ${t.label}`),
     );
   }
 
   if (/faster|slower|compare|than the other/.test(q)) {
     return answer(
       [
-        `${ctx.plant.name} is ${ageLabel(ctx.plant.plantedDaysAgo).toLowerCase()}, ${evts.length} events recorded, ${pics.length} photos.`,
-        `Recorded maintenance includes: ${[...new Set(evts.filter((e) => e.type === "maintenance" || e.type === "pruning").map((e) => e.title))].slice(0, 3).join(", ") || "none"}.`,
+        language === "es" ? `${ctx.plant.name} lleva ${ageLabel(ctx.plant.plantedDaysAgo, language).toLowerCase()}, con ${evts.length} eventos registrados y ${pics.length} fotos.` : `${ctx.plant.name} is ${ageLabel(ctx.plant.plantedDaysAgo, language).toLowerCase()}, ${evts.length} events recorded, ${pics.length} photos.`,
+        `${language === "es" ? "Los cuidados registrados incluyen" : "Recorded maintenance includes"}: ${[...new Set(evts.filter((e) => e.type === "maintenance" || e.type === "pruning").map((e) => e.title))].slice(0, 3).join(", ") || (language === "es" ? "ninguno" : "none")}.`,
       ],
       `Differences in speed between two plants of the same species usually track light hours, root volume, and pruning history. I can see the pruning history here; I have no light measurement, so this stays a hypothesis.`,
-      [`${evts.length} events`, `${pics.length} photos`],
+      [`${evts.length} ${ui(language, "eventRecords")}`, `${pics.length} ${ui(language, "photos").toLowerCase()}`],
     );
   }
 
@@ -582,10 +638,10 @@ export function askGarden(
     const problems = evts.filter((e) => e.type === "problem");
     return answer(
       problems.length
-        ? problems.map((p) => `${p.title} — ${formatDate(p.daysAgo)}${p.detail ? `. ${p.detail}` : ""}`)
-        : [`No problem has been recorded for ${ctx.plant.name}.`],
-      problems.length ? `Common issues for ${k?.common}: ${k?.problems.slice(0, 3).join(", ")}. Reference data, not a diagnosis of this plant.` : undefined,
-      problems.map((p) => `Event · ${formatDate(p.daysAgo)}`),
+        ? problems.map((p) => `${p.title} — ${formatDate(p.daysAgo, language)}${p.detail ? `. ${p.detail}` : ""}`)
+        : [language === "es" ? `No hay ningún problema registrado para ${ctx.plant.name}.` : `No problem has been recorded for ${ctx.plant.name}.`],
+      problems.length ? language === "es" ? `Problemas comunes de ${k?.common}: ${k?.problems.slice(0, 3).join(", ")}. Datos de referencia, no un diagnóstico de esta planta.` : `Common issues for ${k?.common}: ${k?.problems.slice(0, 3).join(", ")}. Reference data, not a diagnosis of this plant.` : undefined,
+      problems.map((p) => `${ui(language, "recordedEventEvidence")} · ${formatDate(p.daysAgo, language)}`),
     );
   }
 
@@ -593,26 +649,27 @@ export function askGarden(
     const harvests = evts.filter((e) => e.type === "harvest");
     return answer(
       harvests.length
-        ? harvests.map((h) => `${h.title} — ${formatDate(h.daysAgo)}${h.detail ? `. ${h.detail}` : ""}`)
-        : ["Nothing has been harvested from this plant yet."],
-      `Reference cycle for ${k?.common}: ${k?.harvest}. ${ctx.plant.name} is at day ${ctx.plant.plantedDaysAgo}.`,
-      harvests.map((h) => `Event · ${formatDate(h.daysAgo)}`),
+        ? harvests.map((h) => `${h.title} — ${formatDate(h.daysAgo, language)}${h.detail ? `. ${h.detail}` : ""}`)
+        : [language === "es" ? "Todavía no se ha cosechado nada de esta planta." : "Nothing has been harvested from this plant yet."],
+      language === "es" ? `Ciclo de referencia de ${k?.common}: ${k?.harvest}. ${ctx.plant.name} está en el día ${ctx.plant.plantedDaysAgo}.` : `Reference cycle for ${k?.common}: ${k?.harvest}. ${ctx.plant.name} is at day ${ctx.plant.plantedDaysAgo}.`,
+      harvests.map((h) => `${ui(language, "recordedEventEvidence")} · ${formatDate(h.daysAgo, language)}`),
     );
   }
 
   return answer(
     [
-      `${ctx.plant.name} · ${ctx.plant.species} “${ctx.plant.variety}”, ${ageLabel(ctx.plant.plantedDaysAgo).toLowerCase()}.`,
-      `${evts.length} recorded events, ${pics.length} photos, ${open.length} open tasks. Current status: ${statusMeta[ctx.plant.status].label} — ${ctx.plant.statusNote}`,
+      `${ctx.plant.name} · ${ctx.plant.species} “${ctx.plant.variety}”, ${ageLabel(ctx.plant.plantedDaysAgo, language).toLowerCase()}.`,
+      `${evts.length} ${ui(language, "eventRecords")}, ${pics.length} ${ui(language, "photos").toLowerCase()}, ${open.length} ${language === "es" ? "tareas abiertas" : "open tasks"}. ${ui(language, "currentStatus")}: ${localizedStatusLabel(ctx.plant.status, language)} — ${ctx.plant.statusNote}`,
     ],
-    `I answer from what is recorded here. Ask about watering, feeding, changes since a date, problems, or what to do today.`,
-    [`${evts.length} events`],
+    ui(language, "askRecordedContext"),
+    [`${evts.length} ${ui(language, "eventRecords")}`],
   );
 }
 
 export function askWholeGarden(
   question: string,
   ctx: { gardens: Garden[]; plants: Plant[]; events: PlantEvent[]; photos: Photo[]; tasks: CareTask[] },
+  language = preferredLanguage(),
 ): AskAnswer {
   const q = question.toLowerCase();
   const active = ctx.plants.filter((plant) => !plant.cycleClosed);
@@ -629,11 +686,11 @@ export function askWholeGarden(
       open.length
         ? open.slice(0, 5).map((task) => {
             const plant = active.find((item) => item.id === task.plantId);
-            return `${plant?.name ?? "Plant"}: ${task.label} — ${dueLabel(task.dueInDays)}.`;
+            return `${plant?.name ?? ui(language, "plant")}: ${task.label} — ${dueLabel(task.dueInDays, language)}.`;
           })
-        : ["Nothing is currently scheduled across your active plants."],
+        : [ui(language, "nothingScheduled")],
       undefined,
-      open.slice(0, 5).map((task) => `Task · ${task.label}`),
+      open.slice(0, 5).map((task) => `${ui(language, "taskEvidence")} · ${task.label}`),
     );
   }
 
@@ -641,10 +698,10 @@ export function askWholeGarden(
     const attention = active.filter((plant) => plant.status === "watching" || plant.status === "recovering");
     return answer(
       attention.length
-        ? attention.map((plant) => `${plant.name}: ${statusMeta[plant.status].label} — ${plant.statusNote}`)
-        : ["No active plant is recorded as watching or recovering."],
+        ? attention.map((plant) => `${plant.name}: ${localizedStatusLabel(plant.status, language)} — ${plant.statusNote}`)
+        : [ui(language, "noAttentionPlants")],
       undefined,
-      attention.map((plant) => `Plant status · ${plant.name}`),
+      attention.map((plant) => `${ui(language, "plantStatusEvidence")} · ${plant.name}`),
     );
   }
 
@@ -657,28 +714,38 @@ export function askWholeGarden(
       recent.length
         ? recent.map((event) => {
             const plant = active.find((item) => item.id === event.plantId);
-            return `${plant?.name ?? "Plant"}: ${event.title} — ${relativeDay(event.daysAgo)}.`;
+            return `${plant?.name ?? ui(language, "plant")}: ${event.title} — ${relativeDay(event.daysAgo, language)}.`;
           })
-        : ["No recent history has been recorded yet."],
+        : [ui(language, "noRecentHistory")],
       undefined,
-      recent.map((event) => `Recorded event · ${formatDate(event.daysAgo)}`),
+      recent.map((event) => `${ui(language, "recordedEventEvidence")} · ${formatDate(event.daysAgo)}`),
     );
   }
 
   return answer(
     [
-      `${active.length} active plants across ${ctx.gardens.length} gardens.`,
-      `${ctx.events.length} recorded events, ${ctx.photos.length} photos, and ${open.length} open care items are available as context.`,
+      `${active.length} ${ui(language, "activePlantsAcross")} ${ctx.gardens.length} ${ui(language, "gardens").toLowerCase()}.`,
+      `${ctx.events.length} ${ui(language, "eventRecords")}, ${ctx.photos.length} ${ui(language, "photos").toLowerCase()}, ${open.length} ${language === "es" ? "tareas de cuidado abiertas" : "open care items"} ${ui(language, "contextAvailable")}`,
     ],
-    "Ask what needs attention, what changed recently, or about a specific plant. I will keep recorded information separate from interpretation.",
-    [`${active.length} plant records`, `${ctx.events.length} events`],
+    ui(language, "askInterpretation"),
+    [`${active.length} ${ui(language, "plantRecords")}`, `${ctx.events.length} ${ui(language, "eventRecords")}`],
   );
 }
 
-export const askSuggestions = [
-  "When did I last fertilize this plant?",
-  "Did it improve since last week?",
-  "Why is this growing faster than the other one?",
-  "What should I do today?",
-  "Has it ever had a problem?",
-];
+export function askSuggestions(language: UiLanguage = preferredLanguage()) {
+  return language === "es"
+    ? [
+        "¿Cuándo fertilicé esta planta por última vez?",
+        "¿Mejoró desde la semana pasada?",
+        "¿Por qué crece más rápido que la otra?",
+        "¿Qué debería hacer hoy?",
+        "¿Tuvo algún problema?",
+      ]
+    : [
+        "When did I last fertilize this plant?",
+        "Did it improve since last week?",
+        "Why is this growing faster than the other one?",
+        "What should I do today?",
+        "Has it ever had a problem?",
+      ];
+}

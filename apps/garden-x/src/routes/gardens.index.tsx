@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import { RouteLoading } from "@/components/garden/route-loading";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/gardens/")({
   head: () => ({
@@ -44,8 +45,9 @@ export const Route = createFileRoute("/gardens/")({
 
 function Gardens() {
   const store = useGarden();
-  if (store.hydration === "loading") return <RouteLoading label={store.language === "es" ? "Cargando tus jardines…" : "Loading your gardens…"} />;
-  if (store.hydration === "reconnecting" || store.hydration === "offline") return <RouteLoading label={store.language === "es" ? "Reconectando con tus jardines…" : "Reconnecting to your gardens…"} />;
+  const language = store.language;
+  if (store.hydration === "loading") return <RouteLoading label={ui(store.language, "loadingGardens")} />;
+  if (store.hydration === "reconnecting" || store.hydration === "offline") return <RouteLoading label={ui(store.language, "reconnectingGardens")} />;
   const [editing, setEditing] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
   const [archiveId, setArchiveId] = useState<string | null>(null);
@@ -74,9 +76,9 @@ function Gardens() {
   return (
     <div className="rise pb-16">
       <PageHeader
-        eyebrow="Places"
-        title="Gardens"
-        subtitle="Each garden holds its own conditions, its own rhythm, and its own plants — pots, beds, or pod positions."
+        eyebrow={ui(language, "places")}
+        title={ui(language, "gardensTitle")}
+        subtitle={ui(language, "gardensSubtitle")}
       />
 
       <div className="grid gap-5 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
@@ -111,13 +113,13 @@ function Gardens() {
               <div className="space-y-3 p-5">
                 <p className="text-sm leading-relaxed text-muted-foreground">{garden.note}</p>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
-                  <span className="numeral">{plants.length} plants</span>
+                  <span className="numeral">{plants.length} {ui(language, "plants").toLowerCase()}</span>
                   {garden.machine ? (
                     <span className="inline-flex items-center gap-1.5">
                       <Cpu className="h-3.5 w-3.5" /> {garden.machine.name} · {garden.machine.pods} pods
                     </span>
                   ) : null}
-                  {attention ? <span className="text-clay">{attention} to watch</span> : <span>All steady</span>}
+                  {attention ? <span className="text-clay">{attention} {ui(language, "toWatch")}</span> : <span>{ui(language, "allSteady")}</span>}
                 </div>
                 <div className="flex flex-wrap gap-2 pt-1">
                   {plants.map((p) => (
@@ -149,12 +151,12 @@ function Gardens() {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    aria-label={garden.archived ? `Restore ${garden.name}` : `Archive ${garden.name}`}
+                    aria-label={garden.archived ? `${ui(language, "restore")} ${garden.name}` : `${ui(language, "archive")} ${garden.name}`}
                     onClick={() => {
                       if (garden.archived) {
                         void store.setGardenArchived(garden.id, false)
-                          .then(() => toast.success(`${garden.name} restored`))
-                          .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be restored."));
+                          .then(() => toast.success(`${garden.name} ${ui(language, "restored")}`))
+                          .catch(() => toast.error(ui(language, "restoreFailed")));
                       } else {
                         setArchiveId(garden.id);
                       }
@@ -165,7 +167,7 @@ function Gardens() {
                   </Button>
                   {garden.archived ? (
                     <span className="rounded-full bg-card/20 px-2.5 py-1 text-[0.625rem] font-medium tracking-wide text-white uppercase ring-1 ring-card/30 backdrop-blur-md">
-                      Archived
+                      {ui(language, "archivedBadge")}
                     </span>
                   ) : null}
                 </div>
@@ -181,7 +183,7 @@ function Gardens() {
                       type="button"
                       variant="ghost"
                       size="icon"
-                      aria-label={`Move ${garden.name} earlier`}
+                      aria-label={`${ui(language, "moveEarlier")} ${garden.name}`}
                       disabled={index === 0}
                       onClick={() => move(garden.id, -1)}
                       className="rounded-full"
@@ -192,7 +194,7 @@ function Gardens() {
                       type="button"
                       variant="ghost"
                       size="icon"
-                      aria-label={`Move ${garden.name} later`}
+                      aria-label={`${ui(language, "moveLater")} ${garden.name}`}
                       disabled={index === visible.length - 1}
                       onClick={() => move(garden.id, 1)}
                       className="rounded-full"
@@ -230,7 +232,7 @@ function Gardens() {
             aria-pressed={editing}
             onClick={() => setEditing((current) => !current)}
           >
-            {editing ? "Done" : "Edit"}
+            {editing ? ui(language, "done") : ui(language, "edit")}
           </Button>
           <NewGarden />
         </div>
@@ -240,28 +242,27 @@ function Gardens() {
         <AlertDialogContent className="rounded-3xl">
           <AlertDialogHeader>
             <AlertDialogTitle className="font-display text-xl font-medium">
-              Archive {archiveTarget?.name}?
+              {archiveTarget ? `${ui(language, "archive")} ${archiveTarget.name}?` : ui(language, "archiveQuestion")}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              Its plants, photographs, events, history and Growth Films are all kept. The garden stays visible here in
-              Edit mode and can be restored at any time.
+              {ui(language, "archiveDescription")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="rounded-full">Keep active</AlertDialogCancel>
+            <AlertDialogCancel className="rounded-full">{ui(language, "keepActive")}</AlertDialogCancel>
             <AlertDialogAction
               className="rounded-full"
               onClick={() => {
                 if (!archiveTarget) return;
                 void store.setGardenArchived(archiveTarget.id, true)
                   .then(() => {
-                    toast.success(`${archiveTarget.name} archived`);
+                    toast.success(`${archiveTarget.name} ${ui(language, "archived")}`);
                     setArchiveId(null);
                   })
-                  .catch((error: unknown) => toast.error(error instanceof Error ? error.message : "Garden could not be archived."));
+                  .catch(() => toast.error(ui(language, "archiveFailed")));
               }}
             >
-              Archive garden
+              {ui(language, "archiveGarden")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { knowledge } from "@/lib/garden-store";
 import { PageHeader } from "@/components/garden/shell";
 import { ProvenanceTag } from "@/components/garden/atoms";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/knowledge")({
   head: () => ({
@@ -20,12 +21,13 @@ export const Route = createFileRoute("/knowledge")({
 });
 
 function Knowledge() {
+  const language = preferredLanguage();
   return (
     <div className="rise pb-16">
       <PageHeader
-        eyebrow="Reference"
-        title="Structured plant knowledge"
-        subtitle="Fixed reference data for the species in your gardens. It is never rewritten by a photo or an analysis."
+        eyebrow={ui(language, "reference")}
+        title={ui(language, "reference")}
+        subtitle={ui(language, "referenceSeparation")}
       />
 
       <div className="px-5 sm:px-8 lg:px-12">
@@ -37,19 +39,19 @@ function Knowledge() {
           <article key={k.id} className="surface p-6">
             <h2 className="font-display text-2xl">{k.common}</h2>
             <p className="text-sm italic text-muted-foreground">{k.scientific}</p>
-            <p className="mt-1 text-xs text-muted-foreground">Variety reference: {k.variety}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{ui(language, "variety")}: {k.variety}</p>
 
             <dl className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2">
               {[
-                ["Germination", k.germinationDays],
-                ["Light", k.light],
-                ["Temperature", k.temperature],
+                [ui(language, "germination"), k.germinationDays],
+                [ui(language, "light"), k.light],
+                [ui(language, "temperature"), k.temperature],
                 ["pH", k.ph],
                 ...(k.ec ? [["EC", k.ec]] : []),
-                ["Spacing", k.spacing],
-                ["Pruning", k.pruning],
-                ["Harvest", k.harvest],
-                ["Cycle", k.cycle],
+                [ui(language, "spacing"), k.spacing],
+                [ui(language, "pruning"), k.pruning],
+                [ui(language, "harvest"), k.harvest],
+                [ui(language, "expectedCycle"), k.cycle],
               ].map(([label, value]) => (
                 <div key={label} className="min-w-0">
                   <dt className="eyebrow">{label}</dt>
@@ -60,7 +62,7 @@ function Knowledge() {
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <div>
-                <p className="eyebrow">Common problems</p>
+                <p className="eyebrow">{ui(language, "commonProblems")}</p>
                 <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
                   {k.problems.map((p) => (
                     <li key={p}>· {p}</li>
@@ -68,7 +70,7 @@ function Knowledge() {
                 </ul>
               </div>
               <div>
-                <p className="eyebrow">Recommendations</p>
+                <p className="eyebrow">{ui(language, "recommendations")}</p>
                 <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
                   {k.recommendations.map((p) => (
                     <li key={p}>· {p}</li>

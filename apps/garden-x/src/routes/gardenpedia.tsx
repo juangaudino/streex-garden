@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { preferredLanguage, ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/gardenpedia")({
   head: () => ({
@@ -23,7 +24,7 @@ function Gardenpedia() {
 
   return (
     <main className="grid min-h-screen place-items-center bg-[#f4f1e8] px-6 text-center">
-      <p className="font-display text-xl text-[#17352a]">Opening Gardenpedia…</p>
+      <p className="font-display text-xl text-[#17352a]">{ui(preferredLanguage(), "openingGardenpedia")}</p>
     </main>
   );
 }

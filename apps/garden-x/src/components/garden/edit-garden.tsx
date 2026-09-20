@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { CustomSystemLayoutEditor } from "@/components/garden/custom-system-layout-editor";
 
 export function EditGarden({ garden, plants, photos, className }: { garden: Garden; plants: Plant[]; photos: Photo[]; className?: string }) {
@@ -53,7 +53,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
     updatePlant(selectedPlant.id, { name: personalName.trim() });
     setSelectedPlantId(null);
     setPersonalName("");
-    toast.success("Personal plant name updated");
+    toast.success(ui(language, "personalNameUpdated"));
   };
 
   return (
@@ -65,8 +65,8 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
         <DialogContent className="box-border max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] min-w-0 max-w-[calc(100vw-1rem)] overflow-x-hidden overflow-y-auto rounded-3xl p-4 [&>*]:min-w-0 sm:max-h-[88vh] sm:w-full sm:max-w-lg sm:p-6">
           <DialogHeader className="min-w-0 text-left">
             <p className="eyebrow">{ui(language, "gardenSettings")}</p>
-            <DialogTitle className="font-display text-2xl font-medium">{language === "es" ? "Haz tuyo este jardín" : "Make this garden yours"}</DialogTitle>
-            <DialogDescription>{language === "es" ? "Nombre, configuración de cultivo y una portada elegida de las fotografías reales de este jardín." : "Name, growing setup, and a cover chosen from this garden’s real photographs."}</DialogDescription>
+          <DialogTitle className="font-display text-2xl font-medium">{ui(language, "makeGardenYours")}</DialogTitle>
+          <DialogDescription>{ui(language, "editGardenDescription")}</DialogDescription>
           </DialogHeader>
           <div className="grid min-w-0 gap-4">
             <label className="min-w-0 text-sm"><span className="mb-2 block text-muted-foreground">{ui(language, "gardenName")}</span><input className="input-soft min-w-0" value={name} onChange={(event) => setName(event.target.value)} /></label>
@@ -76,7 +76,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
           </div>
           <div className="min-w-0 max-w-full">
             <p className="text-sm font-medium">{ui(language, "gardenCover")}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{language === "es" ? "La opción automática siempre sigue la fotografía real más reciente." : "Automatic always follows the newest real photograph available."}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{ui(language, "automaticCoverDescription")}</p>
             <div className="no-scrollbar mt-3 flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1">
               <Button type="button" variant="ghost" onClick={() => setCoverPhotoId("auto")} className={cn("h-24 w-24 shrink-0 rounded-2xl border text-xs", coverPhotoId === "auto" ? "border-primary bg-accent" : "border-border")}><span>{ui(language, "automatic")}</span>{coverPhotoId === "auto" ? <Check /> : null}</Button>
               {choices.map((photo) => <Button type="button" key={photo.id} variant="ghost" onClick={() => setCoverPhotoId(photo.id)} className={cn("relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 p-1", coverPhotoId === photo.id ? "border-primary" : "border-transparent")}><PhotoImage photo={photo} alt={photo.caption} rendition="preview" className="h-full w-full rounded-xl object-cover" />{coverPhotoId === photo.id ? <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-card text-primary"><Check className="h-3 w-3" /></span> : null}</Button>)}
@@ -85,7 +85,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
           <CustomSystemLayoutEditor garden={garden} />
           <div className="min-w-0 border-t border-border/70 pt-5">
             <p className="text-sm font-medium">{ui(language, "plants")}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{language === "es" ? "Edita nombres personales sin cambiar la identidad botánica registrada." : "Edit personal names without changing recorded botanical identity."}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{ui(language, "editPlantNamesDescription")}</p>
             <div className="mt-3 grid min-w-0 gap-1">
               {plants.map((plant) => {
                 const plantPhoto = photos.filter((photo) => photo.plantId === plant.id).sort((a, b) => a.daysAgo - b.daysAgo)[0];
@@ -97,7 +97,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
                     <ChevronRight className={cn("h-4 w-4 shrink-0 transition-transform", editing && "rotate-90")} />
                   </Button>
                   {editing ? <div className="grid min-w-0 gap-2 px-1 pb-1 pt-3 sm:grid-cols-[minmax(0,1fr)_auto]">
-                    <input aria-label={`Personal name for ${plant.name}`} className="input-soft min-w-0" value={personalName} onChange={(event) => setPersonalName(event.target.value)} maxLength={32} autoFocus />
+                    <input aria-label={`${ui(language, "personalNameFor")} ${plant.name}`} className="input-soft min-w-0" value={personalName} onChange={(event) => setPersonalName(event.target.value)} maxLength={32} autoFocus />
                     <Button type="button" className="rounded-full" onClick={savePlantName} disabled={!personalName.trim()}>{ui(language, "saveName")}</Button>
                   </div> : null}
                 </div>;
@@ -128,9 +128,9 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
                     .then((result) => {
                       setOpen(false);
                       toast.success(`${garden.name} · ${ui(language, "gardenDeleted")}`);
-                      if (result.storageCleanupWarning) toast.warning(result.storageCleanupWarning);
+                      if (result.storageCleanupWarning) toast.warning(localizeKnownError(new Error(result.storageCleanupWarning), language, ui(language, "photoStorageWarning")));
                     })
-                    .catch((error: unknown) => toast.error(error instanceof Error ? error.message : ui(language, "gardenDeleteFailed")));
+                    .catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "gardenDeleteFailed"))));
                 }}
               >
                 <Trash2 /> {ui(language, "deletePermanently")}

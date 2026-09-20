@@ -46,11 +46,11 @@ export function AppShell({ children }: { children: ReactNode }) {
           })}
         </nav>
         <p className="mt-auto text-xs leading-relaxed text-muted-foreground">
-          {language === "es" ? "Cada registro conserva su fuente: registrado, observado o inferido." : "Every entry keeps its source: recorded, observed, or inferred."}
+          {ui(language, "sourceStatement")}
         </p>
         <Link to="/settings" className={cn("mt-5 flex items-center gap-3 border-t border-border/70 pt-5 text-sm transition-colors", pathname === "/settings" ? "text-foreground" : "text-muted-foreground hover:text-foreground")}>
           <span className="grid h-9 w-9 place-items-center rounded-full bg-accent font-display">{profile.name.split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "GX"}</span>
-          <span className="min-w-0 flex-1"><span className="block truncate">{profile.signedIn ? profile.name : language === "es" ? "Tu Garden X" : "Your Garden X"}</span><span className="block text-xs text-muted-foreground">{ui(language, "settings")}</span></span>
+          <span className="min-w-0 flex-1"><span className="block truncate">{profile.signedIn ? profile.name : ui(language, "yourGardenX")}</span><span className="block text-xs text-muted-foreground">{ui(language, "settings")}</span></span>
           <Settings className="h-4 w-4" />
         </Link>
       </aside>

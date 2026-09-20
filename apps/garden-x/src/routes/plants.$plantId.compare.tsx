@@ -7,6 +7,7 @@ import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
+import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/plants/$plantId/compare")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -33,6 +34,7 @@ function Compare() {
   const { plantId } = Route.useParams();
   const { from } = Route.useSearch();
   const store = useGarden();
+  const language = store.language;
   const plant = store.plants.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
@@ -61,8 +63,8 @@ function Compare() {
       .catch(() => undefined);
   }, [a?.id, b?.id, plant.backendGrowCycleId]);
 
-  if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">Two recorded photos are needed to compare change.</div>;
-  const deterministic = comparePhotos(a, b, plant);
+  if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
+  const deterministic = comparePhotos(a, b, plant, language);
   const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
   const hasRecordedMeasurements = [a.metrics.heightCm,a.metrics.leafCount,a.metrics.density,a.metrics.greenness,b.metrics.heightCm,b.metrics.leafCount,b.metrics.density,b.metrics.greenness].some((value) => value !== 0);
   const earlier = a.daysAgo > b.daysAgo ? a : b;
@@ -73,18 +75,18 @@ function Compare() {
     <div className="rise pb-20">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 px-5 pt-7 pb-5 sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
-          <Link to="/garden-ai" className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label="Back to Garden AI">
+          <Link to="/garden-ai" className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         ) : (
-          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`Back to ${plant.name}`}>
+          <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="press grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={`${ui(language, "backToPlant")}: ${plant.name}`}>
             <ChevronLeft className="h-4 w-4" />
           </Link>
         )}
         <div className="min-w-0">
-          <p className="eyebrow">What changed</p>
+          <p className="eyebrow">{ui(language, "comparisonWhatChanged")}</p>
           <h1 className="truncate font-display text-2xl">
-            {plant.name} · two real moments
+            {plant.name} · {ui(language, "twoRealMoments")}
           </h1>
         </div>
       </div>
@@ -107,10 +109,10 @@ function Compare() {
             </span>
           </div>
           <span className="absolute top-3 left-3 rounded-full bg-black/45 px-2.5 py-1 text-[0.65rem] text-white backdrop-blur">
-             {formatDate(a.daysAgo)} · Day {Math.max(plant.plantedDaysAgo - a.daysAgo, 0)}
+             {formatDate(a.daysAgo)} · {ui(language, "dayLabel")} {Math.max(plant.plantedDaysAgo - a.daysAgo, 0)}
           </span>
           <span className="absolute top-3 right-3 rounded-full bg-black/45 px-2.5 py-1 text-[0.65rem] text-white backdrop-blur">
-             {formatDate(b.daysAgo)} · Day {Math.max(plant.plantedDaysAgo - b.daysAgo, 0)}
+             {formatDate(b.daysAgo)} · {ui(language, "dayLabel")} {Math.max(plant.plantedDaysAgo - b.daysAgo, 0)}
           </span>
         </div>
         <input
@@ -119,24 +121,24 @@ function Compare() {
           max={98}
           value={slider}
           onChange={(e) => setSlider(Number(e.target.value))}
-          aria-label="Reveal the earlier photo"
+          aria-label={ui(language, "revealEarlier")}
           className="mt-4 w-full accent-[var(--color-primary)]"
         />
       </div>
 
       <div className="mt-8 px-5 sm:px-8 lg:px-12">
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-3">
-          <div className="bg-card p-4"><p className="eyebrow">Earlier</p><p className="mt-1 font-display text-lg">Day {Math.max(plant.plantedDaysAgo - earlier.daysAgo, 0)}</p><p className="text-xs text-muted-foreground">{earlier.caption}</p></div>
-          <div className="bg-card p-4"><p className="eyebrow">Time between</p><p className="mt-1 font-display text-lg">{result.days} days</p><p className="text-xs text-muted-foreground">{context.length} relevant recorded {context.length === 1 ? "event" : "events"}</p></div>
-          <div className="bg-card p-4"><p className="eyebrow">Later</p><p className="mt-1 font-display text-lg">{ageLabel(plant.plantedDaysAgo - later.daysAgo)}</p><p className="text-xs text-muted-foreground">{later.caption}</p></div>
+          <div className="bg-card p-4"><p className="eyebrow">{ui(language, "earlier")}</p><p className="mt-1 font-display text-lg">{ui(language, "dayLabel")} {Math.max(plant.plantedDaysAgo - earlier.daysAgo, 0)}</p><p className="text-xs text-muted-foreground">{earlier.caption}</p></div>
+          <div className="bg-card p-4"><p className="eyebrow">{ui(language, "timeBetween")}</p><p className="mt-1 font-display text-lg">{result.days} {ui(language, "days")}</p><p className="text-xs text-muted-foreground">{context.length} {context.length === 1 ? ui(language, "relevantRecordedEvent") : ui(language, "relevantRecordedEvents")}</p></div>
+          <div className="bg-card p-4"><p className="eyebrow">{ui(language, "later")}</p><p className="mt-1 font-display text-lg">{ageLabel(plant.plantedDaysAgo - later.daysAgo)}</p><p className="text-xs text-muted-foreground">{later.caption}</p></div>
         </div>
       </div>
 
       {/* pickers */}
       <div className="mt-8 grid gap-5 px-5 sm:grid-cols-2 sm:px-8 lg:px-12">
         {[
-          { label: "Earlier photo", value: aId, set: setAId },
-          { label: "Later photo", value: bId, set: setBId },
+          { label: ui(language, "earlierPhoto"), value: aId, set: setAId },
+          { label: ui(language, "laterPhoto"), value: bId, set: setBId },
         ].map((picker) => (
           <div key={picker.label}>
             <p className="eyebrow mb-2">{picker.label}</p>
@@ -161,13 +163,13 @@ function Compare() {
         ))}
       </div>
 
-      {context.length ? <div className="mt-10 px-5 sm:px-8 lg:px-12"><div className="surface p-5"><div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3"><h2 className="font-display text-lg">Recorded between these moments</h2><ProvenanceTag kind="recorded" /></div><div className="flex flex-wrap gap-2">{context.map((event) => <span key={event.id} className="rounded-full bg-secondary px-3 py-1.5 text-xs">{formatDate(event.daysAgo)} · {event.title}</span>)}</div></div></div> : null}
+      {context.length ? <div className="mt-10 px-5 sm:px-8 lg:px-12"><div className="surface p-5"><div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3"><h2 className="font-display text-lg">{ui(language, "recordedBetweenMoments")}</h2><ProvenanceTag kind="recorded" /></div><div className="flex flex-wrap gap-2">{context.map((event) => <span key={event.id} className="rounded-full bg-secondary px-3 py-1.5 text-xs">{formatDate(event.daysAgo)} · {event.title}</span>)}</div></div></div> : null}
 
       {/* deltas */}
       <div className="mt-10 grid gap-4 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
         <div className="surface p-5">
           <div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-            <h2 className="min-w-0 font-display text-lg">Recorded measurements</h2>
+            <h2 className="min-w-0 font-display text-lg">{ui(language, "recordedMeasurements")}</h2>
             <ProvenanceTag kind="observed" />
           </div>
           {hasRecordedMeasurements ? <ul className="space-y-4">
@@ -197,13 +199,13 @@ function Compare() {
                 </li>
               );
             })}
-          </ul> : <p className="text-sm text-muted-foreground">No numeric measurements were recorded for these two moments.</p>}
+          </ul> : <p className="text-sm text-muted-foreground">{ui(language, "noNumericMeasurements")}</p>}
         </div>
 
         <div className="space-y-4">
           <div className="surface p-5">
             <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-              <h2 className="min-w-0 font-display text-lg">Observed</h2>
+              <h2 className="min-w-0 font-display text-lg">{ui(language, "observed")}</h2>
               <ProvenanceTag kind="observed" />
             </div>
             <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
@@ -214,7 +216,7 @@ function Compare() {
           </div>
           <div className="surface p-5">
             <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-              <h2 className="min-w-0 font-display text-lg">Possible meaning</h2>
+              <h2 className="min-w-0 font-display text-lg">{ui(language, "possibleMeaning")}</h2>
               <ProvenanceTag kind="inferred" confidence={result.confidence} />
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">{result.inference}</p>
@@ -231,7 +233,7 @@ function Compare() {
           params={{ plantId: plant.id }}
           className="press inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm text-primary-foreground"
         >
-          See the whole arc as a film <ArrowRight className="h-4 w-4" />
+          {ui(language, "wholeArcFilm")} <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </div>

@@ -5,7 +5,7 @@ import {
   ageLabel,
   byRecency,
   dueLabel,
-  eventLabels,
+  localizedEventLabel,
   formatDate,
   openTasks,
   plantPhotos,
@@ -47,19 +47,19 @@ function Home() {
   const store = useGarden();
   const isSpanish = store.language === "es";
   if (store.hydration === "loading") {
-    return <HomeStatus language={store.language} message={isSpanish ? "Cargando tu jardín…" : "Loading your garden…"} />;
+    return <HomeStatus language={store.language} message={ui(store.language, "loadingGarden")} />;
   }
   if (store.hydration === "reconnecting" || store.hydration === "offline") {
-    return <HomeStatus language={store.language} message={isSpanish ? "Reconectando con tu jardín…" : "Reconnecting to your garden…"} />;
+    return <HomeStatus language={store.language} message={ui(store.language, "reconnecting")} />;
   }
   if (store.hydration === "error") {
-    return <HomeStatus language={store.language} message={isSpanish ? "No pudimos cargar tu jardín." : "We couldn't load your garden."} error />;
+    return <HomeStatus language={store.language} message={ui(store.language, "gardenLoadFailed")} error />;
   }
 
   const hero = store.highlightedPlantId
     ? store.plants.find((plant) => plant.id === store.highlightedPlantId)
     : undefined;
-  if (!hero) return <HomeEmpty isSpanish={isSpanish} />;
+  if (!hero) return <HomeEmpty language={store.language} />;
 
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const plantById = (id: string) => store.plants.find((p) => p.id === id)!;
@@ -74,7 +74,7 @@ function Home() {
       if (pics.length < 2) return null;
       const a = pics[pics.length - 2]!;
       const b = pics[pics.length - 1]!;
-      return { plant, a, b, cmp: comparePhotos(a, b, plant) };
+      return { plant, a, b, cmp: comparePhotos(a, b, plant, store.language) };
     })
     .filter(Boolean)
     .slice(0, 3) as Array<{
@@ -87,20 +87,20 @@ function Home() {
   const heroPhoto = photoById(hero.heroPhotoId);
   const heroPics = plantPhotos(store.photos, hero.id);
   const greeting = new Date().getHours() < 12
-    ? isSpanish ? "Buenos días" : "Good morning"
+    ? ui(store.language, "goodMorning")
     : new Date().getHours() < 18
-      ? isSpanish ? "Buenas tardes" : "Good afternoon"
-      : isSpanish ? "Buenas noches" : "Good evening";
+      ? ui(store.language, "goodAfternoon")
+      : ui(store.language, "goodEvening");
 
   return (
     <div className="rise">
       <div className="relative">
         <PageHeader
           eyebrow={new Date().toLocaleDateString(isSpanish ? "es-ES" : "en-US", { weekday: "long", month: "long", day: "numeric" })}
-          title={`${greeting}, ${store.profile.signedIn ? store.profile.name : isSpanish ? "jardinero" : "gardener"}`}
+          title={`${greeting}, ${store.profile.signedIn ? store.profile.name : ui(store.language, "gardener")}`}
           subtitle={isSpanish
-            ? `${store.plants.length} plantas en ${store.gardens.length} jardines. ${due.length} cosas necesitan tus manos hoy.`
-            : `${store.plants.length} plants across ${store.gardens.length} gardens. ${due.length} things want your hands today.`}
+            ? `${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}. ${due.length} ${ui(store.language, "thingsNeedHands")}`
+            : `${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}. ${due.length} ${ui(store.language, "thingsNeedHands")}`}
         />
       </div>
 
@@ -127,21 +127,21 @@ function Home() {
             <div className="veil absolute inset-0" />
             <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9">
               <p className="text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">
-                Highlighted today · {ageLabel(hero.plantedDaysAgo)}
+                {ui(store.language, "highlightedToday")} · {ageLabel(hero.plantedDaysAgo)}
               </p>
               <h2 className="mt-2 font-display text-3xl text-white sm:text-5xl">{hero.name}</h2>
               <p className="mt-1.5 max-w-md text-sm text-white/80">
                 {hero.species} “{hero.variety}” · {hero.statusNote}
               </p>
               <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-2 text-sm text-white ring-1 ring-white/25 backdrop-blur-md">
-                Open the story <ArrowRight className="h-4 w-4" />
+                {ui(store.language, "openStory")} <ArrowRight className="h-4 w-4" />
               </span>
             </div>
           </div>
         </Link>
         {heroPics.length >= 2 ? (
           <p className="mt-3 px-1 text-xs text-muted-foreground">
-            {heroPics.length} photos on file — the first from {formatDate(heroPics[0]!.daysAgo)}.
+            {heroPics.length} {ui(store.language, "photosOnFile")} — {ui(store.language, "firstFrom")} {formatDate(heroPics[0]!.daysAgo)}.
           </p>
         ) : null}
       </section>
@@ -151,11 +151,11 @@ function Home() {
         <SectionTitle
           action={
             <Link to="/care" className="inline-flex items-center gap-1 text-primary hover:underline">
-              All care <ChevronRight className="h-3.5 w-3.5" />
+              {ui(store.language, "allCare")} <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           }
         >
-          Wants attention
+          {ui(store.language, "wantsAttention")}
         </SectionTitle>
         <div className="no-scrollbar -mx-5 flex snap-x gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:px-0 xl:grid-cols-3">
           {due.map((task) => {
@@ -196,9 +196,9 @@ function Home() {
           className="press mt-3 flex items-center justify-between rounded-3xl bg-primary px-5 py-4 text-primary-foreground shadow-soft"
         >
           <span className="min-w-0">
-            <span className="block text-sm font-medium">Start a maintenance session</span>
+            <span className="block text-sm font-medium">{ui(store.language, "startMaintenance")}</span>
             <span className="block text-xs text-primary-foreground/70">
-              Plant by plant, {openTasks(store.tasks).length} open actions
+              {ui(store.language, "plantByPlant")}, {openTasks(store.tasks).length} {ui(store.language, "openActions")}
             </span>
           </span>
           <ArrowRight className="h-4 w-4 shrink-0" />
@@ -207,7 +207,7 @@ function Home() {
 
       {/* Meaningful changes */}
       <section className="mt-12 px-5 sm:px-8 lg:px-12">
-        <SectionTitle>Meaningful changes</SectionTitle>
+        <SectionTitle>{ui(store.language, "meaningfulChanges")}</SectionTitle>
         <div className="grid gap-3 lg:grid-cols-3">
           {changes.map(({ plant, a, b, cmp }) => (
             <Link
@@ -246,16 +246,14 @@ function Home() {
         <div className="rounded-3xl border border-inference/25 bg-inference/6 p-5 sm:p-6">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-inference" />
-            <span className="eyebrow">Garden summary</span>
+            <span className="eyebrow">{ui(store.language, "gardenSummary")}</span>
           </div>
           <p className="mt-3 max-w-2xl text-[0.975rem] leading-relaxed">
-            Two of six plants have a recorded issue in the last three weeks. Ember's colour index dropped
-            10 points between its two photos, while every other plant held or improved. The pattern points to
-            a nutrient issue on Ember alone rather than a garden-wide cause.
+            {ui(store.language, "gardenSummaryBody")}
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <ProvenanceTag kind="inferred" confidence="moderate" />
-            <span className="text-xs text-muted-foreground">Built from 6 photos and 12 recorded events.</span>
+            <span className="text-xs text-muted-foreground">{ui(store.language, "summaryBuiltFrom")} {store.photos.length} {ui(store.language, "photosOnFile")} {isSpanish ? "y" : "and"} {store.events.length} {ui(store.language, "recordedEvents")}.</span>
           </div>
         </div>
       </section>
@@ -263,7 +261,7 @@ function Home() {
       {/* Recent activity + new photos */}
       <section className="mt-12 grid gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:px-12">
         <div>
-          <SectionTitle>Recent activity</SectionTitle>
+          <SectionTitle>{ui(store.language, "recentActivity")}</SectionTitle>
           <ul className="space-y-1">
             {recent.map((e) => {
               const Icon = eventIcons[e.type];
@@ -281,7 +279,7 @@ function Home() {
                     <span className="min-w-0">
                       <span className="block truncate text-sm">{e.title}</span>
                       <span className="block truncate text-xs text-muted-foreground">
-                        {plant.name} · {eventLabels[e.type]}
+                        {plant.name} · {localizedEventLabel(e.type, store.language)}
                       </span>
                     </span>
                     <span className="numeral shrink-0 text-xs text-muted-foreground">
@@ -302,7 +300,7 @@ function Home() {
               </Link>
             }
           >
-            New photos
+            {ui(store.language, "newPhotos")}
           </SectionTitle>
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-3">
             {newPhotos.map((photo) => (
@@ -343,8 +341,8 @@ function Home() {
             <UserRound className="h-4 w-4" />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block truncate text-foreground">{store.profile.signedIn ? store.profile.name : "Your Garden X"}</span>
-            <span className="block text-xs">Profile &amp; settings</span>
+            <span className="block truncate text-foreground">{store.profile.signedIn ? store.profile.name : ui(store.language, "yourGardenX")}</span>
+            <span className="block text-xs">{ui(store.language, "profileSettings")}</span>
           </span>
           <ChevronRight className="h-4 w-4" />
         </Link>
@@ -367,23 +365,24 @@ function HomeStatus({ message, error = false, language }: { message: string; err
   );
 }
 
-function HomeEmpty({ isSpanish }: { isSpanish: boolean }) {
+function HomeEmpty({ language }: { language: "en" | "es" }) {
+  const isSpanish = language === "es";
   return (
     <main className="rise pb-16">
       <PageHeader
-        eyebrow={isSpanish ? "Tu jardín" : "Your garden"}
-        title={isSpanish ? "Todavía no hay plantas" : "No plants yet"}
-        subtitle={isSpanish ? "Crea tu primer jardín para empezar a guardar su historia." : "Create your first garden to begin keeping its story."}
+        eyebrow={ui(language, "yourGarden")}
+        title={ui(language, "noPlantsYet")}
+        subtitle={ui(language, "createFirstGarden")}
       />
       <section className="px-5 sm:px-8 lg:px-12">
         <div className="surface grid min-h-64 place-items-center p-8 text-center">
           <div className="max-w-md">
-            <p className="font-display text-2xl">{isSpanish ? "Empieza desde cero" : "Start from a clear beginning"}</p>
+            <p className="font-display text-2xl">{ui(language, "startFromBeginning")}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {isSpanish ? "Tus plantas reales aparecerán aquí después de crear un jardín." : "Your real plants will appear here after you create a garden."}
+              {ui(language, "realPlantsAppear")}
             </p>
             <Link to="/gardens" className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground">
-              {isSpanish ? "Crear jardín" : "Create garden"} <ArrowRight className="h-4 w-4" />
+              {ui(language, "createGarden")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

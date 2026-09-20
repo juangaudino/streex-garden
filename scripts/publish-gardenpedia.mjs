@@ -114,6 +114,7 @@ function prepare() {
 
   let index = fs.readFileSync(path.join(source, "index.html"), "utf8");
   index = index
+    .replace("<head>", '<head><base href="/gardenpedia/" />')
     .replace(/<link rel="stylesheet" href="\.\/machines-v1\.css[^"]*" \/>/, "")
     .replace(/<link rel="stylesheet" href="\.\/homegrown-source-comparison\.css[^"]*" \/>/, "")
     .replace(/<button id="machinesTab"[\s\S]*?<\/button>/, "")

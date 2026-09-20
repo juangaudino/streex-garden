@@ -15,27 +15,13 @@ async function ensureCatalogCache() {
   if (!url || !serviceKey) throw new Error("Garden Library catalog sync is not configured.");
   const db = createClient(url, serviceKey, {
     auth: { persistSession: false, autoRefreshToken: false },
-  }).schema("garden");
-  const { count, error: countError } = await db
-    .from("library_catalog_items")
-    .select("library_plant_id", { count: "exact", head: true })
-    .eq("catalog_version", gardenLibraryManifest.catalogVersion);
-  if (countError) throw countError;
-  if (count === gardenLibraryManifest.entries.length) return;
-  const { error } = await db.from("library_catalog_items").upsert(
-    gardenLibraryManifest.entries.map((entry) => ({
-      library_plant_id: entry.libraryPlantId,
-      catalog_version: gardenLibraryManifest.catalogVersion,
-      common_name: entry.commonName,
-      scientific_name: entry.scientificName,
-      cultivar: entry.cultivar,
-      aliases: entry.aliases,
-      category: entry.category,
-      status: entry.status,
-      provenance: entry.provenance,
+  });
+  const { error } = await db.rpc("garden_x_sync_library_catalog", {
+    p_catalog: gardenLibraryManifest.entries.map((entry) => ({
+      ...entry,
+      catalogVersion: gardenLibraryManifest.catalogVersion,
     })),
-    { onConflict: "library_plant_id" },
-  );
+  });
   if (error) throw error;
 }
 

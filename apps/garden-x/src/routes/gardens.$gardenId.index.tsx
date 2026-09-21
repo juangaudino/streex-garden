@@ -236,7 +236,7 @@ function GardenDetail() {
                                 <span className="sm:hidden">P{position.number}</span>
                                 <span className="hidden sm:inline">{label}</span>
                               </span>
-                              <span className="block aspect-square w-full max-w-16 overflow-hidden rounded-full border-2 border-background shadow-soft sm:max-w-24 sm:border-4">
+                              <span className="block aspect-square w-full max-w-28 overflow-hidden rounded-full border-2 border-background shadow-soft sm:max-w-24 sm:border-4">
                                 {photoById(plant.heroPhotoId) ? (
                                   <PhotoImage
                                     photo={photoById(plant.heroPhotoId)!}
@@ -247,7 +247,7 @@ function GardenDetail() {
                                 ) : null}
                               </span>
                               <span className="mt-1 block min-w-0 max-w-full sm:mt-2">
-                                <span className="block truncate text-xs font-medium sm:text-sm">
+                                <span className="line-clamp-2 text-center text-[0.7rem] font-medium leading-tight sm:text-sm">
                                   {plant.name}
                                 </span>
                                 <span className="hidden truncate text-[0.65rem] text-muted-foreground sm:block">
@@ -267,7 +267,7 @@ function GardenDetail() {
                                 <span className="sm:hidden">P{position.number}</span>
                                 <span className="hidden sm:inline">{label}</span>
                               </span>
-                              <span className="grid aspect-square w-full max-w-16 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground transition-colors group-hover:border-primary/50 sm:max-w-24"><Plus className="h-4 w-4" /></span>
+                              <span className="grid aspect-square w-full max-w-28 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground transition-colors group-hover:border-primary/50 sm:max-w-24"><Plus className="h-4 w-4" /></span>
                               <span className="sr-only sm:not-sr-only sm:mt-2 sm:block sm:text-xs sm:text-muted-foreground">{ui(language, "emptyAddPlant")}</span>
                             </button>
                           );

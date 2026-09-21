@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ScanLine, Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { analysePhoto, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
+import { formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
@@ -45,23 +45,26 @@ function Check_() {
   const photos = plantPhotos(store.photos, plant.id);
   const events = plantEvents(store.events, plant.id);
   const [selected, setSelected] = useState(photos[photos.length - 1]?.id ?? "");
-  const [phase, setPhase] = useState<"idle" | "scanning" | "done">("idle");
+  const [phase, setPhase] = useState<"idle" | "scanning" | "done" | "error">("idle");
   const [saved, setSaved] = useState(false);
   const [aiResult, setAiResult] = useState<AnalysisResult | null>(null);
+  const analysisRequestRef = useRef<string | null>(null);
   const photo = store.photos.find((p) => p.id === selected)!;
-  const fallbackResult = analysePhoto(plant, photo, events, language);
-  const result = aiResult ?? fallbackResult;
+  const result = aiResult;
 
   const run = () => {
+    const requestToken = crypto.randomUUID();
+    analysisRequestRef.current = requestToken;
     setPhase("scanning");
     setSaved(false);
     setAiResult(null);
     if (!plant.backendGrowCycleId || !photo.backendEventId) {
-      window.setTimeout(() => { setAiResult(fallbackResult); setPhase("done"); }, 700);
+      setPhase("error");
       return;
     }
     void runAiCheck(plant.backendGrowCycleId, photo.id)
       .then(({ proposal }) => {
+        if (analysisRequestRef.current !== requestToken) return;
         const confidence: AnalysisResult["confidence"] = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
@@ -73,8 +76,12 @@ function Check_() {
         ];
         setAiResult({ headline: String(proposal.summary ?? ui(language, "gardenAiCheckResult")), confidence, findings, grounding: [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`] });
       })
-      .catch(() => setAiResult(fallbackResult))
-      .finally(() => setPhase("done"));
+      .then(() => {
+        if (analysisRequestRef.current === requestToken) setPhase("done");
+      })
+      .catch(() => {
+        if (analysisRequestRef.current === requestToken) setPhase("error");
+      });
   };
 
   return (
@@ -130,8 +137,10 @@ function Check_() {
               <button
                 key={p.id}
                 onClick={() => {
+                  analysisRequestRef.current = null;
                   setSelected(p.id);
                   setPhase("idle");
+                  setAiResult(null);
                 }}
                 className={cn(
                   "press h-16 w-16 shrink-0 overflow-hidden rounded-2xl border-2 transition-colors",
@@ -155,17 +164,17 @@ function Check_() {
 
         {/* result pane */}
         <div className="min-w-0">
-          {phase !== "done" ? (
+          {phase !== "done" || !result ? (
             <div className="surface grid min-h-64 place-items-center p-8 text-center">
               <div className="max-w-sm">
                 <span className={cn("mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-primary", phase === "scanning" && "breathe")}>
                   <Sparkles className="h-5 w-5" />
                 </span>
                 <p className="mt-4 font-display text-xl">
-                  {phase === "scanning" ? ui(language, "refiningReading") : ui(language, "nothingClaimed")}
+                  {phase === "scanning" ? ui(language, "refiningReading") : phase === "error" ? ui(language, "analysisUnavailable") : ui(language, "nothingClaimed")}
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {phase === "scanning" ? ui(language, "checkScanningInstruction") : ui(language, "checkInstruction")}
+                  {phase === "scanning" ? ui(language, "checkScanningInstruction") : phase === "error" ? ui(language, "analysisUnavailableBody") : ui(language, "checkInstruction")}
                 </p>
               </div>
             </div>

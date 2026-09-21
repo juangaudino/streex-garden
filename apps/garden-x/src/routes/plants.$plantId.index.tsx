@@ -6,7 +6,6 @@ import {
   ScanLine,
   GitCompareArrows,
   MessageCircle,
-  MoreHorizontal,
   Plus,
   Check,
   Share2,
@@ -50,12 +49,6 @@ import { HistoryShareDialog } from "@/components/garden/share-story";
 import { usePhotoViewer } from "@/components/garden/photo-viewer";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
@@ -264,28 +257,44 @@ function PlantProfile() {
               </>
             ) : null}
           </p>
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 ring-1 ring-white/20 backdrop-blur-md">
-            <span className={cn("h-1.5 w-1.5 rounded-full", statusMeta[plant.status].dot)} />
-            <span className="text-xs text-white">
-              {formatStatusLine(localizedStatusLabel(plant.status, language), plant.statusNote)}
-            </span>
+          <div className="mt-3 flex max-w-full flex-wrap items-center gap-1.5">
+            <div className="inline-flex max-w-full items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 ring-1 ring-white/20 backdrop-blur-md">
+              <span className={cn("h-1.5 w-1.5 shrink-0 rounded-full", statusMeta[plant.status].dot)} />
+              <span className="truncate text-xs text-white">
+                {formatStatusLine(localizedStatusLabel(plant.status, language), plant.statusNote)}
+              </span>
+            </div>
+            <button
+              onClick={() => setShareOpen(true)}
+              className="press inline-flex min-h-9 items-center gap-1.5 rounded-full border-l border-white/25 px-2.5 py-1.5 text-xs text-white/90 transition-colors hover:bg-black/20"
+            >
+              <Share2 className="h-3.5 w-3.5" strokeWidth={1.8} /> {ui(language, "share")}
+            </button>
+            <Link
+              to="/plants/$plantId/film"
+              params={{ plantId: plant.id }}
+              className="press inline-flex min-h-9 items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs text-white/90 transition-colors hover:bg-black/20"
+            >
+              <Film className="h-3.5 w-3.5" strokeWidth={1.8} /> {ui(language, "film")}
+            </Link>
           </div>
         </div>
       </div>
 
       {/* tools */}
-      <div className="mt-5 grid grid-cols-4 gap-2 px-5 sm:hidden">
+      <div className="mt-5 grid grid-cols-4 gap-1.5 px-5 sm:gap-3 sm:px-8 lg:px-12">
         <button
           onClick={() => openRecord()}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-1 py-2.5 text-[0.7rem] shadow-soft"
+          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
           <Plus className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
-          <span className="truncate">{ui(language, "recordShort")}</span>
+          <span className="truncate sm:hidden">{ui(language, "recordShort")}</span>
+          <span className="hidden truncate sm:inline">{ui(language, "recordMoment")}</span>
         </button>
         <Link
           to="/plants/$plantId/check"
           params={{ plantId: plant.id }}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-1 py-2.5 text-[0.7rem] shadow-soft"
+          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
           <ScanLine className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
           <span className="truncate">{ui(language, "aiCheck")}</span>
@@ -293,77 +302,19 @@ function PlantProfile() {
         <Link
           to="/plants/$plantId/compare"
           params={{ plantId: plant.id }}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-1 py-2.5 text-[0.7rem] shadow-soft"
+          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
           <GitCompareArrows className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
           <span className="truncate">{ui(language, "compare")}</span>
         </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-1 py-2.5 text-[0.7rem] shadow-soft">
-              <MoreHorizontal className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
-              <span className="truncate">{ui(language, "more")}</span>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
-            <DropdownMenuItem asChild>
-              <Link to="/plants/$plantId/film" params={{ plantId: plant.id }}>
-                <Film className="h-4 w-4 text-primary" /> {ui(language, "growthFilm")}
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setShareOpen(true)}>
-              <Share2 className="h-4 w-4 text-primary" /> {ui(language, "shareStory")}
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link
-                to="/plants/$plantId/ask"
-                params={{ plantId: plant.id }}
-                search={{ from: undefined, prompt: undefined }}
-              >
-                <MessageCircle className="h-4 w-4 text-primary" /> {ui(language, "askGarden")}
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-      <div className="no-scrollbar mt-5 hidden gap-2 overflow-x-auto px-5 sm:flex sm:px-8 lg:px-12">
-        <button
-          onClick={() => openRecord()}
-          className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
-        >
-          <Plus className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          {ui(language, "recordMoment")}
-        </button>
-        {[
-          { to: "/plants/$plantId/check", label: "AI Check", icon: ScanLine },
-          { to: "/plants/$plantId/compare", label: "Compare", icon: GitCompareArrows },
-          { to: "/plants/$plantId/film", label: "Growth Film", icon: Film },
-        ].map((tool) => (
-          <Link
-            key={tool.label}
-            to={tool.to}
-            params={{ plantId: plant.id }}
-            className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
-          >
-            <tool.icon className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          {tool.label === "AI Check" ? ui(language, "aiCheck") : tool.label === "Compare" ? ui(language, "compare") : "Growth Film"}
-          </Link>
-        ))}
-        <button
-          onClick={() => setShareOpen(true)}
-          className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
-        >
-          <Share2 className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          {ui(language, "shareStory")}
-        </button>
         <Link
           to="/plants/$plantId/ask"
           params={{ plantId: plant.id }}
           search={{ from: undefined, prompt: undefined }}
-          className="press inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-card px-4 py-2.5 text-sm shadow-soft"
+          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
-          <MessageCircle className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          {ui(language, "askGarden")}
+          <MessageCircle className="h-3.5 w-3.5 shrink-0 text-primary sm:h-4 sm:w-4" strokeWidth={1.8} />
+          <span className="truncate">{ui(language, "askGarden")}</span>
         </Link>
       </div>
 

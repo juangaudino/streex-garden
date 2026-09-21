@@ -31,6 +31,10 @@ export async function runAiCheckRuntime(input: {
   })
   if (error || !data || typeof data !== 'object') throw new Error('Authorized AI context is unavailable')
   const context = data as Record<string, unknown>
+  const cycle = context.cycle
+  if (!cycle || typeof cycle !== 'object' || Array.isArray(cycle) || (cycle as Record<string, unknown>).id !== input.growCycleId) {
+    throw new Error('Authorized AI context is bound to a different grow cycle')
+  }
   const selected = context.selected_photo
   if (!selected || typeof selected !== 'object') throw new Error('Selected photo metadata is unavailable')
   const photo = selected as { id?: unknown; storage_path?: unknown; content_type?: unknown; byte_size?: unknown }

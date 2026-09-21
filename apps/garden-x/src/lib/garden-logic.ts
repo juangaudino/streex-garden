@@ -130,6 +130,18 @@ export const plantPhotos = (photos: Photo[], plantId: string) =>
   chronological(photos.filter((p) => p.plantId === plantId));
 
 /**
+ * AI Check can analyse both event-linked photos and historical cycle evidence.
+ * The backend authorizes either relationship, so the UI must require a
+ * persisted storage path rather than an event id.
+ */
+export function canRunAiCheck(
+  plant: Pick<Plant, "backendGrowCycleId">,
+  photo: Pick<Photo, "backendStoragePath">,
+) {
+  return Boolean(plant.backendGrowCycleId && photo.backendStoragePath);
+}
+
+/**
  * Photos that can be shown in Home's plant-history "New photos" strip.
  *
  * The bootstrap also carries garden-level media so the garden cover can be

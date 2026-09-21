@@ -31,7 +31,7 @@ describe("Home new photos projection", () => {
 
   it("keeps legacy plant evidence without a media scope", () => {
     expect(
-      recentPlantPhotos([photo({ id: "legacy", mediaScope: undefined })], plants).map(
+      recentPlantPhotos([photo({ id: "legacy" })], plants).map(
         (item) => item.id,
       ),
     ).toEqual(["legacy"]);

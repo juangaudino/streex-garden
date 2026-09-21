@@ -3,7 +3,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ScanLine, Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
+import { canRunAiCheck, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
@@ -58,23 +58,30 @@ function Check_() {
     setPhase("scanning");
     setSaved(false);
     setAiResult(null);
-    if (!plant.backendGrowCycleId || !photo.backendEventId) {
+    if (!canRunAiCheck(plant, photo)) {
       setPhase("error");
       return;
     }
-    void runAiCheck(plant.backendGrowCycleId, photo.id)
+    const growCycleId = plant.backendGrowCycleId;
+    if (!growCycleId) {
+      setPhase("error");
+      return;
+    }
+    void runAiCheck(growCycleId, photo.id)
       .then(({ proposal }) => {
         if (analysisRequestRef.current !== requestToken) return;
         const confidence: AnalysisResult["confidence"] = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
+        const interpretations = Array.isArray(proposal.interpretations) ? proposal.interpretations.map(String) : [];
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
         const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations : [];
         const findings: AnalysisResult["findings"] = [
           ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? ui(language, "visibleState") : ui(language, "observation"), body })),
+          ...interpretations.map((body) => ({ kind: "inference" as const, title: ui(language, "possibleMeaning"), body, confidence })),
           ...uncertainty.map((body) => ({ kind: "inference" as const, title: ui(language, "uncertainty"), body, confidence })),
-          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: String(item.kind ?? ui(language, "nextStep")), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
+          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: item.kind === "thinning" ? ui(language, "thinning") : item.kind === "pruning" ? ui(language, "pruning") : item.kind === "support" ? ui(language, "support") : ui(language, "nextStep"), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
         ];
-        setAiResult({ headline: String(proposal.summary ?? ui(language, "gardenAiCheckResult")), confidence, findings, grounding: [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`] });
+        setAiResult({ headline: String(proposal.headline ?? ui(language, "gardenAiCheckResult")), confidence, findings, grounding: [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`] });
       })
       .then(() => {
         if (analysisRequestRef.current === requestToken) setPhase("done");

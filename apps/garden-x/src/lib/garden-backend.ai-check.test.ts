@@ -26,8 +26,8 @@ describe("AI Check request isolation", () => {
     await runAiCheck("cycle-a", "photo-a");
     await runAiCheck("cycle-b", "photo-b");
 
-    const first = JSON.parse(fetchMock.mock.calls[0][1].body as string);
-    const second = JSON.parse(fetchMock.mock.calls[1][1].body as string);
+    const first = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    const second = JSON.parse(fetchMock.mock.calls[1]![1]!.body as string);
 
     expect(first).toMatchObject({
       operation: "ai_check",

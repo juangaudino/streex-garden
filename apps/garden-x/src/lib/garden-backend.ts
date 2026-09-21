@@ -1231,9 +1231,11 @@ export async function askGardenAi(
 }
 
 export interface AiCheckProposal {
+  headline: string;
   summary: string;
   confidence: "low" | "medium" | "high";
   observations: string[];
+  interpretations: string[];
   uncertainty: string[];
   development_recommendations: Array<{
     kind: string;

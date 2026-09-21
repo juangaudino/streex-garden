@@ -294,6 +294,7 @@ function PlantProfile() {
         <Link
           to="/plants/$plantId/check"
           params={{ plantId: plant.id }}
+          search={{ from: undefined }}
           className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
           <ScanLine className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
@@ -302,6 +303,7 @@ function PlantProfile() {
         <Link
           to="/plants/$plantId/compare"
           params={{ plantId: plant.id }}
+          search={{ from: undefined }}
           className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
         >
           <GitCompareArrows className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />

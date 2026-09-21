@@ -39,13 +39,13 @@ export async function runAiCheckRuntime(input: {
   if (!selected || typeof selected !== 'object') throw new Error('Selected photo metadata is unavailable')
   const photo = selected as { id?: unknown; storage_path?: unknown; content_type?: unknown; byte_size?: unknown }
   if (photo.id !== input.photoId || typeof photo.storage_path !== 'string' || typeof photo.content_type !== 'string' || typeof photo.byte_size !== 'number') throw new Error('Selected photo metadata is invalid')
-  if (photo.byte_size > maxPhotoBytes) throw new Error('Selected photo exceeds the AI image limit')
   const downloaded = await readAuthorizedPhoto(input.storageClient, input.ownerId, {
     id: input.photoId,
     storage_path: photo.storage_path,
     content_type: photo.content_type,
     byte_size: photo.byte_size,
   })
+  if (downloaded.bytes.byteLength > maxPhotoBytes) throw new Error('Selected AI image exceeds the AI image limit')
   const comparison = context.comparison_photo
   const comparisonPhoto = input.comparePhotoId
     ? comparison && typeof comparison === 'object'
@@ -54,7 +54,6 @@ export async function runAiCheckRuntime(input: {
     : null
   if (input.comparePhotoId && (!comparisonPhoto || comparisonPhoto.id !== input.comparePhotoId || typeof comparisonPhoto.storage_path !== 'string' || typeof comparisonPhoto.content_type !== 'string' || typeof comparisonPhoto.byte_size !== 'number')) throw new Error('Comparison photo metadata is invalid')
   const comparisonByteSize = comparisonPhoto?.byte_size as number | undefined
-  if (comparisonByteSize !== undefined && comparisonByteSize > maxPhotoBytes) throw new Error('Comparison photo exceeds the AI image limit')
   const comparisonDownloaded = comparisonPhoto
     ? await readAuthorizedPhoto(input.storageClient, input.ownerId, {
       id: input.comparePhotoId!,
@@ -63,6 +62,7 @@ export async function runAiCheckRuntime(input: {
       byte_size: comparisonByteSize!,
     })
     : null
+  if (comparisonDownloaded && comparisonDownloaded.bytes.byteLength > maxPhotoBytes) throw new Error('Comparison AI image exceeds the AI image limit')
   const contextWithoutPaths = {
     ...context,
     selected_photo: { ...photo, storage_path: undefined },

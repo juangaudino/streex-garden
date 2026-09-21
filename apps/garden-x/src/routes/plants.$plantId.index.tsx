@@ -398,7 +398,7 @@ function PlantProfile() {
 
             <div className="mb-4">
               <h2 className="font-display text-xl">{ui(language, "livedThrough")}</h2>
-              <div className="mt-2 flex justify-end text-sm">
+              <div className="mt-2 flex justify-start text-sm">
                 <button
                   onClick={() => setShareOpen(true)}
                   className="inline-flex items-center gap-1.5 text-primary hover:underline"

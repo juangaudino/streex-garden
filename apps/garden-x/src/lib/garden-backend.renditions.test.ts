@@ -8,7 +8,7 @@ vi.mock("./supabase", () => ({
   }),
 }));
 
-import { photoRenditionCandidates, resolvePhotoUrl } from "./garden-backend";
+import { photoRenditionCandidates, preloadPhotoRendition, resolvePhotoUrl } from "./garden-backend";
 
 const photo = {
   id: "photo-1",
@@ -84,5 +84,25 @@ describe("photo renditions", () => {
     await expect(resolvePhotoUrl({ id: "public", src: "data:image/gif;base64,fixture" }, "display"))
       .resolves.toBe("data:image/gif;base64,fixture");
     expect(createSignedUrls).not.toHaveBeenCalled();
+  });
+
+  it("warms the browser cache for a selected display rendition", async () => {
+    const imageSources: string[] = [];
+    class FakeImage {
+      decoding = "";
+      set src(value: string) {
+        imageSources.push(value);
+      }
+    }
+    vi.stubGlobal("Image", FakeImage);
+    createSignedUrls.mockResolvedValue({
+      data: [{ path: "owner/photo-preload/display.jpg", signedUrl: "https://signed/display" }],
+      error: null,
+    });
+
+    await preloadPhotoRendition({ ...photo, id: "photo-preload", backendStoragePath: "owner/photo-preload/original.jpg" }, "display");
+
+    expect(imageSources).toEqual(["https://signed/display"]);
+    vi.unstubAllGlobals();
   });
 });

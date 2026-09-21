@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Camera, ChevronDown, GitCompareArrows, Search, ScanLine, Sparkles } from "lucide-react";
 import {
@@ -14,7 +14,11 @@ import { useGarden } from "@/lib/garden-store";
 import { cn } from "@/lib/utils";
 import { gardenCoverPhoto } from "@/lib/garden-logic";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
 import { ui } from "@/lib/ui-copy";
+import { buildAiCheckPresentation } from "@/lib/ai-check-presentation";
+import { runAiCheckDraft, type AiCheckProposal } from "@/lib/garden-backend";
+import { ConfidenceBar } from "@/components/garden/atoms";
 
 export const Route = createFileRoute("/garden-ai")({
   head: () => ({
@@ -43,6 +47,10 @@ function GardenAI() {
   const [plantId, setPlantId] = useState("");
   const [gardenId, setGardenId] = useState("all");
   const [query, setQuery] = useState("");
+  const [draftPhoto, setDraftPhoto] = useState<string>();
+  const [draftPhase, setDraftPhase] = useState<"idle" | "scanning" | "done" | "error">("idle");
+  const [draftProposal, setDraftProposal] = useState<AiCheckProposal | null>(null);
+  const draftRequestRef = useRef<string | null>(null);
   const selected = activePlants.find((plant) => plant.id === plantId);
   const selectedPhoto = selected ? store.photos.find((photo) => photo.id === selected.heroPhotoId) : undefined;
   const contextGarden = store.gardens.find((garden) => garden.id === gardenId) ?? store.gardens[0];
@@ -50,11 +58,22 @@ function GardenAI() {
   const selectedEvents = selected ? store.events.filter((event) => event.plantId === selected.id) : [];
   const selectedPhotos = selected ? store.photos.filter((photo) => photo.plantId === selected.id) : [];
   const selectedTasks = selected ? store.tasks.filter((task) => task.plantId === selected.id && !task.done) : [];
+  const draftResult = draftProposal ? buildAiCheckPresentation(draftProposal, language, [ui(language, "newPhoto"), `${selectedEvents.length} ${ui(language, "recordedEvents")}`]) : null;
   const filtered = activePlants.filter((plant) => {
     const inGarden = gardenId === "all" || plant.gardenId === gardenId;
     const matches = plant.name.toLowerCase().includes(query.toLowerCase());
     return inGarden && matches;
   });
+  const resetDraft = () => {
+    draftRequestRef.current = null;
+    setDraftPhoto(undefined);
+    setDraftProposal(null);
+    setDraftPhase("idle");
+  };
+  const choosePlant = (id: string) => {
+    resetDraft();
+    setPlantId(id);
+  };
   const suggestions = selected
     ? [
         ...(selectedTasks.length ? [ui(language, "suggestionToday")] : []),
@@ -81,6 +100,34 @@ function GardenAI() {
     void navigate({ to: "/ask", search: { prompt } });
   };
 
+  const readDraftPhoto = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result !== "string") return;
+      setDraftPhoto(reader.result);
+      setDraftProposal(null);
+      setDraftPhase("idle");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const runDraftCheck = () => {
+    if (!selected?.backendGrowCycleId || !draftPhoto) return;
+    const requestToken = crypto.randomUUID();
+    draftRequestRef.current = requestToken;
+    setDraftPhase("scanning");
+    setDraftProposal(null);
+    void runAiCheckDraft(selected.backendGrowCycleId, draftPhoto, language)
+      .then(({ proposal }) => {
+        if (draftRequestRef.current !== requestToken) return;
+        setDraftProposal(proposal);
+        setDraftPhase("done");
+      })
+      .catch(() => {
+        if (draftRequestRef.current === requestToken) setDraftPhase("error");
+      });
+  };
+
   return (
     <div className="pb-64 lg:pb-52">
       <div className="px-5 pt-6 pb-4 sm:hidden">
@@ -98,7 +145,7 @@ function GardenAI() {
 
         <section className="grid grid-cols-2 gap-2 sm:gap-3">
           <div className={cn("surface col-span-2 min-w-0 p-4 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:block sm:p-5", selected && "hidden")}>
-            <div className="flex items-center justify-between gap-3"><p className="eyebrow">{ui(language, "choosePlant")}</p>{selected ? <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground">{ui(language, "clear")}</Button> : null}</div>
+            <div className="flex items-center justify-between gap-3"><p className="eyebrow">{ui(language, "choosePlant")}</p>{selected ? <Button type="button" variant="ghost" onClick={() => { resetDraft(); setPlantId(""); }} className="h-auto px-1 py-0 text-xs text-muted-foreground">{ui(language, "clear")}</Button> : null}</div>
             <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
               <label className="relative min-w-0"><Search className="absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={ui(language, "searchPlants")} className="input-soft w-full pl-9 text-sm" /></label>
               <label className="relative"><select value={gardenId} onChange={(event) => setGardenId(event.target.value)} aria-label={ui(language, "allGardens")} className="input-soft h-full max-w-32 appearance-none pr-8 text-xs"><option value="all">{ui(language, "allGardens")}</option>{store.gardens.map((garden) => <option key={garden.id} value={garden.id}>{garden.name}</option>)}</select><ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></label>
@@ -111,7 +158,7 @@ function GardenAI() {
                     key={plant.id}
                     type="button"
                     variant="ghost"
-                    onClick={() => setPlantId(plant.id)}
+                    onClick={() => choosePlant(plant.id)}
                     className={cn(
                       "press h-auto shrink-0 justify-start gap-3 rounded-2xl border px-3 py-2.5 text-left sm:w-full",
                       selected?.id === plant.id ? "border-primary bg-accent/50" : "border-border/70 bg-card",
@@ -131,19 +178,19 @@ function GardenAI() {
 
           {selected ? (
             <div className="relative col-span-2 min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:col-span-1 sm:col-start-1 sm:row-start-1">
-              {selectedPhoto ? <PhotoImage photo={selectedPhoto} alt={selected.name} className="aspect-[16/9] w-full object-cover" loading="eager" /> : null}
+              {selectedPhoto ? <PhotoImage photo={selectedPhoto} alt={selected.name} rendition="display" className="aspect-[16/9] w-full object-cover" loading="eager" fetchPriority="high" /> : null}
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 p-4 sm:block sm:p-5">
                 <div className="min-w-0">
                   <p className="eyebrow">{ui(language, "selectedPlant")}</p>
                   <p className="mt-1 truncate font-display text-xl">{selected.name}</p>
                   <p className="truncate text-sm text-muted-foreground">{selected.species} · {selected.slot}</p>
                 </div>
-                <Button type="button" variant="ghost" onClick={() => setPlantId("")} className="h-auto px-1 py-0 text-xs text-muted-foreground sm:hidden">{ui(language, "clear")}</Button>
+                <Button type="button" variant="ghost" onClick={() => { resetDraft(); setPlantId(""); }} className="h-auto px-1 py-0 text-xs text-muted-foreground sm:hidden">{ui(language, "clear")}</Button>
               </div>
             </div>
           ) : contextGarden && contextGardenPhoto ? (
             <div className="relative hidden min-w-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:col-start-1 sm:row-start-1 sm:block">
-              <PhotoImage photo={contextGardenPhoto} alt={`${contextGarden.name} garden`} className="aspect-[16/9] w-full object-cover" />
+              <PhotoImage photo={contextGardenPhoto} alt={`${contextGarden.name} garden`} rendition="display" className="aspect-[16/9] w-full object-cover" />
               <div className="p-5">
                 <p className="eyebrow">{ui(language, "gardenContext")}</p>
                 <p className="mt-1 font-display text-xl">{contextGarden.name}</p>
@@ -176,6 +223,39 @@ function GardenAI() {
           ))}
           {!selected ? <p className="col-span-3 mt-1 text-xs text-muted-foreground">{ui(language, "choosePlantForAi")}</p> : null}
         </section>
+
+        {selected ? (
+          <section className="surface mt-3 min-w-0 p-4 sm:mt-5 sm:p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2"><ScanLine className="h-4 w-4 text-primary" /><h2 className="font-display text-xl">{ui(language, "aiCheckTitle")}</h2></div>
+                <p className="mt-1 text-sm text-muted-foreground">{ui(language, "gardenAiNewPhotoHint")}</p>
+              </div>
+              <ProvenanceTag kind="inferred" />
+            </div>
+            <PhotoSourcePicker language={language} onFile={readDraftPhoto} className="mt-4" />
+            {draftPhoto ? (
+              <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start">
+                <img src={draftPhoto} alt={ui(language, "newPhoto")} className="aspect-[4/3] w-full rounded-2xl object-cover" />
+                <div className="min-w-0">
+                  <button type="button" onClick={runDraftCheck} disabled={draftPhase === "scanning"} className="press inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground disabled:opacity-70 sm:w-auto">
+                    <ScanLine className="h-4 w-4" />
+                    {draftPhase === "scanning" ? ui(language, "analysing") : ui(language, "analysePhoto")}
+                  </button>
+                  {draftPhase === "error" ? <p className="mt-3 text-sm text-muted-foreground">{ui(language, "analysisUnavailableBody")}</p> : null}
+                  {draftResult ? (
+                    <div className="mt-4 rounded-2xl border border-border/70 bg-card p-4">
+                      <p className="font-display text-xl">{draftResult.headline}</p>
+                      {draftResult.summary ? <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{draftResult.summary}</p> : null}
+                      <div className="mt-3"><ConfidenceBar confidence={draftResult.confidence} /></div>
+                      <p className="mt-3 text-xs text-muted-foreground">{ui(language, "savingDoesNotChange")}</p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
+          </section>
+        ) : null}
       </div>
 
       <div className="fixed inset-x-0 bottom-[4.35rem] z-30 border-t border-border/70 bg-background/90 px-4 py-3 backdrop-blur-xl sm:px-8 lg:bottom-0 lg:left-60 lg:px-12">

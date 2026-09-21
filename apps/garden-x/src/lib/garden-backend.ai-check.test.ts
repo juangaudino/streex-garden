@@ -6,7 +6,7 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession } }),
 }));
 
-import { runAiCheck } from "./garden-backend";
+import { runAiCheck, runAiCheckDraft } from "./garden-backend";
 
 describe("AI Check request isolation", () => {
   const fetchMock = vi.fn();
@@ -56,5 +56,16 @@ describe("AI Check request isolation", () => {
     const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
 
     expect(request.language).toBe("en");
+  });
+
+  it("supports a new photo draft scoped to the selected grow cycle", async () => {
+    await runAiCheckDraft("cycle-new", "data:image/jpeg;base64,ZmFrZQ==", "en");
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "ai_check_draft",
+      grow_cycle_id: "cycle-new",
+      draft_image_data_url: "data:image/jpeg;base64,ZmFrZQ==",
+      language: "en",
+    });
   });
 });

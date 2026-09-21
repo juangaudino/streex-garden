@@ -310,6 +310,20 @@ export function resolvePhotoUrl(
   });
 }
 
+/** Warm the browser and signed-URL caches before a photo becomes visible. */
+export async function preloadPhotoRendition(
+  photo: Pick<Photo, "id" | "src" | "backendStoragePath">,
+  rendition: PhotoRendition = "display",
+): Promise<string> {
+  const url = await resolvePhotoUrl(photo, rendition);
+  if (url && typeof Image !== "undefined") {
+    const image = new Image();
+    image.decoding = "async";
+    image.src = url;
+  }
+  return url;
+}
+
 export function getPhotoUrlMetrics() {
   return { ...photoUrlMetrics };
 }
@@ -1263,6 +1277,39 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
       compare_photo_id: comparePhotoId ?? null,
       language,
       request_key: `check:${crypto.randomUUID()}`,
+    }),
+  });
+  const body = (await response.json().catch(() => null)) as {
+    proposal?: AiCheckProposal;
+    request_id?: string;
+    error?: string;
+  } | null;
+  if (!response.ok || !body?.proposal)
+    throw new Error(body?.error ?? "Garden AI could not analyse this photo.");
+  return { proposal: body.proposal, requestId: body.request_id ?? "" };
+}
+
+export async function runAiCheckDraft(
+  growCycleId: string,
+  draftImageDataUrl: string,
+  language: "en" | "es" = "es",
+) {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      operation: "ai_check_draft",
+      grow_cycle_id: growCycleId,
+      draft_image_data_url: draftImageDataUrl,
+      language,
+      request_key: `check-draft:${crypto.randomUUID()}`,
     }),
   });
   const body = (await response.json().catch(() => null)) as {

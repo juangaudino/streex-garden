@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ScanLine, Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { canRunAiCheck, formatDate, plantEvents, plantPhotos } from "@/lib/garden-logic";
-import { runAiCheck } from "@/lib/garden-backend";
+import { canRunAiCheck, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
+import { preloadPhotoRendition, runAiCheck } from "@/lib/garden-backend";
 import { buildAiCheckPresentation, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
@@ -52,6 +52,14 @@ function Check_() {
   const analysisRequestRef = useRef<string | null>(null);
   const photo = store.photos.find((p) => p.id === selected)!;
   const result = aiResult;
+  const photoIds = photos.map((item) => item.id).join(",");
+
+  useEffect(() => {
+    if (!photo) return;
+    const index = photos.findIndex((item) => item.id === photo.id);
+    const nearby = [photo, photos[index - 1], photos[index + 1]].filter(Boolean);
+    for (const item of nearby) void preloadPhotoRendition(item!, "display");
+  }, [photo, photoIds, photos]);
 
   const run = () => {
     const requestToken = crypto.randomUUID();
@@ -106,8 +114,10 @@ function Check_() {
             <PhotoImage
               photo={photo}
               alt={photo.caption}
-              className="h-full w-full object-contain sm:object-cover"
+              rendition="display"
+              className="h-full w-full object-cover"
               loading="eager"
+              fetchPriority="high"
             />
             {phase === "scanning" ? (
               <>
@@ -139,7 +149,7 @@ function Check_() {
                   p.id === selected ? "border-primary" : "border-transparent opacity-70",
                 )}
               >
-                <PhotoImage photo={p} alt={p.caption} className="h-full w-full object-cover" />
+                <PhotoImage photo={p} alt={p.caption} rendition="preview" className="h-full w-full object-cover" />
               </button>
             ))}
           </div>

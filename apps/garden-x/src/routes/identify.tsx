@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Camera, ChevronLeft, ImagePlus, ScanLine, Sparkles, ShieldCheck } from "lucide-react";
+import { Camera, ChevronLeft, ScanLine, Sparkles, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { cn } from "@/lib/utils";
 import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
 import { identifyPlant } from "@/lib/garden-backend";
 import {
   GardenLibraryEntry,
@@ -78,7 +79,6 @@ function Identify() {
   const [libraryQuery, setLibraryQuery] = useState("");
   const [libraryIdentity, setLibraryIdentity] = useState<GardenLibraryEntry>();
   const [saving, setSaving] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
 
   const sample = store.photos.find((p) => p.id === "basil-1");
   const chosen = candidates[pick]!;
@@ -111,7 +111,7 @@ function Identify() {
       .catch((error: unknown) =>
         setCatalogError(localizeKnownError(error, language, ui(language, "libraryUnavailable"))),
       );
-  }, [phase, catalog]);
+  }, [phase, catalog, language]);
 
   const choosePhoto = (file?: File) => {
     if (!file) return;
@@ -147,14 +147,6 @@ function Identify() {
 
       <div className="grid gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">
         <div>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            className="sr-only"
-            onChange={(event) => choosePhoto(event.target.files?.[0])}
-          />
           <div className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
             {photoSrc ? (
               <img
@@ -180,15 +172,11 @@ function Identify() {
               </>
             ) : null}
           </div>
-          <Button
-            type="button"
-            variant={photoSrc ? "outline" : "default"}
-            onClick={() => fileRef.current?.click()}
-            className="mt-4 w-full rounded-full"
-          >
-            <ImagePlus className="h-4 w-4" />{" "}
-            {photoSrc ? ui(language, "chooseAnotherPhoto") : ui(language, "takeChoosePhoto")}
-          </Button>
+          <PhotoSourcePicker
+            language={language}
+            onFile={choosePhoto}
+            className="mt-4"
+          />
           <Button
             type="button"
             onClick={() => {

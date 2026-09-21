@@ -101,11 +101,12 @@ function Compare() {
       {/* wipe comparison */}
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="relative overflow-hidden rounded-3xl border border-border/70 shadow-lift select-none">
-          <PhotoImage photo={b} alt={b.caption} className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" loading="eager" />
+          <PhotoImage photo={b} alt={b.caption} rendition="display" className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" loading="eager" />
           <div className="absolute inset-0 overflow-hidden" style={{ width: `${slider}%` }}>
-            <PhotoImage
-              photo={a}
-              alt={a.caption}
+              <PhotoImage
+                photo={a}
+                alt={a.caption}
+                rendition="display"
               className="h-full w-full object-cover"
               style={{ width: `${(100 / Math.max(slider, 1)) * 100}%`, maxWidth: "none" }}
             />
@@ -159,7 +160,7 @@ function Compare() {
                     p.id === picker.value ? "border-primary" : "border-transparent opacity-70",
                   )}
                 >
-                  <PhotoImage photo={p} alt={p.caption} className="h-16 w-16 object-cover" />
+                  <PhotoImage photo={p} alt={p.caption} rendition="preview" className="h-16 w-16 object-cover" />
                   <span className="numeral block px-1 pb-1 text-[0.6rem] text-muted-foreground">
                     {formatDate(p.daysAgo)}
                   </span>

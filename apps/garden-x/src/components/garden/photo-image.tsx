@@ -10,7 +10,14 @@ type PhotoImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> 
 };
 
 /** Private garden images resolve on demand and remain natively lazy-loaded. */
-export function PhotoImage({ photo, alt, className, loading = "lazy", rendition = "original", ...props }: PhotoImageProps) {
+export function PhotoImage({
+  photo,
+  alt,
+  className,
+  loading = "lazy",
+  rendition = "preview",
+  ...props
+}: PhotoImageProps) {
   const [src, setSrc] = useState(photo.src);
   const { id, src: photoSrc, backendStoragePath } = photo;
 

@@ -84,7 +84,7 @@ Deno.serve(async (request) => {
     }
 
     if (body.operation === 'ai_check_draft') {
-      if (!uuid(body.grow_cycle_id) || typeof body.draft_image_data_url !== 'string' || !body.draft_image_data_url.startsWith('data:image/jpeg;base64,')) return json({ error: 'AI Check requires a valid pending photo' }, 400)
+      if (!uuid(body.grow_cycle_id) || typeof body.draft_image_data_url !== 'string' || !/^data:image\/(jpeg|png|webp);base64,/i.test(body.draft_image_data_url)) return json({ error: 'AI Check requires a valid pending photo' }, 400)
       if (body.draft_image_data_url.length > 7_000_000) return json({ error: 'Pending photo exceeds the AI image limit' }, 400)
       const started = await startRequest(auditClient, userData.user.id, body.request_key, 'ai_check', [{ kind: 'ephemeral_photo', id: 'pending_observation' }])
       if (started.existing) return json({ proposal: started.existing.proposal, request_id: started.existing.id, idempotent: true })

@@ -22,4 +22,12 @@ describe("Garden X interface copy", () => {
     expect(ui("en", "scientificName")).toBe("Scientific name");
     expect(ui("es", "scientificName")).toBe("Nombre científico");
   });
+
+  it("keeps AI Check chrome localized and compact", () => {
+    expect(ui("en", "groundedIn")).toBe("What this analysis is grounded in");
+    expect(ui("es", "groundedIn")).toBe("En qué se basa este análisis");
+    expect(ui("en", "aiThinning")).toBe("Thinning");
+    expect(ui("es", "aiThinning")).toBe("Raleo");
+    expect(ui("es", "keepGoing")).toBe("Seguir explorando");
+  });
 });

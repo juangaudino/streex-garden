@@ -50,4 +50,11 @@ describe("AI Check request isolation", () => {
 
     await expect(runAiCheck("cycle-a", "photo-a")).rejects.toThrow("provider unavailable");
   });
+
+  it("sends the active language without changing request isolation", async () => {
+    await runAiCheck("cycle-a", "photo-a", undefined, "en");
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+
+    expect(request.language).toBe("en");
+  });
 });

@@ -1245,7 +1245,7 @@ export interface AiCheckProposal {
   }>;
 }
 
-export async function runAiCheck(growCycleId: string, photoId: string, comparePhotoId?: string) {
+export async function runAiCheck(growCycleId: string, photoId: string, comparePhotoId?: string, language: "en" | "es" = "es") {
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
@@ -1261,6 +1261,7 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
       grow_cycle_id: growCycleId,
       photo_id: photoId,
       compare_photo_id: comparePhotoId ?? null,
+      language,
       request_key: `check:${crypto.randomUUID()}`,
     }),
   });

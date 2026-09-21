@@ -3,8 +3,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ScanLine, Sparkles, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { canRunAiCheck, formatDate, plantEvents, plantPhotos, type AnalysisResult } from "@/lib/garden-logic";
+import { canRunAiCheck, formatDate, plantEvents, plantPhotos } from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
+import { buildAiCheckPresentation, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
 import { ConfidenceBar, ProvenanceTag, SectionTitle } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
@@ -67,21 +68,10 @@ function Check_() {
       setPhase("error");
       return;
     }
-    void runAiCheck(growCycleId, photo.id)
+    void runAiCheck(growCycleId, photo.id, undefined, language)
       .then(({ proposal }) => {
         if (analysisRequestRef.current !== requestToken) return;
-        const confidence: AnalysisResult["confidence"] = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
-        const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
-        const interpretations = Array.isArray(proposal.interpretations) ? proposal.interpretations.map(String) : [];
-        const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
-        const recs = Array.isArray(proposal.development_recommendations) ? proposal.development_recommendations : [];
-        const findings: AnalysisResult["findings"] = [
-          ...observations.map((body, index) => ({ kind: "observed" as const, title: index === 0 ? ui(language, "visibleState") : ui(language, "observation"), body })),
-          ...interpretations.map((body) => ({ kind: "inference" as const, title: ui(language, "possibleMeaning"), body, confidence })),
-          ...uncertainty.map((body) => ({ kind: "inference" as const, title: ui(language, "uncertainty"), body, confidence })),
-          ...recs.filter((item) => item.recommendation !== "no_action").map((item) => ({ kind: "recommendation" as const, title: item.kind === "thinning" ? ui(language, "thinning") : item.kind === "pruning" ? ui(language, "pruning") : item.kind === "support" ? ui(language, "support") : ui(language, "nextStep"), body: String(item.rationale ?? ""), confidence: item.confidence === "high" ? "high" as const : item.confidence === "medium" ? "moderate" as const : "low" as const })),
-        ];
-        setAiResult({ headline: String(proposal.headline ?? ui(language, "gardenAiCheckResult")), confidence, findings, grounding: [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`] });
+        setAiResult(buildAiCheckPresentation(proposal, language, [`${ui(language, "photo")} · ${formatDate(photo.daysAgo)}`, `${events.length} ${ui(language, "recordedEvents")}`]));
       })
       .then(() => {
         if (analysisRequestRef.current === requestToken) setPhase("done");
@@ -127,11 +117,6 @@ function Check_() {
                   {ui(language, "readingImage")}
                 </div>
               </>
-            ) : null}
-            {phase === "done" ? (
-              <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-black/45 px-4 py-3 text-xs text-white backdrop-blur-md">
-                <Sparkles className="h-3.5 w-3.5" /> {ui(language, "analysisRefinedAgainst")} {events.length} {ui(language, "recordedEvents")}
-              </div>
             ) : null}
           </div>
 
@@ -187,46 +172,89 @@ function Check_() {
             </div>
           ) : (
             <div className="rise space-y-4">
-              <div className="surface p-5">
-                <p className="eyebrow">{ui(language, "headline")}</p>
-                <p className="mt-1.5 font-display text-2xl">{result.headline}</p>
+              <div className="surface p-4 sm:p-5">
+                <p className="font-display text-2xl">{result.headline}</p>
+                {result.summary ? <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{result.summary}</p> : null}
                 <div className="mt-4">
                   <ConfidenceBar confidence={result.confidence} />
                 </div>
               </div>
 
-              {(["observed", "inference", "recommendation"] as const).map((kind) => {
-                const items = result.findings.filter((f) => f.kind === kind);
-                if (!items.length) return null;
-                  const heading = kind === "observed" ? ui(language, "observed") : kind === "inference" ? ui(language, "possibleMeaning") : ui(language, "recommendations");
+              {(() => {
+                const observed = result.findings.filter((f) => f.kind === "observed");
+                if (!observed.length) return null;
                 return (
-                  <div key={kind} className="surface p-5">
-                    <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                      <h2 className="min-w-0 truncate font-display text-lg">{heading}</h2>
-                      <ProvenanceTag kind={kind === "inference" ? "inferred" : kind === "observed" ? "observed" : "recommendation"} />
+                  <div className="surface p-4 sm:p-5">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                      <h2 className="font-display text-lg">{ui(language, "observed")}</h2>
+                      <ProvenanceTag kind="observed" />
                     </div>
-                    <ul className="space-y-3.5">
-                      {items.map((f) => (
-                        <li key={f.title}>
-                          <p className="text-sm font-medium">{f.title}</p>
-                          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
-                          {f.confidence ? (
-                    <p className="mt-1 text-xs text-inference capitalize">{ui(language, "confidence")}: {f.confidence}</p>
-                          ) : null}
+                    <ul className="space-y-2.5">
+                      {observed.map((f, index) => <li key={`observed-${index}`} className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:text-primary before:content-['•']">{f.body}</li>)}
+                    </ul>
+                  </div>
+                );
+              })()}
+
+              {(() => {
+                const interpretations = result.findings.filter((f) => f.kind === "inference" && f.subkind !== "uncertainty");
+                const uncertainty = result.findings.filter((f) => f.kind === "inference" && f.subkind === "uncertainty");
+                if (!interpretations.length && !uncertainty.length) return null;
+                return (
+                  <div className="surface p-4 sm:p-5">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                      <h2 className="font-display text-lg">{ui(language, "possibleMeaning")}</h2>
+                      <ProvenanceTag kind="inferred" />
+                    </div>
+                    {interpretations.length ? (
+                      <ul className="space-y-2.5">
+                        {interpretations.map((f, index) => (
+                          <li key={`interpretation-${index}`} className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:text-primary before:content-['•']">
+                            {f.body}
+                            {shouldShowFindingConfidence(f, result.confidence) ? <span className="mt-1 block text-xs text-inference">{ui(language, "confidence")}: {ui(language, f.confidence === "high" ? "confidenceHigh" : f.confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</span> : null}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {uncertainty.length ? (
+                      <div className={cn("border-border/70", interpretations.length && "mt-4 border-t pt-4")}>
+                        <p className="eyebrow">{ui(language, "uncertainty")}</p>
+                        <ul className="mt-2.5 space-y-2.5">
+                          {uncertainty.map((f, index) => <li key={`uncertainty-${index}`} className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:text-primary before:content-['•']">{f.body}</li>)}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })()}
+
+              {(() => {
+                const recommendations = result.findings.filter((f) => f.kind === "recommendation");
+                if (!recommendations.length) return null;
+                return (
+                  <div className="surface p-4 sm:p-5">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                      <h2 className="font-display text-lg">{ui(language, "recommendations")}</h2>
+                      <ProvenanceTag kind="recommendation" />
+                    </div>
+                    <ul className="space-y-3">
+                      {recommendations.map((f, index) => (
+                        <li key={`recommendation-${index}`} className="relative pl-4 before:absolute before:left-0 before:text-primary before:content-['•']">
+                          {f.title ? <p className="text-sm font-medium">{f.title}</p> : null}
+                          <p className={cn("text-sm leading-relaxed text-muted-foreground", f.title && "mt-1")}>{f.body}</p>
+                          {shouldShowFindingConfidence(f, result.confidence) ? <p className="mt-1 text-xs text-inference">{ui(language, "confidence")}: {ui(language, f.confidence === "high" ? "confidenceHigh" : f.confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</p> : null}
                         </li>
                       ))}
                     </ul>
                   </div>
                 );
-              })}
+              })()}
 
-              <div className="surface p-5">
+              <div className="surface p-4 sm:p-5">
                 <p className="eyebrow">{ui(language, "groundedIn")}</p>
-                <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-                  {result.grounding.map((g) => (
-                    <li key={g}>· {g}</li>
-                  ))}
-                </ul>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {result.grounding.map((g) => <span key={g} className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{g}</span>)}
+                </div>
                 <p className="mt-4 text-xs text-muted-foreground">
                   {ui(language, "savingDoesNotChange")}
                 </p>

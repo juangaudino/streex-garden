@@ -1,6 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
-import { gardenAiInstructions, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
+import { gardenAiInstructionsFor, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
 import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
 import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from '../_shared/ai-contract.ts'
 
@@ -58,12 +58,13 @@ Deno.serve(async (request) => {
   if (!featureEnabled) return json({ error: 'Garden AI is disabled' }, 503)
   const auditClient = userClient
 
-  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown }
+  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown; language?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (!requestKey(body.request_key)) return json({ error: 'A valid request key is required' }, 400)
   if (providerName === 'mock') return json({ error: 'Mock provider is available in local tests only' }, 503)
   if (providerName !== 'openai' || !Deno.env.get('OPENAI_API_KEY') || !model) return json({ error: 'AI provider is not configured' }, 503)
   const provider = new OpenAiResponsesAdapter(Deno.env.get('OPENAI_API_KEY')!, model)
+  const responseLanguage = body.language === 'en' ? 'en' : 'es'
   let activeAudit: { id: string; startedAt: number } | null = null
 
   try {
@@ -73,7 +74,7 @@ Deno.serve(async (request) => {
       if (started.existing) return json({ proposal: started.existing.proposal, request_id: started.existing.id, idempotent: true })
       const startedAt = Date.now()
       activeAudit = { id: started.id, startedAt }
-      const runtime = await runAiCheckRuntime({ userClient, storageClient: userClient, ownerId: userData.user.id, growCycleId: body.grow_cycle_id, photoId: body.photo_id, comparePhotoId: body.compare_photo_id as string | null | undefined, provider, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions: gardenAiInstructions })
+      const runtime = await runAiCheckRuntime({ userClient, storageClient: userClient, ownerId: userData.user.id, growCycleId: body.grow_cycle_id, photoId: body.photo_id, comparePhotoId: body.compare_photo_id as string | null | undefined, provider, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions: gardenAiInstructionsFor(responseLanguage) })
       const response = await provider.analyze(runtime.providerRequest)
       const proposal = validateAiCheckProposal(response.raw)
       if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
@@ -91,7 +92,7 @@ Deno.serve(async (request) => {
       activeAudit = { id: started.id, startedAt }
       const contextResponse = await userClient.rpc('garden_get_ai_draft_cycle_context', { p_grow_cycle_id: body.grow_cycle_id })
       if (contextResponse.error || !contextResponse.data) throw new Error('Authorized AI draft context is unavailable')
-      const response = await provider.analyze({ operation: 'ai_check', context: contextResponse.data, imageDataUrl: body.draft_image_data_url, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions: gardenAiInstructions })
+      const response = await provider.analyze({ operation: 'ai_check', context: contextResponse.data, imageDataUrl: body.draft_image_data_url, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions: gardenAiInstructionsFor(responseLanguage) })
       const proposal = validateAiCheckProposal(response.raw)
       if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })
@@ -108,7 +109,7 @@ Deno.serve(async (request) => {
       const askContext = await userClient.rpc('garden_get_ai_ask_context')
       if (askContext.error || !askContext.data) throw new Error('Authorized Ask Garden context is unavailable')
       const conversation = Array.isArray(body.conversation) ? body.conversation.slice(-4).map((item) => typeof item === 'object' && item !== null ? { question: String((item as Record<string, unknown>).question ?? '').slice(0, 300), answer: String((item as Record<string, unknown>).answer ?? '').slice(0, 500), status: 'unconfirmed_conversation_context' } : null).filter(Boolean) : []
-      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, conversation, conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: gardenAiInstructions })
+      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, conversation, conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: gardenAiInstructionsFor(responseLanguage) })
       const answer = validateAskGardenAnswer(response.raw)
       if (!answer) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal: answer, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })

@@ -409,13 +409,16 @@ export type Confidence = "high" | "moderate" | "low";
 
 export interface Finding {
   kind: "observed" | "inference" | "recommendation";
-  title: string;
+  /** Optional only for compact labels such as a recommendation kind. */
+  title?: string;
   body: string;
   confidence?: Confidence;
+  subkind?: "uncertainty";
 }
 
 export interface AnalysisResult {
   headline: string;
+  summary: string;
   confidence: Confidence;
   findings: Finding[];
   grounding: string[];

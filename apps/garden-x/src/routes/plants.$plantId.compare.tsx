@@ -49,7 +49,7 @@ function Compare() {
   useEffect(() => {
     setAiComparison(null);
     if (!plant.backendGrowCycleId || !a?.backendStoragePath || !b?.backendStoragePath || a.id === b.id) return;
-    void runAiCheck(plant.backendGrowCycleId, b.id, a.id)
+    void runAiCheck(plant.backendGrowCycleId, b.id, a.id, language)
       .then(({ proposal }) => {
         const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
@@ -61,7 +61,7 @@ function Compare() {
         });
       })
       .catch(() => undefined);
-  }, [a?.id, b?.id, plant.backendGrowCycleId]);
+  }, [a?.backendStoragePath, a?.id, b?.backendStoragePath, b?.id, language, plant.backendGrowCycleId]);
 
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
   const deterministic = comparePhotos(a, b, plant, language);

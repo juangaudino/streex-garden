@@ -95,11 +95,16 @@ function Check_() {
         </div>
       </div>
 
-      <div className="grid gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,9fr)] lg:px-12">
+      <div className="grid min-w-0 gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,9fr)] lg:px-12">
         {/* photo pane */}
-        <div>
-          <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft">
-            <PhotoImage photo={photo} alt={photo.caption} className="aspect-[4/5] w-full object-cover" loading="eager" />
+        <div className="min-w-0">
+          <div className="relative h-[min(62vh,28rem)] min-h-0 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft sm:h-auto sm:aspect-[4/5]">
+            <PhotoImage
+              photo={photo}
+              alt={photo.caption}
+              className="h-full w-full object-contain sm:object-cover"
+              loading="eager"
+            />
             {phase === "scanning" ? (
               <>
                 <div className="absolute inset-0 bg-primary/10" />
@@ -149,7 +154,7 @@ function Check_() {
         </div>
 
         {/* result pane */}
-        <div>
+        <div className="min-w-0">
           {phase !== "done" ? (
             <div className="surface grid min-h-64 place-items-center p-8 text-center">
               <div className="max-w-sm">

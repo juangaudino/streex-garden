@@ -230,10 +230,13 @@ function GardenDetail() {
                               to="/plants/$plantId"
                               params={{ plantId: plant.id }}
                               aria-label={`${label}: ${plant.name}, ${plant.species}`}
-                              className="press group grid min-w-0 place-items-center rounded-lg border border-border bg-card p-2.5 text-center shadow-soft transition-colors hover:border-primary/40 sm:p-4"
+                              className="press group grid min-w-0 place-items-center rounded-full border-0 bg-transparent p-0 text-center transition-colors hover:border-primary/40 sm:rounded-lg sm:border sm:border-border sm:bg-card sm:p-4 sm:shadow-soft"
                             >
-                              <span className="eyebrow mb-2 block">{label}</span>
-                              <span className="block aspect-square w-full max-w-24 overflow-hidden rounded-full border-4 border-background shadow-soft">
+                              <span className="eyebrow mb-1 block text-[0.6rem] sm:mb-2 sm:text-[0.65rem]">
+                                <span className="sm:hidden">P{position.number}</span>
+                                <span className="hidden sm:inline">{label}</span>
+                              </span>
+                              <span className="block aspect-square w-full max-w-16 overflow-hidden rounded-full border-2 border-background shadow-soft sm:max-w-24 sm:border-4">
                                 {photoById(plant.heroPhotoId) ? (
                                   <PhotoImage
                                     photo={photoById(plant.heroPhotoId)!}
@@ -243,11 +246,11 @@ function GardenDetail() {
                                   />
                                 ) : null}
                               </span>
-                              <span className="mt-2 block min-w-0 max-w-full">
-                                <span className="block truncate text-sm font-medium">
+                              <span className="mt-1 block min-w-0 max-w-full sm:mt-2">
+                                <span className="block truncate text-xs font-medium sm:text-sm">
                                   {plant.name}
                                 </span>
-                                <span className="block truncate text-[0.65rem] text-muted-foreground">
+                                <span className="hidden truncate text-[0.65rem] text-muted-foreground sm:block">
                                   {plant.species}
                                 </span>
                               </span>
@@ -258,11 +261,14 @@ function GardenDetail() {
                               type="button"
                               onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
                               aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
-                              className="press grid min-w-0 place-items-center rounded-lg border border-dashed border-border bg-background/45 p-2.5 text-center transition-colors hover:border-primary/50 sm:p-4"
+                              className="press group grid min-w-0 place-items-center rounded-full border-0 bg-transparent p-0 text-center transition-colors sm:rounded-lg sm:border sm:border-dashed sm:border-border sm:bg-background/45 sm:p-4"
                             >
-                              <span className="eyebrow mb-2 block">{label}</span>
-                              <span className="grid aspect-square w-full max-w-24 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground"><Plus className="h-4 w-4" /></span>
-                              <span className="mt-2 block text-xs text-muted-foreground">{ui(language, "emptyAddPlant")}</span>
+                              <span className="eyebrow mb-1 block text-[0.6rem] sm:mb-2 sm:text-[0.65rem]">
+                                <span className="sm:hidden">P{position.number}</span>
+                                <span className="hidden sm:inline">{label}</span>
+                              </span>
+                              <span className="grid aspect-square w-full max-w-16 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground transition-colors group-hover:border-primary/50 sm:max-w-24"><Plus className="h-4 w-4" /></span>
+                              <span className="sr-only sm:not-sr-only sm:mt-2 sm:block sm:text-xs sm:text-muted-foreground">{ui(language, "emptyAddPlant")}</span>
                             </button>
                           );
                         })}
@@ -286,69 +292,6 @@ function GardenDetail() {
         </section>
       ) : (
         <>
-          {pods ? (
-            <section className="mt-10 px-5 sm:px-8 lg:px-12">
-              <SectionTitle
-                action={
-                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <Cpu className="h-3.5 w-3.5" /> {garden.machine?.name}
-                  </span>
-                }
-              >
-                {ui(language, "podPositions")}
-              </SectionTitle>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-                {pods.map(({ label, plant, position }) =>
-                  plant ? (
-                    <Link
-                      key={label}
-                      to="/plants/$plantId"
-                      params={{ plantId: plant.id }}
-                      className="press overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
-                    >
-                      <div className="aspect-square overflow-hidden bg-secondary">
-                        {photoById(plant.heroPhotoId) ? (
-                          <PhotoImage
-                            photo={photoById(plant.heroPhotoId)!}
-                            alt={plant.name}
-                            rendition="preview"
-                            className="h-full w-full object-cover"
-                          />
-                        ) : null}
-                      </div>
-                      <div className="p-3">
-                        <p className="eyebrow">{label}</p>
-                        <p className="mt-0.5 truncate text-sm font-medium">{plant.name}</p>
-                        <p className="numeral truncate text-xs text-muted-foreground">
-                          {ageLabel(plant.plantedDaysAgo)}
-                        </p>
-                      </div>
-                    </Link>
-                  ) : (
-                    <button
-                      key={label}
-                      type="button"
-                      onClick={() =>
-                        setAdding({
-                          slot: label,
-                          positionId: "id" in position ? position.id : undefined,
-                        })
-                      }
-                      aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
-                      className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
-                    >
-                      <div className="text-muted-foreground">
-                        <Plus className="mx-auto h-4 w-4" />
-                        <p className="mt-1.5 text-xs">{label}</p>
-                        <p className="text-[0.65rem]">{ui(language, "emptyAddPlant")}</p>
-                      </div>
-                    </button>
-                  ),
-                )}
-              </div>
-            </section>
-          ) : null}
-
           <section className="mt-12 px-5 sm:px-8 lg:px-12">
             <SectionTitle>{ui(language, "plantsSection")}</SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

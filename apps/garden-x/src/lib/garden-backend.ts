@@ -464,6 +464,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     return {
       id: p.id,
       plantId: p.plant_instance_id ?? "",
+      mediaScope: p.media_scope,
       src: "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
       caption: e?.note?.trim() || "Photo",

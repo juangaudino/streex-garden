@@ -9,6 +9,7 @@ import {
   formatDate,
   openTasks,
   plantPhotos,
+  recentPlantPhotos,
   relativeDay,
   comparePhotos,
 } from "@/lib/garden-logic";
@@ -65,7 +66,7 @@ function Home() {
   const plantById = (id: string) => store.plants.find((p) => p.id === id)!;
   const due = openTasks(store.tasks).filter((t) => t.dueInDays <= 1);
   const recent = byRecency(store.events).slice(0, 7);
-  const newPhotos = byRecency(store.photos).slice(0, 6);
+  const newPhotos = byRecency(recentPlantPhotos(store.photos, store.plants)).slice(0, 6);
 
   // Deterministic "meaningful change": plants with >= 2 photos, largest recent delta.
   const changes = store.plants

@@ -88,6 +88,8 @@ export interface PlantMetrics {
 export interface Photo {
   id: string;
   plantId: string;
+  /** The canonical media scope keeps plant evidence separate from garden-level media. */
+  mediaScope?: string;
   src: string;
   daysAgo: number;
   caption: string;

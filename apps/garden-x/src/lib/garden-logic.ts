@@ -118,6 +118,23 @@ export function sortPhotosByCapturedAt(photos: Photo[], order: SortOrder = "newe
 export const plantPhotos = (photos: Photo[], plantId: string) =>
   chronological(photos.filter((p) => p.plantId === plantId));
 
+/**
+ * Photos that can be shown in Home's plant-history "New photos" strip.
+ *
+ * The bootstrap also carries garden-level media so the garden cover can be
+ * rendered from the same photo cache. Those rows have no plant id and must
+ * never become plant-detail links. Keep the fallback for fixture/legacy rows
+ * that predate mediaScope, while explicitly excluding other non-plant scopes.
+ */
+export function recentPlantPhotos(photos: Photo[], plants: Pick<Plant, "id">[]) {
+  const plantIds = new Set(plants.map((plant) => plant.id));
+  return photos.filter(
+    (photo) =>
+      plantIds.has(photo.plantId) &&
+      (photo.mediaScope === undefined || photo.mediaScope === "cycle_evidence"),
+  );
+}
+
 /** Pick one active plant for the lifetime of an app session. */
 export function chooseSessionHighlight<T extends Pick<Plant, "id" | "cycleClosed">>(
   plants: T[],

@@ -262,9 +262,9 @@ function filterPublicSources(relativePath) {
 function prepare() {
   const allPlants = plantFiles.flatMap((file) => readJson(file));
   const ids = new Set(allPlants.map((plant) => plant.id));
-  if (allPlants.length !== 41 || ids.size !== 41) {
+  if (allPlants.length !== 43 || ids.size !== 43) {
     throw new Error(
-      `Gardenpedia library must contain 41 unique varieties; got ${allPlants.length}/${ids.size}.`,
+      `Gardenpedia library must contain 43 unique varieties; got ${allPlants.length}/${ids.size}.`,
     );
   }
   const catalogManifest = buildCatalogManifest(allPlants);

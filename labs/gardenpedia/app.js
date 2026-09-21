@@ -63,7 +63,7 @@ const ui = {
     media_photo: "Photo", media_diagram: "Diagram", media_video: "Video", media_guide: "Guide",
     actions: { thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering", hydroponics: "Hydroponics" },
     categories: { herbs: "herbs", "leafy greens": "leafy greens", fruiting: "fruiting", flowers: "flowers", alliums: "alliums", "root vegetables": "root vegetables" },
-    sections: { germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
+    sections: { identity: "Identity", germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
     ownedSeed: "In your seed inventory", packetArchived: "Packet documented · removed from active inventory", packet: "Packet", germinationRate: "Packet germination rate", purity: "Purity", seedCount: "Approx. seeds", daysToBloom: "Days to bloom", daysToHarvest: "Days to harvest", packetEvidence: "Inventory fact from your packet photo", openInSeeds: "Open in Seeds",
     neighbors: "Neighbors", neighborsNote: "Garden scores real growing compatibility first. A traditional companion claim is only promoted when a credible source supports it.", goodNeighbors: "Good neighbors", separateNeighbors: "Better separate", noStrongGood: "No strong positive matches yet.", noStrongBad: "No strong separation flags yet.", researchPair: "Research-backed companion pair", systemPair: "System-fit inference", nearbyRole: "Useful nearby outdoors", neighborDisclaimer: "‘Better separate’ usually means poor light / space / root / nutrient fit — not that one plant chemically harms the other.", shareSystem:"Can share a system", manageSpacing:"Compatible with spacing management", keepSeparate:"Prefer separate systems / zones", outdoorNearby:"Keep nearby outdoors",
     addSeed: "+ Add seed", seedSearchPlaceholder: "Search tomato, basil, Ferry-Morse…", seedInventoryEyebrow: "USER ZERO INVENTORY", seedStorageNote: "Personal state is local · packet evidence stays separate", seedPackage: "packet", seedPackages: "packets", noSeedMatches: "No seed packets match this view.",
@@ -89,7 +89,7 @@ const ui = {
     media_photo: "Foto", media_diagram: "Diagrama", media_video: "Video", media_guide: "Guía",
     actions: { thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración", hydroponics: "Hidroponía" },
     categories: { herbs: "hierbas", "leafy greens": "hojas verdes", fruiting: "cultivos de fruto", flowers: "flores", alliums: "alliums", "root vegetables": "raíces" },
-    sections: { germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
+    sections: { identity: "Identidad", germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
     ownedSeed: "En tu inventario de semillas", packetArchived: "Sobre documentado · retirado del inventario activo", packet: "Sobre", germinationRate: "Germinación del sobre", purity: "Pureza", seedCount: "Semillas aprox.", daysToBloom: "Días a floración", daysToHarvest: "Días a cosecha", packetEvidence: "Dato de inventario leído de tu foto del sobre", openInSeeds: "Abrir en Semillas",
     neighbors: "Vecinas", neighborsNote: "Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube de nivel cuando una fuente confiable la respalda.", goodNeighbors: "Buenas vecinas", separateNeighbors: "Mejor separar", noStrongGood: "Todavía no hay coincidencias positivas fuertes.", noStrongBad: "No hay alertas fuertes de separación.", researchPair: "Pareja respaldada por investigación", systemPair: "Inferencia por compatibilidad del sistema", nearbyRole: "Útil cerca en exterior", neighborDisclaimer: "‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces / nutrientes; no que una planta envenene químicamente a la otra.", shareSystem:"Pueden compartir sistema", manageSpacing:"Compatibles manejando el espacio", keepSeparate:"Preferir sistemas / zonas separadas", outdoorNearby:"Mantener cerca en exterior",
     addSeed: "+ Añadir semilla", seedSearchPlaceholder: "Busca tomate, basil, Ferry-Morse…", seedInventoryEyebrow: "INVENTARIO USER ZERO", seedStorageNote: "Estado personal local · evidencia del sobre separada", seedPackage: "paquete", seedPackages: "paquetes", noSeedMatches: "No hay paquetes que coincidan con esta vista.",
@@ -101,7 +101,7 @@ const ui = {
   },
 };
 
-const sectionIcons = { germination: "🌱", thinning: "✂️", pruning: "🌿", harvest: "🥬", flowering: "🌸", hydroponics: "💧", problems: "⚠️" };
+const sectionIcons = { identity: "🔬", germination: "🌱", thinning: "✂️", pruning: "🌿", harvest: "🥬", flowering: "🌸", hydroponics: "💧", problems: "⚠️" };
 const evidenceClasses = { source_backed: "source-backed", garden_adaptation: "garden-adaptation", needs_validation: "needs-validation" };
 const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "📖" };
 

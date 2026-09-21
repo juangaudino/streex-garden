@@ -154,5 +154,39 @@
       "hydroponics":{"short":"La geometría de la raíz es la principal restricción","guidance":"La hidroponía necesita suficiente medio y espacio para que la raíz engrose. No lo trates como una lechuga en net cup sin validar espacio físico."},
       "problems":{"short":"Calor, sequedad y cosecha tardía reducen calidad","guidance":"Johnny's indica que el calor y la sequedad pueden volver las raíces duras, esponjosas y demasiado picantes."}
     }
+  },
+  "german-thyme": {
+    "summary": "Identidad de Thymus vulgaris mantenida separada de English Thyme. Aquí Tomillo alemán es una identidad de nombre común, no una afirmación de un cultivar comercial concreto.",
+    "metrics": [
+      {"label":"Germinación","value":"14–21 días","note":"Referencia general de tomillo a 65–70°F"},
+      {"label":"pH / EC hidro","value":"Pendiente","note":"Necesita validación específica del cultivo y sistema"}
+    ],
+    "sections": {
+      "identity": {"short":"Thymus vulgaris también se llama tomillo alemán","guidance":"NC State incluye German Thyme entre los nombres comunes de Thymus vulgaris. Esto resuelve la identidad botánica sin asignar un cultivar concreto a cada sobre vendido como tomillo."},
+      "germination": {"short":"Permitir una ventana lenta de 14–21 días","guidance":"La referencia general de tomillo de Johnny's y su ficha de German Winter Thyme indican 14–21 días a 65–70°F. La ficha de German Winter es evidencia agronómica relacionada, no prueba de que otro sobre sea ese producto."},
+      "thinning": {"short":"Esperar suficiente estructura para comparar plántulas","guidance":"Johnny's pasa las plántulas de tomillo a recipientes individuales alrededor de cuatro hojas verdaderas. En un sistema compacto, úsalo como punto de desarrollo y ralea solo si hay competencia real."},
+      "pruning": {"short":"Pinzar puntas erguidas después del establecimiento","guidance":"Johnny's recomienda pinzar los puntos de crecimiento de tipos erguidos para estimular un porte más tupido. No apliques alturas de corte de una planta perenne madura a una planta diminuta de primer ciclo."},
+      "harvest": {"short":"Cosecha tallos con moderación mientras es joven","guidance":"Johnny's aconseja tomar pocos tallos el primer año y hacer cortes mayores cerca de floración en años posteriores. Garden debe mantener conservadora la intervención del primer ciclo."},
+      "flowering": {"short":"La floración es una etapa observada y una señal de cosecha","guidance":"NC State describe el tomillo común como hierba culinaria y para polinizadores, y sitúa la cosecha justo antes de floración. Registra la etapa real en vez de asumir un calendario interior fijo."},
+      "hydroponics": {"short":"No inventar un objetivo hidro específico para tomillo","guidance":"Las fuentes aceptadas no establecen objetivos hidropónicos de pH/EC específicos para esta identidad, por lo que esos campos quedan sin resolver."},
+      "problems": {"short":"Observar drenaje y crecimiento alargado","guidance":"NC State describe buen drenaje, sol pleno y recorte cuando el tomillo común se vuelve alargado. Garden debe tratar los problemas de raíz o luz como observaciones a validar, no como diagnóstico automático."}
+    }
+  },
+  "cascading-petunia": {
+    "summary": "Identidad de producto AeroGarden para petunia colgante. Cascading, trailing y pendulous describen aquí el hábito hortícola; no se afirma ningún cultivar con nombre propio.",
+    "metrics": [
+      {"label":"Germinación","value":"7–14 días","note":"Guía del producto AeroGarden y evidencia de la etiqueta del pod"},
+      {"label":"Tamaño del fabricante","value":"Medium","note":"Clasificación de la etiqueta del pod; no es una altura exacta"}
+    ],
+    "sections": {
+      "identity": {"short":"Petunia × atkinsiana; Petunia × hybrida es sinónimo","guidance":"Kew trata Petunia × atkinsiana como la identidad botánica aceptada y lista Petunia × hybrida como sinónimo. El producto AeroGarden se registra como Cascading Petunia sin inventar un cultivar; trailing se conserva como término relacionado de búsqueda y hábito."},
+      "germination": {"short":"Ventana de emergencia del producto: 7–14 días","guidance":"El contexto del producto AeroGarden y la etiqueta suministrada indican 7–14 días para los brotes. Trátalo como guía del producto para este pod, no como promesa universal para toda petunia colgante."},
+      "thinning": {"short":"La respuesta al espacio necesita validarse en el pod real","guidance":"Cascading y trailing son términos de hábito, no una regla sobre cuántas plántulas conservar. Garden debe usar copa, raíces y trayectoria de luz observadas antes de adaptar la densidad."},
+      "pruning": {"short":"La poda específica de cultivar y sistema sigue pendiente","guidance":"No copies reglas de poda de Petunia enana de macizo. Mantén pendiente el despunte y la formación hasta que una fuente de cultivo adecuada o el comportamiento real de la planta lo resuelva."},
+      "harvest": {"short":"Identidad ornamental; no hay guía de cosecha alimentaria","guidance":"Trátala como producto floral ornamental. Garden no ha asignado uso comestible o culinario a esta identidad."},
+      "flowering": {"short":"La floración es el resultado previsto del producto","guidance":"Registra botones y floración en el pod AeroGarden real. No se promueve aquí un calendario específico de cultivar."},
+      "hydroponics": {"short":"Aún no hay objetivo hidro específico aceptado","guidance":"El producto es un pod AeroGarden presembrado, pero el modelo de evidencia actual no establece un objetivo nutricional exacto para esta identidad."},
+      "problems": {"short":"El hábito y la respuesta a la luz requieren observación","guidance":"No infieras altura adulta ni un comportamiento colgante universal a partir de la palabra cascading o de la etiqueta Medium. Valida la planta real antes de recomendar soporte, espacio o reubicación."}
+    }
   }
 }

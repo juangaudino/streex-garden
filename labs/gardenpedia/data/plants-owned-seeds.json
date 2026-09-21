@@ -178,5 +178,151 @@
       "hydroponics":{"short":"Root geometry is the main design constraint","guidance":"Hydroponic culture requires enough media/root space for the swollen root. Do not treat it like a lettuce net-cup without validating physical clearance.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
       "problems":{"short":"Heat, dryness and delayed harvest reduce quality","guidance":"Johnny's notes hot, dry weather can make roots tough, pithy and overly spicy.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-radish"]}
     }
+  },
+  {
+    "id": "german-thyme",
+    "name": "German Thyme",
+    "spanishName": "Tomillo alemán",
+    "scientificName": "Thymus vulgaris",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 55,
+    "tags": ["german thyme", "tomillo alemán", "thyme", "tomillo", "common thyme", "garden thyme", "thymus vulgaris", "herb"],
+    "summary": "A Thymus vulgaris identity kept separate from English Thyme. German Thyme is a common-name identity here, not an assertion of a named commercial cultivar.",
+    "metrics": [
+      {"label": "Germination", "value": "14–21 days", "note": "General thyme reference at 65–70°F"},
+      {"label": "Hydro pH / EC", "value": "Pending", "note": "Needs crop- and system-specific validation"}
+    ],
+    "sections": {
+      "identity": {
+        "short": "Thymus vulgaris is also called German Thyme",
+        "guidance": "NC State lists German Thyme among the common names for Thymus vulgaris. This resolves the botanical identity without assigning a named cultivar to every seed packet sold as thyme.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-thymus-vulgaris"]
+      },
+      "germination": {
+        "short": "Allow a slow 14–21 day window",
+        "guidance": "Johnny's general thyme reference and its German Winter Thyme product reference report 14–21 days at 65–70°F. The German Winter page is related agronomic evidence, not evidence that an unrelated packet is that product.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme", "johnnys-german-winter-thyme"]
+      },
+      "thinning": {
+        "short": "Wait for enough structure to compare seedlings",
+        "guidance": "Johnny's moves thyme seedlings to individual containers around four true leaves. In a compact system, use that as a development checkpoint and thin only when real competition is evident.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "pruning": {
+        "short": "Pinch upright tips after establishment",
+        "guidance": "Johnny's recommends pinching the growing tips of upright thyme varieties to encourage bushier plants. Do not apply mature-perennial cut-back heights to a tiny first-cycle plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "harvest": {
+        "short": "Use conservative stem harvests while young",
+        "guidance": "Johnny's advises only a few stems in the first year and larger cuts near flowering in later years. Garden should keep the first-cycle intervention conservative.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-thyme"]
+      },
+      "flowering": {
+        "short": "Flowering is an observed stage and harvest cue",
+        "guidance": "NC State describes common thyme as a flowering culinary and pollinator herb and places harvest just before flowering. Record the actual stage rather than assuming a fixed indoor schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-thymus-vulgaris"]
+      },
+      "hydroponics": {
+        "short": "Do not invent a thyme-specific hydro target",
+        "guidance": "The accepted sources do not establish crop-specific hydroponic pH/EC targets for this identity, so those fields remain unresolved.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Drainage and leggy growth need observation",
+        "guidance": "NC State describes good drainage, full sun and trimming when common thyme becomes leggy. Garden should treat poor root-zone conditions or weak light as observations to validate, not as an automatic diagnosis.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-thymus-vulgaris"]
+      }
+    }
+  },
+  {
+    "id": "cascading-petunia",
+    "name": "Cascading Petunia",
+    "spanishName": "Petunia colgante",
+    "scientificName": "Petunia × atkinsiana",
+    "category": "flowers",
+    "emoji": "🌺",
+    "guideCompletion": 31,
+    "tags": ["cascading petunia", "trailing petunia", "petunia colgante", "petunia", "petunia × atkinsiana", "petunia × hybrida", "flower", "aerogarden"],
+    "summary": "An AeroGarden product identity for cascading petunia. Cascading, trailing and pendulous describe horticultural growth habit here; no named cultivar is asserted.",
+    "metrics": [
+      {"label": "Germination", "value": "7–14 days", "note": "AeroGarden product guidance and pod-label evidence"},
+      {"label": "Manufacturer size", "value": "Medium", "note": "Pod label classification only; not an exact plant height"}
+    ],
+    "sections": {
+      "identity": {
+        "short": "Petunia × atkinsiana; Petunia × hybrida is a synonym",
+        "guidance": "Kew treats Petunia × atkinsiana as the accepted botanical identity and lists Petunia × hybrida as a synonym. The AeroGarden product is recorded as Cascading Petunia without inventing a cultivar; trailing is retained as a related search and habit term.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["aerogarden-cascading-petunia", "kew-petunia-atkinsiana"]
+      },
+      "germination": {
+        "short": "Product-labeled 7–14 day emergence window",
+        "guidance": "The AeroGarden product context and supplied pod label state 7–14 days for sprouts. Treat this as product-level guidance for the pod, not a universal germination promise for every cascading petunia.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["aerogarden-cascading-petunia"]
+      },
+      "thinning": {
+        "short": "Spacing response needs validation on the actual pod",
+        "guidance": "Cascading and trailing are habit terms, not a rule for how many seedlings to keep. Garden should use observed canopy, roots and light path before adapting density.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": []
+      },
+      "pruning": {
+        "short": "Cultivar- and system-specific shaping remains unresolved",
+        "guidance": "Do not copy pruning rules from Dwarf Bedding Petunia. Keep deadheading and shaping guidance open until a suitable cultivation source or actual plant behavior resolves it.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "harvest": {
+        "short": "Ornamental flowering identity; no food harvest guidance",
+        "guidance": "Treat this as an ornamental flower product. Garden has not assigned edible or culinary use to this identity.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": []
+      },
+      "flowering": {
+        "short": "Flowering is the intended product outcome",
+        "guidance": "Track buds and bloom on the actual AeroGarden pod. No cultivar-specific flowering schedule is promoted here.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "hydroponics": {
+        "short": "No accepted crop-specific hydro target yet",
+        "guidance": "The product is a pre-seeded AeroGarden pod, but the current evidence model does not establish an exact nutrient target for this identity.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Actual habit and light response need observation",
+        "guidance": "Do not infer mature height or universal trailing behavior from the word cascading or from the Medium pod label. Validate the actual plant before recommending support, spacing or relocation.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    }
   }
 ]

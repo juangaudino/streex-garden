@@ -47,16 +47,35 @@ const basil: Plant = {
 };
 
 describe("Garden Library catalog and planting guidance", () => {
-  it("publishes 41 unique stable identities", () => {
-    expect(catalog.entries).toHaveLength(41);
-    expect(new Set(catalog.entries.map((entry) => entry.libraryPlantId)).size).toBe(41);
+  it("publishes 43 unique stable identities", () => {
+    expect(catalog.entries).toHaveLength(43);
+    expect(new Set(catalog.entries.map((entry) => entry.libraryPlantId)).size).toBe(
+      43,
+    );
     expect(
       catalog.entries.every((entry) => entry.reference && Array.isArray(entry.reference.sourceIds)),
     ).toBe(true);
     expect(
       catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")?.reference.ph,
     ).toBeTruthy();
-    expect(localizedLibraryName(catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")!, "es")).toBe("Albahaca genovesa");
+    expect(
+      localizedLibraryName(
+        catalog.entries.find((entry) => entry.libraryPlantId === "genovese-basil")!,
+        "es",
+      ),
+    ).toBe("Albahaca genovesa");
+    expect(
+      catalog.entries.some((entry) => entry.libraryPlantId === "english-thyme"),
+    ).toBe(true);
+    expect(
+      catalog.entries.some((entry) => entry.libraryPlantId === "german-thyme"),
+    ).toBe(true);
+    expect(
+      catalog.entries.some((entry) => entry.libraryPlantId === "petunia-dwarf-bedding-mixed"),
+    ).toBe(true);
+    expect(
+      catalog.entries.some((entry) => entry.libraryPlantId === "cascading-petunia"),
+    ).toBe(true);
   });
 
   it("searches common, scientific, cultivar, and aliases without plant-specific UI code", () => {
@@ -73,6 +92,16 @@ describe("Garden Library catalog and planting guidance", () => {
     expect(
       searchGardenLibrary(catalog, "albahaca").some(
         (entry) => entry.libraryPlantId === "genovese-basil",
+      ),
+    ).toBe(true);
+    expect(
+      searchGardenLibrary(catalog, "tomillo alemán").some(
+        (entry) => entry.libraryPlantId === "german-thyme",
+      ),
+    ).toBe(true);
+    expect(
+      searchGardenLibrary(catalog, "trailing petunia").some(
+        (entry) => entry.libraryPlantId === "cascading-petunia",
       ),
     ).toBe(true);
   });

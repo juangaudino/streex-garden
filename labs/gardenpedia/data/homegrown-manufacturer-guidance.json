@@ -163,7 +163,7 @@
     }
   },
   "deferred": {
-    "thyme": "Home Grown guide labels English thyme while User Zero's corrected Huerto 1 identity is German Thyme. Do not map this source to that live plant without an explicit identity reconciliation.",
+    "thyme": "Home Grown guide labels thyme without a named cultivar; the reconciled Garden identity is German Thyme. Keep the packet separate from Johnny's German Winter Thyme product identity and use manufacturer claims only after claim-level review.",
     "remainingHomeGrownVarieties": "Process as staged expansion candidates under Source Matrix V1; do not bulk-promote manufacturer claims without claim-level reconciliation."
   }
 }

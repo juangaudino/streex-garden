@@ -244,7 +244,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
       src: newPhoto,
       daysAgo: momentDaysAgo,
       caption,
-      metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
+      metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
     });
   };
 

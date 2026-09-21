@@ -468,7 +468,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       src: "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
       caption: e?.note?.trim() || "Photo",
-      metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
+      metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
       backendStoragePath: p.storage_path,
       capturedAt: p.captured_at,
       capturedAtPrecision: p.captured_at_precision,
@@ -1353,7 +1353,7 @@ export async function loadPublicPlantStory(token: string): Promise<PublicStory> 
           src: item.photo.url,
           daysAgo: momentDays,
           caption: item.note ?? "Garden photo",
-          metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
+          metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
         },
       });
     }

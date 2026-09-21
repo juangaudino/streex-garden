@@ -22,6 +22,8 @@ type Props = {
 export function LibraryIdentityResolution({ plant, catalog, catalogError, onConfirm }: Props) {
   const { language } = useGarden();
   const [query, setQuery] = useState("");
+  const [searching, setSearching] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState<GardenLibraryEntry | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
 
@@ -59,7 +61,7 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
         {ui(language, "identityUnconfirmedBody")}
       </p>
       {catalogError ? <p className="mt-3 text-sm text-destructive">{catalogError}</p> : null}
-      {match?.kind === "exact" && match.candidates[0] ? (
+      {match?.kind === "exact" && match.candidates[0] && !selectedEntry ? (
         <div className="mt-4 rounded-2xl border border-primary/25 bg-primary/5 p-4">
           <p className="eyebrow text-primary">{ui(language, "matchFound")}</p>
           <p className="mt-1 font-medium">{localizedLibraryName(match.candidates[0], language)}</p>
@@ -67,14 +69,28 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
             {match.candidates[0].scientificName || ui(language, "scientificNameNotDocumented")}
             {match.candidates[0].cultivar ? ` · “${match.candidates[0].cultivar}”` : ""}
           </p>
-          <Button
-            type="button"
-            className="mt-3 rounded-full"
-            disabled={savingId !== null}
-            onClick={() => void confirm(match.candidates[0]!)}
-          >
-            <Check className="mr-2 h-4 w-4" /> {ui(language, "confirmIdentity")}
-          </Button>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Button
+              type="button"
+              className="rounded-full"
+              disabled={savingId !== null}
+              onClick={() => void confirm(match.candidates[0]!)}
+            >
+              <Check className="mr-2 h-4 w-4" /> {ui(language, "confirmIdentity")}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="rounded-full"
+              disabled={savingId !== null}
+              onClick={() => {
+                setSearching(true);
+                setQuery("");
+              }}
+            >
+              <Search className="mr-2 h-4 w-4" /> {ui(language, "searchAnother")}
+            </Button>
+          </div>
         </div>
       ) : null}
       {match?.kind === "ambiguous" ? (
@@ -87,21 +103,74 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
           {ui(language, "noUniqueIdentity")}
         </p>
       ) : null}
-      {match && match.kind !== "exact" ? (
-        <label className="mt-4 block">
-          <span className="eyebrow">{ui(language, "searchGardenLibrary")}</span>
+      {selectedEntry ? (
+        <div className="mt-4 rounded-2xl border border-primary/25 bg-primary/5 p-4">
+          <p className="eyebrow text-primary">{ui(language, "proposedIdentity")}</p>
+          <p className="mt-1 font-medium">{localizedLibraryName(selectedEntry, language)}</p>
+          <p className="text-sm text-muted-foreground">
+            {selectedEntry.scientificName || ui(language, "scientificNameNotDocumented")}
+            {selectedEntry.cultivar ? ` · “${selectedEntry.cultivar}”` : ""}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Button
+              type="button"
+              className="rounded-full"
+              disabled={savingId !== null}
+              onClick={() => void confirm(selectedEntry)}
+            >
+              <Check className="mr-2 h-4 w-4" /> {ui(language, "confirmIdentity")}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="rounded-full"
+              disabled={savingId !== null}
+              onClick={() => {
+                setSelectedEntry(null);
+                setSearching(true);
+                setQuery("");
+              }}
+            >
+              <Search className="mr-2 h-4 w-4" /> {ui(language, "searchAnother")}
+            </Button>
+          </div>
+        </div>
+      ) : null}
+      {!selectedEntry && match && (searching || match.kind !== "exact") ? (
+        <div className="mt-4">
+          <div className="flex items-center justify-between gap-3">
+            <label className="eyebrow" htmlFor="legacy-library-search">
+              {ui(language, "searchGardenLibrary")}
+            </label>
+            {searching ? (
+              <Button
+                type="button"
+                variant="ghost"
+                className="h-auto rounded-full px-2 py-1 text-xs"
+                disabled={savingId !== null}
+                onClick={() => {
+                  setSearching(false);
+                  setSelectedEntry(null);
+                  setQuery("");
+                }}
+              >
+                {ui(language, "cancel")}
+              </Button>
+            ) : null}
+          </div>
           <span className="relative mt-1.5 block">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
+              id="legacy-library-search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={ui(language, "commonScientificCultivar")}
               className="w-full rounded-2xl border border-border bg-background py-2.5 pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
             />
           </span>
-        </label>
+        </div>
       ) : null}
-      {match && match.kind !== "exact" && candidates.length ? (
+      {!selectedEntry && match && (searching || match.kind !== "exact") && candidates.length ? (
         <div className="mt-3 grid gap-2">
           {candidates.map((entry) => (
             <div
@@ -120,9 +189,13 @@ export function LibraryIdentityResolution({ plant, catalog, catalogError, onConf
                 variant="outline"
                 className="shrink-0 rounded-full"
                 disabled={savingId !== null}
-                onClick={() => void confirm(entry)}
+                onClick={() => {
+                  setSelectedEntry(entry);
+                  setSearching(false);
+                  setQuery("");
+                }}
               >
-                {ui(language, "confirm")}
+                {ui(language, "selectIdentity")}
               </Button>
             </div>
           ))}

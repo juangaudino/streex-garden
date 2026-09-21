@@ -66,7 +66,14 @@ function Compare() {
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
   const deterministic = comparePhotos(a, b, plant, language);
   const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
-  const hasRecordedMeasurements = [a.metrics.heightCm,a.metrics.leafCount,a.metrics.density,a.metrics.greenness,b.metrics.heightCm,b.metrics.leafCount,b.metrics.density,b.metrics.greenness].some((value) => value !== 0);
+  const hasRecordedMeasurements = [
+    a.metrics.heightCm,
+    a.metrics.leafCount,
+    a.metrics.density,
+    b.metrics.heightCm,
+    b.metrics.leafCount,
+    b.metrics.density,
+  ].some((value) => value !== null);
   const earlier = a.daysAgo > b.daysAgo ? a : b;
   const later = a.daysAgo > b.daysAgo ? b : a;
   const context = eventsBetween(store.events, plant.id, earlier.daysAgo, later.daysAgo).filter((event) => event.type !== "photo" && event.type !== "ai");

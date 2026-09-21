@@ -29,6 +29,7 @@ import {
   latestPlantPhoto,
   plantTimeline,
   sortPhotosByCapturedAt,
+  photoMetricEntries,
   type SortOrder,
 } from "@/lib/garden-logic";
 import type { MaintenanceType } from "@/lib/garden-data";
@@ -395,18 +396,17 @@ function PlantProfile() {
               </div>
             ) : null}
 
-            <SectionTitle
-              action={
+            <div className="mb-4">
+              <h2 className="font-display text-xl">{ui(language, "livedThrough")}</h2>
+              <div className="mt-2 flex justify-end text-sm">
                 <button
                   onClick={() => setShareOpen(true)}
                   className="inline-flex items-center gap-1.5 text-primary hover:underline"
                 >
                   <Share2 className="h-3.5 w-3.5" /> {ui(language, "shareSelection")}
                 </button>
-              }
-            >
-              {ui(language, "livedThrough")}
-            </SectionTitle>
+              </div>
+            </div>
             <p className="mb-9 max-w-2xl text-sm leading-relaxed text-muted-foreground">
               {ui(language, "timelineReading")}
             </p>
@@ -718,10 +718,17 @@ function PlantProfile() {
                         onConfirm={() => removePhoto(photo)}
                       />
                     </div>
-                    <p className="numeral mt-2 text-xs text-muted-foreground">
-                      {photo.metrics.heightCm}cm · {photo.metrics.leafCount} leaves · density{" "}
-                      {photo.metrics.density}
-                    </p>
+                    {photoMetricEntries(photo.metrics).length ? (
+                      <p className="numeral mt-2 text-xs text-muted-foreground">
+                        {photoMetricEntries(photo.metrics)
+                          .map(({ kind, value }) => {
+                            if (kind === "height") return `${value}cm`;
+                            if (kind === "leaves") return `${ui(language, "leavesApprox")} ${value}`;
+                            return `${ui(language, "canopyDensity")} ${value}`;
+                          })
+                          .join(" · ")}
+                      </p>
+                    ) : null}
                   </figcaption>
                 </figure>
               ))}
@@ -845,9 +852,6 @@ function PlantProfile() {
             >
               {ui(language, "reference")}
             </SectionTitle>
-            <p className="mb-5 text-sm text-muted-foreground">
-              {ui(language, "referenceSeparation")}
-            </p>
             {!plant.libraryPlantId ? (
               <LibraryIdentityResolution
                 plant={plant}

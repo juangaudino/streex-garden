@@ -19,6 +19,17 @@ export function latestPlantPhoto(photos: Photo[], plantId: string) {
   return photos.filter((photo) => photo.plantId === plantId).sort((a, b) => a.daysAgo - b.daysAgo)[0];
 }
 
+export type PhotoMetricKind = "height" | "leaves" | "density";
+
+/** Returns only measurements that were actually recorded. Null is never rendered as zero. */
+export function photoMetricEntries(metrics: Photo["metrics"]): Array<{ kind: PhotoMetricKind; value: number }> {
+  return [
+    metrics.heightCm == null ? null : { kind: "height" as const, value: metrics.heightCm },
+    metrics.leafCount == null ? null : { kind: "leaves" as const, value: metrics.leafCount },
+    metrics.density == null ? null : { kind: "density" as const, value: metrics.density },
+  ].filter((entry): entry is { kind: PhotoMetricKind; value: number } => entry !== null);
+}
+
 export function gardenCover(garden: Garden, plants: Plant[], photos: Photo[]) {
   if (garden.coverPhotoId) {
     const selected = photos.find((photo) => photo.id === garden.coverPhotoId);
@@ -424,9 +435,16 @@ export function analysePhoto(plant: Plant, photo: Photo, history: PlantEvent[], 
   findings.push({
     kind: "observed",
     title: ui(language, "densityStructure"),
-    body: language === "es"
-      ? `Volumen de copa ${photo.metrics.density}/100, aproximadamente ${photo.metrics.leafCount} hojas visibles y una altura de ${photo.metrics.heightCm} cm.`
-      : `Canopy fill ${photo.metrics.density}/100, roughly ${photo.metrics.leafCount} leaves visible, height about ${photo.metrics.heightCm}cm.`,
+    body: (() => {
+      const metrics = photoMetricEntries(photo.metrics);
+      if (!metrics.length) return ui(language, "measurementsNotAvailable");
+      const values = metrics.map(({ kind, value }) => {
+        if (kind === "height") return language === "es" ? `altura ${value} cm` : `height ${value}cm`;
+        if (kind === "leaves") return language === "es" ? `${value} hojas visibles` : `${value} visible leaves`;
+        return language === "es" ? `densidad ${value}/100` : `density ${value}/100`;
+      });
+      return values.join(" · ");
+    })(),
   });
 
   const damage = plant.status === "watching" || plant.status === "recovering";
@@ -524,21 +542,31 @@ export function comparePhotos(a: Photo, b: Photo, plant: Plant, language = prefe
   const [earlier, later] = a.daysAgo > b.daysAgo ? [a, b] : [b, a];
   const days = earlier.daysAgo - later.daysAgo;
   const deltas: Delta[] = [
-    { label: ui(language, "height"), from: earlier.metrics.heightCm, to: later.metrics.heightCm, unit: "cm", higherIsBetter: true },
-    { label: ui(language, "leavesApprox"), from: earlier.metrics.leafCount, to: later.metrics.leafCount, unit: "", higherIsBetter: true },
-    { label: ui(language, "canopyDensity"), from: earlier.metrics.density, to: later.metrics.density, unit: "/100", higherIsBetter: true },
+    ...(earlier.metrics.heightCm != null && later.metrics.heightCm != null
+      ? [{ label: ui(language, "height"), from: earlier.metrics.heightCm, to: later.metrics.heightCm, unit: "cm", higherIsBetter: true }]
+      : []),
+    ...(earlier.metrics.leafCount != null && later.metrics.leafCount != null
+      ? [{ label: ui(language, "leavesApprox"), from: earlier.metrics.leafCount, to: later.metrics.leafCount, unit: "", higherIsBetter: true }]
+      : []),
+    ...(earlier.metrics.density != null && later.metrics.density != null
+      ? [{ label: ui(language, "canopyDensity"), from: earlier.metrics.density, to: later.metrics.density, unit: "/100", higherIsBetter: true }]
+      : []),
     { label: ui(language, "colourSaturation"), from: earlier.metrics.greenness, to: later.metrics.greenness, unit: "/100", higherIsBetter: true },
   ];
 
-  const growth = later.metrics.heightCm - earlier.metrics.heightCm;
+  const growth = later.metrics.heightCm != null && earlier.metrics.heightCm != null
+    ? later.metrics.heightCm - earlier.metrics.heightCm
+    : null;
   const colour = later.metrics.greenness - earlier.metrics.greenness;
   const observations = [
-    growth > 0
+    growth !== null && growth > 0
       ? language === "es"
         ? `${ui(language, "heightIncreased")} ${growth} cm ${ui(language, "overDays")} ${days} ${ui(language, "daysAbout")} ${(growth / Math.max(days, 1)).toFixed(2)} cm ${ui(language, "perDay")}`
         : `${ui(language, "heightIncreased")} ${growth}cm ${ui(language, "overDays")} ${days} ${ui(language, "daysAbout")} ${(growth / Math.max(days, 1)).toFixed(2)}cm/day).`
-      : ui(language, "noHeightChange"),
-    `${ui(language, "visibleLeafCount")} ${earlier.metrics.leafCount} ${language === "es" ? "a" : "to"} ${later.metrics.leafCount}.`,
+      : growth === null ? ui(language, "measurementsNotAvailable") : ui(language, "noHeightChange"),
+    ...(earlier.metrics.leafCount != null && later.metrics.leafCount != null
+      ? [`${ui(language, "visibleLeafCount")} ${earlier.metrics.leafCount} ${language === "es" ? "a" : "to"} ${later.metrics.leafCount}.`]
+      : []),
     colour < -4
       ? language === "es" ? `${ui(language, "saturationDropped")} ${Math.abs(colour)} puntos, sobre todo en las hojas inferiores.` : `${ui(language, "saturationDropped")} ${Math.abs(colour)} points, strongest on lower leaves.`
       : colour > 4
@@ -551,7 +579,7 @@ export function comparePhotos(a: Photo, b: Photo, plant: Plant, language = prefe
       ? language === "es"
         ? "La forma del cambio — el crecimiento continúa mientras el color se desvanece en las hojas viejas — apunta a un problema de nutrientes más que de agua o luz. No está confirmado: fotografiar dos veces una hoja es poca evidencia para toda la planta."
         : `The shape of the change — growth continuing while colour fades on older leaves — points to a nutrient issue rather than water or light. Not confirmed: one leaf photographed twice is thin evidence for the whole plant.`
-      : growth > 0 && later.metrics.density > earlier.metrics.density
+      : growth !== null && growth > 0 && later.metrics.density != null && earlier.metrics.density != null && later.metrics.density > earlier.metrics.density
         ? `${plant.name} ${ui(language, "expansionPhase")}`
         : ui(language, "noMeaningfulChange");
 
@@ -560,7 +588,7 @@ export function comparePhotos(a: Photo, b: Photo, plant: Plant, language = prefe
     deltas,
     observations,
     inference,
-    confidence: Math.abs(colour) > 4 || growth > 5 ? "high" : "low",
+    confidence: Math.abs(colour) > 4 || (growth !== null && growth > 5) ? "high" : "low",
   };
 }
 

@@ -132,7 +132,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                 src: photo,
                 daysAgo: 0,
                 caption: "First photograph",
-                metrics: { heightCm: 0, leafCount: 0, greenness: 0, density: 0 },
+                metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
               },
             }
           : {}),

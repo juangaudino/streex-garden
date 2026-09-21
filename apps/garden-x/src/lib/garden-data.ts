@@ -79,10 +79,11 @@ export interface Garden {
 }
 
 export interface PlantMetrics {
-  heightCm: number;
-  leafCount: number;
+  /** Null means no recorded measurement; zero remains a legitimate measurement. */
+  heightCm: number | null;
+  leafCount: number | null;
   greenness: number; // 0-100 deterministic image score
-  density: number; // 0-100
+  density: number | null; // 0-100; null when not recorded
 }
 
 export interface Photo {

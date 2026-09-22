@@ -304,6 +304,80 @@ function GardenDetail() {
         </section>
       ) : (
         <>
+          {pods ? (
+            <section className="mt-10 px-5 sm:px-8 lg:px-12">
+              <SectionTitle
+                action={
+                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <Cpu className="h-3.5 w-3.5" /> {garden.machine?.name}
+                  </span>
+                }
+              >
+                {ui(language, "podPositions")}
+              </SectionTitle>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                {pods.map(({ label, plants: positionPlants, position }) => {
+                  if (!positionPlants.length) {
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
+                        aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
+                        className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
+                      >
+                        <div className="text-muted-foreground">
+                          <Plus className="mx-auto h-4 w-4" />
+                          <p className="mt-1.5 text-xs">{label}</p>
+                          <p className="text-[0.65rem]">{ui(language, "emptyAddPlant")}</p>
+                        </div>
+                      </button>
+                    );
+                  }
+                  return (
+                    <div
+                      key={label}
+                      className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft"
+                    >
+                      <p className="eyebrow px-3 pt-3">{label}</p>
+                      {positionPlants.map((positionPlant) => (
+                        <Link
+                          key={positionPlant.id}
+                          to="/plants/$plantId"
+                          params={{ plantId: positionPlant.id }}
+                          className="press block border-t border-border/50 first:border-t-0"
+                        >
+                          <div className="aspect-square overflow-hidden bg-secondary">
+                            {photoById(positionPlant.heroPhotoId) ? (
+                              <PhotoImage
+                                photo={photoById(positionPlant.heroPhotoId)!}
+                                alt={positionPlant.name}
+                                rendition="preview"
+                                loading="lazy"
+                                className="h-full w-full object-cover"
+                              />
+                            ) : null}
+                          </div>
+                          <div className="p-3">
+                            <p className="truncate text-sm font-medium">{positionPlant.name}</p>
+                            <p className="numeral truncate text-xs text-muted-foreground">
+                              {ageLabel(positionPlant.plantedDaysAgo)}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                      {positionPlants.length > 1 ? (
+                        <p className="px-3 pb-3 text-[0.65rem] font-medium text-amber-700 dark:text-amber-300">
+                          {ui(language, "sharedPositionWarning").replace("{count}", String(positionPlants.length))}
+                        </p>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
+
           <section className="mt-12 px-5 sm:px-8 lg:px-12">
             <SectionTitle>{ui(language, "plantsSection")}</SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

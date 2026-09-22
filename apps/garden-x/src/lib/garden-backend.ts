@@ -257,28 +257,42 @@ async function flushSignedUrlRequests() {
   const started = typeof performance !== "undefined" ? performance.now() : Date.now();
   photoUrlMetrics.signRequests += 1;
   photoUrlMetrics.pathsRequested += paths.length;
-  const { data, error } = await getSupabaseClient()
-    .storage.from("garden-originals")
-    .createSignedUrls(paths, signedUrlTtlSeconds);
-  photoUrlMetrics.lastDurationMs =
-    (typeof performance !== "undefined" ? performance.now() : Date.now()) - started;
-  const signedByPath = new Map(
-    (data ?? []).flatMap((item) =>
-      item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : [],
-    ),
-  );
-  for (const request of requests) {
-    const key = photoCacheKey(request.photo.id, request.rendition);
-    signedUrlPending.delete(key);
+  const settleError = (reason: unknown) => {
+    for (const request of requests) {
+      signedUrlPending.delete(photoCacheKey(request.photo.id, request.rendition));
+      for (const waiter of request.waiters) waiter.reject(reason);
+    }
+  };
+  try {
+    const { data, error } = await getSupabaseClient()
+      .storage.from("garden-originals")
+      .createSignedUrls(paths, signedUrlTtlSeconds);
     if (error) {
-      for (const waiter of request.waiters) waiter.reject(error);
-      continue;
+      settleError(error);
+      return;
     }
-    const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean) ?? "";
-    if (url) {
+    const signedByPath = new Map(
+      (data ?? []).flatMap((item) =>
+        item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : [],
+      ),
+    );
+    for (const request of requests) {
+      const key = photoCacheKey(request.photo.id, request.rendition);
+      signedUrlPending.delete(key);
+      const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean);
+      if (!url) {
+        const error = new Error(`No signed URL returned for ${request.rendition} photo.`);
+        for (const waiter of request.waiters) waiter.reject(error);
+        continue;
+      }
       signedUrlCache.set(key, { url, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
+      for (const waiter of request.waiters) waiter.resolve(url);
     }
-    for (const waiter of request.waiters) waiter.resolve(url);
+  } catch (reason) {
+    settleError(reason);
+  } finally {
+    photoUrlMetrics.lastDurationMs =
+      (typeof performance !== "undefined" ? performance.now() : Date.now()) - started;
   }
 }
 

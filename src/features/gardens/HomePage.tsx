@@ -6,7 +6,7 @@ import { AppShell } from '../../components/AppShell'
 import { GrowthRings } from '../../components/GrowthRings'
 import { StatePanel } from '../../components/StatePanel'
 import type { HomeDashboard, PhotoEvidence } from '../../domain/types'
-import { getGardenCoverPhotos, getHome, getHomeDashboard, getHomeMedia } from '../../lib/garden-api'
+import { getHome, getHomeDashboard, getHomeMedia } from '../../lib/garden-api'
 import { GardenCoverImage } from './GardenCover'
 import { AttentionList } from './GardensPage'
 
@@ -22,7 +22,6 @@ export function HomePage({ user }: { user: User }) {
       const [next, summaries, media] = await Promise.all([getHomeDashboard(null), getHome(), getHomeMedia()])
       const coverByGarden = new Map(summaries.map((garden) => [garden.id, garden.cover_photo ?? null]))
       next.gardens = next.gardens.map((garden) => ({ ...garden, cover_photo: coverByGarden.get(garden.id) ?? null }))
-      await Promise.all(summaries.map((garden) => getGardenCoverPhotos(garden.id)))
       setDashboard(next)
       setHeroPhoto(media.home_hero_photo); setHeadline(media.home_headline ?? 'Tu jardín, vivo.')
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'No se pudo abrir Home.') }

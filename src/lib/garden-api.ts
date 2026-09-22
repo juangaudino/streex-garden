@@ -458,10 +458,86 @@ const signedPhotoUrlCache = new Map<string, { url: string; expiresAt: number }>(
 const signedPhotoUrlPending = new Map<string, Promise<string>>()
 const storageImageTransformsEnabled = import.meta.env.VITE_SUPABASE_IMAGE_TRANSFORMS === 'true'
 
+type SignQueueEntry = {
+  servedPath: string
+  transform: ReturnType<typeof photoTransformFor>
+  resolve: (url: string) => void
+  reject: (reason: unknown) => void
+}
+
+let signQueue: SignQueueEntry[] = []
+let signFlushScheduled = false
+
+function scheduleSignFlush(): void {
+  if (signFlushScheduled) return
+  signFlushScheduled = true
+  queueMicrotask(() => {
+    signFlushScheduled = false
+    void flushSignQueue()
+  })
+}
+
+function settleQueueError(entries: SignQueueEntry[], reason: unknown): void {
+  for (const entry of entries) entry.reject(reason)
+}
+
+async function signQueueGroup(entries: SignQueueEntry[]): Promise<void> {
+  if (!entries.length) return
+  const transform = entries[0].transform
+  if (transform) {
+    await Promise.all(entries.map(async (entry) => {
+      try {
+        const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(entry.servedPath, 60 * 5, { transform })
+        if (error || !data?.signedUrl) throw error ?? new Error('No se pudo firmar la fotografía.')
+        entry.resolve(data.signedUrl)
+      } catch (reason) {
+        entry.reject(reason)
+      }
+    }))
+    return
+  }
+
+  const paths = [...new Set(entries.map((entry) => entry.servedPath))]
+  const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrls(paths, 60 * 5)
+  if (error) {
+    settleQueueError(entries, error)
+    return
+  }
+  const signedByPath = new Map((data ?? []).flatMap((item) => item.path && item.signedUrl ? [[item.path, item.signedUrl] as const] : []))
+  for (const entry of entries) {
+    const url = signedByPath.get(entry.servedPath)
+    if (url) entry.resolve(url)
+    else entry.reject(new Error('No se pudo firmar la fotografía solicitada.'))
+  }
+}
+
+async function flushSignQueue(): Promise<void> {
+  const entries = signQueue
+  signQueue = []
+  if (!entries.length) return
+  const groups = new Map<string, SignQueueEntry[]>()
+  for (const entry of entries) {
+    const key = entry.transform ? JSON.stringify(entry.transform) : ''
+    const group = groups.get(key) ?? []
+    group.push(entry)
+    groups.set(key, group)
+  }
+  await Promise.all([...groups.values()].map(async (group) => {
+    try { await signQueueGroup(group) }
+    catch (reason) { settleQueueError(group, reason) }
+  }))
+}
+
+function queueSignedPhotoUrl(servedPath: string, transform: ReturnType<typeof photoTransformFor>): Promise<string> {
+  return new Promise((resolve, reject) => {
+    signQueue.push({ servedPath, transform, resolve, reject })
+    scheduleSignFlush()
+  })
+}
+
 export async function getSignedPhotoUrl(storagePath: string, rendition: PhotoRendition = 'original'): Promise<string> {
-  // Supabase Storage transformations require a paid plan. On Free, all visual
-  // surfaces deliberately share the one signed original URL instead of first
-  // issuing a failing transformed-URL request for every rendition.
+  // Stored preview/display renditions are private objects beside the original.
+  // Dynamic transforms remain opt-in for installations that explicitly enable them.
   const transform = storageImageTransformsEnabled ? photoTransformFor(rendition) : null
   const storedRendition = transform ? null : storedRenditionFor(rendition)
   const servedPath = storedRendition ? photoRenditionPath(storagePath, storedRendition) : storagePath
@@ -470,15 +546,11 @@ export async function getSignedPhotoUrl(storagePath: string, rendition: PhotoRen
   if (cached && cached.expiresAt > Date.now()) return cached.url
   const pending = signedPhotoUrlPending.get(cacheKey)
   if (pending) return pending
-  const sign = async (withTransform: boolean) => {
-    const { data, error } = await getSupabaseClient().storage.from('garden-originals').createSignedUrl(servedPath, 60 * 5, withTransform && transform ? { transform } : undefined)
-    return unwrap(data?.signedUrl ?? null, error)
-  }
-  const request = sign(Boolean(transform)).catch(async (reason) => {
+  const request = queueSignedPhotoUrl(servedPath, transform).catch(async (reason) => {
     if (!transform) throw reason
     // A private original must remain viewable when a configured transformation
     // is temporarily unavailable or the source format is unsupported.
-    return sign(false)
+    return queueSignedPhotoUrl(servedPath, null)
   }).then((url) => {
     signedPhotoUrlCache.set(cacheKey, { url, expiresAt: Date.now() + 4 * 60 * 1000 })
     return url

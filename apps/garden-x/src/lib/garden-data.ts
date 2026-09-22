@@ -35,6 +35,7 @@ export type MaintenanceType =
 export type EventType =
   | "planted"
   | "germinated"
+  | "sprouted"
   | "photo"
   | "maintenance"
   | "pruning"

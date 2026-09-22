@@ -28,6 +28,7 @@ import { preferredLanguage, ui } from "@/lib/ui-copy";
 export const eventIcons: Record<EventType, typeof Leaf> = {
   planted: Sprout,
   germinated: Leaf,
+  sprouted: Sprout,
   photo: Camera,
   maintenance: Droplets,
   pruning: Scissors,

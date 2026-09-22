@@ -100,6 +100,15 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
   });
 
+  it("records sprouted as a dated human-confirmed state with optional photo evidence", async () => {
+    await persistMoment(plant, { ...event("sprouted"), title: "Sprouted" }, photo);
+    const observation = rpc.mock.calls.find(([name]) => name === "garden_x_create_observation");
+    const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
+    expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
+    expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+  });
+
   it("does not report photo persistence success when Storage upload fails", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500 }));
 

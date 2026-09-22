@@ -318,6 +318,7 @@ export const maintenanceLabels: Record<MaintenanceType, string> = {
 export const eventLabels: Record<EventType, string> = {
   planted: "Planted",
   germinated: "Germinated",
+  sprouted: "Sprouted",
   photo: "Photo",
   maintenance: "Maintenance",
   thinning: "Thinning",
@@ -343,7 +344,7 @@ export function localizedMaintenanceLabel(type: MaintenanceType, language = pref
 }
 
 export function localizedEventLabel(type: EventType, language = preferredLanguage()) {
-  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem", "Problema"], recovery: ["Recovery", "Recuperación"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Note", "Nota"] };
+  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], sprouted: ["Sprouted", "Brotó"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem", "Problema"], recovery: ["Recovery", "Recuperación"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Note", "Nota"] };
   return labels[type][language === "es" ? 1 : 0];
 }
 

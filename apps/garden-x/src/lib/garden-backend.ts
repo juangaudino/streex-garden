@@ -160,6 +160,7 @@ function daysAgo(value: string | null | undefined): number {
 function eventType(type: string, data: Record<string, unknown>): EventType {
   if (type === "cycle_started" || type === "seeds_added") return "planted";
   if (type === "germination_observed" || type === "germination_confirmed") return "germinated";
+  if (type === "sprouted") return "sprouted";
   if (type === "harvest") return "harvest";
   if (type === "incident_opened") return "problem";
   if (type === "incident_resolved") return "recovery";

@@ -91,7 +91,7 @@ function localizedWhen(days: number, language: "en" | "es") {
 }
 
 function localizedOtherState(type: EventType, language: "en" | "es") {
-  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem appeared", "Apareció un problema"], recovery: ["Recovered", "Recuperada"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Something else", "Algo más"] };
+  const labels: Record<EventType, [string, string]> = { planted: ["Planted", "Plantada"], germinated: ["Germinated", "Germinada"], sprouted: ["Sprouted", "Brotó"], photo: ["Photo", "Foto"], maintenance: ["Maintenance", "Mantenimiento"], thinning: ["Thinning", "Aclareo"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], transplant: ["Transplant", "Trasplante"], problem: ["Problem appeared", "Apareció un problema"], recovery: ["Recovered", "Recuperada"], flowering: ["Flowering", "Floración"], fruiting: ["Fruiting", "Fructificación"], ai: ["AI analysis", "Análisis de IA"], note: ["Something else", "Algo más"] };
   return labels[type][language === "es" ? 1 : 0];
 }
 
@@ -120,6 +120,7 @@ const careTypes: MaintenanceType[] = [
 
 const otherStates: { type: EventType; label: string }[] = [
   { type: "germinated", label: "Germinated" },
+  { type: "sprouted", label: "Sprouted" },
   { type: "flowering", label: "Flowering" },
   { type: "fruiting", label: "Fruiting" },
   { type: "problem", label: "Problem appeared" },

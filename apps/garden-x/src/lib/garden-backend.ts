@@ -16,6 +16,14 @@ import {
   normalizeMeaningfulChangeResult,
   type MeaningfulChangeResult,
 } from "./meaningful-changes";
+import {
+  GARDEN_SUMMARY_SCHEMA_VERSION,
+  gardenSummaryRequestKey,
+  normalizeGardenSummaryResult,
+  type GardenSummaryContextFingerprint,
+  type GardenSummaryResult,
+  type GardenSummaryScope,
+} from "./garden-summaries";
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
@@ -1485,6 +1493,53 @@ export async function loadMeaningfulChangeResults(): Promise<MeaningfulChangeRes
     );
     return normalized ? [{ ...normalized, id: typeof (row as Record<string, unknown>)?.id === "string" ? (row as Record<string, unknown>).id as string : undefined, createdAt: typeof (row as Record<string, unknown>)?.created_at === "string" ? (row as Record<string, unknown>).created_at as string : normalized.createdAt }] : [];
   });
+}
+
+export async function loadGardenSummaryResults(): Promise<GardenSummaryResult[]> {
+  const { data, error } = await getSupabaseClient().rpc("garden_get_garden_summary_results");
+  if (error || !Array.isArray(data)) return [];
+  return data.flatMap((row) => {
+    const normalized = normalizeGardenSummaryResult(row);
+    return normalized ? [normalized] : [];
+  });
+}
+
+export async function loadGardenSummaryContext(scopeType: GardenSummaryScope, gardenId: string | null): Promise<GardenSummaryContextFingerprint | null> {
+  const { data, error } = await getSupabaseClient().rpc("garden_get_garden_summary_context", {
+    p_scope_type: scopeType,
+    p_garden_id: gardenId,
+  });
+  if (error || !data || typeof data !== "object") return null;
+  const row = data as Record<string, unknown>;
+  if ((row.scope_type !== "global" && row.scope_type !== "garden") || (row.scope_type === "garden" && typeof row.scope_id !== "string") || typeof row.material_fingerprint !== "string") return null;
+  return { scopeType: row.scope_type, scopeId: row.scope_type === "garden" ? row.scope_id as string : null, materialFingerprint: row.material_fingerprint };
+}
+
+export async function requestGardenSummary(scopeType: GardenSummaryScope, gardenId: string | null, materialFingerprint: string, language: "en" | "es" = "es") {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      operation: "garden_summary",
+      scope_type: scopeType,
+      garden_id: gardenId,
+      material_fingerprint: materialFingerprint,
+      language,
+      request_key: gardenSummaryRequestKey(scopeType, gardenId, materialFingerprint, language, GARDEN_SUMMARY_SCHEMA_VERSION),
+    }),
+  });
+  const body = (await response.json().catch(() => null)) as { proposal?: unknown; request_id?: string; error?: string } | null;
+  if (!response.ok || !body?.proposal) throw new Error(body?.error ?? "Garden AI could not prepare this summary.");
+  const proposal = normalizeGardenSummaryResult(body.proposal);
+  if (!proposal) throw new Error("Garden AI returned an invalid Garden Summary.");
+  return { proposal: { ...proposal, language }, requestId: body.request_id ?? "" };
 }
 
 export async function requestMeaningfulChange(

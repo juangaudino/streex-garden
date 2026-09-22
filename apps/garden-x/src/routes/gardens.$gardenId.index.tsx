@@ -10,6 +10,8 @@ import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { activeGridCells, allGridCells } from "@/lib/custom-system";
 import { ui } from "@/lib/ui-copy";
+import { selectStaleSummary } from "@/lib/garden-summaries";
+import { GardenSummaryCard } from "@/components/garden/garden-summary";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -47,6 +49,7 @@ function GardenDetail() {
   const plants = store.plants.filter((p) => p.gardenId === garden.id);
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const tasks = openTasks(store.tasks.filter((t) => plants.some((p) => p.id === t.plantId)));
+  const gardenSummary = selectStaleSummary(store.gardenSummaries, "garden", garden.id, language);
   const pods = garden.backendPositions?.length
     ? [...garden.backendPositions]
         .filter((position) => position.active !== false)
@@ -321,6 +324,12 @@ function GardenDetail() {
               ) : null}
             </div>
           </section>
+
+          {gardenSummary ? (
+            <section className="mt-8 px-5 sm:px-8 lg:px-12">
+              <GardenSummaryCard summary={gardenSummary} language={language} />
+            </section>
+          ) : null}
 
           <section className="mt-12 px-5 sm:px-8 lg:px-12">
             <SectionTitle

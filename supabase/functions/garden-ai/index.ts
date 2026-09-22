@@ -1,8 +1,8 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
-import { gardenAiInstructionsFor, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
+import { gardenAiInstructionsFor, gardenSummaryInstructionsFor, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
 import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
-import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateMeaningfulChangeProposal } from '../_shared/ai-contract.ts'
+import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SUMMARY_JSON_SCHEMA, GARDEN_SUMMARY_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateMeaningfulChangeProposal, validateGardenSummaryProposal } from '../_shared/ai-contract.ts'
 
 const allowedOrigin = Deno.env.get('GARDEN_AI_ALLOWED_ORIGIN') ?? 'https://garden.getstreex.com'
 const corsHeaders = { 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Origin': allowedOrigin, 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' }
@@ -18,8 +18,9 @@ const providerName = Deno.env.get('GARDEN_AI_PROVIDER') ?? 'openai'
 const model = 'gpt-5.6-luna'
 if (!supabaseUrl || !anonKey) throw new Error('Missing Supabase server configuration')
 
-async function startRequest(client: ReturnType<typeof createClient>, ownerId: string, key: string, type: 'ai_check' | 'meaningful_change' | 'ask_garden', evidenceRefs: unknown[]) {
-  const response = await client.rpc('garden_ai_start_request', { p_request_key: key, p_request_type: type, p_evidence_refs: evidenceRefs, p_proposal_schema_version: type === 'ai_check' ? GARDEN_AI_PROPOSAL_SCHEMA_VERSION : type === 'meaningful_change' ? GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION : 'garden_ai_ask_v1' })
+async function startRequest(client: ReturnType<typeof createClient>, ownerId: string, key: string, type: 'ai_check' | 'meaningful_change' | 'ask_garden' | 'garden_summary_global' | 'garden_summary_local', evidenceRefs: unknown[]) {
+  const proposalSchemaVersion = type === 'ai_check' ? GARDEN_AI_PROPOSAL_SCHEMA_VERSION : type === 'meaningful_change' ? GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION : type.startsWith('garden_summary') ? GARDEN_SUMMARY_SCHEMA_VERSION : 'garden_ai_ask_v1'
+  const response = await client.rpc('garden_ai_start_request', { p_request_key: key, p_request_type: type, p_evidence_refs: evidenceRefs, p_proposal_schema_version: proposalSchemaVersion })
   if (response.error || !response.data || typeof response.data !== 'object') throw new Error('AI request could not be created')
   const row = response.data as { id?: string; status?: string; proposal?: unknown; model_identifier?: string }
   if (!row.id) throw new Error('AI request could not be created')
@@ -58,7 +59,7 @@ Deno.serve(async (request) => {
   if (!featureEnabled) return json({ error: 'Garden AI is disabled' }, 503)
   const auditClient = userClient
 
-  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown; language?: unknown }
+  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown; language?: unknown; scope_type?: unknown; garden_id?: unknown; material_fingerprint?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (!requestKey(body.request_key)) return json({ error: 'A valid request key is required' }, 400)
   if (providerName === 'mock') return json({ error: 'Mock provider is available in local tests only' }, 503)
@@ -93,6 +94,42 @@ Deno.serve(async (request) => {
       const response = await provider.analyze(runtime.providerRequest)
       const proposal = validateMeaningfulChangeProposal(response.raw)
       if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
+      await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: { ...(response.usage ?? {}), language: responseLanguage } })
+      activeAudit = null
+      return json({ proposal, request_id: started.id, idempotent: false })
+    }
+
+    if (body.operation === 'garden_summary') {
+      if (body.scope_type !== 'global' && body.scope_type !== 'garden') return json({ error: 'Garden Summary scope is invalid' }, 400)
+      if (body.scope_type === 'garden' && !uuid(body.garden_id)) return json({ error: 'Garden Summary garden is invalid' }, 400)
+      if (typeof body.material_fingerprint !== 'string' || !/^[a-f0-9]{32}$/i.test(body.material_fingerprint)) return json({ error: 'Garden Summary fingerprint is invalid' }, 400)
+      const requestType = body.scope_type === 'global' ? 'garden_summary_global' : 'garden_summary_local'
+      const started = await startRequest(auditClient, userData.user.id, body.request_key, requestType, [{ kind: 'summary_scope', scope_type: body.scope_type, scope_id: body.scope_type === 'garden' ? body.garden_id : null, material_fingerprint: body.material_fingerprint }])
+      if (started.existing) return json({ proposal: started.existing.proposal, request_id: started.existing.id, idempotent: true })
+      const startedAt = Date.now()
+      activeAudit = { id: started.id, startedAt }
+      const contextResponse = await userClient.rpc('garden_get_garden_summary_context', { p_scope_type: body.scope_type, p_garden_id: body.scope_type === 'garden' ? body.garden_id : null })
+      if (contextResponse.error || !contextResponse.data || typeof contextResponse.data !== 'object') throw new Error('Authorized Garden Summary context is unavailable')
+      const context = contextResponse.data as Record<string, unknown>
+      if (context.material_fingerprint !== body.material_fingerprint) throw new Error('Garden Summary context changed; retry')
+      const response = await provider.analyze({ operation: 'garden_summary', context, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_SUMMARY_JSON_SCHEMA, instructions: gardenSummaryInstructionsFor(responseLanguage) })
+      const proposal = validateGardenSummaryProposal(response.raw)
+      const contextArray = (key: string) => Array.isArray(context[key]) ? context[key] as unknown[] : []
+      const coverage = proposal?.evidence_coverage && typeof proposal.evidence_coverage === 'object' ? proposal.evidence_coverage as Record<string, unknown> : null
+      const expectedCoverage = {
+        plant_count: contextArray('plants').length,
+        garden_count: contextArray('gardens').length,
+        open_attention_count: contextArray('open_attention').length,
+        recent_event_count: contextArray('recent_events').length,
+        meaningful_change_count: contextArray('meaningful_changes').length,
+        ai_check_count: contextArray('ai_checks').length,
+      }
+      const coverageMatches = coverage && Object.entries(expectedCoverage).every(([key, count]) => coverage[key] === count)
+      const idsFor = (key: string, idKey: string) => new Set(contextArray(key).flatMap((item) => item && typeof item === 'object' && typeof (item as Record<string, unknown>)[idKey] === 'string' ? [(item as Record<string, unknown>)[idKey] as string] : []))
+      const referencesMatch = proposal && Array.isArray(proposal.referenced_plant_instance_ids) && Array.isArray(proposal.referenced_meaningful_change_ids) && Array.isArray(proposal.referenced_ai_check_ids) && proposal.referenced_plant_instance_ids.every((id) => typeof id === 'string' && idsFor('plants', 'plant_instance_id').has(id)) && proposal.referenced_meaningful_change_ids.every((id) => typeof id === 'string' && idsFor('meaningful_changes', 'id').has(id)) && proposal.referenced_ai_check_ids.every((id) => typeof id === 'string' && idsFor('ai_checks', 'id').has(id))
+      if (!proposal || proposal.scope_type !== body.scope_type || proposal.scope_id !== (body.scope_type === 'garden' ? body.garden_id : null) || proposal.material_fingerprint !== body.material_fingerprint || !coverageMatches || !referencesMatch) {
+        await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid Garden Summary' }, 502)
+      }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: { ...(response.usage ?? {}), language: responseLanguage } })
       activeAudit = null
       return json({ proposal, request_id: started.id, idempotent: false })

@@ -17,3 +17,9 @@ export function gardenAiInstructionsFor(language: 'en' | 'es') {
     'Respond in clear, natural English.',
   )
 }
+
+export function gardenSummaryInstructionsFor(language: 'en' | 'es') {
+  const languageRule = language === 'es' ? 'Respond in concise, natural Latin American Spanish.' : 'Respond in clear, natural English.'
+  return `You are Garden AI preparing a Garden X briefing. ${languageRule}
+Use only the supplied deterministic evidence packet. Summarize what is happening now; do not discover new facts, diagnose, recommend agronomic actions, estimate measurements, or alter canonical data. Separate confirmed facts from inferred AI results: prior Meaningful Changes and AI Checks remain inferred evidence and must never become confirmed facts. Prioritize open attention, current plant status, recent canonical activity, and material derived results. Mention stable plants only when that provides useful context. Return 2–3 short natural sentences, calm and specific, without lists, headings, metadata dumps, UUIDs, raw enums, database fields, garden mechanics, or the phrase “AI says”. If evidence is limited, say so honestly. The scope is explicit: global means across the owner's active gardens; garden means only the named garden. Use the material_fingerprint exactly as provided and return only the requested JSON.`
+}

@@ -25,6 +25,8 @@ import {
 } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
+import { selectStaleSummary } from "@/lib/garden-summaries";
+import { GardenSummaryCard } from "@/components/garden/garden-summary";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -79,6 +81,7 @@ function Home() {
   const heroPhoto = photoById(hero.heroPhotoId);
   const heroPics = plantPhotos(store.photos, hero.id);
   const photoStripPlants = plantsRepresentedInPhotos(newPhotos, store.plants);
+  const gardenSummary = selectStaleSummary(store.gardenSummaries, "global", null, store.language);
   const greeting = new Date().getHours() < 12
     ? ui(store.language, "goodMorning")
     : new Date().getHours() < 18
@@ -96,6 +99,12 @@ function Home() {
             : `${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}. ${due.length} ${ui(store.language, "thingsNeedHands")}`}
         />
       </div>
+
+      {gardenSummary ? (
+        <section className="mt-8 px-5 sm:px-8 lg:px-12">
+          <GardenSummaryCard summary={gardenSummary} language={store.language} />
+        </section>
+      ) : null}
 
       {/* Highlighted plant */}
       <section className="px-5 sm:px-8 lg:px-12">

@@ -3,6 +3,27 @@ export const GARDEN_AI_CONTEXT_SCHEMA_VERSION = 'garden_ai_context_v1'
 export const GARDEN_AI_PROPOSAL_SCHEMA_VERSION = 'garden_ai_check_v2'
 export const GARDEN_AI_ASK_SCHEMA_VERSION = 'garden_ai_ask_v1'
 export const GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION = 'garden_meaningful_change_v1'
+export const GARDEN_SUMMARY_SCHEMA_VERSION = 'garden_summary_v1'
+
+export const GARDEN_SUMMARY_JSON_SCHEMA: Record<string, unknown> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['schema_version', 'summary_text', 'scope_type', 'scope_id', 'material_fingerprint', 'evidence_coverage', 'referenced_plant_instance_ids', 'referenced_meaningful_change_ids', 'referenced_ai_check_ids', 'epistemic_notes'],
+  properties: {
+    schema_version: { type: 'string', enum: [GARDEN_SUMMARY_SCHEMA_VERSION] },
+    summary_text: { type: 'string' },
+    scope_type: { enum: ['global', 'garden'] },
+    scope_id: { anyOf: [{ type: 'string' }, { type: 'null' }] },
+    material_fingerprint: { type: 'string' },
+    evidence_coverage: { type: 'object', additionalProperties: false, required: ['plant_count', 'garden_count', 'open_attention_count', 'recent_event_count', 'meaningful_change_count', 'ai_check_count'], properties: {
+      plant_count: { type: 'integer', minimum: 0 }, garden_count: { type: 'integer', minimum: 0 }, open_attention_count: { type: 'integer', minimum: 0 }, recent_event_count: { type: 'integer', minimum: 0 }, meaningful_change_count: { type: 'integer', minimum: 0 }, ai_check_count: { type: 'integer', minimum: 0 },
+    } },
+    referenced_plant_instance_ids: { type: 'array', items: { type: 'string' } },
+    referenced_meaningful_change_ids: { type: 'array', items: { type: 'string' } },
+    referenced_ai_check_ids: { type: 'array', items: { type: 'string' } },
+    epistemic_notes: { type: 'array', items: { type: 'string' } },
+  },
+}
 
 export const GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA: Record<string, unknown> = {
   type: 'object',
@@ -90,5 +111,21 @@ export function validateAiCheckProposal(value: unknown): Record<string, unknown>
 
 export function validateAskGardenAnswer(value: unknown): Record<string, unknown> | null {
   if (!record(value) || value.schema_version !== GARDEN_AI_ASK_SCHEMA_VERSION || !['answer', 'insufficient_evidence', 'needs_clarification'].includes(String(value.answer_type)) || !nonEmpty(value.answer) || !Array.isArray(value.confirmed_facts) || !Array.isArray(value.suggested_next_actions)) return null
+  return value
+}
+
+export function validateGardenSummaryProposal(value: unknown): Record<string, unknown> | null {
+  if (!record(value) || value.schema_version !== GARDEN_SUMMARY_SCHEMA_VERSION || !validUserText(value.summary_text, 700) || !['global', 'garden'].includes(String(value.scope_type)) || (value.scope_id !== null && value.scope_id !== undefined && !nonEmpty(value.scope_id)) || !nonEmpty(value.material_fingerprint) || !record(value.evidence_coverage) || !Array.isArray(value.referenced_plant_instance_ids) || !Array.isArray(value.referenced_meaningful_change_ids) || !Array.isArray(value.referenced_ai_check_ids) || !validTextArray(value.epistemic_notes, 300)) return null
+  if (value.scope_type === 'global' && value.scope_id !== null) return null
+  if (value.scope_type === 'garden' && !nonEmpty(value.scope_id)) return null
+  if (typeof value.material_fingerprint !== 'string' || !/^[a-f0-9]{32}$/i.test(value.material_fingerprint)) return null
+  if (value.summary_text.split(/\n+/).length > 4) return null
+  const coverage = value.evidence_coverage as Record<string, unknown>
+  const coverageKeys = ['plant_count', 'garden_count', 'open_attention_count', 'recent_event_count', 'meaningful_change_count', 'ai_check_count']
+  if (coverageKeys.some((key) => !Number.isInteger(coverage[key]) || Number(coverage[key]) < 0)) return null
+  const referencedPlantIds = value.referenced_plant_instance_ids as unknown[]
+  const referencedChangeIds = value.referenced_meaningful_change_ids as unknown[]
+  const referencedCheckIds = value.referenced_ai_check_ids as unknown[]
+  if ([...referencedPlantIds, ...referencedChangeIds, ...referencedCheckIds].some((item) => typeof item !== 'string' || item.length < 1 || item.length > 120)) return null
   return value
 }

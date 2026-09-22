@@ -81,3 +81,29 @@ describe("Meaningful Changes output contract", () => {
     expect(validateMeaningfulChangeProposal(validComparison({ primary_visual_observation: "Grew 14 cm" }))).toBeNull();
   });
 });
+
+describe("Garden Summary runtime contract", () => {
+  const summary = {
+    schema_version: "garden_summary_v1",
+    summary_text: "Most plants are steady, with one open item to review.",
+    scope_type: "global",
+    scope_id: null,
+    material_fingerprint: "a".repeat(32),
+    evidence_coverage: { plant_count: 1, garden_count: 1, open_attention_count: 1, recent_event_count: 0, meaningful_change_count: 0, ai_check_count: 0 },
+    referenced_plant_instance_ids: ["plant-1"],
+    referenced_meaningful_change_ids: [],
+    referenced_ai_check_ids: [],
+    epistemic_notes: ["Derived results remain inferred evidence."],
+  };
+
+  it("accepts the bounded structured summary shape", async () => {
+    const { validateGardenSummaryProposal } = await import("./ai-contract");
+    expect(validateGardenSummaryProposal(summary)).toEqual(summary);
+  });
+
+  it("rejects internal language and invalid scope identity", async () => {
+    const { validateGardenSummaryProposal } = await import("./ai-contract");
+    expect(validateGardenSummaryProposal({ ...summary, summary_text: "plant_instance_id not_yet" })).toBeNull();
+    expect(validateGardenSummaryProposal({ ...summary, scope_type: "garden", scope_id: null })).toBeNull();
+  });
+});

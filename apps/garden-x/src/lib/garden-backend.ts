@@ -205,18 +205,29 @@ export type PhotoRendition = "preview" | "display" | "original";
 
 const signedUrlTtlSeconds = 60 * 60;
 const signedUrlRefreshSkewMs = 60 * 1000;
-const signedUrlCache = new Map<string, { url: string; expiresAt: number }>();
+const signedUrlCache = new Map<string, { url: string; path: string; expiresAt: number }>();
+const photoPersistentCacheName = "garden-x-photo-renditions-v1";
+const photoPersistentCacheVersion = "v1";
+const photoPersistentCacheMaxAgeMs = {
+  preview: 30 * 24 * 60 * 60 * 1000,
+  display: 14 * 24 * 60 * 60 * 1000,
+} as const;
+const photoPersistentCacheMaxEntries = { preview: 120, display: 40 } as const;
+const photoPersistentCacheMaxBytes = 50 * 1024 * 1024;
+let photoCacheUserPromise: Promise<string | null> | null = null;
+const persistentObjectUrls = new Set<string>();
 const signedUrlPending = new Map<
   string,
   {
     photo: Pick<Photo, "id" | "src" | "backendStoragePath">;
     rendition: PhotoRendition;
+    userId: string;
     paths: string[];
     waiters: Array<{ resolve: (url: string) => void; reject: (error: unknown) => void }>;
   }
 >();
 let signedUrlFlushScheduled = false;
-const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, lastDurationMs: 0 };
+const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, persistentCacheHits: 0, lastDurationMs: 0 };
 
 function derivativePath(originalPath: string, rendition: PhotoRendition) {
   if (rendition === "original") return originalPath;
@@ -237,8 +248,171 @@ export function photoRenditionCandidates(
   return ordered.map((kind) => derivativePath(originalPath, kind));
 }
 
-function photoCacheKey(photoId: string, rendition: PhotoRendition) {
-  return `${photoId}:${rendition}`;
+function photoCacheKey(photoId: string, rendition: PhotoRendition, userId = "anonymous") {
+  return `${userId}:${photoId}:${rendition}`;
+}
+
+function stablePhotoCacheHash(value: string) {
+  let hash = 2_166_136_261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16_777_619);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function canUsePersistentPhotoCache() {
+  return typeof window !== "undefined" && typeof globalThis.caches !== "undefined" && typeof URL.createObjectURL === "function";
+}
+
+/** Keep the cache namespace aligned with the authenticated session without clearing a valid cache on reload. */
+export function setPersistentPhotoCacheUserId(userId: string | null) {
+  photoCacheUserPromise = Promise.resolve(userId);
+}
+
+async function currentPhotoCacheUserId() {
+  if (!canUsePersistentPhotoCache()) return null;
+  if (!photoCacheUserPromise) {
+    photoCacheUserPromise = (async () => {
+      try {
+        const { data } = await getSupabaseClient().auth.getSession();
+        return data.session?.user.id ?? null;
+      } catch {
+        return null;
+      }
+    })();
+  }
+  return photoCacheUserPromise;
+}
+
+function persistentPhotoRequest(userId: string, photo: Pick<Photo, "id" | "backendStoragePath">, rendition: Exclude<PhotoRendition, "original">) {
+  const origin = window.location.origin;
+  const userKey = stablePhotoCacheHash(userId);
+  const assetKey = stablePhotoCacheHash(`${photo.id}|${photo.backendStoragePath ?? ""}`);
+  return new Request(`${origin}/__garden_x_photo_cache/${photoPersistentCacheVersion}/${userKey}/${assetKey}/${rendition}`);
+}
+
+async function openPersistentPhotoCache() {
+  if (!canUsePersistentPhotoCache()) return null;
+  try {
+    return await globalThis.caches.open(photoPersistentCacheName);
+  } catch {
+    return null;
+  }
+}
+
+async function evictPersistentPhotoCache(cache: Cache) {
+  const requests = await cache.keys();
+  const entries = (await Promise.all(requests.map(async (request) => {
+    const response = await cache.match(request);
+    if (!response) return null;
+    const url = new URL(request.url);
+    const rendition = url.pathname.endsWith("/preview") ? "preview" : url.pathname.endsWith("/display") ? "display" : null;
+    if (!rendition) return null;
+    const cachedAt = Number(response.headers.get("x-garden-cached-at") ?? 0);
+    const bytes = Number(response.headers.get("content-length") ?? 0);
+    return { request, rendition, cachedAt, bytes };
+  }))).filter((entry): entry is { request: Request; rendition: "preview" | "display"; cachedAt: number; bytes: number } => Boolean(entry));
+  const now = Date.now();
+  const expired = entries.filter((entry) => now - entry.cachedAt > photoPersistentCacheMaxAgeMs[entry.rendition]);
+  await Promise.all(expired.map((entry) => cache.delete(entry.request)));
+  const live = entries.filter((entry) => !expired.includes(entry));
+  const counts = { preview: 0, display: 0 };
+  let totalBytes = 0;
+  const oldestFirst = [...live].sort((a, b) => a.cachedAt - b.cachedAt);
+  for (const entry of oldestFirst) {
+    const overEntries = counts[entry.rendition] >= photoPersistentCacheMaxEntries[entry.rendition];
+    const overBytes = totalBytes + entry.bytes > photoPersistentCacheMaxBytes;
+    if (overEntries || overBytes) {
+      await cache.delete(entry.request);
+      continue;
+    }
+    counts[entry.rendition] += 1;
+    totalBytes += entry.bytes;
+  }
+}
+
+async function persistentPhotoUrl(photo: Pick<Photo, "id" | "backendStoragePath">, rendition: PhotoRendition) {
+  if (rendition === "original") return null;
+  const userId = await currentPhotoCacheUserId();
+  const cache = userId ? await openPersistentPhotoCache() : null;
+  if (!userId || !cache) return null;
+  try {
+    const candidates = rendition === "preview" ? ["preview", "display"] as const : ["display"] as const;
+    for (const candidate of candidates) {
+      const request = persistentPhotoRequest(userId, photo, candidate);
+      const response = await cache.match(request);
+      if (!response) continue;
+      const cachedAt = Number(response.headers.get("x-garden-cached-at") ?? 0);
+      if (!cachedAt || Date.now() - cachedAt > photoPersistentCacheMaxAgeMs[candidate]) {
+        await cache.delete(request);
+        continue;
+      }
+      photoUrlMetrics.persistentCacheHits += 1;
+      const objectUrl = URL.createObjectURL(await response.blob());
+      persistentObjectUrls.add(objectUrl);
+      while (persistentObjectUrls.size > 200) {
+        const oldest = persistentObjectUrls.values().next().value as string | undefined;
+        if (!oldest) break;
+        persistentObjectUrls.delete(oldest);
+        URL.revokeObjectURL(oldest);
+      }
+      return objectUrl;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/** Persist only derived UI renditions; originals never enter the durable cache. */
+export async function persistPhotoRendition(
+  photo: Pick<Photo, "id" | "backendStoragePath">,
+  rendition: PhotoRendition,
+  signedUrl: string,
+) {
+  if (rendition === "original" || !photo.backendStoragePath || !signedUrl || signedUrl.startsWith("blob:") || !canUsePersistentPhotoCache()) return;
+  const userId = await currentPhotoCacheUserId();
+  const cache = userId ? await openPersistentPhotoCache() : null;
+  if (!userId || !cache) return;
+  const resolved = signedUrlCache.get(photoCacheKey(photo.id, rendition, userId));
+  const originalPath = photoRenditionCandidates(photo.backendStoragePath, "original")[0];
+  if (resolved?.url === signedUrl && resolved.path === originalPath) return;
+  try {
+    const response = await fetch(signedUrl, { cache: "force-cache" });
+    if (!response.ok) return;
+    const blob = await response.blob();
+    const headers = new Headers({
+      "content-type": blob.type || response.headers.get("content-type") || "image/jpeg",
+      "content-length": String(blob.size),
+      "x-garden-cached-at": String(Date.now()),
+    });
+    await cache.put(persistentPhotoRequest(userId, photo, rendition), new Response(blob, { headers }));
+    await evictPersistentPhotoCache(cache);
+  } catch {
+    // Cache Storage is an enhancement. A signed URL remains the network fallback.
+  }
+}
+
+/** Remove private image bytes for one identity after logout or account switching. */
+export async function clearPersistentPhotoCache(userId?: string | null) {
+  photoCacheUserPromise = null;
+  signedUrlCache.clear();
+  for (const objectUrl of persistentObjectUrls) URL.revokeObjectURL(objectUrl);
+  persistentObjectUrls.clear();
+  const cache = await openPersistentPhotoCache();
+  if (!cache) return;
+  try {
+    const requests = await cache.keys();
+    if (!userId) {
+      await Promise.all(requests.map((request) => cache.delete(request)));
+      return;
+    }
+    const userKey = stablePhotoCacheHash(userId);
+    await Promise.all(requests.filter((request) => request.url.includes(`/__garden_x_photo_cache/${photoPersistentCacheVersion}/${userKey}/`)).map((request) => cache.delete(request)));
+  } catch {
+    // Private cache cleanup must never block sign-out or the network fallback.
+  }
 }
 
 function scheduleSignedUrlFlush() {
@@ -259,7 +433,7 @@ async function flushSignedUrlRequests() {
   photoUrlMetrics.pathsRequested += paths.length;
   const settleError = (reason: unknown) => {
     for (const request of requests) {
-      signedUrlPending.delete(photoCacheKey(request.photo.id, request.rendition));
+      signedUrlPending.delete(photoCacheKey(request.photo.id, request.rendition, request.userId));
       for (const waiter of request.waiters) waiter.reject(reason);
     }
   };
@@ -277,7 +451,7 @@ async function flushSignedUrlRequests() {
       ),
     );
     for (const request of requests) {
-      const key = photoCacheKey(request.photo.id, request.rendition);
+      const key = photoCacheKey(request.photo.id, request.rendition, request.userId);
       signedUrlPending.delete(key);
       const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean);
       if (!url) {
@@ -285,7 +459,13 @@ async function flushSignedUrlRequests() {
         for (const waiter of request.waiters) waiter.reject(error);
         continue;
       }
-      signedUrlCache.set(key, { url, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
+      const servedPath = request.paths.find((path) => signedByPath.has(path));
+      if (!servedPath) {
+        const error = new Error(`No signed URL path returned for ${request.rendition} photo.`);
+        for (const waiter of request.waiters) waiter.reject(error);
+        continue;
+      }
+      signedUrlCache.set(key, { url, path: servedPath, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
       for (const waiter of request.waiters) waiter.resolve(url);
     }
   } catch (reason) {
@@ -302,26 +482,32 @@ export function resolvePhotoUrl(
   rendition: PhotoRendition = "original",
 ): Promise<string> {
   if (!photo.backendStoragePath) return Promise.resolve(photo.src);
-  const key = photoCacheKey(photo.id, rendition);
-  const cached = signedUrlCache.get(key);
-  if (cached && cached.expiresAt - Date.now() > signedUrlRefreshSkewMs) {
-    photoUrlMetrics.cacheHits += 1;
-    return Promise.resolve(cached.url);
-  }
-  return new Promise<string>((resolve, reject) => {
-    const pending = signedUrlPending.get(key);
-    if (pending) {
-      pending.waiters.push({ resolve, reject });
-    } else {
-      signedUrlPending.set(key, {
-        photo,
-        rendition,
-        paths: photoRenditionCandidates(photo.backendStoragePath!, rendition),
-        waiters: [{ resolve, reject }],
-      });
+  return (async () => {
+    const durableUrl = await persistentPhotoUrl(photo, rendition);
+    if (durableUrl) return durableUrl;
+    const userId = (await currentPhotoCacheUserId()) ?? "anonymous";
+    const key = photoCacheKey(photo.id, rendition, userId);
+    const cached = signedUrlCache.get(key);
+    if (cached && cached.expiresAt - Date.now() > signedUrlRefreshSkewMs) {
+      photoUrlMetrics.cacheHits += 1;
+      return cached.url;
     }
-    scheduleSignedUrlFlush();
-  });
+    return new Promise<string>((resolve, reject) => {
+      const pending = signedUrlPending.get(key);
+      if (pending) {
+        pending.waiters.push({ resolve, reject });
+      } else {
+        signedUrlPending.set(key, {
+          photo,
+          rendition,
+          userId,
+          paths: photoRenditionCandidates(photo.backendStoragePath!, rendition),
+          waiters: [{ resolve, reject }],
+        });
+      }
+      scheduleSignedUrlFlush();
+    });
+  })();
 }
 
 /** Warm the browser and signed-URL caches before a photo becomes visible. */
@@ -333,6 +519,7 @@ export async function preloadPhotoRendition(
   if (url && typeof Image !== "undefined") {
     const image = new Image();
     image.decoding = "async";
+    image.onload = () => void persistPhotoRendition(photo, rendition, url);
     image.src = url;
   }
   return url;

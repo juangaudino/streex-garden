@@ -1,14 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const createSignedUrls = vi.fn();
+const getSession = vi.fn();
 
 vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({
     storage: { from: () => ({ createSignedUrls }) },
+    auth: { getSession },
   }),
 }));
 
-import { photoRenditionCandidates, preloadPhotoRendition, resolvePhotoUrl } from "./garden-backend";
+import {
+  clearPersistentPhotoCache,
+  photoRenditionCandidates,
+  persistPhotoRendition,
+  preloadPhotoRendition,
+  resolvePhotoUrl,
+  setPersistentPhotoCacheUserId,
+} from "./garden-backend";
 
 const photo = {
   id: "photo-1",
@@ -19,6 +28,9 @@ const photo = {
 describe("photo renditions", () => {
   beforeEach(() => {
     createSignedUrls.mockReset();
+    getSession.mockReset();
+    getSession.mockResolvedValue({ data: { session: null } });
+    setPersistentPhotoCacheUserId(null);
   });
 
   it("derives the safe fallback order for each rendition", () => {
@@ -176,6 +188,130 @@ describe("photo renditions", () => {
     await preloadPhotoRendition({ ...photo, id: "photo-preload", backendStoragePath: "owner/photo-preload/original.jpg" }, "display");
 
     expect(imageSources).toEqual(["https://signed/display"]);
+    vi.unstubAllGlobals();
+  });
+
+  it("reuses a persisted preview across a new in-memory session", async () => {
+    const entries = new Map<string, Response>();
+    const cache = {
+      match: async (request: Request) => entries.get(request.url)?.clone(),
+      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
+      keys: async () => [...entries.keys()].map((url) => new Request(url)),
+      delete: async (request: Request) => entries.delete(request.url),
+    };
+    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
+    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
+    const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:persisted-preview");
+    setPersistentPhotoCacheUserId("user-a");
+    const persisted = { ...photo, id: "photo-persisted", backendStoragePath: "owner/photo-persisted/original.jpg" };
+    createSignedUrls.mockResolvedValue({
+      data: [{ path: "owner/photo-persisted/preview.jpg", signedUrl: "https://signed/preview-first-session" }],
+      error: null,
+    });
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["preview-bytes"], { type: "image/jpeg" }), { status: 200 })));
+
+    await expect(resolvePhotoUrl(persisted, "preview")).resolves.toBe("https://signed/preview-first-session");
+    await persistPhotoRendition(persisted, "preview", "https://signed/preview-first-session");
+    createSignedUrls.mockClear();
+
+    await expect(resolvePhotoUrl(persisted, "preview")).resolves.toBe("blob:persisted-preview");
+    expect(createSignedUrls).not.toHaveBeenCalled();
+
+    createObjectURL.mockRestore();
+    vi.unstubAllGlobals();
+  });
+
+  it("keeps persistent bytes isolated when the authenticated user changes", async () => {
+    const entries = new Map<string, Response>();
+    const cache = {
+      match: async (request: Request) => entries.get(request.url)?.clone(),
+      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
+      keys: async () => [...entries.keys()].map((url) => new Request(url)),
+      delete: async (request: Request) => entries.delete(request.url),
+    };
+    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
+    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
+    const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:user-a");
+    const isolated = { ...photo, id: "photo-isolated", backendStoragePath: "owner/photo-isolated/original.jpg" };
+    setPersistentPhotoCacheUserId("user-a");
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display-bytes"], { type: "image/jpeg" }), { status: 200 })));
+    await persistPhotoRendition(isolated, "display", "https://signed/display-user-a");
+    await clearPersistentPhotoCache("user-a");
+    setPersistentPhotoCacheUserId("user-b");
+    createSignedUrls.mockResolvedValue({
+      data: [{ path: "owner/photo-isolated/display.jpg", signedUrl: "https://signed/display-user-b" }],
+      error: null,
+    });
+    await expect(resolvePhotoUrl(isolated, "display")).resolves.toBe("https://signed/display-user-b");
+    expect(createSignedUrls).toHaveBeenCalledTimes(1);
+    await clearPersistentPhotoCache("user-b");
+    createObjectURL.mockRestore();
+    vi.unstubAllGlobals();
+  });
+
+  it("never stores an original in the persistent rendition cache", async () => {
+    const entries = new Map<string, Response>();
+    const cache = {
+      match: async (request: Request) => entries.get(request.url)?.clone(),
+      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
+      keys: async () => [...entries.keys()].map((url) => new Request(url)),
+      delete: async (request: Request) => entries.delete(request.url),
+    };
+    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
+    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
+    setPersistentPhotoCacheUserId("user-a");
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["original-bytes"], { type: "image/jpeg" }), { status: 200 })));
+    await persistPhotoRendition({ ...photo, id: "photo-original-only" }, "original", "https://signed/original");
+    expect(entries.size).toBe(0);
+    expect(fetch).not.toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+
+  it("does not persist original bytes when a display request falls back", async () => {
+    const entries = new Map<string, Response>();
+    const cache = {
+      match: async (request: Request) => entries.get(request.url)?.clone(),
+      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
+      keys: async () => [...entries.keys()].map((url) => new Request(url)),
+      delete: async (request: Request) => entries.delete(request.url),
+    };
+    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
+    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
+    setPersistentPhotoCacheUserId("user-a");
+    createSignedUrls.mockResolvedValue({
+      data: [{ path: "owner/photo-fallback/original.jpg", signedUrl: "https://signed/original-fallback" }],
+      error: null,
+    });
+    const fallback = { ...photo, id: "photo-fallback", backendStoragePath: "owner/photo-fallback/original.jpg" };
+    await expect(resolvePhotoUrl(fallback, "display")).resolves.toBe("https://signed/original-fallback");
+    const fetchSpy = vi.fn(async () => new Response(new Blob(["original"], { type: "image/jpeg" }), { status: 200 }));
+    vi.stubGlobal("fetch", fetchSpy);
+    await persistPhotoRendition(fallback, "display", "https://signed/original-fallback");
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(entries.size).toBe(0);
+    vi.unstubAllGlobals();
+  });
+
+  it("bounds persisted display entries", async () => {
+    const entries = new Map<string, Response>();
+    const cache = {
+      match: async (request: Request) => entries.get(request.url)?.clone(),
+      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
+      keys: async () => [...entries.keys()].map((url) => new Request(url)),
+      delete: async (request: Request) => entries.delete(request.url),
+    };
+    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
+    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
+    setPersistentPhotoCacheUserId("user-a");
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display"], { type: "image/jpeg" }), { status: 200 })));
+    for (let index = 0; index < 41; index += 1) {
+      await persistPhotoRendition(
+        { ...photo, id: `photo-display-${index}`, backendStoragePath: `owner/photo-display-${index}/original.jpg` },
+        "display",
+        `https://signed/display-${index}`,
+      );
+    }
+    expect(entries.size).toBe(40);
     vi.unstubAllGlobals();
   });
 });

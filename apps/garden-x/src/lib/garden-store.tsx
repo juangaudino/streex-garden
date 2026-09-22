@@ -43,6 +43,8 @@ import {
   updateCustomSystemLayoutRecord,
   updatePlantIdentityRecord,
   confirmPlantLibraryIdentityRecord,
+  clearPersistentPhotoCache,
+  setPersistentPhotoCacheUserId,
 } from "./garden-backend";
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
@@ -157,6 +159,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const hasSuccessfulSnapshot = useRef(!backendConfigured);
   const refreshInFlight = useRef<Promise<void> | null>(null);
   const refreshSequence = useRef(0);
+  const photoCacheUserId = useRef<string | null>(null);
 
   const resetHighlight = useCallback(() => {
     highlightResolved.current = false;
@@ -228,6 +231,11 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     const { data: authListener } = client.auth.onAuthStateChange((_event, session) => {
       if (session) {
         const user = session.user;
+        if (photoCacheUserId.current && photoCacheUserId.current !== user.id) {
+          void clearPersistentPhotoCache(photoCacheUserId.current);
+        }
+        photoCacheUserId.current = user.id;
+        setPersistentPhotoCacheUserId(user.id);
         setPreferences((current) => ({
           ...current,
           profile: {
@@ -238,6 +246,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
         void refreshFromBackend("auth").catch(() => undefined);
       } else {
+        if (photoCacheUserId.current) void clearPersistentPhotoCache(photoCacheUserId.current);
+        photoCacheUserId.current = null;
+        setPersistentPhotoCacheUserId(null);
         hasSuccessfulSnapshot.current = false;
         setState(emptyState);
         resetHighlight();

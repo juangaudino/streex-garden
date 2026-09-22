@@ -1,5 +1,5 @@
 export interface AiProviderRequest {
-  operation: 'ai_check' | 'ask_garden'
+  operation: 'ai_check' | 'meaningful_change' | 'ask_garden'
   context: unknown
   imageDataUrl?: string
   imageDataUrls?: string[]

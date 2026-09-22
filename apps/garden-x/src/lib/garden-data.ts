@@ -97,6 +97,7 @@ export interface Photo {
   metrics: PlantMetrics;
   backendStoragePath?: string;
   backendEventId?: string;
+  backendGrowCycleId?: string | null;
   capturedAt?: string | null;
   capturedAtPrecision?: string;
   provenance?: string;

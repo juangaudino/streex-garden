@@ -10,6 +10,12 @@ import type {
   Provenance,
   Film,
 } from "./garden-data";
+import {
+  MEANINGFUL_CHANGE_SCHEMA_VERSION,
+  meaningfulChangeRequestKey,
+  normalizeMeaningfulChangeResult,
+  type MeaningfulChangeResult,
+} from "./meaningful-changes";
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
@@ -687,6 +693,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       backendStoragePath: p.storage_path,
       capturedAt: p.captured_at,
       capturedAtPrecision: p.captured_at_precision,
+      backendGrowCycleId: p.grow_cycle_id,
       provenance: p.provenance ?? (p.event_id ? "recorded" : "historical_evidence"),
       isHistoricalEvidence: !p.event_id,
       ...(p.event_id ? { backendEventId: p.event_id } : {}),
@@ -1458,6 +1465,58 @@ export interface AiCheckProposal {
     rationale: string;
     confidence: "low" | "medium" | "high";
   }>;
+}
+
+export async function loadMeaningfulChangeResults(): Promise<MeaningfulChangeResult[]> {
+  const { data, error } = await getSupabaseClient().rpc("garden_get_meaningful_change_results");
+  // B1 remains safe while the additive production migration is pending: Home
+  // simply has no derived comparisons to display yet.
+  if (error || !Array.isArray(data)) return [];
+  return data.flatMap((row) => {
+    const normalized = normalizeMeaningfulChangeResult(
+      typeof row === "object" && row !== null
+        ? {
+            ...(row as Record<string, unknown>),
+            ...(typeof (row as Record<string, unknown>).proposal === "object" && (row as Record<string, unknown>).proposal !== null
+              ? (row as Record<string, unknown>).proposal as Record<string, unknown>
+              : {}),
+          }
+        : row,
+    );
+    return normalized ? [{ ...normalized, id: typeof (row as Record<string, unknown>)?.id === "string" ? (row as Record<string, unknown>).id as string : undefined, createdAt: typeof (row as Record<string, unknown>)?.created_at === "string" ? (row as Record<string, unknown>).created_at as string : normalized.createdAt }] : [];
+  });
+}
+
+export async function requestMeaningfulChange(
+  growCycleId: string,
+  beforePhotoId: string,
+  afterPhotoId: string,
+  language: "en" | "es" = "es",
+) {
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+      Authorization: `Bearer ${session.access_token}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      operation: "meaningful_change",
+      grow_cycle_id: growCycleId,
+      before_photo_id: beforePhotoId,
+      after_photo_id: afterPhotoId,
+      language,
+      request_key: meaningfulChangeRequestKey(growCycleId, beforePhotoId, afterPhotoId, language),
+    }),
+  });
+  const body = (await response.json().catch(() => null)) as { proposal?: unknown; request_id?: string; error?: string } | null;
+  if (!response.ok || !body?.proposal) throw new Error(body?.error ?? "Garden AI could not compare these photos.");
+  const proposal = normalizeMeaningfulChangeResult(body.proposal);
+  if (!proposal) throw new Error("Garden AI returned an invalid comparison.");
+  return { proposal, requestId: body.request_id ?? "" };
 }
 
 export async function runAiCheck(growCycleId: string, photoId: string, comparePhotoId?: string, language: "en" | "es" = "es") {

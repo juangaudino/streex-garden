@@ -24,6 +24,27 @@ function clients(download: (path: string) => Promise<{ data: Blob | null; error:
 }
 
 describe("AI image input integrity", () => {
+  it("keeps before/after photo ordering for Meaningful Changes", async () => {
+    const before = new Blob([new Uint8Array([1])], { type: "image/jpeg" });
+    const after = { ...context, comparison_photo: { id: "photo-2", storage_path: "owner-1/cycle-1/photo-2/original.jpg", content_type: "image/jpeg", byte_size: 1 } };
+    const seen: string[] = [];
+    const result = await runAiCheckRuntime({
+      userClient: { rpc: async () => ({ data: after, error: null }) } as never,
+      storageClient: { storage: { from: () => ({ download: async (path: string) => { seen.push(path); return { data: before, error: null }; } }) } } as never,
+      ownerId: "owner-1",
+      growCycleId: "cycle-1",
+      photoId: "photo-1",
+      comparePhotoId: "photo-2",
+      operation: "meaningful_change",
+      provider: { id: "test", analyze: async () => ({ raw: {}, model: "test" }) },
+      standardVersion: "standard",
+      promptVersion: "prompt",
+    });
+    expect(result.providerRequest.operation).toBe("meaningful_change");
+    expect(result.providerRequest.imageDataUrls).toHaveLength(2);
+    expect(seen).toHaveLength(2);
+  });
+
   it("uses a bounded display rendition even when the original metadata is large", async () => {
     const smallDisplay = new Blob([new Uint8Array(128)], { type: "image/jpeg" });
     const seen: string[] = [];

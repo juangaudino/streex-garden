@@ -23,8 +23,9 @@ export async function runAiCheckRuntime(input: {
   promptVersion: string
   jsonSchema?: Record<string, unknown>
   instructions?: string
+  operation?: 'ai_check' | 'meaningful_change'
 }): Promise<{ providerRequest: AiProviderRequest; context: Record<string, unknown> }> {
-  const { data, error } = await input.userClient.rpc('garden_get_ai_cycle_context', {
+  const { data, error } = await input.userClient.rpc(input.operation === 'meaningful_change' ? 'garden_get_meaningful_change_context' : 'garden_get_ai_cycle_context', {
     p_grow_cycle_id: input.growCycleId,
     p_photo_id: input.photoId,
     p_compare_photo_id: input.comparePhotoId ?? null,
@@ -69,7 +70,7 @@ export async function runAiCheckRuntime(input: {
     ...(comparisonPhoto ? { comparison_photo: { ...comparisonPhoto, storage_path: undefined } } : {}),
   }
   const providerRequest: AiProviderRequest = {
-    operation: 'ai_check',
+    operation: input.operation ?? 'ai_check',
     context: contextWithoutPaths,
     imageDataUrl: `data:${downloaded.contentType};base64,${base64(downloaded.bytes)}`,
     ...(comparisonDownloaded ? { imageDataUrls: [`data:${downloaded.contentType};base64,${base64(downloaded.bytes)}`, `data:${comparisonDownloaded.contentType};base64,${base64(comparisonDownloaded.bytes)}`] } : {}),

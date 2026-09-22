@@ -2,7 +2,7 @@ import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
 import { gardenAiInstructionsFor, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
 import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
-import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, validateAiCheckProposal, validateAskGardenAnswer } from '../_shared/ai-contract.ts'
+import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateMeaningfulChangeProposal } from '../_shared/ai-contract.ts'
 
 const allowedOrigin = Deno.env.get('GARDEN_AI_ALLOWED_ORIGIN') ?? 'https://garden.getstreex.com'
 const corsHeaders = { 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Origin': allowedOrigin, 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' }
@@ -18,8 +18,8 @@ const providerName = Deno.env.get('GARDEN_AI_PROVIDER') ?? 'openai'
 const model = 'gpt-5.6-luna'
 if (!supabaseUrl || !anonKey) throw new Error('Missing Supabase server configuration')
 
-async function startRequest(client: ReturnType<typeof createClient>, ownerId: string, key: string, type: 'ai_check' | 'ask_garden', evidenceRefs: unknown[]) {
-  const response = await client.rpc('garden_ai_start_request', { p_request_key: key, p_request_type: type, p_evidence_refs: evidenceRefs, p_proposal_schema_version: type === 'ai_check' ? GARDEN_AI_PROPOSAL_SCHEMA_VERSION : 'garden_ai_ask_v1' })
+async function startRequest(client: ReturnType<typeof createClient>, ownerId: string, key: string, type: 'ai_check' | 'meaningful_change' | 'ask_garden', evidenceRefs: unknown[]) {
+  const response = await client.rpc('garden_ai_start_request', { p_request_key: key, p_request_type: type, p_evidence_refs: evidenceRefs, p_proposal_schema_version: type === 'ai_check' ? GARDEN_AI_PROPOSAL_SCHEMA_VERSION : type === 'meaningful_change' ? GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION : 'garden_ai_ask_v1' })
   if (response.error || !response.data || typeof response.data !== 'object') throw new Error('AI request could not be created')
   const row = response.data as { id?: string; status?: string; proposal?: unknown; model_identifier?: string }
   if (!row.id) throw new Error('AI request could not be created')
@@ -58,7 +58,7 @@ Deno.serve(async (request) => {
   if (!featureEnabled) return json({ error: 'Garden AI is disabled' }, 503)
   const auditClient = userClient
 
-  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown; language?: unknown }
+  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; request_key?: unknown; language?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (!requestKey(body.request_key)) return json({ error: 'A valid request key is required' }, 400)
   if (providerName === 'mock') return json({ error: 'Mock provider is available in local tests only' }, 503)
@@ -79,6 +79,21 @@ Deno.serve(async (request) => {
       const proposal = validateAiCheckProposal(response.raw)
       if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })
+      activeAudit = null
+      return json({ proposal, request_id: started.id, idempotent: false })
+    }
+
+    if (body.operation === 'meaningful_change') {
+      if (!uuid(body.grow_cycle_id) || !uuid(body.before_photo_id) || !uuid(body.after_photo_id) || body.before_photo_id === body.after_photo_id) return json({ error: 'Meaningful Changes requires two distinct photos from the same cycle' }, 400)
+      const started = await startRequest(auditClient, userData.user.id, body.request_key, 'meaningful_change', [{ kind: 'photo', id: body.before_photo_id }, { kind: 'photo', id: body.after_photo_id }])
+      if (started.existing) return json({ proposal: started.existing.proposal, request_id: started.existing.id, idempotent: true })
+      const startedAt = Date.now()
+      activeAudit = { id: started.id, startedAt }
+      const runtime = await runAiCheckRuntime({ userClient, storageClient: userClient, ownerId: userData.user.id, growCycleId: body.grow_cycle_id, photoId: body.before_photo_id, comparePhotoId: body.after_photo_id, provider, operation: 'meaningful_change', standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, instructions: gardenAiInstructionsFor(responseLanguage) })
+      const response = await provider.analyze(runtime.providerRequest)
+      const proposal = validateMeaningfulChangeProposal(response.raw)
+      if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
+      await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: { ...(response.usage ?? {}), language: responseLanguage } })
       activeAudit = null
       return json({ proposal, request_id: started.id, idempotent: false })
     }

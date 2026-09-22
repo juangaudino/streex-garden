@@ -2,6 +2,27 @@ export const GARDEN_AI_STANDARD_VERSION = 'garden_ai_standard_v1'
 export const GARDEN_AI_CONTEXT_SCHEMA_VERSION = 'garden_ai_context_v1'
 export const GARDEN_AI_PROPOSAL_SCHEMA_VERSION = 'garden_ai_check_v2'
 export const GARDEN_AI_ASK_SCHEMA_VERSION = 'garden_ai_ask_v1'
+export const GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION = 'garden_meaningful_change_v1'
+
+export const GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA: Record<string, unknown> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['schema_version', 'comparison_status', 'primary_visual_observation', 'supporting_visual_observations', 'comparability_notes', 'interpretation', 'interpretation_confidence', 'relevant_context_facts', 'before_photo_id', 'after_photo_id', 'grow_cycle_id', 'plant_instance_id'],
+  properties: {
+    schema_version: { type: 'string', enum: [GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION] },
+    comparison_status: { enum: ['meaningful_change', 'no_meaningful_change', 'limited_comparability'] },
+    primary_visual_observation: { type: 'string' },
+    supporting_visual_observations: { type: 'array', items: { type: 'string' } },
+    comparability_notes: { type: 'array', items: { type: 'string' } },
+    interpretation: { anyOf: [{ type: 'string' }, { type: 'null' }] },
+    interpretation_confidence: { anyOf: [{ enum: ['low', 'medium', 'high'] }, { type: 'null' }] },
+    relevant_context_facts: { type: 'array', items: { type: 'string' } },
+    before_photo_id: { type: 'string' },
+    after_photo_id: { type: 'string' },
+    grow_cycle_id: { type: 'string' },
+    plant_instance_id: { type: 'string' },
+  },
+}
 
 export const GARDEN_AI_CHECK_JSON_SCHEMA: Record<string, unknown> = {
   type: 'object',
@@ -48,6 +69,15 @@ const validHeadline = (value: unknown): value is string => {
   return value.trim().split(/\s+/).length <= 16
 }
 const validTextArray = (value: unknown, maxLength = 1200): value is string[] => Array.isArray(value) && value.every((item) => validUserText(item, maxLength))
+
+const physicalMeasurement = /\b\d+(?:\.\d+)?\s*(?:cm|mm|in(?:ches)?|%|percent)\b/i
+
+export function validateMeaningfulChangeProposal(value: unknown): Record<string, unknown> | null {
+  if (!record(value) || value.schema_version !== GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION || !['meaningful_change', 'no_meaningful_change', 'limited_comparability'].includes(String(value.comparison_status)) || !validUserText(value.primary_visual_observation) || !validTextArray(value.supporting_visual_observations) || !validTextArray(value.comparability_notes) || !validTextArray(value.relevant_context_facts) || (value.interpretation !== null && value.interpretation !== undefined && !validUserText(value.interpretation)) || (value.interpretation_confidence !== null && value.interpretation_confidence !== undefined && !['low', 'medium', 'high'].includes(String(value.interpretation_confidence))) || !nonEmpty(value.before_photo_id) || !nonEmpty(value.after_photo_id) || value.before_photo_id === value.after_photo_id || !nonEmpty(value.grow_cycle_id) || !nonEmpty(value.plant_instance_id)) return null
+  const prose = [value.primary_visual_observation, ...(value.supporting_visual_observations as unknown[]), ...(value.comparability_notes as unknown[]), ...(value.relevant_context_facts as unknown[]), value.interpretation]
+  if (prose.some((item) => typeof item === 'string' && physicalMeasurement.test(item))) return null
+  return value
+}
 
 export function validateAiCheckProposal(value: unknown): Record<string, unknown> | null {
   if (!record(value) || value.schema_version !== GARDEN_AI_PROPOSAL_SCHEMA_VERSION || !['complete', 'insufficient_evidence'].includes(String(value.status)) || !validHeadline(value.headline) || !validUserText(value.summary) || !Array.isArray(value.evidence_used) || !Array.isArray(value.development_recommendations) || !validTextArray(value.observations) || !validTextArray(value.interpretations) || !validTextArray(value.uncertainty) || !validTextArray(value.questions) || !Array.isArray(value.suggested_next_actions) || !['low', 'medium', 'high'].includes(String(value.confidence))) return null

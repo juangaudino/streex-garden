@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, validateAiCheckProposal } from "./ai-contract";
+import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, validateAiCheckProposal, validateMeaningfulChangeProposal } from "./ai-contract";
 
 const validProposal = (overrides: Record<string, unknown> = {}) => ({
   schema_version: GARDEN_AI_PROPOSAL_SCHEMA_VERSION,
@@ -44,5 +44,40 @@ describe("AI Check output contract", () => {
     expect(proposal).not.toBeNull();
     expect(proposal?.summary).toContain("selected photo");
     expect(proposal?.interpretations).toEqual(expect.any(Array));
+  });
+});
+
+describe("Meaningful Changes output contract", () => {
+  const validComparison = (overrides: Record<string, unknown> = {}) => ({
+    schema_version: GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION,
+    comparison_status: "meaningful_change",
+    primary_visual_observation: "Foliage appears denser",
+    supporting_visual_observations: ["Several leaves appear larger"],
+    comparability_notes: [],
+    interpretation: "The change is consistent with continued growth.",
+    interpretation_confidence: "medium",
+    relevant_context_facts: ["Pruning was recorded between these photos."],
+    before_photo_id: "photo-before",
+    after_photo_id: "photo-after",
+    grow_cycle_id: "cycle-1",
+    plant_instance_id: "plant-1",
+    ...overrides,
+  });
+
+  it("keeps visual observation, interpretation and context separate", () => {
+    const proposal = validateMeaningfulChangeProposal(validComparison());
+    expect(proposal?.primary_visual_observation).toContain("denser");
+    expect(proposal?.interpretation).toContain("consistent");
+    expect(proposal?.relevant_context_facts).toHaveLength(1);
+  });
+
+  it("supports honest no-change and limited-comparability outcomes", () => {
+    expect(validateMeaningfulChangeProposal(validComparison({ comparison_status: "no_meaningful_change" }))).not.toBeNull();
+    expect(validateMeaningfulChangeProposal(validComparison({ comparison_status: "limited_comparability", comparability_notes: ["The lighting differs between photos."] }))).not.toBeNull();
+  });
+
+  it("rejects duplicate evidence and invented physical measurements", () => {
+    expect(validateMeaningfulChangeProposal(validComparison({ before_photo_id: "photo-after" }))).toBeNull();
+    expect(validateMeaningfulChangeProposal(validComparison({ primary_visual_observation: "Grew 14 cm" }))).toBeNull();
   });
 });

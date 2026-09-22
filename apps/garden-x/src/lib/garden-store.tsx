@@ -34,6 +34,8 @@ import {
   createPlantRecord,
   createLibraryPlantRecord,
   loadGardenState,
+  loadMeaningfulChangeResults,
+  requestMeaningfulChange,
   reorderGardenRecords,
   saveFilmRecord,
   movePlantRecord,
@@ -49,8 +51,10 @@ import {
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight } from "./garden-logic";
+import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
 
 interface StoreApi extends GardenState {
+  meaningfulChanges: MeaningfulChangeResult[];
   hydration: "loading" | "ready" | "reconnecting" | "error" | "offline";
   highlightedPlantId: string | null;
   language: "en" | "es";
@@ -158,6 +162,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [highlightedPlantId, setHighlightedPlantId] = useState<string | null>(null);
   const [preferences, setPreferences] = useState<Preferences>(defaults);
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
+  const [meaningfulChanges, setMeaningfulChanges] = useState<MeaningfulChangeResult[]>([]);
   const pendingPhotos = useRef(new Map<string, Photo>());
   const highlightResolved = useRef(false);
   const hasSuccessfulSnapshot = useRef(!backendConfigured);
@@ -206,10 +211,14 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setHydration("ready");
         return;
       }
-      const { state: next } = await loadGardenState();
+      const [{ state: next }, derivedResults] = await Promise.all([
+        loadGardenState(),
+        loadMeaningfulChangeResults(),
+      ]);
       if (sequence !== refreshSequence.current) return;
       resolveHighlight(next.plants);
       setState(next);
+      setMeaningfulChanges(derivedResults);
       hasSuccessfulSnapshot.current = true;
       setHydration("ready");
       const user = sessionData.session.user;
@@ -255,6 +264,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setPersistentPhotoCacheUserId(null);
         hasSuccessfulSnapshot.current = false;
         setState(emptyState);
+        setMeaningfulChanges([]);
         resetHighlight();
         setHydration("ready");
         setPreferences((current) => ({
@@ -310,6 +320,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const api = useMemo<StoreApi>(
     () => ({
       ...state,
+      meaningfulChanges,
       hydration,
       highlightedPlantId,
       ...preferences,
@@ -334,7 +345,22 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             void persistMoment(plant, e, pendingPhoto)
               .then(() => {
                 if (e.photoId) pendingPhotos.current.delete(e.photoId);
-                return refreshFromBackend();
+                return refreshFromBackend().then(async () => {
+                  // Comparison generation is deliberately after persistence and
+                  // refresh. Home only reads completed, owner-scoped results.
+                  if (!shouldGenerateMeaningfulChange(e)) return;
+                  const fresh = await loadGardenState();
+                  const candidate = selectMeaningfulChangeCandidate(
+                    fresh.state.plants.find((item) => item.id === plant.id) ?? plant,
+                    fresh.state.photos,
+                    fresh.state.events,
+                    meaningfulChanges,
+                    preferences.language,
+                  );
+                  if (!candidate) return;
+                  await requestMeaningfulChange(candidate.growCycleId, candidate.beforePhotoId, candidate.afterPhotoId, preferences.language).catch(() => undefined);
+                  setMeaningfulChanges(await loadMeaningfulChangeResults());
+                });
               })
               .catch(() => undefined);
           }
@@ -627,7 +653,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
       },
     }),
-    [highlightedPlantId, hydration, preferences, publicStories, refreshFromBackend, state],
+    [highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

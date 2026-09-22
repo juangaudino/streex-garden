@@ -11,10 +11,9 @@ import {
   plantPhotos,
   recentPlantPhotos,
   plantsRepresentedInPhotos,
-  distinctPhotoEvidence,
   relativeDay,
-  comparePhotos,
 } from "@/lib/garden-logic";
+import { rankMeaningfulChanges, type MeaningfulChangeResult } from "@/lib/meaningful-changes";
 import { PageHeader } from "@/components/garden/shell";
 import {
   ProvenanceTag,
@@ -67,22 +66,15 @@ function Home() {
   const recent = byRecency(store.events).slice(0, 7);
   const newPhotos = byRecency(recentPlantPhotos(store.photos, store.plants)).slice(0, 6);
 
-  // Deterministic "meaningful change": plants with >= 2 photos, largest recent delta.
-  const changes = store.plants
-    .map((plant) => {
-      const pics = distinctPhotoEvidence(plantPhotos(store.photos, plant.id));
-      if (pics.length < 2) return null;
-      const a = pics[pics.length - 2]!;
-      const b = pics[pics.length - 1]!;
-      return { plant, a, b, cmp: comparePhotos(a, b, plant, store.language) };
-    })
-    .filter(Boolean)
-    .slice(0, 3) as Array<{
-    plant: ReturnType<typeof plantById>;
-    a: NonNullable<ReturnType<typeof photoById>>;
-    b: NonNullable<ReturnType<typeof photoById>>;
-    cmp: ReturnType<typeof comparePhotos>;
-  }>;
+  const changes = rankMeaningfulChanges(store.meaningfulChanges, store.plants)
+    .map((result) => ({
+      result,
+      plant: plantById(result.plantInstanceId),
+      before: photoById(result.beforePhotoId),
+      after: photoById(result.afterPhotoId),
+    }))
+    .filter((item): item is { result: MeaningfulChangeResult; plant: NonNullable<ReturnType<typeof plantById>>; before: NonNullable<ReturnType<typeof photoById>>; after: NonNullable<ReturnType<typeof photoById>> } => Boolean(item.plant && item.before && item.after))
+    .slice(0, 3);
 
   const heroPhoto = photoById(hero.heroPhotoId);
   const heroPics = plantPhotos(store.photos, hero.id);
@@ -210,7 +202,7 @@ function Home() {
       {changes.length ? <section className="mt-12 px-5 sm:px-8 lg:px-12">
         <SectionTitle>{ui(store.language, "meaningfulChanges")}</SectionTitle>
         <div className="grid gap-3 lg:grid-cols-3">
-          {changes.map(({ plant, a, b, cmp }) => (
+          {changes.map(({ plant, before, after, result }) => (
             <Link
               key={plant.id}
               to="/plants/$plantId/compare"
@@ -220,20 +212,29 @@ function Home() {
             >
               <div className="flex gap-2">
                 <div className="relative min-w-0 flex-1 overflow-hidden rounded-2xl">
-                  <PhotoImage photo={a} alt="" rendition="preview" className="aspect-square w-full object-cover" />
+                  <PhotoImage photo={before} alt="" rendition="preview" className="aspect-square w-full object-cover" />
                   <span className="absolute bottom-1 left-1 rounded-full bg-black/45 px-2 py-0.5 text-[0.6rem] text-white backdrop-blur">
-                    {formatDate(a.daysAgo)}
+                    {formatDate(before.daysAgo)}
                   </span>
                 </div>
                 <div className="relative min-w-0 flex-1 overflow-hidden rounded-2xl">
-                  <PhotoImage photo={b} alt="" rendition="preview" className="aspect-square w-full object-cover" />
+                  <PhotoImage photo={after} alt="" rendition="preview" className="aspect-square w-full object-cover" />
                   <span className="absolute bottom-1 left-1 rounded-full bg-black/45 px-2 py-0.5 text-[0.6rem] text-white backdrop-blur">
-                    {formatDate(b.daysAgo)}
+                    {formatDate(after.daysAgo)}
                   </span>
                 </div>
               </div>
               <p className="mt-3 font-display text-lg">{plant.name}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{cmp.observations[0]}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {result.primaryVisualObservation || (result.comparisonStatus === "limited_comparability"
+                  ? ui(store.language, "limitedComparability")
+                  : result.comparisonStatus === "no_meaningful_change"
+                    ? ui(store.language, "noMeaningfulChange")
+                    : ui(store.language, "comparisonUnavailable"))}
+              </p>
+              {result.relevantContextFacts[0] ? (
+                <p className="mt-2 text-xs text-muted-foreground/80">{result.relevantContextFacts[0]}</p>
+              ) : null}
               <div className="mt-3">
                 <ProvenanceTag kind="observed" />
               </div>

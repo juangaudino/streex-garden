@@ -52,7 +52,7 @@ begin
   if p_scope_type = 'garden' and (p_garden_id is null or not exists (select 1 from garden.gardens where id = p_garden_id and owner_id = v_owner and archived_at is null)) then raise exception 'Garden not found'; end if;
 
   -- Recency is evidence-specific: current active cycles/status and open
-  -- attention remain in scope, canonical activity uses 45 days, B1 results
+  -- attention remain in scope, canonical activity uses 21 days, B1 results
   -- 90 days, and AI Checks 60 days. This keeps the packet bounded without
   -- treating every evidence type as if it had the same shelf life.
   with scope_gardens as (
@@ -79,7 +79,7 @@ begin
     from garden.events e
     join scope_cycles sc on sc.id = e.grow_cycle_id
     left join plant_rows pr on pr.grow_cycle_id = e.grow_cycle_id
-    where e.owner_id = v_owner and e.invalidated_at is null and e.event_type <> 'photo' and e.occurred_at >= now() - interval '45 days'
+    where e.owner_id = v_owner and e.invalidated_at is null and e.event_type <> 'photo' and e.occurred_at >= now() - interval '21 days'
     order by e.occurred_at desc, e.id desc
     limit 40
   ), attention_rows as (

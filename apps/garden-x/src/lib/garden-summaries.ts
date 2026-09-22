@@ -2,6 +2,11 @@ import type { GardenState } from "./garden-data";
 import { ui } from "./ui-copy";
 
 export const GARDEN_SUMMARY_SCHEMA_VERSION = "garden_summary_v1";
+/**
+ * Mutations made in one short review burst should settle before asking AI for
+ * a new briefing. This is a UI-side coalescing window, not a freshness rule.
+ */
+export const GARDEN_SUMMARY_COALESCE_WINDOW_MS = 1500;
 
 export type GardenSummaryScope = "global" | "garden";
 
@@ -34,6 +39,14 @@ export interface GardenSummaryContextFingerprint {
   scopeType: GardenSummaryScope;
   scopeId: string | null;
   materialFingerprint: string;
+}
+
+export function isWithinGardenSummaryCoalesceWindow(
+  previousScheduledAt: number,
+  now: number,
+  windowMs = GARDEN_SUMMARY_COALESCE_WINDOW_MS,
+) {
+  return now >= previousScheduledAt && now - previousScheduledAt < windowMs;
 }
 
 export function gardenSummaryRequestKey(

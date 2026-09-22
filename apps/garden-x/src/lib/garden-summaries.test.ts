@@ -3,6 +3,7 @@ import { initialState } from "./garden-data";
 import {
   GARDEN_SUMMARY_SCHEMA_VERSION,
   buildSummaryMaterialFingerprint,
+  isWithinGardenSummaryCoalesceWindow,
   gardenSummaryRequestKey,
   normalizeGardenSummaryResult,
   selectCurrentSummary,
@@ -45,6 +46,37 @@ describe("Garden Summary material identity", () => {
     expect(fingerprint(state, "garden", "garden-1")).not.toBe(
       fingerprint(state, "garden", "garden-2"),
     );
+  });
+
+  it("keeps Garden A local identity stable when only Garden B changes", () => {
+    const secondGarden = { ...baseState.gardens[0]!, id: "garden-2", name: "Garden B" };
+    const secondPlant = { ...baseState.plants[0]!, id: "plant-2", gardenId: "garden-2" };
+    const state = {
+      ...baseState,
+      gardens: [...baseState.gardens, secondGarden],
+      plants: [...baseState.plants, secondPlant],
+    };
+    const changedOnlyInB = {
+      ...state,
+      gardens: state.gardens.map((garden) =>
+        garden.id === "garden-2" ? { ...garden, name: "Garden B renamed" } : garden,
+      ),
+      plants: state.plants.map((plant) =>
+        plant.id === "plant-2" ? { ...plant, status: "watching" as const } : plant,
+      ),
+      events: [
+        {
+          ...initialState.events[0]!,
+          id: "event-b",
+          plantId: "plant-2",
+          title: "Watered Garden B",
+        },
+      ],
+    };
+    expect(fingerprint(changedOnlyInB, "garden", "garden-1")).toBe(
+      fingerprint(state, "garden", "garden-1"),
+    );
+    expect(fingerprint(changedOnlyInB, "global")).not.toBe(fingerprint(state, "global"));
   });
 
   it("is stable for the same material state and ignores a photo-only change", () => {
@@ -108,6 +140,12 @@ describe("Garden Summary material identity", () => {
       gardenSummaryRequestKey("global", null, "a".repeat(32), "en", "garden_summary_v2"),
     );
     expect(v1.length).toBeLessThanOrEqual(160);
+  });
+
+  it("coalesces mutations only inside the short settling window", () => {
+    expect(isWithinGardenSummaryCoalesceWindow(1000, 2000)).toBe(true);
+    expect(isWithinGardenSummaryCoalesceWindow(1000, 2500)).toBe(false);
+    expect(isWithinGardenSummaryCoalesceWindow(1000, 900)).toBe(false);
   });
 });
 

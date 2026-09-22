@@ -56,6 +56,7 @@ import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight } from "./garden-logic";
 import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
 import {
+  GARDEN_SUMMARY_COALESCE_WINDOW_MS,
   GARDEN_SUMMARY_SCHEMA_VERSION,
   gardenSummaryRequestKey,
   selectCurrentSummary,
@@ -181,6 +182,12 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const refreshSequence = useRef(0);
   const photoCacheUserId = useRef<string | null>(null);
   const summaryGenerationInFlight = useRef(new Set<string>());
+  const summaryGenerationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingSummaryGeneration = useRef<{
+    state: GardenState;
+    summaries: GardenSummaryResult[];
+    language: "en" | "es";
+  } | null>(null);
 
   const resetHighlight = useCallback(() => {
     highlightResolved.current = false;
@@ -242,6 +249,28 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     }));
   }, [backendConfigured]);
 
+  const scheduleGardenSummaryGeneration = useCallback((
+    nextState: GardenState,
+    existingSummaries: GardenSummaryResult[],
+    language: "en" | "es",
+  ) => {
+    if (!backendConfigured) return;
+    pendingSummaryGeneration.current = { state: nextState, summaries: existingSummaries, language };
+    if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
+    summaryGenerationTimer.current = setTimeout(() => {
+      summaryGenerationTimer.current = null;
+      const pending = pendingSummaryGeneration.current;
+      pendingSummaryGeneration.current = null;
+      if (pending) void generateGardenSummariesFor(pending.state, pending.summaries, pending.language);
+    }, GARDEN_SUMMARY_COALESCE_WINDOW_MS);
+  }, [backendConfigured, generateGardenSummariesFor]);
+
+  useEffect(() => () => {
+    if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
+    summaryGenerationTimer.current = null;
+    pendingSummaryGeneration.current = null;
+  }, []);
+
   const refreshFromBackend = useCallback(async (reason: "initial" | "reconnect" | "auth" | "mutation" = "mutation") => {
     if (!backendConfigured) return;
     if (refreshInFlight.current) return refreshInFlight.current;
@@ -275,7 +304,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         ...current,
         profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
       }));
-      if (reason === "mutation") void generateGardenSummariesFor(next, summaryResults, preferences.language);
+      if (reason === "mutation") scheduleGardenSummaryGeneration(next, summaryResults, preferences.language);
     })();
     refreshInFlight.current = run;
     run.catch(() => {
@@ -285,7 +314,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       if (refreshInFlight.current === run) refreshInFlight.current = null;
     });
     return run;
-  }, [backendConfigured, generateGardenSummariesFor, preferences.language, resetHighlight, resolveHighlight]);
+  }, [backendConfigured, preferences.language, resetHighlight, resolveHighlight, scheduleGardenSummaryGeneration]);
 
   useEffect(() => {
     if (!backendConfigured) return;
@@ -316,6 +345,9 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setState(emptyState);
         setMeaningfulChanges([]);
         setGardenSummaries([]);
+        if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
+        summaryGenerationTimer.current = null;
+        pendingSummaryGeneration.current = null;
         resetHighlight();
         setHydration("ready");
         setPreferences((current) => ({
@@ -378,7 +410,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       ...preferences,
       setLanguage: (language) => {
         updatePreferences({ language });
-        if (language !== preferences.language) void generateGardenSummariesFor(state, gardenSummaries, language);
+        if (language !== preferences.language) scheduleGardenSummaryGeneration(state, gardenSummaries, language);
       },
       setAppearance: (appearance) => updatePreferences({ appearance }),
       setMeasurementSystem: (measurementSystem) => updatePreferences({ measurementSystem }),
@@ -417,7 +449,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
                   const latestMeaningfulChanges = await loadMeaningfulChangeResults();
                   setMeaningfulChanges(latestMeaningfulChanges);
                   const latest = await loadGardenState();
-                  void generateGardenSummariesFor(latest.state, gardenSummaries, preferences.language);
+                  scheduleGardenSummaryGeneration(latest.state, gardenSummaries, preferences.language);
                 });
               })
               .catch(() => undefined);
@@ -711,7 +743,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
       },
     }),
-    [generateGardenSummariesFor, gardenSummaries, highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state],
+    [scheduleGardenSummaryGeneration, gardenSummaries, highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

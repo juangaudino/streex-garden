@@ -242,7 +242,7 @@ function GardenDetail() {
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
               </div>
               <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8 lg:grid-cols-12">
-                <div className="min-w-0 lg:col-span-7">
+                <div className="min-w-0 lg:col-span-12">
                   <p className="eyebrow mb-3">{ui(language, "systemBlueprint")}</p>
                   <div className="space-y-6">
                     {layoutLevels.map((level) => {
@@ -298,66 +298,174 @@ function GardenDetail() {
                               const key = positionKey(label, position);
                               const selected = selectedPositionKey === key;
                               const shared = positionPlants.length > 1;
+                              const addPosition = () =>
+                                setAdding({
+                                  slot: label,
+                                  positionId: "id" in position ? position.id : undefined,
+                                });
                               return (
-                                <button
-                                  key={cellKey}
-                                  type="button"
-                                  aria-pressed={selected}
-                                  aria-label={`${label}: ${positionPlants.length ? positionPlants.map((item) => item.name).join(", ") : ui(language, "emptyPosition")}`}
-                                  onClick={() => setSelectedPositionKey(key)}
-                                  className={cn(
-                                    "press group grid min-w-0 place-items-center rounded-xl border border-transparent bg-transparent p-1.5 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 sm:p-2",
-                                    selected ? "bg-primary/5" : "hover:border-primary/35",
-                                  )}
-                                >
-                                  <span className="relative grid w-full max-w-14 place-items-center sm:max-w-[4.375rem]">
-                                    <span
+                                <div key={cellKey} className="min-w-0">
+                                  <div className="lg:hidden">
+                                    <button
+                                      type="button"
+                                      aria-pressed={selected}
+                                      aria-label={`${label}: ${positionPlants.length ? positionPlants.map((item) => item.name).join(", ") : ui(language, "emptyPosition")}`}
+                                      onClick={() => setSelectedPositionKey(key)}
                                       className={cn(
-                                        "relative grid aspect-square w-full place-items-center overflow-hidden rounded-full border-2 shadow-soft transition-[box-shadow,border-color] sm:border-4",
-                                        plant
-                                          ? "border-background bg-secondary"
-                                          : "border-dashed border-border bg-background/60 text-muted-foreground",
-                                        selected &&
-                                          "ring-2 ring-primary/60 ring-offset-2 ring-offset-secondary/40",
+                                        "press group grid min-w-0 place-items-center rounded-xl border border-transparent bg-transparent p-1.5 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 sm:p-2",
+                                        selected ? "bg-primary/5" : "hover:border-primary/35",
                                       )}
                                     >
-                                      {plant && photoById(plant.heroPhotoId) ? (
-                                        <PhotoImage
-                                          photo={photoById(plant.heroPhotoId)!}
-                                          alt=""
-                                          rendition="preview"
-                                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                      ) : plant ? (
-                                        <span className="text-xs text-muted-foreground">
+                                      <span className="relative grid w-full max-w-14 place-items-center sm:max-w-[4.375rem]">
+                                        <span
+                                          className={cn(
+                                            "relative grid aspect-square w-full place-items-center overflow-hidden rounded-full border-2 shadow-soft transition-[box-shadow,border-color] sm:border-4",
+                                            plant
+                                              ? "border-background bg-secondary"
+                                              : "border-dashed border-border bg-background/60 text-muted-foreground",
+                                            selected &&
+                                              "ring-2 ring-primary/60 ring-offset-2 ring-offset-secondary/40",
+                                          )}
+                                        >
+                                          {plant && photoById(plant.heroPhotoId) ? (
+                                            <PhotoImage
+                                              photo={photoById(plant.heroPhotoId)!}
+                                              alt=""
+                                              rendition="preview"
+                                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                          ) : plant ? (
+                                            <span className="text-xs text-muted-foreground">
+                                              P{position.number}
+                                            </span>
+                                          ) : (
+                                            <Plus className="h-4 w-4" />
+                                          )}
+                                        </span>
+                                        <span className="absolute -top-1 -left-1 z-10 rounded-full border border-background bg-card px-1.5 py-0.5 text-[0.55rem] leading-none font-medium text-muted-foreground shadow-sm sm:text-[0.6rem]">
                                           P{position.number}
                                         </span>
+                                      </span>
+                                      {plant ? (
+                                        <span className="mt-1.5 line-clamp-2 min-h-[1.8rem] max-w-full overflow-hidden text-[0.62rem] leading-[0.9rem] font-medium text-foreground sm:mt-2 sm:text-xs sm:leading-4">
+                                          {plant.name}
+                                        </span>
                                       ) : (
-                                        <Plus className="h-4 w-4" />
+                                        <span className="mt-1 max-w-full truncate text-[0.55rem] leading-3 text-muted-foreground sm:text-[0.6rem]">
+                                          {ui(language, "emptyPosition")}
+                                        </span>
                                       )}
-                                    </span>
-                                    <span className="absolute -top-1 -left-1 z-10 rounded-full border border-background bg-card px-1.5 py-0.5 text-[0.55rem] leading-none font-medium text-muted-foreground shadow-sm sm:text-[0.6rem]">
-                                      P{position.number}
-                                    </span>
-                                  </span>
-                                  {plant ? (
-                                    <span className="mt-1.5 line-clamp-2 min-h-[1.8rem] max-w-full overflow-hidden text-[0.62rem] leading-[0.9rem] font-medium text-foreground sm:mt-2 sm:text-xs sm:leading-4">
-                                      {plant.name}
-                                    </span>
-                                  ) : (
-                                    <span className="mt-1 max-w-full truncate text-[0.55rem] leading-3 text-muted-foreground sm:text-[0.6rem]">
-                                      {ui(language, "emptyPosition")}
-                                    </span>
-                                  )}
-                                  {shared ? (
-                                    <span className="mt-1 max-w-full text-[0.58rem] leading-3 font-medium text-amber-700 dark:text-amber-300">
-                                      {ui(language, "sharedPositionWarning").replace(
-                                        "{count}",
-                                        String(positionPlants.length),
+                                      {shared ? (
+                                        <span className="mt-1 max-w-full text-[0.58rem] leading-3 font-medium text-amber-700 dark:text-amber-300">
+                                          {ui(language, "sharedPositionWarning").replace(
+                                            "{count}",
+                                            String(positionPlants.length),
+                                          )}
+                                        </span>
+                                      ) : null}
+                                    </button>
+                                  </div>
+
+                                  <div className="hidden lg:block">
+                                    <button
+                                      type="button"
+                                      aria-pressed={selected}
+                                      aria-label={`${label}: ${positionPlants.length ? positionPlants.map((item) => item.name).join(", ") : ui(language, "emptyPosition")}`}
+                                      onClick={() => setSelectedPositionKey(key)}
+                                      className={cn(
+                                        "press group mx-auto grid w-full max-w-[9.5rem] min-w-0 gap-2 rounded-2xl border bg-card p-2.5 text-left shadow-soft transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
+                                        selected
+                                          ? "border-primary ring-2 ring-primary/25"
+                                          : "border-border/70 hover:border-primary/50",
                                       )}
-                                    </span>
-                                  ) : null}
-                                </button>
+                                    >
+                                      <span className="relative block aspect-[4/3] overflow-hidden rounded-xl bg-secondary">
+                                        <span className="absolute top-2 left-2 z-10 rounded-full border border-background/80 bg-card/90 px-2 py-1 text-[0.6rem] leading-none font-medium text-muted-foreground shadow-sm">
+                                          {label}
+                                        </span>
+                                        {plant && photoById(plant.heroPhotoId) ? (
+                                          <PhotoImage
+                                            photo={photoById(plant.heroPhotoId)!}
+                                            alt={plant.name}
+                                            rendition="preview"
+                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                          />
+                                        ) : plant ? (
+                                          <span className="grid h-full place-items-center text-sm text-muted-foreground">
+                                            P{position.number}
+                                          </span>
+                                        ) : (
+                                          <span className="grid h-full place-items-center text-muted-foreground">
+                                            <Plus className="h-5 w-5" />
+                                          </span>
+                                        )}
+                                      </span>
+                                      {plant ? (
+                                        <span className="line-clamp-2 min-h-9 text-center text-sm leading-4 font-medium text-foreground">
+                                          {plant.name}
+                                        </span>
+                                      ) : (
+                                        <span className="text-center text-sm font-medium text-muted-foreground">
+                                          {ui(language, "emptyPosition")}
+                                        </span>
+                                      )}
+                                      {plant ? (
+                                        <span className="text-center text-xs text-muted-foreground">
+                                          {ageLabel(plant.plantedDaysAgo, language)}
+                                        </span>
+                                      ) : null}
+                                      {shared ? (
+                                        <span className="text-center text-[0.65rem] leading-3 font-medium text-amber-700 dark:text-amber-300">
+                                          {ui(language, "sharedPositionWarning").replace(
+                                            "{count}",
+                                            String(positionPlants.length),
+                                          )}
+                                        </span>
+                                      ) : null}
+                                    </button>
+
+                                    {selected ? (
+                                      <div className="mx-auto mt-2 flex w-full max-w-[9.5rem] flex-col gap-1.5">
+                                        {positionPlants.length ? (
+                                          positionPlants.map((positionPlant) => (
+                                            <div key={positionPlant.id} className="space-y-1.5">
+                                              {positionPlants.length > 1 ? (
+                                                <p className="truncate text-center text-[0.65rem] font-medium text-muted-foreground">
+                                                  {positionPlant.name}
+                                                </p>
+                                              ) : null}
+                                              <Button
+                                                asChild
+                                                size="sm"
+                                                variant="outline"
+                                                className="h-7 w-full px-2 text-[0.65rem]"
+                                              >
+                                                <Link
+                                                  to="/plants/$plantId"
+                                                  params={{ plantId: positionPlant.id }}
+                                                >
+                                                  {ui(language, "viewPlant")}
+                                                </Link>
+                                              </Button>
+                                              <Button
+                                                size="sm"
+                                                variant="ghost"
+                                                className="h-7 w-full px-2 text-[0.65rem]"
+                                                onClick={() => setRecordingPlant(positionPlant)}
+                                              >
+                                                {ui(language, "recordMoment")}
+                                              </Button>
+                                            </div>
+                                          ))
+                                        ) : (
+                                          <Button size="sm" className="h-8" onClick={addPosition}>
+                                            <Plus /> {ui(language, "addPlant")}
+                                          </Button>
+                                        )}
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                </div>
                               );
                             })}
                           </div>
@@ -367,7 +475,7 @@ function GardenDetail() {
                   </div>
                 </div>
                 <aside
-                  className="min-w-0 rounded-2xl border border-border/70 bg-card p-4 shadow-soft sm:p-5 lg:col-span-5"
+                  className="min-w-0 rounded-2xl border border-border/70 bg-card p-4 shadow-soft sm:p-5 lg:hidden"
                   aria-live="polite"
                 >
                   <p className="eyebrow">{ui(language, "positionInspector")}</p>

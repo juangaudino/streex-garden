@@ -6,7 +6,6 @@ import {
   byRecency,
   dueLabel,
   localizedEventLabel,
-  localizedStatusLabel,
   formatDate,
   openTasks,
   plantPhotos,
@@ -311,7 +310,8 @@ function Home() {
                   params={{ plantId: plant.id }}
                   className="press inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs"
                 >
-                  <StatusDot status={plant.status} /> {plant.name} · {localizedStatusLabel(plant.status, store.language)}
+                  <span className="min-w-0 break-words">{plant.name}</span>
+                  <StatusDot status={plant.status} className="shrink-0" />
                 </Link>
               ))}
             </div>

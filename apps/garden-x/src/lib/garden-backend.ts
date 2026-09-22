@@ -863,7 +863,11 @@ async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: s
     p_content_type: decoded.mime,
     p_byte_size: decoded.bytes.byteLength,
     p_captured_at: capturedAt,
-    p_captured_at_precision: dateOnlyFromIso(photo.capturedAt) ? "date" : "approximate",
+    // The UI keeps a calendar-date precision (`date`) for local photo state,
+    // while the canonical RPC accepts only exact/approximate/unknown. A
+    // selected calendar date is stored at UTC noon above and is exact at the
+    // date-only level; never send the UI-only enum to Postgres.
+    p_captured_at_precision: dateOnlyFromIso(photo.capturedAt) ? "exact" : "approximate",
     p_checksum_sha256: checksum,
   });
   if (error) throw new Error(error.message);

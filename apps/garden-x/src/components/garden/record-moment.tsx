@@ -17,7 +17,13 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { formatDate, gardenCoverPhoto, plantPhotos, plantsAtPosition } from "@/lib/garden-logic";
+import {
+  formatDate,
+  gardenCoverPhoto,
+  plantPhotos,
+  plantsAtPosition,
+  resolvePositionByIdOrLabel,
+} from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Photo, Plant, PlantEvent } from "@/lib/garden-data";
 import { maintenanceIcons, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
@@ -208,6 +214,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const [plantedDays, setPlantedDays] = useState(plant.plantedDaysAgo);
   const [gardenId, setGardenId] = useState(plant.gardenId);
   const [slot, setSlot] = useState(plant.slot ?? "");
+  const [targetPositionId, setTargetPositionId] = useState<string | null>(
+    plant.backendPositionId ?? null,
+  );
   const [closeReason, setCloseReason] = useState("Harvest complete");
   const [newName, setNewName] = useState("");
   const [otherType, setOtherType] = useState<EventType>("flowering");
@@ -226,8 +235,11 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
     setPhotoId(null);
     setNewPhoto(null);
     setMomentDate(todayInputValue());
+    setGardenId(plant.gardenId);
+    setSlot(plant.slot ?? "");
+    setTargetPositionId(plant.backendPositionId ?? null);
     if (initialCareType) setCareType(initialCareType);
-  }, [open, initialFlow, initialCareType]);
+  }, [open, initialFlow, initialCareType, plant.gardenId, plant.slot, plant.backendPositionId]);
 
   useEffect(() => {
     if (!open) return;
@@ -248,8 +260,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const momentDaysAgo = daysAgoFromDate(momentDate);
   const targetGarden = store.gardens.find((g) => g.id === gardenId);
   const availablePositions = targetGarden?.backendPositions?.filter((item) => item.active !== false) ?? [];
-  const targetNumber = Number(slot.match(/\d+/)?.[0] ?? "");
-  const targetPosition = availablePositions.find((item) => item.number === targetNumber);
+  const targetPosition = resolvePositionByIdOrLabel(availablePositions, targetPositionId, slot);
   const targetOccupants = targetPosition ? plantsAtPosition(store.plants, targetPosition.id, plant.id) : [];
   const movePlantNow = async (allowShared: boolean) => {
     if (!targetPosition) {
@@ -671,9 +682,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                       onClick={() => {
                         setGardenId(g.id);
                         const positions = g.backendPositions?.filter((item) => item.active !== false) ?? [];
-                        if (!positions.some((item) => item.number === targetNumber)) {
-                          setSlot(positions[0] ? `Pod ${positions[0].number}` : "");
-                        }
+                        const nextPosition = positions[0];
+                        setTargetPositionId(nextPosition?.id ?? null);
+                        setSlot(nextPosition ? `Pod ${nextPosition.number}` : "");
                       }}
                       className={cn(
                         "press grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl border px-3 py-2.5 text-left",
@@ -694,7 +705,13 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               <Field label={ui(language, "positionPod")}>
                 <select
                   value={targetPosition ? String(targetPosition.number) : ""}
-                  onChange={(event) => setSlot(event.target.value ? `Pod ${event.target.value}` : "")}
+                  onChange={(event) => {
+                    const nextPosition = availablePositions.find(
+                      (position) => String(position.number) === event.target.value,
+                    );
+                    setTargetPositionId(nextPosition?.id ?? null);
+                    setSlot(nextPosition ? `Pod ${nextPosition.number}` : "");
+                  }}
                   className="input-soft"
                   disabled={!availablePositions.length}
                 >

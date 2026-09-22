@@ -46,6 +46,18 @@ export function plantsAtPosition(plants: Plant[], positionId: string, excludePla
   );
 }
 
+/** Resolves a move destination by canonical position id before using its display label. */
+export function resolvePositionByIdOrLabel<T extends { id: string; number: number }>(
+  positions: T[],
+  positionId: string | null | undefined,
+  label: string,
+) {
+  const byId = positionId ? positions.find((position) => position.id === positionId) : undefined;
+  if (byId) return byId;
+  const number = Number(label.match(/\d+/g)?.at(-1) ?? "");
+  return positions.find((position) => position.number === number);
+}
+
 export function gardenCoverPhoto(garden: Garden, plants: Plant[], photos: Photo[]) {
   if (garden.coverPhotoId) {
     const selected = photos.find((photo) => photo.id === garden.coverPhotoId);

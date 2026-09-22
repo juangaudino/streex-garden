@@ -1,9 +1,16 @@
 import { useState } from "react";
+import type { Plant } from "@/lib/garden-data";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, Cpu, Film, LayoutGrid, List, Plus } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { ageLabel, dueLabel, gardenCoverPhoto, openTasks, plantsAtPosition } from "@/lib/garden-logic";
-import { PlantCard, SectionTitle } from "@/components/garden/atoms";
+import {
+  ageLabel,
+  dueLabel,
+  gardenCoverPhoto,
+  openTasks,
+  plantsAtPosition,
+} from "@/lib/garden-logic";
+import { PlantCard, SectionTitle, StatusDot } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
@@ -12,6 +19,7 @@ import { activeGridCells, allGridCells } from "@/lib/custom-system";
 import { ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
+import { RecordMomentSheet } from "@/components/garden/record-moment";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -43,6 +51,8 @@ function GardenDetail() {
   const [adding, setAdding] = useState<{ slot?: string; positionId?: string | undefined } | null>(
     null,
   );
+  const [selectedPositionKey, setSelectedPositionKey] = useState<string | null>(null);
+  const [recordingPlant, setRecordingPlant] = useState<Plant | null>(null);
   const garden = store.gardens.find((g) => g.id === gardenId);
   if (!garden) throw notFound();
 
@@ -75,7 +85,14 @@ function GardenDetail() {
           const label = `Pod ${i + 1}`;
           return {
             label,
-            position: { number: i + 1, levelNumber: 1, rowNumber: i + 1, columnNumber: 1, gridY: i + 1, gridX: 1 },
+            position: {
+              number: i + 1,
+              levelNumber: 1,
+              rowNumber: i + 1,
+              columnNumber: 1,
+              gridY: i + 1,
+              gridX: 1,
+            },
             plant: plants.find((p) => p.slot === label),
             plants: plants.filter((p) => p.slot === label),
           };
@@ -86,15 +103,35 @@ function GardenDetail() {
     ? Array.from(new Set(pods.map(({ position }) => position.levelNumber ?? 1))).sort(
         (a, b) => a - b,
       )
-      : [];
+    : [];
   const layoutLevels = garden.systemLayoutLevels?.length
     ? garden.systemLayoutLevels
     : podLevels.map((levelNumber) => ({
         levelNumber,
-        rows: Math.max(...(pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => position.rowNumber ?? position.gridY ?? 1) ?? [1])),
-        columns: Math.max(...(pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => position.columnNumber ?? position.gridX ?? 1) ?? [1])),
-        activeCells: (pods?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber).map(({ position }) => ({ row: position.rowNumber ?? position.gridY ?? 1, column: position.columnNumber ?? position.gridX ?? 1 })) ?? []),
+        rows: Math.max(
+          ...(pods
+            ?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber)
+            .map(({ position }) => position.rowNumber ?? position.gridY ?? 1) ?? [1]),
+        ),
+        columns: Math.max(
+          ...(pods
+            ?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber)
+            .map(({ position }) => position.columnNumber ?? position.gridX ?? 1) ?? [1]),
+        ),
+        activeCells:
+          pods
+            ?.filter(({ position }) => (position.levelNumber ?? 1) === levelNumber)
+            .map(({ position }) => ({
+              row: position.rowNumber ?? position.gridY ?? 1,
+              column: position.columnNumber ?? position.gridX ?? 1,
+            })) ?? [],
       }));
+  const positionKey = (label: string, position: { id?: string }) =>
+    position.id ?? `${garden.id}:${label}`;
+  const selectedPod =
+    pods?.find(({ label, position }) => positionKey(label, position) === selectedPositionKey) ??
+    null;
+  const selectedPlants = selectedPod?.plants ?? [];
 
   return (
     <div className="rise pb-16">
@@ -174,7 +211,7 @@ function GardenDetail() {
               search={{ view: "overview" }}
               className="inline-flex items-center gap-2 rounded-full bg-card/15 px-3.5 py-2 text-xs text-primary-foreground ring-1 ring-card/25 backdrop-blur-md"
             >
-            <Film className="h-3.5 w-3.5" /> {ui(language, "gardenGrowthFilm")}
+              <Film className="h-3.5 w-3.5" /> {ui(language, "gardenGrowthFilm")}
             </Link>
           </div>
         </div>
@@ -204,90 +241,220 @@ function GardenDetail() {
                 </div>
                 <Cpu className="h-4 w-4 shrink-0 text-primary" />
               </div>
-              <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8">
-                {layoutLevels.map((level) => {
-                  const levelNumber = level.levelNumber;
-                  const levelPods = pods.filter(
-                    ({ position }) => (position.levelNumber ?? 1) === levelNumber,
-                  );
-                  const podByCoordinate = new Map(levelPods.map((pod) => [`${pod.position.rowNumber ?? pod.position.gridY ?? 1}:${pod.position.columnNumber ?? pod.position.gridX ?? 1}`, pod]));
-                  const activeCells = activeGridCells(level);
-                  return (
-                    <div key={levelNumber}>
-                      {podLevels.length > 1 ? (
-                        <p className="eyebrow mb-3">{ui(language, "level")} {levelNumber}</p>
-                      ) : null}
-                      <div
-                        className={cn(
-                          "mx-auto grid max-w-3xl gap-2.5 sm:gap-4",
-                          mapColumns(level.columns),
-                        )}
-                      >
-                        {allGridCells(level).map((cell) => {
-                          if (!activeCells.some((active) => active.row === cell.row && active.column === cell.column)) {
-                            return <span key={`${cell.row}:${cell.column}`} aria-hidden="true" className="aspect-square rounded-lg border border-dashed border-border/40 bg-background/20" />;
-                          }
-                          const pod = podByCoordinate.get(`${cell.row}:${cell.column}`);
-                          if (!pod) return <span key={`${cell.row}:${cell.column}`} aria-hidden="true" className="aspect-square rounded-lg border border-dashed border-border/40 bg-background/20" />;
-                          const { label, plant, plants: positionPlants, position } = pod;
-                          const sharedWarning = positionPlants.length > 1
-                          return plant ? (
-                            <Link
-                              key={label}
-                              to="/plants/$plantId"
-                              params={{ plantId: plant.id }}
-                              aria-label={`${label}: ${plant.name}, ${plant.species}`}
-                              className="press group grid min-w-0 place-items-center rounded-full border-0 bg-transparent p-0 text-center transition-colors hover:border-primary/40 sm:rounded-lg sm:border sm:border-border sm:bg-card sm:p-4 sm:shadow-soft"
-                            >
-                              <span className="eyebrow mb-1 block text-[0.6rem] sm:mb-2 sm:text-[0.65rem]">
-                                <span className="sm:hidden">P{position.number}</span>
-                                <span className="hidden sm:inline">{label}</span>
-                              </span>
-                              <span className="block aspect-square w-full max-w-28 overflow-hidden rounded-full border-2 border-background shadow-soft sm:max-w-24 sm:border-4">
-                                {photoById(plant.heroPhotoId) ? (
-                                  <PhotoImage
-                                    photo={photoById(plant.heroPhotoId)!}
-                                    alt=""
-                                    rendition="preview"
-                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <div className="grid gap-6 bg-secondary/35 p-4 sm:p-8 lg:grid-cols-12">
+                <div className="min-w-0 lg:col-span-7">
+                  <p className="eyebrow mb-3">{ui(language, "systemBlueprint")}</p>
+                  <div className="space-y-6">
+                    {layoutLevels.map((level) => {
+                      const levelNumber = level.levelNumber;
+                      const levelPods = pods.filter(
+                        ({ position }) => (position.levelNumber ?? 1) === levelNumber,
+                      );
+                      const podByCoordinate = new Map(
+                        levelPods.map((pod) => [
+                          `${pod.position.rowNumber ?? pod.position.gridY ?? 1}:${pod.position.columnNumber ?? pod.position.gridX ?? 1}`,
+                          pod,
+                        ]),
+                      );
+                      const activeCells = activeGridCells(level);
+                      return (
+                        <div key={levelNumber}>
+                          {podLevels.length > 1 ? (
+                            <p className="eyebrow mb-3">
+                              {ui(language, "level")} {levelNumber}
+                            </p>
+                          ) : null}
+                          <div
+                            className={cn(
+                              "mx-auto grid max-w-3xl gap-2.5 sm:gap-4",
+                              mapColumns(level.columns),
+                            )}
+                          >
+                            {allGridCells(level).map((cell) => {
+                              const cellKey = `${cell.row}:${cell.column}`;
+                              const isActive = activeCells.some(
+                                (active) =>
+                                  active.row === cell.row && active.column === cell.column,
+                              );
+                              if (!isActive) {
+                                return (
+                                  <span
+                                    key={cellKey}
+                                    aria-hidden="true"
+                                    className="aspect-square"
                                   />
-                                ) : null}
-                              </span>
-                              <span className="mt-1 block min-w-0 max-w-full sm:mt-2">
-                                <span className="line-clamp-2 text-center text-[0.7rem] font-medium leading-tight sm:text-sm">
-                                  {plant.name}
-                                </span>
-                                <span className="hidden truncate text-[0.65rem] text-muted-foreground sm:block">
-                                  {plant.species}
-                                </span>
-                              </span>
-                              {sharedWarning ? (
-                                <span className="mt-1 text-[0.62rem] font-medium text-amber-700 dark:text-amber-300">
-                                  {ui(language, "sharedPositionWarning").replace("{count}", String(positionPlants.length))}
-                                </span>
-                              ) : null}
-                            </Link>
-                          ) : (
-                            <button
-                              key={label}
-                              type="button"
-                              onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
-                              aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
-                              className="press group grid min-w-0 place-items-center rounded-full border-0 bg-transparent p-0 text-center transition-colors sm:rounded-lg sm:border sm:border-dashed sm:border-border sm:bg-background/45 sm:p-4"
-                            >
-                              <span className="eyebrow mb-1 block text-[0.6rem] sm:mb-2 sm:text-[0.65rem]">
-                                <span className="sm:hidden">P{position.number}</span>
-                                <span className="hidden sm:inline">{label}</span>
-                              </span>
-                              <span className="grid aspect-square w-full max-w-28 place-items-center rounded-full border border-dashed border-border bg-secondary/60 text-muted-foreground transition-colors group-hover:border-primary/50 sm:max-w-24"><Plus className="h-4 w-4" /></span>
-                              <span className="sr-only sm:not-sr-only sm:mt-2 sm:block sm:text-xs sm:text-muted-foreground">{ui(language, "emptyAddPlant")}</span>
-                            </button>
-                          );
-                        })}
+                                );
+                              }
+                              const pod = podByCoordinate.get(cellKey);
+                              if (!pod)
+                                return (
+                                  <span
+                                    key={cellKey}
+                                    aria-hidden="true"
+                                    className="aspect-square"
+                                  />
+                                );
+                              const { label, plant, plants: positionPlants, position } = pod;
+                              const key = positionKey(label, position);
+                              const selected = selectedPositionKey === key;
+                              const shared = positionPlants.length > 1;
+                              return (
+                                <button
+                                  key={cellKey}
+                                  type="button"
+                                  aria-pressed={selected}
+                                  aria-label={`${label}: ${positionPlants.length ? positionPlants.map((item) => item.name).join(", ") : ui(language, "emptyPosition")}`}
+                                  onClick={() => setSelectedPositionKey(key)}
+                                  className={cn(
+                                    "press group grid min-w-0 place-items-center rounded-2xl border bg-transparent p-2 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
+                                    selected
+                                      ? "border-primary bg-primary/8 shadow-soft"
+                                      : "border-transparent hover:border-primary/35",
+                                  )}
+                                >
+                                  <span className="eyebrow mb-2 block text-[0.6rem] sm:text-[0.65rem]">
+                                    P{position.number}
+                                  </span>
+                                  <span
+                                    className={cn(
+                                      "grid aspect-square w-full max-w-28 place-items-center overflow-hidden rounded-full border-2 shadow-soft sm:max-w-32 sm:border-4",
+                                      plant
+                                        ? "border-background bg-secondary"
+                                        : "border-dashed border-border bg-background/60 text-muted-foreground",
+                                    )}
+                                  >
+                                    {plant && photoById(plant.heroPhotoId) ? (
+                                      <PhotoImage
+                                        photo={photoById(plant.heroPhotoId)!}
+                                        alt=""
+                                        rendition="preview"
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                      />
+                                    ) : plant ? (
+                                      <span className="text-xs text-muted-foreground">
+                                        P{position.number}
+                                      </span>
+                                    ) : (
+                                      <Plus className="h-4 w-4" />
+                                    )}
+                                  </span>
+                                  {shared ? (
+                                    <span className="mt-2 text-[0.62rem] font-medium text-amber-700 dark:text-amber-300">
+                                      {ui(language, "sharedPositionWarning").replace(
+                                        "{count}",
+                                        String(positionPlants.length),
+                                      )}
+                                    </span>
+                                  ) : null}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <aside
+                  className="min-w-0 rounded-2xl border border-border/70 bg-card p-4 shadow-soft sm:p-5 lg:col-span-5"
+                  aria-live="polite"
+                >
+                  <p className="eyebrow">{ui(language, "positionInspector")}</p>
+                  {!selectedPod ? (
+                    <p className="mt-4 text-sm text-muted-foreground">
+                      {ui(language, "selectPosition")}
+                    </p>
+                  ) : (
+                    <>
+                      <div className="mt-3 flex items-center justify-between gap-3">
+                        <h3 className="font-display text-xl">{selectedPod.label}</h3>
+                        {selectedPlants.length > 1 ? (
+                          <span className="text-right text-xs font-medium text-amber-700 dark:text-amber-300">
+                            {ui(language, "plantsInPosition").replace(
+                              "{count}",
+                              String(selectedPlants.length),
+                            )}
+                          </span>
+                        ) : null}
                       </div>
-                    </div>
-                  );
-                })}
+                      {selectedPlants.length === 0 ? (
+                        <div className="mt-5 rounded-xl border border-dashed border-border p-4">
+                          <p className="text-sm font-medium">{ui(language, "emptyPosition")}</p>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            {ui(language, "emptyAddPlant")}
+                          </p>
+                          <Button
+                            className="mt-4"
+                            size="sm"
+                            onClick={() =>
+                              setAdding({
+                                slot: selectedPod.label,
+                                positionId:
+                                  "id" in selectedPod.position
+                                    ? selectedPod.position.id
+                                    : undefined,
+                              })
+                            }
+                          >
+                            <Plus /> {ui(language, "addPlant")}
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="mt-5 space-y-4">
+                          {selectedPlants.map((selectedPlant) => (
+                            <div
+                              key={selectedPlant.id}
+                              className="rounded-xl border border-border/70 p-3"
+                            >
+                              <div className="flex items-start gap-3">
+                                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-secondary">
+                                  {photoById(selectedPlant.heroPhotoId) ? (
+                                    <PhotoImage
+                                      photo={photoById(selectedPlant.heroPhotoId)!}
+                                      alt={selectedPlant.name}
+                                      rendition="preview"
+                                      className="h-full w-full object-cover"
+                                    />
+                                  ) : null}
+                                </div>
+                                <div className="min-w-0">
+                                  <p className="truncate font-medium">{selectedPlant.name}</p>
+                                  <p className="truncate text-xs text-muted-foreground">
+                                    {selectedPlant.variety || selectedPlant.species}
+                                  </p>
+                                  <p className="truncate text-xs italic text-muted-foreground">
+                                    {selectedPlant.scientific}
+                                  </p>
+                                  <StatusDot status={selectedPlant.status} className="mt-1" />
+                                </div>
+                              </div>
+                              <p className="mt-3 text-xs text-muted-foreground">
+                                {ageLabel(selectedPlant.plantedDaysAgo, language)}
+                              </p>
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                <Button asChild size="sm" variant="outline">
+                                  <Link
+                                    to="/plants/$plantId"
+                                    params={{ plantId: selectedPlant.id }}
+                                  >
+                                    {ui(language, "viewPlant")}
+                                  </Link>
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => setRecordingPlant(selectedPlant)}
+                                >
+                                  {ui(language, "recordMoment")}
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </aside>
               </div>
             </div>
           ) : (
@@ -322,7 +489,12 @@ function GardenDetail() {
                       <button
                         key={label}
                         type="button"
-                        onClick={() => setAdding({ slot: label, positionId: "id" in position ? position.id : undefined })}
+                        onClick={() =>
+                          setAdding({
+                            slot: label,
+                            positionId: "id" in position ? position.id : undefined,
+                          })
+                        }
                         aria-label={`${label}: ${ui(language, "emptyAddPlant")}`}
                         className="press grid aspect-[3/4] place-items-center rounded-2xl border border-dashed border-border bg-secondary/40 text-center transition-colors hover:border-primary/50"
                       >
@@ -368,7 +540,10 @@ function GardenDetail() {
                       ))}
                       {positionPlants.length > 1 ? (
                         <p className="px-3 pb-3 text-[0.65rem] font-medium text-amber-700 dark:text-amber-300">
-                          {ui(language, "sharedPositionWarning").replace("{count}", String(positionPlants.length))}
+                          {ui(language, "sharedPositionWarning").replace(
+                            "{count}",
+                            String(positionPlants.length),
+                          )}
                         </p>
                       ) : null}
                     </div>
@@ -455,6 +630,14 @@ function GardenDetail() {
           </section>
         </>
       )}
+
+      {recordingPlant ? (
+        <RecordMomentSheet
+          plant={recordingPlant}
+          open={Boolean(recordingPlant)}
+          onClose={() => setRecordingPlant(null)}
+        />
+      ) : null}
 
       <AddPlantSheet
         gardenId={garden.id}

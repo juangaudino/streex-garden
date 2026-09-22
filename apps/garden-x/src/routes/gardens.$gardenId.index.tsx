@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, Cpu, Film, LayoutGrid, List, Plus } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { ageLabel, dueLabel, gardenCoverPhoto, openTasks } from "@/lib/garden-logic";
+import { ageLabel, dueLabel, gardenCoverPhoto, openTasks, plantsAtPosition } from "@/lib/garden-logic";
 import { PlantCard, SectionTitle } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -62,10 +62,12 @@ function GardenDetail() {
         )
         .map((position) => {
           const label = `Pod ${position.number}`;
+          const positionPlants = plantsAtPosition(plants, position.id);
           return {
             label,
             position,
-            plant: plants.find((p) => p.backendPositionId === position.id || p.slot === label),
+            plant: positionPlants[0],
+            plants: positionPlants,
           };
         })
     : garden.machine
@@ -75,6 +77,7 @@ function GardenDetail() {
             label,
             position: { number: i + 1, levelNumber: 1, rowNumber: i + 1, columnNumber: 1, gridY: i + 1, gridX: 1 },
             plant: plants.find((p) => p.slot === label),
+            plants: plants.filter((p) => p.slot === label),
           };
         })
       : null;
@@ -226,7 +229,8 @@ function GardenDetail() {
                           }
                           const pod = podByCoordinate.get(`${cell.row}:${cell.column}`);
                           if (!pod) return <span key={`${cell.row}:${cell.column}`} aria-hidden="true" className="aspect-square rounded-lg border border-dashed border-border/40 bg-background/20" />;
-                          const { label, plant, position } = pod;
+                          const { label, plant, plants: positionPlants, position } = pod;
+                          const sharedWarning = positionPlants.length > 1
                           return plant ? (
                             <Link
                               key={label}
@@ -257,6 +261,11 @@ function GardenDetail() {
                                   {plant.species}
                                 </span>
                               </span>
+                              {sharedWarning ? (
+                                <span className="mt-1 text-[0.62rem] font-medium text-amber-700 dark:text-amber-300">
+                                  {ui(language, "sharedPositionWarning").replace("{count}", String(positionPlants.length))}
+                                </span>
+                              ) : null}
                             </Link>
                           ) : (
                             <button

@@ -98,6 +98,7 @@ interface StoreApi extends GardenState {
     photo?: Omit<Photo, "id" | "plantId">;
   }) => Promise<string>;
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
+  movePlant: (plantId: string, targetPositionId: string, movedDaysAgo: number) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
   setGardenArchived: (id: string, archived: boolean) => Promise<void>;
@@ -603,6 +604,10 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         if (!current) throw new Error("Plant not found.");
         await confirmPlantLibraryIdentityRecord(current, libraryPlantId);
         await refreshFromBackend();
+      },
+      movePlant: async (plantId, targetPositionId, movedDaysAgo) => {
+        await movePlantRecord(plantId, targetPositionId, movedDaysAgo);
+        await refreshFromBackend("mutation");
       },
       updatePlant: (id, patch) => {
         const current = state.plants.find((p) => p.id === id);

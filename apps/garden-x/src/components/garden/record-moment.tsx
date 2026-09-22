@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
-import { formatDate, gardenCoverPhoto, plantPhotos } from "@/lib/garden-logic";
+import { formatDate, gardenCoverPhoto, plantPhotos, plantsAtPosition } from "@/lib/garden-logic";
 import type { EventType, MaintenanceType, Photo, Plant, PlantEvent } from "@/lib/garden-data";
 import { maintenanceIcons, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
@@ -195,6 +195,8 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const language = store.language;
   const [flow, setFlow] = useState<MomentFlow | null>(initialFlow ?? null);
   const [done, setDone] = useState<{ title: string; lines: string[] } | null>(null);
+  const [moveSubmitting, setMoveSubmitting] = useState(false);
+  const [moveConfirmation, setMoveConfirmation] = useState(false);
 
   // form state
   const [note, setNote] = useState("");
@@ -218,6 +220,8 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
     if (!open) return;
     setFlow(initialFlow ?? null);
     setDone(null);
+    setMoveSubmitting(false);
+    setMoveConfirmation(false);
     setNote("");
     setPhotoId(null);
     setNewPhoto(null);
@@ -242,6 +246,33 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
 
   const currentFlow = flows.find((f) => f.key === flow);
   const momentDaysAgo = daysAgoFromDate(momentDate);
+  const targetGarden = store.gardens.find((g) => g.id === gardenId);
+  const targetNumber = Number(slot.match(/\d+/)?.[0] ?? "");
+  const targetPosition = targetGarden?.backendPositions?.find((item) => item.number === targetNumber);
+  const targetOccupants = targetPosition ? plantsAtPosition(store.plants, targetPosition.id, plant.id) : [];
+  const movePlantNow = async (allowShared: boolean) => {
+    if (!targetPosition) {
+      toast.error(ui(language, "positionNotFound"));
+      return;
+    }
+    if (targetOccupants.length > 0 && !allowShared) {
+      setMoveConfirmation(true);
+      return;
+    }
+    setMoveSubmitting(true);
+    try {
+      await store.movePlant(plant.id, targetPosition.id, momentDaysAgo);
+      finish(ui(language, "moveRecorded"), [
+        `${targetGarden?.name ?? ui(language, "newGarden")}${slot.trim() ? ` · ${slot.trim()}` : ""}`,
+        formatDate(momentDaysAgo),
+        ui(language, "addedMilestone"),
+      ]);
+    } catch {
+      toast.error(ui(language, "moveFailed"));
+    } finally {
+      setMoveSubmitting(false);
+    }
+  };
   const saveNewPhoto = (caption: string): { id: string; photo: Photo } | null => {
     if (!newPhoto) return null;
     const draft: Omit<Photo, "id"> = {
@@ -662,27 +693,29 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                 />
               </Field>
               <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
+              {moveConfirmation ? (
+                <div className="rounded-2xl border border-amber-500/35 bg-amber-500/10 p-4">
+                  <p className="text-sm font-medium">{ui(language, "positionAlreadyOccupied")}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {ui(language, "positionOccupiedBody").replace("{position}", `${targetGarden?.name ?? ""} · ${slot.trim()}`.trim())}
+                  </p>
+                  <div className="mt-3 flex flex-wrap justify-end gap-2">
+                    <Button type="button" variant="ghost" className="rounded-full" onClick={() => setMoveConfirmation(false)} disabled={moveSubmitting}>
+                      {ui(language, "cancel")}
+                    </Button>
+                    <Button type="button" className="rounded-full" onClick={() => {
+                      setMoveConfirmation(false);
+                      void movePlantNow(true);
+                    }} disabled={moveSubmitting}>
+                      {ui(language, "moveAnyway")}
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
               <Submit
                 label={ui(language, "recordMove")}
-                onClick={() => {
-                  const target = store.gardens.find((g) => g.id === gardenId);
-                  store.updatePlant(plant.id, { gardenId, ...(slot.trim() ? { slot: slot.trim() } : {}) });
-                  store.addEvent({
-                    plantId: plant.id,
-                    daysAgo: momentDaysAgo,
-                    occurredAt: dateOnlyToUtcNoon(momentDate),
-                    type: "transplant",
-                    title: "Relocated",
-                    detail: `Moved to ${target?.name ?? "another garden"}${slot.trim() ? ` · ${slot.trim()}` : ""}.`,
-                    milestone: true,
-                    provenance: "recorded",
-                  });
-                  finish(ui(language, "moveRecorded"), [
-                    `${target?.name ?? ui(language, "newGarden")}${slot.trim() ? ` · ${slot.trim()}` : ""}`,
-                    formatDate(momentDaysAgo),
-                    ui(language, "addedMilestone"),
-                  ]);
-                }}
+                onClick={() => void movePlantNow(false)}
+                disabled={moveSubmitting}
               />
             </div>
           ) : null}

@@ -39,6 +39,13 @@ export function gardenCover(garden: Garden, plants: Plant[], photos: Photo[]) {
   return photos.filter((photo) => plantIds.has(photo.plantId)).sort((a, b) => a.daysAgo - b.daysAgo)[0]?.src ?? garden.cover;
 }
 
+/** Current active plant instances resolved to one physical position. */
+export function plantsAtPosition(plants: Plant[], positionId: string, excludePlantId?: string) {
+  return plants.filter(
+    (plant) => plant.backendPositionId === positionId && plant.id !== excludePlantId,
+  );
+}
+
 export function gardenCoverPhoto(garden: Garden, plants: Plant[], photos: Photo[]) {
   if (garden.coverPhotoId) {
     const selected = photos.find((photo) => photo.id === garden.coverPhotoId);

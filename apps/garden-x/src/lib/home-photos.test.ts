@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { recentPlantPhotos } from "./garden-logic";
+import { distinctPhotoEvidence, plantsRepresentedInPhotos, recentPlantPhotos } from "./garden-logic";
 import type { Photo, Plant } from "./garden-data";
 
 const plants: Pick<Plant, "id">[] = [{ id: "plant-1" }];
@@ -35,5 +35,23 @@ describe("Home new photos projection", () => {
         (item) => item.id,
       ),
     ).toEqual(["legacy"]);
+  });
+
+  it("deduplicates status pills by plant in photo-strip order", () => {
+    const orderedPlants = [{ id: "plant-2" }, { id: "plant-1" }];
+    const represented = plantsRepresentedInPhotos(
+      [photo({ plantId: "plant-1" }), photo({ id: "second", plantId: "plant-1" }), photo({ id: "third", plantId: "plant-2" })],
+      orderedPlants,
+    );
+    expect(represented.map((plant) => plant.id)).toEqual(["plant-1", "plant-2"]);
+  });
+
+  it("treats the same stored evidence as one comparison frame", () => {
+    const frames = distinctPhotoEvidence([
+      photo({ id: "photo-a", backendStoragePath: "owners/u/photos/a.jpg" }),
+      photo({ id: "duplicate-row", backendStoragePath: "owners/u/photos/a.jpg" }),
+      photo({ id: "photo-b", backendStoragePath: "owners/u/photos/b.jpg" }),
+    ]);
+    expect(frames.map((item) => item.id)).toEqual(["photo-a", "photo-b"]);
   });
 });

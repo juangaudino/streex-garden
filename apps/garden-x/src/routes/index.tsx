@@ -6,10 +6,13 @@ import {
   byRecency,
   dueLabel,
   localizedEventLabel,
+  localizedStatusLabel,
   formatDate,
   openTasks,
   plantPhotos,
   recentPlantPhotos,
+  plantsRepresentedInPhotos,
+  distinctPhotoEvidence,
   relativeDay,
   comparePhotos,
 } from "@/lib/garden-logic";
@@ -17,6 +20,7 @@ import { PageHeader } from "@/components/garden/shell";
 import {
   ProvenanceTag,
   SectionTitle,
+  StatusDot,
   PlantThumb,
   eventIcons,
   maintenanceIcons,
@@ -67,7 +71,7 @@ function Home() {
   // Deterministic "meaningful change": plants with >= 2 photos, largest recent delta.
   const changes = store.plants
     .map((plant) => {
-      const pics = plantPhotos(store.photos, plant.id);
+      const pics = distinctPhotoEvidence(plantPhotos(store.photos, plant.id));
       if (pics.length < 2) return null;
       const a = pics[pics.length - 2]!;
       const b = pics[pics.length - 1]!;
@@ -83,6 +87,7 @@ function Home() {
 
   const heroPhoto = photoById(hero.heroPhotoId);
   const heroPics = plantPhotos(store.photos, hero.id);
+  const photoStripPlants = plantsRepresentedInPhotos(newPhotos, store.plants);
   const greeting = new Date().getHours() < 12
     ? ui(store.language, "goodMorning")
     : new Date().getHours() < 18
@@ -203,7 +208,7 @@ function Home() {
       </section>
 
       {/* Meaningful changes */}
-      <section className="mt-12 px-5 sm:px-8 lg:px-12">
+      {changes.length ? <section className="mt-12 px-5 sm:px-8 lg:px-12">
         <SectionTitle>{ui(store.language, "meaningfulChanges")}</SectionTitle>
         <div className="grid gap-3 lg:grid-cols-3">
           {changes.map(({ plant, a, b, cmp }) => (
@@ -236,7 +241,7 @@ function Home() {
             </Link>
           ))}
         </div>
-      </section>
+      </section> : null}
 
       {/* Recent activity + new photos */}
       <section className="mt-12 grid gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:px-12">
@@ -297,19 +302,20 @@ function Home() {
               </Link>
             ))}
           </div>
-          {(() => {
-            const steadyCount = store.plants.filter((plant) => plant.status !== "watching" && plant.status !== "recovering").length;
-            const attentionCount = store.plants.filter((plant) => plant.status === "watching" || plant.status === "recovering").length;
-            return (
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                <span>{steadyCount} {ui(store.language, "plantsStable")}</span>
-                <span aria-hidden="true">·</span>
-                <Link to="/care" className="text-primary hover:underline">
-                  {attentionCount} {ui(store.language, "plantsNeedAttention")}
+          {photoStripPlants.length ? (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {photoStripPlants.map((plant) => (
+                <Link
+                  key={plant.id}
+                  to="/plants/$plantId"
+                  params={{ plantId: plant.id }}
+                  className="press inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs"
+                >
+                  <StatusDot status={plant.status} /> {plant.name} · {localizedStatusLabel(plant.status, store.language)}
                 </Link>
-              </div>
-            );
-          })()}
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
 

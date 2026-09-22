@@ -56,6 +56,7 @@ import { LibraryIdentityResolution } from "@/components/garden/library-identity-
 import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManifest } from "@/lib/garden-library";
 import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
+import { askGardenAccentClassName } from "@/lib/care-session";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -313,7 +314,7 @@ function PlantProfile() {
           to="/plants/$plantId/ask"
           params={{ plantId: plant.id }}
           search={{ from: undefined, prompt: undefined }}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
+          className={`press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm ${askGardenAccentClassName}`}
         >
           <MessageCircle className="h-3.5 w-3.5 shrink-0 text-primary sm:h-4 sm:w-4" strokeWidth={1.8} />
           <span className="truncate">{ui(language, "askGarden")}</span>

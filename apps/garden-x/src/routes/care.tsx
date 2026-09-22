@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -26,9 +26,25 @@ import { PageHeader } from "@/components/garden/shell";
 import { SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
 import type { MaintenanceType, Plant } from "@/lib/garden-data";
 import { ui } from "@/lib/ui-copy";
-import { careSessionAction } from "@/lib/care-session";
+import {
+  askGardenAccentClassName,
+  careSessionAction,
+  careSessionSearch,
+  parseCareSessionBoolean,
+  parseCareSessionNumber,
+  parseCareSessionQueue,
+} from "@/lib/care-session";
 
 export const Route = createFileRoute("/care")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    careQueue: typeof search["careQueue"] === "string" ? search["careQueue"] : undefined,
+    careIndex: parseCareSessionNumber(search["careIndex"]),
+    careRecorded: parseCareSessionBoolean(search["careRecorded"]),
+    careReviewed: parseCareSessionNumber(search["careReviewed"]),
+    careObservations: parseCareSessionNumber(search["careObservations"]),
+    careActions: parseCareSessionNumber(search["careActions"]),
+    careFollowups: parseCareSessionNumber(search["careFollowups"]),
+  }),
   head: () => ({
     meta: [
       { title: "Guided Plant Care — Garden X" },
@@ -60,15 +76,44 @@ const emptySummary = (): SessionSummary => ({ reviewed: 0, observations: 0, care
 function Care() {
   const store = useGarden();
   const language = store.language;
+  const sessionSearch = Route.useSearch();
+  const navigate = Route.useNavigate();
   const tasks = openTasks(store.tasks);
-  const [queue, setQueue] = useState<string[]>([]);
-  const [index, setIndex] = useState(0);
-  const [summary, setSummary] = useState<SessionSummary>(emptySummary);
+  const [queue, setQueue] = useState<string[]>(() => parseCareSessionQueue(sessionSearch.careQueue));
+  const [index, setIndex] = useState(sessionSearch.careIndex ?? 0);
+  const [summary, setSummary] = useState<SessionSummary>(() => ({
+    reviewed: sessionSearch.careReviewed ?? 0,
+    observations: sessionSearch.careObservations ?? 0,
+    care: sessionSearch.careActions ?? 0,
+    followups: sessionSearch.careFollowups ?? 0,
+  }));
   const [finished, setFinished] = useState(false);
   const [recordOpen, setRecordOpen] = useState(false);
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>();
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>();
-  const [recordedForReview, setRecordedForReview] = useState(false);
+  const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
+
+  useEffect(() => {
+    if (!queue.length) {
+      void navigate({
+        search: {
+          careQueue: undefined,
+          careIndex: undefined,
+          careRecorded: undefined,
+          careReviewed: undefined,
+          careObservations: undefined,
+          careActions: undefined,
+          careFollowups: undefined,
+        },
+        replace: true,
+      });
+      return;
+    }
+    void navigate({
+      search: careSessionSearch({ queue, index, recordedForReview, ...summary }),
+      replace: true,
+    });
+  }, [navigate, queue, index, recordedForReview, summary]);
 
   const activePlants = useMemo(() => store.plants.filter((plant) => !plant.cycleClosed), [store.plants]);
   const needingLook = new Set(tasks.map((t) => t.plantId)).size;
@@ -151,6 +196,12 @@ function Care() {
             onNext={() => advance(true)}
             onSkip={() => advance(false)}
             recordedForReview={recordedForReview}
+            careReturnSearch={careSessionSearch({
+              queue,
+              index,
+              recordedForReview,
+              ...summary,
+            })}
           />
         )}
 
@@ -237,6 +288,7 @@ function PlantReview({
   onNext,
   onSkip,
   recordedForReview,
+  careReturnSearch,
 }: {
   plant: Plant;
   language: "en" | "es";
@@ -249,6 +301,7 @@ function PlantReview({
   onNext: () => void;
   onSkip: () => void;
   recordedForReview: boolean;
+  careReturnSearch: ReturnType<typeof careSessionSearch>;
 }) {
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
@@ -300,8 +353,8 @@ function PlantReview({
       </div>
 
       <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-        <Button asChild className="min-h-11 flex-1 border border-inference/30 bg-inference/10 text-inference shadow-none hover:bg-inference/15">
-          <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: undefined, prompt: undefined }}>
+        <Button asChild className={`min-h-11 flex-1 border shadow-none ${askGardenAccentClassName}`}>
+          <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: "care", prompt: undefined, ...careReturnSearch }}>
             <MessageCircle className="h-4 w-4" /> {ui(language, "askGarden")}
           </Link>
         </Button>

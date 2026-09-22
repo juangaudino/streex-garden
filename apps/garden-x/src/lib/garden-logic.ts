@@ -158,6 +158,38 @@ export function recentPlantPhotos(photos: Photo[], plants: Pick<Plant, "id">[]) 
   );
 }
 
+/** Returns the plants represented by a photo strip, preserving first appearance order. */
+export function plantsRepresentedInPhotos<T extends Pick<Plant, "id">>(
+  photos: Pick<Photo, "plantId">[],
+  plants: T[],
+) {
+  const byId = new Map(plants.map((plant) => [plant.id, plant]));
+  const seen = new Set<string>();
+  return photos.flatMap((photo) => {
+    if (seen.has(photo.plantId)) return [];
+    const plant = byId.get(photo.plantId);
+    if (!plant) return [];
+    seen.add(photo.plantId);
+    return [plant];
+  });
+}
+
+/** Stable evidence identity for comparisons; signed URLs are deliberately excluded. */
+export function photoEvidenceKey(photo: Pick<Photo, "id" | "backendStoragePath">) {
+  return photo.backendStoragePath ? `storage:${photo.backendStoragePath}` : `photo:${photo.id}`;
+}
+
+/** Removes duplicate rows that point at the same canonical stored evidence. */
+export function distinctPhotoEvidence<T extends Pick<Photo, "id" | "backendStoragePath">>(photos: T[]) {
+  const seen = new Set<string>();
+  return photos.filter((photo) => {
+    const key = photoEvidenceKey(photo);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 /** Pick one active plant for the lifetime of an app session. */
 export function chooseSessionHighlight<T extends Pick<Plant, "id" | "cycleClosed">>(
   plants: T[],

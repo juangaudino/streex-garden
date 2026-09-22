@@ -5,11 +5,19 @@ import { useGarden } from "@/lib/garden-store";
 import { askGarden, askSuggestions, plantEvents, plantPhotos, type AskAnswer } from "@/lib/garden-logic";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import { ui } from "@/lib/ui-copy";
+import { parseCareSessionBoolean, parseCareSessionNumber } from "@/lib/care-session";
 
 export const Route = createFileRoute("/plants/$plantId/ask")({
   validateSearch: (search: Record<string, unknown>) => ({
-    from: search["from"] === "garden-ai" ? "garden-ai" as const : undefined,
+    from: search["from"] === "garden-ai" ? "garden-ai" as const : search["from"] === "care" ? "care" as const : undefined,
     prompt: typeof search["prompt"] === "string" ? search["prompt"] : undefined,
+    careQueue: typeof search["careQueue"] === "string" ? search["careQueue"] : undefined,
+    careIndex: parseCareSessionNumber(search["careIndex"]),
+    careRecorded: parseCareSessionBoolean(search["careRecorded"]),
+    careReviewed: parseCareSessionNumber(search["careReviewed"]),
+    careObservations: parseCareSessionNumber(search["careObservations"]),
+    careActions: parseCareSessionNumber(search["careActions"]),
+    careFollowups: parseCareSessionNumber(search["careFollowups"]),
   }),
   head: () => ({
     meta: [
@@ -30,7 +38,7 @@ export const Route = createFileRoute("/plants/$plantId/ask")({
 
 function Ask() {
   const { plantId } = Route.useParams();
-  const { from, prompt } = Route.useSearch();
+  const { from, prompt, careQueue, careIndex, careRecorded, careReviewed, careObservations, careActions, careFollowups } = Route.useSearch();
   const store = useGarden();
   const language = store.language;
   const plant = store.plants.find((p) => p.id === plantId);
@@ -72,6 +80,15 @@ function Ask() {
       <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
           <Link to="/garden-ai" className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
+            <ChevronLeft className="h-4 w-4" />
+          </Link>
+        ) : from === "care" ? (
+          <Link
+            to="/care"
+            search={{ careQueue, careIndex, careRecorded, careReviewed, careObservations, careActions, careFollowups }}
+            className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card"
+            aria-label={ui(language, "backToCare")}
+          >
             <ChevronLeft className="h-4 w-4" />
           </Link>
         ) : (

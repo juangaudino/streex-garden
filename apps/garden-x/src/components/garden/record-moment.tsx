@@ -199,6 +199,7 @@ interface Props {
 export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, onRecorded, onClose }: Props) {
   const store = useGarden();
   const language = store.language;
+  const initializedPlantRef = useRef<string | null>(null);
   const [flow, setFlow] = useState<MomentFlow | null>(initialFlow ?? null);
   const [done, setDone] = useState<{ title: string; lines: string[] } | null>(null);
   const [moveSubmitting, setMoveSubmitting] = useState(false);
@@ -226,7 +227,14 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const photos = useMemo(() => plantPhotos(store.photos, plant.id), [store.photos, plant.id]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      initializedPlantRef.current = null;
+      return;
+    }
+    // A backend refresh can replace the plant object while this sheet is open.
+    // Do not reset a destination the user has already selected when that happens.
+    if (initializedPlantRef.current === plant.id) return;
+    initializedPlantRef.current = plant.id;
     setFlow(initialFlow ?? null);
     setDone(null);
     setMoveSubmitting(false);
@@ -239,7 +247,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
     setSlot(plant.slot ?? "");
     setTargetPositionId(plant.backendPositionId ?? null);
     if (initialCareType) setCareType(initialCareType);
-  }, [open, initialFlow, initialCareType, plant.gardenId, plant.slot, plant.backendPositionId]);
+  }, [open, initialFlow, initialCareType, plant]);
 
   useEffect(() => {
     if (!open) return;

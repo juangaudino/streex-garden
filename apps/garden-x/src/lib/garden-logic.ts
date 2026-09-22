@@ -205,8 +205,13 @@ export function chooseSessionHighlight<T extends Pick<Plant, "id" | "cycleClosed
   return pool[Math.floor(random() * pool.length)];
 }
 
+/** Latest-event selectors must follow the effective/occurred date, not ingestion order. */
 export const plantEvents = (events: PlantEvent[], plantId: string) =>
-  byRecency(events.filter((e) => e.plantId === plantId));
+  events
+    .filter((e) => e.plantId === plantId)
+    .map((event, index) => ({ event, index }))
+    .sort((a, b) => compareTemporal(a.event.occurredAt, b.event.occurredAt, a.event.daysAgo, b.event.daysAgo, "newest") || a.index - b.index)
+    .map(({ event }) => event);
 
 export type PlantTimelineEntry =
   | { kind: "event"; event: PlantEvent; photos: Photo[]; daysAgo: number }

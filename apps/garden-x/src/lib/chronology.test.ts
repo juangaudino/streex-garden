@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { plantTimeline, sortPhotosByCapturedAt } from "./garden-logic";
+import { plantEvents, plantTimeline, sortPhotosByCapturedAt } from "./garden-logic";
 import type { Photo, PlantEvent } from "./garden-data";
 
 const photo = (id: string, capturedAt: string | null, daysAgo: number): Photo => ({
@@ -71,5 +71,16 @@ describe("chronology projections", () => {
         "oldest",
       ).map((entry) => (entry.kind === "photo" ? entry.photo.id : entry.event.id)),
     ).toEqual(["event-old", "photo-old", "event-new", "photo-new"]);
+  });
+
+  it("uses effective event dates for latest-event selectors", () => {
+    const events = [
+      event("entered-late-but-older", "2026-09-04T12:00:00Z", 0),
+      event("entered-later-date", "2026-09-15T12:00:00Z", 10),
+    ];
+    expect(plantEvents(events, "plant-1").map((item) => item.id)).toEqual([
+      "entered-later-date",
+      "entered-late-but-older",
+    ]);
   });
 });

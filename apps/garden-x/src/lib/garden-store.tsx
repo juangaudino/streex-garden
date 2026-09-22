@@ -463,6 +463,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             type: e.type,
             title: e.title,
             provenance: e.provenance,
+            ...(e.occurredAt !== undefined && { occurredAt: e.occurredAt }),
             ...(e.detail !== undefined && { detail: e.detail }),
             ...(e.milestone !== undefined && { milestone: e.milestone }),
             ...(e.photoId !== undefined && { photoId: e.photoId }),

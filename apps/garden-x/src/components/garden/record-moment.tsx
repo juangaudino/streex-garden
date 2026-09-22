@@ -25,6 +25,9 @@ import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
 import { recordMomentGroups } from "@/lib/care-session";
+import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
+import { PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
+import { dateOnlyToUtcNoon } from "@/lib/temporal";
 
 export type MomentFlow =
   | "observation"
@@ -244,6 +247,8 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
       plantId: plant.id,
       src: newPhoto,
       daysAgo: momentDaysAgo,
+      capturedAt: dateOnlyToUtcNoon(momentDate),
+      capturedAtPrecision: "date",
       caption,
       metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
     });
@@ -417,6 +422,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                      type: attachedPhotoId ? "photo" : "note",
                     title: note.trim().slice(0, 60),
                     detail: note.trim(),
@@ -476,6 +482,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: careEventType(careType),
                     title: localizedMaintenanceLabel(careType, language),
                     detail: note.trim() || ui(language, "recordedFromMoment"),
@@ -534,7 +541,8 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   });
                   store.addEvent({
                     plantId: plant.id,
-                    daysAgo: 0,
+                    daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: "note",
                     title: `Follow-up set: ${subject}`,
                     detail: `Due ${formatDate(-when)}. ${note.trim()}`.trim(),
@@ -579,6 +587,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: "note",
                     title: "Planting record corrected",
                     detail: `Planted date changed from ${formatDate(plant.plantedDaysAgo)} to ${formatDate(
@@ -638,6 +647,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: "transplant",
                     title: "Relocated",
                     detail: `Moved to ${target?.name ?? "another garden"}${slot.trim() ? ` · ${slot.trim()}` : ""}.`,
@@ -689,6 +699,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: "note",
                     title: "Cycle closed",
                     detail: `${closeReason}. ${note.trim()}`.trim(),
@@ -728,6 +739,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: "note",
                     title: "Replaced by a new sowing",
                     detail: `${name} now occupies this position. History preserved.`,
@@ -793,6 +805,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   store.addEvent({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
+                    occurredAt: dateOnlyToUtcNoon(momentDate),
                     type: otherType,
                     title: otherTitle.trim(),
                     ...(note.trim() ? { detail: note.trim() } : {}),
@@ -821,7 +834,7 @@ function PhotoAttachment({ photo, onPhoto, language }: { photo: string | null; o
   const fileRef = useRef<HTMLInputElement>(null);
 
   const pickPhoto = (file: File | undefined) => {
-    if (!file) return;
+    if (!file || !isSupportedPhotoFile(file)) return;
     const reader = new FileReader();
     reader.onload = () => onPhoto(typeof reader.result === "string" ? reader.result : null);
     reader.readAsDataURL(file);
@@ -829,35 +842,37 @@ function PhotoAttachment({ photo, onPhoto, language }: { photo: string | null; o
 
   return (
     <Field label={ui(language, "addPhotoOptional")}>
-      <input
-        ref={fileRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={(event) => {
-          pickPhoto(event.target.files?.[0]);
-          event.target.value = "";
-        }}
-      />
-      <div className="flex items-center gap-3">
-        {photo ? (
-          <img src={photo} alt={ui(language, "newMomentImage")} className="h-20 w-20 rounded-2xl object-cover" />
-        ) : (
-          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-dashed border-border bg-secondary/50 text-muted-foreground">
-            <Camera className="h-4 w-4" />
-          </span>
-        )}
-        <div className="flex min-w-0 flex-wrap gap-2">
-          <Button type="button" variant="outline" className="rounded-full" onClick={() => fileRef.current?.click()}>
-            {photo ? ui(language, "chooseAnotherPhoto") : ui(language, "addPhoto")}
-          </Button>
+      <PhotoDropZone language={language} onFile={pickPhoto}>
+        <input
+          ref={fileRef}
+          type="file"
+          accept={PHOTO_ACCEPT}
+          className="hidden"
+          onChange={(event) => {
+            pickPhoto(event.target.files?.[0]);
+            event.target.value = "";
+          }}
+        />
+        <div className="flex items-center gap-3">
           {photo ? (
-            <Button type="button" variant="ghost" className="rounded-full text-muted-foreground" onClick={() => onPhoto(null)}>
-              {ui(language, "removePhoto")}
+            <img src={photo} alt={ui(language, "newMomentImage")} className="h-20 w-20 rounded-2xl object-cover" />
+          ) : (
+            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-dashed border-border bg-secondary/50 text-muted-foreground">
+              <Camera className="h-4 w-4" />
+            </span>
+          )}
+          <div className="flex min-w-0 flex-wrap gap-2">
+            <Button type="button" variant="outline" className="rounded-full" onClick={() => fileRef.current?.click()}>
+              {photo ? ui(language, "chooseAnotherPhoto") : ui(language, "addPhoto")}
             </Button>
-          ) : null}
+            {photo ? (
+              <Button type="button" variant="ghost" className="rounded-full text-muted-foreground" onClick={() => onPhoto(null)}>
+                {ui(language, "removePhoto")}
+              </Button>
+            ) : null}
+          </div>
         </div>
-      </div>
+      </PhotoDropZone>
     </Field>
   );
 }

@@ -2,6 +2,8 @@ import { useRef, type ChangeEvent } from "react";
 import { Camera, ImagePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ui, type UiLanguage } from "@/lib/ui-copy";
+import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
+import { PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
 
 type PhotoSourcePickerProps = {
   language: UiLanguage;
@@ -16,15 +18,15 @@ export function PhotoSourcePicker({ language, onFile, className }: PhotoSourcePi
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     event.target.value = "";
-    if (file) onFile(file);
+    if (file && isSupportedPhotoFile(file)) onFile(file);
   };
 
   return (
-    <div className={className}>
+    <PhotoDropZone language={language} onFile={onFile} className={className}>
       <input
         ref={cameraRef}
         type="file"
-        accept="image/*"
+        accept={PHOTO_ACCEPT}
         capture="environment"
         className="sr-only"
         onChange={handleChange}
@@ -32,7 +34,7 @@ export function PhotoSourcePicker({ language, onFile, className }: PhotoSourcePi
       <input
         ref={libraryRef}
         type="file"
-        accept="image/*"
+        accept={PHOTO_ACCEPT}
         className="sr-only"
         onChange={handleChange}
       />
@@ -54,6 +56,6 @@ export function PhotoSourcePicker({ language, onFile, className }: PhotoSourcePi
           <ImagePlus className="h-4 w-4" /> {ui(language, "chooseFromLibrary")}
         </Button>
       </div>
-    </div>
+    </PhotoDropZone>
   );
 }

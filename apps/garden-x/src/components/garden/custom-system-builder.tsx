@@ -16,6 +16,8 @@ import { useGarden } from "@/lib/garden-store";
 import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
+import { PHOTO_ACCEPT } from "@/lib/photo-input";
 
 type Props = { open: boolean; onOpenChange: (open: boolean) => void };
 
@@ -106,13 +108,16 @@ export function CustomSystemBuilder({ open, onOpenChange }: Props) {
             <label className="text-sm"><span className="mb-2 block text-muted-foreground">{ui(language, "systemName")}</span>
               <input className="input-soft" value={name} onChange={(event) => setName(event.target.value)} placeholder={ui(language, "systemNamePlaceholder")} autoFocus />
             </label>
-            <label className="press grid cursor-pointer place-items-center overflow-hidden rounded-2xl border border-dashed border-border bg-secondary/35 p-4 text-center">
-              {photo ? <img src={photo} alt={ui(language, "systemPhoto")} className="h-28 w-full rounded-xl object-cover" /> : <><ImagePlus className="h-5 w-5 text-primary" /><span className="mt-2 text-sm">{ui(language, "systemPhoto")}</span><span className="mt-1 text-xs text-muted-foreground">{ui(language, "optional")}</span></>}
-              <input className="sr-only" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" onChange={(event) => {
-                const file = event.target.files?.[0];
-                if (file) void readFile(file).then(setPhoto).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "photoCouldNotRead"))));
-              }} />
-            </label>
+            <PhotoDropZone language={language} onFile={(file) => void readFile(file).then(setPhoto).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "photoCouldNotRead"))))}>
+              <label className="press grid cursor-pointer place-items-center overflow-hidden rounded-2xl border border-dashed border-border bg-secondary/35 p-4 text-center">
+                {photo ? <img src={photo} alt={ui(language, "systemPhoto")} className="h-28 w-full rounded-xl object-cover" /> : <><ImagePlus className="h-5 w-5 text-primary" /><span className="mt-2 text-sm">{ui(language, "systemPhoto")}</span><span className="mt-1 text-xs text-muted-foreground">{ui(language, "optional")}</span></>}
+                <input className="sr-only" type="file" accept={PHOTO_ACCEPT} onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (file) void readFile(file).then(setPhoto).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "photoCouldNotRead"))));
+                  event.target.value = "";
+                }} />
+              </label>
+            </PhotoDropZone>
             {photo ? <Button variant="ghost" size="sm" className="justify-self-start rounded-full" onClick={() => setPhoto(null)}>{ui(language, "remove")} {ui(language, "photo").toLowerCase()}</Button> : null}
             <Button className="rounded-full" disabled={!name.trim()} onClick={() => setStep(1)}>{ui(language, "continueAction")}</Button>
           </div>

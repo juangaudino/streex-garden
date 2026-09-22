@@ -16,6 +16,8 @@ import {
 } from "@/lib/garden-library";
 import { Button } from "@/components/ui/button";
 import { localizeKnownError, ui } from "@/lib/ui-copy";
+import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
+import { PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
 
 interface Props {
   gardenId: string;
@@ -88,7 +90,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
   if (!open || typeof document === "undefined") return null;
 
   const pickPhoto = (file: File | undefined) => {
-    if (!file) return;
+    if (!file || !isSupportedPhotoFile(file)) return;
     const reader = new FileReader();
     reader.onload = () => setPhoto(typeof reader.result === "string" ? reader.result : null);
     reader.readAsDataURL(file);
@@ -332,11 +334,11 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   {ui(language, "guidanceDisclaimer")}
                 </p>
               </div>
-              <div>
+              <PhotoDropZone language={language} onFile={pickPhoto}>
                 <input
                   ref={fileRef}
                   type="file"
-                  accept="image/*"
+                  accept={PHOTO_ACCEPT}
                   className="hidden"
                   onChange={(event) => pickPhoto(event.target.files?.[0])}
                 />
@@ -349,7 +351,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   <Camera className="mr-2 h-4 w-4" />
                   {photo ? ui(language, "photoSelected") : ui(language, "addFirstPhoto")}
                 </Button>
-              </div>
+              </PhotoDropZone>
               {saveError ? (
                 <p className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
                   {saveError}

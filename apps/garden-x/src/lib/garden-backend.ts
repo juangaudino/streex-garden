@@ -28,6 +28,7 @@ import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
+import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
 
 type BootstrapGarden = {
   id: string;
@@ -784,6 +785,10 @@ function isoDateFromDaysAgo(value: number): string {
   return d.toISOString().slice(0, 10);
 }
 
+function effectiveDateFromEvent(event: Pick<PlantEvent, "occurredAt" | "daysAgo">): string {
+  return dateOnlyFromIso(event.occurredAt) ?? isoDateFromDaysAgo(event.daysAgo);
+}
+
 async function cycleDetail(growCycleId: string): Promise<{
   revision: number;
   history?: Array<{ id: string; event_type: string; occurred_at: string }>;
@@ -847,15 +852,16 @@ async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
   const photoId = crypto.randomUUID();
   const checksum = await sha256Hex(decoded.bytes);
   const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
-  const capturedDate = isoDateFromDaysAgo(photo.daysAgo);
+  const capturedDate = dateOnlyFromIso(photo.capturedAt) ?? isoDateFromDaysAgo(photo.daysAgo);
+  const capturedAt = dateOnlyToUtcNoon(capturedDate);
   const { data, error } = await getSupabaseClient().rpc("garden_x_prepare_event_photo", {
     p_photo_id: photoId,
     p_event_id: eventId,
     p_original_filename: "garden-photo",
     p_content_type: decoded.mime,
     p_byte_size: decoded.bytes.byteLength,
-    p_captured_at: capturedDate + "T12:00:00Z",
-    p_captured_at_precision: "approximate",
+    p_captured_at: capturedAt,
+    p_captured_at_precision: dateOnlyFromIso(photo.capturedAt) ? "date" : "approximate",
     p_checksum_sha256: checksum,
   });
   if (error) throw new Error(error.message);
@@ -1071,7 +1077,7 @@ export async function createFollowUpRecord(
 async function recordFact(
   growCycleId: string,
   factType: string,
-  occurredDaysAgo: number,
+  occurredOn: string,
   note: string | undefined,
   factData: Record<string, unknown>,
 ): Promise<string> {
@@ -1079,7 +1085,7 @@ async function recordFact(
     p_request_id: crypto.randomUUID(),
     p_grow_cycle_id: growCycleId,
     p_fact_type: factType,
-    p_occurred_on: isoDateFromDaysAgo(occurredDaysAgo),
+    p_occurred_on: occurredOn,
     p_note: note?.trim() || null,
     p_fact_data: factData,
   });
@@ -1095,7 +1101,7 @@ async function recordObservation(
   const { data, error } = await getSupabaseClient().rpc("garden_x_create_observation", {
     p_request_id: crypto.randomUUID(),
     p_grow_cycle_id: growCycleId,
-    p_occurred_on: isoDateFromDaysAgo(event.daysAgo),
+    p_occurred_on: effectiveDateFromEvent(event),
     p_note: note || "Observation",
   });
   if (error) throw new Error(error.message);
@@ -1115,7 +1121,7 @@ export async function persistMoment(
     eventId = await recordFact(
       cycleId,
       "germination_observed",
-      event.daysAgo,
+      effectiveDateFromEvent(event),
       event.detail || event.title,
       {},
     );
@@ -1123,7 +1129,7 @@ export async function persistMoment(
     eventId = await recordFact(
       cycleId,
       "incident_opened",
-      event.daysAgo,
+      effectiveDateFromEvent(event),
       event.detail || event.title,
       { severity: "watch" },
     );
@@ -1134,7 +1140,7 @@ export async function persistMoment(
     );
     const incident = history.find((h) => h.event_type === "incident_opened");
     eventId = incident
-      ? await recordFact(cycleId, "incident_resolved", event.daysAgo, event.detail || event.title, {
+      ? await recordFact(cycleId, "incident_resolved", effectiveDateFromEvent(event), event.detail || event.title, {
           incident_event_id: incident.id,
         })
       : await recordObservation(cycleId, event);
@@ -1142,7 +1148,7 @@ export async function persistMoment(
     eventId = await recordFact(
       cycleId,
       "intervention",
-      event.daysAgo,
+      effectiveDateFromEvent(event),
       event.detail || event.title,
       {
         class: event.type === "pruning" ? "pruning" : "thinning",
@@ -1155,6 +1161,7 @@ export async function persistMoment(
       p_request_id: crypto.randomUUID(),
       p_grow_cycle_id: cycleId,
       p_expected_revision: detail.revision,
+      p_occurred_on: effectiveDateFromEvent(event),
       p_note: event.detail || event.title,
     });
     if (error) throw new Error(error.message);
@@ -1167,7 +1174,7 @@ export async function persistMoment(
     eventId = await recordFact(
       cycleId,
       "intervention",
-      event.daysAgo,
+      effectiveDateFromEvent(event),
       event.detail || event.title,
       {
         class: "other",

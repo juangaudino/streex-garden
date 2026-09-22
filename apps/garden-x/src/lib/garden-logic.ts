@@ -46,6 +46,21 @@ export function plantsAtPosition(plants: Plant[], positionId: string, excludePla
   );
 }
 
+/** Projects a confirmed relocation locally while the canonical refresh catches up. */
+export function projectPlantRelocation(
+  plants: Plant[],
+  plantId: string,
+  gardenId: string,
+  positionId: string,
+  positionNumber: number,
+) {
+  return plants.map((plant) =>
+    plant.id === plantId
+      ? { ...plant, gardenId, backendPositionId: positionId, slot: `Pod ${positionNumber}` }
+      : plant,
+  );
+}
+
 /** Resolves a move destination by canonical position id before using its display label. */
 export function resolvePositionByIdOrLabel<T extends { id: string; number: number }>(
   positions: T[],

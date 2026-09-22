@@ -53,7 +53,7 @@ import {
 } from "./garden-backend";
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
-import { chooseSessionHighlight } from "./garden-logic";
+import { chooseSessionHighlight, projectPlantRelocation } from "./garden-logic";
 import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
 import {
   GARDEN_SUMMARY_COALESCE_WINDOW_MS,
@@ -606,8 +606,30 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         await refreshFromBackend();
       },
       movePlant: async (plantId, targetPositionId, movedDaysAgo) => {
+        const target = state.gardens
+          .flatMap((garden) =>
+            (garden.backendPositions ?? []).map((position) => ({
+              gardenId: garden.id,
+              position,
+            })),
+          )
+          .find(({ position }) => position.id === targetPositionId);
         await movePlantRecord(plantId, targetPositionId, movedDaysAgo);
-        await refreshFromBackend("mutation");
+        if (target) {
+          setState((current) => ({
+            ...current,
+            plants: projectPlantRelocation(
+              current.plants,
+              plantId,
+              target.gardenId,
+              target.position.id,
+              target.position.number,
+            ),
+          }));
+        }
+        // The canonical RPC has succeeded. A transient bootstrap/derived-data
+        // refresh must not turn that confirmed move into a false failure.
+        void refreshFromBackend("mutation").catch(() => undefined);
       },
       updatePlant: (id, patch) => {
         const current = state.plants.find((p) => p.id === id);

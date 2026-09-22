@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { plantsAtPosition, resolvePositionByIdOrLabel } from "./garden-logic";
+import { plantsAtPosition, projectPlantRelocation, resolvePositionByIdOrLabel } from "./garden-logic";
 import type { Plant } from "./garden-data";
 
 const plant = (id: string, positionId: string): Plant => ({
@@ -44,5 +44,18 @@ describe("relocation destination resolution", () => {
 
   it("falls back to the last number in a display label", () => {
     expect(resolvePositionByIdOrLabel(positions, null, "H1 · Pod 4")?.id).toBe("h1-p4");
+  });
+});
+
+describe("confirmed relocation projection", () => {
+  it("updates the local plant location after canonical persistence", () => {
+    const plants = [plant("iceberg", "h3-p6"), plant("other", "h1-p4")];
+    const next = projectPlantRelocation(plants, "iceberg", "garden-1", "h1-p4", 4);
+    expect(next.find((item) => item.id === "iceberg")).toMatchObject({
+      gardenId: "garden-1",
+      backendPositionId: "h1-p4",
+      slot: "Pod 4",
+    });
+    expect(next.find((item) => item.id === "other")?.backendPositionId).toBe("h1-p4");
   });
 });

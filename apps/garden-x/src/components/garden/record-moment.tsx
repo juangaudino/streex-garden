@@ -247,8 +247,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
   const currentFlow = flows.find((f) => f.key === flow);
   const momentDaysAgo = daysAgoFromDate(momentDate);
   const targetGarden = store.gardens.find((g) => g.id === gardenId);
+  const availablePositions = targetGarden?.backendPositions?.filter((item) => item.active !== false) ?? [];
   const targetNumber = Number(slot.match(/\d+/)?.[0] ?? "");
-  const targetPosition = targetGarden?.backendPositions?.find((item) => item.number === targetNumber);
+  const targetPosition = availablePositions.find((item) => item.number === targetNumber);
   const targetOccupants = targetPosition ? plantsAtPosition(store.plants, targetPosition.id, plant.id) : [];
   const movePlantNow = async (allowShared: boolean) => {
     if (!targetPosition) {
@@ -667,7 +668,13 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                   {store.gardens.map((g) => (
                     <button
                       key={g.id}
-                      onClick={() => setGardenId(g.id)}
+                      onClick={() => {
+                        setGardenId(g.id);
+                        const positions = g.backendPositions?.filter((item) => item.active !== false) ?? [];
+                        if (!positions.some((item) => item.number === targetNumber)) {
+                          setSlot(positions[0] ? `Pod ${positions[0].number}` : "");
+                        }
+                      }}
                       className={cn(
                         "press grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl border px-3 py-2.5 text-left",
                         gardenId === g.id ? "border-primary/60 bg-primary/8" : "border-border/60 bg-background",
@@ -685,12 +692,19 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                 </div>
               </Field>
               <Field label={ui(language, "positionPod")}>
-                <input
-                  value={slot}
-                  onChange={(e) => setSlot(e.target.value)}
-                  placeholder={language === "es" ? "Posición 4" : "Position 4"}
+                <select
+                  value={targetPosition ? String(targetPosition.number) : ""}
+                  onChange={(event) => setSlot(event.target.value ? `Pod ${event.target.value}` : "")}
                   className="input-soft"
-                />
+                  disabled={!availablePositions.length}
+                >
+                  <option value="">{ui(language, "choosePosition")}</option>
+                  {availablePositions.map((position) => (
+                    <option key={position.id} value={position.number}>
+                      Pod {position.number}
+                    </option>
+                  ))}
+                </select>
               </Field>
               <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               {moveConfirmation ? (

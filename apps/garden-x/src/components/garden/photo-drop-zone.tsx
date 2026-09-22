@@ -1,6 +1,6 @@
 import { useRef, useState, type DragEvent, type ReactNode } from "react";
 import { ui, type UiLanguage } from "@/lib/ui-copy";
-import { isSupportedPhotoFile, photoFileSignature } from "@/lib/photo-input";
+import { isSupportedPhotoFile, normalizePhotoFile, photoFileSignature } from "@/lib/photo-input";
 
 type PhotoDropZoneProps = {
   language: UiLanguage;
@@ -14,6 +14,7 @@ export function PhotoDropZone({ language, onFile, children, className = "" }: Ph
   const [dragActive, setDragActive] = useState(false);
   const [rejected, setRejected] = useState(false);
   const lastDrop = useRef<{ signature: string; at: number } | null>(null);
+  const dragDepth = useRef(0);
 
   const acceptFile = (file: File | undefined) => {
     if (!file) return;
@@ -26,7 +27,7 @@ export function PhotoDropZone({ language, onFile, children, className = "" }: Ph
     const now = Date.now();
     if (lastDrop.current?.signature === signature && now - lastDrop.current.at < 750) return;
     lastDrop.current = { signature, at: now };
-    onFile(file);
+    onFile(normalizePhotoFile(file));
   };
 
   const onDragOver = (event: DragEvent<HTMLDivElement>) => {
@@ -36,10 +37,12 @@ export function PhotoDropZone({ language, onFile, children, className = "" }: Ph
   };
   const onDragLeave = (event: DragEvent<HTMLDivElement>) => {
     if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+    dragDepth.current = 0;
     setDragActive(false);
   };
   const onDrop = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
+    dragDepth.current = 0;
     setDragActive(false);
     acceptFile(event.dataTransfer.files?.[0]);
   };
@@ -49,6 +52,7 @@ export function PhotoDropZone({ language, onFile, children, className = "" }: Ph
       className={`relative ${className}`}
       onDragEnter={(event) => {
         event.preventDefault();
+        dragDepth.current += 1;
         setDragActive(true);
       }}
       onDragOver={onDragOver}

@@ -846,13 +846,15 @@ async function imageDimensions(
   }
 }
 
-async function uploadEventPhoto(eventId: string, photo: Photo): Promise<void> {
+async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: string): Promise<void> {
   const decoded = decodeDataUrl(photo.src);
   if (!decoded) return;
   const photoId = crypto.randomUUID();
   const checksum = await sha256Hex(decoded.bytes);
   const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
-  const capturedDate = dateOnlyFromIso(photo.capturedAt) ?? isoDateFromDaysAgo(photo.daysAgo);
+  // Record a Moment has one user-selected effective date. Keep photo evidence
+  // on that same calendar day even if a browser omitted photo metadata.
+  const capturedDate = effectiveDate ?? dateOnlyFromIso(photo.capturedAt) ?? isoDateFromDaysAgo(photo.daysAgo);
   const capturedAt = dateOnlyToUtcNoon(capturedDate);
   const { data, error } = await getSupabaseClient().rpc("garden_x_prepare_event_photo", {
     p_photo_id: photoId,
@@ -1157,7 +1159,7 @@ export async function persistMoment(
     );
   } else if (event.type === "harvest") {
     const detail = await cycleDetail(cycleId);
-    const { data, error } = await getSupabaseClient().rpc("garden_record_harvest", {
+    const { data, error } = await getSupabaseClient().rpc("garden_x_record_harvest", {
       p_request_id: crypto.randomUUID(),
       p_grow_cycle_id: cycleId,
       p_expected_revision: detail.revision,
@@ -1187,7 +1189,7 @@ export async function persistMoment(
     eventId = await recordObservation(cycleId, event);
   }
 
-  if (photo && eventId) await uploadEventPhoto(eventId, photo);
+  if (photo && eventId) await uploadEventPhoto(eventId, photo, effectiveDateFromEvent(event));
 }
 
 export async function createGardenRecord(

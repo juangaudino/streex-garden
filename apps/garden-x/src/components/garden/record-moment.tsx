@@ -26,7 +26,7 @@ import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
 import { recordMomentGroups } from "@/lib/care-session";
 import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
-import { PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
+import { normalizePhotoDataUrl, PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
 import { dateOnlyToUtcNoon } from "@/lib/temporal";
 
 export type MomentFlow =
@@ -836,13 +836,13 @@ function PhotoAttachment({ photo, onPhoto, language }: { photo: string | null; o
   const pickPhoto = (file: File | undefined) => {
     if (!file || !isSupportedPhotoFile(file)) return;
     const reader = new FileReader();
-    reader.onload = () => onPhoto(typeof reader.result === "string" ? reader.result : null);
+    reader.onload = () => onPhoto(typeof reader.result === "string" ? normalizePhotoDataUrl(reader.result, file) : null);
     reader.readAsDataURL(file);
   };
 
   return (
     <Field label={ui(language, "addPhotoOptional")}>
-      <PhotoDropZone language={language} onFile={pickPhoto}>
+      <PhotoDropZone language={language} onFile={pickPhoto} className="w-full rounded-2xl">
         <input
           ref={fileRef}
           type="file"
@@ -853,7 +853,7 @@ function PhotoAttachment({ photo, onPhoto, language }: { photo: string | null; o
             event.target.value = "";
           }}
         />
-        <div className="flex items-center gap-3">
+        <div className="flex min-h-20 w-full items-center gap-3 rounded-2xl">
           {photo ? (
             <img src={photo} alt={ui(language, "newMomentImage")} className="h-20 w-20 rounded-2xl object-cover" />
           ) : (

@@ -306,40 +306,51 @@ function GardenDetail() {
                                   aria-label={`${label}: ${positionPlants.length ? positionPlants.map((item) => item.name).join(", ") : ui(language, "emptyPosition")}`}
                                   onClick={() => setSelectedPositionKey(key)}
                                   className={cn(
-                                    "press group grid min-w-0 place-items-center rounded-2xl border bg-transparent p-2 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
-                                    selected
-                                      ? "border-primary bg-primary/8 shadow-soft"
-                                      : "border-transparent hover:border-primary/35",
+                                    "press group grid min-w-0 place-items-center rounded-xl border border-transparent bg-transparent p-1.5 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 sm:p-2",
+                                    selected ? "bg-primary/5" : "hover:border-primary/35",
                                   )}
                                 >
-                                  <span className="eyebrow mb-2 block text-[0.6rem] sm:text-[0.65rem]">
-                                    P{position.number}
+                                  <span className="relative grid w-full max-w-14 place-items-center sm:max-w-[4.375rem]">
+                                    <span
+                                      className={cn(
+                                        "relative grid aspect-square w-full place-items-center overflow-hidden rounded-full border-2 shadow-soft transition-[box-shadow,border-color] sm:border-4",
+                                        plant
+                                          ? "border-background bg-secondary"
+                                          : "border-dashed border-border bg-background/60 text-muted-foreground",
+                                        selected &&
+                                          "ring-2 ring-primary/60 ring-offset-2 ring-offset-secondary/40",
+                                      )}
+                                    >
+                                      {plant && photoById(plant.heroPhotoId) ? (
+                                        <PhotoImage
+                                          photo={photoById(plant.heroPhotoId)!}
+                                          alt=""
+                                          rendition="preview"
+                                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                      ) : plant ? (
+                                        <span className="text-xs text-muted-foreground">
+                                          P{position.number}
+                                        </span>
+                                      ) : (
+                                        <Plus className="h-4 w-4" />
+                                      )}
+                                    </span>
+                                    <span className="absolute -top-1 -left-1 z-10 rounded-full border border-background bg-card px-1.5 py-0.5 text-[0.55rem] leading-none font-medium text-muted-foreground shadow-sm sm:text-[0.6rem]">
+                                      P{position.number}
+                                    </span>
                                   </span>
-                                  <span
-                                    className={cn(
-                                      "grid aspect-square w-full max-w-28 place-items-center overflow-hidden rounded-full border-2 shadow-soft sm:max-w-32 sm:border-4",
-                                      plant
-                                        ? "border-background bg-secondary"
-                                        : "border-dashed border-border bg-background/60 text-muted-foreground",
-                                    )}
-                                  >
-                                    {plant && photoById(plant.heroPhotoId) ? (
-                                      <PhotoImage
-                                        photo={photoById(plant.heroPhotoId)!}
-                                        alt=""
-                                        rendition="preview"
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                      />
-                                    ) : plant ? (
-                                      <span className="text-xs text-muted-foreground">
-                                        P{position.number}
-                                      </span>
-                                    ) : (
-                                      <Plus className="h-4 w-4" />
-                                    )}
-                                  </span>
+                                  {plant ? (
+                                    <span className="mt-1.5 line-clamp-2 min-h-[1.8rem] max-w-full overflow-hidden text-[0.62rem] leading-[0.9rem] font-medium text-foreground sm:mt-2 sm:text-xs sm:leading-4">
+                                      {plant.name}
+                                    </span>
+                                  ) : (
+                                    <span className="mt-1 max-w-full truncate text-[0.55rem] leading-3 text-muted-foreground sm:text-[0.6rem]">
+                                      {ui(language, "emptyPosition")}
+                                    </span>
+                                  )}
                                   {shared ? (
-                                    <span className="mt-2 text-[0.62rem] font-medium text-amber-700 dark:text-amber-300">
+                                    <span className="mt-1 max-w-full text-[0.58rem] leading-3 font-medium text-amber-700 dark:text-amber-300">
                                       {ui(language, "sharedPositionWarning").replace(
                                         "{count}",
                                         String(positionPlants.length),

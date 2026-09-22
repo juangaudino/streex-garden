@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
+import { recordMomentGroups } from "@/lib/care-session";
 
 export type MomentFlow =
   | "observation"
@@ -332,24 +333,34 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               <p className="mb-4 text-sm text-muted-foreground">
                 {ui(language, "everythingRecordedStory")}
               </p>
-              <ul className="grid gap-2">
-                {flows.map((f) => (
-                  <li key={f.key}>
-                    <button
-                      onClick={() => setFlow(f.key)}
-                      className="press grid w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-3.5 rounded-2xl border border-border/60 bg-background px-4 py-3.5 text-left hover:border-primary/40"
-                    >
-                      <span className="grid h-9 w-9 place-items-center rounded-full bg-secondary text-primary">
-                        <f.icon className="h-4 w-4" strokeWidth={1.8} />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-medium">{flowLabel(f.key, language)}</span>
-                        <span className="block truncate text-xs text-muted-foreground">{flowHint(f.key, language)}</span>
-                      </span>
-                    </button>
-                  </li>
+              <div className="space-y-6">
+                {recordMomentGroups.map((group) => (
+                  <section key={group.labelKey} aria-labelledby={`record-group-${group.labelKey}`}>
+                    <h3 id={`record-group-${group.labelKey}`} className="eyebrow mb-2">{ui(language, group.labelKey)}</h3>
+                    <ul className="grid gap-2">
+                      {group.flowKeys.map((flowKey) => {
+                        const f = flows.find((item) => item.key === flowKey)!;
+                        return (
+                          <li key={f.key}>
+                            <button
+                              onClick={() => setFlow(f.key)}
+                              className="press grid w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-3.5 rounded-2xl border border-border/60 bg-background px-4 py-3.5 text-left hover:border-primary/40"
+                            >
+                              <span className="grid h-9 w-9 place-items-center rounded-full bg-secondary text-primary">
+                                <f.icon className="h-4 w-4" strokeWidth={1.8} />
+                              </span>
+                              <span className="min-w-0">
+                                <span className="block text-sm font-medium">{flowLabel(f.key, language)}</span>
+                                <span className="block truncate text-xs text-muted-foreground">{flowHint(f.key, language)}</span>
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </section>
                 ))}
-              </ul>
+              </div>
             </div>
           ) : null}
 

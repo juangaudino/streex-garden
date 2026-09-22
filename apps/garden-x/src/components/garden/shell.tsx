@@ -3,6 +3,7 @@ import { Home, Sprout, CheckCircle2, Sparkles, Library, Settings } from "lucide-
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { useGarden } from "@/lib/garden-store";
+import { isBackgroundHydration } from "@/lib/garden-store";
 import { ui } from "@/lib/ui-copy";
 
 const nav = [
@@ -15,7 +16,7 @@ const nav = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const { language, profile } = useGarden();
+  const { language, profile, hydration } = useGarden();
 
   return (
     <div className="min-h-screen lg:flex">
@@ -55,7 +56,14 @@ export function AppShell({ children }: { children: ReactNode }) {
         </Link>
       </aside>
 
-      <main className="min-w-0 flex-1 pb-28 lg:pb-0">{children}</main>
+      <main className="min-w-0 flex-1 pb-28 lg:pb-0">
+        {isBackgroundHydration(hydration) ? (
+          <div role="status" className="mx-5 mt-3 rounded-full border border-border/70 bg-secondary/80 px-3 py-2 text-center text-xs text-muted-foreground sm:mx-8 lg:mx-12">
+            {ui(language, "reconnectingMessage")}
+          </div>
+        ) : null}
+        {children}
+      </main>
 
       {/* mobile tab bar */}
       <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden">

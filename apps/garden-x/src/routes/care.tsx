@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarClock,
-  Check,
   ChevronRight,
   Leaf,
   MessageCircle,
@@ -12,7 +11,6 @@ import {
   Sparkles,
   StickyNote,
 } from "lucide-react";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { RecordMomentSheet, type MomentFlow } from "@/components/garden/record-moment";
 import { useGarden } from "@/lib/garden-store";
@@ -28,6 +26,7 @@ import { PageHeader } from "@/components/garden/shell";
 import { SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
 import type { MaintenanceType, Plant } from "@/lib/garden-data";
 import { ui } from "@/lib/ui-copy";
+import { careSessionAction } from "@/lib/care-session";
 
 export const Route = createFileRoute("/care")({
   head: () => ({
@@ -69,6 +68,7 @@ function Care() {
   const [recordOpen, setRecordOpen] = useState(false);
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>();
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>();
+  const [recordedForReview, setRecordedForReview] = useState(false);
 
   const activePlants = useMemo(() => store.plants.filter((plant) => !plant.cycleClosed), [store.plants]);
   const needingLook = new Set(tasks.map((t) => t.plantId)).size;
@@ -92,6 +92,7 @@ function Care() {
     setIndex(0);
     setSummary(emptySummary());
     setFinished(false);
+    setRecordedForReview(false);
   };
 
   const leaveSession = () => {
@@ -99,10 +100,12 @@ function Care() {
     setIndex(0);
     setFinished(false);
     setRecordOpen(false);
+    setRecordedForReview(false);
   };
 
   const advance = (reviewed: boolean) => {
     if (reviewed) setSummary((value) => ({ ...value, reviewed: value.reviewed + 1 }));
+    setRecordedForReview(false);
     if (index + 1 >= queue.length) setFinished(true);
     else setIndex((value) => value + 1);
   };
@@ -114,6 +117,7 @@ function Care() {
   };
 
   const handleRecorded = (flow: MomentFlow) => {
+    setRecordedForReview(true);
     if (flow === "observation") setSummary((value) => ({ ...value, observations: value.observations + 1 }));
     if (flow === "care") setSummary((value) => ({ ...value, care: value.care + 1 }));
     if (flow === "followup") setSummary((value) => ({ ...value, followups: value.followups + 1 }));
@@ -144,20 +148,9 @@ function Care() {
             recentEvent={plantEvents(store.events, current.id)[0]}
             attention={tasks.find((task) => task.plantId === current.id)}
             onRecord={openRecord}
-            onLooksGood={() => {
-              store.addEvent({
-                plantId: current.id,
-                daysAgo: 0,
-                type: "note",
-                title: ui(language, "reviewedLooksGood"),
-                detail: ui(language, "noActionToday"),
-                provenance: "recorded",
-              });
-              toast.success(`${current.name} ${ui(language, "reviewed")}`);
-              advance(true);
-            }}
             onNext={() => advance(true)}
             onSkip={() => advance(false)}
+            recordedForReview={recordedForReview}
           />
         )}
 
@@ -241,9 +234,9 @@ function PlantReview({
   recentEvent,
   attention,
   onRecord,
-  onLooksGood,
   onNext,
   onSkip,
+  recordedForReview,
 }: {
   plant: Plant;
   language: "en" | "es";
@@ -253,9 +246,9 @@ function PlantReview({
   recentEvent?: { title: string; daysAgo: number } | undefined;
   attention?: { label: string; dueInDays: number } | undefined;
   onRecord: (flow?: MomentFlow, careType?: MaintenanceType) => void;
-  onLooksGood: () => void;
   onNext: () => void;
   onSkip: () => void;
+  recordedForReview: boolean;
 }) {
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
@@ -291,33 +284,35 @@ function PlantReview({
         <p className="font-display text-3xl">{ui(language, "howLooksToday")}</p>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-2">
-        <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("observation")}>
-          <StickyNote className="h-4 w-4 text-primary" /> {ui(language, "addObservation")}
+      <div className="mt-6 grid grid-cols-4 gap-2">
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("observation")}>
+          <StickyNote className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "observe")}</span>
         </Button>
-        <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("care")}>
-          <Leaf className="h-4 w-4 text-primary" /> {ui(language, "recordCare")}
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("care")}>
+          <Leaf className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "careAction")}</span>
         </Button>
-        <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord("followup")}>
-          <CalendarClock className="h-4 w-4 text-primary" /> {ui(language, "reviewLater")}
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("followup")}>
+          <CalendarClock className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "followUpAction")}</span>
         </Button>
-        <Button variant="outline" className="h-auto justify-start gap-3 py-3.5" onClick={() => onRecord()}>
-          <MoreHorizontal className="h-4 w-4 text-primary" /> {ui(language, "more")}
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord()}>
+          <MoreHorizontal className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "more")}</span>
         </Button>
       </div>
 
-      <Button variant="outline" asChild className="mt-3 w-full">
-        <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: undefined, prompt: undefined }}>
-          <MessageCircle className="h-4 w-4 text-primary" /> {ui(language, "askGardenSecondLook")}
-        </Link>
-      </Button>
-
-      <Button className="mt-6 w-full" onClick={onLooksGood}>
-        <Check className="h-4 w-4" /> {ui(language, "looksGoodNoAction")}
-      </Button>
-      <div className="mt-3 grid grid-cols-2 gap-3">
-        <Button variant="outline" onClick={onNext}>{ui(language, "nextPlant")} <ArrowRight className="h-4 w-4" /></Button>
-        <Button variant="ghost" className="text-muted-foreground" onClick={onSkip}>{ui(language, "skipForNow")} <SkipForward className="h-4 w-4" /></Button>
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+        <Button asChild className="min-h-11 flex-1 border border-inference/30 bg-inference/10 text-inference shadow-none hover:bg-inference/15">
+          <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: undefined, prompt: undefined }}>
+            <MessageCircle className="h-4 w-4" /> {ui(language, "askGarden")}
+          </Link>
+        </Button>
+        <Button
+          variant={recordedForReview ? "outline" : "ghost"}
+          className="min-h-11 flex-1 text-muted-foreground"
+          onClick={recordedForReview ? onNext : onSkip}
+        >
+          {ui(language, careSessionAction(recordedForReview))}
+          {recordedForReview ? <ArrowRight className="h-4 w-4" /> : <SkipForward className="h-4 w-4" />}
+        </Button>
       </div>
     </main>
   );

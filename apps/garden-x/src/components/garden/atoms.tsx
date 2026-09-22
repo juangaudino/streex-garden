@@ -18,7 +18,6 @@ import {
   Bug,
   Sun,
   Beaker,
-  Trash2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PhotoImage } from "@/components/garden/photo-image";
@@ -48,9 +47,9 @@ export const maintenanceIcons: Record<MaintenanceType, typeof Leaf> = {
   nutrients: Beaker,
   pruning: Scissors,
   harvest: Basket,
-  thinning: Leaf,
+  thinning: Scissors,
   transplant: Move,
-  cleaning: Trash2,
+  cleaning: Wrench,
   pest: Bug,
   light: Sun,
   custom: Wrench,

@@ -138,6 +138,10 @@ const emptyState: GardenState = {
 export function hydrationAfterRefreshFailure(hasSnapshot: boolean): "reconnecting" | "error" {
   return hasSnapshot ? "reconnecting" : "error";
 }
+
+export function isBackgroundHydration(hydration: StoreApi["hydration"]): boolean {
+  return hydration === "reconnecting" || hydration === "offline";
+}
 const demoPlantIds = new Set(initialState.plants.map((plant) => plant.id));
 
 let seq = 0;
@@ -149,7 +153,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     backendConfigured ? emptyState : initialState,
   );
   const [hydration, setHydration] = useState<StoreApi["hydration"]>(
-    backendConfigured ? "loading" : "offline",
+    backendConfigured ? "loading" : "ready",
   );
   const [highlightedPlantId, setHighlightedPlantId] = useState<string | null>(null);
   const [preferences, setPreferences] = useState<Preferences>(defaults);

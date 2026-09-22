@@ -46,11 +46,10 @@ export const Route = createFileRoute("/gardens/")({
 function Gardens() {
   const store = useGarden();
   const language = store.language;
-  if (store.hydration === "loading") return <RouteLoading label={ui(store.language, "loadingGardens")} />;
-  if (store.hydration === "reconnecting" || store.hydration === "offline") return <RouteLoading label={ui(store.language, "reconnectingGardens")} />;
   const [editing, setEditing] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
   const [archiveId, setArchiveId] = useState<string | null>(null);
+  if (store.hydration === "loading") return <RouteLoading label={ui(store.language, "loadingGardens")} />;
 
   const visible = editing ? store.gardens : store.gardens.filter((garden) => !garden.archived);
   const order = store.gardens.map((garden) => garden.id);

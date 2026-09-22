@@ -11,7 +11,6 @@ function GardenLayout() {
   const { gardenId } = Route.useParams();
   const store = useGarden();
   if (store.hydration === "loading") return <RouteLoading label={ui(store.language, "loadingGarden")} />;
-  if (store.hydration === "reconnecting" || store.hydration === "offline") return <RouteLoading label={ui(store.language, "reconnectingGarden")} />;
   if (!store.gardens.some((garden) => garden.id === gardenId)) throw notFound();
   return <Outlet />;
 }

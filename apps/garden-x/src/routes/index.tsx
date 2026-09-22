@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, Film, Sparkles, ChevronRight, UserRound } from "lucide-react";
+import { ArrowRight, Camera, Film, ChevronRight, UserRound } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
@@ -17,7 +17,6 @@ import { PageHeader } from "@/components/garden/shell";
 import {
   ProvenanceTag,
   SectionTitle,
-  StatusDot,
   PlantThumb,
   eventIcons,
   maintenanceIcons,
@@ -49,9 +48,6 @@ function Home() {
   const isSpanish = store.language === "es";
   if (store.hydration === "loading") {
     return <HomeStatus language={store.language} message={ui(store.language, "loadingGarden")} />;
-  }
-  if (store.hydration === "reconnecting" || store.hydration === "offline") {
-    return <HomeStatus language={store.language} message={ui(store.language, "reconnecting")} />;
   }
   if (store.hydration === "error") {
     return <HomeStatus language={store.language} message={ui(store.language, "gardenLoadFailed")} error />;
@@ -242,23 +238,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Small intelligent summary */}
-      <section className="mt-12 px-5 sm:px-8 lg:px-12">
-        <div className="rounded-3xl border border-inference/25 bg-inference/6 p-5 sm:p-6">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-inference" />
-            <span className="eyebrow">{ui(store.language, "gardenSummary")}</span>
-          </div>
-          <p className="mt-3 max-w-2xl text-[0.975rem] leading-relaxed">
-            {ui(store.language, "gardenSummaryBody")}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <ProvenanceTag kind="inferred" confidence="moderate" />
-            <span className="text-xs text-muted-foreground">{ui(store.language, "summaryBuiltFrom")} {store.photos.length} {ui(store.language, "photosOnFile")} {isSpanish ? "y" : "and"} {store.events.length} {ui(store.language, "recordedEvents")}.</span>
-          </div>
-        </div>
-      </section>
-
       {/* Recent activity + new photos */}
       <section className="mt-12 grid gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:px-12">
         <div>
@@ -318,18 +297,19 @@ function Home() {
               </Link>
             ))}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {store.plants.map((p) => (
-              <Link
-                key={p.id}
-                to="/plants/$plantId"
-                params={{ plantId: p.id }}
-                className="press inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs"
-              >
-                {p.name} <StatusDot status={p.status} />
-              </Link>
-            ))}
-          </div>
+          {(() => {
+            const steadyCount = store.plants.filter((plant) => plant.status !== "watching" && plant.status !== "recovering").length;
+            const attentionCount = store.plants.filter((plant) => plant.status === "watching" || plant.status === "recovering").length;
+            return (
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                <span>{steadyCount} {ui(store.language, "plantsStable")}</span>
+                <span aria-hidden="true">·</span>
+                <Link to="/care" className="text-primary hover:underline">
+                  {attentionCount} {ui(store.language, "plantsNeedAttention")}
+                </Link>
+              </div>
+            );
+          })()}
         </div>
       </section>
 

@@ -72,6 +72,8 @@ describe("Record a Moment canonical temporal propagation", () => {
     const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
     expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
   });
 
   it("keeps harvest and its photo on the selected effective date", async () => {
@@ -80,5 +82,15 @@ describe("Record a Moment canonical temporal propagation", () => {
     const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
     expect(harvest?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+  });
+
+  it("does not report photo persistence success when Storage upload fails", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500 }));
+
+    await expect(persistMoment(plant, event("note"), photo)).rejects.toThrow("Photo upload failed.");
+    expect(rpc.mock.calls.some(([name]) => name === "garden_x_prepare_event_photo")).toBe(true);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
   });
 });

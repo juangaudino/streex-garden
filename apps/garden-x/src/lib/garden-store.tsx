@@ -78,7 +78,10 @@ interface StoreApi extends GardenState {
   setTemperatureUnit: (unit: TemperatureUnit) => void;
   profile: UserProfile;
   updateProfile: (patch: Partial<UserProfile>) => void;
-  addEvent: (e: Omit<PlantEvent, "id">) => void;
+  addEvent: (
+    e: Omit<PlantEvent, "id">,
+    options?: { photo?: Photo; waitForPersistence?: boolean },
+  ) => Promise<void>;
   addPhoto: (p: Omit<Photo, "id">) => string;
   addTask: (t: Omit<CareTask, "id" | "done">) => void;
   completeTask: (id: string, note?: string) => void;
@@ -420,19 +423,21 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       publicStories,
       savePublicStory: (story) =>
         setPublicStories((stories) => [...stories.filter((item) => item.id !== story.id), story]),
-      addEvent: (e) => {
+      addEvent: (e, options) => {
         const plant = state.plants.find((p) => p.id === e.plantId);
-        const pendingPhoto = e.photoId ? pendingPhotos.current.get(e.photoId) : undefined;
+        const pendingPhoto = options?.photo ?? (e.photoId ? pendingPhotos.current.get(e.photoId) : undefined);
+        let persistencePromise: Promise<void> | undefined;
         if (plant?.backendGrowCycleId) {
           const skipSynthetic =
             e.title === "Cycle closed" ||
             e.title === "Planting record corrected" ||
             e.title.startsWith("Follow-up set:");
           if (!skipSynthetic) {
-            void persistMoment(plant, e, pendingPhoto)
-              .then(() => {
+            persistencePromise = persistMoment(plant, e, pendingPhoto)
+              .then(async () => {
                 if (e.photoId) pendingPhotos.current.delete(e.photoId);
-                return refreshFromBackend("mutation").then(async () => {
+                await refreshFromBackend("mutation").catch(() => undefined);
+                void (async () => {
                   // Comparison generation is deliberately after persistence and
                   // refresh. Home only reads completed, owner-scoped results.
                   if (!shouldGenerateMeaningfulChange(e)) return;
@@ -450,9 +455,17 @@ export function GardenProvider({ children }: { children: ReactNode }) {
                   setMeaningfulChanges(latestMeaningfulChanges);
                   const latest = await loadGardenState();
                   scheduleGardenSummaryGeneration(latest.state, gardenSummaries, preferences.language);
-                });
+                })().catch(() => undefined);
               })
-              .catch(() => undefined);
+              .catch(async (error) => {
+                if (e.photoId) pendingPhotos.current.delete(e.photoId);
+                // The event/fact may already have committed before its photo
+                // failed. Reconcile optimistic state so no local-only evidence
+                // survives, then preserve the original actionable error.
+                await refreshFromBackend("mutation").catch(() => undefined);
+                throw error;
+              });
+            if (!options?.waitForPersistence) void persistencePromise.catch(() => undefined);
           }
         }
         setState((s) => {
@@ -470,6 +483,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           };
           return { ...s, events: [...s.events, event] };
         });
+        return options?.waitForPersistence ? persistencePromise ?? Promise.resolve() : Promise.resolve();
       },
       addPhoto: (photo) => {
         const id = uid("photo");

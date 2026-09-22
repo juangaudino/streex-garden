@@ -848,7 +848,7 @@ async function imageDimensions(
 
 async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: string): Promise<void> {
   const decoded = decodeDataUrl(photo.src);
-  if (!decoded) return;
+  if (!decoded) throw new Error("Photo could not be read.");
   const photoId = crypto.randomUUID();
   const checksum = await sha256Hex(decoded.bytes);
   const dimensions = await imageDimensions(decoded.bytes, decoded.mime);

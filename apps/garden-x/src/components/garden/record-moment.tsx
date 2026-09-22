@@ -18,7 +18,7 @@ import {
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { formatDate, gardenCoverPhoto, plantPhotos } from "@/lib/garden-logic";
-import type { EventType, MaintenanceType, Plant } from "@/lib/garden-data";
+import type { EventType, MaintenanceType, Photo, Plant, PlantEvent } from "@/lib/garden-data";
 import { maintenanceIcons, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -241,9 +241,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
 
   const currentFlow = flows.find((f) => f.key === flow);
   const momentDaysAgo = daysAgoFromDate(momentDate);
-  const saveNewPhoto = (caption: string) => {
+  const saveNewPhoto = (caption: string): { id: string; photo: Photo } | null => {
     if (!newPhoto) return null;
-    return store.addPhoto({
+    const draft: Omit<Photo, "id"> = {
       plantId: plant.id,
       src: newPhoto,
       daysAgo: momentDaysAgo,
@@ -251,7 +251,29 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
       capturedAtPrecision: "date",
       caption,
       metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
-    });
+    };
+    const id = store.addPhoto(draft);
+    return { id, photo: { ...draft, id } };
+  };
+
+  const submitMoment = async (
+    event: Omit<PlantEvent, "id">,
+    attachedPhoto: { id: string; photo: Photo } | null,
+    successTitle: string,
+    successLines: string[],
+  ) => {
+    try {
+      await store.addEvent(
+        event,
+        {
+          ...(attachedPhoto ? { photo: attachedPhoto.photo } : {}),
+          waitForPersistence: true,
+        },
+      );
+      finish(successTitle, successLines);
+    } catch {
+      toast.error(ui(language, attachedPhoto ? "momentPhotoSaveFailed" : "momentSaveFailed"));
+    }
   };
 
   return createPortal(
@@ -417,22 +439,22 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               <Submit
                 disabled={!note.trim()}
                 label={ui(language, "saveObservation")}
-                onClick={() => {
-                   const attachedPhotoId = saveNewPhoto(note.trim().slice(0, 60) || "Observation photo") ?? photoId;
-                  store.addEvent({
+                onClick={async () => {
+                  const attachedPhoto = saveNewPhoto(note.trim().slice(0, 60) || "Observation photo");
+                  const attachedPhotoId = attachedPhoto?.id ?? photoId;
+                  await submitMoment({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
                     occurredAt: dateOnlyToUtcNoon(momentDate),
-                     type: attachedPhotoId ? "photo" : "note",
+                    type: attachedPhotoId ? "photo" : "note",
                     title: note.trim().slice(0, 60),
                     detail: note.trim(),
                     provenance: "recorded",
-                     ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
-                  });
-                  finish(ui(language, "observationAdded"), [
+                    ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
+                  }, attachedPhoto, ui(language, "observationAdded"), [
                     formatDate(momentDaysAgo, language),
                     note.trim(),
-                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
+                    attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />
@@ -477,9 +499,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               <MomentDateField language={language} value={momentDate} onChange={setMomentDate} />
               <Submit
                 label={`${ui(language, "logAction")} ${localizedMaintenanceLabel(careType, language).toLowerCase()}`}
-                onClick={() => {
-                   const attachedPhotoId = saveNewPhoto(`${localizedMaintenanceLabel(careType, language)} · ${plant.name}`);
-                  store.addEvent({
+                onClick={async () => {
+                  const attachedPhoto = saveNewPhoto(`${localizedMaintenanceLabel(careType, language)} · ${plant.name}`);
+                  const attachedPhotoId = attachedPhoto?.id;
+                  await submitMoment({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
                     occurredAt: dateOnlyToUtcNoon(momentDate),
@@ -487,12 +510,11 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     title: localizedMaintenanceLabel(careType, language),
                     detail: note.trim() || ui(language, "recordedFromMoment"),
                     provenance: "recorded",
-                     ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
-                  });
-                  finish(`${localizedMaintenanceLabel(careType, language)} ${ui(language, "logged")}`, [
+                    ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
+                  }, attachedPhoto, `${localizedMaintenanceLabel(careType, language)} ${ui(language, "logged")}`, [
                     formatDate(momentDaysAgo),
                     note.trim() || ui(language, "noExtraDetail"),
-                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
+                    attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />
@@ -800,9 +822,10 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
               <Submit
                 disabled={!otherTitle.trim()}
                 label={ui(language, "addToHistory")}
-                onClick={() => {
-                   const attachedPhotoId = saveNewPhoto(otherTitle.trim());
-                  store.addEvent({
+                onClick={async () => {
+                  const attachedPhoto = saveNewPhoto(otherTitle.trim());
+                  const attachedPhotoId = attachedPhoto?.id;
+                  await submitMoment({
                     plantId: plant.id,
                     daysAgo: momentDaysAgo,
                     occurredAt: dateOnlyToUtcNoon(momentDate),
@@ -811,13 +834,12 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
                     ...(note.trim() ? { detail: note.trim() } : {}),
                     milestone: otherType !== "note",
                     provenance: "recorded",
-                     ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
-                  });
-                  finish(ui(language, "momentRecorded"), [
+                    ...(attachedPhotoId ? { photoId: attachedPhotoId } : {}),
+                  }, attachedPhoto, ui(language, "momentRecorded"), [
                     otherTitle.trim(),
                     formatDate(momentDaysAgo),
                     localizedOtherState(otherType, language) || ui(language, "eventLabel"),
-                     attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
+                    attachedPhotoId ? ui(language, "photoAttached") : ui(language, "noPhotoAttached"),
                   ]);
                 }}
               />

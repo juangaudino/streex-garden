@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, validateAiCheckProposal, validateCareReviewAttachment, validateMeaningfulChangeProposal, validateShareCaptionProposal } from "./ai-contract";
+import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenImages, validateCareReviewAttachment, validateMeaningfulChangeProposal, validateShareCaptionProposal } from "./ai-contract";
 
 const validProposal = (overrides: Record<string, unknown> = {}) => ({
   schema_version: GARDEN_AI_PROPOSAL_SCHEMA_VERSION,
@@ -131,5 +131,17 @@ describe("Care follow-up attachment contract", () => {
     expect(validateCareReviewAttachment("data:application/pdf;base64,ZmFrZQ==", "Context")).toBe(false);
     expect(validateCareReviewAttachment(`data:image/jpeg;base64,${"a".repeat(7_000_001)}`, "Context")).toBe(false);
     expect(validateCareReviewAttachment("data:image/jpeg;base64,ZmFrZQ==", " ")).toBe(false);
+  });
+
+  it("accepts a current-turn image for Garden-wide Ask or alongside Care evidence", () => {
+    const image = "data:image/webp;base64,ZmFrZQ==";
+    expect(validateAskGardenImages(undefined, undefined, image)).toBe(true);
+    expect(validateAskGardenImages("data:image/jpeg;base64,cmV2aWV3", "Review and AI Check are unconfirmed.", image)).toBe(true);
+    expect(validateAskGardenImages(undefined, undefined, undefined)).toBe(true);
+  });
+
+  it("rejects unsupported current-turn images and preserves the paired Care photo/context contract", () => {
+    expect(validateAskGardenImages(undefined, undefined, "data:image/heic;base64,ZmFrZQ==")).toBe(false);
+    expect(validateAskGardenImages("data:image/jpeg;base64,cmV2aWV3", undefined, "data:image/jpeg;base64,ZmFrZQ==")).toBe(false);
   });
 });

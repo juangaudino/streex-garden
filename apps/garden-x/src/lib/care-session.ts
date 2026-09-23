@@ -81,7 +81,7 @@ export interface CareInspectionState {
   checkProposal: AiCheckProposal | null;
   checkRequestId: string | null;
   requestGuardId: string | null;
-  conversation: Array<{ question: string; answer: string; facts: string[] }>;
+  conversation: Array<{ question: string; answer: string; facts: string[]; imageDataUrl?: string }>;
 }
 
 export function createCareInspectionState(key: string): CareInspectionState {

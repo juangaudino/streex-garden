@@ -26,9 +26,11 @@ import {
 } from "@/lib/garden-logic";
 import { PageHeader } from "@/components/garden/shell";
 import { ConfidenceBar, ProvenanceTag, SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
-import type { MaintenanceType, Plant } from "@/lib/garden-data";
+import type { MaintenanceType, Photo, Plant } from "@/lib/garden-data";
 import { ui } from "@/lib/ui-copy";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
+import { PhotoImage } from "@/components/garden/photo-image";
+import { GardenConversationComposer } from "@/components/garden/garden-conversation-composer";
 import { CareSessionGardenList } from "@/components/garden/care-session-garden-list";
 import { runAiCheckDraft, askGardenAi, type AiCheckProposal } from "@/lib/garden-backend";
 import { buildAiCheckPresentation, projectCareActions, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
@@ -223,7 +225,7 @@ function Care() {
             key={`${current.id}:${current.backendGrowCycleId ?? "cycle"}`}
             gardenName={store.gardens.find((garden) => garden.id === current.gardenId)?.name ?? "Garden"}
             lastReview={lastReview(store.events, current.id)}
-            photoSrc={latestPlantPhoto(store.photos, current.id)?.src}
+            canonicalPhoto={latestPlantPhoto(store.photos, current.id)}
             workingPhoto={currentWorkingPhoto}
             inspection={currentInspection!}
             onInspectionPatch={(patch, requestId) => store.patchCareInspection(currentPhotoKey, patch, requestId)}
@@ -357,7 +359,7 @@ export function PlantReview({
   language,
   gardenName,
   lastReview,
-  photoSrc,
+  canonicalPhoto,
   workingPhoto,
   inspection,
   onInspectionPatch,
@@ -377,7 +379,7 @@ export function PlantReview({
   language: "en" | "es";
   gardenName: string;
   lastReview?: { title: string; daysAgo: number } | undefined;
-  photoSrc?: string | undefined;
+  canonicalPhoto?: Photo | undefined;
   workingPhoto?: string | undefined;
   inspection: CareInspectionState;
   onInspectionPatch: (patch: Partial<CareInspectionState>, expectedRequestId?: string) => void;
@@ -394,7 +396,6 @@ export function PlantReview({
   careReturnSearch: ReturnType<typeof careSessionSearch>;
 }) {
   const { checkPhase, checkProposal, conversation } = inspection;
-  const [question, setQuestion] = useState("");
   const [chatBusy, setChatBusy] = useState(false);
   const checkRequest = useRef(inspection.requestGuardId);
   const updateInspection = (patch: Partial<CareInspectionState>) => onInspectionPatch(patch);
@@ -423,7 +424,6 @@ export function PlantReview({
         }, photoReadToken);
         if (isCurrentRead) {
           checkRequest.current = null;
-          setQuestion("");
         }
       }
     };
@@ -445,12 +445,11 @@ export function PlantReview({
       });
   };
 
-  const askAboutCheck = async () => {
+  const askAboutCheck = async (question: string, attachedImage?: string) => {
     const clean = question.trim();
     if (!clean || chatBusy || !checkProposal || !plant.backendGrowCycleId || !reviewImage) return;
     const chatRequestToken = crypto.randomUUID();
     checkRequest.current = chatRequestToken;
-    setQuestion("");
     updateInspection({ requestGuardId: chatRequestToken });
     setChatBusy(true);
     const context = careReviewContextMessage({
@@ -465,17 +464,22 @@ export function PlantReview({
       checkProposal,
       recentHistory,
     });
-    const prior = conversation.slice(-3).map((item) => ({ question: item.question, answer: [...item.facts, item.answer].join(" ").slice(0, 500) }));
+    const prior = conversation.slice(-3).map((item) => ({ question: item.question, answer: [...item.facts, item.answer, item.imageDataUrl ? "A photo was attached in this previous turn." : ""].filter(Boolean).join(" ").slice(0, 500) }));
     try {
-      const answer = await askGardenAi(clean, [context, ...prior], { photoDataUrl: reviewImage, context: context.answer });
+      const answer = await askGardenAi(clean, [context, ...prior], {
+        photoDataUrl: reviewImage,
+        context: context.answer,
+        messageImageDataUrl: attachedImage,
+      });
       const facts = answer.confirmed_facts.map((fact) => fact.claim);
       onInspectionPatch({ conversation: [...conversation, {
         question: clean,
         answer: answer.answer,
         facts,
+        ...(attachedImage ? { imageDataUrl: attachedImage } : {}),
       }], requestGuardId: null }, chatRequestToken);
     } catch {
-      onInspectionPatch({ conversation: [...conversation, { question: clean, answer: ui(language, "careAskUnavailable"), facts: [] }], requestGuardId: null }, chatRequestToken);
+      onInspectionPatch({ conversation: [...conversation, { question: clean, answer: ui(language, "careAskUnavailable"), facts: [], ...(attachedImage ? { imageDataUrl: attachedImage } : {}) }], requestGuardId: null }, chatRequestToken);
     } finally {
       setChatBusy(false);
     }
@@ -484,8 +488,8 @@ export function PlantReview({
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-secondary shadow-lift sm:aspect-[16/10]">
-        {reviewImage ? <img src={reviewImage} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : photoSrc ? <img src={photoSrc} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : null}
-        <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="absolute right-3 top-3 z-20 rounded-2xl border border-white/20 bg-black/20 p-1.5 backdrop-blur-xl [&_button]:!min-h-11 [&_button]:!rounded-full [&_button]:!border-white/30 [&_button]:!bg-white/15 [&_button]:!px-3 [&_button]:!text-white [&_button]:!shadow-none [&_button]:backdrop-blur-md [&_button]:hover:!bg-white/25 [&_button]:focus-visible:!ring-white/80 [&_button]:focus-visible:!ring-offset-0" />
+        {reviewImage ? <img src={reviewImage} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : canonicalPhoto ? <PhotoImage photo={canonicalPhoto} alt={`${plant.name}, ${plant.species}`} rendition="display" loading="eager" className="h-full w-full object-cover" /> : null}
+        <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="absolute right-3 top-3 z-20 [&>div]:flex [&>div]:flex-wrap [&>div]:justify-end [&>div]:gap-1 [&_button]:!min-h-11 [&_button]:!rounded-none [&_button]:!border-0 [&_button]:!bg-transparent [&_button]:!px-3 [&_button]:!text-white [&_button]:!shadow-none [&_button]:!backdrop-blur-none [&_button]:[text-shadow:0_1px_2px_rgba(0,0,0,0.85)] [&_button]:hover:!bg-transparent [&_button]:focus-visible:!ring-white [&_button]:focus-visible:!ring-offset-0" />
         <div className="veil absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
           <p className="text-xs uppercase text-background/70">{gardenName}{plant.slot ? ` · ${plant.slot}` : ""}</p>
@@ -597,15 +601,22 @@ export function PlantReview({
               <div className="mt-4 space-y-3 border-t border-border/60 pt-4">
                 {conversation.map((item, index) => (
                   <div key={`${item.question}-${index}`} className="space-y-2 text-sm">
-                    <p className="ml-auto w-fit max-w-[90%] rounded-2xl rounded-br-md bg-primary px-3 py-2 text-primary-foreground">{item.question}</p>
+                    <div className="ml-auto flex max-w-[90%] flex-col items-end gap-2">
+                      {item.imageDataUrl ? <img src={item.imageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="max-h-36 max-w-40 rounded-xl object-cover" /> : null}
+                      <p className="w-fit rounded-2xl rounded-br-md bg-primary px-3 py-2 text-primary-foreground">{item.question}</p>
+                    </div>
                     {item.facts.length ? <div><ProvenanceTag kind="recorded" /><ul className="mt-2 list-disc space-y-1 pl-5 text-muted-foreground">{item.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div> : null}
                     <div><ProvenanceTag kind="inferred" /><p className="mt-2 leading-relaxed text-muted-foreground">{item.answer}</p></div>
                   </div>
                 ))}
-                <form onSubmit={(event) => { event.preventDefault(); void askAboutCheck(); }} className="flex gap-2">
-                  <input value={question} onChange={(event) => setQuestion(event.target.value)} disabled={chatBusy} placeholder={ui(language, "askAboutThis")} className="input-soft min-w-0 flex-1 text-sm" />
-                  <Button type="submit" size="sm" disabled={chatBusy || !question.trim()}>{chatBusy ? ui(language, "analysing") : ui(language, "sendQuestion")}</Button>
-                </form>
+                <GardenConversationComposer
+                  language={language}
+                  placeholder={ui(language, "askAboutThis")}
+                  disabled={chatBusy}
+                  sending={chatBusy}
+                  sendLabel={chatBusy ? ui(language, "analysing") : ui(language, "sendQuestion")}
+                  onSend={askAboutCheck}
+                />
               </div>
             </>
           ) : null}

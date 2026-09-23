@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronLeft, Leaf } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
@@ -11,13 +11,8 @@ import {
   ConversationScrollButton,
 } from "@/components/ai-elements/conversation";
 import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
-import {
-  PromptInput,
-  PromptInputFooter,
-  PromptInputSubmit,
-  PromptInputTextarea,
-} from "@/components/ai-elements/prompt-input";
 import { Shimmer } from "@/components/ai-elements/shimmer";
+import { GardenConversationComposer } from "@/components/garden/garden-conversation-composer";
 import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/ask")({
@@ -41,37 +36,41 @@ function GardenWideAsk() {
   const store = useGarden();
   const language = store.language;
   const { prompt } = Route.useSearch();
-  const [thread, setThread] = useState<AskAnswer[]>([]);
+  const [thread, setThread] = useState<Array<AskAnswer & { attachedImageDataUrl?: string }>>([]);
   const [thinking, setThinking] = useState(false);
   const initialPromptSent = useRef(false);
 
-  const send = (question: string) => {
+  const send = useCallback(async (question: string, imageDataUrl?: string) => {
     const clean = question.trim();
     if (!clean || thinking) return;
     setThinking(true);
-    const conversation = thread.slice(-4).map((item) => ({ question: item.question, answer: [...item.grounded, item.inference].filter(Boolean).join(" ") }));
-    void askGardenAi(clean, conversation)
-      .then((result) => {
-        const answer: AskAnswer = {
-          question: clean,
-          grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],
-          evidence: result.confirmed_facts.map((fact) => `${fact.source.kind} · ${fact.source.id.slice(0, 8)}`),
-          ...(result.confirmed_facts.length && result.answer ? { inference: result.answer } : {}),
-        };
-        setThread((current) => [...current, answer]);
-      })
-      .catch(() => {
-        // Deterministic Garden logic remains the safe fallback if AI is temporarily unavailable.
-        setThread((current) => [...current, askWholeGarden(clean, store, language)]);
-      })
-      .finally(() => setThinking(false));
-  };
+    const conversation = thread.slice(-4).map((item) => ({
+      question: item.question,
+      answer: [...item.grounded, item.inference, item.attachedImageDataUrl ? "The user attached a photo in that turn." : ""].filter(Boolean).join(" "),
+    }));
+    try {
+      const result = await askGardenAi(clean, conversation, { messageImageDataUrl: imageDataUrl });
+      const answer: AskAnswer & { attachedImageDataUrl?: string } = {
+        question: clean,
+        grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],
+        evidence: result.confirmed_facts.map((fact) => `${fact.source.kind} · ${fact.source.id.slice(0, 8)}`),
+        ...(result.confirmed_facts.length && result.answer ? { inference: result.answer } : {}),
+        ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}),
+      };
+      setThread((current) => [...current, answer]);
+    } catch {
+      // Deterministic Garden logic remains the safe fallback if AI is temporarily unavailable.
+      setThread((current) => [...current, { ...askWholeGarden(clean, store, language), ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}) }]);
+    } finally {
+      setThinking(false);
+    }
+  }, [language, store, thread, thinking]);
 
   useEffect(() => {
     if (!prompt || initialPromptSent.current) return;
     initialPromptSent.current = true;
     send(prompt);
-  }, [prompt]);
+  }, [prompt, send]);
 
   return (
     <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] flex-col lg:h-screen">
@@ -97,7 +96,10 @@ function GardenWideAsk() {
           {thread.map((answer, index) => (
             <div key={`${answer.question}-${index}`} className="space-y-3">
               <Message from="user">
-                <MessageContent className="bg-primary text-primary-foreground">{answer.question}</MessageContent>
+                <MessageContent className="bg-primary text-primary-foreground">
+                  {answer.attachedImageDataUrl ? <img src={answer.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-40 rounded-xl object-cover" /> : null}
+                  {answer.question}
+                </MessageContent>
               </Message>
               <Message from="assistant">
                 <MessageContent className="w-full">
@@ -111,7 +113,6 @@ function GardenWideAsk() {
                       <MessageResponse className="mt-2 text-muted-foreground">{answer.inference}</MessageResponse>
                     </div>
                   ) : null}
-                  {answer.evidence.length ? <p className="mt-3 text-xs text-muted-foreground">{answer.evidence.join(" · ")}</p> : null}
                 </MessageContent>
               </Message>
             </div>
@@ -128,12 +129,14 @@ function GardenWideAsk() {
               <button key={suggestion} type="button" onClick={() => send(suggestion)} className="press shrink-0 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{suggestion}</button>
             ))}
           </div>
-          <PromptInput onSubmit={({ text }) => send(text)} className="rounded-2xl bg-card">
-            <PromptInputTextarea placeholder={ui(language, "askPlaceholder")} disabled={thinking} />
-            <PromptInputFooter className="justify-end">
-              <PromptInputSubmit status={thinking ? "submitted" : "ready"} disabled={thinking} />
-            </PromptInputFooter>
-          </PromptInput>
+          <GardenConversationComposer
+            language={language}
+            placeholder={ui(language, "askPlaceholder")}
+            sendLabel={ui(language, "sendQuestion")}
+            disabled={thinking}
+            sending={thinking}
+            onSend={send}
+          />
         </div>
       </div>
     </div>

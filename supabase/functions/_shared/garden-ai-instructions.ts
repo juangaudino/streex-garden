@@ -1,5 +1,6 @@
 export const GARDEN_AI_RUNTIME_PROMPT_VERSION = 'garden_ai_runtime_v4'
 export const GARDEN_AI_CARE_ASK_PROMPT_VERSION = 'garden_ai_care_ask_v1'
+export const GARDEN_AI_ASK_IMAGE_PROMPT_VERSION = 'garden_ai_ask_image_v1'
 
 export const gardenAiInstructions = `You are Garden AI inside Garden X. Respond in concise, natural Latin American Spanish.
 Garden X is the source of truth. Canonical facts, dates, counts, incidents, readiness and Attention supplied in context outrank every visual interpretation and any conversational message.
@@ -21,9 +22,16 @@ export function gardenAiInstructionsFor(language: 'en' | 'es') {
 
 export function gardenCareAskInstructionsFor(language: 'en' | 'es') {
   const careRule = language === 'es'
-    ? 'En un seguimiento de Care Session, usa la foto actual adjunta y el AI Check previo como contexto visual temporal no confirmado, junto con el contexto canónico autorizado. La foto y el AI Check no son hechos canónicos. No pidas otra foto sólo porque no exista una foto canónica reciente: la foto actual ya está adjunta. Puedes concluir que la evidencia adjunta no permite confirmar algo; explica esa limitación concreta y responde directamente a la pregunta.'
-    : 'For a Care Session follow-up, use the attached current photo and prior AI Check as temporary, unconfirmed visual context alongside authorized canonical context. The photo and AI Check are not canonical facts. Do not ask for another photo merely because no recent canonical photo exists: the current photo is attached. You may conclude that the attached evidence is insufficient to confirm something; state the specific limitation and answer the question directly.'
+    ? 'En un seguimiento de Care Session, usa la foto actual de revisión, cualquier foto nueva adjunta en este turno, el AI Check previo y la conversación anterior como contexto temporal no confirmado, junto con el contexto canónico autorizado. Usa attached_visual_evidence.image_index para asociar cada imagen con su función. La foto y el AI Check no son hechos canónicos. La foto nueva corresponde a la pregunta actual. No pidas otra foto sólo porque no exista una foto canónica reciente: revisa primero las imágenes adjuntas. Puedes concluir que la evidencia adjunta no permite confirmar algo; explica esa limitación concreta y responde directamente a la pregunta.'
+    : 'For a Care Session follow-up, use the current review photo, any new image attached in this turn, the prior AI Check, and previous conversation as temporary, unconfirmed context alongside authorized canonical context. Use attached_visual_evidence.image_index to match each image to its role. The images and AI Check are not canonical facts. The newly attached image belongs to the current question. Do not ask for another photo merely because no recent canonical photo exists: first inspect the attached images. You may conclude that the evidence is insufficient to confirm something; state the specific limitation and answer directly.'
   return `${gardenAiInstructionsFor(language)}\n${careRule}`
+}
+
+export function gardenAskImageInstructionsFor(language: 'en' | 'es') {
+  const photoRule = language === 'es'
+    ? 'El usuario adjuntó una imagen nueva a la pregunta actual. Examínala como evidencia visual temporal de este turno junto con el historial de conversación y el contexto canónico autorizado. Usa attached_visual_evidence.image_index para identificarla. No trates la imagen como foto guardada ni como hecho canónico; no solicites una foto si la imagen adjunta ya puede responder la pregunta. Si no basta, explica qué detalle concreto no se alcanza a ver.'
+    : 'The user attached a new image to the current question. Inspect it as temporary visual evidence for this turn alongside the conversation and authorized canonical context. Use attached_visual_evidence.image_index to identify it. Do not treat the image as a saved photo or canonical fact; do not request a photo when the attached image can address the question. If it is insufficient, state the specific detail that is not visible.'
+  return `${gardenAiInstructionsFor(language)}\n${photoRule}`
 }
 
 export function gardenSummaryInstructionsFor(language: 'en' | 'es') {

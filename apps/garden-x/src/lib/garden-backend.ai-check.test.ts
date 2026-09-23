@@ -87,4 +87,26 @@ describe("AI Check request isolation", () => {
     });
     expect(request.conversation).toHaveLength(1);
   });
+
+  it("sends both the Care review photo and the new current-turn image without changing conversation scope", async () => {
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: async () => ({ answer: { answer_type: "answer", answer: "The wider view shows the reservoir.", confirmed_facts: [], suggested_next_actions: [] } }),
+    });
+    const previous = [{ question: "Can I relocate it?", answer: "A wider view would help." }];
+    await askGardenAi("Can you decide from this?", previous, {
+      photoDataUrl: "data:image/jpeg;base64,cmV2aWV3",
+      context: "Plant plant-1, cycle cycle-1; prior AI Check remains unconfirmed.",
+      messageImageDataUrl: "data:image/png;base64,bmV3",
+    });
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "ask_garden",
+      question: "Can you decide from this?",
+      care_review_photo_data_url: "data:image/jpeg;base64,cmV2aWV3",
+      care_review_context: expect.stringContaining("cycle cycle-1"),
+      message_image_data_url: "data:image/png;base64,bmV3",
+      conversation: previous,
+    });
+  });
 });

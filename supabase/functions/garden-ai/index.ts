@@ -1,8 +1,8 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
-import { gardenAiInstructionsFor, gardenCareAskInstructionsFor, gardenShareCaptionInstructionsFor, gardenSummaryInstructionsFor, GARDEN_AI_CARE_ASK_PROMPT_VERSION, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
+import { gardenAiInstructionsFor, gardenAskImageInstructionsFor, gardenCareAskInstructionsFor, gardenShareCaptionInstructionsFor, gardenSummaryInstructionsFor, GARDEN_AI_ASK_IMAGE_PROMPT_VERSION, GARDEN_AI_CARE_ASK_PROMPT_VERSION, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
 import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
-import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_JSON_SCHEMA, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, GARDEN_SUMMARY_JSON_SCHEMA, GARDEN_SUMMARY_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateCareReviewAttachment, validateMeaningfulChangeProposal, validateGardenSummaryProposal, validateShareCaptionProposal } from '../_shared/ai-contract.ts'
+import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_JSON_SCHEMA, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, GARDEN_SUMMARY_JSON_SCHEMA, GARDEN_SUMMARY_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateAskGardenImages, validateMeaningfulChangeProposal, validateGardenSummaryProposal, validateShareCaptionProposal } from '../_shared/ai-contract.ts'
 
 const allowedOrigin = Deno.env.get('GARDEN_AI_ALLOWED_ORIGIN') ?? 'https://garden.getstreex.com'
 const corsHeaders = { 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Origin': allowedOrigin, 'Cache-Control': 'no-store', 'Content-Type': 'application/json; charset=utf-8' }
@@ -170,7 +170,8 @@ Deno.serve(async (request) => {
     if (body.operation === 'ask_garden') {
       if (typeof body.question !== 'string' || body.question.trim().length < 2 || body.question.length > 2000) return json({ error: 'Ask Garden question is invalid' }, 400)
       const hasCarePhoto = body.care_review_photo_data_url !== undefined
-      if (!validateCareReviewAttachment(body.care_review_photo_data_url, body.care_review_context)) return json({ error: 'Care follow-up photo or context is invalid' }, 400)
+      const hasMessagePhoto = body.message_image_data_url !== undefined
+      if (!validateAskGardenImages(body.care_review_photo_data_url, body.care_review_context, body.message_image_data_url)) return json({ error: 'Ask Garden photo attachment is invalid' }, 400)
       const started = await startRequest(auditClient, userData.user.id, body.request_key, 'ask_garden', [])
       if (started.existing) return json({ answer: started.existing.proposal, request_id: started.existing.id, idempotent: true })
       const startedAt = Date.now()
@@ -178,8 +179,22 @@ Deno.serve(async (request) => {
       const askContext = await userClient.rpc('garden_get_ai_ask_context')
       if (askContext.error || !askContext.data) throw new Error('Authorized Ask Garden context is unavailable')
       const conversation = Array.isArray(body.conversation) ? body.conversation.slice(-4).map((item) => typeof item === 'object' && item !== null ? { question: String((item as Record<string, unknown>).question ?? '').slice(0, 300), answer: String((item as Record<string, unknown>).answer ?? '').slice(0, 500), status: 'unconfirmed_conversation_context' } : null).filter(Boolean) : []
-      const careReview = hasCarePhoto ? { provenance: 'temporary_user_provided_photo_and_unconfirmed_ai_check', context: body.care_review_context } : undefined
-      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, conversation, ...(careReview ? { current_care_review: careReview } : {}), conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, ...(hasCarePhoto ? { imageDataUrl: body.care_review_photo_data_url as string } : {}), standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: careReview ? GARDEN_AI_CARE_ASK_PROMPT_VERSION : GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: careReview ? gardenCareAskInstructionsFor(responseLanguage) : gardenAiInstructionsFor(responseLanguage) })
+      const careReview = hasCarePhoto ? { provenance: 'temporary_user_provided_photo_and_unconfirmed_ai_check', image_index: 1, context: body.care_review_context } : undefined
+      const currentTurnPhoto = hasMessagePhoto ? { provenance: 'temporary_user_provided_photo_attached_to_current_question', image_index: hasCarePhoto ? 2 : 1, applies_to_current_question: true } : undefined
+      const visualEvidenceOrder = [
+        ...(careReview ? [{ image_index: 1, role: 'current_care_review_photo' }] : []),
+        ...(currentTurnPhoto ? [{ image_index: currentTurnPhoto.image_index, role: 'new_photo_attached_to_current_question' }] : []),
+      ]
+      const imageDataUrls = [
+        ...(hasCarePhoto ? [body.care_review_photo_data_url as string] : []),
+        ...(hasMessagePhoto ? [body.message_image_data_url as string] : []),
+      ]
+      const askInstructions = careReview
+        ? gardenCareAskInstructionsFor(responseLanguage)
+        : hasMessagePhoto
+          ? gardenAskImageInstructionsFor(responseLanguage)
+          : gardenAiInstructionsFor(responseLanguage)
+      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, conversation, attached_visual_evidence: visualEvidenceOrder, ...(careReview ? { current_care_review: careReview } : {}), ...(currentTurnPhoto ? { current_turn_photo: currentTurnPhoto } : {}), conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, ...(imageDataUrls.length ? { imageDataUrls } : {}), standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: careReview ? GARDEN_AI_CARE_ASK_PROMPT_VERSION : hasMessagePhoto ? GARDEN_AI_ASK_IMAGE_PROMPT_VERSION : GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: askInstructions })
       const answer = validateAskGardenAnswer(response.raw)
       if (!answer) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal: answer, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })

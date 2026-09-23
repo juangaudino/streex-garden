@@ -1,16 +1,19 @@
 // @vitest-environment jsdom
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { cleanup } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useState, type ReactNode } from "react";
 import { PlantReview } from "./care";
-import type { Plant } from "@/lib/garden-data";
+import type { Photo, Plant } from "@/lib/garden-data";
 import { createCareInspectionState, careReviewPhotoKey } from "@/lib/care-session";
 import type { CareInspectionState } from "@/lib/care-session";
+import { latestPlantPhoto } from "@/lib/garden-logic";
 
 const mocks = vi.hoisted(() => ({
   runAiCheckDraft: vi.fn(),
   askGardenAi: vi.fn(),
+  resolvePhotoUrl: vi.fn(),
+  persistPhotoRendition: vi.fn(),
 }));
 
 vi.mock("@tanstack/react-router", () => ({
@@ -21,6 +24,8 @@ vi.mock("@tanstack/react-router", () => ({
 vi.mock("@/lib/garden-backend", () => ({
   runAiCheckDraft: mocks.runAiCheckDraft,
   askGardenAi: mocks.askGardenAi,
+  resolvePhotoUrl: mocks.resolvePhotoUrl,
+  persistPhotoRendition: mocks.persistPhotoRendition,
 }));
 
 vi.mock("@/components/ui/button", () => ({
@@ -28,12 +33,28 @@ vi.mock("@/components/ui/button", () => ({
     asChild ? <span>{children}</span> : <button {...props}>{children}</button>,
 }));
 
+vi.mock("@/components/ui/dialog", async () => {
+  const React = await import("react");
+  const DialogContext = React.createContext<{ open: boolean; onOpenChange: (open: boolean) => void }>({ open: false, onOpenChange: () => undefined });
+  return {
+    Dialog: ({ open, onOpenChange, children }: { open: boolean; onOpenChange: (open: boolean) => void; children: ReactNode }) => <DialogContext.Provider value={{ open, onOpenChange }}>{children}</DialogContext.Provider>,
+    DialogTrigger: ({ children }: { children: React.ReactElement }) => {
+      const context = React.useContext(DialogContext);
+      return React.cloneElement(children, { onClick: () => context.onOpenChange(true) });
+    },
+    DialogContent: ({ children }: { children: ReactNode }) => React.useContext(DialogContext).open ? <div role="dialog">{children}</div> : null,
+    DialogHeader: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+    DialogTitle: ({ children }: { children: ReactNode }) => <h2>{children}</h2>,
+    DialogDescription: ({ children }: { children: ReactNode }) => <p>{children}</p>,
+  };
+});
+
 vi.mock("@/components/garden/photo-source-picker", () => ({
-  PhotoSourcePicker: ({ onFile }: { onFile: (file: File) => void }) => (
-    <>
+  PhotoSourcePicker: ({ onFile, className }: { onFile: (file: File) => void; className?: string }) => (
+    <div data-testid="care-photo-controls" className={className}>
       <input aria-label="Take photo" type="file" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) onFile(file); }} />
       <input aria-label="Choose photo" type="file" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) onFile(file); }} />
-    </>
+    </div>
   ),
 }));
 
@@ -53,7 +74,23 @@ const plant: Plant = {
   backendGrowCycleId: "cycle-mint",
 };
 
-function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhoto = "persisted-plant-photo.jpg" as string | null } = {}) {
+function canonicalPhoto(plantId = plant.id, id = "existing-photo"): Photo {
+  return {
+    id,
+    plantId,
+    mediaScope: "cycle_evidence",
+    src: "",
+    daysAgo: 2,
+    caption: "",
+    metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
+    backendStoragePath: `owner/${id}/original.jpg`,
+    backendGrowCycleId: plant.backendGrowCycleId,
+    capturedAt: "2026-09-21T12:00:00Z",
+    provenance: "recorded",
+  };
+}
+
+function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhotos = [canonicalPhoto()] as Photo[] } = {}) {
   const [inspection, setInspection] = useState<CareInspectionState>(() => createCareInspectionState(careReviewPhotoKey(plant.id, plant.backendGrowCycleId)));
   const [mounted, setMounted] = useState(true);
   return (
@@ -65,7 +102,7 @@ function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(),
       language="en"
       gardenName="Garden One"
       lastReview={undefined}
-      photoSrc={existingPhoto ?? undefined}
+      canonicalPhoto={latestPlantPhoto(existingPhotos, plant.id)}
       workingPhoto={inspection.workingPhoto}
       inspection={inspection}
       onInspectionPatch={(patch, token) => setInspection((current) => token && current.requestGuardId !== token ? current : { ...current, ...patch })}
@@ -85,19 +122,80 @@ function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(),
   );
 }
 
+function MultiPlantPhotoHarness() {
+  const secondPlant: Plant = { ...plant, id: "plant-romaine", name: "Red Romaine Lettuce", species: "Lactuca", backendGrowCycleId: "cycle-romaine" };
+  const [currentPlant, setCurrentPlant] = useState(plant);
+  const photos = [canonicalPhoto(plant.id, "mint-photo"), canonicalPhoto(secondPlant.id, "romaine-photo")];
+  const inspection = createCareInspectionState(careReviewPhotoKey(currentPlant.id, currentPlant.backendGrowCycleId));
+  return (
+    <>
+      <button type="button" onClick={() => setCurrentPlant((current) => current.id === plant.id ? secondPlant : plant)}>Advance plant</button>
+      <PlantReview
+        key={`${currentPlant.id}:${currentPlant.backendGrowCycleId}`}
+        plant={currentPlant}
+        language="en"
+        gardenName="Garden One"
+        lastReview={undefined}
+        canonicalPhoto={latestPlantPhoto(photos, currentPlant.id)}
+        workingPhoto={currentPlant.id === plant.id ? "data:image/jpeg;base64,bWludC1waG90bw==" : undefined}
+        inspection={inspection}
+        onInspectionPatch={() => undefined}
+        recentEvent={undefined}
+        contextEventCount={1}
+        recentHistory={[]}
+        sessionItem={1}
+        sessionTotal={2}
+        onRecord={() => undefined}
+        onNext={() => undefined}
+        onSkip={() => undefined}
+        recordedForReview={false}
+        careReturnSearch={{ careQueue: "plant-mint,plant-romaine", careIndex: 0, careRecorded: false, careReviewed: 0, careObservations: 0, careActions: 0, careFollowups: 0 }}
+      />
+    </>
+  );
+}
+
 describe("Care Session plant review", () => {
+  beforeEach(() => {
+    mocks.resolvePhotoUrl.mockImplementation(async (photo: Pick<Photo, "backendStoragePath">) => `https://signed.example/${photo.backendStoragePath?.replace("original.jpg", "display.jpg")}`);
+  });
+
   afterEach(() => {
     cleanup();
     vi.clearAllMocks();
   });
 
+  it("resolves the bootstrap-shaped private photo through the same signed rendition path as Plant Detail", async () => {
+    mocks.resolvePhotoUrl.mockResolvedValue("https://signed.example/owner/existing-photo/display.jpg");
+    render(<ReviewHarness />);
+    const image = await screen.findByAltText("Common Mint, Mentha") as HTMLImageElement;
+    expect(image.src).toContain("owner/existing-photo/display.jpg");
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledWith(expect.objectContaining({ id: "existing-photo", src: "", backendStoragePath: "owner/existing-photo/original.jpg" }), "display");
+  });
+
+  it("uses each Plant Instance photo when advancing and never carries the prior working photo", async () => {
+    render(<MultiPlantPhotoHarness />);
+    expect((await screen.findByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("data:image/jpeg;base64,bWludC1waG90bw==");
+    fireEvent.click(screen.getByRole("button", { name: "Advance plant" }));
+    const nextHero = await screen.findByAltText("Red Romaine Lettuce, Lactuca") as HTMLImageElement;
+    await waitFor(() => expect(nextHero.src).toContain("owner/romaine-photo/display.jpg"));
+    expect(nextHero.src).not.toContain("bWludC1waG90bw==");
+  });
+
   it("keeps Ask Garden enabled and AI Check disabled until a temporary photo is selected", async () => {
     render(<ReviewHarness />);
 
-    expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("persisted-plant-photo.jpg");
+    const existing = await screen.findByAltText("Common Mint, Mentha") as HTMLImageElement;
+    expect(existing.src).toContain("owner/existing-photo/display.jpg");
 
     expect(screen.getByRole("button", { name: "AI Check" }).hasAttribute("disabled")).toBe(true);
     expect(screen.getByRole("link", { name: "Ask Garden" })).toBeTruthy();
+    const controls = screen.getAllByTestId("care-photo-controls")[0]!;
+    expect(controls.className).not.toMatch(/bg-black|rounded-2xl/);
+    expect(controls.className).toContain("[&_button]:!bg-transparent");
+    expect(controls.className).toContain("[&_button]:!rounded-none");
+    expect(controls.className).toContain("[&_button]:!min-h-11");
+    expect(controls.className).toContain("[&_button]:!shadow-none");
 
     const inputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
     const file = new File(["photo"], "review.jpg", { type: "image/jpeg" });
@@ -110,7 +208,7 @@ describe("Care Session plant review", () => {
   });
 
   it("keeps the genuine no-photo fallback and allows the camera input to choose the working image", async () => {
-    render(<ReviewHarness existingPhoto={null} />);
+    render(<ReviewHarness existingPhotos={[]} />);
     expect(screen.queryByAltText("Common Mint, Mentha")).toBeNull();
     const camera = screen.getByLabelText("Take photo") as HTMLInputElement;
     fireEvent.change(camera, { target: { files: [new File(["camera"], "camera.jpg", { type: "image/jpeg" })] } });
@@ -152,6 +250,10 @@ describe("Care Session plant review", () => {
     expect(onNext).not.toHaveBeenCalled();
     expect(onSkip).not.toHaveBeenCalled();
 
+    fireEvent.click(screen.getByRole("button", { name: "Attach a photo" }));
+    const attachedPicker = screen.getAllByLabelText("Choose photo").at(-1) as HTMLInputElement;
+    fireEvent.change(attachedPicker, { target: { files: [new File(["context"], "wider.jpg", { type: "image/jpeg" })] } });
+    expect(await screen.findByAltText("Attached photo")).toBeTruthy();
     fireEvent.change(screen.getByPlaceholderText("Ask about this…"), { target: { value: "What should I watch for?" } });
     fireEvent.submit(screen.getByPlaceholderText("Ask about this…").closest("form")!);
     await waitFor(() => expect(mocks.askGardenAi).toHaveBeenCalled());
@@ -162,7 +264,9 @@ describe("Care Session plant review", () => {
     expect(context).toContain("Garden One");
     expect(context).toContain("attached to this follow-up");
     expect(context).toContain("Several new leaves are visible.");
-    expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ photoDataUrl: expect.stringContaining("data:image/jpeg;base64,"), context: expect.stringContaining("Harvest readiness") });
+    expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ photoDataUrl: expect.stringContaining("data:image/jpeg;base64,"), context: expect.stringContaining("Harvest readiness"), messageImageDataUrl: expect.stringContaining("data:image/jpeg;base64,") });
+    expect(onRecord).not.toHaveBeenCalled();
+    expect(JSON.parse(screen.getByTestId("inspection-state").textContent ?? "{}").conversation[0].imageDataUrl).toContain("data:image/jpeg;base64,");
     expect(JSON.parse(screen.getByTestId("inspection-state").textContent ?? "{}").checkRequestId).toBe("request-care-check");
 
     fireEvent.click(screen.getByRole("button", { name: "Toggle Care item" }));
@@ -170,5 +274,6 @@ describe("Care Session plant review", () => {
     expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("data:image/jpeg;base64,");
     expect(screen.getByText("Check whether the outer leaves support selective harvest.")).toBeTruthy();
     expect(screen.getByText("The check notes new leaves.")).toBeTruthy();
+    expect(screen.getByAltText("Attached photo")).toBeTruthy();
   });
 });

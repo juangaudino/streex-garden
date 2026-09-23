@@ -1619,7 +1619,7 @@ export async function replacePlantRecord(oldPlant: Plant, newPlant: Plant): Prom
 export async function askGardenAi(
   question: string,
   conversation: Array<{ question: string; answer: string }> = [],
-  careReview?: { photoDataUrl: string; context: string },
+  attachments?: { photoDataUrl?: string; context?: string; messageImageDataUrl?: string },
 ) {
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
@@ -1635,10 +1635,11 @@ export async function askGardenAi(
       operation: "ask_garden",
       question,
       conversation,
-      ...(careReview ? {
-        care_review_photo_data_url: careReview.photoDataUrl,
-        care_review_context: careReview.context,
+      ...(attachments?.photoDataUrl && attachments.context ? {
+        care_review_photo_data_url: attachments.photoDataUrl,
+        care_review_context: attachments.context,
       } : {}),
+      ...(attachments?.messageImageDataUrl ? { message_image_data_url: attachments.messageImageDataUrl } : {}),
       request_key: `ask:${crypto.randomUUID()}`,
     }),
   });

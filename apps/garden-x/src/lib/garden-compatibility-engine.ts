@@ -1,4 +1,4 @@
-import type { Garden, GardenKind, Plant } from "./garden-data";
+import type { Garden, GardenCultivationMethod, GardenKind, Plant } from "./garden-data";
 import type {
   CompatibilityEvidence,
   CompatibilityProfileV1,
@@ -16,6 +16,8 @@ export type CompatibilityPosition = {
   /** Every active Plant Instance is retained; shared positions are intentional. */
   occupants: readonly CompatibilityOccupant[];
 };
+
+export type SpecificSystemFit = "unknown" | "documented_condition_met";
 
 export type CompatibilityOccupant = {
   plantInstanceId: string;
@@ -48,6 +50,7 @@ export type EmptyGardenPositionInput = {
     kind: GardenKind;
     systemName: string | null;
     systemInstanceId: string | null;
+    systemDefinitionKey: string | null;
     customSystemDefinitionId: string | null;
   };
   target: {
@@ -56,8 +59,8 @@ export type EmptyGardenPositionInput = {
     active: boolean;
     coordinates: CompatibilityPosition["coordinates"];
     isPerimeter: boolean | null;
-    /** Hydroponic kind is canonical Garden context; other cultivation media are not currently represented. */
-    cultivationContext: "hydroponic" | null;
+    /** Explicit canonical system cultivation method; null/unknown is not inferred from Garden kind. */
+    cultivationContext: GardenCultivationMethod | null;
     verifiedFacts: VerifiedPositionFacts;
   };
   positions: readonly CompatibilityPosition[];
@@ -92,12 +95,22 @@ export type CompatibilityRankingSignal = {
   sourceIds: readonly string[];
 };
 
+/**
+ * `compatibility` is evidence about the candidate's explicit cultivation method:
+ * compatible = documented support (not confirmed physical fit); conditional =
+ * support depends on a condition not yet established; unknown = evidence/context
+ * is insufficient; incompatible = explicit evidence conflicts with the method.
+ * `systemFit` separately reports a verified named-system condition only. Neither
+ * field establishes physical fit without comparable clearance data.
+ */
 export type GardenCompatibilityResult = {
   candidate: Pick<
     GardenLibraryEntry,
     "libraryPlantId" | "commonName" | "scientificName" | "cultivar"
   >;
   compatibility: CompatibilityState;
+  /** Compatibility is cultivation-method suitability, not confirmed physical fit. */
+  systemFit: SpecificSystemFit;
   eligibility: "eligible" | "excluded";
   reasons: readonly CompatibilityReason[];
   unknowns: readonly CompatibilityUnknown[];
@@ -130,8 +143,11 @@ function normalizeName(value: string | null | undefined) {
   return (value ?? "").normalize("NFKC").trim().toLocaleLowerCase("en-US");
 }
 
-function knownAeroGardenCondition(profile: CompatibilityProfileV1, systemName: string | null) {
-  const normalizedSystem = normalizeName(systemName);
+function knownAeroGardenCondition(
+  profile: CompatibilityProfileV1,
+  systemDefinitionKey: string | null,
+) {
+  const normalizedSystem = normalizeName(systemDefinitionKey);
   if (!normalizedSystem.includes("aerogarden")) return false;
   return (
     profile.hydroponicSuitability.status === "conditional" &&
@@ -145,13 +161,13 @@ function knownAeroGardenCondition(profile: CompatibilityProfileV1, systemName: s
 
 function currentHydroponicState(
   profile: CompatibilityProfileV1,
-  systemName: string | null,
+  systemDefinitionKey: string | null,
 ): { state: CompatibilityState; conditionMet: boolean } {
   const suitability = profile.hydroponicSuitability;
   if (suitability.status === "incompatible") return { state: "incompatible", conditionMet: false };
   if (suitability.status === "compatible") return { state: "compatible", conditionMet: false };
   if (suitability.status === "conditional") {
-    const conditionMet = knownAeroGardenCondition(profile, systemName);
+    const conditionMet = knownAeroGardenCondition(profile, systemDefinitionKey);
     return { state: conditionMet ? "compatible" : "conditional", conditionMet };
   }
   return { state: "unknown", conditionMet: false };
@@ -167,10 +183,15 @@ function resultFor(
   const exclusions: CompatibilityExclusion[] = [];
   const rankingSignals: CompatibilityRankingSignal[] = [];
   let compatibility: CompatibilityState = "unknown";
+  let systemFit: SpecificSystemFit = "unknown";
 
-  if (input.garden.kind === "hydroponic") {
-    const { state, conditionMet } = currentHydroponicState(profile, input.garden.systemName);
+  if (input.target.cultivationContext === "hydroponic") {
+    const { state, conditionMet } = currentHydroponicState(
+      profile,
+      input.garden.systemDefinitionKey,
+    );
     compatibility = state;
+    if (conditionMet) systemFit = "documented_condition_met";
     const claim = profile.hydroponicSuitability;
     if (claim.status === "compatible") {
       reasons.push(
@@ -217,9 +238,10 @@ function resultFor(
     }
   } else {
     unknowns.push({
-      property: "system_suitability",
-      reason:
-        "The profile contains hydroponic suitability evidence, but this Garden is not identified as hydroponic and no applicable system suitability fact is available.",
+      property: "cultivation_suitability",
+      reason: input.target.cultivationContext
+        ? `The profile contains hydroponic suitability evidence, but no ${input.target.cultivationContext}-specific suitability fact is available.`
+        : "Garden X has no explicit cultivation method for this Garden, so the profile's hydroponic evidence cannot be applied.",
     });
   }
 
@@ -480,6 +502,7 @@ function resultFor(
       cultivar: entry.cultivar,
     },
     compatibility,
+    systemFit,
     eligibility: exclusions.length ? "excluded" : "eligible",
     reasons,
     unknowns,
@@ -613,6 +636,7 @@ export function buildEmptyGardenPositionInput(
       kind: garden.kind,
       systemName: garden.machine?.name ?? null,
       systemInstanceId: garden.backendSystemInstanceId ?? null,
+      systemDefinitionKey: garden.systemDefinitionKey ?? null,
       customSystemDefinitionId: garden.customSystemDefinitionId ?? null,
     },
     target: {
@@ -621,7 +645,7 @@ export function buildEmptyGardenPositionInput(
       active: target?.active ?? false,
       coordinates: target?.coordinates ?? null,
       isPerimeter: perimeterStatus(target?.coordinates ?? null, garden),
-      cultivationContext: garden.kind === "hydroponic" ? "hydroponic" : null,
+      cultivationContext: garden.cultivationMethod ?? null,
       verifiedFacts,
     },
     positions,

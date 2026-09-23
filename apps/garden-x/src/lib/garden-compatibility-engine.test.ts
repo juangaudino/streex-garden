@@ -18,11 +18,13 @@ function garden(overrides: Partial<Garden> = {}): Garden {
     id: "garden-a",
     name: "Garden A",
     kind: "hydroponic",
+    cultivationMethod: "hydroponic",
     cover: "",
     place: "",
     note: "",
     machine: { name: "Aera One", pods: 4 },
     backendSystemInstanceId: "system-a",
+    systemDefinitionKey: "aera-one-v1",
     backendPositions: [
       { id: "p1", number: 1, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 1 },
       { id: "p2", number: 2, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 2 },
@@ -83,6 +85,10 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     expect(results).toHaveLength(8);
     expect(results.every((result) => result.eligibility === "eligible")).toBe(true);
     expect(
+      results.find((result) => result.candidate.libraryPlantId === "buttercrunch-lettuce")
+        ?.systemFit,
+    ).toBe("unknown");
+    expect(
       results.find((result) => result.candidate.libraryPlantId === "common-mint")?.compatibility,
     ).toBe("unknown");
     expect(
@@ -134,11 +140,6 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     );
     expect(petunia.unknowns.some((unknown) => unknown.property === "mature_spread")).toBe(true);
     expect(petunia.eligibility).toBe("eligible");
-    expect(
-      results.findIndex((result) => result.candidate.libraryPlantId === "cascading-petunia"),
-    ).toBeLessThan(
-      results.findIndex((result) => result.candidate.libraryPlantId === "buttercrunch-lettuce"),
-    );
     expect(formatCompatibilityDiagnostics([petunia])).toContain(
       "within the explicitly recorded 35 cm clearance",
     );
@@ -217,6 +218,7 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
   it("E — returns candidates with sparse context and reports missing facts without exclusions", () => {
     const sparseGarden = garden({
       kind: "backyard",
+      cultivationMethod: null,
       machine: undefined,
       systemLayoutLevels: undefined,
     });
@@ -249,21 +251,94 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     expect(cherry.reasons.some((reason) => reason.sourceIds.includes("rhs-tiny-tim"))).toBe(false);
   });
 
-  it("G — resolves the documented AeroGarden condition only for an explicitly named AeroGarden", () => {
+  it("G — resolves a system-specific condition only from the stable system identity, not its editable name", () => {
     const candidate = byId("cascading-petunia");
     const aero = evaluate(
-      garden({ machine: { name: "AeroGarden Harvest", pods: 6 } }),
+      garden({
+        machine: { name: "Aera One", pods: 6 },
+        systemDefinitionKey: "aerogarden-harvest-v1",
+      }),
     ).results.find((result) => result.candidate.libraryPlantId === candidate.libraryPlantId)!;
-    const otherSystem = evaluate(garden({ machine: { name: "Aera One", pods: 6 } })).results.find(
-      (result) => result.candidate.libraryPlantId === candidate.libraryPlantId,
-    )!;
+    const renamedSystem = evaluate(
+      garden({
+        machine: { name: "AeroGarden Harvest", pods: 6 },
+        systemDefinitionKey: "aera-one-v1",
+      }),
+    ).results.find((result) => result.candidate.libraryPlantId === candidate.libraryPlantId)!;
     expect(aero.compatibility).toBe("compatible");
+    expect(aero.systemFit).toBe("documented_condition_met");
     expect(aero.reasons.some((reason) => reason.code === "documented_system_condition_met")).toBe(
       true,
     );
-    expect(otherSystem.compatibility).toBe("conditional");
-    expect(otherSystem.eligibility).toBe("eligible");
-    expect(otherSystem.exclusions).toHaveLength(0);
+    expect(renamedSystem.compatibility).toBe("conditional");
+    expect(renamedSystem.systemFit).toBe("unknown");
+    expect(renamedSystem.eligibility).toBe("eligible");
+    expect(renamedSystem.exclusions).toHaveLength(0);
+  });
+
+  it.each([
+    ["hydroponic", "hydroponic"],
+    ["soil", "soil"],
+    ["container", "container"],
+  ] as const)(
+    "uses an explicit %s cultivation method independently of Garden kind",
+    (method, expected) => {
+      const { input } = evaluate(garden({ kind: "indoor", cultivationMethod: method }));
+      expect(input.target.cultivationContext).toBe(expected);
+    },
+  );
+
+  it("does not infer cultivation method from Garden kind or treat hydroponic evidence as soil/container fit", () => {
+    for (const method of ["soil", "container"] as const) {
+      const { results } = evaluate(
+        garden({ kind: method === "soil" ? "backyard" : "balcony", cultivationMethod: method }),
+      );
+      const buttercrunch = results.find(
+        (result) => result.candidate.libraryPlantId === "buttercrunch-lettuce",
+      )!;
+      expect(buttercrunch.compatibility).toBe("unknown");
+      expect(buttercrunch.systemFit).toBe("unknown");
+      expect(buttercrunch.eligibility).toBe("eligible");
+      expect(buttercrunch.exclusions).toHaveLength(0);
+    }
+    const unknown = evaluate(garden({ kind: "hydroponic", cultivationMethod: null })).results.find(
+      (result) => result.candidate.libraryPlantId === "buttercrunch-lettuce",
+    )!;
+    expect(unknown.compatibility).toBe("unknown");
+    expect(
+      unknown.unknowns.some((item) => item.reason.includes("no explicit cultivation method")),
+    ).toBe(true);
+  });
+
+  it("does not apply explicit hydroponic incompatibility to a soil Garden", () => {
+    const entry = byId("buttercrunch-lettuce");
+    const explicitlyHydroIncompatible: GardenLibraryEntry = {
+      ...entry,
+      compatibilityProfile: {
+        ...entry.compatibilityProfile!,
+        hydroponicSuitability: {
+          status: "incompatible",
+          evidence:
+            entry.compatibilityProfile!.hydroponicSuitability.status === "compatible"
+              ? entry.compatibilityProfile!.hydroponicSuitability.evidence
+              : [],
+        },
+      },
+    };
+    const { input } = evaluate(garden({ kind: "backyard", cultivationMethod: "soil" }));
+    const [result] = evaluateEmptyGardenPosition(input, [explicitlyHydroIncompatible]);
+    expect(result).toMatchObject({ compatibility: "unknown", eligibility: "eligible" });
+    expect(result.exclusions).toHaveLength(0);
+  });
+
+  it("keeps method suitability distinct from a named-system match and physical fit", () => {
+    const tinyTim = evaluate(garden({ cultivationMethod: "hydroponic" })).results.find(
+      (result) => result.candidate.libraryPlantId === "tiny-tim-tomato",
+    )!;
+    expect(tinyTim.compatibility).toBe("compatible");
+    expect(tinyTim.systemFit).toBe("unknown");
+    expect(tinyTim.unknowns.some((item) => item.property === "mature_height_fit")).toBe(true);
+    expect(tinyTim.unknowns.some((item) => item.property === "mature_spread_fit")).toBe(true);
   });
 
   it("H — keeps pending Common Mint eligible and surfaces spreading near occupied positions as a consideration", () => {

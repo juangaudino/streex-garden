@@ -779,7 +779,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       addGarden: (g) => {
         const id = crypto.randomUUID();
         const next: Garden = { ...g, id, backendSystemInstanceId: crypto.randomUUID() };
-        void createGardenRecord(next)
+        void createGardenRecord(next, next.systemDefinitionKey ?? undefined)
           .then(() => refreshFromBackend("mutation"))
           .catch(() => undefined);
         setState((s) => ({ ...s, gardens: [...s.gardens, next] }));

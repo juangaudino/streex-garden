@@ -1,6 +1,7 @@
 import type {
   GardenState,
   Garden,
+  GardenCultivationMethod,
   Plant,
   Photo,
   PlantEvent,
@@ -39,6 +40,7 @@ type BootstrapGarden = {
   system_instance_id: string;
   system_instance_name: string;
   system_definition_key: string | null;
+  cultivation_method?: string | null;
   legacy_system_model: string | null;
   custom_definition_id?: string | null;
   position_capacity: number;
@@ -151,6 +153,10 @@ export type BackendIndex = {
   positionNumberByPlantId: Map<string, number>;
   revisionByEventId: Map<string, number>;
 };
+
+function normalizeCultivationMethod(value: unknown): GardenCultivationMethod | null {
+  return value === "hydroponic" || value === "soil" || value === "container" ? value : null;
+}
 
 const dayMs = 86_400_000;
 function daysAgo(value: string | null | undefined): number {
@@ -637,6 +643,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     id: g.id,
     name: g.name,
     kind: g.kind ?? "hydroponic",
+    cultivationMethod: normalizeCultivationMethod(g.cultivation_method),
     cover: "",
     coverPhotoId: g.cover_photo_id,
     place: g.place ?? "",
@@ -647,6 +654,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       pods: g.position_capacity,
     },
     backendSystemInstanceId: g.system_instance_id,
+    systemDefinitionKey: g.system_definition_key ?? null,
     customSystemDefinitionId: g.custom_definition_id ?? null,
     ...(g.custom_definition_id ? { customSystemLevels: persistedLevels } : {}),
     systemLayoutLevels,
@@ -1258,6 +1266,17 @@ export async function createGardenRecord(
     p_position_capacity: capacity,
   });
   if (error) throw new Error(error.message);
+  if (garden.cultivationMethod) {
+    const { error: methodError } = await getSupabaseClient().rpc(
+      "garden_x_set_cultivation_method",
+      {
+        p_request_id: crypto.randomUUID(),
+        p_garden_id: garden.id,
+        p_cultivation_method: garden.cultivationMethod,
+      },
+    );
+    if (methodError) throw new Error(methodError.message);
+  }
 }
 
 export type CustomSystemDraft = {
@@ -1387,6 +1406,17 @@ export async function updateGardenRecord(garden: Garden): Promise<void> {
     p_archived: Boolean(garden.archived),
   });
   if (error) throw new Error(error.message);
+  if (garden.cultivationMethod !== undefined) {
+    const { error: methodError } = await getSupabaseClient().rpc(
+      "garden_x_set_cultivation_method",
+      {
+        p_request_id: crypto.randomUUID(),
+        p_garden_id: garden.id,
+        p_cultivation_method: garden.cultivationMethod,
+      },
+    );
+    if (methodError) throw new Error(methodError.message);
+  }
 }
 
 type GardenCoverPhotoRecord = {

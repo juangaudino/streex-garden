@@ -7,7 +7,12 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession }, rpc }),
 }));
 
-import { persistMoment, updateGardenRecord } from "./garden-backend";
+import {
+  createGardenRecord,
+  loadGardenState,
+  persistMoment,
+  updateGardenRecord,
+} from "./garden-backend";
 import type { Garden, Photo, Plant, PlantEvent } from "./garden-data";
 
 const plant: Plant = {
@@ -62,7 +67,21 @@ describe("Record a Moment canonical temporal propagation", () => {
       if (name === "garden_x_prepare_event_photo")
         return { data: { storage_path: "owner/photo/original.jpg" }, error: null };
       if (name === "garden_mark_photo_uploaded") return { data: null, error: null };
-      if (name === "garden_x_update_garden_with_system") return { data: { updated: true }, error: null };
+      if (name === "garden_x_update_garden_with_system")
+        return { data: { updated: true }, error: null };
+      if (name === "garden_x_create_garden")
+        return { data: { garden_id: "garden-1" }, error: null };
+      if (name === "garden_x_set_cultivation_method")
+        return { data: { updated: true }, error: null };
+      if (name === "garden_x_get_bootstrap")
+        return {
+          data: { gardens: [], plants: [], events: [], photos: [], attention: [] },
+          error: null,
+        };
+      if (name === "garden_get_system_maintenance_events") return { data: [], error: null };
+      if (name === "garden_x_get_saved_films") return { data: [], error: null };
+      if (name === "garden_x_get_historical_photos") return { data: [], error: null };
+      if (name === "garden_x_get_invalidated_event_photos") return { data: [], error: null };
       throw new Error(`Unexpected RPC ${name}`);
     });
   });
@@ -137,6 +156,102 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc).toHaveBeenCalledWith(
       "garden_x_update_garden_with_system",
       expect.objectContaining({ p_garden_id: "garden-1", p_system_name: "H1" }),
+    );
+  });
+
+  it("persists explicit cultivation method and stable system identity separately from Garden kind", async () => {
+    const garden: Garden = {
+      id: "garden-1",
+      name: "Balcony",
+      kind: "balcony",
+      cultivationMethod: "container",
+      systemDefinitionKey: "balcony-pots-v1",
+      cover: "",
+      place: "",
+      note: "",
+    };
+
+    await createGardenRecord(garden, garden.systemDefinitionKey ?? undefined);
+
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_x_create_garden",
+      expect.objectContaining({ p_system_definition_key: "balcony-pots-v1", p_kind: "balcony" }),
+    );
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_x_set_cultivation_method",
+      expect.objectContaining({ p_garden_id: "garden-1", p_cultivation_method: "container" }),
+    );
+  });
+
+  it("loads only recognized canonical cultivation values and leaves absent values unknown", async () => {
+    rpc.mockImplementation(async (name: string) => {
+      if (name === "garden_x_get_bootstrap")
+        return {
+          data: {
+            gardens: [
+              {
+                id: "garden-hydro",
+                name: "Hydro",
+                system_instance_id: "system-hydro",
+                system_instance_name: "Aera One",
+                system_definition_key: "aera-one-v1",
+                legacy_system_model: null,
+                position_capacity: 1,
+                map_layout: "custom_grid",
+                cover_photo_id: null,
+                kind: "hydroponic",
+                cultivation_method: "hydroponic",
+                place: "",
+                note: "",
+                sort_order: 0,
+                archived_at: null,
+                positions: [],
+              },
+              {
+                id: "garden-unknown",
+                name: "Unknown",
+                system_instance_id: "system-unknown",
+                system_instance_name: "Custom",
+                system_definition_key: null,
+                legacy_system_model: null,
+                position_capacity: 1,
+                map_layout: "custom_grid",
+                cover_photo_id: null,
+                kind: "hydroponic",
+                cultivation_method: "future_value",
+                place: "",
+                note: "",
+                sort_order: 1,
+                archived_at: null,
+                positions: [],
+              },
+            ],
+            plants: [],
+            events: [],
+            photos: [],
+            attention: [],
+          },
+          error: null,
+        };
+      if (
+        name === "garden_get_system_maintenance_events" ||
+        name === "garden_x_get_saved_films" ||
+        name === "garden_x_get_historical_photos" ||
+        name === "garden_x_get_invalidated_event_photos"
+      )
+        return { data: [], error: null };
+      throw new Error(`Unexpected RPC ${name}`);
+    });
+
+    const { state } = await loadGardenState();
+    expect(state.gardens.find((garden) => garden.id === "garden-hydro")?.cultivationMethod).toBe(
+      "hydroponic",
+    );
+    expect(
+      state.gardens.find((garden) => garden.id === "garden-unknown")?.cultivationMethod,
+    ).toBeNull();
+    expect(state.gardens.find((garden) => garden.id === "garden-hydro")?.systemDefinitionKey).toBe(
+      "aera-one-v1",
     );
   });
 });

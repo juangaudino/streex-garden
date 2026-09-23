@@ -52,6 +52,8 @@ export function NewGarden() {
       cover: coverChoices.find((choice) => choice.id === coverId)?.src ?? defaultCover(kind),
       place: place.trim(),
       note: setup?.hint ?? ui(language, "setupStillCompleting"),
+      cultivationMethod: setup?.cultivationMethod ?? null,
+      systemDefinitionKey: setup?.systemDefinitionKey ?? null,
       ...(machine && { machine }),
     });
     setOpen(false);

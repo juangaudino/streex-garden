@@ -1,4 +1,4 @@
-import type { GardenKind } from "./garden-data";
+import type { GardenCultivationMethod, GardenKind } from "./garden-data";
 
 /**
  * Known growing setups. A known system already defines its own physical
@@ -10,6 +10,10 @@ export interface GardenSetup {
   label: string;
   hint: string;
   kind: GardenKind;
+  /** Known only where the selected setup itself specifies the growing method. */
+  cultivationMethod?: GardenCultivationMethod;
+  /** Stable system identity; unlike the editable display name, this is suitable for evidence conditions. */
+  systemDefinitionKey?: string;
   /** Systems with positions declare them here. */
   system?: { name: string; pods: number };
 }
@@ -20,6 +24,8 @@ export const gardenSetups: GardenSetup[] = [
     label: "Aera One",
     hint: "Indoor hydroponic system · 6 positions",
     kind: "hydroponic",
+    cultivationMethod: "hydroponic",
+    systemDefinitionKey: "aera-one-v1",
     system: { name: "Aera One", pods: 6 },
   },
   {
@@ -27,6 +33,8 @@ export const gardenSetups: GardenSetup[] = [
     label: "Aera Twelve",
     hint: "Tall hydroponic tower · 12 positions",
     kind: "hydroponic",
+    cultivationMethod: "hydroponic",
+    systemDefinitionKey: "aera-twelve-v1",
     system: { name: "Aera Twelve", pods: 12 },
   },
   {
@@ -34,10 +42,25 @@ export const gardenSetups: GardenSetup[] = [
     label: "Leaf Cabinet",
     hint: "Indoor grow cabinet · 8 positions",
     kind: "indoor",
+    systemDefinitionKey: "leaf-cabinet-v1",
     system: { name: "Leaf Cabinet", pods: 8 },
   },
-  { id: "balcony", label: "Balcony pots", hint: "Pots and planters, no fixed positions", kind: "balcony" },
-  { id: "backyard", label: "Backyard beds", hint: "Open ground or raised beds", kind: "backyard" },
+  {
+    id: "balcony",
+    label: "Balcony pots",
+    hint: "Pots and planters, no fixed positions",
+    kind: "balcony",
+    cultivationMethod: "container",
+    systemDefinitionKey: "balcony-pots-v1",
+  },
+  {
+    id: "backyard",
+    label: "Backyard beds",
+    hint: "Open ground or raised beds",
+    kind: "backyard",
+    cultivationMethod: "soil",
+    systemDefinitionKey: "backyard-beds-v1",
+  },
   { id: "herb", label: "Herb corner", hint: "A small indoor herb collection", kind: "herb" },
   {
     id: "custom",

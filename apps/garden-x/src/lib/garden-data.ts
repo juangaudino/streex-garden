@@ -17,6 +17,8 @@ export const covers = { gardenIndoor, gardenBackyard, gardenBalcony };
 /* ---------------------------------------------------------------- types */
 
 export type GardenKind = "hydroponic" | "indoor" | "balcony" | "backyard" | "herb";
+/** Explicit growing medium/method. Null or absent means Garden X does not know. */
+export type GardenCultivationMethod = "hydroponic" | "soil" | "container";
 
 export type PlantStatus = "thriving" | "steady" | "watching" | "recovering";
 
@@ -56,12 +58,14 @@ export interface Garden {
   id: string;
   name: string;
   kind: GardenKind;
+  cultivationMethod?: GardenCultivationMethod | null;
   cover: string;
   coverPhotoId?: string | null;
   place: string;
   note: string;
   machine?: { name: string; pods: number };
   backendSystemInstanceId?: string;
+  systemDefinitionKey?: string | null;
   backendPositions?: Array<{
     id: string;
     number: number;

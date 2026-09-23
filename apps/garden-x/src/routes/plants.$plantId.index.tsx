@@ -83,6 +83,16 @@ export const Route = createFileRoute("/plants/$plantId/")({
 const tabs = ["History", "Timeline", "Photos", "Care", "Reference"] as const;
 type Tab = (typeof tabs)[number];
 
+function timelineEventText(event: { title: string; detail?: string }) {
+  return normalizeTimelineNote(
+    isTimelineTitleProjectionOfDetail(event.title, event.detail) ? event.detail : event.title,
+  );
+}
+
+function timelineEventNeedsExpansion(text: string) {
+  return text.length > 120;
+}
+
 function PlantProfile() {
   const { plantId } = Route.useParams();
   const store = useGarden();
@@ -96,6 +106,7 @@ function PlantProfile() {
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>(undefined);
   const [shareOpen, setShareOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+  const [expandedTimelineEvents, setExpandedTimelineEvents] = useState<Set<string>>(() => new Set());
   const [libraryCatalog, setLibraryCatalog] = useState<GardenLibraryManifest | null>(null);
   const [libraryCatalogError, setLibraryCatalogError] = useState<string | undefined>(undefined);
   const photoViewer = usePhotoViewer();
@@ -122,6 +133,15 @@ function PlantProfile() {
     setRecordFlow(flow);
     setRecordCare(care);
     setRecordOpen(true);
+  };
+
+  const toggleTimelineEvent = (eventId: string) => {
+    setExpandedTimelineEvents((current) => {
+      const next = new Set(current);
+      if (next.has(eventId)) next.delete(eventId);
+      else next.add(eventId);
+      return next;
+    });
   };
 
   const garden = store.gardens.find((g) => g.id === plant.gardenId)!;
@@ -448,13 +468,33 @@ function PlantProfile() {
                           <Icon className={e.milestone ? "h-4 w-4" : "h-3 w-3"} />
                         </span>
                         <div>
+                          {(() => {
+                            const text = timelineEventText(e);
+                            const expanded = expandedTimelineEvents.has(e.id);
+                            const expandable = timelineEventNeedsExpansion(text);
+                            return (
+                              <>
                           <h3
                             className={cn(
                               e.milestone ? "font-display text-2xl" : "text-sm font-medium",
+                              !expanded && expandable && "truncate",
                             )}
                           >
-                            {normalizeTimelineNote(isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title)}
+                            {text}
                           </h3>
+                          {expandable ? (
+                            <button
+                              type="button"
+                              aria-expanded={expanded}
+                              onClick={() => toggleTimelineEvent(e.id)}
+                              className="mt-1 text-xs font-medium text-primary underline-offset-4 hover:underline"
+                            >
+                              {ui(language, expanded ? "showLess" : "more")}
+                            </button>
+                          ) : null}
+                              </>
+                            );
+                          })()}
                           {e.detail && !isRedundantTimelineDetail(e.title, e.detail) && !isTimelineTitleProjectionOfDetail(e.title, e.detail) ? (
                             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                               {e.detail}
@@ -604,14 +644,33 @@ function PlantProfile() {
                       <Icon className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
+                      {(() => {
+                        const text = timelineEventText(e);
+                        const expanded = expandedTimelineEvents.has(e.id);
+                        const expandable = timelineEventNeedsExpansion(text);
+                        return (
+                          <div className="min-w-0">
                       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
-                        <p className="truncate text-sm font-medium">
-                          {normalizeTimelineNote(isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title)}
+                        <p className={cn("text-sm font-medium", !expanded && expandable && "truncate")}>
+                          {text}
                         </p>
                         <span className="numeral shrink-0 text-xs text-muted-foreground">
                           {formatDate(e.daysAgo)}
                         </span>
                       </div>
+                      {expandable ? (
+                        <button
+                          type="button"
+                          aria-expanded={expanded}
+                          onClick={() => toggleTimelineEvent(e.id)}
+                          className="mt-1 text-xs font-medium text-primary underline-offset-4 hover:underline"
+                        >
+                          {ui(language, expanded ? "showLess" : "more")}
+                        </button>
+                      ) : null}
+                          </div>
+                        );
+                      })()}
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
                       </p>

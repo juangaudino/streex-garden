@@ -88,7 +88,7 @@ export function HistoryShareDialog({ plant, photos, events, open, onOpenChange }
 
   return (
     <Dialog open={open} onOpenChange={(next) => { onOpenChange(next); if (!next) setPreview(false); }}>
-      <DialogContent className={cn("max-h-[92vh] overflow-y-auto rounded-3xl border-border/70 p-0", preview ? "sm:max-w-5xl" : "sm:max-w-2xl")}>
+      <DialogContent className={cn("max-h-[92vh] rounded-3xl border-border/70 p-0", preview ? "sm:max-w-5xl" : "sm:max-w-2xl")}>
         {preview ? (
           <div className="relative">
             <div className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-border/70 bg-background/90 px-4 py-3 backdrop-blur-xl sm:px-6">

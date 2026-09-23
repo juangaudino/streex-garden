@@ -62,7 +62,7 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
         <Settings2 /> {ui(language, "editGarden")}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="box-border max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] min-w-0 max-w-[calc(100vw-1rem)] overflow-x-hidden overflow-y-auto rounded-3xl p-4 [&>*]:min-w-0 sm:max-h-[88vh] sm:w-full sm:max-w-lg sm:p-6">
+        <DialogContent className="box-border max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] min-w-0 max-w-[calc(100vw-1rem)] rounded-3xl p-4 [&>*]:min-w-0 sm:max-h-[88vh] sm:w-full sm:max-w-lg sm:p-6">
           <DialogHeader className="min-w-0 text-left">
             <p className="eyebrow">{ui(language, "gardenSettings")}</p>
           <DialogTitle className="font-display text-2xl font-medium">{ui(language, "makeGardenYours")}</DialogTitle>

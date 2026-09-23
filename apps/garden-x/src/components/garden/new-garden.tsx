@@ -65,7 +65,7 @@ export function NewGarden() {
         <Plus /> {ui(language, "newGarden")}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] min-w-0 max-w-lg overflow-x-hidden overflow-y-auto rounded-3xl p-4 [&>*]:min-w-0 sm:max-h-[88vh] sm:w-full sm:p-6">
+        <DialogContent className="max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] min-w-0 max-w-lg rounded-3xl p-4 [&>*]:min-w-0 sm:max-h-[88vh] sm:w-full sm:p-6">
           <DialogHeader className="min-w-0 text-left">
             <div className="flex items-center gap-2">
               {step > 0 ? (

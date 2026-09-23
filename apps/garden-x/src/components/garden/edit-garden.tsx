@@ -55,25 +55,36 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
 
   const save = async () => {
     if (saving) return;
+    if (!name.trim()) {
+      toast.error(ui(language, "gardenNameRequired"));
+      return;
+    }
+    if (garden.machine && !machineName.trim()) {
+      toast.error(ui(language, "systemNameRequired"));
+      return;
+    }
     setSaving(true);
-    const machine = machineName.trim() ? { name: machineName.trim(), pods: Math.max(1, Math.min(24, pods)) } : undefined;
-    updateGarden(garden.id, {
-      name: name.trim() || garden.name,
-      place: place.trim(),
-      note: note.trim(),
-      ...(machine !== undefined && { machine }),
-    });
     try {
-      if (garden.backendSystemInstanceId) {
-        const nextCoverId = pendingCover
-          ? await uploadGardenCoverPhoto(garden.id, pendingCover.src, pendingCover.name)
-          : coverPhotoId === "auto"
-            ? null
-            : coverPhotoId;
-        if (!pendingCover) await setGardenCoverPhoto(garden.id, nextCoverId);
-        updateGarden(garden.id, { coverPhotoId: nextCoverId });
-      } else {
-        updateGarden(garden.id, { coverPhotoId: coverPhotoId === "auto" ? null : coverPhotoId });
+      const machine = garden.machine
+        ? { name: machineName.trim(), pods: Math.max(1, Math.min(24, pods)) }
+        : undefined;
+      await updateGarden(garden.id, {
+        name: name.trim(),
+        place: place.trim(),
+        note: note.trim(),
+        ...(machine !== undefined && { machine }),
+      });
+
+      const nextCoverId = pendingCover
+        ? await uploadGardenCoverPhoto(garden.id, pendingCover.src, pendingCover.name)
+        : coverPhotoId === "auto"
+          ? null
+          : coverPhotoId;
+      if (garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null) && !pendingCover) {
+        await setGardenCoverPhoto(garden.id, nextCoverId);
+      }
+      if (!garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null)) {
+        await updateGarden(garden.id, { coverPhotoId: nextCoverId });
       }
       setOpen(false);
       toast.success(ui(language, "gardenUpdated"));

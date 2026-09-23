@@ -105,7 +105,7 @@ interface StoreApi extends GardenState {
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
   movePlant: (plantId: string, targetPositionId: string, movedDaysAgo: number) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
-  updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
+  updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => Promise<void>;
   loadGardenCoverPhotos: (gardenId: string) => Promise<Photo[]>;
   setGardenCoverPhoto: (gardenId: string, photoId: string | null) => Promise<void>;
   uploadGardenCoverPhoto: (gardenId: string, src: string, originalFilename?: string) => Promise<string>;
@@ -685,12 +685,14 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           plants: s.plants.map((p) => (p.id === id ? { ...p, ...patch } : p)),
         }));
       },
-      updateGarden: (id, patch) => {
+      updateGarden: async (id, patch) => {
         const current = state.gardens.find((g) => g.id === id);
-        if (current?.backendSystemInstanceId)
-          void updateGardenRecord({ ...current, ...patch })
-            .then(() => refreshFromBackend("mutation"))
-            .catch(() => undefined);
+        if (!current) throw new Error("Garden not found");
+        if (current.backendSystemInstanceId) {
+          await updateGardenRecord({ ...current, ...patch });
+          await refreshFromBackend("mutation");
+          return;
+        }
         setState((s) => ({
           ...s,
           gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, ...patch } : garden)),

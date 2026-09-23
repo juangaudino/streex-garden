@@ -1395,9 +1395,10 @@ export async function updateCustomSystemLayoutRecord(
 }
 
 export async function updateGardenRecord(garden: Garden): Promise<void> {
-  const { error } = await getSupabaseClient().rpc("garden_x_update_garden_with_system", {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_garden_settings", {
     p_request_id: crypto.randomUUID(),
     p_garden_id: garden.id,
+    p_system_instance_id: garden.backendSystemInstanceId,
     p_name: garden.name,
     p_kind: garden.kind,
     p_place: garden.place,

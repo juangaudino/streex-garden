@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarClock,
   ChevronRight,
-  GripVertical,
   Leaf,
   MessageCircle,
   MoreHorizontal,
@@ -29,6 +28,7 @@ import { ConfidenceBar, ProvenanceTag, SectionTitle, maintenanceIcons } from "@/
 import type { MaintenanceType, Plant } from "@/lib/garden-data";
 import { ui } from "@/lib/ui-copy";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
+import { CareSessionGardenList } from "@/components/garden/care-session-garden-list";
 import { runAiCheckDraft, askGardenAi, type AiCheckProposal } from "@/lib/garden-backend";
 import { buildAiCheckPresentation, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
 import type { AnalysisResult } from "@/lib/garden-logic";
@@ -108,7 +108,6 @@ function Care() {
   const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
   const [gardenOrder, setGardenOrder] = useState<string[]>([]);
   const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(null);
-  const [draggedGardenId, setDraggedGardenId] = useState<string | null>(null);
   const [workingPhoto, setWorkingPhoto] = useState<{ key: string; dataUrl: string } | null>(null);
 
   useEffect(() => {
@@ -177,13 +176,6 @@ function Care() {
   const toggleGarden = (gardenId: string) => {
     const current = selectedGardenIds ?? orderedGardens;
     setSelectedGardenIds(toggleCareGardenSelection(current, gardenId));
-  };
-
-  const moveGarden = (event: DragEvent<HTMLDivElement>, targetId: string) => {
-    event.preventDefault();
-    if (!draggedGardenId || draggedGardenId === targetId) return;
-    setGardenOrder(reorderCareGarden(orderedGardens, draggedGardenId, targetId, (garden) => garden.id));
-    setDraggedGardenId(null);
   };
 
   const focusSessionSetup = () => {
@@ -300,21 +292,24 @@ function Care() {
             </div>
             <p className="text-xs text-muted-foreground">{activePlants.filter((plant) => selectedGardens.includes(plant.gardenId)).length} {ui(language, "plantsInGarden")}</p>
           </div>
-          <div className="mt-3 divide-y divide-border/70">
-            {orderedGardens.map((gardenId) => {
-              const garden = sessionGardens.find((item) => item.id === gardenId)!;
-              const count = activePlants.filter((plant) => plant.gardenId === gardenId).length;
-              const selected = selectedGardens.includes(gardenId);
-              return (
-                <div key={garden.id} draggable onDragStart={() => setDraggedGardenId(garden.id)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => moveGarden(event, garden.id)} onDragEnd={() => setDraggedGardenId(null)} className={`flex items-center gap-3 py-3 ${draggedGardenId === garden.id ? "opacity-45" : ""}`}>
-                  <button type="button" draggable onDragStart={(event) => { event.stopPropagation(); setDraggedGardenId(garden.id); }} onDragEnd={() => setDraggedGardenId(null)} className="grid h-9 w-8 shrink-0 cursor-grab place-items-center text-muted-foreground active:cursor-grabbing" aria-label={`${ui(language, "reorderGarden")}: ${garden.name}`}><GripVertical className="h-4 w-4" /></button>
-                  <input type="checkbox" checked={selected} onChange={() => toggleGarden(garden.id)} aria-label={`${selected ? ui(language, "selected") : ui(language, "notSelected")}: ${garden.name}`} className="h-4 w-4 accent-primary" />
-                  <span className="min-w-0 flex-1 truncate text-sm font-medium">{garden.name}<span className="ml-2 text-xs font-normal text-muted-foreground">{garden.machine?.name}</span></span>
-                  <span className="text-xs text-muted-foreground">{count} {ui(language, "plantsInGarden")}</span>
-                </div>
-              );
+          <CareSessionGardenList
+            gardens={orderedGardens.flatMap((gardenId) => {
+              const garden = sessionGardens.find((item) => item.id === gardenId);
+              return garden ? [{ id: garden.id, name: garden.name, systemName: garden.machine?.name, plantCount: activePlants.filter((plant) => plant.gardenId === garden.id).length }] : [];
             })}
-          </div>
+            selectedIds={selectedGardens}
+            selectedLabel={ui(language, "selected")}
+            notSelectedLabel={ui(language, "notSelected")}
+            reorderLabel={ui(language, "reorderGarden")}
+            plantsLabel={ui(language, "plantsInGarden")}
+            onToggle={toggleGarden}
+            onReorder={(fromId, toId) => setGardenOrder((order) => reorderCareGarden(
+              [...order.filter((id) => orderedGardens.includes(id)), ...orderedGardens.filter((id) => !order.includes(id))],
+              fromId,
+              toId,
+              (id) => id,
+            ))}
+          />
           <Button className="mt-4 w-full" onClick={startSession} disabled={!selectedGardens.length || !activePlants.some((plant) => selectedGardens.includes(plant.gardenId))}>
             {ui(language, "startSession")} <ArrowRight className="h-4 w-4" />
           </Button>

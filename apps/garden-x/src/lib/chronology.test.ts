@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { isTimelineTitleProjectionOfDetail, plantEvents, plantTimeline, sortPhotosByCapturedAt } from "./garden-logic";
+import {
+  isTimelineTitleProjectionOfDetail,
+  normalizeTimelineNote,
+  plantEvents,
+  plantTimeline,
+  sortPhotosByCapturedAt,
+} from "./garden-logic";
 import type { Photo, PlantEvent } from "./garden-data";
 
 const photo = (id: string, capturedAt: string | null, daysAgo: number): Photo => ({
@@ -126,5 +132,15 @@ describe("chronology projections", () => {
     const detail = "3/3 semillas germinadas y vivas. Tallos firmes, hojas sanas y nuevo crecimiento central.";
     expect(isTimelineTitleProjectionOfDetail(detail.slice(0, 50), detail)).toBe(true);
     expect(isTimelineTitleProjectionOfDetail("Harvest", "Harvest from the outer leaves.")).toBe(false);
+  });
+
+  it("collapses the legacy title-prefix duplication inside a persisted note", () => {
+    const note = "3/3 semillas germinadas y vivas. Tallos firmes, hojas sanas — 3/3 semillas germinadas y vivas. Tallos firmes, hojas sanas y nuevo crecimiento central.";
+    expect(normalizeTimelineNote(note)).toBe(
+      "3/3 semillas germinadas y vivas. Tallos firmes, hojas sanas y nuevo crecimiento central.",
+    );
+    expect(normalizeTimelineNote("Water + nutrients — Reservoir refreshed.")).toBe(
+      "Water + nutrients — Reservoir refreshed.",
+    );
   });
 });

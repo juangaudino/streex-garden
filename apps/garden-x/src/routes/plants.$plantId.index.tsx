@@ -28,6 +28,7 @@ import {
   storyFacts,
   isRedundantTimelineDetail,
   isTimelineTitleProjectionOfDetail,
+  normalizeTimelineNote,
   latestPlantPhoto,
   plantTimeline,
   sortPhotosByCapturedAt,
@@ -452,7 +453,7 @@ function PlantProfile() {
                               e.milestone ? "font-display text-2xl" : "text-sm font-medium",
                             )}
                           >
-                            {isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title}
+                            {normalizeTimelineNote(isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title)}
                           </h3>
                           {e.detail && !isRedundantTimelineDetail(e.title, e.detail) && !isTimelineTitleProjectionOfDetail(e.title, e.detail) ? (
                             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
@@ -605,7 +606,7 @@ function PlantProfile() {
                     <div className="min-w-0">
                       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
                         <p className="truncate text-sm font-medium">
-                          {isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title}
+                          {normalizeTimelineNote(isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title)}
                         </p>
                         <span className="numeral shrink-0 text-xs text-muted-foreground">
                           {formatDate(e.daysAgo)}

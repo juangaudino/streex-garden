@@ -29,6 +29,7 @@ import { getSupabaseClient } from "./supabase";
 import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
+import { normalizeTimelineNote } from "./garden-logic";
 
 export type GardenMaintenanceAction = "water_change" | "nutrients" | "water_and_nutrients";
 
@@ -197,7 +198,7 @@ function provenance(type: string): Provenance {
     : "recorded";
 }
 function titleFor(e: BootstrapEvent): string {
-  if (e.note?.trim()) return e.note.trim().slice(0, 80);
+  if (e.note?.trim()) return normalizeTimelineNote(e.note).slice(0, 80);
   if (e.event_type === "system_maintenance") {
     const action = String(e.event_data?.class ?? "");
     if (action === "water_and_nutrients") return "Water + nutrients";
@@ -702,7 +703,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
       title: titleFor(e),
-      ...(e.note ? { detail: e.note } : {}),
+      ...(e.note ? { detail: normalizeTimelineNote(e.note) } : {}),
       provenance: provenance(e.event_type),
       backendEventType: e.event_type,
       backendRevision: e.revision,
@@ -1142,7 +1143,7 @@ async function recordObservation(
   growCycleId: string,
   event: Omit<PlantEvent, "id">,
 ): Promise<string> {
-  const note = [event.title, event.detail].filter(Boolean).join(" — ").slice(0, 1000);
+  const note = (event.detail?.trim() || event.title.trim()).slice(0, 1000);
   const { data, error } = await getSupabaseClient().rpc("garden_x_create_observation", {
     p_request_id: crypto.randomUUID(),
     p_grow_cycle_id: growCycleId,

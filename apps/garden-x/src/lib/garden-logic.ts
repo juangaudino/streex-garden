@@ -252,14 +252,29 @@ export const plantEvents = (events: PlantEvent[], plantId: string) =>
 export function isRedundantTimelineDetail(title: string, detail?: string | null): boolean {
   if (!detail?.trim()) return true;
   const normalize = (value: string) => value.trim().toLocaleLowerCase().replace(/[.!?,;:()[\]{}"“”‘’]+/g, "").replace(/\s+/g, " ");
-  return normalize(title) === normalize(detail);
+  return normalize(normalizeTimelineNote(title)) === normalize(normalizeTimelineNote(detail));
+}
+
+/**
+ * Older observation writes stored `title — full note` as the note itself.
+ * Collapse that deterministic prefix duplication without touching the
+ * canonical event row.
+ */
+export function normalizeTimelineNote(value?: string | null): string {
+  const text = value?.trim() ?? "";
+  if (!text) return "";
+  const separator = text.match(/^(.{20,}?)\s+[—–-]\s+(.+)$/s);
+  if (!separator) return text;
+  const left = separator[1].replace(/\s+/g, " ").trim();
+  const right = separator[2].replace(/\s+/g, " ").trim();
+  return right.toLocaleLowerCase().startsWith(left.toLocaleLowerCase()) ? right : text;
 }
 
 /** Event titles derived by truncating the full note should not render the note twice. */
 export function isTimelineTitleProjectionOfDetail(title: string, detail?: string | null): boolean {
   if (!detail?.trim()) return false;
-  const normalizedTitle = title.trim().toLocaleLowerCase().replace(/\s+/g, " ");
-  const normalizedDetail = detail.trim().toLocaleLowerCase().replace(/\s+/g, " ");
+  const normalizedTitle = normalizeTimelineNote(title).toLocaleLowerCase().replace(/\s+/g, " ");
+  const normalizedDetail = normalizeTimelineNote(detail).toLocaleLowerCase().replace(/\s+/g, " ");
   return normalizedTitle.length >= 40 && normalizedDetail.length > normalizedTitle.length && normalizedDetail.startsWith(normalizedTitle);
 }
 

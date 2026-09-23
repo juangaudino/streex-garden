@@ -6,7 +6,7 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession } }),
 }));
 
-import { runAiCheck, runAiCheckDraft } from "./garden-backend";
+import { askGardenAi, runAiCheck, runAiCheckDraft } from "./garden-backend";
 
 describe("AI Check request isolation", () => {
   const fetchMock = vi.fn();
@@ -67,5 +67,24 @@ describe("AI Check request isolation", () => {
       draft_image_data_url: "data:image/jpeg;base64,ZmFrZQ==",
       language: "en",
     });
+  });
+
+  it("sends the temporary Care photo and check context through the existing Ask Garden operation", async () => {
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: async () => ({ answer: { answer_type: "answer", answer: "Review outer leaves.", confirmed_facts: [], suggested_next_actions: [] } }),
+    });
+    await askGardenAi("Can I harvest?", [{ question: "What does the check say?", answer: "Outer leaves are visible." }], {
+      photoDataUrl: "data:image/jpeg;base64,ZmFrZQ==",
+      context: "Current care photo is attached; AI Check result is unconfirmed.",
+    });
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "ask_garden",
+      question: "Can I harvest?",
+      care_review_photo_data_url: "data:image/jpeg;base64,ZmFrZQ==",
+      care_review_context: "Current care photo is attached; AI Check result is unconfirmed.",
+    });
+    expect(request.conversation).toHaveLength(1);
   });
 });

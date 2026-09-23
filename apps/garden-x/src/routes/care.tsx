@@ -21,6 +21,7 @@ import {
   lastReview,
   openTasks,
   plantEvents,
+  latestPlantPhoto,
   relativeDay,
 } from "@/lib/garden-logic";
 import { PageHeader } from "@/components/garden/shell";
@@ -30,7 +31,7 @@ import { ui } from "@/lib/ui-copy";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
 import { CareSessionGardenList } from "@/components/garden/care-session-garden-list";
 import { runAiCheckDraft, askGardenAi, type AiCheckProposal } from "@/lib/garden-backend";
-import { buildAiCheckPresentation, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
+import { buildAiCheckPresentation, projectCareActions, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
 import type { AnalysisResult } from "@/lib/garden-logic";
 import { normalizePhotoDataUrl } from "@/lib/photo-input";
 import {
@@ -42,9 +43,12 @@ import {
   parseCareSessionQueue,
   buildCarePlantQueue,
   canRunCareAiCheck,
+  careInspectionForKey,
   careFlowCanReuseReviewPhoto,
   careReviewContextMessage,
   careReviewPhotoKey,
+  createCareInspectionState,
+  type CareInspectionState,
   reorderCareGarden,
   toggleCareGardenSelection,
 } from "@/lib/care-session";
@@ -108,7 +112,6 @@ function Care() {
   const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
   const [gardenOrder, setGardenOrder] = useState<string[]>([]);
   const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(null);
-  const [workingPhoto, setWorkingPhoto] = useState<{ key: string; dataUrl: string } | null>(null);
 
   useEffect(() => {
     if (!queue.length) {
@@ -152,7 +155,7 @@ function Care() {
     setSummary(emptySummary());
     setFinished(false);
     setRecordedForReview(false);
-    setWorkingPhoto(null);
+    store.clearCareInspection();
   };
 
   const leaveSession = () => {
@@ -161,14 +164,14 @@ function Care() {
     setFinished(false);
     setRecordOpen(false);
     setRecordedForReview(false);
-    setWorkingPhoto(null);
+    store.clearCareInspection();
     setSelectedGardenIds(null);
   };
 
   const advance = (reviewed: boolean) => {
     if (reviewed) setSummary((value) => ({ ...value, reviewed: value.reviewed + 1 }));
     setRecordedForReview(false);
-    setWorkingPhoto(null);
+    store.clearCareInspection();
     if (index + 1 >= queue.length) setFinished(true);
     else setIndex((value) => value + 1);
   };
@@ -197,7 +200,8 @@ function Care() {
 
   if (queue.length > 0) {
     const currentPhotoKey = current ? careReviewPhotoKey(current.id, current.backendGrowCycleId) : "";
-    const currentWorkingPhoto = workingPhoto?.key === currentPhotoKey ? workingPhoto.dataUrl : undefined;
+    const currentInspection = careInspectionForKey(store.careInspection, currentPhotoKey) ?? (current ? createCareInspectionState(currentPhotoKey) : undefined);
+    const currentWorkingPhoto = currentInspection?.workingPhoto;
     return (
       <div className="min-h-screen pb-24">
         <header className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-border/70 px-5 py-4 sm:px-8 lg:px-12">
@@ -219,11 +223,13 @@ function Care() {
             key={`${current.id}:${current.backendGrowCycleId ?? "cycle"}`}
             gardenName={store.gardens.find((garden) => garden.id === current.gardenId)?.name ?? "Garden"}
             lastReview={lastReview(store.events, current.id)}
-            photoSrc={store.photos.find((photo) => photo.id === current.heroPhotoId)?.src}
+            photoSrc={latestPlantPhoto(store.photos, current.id)?.src}
             workingPhoto={currentWorkingPhoto}
-            onWorkingPhoto={(dataUrl) => setWorkingPhoto(dataUrl ? { key: currentPhotoKey, dataUrl } : null)}
+            inspection={currentInspection!}
+            onInspectionPatch={(patch, requestId) => store.patchCareInspection(currentPhotoKey, patch, requestId)}
             recentEvent={plantEvents(store.events, current.id)[0]}
             contextEventCount={plantEvents(store.events, current.id).length}
+            recentHistory={plantEvents(store.events, current.id).slice(0, 8).map((event) => `${event.title}${event.occurredAt ? ` · ${event.occurredAt}` : ` · ${relativeDay(event.daysAgo)}`}`)}
             sessionItem={index + 1}
             sessionTotal={queue.length}
             attention={tasks.find((task) => task.plantId === current.id)}
@@ -353,9 +359,11 @@ export function PlantReview({
   lastReview,
   photoSrc,
   workingPhoto,
-  onWorkingPhoto,
+  inspection,
+  onInspectionPatch,
   recentEvent,
   contextEventCount,
+  recentHistory,
   sessionItem,
   sessionTotal,
   attention,
@@ -371,9 +379,11 @@ export function PlantReview({
   lastReview?: { title: string; daysAgo: number } | undefined;
   photoSrc?: string | undefined;
   workingPhoto?: string | undefined;
-  onWorkingPhoto: (dataUrl: string | null) => void;
+  inspection: CareInspectionState;
+  onInspectionPatch: (patch: Partial<CareInspectionState>, expectedRequestId?: string) => void;
   recentEvent?: { title: string; daysAgo: number } | undefined;
   contextEventCount: number;
+  recentHistory: string[];
   sessionItem: number;
   sessionTotal: number;
   attention?: { label: string; dueInDays: number } | undefined;
@@ -383,27 +393,38 @@ export function PlantReview({
   recordedForReview: boolean;
   careReturnSearch: ReturnType<typeof careSessionSearch>;
 }) {
-  const [checkPhase, setCheckPhase] = useState<"idle" | "scanning" | "done" | "error">("idle");
-  const [checkProposal, setCheckProposal] = useState<AiCheckProposal | null>(null);
+  const { checkPhase, checkProposal, conversation } = inspection;
   const [question, setQuestion] = useState("");
-  const [conversation, setConversation] = useState<Array<{ question: string; answer: string; facts: string[] }>>([]);
   const [chatBusy, setChatBusy] = useState(false);
-  const checkRequest = useRef<string | null>(null);
+  const checkRequest = useRef(inspection.requestGuardId);
+  const updateInspection = (patch: Partial<CareInspectionState>) => onInspectionPatch(patch);
   const reviewImage = workingPhoto ?? null;
   const canCheck = canRunCareAiCheck(plant.backendGrowCycleId, reviewImage);
   const result: AnalysisResult | null = checkProposal
     ? buildAiCheckPresentation(checkProposal, language, [ui(language, "careReviewPhoto"), `${contextEventCount} ${ui(language, "recordedEvents")}`])
     : null;
+  const careActions = checkProposal ? projectCareActions(checkProposal, language) : [];
 
   const readReviewPhoto = (file: File) => {
+    const photoReadToken = crypto.randomUUID();
+    checkRequest.current = photoReadToken;
+    updateInspection({ requestGuardId: photoReadToken });
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === "string") {
-        onWorkingPhoto(normalizePhotoDataUrl(reader.result, file));
-        checkRequest.current = null;
-        setCheckProposal(null);
-        setCheckPhase("idle");
-        setConversation([]);
+        const isCurrentRead = checkRequest.current === photoReadToken;
+        onInspectionPatch({
+          workingPhoto: normalizePhotoDataUrl(reader.result, file),
+          checkRequestId: null,
+          requestGuardId: null,
+          checkProposal: null,
+          checkPhase: "idle",
+          conversation: [],
+        }, photoReadToken);
+        if (isCurrentRead) {
+          checkRequest.current = null;
+          setQuestion("");
+        }
       }
     };
     reader.readAsDataURL(file);
@@ -411,26 +432,26 @@ export function PlantReview({
 
   const runCheck = () => {
     if (!reviewImage || !plant.backendGrowCycleId || checkPhase === "scanning") return;
-    const requestId = crypto.randomUUID();
-    checkRequest.current = requestId;
-    setCheckPhase("scanning");
-    setCheckProposal(null);
-    setConversation([]);
+    const runToken = crypto.randomUUID();
+    checkRequest.current = runToken;
+    updateInspection({ checkRequestId: null, requestGuardId: runToken, checkPhase: "scanning", checkProposal: null, conversation: [] });
     void runAiCheckDraft(plant.backendGrowCycleId, reviewImage, language)
-      .then(({ proposal }) => {
-        if (checkRequest.current !== requestId) return;
-        setCheckProposal(proposal);
-        setCheckPhase("done");
+      .then(({ proposal, requestId }) => {
+        if (checkRequest.current !== runToken) return;
+        onInspectionPatch({ checkProposal: proposal, checkPhase: "done", checkRequestId: requestId, requestGuardId: null }, runToken);
       })
       .catch(() => {
-        if (checkRequest.current === requestId) setCheckPhase("error");
+        if (checkRequest.current === runToken) onInspectionPatch({ checkPhase: "error", requestGuardId: null }, runToken);
       });
   };
 
   const askAboutCheck = async () => {
     const clean = question.trim();
-    if (!clean || chatBusy || !checkProposal || !plant.backendGrowCycleId) return;
+    if (!clean || chatBusy || !checkProposal || !plant.backendGrowCycleId || !reviewImage) return;
+    const chatRequestToken = crypto.randomUUID();
+    checkRequest.current = chatRequestToken;
     setQuestion("");
+    updateInspection({ requestGuardId: chatRequestToken });
     setChatBusy(true);
     const context = careReviewContextMessage({
       plantId: plant.id,
@@ -441,22 +462,20 @@ export function PlantReview({
       sessionItem,
       sessionTotal,
       photoSelected: Boolean(reviewImage),
-      headline: checkProposal.headline,
-      observations: checkProposal.observations,
-      interpretations: checkProposal.interpretations,
-      uncertainty: checkProposal.uncertainty,
+      checkProposal,
+      recentHistory,
     });
     const prior = conversation.slice(-3).map((item) => ({ question: item.question, answer: [...item.facts, item.answer].join(" ").slice(0, 500) }));
     try {
-      const answer = await askGardenAi(clean, [context, ...prior]);
+      const answer = await askGardenAi(clean, [context, ...prior], { photoDataUrl: reviewImage, context: context.answer });
       const facts = answer.confirmed_facts.map((fact) => fact.claim);
-      setConversation((items) => [...items, {
+      onInspectionPatch({ conversation: [...conversation, {
         question: clean,
         answer: answer.answer,
         facts,
-      }]);
+      }], requestGuardId: null }, chatRequestToken);
     } catch {
-      setConversation((items) => [...items, { question: clean, answer: ui(language, "careAskUnavailable"), facts: [] }]);
+      onInspectionPatch({ conversation: [...conversation, { question: clean, answer: ui(language, "careAskUnavailable"), facts: [] }], requestGuardId: null }, chatRequestToken);
     } finally {
       setChatBusy(false);
     }
@@ -466,7 +485,7 @@ export function PlantReview({
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-secondary shadow-lift sm:aspect-[16/10]">
         {reviewImage ? <img src={reviewImage} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : photoSrc ? <img src={photoSrc} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : null}
-        <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="absolute right-3 top-3 z-20 rounded-2xl border border-white/20 bg-black/25 p-1.5 backdrop-blur-md [&_button]:h-8 [&_button]:px-2 [&_button]:text-xs" />
+        <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="absolute right-3 top-3 z-20 rounded-2xl border border-white/20 bg-black/20 p-1.5 backdrop-blur-xl [&_button]:!min-h-11 [&_button]:!rounded-full [&_button]:!border-white/30 [&_button]:!bg-white/15 [&_button]:!px-3 [&_button]:!text-white [&_button]:!shadow-none [&_button]:backdrop-blur-md [&_button]:hover:!bg-white/25 [&_button]:focus-visible:!ring-white/80 [&_button]:focus-visible:!ring-offset-0" />
         <div className="veil absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
           <p className="text-xs uppercase text-background/70">{gardenName}{plant.slot ? ` · ${plant.slot}` : ""}</p>
@@ -545,18 +564,36 @@ export function PlantReview({
           {checkPhase === "error" ? <p className="mt-3 text-sm text-muted-foreground">{ui(language, "analysisUnavailableBody")}</p> : null}
           {result ? (
             <>
-              <h3 className="mt-3 font-display text-lg">{result.headline}</h3>
-              {result.summary ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.summary}</p> : null}
-              <div className="mt-3"><ConfidenceBar confidence={result.confidence} /></div>
-              {result.findings.map((finding, index) => (
-                <div key={`${finding.kind}-${index}`} className="mt-4 border-t border-border/60 pt-3">
-                  <ProvenanceTag kind={finding.kind === "inference" ? "inferred" : finding.kind} confidence={finding.confidence} />
-                  {finding.title ? <p className="mt-2 text-sm font-medium">{finding.title}</p> : null}
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{finding.body}</p>
-                  {shouldShowFindingConfidence(finding, result.confidence) ? <p className="mt-1 text-xs text-inference">{ui(language, "confidence")}: {ui(language, finding.confidence === "high" ? "confidenceHigh" : finding.confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</p> : null}
+              {careActions.length ? (
+                <div className="mt-4 border-t border-border/60 pt-4">
+                  <h3 className="eyebrow">{ui(language, "whatToDoToday")}</h3>
+                  <div className="mt-3 space-y-3">
+                    {careActions.map((action) => (
+                      <div key={`${action.key}-${action.label}`}>
+                        <p className="text-sm font-medium">{action.label}</p>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{action.detail}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-              <p className="mt-4 text-xs text-muted-foreground">{ui(language, "savingDoesNotChange")}</p>
+              ) : null}
+              <details className="mt-4 border-t border-border/60 pt-3">
+                <summary className="cursor-pointer text-sm font-medium text-primary">{ui(language, "viewFullAnalysis")}</summary>
+                <div className="pt-2">
+                  <h3 className="font-display text-lg">{result.headline}</h3>
+                  {result.summary ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.summary}</p> : null}
+                  <div className="mt-3"><ConfidenceBar confidence={result.confidence} /></div>
+                  {result.findings.map((finding, index) => (
+                    <div key={`${finding.kind}-${index}`} className="mt-4 border-t border-border/60 pt-3">
+                      <ProvenanceTag kind={finding.kind === "inference" ? "inferred" : finding.kind} confidence={finding.confidence} />
+                      {finding.title ? <p className="mt-2 text-sm font-medium">{finding.title}</p> : null}
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{finding.body}</p>
+                      {shouldShowFindingConfidence(finding, result.confidence) ? <p className="mt-1 text-xs text-inference">{ui(language, "confidence")}: {ui(language, finding.confidence === "high" ? "confidenceHigh" : finding.confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</p> : null}
+                    </div>
+                  ))}
+                  <p className="mt-4 text-xs text-muted-foreground">{ui(language, "savingDoesNotChange")}</p>
+                </div>
+              </details>
               <div className="mt-4 space-y-3 border-t border-border/60 pt-4">
                 {conversation.map((item, index) => (
                   <div key={`${item.question}-${index}`} className="space-y-2 text-sm">

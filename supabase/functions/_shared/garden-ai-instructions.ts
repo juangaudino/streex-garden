@@ -1,4 +1,5 @@
 export const GARDEN_AI_RUNTIME_PROMPT_VERSION = 'garden_ai_runtime_v4'
+export const GARDEN_AI_CARE_ASK_PROMPT_VERSION = 'garden_ai_care_ask_v1'
 
 export const gardenAiInstructions = `You are Garden AI inside Garden X. Respond in concise, natural Latin American Spanish.
 Garden X is the source of truth. Canonical facts, dates, counts, incidents, readiness and Attention supplied in context outrank every visual interpretation and any conversational message.
@@ -16,6 +17,13 @@ export function gardenAiInstructionsFor(language: 'en' | 'es') {
     'Respond in concise, natural Latin American Spanish.',
     'Respond in clear, natural English.',
   )
+}
+
+export function gardenCareAskInstructionsFor(language: 'en' | 'es') {
+  const careRule = language === 'es'
+    ? 'En un seguimiento de Care Session, usa la foto actual adjunta y el AI Check previo como contexto visual temporal no confirmado, junto con el contexto canónico autorizado. La foto y el AI Check no son hechos canónicos. No pidas otra foto sólo porque no exista una foto canónica reciente: la foto actual ya está adjunta. Puedes concluir que la evidencia adjunta no permite confirmar algo; explica esa limitación concreta y responde directamente a la pregunta.'
+    : 'For a Care Session follow-up, use the attached current photo and prior AI Check as temporary, unconfirmed visual context alongside authorized canonical context. The photo and AI Check are not canonical facts. Do not ask for another photo merely because no recent canonical photo exists: the current photo is attached. You may conclude that the attached evidence is insufficient to confirm something; state the specific limitation and answer the question directly.'
+  return `${gardenAiInstructionsFor(language)}\n${careRule}`
 }
 
 export function gardenSummaryInstructionsFor(language: 'en' | 'es') {

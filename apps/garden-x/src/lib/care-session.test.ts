@@ -12,6 +12,8 @@ import {
   canRunCareAiCheck,
   careReviewContextMessage,
   careReviewPhotoKey,
+  careInspectionForKey,
+  createCareInspectionState,
   reorderCareGarden,
   toggleCareGardenSelection,
 } from "./care-session";
@@ -110,6 +112,13 @@ describe("Care Session garden setup and current review context", () => {
     expect(careReviewPhotoKey("plant-a", "cycle-a")).not.toBe(careReviewPhotoKey("plant-a", "cycle-b"));
   });
 
+  it("restores only the inspection state for the exact plant and cycle", () => {
+    const state = { ...createCareInspectionState(careReviewPhotoKey("plant-a", "cycle-a")), workingPhoto: "data:image/jpeg;base64,a" };
+    expect(careInspectionForKey(state, careReviewPhotoKey("plant-a", "cycle-a"))?.workingPhoto).toBe(state.workingPhoto);
+    expect(careInspectionForKey(state, careReviewPhotoKey("plant-b", "cycle-b"))).toBeUndefined();
+    expect(careInspectionForKey(state, careReviewPhotoKey("plant-a", "cycle-b"))).toBeUndefined();
+  });
+
   it("provides the selected photo and AI Check output as unconfirmed conversation context", () => {
     const context = careReviewContextMessage({
       plantId: "plant-a",
@@ -120,19 +129,29 @@ describe("Care Session garden setup and current review context", () => {
       sessionItem: 2,
       sessionTotal: 6,
       photoSelected: true,
-      headline: "Visible leaf changes",
-      observations: ["Several new leaves are visible"],
-      interpretations: ["Growth may be progressing"],
-      uncertainty: ["Lighting differs from the previous image"],
+      checkProposal: {
+        headline: "Visible leaf changes",
+        summary: "A current visual check.",
+        confidence: "medium",
+        observations: ["Several new leaves are visible"],
+        interpretations: ["Growth may be progressing"],
+        uncertainty: ["Lighting differs from the previous image"],
+        development_recommendations: [{ kind: "pruning", recommendation: "no_action", rationale: "No pruning is indicated today.", confidence: "medium" }],
+        possible_harvest_readiness: "possible_evaluate",
+        suggested_next_actions: [{ kind: "evaluate_harvest_readiness", rationale: "Check whether outer leaves are ready for a selective harvest." }],
+      },
+      recentHistory: ["Water change · 2026-09-15"],
     });
     expect(context.question).toContain("Care Session");
     expect(context.answer).toContain("plant-a");
     expect(context.answer).toContain("cycle-a");
     expect(context.answer).toContain("Care Session item: 2 of 6");
     expect(context.answer).toContain("Garden A; position: Pod 4");
-    expect(context.answer).toContain("current AI Check");
-    expect(context.answer).toContain("not saved as canonical evidence");
+    expect(context.answer).toContain("attached to this follow-up");
+    expect(context.answer).toContain("temporary, not canonical evidence");
     expect(context.answer).toContain("Several new leaves are visible");
-    expect(context.answer.length).toBeLessThanOrEqual(500);
+    expect(context.answer).toContain("outer leaves are ready");
+    expect(context.answer).toContain("Water change · 2026-09-15");
+    expect(context.answer.length).toBeLessThanOrEqual(9000);
   });
 });

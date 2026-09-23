@@ -1619,6 +1619,7 @@ export async function replacePlantRecord(oldPlant: Plant, newPlant: Plant): Prom
 export async function askGardenAi(
   question: string,
   conversation: Array<{ question: string; answer: string }> = [],
+  careReview?: { photoDataUrl: string; context: string },
 ) {
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
@@ -1634,6 +1635,10 @@ export async function askGardenAi(
       operation: "ask_garden",
       question,
       conversation,
+      ...(careReview ? {
+        care_review_photo_data_url: careReview.photoDataUrl,
+        care_review_context: careReview.context,
+      } : {}),
       request_key: `ask:${crypto.randomUUID()}`,
     }),
   });
@@ -1651,12 +1656,22 @@ export async function askGardenAi(
 }
 
 export interface AiCheckProposal {
+  status?: "complete" | "insufficient_evidence";
   headline: string;
   summary: string;
   confidence: "low" | "medium" | "high";
+  evidence_used?: Array<{ kind: "photo" | "event" | "control"; id: string }>;
+  overall_visible_state?: "appears_stable" | "watch" | "possible_issue" | "insufficient_evidence" | null;
+  possible_harvest_readiness?: "not_assessed" | "possible_not_yet" | "possible_evaluate" | "possible_ready" | "possible_not_applicable" | "insufficient_evidence" | null;
+  possible_incident?: "no_visible_signs" | "possible" | "insufficient_evidence" | null;
   observations: string[];
   interpretations: string[];
   uncertainty: string[];
+  questions?: string[];
+  suggested_next_actions?: Array<{
+    kind: "none" | "monitor" | "create_follow_up" | "record_incident" | "confirm_plant_count" | "evaluate_harvest_readiness";
+    rationale: string;
+  }>;
   development_recommendations: Array<{
     kind: string;
     recommendation: string;

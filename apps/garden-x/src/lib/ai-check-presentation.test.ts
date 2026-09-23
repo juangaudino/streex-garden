@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildAiCheckPresentation, shouldShowFindingConfidence } from "./ai-check-presentation";
+import { buildAiCheckPresentation, projectCareActions, shouldShowFindingConfidence } from "./ai-check-presentation";
 
 const proposal = {
   headline: "Elongated growth and drooping leaves",
@@ -31,6 +31,29 @@ const proposal = {
 };
 
 describe("AI Check presentation", () => {
+  it("projects action-first Care guidance from the existing structured result", () => {
+    const actions = projectCareActions({
+      ...proposal,
+      possible_harvest_readiness: "possible_evaluate",
+      overall_visible_state: "watch",
+      suggested_next_actions: [
+        { kind: "evaluate_harvest_readiness", rationale: "Outer leaves may be evaluated for selective harvest." },
+        { kind: "monitor", rationale: "Recheck leaf color during the next review." },
+      ],
+      uncertainty: ["The photo does not show the entire plant."],
+    }, "en");
+    expect(actions.map((item) => item.key)).toEqual(["harvest", "thinning", "support", "pruning", "watch", "nextCheck"]);
+    expect(actions[0]?.detail).toContain("Outer leaves");
+    expect(actions[4]?.detail).toContain("does not show the entire plant");
+    expect(actions.map((item) => item.detail).join(" ")).not.toContain("possible_evaluate");
+  });
+
+  it("omits empty action sections and derives cautious harvest guidance only from explicit structured readiness", () => {
+    expect(projectCareActions({ ...proposal, possible_harvest_readiness: "insufficient_evidence", overall_visible_state: "insufficient_evidence", development_recommendations: [], suggested_next_actions: [] }, "es")).toEqual([]);
+    const notReady = projectCareActions({ ...proposal, possible_harvest_readiness: "possible_not_yet", development_recommendations: [], suggested_next_actions: [] }, "es");
+    expect(notReady).toEqual([{ key: "harvest", label: "Cosecha", detail: expect.any(String) }]);
+  });
+
   it("keeps detailed content while removing repeated item labels", () => {
     const result = buildAiCheckPresentation(proposal, "es", [
       "Foto · 9 sep",

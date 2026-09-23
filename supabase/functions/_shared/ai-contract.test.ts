@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, validateAiCheckProposal, validateMeaningfulChangeProposal, validateShareCaptionProposal } from "./ai-contract";
+import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, validateAiCheckProposal, validateCareReviewAttachment, validateMeaningfulChangeProposal, validateShareCaptionProposal } from "./ai-contract";
 
 const validProposal = (overrides: Record<string, unknown> = {}) => ({
   schema_version: GARDEN_AI_PROPOSAL_SCHEMA_VERSION,
@@ -117,5 +117,19 @@ describe("Garden Summary runtime contract", () => {
     const { validateGardenSummaryProposal } = await import("./ai-contract");
     expect(validateGardenSummaryProposal({ ...summary, summary_text: "plant_instance_id not_yet" })).toBeNull();
     expect(validateGardenSummaryProposal({ ...summary, scope_type: "garden", scope_id: null })).toBeNull();
+  });
+});
+
+describe("Care follow-up attachment contract", () => {
+  it("allows ordinary Ask Garden requests and accepts a bounded temporary review image with context", () => {
+    expect(validateCareReviewAttachment(undefined, undefined)).toBe(true);
+    expect(validateCareReviewAttachment("data:image/jpeg;base64,ZmFrZQ==", "Temporary photo and AI Check are unconfirmed context.")).toBe(true);
+  });
+
+  it("rejects partial, unsupported, or over-limit temporary attachments", () => {
+    expect(validateCareReviewAttachment("data:image/jpeg;base64,ZmFrZQ==", undefined)).toBe(false);
+    expect(validateCareReviewAttachment("data:application/pdf;base64,ZmFrZQ==", "Context")).toBe(false);
+    expect(validateCareReviewAttachment(`data:image/jpeg;base64,${"a".repeat(7_000_001)}`, "Context")).toBe(false);
+    expect(validateCareReviewAttachment("data:image/jpeg;base64,ZmFrZQ==", " ")).toBe(false);
   });
 });

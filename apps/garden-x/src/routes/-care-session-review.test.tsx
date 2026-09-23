@@ -5,6 +5,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { useState, type ReactNode } from "react";
 import { PlantReview } from "./care";
 import type { Plant } from "@/lib/garden-data";
+import { createCareInspectionState, careReviewPhotoKey } from "@/lib/care-session";
+import type { CareInspectionState } from "@/lib/care-session";
 
 const mocks = vi.hoisted(() => ({
   runAiCheckDraft: vi.fn(),
@@ -51,19 +53,25 @@ const plant: Plant = {
   backendGrowCycleId: "cycle-mint",
 };
 
-function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn() } = {}) {
-  const [workingPhoto, setWorkingPhoto] = useState<string>();
+function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhoto = "persisted-plant-photo.jpg" as string | null } = {}) {
+  const [inspection, setInspection] = useState<CareInspectionState>(() => createCareInspectionState(careReviewPhotoKey(plant.id, plant.backendGrowCycleId)));
+  const [mounted, setMounted] = useState(true);
   return (
-    <PlantReview
+    <>
+    <button type="button" onClick={() => setMounted((value) => !value)}>Toggle Care item</button>
+    <output data-testid="inspection-state">{JSON.stringify(inspection)}</output>
+    {mounted ? <PlantReview
       plant={plant}
       language="en"
       gardenName="Garden One"
       lastReview={undefined}
-      photoSrc="persisted-plant-photo.jpg"
-      workingPhoto={workingPhoto}
-      onWorkingPhoto={setWorkingPhoto}
+      photoSrc={existingPhoto ?? undefined}
+      workingPhoto={inspection.workingPhoto}
+      inspection={inspection}
+      onInspectionPatch={(patch, token) => setInspection((current) => token && current.requestGuardId !== token ? current : { ...current, ...patch })}
       recentEvent={undefined}
       contextEventCount={3}
+      recentHistory={["Water change · 2026-09-15"]}
       sessionItem={2}
       sessionTotal={8}
       attention={undefined}
@@ -72,7 +80,8 @@ function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn() 
       onSkip={onSkip}
       recordedForReview={false}
       careReturnSearch={{ careQueue: "plant-mint", careIndex: 0, careRecorded: false, careReviewed: 0, careObservations: 0, careActions: 0, careFollowups: 0 }}
-    />
+    /> : null}
+    </>
   );
 }
 
@@ -84,6 +93,8 @@ describe("Care Session plant review", () => {
 
   it("keeps Ask Garden enabled and AI Check disabled until a temporary photo is selected", async () => {
     render(<ReviewHarness />);
+
+    expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("persisted-plant-photo.jpg");
 
     expect(screen.getByRole("button", { name: "AI Check" }).hasAttribute("disabled")).toBe(true);
     expect(screen.getByRole("link", { name: "Ask Garden" })).toBeTruthy();
@@ -98,6 +109,15 @@ describe("Care Session plant review", () => {
     expect(mocks.runAiCheckDraft).not.toHaveBeenCalled();
   });
 
+  it("keeps the genuine no-photo fallback and allows the camera input to choose the working image", async () => {
+    render(<ReviewHarness existingPhoto={null} />);
+    expect(screen.queryByAltText("Common Mint, Mentha")).toBeNull();
+    const camera = screen.getByLabelText("Take photo") as HTMLInputElement;
+    fireEvent.change(camera, { target: { files: [new File(["camera"], "camera.jpg", { type: "image/jpeg" })] } });
+    await waitFor(() => expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("data:image/jpeg;base64,"));
+    expect((screen.getByRole("button", { name: "AI Check" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
   it("runs the current cycle check inline and gives Ask Garden the photo-derived result context", async () => {
     mocks.runAiCheckDraft.mockResolvedValue({ proposal: {
       headline: "New leaves are visible",
@@ -106,8 +126,10 @@ describe("Care Session plant review", () => {
       observations: ["Several new leaves are visible."],
       interpretations: ["Growth may be progressing."],
       uncertainty: ["The framing differs from older photos."],
-      development_recommendations: [],
-    } });
+      development_recommendations: [{ kind: "pruning", recommendation: "no_action", rationale: "No pruning is supported today.", confidence: "medium" }],
+      possible_harvest_readiness: "possible_evaluate",
+      suggested_next_actions: [{ kind: "evaluate_harvest_readiness", rationale: "Check whether the outer leaves support selective harvest." }],
+    }, requestId: "request-care-check" });
     mocks.askGardenAi.mockResolvedValue({ answer_type: "answer", answer: "The check notes new leaves.", confirmed_facts: [], suggested_next_actions: [] });
     const onRecord = vi.fn();
     const onNext = vi.fn();
@@ -119,7 +141,10 @@ describe("Care Session plant review", () => {
     await waitFor(() => expect((screen.getByRole("button", { name: "AI Check" }) as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(screen.getByRole("button", { name: "AI Check" }));
 
-    expect(await screen.findByRole("heading", { name: "New leaves are visible" })).toBeTruthy();
+    expect(await screen.findByText("Check whether the outer leaves support selective harvest.")).toBeTruthy();
+    expect(screen.getByText("What to do today")).toBeTruthy();
+    fireEvent.click(screen.getByText("View full analysis"));
+    expect(screen.getByRole("heading", { name: "New leaves are visible" })).toBeTruthy();
     expect(mocks.runAiCheckDraft).toHaveBeenCalledWith("cycle-mint", expect.stringContaining("data:image/jpeg;base64,"), "en");
     expect(screen.getByText("Visual observation")).toBeTruthy();
     expect(screen.getAllByText("Inference").length).toBeGreaterThan(0);
@@ -135,7 +160,15 @@ describe("Care Session plant review", () => {
     expect(context).toContain("cycle-mint");
     expect(context).toContain("Care Session item: 2 of 8");
     expect(context).toContain("Garden One");
-    expect(context).toContain("used for the current AI Check");
+    expect(context).toContain("attached to this follow-up");
     expect(context).toContain("Several new leaves are visible.");
+    expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ photoDataUrl: expect.stringContaining("data:image/jpeg;base64,"), context: expect.stringContaining("Harvest readiness") });
+    expect(JSON.parse(screen.getByTestId("inspection-state").textContent ?? "{}").checkRequestId).toBe("request-care-check");
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Care item" }));
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Care item" }));
+    expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("data:image/jpeg;base64,");
+    expect(screen.getByText("Check whether the outer leaves support selective harvest.")).toBeTruthy();
+    expect(screen.getByText("The check notes new leaves.")).toBeTruthy();
   });
 });

@@ -22,6 +22,7 @@ import {
   type EventType,
 } from "./garden-data";
 import type { PublicStory } from "./public-story";
+import { createCareInspectionState, type CareInspectionState } from "./care-session";
 import {
   closePlantCycleRecord,
   completeAttention,
@@ -70,6 +71,9 @@ import {
 interface StoreApi extends GardenState {
   meaningfulChanges: MeaningfulChangeResult[];
   gardenSummaries: GardenSummaryResult[];
+  careInspection: CareInspectionState | null;
+  patchCareInspection: (key: string, patch: Partial<CareInspectionState>, expectedRequestId?: string) => void;
+  clearCareInspection: () => void;
   hydration: "loading" | "ready" | "reconnecting" | "error" | "offline";
   highlightedPlantId: string | null;
   recordGardenMaintenance: (gardenId: string, action: "water_change" | "nutrients" | "water_and_nutrients", occurredOn: string, note?: string) => Promise<void>;
@@ -187,6 +191,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
   const [meaningfulChanges, setMeaningfulChanges] = useState<MeaningfulChangeResult[]>([]);
   const [gardenSummaries, setGardenSummaries] = useState<GardenSummaryResult[]>([]);
+  const [careInspection, setCareInspection] = useState<CareInspectionState | null>(null);
   const pendingPhotos = useRef(new Map<string, Photo>());
   const highlightResolved = useRef(false);
   const hasSuccessfulSnapshot = useRef(!backendConfigured);
@@ -357,6 +362,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setState(emptyState);
         setMeaningfulChanges([]);
         setGardenSummaries([]);
+        setCareInspection(null);
         if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
         summaryGenerationTimer.current = null;
         pendingSummaryGeneration.current = null;
@@ -417,6 +423,16 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       ...state,
       meaningfulChanges,
       gardenSummaries,
+      careInspection,
+      patchCareInspection: (key, patch, expectedRunToken) => setCareInspection((current) => {
+        if (current && current.key !== key) {
+          if (expectedRunToken) return current;
+          return { ...createCareInspectionState(key), ...patch };
+        }
+        if (expectedRunToken && current?.requestGuardId !== expectedRunToken) return current;
+        return { ...(current ?? createCareInspectionState(key)), ...patch };
+      }),
+      clearCareInspection: () => setCareInspection(null),
       hydration,
       highlightedPlantId,
       ...preferences,
@@ -809,7 +825,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
       },
     }),
-    [scheduleGardenSummaryGeneration, gardenSummaries, highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state],
+    [scheduleGardenSummaryGeneration, gardenSummaries, highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state, careInspection],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

@@ -125,6 +125,12 @@ export function validateAskGardenAnswer(value: unknown): Record<string, unknown>
   return value
 }
 
+export function validateCareReviewAttachment(photo: unknown, context: unknown): boolean {
+  if (photo === undefined && context === undefined) return true
+  if (typeof photo !== 'string' || !/^data:image\/(jpeg|png|webp);base64,/i.test(photo) || photo.length > 7_000_000) return false
+  return typeof context === 'string' && context.trim().length > 0 && context.length <= 9_000
+}
+
 export function validateGardenSummaryProposal(value: unknown): Record<string, unknown> | null {
   if (!record(value) || value.schema_version !== GARDEN_SUMMARY_SCHEMA_VERSION || !validUserText(value.summary_text, 700) || !['global', 'garden'].includes(String(value.scope_type)) || (value.scope_id !== null && value.scope_id !== undefined && !nonEmpty(value.scope_id)) || !nonEmpty(value.material_fingerprint) || !record(value.evidence_coverage) || !Array.isArray(value.referenced_plant_instance_ids) || !Array.isArray(value.referenced_meaningful_change_ids) || !Array.isArray(value.referenced_ai_check_ids) || !validTextArray(value.epistemic_notes, 300)) return null
   if (value.scope_type === 'global' && value.scope_id !== null) return null

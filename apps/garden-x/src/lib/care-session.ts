@@ -1,3 +1,5 @@
+import type { AiCheckProposal } from "./garden-backend";
+
 export type CareSessionAction = "skipForNow" | "nextPlant";
 
 /** A review advances only after the user records something and explicitly chooses to continue. */
@@ -72,6 +74,24 @@ export function careReviewPhotoKey(plantId: string, growCycleId?: string | null)
   return `${plantId}:${growCycleId ?? "no-cycle"}`;
 }
 
+export interface CareInspectionState {
+  key: string;
+  workingPhoto?: string;
+  checkPhase: "idle" | "scanning" | "done" | "error";
+  checkProposal: AiCheckProposal | null;
+  checkRequestId: string | null;
+  requestGuardId: string | null;
+  conversation: Array<{ question: string; answer: string; facts: string[] }>;
+}
+
+export function createCareInspectionState(key: string): CareInspectionState {
+  return { key, checkPhase: "idle", checkProposal: null, checkRequestId: null, requestGuardId: null, conversation: [] };
+}
+
+export function careInspectionForKey(state: CareInspectionState | null | undefined, key: string) {
+  return state?.key === key ? state : undefined;
+}
+
 export function canRunCareAiCheck(growCycleId: string | null | undefined, reviewPhoto: string | null | undefined) {
   return Boolean(growCycleId && reviewPhoto);
 }
@@ -89,10 +109,8 @@ export function careReviewContextMessage(input: {
   sessionItem: number;
   sessionTotal: number;
   photoSelected: boolean;
-  headline: string;
-  observations: string[];
-  interpretations: string[];
-  uncertainty: string[];
+  checkProposal: AiCheckProposal;
+  recentHistory: string[];
 }) {
   const question = "Current Care Session review context";
   const answer = [
@@ -100,12 +118,19 @@ export function careReviewContextMessage(input: {
     `Garden/system: ${input.gardenName}${input.positionLabel ? `; position: ${input.positionLabel}` : ""}`,
     `Plant Instance: ${input.plantName} (${input.plantId})`,
     `Grow cycle: ${input.growCycleId}`,
-    `Current review photo: ${input.photoSelected ? "selected and used for the current AI Check; not saved as canonical evidence" : "none"}`,
-    `AI Check: ${input.headline}`,
-    ...input.observations.map((item) => `Visual observation: ${item}`),
-    ...input.interpretations.map((item) => `Interpretation: ${item}`),
-    ...input.uncertainty.map((item) => `Uncertainty: ${item}`),
-  ].join("; ").slice(0, 500);
+    `Current review photo: ${input.photoSelected ? "attached to this follow-up and used for the current AI Check; temporary, not canonical evidence" : "none"}`,
+    `AI Check headline: ${input.checkProposal.headline}`,
+    `AI Check summary: ${input.checkProposal.summary}`,
+    `AI Check confidence: ${input.checkProposal.confidence}`,
+    `Harvest readiness: ${input.checkProposal.possible_harvest_readiness ?? "not provided"}`,
+    `Visible state: ${input.checkProposal.overall_visible_state ?? "not provided"}`,
+    ...input.checkProposal.observations.map((item) => `Visual observation: ${item}`),
+    ...input.checkProposal.interpretations.map((item) => `Unconfirmed interpretation: ${item}`),
+    ...(input.checkProposal.development_recommendations ?? []).map((item) => `Unconfirmed ${item.kind} guidance (${item.recommendation}): ${item.rationale}`),
+    ...(input.checkProposal.suggested_next_actions ?? []).map((item) => `Unconfirmed next-step guidance (${item.kind}): ${item.rationale}`),
+    ...input.checkProposal.uncertainty.map((item) => `Uncertainty: ${item}`),
+    ...(input.recentHistory ?? []).map((item) => `Canonical plant history: ${item}`),
+  ].join("\n").slice(0, 9000);
   return { question, answer };
 }
 

@@ -144,6 +144,26 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     );
   });
 
+  it("preserves uncertainty when a one-sided mature-size bound cannot establish physical fit", () => {
+    const { results } = evaluate(garden({ machine: { name: "AeroGarden", pods: 4 } }), "p1", [], {
+      clearance: { heightCm: 25, context: "hydroponic" },
+    });
+    const petunia = results.find(
+      (result) => result.candidate.libraryPlantId === "cascading-petunia",
+    )!;
+    expect(petunia.unknowns).toContainEqual(
+      expect.objectContaining({
+        property: "mature_height_fit",
+        reason: expect.stringContaining("does not establish whether the plant fits"),
+      }),
+    );
+    expect(petunia.eligibility).toBe("eligible");
+    expect(petunia.exclusions).toHaveLength(0);
+    expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_fits")).toBe(
+      false,
+    );
+  });
+
   it("C — detects the geometric perimeter but does not infer space beyond it for trailing plants", () => {
     const { input, results } = evaluate(garden({ machine: { name: "AeroGarden", pods: 4 } }), "p1");
     const petunia = results.find(

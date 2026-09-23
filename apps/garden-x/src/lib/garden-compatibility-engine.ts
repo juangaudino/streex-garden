@@ -287,6 +287,11 @@ function resultFor(
           statement: reason.statement,
           sourceIds: reason.sourceIds,
         });
+      } else {
+        unknowns.push({
+          property: `mature_${dimension}_fit`,
+          reason: `The documented ${dimension} bound does not establish whether the plant fits within the explicitly recorded ${limit} cm clearance.`,
+        });
       }
     } else if (knowledge.status !== "known") {
       unknowns.push({

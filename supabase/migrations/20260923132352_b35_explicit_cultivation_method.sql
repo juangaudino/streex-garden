@@ -27,8 +27,9 @@ begin
 
   select s.id into v_system_id
   from garden.system_instances s
+  join garden.gardens g on g.id = s.garden_id and g.owner_id = v_owner
   where s.garden_id = p_garden_id and s.owner_id = v_owner and s.status = 'active'
-  for update;
+  for update of s;
   if not found then raise exception 'Garden system not found'; end if;
 
   update garden.system_instances
@@ -83,7 +84,9 @@ from base cross join gardens;
 $$;
 
 revoke all on function public.garden_x_get_bootstrap_b35_base() from public;
+revoke execute on function public.garden_x_get_bootstrap_b35_base() from anon;
 revoke all on function public.garden_x_get_bootstrap() from public;
+revoke execute on function public.garden_x_get_bootstrap() from anon;
 grant execute on function public.garden_x_get_bootstrap() to authenticated;
 
 commit;

@@ -1,12 +1,6 @@
 import { useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Camera, ChevronDown, GitCompareArrows, Search, ScanLine, Sparkles } from "lucide-react";
-import {
-  PromptInput,
-  PromptInputFooter,
-  PromptInputSubmit,
-  PromptInputTextarea,
-} from "@/components/ai-elements/prompt-input";
 import { PageHeader } from "@/components/garden/shell";
 import { PlantThumb, ProvenanceTag } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
@@ -19,6 +13,7 @@ import { ui } from "@/lib/ui-copy";
 import { buildAiCheckPresentation } from "@/lib/ai-check-presentation";
 import { runAiCheckDraft, type AiCheckProposal } from "@/lib/garden-backend";
 import { ConfidenceBar } from "@/components/garden/atoms";
+import { GardenConversationComposer } from "@/components/garden/garden-conversation-composer";
 
 export const Route = createFileRoute("/garden-ai")({
   head: () => ({
@@ -84,7 +79,7 @@ function GardenAI() {
       ].slice(0, 3)
     : [ui(language, "suggestionAttention"), ui(language, "suggestionChanged"), ui(language, "suggestionCloserLook")];
 
-  const openConversation = (question: string) => {
+  const openConversation = (question: string, imageDataUrl?: string) => {
     const prompt = question.trim();
     if (!prompt) return;
 
@@ -93,11 +88,12 @@ function GardenAI() {
         to: "/plants/$plantId/ask",
         params: { plantId: selected.id },
         search: { from: "garden-ai", prompt },
+        ...(imageDataUrl ? { state: { gardenConversationImage: imageDataUrl } } : {}),
       });
       return;
     }
 
-    void navigate({ to: "/ask", search: { prompt } });
+    void navigate({ to: "/ask", search: { prompt }, ...(imageDataUrl ? { state: { gardenConversationImage: imageDataUrl } } : {}) });
   };
 
   const readDraftPhoto = (file: File) => {
@@ -267,12 +263,12 @@ function GardenAI() {
               </Button>
             ))}
           </div>
-          <PromptInput onSubmit={({ text }) => openConversation(text)} className="rounded-2xl bg-card shadow-soft">
-            <PromptInputTextarea placeholder={selected ? `${language === "es" ? "Pregunta sobre" : "Ask about"} ${selected.name}…` : ui(language, "askPlaceholder")} />
-            <PromptInputFooter className="justify-end">
-              <PromptInputSubmit />
-            </PromptInputFooter>
-          </PromptInput>
+          <GardenConversationComposer
+            language={language}
+            placeholder={selected ? `${language === "es" ? "Pregunta sobre" : "Ask about"} ${selected.name}…` : ui(language, "askPlaceholder")}
+            sendLabel={ui(language, "sendQuestion")}
+            onSend={openConversation}
+          />
         </div>
       </div>
     </div>

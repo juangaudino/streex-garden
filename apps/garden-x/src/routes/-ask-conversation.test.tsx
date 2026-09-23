@@ -3,11 +3,12 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Route } from "./ask";
 
-const mocks = vi.hoisted(() => ({ askGardenAi: vi.fn(), useGarden: vi.fn() }));
+const mocks = vi.hoisted(() => ({ askGardenAi: vi.fn(), useGarden: vi.fn(), prompt: undefined as string | undefined, locationState: undefined as unknown }));
 
 vi.mock("@tanstack/react-router", () => ({
-  createFileRoute: () => (options: Record<string, unknown>) => ({ ...options, options, useSearch: () => ({}) }),
+  createFileRoute: () => (options: Record<string, unknown>) => ({ ...options, options, useSearch: () => ({ prompt: mocks.prompt }) }),
   Link: ({ children }: { children: React.ReactNode }) => <a>{children}</a>,
+  useRouterState: ({ select }: { select: (state: unknown) => unknown }) => select({ location: { state: mocks.locationState } }),
 }));
 vi.mock("@/lib/garden-store", () => ({ useGarden: mocks.useGarden }));
 vi.mock("@/lib/garden-backend", () => ({ askGardenAi: mocks.askGardenAi }));
@@ -50,6 +51,8 @@ describe("Garden-wide Ask Garden image turns", () => {
   afterEach(() => {
     cleanup();
     vi.clearAllMocks();
+    mocks.prompt = undefined;
+    mocks.locationState = undefined;
   });
 
   it("sends a new image in-turn, preserves the thread, and never renders raw source IDs", async () => {
@@ -77,5 +80,18 @@ describe("Garden-wide Ask Garden image turns", () => {
     fireEvent.submit(screen.getByPlaceholderText("Ask about your garden…").closest("form")!);
     await waitFor(() => expect(mocks.askGardenAi).toHaveBeenCalledTimes(2));
     expect(mocks.askGardenAi.mock.calls[1]![1][0].answer).toContain("The user attached a photo in that turn.");
+  });
+
+  it("receives the image attached on the real Garden AI global entry point as the first Ask Garden turn", async () => {
+    mocks.useGarden.mockReturnValue({ language: "en", plants: [], gardens: [], events: [], photos: [], tasks: [] });
+    mocks.prompt = "What does this show?";
+    mocks.locationState = { gardenConversationImage: "data:image/jpeg;base64,Z2FyZGVu" };
+    mocks.askGardenAi.mockResolvedValue({ answer_type: "answer", answer: "The garden is visible.", confirmed_facts: [], suggested_next_actions: [] });
+    const GardenWideAsk = Route.options.component as React.ComponentType;
+    render(<GardenWideAsk />);
+    await waitFor(() => expect(mocks.askGardenAi).toHaveBeenCalledTimes(1));
+    expect(mocks.askGardenAi.mock.calls[0]![0]).toBe("What does this show?");
+    expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ messageImageDataUrl: "data:image/jpeg;base64,Z2FyZGVu" });
+    expect(await screen.findByAltText("Attached photo")).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { ChevronLeft, Leaf } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import { askSuggestions, askWholeGarden, type AskAnswer } from "@/lib/garden-logic";
@@ -36,6 +36,10 @@ function GardenWideAsk() {
   const store = useGarden();
   const language = store.language;
   const { prompt } = Route.useSearch();
+  const navigationImage = useRouterState({ select: (state) => {
+    const value = state.location.state as { gardenConversationImage?: unknown } | undefined;
+    return typeof value?.gardenConversationImage === "string" ? value.gardenConversationImage : undefined;
+  } });
   const [thread, setThread] = useState<Array<AskAnswer & { attachedImageDataUrl?: string }>>([]);
   const [thinking, setThinking] = useState(false);
   const initialPromptSent = useRef(false);
@@ -69,8 +73,8 @@ function GardenWideAsk() {
   useEffect(() => {
     if (!prompt || initialPromptSent.current) return;
     initialPromptSent.current = true;
-    send(prompt);
-  }, [prompt, send]);
+    void send(prompt, navigationImage);
+  }, [navigationImage, prompt, send]);
 
   return (
     <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] flex-col lg:h-screen">

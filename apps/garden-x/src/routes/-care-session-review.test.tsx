@@ -49,15 +49,6 @@ vi.mock("@/components/ui/dialog", async () => {
   };
 });
 
-vi.mock("@/components/garden/photo-source-picker", () => ({
-  PhotoSourcePicker: ({ onFile, className }: { onFile: (file: File) => void; className?: string }) => (
-    <div data-testid="care-photo-controls" className={className}>
-      <input aria-label="Take photo" type="file" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) onFile(file); }} />
-      <input aria-label="Choose photo" type="file" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) onFile(file); }} />
-    </div>
-  ),
-}));
-
 const plant: Plant = {
   id: "plant-mint",
   gardenId: "garden-one",
@@ -90,7 +81,7 @@ function canonicalPhoto(plantId = plant.id, id = "existing-photo"): Photo {
   };
 }
 
-function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhotos = [canonicalPhoto()] as Photo[] } = {}) {
+function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhotos = [canonicalPhoto()] as Photo[], language = "en" }: { onRecord?: () => void; onNext?: () => void; onSkip?: () => void; existingPhotos?: Photo[]; language?: "en" | "es" } = {}) {
   const [inspection, setInspection] = useState<CareInspectionState>(() => createCareInspectionState(careReviewPhotoKey(plant.id, plant.backendGrowCycleId)));
   const [mounted, setMounted] = useState(true);
   return (
@@ -99,7 +90,7 @@ function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(),
     <output data-testid="inspection-state">{JSON.stringify(inspection)}</output>
     {mounted ? <PlantReview
       plant={plant}
-      language="en"
+      language={language}
       gardenName="Garden One"
       lastReview={undefined}
       canonicalPhoto={latestPlantPhoto(existingPhotos, plant.id)}
@@ -190,14 +181,17 @@ describe("Care Session plant review", () => {
 
     expect(screen.getByRole("button", { name: "AI Check" }).hasAttribute("disabled")).toBe(true);
     expect(screen.getByRole("link", { name: "Ask Garden" })).toBeTruthy();
-    const controls = screen.getAllByTestId("care-photo-controls")[0]!;
-    expect(controls.className).not.toMatch(/bg-black|rounded-2xl/);
-    expect(controls.className).toContain("[&_button]:!bg-transparent");
-    expect(controls.className).toContain("[&_button]:!rounded-none");
-    expect(controls.className).toContain("[&_button]:!min-h-11");
-    expect(controls.className).toContain("[&_button]:!shadow-none");
+    const controls = screen.getByTestId("care-photo-actions");
+    expect(controls.className).toContain("absolute top-3 right-3 z-30");
+    expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!bg-transparent");
+    expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!rounded-none");
+    expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!min-h-11");
+    expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!shadow-none");
+    expect(screen.getByRole("button", { name: "Take photo" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Choose from Photo Library" })).toBeTruthy();
 
-    const inputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
+    const inputs = controls.querySelectorAll<HTMLInputElement>('input[type="file"]');
+    expect(inputs[0]?.getAttribute("capture")).toBe("environment");
     const file = new File(["photo"], "review.jpg", { type: "image/jpeg" });
     fireEvent.change(inputs[1]!, { target: { files: [file] } });
 
@@ -210,10 +204,18 @@ describe("Care Session plant review", () => {
   it("keeps the genuine no-photo fallback and allows the camera input to choose the working image", async () => {
     render(<ReviewHarness existingPhotos={[]} />);
     expect(screen.queryByAltText("Common Mint, Mentha")).toBeNull();
-    const camera = screen.getByLabelText("Take photo") as HTMLInputElement;
+    const controls = screen.getByTestId("care-photo-actions");
+    const camera = controls.querySelector('input[capture="environment"]') as HTMLInputElement;
+    expect(screen.getByRole("button", { name: "Take photo" })).toBeTruthy();
     fireEvent.change(camera, { target: { files: [new File(["camera"], "camera.jpg", { type: "image/jpeg" })] } });
     await waitFor(() => expect((screen.getByAltText("Common Mint, Mentha") as HTMLImageElement).src).toContain("data:image/jpeg;base64,"));
     expect((screen.getByRole("button", { name: "AI Check" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it("keeps both lightweight Care photo actions localized in Spanish", () => {
+    render(<ReviewHarness language="es" />);
+    expect(screen.getByRole("button", { name: "Tomar foto" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Elegir de Fotos" })).toBeTruthy();
   });
 
   it("runs the current cycle check inline and gives Ask Garden the photo-derived result context", async () => {
@@ -251,7 +253,8 @@ describe("Care Session plant review", () => {
     expect(onSkip).not.toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole("button", { name: "Attach a photo" }));
-    const attachedPicker = screen.getAllByLabelText("Choose photo").at(-1) as HTMLInputElement;
+    const fileInputs = screen.getByRole("dialog").querySelectorAll<HTMLInputElement>('input[type="file"]');
+    const attachedPicker = fileInputs[fileInputs.length - 1]!;
     fireEvent.change(attachedPicker, { target: { files: [new File(["context"], "wider.jpg", { type: "image/jpeg" })] } });
     expect(await screen.findByAltText("Attached photo")).toBeTruthy();
     fireEvent.change(screen.getByPlaceholderText("Ask about this…"), { target: { value: "What should I watch for?" } });

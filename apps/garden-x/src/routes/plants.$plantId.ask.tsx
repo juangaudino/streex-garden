@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ChevronLeft, Send, Sparkles } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createFileRoute, Link, notFound, useRouterState } from "@tanstack/react-router";
+import { ChevronLeft, Sparkles } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import { askGarden, askSuggestions, plantEvents, plantPhotos, type AskAnswer } from "@/lib/garden-logic";
+import { askGardenAi } from "@/lib/garden-backend";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import { ui } from "@/lib/ui-copy";
-import { parseCareSessionBoolean, parseCareSessionNumber } from "@/lib/care-session";
+import { GardenConversationComposer } from "@/components/garden/garden-conversation-composer";
+import { careInspectionForKey, careReviewPhotoKey, parseCareSessionBoolean, parseCareSessionNumber } from "@/lib/care-session";
 
 export const Route = createFileRoute("/plants/$plantId/ask")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -41,35 +43,98 @@ function Ask() {
   const { from, prompt, careQueue, careIndex, careRecorded, careReviewed, careObservations, careActions, careFollowups } = Route.useSearch();
   const store = useGarden();
   const language = store.language;
+  const navigationImage = useRouterState({ select: (state) => {
+    const value = state.location.state as { gardenConversationImage?: unknown } | undefined;
+    return typeof value?.gardenConversationImage === "string" ? value.gardenConversationImage : undefined;
+  } });
   const plant = store.plants.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
-  const [thread, setThread] = useState<AskAnswer[]>([]);
-  const [draft, setDraft] = useState("");
+  const [thread, setThread] = useState<Array<AskAnswer & { attachedImageDataUrl?: string }>>([]);
   const [thinking, setThinking] = useState(false);
   const initialPromptSent = useRef(false);
+  const imageConversationActive = useRef(false);
+  const careInspection = from === "care"
+    ? careInspectionForKey(store.careInspection, careReviewPhotoKey(plant.id, plant.backendGrowCycleId))
+    : undefined;
 
-  const send = (question: string) => {
-    if (!question.trim()) return;
-    setDraft("");
+  const send = useCallback(async (question: string, imageDataUrl?: string) => {
+    const clean = question.trim();
+    if (!clean || thinking) return;
     setThinking(true);
-    const answer = askGarden(question, {
-      plant,
-      events: store.events,
-      photos: store.photos,
-      tasks: store.tasks,
-    }, language);
+    if (imageDataUrl || imageConversationActive.current) {
+      imageConversationActive.current = true;
+      const currentEvents = plantEvents(store.events, plant.id);
+      const currentPhotos = plantPhotos(store.photos, plant.id);
+      const garden = store.gardens.find((item) => item.id === plant.gardenId);
+      const carePhoto = careInspection?.workingPhoto;
+      const careContext = carePhoto ? [
+        "Temporary Care Session review context; this is not canonical evidence.",
+        `Plant Instance: ${plant.name} (${plant.id}); grow cycle: ${plant.backendGrowCycleId ?? "unknown"}.`,
+        `Garden/system: ${garden?.name ?? "unknown"}; position: ${plant.slot ?? "unknown"}.`,
+        ...(careInspection?.checkProposal ? [
+          `Prior unconfirmed AI Check: ${careInspection.checkProposal.headline}.`,
+          careInspection.checkProposal.summary,
+          ...careInspection.checkProposal.observations,
+          ...careInspection.checkProposal.interpretations,
+          ...careInspection.checkProposal.uncertainty,
+        ] : []),
+      ].join("\n").slice(0, 9000) : undefined;
+      const scope = {
+        question: "Plant-scoped Ask Garden context",
+        answer: JSON.stringify({
+          plant_instance_id: plant.id,
+          plant_name: plant.name,
+          identity: plant.scientific || plant.species,
+          grow_cycle_id: plant.backendGrowCycleId ?? null,
+          garden: garden?.name ?? null,
+          position: plant.slot ?? null,
+          recent_event_count: currentEvents.length,
+          photo_count: currentPhotos.length,
+          scope_rule: "Answer about this plant and cycle only unless the user explicitly broadens the question.",
+          ...(careInspection?.checkProposal ? { temporary_care_check: careInspection.checkProposal } : {}),
+        }),
+      };
+      const prior = thread.slice(-3).map((item) => ({
+        question: item.question,
+        answer: [...item.grounded, item.inference, item.attachedImageDataUrl ? "The user attached a photo in that turn." : ""].filter(Boolean).join(" ").slice(0, 500),
+      }));
+      try {
+        const result = await askGardenAi(clean, [scope, ...prior], {
+          ...(carePhoto && careContext ? { photoDataUrl: carePhoto, context: careContext } : {}),
+          ...(imageDataUrl ? { messageImageDataUrl: imageDataUrl } : {}),
+        });
+        setThread((current) => [...current, {
+          question: clean,
+          grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],
+          evidence: result.confirmed_facts.map((fact) => `${fact.source.kind} · ${fact.source.id.slice(0, 8)}`),
+          ...(result.confirmed_facts.length && result.answer ? { inference: result.answer } : {}),
+          ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}),
+        }]);
+      } catch {
+        setThread((current) => [...current, {
+          question: clean,
+          grounded: [ui(language, "careAskUnavailable")],
+          evidence: [],
+          ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}),
+        }]);
+      } finally {
+        setThinking(false);
+      }
+      return;
+    }
+    const answer = askGarden(clean, { plant, events: store.events, photos: store.photos, tasks: store.tasks }, language);
     window.setTimeout(() => {
-      setThread((t) => [...t, answer]);
+      setThread((current) => [...current, answer]);
       setThinking(false);
     }, 900);
-  };
+  }, [careInspection, language, plant, store, thread, thinking]);
 
   useEffect(() => {
     if (!prompt || initialPromptSent.current) return;
     initialPromptSent.current = true;
-    send(prompt);
-  }, [prompt]);
+    void send(prompt, navigationImage);
+  }, [navigationImage, prompt, send]);
 
   const events = plantEvents(store.events, plant.id);
   const photos = plantPhotos(store.photos, plant.id);
@@ -119,6 +184,7 @@ function Ask() {
           {thread.map((a, i) => (
             <div key={i} className="rise space-y-3">
               <p className="ml-auto w-fit max-w-[85%] rounded-3xl rounded-br-lg bg-primary px-4 py-2.5 text-sm text-primary-foreground">
+                {a.attachedImageDataUrl ? <img src={a.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-40 rounded-xl object-cover" /> : null}
                 {a.question}
               </p>
               <div className="surface p-5">
@@ -134,15 +200,6 @@ function Ask() {
                   <div className="mt-5 rounded-2xl border border-inference/25 bg-inference/6 p-4">
                     <ProvenanceTag kind="inferred" confidence="moderate" />
                     <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{a.inference}</p>
-                  </div>
-                ) : null}
-                {a.evidence.length ? (
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {a.evidence.map((e) => (
-                      <span key={e} className="rounded-full bg-secondary px-2.5 py-1 text-[0.65rem] text-muted-foreground">
-                        {e}
-                      </span>
-                    ))}
                   </div>
                 ) : null}
               </div>
@@ -170,27 +227,14 @@ function Ask() {
               </button>
             ))}
           </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              send(draft);
-            }}
-            className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2"
-          >
-            <input
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              placeholder={`${ui(language, "askAbout")} ${plant.name}…`}
-              className="min-w-0 rounded-full border border-input bg-card px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/40"
-            />
-            <button
-              type="submit"
-              className="press grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground"
-              aria-label={ui(language, "sendQuestion")}
-            >
-              <Send className="h-4 w-4" />
-            </button>
-          </form>
+          <GardenConversationComposer
+            language={language}
+            placeholder={`${ui(language, "askAbout")} ${plant.name}…`}
+            sendLabel={ui(language, "sendQuestion")}
+            disabled={thinking}
+            sending={thinking}
+            onSend={send}
+          />
         </div>
       </div>
     </div>

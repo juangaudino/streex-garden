@@ -4,7 +4,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
 import { AddPlantSheet } from "./add-plant";
 import { gardenLibraryManifest } from "../../generated/garden-library-manifest";
+import { loadGardenLibraryCatalog } from "@/lib/garden-library";
 import type { Garden, Plant } from "@/lib/garden-data";
+import type { GardenLibraryManifest } from "@/lib/garden-library";
 
 const mocks = vi.hoisted(() => ({
   createLibraryPlant: vi.fn(),
@@ -175,6 +177,35 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(tinyTim.textContent).toContain("Documented growth habit: bushy.");
     expect(cherry.textContent).not.toContain("Documented growth habit");
     expect(tinyTim.querySelector("details")?.textContent).toContain("Identity-specific");
+  });
+
+  it("omits the growth-habit row and its spacing when the habit has no content", async () => {
+    const manifest = structuredClone(gardenLibraryManifest) as GardenLibraryManifest;
+    const mint = manifest.entries.find((entry) => entry.libraryPlantId === "common-mint");
+    if (!mint?.compatibilityProfile || mint.compatibilityProfile.growthHabits.status !== "known") {
+      throw new Error("Common Mint growth-habit evidence fixture is unavailable");
+    }
+    mint.compatibilityProfile.growthHabits = {
+      ...mint.compatibilityProfile.growthHabits,
+      value: [],
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(JSON.stringify(manifest), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    );
+    await loadGardenLibraryCatalog(true);
+
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
+
+    const mintCard = (await screen.findByText("Common Mint")).closest("article");
+    expect(mintCard?.textContent).not.toContain("Documented growth habit");
+    expect(mintCard?.querySelector("ul.mt-2.space-y-1")).toBeNull();
   });
 
   it("preserves evidence source links and taxonomic scope", async () => {

@@ -454,17 +454,27 @@ function ContextualCandidateCard({
     }
     if (reason.property === "growth_habit") {
       const habit = reason.statement.split(":").slice(1).join(":").trim().replace(/\.$/, "");
+      const habits = habit.split(",").map((value) => value.trim()).filter(Boolean);
+      if (habits.length === 0) return "";
       const translations: Record<string, string> = {
         compact: ui(language, "habitCompact"), upright: ui(language, "habitUpright"),
         bushy: ui(language, "habitBushy"), spreading: ui(language, "habitSpreading"),
         trailing: ui(language, "habitTrailing"), rosette: ui(language, "habitRosette"),
         clumping: ui(language, "habitClumping"), mounded: ui(language, "habitMounded"),
       };
-      const translated = habit.split(",").map((value) => translations[value.trim()] ?? value.trim()).join(", ");
+      const translated = habits.map((value) => translations[value] ?? value).join(", ");
       return `${ui(language, "documentedGrowthHabit")}: ${translated}.`;
     }
     return reason.statement;
   };
+
+  const formattedReasons = candidate.factualReasons
+    .slice(0, 2)
+    .map((reason, index) => ({
+      key: `${reason.property}-${index}`,
+      text: formatReason(reason).trim(),
+    }))
+    .filter((reason) => reason.text.length > 0);
 
   return (
     <article className="rounded-2xl border border-border/70 bg-background px-4 py-3">
@@ -475,9 +485,9 @@ function ContextualCandidateCard({
         </span>
         <span className="mt-0.5 block text-xs text-muted-foreground">{[candidate.plant.cultivar, candidate.plant.scientificName].filter(Boolean).join(" · ")}</span>
       </button>
-      {candidate.factualReasons.length ? (
+      {formattedReasons.length ? (
         <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-          {candidate.factualReasons.slice(0, 2).map((reason, index) => <li key={`${reason.property}-${index}`}>{formatReason(reason)}</li>)}
+          {formattedReasons.map((reason) => <li key={reason.key}>{reason.text}</li>)}
         </ul>
       ) : null}
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { plantEvents, plantTimeline, sortPhotosByCapturedAt } from "./garden-logic";
+import { isTimelineTitleProjectionOfDetail, plantEvents, plantTimeline, sortPhotosByCapturedAt } from "./garden-logic";
 import type { Photo, PlantEvent } from "./garden-data";
 
 const photo = (id: string, capturedAt: string | null, daysAgo: number): Photo => ({
@@ -103,5 +103,28 @@ describe("chronology projections", () => {
       ),
     ).toEqual(["maintenance-1"]);
     expect(plantTimeline([maintenance], [], "plant-1", "newest", "garden-2")).toEqual([]);
+  });
+
+  it("suppresses duplicate system-maintenance projections while keeping distinct notes", () => {
+    const maintenance = (id: string, note?: string): PlantEvent => ({
+      id,
+      plantId: "",
+      gardenId: "garden-1",
+      daysAgo: 2,
+      occurredAt: "2026-09-15T00:00:00.000Z",
+      type: "maintenance",
+      title: "Water + nutrients",
+      detail: note,
+      provenance: "recorded",
+      backendEventType: "system_maintenance",
+    });
+    expect(plantTimeline([maintenance("a"), maintenance("b")], [], "plant-1", "newest", "garden-1")).toHaveLength(1);
+    expect(plantTimeline([maintenance("a", "first"), maintenance("b", "second")], [], "plant-1", "newest", "garden-1")).toHaveLength(2);
+  });
+
+  it("recognizes a truncated event title that is only a projection of its full note", () => {
+    const detail = "3/3 semillas germinadas y vivas. Tallos firmes, hojas sanas y nuevo crecimiento central.";
+    expect(isTimelineTitleProjectionOfDetail(detail.slice(0, 50), detail)).toBe(true);
+    expect(isTimelineTitleProjectionOfDetail("Harvest", "Harvest from the outer leaves.")).toBe(false);
   });
 });

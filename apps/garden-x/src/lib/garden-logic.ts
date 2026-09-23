@@ -255,6 +255,14 @@ export function isRedundantTimelineDetail(title: string, detail?: string | null)
   return normalize(title) === normalize(detail);
 }
 
+/** Event titles derived by truncating the full note should not render the note twice. */
+export function isTimelineTitleProjectionOfDetail(title: string, detail?: string | null): boolean {
+  if (!detail?.trim()) return false;
+  const normalizedTitle = title.trim().toLocaleLowerCase().replace(/\s+/g, " ");
+  const normalizedDetail = detail.trim().toLocaleLowerCase().replace(/\s+/g, " ");
+  return normalizedTitle.length >= 40 && normalizedDetail.length > normalizedTitle.length && normalizedDetail.startsWith(normalizedTitle);
+}
+
 export type PlantTimelineEntry =
   | { kind: "event"; event: PlantEvent; photos: Photo[]; daysAgo: number }
   | { kind: "photo"; photo: Photo; photos: Photo[]; daysAgo: number };
@@ -271,6 +279,7 @@ export function plantTimeline(
   order: SortOrder = "newest",
   gardenId?: string,
 ): PlantTimelineEntry[] {
+  const seenSystemMaintenance = new Set<string>();
   const plantEventsById = new Map(
     events
       .filter(
@@ -281,6 +290,14 @@ export function plantTimeline(
             event.gardenId === gardenId &&
             event.backendEventType === "system_maintenance"),
       )
+      .filter((event) => {
+        if (event.backendEventType !== "system_maintenance") return true;
+        const date = event.occurredAt?.slice(0, 10) ?? String(event.daysAgo);
+        const key = `${event.gardenId ?? ""}|${date}|${event.title}|${event.detail ?? ""}`;
+        if (seenSystemMaintenance.has(key)) return false;
+        seenSystemMaintenance.add(key);
+        return true;
+      })
       .map((event) => [event.id, event]),
   );
   const photosByEventId = new Map<string, Photo[]>();

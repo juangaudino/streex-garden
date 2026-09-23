@@ -27,6 +27,7 @@ import {
   localizedStatusLabel,
   storyFacts,
   isRedundantTimelineDetail,
+  isTimelineTitleProjectionOfDetail,
   latestPlantPhoto,
   plantTimeline,
   sortPhotosByCapturedAt,
@@ -451,9 +452,9 @@ function PlantProfile() {
                               e.milestone ? "font-display text-2xl" : "text-sm font-medium",
                             )}
                           >
-                            {e.title}
+                            {isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title}
                           </h3>
-                          {e.detail && !isRedundantTimelineDetail(e.title, e.detail) ? (
+                          {e.detail && !isRedundantTimelineDetail(e.title, e.detail) && !isTimelineTitleProjectionOfDetail(e.title, e.detail) ? (
                             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                               {e.detail}
                             </p>
@@ -603,7 +604,9 @@ function PlantProfile() {
                     </span>
                     <div className="min-w-0">
                       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-2">
-                        <p className="truncate text-sm font-medium">{e.title}</p>
+                        <p className="truncate text-sm font-medium">
+                          {isTimelineTitleProjectionOfDetail(e.title, e.detail) ? e.detail : e.title}
+                        </p>
                         <span className="numeral shrink-0 text-xs text-muted-foreground">
                           {formatDate(e.daysAgo)}
                         </span>
@@ -611,7 +614,7 @@ function PlantProfile() {
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
                       </p>
-                      {e.detail && !isRedundantTimelineDetail(e.title, e.detail) ? (
+                      {e.detail && !isRedundantTimelineDetail(e.title, e.detail) && !isTimelineTitleProjectionOfDetail(e.title, e.detail) ? (
                         <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
                       ) : null}
                       {photo ? (

@@ -154,11 +154,18 @@ export type BackendIndex = {
 const dayMs = 86_400_000;
 function daysAgo(value: string | null | undefined): number {
   if (!value) return 0;
-  const date = new Date(value);
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? new Date(`${value}T12:00:00.000Z`)
+    : new Date(value);
   const today = new Date();
   date.setHours(0, 0, 0, 0);
   today.setHours(0, 0, 0, 0);
   return Math.max(0, Math.round((today.getTime() - date.getTime()) / dayMs));
+}
+function dateOnlyEventValue(event: BootstrapEvent): string | null {
+  if (String(event.event_data?.occurred_at_precision ?? "") !== "date") return null;
+  const value = String(event.event_data?.occurred_on ?? "");
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 function eventType(type: string, data: Record<string, unknown>): EventType {
   if (type === "system_maintenance") return "maintenance";
@@ -686,11 +693,12 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
 
   const events: PlantEvent[] = ([...(b.events ?? []), ...systemMaintenance]).map((e) => {
     const eventPhotoIds = photosByEventId.get(e.id);
+    const effectiveDateOnly = dateOnlyEventValue(e);
     return {
       id: e.id,
       plantId: e.plant_instance_id ?? "",
       ...(e.garden_id ? { gardenId: e.garden_id } : {}),
-      daysAgo: daysAgo(e.occurred_at),
+      daysAgo: daysAgo(effectiveDateOnly ?? e.occurred_at),
       occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
       title: titleFor(e),
@@ -706,12 +714,17 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const eventById = new Map((b.events ?? []).map((e) => [e.id, e]));
   const photos: Photo[] = allPhotos.map((p) => {
     const e = p.event_id ? eventById.get(p.event_id) : undefined;
+    const effectiveDateOnly = e ? dateOnlyEventValue(e) : null;
     return {
       id: p.id,
       plantId: p.plant_instance_id ?? "",
       mediaScope: p.media_scope,
       src: "",
-      daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
+      daysAgo: daysAgo(
+        p.captured_at_precision === "date"
+          ? effectiveDateOnly ?? p.captured_at ?? e?.occurred_at
+          : p.captured_at ?? e?.occurred_at,
+      ),
       caption: e?.note?.trim() || "",
       metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
       backendStoragePath: p.storage_path,

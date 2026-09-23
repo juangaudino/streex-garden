@@ -1,12 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarClock,
   ChevronRight,
+  GripVertical,
   Leaf,
   MessageCircle,
   MoreHorizontal,
+  ScanLine,
   SkipForward,
   Sparkles,
   StickyNote,
@@ -23,9 +25,14 @@ import {
   relativeDay,
 } from "@/lib/garden-logic";
 import { PageHeader } from "@/components/garden/shell";
-import { SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
+import { ConfidenceBar, ProvenanceTag, SectionTitle, maintenanceIcons } from "@/components/garden/atoms";
 import type { MaintenanceType, Plant } from "@/lib/garden-data";
 import { ui } from "@/lib/ui-copy";
+import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
+import { runAiCheckDraft, askGardenAi, type AiCheckProposal } from "@/lib/garden-backend";
+import { buildAiCheckPresentation, shouldShowFindingConfidence } from "@/lib/ai-check-presentation";
+import type { AnalysisResult } from "@/lib/garden-logic";
+import { normalizePhotoDataUrl } from "@/lib/photo-input";
 import {
   askGardenAccentClassName,
   careSessionAction,
@@ -33,6 +40,12 @@ import {
   parseCareSessionBoolean,
   parseCareSessionNumber,
   parseCareSessionQueue,
+  buildCarePlantQueue,
+  canRunCareAiCheck,
+  careReviewContextMessage,
+  careReviewPhotoKey,
+  reorderCareGarden,
+  toggleCareGardenSelection,
 } from "@/lib/care-session";
 
 export const Route = createFileRoute("/care")({
@@ -92,6 +105,10 @@ function Care() {
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>();
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>();
   const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
+  const [gardenOrder, setGardenOrder] = useState<string[]>([]);
+  const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(null);
+  const [draggedGardenId, setDraggedGardenId] = useState<string | null>(null);
+  const [workingPhoto, setWorkingPhoto] = useState<{ key: string; dataUrl: string } | null>(null);
 
   useEffect(() => {
     if (!queue.length) {
@@ -116,28 +133,26 @@ function Care() {
   }, [navigate, queue, index, recordedForReview, summary]);
 
   const activePlants = useMemo(() => store.plants.filter((plant) => !plant.cycleClosed), [store.plants]);
+  const sessionGardens = useMemo(() => store.gardens.filter((garden) => !garden.archived && activePlants.some((plant) => plant.gardenId === garden.id)), [store.gardens, activePlants]);
+  const orderedGardens = useMemo(() => {
+    const available = new Set(sessionGardens.map((garden) => garden.id));
+    return [...gardenOrder.filter((id) => available.has(id)), ...sessionGardens.map((garden) => garden.id).filter((id) => !gardenOrder.includes(id))];
+  }, [gardenOrder, sessionGardens]);
+  const selectedGardens = selectedGardenIds ?? orderedGardens;
   const needingLook = new Set(tasks.map((t) => t.plantId)).size;
   const routine = activePlants.length - needingLook;
   const current = queue[index] ? store.plants.find((plant) => plant.id === queue[index]) : undefined;
 
-  const orderedQueue = (firstId?: string) => {
-    const urgency = new Map<string, number>();
-    tasks.forEach((task) => {
-      urgency.set(task.plantId, Math.min(urgency.get(task.plantId) ?? Number.POSITIVE_INFINITY, task.dueInDays));
-    });
-    const ids = [...activePlants]
-      .sort((a, b) => (urgency.get(a.id) ?? 99) - (urgency.get(b.id) ?? 99))
-      .map((plant) => plant.id);
-    if (!firstId || !ids.includes(firstId)) return ids;
-    return [firstId, ...ids.filter((id) => id !== firstId)];
-  };
-
-  const startSession = (firstId?: string) => {
-    setQueue(orderedQueue(firstId));
+  const startSession = () => {
+    const positionNumbers = new Map(sessionGardens.flatMap((garden) => (garden.backendPositions ?? []).map((position) => [position.id, position.number] as const)));
+    setGardenOrder(orderedGardens);
+    setSelectedGardenIds(selectedGardens);
+    setQueue(buildCarePlantQueue(sessionGardens, activePlants, orderedGardens, selectedGardens, positionNumbers));
     setIndex(0);
     setSummary(emptySummary());
     setFinished(false);
     setRecordedForReview(false);
+    setWorkingPhoto(null);
   };
 
   const leaveSession = () => {
@@ -146,13 +161,32 @@ function Care() {
     setFinished(false);
     setRecordOpen(false);
     setRecordedForReview(false);
+    setWorkingPhoto(null);
+    setSelectedGardenIds(null);
   };
 
   const advance = (reviewed: boolean) => {
     if (reviewed) setSummary((value) => ({ ...value, reviewed: value.reviewed + 1 }));
     setRecordedForReview(false);
+    setWorkingPhoto(null);
     if (index + 1 >= queue.length) setFinished(true);
     else setIndex((value) => value + 1);
+  };
+
+  const toggleGarden = (gardenId: string) => {
+    const current = selectedGardenIds ?? orderedGardens;
+    setSelectedGardenIds(toggleCareGardenSelection(current, gardenId));
+  };
+
+  const moveGarden = (event: DragEvent<HTMLDivElement>, targetId: string) => {
+    event.preventDefault();
+    if (!draggedGardenId || draggedGardenId === targetId) return;
+    setGardenOrder(reorderCareGarden(orderedGardens, draggedGardenId, targetId, (garden) => garden.id));
+    setDraggedGardenId(null);
+  };
+
+  const focusSessionSetup = () => {
+    document.getElementById("care-session-setup")?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const openRecord = (flow?: MomentFlow, careType?: MaintenanceType) => {
@@ -169,6 +203,8 @@ function Care() {
   };
 
   if (queue.length > 0) {
+    const currentPhotoKey = current ? careReviewPhotoKey(current.id, current.backendGrowCycleId) : "";
+    const currentWorkingPhoto = workingPhoto?.key === currentPhotoKey ? workingPhoto.dataUrl : undefined;
     return (
       <div className="min-h-screen pb-24">
         <header className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-border/70 px-5 py-4 sm:px-8 lg:px-12">
@@ -187,10 +223,16 @@ function Care() {
           <PlantReview
             language={language}
             plant={current}
+            key={`${current.id}:${current.backendGrowCycleId ?? "cycle"}`}
             gardenName={store.gardens.find((garden) => garden.id === current.gardenId)?.name ?? "Garden"}
             lastReview={lastReview(store.events, current.id)}
             photoSrc={store.photos.find((photo) => photo.id === current.heroPhotoId)?.src}
+            workingPhoto={currentWorkingPhoto}
+            onWorkingPhoto={(dataUrl) => setWorkingPhoto(dataUrl ? { key: currentPhotoKey, dataUrl } : null)}
             recentEvent={plantEvents(store.events, current.id)[0]}
+            contextEventCount={plantEvents(store.events, current.id).length}
+            sessionItem={index + 1}
+            sessionTotal={queue.length}
             attention={tasks.find((task) => task.plantId === current.id)}
             onRecord={openRecord}
             onNext={() => advance(true)}
@@ -211,6 +253,7 @@ function Care() {
             open={recordOpen}
             initialFlow={recordFlow}
             initialCareType={recordCare}
+            initialPhotoDataUrl={currentWorkingPhoto}
             onRecorded={handleRecorded}
             onClose={() => setRecordOpen(false)}
           />
@@ -238,12 +281,43 @@ function Care() {
               </p>
             </div>
             <Button
-              onClick={() => startSession()}
+              onClick={() => focusSessionSetup()}
               className="w-full bg-background text-foreground hover:bg-background/90 sm:w-auto"
             >
               {ui(language, "startCareSession")} <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
+        </div>
+      </section>
+
+      <section id="care-session-setup" className="mt-5 px-5 sm:px-8 lg:px-12" aria-label={ui(language, "careSessionSetup")}>
+        <div className="surface mx-auto max-w-3xl p-4 sm:p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <h2 className="font-display text-xl">{ui(language, "careSessionSetup")}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">{ui(language, "careSessionSetupHint")}</p>
+            </div>
+            <p className="text-xs text-muted-foreground">{activePlants.filter((plant) => selectedGardens.includes(plant.gardenId)).length} {ui(language, "plantsInGarden")}</p>
+          </div>
+          <div className="mt-3 divide-y divide-border/70">
+            {orderedGardens.map((gardenId) => {
+              const garden = sessionGardens.find((item) => item.id === gardenId)!;
+              const count = activePlants.filter((plant) => plant.gardenId === gardenId).length;
+              const selected = selectedGardens.includes(gardenId);
+              return (
+                <div key={garden.id} draggable onDragStart={() => setDraggedGardenId(garden.id)} onDragOver={(event) => event.preventDefault()} onDrop={(event) => moveGarden(event, garden.id)} onDragEnd={() => setDraggedGardenId(null)} className={`flex items-center gap-3 py-3 ${draggedGardenId === garden.id ? "opacity-45" : ""}`}>
+                  <button type="button" draggable onDragStart={(event) => { event.stopPropagation(); setDraggedGardenId(garden.id); }} onDragEnd={() => setDraggedGardenId(null)} className="grid h-9 w-8 shrink-0 cursor-grab place-items-center text-muted-foreground active:cursor-grabbing" aria-label={`${ui(language, "reorderGarden")}: ${garden.name}`}><GripVertical className="h-4 w-4" /></button>
+                  <input type="checkbox" checked={selected} onChange={() => toggleGarden(garden.id)} aria-label={`${selected ? ui(language, "selected") : ui(language, "notSelected")}: ${garden.name}`} className="h-4 w-4 accent-primary" />
+                  <span className="min-w-0 flex-1 truncate text-sm font-medium">{garden.name}<span className="ml-2 text-xs font-normal text-muted-foreground">{garden.machine?.name}</span></span>
+                  <span className="text-xs text-muted-foreground">{count} {ui(language, "plantsInGarden")}</span>
+                </div>
+              );
+            })}
+          </div>
+          <Button className="mt-4 w-full" onClick={startSession} disabled={!selectedGardens.length || !activePlants.some((plant) => selectedGardens.includes(plant.gardenId))}>
+            {ui(language, "startSession")} <ArrowRight className="h-4 w-4" />
+          </Button>
+          {!selectedGardens.length ? <p className="mt-2 text-center text-xs text-muted-foreground">{ui(language, "chooseAtLeastOneGarden")}</p> : null}
         </div>
       </section>
 
@@ -263,7 +337,7 @@ function Care() {
                   <p className="truncate text-sm">{plant.name} · {task.label}</p>
                   <p className="truncate text-xs text-muted-foreground">{dueLabel(task.dueInDays)}{task.hint ? ` · ${task.hint}` : ""}</p>
                 </div>
-                <Button variant="ghost" size="sm" onClick={() => startSession(plant.id)}>
+                <Button variant="ghost" size="sm" onClick={focusSessionSetup}>
                   {ui(language, "review")} <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -276,13 +350,18 @@ function Care() {
   );
 }
 
-function PlantReview({
+export function PlantReview({
   plant,
   language,
   gardenName,
   lastReview,
   photoSrc,
+  workingPhoto,
+  onWorkingPhoto,
   recentEvent,
+  contextEventCount,
+  sessionItem,
+  sessionTotal,
   attention,
   onRecord,
   onNext,
@@ -295,7 +374,12 @@ function PlantReview({
   gardenName: string;
   lastReview?: { title: string; daysAgo: number } | undefined;
   photoSrc?: string | undefined;
+  workingPhoto?: string | undefined;
+  onWorkingPhoto: (dataUrl: string | null) => void;
   recentEvent?: { title: string; daysAgo: number } | undefined;
+  contextEventCount: number;
+  sessionItem: number;
+  sessionTotal: number;
   attention?: { label: string; dueInDays: number } | undefined;
   onRecord: (flow?: MomentFlow, careType?: MaintenanceType) => void;
   onNext: () => void;
@@ -303,10 +387,90 @@ function PlantReview({
   recordedForReview: boolean;
   careReturnSearch: ReturnType<typeof careSessionSearch>;
 }) {
+  const [checkPhase, setCheckPhase] = useState<"idle" | "scanning" | "done" | "error">("idle");
+  const [checkProposal, setCheckProposal] = useState<AiCheckProposal | null>(null);
+  const [question, setQuestion] = useState("");
+  const [conversation, setConversation] = useState<Array<{ question: string; answer: string; facts: string[] }>>([]);
+  const [chatBusy, setChatBusy] = useState(false);
+  const checkRequest = useRef<string | null>(null);
+  const reviewImage = workingPhoto ?? null;
+  const canCheck = canRunCareAiCheck(plant.backendGrowCycleId, reviewImage);
+  const result: AnalysisResult | null = checkProposal
+    ? buildAiCheckPresentation(checkProposal, language, [ui(language, "careReviewPhoto"), `${contextEventCount} ${ui(language, "recordedEvents")}`])
+    : null;
+
+  const readReviewPhoto = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        onWorkingPhoto(normalizePhotoDataUrl(reader.result, file));
+        checkRequest.current = null;
+        setCheckProposal(null);
+        setCheckPhase("idle");
+        setConversation([]);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const runCheck = () => {
+    if (!reviewImage || !plant.backendGrowCycleId || checkPhase === "scanning") return;
+    const requestId = crypto.randomUUID();
+    checkRequest.current = requestId;
+    setCheckPhase("scanning");
+    setCheckProposal(null);
+    setConversation([]);
+    void runAiCheckDraft(plant.backendGrowCycleId, reviewImage, language)
+      .then(({ proposal }) => {
+        if (checkRequest.current !== requestId) return;
+        setCheckProposal(proposal);
+        setCheckPhase("done");
+      })
+      .catch(() => {
+        if (checkRequest.current === requestId) setCheckPhase("error");
+      });
+  };
+
+  const askAboutCheck = async () => {
+    const clean = question.trim();
+    if (!clean || chatBusy || !checkProposal || !plant.backendGrowCycleId) return;
+    setQuestion("");
+    setChatBusy(true);
+    const context = careReviewContextMessage({
+      plantId: plant.id,
+      plantName: plant.name,
+      growCycleId: plant.backendGrowCycleId,
+      gardenName,
+      positionLabel: plant.slot,
+      sessionItem,
+      sessionTotal,
+      photoSelected: Boolean(reviewImage),
+      headline: checkProposal.headline,
+      observations: checkProposal.observations,
+      interpretations: checkProposal.interpretations,
+      uncertainty: checkProposal.uncertainty,
+    });
+    const prior = conversation.slice(-3).map((item) => ({ question: item.question, answer: [...item.facts, item.answer].join(" ").slice(0, 500) }));
+    try {
+      const answer = await askGardenAi(clean, [context, ...prior]);
+      const facts = answer.confirmed_facts.map((fact) => fact.claim);
+      setConversation((items) => [...items, {
+        question: clean,
+        answer: answer.answer,
+        facts,
+      }]);
+    } catch {
+      setConversation((items) => [...items, { question: clean, answer: ui(language, "careAskUnavailable"), facts: [] }]);
+    } finally {
+      setChatBusy(false);
+    }
+  };
+
   return (
     <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-secondary shadow-lift sm:aspect-[16/10]">
-        {photoSrc ? <img src={photoSrc} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : null}
+        {reviewImage ? <img src={reviewImage} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : photoSrc ? <img src={photoSrc} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : null}
+        <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="absolute right-3 top-3 z-20 rounded-2xl border border-white/20 bg-black/25 p-1.5 backdrop-blur-md [&_button]:h-8 [&_button]:px-2 [&_button]:text-xs" />
         <div className="veil absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
           <p className="text-xs uppercase text-background/70">{gardenName}{plant.slot ? ` · ${plant.slot}` : ""}</p>
@@ -352,21 +516,68 @@ function PlantReview({
         </Button>
       </div>
 
-      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        <Button type="button" variant="outline" disabled={!canCheck || checkPhase === "scanning"} onClick={runCheck} className="min-h-11 flex-1 gap-2 disabled:cursor-not-allowed disabled:opacity-45">
+          <ScanLine className="h-4 w-4" /> {checkPhase === "scanning" ? ui(language, "analysing") : ui(language, "aiCheck")}
+        </Button>
         <Button asChild className={`min-h-11 flex-1 border shadow-none ${askGardenAccentClassName}`}>
           <Link to="/plants/$plantId/ask" params={{ plantId: plant.id }} search={{ from: "care", prompt: undefined, ...careReturnSearch }}>
             <MessageCircle className="h-4 w-4" /> {ui(language, "askGarden")}
           </Link>
         </Button>
+      </div>
+      <div className="mt-2">
         <Button
           variant={recordedForReview ? "outline" : "ghost"}
-          className="min-h-11 flex-1 text-muted-foreground"
+          className="min-h-10 w-full text-muted-foreground"
           onClick={recordedForReview ? onNext : onSkip}
         >
           {ui(language, careSessionAction(recordedForReview))}
           {recordedForReview ? <ArrowRight className="h-4 w-4" /> : <SkipForward className="h-4 w-4" />}
         </Button>
       </div>
+
+      {!reviewImage ? <p className="mt-2 text-center text-xs text-muted-foreground">{ui(language, "noReviewPhoto")}</p> : null}
+
+      {checkPhase !== "idle" ? (
+        <section className="mt-4 rounded-2xl border border-border/70 bg-card p-4 sm:p-5" aria-live="polite">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="font-display text-xl">{ui(language, "gardenAiCheck")}</h2>
+            <ProvenanceTag kind="inferred" />
+          </div>
+          {checkPhase === "scanning" ? <p className="mt-3 text-sm text-muted-foreground">{ui(language, "analysing")}</p> : null}
+          {checkPhase === "error" ? <p className="mt-3 text-sm text-muted-foreground">{ui(language, "analysisUnavailableBody")}</p> : null}
+          {result ? (
+            <>
+              <h3 className="mt-3 font-display text-lg">{result.headline}</h3>
+              {result.summary ? <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.summary}</p> : null}
+              <div className="mt-3"><ConfidenceBar confidence={result.confidence} /></div>
+              {result.findings.map((finding, index) => (
+                <div key={`${finding.kind}-${index}`} className="mt-4 border-t border-border/60 pt-3">
+                  <ProvenanceTag kind={finding.kind === "inference" ? "inferred" : finding.kind} confidence={finding.confidence} />
+                  {finding.title ? <p className="mt-2 text-sm font-medium">{finding.title}</p> : null}
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{finding.body}</p>
+                  {shouldShowFindingConfidence(finding, result.confidence) ? <p className="mt-1 text-xs text-inference">{ui(language, "confidence")}: {ui(language, finding.confidence === "high" ? "confidenceHigh" : finding.confidence === "moderate" ? "confidenceModerate" : "confidenceLow")}</p> : null}
+                </div>
+              ))}
+              <p className="mt-4 text-xs text-muted-foreground">{ui(language, "savingDoesNotChange")}</p>
+              <div className="mt-4 space-y-3 border-t border-border/60 pt-4">
+                {conversation.map((item, index) => (
+                  <div key={`${item.question}-${index}`} className="space-y-2 text-sm">
+                    <p className="ml-auto w-fit max-w-[90%] rounded-2xl rounded-br-md bg-primary px-3 py-2 text-primary-foreground">{item.question}</p>
+                    {item.facts.length ? <div><ProvenanceTag kind="recorded" /><ul className="mt-2 list-disc space-y-1 pl-5 text-muted-foreground">{item.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div> : null}
+                    <div><ProvenanceTag kind="inferred" /><p className="mt-2 leading-relaxed text-muted-foreground">{item.answer}</p></div>
+                  </div>
+                ))}
+                <form onSubmit={(event) => { event.preventDefault(); void askAboutCheck(); }} className="flex gap-2">
+                  <input value={question} onChange={(event) => setQuestion(event.target.value)} disabled={chatBusy} placeholder={ui(language, "askAboutThis")} className="input-soft min-w-0 flex-1 text-sm" />
+                  <Button type="submit" size="sm" disabled={chatBusy || !question.trim()}>{chatBusy ? ui(language, "analysing") : ui(language, "sendQuestion")}</Button>
+                </form>
+              </div>
+            </>
+          ) : null}
+        </section>
+      ) : null}
     </main>
   );
 }

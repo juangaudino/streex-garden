@@ -192,11 +192,12 @@ interface Props {
   open: boolean;
   initialFlow?: MomentFlow | undefined;
   initialCareType?: MaintenanceType | undefined;
+  initialPhotoDataUrl?: string | null | undefined;
   onRecorded?: ((flow: MomentFlow) => void) | undefined;
   onClose: () => void;
 }
 
-export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, onRecorded, onClose }: Props) {
+export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, initialPhotoDataUrl, onRecorded, onClose }: Props) {
   const store = useGarden();
   const language = store.language;
   const initializedPlantRef = useRef<string | null>(null);
@@ -241,13 +242,13 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, o
     setMoveConfirmation(false);
     setNote("");
     setPhotoId(null);
-    setNewPhoto(null);
+    setNewPhoto(initialPhotoDataUrl ?? null);
     setMomentDate(todayInputValue());
     setGardenId(plant.gardenId);
     setSlot(plant.slot ?? "");
     setTargetPositionId(plant.backendPositionId ?? null);
     if (initialCareType) setCareType(initialCareType);
-  }, [open, initialFlow, initialCareType, plant]);
+  }, [open, initialFlow, initialCareType, initialPhotoDataUrl, plant]);
 
   useEffect(() => {
     if (!open) return;

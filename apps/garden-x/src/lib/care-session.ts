@@ -76,6 +76,10 @@ export function canRunCareAiCheck(growCycleId: string | null | undefined, review
   return Boolean(growCycleId && reviewPhoto);
 }
 
+export function careFlowCanReuseReviewPhoto(flow?: string | undefined) {
+  return flow === "observation" || flow === "care" || flow === "followup";
+}
+
 export function careReviewContextMessage(input: {
   plantId: string;
   plantName: string;

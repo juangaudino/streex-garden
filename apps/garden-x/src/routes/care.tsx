@@ -42,6 +42,7 @@ import {
   parseCareSessionQueue,
   buildCarePlantQueue,
   canRunCareAiCheck,
+  careFlowCanReuseReviewPhoto,
   careReviewContextMessage,
   careReviewPhotoKey,
   reorderCareGarden,
@@ -253,7 +254,7 @@ function Care() {
             open={recordOpen}
             initialFlow={recordFlow}
             initialCareType={recordCare}
-            initialPhotoDataUrl={currentWorkingPhoto}
+            initialPhotoDataUrl={careFlowCanReuseReviewPhoto(recordFlow) ? currentWorkingPhoto : undefined}
             onRecorded={handleRecorded}
             onClose={() => setRecordOpen(false)}
           />

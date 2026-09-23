@@ -8,6 +8,7 @@ import {
   parseCareSessionQueue,
   recordMomentGroups,
   buildCarePlantQueue,
+  careFlowCanReuseReviewPhoto,
   canRunCareAiCheck,
   careReviewContextMessage,
   careReviewPhotoKey,
@@ -94,6 +95,14 @@ describe("Care Session garden setup and current review context", () => {
     expect(canRunCareAiCheck("cycle-1", null)).toBe(false);
     expect(canRunCareAiCheck("cycle-1", "data:image/jpeg;base64,abc")).toBe(true);
     expect(canRunCareAiCheck(null, "data:image/jpeg;base64,abc")).toBe(false);
+  });
+
+  it("reuses the temporary review photo only for Observe, Care, and Follow-up", () => {
+    expect(careFlowCanReuseReviewPhoto("observation")).toBe(true);
+    expect(careFlowCanReuseReviewPhoto("care")).toBe(true);
+    expect(careFlowCanReuseReviewPhoto("followup")).toBe(true);
+    expect(careFlowCanReuseReviewPhoto(undefined)).toBe(false);
+    expect(careFlowCanReuseReviewPhoto("move")).toBe(false);
   });
 
   it("keys review photos by Plant Instance and cycle so they cannot leak", () => {

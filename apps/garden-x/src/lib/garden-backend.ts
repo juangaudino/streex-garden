@@ -1376,13 +1376,14 @@ export async function updateCustomSystemLayoutRecord(
 }
 
 export async function updateGardenRecord(garden: Garden): Promise<void> {
-  const { error } = await getSupabaseClient().rpc("garden_x_update_garden", {
+  const { error } = await getSupabaseClient().rpc("garden_x_update_garden_with_system", {
     p_request_id: crypto.randomUUID(),
     p_garden_id: garden.id,
     p_name: garden.name,
     p_kind: garden.kind,
     p_place: garden.place,
     p_note: garden.note,
+    p_system_name: garden.machine?.name ?? null,
     p_archived: Boolean(garden.archived),
   });
   if (error) throw new Error(error.message);

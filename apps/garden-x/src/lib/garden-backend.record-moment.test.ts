@@ -7,8 +7,8 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession }, rpc }),
 }));
 
-import { persistMoment } from "./garden-backend";
-import type { Photo, Plant, PlantEvent } from "./garden-data";
+import { persistMoment, updateGardenRecord } from "./garden-backend";
+import type { Garden, Photo, Plant, PlantEvent } from "./garden-data";
 
 const plant: Plant = {
   id: "plant-1",
@@ -62,6 +62,7 @@ describe("Record a Moment canonical temporal propagation", () => {
       if (name === "garden_x_prepare_event_photo")
         return { data: { storage_path: "owner/photo/original.jpg" }, error: null };
       if (name === "garden_mark_photo_uploaded") return { data: null, error: null };
+      if (name === "garden_x_update_garden_with_system") return { data: { updated: true }, error: null };
       throw new Error(`Unexpected RPC ${name}`);
     });
   });
@@ -117,5 +118,25 @@ describe("Record a Moment canonical temporal propagation", () => {
     );
     expect(rpc.mock.calls.some(([name]) => name === "garden_x_prepare_event_photo")).toBe(true);
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
+  });
+
+  it("persists the editable system name with garden metadata", async () => {
+    const garden: Garden = {
+      id: "garden-1",
+      name: "Garden 1",
+      kind: "hydroponic",
+      cover: "",
+      place: "Kitchen",
+      note: "",
+      machine: { name: "H1", pods: 8 },
+      backendSystemInstanceId: "system-1",
+    };
+
+    await updateGardenRecord(garden);
+
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_x_update_garden_with_system",
+      expect.objectContaining({ p_garden_id: "garden-1", p_system_name: "H1" }),
+    );
   });
 });

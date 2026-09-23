@@ -9,6 +9,53 @@ export type LibraryGuidanceProfile = {
   traits: readonly string[];
 };
 
+/** Evidence is attached to each compatibility claim, while source documents remain shared in the catalog. */
+export type CompatibilityEvidence = {
+  sourceIds: readonly string[];
+  evidenceType: "source_backed" | "garden_adaptation";
+  confidence: "high" | "medium" | "low";
+  taxonomicScope:
+    | { level: "identity" }
+    | { level: "species" | "genus" | "family"; taxon: string };
+  note?: string;
+};
+
+export type CompatibilityKnowledge<T> =
+  | { status: "known"; value: T; evidence: readonly CompatibilityEvidence[] }
+  | { status: "unknown" | "pending"; reason?: string; evidence?: readonly CompatibilityEvidence[] };
+
+export type CompatibilityContext =
+  | "in_ground"
+  | "container"
+  | "hydroponic"
+  | "outdoor_general"
+  | "unspecified";
+
+export type CompatibilityProfileV1 = {
+  profileVersion: 1;
+  hydroponicSuitability:
+    | { status: "compatible" | "incompatible"; evidence: readonly CompatibilityEvidence[] }
+    | { status: "conditional"; conditions: readonly { kind: "system_type" | "support" | "container" | "root_space" | "environment" | "other"; description: string }[]; evidence: readonly CompatibilityEvidence[] }
+    | { status: "unknown" | "pending"; reason?: string; evidence?: readonly CompatibilityEvidence[] };
+  growthHabits: CompatibilityKnowledge<readonly ("compact" | "upright" | "bushy" | "spreading" | "trailing" | "rosette" | "clumping" | "mounded")[]>;
+  matureSize: {
+    height: CompatibilityKnowledge<{ minCm: number; maxCm: number; context: CompatibilityContext }>;
+    spread: CompatibilityKnowledge<{ minCm: number; maxCm: number; context: CompatibilityContext }>;
+  };
+  spacing: CompatibilityKnowledge<readonly {
+    minCm: number;
+    maxCm: number;
+    context: CompatibilityContext;
+    spacingType: "between_plants" | "in_row" | "between_rows" | "container_clearance" | "position_spacing";
+  }[]>;
+  light: CompatibilityKnowledge<readonly {
+    phase: "germination" | "growing";
+    requirement:
+      | { kind: "full_sun" | "partial_sun" | "shade" }
+      | { kind: "hours_per_day"; minHours: number; maxHours: number };
+  }[]>;
+};
+
 export type GardenLibraryReference = {
   germination: string | null;
   light: string | null;
@@ -38,6 +85,8 @@ export type GardenLibraryEntry = {
   status: "active" | "retired";
   provenance: readonly string[];
   guidanceProfile: LibraryGuidanceProfile | null;
+  /** Optional, additive B3 knowledge. Absence is unknown and never incompatibility. */
+  compatibilityProfile?: CompatibilityProfileV1;
   reference: GardenLibraryReference;
 };
 

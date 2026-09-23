@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { validateCompatibilityProfile } from "./gardenpedia-compatibility-profile.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = path.join(root, "labs", "gardenpedia");
@@ -196,6 +197,7 @@ function buildCatalogManifest(plants) {
   const sourceById = new Map(
     sourceRecords.map((source) => [source.id, source]),
   );
+  const knownSourceIds = new Set(sourceById.keys());
   const entries = plants
     .map((plant) => ({
       libraryPlantId: plant.id,
@@ -218,6 +220,14 @@ function buildCatalogManifest(plants) {
         ),
       ),
       guidanceProfile: neighborData.profiles?.[plant.id] || null,
+      ...(Object.hasOwn(plant, "compatibilityProfile")
+        ? {
+            compatibilityProfile: validateCompatibilityProfile(
+              plant.compatibilityProfile,
+              knownSourceIds,
+            ),
+          }
+        : {}),
       reference: buildReference(plant, neighborData, sourceById),
     }))
     .sort((a, b) => a.libraryPlantId.localeCompare(b.libraryPlantId));

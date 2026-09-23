@@ -641,13 +641,35 @@
     "category": "leafy greens",
     "emoji": "🥬",
     "guideCompletion": 88,
-    "tags": ["buttercrunch", "lettuce", "lechuga", "butterhead", "hydroponic"],
+    "tags": [
+      "buttercrunch",
+      "lettuce",
+      "lechuga",
+      "butterhead",
+      "hydroponic"
+    ],
     "summary": "A butterhead-type lettuce that works naturally with either repeated outer-leaf harvest or a compact whole-head harvest. Garden should make the user's harvest mode explicit.",
     "metrics": [
-      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
-      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS system example" },
-      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
-      { "label": "Harvest mode", "value": "Outer leaf / head", "note": "Both are useful" }
+      {
+        "label": "Germination",
+        "value": "60–68°F optimum",
+        "note": "General lettuce reference"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "5.5–6.0*",
+        "note": "UF/IFAS system example"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "1.2–1.8 mS/cm",
+        "note": "OSU lettuce reference"
+      },
+      {
+        "label": "Harvest mode",
+        "value": "Outer leaf / head",
+        "note": "Both are useful"
+      }
     ],
     "sections": {
       "germination": {
@@ -655,49 +677,149 @@
         "guidance": "Use the general lettuce germination model: cool conditions around 60–68°F are favorable, and actual emergence is the canonical event.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "thinning": {
         "short": "One plant for a compact butterhead",
         "guidance": "Garden's working hydroponic rule is one strong final plant per compact position when the intended product is a recognizable Buttercrunch head.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "pruning": {
         "short": "Harvest, don't shape-prune",
         "guidance": "Preserve the center. Remove mature outer leaves for eating or clearly damaged tissue; do not top the plant like an herb.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "harvest": {
         "short": "Excellent candidate for cut-and-come-again outer leaves",
         "guidance": "For continuous use, take mature outer leaves while protecting the center. If a whole butterhead is preferred, allow the plant to size up and harvest at the base.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "flowering": {
         "short": "Bolting is a quality warning",
         "guidance": "A rising central stalk is a stage change. Garden should surface it early because eating quality can decline as lettuce bolts.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "hydroponics": {
         "short": "General lettuce hydro references apply with context",
         "guidance": "UF/IFAS and OSU provide useful lettuce-level solution ranges. Garden should not pretend they are Buttercrunch-specific optimums.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ]
       },
       "problems": {
         "short": "Watch heat, tip damage and crown health",
         "guidance": "Future vision checks should compare outer-leaf damage with central growth and root history before recommending nutrient changes.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "uf-hydro-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "UF/IFAS documents hydroponic lettuce production at species/crop level; this is not a Buttercrunch-specific yield claim."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "compact"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "cornell-buttercrunch"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "Cornell describes compact 10-inch Buttercrunch heads."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar-specific mature height is documented; head size is not plant height."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The cited 10-inch head dimension is not represented as canopy spread without a source defining it that way."
+        }
+      },
+      "spacing": {
+        "status": "known",
+        "value": [
+          {
+            "minCm": 25,
+            "maxCm": 30,
+            "context": "in_ground",
+            "spacingType": "between_plants"
+          },
+          {
+            "minCm": 38,
+            "maxCm": 46,
+            "context": "in_ground",
+            "spacingType": "between_rows"
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Johnny’s gives 10–12 in between butterhead plants and 15–18 in between rows. Converted to rounded cm; field spacing, not pod spacing."
+          }
+        ]
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The pilot sources do not provide a phase-specific requirement suitable for this identity."
       }
     }
   },

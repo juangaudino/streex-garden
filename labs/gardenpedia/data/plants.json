@@ -8,74 +8,232 @@
     "category": "herbs",
     "emoji": "🌿",
     "guideCompletion": 92,
-    "tags": ["basil", "albahaca", "genovese", "pesto", "hydroponic"],
+    "tags": [
+      "basil",
+      "albahaca",
+      "genovese",
+      "pesto",
+      "hydroponic"
+    ],
     "summary": "A fast, productive herb that benefits from early, repeated pinching. Garden should treat pruning guidance as a structural rule: cut above healthy side shoots and preserve enough foliage for recovery.",
     "metrics": [
-      { "label": "Germination", "value": "5–10 days", "note": "65–70°F reference range" },
-      { "label": "Hydro pH", "value": "5.8–6.2", "note": "Johnny's hydroponic production reference" },
-      { "label": "Hydro EC", "value": "1.0–1.6 mS/cm", "note": "OSU hydroponics reference table" },
-      { "label": "Light", "value": "≥14 h/day", "note": "Johnny's hydroponic basil guidance" }
+      {
+        "label": "Germination",
+        "value": "5–10 days",
+        "note": "65–70°F reference range"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "5.8–6.2",
+        "note": "Johnny's hydroponic production reference"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "1.0–1.6 mS/cm",
+        "note": "OSU hydroponics reference table"
+      },
+      {
+        "label": "Light",
+        "value": "≥14 h/day",
+        "note": "Johnny's hydroponic basil guidance"
+      }
     ],
     "sections": {
       "germination": {
         "short": "Fast emergence in warm conditions",
         "guidance": "Basil commonly germinates in about 5–10 days when kept warm. In Garden, germination timing should remain a range rather than a hard deadline.",
-        "items": ["Reference temperature: 65–70°F (18–21°C).", "A delayed seedling is an observation; do not mark a pod failed from age alone."],
+        "items": [
+          "Reference temperature: 65–70°F (18–21°C).",
+          "A delayed seedling is an observation; do not mark a pod failed from age alone."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-basil-key"]
+        "sourceIds": [
+          "johnnys-basil-key"
+        ]
       },
       "thinning": {
         "short": "Pod-specific decision, not a universal basil rule",
         "guidance": "Johnny's field guidance says thinning is not inherently required for basil, but a small hydroponic pod creates a different space constraint. Garden should evaluate crowding rather than blindly enforcing a fixed seedling count.",
-        "items": ["Prefer the most vigorous, upright seedlings when crowding becomes obvious.", "If roots and stems are already intertwined, cutting unwanted seedlings at the base is safer than pulling them."],
-        "avoid": ["Presenting 'leave exactly one basil plant' as a sourced universal fact."],
+        "items": [
+          "Prefer the most vigorous, upright seedlings when crowding becomes obvious.",
+          "If roots and stems are already intertwined, cutting unwanted seedlings at the base is safer than pulling them."
+        ],
+        "avoid": [
+          "Presenting 'leave exactly one basil plant' as a sourced universal fact."
+        ],
         "context": "The pod-specific recommendation is a Garden adaptation that still needs validation against the actual systems used by User Zero.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-basil-key"]
+        "sourceIds": [
+          "johnnys-basil-key"
+        ]
       },
       "pruning": {
         "short": "Begin early; cut above strong side shoots",
         "guidance": "A strong first pruning point is when the plant is roughly 6–8 inches tall with about 3–4 sets of leaves. Pinch or cut back to a healthy set of side shoots, removing no more than about one third of the plant at once.",
-        "items": ["Cut the stem just above a healthy node / pair of side shoots.", "Repeat light pruning as new branches develop.", "Use the trimmings as a harvest rather than plucking random single leaves if the goal is to promote branching."],
-        "avoid": ["Removing more than about one third of the plant in a single session."],
+        "items": [
+          "Cut the stem just above a healthy node / pair of side shoots.",
+          "Repeat light pruning as new branches develop.",
+          "Use the trimmings as a harvest rather than plucking random single leaves if the goal is to promote branching."
+        ],
+        "avoid": [
+          "Removing more than about one third of the plant in a single session."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-basil-pruning", "okstate-pruning"]
+        "sourceIds": [
+          "johnnys-basil-pruning",
+          "okstate-pruning"
+        ]
       },
       "harvest": {
         "short": "Light harvest once established; fuller cut before bloom",
         "guidance": "Begin with light harvesting after the plant is established. For an ongoing plant, stem cuts above healthy side shoots support continued branching better than repeatedly stripping isolated leaves.",
-        "items": ["Handle leaves gently; basil bruises easily.", "A larger harvest is traditionally taken before flowering.", "For a production-style full cut, Johnny's notes cutting 4–6 inches above ground to encourage regrowth; Garden should not automatically apply that aggressive method to every countertop pod."],
+        "items": [
+          "Handle leaves gently; basil bruises easily.",
+          "A larger harvest is traditionally taken before flowering.",
+          "For a production-style full cut, Johnny's notes cutting 4–6 inches above ground to encourage regrowth; Garden should not automatically apply that aggressive method to every countertop pod."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-basil-key", "johnnys-basil-pruning"]
+        "sourceIds": [
+          "johnnys-basil-key",
+          "johnnys-basil-pruning"
+        ]
       },
       "flowering": {
         "short": "Pinch flowers to favor leaf production",
         "guidance": "If the goal is continued leaf production, remove developing flower spikes and keep pruning for branching. Flowering is a real plant event and should be recorded separately from the recommendation to remove it.",
-        "items": ["Treat visible flower buds as an observation.", "Record flower removal only after the user confirms the action."],
+        "items": [
+          "Treat visible flower buds as an observation.",
+          "Record flower removal only after the user confirms the action."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-basil-pruning"]
+        "sourceIds": [
+          "johnnys-basil-pruning"
+        ]
       },
       "hydroponics": {
         "short": "Warm, bright and moderately acidic",
         "guidance": "Hydroponic basil performs well with warm temperatures, moderately acidic nutrient solution and strong light. Reference values are useful guardrails, not automatic diagnoses.",
-        "items": ["Johnny's reference pH: 5.8–6.2.", "OSU reference EC: 1.0–1.6 mS/cm.", "Johnny's suggests at least 14 hours of light per day under production conditions."],
+        "items": [
+          "Johnny's reference pH: 5.8–6.2.",
+          "OSU reference EC: 1.0–1.6 mS/cm.",
+          "Johnny's suggests at least 14 hours of light per day under production conditions."
+        ],
         "context": "Ranges can vary by system, nutrient formulation, cultivar and growth stage.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-basil-hydro", "okstate-ecph"]
+        "sourceIds": [
+          "johnnys-basil-hydro",
+          "okstate-ecph"
+        ]
       },
       "problems": {
         "short": "Watch crowding, flowering and weak structure",
         "guidance": "The prototype should eventually connect symptoms to the real plant history. For V0, the guide only flags common management risks rather than diagnosing from text alone.",
-        "items": ["Crowding can reduce airflow.", "Delayed pruning can produce a tall, less-branched plant.", "Flowering shifts the plant away from maximum tender-leaf production."],
+        "items": [
+          "Crowding can reduce airflow.",
+          "Delayed pruning can produce a tall, less-branched plant.",
+          "Flowering shifts the plant away from maximum tender-leaf production."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-basil-pruning"]
+        "sourceIds": [
+          "johnnys-basil-pruning"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-hydro"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum basilicum"
+            },
+            "note": "Johnny’s provides production guidance for hydroponic basil; crop-level evidence does not assert Genovese-only performance."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The reviewed evidence does not provide a sufficiently specific controlled-vocabulary habit for Genovese."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar-specific mature dimensions are established in the reviewed sources."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-specific mature dimensions are established in the reviewed sources."
+        }
+      },
+      "spacing": {
+        "status": "known",
+        "value": [
+          {
+            "minCm": 10,
+            "maxCm": 20,
+            "context": "in_ground",
+            "spacingType": "between_plants"
+          },
+          {
+            "minCm": 46,
+            "maxCm": 46,
+            "context": "in_ground",
+            "spacingType": "between_rows"
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-key"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "genus",
+              "taxon": "Ocimum"
+            },
+            "note": "Johnny’s generic basil spacing: 4–8 in between plants and 18 in between rows, rounded to cm. Field values, not hydroponic pod spacing."
+          }
+        ]
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-key"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "genus",
+              "taxon": "Ocimum"
+            },
+            "note": "Johnny’s lists basil light preference as sun; generic basil-level evidence, not germination."
+          }
+        ]
       }
     }
   },
@@ -238,13 +396,34 @@
     "category": "herbs",
     "emoji": "🍃",
     "guideCompletion": 70,
-    "tags": ["mint", "menta", "tea", "herb"],
+    "tags": [
+      "mint",
+      "menta",
+      "tea",
+      "herb"
+    ],
     "summary": "A vigorous perennial herb that tolerates regular harvesting. The general pruning pattern is well documented, but this pilot still needs stronger crop-specific hydroponic nutrient references.",
     "metrics": [
-      { "label": "First harvest", "value": "3–4 in", "note": "USU plant-height reference" },
-      { "label": "Harvest style", "value": "Leaves + stems", "note": "Repeated cutting is normal" },
-      { "label": "Flower control", "value": "Pinch blooms", "note": "Supports leaf flavor" },
-      { "label": "Hydro pH / EC", "value": "Pending", "note": "Not yet crop-validated in V0" }
+      {
+        "label": "First harvest",
+        "value": "3–4 in",
+        "note": "USU plant-height reference"
+      },
+      {
+        "label": "Harvest style",
+        "value": "Leaves + stems",
+        "note": "Repeated cutting is normal"
+      },
+      {
+        "label": "Flower control",
+        "value": "Pinch blooms",
+        "note": "Supports leaf flavor"
+      },
+      {
+        "label": "Hydro pH / EC",
+        "value": "Pending",
+        "note": "Not yet crop-validated in V0"
+      }
     ],
     "sections": {
       "germination": {
@@ -252,37 +431,53 @@
         "guidance": "USU notes that mint can be grown from seed or transplants, but seed-grown plants may not remain true to a named variety because mints hybridize readily. Garden should avoid promising a cultivar identity from seed unless it is known.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
       },
       "thinning": {
         "short": "Manage canopy crowding, not just seedling count",
         "guidance": "The current source set does not define a hydroponic pod thinning rule for mint. Garden should base any thinning recommendation on actual crowding, vigor and available canopy space.",
         "evidenceType": "needs_validation",
         "confidence": "pending",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
       },
       "pruning": {
         "short": "Mint handles repeated cutting well",
         "guidance": "USU describes mint as tolerant of substantial pruning and recommends pinching blossoms when they appear if leaf quality is the goal. In soil production, plants can be cut back heavily several times a season.",
-        "items": ["For a countertop hydroponic plant, begin with lighter stem harvests and evaluate regrowth.", "Use the aggressive one-inch cut-back reference as context, not an automatic instruction for a small pod."],
+        "items": [
+          "For a countertop hydroponic plant, begin with lighter stem harvests and evaluate regrowth.",
+          "Use the aggressive one-inch cut-back reference as context, not an automatic instruction for a small pod."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
       },
       "harvest": {
         "short": "Harvest once plants are established and 3–4 in tall",
         "guidance": "USU notes that fresh leaves and stems can be harvested throughout the season once plants reach roughly 3–4 inches tall. Younger leaves and stems are described as especially flavorful.",
-        "items": ["Use clean scissors or a sharp knife for stem harvests.", "Preserve enough active growth for rapid regrowth in a small indoor system."],
+        "items": [
+          "Use clean scissors or a sharp knife for stem harvests.",
+          "Preserve enough active growth for rapid regrowth in a small indoor system."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
       },
       "flowering": {
         "short": "Pinch blooms when leaf flavor is the goal",
         "guidance": "USU notes that allowing mint to bloom can reduce leaf oil content and flavor. Pinching blossoms is therefore a practical recommendation when growing for culinary leaves or tea.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
       },
       "hydroponics": {
         "short": "Nutrient targets intentionally unresolved",
@@ -296,7 +491,112 @@
         "guidance": "Mint's vigor is an advantage until it overwhelms neighboring plants or blocks airflow. In Garden, this should eventually be evaluated from canopy photos plus system geometry rather than a generic timer.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["usu-mint"]
+        "sourceIds": [
+          "usu-mint"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Reviewed sources do not establish hydroponic suitability for this Mentha identity; do not infer it from current Garden use."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-mint"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "genus",
+              "taxon": "Mentha"
+            },
+            "note": "USU describes mint as spreading quickly via rhizomes and potentially invasive in garden soil. This is physical habit, not hydroponic incompatibility."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "maxCm": 91,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-mint"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "genus",
+                "taxon": "Mentha"
+              },
+              "note": "USU says many varieties grow up to 3 ft; 3 ft rounded to 91 cm. Not a claim that every mint reaches this height."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "USU describes rapid rhizomatous spread but provides no mature horizontal dimension."
+        }
+      },
+      "spacing": {
+        "status": "known",
+        "value": [
+          {
+            "minCm": 61,
+            "context": "in_ground",
+            "spacingType": "between_rows"
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-mint"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "genus",
+              "taxon": "Mentha"
+            },
+            "note": "USU recommends at least 2 ft between rows; converted to 61 cm. Soil row spacing only, never pod spacing."
+          }
+        ]
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-mint"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "genus",
+              "taxon": "Mentha"
+            },
+            "note": "USU describes full sun to partial shade; partial_sun records supported partial-shade tolerance, not an exclusive optimum."
+          }
+        ]
       }
     }
   },
@@ -309,13 +609,35 @@
     "category": "fruiting",
     "emoji": "🍅",
     "guideCompletion": 86,
-    "tags": ["tomato", "tomate", "cherry tomato", "fruiting", "hydroponic"],
+    "tags": [
+      "tomato",
+      "tomate",
+      "cherry tomato",
+      "fruiting",
+      "hydroponic"
+    ],
     "summary": "A fruiting crop where the first question is not 'how do I prune?' but 'is this cultivar determinate or indeterminate?'. Garden should make that identity explicit before applying sucker-removal rules.",
     "metrics": [
-      { "label": "Germination", "value": "5–7 days", "note": "Johnny's tomato reference" },
-      { "label": "Hydro pH", "value": "6.0–6.5", "note": "OSU reference table" },
-      { "label": "Hydro EC", "value": "2.0–4.0 mS/cm", "note": "OSU reference table" },
-      { "label": "Pruning", "value": "Conditional", "note": "Depends on growth habit" }
+      {
+        "label": "Germination",
+        "value": "5–7 days",
+        "note": "Johnny's tomato reference"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "6.0–6.5",
+        "note": "OSU reference table"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "2.0–4.0 mS/cm",
+        "note": "OSU reference table"
+      },
+      {
+        "label": "Pruning",
+        "value": "Conditional",
+        "note": "Depends on growth habit"
+      }
     ],
     "sections": {
       "germination": {
@@ -323,53 +645,151 @@
         "guidance": "Johnny's notes tomatoes typically germinate in about 5–7 days. Garden should still use visible emergence as the canonical event rather than infer germination from age.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-tomato"]
+        "sourceIds": [
+          "johnnys-tomato"
+        ]
       },
       "thinning": {
         "short": "One fruiting plant usually needs the pod's full capacity",
         "guidance": "A compact hydroponic opening has limited root and canopy capacity. Garden's working adaptation is to select one vigorous tomato plant per final growing position unless the specific system explicitly supports more.",
-        "avoid": ["Treating this adaptation as a universal tomato spacing fact."],
+        "avoid": [
+          "Treating this adaptation as a universal tomato spacing fact."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-tomato"]
+        "sourceIds": [
+          "johnnys-tomato"
+        ]
       },
       "pruning": {
         "short": "First identify determinate vs. indeterminate",
         "guidance": "Johnny's states determinate tomatoes generally do not need pruning, while indeterminate plants benefit from support and pruning. OSU's hydroponic guidance for indeterminate tomatoes favors one main stem with suckers removed regularly.",
-        "items": ["Confirm growth habit before recommending sucker removal.", "For indeterminate hydroponic tomatoes, remove small side shoots while they are easy to detach.", "Remove older yellow lower leaves as part of sanitation and airflow management."],
-        "avoid": ["Removing more than about one third of the plant at one time as a general pruning safety rule."],
+        "items": [
+          "Confirm growth habit before recommending sucker removal.",
+          "For indeterminate hydroponic tomatoes, remove small side shoots while they are easy to detach.",
+          "Remove older yellow lower leaves as part of sanitation and airflow management."
+        ],
+        "avoid": [
+          "Removing more than about one third of the plant at one time as a general pruning safety rule."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-tomato", "okstate-pruning"]
+        "sourceIds": [
+          "johnnys-tomato",
+          "okstate-pruning"
+        ]
       },
       "harvest": {
         "short": "For home use, allow fruit to ripen on the vine",
         "guidance": "Johnny's recommends fully vine-ripened tomatoes for local use. Garden can use fruit color and cultivar expectations as observations, but should not mark fruit harvested until the user confirms the action.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-tomato"]
+        "sourceIds": [
+          "johnnys-tomato"
+        ]
       },
       "flowering": {
         "short": "Flowering is expected; fruit set changes maintenance needs",
         "guidance": "For tomato, flowering is not something to suppress by default. It marks the transition into reproductive growth and should affect support, pruning and nutrient context.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["okstate-pruning", "johnnys-tomato"]
+        "sourceIds": [
+          "okstate-pruning",
+          "johnnys-tomato"
+        ]
       },
       "hydroponics": {
         "short": "Higher nutrient demand than leafy greens",
         "guidance": "OSU's hydroponic reference table lists tomato around pH 6.0–6.5 and EC 2.0–4.0 mS/cm. Those values are broad crop references and should be contextualized by growth stage and nutrient program.",
-        "items": ["Provide physical support as the plant and fruit load increase.", "Track lower-leaf condition and sucker growth during routine maintenance."],
+        "items": [
+          "Provide physical support as the plant and fruit load increase.",
+          "Track lower-leaf condition and sucker growth during routine maintenance."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["okstate-ecph", "okstate-pruning"]
+        "sourceIds": [
+          "okstate-ecph",
+          "okstate-pruning"
+        ]
       },
       "problems": {
         "short": "Support, vigor and pruning errors compound quickly",
         "guidance": "Tomato management should eventually combine variety, growth habit, photos and maintenance history. A generic timer cannot reliably decide whether a shoot is a sucker, a main leader or a damaged branch.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["okstate-pruning"]
+        "sourceIds": [
+          "okstate-pruning"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "okstate-ecph"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "OSU lists tomato for hydroponic production; this does not resolve cultivar-specific form or performance."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Cherry type does not identify determinate versus indeterminate habit; do not inherit Tiny Tim traits.",
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Johnny’s documents different tomato habits and spacing for determinate and indeterminate types."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar is specified, and tomato height varies substantially by determinate/indeterminate type."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar is specified, and the reviewed source does not establish one spread for generic cherry tomato."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Spacing depends on determinate versus indeterminate habit; cultivar identity is unresolved.",
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Johnny’s gives separate spacing recommendations by growth type; the current generic cherry identity cannot select one."
+          }
+        ]
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No light value is assigned to this unspecified cultivar in the reviewed sources."
       }
     }
   }

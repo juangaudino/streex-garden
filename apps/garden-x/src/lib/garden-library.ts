@@ -39,12 +39,12 @@ export type CompatibilityProfileV1 = {
     | { status: "unknown" | "pending"; reason?: string; evidence?: readonly CompatibilityEvidence[] };
   growthHabits: CompatibilityKnowledge<readonly ("compact" | "upright" | "bushy" | "spreading" | "trailing" | "rosette" | "clumping" | "mounded")[]>;
   matureSize: {
-    height: CompatibilityKnowledge<{ minCm: number; maxCm: number; context: CompatibilityContext }>;
-    spread: CompatibilityKnowledge<{ minCm: number; maxCm: number; context: CompatibilityContext }>;
+    height: CompatibilityKnowledge<{ minCm?: number; maxCm?: number; context: CompatibilityContext }>;
+    spread: CompatibilityKnowledge<{ minCm?: number; maxCm?: number; context: CompatibilityContext }>;
   };
   spacing: CompatibilityKnowledge<readonly {
-    minCm: number;
-    maxCm: number;
+    minCm?: number;
+    maxCm?: number;
     context: CompatibilityContext;
     spacingType: "between_plants" | "in_row" | "between_rows" | "container_clearance" | "position_spacing";
   }[]>;

@@ -45,18 +45,179 @@
     }
   },
   {
-    "id":"evergreen-bunching-onion-nabuka","name":"Evergreen Bunching Onion Nabuka","spanishName":"Cebolla de verdeo Evergreen Bunching Nabuka","scientificName":"Allium fistulosum","variety":"Evergreen Bunching Nabuka","category":"alliums","emoji":"🧅","guideCompletion":74,
-    "tags":["bunching onion","scallion","green onion","cebolla de verdeo","nabuka","owned seed"],
-    "summary":"A bunching onion / scallion type grown for repeated green stalk harvest rather than a large storage bulb. Cluster culture is normal for this crop class.",
-    "metrics":[{"label":"Species","value":"Allium fistulosum","note":"Bunching onion reference"},{"label":"Cluster start","value":"6–8 seeds/cell","note":"Johnny's transplant reference"},{"label":"Soil pH ref.","value":"6.2–6.8","note":"Not a hydro target"},{"label":"Owned seed GR","value":"85%","note":"Home Grown packet"}],
-    "sections":{
-      "germination":{"short":"Grow as a cluster crop","guidance":"Johnny's bunching-onion guidance starts 6–8 seeds per cell for transplant culture, confirming that cluster growth is intentional.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
-      "thinning":{"short":"Do not automatically reduce to one plant","guidance":"For bunching onions, thin only when the cluster becomes too dense for the target stalk size and available root volume.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
-      "pruning":{"short":"No branching prune","guidance":"Management is harvest-oriented; do not cut the center as if this were a branching herb.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-bunching-onion"]},
-      "harvest":{"short":"Harvest green stalks / whole bunches by intended use","guidance":"Bunching onions are harvested as scallions. In a regenerative container, selective outer-stalk cutting can be tested, but whole-plant harvest remains the canonical production method.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-bunching-onion"]},
-      "flowering":{"short":"Flowering is not the culinary target","guidance":"Allowing flowering shifts energy away from tender scallion production and should be treated as a stage change.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["johnnys-bunching-onion"]},
-      "hydroponics":{"short":"Suitable architecture for hydro, exact nutrient target pending","guidance":"The upright, clustered growth habit is compatible with compact systems, but V0.5 does not assign a precise crop-specific EC range.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
-      "problems":{"short":"Crowding can reduce stalk diameter","guidance":"Maximum light and enough root volume matter more than chasing a fixed seedling count.","evidenceType":"source_backed","confidence":"medium","sourceIds":["johnnys-bunching-onion"]}
+    "id": "evergreen-bunching-onion-nabuka",
+    "name": "Evergreen Bunching Onion Nabuka",
+    "spanishName": "Cebolla de verdeo Evergreen Bunching Nabuka",
+    "scientificName": "Allium fistulosum",
+    "variety": "Evergreen Bunching Nabuka",
+    "category": "alliums",
+    "emoji": "🧅",
+    "guideCompletion": 74,
+    "tags": [
+      "bunching onion",
+      "scallion",
+      "green onion",
+      "cebolla de verdeo",
+      "nabuka",
+      "owned seed"
+    ],
+    "summary": "A bunching onion / scallion type grown for repeated green stalk harvest rather than a large storage bulb. Cluster culture is normal for this crop class.",
+    "metrics": [
+      {
+        "label": "Species",
+        "value": "Allium fistulosum",
+        "note": "Bunching onion reference"
+      },
+      {
+        "label": "Cluster start",
+        "value": "6–8 seeds/cell",
+        "note": "Johnny's transplant reference"
+      },
+      {
+        "label": "Soil pH ref.",
+        "value": "6.2–6.8",
+        "note": "Not a hydro target"
+      },
+      {
+        "label": "Owned seed GR",
+        "value": "85%",
+        "note": "Home Grown packet"
+      }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Grow as a cluster crop",
+        "guidance": "Johnny's bunching-onion guidance starts 6–8 seeds per cell for transplant culture, confirming that cluster growth is intentional.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      },
+      "thinning": {
+        "short": "Do not automatically reduce to one plant",
+        "guidance": "For bunching onions, thin only when the cluster becomes too dense for the target stalk size and available root volume.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      },
+      "pruning": {
+        "short": "No branching prune",
+        "guidance": "Management is harvest-oriented; do not cut the center as if this were a branching herb.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest green stalks / whole bunches by intended use",
+        "guidance": "Bunching onions are harvested as scallions. In a regenerative container, selective outer-stalk cutting can be tested, but whole-plant harvest remains the canonical production method.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering is not the culinary target",
+        "guidance": "Allowing flowering shifts energy away from tender scallion production and should be treated as a stage change.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      },
+      "hydroponics": {
+        "short": "Suitable architecture for hydro, exact nutrient target pending",
+        "guidance": "The upright, clustered growth habit is compatible with compact systems, but V0.5 does not assign a precise crop-specific EC range.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Crowding can reduce stalk diameter",
+        "guidance": "Maximum light and enough root volume matter more than chasing a fixed seedling count.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Reviewed sources describe field/crop culture, not hydroponic suitability for Nabuka; current user experience is not agronomic evidence."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "clumping"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ucanr-bunching-onion-clump"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Allium fistulosum"
+            },
+            "note": "UCANR describes Allium fistulosum as forming clumps; species-level evidence, not a separate named Nebuka identity."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The reviewed species/crop references do not provide an applicable mature height for Nabuka."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Clump formation is documented but no mature horizontal dimension is reported."
+        }
+      },
+      "spacing": {
+        "status": "known",
+        "value": [
+          {
+            "minCm": 15,
+            "maxCm": 20,
+            "context": "in_ground",
+            "spacingType": "between_plants"
+          },
+          {
+            "minCm": 46,
+            "maxCm": 46,
+            "context": "in_ground",
+            "spacingType": "between_rows"
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-bunching-onion"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Allium fistulosum"
+            },
+            "note": "Johnny’s recommends transplanting clusters 6–8 in apart and 18 in between rows; converted to rounded cm. Field spacing for clusters, not pod spacing."
+          }
+        ]
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The reviewed species/crop references do not establish phase-specific light guidance for this identity."
+      }
     }
   },
   {
@@ -260,11 +421,28 @@
     "category": "flowers",
     "emoji": "🌺",
     "guideCompletion": 31,
-    "tags": ["cascading petunia", "trailing petunia", "petunia colgante", "petunia", "petunia × atkinsiana", "petunia × hybrida", "flower", "aerogarden"],
+    "tags": [
+      "cascading petunia",
+      "trailing petunia",
+      "petunia colgante",
+      "petunia",
+      "petunia × atkinsiana",
+      "petunia × hybrida",
+      "flower",
+      "aerogarden"
+    ],
     "summary": "An AeroGarden product identity for cascading petunia. Cascading, trailing and pendulous describe horticultural growth habit here; no named cultivar is asserted.",
     "metrics": [
-      {"label": "Germination", "value": "7–14 days", "note": "AeroGarden product guidance and pod-label evidence"},
-      {"label": "Manufacturer size", "value": "Medium", "note": "Pod label classification only; not an exact plant height"}
+      {
+        "label": "Germination",
+        "value": "7–14 days",
+        "note": "AeroGarden product guidance and pod-label evidence"
+      },
+      {
+        "label": "Manufacturer size",
+        "value": "Medium",
+        "note": "Pod label classification only; not an exact plant height"
+      }
     ],
     "sections": {
       "identity": {
@@ -272,14 +450,19 @@
         "guidance": "Kew treats Petunia × atkinsiana as the accepted botanical identity and lists Petunia × hybrida as a synonym. The AeroGarden product is recorded as Cascading Petunia without inventing a cultivar; trailing is retained as a related search and habit term.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["aerogarden-cascading-petunia", "kew-petunia-atkinsiana"]
+        "sourceIds": [
+          "aerogarden-cascading-petunia",
+          "kew-petunia-atkinsiana"
+        ]
       },
       "germination": {
         "short": "Product-labeled 7–14 day emergence window",
         "guidance": "The AeroGarden product context and supplied pod label state 7–14 days for sprouts. Treat this as product-level guidance for the pod, not a universal germination promise for every cascading petunia.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["aerogarden-cascading-petunia"]
+        "sourceIds": [
+          "aerogarden-cascading-petunia"
+        ]
       },
       "thinning": {
         "short": "Spacing response needs validation on the actual pod",
@@ -322,6 +505,84 @@
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "conditional",
+        "conditions": [
+          {
+            "kind": "system_type",
+            "description": "Documented for the AeroGarden pod system; this evidence does not establish suitability for other hydroponic systems."
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "aerogarden-cascading-petunia"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "The manufacturer sells this identity as a seed-pod kit for AeroGarden models; condition limited to that system."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "aerogarden-cascading-petunia"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "The product identity and description explicitly specify cascading petunias; mapped to trailing habit."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "maxCm": 30,
+            "context": "hydroponic"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "aerogarden-cascading-petunia-size"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Manufacturer listing states up to 12 in tall; rounded to 30 cm. Product-specific upper bound only."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Cascading habit is documented, but no mature horizontal dimension is given."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The AeroGarden pod product does not establish a physical spacing distance; do not infer one from pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The reviewed product source does not specify a phase-specific light requirement."
       }
     }
   }

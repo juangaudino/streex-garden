@@ -114,9 +114,16 @@ function knowledge(value, path, validateKnown, knownSourceIds) {
 function measurement(value, path) {
   const item = object(value, path);
   exactKeys(item, ["minCm", "maxCm", "context"], path);
-  finite(item.minCm, `${path}.minCm`);
-  finite(item.maxCm, `${path}.maxCm`);
-  if (item.minCm > item.maxCm) fail(path, "minCm must not exceed maxCm");
+  if (item.minCm === undefined && item.maxCm === undefined)
+    fail(path, "expected a minimum, maximum, or both");
+  if (item.minCm !== undefined) finite(item.minCm, `${path}.minCm`);
+  if (item.maxCm !== undefined) finite(item.maxCm, `${path}.maxCm`);
+  if (
+    item.minCm !== undefined &&
+    item.maxCm !== undefined &&
+    item.minCm > item.maxCm
+  )
+    fail(path, "minCm must not exceed maxCm");
   if (!contexts.has(item.context))
     fail(`${path}.context`, "unsupported growing context");
 }
@@ -130,7 +137,16 @@ function numericRange(min, max, path) {
 function range(value, path) {
   const item = object(value, path);
   exactKeys(item, ["minCm", "maxCm", "context", "spacingType"], path);
-  numericRange(item.minCm, item.maxCm, path);
+  if (item.minCm === undefined && item.maxCm === undefined)
+    fail(path, "expected a minimum, maximum, or both");
+  if (item.minCm !== undefined) finite(item.minCm, `${path}.minCm`);
+  if (item.maxCm !== undefined) finite(item.maxCm, `${path}.maxCm`);
+  if (
+    item.minCm !== undefined &&
+    item.maxCm !== undefined &&
+    item.minCm > item.maxCm
+  )
+    fail(path, "minimum must not exceed maximum");
 }
 
 export function validateCompatibilityProfile(profile, knownSourceIds) {

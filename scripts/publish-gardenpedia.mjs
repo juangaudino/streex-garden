@@ -145,9 +145,22 @@ function buildReference(plant, neighborData, sourceById) {
       .map((pair) => (pair.a === plant.id ? pair.b : pair.a)),
   );
   const sourceIds = uniqueStrings(
-    Object.values(plant.sections || {}).flatMap(
-      (section) => section?.sourceIds || [],
-    ),
+    [
+      ...Object.values(plant.sections || {}).flatMap(
+        (section) => section?.sourceIds || [],
+      ),
+      ...Object.values(plant.compatibilityProfile || {}).flatMap((claim) => {
+        if (!claim || typeof claim !== "object") return [];
+        if (Array.isArray(claim.evidence)) {
+          return claim.evidence.flatMap((item) => item.sourceIds || []);
+        }
+        return Object.values(claim).flatMap((nestedClaim) =>
+          nestedClaim && typeof nestedClaim === "object" && Array.isArray(nestedClaim.evidence)
+            ? nestedClaim.evidence.flatMap((item) => item.sourceIds || [])
+            : [],
+        );
+      }),
+    ],
   );
   return {
     germination: metricValue(plant, ["Germination", "Best germination"]),

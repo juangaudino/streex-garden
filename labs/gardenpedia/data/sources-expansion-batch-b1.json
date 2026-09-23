@@ -17,5 +17,32 @@
   {"id":"illinois-hydro-strawberry","name":"Illinois Extension — Hydroponic day-neutral strawberry production observations","type":"university_extension","tier":1,"url":"https://extension.illinois.edu/blogs/commercial-fruit-and-vegetable-growers/2023-10-27-hydroponic-day-neutral-strawberry","note":"Direct hydroponic observation including Monterey; useful for system suitability, not universal yield expectations."},
   {"id":"etsy-seaside-spinach-userzero","name":"Etsy — Seaside F1 Spinach purchase listing","type":"purchase_listing","tier":4,"url":"https://www.etsy.com/us-es/listing/1761715024/semillas-de-espinaca-seaside-f1","note":"Exact User Zero purchase listing; packet/purchase identity evidence."},
   {"id":"johnnys-seaside-spinach","name":"Johnny's — Seaside F1 Spinach","type":"specialist_grower","tier":2,"url":"https://www.johnnyseeds.com/vegetables/spinach/smooth-leaf-spinach/seaside-f1-spinach-seed-3927.11.html","note":"Exact cultivar reference: Spinacia oleracea, F1, ~30 days, slow bolting, upright dark-green leaves, extended baby-leaf window and downy mildew resistance profile."},
-  {"id":"usu-spinach","name":"Utah State Extension — Spinach in the Garden","type":"university_extension","tier":1,"url":"https://extension.usu.edu/yardandgarden/research/spinach-in-the-garden","note":"Peer-reviewed Utah crop biology: 7–10 day emergence at 55–65°F, heat/bolting context, leaf harvest guidance."}
+  {"id":"usu-spinach","name":"Utah State Extension — Spinach in the Garden","type":"university_extension","tier":1,"url":"https://extension.usu.edu/yardandgarden/research/spinach-in-the-garden","note":"Peer-reviewed Utah crop biology: 7–10 day emergence at 55–65°F, heat/bolting context, leaf harvest guidance."},
+  {
+    "id": "rhs-tiny-tim",
+    "publisher": "Royal Horticultural Society",
+    "title": "Solanum lycopersicum 'Tiny Tim'",
+    "url": "https://www.rhs.org.uk/plants/293991/solanum-lycopersicum-tiny-tim/details",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "note": "Cultivar-specific profile: bush tomato; height and spread 0.1–0.5 m; full sun."
+  },
+  {
+    "id": "ucd-monterey-runner-trials",
+    "publisher": "UC Davis Strawberry Breeding Program",
+    "title": "2018 UC Davis Day-Neutral Cultivar Strawberry Field Day Handout",
+    "url": "https://strawberry.ucdavis.edu/sites/g/files/dgvnsk11856/files/media/documents/2018%20UCD%20DAY-NEUTRAL%20Cultivar%20Strawberry%20Field%20Day%20Handout_0.pdf",
+    "type": "university_research",
+    "tier": 1,
+    "note": "Comparative cultivar trial: newer lines produced significantly fewer runners than Monterey. Supports runner/spreading tendency only; does not quantify mature spread."
+  },
+  {
+    "id": "aerogarden-cascading-petunia-size",
+    "publisher": "AeroGarden / ScottsMiracle-Gro",
+    "title": "Cascading Petunias Seed Pod Kit — product specifications",
+    "url": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/seed-kits/aerogarden-cascading-petunias-seed-pod-kit-7-pods/806538-0208.html",
+    "type": "product_reference",
+    "tier": 2,
+    "note": "Product listing states grows up to 12 inches tall; product-specific upper height only, not a species-wide measurement."
+  }
 ]

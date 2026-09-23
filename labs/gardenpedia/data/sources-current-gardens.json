@@ -97,5 +97,14 @@
     "type": "grower_reference",
     "scope": "general",
     "accessed": "2026-09-12"
+  },
+  {
+    "id": "cornell-buttercrunch",
+    "publisher": "Cornell Cooperative Extension — Vegetable Varieties for Gardeners",
+    "title": "Buttercrunch Lettuce",
+    "url": "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=796",
+    "type": "university_extension",
+    "scope": "Exact Buttercrunch identity; reports compact 10-inch heads.",
+    "accessed": "2026-09-22"
   }
 ]

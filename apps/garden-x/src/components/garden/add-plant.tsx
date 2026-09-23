@@ -454,13 +454,20 @@ function ContextualCandidateCard({
     }
     if (reason.property === "growth_habit") {
       const habit = reason.statement.split(":").slice(1).join(":").trim().replace(/\.$/, "");
-      const habits = habit.split(",").map((value) => value.trim()).filter(Boolean);
+      const habits = habit
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
       if (habits.length === 0) return "";
       const translations: Record<string, string> = {
-        compact: ui(language, "habitCompact"), upright: ui(language, "habitUpright"),
-        bushy: ui(language, "habitBushy"), spreading: ui(language, "habitSpreading"),
-        trailing: ui(language, "habitTrailing"), rosette: ui(language, "habitRosette"),
-        clumping: ui(language, "habitClumping"), mounded: ui(language, "habitMounded"),
+        compact: ui(language, "habitCompact"),
+        upright: ui(language, "habitUpright"),
+        bushy: ui(language, "habitBushy"),
+        spreading: ui(language, "habitSpreading"),
+        trailing: ui(language, "habitTrailing"),
+        rosette: ui(language, "habitRosette"),
+        clumping: ui(language, "habitClumping"),
+        mounded: ui(language, "habitMounded"),
       };
       const translated = habits.map((value) => translations[value] ?? value).join(", ");
       return `${ui(language, "documentedGrowthHabit")}: ${translated}.`;
@@ -487,7 +494,9 @@ function ContextualCandidateCard({
       </button>
       {formattedReasons.length ? (
         <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-          {formattedReasons.map((reason) => <li key={reason.key}>{reason.text}</li>)}
+          {formattedReasons.map((reason) => (
+            <li key={reason.key}>{reason.text}</li>
+          ))}
         </ul>
       ) : null}
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">

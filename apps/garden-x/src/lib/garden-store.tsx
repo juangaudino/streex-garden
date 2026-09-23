@@ -45,6 +45,9 @@ import {
   persistMoment,
   invalidateEventRecord,
   updateGardenRecord,
+  loadGardenCoverPhotosRecord,
+  setGardenCoverPhotoRecord,
+  uploadGardenCoverPhotoRecord,
   recordGardenMaintenance,
   updateCustomSystemLayoutRecord,
   updatePlantIdentityRecord,
@@ -103,6 +106,9 @@ interface StoreApi extends GardenState {
   movePlant: (plantId: string, targetPositionId: string, movedDaysAgo: number) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => void;
+  loadGardenCoverPhotos: (gardenId: string) => Promise<Photo[]>;
+  setGardenCoverPhoto: (gardenId: string, photoId: string | null) => Promise<void>;
+  uploadGardenCoverPhoto: (gardenId: string, src: string, originalFilename?: string) => Promise<string>;
   setGardenArchived: (id: string, archived: boolean) => Promise<void>;
   deleteGarden: (id: string) => Promise<DeleteGardenResult>;
   deleteEvent: (id: string) => Promise<void>;
@@ -689,6 +695,16 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           ...s,
           gardens: s.gardens.map((garden) => (garden.id === id ? { ...garden, ...patch } : garden)),
         }));
+      },
+      loadGardenCoverPhotos: (gardenId) => loadGardenCoverPhotosRecord(gardenId),
+      setGardenCoverPhoto: async (gardenId, photoId) => {
+        await setGardenCoverPhotoRecord(gardenId, photoId);
+        await refreshFromBackend("mutation");
+      },
+      uploadGardenCoverPhoto: async (gardenId, src, originalFilename) => {
+        const photoId = await uploadGardenCoverPhotoRecord(gardenId, src, originalFilename);
+        await refreshFromBackend("mutation");
+        return photoId;
       },
       setGardenArchived: async (id, archived) => {
         const current = state.gardens.find((g) => g.id === id);

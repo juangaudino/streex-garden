@@ -1389,6 +1389,111 @@ export async function updateGardenRecord(garden: Garden): Promise<void> {
   if (error) throw new Error(error.message);
 }
 
+type GardenCoverPhotoRecord = {
+  id: string;
+  storage_path: string;
+  original_filename?: string | null;
+  content_type?: string | null;
+  byte_size?: number | null;
+  captured_at?: string | null;
+  captured_at_precision?: string | null;
+  is_cover?: boolean;
+};
+
+/** Loads only the uploaded garden-level media for one authorized garden. */
+export async function loadGardenCoverPhotosRecord(gardenId: string): Promise<Photo[]> {
+  const { data, error } = await getSupabaseClient().rpc("garden_get_garden_cover_photos", {
+    p_garden_id: gardenId,
+  });
+  if (error) throw new Error(error.message);
+  return ((data ?? []) as GardenCoverPhotoRecord[]).map((photo) => ({
+    id: photo.id,
+    plantId: "",
+    mediaScope: "garden_cover",
+    src: "",
+    daysAgo: 0,
+    caption: "",
+    metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
+    backendStoragePath: photo.storage_path,
+    capturedAt: photo.captured_at ?? null,
+    capturedAtPrecision: photo.captured_at_precision,
+    provenance: "recorded",
+  }));
+}
+
+async function uploadPreparedGardenCoverPhoto(
+  gardenId: string,
+  src: string,
+  originalFilename = "garden-cover",
+): Promise<string> {
+  const decoded = decodeDataUrl(src);
+  if (!decoded) throw new Error("System photo could not be read.");
+  const checksum = await sha256Hex(decoded.bytes);
+  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
+  const { data, error } = await getSupabaseClient().rpc("garden_prepare_media_photo", {
+    p_request_id: crypto.randomUUID(),
+    p_scope: "garden_cover",
+    p_garden_id: gardenId,
+    p_original_filename: originalFilename.slice(0, 240),
+    p_content_type: decoded.mime,
+    p_byte_size: decoded.bytes.byteLength,
+    p_checksum_sha256: checksum,
+  });
+  if (error) throw new Error(error.message);
+  const prepared = data as { photo_id: string; storage_path: string };
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(
+    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
+    {
+      method: "POST",
+      headers: {
+        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+        Authorization: `Bearer ${session.access_token}`,
+        "content-type": decoded.mime,
+        "cache-control": "max-age=3600",
+        "x-upsert": "false",
+      },
+      body: decoded.bytes.buffer.slice(
+        decoded.bytes.byteOffset,
+        decoded.bytes.byteOffset + decoded.bytes.byteLength,
+      ) as ArrayBuffer,
+    },
+  );
+  if (!response.ok && response.status !== 409) throw new Error("System photo upload failed.");
+  const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
+    p_photo_id: prepared.photo_id,
+    p_checksum_sha256: checksum,
+    p_width: dimensions?.width ?? null,
+    p_height: dimensions?.height ?? null,
+  });
+  if (uploaded.error) throw new Error(uploaded.error.message);
+  return prepared.photo_id;
+}
+
+export async function setGardenCoverPhotoRecord(
+  gardenId: string,
+  photoId: string | null,
+): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_set_garden_cover", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: gardenId,
+    p_photo_id: photoId,
+  });
+  if (error) throw new Error(error.message);
+}
+
+export async function uploadGardenCoverPhotoRecord(
+  gardenId: string,
+  src: string,
+  originalFilename?: string,
+): Promise<string> {
+  const photoId = await uploadPreparedGardenCoverPhoto(gardenId, src, originalFilename);
+  await setGardenCoverPhotoRecord(gardenId, photoId);
+  return photoId;
+}
+
 export async function reorderGardenRecords(gardenIds: string[]): Promise<void> {
   if (!gardenIds.length) return;
   const { error } = await getSupabaseClient().rpc("garden_x_reorder_gardens", {

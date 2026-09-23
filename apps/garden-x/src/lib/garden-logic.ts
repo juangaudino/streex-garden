@@ -83,6 +83,16 @@ export function gardenCoverPhoto(garden: Garden, plants: Plant[], photos: Photo[
   return photos.filter((photo) => plantIds.has(photo.plantId)).sort((a, b) => a.daysAgo - b.daysAgo)[0];
 }
 
+/** Combines garden-level uploads with plant evidence without duplicating a photo. */
+export function gardenCoverChoices(gardenPhotos: Photo[], plantPhotos: Photo[]) {
+  const seen = new Set<string>();
+  return [...gardenPhotos, ...plantPhotos].filter((photo) => {
+    if (seen.has(photo.id)) return false;
+    seen.add(photo.id);
+    return true;
+  });
+}
+
 export function dateFromDaysAgo(daysAgo: number) {
   return new Date(Date.now() - daysAgo * dayMs);
 }

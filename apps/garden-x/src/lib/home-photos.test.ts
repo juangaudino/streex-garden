@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { distinctPhotoEvidence, plantsRepresentedInPhotos, recentPlantPhotos } from "./garden-logic";
+import { distinctPhotoEvidence, gardenCoverChoices, plantsRepresentedInPhotos, recentPlantPhotos } from "./garden-logic";
 import type { Photo, Plant } from "./garden-data";
 
 const plants: Pick<Plant, "id">[] = [{ id: "plant-1" }];
@@ -14,6 +14,14 @@ const photo = (overrides: Partial<Photo>): Photo => ({
 });
 
 describe("Home new photos projection", () => {
+  it("keeps garden cover uploads isolated and deduplicated from plant evidence", () => {
+    const gardenCover = photo({ id: "garden-photo", plantId: "", mediaScope: "garden_cover" });
+    expect(gardenCoverChoices([gardenCover], [gardenCover, photo({ id: "plant-photo" })]).map((item) => item.id)).toEqual([
+      "garden-photo",
+      "plant-photo",
+    ]);
+  });
+
   it("excludes garden-level media so every item has a canonical plant route", () => {
     const photos = [
       photo({ id: "garden-cover", plantId: "", mediaScope: "garden_cover" }),

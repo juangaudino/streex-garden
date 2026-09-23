@@ -15,22 +15,6 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-/**
- * Radix locks the body while a dialog is open, but the document root can still
- * retain its own scroll position in desktop browsers. Lock both scrolling
- * surfaces so wheel/keyboard input is handled by the dialog viewport only.
- */
-function useDialogDocumentScrollLock() {
-  React.useEffect(() => {
-    const root = document.documentElement;
-    const previousOverflow = root.style.overflow;
-    root.style.overflow = "hidden";
-    return () => {
-      root.style.overflow = previousOverflow;
-    };
-  }, []);
-}
-
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -50,7 +34,6 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => {
-  useDialogDocumentScrollLock();
   return (
     <DialogPortal>
       <DialogOverlay />

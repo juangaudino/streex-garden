@@ -269,9 +269,19 @@ export function plantTimeline(
   photos: Photo[],
   plantId: string,
   order: SortOrder = "newest",
+  gardenId?: string,
 ): PlantTimelineEntry[] {
   const plantEventsById = new Map(
-    events.filter((event) => event.plantId === plantId).map((event) => [event.id, event]),
+    events
+      .filter(
+        (event) =>
+          event.plantId === plantId ||
+          (Boolean(gardenId) &&
+            event.plantId === "" &&
+            event.gardenId === gardenId &&
+            event.backendEventType === "system_maintenance"),
+      )
+      .map((event) => [event.id, event]),
   );
   const photosByEventId = new Map<string, Photo[]>();
   const evidenceOnly: Photo[] = [];

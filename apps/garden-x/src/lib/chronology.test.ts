@@ -83,4 +83,25 @@ describe("chronology projections", () => {
       "entered-late-but-older",
     ]);
   });
+
+  it("includes garden-level system maintenance in each plant timeline without assigning it to the plant", () => {
+    const maintenance: PlantEvent = {
+      id: "maintenance-1",
+      plantId: "",
+      gardenId: "garden-1",
+      daysAgo: 2,
+      occurredAt: "2026-09-20T12:00:00.000Z",
+      type: "maintenance",
+      title: "Water + nutrients",
+      provenance: "recorded",
+      backendEventType: "system_maintenance",
+    };
+
+    expect(
+      plantTimeline([maintenance], [], "plant-1", "newest", "garden-1").map((entry) =>
+        entry.kind === "event" ? entry.event.id : entry.photo.id,
+      ),
+    ).toEqual(["maintenance-1"]);
+    expect(plantTimeline([maintenance], [], "plant-1", "newest", "garden-2")).toEqual([]);
+  });
 });

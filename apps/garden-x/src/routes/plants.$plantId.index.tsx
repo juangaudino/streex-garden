@@ -164,8 +164,8 @@ function PlantProfile() {
     : [];
   const history = useMemo(() => chronological(events), [events]);
   const timeline = useMemo(
-    () => plantTimeline(store.events, store.photos, plant.id, sortOrder),
-    [store.events, store.photos, plant.id, sortOrder],
+    () => plantTimeline(store.events, store.photos, plant.id, sortOrder, plant.gardenId),
+    [store.events, store.photos, plant.id, plant.gardenId, sortOrder],
   );
   const orderedPhotos = useMemo(
     () => sortPhotosByCapturedAt(photos, sortOrder),

@@ -23,7 +23,7 @@ export async function runAiCheckRuntime(input: {
   promptVersion: string
   jsonSchema?: Record<string, unknown>
   instructions?: string
-  operation?: 'ai_check' | 'meaningful_change'
+  operation?: 'ai_check' | 'meaningful_change' | 'share_caption'
 }): Promise<{ providerRequest: AiProviderRequest; context: Record<string, unknown> }> {
   const { data, error } = await input.userClient.rpc(input.operation === 'meaningful_change' ? 'garden_get_meaningful_change_context' : 'garden_get_ai_cycle_context', {
     p_grow_cycle_id: input.growCycleId,
@@ -31,7 +31,9 @@ export async function runAiCheckRuntime(input: {
     p_compare_photo_id: input.comparePhotoId ?? null,
   })
   if (error || !data || typeof data !== 'object') throw new Error('Authorized AI context is unavailable')
-  const context = data as Record<string, unknown>
+  let context = data as Record<string, unknown>
+  const maintenanceResponse = await input.userClient.rpc('garden_get_ai_garden_maintenance_context', { p_grow_cycle_id: input.growCycleId })
+  if (!maintenanceResponse.error && Array.isArray(maintenanceResponse.data)) context = { ...context, garden_maintenance: maintenanceResponse.data }
   const cycle = context.cycle
   if (!cycle || typeof cycle !== 'object' || Array.isArray(cycle) || (cycle as Record<string, unknown>).id !== input.growCycleId) {
     throw new Error('Authorized AI context is bound to a different grow cycle')

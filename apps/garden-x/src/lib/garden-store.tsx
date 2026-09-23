@@ -45,6 +45,7 @@ import {
   persistMoment,
   invalidateEventRecord,
   updateGardenRecord,
+  recordGardenMaintenance,
   updateCustomSystemLayoutRecord,
   updatePlantIdentityRecord,
   confirmPlantLibraryIdentityRecord,
@@ -68,6 +69,7 @@ interface StoreApi extends GardenState {
   gardenSummaries: GardenSummaryResult[];
   hydration: "loading" | "ready" | "reconnecting" | "error" | "offline";
   highlightedPlantId: string | null;
+  recordGardenMaintenance: (gardenId: string, action: "water_change" | "nutrients" | "water_and_nutrients", occurredOn: string, note?: string) => Promise<void>;
   language: "en" | "es";
   setLanguage: (language: "en" | "es") => void;
   appearance: Appearance;
@@ -753,6 +755,10 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         pendingPhotos.current.delete(id);
         setState((s) => ({ ...s, photos: s.photos.filter((photo) => photo.id !== id) }));
         return result;
+      },
+      recordGardenMaintenance: async (gardenId, action, occurredOn, note) => {
+        await recordGardenMaintenance(gardenId, action, occurredOn, note);
+        await refreshFromBackend("mutation");
       },
       addGarden: (g) => {
         const id = crypto.randomUUID();

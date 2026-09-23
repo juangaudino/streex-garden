@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, validateAiCheckProposal, validateMeaningfulChangeProposal } from "./ai-contract";
+import { GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, validateAiCheckProposal, validateMeaningfulChangeProposal, validateShareCaptionProposal } from "./ai-contract";
 
 const validProposal = (overrides: Record<string, unknown> = {}) => ({
   schema_version: GARDEN_AI_PROPOSAL_SCHEMA_VERSION,
@@ -79,6 +79,18 @@ describe("Meaningful Changes output contract", () => {
   it("rejects duplicate evidence and invented physical measurements", () => {
     expect(validateMeaningfulChangeProposal(validComparison({ before_photo_id: "photo-after" }))).toBeNull();
     expect(validateMeaningfulChangeProposal(validComparison({ primary_visual_observation: "Grew 14 cm" }))).toBeNull();
+  });
+});
+
+describe("Share Story caption contract", () => {
+  it("accepts a short optional caption or an explicit empty suggestion", () => {
+    expect(validateShareCaptionProposal({ schema_version: GARDEN_SHARE_CAPTION_SCHEMA_VERSION, caption: "Lista para su primera cosecha." })).not.toBeNull();
+    expect(validateShareCaptionProposal({ schema_version: GARDEN_SHARE_CAPTION_SCHEMA_VERSION, caption: null })).not.toBeNull();
+  });
+
+  it("rejects internal language and overlong captions", () => {
+    expect(validateShareCaptionProposal({ schema_version: GARDEN_SHARE_CAPTION_SCHEMA_VERSION, caption: "grow_cycle_id not_yet" })).toBeNull();
+    expect(validateShareCaptionProposal({ schema_version: GARDEN_SHARE_CAPTION_SCHEMA_VERSION, caption: "x".repeat(241) })).toBeNull();
   });
 });
 

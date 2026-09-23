@@ -108,6 +108,7 @@ export interface Photo {
 export interface PlantEvent {
   id: string;
   plantId: string;
+  gardenId?: string;
   daysAgo: number;
   occurredAt?: string | null;
   type: EventType;

@@ -2,6 +2,7 @@ import {
   knowledge,
   type CareTask,
   type Garden,
+  type GardenKind,
   type MaintenanceType,
   type Photo,
   type Plant,
@@ -247,6 +248,13 @@ export const plantEvents = (events: PlantEvent[], plantId: string) =>
     .sort((a, b) => compareTemporal(a.event.occurredAt, b.event.occurredAt, a.event.daysAgo, b.event.daysAgo, "newest") || a.index - b.index)
     .map(({ event }) => event);
 
+/** Presentation-only guard for normalized events whose note is both title and detail. */
+export function isRedundantTimelineDetail(title: string, detail?: string | null): boolean {
+  if (!detail?.trim()) return true;
+  const normalize = (value: string) => value.trim().toLocaleLowerCase().replace(/[.!?,;:()[\]{}"“”‘’]+/g, "").replace(/\s+/g, " ");
+  return normalize(title) === normalize(detail);
+}
+
 export type PlantTimelineEntry =
   | { kind: "event"; event: PlantEvent; photos: Photo[]; daysAgo: number }
   | { kind: "photo"; photo: Photo; photos: Photo[]; daysAgo: number };
@@ -405,17 +413,10 @@ export function plantCompanions(knowledgeId: string): PlantCompanions {
   return companions[knowledgeId] ?? { good: ["Plants with similar light and water needs"], separate: ["Plants with conflicting care needs"] };
 }
 
-export function storyFacts(plant: Plant, events: PlantEvent[], language = preferredLanguage()): StoryFact[] {
-  const history = plantEvents(events, plant.id);
-
-  const last = (type: EventType, titleIncludes?: string) => {
-    const found = history.find(
-      (e) =>
-        e.type === type &&
-        (!titleIncludes || e.title.toLowerCase().includes(titleIncludes.toLowerCase())),
-    );
-    return found ? formatDate(found.daysAgo, language) : ui(language, "notYet");
-  };
+export function storyFacts(plant: Plant, events: PlantEvent[], language = preferredLanguage(), gardenKind?: GardenKind): StoryFact[] {
+  const history = events
+    .filter((event) => event.plantId === plant.id || (event.plantId === "" && event.gardenId === plant.gardenId))
+    .sort((a, b) => compareTemporal(a.occurredAt, b.occurredAt, a.daysAgo, b.daysAgo, "newest"));
   const labels = {
     waterChange: language === "es" ? "Último cambio de agua" : "Last water change",
     thinning: language === "es" ? "Último aclareo" : "Last thinning",
@@ -423,56 +424,25 @@ export function storyFacts(plant: Plant, events: PlantEvent[], language = prefer
     pruning: language === "es" ? "Última poda" : "Last pruning",
     harvest: language === "es" ? "Última cosecha" : "Last harvest",
     watering: language === "es" ? "Último riego" : "Last watering",
-    ai: language === "es" ? "Última comprobación de IA" : "Last AI check",
-    cleaning: language === "es" ? "Última limpieza" : "Last cleaning",
-    transplant: language === "es" ? "Último trasplante" : "Last transplant",
-    feed: language === "es" ? "Último abonado" : "Last feed",
   };
-
-  switch (plant.id) {
-    case "willow":
-      return [
-        { label: labels.waterChange, value: last("maintenance", "Water change") },
-        { label: labels.thinning, value: last("thinning") },
-        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
+  const latest = (predicate: (event: PlantEvent) => boolean) => history.find(predicate);
+  const fact = (label: string, event?: PlantEvent): StoryFact => ({ label, value: event ? formatDate(event.daysAgo, language) : ui(language, "notYet") });
+  const hydroponic = gardenKind === "hydroponic";
+  const combinedMaintenance = latest((event) => event.type === "maintenance" && /water.*nutrient|nutrient.*water/i.test(`${event.title} ${event.detail ?? ""}`));
+  const candidates = hydroponic
+    ? [
+        { label: labels.waterChange, event: combinedMaintenance ?? latest((event) => event.type === "maintenance" && /water change|reservoir/i.test(`${event.title} ${event.detail ?? ""}`)) },
+        ...(combinedMaintenance ? [] : [{ label: labels.nutrients, event: latest((event) => event.type === "maintenance" && /nutrient|feed/i.test(`${event.title} ${event.detail ?? ""}`)) }]),
+        { label: labels.harvest, event: latest((event) => event.type === "harvest") },
+        { label: labels.pruning, event: latest((event) => event.type === "pruning" || event.type === "thinning") },
+      ]
+    : [
+        { label: labels.harvest, event: latest((event) => event.type === "harvest") },
+        { label: labels.pruning, event: latest((event) => event.type === "pruning" || event.type === "thinning") },
+        { label: labels.watering, event: latest((event) => event.type === "maintenance" && /water|reservoir/i.test(`${event.title} ${event.detail ?? ""}`)) },
+        { label: labels.nutrients, event: latest((event) => event.type === "maintenance" && /nutrient|feed/i.test(`${event.title} ${event.detail ?? ""}`)) },
       ];
-    case "nova":
-      return [
-        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
-        { label: labels.waterChange, value: last("maintenance", "Water change") },
-        { label: labels.thinning, value: last("thinning") },
-      ];
-    case "aurora":
-      return [
-        { label: labels.pruning, value: last("pruning") },
-        { label: labels.harvest, value: last("harvest") },
-        { label: labels.watering, value: last("maintenance", "Watering") },
-      ];
-    case "rex":
-      return [
-        { label: labels.harvest, value: last("harvest") },
-        { label: labels.pruning, value: last("pruning") },
-        { label: labels.watering, value: last("maintenance", "Watering") },
-      ];
-    case "ember":
-      return [
-        { label: labels.nutrients, value: last("maintenance", "Nutrients") },
-        { label: labels.ai, value: last("ai") },
-        { label: labels.harvest, value: last("harvest") },
-      ];
-    case "ora":
-      return [
-        { label: labels.cleaning, value: last("maintenance", "Cleaning") },
-        { label: labels.transplant, value: last("transplant") },
-        { label: labels.feed, value: last("maintenance", "Nutrients") },
-      ];
-    default:
-      return [
-        { label: labels.pruning, value: last("pruning") },
-        { label: labels.harvest, value: last("harvest") },
-        { label: labels.watering, value: last("maintenance", "Watering") },
-      ];
-  }
+  return candidates.slice(0, 3).map(({ label, event }) => fact(label, event));
 }
 
 /* ------------------------------------------------------------- AI check */

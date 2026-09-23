@@ -67,7 +67,7 @@ Deno.serve(async (request) => {
   try { body = await request.json() as { token?: unknown } } catch { return json({ error: 'Invalid request' }, 400) }
   if (!isGuestToken(body.token)) return json({ error: 'Guest story not found' }, 404)
 
-  const { data, error } = await admin.rpc('garden_get_guest_plant_story', { p_token_hash: await sha256Hex(body.token.toLowerCase()) })
+  const { data, error } = await admin.rpc('garden_get_guest_plant_story_v2', { p_token_hash: await sha256Hex(body.token.toLowerCase()) })
   if (error || !data) return json({ error: 'Guest story not found' }, 404)
 
   const story = data as { history?: StoryEvent[]; [key: string]: unknown }

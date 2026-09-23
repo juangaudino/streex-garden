@@ -26,6 +26,7 @@ import {
   statusMeta,
   localizedStatusLabel,
   storyFacts,
+  isRedundantTimelineDetail,
   latestPlantPhoto,
   plantTimeline,
   sortPhotosByCapturedAt,
@@ -325,7 +326,7 @@ function PlantProfile() {
       <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-4 mx-5 sm:mx-8 lg:mx-12">
         {[
           { k: ui(language, "planted"), v: formatDate(plant.plantedDaysAgo) },
-          ...storyFacts(plant, store.events, language).map((f) => ({ k: f.label, v: f.value })),
+          ...storyFacts(plant, store.events, language, store.gardens.find((garden) => garden.id === plant.gardenId)?.kind).map((f) => ({ k: f.label, v: f.value })),
         ].map((cell) => (
           <div key={cell.k} className="bg-card px-4 py-3.5">
             <p className="eyebrow">{cell.k}</p>
@@ -452,7 +453,7 @@ function PlantProfile() {
                           >
                             {e.title}
                           </h3>
-                          {e.detail ? (
+                          {e.detail && !isRedundantTimelineDetail(e.title, e.detail) ? (
                             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                               {e.detail}
                             </p>
@@ -610,7 +611,7 @@ function PlantProfile() {
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
                       </p>
-                      {e.detail ? (
+                      {e.detail && !isRedundantTimelineDetail(e.title, e.detail) ? (
                         <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
                       ) : null}
                       {photo ? (

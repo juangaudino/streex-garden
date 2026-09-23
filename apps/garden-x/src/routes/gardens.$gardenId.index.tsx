@@ -1,7 +1,8 @@
 import { useState } from "react";
 import type { Plant } from "@/lib/garden-data";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ChevronLeft, Cpu, Film, LayoutGrid, List, Plus } from "lucide-react";
+import { ChevronLeft, Cpu, Film, FlaskConical, LayoutGrid, List, Plus, Droplets } from "lucide-react";
+import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
@@ -16,10 +17,12 @@ import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { activeGridCells, allGridCells } from "@/lib/custom-system";
-import { ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
 import { RecordMomentSheet } from "@/components/garden/record-moment";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -53,6 +56,11 @@ function GardenDetail() {
   );
   const [selectedPositionKey, setSelectedPositionKey] = useState<string | null>(null);
   const [recordingPlant, setRecordingPlant] = useState<Plant | null>(null);
+  const [maintenanceOpen, setMaintenanceOpen] = useState(false);
+  const [maintenanceAction, setMaintenanceAction] = useState<"water_change" | "nutrients" | "water_and_nutrients">("water_change");
+  const [maintenanceDate, setMaintenanceDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const [maintenanceNote, setMaintenanceNote] = useState("");
+  const [maintenanceSaving, setMaintenanceSaving] = useState(false);
   const garden = store.gardens.find((g) => g.id === gardenId);
   if (!garden) throw notFound();
 
@@ -711,9 +719,10 @@ function GardenDetail() {
           <section className="mt-12 px-5 sm:px-8 lg:px-12">
             <SectionTitle
               action={
-                <Link to="/care" className="text-primary hover:underline">
-                  {ui(language, "careSession")}
-                </Link>
+                <div className="flex flex-wrap items-center justify-end gap-3">
+                  <button type="button" className="text-primary hover:underline" onClick={() => setMaintenanceOpen(true)}>{ui(language, "gardenMaintenance")}</button>
+                  <Link to="/care" className="text-primary hover:underline">{ui(language, "careSession")}</Link>
+                </div>
               }
             >
               {ui(language, "openCareGarden")}
@@ -765,6 +774,23 @@ function GardenDetail() {
         open={Boolean(adding)}
         onClose={() => setAdding(null)}
       />
+
+      <Dialog open={maintenanceOpen} onOpenChange={setMaintenanceOpen}>
+        <DialogContent className="rounded-3xl sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl">{ui(language, "gardenMaintenance")}</DialogTitle>
+            <DialogDescription>{ui(language, "openCareGarden")}</DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+            {([ ["water_change", "waterChange", Droplets], ["nutrients", "nutrients", FlaskConical], ["water_and_nutrients", "waterAndNutrients", FlaskConical] ] as const).map(([value, label, Icon]) => (
+              <button key={value} type="button" onClick={() => setMaintenanceAction(value)} className={cn("rounded-2xl border p-3 text-left text-sm", maintenanceAction === value ? "border-primary bg-primary/5" : "border-border/70")}><Icon className="mb-2 h-4 w-4 text-primary" />{ui(language, label)}</button>
+            ))}
+          </div>
+          <label className="mt-4 grid gap-1.5 text-sm"><span>{ui(language, "maintenanceDate")}</span><Input type="date" value={maintenanceDate} onChange={(event) => setMaintenanceDate(event.target.value)} /></label>
+          <textarea value={maintenanceNote} onChange={(event) => setMaintenanceNote(event.target.value)} placeholder={language === "es" ? "Nota opcional" : "Optional note"} className="mt-3 min-h-20 rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
+          <Button className="mt-4 w-full rounded-full" disabled={maintenanceSaving || !maintenanceDate} onClick={() => { setMaintenanceSaving(true); void store.recordGardenMaintenance(garden.id, maintenanceAction, maintenanceDate, maintenanceNote).then(() => { toast.success(ui(language, "maintenanceSaved")); setMaintenanceOpen(false); setMaintenanceNote(""); }).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "maintenanceSaveFailed")))).finally(() => setMaintenanceSaving(false)); }}>{maintenanceSaving ? "…" : ui(language, "saveMaintenance")}</Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

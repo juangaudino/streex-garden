@@ -30,6 +30,8 @@ import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
 
+export type GardenMaintenanceAction = "water_change" | "nutrients" | "water_and_nutrients";
+
 type BootstrapGarden = {
   id: string;
   name: string;
@@ -94,8 +96,9 @@ type BootstrapPlant = {
 };
 type BootstrapEvent = {
   id: string;
-  plant_instance_id: string;
-  grow_cycle_id: string;
+  plant_instance_id: string | null;
+  grow_cycle_id: string | null;
+  garden_id?: string | null;
   event_type: string;
   occurred_at: string;
   created_at: string;
@@ -158,6 +161,7 @@ function daysAgo(value: string | null | undefined): number {
   return Math.max(0, Math.round((today.getTime() - date.getTime()) / dayMs));
 }
 function eventType(type: string, data: Record<string, unknown>): EventType {
+  if (type === "system_maintenance") return "maintenance";
   if (type === "cycle_started" || type === "seeds_added") return "planted";
   if (type === "germination_observed" || type === "germination_confirmed") return "germinated";
   if (type === "sprouted") return "sprouted";
@@ -187,6 +191,12 @@ function provenance(type: string): Provenance {
 }
 function titleFor(e: BootstrapEvent): string {
   if (e.note?.trim()) return e.note.trim().slice(0, 80);
+  if (e.event_type === "system_maintenance") {
+    const action = String(e.event_data?.class ?? "");
+    if (action === "water_and_nutrients") return "Water + nutrients";
+    if (action === "water_change") return "Water change";
+    if (action === "nutrients") return "Nutrients";
+  }
   const labels: Record<string, string> = {
     cycle_started: "Cycle started",
     cycle_ended: "Cycle closed",
@@ -565,6 +575,9 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   const { data, error } = await getSupabaseClient().rpc("garden_x_get_bootstrap");
   if (error) throw new Error(error.message);
   const b = data as Bootstrap;
+  const systemMaintenanceResponse = await getSupabaseClient().rpc("garden_get_system_maintenance_events");
+  if (systemMaintenanceResponse.error) throw new Error(systemMaintenanceResponse.error.message);
+  const systemMaintenance = (systemMaintenanceResponse.data ?? []) as BootstrapEvent[];
   const filmsResponse = await getSupabaseClient().rpc("garden_x_get_saved_films");
   if (filmsResponse.error) throw new Error(filmsResponse.error.message);
   const savedFilms = (filmsResponse.data ?? []) as Array<{
@@ -671,11 +684,12 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     photosByEventId.set(photo.event_id, ids);
   }
 
-  const events: PlantEvent[] = (b.events ?? []).map((e) => {
+  const events: PlantEvent[] = ([...(b.events ?? []), ...systemMaintenance]).map((e) => {
     const eventPhotoIds = photosByEventId.get(e.id);
     return {
       id: e.id,
-      plantId: e.plant_instance_id,
+      plantId: e.plant_instance_id ?? "",
+      ...(e.garden_id ? { gardenId: e.garden_id } : {}),
       daysAgo: daysAgo(e.occurred_at),
       occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
@@ -698,7 +712,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       mediaScope: p.media_scope,
       src: "",
       daysAgo: daysAgo(p.captured_at ?? e?.occurred_at),
-      caption: e?.note?.trim() || "Photo",
+      caption: e?.note?.trim() || "",
       metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
       backendStoragePath: p.storage_path,
       capturedAt: p.captured_at,
@@ -804,6 +818,17 @@ async function cycleDetail(growCycleId: string): Promise<{
   } | null;
   if (!row || typeof row.revision !== "number") throw new Error("Cycle revision unavailable.");
   return { revision: row.revision, history: row.history ?? [] };
+}
+
+export async function recordGardenMaintenance(gardenId: string, action: GardenMaintenanceAction, occurredOn: string, note?: string): Promise<void> {
+  const { error } = await getSupabaseClient().rpc("garden_x_record_system_maintenance", {
+    p_request_id: crypto.randomUUID(),
+    p_garden_id: gardenId,
+    p_action: action,
+    p_occurred_on: occurredOn,
+    p_note: note?.trim() || null,
+  });
+  if (error) throw new Error(error.message);
 }
 
 function decodeDataUrl(src: string): { mime: string; bytes: Uint8Array } | null {
@@ -1673,17 +1698,35 @@ async function hashShareToken(value: string): Promise<string> {
 export async function createPublicPlantStory(
   plant: Plant,
   selection: Array<{ event_id?: string; photo_id?: string; include_note?: boolean }>,
+  config: { heroPhotoId?: string | null; captionOverrides?: Record<string, string> } = {},
 ): Promise<string> {
   if (!plant.backendGrowCycleId) throw new Error("Plant history is not connected.");
   const token = crypto.randomUUID().toLowerCase();
-  const { error } = await getSupabaseClient().rpc("garden_create_guest_plant_story", {
+  const { error } = await getSupabaseClient().rpc("garden_create_guest_plant_story_v2", {
     p_request_id: crypto.randomUUID(),
     p_grow_cycle_id: plant.backendGrowCycleId,
     p_token_hash: await hashShareToken(token),
     p_item_selection: selection,
+    p_hero_photo_id: config.heroPhotoId ?? null,
+    p_caption_overrides: config.captionOverrides ?? {},
   });
   if (error) throw new Error(error.message);
   return token;
+}
+
+export async function suggestShareCaption(growCycleId: string, photoId: string, language: "en" | "es" = "es"): Promise<string | null> {
+  if (!growCycleId || !photoId) return null;
+  const { data: sessionData } = await getSupabaseClient().auth.getSession();
+  const session = sessionData.session;
+  if (!session) throw new Error("Authentication required");
+  const response = await fetch(`${import.meta.env["VITE_SUPABASE_URL"]}/functions/v1/garden-ai`, {
+    method: "POST",
+    headers: { apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string, Authorization: `Bearer ${session.access_token}`, "content-type": "application/json" },
+    body: JSON.stringify({ operation: "share_caption", grow_cycle_id: growCycleId, photo_id: photoId, language, request_key: `share-caption:${growCycleId}:${photoId}:${language}` }),
+  });
+  const body = (await response.json().catch(() => null)) as { proposal?: { caption?: unknown }; error?: string } | null;
+  if (!response.ok) throw new Error(body?.error ?? "Garden AI could not suggest a caption.");
+  return typeof body?.proposal?.caption === "string" && body.proposal.caption.trim() ? body.proposal.caption.trim() : null;
 }
 
 export async function loadPublicPlantStory(token: string): Promise<PublicStory> {
@@ -1709,6 +1752,8 @@ export async function loadPublicPlantStory(token: string): Promise<PublicStory> 
     crop_name?: string;
     planted_on?: string | null;
     created_at?: string;
+    hero_photo_id?: string | null;
+    caption_overrides?: Record<string, unknown>;
     history?: Array<{
       id: string;
       event_type: string;
@@ -1731,7 +1776,7 @@ export async function loadPublicPlantStory(token: string): Promise<PublicStory> 
           plantId: s.id,
           src: item.photo.url,
           daysAgo: momentDays,
-          caption: item.note ?? "Garden photo",
+          caption: typeof s.caption_overrides?.[item.photo.id] === "string" ? s.caption_overrides[item.photo.id] as string : "",
           metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
         },
       });
@@ -1754,6 +1799,8 @@ export async function loadPublicPlantStory(token: string): Promise<PublicStory> 
   }
   return {
     id: token,
+    heroPhotoId: typeof s.hero_photo_id === "string" ? s.hero_photo_id : null,
+    captionOverrides: Object.fromEntries(Object.entries(s.caption_overrides ?? {}).filter(([, value]) => typeof value === "string")) as Record<string, string>,
     plant: {
       id: s.id,
       name: s.crop_name ?? "Plant",

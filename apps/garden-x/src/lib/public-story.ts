@@ -6,6 +6,8 @@ export type PublicStoryMoment =
 
 export interface PublicStory {
   id: string;
+  heroPhotoId?: string | null;
+  captionOverrides?: Record<string, string>;
   plant: Pick<Plant, "id" | "name" | "species" | "scientific" | "variety" | "plantedDaysAgo">;
   moments: PublicStoryMoment[];
 }

@@ -4,6 +4,17 @@ export const GARDEN_AI_PROPOSAL_SCHEMA_VERSION = 'garden_ai_check_v2'
 export const GARDEN_AI_ASK_SCHEMA_VERSION = 'garden_ai_ask_v1'
 export const GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION = 'garden_meaningful_change_v1'
 export const GARDEN_SUMMARY_SCHEMA_VERSION = 'garden_summary_v1'
+export const GARDEN_SHARE_CAPTION_SCHEMA_VERSION = 'garden_share_caption_v1'
+
+export const GARDEN_SHARE_CAPTION_JSON_SCHEMA: Record<string, unknown> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['schema_version', 'caption'],
+  properties: {
+    schema_version: { type: 'string', enum: [GARDEN_SHARE_CAPTION_SCHEMA_VERSION] },
+    caption: { anyOf: [{ type: 'string', maxLength: 240 }, { type: 'null' }] },
+  },
+}
 
 export const GARDEN_SUMMARY_JSON_SCHEMA: Record<string, unknown> = {
   type: 'object',
@@ -127,5 +138,11 @@ export function validateGardenSummaryProposal(value: unknown): Record<string, un
   const referencedChangeIds = value.referenced_meaningful_change_ids as unknown[]
   const referencedCheckIds = value.referenced_ai_check_ids as unknown[]
   if ([...referencedPlantIds, ...referencedChangeIds, ...referencedCheckIds].some((item) => typeof item !== 'string' || item.length < 1 || item.length > 120)) return null
+  return value
+}
+
+export function validateShareCaptionProposal(value: unknown): Record<string, unknown> | null {
+  if (!record(value) || value.schema_version !== GARDEN_SHARE_CAPTION_SCHEMA_VERSION) return null
+  if (value.caption !== null && value.caption !== undefined && !validUserText(value.caption, 240)) return null
   return value
 }

@@ -28,18 +28,10 @@ vi.mock("@/lib/garden-backend", () => ({
   persistPhotoRendition: mocks.persistPhotoRendition,
 }));
 
-vi.mock("@/components/ui/button", async () => {
-  const React = await import("react");
-  return {
-    Button: React.forwardRef<HTMLButtonElement, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> & { asChild?: boolean; variant?: string; size?: string }>(
-      ({ asChild, children, variant, size, ...props }, ref) => {
-        void variant;
-        void size;
-        return asChild ? <span>{children}</span> : <button ref={ref} {...props}>{children}</button>;
-      },
-    ),
-  };
-});
+vi.mock("@/components/ui/button", () => ({
+  Button: ({ asChild, children, ...props }: { asChild?: boolean; children: ReactNode } & Record<string, unknown>) =>
+    asChild ? <span>{children}</span> : <button {...props}>{children}</button>,
+}));
 
 vi.mock("@/components/ui/dialog", async () => {
   const React = await import("react");
@@ -227,55 +219,6 @@ describe("Care Session plant review", () => {
     render(<ReviewHarness language="es" />);
     expect(screen.getByRole("button", { name: "Tomar foto" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Elegir de Fotos" })).toBeTruthy();
-  });
-
-  it("opens the radial Record control and routes each petal to its existing Care action", () => {
-    const onRecord = vi.fn();
-    render(<ReviewHarness onRecord={onRecord} />);
-
-    expect(screen.getByRole("button", { name: "Record" })).toBeTruthy();
-    expect(screen.queryByRole("button", { name: "Observe" })).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: "Record" }));
-    expect(screen.getByRole("dialog", { name: "Record something" })).toBeTruthy();
-
-    for (const [id, flow] of [["observation", "observation"], ["care", "care"], ["followup", "followup"], ["more", undefined]] as const) {
-      fireEvent.click(screen.getByTestId(`care-record-action-${id}`));
-      expect(onRecord).toHaveBeenLastCalledWith(flow);
-      expect(screen.queryByTestId("care-record-flower")).toBeNull();
-      fireEvent.click(screen.getByRole("button", { name: "Record" }));
-    }
-    expect(onRecord).toHaveBeenCalledTimes(4);
-    expect(screen.getByRole("button", { name: "AI Check" }).hasAttribute("disabled")).toBe(true);
-    expect(screen.getByRole("link", { name: "Ask Garden" })).toBeTruthy();
-  });
-
-  it("closes the radial control with its center button or an outside tap without recording", async () => {
-    const onRecord = vi.fn();
-    render(<ReviewHarness onRecord={onRecord} />);
-    fireEvent.click(screen.getByRole("button", { name: "Record" }));
-    fireEvent.click(screen.getByTestId("care-record-center-close"));
-    await waitFor(() => expect(screen.queryByTestId("care-record-flower")).toBeNull());
-    expect(onRecord).not.toHaveBeenCalled();
-
-    fireEvent.click(screen.getByRole("button", { name: "Record" }));
-    fireEvent.click(screen.getByTestId("care-record-dismiss"));
-    await waitFor(() => expect(screen.queryByTestId("care-record-flower")).toBeNull());
-    expect(onRecord).not.toHaveBeenCalled();
-  });
-
-  it("localizes the radial control and keeps its overlay within a narrow mobile viewport", () => {
-    Object.defineProperty(window, "innerWidth", { configurable: true, value: 320 });
-    Object.defineProperty(window, "innerHeight", { configurable: true, value: 700 });
-    render(<ReviewHarness language="es" />);
-
-    fireEvent.click(screen.getByRole("button", { name: "Registrar" }));
-    expect(screen.getByRole("dialog", { name: "Registrar algo" })).toBeTruthy();
-    expect(screen.getByTestId("care-record-action-observation").getAttribute("aria-label")).toBe("Observar");
-    expect(screen.getByTestId("care-record-action-care").getAttribute("aria-label")).toBe("Cuidado");
-    expect(screen.getByTestId("care-record-action-followup").getAttribute("aria-label")).toBe("Seguimiento");
-    expect(screen.getByTestId("care-record-action-more").getAttribute("aria-label")).toBe("Más");
-    expect(screen.getByRole("dialog", { name: "Registrar algo" }).className).toContain("fixed");
-    expect(screen.getByTestId("care-record-center-close").getAttribute("aria-label")).toBe("Cerrar");
   });
 
   it("runs the current cycle check inline and gives Ask Garden the photo-derived result context", async () => {

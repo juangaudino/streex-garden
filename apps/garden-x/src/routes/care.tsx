@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -8,7 +7,6 @@ import {
   Leaf,
   MessageCircle,
   MoreHorizontal,
-  NotebookPen,
   ScanLine,
   SkipForward,
   Sparkles,
@@ -524,8 +522,19 @@ export function PlantReview({
         <p className="font-display text-3xl">{ui(language, "howLooksToday")}</p>
       </div>
 
-      <div className="mt-6 flex justify-center">
-        <CareActionFlower language={language} onRecord={onRecord} />
+      <div className="mt-6 grid grid-cols-4 gap-2">
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("observation")}>
+          <StickyNote className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "observe")}</span>
+        </Button>
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("care")}>
+          <Leaf className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "careAction")}</span>
+        </Button>
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord("followup")}>
+          <CalendarClock className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "followUpAction")}</span>
+        </Button>
+        <Button variant="outline" className="h-10 min-w-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm" onClick={() => onRecord()}>
+          <MoreHorizontal className="h-4 w-4 shrink-0 text-primary" /> <span className="truncate">{ui(language, "more")}</span>
+        </Button>
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2">
@@ -616,150 +625,6 @@ export function PlantReview({
         </section>
       ) : null}
     </main>
-  );
-}
-
-type CareRecordAction = {
-  key: string;
-  label: string;
-  Icon: typeof StickyNote;
-  flow?: MomentFlow;
-  x: number;
-  y: number;
-};
-
-function CareActionFlower({
-  language,
-  onRecord,
-}: {
-  language: "en" | "es";
-  onRecord: (flow?: MomentFlow, careType?: MaintenanceType) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [bloomed, setBloomed] = useState(false);
-  const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const closeTimerRef = useRef<number | null>(null);
-
-  const actions: CareRecordAction[] = [
-    { key: "observation", label: ui(language, "observe"), Icon: StickyNote, flow: "observation", x: 0, y: -62 },
-    { key: "care", label: ui(language, "careAction"), Icon: Leaf, flow: "care", x: 76, y: 0 },
-    { key: "followup", label: ui(language, "followUpAction"), Icon: CalendarClock, flow: "followup", x: 0, y: 62 },
-    { key: "more", label: ui(language, "more"), Icon: MoreHorizontal, x: -76, y: 0 },
-  ];
-
-  const close = useCallback(() => {
-    setBloomed(false);
-    if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = window.setTimeout(() => {
-      setOpen(false);
-      closeTimerRef.current = null;
-    }, 180);
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open, close]);
-
-  useEffect(() => () => {
-    if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
-  }, []);
-
-  const showActions = () => {
-    const bounds = triggerRef.current?.getBoundingClientRect();
-    if (!bounds) return;
-    if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = null;
-    setOrigin({ x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 });
-    setOpen(true);
-    setBloomed(false);
-    window.requestAnimationFrame(() => setBloomed(true));
-  };
-
-  return (
-    <>
-      <Button
-        ref={triggerRef}
-        type="button"
-        variant="outline"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        onClick={showActions}
-        className="h-11 min-w-36 rounded-full border-primary/15 bg-background/70 px-6 text-primary shadow-sm backdrop-blur-sm hover:bg-background/90"
-      >
-        <NotebookPen className="h-4 w-4" />
-        {ui(language, "recordShort")}
-      </Button>
-
-      {open && origin && typeof document !== "undefined"
-        ? createPortal(
-            <div className="fixed inset-0 z-[100]" data-testid="care-record-flower">
-              <button
-                type="button"
-                aria-label={ui(language, "close")}
-                data-testid="care-record-dismiss"
-                onClick={close}
-                className="absolute inset-0 h-full w-full cursor-default border-0 bg-black/5 p-0"
-              />
-              <div
-                role="dialog"
-                aria-label={ui(language, "recordSomething")}
-                className="pointer-events-none fixed"
-                style={{
-                  left: `clamp(8.75rem, ${origin.x}px, calc(100vw - 8.75rem))`,
-                  top: `clamp(5.5rem, ${origin.y}px, calc(100dvh - env(safe-area-inset-bottom, 0px) - 9.5rem))`,
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                {actions.map(({ key, label, Icon, flow, x, y }, index) => (
-                  <Button
-                    key={key}
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                      if (closeTimerRef.current !== null) window.clearTimeout(closeTimerRef.current);
-                      closeTimerRef.current = null;
-                      setOpen(false);
-                      setBloomed(false);
-                      onRecord(flow);
-                    }}
-                    aria-label={label}
-                    data-testid={`care-record-action-${key}`}
-                    className="pointer-events-auto absolute left-1/2 top-1/2 h-11 w-32 -translate-x-1/2 -translate-y-1/2 rounded-[48%_52%_48%_52%] border-primary/15 bg-background/90 px-2 text-xs text-primary shadow-[0_5px_16px_rgba(28,52,35,0.12)] backdrop-blur-md transition-[opacity,transform,background-color] duration-200 ease-out hover:bg-background focus-visible:ring-2 focus-visible:ring-primary"
-                    style={{
-                      marginLeft: x,
-                      marginTop: y,
-                      opacity: bloomed ? 1 : 0,
-                      transform: `translate(-50%, -50%) scale(${bloomed ? 1 : 0.72})`,
-                      transitionDelay: `${index * 24}ms`,
-                    }}
-                  >
-                    <Icon className="h-4 w-4 shrink-0 text-primary" />
-                    <span className="min-w-0 truncate">{label}</span>
-                  </Button>
-                ))}
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  onClick={close}
-                  aria-label={ui(language, "close")}
-                  data-testid="care-record-center-close"
-                  className="pointer-events-auto absolute left-1/2 top-1/2 z-10 h-11 w-11 -translate-x-1/2 -translate-y-1/2 rounded-full border-primary/20 bg-background text-primary shadow-sm"
-                >
-                  <span aria-hidden="true" className="text-xl leading-none">×</span>
-                </Button>
-              </div>
-            </div>,
-            document.body,
-          )
-        : null}
-    </>
   );
 }
 

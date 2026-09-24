@@ -88,6 +88,7 @@ const plants: Plant[] = [1, 2, 3].map((number) => ({
 function storeFixture() {
   return {
     language: "en" as const,
+    hydration: "ready" as const,
     plants,
     gardens,
     photos: [],
@@ -179,5 +180,63 @@ describe("Care Session route resume flow", () => {
     expect(window.confirm).toHaveBeenCalled();
     expect(screen.getByRole("button", { name: "Continue session" })).toBeTruthy();
     expect(screen.queryByText("Plant 1")).toBeNull();
+  });
+
+  it("falls back to Care setup and clears a corrupt or pre-deploy partial snapshot", async () => {
+    localStorage.setItem("garden-x-care-session-v1", JSON.stringify({ queue: ["plant-1"], index: 0 }));
+    expect(() => render(<CareRoute />)).not.toThrow();
+    expect(await screen.findByRole("button", { name: "Start session" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Continue session" })).toBeNull();
+    expect(localStorage.getItem("garden-x-care-session-v1")).toBeNull();
+  });
+
+  it("waits for canonical bootstrap before resolving or discarding a saved session", async () => {
+    const store = mocks.store as ReturnType<typeof storeFixture>;
+    store.hydration = "loading" as never;
+    localStorage.setItem("garden-x-care-session-v1", JSON.stringify({
+      queue: ["plant-1", "plant-2"], index: 1, recordedForReview: false,
+      reviewed: 1, observations: 0, care: 0, followups: 0,
+      gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"],
+    }));
+    const { rerender } = render(<CareRoute />);
+    expect(screen.getByRole("button", { name: "Continue session" })).toHaveProperty("disabled", true);
+    fireEvent.click(screen.getByRole("button", { name: "Continue session" }));
+    expect(screen.queryByText("Plant 2")).toBeNull();
+    expect(localStorage.getItem("garden-x-care-session-v1")).not.toBeNull();
+
+    store.hydration = "ready" as never;
+    rerender(<CareRoute />);
+    fireEvent.click(screen.getByRole("button", { name: "Continue session" }));
+    expect(await screen.findByText("Plant 2")).toBeTruthy();
+  });
+
+  it("keeps an active URL session on a safe loading state while plants are unresolved", async () => {
+    const store = mocks.store as ReturnType<typeof storeFixture>;
+    store.hydration = "loading" as never;
+    store.plants = [];
+    mocks.search = { careQueue: "plant-1,plant-2", careIndex: 1 };
+    const saved = JSON.stringify({
+      queue: ["plant-1", "plant-2"], index: 1, recordedForReview: false,
+      reviewed: 1, observations: 0, care: 0, followups: 0,
+      gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"],
+    });
+    localStorage.setItem("garden-x-care-session-v1", saved);
+    expect(() => render(<CareRoute />)).not.toThrow();
+    expect(await screen.findByText("Loading your garden…")).toBeTruthy();
+    expect(screen.queryByText("Plant 1")).toBeNull();
+    expect(localStorage.getItem("garden-x-care-session-v1")).toBe(saved);
+  });
+
+  it("returns stale unresolved sessions to setup without rendering a missing plant", async () => {
+    localStorage.setItem("garden-x-care-session-v1", JSON.stringify({
+      queue: ["plant-1", "plant-deleted"], index: 1, recordedForReview: false,
+      reviewed: 1, observations: 0, care: 0, followups: 0,
+      gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"],
+    }));
+    render(<CareRoute />);
+    fireEvent.click(screen.getByRole("button", { name: "Continue session" }));
+    expect(await screen.findByRole("button", { name: "Start session" })).toBeTruthy();
+    expect(screen.queryByText("Plant 2")).toBeNull();
+    expect(localStorage.getItem("garden-x-care-session-v1")).toBeNull();
   });
 });

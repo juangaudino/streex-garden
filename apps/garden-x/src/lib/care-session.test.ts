@@ -20,6 +20,8 @@ import {
   careSessionHasProgress,
   clearCareSession,
   loadCareSession,
+  parseSavedCareSession,
+  resolveCareSession,
   saveCareSession,
 } from "./care-session";
 
@@ -81,6 +83,51 @@ describe("Care Session action hierarchy", () => {
     expect(careSessionHasProgress(snapshot)).toBe(true);
     clearCareSession();
     expect(loadCareSession()).toBeNull();
+  });
+
+  it.each([
+    ["corrupt JSON", "{"],
+    ["old partial state", JSON.stringify({ queue: ["plant-a"], index: 0 })],
+    ["fractional current index", JSON.stringify({ queue: ["plant-a"], index: 0.5, recordedForReview: false, reviewed: 0, observations: 0, care: 0, followups: 0, gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"] })],
+    ["empty/duplicate plant identities", JSON.stringify({ queue: ["", "plant-a", "plant-a"], index: 0, recordedForReview: false, reviewed: 0, observations: 0, care: 0, followups: 0, gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"] })],
+  ])("discards %s without making it resumable", (_label, value) => {
+    localStorage.setItem("garden-x-care-session-v1", value);
+    expect(loadCareSession()).toBeNull();
+    expect(localStorage.getItem("garden-x-care-session-v1")).toBeNull();
+  });
+
+  it("rejects incomplete and stale serialized snapshots before rendering consumes them", () => {
+    expect(parseSavedCareSession({ queue: ["plant-a"], index: 1, recordedForReview: false, reviewed: 0, observations: 0, care: 0, followups: 0, gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"] })).toBeNull();
+    expect(parseSavedCareSession({ queue: ["plant-a"], index: 0, recordedForReview: false, reviewed: 0, observations: 0, care: 0, followups: 0, gardenOrder: ["garden-a"], selectedGardenIds: ["garden-b"] })).toBeNull();
+  });
+
+  it("discards a stale queue if any saved plant or garden can no longer be resolved", () => {
+    const snapshot = {
+      queue: ["plant-a", "plant-b", "plant-c"],
+      index: 2,
+      recordedForReview: false,
+      reviewed: 1,
+      observations: 0,
+      care: 0,
+      followups: 0,
+      gardenOrder: ["garden-a", "garden-deleted"],
+      selectedGardenIds: ["garden-a"],
+    };
+    expect(resolveCareSession(snapshot, [
+      { id: "plant-a", gardenId: "garden-a" },
+      { id: "plant-c", gardenId: "garden-a" },
+      { id: "plant-deleted-garden", gardenId: "garden-deleted" },
+    ], [{ id: "garden-a" }])).toBeNull();
+    expect(resolveCareSession(snapshot, [{ id: "plant-a", gardenId: "garden-a" }], [{ id: "garden-a" }])).toBeNull();
+  });
+
+  it("discards a queue whose plants do not belong to the saved garden selection", () => {
+    const snapshot = {
+      queue: ["plant-a"], index: 0, recordedForReview: false,
+      reviewed: 0, observations: 0, care: 0, followups: 0,
+      gardenOrder: ["garden-a", "garden-b"], selectedGardenIds: ["garden-a"],
+    };
+    expect(resolveCareSession(snapshot, [{ id: "plant-a", gardenId: "garden-b" }], [{ id: "garden-a" }, { id: "garden-b" }])).toBeNull();
   });
 });
 

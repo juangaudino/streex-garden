@@ -28,6 +28,40 @@ export interface SavedCareSession extends CareSessionSearchSnapshot {
 }
 
 export const careSessionStorageKey = "garden-x-care-session-v1";
+const maxCareSessionPlants = 500;
+const maxCareSessionGardens = 100;
+
+function isUniqueNonEmptyIdList(value: unknown, maximum: number): value is string[] {
+  return Array.isArray(value)
+    && value.length <= maximum
+    && value.every((id) => typeof id === "string" && id.trim().length > 0 && id === id.trim())
+    && new Set(value).size === value.length;
+}
+
+/** Validate persisted data as untrusted input; local storage may outlive this app version. */
+export function parseSavedCareSession(value: unknown): SavedCareSession | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const parsed = value as Partial<SavedCareSession>;
+  if (!isUniqueNonEmptyIdList(parsed.queue, maxCareSessionPlants) || parsed.queue.length === 0) return null;
+  if (!isUniqueNonEmptyIdList(parsed.gardenOrder, maxCareSessionGardens)) return null;
+  if (!isUniqueNonEmptyIdList(parsed.selectedGardenIds, maxCareSessionGardens)) return null;
+  if (!parsed.selectedGardenIds.every((id) => parsed.gardenOrder!.includes(id))) return null;
+  if (!Number.isSafeInteger(parsed.index) || parsed.index! < 0 || parsed.index! >= parsed.queue.length) return null;
+  const counts = [parsed.reviewed, parsed.observations, parsed.care, parsed.followups];
+  if (counts.some((count) => !Number.isSafeInteger(count) || count! < 0)) return null;
+  if (parsed.reviewed! > parsed.queue.length || typeof parsed.recordedForReview !== "boolean") return null;
+  return {
+    queue: parsed.queue,
+    index: parsed.index!,
+    recordedForReview: parsed.recordedForReview,
+    reviewed: parsed.reviewed!,
+    observations: parsed.observations!,
+    care: parsed.care!,
+    followups: parsed.followups!,
+    gardenOrder: parsed.gardenOrder,
+    selectedGardenIds: parsed.selectedGardenIds,
+  };
+}
 
 export function saveCareSession(snapshot: SavedCareSession) {
   try {
@@ -42,27 +76,48 @@ export function loadCareSession(): SavedCareSession | null {
     if (typeof window === "undefined") return null;
     const value = window.localStorage.getItem(careSessionStorageKey);
     if (!value) return null;
-    const parsed = JSON.parse(value) as Partial<SavedCareSession>;
-    if (!Array.isArray(parsed.queue) || !parsed.queue.every((id) => typeof id === "string") || !parsed.queue.length) return null;
-    if (!Array.isArray(parsed.gardenOrder) || !parsed.gardenOrder.every((id) => typeof id === "string")) return null;
-    if (!Array.isArray(parsed.selectedGardenIds) || !parsed.selectedGardenIds.every((id) => typeof id === "string")) return null;
-    const numeric = [parsed.index, parsed.reviewed, parsed.observations, parsed.care, parsed.followups];
-    if (numeric.some((item) => typeof item !== "number" || !Number.isFinite(item) || item < 0)) return null;
-    if (typeof parsed.recordedForReview !== "boolean") return null;
-    return {
-      queue: parsed.queue,
-      index: Math.min(parsed.index!, parsed.queue.length - 1),
-      recordedForReview: parsed.recordedForReview,
-      reviewed: parsed.reviewed!,
-      observations: parsed.observations!,
-      care: parsed.care!,
-      followups: parsed.followups!,
-      gardenOrder: parsed.gardenOrder,
-      selectedGardenIds: parsed.selectedGardenIds,
-    };
+    const snapshot = parseSavedCareSession(JSON.parse(value) as unknown);
+    if (snapshot) return snapshot;
+    clearCareSession();
+    return null;
   } catch {
+    clearCareSession();
     return null;
   }
+}
+
+/** Reconcile a valid snapshot against canonical bootstrap data without replaying reviewed plants. */
+export function resolveCareSession<T extends { id: string; gardenId: string; cycleClosed?: boolean }>(
+  snapshot: SavedCareSession,
+  plants: T[],
+  gardens: Array<{ id: string }>,
+) {
+  const gardenIds = new Set(gardens.map((garden) => garden.id));
+  const availablePlants = new Set(plants.filter((plant) => !plant.cycleClosed && gardenIds.has(plant.gardenId)).map((plant) => plant.id));
+  // Keep queue/index/progress as one unit. Filtering a missing plant shifts the
+  // index and can revisit an already-reviewed plant, so stale queues are reset.
+  if (snapshot.queue.some((id) => !availablePlants.has(id))) return null;
+  const queue = snapshot.queue;
+  const index = snapshot.index;
+  const availableGardens = new Set(plants.filter((plant) => availablePlants.has(plant.id)).map((plant) => plant.gardenId));
+  const gardenOrder = snapshot.gardenOrder.filter((id) => gardenIds.has(id) && availableGardens.has(id));
+  const selectedGardenIds = snapshot.selectedGardenIds.filter((id) => gardenOrder.includes(id));
+  const plantById = new Map(plants.map((plant) => [plant.id, plant]));
+  if (queue.some((id) => {
+    const plant = plantById.get(id);
+    return !plant || !selectedGardenIds.includes(plant.gardenId);
+  })) return null;
+  return {
+    queue,
+    index,
+    recordedForReview: snapshot.recordedForReview,
+    reviewed: snapshot.reviewed,
+    observations: snapshot.observations,
+    care: snapshot.care,
+    followups: snapshot.followups,
+    gardenOrder,
+    selectedGardenIds,
+  } satisfies SavedCareSession;
 }
 
 export function clearCareSession() {
@@ -78,7 +133,9 @@ export function careSessionHasProgress(snapshot: SavedCareSession) {
 }
 
 export function parseCareSessionQueue(value: string | undefined) {
-  return value ? value.split(",").map((item) => item.trim()).filter(Boolean) : [];
+  if (!value || value.length > 40_000) return [];
+  const queue = value.split(",").map((item) => item.trim()).filter(Boolean);
+  return isUniqueNonEmptyIdList(queue, maxCareSessionPlants) ? queue : [];
 }
 
 export function reorderCareGarden<T>(items: T[], fromId: string, toId: string, getId: (item: T) => string) {
@@ -191,7 +248,7 @@ export function careReviewContextMessage(input: {
 
 export function parseCareSessionNumber(value: unknown) {
   const parsed = typeof value === "number" ? value : typeof value === "string" ? Number(value) : Number.NaN;
-  return Number.isFinite(parsed) ? parsed : undefined;
+  return Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : undefined;
 }
 
 export function parseCareSessionBoolean(value: unknown) {

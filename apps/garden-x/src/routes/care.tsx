@@ -109,6 +109,7 @@ function Care() {
   const navigate = Route.useNavigate();
   const tasks = openTasks(store.tasks);
   const [queue, setQueue] = useState<string[]>(() => parseCareSessionQueue(sessionSearch.careQueue));
+  const initialQueue = useRef(queue);
   const [index, setIndex] = useState(sessionSearch.careIndex ?? 0);
   const [summary, setSummary] = useState<SessionSummary>(() => ({
     reviewed: sessionSearch.careReviewed ?? 0,
@@ -121,16 +122,22 @@ function Care() {
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>();
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>();
   const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
-  const [initialCareSnapshot] = useState<SavedCareSession | null>(() => loadCareSession());
-  const [resumeSnapshot, setResumeSnapshot] = useState<SavedCareSession | null>(initialCareSnapshot);
-  const [gardenOrder, setGardenOrder] = useState<string[]>(() => {
-    const queue = parseCareSessionQueue(sessionSearch.careQueue);
-    return queue.length && initialCareSnapshot?.queue.join(",") !== queue.join(",") ? [] : initialCareSnapshot?.gardenOrder ?? [];
-  });
-  const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(() => {
-    const queue = parseCareSessionQueue(sessionSearch.careQueue);
-    return queue.length && initialCareSnapshot?.queue.join(",") === queue.join(",") ? initialCareSnapshot.selectedGardenIds : null;
-  });
+  const [resumeSnapshot, setResumeSnapshot] = useState<SavedCareSession | null>(null);
+  const [sessionRestoreReady, setSessionRestoreReady] = useState(false);
+  const [gardenOrder, setGardenOrder] = useState<string[]>([]);
+  const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    // localStorage is browser-only. Read it after mount so SSR and the first
+    // hydration render use identical state; PWA snapshots can outlive deploys.
+    const snapshot = loadCareSession();
+    setResumeSnapshot(snapshot);
+    if (initialQueue.current.length && snapshot?.queue.join(",") === initialQueue.current.join(",")) {
+      setGardenOrder(snapshot.gardenOrder);
+      setSelectedGardenIds(snapshot.selectedGardenIds);
+    }
+    setSessionRestoreReady(true);
+  }, [initialQueue]);
 
   useEffect(() => {
     if (!queue.length) {
@@ -164,7 +171,7 @@ function Care() {
   useEffect(() => {
     // Do not replace a valid saved selection/order with empty bootstrap arrays
     // during a PWA reopen. The store must first resolve canonical gardens/plants.
-    if (queue.length && !finished && store.hydration !== "loading" && store.hydration !== "error") {
+    if (sessionRestoreReady && queue.length && !finished && store.hydration !== "loading" && store.hydration !== "error") {
       const snapshot: SavedCareSession = {
         queue,
         index,
@@ -178,7 +185,7 @@ function Care() {
       clearCareSession();
       setResumeSnapshot(null);
     }
-  }, [queue, index, recordedForReview, summary, orderedGardens, selectedGardenIds, finished, store.hydration]);
+  }, [sessionRestoreReady, queue, index, recordedForReview, summary, orderedGardens, selectedGardenIds, finished, store.hydration]);
   const needingLook = new Set(tasks.map((t) => t.plantId)).size;
   const routine = activePlants.length - needingLook;
   const current = queue[index] ? store.plants.find((plant) => plant.id === queue[index]) : undefined;

@@ -190,6 +190,19 @@ describe("Care Session route resume flow", () => {
     expect(localStorage.getItem("garden-x-care-session-v1")).toBeNull();
   });
 
+  it("restores the persisted session once after Care mounts", async () => {
+    localStorage.setItem("garden-x-care-session-v1", JSON.stringify({
+      queue: ["plant-1", "plant-2"], index: 1, recordedForReview: false,
+      reviewed: 1, observations: 0, care: 0, followups: 0,
+      gardenOrder: ["garden-a"], selectedGardenIds: ["garden-a"],
+    }));
+    const getItem = vi.spyOn(Storage.prototype, "getItem");
+    render(<CareRoute />);
+    expect(await screen.findByRole("button", { name: "Continue session" })).toBeTruthy();
+    expect(getItem).toHaveBeenCalledTimes(1);
+    getItem.mockRestore();
+  });
+
   it("waits for canonical bootstrap before resolving or discarding a saved session", async () => {
     const store = mocks.store as ReturnType<typeof storeFixture>;
     store.hydration = "loading" as never;

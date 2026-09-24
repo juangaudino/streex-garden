@@ -94,4 +94,21 @@ describe("Garden-wide Ask Garden image turns", () => {
     expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ messageImageDataUrl: "data:image/jpeg;base64,Z2FyZGVu" });
     expect(await screen.findByAltText("Attached photo")).toBeTruthy();
   });
+
+  it("keeps the actual global conversation and attachment composer constrained on a narrow viewport", async () => {
+    Object.defineProperty(window, "innerWidth", { configurable: true, value: 320 });
+    mocks.useGarden.mockReturnValue({ language: "en", plants: [], gardens: [], events: [], photos: [], tasks: [] });
+    mocks.askGardenAi.mockResolvedValue({ answer_type: "answer", answer: `Long response ${"unbrokenword".repeat(24)}`, confirmed_facts: [], suggested_next_actions: [] });
+    const GardenWideAsk = Route.options.component as React.ComponentType;
+    const { container } = render(<GardenWideAsk />);
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.className).toContain("min-w-0");
+    const form = container.querySelector("form")!;
+    expect(form.className).toContain("min-w-0");
+    expect(form.querySelector("input")?.className).toContain("max-w-full");
+    expect(form.parentElement?.className).toContain("min-w-0");
+    fireEvent.change(screen.getByPlaceholderText("Ask about your garden…"), { target: { value: "Show this long answer" } });
+    fireEvent.submit(form);
+    expect(await screen.findByText(/Long response/)).toBeTruthy();
+  });
 });

@@ -150,4 +150,22 @@ describe("plant-scoped Ask Garden real route composer", () => {
     expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({ messageImageDataUrl: "data:image/png;base64,bGVhZg==" });
     expect(await screen.findByAltText("Attached photo")).toBeTruthy();
   });
+
+  it("keeps long plant-scoped messages and the attachment composer inside a narrow mobile layout", async () => {
+    Object.defineProperty(window, "innerWidth", { configurable: true, value: 320 });
+    mocks.useGarden.mockReturnValue(buildStore());
+    mocks.askGarden.mockReturnValue({ question: "Long prompt", grounded: ["Long evidence ".concat("unbrokenword".repeat(24))], evidence: [], inference: "", confidence: "high" });
+    const PlantAsk = Route.options.component as React.ComponentType;
+    const { container } = render(<PlantAsk />);
+    expect((container.firstElementChild as HTMLElement).className).toContain("min-w-0");
+    const form = container.querySelector("form")!;
+    expect(form.className).toContain("min-w-0");
+    expect(form.querySelector("input")?.className).toContain("max-w-full");
+    fireEvent.change(screen.getByPlaceholderText("Ask about Common Mint…"), { target: { value: "What changed?" } });
+    fireEvent.submit(form);
+    expect(await screen.findByText(/unbrokenword/)).toBeTruthy();
+    const messageCard = container.querySelector(".surface") as HTMLElement;
+    expect(messageCard.className).toContain("min-w-0");
+    expect(messageCard.className).toContain("overflow-wrap:anywhere");
+  });
 });

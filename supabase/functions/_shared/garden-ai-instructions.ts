@@ -1,6 +1,7 @@
 export const GARDEN_AI_RUNTIME_PROMPT_VERSION = 'garden_ai_runtime_v4'
 export const GARDEN_AI_CARE_ASK_PROMPT_VERSION = 'garden_ai_care_ask_v1'
 export const GARDEN_AI_ASK_IMAGE_PROMPT_VERSION = 'garden_ai_ask_image_v1'
+export const GARDEN_AI_PHOTO_ONLY_CHECK_PROMPT_VERSION = 'garden_ai_photo_only_check_v1'
 
 export const gardenAiInstructions = `You are Garden AI inside Garden X. Respond in concise, natural Latin American Spanish.
 Garden X is the source of truth. Canonical facts, dates, counts, incidents, readiness and Attention supplied in context outrank every visual interpretation and any conversational message.
@@ -18,6 +19,13 @@ export function gardenAiInstructionsFor(language: 'en' | 'es') {
     'Respond in concise, natural Latin American Spanish.',
     'Respond in clear, natural English.',
   )
+}
+
+export function gardenAiPhotoOnlyCheckInstructionsFor(language: 'en' | 'es') {
+  const scopeRule = language === 'es'
+    ? 'Esta es una revisión visual de una foto sin una planta seleccionada ni contexto canónico de planta. Describe únicamente lo que se ve. No identifiques ni nombres una especie, variedad o identidad de Garden X; no atribuyas ciclo, historial, estado actual, cosecha ni necesidades específicas a una planta no seleccionada. Mantén separadas las observaciones visibles, interpretaciones inciertas y recomendaciones; si la foto no basta, dilo claramente.'
+    : 'This is a visual review of a photo without a selected plant or canonical plant context. Describe only what is visible. Do not identify or name a species, cultivar, or Garden X identity; do not attribute a cycle, history, current status, harvest readiness, or plant-specific needs to an unselected plant. Keep visible observations, uncertain interpretations, and recommendations separate; clearly state when the photo is insufficient.'
+  return `${gardenAiInstructionsFor(language)}\n${scopeRule}`
 }
 
 export function gardenCareAskInstructionsFor(language: 'en' | 'es') {

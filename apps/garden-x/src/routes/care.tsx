@@ -486,16 +486,16 @@ export function PlantReview({
   };
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
+    <main className="mx-auto w-full min-w-0 max-w-3xl px-5 py-6 sm:px-8 sm:py-8">
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-secondary shadow-lift sm:aspect-[16/10]">
         {reviewImage ? <img src={reviewImage} alt={`${plant.name}, ${plant.species}`} className="h-full w-full object-cover" /> : canonicalPhoto ? <PhotoImage photo={canonicalPhoto} alt={`${plant.name}, ${plant.species}`} rendition="display" loading="eager" className="h-full w-full object-cover" /> : null}
         <div className="veil absolute inset-0" />
-        <div data-testid="care-photo-actions" className="pointer-events-auto absolute top-3 right-3 z-30">
-          <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="[&>div]:flex [&>div]:flex-wrap [&>div]:justify-end [&>div]:gap-1 [&_button]:!min-h-11 [&_button]:!rounded-none [&_button]:!border-0 [&_button]:!bg-transparent [&_button]:!px-3 [&_button]:!text-white [&_button]:!shadow-none [&_button]:!backdrop-blur-none [&_button]:[text-shadow:0_1px_2px_rgba(0,0,0,0.85)] [&_button]:hover:!bg-transparent [&_button]:focus-visible:!ring-white [&_button]:focus-visible:!ring-offset-0" />
+        <div data-testid="care-photo-actions" className="pointer-events-auto absolute top-3 left-1/2 z-30 w-max max-w-[calc(100%-1rem)] -translate-x-1/2">
+          <PhotoSourcePicker language={language} onFile={readReviewPhoto} className="[&>div]:flex [&>div]:flex-nowrap [&>div]:justify-center [&>div]:gap-1 [&_button]:!min-h-11 [&_button]:!rounded-none [&_button]:!border-0 [&_button]:!bg-transparent [&_button]:!px-2 [&_button]:!text-white [&_button]:!shadow-none [&_button]:!backdrop-blur-none [&_button]:[text-shadow:0_1px_2px_rgba(0,0,0,0.85)] [&_button]:hover:!bg-transparent [&_button]:focus-visible:!ring-white [&_button]:focus-visible:!ring-offset-0" />
         </div>
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
           <p className="text-xs uppercase text-background/70">{gardenName}{plant.slot ? ` · ${plant.slot}` : ""}</p>
-          <h1 className="mt-1 font-display text-4xl text-background">{plant.name}</h1>
+          <h1 className="mt-1 font-display text-4xl text-background break-words [overflow-wrap:anywhere]">{plant.name}</h1>
           <p className="mt-1 text-sm text-background/80">{plant.species} · {plant.variety}</p>
         </div>
       </div>
@@ -602,10 +602,10 @@ export function PlantReview({
               </details>
               <div className="mt-4 space-y-3 border-t border-border/60 pt-4">
                 {conversation.map((item, index) => (
-                  <div key={`${item.question}-${index}`} className="space-y-2 text-sm">
+                    <div key={`${item.question}-${index}`} className="min-w-0 max-w-full space-y-2 text-sm break-words [overflow-wrap:anywhere]">
                     <div className="ml-auto flex max-w-[90%] flex-col items-end gap-2">
                       {item.imageDataUrl ? <img src={item.imageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="max-h-36 max-w-40 rounded-xl object-cover" /> : null}
-                      <p className="w-fit rounded-2xl rounded-br-md bg-primary px-3 py-2 text-primary-foreground">{item.question}</p>
+                      <p className="w-fit min-w-0 max-w-full break-words rounded-2xl rounded-br-md bg-primary px-3 py-2 text-primary-foreground [overflow-wrap:anywhere]">{item.question}</p>
                     </div>
                     {item.facts.length ? <div><ProvenanceTag kind="recorded" /><ul className="mt-2 list-disc space-y-1 pl-5 text-muted-foreground">{item.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></div> : null}
                     <div><ProvenanceTag kind="inferred" /><p className="mt-2 leading-relaxed text-muted-foreground">{item.answer}</p></div>

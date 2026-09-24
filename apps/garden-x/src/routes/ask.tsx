@@ -77,7 +77,7 @@ function GardenWideAsk() {
   }, [navigationImage, prompt, send]);
 
   return (
-    <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] flex-col lg:h-screen">
+    <div className="flex h-[calc(100dvh-4.5rem)] min-h-[32rem] min-w-0 max-w-full flex-col lg:h-screen">
       <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
           <ChevronLeft className="h-4 w-4" />
@@ -89,8 +89,8 @@ function GardenWideAsk() {
         <Leaf className="h-4 w-4 text-primary" />
       </header>
 
-      <Conversation className="mx-auto w-full max-w-3xl">
-        <ConversationContent className="px-5 py-8 sm:px-8">
+      <Conversation className="mx-auto w-full min-w-0 max-w-3xl">
+        <ConversationContent className="min-w-0 px-5 py-8 sm:px-8">
           {thread.length === 0 ? (
             <div className="rise">
               <h1 className="font-display text-3xl">{ui(language, "whatKnow")}</h1>
@@ -98,10 +98,10 @@ function GardenWideAsk() {
             </div>
           ) : null}
           {thread.map((answer, index) => (
-            <div key={`${answer.question}-${index}`} className="space-y-3">
+            <div key={`${answer.question}-${index}`} className="min-w-0 max-w-full space-y-3">
               <Message from="user">
                 <MessageContent className="bg-primary text-primary-foreground">
-                  {answer.attachedImageDataUrl ? <img src={answer.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-40 rounded-xl object-cover" /> : null}
+                  {answer.attachedImageDataUrl ? <img src={answer.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-full rounded-xl object-cover" /> : null}
                   {answer.question}
                 </MessageContent>
               </Message>
@@ -112,7 +112,7 @@ function GardenWideAsk() {
                     {answer.grounded.map((item) => <MessageResponse key={item}>{item}</MessageResponse>)}
                   </div>
                   {answer.inference ? (
-                    <div className="mt-4 rounded-2xl border border-inference/25 bg-inference/6 p-4">
+                    <div className="mt-4 min-w-0 max-w-full rounded-2xl border border-inference/25 bg-inference/6 p-4">
                       <ProvenanceTag kind="inferred" confidence="moderate" />
                       <MessageResponse className="mt-2 text-muted-foreground">{answer.inference}</MessageResponse>
                     </div>
@@ -126,9 +126,9 @@ function GardenWideAsk() {
         <ConversationScrollButton />
       </Conversation>
 
-      <div className="border-t border-border/70 bg-background/90 px-4 pt-3 pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-3xl">
-          <div className="no-scrollbar mb-2.5 flex gap-2 overflow-x-auto">
+      <div className="min-w-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
+        <div className="mx-auto min-w-0 max-w-3xl">
+          <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
             {[ui(language, "whatNeedsAttention"), ui(language, "whatChangedRecently"), ...askSuggestions(language).slice(4)].map((suggestion) => (
               <button key={suggestion} type="button" onClick={() => send(suggestion)} className="press shrink-0 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{suggestion}</button>
             ))}

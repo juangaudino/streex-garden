@@ -75,17 +75,17 @@ export function GardenConversationComposer({
   };
 
   return (
-    <form onSubmit={(event) => { void submit(event); }} className="space-y-2">
+    <form onSubmit={(event) => { void submit(event); }} className="w-full min-w-0 max-w-full space-y-2">
       {imageDataUrl ? (
-        <div className="flex items-center gap-3 rounded-xl border border-border/70 bg-card p-2">
-          <img src={imageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="h-14 w-14 rounded-lg object-cover" />
-          <p className="min-w-0 flex-1 truncate text-xs text-muted-foreground">{ui(language, "attachedPhotoPreview")}</p>
+        <div className="flex min-w-0 max-w-full items-center gap-3 rounded-xl border border-border/70 bg-card p-2">
+          <img src={imageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="h-14 w-14 max-w-full shrink-0 rounded-lg object-cover" />
+          <p className="min-w-0 flex-1 break-words text-xs text-muted-foreground [overflow-wrap:anywhere]">{ui(language, "attachedPhotoPreview")}</p>
           <Button type="button" variant="ghost" size="icon-sm" aria-label={ui(language, "removePhoto")} onClick={() => setImageDataUrl(undefined)}>
             <X className="h-4 w-4" />
           </Button>
         </div>
       ) : null}
-      <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-end gap-2">
+      <div className="grid w-full min-w-0 max-w-full grid-cols-[auto_minmax(0,1fr)_auto] items-end gap-2">
         <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
           <DialogTrigger asChild>
             <Button type="button" variant="outline" size="icon" className="h-11 w-11 shrink-0 rounded-full" disabled={disabled || sending || reading} aria-label={ui(language, "attachPhoto")}>
@@ -106,10 +106,10 @@ export function GardenConversationComposer({
           onChange={(event) => setQuestion(event.target.value)}
           disabled={disabled || sending}
           placeholder={placeholder}
-          className="input-soft min-w-0 text-sm"
+          className="input-soft w-full min-w-0 max-w-full text-sm"
           aria-label={placeholder}
         />
-        <Button type="submit" size="sm" className="min-h-11" disabled={disabled || sending || reading || !question.trim()}>
+        <Button type="submit" size="sm" className="min-h-11 min-w-0 max-w-full whitespace-normal px-2 text-center" disabled={disabled || sending || reading || !question.trim()}>
           {reading ? "…" : sendLabel}
         </Button>
       </div>

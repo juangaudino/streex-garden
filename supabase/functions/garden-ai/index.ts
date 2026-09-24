@@ -1,6 +1,7 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
 import { OpenAiResponsesAdapter } from '../_shared/ai-provider.ts'
-import { gardenAiInstructionsFor, gardenAskImageInstructionsFor, gardenCareAskInstructionsFor, gardenShareCaptionInstructionsFor, gardenSummaryInstructionsFor, GARDEN_AI_ASK_IMAGE_PROMPT_VERSION, GARDEN_AI_CARE_ASK_PROMPT_VERSION, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
+import { gardenAiInstructionsFor, gardenAiPhotoOnlyCheckInstructionsFor, gardenAskImageInstructionsFor, gardenCareAskInstructionsFor, gardenShareCaptionInstructionsFor, gardenSummaryInstructionsFor, GARDEN_AI_ASK_IMAGE_PROMPT_VERSION, GARDEN_AI_CARE_ASK_PROMPT_VERSION, GARDEN_AI_PHOTO_ONLY_CHECK_PROMPT_VERSION, GARDEN_AI_RUNTIME_PROMPT_VERSION } from '../_shared/garden-ai-instructions.ts'
+import { photoOnlyAiCheckContext, resolveAiCheckDraftScope } from '../_shared/garden-ai-draft-context.ts'
 import { runAiCheckRuntime } from '../_shared/garden-ai-runtime.ts'
 import { GARDEN_AI_ASK_JSON_SCHEMA, GARDEN_AI_CHECK_JSON_SCHEMA, GARDEN_AI_PROPOSAL_SCHEMA_VERSION, GARDEN_AI_STANDARD_VERSION, GARDEN_MEANINGFUL_CHANGE_JSON_SCHEMA, GARDEN_MEANINGFUL_CHANGE_SCHEMA_VERSION, GARDEN_SHARE_CAPTION_JSON_SCHEMA, GARDEN_SHARE_CAPTION_SCHEMA_VERSION, GARDEN_SUMMARY_JSON_SCHEMA, GARDEN_SUMMARY_SCHEMA_VERSION, validateAiCheckProposal, validateAskGardenAnswer, validateAskGardenImages, validateMeaningfulChangeProposal, validateGardenSummaryProposal, validateShareCaptionProposal } from '../_shared/ai-contract.ts'
 
@@ -59,7 +60,7 @@ Deno.serve(async (request) => {
   if (!featureEnabled) return json({ error: 'Garden AI is disabled' }, 503)
   const auditClient = userClient
 
-  let body: { operation?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; care_review_photo_data_url?: unknown; care_review_context?: unknown; request_key?: unknown; language?: unknown; scope_type?: unknown; garden_id?: unknown; material_fingerprint?: unknown }
+  let body: { operation?: unknown; context_mode?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; care_review_photo_data_url?: unknown; care_review_context?: unknown; request_key?: unknown; language?: unknown; scope_type?: unknown; garden_id?: unknown; material_fingerprint?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (!requestKey(body.request_key)) return json({ error: 'A valid request key is required' }, 400)
   if (providerName === 'mock') return json({ error: 'Mock provider is available in local tests only' }, 503)
@@ -151,15 +152,28 @@ Deno.serve(async (request) => {
     }
 
     if (body.operation === 'ai_check_draft') {
-      if (!uuid(body.grow_cycle_id) || typeof body.draft_image_data_url !== 'string' || !/^data:image\/(jpeg|png|webp);base64,/i.test(body.draft_image_data_url)) return json({ error: 'AI Check requires a valid pending photo' }, 400)
+      const draftScope = resolveAiCheckDraftScope(body.grow_cycle_id, body.context_mode)
+      if (!draftScope || typeof body.draft_image_data_url !== 'string' || !/^data:image\/(jpeg|png|webp);base64,/i.test(body.draft_image_data_url)) return json({ error: 'AI Check requires a valid photo and explicit review scope' }, 400)
       if (body.draft_image_data_url.length > 7_000_000) return json({ error: 'Pending photo exceeds the AI image limit' }, 400)
       const started = await startRequest(auditClient, userData.user.id, body.request_key, 'ai_check', [{ kind: 'ephemeral_photo', id: 'pending_observation' }])
       if (started.existing) return json({ proposal: started.existing.proposal, request_id: started.existing.id, idempotent: true })
       const startedAt = Date.now()
       activeAudit = { id: started.id, startedAt }
-      const contextResponse = await userClient.rpc('garden_get_ai_draft_cycle_context', { p_grow_cycle_id: body.grow_cycle_id })
-      if (contextResponse.error || !contextResponse.data) throw new Error('Authorized AI draft context is unavailable')
-      const response = await provider.analyze({ operation: 'ai_check', context: contextResponse.data, imageDataUrl: body.draft_image_data_url, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions: gardenAiInstructionsFor(responseLanguage) })
+      let context: unknown
+      let promptVersion: string
+      let instructions: string
+      if (draftScope.mode === 'cycle') {
+        const contextResponse = await userClient.rpc('garden_get_ai_draft_cycle_context', { p_grow_cycle_id: draftScope.growCycleId })
+        if (contextResponse.error || !contextResponse.data) throw new Error('Authorized AI draft context is unavailable')
+        context = contextResponse.data
+        promptVersion = GARDEN_AI_RUNTIME_PROMPT_VERSION
+        instructions = gardenAiInstructionsFor(responseLanguage)
+      } else {
+        context = photoOnlyAiCheckContext()
+        promptVersion = GARDEN_AI_PHOTO_ONLY_CHECK_PROMPT_VERSION
+        instructions = gardenAiPhotoOnlyCheckInstructionsFor(responseLanguage)
+      }
+      const response = await provider.analyze({ operation: 'ai_check', context, imageDataUrl: body.draft_image_data_url, standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion, jsonSchema: GARDEN_AI_CHECK_JSON_SCHEMA, instructions })
       const proposal = validateAiCheckProposal(response.raw)
       if (!proposal) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
       await finishRequest(auditClient, started.id, { status: 'completed', proposal, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })

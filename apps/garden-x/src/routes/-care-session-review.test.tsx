@@ -182,7 +182,10 @@ describe("Care Session plant review", () => {
     expect(screen.getByRole("button", { name: "AI Check" }).hasAttribute("disabled")).toBe(true);
     expect(screen.getByRole("link", { name: "Ask Garden" })).toBeTruthy();
     const controls = screen.getByTestId("care-photo-actions");
-    expect(controls.className).toContain("absolute top-3 right-3 z-30");
+    expect(controls.className).toContain("absolute top-3 left-1/2");
+    expect(controls.className).toContain("-translate-x-1/2");
+    expect(controls.className).not.toContain("right-3");
+    expect(controls.querySelector("[data-slot='photo-source-picker']")?.className ?? controls.querySelector(".relative")?.className).toContain("[&_button]:!bg-transparent");
     expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!bg-transparent");
     expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!rounded-none");
     expect(controls.querySelector(".relative")?.className).toContain("[&_button]:!min-h-11");

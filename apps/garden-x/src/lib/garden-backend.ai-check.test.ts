@@ -69,6 +69,18 @@ describe("AI Check request isolation", () => {
     });
   });
 
+  it("requests a photo-only AI Check without fabricating plant or cycle context", async () => {
+    await runAiCheckDraft(null, "data:image/jpeg;base64,ZmFrZQ==", "es");
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "ai_check_draft",
+      context_mode: "photo_only",
+      draft_image_data_url: "data:image/jpeg;base64,ZmFrZQ==",
+      language: "es",
+    });
+    expect(request).not.toHaveProperty("grow_cycle_id");
+  });
+
   it("sends the temporary Care photo and check context through the existing Ask Garden operation", async () => {
     fetchMock.mockResolvedValue({
       ok: true,

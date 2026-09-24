@@ -1811,7 +1811,7 @@ export async function runAiCheck(growCycleId: string, photoId: string, comparePh
 }
 
 export async function runAiCheckDraft(
-  growCycleId: string,
+  growCycleId: string | null,
   draftImageDataUrl: string,
   language: "en" | "es" = "es",
 ) {
@@ -1827,7 +1827,7 @@ export async function runAiCheckDraft(
     },
     body: JSON.stringify({
       operation: "ai_check_draft",
-      grow_cycle_id: growCycleId,
+      ...(growCycleId ? { grow_cycle_id: growCycleId } : { context_mode: "photo_only" }),
       draft_image_data_url: draftImageDataUrl,
       language,
       request_key: `check-draft:${crypto.randomUUID()}`,

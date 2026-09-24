@@ -30,7 +30,6 @@ export const Route = createFileRoute("/garden-ai")({
 });
 
 const plantTools = [
-  { to: "/plants/$plantId/check", titleKey: "aiCheckTitle", descriptionKey: "aiCheckDescription", icon: ScanLine },
   { to: "/plants/$plantId/compare", titleKey: "aiCompareTitle", descriptionKey: "aiCompareDescription", icon: GitCompareArrows },
 ] as const;
 
@@ -53,7 +52,7 @@ function GardenAI() {
   const selectedEvents = selected ? store.events.filter((event) => event.plantId === selected.id) : [];
   const selectedPhotos = selected ? store.photos.filter((photo) => photo.plantId === selected.id) : [];
   const selectedTasks = selected ? store.tasks.filter((task) => task.plantId === selected.id && !task.done) : [];
-  const draftResult = draftProposal ? buildAiCheckPresentation(draftProposal, language, [ui(language, "newPhoto"), `${selectedEvents.length} ${ui(language, "recordedEvents")}`]) : null;
+  const draftResult = draftProposal ? buildAiCheckPresentation(draftProposal, language, [ui(language, "newPhoto"), ...(selected ? [`${selectedEvents.length} ${ui(language, "recordedEvents")}`] : [])]) : null;
   const filtered = activePlants.filter((plant) => {
     const inGarden = gardenId === "all" || plant.gardenId === gardenId;
     const matches = plant.name.toLowerCase().includes(query.toLowerCase());
@@ -108,12 +107,12 @@ function GardenAI() {
   };
 
   const runDraftCheck = () => {
-    if (!selected?.backendGrowCycleId || !draftPhoto) return;
+    if ((selected && !selected.backendGrowCycleId) || !draftPhoto) return;
     const requestToken = crypto.randomUUID();
     draftRequestRef.current = requestToken;
     setDraftPhase("scanning");
     setDraftProposal(null);
-    void runAiCheckDraft(selected.backendGrowCycleId, draftPhoto, language)
+    void runAiCheckDraft(selected?.backendGrowCycleId ?? null, draftPhoto, language)
       .then(({ proposal }) => {
         if (draftRequestRef.current !== requestToken) return;
         setDraftProposal(proposal);
@@ -125,7 +124,7 @@ function GardenAI() {
   };
 
   return (
-    <div className="pb-64 lg:pb-52">
+    <div className="w-full min-w-0 max-w-full pb-64 lg:pb-52">
       <div className="px-5 pt-6 pb-4 sm:hidden">
         <p className="eyebrow">Garden AI</p>
         <h1 className="mt-1 font-display text-3xl">{ui(language, "secondLook")}</h1>
@@ -139,7 +138,7 @@ function GardenAI() {
           <ProvenanceTag kind="inferred" />
         </div>
 
-        <section className="grid grid-cols-2 gap-2 sm:gap-3">
+        <section className="grid min-w-0 grid-cols-2 gap-2 sm:gap-3">
           <div className={cn("surface col-span-2 min-w-0 p-4 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:block sm:p-5", selected && "hidden")}>
             <div className="flex items-center justify-between gap-3"><p className="eyebrow">{ui(language, "choosePlant")}</p>{selected ? <Button type="button" variant="ghost" onClick={() => { resetDraft(); setPlantId(""); }} className="h-auto px-1 py-0 text-xs text-muted-foreground">{ui(language, "clear")}</Button> : null}</div>
             <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto] gap-2">
@@ -196,7 +195,7 @@ function GardenAI() {
           ) : null}
         </section>
 
-        <section className="mt-3 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
+        <section className="mt-3 grid min-w-0 grid-cols-2 gap-2 sm:mt-8 sm:gap-3">
           <Link to="/identify" search={{ from: "garden-ai" }} className="press surface p-4 sm:p-5">
             <Camera className="h-5 w-5 text-primary" />
             <h2 className="mt-3 font-display text-lg sm:mt-5 sm:text-xl">{ui(language, "identify")}</h2>
@@ -217,15 +216,14 @@ function GardenAI() {
               </div>
             )
           ))}
-          {!selected ? <p className="col-span-3 mt-1 text-xs text-muted-foreground">{ui(language, "choosePlantForAi")}</p> : null}
+          {!selected ? <p className="col-span-2 mt-1 text-xs text-muted-foreground">{ui(language, "choosePlantForAi")}</p> : null}
         </section>
 
-        {selected ? (
-          <section className="surface mt-3 min-w-0 p-4 sm:mt-5 sm:p-5">
+        <section className="surface mt-3 min-w-0 p-4 sm:mt-5 sm:p-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="flex items-center gap-2"><ScanLine className="h-4 w-4 text-primary" /><h2 className="font-display text-xl">{ui(language, "aiCheckTitle")}</h2></div>
-                <p className="mt-1 text-sm text-muted-foreground">{ui(language, "gardenAiNewPhotoHint")}</p>
+                <div className="flex min-w-0 items-center gap-2"><ScanLine className="h-4 w-4 shrink-0 text-primary" /><h2 className="min-w-0 font-display text-xl break-words [overflow-wrap:anywhere]">{ui(language, "aiCheckTitle")}</h2></div>
+                <p className="mt-1 text-sm text-muted-foreground">{ui(language, selected ? "gardenAiNewPhotoHint" : "gardenAiPhotoOnlyHint")}</p>
               </div>
               <ProvenanceTag kind="inferred" />
             </div>
@@ -234,7 +232,7 @@ function GardenAI() {
               <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start">
                 <img src={draftPhoto} alt={ui(language, "newPhoto")} className="aspect-[4/3] w-full rounded-2xl object-cover" />
                 <div className="min-w-0">
-                  <button type="button" onClick={runDraftCheck} disabled={draftPhase === "scanning"} className="press inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground disabled:opacity-70 sm:w-auto">
+                  <button type="button" onClick={runDraftCheck} disabled={draftPhase === "scanning" || Boolean(selected && !selected.backendGrowCycleId)} className="press inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground disabled:opacity-70 sm:w-auto">
                     <ScanLine className="h-4 w-4" />
                     {draftPhase === "scanning" ? ui(language, "analysing") : ui(language, "analysePhoto")}
                   </button>
@@ -242,7 +240,7 @@ function GardenAI() {
                   {draftResult ? (
                     <div className="mt-4 rounded-2xl border border-border/70 bg-card p-4">
                       <p className="font-display text-xl">{draftResult.headline}</p>
-                      {draftResult.summary ? <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{draftResult.summary}</p> : null}
+                      {draftResult.summary ? <p className="mt-2 break-words text-sm leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">{draftResult.summary}</p> : null}
                       <div className="mt-3"><ConfidenceBar confidence={draftResult.confidence} /></div>
                       <p className="mt-3 text-xs text-muted-foreground">{ui(language, "savingDoesNotChange")}</p>
                     </div>
@@ -251,12 +249,11 @@ function GardenAI() {
               </div>
             ) : null}
           </section>
-        ) : null}
       </div>
 
-      <div className="fixed inset-x-0 bottom-[4.35rem] z-30 border-t border-border/70 bg-background/90 px-4 py-3 backdrop-blur-xl sm:px-8 lg:bottom-0 lg:left-60 lg:px-12">
-        <div className="mx-auto max-w-3xl">
-          <div className="no-scrollbar mb-2.5 flex gap-2 overflow-x-auto">
+      <div className="fixed inset-x-0 bottom-[4.35rem] z-30 min-w-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] py-3 pr-[max(1rem,env(safe-area-inset-right))] backdrop-blur-xl sm:px-8 lg:bottom-0 lg:left-60 lg:px-12">
+        <div className="mx-auto min-w-0 max-w-3xl">
+          <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
             {suggestions.map((suggestion) => (
               <Button key={suggestion} type="button" variant="outline" onClick={() => openConversation(suggestion)} className="h-auto shrink-0 rounded-full bg-card px-3 py-1.5 text-xs font-normal text-muted-foreground">
                 {suggestion}

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Camera, Film, ChevronRight, UserRound } from "lucide-react";
+import { ArrowRight, Camera, Film, ChevronRight, Leaf, UserRound } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
@@ -27,6 +27,20 @@ import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
+import type { Garden, Plant, PlantEvent } from "@/lib/garden-data";
+
+type HomeRecentActivity = { event: PlantEvent; plant: Plant | null; garden: Garden | null };
+const careSearch = {
+  from: undefined,
+  prompt: undefined,
+  careQueue: undefined,
+  careIndex: undefined,
+  careRecorded: false,
+  careReviewed: undefined,
+  careObservations: undefined,
+  careActions: undefined,
+  careFollowups: undefined,
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,7 +79,16 @@ function Home() {
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const plantById = (id: string) => store.plants.find((p) => p.id === id)!;
   const due = openTasks(store.tasks).filter((t) => t.dueInDays <= 1);
-  const recent = byRecency(store.events).slice(0, 7);
+  const recent = byRecency(store.events)
+    .flatMap((event): HomeRecentActivity[] => {
+      if (event.plantId) {
+        const plant = store.plants.find((item) => item.id === event.plantId);
+        return plant ? [{ event, plant, garden: null }] : [];
+      }
+      const garden = event.gardenId ? store.gardens.find((item) => item.id === event.gardenId) : undefined;
+      return garden ? [{ event, plant: null, garden }] : [];
+    })
+    .slice(0, 7);
   const newPhotos = byRecency(recentPlantPhotos(store.photos, store.plants)).slice(0, 6);
 
   const changes = rankMeaningfulChanges(store.meaningfulChanges, store.plants)
@@ -152,7 +175,7 @@ function Home() {
       <section className="mt-12 px-5 sm:px-8 lg:px-12">
         <SectionTitle
           action={
-            <Link to="/care" className="inline-flex items-center gap-1 text-primary hover:underline">
+            <Link to="/care" search={careSearch} className="inline-flex items-center gap-1 text-primary hover:underline">
               {ui(store.language, "allCare")} <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           }
@@ -161,7 +184,8 @@ function Home() {
         </SectionTitle>
         <div className="no-scrollbar -mx-5 flex snap-x gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:px-0 xl:grid-cols-3">
           {due.map((task) => {
-            const plant = plantById(task.plantId);
+            const plant = store.plants.find((item) => item.id === task.plantId);
+            if (!plant) return null;
             const Icon = maintenanceIcons[task.type];
             return (
               <Link
@@ -195,6 +219,7 @@ function Home() {
         </div>
         <Link
           to="/care"
+          search={careSearch}
           className="press mt-3 flex items-center justify-between rounded-3xl bg-primary px-5 py-4 text-primary-foreground shadow-soft"
         >
           <span className="min-w-0">
@@ -257,29 +282,36 @@ function Home() {
         <div>
           <SectionTitle>{ui(store.language, "recentActivity")}</SectionTitle>
           <ul className="space-y-1">
-            {recent.map((e) => {
-              const Icon = eventIcons[e.type];
-              const plant = plantById(e.plantId);
+            {recent.map(({ event: e, plant, garden }) => {
+              const Icon = eventIcons[e.type] ?? Leaf;
+              const label = plant?.name ?? `${garden?.name ?? (isSpanish ? "Jardín" : "Garden")} · ${isSpanish ? "todo el jardín" : "whole garden"}`;
+              const activity = (
+                <>
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm">{e.title}</span>
+                    <span className="block truncate text-xs text-muted-foreground">
+                      {label} · {localizedEventLabel(e.type, store.language)}
+                    </span>
+                  </span>
+                  <span className="numeral shrink-0 text-xs text-muted-foreground">
+                    {relativeDay(e.daysAgo)}
+                  </span>
+                </>
+              );
               return (
                 <li key={e.id}>
-                  <Link
-                    to="/plants/$plantId"
-                    params={{ plantId: plant.id }}
-                    className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-accent/40"
-                  >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm">{e.title}</span>
-                      <span className="block truncate text-xs text-muted-foreground">
-                        {plant.name} · {localizedEventLabel(e.type, store.language)}
-                      </span>
-                    </span>
-                    <span className="numeral shrink-0 text-xs text-muted-foreground">
-                      {relativeDay(e.daysAgo)}
-                    </span>
-                  </Link>
+                  {plant ? (
+                    <Link to="/plants/$plantId" params={{ plantId: plant.id }} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-accent/40">
+                      {activity}
+                    </Link>
+                  ) : garden ? (
+                    <Link to="/gardens/$gardenId" params={{ gardenId: garden.id }} search={{ view: "overview" }} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-accent/40">
+                      {activity}
+                    </Link>
+                  ) : null}
                 </li>
               );
             })}

@@ -22,6 +22,61 @@ export interface CareSessionSearchSnapshot {
   followups: number;
 }
 
+export interface SavedCareSession extends CareSessionSearchSnapshot {
+  gardenOrder: string[];
+  selectedGardenIds: string[];
+}
+
+export const careSessionStorageKey = "garden-x-care-session-v1";
+
+export function saveCareSession(snapshot: SavedCareSession) {
+  try {
+    if (typeof window !== "undefined") window.localStorage.setItem(careSessionStorageKey, JSON.stringify(snapshot));
+  } catch {
+    // Care remains usable if local storage is unavailable.
+  }
+}
+
+export function loadCareSession(): SavedCareSession | null {
+  try {
+    if (typeof window === "undefined") return null;
+    const value = window.localStorage.getItem(careSessionStorageKey);
+    if (!value) return null;
+    const parsed = JSON.parse(value) as Partial<SavedCareSession>;
+    if (!Array.isArray(parsed.queue) || !parsed.queue.every((id) => typeof id === "string") || !parsed.queue.length) return null;
+    if (!Array.isArray(parsed.gardenOrder) || !parsed.gardenOrder.every((id) => typeof id === "string")) return null;
+    if (!Array.isArray(parsed.selectedGardenIds) || !parsed.selectedGardenIds.every((id) => typeof id === "string")) return null;
+    const numeric = [parsed.index, parsed.reviewed, parsed.observations, parsed.care, parsed.followups];
+    if (numeric.some((item) => typeof item !== "number" || !Number.isFinite(item) || item < 0)) return null;
+    if (typeof parsed.recordedForReview !== "boolean") return null;
+    return {
+      queue: parsed.queue,
+      index: Math.min(parsed.index!, parsed.queue.length - 1),
+      recordedForReview: parsed.recordedForReview,
+      reviewed: parsed.reviewed!,
+      observations: parsed.observations!,
+      care: parsed.care!,
+      followups: parsed.followups!,
+      gardenOrder: parsed.gardenOrder,
+      selectedGardenIds: parsed.selectedGardenIds,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function clearCareSession() {
+  try {
+    if (typeof window !== "undefined") window.localStorage.removeItem(careSessionStorageKey);
+  } catch {
+    // Care remains usable if local storage is unavailable.
+  }
+}
+
+export function careSessionHasProgress(snapshot: SavedCareSession) {
+  return snapshot.index > 0 || snapshot.reviewed > 0 || snapshot.observations > 0 || snapshot.care > 0 || snapshot.followups > 0 || snapshot.recordedForReview;
+}
+
 export function parseCareSessionQueue(value: string | undefined) {
   return value ? value.split(",").map((item) => item.trim()).filter(Boolean) : [];
 }

@@ -79,7 +79,7 @@ function flowHint(key: MomentFlow, language: "en" | "es") {
 
 function localizedMaintenanceLabel(type: MaintenanceType, language: "en" | "es") {
   const labels: Record<MaintenanceType, [string, string]> = {
-    watering: ["Watering", "Riego"], nutrients: ["Nutrients", "Nutrientes"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], thinning: ["Thinning", "Aclareo"], transplant: ["Transplant", "Trasplante"], cleaning: ["Cleaning", "Limpieza"], pest: ["Pest treatment", "Tratamiento de plagas"], light: ["Light adjustment", "Ajuste de luz"], custom: ["Custom", "Personalizado"],
+    watering: ["Water", "Agua"], water_and_nutrients: ["Water + nutrients", "Agua + nutrientes"], nutrients: ["Nutrients", "Nutrientes"], pruning: ["Pruning", "Poda"], harvest: ["Harvest", "Cosecha"], thinning: ["Thinning", "Aclareo"], transplant: ["Transplant", "Trasplante"], cleaning: ["Cleaning", "Limpieza"], pest: ["Pest treatment", "Tratamiento de plagas"], light: ["Light adjustment", "Ajuste de luz"], custom: ["Custom", "Personalizado"],
   };
   return labels[type][language === "es" ? 1 : 0];
 }
@@ -114,11 +114,11 @@ function localizedCloseReason(value: string, language: "en" | "es") {
 const careTypes: MaintenanceType[] = [
   "watering",
   "nutrients",
-  "pruning",
+  "water_and_nutrients",
   "harvest",
+  "pruning",
   "thinning",
   "transplant",
-  "cleaning",
   "pest",
   "light",
   "custom",
@@ -182,7 +182,7 @@ function careEventType(type: MaintenanceType): EventType {
 export function careShortcuts(plant: Plant): MaintenanceType[] {
   if (plant.gardenId === "garden-indoor") return ["watering", "nutrients", "thinning"];
   if (plant.species.toLowerCase().includes("basil")) return ["harvest", "pruning", "watering"];
-  if (plant.status === "recovering") return ["watering", "pest", "cleaning"];
+  if (plant.status === "recovering") return ["watering", "pest"];
   if (plant.plantedDaysAgo > 120) return ["harvest", "pruning", "nutrients"];
   return ["watering", "nutrients", "pruning"];
 }

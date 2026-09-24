@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, notFound, useRouterState } from "@tanstack/react-router";
 import { ChevronLeft, Sparkles } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { askGarden, askSuggestions, plantEvents, plantPhotos, type AskAnswer } from "@/lib/garden-logic";
+import { askGarden, askSuggestions, isAmbiguousPlantComparisonQuestion, isDeterministicPlantRecordQuestion, plantEvents, plantPhotos, type AskAnswer } from "@/lib/garden-logic";
 import { askGardenAi } from "@/lib/garden-backend";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import { ui } from "@/lib/ui-copy";
@@ -62,7 +62,16 @@ function Ask() {
     const clean = question.trim();
     if (!clean || thinking) return;
     setThinking(true);
-    if (imageDataUrl || imageConversationActive.current) {
+    const activePlants = store.plants.filter((item) => !item.cycleClosed);
+    if (isAmbiguousPlantComparisonQuestion(clean, activePlants.filter((item) => item.id !== plant.id).map((item) => item.name))) {
+      const clarification = language === "es"
+        ? "¿Con cuál otra planta quieres compararla? Dime su nombre para revisar el contexto de ambas sin asumir a cuál te refieres."
+        : "Which other plant would you like to compare it with? Tell me its name so I can review both contexts without guessing which one you mean.";
+      setThread((current) => [...current, { question: clean, grounded: [clarification], evidence: [], ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}) }]);
+      setThinking(false);
+      return;
+    }
+    if (imageDataUrl || imageConversationActive.current || !isDeterministicPlantRecordQuestion(clean)) {
       imageConversationActive.current = true;
       const currentEvents = plantEvents(store.events, plant.id);
       const currentPhotos = plantPhotos(store.photos, plant.id);
@@ -106,9 +115,9 @@ function Ask() {
         });
         setThread((current) => [...current, {
           question: clean,
-          grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],
+          grounded: result.confirmed_facts.map((fact) => fact.claim),
           evidence: result.confirmed_facts.map((fact) => `${fact.source.kind} · ${fact.source.id.slice(0, 8)}`),
-          ...(result.confirmed_facts.length && result.answer ? { inference: result.answer } : {}),
+          ...(result.answer ? { inference: result.answer } : {}),
           ...(imageDataUrl ? { attachedImageDataUrl: imageDataUrl } : {}),
         }]);
       } catch {
@@ -188,9 +197,7 @@ function Ask() {
                 {a.question}
               </p>
               <div className="surface min-w-0 max-w-full overflow-hidden p-5 break-words [overflow-wrap:anywhere]">
-                <div className="mb-3">
-                  <ProvenanceTag kind="recorded" />
-                </div>
+                {a.evidence.length ? <div className="mb-3"><ProvenanceTag kind="recorded" /></div> : null}
                 <ul className="space-y-2 text-sm leading-relaxed">
                   {a.grounded.map((g) => (
                     <li key={g}>{g}</li>

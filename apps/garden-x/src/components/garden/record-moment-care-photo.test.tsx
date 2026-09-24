@@ -8,11 +8,12 @@ import { RecordMomentSheet } from "./record-moment";
 const mocks = vi.hoisted(() => ({
   addPhoto: vi.fn(),
   addEvent: vi.fn(),
+  language: "en" as "en" | "es",
 }));
 
 vi.mock("@/lib/garden-store", () => ({
   useGarden: () => ({
-    language: "en",
+    language: mocks.language,
     gardens: [],
     plants: [],
     photos: [],
@@ -47,6 +48,7 @@ describe("Record a Moment photo reuse from a Care review", () => {
   afterEach(() => {
     cleanup();
     vi.clearAllMocks();
+    mocks.language = "en";
   });
 
   it("attaches the selected temporary review photo only when the user saves an observation", async () => {
@@ -69,5 +71,16 @@ describe("Record a Moment photo reuse from a Care review", () => {
     expect(mocks.addPhoto).toHaveBeenCalledWith(expect.objectContaining({ plantId: "plant-mint", src: selectedReviewPhoto }));
     expect(mocks.addEvent.mock.calls[0]![0]).toEqual(expect.objectContaining({ plantId: "plant-mint", photoId: "photo-review-1" }));
     expect(mocks.addEvent.mock.calls[0]![1]).toEqual(expect.objectContaining({ photo: expect.objectContaining({ src: selectedReviewPhoto }), waitForPersistence: true }));
+  });
+
+  it.each([
+    ["en", ["Water", "Nutrients", "Water + nutrients", "Harvest", "Pruning", "Thinning", "Transplant", "Pest treatment", "Light adjustment", "Custom"]],
+    ["es", ["Agua", "Nutrientes", "Agua + nutrientes", "Cosecha", "Poda", "Aclareo", "Trasplante", "Tratamiento de plagas", "Ajuste de luz", "Personalizado"]],
+  ] as const)("shows the approved plant-care actions in %s without Garden cleaning", (language, labels) => {
+    mocks.language = language;
+    render(<RecordMomentSheet plant={plant} open initialFlow="care" onClose={vi.fn()} />);
+
+    for (const label of labels) expect(screen.getByRole("button", { name: label })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: language === "es" ? "Limpieza" : "Cleaning" })).toBeNull();
   });
 });

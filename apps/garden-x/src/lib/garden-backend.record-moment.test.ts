@@ -64,6 +64,7 @@ describe("Record a Moment canonical temporal propagation", () => {
         return { data: { event_id: "event-observation" }, error: null };
       if (name === "garden_x_record_harvest")
         return { data: { event_id: "event-harvest" }, error: null };
+      if (name === "garden_record_cycle_fact") return { data: { event_id: "event-fact" }, error: null };
       if (name === "garden_x_prepare_event_photo")
         return { data: { storage_path: "owner/photo/original.jpg" }, error: null };
       if (name === "garden_mark_photo_uploaded") return { data: null, error: null };
@@ -127,6 +128,33 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+  });
+
+  it("records Looks good through the existing canonical visual_review fact", async () => {
+    await persistMoment(plant, {
+      ...event("note"),
+      backendEventType: "visual_review",
+      title: "Reviewed — looks good",
+      detail: "Reassuring visual review confirmed by the user.",
+      provenance: "observed",
+    });
+    const review = rpc.mock.calls.find(([name]) => name === "garden_record_cycle_fact");
+    expect(review?.[1]).toMatchObject({
+      p_grow_cycle_id: "cycle-1",
+      p_fact_type: "visual_review",
+      p_occurred_on: "2026-09-04",
+      p_fact_data: { result: "reassuring" },
+    });
+  });
+
+  it("records Water + nutrients as one plant intervention with the combined action key", async () => {
+    await persistMoment(plant, { ...event("maintenance"), title: "Water + nutrients" });
+    const intervention = rpc.mock.calls.find(([name]) => name === "garden_record_cycle_fact");
+    expect(intervention?.[1]).toMatchObject({
+      p_fact_type: "intervention",
+      p_fact_data: { class: "other", action: "water_and_nutrients" },
+    });
+    expect(rpc.mock.calls.filter(([name]) => name === "garden_record_cycle_fact")).toHaveLength(1);
   });
 
   it("does not report photo persistence success when Storage upload fails", async () => {

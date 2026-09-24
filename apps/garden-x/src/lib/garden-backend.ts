@@ -1198,6 +1198,14 @@ export async function persistMoment(
           incident_event_id: incident.id,
         })
       : await recordObservation(cycleId, event);
+  } else if (event.backendEventType === "visual_review") {
+    eventId = await recordFact(
+      cycleId,
+      "visual_review",
+      effectiveDateFromEvent(event),
+      event.detail || event.title,
+      { result: "reassuring" },
+    );
   } else if (event.type === "pruning" || event.type === "thinning") {
     eventId = await recordFact(
       cycleId,
@@ -1232,7 +1240,9 @@ export async function persistMoment(
       event.detail || event.title,
       {
         class: "other",
-        action: event.title.toLowerCase().replace(/[^a-z0-9]+/g, "_"),
+        action: /water\s*\+\s*nutrients|agua\s*\+\s*nutrientes/i.test(event.title)
+          ? "water_and_nutrients"
+          : event.title.toLowerCase().replace(/[^a-z0-9]+/g, "_"),
       },
     );
   } else if (event.type === "transplant" && event.title === "Relocated") {

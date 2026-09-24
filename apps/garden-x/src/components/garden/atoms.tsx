@@ -45,6 +45,7 @@ export const eventIcons: Record<EventType, typeof Leaf> = {
 
 export const maintenanceIcons: Record<MaintenanceType, typeof Leaf> = {
   watering: Droplets,
+  water_and_nutrients: Droplets,
   nutrients: Beaker,
   pruning: Scissors,
   harvest: Basket,

@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarClock,
+  Check,
   ChevronRight,
   Leaf,
   MessageCircle,
@@ -12,6 +13,7 @@ import {
   Sparkles,
   StickyNote,
 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { RecordMomentSheet, type MomentFlow } from "@/components/garden/record-moment";
 import { useGarden } from "@/lib/garden-store";
@@ -53,7 +55,13 @@ import {
   type CareInspectionState,
   reorderCareGarden,
   toggleCareGardenSelection,
+  clearCareSession,
+  careSessionHasProgress,
+  loadCareSession,
+  saveCareSession,
+  type SavedCareSession,
 } from "@/lib/care-session";
+import { dateOnlyToUtcNoon } from "@/lib/temporal";
 
 export const Route = createFileRoute("/care")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -112,8 +120,17 @@ function Care() {
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>();
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>();
   const [recordedForReview, setRecordedForReview] = useState(sessionSearch.careRecorded ?? false);
-  const [gardenOrder, setGardenOrder] = useState<string[]>([]);
-  const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(null);
+  const [resumeSnapshot, setResumeSnapshot] = useState<SavedCareSession | null>(() => loadCareSession());
+  const [gardenOrder, setGardenOrder] = useState<string[]>(() => {
+    const snapshot = loadCareSession();
+    const queue = parseCareSessionQueue(sessionSearch.careQueue);
+    return queue.length && snapshot?.queue.join(",") !== queue.join(",") ? [] : snapshot?.gardenOrder ?? [];
+  });
+  const [selectedGardenIds, setSelectedGardenIds] = useState<string[] | null>(() => {
+    const snapshot = loadCareSession();
+    const queue = parseCareSessionQueue(sessionSearch.careQueue);
+    return queue.length && snapshot?.queue.join(",") === queue.join(",") ? snapshot.selectedGardenIds : null;
+  });
 
   useEffect(() => {
     if (!queue.length) {
@@ -144,11 +161,32 @@ function Care() {
     return [...gardenOrder.filter((id) => available.has(id)), ...sessionGardens.map((garden) => garden.id).filter((id) => !gardenOrder.includes(id))];
   }, [gardenOrder, sessionGardens]);
   const selectedGardens = selectedGardenIds ?? orderedGardens;
+  useEffect(() => {
+    if (queue.length && !finished) {
+      const snapshot: SavedCareSession = {
+        queue,
+        index,
+        recordedForReview,
+        ...summary,
+        gardenOrder: orderedGardens,
+        selectedGardenIds: selectedGardenIds ?? orderedGardens,
+      };
+      saveCareSession(snapshot);
+    } else if (finished) {
+      clearCareSession();
+      setResumeSnapshot(null);
+    }
+  }, [queue, index, recordedForReview, summary, orderedGardens, selectedGardenIds, finished]);
   const needingLook = new Set(tasks.map((t) => t.plantId)).size;
   const routine = activePlants.length - needingLook;
   const current = queue[index] ? store.plants.find((plant) => plant.id === queue[index]) : undefined;
 
   const startSession = () => {
+    if (resumeSnapshot && careSessionHasProgress(resumeSnapshot)) {
+      if (typeof window !== "undefined" && !window.confirm(ui(language, "confirmStartNewCareSession"))) return;
+    }
+    clearCareSession();
+    setResumeSnapshot(null);
     const positionNumbers = new Map(sessionGardens.flatMap((garden) => (garden.backendPositions ?? []).map((position) => [position.id, position.number] as const)));
     setGardenOrder(orderedGardens);
     setSelectedGardenIds(selectedGardens);
@@ -160,7 +198,30 @@ function Care() {
     store.clearCareInspection();
   };
 
+  const continueSession = () => {
+    if (!resumeSnapshot) return;
+    const snapshot = resumeSnapshot;
+    const availablePlantIds = new Set(activePlants.map((plant) => plant.id));
+    const restoredQueue = snapshot.queue.filter((id) => availablePlantIds.has(id));
+    if (!restoredQueue.length) {
+      clearCareSession();
+      setResumeSnapshot(null);
+      return;
+    }
+    const restoredIndex = snapshot.queue.slice(0, snapshot.index).filter((id) => availablePlantIds.has(id)).length;
+    setQueue(restoredQueue);
+    setIndex(Math.min(restoredIndex, restoredQueue.length - 1));
+    setSummary({ reviewed: snapshot.reviewed, observations: snapshot.observations, care: snapshot.care, followups: snapshot.followups });
+    setRecordedForReview(snapshot.recordedForReview);
+    setGardenOrder(snapshot.gardenOrder);
+    setSelectedGardenIds(snapshot.selectedGardenIds);
+    setFinished(false);
+    setResumeSnapshot(null);
+  };
+
   const leaveSession = () => {
+    clearCareSession();
+    setResumeSnapshot(null);
     setQueue([]);
     setIndex(0);
     setFinished(false);
@@ -238,6 +299,26 @@ function Care() {
             onRecord={openRecord}
             onNext={() => advance(true)}
             onSkip={() => advance(false)}
+            onLooksGood={async () => {
+              if (recordedForReview) return;
+              const now = new Date();
+              const occurredOn = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+              try {
+                await store.addEvent({
+                  plantId: current.id,
+                  daysAgo: 0,
+                  occurredAt: dateOnlyToUtcNoon(occurredOn),
+                  type: "note",
+                  backendEventType: "visual_review",
+                  title: language === "es" ? "Revisada — se ve bien" : "Reviewed — looks good",
+                  detail: language === "es" ? "Revisión visual tranquilizadora confirmada por la persona." : "Reassuring visual review confirmed by the user.",
+                  provenance: "observed",
+                }, { waitForPersistence: true });
+                setRecordedForReview(true);
+              } catch {
+                toast.error(language === "es" ? "No se pudo guardar la revisión. Inténtalo de nuevo." : "The review could not be saved. Please try again.");
+              }
+            }}
             recordedForReview={recordedForReview}
             careReturnSearch={careSessionSearch({
               queue,
@@ -290,6 +371,21 @@ function Care() {
           </div>
         </div>
       </section>
+
+      {resumeSnapshot ? (
+        <section className="mt-5 px-5 sm:px-8 lg:px-12" aria-label={ui(language, "continueSession")}>
+          <div className="surface mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 p-4 sm:p-5">
+            <div>
+              <h2 className="font-display text-xl">{ui(language, "continueSession")}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">{resumeSnapshot.reviewed} / {resumeSnapshot.queue.length} {ui(language, "plantsReviewed")}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button onClick={continueSession}>{ui(language, "continueSession")} <ArrowRight className="h-4 w-4" /></Button>
+              <Button variant="outline" onClick={startSession}>{ui(language, "startNewSession")}</Button>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="care-session-setup" className="mt-5 px-5 sm:px-8 lg:px-12" aria-label={ui(language, "careSessionSetup")}>
         <div className="surface mx-auto max-w-3xl p-4 sm:p-5">
@@ -372,6 +468,7 @@ export function PlantReview({
   onRecord,
   onNext,
   onSkip,
+  onLooksGood,
   recordedForReview,
   careReturnSearch,
 }: {
@@ -392,11 +489,13 @@ export function PlantReview({
   onRecord: (flow?: MomentFlow, careType?: MaintenanceType) => void;
   onNext: () => void;
   onSkip: () => void;
+  onLooksGood: () => void | Promise<void>;
   recordedForReview: boolean;
   careReturnSearch: ReturnType<typeof careSessionSearch>;
 }) {
   const { checkPhase, checkProposal, conversation } = inspection;
   const [chatBusy, setChatBusy] = useState(false);
+  const [looksGoodBusy, setLooksGoodBusy] = useState(false);
   const checkRequest = useRef(inspection.requestGuardId);
   const updateInspection = (patch: Partial<CareInspectionState>) => onInspectionPatch(patch);
   const reviewImage = workingPhoto ?? null;
@@ -547,10 +646,23 @@ export function PlantReview({
           </Link>
         </Button>
       </div>
-      <div className="mt-2">
+      <div className="mt-2 grid grid-cols-2 gap-2">
         <Button
+          type="button"
+          variant="outline"
+          className="min-h-10 gap-2"
+          disabled={recordedForReview || looksGoodBusy}
+          onClick={async () => {
+            setLooksGoodBusy(true);
+            try { await onLooksGood(); } finally { setLooksGoodBusy(false); }
+          }}
+        >
+          <Check className="h-4 w-4" /> {ui(language, "looksGood")}
+        </Button>
+        <Button
+          type="button"
           variant={recordedForReview ? "outline" : "ghost"}
-          className="min-h-10 w-full text-muted-foreground"
+          className="min-h-10 gap-2 text-muted-foreground"
           onClick={recordedForReview ? onNext : onSkip}
         >
           {ui(language, careSessionAction(recordedForReview))}

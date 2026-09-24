@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { describe, expect, it } from "vitest";
 import {
   careSessionAction,
@@ -16,6 +17,10 @@ import {
   createCareInspectionState,
   reorderCareGarden,
   toggleCareGardenSelection,
+  careSessionHasProgress,
+  clearCareSession,
+  loadCareSession,
+  saveCareSession,
 } from "./care-session";
 
 describe("Care Session action hierarchy", () => {
@@ -56,6 +61,26 @@ describe("Care Session action hierarchy", () => {
     expect(parseCareSessionQueue(search.careQueue)).toEqual(["plant-a", "plant-b"]);
     expect(parseCareSessionNumber("1")).toBe(1);
     expect(parseCareSessionBoolean("true")).toBe(true);
+  });
+
+  it("persists and restores an unfinished workflow snapshot locally, including selection, order and next item", () => {
+    const snapshot = {
+      queue: ["plant-a", "plant-b", "plant-c"],
+      index: 2,
+      recordedForReview: false,
+      reviewed: 2,
+      observations: 1,
+      care: 1,
+      followups: 0,
+      gardenOrder: ["garden-b", "garden-a"],
+      selectedGardenIds: ["garden-b", "garden-a"],
+    };
+    clearCareSession();
+    saveCareSession(snapshot);
+    expect(loadCareSession()).toEqual(snapshot);
+    expect(careSessionHasProgress(snapshot)).toBe(true);
+    clearCareSession();
+    expect(loadCareSession()).toBeNull();
   });
 });
 

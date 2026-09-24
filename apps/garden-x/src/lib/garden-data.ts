@@ -24,6 +24,7 @@ export type PlantStatus = "thriving" | "steady" | "watching" | "recovering";
 
 export type MaintenanceType =
   | "watering"
+  | "water_and_nutrients"
   | "nutrients"
   | "pruning"
   | "harvest"

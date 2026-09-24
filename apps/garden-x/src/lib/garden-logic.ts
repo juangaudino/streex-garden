@@ -384,7 +384,7 @@ export function lastOfType(events: PlantEvent[], plantId: string, match: (e: Pla
 
 export function lastReview(events: PlantEvent[], plantId: string) {
   return plantEvents(events, plantId).find(
-    (e) => e.type === "note" && /reviewed|check-in/i.test(e.title),
+    (e) => e.backendEventType === "visual_review" || (e.type === "note" && /reviewed|check-in|revisad[ao]|se ve bien/i.test(e.title)),
   );
 }
 
@@ -398,6 +398,7 @@ export const statusMeta: Record<PlantStatus, { label: string; tone: string; dot:
 
 export const maintenanceLabels: Record<MaintenanceType, string> = {
   watering: "Watering",
+  water_and_nutrients: "Water + nutrients",
   nutrients: "Nutrients",
   pruning: "Pruning",
   harvest: "Harvest",
@@ -597,6 +598,22 @@ export interface AskAnswer {
   grounded: string[];
   inference?: string;
   evidence: string[];
+}
+
+/** Keep simple recorded-event lookups deterministic; conversational questions use Garden AI. */
+export function isDeterministicPlantRecordQuestion(question: string) {
+  const q = question.toLocaleLowerCase();
+  const asksWhen = /\b(when|last|latest|ever|already|cu[aá]ndo|últim[oa]|ultima|alguna vez|ya)\b/.test(q);
+  const asksRecordedAction = /\b(water|watering|reservoir|riego|agua|fertil|nutrient|feed|abon|cosech|harvest|prun|pod|thinn|aclare|transplant|trasplant)\w*\b/.test(q);
+  return asksWhen && asksRecordedAction;
+}
+
+/** Anaphoric comparison without a named second plant must be clarified, never guessed. */
+export function isAmbiguousPlantComparisonQuestion(question: string, knownPlantNames: string[]) {
+  const q = question.toLocaleLowerCase();
+  const comparesWithOther = /\b(the other|another plant|the second|la otra|el otro|otra planta|el de al lado|la de al lado)\b/.test(q);
+  if (!comparesWithOther) return false;
+  return !knownPlantNames.some((name) => name.trim().length > 1 && q.includes(name.toLocaleLowerCase()));
 }
 
 export function askGarden(

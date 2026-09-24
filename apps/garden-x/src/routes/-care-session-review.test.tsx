@@ -81,7 +81,7 @@ function canonicalPhoto(plantId = plant.id, id = "existing-photo"): Photo {
   };
 }
 
-function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), existingPhotos = [canonicalPhoto()] as Photo[], language = "en" }: { onRecord?: () => void; onNext?: () => void; onSkip?: () => void; existingPhotos?: Photo[]; language?: "en" | "es" } = {}) {
+function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(), onLooksGood = vi.fn(), existingPhotos = [canonicalPhoto()] as Photo[], language = "en", recordedForReview = false }: { onRecord?: () => void; onNext?: () => void; onSkip?: () => void; onLooksGood?: () => void; existingPhotos?: Photo[]; language?: "en" | "es"; recordedForReview?: boolean } = {}) {
   const [inspection, setInspection] = useState<CareInspectionState>(() => createCareInspectionState(careReviewPhotoKey(plant.id, plant.backendGrowCycleId)));
   const [mounted, setMounted] = useState(true);
   return (
@@ -106,7 +106,8 @@ function ReviewHarness({ onRecord = vi.fn(), onNext = vi.fn(), onSkip = vi.fn(),
       onRecord={onRecord}
       onNext={onNext}
       onSkip={onSkip}
-      recordedForReview={false}
+      onLooksGood={onLooksGood}
+      recordedForReview={recordedForReview}
       careReturnSearch={{ careQueue: "plant-mint", careIndex: 0, careRecorded: false, careReviewed: 0, careObservations: 0, careActions: 0, careFollowups: 0 }}
     /> : null}
     </>
@@ -139,6 +140,7 @@ function MultiPlantPhotoHarness() {
         onRecord={() => undefined}
         onNext={() => undefined}
         onSkip={() => undefined}
+        onLooksGood={() => undefined}
         recordedForReview={false}
         careReturnSearch={{ careQueue: "plant-mint,plant-romaine", careIndex: 0, careRecorded: false, careReviewed: 0, careObservations: 0, careActions: 0, careFollowups: 0 }}
       />
@@ -219,6 +221,31 @@ describe("Care Session plant review", () => {
     render(<ReviewHarness language="es" />);
     expect(screen.getByRole("button", { name: "Tomar foto" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Elegir de Fotos" })).toBeTruthy();
+  });
+
+  it("records the explicit looks-good action without auto-advancing and keeps skip separate", async () => {
+    const onLooksGood = vi.fn();
+    const onNext = vi.fn();
+    const onSkip = vi.fn();
+    render(<ReviewHarness onLooksGood={onLooksGood} onNext={onNext} onSkip={onSkip} />);
+    fireEvent.click(screen.getByRole("button", { name: "Looks good" }));
+    await waitFor(() => expect(onLooksGood).toHaveBeenCalledTimes(1));
+    expect(onNext).not.toHaveBeenCalled();
+    expect(onSkip).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "Skip for now" }));
+    expect(onSkip).toHaveBeenCalledTimes(1);
+  });
+
+  it("localizes looks-good and next/skip controls in Spanish", () => {
+    render(<ReviewHarness language="es" />);
+    expect(screen.getByRole("button", { name: "La veo bien" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Omitir por ahora" })).toBeTruthy();
+  });
+
+  it("switches the right action to Next plant only after a valid review or action", () => {
+    render(<ReviewHarness recordedForReview />);
+    expect(screen.getByRole("button", { name: "Next plant" })).toBeTruthy();
+    expect((screen.getByRole("button", { name: "Looks good" }) as HTMLButtonElement).disabled).toBe(true);
   });
 
   it("runs the current cycle check inline and gives Ask Garden the photo-derived result context", async () => {

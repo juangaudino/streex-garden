@@ -87,16 +87,44 @@ describe("plant-scoped Ask Garden real route composer", () => {
     mocks.locationState = undefined;
   });
 
-  it("keeps ordinary no-image Ask Garden on its existing plant-record path", async () => {
+  it("keeps a deterministic recorded nutrient lookup on the local plant-record path", async () => {
     mocks.useGarden.mockReturnValue(buildStore());
-    mocks.askGarden.mockReturnValue({ question: "How is it?", grounded: ["A record-based answer."], evidence: [], inference: "", confidence: "high" });
+    mocks.askGarden.mockReturnValue({ question: "When did I last fertilize this plant?", grounded: ["No nutrient event is recorded for Common Mint."], evidence: [], inference: "" });
     const PlantAsk = Route.options.component as React.ComponentType;
     render(<PlantAsk />);
-    fireEvent.change(screen.getByPlaceholderText("Ask about Common Mint…"), { target: { value: "How is it?" } });
+    fireEvent.change(screen.getByPlaceholderText("Ask about Common Mint…"), { target: { value: "When did I last fertilize this plant?" } });
     fireEvent.submit(screen.getByPlaceholderText("Ask about Common Mint…").closest("form")!);
     await waitFor(() => expect(mocks.askGarden).toHaveBeenCalledTimes(1));
     expect(mocks.askGardenAi).not.toHaveBeenCalled();
-    expect(await screen.findByText("A record-based answer.")).toBeTruthy();
+    expect(await screen.findByText("No nutrient event is recorded for Common Mint.")).toBeTruthy();
+  });
+
+  it("routes open-ended contextual questions to Garden AI instead of presenting the local context fallback", async () => {
+    mocks.useGarden.mockReturnValue(buildStore());
+    mocks.askGardenAi.mockResolvedValue({ answer_type: "answer", answer: "Kratky reservoirs are usually topped up or changed based on the solution condition and container practice; Garden X has no water-change interval recorded for this plant.", confirmed_facts: [], suggested_next_actions: [] });
+    const PlantAsk = Route.options.component as React.ComponentType;
+    render(<PlantAsk />);
+    const input = screen.getByPlaceholderText("Ask about Common Mint…");
+    fireEvent.change(input, { target: { value: "How often should I change the water in Kratky?" } });
+    fireEvent.submit(input.closest("form")!);
+    await waitFor(() => expect(mocks.askGardenAi).toHaveBeenCalledTimes(1));
+    expect(mocks.askGarden).not.toHaveBeenCalled();
+    expect(mocks.askGardenAi.mock.calls[0]![0]).toBe("How often should I change the water in Kratky?");
+    expect(mocks.askGardenAi.mock.calls[0]![1][0].answer).toContain("plant-mint");
+    expect(await screen.findByText(/Kratky reservoirs are usually/)).toBeTruthy();
+    expect(screen.queryByText(/I answer from what is recorded here/i)).toBeNull();
+  });
+
+  it("asks which plant 'the other' means instead of inventing a comparison", async () => {
+    mocks.useGarden.mockReturnValue(buildStore("en"));
+    const PlantAsk = Route.options.component as React.ComponentType;
+    render(<PlantAsk />);
+    const input = screen.getByPlaceholderText("Ask about Common Mint…");
+    fireEvent.change(input, { target: { value: "Why does it grow faster than the other?" } });
+    fireEvent.submit(input.closest("form")!);
+    expect(await screen.findByText(/Which other plant would you like to compare it with/)).toBeTruthy();
+    expect(mocks.askGardenAi).not.toHaveBeenCalled();
+    expect(mocks.askGarden).not.toHaveBeenCalled();
   });
 
   it("attaches a new image from Care without merging it into the review photo, preserves plant/cycle context and keeps the Care return state", async () => {
@@ -154,7 +182,7 @@ describe("plant-scoped Ask Garden real route composer", () => {
   it("keeps long plant-scoped messages and the attachment composer inside a narrow mobile layout", async () => {
     Object.defineProperty(window, "innerWidth", { configurable: true, value: 320 });
     mocks.useGarden.mockReturnValue(buildStore());
-    mocks.askGarden.mockReturnValue({ question: "Long prompt", grounded: ["Long evidence ".concat("unbrokenword".repeat(24))], evidence: [], inference: "", confidence: "high" });
+    mocks.askGardenAi.mockResolvedValue({ answer_type: "answer", answer: "Long evidence ".concat("unbrokenword".repeat(24)), confirmed_facts: [], suggested_next_actions: [] });
     const PlantAsk = Route.options.component as React.ComponentType;
     const { container } = render(<PlantAsk />);
     expect((container.firstElementChild as HTMLElement).className).toContain("min-w-0");

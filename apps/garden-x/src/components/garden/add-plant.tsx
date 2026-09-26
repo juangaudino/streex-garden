@@ -637,7 +637,8 @@ function ContextualCandidateCard({
     }
     if (reason.property === "mature_height") {
       if (reason.statement.includes("within the documented system grow-height limit")) {
-        return ui(language, "matureHeightWithinMachineLimit");
+        const limit = reason.statement.match(/of ([\d.]+) cm/)?.[1] ?? "";
+        return ui(language, "matureHeightWithinMachineLimit").replace("{height}", limit);
       }
       if (reason.statement.includes("exceeds the documented system grow-height limit")) {
         return ui(language, "matureHeightExceedsMachineLimit");
@@ -684,8 +685,6 @@ function ContextualCandidateCard({
           ) : null}
           {candidate.physicalFit.state === "supported" ? (
             <span>{ui(language, "physicalFitSupported")}</span>
-          ) : candidate.physicalFit.state === "needs_review" ? (
-            <span>{ui(language, "physicalFitNeedsReview")}</span>
           ) : null}
         </div>
       ) : null}

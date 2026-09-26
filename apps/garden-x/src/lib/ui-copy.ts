@@ -643,8 +643,8 @@ const copy = {
     checkFirstIntro:
       "Cultivation is supported, but a system or position detail still needs checking.",
     knownMachineGrowHeight: "Documented system maximum grow height",
-    matureHeightWithinMachineLimit: "Documented mature height is within this system limit.",
-    matureHeightExceedsMachineLimit: "Minimum mature height exceeds the system limit; check fit.",
+    matureHeightWithinMachineLimit: "Fits the documented {height} cm grow-height limit.",
+    matureHeightExceedsMachineLimit: "Documented mature height exceeds the system limit; review fit.",
     expansiveHabitNeedsClearance:
       "Spreading habit has no measured clearance beside occupied positions.",
     expansiveNeighborNeedsReview:
@@ -673,7 +673,6 @@ const copy = {
     systemFitUnconfirmed: "Fit for this specific system is not documented.",
     physicalFitSupported: "Physical fit supported by recorded dimensions.",
     physicalFitUnconfirmed: "Physical fit for this position is not confirmed.",
-    physicalFitNeedsReview: "The documented dimensions need review against this position.",
     cultivationEvidenceUnavailable: "Cultivation compatibility is not established by current evidence.",
     evidenceSources: "View evidence sources",
     evidencePropertyCultivation: "Cultivation",
@@ -1498,9 +1497,9 @@ const copy = {
       "El cultivo tiene respaldo, pero falta revisar un dato del sistema o la posición.",
     knownMachineGrowHeight: "Altura máxima documentada del sistema",
     matureHeightWithinMachineLimit:
-      "La altura adulta documentada está dentro del límite de este sistema.",
+      "Cabe dentro del límite documentado de {height} cm de altura de cultivo.",
     matureHeightExceedsMachineLimit:
-      "La altura mínima documentada supera el límite; revisa el encaje.",
+      "La altura adulta documentada supera el límite del sistema; revisa el encaje.",
     expansiveHabitNeedsClearance:
       "No hay espacio medido junto a posiciones ocupadas para este hábito expansivo.",
     expansiveNeighborNeedsReview:
@@ -1529,7 +1528,6 @@ const copy = {
     systemFitUnconfirmed: "No hay documentación sobre el encaje con este sistema específico.",
     physicalFitSupported: "El encaje físico está respaldado por dimensiones registradas.",
     physicalFitUnconfirmed: "El encaje físico en esta posición no está confirmado.",
-    physicalFitNeedsReview: "Hay que revisar las dimensiones documentadas frente a esta posición.",
     cultivationEvidenceUnavailable: "La evidencia disponible no establece compatibilidad con el método de cultivo.",
     evidenceSources: "Ver fuentes de evidencia",
     evidencePropertyCultivation: "Cultivo",

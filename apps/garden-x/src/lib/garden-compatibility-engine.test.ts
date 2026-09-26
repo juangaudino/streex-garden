@@ -147,12 +147,30 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
   });
 
   it("preserves uncertainty when a one-sided mature-size bound cannot establish physical fit", () => {
-    const { results } = evaluate(garden({ machine: { name: "AeroGarden", pods: 4 } }), "p1", [], {
-      clearance: { heightCm: 25, context: "hydroponic" },
-    });
-    const petunia = results.find(
-      (result) => result.candidate.libraryPlantId === "cascading-petunia",
-    )!;
+    const petuniaEntry = byId("cascading-petunia");
+    const petuniaProfile = petuniaEntry.compatibilityProfile!;
+    const oneSidedHeight: GardenLibraryEntry = {
+      ...petuniaEntry,
+      compatibilityProfile: {
+        ...petuniaProfile,
+        matureSize: {
+          ...petuniaProfile.matureSize,
+          height: {
+            status: "known",
+            value: { minCm: 10, context: "hydroponic" },
+            evidence: [],
+          },
+        },
+      },
+    };
+    const input = buildEmptyGardenPositionInput(
+      garden({ machine: { name: "AeroGarden", pods: 4 } }),
+      "p1",
+      [],
+      [oneSidedHeight],
+      { clearance: { heightCm: 25, context: "hydroponic" } },
+    );
+    const [petunia] = evaluateEmptyGardenPosition(input, [oneSidedHeight]);
     expect(petunia.unknowns).toContainEqual(
       expect.objectContaining({
         property: "mature_height_fit",
@@ -161,9 +179,8 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     );
     expect(petunia.eligibility).toBe("eligible");
     expect(petunia.exclusions).toHaveLength(0);
-    expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_fits")).toBe(
-      false,
-    );
+    expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_fits")).toBe(false);
+    expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_needs_review")).toBe(false);
   });
 
   it("C — detects the geometric perimeter but does not infer space beyond it for trailing plants", () => {
@@ -434,6 +451,59 @@ describe("B3 Phase 2 canonical machine and neighbor facts", () => {
     expect(petunia.compatibility).toBe("conditional");
     expect(petunia.systemFit).toBe("unknown");
     expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_fits")).toBe(true);
+  });
+
+  it.each([
+    ["below the limit", 24, 39, "known_height_fits", false],
+    ["at the limit", 24, 40, "known_height_fits", false],
+    ["above the limit", 41, 52, "known_height_needs_review", true],
+  ] as const)("compares the documented maximum height when it is %s", (_label, minCm, maxCm, signal, review) => {
+    const candidate = byId("buttercrunch-lettuce");
+    const profile = candidate.compatibilityProfile!;
+    const measured: GardenLibraryEntry = {
+      ...candidate,
+      compatibilityProfile: {
+        ...profile,
+        matureSize: {
+          ...profile.matureSize,
+          height: {
+            status: "known",
+            value: { minCm, maxCm, context: "hydroponic" },
+            evidence: profile.growthHabits.status === "known" ? profile.growthHabits.evidence : [],
+          },
+        },
+      },
+    };
+    const exactInput = buildEmptyGardenPositionInput(
+      garden({ systemDefinitionKey: "uruq_8_v1" }),
+      "p1",
+      [],
+      [measured],
+    );
+    const [result] = evaluateEmptyGardenPosition(exactInput, [measured]);
+
+    expect(result!.rankingSignals).toContainEqual(expect.objectContaining({ code: signal }));
+    expect(result!.rankingSignals.some((item) => item.effect === "needs_review")).toBe(review);
+    if (!review) {
+      expect(result!.reasons.some((item) => item.code === "documented_height_within_clearance")).toBe(true);
+    } else {
+      expect(result!.reasons.some((item) => item.statement.includes("maximum mature height"))).toBe(true);
+    }
+  });
+
+  it("keeps unknown mature height unknown without a height review signal", () => {
+    const exactInput = buildEmptyGardenPositionInput(
+      garden({ systemDefinitionKey: "uruq_8_v1" }),
+      "p1",
+      [],
+      [byId("bibb-lettuce")],
+    );
+    const [result] = evaluateEmptyGardenPosition(exactInput, [byId("bibb-lettuce")]);
+
+    expect(result!.unknowns.some((item) => item.property === "mature_height")).toBe(true);
+    expect(result!.rankingSignals.some((item) => item.code === "known_height_needs_review")).toBe(
+      false,
+    );
   });
 
   it("uses actual diagonal neighbor occupancy and documented neighbor habit without inferring biology", () => {

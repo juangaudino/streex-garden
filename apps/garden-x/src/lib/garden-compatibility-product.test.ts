@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Garden } from "./garden-data";
+import type { Garden, Plant } from "./garden-data";
 import {
   buildEmptyGardenPositionInput,
   evaluateEmptyGardenPosition,
@@ -70,6 +70,7 @@ describe("B3.6 empty-position product contract", () => {
     expect(result.cultivationCompatibility).toEqual({ method: "hydroponic", state: "compatible" });
     expect(result.systemFit).toEqual({ systemName: "Aera One", state: "unknown" });
     expect(result.physicalFit.state).toBe("unknown");
+    expect(result.tier).toBe("insufficient_evidence");
     expect(result.requiresVerificationBeforePlanting).toBe(true);
   });
 
@@ -142,6 +143,112 @@ describe("B3.6 empty-position product contract", () => {
       result.factualReasons.find((reason) => reason.property === "mature_height")?.evidence[0]
         ?.sourceId,
     ).toBe("test-documented-height");
+
+    const exceedsLimit: GardenLibraryEntry = {
+      ...measured,
+      compatibilityProfile: {
+        ...measured.compatibilityProfile!,
+        matureSize: {
+          ...measured.compatibilityProfile!.matureSize,
+          height: {
+            status: "known",
+            value: { minCm: 35, maxCm: 42, context: "hydroponic" },
+            evidence: sizeEvidence,
+          },
+        },
+      },
+    };
+    const conflict = project([exceedsLimit], garden(), [], {
+      clearance: { heightCm: 40, context: "hydroponic" },
+    }).candidates[0]!;
+    expect(conflict.physicalFit.state).toBe("needs_review");
+    expect(conflict.tier).toBe("check_first");
+    expect(
+      conflict.factualReasons.some((reason) => reason.statement.includes("maximum mature height")),
+    ).toBe(true);
+  });
+
+  it("keeps representative H1 candidates with unknown or incomparable height out of check-first", () => {
+    const h1 = garden({ systemDefinitionKey: "uruq_8_v1", machine: { name: "URUQ", pods: 8 } });
+    const set = project(
+      [
+        byId("bibb-lettuce"),
+        byId("black-seeded-simpson"),
+        byId("buttercrunch-lettuce"),
+        byId("cherry-tomato"),
+        byId("tiny-tim-tomato"),
+        byId("sunflower-american-giant-hybrid"),
+      ],
+      h1,
+    );
+    for (const id of [
+      "bibb-lettuce",
+      "black-seeded-simpson",
+      "buttercrunch-lettuce",
+      "cherry-tomato",
+    ]) {
+      const candidate = set.candidates.find((item) => item.plant.libraryPlantId === id)!;
+      expect(candidate.physicalFit.state).toBe("unknown");
+      expect(candidate.tier).toBe("insufficient_evidence");
+    }
+    const tinyTim = set.candidates.find((item) => item.plant.libraryPlantId === "tiny-tim-tomato")!;
+    expect(tinyTim.physicalFit.state).toBe("unknown");
+    expect(tinyTim.tier).toBe("insufficient_evidence");
+    expect(tinyTim.missingInformation.some((item) => item.property === "physical_clearance")).toBe(
+      true,
+    );
+    const sunflower = set.candidates.find(
+      (item) => item.plant.libraryPlantId === "sunflower-american-giant-hybrid",
+    )!;
+    expect(sunflower.cultivationCompatibility.state).toBe("unknown");
+    expect(sunflower.physicalFit.state).toBe("unknown");
+    expect(sunflower.tier).toBe("insufficient_evidence");
+  });
+
+  it("keeps a real spreading-neighbor review independent from a supported height fit", () => {
+    const lettuce = byId("bibb-lettuce");
+    const profile = lettuce.compatibilityProfile!;
+    const fittingLettuce: GardenLibraryEntry = {
+      ...lettuce,
+      compatibilityProfile: {
+        ...profile,
+        matureSize: {
+          ...profile.matureSize,
+          height: {
+            status: "known",
+            value: { minCm: 20, maxCm: 35, context: "hydroponic" },
+            evidence: profile.hydroponicSuitability.evidence ?? [],
+          },
+        },
+      },
+    };
+    const occupant: Plant = {
+      id: "strawberry-neighbor",
+      gardenId: "garden-a",
+      backendPositionId: "p2",
+      backendGrowCycleId: "cycle-strawberry",
+      name: "Monterey",
+      species: "",
+      scientific: "",
+      variety: "",
+      knowledgeId: "monterey-strawberry",
+      libraryPlantId: "monterey-strawberry",
+      plantedDaysAgo: 0,
+      status: "steady",
+      statusNote: "",
+      heroPhotoId: "",
+      identityConfirmed: true,
+    };
+    const h1 = garden({ systemDefinitionKey: "uruq_8_v1" });
+    const candidates = project([fittingLettuce, byId("monterey-strawberry")], h1, [occupant]);
+    const candidate = candidates.candidates.find(
+      (item) => item.plant.libraryPlantId === "bibb-lettuce",
+    )!;
+
+    expect(candidate.tier).toBe("check_first");
+    expect(candidate.physicalFit.state).toBe("needs_review");
+    expect(candidate.factualReasons.some((reason) => reason.statement.includes("neighboring active plant"))).toBe(true);
+    expect(candidate.physicalFit.state).not.toBe("supported");
   });
 
   it("retains multiple neighboring occupants without exposing companion-planting claims", () => {
@@ -293,7 +400,7 @@ describe("B3.6 empty-position product contract", () => {
       result.candidates.find(
         (candidate) => candidate.plant.libraryPlantId === "buttercrunch-lettuce",
       )?.tier,
-    ).toBe("check_first");
+    ).toBe("insufficient_evidence");
     expect(
       result.candidates.find((candidate) => candidate.plant.libraryPlantId === "cascading-petunia")
         ?.tier,

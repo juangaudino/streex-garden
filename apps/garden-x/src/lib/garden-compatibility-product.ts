@@ -190,15 +190,6 @@ function physicalFitState(
 ): EmptyPositionCandidate["physicalFit"]["state"] {
   if (
     result.rankingSignals.some((signal) =>
-      ["known_height_fits", "known_spread_fits", "known_position_spacing_fits"].includes(
-        signal.code,
-      ),
-    )
-  ) {
-    return "supported";
-  }
-  if (
-    result.rankingSignals.some((signal) =>
       [
         "known_height_needs_review",
         "known_spread_needs_review",
@@ -210,6 +201,15 @@ function physicalFitState(
   ) {
     return "needs_review";
   }
+  if (
+    result.rankingSignals.some((signal) =>
+      ["known_height_fits", "known_spread_fits", "known_position_spacing_fits"].includes(
+        signal.code,
+      ),
+    )
+  ) {
+    return "supported";
+  }
   return "unknown";
 }
 
@@ -217,10 +217,11 @@ function reasonPriority(code: string) {
   if (code === "explicit_hydroponic_incompatibility") return 0;
   if (code === "documented_hydroponic_compatibility" || code === "documented_system_condition_met")
     return 1;
+  if (code.includes("needs_review") || code.includes("may_exceed_clearance")) return 2;
   if (code.includes("within_clearance") || code === "documented_position_spacing_available")
-    return 2;
-  if (code === "documented_growth_habit") return 3;
-  return 4;
+    return 3;
+  if (code === "documented_growth_habit") return 4;
+  return 5;
 }
 
 function candidateProjection(
@@ -289,7 +290,7 @@ function candidateProjection(
           ? "check_first"
           : hasPositiveContextSignal
             ? "recommended"
-            : "check_first";
+            : "insufficient_evidence";
   const systemFit: EmptyPositionCandidate["systemFit"]["state"] =
     result.systemFit === "documented_condition_met"
       ? "documented"

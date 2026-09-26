@@ -197,7 +197,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
     const tinyTim = (await screen.findByText("Tiny Tim Tomato")).closest("article")!;
     const cherry = screen.getByText("Cherry Tomato").closest("article")!;
-    expect(tinyTim.textContent).toContain("Documented growth habit: bushy.");
+    expect(tinyTim.textContent).toContain("Neighbor has a documented spreading habit");
     expect(cherry.textContent).not.toContain("Documented growth habit");
     expect(tinyTim.querySelector("details")?.textContent).toContain("Identity-specific");
   });

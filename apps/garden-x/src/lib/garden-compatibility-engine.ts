@@ -351,6 +351,22 @@ function resultFor(
           statement: reason.statement,
           sourceIds: reason.sourceIds,
         });
+      } else if (maximum !== undefined && maximum > limit) {
+        const reason = reasonFromEvidence(
+          `documented_${dimension}_may_exceed_clearance`,
+          `mature_${dimension}`,
+          dimension === "height"
+            ? `The documented maximum mature height (${maximum} cm) exceeds the ${heightLimitLabel} of ${limit} cm; this is a consideration, not an exclusion.`
+            : `The documented maximum mature ${dimension} (${maximum} cm) exceeds the explicitly recorded ${limit} cm clearance; this is a consideration, not an exclusion.`,
+          knowledge.evidence,
+        );
+        reasons.push(reason);
+        rankingSignals.push({
+          code: `known_${dimension}_needs_review`,
+          effect: "needs_review",
+          statement: reason.statement,
+          sourceIds: reason.sourceIds,
+        });
       } else if (minimum !== undefined && minimum > limit) {
         const reason = reasonFromEvidence(
           `documented_${dimension}_may_exceed_clearance`,
@@ -360,6 +376,7 @@ function resultFor(
             : `The documented minimum mature ${dimension} (${minimum} cm) exceeds the explicitly recorded ${limit} cm clearance; this is a consideration, not an exclusion.`,
           knowledge.evidence,
         );
+        reasons.push(reason);
         rankingSignals.push({
           code: `known_${dimension}_needs_review`,
           effect: "needs_review",

@@ -81,8 +81,7 @@
               "evidenceType": "source_backed",
               "confidence": "high",
               "taxonomicScope": {
-                "level": "species",
-                "taxon": "Ocimum basilicum"
+                "level": "identity"
               },
               "note": "Johnny’s Thai basil reference specifies full sun for growing; no artificial-light duration is inferred."
             }

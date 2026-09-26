@@ -57,7 +57,7 @@ import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
 import { LibraryIdentityResolution } from "@/components/garden/library-identity-resolution";
 import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManifest } from "@/lib/garden-library";
-import { localizeKnownError, ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui, type UiCopyKey } from "@/lib/ui-copy";
 import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
 import { askGardenAccentClassName } from "@/lib/care-session";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
@@ -354,6 +354,9 @@ function PlantProfile() {
       <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-4 mx-5 sm:mx-8 lg:mx-12">
         {[
           { k: ui(language, "planted"), v: formatDate(plant.plantedDaysAgo) },
+          ...(plant.originType && plant.originType !== "unknown"
+            ? [{ k: ui(language, "plantOrigin"), v: ui(language, `plantOrigin_${plant.originType}` as UiCopyKey) }]
+            : []),
           ...storyFacts(plant, store.events, language, store.gardens.find((garden) => garden.id === plant.gardenId)?.kind).map((f) => ({ k: f.label, v: f.value })),
         ].map((cell) => (
           <div key={cell.k} className="bg-card px-4 py-3.5">

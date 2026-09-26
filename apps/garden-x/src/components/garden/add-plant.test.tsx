@@ -290,7 +290,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeTruthy();
     expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
 
-    fireEvent.click(screen.getByRole("button", { name: /Buttercrunch Lettuce/ }));
+    fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));
     fireEvent.click(screen.getByRole("button", { name: "Add to this position" }));
     await waitFor(() =>
       expect(mocks.createLibraryPlant).toHaveBeenCalledWith(
@@ -318,6 +318,35 @@ describe("AddPlantSheet contextual B3 entry point", () => {
           positionId: "empty-position",
           libraryPlantId: "buttercrunch-lettuce",
         }),
+      ),
+    );
+  });
+
+  it("records the selected stable cycle origin using localized labels", async () => {
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));
+    const origin = await screen.findByLabelText("How this cycle began · optional");
+    expect(origin.querySelector('option[value="bare_root"]')?.textContent).toBe("Bare root");
+    fireEvent.change(origin, { target: { value: "seed" } });
+    fireEvent.click(screen.getByRole("button", { name: "Add to this position" }));
+    await waitFor(() =>
+      expect(mocks.createLibraryPlant).toHaveBeenCalledWith(
+        expect.objectContaining({ originType: "seed" }),
+      ),
+    );
+  });
+
+  it("localizes origin choices in Spanish without changing their persisted IDs", async () => {
+    mocks.language = "es";
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: /Lechuga Buttercrunch/ }));
+    const origin = await screen.findByLabelText("Cómo comenzó este ciclo · opcional");
+    expect(origin.querySelector('option[value="bare_root"]')?.textContent).toBe("Raíz desnuda");
+    fireEvent.change(origin, { target: { value: "bare_root" } });
+    fireEvent.click(screen.getByRole("button", { name: "Añadir a esta posición" }));
+    await waitFor(() =>
+      expect(mocks.createLibraryPlant).toHaveBeenCalledWith(
+        expect.objectContaining({ originType: "bare_root" }),
       ),
     );
   });

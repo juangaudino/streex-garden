@@ -57,6 +57,7 @@ import {
   setPersistentPhotoCacheUserId,
 } from "./garden-backend";
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
+import type { PlantOriginType } from "./garden-data";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { chooseSessionHighlight, projectPlantRelocation } from "./garden-logic";
 import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
@@ -104,6 +105,7 @@ interface StoreApi extends GardenState {
     nickname?: string;
     plantedOn: string | null;
     plantedOnPrecision: "exact" | "approximate" | "unknown";
+    originType?: PlantOriginType;
     photo?: Omit<Photo, "id" | "plantId">;
   }) => Promise<string>;
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
@@ -504,6 +506,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             ...(e.occurredAt !== undefined && { occurredAt: e.occurredAt }),
             ...(e.detail !== undefined && { detail: e.detail }),
             ...(e.milestone !== undefined && { milestone: e.milestone }),
+            ...(e.lifeEvent !== undefined && { lifeEvent: e.lifeEvent }),
             ...(e.journalMilestone !== undefined && { journalMilestone: e.journalMilestone }),
             ...(e.photoId !== undefined && { photoId: e.photoId }),
           };
@@ -598,6 +601,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
                 daysAgo: 0,
                 type: "planted" as EventType,
                 title: "Added to garden",
+                lifeEvent: "planted",
                 detail: "Identity confirmed by you.",
                 milestone: true,
                 provenance: "recorded",
@@ -618,6 +622,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           libraryPlantId: draft.libraryPlantId,
           plantedOn: draft.plantedOn,
           plantedOnPrecision: draft.plantedOnPrecision,
+          originType: draft.originType,
           ...(draft.nickname ? { nickname: draft.nickname } : {}),
           ...(photo ? { photo } : {}),
         });

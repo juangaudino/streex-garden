@@ -97,6 +97,7 @@ beforeEach(() => {
     hydration: "ready",
     gardens: [garden],
     plants: [plant],
+    events: [],
     photos: [],
     addPhoto: vi.fn(() => "photo-local-1"),
     addEvent: vi.fn(async () => undefined),
@@ -148,16 +149,18 @@ describe("Journal Entry from real shell entry points", () => {
   it("records a milestone-only moment as an explicit structured journal event", async () => {
     renderExperience(`/plants/${plant.id}`);
     openRecord();
-    fireEvent.click(screen.getByRole("button", { name: "Flowering" }));
+    fireEvent.click(screen.getByRole("button", { name: "More…" }));
+    fireEvent.click(screen.getByRole("button", { name: "Flowered" }));
     fireEvent.click(screen.getByRole("button", { name: "Save moment" }));
     await waitFor(() => expect(mocks.store["addEvent"]).toHaveBeenCalledTimes(1));
     expect(mocks.store["addEvent"]).toHaveBeenCalledWith(
       expect.objectContaining({
         plantId: plant.id,
         type: "flowering",
-        journalMilestone: "flowering",
-        title: "Flowering",
-        detail: "Flowering",
+        lifeEvent: "flowered",
+        milestone: true,
+        title: "Flowered",
+        detail: "Flowered",
       }),
       expect.anything(),
     );
@@ -175,7 +178,8 @@ describe("Journal Entry from real shell entry points", () => {
     fireEvent.change(screen.getByPlaceholderText("What would you like to remember?"), {
       target: { value: "A new leaf is opening." },
     });
-    fireEvent.click(screen.getByRole("button", { name: "Fruiting" }));
+    fireEvent.click(screen.getByRole("button", { name: "More…" }));
+    fireEvent.click(screen.getByRole("button", { name: "Fruited" }));
     fireEvent.click(screen.getByRole("button", { name: "Save moment" }));
     await waitFor(() => expect(mocks.store["addEvent"]).toHaveBeenCalledTimes(1));
     expect(mocks.store["addPhoto"]).toHaveBeenCalledWith(
@@ -188,7 +192,8 @@ describe("Journal Entry from real shell entry points", () => {
       expect.objectContaining({
         plantId: plant.id,
         type: "fruiting",
-        journalMilestone: "fruiting",
+        lifeEvent: "fruited",
+        milestone: true,
         detail: "A new leaf is opening.",
         photoId: "photo-local-1",
       }),
@@ -206,6 +211,23 @@ describe("Journal Entry from real shell entry points", () => {
     expect(screen.getByRole("heading", { name: "Registrar un momento" })).toBeTruthy();
     expect(screen.getByText("Foto · opcional")).toBeTruthy();
     expect(screen.getByText("Nota · opcional")).toBeTruthy();
+    expect(screen.getByText("Acontecimiento · opcional")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Más…" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Guardar momento" })).toBeTruthy();
+  });
+
+  it("prioritizes seed-origin facts while keeping the other life events available under More", () => {
+    mocks.store = {
+      ...mocks.store,
+      plants: [{ ...plant, originType: "seed" }],
+    };
+    renderExperience(`/plants/${plant.id}`);
+    openRecord();
+    expect(screen.getByRole("button", { name: "Germinated" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Growth observed" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Flowered" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "More…" }));
+    expect(screen.getByRole("button", { name: "Flowered" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Fruited" })).toBeTruthy();
   });
 });

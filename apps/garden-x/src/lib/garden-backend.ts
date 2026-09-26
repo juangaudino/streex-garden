@@ -10,7 +10,10 @@ import type {
   MaintenanceType,
   Provenance,
   Film,
+  LifeEventId,
+  PlantOriginType,
 } from "./garden-data";
+import { normalizeLifeEvent, originType } from "./plant-life";
 import {
   MEANINGFUL_CHANGE_SCHEMA_VERSION,
   meaningfulChangeRequestKey,
@@ -80,6 +83,7 @@ type BootstrapPlant = {
   cycle_state: string;
   planted_on: string | null;
   planted_on_precision: string;
+  origin_type?: string | null;
   harvest_readiness: string;
   garden_id: string;
   system_instance_id: string | null;
@@ -174,10 +178,36 @@ function dateOnlyEventValue(event: BootstrapEvent): string | null {
   const value = String(event.event_data?.occurred_on ?? "");
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
+function lifeEventFor(type: string, data: Record<string, unknown>): LifeEventId | null {
+  if (type === "observation") {
+    const fromMoment = normalizeLifeEvent(data["journal_milestone"]);
+    if (fromMoment) return fromMoment;
+  }
+  if (type === "cycle_started" || type === "planting" || type === "seeds_added") return "planted";
+  if (type === "cycle_ended") return "ended";
+  if (type === "cycle_moved") return "moved";
+  if (type === "germination_observed" || type === "germination_confirmed") return "germinated";
+  if (type === "harvest") return "harvested";
+  if (type === "incident_opened") return "damaged";
+  if (type === "incident_resolved") return "recovered";
+  if (type === "intervention") {
+    const action = String(data["action"] ?? data["class"] ?? "").toLowerCase();
+    if (action.includes("transplant")) return "transplanted";
+  }
+  return null;
+}
+
 function eventType(type: string, data: Record<string, unknown>): EventType {
-  const journalMilestone = data["journal_milestone"];
-  if (type === "observation" && ["germinated", "sprouted", "flowering", "fruiting", "harvest"].includes(String(journalMilestone))) {
-    return journalMilestone as EventType;
+  const lifeEvent = lifeEventFor(type, data);
+  if (type === "observation" && lifeEvent) {
+    if (lifeEvent === "flowered") return "flowering";
+    if (lifeEvent === "fruited") return "fruiting";
+    if (lifeEvent === "harvested") return "harvest";
+    if (lifeEvent === "transplanted") return "transplant";
+    if (lifeEvent === "damaged") return "problem";
+    if (lifeEvent === "recovered") return "recovery";
+    if (lifeEvent === "germinated" || lifeEvent === "sprouted") return lifeEvent;
+    return "note";
   }
   if (type === "system_maintenance") return "maintenance";
   if (type === "cycle_started" || type === "seeds_added") return "planted";
@@ -687,6 +717,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
             cultivar: p.library_cultivar_snapshot ?? p.cultivar,
           }
         : null,
+      originType: originType(p.origin_type),
       plantedDaysAgo: daysAgo(p.planted_on),
       slot: `Pod ${p.position_number}`,
       status: (b.attention ?? []).some((a) => a.plant_instance_id === p.id) ? "watching" : "steady",
@@ -716,7 +747,13 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
       title: titleFor(e),
-      ...(typeof e.event_data?.journal_milestone === "string" ? { journalMilestone: e.event_data.journal_milestone as PlantEvent["journalMilestone"] } : {}),
+      ...(lifeEventFor(e.event_type, e.event_data ?? {})
+        ? { lifeEvent: lifeEventFor(e.event_type, e.event_data ?? {})! }
+        : {}),
+      ...(typeof e.event_data?.journal_milestone === "string" &&
+      ["germinated", "sprouted", "flowering", "fruiting", "harvest"].includes(e.event_data.journal_milestone)
+        ? { journalMilestone: e.event_data.journal_milestone as PlantEvent["journalMilestone"] }
+        : {}),
       ...(e.note ? { detail: normalizeTimelineNote(e.note) } : {}),
       provenance: provenance(e.event_type, e.event_data ?? {}),
       backendEventType: e.event_type,
@@ -973,6 +1010,7 @@ export async function createPlantRecord(
     p_reference_key: plant.knowledgeId || null,
     p_planted_on: plantedOn,
     p_planted_on_precision: "exact",
+    p_origin_type: plant.originType ?? "unknown",
   });
   if (error) throw new Error(error.message);
   if (photo) {
@@ -988,6 +1026,7 @@ export type LibraryPlantRecordDraft = {
   nickname?: string;
   plantedOn: string | null;
   plantedOnPrecision: "exact" | "approximate" | "unknown";
+  originType?: PlantOriginType;
   photo?: Photo;
 };
 
@@ -1003,6 +1042,7 @@ export async function createLibraryPlantRecord(
     p_nickname: draft.nickname?.trim() || null,
     p_planted_on: draft.plantedOn,
     p_planted_on_precision: draft.plantedOnPrecision,
+    p_origin_type: draft.originType ?? "unknown",
   });
   if (error) throw new Error(error.message);
   const created = data as { event_id: string; plant_instance_id: string };
@@ -1178,7 +1218,7 @@ async function recordJournalMoment(
     p_grow_cycle_id: growCycleId,
     p_occurred_on: effectiveDateFromEvent(event),
     p_note: event.detail?.trim() || null,
-    p_milestone: event.journalMilestone ?? null,
+    p_milestone: event.lifeEvent ?? event.journalMilestone ?? null,
     p_has_photo: hasPhoto,
   });
   if (error) throw new Error(error.message);
@@ -1194,7 +1234,7 @@ export async function persistMoment(
   const cycleId = plant.backendGrowCycleId;
   let eventId: string;
 
-  if (event.journalMilestone) {
+  if (event.lifeEvent || event.journalMilestone) {
     eventId = await recordJournalMoment(cycleId, event, Boolean(photo));
   } else if (event.type === "germinated") {
     eventId = await recordFact(

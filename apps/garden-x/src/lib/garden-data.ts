@@ -54,6 +54,34 @@ export type EventType =
 
 export type JournalMilestone = "germinated" | "sprouted" | "flowering" | "fruiting" | "harvest";
 
+/** Stable facts attached to the current observed grow cycle. */
+export type PlantOriginType =
+  | "unknown"
+  | "seed"
+  | "bare_root"
+  | "cutting"
+  | "seedling"
+  | "transplant";
+
+/** Factual life history only; no progression or achievement state. */
+export type LifeEventId =
+  | "planted"
+  | "germinated"
+  | "sprouted"
+  | "growth_observed"
+  | "flowered"
+  | "fruited"
+  | "harvested"
+  | "regrowth"
+  | "propagated"
+  | "ended"
+  | "moved"
+  | "transplanted"
+  | "damaged"
+  | "recovered";
+
+export type MomentLifeEvent = Exclude<LifeEventId, "planted" | "ended" | "moved">;
+
 /** Every record declares how it was established. AI never writes "fact". */
 export type Provenance = "recorded" | "observed" | "inferred";
 
@@ -122,6 +150,8 @@ export interface PlantEvent {
   title: string;
   detail?: string;
   milestone?: boolean;
+  lifeEvent?: LifeEventId;
+  /** F1 persisted this legacy metadata key; retained when loading old rows. */
   journalMilestone?: JournalMilestone;
   photoId?: string;
   photoIds?: string[];
@@ -157,6 +187,7 @@ export interface Plant {
     scientificName: string | null;
     cultivar: string | null;
   } | null;
+  originType?: PlantOriginType;
   plantedDaysAgo: number;
   acquired?: string;
   slot?: string;

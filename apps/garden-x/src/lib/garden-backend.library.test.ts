@@ -23,6 +23,7 @@ describe("Library-backed plant creation", () => {
         libraryPlantId: "genovese-basil",
         plantedOn: "2026-09-20",
         plantedOnPrecision: "exact",
+        originType: "seed",
       }),
     ).resolves.toEqual({ plantInstanceId: "plant-1" });
     expect(rpc).toHaveBeenCalledWith(
@@ -31,6 +32,7 @@ describe("Library-backed plant creation", () => {
         p_plant_instance_id: "plant-1",
         p_position_id: "position-1",
         p_library_plant_id: "genovese-basil",
+        p_origin_type: "seed",
         p_request_id: expect.any(String),
       }),
     );

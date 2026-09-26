@@ -152,6 +152,23 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(prepare?.[1]).toMatchObject({ p_event_id: "event-journal" });
   });
 
+  it("persists a canonical F1B Life Event identifier through the existing F1 moment RPC", async () => {
+    await persistMoment(plant, {
+      ...event("flowering"),
+      title: "Floreció",
+      detail: "Floreció",
+      lifeEvent: "flowered",
+      milestone: true,
+    });
+    const moment = rpc.mock.calls.find(([name]) => name === "garden_x_create_journal_moment");
+    expect(moment?.[1]).toMatchObject({
+      p_grow_cycle_id: "cycle-1",
+      p_milestone: "flowered",
+      p_note: "Floreció",
+      p_has_photo: false,
+    });
+  });
+
   it("persists a photo-only journal entry as an observation plus the canonical photo attachment", async () => {
     await persistMoment(plant, {
       ...event("photo"),
@@ -251,7 +268,25 @@ describe("Record a Moment canonical temporal propagation", () => {
           kind: "hydroponic", cultivation_method: "hydroponic", place: "Kitchen",
           note: "Dedicado a Greens", sort_order: 4, archived_at: null,
           positions: [{ id: "position-1", position_number: 1, layout: { site_id: "site-1", site_kind: "grow", is_active: true, grid_x: 2, grid_y: 1, label: "Pod 1" } }],
-        }], plants: [], events: [], photos: [], attention: [],
+        }], plants: [{
+          id: "plant-bare-root", nickname: null, reference_key: "monterey-strawberry",
+          common_name: "Monterey Strawberry", scientific_name: "Fragaria × ananassa", cultivar: null,
+          status: "active", grow_cycle_id: "cycle-bare-root", cycle_state: "active",
+          planted_on: "2026-09-01", planted_on_precision: "exact", origin_type: "bare_root",
+          harvest_readiness: "unknown", garden_id: "garden-h5", system_instance_id: "system-instance-h5",
+          position_id: "position-1", position_number: 1, occupied_from: "2026-09-01", occupied_until: null,
+          latest_photo_id: null, latest_photo_storage_path: null,
+          latest_photo_captured_at: null, latest_photo_captured_at_precision: "unknown",
+          library_plant_id: "monterey-strawberry", library_catalog_version: "gardenpedia-v1",
+          library_common_name_snapshot: "Monterey Strawberry", library_scientific_name_snapshot: "Fragaria × ananassa",
+          library_cultivar_snapshot: null,
+        }], events: [{
+          id: "f1-flowering-event", plant_instance_id: "plant-bare-root", grow_cycle_id: "cycle-bare-root",
+          garden_id: "garden-h5", event_type: "observation", occurred_at: "2026-09-02T12:00:00.000Z",
+          created_at: "2026-09-02T12:00:00.000Z", note: "Flowers opened",
+          event_data: { source: "garden_x_journal", occurred_on: "2026-09-02", occurred_at_precision: "date", journal_milestone: "flowering", photo_expected: false },
+          revision: 1,
+        }], photos: [], attention: [],
       }, error: null };
       if (name === "garden_get_system_maintenance_events" || name === "garden_x_get_saved_films" || name === "garden_x_get_historical_photos" || name === "garden_x_get_invalidated_event_photos") return { data: [], error: null };
       throw new Error(`Unexpected RPC ${name}`);
@@ -265,6 +300,18 @@ describe("Record a Moment canonical temporal propagation", () => {
       systemDefinitionKey: "uruq_12_v1", coverPhotoId: "preserved-cover-id",
     });
     expect(state.gardens[0]?.backendPositions?.[0]).toMatchObject({ id: "position-1", number: 1, gridX: 2, gridY: 1 });
+    expect(state.plants[0]).toMatchObject({
+      id: "plant-bare-root",
+      originType: "bare_root",
+      libraryPlantId: "monterey-strawberry",
+      backendGrowCycleId: "cycle-bare-root",
+    });
+    expect(state.events[0]).toMatchObject({
+      id: "f1-flowering-event",
+      lifeEvent: "flowered",
+      journalMilestone: "flowering",
+      detail: "Flowers opened",
+    });
   });
 
   it("persists explicit cultivation method and stable system identity separately from Garden kind", async () => {

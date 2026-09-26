@@ -23,9 +23,10 @@ import {
   type EmptyPositionCandidate,
 } from "@/lib/garden-compatibility-product";
 import { Button } from "@/components/ui/button";
-import { localizeKnownError, ui } from "@/lib/ui-copy";
+import { localizeKnownError, ui, type UiCopyKey } from "@/lib/ui-copy";
 import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
 import { PHOTO_ACCEPT, isSupportedPhotoFile } from "@/lib/photo-input";
+import { PLANT_ORIGINS, type PlantOriginType } from "@/lib/plant-life";
 
 interface Props {
   gardenId: string;
@@ -50,6 +51,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
   const [nickname, setNickname] = useState("");
   const [date, setDate] = useState(todayInputValue());
   const [precision, setPrecision] = useState<"exact" | "approximate" | "unknown">("exact");
+  const [origin, setOrigin] = useState<PlantOriginType>("unknown");
   const [photo, setPhoto] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -73,6 +75,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
     setNickname("");
     setDate(todayInputValue());
     setPrecision("exact");
+    setOrigin("unknown");
     setPhoto(null);
     setBusy(false);
     setSaveError("");
@@ -166,6 +169,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
         nickname,
         plantedOn: precision === "unknown" ? null : date,
         plantedOnPrecision: precision,
+        originType: origin,
         ...(photo
           ? {
               photo: {
@@ -498,6 +502,22 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   </select>
                 </label>
               </div>
+              <label className="block text-sm">
+                <span className="mb-2 block text-muted-foreground">
+                  {ui(language, "plantOriginOptional")}
+                </span>
+                <select
+                  className="input-soft px-3"
+                  value={origin}
+                  onChange={(event) => setOrigin(event.target.value as PlantOriginType)}
+                >
+                  {PLANT_ORIGINS.map((value) => (
+                    <option key={value} value={value}>
+                      {ui(language, `plantOrigin_${value}` as UiCopyKey)}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <div className="rounded-2xl bg-secondary/70 p-4">
                 <p className="text-sm font-medium">{ui(language, "plantingGuidance")}</p>
                 <div className="mt-2 space-y-2">

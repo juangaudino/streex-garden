@@ -4,7 +4,11 @@ import { Check, Leaf, X } from "lucide-react";
 import { toast } from "sonner";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
 import { useGarden } from "@/lib/garden-store";
-import type { EventType, JournalMilestone, Photo, Plant } from "@/lib/garden-data";
+import type { EventType, MomentLifeEvent, Photo, Plant } from "@/lib/garden-data";
+import {
+  contextualLifeEventSuggestions,
+  otherMomentLifeEvents,
+} from "@/lib/plant-life";
 import { normalizePhotoDataUrl } from "@/lib/photo-input";
 import { dateOnlyToUtcNoon } from "@/lib/temporal";
 import { ui, type UiCopyKey } from "@/lib/ui-copy";
@@ -32,12 +36,18 @@ export function JournalEntryProvider({ children }: { children: ReactNode }) {
   );
 }
 
-const milestoneType: Record<JournalMilestone, EventType> = {
+const lifeEventType: Record<MomentLifeEvent, EventType> = {
   germinated: "germinated",
   sprouted: "sprouted",
-  flowering: "flowering",
-  fruiting: "fruiting",
-  harvest: "harvest",
+  growth_observed: "note",
+  flowered: "flowering",
+  fruited: "fruiting",
+  harvested: "harvest",
+  regrowth: "note",
+  propagated: "note",
+  transplanted: "transplant",
+  damaged: "problem",
+  recovered: "recovery",
 };
 
 function localToday() {
@@ -62,17 +72,27 @@ function JournalEntrySheet({
   const [gardenId, setGardenId] = useState("");
   const [plantId, setPlantId] = useState("");
   const [note, setNote] = useState("");
-  const [milestone, setMilestone] = useState<JournalMilestone | "">("");
+  const [lifeEvent, setLifeEvent] = useState<MomentLifeEvent | "">("");
+  const [showMoreLifeEvents, setShowMoreLifeEvents] = useState(false);
   const [photoDataUrl, setPhotoDataUrl] = useState<string | null>(null);
   const [photoName, setPhotoName] = useState("");
   const [saving, setSaving] = useState(false);
+  const gardens = store.gardens.filter((garden) => !garden.archived);
+  const effectiveGardenId = fixedGardenId ?? gardenId;
+  const selectedGarden = gardens.find((garden) => garden.id === effectiveGardenId);
+  const plants = store.plants.filter(
+    (plant) => plant.gardenId === effectiveGardenId && !plant.cycleClosed,
+  );
+  const selectedPlant: Plant | undefined =
+    fixedPlant ?? plants.find((plant) => plant.id === plantId);
 
   useEffect(() => {
     if (requestSequence === undefined) return;
     setGardenId(fixedGardenId ?? "");
     setPlantId(fixedPlant?.id ?? "");
     setNote("");
-    setMilestone("");
+    setLifeEvent("");
+    setShowMoreLifeEvents(false);
     setPhotoDataUrl(null);
     setPhotoName("");
     setSaving(false);
@@ -87,17 +107,13 @@ function JournalEntrySheet({
     return () => window.removeEventListener("keydown", onKey);
   }, [request, saving, onClose]);
 
-  const gardens = store.gardens.filter((garden) => !garden.archived);
-  const effectiveGardenId = fixedGardenId ?? gardenId;
-  const selectedGarden = gardens.find((garden) => garden.id === effectiveGardenId);
-  const plants = store.plants.filter(
-    (plant) => plant.gardenId === effectiveGardenId && !plant.cycleClosed,
-  );
-  const selectedPlant: Plant | undefined =
-    fixedPlant ?? plants.find((plant) => plant.id === plantId);
   const canSave = Boolean(
-    selectedPlant?.backendGrowCycleId && (photoDataUrl || note.trim() || milestone) && !saving,
+    selectedPlant?.backendGrowCycleId && (photoDataUrl || note.trim() || lifeEvent) && !saving,
   );
+  const lifeEventSuggestions = selectedPlant
+    ? contextualLifeEventSuggestions({ plant: selectedPlant, history: store.events })
+    : [];
+  const extraLifeEvents = otherMomentLifeEvents(lifeEventSuggestions);
 
   if (!request) return null;
 
@@ -112,8 +128,12 @@ function JournalEntrySheet({
     reader.readAsDataURL(file);
   };
 
-  const milestoneLabel = (value: JournalMilestone) =>
-    ui(language, `journalMilestone_${value}` as UiCopyKey);
+  const lifeEventLabel = (value: MomentLifeEvent) => {
+    if (value === "germinated" || value === "sprouted") {
+      return ui(language, `journalMilestone_${value}` as UiCopyKey);
+    }
+    return ui(language, `lifeEvent_${value}` as UiCopyKey);
+  };
   const saveMoment = async () => {
     if (!selectedPlant || !canSave) return;
     setSaving(true);
@@ -130,15 +150,15 @@ function JournalEntrySheet({
         capturedAtPrecision: "date",
         caption:
           note.trim() ||
-          (milestone ? milestoneLabel(milestone) : ui(language, "journalPhotoCaption")),
+          (lifeEvent ? lifeEventLabel(lifeEvent) : ui(language, "journalPhotoCaption")),
         metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
       };
       photoId = store.addPhoto(draft);
       attachedPhoto = { ...draft, id: photoId };
     }
     const title =
-      note.trim() || (milestone ? milestoneLabel(milestone) : ui(language, "journalPhotoCaption"));
-    const type = milestone ? milestoneType[milestone] : photoDataUrl ? "photo" : "note";
+      note.trim() || (lifeEvent ? lifeEventLabel(lifeEvent) : ui(language, "journalPhotoCaption"));
+    const type = lifeEvent ? lifeEventType[lifeEvent] : photoDataUrl ? "photo" : "note";
     try {
       await store.addEvent(
         {
@@ -150,11 +170,11 @@ function JournalEntrySheet({
           title,
           ...(note.trim()
             ? { detail: note.trim() }
-            : milestone
-              ? { detail: milestoneLabel(milestone) }
+            : lifeEvent
+              ? { detail: lifeEventLabel(lifeEvent) }
               : {}),
-          provenance: milestone ? "recorded" : "observed",
-          ...(milestone ? { journalMilestone: milestone } : {}),
+          provenance: lifeEvent ? "recorded" : "observed",
+          ...(lifeEvent ? { milestone: true, lifeEvent } : {}),
           ...(photoId ? { photoId } : {}),
         },
         { ...(attachedPhoto ? { photo: attachedPhoto } : {}), waitForPersistence: true },
@@ -321,26 +341,35 @@ function JournalEntrySheet({
             />
           </label>
 
-          <fieldset className="mt-4">
-            <legend className="mb-2 text-sm font-medium">
-              {ui(language, "journalMilestoneOptional")}
-            </legend>
-            <div className="flex flex-wrap gap-2">
-              {(["germinated", "sprouted", "flowering", "fruiting", "harvest"] as const).map(
-                (value) => (
+          {selectedPlant ? (
+            <fieldset className="mt-4">
+              <legend className="mb-2 text-sm font-medium">{ui(language, "lifeEventOptional")}</legend>
+              <div className="flex flex-wrap gap-2">
+                {(showMoreLifeEvents
+                  ? [...lifeEventSuggestions, ...extraLifeEvents]
+                  : lifeEventSuggestions
+                ).map((value) => (
                   <button
                     key={value}
                     type="button"
-                    aria-pressed={milestone === value}
-                    onClick={() => setMilestone((current) => (current === value ? "" : value))}
-                    className={`min-h-10 rounded-full border px-3.5 text-sm transition-colors ${milestone === value ? "border-primary bg-primary/10 text-primary" : "border-border/70 bg-background text-muted-foreground hover:bg-accent/50"}`}
+                    aria-pressed={lifeEvent === value}
+                    onClick={() => setLifeEvent((current) => (current === value ? "" : value))}
+                    className={`min-h-10 rounded-full border px-3.5 text-sm transition-colors ${lifeEvent === value ? "border-primary bg-primary/10 text-primary" : "border-border/70 bg-background text-muted-foreground hover:bg-accent/50"}`}
                   >
-                    {milestoneLabel(value)}
+                    {lifeEventLabel(value)}
                   </button>
-                ),
-              )}
-            </div>
-          </fieldset>
+                ))}
+                <button
+                  type="button"
+                  aria-expanded={showMoreLifeEvents}
+                  onClick={() => setShowMoreLifeEvents((current) => !current)}
+                  className="min-h-10 rounded-full px-3 text-sm font-medium text-primary hover:bg-primary/5"
+                >
+                  {ui(language, showMoreLifeEvents ? "lifeEvent_less" : "lifeEvent_more")}
+                </button>
+              </div>
+            </fieldset>
+          ) : null}
         </div>
 
         <footer className="border-t border-border/60 bg-card/95 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">

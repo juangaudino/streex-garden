@@ -40,7 +40,14 @@
   window.GARDENPEDIA_ACCOUNT = Object.freeze({
     hasLocalLegacyData: () => Object.keys(localState()).length > 0 || localCustom().length > 0,
     async savePackage(packageData) {
+      if (packageData?.libraryPlantId) {
+        const catalog = await fetch("/api/garden-library/catalog", { cache: "no-store" });
+        if (!catalog.ok) throw new Error("published_catalog_unavailable");
+      }
       return fetchJson(endpoint, { operation: "save", package: packageData });
+    },
+    async deletePackage(packageId) {
+      return fetchJson(endpoint, { operation: "delete", packageId });
     },
     async reconcileLegacy() {
       return fetchJson(endpoint, {
@@ -49,6 +56,25 @@
     },
     async createRequest(requestedText) {
       return fetchJson(requestEndpoint, { operation: "create", requestedText });
+    },
+    async listRequests() { return fetchJson(requestEndpoint); },
+    async curatorStatus() { return fetchJson("/api/gardenpedia/curator"); },
+    async curatorQueue() { return fetchJson("/api/gardenpedia/curator", { operation: "queue" }); },
+    async researchRequest(requestId) { return fetchJson("/api/gardenpedia/research", { requestId }); },
+    async reviewProposal(proposalId, decision, note = "") {
+      return fetchJson("/api/gardenpedia/curator", { operation: "review", proposalId, decision, note });
+    },
+    async approveProposal(proposalId) {
+      return fetchJson("/api/gardenpedia/curator", { operation: "approve", proposalId });
+    },
+    async exportPublicationBundle(proposalId) {
+      return fetchJson("/api/gardenpedia/curator", { operation: "export", proposalId });
+    },
+    async publicationStarted(proposalId, reference) {
+      return fetchJson("/api/gardenpedia/curator", { operation: "publication_started", proposalId, reference });
+    },
+    async publicationFailed(proposalId, error) {
+      return fetchJson("/api/gardenpedia/curator", { operation: "publication_failed", proposalId, error });
     },
     async reloadPackages() {
       return fetchJson(endpoint);

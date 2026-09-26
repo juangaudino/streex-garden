@@ -1,0 +1,56 @@
+name: Gardenpedia approved proposal publication
+
+on:
+  workflow_dispatch:
+    inputs:
+      approved_bundle:
+        description: Paste the curator-downloaded approved Gardenpedia JSON bundle
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: gardenpedia-publication
+  cancel-in-progress: false
+
+jobs:
+  prepare-and-open-review:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Save curator-approved bundle
+        env:
+          APPROVED_BUNDLE: ${{ inputs.approved_bundle }}
+        run: node -e 'const fs=require("node:fs");const s=process.env.APPROVED_BUNDLE||"";if(Buffer.byteLength(s)>60000)throw Error("Bundle exceeds 60 KB");JSON.parse(s);fs.writeFileSync("/tmp/gardenpedia-approved-bundle.json",s)'
+      - name: Validate and stage deterministic Gardenpedia source change
+        run: node scripts/gardenpedia-prepare-publication.mjs /tmp/gardenpedia-approved-bundle.json
+      - run: npm test
+      - run: npm run typecheck
+      - name: Build the deployed Garden X application and Gardenpedia catalog
+        run: cd apps/garden-x && npm install --no-audit --no-fund && npm run build
+      - name: Create versioned pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add labs/gardenpedia/data/plants-requests.json labs/gardenpedia/data/sources-requests.json labs/gardenpedia/data/translations-requests-es.json apps/garden-x/src/generated/garden-library-manifest.ts
+          git diff --cached --check
+          if git diff --cached --quiet; then echo "No catalog changes to publish"; exit 1; fi
+          PROPOSAL_ID=$(node -e 'const b=JSON.parse(require("node:fs").readFileSync("/tmp/gardenpedia-approved-bundle.json","utf8"));process.stdout.write(b.proposalId)')
+          BRANCH="gardenpedia/proposal-${PROPOSAL_ID}"
+          git switch -c "$BRANCH"
+          git commit -m "gardenpedia: publish approved identity ${PROPOSAL_ID}"
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Gardenpedia: publish approved identity" --body "Versioned publication from curator-approved request/proposal ${PROPOSAL_ID}. Gardenpedia source, identity, Grow Guide, compatibility profile, and source provenance were validated before preparing this pull request. Merge only after reviewing the diff and successful checks. The public catalog is not updated until this change is merged and the Garden X publisher runs."

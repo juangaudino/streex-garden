@@ -97,6 +97,9 @@
         if (payload.operation === "save" && payload.package) {
           return rpc("garden_seed_package_save", { p_package: payload.package });
         }
+        if (payload.operation === "delete" && payload.packageId) {
+          return rpc("garden_seed_package_delete", { p_package_id: payload.packageId });
+        }
         if (payload.operation === "reconcile") {
           return rpc("garden_seed_packages_reconcile_legacy", {
             p_local_state: payload.seedUserState || {},
@@ -127,6 +130,39 @@
       } catch (error) {
         console.warn("Gardenpedia request storage unavailable", error);
         return jsonResponse({ error: "storage_unavailable" }, 503);
+      }
+    }
+    if (url === "/api/gardenpedia/curator") {
+      try {
+        const method = (init.method || "GET").toUpperCase();
+        if (method === "GET") return rpc("gardenpedia_curator_status");
+        const payload = JSON.parse(init.body || "{}");
+        const proposalId = payload.proposalId;
+        if (payload.operation === "queue") return rpc("gardenpedia_curator_queue");
+        if (payload.operation === "approve" && proposalId) return rpc("gardenpedia_approve_proposal", { p_proposal_id: proposalId });
+        if (payload.operation === "review" && proposalId) return rpc("gardenpedia_review_proposal", { p_proposal_id: proposalId, p_decision: payload.decision, p_note: payload.note || null });
+        if (payload.operation === "export" && proposalId) return rpc("gardenpedia_export_publication_bundle", { p_proposal_id: proposalId });
+        if (payload.operation === "publication_started" && proposalId) return rpc("gardenpedia_mark_publication_started", { p_proposal_id: proposalId, p_reference: payload.reference });
+        if (payload.operation === "publication_failed" && proposalId) return rpc("gardenpedia_mark_publication_failed", { p_proposal_id: proposalId, p_error: payload.error });
+        return jsonResponse({ error: "unsupported_operation" }, 400);
+      } catch (error) {
+        console.warn("Gardenpedia curator operation unavailable", error);
+        return jsonResponse({ error: "curator_operation_unavailable" }, 503);
+      }
+    }
+    if (url === "/api/gardenpedia/research") {
+      try {
+        if ((init.method || "GET").toUpperCase() !== "POST") return jsonResponse({ error: "method_not_allowed" }, 405);
+        const current = await getSession();
+        if (!current) return jsonResponse({ error: "authentication_required" }, 401);
+        return nativeFetch(`${SUPABASE_URL}/functions/v1/gardenpedia-research`, {
+          ...init,
+          headers: { ...(init.headers || {}), apikey: PUBLISHABLE_KEY, authorization: `Bearer ${current.access_token}` },
+          cache: "no-store",
+        });
+      } catch (error) {
+        console.warn("Gardenpedia research transport unavailable", error);
+        return jsonResponse({ error: "research_unavailable" }, 503);
       }
     }
     if (url === "/api/machine-state") {

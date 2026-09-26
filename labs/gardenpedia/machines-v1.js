@@ -40,9 +40,9 @@
     grid.innerHTML = instances.map((instance, index) => {
       const definition = model(instance);
       const brand = definition?.brand || t.custom;
-      const name = definition?.name || instance.name || t.custom;
+      const name = instance.name || definition?.name || t.custom;
       const modelName = definition?.model || t.noModel;
-      const pods = definition?.pods ?? instance.positions;
+      const pods = instance.positions ?? definition?.pods;
       return `<article class="machine-card"><button class="machine-card-button" type="button" data-machine-index="${index}"><div class="machine-photo machine-${escapeHtml(definition?.color || "gray")}"><span>${escapeHtml(brand)}</span>${pods ? `<strong>${escapeHtml(pods)}</strong><small>${definition?.pods ? "PODS" : escapeHtml(t.positions.toUpperCase())}</small>` : ""}</div><div><p class="machine-brand">${escapeHtml(instance.gardenName || t.garden)}</p><h4>${escapeHtml(name)}</h4><p class="muted">${escapeHtml(modelName)}</p><p class="muted">${escapeHtml(instance.gardenName || "")} · ${escapeHtml(statusLabel(instance, t))}</p></div><span class="machine-card-arrow">→</span></button></article>`;
     }).join("");
     grid.querySelectorAll("[data-machine-index]").forEach((button) => button.addEventListener("click", () => {

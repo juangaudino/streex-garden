@@ -18,6 +18,9 @@ const state = {
   activePlantId: null,
   activeSeedId: null,
   selectedSeedIdentityId: null,
+  requests: [],
+  curatorQueue: [],
+  isCurator: false,
 };
 
 const assetBase = window.GROW_GUIDE_ASSET_BASE || ".";
@@ -47,20 +50,26 @@ const refs = {
   seedDialog: document.querySelector("#seedDialog"),
   seedDetail: document.querySelector("#seedDetail"),
   closeSeedDialog: document.querySelector("#closeSeedDialog"),
+  identityRequestForm: document.querySelector("#identityRequestForm"),
+  identityRequestInput: document.querySelector("#identityRequestInput"),
+  identityRequestMatches: document.querySelector("#identityRequestMatches"),
+  identityRequestStatus: document.querySelector("#identityRequestStatus"),
+  myRequestList: document.querySelector("#myRequestList"),
+  curatorQueue: document.querySelector("#curatorQueue"),
 };
 
 const ui = {
   en: {
-    prototype: "GARDEN LABS · EXPERIMENTAL", title: "Garden Library", labStatus: "Active lab · User Zero", install: "Install",
-    kicker: "Garden X tests here before production.",
-    heroTitle: "What Garden knows and what you own, together without mixing their truth.",
-    heroBody: "Garden Library brings growing knowledge and personal inventory together inside Garden Labs. Each layer keeps its own source of truth.",
-    labProofExperiment: "Isolated experiment", labProofUserZero: "User Zero validation", labProofSeparation: "Separate sources",
+    prototype: "GARDENPEDIA · SHARED KNOWLEDGE", title: "Gardenpedia", labStatus: "Garden X account", install: "Install",
+    kicker: "Curated Garden knowledge, connected to your account.",
+    heroTitle: "Shared growing knowledge and your personal inventory, without mixing their facts.",
+    heroBody: "Gardenpedia provides curated identities and growing guidance. My Seeds and My Machines show the private items in your Garden X account.",
+    labProofExperiment: "Curated knowledge", labProofUserZero: "Your Garden X account", labProofSeparation: "Separate sources of truth",
     guideTab: "Guide", seedsTab: "Seeds", guideEyebrow: "GARDEN LIBRARY · GUIDE", guideTitle: "Grow Guide", guideIntro: "Structured knowledge for knowing when, where and how much to intervene in each crop.",
     seedsEyebrow: "GARDENPEDIA · MY SEEDS", seedsTitle: "My seeds", seedsIntro: "Your private seed packages, linked to shared Gardenpedia identities when you confirm a match.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
-    searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "USER ZERO CROP LIBRARY", version: "V0.6 · 29 guides · ES/EN · visual + neighbors + inventory",
-    noLibraryMatchRequest: "No catalog match. Request this plant or variety from Gardenpedia.", requestSent: "Request sent to Gardenpedia.", requestFailed: "Could not send the request. Sign in to your Garden X account and try again.",
+    searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "GARDENPEDIA LIBRARY", version: "43 identities · ES/EN",
+    requestEyebrow: "GARDENPEDIA · REQUEST", requestTitle: "What would you like to add?", requestSubtitle: "Search published identities first. Choose a match or request research.", requestPlaceholder: "Plant, variety or seed…", requestUseIdentity: "Use this identity", requestDifferentIdentity: "None of these? Request this identity", myRequests: "My Gardenpedia requests", noRequests: "No requests yet.", curatorReview: "Curator review", curatorIntro: "Research drafts are suggestions. Review evidence before approval.", refreshStatus: "Refresh status", research: "Research", researching: "Researching…", review: "Review proposal", approve: "Approve", reject: "Reject", returnResearch: "Return for research", exportBundle: "Download publication bundle", openPublicationWorkflow: "Open publication workflow", publicationReference: "Publication pull request URL", markPublishing: "Track publication", markPublicationFailed: "Record publication issue", publicationFailureNote: "Describe the validation or publication issue", publicationFailureRequired: "Add a short issue note before recording it.", publicationStarted: "Publication is being tracked.", publicationHelp: "Download the approved bundle, run the versioned publication workflow, then merge its pull request after review. The public catalog sync marks it published.", status_requested: "Requested", status_researching: "Researching", status_research_failed: "Could not document yet", status_proposal_ready: "Ready to review", status_needs_revision: "Needs another review", status_approved: "Approved", status_publishing: "Publishing", status_declined: "Not moving forward", status_published: "Published", status_in_review: "Ready to review", status_rejected: "Needs review", status_not_started: "Not started", status_bundle_ready: "Bundle ready", status_publication_failed: "Publication needs attention", status_publication_published: "Published", identityHeading: "Identity", growGuideHeading: "Grow Guide", compatibilityHeading: "Compatibility", sourcesHeading: "Sources / Evidence", unknownHeading: "Unknown / pending", curatorOnly: "Curator access required.", deletePackage: "Delete package", confirmDeletePackage: "Delete this seed package? This cannot be undone.", noLibraryMatchRequest: "No catalog match. Request this plant or variety from Gardenpedia.", requestSent: "Request sent to Gardenpedia.", requestFailed: "Could not send the request. Sign in to your Garden X account and try again.",
     allPlants: "All", plant: "variety", plants: "varieties", guide: "guide", noMatches: "No variety matches that search yet.", unavailable: "Guide unavailable", loadError: "The prototype data could not be loaded.", close: "Close guide", avoid: "Avoid", context: "Context", confidence: "Confidence",
     confidence_high: "high", confidence_medium: "medium", confidence_pending: "pending",
     visualGuide: "Visual guide", visualGuideNote: "External references selected for the action itself — not decorative plant photos.", openSource: "Open source", sourceLinkOnly: "Open at source", rightsReview: "Rights review before production", externalReference: "External reference",
@@ -78,16 +87,16 @@ const ui = {
     plantVariety: "Plant / variety", brand: "Brand", packageStatus: "Package status", quantityLevel: "Approx. quantity", storageLocation: "Storage location", purchaseYear: "Purchase year", germinationTestDate: "Last germination test", germinationResult: "Germination result %", notes: "Notes", optional: "Optional", save: "Save", cancel: "Cancel", removeInventory: "Remove from inventory", restoreInventory: "Restore to inventory", deleteCustom: "Delete seed", customSeedNote: "Custom Lab seed. It has no Grow Guide link until identity is reconciled.", duplicateWarning: "Possible duplicate already in inventory: ", requiredName: "Plant / variety is required.", localOnly: "Stored locally in Garden Labs on this device.",
   },
   es: {
-    prototype: "GARDEN LABS · EXPERIMENTAL", title: "Garden Library", labStatus: "Laboratorio activo · User Zero", install: "Instalar",
-    kicker: "Garden X prueba aquí antes de producir.",
-    heroTitle: "Lo que Garden sabe y lo que tú tienes, juntos sin mezclar su verdad.",
-    heroBody: "Garden Library reúne conocimiento de cultivo e inventario personal dentro de Garden Labs. Cada capa conserva su propia fuente de verdad.",
-    labProofExperiment: "Experimento aislado", labProofUserZero: "Validación User Zero", labProofSeparation: "Fuentes separadas",
+    prototype: "GARDENPEDIA · CONOCIMIENTO COMPARTIDO", title: "Gardenpedia", labStatus: "Cuenta Garden X", install: "Instalar",
+    kicker: "Conocimiento curado de Garden, conectado con tu cuenta.",
+    heroTitle: "Conocimiento de cultivo e inventario personal, sin mezclar sus datos.",
+    heroBody: "Gardenpedia aporta identidades y guías de cultivo curadas. Mis semillas y Mis máquinas muestran los elementos privados de tu cuenta Garden X.",
+    labProofExperiment: "Conocimiento curado", labProofUserZero: "Tu cuenta Garden X", labProofSeparation: "Fuentes de verdad separadas",
     guideTab: "Guía", seedsTab: "Semillas", guideEyebrow: "GARDEN LIBRARY · GUÍA", guideTitle: "Grow Guide", guideIntro: "Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.",
     seedsEyebrow: "GARDENPEDIA · MIS SEMILLAS", seedsTitle: "Mis semillas", seedsIntro: "Paquetes privados de tu cuenta, vinculados a identidades Gardenpedia cuando confirmas una coincidencia.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
-    searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA DE CULTIVOS USER ZERO", version: "V0.6 · 29 guías · ES/EN · visual + vecinas + inventario",
-    noLibraryMatchRequest: "No hay coincidencia en el catálogo. Solicita esta planta o variedad a Gardenpedia.", requestSent: "Solicitud enviada a Gardenpedia.", requestFailed: "No se pudo enviar. Inicia sesión en Garden X y vuelve a intentarlo.",
+    searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA GARDENPEDIA", version: "43 identidades · ES/EN",
+    requestEyebrow: "GARDENPEDIA · SOLICITUD", requestTitle: "¿Qué quieres agregar?", requestSubtitle: "Busca primero las identidades publicadas. Elige una coincidencia o solicita investigación.", requestPlaceholder: "Planta, variedad o semilla…", requestUseIdentity: "Usar esta identidad", requestDifferentIdentity: "¿No es ninguna? Solicitar esta identidad", myRequests: "Mis solicitudes a Gardenpedia", noRequests: "Todavía no hay solicitudes.", curatorReview: "Revisión de curaduría", curatorIntro: "Los borradores de investigación son propuestas. Revisa la evidencia antes de aprobar.", refreshStatus: "Actualizar estado", research: "Investigar", researching: "Investigando…", review: "Revisar propuesta", approve: "Aprobar", reject: "Rechazar", returnResearch: "Devolver para investigar", exportBundle: "Descargar paquete de publicación", openPublicationWorkflow: "Abrir flujo de publicación", publicationReference: "URL del pull request de publicación", markPublishing: "Registrar publicación", markPublicationFailed: "Registrar problema de publicación", publicationFailureNote: "Describe el problema de validación o publicación", publicationFailureRequired: "Escribe una nota breve antes de registrarlo.", publicationStarted: "Se está siguiendo la publicación.", publicationHelp: "Descarga el paquete aprobado, ejecuta el flujo de publicación versionado y revisa su pull request antes de fusionarlo. La sincronización del catálogo marcará la identidad como publicada.", status_requested: "Solicitado", status_researching: "Investigando", status_research_failed: "No se pudo documentar todavía", status_proposal_ready: "Listo para revisar", status_needs_revision: "Requiere otra revisión", status_approved: "Aprobado", status_publishing: "Publicando", status_declined: "No continuará", status_published: "Publicado", status_in_review: "Listo para revisar", status_rejected: "Requiere revisión", status_not_started: "Sin iniciar", status_bundle_ready: "Paquete listo", status_publication_failed: "La publicación requiere atención", status_publication_published: "Publicado", identityHeading: "Identidad", growGuideHeading: "Grow Guide", compatibilityHeading: "Compatibilidad", sourcesHeading: "Fuentes / evidencia", unknownHeading: "Desconocido / pendiente", curatorOnly: "Se requiere acceso de curador.", deletePackage: "Eliminar paquete", confirmDeletePackage: "¿Eliminar este paquete de semillas? No se puede deshacer.", noLibraryMatchRequest: "No hay coincidencia en el catálogo. Solicita esta planta o variedad a Gardenpedia.", requestSent: "Solicitud enviada a Gardenpedia.", requestFailed: "No se pudo enviar. Inicia sesión en Garden X y vuelve a intentarlo.",
     allPlants: "Todas", plant: "variedad", plants: "variedades", guide: "ficha", noMatches: "Todavía no hay una variedad que coincida con esa búsqueda.", unavailable: "Guía no disponible", loadError: "No se pudieron cargar los datos del prototipo.", close: "Cerrar guía", avoid: "Evitar", context: "Contexto", confidence: "Confianza",
     confidence_high: "alta", confidence_medium: "media", confidence_pending: "pendiente",
     visualGuide: "Guía visual", visualGuideNote: "Referencias externas elegidas por la acción que enseñan, no como fotos decorativas de la planta.", openSource: "Abrir fuente", sourceLinkOnly: "Ver en la fuente", rightsReview: "Revisar derechos antes de producción", externalReference: "Referencia externa",
@@ -113,24 +122,27 @@ const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "�
 async function init() {
   if (window.GARDEN_LABS_STORAGE_HYDRATE) await window.GARDEN_LABS_STORAGE_HYDRATE(state);
   if (window.GARDEN_HARVEST_USE?.load) await window.GARDEN_HARVEST_USE.load();
-  const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, spanishResponse, ownedSpanishResponse, visualsResponse, inventoryResponse, neighborResponse] = await Promise.all([
+  const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, requestPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, requestSourceResponse, spanishResponse, ownedSpanishResponse, requestSpanishResponse, visualsResponse, inventoryResponse, neighborResponse] = await Promise.all([
     fetch(assetUrl("data/plants.json")),
     fetch(assetUrl("data/plants-current-gardens.json")),
     fetch(assetUrl("data/plants-owned-seeds.json")),
+    fetch(assetUrl("data/plants-requests.json")),
     fetch(assetUrl("data/sources.json")),
     fetch(assetUrl("data/sources-current-gardens.json")),
     fetch(assetUrl("data/sources-owned-seeds.json")),
+    fetch(assetUrl("data/sources-requests.json")),
     fetch(assetUrl("data/translations-es.json")),
     fetch(assetUrl("data/translations-owned-seeds-es.json")),
+    fetch(assetUrl("data/translations-requests-es.json")),
     fetch(assetUrl("data/visuals.json")),
     fetch(assetUrl("data/seed-inventory.json")),
     fetch(assetUrl("data/neighbor-profiles.json")),
   ]);
 
-  state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json(), ...await ownedPlantResponse.json()];
-  const sources = [...await sourceResponse.json(), ...await currentSourceResponse.json(), ...await ownedSourceResponse.json()];
+  state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json(), ...await ownedPlantResponse.json(), ...await requestPlantResponse.json()];
+  const sources = [...await sourceResponse.json(), ...await currentSourceResponse.json(), ...await ownedSourceResponse.json(), ...await requestSourceResponse.json()];
   state.sources = Object.fromEntries(sources.map((source) => [source.id, source]));
-  state.translations = { ...await spanishResponse.json(), ...await ownedSpanishResponse.json() };
+  state.translations = { ...await spanishResponse.json(), ...await ownedSpanishResponse.json(), ...await requestSpanishResponse.json() };
   state.visuals = await visualsResponse.json();
   const inventory = await inventoryResponse.json();
   state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
@@ -140,6 +152,7 @@ async function init() {
   bindEvents();
   applyLanguage();
   switchView(state.view, false);
+  void loadGardenpediaWorkflow();
   const requestedPlantId = decodeURIComponent(window.location.hash.replace(/^#/, "")).trim();
   const requestedPlant = state.plants.find((plant) => plant.id === requestedPlantId);
   if (requestedPlant) requestAnimationFrame(() => openPlant(requestedPlant));
@@ -160,6 +173,12 @@ function bindEvents() {
   refs.languageButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
   [refs.guideTab, refs.seedsTab].forEach((button) => button.addEventListener("click", () => switchView(button.dataset.view)));
   refs.addSeedButton.addEventListener("click", () => openSeedEditor(null));
+  refs.identityRequestInput?.addEventListener("input", renderIdentityRequestMatches);
+  refs.identityRequestForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitIdentityRequest();
+  });
+  document.querySelector("#refreshGardenpediaWorkflow")?.addEventListener("click", refreshGardenpediaWorkflow);
   refs.detail.addEventListener("click", (event) => {
     const jump = event.target.closest("[data-seed-open]");
     if (!jump) return;
@@ -168,6 +187,174 @@ function bindEvents() {
     switchView("seeds");
     openSeedEditor(seedId);
   });
+}
+
+function renderIdentityRequestMatches() {
+  const input = refs.identityRequestInput;
+  const target = refs.identityRequestMatches;
+  if (!input || !target) return;
+  const query = input.value.trim();
+  const matches = window.GardenpediaIdentityResolver?.search(query, state.plants) || [];
+  target.innerHTML = matches.slice(0, 6).map((plant) => {
+    const identity = window.GardenpediaIdentityResolver.describe(plant);
+    const aliases = identity.aliases.slice(0, 3).join(" · ");
+    return `<button type="button" class="identity-candidate" data-library-identity="${escapeAttribute(plant.id)}"><strong>${escapeHtml(identity.displayName)}</strong><span>${escapeHtml([identity.cultivar, identity.species, aliases].filter(Boolean).join(" · "))}</span><small>${escapeHtml(ui[state.language].requestUseIdentity)}</small></button>`;
+  }).join("");
+  target.querySelectorAll("[data-library-identity]").forEach((button) => button.addEventListener("click", () => {
+    const plant = state.plants.find((item) => item.id === button.dataset.libraryIdentity);
+    if (plant) openPlant(plant);
+  }));
+  if (query && !window.GardenpediaIdentityResolver?.exactMatch(query, state.plants)) {
+    target.insertAdjacentHTML("beforeend", `<p class="seed-form-note">${escapeHtml(ui[state.language].noIdentityMatch)}</p><button type="button" class="seed-action-button secondary" id="requestDifferentIdentity">${escapeHtml(ui[state.language].requestDifferentIdentity)}</button>`);
+    target.querySelector("#requestDifferentIdentity")?.addEventListener("click", () => submitIdentityRequest());
+  }
+}
+
+async function submitIdentityRequest() {
+  const query = refs.identityRequestInput?.value.trim();
+  if (!query || !refs.identityRequestStatus) return;
+  const hasExactMatch = window.GardenpediaIdentityResolver?.exactMatch(query, state.plants) || false;
+  if (hasExactMatch) {
+    refs.identityRequestStatus.textContent = ui[state.language].identitySuggestions;
+    return;
+  }
+  try {
+    await window.GARDENPEDIA_ACCOUNT.createRequest(query);
+    refs.identityRequestStatus.textContent = ui[state.language].requestSent;
+    refs.identityRequestInput.value = "";
+    refs.identityRequestMatches.innerHTML = "";
+    await refreshGardenpediaWorkflow();
+  } catch (error) {
+    console.warn("Gardenpedia request could not be created", error);
+    refs.identityRequestStatus.textContent = ui[state.language].requestFailed;
+  }
+}
+
+async function loadGardenpediaWorkflow() {
+  if (!window.GARDENPEDIA_ACCOUNT || state.accountMode !== "ready") {
+    const details = document.querySelector("#myRequestDetails");
+    if (details) details.hidden = true;
+    return;
+  }
+  try {
+    const [requests, curator] = await Promise.all([
+      window.GARDENPEDIA_ACCOUNT.listRequests(),
+      window.GARDENPEDIA_ACCOUNT.curatorStatus(),
+    ]);
+    state.requests = Array.isArray(requests.requests) ? requests.requests : [];
+    state.isCurator = curator.isCurator === true;
+    document.querySelector("#myRequestDetails").hidden = false;
+    document.querySelector("#curatorReviewDetails").hidden = !state.isCurator;
+    if (state.isCurator) {
+      const queue = await window.GARDENPEDIA_ACCOUNT.curatorQueue();
+      state.curatorQueue = Array.isArray(queue.requests) ? queue.requests : [];
+    }
+    renderGardenpediaWorkflow();
+  } catch (error) {
+    console.warn("Gardenpedia request status unavailable", error);
+  }
+}
+
+async function refreshGardenpediaWorkflow() {
+  const button = document.querySelector("#refreshGardenpediaWorkflow");
+  if (button) button.disabled = true;
+  try {
+    // This public GET refreshes the deployment-synced catalog cache; no private rows are returned.
+    await fetch("/api/garden-library/catalog", { cache: "no-store" });
+    await loadGardenpediaWorkflow();
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
+function statusText(status, publicationStatus) {
+  const text = ui[state.language];
+  const publicationProgress = ["publishing", "publication_failed", "published"].includes(publicationStatus);
+  const key = publicationProgress ? `status_publication_${publicationStatus}` : `status_${status}`;
+  return text[key] || text[`status_${status}`] || status;
+}
+
+function renderGardenpediaWorkflow() {
+  const text = ui[state.language];
+  if (refs.myRequestList) {
+    refs.myRequestList.innerHTML = state.requests.length ? state.requests.map((request) => {
+      const proposal = request.proposals?.[0];
+      return `<article class="request-card"><div class="request-card-heading"><h4>${escapeHtml(request.requestedText)}</h4><span class="request-status">${escapeHtml(statusText(request.status, proposal?.publicationStatus))}</span></div>${proposal?.candidateIdentity?.scientificName ? `<p>${escapeHtml(proposal.candidateIdentity.scientificName)}${proposal.candidateIdentity.cultivar ? ` · ${escapeHtml(proposal.candidateIdentity.cultivar)}` : ""}</p>` : ""}</article>`;
+    }).join("") : `<p class="muted">${escapeHtml(text.noRequests)}</p>`;
+  }
+  if (!refs.curatorQueue) return;
+  refs.curatorQueue.innerHTML = state.curatorQueue.map((request) => {
+    const proposal = request.proposals?.[0];
+    const research = ["requested", "research_failed", "needs_revision"].includes(request.status)
+      ? `<button class="seed-action-button" type="button" data-research-request="${escapeAttribute(request.id)}">${escapeHtml(text.research)}</button>` : "";
+    return `<article class="request-card"><div class="request-card-heading"><h4>${escapeHtml(request.requestedText)}</h4><span class="request-status">${escapeHtml(statusText(request.status, proposal?.publicationStatus))}</span></div>${research}${proposal ? buildProposalReview(request, proposal) : ""}</article>`;
+  }).join("") || `<p class="muted">${escapeHtml(text.noRequests)}</p>`;
+  refs.curatorQueue.querySelectorAll("[data-research-request]").forEach((button) => button.addEventListener("click", async () => {
+    button.disabled = true; button.textContent = text.researching;
+    try { await window.GARDENPEDIA_ACCOUNT.researchRequest(button.dataset.researchRequest); await loadGardenpediaWorkflow(); }
+    catch (error) { console.warn("Gardenpedia research failed", error); button.disabled = false; button.textContent = text.research; }
+  }));
+  refs.curatorQueue.querySelectorAll("[data-proposal-decision]").forEach((button) => button.addEventListener("click", async () => {
+    const proposalId = button.dataset.proposalId;
+    button.disabled = true;
+    try {
+      if (button.dataset.proposalDecision === "approve") await window.GARDENPEDIA_ACCOUNT.approveProposal(proposalId);
+      else await window.GARDENPEDIA_ACCOUNT.reviewProposal(proposalId, button.dataset.proposalDecision, refs.curatorQueue.querySelector(`[data-review-note="${proposalId}"]`)?.value || "");
+      await loadGardenpediaWorkflow();
+    } catch (error) { console.warn("Gardenpedia review action failed", error); button.disabled = false; }
+  }));
+  refs.curatorQueue.querySelectorAll("[data-export-proposal]").forEach((button) => button.addEventListener("click", async () => {
+    button.disabled = true;
+    try {
+      const bundle = await window.GARDENPEDIA_ACCOUNT.exportPublicationBundle(button.dataset.exportProposal);
+      downloadPublicationBundle(bundle);
+      await loadGardenpediaWorkflow();
+    } catch (error) { console.warn("Publication bundle export failed", error); button.disabled = false; }
+  }));
+  refs.curatorQueue.querySelectorAll("[data-publishing-proposal]").forEach((button) => button.addEventListener("click", async () => {
+    const proposalId = button.dataset.publishingProposal;
+    const input = refs.curatorQueue.querySelector(`[data-publication-reference="${proposalId}"]`);
+    try { await window.GARDENPEDIA_ACCOUNT.publicationStarted(proposalId, input.value.trim()); await loadGardenpediaWorkflow(); }
+    catch (error) { console.warn("Could not record publication pull request", error); input.setCustomValidity(text.publicationReference); input.reportValidity(); }
+  }));
+  refs.curatorQueue.querySelectorAll("[data-publication-failed]").forEach((button) => button.addEventListener("click", async () => {
+    const proposalId = button.dataset.publicationFailed;
+    const input = refs.curatorQueue.querySelector(`[data-publication-error="${proposalId}"]`);
+    const note = input.value.trim();
+    if (!note) { input.setCustomValidity(text.publicationFailureRequired); input.reportValidity(); return; }
+    input.setCustomValidity("");
+    button.disabled = true;
+    try { await window.GARDENPEDIA_ACCOUNT.publicationFailed(proposalId, note); await loadGardenpediaWorkflow(); }
+    catch (error) { console.warn("Could not record publication issue", error); button.disabled = false; }
+  }));
+}
+
+function buildProposalReview(request, proposal) {
+  const text = ui[state.language];
+  const data = proposal.proposedData || {};
+  const plant = data.plant || {};
+  const sources = Array.isArray(data.sources) ? data.sources : [];
+  const sections = plant.sections || {};
+  const evidence = Object.entries(sections).map(([key, section]) => `<li><strong>${escapeHtml(text.sections[key] || key)}</strong>: ${escapeHtml(section.short || section.guidance || "")}</li>`).join("");
+  const profile = plant.compatibilityProfile || data.compatibilityProfile;
+  const unknowns = data.unknowns || [];
+  const sourceList = sources.map((source) => `<li><a href="${escapeAttribute(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title || source.url)}</a><span> · ${escapeHtml(source.publisher || new URL(source.url).hostname)}</span></li>`).join("");
+  const actions = proposal.reviewStatus === "in_review"
+    ? `<textarea data-review-note="${escapeAttribute(proposal.id)}" rows="2" maxlength="1000" placeholder="${escapeAttribute(text.optional)}"></textarea><button class="seed-action-button" data-proposal-decision="approve" data-proposal-id="${escapeAttribute(proposal.id)}" type="button">${escapeHtml(text.approve)}</button><button class="seed-action-button secondary" data-proposal-decision="revise" data-proposal-id="${escapeAttribute(proposal.id)}" type="button">${escapeHtml(text.returnResearch)}</button><button class="seed-danger-button" data-proposal-decision="reject" data-proposal-id="${escapeAttribute(proposal.id)}" type="button">${escapeHtml(text.reject)}</button>`
+    : proposal.reviewStatus === "approved" && proposal.publicationStatus !== "published"
+      ? `<button class="seed-action-button" type="button" data-export-proposal="${escapeAttribute(proposal.id)}">${escapeHtml(text.exportBundle)}</button><p class="seed-form-note">${escapeHtml(text.publicationHelp)}</p><a class="seed-action-button secondary" href="https://github.com/juangaudino/streex-garden/actions/workflows/gardenpedia-publication.yml" target="_blank" rel="noopener noreferrer">${escapeHtml(text.openPublicationWorkflow)}</a><input data-publication-reference="${escapeAttribute(proposal.id)}" type="url" maxlength="300" value="${escapeAttribute(proposal.publicationReference || "")}" placeholder="${escapeAttribute(text.publicationReference)}"/><button class="seed-action-button secondary" type="button" data-publishing-proposal="${escapeAttribute(proposal.id)}">${escapeHtml(text.markPublishing)}</button><textarea data-publication-error="${escapeAttribute(proposal.id)}" rows="2" maxlength="1000" placeholder="${escapeAttribute(text.publicationFailureNote)}"></textarea><button class="seed-danger-button" type="button" data-publication-failed="${escapeAttribute(proposal.id)}">${escapeHtml(text.markPublicationFailed)}</button>`
+      : "";
+  return `<article class="proposal-review-card"><p class="eyebrow">${escapeHtml(text.review)} · ${escapeHtml(proposal.contractName)} ${escapeHtml(proposal.contractVersion)}</p><h4>${escapeHtml(plant.name || proposal.candidateIdentity?.name || request.requestedText)}</h4><p>${escapeHtml([plant.scientificName || proposal.candidateIdentity?.scientificName, plant.variety || proposal.candidateIdentity?.cultivar].filter(Boolean).join(" · "))}</p><span class="request-status">${escapeHtml(statusText(proposal.reviewStatus, proposal.publicationStatus))}</span><details><summary>${escapeHtml(text.identityHeading)}</summary><p>${escapeHtml(plant.summary || "")}</p><p>${escapeHtml(proposal.candidateIdentity?.identityNote || "")}</p></details><details><summary>${escapeHtml(text.growGuideHeading)}</summary><ul>${evidence}</ul></details><details><summary>${escapeHtml(text.compatibilityHeading)}</summary><pre>${escapeHtml(JSON.stringify(profile || {}, null, 2))}</pre></details><details><summary>${escapeHtml(text.unknownHeading)}</summary><pre>${escapeHtml(JSON.stringify(unknowns, null, 2))}</pre></details><details><summary>${escapeHtml(text.sourcesHeading)} · ${sources.length}</summary><ul class="source-list">${sourceList}</ul></details>${proposal.publicationError ? `<p class="proposal-error" role="alert">${escapeHtml(proposal.publicationError)}</p>` : ""}<div class="proposal-actions">${actions}</div></article>`;
+}
+
+function downloadPublicationBundle(bundle) {
+  const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `gardenpedia-proposal-${bundle.proposalId}.json`;
+  anchor.click();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
 function setLanguage(language) {
@@ -293,8 +480,8 @@ function renderPlants() {
   }
   plants.forEach((plant) => {
     const localized = getLocalizedPlant(plant);
-    const primaryName = state.language === "es" ? plant.spanishName : plant.name;
-    const secondaryName = state.language === "es" ? plant.name : plant.spanishName;
+    const primaryName = state.language === "es" ? (plant.spanishName || plant.name) : plant.name;
+    const secondaryName = state.language === "es" ? (plant.spanishName ? plant.name : "") : plant.spanishName;
     const fragment = refs.cardTemplate.content.cloneNode(true);
     fragment.querySelector(".plant-emoji").textContent = plant.emoji;
     fragment.querySelector(".category-pill").textContent = text.categories[plant.category] || plant.category;
@@ -510,7 +697,7 @@ function buildSeedEditor(seedId) {
 
   const identityFields = `<div class="seed-form-grid"><div class="seed-field"><label for="seedName">${escapeHtml(text.plantVariety)}</label><input id="seedName" name="seedName" value="${escapeAttribute(nameValue)}" autocomplete="off" required /></div><div class="seed-field"><label for="seedBrand">${escapeHtml(text.brand)}</label><input id="seedBrand" name="seedBrand" value="${escapeAttribute(brandValue)}" autocomplete="off" /></div></div><input id="libraryPlantId" name="libraryPlantId" type="hidden" value="${escapeAttribute(state.selectedSeedIdentityId || "")}" /><div id="identityResolver" class="identity-resolver"></div><div id="duplicateHint" class="duplicate-hint"></div>`;
 
-  return `<div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · MY SEEDS</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text.personalStateNote)}</p></div>${packetPanel}<form id="seedForm" class="seed-form">${identityFields}<div class="seed-form-grid"><div class="seed-field"><label for="packageStatus">${escapeHtml(text.packageStatus)}</label><select id="packageStatus" name="packageStatus">${selectOptions(text.seedStatus, packageStatus)}</select></div><div class="seed-field"><label for="quantityLevel">${escapeHtml(text.quantityLevel)}</label><select id="quantityLevel" name="quantityLevel">${selectOptions(text.quantity, quantityLevel)}</select></div><div class="seed-field full"><label for="storageLocation">${escapeHtml(text.storageLocation)}</label><input id="storageLocation" name="storageLocation" value="${escapeAttribute(storageLocation)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="purchaseYear">${escapeHtml(text.purchaseYear)}</label><input id="purchaseYear" name="purchaseYear" type="number" min="1900" max="2100" value="${escapeAttribute(purchaseYear)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="germinationTest">${escapeHtml(text.germinationTestDate)}</label><input id="germinationTest" name="germinationTest" type="date" value="${escapeAttribute(germDate)}" /></div><div class="seed-field"><label for="germinationResult">${escapeHtml(text.germinationResult)}</label><input id="germinationResult" name="germinationResult" type="number" min="0" max="100" value="${escapeAttribute(germResult)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field full"><label for="seedNotes">${escapeHtml(text.notes)}</label><textarea id="seedNotes" name="seedNotes" placeholder="${escapeAttribute(text.optional)}">${escapeHtml(notes)}</textarea></div></div><p class="seed-form-note">${escapeHtml(text.personalStateNote)}</p><p id="seedSaveError" role="alert" hidden></p><div class="seed-form-actions"><div>${seed ? archived ? `<button id="restoreSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.restoreInventory)}</button>` : `<button id="removeSeed" class="seed-danger-button" type="button">${escapeHtml(text.removeInventory)}</button>` : ""}</div><div>${plant ? `<button id="editorGuideLink" class="seed-action-button secondary" type="button">${escapeHtml(text.viewGuide)}</button>` : ""}<button id="cancelSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.cancel)}</button><button class="seed-action-button" type="submit">${escapeHtml(text.save)}</button></div></div></form>`;
+  return `<div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · MY SEEDS</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text.personalStateNote)}</p></div>${packetPanel}<form id="seedForm" class="seed-form">${identityFields}<div class="seed-form-grid"><div class="seed-field"><label for="packageStatus">${escapeHtml(text.packageStatus)}</label><select id="packageStatus" name="packageStatus">${selectOptions(text.seedStatus, packageStatus)}</select></div><div class="seed-field"><label for="quantityLevel">${escapeHtml(text.quantityLevel)}</label><select id="quantityLevel" name="quantityLevel">${selectOptions(text.quantity, quantityLevel)}</select></div><div class="seed-field full"><label for="storageLocation">${escapeHtml(text.storageLocation)}</label><input id="storageLocation" name="storageLocation" value="${escapeAttribute(storageLocation)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="purchaseYear">${escapeHtml(text.purchaseYear)}</label><input id="purchaseYear" name="purchaseYear" type="number" min="1900" max="2100" value="${escapeAttribute(purchaseYear)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="germinationTest">${escapeHtml(text.germinationTestDate)}</label><input id="germinationTest" name="germinationTest" type="date" value="${escapeAttribute(germDate)}" /></div><div class="seed-field"><label for="germinationResult">${escapeHtml(text.germinationResult)}</label><input id="germinationResult" name="germinationResult" type="number" min="0" max="100" value="${escapeAttribute(germResult)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field full"><label for="seedNotes">${escapeHtml(text.notes)}</label><textarea id="seedNotes" name="seedNotes" placeholder="${escapeAttribute(text.optional)}">${escapeHtml(notes)}</textarea></div></div><p class="seed-form-note">${escapeHtml(text.personalStateNote)}</p><p id="seedSaveError" role="alert" hidden></p><div class="seed-form-actions"><div>${seed ? `${archived ? `<button id="restoreSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.restoreInventory)}</button>` : `<button id="removeSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.removeInventory)}</button>`}<button id="deleteSeed" class="seed-danger-button" type="button">${escapeHtml(text.deletePackage)}</button>` : ""}</div><div>${plant ? `<button id="editorGuideLink" class="seed-action-button secondary" type="button">${escapeHtml(text.viewGuide)}</button>` : ""}<button id="cancelSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.cancel)}</button><button class="seed-action-button" type="submit">${escapeHtml(text.save)}</button></div></div></form>`;
 }
 
 function buildPacketEvidencePanel(seed) {
@@ -541,7 +728,8 @@ function bindSeedEditor(seedId) {
     const linked = state.plants.find((plant) => plant.id === selected);
     const heading = candidates.length ? `<p class="eyebrow">${escapeHtml(text.identitySuggestions)}</p>` : `<p>${escapeHtml(text.noIdentityMatch)}</p>`;
     const options = candidates.slice(0, 6).map((plant) => `<button type="button" class="identity-candidate ${plant.id === selected ? "selected" : ""}" data-identity-id="${escapeAttribute(plant.id)}"><strong>${escapeHtml(plant.name || plant.commonName || plant.id)}</strong><span>${escapeHtml([plant.cultivar || plant.variety, plant.scientificName].filter(Boolean).join(" · "))}</span></button>`).join("");
-    const request = candidates.length ? "" : `<button type="button" class="seed-action-button secondary" id="requestToGardenpedia">${escapeHtml(text.requestToGardenpedia)}</button>`;
+    const exactMatch = window.GardenpediaIdentityResolver?.exactMatch(nameInput.value, state.plants) || false;
+    const request = exactMatch ? "" : `<button type="button" class="seed-action-button secondary" id="requestToGardenpedia">${escapeHtml(text.requestToGardenpedia)}</button>`;
     resolver.innerHTML = `${linked ? `<p class="identity-selected">${escapeHtml(text.selectedIdentity)}: ${escapeHtml(linked.name || linked.commonName || linked.id)} <button type="button" id="clearSeedIdentity">×</button></p>` : ""}${nameInput.value.trim() ? `${heading}<div class="identity-candidate-list">${options}</div>${request}` : ""}<p id="gardenpediaRequestResult" class="seed-form-note" aria-live="polite"></p>`;
     resolver.querySelectorAll("[data-identity-id]").forEach((button) => button.addEventListener("click", () => {
       identityInput.value = button.dataset.identityId;
@@ -573,8 +761,15 @@ function bindSeedEditor(seedId) {
     duplicateHint.classList.toggle("visible", Boolean(duplicate));
     duplicateHint.textContent = duplicate ? `${text.duplicateWarning}${duplicate.packetName} · ${duplicate.brand || ""}` : "";
   };
-  nameInput?.addEventListener("input", refreshDuplicateHint);
-  nameInput?.addEventListener("input", renderIdentityMatches);
+  nameInput?.addEventListener("input", () => {
+    const selected = state.plants.find((plant) => plant.id === identityInput?.value);
+    if (selected && !window.GardenpediaIdentityResolver?.exactMatch(nameInput.value, [selected])) {
+      identityInput.value = "";
+      state.selectedSeedIdentityId = null;
+    }
+    refreshDuplicateHint();
+    renderIdentityMatches();
+  });
   refreshDuplicateHint();
   renderIdentityMatches();
 
@@ -584,6 +779,7 @@ function bindSeedEditor(seedId) {
   });
   refs.seedDetail.querySelector("#cancelSeed")?.addEventListener("click", () => refs.seedDialog.close());
   refs.seedDetail.querySelector("#removeSeed")?.addEventListener("click", () => removeSeed(seedId));
+  refs.seedDetail.querySelector("#deleteSeed")?.addEventListener("click", () => deleteSeed(seedId));
   refs.seedDetail.querySelector("#restoreSeed")?.addEventListener("click", () => restoreSeed(seedId));
   refs.seedDetail.querySelector("#editorGuideLink")?.addEventListener("click", () => {
     const plant = seed?.plantId ? state.plants.find((item) => item.id === seed.plantId) : null;
@@ -616,7 +812,7 @@ async function saveSeedEditor(seedId, form) {
       germinationTestDate: String(data.get("germinationTest") || "") || null,
       germinationResultPct: data.get("germinationResult") === "" ? null : Number(data.get("germinationResult")),
       notes: String(data.get("seedNotes") || "").trim() || null,
-      archived: false,
+      archived: current?.archived === true,
     });
     const refreshed = await window.GARDENPEDIA_ACCOUNT.reloadPackages();
     state.seedPackages = Array.isArray(refreshed.packages) ? refreshed.packages : [];
@@ -634,6 +830,22 @@ async function removeSeed(seedId) {
   const seed = getSeedById(seedId);
   if (!seed) return;
   await updateSeedPackageArchived(seed, true);
+}
+
+async function deleteSeed(seedId) {
+  const seed = getSeedById(seedId);
+  if (!seed || !window.confirm(ui[state.language].confirmDeletePackage)) return;
+  try {
+    await window.GARDENPEDIA_ACCOUNT.deletePackage(seed.id);
+    const refreshed = await window.GARDENPEDIA_ACCOUNT.reloadPackages();
+    state.seedPackages = Array.isArray(refreshed.packages) ? refreshed.packages : [];
+    refs.seedDialog.close();
+    renderSeeds(); renderPlants();
+  } catch (error) {
+    console.warn("Canonical seed package delete failed", error);
+    const message = refs.seedDetail.querySelector("#seedSaveError");
+    if (message) { message.textContent = ui[state.language].saveError; message.hidden = false; }
+  }
 }
 
 async function restoreSeed(seedId) {

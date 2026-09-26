@@ -12,7 +12,7 @@
     const matches = [];
     for (const plant of plants || []) {
       const values = [plant.id, plant.name, plant.spanishName, plant.commonName,
-        plant.scientificName, plant.cultivar, plant.variety, ...(plant.aliases || [])]
+        plant.scientificName, plant.cultivar, plant.variety, ...(plant.aliases || []), ...(plant.tags || [])]
         .map(normalize).filter(Boolean);
       let rank = -1;
       if (values.some((value) => value === needle)) rank = 0;
@@ -25,5 +25,22 @@
       .map(({ plant }) => plant);
   }
 
-  window.GardenpediaIdentityResolver = Object.freeze({ normalize, search });
+  function exactMatch(query, plants) {
+    const needle = normalize(query);
+    if (!needle) return false;
+    return (plants || []).some((plant) => [plant.id, plant.name, plant.spanishName, plant.commonName,
+      plant.scientificName, plant.cultivar, plant.variety, ...(plant.aliases || [])]
+      .some((value) => normalize(value) === needle));
+  }
+
+  function describe(plant) {
+    return {
+      displayName: plant?.name || plant?.commonName || plant?.id || "",
+      species: plant?.scientificName || "",
+      cultivar: plant?.cultivar || plant?.variety || "",
+      aliases: Array.isArray(plant?.aliases) ? plant.aliases : [],
+    };
+  }
+
+  window.GardenpediaIdentityResolver = Object.freeze({ normalize, search, exactMatch, describe });
 })();

@@ -44,6 +44,7 @@ const plantFiles = [
   "data/plants-owned-seeds.json",
   "data/plants-expansion-batch-a1.json",
   "data/plants-expansion-batch-b1.json",
+  "data/plants-requests.json",
 ];
 
 const publicFiles = [
@@ -73,10 +74,12 @@ const dataFiles = [
   "data/sources-owned-seeds.json",
   "data/sources-expansion-batch-a1.json",
   "data/sources-expansion-batch-b1.json",
+  "data/sources-requests.json",
   "data/translations-es.json",
   "data/translations-owned-seeds-es.json",
   "data/translations-expansion-batch-a1-es.json",
   "data/translations-expansion-batch-b1-es.json",
+  "data/translations-requests-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
   "data/machine-inventory-v1.json",
@@ -224,6 +227,7 @@ function buildCatalogManifest(plants) {
     "data/sources-owned-seeds.json",
     "data/sources-expansion-batch-a1.json",
     "data/sources-expansion-batch-b1.json",
+    "data/sources-requests.json",
   ].flatMap((file) => filterPublicSources(file));
   const sourceById = new Map(
     sourceRecords.map((source) => [source.id, source]),
@@ -335,9 +339,9 @@ function filterPublicSources(relativePath) {
 function prepare() {
   const allPlants = plantFiles.flatMap((file) => readJson(file));
   const ids = new Set(allPlants.map((plant) => plant.id));
-  if (allPlants.length !== 43 || ids.size !== 43) {
+  if (allPlants.length < 43 || ids.size !== allPlants.length) {
     throw new Error(
-      `Gardenpedia library must contain 43 unique varieties; got ${allPlants.length}/${ids.size}.`,
+      `Gardenpedia library must contain at least 43 unique varieties; got ${allPlants.length}/${ids.size}.`,
     );
   }
   const catalogManifest = buildCatalogManifest(allPlants);

@@ -145,3 +145,25 @@
 .identity-candidate.selected { border-color: rgba(42, 79, 55, .62); background: rgba(42, 79, 55, .08); }
 .identity-selected { display: flex; align-items: center; justify-content: space-between; }
 .identity-selected button { border: 0; background: transparent; color: inherit; font-size: 1.2rem; padding: 6px; }
+/* Request / curator workflow: compact on mobile and safe for long source URLs. */
+.request-center,.request-details{min-width:0;margin:1rem 0;padding:1rem;border:1px solid var(--line,#dedbd0);border-radius:1.25rem;background:rgba(255,255,255,.52)}
+.request-center-heading,.curator-toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;min-width:0}
+.request-center-heading>*,.curator-toolbar>*{min-width:0}
+.request-center-heading h3{margin:.2rem 0;font-family:Georgia,serif;font-size:1.35rem}
+.request-center-heading p,.curator-toolbar p{max-width:36rem;color:var(--muted,#77796f);line-height:1.45}
+.identity-request-form{display:grid;gap:.65rem;min-width:0}
+.identity-request-form .search-box{width:100%;min-width:0}
+.identity-request-form input{min-width:0;width:100%}
+.request-details>summary{cursor:pointer;font-weight:650;min-height:2.75rem;display:flex;align-items:center}
+.request-list{display:grid;gap:.75rem;min-width:0;padding-top:.65rem}
+.request-card,.proposal-review-card{min-width:0;border:1px solid var(--line,#dedbd0);border-radius:1rem;padding:.9rem;background:rgba(250,248,240,.78)}
+.request-card h4,.proposal-review-card h4{overflow-wrap:anywhere;margin:.2rem 0}
+.request-status{display:inline-flex;border-radius:999px;padding:.25rem .65rem;background:#e8eee5;color:#36523b;font-size:.78rem;font-weight:650}
+.proposal-review-card details{margin:.65rem 0}
+.proposal-review-card pre,.proposal-review-card .source-list{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+.proposal-review-card a{overflow-wrap:anywhere;word-break:break-all}
+.proposal-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.proposal-actions input{flex:1 1 15rem;min-width:0;max-width:100%}
+.proposal-error{color:#8b3028}
+.identity-candidate{min-width:0;overflow-wrap:anywhere}
+@media(max-width:640px){.request-center,.request-details{padding:.85rem;border-radius:1rem}.request-center-heading,.curator-toolbar{display:grid;gap:.3rem}.request-center-heading h3{font-size:1.2rem}.proposal-actions>*{width:100%;min-width:0}.request-card,.proposal-review-card{padding:.75rem}}

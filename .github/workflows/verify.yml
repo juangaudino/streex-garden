@@ -17,6 +17,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Install Garden X workspace dependencies for the shared test suite
+        run: npm install --prefix apps/garden-x --no-audit --no-fund
       - run: npm run typecheck
       - run: npm test -- --run
       - run: npm run lint

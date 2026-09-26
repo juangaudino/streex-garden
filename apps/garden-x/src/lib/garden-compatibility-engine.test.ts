@@ -4,6 +4,7 @@ import {
   buildEmptyGardenPositionInput,
   evaluateEmptyGardenPosition,
   formatCompatibilityDiagnostics,
+  verifiedMachineContextForGarden,
 } from "./garden-compatibility-engine";
 import { gardenLibraryManifest } from "../generated/garden-library-manifest";
 import type { GardenLibraryEntry } from "./garden-library";
@@ -141,7 +142,7 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     expect(petunia.unknowns.some((unknown) => unknown.property === "mature_spread")).toBe(true);
     expect(petunia.eligibility).toBe("eligible");
     expect(formatCompatibilityDiagnostics([petunia])).toContain(
-      "within the explicitly recorded 35 cm clearance",
+      "within the explicitly recorded height clearance of 35 cm",
     );
   });
 
@@ -391,5 +392,189 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     ];
     const { input } = evaluate(garden(), "p1", plants);
     expect(input.positions.find((position) => position.id === "p2")?.occupants).toHaveLength(0);
+  });
+});
+
+describe("B3 Phase 2 canonical machine and neighbor facts", () => {
+  it("uses only exact system-definition links for documented URUQ grow heights", () => {
+    const uruQ8 = verifiedMachineContextForGarden({ systemDefinitionKey: "uruq_8_v1" });
+    const uruQ12 = verifiedMachineContextForGarden({ systemDefinitionKey: "uruq_12_v1" });
+    const customH4 = verifiedMachineContextForGarden({ systemDefinitionKey: "custom:ahopegarden" });
+    const customH5 = verifiedMachineContextForGarden({ systemDefinitionKey: "custom:uruq" });
+    const unknownKey = verifiedMachineContextForGarden({ systemDefinitionKey: "toString" });
+
+    expect(uruQ8.verifiedFacts.clearance).toEqual({
+      heightCm: 40,
+      context: "hydroponic",
+      kind: "documented_grow_height_limit",
+    });
+    expect(uruQ8.machineFact?.modelNumber).toBe("HP-GC001");
+    expect(uruQ12.verifiedFacts.clearance).toEqual({
+      heightCm: 53.3,
+      context: "hydroponic",
+      kind: "documented_grow_height_limit",
+    });
+    expect(customH4.machineFact).toBeNull();
+    expect(customH5.machineFact).toBeNull();
+    expect(unknownKey.machineFact).toBeNull();
+  });
+
+  it("automatically adds only comparable machine clearance and keeps custom dimensions unknown", () => {
+    const exactMachine = garden({ systemDefinitionKey: "uruq_8_v1" });
+    const customMachine = garden({
+      systemDefinitionKey: "custom:uruq",
+      machine: { name: "Uruq", pods: 8 },
+    });
+    const exactInput = buildEmptyGardenPositionInput(exactMachine, "p1", [], pilot);
+    const customInput = buildEmptyGardenPositionInput(customMachine, "p1", [], pilot);
+    expect(exactInput.target.verifiedFacts.clearance?.heightCm).toBe(40);
+    expect(customInput.target.verifiedFacts.clearance).toBeUndefined();
+
+    const petunia = evaluateEmptyGardenPosition(exactInput, [byId("cascading-petunia")])[0]!;
+    expect(petunia.compatibility).toBe("conditional");
+    expect(petunia.systemFit).toBe("unknown");
+    expect(petunia.rankingSignals.some((signal) => signal.code === "known_height_fits")).toBe(true);
+  });
+
+  it("uses actual diagonal neighbor occupancy and documented neighbor habit without inferring biology", () => {
+    const currentGarden = garden({
+      systemDefinitionKey: "uruq_8_v1",
+      backendPositions: [
+        { id: "target", number: 1, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 1 },
+        { id: "neighbor", number: 2, active: true, levelNumber: 1, rowNumber: 2, columnNumber: 2 },
+      ],
+      systemLayoutLevels: [{ levelNumber: 1, rows: 2, columns: 2 }],
+    });
+    const neighbor = plant("neighbor-instance", "neighbor", "monterey-strawberry");
+    const input = buildEmptyGardenPositionInput(currentGarden, "target", [neighbor], pilot);
+    expect(input.adjacentPositionIds).toEqual(["neighbor"]);
+    expect(input.positions.find((position) => position.id === "neighbor")?.occupants).toHaveLength(
+      1,
+    );
+
+    const noNeighbor = evaluateEmptyGardenPosition(
+      buildEmptyGardenPositionInput(currentGarden, "target", [], pilot),
+      [byId("monterey-strawberry")],
+    )[0]!;
+    const withNeighbor = evaluateEmptyGardenPosition(input, [byId("monterey-strawberry")])[0]!;
+    expect(
+      noNeighbor.rankingSignals.some(
+        (signal) => signal.code === "documented_expansive_neighbor_fit_needs_review",
+      ),
+    ).toBe(false);
+    expect(
+      withNeighbor.rankingSignals.some(
+        (signal) => signal.code === "documented_expansive_neighbor_fit_needs_review",
+      ),
+    ).toBe(true);
+    expect(withNeighbor.eligibility).toBe("eligible");
+    expect(withNeighbor.exclusions).toHaveLength(0);
+  });
+
+  it("produces equivalent results when two positions have equivalent facts and no relevant neighbor difference", () => {
+    const symmetric = garden({
+      backendPositions: [
+        { id: "p1", number: 1, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 1 },
+        { id: "p2", number: 2, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 2 },
+        { id: "p3", number: 3, active: true, levelNumber: 1, rowNumber: 2, columnNumber: 1 },
+        { id: "p4", number: 4, active: true, levelNumber: 1, rowNumber: 2, columnNumber: 2 },
+      ],
+    });
+    const p1 = evaluateEmptyGardenPosition(
+      buildEmptyGardenPositionInput(symmetric, "p1", [], pilot),
+      pilot,
+    );
+    const p4 = evaluateEmptyGardenPosition(
+      buildEmptyGardenPositionInput(symmetric, "p4", [], pilot),
+      pilot,
+    );
+    expect(p1).toEqual(p4);
+  });
+
+  it("keeps H1, H4, and H5 cultivation evidence independent from machine measurements", () => {
+    const controls = [
+      garden({ id: "f11d29ca-f971-4a13-8a38-0e10fdf0740e", systemDefinitionKey: "uruq_8_v1" }),
+      garden({
+        id: "h4-fixture",
+        cultivationMethod: "hydroponic",
+        systemDefinitionKey: "custom:246a11e4-407d-4d27-bcdf-cd753d741174",
+        customSystemDefinitionId: "246a11e4-407d-4d27-bcdf-cd753d741174",
+      }),
+      garden({
+        id: "h5-fixture",
+        cultivationMethod: "hydroponic",
+        systemDefinitionKey: "custom:8c9295a0-5580-46e6-8a29-4cfd7c8d2416",
+        customSystemDefinitionId: "8c9295a0-5580-46e6-8a29-4cfd7c8d2416",
+      }),
+    ];
+    for (const currentGarden of controls) {
+      const input = buildEmptyGardenPositionInput(currentGarden, "p1", [], pilot);
+      expect(input.target.cultivationContext).toBe("hydroponic");
+      const results = evaluateEmptyGardenPosition(input, [
+        byId("bibb-lettuce"),
+        byId("buttercrunch-lettuce"),
+        byId("cherry-tomato"),
+      ]);
+      expect(results.map((result) => result.compatibility)).toEqual([
+        "compatible",
+        "compatible",
+        "compatible",
+      ]);
+    }
+    expect(
+      controls.map(
+        (currentGarden) => verifiedMachineContextForGarden(currentGarden).machineFact !== null,
+      ),
+    ).toEqual([true, false, false]);
+  });
+
+  it("keeps H5 P1 and P6 equivalent when their actual adjacent facts do not establish a crowding conflict", () => {
+    const h5 = garden({
+      id: "h5-fixture",
+      systemDefinitionKey: "custom:8c9295a0-5580-46e6-8a29-4cfd7c8d2416",
+      backendPositions: [
+        { id: "p1", number: 1, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 2 },
+        { id: "p3", number: 3, active: true, levelNumber: 1, rowNumber: 2, columnNumber: 1 },
+        { id: "p5", number: 5, active: true, levelNumber: 1, rowNumber: 2, columnNumber: 5 },
+        { id: "p6", number: 6, active: true, levelNumber: 1, rowNumber: 1, columnNumber: 6 },
+      ],
+      systemLayoutLevels: [{ levelNumber: 1, rows: 4, columns: 7 }],
+    });
+    const occupancy = [
+      plant("bibb-h5", "p3", "bibb-lettuce", "cycle-bibb", { gardenId: h5.id }),
+      plant("garlic-chives-h5", "p5", "garlic-chives", "cycle-garlic", { gardenId: h5.id }),
+    ];
+    const p1 = evaluate(h5, "p1", occupancy).results;
+    const p6 = evaluate(h5, "p6", occupancy).results;
+    expect(p1).toEqual(p6);
+    expect(
+      p1
+        .find((item) => item.candidate.libraryPlantId === "buttercrunch-lettuce")
+        ?.rankingSignals.some((signal) => signal.effect === "needs_review"),
+    ).toBe(false);
+  });
+
+  it("uses a documented spreading neighbor to request review without inferring current size or incompatibility", () => {
+    const h4 = garden({
+      id: "h4-fixture",
+      systemDefinitionKey: "custom:246a11e4-407d-4d27-bcdf-cd753d741174",
+      customSystemDefinitionId: "246a11e4-407d-4d27-bcdf-cd753d741174",
+    });
+    const neighbor = plant("strawberry-h4", "p2", "monterey-strawberry", "cycle-strawberry", {
+      gardenId: h4.id,
+    });
+    const { results, input } = evaluate(h4, "p1", [neighbor]);
+    const buttercrunch = results.find(
+      (item) => item.candidate.libraryPlantId === "buttercrunch-lettuce",
+    )!;
+    expect(input.adjacentPositionIds).toContain("p2");
+    expect(buttercrunch.compatibility).toBe("compatible");
+    expect(buttercrunch.eligibility).toBe("eligible");
+    expect(buttercrunch.exclusions).toHaveLength(0);
+    expect(
+      buttercrunch.rankingSignals.some(
+        (signal) => signal.code === "documented_expansive_neighbor_fit_needs_review",
+      ),
+    ).toBe(true);
   });
 });

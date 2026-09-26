@@ -636,9 +636,19 @@ const copy = {
     needsCondition: "Needs a condition",
     moreEvidenceNeeded: "More evidence needed",
     recommendedHere: "Recommended here",
-    recommendedHereIntro: "Cultivation support is documented; physical fit remains unconfirmed.",
+    recommendedHereIntro: "Documented cultivation and a known position fact support these options.",
+    someSystemFitUnknown: "Specific-system fit is not established for every option.",
+    somePhysicalFitUnknown: "Physical fit is not confirmed for every option.",
     couldWorkCheckFirst: "Could work · check first",
-    checkFirstIntro: "A documented condition or contextual factor needs review.",
+    checkFirstIntro:
+      "Cultivation is supported, but a system or position detail still needs checking.",
+    knownMachineGrowHeight: "Documented system maximum grow height",
+    matureHeightWithinMachineLimit: "Documented mature height is within this system limit.",
+    matureHeightExceedsMachineLimit: "Minimum mature height exceeds the system limit; check fit.",
+    expansiveHabitNeedsClearance:
+      "Spreading habit has no measured clearance beside occupied positions.",
+    expansiveNeighborNeedsReview:
+      "Neighbor has a documented spreading habit; clearance is unmeasured.",
     otherPlantsInsufficient: "Other plants without enough evidence",
     insufficientEvidenceIntro: "Insufficient evidence here does not mean unsuitable.",
     moreSupportedCandidates: "More candidates with supporting evidence",
@@ -1480,9 +1490,21 @@ const copy = {
     needsCondition: "Requiere una condición",
     moreEvidenceNeeded: "Hace falta más evidencia",
     recommendedHere: "Recomendadas para aquí",
-    recommendedHereIntro: "Hay respaldo de cultivo; el encaje físico sigue sin confirmarse.",
+    recommendedHereIntro: "El cultivo y un dato conocido de la posición respaldan estas opciones.",
+    someSystemFitUnknown: "El encaje con el sistema específico no está establecido para todas.",
+    somePhysicalFitUnknown: "El encaje físico no está confirmado para todas.",
     couldWorkCheckFirst: "Podrían funcionar · revisa esto",
-    checkFirstIntro: "Hay una condición o un factor contextual que requiere revisión.",
+    checkFirstIntro:
+      "El cultivo tiene respaldo, pero falta revisar un dato del sistema o la posición.",
+    knownMachineGrowHeight: "Altura máxima documentada del sistema",
+    matureHeightWithinMachineLimit:
+      "La altura adulta documentada está dentro del límite de este sistema.",
+    matureHeightExceedsMachineLimit:
+      "La altura mínima documentada supera el límite; revisa el encaje.",
+    expansiveHabitNeedsClearance:
+      "No hay espacio medido junto a posiciones ocupadas para este hábito expansivo.",
+    expansiveNeighborNeedsReview:
+      "Una vecina tiene hábito expansivo documentado; no hay espacio libre medido.",
     otherPlantsInsufficient: "Otras plantas sin evidencia suficiente",
     insufficientEvidenceIntro: "Falta evidencia; no significa que sean inadecuadas.",
     moreSupportedCandidates: "Más candidatas con evidencia de respaldo",

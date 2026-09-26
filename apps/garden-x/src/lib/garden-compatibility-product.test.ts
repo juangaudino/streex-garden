@@ -3,6 +3,7 @@ import type { Garden } from "./garden-data";
 import {
   buildEmptyGardenPositionInput,
   evaluateEmptyGardenPosition,
+  verifiedMachineContextForGarden,
 } from "./garden-compatibility-engine";
 import { gardenLibraryManifest } from "../generated/garden-library-manifest";
 import type { CompatibilityEvidence, GardenLibraryEntry } from "./garden-library";
@@ -58,6 +59,7 @@ function project(
     {
       cultivationMethod: currentGarden.cultivationMethod ?? null,
       systemName: currentGarden.machine?.name ?? null,
+      machineFact: verifiedMachineContextForGarden(currentGarden).machineFact,
     },
   );
 }
@@ -135,6 +137,7 @@ describe("B3.6 empty-position product contract", () => {
       clearance: { heightCm: 20, context: "hydroponic" },
     }).candidates[0]!;
     expect(result.physicalFit.state).toBe("supported");
+    expect(result.tier).toBe("recommended");
     expect(
       result.factualReasons.find((reason) => reason.property === "mature_height")?.evidence[0]
         ?.sourceId,
@@ -290,7 +293,7 @@ describe("B3.6 empty-position product contract", () => {
       result.candidates.find(
         (candidate) => candidate.plant.libraryPlantId === "buttercrunch-lettuce",
       )?.tier,
-    ).toBe("recommended");
+    ).toBe("check_first");
     expect(
       result.candidates.find((candidate) => candidate.plant.libraryPlantId === "cascading-petunia")
         ?.tier,
@@ -298,6 +301,106 @@ describe("B3.6 empty-position product contract", () => {
     expect(
       result.candidates.find((candidate) => candidate.plant.libraryPlantId === "common-mint")?.tier,
     ).toBe("insufficient_evidence");
+  });
+
+  it("shows exact-model machine facts and keeps Cascading Petunia conditional outside AeroGarden", () => {
+    const uruQ8 = garden({ systemDefinitionKey: "uruq_8_v1" });
+    const result = project([byId("cascading-petunia")], uruQ8);
+    const petunia = result.candidates[0]!;
+    expect(result.machineFact).toMatchObject({ modelNumber: "HP-GC001", maxGrowHeightCm: 40 });
+    expect(result.machineFact?.source.url).toContain("snapklik.com");
+    expect(petunia.cultivationCompatibility.state).toBe("conditional");
+    expect(petunia.systemFit.state).toBe("conditional");
+    expect(petunia.physicalFit.state).toBe("supported");
+    expect(petunia.tier).toBe("check_first");
+  });
+
+  it("promotes a satisfied system condition only when the position has no review signal", () => {
+    const aeroGarden = garden({
+      machine: { name: "Custom label", pods: 6 },
+      systemDefinitionKey: "aerogarden-harvest-v1",
+    });
+    const result = project([byId("cascading-petunia")], aeroGarden).candidates[0]!;
+    expect(result.cultivationCompatibility.state).toBe("compatible");
+    expect(result.systemFit.state).toBe("documented");
+    expect(result.physicalFit.state).toBe("unknown");
+    expect(result.tier).toBe("recommended");
+  });
+
+  it("keeps the H1/H4/H5 controls grounded in their explicit machine keys and H5 hydroponic method", () => {
+    const h1 = garden({
+      id: "f11d29ca-f971-4a13-8a38-0e10fdf0740e",
+      systemDefinitionKey: "uruq_8_v1",
+    });
+    const h4 = garden({
+      id: "h4-fixture",
+      systemDefinitionKey: "custom:246a11e4-407d-4d27-bcdf-cd753d741174",
+      customSystemDefinitionId: "246a11e4-407d-4d27-bcdf-cd753d741174",
+    });
+    const h5 = garden({
+      id: "h5-fixture",
+      systemDefinitionKey: "custom:8c9295a0-5580-46e6-8a29-4cfd7c8d2416",
+      customSystemDefinitionId: "8c9295a0-5580-46e6-8a29-4cfd7c8d2416",
+      machine: { name: "Uruq", pods: 12 },
+    });
+    const h1Input = buildEmptyGardenPositionInput(h1, "p1", [], pilot);
+    const h4Input = buildEmptyGardenPositionInput(h4, "p1", [], pilot);
+    const h5Input = buildEmptyGardenPositionInput(h5, "p1", [], pilot);
+    expect(h1Input.target.verifiedFacts.clearance?.heightCm).toBe(40);
+    expect(h4Input.target.verifiedFacts.clearance).toBeUndefined();
+    expect(h5Input.target.verifiedFacts.clearance).toBeUndefined();
+    expect(h5Input.target.cultivationContext).toBe("hydroponic");
+
+    const sunflowerResults = project(
+      [
+        gardenLibraryManifest.entries.find(
+          (entry) => entry.libraryPlantId === "sunflower-american-giant-hybrid",
+        )!,
+        gardenLibraryManifest.entries.find(
+          (entry) => entry.libraryPlantId === "sunflower-autumn-beauty",
+        )!,
+      ],
+      h5,
+    );
+    expect(
+      sunflowerResults.candidates.every((candidate) => candidate.tier === "insufficient_evidence"),
+    ).toBe(true);
+    expect(
+      sunflowerResults.candidates.every(
+        (candidate) => candidate.cultivationCompatibility.state === "unknown",
+      ),
+    ).toBe(true);
+  });
+
+  it("preserves source links for a documented expansive neighbor review", () => {
+    const currentGarden = garden();
+    const strawberry = {
+      id: "neighbor-strawberry",
+      gardenId: currentGarden.id,
+      backendPositionId: "p2",
+      backendGrowCycleId: "cycle-strawberry",
+      name: "Strawberry",
+      species: "",
+      scientific: "",
+      variety: "",
+      knowledgeId: "monterey-strawberry",
+      libraryPlantId: "monterey-strawberry",
+      plantedDaysAgo: 0,
+      status: "steady" as const,
+      statusNote: "",
+      heroPhotoId: "",
+      identityConfirmed: true,
+    };
+    const entries = [byId("buttercrunch-lettuce"), byId("monterey-strawberry")];
+    const candidate = project(entries, currentGarden, [strawberry]).candidates.find(
+      (item) => item.plant.libraryPlantId === "buttercrunch-lettuce",
+    )!;
+    const neighborReason = candidate.factualReasons.find(
+      (reason) => reason.property === "growth_habit",
+    );
+    expect(candidate.physicalFit.state).toBe("needs_review");
+    expect(neighborReason?.evidence.length).toBeGreaterThan(0);
+    expect(neighborReason?.evidence.some((item) => item.sourceUrl && item.sourceTitle)).toBe(true);
   });
 
   it("keeps unknown garden context useful without claiming physical fit", () => {

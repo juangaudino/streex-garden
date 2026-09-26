@@ -34,8 +34,8 @@ function gardenFixture(): Garden {
     cover: "",
     place: "",
     note: "",
-    machine: { name: "Aera One", pods: 3 },
-    systemDefinitionKey: "aera-one-v1",
+    machine: { name: "Uruq", pods: 8 },
+    systemDefinitionKey: "uruq_8_v1",
     backendPositions: [
       {
         id: "empty-position",
@@ -146,15 +146,19 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     ).toHaveLength(2);
   });
 
-  it("shows a recommendation shortlist, a check-first group, and a collapsed unknown browse group", async () => {
+  it("keeps cultivation-only matches in check-first and collapses unknown plants", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
-    expect(await screen.findByRole("region", { name: "Recommended here" })).toBeTruthy();
+    expect(screen.queryByRole("region", { name: "Recommended here" })).toBeNull();
     expect(screen.getByRole("region", { name: "Could work · check first" })).toBeTruthy();
     expect(screen.getByText(/Other plants without enough evidence · \d+/)).toBeTruthy();
     expect(screen.getByText("Cascading Petunia")).toBeTruthy();
     expect(screen.getByText("Conditional evidence")).toBeTruthy();
+    expect(screen.getByText(/Documented system maximum grow height · 40 cm/)).toBeTruthy();
+    expect(
+      screen.getByRole("link", { name: /URUQ 8-Pod · snapklik.com/ }).getAttribute("href"),
+    ).toContain("snapklik.com");
     expect(screen.queryByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeNull();
     const sunflower = screen.getByText("American Giant Hybrid Sunflower");
     expect(sunflower.closest("details")?.open).toBe(false);
@@ -167,12 +171,13 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "¿Qué podría plantar aquí?" }));
 
-    expect(await screen.findByRole("region", { name: "Recomendadas para aquí" })).toBeTruthy();
+    expect(screen.queryByRole("region", { name: "Recomendadas para aquí" })).toBeNull();
     expect(screen.getByRole("region", { name: "Podrían funcionar · revisa esto" })).toBeTruthy();
+    expect(screen.getByText(/Altura máxima documentada del sistema · 40 cm/)).toBeTruthy();
     expect(screen.getByText(/Otras plantas sin evidencia suficiente · \d+/)).toBeTruthy();
   });
 
-  it("moves unresolved system and physical fit caveats to the recommendation group", async () => {
+  it("shows unresolved system and physical fit as one check-first group explanation", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
@@ -180,7 +185,11 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     const card = buttercrunch.closest("article");
     expect(card?.textContent).not.toContain("Fit for this specific system is not documented.");
     expect(card?.textContent).not.toContain("Physical fit for this position is not confirmed.");
-    expect(screen.getByText(/physical fit remains unconfirmed/i)).toBeTruthy();
+    expect(
+      screen.getByText(
+        "Cultivation is supported, but a system or position detail still needs checking.",
+      ),
+    ).toBeTruthy();
   });
 
   it("keeps Tiny Tim identity facts separate from Cherry Tomato in the candidate cards", async () => {
@@ -245,12 +254,33 @@ describe("AddPlantSheet contextual B3 entry point", () => {
   });
 
   it("caps the visible recommended shortlist at five while retaining additional supported candidates", async () => {
+    const engine = await import("@/lib/garden-compatibility-engine");
+    const evaluate = engine.evaluateEmptyGardenPosition;
+    vi.spyOn(engine, "evaluateEmptyGardenPosition").mockImplementation((input, entries) =>
+      evaluate(input, entries).map((result) =>
+        result.compatibility === "compatible"
+          ? {
+              ...result,
+              rankingSignals: [
+                ...result.rankingSignals,
+                {
+                  code: "test_verified_position_support",
+                  effect: "supports_context",
+                  statement: "test-only signal",
+                  sourceIds: [],
+                },
+              ],
+            }
+          : result,
+      ),
+    );
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
     const recommended = screen.getByRole("region", { name: "Recommended here" });
     expect(
       recommended.querySelector(":scope > div.space-y-2")?.querySelectorAll("article").length,
     ).toBeLessThanOrEqual(5);
+    expect(screen.getByText(/More candidates with supporting evidence/)).toBeTruthy();
   });
 
   it("returns to the searchable full Library and continues selection through the existing add flow", async () => {

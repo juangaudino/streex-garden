@@ -4,6 +4,7 @@ import type {
   CompatibilityProfileV1,
   GardenLibraryEntry,
 } from "./garden-library";
+import { gardenMachineFacts } from "../generated/garden-machine-facts";
 
 export type CompatibilityState = "compatible" | "conditional" | "unknown" | "incompatible";
 export type CompatibilityLightKind = "full_sun" | "partial_sun" | "shade";
@@ -27,11 +28,12 @@ export type CompatibilityOccupant = {
 };
 
 export type VerifiedPositionFacts = {
-  /** Only include dimensions measured or explicitly recorded in Garden context. Never derive cm from grid cells. */
+  /** Measured position dimensions or documented dimensions from an exactly matched system model. */
   clearance?: {
     heightCm?: number;
     spreadCm?: number;
     context: "hydroponic" | "container" | "in_ground" | "outdoor_general" | "unspecified";
+    kind?: "measured_clearance" | "documented_grow_height_limit";
   };
   /** Measured center-to-center target spacing, distinct from plant spread/clearance. */
   positionSpacing?: {
@@ -43,6 +45,46 @@ export type VerifiedPositionFacts = {
   /** True only when physical space beyond a perimeter position is explicitly known to be clear. */
   clearBeyondPerimeter?: boolean;
 };
+
+/** Exact, source-backed machine specification, joined only by canonical model key. */
+export type VerifiedMachineContext = {
+  verifiedFacts: VerifiedPositionFacts;
+  machineFact: {
+    modelName: string;
+    modelNumber: string;
+    maxGrowHeightCm: number;
+    source: { title: string; publisher: string; url: string; note: string };
+  } | null;
+};
+
+export function verifiedMachineContextForGarden(
+  garden: Pick<Garden, "systemDefinitionKey">,
+): VerifiedMachineContext {
+  const definitionKey = garden.systemDefinitionKey;
+  const machine =
+    definitionKey && Object.hasOwn(gardenMachineFacts.systemDefinitions, definitionKey)
+      ? gardenMachineFacts.systemDefinitions[
+          definitionKey as keyof typeof gardenMachineFacts.systemDefinitions
+        ]
+      : undefined;
+  if (!machine) return { verifiedFacts: {}, machineFact: null };
+  const maxGrowHeightCm = machine.maxGrowHeightCm;
+  return {
+    verifiedFacts: {
+      clearance: {
+        heightCm: maxGrowHeightCm,
+        context: "hydroponic",
+        kind: "documented_grow_height_limit",
+      },
+    },
+    machineFact: {
+      modelName: machine.modelName,
+      modelNumber: machine.modelNumber,
+      maxGrowHeightCm,
+      source: machine.source,
+    },
+  };
+}
 
 export type EmptyGardenPositionInput = {
   garden: {
@@ -64,6 +106,7 @@ export type EmptyGardenPositionInput = {
     verifiedFacts: VerifiedPositionFacts;
   };
   positions: readonly CompatibilityPosition[];
+  /** Topological adjacency from explicit coordinates; never represents distance. */
   adjacentPositionIds: readonly string[];
 };
 
@@ -204,6 +247,12 @@ function resultFor(
       );
     } else if (claim.status === "conditional") {
       if (conditionMet) {
+        rankingSignals.push({
+          code: "documented_system_condition_met",
+          effect: "supports_context",
+          statement: "The explicitly documented AeroGarden system condition is satisfied.",
+          sourceIds: claim.evidence.flatMap((item) => item.sourceIds),
+        });
         reasons.push(
           reasonFromEvidence(
             "documented_system_condition_met",
@@ -267,6 +316,10 @@ function resultFor(
   }
 
   const clearance = input.target.verifiedFacts.clearance;
+  const heightLimitLabel =
+    clearance?.kind === "documented_grow_height_limit"
+      ? "documented system grow-height limit"
+      : "explicitly recorded height clearance";
   const relevantSize: Array<["height" | "spread", CompatibilityProfileV1["matureSize"]["height"]]> =
     [
       ["height", profile.matureSize.height],
@@ -286,7 +339,9 @@ function resultFor(
         const reason = reasonFromEvidence(
           `documented_${dimension}_within_clearance`,
           `mature_${dimension}`,
-          `Documented mature ${dimension} is within the explicitly recorded ${limit} cm clearance (${clearance.context} context).`,
+          dimension === "height"
+            ? `Documented mature height is within the ${heightLimitLabel} of ${limit} cm (${clearance.context} context).`
+            : `Documented mature ${dimension} is within the explicitly recorded ${limit} cm clearance (${clearance.context} context).`,
           knowledge.evidence,
         );
         reasons.push(reason);
@@ -300,7 +355,9 @@ function resultFor(
         const reason = reasonFromEvidence(
           `documented_${dimension}_may_exceed_clearance`,
           `mature_${dimension}`,
-          `The documented minimum mature ${dimension} (${minimum} cm) exceeds the explicitly recorded ${limit} cm clearance; this is a consideration, not an exclusion.`,
+          dimension === "height"
+            ? `The documented minimum mature height (${minimum} cm) exceeds the ${heightLimitLabel} of ${limit} cm; this is a consideration, not an exclusion.`
+            : `The documented minimum mature ${dimension} (${minimum} cm) exceeds the explicitly recorded ${limit} cm clearance; this is a consideration, not an exclusion.`,
           knowledge.evidence,
         );
         rankingSignals.push({
@@ -453,10 +510,17 @@ function resultFor(
       statement: `${neighboringOccupants.length} active Plant Instance(s) occupy ${occupiedAdjacentPositionCount} adjacent physical position(s); no companion-planting relationship is inferred.`,
       sourceIds: [],
     });
-    if (
-      habit.status === "known" &&
-      habit.value.some((item) => item === "spreading" || item === "trailing")
-    ) {
+    const expansiveHabits = new Set(["spreading", "trailing"]);
+    const candidateIsExpansive =
+      habit.status === "known" && habit.value.some((item) => expansiveHabits.has(item));
+    const expansiveNeighbors = neighboringOccupants.flatMap((occupant) => {
+      const neighborHabit = occupant.identity?.compatibilityProfile?.growthHabits;
+      return neighborHabit?.status === "known" &&
+        neighborHabit.value.some((item) => expansiveHabits.has(item))
+        ? [neighborHabit]
+        : [];
+    });
+    if (candidateIsExpansive) {
       const reason = reasonFromEvidence(
         "expansive_habit_clearance_unresolved",
         "physical_clearance",
@@ -466,6 +530,23 @@ function resultFor(
       reasons.push(reason);
       rankingSignals.push({
         code: "expansive_habit_clearance_unresolved",
+        effect: "needs_review",
+        statement: reason.statement,
+        sourceIds: reason.sourceIds,
+      });
+    }
+    if (expansiveNeighbors.length) {
+      const neighborEvidence = expansiveNeighbors.flatMap((item) => item.evidence);
+      const evidence = [...(habit.status === "known" ? habit.evidence : []), ...neighborEvidence];
+      const reason = reasonFromEvidence(
+        "documented_expansive_neighbor_fit_needs_review",
+        "growth_habit",
+        `${expansiveNeighbors.length} neighboring active plant(s) have documented spreading or trailing habits; measured clearance is unavailable, so spatial fit needs review.`,
+        evidence,
+      );
+      reasons.push(reason);
+      rankingSignals.push({
+        code: "documented_expansive_neighbor_fit_needs_review",
         effect: "needs_review",
         statement: reason.statement,
         sourceIds: reason.sourceIds,
@@ -539,6 +620,10 @@ export function evaluateEmptyGardenPosition(
     if (eligibility) return eligibility;
     const state = compatibilityOrder(a.compatibility) - compatibilityOrder(b.compatibility);
     if (state) return state;
+    const systemFit =
+      Number(b.systemFit === "documented_condition_met") -
+      Number(a.systemFit === "documented_condition_met");
+    if (systemFit) return systemFit;
     const reviewA = a.rankingSignals.some((signal) => signal.effect === "needs_review");
     const reviewB = b.rankingSignals.some((signal) => signal.effect === "needs_review");
     if (reviewA !== reviewB) return Number(reviewA) - Number(reviewB);
@@ -616,6 +701,15 @@ export function buildEmptyGardenPositionInput(
   });
   const targetPosition = backendPositions.find((position) => position.id === targetPositionId);
   const target = positions.find((position) => position.id === targetPositionId);
+  const machineFacts = verifiedMachineContextForGarden(garden).verifiedFacts;
+  const combinedFacts: VerifiedPositionFacts = {
+    ...machineFacts,
+    ...verifiedFacts,
+    clearance: verifiedFacts.clearance ?? machineFacts.clearance,
+    positionSpacing: verifiedFacts.positionSpacing ?? machineFacts.positionSpacing,
+    light: verifiedFacts.light ?? machineFacts.light,
+    clearBeyondPerimeter: verifiedFacts.clearBeyondPerimeter ?? machineFacts.clearBeyondPerimeter,
+  };
   const adjacentPositionIds = target?.coordinates
     ? positions
         .filter((position) => {
@@ -623,8 +717,12 @@ export function buildEmptyGardenPositionInput(
             return false;
           const a = position.coordinates;
           const b = target.coordinates!;
+          // Grid coordinates establish topological adjacency only. Diagonal
+          // neighbors count as adjacent; no physical distance is inferred.
           return (
-            a.level === b.level && Math.abs(a.row - b.row) + Math.abs(a.column - b.column) === 1
+            a.level === b.level &&
+            Math.abs(a.row - b.row) <= 1 &&
+            Math.abs(a.column - b.column) <= 1
           );
         })
         .map((position) => position.id)
@@ -646,7 +744,7 @@ export function buildEmptyGardenPositionInput(
       coordinates: target?.coordinates ?? null,
       isPerimeter: perimeterStatus(target?.coordinates ?? null, garden),
       cultivationContext: garden.cultivationMethod ?? null,
-      verifiedFacts,
+      verifiedFacts: combinedFacts,
     },
     positions,
     adjacentPositionIds,

@@ -16,6 +16,16 @@ export type ProductEvidenceReference = {
   taxonomicScope: CompatibilityEvidence["taxonomicScope"];
   evidenceType: CompatibilityEvidence["evidenceType"];
   confidence: CompatibilityEvidence["confidence"];
+  sourceTitle?: string;
+  sourcePublisher?: string;
+  sourceUrl?: string;
+};
+
+export type ProductMachineFact = {
+  modelName: string;
+  modelNumber: string;
+  maxGrowHeightCm: number;
+  source: { title: string; publisher: string; url: string; note: string };
 };
 
 export type EmptyPositionCandidate = {
@@ -57,12 +67,14 @@ export type EmptyPositionCandidate = {
 export type EmptyPositionCandidateSet = {
   /** Engine order is deterministic and already includes its documented tie-breakers. */
   order: "engine_deterministic";
+  machineFact: ProductMachineFact | null;
   candidates: readonly EmptyPositionCandidate[];
 };
 
 export type EmptyPositionProjectionContext = {
   cultivationMethod: GardenCultivationMethod | null;
   systemName: string | null;
+  machineFact?: ProductMachineFact | null;
 };
 
 function compareStableText(a: string, b: string) {
@@ -73,50 +85,74 @@ function compareStableText(a: string, b: string) {
 
 function evidenceForReason(
   entry: GardenLibraryEntry,
-  result: GardenCompatibilityResult,
-): (reason: { code: string; property: string; sourceIds: readonly string[] }) => {
+  reason: {
+    code: string;
+    property: string;
+    sourceIds: readonly string[];
+    taxonomicScopes: readonly string[];
+  },
+  catalogEntries: readonly GardenLibraryEntry[],
+): {
   property: ProductFactProperty;
   evidence: readonly CompatibilityEvidence[];
 } {
-  const profile = entry.compatibilityProfile;
-  return (reason) => {
-    if (!profile) return { property: "cultivation_suitability", evidence: [] };
-
-    let property: ProductFactProperty;
-    let evidence: readonly CompatibilityEvidence[];
-    if (reason.property === "hydroponic_suitability") {
-      property = "cultivation_suitability";
-      evidence = profile.hydroponicSuitability.evidence ?? [];
-    } else if (reason.property === "growth_habit" || reason.code.includes("expansive_habit")) {
-      property = "growth_habit";
-      evidence = profile.growthHabits.status === "known" ? profile.growthHabits.evidence : [];
-    } else if (reason.property === "mature_height") {
-      property = "mature_height";
-      evidence =
-        profile.matureSize.height.status === "known" ? profile.matureSize.height.evidence : [];
-    } else if (reason.property === "mature_spread") {
-      property = "mature_spread";
-      evidence =
-        profile.matureSize.spread.status === "known" ? profile.matureSize.spread.evidence : [];
-    } else if (reason.property === "spacing") {
-      property = "spacing";
-      evidence = profile.spacing.status === "known" ? profile.spacing.evidence : [];
-    } else {
-      property = "growing_light";
-      evidence = profile.light.status === "known" ? profile.light.evidence : [];
-    }
-
-    const sourceIds = new Set(reason.sourceIds);
-    return {
-      property,
-      evidence: evidence.filter((item) => item.sourceIds.some((id) => sourceIds.has(id))),
-    };
-  };
+  const property: ProductFactProperty =
+    reason.property === "hydroponic_suitability"
+      ? "cultivation_suitability"
+      : reason.property === "growth_habit" || reason.code.includes("expansive_habit")
+        ? "growth_habit"
+        : reason.property === "mature_height"
+          ? "mature_height"
+          : reason.property === "mature_spread"
+            ? "mature_spread"
+            : reason.property === "spacing"
+              ? "spacing"
+              : "growing_light";
+  const sourceIds = new Set(reason.sourceIds);
+  const scopes = new Set(reason.taxonomicScopes);
+  const relevantEntries = reason.code.includes("neighbor") ? catalogEntries : [entry];
+  const evidence = relevantEntries.flatMap((candidateEntry) => {
+    const profile = candidateEntry.compatibilityProfile;
+    if (!profile) return [];
+    const values =
+      property === "cultivation_suitability"
+        ? (profile.hydroponicSuitability.evidence ?? [])
+        : property === "growth_habit"
+          ? profile.growthHabits.status === "known"
+            ? profile.growthHabits.evidence
+            : []
+          : property === "mature_height"
+            ? profile.matureSize.height.status === "known"
+              ? profile.matureSize.height.evidence
+              : []
+            : property === "mature_spread"
+              ? profile.matureSize.spread.status === "known"
+                ? profile.matureSize.spread.evidence
+                : []
+              : property === "spacing"
+                ? profile.spacing.status === "known"
+                  ? profile.spacing.evidence
+                  : []
+                : profile.light.status === "known"
+                  ? profile.light.evidence
+                  : [];
+    return values.filter(
+      (item) =>
+        item.sourceIds.some((id) => sourceIds.has(id)) &&
+        scopes.has(
+          item.taxonomicScope.level === "identity"
+            ? "identity"
+            : `${item.taxonomicScope.level}: ${item.taxonomicScope.taxon}`,
+        ),
+    );
+  });
+  return { property, evidence };
 }
 
 function evidenceReferences(
   property: ProductFactProperty,
   evidence: readonly CompatibilityEvidence[],
+  catalogEntries: readonly GardenLibraryEntry[],
 ): ProductEvidenceReference[] {
   const unique = new Map<string, ProductEvidenceReference>();
   for (const item of evidence) {
@@ -127,6 +163,18 @@ function evidenceReferences(
         taxonomicScope: item.taxonomicScope,
         evidenceType: item.evidenceType,
         confidence: item.confidence,
+        ...(() => {
+          const source = catalogEntries
+            .flatMap((entry) => entry.reference.sources)
+            .find((candidate) => candidate.id === sourceId);
+          return source
+            ? {
+                sourceTitle: source.title,
+                sourcePublisher: source.publisher,
+                sourceUrl: source.url,
+              }
+            : {};
+        })(),
       } satisfies ProductEvidenceReference;
       unique.set(
         `${sourceId}:${property}:${item.taxonomicScope.level}:${"taxon" in item.taxonomicScope ? item.taxonomicScope.taxon : ""}`,
@@ -155,6 +203,8 @@ function physicalFitState(
         "known_height_needs_review",
         "known_spread_needs_review",
         "known_position_spacing_needs_review",
+        "expansive_habit_clearance_unresolved",
+        "documented_expansive_neighbor_fit_needs_review",
       ].includes(signal.code),
     )
   ) {
@@ -176,14 +226,20 @@ function reasonPriority(code: string) {
 function candidateProjection(
   result: GardenCompatibilityResult,
   entry: GardenLibraryEntry,
+  catalogEntries: readonly GardenLibraryEntry[],
   context: EmptyPositionProjectionContext,
 ): EmptyPositionCandidate {
-  const evidenceFor = evidenceForReason(entry, result);
+  const evidenceFor = (reason: {
+    code: string;
+    property: string;
+    sourceIds: readonly string[];
+    taxonomicScopes: readonly string[];
+  }) => evidenceForReason(entry, reason, catalogEntries);
   const profile = entry.compatibilityProfile;
   const engineReasons = [...result.exclusions, ...result.reasons]
     .map((reason) => {
       const mapped = evidenceFor(reason);
-      const evidence = evidenceReferences(mapped.property, mapped.evidence);
+      const evidence = evidenceReferences(mapped.property, mapped.evidence, catalogEntries);
       return evidence.length
         ? {
             property: mapped.property,
@@ -203,7 +259,11 @@ function candidateProjection(
     const claim = entry.compatibilityProfile.hydroponicSuitability;
     const condition = claim.conditions[0];
     if (condition) {
-      const evidence = evidenceReferences("cultivation_suitability", claim.evidence);
+      const evidence = evidenceReferences(
+        "cultivation_suitability",
+        claim.evidence,
+        catalogEntries,
+      );
       if (evidence.length) {
         engineReasons.unshift({
           property: "cultivation_suitability",
@@ -223,13 +283,13 @@ function candidateProjection(
   const tier: EmptyPositionCandidate["tier"] =
     result.eligibility === "excluded"
       ? "excluded"
-      : result.compatibility === "compatible"
-        ? hasReviewSignal
+      : result.compatibility === "unknown" || result.compatibility === "incompatible"
+        ? "insufficient_evidence"
+        : result.compatibility === "conditional" || hasReviewSignal
           ? "check_first"
-          : "recommended"
-        : result.compatibility === "conditional" || hasReviewSignal || hasPositiveContextSignal
-          ? "check_first"
-          : "insufficient_evidence";
+          : hasPositiveContextSignal
+            ? "recommended"
+            : "check_first";
   const systemFit: EmptyPositionCandidate["systemFit"]["state"] =
     result.systemFit === "documented_condition_met"
       ? "documented"
@@ -292,6 +352,7 @@ function candidateProjection(
         evidenceReferences(
           property as ProductFactProperty,
           evidence as readonly CompatibilityEvidence[],
+          catalogEntries,
         ),
       )
     : [];
@@ -336,8 +397,8 @@ export function projectEmptyPositionCandidates(
   const candidates = results
     .map((result) => {
       const entry = entries.get(result.candidate.libraryPlantId);
-      return entry ? candidateProjection(result, entry, context) : null;
+      return entry ? candidateProjection(result, entry, catalogEntries, context) : null;
     })
     .filter((candidate): candidate is EmptyPositionCandidate => candidate !== null);
-  return { order: "engine_deterministic", candidates };
+  return { order: "engine_deterministic", machineFact: context.machineFact ?? null, candidates };
 }

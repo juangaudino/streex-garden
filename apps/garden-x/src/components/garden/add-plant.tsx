@@ -13,8 +13,15 @@ import {
   type GardenLibraryEntry,
   type GardenLibraryManifest,
 } from "@/lib/garden-library";
-import { buildEmptyGardenPositionInput, evaluateEmptyGardenPosition } from "@/lib/garden-compatibility-engine";
-import { projectEmptyPositionCandidates, type EmptyPositionCandidate } from "@/lib/garden-compatibility-product";
+import {
+  buildEmptyGardenPositionInput,
+  evaluateEmptyGardenPosition,
+  verifiedMachineContextForGarden,
+} from "@/lib/garden-compatibility-engine";
+import {
+  projectEmptyPositionCandidates,
+  type EmptyPositionCandidate,
+} from "@/lib/garden-compatibility-product";
 import { Button } from "@/components/ui/button";
 import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { PhotoDropZone } from "@/components/garden/photo-drop-zone";
@@ -80,19 +87,32 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
     [catalog, query],
   );
   const contextualEvaluation = useMemo(() => {
-    if (!catalog || !garden || !positionId) return { candidates: [], unavailable: false };
+    if (!catalog || !garden || !positionId) {
+      return { candidates: [], unavailable: false, machineFact: null };
+    }
     try {
-      const input = buildEmptyGardenPositionInput(garden, positionId, store.plants, catalog.entries);
+      const machineContext = verifiedMachineContextForGarden(garden);
+      const input = buildEmptyGardenPositionInput(
+        garden,
+        positionId,
+        store.plants,
+        catalog.entries,
+        machineContext.verifiedFacts,
+      );
       const evaluated = evaluateEmptyGardenPosition(input, catalog.entries);
       return {
         candidates: projectEmptyPositionCandidates(evaluated, catalog.entries, {
           cultivationMethod: garden.cultivationMethod ?? null,
           systemName: garden.machine?.name ?? null,
-        }).candidates.filter((candidate) => candidate.cultivationCompatibility.state !== "incompatible"),
+          machineFact: machineContext.machineFact,
+        }).candidates.filter(
+          (candidate) => candidate.cultivationCompatibility.state !== "incompatible",
+        ),
         unavailable: false,
+        machineFact: machineContext.machineFact,
       };
     } catch {
-      return { candidates: [], unavailable: true };
+      return { candidates: [], unavailable: true, machineFact: null };
     }
   }, [catalog, garden, positionId, store.plants]);
   const contextualCandidates = contextualEvaluation.candidates;
@@ -271,14 +291,45 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                           ));
                         const shortlist = recommended.slice(0, 5);
                         const additionalRecommended = recommended.slice(5);
+                        const unverifiedSystemFit = recommended.some(
+                          (candidate) => candidate.systemFit.state === "unknown",
+                        );
+                        const unverifiedPhysicalFit = recommended.some(
+                          (candidate) => candidate.physicalFit.state !== "supported",
+                        );
                         return (
                           <div className="space-y-5">
+                            {contextualEvaluation.machineFact ? (
+                              <p className="text-xs text-muted-foreground">
+                                {ui(language, "knownMachineGrowHeight")} ·{" "}
+                                {contextualEvaluation.machineFact.maxGrowHeightCm} cm ·{" "}
+                                <a
+                                  className="underline underline-offset-2"
+                                  href={contextualEvaluation.machineFact.source.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  {contextualEvaluation.machineFact.modelName} ·{" "}
+                                  {contextualEvaluation.machineFact.source.publisher}
+                                </a>
+                              </p>
+                            ) : null}
                             {shortlist.length ? (
                               <section aria-label={ui(language, "recommendedHere")}>
                                 <h3 className="eyebrow">{ui(language, "recommendedHere")}</h3>
                                 <p className="mb-2 mt-1 text-xs text-muted-foreground">
                                   {ui(language, "recommendedHereIntro")}
                                 </p>
+                                {unverifiedSystemFit ? (
+                                  <p className="mb-1 text-xs text-muted-foreground">
+                                    {ui(language, "someSystemFitUnknown")}
+                                  </p>
+                                ) : null}
+                                {unverifiedPhysicalFit ? (
+                                  <p className="mb-2 text-xs text-muted-foreground">
+                                    {ui(language, "somePhysicalFitUnknown")}
+                                  </p>
+                                ) : null}
                                 <div className="space-y-2">{renderCards(shortlist)}</div>
                                 {additionalRecommended.length ? (
                                   <details className="mt-2 text-sm">
@@ -555,9 +606,16 @@ function ContextualCandidateCard({
     if (reason.property === "cultivation_suitability") {
       return candidate.cultivationCompatibility.state === "conditional"
         ? `${ui(language, "gardenpediaCondition")}: ${reason.statement}`
-        : `${ui(language, "documentedHydroponicEvidence")} · ${scopeLabel(reason.evidence[0]!.taxonomicScope)}`;
+        : ui(language, "documentedHydroponicEvidence");
     }
     if (reason.property === "growth_habit") {
+      if (reason.statement.includes("neighboring active plant(s) have documented spreading")) {
+        return ui(language, "expansiveNeighborNeedsReview");
+      }
+      if (reason.statement.includes("habit is documented and adjacent positions are occupied")) {
+        return ui(language, "expansiveHabitNeedsClearance");
+      }
+      if (!reason.statement.startsWith("Documented growth habit:")) return reason.statement;
       const habit = reason.statement.split(":").slice(1).join(":").trim().replace(/\.$/, "");
       const habits = habit
         .split(",")
@@ -576,6 +634,14 @@ function ContextualCandidateCard({
       };
       const translated = habits.map((value) => translations[value] ?? value).join(", ");
       return `${ui(language, "documentedGrowthHabit")}: ${translated}.`;
+    }
+    if (reason.property === "mature_height") {
+      if (reason.statement.includes("within the documented system grow-height limit")) {
+        return ui(language, "matureHeightWithinMachineLimit");
+      }
+      if (reason.statement.includes("exceeds the documented system grow-height limit")) {
+        return ui(language, "matureHeightExceedsMachineLimit");
+      }
     }
     return reason.statement;
   };
@@ -630,7 +696,16 @@ function ContextualCandidateCard({
           </summary>
           <ul className="mt-2 space-y-1.5 pl-1">
             {references.map((evidence) => {
-              const source = entry?.reference.sources.find((item) => item.id === evidence.sourceId);
+              const source = evidence.sourceUrl
+                ? {
+                    id: evidence.sourceId,
+                    title: evidence.sourceTitle ?? evidence.sourceId,
+                    publisher: evidence.sourcePublisher ?? "",
+                    url: evidence.sourceUrl,
+                  }
+                : entry?.reference.sources.find(
+                    (item) => item.id === evidence.sourceId,
+                  );
               if (!source) return null;
               const scope = evidence.taxonomicScope;
               return (

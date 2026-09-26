@@ -4,6 +4,8 @@ const state = {
   translations: {},
   visuals: {},
   seedInventory: {},
+  seedPackages: [],
+  accountMode: "signed_out",
   neighborData: { meta: {}, profiles: {} },
   seedUserState: readLocalJson("gardenLabsSeedStateV1", {}),
   customSeeds: readLocalJson("gardenLabsCustomSeedsV1", []),
@@ -15,6 +17,7 @@ const state = {
   language: localStorage.getItem("growGuideLanguage") || "es",
   activePlantId: null,
   activeSeedId: null,
+  selectedSeedIdentityId: null,
 };
 
 const assetBase = window.GROW_GUIDE_ASSET_BASE || ".";
@@ -54,9 +57,10 @@ const ui = {
     heroBody: "Garden Library brings growing knowledge and personal inventory together inside Garden Labs. Each layer keeps its own source of truth.",
     labProofExperiment: "Isolated experiment", labProofUserZero: "User Zero validation", labProofSeparation: "Separate sources",
     guideTab: "Guide", seedsTab: "Seeds", guideEyebrow: "GARDEN LIBRARY · GUIDE", guideTitle: "Grow Guide", guideIntro: "Structured knowledge for knowing when, where and how much to intervene in each crop.",
-    seedsEyebrow: "GARDEN LIBRARY · SEEDS", seedsTitle: "Your seeds", seedsIntro: "The packets you actually own, their approximate state and where they are. Lab changes are stored only on this device.",
+    seedsEyebrow: "GARDENPEDIA · MY SEEDS", seedsTitle: "My seeds", seedsIntro: "Your private seed packages, linked to shared Gardenpedia identities when you confirm a match.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
     searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "USER ZERO CROP LIBRARY", version: "V0.6 · 29 guides · ES/EN · visual + neighbors + inventory",
+    noLibraryMatchRequest: "No catalog match. Request this plant or variety from Gardenpedia.", requestSent: "Request sent to Gardenpedia.", requestFailed: "Could not send the request. Sign in to your Garden X account and try again.",
     allPlants: "All", plant: "variety", plants: "varieties", guide: "guide", noMatches: "No variety matches that search yet.", unavailable: "Guide unavailable", loadError: "The prototype data could not be loaded.", close: "Close guide", avoid: "Avoid", context: "Context", confidence: "Confidence",
     confidence_high: "high", confidence_medium: "medium", confidence_pending: "pending",
     visualGuide: "Visual guide", visualGuideNote: "External references selected for the action itself — not decorative plant photos.", openSource: "Open source", sourceLinkOnly: "Open at source", rightsReview: "Rights review before production", externalReference: "External reference",
@@ -66,11 +70,11 @@ const ui = {
     sections: { identity: "Identity", germination: "Germination", thinning: "Thinning", pruning: "Pruning", harvest: "Harvest", flowering: "Flowering / bolting", hydroponics: "Hydroponics", problems: "Common issues" },
     ownedSeed: "In your seed inventory", packetArchived: "Packet documented · removed from active inventory", packet: "Packet", germinationRate: "Packet germination rate", purity: "Purity", seedCount: "Approx. seeds", daysToBloom: "Days to bloom", daysToHarvest: "Days to harvest", packetEvidence: "Inventory fact from your packet photo", openInSeeds: "Open in Seeds",
     neighbors: "Neighbors", neighborsNote: "Garden scores real growing compatibility first. A traditional companion claim is only promoted when a credible source supports it.", goodNeighbors: "Good neighbors", separateNeighbors: "Better separate", noStrongGood: "No strong positive matches yet.", noStrongBad: "No strong separation flags yet.", researchPair: "Research-backed companion pair", systemPair: "System-fit inference", nearbyRole: "Useful nearby outdoors", neighborDisclaimer: "‘Better separate’ usually means poor light / space / root / nutrient fit — not that one plant chemically harms the other.", shareSystem:"Can share a system", manageSpacing:"Compatible with spacing management", keepSeparate:"Prefer separate systems / zones", outdoorNearby:"Keep nearby outdoors",
-    addSeed: "+ Add seed", seedSearchPlaceholder: "Search tomato, basil, Ferry-Morse…", seedInventoryEyebrow: "USER ZERO INVENTORY", seedStorageNote: "Personal state is local · packet evidence stays separate", seedPackage: "packet", seedPackages: "packets", noSeedMatches: "No seed packets match this view.",
+    addSeed: "+ Add seed", seedSearchPlaceholder: "Search tomato, basil, Ferry-Morse…", seedInventoryEyebrow: "MY PRIVATE INVENTORY", seedStorageNote: "Private packages synced with your Garden X account", seedPackage: "package", seedPackages: "packages", noSeedMatches: "No seed packages match this view.", signInRequired: "Sign in to Garden X to see your private seed packages.", seedStorageError: "Your seed packages could not be loaded. Try again before changing your inventory.", legacyImportTitle: "Personal inventory found on this device", legacyImportBody: "Import the saved Garden X/Garden Labs inventory into your account. Existing local data will remain on this device.", importLegacy: "Import existing inventory", importingLegacy: "Importing…", identitySuggestions: "Gardenpedia matches — choose one to link", noIdentityMatch: "No catalog match. You can keep this package unresolved.", requestToGardenpedia: "Request to Gardenpedia", requestSent: "Request sent to Gardenpedia.", privatePackage: "Private package", selectedIdentity: "Linked identity", unresolvedPackage: "Unresolved identity", saveError: "Could not save. Your package has not been changed.",
     seedFilters: { all: "All", opened: "Opened", unopened: "Unopened", low: "Low inventory", unset: "Needs status", removed: "Removed" },
     seedStatus: { opened: "Opened", unopened: "Unopened", unknown: "Not set" },
     quantity: { full: "Full", high: "High", medium: "Medium", low: "Low", almost_empty: "Almost empty", unknown: "Not set" },
-    locationUnset: "Location not set", viewGuide: "View guide", editSeed: "Edit inventory", newSeed: "Add seed", personalState: "Personal inventory state", personalStateNote: "These Lab fields do not rewrite the packet evidence or Grow Guide knowledge.",
+    locationUnset: "Location not set", viewGuide: "View guide", editSeed: "Edit package", newSeed: "Add seed package", personalState: "Private package details", personalStateNote: "These details belong to your package and do not change Gardenpedia knowledge.",
     plantVariety: "Plant / variety", brand: "Brand", packageStatus: "Package status", quantityLevel: "Approx. quantity", storageLocation: "Storage location", purchaseYear: "Purchase year", germinationTestDate: "Last germination test", germinationResult: "Germination result %", notes: "Notes", optional: "Optional", save: "Save", cancel: "Cancel", removeInventory: "Remove from inventory", restoreInventory: "Restore to inventory", deleteCustom: "Delete seed", customSeedNote: "Custom Lab seed. It has no Grow Guide link until identity is reconciled.", duplicateWarning: "Possible duplicate already in inventory: ", requiredName: "Plant / variety is required.", localOnly: "Stored locally in Garden Labs on this device.",
   },
   es: {
@@ -80,9 +84,10 @@ const ui = {
     heroBody: "Garden Library reúne conocimiento de cultivo e inventario personal dentro de Garden Labs. Cada capa conserva su propia fuente de verdad.",
     labProofExperiment: "Experimento aislado", labProofUserZero: "Validación User Zero", labProofSeparation: "Fuentes separadas",
     guideTab: "Guía", seedsTab: "Semillas", guideEyebrow: "GARDEN LIBRARY · GUÍA", guideTitle: "Grow Guide", guideIntro: "Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.",
-    seedsEyebrow: "GARDEN LIBRARY · SEMILLAS", seedsTitle: "Tus semillas", seedsIntro: "Qué paquetes tienes realmente, su estado aproximado y dónde están. Los cambios de este Lab se guardan solo en este dispositivo.",
+    seedsEyebrow: "GARDENPEDIA · MIS SEMILLAS", seedsTitle: "Mis semillas", seedsIntro: "Paquetes privados de tu cuenta, vinculados a identidades Gardenpedia cuando confirmas una coincidencia.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
     searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA DE CULTIVOS USER ZERO", version: "V0.6 · 29 guías · ES/EN · visual + vecinas + inventario",
+    noLibraryMatchRequest: "No hay coincidencia en el catálogo. Solicita esta planta o variedad a Gardenpedia.", requestSent: "Solicitud enviada a Gardenpedia.", requestFailed: "No se pudo enviar. Inicia sesión en Garden X y vuelve a intentarlo.",
     allPlants: "Todas", plant: "variedad", plants: "variedades", guide: "ficha", noMatches: "Todavía no hay una variedad que coincida con esa búsqueda.", unavailable: "Guía no disponible", loadError: "No se pudieron cargar los datos del prototipo.", close: "Cerrar guía", avoid: "Evitar", context: "Contexto", confidence: "Confianza",
     confidence_high: "alta", confidence_medium: "media", confidence_pending: "pendiente",
     visualGuide: "Guía visual", visualGuideNote: "Referencias externas elegidas por la acción que enseñan, no como fotos decorativas de la planta.", openSource: "Abrir fuente", sourceLinkOnly: "Ver en la fuente", rightsReview: "Revisar derechos antes de producción", externalReference: "Referencia externa",
@@ -92,11 +97,11 @@ const ui = {
     sections: { identity: "Identidad", germination: "Germinación", thinning: "Raleo", pruning: "Poda", harvest: "Cosecha", flowering: "Floración / espigado", hydroponics: "Hidroponía", problems: "Problemas comunes" },
     ownedSeed: "En tu inventario de semillas", packetArchived: "Sobre documentado · retirado del inventario activo", packet: "Sobre", germinationRate: "Germinación del sobre", purity: "Pureza", seedCount: "Semillas aprox.", daysToBloom: "Días a floración", daysToHarvest: "Días a cosecha", packetEvidence: "Dato de inventario leído de tu foto del sobre", openInSeeds: "Abrir en Semillas",
     neighbors: "Vecinas", neighborsNote: "Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube de nivel cuando una fuente confiable la respalda.", goodNeighbors: "Buenas vecinas", separateNeighbors: "Mejor separar", noStrongGood: "Todavía no hay coincidencias positivas fuertes.", noStrongBad: "No hay alertas fuertes de separación.", researchPair: "Pareja respaldada por investigación", systemPair: "Inferencia por compatibilidad del sistema", nearbyRole: "Útil cerca en exterior", neighborDisclaimer: "‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces / nutrientes; no que una planta envenene químicamente a la otra.", shareSystem:"Pueden compartir sistema", manageSpacing:"Compatibles manejando el espacio", keepSeparate:"Preferir sistemas / zonas separadas", outdoorNearby:"Mantener cerca en exterior",
-    addSeed: "+ Añadir semilla", seedSearchPlaceholder: "Busca tomate, basil, Ferry-Morse…", seedInventoryEyebrow: "INVENTARIO USER ZERO", seedStorageNote: "Estado personal local · evidencia del sobre separada", seedPackage: "paquete", seedPackages: "paquetes", noSeedMatches: "No hay paquetes que coincidan con esta vista.",
+    addSeed: "+ Añadir semilla", seedSearchPlaceholder: "Busca tomate, basil, Ferry-Morse…", seedInventoryEyebrow: "MI INVENTARIO PRIVADO", seedStorageNote: "Paquetes privados sincronizados con tu cuenta Garden X", seedPackage: "paquete", seedPackages: "paquetes", noSeedMatches: "No hay paquetes que coincidan con esta vista.", signInRequired: "Inicia sesión en Garden X para ver tus paquetes privados de semillas.", seedStorageError: "No se pudieron cargar tus paquetes. Vuelve a intentarlo antes de cambiar el inventario.", legacyImportTitle: "Hay inventario personal guardado en este dispositivo", legacyImportBody: "Importa el inventario existente de Garden X/Garden Labs a tu cuenta. Los datos locales permanecerán en este dispositivo.", importLegacy: "Importar inventario existente", importingLegacy: "Importando…", identitySuggestions: "Coincidencias en Gardenpedia — elige una para vincular", noIdentityMatch: "No hay coincidencia en el catálogo. Puedes conservar el paquete sin resolver.", requestToGardenpedia: "Solicitar a Gardenpedia", requestSent: "Solicitud enviada a Gardenpedia.", privatePackage: "Paquete privado", selectedIdentity: "Identidad vinculada", unresolvedPackage: "Identidad sin resolver", saveError: "No se pudo guardar. El paquete no se modificó.",
     seedFilters: { all: "Todas", opened: "Abiertas", unopened: "Sin abrir", low: "Poco inventario", unset: "Sin definir", removed: "Retiradas" },
     seedStatus: { opened: "Abierto", unopened: "Sin abrir", unknown: "Sin definir" },
     quantity: { full: "Full", high: "High", medium: "Medium", low: "Low", almost_empty: "Almost empty", unknown: "Sin definir" },
-    locationUnset: "Ubicación sin definir", viewGuide: "Ver guía", editSeed: "Editar inventario", newSeed: "Añadir semilla", personalState: "Estado personal del inventario", personalStateNote: "Estos campos del Lab no reescriben la evidencia del sobre ni el conocimiento de Grow Guide.",
+    locationUnset: "Ubicación sin definir", viewGuide: "Ver guía", editSeed: "Editar paquete", newSeed: "Añadir paquete de semillas", personalState: "Detalles del paquete privado", personalStateNote: "Estos datos pertenecen a tu paquete y no modifican el conocimiento de Gardenpedia.",
     plantVariety: "Planta / variedad", brand: "Marca", packageStatus: "Estado del paquete", quantityLevel: "Cantidad aproximada", storageLocation: "Ubicación", purchaseYear: "Año de compra", germinationTestDate: "Último test de germinación", germinationResult: "Resultado germinación %", notes: "Notas", optional: "Opcional", save: "Guardar", cancel: "Cancelar", removeInventory: "Quitar del inventario", restoreInventory: "Restaurar al inventario", deleteCustom: "Eliminar semilla", customSeedNote: "Semilla añadida en el Lab. No tiene vínculo a Grow Guide hasta reconciliar su identidad.", duplicateWarning: "Posible duplicado ya en inventario: ", requiredName: "Planta / variedad es obligatorio.", localOnly: "Guardado localmente en Garden Labs en este dispositivo.",
   },
 };
@@ -130,6 +135,8 @@ async function init() {
   const inventory = await inventoryResponse.json();
   state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
   state.neighborData = await neighborResponse.json();
+  if (state.accountMode === "signed_out" && refs.seedsTab) refs.seedsTab.hidden = true;
+  if (state.accountMode === "ready" && refs.seedsTab) refs.seedsTab.hidden = false;
   bindEvents();
   applyLanguage();
   switchView(state.view, false);
@@ -176,6 +183,13 @@ function applyLanguage() {
   refs.translatable.forEach((element) => { const key = element.dataset.i18n; if (text[key]) element.textContent = text[key]; });
   refs.searchInput.placeholder = text.searchPlaceholder;
   refs.seedSearchInput.placeholder = text.seedSearchPlaceholder;
+  document.querySelector("#seedsSurface .surface-intro h2")?.replaceChildren(document.createTextNode(text.seedsTitle));
+  const seedIntro = document.querySelector("#seedsSurface .surface-intro p:last-child");
+  if (seedIntro) seedIntro.textContent = text.seedsIntro;
+  refs.addSeedButton.textContent = text.addSeed;
+  document.querySelector("#seedsSurface .surface-intro .eyebrow")?.replaceChildren(document.createTextNode(text.seedsEyebrow));
+  document.querySelector("#seedsSurface .seed-section-heading .eyebrow")?.replaceChildren(document.createTextNode(text.seedInventoryEyebrow));
+  document.querySelector("#seedsSurface .seed-section-heading .muted")?.replaceChildren(document.createTextNode(text.seedStorageNote));
   refs.searchInput.closest(".controls")?.setAttribute("aria-label", text.filterLabel);
   document.querySelector(".trust-legend")?.setAttribute("aria-label", text.evidenceLegend);
   refs.closeDialog.setAttribute("aria-label", text.close);
@@ -197,7 +211,7 @@ function applyLanguage() {
 }
 
 function switchView(view, persist = true) {
-  state.view = view === "seeds" ? "seeds" : "guide";
+  state.view = view === "seeds" && state.accountMode !== "signed_out" ? "seeds" : "guide";
   refs.guideSurface.hidden = state.view !== "guide";
   refs.seedsSurface.hidden = state.view !== "seeds";
   refs.guideTab.classList.toggle("active", state.view === "guide");
@@ -236,11 +250,12 @@ function buildSeedFilters() {
 }
 
 function getFilteredPlants() {
+  const matched = state.query && window.GardenpediaIdentityResolver
+    ? new Set(window.GardenpediaIdentityResolver.search(state.query, state.plants))
+    : null;
   return state.plants.filter((plant) => {
     const categoryMatch = state.category === "all" || plant.category === state.category;
-    const seed = state.seedInventory[plant.id] || {};
-    const haystack = [plant.name, plant.spanishName, plant.scientificName, plant.variety, seed.packetName, ...(seed.aliases || []), ...(plant.tags || [])].join(" ").toLowerCase();
-    return categoryMatch && (!state.query || haystack.includes(state.query));
+    return categoryMatch && (!state.query || (matched ? matched.has(plant) : false));
   });
 }
 
@@ -261,7 +276,19 @@ function renderPlants() {
   const qualityOverview = document.querySelector("#qualityOverview");
   if (qualityOverview && window.GARDEN_KNOWLEDGE) qualityOverview.innerHTML = window.GARDEN_KNOWLEDGE.overview(state.plants, state.language);
   if (!plants.length) {
-    refs.plantGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.noMatches)}</div>`;
+    refs.plantGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.noMatches)}${state.query ? `<p>${escapeHtml(text.noLibraryMatchRequest)}</p><button type="button" class="seed-action-button secondary" id="requestLibraryIdentity">${escapeHtml(text.requestToGardenpedia)}</button><p id="libraryRequestResult" role="status" aria-live="polite"></p>` : ""}</div>`;
+    refs.plantGrid.querySelector("#requestLibraryIdentity")?.addEventListener("click", async (event) => {
+      const button = event.currentTarget;
+      button.disabled = true;
+      try {
+        await window.GARDENPEDIA_ACCOUNT.createRequest(state.query);
+        refs.plantGrid.querySelector("#libraryRequestResult").textContent = text.requestSent;
+      } catch (error) {
+        console.warn("Gardenpedia request could not be created", error);
+        button.disabled = false;
+        refs.plantGrid.querySelector("#libraryRequestResult").textContent = text.requestFailed;
+      }
+    });
     return;
   }
   plants.forEach((plant) => {
@@ -304,24 +331,32 @@ function buildPlantDetail(plant) {
 
 function buildSeedInventoryCard(plantId) {
   const seed = state.seedInventory[plantId];
-  if (!seed) return "";
   const text = ui[state.language];
+  const packages = state.seedPackages.filter((item) => item.libraryPlantId === plantId && !item.archived);
+  if (!seed && !packages.length) return "";
   const user = state.seedUserState[plantId] || {};
-  const archived = Boolean(user.archived);
   const facts = [];
-  if (seed.germinationRatePct != null) facts.push(`${text.germinationRate}: ${seed.germinationRatePct}%`);
-  if (seed.purityPct != null) facts.push(`${text.purity}: ${seed.purityPct}%`);
-  if (seed.approxSeedCount != null) facts.push(`${text.seedCount}: ${seed.approxSeedCount}`);
-  if (seed.daysToBloom != null) facts.push(`${text.daysToBloom}: ${seed.daysToBloom}`);
-  if (seed.daysToHarvest != null) facts.push(`${text.daysToHarvest}: ${seed.daysToHarvest}`);
-  const personal = archived ? text.packetArchived : text.ownedSeed;
-  const quantity = text.quantity[user.quantityLevel || "unknown"];
-  const packageStatus = text.seedStatus[user.packageStatus || "unknown"];
-  return `<section class="seed-inventory-card"><div><p class="eyebrow">🌰 ${escapeHtml(personal)}</p><h3>${escapeHtml(seed.packetName)}</h3><p>${escapeHtml(seed.brand)}${seed.line ? ` · ${escapeHtml(seed.line)}` : ""}${seed.packetWeight ? ` · ${escapeHtml(seed.packetWeight)}` : ""}</p></div>${!archived ? `<div class="seed-facts"><span>${escapeHtml(packageStatus)}</span><span>${escapeHtml(quantity)}</span>${user.storageLocation ? `<span>${escapeHtml(user.storageLocation)}</span>` : ""}</div>` : ""}${facts.length ? `<div class="seed-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : ""}<small>${escapeHtml(text.packetEvidence)}</small>${seed.note ? `<small>${escapeHtml(seed.note)}</small>` : ""}<button type="button" class="inventory-jump" data-seed-open="${escapeAttribute(plantId)}">🌰 ${escapeHtml(text.openInSeeds)} →</button></section>`;
+  if (seed) {
+    if (seed.germinationRatePct != null) facts.push(`${text.germinationRate}: ${seed.germinationRatePct}%`);
+    if (seed.purityPct != null) facts.push(`${text.purity}: ${seed.purityPct}%`);
+    if (seed.approxSeedCount != null) facts.push(`${text.seedCount}: ${seed.approxSeedCount}`);
+    if (seed.daysToBloom != null) facts.push(`${text.daysToBloom}: ${seed.daysToBloom}`);
+    if (seed.daysToHarvest != null) facts.push(`${text.daysToHarvest}: ${seed.daysToHarvest}`);
+  }
+  const packageCards = packages.map((item) => `<div class="seed-facts"><strong>${escapeHtml(item.seedName)}</strong><span>${escapeHtml(text.seedStatus[item.packageStatus] || text.seedStatus.unknown)}</span><span>${escapeHtml(text.quantity[item.quantityLevel] || text.quantity.unknown)}</span>${item.storageLocation ? `<span>${escapeHtml(item.storageLocation)}</span>` : ""}</div>`).join("");
+  const evidence = seed ? `<h3>${escapeHtml(seed.packetName)}</h3><p>${escapeHtml(seed.brand || "")}${seed.packetWeight ? ` · ${escapeHtml(seed.packetWeight)}` : ""}</p>${facts.length ? `<div class="seed-facts">${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div><small>${escapeHtml(text.packetEvidence)}</small>` : ""}` : "";
+  return `<section class="seed-inventory-card"><div><p class="eyebrow">🌰 ${escapeHtml(text.ownedSeed)}</p>${evidence}${packageCards}</div><button type="button" class="inventory-jump" data-seed-open="${escapeAttribute(plantId)}">🌰 ${escapeHtml(text.openInSeeds)} →</button></section>`;
 }
 
 function getAllSeedRecords() {
-  return [...Object.values(state.seedInventory), ...state.customSeeds];
+  return state.seedPackages.map((item) => ({
+    id: item.id, plantId: item.libraryPlantId || null, libraryPlantId: item.libraryPlantId || null,
+    packetName: item.seedName, brand: item.brand || "", packageStatus: item.packageStatus || "unknown",
+    quantityLevel: item.quantityLevel || "unknown", storageLocation: item.storageLocation || "",
+    purchaseYear: item.purchaseYear || "", lastGerminationTestAt: item.germinationTestDate || "",
+    lastGerminationResultPct: item.germinationResultPct ?? "", userNotes: item.notes || "",
+    archived: Boolean(item.archived), isCustom: true, canonicalPackage: true,
+  }));
 }
 
 function seedRecordId(seed) {
@@ -333,12 +368,11 @@ function getSeedById(seedId) {
 }
 
 function isSeedActive(seedId) {
-  const seed = state.seedInventory[seedId] || getSeedById(seedId);
-  if (!seed) return false;
-  return !state.seedUserState[seedRecordId(seed)]?.archived;
+  return state.seedPackages.some((seed) => seed.libraryPlantId === seedId && !seed.archived);
 }
 
 function mergeSeedRecord(seed) {
+  if (seed.canonicalPackage) return seed;
   const id = seedRecordId(seed);
   const user = state.seedUserState[id] || {};
   return {
@@ -375,6 +409,21 @@ function getFilteredSeeds() {
 
 function renderSeeds() {
   const text = ui[state.language];
+  const notice = document.querySelector("#seedAccountNotice");
+  if (state.accountMode === "signed_out") {
+    if (refs.seedsTab) refs.seedsTab.hidden = true;
+    if (notice) { notice.hidden = false; notice.textContent = text.signInRequired; }
+    refs.seedGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.signInRequired)}</div>`;
+    refs.seedResultCount.textContent = "0";
+    return;
+  }
+  if (state.accountMode === "error") {
+    if (notice) { notice.hidden = false; notice.textContent = text.seedStorageError; }
+    refs.seedGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.seedStorageError)}</div>`;
+    refs.seedResultCount.textContent = "—";
+    return;
+  }
+  renderSeedAccountNotice();
   const seeds = getFilteredSeeds();
   refs.seedGrid.innerHTML = "";
   refs.seedResultCount.textContent = `${seeds.length} ${seeds.length === 1 ? text.seedPackage : text.seedPackages}`;
@@ -383,14 +432,14 @@ function renderSeeds() {
     return;
   }
   seeds.forEach((seed) => {
-    const plant = seed.plantId ? state.plants.find((item) => item.id === seed.plantId) : null;
+    const plant = seed.libraryPlantId ? state.plants.find((item) => item.id === seed.libraryPlantId) : null;
     const emoji = plant?.emoji || "🌰";
     const statusLabel = seed.archived ? text.seedFilters.removed : text.seedStatus[seed.packageStatus];
     const quantityLabel = text.quantity[seed.quantityLevel];
     const locationLabel = seed.storageLocation || text.locationUnset;
     const article = document.createElement("article");
     article.className = "seed-card";
-    article.innerHTML = `<button class="seed-card-main" type="button"><span class="seed-card-emoji">${emoji}</span><span class="seed-card-copy"><h4>${escapeHtml(seed.packetName)}</h4><p>${escapeHtml(seed.brand || text.brand)}${seed.line ? ` · ${escapeHtml(seed.line)}` : ""}</p><span class="seed-status-row"><span class="seed-status-chip ${seed.packageStatus !== "unknown" ? "defined" : ""}">${escapeHtml(statusLabel)}</span><span class="seed-status-chip ${["low", "almost_empty"].includes(seed.quantityLevel) ? "low" : seed.quantityLevel !== "unknown" ? "defined" : ""}">${escapeHtml(quantityLabel)}</span><span class="seed-status-chip ${seed.storageLocation ? "defined" : ""}">⌂ ${escapeHtml(locationLabel)}</span></span></span><span class="seed-card-arrow">→</span></button><div class="seed-card-footer"><small>${seed.isCustom ? escapeHtml(text.localOnly) : escapeHtml(seed.packetWeight || seed.collection || text.packetEvidence)}</small>${plant ? `<button class="seed-link-button" type="button">${escapeHtml(text.viewGuide)} ↗</button>` : ""}</div>`;
+    article.innerHTML = `<button class="seed-card-main" type="button"><span class="seed-card-emoji">${emoji}</span><span class="seed-card-copy"><h4>${escapeHtml(seed.packetName)}</h4><p>${escapeHtml(seed.brand || text.privatePackage)}${plant ? ` · ${escapeHtml(plant.name)}` : ` · ${escapeHtml(text.unresolvedPackage)}`}</p><span class="seed-status-row"><span class="seed-status-chip ${seed.packageStatus !== "unknown" ? "defined" : ""}">${escapeHtml(statusLabel)}</span><span class="seed-status-chip ${["low", "almost_empty"].includes(seed.quantityLevel) ? "low" : seed.quantityLevel !== "unknown" ? "defined" : ""}">${escapeHtml(quantityLabel)}</span><span class="seed-status-chip ${seed.storageLocation ? "defined" : ""}">⌂ ${escapeHtml(locationLabel)}</span></span></span><span class="seed-card-arrow">→</span></button><div class="seed-card-footer"><small>${escapeHtml(text.privatePackage)}</small>${plant ? `<button class="seed-link-button" type="button">${escapeHtml(text.viewGuide)} ↗</button>` : ""}</div>`;
     article.querySelector(".seed-card-main").addEventListener("click", () => openSeedEditor(seed.id));
     article.querySelector(".seed-link-button")?.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -401,8 +450,38 @@ function renderSeeds() {
   });
 }
 
+function renderSeedAccountNotice() {
+  const notice = document.querySelector("#seedAccountNotice");
+  if (!notice) return;
+  const text = ui[state.language];
+  const importedKey = `gardenpediaSeedLegacyImported:${state.accountUserId || "account"}`;
+  const shouldShow = state.accountMode === "ready" && window.GARDENPEDIA_ACCOUNT?.hasLocalLegacyData?.() && !localStorage.getItem(importedKey);
+  notice.hidden = !shouldShow;
+  if (!shouldShow) return;
+  notice.innerHTML = `<strong>${escapeHtml(text.legacyImportTitle)}</strong><p>${escapeHtml(text.legacyImportBody)}</p><button type="button" class="seed-action-button" id="importLegacySeeds">${escapeHtml(text.importLegacy)}</button>`;
+  notice.querySelector("#importLegacySeeds").addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    button.textContent = text.importingLegacy;
+    try {
+      const result = await window.GARDENPEDIA_ACCOUNT.reconcileLegacy();
+      state.seedPackages = result?.inventory?.packages || [];
+      localStorage.setItem(importedKey, "true");
+      renderSeeds();
+      renderPlants();
+    } catch (error) {
+      console.warn("Seed inventory reconciliation failed", error);
+      button.disabled = false;
+      button.textContent = text.importLegacy;
+      notice.insertAdjacentHTML("beforeend", `<p role="alert">${escapeHtml(text.saveError)}</p>`);
+    }
+  });
+}
+
 function openSeedEditor(seedId) {
   state.activeSeedId = seedId || "__new__";
+  const existing = seedId ? getSeedById(seedId) : null;
+  state.selectedSeedIdentityId = existing?.libraryPlantId || existing?.plantId || null;
   refs.seedDetail.innerHTML = buildSeedEditor(seedId);
   bindSeedEditor(seedId);
   refs.seedDialog.showModal();
@@ -429,9 +508,9 @@ function buildSeedEditor(seedId) {
   const archived = merged?.archived || false;
   const plant = seed?.plantId ? state.plants.find((item) => item.id === seed.plantId) : null;
 
-  const identityFields = isNew || isCustom ? `<div class="seed-form-grid"><div class="seed-field"><label for="seedName">${escapeHtml(text.plantVariety)}</label><input id="seedName" name="seedName" value="${escapeAttribute(nameValue)}" autocomplete="off" required /></div><div class="seed-field"><label for="seedBrand">${escapeHtml(text.brand)}</label><input id="seedBrand" name="seedBrand" value="${escapeAttribute(brandValue)}" autocomplete="off" /></div></div><div id="duplicateHint" class="duplicate-hint"></div>` : "";
+  const identityFields = `<div class="seed-form-grid"><div class="seed-field"><label for="seedName">${escapeHtml(text.plantVariety)}</label><input id="seedName" name="seedName" value="${escapeAttribute(nameValue)}" autocomplete="off" required /></div><div class="seed-field"><label for="seedBrand">${escapeHtml(text.brand)}</label><input id="seedBrand" name="seedBrand" value="${escapeAttribute(brandValue)}" autocomplete="off" /></div></div><input id="libraryPlantId" name="libraryPlantId" type="hidden" value="${escapeAttribute(state.selectedSeedIdentityId || "")}" /><div id="identityResolver" class="identity-resolver"></div><div id="duplicateHint" class="duplicate-hint"></div>`;
 
-  return `<div class="seed-editor-header"><p class="eyebrow">GARDEN LIBRARY · SEEDS</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text.personalStateNote)}</p></div>${packetPanel}<form id="seedForm" class="seed-form">${identityFields}<div class="seed-form-grid"><div class="seed-field"><label for="packageStatus">${escapeHtml(text.packageStatus)}</label><select id="packageStatus" name="packageStatus">${selectOptions(text.seedStatus, packageStatus)}</select></div><div class="seed-field"><label for="quantityLevel">${escapeHtml(text.quantityLevel)}</label><select id="quantityLevel" name="quantityLevel">${selectOptions(text.quantity, quantityLevel)}</select></div><div class="seed-field full"><label for="storageLocation">${escapeHtml(text.storageLocation)}</label><input id="storageLocation" name="storageLocation" value="${escapeAttribute(storageLocation)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="purchaseYear">${escapeHtml(text.purchaseYear)}</label><input id="purchaseYear" name="purchaseYear" type="number" min="1900" max="2100" value="${escapeAttribute(purchaseYear)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="germinationTest">${escapeHtml(text.germinationTestDate)}</label><input id="germinationTest" name="germinationTest" type="date" value="${escapeAttribute(germDate)}" /></div><div class="seed-field"><label for="germinationResult">${escapeHtml(text.germinationResult)}</label><input id="germinationResult" name="germinationResult" type="number" min="0" max="100" value="${escapeAttribute(germResult)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field full"><label for="seedNotes">${escapeHtml(text.notes)}</label><textarea id="seedNotes" name="seedNotes" placeholder="${escapeAttribute(text.optional)}">${escapeHtml(notes)}</textarea></div></div>${isCustom ? `<p class="seed-form-note">${escapeHtml(text.customSeedNote)}</p>` : `<p class="seed-form-note">${escapeHtml(text.localOnly)}</p>`}<div class="seed-form-actions"><div>${seed ? archived ? `<button id="restoreSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.restoreInventory)}</button>` : `<button id="removeSeed" class="seed-danger-button" type="button">${escapeHtml(isCustom ? text.deleteCustom : text.removeInventory)}</button>` : ""}</div><div>${plant ? `<button id="editorGuideLink" class="seed-action-button secondary" type="button">${escapeHtml(text.viewGuide)}</button>` : ""}<button id="cancelSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.cancel)}</button><button class="seed-action-button" type="submit">${escapeHtml(text.save)}</button></div></div></form>`;
+  return `<div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · MY SEEDS</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text.personalStateNote)}</p></div>${packetPanel}<form id="seedForm" class="seed-form">${identityFields}<div class="seed-form-grid"><div class="seed-field"><label for="packageStatus">${escapeHtml(text.packageStatus)}</label><select id="packageStatus" name="packageStatus">${selectOptions(text.seedStatus, packageStatus)}</select></div><div class="seed-field"><label for="quantityLevel">${escapeHtml(text.quantityLevel)}</label><select id="quantityLevel" name="quantityLevel">${selectOptions(text.quantity, quantityLevel)}</select></div><div class="seed-field full"><label for="storageLocation">${escapeHtml(text.storageLocation)}</label><input id="storageLocation" name="storageLocation" value="${escapeAttribute(storageLocation)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="purchaseYear">${escapeHtml(text.purchaseYear)}</label><input id="purchaseYear" name="purchaseYear" type="number" min="1900" max="2100" value="${escapeAttribute(purchaseYear)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field"><label for="germinationTest">${escapeHtml(text.germinationTestDate)}</label><input id="germinationTest" name="germinationTest" type="date" value="${escapeAttribute(germDate)}" /></div><div class="seed-field"><label for="germinationResult">${escapeHtml(text.germinationResult)}</label><input id="germinationResult" name="germinationResult" type="number" min="0" max="100" value="${escapeAttribute(germResult)}" placeholder="${escapeAttribute(text.optional)}" /></div><div class="seed-field full"><label for="seedNotes">${escapeHtml(text.notes)}</label><textarea id="seedNotes" name="seedNotes" placeholder="${escapeAttribute(text.optional)}">${escapeHtml(notes)}</textarea></div></div><p class="seed-form-note">${escapeHtml(text.personalStateNote)}</p><p id="seedSaveError" role="alert" hidden></p><div class="seed-form-actions"><div>${seed ? archived ? `<button id="restoreSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.restoreInventory)}</button>` : `<button id="removeSeed" class="seed-danger-button" type="button">${escapeHtml(text.removeInventory)}</button>` : ""}</div><div>${plant ? `<button id="editorGuideLink" class="seed-action-button secondary" type="button">${escapeHtml(text.viewGuide)}</button>` : ""}<button id="cancelSeed" class="seed-action-button secondary" type="button">${escapeHtml(text.cancel)}</button><button class="seed-action-button" type="submit">${escapeHtml(text.save)}</button></div></div></form>`;
 }
 
 function buildPacketEvidencePanel(seed) {
@@ -452,6 +531,41 @@ function bindSeedEditor(seedId) {
   const seed = seedId ? getSeedById(seedId) : null;
   const nameInput = refs.seedDetail.querySelector("#seedName");
   const duplicateHint = refs.seedDetail.querySelector("#duplicateHint");
+  const resolver = refs.seedDetail.querySelector("#identityResolver");
+  const identityInput = refs.seedDetail.querySelector("#libraryPlantId");
+
+  const renderIdentityMatches = () => {
+    if (!nameInput || !resolver) return;
+    const candidates = window.GardenpediaIdentityResolver?.search(nameInput.value, state.plants) || [];
+    const selected = identityInput?.value || "";
+    const linked = state.plants.find((plant) => plant.id === selected);
+    const heading = candidates.length ? `<p class="eyebrow">${escapeHtml(text.identitySuggestions)}</p>` : `<p>${escapeHtml(text.noIdentityMatch)}</p>`;
+    const options = candidates.slice(0, 6).map((plant) => `<button type="button" class="identity-candidate ${plant.id === selected ? "selected" : ""}" data-identity-id="${escapeAttribute(plant.id)}"><strong>${escapeHtml(plant.name || plant.commonName || plant.id)}</strong><span>${escapeHtml([plant.cultivar || plant.variety, plant.scientificName].filter(Boolean).join(" · "))}</span></button>`).join("");
+    const request = candidates.length ? "" : `<button type="button" class="seed-action-button secondary" id="requestToGardenpedia">${escapeHtml(text.requestToGardenpedia)}</button>`;
+    resolver.innerHTML = `${linked ? `<p class="identity-selected">${escapeHtml(text.selectedIdentity)}: ${escapeHtml(linked.name || linked.commonName || linked.id)} <button type="button" id="clearSeedIdentity">×</button></p>` : ""}${nameInput.value.trim() ? `${heading}<div class="identity-candidate-list">${options}</div>${request}` : ""}<p id="gardenpediaRequestResult" class="seed-form-note" aria-live="polite"></p>`;
+    resolver.querySelectorAll("[data-identity-id]").forEach((button) => button.addEventListener("click", () => {
+      identityInput.value = button.dataset.identityId;
+      state.selectedSeedIdentityId = button.dataset.identityId;
+      renderIdentityMatches();
+    }));
+    resolver.querySelector("#clearSeedIdentity")?.addEventListener("click", () => {
+      identityInput.value = "";
+      state.selectedSeedIdentityId = null;
+      renderIdentityMatches();
+    });
+    resolver.querySelector("#requestToGardenpedia")?.addEventListener("click", async (event) => {
+      const button = event.currentTarget;
+      button.disabled = true;
+      try {
+        await window.GARDENPEDIA_ACCOUNT.createRequest(nameInput.value.trim());
+        resolver.querySelector("#gardenpediaRequestResult").textContent = text.requestSent;
+      } catch (error) {
+        console.warn("Gardenpedia request could not be created", error);
+        button.disabled = false;
+        resolver.querySelector("#gardenpediaRequestResult").textContent = text.saveError;
+      }
+    });
+  };
 
   const refreshDuplicateHint = () => {
     if (!nameInput || !duplicateHint) return;
@@ -460,7 +574,9 @@ function bindSeedEditor(seedId) {
     duplicateHint.textContent = duplicate ? `${text.duplicateWarning}${duplicate.packetName} · ${duplicate.brand || ""}` : "";
   };
   nameInput?.addEventListener("input", refreshDuplicateHint);
+  nameInput?.addEventListener("input", renderIdentityMatches);
   refreshDuplicateHint();
+  renderIdentityMatches();
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -478,64 +594,76 @@ function bindSeedEditor(seedId) {
   });
 }
 
-function saveSeedEditor(seedId, form) {
+async function saveSeedEditor(seedId, form) {
   const data = new FormData(form);
-  let id = seedId;
-  let seed = id ? getSeedById(id) : null;
-  if (!seed) {
-    const packetName = String(data.get("seedName") || "").trim();
-    if (!packetName) {
-      form.querySelector("#seedName")?.focus();
-      return;
-    }
-    id = `custom-${Date.now()}`;
-    seed = { id, packetName, brand: String(data.get("seedBrand") || "").trim(), aliases: [], createdInLab: true };
-    state.customSeeds.push(seed);
-  } else if (seed.id) {
-    seed.packetName = String(data.get("seedName") || seed.packetName).trim() || seed.packetName;
-    seed.brand = String(data.get("seedBrand") || "").trim();
+  const packetName = String(data.get("seedName") || "").trim();
+  if (!packetName) { form.querySelector("#seedName")?.focus(); return; }
+  const saveButton = form.querySelector('button[type="submit"]');
+  const error = form.querySelector("#seedSaveError");
+  if (saveButton) saveButton.disabled = true;
+  if (error) error.hidden = true;
+  try {
+    const current = seedId ? getSeedById(seedId) : null;
+    await window.GARDENPEDIA_ACCOUNT.savePackage({
+      id: current?.id || null,
+      libraryPlantId: String(data.get("libraryPlantId") || "") || null,
+      seedName: packetName,
+      brand: String(data.get("seedBrand") || "").trim() || null,
+      packageStatus: String(data.get("packageStatus") || "unknown"),
+      quantityLevel: String(data.get("quantityLevel") || "unknown"),
+      storageLocation: String(data.get("storageLocation") || "").trim() || null,
+      purchaseYear: String(data.get("purchaseYear") || "").trim() || null,
+      germinationTestDate: String(data.get("germinationTest") || "") || null,
+      germinationResultPct: data.get("germinationResult") === "" ? null : Number(data.get("germinationResult")),
+      notes: String(data.get("seedNotes") || "").trim() || null,
+      archived: false,
+    });
+    const refreshed = await window.GARDENPEDIA_ACCOUNT.reloadPackages();
+    state.seedPackages = Array.isArray(refreshed.packages) ? refreshed.packages : [];
+    refs.seedDialog.close();
+    renderSeeds();
+    renderPlants();
+  } catch (saveError) {
+    console.warn("Canonical seed package save failed", saveError);
+    if (error) { error.textContent = ui[state.language].saveError; error.hidden = false; }
+    if (saveButton) saveButton.disabled = false;
   }
-
-  state.seedUserState[id] = {
-    ...(state.seedUserState[id] || {}),
-    packageStatus: String(data.get("packageStatus") || "unknown"),
-    quantityLevel: String(data.get("quantityLevel") || "unknown"),
-    storageLocation: String(data.get("storageLocation") || "").trim(),
-    purchaseYear: String(data.get("purchaseYear") || "").trim(),
-    lastGerminationTestAt: String(data.get("germinationTest") || ""),
-    lastGerminationResultPct: data.get("germinationResult") === "" ? "" : Number(data.get("germinationResult")),
-    notes: String(data.get("seedNotes") || "").trim(),
-    archived: false,
-  };
-  persistSeedLabState();
-  refs.seedDialog.close();
-  renderSeeds();
-  renderPlants();
 }
 
-function removeSeed(seedId) {
+async function removeSeed(seedId) {
   const seed = getSeedById(seedId);
   if (!seed) return;
-  if (seed.id) {
-    state.customSeeds = state.customSeeds.filter((item) => item.id !== seedId);
-    delete state.seedUserState[seedId];
-  } else {
-    state.seedUserState[seedId] = { ...(state.seedUserState[seedId] || {}), archived: true };
-  }
-  persistSeedLabState();
-  refs.seedDialog.close();
-  renderSeeds();
-  renderPlants();
+  await updateSeedPackageArchived(seed, true);
 }
 
-function restoreSeed(seedId) {
-  state.seedUserState[seedId] = { ...(state.seedUserState[seedId] || {}), archived: false };
-  persistSeedLabState();
-  refs.seedDialog.close();
-  state.seedFilter = "all";
-  buildSeedFilters();
-  renderSeeds();
-  renderPlants();
+async function restoreSeed(seedId) {
+  const seed = getSeedById(seedId);
+  if (!seed) return;
+  await updateSeedPackageArchived(seed, false);
+}
+
+async function updateSeedPackageArchived(seed, archived) {
+  try {
+    await window.GARDENPEDIA_ACCOUNT.savePackage({
+      id: seed.id, libraryPlantId: seed.libraryPlantId || null, seedName: seed.packetName,
+      brand: seed.brand || null, packageStatus: seed.packageStatus || "unknown",
+      quantityLevel: seed.quantityLevel || "unknown", storageLocation: seed.storageLocation || null,
+      purchaseYear: seed.purchaseYear || null, germinationTestDate: seed.lastGerminationTestAt || null,
+      germinationResultPct: seed.lastGerminationResultPct === "" ? null : seed.lastGerminationResultPct,
+      notes: seed.userNotes || null, archived,
+    });
+    const result = await window.GARDENPEDIA_ACCOUNT.reloadPackages();
+    state.seedPackages = Array.isArray(result.packages) ? result.packages : [];
+    refs.seedDialog.close();
+    if (!archived) state.seedFilter = "all";
+    buildSeedFilters();
+    renderSeeds();
+    renderPlants();
+  } catch (error) {
+    console.warn("Canonical seed package update failed", error);
+    const notice = document.querySelector("#seedAccountNotice");
+    if (notice) { notice.hidden = false; notice.textContent = ui[state.language].saveError; }
+  }
 }
 
 function findDuplicateSeed(value, editingId) {
@@ -549,8 +677,7 @@ function normalizeSeedName(value = "") {
 }
 
 function persistSeedLabState() {
-  localStorage.setItem("gardenLabsSeedStateV1", JSON.stringify(state.seedUserState));
-  localStorage.setItem("gardenLabsCustomSeedsV1", JSON.stringify(state.customSeeds));
+  // Existing localStorage is preserved for explicit reconciliation only.
 }
 
 function selectOptions(labels, selected) {

@@ -89,6 +89,46 @@
 
   window.fetch = async (input, init = {}) => {
     const url = typeof input === "string" ? input : input?.url || "";
+    if (url === "/api/gardenpedia/seed-packages") {
+      try {
+        const method = (init.method || "GET").toUpperCase();
+        if (method === "GET") return rpc("garden_seed_packages_list");
+        const payload = JSON.parse(init.body || "{}");
+        if (payload.operation === "save" && payload.package) {
+          return rpc("garden_seed_package_save", { p_package: payload.package });
+        }
+        if (payload.operation === "reconcile") {
+          return rpc("garden_seed_packages_reconcile_legacy", {
+            p_local_state: payload.seedUserState || {},
+            p_local_custom: payload.customSeeds || [],
+          });
+        }
+        return jsonResponse({ error: "unsupported_operation" }, 400);
+      } catch (error) {
+        console.warn("Garden X seed package storage unavailable", error);
+        return jsonResponse({ error: "storage_unavailable" }, 503);
+      }
+    }
+    if (url === "/api/gardenpedia/machines") {
+      if ((init.method || "GET").toUpperCase() !== "GET") {
+        return jsonResponse({ error: "unsupported_operation" }, 405);
+      }
+      return rpc("gardenpedia_get_my_machines");
+    }
+    if (url === "/api/gardenpedia/requests") {
+      try {
+        const method = (init.method || "GET").toUpperCase();
+        if (method === "GET") return rpc("gardenpedia_my_requests");
+        const payload = JSON.parse(init.body || "{}");
+        if (payload.operation !== "create" || typeof payload.requestedText !== "string") {
+          return jsonResponse({ error: "unsupported_operation" }, 400);
+        }
+        return rpc("gardenpedia_create_request", { p_requested_text: payload.requestedText });
+      } catch (error) {
+        console.warn("Gardenpedia request storage unavailable", error);
+        return jsonResponse({ error: "storage_unavailable" }, 503);
+      }
+    }
     if (url === "/api/machine-state") {
       try {
         const method = (init.method || "GET").toUpperCase();

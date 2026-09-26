@@ -61,6 +61,8 @@ const publicFiles = [
   "machines-v1.css",
   "machines-v1.js",
   "supabase-lab-transport.js",
+  "identity-resolver-v1.js",
+  "gardenpedia-account-v1.js",
   "manifest.json",
 ];
 
@@ -395,8 +397,12 @@ function prepare() {
     .replace(/<script src="\.\/vercel-storage-loader-v1[^>]*><\/script>/, "")
     .replace(
       /<script src="\.\/machines-v1[^>]*><\/script>/,
-      '<script src="./machines-v1.js?v=1.7" defer></script>',
+      '<script src="./machines-v1.js?v=2" defer></script>',
     )
+    .replace(/<script src="\.\/supabase-lab-transport[^>]*><\/script>/, '<script src="./supabase-lab-transport.js?v=2" defer></script>')
+    .replace(/<script src="\.\/identity-resolver-v1[^>]*><\/script>/, '<script src="./identity-resolver-v1.js?v=1" defer></script>')
+    .replace(/<script src="\.\/gardenpedia-account-v1[^>]*><\/script>/, '<script src="./gardenpedia-account-v1.js?v=1" defer></script>')
+    .replace(/<script src="\.\/app\.js[^>]*><\/script>/, '<script src="./app.js?v=1.3" defer></script>')
     .replace(/<script src="\.\/demo-shell[^>]*><\/script>/, "")
     .replace(/<script src="\.\/homegrown-source-comparison[^>]*><\/script>/, "")
     .replace(/<script src="\.\/seed-purchase-date[^>]*><\/script>/, "")
@@ -444,10 +450,6 @@ function prepare() {
     .replaceAll("gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1")
     .replaceAll("gardenLabsLibraryView", "gardenpediaPublicLibraryView")
     .replaceAll("growGuideLanguage", "gardenpediaPublicLanguage")
-    .replaceAll(
-      "if (window.GARDEN_LABS_STORAGE_HYDRATE) await window.GARDEN_LABS_STORAGE_HYDRATE(state);",
-      "",
-    )
     .replaceAll("GARDEN LABS · EXPERIMENTAL", "GARDENPEDIA · PUBLIC")
     .replaceAll("Active lab · User Zero", "Public knowledge library")
     .replaceAll("Laboratorio activo · User Zero", "Biblioteca pública")

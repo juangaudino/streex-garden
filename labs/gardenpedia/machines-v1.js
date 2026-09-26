@@ -1,83 +1,125 @@
 (() => {
-  let storageKey = "garden-x-machines-v1";
-  let pendingKey = "garden-x-machines-pending-v1";
-  const ENDPOINT = "/api/machine-state";
-  const PERFORMANCE_ENDPOINT = "/api/gardenpedia-machine-performance";
-  const performanceCache = new Map();
+  const ENDPOINT = "/api/gardenpedia/machines";
+  const $ = (selector) => document.querySelector(selector);
+  const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[char]));
+  const language = () => document.documentElement.lang === "en" ? "en" : "es";
+  const copy = {
+    en: { title: "My Machines", intro: "Your Garden X systems, with public model specifications kept separate from each private unit.", unit: "MY UNIT", noModel: "No linked public model", custom: "Custom Garden X system", garden: "Garden", positions: "Positions", status: "Status", active: "Active", inactive: "Inactive", modelSpecs: "Public model specifications", source: "Model source", empty: "No Garden X system instances are available for this account.", unavailable: "Canonical machine data is temporarily unavailable.", synced: "Garden X system instances", loading: "Connecting to Garden X…", modelUnknown: "This unit has no proven Gardenpedia model link." },
+    es: { title: "Mis máquinas", intro: "Tus sistemas de Garden X, con las especificaciones públicas del modelo separadas de cada unidad privada.", unit: "MI UNIDAD", noModel: "Sin modelo público vinculado", custom: "Sistema personalizado de Garden X", garden: "Jardín", positions: "Posiciones", status: "Estado", active: "Activo", inactive: "Inactivo", modelSpecs: "Especificaciones públicas del modelo", source: "Fuente del modelo", empty: "Esta cuenta no tiene instancias de sistemas disponibles en Garden X.", unavailable: "Los datos canónicos de máquinas no están disponibles temporalmente.", synced: "Instancias de sistemas de Garden X", loading: "Conectando con Garden X…", modelUnknown: "Esta unidad no tiene un vínculo demostrado a un modelo Gardenpedia." },
+  };
+
   let catalog = null;
   let instances = [];
-  let syncMode = "checking";
-  const $ = (selector) => document.querySelector(selector);
-  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
-  const lang = () => document.documentElement.lang === "en" ? "en" : "es";
-  const copy = {
-    es: { machines: "Máquinas", subtitle: "Hardware de cultivo que posees: especificaciones del modelo separadas de los datos y evaluación de cada unidad.", inventory: "INVENTARIO USER ZERO", onHand: "en casa", ordered: "en camino", active: "Activa", idle: "Inactiva", maintenance: "Mantenimiento", unknown: "Sin definir", retired: "Retirada", orderedStatus: "En camino", onHandStatus: "En casa", noRating: "Sin calificar", pods: "pods", positions: "posiciones", myMachine: "MI MÁQUINA", myUnit: "Mi unidad", ownership: "Propiedad", operation: "Operación", purchaseDate: "Fecha de compra", seller: "Lugar / vendedor", channel: "Canal", price: "Precio pagado (USD)", received: "Fecha recibida", firstUse: "Primer uso", location: "Ubicación", evaluation: "Mi evaluación", overall: "Overall Rating", buyAgain: "¿La comprarías otra vez?", notes: "Notas", specs: "Especificaciones del modelo", tank: "Tanque", color: "Color", light: "Luz", save: "Guardar cambios", online: "Online", physical: "Tienda física", yes: "Sí", maybe: "Quizás", no: "No", synced: "Estado personal · sincronizado en almacenamiento privado", local: "Sin sincronización · guardado en este dispositivo", checking: "Conectando almacenamiento…", modelSource: "Fuente del modelo", now:"Ahora", currentGarden:"Jardín actual", noGarden:"Sin jardín vinculado", gardenId:"Garden / Cycle ID", gardenSince:"Desde", machineMaintenance:"Mantenimiento de máquina", addMaintenance:"Registrar mantenimiento", maintenanceType:"Tipo", maintenanceDate:"Fecha", maintenanceNote:"Nota", cleaning:"Limpieza", waterChange:"Cambio completo de agua", pump:"Bomba / circulación", lightCare:"Luz / estructura", partReplacement:"Reemplazo de pieza", inspection:"Revisión", history:"Historial de la unidad", noMaintenance:"Todavía no hay eventos de mantenimiento.", noHistory:"Todavía no hay eventos históricos.", saveGarden:"Guardar vínculo", unlinkGarden:"Quitar vínculo", days:"días", events:"eventos", currentCycle:"ciclo actual", performance:"Rendimiento", evidence:"Evidencia", available:"Disponible", buildingEvidence:"Construyendo evidencia", notTracked:"Aún no registrado", cycleAge:"Edad del vínculo", maintenanceEvidence:"Eventos de mantenimiento", cleaningInterval:"Intervalo promedio de limpieza", completedCycles:"Ciclos completados", germinationRate:"Germinación", harvestActivity:"Cosechas", incidents:"Incidencias", canonicalGarden:"Garden X canónico", canonicalEvidence:"Evidencia canónica de Garden X", evidenceUnavailable:"Evidencia canónica no disponible", evidenceGrowing:"Garden X irá construyendo evidencia a medida que registres ciclos y resultados reales. Las métricas aparecerán cuando exista información suficiente." },
-    en: { machines: "Machines", subtitle: "Growing hardware you own: model specifications kept separate from each unit's personal data and evaluation.", inventory: "USER ZERO INVENTORY", onHand: "on hand", ordered: "ordered", active: "Active", idle: "Idle", maintenance: "Maintenance", unknown: "Not set", retired: "Retired", orderedStatus: "Ordered", onHandStatus: "On hand", noRating: "Not rated", pods: "pods", positions: "positions", myMachine: "MY MACHINE", myUnit: "My unit", ownership: "Ownership", operation: "Operation", purchaseDate: "Purchase date", seller: "Seller / place", channel: "Channel", price: "Price paid (USD)", received: "Received date", firstUse: "First use", location: "Location", evaluation: "My rating", overall: "Overall Rating", buyAgain: "Would buy again?", notes: "Notes", specs: "Model Specs", tank: "Tank", color: "Color", light: "Lighting", save: "Save changes", online: "Online", physical: "Physical store", yes: "Yes", maybe: "Maybe", no: "No", synced: "Personal state · synced in private storage", local: "Sync unavailable · saved on this device", checking: "Connecting storage…", modelSource: "Model source", now:"Now", currentGarden:"Current Garden", noGarden:"No garden linked", gardenId:"Garden / Cycle ID", gardenSince:"Since", machineMaintenance:"Machine Maintenance", addMaintenance:"Log maintenance", maintenanceType:"Type", maintenanceDate:"Date", maintenanceNote:"Note", cleaning:"Cleaning", waterChange:"Full water change", pump:"Pump / circulation", lightCare:"Light / structure", partReplacement:"Part replacement", inspection:"Inspection", history:"Unit History", noMaintenance:"No maintenance events yet.", noHistory:"No history events yet.", saveGarden:"Save link", unlinkGarden:"Unlink", days:"days", events:"events", currentCycle:"current cycle", performance:"Performance", evidence:"Evidence", available:"Available", buildingEvidence:"Building evidence", notTracked:"Not tracked yet", cycleAge:"Garden link age", maintenanceEvidence:"Maintenance events", cleaningInterval:"Average cleaning interval", completedCycles:"Completed cycles", germinationRate:"Germination", harvestActivity:"Harvests", incidents:"Incidents", canonicalGarden:"Canonical Garden X", canonicalEvidence:"Canonical Garden X evidence", evidenceUnavailable:"Canonical evidence unavailable", evidenceGrowing:"Garden X will build evidence as you record real cycles and outcomes. Metrics will appear when enough information exists." }
-  };
-  function safeRead(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || "null") ?? fallback; } catch { return fallback; } }
-  function persistLocal() { try { localStorage.setItem(storageKey, JSON.stringify(instances)); } catch {} }
-  function model(instance) { return catalog.models.find((item) => item.id === instance.modelId); }
-  function ownershipLabel(value) { const t = copy[lang()]; return value === "ordered" ? t.orderedStatus : value === "retired" ? t.retired : t.onHandStatus; }
-  function operationLabel(value) { const t = copy[lang()]; return ({ active:t.active, idle:t.idle, maintenance:t.maintenance, unknown:t.unknown, retired:t.retired, "n/a":"N/A" })[value] || t.unknown; }
-  function stars(value) { return value ? `★ ${Number(value).toFixed(1)}` : copy[lang()].noRating; }
-  function setMachineView(on) {
-    const ms=$("#machinesSurface"), gs=$("#guideSurface"), ss=$("#seedsSurface"), mt=$("#machinesTab"), gt=$("#guideTab"), st=$("#seedsTab"); if(!ms) return;
-    ms.hidden=!on;
-    if(on){ gs.hidden=true; ss.hidden=true; mt.classList.add("active"); mt.setAttribute("aria-pressed","true"); [gt,st].forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")}); localStorage.setItem("gardenpediaPublicLibraryView","machines"); updateHeader(); render(); }
-    else { mt.classList.remove("active"); mt.setAttribute("aria-pressed","false"); }
+  let mode = "loading";
+
+  function model(instance) {
+    return catalog?.models?.find((item) => item.id === instance.modelId) || null;
   }
-  function updateHeader(){ if(localStorage.getItem("gardenpediaPublicLibraryView")!=="machines") return; const t=copy[lang()]; $("#productEyebrow").textContent="GARDEN LABS · MACHINES"; $("#productTitle").textContent=t.machines; const intro=$("#machinesSurface .surface-intro p:last-child"); if(intro) intro.textContent=t.subtitle; const eyebrow=$("#machinesSurface .seed-section-heading .eyebrow"); if(eyebrow) eyebrow.textContent=t.inventory; const note=$("#machineStorageNote"); if(note) note.textContent=t[syncMode] || t.local; }
-  function bindNav(){ $("#machinesTab")?.addEventListener("click",()=>setMachineView(true)); ["#guideTab","#seedsTab"].forEach(s=>$(s)?.addEventListener("click",()=>setMachineView(false))); document.querySelectorAll("[data-language]").forEach(b=>b.addEventListener("click",()=>setTimeout(()=>{updateHeader();render()},0))); if(localStorage.getItem("gardenpediaPublicLibraryView")==="machines") setMachineView(true); }
-  async function post(payload){ const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),cache:"no-store"}); if(!response.ok) throw new Error(`machine storage ${response.status}`); return response.json(); }
-  async function hydrate(){
-    const local=safeRead(storageKey, null); if(Array.isArray(local)) instances=local;
-    try{
-      const response=await fetch(ENDPOINT,{cache:"no-store"}); if(!response.ok) throw new Error("machine storage unavailable"); const remote=await response.json();
-      if(Array.isArray(remote.instances)){ const byId=Object.fromEntries(instances.map(i=>[i.id,i])); remote.instances.forEach(r=>{ if(byId[r.id]) Object.assign(byId[r.id],r); else byId[r.id]=r; }); instances=Object.values(byId); }
-      syncMode="synced";
-      const pending=safeRead(pendingKey,[]); const remaining=[]; for(const operation of pending){ try{await post(operation)}catch{remaining.push(operation)} } localStorage.setItem(pendingKey,JSON.stringify(remaining)); if(remaining.length) syncMode="local";
-    }catch(error){ console.warn("Machines private storage unavailable; using local cache",error); syncMode="local"; }
-    persistLocal(); updateHeader(); render();
+
+  function statusLabel(instance, t) {
+    return instance.status === "active" ? t.active : t.inactive;
   }
-  async function saveInstance(instance){ persistLocal(); const operation={operation:"save",instance}; try{await post(operation);syncMode="synced";}catch(error){console.warn("Machine saved locally; private sync pending",error);syncMode="local";const pending=safeRead(pendingKey,[]).filter(x=>x.instance?.id!==instance.id);pending.push(operation);localStorage.setItem(pendingKey,JSON.stringify(pending));} updateHeader(); render(); }
-  async function load(){
-    const session = await window.GARDEN_X_AUTH?.getSession?.();
+
+  function render() {
+    const grid = $("#machineGrid");
+    if (!grid || !catalog) return;
+    const t = copy[language()];
+    const note = $("#machineStorageNote");
+    if (note) note.textContent = t[mode] || t.unavailable;
+    $("#machineResultCount").textContent = `${instances.length} ${t.title.toLocaleLowerCase()}`;
+    if (mode === "error") {
+      grid.innerHTML = `<div class="empty-state">${t.unavailable}</div>`;
+      return;
+    }
+    if (!instances.length) {
+      grid.innerHTML = `<div class="empty-state">${t.empty}</div>`;
+      return;
+    }
+    grid.innerHTML = instances.map((instance, index) => {
+      const definition = model(instance);
+      const brand = definition?.brand || t.custom;
+      const name = definition?.name || instance.name || t.custom;
+      const modelName = definition?.model || t.noModel;
+      const pods = definition?.pods ?? instance.positions;
+      return `<article class="machine-card"><button class="machine-card-button" type="button" data-machine-index="${index}"><div class="machine-photo machine-${escapeHtml(definition?.color || "gray")}"><span>${escapeHtml(brand)}</span>${pods ? `<strong>${escapeHtml(pods)}</strong><small>${definition?.pods ? "PODS" : escapeHtml(t.positions.toUpperCase())}</small>` : ""}</div><div><p class="machine-brand">${escapeHtml(instance.gardenName || t.garden)}</p><h4>${escapeHtml(name)}</h4><p class="muted">${escapeHtml(modelName)}</p><p class="muted">${escapeHtml(instance.gardenName || "")} · ${escapeHtml(statusLabel(instance, t))}</p></div><span class="machine-card-arrow">→</span></button></article>`;
+    }).join("");
+    grid.querySelectorAll("[data-machine-index]").forEach((button) => button.addEventListener("click", () => {
+      open(instances[Number(button.dataset.machineIndex)]);
+    }));
+  }
+
+  function open(instance) {
+    const definition = model(instance);
+    const t = copy[language()];
+    const detail = $("#machineDetail");
+    if (!detail) return;
+    const specs = definition ? [
+      definition.pods != null ? `<span><b>${escapeHtml(t.positions)}</b> ${escapeHtml(definition.pods)}</span>` : "",
+      definition.tankLiters != null ? `<span><b>${escapeHtml(language() === "en" ? "Tank" : "Tanque")}</b> ${escapeHtml(typeof definition.tankLiters === "object" ? `${definition.tankLiters.min}–${definition.tankLiters.max}` : definition.tankLiters)} L</span>` : "",
+      definition.color ? `<span><b>${escapeHtml(language() === "en" ? "Color" : "Color")}</b> ${escapeHtml(definition.color)}</span>` : "",
+      definition.light ? `<span><b>${escapeHtml(language() === "en" ? "Lighting" : "Iluminación")}</b> ${escapeHtml(definition.light.watts ? `${definition.light.watts} W` : (definition.light.modes || []).join(" / ") || "—")}</span>` : "",
+    ].filter(Boolean).join("") : `<p class="muted">${escapeHtml(t.modelUnknown)}</p>`;
+    detail.innerHTML = `<div class="machine-detail-head"><div class="machine-photo machine-${escapeHtml(definition?.color || "gray")}"><span>${escapeHtml(definition?.brand || t.custom)}</span>${definition?.pods ? `<strong>${escapeHtml(definition.pods)}</strong><small>PODS</small>` : ""}</div><div><p class="eyebrow">${escapeHtml(t.unit)}</p><h2>${escapeHtml(instance.name || definition?.name || t.custom)}</h2><p>${escapeHtml(definition?.model || t.noModel)}</p></div></div><section class="machine-evolution"><div class="machine-now-grid"><div class="machine-now-card"><span>${escapeHtml(t.garden)}</span><strong>${escapeHtml(instance.gardenName || "—")}</strong></div><div class="machine-now-card"><span>${escapeHtml(t.positions)}</span><strong>${escapeHtml(instance.positions ?? "—")}</strong></div><div class="machine-now-card"><span>${escapeHtml(t.status)}</span><strong>${escapeHtml(statusLabel(instance, t))}</strong></div></div></section>${definition ? `<section class="machine-evolution-panel"><h3>${escapeHtml(t.modelSpecs)}</h3><div class="machine-specs">${specs}</div><p class="machine-source"><a href="${escapeHtml(definition.referenceUrl || definition.purchaseUrl || "#")}" target="_blank" rel="noreferrer">${escapeHtml(t.source)} ↗</a></p></section>` : `<section class="machine-evolution-panel"><h3>${escapeHtml(t.modelSpecs)}</h3>${specs}</section>`}`;
+    $("#machineDialog")?.showModal();
+  }
+
+  async function load() {
+    const t = copy[language()];
     const tab = $("#machinesTab");
-    if (!session) { if (tab) tab.hidden = true; return; }
-    const ownerId = session.user?.id || "session";
-    storageKey = `garden-x-machines-v1:${ownerId}`;
-    pendingKey = `garden-x-machines-pending-v1:${ownerId}`;
-    if (tab) tab.hidden = false;
-    catalog=await fetch("./data/machine-inventory-v1.json").then(r=>r.json());
-    instances=structuredClone(catalog.instances || []);
-    bindNav();
-    await hydrate();
+    const session = await window.GARDEN_X_AUTH?.getSession?.();
+    if (!session?.user?.id) {
+      if (tab) tab.hidden = true;
+      return;
+    }
+    catalog = await fetch("./data/machine-inventory-v1.json").then((response) => response.json());
+    try {
+      const response = await fetch(ENDPOINT, { cache: "no-store" });
+      if (!response.ok) throw new Error(`machine list ${response.status}`);
+      const result = await response.json();
+      instances = Array.isArray(result.instances) ? result.instances : [];
+      mode = "synced";
+      if (tab) tab.hidden = false;
+    } catch (error) {
+      console.warn("Gardenpedia could not load canonical Garden X systems", error);
+      instances = [];
+      mode = "error";
+    }
+    render();
+    $("#machinesTab")?.addEventListener("click", () => setMachineView(true));
+    ["#guideTab", "#seedsTab"].forEach((selector) => $(selector)?.addEventListener("click", () => setMachineView(false)));
+    document.querySelectorAll("[data-language]").forEach((button) => button.addEventListener("click", () => setTimeout(render, 0)));
+    if (localStorage.getItem("gardenpediaPublicLibraryView") === "machines") setMachineView(true);
   }
-  function render(){
-    const grid=$("#machineGrid"); if(!grid||!catalog)return; const t=copy[lang()]; const totalPods=catalog.models.reduce((a,m)=>a+m.pods,0); const onHand=instances.filter(i=>i.ownershipStatus==="on_hand").length; const ordered=instances.filter(i=>i.ownershipStatus==="ordered").length;
-    $("#machineResultCount").textContent=`${instances.length} ${t.machines.toLowerCase()} · ${totalPods} ${t.positions} · ${onHand} ${t.onHand} · ${ordered} ${t.ordered}`;
-    grid.innerHTML=instances.map(i=>{const m=model(i);return `<article class="machine-card"><button class="machine-card-button" data-machine="${esc(i.id)}"><div class="machine-photo machine-${esc(m.color)}"><span>${esc(m.brand)}</span><strong>${m.pods}</strong><small>PODS</small></div><div><p class="machine-brand">${esc(m.brand)}</p><h4>${esc(m.name)}</h4><p class="muted">${esc(m.model)}</p></div><div class="machine-card-meta"><span>${m.pods} ${t.pods}</span><span class="machine-status ${esc(i.ownershipStatus)}">${esc(ownershipLabel(i.ownershipStatus))}</span><span>${esc(operationLabel(i.operationalStatus))}</span><span>${esc(stars(i.overallRating))}</span></div></button></article>`}).join(""); grid.querySelectorAll("[data-machine]").forEach(b=>b.onclick=()=>open(b.dataset.machine));
+
+  function setMachineView(on) {
+    const machines = $("#machinesSurface");
+    if (!machines) return;
+    machines.hidden = !on;
+    if (on) {
+      $("#guideSurface").hidden = true;
+      $("#seedsSurface").hidden = true;
+      $("#machinesTab").classList.add("active");
+      $("#machinesTab").setAttribute("aria-pressed", "true");
+      [$("#guideTab"), $("#seedsTab")].forEach((button) => {
+        button.classList.remove("active"); button.setAttribute("aria-pressed", "false");
+      });
+      localStorage.setItem("gardenpediaPublicLibraryView", "machines");
+      const t = copy[language()];
+      $("#productEyebrow").textContent = "GARDENPEDIA · MACHINES";
+      $("#productTitle").textContent = t.title;
+      const intro = $("#machinesSurface .surface-intro p:last-child");
+      if (intro) intro.textContent = t.intro;
+    } else {
+      $("#machinesTab")?.classList.remove("active");
+      $("#machinesTab")?.setAttribute("aria-pressed", "false");
+    }
   }
-  function options(values, selected, labels={}){return values.map(v=>`<option value="${esc(v)}" ${selected===v?"selected":""}>${esc(labels[v]||v)}</option>`).join("")}
-  function dateLabel(value){ if(!value)return "—"; try{return new Intl.DateTimeFormat(lang()==="en"?"en-US":"es-US",{year:"numeric",month:"short",day:"numeric"}).format(new Date(value+"T12:00:00"))}catch{return value} }
-  function daysSince(value){ if(!value)return null; const start=new Date(value+"T12:00:00"); const now=new Date(); return Math.max(0,Math.floor((now-start)/86400000)); }
-  function maintenanceLabel(type,t){ return ({cleaning:t.cleaning,water_change:t.waterChange,pump:t.pump,light:t.lightCare,part_replacement:t.partReplacement,inspection:t.inspection})[type]||type; }
-  function historyFor(i,t){ const rows=[]; if(i.purchase?.date)rows.push({date:i.purchase.date,title:lang()==="en"?"Purchased":"Comprada",note:i.purchase.seller||""}); if(i.receivedDate)rows.push({date:i.receivedDate,title:lang()==="en"?"Received":"Recibida",note:""}); if(i.firstUseDate)rows.push({date:i.firstUseDate,title:lang()==="en"?"First use":"Primer uso",note:""}); (i.gardenHistory||[]).forEach(e=>rows.push({date:e.date,title:e.action==="unlinked"?(lang()==="en"?"Garden unlinked":"Jardín desvinculado"):(lang()==="en"?"Garden linked":"Jardín vinculado"),note:e.gardenId||""})); (i.maintenanceEvents||[]).forEach(e=>rows.push({date:e.date,title:maintenanceLabel(e.type,t),note:e.note||""})); return rows.filter(x=>x.date).sort((a,b)=>String(b.date).localeCompare(String(a.date))); }
-  function canonicalPerformance(i){ return performanceCache.get(i.id)||null; }
-  async function hydratePerformance(i){ if(!i.currentGardenId||!/^[0-9a-f-]{36}$/i.test(i.currentGardenId)){performanceCache.delete(i.id);return;} try{const r=await fetch(`${PERFORMANCE_ENDPOINT}&gardenId=${encodeURIComponent(i.currentGardenId)}`,{cache:"no-store"});if(!r.ok)throw new Error(`performance ${r.status}`);performanceCache.set(i.id,await r.json());}catch(error){console.warn("Canonical Machine Performance unavailable",error);performanceCache.set(i.id,{error:true});} }
-  function performanceHtml(i,t){ const canonical=canonicalPerformance(i); const events=i.maintenanceEvents||[]; const cleanings=events.filter(e=>e.type==="cleaning"&&e.date).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))); const age=daysSince(i.currentGardenSince); let interval=null; if(cleanings.length>=2){const gaps=[];for(let x=1;x<cleanings.length;x++)gaps.push(Math.max(0,Math.round((new Date(cleanings[x].date+"T12:00:00")-new Date(cleanings[x-1].date+"T12:00:00"))/86400000)));interval=Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length)} const evidence=canonical&&!canonical.error?canonical.evidence:null; const completed=evidence?Number(evidence.completed_cycles||0):null; const metric=(label,value,state)=>`<div class="machine-performance-metric"><span>${label}</span><strong>${value}</strong><small class="evidence-state ${state}">${state==="available"?t.available:state==="building"?t.buildingEvidence:t.notTracked}</small></div>`; return `<details class="machine-evolution-panel machine-performance-panel" open><summary>${t.performance} · ${t.evidence}</summary><div class="machine-performance-grid">${metric(t.cycleAge,age!=null?age+" "+t.days:"—",age!=null?"available":"not-tracked")}${metric(t.maintenanceEvidence,events.length?String(events.length):"—",events.length?"available":"not-tracked")}${metric(t.cleaningInterval,interval!=null?interval+" "+t.days:"—",interval!=null?"available":cleanings.length?"building":"not-tracked")}${metric(t.completedCycles,completed>0?String(completed):"—",completed>0?"available":evidence?"building":"not-tracked")}${metric(t.germinationRate,evidence&&Number(evidence.germination_events)>0?String(evidence.germination_events):"—",evidence&&Number(evidence.germination_events)>0?"building":evidence?"building":"not-tracked")}${metric(t.harvestActivity,evidence&&Number(evidence.harvest_events)>0?String(evidence.harvest_events):"—",evidence&&Number(evidence.harvest_events)>0?"available":evidence?"building":"not-tracked")}${metric(t.incidents,evidence&&Number(evidence.incident_events)>0?String(evidence.incident_events):"—",evidence&&Number(evidence.incident_events)>0?"available":evidence?"building":"not-tracked")}</div><p class="machine-performance-note">${canonical?.error?t.evidenceUnavailable:evidence?`${t.canonicalEvidence} · ${esc(canonical.garden?.name||i.currentGardenLabel||"")}<br>${t.evidenceGrowing}`:(lang()==="en"?"Only deterministic facts are shown. Canonical Garden X evidence has not been loaded for this unit.":"Solo se muestran hechos determinísticos. La evidencia canónica de Garden X aún no se ha cargado para esta unidad.")}</p></details>`; }
-  function evolutionHtml(i,t){ const maint=(i.maintenanceEvents||[]).slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))); const history=historyFor(i,t); const age=daysSince(i.currentGardenSince); return `<section class="machine-evolution"><h3>${t.now}</h3><div class="machine-now-grid"><div class="machine-now-card"><span>${t.currentGarden}</span><strong>${i.currentGardenId?esc(i.currentGardenLabel||i.currentGardenId):t.noGarden}</strong>${i.currentGardenId&&i.currentGardenSince?`<small>${t.gardenSince} ${dateLabel(i.currentGardenSince)} · ${age} ${t.days}</small>`:""}</div><div class="machine-now-card"><span>${t.machineMaintenance}</span><strong>${maint.length} ${t.events}</strong>${maint[0]?`<small>${dateLabel(maint[0].date)} · ${esc(maintenanceLabel(maint[0].type,t))}</small>`:""}</div></div>${performanceHtml(i,t)}<details class="machine-evolution-panel" ${i.currentGardenId?"open":""}><summary>${t.currentGarden}</summary>${i.currentGardenId?`<div class="machine-now-card"><span>${t.canonicalGarden}</span><strong>${esc(i.currentGardenLabel||i.currentGardenId)}</strong><small>${esc(i.currentGardenId)}</small></div>`:`<p class="muted machine-empty">${t.noGarden}</p>`}</details><details class="machine-evolution-panel"><summary>${t.machineMaintenance}</summary><div class="machine-inline-form"><label>${t.maintenanceType}<select id="maintenanceType">${options(["cleaning","water_change","pump","light","part_replacement","inspection"],"cleaning",{cleaning:t.cleaning,water_change:t.waterChange,pump:t.pump,light:t.lightCare,part_replacement:t.partReplacement,inspection:t.inspection})}</select></label><label>${t.maintenanceDate}<input id="maintenanceDate" type="date"></label><label class="machine-wide">${t.maintenanceNote}<input id="maintenanceNote"></label><button type="button" class="lab-primary-button" id="addMaintenance">${t.addMaintenance}</button></div>${maint.length?`<div class="machine-event-list">${maint.map(e=>`<div><time>${dateLabel(e.date)}</time><strong>${esc(maintenanceLabel(e.type,t))}</strong>${e.note?`<span>${esc(e.note)}</span>`:""}</div>`).join("")}</div>`:`<p class="muted machine-empty">${t.noMaintenance}</p>`}</details><details class="machine-evolution-panel"><summary>${t.history}</summary>${history.length?`<div class="machine-timeline">${history.map(e=>`<div><time>${dateLabel(e.date)}</time><strong>${esc(e.title)}</strong>${e.note?`<span>${esc(e.note)}</span>`:""}</div>`).join("")}</div>`:`<p class="muted machine-empty">${t.noHistory}</p>`}</details></section>`; }
-  async function open(id){
-    const i=instances.find(x=>x.id===id),m=model(i),d=$("#machineDetail"),t=copy[lang()];
-    await hydratePerformance(i);
-    const tank=typeof m.tankLiters==="object"?`${m.tankLiters.min}–${m.tankLiters.max}`:m.tankLiters;
-    d.innerHTML=`<div class="machine-detail-head"><div class="machine-photo machine-${esc(m.color)}"><span>${esc(m.brand)}</span><strong>${m.pods}</strong><small>PODS</small></div><div><p class="eyebrow">${t.myMachine}</p><h2>${esc(m.name)}</h2><p>${esc(m.model)} · ${m.pods} ${t.pods}</p></div></div>${evolutionHtml(i,t)}<form id="machineForm"><h3>${t.myUnit}</h3><div class="machine-form-grid"><label>${t.ownership}<select name="ownershipStatus">${options(["on_hand","ordered","retired"],i.ownershipStatus,{on_hand:t.onHandStatus,ordered:t.orderedStatus,retired:t.retired})}</select></label><label>${t.operation}<select name="operationalStatus">${options(["active","idle","maintenance","unknown","retired","n/a"],i.operationalStatus,{active:t.active,idle:t.idle,maintenance:t.maintenance,unknown:t.unknown,retired:t.retired,"n/a":"N/A"})}</select></label><label>${t.purchaseDate}<input type="date" name="purchaseDate" value="${esc(i.purchase?.date||"")}"></label><label>${t.seller}<input name="seller" value="${esc(i.purchase?.seller||"")}"></label><label>${t.channel}<select name="channel"><option value="">—</option>${options(["online","physical_store"],i.purchase?.channel||"",{online:t.online,physical_store:t.physical})}</select></label><label>${t.price}<input type="number" step="0.01" min="0" name="price" value="${i.purchase?.priceUsd??""}"></label><label>${t.received}<input type="date" name="receivedDate" value="${esc(i.receivedDate||"")}"></label><label>${t.firstUse}<input type="date" name="firstUseDate" value="${esc(i.firstUseDate||"")}"></label><label>${t.location}<input name="location" value="${esc(i.location||"")}"></label></div><h3>${t.evaluation}</h3><div class="rating-grid">${catalog.ratingDimensions.map(r=>`<label>${esc(r[lang()]||r.en)}<select name="rating-${r.id}"><option value="">—</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${i.ratings?.[r.id]==n?"selected":""}>${"★".repeat(n)} (${n})</option>`).join("")}</select></label>`).join("")}</div><div class="machine-form-grid"><label>${t.overall}<select name="overall"><option value="">—</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${i.overallRating==n?"selected":""}>${"★".repeat(n)} (${n})</option>`).join("")}</select></label><label>${t.buyAgain}<select name="buyAgain"><option value="">—</option>${options(["yes","maybe","no"],i.wouldBuyAgain||"",{yes:t.yes,maybe:t.maybe,no:t.no})}</select></label></div><label>${t.notes}<textarea name="notes" rows="3">${esc(i.notes||"")}</textarea></label><h3>${t.specs}</h3><div class="machine-specs"><span><b>${t.tank}</b> ${tank} L</span><span><b>${t.color}</b> ${esc(m.color)}</span><span><b>Pods</b> ${m.pods}</span><span><b>${t.light}</b> ${m.light.watts?m.light.watts+"W · ":""}${m.light.modes?m.light.modes.join(" / "):"Auto timer"}</span></div><p class="machine-source"><a href="${esc(m.referenceUrl||m.purchaseUrl)}" target="_blank" rel="noreferrer">${t.modelSource} ↗</a></p><div class="machine-form-actions"><button type="submit" class="lab-primary-button">${t.save}</button></div></form>`;
-    $("#addMaintenance")?.addEventListener("click",async()=>{ const date=$("#maintenanceDate")?.value; if(!date)return; i.maintenanceEvents=i.maintenanceEvents||[]; i.maintenanceEvents.push({id:`maint-${Date.now()}`,date,type:$("#maintenanceType")?.value||"inspection",note:String($("#maintenanceNote")?.value||"").trim()||null}); await saveInstance(i);open(i.id); });
-    $("#machineForm").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.currentTarget);i.ownershipStatus=String(f.get("ownershipStatus"));i.operationalStatus=String(f.get("operationalStatus"));i.purchase={date:f.get("purchaseDate")||null,seller:f.get("seller")||null,channel:f.get("channel")||null,priceUsd:f.get("price")?Number(f.get("price")):null};i.receivedDate=f.get("receivedDate")||null;i.firstUseDate=f.get("firstUseDate")||null;i.location=String(f.get("location")||"").trim()||null;i.notes=String(f.get("notes")||"").trim();i.ratings=i.ratings||{};catalog.ratingDimensions.forEach(r=>{const v=f.get(`rating-${r.id}`);if(v)i.ratings[r.id]=Number(v);else delete i.ratings[r.id]});i.overallRating=f.get("overall")?Number(f.get("overall")):null;i.wouldBuyAgain=f.get("buyAgain")||null;await saveInstance(i);$("#machineDialog").close();}; $("#machineDialog").showModal();
-  }
-  window.GardenMachinesV1={load,render};
+
+  window.GardenMachinesV1 = { load, render };
   let started = false;
-  const start = () => { if (started) return; started = true; load(); };
+  const start = () => { if (!started) { started = true; load(); } };
   if (window.GARDENPEDIA_READY) start();
   else window.addEventListener("gardenpedia:ready", start, { once: true });
 })();

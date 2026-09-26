@@ -1,6 +1,6 @@
 # Gardenpedia account vertical — handoff status
 
-Updated: 2026-09-26
+Updated: 2026-09-26 — production closeout
 
 ## State of the vertical
 
@@ -94,3 +94,25 @@ the private tables contained no test seed packages, requests or proposals.
 `gardenpedia-research` was deployed with JWT verification enabled; an
 unauthenticated smoke request received HTTP 401. No canonical user test data
 was created.
+
+## Production closeout verification
+
+- `garden.getstreex.com/gardenpedia/` returned HTTP 200 and served the current
+  authenticated account transport, shared identity resolver, account client,
+  request/review entry points, and machine view. Public assets matched the
+  versioned repository source where no publication sanitization is needed.
+- `/api/garden-library/catalog` returned 43 unique identities with 43
+  `compatibilityProfile v1` records and no private identity/account fields.
+- `gardenpedia-research` is ACTIVE at Edge Function version 3 with JWT
+  verification enabled; the unauthenticated POST smoke request was rejected
+  with HTTP 401.
+- Vercel production deployment for the publisher correction completed
+  successfully: deployment `6682268675`, commit `1f61f3d`.
+- GitHub verification passed typecheck and all 396 tests. Its repository-wide
+  lint step still reports three pre-existing `no-useless-assignment` errors
+  in `labs/gardenpedia/sites-storage-runtime/app/api/machine-state/route.ts`;
+  that legacy runtime was not modified. Targeted lint for this vertical passed,
+  and the Garden X production build completed locally and on Vercel.
+- The deployed migration is `20260926173442_gardenpedia_vertical_completion`.
+  Production counts remain 0 seed packages, 0 requests, 0 proposals, and 43
+  catalog identities. No personal or canonical test records were created.

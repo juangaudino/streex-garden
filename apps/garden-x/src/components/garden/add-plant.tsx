@@ -215,65 +215,136 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <p className="eyebrow">{ui(language, "whatCouldPlant")}</p>
-                      <h2 className="mt-1 font-display text-2xl">{ui(language, "positionEvidenceResults")}</h2>
-                      <p className="mt-1 text-sm text-muted-foreground">{ui(language, "positionEvidenceIntro")}</p>
+                      <h2 className="mt-1 font-display text-2xl">
+                        {ui(language, "whatCouldPlant")}
+                      </h2>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {ui(language, "positionEvidenceIntro")}
+                      </p>
                     </div>
-                    <button type="button" onClick={() => setShowContextualResults(false)} className="shrink-0 text-sm font-medium text-primary hover:underline">
+                    <button
+                      type="button"
+                      onClick={() => setShowContextualResults(false)}
+                      className="shrink-0 text-sm font-medium text-primary hover:underline"
+                    >
                       {ui(language, "backToLibrary")}
                     </button>
                   </div>
-                  {!catalog && !catalogError ? <p className="py-6 text-center text-sm text-muted-foreground">{ui(language, "loadingLibrary")}</p> : null}
+                  {!catalog && !catalogError ? (
+                    <p className="py-6 text-center text-sm text-muted-foreground">
+                      {ui(language, "loadingLibrary")}
+                    </p>
+                  ) : null}
                   {catalog && !contextualCandidates.length ? (
                     <div className="rounded-2xl border border-border/70 bg-secondary/50 p-4 text-sm text-muted-foreground">
-                      {ui(language, contextualEvaluation.unavailable ? "positionContextUnavailable" : "noContextualCandidates")}
+                      {ui(
+                        language,
+                        contextualEvaluation.unavailable
+                          ? "positionContextUnavailable"
+                          : "noContextualCandidates",
+                      )}
                     </div>
                   ) : null}
-                  {catalog && contextualCandidates.length ? (
-                    <div className="space-y-5">
-                      {([
-                        ["compatible", "evidenceSupports"],
-                        ["conditional", "needsCondition"],
-                        ["unknown", "moreEvidenceNeeded"],
-                      ] as const).map(([state, titleKey]) => {
-                        const group = contextualCandidates.filter((candidate) => candidate.cultivationCompatibility.state === state);
-                        if (!group.length) return null;
-                        return (
-                          <section key={state} aria-label={ui(language, titleKey)}>
-                            <h3 className="eyebrow mb-2">{ui(language, titleKey)}</h3>
-                            <div className="space-y-2">
-                              {group.map((candidate) => (
-                                <ContextualCandidateCard
-                                  key={candidate.plant.libraryPlantId}
-                                  candidate={candidate}
-                                  entry={libraryEntryById.get(candidate.plant.libraryPlantId)}
-                                  language={language}
-                                  onSelect={() => {
-                                    const entry = libraryEntryById.get(candidate.plant.libraryPlantId);
-                                    if (entry) choose(entry);
-                                  }}
-                                />
-                              ))}
-                            </div>
-                          </section>
+                  {catalog && contextualCandidates.length
+                    ? (() => {
+                        const recommended = contextualCandidates.filter(
+                          (candidate) => candidate.tier === "recommended",
                         );
-                      })}
-                    </div>
-                  ) : null}
+                        const checkFirst = contextualCandidates.filter(
+                          (candidate) => candidate.tier === "check_first",
+                        );
+                        const insufficient = contextualCandidates.filter(
+                          (candidate) => candidate.tier === "insufficient_evidence",
+                        );
+                        const renderCards = (items: readonly EmptyPositionCandidate[]) =>
+                          items.map((candidate) => (
+                            <ContextualCandidateCard
+                              key={candidate.plant.libraryPlantId}
+                              candidate={candidate}
+                              entry={libraryEntryById.get(candidate.plant.libraryPlantId)}
+                              language={language}
+                              onSelect={() => {
+                                const entry = libraryEntryById.get(candidate.plant.libraryPlantId);
+                                if (entry) choose(entry);
+                              }}
+                            />
+                          ));
+                        const shortlist = recommended.slice(0, 5);
+                        const additionalRecommended = recommended.slice(5);
+                        return (
+                          <div className="space-y-5">
+                            {shortlist.length ? (
+                              <section aria-label={ui(language, "recommendedHere")}>
+                                <h3 className="eyebrow">{ui(language, "recommendedHere")}</h3>
+                                <p className="mb-2 mt-1 text-xs text-muted-foreground">
+                                  {ui(language, "recommendedHereIntro")}
+                                </p>
+                                <div className="space-y-2">{renderCards(shortlist)}</div>
+                                {additionalRecommended.length ? (
+                                  <details className="mt-2 text-sm">
+                                    <summary className="w-fit cursor-pointer font-medium text-primary">
+                                      {ui(language, "moreSupportedCandidates")} ·{" "}
+                                      {additionalRecommended.length}
+                                    </summary>
+                                    <div className="mt-2 space-y-2">
+                                      {renderCards(additionalRecommended)}
+                                    </div>
+                                  </details>
+                                ) : null}
+                              </section>
+                            ) : null}
+                            {checkFirst.length ? (
+                              <section aria-label={ui(language, "couldWorkCheckFirst")}>
+                                <h3 className="eyebrow">{ui(language, "couldWorkCheckFirst")}</h3>
+                                <p className="mb-2 mt-1 text-xs text-muted-foreground">
+                                  {ui(language, "checkFirstIntro")}
+                                </p>
+                                <div className="space-y-2">{renderCards(checkFirst)}</div>
+                              </section>
+                            ) : null}
+                            {insufficient.length ? (
+                              <details className="rounded-2xl border border-border/70 bg-secondary/40 p-3">
+                                <summary className="cursor-pointer font-medium">
+                                  {ui(language, "otherPlantsInsufficient")} · {insufficient.length}
+                                  <span className="mt-1 block text-sm font-normal text-muted-foreground">
+                                    {ui(language, "insufficientEvidenceIntro")}
+                                  </span>
+                                </summary>
+                                <div className="mt-3 space-y-2">{renderCards(insufficient)}</div>
+                              </details>
+                            ) : null}
+                          </div>
+                        );
+                      })()
+                    : null}
                 </>
               ) : (
                 <>
                   <div>
                     <p className="eyebrow">{ui(language, "library")}</p>
                     <h2 className="mt-1 font-display text-2xl">{ui(language, "whatPlanting")}</h2>
-                    <p className="mt-1 text-sm text-muted-foreground">{ui(language, "chooseDocumentedPlant")}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {ui(language, "chooseDocumentedPlant")}
+                    </p>
                   </div>
                   <label className="relative block">
                     <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                    <input autoFocus className="input-soft pl-9" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={ui(language, "searchCatalogExample")} />
+                    <input
+                      autoFocus
+                      className="input-soft pl-9"
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      placeholder={ui(language, "searchCatalogExample")}
+                    />
                   </label>
                   {!query && context ? (
-                    <button type="button" onClick={() => setShowContextualResults(true)} className="flex w-full items-center gap-2 rounded-2xl border border-primary/20 bg-primary/5 p-3 text-left text-sm font-medium text-primary">
-                      <Sparkles className="h-4 w-4" />{ui(language, "whatCouldPlant")}
+                    <button
+                      type="button"
+                      onClick={() => setShowContextualResults(true)}
+                      className="flex w-full items-center gap-2 rounded-2xl border border-primary/20 bg-primary/5 p-3 text-left text-sm font-medium text-primary"
+                    >
+                      <Sparkles className="h-4 w-4" />
+                      {ui(language, "whatCouldPlant")}
                     </button>
                   ) : null}
                 </>
@@ -281,21 +352,36 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               {catalogError ? (
                 <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
                   <p>{catalogError}</p>
-                  <button className="mt-2 font-medium underline" onClick={retryCatalog}>{ui(language, "tryAgain")}</button>
+                  <button className="mt-2 font-medium underline" onClick={retryCatalog}>
+                    {ui(language, "tryAgain")}
+                  </button>
                 </div>
               ) : null}
               {!showContextualResults && !catalog && !catalogError ? (
-                <p className="py-8 text-center text-sm text-muted-foreground">{ui(language, "loadingLibrary")}</p>
+                <p className="py-8 text-center text-sm text-muted-foreground">
+                  {ui(language, "loadingLibrary")}
+                </p>
               ) : null}
               {catalog && !showContextualResults ? (
                 <div className="space-y-2">
                   {results.map((entry) => (
-                    <button type="button" key={entry.libraryPlantId} onClick={() => choose(entry)} className="press w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-left">
+                    <button
+                      type="button"
+                      key={entry.libraryPlantId}
+                      onClick={() => choose(entry)}
+                      className="press w-full rounded-2xl border border-border/70 bg-background px-4 py-3 text-left"
+                    >
                       <p className="font-medium">{localizedLibraryName(entry, language)}</p>
-                      <p className="mt-0.5 text-sm text-muted-foreground">{[entry.cultivar, entry.scientificName].filter(Boolean).join(" · ")}</p>
+                      <p className="mt-0.5 text-sm text-muted-foreground">
+                        {[entry.cultivar, entry.scientificName].filter(Boolean).join(" · ")}
+                      </p>
                     </button>
                   ))}
-                  {query && !results.length ? <p className="rounded-2xl bg-secondary/70 p-4 text-sm text-muted-foreground">{ui(language, "notFoundLibrary")}</p> : null}
+                  {query && !results.length ? (
+                    <p className="rounded-2xl bg-secondary/70 p-4 text-sm text-muted-foreground">
+                      {ui(language, "notFoundLibrary")}
+                    </p>
+                  ) : null}
                 </div>
               ) : null}
             </>
@@ -312,14 +398,17 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               </button>
               <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4">
                 <p className="eyebrow">{ui(language, "gardenLibraryIdentity")}</p>
-                <p className="mt-1 font-display text-2xl">{localizedLibraryName(selected, language)}</p>
+                <p className="mt-1 font-display text-2xl">
+                  {localizedLibraryName(selected, language)}
+                </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {[selected.cultivar, selected.scientificName].filter(Boolean).join(" · ")}
                 </p>
               </div>
               <label className="block text-sm">
                 <span className="mb-2 block text-muted-foreground">
-                  {ui(language, "personalName")} <span className="text-xs">{ui(language, "optional").toLowerCase()}</span>
+                  {ui(language, "personalName")}{" "}
+                  <span className="text-xs">{ui(language, "optional").toLowerCase()}</span>
                 </span>
                 <input
                   className="input-soft"
@@ -331,7 +420,9 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
               </label>
               <div className="grid gap-3 sm:grid-cols-2">
                 <label className="block text-sm">
-                  <span className="mb-2 block text-muted-foreground">{ui(language, "datePlanting")}</span>
+                  <span className="mb-2 block text-muted-foreground">
+                    {ui(language, "datePlanting")}
+                  </span>
                   <input
                     type="date"
                     max={todayInputValue()}
@@ -342,7 +433,9 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                   />
                 </label>
                 <label className="block text-sm">
-                  <span className="mb-2 block text-muted-foreground">{ui(language, "datePrecision")}</span>
+                  <span className="mb-2 block text-muted-foreground">
+                    {ui(language, "datePrecision")}
+                  </span>
                   <select
                     className="input-soft px-3"
                     value={precision}
@@ -437,6 +530,10 @@ function ContextualCandidateCard({
       cited.set(`${evidence.sourceId}:${evidence.property}:${scope.level}:${"taxon" in scope ? scope.taxon : ""}`, evidence);
     }
   }
+  for (const evidence of candidate.supportingEvidence) {
+    const scope = evidence.taxonomicScope;
+    cited.set(`${evidence.sourceId}:${evidence.property}:${scope.level}:${"taxon" in scope ? scope.taxon : ""}`, evidence);
+  }
   const references = [...cited.values()];
 
   const scopeLabel = (scope: EmptyPositionCandidate["factualReasons"][number]["evidence"][number]["taxonomicScope"]) => {
@@ -446,11 +543,19 @@ function ContextualCandidateCard({
         : ui(language, "familyLevelEvidence");
     return `${label}: ${scope.taxon}`;
   };
+  const propertyLabel = (property: EmptyPositionCandidate["supportingEvidence"][number]["property"]) => ({
+    cultivation_suitability: ui(language, "evidencePropertyCultivation"),
+    growth_habit: ui(language, "evidencePropertyHabit"),
+    mature_height: ui(language, "evidencePropertyHeight"),
+    mature_spread: ui(language, "evidencePropertySpread"),
+    spacing: ui(language, "evidencePropertySpacing"),
+    growing_light: ui(language, "evidencePropertyLight"),
+  })[property];
   const formatReason = (reason: EmptyPositionCandidate["factualReasons"][number]) => {
     if (reason.property === "cultivation_suitability") {
       return candidate.cultivationCompatibility.state === "conditional"
         ? `${ui(language, "gardenpediaCondition")}: ${reason.statement}`
-        : ui(language, "documentedHydroponicEvidence");
+        : `${ui(language, "documentedHydroponicEvidence")} · ${scopeLabel(reason.evidence[0]!.taxonomicScope)}`;
     }
     if (reason.property === "growth_habit") {
       const habit = reason.statement.split(":").slice(1).join(":").trim().replace(/\.$/, "");
@@ -487,10 +592,14 @@ function ContextualCandidateCard({
     <article className="rounded-2xl border border-border/70 bg-background px-4 py-3">
       <button type="button" onClick={onSelect} className="press w-full text-left">
         <span className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <span className="font-medium">{entry ? localizedLibraryName(entry, language) : candidate.plant.commonName}</span>
+          <span className="font-medium">
+            {entry ? localizedLibraryName(entry, language) : candidate.plant.commonName}
+          </span>
           <span className="text-xs font-medium text-primary">{ui(language, stateKey)}</span>
         </span>
-        <span className="mt-0.5 block text-xs text-muted-foreground">{[candidate.plant.cultivar, candidate.plant.scientificName].filter(Boolean).join(" · ")}</span>
+        <span className="mt-0.5 block text-xs text-muted-foreground">
+          {[candidate.plant.cultivar, candidate.plant.scientificName].filter(Boolean).join(" · ")}
+        </span>
       </button>
       {formattedReasons.length ? (
         <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
@@ -499,25 +608,46 @@ function ContextualCandidateCard({
           ))}
         </ul>
       ) : null}
-      <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
-        {candidate.systemFit.state === "conditional" ? <span>{ui(language, "systemConditionUnconfirmed")}</span> : null}
-        {candidate.systemFit.state === "documented" ? <span>{ui(language, "systemConditionDocumented")}</span> : null}
-        {candidate.systemFit.state === "unknown" && candidate.cultivationCompatibility.state === "compatible" ? <span>{ui(language, "systemFitUnconfirmed")}</span> : null}
-        {candidate.physicalFit.state === "supported" ? <span>{ui(language, "physicalFitSupported")}</span> : candidate.physicalFit.state === "needs_review" ? <span>{ui(language, "physicalFitNeedsReview")}</span> : <span>{ui(language, "physicalFitUnconfirmed")}</span>}
-        {candidate.missingInformation.some((item) => item.property === "cultivation_suitability") ? <span>{ui(language, "cultivationEvidenceUnavailable")}</span> : null}
-      </div>
+      {candidate.systemFit.state !== "unknown" || candidate.physicalFit.state !== "unknown" ? (
+        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+          {candidate.systemFit.state === "conditional" ? (
+            <span>{ui(language, "systemConditionUnconfirmed")}</span>
+          ) : null}
+          {candidate.systemFit.state === "documented" ? (
+            <span>{ui(language, "systemConditionDocumented")}</span>
+          ) : null}
+          {candidate.physicalFit.state === "supported" ? (
+            <span>{ui(language, "physicalFitSupported")}</span>
+          ) : candidate.physicalFit.state === "needs_review" ? (
+            <span>{ui(language, "physicalFitNeedsReview")}</span>
+          ) : null}
+        </div>
+      ) : null}
       {references.length ? (
         <details className="mt-2 text-xs text-muted-foreground">
-          <summary className="w-fit cursor-pointer font-medium text-primary">{ui(language, "evidenceSources")}</summary>
+          <summary className="w-fit cursor-pointer font-medium text-primary">
+            {ui(language, "evidenceSources")}
+          </summary>
           <ul className="mt-2 space-y-1.5 pl-1">
             {references.map((evidence) => {
               const source = entry?.reference.sources.find((item) => item.id === evidence.sourceId);
               if (!source) return null;
               const scope = evidence.taxonomicScope;
               return (
-                <li key={`${source.id}:${evidence.property}:${scope.level}:${"taxon" in scope ? scope.taxon : ""}`}>
-                  <a className="underline underline-offset-2" href={source.url} target="_blank" rel="noreferrer">{source.title} · {source.publisher}</a>
-                  <span className="ml-1">({scopeLabel(scope)})</span>
+                <li
+                  key={`${source.id}:${evidence.property}:${scope.level}:${"taxon" in scope ? scope.taxon : ""}`}
+                >
+                  <a
+                    className="underline underline-offset-2"
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {source.title} · {source.publisher}
+                  </a>
+                  <span className="ml-1">
+                    ({propertyLabel(evidence.property)} · {scopeLabel(scope)})
+                  </span>
                 </li>
               );
             })}

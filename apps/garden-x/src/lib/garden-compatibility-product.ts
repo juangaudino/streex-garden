@@ -19,6 +19,8 @@ export type ProductEvidenceReference = {
 };
 
 export type EmptyPositionCandidate = {
+  /** Product tier is a conservative surface decision, not an engine compatibility state. */
+  tier: "recommended" | "check_first" | "insufficient_evidence" | "excluded";
   plant: {
     libraryPlantId: string;
     commonName: string;
@@ -43,6 +45,8 @@ export type EmptyPositionCandidate = {
     statement: string;
     evidence: readonly ProductEvidenceReference[];
   }[];
+  /** Source affordance for documented profile facts, independent of whether they affect this target. */
+  supportingEvidence: readonly ProductEvidenceReference[];
   missingInformation: readonly {
     property: "cultivation_suitability" | "specific_system_fit" | "physical_clearance";
     reason: string;
@@ -51,8 +55,8 @@ export type EmptyPositionCandidate = {
 };
 
 export type EmptyPositionCandidateSet = {
-  /** Alphabetical display order only; array position is not a recommendation rank. */
-  order: "common_name_alphabetical";
+  /** Engine order is deterministic and already includes its documented tie-breakers. */
+  order: "engine_deterministic";
   candidates: readonly EmptyPositionCandidate[];
 };
 
@@ -175,6 +179,7 @@ function candidateProjection(
   context: EmptyPositionProjectionContext,
 ): EmptyPositionCandidate {
   const evidenceFor = evidenceForReason(entry, result);
+  const profile = entry.compatibilityProfile;
   const engineReasons = [...result.exclusions, ...result.reasons]
     .map((reason) => {
       const mapped = evidenceFor(reason);
@@ -211,6 +216,20 @@ function candidateProjection(
   }
 
   const physicalFit = physicalFitState(result);
+  const hasReviewSignal = result.rankingSignals.some((signal) => signal.effect === "needs_review");
+  const hasPositiveContextSignal = result.rankingSignals.some(
+    (signal) => signal.effect === "supports_context",
+  );
+  const tier: EmptyPositionCandidate["tier"] =
+    result.eligibility === "excluded"
+      ? "excluded"
+      : result.compatibility === "compatible"
+        ? hasReviewSignal
+          ? "check_first"
+          : "recommended"
+        : result.compatibility === "conditional" || hasReviewSignal || hasPositiveContextSignal
+          ? "check_first"
+          : "insufficient_evidence";
   const systemFit: EmptyPositionCandidate["systemFit"]["state"] =
     result.systemFit === "documented_condition_met"
       ? "documented"
@@ -252,7 +271,40 @@ function candidateProjection(
     });
   }
 
+  const supportingEvidence = profile
+    ? [
+        ["cultivation_suitability", profile.hydroponicSuitability.evidence ?? []],
+        [
+          "growth_habit",
+          profile.growthHabits.status === "known" ? profile.growthHabits.evidence : [],
+        ],
+        [
+          "mature_height",
+          profile.matureSize.height.status === "known" ? profile.matureSize.height.evidence : [],
+        ],
+        [
+          "mature_spread",
+          profile.matureSize.spread.status === "known" ? profile.matureSize.spread.evidence : [],
+        ],
+        ["spacing", profile.spacing.status === "known" ? profile.spacing.evidence : []],
+        ["growing_light", profile.light.status === "known" ? profile.light.evidence : []],
+      ].flatMap(([property, evidence]) =>
+        evidenceReferences(
+          property as ProductFactProperty,
+          evidence as readonly CompatibilityEvidence[],
+        ),
+      )
+    : [];
+  const uniqueSupportingEvidence = new Map<string, ProductEvidenceReference>();
+  for (const evidence of supportingEvidence) {
+    uniqueSupportingEvidence.set(
+      `${evidence.sourceId}:${evidence.property}:${evidence.taxonomicScope.level}:${"taxon" in evidence.taxonomicScope ? evidence.taxonomicScope.taxon : ""}`,
+      evidence,
+    );
+  }
+
   return {
+    tier,
     plant: result.candidate,
     cultivationCompatibility: {
       method: context.cultivationMethod,
@@ -265,6 +317,7 @@ function candidateProjection(
       statement,
       evidence,
     })),
+    supportingEvidence: [...uniqueSupportingEvidence.values()],
     missingInformation,
     requiresVerificationBeforePlanting:
       result.compatibility !== "compatible" ||
@@ -273,10 +326,7 @@ function candidateProjection(
   };
 }
 
-/**
- * Projects deterministic engine results into a small product contract. The engine's internal
- * rank/signals/codes are not exposed; display order is alphabetical and never means "best".
- */
+/** Projects engine results into product tiers without exposing internal rank/signals/codes. */
 export function projectEmptyPositionCandidates(
   results: readonly GardenCompatibilityResult[],
   catalogEntries: readonly GardenLibraryEntry[],
@@ -288,11 +338,6 @@ export function projectEmptyPositionCandidates(
       const entry = entries.get(result.candidate.libraryPlantId);
       return entry ? candidateProjection(result, entry, context) : null;
     })
-    .filter((candidate): candidate is EmptyPositionCandidate => candidate !== null)
-    .sort(
-      (a, b) =>
-        compareStableText(a.plant.commonName, b.plant.commonName) ||
-        compareStableText(a.plant.libraryPlantId, b.plant.libraryPlantId),
-    );
-  return { order: "common_name_alphabetical", candidates };
+    .filter((candidate): candidate is EmptyPositionCandidate => candidate !== null);
+  return { order: "engine_deterministic", candidates };
 }

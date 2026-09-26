@@ -11,11 +11,12 @@ import type { GardenLibraryManifest } from "@/lib/garden-library";
 const mocks = vi.hoisted(() => ({
   createLibraryPlant: vi.fn(),
   navigate: vi.fn(),
+  language: "en" as "en" | "es",
 }));
 
 vi.mock("@/lib/garden-store", () => ({
   useGarden: () => ({
-    language: "en",
+    language: mocks.language,
     gardens: [gardenFixture()],
     plants: plantFixtures,
     createLibraryPlant: mocks.createLibraryPlant,
@@ -114,6 +115,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    mocks.language = "en";
     mocks.createLibraryPlant.mockResolvedValue("plant-created");
     mocks.navigate.mockResolvedValue(undefined);
     vi.stubGlobal(
@@ -135,7 +137,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
-    expect(await screen.findByRole("heading", { name: "Evidence for this position" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "What could I plant here?" })).toBeTruthy();
     await waitFor(() => expect(evaluateSpy).toHaveBeenCalled());
     const input = evaluateSpy.mock.calls[0]![0];
     expect(input.target.positionId).toBe("empty-position");
@@ -144,29 +146,41 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     ).toHaveLength(2);
   });
 
-  it("shows compatible, conditional, and unknown groups without presenting the full catalog as evidence", async () => {
+  it("shows a recommendation shortlist, a check-first group, and a collapsed unknown browse group", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
-    expect(await screen.findByRole("region", { name: "Evidence supports this" })).toBeTruthy();
-    expect(screen.getByRole("region", { name: "Needs a condition" })).toBeTruthy();
-    expect(screen.getByRole("region", { name: "More evidence needed" })).toBeTruthy();
+    expect(await screen.findByRole("region", { name: "Recommended here" })).toBeTruthy();
+    expect(screen.getByRole("region", { name: "Could work · check first" })).toBeTruthy();
+    expect(screen.getByText(/Other plants without enough evidence · \d+/)).toBeTruthy();
     expect(screen.getByText("Cascading Petunia")).toBeTruthy();
     expect(screen.getByText("Conditional evidence")).toBeTruthy();
     expect(screen.queryByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeNull();
-    expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
-    expect(document.body.textContent).not.toMatch(/\b(best|winner|recommended|score)\b/i);
+    const sunflower = screen.getByText("American Giant Hybrid Sunflower");
+    expect(sunflower.closest("details")?.open).toBe(false);
+    expect(sunflower.closest("section[aria-label='Recommended here']")).toBeNull();
+    expect(document.body.textContent).not.toMatch(/\b(best|top pick|winner|score)\b/i);
   });
 
-  it("keeps system fit and physical fit visibly independent", async () => {
+  it("renders the recommendation hierarchy in Spanish", async () => {
+    mocks.language = "es";
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: "¿Qué podría plantar aquí?" }));
+
+    expect(await screen.findByRole("region", { name: "Recomendadas para aquí" })).toBeTruthy();
+    expect(screen.getByRole("region", { name: "Podrían funcionar · revisa esto" })).toBeTruthy();
+    expect(screen.getByText(/Otras plantas sin evidencia suficiente · \d+/)).toBeTruthy();
+  });
+
+  it("moves unresolved system and physical fit caveats to the recommendation group", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
     const buttercrunch = await screen.findByText("Buttercrunch Lettuce");
     const card = buttercrunch.closest("article");
-    expect(card?.textContent).toContain("Fit for this specific system is not documented.");
-    expect(card?.textContent).toContain("Physical fit for this position is not confirmed.");
-    expect(card?.textContent).toContain("Cultivation evidence supports");
+    expect(card?.textContent).not.toContain("Fit for this specific system is not documented.");
+    expect(card?.textContent).not.toContain("Physical fit for this position is not confirmed.");
+    expect(screen.getByText(/physical fit remains unconfirmed/i)).toBeTruthy();
   });
 
   it("keeps Tiny Tim identity facts separate from Cherry Tomato in the candidate cards", async () => {
@@ -216,6 +230,27 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     fireEvent.click(card.querySelector("summary")!);
     expect(card.querySelector("a[href^='http']")).toBeTruthy();
     expect(card.textContent).toContain("Species-level: Lactuca sativa");
+  });
+
+  it("keeps insufficient-evidence candidates and source access inside the secondary expansion", async () => {
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
+    const summary = screen.getByText(/Other plants without enough evidence · \d+/);
+    fireEvent.click(summary);
+    const sunflower = await screen.findByText("American Giant Hybrid Sunflower");
+    const card = sunflower.closest("article");
+    expect(card).toBeTruthy();
+    fireEvent.click(card!.querySelector("summary")!);
+    expect(card!.querySelector("a[href^='http']")).toBeTruthy();
+  });
+
+  it("caps the visible recommended shortlist at five while retaining additional supported candidates", async () => {
+    openSheet();
+    fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
+    const recommended = screen.getByRole("region", { name: "Recommended here" });
+    expect(
+      recommended.querySelector(":scope > div.space-y-2")?.querySelectorAll("article").length,
+    ).toBeLessThanOrEqual(5);
   });
 
   it("returns to the searchable full Library and continues selection through the existing add flow", async () => {

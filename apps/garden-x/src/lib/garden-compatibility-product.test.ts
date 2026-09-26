@@ -100,6 +100,7 @@ describe("B3.6 empty-position product contract", () => {
     };
     const result = project([incompatible]).candidates[0]!;
     expect(result.cultivationCompatibility.state).toBe("incompatible");
+    expect(result.tier).toBe("excluded");
     expect(result.factualReasons[0]).toMatchObject({
       property: "cultivation_suitability",
       evidence: [expect.objectContaining({ sourceId: evidence[0]!.sourceIds[0] })],
@@ -233,7 +234,7 @@ describe("B3.6 empty-position product contract", () => {
     expect(result.missingInformation).toHaveLength(2);
   });
 
-  it("uses stable alphabetical display order with no winner/rank semantics", () => {
+  it("preserves the deterministic engine order without adding winner/rank semantics", () => {
     const results = evaluateEntries(pilot);
     const first = projectEmptyPositionCandidates(results, pilot, {
       cultivationMethod: "hydroponic",
@@ -244,12 +245,59 @@ describe("B3.6 empty-position product contract", () => {
       systemName: "Aera One",
     });
     expect(first).toEqual(second);
-    expect(first.order).toBe("common_name_alphabetical");
-    expect(first.candidates.map((item) => item.plant.commonName)).toEqual(
-      [...first.candidates.map((item) => item.plant.commonName)].sort((a, b) => a.localeCompare(b)),
+    expect(first.order).toBe("engine_deterministic");
+    const reversed = projectEmptyPositionCandidates([...results].reverse(), pilot, {
+      cultivationMethod: "hydroponic",
+      systemName: "Aera One",
+    });
+    expect(reversed.candidates.map((item) => item.plant.libraryPlantId)).toEqual(
+      [...first.candidates].reverse().map((item) => item.plant.libraryPlantId),
     );
     expect(first.candidates[0]).not.toHaveProperty("rank");
     expect(first.candidates[0]).not.toHaveProperty("score");
+  });
+
+  it("keeps unknown candidates in the secondary evidence tier rather than promoting them", () => {
+    const result = project([byId("common-mint")]).candidates[0]!;
+    expect(result.cultivationCompatibility.state).toBe("unknown");
+    expect(result.tier).toBe("insufficient_evidence");
+  });
+
+  it("does not promote giant sunflowers with unknown hydroponic suitability", () => {
+    const entries = gardenLibraryManifest.entries.filter((entry) =>
+      ["sunflower-american-giant-hybrid", "sunflower-autumn-beauty"].includes(entry.libraryPlantId),
+    );
+    const results = evaluateEntries(entries);
+    const projected = projectEmptyPositionCandidates(results, entries, {
+      cultivationMethod: "hydroponic",
+      systemName: "Aera One",
+    });
+    expect(projected.candidates).toHaveLength(2);
+    expect(
+      projected.candidates.every((candidate) => candidate.tier === "insufficient_evidence"),
+    ).toBe(true);
+    expect(
+      projected.candidates.every(
+        (candidate) => candidate.cultivationCompatibility.state === "unknown",
+      ),
+    ).toBe(true);
+  });
+
+  it("tiers documented, conditional, and unknown candidates without changing their evidence states", () => {
+    const entries = [byId("buttercrunch-lettuce"), byId("cascading-petunia"), byId("common-mint")];
+    const result = project(entries);
+    expect(
+      result.candidates.find(
+        (candidate) => candidate.plant.libraryPlantId === "buttercrunch-lettuce",
+      )?.tier,
+    ).toBe("recommended");
+    expect(
+      result.candidates.find((candidate) => candidate.plant.libraryPlantId === "cascading-petunia")
+        ?.tier,
+    ).toBe("check_first");
+    expect(
+      result.candidates.find((candidate) => candidate.plant.libraryPlantId === "common-mint")?.tier,
+    ).toBe("insufficient_evidence");
   });
 
   it("keeps unknown garden context useful without claiming physical fit", () => {

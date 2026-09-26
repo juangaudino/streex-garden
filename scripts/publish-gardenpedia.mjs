@@ -399,14 +399,6 @@ function prepare() {
     .replace(/<script src="\.\/sites-storage-bootstrap[^>]*><\/script>/, "")
     .replace(/<script src="\.\/sites-storage-v1[^>]*><\/script>/, "")
     .replace(/<script src="\.\/vercel-storage-loader-v1[^>]*><\/script>/, "")
-    .replace(
-      /<script src="\.\/machines-v1[^>]*><\/script>/,
-      '<script src="./machines-v1.js?v=2" defer></script>',
-    )
-    .replace(/<script src="\.\/supabase-lab-transport[^>]*><\/script>/, '<script src="./supabase-lab-transport.js?v=2" defer></script>')
-    .replace(/<script src="\.\/identity-resolver-v1[^>]*><\/script>/, '<script src="./identity-resolver-v1.js?v=1" defer></script>')
-    .replace(/<script src="\.\/gardenpedia-account-v1[^>]*><\/script>/, '<script src="./gardenpedia-account-v1.js?v=1" defer></script>')
-    .replace(/<script src="\.\/app\.js[^>]*><\/script>/, '<script src="./app.js?v=1.3" defer></script>')
     .replace(/<script src="\.\/demo-shell[^>]*><\/script>/, "")
     .replace(/<script src="\.\/homegrown-source-comparison[^>]*><\/script>/, "")
     .replace(/<script src="\.\/seed-purchase-date[^>]*><\/script>/, "")
@@ -450,8 +442,6 @@ function prepare() {
 
   let app = fs.readFileSync(path.join(destination, "app.js"), "utf8");
   app = app
-    .replaceAll("gardenLabsSeedStateV1", "gardenpediaPublicSeedStateV1")
-    .replaceAll("gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1")
     .replaceAll("gardenLabsLibraryView", "gardenpediaPublicLibraryView")
     .replaceAll("growGuideLanguage", "gardenpediaPublicLanguage")
     .replaceAll("GARDEN LABS · EXPERIMENTAL", "GARDENPEDIA · PUBLIC")

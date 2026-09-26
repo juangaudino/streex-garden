@@ -69,6 +69,35 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-oregano-greek"]
       }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "No crop-specific hydroponic evidence is established for the unresolved packet identity."
+      },
+      "growthHabits": {
+        "status": "pending",
+        "reason": "Packet taxonomy is unresolved (Origanum spp.); Greek oregano sources cannot establish this identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "pending",
+          "reason": "Packet taxonomy is unresolved (Origanum spp.); Greek oregano sources cannot establish this identity."
+        },
+        "spread": {
+          "status": "pending",
+          "reason": "Packet taxonomy is unresolved (Origanum spp.); Greek oregano sources cannot establish this identity."
+        }
+      },
+      "spacing": {
+        "status": "pending",
+        "reason": "No spacing evidence safely scoped to the unresolved packet identity."
+      },
+      "light": {
+        "status": "pending",
+        "reason": "No phase-specific light evidence safely scoped to the unresolved packet identity."
+      }
     }
   },
   {
@@ -139,7 +168,57 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-thyme"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-thyme"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Thymus vulgaris"
+              },
+              "note": "Johnny’s general thyme growing guidance specifies full sun; species scope, growing phase only."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "italian-giant-parsley",
@@ -209,7 +288,86 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-parsley"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "osu-hydro-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Petroselinum crispum"
+              },
+              "note": "OSU includes parsley in its hydroponic crop EC/pH table; suitability is crop-level, not flat-leaf-cultivar-specific."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "known",
+          "value": [
+            "rosette"
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-parsley"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Petroselinum crispum"
+              },
+              "note": "The current Gardenpedia source-backed profile describes parsley growth as a rosette; this remains species-level rather than Italian Giant-specific."
+            }
+          ]
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-parsley"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Petroselinum crispum"
+              },
+              "note": "Johnny’s general parsley growing guidance specifies full sun; species scope, growing phase only."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "common-chives",
@@ -281,7 +439,108 @@
         "confidence": "high",
         "sourceIds": ["johnnys-chives"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "known",
+          "value": [
+            "clumping"
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-chives"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Allium schoenoprasum"
+              },
+              "note": "USU reports that one chive seed produces a mature clump; clumping is species-level, not a Garden hydroponic pod-count rule."
+            }
+          ]
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 20.32,
+              "maxCm": 25.4,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "usu-chives"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "species",
+                  "taxon": "Allium schoenoprasum"
+                },
+                "note": "USU reports mature clumps 8–10 inches tall; converted to 20.32–25.4 cm."
+              }
+            ]
+          },
+          "spread": {
+            "status": "known",
+            "value": {
+              "maxCm": 30.48,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "usu-chives"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "species",
+                  "taxon": "Allium schoenoprasum"
+                },
+                "note": "USU reports mature clumps may spread nearly one foot; retained as an approximate upper extent of 30.48 cm."
+              }
+            ]
+          }
+        },
+        "spacing": {
+          "status": "known",
+          "value": [
+            {
+              "minCm": 10.16,
+              "maxCm": 15.24,
+              "context": "in_ground",
+              "spacingType": "between_plants"
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-chives"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Allium schoenoprasum"
+              },
+              "note": "USU specifies 4–6 inches apart in garden soil; converted to 10.16–15.24 cm, not pod spacing."
+            }
+          ]
+        },
+        "light": {
+          "status": "unknown",
+          "reason": "No phase-specific light claim was established at an applicable taxonomic scope."
+        }
+      }
   },
   {
     "id": "dill-bouquet",
@@ -352,7 +611,57 @@
         "confidence": "medium",
         "sourceIds": ["usu-dill"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-dill"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Anethum graveolens"
+              },
+              "note": "USU’s dill guide specifies full sun for garden growth; species scope, growing phase only."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "rosemary",
@@ -421,7 +730,57 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-rosemary"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-rosemary"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Salvia rosmarinus"
+              },
+              "note": "Johnny’s rosemary guide specifies full sun; crop-level garden guidance, not artificial-light duration."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "lavender-vera",
@@ -491,7 +850,57 @@
         "confidence": "high",
         "sourceIds": ["usu-lavender"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-lavender"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lavandula angustifolia"
+              },
+              "note": "USU’s English lavender guide specifies full sun; Vera is named among English lavender varieties, but no cultivar-specific light difference is asserted."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "bibb-lettuce",
@@ -561,7 +970,71 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-lettuce"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "uf-hydro-lettuce",
+                "okstate-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-lettuce"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "iceberg-lettuce",
@@ -630,7 +1103,71 @@
         "confidence": "high",
         "sourceIds": ["johnnys-lettuce"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "uf-hydro-lettuce",
+                "okstate-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-lettuce"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "buttercrunch-lettuce",
@@ -891,7 +1428,57 @@
         "confidence": "high",
         "sourceIds": ["johnnys-sage"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-sage"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Salvia officinalis"
+              },
+              "note": "Johnny’s common sage guide specifies full sun; species scope, growing phase only."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "black-seeded-simpson",
@@ -960,6 +1547,70 @@
         "confidence": "high",
         "sourceIds": ["johnnys-lettuce"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "uf-hydro-lettuce",
+                "okstate-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-lettuce"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+            }
+          ]
+        }
+      }
   }
 ]

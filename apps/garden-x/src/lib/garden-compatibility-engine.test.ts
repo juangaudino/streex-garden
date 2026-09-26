@@ -82,7 +82,7 @@ function evaluate(
 describe("Garden X B3.3 deterministic compatibility engine", () => {
   it("A — keeps documented hydroponic candidates and unknown/pending candidates eligible", () => {
     const { results } = evaluate();
-    expect(results).toHaveLength(8);
+    expect(results).toHaveLength(43);
     expect(results.every((result) => result.eligibility === "eligible")).toBe(true);
     expect(
       results.find((result) => result.candidate.libraryPlantId === "buttercrunch-lettuce")
@@ -223,7 +223,7 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
       systemLayoutLevels: undefined,
     });
     const { results } = evaluate(sparseGarden);
-    expect(results).toHaveLength(8);
+    expect(results).toHaveLength(43);
     expect(results.every((result) => result.eligibility === "eligible")).toBe(true);
     const cherry = results.find((result) => result.candidate.libraryPlantId === "cherry-tomato")!;
     expect(cherry.compatibility).toBe("unknown");

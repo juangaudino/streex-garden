@@ -311,7 +311,77 @@
         "confidence": "medium",
         "sourceIds": ["usu-cilantro"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "known",
+          "value": [
+            {
+              "minCm": 5.08,
+              "context": "in_ground",
+              "spacingType": "between_plants"
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-cilantro"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Coriandrum sativum"
+              },
+              "note": "USU lists 2 inches for leaf cilantro in soil; converted to 5.08 cm and retained as in-ground plant spacing, not pod spacing."
+            }
+          ]
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-cilantro"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Coriandrum sativum"
+              },
+              "note": "USU describes cilantro as growing best in full sun; this is a growing-phase outdoor light category, not a grow-light hours claim."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "red-romaine-lettuce",
@@ -385,7 +455,71 @@
         "confidence": "medium",
         "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
       }
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "uf-hydro-lettuce",
+                "okstate-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-lettuce"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Lactuca sativa"
+              },
+              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "common-mint",

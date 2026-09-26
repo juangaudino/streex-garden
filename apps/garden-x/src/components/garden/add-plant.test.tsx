@@ -154,7 +154,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(screen.getByText("Cascading Petunia")).toBeTruthy();
     expect(screen.getByText("Conditional evidence")).toBeTruthy();
     expect(screen.queryByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeNull();
-    expect(screen.queryByText("Bibb Lettuce")).toBeNull();
+    expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
     expect(document.body.textContent).not.toMatch(/\b(best|winner|recommended|score)\b/i);
   });
 

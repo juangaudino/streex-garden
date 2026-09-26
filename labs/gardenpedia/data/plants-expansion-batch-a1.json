@@ -24,7 +24,71 @@
       "flowering": {"short": "Flowering marks a shift away from peak leaf production", "guidance": "For leaf-focused use, harvest before heavy flowering and keep the plant actively branching. Visible buds should still be recorded as a real stage, not treated as an error.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-key", "usu-basil"]},
       "hydroponics": {"short": "Use basil hydro targets as a crop-level reference", "guidance": "OSU lists basil at about EC 1.0–1.6 mS/cm and pH 5.5–6.0. Johnny's also identifies Thai basil types as suitable for hydroponic/container production. Shared-reservoir targets still need to respect the other crops in the system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["okstate-ecph", "johnnys-basil-hydro"]},
       "problems": {"short": "Watch stress-driven flowering, crowding and weak light response", "guidance": "Water stress and high heat can accelerate flowering in basil, while dense indoor growth can reduce airflow. Garden should interpret these signs together with actual history and photos.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-basil"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "osu-hydro-ecph",
+                "johnnys-basil-hydro"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum basilicum"
+              },
+              "note": "Hydroponic basil production guidance applies at the species/crop level; it does not establish this named variety’s dimensions or performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-sweet-thai-basil"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum basilicum"
+              },
+              "note": "Johnny’s Thai basil reference specifies full sun for growing; no artificial-light duration is inferred."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "italian-large-leaf-basil",
@@ -51,7 +115,71 @@
       "flowering": {"short": "Keep leaf production ahead of flowering", "guidance": "Regular harvest before heavy flowering supports continued leaf production. Flower buds are a stage signal that should influence, not automatically dictate, the next cut.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-basil-key", "usu-basil"]},
       "hydroponics": {"short": "Basil-specific hydro reference is available", "guidance": "OSU lists basil at about EC 1.0–1.6 mS/cm and pH 5.5–6.0. Use this as a crop-level reference, not as a command to override a shared reservoir's current recipe.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["okstate-ecph", "johnnys-basil-hydro"]},
       "problems": {"short": "Crowding, water stress and flowering reduce leaf quality", "guidance": "Basil needs strong light, steady moisture and airflow. Garden should distinguish ordinary mature flowering from stress-driven decline by using history and visual evidence together.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-basil"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "osu-hydro-ecph",
+                "johnnys-basil-hydro"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum basilicum"
+              },
+              "note": "Hydroponic basil production guidance applies at the species/crop level; it does not establish this named variety’s dimensions or performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-basil-key"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum basilicum"
+              },
+              "note": "Johnny’s general basil guide specifies full sun; species scope, growing phase only."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "florence-fennel",
@@ -78,7 +206,57 @@
       "flowering": {"short": "Heat, long days and root stress can trigger bolting", "guidance": "Florence fennel performs best in cooler conditions. Heat, long days, water stress or root disturbance can accelerate bolting and reduce bulb quality.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb"]},
       "hydroponics": {"short": "Physical root and bulb geometry need validation first", "guidance": "Garden does not assign a precise hydroponic EC/pH target yet. Before recommending compact hydro culture, validate that the basket and root zone can accommodate a swollen base and taproot without chronic stress.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
       "problems": {"short": "Bolting, splitting and undersized bulbs are the main quality risks", "guidance": "Keep moisture consistent and avoid root damage. A plant producing mostly fronds without a useful base may reflect heat, stress, variety mismatch or insufficient physical room.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "usu-fennel"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Foeniculum vulgare"
+              },
+              "note": "USU’s guide to Florence fennel specifies full sun; the light claim is species/crop guidance, not hydroponic light equivalence."
+            }
+          ]
+        }
+      }
   },
   {
     "id": "lemongrass-homegrown",
@@ -105,6 +283,35 @@
       "flowering": {"short": "Flowering is uncommon in short-season culture", "guidance": "Johnny's notes East Indian lemongrass rarely flowers when grown as an annual. Garden should treat any flowering as a real stage but not as a routine indoor milestone.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-lemongrass"]},
       "hydroponics": {"short": "Large clump architecture makes compact hydro a special case", "guidance": "No crop-specific hydroponic nutrient target is accepted yet. The plant can become large and root-dense, so Garden should validate physical fit and reservoir behavior before recommending it for a small countertop system.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
       "problems": {"short": "Cold, low light and cramped root volume are major constraints", "guidance": "Lemongrass is frost sensitive and strongly favors warm, bright conditions. In Utah, USU treats it as a tender perennial commonly grown as an annual or overwintered in containers.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-lemongrass"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "No crop-specific hydroponic evidence is established for the unresolved packet identity."
+      },
+      "growthHabits": {
+        "status": "pending",
+        "reason": "Exact Cymbopogon species is unresolved; available species-specific sources cannot be assigned to the packet identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "pending",
+          "reason": "Exact Cymbopogon species is unresolved; available species-specific sources cannot be assigned to the packet identity."
+        },
+        "spread": {
+          "status": "pending",
+          "reason": "Exact Cymbopogon species is unresolved; available species-specific sources cannot be assigned to the packet identity."
+        }
+      },
+      "spacing": {
+        "status": "pending",
+        "reason": "No spacing evidence safely scoped to the unresolved packet identity."
+      },
+      "light": {
+        "status": "pending",
+        "reason": "No phase-specific light evidence safely scoped to the unresolved packet identity."
+      }
     }
   },
   {
@@ -132,6 +339,46 @@
       "flowering": {"short": "Whole-plant harvest peaks just before flowering", "guidance": "Johnny's recommends whole-plant harvest just before flowering, while individual leaves can be taken earlier. Garden should keep flowering as a stage cue rather than a failure condition.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-mint"]},
       "hydroponics": {"short": "Spearmint-specific nutrient targets remain unresolved", "guidance": "Garden does not assign a precise spearmint EC/pH range yet. The bigger practical constraint in a small system may be vigorous root and canopy spread rather than nutrient demand alone.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []},
       "problems": {"short": "Vigorous spread and crowding are the main structural risks", "guidance": "USU and Johnny's both describe mint as aggressive or invasive in soil. In a hydroponic pod, translate that into periodic root/canopy crowding checks rather than an outdoor containment warning.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["usu-mint", "johnnys-mint"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": ["usu-mint"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {"level": "genus", "taxon": "Mentha"},
+            "note": "USU mint guidance describes mint’s spreading growth; genus-level evidence, not a Spearmint cultivar claim."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      }
     }
   }
 ]

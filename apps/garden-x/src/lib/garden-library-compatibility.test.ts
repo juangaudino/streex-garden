@@ -31,22 +31,12 @@ function evidence() {
 }
 
 describe("Gardenpedia compatibility profile contract", () => {
-  it("publishes profiles for exactly the eight real-data pilot identities", () => {
+  it("publishes a v1 compatibility profile for every current catalog identity", () => {
     expect(gardenLibraryManifest.entries).toHaveLength(43);
     const profiled = gardenLibraryManifest.entries.filter((entry) => entry.compatibilityProfile);
-    expect(profiled.map((entry) => entry.libraryPlantId).sort()).toEqual(
-      [
-        "buttercrunch-lettuce",
-        "cascading-petunia",
-        "cherry-tomato",
-        "common-mint",
-        "evergreen-bunching-onion-nabuka",
-        "genovese-basil",
-        "monterey-strawberry",
-        "tiny-tim-tomato",
-      ].sort(),
-    );
-    expect(profiled).toHaveLength(8);
+    expect(profiled).toHaveLength(43);
+    expect(profiled.every((entry) => entry.compatibilityProfile?.profileVersion === 1)).toBe(true);
+    expect(new Set(profiled.map((entry) => entry.libraryPlantId)).size).toBe(43);
   });
 
   it("keeps cultivar evidence separate from generic crop identities", () => {
@@ -116,6 +106,28 @@ describe("Gardenpedia compatibility profile contract", () => {
         (entry) => entry.libraryPlantId === "evergreen-bunching-onion-nabuka",
       )?.commonName,
     ).toBe("Evergreen Bunching Onion Nabuka");
+  });
+
+  it("does not publish hydroponic compatibility without a known evidence-backed state", () => {
+    const byId = new Map(
+      gardenLibraryManifest.entries.map((entry) => [
+        entry.libraryPlantId,
+        entry.compatibilityProfile,
+      ]),
+    );
+    for (const id of [
+      "italian-oregano",
+      "rosemary",
+      "lavender-vera",
+      "spearmint",
+      "marigold-jolly-jester",
+    ]) {
+      expect(byId.get(id)?.hydroponicSuitability.status).not.toBe("compatible");
+    }
+    expect(byId.get("red-romaine-lettuce")?.hydroponicSuitability).toMatchObject({
+      status: "compatible",
+      evidence: [{ taxonomicScope: { level: "species", taxon: "Lactuca sativa" } }],
+    });
   });
 
   it("preserves the pilot distinctions for runners, spreading mint, cascading petunia, and clumping onion", () => {

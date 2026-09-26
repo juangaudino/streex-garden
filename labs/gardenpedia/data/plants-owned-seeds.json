@@ -12,7 +12,67 @@
       "flowering":{"short":"Remove buds for leaf-focused production","guidance":"Ferry-Morse recommends removing flower buds to encourage fuller, leafier growth when culinary leaves are the priority.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sweet-basil"]},
       "hydroponics":{"short":"Use the same basil family guardrails, then validate the actual system","guidance":"Basil is a proven hydroponic crop, but Garden should keep system-specific pH/EC recommendations tied to the hydroponic source layer rather than the seed packet.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["osu-hydro-ecph"]},
       "problems":{"short":"Watch flowering, crowding and weak elongated stems","guidance":"Future AI Check should combine canopy shape and history instead of diagnosing from age alone.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "osu-hydro-ecph",
+                "johnnys-basil-hydro"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum basilicum"
+              },
+              "note": "Hydroponic basil production guidance applies at the species/crop level; it does not establish this named variety’s dimensions or performance."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 45.72,
+              "maxCm": 60.96,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-sweet-basil"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 18–24 inches for this named Sweet Basil product; converted to 45.72–60.96 cm and limited to outdoor-general context."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "light": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        }
+      }
   },
   {
     "id":"curled-chervil","name":"Curled Chervil","spanishName":"Perifollo rizado","scientificName":"Anthriscus cerefolium","variety":"Curled","category":"herbs","emoji":"🌿","guideCompletion":76,
@@ -27,7 +87,54 @@
       "flowering":{"short":"Heat-driven bolting ends the prime leaf phase","guidance":"Hot weather can trigger bolting; record flowering as a stage transition and expect leaf quality to decline.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]},
       "hydroponics":{"short":"Hydro-specific nutrient targets still need validation","guidance":"Keep chervil in the structured library, but do not assign a precise hydroponic EC range until a crop-specific source is accepted.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
       "problems":{"short":"Heat and dryness are the main management risks","guidance":"Chervil prefers rich, moist conditions and is sensitive to hot weather.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-chervil"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 25.4,
+              "maxCm": 40.64,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "johnnys-chervil"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "species",
+                  "taxon": "Anthriscus cerefolium"
+                },
+                "note": "Johnny’s general chervil reference gives 10–16 inches; converted to 25.4–40.64 cm at species scope, not a special curled cultivar measurement."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "unknown",
+          "reason": "No phase-specific light claim was established at an applicable taxonomic scope."
+        }
+      }
   },
   {
     "id":"garlic-chives","name":"Garlic Chives","spanishName":"Cebollín de ajo / cebollino chino","scientificName":"Allium tuberosum","variety":"Garlic Chives","category":"herbs","emoji":"🌱","guideCompletion":82,
@@ -42,6 +149,134 @@
       "flowering":{"short":"Flowers are edible but can self-seed aggressively","guidance":"White flowers are edible; deadhead before seed set when spread control matters.","evidenceType":"source_backed","confidence":"high","sourceIds":["unh-garlic-chives"]},
       "hydroponics":{"short":"Compact clumps are plausible; exact nutrient range pending","guidance":"No crop-specific hydroponic EC/pH target is accepted in V0.5 yet.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
       "problems":{"short":"Overcrowding and self-seeding are the main structural risks","guidance":"Dense clumps benefit from periodic division in long-lived culture.","evidenceType":"source_backed","confidence":"medium","sourceIds":["unh-garlic-chives"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "clumping",
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "unh-garlic-chives"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "UNH describes garlic chives as clump-forming and upright."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 45.72,
+            "maxCm": 60.96,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "unh-garlic-chives"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "UNH reports 18–24 inches tall; converted to 45.72–60.96 cm."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "maxCm": 30.48,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "unh-garlic-chives"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "UNH reports 12 inches wide; retained as an upper extent of 30.48 cm."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "known",
+        "value": [
+          {
+            "minCm": 30.48,
+            "context": "in_ground",
+            "spacingType": "between_plants"
+          },
+          {
+            "minCm": 30.48,
+            "context": "in_ground",
+            "spacingType": "between_rows"
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "unh-garlic-chives"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "UNH specifies 12 inches apart on all sides; converted to 30.48 cm. This is outdoor soil spacing, not pod spacing."
+          }
+        ]
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "unh-garlic-chives"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "UNH gives full sun to part shade for garlic chives; no germination-light requirement is asserted."
+          }
+        ]
+      }
     }
   },
   {
@@ -233,7 +468,73 @@
       "flowering":{"short":"Continuous bloom from spring toward frost","guidance":"The variety is sold for heavy, continuous flowering; spent-bloom management can be used to keep the display tidy.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-petunia-dwarf"]},
       "hydroponics":{"short":"Not a V1 hydroponic target","guidance":"Garden should favor container/soil guidance for this ornamental until a specific hydroponic use case exists.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
       "problems":{"short":"Legginess and reduced bloom under poor light","guidance":"Compact form depends on adequate light and balanced growth; avoid crowding behind taller crops.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ferry-petunia-dwarf"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 30.48,
+              "maxCm": 45.72,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-petunia-dwarf"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 12–18 inches for this Dwarf Bedding Petunia product; converted to 30.48–45.72 cm."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "ferry-petunia-dwarf"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Ferry-Morse specifies full sun for this product; no germination-light value is implied."
+            }
+          ]
+        }
+      }
   },
   {
     "id":"sunflower-american-giant-hybrid","name":"American Giant Hybrid Sunflower","spanishName":"Girasol American Giant Hybrid","scientificName":"Helianthus annuus","variety":"American Giant Hybrid","category":"flowers","emoji":"🌻","guideCompletion":77,
@@ -248,7 +549,93 @@
       "flowering":{"short":"Large pollinator-attracting blooms","guidance":"Ferry-Morse lists strong pollinator and songbird value for the mature flowers and seed heads.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
       "hydroponics":{"short":"Not appropriate for a small countertop hydro system","guidance":"The mature height, support requirement and root demand make this a soil/large-container crop for Garden planning.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]},
       "problems":{"short":"Wind, support, shade and space dominate management","guidance":"Place where the mature plant cannot shade shorter crops or interfere with structures.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-american-giant"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 365.76,
+              "maxCm": 487.68,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-sunflower-american-giant"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 12–16 feet; converted to 365.76–487.68 cm for this named hybrid."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "known",
+          "value": [
+            {
+              "minCm": 45.72,
+              "maxCm": 60.96,
+              "context": "in_ground",
+              "spacingType": "between_plants"
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "ferry-sunflower-american-giant"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Ferry-Morse lists 18–24 inches for outdoor spacing; converted to 45.72–60.96 cm between plants. This is not hydroponic position spacing."
+            }
+          ]
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "ferry-sunflower-american-giant"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Ferry-Morse specifies full sun for this named hybrid; no germination-light condition is implied."
+            }
+          ]
+        }
+      }
   },
   {
     "id":"sunflower-autumn-beauty","name":"Autumn Beauty Sunflower — Mixed Colors","spanishName":"Girasol Autumn Beauty — mezcla de colores","scientificName":"Helianthus annuus","variety":"Autumn Beauty Mixed Colors","category":"flowers","emoji":"🌻","guideCompletion":76,
@@ -263,7 +650,73 @@
       "flowering":{"short":"Gold, rust, orange and red branching blooms","guidance":"This variety is grown for a long multicolor flowering display and pollinator value.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
       "hydroponics":{"short":"Better suited to soil or a large outdoor container","guidance":"Its 5–6 foot mature frame and branching habit make compact hydroponics a poor fit.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]},
       "problems":{"short":"Shade and wind exposure matter","guidance":"Position intentionally so mature stems do not shade low edible crops.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["ferry-sunflower-autumn-beauty"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 152.4,
+              "maxCm": 182.88,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-sunflower-autumn-beauty"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 5–6 feet; converted to 152.4–182.88 cm for this named mix."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "ferry-sunflower-autumn-beauty"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Ferry-Morse specifies full sun for this named mix; no germination-light condition is implied."
+            }
+          ]
+        }
+      }
   },
   {
     "id":"marigold-jolly-jester","name":"Jolly Jester Marigold","spanishName":"Caléndula francesa Jolly Jester","scientificName":"Tagetes patula — packet variety","variety":"Jolly Jester","category":"flowers","emoji":"🌼","guideCompletion":52,
@@ -278,6 +731,115 @@
       "flowering":{"short":"Useful near vulnerable vegetables in outdoor companion layouts","guidance":"USU Extension includes marigolds among pest-repellent companion plants used near vulnerable vegetables, while Garden should avoid claiming every traditional pairing is proven.","evidenceType":"source_backed","confidence":"medium","sourceIds":["usu-companion-2025"]},
       "hydroponics":{"short":"Container/soil crop in V0.5","guidance":"Do not prioritize shared-reservoir hydroponics for this ornamental until there is a real use case.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
       "problems":{"short":"Crowding reduces airflow and bloom quality","guidance":"Keep enough light around the canopy and avoid burying it under taller neighbors.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":[]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "compact",
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tagetes-patula"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tagetes patula"
+            },
+            "note": "NC State describes Tagetes patula as a compact, bushy annual; applied at species scope, not as a Jolly Jester-specific trait."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 30.48,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-tagetes-patula"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Tagetes patula"
+              },
+              "note": "NC State reports 6–12 inches in height; converted to 15.24–30.48 cm. Species-level range, not cultivar-specific."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 45.72,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-tagetes-patula"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Tagetes patula"
+              },
+              "note": "NC State reports 6–18 inches in width; converted to 15.24–45.72 cm. Species-level range, not cultivar-specific."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tagetes-patula"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tagetes patula"
+            },
+            "note": "NC State describes full sun to partial shade; only the growing phase is represented."
+          }
+        ]
+      }
     }
   },
   {
@@ -293,7 +855,79 @@
       "flowering":{"short":"Long summer color with pollinator value","guidance":"Zinnia flowers attract bees, butterflies and other pollinators.","evidenceType":"source_backed","confidence":"high","sourceIds":["ferry-zinnia-lilliput"]},
       "hydroponics":{"short":"Not a compact-hydro priority","guidance":"Use container or bed culture first; no crop-specific hydroponic target is accepted in V0.5.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
       "problems":{"short":"Airflow and leaf wetness matter","guidance":"Avoid overcrowding; zinnias perform best when foliage has room and light.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ferry-zinnia-lilliput"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 40.64,
+              "maxCm": 45.72,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-zinnia-lilliput"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 16–18 inches for Lilliput; converted to 40.64–45.72 cm."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+          }
+        },
+        "spacing": {
+          "status": "unknown",
+          "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            },
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "partial_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "ferry-zinnia-lilliput"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Ferry-Morse describes sun to part shade for this product; only growing-phase guidance is represented."
+            }
+          ]
+        }
+      }
   },
   {
     "id":"delphinium-magic-fountains-dwarf","name":"Magic Fountains Dwarf Delphinium — Mixed Colors","spanishName":"Delphinium Magic Fountains enano — mezcla de colores","scientificName":"Delphinium elatum","variety":"Magic Fountains Mixed Color Dwarf","category":"flowers","emoji":"💜","guideCompletion":55,
@@ -308,6 +942,51 @@
       "flowering":{"short":"Dwarf perennial spikes in mixed colors","guidance":"Magic Fountains produces compact flower spikes suited to smaller gardens and exposed sites.","evidenceType":"source_backed","confidence":"medium","sourceIds":["walmart-delphinium-magic-fountains"]},
       "hydroponics":{"short":"Not a food-hydroponic crop","guidance":"Keep this ornamental outside culinary shared systems in V0.5.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":[]},
       "problems":{"short":"Safety and climate fit matter","guidance":"Do not mix ornamental/non-edible harvest logic with edible Garden recommendations.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["walmart-delphinium-magic-fountains"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-delphinium-elatum"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Delphinium elatum"
+            },
+            "note": "NC State describes the species as upright and requiring support; this does not establish the mixed packet’s mature height or dwarf-series dimensions."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      }
     }
   },
   {
@@ -323,7 +1002,107 @@
       "flowering":{"short":"Pollination directly affects fruit set","guidance":"Johnny's notes poor fruit development can indicate insufficient pollination; flowering should trigger a pollination-aware maintenance state.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-zucchini"]},
       "hydroponics":{"short":"Possible only in a large dedicated system","guidance":"OSU lists courgette/zucchini-type crops around EC 1.8–2.4 mS/cm and pH 6.0 as a reference, but the plant's physical size makes a small shared herb system inappropriate.","evidenceType":"source_backed","confidence":"medium","sourceIds":["osu-hydro-ecph"]},
       "problems":{"short":"Powdery mildew, airflow and pollination are major risks","guidance":"Johnny's highlights powdery mildew, downy mildew, bacterial wilt and drainage/airflow as key production concerns.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-zucchini"]}
-    }
+    },
+    "compatibilityProfile": {
+        "profileVersion": 1,
+        "hydroponicSuitability": {
+          "status": "compatible",
+          "evidence": [
+            {
+              "sourceIds": [
+                "osu-hydro-ecph"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Cucurbita pepo"
+              },
+              "note": "OSU lists courgette/zucchini as a hydroponic crop; this supports crop-level cultivation, not fit for a particular system."
+            }
+          ]
+        },
+        "growthHabits": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
+        },
+        "matureSize": {
+          "height": {
+            "status": "known",
+            "value": {
+              "minCm": 45.72,
+              "maxCm": 60.96,
+              "context": "outdoor_general"
+            },
+            "evidence": [
+              {
+                "sourceIds": [
+                  "ferry-dark-green-zucchini"
+                ],
+                "evidenceType": "source_backed",
+                "confidence": "high",
+                "taxonomicScope": {
+                  "level": "identity"
+                },
+                "note": "Ferry-Morse lists 18–24 inches in height; converted to 45.72–60.96 cm. This does not describe the larger lateral spread."
+              }
+            ]
+          },
+          "spread": {
+            "status": "unknown",
+            "reason": "No sufficiently scoped source evidence was identified for this property."
+          }
+        },
+        "spacing": {
+          "status": "known",
+          "value": [
+            {
+              "minCm": 45.72,
+              "context": "in_ground",
+              "spacingType": "between_plants"
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-zucchini"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Cucurbita pepo"
+              },
+              "note": "Johnny’s gives outdoor zucchini plant spacing starting at 18 inches; recorded only as a one-sided in-ground minimum, not pod spacing."
+            }
+          ]
+        },
+        "light": {
+          "status": "known",
+          "value": [
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "full_sun"
+              }
+            }
+          ],
+          "evidence": [
+            {
+              "sourceIds": [
+                "johnnys-zucchini"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Cucurbita pepo"
+              },
+              "note": "Johnny’s recommends full sun for field-grown zucchini; this does not assert equivalent Garden lighting."
+            }
+          ]
+        }
+      }
   },
   {
     "id":"crimson-giant-radish","name":"Crimson Giant Radish","spanishName":"Rábano Crimson Giant","scientificName":"Raphanus sativus","variety":"Crimson Giant","category":"root vegetables","emoji":"🔴","guideCompletion":87,
@@ -338,6 +1117,35 @@
       "flowering":{"short":"Bolting means the root crop has moved past its ideal phase","guidance":"Heat and delayed harvest can push radish out of prime root quality and toward reproductive growth.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
       "hydroponics":{"short":"Root geometry is the main design constraint","guidance":"Hydroponic culture requires enough media/root space for the swollen root. Do not treat it like a lettuce net-cup without validating physical clearance.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["johnnys-radish"]},
       "problems":{"short":"Heat, dryness and delayed harvest reduce quality","guidance":"Johnny's notes hot, dry weather can make roots tough, pithy and overly spicy.","evidenceType":"source_backed","confidence":"high","sourceIds":["johnnys-radish"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No phase-specific light claim was established at an applicable taxonomic scope."
+      }
     }
   },
   {
@@ -410,6 +1218,35 @@
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": ["ncsu-thymus-vulgaris"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Available spacing guidance is absent or does not match a supported context for this identity."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No phase-specific light claim was established at an applicable taxonomic scope."
       }
     }
   },

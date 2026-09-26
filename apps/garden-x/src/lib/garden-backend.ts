@@ -175,6 +175,10 @@ function dateOnlyEventValue(event: BootstrapEvent): string | null {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 function eventType(type: string, data: Record<string, unknown>): EventType {
+  const journalMilestone = data["journal_milestone"];
+  if (type === "observation" && ["germinated", "sprouted", "flowering", "fruiting", "harvest"].includes(String(journalMilestone))) {
+    return journalMilestone as EventType;
+  }
   if (type === "system_maintenance") return "maintenance";
   if (type === "cycle_started" || type === "seeds_added") return "planted";
   if (type === "germination_observed" || type === "germination_confirmed") return "germinated";
@@ -192,7 +196,8 @@ function eventType(type: string, data: Record<string, unknown>): EventType {
   }
   return "note";
 }
-function provenance(type: string): Provenance {
+function provenance(type: string, data: Record<string, unknown>): Provenance {
+  if (data["source"] === "garden_x_journal") return "recorded";
   return [
     "observation",
     "visual_review",
@@ -711,8 +716,9 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       occurredAt: e.occurred_at,
       type: eventType(e.event_type, e.event_data ?? {}),
       title: titleFor(e),
+      ...(typeof e.event_data?.journal_milestone === "string" ? { journalMilestone: e.event_data.journal_milestone as PlantEvent["journalMilestone"] } : {}),
       ...(e.note ? { detail: normalizeTimelineNote(e.note) } : {}),
-      provenance: provenance(e.event_type),
+      provenance: provenance(e.event_type, e.event_data ?? {}),
       backendEventType: e.event_type,
       backendRevision: e.revision,
       ...(eventPhotoIds ? { photoIds: eventPhotoIds } : {}),
@@ -1162,6 +1168,23 @@ async function recordObservation(
   return (data as { event_id: string }).event_id;
 }
 
+async function recordJournalMoment(
+  growCycleId: string,
+  event: Omit<PlantEvent, "id">,
+  hasPhoto: boolean,
+): Promise<string> {
+  const { data, error } = await getSupabaseClient().rpc("garden_x_create_journal_moment", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: growCycleId,
+    p_occurred_on: effectiveDateFromEvent(event),
+    p_note: event.detail?.trim() || null,
+    p_milestone: event.journalMilestone ?? null,
+    p_has_photo: hasPhoto,
+  });
+  if (error) throw new Error(error.message);
+  return (data as { event_id: string }).event_id;
+}
+
 export async function persistMoment(
   plant: Plant,
   event: Omit<PlantEvent, "id">,
@@ -1171,7 +1194,9 @@ export async function persistMoment(
   const cycleId = plant.backendGrowCycleId;
   let eventId: string;
 
-  if (event.type === "germinated") {
+  if (event.journalMilestone) {
+    eventId = await recordJournalMoment(cycleId, event, Boolean(photo));
+  } else if (event.type === "germinated") {
     eventId = await recordFact(
       cycleId,
       "germination_observed",

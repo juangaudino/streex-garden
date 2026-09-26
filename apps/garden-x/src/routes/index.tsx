@@ -4,10 +4,8 @@ import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
   byRecency,
-  dueLabel,
   localizedEventLabel,
   formatDate,
-  openTasks,
   plantPhotos,
   recentPlantPhotos,
   plantsRepresentedInPhotos,
@@ -19,9 +17,7 @@ import {
   ProvenanceTag,
   SectionTitle,
   StatusDot,
-  PlantThumb,
   eventIcons,
-  maintenanceIcons,
 } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { ui } from "@/lib/ui-copy";
@@ -30,18 +26,6 @@ import { GardenSummaryCard } from "@/components/garden/garden-summary";
 import type { Garden, Plant, PlantEvent } from "@/lib/garden-data";
 
 type HomeRecentActivity = { event: PlantEvent; plant: Plant | null; garden: Garden | null };
-const careSearch = {
-  from: undefined,
-  prompt: undefined,
-  careQueue: undefined,
-  careIndex: undefined,
-  careRecorded: false,
-  careReviewed: undefined,
-  careObservations: undefined,
-  careActions: undefined,
-  careFollowups: undefined,
-};
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -78,7 +62,6 @@ function Home() {
 
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const plantById = (id: string) => store.plants.find((p) => p.id === id)!;
-  const due = openTasks(store.tasks).filter((t) => t.dueInDays <= 1);
   const recent = byRecency(store.events)
     .flatMap((event): HomeRecentActivity[] => {
       if (event.plantId) {
@@ -117,9 +100,7 @@ function Home() {
         <PageHeader
           eyebrow={new Date().toLocaleDateString(isSpanish ? "es-ES" : "en-US", { weekday: "long", month: "long", day: "numeric" })}
           title={`${greeting}, ${store.profile.signedIn ? store.profile.name : ui(store.language, "gardener")}`}
-          subtitle={isSpanish
-            ? `${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}. ${due.length} ${ui(store.language, "thingsNeedHands")}`
-            : `${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}. ${due.length} ${ui(store.language, "thingsNeedHands")}`}
+          subtitle={`${store.plants.length} ${ui(store.language, "plants").toLowerCase()} ${ui(store.language, "plantsAcrossGardens")} ${store.gardens.length} ${ui(store.language, "gardensTitle").toLowerCase()}.`}
         />
       </div>
 
@@ -169,67 +150,6 @@ function Home() {
             {heroPics.length} {ui(store.language, "photosOnFile")} — {ui(store.language, "firstFrom")} {formatDate(heroPics[0]!.daysAgo)}.
           </p>
         ) : null}
-      </section>
-
-      {/* Needs attention */}
-      <section className="mt-12 px-5 sm:px-8 lg:px-12">
-        <SectionTitle
-          action={
-            <Link to="/care" search={careSearch} className="inline-flex items-center gap-1 text-primary hover:underline">
-              {ui(store.language, "allCare")} <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          }
-        >
-          {ui(store.language, "wantsAttention")}
-        </SectionTitle>
-        <div className="no-scrollbar -mx-5 flex snap-x gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:px-0 xl:grid-cols-3">
-          {due.map((task) => {
-            const plant = store.plants.find((item) => item.id === task.plantId);
-            if (!plant) return null;
-            const Icon = maintenanceIcons[task.type];
-            return (
-              <Link
-                key={task.id}
-                to="/plants/$plantId"
-                params={{ plantId: plant.id }}
-                className="press w-[80vw] shrink-0 snap-start rounded-3xl border border-border/70 bg-card p-4 shadow-soft sm:w-auto"
-              >
-                <div className="flex items-start gap-3">
-                  <PlantThumb plant={plant} photo={photoById(plant.heroPhotoId)} size="sm" />
-                  <div className="min-w-0 flex-1">
-                    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
-                      <p className="truncate font-medium">{plant.name}</p>
-                      <span
-                        className={`shrink-0 numeral text-xs ${task.dueInDays < 0 ? "text-clay" : "text-muted-foreground"}`}
-                      >
-                        {dueLabel(task.dueInDays)}
-                      </span>
-                    </div>
-                    <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-                      <Icon className="h-3.5 w-3.5 shrink-0" /> <span className="truncate">{task.label}</span>
-                    </p>
-                    {task.hint ? (
-                      <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground/80">{task.hint}</p>
-                    ) : null}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-        <Link
-          to="/care"
-          search={careSearch}
-          className="press mt-3 flex items-center justify-between rounded-3xl bg-primary px-5 py-4 text-primary-foreground shadow-soft"
-        >
-          <span className="min-w-0">
-            <span className="block text-sm font-medium">{ui(store.language, "startMaintenance")}</span>
-            <span className="block text-xs text-primary-foreground/70">
-              {ui(store.language, "plantByPlant")}, {openTasks(store.tasks).length} {ui(store.language, "openActions")}
-            </span>
-          </span>
-          <ArrowRight className="h-4 w-4 shrink-0" />
-        </Link>
       </section>
 
       {/* Meaningful changes */}

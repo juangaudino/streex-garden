@@ -52,6 +52,8 @@ export type EventType =
   | "ai"
   | "note";
 
+export type JournalMilestone = "germinated" | "sprouted" | "flowering" | "fruiting" | "harvest";
+
 /** Every record declares how it was established. AI never writes "fact". */
 export type Provenance = "recorded" | "observed" | "inferred";
 
@@ -120,6 +122,7 @@ export interface PlantEvent {
   title: string;
   detail?: string;
   milestone?: boolean;
+  journalMilestone?: JournalMilestone;
   photoId?: string;
   photoIds?: string[];
   provenance: Provenance;

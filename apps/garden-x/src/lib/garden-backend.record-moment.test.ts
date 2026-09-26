@@ -62,6 +62,8 @@ describe("Record a Moment canonical temporal propagation", () => {
       if (name === "garden_get_cycle") return { data: { revision: 7, history: [] }, error: null };
       if (name === "garden_x_create_observation")
         return { data: { event_id: "event-observation" }, error: null };
+      if (name === "garden_x_create_journal_moment")
+        return { data: { event_id: "event-journal" }, error: null };
       if (name === "garden_x_record_harvest")
         return { data: { event_id: "event-harvest" }, error: null };
       if (name === "garden_record_cycle_fact") return { data: { event_id: "event-fact" }, error: null };
@@ -128,6 +130,40 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+  });
+
+  it("stores the journal milestone and note together before attaching its photo", async () => {
+    await persistMoment(plant, {
+      ...event("flowering"),
+      title: "First flowers",
+      detail: "Two flowers opened today.",
+      journalMilestone: "flowering",
+    }, photo);
+
+    const moment = rpc.mock.calls.find(([name]) => name === "garden_x_create_journal_moment");
+    const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
+    expect(moment?.[1]).toMatchObject({
+      p_grow_cycle_id: "cycle-1",
+      p_occurred_on: "2026-09-04",
+      p_note: "Two flowers opened today.",
+      p_milestone: "flowering",
+      p_has_photo: true,
+    });
+    expect(prepare?.[1]).toMatchObject({ p_event_id: "event-journal" });
+  });
+
+  it("persists a photo-only journal entry as an observation plus the canonical photo attachment", async () => {
+    await persistMoment(plant, {
+      ...event("photo"),
+      title: "Photo added",
+      detail: undefined,
+    }, photo);
+
+    expect(rpc).toHaveBeenCalledWith("garden_x_create_observation", expect.objectContaining({
+      p_grow_cycle_id: "cycle-1",
+      p_note: "Photo added",
+    }));
+    expect(rpc.mock.calls.some(([name]) => name === "garden_x_prepare_event_photo")).toBe(true);
   });
 
   it("records Looks good through the existing canonical visual_review fact", async () => {

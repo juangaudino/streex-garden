@@ -60,6 +60,7 @@ import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManif
 import { localizeKnownError, ui } from "@/lib/ui-copy";
 import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
 import { askGardenAccentClassName } from "@/lib/care-session";
+import { useJournalEntry } from "@/components/garden/journal-entry-context";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -80,8 +81,8 @@ export const Route = createFileRoute("/plants/$plantId/")({
   component: PlantProfile,
 });
 
-const tabs = ["History", "Timeline", "Photos", "Care", "Reference"] as const;
-type Tab = (typeof tabs)[number];
+const tabs = ["History", "Timeline", "Photos", "Reference"] as const;
+type Tab = (typeof tabs)[number] | "Care";
 
 function timelineEventText(event: { title: string; detail?: string }) {
   return normalizeTimelineNote(
@@ -96,6 +97,7 @@ function timelineEventNeedsExpansion(text: string) {
 function PlantProfile() {
   const { plantId } = Route.useParams();
   const store = useGarden();
+  const openJournalEntry = useJournalEntry();
   const plant = store.plants.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
@@ -130,6 +132,10 @@ function PlantProfile() {
   }, [plant.libraryPlantId]);
 
   const openRecord = (flow?: MomentFlow, care?: MaintenanceType) => {
+    if (!flow && !care) {
+      openJournalEntry({ plantId: plant.id });
+      return;
+    }
     setRecordFlow(flow);
     setRecordCare(care);
     setRecordOpen(true);

@@ -504,6 +504,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             ...(e.occurredAt !== undefined && { occurredAt: e.occurredAt }),
             ...(e.detail !== undefined && { detail: e.detail }),
             ...(e.milestone !== undefined && { milestone: e.milestone }),
+            ...(e.journalMilestone !== undefined && { journalMilestone: e.journalMilestone }),
             ...(e.photoId !== undefined && { photoId: e.photoId }),
           };
           return { ...s, events: [...s.events, event] };

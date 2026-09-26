@@ -1,15 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Sprout, CheckCircle2, Sparkles, Library, Settings } from "lucide-react";
+import { Home, Sprout, Sparkles, Library, Settings, Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { useGarden } from "@/lib/garden-store";
 import { isBackgroundHydration } from "@/lib/garden-store";
 import { ui } from "@/lib/ui-copy";
+import { useJournalEntry } from "@/components/garden/journal-entry-context";
 
 const nav = [
   { to: "/", en: "Home", es: "Inicio", icon: Home },
   { to: "/gardens", en: "Gardens", es: "Jardines", icon: Sprout },
-  { to: "/care", en: "Care", es: "Cuidado", icon: CheckCircle2 },
   { to: "/garden-ai", en: "Garden AI", es: "Garden AI", icon: Sparkles },
   { to: "/library", en: "Library", es: "Biblioteca", icon: Library },
 ] as const;
@@ -17,6 +17,14 @@ const nav = [
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { language, profile, hydration } = useGarden();
+  const openJournalEntry = useJournalEntry();
+  const plantRoute = pathname.match(/^\/plants\/([^/]+)/);
+  const gardenRoute = pathname.match(/^\/gardens\/([^/]+)/);
+  const context = plantRoute
+    ? { plantId: decodeRoutePart(plantRoute[1]!) }
+    : gardenRoute
+      ? { gardenId: decodeRoutePart(gardenRoute[1]!) }
+      : {};
 
   return (
     <div className="min-h-screen lg:flex">
@@ -26,6 +34,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span className="eyebrow">Garden</span>
           <span className="mt-1 block font-display text-2xl leading-none">Garden X</span>
         </Link>
+        <button type="button" onClick={() => openJournalEntry(context)} className="mb-5 flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-soft transition-colors hover:bg-primary/90">
+          <Plus className="h-4 w-4" />{ui(language, "recordMoment")}
+        </button>
         <nav className="flex flex-col gap-1">
           {nav.map((item) => {
             const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
@@ -68,7 +79,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* mobile tab bar */}
       <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden">
         <div className="mx-auto grid max-w-lg grid-cols-5">
-          {nav.map((item) => {
+          {[...nav.slice(0, 2)].map((item) => {
             const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
             return (
               <Link
@@ -84,10 +95,34 @@ export function AppShell({ children }: { children: ReactNode }) {
               </Link>
             );
           })}
+          <button type="button" onClick={() => openJournalEntry(context)} className="relative -mt-4 flex min-h-16 flex-col items-center gap-1 px-1 pt-1 pb-[max(0.65rem,env(safe-area-inset-bottom))] text-[0.65rem] font-medium text-primary">
+            <span className="grid h-11 w-11 place-items-center rounded-full border-4 border-background bg-primary text-primary-foreground shadow-soft"><Plus className="h-5 w-5" strokeWidth={2.2} /></span>
+            <span className="truncate">{ui(language, "recordShort")}</span>
+          </button>
+          {nav.slice(2).map((item) => {
+            const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={cn(
+                  "flex flex-col items-center gap-1 px-1 pt-3 pb-[max(0.65rem,env(safe-area-inset-bottom))] text-[0.65rem] transition-colors",
+                  active ? "text-primary" : "text-muted-foreground",
+                )}
+              >
+                <item.icon className="h-5 w-5" strokeWidth={active ? 2 : 1.6} />
+                <span className="truncate">{item[language]}</span>
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </div>
   );
+}
+
+function decodeRoutePart(value: string) {
+  try { return decodeURIComponent(value); } catch { return value; }
 }
 
 export function PageHeader({

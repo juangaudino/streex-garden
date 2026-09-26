@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GardenProvider, useGarden } from "@/lib/garden-store";
 import { AppShell } from "@/components/garden/shell";
+import { JournalEntryProvider } from "@/components/garden/journal-entry";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { getSupabaseClient, hasSupabaseConfiguration } from "@/lib/supabase";
@@ -188,7 +189,9 @@ function GardenExperience() {
 
   return (
     <>
-      <AppShell><Outlet /></AppShell>
+      <JournalEntryProvider>
+        <AppShell><Outlet /></AppShell>
+      </JournalEntryProvider>
       <Toaster position="top-center" />
     </>
   );

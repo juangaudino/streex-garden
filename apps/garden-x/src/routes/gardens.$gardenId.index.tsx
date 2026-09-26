@@ -1,28 +1,18 @@
 import { useState } from "react";
-import type { Plant } from "@/lib/garden-data";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ChevronLeft, Cpu, Film, FlaskConical, LayoutGrid, List, Plus, Droplets } from "lucide-react";
-import { toast } from "sonner";
+import { ChevronLeft, Cpu, Film, LayoutGrid, List, Plus } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import {
-  ageLabel,
-  dueLabel,
-  gardenCoverPhoto,
-  openTasks,
-  plantsAtPosition,
-} from "@/lib/garden-logic";
+import { ageLabel, gardenCoverPhoto, plantsAtPosition } from "@/lib/garden-logic";
 import { PlantCard, SectionTitle, StatusDot } from "@/components/garden/atoms";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { activeGridCells, allGridCells } from "@/lib/custom-system";
-import { localizeKnownError, ui } from "@/lib/ui-copy";
+import { ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
-import { RecordMomentSheet } from "@/components/garden/record-moment";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+import { useJournalEntry } from "@/components/garden/journal-entry-context";
 
 export const Route = createFileRoute("/gardens/$gardenId/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -50,23 +40,17 @@ function GardenDetail() {
   const { gardenId } = Route.useParams();
   const { view } = Route.useSearch();
   const store = useGarden();
+  const openJournalEntry = useJournalEntry();
   const language = store.language;
   const [adding, setAdding] = useState<{ slot?: string; positionId?: string | undefined } | null>(
     null,
   );
   const [selectedPositionKey, setSelectedPositionKey] = useState<string | null>(null);
-  const [recordingPlant, setRecordingPlant] = useState<Plant | null>(null);
-  const [maintenanceOpen, setMaintenanceOpen] = useState(false);
-  const [maintenanceAction, setMaintenanceAction] = useState<"water_change" | "nutrients" | "water_and_nutrients">("water_change");
-  const [maintenanceDate, setMaintenanceDate] = useState(() => new Date().toISOString().slice(0, 10));
-  const [maintenanceNote, setMaintenanceNote] = useState("");
-  const [maintenanceSaving, setMaintenanceSaving] = useState(false);
   const garden = store.gardens.find((g) => g.id === gardenId);
   if (!garden) throw notFound();
 
   const plants = store.plants.filter((p) => p.gardenId === garden.id);
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
-  const tasks = openTasks(store.tasks.filter((t) => plants.some((p) => p.id === t.plantId)));
   const gardenSummary = selectStaleSummary(store.gardenSummaries, "garden", garden.id, language);
   const pods = garden.backendPositions?.length
     ? [...garden.backendPositions]
@@ -213,6 +197,9 @@ function GardenDetail() {
             {garden.place} · {garden.note}
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
+            <button type="button" onClick={() => openJournalEntry({ gardenId: garden.id })} className="inline-flex items-center gap-2 rounded-full bg-primary/90 px-3.5 py-2 text-xs text-primary-foreground shadow-soft backdrop-blur-md">
+              <Plus className="h-3.5 w-3.5" /> {ui(language, "recordMoment")}
+            </button>
             <Link
               to="/gardens/$gardenId/film"
               params={{ gardenId: garden.id }}
@@ -459,7 +446,7 @@ function GardenDetail() {
                                                 size="sm"
                                                 variant="ghost"
                                                 className="h-7 w-full px-2 text-[0.65rem]"
-                                                onClick={() => setRecordingPlant(positionPlant)}
+                                                onClick={() => openJournalEntry({ plantId: positionPlant.id })}
                                               >
                                                 {ui(language, "recordMoment")}
                                               </Button>
@@ -716,56 +703,8 @@ function GardenDetail() {
             </section>
           ) : null}
 
-          <section className="mt-12 px-5 sm:px-8 lg:px-12">
-            <SectionTitle
-              action={
-                <div className="flex flex-wrap items-center justify-end gap-3">
-                  <button type="button" className="text-primary hover:underline" onClick={() => setMaintenanceOpen(true)}>{ui(language, "gardenMaintenance")}</button>
-                  <Link to="/care" className="text-primary hover:underline">{ui(language, "careSession")}</Link>
-                </div>
-              }
-            >
-              {ui(language, "openCareGarden")}
-            </SectionTitle>
-            <ul className="surface divide-y divide-border/70 overflow-hidden">
-              {tasks.length ? (
-                tasks.map((task) => {
-                  const plant = plants.find((p) => p.id === task.plantId);
-                  if (!plant) return null;
-                  return (
-                    <li
-                      key={task.id}
-                      className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3.5"
-                    >
-                      <div className="min-w-0">
-                        <p className="truncate text-sm">{task.label}</p>
-                        <p className="truncate text-xs text-muted-foreground">{plant.name}</p>
-                      </div>
-                      <span
-                        className={`numeral shrink-0 text-xs ${task.dueInDays < 0 ? "text-clay" : "text-muted-foreground"}`}
-                      >
-                        {dueLabel(task.dueInDays)}
-                      </span>
-                    </li>
-                  );
-                })
-              ) : (
-                <li className="px-4 py-6 text-center text-sm text-muted-foreground">
-                  {ui(language, "nothingOpenHere")}
-                </li>
-              )}
-            </ul>
-          </section>
         </>
       )}
-
-      {recordingPlant ? (
-        <RecordMomentSheet
-          plant={recordingPlant}
-          open={Boolean(recordingPlant)}
-          onClose={() => setRecordingPlant(null)}
-        />
-      ) : null}
 
       <AddPlantSheet
         gardenId={garden.id}
@@ -775,22 +714,6 @@ function GardenDetail() {
         onClose={() => setAdding(null)}
       />
 
-      <Dialog open={maintenanceOpen} onOpenChange={setMaintenanceOpen}>
-        <DialogContent className="rounded-3xl sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="font-display text-2xl">{ui(language, "gardenMaintenance")}</DialogTitle>
-            <DialogDescription>{ui(language, "openCareGarden")}</DialogDescription>
-          </DialogHeader>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
-            {([ ["water_change", "waterChange", Droplets], ["nutrients", "nutrients", FlaskConical], ["water_and_nutrients", "waterAndNutrients", FlaskConical] ] as const).map(([value, label, Icon]) => (
-              <button key={value} type="button" onClick={() => setMaintenanceAction(value)} className={cn("rounded-2xl border p-3 text-left text-sm", maintenanceAction === value ? "border-primary bg-primary/5" : "border-border/70")}><Icon className="mb-2 h-4 w-4 text-primary" />{ui(language, label)}</button>
-            ))}
-          </div>
-          <label className="mt-4 grid gap-1.5 text-sm"><span>{ui(language, "maintenanceDate")}</span><Input type="date" value={maintenanceDate} onChange={(event) => setMaintenanceDate(event.target.value)} /></label>
-          <textarea value={maintenanceNote} onChange={(event) => setMaintenanceNote(event.target.value)} placeholder={language === "es" ? "Nota opcional" : "Optional note"} className="mt-3 min-h-20 rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/40" />
-          <Button className="mt-4 w-full rounded-full" disabled={maintenanceSaving || !maintenanceDate} onClick={() => { setMaintenanceSaving(true); void store.recordGardenMaintenance(garden.id, maintenanceAction, maintenanceDate, maintenanceNote).then(() => { toast.success(ui(language, "maintenanceSaved")); setMaintenanceOpen(false); setMaintenanceNote(""); }).catch((error: unknown) => toast.error(localizeKnownError(error, language, ui(language, "maintenanceSaveFailed")))).finally(() => setMaintenanceSaving(false)); }}>{maintenanceSaving ? "…" : ui(language, "saveMaintenance")}</Button>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

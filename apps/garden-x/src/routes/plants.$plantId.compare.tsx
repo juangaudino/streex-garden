@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ArrowRight, MoveHorizontal } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
@@ -38,34 +38,73 @@ function Compare() {
   const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
-  const photos = plantPhotos(store.photos, plant.id);
-  const [aId, setAId] = useState(photos[0]?.id ?? "");
-  const [bId, setBId] = useState(photos[photos.length - 1]?.id ?? "");
+  const photos = useMemo(() => plantPhotos(store.photos, plant.id), [plant.id, store.photos]);
+  const [selection, setSelection] = useState(() => ({
+    plantId: plant.id,
+    aId: photos[0]?.id ?? "",
+    bId: photos[photos.length - 1]?.id ?? "",
+  }));
+  const currentSelection = selection.plantId === plant.id
+    ? selection
+    : { plantId: plant.id, aId: photos[0]?.id ?? "", bId: photos[photos.length - 1]?.id ?? "" };
+  const aId = photos.some((photo) => photo.id === currentSelection.aId) ? currentSelection.aId : photos[0]?.id ?? "";
+  const bId = photos.some((photo) => photo.id === currentSelection.bId) ? currentSelection.bId : photos[photos.length - 1]?.id ?? "";
   const [slider, setSlider] = useState(50);
-  const [aiComparison, setAiComparison] = useState<{ observations: string[]; inference: string; confidence: "high" | "moderate" | "low" } | null>(null);
+  const [aiComparison, setAiComparison] = useState<{
+    key: string;
+    result: { observations: string[]; inference: string; confidence: "high" | "moderate" | "low" };
+  } | null>(null);
 
-  const a = store.photos.find((p) => p.id === aId);
-  const b = store.photos.find((p) => p.id === bId);
+  const a = photos.find((p) => p.id === aId);
+  const b = photos.find((p) => p.id === bId);
+  const comparisonKey = `${plant.id}:${a?.id ?? ""}:${b?.id ?? ""}`;
+  useEffect(() => {
+    setSelection((previous) => {
+      const samePlant = previous.plantId === plant.id;
+      const next = {
+        plantId: plant.id,
+        aId: samePlant && photos.some((photo) => photo.id === previous.aId) ? previous.aId : photos[0]?.id ?? "",
+        bId: samePlant && photos.some((photo) => photo.id === previous.bId) ? previous.bId : photos[photos.length - 1]?.id ?? "",
+      };
+      return previous.plantId === next.plantId && previous.aId === next.aId && previous.bId === next.bId
+        ? previous
+        : next;
+    });
+  }, [plant.id, photos]);
+
+  useEffect(() => {
+    setSlider(50);
+  }, [plant.id]);
+
   useEffect(() => {
     setAiComparison(null);
-    if (!plant.backendGrowCycleId || !a?.backendStoragePath || !b?.backendStoragePath || a.id === b.id) return;
+    let active = true;
+    if (!plant.backendGrowCycleId || !a?.backendStoragePath || !b?.backendStoragePath || a.id === b.id) {
+      return () => { active = false; };
+    }
     void runAiCheck(plant.backendGrowCycleId, b.id, a.id, language)
       .then(({ proposal }) => {
+        if (!active) return;
         const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
         const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
         const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
         setAiComparison({
-          observations,
-          inference: [String(proposal.summary ?? ""), ...uncertainty].filter(Boolean).join(" "),
-          confidence,
+          key: comparisonKey,
+          result: {
+            observations,
+            inference: [String(proposal.summary ?? ""), ...uncertainty].filter(Boolean).join(" "),
+            confidence,
+          },
         });
       })
       .catch(() => undefined);
-  }, [a?.backendStoragePath, a?.id, b?.backendStoragePath, b?.id, language, plant.backendGrowCycleId]);
+    return () => { active = false; };
+  }, [a?.backendStoragePath, a?.id, b?.backendStoragePath, b?.id, comparisonKey, language, plant.backendGrowCycleId]);
 
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
   const deterministic = comparePhotos(a, b, plant, language);
-  const result: CompareResult = aiComparison ? { ...deterministic, observations: aiComparison.observations, inference: aiComparison.inference, confidence: aiComparison.confidence } : deterministic;
+  const activeAiComparison = aiComparison?.key === comparisonKey ? aiComparison.result : null;
+  const result: CompareResult = activeAiComparison ? { ...deterministic, ...activeAiComparison } : deterministic;
   const hasRecordedMeasurements = [
     a.metrics.heightCm,
     a.metrics.leafCount,
@@ -101,14 +140,27 @@ function Compare() {
       {/* wipe comparison */}
       <div className="px-5 sm:px-8 lg:px-12">
         <div className="relative overflow-hidden rounded-3xl border border-border/70 shadow-lift select-none">
-          <PhotoImage photo={b} alt={b.caption} rendition="display" className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" loading="eager" />
+          <PhotoImage
+            photo={b}
+            alt={b.caption}
+            rendition="display"
+            className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]"
+            loading="eager"
+            loadingMessage={ui(language, "loadingPhoto")}
+            failureMessage={ui(language, "photoLoadFailed")}
+            retryLabel={ui(language, "retryPhoto")}
+          />
           <div className="absolute inset-0 overflow-hidden" style={{ width: `${slider}%` }}>
               <PhotoImage
                 photo={a}
                 alt={a.caption}
                 rendition="display"
-              className="h-full w-full object-cover"
-              style={{ width: `${(100 / Math.max(slider, 1)) * 100}%`, maxWidth: "none" }}
+                loading="eager"
+                className="h-full w-full object-cover"
+                style={{ width: `${(100 / Math.max(slider, 1)) * 100}%`, maxWidth: "none" }}
+                loadingMessage={ui(language, "loadingPhoto")}
+                failureMessage={ui(language, "photoLoadFailed")}
+                retryLabel={ui(language, "retryPhoto")}
             />
           </div>
           <div className="absolute inset-y-0 w-px bg-white/80" style={{ left: `${slider}%` }}>
@@ -145,8 +197,8 @@ function Compare() {
       {/* pickers */}
       <div className="mt-8 grid gap-5 px-5 sm:grid-cols-2 sm:px-8 lg:px-12">
         {[
-          { label: ui(language, "earlierPhoto"), value: aId, set: setAId },
-          { label: ui(language, "laterPhoto"), value: bId, set: setBId },
+          { kind: "earlier", label: ui(language, "earlierPhoto"), value: aId },
+          { kind: "later", label: ui(language, "laterPhoto"), value: bId },
         ].map((picker) => (
           <div key={picker.label}>
             <p className="eyebrow mb-2">{picker.label}</p>
@@ -154,7 +206,12 @@ function Compare() {
               {photos.map((p) => (
                 <button
                   key={p.id}
-                  onClick={() => picker.set(p.id)}
+                  aria-label={`${picker.label}: ${p.caption}`}
+                  onClick={() => setSelection({
+                    plantId: plant.id,
+                    aId: picker.kind === "earlier" ? p.id : aId,
+                    bId: picker.kind === "later" ? p.id : bId,
+                  })}
                   className={cn(
                     "press shrink-0 overflow-hidden rounded-2xl border-2",
                     p.id === picker.value ? "border-primary" : "border-transparent opacity-70",

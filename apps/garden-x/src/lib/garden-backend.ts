@@ -34,6 +34,7 @@ import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
 import { normalizeTimelineNote } from "./garden-logic";
+import { photoRenditionStoragePaths, preparePhotoRenditions } from "./photo-renditions";
 
 export type GardenMaintenanceAction = "water_change" | "nutrients" | "water_and_nutrients";
 
@@ -452,7 +453,7 @@ export async function persistPhotoRendition(
   if (!userId || !cache) return;
   const resolved = signedUrlCache.get(photoCacheKey(photo.id, rendition, userId));
   const originalPath = photoRenditionCandidates(photo.backendStoragePath, "original")[0];
-  if (resolved?.url === signedUrl && resolved.path === originalPath) return;
+  if (!resolved || resolved.url !== signedUrl || resolved.path === originalPath) return;
   try {
     const response = await fetch(signedUrl, { cache: "force-cache" });
     if (!response.ok) return;
@@ -467,6 +468,18 @@ export async function persistPhotoRendition(
   } catch {
     // Cache Storage is an enhancement. A signed URL remains the network fallback.
   }
+}
+
+async function invalidatePersistentPhotoRendition(
+  photo: Pick<Photo, "id" | "backendStoragePath">,
+  rendition: PhotoRendition,
+) {
+  if (rendition === "original" || !photo.backendStoragePath || !canUsePersistentPhotoCache()) return;
+  const userId = await currentPhotoCacheUserId();
+  const cache = userId ? await openPersistentPhotoCache() : null;
+  if (!userId || !cache) return;
+  const candidates = rendition === "preview" ? ["preview", "display"] as const : ["display"] as const;
+  await Promise.all(candidates.map((candidate) => cache.delete(persistentPhotoRequest(userId, photo, candidate))));
 }
 
 /** Remove private image bytes for one identity after logout or account switching. */
@@ -555,10 +568,16 @@ async function flushSignedUrlRequests() {
 export function resolvePhotoUrl(
   photo: Pick<Photo, "id" | "src" | "backendStoragePath">,
   rendition: PhotoRendition = "original",
+  options: { refresh?: boolean } = {},
 ): Promise<string> {
   if (!photo.backendStoragePath) return Promise.resolve(photo.src);
   return (async () => {
-    const durableUrl = await persistentPhotoUrl(photo, rendition);
+    if (options.refresh) {
+      const userId = (await currentPhotoCacheUserId()) ?? "anonymous";
+      signedUrlCache.delete(photoCacheKey(photo.id, rendition, userId));
+      await invalidatePersistentPhotoRendition(photo, rendition);
+    }
+    const durableUrl = options.refresh ? null : await persistentPhotoUrl(photo, rendition);
     if (durableUrl) return durableUrl;
     const userId = (await currentPhotoCacheUserId()) ?? "anonymous";
     const key = photoCacheKey(photo.id, rendition, userId);
@@ -950,7 +969,8 @@ async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: s
   if (!decoded) throw new Error("Photo could not be read.");
   const photoId = crypto.randomUUID();
   const checksum = await sha256Hex(decoded.bytes);
-  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
+  const optimized = await preparePhotoRenditions(decoded.bytes, decoded.mime);
+  const dimensions = optimized;
   // Record a Moment has one user-selected effective date. Keep photo evidence
   // on that same calendar day even if a browser omitted photo metadata.
   const capturedDate = effectiveDate ?? dateOnlyFromIso(photo.capturedAt) ?? isoDateFromDaysAgo(photo.daysAgo);
@@ -992,6 +1012,37 @@ async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: s
     },
   );
   if (!response.ok && response.status !== 409) throw new Error("Photo upload failed.");
+  const renditionPaths = photoRenditionStoragePaths(prepared.storage_path);
+  if (renditionPaths && optimized) {
+    const uploadSidecar = async (path: string, bytes: Uint8Array | undefined) => {
+      if (!bytes) return;
+      try {
+        const renditionResponse = await fetch(
+          `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${path}`,
+          {
+            method: "POST",
+            headers: {
+              apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
+              Authorization: `Bearer ${session.access_token}`,
+              "content-type": "image/jpeg",
+              "cache-control": "max-age=31536000, immutable",
+              "x-upsert": "false",
+            },
+            body: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer,
+          },
+        );
+        // Renditions are derived enhancements; the verified original remains
+        // canonical and the resolver can fall back to it if a sidecar fails.
+        if (!renditionResponse.ok && renditionResponse.status !== 409) return;
+      } catch {
+        // An unavailable derivative must never reject a valid original upload.
+      }
+    };
+    await Promise.all([
+      uploadSidecar(renditionPaths.preview, optimized.renditions.preview),
+      uploadSidecar(renditionPaths.display, optimized.renditions.display),
+    ]);
+  }
   const confirmation = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
     p_photo_id: photoId,
     p_checksum_sha256: checksum,

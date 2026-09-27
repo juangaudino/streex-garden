@@ -163,7 +163,7 @@ describe("Care Session plant review", () => {
     render(<ReviewHarness />);
     const image = await screen.findByAltText("Common Mint, Mentha") as HTMLImageElement;
     expect(image.src).toContain("owner/existing-photo/display.jpg");
-    expect(mocks.resolvePhotoUrl).toHaveBeenCalledWith(expect.objectContaining({ id: "existing-photo", src: "", backendStoragePath: "owner/existing-photo/original.jpg" }), "display");
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledWith(expect.objectContaining({ id: "existing-photo", src: "", backendStoragePath: "owner/existing-photo/original.jpg" }), "display", { refresh: false });
   });
 
   it("uses each Plant Instance photo when advancing and never carries the prior working photo", async () => {

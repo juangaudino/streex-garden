@@ -99,6 +99,32 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
   });
 
+  it("uploads display and preview sidecars next to the canonical original without changing its path", async () => {
+    const bitmapClose = vi.fn();
+    vi.stubGlobal("createImageBitmap", vi.fn(async () => ({ width: 1600, height: 1200, close: bitmapClose })));
+    vi.stubGlobal("document", {
+      createElement: () => ({
+        width: 0,
+        height: 0,
+        getContext: () => ({ drawImage: vi.fn() }),
+        toBlob: (callback: (blob: Blob) => void) => callback(new Blob([new Uint8Array([1])], { type: "image/jpeg" })),
+      }),
+    });
+
+    await persistMoment(plant, event("note"), photo);
+
+    const uploads = vi.mocked(fetch).mock.calls.map(([url]) => String(url));
+    expect(uploads).toEqual([
+      expect.stringContaining("/owner/photo/original.jpg"),
+      expect.stringContaining("/owner/photo/preview.jpg"),
+      expect.stringContaining("/owner/photo/display.jpg"),
+    ]);
+    const confirmation = rpc.mock.calls.find(([name]) => name === "garden_mark_photo_uploaded");
+    expect(confirmation?.[1]).toMatchObject({ p_width: 1600, p_height: 1200 });
+    expect(bitmapClose).toHaveBeenCalledOnce();
+    vi.unstubAllGlobals();
+  });
+
   it("keeps a closed grow cycle and its canonical events/photos available to Plant Journal", async () => {
     const closedPhoto = {
       id: "photo-closed",

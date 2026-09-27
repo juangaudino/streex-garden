@@ -132,6 +132,25 @@ describe("photo renditions", () => {
     expect(createSignedUrls).toHaveBeenCalledTimes(1);
   });
 
+  it("refreshes an expired signed URL instead of returning the cached URL", async () => {
+    createSignedUrls
+      .mockResolvedValueOnce({
+        data: [{ path: "owner/photo-expired/display.jpg", signedUrl: "https://signed/expired" }],
+        error: null,
+      })
+      .mockResolvedValueOnce({
+        data: [{ path: "owner/photo-expired/display.jpg", signedUrl: "https://signed/refreshed" }],
+        error: null,
+      });
+    const expiring = { ...photo, id: "photo-expired", backendStoragePath: "owner/photo-expired/original.jpg" };
+
+    await expect(resolvePhotoUrl(expiring, "display")).resolves.toBe("https://signed/expired");
+    await expect(resolvePhotoUrl(expiring, "display", { refresh: true })).resolves.toBe(
+      "https://signed/refreshed",
+    );
+    expect(createSignedUrls).toHaveBeenCalledTimes(2);
+  });
+
   it("rejects only the photo whose batch response has no signed path", async () => {
     createSignedUrls.mockResolvedValue({
       data: [{ path: "owner/photo-error-a/display.jpg", signedUrl: "https://signed/error-a" }],
@@ -234,10 +253,16 @@ describe("photo renditions", () => {
     const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:user-a");
     const isolated = { ...photo, id: "photo-isolated", backendStoragePath: "owner/photo-isolated/original.jpg" };
     setPersistentPhotoCacheUserId("user-a");
+    createSignedUrls.mockResolvedValue({
+      data: [{ path: "owner/photo-isolated/display.jpg", signedUrl: "https://signed/display-user-a" }],
+      error: null,
+    });
     vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display-bytes"], { type: "image/jpeg" }), { status: 200 })));
-    await persistPhotoRendition(isolated, "display", "https://signed/display-user-a");
+    const userAUrl = await resolvePhotoUrl(isolated, "display");
+    await persistPhotoRendition(isolated, "display", userAUrl);
     await clearPersistentPhotoCache("user-a");
     setPersistentPhotoCacheUserId("user-b");
+    createSignedUrls.mockClear();
     createSignedUrls.mockResolvedValue({
       data: [{ path: "owner/photo-isolated/display.jpg", signedUrl: "https://signed/display-user-b" }],
       error: null,
@@ -303,12 +328,18 @@ describe("photo renditions", () => {
     vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
     vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
     setPersistentPhotoCacheUserId("user-a");
+    createSignedUrls.mockImplementation(async (paths: string[]) => ({
+      data: paths.map((path) => ({ path, signedUrl: `https://signed/${path}` })),
+      error: null,
+    }));
     vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display"], { type: "image/jpeg" }), { status: 200 })));
     for (let index = 0; index < 41; index += 1) {
+      const item = { ...photo, id: `photo-display-${index}`, backendStoragePath: `owner/photo-display-${index}/original.jpg` };
+      const signedUrl = await resolvePhotoUrl(item, "display");
       await persistPhotoRendition(
-        { ...photo, id: `photo-display-${index}`, backendStoragePath: `owner/photo-display-${index}/original.jpg` },
+        item,
         "display",
-        `https://signed/display-${index}`,
+        signedUrl,
       );
     }
     expect(entries.size).toBe(40);

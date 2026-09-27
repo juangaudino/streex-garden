@@ -56,8 +56,8 @@ import { localizeKnownError, ui, type UiCopyKey } from "@/lib/ui-copy";
 import { plantIdentityParts } from "@/lib/plant-identity";
 import { askGardenAccentClassName } from "@/lib/care-session";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
-import { originType } from "@/lib/plant-life";
 import { buildPlantLifeHighlights } from "@/lib/plant-life-highlights";
+import { PlantOriginEditor } from "@/components/garden/plant-origin-editor";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -263,7 +263,7 @@ function PlantProfile() {
         </Link>
         <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">
-            <span>{ui(language, `plantOrigin_${originType(plant.originType)}` as UiCopyKey)}</span>
+            <PlantOriginEditor origin={plant.originType} plantId={plant.id} />
             {plant.plantedDatePrecision === "unknown" ? null : (
               <>
                 <span aria-hidden="true">·</span>

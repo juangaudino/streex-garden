@@ -31,6 +31,7 @@ import {
   deleteGardenRecord,
   deletePhotoRecord,
   correctPlantingRecord,
+  correctPlantOriginRecord,
   createFollowUpRecord,
   createPlantRecord,
   createLibraryPlantRecord,
@@ -111,6 +112,7 @@ interface StoreApi extends GardenState {
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
   movePlant: (plantId: string, targetPositionId: string, movedDaysAgo: number) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
+  updatePlantOrigin: (id: string, origin: Exclude<PlantOriginType, "unknown">) => Promise<void>;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => Promise<void>;
   loadGardenCoverPhotos: (gardenId: string) => Promise<Photo[]>;
   setGardenCoverPhoto: (gardenId: string, photoId: string | null) => Promise<void>;
@@ -719,6 +721,21 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           }
           return { ...s, plants: s.plants.map((plant) => (plant.id === id ? next : plant)) };
         });
+      },
+      updatePlantOrigin: async (id, origin) => {
+        const current = [...state.plants, ...state.historicalPlants].find((plant) => plant.id === id);
+        if (!current) throw new Error("Plant not found.");
+        await correctPlantOriginRecord(current, origin);
+        setState((s) => ({
+          ...s,
+          plants: s.plants.map((plant) =>
+            plant.id === id ? { ...plant, originType: origin } : plant,
+          ),
+          historicalPlants: s.historicalPlants.map((plant) =>
+            plant.id === id ? { ...plant, originType: origin } : plant,
+          ),
+        }));
+        void refreshFromBackend("mutation").catch(() => undefined);
       },
       updateGarden: async (id, patch) => {
         const current = state.gardens.find((g) => g.id === id);

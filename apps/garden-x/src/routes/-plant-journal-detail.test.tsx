@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ReactNode } from "react";
-import type { Garden, Plant, PlantEvent } from "@/lib/garden-data";
+import type { Garden, Plant, PlantEvent, PlantOriginType } from "@/lib/garden-data";
 import { Route as LayoutRoute } from "./plants.$plantId";
 import { Route as DetailRoute } from "./plants.$plantId.index";
 
@@ -94,6 +94,50 @@ vi.mock("@/components/ui/button", () => ({
     <button {...props}>{children}</button>
   ),
 }));
+vi.mock("@/components/ui/dialog", async () => {
+  const React = await import("react");
+  const DialogContext = React.createContext({
+    open: false,
+    onOpenChange: (_open: boolean) => undefined,
+  });
+  return {
+    Dialog: ({ open, onOpenChange, children }: { open: boolean; onOpenChange: (open: boolean) => void; children: ReactNode }) =>
+      React.createElement(DialogContext.Provider, { value: { open, onOpenChange }, children }),
+    DialogContent: ({ children }: { children: ReactNode }) =>
+      React.useContext(DialogContext).open
+        ? React.createElement("div", { role: "dialog" }, children)
+        : null,
+    DialogDescription: ({ children }: { children: ReactNode }) => React.createElement("p", null, children),
+    DialogFooter: ({ children }: { children: ReactNode }) => React.createElement("div", null, children),
+    DialogHeader: ({ children }: { children: ReactNode }) => React.createElement("header", null, children),
+    DialogTitle: ({ children }: { children: ReactNode }) => React.createElement("h2", null, children),
+  };
+});
+vi.mock("@/components/ui/radio-group", async () => {
+  const React = await import("react");
+  const RadioContext = React.createContext({
+    value: "",
+    onValueChange: (_value: string) => undefined,
+  });
+  return {
+    RadioGroup: ({ value, onValueChange, children, "aria-label": label }: { value: string; onValueChange: (value: string) => void; children: ReactNode; "aria-label"?: string }) =>
+      React.createElement(
+        RadioContext.Provider,
+        { value: { value, onValueChange } },
+        React.createElement("div", { role: "radiogroup", "aria-label": label }, children),
+      ),
+    RadioGroupItem: ({ id, value }: { id: string; value: string }) => {
+      const group = React.useContext(RadioContext);
+      return React.createElement("input", {
+        id,
+        type: "radio",
+        value,
+        checked: group.value === value,
+        onChange: () => group.onValueChange(value),
+      });
+    },
+  };
+});
 vi.mock("@/components/garden/chronology-select", () => ({ ChronologySelect: () => null }));
 vi.mock("@/components/garden/delete-action-menu", () => ({ DeleteActionMenu: () => null }));
 vi.mock("@/components/garden/library-identity-resolution", () => ({
@@ -171,6 +215,7 @@ function storeFixture(language: "en" | "es" = "en") {
     deleteEvent: vi.fn(),
     deletePhoto: vi.fn(),
     addEvent: vi.fn(),
+    updatePlantOrigin: vi.fn().mockResolvedValue(undefined),
   };
 }
 
@@ -221,9 +266,82 @@ describe("Plant Detail journal-first presentation", () => {
     };
     const { container } = renderDetail();
     const heroMeta = container.querySelector(".absolute.inset-x-0.bottom-0")?.textContent ?? "";
-    expect(heroMeta).toContain("Not recorded");
+    expect(heroMeta).toContain("Unknown");
     expect(heroMeta).toContain("Day 18");
     expect(heroMeta).toContain("Pod 1");
+  });
+
+  it("lets the user resolve unknown Origin and keeps the hero metadata compact after success", async () => {
+    const fixture = storeFixture();
+    fixture.historicalPlants = [{ ...plant, originType: "unknown" }];
+    fixture.updatePlantOrigin = vi.fn(async (_plantId: string, origin: Exclude<PlantOriginType, "unknown">) => {
+      fixture.historicalPlants = [{ ...plant, originType: origin }];
+    });
+    mocks.store = fixture;
+    const Component = DetailRoute.options.component as React.ComponentType;
+    const { container, rerender } = render(<Component />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Set or correct plant origin" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Seed" }));
+    fireEvent.click(screen.getByRole("button", { name: "Save origin" }));
+    await waitFor(() => expect(fixture.updatePlantOrigin).toHaveBeenCalledWith(plant.id, "seed"));
+    rerender(<Component />);
+
+    const heroMeta = container.querySelector(".absolute.inset-x-0.bottom-0")?.textContent ?? "";
+    expect(heroMeta).toContain("Seed");
+    expect(heroMeta).toContain("Day 18");
+    expect(heroMeta).toContain("Pod 1");
+    expect(heroMeta.match(/Day 18/g)).toHaveLength(1);
+  });
+
+  it("allows correcting a known Origin and cancel leaves it unchanged", async () => {
+    const fixture = storeFixture();
+    mocks.store = fixture;
+    const { container } = renderDetail();
+
+    fireEvent.click(screen.getByRole("button", { name: "Set or correct plant origin" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Cutting" }));
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
+
+    expect(fixture.updatePlantOrigin).not.toHaveBeenCalled();
+    expect(container.querySelector(".absolute.inset-x-0.bottom-0")?.textContent).toContain("Bare root");
+
+    fireEvent.click(screen.getByRole("button", { name: "Set or correct plant origin" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Cutting" }));
+    fireEvent.click(screen.getByRole("button", { name: "Save origin" }));
+    await waitFor(() => expect(fixture.updatePlantOrigin).toHaveBeenCalledWith(plant.id, "cutting"));
+  });
+
+  it("keeps the current Origin visible when the canonical save fails", async () => {
+    const fixture = storeFixture();
+    fixture.updatePlantOrigin.mockRejectedValue(new Error("network unavailable"));
+    mocks.store = fixture;
+    const { container } = renderDetail();
+
+    fireEvent.click(screen.getByRole("button", { name: "Set or correct plant origin" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Transplant" }));
+    fireEvent.click(screen.getByRole("button", { name: "Save origin" }));
+
+    expect(await screen.findByRole("alert")).toBeTruthy();
+    const heroMeta = container.querySelector(".absolute.inset-x-0.bottom-0")?.textContent ?? "";
+    expect(heroMeta).toContain("Bare root");
+    expect(heroMeta).toContain("Day 18");
+    expect(heroMeta).toContain("Pod 1");
+  });
+
+  it("localizes the Origin selector labels and stable choices in Spanish", () => {
+    mocks.store = {
+      ...storeFixture("es"),
+      historicalPlants: [{ ...plant, originType: "unknown" }],
+    };
+    renderDetail();
+    expect(screen.getByRole("button", { name: "Definir o corregir el origen de la planta" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Definir o corregir el origen de la planta" }));
+    expect(screen.getByRole("radio", { name: "Semilla" })).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "Raíz desnuda" })).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "Esqueje" })).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "Plántula" })).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "Trasplante" })).toBeTruthy();
   });
 
   it("allows the parent Plant route to resolve a closed historical cycle", () => {

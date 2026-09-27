@@ -13,7 +13,7 @@ import type {
   LifeEventId,
   PlantOriginType,
 } from "./garden-data";
-import { normalizeLifeEvent, originType } from "./plant-life";
+import { normalizeLifeEvent, originType, PLANT_ORIGINS } from "./plant-life";
 import {
   MEANINGFUL_CHANGE_SCHEMA_VERSION,
   meaningfulChangeRequestKey,
@@ -1124,6 +1124,30 @@ export async function correctPlantingRecord(
     p_reason: reason?.trim() || "Corrected in Garden X",
   });
   if (error) throw new Error(error.message);
+}
+
+export async function correctPlantOriginRecord(
+  plant: Plant,
+  newOrigin: Exclude<PlantOriginType, "unknown">,
+): Promise<number> {
+  if (!plant.backendGrowCycleId) throw new Error("Grow cycle not found.");
+  if (newOrigin === "unknown" || !PLANT_ORIGINS.includes(newOrigin)) {
+    throw new Error("Invalid plant origin.");
+  }
+  const cycle = await cycleDetail(plant.backendGrowCycleId);
+  const { data, error } = await getSupabaseClient().rpc("garden_correct_cycle_origin", {
+    p_request_id: crypto.randomUUID(),
+    p_grow_cycle_id: plant.backendGrowCycleId,
+    p_expected_revision: cycle.revision,
+    p_origin_type: newOrigin,
+    p_reason: "User-confirmed in Plant Journal",
+  });
+  if (error) throw new Error(error.message);
+  const response = data as { revision?: number } | null;
+  if (!response || typeof response.revision !== "number") {
+    throw new Error("Origin correction was not confirmed.");
+  }
+  return response.revision;
 }
 
 export async function closePlantCycleRecord(

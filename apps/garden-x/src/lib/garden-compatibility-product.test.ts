@@ -70,7 +70,7 @@ describe("B3.6 empty-position product contract", () => {
     expect(result.cultivationCompatibility).toEqual({ method: "hydroponic", state: "compatible" });
     expect(result.systemFit).toEqual({ systemName: "Aera One", state: "unknown" });
     expect(result.physicalFit.state).toBe("unknown");
-    expect(result.tier).toBe("insufficient_evidence");
+    expect(result.tier).toBe("check_first");
     expect(result.requiresVerificationBeforePlanting).toBe(true);
   });
 
@@ -168,7 +168,7 @@ describe("B3.6 empty-position product contract", () => {
     ).toBe(true);
   });
 
-  it("keeps representative H1 candidates with unknown or incomparable height out of check-first", () => {
+  it("keeps representative H1 candidates with unknown or incomparable height in check-first", () => {
     const h1 = garden({ systemDefinitionKey: "uruq_8_v1", machine: { name: "URUQ", pods: 8 } });
     const set = project(
       [
@@ -189,11 +189,11 @@ describe("B3.6 empty-position product contract", () => {
     ]) {
       const candidate = set.candidates.find((item) => item.plant.libraryPlantId === id)!;
       expect(candidate.physicalFit.state).toBe("unknown");
-      expect(candidate.tier).toBe("insufficient_evidence");
+      expect(candidate.tier).toBe("check_first");
     }
     const tinyTim = set.candidates.find((item) => item.plant.libraryPlantId === "tiny-tim-tomato")!;
     expect(tinyTim.physicalFit.state).toBe("unknown");
-    expect(tinyTim.tier).toBe("insufficient_evidence");
+    expect(tinyTim.tier).toBe("check_first");
     expect(tinyTim.missingInformation.some((item) => item.property === "physical_clearance")).toBe(
       true,
     );
@@ -400,7 +400,7 @@ describe("B3.6 empty-position product contract", () => {
       result.candidates.find(
         (candidate) => candidate.plant.libraryPlantId === "buttercrunch-lettuce",
       )?.tier,
-    ).toBe("insufficient_evidence");
+    ).toBe("check_first");
     expect(
       result.candidates.find((candidate) => candidate.plant.libraryPlantId === "cascading-petunia")
         ?.tier,

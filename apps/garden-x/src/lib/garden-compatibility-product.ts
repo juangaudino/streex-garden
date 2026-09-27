@@ -290,7 +290,7 @@ function candidateProjection(
           ? "check_first"
           : hasPositiveContextSignal
             ? "recommended"
-            : "insufficient_evidence";
+            : "check_first";
   const systemFit: EmptyPositionCandidate["systemFit"]["state"] =
     result.systemFit === "documented_condition_met"
       ? "documented"

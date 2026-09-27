@@ -138,6 +138,11 @@ verify_jwt = false
 [functions.garden-ai]
 verify_jwt = true
 
+# Temporary, owner-pinned administrative image backfill. The function also
+# requires the verified owner JWT and a deployment-only confirmation secret.
+[functions.garden-photo-rendition-backfill]
+verify_jwt = true
+
 # Image transformation API is available to Supabase Pro plan.
 # [storage.image_transformation]
 # enabled = true

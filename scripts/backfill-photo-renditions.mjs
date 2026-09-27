@@ -14,6 +14,7 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { spawn } from 'node:child_process'
+import { PHOTO_RENDITION_SPECS, photoRenditionPath } from '../supabase/functions/_shared/photo-rendition-spec.mjs'
 
 const args = new Map(process.argv.slice(2).map((value, index, all) => value.startsWith('--') ? [value.slice(2), all[index + 1] ?? 'true'] : [] ).filter(([key]) => key))
 const ownerId = args.get('owner-id')
@@ -35,17 +36,12 @@ const apiKeys = input.trim() ? JSON.parse(input) : []
 const serviceKey = process.env.GARDEN_RENDERING_SERVICE_KEY ?? apiKeys.find((key) => key.type === 'legacy' && key.name === 'service_role')?.api_key
 if (!serviceKey) throw new Error('Proporciona GARDEN_RENDERING_SERVICE_KEY o usa el JSON de `supabase projects api-keys` por stdin.')
 
-function derivativePath(originalPath, kind) {
-  const separator = originalPath.lastIndexOf('/')
-  if (separator < 0) throw new Error(`Ruta de original inválida: ${originalPath}`)
-  return `${originalPath.slice(0, separator)}/${kind}.jpg`
-}
 function headers(extra = {}) {
   return { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, ...extra }
 }
 function runSips(inputPath, outputPath, maxEdge, quality) {
   return new Promise((resolve, reject) => {
-    const child = spawn('/usr/bin/sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', String(Math.round(quality * 100)), '-Z', String(maxEdge), inputPath, '--out', outputPath], { stdio: 'ignore' })
+    const child = spawn('/usr/bin/sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', String(Math.round(quality)), '-Z', String(maxEdge), inputPath, '--out', outputPath], { stdio: 'ignore' })
     child.once('error', reject)
     child.once('exit', (code) => code === 0 ? resolve() : reject(new Error(`sips terminó con código ${code}.`)))
   })
@@ -84,7 +80,7 @@ try {
     counts.photos += 1
     const label = `${counts.photos}/${photos.length} ${photo.id}`
     try {
-      const requiredPaths = ['preview', 'display'].map((kind) => derivativePath(photo.storage_path, kind))
+      const requiredPaths = PHOTO_RENDITION_SPECS.map((spec) => photoRenditionPath(photo.storage_path, spec.kind))
       if (requiredPaths.every((path) => existingPaths.has(path))) {
         counts.skipped += requiredPaths.length
         console.log(`${label} already present`)
@@ -96,8 +92,9 @@ try {
       if (photo.checksum_sha256 && createHash('sha256').update(original).digest('hex') !== photo.checksum_sha256) throw new Error('El checksum del original no coincide con el registro de Garden X.')
       const sourcePath = join(temp, `${randomUUID()}.source`)
       await writeFile(sourcePath, original)
-      for (const [kind, maxEdge, quality] of [['preview', 640, 0.68], ['display', 1600, 0.78]]) {
-        const targetPath = derivativePath(photo.storage_path, kind)
+      for (const spec of PHOTO_RENDITION_SPECS) {
+        const { kind, maxEdge, quality } = spec
+        const targetPath = photoRenditionPath(photo.storage_path, kind)
         if (existingPaths.has(targetPath)) {
           counts.skipped += 1
           continue

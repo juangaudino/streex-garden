@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Check, Leaf, X } from "lucide-react";
 import { toast } from "sonner";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
+import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 import { useGarden } from "@/lib/garden-store";
 import type { EventType, MomentLifeEvent, Photo, Plant } from "@/lib/garden-data";
 import {
@@ -49,6 +50,12 @@ const lifeEventType: Record<MomentLifeEvent, EventType> = {
   damaged: "problem",
   recovered: "recovery",
 };
+
+const lifeCapabilitiesByIdentity = new Map(
+  gardenLibraryManifest.entries
+    .filter((entry) => entry.lifeCapabilities)
+    .map((entry) => [entry.libraryPlantId, entry.lifeCapabilities]),
+);
 
 function localToday() {
   const date = new Date();
@@ -111,7 +118,13 @@ function JournalEntrySheet({
     selectedPlant?.backendGrowCycleId && (photoDataUrl || note.trim() || lifeEvent) && !saving,
   );
   const lifeEventSuggestions = selectedPlant
-    ? contextualLifeEventSuggestions({ plant: selectedPlant, history: store.events })
+    ? contextualLifeEventSuggestions({
+        plant: selectedPlant,
+        history: store.events,
+        capabilities: selectedPlant.libraryPlantId
+          ? lifeCapabilitiesByIdentity.get(selectedPlant.libraryPlantId)
+          : undefined,
+      })
     : [];
   const extraLifeEvents = otherMomentLifeEvents(lifeEventSuggestions);
 

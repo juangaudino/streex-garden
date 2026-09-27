@@ -5,6 +5,7 @@ import type {
   PlantEvent,
   PlantOriginType,
 } from "./garden-data";
+import type { GardenpediaLifeCapabilities } from "./garden-library";
 
 export type { LifeEventId, PlantOriginType } from "./garden-data";
 
@@ -103,34 +104,86 @@ function eventLifeId(event: PlantEvent): LifeEventId | null {
   return null;
 }
 
-/**
- * Return a short, non-binding default set. Unstructured category or name is
- * deliberately ignored. Library currently exposes no structured life-event
- * capabilities, so defaults use cycle origin and recorded history only.
- */
+/** Return a short, non-binding set. Capability knowledge only informs priorities. */
 export function contextualLifeEventSuggestions(input: {
   plant: Plant;
   history: readonly PlantEvent[];
+  capabilities?: GardenpediaLifeCapabilities | undefined;
 }): MomentLifeEvent[] {
-  const { plant, history } = input;
+  const { plant, history, capabilities } = input;
   const plantHistory = history
     .filter((event) => event.plantId === plant.id)
     .sort((left, right) => right.daysAgo - left.daysAgo);
-  const seen = new Set(plantHistory.map(eventLifeId).filter(Boolean));
+  const legacyHistoryIds = plantHistory
+    .map(eventLifeId)
+    .filter((value): value is LifeEventId => Boolean(value));
+  const historyIds = [...plantHistory]
+    .reverse()
+    .map(eventLifeId)
+    .filter((value): value is LifeEventId => Boolean(value));
+  const seen = new Set(historyIds);
+  const hasKnownCapability = Object.values(capabilities ?? {}).some(
+    (item) => item?.status === "known",
+  );
+  const capabilityIsTrue = (key: keyof GardenpediaLifeCapabilities) => {
+    const capability = capabilities?.[key];
+    return capability?.status === "known" && capability.value;
+  };
+
   const suggestions: MomentLifeEvent[] = ["growth_observed"];
   if (originType(plant.originType) === "seed") {
     if (!seen.has("germinated")) suggestions.push("germinated");
     else if (!seen.has("sprouted")) suggestions.push("sprouted");
   }
-  if (seen.has("harvested")) suggestions.push("harvested");
 
-  // A prior occurrence is useful context for a repeatable fact, without making
-  // a biological sequence or claiming other capabilities.
-  const lastRepeatable = [...plantHistory]
-    .reverse()
-    .reverse()
-    .map(eventLifeId)
-    .find((value) => value && lifeEventIsRepeatable(value));
+  if (hasKnownCapability) {
+    const lifecycleEvents = new Set<LifeEventId>([
+      "germinated",
+      "sprouted",
+      "growth_observed",
+      "flowered",
+      "fruited",
+      "harvested",
+      "regrowth",
+      "propagated",
+    ]);
+    const latestLifecycleEvent = historyIds.find((value) => lifecycleEvents.has(value));
+    const established = historyIds.some((value) =>
+      ["growth_observed", "flowered", "fruited", "harvested", "regrowth"].includes(value),
+    );
+
+    if (latestLifecycleEvent === "flowered" && capabilityIsTrue("can_fruit")) {
+      suggestions.push("fruited");
+    } else if (latestLifecycleEvent === "fruited" && capabilityIsTrue("harvestable_fruit")) {
+      suggestions.push("harvested");
+    } else if (
+      latestLifecycleEvent === "harvested" &&
+      capabilityIsTrue("can_regrow_after_harvest")
+    ) {
+      suggestions.push("regrowth");
+    } else if (capabilityIsTrue("harvestable_leaf") && (established || seen.has("harvested"))) {
+      suggestions.push("harvested");
+    } else if (latestLifecycleEvent === "harvested" && capabilityIsTrue("harvestable_fruit")) {
+      suggestions.push("harvested");
+    } else if (
+      established &&
+      latestLifecycleEvent !== "flowered" &&
+      latestLifecycleEvent !== "fruited" &&
+      capabilityIsTrue("can_flower") &&
+      !capabilityIsTrue("harvestable_leaf")
+    ) {
+      suggestions.push("flowered");
+    } else if (established && capabilityIsTrue("can_propagate")) {
+      suggestions.push("propagated");
+    }
+  } else {
+    // Preserve the F1B origin/history-only behavior for older and unresolved identities.
+    if (seen.has("harvested")) suggestions.push("harvested");
+  }
+
+  // A prior occurrence remains a useful, repeatable fact; suggestions are never gates.
+  const repeatableHistory = hasKnownCapability ? historyIds : legacyHistoryIds;
+  const lastRepeatable = repeatableHistory.find((value) => value && lifeEventIsRepeatable(value));
   if (lastRepeatable && MOMENT_LIFE_EVENTS.includes(lastRepeatable as MomentLifeEvent)) {
     suggestions.push(lastRepeatable as MomentLifeEvent);
   }

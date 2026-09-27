@@ -56,6 +56,21 @@ function publicationFixture() {
       },
     },
     compatibilityProfile: fixtureProfile(),
+    lifeCapabilities: {
+      harvestable_leaf: {
+        status: "known",
+        value: true,
+        evidence: [
+          {
+            sourceIds: [source.id],
+            evidenceType: "source_backed",
+            confidence: "high",
+            taxonomicScope: { level: "identity" },
+            note: "The named cultivar source documents leaf harvest.",
+          },
+        ],
+      },
+    },
   };
   return {
     schemaVersion: "gardenpedia_publication_bundle_v1",
@@ -160,6 +175,10 @@ describe("Gardenpedia request-to-publication vertical", () => {
       expect(plants).toHaveLength(1);
       expect(plants[0].id).toBe("seaside-f1-spinach");
       expect(plants[0].compatibilityProfile.hydroponicSuitability.status).toBe("unknown");
+      expect(plants[0].lifeCapabilities.harvestable_leaf).toMatchObject({
+        status: "known",
+        value: true,
+      });
       expect(plants[0].sections.identity.sourceIds).toEqual(["source-seaside"]);
       expect(
         JSON.parse(readFileSync(join(directory, "sources-requests.json"), "utf8")),
@@ -191,10 +210,10 @@ describe("Gardenpedia request-to-publication vertical", () => {
 
       const orphaned = publicationFixture();
       const plant = orphaned.proposedData.plant;
-      plant.sections.identity.sourceIds = ["missing-source"];
+      plant.lifeCapabilities.harvestable_leaf.evidence[0].sourceIds = ["missing-source"];
       const orphanResult = runPublication(directory, orphaned);
       expect(orphanResult.status).not.toBe(0);
-      expect(orphanResult.stderr).toContain("dangling source ID");
+      expect(orphanResult.stderr).toContain("expected published source IDs");
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }

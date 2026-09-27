@@ -24,6 +24,38 @@ export type CompatibilityKnowledge<T> =
   | { status: "known"; value: T; evidence: readonly CompatibilityEvidence[] }
   | { status: "unknown" | "pending"; reason?: string; evidence?: readonly CompatibilityEvidence[] };
 
+/** Identity-level biological facts from Gardenpedia. Missing entries mean unknown. */
+export const GARDENPEDIA_LIFE_CAPABILITY_KEYS = [
+  "can_flower",
+  "can_fruit",
+  "harvestable_leaf",
+  "harvestable_fruit",
+  "can_regrow_after_harvest",
+  "can_propagate",
+] as const;
+
+export type GardenpediaLifeCapabilityKey = (typeof GARDENPEDIA_LIFE_CAPABILITY_KEYS)[number];
+
+export type GardenpediaLifeCapabilityEvidence = {
+  sourceIds: readonly string[];
+  evidenceType: "source_backed";
+  confidence: "high" | "medium";
+  taxonomicScope: { level: "identity" } | { level: "species" | "genus"; taxon: string };
+  note: string;
+};
+
+export type GardenpediaLifeCapability =
+  | {
+      status: "known";
+      value: boolean;
+      evidence: readonly GardenpediaLifeCapabilityEvidence[];
+    }
+  | { status: "unknown" | "pending"; reason?: string };
+
+export type GardenpediaLifeCapabilities = Partial<
+  Record<GardenpediaLifeCapabilityKey, GardenpediaLifeCapability>
+>;
+
 export type CompatibilityContext =
   | "in_ground"
   | "container"
@@ -87,6 +119,8 @@ export type GardenLibraryEntry = {
   guidanceProfile: LibraryGuidanceProfile | null;
   /** Optional, additive B3 knowledge. Absence is unknown and never incompatibility. */
   compatibilityProfile?: CompatibilityProfileV1;
+  /** Optional, sourced biological capacities; absence is unknown. */
+  lifeCapabilities?: GardenpediaLifeCapabilities;
   reference: GardenLibraryReference;
 };
 

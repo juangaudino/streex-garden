@@ -911,13 +911,35 @@
     "category": "leafy greens",
     "emoji": "🥬",
     "guideCompletion": 88,
-    "tags": ["bibb", "lettuce", "lechuga", "butterhead", "hydroponic"],
+    "tags": [
+      "bibb",
+      "lettuce",
+      "lechuga",
+      "butterhead",
+      "hydroponic"
+    ],
     "summary": "A butterhead lettuce where Garden can support either selective outer-leaf harvest or a complete soft-head harvest. One final plant per compact pod is a Garden system adaptation, not a universal agronomic law.",
     "metrics": [
-      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
-      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS non-circulating example" },
-      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
-      { "label": "Harvest mode", "value": "Outer leaf / head", "note": "Choose the desired strategy" }
+      {
+        "label": "Germination",
+        "value": "60–68°F optimum",
+        "note": "General lettuce reference"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "5.5–6.0*",
+        "note": "UF/IFAS non-circulating example"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "1.2–1.8 mS/cm",
+        "note": "OSU lettuce reference"
+      },
+      {
+        "label": "Harvest mode",
+        "value": "Outer leaf / head",
+        "note": "Choose the desired strategy"
+      }
     ],
     "sections": {
       "germination": {
@@ -925,116 +947,194 @@
         "guidance": "General lettuce guidance places optimum germination around 60–68°F. UF/IFAS uses one to two seeds per cube in a small hydroponic lettuce method.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "thinning": {
         "short": "Favor one head-forming plant in a compact pod",
         "guidance": "For full-size Bibb structure, Garden's working rule is to retain one strong plant per compact position once establishment is clear. This is an adaptation from spacing and canopy needs, not a quoted source rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "pruning": {
         "short": "No shaping prune",
         "guidance": "Bibb lettuce is managed through harvest and removal of damaged tissue, not through node-based pruning. Preserve the central growing point during repeat harvest.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "harvest": {
         "short": "Outer leaves for continuity or harvest the whole head",
         "guidance": "Garden should let the user choose between ongoing outer-leaf harvest and a complete butterhead harvest. That choice changes what 'ready' means.",
-        "items": ["For repeat harvest, take mature outer leaves and preserve the center.", "For full harvest, cut the plant at the base when desired size and quality are reached."],
+        "items": [
+          "For repeat harvest, take mature outer leaves and preserve the center.",
+          "For full harvest, cut the plant at the base when desired size and quality are reached."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "flowering": {
         "short": "Bolting reduces leaf quality",
         "guidance": "A rising central seed stalk is a meaningful stage change in lettuce. Garden should flag it as an observation and explain likely quality decline.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "hydroponics": {
         "short": "Use source context rather than false precision",
         "guidance": "UF/IFAS demonstrates lettuce around pH 5.5–6.0 and ~1.25 mS/cm in one non-circulating method; OSU lists a wider lettuce EC range of 1.2–1.8 mS/cm. Garden should preserve both contexts.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ]
       },
       "problems": {
         "short": "Heat and crown damage are high-value checks",
         "guidance": "Future AI Check should distinguish ordinary outer-leaf aging from crown injury, heat stress, root issues and tip damage using images plus history.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       }
     },
     "compatibilityProfile": {
-        "profileVersion": 1,
-        "hydroponicSuitability": {
-          "status": "compatible",
-          "evidence": [
-            {
-              "sourceIds": [
-                "uf-hydro-lettuce",
-                "okstate-ecph"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "medium",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
-            }
-          ]
-        },
-        "growthHabits": {
-          "status": "unknown",
-          "reason": "No sufficiently scoped source evidence was identified for this property."
-        },
-        "matureSize": {
-          "height": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
-          },
-          "spread": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "uf-hydro-lettuce",
+              "okstate-ecph"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
           }
-        },
-        "spacing": {
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "matureSize": {
+        "height": {
           "status": "unknown",
           "reason": "No sufficiently scoped source evidence was identified for this property."
         },
-        "light": {
-          "status": "known",
-          "value": [
-            {
-              "phase": "growing",
-              "requirement": {
-                "kind": "full_sun"
-              }
-            }
-          ],
-          "evidence": [
-            {
-              "sourceIds": [
-                "johnnys-lettuce"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "high",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
-            }
-          ]
+        "spread": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
         }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+          }
+        ]
       }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Species-level lettuce guidance documents bolting into a seed stalk. This records biological flowering ability, not a positive or successful outcome."
+          }
+        ]
+      },
+      "harvestable_leaf": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Selective leaf harvest is documented for Lactuca sativa; this does not assert cultivar-specific readiness or timing."
+          }
+        ]
+      },
+      "can_regrow_after_harvest": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Sources describe removing outer leaves while younger leaves continue growing. This is species-level capacity, not a yield or timing guarantee."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "iceberg-lettuce",
@@ -1358,6 +1458,64 @@
         "status": "unknown",
         "reason": "The pilot sources do not provide a phase-specific requirement suitable for this identity."
       }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Species-level lettuce guidance documents bolting into a seed stalk. This records biological flowering ability, not a positive or successful outcome."
+          }
+        ]
+      },
+      "harvestable_leaf": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Selective leaf harvest is documented for Lactuca sativa; this does not assert cultivar-specific readiness or timing."
+          }
+        ]
+      },
+      "can_regrow_after_harvest": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Sources describe removing outer leaves while younger leaves continue growing. This is species-level capacity, not a yield or timing guarantee."
+          }
+        ]
+      }
     }
   },
   {
@@ -1489,13 +1647,36 @@
     "category": "leafy greens",
     "emoji": "🥬",
     "guideCompletion": 89,
-    "tags": ["black seeded simpson", "lettuce", "lechuga", "looseleaf", "leaf lettuce", "hydroponic"],
+    "tags": [
+      "black seeded simpson",
+      "lettuce",
+      "lechuga",
+      "looseleaf",
+      "leaf lettuce",
+      "hydroponic"
+    ],
     "summary": "A looseleaf lettuce particularly compatible with repeated outer-leaf harvest. Garden should not treat its open form as a failure to make a head.",
     "metrics": [
-      { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
-      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS system example" },
-      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU lettuce reference" },
-      { "label": "Harvest mode", "value": "Outer leaf", "note": "Natural looseleaf use" }
+      {
+        "label": "Germination",
+        "value": "60–68°F optimum",
+        "note": "General lettuce reference"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "5.5–6.0*",
+        "note": "UF/IFAS system example"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "1.2–1.8 mS/cm",
+        "note": "OSU lettuce reference"
+      },
+      {
+        "label": "Harvest mode",
+        "value": "Outer leaf",
+        "note": "Natural looseleaf use"
+      }
     ],
     "sections": {
       "germination": {
@@ -1503,114 +1684,188 @@
         "guidance": "Use the general lettuce model with optimum germination around 60–68°F and avoid using age alone to declare failure.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "thinning": {
         "short": "One vigorous looseleaf plant for a full-size pod crop",
         "guidance": "Garden's default for a full-size Black Seeded Simpson plant is one strong seedling per compact position. Baby-leaf production would be a separate grow mode and can intentionally use higher density.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "pruning": {
         "short": "No shaping prune; protect the center",
         "guidance": "Do not top looseleaf lettuce. Harvest mature outer leaves and remove damaged tissue while leaving the central growing point intact.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "harvest": {
         "short": "Strong fit for cut-and-come-again",
         "guidance": "Looseleaf lettuce is well suited to selective mature-leaf harvest. Garden should prioritize outer leaves and continue monitoring center growth and overall plant vigor.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "flowering": {
         "short": "Bolting is a quality and morphology change",
         "guidance": "A central seed stalk is not a new leaf flush; it marks reproductive transition. Garden should surface that clearly and explain likely bitterness/quality decline.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       },
       "hydroponics": {
         "short": "General lettuce solution references",
         "guidance": "Use UF/IFAS and OSU lettuce ranges as evidence with explicit system context, not as cultivar-specific precision.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ]
       },
       "problems": {
         "short": "Open form is normal for this variety",
         "guidance": "Garden should recognize that Black Seeded Simpson is looseleaf. Failing to form a tight head is not itself a symptom.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce"
+        ]
       }
     },
     "compatibilityProfile": {
-        "profileVersion": 1,
-        "hydroponicSuitability": {
-          "status": "compatible",
-          "evidence": [
-            {
-              "sourceIds": [
-                "uf-hydro-lettuce",
-                "okstate-ecph"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "medium",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
-            }
-          ]
-        },
-        "growthHabits": {
-          "status": "unknown",
-          "reason": "No sufficiently scoped source evidence was identified for this property."
-        },
-        "matureSize": {
-          "height": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
-          },
-          "spread": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "uf-hydro-lettuce",
+              "okstate-ecph"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
           }
-        },
-        "spacing": {
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "matureSize": {
+        "height": {
           "status": "unknown",
           "reason": "No sufficiently scoped source evidence was identified for this property."
         },
-        "light": {
-          "status": "known",
-          "value": [
-            {
-              "phase": "growing",
-              "requirement": {
-                "kind": "full_sun"
-              }
-            }
-          ],
-          "evidence": [
-            {
-              "sourceIds": [
-                "johnnys-lettuce"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "high",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
-            }
-          ]
+        "spread": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
         }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+          }
+        ]
       }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Species-level lettuce guidance documents bolting into a seed stalk. This records biological flowering ability, not a positive or successful outcome."
+          }
+        ]
+      },
+      "harvestable_leaf": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Selective leaf harvest is documented for Lactuca sativa; this does not assert cultivar-specific readiness or timing."
+          }
+        ]
+      },
+      "can_regrow_after_harvest": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Sources describe removing outer leaves while younger leaves continue growing. This is species-level capacity, not a yield or timing guarantee."
+          }
+        ]
+      }
+    }
   }
 ]

@@ -235,6 +235,62 @@
           }
         ]
       }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-pruning"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum basilicum"
+            },
+            "note": "General basil guidance discusses flower buds at species level. Flowering is a factual stage, not an endorsement for leaf production."
+          }
+        ]
+      },
+      "harvestable_leaf": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-key"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum basilicum"
+            },
+            "note": "Culinary leaf and stem harvest is documented for basil at species level, not as a cultivar-specific yield claim."
+          }
+        ]
+      },
+      "can_regrow_after_harvest": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-basil-pruning"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum basilicum"
+            },
+            "note": "Basil cut above healthy nodes can branch again. This supports species-level regrowth capacity, not a rate for this cultivar."
+          }
+        ]
+      }
     }
   },
   {
@@ -392,134 +448,249 @@
     "category": "leafy greens",
     "emoji": "🥬",
     "guideCompletion": 90,
-    "tags": ["lettuce", "lechuga", "romaine", "red romaine", "leafy green", "hydroponic"],
+    "tags": [
+      "lettuce",
+      "lechuga",
+      "romaine",
+      "red romaine",
+      "leafy green",
+      "hydroponic"
+    ],
     "summary": "A cool-season leafy crop that can be managed either for repeated outer-leaf harvest or for a fuller head. Garden must know the intended harvest style before recommending cuts.",
     "metrics": [
-      { "label": "Best germination", "value": "60–68°F", "note": "Johnny's lettuce reference" },
-      { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS non-circulating example" },
-      { "label": "Hydro EC", "value": "1.2–1.8 mS/cm", "note": "OSU reference table" },
-      { "label": "Harvest mode", "value": "Leaf or head", "note": "Different cut strategy" }
+      {
+        "label": "Best germination",
+        "value": "60–68°F",
+        "note": "Johnny's lettuce reference"
+      },
+      {
+        "label": "Hydro pH",
+        "value": "5.5–6.0*",
+        "note": "UF/IFAS non-circulating example"
+      },
+      {
+        "label": "Hydro EC",
+        "value": "1.2–1.8 mS/cm",
+        "note": "OSU reference table"
+      },
+      {
+        "label": "Harvest mode",
+        "value": "Leaf or head",
+        "note": "Different cut strategy"
+      }
     ],
     "sections": {
       "germination": {
         "short": "Cool conditions improve germination",
         "guidance": "Lettuce germinates best under cool conditions. Johnny's notes optimum germination around 60–68°F and poorer germination at high temperatures.",
-        "items": ["UF/IFAS starts one to two seeds per grow cube in its non-circulating hydroponic method.", "Seedlings in that method can be ready to move into the system after roughly one to three weeks."],
+        "items": [
+          "UF/IFAS starts one to two seeds per grow cube in its non-circulating hydroponic method.",
+          "Seedlings in that method can be ready to move into the system after roughly one to three weeks."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "thinning": {
         "short": "One head needs room; baby-leaf culture is different",
         "guidance": "For a head-style lettuce plant in a compact pod, Garden should generally favor one vigorous plant after establishment. That is a system adaptation built from the crop's spacing needs and the UF/IFAS one-to-two-seed start, not a direct source statement saying 'one per pod'.",
-        "items": ["Select the strongest, centered seedling when the goal is a full romaine plant.", "For baby-leaf production, denser culture follows a different set of rules and should be treated as another grow mode."],
+        "items": [
+          "Select the strongest, centered seedling when the goal is a full romaine plant.",
+          "For baby-leaf production, denser culture follows a different set of rules and should be treated as another grow mode."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        "sourceIds": [
+          "johnnys-lettuce",
+          "uf-hydro-lettuce"
+        ]
       },
       "pruning": {
         "short": "No shaping prune; remove damaged leaves selectively",
         "guidance": "Romaine does not need basil-style pruning. Management is primarily harvest plus sanitation. Garden should not recommend cutting the growing center unless the selected harvest method specifically calls for a full harvest.",
-        "avoid": ["Cutting into the central growing point during an outer-leaf harvest."],
+        "avoid": [
+          "Cutting into the central growing point during an outer-leaf harvest."
+        ],
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+        "sourceIds": [
+          "usu-lettuce",
+          "johnnys-lettuce"
+        ]
       },
       "harvest": {
         "short": "Outer leaves for continuity, or cut the head",
         "guidance": "USU notes that leaf lettuce can be harvested after leaves form, with older outer leaves removed first so younger leaves continue growing. Romaine can also be harvested as a head in the early heading stage.",
-        "items": ["For repeated harvest, remove mature outer leaves and preserve the center.", "For a head harvest, cut at the base when the plant has reached the desired size."],
+        "items": [
+          "For repeated harvest, remove mature outer leaves and preserve the center.",
+          "For a head harvest, cut at the base when the plant has reached the desired size."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+        "sourceIds": [
+          "usu-lettuce",
+          "johnnys-lettuce"
+        ]
       },
       "flowering": {
         "short": "Bolting is a stage change and quality warning",
         "guidance": "Lettuce quality declines as the plant transitions toward a seed stalk, especially under heat stress. Garden should flag a visible central stalk as a stage observation and explain the likely effect on eating quality.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-lettuce"]
+        "sourceIds": [
+          "usu-lettuce"
+        ]
       },
       "hydroponics": {
         "short": "Cool leafy-green targets with system-specific ranges",
         "guidance": "UF/IFAS demonstrates non-circulating lettuce near pH 5.5–6.0 and about 1.25 mS/cm EC. OSU lists a broader lettuce reference of EC 1.2–1.8 mS/cm and pH 6.0–7.0. Garden should preserve the source context rather than collapse those into false precision.",
-        "items": ["Use the nutrient manufacturer's instructions as part of the operating context.", "Treat measured pH/EC as canonical observations; treatment recommendations remain separate."],
+        "items": [
+          "Use the nutrient manufacturer's instructions as part of the operating context.",
+          "Treat measured pH/EC as canonical observations; treatment recommendations remain separate."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ]
       },
       "problems": {
         "short": "Heat stress, bitterness and tip issues matter",
         "guidance": "Lettuce is highly sensitive to heat and stress. The V0 guide should flag environmental context without pretending that a text rule can diagnose tip burn, nutrient imbalance or root problems from age alone.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": ["usu-lettuce", "johnnys-lettuce"]
+        "sourceIds": [
+          "usu-lettuce",
+          "johnnys-lettuce"
+        ]
       }
     },
     "compatibilityProfile": {
-        "profileVersion": 1,
-        "hydroponicSuitability": {
-          "status": "compatible",
-          "evidence": [
-            {
-              "sourceIds": [
-                "uf-hydro-lettuce",
-                "okstate-ecph"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "medium",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
-            }
-          ]
-        },
-        "growthHabits": {
-          "status": "unknown",
-          "reason": "No sufficiently scoped source evidence was identified for this property."
-        },
-        "matureSize": {
-          "height": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
-          },
-          "spread": {
-            "status": "unknown",
-            "reason": "No sufficiently scoped source evidence was identified for this property."
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": [
+              "uf-hydro-lettuce",
+              "okstate-ecph"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "University crop-level hydroponic guidance covers Lactuca sativa; this is species-scope evidence, not cultivar-specific performance."
           }
-        },
-        "spacing": {
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "matureSize": {
+        "height": {
           "status": "unknown",
           "reason": "No sufficiently scoped source evidence was identified for this property."
         },
-        "light": {
-          "status": "known",
-          "value": [
-            {
-              "phase": "growing",
-              "requirement": {
-                "kind": "full_sun"
-              }
-            }
-          ],
-          "evidence": [
-            {
-              "sourceIds": [
-                "johnnys-lettuce"
-              ],
-              "evidenceType": "source_backed",
-              "confidence": "high",
-              "taxonomicScope": {
-                "level": "species",
-                "taxon": "Lactuca sativa"
-              },
-              "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
-            }
-          ]
+        "spread": {
+          "status": "unknown",
+          "reason": "No sufficiently scoped source evidence was identified for this property."
         }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No sufficiently scoped source evidence was identified for this property."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Johnny’s general lettuce guide recommends full sun; applies at species scope and does not equate sunlight with indoor LED hours."
+          }
+        ]
       }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Species-level lettuce guidance documents bolting into a seed stalk. This records biological flowering ability, not a positive or successful outcome."
+          }
+        ]
+      },
+      "harvestable_leaf": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Selective leaf harvest is documented for Lactuca sativa; this does not assert cultivar-specific readiness or timing."
+          }
+        ]
+      },
+      "can_regrow_after_harvest": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-lettuce",
+              "johnnys-lettuce"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Lactuca sativa"
+            },
+            "note": "Sources describe removing outer leaves while younger leaves continue growing. This is species-level capacity, not a yield or timing guarantee."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "common-mint",
@@ -924,6 +1095,62 @@
       "light": {
         "status": "unknown",
         "reason": "No light value is assigned to this unspecified cultivar in the reviewed sources."
+      }
+    },
+    "lifeCapabilities": {
+      "can_flower": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "General tomato crop guidance supports flowering at species level; no cultivar timing or present plant state is claimed."
+          }
+        ]
+      },
+      "can_fruit": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "General tomato crop guidance documents fruit production at species level; no cultivar yield or present plant state is claimed."
+          }
+        ]
+      },
+      "harvestable_fruit": {
+        "status": "known",
+        "value": true,
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Vine-ripened tomato harvest is documented at species level; this does not establish current readiness."
+          }
+        ]
       }
     }
   }

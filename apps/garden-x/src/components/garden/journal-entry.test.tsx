@@ -230,4 +230,45 @@ describe("Journal Entry from real shell entry points", () => {
     expect(screen.getByRole("button", { name: "Flowered" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Fruited" })).toBeTruthy();
   });
+
+  it("uses the selected Gardenpedia identity to prioritize mature leafy harvest facts", () => {
+    mocks.store = {
+      ...mocks.store,
+      plants: [{ ...plant, libraryPlantId: "bibb-lettuce", originType: "seed" }],
+      events: [
+        {
+          id: "growth-1",
+          plantId: plant.id,
+          daysAgo: 5,
+          type: "note",
+          title: "Growth observed",
+          lifeEvent: "growth_observed",
+          provenance: "recorded",
+        },
+      ],
+    };
+    renderExperience(`/plants/${plant.id}`);
+    openRecord();
+    expect(screen.getByRole("button", { name: "Growth observed" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Harvested" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Flowered" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "More…" }));
+    expect(screen.getByRole("button", { name: "Flowered" })).toBeTruthy();
+  });
+
+  it("keeps bare-root Monterey establishment ahead of seed-only events", () => {
+    mocks.store = {
+      ...mocks.store,
+      plants: [{ ...plant, libraryPlantId: "monterey-strawberry", originType: "bare_root" }],
+      events: [],
+    };
+    renderExperience(`/plants/${plant.id}`);
+    openRecord();
+    expect(screen.getByRole("button", { name: "Growth observed" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Germinated" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Sprouted" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "More…" }));
+    expect(screen.getByRole("button", { name: "Germinated" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Sprouted" })).toBeTruthy();
+  });
 });

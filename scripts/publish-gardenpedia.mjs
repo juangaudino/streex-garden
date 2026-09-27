@@ -3,6 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { validateCompatibilityProfile } from "./gardenpedia-compatibility-profile.mjs";
+import { validateGardenpediaLifeCapabilities } from "./gardenpedia-life-capabilities.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = path.join(root, "labs", "gardenpedia");
@@ -170,6 +171,11 @@ function buildReference(plant, neighborData, sourceById) {
       ...Object.values(plant.sections || {}).flatMap(
         (section) => section?.sourceIds || [],
       ),
+      ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
+        claim?.status === "known"
+          ? claim.evidence.flatMap((item) => item.sourceIds || [])
+          : [],
+      ),
       ...Object.values(plant.compatibilityProfile || {}).flatMap((claim) => {
         if (!claim || typeof claim !== "object") return [];
         if (Array.isArray(claim.evidence)) {
@@ -250,15 +256,30 @@ function buildCatalogManifest(plants) {
       category: plant.category || "uncategorized",
       status: "active",
       provenance: uniqueStrings(
-        Object.values(plant.sections || {}).flatMap(
-          (section) => section?.sourceIds || [],
-        ),
+        [
+          ...Object.values(plant.sections || {}).flatMap(
+            (section) => section?.sourceIds || [],
+          ),
+          ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
+            claim?.status === "known"
+              ? claim.evidence.flatMap((item) => item.sourceIds)
+              : [],
+          ),
+        ],
       ),
       guidanceProfile: neighborData.profiles?.[plant.id] || null,
       ...(Object.hasOwn(plant, "compatibilityProfile")
         ? {
             compatibilityProfile: validateCompatibilityProfile(
               plant.compatibilityProfile,
+              knownSourceIds,
+            ),
+          }
+        : {}),
+      ...(Object.hasOwn(plant, "lifeCapabilities")
+        ? {
+            lifeCapabilities: validateGardenpediaLifeCapabilities(
+              plant.lifeCapabilities,
               knownSourceIds,
             ),
           }

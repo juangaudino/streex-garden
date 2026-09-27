@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateCompatibilityProfile } from "./gardenpedia-compatibility-profile.mjs";
+import { validateGardenpediaLifeCapabilities } from "./gardenpedia-life-capabilities.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = process.env.GARDENPEDIA_DATA_DIR
@@ -10,7 +11,7 @@ const source = process.env.GARDENPEDIA_DATA_DIR
 const plantFiles = ["plants.json", "plants-current-gardens.json", "plants-owned-seeds.json", "plants-expansion-batch-a1.json", "plants-expansion-batch-b1.json", "plants-requests.json"];
 const sourceFiles = ["sources.json", "sources-current-gardens.json", "sources-owned-seeds.json", "sources-expansion-batch-a1.json", "sources-expansion-batch-b1.json", "sources-requests.json"];
 const categories = new Set(["herbs", "leafy greens", "fruiting", "flowers", "alliums", "root vegetables", "vegetables", "fruits"]);
-const publicPlantFields = new Set(["id", "name", "spanishName", "scientificName", "variety", "category", "emoji", "guideCompletion", "tags", "summary", "metrics", "sections", "compatibilityProfile"]);
+const publicPlantFields = new Set(["id", "name", "spanishName", "scientificName", "variety", "category", "emoji", "guideCompletion", "tags", "summary", "metrics", "sections", "compatibilityProfile", "lifeCapabilities"]);
 const sectionNames = new Set(["identity", "germination", "thinning", "pruning", "harvest", "flowering", "hydroponics", "problems"]);
 const sourceTypes = new Set(["botanical_taxonomy", "grower_reference", "horticulture_reference", "product_reference", "purchase_listing", "specialist_grower", "university_extension", "university_research"]);
 const approvedDomains = ["cornell.edu", "highmowingseeds.com", "fedcoseeds.com", "usda.gov", "powo.science.kew.org", "kew.org", "johnnyseeds.com", "extension.usu.edu", "extension.okstate.edu", "ask.ifas.ufl.edu", "extension.umn.edu", "extension.illinois.edu", "extension.colostate.edu", "extension.wisc.edu", "extension.unh.edu", "extension.ncsu.edu", "extension.psu.edu", "extension.missouri.edu"];
@@ -144,6 +145,8 @@ function main() {
   const sourceIds = new Set(knownSourceById.keys());
   validateGrowGuide(plant, sourceIds);
   validateCompatibilityProfile(plant.compatibilityProfile, sourceIds);
+  if (Object.hasOwn(plant, "lifeCapabilities"))
+    validateGardenpediaLifeCapabilities(plant.lifeCapabilities, sourceIds);
   validateIdentityEvidence(proposedData.identityEvidence, sourceIds);
   const referencedSources = new Set();
   const collectSourceIds = (value) => {

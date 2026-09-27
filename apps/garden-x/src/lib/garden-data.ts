@@ -188,6 +188,8 @@ export interface Plant {
     cultivar: string | null;
   } | null;
   originType?: PlantOriginType;
+  /** Date precision comes from the canonical grow cycle; unknown must not render as a planting date. */
+  plantedDatePrecision?: "exact" | "approximate" | "unknown";
   plantedDaysAgo: number;
   acquired?: string;
   slot?: string;
@@ -229,6 +231,8 @@ export interface Film {
 
 export interface GardenState {
   gardens: Garden[];
+  /** Closed grow-cycle projections retained for the plant's journal and historical media. */
+  historicalPlants: Plant[];
   plants: Plant[];
   photos: Photo[];
   events: PlantEvent[];
@@ -742,7 +746,7 @@ export const knowledge: KnowledgeEntry[] = [
   },
 ];
 
-export const initialState: GardenState = { gardens, plants, photos, events, tasks, films };
+export const initialState: GardenState = { gardens, historicalPlants: [], plants, photos, events, tasks, films };
 
 export const musicOptions = [
   { id: "still-water", name: "Still Water", mood: "Slow piano, wide reverb" },

@@ -13,7 +13,6 @@ import {
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import {
-  ageLabel,
   chronological,
   dueLabel,
   localizedEventLabel,
@@ -23,9 +22,6 @@ import {
   plantEvents,
   plantPhotos,
   relativeDay,
-  statusMeta,
-  localizedStatusLabel,
-  storyFacts,
   isRedundantTimelineDetail,
   isTimelineTitleProjectionOfDetail,
   normalizeTimelineNote,
@@ -39,7 +35,6 @@ import type { MaintenanceType } from "@/lib/garden-data";
 import {
   ProvenanceTag,
   SectionTitle,
-  StatusDot,
   eventIcons,
   maintenanceIcons,
 } from "@/components/garden/atoms";
@@ -58,9 +53,11 @@ import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
 import { LibraryIdentityResolution } from "@/components/garden/library-identity-resolution";
 import { loadGardenLibraryCatalog, localizedLibraryName, type GardenLibraryManifest } from "@/lib/garden-library";
 import { localizeKnownError, ui, type UiCopyKey } from "@/lib/ui-copy";
-import { formatStatusLine, plantIdentityParts } from "@/lib/plant-identity";
+import { plantIdentityParts } from "@/lib/plant-identity";
 import { askGardenAccentClassName } from "@/lib/care-session";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
+import { originType } from "@/lib/plant-life";
+import { buildPlantLifeHighlights } from "@/lib/plant-life-highlights";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -81,8 +78,8 @@ export const Route = createFileRoute("/plants/$plantId/")({
   component: PlantProfile,
 });
 
-const tabs = ["History", "Timeline", "Photos", "Reference"] as const;
-type Tab = (typeof tabs)[number] | "Care";
+const tabs = ["Journal", "Timeline", "Photos", "Reference"] as const;
+type Tab = (typeof tabs)[number];
 
 function timelineEventText(event: { title: string; detail?: string }) {
   return normalizeTimelineNote(
@@ -98,10 +95,10 @@ function PlantProfile() {
   const { plantId } = Route.useParams();
   const store = useGarden();
   const openJournalEntry = useJournalEntry();
-  const plant = store.plants.find((p) => p.id === plantId);
+  const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
-  const [tab, setTab] = useState<Tab>("History");
+  const [tab, setTab] = useState<Tab>("Journal");
   const [note, setNote] = useState("");
   const [recordOpen, setRecordOpen] = useState(false);
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>(undefined);
@@ -199,6 +196,10 @@ function PlantProfile() {
     () => sortPhotosByCapturedAt(photos, sortOrder),
     [photos, sortOrder],
   );
+  const lifeHighlights = useMemo(
+    () => buildPlantLifeHighlights(plant, events),
+    [plant, events],
+  );
 
   const removeEvent = async (event: (typeof events)[number], attachedPhotoCount: number) => {
     try {
@@ -262,9 +263,13 @@ function PlantProfile() {
         </Link>
         <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.65rem] tracking-[0.16em] text-white/70 uppercase">
-            <span>{ageLabel(plant.plantedDaysAgo)}</span>
-            <span>·</span>
-            <span>{ui(language, "dayLabel")} {plant.plantedDaysAgo}</span>
+            <span>{ui(language, `plantOrigin_${originType(plant.originType)}` as UiCopyKey)}</span>
+            {plant.plantedDatePrecision === "unknown" ? null : (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>{ui(language, "dayLabel")} {plant.plantedDaysAgo}</span>
+              </>
+            )}
             {plant.slot ? (
               <>
                 <span>·</span>
@@ -288,12 +293,6 @@ function PlantProfile() {
             ) : null}
           </p>
           <div className="mt-3 flex max-w-full flex-wrap items-center gap-1.5">
-            <div className="inline-flex max-w-full items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 ring-1 ring-white/20 backdrop-blur-md">
-              <span className={cn("h-1.5 w-1.5 shrink-0 rounded-full", statusMeta[plant.status].dot)} />
-              <span className="truncate text-xs text-white">
-                {formatStatusLine(localizedStatusLabel(plant.status, language), plant.statusNote)}
-              </span>
-            </div>
             <button
               onClick={() => setShareOpen(true)}
               className="press inline-flex min-h-9 items-center gap-1.5 rounded-full border-l border-white/25 px-2.5 py-1.5 text-xs text-white/90 transition-colors hover:bg-black/20"
@@ -312,15 +311,7 @@ function PlantProfile() {
       </div>
 
       {/* tools */}
-      <div className="mt-5 grid grid-cols-4 gap-1.5 px-5 sm:gap-3 sm:px-8 lg:px-12">
-        <button
-          onClick={() => openRecord()}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
-        >
-          <Plus className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
-          <span className="truncate sm:hidden">{ui(language, "recordShort")}</span>
-          <span className="hidden truncate sm:inline">{ui(language, "recordMoment")}</span>
-        </button>
+      <div className="mt-5 grid grid-cols-3 gap-1.5 px-5 sm:gap-3 sm:px-8 lg:px-12">
         <Link
           to="/plants/$plantId/check"
           params={{ plantId: plant.id }}
@@ -350,21 +341,23 @@ function PlantProfile() {
         </Link>
       </div>
 
-      {/* identity strip */}
-      <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border/70 bg-border/60 sm:grid-cols-4 mx-5 sm:mx-8 lg:mx-12">
-        {[
-          { k: ui(language, "planted"), v: formatDate(plant.plantedDaysAgo) },
-          ...(plant.originType && plant.originType !== "unknown"
-            ? [{ k: ui(language, "plantOrigin"), v: ui(language, `plantOrigin_${plant.originType}` as UiCopyKey) }]
-            : []),
-          ...storyFacts(plant, store.events, language, store.gardens.find((garden) => garden.id === plant.gardenId)?.kind).map((f) => ({ k: f.label, v: f.value })),
-        ].map((cell) => (
-          <div key={cell.k} className="bg-card px-4 py-3.5">
-            <p className="eyebrow">{cell.k}</p>
-            <p className="numeral mt-1 text-sm">{cell.v}</p>
+      {lifeHighlights.length ? (
+        <section className="mx-5 mt-6 sm:mx-8 lg:mx-12" aria-labelledby="life-highlights-title">
+          <h2 id="life-highlights-title" className="eyebrow mb-3">{ui(language, "lifeHighlights")}</h2>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {lifeHighlights.map((highlight) => (
+              <div key={highlight.kind} className="rounded-2xl border border-border/70 bg-card px-4 py-3.5">
+                <p className="eyebrow">{ui(language, highlight.kind)}</p>
+                <p className="numeral mt-1 text-sm">
+                  {highlight.count !== undefined
+                    ? highlight.count
+                    : formatDate(highlight.daysAgo ?? 0, language)}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
+      ) : null}
 
       {/* tabs */}
       <div className="sticky top-0 z-30 mt-8 border-b border-border/70 bg-background/85 backdrop-blur-xl">
@@ -378,7 +371,7 @@ function PlantProfile() {
                 tab === t ? "text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              {t === "History" ? ui(language, "history") : t === "Timeline" ? ui(language, "timeline") : t === "Photos" ? ui(language, "photos") : t === "Care" ? ui(language, "care") : ui(language, "reference")}
+              {t === "Journal" ? ui(language, "journal") : t === "Timeline" ? ui(language, "timeline") : t === "Photos" ? ui(language, "photos") : ui(language, "reference")}
               {tab === t ? (
                 <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-primary" />
               ) : null}
@@ -389,7 +382,7 @@ function PlantProfile() {
 
       <div className="px-5 pt-8 sm:px-8 lg:px-12">
         {/* ------------------------------------------------ HISTORY */}
-        {tab === "History" ? (
+        {tab === "Journal" ? (
           <div className="rise max-w-4xl">
             {first && latest && first.id !== latest.id ? (
               <div className="mb-12 overflow-hidden rounded-3xl border border-border/70 bg-card shadow-lift">
@@ -546,7 +539,12 @@ function PlantProfile() {
                     ) : null}
                     {i === history.length - 1 ? (
                       <p className="font-display text-lg text-primary sm:col-span-2">
-                        …and {relativeDay(e.daysAgo).toLowerCase()} the story is still open.
+                        {plant.cycleClosed
+                          ? ui(language, "cycleStoryRemains")
+                          : ui(language, "storyStillOpen").replace(
+                              "{relativeDay}",
+                              relativeDay(e.daysAgo).toLowerCase(),
+                            )}
                       </p>
                     ) : null}
                   </li>
@@ -681,7 +679,7 @@ function PlantProfile() {
                         );
                       })()}
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
+                        {e.type === "maintenance" ? ui(language, "recordedActivity") : localizedEventLabel(e.type, language)} · {relativeDay(e.daysAgo)}
                       </p>
                       {e.detail && !isRedundantTimelineDetail(e.title, e.detail) && !isTimelineTitleProjectionOfDetail(e.title, e.detail) ? (
                         <p className="mt-2 text-sm text-muted-foreground">{e.detail}</p>
@@ -1023,7 +1021,6 @@ function PlantProfile() {
               </>
             ) : null}
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <StatusDot status={plant.status} />
               <span className="text-xs text-muted-foreground">
                 {ui(language, "identity")} {plant.libraryPlantId ? ui(language, "identityConfirmedByYou") : ui(language, "identityStatusNotConfirmed")} · {ui(language, "canonicalDataConfirmation")}
               </span>

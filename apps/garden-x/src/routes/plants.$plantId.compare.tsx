@@ -35,7 +35,7 @@ function Compare() {
   const { from } = Route.useSearch();
   const store = useGarden();
   const language = store.language;
-  const plant = store.plants.find((p) => p.id === plantId);
+  const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
   const photos = plantPhotos(store.photos, plant.id);

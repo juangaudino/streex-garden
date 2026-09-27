@@ -99,6 +99,92 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
   });
 
+  it("keeps a closed grow cycle and its canonical events/photos available to Plant Journal", async () => {
+    const closedPhoto = {
+      id: "photo-closed",
+      plant_instance_id: "plant-closed",
+      grow_cycle_id: "cycle-closed",
+      event_id: "event-ended",
+      storage_path: "owner/photo.jpg",
+      original_filename: "photo.jpg",
+      content_type: "image/jpeg",
+      byte_size: 128,
+      captured_at: "2026-09-20T12:00:00Z",
+      captured_at_precision: "exact",
+      width: 1,
+      height: 1,
+      media_scope: "cycle_evidence",
+    };
+    rpc.mockImplementation(async (name: string) => {
+      if (name === "garden_x_get_bootstrap")
+        return {
+          data: {
+            gardens: [],
+            plants: [
+              {
+                id: "plant-closed",
+                nickname: null,
+                reference_key: "lettuce",
+                common_name: "Buttercrunch Lettuce",
+                scientific_name: "Lactuca sativa",
+                cultivar: "Buttercrunch",
+                status: "ended",
+                grow_cycle_id: "cycle-closed",
+                cycle_state: "closed",
+                planted_on: "2026-08-01",
+                planted_on_precision: "exact",
+                harvest_readiness: "not_applicable",
+                garden_id: "garden-1",
+                system_instance_id: "system-1",
+                position_id: "position-1",
+                position_number: 1,
+                occupied_from: "2026-08-01",
+                occupied_until: "2026-09-24",
+                latest_photo_id: "photo-closed",
+                latest_photo_storage_path: closedPhoto.storage_path,
+                latest_photo_captured_at: closedPhoto.captured_at,
+                latest_photo_captured_at_precision: "exact",
+              },
+            ],
+            events: [
+              {
+                id: "event-ended",
+                plant_instance_id: "plant-closed",
+                grow_cycle_id: "cycle-closed",
+                event_type: "cycle_ended",
+                occurred_at: "2026-09-24T12:00:00Z",
+                created_at: "2026-09-24T12:00:00Z",
+                note: "Harvest completed",
+                event_data: { reason: "productive_end" },
+                revision: 1,
+              },
+            ],
+            photos: [closedPhoto],
+            attention: [],
+          },
+          error: null,
+        };
+      if (name === "garden_get_system_maintenance_events") return { data: [], error: null };
+      if (name === "garden_x_get_saved_films") return { data: [], error: null };
+      if (name === "garden_x_get_historical_photos") return { data: [], error: null };
+      if (name === "garden_x_get_invalidated_event_photos") return { data: [], error: null };
+      throw new Error(`Unexpected RPC ${name}`);
+    });
+
+    const { state } = await loadGardenState();
+    expect(state.plants).toEqual([]);
+    expect(state.historicalPlants).toHaveLength(1);
+    expect(state.historicalPlants[0]).toMatchObject({
+      id: "plant-closed",
+      cycleClosed: true,
+      plantedDatePrecision: "exact",
+    });
+    expect(state.events).toHaveLength(1);
+    expect(state.events[0]).toMatchObject({ plantId: "plant-closed", type: "note" });
+    expect(state.photos).toHaveLength(1);
+    expect(state.photos[0]).toMatchObject({ plantId: "plant-closed", backendGrowCycleId: "cycle-closed" });
+  });
+
   it("maps the Record a Moment date precision to the canonical photo contract", async () => {
     await persistMoment(plant, event("note"), {
       ...photo,

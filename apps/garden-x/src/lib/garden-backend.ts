@@ -697,8 +697,8 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   };
   });
 
-  const plants: Plant[] = (b.plants ?? [])
-    .filter((p) => p.cycle_state === "active")
+  const plantCycles: Plant[] = (b.plants ?? [])
+    .filter((p) => p.cycle_state === "active" || p.cycle_state === "closed")
     .map((p) => ({
       id: p.id,
       gardenId: p.garden_id,
@@ -718,6 +718,10 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
           }
         : null,
       originType: originType(p.origin_type),
+      plantedDatePrecision:
+        p.planted_on_precision === "exact" || p.planted_on_precision === "approximate"
+          ? p.planted_on_precision
+          : "unknown",
       plantedDaysAgo: daysAgo(p.planted_on),
       slot: `Pod ${p.position_number}`,
       status: (b.attention ?? []).some((a) => a.plant_instance_id === p.id) ? "watching" : "steady",
@@ -726,7 +730,10 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
       identityConfirmed: Boolean(p.library_plant_id),
       backendGrowCycleId: p.grow_cycle_id,
       backendPositionId: p.position_id,
+      ...(p.cycle_state === "closed" ? { cycleClosed: true } : {}),
     }));
+  const plants = plantCycles.filter((plant) => !plant.cycleClosed);
+  const historicalPlants = plantCycles.filter((plant) => plant.cycleClosed === true);
 
   const photosByEventId = new Map<string, string[]>();
   for (const photo of allPhotos) {
@@ -826,6 +833,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
   return {
     state: {
       gardens,
+      historicalPlants,
       plants,
       photos,
       events,

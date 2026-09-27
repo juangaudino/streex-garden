@@ -12,6 +12,9 @@ function PlantLayout() {
   // A browser Back can restore the URL before the authenticated store has
   // hydrated. Do not turn that valid URL into a false route-level 404.
   if (store.hydration === "loading") return <RouteLoading />;
-  if (!store.plants.some((plant) => plant.id === plantId)) throw notFound();
+  if (
+    !store.plants.some((plant) => plant.id === plantId) &&
+    !store.historicalPlants?.some((plant) => plant.id === plantId)
+  ) throw notFound();
   return <Outlet />;
 }

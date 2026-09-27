@@ -11,7 +11,7 @@ const nav = [
   { to: "/", en: "Home", es: "Inicio", icon: Home },
   { to: "/gardens", en: "Gardens", es: "Jardines", icon: Sprout },
   { to: "/garden-ai", en: "Garden AI", es: "Garden AI", icon: Sparkles },
-  { to: "/library", en: "Library", es: "Biblioteca", icon: Library },
+  { to: "/library", en: "Library", es: "Biblioteca", labelKey: "gardenpedia", icon: Library },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -52,7 +52,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 )}
               >
                 <item.icon className="h-4 w-4 shrink-0" strokeWidth={1.75} />
-                 <span className="truncate">{item[language]}</span>
+                 <span className="truncate">{"labelKey" in item ? ui(language, item.labelKey) : item[language]}</span>
               </Link>
             );
           })}
@@ -111,7 +111,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 )}
               >
                 <item.icon className="h-5 w-5" strokeWidth={active ? 2 : 1.6} />
-                <span className="truncate">{item[language]}</span>
+                <span className="truncate">{"labelKey" in item ? ui(language, item.labelKey) : item[language]}</span>
               </Link>
             );
           })}

@@ -50,6 +50,7 @@ function GardenDetail() {
   if (!garden) throw notFound();
 
   const plants = store.plants.filter((p) => p.gardenId === garden.id);
+  const pastPlants = (store.historicalPlants ?? []).filter((p) => p.gardenId === garden.id);
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const gardenSummary = selectStaleSummary(store.gardenSummaries, "garden", garden.id, language);
   const pods = garden.backendPositions?.length
@@ -696,6 +697,33 @@ function GardenDetail() {
               ) : null}
             </div>
           </section>
+
+          {pastPlants.length ? (
+            <section className="mt-8 px-5 sm:px-8 lg:px-12">
+              <SectionTitle>{ui(language, "pastPlantStories")}</SectionTitle>
+              <ul className="grid gap-2 sm:grid-cols-2">
+                {pastPlants.map((pastPlant) => (
+                  <li key={pastPlant.id}>
+                    <Link
+                      to="/plants/$plantId"
+                      params={{ plantId: pastPlant.id }}
+                      className="press flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-border/70 bg-card px-4 py-3"
+                    >
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm font-medium">{pastPlant.name}</span>
+                        <span className="block truncate text-xs text-muted-foreground">
+                          {pastPlant.species}{pastPlant.slot ? ` · ${pastPlant.slot}` : ""}
+                        </span>
+                      </span>
+                      <span className="shrink-0 text-xs text-muted-foreground">
+                        {ui(language, "lifeEvent_ended")}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
           {gardenSummary ? (
             <section className="mt-8 px-5 sm:px-8 lg:px-12">

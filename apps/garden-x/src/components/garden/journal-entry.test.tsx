@@ -107,6 +107,18 @@ beforeEach(() => {
 afterEach(() => cleanup());
 
 describe("Journal Entry from real shell entry points", () => {
+  it("keeps the global Record action and labels the catalog Gardenpedia in both locales", () => {
+    renderExperience();
+    expect(screen.getByRole("button", { name: "Record" })).toBeTruthy();
+    expect(screen.getAllByRole("link", { name: "Gardenpedia" }).length).toBeGreaterThan(0);
+
+    mocks.store = { ...mocks.store, language: "es" };
+    cleanup();
+    renderExperience();
+    expect(screen.getByRole("button", { name: "Registrar" })).toBeTruthy();
+    expect(screen.getAllByRole("link", { name: "Gardenpedia" }).length).toBeGreaterThan(0);
+  });
+
   it("opens from Home with garden and plant/position selection, and saves note-only moments", async () => {
     renderExperience("/");
     expect(screen.queryByRole("link", { name: /Care|Cuidado/ })).toBeNull();

@@ -30,7 +30,7 @@ function GrowthFilm() {
   const { plantId } = Route.useParams();
   const store = useGarden();
   const language = store.language;
-  const plant = store.plants.find((item) => item.id === plantId);
+  const plant = store.plants.find((item) => item.id === plantId) ?? store.historicalPlants?.find((item) => item.id === plantId);
   if (!plant) throw notFound();
   const photos = plantPhotos(store.photos, plant.id);
   const [selected, setSelected] = useState<string[]>(photos.map((photo) => photo.id));

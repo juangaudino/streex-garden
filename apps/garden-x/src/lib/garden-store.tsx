@@ -161,6 +161,7 @@ const Ctx = createContext<StoreApi | null>(null);
 
 const emptyState: GardenState = {
   gardens: [],
+  historicalPlants: [],
   plants: [],
   photos: [],
   events: [],
@@ -702,10 +703,22 @@ export function GardenProvider({ children }: { children: ReactNode }) {
               .catch(() => undefined);
           }
         }
-        setState((s) => ({
-          ...s,
-          plants: s.plants.map((p) => (p.id === id ? { ...p, ...patch } : p)),
-        }));
+        setState((s) => {
+          const updated = s.plants.find((plant) => plant.id === id);
+          if (!updated) return s;
+          const next = { ...updated, ...patch };
+          if (next.cycleClosed) {
+            return {
+              ...s,
+              plants: s.plants.filter((plant) => plant.id !== id),
+              historicalPlants: [
+                ...s.historicalPlants.filter((plant) => plant.id !== id),
+                next,
+              ],
+            };
+          }
+          return { ...s, plants: s.plants.map((plant) => (plant.id === id ? next : plant)) };
+        });
       },
       updateGarden: async (id, patch) => {
         const current = state.gardens.find((g) => g.id === id);

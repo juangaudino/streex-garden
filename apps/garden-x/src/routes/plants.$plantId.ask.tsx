@@ -47,7 +47,7 @@ function Ask() {
     const value = state.location.state as { gardenConversationImage?: unknown } | undefined;
     return typeof value?.gardenConversationImage === "string" ? value.gardenConversationImage : undefined;
   } });
-  const plant = store.plants.find((p) => p.id === plantId);
+  const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
   const [thread, setThread] = useState<Array<AskAnswer & { attachedImageDataUrl?: string }>>([]);

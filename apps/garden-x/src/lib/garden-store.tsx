@@ -60,7 +60,7 @@ import {
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
 import type { PlantOriginType } from "./garden-data";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
-import { chooseSessionHighlight, projectPlantRelocation } from "./garden-logic";
+import { projectPlantRelocation } from "./garden-logic";
 import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
 import {
   GARDEN_SUMMARY_COALESCE_WINDOW_MS,
@@ -77,7 +77,6 @@ interface StoreApi extends GardenState {
   patchCareInspection: (key: string, patch: Partial<CareInspectionState>, expectedRequestId?: string) => void;
   clearCareInspection: () => void;
   hydration: "loading" | "ready" | "reconnecting" | "error" | "offline";
-  highlightedPlantId: string | null;
   recordGardenMaintenance: (gardenId: string, action: "water_change" | "nutrients" | "water_and_nutrients", occurredOn: string, note?: string) => Promise<void>;
   language: "en" | "es";
   setLanguage: (language: "en" | "es") => void;
@@ -157,7 +156,6 @@ const defaults: Preferences = {
 };
 
 const preferenceKey = "garden-x-preferences";
-const highlightedPlantKey = "garden-x-last-highlighted-plant";
 
 const Ctx = createContext<StoreApi | null>(null);
 
@@ -178,8 +176,6 @@ export function hydrationAfterRefreshFailure(hasSnapshot: boolean): "reconnectin
 export function isBackgroundHydration(hydration: StoreApi["hydration"]): boolean {
   return hydration === "reconnecting" || hydration === "offline";
 }
-const demoPlantIds = new Set(initialState.plants.map((plant) => plant.id));
-
 let seq = 0;
 const uid = (p: string) => `${p}-${Date.now().toString(36)}-${seq++}`;
 
@@ -191,14 +187,12 @@ export function GardenProvider({ children }: { children: ReactNode }) {
   const [hydration, setHydration] = useState<StoreApi["hydration"]>(
     backendConfigured ? "loading" : "ready",
   );
-  const [highlightedPlantId, setHighlightedPlantId] = useState<string | null>(null);
   const [preferences, setPreferences] = useState<Preferences>(defaults);
   const [publicStories, setPublicStories] = useState<PublicStory[]>([]);
   const [meaningfulChanges, setMeaningfulChanges] = useState<MeaningfulChangeResult[]>([]);
   const [gardenSummaries, setGardenSummaries] = useState<GardenSummaryResult[]>([]);
   const [careInspection, setCareInspection] = useState<CareInspectionState | null>(null);
   const pendingPhotos = useRef(new Map<string, Photo>());
-  const highlightResolved = useRef(false);
   const hasSuccessfulSnapshot = useRef(!backendConfigured);
   const refreshInFlight = useRef<Promise<void> | null>(null);
   const refreshSequence = useRef(0);
@@ -210,31 +204,6 @@ export function GardenProvider({ children }: { children: ReactNode }) {
     summaries: GardenSummaryResult[];
     language: "en" | "es";
   } | null>(null);
-
-  const resetHighlight = useCallback(() => {
-    highlightResolved.current = false;
-    setHighlightedPlantId(null);
-  }, []);
-
-  const resolveHighlight = useCallback((plantsForSession: Plant[]) => {
-    if (highlightResolved.current) return;
-    const candidates = plantsForSession.filter((plant) => !demoPlantIds.has(plant.id));
-    let previousId: string | null = null;
-    try {
-      previousId = window.localStorage.getItem(highlightedPlantKey);
-    } catch {
-      /* no-op */
-    }
-    const selected = chooseSessionHighlight(candidates, previousId);
-    if (!selected) return;
-    highlightResolved.current = true;
-    setHighlightedPlantId(selected.id);
-    try {
-      window.localStorage.setItem(highlightedPlantKey, selected.id);
-    } catch {
-      /* no-op */
-    }
-  }, []);
 
   const generateGardenSummariesFor = useCallback(async (
     nextState: GardenState,
@@ -305,7 +274,6 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       if (!sessionData.session) {
         if (hasSuccessfulSnapshot.current) throw new Error("Garden session is temporarily unavailable.");
         setState(emptyState);
-        resetHighlight();
         setHydration("ready");
         return;
       }
@@ -315,7 +283,6 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         loadGardenSummaryResults(),
       ]);
       if (sequence !== refreshSequence.current) return;
-      resolveHighlight(next.plants);
       setState(next);
       setMeaningfulChanges(derivedResults);
       setGardenSummaries(summaryResults);
@@ -336,7 +303,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       if (refreshInFlight.current === run) refreshInFlight.current = null;
     });
     return run;
-  }, [backendConfigured, preferences.language, resetHighlight, resolveHighlight, scheduleGardenSummaryGeneration]);
+  }, [backendConfigured, preferences.language, scheduleGardenSummaryGeneration]);
 
   useEffect(() => {
     if (!backendConfigured) return;
@@ -371,7 +338,6 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
         summaryGenerationTimer.current = null;
         pendingSummaryGeneration.current = null;
-        resetHighlight();
         setHydration("ready");
         setPreferences((current) => ({
           ...current,
@@ -400,7 +366,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
     };
-  }, [backendConfigured, refreshFromBackend, resetHighlight]);
+  }, [backendConfigured, refreshFromBackend]);
 
   useEffect(() => {
     try {
@@ -439,7 +405,6 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       }),
       clearCareInspection: () => setCareInspection(null),
       hydration,
-      highlightedPlantId,
       ...preferences,
       setLanguage: (language) => {
         updatePreferences({ language });
@@ -861,7 +826,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
       },
     }),
-    [scheduleGardenSummaryGeneration, gardenSummaries, highlightedPlantId, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state, careInspection],
+    [scheduleGardenSummaryGeneration, gardenSummaries, hydration, meaningfulChanges, preferences, publicStories, refreshFromBackend, state, careInspection],
   );
 
   return <Ctx.Provider value={api}>{children}</Ctx.Provider>;

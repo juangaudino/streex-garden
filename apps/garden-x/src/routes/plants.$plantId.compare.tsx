@@ -2,17 +2,26 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ChevronLeft, ArrowRight, MoveHorizontal } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
-import { ageLabel, comparePhotos, eventsBetween, formatDate, plantPhotos, type CompareResult } from "@/lib/garden-logic";
+import {
+  ageLabel,
+  comparePhotos,
+  eventsBetween,
+  formatDate,
+  plantPhotos,
+  type CompareResult,
+} from "@/lib/garden-logic";
 import { runAiCheck } from "@/lib/garden-backend";
+import {
+  requestedComparePhotoPair,
+  validateComparePhotoSearch,
+} from "@/lib/compare-photo-selection";
 import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
 import { ui } from "@/lib/ui-copy";
 
 export const Route = createFileRoute("/plants/$plantId/compare")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    from: search["from"] === "garden-ai" ? "garden-ai" as const : undefined,
-  }),
+  validateSearch: validateComparePhotoSearch,
   head: () => ({
     meta: [
       { title: "AI compare — Garden X" },
@@ -32,23 +41,60 @@ export const Route = createFileRoute("/plants/$plantId/compare")({
 
 function Compare() {
   const { plantId } = Route.useParams();
-  const { from } = Route.useSearch();
+  const search = Route.useSearch();
+  return <CompareScreen plantId={plantId} search={search} />;
+}
+
+export function CompareScreen({
+  plantId,
+  search: { from, beforePhotoId, afterPhotoId },
+}: {
+  plantId: string;
+  search: ReturnType<typeof validateComparePhotoSearch>;
+}) {
   const store = useGarden();
   const language = store.language;
-  const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
+  const plant =
+    store.plants.find((p) => p.id === plantId) ??
+    store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
   const photos = useMemo(() => plantPhotos(store.photos, plant.id), [plant.id, store.photos]);
+  const searchKey = `${plant.id}:${beforePhotoId ?? ""}:${afterPhotoId ?? ""}`;
+  const requestedPair = useMemo(
+    () =>
+      requestedComparePhotoPair(
+        photos,
+        plant.id,
+        plant.backendGrowCycleId,
+        beforePhotoId,
+        afterPhotoId,
+      ),
+    [afterPhotoId, beforePhotoId, photos, plant.backendGrowCycleId, plant.id],
+  );
+  const firstPhotoId = photos[0]?.id ?? "";
+  const lastPhotoId = photos[photos.length - 1]?.id ?? "";
   const [selection, setSelection] = useState(() => ({
     plantId: plant.id,
-    aId: photos[0]?.id ?? "",
-    bId: photos[photos.length - 1]?.id ?? "",
+    searchKey,
+    aId: requestedPair?.before.id ?? firstPhotoId,
+    bId: requestedPair?.after.id ?? lastPhotoId,
   }));
-  const currentSelection = selection.plantId === plant.id
-    ? selection
-    : { plantId: plant.id, aId: photos[0]?.id ?? "", bId: photos[photos.length - 1]?.id ?? "" };
-  const aId = photos.some((photo) => photo.id === currentSelection.aId) ? currentSelection.aId : photos[0]?.id ?? "";
-  const bId = photos.some((photo) => photo.id === currentSelection.bId) ? currentSelection.bId : photos[photos.length - 1]?.id ?? "";
+  const currentSelection =
+    selection.plantId === plant.id && selection.searchKey === searchKey
+      ? selection
+      : {
+          plantId: plant.id,
+          searchKey,
+          aId: requestedPair?.before.id ?? firstPhotoId,
+          bId: requestedPair?.after.id ?? lastPhotoId,
+        };
+  const aId = photos.some((photo) => photo.id === currentSelection.aId)
+    ? currentSelection.aId
+    : (photos[0]?.id ?? "");
+  const bId = photos.some((photo) => photo.id === currentSelection.bId)
+    ? currentSelection.bId
+    : (photos[photos.length - 1]?.id ?? "");
   const [slider, setSlider] = useState(50);
   const [aiComparison, setAiComparison] = useState<{
     key: string;
@@ -60,17 +106,33 @@ function Compare() {
   const comparisonKey = `${plant.id}:${a?.id ?? ""}:${b?.id ?? ""}`;
   useEffect(() => {
     setSelection((previous) => {
-      const samePlant = previous.plantId === plant.id;
+      const samePlantAndSearch = previous.plantId === plant.id && previous.searchKey === searchKey;
+      const defaultOrRequested = {
+        plantId: plant.id,
+        searchKey,
+        aId: requestedPair?.before.id ?? firstPhotoId,
+        bId: requestedPair?.after.id ?? lastPhotoId,
+      };
       const next = {
         plantId: plant.id,
-        aId: samePlant && photos.some((photo) => photo.id === previous.aId) ? previous.aId : photos[0]?.id ?? "",
-        bId: samePlant && photos.some((photo) => photo.id === previous.bId) ? previous.bId : photos[photos.length - 1]?.id ?? "",
+        searchKey,
+        aId:
+          samePlantAndSearch && photos.some((photo) => photo.id === previous.aId)
+            ? previous.aId
+            : defaultOrRequested.aId,
+        bId:
+          samePlantAndSearch && photos.some((photo) => photo.id === previous.bId)
+            ? previous.bId
+            : defaultOrRequested.bId,
       };
-      return previous.plantId === next.plantId && previous.aId === next.aId && previous.bId === next.bId
+      return previous.plantId === next.plantId &&
+        previous.searchKey === next.searchKey &&
+        previous.aId === next.aId &&
+        previous.bId === next.bId
         ? previous
         : next;
     });
-  }, [plant.id, photos]);
+  }, [firstPhotoId, lastPhotoId, photos, plant.id, requestedPair, searchKey]);
 
   useEffect(() => {
     setSlider(50);
@@ -209,6 +271,7 @@ function Compare() {
                   aria-label={`${picker.label}: ${p.caption}`}
                   onClick={() => setSelection({
                     plantId: plant.id,
+                    searchKey,
                     aId: picker.kind === "earlier" ? p.id : aId,
                     bId: picker.kind === "later" ? p.id : bId,
                   })}

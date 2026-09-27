@@ -235,21 +235,6 @@ export function distinctPhotoEvidence<T extends Pick<Photo, "id" | "backendStora
   });
 }
 
-/** Pick one active plant for the lifetime of an app session. */
-export function chooseSessionHighlight<T extends Pick<Plant, "id" | "cycleClosed">>(
-  plants: T[],
-  previousId: string | null,
-  random = Math.random,
-): T | undefined {
-  const active = plants.filter((plant) => !plant.cycleClosed);
-  if (!active.length) return undefined;
-  const withoutPrevious = active.length > 1 && previousId
-    ? active.filter((plant) => plant.id !== previousId)
-    : active;
-  const pool = withoutPrevious.length ? withoutPrevious : active;
-  return pool[Math.floor(random() * pool.length)];
-}
-
 /** Latest-event selectors must follow the effective/occurred date, not ingestion order. */
 export const plantEvents = (events: PlantEvent[], plantId: string) =>
   events

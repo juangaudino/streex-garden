@@ -2,6 +2,7 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import type { Photo, Plant } from "@/lib/garden-data";
+import { validateComparePhotoSearch } from "@/lib/compare-photo-selection";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -13,22 +14,35 @@ const mocks = vi.hoisted(() => ({
   runAiCheck: vi.fn(),
 }));
 
-vi.mock("@tanstack/react-router", () => ({
-  createFileRoute: () => (options: Record<string, unknown>) => ({
-    ...options,
-    options,
-    useParams: () => mocks.params,
-    useSearch: () => mocks.search,
-  }),
-  Link: ({ to, children, ...props }: { to: string; children: ReactNode }) => (
-    <a href={to} {...props}>
-      {children}
-    </a>
-  ),
-  notFound: () => {
-    throw new Error("Not found");
-  },
-}));
+vi.mock("@tanstack/react-router", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@tanstack/react-router")>();
+  return {
+    ...actual,
+    createFileRoute: () => (options: Record<string, unknown>) => ({
+      ...options,
+      options,
+      useParams: () => mocks.params,
+      useSearch: () => mocks.search,
+    }),
+    Link: ({
+      to,
+      children,
+      search: _search,
+      ...props
+    }: {
+      to: string;
+      children: ReactNode;
+      search?: unknown;
+    }) => (
+      <a href={to} {...props}>
+        {children}
+      </a>
+    ),
+    notFound: () => {
+      throw new Error("Not found");
+    },
+  };
+});
 vi.mock("@/lib/garden-store", () => ({ useGarden: () => mocks.store }));
 vi.mock("@/lib/garden-backend", () => ({
   resolvePhotoUrl: mocks.resolvePhotoUrl,
@@ -54,11 +68,15 @@ vi.mock("@/components/garden/atoms", () => ({
   ProvenanceTag: () => null,
 }));
 
-import { Route } from "./plants.$plantId.compare";
+import { CompareScreen } from "./plants.$plantId.compare";
 
 function CompareRoute() {
-  const Component = Route.options.component as React.ComponentType;
-  return <Component />;
+  return (
+    <CompareScreen
+      plantId={mocks.params.plantId}
+      search={validateComparePhotoSearch(mocks.search)}
+    />
+  );
 }
 
 const plant = (id: string): Plant => ({
@@ -85,6 +103,7 @@ const photo = (plantId: string, id: string, daysAgo: number): Photo => ({
   daysAgo,
   caption: `${id} caption`,
   backendStoragePath: `owner/${id}/original.jpg`,
+  backendGrowCycleId: `cycle-${plantId}`,
   metrics: { heightCm: null, leafCount: null, greenness: 0, density: null },
 });
 
@@ -189,5 +208,40 @@ describe("Compare photo loading", () => {
       );
     });
     expect(container.querySelector('img[alt="before caption"]')).toBeNull();
+  });
+
+  it("initializes from the exact valid before/after photo IDs in the existing Compare route", async () => {
+    mocks.search = { beforePhotoId: "middle", afterPhotoId: "after" };
+    mocks.resolvePhotoUrl.mockImplementation((item: Photo, rendition: string) =>
+      Promise.resolve(`https://signed/${item.id}/${rendition}`),
+    );
+    const { container } = render(<CompareRoute />);
+
+    await waitFor(() => {
+      expect(container.querySelector('img[alt="middle caption"].h-full')?.getAttribute("src")).toBe(
+        "https://signed/middle/display",
+      );
+      expect(container.querySelector('img[alt="after caption"]')?.getAttribute("src")).toBe(
+        "https://signed/after/display",
+      );
+    });
+    expect(mocks.runAiCheck).toHaveBeenCalledWith("cycle-plant-a", "after", "middle", "en");
+  });
+
+  it("falls back to Compare's normal oldest/newest selection for stale or cross-plant IDs", async () => {
+    mocks.search = { beforePhotoId: "other-first", afterPhotoId: "after" };
+    mocks.resolvePhotoUrl.mockImplementation((item: Photo, rendition: string) =>
+      Promise.resolve(`https://signed/${item.id}/${rendition}`),
+    );
+    const { container } = render(<CompareRoute />);
+
+    await waitFor(() => {
+      expect(container.querySelector('img[alt="before caption"].h-full')?.getAttribute("src")).toBe(
+        "https://signed/before/display",
+      );
+      expect(container.querySelector('img[alt="after caption"]')?.getAttribute("src")).toBe(
+        "https://signed/after/display",
+      );
+    });
   });
 });

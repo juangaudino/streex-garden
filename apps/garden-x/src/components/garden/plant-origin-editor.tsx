@@ -69,7 +69,7 @@ export function PlantOriginEditor({
         type="button"
         onClick={() => handleOpenChange(true)}
         aria-label={ui(language, "editPlantOrigin")}
-        className="press -mx-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 text-inherit underline decoration-dotted underline-offset-4 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+        className="press -mx-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 text-inherit transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
       >
         <span>{ui(language, `plantOrigin_${currentOrigin}` as UiCopyKey)}</span>
         <ChevronDown className="h-3 w-3 opacity-80" aria-hidden="true" />

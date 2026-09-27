@@ -269,6 +269,9 @@ describe("Plant Detail journal-first presentation", () => {
     expect(heroMeta).toContain("Unknown");
     expect(heroMeta).toContain("Day 18");
     expect(heroMeta).toContain("Pod 1");
+    const originButton = screen.getByRole("button", { name: "Set or correct plant origin" });
+    expect(originButton.className).not.toMatch(/\bunderline\b/);
+    expect(originButton.querySelector("svg")).toBeTruthy();
   });
 
   it("lets the user resolve unknown Origin and keeps the hero metadata compact after success", async () => {

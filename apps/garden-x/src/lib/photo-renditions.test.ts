@@ -13,7 +13,7 @@ describe("photo rendition preparation", () => {
     expect(photoRenditionStoragePaths("original.jpg")).toBeNull();
   });
 
-  it("uses the centralized conservative policy and creates master/display/preview JPEGs", async () => {
+  it("uses the approved Garden Media V1 policy and creates master/display/preview JPEGs", async () => {
     const drawImage = vi.fn();
     const close = vi.fn();
     const encoded: Array<{ width: number; height: number; quality: number }> = [];
@@ -35,20 +35,20 @@ describe("photo rendition preparation", () => {
     const result = await prepareGardenPhotoMedia(new Uint8Array(100_000), "image/heic");
 
     expect(GARDEN_PHOTO_MEDIA_POLICY).toMatchObject({
-      version: "interim-v1",
+      version: "garden-media-v1",
       orientation: "from-image",
-      master: { maxEdge: 2560, quality: 0.9 },
-      display: { maxEdge: 1600, quality: 0.84 },
-      preview: { maxEdge: 640, quality: 0.72 },
+      master: { maxEdge: 2304, quality: 0.86 },
+      display: { maxEdge: 1440, quality: 0.8 },
+      preview: { maxEdge: 600, quality: 0.68 },
     });
     expect(createBitmap.mock.calls[0]?.[1]).toEqual({ imageOrientation: "from-image" });
-    expect(result?.width).toBe(2560);
-    expect(result?.height).toBe(1707);
+    expect(result?.width).toBe(2304);
+    expect(result?.height).toBe(1536);
     expect(result?.contentType).toBe("image/jpeg");
     expect(encoded).toEqual([
-      { width: 2560, height: 1707, quality: 0.9 },
-      { width: 1600, height: 1067, quality: 0.84 },
-      { width: 640, height: 427, quality: 0.72 },
+      { width: 2304, height: 1536, quality: 0.86 },
+      { width: 1440, height: 960, quality: 0.8 },
+      { width: 600, height: 400, quality: 0.68 },
     ]);
     expect(result?.master.byteLength).toBe(3);
     expect(result?.renditions.preview?.byteLength).toBe(3);

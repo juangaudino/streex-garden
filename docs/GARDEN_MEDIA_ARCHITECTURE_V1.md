@@ -1,18 +1,22 @@
-# Garden media architecture V1 (preparatory)
+# Garden Media Architecture V1
 
-## Current compatibility model
+## User Zero approved ingestion policy
 
-The existing `garden.photos.storage_path` and photo RPC contract remain unchanged. `original.jpg` is now the compatibility path for the **Garden Master** on newly uploaded photos; those new bytes are normalized JPEGs rather than untouched phone originals. Historical `original.jpg` objects are not changed and may still be larger phone uploads. `display.jpg` and `preview.jpg` remain sibling derivatives. No database or Storage migration is part of this release.
+User Zero approved the initial Garden Media V1 policy after visually comparing five representative real Garden photos: full-plant views, close plant/leaf details (including zoom), and varied lighting/backgrounds. The approved candidate was **B · smaller balanced** in `scripts/photo-media-experiment.html`.
 
-The deliberately conservative, centralized **interim-v1** policy is in `apps/garden-x/src/lib/photo-media-policy.ts`:
+The centralized policy for newly ingested Garden photos is `apps/garden-x/src/lib/photo-media-policy.ts`:
 
-| Tier | Maximum edge | JPEG quality |
-| --- | ---: | ---: |
-| Garden Master | 2560 px | 0.90 |
-| Display | 1600 px | 0.84 |
-| Preview | 640 px | 0.72 |
+| Tier | Maximum long edge | JPEG quality | Purpose |
+| --- | ---: | ---: | --- |
+| Master | 2304 px | 0.86 | Canonical Garden visual evidence, reasonable zoom, and detailed AI use when needed |
+| Display | 1440 px | 0.80 | Plant Journal, Photos, Compare, Growth Film, and other large UI presentation |
+| Preview | 600 px | 0.68 | Home, galleries, thumbnails, navigation, and lightweight visual lists |
 
-The policy applies EXIF orientation before drawing, never upscales, encodes JPEGs and drops source metadata. These are experiment settings, not approved visual or byte-size targets.
+Shared processing applies image orientation, preserves aspect ratio, never upscales, encodes JPEGs, and strips source metadata. Normal Garden ingestion does not retain the phone/raw source as a fourth permanent media tier. **Master is the highest-quality canonical Garden visual evidence tier.**
+
+In the five-photo quality gate, candidate B produced observed sample sizes of approximately 0.9–1.1 MB for master, 350–425 KB for display, and 70–85 KB for preview. These are sample observations only, not byte limits, rejection thresholds, or guarantees for future photos. The policy contract is defined by tier dimensions and JPEG quality, not by encoded byte size.
+
+The current compatibility model still stores the new Garden master at the existing `original.jpg` path because the photo record/storage contract has not been renamed. That path is a legacy semantic alias: for new uploads its contents are the normalized Garden master, not the raw phone file. Historical `original.jpg` objects remain untouched and may still contain larger phone uploads. `display.jpg` and `preview.jpg` remain sibling derivatives. No database or Storage migration is part of this policy approval.
 
 ## Upload, health and retry
 
@@ -32,13 +36,13 @@ Two unchanged guest-story Edge Functions (`guest-garden-story` and `guest-plant-
 
 ## Local visual experiment
 
-Open `scripts/photo-media-experiment.html` in a browser and select 5–10 local representative images. The page generates three candidate master/display/preview policies, previews them side by side and reports dimensions, JPEG quality, bytes and reduction from each selected file. It uses only local file input, browser decoding, canvas, Blob URLs and local downloads: no fetch, upload, or repository image is involved. User Zero should approve visual quality before changing interim settings or mutating historical media.
+Open `scripts/photo-media-experiment.html` in a browser and select 5–10 local representative images. The page generates three candidate master/display/preview policies, previews them side by side and reports dimensions, JPEG quality, bytes and reduction from each selected file. It uses only local file input, browser decoding, canvas, Blob URLs and local downloads: no fetch, upload, or repository image is involved. Candidate B is now marked as the User Zero approved Garden Media V1 policy. The raw input is only a local comparison source; raw phone files are not part of the intended normal permanent Garden media model.
 
 ## Historical migration preparation
 
 The existing `garden-photo-rendition-backfill` inventory helpers are useful building blocks: owner-pinned manifest validation, upload-status filtering, folder inspection with byte-level JPEG decode/dimension checks, create-only uploads, progress/cursors, and post-write verification. The earlier `scripts/backfill-photo-renditions.mjs` is not safe to reuse as the migration itself: it leaves the master untouched, uses `sips`, and is not a transactional replacement-master workflow.
 
-The future ~224-photo migration must write a new optimized master to a staging/sibling key, validate master + display + preview and verify the source checksum before changing the canonical pointer or deleting any old object. The only old valid image must survive any failed individual-photo transform. No historical media was read or written by this code change.
+The future ~224-photo migration must write a new optimized master to a staging/sibling key, validate master + display + preview and verify the source checksum before changing the canonical pointer or deleting any old object. The only old valid image must survive any failed individual-photo transform. No historical media was read or written by the policy change.
 
 ## Provider portability
 

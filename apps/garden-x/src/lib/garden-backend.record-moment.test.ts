@@ -1,11 +1,18 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const rpc = vi.fn();
-const getSession = vi.fn();
+const { rpc, getSession, uploadPrepared } = vi.hoisted(() => ({ rpc: vi.fn(), getSession: vi.fn(), uploadPrepared: vi.fn() }));
 
 vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession }, rpc }),
+}));
+vi.mock("./photo-storage-provider", () => ({
+  photoStorageProvider: {
+    uploadPrepared,
+    download: vi.fn(),
+    remove: vi.fn(),
+    removeGarden: vi.fn(),
+  },
 }));
 
 import {
@@ -57,6 +64,8 @@ const event = (type: PlantEvent["type"]): Omit<PlantEvent, "id"> => ({
 describe("Record a Moment canonical temporal propagation", () => {
   beforeEach(() => {
     rpc.mockReset();
+    uploadPrepared.mockReset();
+    uploadPrepared.mockResolvedValue(undefined);
     getSession.mockReset();
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true }));
     getSession.mockResolvedValue({ data: { session: { access_token: "session" } } });
@@ -114,8 +123,8 @@ describe("Record a Moment canonical temporal propagation", () => {
     const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
     expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
-    expect(fetch).toHaveBeenCalledTimes(3);
-    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+    expect(uploadPrepared).toHaveBeenCalledTimes(1);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
   });
 
   it("uploads display and preview sidecars next to the canonical original without changing its path", async () => {
@@ -132,14 +141,13 @@ describe("Record a Moment canonical temporal propagation", () => {
 
     await persistMoment(plant, event("note"), photo);
 
-    const uploads = vi.mocked(fetch).mock.calls.map(([url]) => String(url));
-    expect(uploads).toEqual([
-      expect.stringContaining("/owner/photo/original.jpg"),
-      expect.stringContaining("/owner/photo/preview.jpg"),
-      expect.stringContaining("/owner/photo/display.jpg"),
-    ]);
-    const confirmation = rpc.mock.calls.find(([name]) => name === "garden_mark_photo_uploaded");
-    expect(confirmation?.[1]).toMatchObject({ p_width: 1600, p_height: 1200 });
+    expect(uploadPrepared).toHaveBeenCalledWith(
+      expect.any(String),
+      "owner/photo/original.jpg",
+      expect.objectContaining({ width: 1600, height: 1200 }),
+      expect.any(String),
+    );
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
     expect(bitmapClose).toHaveBeenCalledOnce();
     vi.unstubAllGlobals();
   });
@@ -157,9 +165,8 @@ describe("Record a Moment canonical temporal propagation", () => {
     });
     expect(rpc.mock.calls.map(([name]) => name)).toEqual([
       "garden_x_prepare_event_photo",
-      "garden_mark_photo_uploaded",
     ]);
-    expect(fetch).toHaveBeenCalledTimes(3);
+    expect(uploadPrepared).toHaveBeenCalledTimes(1);
   });
 
   it("keeps a closed grow cycle and its canonical events/photos available to Plant Journal", async () => {
@@ -268,8 +275,8 @@ describe("Record a Moment canonical temporal propagation", () => {
     const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
     expect(harvest?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
-    expect(fetch).toHaveBeenCalledTimes(3);
-    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+    expect(uploadPrepared).toHaveBeenCalledTimes(1);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
   });
 
   it("records sprouted as a dated human-confirmed state with optional photo evidence", async () => {
@@ -278,7 +285,7 @@ describe("Record a Moment canonical temporal propagation", () => {
     const prepare = rpc.mock.calls.find(([name]) => name === "garden_x_prepare_event_photo");
     expect(observation?.[1]).toMatchObject({ p_occurred_on: "2026-09-04" });
     expect(prepare?.[1]).toMatchObject({ p_captured_at: "2026-09-04T12:00:00.000Z" });
-    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(true);
+    expect(rpc.mock.calls.some(([name]) => name === "garden_mark_photo_uploaded")).toBe(false);
   });
 
   it("stores the journal milestone and note together before attaching its photo", async () => {
@@ -359,8 +366,8 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc.mock.calls.filter(([name]) => name === "garden_record_cycle_fact")).toHaveLength(1);
   });
 
-  it("does not report photo persistence success when Storage upload fails", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500 }));
+  it("does not report photo persistence success when the R2 gateway upload fails", async () => {
+    uploadPrepared.mockRejectedValue(new Error("R2 gateway unavailable"));
 
     await expect(persistMoment(plant, event("note"), photo)).rejects.toMatchObject({
       name: "IncompleteGardenPhotoProcessingError",

@@ -1,339 +1,50 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+// @vitest-environment jsdom
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const createSignedUrls = vi.fn();
-const getSession = vi.fn();
-
-vi.mock("./supabase", () => ({
-  getSupabaseClient: () => ({
-    storage: { from: () => ({ createSignedUrls }) },
-    auth: { getSession },
-  }),
+const { getSession, download } = vi.hoisted(() => ({ getSession: vi.fn(), download: vi.fn() }));
+vi.mock("./supabase", () => ({ getSupabaseClient: () => ({ auth: { getSession } }) }));
+vi.mock("./photo-storage-provider", () => ({
+  photoStorageProvider: { download, uploadPrepared: vi.fn(), remove: vi.fn(), removeGarden: vi.fn() },
 }));
 
-import {
-  clearPersistentPhotoCache,
-  photoRenditionCandidates,
-  persistPhotoRendition,
-  preloadPhotoRendition,
-  resolvePhotoUrl,
-  setPersistentPhotoCacheUserId,
-} from "./garden-backend";
+import { clearPersistentPhotoCache, photoRenditionCandidates, resolvePhotoUrl } from "./garden-backend";
 
-const photo = {
-  id: "photo-1",
-  src: "",
-  backendStoragePath: "owner/photo-1/original.jpg",
-};
+const photo = { id: "photo-1", src: "", backendStoragePath: "owner/photo-1/original.jpg" };
 
-describe("photo renditions", () => {
+describe("R2 photo rendition reads", () => {
   beforeEach(() => {
-    createSignedUrls.mockReset();
     getSession.mockReset();
-    getSession.mockResolvedValue({ data: { session: null } });
-    setPersistentPhotoCacheUserId(null);
+    download.mockReset();
+    getSession.mockResolvedValue({ data: { session: { user: { id: "user-1" } } } });
+    vi.stubGlobal("URL", { ...URL, createObjectURL: vi.fn(() => "blob:photo"), revokeObjectURL: vi.fn() });
   });
 
-  it("resolves each UI tier only to its own rendition", () => {
-    expect(photoRenditionCandidates(photo.backendStoragePath, "preview")).toEqual([
-      "owner/photo-1/preview.jpg",
-    ]);
-    expect(photoRenditionCandidates(photo.backendStoragePath, "display")).toEqual([
-      "owner/photo-1/display.jpg",
-    ]);
-    expect(photoRenditionCandidates(photo.backendStoragePath, "original")).toEqual([
-      "owner/photo-1/original.jpg",
-    ]);
+  afterEach(() => {
+    clearPersistentPhotoCache();
+    vi.unstubAllGlobals();
   });
 
-  it("does not fall back from a missing preview to a larger tier", async () => {
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-1/display.jpg", signedUrl: "https://signed/display" }],
-      error: null,
-    });
+  it("maps each UI tier to its exact canonical rendition", () => {
+    expect(photoRenditionCandidates(photo.backendStoragePath, "preview")).toEqual(["owner/photo-1/preview.jpg"]);
+    expect(photoRenditionCandidates(photo.backendStoragePath, "display")).toEqual(["owner/photo-1/display.jpg"]);
+    expect(photoRenditionCandidates(photo.backendStoragePath, "master")).toEqual(["owner/photo-1/original.jpg"]);
+  });
 
+  it("reads display through the authenticated provider boundary", async () => {
+    download.mockResolvedValue({ data: new Blob(["display"], { type: "image/jpeg" }), error: null });
+    await expect(resolvePhotoUrl(photo, "display")).resolves.toBe("blob:photo");
+    expect(download).toHaveBeenCalledWith("photo-1", "display");
+  });
+
+  it("does not fall back from a missing preview to a larger rendition", async () => {
+    download.mockResolvedValue({ data: null, error: new Error("missing") });
     await expect(resolvePhotoUrl(photo, "preview")).rejects.toThrow("Photo preview rendition is unavailable.");
-    expect(createSignedUrls).toHaveBeenCalledWith(
-      ["owner/photo-1/preview.jpg"],
-      3600,
-    );
+    expect(download).toHaveBeenCalledWith("photo-1", "preview");
   });
 
-  it("does not fall back from a missing display to the master", async () => {
-    const original = { ...photo, id: "photo-display-fallback" };
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: original.backendStoragePath, signedUrl: "https://signed/original" }],
-      error: null,
-    });
-
-    await expect(resolvePhotoUrl(original, "display")).rejects.toThrow("Photo display rendition is unavailable.");
-    expect(createSignedUrls).toHaveBeenCalledWith(["owner/photo-1/display.jpg"], 3600);
-  });
-
-  it("batches same-tick requests and deduplicates candidate paths", async () => {
-    createSignedUrls.mockImplementation(async (paths: string[]) => ({
-      data: paths.map((path) => ({ path, signedUrl: `https://signed/${path}` })),
-      error: null,
-    }));
-    const first = { ...photo, id: "photo-batch-a", backendStoragePath: "owner/shared-batch/original.jpg" };
-    const second = { ...photo, id: "photo-batch-b", backendStoragePath: "owner/shared-batch/original.jpg" };
-
-    const firstUrl = resolvePhotoUrl(first, "preview");
-    const secondUrl = resolvePhotoUrl(second, "preview");
-
-    await expect(Promise.all([firstUrl, secondUrl])).resolves.toEqual([
-      "https://signed/owner/shared-batch/preview.jpg",
-      "https://signed/owner/shared-batch/preview.jpg",
-    ]);
-    expect(createSignedUrls).toHaveBeenCalledTimes(1);
-    expect(createSignedUrls).toHaveBeenCalledWith([
-      "owner/shared-batch/preview.jpg",
-    ], 3600);
-  });
-
-  it("resolves preview and display to their requested stored renditions in one batch", async () => {
-    createSignedUrls.mockImplementation(async (paths: string[]) => ({
-      data: paths.map((path) => ({ path, signedUrl: `https://signed/${path}` })),
-      error: null,
-    }));
-    const samePhoto = { ...photo, id: "photo-two-renditions", backendStoragePath: "owner/two-renditions/original.jpg" };
-
-    const preview = resolvePhotoUrl(samePhoto, "preview");
-    const display = resolvePhotoUrl(samePhoto, "display");
-
-    await expect(Promise.all([preview, display])).resolves.toEqual([
-      "https://signed/owner/two-renditions/preview.jpg",
-      "https://signed/owner/two-renditions/display.jpg",
-    ]);
-    expect(createSignedUrls).toHaveBeenCalledTimes(1);
-    expect(createSignedUrls).toHaveBeenCalledWith([
-      "owner/two-renditions/preview.jpg",
-      "owner/two-renditions/display.jpg",
-    ], 3600);
-  });
-
-  it("reuses a still-valid signed URL cache entry", async () => {
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-cache-valid/display.jpg", signedUrl: "https://signed/cache-valid" }],
-      error: null,
-    });
-    const cached = { ...photo, id: "photo-cache-valid", backendStoragePath: "owner/photo-cache-valid/original.jpg" };
-
-    await expect(resolvePhotoUrl(cached, "display")).resolves.toBe("https://signed/cache-valid");
-    await expect(resolvePhotoUrl(cached, "display")).resolves.toBe("https://signed/cache-valid");
-    expect(createSignedUrls).toHaveBeenCalledTimes(1);
-  });
-
-  it("refreshes an expired signed URL instead of returning the cached URL", async () => {
-    createSignedUrls
-      .mockResolvedValueOnce({
-        data: [{ path: "owner/photo-expired/display.jpg", signedUrl: "https://signed/expired" }],
-        error: null,
-      })
-      .mockResolvedValueOnce({
-        data: [{ path: "owner/photo-expired/display.jpg", signedUrl: "https://signed/refreshed" }],
-        error: null,
-      });
-    const expiring = { ...photo, id: "photo-expired", backendStoragePath: "owner/photo-expired/original.jpg" };
-
-    await expect(resolvePhotoUrl(expiring, "display")).resolves.toBe("https://signed/expired");
-    await expect(resolvePhotoUrl(expiring, "display", { refresh: true })).resolves.toBe(
-      "https://signed/refreshed",
-    );
-    expect(createSignedUrls).toHaveBeenCalledTimes(2);
-  });
-
-  it("rejects only the photo whose batch response has no signed path", async () => {
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-error-a/display.jpg", signedUrl: "https://signed/error-a" }],
-      error: null,
-    });
-    const available = { ...photo, id: "photo-error-a", backendStoragePath: "owner/photo-error-a/original.jpg" };
-    const missing = { ...photo, id: "photo-error-b", backendStoragePath: "owner/photo-error-b/original.jpg" };
-
-    const availableUrl = resolvePhotoUrl(available, "display");
-    const missingUrl = resolvePhotoUrl(missing, "display");
-
-    await expect(availableUrl).resolves.toBe("https://signed/error-a");
-    await expect(missingUrl).rejects.toThrow("Photo display rendition is unavailable.");
-    expect(createSignedUrls).toHaveBeenCalledTimes(1);
-  });
-
-  it("keeps signed URL cache entries separate by photo and rendition", async () => {
-    const cachedPhoto = { ...photo, id: "photo-cache" };
-    createSignedUrls
-      .mockResolvedValueOnce({
-        data: [{ path: "owner/photo-1/display.jpg", signedUrl: "https://signed/preview-fallback" }],
-        error: null,
-      })
-      .mockResolvedValueOnce({
-        data: [{ path: "owner/photo-1/original.jpg", signedUrl: "https://signed/original" }],
-        error: null,
-      });
-
-    await expect(resolvePhotoUrl(cachedPhoto, "preview")).rejects.toThrow("Photo preview rendition is unavailable.");
-    await expect(resolvePhotoUrl(cachedPhoto, "original")).resolves.toBe("https://signed/original");
-    expect(createSignedUrls).toHaveBeenCalledTimes(2);
-  });
-
-  it("does not sign public or fixture photos", async () => {
-    await expect(resolvePhotoUrl({ id: "public", src: "data:image/gif;base64,fixture" }, "display"))
-      .resolves.toBe("data:image/gif;base64,fixture");
-    expect(createSignedUrls).not.toHaveBeenCalled();
-  });
-
-  it("warms the browser cache for a selected display rendition", async () => {
-    const imageSources: string[] = [];
-    class FakeImage {
-      decoding = "";
-      set src(value: string) {
-        imageSources.push(value);
-      }
-    }
-    vi.stubGlobal("Image", FakeImage);
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-preload/display.jpg", signedUrl: "https://signed/display" }],
-      error: null,
-    });
-
-    await preloadPhotoRendition({ ...photo, id: "photo-preload", backendStoragePath: "owner/photo-preload/original.jpg" }, "display");
-
-    expect(imageSources).toEqual(["https://signed/display"]);
-    vi.unstubAllGlobals();
-  });
-
-  it("reuses a persisted preview across a new in-memory session", async () => {
-    const entries = new Map<string, Response>();
-    const cache = {
-      match: async (request: Request) => entries.get(request.url)?.clone(),
-      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
-      keys: async () => [...entries.keys()].map((url) => new Request(url)),
-      delete: async (request: Request) => entries.delete(request.url),
-    };
-    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
-    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
-    const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:persisted-preview");
-    setPersistentPhotoCacheUserId("user-a");
-    const persisted = { ...photo, id: "photo-persisted", backendStoragePath: "owner/photo-persisted/original.jpg" };
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-persisted/preview.jpg", signedUrl: "https://signed/preview-first-session" }],
-      error: null,
-    });
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["preview-bytes"], { type: "image/jpeg" }), { status: 200 })));
-
-    await expect(resolvePhotoUrl(persisted, "preview")).resolves.toBe("https://signed/preview-first-session");
-    await persistPhotoRendition(persisted, "preview", "https://signed/preview-first-session");
-    createSignedUrls.mockClear();
-
-    await expect(resolvePhotoUrl(persisted, "preview")).resolves.toBe("blob:persisted-preview");
-    expect(createSignedUrls).not.toHaveBeenCalled();
-
-    createObjectURL.mockRestore();
-    vi.unstubAllGlobals();
-  });
-
-  it("keeps persistent bytes isolated when the authenticated user changes", async () => {
-    const entries = new Map<string, Response>();
-    const cache = {
-      match: async (request: Request) => entries.get(request.url)?.clone(),
-      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
-      keys: async () => [...entries.keys()].map((url) => new Request(url)),
-      delete: async (request: Request) => entries.delete(request.url),
-    };
-    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
-    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
-    const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:user-a");
-    const isolated = { ...photo, id: "photo-isolated", backendStoragePath: "owner/photo-isolated/original.jpg" };
-    setPersistentPhotoCacheUserId("user-a");
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-isolated/display.jpg", signedUrl: "https://signed/display-user-a" }],
-      error: null,
-    });
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display-bytes"], { type: "image/jpeg" }), { status: 200 })));
-    const userAUrl = await resolvePhotoUrl(isolated, "display");
-    await persistPhotoRendition(isolated, "display", userAUrl);
-    await clearPersistentPhotoCache("user-a");
-    setPersistentPhotoCacheUserId("user-b");
-    createSignedUrls.mockClear();
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-isolated/display.jpg", signedUrl: "https://signed/display-user-b" }],
-      error: null,
-    });
-    await expect(resolvePhotoUrl(isolated, "display")).resolves.toBe("https://signed/display-user-b");
-    expect(createSignedUrls).toHaveBeenCalledTimes(1);
-    await clearPersistentPhotoCache("user-b");
-    createObjectURL.mockRestore();
-    vi.unstubAllGlobals();
-  });
-
-  it("never stores an original in the persistent rendition cache", async () => {
-    const entries = new Map<string, Response>();
-    const cache = {
-      match: async (request: Request) => entries.get(request.url)?.clone(),
-      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
-      keys: async () => [...entries.keys()].map((url) => new Request(url)),
-      delete: async (request: Request) => entries.delete(request.url),
-    };
-    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
-    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
-    setPersistentPhotoCacheUserId("user-a");
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["original-bytes"], { type: "image/jpeg" }), { status: 200 })));
-    await persistPhotoRendition({ ...photo, id: "photo-original-only" }, "original", "https://signed/original");
-    expect(entries.size).toBe(0);
-    expect(fetch).not.toHaveBeenCalled();
-    vi.unstubAllGlobals();
-  });
-
-  it("does not persist original bytes when a display rendition is missing", async () => {
-    const entries = new Map<string, Response>();
-    const cache = {
-      match: async (request: Request) => entries.get(request.url)?.clone(),
-      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
-      keys: async () => [...entries.keys()].map((url) => new Request(url)),
-      delete: async (request: Request) => entries.delete(request.url),
-    };
-    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
-    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
-    setPersistentPhotoCacheUserId("user-a");
-    createSignedUrls.mockResolvedValue({
-      data: [{ path: "owner/photo-fallback/original.jpg", signedUrl: "https://signed/original-fallback" }],
-      error: null,
-    });
-    const fallback = { ...photo, id: "photo-fallback", backendStoragePath: "owner/photo-fallback/original.jpg" };
-    await expect(resolvePhotoUrl(fallback, "display")).rejects.toThrow("Photo display rendition is unavailable.");
-    const fetchSpy = vi.fn(async () => new Response(new Blob(["original"], { type: "image/jpeg" }), { status: 200 }));
-    vi.stubGlobal("fetch", fetchSpy);
-    await persistPhotoRendition(fallback, "display", "https://signed/original-fallback");
-    expect(fetchSpy).not.toHaveBeenCalled();
-    expect(entries.size).toBe(0);
-    vi.unstubAllGlobals();
-  });
-
-  it("bounds persisted display entries", async () => {
-    const entries = new Map<string, Response>();
-    const cache = {
-      match: async (request: Request) => entries.get(request.url)?.clone(),
-      put: async (request: Request, response: Response) => { entries.set(request.url, response.clone()); },
-      keys: async () => [...entries.keys()].map((url) => new Request(url)),
-      delete: async (request: Request) => entries.delete(request.url),
-    };
-    vi.stubGlobal("window", { location: { origin: "https://garden.getstreex.com" } });
-    vi.stubGlobal("caches", { open: vi.fn(async () => cache) });
-    setPersistentPhotoCacheUserId("user-a");
-    createSignedUrls.mockImplementation(async (paths: string[]) => ({
-      data: paths.map((path) => ({ path, signedUrl: `https://signed/${path}` })),
-      error: null,
-    }));
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Blob(["display"], { type: "image/jpeg" }), { status: 200 })));
-    for (let index = 0; index < 41; index += 1) {
-      const item = { ...photo, id: `photo-display-${index}`, backendStoragePath: `owner/photo-display-${index}/original.jpg` };
-      const signedUrl = await resolvePhotoUrl(item, "display");
-      await persistPhotoRendition(
-        item,
-        "display",
-        signedUrl,
-      );
-    }
-    expect(entries.size).toBe(40);
-    vi.unstubAllGlobals();
+  it("uses master only when the caller explicitly requests it", async () => {
+    download.mockResolvedValue({ data: new Blob(["master"], { type: "image/jpeg" }), error: null });
+    await expect(resolvePhotoUrl(photo, "master")).resolves.toBe("blob:photo");
+    expect(download).toHaveBeenCalledWith("photo-1", "master");
   });
 });

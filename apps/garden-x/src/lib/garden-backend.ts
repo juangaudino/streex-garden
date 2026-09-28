@@ -31,7 +31,6 @@ import {
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
 import { photoStorageProvider } from "./photo-storage-provider";
-import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
 import { normalizeTimelineNote } from "./garden-logic";
@@ -310,6 +309,7 @@ const photoPersistentCacheMaxEntries = { preview: 120, display: 40 } as const;
 const photoPersistentCacheMaxBytes = 50 * 1024 * 1024;
 let photoCacheUserPromise: Promise<string | null> | null = null;
 const persistentObjectUrls = new Set<string>();
+const mediaObjectUrls = new Set<string>();
 const signedUrlPending = new Map<
   string,
   {
@@ -481,7 +481,7 @@ export async function persistPhotoRendition(
   rendition: PhotoRendition,
   signedUrl: string,
 ) {
-  if (rendition === "original" || rendition === "master" || !photo.backendStoragePath || !signedUrl || signedUrl.startsWith("blob:") || !canUsePersistentPhotoCache()) return;
+  if (rendition === "original" || rendition === "master" || !photo.backendStoragePath || !signedUrl || !canUsePersistentPhotoCache()) return;
   const userId = await currentPhotoCacheUserId();
   const cache = userId ? await openPersistentPhotoCache() : null;
   if (!userId || !cache) return;
@@ -519,6 +519,8 @@ async function invalidatePersistentPhotoRendition(
 export async function clearPersistentPhotoCache(userId?: string | null) {
   photoCacheUserPromise = null;
   signedUrlCache.clear();
+  for (const objectUrl of mediaObjectUrls) URL.revokeObjectURL(objectUrl);
+  mediaObjectUrls.clear();
   for (const objectUrl of persistentObjectUrls) URL.revokeObjectURL(objectUrl);
   persistentObjectUrls.clear();
   const cache = await openPersistentPhotoCache();
@@ -548,54 +550,28 @@ function scheduleSignedUrlFlush() {
 async function flushSignedUrlRequests() {
   const requests = [...signedUrlPending.values()];
   if (!requests.length) return;
-  const paths = [...new Set(requests.flatMap((request) => request.paths))];
   const started = typeof performance !== "undefined" ? performance.now() : Date.now();
   photoUrlMetrics.signRequests += 1;
-  photoUrlMetrics.pathsRequested += paths.length;
-  const settleError = (reason: unknown) => {
-    for (const request of requests) {
-      signedUrlPending.delete(photoCacheKey(request.photo.id, request.rendition, request.userId));
-      for (const waiter of request.waiters) waiter.reject(reason);
-    }
-  };
-  try {
-    const { data, error } = await photoStorageProvider.sign(paths, signedUrlTtlSeconds);
-    if (error) {
-      settleError(error);
-      return;
-    }
-    const signedByPath = new Map(
-      (data ?? []).flatMap((item) =>
-        item.signedUrl && item.path ? [[item.path, item.signedUrl] as const] : [],
-      ),
-    );
-    for (const request of requests) {
-      const key = photoCacheKey(request.photo.id, request.rendition, request.userId);
-      signedUrlPending.delete(key);
-      const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean);
-      if (!url) {
-        const error = new PhotoRenditionUnavailableError(request.rendition);
-        for (const waiter of request.waiters) waiter.reject(error);
-        continue;
-      }
-      const servedPath = request.paths.find((path) => signedByPath.has(path));
-      if (!servedPath) {
-        const error = new PhotoRenditionUnavailableError(request.rendition);
-        for (const waiter of request.waiters) waiter.reject(error);
-        continue;
-      }
-      const actualTier: PhotoRendition = servedPath.endsWith("/preview.jpg")
-        ? "preview"
-        : servedPath.endsWith("/display.jpg")
-          ? "display"
-          : "master";
-      reportPhotoMediaDiagnostic("resolved", request.rendition, actualTier);
-      signedUrlCache.set(key, { url, path: servedPath, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
+  photoUrlMetrics.pathsRequested += requests.length;
+  await Promise.all(requests.map(async (request) => {
+    const key = photoCacheKey(request.photo.id, request.rendition, request.userId);
+    signedUrlPending.delete(key);
+    const requestedTier = request.rendition === "preview" ? "preview" : request.rendition === "display" ? "display" : "master";
+    try {
+      const { data, error } = await photoStorageProvider.download(request.photo.id, requestedTier);
+      if (error || !data) throw error ?? new PhotoRenditionUnavailableError(request.rendition);
+      const url = URL.createObjectURL(data);
+      mediaObjectUrls.add(url);
+      reportPhotoMediaDiagnostic("resolved", request.rendition, requestedTier);
+      signedUrlCache.set(key, { url, path: request.paths[0]!, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
       for (const waiter of request.waiters) waiter.resolve(url);
+    } catch (reason) {
+      const failure = reason instanceof PhotoRenditionUnavailableError ? reason : new PhotoRenditionUnavailableError(request.rendition);
+      reportPhotoMediaDiagnostic("unavailable", request.rendition);
+      for (const waiter of request.waiters) waiter.reject(failure);
     }
-  } catch (reason) {
-    settleError(reason);
-  } finally {
+  }));
+  {
     photoUrlMetrics.lastDurationMs =
       (typeof performance !== "undefined" ? performance.now() : Date.now()) - started;
   }
@@ -614,6 +590,11 @@ export function resolvePhotoUrl(
   return (async () => {
     if (options.refresh) {
       const userId = (await currentPhotoCacheUserId()) ?? "anonymous";
+      const old = signedUrlCache.get(photoCacheKey(photo.id, rendition, userId));
+      if (old?.url.startsWith("blob:")) {
+        mediaObjectUrls.delete(old.url);
+        URL.revokeObjectURL(old.url);
+      }
       signedUrlCache.delete(photoCacheKey(photo.id, rendition, userId));
       await invalidatePersistentPhotoRendition(photo, rendition);
     }
@@ -995,31 +976,12 @@ async function prepareUploadMedia(src: string, message: string): Promise<Prepare
   }
 }
 
-async function ensurePhotoObject(path: string, bytes: Uint8Array, contentType: string, cacheControl: string) {
-  const result = await photoStorageProvider.upload(path, bytes, contentType, cacheControl);
-  if (result === "created") return;
-  // A no-upsert retry is successful only when the existing immutable object is
-  // byte-identical to this attempt. Mismatched data is never overwritten.
-  const { data, error } = await photoStorageProvider.download(path);
-  if (error || !data) throw new Error("Existing photo media could not be verified.");
-  const existingBytes = new Uint8Array(await data.arrayBuffer());
-  if ((await sha256Hex(existingBytes)) !== (await sha256Hex(bytes))) {
-    throw new Error("Existing photo media differs from the prepared Garden media.");
-  }
-}
-
-async function uploadPreparedPhotoMedia(storagePath: string, media: PreparedGardenPhotoMedia) {
+async function uploadPreparedPhotoMedia(photoId: string, storagePath: string, media: PreparedGardenPhotoMedia, checksum: string) {
   const paths = photoRenditionStoragePaths(storagePath);
   if (!paths || !media.renditions.preview || !media.renditions.display) {
     throw new Error("Required Garden photo renditions were not prepared.");
   }
-  const uploadAttempt = async () => {
-    await ensurePhotoObject(storagePath, media.master, "image/jpeg", "max-age=31536000, immutable");
-    await Promise.all([
-      ensurePhotoObject(paths.preview, media.renditions.preview!, "image/jpeg", "max-age=31536000, immutable"),
-      ensurePhotoObject(paths.display, media.renditions.display!, "image/jpeg", "max-age=31536000, immutable"),
-    ]);
-  };
+  const uploadAttempt = () => photoStorageProvider.uploadPrepared(photoId, storagePath, media, checksum);
   try {
     await uploadAttempt();
   } catch (firstError) {
@@ -1049,8 +1011,7 @@ async function uploadEventPhoto(
   const retry = { eventId, photoId, effectiveDate: capturedDate };
   try {
     const prepared = await prepareCanonicalEventPhoto(retry, photo, media, checksum);
-    await uploadPreparedPhotoMedia(prepared.storage_path, media);
-    await markCanonicalPhotoUploaded(retry, media, checksum);
+    await uploadPreparedPhotoMedia(retry.photoId, prepared.storage_path, media, checksum);
   } catch (error) {
     reportPhotoMediaDiagnostic("processing_failed", "master");
     throw new IncompleteGardenPhotoProcessingError(retry, error);
@@ -1081,20 +1042,6 @@ async function prepareCanonicalEventPhoto(
   return data as { storage_path: string };
 }
 
-async function markCanonicalPhotoUploaded(
-  retry: PendingGardenPhotoRetry,
-  media: PreparedGardenPhotoMedia,
-  checksum: string,
-) {
-  const { error } = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
-    p_photo_id: retry.photoId,
-    p_checksum_sha256: checksum,
-    p_width: media.width,
-    p_height: media.height,
-  });
-  if (error) throw new Error(error.message);
-}
-
 /** Complete an already-recorded Moment photo without creating a second event. */
 export async function retryPendingEventPhoto(
   retry: PendingGardenPhotoRetry,
@@ -1103,8 +1050,7 @@ export async function retryPendingEventPhoto(
   try {
     const { media, checksum } = await prepareUploadMedia(photo.src, "Photo could not be read for retry.");
     const prepared = await prepareCanonicalEventPhoto(retry, photo, media, checksum);
-    await uploadPreparedPhotoMedia(prepared.storage_path, media);
-    await markCanonicalPhotoUploaded(retry, media, checksum);
+    await uploadPreparedPhotoMedia(retry.photoId, prepared.storage_path, media, checksum);
   } catch (error) {
     reportPhotoMediaDiagnostic("processing_failed", "master");
     throw new IncompleteGardenPhotoProcessingError(retry, error);
@@ -1524,14 +1470,7 @@ async function uploadGardenCoverPhoto(
   });
   if (error) throw new Error(error.message);
   const prepared = data as { photo_id: string; storage_path: string };
-  await uploadPreparedPhotoMedia(prepared.storage_path, media);
-  const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
-    p_photo_id: prepared.photo_id,
-    p_checksum_sha256: checksum,
-    p_width: media.width,
-    p_height: media.height,
-  });
-  if (uploaded.error) throw new Error(uploaded.error.message);
+  await uploadPreparedPhotoMedia(prepared.photo_id, prepared.storage_path, media, checksum);
   const attached = await getSupabaseClient().rpc("garden_x_set_custom_system_photo", {
     p_request_id: crypto.randomUUID(),
     p_definition_id: definitionId,
@@ -1668,14 +1607,7 @@ async function uploadPreparedGardenCoverPhoto(
   });
   if (error) throw new Error(error.message);
   const prepared = data as { photo_id: string; storage_path: string };
-  await uploadPreparedPhotoMedia(prepared.storage_path, media);
-  const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
-    p_photo_id: prepared.photo_id,
-    p_checksum_sha256: checksum,
-    p_width: media.width,
-    p_height: media.height,
-  });
-  if (uploaded.error) throw new Error(uploaded.error.message);
+  await uploadPreparedPhotoMedia(prepared.photo_id, prepared.storage_path, media, checksum);
   return prepared.photo_id;
 }
 
@@ -1713,17 +1645,9 @@ export async function reorderGardenRecords(gardenIds: string[]): Promise<void> {
 export type DeleteGardenResult = { storageCleanupWarning?: string; storagePathCount?: number };
 
 export async function deleteGardenRecord(gardenId: string): Promise<DeleteGardenResult> {
-  const { data, error } = await getSupabaseClient().rpc("garden_x_delete_garden", {
-    p_request_id: crypto.randomUUID(),
-    p_garden_id: gardenId,
-  });
-  if (error) throw new Error(error.message);
-  const result = (data ?? {}) as { storage_paths?: string[]; storage_path_count?: number };
-  const paths = Array.isArray(result.storage_paths) ? result.storage_paths.filter((path): path is string => typeof path === "string" && path.length > 0) : [];
-  if (!paths.length) return { storagePathCount: result.storage_path_count ?? 0 };
-  const { error: storageError } = await photoStorageProvider.remove(paths);
+  const { data, error: storageError } = await photoStorageProvider.removeGarden(gardenId);
   return {
-    storagePathCount: result.storage_path_count ?? paths.length,
+    storagePathCount: data?.storage_path_count,
     ...(storageError ? { storageCleanupWarning: storageError.message } : {}),
   };
 }
@@ -1749,17 +1673,9 @@ export async function invalidateEventRecord(
 
 export type DeletePhotoResult = { storageCleanupWarning?: string };
 
-/** Delete one owner-scoped photo row, then remove only its exact Storage objects. */
+/** Delete one owner-scoped photo row and its exact R2 objects through the gateway. */
 export async function deletePhotoRecord(photoId: string): Promise<DeletePhotoResult> {
-  const { data, error } = await getSupabaseClient().rpc("garden_x_delete_photo", {
-    p_request_id: crypto.randomUUID(),
-    p_photo_id: photoId,
-  });
-  if (error) throw new Error(error.message);
-  const response = data as { storage_path?: string } | null;
-  if (!response?.storage_path) return {};
-  const paths = photoStoragePaths(response.storage_path);
-  const { error: storageError } = await photoStorageProvider.remove(paths);
+  const { error: storageError } = await photoStorageProvider.remove(photoId);
   return storageError ? { storageCleanupWarning: storageError.message } : {};
 }
 

@@ -138,6 +138,11 @@ verify_jwt = false
 [functions.garden-ai]
 verify_jwt = true
 
+# Authenticated owner media and short-lived, revocable guest media tickets are
+# checked inside the gateway; platform JWT verification would reject guests.
+[functions.garden-media]
+verify_jwt = false
+
 # Temporary, owner-pinned administrative image backfill. The function also
 # requires the verified owner JWT and a deployment-only confirmation secret.
 [functions.garden-photo-rendition-backfill]

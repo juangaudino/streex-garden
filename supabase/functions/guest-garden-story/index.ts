@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
+import { guestMediaSignature } from '../_shared/guest-media-ticket.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -8,11 +9,6 @@ const corsHeaders = {
   'Content-Type': 'application/json; charset=utf-8',
 }
 const lifetime = 5 * 60
-
-function displayPath(originalPath: string): string {
-  const separator = originalPath.lastIndexOf('/')
-  return separator < 0 ? originalPath : `${originalPath.slice(0, separator)}/display.jpg`
-}
 const urlHash = async (value: string) => {
   const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))
   return Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, '0')).join('')
@@ -32,20 +28,18 @@ Deno.serve(async (request) => {
   if (!validToken(body.token)) return json({ error: 'Guest garden story not found' }, 404)
   const { data, error } = await admin.rpc('garden_get_guest_garden_story', { p_token_hash: await urlHash(body.token.toLowerCase()) })
   if (error || !data) return json({ error: 'Guest garden story not found' }, 404)
-  const story = data as { history?: Array<{ photo?: { storage_path?: string; [key: string]: unknown } | null }>; [key: string]: unknown }
-  const originalPaths = (story.history ?? []).flatMap((event) => event.photo?.storage_path ? [event.photo.storage_path] : [])
-  const paths = [...new Set(originalPaths.flatMap((path) => [displayPath(path), path]))]
-  let signedByPath = new Map<string, string>()
-  if (paths.length > 0) {
-    const signed = await admin.storage.from('garden-originals').createSignedUrls(paths, lifetime)
-    if (signed.error) return json({ error: 'Guest garden story temporarily unavailable' }, 503)
-    signedByPath = new Map((signed.data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
+  const story = data as { history?: Array<{ photo?: { id?: string; storage_path?: string; upload_status?: string; [key: string]: unknown } | null }>; [key: string]: unknown }
+  const mediaUrl = async (photo: { id?: string; storage_path?: string; upload_status?: string }, requestedTier: 'master' | 'display') => {
+    if (photo.upload_status !== 'uploaded' || !photo.id || !photo.storage_path || !/^[0-9a-f-]{36}\/[0-9a-f-]{36}\/original\.jpg$/i.test(photo.storage_path)) return null
+    const expires = Math.floor(Date.now() / 1000) + lifetime
+    const sig = await guestMediaSignature(body.token as string, photo.id, requestedTier, expires)
+    return `${supabaseUrl}/functions/v1/garden-media/guest/photos/${photo.id}/${requestedTier}?token=${encodeURIComponent(body.token as string)}&expires=${expires}&sig=${sig}`
   }
-  const safeHistory = (story.history ?? []).map((event) => {
+  const safeHistory = await Promise.all((story.history ?? []).map(async (event) => {
     if (!event.photo?.storage_path) return event
-    const originalUrl = signedByPath.get(event.photo.storage_path)
-    const displayUrl = signedByPath.get(displayPath(event.photo.storage_path))
-    return { ...event, photo: originalUrl ? { ...event.photo, url: displayUrl ?? originalUrl, original_url: displayUrl ? originalUrl : undefined, storage_path: undefined } : null }
-  })
+    const originalUrl = await mediaUrl(event.photo, 'master')
+    const displayUrl = await mediaUrl(event.photo, 'display')
+    return { ...event, photo: displayUrl ? { ...event.photo, url: displayUrl, original_url: originalUrl ?? undefined, storage_path: undefined } : null }
+  }))
   return json({ story: { ...story, history: safeHistory }, expires_in: lifetime })
 })

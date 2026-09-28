@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.115.0'
+import { guestMediaSignature } from '../_shared/guest-media-ticket.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -8,11 +9,6 @@ const corsHeaders = {
   'Content-Type': 'application/json; charset=utf-8',
 }
 const signedUrlLifetimeSeconds = 5 * 60
-
-function displayPath(originalPath: string): string {
-  const separator = originalPath.lastIndexOf('/')
-  return separator < 0 ? originalPath : `${originalPath.slice(0, separator)}/display.jpg`
-}
 
 type StoryPhoto = {
   id: string
@@ -72,21 +68,18 @@ Deno.serve(async (request) => {
 
   const story = data as { history?: StoryEvent[]; [key: string]: unknown }
   const history = story.history ?? []
-  const photoEvents = history.filter((event) => event.photo?.upload_status === 'uploaded' && event.photo.storage_path)
-  const originalPaths = photoEvents.map((event) => event.photo!.storage_path)
-  const paths = [...new Set(originalPaths.flatMap((path) => [displayPath(path), path]))]
-  let signedByPath = new Map<string, string>()
-  if (paths.length > 0) {
-    const signed = await admin.storage.from('garden-originals').createSignedUrls(paths, signedUrlLifetimeSeconds)
-    if (signed.error) return json({ error: 'Guest story temporarily unavailable' }, 503)
-    signedByPath = new Map((signed.data ?? []).flatMap((item) => item.signedUrl ? [[item.path, item.signedUrl] as [string, string]] : []))
+  const mediaUrl = async (photo: StoryPhoto, requestedTier: 'master' | 'display') => {
+    if (photo.upload_status !== 'uploaded' || !/^[0-9a-f-]{36}\/[0-9a-f-]{36}\/original\.jpg$/i.test(photo.storage_path)) return null
+    const expires = Math.floor(Date.now() / 1000) + signedUrlLifetimeSeconds
+    const sig = await guestMediaSignature(body.token as string, photo.id, requestedTier, expires)
+    return `${supabaseUrl}/functions/v1/garden-media/guest/photos/${photo.id}/${requestedTier}?token=${encodeURIComponent(body.token as string)}&expires=${expires}&sig=${sig}`
   }
 
-  const safeHistory = history.map((event) => {
+  const safeHistory = await Promise.all(history.map(async (event) => {
     if (!event.photo) return event
-    const originalUrl = signedByPath.get(event.photo.storage_path)
-    const displayUrl = signedByPath.get(displayPath(event.photo.storage_path))
-    return { ...event, photo: originalUrl ? { ...event.photo, url: displayUrl ?? originalUrl, original_url: displayUrl ? originalUrl : undefined, storage_path: undefined } : null }
-  })
+    const originalUrl = await mediaUrl(event.photo, 'master')
+    const displayUrl = await mediaUrl(event.photo, 'display')
+    return { ...event, photo: displayUrl ? { ...event.photo, url: displayUrl, original_url: originalUrl ?? undefined, storage_path: undefined } : null }
+  }))
   return json({ story: { ...story, history: safeHistory }, expires_in: signedUrlLifetimeSeconds })
 })

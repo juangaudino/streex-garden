@@ -1,13 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const rpc = vi.fn();
-const remove = vi.fn();
+const { rpc, remove } = vi.hoisted(() => ({ rpc: vi.fn(), remove: vi.fn() }));
 
 vi.mock("./supabase", () => ({
-  getSupabaseClient: () => ({
-    rpc,
-    storage: { from: () => ({ remove }) },
-  }),
+  getSupabaseClient: () => ({ rpc }),
+}));
+vi.mock("./photo-storage-provider", () => ({
+  photoStorageProvider: { remove, removeGarden: vi.fn() },
 }));
 
 import { deletePhotoRecord, invalidateEventRecord } from "./garden-backend";
@@ -20,23 +19,20 @@ describe("backend safe delete boundaries", () => {
   });
 
   it("keeps the row result while reporting a Storage cleanup failure", async () => {
-    rpc.mockResolvedValue({ data: { storage_path: "owner/photo/original.jpg" }, error: null });
     remove.mockResolvedValue({ error: { message: "Storage unavailable" } });
 
     await expect(deletePhotoRecord("photo-1")).resolves.toEqual({
       storageCleanupWarning: "Storage unavailable",
     });
-    expect(remove).toHaveBeenCalledWith([
-      "owner/photo/original.jpg",
-      "owner/photo/preview.jpg",
-      "owner/photo/display.jpg",
-    ]);
+    expect(remove).toHaveBeenCalledWith("photo-1");
   });
 
-  it("surfaces an owner-scoped RPC rejection instead of mutating local state", async () => {
-    rpc.mockResolvedValue({ data: null, error: { message: "Photo not found" } });
-    await expect(deletePhotoRecord("foreign-photo")).rejects.toThrow("Photo not found");
-    expect(remove).not.toHaveBeenCalled();
+  it("surfaces a gateway authorization failure without local mutation", async () => {
+    remove.mockResolvedValue({ error: { message: "Photo media delete failed (403)." } });
+    await expect(deletePhotoRecord("foreign-photo")).resolves.toEqual({
+      storageCleanupWarning: "Photo media delete failed (403).",
+    });
+    expect(remove).toHaveBeenCalledWith("foreign-photo");
   });
 
   it("passes the event revision guard to the existing invalidation command", async () => {

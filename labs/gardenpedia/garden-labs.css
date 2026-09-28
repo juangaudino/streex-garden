@@ -114,6 +114,7 @@ body {
 .lab-context-button { min-height: 30px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .lab-context-button.active { background: var(--surface); color: var(--ink); box-shadow: 0 4px 12px rgba(24,60,44,.10); }
 .lab-context-panel { display: flex; min-width: 0; gap: 3px; overflow-x: auto; }
+.lab-context-panel[hidden] { display: none; }
 .lab-view-button {
   min-height: 34px;
   flex: 1 0 auto;

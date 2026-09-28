@@ -193,7 +193,8 @@ function bindEvents() {
   refs.seedDialog.addEventListener("close", () => { state.activeSeedId = null; });
   refs.seedDialog.addEventListener("click", (event) => { if (event.target === refs.seedDialog) refs.seedDialog.close(); });
   refs.languageButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
-  [refs.guideTab, refs.seedsTab].forEach((button) => button.addEventListener("click", () => switchView(button.dataset.view)));
+  [refs.guideTab, refs.publicSeedsTab, refs.publicMachinesTab, refs.myPlantsTab, refs.seedsTab, refs.machinesTab]
+    .forEach((button) => button?.addEventListener("click", () => switchView(button.dataset.view)));
   refs.addSeedButton.addEventListener("click", () => openSeedEditor(null));
   refs.identityRequestInput?.addEventListener("input", renderIdentityRequestMatches);
   refs.identityRequestForm?.addEventListener("submit", (event) => {

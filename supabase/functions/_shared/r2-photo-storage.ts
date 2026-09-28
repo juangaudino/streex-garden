@@ -1,10 +1,5 @@
-import {
-  DeleteObjectCommand,
-  GetObjectCommand,
-  HeadObjectCommand,
-  PutObjectCommand,
-  S3Client,
-} from 'npm:@aws-sdk/client-s3@3.1141.0'
+import { AwsClient } from 'npm:aws4fetch@1.0.20'
+import { signedR2Request } from './r2-photo-storage-http.ts'
 
 export type R2PhotoTier = 'master' | 'display' | 'preview'
 
@@ -14,7 +9,7 @@ const tierFilename: Record<R2PhotoTier, string> = {
   preview: 'preview.jpg',
 }
 
-let client: S3Client | null = null
+let client: AwsClient | null = null
 
 function configuration() {
   const endpoint = Deno.env.get('R2_ENDPOINT')
@@ -29,14 +24,31 @@ function configuration() {
 function storageClient() {
   if (!client) {
     const config = configuration()
-    client = new S3Client({
+    client = new AwsClient({
+      service: 's3',
       region: 'auto',
-      endpoint: config.endpoint,
-      forcePathStyle: true,
-      credentials: { accessKeyId: config.accessKeyId, secretAccessKey: config.secretAccessKey },
+      accessKeyId: config.accessKeyId,
+      secretAccessKey: config.secretAccessKey,
     })
   }
   return { client, bucket: configuration().bucket }
+}
+
+async function requestR2(input: {
+  method: 'DELETE' | 'GET' | 'HEAD' | 'PUT'
+  key: string
+  headers?: HeadersInit
+  body?: BodyInit
+}) {
+  const { client: signer, bucket } = storageClient()
+  return signedR2Request(signer.fetch.bind(signer), {
+    endpoint: configuration().endpoint,
+    bucket,
+    method: input.method,
+    key: input.key,
+    headers: input.headers,
+    body: input.body,
+  })
 }
 
 export function canonicalR2Key(storagePath: string, tier: R2PhotoTier): string {
@@ -57,7 +69,6 @@ export async function putR2PhotoObject(input: {
   cacheControl: string
   checksumSha256: string
 }): Promise<{ key: string; size: number; checksumSha256: string; created: boolean }> {
-  const { client: s3, bucket } = storageClient()
   const key = canonicalR2Key(input.storagePath, input.tier)
   const actualChecksum = await sha256Hex(input.bytes)
   if (actualChecksum !== input.checksumSha256) throw new Error(`R2 ${input.tier} checksum mismatch`)
@@ -69,46 +80,50 @@ export async function putR2PhotoObject(input: {
     if (existing.size !== input.bytes.byteLength || existing.metadata?.['garden-sha256'] !== actualChecksum) throw new Error(`R2 ${input.tier} object collision`)
     return { key, size: existing.size, checksumSha256: actualChecksum, created: false }
   }
-  await s3.send(new PutObjectCommand({
-    Bucket: bucket,
-    Key: key,
-    // Pass bytes directly. A Blob makes the Deno/Node HTTP bridge treat the
-    // request as a streaming body and can terminate it with an unexpected EOF.
-    Body: input.bytes,
-    ContentLength: input.bytes.byteLength,
-    ContentType: input.contentType,
-    CacheControl: input.cacheControl,
-    Metadata: { 'garden-sha256': actualChecksum },
-  }))
+  await requestR2({
+    method: 'PUT',
+    key,
+    // Use native fetch through aws4fetch. The AWS SDK's default Node HTTP
+    // handler is not reliable for request bodies in Supabase Edge Runtime.
+    headers: {
+      'Cache-Control': input.cacheControl,
+      'Content-Length': String(input.bytes.byteLength),
+      'Content-Type': input.contentType,
+      'x-amz-meta-garden-sha256': actualChecksum,
+    },
+    body: input.bytes,
+  })
   const verified = await headR2PhotoObject(input.storagePath, input.tier)
   if (verified.size !== input.bytes.byteLength || verified.metadata?.['garden-sha256'] !== actualChecksum) throw new Error(`R2 ${input.tier} verification failed`)
   return { key, size: verified.size, checksumSha256: actualChecksum, created: true }
 }
 
 export async function headR2PhotoObject(storagePath: string, tier: R2PhotoTier) {
-  const { client: s3, bucket } = storageClient()
   const key = canonicalR2Key(storagePath, tier)
-  const response = await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: key }))
-  return { key, size: response.ContentLength ?? 0, contentType: response.ContentType ?? null, metadata: response.Metadata ?? {} }
+  const response = await requestR2({ method: 'HEAD', key })
+  return {
+    key,
+    size: Number(response.headers.get('content-length') ?? '0'),
+    contentType: response.headers.get('content-type'),
+    metadata: { 'garden-sha256': response.headers.get('x-amz-meta-garden-sha256') ?? '' },
+  }
 }
 
 export async function getR2PhotoObject(storagePath: string, tier: R2PhotoTier): Promise<{ bytes: Uint8Array; contentType: string }> {
-  const { client: s3, bucket } = storageClient()
   const key = canonicalR2Key(storagePath, tier)
-  const response = await s3.send(new GetObjectCommand({ Bucket: bucket, Key: key }))
-  if (!response.Body) throw new Error('R2 photo object is empty')
-  const bytes = await response.Body.transformToByteArray()
-  return { bytes, contentType: response.ContentType ?? 'image/jpeg' }
+  const response = await requestR2({ method: 'GET', key })
+  const bytes = new Uint8Array(await response.arrayBuffer())
+  if (!bytes.byteLength) throw new Error('R2 photo object is empty')
+  return { bytes, contentType: response.headers.get('content-type') ?? 'image/jpeg' }
 }
 
 export async function deleteR2PhotoObjects(storagePath: string, tiers: R2PhotoTier[] = ['master', 'display', 'preview']) {
-  const { client: s3, bucket } = storageClient()
   const keys = tiers.map((tier) => canonicalR2Key(storagePath, tier))
-  await Promise.all(keys.map((key) => s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: key }))))
+  await Promise.all(keys.map((key) => requestR2({ method: 'DELETE', key })))
   return keys
 }
 
 function isNotFound(error: unknown) {
-  const value = error as { $metadata?: { httpStatusCode?: number }; name?: string; Code?: string }
-  return value?.$metadata?.httpStatusCode === 404 || value?.name === 'NotFound' || value?.Code === 'NoSuchKey'
+  const value = error as { statusCode?: number; name?: string; code?: string; Code?: string }
+  return value?.statusCode === 404 || value?.name === 'NotFound' || value?.code === 'NoSuchKey' || value?.Code === 'NoSuchKey'
 }

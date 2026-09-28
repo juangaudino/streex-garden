@@ -15,6 +15,8 @@ const corsHeaders = {
   'Cache-Control': 'no-store',
 }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, 'Content-Type': 'application/json; charset=utf-8' } })
+const forbidden = () => new Response(JSON.stringify({ error: 'Photo is not available to this user' }), { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json; charset=utf-8' } })
+const conflict = (message: string) => new Response(JSON.stringify({ error: message }), { status: 409, headers: { ...corsHeaders, 'Content-Type': 'application/json; charset=utf-8' } })
 const uuid = (value: string | undefined): value is string => Boolean(value && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value))
 const tier = (value: string | undefined): R2PhotoTier | null => value === 'master' || value === 'display' || value === 'preview' ? value : null
 const maxBytes = 30 * 1024 * 1024
@@ -47,8 +49,12 @@ async function requireUser(request: Request) {
 
 async function authorizedPhoto(client: ReturnType<typeof authenticatedClient>, photoId: string, operation: 'upload' | 'read' | 'delete') {
   const { data, error } = await client.rpc('garden_media_authorize_photo', { p_photo_id: photoId, p_operation: operation })
-  if (error || !data || typeof data !== 'object') throw new Error('Photo authorization failed')
-  return data as { photo_id: string; owner_id: string; storage_path: string; content_type: string; checksum_sha256: string | null; upload_status: string; width: number | null; height: number | null }
+  if (error || !data || typeof data !== 'object') throw forbidden()
+  const photo = data as { photo_id: string; owner_id: string; storage_path: string; content_type: string; checksum_sha256: string | null; upload_status: string; width: number | null; height: number | null }
+  if (!uuid(photo.photo_id) || !uuid(photo.owner_id)) throw conflict('Photo identity is invalid')
+  const canonicalPath = `${photo.owner_id}/${photo.photo_id}/original.jpg`
+  if (photo.storage_path !== canonicalPath) throw conflict('Photo path is not eligible for R2 media')
+  return { ...photo, storage_path: canonicalPath }
 }
 
 function imageFile(form: FormData, name: string) {
@@ -59,7 +65,12 @@ function imageFile(form: FormData, name: string) {
 async function upload(request: Request, photoId: string) {
   const { client } = await requireUser(request)
   const photo = await authorizedPhoto(client, photoId, 'upload')
-  const form = await request.formData()
+  let form: FormData
+  try {
+    form = await request.formData()
+  } catch {
+    return json({ error: 'Photo media upload body is invalid' }, 400)
+  }
   const storagePath = form.get('storage_path')
   if (storagePath !== photo.storage_path) return json({ error: 'Photo storage path mismatch' }, 400)
   if (!/^[0-9a-f-]{36}\/[0-9a-f-]{36}\/original\.jpg$/i.test(photo.storage_path)) return json({ error: 'Photo path is not eligible for R2 media' }, 409)

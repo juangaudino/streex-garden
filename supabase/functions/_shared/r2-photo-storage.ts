@@ -72,7 +72,10 @@ export async function putR2PhotoObject(input: {
   await s3.send(new PutObjectCommand({
     Bucket: bucket,
     Key: key,
-    Body: new Blob([input.bytes.buffer.slice(input.bytes.byteOffset, input.bytes.byteOffset + input.bytes.byteLength) as ArrayBuffer]),
+    // Pass bytes directly. A Blob makes the Deno/Node HTTP bridge treat the
+    // request as a streaming body and can terminate it with an unexpected EOF.
+    Body: input.bytes,
+    ContentLength: input.bytes.byteLength,
     ContentType: input.contentType,
     CacheControl: input.cacheControl,
     Metadata: { 'garden-sha256': actualChecksum },

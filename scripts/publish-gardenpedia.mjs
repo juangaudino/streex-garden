@@ -30,6 +30,7 @@ const generatedMachineFacts = path.join(
   "generated",
   "garden-machine-facts.ts",
 );
+const gardenXProjectRef = "fnhggqqnkhkrfwmnsqmy";
 
 // These stable Garden system-definition keys are explicitly linked to the
 // corresponding machine-inventory model records. Custom definitions are not
@@ -118,6 +119,22 @@ function copy(relativePath) {
   const to = path.join(destination, relativePath);
   fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.copyFileSync(from, to);
+}
+
+function configureGardenXAuthTransport() {
+  const url = String(process.env.VITE_SUPABASE_URL || "").trim().replace(/\/$/, "");
+  const publishableKey = String(process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "").trim();
+  const expectedUrl = `https://${gardenXProjectRef}.supabase.co`;
+  if (url !== expectedUrl || !publishableKey) {
+    throw new Error(
+      `Gardenpedia requires VITE_SUPABASE_URL=${expectedUrl} and a publishable key at build time.`,
+    );
+  }
+  const target = path.join(destination, "supabase-lab-transport.js");
+  const transport = fs.readFileSync(target, "utf8")
+    .replace("__GARDEN_X_SUPABASE_URL__", JSON.stringify(url))
+    .replace("__GARDEN_X_SUPABASE_PUBLISHABLE_KEY__", JSON.stringify(publishableKey));
+  fs.writeFileSync(target, transport);
 }
 
 function uniqueStrings(values) {
@@ -370,6 +387,7 @@ function prepare() {
   fs.rmSync(destination, { recursive: true, force: true });
   fs.mkdirSync(destination, { recursive: true });
   for (const file of publicFiles) copy(file);
+  configureGardenXAuthTransport();
   fs.cpSync(path.join(source, "assets"), path.join(destination, "assets"), {
     recursive: true,
   });
@@ -411,11 +429,6 @@ function prepare() {
     .replace(
       /<link rel="stylesheet" href="\.\/homegrown-source-comparison\.css[^"]*" \/>/,
       "",
-    )
-    .replace(/<button id="machinesTab"[\s\S]*?<\/button>/, (match) =>
-      match.includes(" hidden")
-        ? match
-        : match.replace(' type="button"', ' type="button" hidden'),
     )
     .replace(/<script src="\.\/sites-storage-bootstrap[^>]*><\/script>/, "")
     .replace(/<script src="\.\/sites-storage-v1[^>]*><\/script>/, "")

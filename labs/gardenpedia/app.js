@@ -65,7 +65,7 @@ const ui = {
     heroTitle: "Shared growing knowledge and your personal inventory, without mixing their facts.",
     heroBody: "Gardenpedia provides curated identities and growing guidance. My Seeds and My Machines show the private items in your Garden X account.",
     labProofExperiment: "Curated knowledge", labProofUserZero: "Your Garden X account", labProofSeparation: "Separate sources of truth",
-    guideTab: "Guide", seedsTab: "Seeds", guideEyebrow: "GARDEN LIBRARY · GUIDE", guideTitle: "Grow Guide", guideIntro: "Structured knowledge for knowing when, where and how much to intervene in each crop.",
+    guideTab: "Library", seedsTab: "My Seeds", guideEyebrow: "GARDEN LIBRARY · GUIDE", guideTitle: "Grow Guide", guideIntro: "Structured knowledge for knowing when, where and how much to intervene in each crop.",
     seedsEyebrow: "GARDENPEDIA · MY SEEDS", seedsTitle: "My seeds", seedsIntro: "Your private seed packages, linked to shared Gardenpedia identities when you confirm a match.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
     searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "GARDENPEDIA LIBRARY", version: "43 identities · ES/EN",
@@ -92,7 +92,7 @@ const ui = {
     heroTitle: "Conocimiento de cultivo e inventario personal, sin mezclar sus datos.",
     heroBody: "Gardenpedia aporta identidades y guías de cultivo curadas. Mis semillas y Mis máquinas muestran los elementos privados de tu cuenta Garden X.",
     labProofExperiment: "Conocimiento curado", labProofUserZero: "Tu cuenta Garden X", labProofSeparation: "Fuentes de verdad separadas",
-    guideTab: "Guía", seedsTab: "Semillas", guideEyebrow: "GARDEN LIBRARY · GUÍA", guideTitle: "Grow Guide", guideIntro: "Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.",
+    guideTab: "Biblioteca", seedsTab: "Mis semillas", guideEyebrow: "GARDEN LIBRARY · GUÍA", guideTitle: "Grow Guide", guideIntro: "Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.",
     seedsEyebrow: "GARDENPEDIA · MIS SEMILLAS", seedsTitle: "Mis semillas", seedsIntro: "Paquetes privados de tu cuenta, vinculados a identidades Gardenpedia cuando confirmas una coincidencia.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
     searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA GARDENPEDIA", version: "43 identidades · ES/EN",
@@ -147,8 +147,7 @@ async function init() {
   const inventory = await inventoryResponse.json();
   state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
   state.neighborData = await neighborResponse.json();
-  if (state.accountMode === "signed_out" && refs.seedsTab) refs.seedsTab.hidden = true;
-  if (state.accountMode === "ready" && refs.seedsTab) refs.seedsTab.hidden = false;
+  if (refs.seedsTab) refs.seedsTab.hidden = false;
   bindEvents();
   applyLanguage();
   switchView(state.view, false);
@@ -398,7 +397,7 @@ function applyLanguage() {
 }
 
 function switchView(view, persist = true) {
-  state.view = view === "seeds" && state.accountMode !== "signed_out" ? "seeds" : "guide";
+  state.view = view === "seeds" ? "seeds" : "guide";
   refs.guideSurface.hidden = state.view !== "guide";
   refs.seedsSurface.hidden = state.view !== "seeds";
   refs.guideTab.classList.toggle("active", state.view === "guide");
@@ -598,7 +597,6 @@ function renderSeeds() {
   const text = ui[state.language];
   const notice = document.querySelector("#seedAccountNotice");
   if (state.accountMode === "signed_out") {
-    if (refs.seedsTab) refs.seedsTab.hidden = true;
     if (notice) { notice.hidden = false; notice.textContent = text.signInRequired; }
     refs.seedGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.signInRequired)}</div>`;
     refs.seedResultCount.textContent = "0";

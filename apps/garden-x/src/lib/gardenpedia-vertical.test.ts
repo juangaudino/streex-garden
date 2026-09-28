@@ -130,8 +130,8 @@ describe("Gardenpedia request-to-publication vertical", () => {
 
   it("keeps package CRUD owner-scoped and machine definitions separate from instances", () => {
     const migration =
-      read("supabase/migrations/20260926165631_gardenpedia_account_seed_packages.sql") +
-      read("supabase/migrations/20260926173442_gardenpedia_vertical_completion.sql");
+      read("supabase/migrations-legacy/20260926165631_gardenpedia_account_seed_packages.sql") +
+      read("supabase/migrations-legacy/20260926173442_gardenpedia_vertical_completion.sql");
     const transport = read("labs/gardenpedia/supabase-lab-transport.js");
     const machines = read("labs/gardenpedia/machines-v1.js");
     expect(migration).toContain("garden_seed_package_delete(p_package_id uuid)");
@@ -150,10 +150,10 @@ describe("Gardenpedia request-to-publication vertical", () => {
 
   it("keeps request/proposal private and curator-only operations server-authorized", () => {
     const baseMigration = read(
-      "supabase/migrations/20260926165809_gardenpedia_requests_proposals.sql",
+      "supabase/migrations-legacy/20260926165809_gardenpedia_requests_proposals.sql",
     );
     const completion = read(
-      "supabase/migrations/20260926173442_gardenpedia_vertical_completion.sql",
+      "supabase/migrations-legacy/20260926173442_gardenpedia_vertical_completion.sql",
     );
     expect(baseMigration).toContain("(select auth.uid()) = owner_id");
     expect(completion).toContain(
@@ -245,5 +245,12 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(publisher).not.toContain("gardenpedia-account-v1.js?v=1");
     expect(publisher).not.toContain('gardenLabsSeedStateV1", "gardenpediaPublicSeedStateV1');
     expect(publisher).not.toContain('gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1');
+    expect(publisher).toContain("VITE_SUPABASE_URL");
+    expect(publisher).toContain("fnhggqqnkhkrfwmnsqmy");
+    expect(publisher).not.toContain("sabulxbfdimoqnbgnmso");
+    expect(read("labs/gardenpedia/supabase-lab-transport.js")).toContain("__GARDEN_X_SUPABASE_URL__");
+    expect(read("labs/gardenpedia/supabase-lab-transport.js")).not.toContain("sabulxbfdimoqnbgnmso");
+    expect(page).toContain('id="machinesTab"');
+    expect(publisher).not.toContain('replace(/<button id="machinesTab"');
   });
 });

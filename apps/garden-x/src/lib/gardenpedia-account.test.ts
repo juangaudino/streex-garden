@@ -112,7 +112,7 @@ describe("Gardenpedia account integration", () => {
   it("keeps legacy account machines out of the canonical machine list", () => {
     const migration = readFileSync(
       new URL(
-        "../../../../supabase/migrations/20260926165631_gardenpedia_account_seed_packages.sql",
+        "../../../../supabase/migrations-legacy/20260926165631_gardenpedia_account_seed_packages.sql",
         import.meta.url,
       ),
       "utf8",
@@ -130,7 +130,7 @@ describe("Gardenpedia account integration", () => {
   it("guards private inventory with owner-scoped RPCs and no direct table grants", () => {
     const migration = readFileSync(
       new URL(
-        "../../../../supabase/migrations/20260926165631_gardenpedia_account_seed_packages.sql",
+        "../../../../supabase/migrations-legacy/20260926165631_gardenpedia_account_seed_packages.sql",
         import.meta.url,
       ),
       "utf8",
@@ -149,7 +149,7 @@ describe("Gardenpedia account integration", () => {
   it("makes Gardenpedia requests/proposals private and separates approval from publication", () => {
     const migration = readFileSync(
       new URL(
-        "../../../../supabase/migrations/20260926165809_gardenpedia_requests_proposals.sql",
+        "../../../../supabase/migrations-legacy/20260926165809_gardenpedia_requests_proposals.sql",
         import.meta.url,
       ),
       "utf8",

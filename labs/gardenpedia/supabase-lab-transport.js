@@ -1,9 +1,9 @@
 (() => {
   // Gardenpedia shares Garden X's Supabase session. It never presents a
   // second login and it never falls back to a privileged or anonymous token.
-  const SUPABASE_URL = "https://sabulxbfdimoqnbgnmso.supabase.co";
-  const PUBLISHABLE_KEY = "sb_publishable_oBTDsdC9aEI5Sgm7WWNndw_lPXd9zKH";
-  const STORAGE_KEY = "sb-sabulxbfdimoqnbgnmso-auth-token";
+  const SUPABASE_URL = __GARDEN_X_SUPABASE_URL__;
+  const PUBLISHABLE_KEY = __GARDEN_X_SUPABASE_PUBLISHABLE_KEY__;
+  const STORAGE_KEY = `sb-${new URL(SUPABASE_URL).hostname.split(".")[0]}-auth-token`;
   const nativeFetch = window.fetch.bind(window);
 
   const jsonResponse = (body, status = 200) => new Response(JSON.stringify(body), {

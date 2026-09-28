@@ -123,8 +123,11 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain('data-view="my-plants"');
     expect(page).toContain('data-view="seeds"');
     expect(page).toContain('data-view="machines"');
+    expect(page).toContain('id="seedsSurface"');
+    expect(page).toContain('id="seedSearchInput"');
     expect(app).toContain("function renderPublicSeeds()");
     expect(app).toContain("function renderMyPlants()");
+    expect(app).toContain("refs.publicSeedsTab, refs.publicMachinesTab, refs.myPlantsTab");
     expect(transport).toContain('rpc("gardenpedia_get_my_plants")');
     expect(migration).toContain("where p.owner_id = v_owner");
     expect(migration).toContain("garden.cycle_occupancies");

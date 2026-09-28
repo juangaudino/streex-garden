@@ -264,7 +264,7 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain("supabase-lab-transport.js?v=3");
     expect(page).toContain("identity-resolver-v1.js?v=2");
     expect(page).toContain("gardenpedia-account-v1.js?v=2");
-    expect(page).toContain("app.js?v=1.4");
+    expect(page).toContain("app.js?v=1.5");
     expect(publisher).not.toContain("gardenpedia-account-v1.js?v=1");
     expect(publisher).not.toContain('gardenLabsSeedStateV1", "gardenpediaPublicSeedStateV1');
     expect(publisher).not.toContain('gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1');

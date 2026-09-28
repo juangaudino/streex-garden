@@ -10,9 +10,9 @@ function json(body: unknown, status = 200) {
 }
 
 async function ensureCatalogCache() {
-  const url = process.env["GARDEN_LABS_SUPABASE_URL"] || process.env["VITE_SUPABASE_URL"];
+  const url = process.env["VITE_SUPABASE_URL"];
   const serviceKey = process.env["GARDEN_LABS_SUPABASE_SERVICE_ROLE_KEY"];
-  if (!url || !serviceKey) throw new Error("Garden Library catalog sync is not configured.");
+  if (url !== "https://fnhggqqnkhkrfwmnsqmy.supabase.co" || !serviceKey) return;
   const db = createClient(url, serviceKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
@@ -31,11 +31,10 @@ export const Route = createFileRoute("/api/garden-library/catalog")({
       GET: async () => {
         try {
           await ensureCatalogCache();
-          return json(gardenLibraryManifest);
         } catch (error) {
-          console.error("Garden Library catalog sync failed", error);
-          return json({ error: "catalog_unavailable" }, 503);
+          console.error("Garden Library catalog cache sync skipped", error);
         }
+        return json(gardenLibraryManifest);
       },
     },
   },

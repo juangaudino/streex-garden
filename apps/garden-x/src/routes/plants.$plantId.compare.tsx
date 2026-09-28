@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ChevronLeft, ArrowRight, MoveHorizontal } from "lucide-react";
+import { ChevronLeft, ArrowRight, MoveHorizontal, Sparkles } from "lucide-react";
 import { useGarden } from "@/lib/garden-store";
 import {
   ageLabel,
@@ -17,6 +17,7 @@ import {
 } from "@/lib/compare-photo-selection";
 import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ui } from "@/lib/ui-copy";
 
@@ -100,10 +101,16 @@ export function CompareScreen({
     key: string;
     result: { observations: string[]; inference: string; confidence: "high" | "moderate" | "low" };
   } | null>(null);
+  const [aiComparisonStatus, setAiComparisonStatus] = useState<"idle" | "loading" | "error">("idle");
+  const aiRequestVersion = useRef(0);
+  const aiRequestsInFlight = useRef(new Set<string>());
+  const [aiPendingKeys, setAiPendingKeys] = useState<string[]>([]);
 
   const a = photos.find((p) => p.id === aId);
   const b = photos.find((p) => p.id === bId);
   const comparisonKey = `${plant.id}:${a?.id ?? ""}:${b?.id ?? ""}`;
+  const currentComparisonKey = useRef(comparisonKey);
+  currentComparisonKey.current = comparisonKey;
   useEffect(() => {
     setSelection((previous) => {
       const samePlantAndSearch = previous.plantId === plant.id && previous.searchKey === searchKey;
@@ -140,16 +147,44 @@ export function CompareScreen({
 
   useEffect(() => {
     setAiComparison(null);
-    let active = true;
-    if (!plant.backendGrowCycleId || !a?.backendStoragePath || !b?.backendStoragePath || a.id === b.id) {
-      return () => { active = false; };
+    setAiComparisonStatus("idle");
+    aiRequestVersion.current += 1;
+  }, [comparisonKey]);
+
+  const runAiComparison = () => {
+    if (
+      !plant.backendGrowCycleId ||
+      !a?.backendStoragePath ||
+      !b?.backendStoragePath ||
+      a.id === b.id ||
+      aiRequestsInFlight.current.size > 0
+    ) {
+      return;
     }
+    const requestVersion = ++aiRequestVersion.current;
+    aiRequestsInFlight.current.add(comparisonKey);
+    setAiPendingKeys([...aiRequestsInFlight.current]);
+    setAiComparisonStatus("loading");
     void runAiCheck(plant.backendGrowCycleId, b.id, a.id, language)
       .then(({ proposal }) => {
-        if (!active) return;
-        const confidence = proposal.confidence === "high" ? "high" : proposal.confidence === "medium" ? "moderate" : "low";
-        const observations = Array.isArray(proposal.observations) ? proposal.observations.map(String) : [];
-        const uncertainty = Array.isArray(proposal.uncertainty) ? proposal.uncertainty.map(String) : [];
+        if (
+          aiRequestVersion.current !== requestVersion ||
+          currentComparisonKey.current !== comparisonKey
+        ) {
+          return;
+        }
+        const confidence =
+          proposal.confidence === "high"
+            ? "high"
+            : proposal.confidence === "medium"
+              ? "moderate"
+              : "low";
+        const observations = Array.isArray(proposal.observations)
+          ? proposal.observations.map(String)
+          : [];
+        const uncertainty = Array.isArray(proposal.uncertainty)
+          ? proposal.uncertainty.map(String)
+          : [];
         setAiComparison({
           key: comparisonKey,
           result: {
@@ -159,9 +194,21 @@ export function CompareScreen({
           },
         });
       })
-      .catch(() => undefined);
-    return () => { active = false; };
-  }, [a?.backendStoragePath, a?.id, b?.backendStoragePath, b?.id, comparisonKey, language, plant.backendGrowCycleId]);
+      .then(() => {
+        if (aiRequestVersion.current === requestVersion && currentComparisonKey.current === comparisonKey) {
+          setAiComparisonStatus("idle");
+        }
+      })
+      .catch(() => {
+        if (aiRequestVersion.current === requestVersion && currentComparisonKey.current === comparisonKey) {
+          setAiComparisonStatus("error");
+        }
+      })
+      .finally(() => {
+        aiRequestsInFlight.current.delete(comparisonKey);
+        setAiPendingKeys([...aiRequestsInFlight.current]);
+      });
+  };
 
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
   const deterministic = comparePhotos(a, b, plant, language);
@@ -246,6 +293,28 @@ export function CompareScreen({
           aria-label={ui(language, "revealEarlier")}
           className="mt-4 w-full accent-[var(--color-primary)]"
         />
+      </div>
+
+      <div className="mt-4 flex justify-end px-5 sm:px-8 lg:px-12">
+        <Button
+          type="button"
+          variant="outline"
+          className="rounded-full"
+          disabled={
+            aiComparisonStatus === "loading" ||
+            aiPendingKeys.length > 0 ||
+            !plant.backendGrowCycleId ||
+            a.id === b.id
+          }
+          onClick={runAiComparison}
+        >
+          <Sparkles className="h-4 w-4" />
+          {aiComparisonStatus === "loading"
+            ? ui(language, "runningAiCompare")
+            : aiComparisonStatus === "error"
+              ? ui(language, "retryAiCompare")
+              : ui(language, "runAiCompare")}
+        </Button>
       </div>
 
       <div className="mt-8 px-5 sm:px-8 lg:px-12">

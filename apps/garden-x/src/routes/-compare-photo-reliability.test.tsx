@@ -11,6 +11,7 @@ const mocks = vi.hoisted(() => ({
   store: {} as Record<string, unknown>,
   resolvePhotoUrl: vi.fn(),
   persistPhotoRendition: vi.fn(),
+  reportPhotoMediaDiagnostic: vi.fn(),
   runAiCheck: vi.fn(),
 }));
 
@@ -47,6 +48,7 @@ vi.mock("@/lib/garden-store", () => ({ useGarden: () => mocks.store }));
 vi.mock("@/lib/garden-backend", () => ({
   resolvePhotoUrl: mocks.resolvePhotoUrl,
   persistPhotoRendition: mocks.persistPhotoRendition,
+  reportPhotoMediaDiagnostic: mocks.reportPhotoMediaDiagnostic,
   runAiCheck: mocks.runAiCheck,
 }));
 vi.mock("@/lib/garden-logic", () => ({
@@ -118,6 +120,7 @@ describe("Compare photo loading", () => {
     mocks.search = {};
     mocks.resolvePhotoUrl.mockReset();
     mocks.persistPhotoRendition.mockReset();
+    mocks.reportPhotoMediaDiagnostic.mockReset();
     mocks.runAiCheck.mockReset().mockRejectedValue(new Error("AI unavailable"));
     vi.stubGlobal("IntersectionObserver", OffscreenObserver);
     mocks.store = {
@@ -139,7 +142,7 @@ describe("Compare photo loading", () => {
     vi.unstubAllGlobals();
   });
 
-  it("resolves both selected sides independently and keeps the other side visible after one preferred rendition fails", async () => {
+  it("resolves both selected sides independently and never substitutes the master", async () => {
     mocks.resolvePhotoUrl.mockImplementation((item: Photo, rendition: string) => {
       if (item.id === "before" && rendition === "display")
         return Promise.reject(new Error("missing display sidecar"));
@@ -148,9 +151,7 @@ describe("Compare photo loading", () => {
     const { container } = render(<CompareRoute />);
 
     await waitFor(() => {
-      expect(container.querySelector('img[alt="before caption"]')?.getAttribute("src")).toBe(
-        "https://signed/before/original",
-      );
+      expect(container.querySelector('[data-photo-state="error"]')).toBeTruthy();
       expect(container.querySelector('img[alt="after caption"]')?.getAttribute("src")).toBe(
         "https://signed/after/display",
       );
@@ -225,7 +226,67 @@ describe("Compare photo loading", () => {
         "https://signed/after/display",
       );
     });
+    expect(mocks.runAiCheck).not.toHaveBeenCalled();
+    mocks.runAiCheck.mockResolvedValue({
+      proposal: {
+        confidence: "high",
+        observations: ["AI observation"],
+        uncertainty: [],
+        inference: "AI inference",
+        deltas: [],
+      },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Run AI Compare" }));
+    await waitFor(() =>
+      expect(mocks.runAiCheck).toHaveBeenCalledWith("cycle-plant-a", "after", "middle", "en"),
+    );
+    expect(await screen.findByText(/AI observation/)).toBeTruthy();
+  });
+
+  it("does not invoke AI on open or selection change, and ignores an in-flight result for the old pair", async () => {
+    let finishOldRequest:
+      | ((value: {
+          proposal: {
+            confidence: string;
+            observations: string[];
+            uncertainty: string[];
+            inference: string;
+            deltas: never[];
+          };
+        }) => void)
+      | undefined;
+    mocks.runAiCheck.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finishOldRequest = resolve;
+        }),
+    );
+    mocks.resolvePhotoUrl.mockImplementation((item: Photo, rendition: string) =>
+      Promise.resolve(`https://signed/${item.id}/${rendition}`),
+    );
+    render(<CompareRoute />);
+    expect(mocks.runAiCheck).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "Earlier photo: middle caption" }));
+    expect(mocks.runAiCheck).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "Run AI Compare" }));
     expect(mocks.runAiCheck).toHaveBeenCalledWith("cycle-plant-a", "after", "middle", "en");
+    fireEvent.click(screen.getByRole("button", { name: "Earlier photo: before caption" }));
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "Run AI Compare" }).hasAttribute("disabled")).toBe(
+        true,
+      ),
+    );
+    expect(mocks.runAiCheck).toHaveBeenCalledTimes(1);
+    finishOldRequest?.({
+      proposal: {
+        confidence: "high",
+        observations: ["stale AI observation"],
+        uncertainty: [],
+        inference: "stale inference",
+        deltas: [],
+      },
+    });
+    await waitFor(() => expect(screen.queryByText("stale AI observation")).toBeNull());
   });
 
   it("falls back to Compare's normal oldest/newest selection for stale or cross-plant IDs", async () => {

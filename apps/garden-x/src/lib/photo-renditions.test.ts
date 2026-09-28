@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { photoRenditionStoragePaths, preparePhotoRenditions } from "./photo-renditions";
+import { GARDEN_PHOTO_MEDIA_POLICY } from "./photo-media-policy";
+import { photoRenditionStoragePaths, prepareGardenPhotoMedia } from "./photo-renditions";
 
 describe("photo rendition preparation", () => {
   afterEach(() => vi.unstubAllGlobals());
@@ -12,14 +13,12 @@ describe("photo rendition preparation", () => {
     expect(photoRenditionStoragePaths("original.jpg")).toBeNull();
   });
 
-  it("encodes bounded preview/display files while preserving original dimensions", async () => {
+  it("uses the centralized conservative policy and creates master/display/preview JPEGs", async () => {
     const drawImage = vi.fn();
     const close = vi.fn();
     const encoded: Array<{ width: number; height: number; quality: number }> = [];
-    vi.stubGlobal(
-      "createImageBitmap",
-      vi.fn(async () => ({ width: 3000, height: 2000, close })),
-    );
+    const createBitmap = vi.fn(async () => ({ width: 3000, height: 2000, close }));
+    vi.stubGlobal("createImageBitmap", createBitmap);
     vi.stubGlobal("document", {
       createElement: () => ({
         width: 0,
@@ -33,20 +32,31 @@ describe("photo rendition preparation", () => {
       }),
     });
 
-    const result = await preparePhotoRenditions(new Uint8Array(100_000), "image/heic");
+    const result = await prepareGardenPhotoMedia(new Uint8Array(100_000), "image/heic");
 
-    expect(result?.width).toBe(3000);
-    expect(result?.height).toBe(2000);
+    expect(GARDEN_PHOTO_MEDIA_POLICY).toMatchObject({
+      version: "interim-v1",
+      orientation: "from-image",
+      master: { maxEdge: 2560, quality: 0.9 },
+      display: { maxEdge: 1600, quality: 0.84 },
+      preview: { maxEdge: 640, quality: 0.72 },
+    });
+    expect(createBitmap.mock.calls[0]?.[1]).toEqual({ imageOrientation: "from-image" });
+    expect(result?.width).toBe(2560);
+    expect(result?.height).toBe(1707);
+    expect(result?.contentType).toBe("image/jpeg");
     expect(encoded).toEqual([
-      { width: 640, height: 427, quality: 0.68 },
-      { width: 1600, height: 1067, quality: 0.78 },
+      { width: 2560, height: 1707, quality: 0.9 },
+      { width: 1600, height: 1067, quality: 0.84 },
+      { width: 640, height: 427, quality: 0.72 },
     ]);
+    expect(result?.master.byteLength).toBe(3);
     expect(result?.renditions.preview?.byteLength).toBe(3);
     expect(result?.renditions.display?.byteLength).toBe(3);
     expect(close).toHaveBeenCalledOnce();
   });
 
-  it("does not upscale small images and degrades to original-only when browser decoding is unavailable", async () => {
+  it("does not upscale small images and blocks upload when browser decoding is unavailable", async () => {
     const drawImage = vi.fn();
     vi.stubGlobal(
       "createImageBitmap",
@@ -61,13 +71,17 @@ describe("photo rendition preparation", () => {
           callback(new Blob([new Uint8Array([1])], { type: "image/jpeg" })),
       }),
     });
-    await preparePhotoRenditions(new Uint8Array(100), "image/jpeg");
+    const prepared = await prepareGardenPhotoMedia(new Uint8Array(100), "image/jpeg");
     expect(drawImage.mock.calls.map((call) => call.slice(-2))).toEqual([
       [240, 120],
       [240, 120],
+      [240, 120],
     ]);
+    expect(prepared?.master.byteLength).toBeGreaterThan(0);
+    expect(prepared?.renditions.display?.byteLength).toBeGreaterThan(0);
+    expect(prepared?.renditions.preview?.byteLength).toBeGreaterThan(0);
 
     vi.stubGlobal("createImageBitmap", undefined);
-    await expect(preparePhotoRenditions(new Uint8Array(100), "image/jpeg")).resolves.toBeNull();
+    await expect(prepareGardenPhotoMedia(new Uint8Array(100), "image/jpeg")).resolves.toBeNull();
   });
 });

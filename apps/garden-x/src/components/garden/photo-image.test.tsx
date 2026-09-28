@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   resolvePhotoUrl: vi.fn(),
   persistPhotoRendition: vi.fn(),
+  reportPhotoMediaDiagnostic: vi.fn(),
 }));
 
 vi.mock("@/lib/garden-backend", () => mocks);
@@ -68,10 +69,36 @@ describe("PhotoImage", () => {
     expect(mocks.resolvePhotoUrl).toHaveBeenCalledTimes(1);
   });
 
-  it("resolves Before/After images independently and falls back to the original when one rendition cannot be signed", async () => {
+  it("blocks a signed master URL returned by a legacy public-story fallback", async () => {
+    const legacySharePhoto = {
+      ...makePhoto("legacy-share"),
+      backendStoragePath: undefined,
+      src: "https://project.supabase.co/storage/v1/object/sign/garden-originals/owner/photo/original.jpg?token=private",
+    };
+    render(
+      <PhotoImage
+        photo={legacySharePhoto}
+        alt="Shared plant photo"
+        rendition="display"
+        loading="eager"
+      />,
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.getByRole("img", { name: "Shared plant photo" }).getAttribute("data-photo-state"),
+      ).toBe("unavailable"),
+    );
+    expect(document.querySelector('img[src*="original.jpg"]')).toBeNull();
+    expect(mocks.resolvePhotoUrl).not.toHaveBeenCalled();
+  });
+
+  it("resolves Before/After independently and leaves one failed rendition explicit", async () => {
     mocks.resolvePhotoUrl.mockImplementation((photo: Photo, rendition: string) => {
       if (photo.id === "before" && rendition === "display")
-        return Promise.reject(new Error("display not found"));
+        return Promise.reject(
+          Object.assign(new Error("display not found"), { name: "PhotoRenditionUnavailableError" }),
+        );
       return Promise.resolve(`https://signed/${photo.id}/${rendition}`);
     });
     render(
@@ -82,13 +109,19 @@ describe("PhotoImage", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByRole("img", { name: "Before" }).getAttribute("src")).toBe(
-        "https://signed/before/original",
+      expect(screen.getByRole("img", { name: "Before" }).getAttribute("data-photo-state")).toBe(
+        "unavailable",
       );
       expect(screen.getByRole("img", { name: "After" }).getAttribute("src")).toBe(
         "https://signed/after/display",
       );
     });
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledTimes(2);
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "before" }),
+      "display",
+      { refresh: false },
+    );
   });
 
   it("does not let an old photo resolution replace the image after a fast selection change", async () => {
@@ -122,12 +155,11 @@ describe("PhotoImage", () => {
     );
   });
 
-  it("refreshes a failed rendition and presents an explicit retry after both sources fail", async () => {
+  it("shows one failed rendition and retries that same tier only after a manual action", async () => {
     mocks.resolvePhotoUrl
-      .mockResolvedValueOnce("https://signed/stale/display")
-      .mockResolvedValueOnce("https://signed/fresh/display")
-      .mockRejectedValueOnce(new Error("display failed"))
-      .mockRejectedValueOnce(new Error("original failed"))
+      .mockRejectedValueOnce(
+        Object.assign(new Error("preview missing"), { name: "PhotoRenditionUnavailableError" }),
+      )
       .mockResolvedValueOnce("https://signed/recovered/display");
     render(
       <PhotoImage
@@ -139,25 +171,18 @@ describe("PhotoImage", () => {
         retryLabel="Try again"
       />,
     );
-    await waitFor(() =>
-      expect(document.querySelector('img[alt="Compare photo"]')?.getAttribute("src")).toBe(
-        "https://signed/stale/display",
-      ),
-    );
-    const image = document.querySelector('img[alt="Compare photo"]')!;
-    fireEvent.error(image);
-    await waitFor(() =>
-      expect(document.querySelector('img[alt="Compare photo"]')?.getAttribute("src")).toBe(
-        "https://signed/fresh/display",
-      ),
-    );
-    fireEvent.error(document.querySelector('img[alt="Compare photo"]')!);
     expect(await screen.findByText("Photo could not be loaded")).toBeTruthy();
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() =>
       expect(document.querySelector('img[alt="Compare photo"]')?.getAttribute("src")).toBe(
         "https://signed/recovered/display",
       ),
     );
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledTimes(2);
+    expect(mocks.resolvePhotoUrl.mock.calls.map((call) => call[1])).toEqual(["display", "display"]);
+    fireEvent.error(document.querySelector('img[alt="Compare photo"]')!);
+    await screen.findByText("Photo could not be loaded");
+    expect(mocks.resolvePhotoUrl).toHaveBeenCalledTimes(2);
   });
 });

@@ -30,11 +30,12 @@ import {
 } from "./garden-summaries";
 import type { PublicStory, PublicStoryMoment } from "./public-story";
 import { getSupabaseClient } from "./supabase";
+import { photoStorageProvider } from "./photo-storage-provider";
 import { photoStoragePaths } from "./delete-logic";
 import { activeGridCells, allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "./custom-system";
 import { dateOnlyFromIso, dateOnlyToUtcNoon } from "./temporal";
 import { normalizeTimelineNote } from "./garden-logic";
-import { photoRenditionStoragePaths, preparePhotoRenditions } from "./photo-renditions";
+import { photoRenditionStoragePaths, prepareGardenPhotoMedia, type PreparedGardenPhotoMedia } from "./photo-renditions";
 
 export type GardenMaintenanceAction = "water_change" | "nutrients" | "water_and_nutrients";
 
@@ -277,13 +278,30 @@ function maintenanceType(purpose: string, subject: string): MaintenanceType {
   if (value.includes("clean") || value.includes("pump")) return "cleaning";
   return "custom";
 }
-export type PhotoRendition = "preview" | "display" | "original";
+/** `master` uses the legacy original.jpg path; `original` is a compatibility alias. */
+export type PhotoRendition = "preview" | "display" | "master" | "original";
+
+export class PhotoRenditionUnavailableError extends Error {
+  constructor(rendition: PhotoRendition) {
+    super(`Photo ${rendition} rendition is unavailable.`);
+    this.name = "PhotoRenditionUnavailableError";
+  }
+}
+
+export type PendingGardenPhotoRetry = { eventId: string; photoId: string; effectiveDate: string };
+
+export class IncompleteGardenPhotoProcessingError extends Error {
+  constructor(readonly retry: PendingGardenPhotoRetry, cause: unknown) {
+    super("The Moment was recorded, but its photo media is incomplete.", { cause });
+    this.name = "IncompleteGardenPhotoProcessingError";
+  }
+}
 
 const signedUrlTtlSeconds = 60 * 60;
 const signedUrlRefreshSkewMs = 60 * 1000;
 const signedUrlCache = new Map<string, { url: string; path: string; expiresAt: number }>();
-const photoPersistentCacheName = "garden-x-photo-renditions-v1";
-const photoPersistentCacheVersion = "v1";
+const photoPersistentCacheName = "garden-x-photo-renditions-v2";
+const photoPersistentCacheVersion = "v2";
 const photoPersistentCacheMaxAgeMs = {
   preview: 30 * 24 * 60 * 60 * 1000,
   display: 14 * 24 * 60 * 60 * 1000,
@@ -303,10 +321,26 @@ const signedUrlPending = new Map<
   }
 >();
 let signedUrlFlushScheduled = false;
-const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, persistentCacheHits: 0, lastDurationMs: 0 };
+const photoUrlMetrics = { signRequests: 0, pathsRequested: 0, cacheHits: 0, persistentCacheHits: 0, unavailable: 0, errors: 0, lastDurationMs: 0 };
+
+export function reportPhotoMediaDiagnostic(
+  event: "resolved" | "unavailable" | "error" | "processing_failed" | "explicit_master_retrieval",
+  tier?: PhotoRendition,
+  actualTier?: PhotoRendition,
+) {
+  if (event === "unavailable") photoUrlMetrics.unavailable += 1;
+  if (event === "error" || event === "processing_failed") photoUrlMetrics.errors += 1;
+  if (import.meta.env.DEV) {
+    console.debug("[Garden media]", {
+      event,
+      requestedTier: tier ?? null,
+      actualTier: actualTier ?? null,
+    });
+  }
+}
 
 function derivativePath(originalPath: string, rendition: PhotoRendition) {
-  if (rendition === "original") return originalPath;
+  if (rendition === "original" || rendition === "master") return originalPath;
   const separator = originalPath.lastIndexOf("/");
   if (separator < 0) return originalPath;
   return `${originalPath.slice(0, separator)}/${rendition}.jpg`;
@@ -317,9 +351,9 @@ export function photoRenditionCandidates(
   rendition: PhotoRendition,
 ) {
   const ordered = rendition === "preview"
-    ? ["preview", "display", "original"] as const
+    ? ["preview"] as const
     : rendition === "display"
-      ? ["display", "original"] as const
+      ? ["display"] as const
       : ["original"] as const;
   return ordered.map((kind) => derivativePath(originalPath, kind));
 }
@@ -361,7 +395,7 @@ async function currentPhotoCacheUserId() {
   return photoCacheUserPromise;
 }
 
-function persistentPhotoRequest(userId: string, photo: Pick<Photo, "id" | "backendStoragePath">, rendition: Exclude<PhotoRendition, "original">) {
+function persistentPhotoRequest(userId: string, photo: Pick<Photo, "id" | "backendStoragePath">, rendition: Exclude<PhotoRendition, "original" | "master">) {
   const origin = window.location.origin;
   const userKey = stablePhotoCacheHash(userId);
   const assetKey = stablePhotoCacheHash(`${photo.id}|${photo.backendStoragePath ?? ""}`);
@@ -409,12 +443,12 @@ async function evictPersistentPhotoCache(cache: Cache) {
 }
 
 async function persistentPhotoUrl(photo: Pick<Photo, "id" | "backendStoragePath">, rendition: PhotoRendition) {
-  if (rendition === "original") return null;
+  if (rendition === "original" || rendition === "master") return null;
   const userId = await currentPhotoCacheUserId();
   const cache = userId ? await openPersistentPhotoCache() : null;
   if (!userId || !cache) return null;
   try {
-    const candidates = rendition === "preview" ? ["preview", "display"] as const : ["display"] as const;
+    const candidates = [rendition] as const;
     for (const candidate of candidates) {
       const request = persistentPhotoRequest(userId, photo, candidate);
       const response = await cache.match(request);
@@ -447,13 +481,12 @@ export async function persistPhotoRendition(
   rendition: PhotoRendition,
   signedUrl: string,
 ) {
-  if (rendition === "original" || !photo.backendStoragePath || !signedUrl || signedUrl.startsWith("blob:") || !canUsePersistentPhotoCache()) return;
+  if (rendition === "original" || rendition === "master" || !photo.backendStoragePath || !signedUrl || signedUrl.startsWith("blob:") || !canUsePersistentPhotoCache()) return;
   const userId = await currentPhotoCacheUserId();
   const cache = userId ? await openPersistentPhotoCache() : null;
   if (!userId || !cache) return;
   const resolved = signedUrlCache.get(photoCacheKey(photo.id, rendition, userId));
-  const originalPath = photoRenditionCandidates(photo.backendStoragePath, "original")[0];
-  if (!resolved || resolved.url !== signedUrl || resolved.path === originalPath) return;
+  if (!resolved || resolved.url !== signedUrl) return;
   try {
     const response = await fetch(signedUrl, { cache: "force-cache" });
     if (!response.ok) return;
@@ -474,11 +507,11 @@ async function invalidatePersistentPhotoRendition(
   photo: Pick<Photo, "id" | "backendStoragePath">,
   rendition: PhotoRendition,
 ) {
-  if (rendition === "original" || !photo.backendStoragePath || !canUsePersistentPhotoCache()) return;
+  if (rendition === "original" || rendition === "master" || !photo.backendStoragePath || !canUsePersistentPhotoCache()) return;
   const userId = await currentPhotoCacheUserId();
   const cache = userId ? await openPersistentPhotoCache() : null;
   if (!userId || !cache) return;
-  const candidates = rendition === "preview" ? ["preview", "display"] as const : ["display"] as const;
+  const candidates = [rendition] as const;
   await Promise.all(candidates.map((candidate) => cache.delete(persistentPhotoRequest(userId, photo, candidate))));
 }
 
@@ -526,9 +559,7 @@ async function flushSignedUrlRequests() {
     }
   };
   try {
-    const { data, error } = await getSupabaseClient()
-      .storage.from("garden-originals")
-      .createSignedUrls(paths, signedUrlTtlSeconds);
+    const { data, error } = await photoStorageProvider.sign(paths, signedUrlTtlSeconds);
     if (error) {
       settleError(error);
       return;
@@ -543,16 +574,22 @@ async function flushSignedUrlRequests() {
       signedUrlPending.delete(key);
       const url = request.paths.map((path) => signedByPath.get(path)).find(Boolean);
       if (!url) {
-        const error = new Error(`No signed URL returned for ${request.rendition} photo.`);
+        const error = new PhotoRenditionUnavailableError(request.rendition);
         for (const waiter of request.waiters) waiter.reject(error);
         continue;
       }
       const servedPath = request.paths.find((path) => signedByPath.has(path));
       if (!servedPath) {
-        const error = new Error(`No signed URL path returned for ${request.rendition} photo.`);
+        const error = new PhotoRenditionUnavailableError(request.rendition);
         for (const waiter of request.waiters) waiter.reject(error);
         continue;
       }
+      const actualTier: PhotoRendition = servedPath.endsWith("/preview.jpg")
+        ? "preview"
+        : servedPath.endsWith("/display.jpg")
+          ? "display"
+          : "master";
+      reportPhotoMediaDiagnostic("resolved", request.rendition, actualTier);
       signedUrlCache.set(key, { url, path: servedPath, expiresAt: Date.now() + signedUrlTtlSeconds * 1000 });
       for (const waiter of request.waiters) waiter.resolve(url);
     }
@@ -567,9 +604,12 @@ async function flushSignedUrlRequests() {
 /** Resolve one private photo only when a rendered surface needs it. */
 export function resolvePhotoUrl(
   photo: Pick<Photo, "id" | "src" | "backendStoragePath">,
-  rendition: PhotoRendition = "original",
+  rendition: PhotoRendition = "display",
   options: { refresh?: boolean } = {},
 ): Promise<string> {
+  if (rendition === "original" || rendition === "master") {
+    reportPhotoMediaDiagnostic("explicit_master_retrieval", rendition);
+  }
   if (!photo.backendStoragePath) return Promise.resolve(photo.src);
   return (async () => {
     if (options.refresh) {
@@ -940,48 +980,96 @@ async function sha256Hex(bytes: Uint8Array): Promise<string> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-async function imageDimensions(
-  bytes: Uint8Array,
-  mime: string,
-): Promise<{ width: number; height: number } | null> {
-  if (typeof createImageBitmap !== "function") return null;
+type PreparedUploadMedia = { media: PreparedGardenPhotoMedia; checksum: string };
+
+async function prepareUploadMedia(src: string, message: string): Promise<PreparedUploadMedia> {
+  const decoded = decodeDataUrl(src);
+  if (!decoded) throw new Error(message);
   try {
-    const bitmap = await createImageBitmap(
-      new Blob([
-        bytes.buffer.slice(
-          bytes.byteOffset,
-          bytes.byteOffset + bytes.byteLength,
-        ) as ArrayBuffer,
-      ], { type: mime }),
-    );
-    const dimensions = { width: bitmap.width, height: bitmap.height };
-    bitmap.close();
-    return dimensions;
-  } catch {
-    // Some browser decoders cannot inspect formats such as HEIC. Uploading
-    // remains valid; dimensions are simply left unknown for that asset.
-    return null;
+    const media = await prepareGardenPhotoMedia(decoded.bytes, decoded.mime);
+    if (!media) throw new Error("Image decoding or JPEG encoding is unavailable in this browser.");
+    return { media, checksum: await sha256Hex(media.master) };
+  } catch (error) {
+    reportPhotoMediaDiagnostic("processing_failed", "master");
+    throw new Error(error instanceof Error ? error.message : message);
   }
 }
 
-async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: string): Promise<void> {
-  const decoded = decodeDataUrl(photo.src);
-  if (!decoded) throw new Error("Photo could not be read.");
+async function ensurePhotoObject(path: string, bytes: Uint8Array, contentType: string, cacheControl: string) {
+  const result = await photoStorageProvider.upload(path, bytes, contentType, cacheControl);
+  if (result === "created") return;
+  // A no-upsert retry is successful only when the existing immutable object is
+  // byte-identical to this attempt. Mismatched data is never overwritten.
+  const { data, error } = await photoStorageProvider.download(path);
+  if (error || !data) throw new Error("Existing photo media could not be verified.");
+  const existingBytes = new Uint8Array(await data.arrayBuffer());
+  if ((await sha256Hex(existingBytes)) !== (await sha256Hex(bytes))) {
+    throw new Error("Existing photo media differs from the prepared Garden media.");
+  }
+}
+
+async function uploadPreparedPhotoMedia(storagePath: string, media: PreparedGardenPhotoMedia) {
+  const paths = photoRenditionStoragePaths(storagePath);
+  if (!paths || !media.renditions.preview || !media.renditions.display) {
+    throw new Error("Required Garden photo renditions were not prepared.");
+  }
+  const uploadAttempt = async () => {
+    await ensurePhotoObject(storagePath, media.master, "image/jpeg", "max-age=31536000, immutable");
+    await Promise.all([
+      ensurePhotoObject(paths.preview, media.renditions.preview!, "image/jpeg", "max-age=31536000, immutable"),
+      ensurePhotoObject(paths.display, media.renditions.display!, "image/jpeg", "max-age=31536000, immutable"),
+    ]);
+  };
+  try {
+    await uploadAttempt();
+  } catch (firstError) {
+    // One bounded retry recovers transient Storage failures; there is no loop.
+    try {
+      await uploadAttempt();
+    } catch (retryError) {
+      reportPhotoMediaDiagnostic("processing_failed", "display");
+      throw retryError instanceof Error ? retryError : firstError;
+    }
+  }
+}
+
+async function uploadEventPhoto(
+  eventId: string,
+  photo: Photo,
+  prepared?: PreparedUploadMedia,
+  effectiveDate?: string,
+): Promise<void> {
   const photoId = crypto.randomUUID();
-  const checksum = await sha256Hex(decoded.bytes);
-  const optimized = await preparePhotoRenditions(decoded.bytes, decoded.mime);
-  const dimensions = optimized;
+  const { media, checksum } = prepared ?? await prepareUploadMedia(photo.src, "Photo could not be read.");
+  const dimensions = { width: media.width, height: media.height };
   // Record a Moment has one user-selected effective date. Keep photo evidence
   // on that same calendar day even if a browser omitted photo metadata.
   const capturedDate = effectiveDate ?? dateOnlyFromIso(photo.capturedAt) ?? isoDateFromDaysAgo(photo.daysAgo);
   const capturedAt = dateOnlyToUtcNoon(capturedDate);
+  const retry = { eventId, photoId, effectiveDate: capturedDate };
+  try {
+    const prepared = await prepareCanonicalEventPhoto(retry, photo, media, checksum);
+    await uploadPreparedPhotoMedia(prepared.storage_path, media);
+    await markCanonicalPhotoUploaded(retry, media, checksum);
+  } catch (error) {
+    reportPhotoMediaDiagnostic("processing_failed", "master");
+    throw new IncompleteGardenPhotoProcessingError(retry, error);
+  }
+}
+
+async function prepareCanonicalEventPhoto(
+  retry: PendingGardenPhotoRetry,
+  photo: Photo,
+  media: PreparedGardenPhotoMedia,
+  checksum: string,
+): Promise<{ storage_path: string }> {
   const { data, error } = await getSupabaseClient().rpc("garden_x_prepare_event_photo", {
-    p_photo_id: photoId,
-    p_event_id: eventId,
+    p_photo_id: retry.photoId,
+    p_event_id: retry.eventId,
     p_original_filename: "garden-photo",
-    p_content_type: decoded.mime,
-    p_byte_size: decoded.bytes.byteLength,
-    p_captured_at: capturedAt,
+    p_content_type: media.contentType,
+    p_byte_size: media.master.byteLength,
+    p_captured_at: dateOnlyToUtcNoon(retry.effectiveDate),
     // The UI keeps a calendar-date precision (`date`) for local photo state,
     // while the canonical RPC accepts only exact/approximate/unknown. A
     // selected calendar date is stored at UTC noon above and is exact at the
@@ -990,66 +1078,37 @@ async function uploadEventPhoto(eventId: string, photo: Photo, effectiveDate?: s
     p_checksum_sha256: checksum,
   });
   if (error) throw new Error(error.message);
-  const prepared = data as { storage_path: string };
-  const { data: sessionData } = await getSupabaseClient().auth.getSession();
-  const session = sessionData.session;
-  if (!session) throw new Error("Authentication required");
-  const response = await fetch(
-    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
-    {
-      method: "POST",
-      headers: {
-        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
-        Authorization: `Bearer ${session.access_token}`,
-        "content-type": decoded.mime,
-        "cache-control": "max-age=3600",
-        "x-upsert": "false",
-      },
-      body: decoded.bytes.buffer.slice(
-        decoded.bytes.byteOffset,
-        decoded.bytes.byteOffset + decoded.bytes.byteLength,
-      ) as ArrayBuffer,
-    },
-  );
-  if (!response.ok && response.status !== 409) throw new Error("Photo upload failed.");
-  const renditionPaths = photoRenditionStoragePaths(prepared.storage_path);
-  if (renditionPaths && optimized) {
-    const uploadSidecar = async (path: string, bytes: Uint8Array | undefined) => {
-      if (!bytes) return;
-      try {
-        const renditionResponse = await fetch(
-          `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${path}`,
-          {
-            method: "POST",
-            headers: {
-              apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
-              Authorization: `Bearer ${session.access_token}`,
-              "content-type": "image/jpeg",
-              "cache-control": "max-age=31536000, immutable",
-              "x-upsert": "false",
-            },
-            body: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer,
-          },
-        );
-        // Renditions are derived enhancements; the verified original remains
-        // canonical and the resolver can fall back to it if a sidecar fails.
-        if (!renditionResponse.ok && renditionResponse.status !== 409) return;
-      } catch {
-        // An unavailable derivative must never reject a valid original upload.
-      }
-    };
-    await Promise.all([
-      uploadSidecar(renditionPaths.preview, optimized.renditions.preview),
-      uploadSidecar(renditionPaths.display, optimized.renditions.display),
-    ]);
-  }
-  const confirmation = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
-    p_photo_id: photoId,
+  return data as { storage_path: string };
+}
+
+async function markCanonicalPhotoUploaded(
+  retry: PendingGardenPhotoRetry,
+  media: PreparedGardenPhotoMedia,
+  checksum: string,
+) {
+  const { error } = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
+    p_photo_id: retry.photoId,
     p_checksum_sha256: checksum,
-    p_width: dimensions?.width ?? null,
-    p_height: dimensions?.height ?? null,
+    p_width: media.width,
+    p_height: media.height,
   });
-  if (confirmation.error) throw new Error(confirmation.error.message);
+  if (error) throw new Error(error.message);
+}
+
+/** Complete an already-recorded Moment photo without creating a second event. */
+export async function retryPendingEventPhoto(
+  retry: PendingGardenPhotoRetry,
+  photo: Photo,
+): Promise<void> {
+  try {
+    const { media, checksum } = await prepareUploadMedia(photo.src, "Photo could not be read for retry.");
+    const prepared = await prepareCanonicalEventPhoto(retry, photo, media, checksum);
+    await uploadPreparedPhotoMedia(prepared.storage_path, media);
+    await markCanonicalPhotoUploaded(retry, media, checksum);
+  } catch (error) {
+    reportPhotoMediaDiagnostic("processing_failed", "master");
+    throw new IncompleteGardenPhotoProcessingError(retry, error);
+  }
 }
 
 export async function createPlantRecord(
@@ -1315,6 +1374,9 @@ export async function persistMoment(
 ): Promise<void> {
   if (!plant.backendGrowCycleId) return;
   const cycleId = plant.backendGrowCycleId;
+  // Process locally before recording the event so unsupported decoding never
+  // leaves behind a canonical Moment that appeared to save its photo.
+  const preparedPhoto = photo ? await prepareUploadMedia(photo.src, "Photo could not be read.") : undefined;
   let eventId: string;
 
   if (event.lifeEvent || event.journalMilestone) {
@@ -1399,7 +1461,9 @@ export async function persistMoment(
     eventId = await recordObservation(cycleId, event);
   }
 
-  if (photo && eventId) await uploadEventPhoto(eventId, photo, effectiveDateFromEvent(event));
+  if (photo && preparedPhoto && eventId) {
+    await uploadEventPhoto(eventId, photo, preparedPhoto, effectiveDateFromEvent(event));
+  }
 }
 
 export async function createGardenRecord(
@@ -1448,47 +1512,24 @@ async function uploadGardenCoverPhoto(
   definitionId: string,
   src: string,
 ): Promise<void> {
-  const decoded = decodeDataUrl(src);
-  if (!decoded) throw new Error("System photo could not be read.");
-  const checksum = await sha256Hex(decoded.bytes);
-  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
+  const { media, checksum } = await prepareUploadMedia(src, "System photo could not be read.");
   const { data, error } = await getSupabaseClient().rpc("garden_prepare_media_photo", {
     p_request_id: crypto.randomUUID(),
     p_scope: "garden_cover",
     p_garden_id: gardenId,
     p_original_filename: "custom-system-photo",
-    p_content_type: decoded.mime,
-    p_byte_size: decoded.bytes.byteLength,
+    p_content_type: media.contentType,
+    p_byte_size: media.master.byteLength,
     p_checksum_sha256: checksum,
   });
   if (error) throw new Error(error.message);
   const prepared = data as { photo_id: string; storage_path: string };
-  const { data: sessionData } = await getSupabaseClient().auth.getSession();
-  const session = sessionData.session;
-  if (!session) throw new Error("Authentication required");
-  const response = await fetch(
-    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
-    {
-      method: "POST",
-      headers: {
-        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
-        Authorization: `Bearer ${session.access_token}`,
-        "content-type": decoded.mime,
-        "cache-control": "max-age=3600",
-        "x-upsert": "false",
-      },
-      body: decoded.bytes.buffer.slice(
-        decoded.bytes.byteOffset,
-        decoded.bytes.byteOffset + decoded.bytes.byteLength,
-      ) as ArrayBuffer,
-    },
-  );
-  if (!response.ok && response.status !== 409) throw new Error("System photo upload failed.");
+  await uploadPreparedPhotoMedia(prepared.storage_path, media);
   const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
     p_photo_id: prepared.photo_id,
     p_checksum_sha256: checksum,
-    p_width: dimensions?.width ?? null,
-    p_height: dimensions?.height ?? null,
+    p_width: media.width,
+    p_height: media.height,
   });
   if (uploaded.error) throw new Error(uploaded.error.message);
   const attached = await getSupabaseClient().rpc("garden_x_set_custom_system_photo", {
@@ -1615,47 +1656,24 @@ async function uploadPreparedGardenCoverPhoto(
   src: string,
   originalFilename = "garden-cover",
 ): Promise<string> {
-  const decoded = decodeDataUrl(src);
-  if (!decoded) throw new Error("System photo could not be read.");
-  const checksum = await sha256Hex(decoded.bytes);
-  const dimensions = await imageDimensions(decoded.bytes, decoded.mime);
+  const { media, checksum } = await prepareUploadMedia(src, "System photo could not be read.");
   const { data, error } = await getSupabaseClient().rpc("garden_prepare_media_photo", {
     p_request_id: crypto.randomUUID(),
     p_scope: "garden_cover",
     p_garden_id: gardenId,
     p_original_filename: originalFilename.slice(0, 240),
-    p_content_type: decoded.mime,
-    p_byte_size: decoded.bytes.byteLength,
+    p_content_type: media.contentType,
+    p_byte_size: media.master.byteLength,
     p_checksum_sha256: checksum,
   });
   if (error) throw new Error(error.message);
   const prepared = data as { photo_id: string; storage_path: string };
-  const { data: sessionData } = await getSupabaseClient().auth.getSession();
-  const session = sessionData.session;
-  if (!session) throw new Error("Authentication required");
-  const response = await fetch(
-    `${import.meta.env["VITE_SUPABASE_URL"]}/storage/v1/object/garden-originals/${prepared.storage_path}`,
-    {
-      method: "POST",
-      headers: {
-        apikey: import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] as string,
-        Authorization: `Bearer ${session.access_token}`,
-        "content-type": decoded.mime,
-        "cache-control": "max-age=3600",
-        "x-upsert": "false",
-      },
-      body: decoded.bytes.buffer.slice(
-        decoded.bytes.byteOffset,
-        decoded.bytes.byteOffset + decoded.bytes.byteLength,
-      ) as ArrayBuffer,
-    },
-  );
-  if (!response.ok && response.status !== 409) throw new Error("System photo upload failed.");
+  await uploadPreparedPhotoMedia(prepared.storage_path, media);
   const uploaded = await getSupabaseClient().rpc("garden_mark_photo_uploaded", {
     p_photo_id: prepared.photo_id,
     p_checksum_sha256: checksum,
-    p_width: dimensions?.width ?? null,
-    p_height: dimensions?.height ?? null,
+    p_width: media.width,
+    p_height: media.height,
   });
   if (uploaded.error) throw new Error(uploaded.error.message);
   return prepared.photo_id;
@@ -1703,7 +1721,7 @@ export async function deleteGardenRecord(gardenId: string): Promise<DeleteGarden
   const result = (data ?? {}) as { storage_paths?: string[]; storage_path_count?: number };
   const paths = Array.isArray(result.storage_paths) ? result.storage_paths.filter((path): path is string => typeof path === "string" && path.length > 0) : [];
   if (!paths.length) return { storagePathCount: result.storage_path_count ?? 0 };
-  const { error: storageError } = await getSupabaseClient().storage.from("garden-originals").remove(paths);
+  const { error: storageError } = await photoStorageProvider.remove(paths);
   return {
     storagePathCount: result.storage_path_count ?? paths.length,
     ...(storageError ? { storageCleanupWarning: storageError.message } : {}),
@@ -1741,9 +1759,7 @@ export async function deletePhotoRecord(photoId: string): Promise<DeletePhotoRes
   const response = data as { storage_path?: string } | null;
   if (!response?.storage_path) return {};
   const paths = photoStoragePaths(response.storage_path);
-  const { error: storageError } = await getSupabaseClient()
-    .storage.from("garden-originals")
-    .remove(paths);
+  const { error: storageError } = await photoStorageProvider.remove(paths);
   return storageError ? { storageCleanupWarning: storageError.message } : {};
 }
 

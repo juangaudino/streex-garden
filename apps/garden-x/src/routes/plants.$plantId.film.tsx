@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { ui } from "@/lib/ui-copy";
+import { visibleFilmFrames } from "@/lib/film-frame";
 
 export const Route = createFileRoute("/plants/$plantId/film")({
   head: () => ({ meta: [
@@ -43,6 +44,7 @@ function GrowthFilm() {
   const [saving, setSaving] = useState(false);
   const [shareFilm, setShareFilm] = useState<string | null>(null);
   const sequence = useMemo(() => photos.filter((photo) => selected.includes(photo.id)), [photos, selected]);
+  const visibleFrames = visibleFilmFrames(sequence, frame);
   const existing = store.films.filter((film) => film.plantId === plant.id);
   const current = sequence[Math.min(frame, Math.max(sequence.length - 1, 0))];
   const previous = frame > 0 ? sequence[frame - 1] : undefined;
@@ -90,7 +92,7 @@ function GrowthFilm() {
       <section>
         <div className="relative overflow-hidden rounded-3xl bg-ink shadow-lift">
           <div className="relative aspect-[4/5] sm:aspect-[16/10]">
-            {sequence.map((photo, index) => <PhotoImage key={photo.id} photo={photo} alt={photo.caption} rendition="display" className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} loading={index === frame ? "eager" : "lazy"} />)}
+            {visibleFrames.map(({ item: photo, index }) => <PhotoImage key={photo.id} photo={photo} alt={photo.caption} rendition="display" className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} loading={index === frame ? "eager" : "lazy"} />)}
             <div className="veil pointer-events-none absolute inset-0" />
             <div className="absolute inset-x-5 top-5 flex gap-1.5">{sequence.map((photo, index) => <span key={photo.id} className={cn("h-0.5 flex-1 rounded-full", index <= frame ? "bg-primary-foreground/90" : "bg-primary-foreground/30")} />)}</div>
             {titles ? <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground"><p className="text-xs opacity-75">{frame + 1} / {sequence.length} · {current ? `${ui(language, "dayLabel")} ${Math.max(plant.plantedDaysAgo - current.daysAgo, 0)} · ${formatDate(current.daysAgo)}` : ui(language, "noMomentsSelected")}</p><h2 className="mt-1 font-display text-3xl">{current?.caption ?? ui(language, "chooseMomentsBelow")}</h2><p className="mt-1 text-xs opacity-70">{music === "No music" ? ui(language, "silence") : `${localizedMusicName(music)} · ${ui(language, "volume").toLowerCase()} ${volume}%`}</p></div> : null}

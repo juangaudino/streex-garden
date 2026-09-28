@@ -39,12 +39,13 @@ import {
   loadMeaningfulChangeResults,
   loadGardenSummaryContext,
   loadGardenSummaryResults,
-  requestMeaningfulChange,
   requestGardenSummary,
   reorderGardenRecords,
   saveFilmRecord,
   movePlantRecord,
   persistMoment,
+  retryPendingEventPhoto,
+  IncompleteGardenPhotoProcessingError,
   invalidateEventRecord,
   updateGardenRecord,
   loadGardenCoverPhotosRecord,
@@ -57,11 +58,11 @@ import {
   clearPersistentPhotoCache,
   setPersistentPhotoCacheUserId,
 } from "./garden-backend";
-import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult } from "./garden-backend";
+import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult, PendingGardenPhotoRetry } from "./garden-backend";
 import type { PlantOriginType } from "./garden-data";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
 import { projectPlantRelocation } from "./garden-logic";
-import { selectMeaningfulChangeCandidate, shouldGenerateMeaningfulChange, type MeaningfulChangeResult } from "./meaningful-changes";
+import type { MeaningfulChangeResult } from "./meaningful-changes";
 import {
   GARDEN_SUMMARY_COALESCE_WINDOW_MS,
   GARDEN_SUMMARY_SCHEMA_VERSION,
@@ -92,6 +93,7 @@ interface StoreApi extends GardenState {
     e: Omit<PlantEvent, "id">,
     options?: { photo?: Photo; waitForPersistence?: boolean },
   ) => Promise<void>;
+  retryPendingMomentPhoto: (retry: PendingGardenPhotoRetry, photo: Photo) => Promise<void>;
   addPhoto: (p: Omit<Photo, "id">) => string;
   addTask: (t: Omit<CareTask, "id" | "done">) => void;
   completeTask: (id: string, note?: string) => void;
@@ -431,29 +433,14 @@ export function GardenProvider({ children }: { children: ReactNode }) {
             persistencePromise = persistMoment(plant, e, pendingPhoto)
               .then(async () => {
                 if (e.photoId) pendingPhotos.current.delete(e.photoId);
+                // F3 Meaningful Changes are deterministic photo-evidence pairs;
+                // saving a Moment no longer launches background visual AI.
                 await refreshFromBackend("mutation").catch(() => undefined);
-                void (async () => {
-                  // Comparison generation is deliberately after persistence and
-                  // refresh. Home only reads completed, owner-scoped results.
-                  if (!shouldGenerateMeaningfulChange(e)) return;
-                  const fresh = await loadGardenState();
-                  const candidate = selectMeaningfulChangeCandidate(
-                    fresh.state.plants.find((item) => item.id === plant.id) ?? plant,
-                    fresh.state.photos,
-                    fresh.state.events,
-                    meaningfulChanges,
-                    preferences.language,
-                  );
-                  if (!candidate) return;
-                  await requestMeaningfulChange(candidate.growCycleId, candidate.beforePhotoId, candidate.afterPhotoId, preferences.language).catch(() => undefined);
-                  const latestMeaningfulChanges = await loadMeaningfulChangeResults();
-                  setMeaningfulChanges(latestMeaningfulChanges);
-                  const latest = await loadGardenState();
-                  scheduleGardenSummaryGeneration(latest.state, gardenSummaries, preferences.language);
-                })().catch(() => undefined);
               })
               .catch(async (error) => {
-                if (e.photoId) pendingPhotos.current.delete(e.photoId);
+                if (e.photoId && !(error instanceof IncompleteGardenPhotoProcessingError)) {
+                  pendingPhotos.current.delete(e.photoId);
+                }
                 // The event/fact may already have committed before its photo
                 // failed. Reconcile optimistic state so no local-only evidence
                 // survives, then preserve the original actionable error.
@@ -481,6 +468,11 @@ export function GardenProvider({ children }: { children: ReactNode }) {
           return { ...s, events: [...s.events, event] };
         });
         return options?.waitForPersistence ? persistencePromise ?? Promise.resolve() : Promise.resolve();
+      },
+      retryPendingMomentPhoto: async (retry, photo) => {
+        await retryPendingEventPhoto(retry, photo);
+        pendingPhotos.current.delete(photo.id);
+        await refreshFromBackend("mutation").catch(() => undefined);
       },
       addPhoto: (photo) => {
         const id = uid("photo");

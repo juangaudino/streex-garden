@@ -33,46 +33,40 @@ describe("photo renditions", () => {
     setPersistentPhotoCacheUserId(null);
   });
 
-  it("derives the safe fallback order for each rendition", () => {
+  it("resolves each UI tier only to its own rendition", () => {
     expect(photoRenditionCandidates(photo.backendStoragePath, "preview")).toEqual([
       "owner/photo-1/preview.jpg",
-      "owner/photo-1/display.jpg",
-      "owner/photo-1/original.jpg",
     ]);
     expect(photoRenditionCandidates(photo.backendStoragePath, "display")).toEqual([
       "owner/photo-1/display.jpg",
-      "owner/photo-1/original.jpg",
     ]);
     expect(photoRenditionCandidates(photo.backendStoragePath, "original")).toEqual([
       "owner/photo-1/original.jpg",
     ]);
   });
 
-  it("falls back from a missing preview to display", async () => {
+  it("does not fall back from a missing preview to a larger tier", async () => {
     createSignedUrls.mockResolvedValue({
       data: [{ path: "owner/photo-1/display.jpg", signedUrl: "https://signed/display" }],
       error: null,
     });
 
-    await expect(resolvePhotoUrl(photo, "preview")).resolves.toBe("https://signed/display");
+    await expect(resolvePhotoUrl(photo, "preview")).rejects.toThrow("Photo preview rendition is unavailable.");
     expect(createSignedUrls).toHaveBeenCalledWith(
-      [
-        "owner/photo-1/preview.jpg",
-        "owner/photo-1/display.jpg",
-        "owner/photo-1/original.jpg",
-      ],
+      ["owner/photo-1/preview.jpg"],
       3600,
     );
   });
 
-  it("falls back from a missing display to the original", async () => {
+  it("does not fall back from a missing display to the master", async () => {
     const original = { ...photo, id: "photo-display-fallback" };
     createSignedUrls.mockResolvedValue({
       data: [{ path: original.backendStoragePath, signedUrl: "https://signed/original" }],
       error: null,
     });
 
-    await expect(resolvePhotoUrl(original, "display")).resolves.toBe("https://signed/original");
+    await expect(resolvePhotoUrl(original, "display")).rejects.toThrow("Photo display rendition is unavailable.");
+    expect(createSignedUrls).toHaveBeenCalledWith(["owner/photo-1/display.jpg"], 3600);
   });
 
   it("batches same-tick requests and deduplicates candidate paths", async () => {
@@ -93,8 +87,6 @@ describe("photo renditions", () => {
     expect(createSignedUrls).toHaveBeenCalledTimes(1);
     expect(createSignedUrls).toHaveBeenCalledWith([
       "owner/shared-batch/preview.jpg",
-      "owner/shared-batch/display.jpg",
-      "owner/shared-batch/original.jpg",
     ], 3600);
   });
 
@@ -116,7 +108,6 @@ describe("photo renditions", () => {
     expect(createSignedUrls).toHaveBeenCalledWith([
       "owner/two-renditions/preview.jpg",
       "owner/two-renditions/display.jpg",
-      "owner/two-renditions/original.jpg",
     ], 3600);
   });
 
@@ -163,7 +154,7 @@ describe("photo renditions", () => {
     const missingUrl = resolvePhotoUrl(missing, "display");
 
     await expect(availableUrl).resolves.toBe("https://signed/error-a");
-    await expect(missingUrl).rejects.toThrow("No signed URL returned");
+    await expect(missingUrl).rejects.toThrow("Photo display rendition is unavailable.");
     expect(createSignedUrls).toHaveBeenCalledTimes(1);
   });
 
@@ -179,7 +170,7 @@ describe("photo renditions", () => {
         error: null,
       });
 
-    await expect(resolvePhotoUrl(cachedPhoto, "preview")).resolves.toBe("https://signed/preview-fallback");
+    await expect(resolvePhotoUrl(cachedPhoto, "preview")).rejects.toThrow("Photo preview rendition is unavailable.");
     await expect(resolvePhotoUrl(cachedPhoto, "original")).resolves.toBe("https://signed/original");
     expect(createSignedUrls).toHaveBeenCalledTimes(2);
   });
@@ -292,7 +283,7 @@ describe("photo renditions", () => {
     vi.unstubAllGlobals();
   });
 
-  it("does not persist original bytes when a display request falls back", async () => {
+  it("does not persist original bytes when a display rendition is missing", async () => {
     const entries = new Map<string, Response>();
     const cache = {
       match: async (request: Request) => entries.get(request.url)?.clone(),
@@ -308,7 +299,7 @@ describe("photo renditions", () => {
       error: null,
     });
     const fallback = { ...photo, id: "photo-fallback", backendStoragePath: "owner/photo-fallback/original.jpg" };
-    await expect(resolvePhotoUrl(fallback, "display")).resolves.toBe("https://signed/original-fallback");
+    await expect(resolvePhotoUrl(fallback, "display")).rejects.toThrow("Photo display rendition is unavailable.");
     const fetchSpy = vi.fn(async () => new Response(new Blob(["original"], { type: "image/jpeg" }), { status: 200 }));
     vi.stubGlobal("fetch", fetchSpy);
     await persistPhotoRendition(fallback, "display", "https://signed/original-fallback");

@@ -7,7 +7,12 @@ import {
   type SyntheticEvent,
 } from "react";
 import type { Photo } from "@/lib/garden-data";
-import { persistPhotoRendition, resolvePhotoUrl, type PhotoRendition } from "@/lib/garden-backend";
+import {
+  persistPhotoRendition,
+  reportPhotoMediaDiagnostic,
+  resolvePhotoUrl,
+  type PhotoRendition,
+} from "@/lib/garden-backend";
 import { cn } from "@/lib/utils";
 
 type PhotoImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
@@ -22,10 +27,19 @@ type PhotoImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> 
 type PhotoSourceState = {
   key: string;
   src: string | null;
-  status: "loading" | "ready" | "failed";
+  status: "loading" | "available" | "unavailable" | "error";
 };
 
-/** Private images resolve near visibility and recover from stale/corrupt renditions. */
+function isMasterStorageUrl(src: string) {
+  try {
+    const pathname = decodeURIComponent(new URL(src).pathname);
+    return /\/(?:original|master)(?:\.[a-z0-9]+)?$/i.test(pathname);
+  } catch {
+    return false;
+  }
+}
+
+/** Private image tier resolves near visibility; a missing tier never falls back to the master. */
 export function PhotoImage({
   photo,
   alt,
@@ -46,6 +60,8 @@ export function PhotoImage({
     [backendStoragePath, id, photoSrc],
   );
   const requestKey = `${id}|${backendStoragePath ?? ""}|${photoSrc}|${rendition}`;
+  const blockedDirectMaster =
+    !backendStoragePath && Boolean(photoSrc && isMasterStorageUrl(photoSrc));
   const [state, setState] = useState<PhotoSourceState | null>(null);
   const [visibleKey, setVisibleKey] = useState(
     loading === "eager" || !backendStoragePath ? requestKey : "",
@@ -54,7 +70,6 @@ export function PhotoImage({
   const [manualRetry, setManualRetry] = useState(0);
   const imageRef = useRef<HTMLElement | null>(null);
   const resolveVersion = useRef(0);
-  const imageFailureCount = useRef(0);
   const activeRequestKey = useRef(requestKey);
   activeRequestKey.current = requestKey;
 
@@ -83,13 +98,16 @@ export function PhotoImage({
   }, [backendStoragePath, loading, requestKey]);
 
   useEffect(() => {
-    imageFailureCount.current = 0;
     resolveVersion.current += 1;
     let active = true;
     setState({
       key: requestKey,
-      src: photoSrc || null,
-      status: backendStoragePath ? "loading" : photoSrc ? "ready" : "failed",
+      src: blockedDirectMaster ? null : photoSrc || null,
+      status: backendStoragePath
+        ? "loading"
+        : photoSrc && !blockedDirectMaster
+          ? "available"
+          : "unavailable",
     });
     if (!isNearViewport) {
       return () => {
@@ -104,21 +122,19 @@ export function PhotoImage({
       const version = ++resolveVersion.current;
       try {
         const url = await resolvePhotoUrl(photoRef, rendition, { refresh });
-        if (isCurrent(version) && url) setState({ key: requestKey, src: url, status: "ready" });
-        else if (isCurrent(version)) setState({ key: requestKey, src: null, status: "failed" });
-      } catch {
+        if (isCurrent(version) && url) setState({ key: requestKey, src: url, status: "available" });
+        else if (isCurrent(version)) {
+          reportPhotoMediaDiagnostic("unavailable", rendition);
+          setState({ key: requestKey, src: null, status: "unavailable" });
+        }
+      } catch (error) {
         if (!isCurrent(version)) return;
-        if (rendition !== "original") {
-          try {
-            const original = await resolvePhotoUrl(photoRef, "original", { refresh: true });
-            if (isCurrent(version) && original)
-              setState({ key: requestKey, src: original, status: "ready" });
-            else if (isCurrent(version)) setState({ key: requestKey, src: null, status: "failed" });
-          } catch {
-            if (isCurrent(version)) setState({ key: requestKey, src: null, status: "failed" });
-          }
+        if (error instanceof Error && error.name === "PhotoRenditionUnavailableError") {
+          reportPhotoMediaDiagnostic("unavailable", rendition);
+          setState({ key: requestKey, src: null, status: "unavailable" });
         } else {
-          setState({ key: requestKey, src: null, status: "failed" });
+          reportPhotoMediaDiagnostic("error", rendition);
+          setState({ key: requestKey, src: null, status: "error" });
         }
       }
     };
@@ -135,6 +151,7 @@ export function PhotoImage({
       resolveVersion.current += 1;
     };
   }, [
+    blockedDirectMaster,
     backendStoragePath,
     isNearViewport,
     loading,
@@ -148,30 +165,17 @@ export function PhotoImage({
 
   const currentState = state?.key === requestKey ? state : null;
   const visibleSrc = currentState?.src ?? null;
-  const failed = currentState?.status === "failed";
+  const failed = currentState?.status === "error" || currentState?.status === "unavailable";
   const loadingNearViewport = currentState?.status === "loading" && isNearViewport;
 
   const handleImageError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     onError?.(event);
-    if (!backendStoragePath || currentState?.status !== "ready" || imageFailureCount.current >= 2) {
-      setState({ key: requestKey, src: null, status: "failed" });
+    if (!backendStoragePath || currentState?.status !== "available") {
+      setState({ key: requestKey, src: null, status: "error" });
       return;
     }
-    imageFailureCount.current += 1;
-    const fallbackRendition: PhotoRendition =
-      imageFailureCount.current === 1 && rendition !== "original" ? rendition : "original";
-    const version = ++resolveVersion.current;
-    void resolvePhotoUrl(photoRef, fallbackRendition, { refresh: true })
-      .then((url) => {
-        if (activeRequestKey.current === requestKey && resolveVersion.current === version && url) {
-          setState({ key: requestKey, src: url, status: "ready" });
-        }
-      })
-      .catch(() => {
-        if (activeRequestKey.current === requestKey && resolveVersion.current === version) {
-          setState({ key: requestKey, src: null, status: "failed" });
-        }
-      });
+    reportPhotoMediaDiagnostic("error", rendition);
+    setState({ key: requestKey, src: null, status: "error" });
   };
 
   const placeholderClass = cn("bg-secondary", className);
@@ -182,6 +186,7 @@ export function PhotoImage({
           role="status"
           aria-live="polite"
           className={cn("grid place-items-center bg-secondary p-3 text-center", className)}
+          data-photo-state="loading"
         >
           <span className="text-xs text-muted-foreground">{loadingMessage}</span>
         </div>
@@ -192,6 +197,7 @@ export function PhotoImage({
         <div
           role="alert"
           className={cn("grid place-items-center gap-2 bg-secondary p-3 text-center", className)}
+          data-photo-state={currentState?.status}
         >
           <span className="text-xs text-muted-foreground">{failureMessage}</span>
           <button
@@ -213,6 +219,7 @@ export function PhotoImage({
         role="img"
         className={placeholderClass}
         style={style}
+        data-photo-state={currentState?.status ?? "loading"}
       />
     );
   }
@@ -228,6 +235,7 @@ export function PhotoImage({
       loading={loading}
       className={className}
       style={style}
+      data-photo-state="available"
       onError={handleImageError}
       onLoad={(event) => {
         if (backendStoragePath) {

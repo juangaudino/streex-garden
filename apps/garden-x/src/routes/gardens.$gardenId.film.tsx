@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { cn } from "@/lib/utils";
 import { ui } from "@/lib/ui-copy";
+import { visibleFilmFrames } from "@/lib/film-frame";
 
 export const Route = createFileRoute("/gardens/$gardenId/film")({
   head: () => ({ meta: [
@@ -32,6 +33,7 @@ function GardenFilm() {
   const [frame, setFrame] = useState(0);
   const [playing, setPlaying] = useState(false);
   const current = moments[Math.min(frame, Math.max(moments.length - 1, 0))];
+  const visibleFrames = visibleFilmFrames(moments, frame);
   const plant = current ? plants.find((item) => item.id === current.plantId) : undefined;
   useEffect(() => {
     if (!playing || moments.length < 2) return;
@@ -47,7 +49,7 @@ function GardenFilm() {
       <div>
         <div className="relative overflow-hidden rounded-3xl bg-ink shadow-lift">
           <div className="relative aspect-[4/5] sm:aspect-[16/10]">
-            {moments.map((moment, index) => <PhotoImage key={moment.id} photo={moment} alt={moment.caption} rendition="display" className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-1000", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} loading={index === frame ? "eager" : "lazy"} />)}
+            {visibleFrames.map(({ item: moment, index }) => <PhotoImage key={moment.id} photo={moment} alt={moment.caption} rendition="display" className={cn("absolute inset-0 h-full w-full object-cover transition-all duration-1000", index === frame ? "scale-100 opacity-100" : "scale-105 opacity-0")} loading={index === frame ? "eager" : "lazy"} />)}
             <div className="veil absolute inset-0" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground"><p className="text-xs opacity-75">{frame + 1} {ui(language, "of")} {moments.length} · {current ? formatDate(current.daysAgo) : ui(language, "noMoments")}</p><h2 className="mt-1 font-display text-3xl">{plant?.name ?? garden.name}</h2><p className="mt-1 text-sm opacity-80">{current?.caption}</p></div>
           </div>

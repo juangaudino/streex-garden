@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
+import { IncompleteGardenPhotoProcessingError } from "@/lib/garden-backend";
 import {
   formatDate,
   gardenCoverPhoto,
@@ -324,8 +325,25 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, i
         },
       );
       finish(successTitle, successLines);
-    } catch {
-      toast.error(ui(language, attachedPhoto ? "momentPhotoSaveFailed" : "momentSaveFailed"));
+    } catch (error) {
+      const showSaveFailure = (failure: unknown) => {
+        if (failure instanceof IncompleteGardenPhotoProcessingError && attachedPhoto) {
+          toast.error(ui(language, "momentPhotoSaveFailed"), {
+            action: {
+              label: ui(language, "retryPhoto"),
+              onClick: () => {
+                void store
+                  .retryPendingMomentPhoto(failure.retry, attachedPhoto.photo)
+                  .then(() => finish(successTitle, successLines))
+                  .catch(showSaveFailure);
+              },
+            },
+          });
+          return;
+        }
+        toast.error(ui(language, attachedPhoto ? "momentPhotoSaveFailed" : "momentSaveFailed"));
+      };
+      showSaveFailure(error);
     }
   };
 

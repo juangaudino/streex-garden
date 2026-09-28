@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 import { useGarden } from "@/lib/garden-store";
+import { IncompleteGardenPhotoProcessingError } from "@/lib/garden-backend";
 import type { EventType, MomentLifeEvent, Photo, Plant } from "@/lib/garden-data";
 import {
   contextualLifeEventSuggestions,
@@ -194,8 +195,28 @@ function JournalEntrySheet({
       );
       toast.success(ui(language, "journalMomentSaved"));
       onClose();
-    } catch {
-      toast.error(ui(language, photoDataUrl ? "momentPhotoSaveFailed" : "momentSaveFailed"));
+    } catch (error) {
+      const showSaveFailure = (failure: unknown) => {
+        if (failure instanceof IncompleteGardenPhotoProcessingError && attachedPhoto) {
+          toast.error(ui(language, "momentPhotoSaveFailed"), {
+            action: {
+              label: ui(language, "retryPhoto"),
+              onClick: () => {
+                void store
+                  .retryPendingMomentPhoto(failure.retry, attachedPhoto)
+                  .then(() => {
+                    toast.success(ui(language, "journalMomentSaved"));
+                    onClose();
+                  })
+                  .catch(showSaveFailure);
+              },
+            },
+          });
+          return;
+        }
+        toast.error(ui(language, photoDataUrl ? "momentPhotoSaveFailed" : "momentSaveFailed"));
+      };
+      showSaveFailure(error);
     } finally {
       setSaving(false);
     }

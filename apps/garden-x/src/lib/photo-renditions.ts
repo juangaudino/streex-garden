@@ -1,11 +1,15 @@
+import { GARDEN_PHOTO_MEDIA_POLICY } from "./photo-media-policy";
+
 export type PhotoRenditionBytes = {
   preview?: Uint8Array;
   display?: Uint8Array;
 };
 
-export type PreparedPhotoRenditions = {
+export type PreparedGardenPhotoMedia = {
   width: number;
   height: number;
+  contentType: "image/jpeg";
+  master: Uint8Array;
   renditions: PhotoRenditionBytes;
 };
 
@@ -27,57 +31,76 @@ function dimensionsWithin(width: number, height: number, maxEdge: number) {
   };
 }
 
-async function jpegRendition(
-  bitmap: ImageBitmap,
-  maxEdge: number,
-  quality: number,
-  originalByteLength: number,
-): Promise<Uint8Array | undefined> {
+async function jpeg(bitmap: ImageBitmap, maxEdge: number, quality: number): Promise<Uint8Array> {
   const size = dimensionsWithin(bitmap.width, bitmap.height, maxEdge);
   const canvas = document.createElement("canvas");
   canvas.width = size.width;
   canvas.height = size.height;
   const context = canvas.getContext("2d", { alpha: false });
-  if (!context) return undefined;
+  if (!context) throw new Error("Photo canvas is unavailable.");
   context.drawImage(bitmap, 0, 0, size.width, size.height);
   const blob = await new Promise<Blob | null>((resolve) =>
     canvas.toBlob(resolve, "image/jpeg", quality),
   );
-  if (!blob || blob.size === 0 || blob.size >= originalByteLength) return undefined;
+  if (!blob || blob.size === 0 || blob.type !== "image/jpeg") {
+    throw new Error("Photo JPEG encoding failed.");
+  }
   return new Uint8Array(await blob.arrayBuffer());
 }
 
 /**
- * Creates private display sidecars without changing the uploaded original.
- * Unsupported browser decoders or canvas encoders simply keep the original-only
- * path, which remains valid for Garden's existing photo resolver.
+ * Normalizes a phone image once into the Garden master and its display tiers.
+ * createImageBitmap applies the source orientation before drawing to canvas;
+ * canvas encoding strips EXIF/GPS and other source metadata.
  */
-export async function preparePhotoRenditions(
+export async function prepareGardenPhotoMedia(
   bytes: Uint8Array,
   mime: string,
-): Promise<PreparedPhotoRenditions | null> {
+): Promise<PreparedGardenPhotoMedia | null> {
   if (typeof createImageBitmap !== "function" || typeof document === "undefined") return null;
   let bitmap: ImageBitmap | null = null;
   try {
-    bitmap = await createImageBitmap(new Blob([bytes.slice().buffer], { type: mime }));
+    bitmap = await createImageBitmap(new Blob([bytes.slice().buffer], { type: mime }), {
+      imageOrientation: GARDEN_PHOTO_MEDIA_POLICY.orientation,
+    });
   } catch {
     return null;
   }
   try {
-    const [preview, display] = await Promise.all([
-      jpegRendition(bitmap, 640, 0.68, bytes.byteLength),
-      jpegRendition(bitmap, 1600, 0.78, bytes.byteLength),
-    ]);
+    // Encode tiers serially so a high-resolution phone image does not create
+    // three full canvas surfaces at once on memory-constrained devices.
+    const master = await jpeg(
+      bitmap,
+      GARDEN_PHOTO_MEDIA_POLICY.master.maxEdge,
+      GARDEN_PHOTO_MEDIA_POLICY.master.quality,
+    );
+    const display = await jpeg(
+      bitmap,
+      GARDEN_PHOTO_MEDIA_POLICY.display.maxEdge,
+      GARDEN_PHOTO_MEDIA_POLICY.display.quality,
+    );
+    const preview = await jpeg(
+      bitmap,
+      GARDEN_PHOTO_MEDIA_POLICY.preview.maxEdge,
+      GARDEN_PHOTO_MEDIA_POLICY.preview.quality,
+    );
     return {
-      width: bitmap.width,
-      height: bitmap.height,
+      width: dimensionsWithin(bitmap.width, bitmap.height, GARDEN_PHOTO_MEDIA_POLICY.master.maxEdge)
+        .width,
+      height: dimensionsWithin(
+        bitmap.width,
+        bitmap.height,
+        GARDEN_PHOTO_MEDIA_POLICY.master.maxEdge,
+      ).height,
+      contentType: "image/jpeg",
+      master,
       renditions: {
-        ...(preview ? { preview } : {}),
-        ...(display ? { display } : {}),
+        preview,
+        display,
       },
     };
-  } catch {
-    return { width: bitmap.width, height: bitmap.height, renditions: {} };
+  } catch (error) {
+    throw error instanceof Error ? error : new Error("Photo media processing failed.");
   } finally {
     bitmap?.close();
   }

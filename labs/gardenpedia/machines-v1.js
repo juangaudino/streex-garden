@@ -6,8 +6,8 @@
   }[char]));
   const language = () => document.documentElement.lang === "en" ? "en" : "es";
   const copy = {
-    en: { title: "My Machines", intro: "Your Garden X systems, with public model specifications kept separate from each private unit.", unit: "MY UNIT", noModel: "No linked public model", custom: "Custom Garden X system", garden: "Garden", positions: "Positions", status: "Status", active: "Active", inactive: "Inactive", modelSpecs: "Public model specifications", source: "Model source", empty: "No Garden X system instances are available for this account.", unavailable: "Canonical machine data is temporarily unavailable.", synced: "Garden X system instances", loading: "Connecting to Garden X…", modelUnknown: "This unit has no proven Gardenpedia model link." },
-    es: { title: "Mis máquinas", intro: "Tus sistemas de Garden X, con las especificaciones públicas del modelo separadas de cada unidad privada.", unit: "MI UNIDAD", noModel: "Sin modelo público vinculado", custom: "Sistema personalizado de Garden X", garden: "Jardín", positions: "Posiciones", status: "Estado", active: "Activo", inactive: "Inactivo", modelSpecs: "Especificaciones públicas del modelo", source: "Fuente del modelo", empty: "Esta cuenta no tiene instancias de sistemas disponibles en Garden X.", unavailable: "Los datos canónicos de máquinas no están disponibles temporalmente.", synced: "Instancias de sistemas de Garden X", loading: "Conectando con Garden X…", modelUnknown: "Esta unidad no tiene un vínculo demostrado a un modelo Gardenpedia." },
+    en: { title: "My Machines", intro: "Your Garden X systems, with public model specifications kept separate from each private unit.", unit: "MY UNIT", noModel: "No linked public model", custom: "Custom Garden X system", garden: "Garden", positions: "Positions", status: "Status", active: "Active", inactive: "Inactive", modelSpecs: "Public model specifications", source: "Model source", empty: "No Garden X system instances are available for this account.", unavailable: "Canonical machine data is temporarily unavailable.", synced: "Garden X system instances", loading: "Connecting to Garden X…", signInRequired: "Sign in to Garden X to see your private machines.", modelUnknown: "This unit has no proven Gardenpedia model link." },
+    es: { title: "Mis máquinas", intro: "Tus sistemas de Garden X, con las especificaciones públicas del modelo separadas de cada unidad privada.", unit: "MI UNIDAD", noModel: "Sin modelo público vinculado", custom: "Sistema personalizado de Garden X", garden: "Jardín", positions: "Posiciones", status: "Estado", active: "Activo", inactive: "Inactivo", modelSpecs: "Especificaciones públicas del modelo", source: "Fuente del modelo", empty: "Esta cuenta no tiene instancias de sistemas disponibles en Garden X.", unavailable: "Los datos canónicos de máquinas no están disponibles temporalmente.", synced: "Instancias de sistemas de Garden X", loading: "Conectando con Garden X…", signInRequired: "Inicia sesión en Garden X para ver tus máquinas privadas.", modelUnknown: "Esta unidad no tiene un vínculo demostrado a un modelo Gardenpedia." },
   };
 
   let catalog = null;
@@ -31,6 +31,10 @@
     $("#machineResultCount").textContent = `${instances.length} ${t.title.toLocaleLowerCase()}`;
     if (mode === "error") {
       grid.innerHTML = `<div class="empty-state">${t.unavailable}</div>`;
+      return;
+    }
+    if (mode === "signed_out") {
+      grid.innerHTML = `<div class="empty-state">${t.signInRequired}</div>`;
       return;
     }
     if (!instances.length) {
@@ -70,7 +74,11 @@
     const tab = $("#machinesTab");
     const session = await window.GARDEN_X_AUTH?.getSession?.();
     if (!session?.user?.id) {
-      if (tab) tab.hidden = true;
+      catalog = { models: [] };
+      instances = [];
+      mode = "signed_out";
+      if (tab) tab.hidden = false;
+      render();
       return;
     }
     catalog = await fetch("./data/machine-inventory-v1.json").then((response) => response.json());

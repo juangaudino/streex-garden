@@ -146,6 +146,8 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(machines).toContain("const name = instance.name || definition?.name");
     expect(machines).toContain("const pods = instance.positions ?? definition?.pods");
     expect(machines).not.toContain("garden_lab.machine_state");
+    expect(machines).toContain('mode = "signed_out"');
+    expect(machines).toContain("signInRequired");
   });
 
   it("keeps request/proposal private and curator-only operations server-authorized", () => {

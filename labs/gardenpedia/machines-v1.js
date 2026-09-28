@@ -72,6 +72,8 @@
   async function load() {
     const t = copy[language()];
     const tab = $("#machinesTab");
+    tab?.addEventListener("click", () => setMachineView(true));
+    ["#guideTab", "#seedsTab"].forEach((selector) => $(selector)?.addEventListener("click", () => setMachineView(false)));
     const session = await window.GARDEN_X_AUTH?.getSession?.();
     if (!session?.user?.id) {
       catalog = { models: [] };
@@ -95,8 +97,6 @@
       mode = "error";
     }
     render();
-    $("#machinesTab")?.addEventListener("click", () => setMachineView(true));
-    ["#guideTab", "#seedsTab"].forEach((selector) => $(selector)?.addEventListener("click", () => setMachineView(false)));
     document.querySelectorAll("[data-language]").forEach((button) => button.addEventListener("click", () => setTimeout(render, 0)));
     if (localStorage.getItem("gardenpediaPublicLibraryView") === "machines") setMachineView(true);
   }

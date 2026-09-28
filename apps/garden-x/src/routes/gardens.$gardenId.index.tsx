@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
-import { activeGridCells, allGridCells } from "@/lib/custom-system";
+import { physicalGridCells, physicalPositionCellMap } from "@/lib/custom-system";
 import { ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
@@ -246,13 +246,17 @@ function GardenDetail() {
                       const levelPods = pods.filter(
                         ({ position }) => (position.levelNumber ?? 1) === levelNumber,
                       );
-                      const podByCoordinate = new Map(
-                        levelPods.map((pod) => [
-                          `${pod.position.rowNumber ?? pod.position.gridY ?? 1}:${pod.position.columnNumber ?? pod.position.gridX ?? 1}`,
-                          pod,
-                        ]),
+                      const podByCoordinate = physicalPositionCellMap(
+                        level,
+                        levelPods.map(({ position }) => position),
                       );
-                      const activeCells = activeGridCells(level);
+                      const podByPositionId = new Map(
+                        levelPods.map((pod) => [pod.position.id, pod]),
+                      );
+                      const physicalCells = physicalGridCells(
+                        level,
+                        levelPods.map(({ position }) => position),
+                      );
                       return (
                         <div key={levelNumber}>
                           {podLevels.length > 1 ? (
@@ -266,28 +270,20 @@ function GardenDetail() {
                               mapColumns(level.columns),
                             )}
                           >
-                            {allGridCells(level).map((cell) => {
+                            {physicalCells.map((cell) => {
                               const cellKey = `${cell.row}:${cell.column}`;
-                              const isActive = activeCells.some(
-                                (active) =>
-                                  active.row === cell.row && active.column === cell.column,
-                              );
-                              if (!isActive) {
-                                return (
-                                  <span
-                                    key={cellKey}
-                                    aria-hidden="true"
-                                    className="aspect-square"
-                                  />
-                                );
-                              }
-                              const pod = podByCoordinate.get(cellKey);
+                              const mappedPosition = podByCoordinate.get(cellKey);
+                              const pod = mappedPosition?.id
+                                ? podByPositionId.get(mappedPosition.id)
+                                : undefined;
                               if (!pod)
                                 return (
-                                  <span
+                                  <button
                                     key={cellKey}
-                                    aria-hidden="true"
-                                    className="aspect-square"
+                                    type="button"
+                                    aria-label={`${ui(language, "positionLabel")} ${cell.row}:${cell.column}: ${ui(language, "emptyPosition")}`}
+                                    onClick={() => setSelectedPositionKey(`${garden.id}:${cellKey}`)}
+                                    className="aspect-square rounded-xl border border-dashed border-border bg-background/40"
                                   />
                                 );
                               const { label, plant, plants: positionPlants, position } = pod;

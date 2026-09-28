@@ -5,6 +5,9 @@ const state = {
   visuals: {},
   seedInventory: {},
   seedPackages: [],
+  myPlants: [],
+  myPlantsMode: "loading",
+  machineCatalog: { models: [] },
   accountMode: "signed_out",
   neighborData: { meta: {}, profiles: {} },
   seedUserState: readLocalJson("gardenLabsSeedStateV1", {}),
@@ -12,6 +15,7 @@ const state = {
   query: "",
   category: "all",
   seedQuery: "",
+  publicSeedQuery: "",
   seedFilter: "all",
   view: localStorage.getItem("gardenLabsLibraryView") || "guide",
   language: localStorage.getItem("growGuideLanguage") || "es",
@@ -39,13 +43,29 @@ const refs = {
   languageButtons: [...document.querySelectorAll("[data-language]")],
   translatable: [...document.querySelectorAll("[data-i18n]")],
   guideTab: document.querySelector("#guideTab"),
+  publicSeedsTab: document.querySelector("#publicSeedsTab"),
+  publicMachinesTab: document.querySelector("#publicMachinesTab"),
+  myPlantsTab: document.querySelector("#myPlantsTab"),
   seedsTab: document.querySelector("#seedsTab"),
+  machinesTab: document.querySelector("#machinesTab"),
   guideSurface: document.querySelector("#guideSurface"),
+  publicSeedsSurface: document.querySelector("#publicSeedsSurface"),
+  publicMachinesSurface: document.querySelector("#publicMachinesSurface"),
+  myPlantsSurface: document.querySelector("#myPlantsSurface"),
   seedsSurface: document.querySelector("#seedsSurface"),
+  machinesSurface: document.querySelector("#machinesSurface"),
   seedSearchInput: document.querySelector("#seedSearchInput"),
+  publicSeedSearchInput: document.querySelector("#publicSeedSearchInput"),
   seedFilters: document.querySelector("#seedFilters"),
   seedGrid: document.querySelector("#seedGrid"),
   seedResultCount: document.querySelector("#seedResultCount"),
+  publicSeedGrid: document.querySelector("#publicSeedGrid"),
+  publicSeedResultCount: document.querySelector("#publicSeedResultCount"),
+  publicMachineGrid: document.querySelector("#publicMachineGrid"),
+  publicMachineResultCount: document.querySelector("#publicMachineResultCount"),
+  myPlantGrid: document.querySelector("#myPlantGrid"),
+  myPlantResultCount: document.querySelector("#myPlantResultCount"),
+  myPlantStorageNote: document.querySelector("#myPlantStorageNote"),
   addSeedButton: document.querySelector("#addSeedButton"),
   seedDialog: document.querySelector("#seedDialog"),
   seedDetail: document.querySelector("#seedDetail"),
@@ -65,7 +85,7 @@ const ui = {
     heroTitle: "Shared growing knowledge and your personal inventory, without mixing their facts.",
     heroBody: "Gardenpedia provides curated identities and growing guidance. My Seeds and My Machines show the private items in your Garden X account.",
     labProofExperiment: "Curated knowledge", labProofUserZero: "Your Garden X account", labProofSeparation: "Separate sources of truth",
-    guideTab: "Library", seedsTab: "My Seeds", guideEyebrow: "GARDEN LIBRARY · GUIDE", guideTitle: "Grow Guide", guideIntro: "Structured knowledge for knowing when, where and how much to intervene in each crop.",
+    exploreLabel: "Explore", myLabel: "My", publicPlants: "Plants", publicSeeds: "Seeds", publicMachines: "Machines", myPlants: "My Plants", mySeeds: "My Seeds", myMachines: "My Machines", publicSeedsEyebrow: "GARDENPEDIA · SEEDS", publicSeedsTitle: "Seeds", publicSeedsIntro: "Public seed knowledge linked to published plant identities. Package ownership stays private in My Seeds.", publicSeedsCatalog: "PUBLIC KNOWLEDGE", publicSeedsBoundary: "No private package data is shown here.", publicSeedsSearch: "Search seeds…", publicSeedKnowledge: "Seed knowledge linked to this plant identity.", publicMachinesEyebrow: "GARDENPEDIA · MACHINES", publicMachinesTitle: "Machines", publicMachinesIntro: "Public growing-machine models and specifications. Owned physical units stay private in My Machines.", publicMachinesCatalog: "PUBLIC KNOWLEDGE", myPlantsEyebrow: "GARDENPEDIA · MY PLANTS", myPlantsTitle: "My Plants", myPlantsIntro: "Your real Garden X plants, linked to public Gardenpedia identities and their existing Journal.", myPlantsCatalog: "YOUR GARDEN X PLANTS", myPlantsSignIn: "Sign in to Garden X to see your private plants.", myPlantsUnavailable: "Your Garden X plants could not be loaded.", myPlantsEmpty: "No Garden X plants are available for this account.", guideTab: "Plants", seedsTab: "My Seeds", guideEyebrow: "GARDENPEDIA · PLANTS", guideTitle: "Plants", guideIntro: "Published plant identities, guides, evidence and Garden-specific adaptations.",
     seedsEyebrow: "GARDENPEDIA · MY SEEDS", seedsTitle: "My seeds", seedsIntro: "Your private seed packages, linked to shared Gardenpedia identities when you confirm a match.",
     evidenceLegend: "Evidence legend", sourceBacked: "Source-backed", gardenAdaptation: "Garden adaptation", needsValidation: "Needs validation",
     searchPlaceholder: "Search basil, albahaca, lettuce, Jolly Jester…", filterLabel: "Guide filters", library: "GARDENPEDIA LIBRARY", version: "43 identities · ES/EN",
@@ -92,7 +112,7 @@ const ui = {
     heroTitle: "Conocimiento de cultivo e inventario personal, sin mezclar sus datos.",
     heroBody: "Gardenpedia aporta identidades y guías de cultivo curadas. Mis semillas y Mis máquinas muestran los elementos privados de tu cuenta Garden X.",
     labProofExperiment: "Conocimiento curado", labProofUserZero: "Tu cuenta Garden X", labProofSeparation: "Fuentes de verdad separadas",
-    guideTab: "Biblioteca", seedsTab: "Mis semillas", guideEyebrow: "GARDEN LIBRARY · GUÍA", guideTitle: "Grow Guide", guideIntro: "Conocimiento estructurado para saber cuándo, dónde y cuánto intervenir en cada cultivo.",
+    exploreLabel: "Explorar", myLabel: "Mi", publicPlants: "Plantas", publicSeeds: "Semillas", publicMachines: "Máquinas", myPlants: "Mis plantas", mySeeds: "Mis semillas", myMachines: "Mis máquinas", publicSeedsEyebrow: "GARDENPEDIA · SEMILLAS", publicSeedsTitle: "Semillas", publicSeedsIntro: "Conocimiento público de semillas vinculado a identidades publicadas. La propiedad de paquetes permanece privada en Mis semillas.", publicSeedsCatalog: "CONOCIMIENTO PÚBLICO", publicSeedsBoundary: "Aquí no se muestran datos de paquetes privados.", publicSeedsSearch: "Busca semillas…", publicSeedKnowledge: "Conocimiento de semilla vinculado a esta identidad de planta.", publicMachinesEyebrow: "GARDENPEDIA · MÁQUINAS", publicMachinesTitle: "Máquinas", publicMachinesIntro: "Modelos y especificaciones públicas de sistemas de cultivo. Las unidades físicas permanecen privadas en Mis máquinas.", publicMachinesCatalog: "CONOCIMIENTO PÚBLICO", myPlantsEyebrow: "GARDENPEDIA · MIS PLANTAS", myPlantsTitle: "Mis plantas", myPlantsIntro: "Tus plantas reales de Garden X, vinculadas a identidades públicas de Gardenpedia y a su Journal existente.", myPlantsCatalog: "TUS PLANTAS GARDEN X", myPlantsSignIn: "Inicia sesión en Garden X para ver tus plantas privadas.", myPlantsUnavailable: "No se pudieron cargar tus plantas de Garden X.", myPlantsEmpty: "Esta cuenta no tiene plantas de Garden X disponibles.", guideTab: "Plantas", seedsTab: "Mis semillas", guideEyebrow: "GARDENPEDIA · PLANTAS", guideTitle: "Plantas", guideIntro: "Identidades de plantas publicadas, guías, evidencia y adaptaciones de Garden.",
     seedsEyebrow: "GARDENPEDIA · MIS SEMILLAS", seedsTitle: "Mis semillas", seedsIntro: "Paquetes privados de tu cuenta, vinculados a identidades Gardenpedia cuando confirmas una coincidencia.",
     evidenceLegend: "Leyenda de evidencia", sourceBacked: "Respaldado por fuente", gardenAdaptation: "Adaptación de Garden", needsValidation: "Necesita validación",
     searchPlaceholder: "Busca albahaca, basil, lechuga, Jolly Jester…", filterLabel: "Filtros de la guía", library: "BIBLIOTECA GARDENPEDIA", version: "43 identidades · ES/EN",
@@ -147,9 +167,11 @@ async function init() {
   const inventory = await inventoryResponse.json();
   state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
   state.neighborData = await neighborResponse.json();
+  state.machineCatalog = await fetch(assetUrl("data/machine-inventory-v1.json")).then((response) => response.json());
   if (refs.seedsTab) refs.seedsTab.hidden = false;
   bindEvents();
   applyLanguage();
+  await loadMyPlants();
   switchView(state.view, false);
   void loadGardenpediaWorkflow();
   const requestedPlantId = decodeURIComponent(window.location.hash.replace(/^#/, "")).trim();
@@ -163,6 +185,7 @@ async function init() {
 function bindEvents() {
   refs.searchInput.addEventListener("input", (event) => { state.query = event.target.value.trim().toLowerCase(); renderPlants(); });
   refs.seedSearchInput.addEventListener("input", (event) => { state.seedQuery = event.target.value.trim().toLowerCase(); renderSeeds(); });
+  refs.publicSeedSearchInput?.addEventListener("input", (event) => { state.publicSeedQuery = event.target.value.trim().toLowerCase(); renderPublicSeeds(); });
   refs.closeDialog.addEventListener("click", () => refs.dialog.close());
   refs.dialog.addEventListener("close", () => { state.activePlantId = null; });
   refs.dialog.addEventListener("click", (event) => { if (event.target === refs.dialog) refs.dialog.close(); });
@@ -369,6 +392,7 @@ function applyLanguage() {
   refs.translatable.forEach((element) => { const key = element.dataset.i18n; if (text[key]) element.textContent = text[key]; });
   refs.searchInput.placeholder = text.searchPlaceholder;
   refs.seedSearchInput.placeholder = text.seedSearchPlaceholder;
+  if (refs.publicSeedSearchInput) refs.publicSeedSearchInput.placeholder = text.publicSeedsSearch;
   document.querySelector("#seedsSurface .surface-intro h2")?.replaceChildren(document.createTextNode(text.seedsTitle));
   const seedIntro = document.querySelector("#seedsSurface .surface-intro p:last-child");
   if (seedIntro) seedIntro.textContent = text.seedsIntro;
@@ -384,6 +408,9 @@ function applyLanguage() {
   buildFilters();
   buildSeedFilters();
   renderPlants();
+  renderPublicSeeds();
+  renderPublicMachines();
+  renderMyPlants();
   renderSeeds();
   if (state.activePlantId) {
     const activePlant = state.plants.find((plant) => plant.id === state.activePlantId);
@@ -397,14 +424,27 @@ function applyLanguage() {
 }
 
 function switchView(view, persist = true) {
-  state.view = view === "seeds" ? "seeds" : "guide";
-  refs.guideSurface.hidden = state.view !== "guide";
-  refs.seedsSurface.hidden = state.view !== "seeds";
-  refs.guideTab.classList.toggle("active", state.view === "guide");
-  refs.seedsTab.classList.toggle("active", state.view === "seeds");
-  refs.guideTab.setAttribute("aria-pressed", String(state.view === "guide"));
-  refs.seedsTab.setAttribute("aria-pressed", String(state.view === "seeds"));
+  const allowed = new Set(["plants", "public-seeds", "public-machines", "my-plants", "seeds", "machines"]);
+  state.view = allowed.has(view) ? view : "plants";
+  const surfaces = {
+    plants: refs.guideSurface,
+    "public-seeds": refs.publicSeedsSurface,
+    "public-machines": refs.publicMachinesSurface,
+    "my-plants": refs.myPlantsSurface,
+    seeds: refs.seedsSurface,
+    machines: refs.machinesSurface,
+  };
+  Object.entries(surfaces).forEach(([key, surface]) => { if (surface) surface.hidden = state.view !== key; });
+  [refs.guideTab, refs.publicSeedsTab, refs.publicMachinesTab, refs.myPlantsTab, refs.seedsTab, refs.machinesTab].forEach((button) => {
+    if (!button) return;
+    const active = button.dataset.view === state.view;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
   if (persist) localStorage.setItem("gardenLabsLibraryView", state.view);
+  if (state.view === "public-seeds") renderPublicSeeds();
+  if (state.view === "public-machines") renderPublicMachines();
+  if (state.view === "my-plants") renderMyPlants();
   if (state.view === "seeds") renderSeeds();
 }
 
@@ -491,6 +531,99 @@ function renderPlants() {
     fragment.querySelector(".plant-card-button").addEventListener("click", () => openPlant(plant));
     refs.plantGrid.append(fragment);
   });
+}
+
+function getPublicSeedRecords() {
+  const unique = new Map(state.plants.map((plant) => [plant.id, plant]));
+  return [...unique.values()].filter((plant) => {
+    const haystack = [plant.name, plant.spanishName, plant.scientificName, plant.variety, ...(plant.aliases || []), ...(plant.tags || [])].filter(Boolean).join(" ").toLowerCase();
+    return !state.publicSeedQuery || haystack.includes(state.publicSeedQuery);
+  });
+}
+
+function renderPublicSeeds() {
+  if (!refs.publicSeedGrid || !refs.publicSeedResultCount) return;
+  const text = ui[state.language];
+  const seeds = getPublicSeedRecords();
+  refs.publicSeedResultCount.textContent = `${seeds.length} ${seeds.length === 1 ? text.plant : text.plants}`;
+  refs.publicSeedGrid.innerHTML = "";
+  if (!seeds.length) {
+    refs.publicSeedGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.noMatches)}</div>`;
+    return;
+  }
+  seeds.forEach((plant) => {
+    const localized = getLocalizedPlant(plant);
+    const primaryName = state.language === "es" ? (plant.spanishName || plant.name) : plant.name;
+    const secondaryName = state.language === "es" ? (plant.spanishName ? plant.name : "") : plant.spanishName;
+    const article = document.createElement("article");
+    article.className = "plant-card";
+    article.innerHTML = `<button class="plant-card-button" type="button"><div class="plant-card-top"><span class="plant-emoji">${escapeHtml(plant.emoji || "🌱")}</span><span class="category-pill">${escapeHtml(text.categories[plant.category] || plant.category || "")}</span></div><div><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h4 class="plant-name">${escapeHtml(primaryName)}</h4><p class="plant-scientific">${escapeHtml(plant.scientificName || "")}</p></div><div class="plant-card-footer"><span class="guide-status">🌰 ${escapeHtml(text.publicSeedKnowledge)}</span><span>→</span></div></button>`;
+    article.querySelector("button")?.addEventListener("click", () => openPlant(plant));
+    refs.publicSeedGrid.append(article);
+  });
+}
+
+function renderPublicMachines() {
+  if (!refs.publicMachineGrid || !refs.publicMachineResultCount) return;
+  const text = ui[state.language];
+  const models = Array.isArray(state.machineCatalog?.models) ? state.machineCatalog.models : [];
+  refs.publicMachineResultCount.textContent = `${models.length} ${text.publicMachines.toLocaleLowerCase()}`;
+  refs.publicMachineGrid.innerHTML = models.map((model, index) => `<article class="machine-card"><button class="machine-card-button" type="button" data-public-machine-index="${index}"><div class="machine-photo machine-${escapeHtml(model.color || "gray")}"><span>${escapeHtml(model.brand || "Gardenpedia")}</span>${model.pods != null ? `<strong>${escapeHtml(model.pods)}</strong><small>${escapeHtml(text.positions || "PODS")}</small>` : ""}</div><div><p class="machine-brand">${escapeHtml(text.publicMachines)}</p><h4>${escapeHtml(model.name || model.model || "Machine")}</h4><p class="muted">${escapeHtml(model.model || "")}</p></div><span class="machine-card-arrow">→</span></button></article>`).join("");
+  refs.publicMachineGrid.querySelectorAll("[data-public-machine-index]").forEach((button) => button.addEventListener("click", () => {
+    const model = models[Number(button.dataset.publicMachineIndex)];
+    if (!model) return;
+    const details = [model.pods != null ? `${text.positions || "Positions"}: ${model.pods}` : "", model.tankLiters != null ? `Tank: ${typeof model.tankLiters === "object" ? `${model.tankLiters.min}–${model.tankLiters.max}` : model.tankLiters} L` : "", model.sourceQuality || ""].filter(Boolean).join(" · ");
+    refs.detail.innerHTML = `<section class="detail-hero"><div class="detail-icon">⚙️</div><div class="detail-title"><p class="plant-spanish">${escapeHtml(model.brand || "Gardenpedia")}</p><h2>${escapeHtml(model.name || model.model || "Machine")}</h2><p class="scientific">${escapeHtml(model.model || "")}</p></div><p class="detail-summary">${escapeHtml(details)}</p></section>${model.referenceUrl ? `<p><a class="source-link" href="${escapeAttribute(model.referenceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(text.openSource)} ↗</a></p>` : ""}`;
+    refs.dialog.showModal();
+  }));
+}
+
+async function loadMyPlants() {
+  if (state.accountMode !== "ready" || !window.GARDENPEDIA_ACCOUNT?.listPlants) {
+    state.myPlants = [];
+    state.myPlantsMode = "signed_out";
+    renderMyPlants();
+    return;
+  }
+  state.myPlantsMode = "loading";
+  renderMyPlants();
+  try {
+    const result = await window.GARDENPEDIA_ACCOUNT.listPlants();
+    state.myPlants = Array.isArray(result.plants) ? result.plants : [];
+    state.myPlantsMode = "ready";
+  } catch (error) {
+    console.warn("Gardenpedia plants could not be loaded", error);
+    state.myPlants = [];
+    state.myPlantsMode = "error";
+  }
+  renderMyPlants();
+}
+
+function renderMyPlants() {
+  if (!refs.myPlantGrid || !refs.myPlantResultCount) return;
+  const text = ui[state.language];
+  const note = refs.myPlantStorageNote;
+  if (state.myPlantsMode === "signed_out") {
+    if (note) note.textContent = text.myPlantsSignIn;
+    refs.myPlantResultCount.textContent = "0";
+    refs.myPlantGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.myPlantsSignIn)}</div>`;
+    return;
+  }
+  if (state.myPlantsMode === "loading") {
+    if (note) note.textContent = text.loading;
+    refs.myPlantResultCount.textContent = "…";
+    refs.myPlantGrid.innerHTML = "";
+    return;
+  }
+  if (state.myPlantsMode === "error") {
+    if (note) note.textContent = text.myPlantsUnavailable;
+    refs.myPlantResultCount.textContent = "—";
+    refs.myPlantGrid.innerHTML = `<div class="empty-state">${escapeHtml(text.myPlantsUnavailable)}</div>`;
+    return;
+  }
+  if (note) note.textContent = text.myPlantsIntro;
+  refs.myPlantResultCount.textContent = `${state.myPlants.length} ${text.myPlants.toLocaleLowerCase()}`;
+  refs.myPlantGrid.innerHTML = state.myPlants.length ? state.myPlants.map((plant) => `<article class="machine-card"><a class="machine-card-button" href="${escapeAttribute(plant.journalPath || `/plants/${plant.id}`)}"><div class="machine-photo machine-green"><span>${escapeHtml(plant.gardenName || "Garden X")}</span><strong>${escapeHtml(plant.positionNumber ? `P${plant.positionNumber}` : "·")}</strong><small>${escapeHtml(text.publicPlants)}</small></div><div><p class="machine-brand">${escapeHtml(plant.gardenName || "Garden X")}</p><h4>${escapeHtml(plant.name || plant.commonName || "Plant")}</h4><p class="muted">${escapeHtml([plant.cultivar, plant.scientificName].filter(Boolean).join(" · "))}</p><p class="muted">${escapeHtml(plant.cycleState || plant.status || "")}</p></div><span class="machine-card-arrow">→</span></a></article>`).join("") : `<div class="empty-state">${escapeHtml(text.myPlantsEmpty)}</div>`;
 }
 
 function openPlant(plant) {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { canCreateCustomSystem, customSystemPositionCount, customSystemPositions, defaultRectangularLevels } from "./custom-system";
+import { canCreateCustomSystem, customSystemPositionCount, customSystemPositions, defaultRectangularLevels, physicalGridCells, physicalPositionCellMap } from "./custom-system";
 
 describe("custom system geometry", () => {
   it("supports a 1×1 system", () => {
@@ -86,5 +86,41 @@ describe("custom system geometry", () => {
     expect(defaultRectangularLevels(8)).toEqual([{ rows: 2, columns: 4 }]);
     expect(defaultRectangularLevels(12)).toEqual([{ rows: 3, columns: 4 }]);
     expect(defaultRectangularLevels(3)).toEqual([{ rows: 1, columns: 3 }]);
+  });
+
+  it("keeps every physical position when a persisted layout only lists a subset", () => {
+    const positions = Array.from({ length: 8 }, (_, index) => ({
+      id: `h1-${index + 1}`,
+      number: index + 1,
+      rowNumber: Math.floor(index / 4) + 1,
+      columnNumber: (index % 4) + 1,
+    }));
+    const level = { rows: 2, columns: 4, levelNumber: 1, activeCells: [{ row: 1, column: 1 }, { row: 1, column: 2 }] };
+    const cells = physicalGridCells(level, positions);
+    const map = physicalPositionCellMap(level, positions);
+    expect(cells).toHaveLength(8);
+    expect(map.size).toBe(8);
+    expect([...map.values()].map((position) => position.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  it("renders all twelve physical positions for a full machine", () => {
+    const positions = Array.from({ length: 12 }, (_, index) => ({
+      id: `h2-${index + 1}`,
+      number: index + 1,
+      rowNumber: Math.floor(index / 4) + 1,
+      columnNumber: (index % 4) + 1,
+    }));
+    const level = { rows: 3, columns: 4, levelNumber: 1, activeCells: [{ row: 1, column: 1 }] };
+    expect(physicalGridCells(level, positions)).toHaveLength(12);
+    expect(physicalPositionCellMap(level, positions).size).toBe(12);
+  });
+
+  it("assigns legacy positions without coordinates without losing empty cells", () => {
+    const positions = Array.from({ length: 8 }, (_, index) => ({ id: `legacy-${index + 1}`, number: index + 1 }));
+    const level = { rows: 2, columns: 4, levelNumber: 1 };
+    expect(physicalGridCells(level, positions)).toHaveLength(8);
+    expect([...physicalPositionCellMap(level, positions).values()].map((position) => position.id)).toEqual(
+      positions.map((position) => position.id),
+    );
   });
 });

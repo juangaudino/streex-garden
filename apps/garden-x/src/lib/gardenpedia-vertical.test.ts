@@ -112,6 +112,24 @@ function runPublication(dataDir: string, bundle: unknown) {
 }
 
 describe("Gardenpedia request-to-publication vertical", () => {
+  it("separates public knowledge from authenticated My surfaces", () => {
+    const page = read("labs/gardenpedia/index.html");
+    const app = read("labs/gardenpedia/app.js");
+    const transport = read("labs/gardenpedia/supabase-lab-transport.js");
+    const migration = read("supabase/migrations/20260928170500_fix_gardenpedia_my_plants_scope.sql");
+    expect(page).toContain('data-view="plants"');
+    expect(page).toContain('data-view="public-seeds"');
+    expect(page).toContain('data-view="public-machines"');
+    expect(page).toContain('data-view="my-plants"');
+    expect(page).toContain('data-view="seeds"');
+    expect(page).toContain('data-view="machines"');
+    expect(app).toContain("function renderPublicSeeds()");
+    expect(app).toContain("function renderMyPlants()");
+    expect(transport).toContain('rpc("gardenpedia_get_my_plants")');
+    expect(migration).toContain("where p.owner_id = v_owner");
+    expect(migration).toContain("garden.cycle_occupancies");
+  });
+
   it("keeps Library and My Seeds on one explicit, non-creating resolver", () => {
     const resolver = read("labs/gardenpedia/identity-resolver-v1.js");
     const app = read("labs/gardenpedia/app.js");

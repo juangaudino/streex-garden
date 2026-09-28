@@ -71,15 +71,11 @@
 
   async function load() {
     const t = copy[language()];
-    const tab = $("#machinesTab");
-    tab?.addEventListener("click", () => setMachineView(true));
-    ["#guideTab", "#seedsTab"].forEach((selector) => $(selector)?.addEventListener("click", () => setMachineView(false)));
     const session = await window.GARDEN_X_AUTH?.getSession?.();
     if (!session?.user?.id) {
       catalog = { models: [] };
       instances = [];
       mode = "signed_out";
-      if (tab) tab.hidden = false;
       render();
       return;
     }
@@ -90,7 +86,6 @@
       const result = await response.json();
       instances = Array.isArray(result.instances) ? result.instances : [];
       mode = "synced";
-      if (tab) tab.hidden = false;
     } catch (error) {
       console.warn("Gardenpedia could not load canonical Garden X systems", error);
       instances = [];
@@ -98,31 +93,6 @@
     }
     render();
     document.querySelectorAll("[data-language]").forEach((button) => button.addEventListener("click", () => setTimeout(render, 0)));
-    if (localStorage.getItem("gardenpediaPublicLibraryView") === "machines") setMachineView(true);
-  }
-
-  function setMachineView(on) {
-    const machines = $("#machinesSurface");
-    if (!machines) return;
-    machines.hidden = !on;
-    if (on) {
-      $("#guideSurface").hidden = true;
-      $("#seedsSurface").hidden = true;
-      $("#machinesTab").classList.add("active");
-      $("#machinesTab").setAttribute("aria-pressed", "true");
-      [$("#guideTab"), $("#seedsTab")].forEach((button) => {
-        button.classList.remove("active"); button.setAttribute("aria-pressed", "false");
-      });
-      localStorage.setItem("gardenpediaPublicLibraryView", "machines");
-      const t = copy[language()];
-      $("#productEyebrow").textContent = "GARDENPEDIA · MACHINES";
-      $("#productTitle").textContent = t.title;
-      const intro = $("#machinesSurface .surface-intro p:last-child");
-      if (intro) intro.textContent = t.intro;
-    } else {
-      $("#machinesTab")?.classList.remove("active");
-      $("#machinesTab")?.setAttribute("aria-pressed", "false");
-    }
   }
 
   window.GardenMachinesV1 = { load, render };

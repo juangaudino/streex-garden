@@ -118,6 +118,12 @@
       }
       return rpc("gardenpedia_get_my_machines");
     }
+    if (url === "/api/gardenpedia/plants") {
+      if ((init.method || "GET").toUpperCase() !== "GET") {
+        return jsonResponse({ error: "unsupported_operation" }, 405);
+      }
+      return rpc("gardenpedia_get_my_plants");
+    }
     if (url === "/api/gardenpedia/requests") {
       try {
         const method = (init.method || "GET").toUpperCase();

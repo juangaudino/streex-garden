@@ -9,7 +9,17 @@ export type CustomSystemPosition = {
   column: number;
 };
 
-export type GeometryLevel = CustomSystemLevel;
+export type PhysicalSystemPosition = {
+  id?: string;
+  number: number;
+  levelNumber?: number;
+  rowNumber?: number;
+  columnNumber?: number;
+  gridX?: number;
+  gridY?: number;
+};
+
+export type GeometryLevel = CustomSystemLevel & { levelNumber?: number };
 
 export const maxCustomSystemPositions = 36;
 export const maxCustomSystemLevels = 12;
@@ -29,6 +39,69 @@ export function allGridCells(level: CustomSystemLevel): GridCell[] {
     for (let column = 1; column <= level.columns; column += 1) cells.push({ row, column });
   }
   return cells;
+}
+
+function positionCell(position: PhysicalSystemPosition): GridCell | null {
+  const row = position.rowNumber ?? position.gridY;
+  const column = position.columnNumber ?? position.gridX;
+  return row && column ? { row, column } : null;
+}
+
+function cellKey(cell: GridCell) {
+  return `${cell.row}:${cell.column}`;
+}
+
+/**
+ * Returns the physical blueprint cells, preserving both persisted layout cells
+ * and canonical position coordinates. Persisted active_cells can be stale or
+ * occupied-only after a legacy layout join; physical positions must still win.
+ */
+export function physicalGridCells(
+  level: GeometryLevel,
+  positions: readonly PhysicalSystemPosition[],
+): GridCell[] {
+  const normalized = normalizeGeometryLevels([level])[0] ?? level;
+  const levelPositions = positions.filter(
+    (position) => (position.levelNumber ?? 1) === (level.levelNumber ?? 1),
+  );
+  const cells = [...activeGridCells(normalized)];
+  levelPositions.forEach((position) => {
+    const cell = positionCell(position);
+    if (cell && !cells.some((candidate) => cellKey(candidate) === cellKey(cell))) cells.push(cell);
+  });
+  if (!cells.length) return allGridCells(normalized);
+  return cells.sort((a, b) => a.row - b.row || a.column - b.column);
+}
+
+/**
+ * Maps canonical positions to their blueprint cell. Positions with persisted
+ * coordinates keep them; legacy positions without coordinates are assigned in
+ * canonical number order to the remaining physical cells.
+ */
+export function physicalPositionCellMap(
+  level: GeometryLevel,
+  positions: readonly PhysicalSystemPosition[],
+): Map<string, PhysicalSystemPosition> {
+  const cells = physicalGridCells(level, positions);
+  const mapped = new Map<string, PhysicalSystemPosition>();
+  const unplaced: PhysicalSystemPosition[] = [];
+  positions
+    .filter((position) => (position.levelNumber ?? 1) === (level.levelNumber ?? 1))
+    .sort((a, b) => a.number - b.number)
+    .forEach((position) => {
+      const cell = positionCell(position);
+      if (!cell) {
+        unplaced.push(position);
+        return;
+      }
+      mapped.set(cellKey(cell), position);
+    });
+  const available = cells.filter((cell) => !mapped.has(cellKey(cell)));
+  unplaced.forEach((position, index) => {
+    const cell = available[index];
+    if (cell) mapped.set(cellKey(cell), position);
+  });
+  return mapped;
 }
 
 export function normalizeGeometryLevels(levels: GeometryLevel[]): GeometryLevel[] {

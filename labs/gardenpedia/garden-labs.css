@@ -104,12 +104,15 @@ body {
 /* The public route keeps the original surface tabs without the old demo chrome. */
 .lab-view-switcher {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   padding: 4px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(255,253,248,.78);
 }
+.lab-nav-group { display: flex; align-items: center; gap: 3px; }
+.lab-nav-label { padding: 0 5px; font-size: 9px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .lab-view-button {
   min-height: 36px;
   padding: 0 12px;
@@ -125,6 +128,13 @@ body {
   background: var(--accent-strong);
   color: #fff;
   box-shadow: 0 6px 16px rgba(24,60,44,.16);
+}
+@media(max-width:760px) {
+  .product-topbar { align-items: flex-start; flex-direction: column; }
+  .topbar-actions { width: 100%; align-items: stretch; flex-wrap: wrap; }
+  .lab-view-switcher { width: 100%; }
+  .lab-nav-group { flex: 1 1 100%; overflow-x: auto; }
+  .lab-view-button { flex: 0 0 auto; }
 }
 
 .demo-device-switcher {

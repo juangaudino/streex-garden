@@ -79,5 +79,6 @@
     async reloadPackages() {
       return fetchJson(endpoint);
     },
+    async listPlants() { return fetchJson("/api/gardenpedia/plants"); },
   });
 })();

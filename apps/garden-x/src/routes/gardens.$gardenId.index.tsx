@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AddPlantSheet } from "@/components/garden/add-plant";
 import { PhotoImage } from "@/components/garden/photo-image";
-import { physicalGridCells, physicalPositionCellMap } from "@/lib/custom-system";
+import { activeGridCells, physicalGridCells, physicalPositionCellMap } from "@/lib/custom-system";
 import { ui } from "@/lib/ui-copy";
 import { selectStaleSummary } from "@/lib/garden-summaries";
 import { GardenSummaryCard } from "@/components/garden/garden-summary";
@@ -272,6 +272,11 @@ function GardenDetail() {
                           >
                             {physicalCells.map((cell) => {
                               const cellKey = `${cell.row}:${cell.column}`;
+                              const active = activeGridCells(level).some(
+                                (activeCell) => activeCell.row === cell.row && activeCell.column === cell.column,
+                              );
+                              if (!active)
+                                return <div key={cellKey} aria-hidden="true" className="aspect-square rounded-xl bg-transparent" />;
                               const mappedPosition = podByCoordinate.get(cellKey);
                               const pod = mappedPosition?.id
                                 ? podByPositionId.get(mappedPosition.id)

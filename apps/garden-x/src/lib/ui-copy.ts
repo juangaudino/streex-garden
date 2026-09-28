@@ -1,5 +1,5 @@
 export type UiLanguage = "en" | "es";
-export type SetupCopyId = "aera-one" | "aera-twelve" | "leaf-cabinet" | "balcony" | "backyard" | "herb" | "custom";
+export type SetupCopyId = "aera-one" | "aera-twelve" | "leaf-cabinet" | "aerogarden-sprout" | "balcony" | "backyard" | "herb" | "custom";
 
 const copy = {
   en: {
@@ -1882,18 +1882,20 @@ export function ui(language: UiLanguage, key: UiCopyKey) {
 
 export function setupCopy(language: UiLanguage, id: SetupCopyId, field: "label" | "hint") {
   const en = {
-    "aera-one": { label: "Aera One", hint: "Indoor hydroponic system · 6 positions" },
-    "aera-twelve": { label: "Aera Twelve", hint: "Tall hydroponic tower · 12 positions" },
-    "leaf-cabinet": { label: "Leaf Cabinet", hint: "Indoor grow cabinet · 8 positions" },
+    "aera-one": { label: "URUQ 8-Pod", hint: "Published Gardenpedia machine · 8 positions" },
+    "aera-twelve": { label: "URUQ 12-Pod", hint: "Published Gardenpedia machine · 12 positions" },
+    "leaf-cabinet": { label: "Ahopegarden 10-Pod", hint: "Published Gardenpedia machine · 10 positions" },
+    "aerogarden-sprout": { label: "AeroGarden Sprout", hint: "Published Gardenpedia machine · 3 positions" },
     balcony: { label: "Balcony pots", hint: "Pots and planters, no fixed positions" },
     backyard: { label: "Backyard beds", hint: "Open ground or raised beds" },
     herb: { label: "Herb corner", hint: "A small indoor herb collection" },
     custom: { label: "Custom system", hint: "Build your own layout" },
   } as const;
   const es = {
-    "aera-one": { label: "Aera One", hint: "Sistema hidropónico interior · 6 posiciones" },
-    "aera-twelve": { label: "Aera Twelve", hint: "Torre hidropónica alta · 12 posiciones" },
-    "leaf-cabinet": { label: "Leaf Cabinet", hint: "Armario de cultivo interior · 8 posiciones" },
+    "aera-one": { label: "URUQ 8-Pod", hint: "Máquina publicada en Gardenpedia · 8 posiciones" },
+    "aera-twelve": { label: "URUQ 12-Pod", hint: "Máquina publicada en Gardenpedia · 12 posiciones" },
+    "leaf-cabinet": { label: "Ahopegarden 10-Pod", hint: "Máquina publicada en Gardenpedia · 10 posiciones" },
+    "aerogarden-sprout": { label: "AeroGarden Sprout", hint: "Máquina publicada en Gardenpedia · 3 posiciones" },
     balcony: { label: "Macetas de balcón", hint: "Macetas y jardineras, sin posiciones fijas" },
     backyard: { label: "Bancales de patio", hint: "Suelo abierto o bancales elevados" },
     herb: { label: "Rincón de hierbas", hint: "Una pequeña colección interior de hierbas" },

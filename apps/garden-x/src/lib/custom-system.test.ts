@@ -115,6 +115,26 @@ describe("custom system geometry", () => {
     expect(physicalPositionCellMap(level, positions).size).toBe(12);
   });
 
+  it("preserves the canonical H5 4×7 geometry instead of flattening positions", () => {
+    const coordinates = [
+      [1, 2], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7],
+      [3, 2], [3, 4], [3, 6],
+      [4, 1], [4, 3], [4, 5],
+    ];
+    const positions = coordinates.map(([rowNumber, columnNumber], index) => ({
+      id: `h5-${index + 1}`,
+      number: index + 1,
+      rowNumber,
+      columnNumber,
+    }));
+    const level = { rows: 4, columns: 7, levelNumber: 1, activeCells: coordinates.map(([row, column]) => ({ row, column })) };
+    expect(physicalGridCells(level, positions)).toHaveLength(28);
+    expect([...physicalPositionCellMap(level, positions).entries()]).toEqual(
+      coordinates.map(([row, column], index) => [`${row}:${column}`, positions[index]]),
+    );
+  });
+
   it("assigns legacy positions without coordinates without losing empty cells", () => {
     const positions = Array.from({ length: 8 }, (_, index) => ({ id: `legacy-${index + 1}`, number: index + 1 }));
     const level = { rows: 2, columns: 4, levelNumber: 1 };

@@ -98,6 +98,8 @@ describe("Record a Moment canonical temporal propagation", () => {
         return { data: { updated: true }, error: null };
       if (name === "garden_x_create_garden")
         return { data: { garden_id: "garden-1" }, error: null };
+      if (name === "garden_x_set_machine_model")
+        return { data: { garden_id: "garden-1", gardenpedia_model_id: "uruq-hp-gc001" }, error: null };
       if (name === "garden_x_set_cultivation_method")
         return { data: { updated: true }, error: null };
       if (name === "garden_x_get_bootstrap")
@@ -492,6 +494,31 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(rpc).toHaveBeenCalledWith(
       "garden_x_set_cultivation_method",
       expect.objectContaining({ p_garden_id: "garden-1", p_cultivation_method: "container" }),
+    );
+  });
+
+  it("links a known Gardenpedia machine model without duplicating its public definition", async () => {
+    const garden: Garden = {
+      id: "garden-1",
+      name: "H1",
+      kind: "hydroponic",
+      cultivationMethod: "hydroponic",
+      systemDefinitionKey: "uruq_8_v1",
+      gardenpediaModelId: "uruq-hp-gc001",
+      machine: { name: "URUQ 8-Pod", pods: 8 },
+      cover: "",
+      place: "",
+      note: "",
+    };
+
+    await createGardenRecord(garden, garden.systemDefinitionKey ?? undefined);
+
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_x_set_machine_model",
+      expect.objectContaining({
+        p_garden_id: "garden-1",
+        p_gardenpedia_model_id: "uruq-hp-gc001",
+      }),
     );
   });
 

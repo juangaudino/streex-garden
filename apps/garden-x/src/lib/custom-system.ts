@@ -64,7 +64,9 @@ export function physicalGridCells(
   const levelPositions = positions.filter(
     (position) => (position.levelNumber ?? 1) === (level.levelNumber ?? 1),
   );
-  const cells = [...activeGridCells(normalized)];
+  // Render the complete matrix so inactive cells preserve the real physical
+  // spacing. Position mapping below still uses only active cells.
+  const cells = [...allGridCells(normalized)];
   levelPositions.forEach((position) => {
     const cell = positionCell(position);
     if (cell && !cells.some((candidate) => cellKey(candidate) === cellKey(cell))) cells.push(cell);
@@ -82,7 +84,7 @@ export function physicalPositionCellMap(
   level: GeometryLevel,
   positions: readonly PhysicalSystemPosition[],
 ): Map<string, PhysicalSystemPosition> {
-  const cells = physicalGridCells(level, positions);
+  const normalized = normalizeGeometryLevels([level])[0] ?? level;
   const mapped = new Map<string, PhysicalSystemPosition>();
   const unplaced: PhysicalSystemPosition[] = [];
   positions
@@ -96,7 +98,8 @@ export function physicalPositionCellMap(
       }
       mapped.set(cellKey(cell), position);
     });
-  const available = cells.filter((cell) => !mapped.has(cellKey(cell)));
+  const activeCells = activeGridCells(normalized);
+  const available = activeCells.filter((cell) => !mapped.has(cellKey(cell)));
   unplaced.forEach((position, index) => {
     const cell = available[index];
     if (cell) mapped.set(cellKey(cell), position);

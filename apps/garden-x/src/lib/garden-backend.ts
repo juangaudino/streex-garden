@@ -1434,6 +1434,14 @@ export async function createGardenRecord(
     p_position_capacity: capacity,
   });
   if (error) throw new Error(error.message);
+  if (garden.gardenpediaModelId) {
+    const { error: modelError } = await getSupabaseClient().rpc("garden_x_set_machine_model", {
+      p_request_id: crypto.randomUUID(),
+      p_garden_id: garden.id,
+      p_gardenpedia_model_id: garden.gardenpediaModelId,
+    });
+    if (modelError) throw new Error(modelError.message);
+  }
   if (garden.cultivationMethod) {
     const { error: methodError } = await getSupabaseClient().rpc(
       "garden_x_set_cultivation_method",

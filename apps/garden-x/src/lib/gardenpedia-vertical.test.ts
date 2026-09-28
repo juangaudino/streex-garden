@@ -165,7 +165,7 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(machines).toContain("instance.name");
     expect(machines).toContain("instance.modelId");
     expect(machines).toContain("const name = instance.name || definition?.name");
-    expect(machines).toContain("const pods = instance.positions ?? definition?.pods");
+    expect(machines).toContain("const pods = definition?.pods ?? instance.positions");
     expect(machines).not.toContain("garden_lab.machine_state");
     expect(machines).toContain('mode = "signed_out"');
     expect(machines).toContain("signInRequired");

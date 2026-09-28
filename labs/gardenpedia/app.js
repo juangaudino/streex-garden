@@ -44,6 +44,8 @@ const refs = {
   languageButtons: [...document.querySelectorAll("[data-language]")],
   translatable: [...document.querySelectorAll("[data-i18n]")],
   guideTab: document.querySelector("#guideTab"),
+  exploreContextTab: document.querySelector("#exploreContextTab"),
+  myGardenContextTab: document.querySelector("#myGardenContextTab"),
   publicSeedsTab: document.querySelector("#publicSeedsTab"),
   publicMachinesTab: document.querySelector("#publicMachinesTab"),
   myPlantsTab: document.querySelector("#myPlantsTab"),
@@ -209,6 +211,10 @@ function bindEvents() {
   refs.languageButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
   [refs.guideTab, refs.publicSeedsTab, refs.publicMachinesTab, refs.myPlantsTab, refs.seedsTab, refs.machinesTab]
     .forEach((button) => button?.addEventListener("click", () => switchView(button.dataset.view)));
+  [refs.exploreContextTab, refs.myGardenContextTab].forEach((button) => button?.addEventListener("click", () => {
+    const context = button.dataset.context;
+    switchView(context === "my-garden" ? "my-plants" : "plants");
+  }));
   refs.addSeedButton.addEventListener("click", () => openSeedEditor(null));
   refs.identityRequestInput?.addEventListener("input", renderIdentityRequestMatches);
   refs.identityRequestForm?.addEventListener("submit", (event) => {
@@ -455,6 +461,16 @@ function switchView(view, persist = true) {
     const active = button.dataset.view === state.view;
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
+  });
+  const privateView = ["my-plants", "seeds", "machines"].includes(state.view);
+  [refs.exploreContextTab, refs.myGardenContextTab].forEach((button) => {
+    if (!button) return;
+    const active = privateView ? button === refs.myGardenContextTab : button === refs.exploreContextTab;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll("[data-context-panel]").forEach((panel) => {
+    panel.hidden = privateView ? panel.dataset.contextPanel !== "my-garden" : panel.dataset.contextPanel !== "explore";
   });
   if (persist) localStorage.setItem("gardenLabsLibraryView", state.view);
   if (state.view === "public-seeds") renderPublicSeeds();

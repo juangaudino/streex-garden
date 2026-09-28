@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "redirects": [
+    { "source": "/gardenpedia", "destination": "/gardenpedia/", "permanent": false }
+  ],
   "buildCommand": "cd apps/garden-x && npm install --no-audit --no-fund && npm run build && cd ../.. && rm -rf .vercel/output && mkdir -p .vercel && cp -R apps/garden-x/.vercel/output .vercel/output",
   "git": {
     "deploymentEnabled": {

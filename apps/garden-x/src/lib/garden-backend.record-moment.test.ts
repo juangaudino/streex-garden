@@ -98,6 +98,8 @@ describe("Record a Moment canonical temporal propagation", () => {
         return { data: { updated: true }, error: null };
       if (name === "garden_x_create_garden")
         return { data: { garden_id: "garden-1" }, error: null };
+      if (name === "garden_x_create_garden_with_layout")
+        return { data: { garden_id: "garden-1", layout_configured: true }, error: null };
       if (name === "garden_x_set_machine_model")
         return { data: { garden_id: "garden-1", gardenpedia_model_id: "uruq-hp-gc001" }, error: null };
       if (name === "garden_x_set_cultivation_method")
@@ -520,6 +522,34 @@ describe("Record a Moment canonical temporal propagation", () => {
         p_gardenpedia_model_id: "uruq-hp-gc001",
       }),
     );
+  });
+
+  it("creates a known machine with an explicit independent instance layout", async () => {
+    const garden: Garden = {
+      id: "garden-new",
+      name: "Test URUQ",
+      kind: "hydroponic",
+      cultivationMethod: "hydroponic",
+      systemDefinitionKey: "uruq_8_v1",
+      gardenpediaModelId: "uruq-hp-gc001",
+      machine: { name: "URUQ 8-Pod", pods: 8 },
+      initialSystemLayout: [{ rows: 2, columns: 4, activeCells: [{ row: 1, column: 1 }, { row: 1, column: 2 }, { row: 2, column: 3 }, { row: 2, column: 4 }, { row: 1, column: 4 }, { row: 2, column: 1 }, { row: 1, column: 3 }, { row: 2, column: 2 }] }],
+      cover: "",
+      place: "",
+      note: "",
+    };
+
+    await createGardenRecord(garden, garden.systemDefinitionKey ?? undefined);
+
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_x_create_garden_with_layout",
+      expect.objectContaining({
+        p_garden_id: "garden-new",
+        p_gardenpedia_model_id: "uruq-hp-gc001",
+        p_levels: [{ rows: 2, columns: 4, active_cells: garden.initialSystemLayout[0].activeCells }],
+      }),
+    );
+    expect(rpc.mock.calls.some(([name]) => name === "garden_x_set_machine_model")).toBe(false);
   });
 
   it("loads only recognized canonical cultivation values and leaves absent values unknown", async () => {

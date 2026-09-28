@@ -6,7 +6,6 @@ import {
   ScanLine,
   GitCompareArrows,
   MessageCircle,
-  Move,
   Plus,
   Check,
   Share2,
@@ -340,14 +339,6 @@ function PlantProfile() {
           <MessageCircle className="h-3.5 w-3.5 shrink-0 text-primary sm:h-4 sm:w-4" strokeWidth={1.8} />
           <span className="truncate">{ui(language, "askGarden")}</span>
         </Link>
-        <button
-          type="button"
-          onClick={() => openRecord("move")}
-          className="press inline-flex min-w-0 items-center justify-center gap-1 rounded-full border border-border/70 bg-card px-0.5 py-2.5 text-[0.65rem] shadow-soft sm:gap-2 sm:px-4 sm:text-sm"
-        >
-          <Move className="h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
-          <span className="truncate">{ui(language, "moveRelocate")}</span>
-        </button>
       </div>
 
       {lifeHighlights.length ? (

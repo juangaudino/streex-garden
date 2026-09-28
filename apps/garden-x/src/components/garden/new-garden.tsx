@@ -54,6 +54,7 @@ export function NewGarden() {
       note: setup?.hint ?? ui(language, "setupStillCompleting"),
       cultivationMethod: setup?.cultivationMethod ?? null,
       systemDefinitionKey: setup?.systemDefinitionKey ?? null,
+      gardenpediaModelId: setup?.gardenpediaModelId ?? null,
       ...(machine && { machine }),
     });
     setOpen(false);

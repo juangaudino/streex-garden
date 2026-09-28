@@ -97,6 +97,7 @@ export interface Garden {
   machine?: { name: string; pods: number };
   backendSystemInstanceId?: string;
   systemDefinitionKey?: string | null;
+  gardenpediaModelId?: string | null;
   backendPositions?: Array<{
     id: string;
     number: number;

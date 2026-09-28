@@ -14,6 +14,8 @@ export interface GardenSetup {
   cultivationMethod?: GardenCultivationMethod;
   /** Stable system identity; unlike the editable display name, this is suitable for evidence conditions. */
   systemDefinitionKey?: string;
+  /** Published Gardenpedia machine identity, when this is a known public model. */
+  gardenpediaModelId?: string;
   /** Systems with positions declare them here. */
   system?: { name: string; pods: number };
 }
@@ -21,29 +23,41 @@ export interface GardenSetup {
 export const gardenSetups: GardenSetup[] = [
   {
     id: "aera-one",
-    label: "Aera One",
-    hint: "Indoor hydroponic system · 6 positions",
+    label: "URUQ 8-Pod",
+    hint: "Published Gardenpedia machine · 8 positions",
     kind: "hydroponic",
     cultivationMethod: "hydroponic",
-    systemDefinitionKey: "aera-one-v1",
-    system: { name: "Aera One", pods: 6 },
+    systemDefinitionKey: "uruq_8_v1",
+    gardenpediaModelId: "uruq-hp-gc001",
+    system: { name: "URUQ 8-Pod", pods: 8 },
   },
   {
     id: "aera-twelve",
-    label: "Aera Twelve",
-    hint: "Tall hydroponic tower · 12 positions",
+    label: "URUQ 12-Pod",
+    hint: "Published Gardenpedia machine · 12 positions",
     kind: "hydroponic",
     cultivationMethod: "hydroponic",
-    systemDefinitionKey: "aera-twelve-v1",
-    system: { name: "Aera Twelve", pods: 12 },
+    systemDefinitionKey: "uruq_12_v1",
+    gardenpediaModelId: "uruq-hp-gc202",
+    system: { name: "URUQ 12-Pod", pods: 12 },
   },
   {
     id: "leaf-cabinet",
-    label: "Leaf Cabinet",
-    hint: "Indoor grow cabinet · 8 positions",
+    label: "Ahopegarden 10-Pod",
+    hint: "Published Gardenpedia machine · 10 positions",
     kind: "indoor",
-    systemDefinitionKey: "leaf-cabinet-v1",
-    system: { name: "Leaf Cabinet", pods: 8 },
+    systemDefinitionKey: "ahopegarden_10_v1",
+    gardenpediaModelId: "ahopegarden-hsxa1",
+    system: { name: "Ahopegarden 10-Pod", pods: 10 },
+  },
+  {
+    id: "aerogarden-sprout",
+    label: "AeroGarden Sprout",
+    hint: "Published Gardenpedia machine · 3 positions",
+    kind: "indoor",
+    systemDefinitionKey: "aerogarden_sprout_v1",
+    gardenpediaModelId: "aerogarden-sprout",
+    system: { name: "AeroGarden Sprout", pods: 3 },
   },
   {
     id: "balcony",

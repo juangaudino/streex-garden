@@ -422,6 +422,44 @@ body.demo-frameless .lab-app.app-shell {
   gap: 16px;
   margin: 0 2px 14px;
 }
+
+.private-nav-group {
+  border-left: 1px solid var(--line);
+  padding-left: 10px;
+}
+
+.compact-seed-indicator {
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.my-plant-locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+.my-plant-location {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.my-plant-location:hover { color: var(--ink); border-color: var(--accent); }
+
+.my-plant-ownership {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
 .seed-section-heading h3 {
   margin: 0;
   font-size: clamp(23px,5cqw,34px);

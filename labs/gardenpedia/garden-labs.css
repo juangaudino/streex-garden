@@ -103,19 +103,21 @@ body {
 
 /* The public route keeps the original surface tabs without the old demo chrome. */
 .lab-view-switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding: 4px;
+  display: grid;
+  gap: 6px;
+  padding: 5px;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 18px;
   background: rgba(255,253,248,.78);
 }
-.lab-nav-group { display: flex; align-items: center; gap: 3px; }
-.lab-nav-label { padding: 0 5px; font-size: 9px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lab-context-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; padding: 3px; border-radius: 13px; background: rgba(24,60,44,.06); }
+.lab-context-button { min-height: 30px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.lab-context-button.active { background: var(--surface); color: var(--ink); box-shadow: 0 4px 12px rgba(24,60,44,.10); }
+.lab-context-panel { display: flex; min-width: 0; gap: 3px; overflow-x: auto; }
 .lab-view-button {
-  min-height: 36px;
-  padding: 0 12px;
+  min-height: 34px;
+  flex: 1 0 auto;
+  padding: 0 11px;
   border: 0;
   border-radius: 11px;
   background: transparent;
@@ -133,8 +135,8 @@ body {
   .product-topbar { align-items: flex-start; flex-direction: column; }
   .topbar-actions { width: 100%; align-items: stretch; flex-wrap: wrap; }
   .lab-view-switcher { width: 100%; }
-  .lab-nav-group { flex: 1 1 100%; overflow-x: auto; }
-  .lab-view-button { flex: 0 0 auto; }
+  .lab-context-panel { width: 100%; }
+  .lab-view-button { flex: 1 0 auto; }
 }
 
 .demo-device-switcher {

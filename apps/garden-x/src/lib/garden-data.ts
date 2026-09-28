@@ -98,6 +98,8 @@ export interface Garden {
   backendSystemInstanceId?: string;
   systemDefinitionKey?: string | null;
   gardenpediaModelId?: string | null;
+  /** Instance-only layout selected during creation; never copied from another garden. */
+  initialSystemLayout?: Array<{ rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>;
   backendPositions?: Array<{
     id: string;
     number: number;

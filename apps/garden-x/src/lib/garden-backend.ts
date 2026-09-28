@@ -1421,7 +1421,7 @@ export async function createGardenRecord(
     1,
     Math.min(36, garden.machine?.pods ?? garden.backendPositions?.length ?? 1),
   );
-  const { error } = await getSupabaseClient().rpc("garden_x_create_garden", {
+  const baseParams = {
     p_request_id: crypto.randomUUID(),
     p_garden_id: garden.id,
     p_system_instance_id: systemId,
@@ -1432,9 +1432,21 @@ export async function createGardenRecord(
     p_system_definition_key: systemDefinitionKey ?? null,
     p_system_name: garden.machine?.name ?? null,
     p_position_capacity: capacity,
-  });
+  };
+  const layoutLevels = garden.initialSystemLayout;
+  const { error } = layoutLevels?.length && garden.gardenpediaModelId
+    ? await getSupabaseClient().rpc("garden_x_create_garden_with_layout", {
+      ...baseParams,
+      p_levels: layoutLevels.map((level) => ({
+        rows: level.rows,
+        columns: level.columns,
+        active_cells: level.activeCells ?? allGridCells(level),
+      })),
+      p_gardenpedia_model_id: garden.gardenpediaModelId,
+    })
+    : await getSupabaseClient().rpc("garden_x_create_garden", baseParams);
   if (error) throw new Error(error.message);
-  if (garden.gardenpediaModelId) {
+  if (garden.gardenpediaModelId && !layoutLevels?.length) {
     const { error: modelError } = await getSupabaseClient().rpc("garden_x_set_machine_model", {
       p_request_id: crypto.randomUUID(),
       p_garden_id: garden.id,

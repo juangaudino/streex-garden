@@ -123,6 +123,9 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain('data-view="my-plants"');
     expect(page).toContain('data-view="seeds"');
     expect(page).toContain('data-view="machines"');
+    expect(page).toContain('id="exploreContextTab"');
+    expect(page).toContain('id="myGardenContextTab"');
+    expect(app).toContain('data-context-panel');
     expect(page).toContain('id="seedsSurface"');
     expect(page).toContain('id="seedSearchInput"');
     expect(app).toContain("function renderPublicSeeds()");
@@ -131,6 +134,18 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(transport).toContain('rpc("gardenpedia_get_my_plants")');
     expect(migration).toContain("where p.owner_id = v_owner");
     expect(migration).toContain("garden.cycle_occupancies");
+  });
+
+  it("keeps the direct public route and Record hierarchy explicit", () => {
+    const routing = read("vercel.json");
+    const profile = read("apps/garden-x/src/routes/plants.$plantId.index.tsx");
+    const record = read("apps/garden-x/src/components/garden/record-moment.tsx");
+    const groups = read("apps/garden-x/src/lib/care-session.ts");
+    expect(routing).toContain('"source": "/gardenpedia"');
+    expect(routing).toContain('"destination": "/gardenpedia/"');
+    expect(profile).not.toContain('onClick={() => openRecord("move")}');
+    expect(record).toContain('key: "move"');
+    expect(groups).toContain('flowKeys: ["planting", "move", "close", "replace"]');
   });
 
   it("keeps Library and My Seeds on one explicit, non-creating resolver", () => {

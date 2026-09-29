@@ -351,4 +351,17 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(app).toContain("function buildSeedProfileV0(plant, profile)");
     expect(app).toContain("state.seedProfiles?.profiles?.[plant.id]");
   });
+
+  it("composes My Seeds package context with the canonical public seed profile", () => {
+    const app = read("labs/gardenpedia/app.js");
+    const editor = app.slice(app.indexOf("function buildSeedEditor("), app.indexOf("function buildPacketEvidencePanel("));
+    expect(editor).toContain('class="my-seed-package-layer"');
+    expect(editor).toContain('class="my-seed-guide-layer"');
+    expect(editor).toContain("buildPublicSeedProfile(plant)");
+    expect(editor).toContain('id="seedForm"');
+    expect(editor).toContain("text.purchaseYear");
+    expect(editor).toContain("text.packageStatus");
+    expect(editor).toContain("text.deletePackage");
+    expect(app).toContain('switchView("plants")');
+  });
 });

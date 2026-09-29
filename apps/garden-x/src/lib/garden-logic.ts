@@ -116,6 +116,43 @@ export function relativeDay(daysAgo: number, language = preferredLanguage()) {
   return es ? `hace ${y} años` : `${y} years ago`;
 }
 
+/** Human-scale wording for the passage represented by the Journal photo pair. */
+export function photoPassageLabel(
+  daysBetween: number,
+  language: UiLanguage = preferredLanguage(),
+  photoCount = 2,
+) {
+  const days = Math.max(0, Math.round(daysBetween));
+  if (photoCount !== 2) {
+    if (days === 0) return language === "es" ? "el mismo día" : "the same day";
+    if (days < 7) return language === "es" ? `${days} días` : `${days} days`;
+    if (days < 56) {
+      const weeks = Math.max(1, Math.round(days / 7));
+      return language === "es" ? `${weeks} semanas` : `${weeks} weeks`;
+    }
+    const months = Math.max(1, Math.round(days / 30));
+    return language === "es" ? `${months} meses` : `${months} months`;
+  }
+  if (days === 0) return ui(language, "sameDayHeld");
+  if (days < 7) {
+    const key = days === 1 ? "dayHeld" : "daysHeld";
+    return `${days} ${ui(language, key)}`;
+  }
+  if (days < 56) {
+    const weeks = Math.max(1, Math.round(days / 7));
+    const key = weeks === 1 ? "weekHeld" : "weeksHeld";
+    return `${weeks} ${ui(language, key)}`;
+  }
+  if (days < 365) {
+    const months = Math.max(1, Math.round(days / 30));
+    const key = months === 1 ? "monthHeld" : "monthsHeld";
+    return `${months} ${ui(language, key)}`;
+  }
+  const years = Math.round((days / 365) * 10) / 10;
+  const yearLabel = Number.isInteger(years) ? String(years) : years.toFixed(1);
+  return `${yearLabel} ${years === 1 ? ui(language, "yearHeld") : ui(language, "yearsHeld")}`;
+}
+
 export function dueLabel(dueInDays: number, language = preferredLanguage()) {
   const es = language === "es";
   if (dueInDays < -1) return es ? `${Math.abs(dueInDays)} días de retraso` : `${Math.abs(dueInDays)} days overdue`;

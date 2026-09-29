@@ -126,7 +126,7 @@ describe("plant story context", () => {
     expect(context.observations).toHaveLength(0);
     expect(context.interpretations).toHaveLength(0);
     expect(
-      context.uncertainties.some((item) => /suficiente evidencia fotográfica/i.test(item.text)),
+      context.uncertainties.some((item) => /suficiente evidencia visual/i.test(item.text)),
     ).toBe(true);
   });
 
@@ -152,7 +152,7 @@ describe("plant story context", () => {
 
     expect(context.photos[0]).toMatchObject({ id: "historical-photo", metadataOnly: true });
     expect(context.coverage.metadataOnlyPhotos).toBe(1);
-    expect(context.uncertainties.some((item) => /historical metadata/i.test(item.text))).toBe(true);
+    expect(context.uncertainties.some((item) => /historical photo details/i.test(item.text))).toBe(true);
     expect(context.facts.find((fact) => fact.id === "record-coverage")?.value).toContain("1 photo");
   });
 
@@ -168,7 +168,7 @@ describe("plant story context", () => {
 
     expect(context.events.map((item) => item.id)).toEqual(["origin", "note"]);
     expect(context.interpretations).toHaveLength(0);
-    expect(context.uncertainties.some((item) => /not enough photo evidence/i.test(item.text))).toBe(
+    expect(context.uncertainties.some((item) => /not enough visual evidence/i.test(item.text))).toBe(
       true,
     );
   });

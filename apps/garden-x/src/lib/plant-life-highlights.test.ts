@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Plant, PlantEvent } from "./garden-data";
-import { buildPlantLifeHighlights } from "./plant-life-highlights";
+import { auditPlantLifeHighlights, buildPlantLifeHighlights } from "./plant-life-highlights";
 
 const plant: Plant = {
   id: "plant-1",
@@ -59,6 +59,32 @@ describe("Plant Journal Life Highlights", () => {
       { kind: "firstFlower", daysAgo: 30 },
       { kind: "firstFruit", daysAgo: 2 },
     ]);
+  });
+
+  it("keeps canonical germination and relocation events eligible for highlights", () => {
+    const events = [
+      event("germination", "germinated", 48),
+      event("move", "moved", 12),
+      event("transplant", "transplanted", 8),
+    ];
+    expect(buildPlantLifeHighlights(plant, events)).toEqual([
+      { kind: "planted", daysAgo: 57 },
+      { kind: "germinated", daysAgo: 48 },
+      { kind: "moved", daysAgo: 12 },
+      { kind: "transplanted", daysAgo: 8 },
+    ]);
+    expect(auditPlantLifeHighlights(plant, events)).toMatchObject({
+      eligible: [
+        { eventId: "germination", kind: "germinated" },
+        { eventId: "move", kind: "moved" },
+        { eventId: "transplant", kind: "transplanted" },
+      ],
+      selected: [
+        { eventId: "germination", kind: "germinated" },
+        { eventId: "move", kind: "moved" },
+        { eventId: "transplant", kind: "transplanted" },
+      ],
+    });
   });
 
   it("counts repeated harvests and keeps first/last dates and significant facts deterministic", () => {

@@ -1,7 +1,7 @@
 import type { GardenLibraryEntry } from "./garden-library";
 import type { Garden, Photo, Plant, PlantEvent } from "./garden-data";
 import { formatDate, plantEvents, plantPhotos } from "./garden-logic";
-import type { UiLanguage } from "./ui-copy";
+import { ui, type UiLanguage } from "./ui-copy";
 
 export type PlantStoryEvidenceKind =
   "identity" | "origin" | "cycle" | "event" | "photo" | "location";
@@ -74,6 +74,8 @@ export type PlantStoryContext = {
   events: Array<{
     id: string;
     title: string;
+    type: PlantEvent["type"];
+    lifeEvent: PlantEvent["lifeEvent"] | null;
     occurredAt: string | null;
     evidence: PlantStoryEvidenceRef[];
   }>;
@@ -233,11 +235,7 @@ function measurementInterpretation(
   if (!earlier || !later || earlier.id === later.id) {
     uncertainties.push({
       id: "visual-change-insufficient",
-      text: languageText(
-        language,
-        "There is not enough photo evidence to describe change over time.",
-        "No hay suficiente evidencia fotográfica para describir cambios en el tiempo.",
-      ),
+      text: ui(language, "storyNoVisualEvidence"),
       evidence: earlier ? [photoEvidence(earlier, language)] : [],
     });
     return { observations, interpretations, uncertainties };
@@ -283,11 +281,7 @@ function measurementInterpretation(
   if (!changes.length) {
     uncertainties.push({
       id: "visual-change-unmeasured",
-      text: languageText(
-        language,
-        "The available photos do not contain enough repeated measurements to describe a meaningful visual change.",
-        "Las fotos disponibles no contienen suficientes mediciones repetidas para describir un cambio visual significativo.",
-      ),
+      text: ui(language, "storyVisualComparisonInsufficient"),
       evidence,
     });
     return { observations, interpretations, uncertainties };
@@ -352,22 +346,22 @@ export function buildPlantStoryContext(
   const identityRef: PlantStoryEvidenceRef = {
     id: plant.libraryPlantId ?? plant.id,
     kind: "identity",
-    label: languageText(language, "Gardenpedia identity", "Identidad de Gardenpedia"),
+    label: ui(language, "storyEvidenceIdentity"),
   };
   const originRef: PlantStoryEvidenceRef = {
     id: plant.backendGrowCycleId ?? plant.id,
     kind: "origin",
-    label: languageText(language, "Origin and cycle", "Origen y ciclo"),
+    label: ui(language, "storyEvidenceOrigin"),
   };
   const locationRef: PlantStoryEvidenceRef = {
     id: plant.backendPositionId ?? garden.id,
     kind: "location",
-    label: languageText(language, "Current location", "Ubicación actual"),
+    label: ui(language, "storyEvidenceLocation"),
   };
   const facts: PlantStoryFact[] = [
     {
       id: "identity",
-      label: languageText(language, "Identity", "Identidad"),
+      label: ui(language, "storyIdentity"),
       value: [commonName, scientificName, cultivar ? `“${cultivar}”` : null]
         .filter(Boolean)
         .join(" · "),
@@ -377,7 +371,7 @@ export function buildPlantStoryContext(
       ? [
           {
             id: "cycle-age",
-            label: languageText(language, "Recorded age", "Edad registrada"),
+            label: ui(language, "storyRecordedAge"),
             value: languageText(
               language,
               `Day ${plant.plantedDaysAgo}`,
@@ -389,13 +383,13 @@ export function buildPlantStoryContext(
       : []),
     {
       id: "current-location",
-      label: languageText(language, "Now", "Ahora"),
+      label: ui(language, "storyNow"),
       value: [garden.name, plant.slot].filter(Boolean).join(" · "),
       evidence: [locationRef],
     },
     {
       id: "record-coverage",
-      label: languageText(language, "Recorded history", "Historial registrado"),
+      label: ui(language, "storyRecordedHistory"),
       value: languageText(
         language,
         `${plantEventRows.length} event${plantEventRows.length === 1 ? "" : "s"} · ${plantPhotoRows.length} photo${plantPhotoRows.length === 1 ? "" : "s"}`,
@@ -451,8 +445,7 @@ export function buildPlantStoryContext(
               id: "historical-media-body",
               text: languageText(
                 language,
-                "Some photo records are available as historical metadata; their media body may not be available yet.",
-                "Algunos registros fotográficos están disponibles como metadatos históricos; su archivo puede no estar disponible todavía.",
+                ui(language, "storyHistoricalMediaUnavailable"),
               ),
               evidence: selectedPhotos
                 .filter((photo) => photo.isHistoricalEvidence === true && !photo.src)
@@ -464,6 +457,8 @@ export function buildPlantStoryContext(
     events: selectedEvents.map((event) => ({
       id: event.id,
       title: event.title,
+      type: event.type,
+      lifeEvent: event.lifeEvent ?? null,
       occurredAt: event.occurredAt ?? null,
       evidence: [eventEvidence(event, language)],
     })),

@@ -27,6 +27,7 @@ import {
   isTimelineTitleProjectionOfDetail,
   normalizeTimelineNote,
   latestPlantPhoto,
+  photoPassageLabel,
   plantTimeline,
   sortPhotosByCapturedAt,
   photoMetricEntries,
@@ -82,7 +83,7 @@ export const Route = createFileRoute("/plants/$plantId/")({
   component: PlantProfile,
 });
 
-const tabs = ["Journal", "Timeline", "Photos", "Reference"] as const;
+const tabs = ["Story", "Journal", "Timeline", "Photos", "Reference"] as const;
 type Tab = (typeof tabs)[number];
 
 function timelineEventText(event: { title: string; detail?: string }) {
@@ -357,8 +358,6 @@ function PlantProfile() {
         </Link>
       </div>
 
-      <PlantStoryIntelligence context={storyContext} />
-
       {lifeHighlights.length ? (
         <section className="mx-5 mt-6 sm:mx-8 lg:mx-12" aria-labelledby="life-highlights-title">
           <h2 id="life-highlights-title" className="eyebrow mb-3">{ui(language, "lifeHighlights")}</h2>
@@ -389,7 +388,15 @@ function PlantProfile() {
                 tab === t ? "text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              {t === "Journal" ? ui(language, "journal") : t === "Timeline" ? ui(language, "timeline") : t === "Photos" ? ui(language, "photos") : ui(language, "reference")}
+              {t === "Story"
+                ? ui(language, "storyTab")
+                : t === "Journal"
+                  ? ui(language, "journal")
+                  : t === "Timeline"
+                    ? ui(language, "timeline")
+                    : t === "Photos"
+                      ? ui(language, "photos")
+                      : ui(language, "reference")}
               {tab === t ? (
                 <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-primary" />
               ) : null}
@@ -399,6 +406,9 @@ function PlantProfile() {
       </div>
 
       <div className="px-5 pt-8 sm:px-8 lg:px-12">
+        {/* ------------------------------------------------ STORY */}
+        {tab === "Story" ? <PlantStoryIntelligence context={storyContext} language={language} /> : null}
+
         {/* ------------------------------------------------ HISTORY */}
         {tab === "Journal" ? (
           <div className="rise max-w-4xl">
@@ -434,7 +444,7 @@ function PlantProfile() {
                   <div>
                     <p className="eyebrow">{ui(language, "realPassage")}</p>
                     <p className="mt-1 font-display text-2xl">
-                      {Math.round((first.daysAgo - latest.daysAgo) / 7)} {ui(language, "weeksHeld")}
+                      {photoPassageLabel(first.daysAgo - latest.daysAgo, language)}
                     </p>
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       {first.caption} → {latest.caption}

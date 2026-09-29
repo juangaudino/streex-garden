@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { canCreateCustomSystem, customSystemPositionCount, customSystemPositions, defaultRectangularLevels, physicalGridCells, physicalPositionCellMap } from "./custom-system";
+import { allGridCells, canCreateCustomSystem, customSystemPositionCount, customSystemPositions, defaultRectangularLevels, physicalGridCells, physicalPositionCellMap } from "./custom-system";
 
 describe("custom system geometry", () => {
   it("supports a 1×1 system", () => {
@@ -76,6 +76,19 @@ describe("custom system geometry", () => {
       { number: 1, level: 1, row: 1, column: 1 },
       { number: 2, level: 1, row: 2, column: 3 },
     ]);
+  });
+
+  it("keeps a fresh 8-position model independent while resizing its candidate grid", () => {
+    const selected = [
+      { row: 1, column: 1 }, { row: 1, column: 2 }, { row: 1, column: 3 }, { row: 1, column: 4 },
+      { row: 2, column: 1 }, { row: 2, column: 2 }, { row: 2, column: 3 }, { row: 2, column: 4 },
+    ];
+    const resized = { rows: 3, columns: 7, activeCells: selected };
+    expect(allGridCells(resized)).toHaveLength(21);
+    expect(customSystemPositionCount([resized])).toBe(8);
+    expect(customSystemPositions([resized]).map(({ number, row, column }) => ({ number, row, column }))).toEqual(
+      selected.map((cell, index) => ({ number: index + 1, ...cell })),
+    );
   });
 
   it("requires at least one active cell per level", () => {

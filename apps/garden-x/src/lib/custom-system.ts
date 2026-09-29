@@ -157,10 +157,13 @@ export function customSystemPositions(levels: GeometryLevel[]): CustomSystemPosi
   const positions: CustomSystemPosition[] = [];
   let number = 0;
   normalizeGeometryLevels(levels).forEach((level, levelIndex) => {
-    activeGridCells(level).forEach(({ row, column }) => {
+    activeGridCells(level)
+      .slice()
+      .sort((a, b) => a.row - b.row || a.column - b.column)
+      .forEach(({ row, column }) => {
       number += 1;
       positions.push({ number, level: levelIndex + 1, row, column });
-    });
+      });
   });
   return positions;
 }

@@ -311,7 +311,7 @@ function PlantProfile() {
       </div>
 
       {/* tools */}
-      <div className="mt-5 grid grid-cols-2 gap-1.5 px-5 sm:grid-cols-4 sm:gap-3 sm:px-8 lg:px-12">
+      <div className="mt-5 grid grid-cols-3 gap-1 px-5 sm:gap-3 sm:px-8 lg:px-12">
         <Link
           to="/plants/$plantId/check"
           params={{ plantId: plant.id }}

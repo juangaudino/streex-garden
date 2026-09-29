@@ -456,6 +456,42 @@ body.demo-frameless .lab-app.app-shell {
 
 .my-plant-location:hover { color: var(--ink); border-color: var(--accent); }
 
+.my-plant-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-plant-card .plant-card-button {
+  flex: 1;
+}
+
+.my-plant-ownership-summary {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.my-plant-card-context {
+  padding: 0 20px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 253, 248, .62);
+}
+
+.my-plant-card-context-label {
+  display: block;
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.my-plant-card .my-plant-locations {
+  margin-top: 0.35rem;
+}
+
 .my-plant-ownership {
   margin: 1rem 0;
   padding: 0.9rem 1rem;

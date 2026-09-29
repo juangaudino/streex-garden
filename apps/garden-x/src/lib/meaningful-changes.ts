@@ -23,6 +23,14 @@ export function shouldGenerateMeaningfulChange(event: Pick<PlantEvent, "photoId"
   return Boolean(event.photoId);
 }
 
+export type PlantChangeReadingState =
+  | "measured_change"
+  | "visual_review_available"
+  | "metadata_only"
+  | "insufficient_evidence";
+
+export type PlantChangeMetricKey = "heightCm" | "leafCount" | "density";
+
 export interface MeaningfulChangeContextFact {
   kind: "event" | "observation" | "care" | "follow_up" | "ai_check" | "status";
   text: string;
@@ -38,6 +46,22 @@ export interface MeaningfulChangeCandidate {
   after: Photo;
   elapsedDays: number;
   contextFacts: MeaningfulChangeContextFact[];
+}
+
+export interface PlantChangeMetric {
+  key: PlantChangeMetricKey;
+  delta: number;
+  direction: "increased" | "decreased";
+}
+
+export interface PlantChangeReading {
+  state: PlantChangeReadingState;
+  before: Photo;
+  after: Photo;
+  elapsedDays: number;
+  contextFacts: MeaningfulChangeContextFact[];
+  metrics: PlantChangeMetric[];
+  visualEvidenceAvailable: boolean;
 }
 
 export interface MeaningfulChangeResult {
@@ -67,6 +91,47 @@ function photoTime(photo: Photo): number | null {
 function eventTime(event: PlantEvent): number {
   const occurred = event.occurredAt ? Date.parse(event.occurredAt) : Number.NaN;
   return Number.isNaN(occurred) ? Date.now() - event.daysAgo * 86_400_000 : occurred;
+}
+
+function metricDelta(before: Photo, after: Photo, key: PlantChangeMetricKey): PlantChangeMetric | null {
+  const beforeValue = before.metrics[key];
+  const afterValue = after.metrics[key];
+  if (beforeValue === null || afterValue === null || beforeValue === afterValue) return null;
+  return {
+    key,
+    delta: afterValue - beforeValue,
+    direction: afterValue > beforeValue ? "increased" : "decreased",
+  };
+}
+
+function photoBodyAvailable(photo: Photo) {
+  return !photo.isHistoricalEvidence || Boolean(photo.src);
+}
+
+/**
+ * Projects a selected chronological pair into a small, deterministic change
+ * reading. It uses recorded metrics when present and never treats metadata as
+ * visual evidence. A model is only appropriate when both media bodies exist.
+ */
+export function buildPlantChangeReading(candidate: MeaningfulChangeCandidate): PlantChangeReading {
+  const metrics = (["heightCm", "leafCount", "density"] as PlantChangeMetricKey[])
+    .map((key) => metricDelta(candidate.before, candidate.after, key))
+    .filter((metric): metric is PlantChangeMetric => metric !== null);
+  const visualEvidenceAvailable = photoBodyAvailable(candidate.before) && photoBodyAvailable(candidate.after);
+  const state: PlantChangeReadingState = metrics.length
+    ? "measured_change"
+    : visualEvidenceAvailable
+      ? "visual_review_available"
+      : "metadata_only";
+  return {
+    state,
+    before: candidate.before,
+    after: candidate.after,
+    elapsedDays: candidate.elapsedDays,
+    contextFacts: candidate.contextFacts,
+    metrics,
+    visualEvidenceAvailable,
+  };
 }
 
 function isBetween(value: number, start: number, end: number) {

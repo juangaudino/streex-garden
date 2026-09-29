@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { Photo, PlantEvent } from "./garden-data";
 import {
   meaningfulChangeRequestKey,
+  buildPlantChangeReading,
   normalizeMeaningfulChangeResult,
   rankMeaningfulChanges,
   selectMeaningfulChangeCandidate,
@@ -84,6 +85,39 @@ describe("Meaningful Changes candidate policy", () => {
       plantInstanceId: "plant-1",
     };
     expect(selectMeaningfulChangeCandidate(plant, [photo("before", "2026-09-01"), photo("after", "2026-09-12")], [], [future])).not.toBeNull();
+  });
+});
+
+describe("F4.2 change reading", () => {
+  it("reports recorded metric change without turning it into a long-term trend", () => {
+    const before = photo("before", "2026-09-01");
+    const after = photo("after", "2026-09-12");
+    before.metrics.heightCm = 5;
+    after.metrics.heightCm = 12;
+    const candidate = selectMeaningfulChangeCandidate(plant, [before, after], []);
+    expect(candidate).not.toBeNull();
+    const reading = buildPlantChangeReading(candidate!);
+    expect(reading.state).toBe("measured_change");
+    expect(reading.metrics).toEqual([{ key: "heightCm", delta: 7, direction: "increased" }]);
+    expect(reading.visualEvidenceAvailable).toBe(true);
+  });
+
+  it("keeps historical metadata separate from unavailable visual evidence", () => {
+    const before = { ...photo("before", "2026-09-01"), src: "", isHistoricalEvidence: true };
+    const after = { ...photo("after", "2026-09-12"), src: "", isHistoricalEvidence: true };
+    const candidate = selectMeaningfulChangeCandidate(plant, [before, after], []);
+    expect(candidate).not.toBeNull();
+    const reading = buildPlantChangeReading(candidate!);
+    expect(reading.state).toBe("metadata_only");
+    expect(reading.visualEvidenceAvailable).toBe(false);
+  });
+
+  it("marks two usable unmeasured photos as eligible for explicit visual review", () => {
+    const candidate = selectMeaningfulChangeCandidate(plant, [photo("before", "2026-09-01"), photo("after", "2026-09-12")], []);
+    expect(candidate).not.toBeNull();
+    const reading = buildPlantChangeReading(candidate!);
+    expect(reading.state).toBe("visual_review_available");
+    expect(reading.metrics).toHaveLength(0);
   });
 });
 

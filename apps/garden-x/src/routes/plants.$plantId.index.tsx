@@ -63,6 +63,12 @@ import { buildPlantLifeHighlights } from "@/lib/plant-life-highlights";
 import { PlantOriginEditor } from "@/components/garden/plant-origin-editor";
 import { PlantStoryIntelligence } from "@/components/garden/plant-story-intelligence";
 import { buildPlantStoryContext } from "@/lib/plant-story-context";
+import { requestMeaningfulChange } from "@/lib/garden-backend";
+import {
+  buildPlantChangeReading,
+  selectMeaningfulChangeCandidate,
+  type MeaningfulChangeResult,
+} from "@/lib/meaningful-changes";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -114,6 +120,8 @@ function PlantProfile() {
   const [expandedTimelineEvents, setExpandedTimelineEvents] = useState<Set<string>>(() => new Set());
   const [libraryCatalog, setLibraryCatalog] = useState<GardenLibraryManifest | null>(null);
   const [libraryCatalogError, setLibraryCatalogError] = useState<string | undefined>(undefined);
+  const [changeAnalyzing, setChangeAnalyzing] = useState(false);
+  const [requestedChange, setRequestedChange] = useState<MeaningfulChangeResult | null>(null);
   const photoViewer = usePhotoViewer();
 
   useEffect(() => {
@@ -210,6 +218,52 @@ function PlantProfile() {
     () => buildPlantStoryContext(plant, garden, events, photos, libraryEntry, language),
     [plant, garden, events, photos, libraryEntry, language],
   );
+  const changeCandidate = useMemo(
+    () => selectMeaningfulChangeCandidate(plant, photos, events, []),
+    [plant, photos, events],
+  );
+  const changeReading = useMemo(
+    () => (changeCandidate ? buildPlantChangeReading(changeCandidate) : null),
+    [changeCandidate],
+  );
+  const storedChange = useMemo(
+    () =>
+      changeCandidate
+        ? store.meaningfulChanges.find(
+            (result) =>
+              result.plantInstanceId === changeCandidate.plantInstanceId &&
+              result.growCycleId === changeCandidate.growCycleId &&
+              result.beforePhotoId === changeCandidate.beforePhotoId &&
+              result.afterPhotoId === changeCandidate.afterPhotoId &&
+              (!result.language || result.language === language),
+          ) ?? null
+        : null,
+    [changeCandidate, language, store.meaningfulChanges],
+  );
+  const changeResult = requestedChange ?? storedChange;
+
+  useEffect(() => {
+    setRequestedChange(null);
+    setChangeAnalyzing(false);
+  }, [plant.id]);
+
+  const analyzeChange = async () => {
+    if (!changeCandidate || !changeReading?.visualEvidenceAvailable || changeAnalyzing) return;
+    setChangeAnalyzing(true);
+    try {
+      const { proposal } = await requestMeaningfulChange(
+        changeCandidate.growCycleId,
+        changeCandidate.beforePhotoId,
+        changeCandidate.afterPhotoId,
+        language,
+      );
+      setRequestedChange(proposal);
+    } catch (error) {
+      toast.error(localizeKnownError(error, language, ui(language, "storyChangeFailed")));
+    } finally {
+      setChangeAnalyzing(false);
+    }
+  };
 
   const removeEvent = async (event: (typeof events)[number], attachedPhotoCount: number) => {
     try {
@@ -407,7 +461,16 @@ function PlantProfile() {
 
       <div className="px-5 pt-8 sm:px-8 lg:px-12">
         {/* ------------------------------------------------ STORY */}
-        {tab === "Story" ? <PlantStoryIntelligence context={storyContext} language={language} /> : null}
+        {tab === "Story" ? (
+          <PlantStoryIntelligence
+            context={storyContext}
+            language={language}
+            changeReading={changeReading}
+            changeResult={changeResult}
+            changeAnalyzing={changeAnalyzing}
+            onAnalyzeChange={() => void analyzeChange()}
+          />
+        ) : null}
 
         {/* ------------------------------------------------ HISTORY */}
         {tab === "Journal" ? (

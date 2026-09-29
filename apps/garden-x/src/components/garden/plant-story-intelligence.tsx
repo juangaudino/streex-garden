@@ -1,6 +1,8 @@
 import { BookOpen, CircleHelp, Eye, Lightbulb } from "lucide-react";
 import type { ReactNode } from "react";
 import { ProvenanceTag } from "@/components/garden/atoms";
+import { PlantChangeReading as PlantChangeReadingPanel } from "@/components/garden/plant-change-reading";
+import type { MeaningfulChangeResult, PlantChangeReading } from "@/lib/meaningful-changes";
 import type { PlantStoryContext, PlantStoryEvidenceRef } from "@/lib/plant-story-context";
 import { ui, type UiCopyKey, type UiLanguage } from "@/lib/ui-copy";
 
@@ -89,9 +91,17 @@ function groupedEvents(context: PlantStoryContext, language: UiLanguage) {
 export function PlantStoryIntelligence({
   context,
   language,
+  changeReading,
+  changeResult,
+  changeAnalyzing,
+  onAnalyzeChange,
 }: {
   context: PlantStoryContext;
   language: UiLanguage;
+  changeReading: PlantChangeReading | null;
+  changeResult: MeaningfulChangeResult | null;
+  changeAnalyzing: boolean;
+  onAnalyzeChange: () => void;
 }) {
   const hasDerivedReading =
     context.observations.length > 0 ||
@@ -111,12 +121,20 @@ export function PlantStoryIntelligence({
           <h2 id="plant-story-intelligence-title" className="mt-1 font-display text-2xl">
             {ui(language, "storyTitle")}
           </h2>
-          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+      <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             {ui(language, "storyDescription")}
           </p>
         </div>
         <BookOpen className="mt-1 h-5 w-5 shrink-0 text-primary" strokeWidth={1.7} />
       </div>
+
+      <PlantChangeReadingPanel
+        reading={changeReading}
+        result={changeResult}
+        language={language}
+        analyzing={changeAnalyzing}
+        onAnalyze={onAnalyzeChange}
+      />
 
       <div className="mt-5 grid min-w-0 gap-3 sm:grid-cols-2">
         <StoryList icon={BookOpen} title={ui(language, "storySinceArriving")}>

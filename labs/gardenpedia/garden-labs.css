@@ -595,6 +595,24 @@ body.demo-frameless .lab-app.app-shell {
 .seed-editor-header h2 { margin: 0; font-size: clamp(28px,7vw,42px); letter-spacing: -.04em; }
 .seed-editor-header p { margin: 0; color: var(--muted); line-height: 1.5; }
 .seed-profile-v0 .seed-editor-header { margin-bottom: 14px; }
+.my-seed-package-layer,
+.my-seed-guide-layer { display: grid; gap: 14px; }
+.my-seed-package-layer {
+  padding: 16px;
+  border: 1px solid rgba(46,107,77,.18);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fbfaf4, #f3f7f0);
+}
+.my-seed-guide-layer {
+  margin-top: 6px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.my-seed-layer-heading { display: grid; gap: 4px; }
+.my-seed-layer-heading .eyebrow { margin: 0; }
+.my-seed-layer-heading h3 { margin: 0; color: var(--ink); font-size: 18px; }
+.my-seed-layer-heading p:last-child { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.my-seed-guide-layer > .seed-public-profile { margin-top: 2px; }
 .seed-profile-boundary {
   display: flex;
   align-items: flex-start;

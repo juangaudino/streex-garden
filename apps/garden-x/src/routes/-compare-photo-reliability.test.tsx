@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => ({
   resolvePhotoUrl: vi.fn(),
   persistPhotoRendition: vi.fn(),
   reportPhotoMediaDiagnostic: vi.fn(),
-  runAiCheck: vi.fn(),
+  requestMeaningfulChange: vi.fn(),
 }));
 
 vi.mock("@tanstack/react-router", async (importOriginal) => {
@@ -28,14 +28,14 @@ vi.mock("@tanstack/react-router", async (importOriginal) => {
     Link: ({
       to,
       children,
-      search: _search,
+      search,
       ...props
     }: {
       to: string;
       children: ReactNode;
-      search?: unknown;
+      search?: Record<string, unknown>;
     }) => (
-      <a href={to} {...props}>
+      <a href={to} data-search={search ? JSON.stringify(search) : undefined} {...props}>
         {children}
       </a>
     ),
@@ -49,7 +49,7 @@ vi.mock("@/lib/garden-backend", () => ({
   resolvePhotoUrl: mocks.resolvePhotoUrl,
   persistPhotoRendition: mocks.persistPhotoRendition,
   reportPhotoMediaDiagnostic: mocks.reportPhotoMediaDiagnostic,
-  runAiCheck: mocks.runAiCheck,
+  requestMeaningfulChange: mocks.requestMeaningfulChange,
 }));
 vi.mock("@/lib/garden-logic", () => ({
   ageLabel: (value: number) => `age-${value}`,
@@ -121,7 +121,7 @@ describe("Compare photo loading", () => {
     mocks.resolvePhotoUrl.mockReset();
     mocks.persistPhotoRendition.mockReset();
     mocks.reportPhotoMediaDiagnostic.mockReset();
-    mocks.runAiCheck.mockReset().mockRejectedValue(new Error("AI unavailable"));
+    mocks.requestMeaningfulChange.mockReset().mockRejectedValue(new Error("AI unavailable"));
     vi.stubGlobal("IntersectionObserver", OffscreenObserver);
     mocks.store = {
       language: "en",
@@ -213,6 +213,15 @@ describe("Compare photo loading", () => {
 
   it("initializes from the exact valid before/after photo IDs in the existing Compare route", async () => {
     mocks.search = { beforePhotoId: "middle", afterPhotoId: "after" };
+    mocks.store.events = [{
+      id: "event-between",
+      plantId: "plant-a",
+      daysAgo: 15,
+      occurredAt: "2026-09-14",
+      type: "note",
+      title: "Recorded event",
+      provenance: "recorded",
+    }];
     mocks.resolvePhotoUrl.mockImplementation((item: Photo, rendition: string) =>
       Promise.resolve(`https://signed/${item.id}/${rendition}`),
     );
@@ -226,36 +235,55 @@ describe("Compare photo loading", () => {
         "https://signed/after/display",
       );
     });
-    expect(mocks.runAiCheck).not.toHaveBeenCalled();
-    mocks.runAiCheck.mockResolvedValue({
+    expect(mocks.requestMeaningfulChange).not.toHaveBeenCalled();
+    mocks.requestMeaningfulChange.mockResolvedValue({
       proposal: {
-        confidence: "high",
-        observations: ["AI observation"],
-        uncertainty: [],
-        inference: "AI inference",
-        deltas: [],
+        analysisVersion: "garden_meaningful_change_v1",
+        comparisonStatus: "meaningful_change",
+        primaryVisualObservation: "AI observation",
+        supportingVisualObservations: [],
+        comparabilityNotes: [],
+        interpretation: "AI inference",
+        interpretationConfidence: "high",
+        relevantContextFacts: [],
+        beforePhotoId: "middle",
+        afterPhotoId: "after",
+        growCycleId: "cycle-plant-a",
+        plantInstanceId: "plant-a",
       },
     });
     fireEvent.click(screen.getByRole("button", { name: "Run AI Compare" }));
     await waitFor(() =>
-      expect(mocks.runAiCheck).toHaveBeenCalledWith("cycle-plant-a", "after", "middle", "en"),
+      expect(mocks.requestMeaningfulChange).toHaveBeenCalledWith("cycle-plant-a", "middle", "after", "en"),
     );
     expect(await screen.findByText(/AI observation/)).toBeTruthy();
+    const evidenceSearches = Array.from(container.querySelectorAll<HTMLAnchorElement>("a[data-search]"))
+      .map((link) => link.dataset.search);
+    expect(evidenceSearches).toContain(JSON.stringify({ tab: "Photos", focusPhotoId: "middle" }));
+    expect(evidenceSearches).toContain(JSON.stringify({ tab: "Photos", focusPhotoId: "after" }));
+    expect(evidenceSearches).toContain(JSON.stringify({ tab: "Timeline", focusEventId: "event-between" }));
   });
 
   it("does not invoke AI on open or selection change, and ignores an in-flight result for the old pair", async () => {
     let finishOldRequest:
       | ((value: {
           proposal: {
-            confidence: string;
-            observations: string[];
-            uncertainty: string[];
-            inference: string;
-            deltas: never[];
+            analysisVersion: string;
+            comparisonStatus: "meaningful_change";
+            primaryVisualObservation: string;
+            supportingVisualObservations: string[];
+            comparabilityNotes: string[];
+            interpretation: string;
+            interpretationConfidence: "high";
+            relevantContextFacts: string[];
+            beforePhotoId: string;
+            afterPhotoId: string;
+            growCycleId: string;
+            plantInstanceId: string;
           };
         }) => void)
       | undefined;
-    mocks.runAiCheck.mockImplementation(
+    mocks.requestMeaningfulChange.mockImplementation(
       () =>
         new Promise((resolve) => {
           finishOldRequest = resolve;
@@ -265,25 +293,32 @@ describe("Compare photo loading", () => {
       Promise.resolve(`https://signed/${item.id}/${rendition}`),
     );
     render(<CompareRoute />);
-    expect(mocks.runAiCheck).not.toHaveBeenCalled();
+    expect(mocks.requestMeaningfulChange).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button", { name: "Earlier photo: middle caption" }));
-    expect(mocks.runAiCheck).not.toHaveBeenCalled();
+    expect(mocks.requestMeaningfulChange).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button", { name: "Run AI Compare" }));
-    expect(mocks.runAiCheck).toHaveBeenCalledWith("cycle-plant-a", "after", "middle", "en");
+    expect(mocks.requestMeaningfulChange).toHaveBeenCalledWith("cycle-plant-a", "middle", "after", "en");
     fireEvent.click(screen.getByRole("button", { name: "Earlier photo: before caption" }));
     await waitFor(() =>
       expect(screen.getByRole("button", { name: "Run AI Compare" }).hasAttribute("disabled")).toBe(
         true,
       ),
     );
-    expect(mocks.runAiCheck).toHaveBeenCalledTimes(1);
+    expect(mocks.requestMeaningfulChange).toHaveBeenCalledTimes(1);
     finishOldRequest?.({
       proposal: {
-        confidence: "high",
-        observations: ["stale AI observation"],
-        uncertainty: [],
-        inference: "stale inference",
-        deltas: [],
+        analysisVersion: "garden_meaningful_change_v1",
+        comparisonStatus: "meaningful_change",
+        primaryVisualObservation: "stale AI observation",
+        supportingVisualObservations: [],
+        comparabilityNotes: [],
+        interpretation: "stale inference",
+        interpretationConfidence: "high",
+        relevantContextFacts: [],
+        beforePhotoId: "middle",
+        afterPhotoId: "after",
+        growCycleId: "cycle-plant-a",
+        plantInstanceId: "plant-a",
       },
     });
     await waitFor(() => expect(screen.queryByText("stale AI observation")).toBeNull());

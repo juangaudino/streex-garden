@@ -8,14 +8,19 @@ import {
   eventsBetween,
   formatDate,
   plantPhotos,
-  type CompareResult,
 } from "@/lib/garden-logic";
-import { runAiCheck } from "@/lib/garden-backend";
+import { requestMeaningfulChange } from "@/lib/garden-backend";
 import {
   requestedComparePhotoPair,
   validateComparePhotoSearch,
 } from "@/lib/compare-photo-selection";
-import { ConfidenceBar, ProvenanceTag } from "@/components/garden/atoms";
+import {
+  buildPlantChangeReading,
+  contextFactsBetween,
+  type MeaningfulChangeResult,
+} from "@/lib/meaningful-changes";
+import { ProvenanceTag } from "@/components/garden/atoms";
+import { PlantChangeReading } from "@/components/garden/plant-change-reading";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -97,9 +102,9 @@ export function CompareScreen({
     ? currentSelection.bId
     : (photos[photos.length - 1]?.id ?? "");
   const [slider, setSlider] = useState(50);
-  const [aiComparison, setAiComparison] = useState<{
+  const [meaningfulChange, setMeaningfulChange] = useState<{
     key: string;
-    result: { observations: string[]; inference: string; confidence: "high" | "moderate" | "low" };
+    result: MeaningfulChangeResult;
   } | null>(null);
   const [aiComparisonStatus, setAiComparisonStatus] = useState<"idle" | "loading" | "error">("idle");
   const aiRequestVersion = useRef(0);
@@ -108,6 +113,8 @@ export function CompareScreen({
 
   const a = photos.find((p) => p.id === aId);
   const b = photos.find((p) => p.id === bId);
+  const beforePhoto = a && b ? (a.daysAgo >= b.daysAgo ? a : b) : undefined;
+  const afterPhoto = a && b ? (a.daysAgo >= b.daysAgo ? b : a) : undefined;
   const comparisonKey = `${plant.id}:${a?.id ?? ""}:${b?.id ?? ""}`;
   const currentComparisonKey = useRef(comparisonKey);
   currentComparisonKey.current = comparisonKey;
@@ -146,7 +153,7 @@ export function CompareScreen({
   }, [plant.id]);
 
   useEffect(() => {
-    setAiComparison(null);
+    setMeaningfulChange(null);
     setAiComparisonStatus("idle");
     aiRequestVersion.current += 1;
   }, [comparisonKey]);
@@ -154,9 +161,9 @@ export function CompareScreen({
   const runAiComparison = () => {
     if (
       !plant.backendGrowCycleId ||
-      !a?.backendStoragePath ||
-      !b?.backendStoragePath ||
-      a.id === b.id ||
+      !beforePhoto?.backendStoragePath ||
+      !afterPhoto?.backendStoragePath ||
+      beforePhoto.id === afterPhoto.id ||
       aiRequestsInFlight.current.size > 0
     ) {
       return;
@@ -165,7 +172,7 @@ export function CompareScreen({
     aiRequestsInFlight.current.add(comparisonKey);
     setAiPendingKeys([...aiRequestsInFlight.current]);
     setAiComparisonStatus("loading");
-    void runAiCheck(plant.backendGrowCycleId, b.id, a.id, language)
+    void requestMeaningfulChange(plant.backendGrowCycleId, beforePhoto.id, afterPhoto.id, language)
       .then(({ proposal }) => {
         if (
           aiRequestVersion.current !== requestVersion ||
@@ -173,25 +180,9 @@ export function CompareScreen({
         ) {
           return;
         }
-        const confidence =
-          proposal.confidence === "high"
-            ? "high"
-            : proposal.confidence === "medium"
-              ? "moderate"
-              : "low";
-        const observations = Array.isArray(proposal.observations)
-          ? proposal.observations.map(String)
-          : [];
-        const uncertainty = Array.isArray(proposal.uncertainty)
-          ? proposal.uncertainty.map(String)
-          : [];
-        setAiComparison({
+        setMeaningfulChange({
           key: comparisonKey,
-          result: {
-            observations,
-            inference: [String(proposal.summary ?? ""), ...uncertainty].filter(Boolean).join(" "),
-            confidence,
-          },
+          result: proposal,
         });
       })
       .then(() => {
@@ -212,8 +203,32 @@ export function CompareScreen({
 
   if (!a || !b) return <div className="p-8 text-sm text-muted-foreground">{ui(language, "twoPhotosNeeded")}</div>;
   const deterministic = comparePhotos(a, b, plant, language);
-  const activeAiComparison = aiComparison?.key === comparisonKey ? aiComparison.result : null;
-  const result: CompareResult = activeAiComparison ? { ...deterministic, ...activeAiComparison } : deterministic;
+  const activeMeaningfulChange = meaningfulChange?.key === comparisonKey ? meaningfulChange.result : null;
+  const changeCandidate = beforePhoto && afterPhoto && plant.backendGrowCycleId
+    ? {
+        plantInstanceId: plant.id,
+        growCycleId: plant.backendGrowCycleId,
+        beforePhotoId: beforePhoto.id,
+        afterPhotoId: afterPhoto.id,
+        before: beforePhoto,
+        after: afterPhoto,
+        elapsedDays: Math.max(0, beforePhoto.daysAgo - afterPhoto.daysAgo),
+        contextFacts: contextFactsBetween(beforePhoto, afterPhoto, store.events),
+      }
+    : null;
+  const changeReading = changeCandidate ? buildPlantChangeReading(changeCandidate) : null;
+  const storedMeaningfulChange = changeCandidate
+    ? (store.meaningfulChanges ?? []).find(
+        (item: MeaningfulChangeResult) =>
+          item.plantInstanceId === changeCandidate.plantInstanceId &&
+          item.growCycleId === changeCandidate.growCycleId &&
+          item.beforePhotoId === changeCandidate.beforePhotoId &&
+          item.afterPhotoId === changeCandidate.afterPhotoId &&
+          (!item.language || item.language === language),
+      ) ?? null
+    : null;
+  const activeChangeResult = activeMeaningfulChange ?? storedMeaningfulChange;
+  const result = deterministic;
   const hasRecordedMeasurements = [
     a.metrics.heightCm,
     a.metrics.leafCount,
@@ -399,29 +414,15 @@ export function CompareScreen({
           </ul> : <p className="text-sm text-muted-foreground">{ui(language, "noNumericMeasurements")}</p>}
         </div>
 
-        <div className="space-y-4">
-          <div className="surface p-5">
-            <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-              <h2 className="min-w-0 font-display text-lg">{ui(language, "observed")}</h2>
-              <ProvenanceTag kind="observed" />
-            </div>
-            <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-              {result.observations.map((o) => (
-                <li key={o}>· {o}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="surface p-5">
-            <div className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-              <h2 className="min-w-0 font-display text-lg">{ui(language, "possibleMeaning")}</h2>
-              <ProvenanceTag kind="inferred" confidence={result.confidence} />
-            </div>
-            <p className="text-sm leading-relaxed text-muted-foreground">{result.inference}</p>
-            <div className="mt-4">
-              <ConfidenceBar confidence={result.confidence} />
-            </div>
-          </div>
-        </div>
+        <PlantChangeReading
+          reading={changeReading}
+          result={activeChangeResult}
+          language={language}
+          analyzing={aiComparisonStatus === "loading"}
+          onAnalyze={runAiComparison}
+          plantId={plant.id}
+          showAnalyzeAction={false}
+        />
       </div>
 
       <div className="mt-8 px-5 sm:px-8 lg:px-12">

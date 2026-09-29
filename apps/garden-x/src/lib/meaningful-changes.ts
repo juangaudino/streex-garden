@@ -35,6 +35,7 @@ export interface MeaningfulChangeContextFact {
   kind: "event" | "observation" | "care" | "follow_up" | "ai_check" | "status";
   text: string;
   provenance: "recorded" | "observed" | "inferred";
+  eventId?: string;
 }
 
 export interface MeaningfulChangeCandidate {
@@ -154,6 +155,7 @@ export function contextFactsBetween(
       kind: event.type === "maintenance" || event.type === "pruning" || event.type === "thinning" || event.type === "harvest" ? "care" : "event",
       text: event.detail?.trim() || event.title,
       provenance: event.provenance === "inferred" ? "inferred" : "recorded",
+      eventId: event.id,
     }));
 }
 

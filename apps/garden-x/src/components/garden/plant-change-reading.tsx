@@ -1,4 +1,5 @@
 import { ArrowRight, Eye, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { ProvenanceTag } from "@/components/garden/atoms";
 import { formatDate } from "@/lib/garden-logic";
 import type {
@@ -28,7 +29,23 @@ function metricLabel(metric: PlantChangeMetric, language: UiLanguage) {
   return `${name} ${direction} · ${Math.abs(metric.delta)}`;
 }
 
-function EvidencePill({ children }: { children: string }) {
+function EvidencePill({ children, to }: { children: string; to?: { plantId: string; photoId?: string; eventId?: string } }) {
+  if (to) {
+    return (
+      <Link
+        to="/plants/$plantId/"
+        params={{ plantId: to.plantId }}
+        search={{
+          tab: to.photoId ? "Photos" : "Timeline",
+          focusPhotoId: to.photoId,
+          focusEventId: to.eventId,
+        }}
+        className="inline-flex min-w-0 max-w-full whitespace-normal break-words rounded-full border border-border/70 bg-background/70 px-2 py-1 text-[0.625rem] text-primary underline-offset-2 hover:underline"
+      >
+        {children}
+      </Link>
+    );
+  }
   return (
     <span className="inline-flex min-w-0 max-w-full whitespace-normal break-words rounded-full border border-border/70 bg-background/70 px-2 py-1 text-[0.625rem] text-muted-foreground">
       {children}
@@ -42,12 +59,16 @@ export function PlantChangeReading({
   language,
   analyzing,
   onAnalyze,
+  plantId,
+  showAnalyzeAction = true,
 }: {
   reading: PlantChangeReading | null;
   result: MeaningfulChangeResult | null;
   language: UiLanguage;
   analyzing: boolean;
   onAnalyze: () => void;
+  plantId?: string;
+  showAnalyzeAction?: boolean;
 }) {
   if (!reading) return null;
 
@@ -97,10 +118,22 @@ export function PlantChangeReading({
               </p>
             </div>
           ) : null}
+          {result.supportingVisualObservations.length ? (
+            <ul className="min-w-0 space-y-1 text-sm leading-relaxed text-muted-foreground">
+              {result.supportingVisualObservations.map((observation) => <li key={observation}>· {observation}</li>)}
+            </ul>
+          ) : null}
           <div className="flex min-w-0 flex-wrap gap-1.5">
-            <EvidencePill>{evidenceLabel(reading, language)}</EvidencePill>
+            <EvidencePill to={plantId ? { plantId, photoId: reading.before.id } : undefined}>
+              {formatDate(reading.before.daysAgo, language)}
+            </EvidencePill>
+            <EvidencePill to={plantId ? { plantId, photoId: reading.after.id } : undefined}>
+              {formatDate(reading.after.daysAgo, language)}
+            </EvidencePill>
             {reading.contextFacts.slice(0, 3).map((fact, index) => (
-              <EvidencePill key={`${fact.text}-${index}`}>{fact.text}</EvidencePill>
+              <EvidencePill key={`${fact.text}-${index}`} to={plantId && fact.eventId ? { plantId, eventId: fact.eventId } : undefined}>
+                {fact.text}
+              </EvidencePill>
             ))}
           </div>
         </div>
@@ -132,7 +165,7 @@ export function PlantChangeReading({
             </p>
           )}
 
-          {reading.visualEvidenceAvailable && !reading.metrics.length ? (
+          {showAnalyzeAction && reading.visualEvidenceAvailable && !reading.metrics.length ? (
             <button
               type="button"
               onClick={onAnalyze}

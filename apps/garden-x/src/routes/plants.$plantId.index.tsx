@@ -71,6 +71,13 @@ import {
 } from "@/lib/meaningful-changes";
 
 export const Route = createFileRoute("/plants/$plantId/")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    tab: ["Story", "Journal", "Timeline", "Photos", "Reference"].includes(String(search["tab"]))
+      ? String(search["tab"]) as "Story" | "Journal" | "Timeline" | "Photos" | "Reference"
+      : undefined,
+    focusPhotoId: typeof search["focusPhotoId"] === "string" ? search["focusPhotoId"] : undefined,
+    focusEventId: typeof search["focusEventId"] === "string" ? search["focusEventId"] : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Plant profile — Garden X" },
@@ -104,12 +111,13 @@ function timelineEventNeedsExpansion(text: string) {
 
 function PlantProfile() {
   const { plantId } = Route.useParams();
+  const { tab: requestedTab, focusPhotoId, focusEventId } = Route.useSearch();
   const store = useGarden();
   const openJournalEntry = useJournalEntry();
   const plant = store.plants.find((p) => p.id === plantId) ?? store.historicalPlants?.find((p) => p.id === plantId);
   if (!plant) throw notFound();
 
-  const [tab, setTab] = useState<Tab>("Journal");
+  const [tab, setTab] = useState<Tab>(requestedTab ?? "Journal");
   const [note, setNote] = useState("");
   const [recordOpen, setRecordOpen] = useState(false);
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>(undefined);
@@ -210,6 +218,25 @@ function PlantProfile() {
     () => sortPhotosByCapturedAt(photos, sortOrder),
     [photos, sortOrder],
   );
+
+  useEffect(() => {
+    if (requestedTab) setTab(requestedTab);
+    if (focusEventId) setExpandedTimelineEvents((current) => new Set(current).add(focusEventId));
+  }, [focusEventId, requestedTab]);
+
+  useEffect(() => {
+    if (requestedTab !== "Timeline" || !focusEventId) return;
+    window.requestAnimationFrame(() => {
+      document.getElementById(`event-evidence-${focusEventId}`)?.scrollIntoView({ block: "center" });
+    });
+  }, [focusEventId, requestedTab]);
+
+  useEffect(() => {
+    if (requestedTab !== "Photos" || !focusPhotoId) return;
+    window.requestAnimationFrame(() => {
+      document.getElementById(`photo-evidence-${focusPhotoId}`)?.scrollIntoView({ block: "center" });
+    });
+  }, [focusPhotoId, requestedTab]);
   const lifeHighlights = useMemo(
     () => buildPlantLifeHighlights(plant, events),
     [plant, events],
@@ -736,6 +763,7 @@ function PlantProfile() {
                 return (
                   <li
                     key={e.id}
+                    id={`event-evidence-${e.id}`}
                     className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-2xl border border-border/60 bg-card p-4"
                   >
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground">
@@ -850,6 +878,7 @@ function PlantProfile() {
               {orderedPhotos.map((photo) => (
                 <figure
                   key={photo.id}
+                  id={`photo-evidence-${photo.id}`}
                   className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-soft"
                 >
                   <button

@@ -17,6 +17,7 @@ vi.mock("@tanstack/react-router", () => ({
     ...options,
     options,
     useParams: () => mocks.params,
+    useSearch: () => ({}),
   }),
   Link: ({ to, children, ...props }: { to: string; children: ReactNode }) => (
     <a href={to} {...props}>

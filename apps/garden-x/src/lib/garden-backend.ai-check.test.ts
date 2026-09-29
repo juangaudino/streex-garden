@@ -6,7 +6,7 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ auth: { getSession } }),
 }));
 
-import { askGardenAi, runAiCheck, runAiCheckDraft } from "./garden-backend";
+import { askGardenAi, requestMeaningfulChange, runAiCheck, runAiCheckDraft } from "./garden-backend";
 
 describe("AI Check request isolation", () => {
   const fetchMock = vi.fn();
@@ -56,6 +56,39 @@ describe("AI Check request isolation", () => {
     const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
 
     expect(request.language).toBe("en");
+  });
+
+  it("uses the shared meaningful-change operation for an explicit photo comparison", async () => {
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        proposal: {
+          schema_version: "garden_meaningful_change_v1",
+          comparison_status: "limited_comparability",
+          primary_visual_observation: "The two views are difficult to compare.",
+          supporting_visual_observations: [],
+          comparability_notes: ["The framing differs."],
+          interpretation: null,
+          interpretation_confidence: null,
+          relevant_context_facts: [],
+          before_photo_id: "before",
+          after_photo_id: "after",
+          grow_cycle_id: "cycle-a",
+          plant_instance_id: "plant-a",
+        },
+        request_id: "request-change-1",
+      }),
+    });
+
+    await requestMeaningfulChange("cycle-a", "before", "after", "en");
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "meaningful_change",
+      grow_cycle_id: "cycle-a",
+      before_photo_id: "before",
+      after_photo_id: "after",
+      language: "en",
+    });
   });
 
   it("supports a new photo draft scoped to the selected grow cycle", async () => {

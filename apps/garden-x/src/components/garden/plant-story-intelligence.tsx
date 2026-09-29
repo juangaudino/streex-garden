@@ -134,6 +134,7 @@ export function PlantStoryIntelligence({
         language={language}
         analyzing={changeAnalyzing}
         onAnalyze={onAnalyzeChange}
+        plantId={context.plant.id}
       />
 
       <div className="mt-5 grid min-w-0 gap-3 sm:grid-cols-2">

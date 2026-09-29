@@ -125,12 +125,17 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain('data-view="machines"');
     expect(page).toContain('id="exploreContextTab"');
     expect(page).toContain('id="myGardenContextTab"');
+    expect(page).toMatch(/id="myGardenContextTab"[^>]*hidden/);
     expect(page).toContain('<base href="/gardenpedia/">');
     expect(page).toContain('id="myPlantGrid" class="plant-grid"');
     expect(app).toContain('data-context-panel');
     expect(page).toContain('id="seedsSurface"');
     expect(page).toContain('id="seedSearchInput"');
     expect(app).toContain("function renderPublicSeeds()");
+    expect(app).toContain("function openPublicSeed(plant)");
+    expect(app).toContain("function renderAccountVisibility()");
+    expect(app).toContain('openPublicSeed(plant)');
+    expect(app).toContain('state.activeSeedId.startsWith("public:")');
     expect(app).toContain("function renderMyPlants()");
     const myPlantsRenderer = app.slice(app.indexOf("function renderMyPlants()"), app.indexOf("function openPlant("));
     expect(myPlantsRenderer).toContain('class="plant-card my-plant-card"');
@@ -156,8 +161,24 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(profile).not.toContain('onClick={() => openRecord("move")}');
     expect(profile).toContain("grid grid-cols-3 gap-1 px-5");
     expect(profile).not.toContain("grid grid-cols-2 gap-1.5 px-5");
+    expect(profile).toContain('onClick={() => setLocationMenuOpen(true)}');
+    expect(profile).toContain('openRecord("move")');
     expect(record).toContain('key: "move"');
-    expect(groups).toContain('flowKeys: ["planting", "move", "close", "replace"]');
+    expect(groups).not.toContain('flowKeys: ["planting", "move", "close", "replace"]');
+    expect(groups).toContain('flowKeys: ["planting", "close", "replace"]');
+    expect(read("labs/gardenpedia/garden-labs.css")).toContain("overflow-wrap: anywhere");
+  });
+
+  it("uses canonical known-model geometry and keeps custom layout editing separate", () => {
+    const newGarden = read("apps/garden-x/src/components/garden/new-garden.tsx");
+    const backend = read("apps/garden-x/src/lib/garden-backend.ts");
+    const map = read("apps/garden-x/src/routes/gardens.$gardenId.index.tsx");
+    expect(newGarden).not.toContain("SystemLayoutConfigurator");
+    expect(newGarden).not.toContain("initialSystemLayout");
+    expect(newGarden).toContain("systemDefinitionKey");
+    expect(backend).toContain('rpc("garden_x_create_garden"');
+    expect(backend).toContain("p_system_definition_key");
+    expect(map).toContain("Do not synthesize a fake blueprint");
   });
 
   it("keeps Library and My Seeds on one explicit, non-creating resolver", () => {

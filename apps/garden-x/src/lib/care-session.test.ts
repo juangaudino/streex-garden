@@ -37,8 +37,8 @@ describe("Care Session action hierarchy", () => {
 
   it("keeps all existing Record a Moment flows in two groups", () => {
     expect(recordMomentGroups[0]?.flowKeys).toEqual(["observation", "care", "followup", "other"]);
-    expect(recordMomentGroups[1]?.flowKeys).toEqual(["planting", "move", "close", "replace"]);
-    expect(recordMomentGroups.flatMap((group) => group.flowKeys)).toHaveLength(8);
+    expect(recordMomentGroups[1]?.flowKeys).toEqual(["planting", "close", "replace"]);
+    expect(recordMomentGroups.flatMap((group) => group.flowKeys)).toHaveLength(7);
   });
 
   it("serializes and restores review context for contextual back navigation", () => {

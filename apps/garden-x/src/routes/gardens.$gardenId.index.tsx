@@ -53,6 +53,9 @@ function GardenDetail() {
   const pastPlants = (store.historicalPlants ?? []).filter((p) => p.gardenId === garden.id);
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const gardenSummary = selectStaleSummary(store.gardenSummaries, "garden", garden.id, language);
+  // Optimistic creation briefly adds the garden before the canonical bootstrap
+  // returns its positions. Do not synthesize a fake blueprint in that window:
+  // it makes a valid known-model layout appear empty until a later refresh.
   const pods = garden.backendPositions?.length
     ? [...garden.backendPositions]
         .filter((position) => position.active !== false)
@@ -73,7 +76,7 @@ function GardenDetail() {
             plants: positionPlants,
           };
         })
-    : garden.machine
+    : garden.machine && store.hydration === "ready"
       ? Array.from({ length: garden.machine.pods }, (_, i) => {
           const label = `Pod ${i + 1}`;
           return {
@@ -226,7 +229,11 @@ function GardenDetail() {
           >
             {ui(language, "systemMap")}
           </SectionTitle>
-          {pods && garden.machine ? (
+          {!pods && garden.machine ? (
+            <div className="grid min-h-48 place-items-center bg-secondary/35 p-8 text-center text-sm text-muted-foreground" aria-busy="true">
+              {ui(language, "loading")}
+            </div>
+          ) : pods && garden.machine ? (
             <div className="surface overflow-hidden">
               <div className="flex items-center justify-between gap-4 border-b border-border/70 px-4 py-3.5 sm:px-6">
                 <div className="min-w-0">

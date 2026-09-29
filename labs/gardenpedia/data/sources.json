@@ -133,5 +133,32 @@
     "type": "seed_reference",
     "scope": "genovese_basil_seed",
     "accessed": "2026-09-28"
+  },
+  {
+    "id": "johnnys-cilantro-seed",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Cilantro (Coriander) — Key Growing Information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/herbs/cilantro-coriander/cilantro-coriander-key-growing-information.html",
+    "type": "grower_reference",
+    "scope": "cilantro_seed",
+    "accessed": "2026-09-28"
+  },
+  {
+    "id": "johnnys-cilantro-production",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Cilantro (Coriander) Production",
+    "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dwd4559419/assets/information/8306-cilantro-production.pdf",
+    "type": "grower_reference",
+    "scope": "cilantro_seed_production",
+    "accessed": "2026-09-28"
+  },
+  {
+    "id": "johnnys-seed-starting",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Guide to Starting Seeds Indoors, from Johnny's Research Team",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/methods-tools-supplies/seed-starting-transplanting/seed-starting-transplanting-guidelines.html",
+    "type": "grower_reference",
+    "scope": "general_seed_starting",
+    "accessed": "2026-09-28"
   }
 ]

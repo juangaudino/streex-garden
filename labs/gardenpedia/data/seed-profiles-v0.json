@@ -1,6 +1,6 @@
 {
   "schemaVersion": "gardenpedia_seed_profile_v0",
-  "scope": "genovese-basil-only",
+  "scope": "published-seed-grown-identities",
   "profiles": {
     "genovese-basil": {
       "plantIdentityId": "genovese-basil",
@@ -129,6 +129,485 @@
           "evidenceType": "garden_adaptation",
           "confidence": "medium",
           "sourceIds": ["johnnys-genovese-basil-seed"]
+        }
+      ]
+    },
+    "red-romaine-lettuce": {
+      "plantIdentityId": "red-romaine-lettuce",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from Red Romaine Lettuce seed to an established young plant. Temperature-sensitive lettuce germination and the difference between head production and baby-leaf culture stay explicit; mature hydroponic care remains in the Plant profile.",
+        "es": "Un recorrido práctico desde la semilla de lechuga romana roja hasta una planta joven establecida. La germinación sensible a la temperatura y la diferencia entre producir una cabeza y hojas tiernas quedan explícitas; el cuidado hidropónico maduro permanece en el perfil de Planta."
+      },
+      "quickFacts": [
+        { "key": "germination", "label": { "en": "Germination", "es": "Germinación" }, "value": { "en": "Cultivar-specific days pending", "es": "Días específicos del cultivar pendientes" }, "note": { "en": "Temperature is documented; a reliable Red Romaine day range was not found", "es": "La temperatura está documentada; no se encontró un rango fiable de días para Red Romaine" }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] },
+        { "key": "temperature", "label": { "en": "Germination temperature", "es": "Temperatura de germinación" }, "value": { "en": "60–68°F", "es": "60–68°F" }, "note": { "en": "16–20°C; lettuce can enter thermal dormancy when too warm", "es": "16–20°C; la lechuga puede entrar en dormancia térmica con demasiado calor" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-lettuce"] },
+        { "key": "depth", "label": { "en": "Sowing depth", "es": "Profundidad de siembra" }, "value": { "en": "⅛ inch", "es": "⅛ pulgada" }, "note": { "en": "About 3 mm; barely cover and firm gently", "es": "Aproximadamente 3 mm; cubre apenas y afirma suavemente" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-lettuce"] },
+        { "key": "seedType", "label": { "en": "Seed form", "es": "Forma de la semilla" }, "value": { "en": "Packet form not verified", "es": "Forma del paquete no verificada" }, "note": { "en": "Pelleting changes handling and can broaden the germination range; check the packet", "es": "El peletizado cambia el manejo y puede ampliar el rango de germinación; revisa el paquete" }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "Start shallow and choose head or baby-leaf intent", "es": "Empieza poco profundo y define si buscas cabeza u hojas tiernas" },
+          "guidance": { "en": "For head lettuce, Johnny's documents starting 3–4 weeks before field planting in trays, barely covered with vermiculite or fine soil. Direct sowing is also documented for baby leaf at about ⅛ inch. UF/IFAS starts one to two seeds per grow cube in its non-circulating hydroponic method; that is a method reference, not a universal pod rule.", "es": "Para una cabeza, Johnny's documenta iniciar 3–4 semanas antes del trasplante en bandejas, cubriendo apenas con vermiculita o tierra fina. También documenta la siembra directa de hojas tiernas a unos 3 mm. UF/IFAS inicia una o dos semillas por cubo en su método hidropónico no circulante; es una referencia de método, no una regla universal para cada pod." },
+          "items": [
+            { "text": { "en": "Keep the seed shallow and firm the medium gently so the seed has contact without being buried deeply.", "es": "Mantén la semilla poco profunda y afirma suavemente el medio para que tenga contacto sin quedar enterrada de más." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-lettuce"] },
+            { "text": { "en": "Garden adaptation: in a compact grow cube, use the intended harvest style and visible crowding to decide whether one or more seedlings should continue; do not turn the field spacing into a pod count.", "es": "Adaptación de Garden: en un cubo compacto, usa el tipo de cosecha y el amontonamiento visible para decidir si continúan una o varias plántulas; no conviertas la separación de campo en un número de plántulas por pod." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Cool, evenly moist conditions matter", "es": "Importan el frescor y la humedad uniforme" },
+          "guidance": { "en": "Johnny's gives optimum lettuce germination at 60–68°F (16–20°C) and warns that high temperatures can cause thermal dormancy. The reviewed sources do not establish a Red Romaine-specific light- or dark-required rule.", "es": "Johnny's sitúa la germinación óptima de la lechuga en 60–68°F (16–20°C) y advierte que las temperaturas altas pueden causar dormancia térmica. Las fuentes revisadas no establecen una regla específica de luz u oscuridad para Red Romaine." },
+          "items": [
+            { "text": { "en": "Keep the surface moist while the seed is emerging, but do not use warmth to push lettuce outside its documented cool range.", "es": "Mantén húmeda la superficie mientras emerge la semilla, pero no uses calor para sacar la lechuga de su rango fresco documentado." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-lettuce"] },
+            { "text": { "en": "Light/dark germination requirement for this identity: needs validation.", "es": "Requisito de luz u oscuridad para germinar esta identidad: requiere validación." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-lettuce"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Cool the young lettuce and watch crowding", "es": "Mantén fresca la lechuga joven y observa el amontonamiento" },
+          "guidance": { "en": "Johnny's recommends shade and frequent misting when needed to keep seed-starting trays below 75°F (25°C) during germination. Once seedlings are visible, preserve even moisture and assess crowding according to whether the goal is a head or baby leaf.", "es": "Johnny's recomienda sombra y nebulización frecuente cuando haga falta para mantener las bandejas por debajo de 75°F (25°C) durante la germinación. Cuando las plántulas sean visibles, conserva una humedad uniforme y evalúa el amontonamiento según busques una cabeza u hojas tiernas." },
+          "items": [
+            { "text": { "en": "Do not pull a crowded seedling if removing it would disturb the roots of the plant being kept; cut the unwanted seedling at the base when that is safer.", "es": "No arranques una plántula amontonada si al quitarla vas a alterar las raíces de la que conservas; córtala en la base cuando sea más seguro." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["uf-hydro-lettuce"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Use visible establishment, not a fixed day count", "es": "Usa el establecimiento visible, no un número fijo de días" },
+          "guidance": { "en": "UF/IFAS reports seedlings in its non-circulating hydroponic method can be ready to move into the system after roughly one to three weeks. Treat that as method-specific context; a Red Romaine pod is ready for the next step when the seedling is upright, actively growing and the receiving position is prepared.", "es": "UF/IFAS informa que, en su método hidropónico no circulante, las plántulas pueden estar listas para pasar al sistema después de aproximadamente una a tres semanas. Trátalo como contexto específico del método; un pod de Red Romaine está listo cuando la plántula está erguida, creciendo activamente y la posición receptora está preparada." },
+          "items": [
+            { "text": { "en": "Harden outdoor-bound seedlings for at least 3–5 days before planting out, as documented by Johnny's; this does not describe an indoor pod handoff.", "es": "Aclimata durante al menos 3–5 días las plántulas destinadas al exterior, como documenta Johnny's; esto no describe el paso a un pod interior." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-lettuce"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-lettuce", "uf-hydro-lettuce"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Keep the packet dry, cool and traceable", "es": "Mantén el paquete seco, fresco y trazable" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. The reviewed sources do not establish a Red Romaine-specific viability period or confirm whether this packet is pelleted.", "es": "Mantén la semilla bien sellada, seca y fresca. Las fuentes revisadas no establecen una duración específica de viabilidad para Red Romaine ni confirman si este paquete está peletizado." },
+          "items": [
+            { "text": { "en": "Record packet age and storage history instead of inventing an expiry date.", "es": "Registra la edad del paquete y su historial de almacenamiento en vez de inventar una fecha de caducidad." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Check heat and moisture before blaming the seed", "es": "Revisa calor y humedad antes de culpar a la semilla" },
+          "guidance": { "en": "Poor lettuce emergence should first trigger a check of temperature and seed-zone moisture. High temperatures can induce thermal dormancy, while dry media can produce uneven emergence.", "es": "Una emergencia pobre de lechuga debe llevar primero a revisar la temperatura y la humedad de la zona de la semilla. Las temperaturas altas pueden inducir dormancia térmica, y un medio seco puede producir una emergencia irregular." },
+          "items": [
+            { "text": { "en": "If the packet is pelleted, follow its label-specific moisture instructions; the reviewed sources do not justify assuming pelleted seed for this packet.", "es": "Si el paquete es peletizado, sigue sus instrucciones específicas de humedad; las fuentes revisadas no justifican asumir que este paquete lo sea." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["johnnys-lettuce"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-lettuce"]
+        }
+      ]
+    },
+    "cilantro": {
+      "plantIdentityId": "cilantro",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from cilantro seed to an established leaf plant. Direct sowing, the crop's taproot and the different density rules for leaf versus coriander production stay explicit; mature plant nutrition remains in the Plant profile.",
+        "es": "Un recorrido práctico desde la semilla de cilantro hasta una planta establecida para hojas. La siembra directa, la raíz pivotante y las reglas distintas de densidad para hojas frente a producción de coriandro quedan explícitas; la nutrición de la planta madura permanece en el perfil de Planta."
+      },
+      "quickFacts": [
+        { "key": "germination", "label": { "en": "Germination", "es": "Germinación" }, "value": { "en": "7–10 days", "es": "7–10 días" }, "note": { "en": "At 65–70°F (18–21°C); other references may give broader expectations", "es": "A 65–70°F (18–21°C); otras referencias pueden dar expectativas más amplias" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-seed"] },
+        { "key": "temperature", "label": { "en": "Germination temperature", "es": "Temperatura de germinación" }, "value": { "en": "65–70°F", "es": "65–70°F" }, "note": { "en": "18–21°C", "es": "18–21°C" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-seed"] },
+        { "key": "depth", "label": { "en": "Sowing depth", "es": "Profundidad de siembra" }, "value": { "en": "¼–½ inch", "es": "¼–½ pulgada" }, "note": { "en": "About 6–13 mm; direct sowing is recommended", "es": "Aproximadamente 6–13 mm; se recomienda la siembra directa" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-seed"] },
+        { "key": "seedType", "label": { "en": "Seed identity", "es": "Identidad de la semilla" }, "value": { "en": "Coriander seed of the cilantro plant", "es": "Semilla de coriandro de la planta de cilantro" }, "note": { "en": "Regular and monogerm seed can behave differently", "es": "La semilla regular y la monogermen pueden comportarse de forma distinta" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-production"] }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "Direct sow to protect the taproot", "es": "Siembra directamente para proteger la raíz pivotante" },
+          "guidance": { "en": "Johnny's recommends direct sowing cilantro because the crop has a taproot and does not transplant well. Sow ¼–½ inch deep; for leaf production, close sowing is acceptable and thinning is not required in the source guidance.", "es": "Johnny's recomienda sembrar el cilantro directamente porque tiene una raíz pivotante y no se trasplanta bien. Siembra a ¼–½ pulgada; para producción de hojas, la siembra cercana es aceptable y la fuente no exige aclarar." },
+          "items": [
+            { "text": { "en": "For coriander seed production, Johnny's gives a different target of 2–4 inches between plants; do not apply that target automatically to a leaf crop.", "es": "Para producir semillas de coriandro, Johnny's da un objetivo distinto de 2–4 pulgadas entre plantas; no apliques ese objetivo automáticamente a un cultivo de hojas." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-seed"] },
+            { "text": { "en": "Garden adaptation: in a compact pod, avoid pulling established seedlings because root disturbance is more consequential than achieving a universal count.", "es": "Adaptación de Garden: en un pod compacto, evita arrancar plántulas establecidas porque alterar las raíces es más importante que lograr un número universal." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-cilantro-production"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-cilantro-seed", "johnnys-cilantro-production"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Keep the seed zone warm enough and evenly moist", "es": "Mantén la zona de semilla suficientemente cálida y uniformemente húmeda" },
+          "guidance": { "en": "Johnny's lists 7–10 days at 65–70°F (18–21°C). Its production guide describes darkness for the microgreen method; that does not establish a universal darkness requirement for every leaf-growing method.", "es": "Johnny's indica 7–10 días a 65–70°F (18–21°C). Su guía de producción describe oscuridad para el método de microbrotes; eso no establece un requisito universal de oscuridad para cualquier método de cultivo de hojas." },
+          "items": [
+            { "text": { "en": "Keep the seed zone consistently moist until emergence, without turning the source guidance into a fixed hydroponic watering schedule.", "es": "Mantén la zona de la semilla constantemente húmeda hasta emerger, sin convertir la guía de la fuente en un calendario fijo de riego hidropónico." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-production"] },
+            { "text": { "en": "The reviewed sources do not establish a cultivar- or packet-specific viability period.", "es": "Las fuentes revisadas no establecen un periodo de viabilidad específico del cultivar o del paquete." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-cilantro-seed", "johnnys-cilantro-production"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Let the cluster establish before disturbing roots", "es": "Deja que el grupo se establezca antes de alterar las raíces" },
+          "guidance": { "en": "For leaf cilantro, the source guidance allows plants to remain relatively dense. Keep moisture even, protect the young root system and observe whether the cluster is actually competing before intervening.", "es": "Para cilantro de hoja, la guía de la fuente permite mantener las plantas relativamente densas. Conserva una humedad uniforme, protege el sistema radicular joven y observa si el grupo realmente compite antes de intervenir." },
+          "items": [
+            { "text": { "en": "If thinning is necessary in a compact pod, cut unwanted seedlings at the base rather than pulling through neighboring roots.", "es": "Si hace falta aclarar en un pod compacto, corta las plántulas sobrantes en la base en vez de arrancarlas entre las raíces vecinas." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-cilantro-seed"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-cilantro-seed"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Direct-sown cilantro has no routine transplant handoff", "es": "El cilantro sembrado directo no tiene un paso rutinario de trasplante" },
+          "guidance": { "en": "Because direct sowing is recommended and the taproot does not transplant well, the practical handoff is establishment in place: visible, upright seedlings with active growth and a stable moisture zone. A separate transplant stage remains a needs-validation area for this identity and system.", "es": "Como se recomienda la siembra directa y la raíz pivotante no se trasplanta bien, el paso práctico es establecerse en el lugar: plántulas visibles, erguidas y creciendo activamente con una zona de humedad estable. Una etapa separada de trasplante queda pendiente de validación para esta identidad y sistema." },
+          "items": [
+            { "text": { "en": "Do not use a basil-like leaf-count rule to decide that cilantro is ready to move.", "es": "No uses una regla de número de hojas propia de la albahaca para decidir que el cilantro está listo para moverse." }, "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-cilantro-production"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-cilantro-seed", "johnnys-cilantro-production"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Keep the coriander seed dry and cool", "es": "Mantén seca y fresca la semilla de coriandro" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. The reviewed sources do not support a cilantro-specific longevity value, so packet age and storage history remain the useful evidence.", "es": "Mantén la semilla bien sellada, seca y fresca. Las fuentes revisadas no respaldan un valor específico de longevidad para cilantro, así que la edad del paquete y su historial de almacenamiento siguen siendo la evidencia útil." },
+          "items": [
+            { "text": { "en": "Do not infer a viability percentage for this packet from a general coriander reference.", "es": "No infieras un porcentaje de viabilidad para este paquete a partir de una referencia general de coriandro." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Check moisture and crop goal before intervening", "es": "Revisa la humedad y el objetivo del cultivo antes de intervenir" },
+          "guidance": { "en": "Cilantro references can differ in apparent germination performance. Check temperature, even moisture and the seed's source before calling a packet failed; heat may also shift an established leaf crop toward bolting.", "es": "Las referencias de cilantro pueden diferir en el rendimiento aparente de germinación. Revisa temperatura, humedad uniforme y procedencia de la semilla antes de declarar fallido un paquete; el calor también puede llevar un cultivo de hojas establecido hacia la subida a flor." },
+          "items": [
+            { "text": { "en": "Johnny's notes that cilantro seed is called coriander and that regular and monogerm seed can differ; keep that seed characteristic visible when comparing emergence observations.", "es": "Johnny's señala que la semilla de cilantro se llama coriandro y que la semilla regular y la monogermen pueden diferir; conserva esa característica visible al comparar observaciones de emergencia." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-cilantro-production"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-cilantro-seed", "johnnys-cilantro-production"]
+        }
+      ]
+    },
+    "tiny-tim-tomato": {
+      "plantIdentityId": "tiny-tim-tomato",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from Tiny Tim Tomato seed to a sturdy young plant. The identity-specific seed instructions remain separate from general tomato crop care and from later compact-system limits.",
+        "es": "Un recorrido práctico desde la semilla de tomate Tiny Tim hasta una planta joven fuerte. Las instrucciones específicas de la semilla se mantienen separadas del cuidado general del tomate y de los límites posteriores del sistema compacto."
+      },
+      "quickFacts": [
+        { "key": "germination", "label": { "en": "Germination", "es": "Germinación" }, "value": { "en": "7–14 days", "es": "7–14 días" }, "note": { "en": "Tiny Tim identity-specific grower reference", "es": "Referencia específica de Tiny Tim del productor" }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["reimer-tiny-tim"] },
+        { "key": "temperature", "label": { "en": "Germination temperature", "es": "Temperatura de germinación" }, "value": { "en": "80–85°F", "es": "80–85°F" }, "note": { "en": "Warm seed-starting mix; 27–29°C", "es": "Medio cálido para iniciar; 27–29°C" }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["reimer-tiny-tim"] },
+        { "key": "depth", "label": { "en": "Sowing depth", "es": "Profundidad de siembra" }, "value": { "en": "¼–½ inch", "es": "¼–½ pulgada" }, "note": { "en": "About 6–13 mm", "es": "Aproximadamente 6–13 mm" }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["reimer-tiny-tim"] },
+        { "key": "seedType", "label": { "en": "Seed type", "es": "Tipo de semilla" }, "value": { "en": "Open-pollinated Tiny Tim", "es": "Tiny Tim de polinización abierta" }, "note": { "en": "Identity-level grower listing; not a packet laboratory result", "es": "Listado del productor a nivel de identidad; no es un resultado de laboratorio del paquete" }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["reimer-tiny-tim"] }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "Start warm indoors in a shallow seed mix", "es": "Empieza en interior, con calor y poca profundidad" },
+          "guidance": { "en": "The Tiny Tim-specific grower reference recommends indoor sowing ¼–½ inch deep in seed-starting mix at 80–85°F, about 10–12 weeks before the last expected frost. Johnny's general tomato guide also supports shallow sowing in trays, but its timing is crop-level rather than Tiny Tim-specific.", "es": "La referencia específica de Tiny Tim recomienda sembrar en interior a ¼–½ pulgada de profundidad, en un medio para semillas a 80–85°F, unas 10–12 semanas antes de la última helada esperada. La guía general de tomate de Johnny's también respalda la siembra poco profunda en bandejas, pero su calendario es del cultivo, no específico de Tiny Tim." },
+          "items": [
+            { "text": { "en": "Lightly cover the seed and use a clean seed-starting medium; do not add mature-plant fertilizer at sowing.", "es": "Cubre ligeramente la semilla y usa un medio limpio para iniciar; no añadas fertilizante de planta madura al sembrar." }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["reimer-tiny-tim", "johnnys-tomato"] },
+            { "text": { "en": "The reviewed sources do not establish a Tiny Tim-specific light/dark germination requirement.", "es": "Las fuentes revisadas no establecen un requisito específico de luz u oscuridad para germinar Tiny Tim." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["reimer-tiny-tim", "johnnys-tomato"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Warmth and moderate moisture are the starting checks", "es": "El calor y la humedad moderada son las primeras comprobaciones" },
+          "guidance": { "en": "Reimer's Tiny Tim listing gives 7–14 days at 80–85°F. Keep the medium moist but not waterlogged; the listing specifically warns against bottom-watering the seed tray because excess wetness can impair germination.", "es": "El listado de Tiny Tim de Reimer da 7–14 días a 80–85°F. Mantén el medio húmedo, pero no saturado; el listado advierte específicamente contra el riego por capilaridad porque el exceso de humedad puede perjudicar la germinación." },
+          "items": [
+            { "text": { "en": "Treat the 7–14 day range as a reference, not proof that a seed has failed outside the range.", "es": "Trata el rango de 7–14 días como referencia, no como prueba de que una semilla falló fuera del rango." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["reimer-tiny-tim"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["reimer-tiny-tim"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Protect the seedling while the first true leaf develops", "es": "Protege la plántula mientras aparece la primera hoja verdadera" },
+          "guidance": { "en": "Johnny's general tomato guidance uses the first true leaf as a pot-up signal. Keep the seedling growing steadily and avoid carrying a waterlogged seed medium into the next container.", "es": "La guía general de tomate de Johnny's usa la primera hoja verdadera como señal para pasar a otra maceta. Mantén un crecimiento estable y evita llevar un medio saturado de agua al siguiente recipiente." },
+          "items": [
+            { "text": { "en": "Garden adaptation: choose the upright, actively growing seedling when a compact position cannot support a cluster of tomato seedlings.", "es": "Adaptación de Garden: elige la plántula erguida y en crecimiento activo cuando una posición compacta no pueda sostener un grupo de plántulas de tomate." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-tomato"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-tomato", "reimer-tiny-tim"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Pot up at the true-leaf stage; keep timing source-scoped", "es": "Pasa de recipiente con hojas verdaderas; conserva el alcance de cada calendario" },
+          "guidance": { "en": "Johnny's general tomato guidance describes potting up at the first true leaf and starting about 5–6 weeks before transplanting. The Tiny Tim-specific Reimer page says 10–12 weeks before the last frost. This is a source conflict in timing, not a reason to invent one universal schedule; keep both references visible and use actual seedling condition and local frost context.", "es": "La guía general de tomate de Johnny's describe pasar a otra maceta con la primera hoja verdadera e iniciar unas 5–6 semanas antes del trasplante. La página específica de Tiny Tim de Reimer indica 10–12 semanas antes de la última helada. Es un conflicto de calendario entre fuentes, no una razón para inventar un horario universal; conserva ambas referencias visibles y usa el estado real de la plántula y el contexto de heladas locales." },
+          "items": [
+            { "text": { "en": "Before an outdoor move, harden the plant and confirm that local temperatures are suitable; this profile does not convert the indoor seed start into a Garden X system instruction.", "es": "Antes de moverla al exterior, aclimata la planta y confirma que las temperaturas locales sean adecuadas; este perfil no convierte el inicio interior en una instrucción del sistema Garden X." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-tomato", "reimer-tiny-tim"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-tomato", "reimer-tiny-tim"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Protect the packet from heat and moisture", "es": "Protege el paquete del calor y la humedad" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. No Tiny Tim-specific longevity value is established here; packet age and storage history remain more reliable than an invented expiry.", "es": "Mantén la semilla bien sellada, seca y fresca. Aquí no se establece un valor específico de longevidad para Tiny Tim; la edad del paquete y su historial de almacenamiento son más fiables que una caducidad inventada." },
+          "items": [
+            { "text": { "en": "Do not infer a current germination percentage from the variety listing or from the packet's ordered status.", "es": "No infieras un porcentaje actual de germinación a partir del listado varietal ni del estado de pedido del paquete." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Warm does not mean waterlogged", "es": "Caliente no significa saturado de agua" },
+          "guidance": { "en": "When Tiny Tim emergence is poor, check the warm-medium target and whether the seed zone stayed excessively wet. Reimer's identity-specific warning is about bottom-watering and over-wet mix; do not generalize it into a diagnosis of every failed seed.", "es": "Cuando la emergencia de Tiny Tim sea pobre, revisa el objetivo de medio cálido y si la zona de la semilla permaneció demasiado mojada. La advertencia específica de Reimer trata del riego por capilaridad y el medio saturado; no la generalices como diagnóstico de toda semilla fallida." },
+          "items": [
+            { "text": { "en": "If the seedling becomes leggy after emergence, record the light and temperature context before changing the care routine.", "es": "Si la plántula se alarga después de emerger, registra el contexto de luz y temperatura antes de cambiar la rutina de cuidado." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-seed-starting"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["reimer-tiny-tim", "johnnys-seed-starting"]
+        }
+      ]
+    },
+    "evergreen-bunching-onion-nabuka": {
+      "plantIdentityId": "evergreen-bunching-onion-nabuka",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from Evergreen Bunching Onion Nabuka seed to an established scallion cluster. The packet naming variant remains identity context; bunching-onion cluster culture is not treated as a one-seedling crop.",
+        "es": "Un recorrido práctico desde la semilla de cebolla de verdeo Evergreen Bunching Nabuka hasta un grupo establecido de scallions. La variante del nombre del paquete queda como contexto de identidad; el cultivo agrupado de bunching onion no se trata como un cultivo de una sola plántula."
+      },
+      "quickFacts": [
+        { "key": "germination", "label": { "en": "Germination", "es": "Germinación" }, "value": { "en": "Days pending for this identity", "es": "Días pendientes para esta identidad" }, "note": { "en": "The reviewed bunching-onion sources describe sowing but do not give a reliable day range", "es": "Las fuentes revisadas describen la siembra, pero no dan un rango fiable de días" }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] },
+        { "key": "temperature", "label": { "en": "Germination temperature", "es": "Temperatura de germinación" }, "value": { "en": "Not established", "es": "No establecida" }, "note": { "en": "Do not borrow an onion temperature without a scoped source", "es": "No tomes prestada una temperatura de cebolla sin una fuente con alcance claro" }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] },
+        { "key": "depth", "label": { "en": "Sowing depth", "es": "Profundidad de siembra" }, "value": { "en": "¼–½ inch", "es": "¼–½ pulgada" }, "note": { "en": "About 6–13 mm for direct sowing", "es": "Aproximadamente 6–13 mm para siembra directa" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-bunching-onion", "umn-scallions"] },
+        { "key": "seedType", "label": { "en": "Cluster-start seed", "es": "Semilla para iniciar en grupo" }, "value": { "en": "6–8 seeds per cell for transplant culture", "es": "6–8 semillas por celda para trasplante" }, "note": { "en": "Bunching-onion guidance; not a packet count or a universal pod rule", "es": "Guía de bunching onion; no es un conteo del paquete ni una regla universal por pod" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-bunching-onion"] }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "A bunching crop can start as a cluster", "es": "Un cultivo de macolla puede empezar como grupo" },
+          "guidance": { "en": "Johnny's documents 6–8 seeds per cell for bunching-onion transplant culture and direct sowing at ¼–½ inch deep. UMN also documents direct sowing at ¼–½ inch and indoor sowing about four weeks before an outdoor planting date.", "es": "Johnny's documenta 6–8 semillas por celda para producir bunching onion para trasplante y la siembra directa a ¼–½ pulgada. UMN también documenta siembra directa a ¼–½ pulgada e iniciar en interior unas cuatro semanas antes de la fecha de plantación exterior." },
+          "items": [
+            { "text": { "en": "Do not automatically reduce the seedling group to one plant; the crop is intentionally grown as a bunching type.", "es": "No reduzcas automáticamente el grupo a una sola planta; el cultivo se produce intencionalmente como tipo de macolla." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-bunching-onion"] },
+            { "text": { "en": "Garden adaptation: a compact pod may still require a smaller cluster than field culture; use visible root and canopy competition rather than a fixed invented count.", "es": "Adaptación de Garden: un pod compacto puede requerir un grupo menor que el cultivo de campo; usa la competencia visible de raíces y copa en vez de inventar un número fijo." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-bunching-onion", "umn-scallions"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-bunching-onion", "umn-scallions"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Keep the seed zone evenly moist; timing remains open", "es": "Mantén húmeda la zona de semilla; el calendario queda abierto" },
+          "guidance": { "en": "The reviewed bunching-onion and scallion sources establish depth and moisture practices but do not provide a reliable Nebuka-specific germination-day range or light/dark rule. Garden leaves those fields unresolved instead of borrowing a generic onion number.", "es": "Las fuentes revisadas de bunching onion y scallion establecen profundidad y humedad, pero no dan un rango fiable de días de germinación específico de Nebuka ni una regla de luz u oscuridad. Garden deja esos campos sin resolver en vez de tomar prestado un número genérico de cebolla." },
+          "items": [
+            { "text": { "en": "Keep the medium evenly moist during emergence without turning the source's outdoor guidance into a fixed hydroponic schedule.", "es": "Mantén el medio uniformemente húmedo durante la emergencia sin convertir la guía exterior de la fuente en un calendario hidropónico fijo." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-scallions"] },
+            { "text": { "en": "Germination days, temperature and light/dark requirement for this identity: needs validation.", "es": "Días, temperatura y requisito de luz u oscuridad para germinar esta identidad: requieren validación." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": ["johnnys-bunching-onion", "umn-scallions"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Preserve the cluster and remove only clear competition", "es": "Conserva el grupo y elimina solo la competencia clara" },
+          "guidance": { "en": "Once seedlings emerge, keep moisture even and let the cluster establish. Johnny's says thinning is needed only when a larger diameter is desired in direct sowing; the bunching habit is otherwise intentional.", "es": "Cuando emerjan las plántulas, conserva una humedad uniforme y deja que el grupo se establezca. Johnny's indica que el aclarado solo hace falta si se busca un diámetro mayor en siembra directa; por lo demás, el hábito agrupado es intencional." },
+          "items": [
+            { "text": { "en": "If a compact position becomes visibly overcrowded, cut selected seedlings at the base rather than disturbing the remaining roots.", "es": "Si una posición compacta se amontona visiblemente, corta algunas plántulas en la base en vez de alterar las raíces restantes." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-bunching-onion"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-bunching-onion", "umn-scallions"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Move a healthy cluster, not an isolated seedling", "es": "Mueve un grupo sano, no una plántula aislada" },
+          "guidance": { "en": "For outdoor production, Johnny's transplants seedling clusters at 6–8 inches, while UMN describes indoor seed starting about four weeks before planting outdoors. Those are outdoor production references; for a compact system, readiness is a Garden adaptation based on an upright, rooted cluster and a prepared receiving position.", "es": "Para producción exterior, Johnny's trasplanta grupos de plántulas a 6–8 pulgadas, mientras UMN describe iniciar en interior unas cuatro semanas antes de plantar afuera. Son referencias de producción exterior; en un sistema compacto, la preparación es una adaptación de Garden basada en un grupo erguido, con raíces y una posición receptora preparada." },
+          "items": [
+            { "text": { "en": "Do not separate the cluster merely to satisfy a one-plant rule; separation is a decision about the receiving space and root disturbance.", "es": "No separes el grupo solo para cumplir una regla de una planta; separarlo depende del espacio receptor y de la alteración de raíces." }, "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-bunching-onion", "umn-scallions"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-bunching-onion", "umn-scallions"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Keep the packet dry and identify the naming variant", "es": "Mantén el paquete seco e identifica la variante del nombre" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. The packet's Nabuka/Nebuka naming context is identity evidence, not a substitute for a seed-longevity claim; the reviewed sources do not publish one for this identity.", "es": "Mantén la semilla bien sellada, seca y fresca. El contexto de los nombres Nabuka/Nebuka del paquete es evidencia de identidad, no un sustituto de una afirmación de longevidad; las fuentes revisadas no publican una para esta identidad." },
+          "items": [
+            { "text": { "en": "Retain packet age and storage history as observations; do not infer viability from the bunching habit.", "es": "Conserva la edad del paquete y el historial de almacenamiento como observaciones; no infieras viabilidad a partir del hábito de macolla." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage", "ucanr-nebuka-identity"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Diagnose crowding from the cluster, not from a fixed count", "es": "Diagnostica el amontonamiento por el grupo, no por un número fijo" },
+          "guidance": { "en": "For bunching onions, an overly dense cluster can reduce the diameter of individual stalks, while too much disturbance can damage roots. Use the intended stalk size and visible competition as the decision context.", "es": "En las cebollas de verdeo, un grupo demasiado denso puede reducir el diámetro de cada tallo, mientras que demasiada alteración puede dañar las raíces. Usa el tamaño de tallo buscado y la competencia visible como contexto de decisión." },
+          "items": [
+            { "text": { "en": "A missing germination window is not evidence of failure; record temperature, moisture and emergence timing before changing the seed identity.", "es": "La falta de un rango de germinación no demuestra un fallo; registra temperatura, humedad y momento de emergencia antes de cambiar la identidad de la semilla." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-bunching-onion", "umn-scallions"]
+        }
+      ]
+    },
+    "dill-bouquet": {
+      "plantIdentityId": "dill-bouquet",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from Dill Bouquet seed to an established plant or intentional cluster. Direct sowing, optional transplant production and the difference between seedling density and later crop goals remain explicit.",
+        "es": "Un recorrido práctico desde la semilla de eneldo Bouquet hasta una planta o grupo establecido de forma intencional. La siembra directa, el trasplante opcional y la diferencia entre densidad de plántulas y objetivo posterior quedan explícitos."
+      },
+      "quickFacts": [
+        { "key": "germination", "label": { "en": "Germination", "es": "Germinación" }, "value": { "en": "7–21 days", "es": "7–21 días" }, "note": { "en": "At 65–70°F (18–21°C)", "es": "A 65–70°F (18–21°C)" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-dill"] },
+        { "key": "temperature", "label": { "en": "Germination temperature", "es": "Temperatura de germinación" }, "value": { "en": "65–70°F", "es": "65–70°F" }, "note": { "en": "18–21°C", "es": "18–21°C" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-dill"] },
+        { "key": "depth", "label": { "en": "Sowing depth", "es": "Profundidad de siembra" }, "value": { "en": "⅛–¼ inch", "es": "⅛–¼ pulgada" }, "note": { "en": "About 3–6 mm", "es": "Aproximadamente 3–6 mm" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-dill"] },
+        { "key": "seedType", "label": { "en": "Start pattern", "es": "Patrón de inicio" }, "value": { "en": "Direct sow, or 3–5 seeds per cell", "es": "Siembra directa, o 3–5 semillas por celda" }, "note": { "en": "Transplant production is documented; thinning is not always necessary", "es": "La producción para trasplante está documentada; no siempre hace falta aclarar" }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-dill"] }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "Direct sow, or start a small transplant cluster", "es": "Siembra directamente o inicia un grupo pequeño para trasplantar" },
+          "guidance": { "en": "Johnny's recommends direct sowing Dill at ⅛–¼ inch deep. It also documents indoor starts of 3–5 seeds per cell for transplanting. The appropriate pattern depends on whether the goal is a direct-sown stand, a transplant cluster or a compact Garden position.", "es": "Johnny's recomienda sembrar el eneldo a ⅛–¼ pulgada de profundidad. También documenta iniciar 3–5 semillas por celda para trasplantar. El patrón adecuado depende de si buscas una siembra directa, un grupo para trasplantar o una posición compacta de Garden." },
+          "items": [
+            { "text": { "en": "Sow shallowly and keep seed-to-medium contact without burying the seed beyond the documented range.", "es": "Siembra poco profundo y conserva el contacto entre semilla y medio sin enterrarla más allá del rango documentado." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-dill"] },
+            { "text": { "en": "Garden adaptation: do not force a one-seedling rule into a crop whose source guidance supports both dense direct sowing and multi-seed transplant cells.", "es": "Adaptación de Garden: no fuerces una regla de una sola plántula en un cultivo cuya guía respalda tanto la siembra directa densa como las celdas de trasplante con varias semillas." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-dill", "usu-dill"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-dill", "usu-dill"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Expect a wide 7–21 day range", "es": "Espera un rango amplio de 7–21 días" },
+          "guidance": { "en": "Johnny's gives 7–21 days at 65–70°F (18–21°C). Keep the seed zone evenly moist until emergence; the reviewed sources do not establish a Dill Bouquet-specific light- or dark-required rule.", "es": "Johnny's indica 7–21 días a 65–70°F (18–21°C). Mantén la zona de la semilla uniformemente húmeda hasta emerger; las fuentes revisadas no establecen una regla específica de luz u oscuridad para Dill Bouquet." },
+          "items": [
+            { "text": { "en": "Use observed emergence and the moisture/temperature record before deciding that a packet failed.", "es": "Usa la emergencia observada y el registro de humedad/temperatura antes de decidir que un paquete falló." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-dill"] },
+            { "text": { "en": "A Dill Bouquet-specific light/dark germination requirement remains needs validation.", "es": "El requisito específico de luz u oscuridad para germinar Dill Bouquet requiere validación." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-dill", "usu-dill"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Let the young stems establish before harvest", "es": "Deja que los tallos jóvenes se establezcan antes de cosechar" },
+          "guidance": { "en": "Johnny's says dill foliage may be harvested once plants are established and up to flowering. During seedling establishment, keep the moisture even and watch whether stems are actually competing before thinning.", "es": "Johnny's indica que el follaje de eneldo puede cosecharse una vez establecida la planta y hasta la floración. Durante el establecimiento, conserva una humedad uniforme y observa si los tallos realmente compiten antes de aclarar." },
+          "items": [
+            { "text": { "en": "Thinning is not necessary in the direct-sowing context documented by Johnny's; a compact pod may still need a local decision based on canopy and root crowding.", "es": "El aclarado no es necesario en el contexto de siembra directa documentado por Johnny's; un pod compacto puede requerir aun así una decisión local basada en la copa y el amontonamiento de raíces." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-dill"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-dill", "usu-dill"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Move established cells without imposing a universal count", "es": "Mueve celdas establecidas sin imponer un número universal" },
+          "guidance": { "en": "For transplant production, Johnny's starts 3–5 seeds per cell and transplants at 2–4 inch spacing. That outdoor spacing is not a pod specification. For a compact system, the handoff signal is a rooted, upright cluster that can be moved without collapsing the seed zone.", "es": "Para producir trasplantes, Johnny's inicia 3–5 semillas por celda y trasplanta a 2–4 pulgadas. Esa separación exterior no es una especificación de pod. En un sistema compacto, la señal de paso es un grupo enraizado y erguido que pueda moverse sin deshacer la zona de semilla." },
+          "items": [
+            { "text": { "en": "If the final goal is seed, flower-head timing changes the crop objective; do not treat flowering as an automatic failure of the seedling process.", "es": "Si el objetivo final es la semilla, el momento de las cabezas florales cambia el objetivo del cultivo; no trates la floración como un fallo automático del proceso de plántula." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["usu-dill"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-dill", "usu-dill"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Keep the packet dry, cool and dated", "es": "Mantén el paquete seco, fresco y fechado" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. The reviewed Dill Bouquet sources do not establish a cultivar-specific longevity value, so packet age and storage history remain the visible evidence.", "es": "Mantén la semilla bien sellada, seca y fresca. Las fuentes revisadas de Dill Bouquet no establecen un valor de longevidad específico del cultivar, así que la edad del paquete y su historial de almacenamiento siguen siendo la evidencia visible." },
+          "items": [
+            { "text": { "en": "Do not convert a general seed-storage recommendation into a guaranteed number of years for this packet.", "es": "No conviertas una recomendación general de almacenamiento en un número garantizado de años para este paquete." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Check moisture and density before changing the plan", "es": "Revisa humedad y densidad antes de cambiar el plan" },
+          "guidance": { "en": "Uneven emergence should first prompt a check of moisture, temperature and seed depth. Once emerged, heat, crowding and excessive moisture can affect the crop, but the seed profile should not diagnose a mature-plant problem from germination timing alone.", "es": "Una emergencia irregular debe llevar primero a revisar humedad, temperatura y profundidad. Después de emerger, el calor, el amontonamiento y el exceso de humedad pueden afectar al cultivo, pero el perfil de semilla no debe diagnosticar un problema de planta madura solo por el calendario de germinación." },
+          "items": [
+            { "text": { "en": "If foliage is being grown for food, record whether the intended goal is leaves, flowers or seed before changing density or harvest timing.", "es": "Si el follaje se cultiva para comer, registra si el objetivo son hojas, flores o semillas antes de cambiar la densidad o el momento de cosecha." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-dill", "usu-dill"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-dill", "usu-dill"]
         }
       ]
     }

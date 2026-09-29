@@ -79,6 +79,14 @@ describe("AI Check request isolation", () => {
     });
   });
 
+  it("never silently downgrades an incomplete plant scope to owner-wide Ask Garden", async () => {
+    await expect(askGardenAi("What has happened to this plant?", [], {
+      plantInstanceId: "plant-a",
+      language: "en",
+    })).rejects.toThrow("both plant and grow cycle identifiers");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("uses the shared meaningful-change operation for an explicit photo comparison", async () => {
     fetchMock.mockResolvedValue({
       ok: true,

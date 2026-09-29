@@ -152,9 +152,9 @@ function Ask() {
   const photos = plantPhotos(store.photos, plant.id);
 
   return (
-    <div className="flex min-h-screen min-w-0 max-w-full flex-col">
+    <div className="flex h-[calc(100dvh-4.5rem)] min-h-0 min-w-0 max-w-full flex-col lg:h-screen">
       {/* compact header */}
-      <header className="sticky top-0 z-30 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
+      <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
           <Link to="/garden-ai" className="press grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
             <ChevronLeft className="h-4 w-4" />
@@ -182,49 +182,51 @@ function Ask() {
         <Sparkles className="h-4 w-4 shrink-0 text-primary" />
       </header>
 
-      <div className="mx-auto w-full min-w-0 max-w-3xl flex-1 px-5 py-8 sm:px-8">
-        {thread.length === 0 && !thinking ? (
-          <div className="rise">
-            <h1 className="font-display text-3xl">{ui(language, "askPlantQuestion")} {plant.name}?</h1>
-            <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              {ui(language, "askPlantDescription")}
-            </p>
-          </div>
-        ) : null}
-
-        <div className="space-y-8">
-          {thread.map((a, i) => (
-            <div key={i} className="rise min-w-0 max-w-full space-y-3">
-              <p className="ml-auto w-fit min-w-0 max-w-[85%] break-words rounded-3xl rounded-br-lg bg-primary px-4 py-2.5 text-sm text-primary-foreground [overflow-wrap:anywhere]">
-                {a.attachedImageDataUrl ? <img src={a.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-full rounded-xl object-cover" /> : null}
-                {a.question}
+      <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div className="mx-auto w-full min-w-0 max-w-3xl px-5 py-8 pb-6 sm:px-8">
+          {thread.length === 0 && !thinking ? (
+            <div className="rise">
+              <h1 className="font-display text-3xl">{ui(language, "askPlantQuestion")} {plant.name}?</h1>
+              <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                {ui(language, "askPlantDescription")}
               </p>
-              <div className="surface min-w-0 max-w-full overflow-hidden p-5 break-words [overflow-wrap:anywhere]">
-                {a.evidence.length ? <div className="mb-3"><ProvenanceTag kind="recorded" /></div> : null}
-                <ul className="space-y-2 text-sm leading-relaxed">
-                  {a.grounded.map((g) => (
-                    <li key={g}>{g}</li>
-                  ))}
-                </ul>
-                {a.inference ? (
-                  <div className="mt-5 rounded-2xl border border-inference/25 bg-inference/6 p-4">
-                    <ProvenanceTag kind="inferred" confidence="moderate" />
-                    <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{a.inference}</p>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          ))}
-          {thinking ? (
-            <div className="surface flex min-w-0 max-w-full items-center gap-3 p-5 text-sm text-muted-foreground">
-              <Sparkles className="breathe h-4 w-4 text-primary" /> {ui(language, "readingRecordShort")}
             </div>
           ) : null}
+
+          <div className="space-y-8">
+            {thread.map((a, i) => (
+              <div key={i} className="rise min-w-0 max-w-full space-y-3">
+                <p className="ml-auto w-fit min-w-0 max-w-[85%] break-words rounded-3xl rounded-br-lg bg-primary px-4 py-2.5 text-sm text-primary-foreground [overflow-wrap:anywhere]">
+                  {a.attachedImageDataUrl ? <img src={a.attachedImageDataUrl} alt={ui(language, "attachedPhotoPreview")} className="mb-2 max-h-36 max-w-full rounded-xl object-cover" /> : null}
+                  {a.question}
+                </p>
+                <div className="surface min-w-0 max-w-full overflow-hidden p-5 break-words [overflow-wrap:anywhere]">
+                  {a.evidence.length ? <div className="mb-3"><ProvenanceTag kind="recorded" /></div> : null}
+                  <ul className="space-y-2 text-sm leading-relaxed">
+                    {a.grounded.map((g) => (
+                      <li key={g}>{g}</li>
+                    ))}
+                  </ul>
+                  {a.inference ? (
+                    <div className="mt-5 rounded-2xl border border-inference/25 bg-inference/6 p-4">
+                      <ProvenanceTag kind="inferred" confidence="moderate" />
+                      <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{a.inference}</p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+            {thinking ? (
+              <div className="surface flex min-w-0 max-w-full items-center gap-3 p-5 text-sm text-muted-foreground">
+                <Sparkles className="breathe h-4 w-4 text-primary" /> {ui(language, "readingRecordShort")}
+              </div>
+            ) : null}
+          </div>
         </div>
-      </div>
+      </main>
 
       {/* composer */}
-      <div className="sticky bottom-0 min-w-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
+      <div className="z-20 min-w-0 shrink-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto min-w-0 max-w-3xl">
           <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
             {askSuggestions(language).map((s) => (

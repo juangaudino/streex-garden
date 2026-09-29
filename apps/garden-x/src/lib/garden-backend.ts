@@ -1738,6 +1738,10 @@ export async function askGardenAi(
     language?: "en" | "es";
   },
 ) {
+  const hasPlantScope = Boolean(attachments?.plantInstanceId || attachments?.growCycleId);
+  if (hasPlantScope && (!attachments?.plantInstanceId || !attachments.growCycleId)) {
+    throw new Error("Plant-scoped Ask Garden requires both plant and grow cycle identifiers");
+  }
   const { data: sessionData } = await getSupabaseClient().auth.getSession();
   const session = sessionData.session;
   if (!session) throw new Error("Authentication required");
@@ -1752,7 +1756,7 @@ export async function askGardenAi(
       operation: "ask_garden",
       question,
       conversation,
-      ...(attachments?.plantInstanceId && attachments.growCycleId ? {
+      ...(hasPlantScope ? {
         plant_instance_id: attachments.plantInstanceId,
         grow_cycle_id: attachments.growCycleId,
       } : {}),

@@ -201,4 +201,19 @@ describe("plant-scoped Ask Garden real route composer", () => {
     expect(messageCard.className).toContain("min-w-0");
     expect(messageCard.className).toContain("overflow-wrap:anywhere");
   });
+
+  it("keeps the conversation scroll region and composer in separate shrinking viewport regions", () => {
+    mocks.useGarden.mockReturnValue(buildStore());
+    const PlantAsk = Route.options.component as React.ComponentType;
+    const { container } = render(<PlantAsk />);
+    const root = container.firstElementChild as HTMLElement;
+    const scrollRegion = container.querySelector("main");
+    const composer = container.querySelector("form")?.parentElement?.parentElement;
+    expect(root.className).toContain("h-[calc(100dvh-4.5rem)]");
+    expect(root.className).toContain("min-h-0");
+    expect(scrollRegion?.className).toContain("min-h-0");
+    expect(scrollRegion?.className).toContain("overflow-y-auto");
+    expect(composer?.className).toContain("shrink-0");
+    expect(composer?.className).not.toContain("sticky");
+  });
 });

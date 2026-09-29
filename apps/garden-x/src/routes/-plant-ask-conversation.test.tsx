@@ -111,6 +111,11 @@ describe("plant-scoped Ask Garden real route composer", () => {
     expect(mocks.askGarden).not.toHaveBeenCalled();
     expect(mocks.askGardenAi.mock.calls[0]![0]).toBe("How often should I change the water in Kratky?");
     expect(mocks.askGardenAi.mock.calls[0]![1][0].answer).toContain("plant-mint");
+    expect(mocks.askGardenAi.mock.calls[0]![2]).toMatchObject({
+      plantInstanceId: "plant-mint",
+      growCycleId: "cycle-mint",
+      language: "en",
+    });
     expect(await screen.findByText(/Kratky reservoirs are usually/)).toBeTruthy();
     expect(screen.queryByText(/I answer from what is recorded here/i)).toBeNull();
   });

@@ -112,6 +112,9 @@ function Ask() {
         const result = await askGardenAi(clean, [scope, ...prior], {
           ...(carePhoto && careContext ? { photoDataUrl: carePhoto, context: careContext } : {}),
           ...(imageDataUrl ? { messageImageDataUrl: imageDataUrl } : {}),
+          plantInstanceId: plant.id,
+          ...(plant.backendGrowCycleId ? { growCycleId: plant.backendGrowCycleId } : {}),
+          language,
         });
         setThread((current) => [...current, {
           question: clean,

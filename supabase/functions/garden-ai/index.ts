@@ -60,7 +60,7 @@ Deno.serve(async (request) => {
   if (!featureEnabled) return json({ error: 'Garden AI is disabled' }, 503)
   const auditClient = userClient
 
-  let body: { operation?: unknown; context_mode?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; care_review_photo_data_url?: unknown; care_review_context?: unknown; request_key?: unknown; language?: unknown; scope_type?: unknown; garden_id?: unknown; material_fingerprint?: unknown }
+  let body: { operation?: unknown; context_mode?: unknown; plant_instance_id?: unknown; grow_cycle_id?: unknown; photo_id?: unknown; compare_photo_id?: unknown; before_photo_id?: unknown; after_photo_id?: unknown; question?: unknown; conversation?: unknown; draft_image_data_url?: unknown; care_review_photo_data_url?: unknown; care_review_context?: unknown; message_image_data_url?: unknown; request_key?: unknown; language?: unknown; scope_type?: unknown; garden_id?: unknown; material_fingerprint?: unknown }
   try { body = await request.json() as typeof body } catch { return json({ error: 'Invalid request' }, 400) }
   if (!requestKey(body.request_key)) return json({ error: 'A valid request key is required' }, 400)
   if (providerName === 'mock') return json({ error: 'Mock provider is available in local tests only' }, 503)
@@ -183,14 +183,26 @@ Deno.serve(async (request) => {
 
     if (body.operation === 'ask_garden') {
       if (typeof body.question !== 'string' || body.question.trim().length < 2 || body.question.length > 2000) return json({ error: 'Ask Garden question is invalid' }, 400)
+      const hasPlantScope = body.plant_instance_id !== undefined || body.grow_cycle_id !== undefined
+      if (hasPlantScope && (!uuid(body.plant_instance_id) || !uuid(body.grow_cycle_id))) return json({ error: 'Plant-scoped Ask Garden requires valid plant and cycle identifiers' }, 400)
       const hasCarePhoto = body.care_review_photo_data_url !== undefined
       const hasMessagePhoto = body.message_image_data_url !== undefined
       if (!validateAskGardenImages(body.care_review_photo_data_url, body.care_review_context, body.message_image_data_url)) return json({ error: 'Ask Garden photo attachment is invalid' }, 400)
-      const started = await startRequest(auditClient, userData.user.id, body.request_key, 'ask_garden', [])
+      const started = await startRequest(
+        auditClient,
+        userData.user.id,
+        body.request_key,
+        'ask_garden',
+        hasPlantScope
+          ? [{ kind: 'plant_instance', id: body.plant_instance_id }, { kind: 'grow_cycle', id: body.grow_cycle_id }]
+          : [],
+      )
       if (started.existing) return json({ answer: started.existing.proposal, request_id: started.existing.id, idempotent: true })
       const startedAt = Date.now()
       activeAudit = { id: started.id, startedAt }
-      const askContext = await userClient.rpc('garden_get_ai_ask_context')
+      const askContext = hasPlantScope
+        ? await userClient.rpc('garden_get_ai_ask_plant_context', { p_plant_instance_id: body.plant_instance_id, p_grow_cycle_id: body.grow_cycle_id })
+        : await userClient.rpc('garden_get_ai_ask_context')
       if (askContext.error || !askContext.data) throw new Error('Authorized Ask Garden context is unavailable')
       const conversation = Array.isArray(body.conversation) ? body.conversation.slice(-4).map((item) => typeof item === 'object' && item !== null ? { question: String((item as Record<string, unknown>).question ?? '').slice(0, 300), answer: String((item as Record<string, unknown>).answer ?? '').slice(0, 500), status: 'unconfirmed_conversation_context' } : null).filter(Boolean) : []
       const careReview = hasCarePhoto ? { provenance: 'temporary_user_provided_photo_and_unconfirmed_ai_check', image_index: 1, context: body.care_review_context } : undefined
@@ -208,10 +220,10 @@ Deno.serve(async (request) => {
         : hasMessagePhoto
           ? gardenAskImageInstructionsFor(responseLanguage)
           : gardenAiInstructionsFor(responseLanguage)
-      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, conversation, attached_visual_evidence: visualEvidenceOrder, ...(careReview ? { current_care_review: careReview } : {}), ...(currentTurnPhoto ? { current_turn_photo: currentTurnPhoto } : {}), conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, ...(imageDataUrls.length ? { imageDataUrls } : {}), standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: careReview ? GARDEN_AI_CARE_ASK_PROMPT_VERSION : hasMessagePhoto ? GARDEN_AI_ASK_IMAGE_PROMPT_VERSION : GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: askInstructions })
+      const response = await provider.analyze({ operation: 'ask_garden', context: { question: body.question, canonical_context: askContext.data, scope: hasPlantScope ? 'selected plant and grow cycle only' : 'owner and garden context', conversation, attached_visual_evidence: visualEvidenceOrder, ...(careReview ? { current_care_review: careReview } : {}), ...(currentTurnPhoto ? { current_turn_photo: currentTurnPhoto } : {}), conversation_rule: 'Use the latest clear plant, Pod, or cycle reference for anaphoric follow-ups; ask for clarification when more than one reference is possible.' }, ...(imageDataUrls.length ? { imageDataUrls } : {}), standardVersion: GARDEN_AI_STANDARD_VERSION, promptVersion: careReview ? GARDEN_AI_CARE_ASK_PROMPT_VERSION : hasMessagePhoto ? GARDEN_AI_ASK_IMAGE_PROMPT_VERSION : GARDEN_AI_RUNTIME_PROMPT_VERSION, jsonSchema: GARDEN_AI_ASK_JSON_SCHEMA, instructions: askInstructions })
       const answer = validateAskGardenAnswer(response.raw)
       if (!answer) { await finishRequest(auditClient, started.id, { status: 'failed', error_code: 'invalid_structured_output', duration_ms: Date.now() - startedAt, model_identifier: response.model }); activeAudit = null; return json({ error: 'Provider returned invalid structured output' }, 502) }
-      await finishRequest(auditClient, started.id, { status: 'completed', proposal: answer, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: response.usage ?? {} })
+      await finishRequest(auditClient, started.id, { status: 'completed', proposal: answer, model_identifier: response.model, duration_ms: Date.now() - startedAt, usage_metadata: { ...(response.usage ?? {}), language: responseLanguage, scope: hasPlantScope ? 'plant' : 'owner' } })
       activeAudit = null
       return json({ answer, request_id: started.id, idempotent: false })
     }

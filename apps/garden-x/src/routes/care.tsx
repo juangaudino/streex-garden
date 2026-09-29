@@ -579,6 +579,9 @@ export function PlantReview({
         photoDataUrl: reviewImage,
         context: context.answer,
         messageImageDataUrl: attachedImage,
+        plantInstanceId: plant.id,
+        growCycleId: plant.backendGrowCycleId,
+        language,
       });
       const facts = answer.confirmed_facts.map((fact) => fact.claim);
       onInspectionPatch({ conversation: [...conversation, {

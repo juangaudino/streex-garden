@@ -53,7 +53,7 @@ function GardenWideAsk() {
       answer: [...item.grounded, item.inference, item.attachedImageDataUrl ? "The user attached a photo in that turn." : ""].filter(Boolean).join(" "),
     }));
     try {
-      const result = await askGardenAi(clean, conversation, { messageImageDataUrl: imageDataUrl });
+      const result = await askGardenAi(clean, conversation, { messageImageDataUrl: imageDataUrl, language });
       const answer: AskAnswer & { attachedImageDataUrl?: string } = {
         question: clean,
         grounded: result.confirmed_facts.length ? result.confirmed_facts.map((fact) => fact.claim) : [result.answer],

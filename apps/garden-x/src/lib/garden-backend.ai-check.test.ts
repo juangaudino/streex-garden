@@ -58,6 +58,27 @@ describe("AI Check request isolation", () => {
     expect(request.language).toBe("en");
   });
 
+  it("sends authoritative plant scope and language for plant-scoped Ask Garden", async () => {
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: async () => ({ answer: { answer_type: "answer", answer: "The record shows a recent move.", confirmed_facts: [], suggested_next_actions: [] } }),
+    });
+
+    await askGardenAi("What has happened to this plant?", [], {
+      plantInstanceId: "plant-a",
+      growCycleId: "cycle-a",
+      language: "en",
+    });
+
+    const request = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
+    expect(request).toMatchObject({
+      operation: "ask_garden",
+      plant_instance_id: "plant-a",
+      grow_cycle_id: "cycle-a",
+      language: "en",
+    });
+  });
+
   it("uses the shared meaningful-change operation for an explicit photo comparison", async () => {
     fetchMock.mockResolvedValue({
       ok: true,

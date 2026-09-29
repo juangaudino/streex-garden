@@ -60,6 +60,8 @@ import { askGardenAccentClassName } from "@/lib/care-session";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
 import { buildPlantLifeHighlights } from "@/lib/plant-life-highlights";
 import { PlantOriginEditor } from "@/components/garden/plant-origin-editor";
+import { PlantStoryIntelligence } from "@/components/garden/plant-story-intelligence";
+import { buildPlantStoryContext } from "@/lib/plant-story-context";
 
 export const Route = createFileRoute("/plants/$plantId/")({
   head: () => ({
@@ -202,6 +204,10 @@ function PlantProfile() {
   const lifeHighlights = useMemo(
     () => buildPlantLifeHighlights(plant, events),
     [plant, events],
+  );
+  const storyContext = useMemo(
+    () => buildPlantStoryContext(plant, garden, events, photos, libraryEntry, language),
+    [plant, garden, events, photos, libraryEntry, language],
   );
 
   const removeEvent = async (event: (typeof events)[number], attachedPhotoCount: number) => {
@@ -350,6 +356,8 @@ function PlantProfile() {
           <span className="truncate">{ui(language, "askGarden")}</span>
         </Link>
       </div>
+
+      <PlantStoryIntelligence context={storyContext} />
 
       {lifeHighlights.length ? (
         <section className="mx-5 mt-6 sm:mx-8 lg:mx-12" aria-labelledby="life-highlights-title">

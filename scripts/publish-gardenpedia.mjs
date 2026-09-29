@@ -86,6 +86,7 @@ const dataFiles = [
   "data/neighbor-profiles.json",
   "data/machine-inventory-v1.json",
   "data/harvest-use-v0.1.json",
+  "data/seed-profiles-v0.json",
 ];
 
 function readJson(relativePath) {

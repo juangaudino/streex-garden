@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "gardenpedia_seed_profile_v0",
+  "scope": "genovese-basil-only",
+  "profiles": {
+    "genovese-basil": {
+      "plantIdentityId": "genovese-basil",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "A practical path from Genovese Basil seed to a stable young plant. Mature-plant feeding, pH, EC, harvest and general hydroponic care stay in the Plant profile.",
+        "es": "Un recorrido práctico desde la semilla de albahaca genovesa hasta una planta joven estable. La nutrición, el pH, la EC, la cosecha y el cuidado hidropónico de la planta madura permanecen en el perfil de Planta."
+      },
+      "quickFacts": [
+        {
+          "key": "germination",
+          "label": { "en": "Germination", "es": "Germinación" },
+          "value": { "en": "5–10 days", "es": "5–10 días" },
+          "note": { "en": "65–70°F (18–21°C)", "es": "65–70°F (18–21°C)" },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "temperature",
+          "label": { "en": "Germination temperature", "es": "Temperatura de germinación" },
+          "value": { "en": "65–70°F", "es": "65–70°F" },
+          "note": { "en": "18–21°C", "es": "18–21°C" },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "depth",
+          "label": { "en": "Sowing depth", "es": "Profundidad de siembra" },
+          "value": { "en": "¼ inch", "es": "¼ pulgada" },
+          "note": { "en": "About 6 mm", "es": "Aproximadamente 6 mm" },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "seedType",
+          "label": { "en": "Seed type", "es": "Tipo de semilla" },
+          "value": { "en": "Open-pollinated", "es": "Polinización abierta" },
+          "note": { "en": "Non-hybrid variety", "es": "Variedad no híbrida" },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": { "en": "Start shallow in a warm, moist seed zone", "es": "Empieza poco profundo, con calor y humedad" },
+          "guidance": { "en": "Johnny's documents both direct seeding and transplant production. Sow about ¼ inch deep and firm the medium over the seed. Direct-seed guidance lists 2–3 seeds per inch; a packet or plug-specific count should not be presented as a universal rule.", "es": "Johnny's documenta tanto la siembra directa como la producción para trasplante. Siembra a unos 6 mm y afirma el sustrato sobre la semilla. La guía de siembra directa indica 2–3 semillas por pulgada; el número por paquete o alvéolo no debe presentarse como una regla universal." },
+          "items": [
+            { "text": { "en": "Direct sowing is appropriate once conditions are warm enough; starting indoors is also documented about six weeks before setting out.", "es": "La siembra directa es apropiada cuando las condiciones ya son cálidas; también se documenta iniciar en interior unas seis semanas antes del trasplante." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-genovese-basil-seed"] },
+            { "text": { "en": "Keep the seed zone from drying during emergence. Johnny's makes consistent moisture explicit for pelleted seed; this profile does not assume Genovese seed is pelleted.", "es": "Evita que la zona de la semilla se seque durante la emergencia. Johnny's indica humedad constante para semillas peletizadas; este perfil no asume que la semilla Genovese sea peletizada." }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-genovese-basil-seed"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": { "en": "Expect a range, not a deadline", "es": "Espera un rango, no una fecha límite" },
+          "guidance": { "en": "At 65–70°F (18–21°C), Johnny's lists 5–10 days to germination for Genovese Basil. Temperature, moisture and seed condition can make emergence vary; the range is a planning reference, not proof that a seed has failed.", "es": "A 65–70°F (18–21°C), Johnny's indica 5–10 días para la germinación de la albahaca genovesa. La temperatura, la humedad y el estado de la semilla pueden cambiar la emergencia; el rango sirve para planificar, no demuestra por sí solo que una semilla haya fallado." },
+          "items": [
+            { "text": { "en": "The reviewed sources do not establish a light- or dark-required germination rule for Genovese Basil; Garden leaves that field unclaimed in V0.", "es": "Las fuentes revisadas no establecen una regla de germinación con luz u oscuridad para la albahaca genovesa; Garden deja ese campo sin afirmar en V0." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": { "en": "Protect the young seedling while it establishes", "es": "Protege la plántula mientras se establece" },
+          "guidance": { "en": "Once seedlings are visible, maintain even moisture without saturating the seed zone and watch for crowding. The goal is a healthy, upright seedling with visible true leaves—not a forced count before the plant is established.", "es": "Cuando las plántulas sean visibles, mantén una humedad uniforme sin saturar la zona de la semilla y observa el amontonamiento. El objetivo es una plántula sana y erguida con hojas verdaderas visibles, no imponer un número antes de que se establezca." },
+          "items": [
+            { "text": { "en": "Cornell describes the transition from smooth seed leaves to emerging jagged true leaves as the meaningful early development sequence.", "es": "Cornell describe la transición desde los cotiledones lisos hasta las primeras hojas verdaderas dentadas como una secuencia temprana de desarrollo significativa." }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["cce-seed-seedling"] },
+            { "text": { "en": "Garden adaptation: in a compact plug, respond to visible crowding and root disturbance rather than applying a universal one-seedling rule.", "es": "Adaptación de Garden: en un alvéolo compacto, responde al amontonamiento visible y a la alteración de raíces en vez de aplicar una regla universal de una sola plántula." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-genovese-basil-seed"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["cce-seed-seedling", "johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "transition",
+          "title": { "en": "Ready for the next stage", "es": "Lista para la siguiente etapa" },
+          "icon": "🪴",
+          "short": { "en": "Use leaf stage as the handoff signal", "es": "Usa la etapa de hojas como señal" },
+          "guidance": { "en": "For transplant production, Johnny's recommends moving Genovese Basil when seedlings have 3–4 sets of leaves. This is a stage indicator for the next step, not a mature-plant care recommendation.", "es": "Para producir trasplantes, Johnny's recomienda mover la albahaca genovesa cuando las plántulas tienen 3–4 pares de hojas. Es una señal de etapa para el siguiente paso, no una recomendación de cuidado de la planta madura." },
+          "items": [
+            { "text": { "en": "Confirm the seedling is upright and actively growing before moving it; Garden treats the visible stage plus plant condition as the handoff check.", "es": "Confirma que la plántula esté erguida y creciendo activamente antes de moverla; Garden usa la etapa visible junto con el estado de la planta como comprobación." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-genovese-basil-seed", "cce-seed-seedling"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "handling",
+          "title": { "en": "Seed handling & storage", "es": "Manejo y almacenamiento" },
+          "icon": "📦",
+          "short": { "en": "Protect the seed from moisture and heat", "es": "Protege la semilla de humedad y calor" },
+          "guidance": { "en": "Keep seed tightly sealed, dry and cool. The University of Minnesota recommends airtight containers and cool, dry storage; do not treat this as a cultivar-specific promise of shelf life.", "es": "Mantén la semilla bien sellada, seca y fresca. La Universidad de Minnesota recomienda recipientes herméticos y almacenamiento fresco y seco; no lo presentes como una promesa de vida útil específica de este cultivar." },
+          "items": [
+            { "text": { "en": "If the packet is pelleted, follow the additional handling note: keep it cool and dry before sowing and maintain consistent moisture during germination.", "es": "Si el paquete es peletizado, sigue la indicación adicional: mantenlo fresco y seco antes de sembrar y conserva una humedad constante durante la germinación." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-genovese-basil-seed"] },
+            { "text": { "en": "No Genovese-specific longevity value is published in this V0 profile; packet age and storage history should remain visible evidence instead of an invented expiry.", "es": "Este perfil V0 no publica un valor de longevidad específico de Genovese; la edad del paquete y su historial de almacenamiento deben seguir siendo evidencia visible en lugar de inventar una caducidad." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": ["umn-seed-storage"] }
+          ],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["umn-seed-storage", "johnnys-genovese-basil-seed"]
+        },
+        {
+          "key": "troubleshooting",
+          "title": { "en": "Troubleshooting", "es": "Problemas frecuentes" },
+          "icon": "⚠️",
+          "short": { "en": "Check warmth, moisture and timing first", "es": "Revisa primero calor, humedad y tiempo" },
+          "guidance": { "en": "When emergence is poor, check the seed-zone conditions before diagnosing the plant. Cool temperatures, uneven moisture or sowing too deeply are plausible failure points; Garden keeps these as troubleshooting hypotheses unless the grower records the evidence.", "es": "Cuando la emergencia es baja, revisa las condiciones de la zona de la semilla antes de diagnosticar la planta. Temperaturas frías, humedad irregular o una siembra demasiado profunda son puntos plausibles de fallo; Garden los mantiene como hipótesis hasta que el cultivador registre evidencia." },
+          "items": [
+            { "text": { "en": "Do not mark a packet failed solely because emergence is slower than the 5–10 day reference range.", "es": "No marques un paquete como fallido solo porque la emergencia sea más lenta que el rango de referencia de 5–10 días." }, "evidenceType": "garden_adaptation", "confidence": "medium", "sourceIds": ["johnnys-genovese-basil-seed"] },
+            { "text": { "en": "If seedlings collapse under cool, heavily watered conditions, record the observation; Fedco's basil culture note warns that young basil can damp off when heavily watered in cool cloudy weather.", "es": "Si las plántulas colapsan con frío y exceso de riego, registra la observación; la guía de cultivo de Fedco advierte que la albahaca joven puede sufrir damping-off con riego abundante en clima fresco y nublado." }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["fedco-genovese-basil"] }
+          ],
+          "evidenceType": "garden_adaptation",
+          "confidence": "medium",
+          "sourceIds": ["johnnys-genovese-basil-seed"]
+        }
+      ]
+    }
+  }
+}

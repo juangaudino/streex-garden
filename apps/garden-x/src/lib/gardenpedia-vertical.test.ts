@@ -125,6 +125,7 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain('data-view="machines"');
     expect(page).toContain('id="exploreContextTab"');
     expect(page).toContain('id="myGardenContextTab"');
+    expect(page).toContain('<base href="/gardenpedia/">');
     expect(app).toContain('data-context-panel');
     expect(page).toContain('id="seedsSurface"');
     expect(page).toContain('id="seedSearchInput"');
@@ -144,6 +145,8 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(routing).toContain('"source": "/gardenpedia"');
     expect(routing).toContain('"destination": "/gardenpedia/"');
     expect(profile).not.toContain('onClick={() => openRecord("move")}');
+    expect(profile).toContain("grid grid-cols-3 gap-1 px-5");
+    expect(profile).not.toContain("grid grid-cols-2 gap-1.5 px-5");
     expect(record).toContain('key: "move"');
     expect(groups).toContain('flowKeys: ["planting", "move", "close", "replace"]');
   });

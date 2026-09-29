@@ -19,7 +19,14 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
     onChange(levels.map((level, currentIndex) => {
       if (currentIndex !== index) return level;
       const next = { ...level, [key]: Math.max(1, level[key] + delta) };
-      return { ...next, activeCells: activeGridCells(next) };
+      // Resizing changes the containing geometry, not the user's physical
+      // selection. Keep cells that still fit and expose the rest as candidates.
+      return {
+        ...next,
+        activeCells: activeGridCells(level).filter(
+          (cell) => cell.row <= next.rows && cell.column <= next.columns,
+        ),
+      };
     }));
   };
 
@@ -28,7 +35,13 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
       if (currentIndex !== levelIndex) return level;
       const active = activeGridCells(level);
       const exists = active.some((cell) => cell.row === row && cell.column === column);
-      return { ...level, activeCells: exists ? active.filter((cell) => cell.row !== row || cell.column !== column) : [...active, { row, column }] };
+      const next = exists
+        ? active.filter((cell) => cell.row !== row || cell.column !== column)
+        : [...active, { row, column }];
+      return {
+        ...level,
+        activeCells: next.sort((a, b) => a.row - b.row || a.column - b.column),
+      };
     }));
   };
 
@@ -54,7 +67,9 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
               </div>
             ))}
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">{level.rows} {ui(language, "rows").toLowerCase()} × {level.columns} {ui(language, "columns").toLowerCase()} · {activeGridCells(level).length} {ui(language, "activePositions")}</p>
+          <p className="mt-3 text-xs text-muted-foreground">
+            {level.rows} {ui(language, "rows").toLowerCase()} × {level.columns} {ui(language, "columns").toLowerCase()} · {activeGridCells(level).length}{requiredPositionCount !== undefined ? ` / ${requiredPositionCount}` : ""} {ui(language, "activePositions")}
+          </p>
         </div>
       ))}
       <SystemPreview language={language} positions={positions} levels={levels} interactive onToggleCell={toggleCell} />

@@ -39,6 +39,10 @@ vi.mock("@/components/garden/photo-source-picker", () => ({
     </div>
   ),
 }));
+vi.mock("@/components/garden/record-moment", () => ({
+  RecordMomentSheet: ({ plant, open, initialFlow }: { plant: { name: string }; open: boolean; initialFlow?: string }) =>
+    open ? <div data-testid="move-sheet">{plant.name}:{initialFlow}</div> : null,
+}));
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 
 import { AppShell } from "@/components/garden/shell";
@@ -156,6 +160,13 @@ describe("Journal Entry from real shell entry points", () => {
     expect(screen.queryByLabelText("Plant / position")).toBeNull();
     expect(screen.getByText(plant.name)).toBeTruthy();
     expect(screen.getByRole("dialog").textContent).toContain(garden.name);
+  });
+
+  it("exposes relocation from the Record sheet without treating it as a life-event chip", () => {
+    renderExperience(`/plants/${plant.id}`);
+    openRecord();
+    fireEvent.click(screen.getByRole("button", { name: "Move / relocate" }));
+    expect(screen.getByTestId("move-sheet").textContent).toBe("Genovese Basil:move");
   });
 
   it("records a milestone-only moment as an explicit structured journal event", async () => {

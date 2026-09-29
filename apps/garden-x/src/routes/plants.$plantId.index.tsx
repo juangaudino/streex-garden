@@ -6,6 +6,7 @@ import {
   ScanLine,
   GitCompareArrows,
   MessageCircle,
+  Move,
   Plus,
   Check,
   Share2,
@@ -47,6 +48,7 @@ import { HistoryShareDialog } from "@/components/garden/share-story";
 import { usePhotoViewer } from "@/components/garden/photo-viewer";
 import { PhotoImage } from "@/components/garden/photo-image";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { ChronologySelect } from "@/components/garden/chronology-select";
 import { DeleteActionMenu } from "@/components/garden/delete-action-menu";
@@ -103,6 +105,7 @@ function PlantProfile() {
   const [recordOpen, setRecordOpen] = useState(false);
   const [recordFlow, setRecordFlow] = useState<MomentFlow | undefined>(undefined);
   const [recordCare, setRecordCare] = useState<MaintenanceType | undefined>(undefined);
+  const [locationMenuOpen, setLocationMenuOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
   const [expandedTimelineEvents, setExpandedTimelineEvents] = useState<Set<string>>(() => new Set());
@@ -273,7 +276,14 @@ function PlantProfile() {
             {plant.slot ? (
               <>
                 <span>·</span>
-                <span>{plant.slot}</span>
+                <button
+                  type="button"
+                  className="press inline-flex items-center underline decoration-white/40 underline-offset-4 hover:text-white"
+                  onClick={() => setLocationMenuOpen(true)}
+                  aria-label={`${ui(language, "location")}: ${plant.slot}`}
+                >
+                  {plant.slot}
+                </button>
               </>
             ) : null}
           </div>
@@ -1028,6 +1038,27 @@ function PlantProfile() {
           </div>
         ) : null}
       </div>
+
+      <Dialog open={locationMenuOpen} onOpenChange={setLocationMenuOpen}>
+        <DialogContent className="rounded-3xl sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle>{ui(language, "location")}</DialogTitle>
+            <DialogDescription>
+              {garden.name} · {plant.slot || ui(language, "positionNotFound")}
+            </DialogDescription>
+          </DialogHeader>
+          <Button
+            type="button"
+            className="w-full rounded-full"
+            onClick={() => {
+              setLocationMenuOpen(false);
+              openRecord("move");
+            }}
+          >
+            <Move className="h-4 w-4" /> {ui(language, "moveRelocate")}
+          </Button>
+        </DialogContent>
+      </Dialog>
 
       <RecordMomentSheet
         plant={plant}

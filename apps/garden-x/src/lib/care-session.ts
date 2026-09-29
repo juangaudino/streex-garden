@@ -276,5 +276,5 @@ export const recordMomentGroups: Array<{
   >;
 }> = [
   { labelKey: "recordSomething", flowKeys: ["observation", "care", "followup", "other"] },
-  { labelKey: "managePlant", flowKeys: ["planting", "move", "close", "replace"] },
+  { labelKey: "managePlant", flowKeys: ["planting", "close", "replace"] },
 ];

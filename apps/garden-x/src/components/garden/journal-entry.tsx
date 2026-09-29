@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { Check, Leaf, Move, X } from "lucide-react";
+import { Check, Leaf, X } from "lucide-react";
 import { toast } from "sonner";
 import { PhotoSourcePicker } from "@/components/garden/photo-source-picker";
-import { RecordMomentSheet } from "@/components/garden/record-moment";
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 import { useGarden } from "@/lib/garden-store";
 import { IncompleteGardenPhotoProcessingError } from "@/lib/garden-backend";
@@ -25,7 +24,6 @@ type JournalEntryRequest = JournalEntryContext & { sequence: number };
 
 export function JournalEntryProvider({ children }: { children: ReactNode }) {
   const [request, setRequest] = useState<JournalEntryRequest | null>(null);
-  const [movePlant, setMovePlant] = useState<Plant | null>(null);
   const sequence = useRef(0);
   const open = useCallback((context: JournalEntryContext = {}) => {
     sequence.current += 1;
@@ -38,19 +36,7 @@ export function JournalEntryProvider({ children }: { children: ReactNode }) {
       <JournalEntrySheet
         request={request}
         onClose={() => setRequest(null)}
-        onMove={(plant) => {
-          setRequest(null);
-          setMovePlant(plant);
-        }}
       />
-      {movePlant ? (
-        <RecordMomentSheet
-          plant={movePlant}
-          open
-          initialFlow="move"
-          onClose={() => setMovePlant(null)}
-        />
-      ) : null}
     </JournalEntryContextProvider.Provider>
   );
 }
@@ -83,11 +69,9 @@ function localToday() {
 function JournalEntrySheet({
   request,
   onClose,
-  onMove,
 }: {
   request: JournalEntryRequest | null;
   onClose: () => void;
-  onMove: (plant: Plant) => void;
 }) {
   const store = useGarden();
   const language = store.language;
@@ -345,17 +329,6 @@ function JournalEntrySheet({
             <p className="mt-3 rounded-2xl bg-secondary/60 px-3.5 py-3 text-sm text-muted-foreground">
               {ui(language, "journalNoPlantsHere")}
             </p>
-          ) : null}
-
-          {selectedPlant ? (
-            <button
-              type="button"
-              onClick={() => onMove(selectedPlant)}
-              className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-full border border-border/70 bg-background px-3.5 text-sm font-medium text-primary transition-colors hover:bg-accent/50"
-            >
-              <Move className="h-4 w-4" strokeWidth={1.8} />
-              {ui(language, "moveRelocate")}
-            </button>
           ) : null}
 
           <div className="mt-4">

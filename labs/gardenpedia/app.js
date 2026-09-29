@@ -143,6 +143,7 @@ const evidenceClasses = { source_backed: "source-backed", garden_adaptation: "ga
 const visualIcons = { photo: "📷", diagram: "✂️", video: "▶", guide: "📖" };
 
 async function init() {
+  const persistedView = state.view;
   // Public Gardenpedia must not wait for private account hydration. A slow,
   // expired, or unavailable session can never block anonymous knowledge access.
   const accountHydration = window.GARDEN_LABS_STORAGE_HYDRATE
@@ -183,11 +184,11 @@ async function init() {
   bindEvents();
   applyLanguage();
   // Render the public surface before awaiting any authenticated work.
-  switchView(state.view, false);
+  switchView(["my-plants", "seeds", "machines"].includes(persistedView) ? "plants" : persistedView, false);
   await Promise.all([accountHydration, harvestHydration]);
-  if (state.accountMode !== "ready" && ["my-plants", "seeds", "machines"].includes(state.view)) {
-    switchView("plants", false);
-  }
+  renderAccountVisibility();
+  if (state.accountMode === "ready" && ["my-plants", "seeds", "machines"].includes(persistedView)) switchView(persistedView, false);
+  else if (state.accountMode !== "ready" && ["my-plants", "seeds", "machines"].includes(state.view)) switchView("plants", false);
   await loadMyPlants();
   void loadGardenpediaWorkflow();
   const requestedPlantId = decodeURIComponent(window.location.hash.replace(/^#/, "")).trim();
@@ -426,6 +427,7 @@ function applyLanguage() {
   refs.closeDialog.setAttribute("aria-label", text.close);
   refs.closeSeedDialog.setAttribute("aria-label", text.cancel);
   refs.languageButtons.forEach((button) => { const active = button.dataset.language === state.language; button.classList.toggle("active", active); button.setAttribute("aria-pressed", String(active)); });
+  renderAccountVisibility();
   buildFilters();
   buildSeedFilters();
   renderPlants();
@@ -438,10 +440,22 @@ function applyLanguage() {
     if (activePlant) refs.detail.innerHTML = buildPlantDetail(activePlant);
   }
   if (state.activeSeedId) {
-    const seedId = state.activeSeedId === "__new__" ? null : state.activeSeedId;
-    refs.seedDetail.innerHTML = buildSeedEditor(seedId);
-    bindSeedEditor(seedId);
+    if (state.activeSeedId.startsWith("public:")) {
+      const plant = state.plants.find((item) => item.id === state.activeSeedId.slice("public:".length));
+      if (plant) refs.seedDetail.innerHTML = buildPublicSeedProfile(plant);
+    } else {
+      const seedId = state.activeSeedId === "__new__" ? null : state.activeSeedId;
+      refs.seedDetail.innerHTML = buildSeedEditor(seedId);
+      bindSeedEditor(seedId);
+    }
   }
+}
+
+function renderAccountVisibility() {
+  const authenticated = state.accountMode === "ready";
+  if (refs.myGardenContextTab) refs.myGardenContextTab.hidden = !authenticated;
+  refs.myGardenContextTab?.parentElement?.classList.toggle("single-context", !authenticated);
+  if (!authenticated && ["my-plants", "seeds", "machines"].includes(state.view)) switchView("plants", false);
 }
 
 function switchView(view, persist = true) {
@@ -589,7 +603,7 @@ function renderPublicSeeds() {
     const article = document.createElement("article");
     article.className = "plant-card";
     article.innerHTML = `<button class="plant-card-button" type="button"><div class="plant-card-top"><span class="plant-emoji">${escapeHtml(plant.emoji || "🌱")}</span><span class="category-pill">${escapeHtml(text.categories[plant.category] || plant.category || "")}</span></div><div><p class="plant-spanish">${escapeHtml(secondaryName)}</p><h4 class="plant-name">${escapeHtml(primaryName)}</h4><p class="plant-scientific">${escapeHtml(plant.scientificName || "")}</p></div><div class="plant-card-footer"><span class="guide-status compact-seed-indicator" title="${escapeAttribute(text.publicSeedIndicator)}">🌰 <span>${escapeHtml(text.publicSeedIndicator)}</span></span><span>→</span></div></button>`;
-    article.querySelector("button")?.addEventListener("click", () => openPlant(plant));
+    article.querySelector("button")?.addEventListener("click", () => openPublicSeed(plant));
     refs.publicSeedGrid.append(article);
   });
 }
@@ -701,6 +715,35 @@ function openPlant(plant) {
   refs.detail.innerHTML = buildPlantDetail(plant);
   refs.dialog.showModal();
   refs.dialog.scrollTop = 0;
+}
+
+function openPublicSeed(plant) {
+  state.activeSeedId = `public:${plant.id}`;
+  refs.seedDetail.innerHTML = buildPublicSeedProfile(plant);
+  refs.seedDialog.showModal();
+  refs.seedDialog.scrollTop = 0;
+}
+
+function buildPublicSeedProfile(plant) {
+  const text = ui[state.language];
+  const profileIntro = state.language === "es"
+    ? "Una vista pública de semillas para esta identidad de Gardenpedia, con la orientación publicada de germinación y primeros cuidados que ya existe."
+    : "A public seed view for this Gardenpedia identity, using the published germination and early-growing guidance already available for it.";
+  const profileLinked = state.language === "es"
+    ? "Este perfil de semilla sigue vinculado a la identidad pública de la planta; la propiedad de paquetes pertenece a Mis semillas."
+    : "This seed profile remains linked to the public plant identity; private packet ownership belongs in My Seeds.";
+  const profileUnavailable = state.language === "es"
+    ? "Todavía no hay una sección de guía específica de semillas publicada para esta identidad."
+    : "No seed-specific guide section is published for this identity yet.";
+  const localized = getLocalizedPlant(plant);
+  const primaryName = state.language === "es" ? (plant.spanishName || plant.name) : plant.name;
+  const secondaryName = state.language === "es" ? (plant.spanishName ? plant.name : "") : plant.spanishName;
+  const seedSections = ["germination", "thinning", "hydroponics"]
+    .filter((key) => localized.sections?.[key])
+    .map((key) => buildSection(localized.sections[key], key, false))
+    .join("");
+  const metrics = (localized.metrics || []).map((metric) => `<div class="metric-card"><div class="metric-label">${escapeHtml(metric.label)}</div><div class="metric-value">${escapeHtml(metric.value)}</div>${metric.note ? `<div class="metric-note">${escapeHtml(metric.note)}</div>` : ""}</div>`).join("");
+  return `<section class="seed-public-profile"><div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · ${escapeHtml(text.publicSeedsTitle)}</p><h2>${escapeHtml(primaryName)}</h2><p class="plant-spanish">${escapeHtml(secondaryName)}</p><p class="scientific">${escapeHtml(plant.scientificName || "")}</p><p class="detail-summary">${escapeHtml(profileIntro)}</p></div><section class="seed-inventory-card"><p class="eyebrow">🌰 ${escapeHtml(text.publicSeedKnowledge)}</p><p>${escapeHtml(profileLinked)}</p></section>${metrics ? `<section class="quick-facts">${metrics}</section>` : ""}<section class="guide-stack">${seedSections || `<p class="empty-state">${escapeHtml(profileUnavailable)}</p>`}</section></section>`;
 }
 
 function buildPlantDetail(plant) {

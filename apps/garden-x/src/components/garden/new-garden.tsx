@@ -10,8 +10,6 @@ import { setupCopy, ui } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { CustomSystemBuilder } from "@/components/garden/custom-system-builder";
-import { SystemLayoutConfigurator } from "@/components/garden/system-layout-configurator";
-import { allGridCells, defaultRectangularLevels, type CustomSystemLevel } from "@/lib/custom-system";
 import { cn } from "@/lib/utils";
 
 const coverChoices: { id: string; label: string; src: string }[] = [
@@ -32,7 +30,6 @@ export function NewGarden() {
   const [place, setPlace] = useState("");
   const [setupId, setSetupId] = useState<string | null>(null);
   const [coverId, setCoverId] = useState<string | null>(null);
-  const [systemLayout, setSystemLayout] = useState<CustomSystemLevel[]>([]);
   const [customOpen, setCustomOpen] = useState(false);
 
   const setup = setupId ? setupById(setupId) : undefined;
@@ -43,7 +40,6 @@ export function NewGarden() {
     setPlace("");
     setSetupId(null);
     setCoverId(null);
-    setSystemLayout([]);
     setOpen(true);
   };
 
@@ -60,7 +56,6 @@ export function NewGarden() {
       systemDefinitionKey: setup?.systemDefinitionKey ?? null,
       gardenpediaModelId: setup?.gardenpediaModelId ?? null,
       ...(machine && { machine }),
-      ...(systemLayout.length && machine ? { initialSystemLayout: systemLayout } : {}),
     });
     setOpen(false);
     toast.success(ui(language, "gardenCreatedMessage"));
@@ -89,10 +84,10 @@ export function NewGarden() {
               <p className="eyebrow">{ui(language, "newGarden")}</p>
             </div>
             <DialogTitle className="font-display text-2xl font-medium">
-              {step === 0 ? ui(language, "newGardenNameQuestion") : step === 1 ? ui(language, "newGardenSetupQuestion") : setup?.system && step === 2 ? ui(language, "buildLayout") : ui(language, "newGardenCoverQuestion")}
+              {step === 0 ? ui(language, "newGardenNameQuestion") : step === 1 ? ui(language, "newGardenSetupQuestion") : ui(language, "newGardenCoverQuestion")}
             </DialogTitle>
             <DialogDescription>
-              {step === 0 ? ui(language, "newGardenNameHint") : step === 1 ? ui(language, "newGardenSetupHint") : setup?.system && step === 2 ? ui(language, "buildLayoutDescription") : ui(language, "newGardenCoverHint")}
+              {step === 0 ? ui(language, "newGardenNameHint") : step === 1 ? ui(language, "newGardenSetupHint") : ui(language, "newGardenCoverHint")}
             </DialogDescription>
           </DialogHeader>
 
@@ -136,7 +131,6 @@ export function NewGarden() {
                       return;
                     }
                     setSetupId(choice.id);
-                    setSystemLayout(choice.system ? defaultRectangularLevels(choice.system.pods).map((level) => ({ ...level, activeCells: allGridCells(level) })) : []);
                   }}
                   className={cn(
                     "press grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border bg-background px-4 py-3.5 text-left",
@@ -161,17 +155,7 @@ export function NewGarden() {
             </div>
           ) : null}
 
-          {step === 2 && setup?.system ? (
-            <div className="grid min-w-0 gap-4">
-              <p className="text-sm text-muted-foreground">{setup.system.name} · {setup.system.pods} {ui(language, "positions").toLowerCase()}</p>
-              <SystemLayoutConfigurator levels={systemLayout} onChange={setSystemLayout} language={language} requiredPositionCount={setup.system.pods} />
-              <Button className="w-full rounded-full" onClick={() => setStep(3)} disabled={!systemLayout.length || systemLayout.reduce((total, level) => total + (level.activeCells?.length ?? 0), 0) !== setup.system?.pods}>
-                {ui(language, "continueAction")}
-              </Button>
-            </div>
-          ) : null}
-
-          {step === 2 && !setup?.system ? (
+          {step === 2 ? (
             <div className="min-w-0">
               <div className="no-scrollbar flex w-full min-w-0 gap-2 overflow-x-auto pb-1">
                 {coverChoices.map((choice) => (
@@ -194,23 +178,6 @@ export function NewGarden() {
             </div>
           ) : null}
 
-          {step === 3 && setup?.system ? (
-            <div className="min-w-0">
-              <div className="no-scrollbar flex w-full min-w-0 gap-2 overflow-x-auto pb-1">
-                {coverChoices.map((choice) => (
-                  <button
-                    key={choice.id}
-                    type="button"
-                    onClick={() => setCoverId(choice.id)}
-                    className={cn("press relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 p-1", coverId === choice.id ? "border-primary" : "border-transparent")}
-                  >
-                    <img src={choice.src} alt={choice.id === "indoor" ? ui(language, "coverIndoor") : choice.id === "balcony" ? ui(language, "coverBalcony") : ui(language, "coverBackyard")} className="h-full w-full rounded-xl object-cover" />
-                  </button>
-                ))}
-              </div>
-              <Button className="mt-4 w-full rounded-full" onClick={create}>{ui(language, "createGarden")}</Button>
-            </div>
-          ) : null}
         </DialogContent>
       </Dialog>
       <CustomSystemBuilder open={customOpen} onOpenChange={setCustomOpen} />

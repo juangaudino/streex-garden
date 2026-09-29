@@ -162,11 +162,10 @@ describe("Journal Entry from real shell entry points", () => {
     expect(screen.getByRole("dialog").textContent).toContain(garden.name);
   });
 
-  it("exposes relocation from the Record sheet without treating it as a life-event chip", () => {
+  it("keeps relocation out of the Record composer menu", () => {
     renderExperience(`/plants/${plant.id}`);
     openRecord();
-    fireEvent.click(screen.getByRole("button", { name: "Move / relocate" }));
-    expect(screen.getByTestId("move-sheet").textContent).toBe("Genovese Basil:move");
+    expect(screen.queryByRole("button", { name: "Move / relocate" })).toBeNull();
   });
 
   it("records a milestone-only moment as an explicit structured journal event", async () => {

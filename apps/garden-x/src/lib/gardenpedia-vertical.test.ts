@@ -312,7 +312,7 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(page).toContain("supabase-lab-transport.js?v=3");
     expect(page).toContain("identity-resolver-v1.js?v=2");
     expect(page).toContain("gardenpedia-account-v1.js?v=2");
-    expect(page).toContain("app.js?v=1.5");
+    expect(page).toContain("app.js?v=1.6");
     expect(publisher).not.toContain("gardenpedia-account-v1.js?v=1");
     expect(publisher).not.toContain('gardenLabsSeedStateV1", "gardenpediaPublicSeedStateV1');
     expect(publisher).not.toContain('gardenLabsCustomSeedsV1", "gardenpediaPublicCustomSeedsV1');
@@ -323,5 +323,32 @@ describe("Gardenpedia request-to-publication vertical", () => {
     expect(read("labs/gardenpedia/supabase-lab-transport.js")).not.toContain("sabulxbfdimoqnbgnmso");
     expect(page).toContain('id="machinesTab"');
     expect(publisher).not.toContain('replace(/<button id="machinesTab"');
+  });
+
+  it("keeps the Genovese seed profile distinct from mature plant guidance", () => {
+    const app = read("labs/gardenpedia/app.js");
+    const profile = JSON.parse(read("labs/gardenpedia/data/seed-profiles-v0.json"));
+    const sources = JSON.parse(read("labs/gardenpedia/data/sources.json"));
+    const genovese = profile.profiles["genovese-basil"];
+    const sectionKeys = genovese.sections.map((section: { key: string }) => section.key);
+    const sourceIds = new Set(
+      genovese.sections.flatMap((section: { sourceIds?: string[]; items?: Array<{ sourceIds?: string[] }> }) => [
+        ...(section.sourceIds || []),
+        ...(section.items || []).flatMap((item) => item.sourceIds || []),
+      ]),
+    );
+    expect(profile.schemaVersion).toBe("gardenpedia_seed_profile_v0");
+    expect(genovese.plantIdentityId).toBe("genovese-basil");
+    expect(sectionKeys).toEqual(["sowing", "germination", "afterEmergence", "transition", "handling", "troubleshooting"]);
+    expect(genovese.quickFacts.map((fact: { key: string }) => fact.key)).toEqual(["germination", "temperature", "depth", "seedType"]);
+    expect(JSON.stringify(genovese)).not.toMatch(/Hydro pH|Hydro EC|hydroponic production/i);
+    expect(JSON.stringify(genovese)).toContain("needs_validation");
+    expect(sourceIds.has("johnnys-genovese-basil-seed")).toBe(true);
+    expect(sourceIds.has("umn-seed-storage")).toBe(true);
+    expect(sources.some((source: { id: string }) => source.id === "johnnys-genovese-basil-seed")).toBe(true);
+    expect(app).toContain('fetch(assetUrl("data/seed-profiles-v0.json"))');
+    expect(app).toContain("function buildLegacyPublicSeedProfile(plant)");
+    expect(app).toContain("function buildSeedProfileV0(plant, profile)");
+    expect(app).toContain("state.seedProfiles?.profiles?.[plant.id]");
   });
 });

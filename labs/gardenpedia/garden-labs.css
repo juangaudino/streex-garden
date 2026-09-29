@@ -594,6 +594,29 @@ body.demo-frameless .lab-app.app-shell {
 .seed-editor-header { display: grid; gap: 7px; padding-right: 48px; margin-bottom: 20px; }
 .seed-editor-header h2 { margin: 0; font-size: clamp(28px,7vw,42px); letter-spacing: -.04em; }
 .seed-editor-header p { margin: 0; color: var(--muted); line-height: 1.5; }
+.seed-profile-v0 .seed-editor-header { margin-bottom: 14px; }
+.seed-profile-boundary {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 13px 14px;
+  border: 1px solid rgba(46,107,77,.18);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f2f7ef, #fbfaf4);
+}
+.seed-profile-boundary-icon { font-size: 20px; line-height: 1.1; }
+.seed-profile-boundary strong { color: var(--accent-strong); font-size: 13px; }
+.seed-profile-boundary p { margin: 3px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.seed-profile-facts { margin: 0 0 18px; }
+.seed-fact-card { min-width: 0; }
+.seed-fact-evidence { margin-top: 8px; }
+.seed-fact-evidence .evidence-row { margin-top: 0; gap: 4px; }
+.seed-fact-evidence .evidence-chip { padding: 4px 6px; font-size: 10px; }
+.seed-profile-section .section-body > .evidence-row { margin-top: 16px; }
+.seed-item-evidence { margin: 6px 0 0; }
+.seed-item-evidence .evidence-row { margin-top: 0; gap: 4px; }
+.seed-item-evidence .evidence-chip { padding: 4px 6px; font-size: 10px; }
 .packet-evidence-panel {
   display: grid;
   gap: 7px;

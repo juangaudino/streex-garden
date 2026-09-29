@@ -97,5 +97,41 @@
     "type": "grower_reference",
     "scope": "general",
     "accessed": "2026-09-12"
+  },
+  {
+    "id": "johnnys-genovese-basil-seed",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Genovese Basil Seed",
+    "url": "https://www.johnnyseeds.com/herbs/basil/genovese-basil/genovese-basil-seed-911.30.html",
+    "type": "seed_reference",
+    "scope": "genovese_basil_seed",
+    "accessed": "2026-09-28"
+  },
+  {
+    "id": "cce-seed-seedling",
+    "publisher": "Cornell Cooperative Extension",
+    "title": "From Seed to Seedling: What Every Indoor Grower Should Know",
+    "url": "https://cce.cornell.edu/orleans/seed-seedling-what-every-indoor-grower-should-know",
+    "type": "university_extension",
+    "scope": "seedling_transition",
+    "accessed": "2026-09-28"
+  },
+  {
+    "id": "umn-seed-storage",
+    "publisher": "University of Minnesota Extension",
+    "title": "Saving vegetable seeds",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/saving-vegetable-seeds",
+    "type": "university_extension",
+    "scope": "seed_storage",
+    "accessed": "2026-09-28"
+  },
+  {
+    "id": "fedco-genovese-basil",
+    "publisher": "Fedco Seeds",
+    "title": "Genovese Basil",
+    "url": "https://fedcoseeds.com/seeds/genovese-basil-4418",
+    "type": "seed_reference",
+    "scope": "genovese_basil_seed",
+    "accessed": "2026-09-28"
   }
 ]

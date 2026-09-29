@@ -11,6 +11,7 @@ const state = {
   machineCatalog: { models: [] },
   accountMode: "signed_out",
   neighborData: { meta: {}, profiles: {} },
+  seedProfiles: {},
   seedUserState: readLocalJson("gardenLabsSeedStateV1", {}),
   customSeeds: readLocalJson("gardenLabsCustomSeedsV1", []),
   query: "",
@@ -154,7 +155,7 @@ async function init() {
   const harvestHydration = window.GARDEN_HARVEST_USE?.load
     ? Promise.resolve(window.GARDEN_HARVEST_USE.load()).catch(() => undefined)
     : Promise.resolve();
-  const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, requestPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, requestSourceResponse, spanishResponse, ownedSpanishResponse, requestSpanishResponse, visualsResponse, inventoryResponse, neighborResponse] = await Promise.all([
+  const [pilotPlantResponse, currentPlantResponse, ownedPlantResponse, requestPlantResponse, sourceResponse, currentSourceResponse, ownedSourceResponse, requestSourceResponse, spanishResponse, ownedSpanishResponse, requestSpanishResponse, visualsResponse, inventoryResponse, neighborResponse, seedProfileResponse] = await Promise.all([
     fetch(assetUrl("data/plants.json")),
     fetch(assetUrl("data/plants-current-gardens.json")),
     fetch(assetUrl("data/plants-owned-seeds.json")),
@@ -169,6 +170,7 @@ async function init() {
     fetch(assetUrl("data/visuals.json")),
     fetch(assetUrl("data/seed-inventory.json")),
     fetch(assetUrl("data/neighbor-profiles.json")),
+    fetch(assetUrl("data/seed-profiles-v0.json")),
   ]);
 
   state.plants = [...await pilotPlantResponse.json(), ...await currentPlantResponse.json(), ...await ownedPlantResponse.json(), ...await requestPlantResponse.json()];
@@ -179,6 +181,7 @@ async function init() {
   const inventory = await inventoryResponse.json();
   state.seedInventory = Object.fromEntries(inventory.items.map((item) => [item.plantId, item]));
   state.neighborData = await neighborResponse.json();
+  state.seedProfiles = await seedProfileResponse.json();
   state.machineCatalog = await fetch(assetUrl("data/machine-inventory-v1.json")).then((response) => response.json());
   if (refs.seedsTab) refs.seedsTab.hidden = false;
   bindEvents();
@@ -724,7 +727,7 @@ function openPublicSeed(plant) {
   refs.seedDialog.scrollTop = 0;
 }
 
-function buildPublicSeedProfile(plant) {
+function buildLegacyPublicSeedProfile(plant) {
   const text = ui[state.language];
   const profileIntro = state.language === "es"
     ? "Una vista pública de semillas para esta identidad de Gardenpedia, con la orientación publicada de germinación y primeros cuidados que ya existe."
@@ -744,6 +747,46 @@ function buildPublicSeedProfile(plant) {
     .join("");
   const metrics = (localized.metrics || []).map((metric) => `<div class="metric-card"><div class="metric-label">${escapeHtml(metric.label)}</div><div class="metric-value">${escapeHtml(metric.value)}</div>${metric.note ? `<div class="metric-note">${escapeHtml(metric.note)}</div>` : ""}</div>`).join("");
   return `<section class="seed-public-profile"><div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · ${escapeHtml(text.publicSeedsTitle)}</p><h2>${escapeHtml(primaryName)}</h2><p class="plant-spanish">${escapeHtml(secondaryName)}</p><p class="scientific">${escapeHtml(plant.scientificName || "")}</p><p class="detail-summary">${escapeHtml(profileIntro)}</p></div><section class="seed-inventory-card"><p class="eyebrow">🌰 ${escapeHtml(text.publicSeedKnowledge)}</p><p>${escapeHtml(profileLinked)}</p></section>${metrics ? `<section class="quick-facts">${metrics}</section>` : ""}<section class="guide-stack">${seedSections || `<p class="empty-state">${escapeHtml(profileUnavailable)}</p>`}</section></section>`;
+}
+
+function localizedSeedValue(value) {
+  if (value == null) return "";
+  if (typeof value === "string") return value;
+  return value[state.language] || value.en || value.es || "";
+}
+
+function buildSeedEvidence(evidenceType, confidence) {
+  const text = ui[state.language];
+  const className = evidenceClasses[evidenceType] || evidenceClasses.needs_validation;
+  const label = evidenceType === "source_backed" ? text.sourceBacked : evidenceType === "garden_adaptation" ? text.gardenAdaptation : text.needsValidation;
+  const confidenceLabel = text[`confidence_${confidence}`] || confidence || text.confidence_pending;
+  return `<div class="evidence-row"><span class="evidence-chip ${className}">● ${escapeHtml(label)}</span><span class="evidence-chip">${escapeHtml(text.confidence)}: ${escapeHtml(confidenceLabel)}</span></div>`;
+}
+
+function buildSeedSourceLinks(sourceIds = []) {
+  return sourceIds.map((id) => state.sources[id]).filter(Boolean).map((source) => `<a class="source-link" href="${escapeAttribute(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.publisher)} · ${escapeHtml(source.title)}</a>`).join("");
+}
+
+function buildSeedProfileSection(section, open = false) {
+  const title = localizedSeedValue(section.title || section.key);
+  const short = localizedSeedValue(section.short);
+  const guidance = localizedSeedValue(section.guidance);
+  const items = (section.items || []).map((item) => `<li>${escapeHtml(localizedSeedValue(item.text || item))}${item.evidenceType ? `<div class="seed-item-evidence">${buildSeedEvidence(item.evidenceType, item.confidence)}</div>` : ""}</li>`).join("");
+  const sources = buildSeedSourceLinks(section.sourceIds);
+  return `<details class="section-card seed-profile-section" ${open ? "open" : ""}><summary><span class="section-icon">${escapeHtml(section.icon || "🌱")}</span><span><h3>${escapeHtml(title)}</h3><span class="section-subtitle">${escapeHtml(short)}</span></span></summary><div class="section-body"><p>${escapeHtml(guidance)}</p>${items ? `<ul>${items}</ul>` : ""}${section.context ? `<p><strong>${escapeHtml(ui[state.language].context)}:</strong> ${escapeHtml(localizedSeedValue(section.context))}</p>` : ""}${buildSeedEvidence(section.evidenceType, section.confidence)}${sources ? `<div class="source-links">${sources}</div>` : ""}</div></details>`;
+}
+
+function buildSeedProfileV0(plant, profile) {
+  const primaryName = state.language === "es" ? (plant.spanishName || plant.name) : plant.name;
+  const secondaryName = state.language === "es" ? (plant.spanishName ? plant.name : "") : plant.spanishName;
+  const facts = (profile.quickFacts || []).map((fact) => `<div class="metric-card seed-fact-card"><div class="metric-label">${escapeHtml(localizedSeedValue(fact.label))}</div><div class="metric-value">${escapeHtml(localizedSeedValue(fact.value))}</div>${fact.note ? `<div class="metric-note">${escapeHtml(localizedSeedValue(fact.note))}</div>` : ""}<div class="seed-fact-evidence">${buildSeedEvidence(fact.evidenceType, fact.confidence)}</div></div>`).join("");
+  const sections = (profile.sections || []).map((section, index) => buildSeedProfileSection(section, index === 0)).join("");
+  return `<section class="seed-public-profile seed-profile-v0"><div class="seed-editor-header"><p class="eyebrow">GARDENPEDIA · ${escapeHtml(localizedSeedValue(profile.label))}</p><h2>${escapeHtml(primaryName)}</h2><p class="plant-spanish">${escapeHtml(secondaryName)}</p><p class="scientific">${escapeHtml(plant.scientificName || "")}</p><p class="detail-summary">${escapeHtml(localizedSeedValue(profile.summary))}</p></div><section class="seed-profile-boundary"><span class="seed-profile-boundary-icon">🌰</span><div><strong>${escapeHtml(state.language === "es" ? "De semilla a plántula" : "Seed to seedling")}</strong><p>${escapeHtml(state.language === "es" ? "Esta ficha responde cómo iniciar esta semilla; el cuidado de la planta madura sigue en Plantas." : "This profile answers how to start this seed; mature-plant care remains in Plants.")}</p></div></section><section class="quick-facts seed-profile-facts">${facts}</section><section class="guide-stack seed-profile-sections">${sections}</section></section>`;
+}
+
+function buildPublicSeedProfile(plant) {
+  const profile = state.seedProfiles?.profiles?.[plant.id];
+  return profile ? buildSeedProfileV0(plant, profile) : buildLegacyPublicSeedProfile(plant);
 }
 
 function buildPlantDetail(plant) {

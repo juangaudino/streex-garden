@@ -85,7 +85,7 @@ export function GardenConversationComposer({
           </Button>
         </div>
       ) : null}
-      <div className="grid w-full min-w-0 max-w-full grid-cols-[auto_minmax(0,1fr)_auto] items-end gap-2">
+      <div className="garden-conversation-composer grid w-full min-w-0 max-w-full grid-cols-[auto_minmax(0,1fr)_minmax(0,auto)] items-end gap-2">
         <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
           <DialogTrigger asChild>
             <Button type="button" variant="outline" size="icon" className="h-11 w-11 shrink-0 rounded-full" disabled={disabled || sending || reading} aria-label={ui(language, "attachPhoto")}>
@@ -109,7 +109,7 @@ export function GardenConversationComposer({
           className="input-soft w-full min-w-0 max-w-full text-sm"
           aria-label={placeholder}
         />
-        <Button type="submit" size="sm" className="min-h-11 min-w-0 max-w-full whitespace-normal px-2 text-center" disabled={disabled || sending || reading || !question.trim()}>
+        <Button type="submit" size="sm" className="min-h-11 min-w-0 max-w-[7rem] whitespace-normal break-words px-2 text-center [overflow-wrap:anywhere]" disabled={disabled || sending || reading || !question.trim()}>
           {reading ? "…" : sendLabel}
         </Button>
       </div>

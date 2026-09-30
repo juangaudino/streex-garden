@@ -77,9 +77,7 @@ function GardenWideAsk() {
   }, [navigationImage, prompt, send]);
 
   return (
-    <div
-      className="garden-mobile-viewport fixed inset-x-0 z-10 flex min-h-0 min-w-0 max-w-full flex-col lg:static lg:h-screen"
-    >
+    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col">
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
           <ChevronLeft className="h-4 w-4" />
@@ -91,7 +89,7 @@ function GardenWideAsk() {
         <Leaf className="h-4 w-4 text-primary" />
       </header>
 
-      <Conversation className="mx-auto min-h-0 w-full min-w-0 max-w-3xl">
+      <Conversation className="mx-auto min-h-0 w-full min-w-0 max-w-3xl flex-1">
         <ConversationContent className="min-w-0 px-5 py-8 sm:px-8">
           {thread.length === 0 ? (
             <div className="rise">

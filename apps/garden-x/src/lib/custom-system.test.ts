@@ -91,6 +91,13 @@ describe("custom system geometry", () => {
     );
   });
 
+  it("supports an explicit custom capacity increase to sixteen positions", () => {
+    const level = { rows: 4, columns: 4, activeCells: allGridCells({ rows: 4, columns: 4 }) };
+    expect(customSystemPositionCount([level])).toBe(16);
+    expect(customSystemPositions([level])).toHaveLength(16);
+    expect(customSystemPositions([level]).at(-1)).toEqual({ number: 16, level: 1, row: 4, column: 4 });
+  });
+
   it("requires at least one active cell per level", () => {
     expect(canCreateCustomSystem([{ rows: 2, columns: 2, activeCells: [] }])).toBe(false);
   });

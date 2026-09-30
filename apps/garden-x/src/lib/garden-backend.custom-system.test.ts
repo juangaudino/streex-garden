@@ -6,7 +6,7 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ rpc }),
 }));
 
-import { createCustomSystemRecord } from "./garden-backend";
+import { createCustomSystemRecord, updateCustomSystemLayoutRecord } from "./garden-backend";
 
 describe("custom system backend boundary", () => {
   beforeEach(() => {
@@ -54,5 +54,25 @@ describe("custom system backend boundary", () => {
     rpc.mockResolvedValue({ data: null, error: { message: "System name is required" } });
     await expect(createCustomSystemRecord({ name: "", levels: [{ rows: 1, columns: 1 }] })).rejects.toThrow("System name is required");
     expect(rpc).toHaveBeenCalledTimes(1);
+  });
+
+  it("sends an explicit new capacity with a custom layout update", async () => {
+    rpc.mockResolvedValue({ data: { updated: true, position_count: 16 }, error: null });
+
+    await expect(updateCustomSystemLayoutRecord(
+      "kratky-garden",
+      [{ rows: 4, columns: 4, activeCells: Array.from({ length: 16 }, (_, index) => ({ row: Math.floor(index / 4) + 1, column: (index % 4) + 1 })) }],
+      16,
+    )).resolves.toBeUndefined();
+
+    expect(rpc).toHaveBeenCalledWith("garden_x_update_custom_system_layout_v2", expect.objectContaining({
+      p_garden_id: "kratky-garden",
+      p_position_capacity: 16,
+      p_levels: [{
+        rows: 4,
+        columns: 4,
+        active_cells: Array.from({ length: 16 }, (_, index) => ({ row: Math.floor(index / 4) + 1, column: (index % 4) + 1 })),
+      }],
+    }));
   });
 });

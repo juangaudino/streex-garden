@@ -1539,8 +1539,13 @@ export async function createCustomSystemRecord(
 export async function updateCustomSystemLayoutRecord(
   gardenId: string,
   levels: CustomSystemLevel[],
+  positionCapacity?: number,
 ): Promise<void> {
-  const { error } = await getSupabaseClient().rpc("garden_x_update_custom_system_layout", {
+  const { error } = await getSupabaseClient().rpc(
+    positionCapacity === undefined
+      ? "garden_x_update_custom_system_layout"
+      : "garden_x_update_custom_system_layout_v2",
+    {
     p_request_id: crypto.randomUUID(),
     p_garden_id: gardenId,
     p_levels: levels.map((level) => ({
@@ -1548,7 +1553,9 @@ export async function updateCustomSystemLayoutRecord(
       columns: level.columns,
       active_cells: level.activeCells ?? allGridCells(level),
     })),
-  });
+      ...(positionCapacity === undefined ? {} : { p_position_capacity: positionCapacity }),
+    },
+  );
   if (error) throw new Error(error.message);
 }
 

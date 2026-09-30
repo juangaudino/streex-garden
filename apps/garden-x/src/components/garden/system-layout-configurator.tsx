@@ -57,11 +57,11 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
               <div key={key} className="min-w-0 rounded-xl bg-background p-2 text-center sm:p-2.5">
                 <p className="text-[0.65rem] tracking-[0.12em] text-muted-foreground uppercase">{ui(language, key)}</p>
                 <div className="mt-2 flex items-center justify-center gap-1.5 sm:gap-3">
-                  <Button type="button" variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => changeLevel(index, key, -1)} disabled={level[key] <= 1}>
+                  <Button type="button" variant="ghost" size="icon" aria-label={`${ui(language, "decrease")} ${ui(language, key)}`} className="h-7 w-7 rounded-full" onClick={() => changeLevel(index, key, -1)} disabled={level[key] <= 1}>
                     <Minus className="h-3.5 w-3.5" />
                   </Button>
                   <span className="numeral w-5 text-sm">{level[key]}</span>
-                  <Button type="button" variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => changeLevel(index, key, 1)} disabled={key === "rows" ? level.rows >= 9 : level.columns >= 8}>
+                  <Button type="button" variant="ghost" size="icon" aria-label={`${ui(language, "increase")} ${ui(language, key)}`} className="h-7 w-7 rounded-full" onClick={() => changeLevel(index, key, 1)} disabled={key === "rows" ? level.rows >= 9 : level.columns >= 8}>
                     <Plus className="h-3.5 w-3.5" />
                   </Button>
                 </div>

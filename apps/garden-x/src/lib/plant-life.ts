@@ -91,7 +91,8 @@ export function originType(value: unknown): PlantOriginType {
     : "unknown";
 }
 
-function eventLifeId(event: PlantEvent): LifeEventId | null {
+/** Reuses the canonical Life Model projection for exports and other read-only views. */
+export function lifeEventForPlantEvent(event: PlantEvent): LifeEventId | null {
   const fromMetadata = normalizeLifeEvent(event.lifeEvent ?? event.journalMilestone);
   if (fromMetadata) return fromMetadata;
   if (event.type === "germinated" || event.type === "sprouted") return event.type;
@@ -115,11 +116,11 @@ export function contextualLifeEventSuggestions(input: {
     .filter((event) => event.plantId === plant.id)
     .sort((left, right) => right.daysAgo - left.daysAgo);
   const legacyHistoryIds = plantHistory
-    .map(eventLifeId)
+    .map(lifeEventForPlantEvent)
     .filter((value): value is LifeEventId => Boolean(value));
   const historyIds = [...plantHistory]
     .reverse()
-    .map(eventLifeId)
+    .map(lifeEventForPlantEvent)
     .filter((value): value is LifeEventId => Boolean(value));
   const seen = new Set(historyIds);
   const hasKnownCapability = Object.values(capabilities ?? {}).some(

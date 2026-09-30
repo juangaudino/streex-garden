@@ -193,6 +193,8 @@ export interface Plant {
   originType?: PlantOriginType;
   /** Date precision comes from the canonical grow cycle; unknown must not render as a planting date. */
   plantedDatePrecision?: "exact" | "approximate" | "unknown";
+  /** Canonical grow-cycle start date, when the backend projection provides it. */
+  plantedOn?: string | null;
   plantedDaysAgo: number;
   acquired?: string;
   slot?: string;

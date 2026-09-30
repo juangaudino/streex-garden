@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ChevronDown, ChevronUp, Cpu, Eye, EyeOff, GripVertical } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp, Cpu, Download, Eye, EyeOff, GripVertical } from "lucide-react";
 import { toast } from "sonner";
 import { useGarden } from "@/lib/garden-store";
 import { PageHeader } from "@/components/garden/shell";
@@ -23,6 +23,8 @@ import {
 import { cn } from "@/lib/utils";
 import { RouteLoading } from "@/components/garden/route-loading";
 import { ui } from "@/lib/ui-copy";
+import { buildGardenExportWorkbook } from "@/lib/garden-export";
+import { loadGardenLibraryCatalog } from "@/lib/garden-library";
 
 export const Route = createFileRoute("/gardens/")({
   head: () => ({
@@ -47,6 +49,7 @@ function Gardens() {
   const store = useGarden();
   const language = store.language;
   const [editing, setEditing] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
   const [archiveId, setArchiveId] = useState<string | null>(null);
   if (store.hydration === "loading") return <RouteLoading label={ui(store.language, "loadingGardens")} />;
@@ -54,6 +57,36 @@ function Gardens() {
   const visible = editing ? store.gardens : store.gardens.filter((garden) => !garden.archived);
   const order = store.gardens.map((garden) => garden.id);
   const archiveTarget = store.gardens.find((garden) => garden.id === archiveId);
+
+  const exportGardens = async () => {
+    if (exporting) return;
+    setExporting(true);
+    try {
+      const catalog = await loadGardenLibraryCatalog().catch(() => null);
+      const output = buildGardenExportWorkbook({
+        gardens: store.gardens,
+        plants: store.plants,
+        events: store.events,
+        language,
+        catalog,
+      });
+      const url = URL.createObjectURL(output.blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = output.filename;
+      anchor.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
+      toast.success(ui(language, "exportReady"));
+    } catch (error) {
+      if (error instanceof Error && error.message === ui(language, "noGardensToExport")) {
+        toast.error(ui(language, "noGardensToExport"));
+      } else {
+        toast.error(ui(language, "exportFailed"));
+      }
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const move = (id: string, direction: -1 | 1) => {
     const from = order.indexOf(id);
@@ -222,7 +255,19 @@ function Gardens() {
       </div>
 
       <div className="mt-12 px-5 sm:px-8 lg:px-12">
-        <div className="flex items-center gap-3 border-t border-border/70 pt-6">
+        <div className="flex flex-wrap items-center gap-3 border-t border-border/70 pt-6">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="rounded-full"
+            aria-label={exporting ? ui(language, "exporting") : ui(language, "export")}
+            onClick={() => void exportGardens()}
+            disabled={exporting}
+          >
+            <Download className="h-4 w-4" />
+            {exporting ? ui(language, "exporting") : ui(language, "export")}
+          </Button>
           <Button
             type="button"
             variant="ghost"

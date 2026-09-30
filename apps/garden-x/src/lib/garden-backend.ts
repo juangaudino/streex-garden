@@ -762,6 +762,7 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
         p.planted_on_precision === "exact" || p.planted_on_precision === "approximate"
           ? p.planted_on_precision
           : "unknown",
+      plantedOn: p.planted_on ?? null,
       plantedDaysAgo: daysAgo(p.planted_on),
       slot: `Pod ${p.position_number}`,
       status: (b.attention ?? []).some((a) => a.plant_instance_id === p.id) ? "watching" : "steady",

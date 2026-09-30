@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { Home, Sprout, Sparkles, Library, Settings, Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -6,6 +7,7 @@ import { useGarden } from "@/lib/garden-store";
 import { isBackgroundHydration } from "@/lib/garden-store";
 import { ui } from "@/lib/ui-copy";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
+import { useAskVisualViewport } from "@/lib/ask-visual-viewport";
 
 const nav = [
   { to: "/", en: "Home", es: "Inicio", icon: Home },
@@ -18,13 +20,46 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { language, profile, hydration } = useGarden();
   const openJournalEntry = useJournalEntry();
+  const isAskRoute = pathname === "/ask" || /^\/plants\/[^/]+\/ask$/.test(pathname);
+  const askViewport = useAskVisualViewport(isAskRoute);
+  const mobileNavRef = useRef<HTMLElement>(null);
   const plantRoute = pathname.match(/^\/plants\/([^/]+)/);
   const gardenRoute = pathname.match(/^\/gardens\/([^/]+)/);
   const context = plantRoute
     ? { plantId: decodeRoutePart(plantRoute[1]!) }
-    : gardenRoute
+      : gardenRoute
       ? { gardenId: decodeRoutePart(gardenRoute[1]!) }
       : {};
+
+  useEffect(() => {
+    const navElement = mobileNavRef.current;
+    if (!navElement) return;
+
+    const syncNavHeight = () => {
+      document.documentElement.style.setProperty(
+        "--garden-mobile-nav-height",
+        `${navElement.getBoundingClientRect().height}px`,
+      );
+    };
+
+    syncNavHeight();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(syncNavHeight);
+    observer?.observe(navElement);
+    window.addEventListener("resize", syncNavHeight);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", syncNavHeight);
+      document.documentElement.style.removeProperty("--garden-mobile-nav-height");
+    };
+  }, []);
+
+  const askMainStyle = isAskRoute ? ({
+    "--garden-visual-viewport-height": askViewport.height ? `${askViewport.height}px` : undefined,
+    "--garden-ask-bottom-reserve": askViewport.keyboardOpen
+      ? "0px"
+      : "var(--garden-mobile-nav-height, 4.5rem)",
+  } as CSSProperties) : undefined;
 
   return (
     <div className="min-h-screen lg:flex">
@@ -67,7 +102,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </Link>
       </aside>
 
-      <main className="min-w-0 flex-1 pb-28 lg:pb-0">
+      <main className="min-w-0 flex-1 pb-28 lg:pb-0" style={askMainStyle}>
         {isBackgroundHydration(hydration) ? (
           <div role="status" className="mx-5 mt-3 rounded-full border border-border/70 bg-secondary/80 px-3 py-2 text-center text-xs text-muted-foreground sm:mx-8 lg:mx-12">
             {ui(language, "reconnectingMessage")}
@@ -77,7 +112,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       </main>
 
       {/* mobile tab bar */}
-      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden">
+      <nav
+        ref={mobileNavRef}
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden"
+        style={isAskRoute && askViewport.keyboardOpen ? { display: "none" } : undefined}
+      >
         <div className="mx-auto grid max-w-lg grid-cols-5">
           {[...nav.slice(0, 2)].map((item) => {
             const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);

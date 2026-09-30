@@ -209,7 +209,8 @@ describe("plant-scoped Ask Garden real route composer", () => {
     const root = container.firstElementChild as HTMLElement;
     const scrollRegion = container.querySelector("main");
     const composer = container.querySelector("form")?.parentElement?.parentElement;
-    expect(root.className).toContain("h-[calc(100dvh-4.5rem)]");
+    expect(root.className).toContain("fixed");
+    expect((root as HTMLElement).style.height).toContain("--garden-visual-viewport-height");
     expect(root.className).toContain("min-h-0");
     expect(scrollRegion?.className).toContain("min-h-0");
     expect(scrollRegion?.className).toContain("overflow-y-auto");

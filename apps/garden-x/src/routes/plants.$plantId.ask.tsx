@@ -52,6 +52,8 @@ function Ask() {
 
   const [thread, setThread] = useState<Array<AskAnswer & { attachedImageDataUrl?: string }>>([]);
   const [thinking, setThinking] = useState(false);
+  const conversationRef = useRef<HTMLElement>(null);
+  const nearBottomRef = useRef(true);
   const initialPromptSent = useRef(false);
   const imageConversationActive = useRef(false);
   const careInspection = from === "care"
@@ -151,8 +153,30 @@ function Ask() {
   const events = plantEvents(store.events, plant.id);
   const photos = plantPhotos(store.photos, plant.id);
 
+  useEffect(() => {
+    const conversation = conversationRef.current;
+    if (!conversation) return;
+
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => {
+      if (nearBottomRef.current) conversation.scrollTop = conversation.scrollHeight;
+    });
+    observer?.observe(conversation);
+    return () => observer?.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const conversation = conversationRef.current;
+    if (!conversation || !nearBottomRef.current) return;
+    window.requestAnimationFrame(() => {
+      conversation.scrollTop = conversation.scrollHeight;
+    });
+  }, [thread.length, thinking]);
+
   return (
-    <div className="flex h-[calc(100dvh-4.5rem)] min-h-0 min-w-0 max-w-full flex-col lg:h-screen">
+    <div
+      className="fixed inset-x-0 top-0 z-10 flex min-h-0 min-w-0 max-w-full flex-col lg:static lg:h-screen"
+      style={{ height: "calc(var(--garden-visual-viewport-height, 100dvh) - var(--garden-ask-bottom-reserve, 4.5rem))" }}
+    >
       {/* compact header */}
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
@@ -182,7 +206,14 @@ function Ask() {
         <Sparkles className="h-4 w-4 shrink-0 text-primary" />
       </header>
 
-      <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <main
+        ref={conversationRef}
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+        onScroll={(event) => {
+          const conversation = event.currentTarget;
+          nearBottomRef.current = conversation.scrollHeight - conversation.scrollTop - conversation.clientHeight < 160;
+        }}
+      >
         <div className="mx-auto w-full min-w-0 max-w-3xl px-5 py-8 pb-6 sm:px-8">
           {thread.length === 0 && !thinking ? (
             <div className="rise">

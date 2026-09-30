@@ -25,6 +25,7 @@ interface DeleteActionMenuProps {
   actionLabel: string;
   title: string;
   description: string;
+  confirmLabel?: string;
   onConfirm: () => Promise<boolean | void>;
 }
 
@@ -34,6 +35,7 @@ export function DeleteActionMenu({
   actionLabel,
   title,
   description,
+  confirmLabel,
   onConfirm,
 }: DeleteActionMenuProps) {
   const { language } = useGarden();
@@ -46,7 +48,7 @@ export function DeleteActionMenu({
         <DropdownMenuTrigger asChild>
           <button
             type="button"
-            aria-label={`${ui(language, "actionsFor")} ${itemLabel === "photo" ? ui(language, "photo") : ui(language, "event")}`}
+            aria-label={`${ui(language, "actionsFor")} ${itemLabel === "photo" ? ui(language, "photo") : itemLabel === "plant" ? ui(language, "plant") : ui(language, "event")}`}
             className="press grid h-8 w-8 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
           >
             <MoreHorizontal className="h-4 w-4" />
@@ -88,7 +90,7 @@ export function DeleteActionMenu({
                 }
               }}
             >
-              {busy ? ui(language, "deleting") : ui(language, "deleteAction")}
+              {busy ? ui(language, "deleting") : (confirmLabel ?? ui(language, "deleteAction"))}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

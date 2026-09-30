@@ -397,7 +397,7 @@ describe("Record a Moment canonical temporal propagation", () => {
       systemLayoutLevels: [{ levelNumber: 1, rows: 3, columns: 7 }],
     };
 
-    await updateGardenRecord(garden);
+    await updateGardenRecord(garden, { updateSystemName: true });
 
     expect(rpc).toHaveBeenCalledWith(
       "garden_x_update_garden_settings",
@@ -407,7 +407,7 @@ describe("Record a Moment canonical temporal propagation", () => {
         p_name: "H5 Greens",
         p_place: "Kitchen",
         p_note: "Dedicado a Greens",
-        p_system_name: "Uruq",
+      p_system_name: "Uruq",
       }),
     );
     const args = rpc.mock.calls.find(([name]) => name === "garden_x_update_garden_settings")?.[1];
@@ -417,6 +417,26 @@ describe("Record a Moment canonical temporal propagation", () => {
     expect(garden.systemDefinitionKey).toBe("uruq_12_v1");
     expect(garden.coverPhotoId).toBe("preserved-cover-id");
     expect(garden.systemLayoutLevels).toHaveLength(1);
+  });
+
+  it("does not request a System Instance mutation for Garden-only metadata", async () => {
+    const garden: Garden = {
+      id: "garden-1",
+      name: "H5 Renamed",
+      kind: "hydroponic",
+      cover: "",
+      place: "Kitchen",
+      note: "Metadata only",
+      machine: { name: "Uruq", pods: 12 },
+      backendSystemInstanceId: "system-1",
+      systemDefinitionKey: "uruq_12_v1",
+      backendPositions: [],
+    };
+
+    await updateGardenRecord(garden, { updateSystemName: false });
+    const args = rpc.mock.calls.find(([name]) => name === "garden_x_update_garden_settings")?.[1];
+    expect(args).toMatchObject({ p_name: "H5 Renamed", p_place: "Kitchen", p_note: "Metadata only" });
+    expect(args).toMatchObject({ p_system_name: null });
   });
 
   it("reconstructs Garden metadata and System Instance identity independently from canonical bootstrap", async () => {

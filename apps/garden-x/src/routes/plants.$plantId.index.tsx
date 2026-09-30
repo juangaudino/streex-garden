@@ -322,6 +322,17 @@ function PlantProfile() {
     }
   };
 
+  const removePlant = async () => {
+    try {
+      await store.removePlant(plant.id);
+      toast.success(ui(language, "plantRemoved"));
+      return true;
+    } catch (error) {
+      toast.error(localizeKnownError(error, language, ui(language, "plantRemoveFailed")));
+      return false;
+    }
+  };
+
   const first = photos[0];
   const latest = photos[photos.length - 1];
 
@@ -404,6 +415,16 @@ function PlantProfile() {
             >
               <Film className="h-3.5 w-3.5" strokeWidth={1.8} /> {ui(language, "film")}
             </Link>
+            {!plant.cycleClosed ? (
+              <DeleteActionMenu
+                itemLabel="plant"
+                actionLabel={ui(language, "removePlant")}
+                confirmLabel={ui(language, "removePlant")}
+                title={ui(language, "removePlantQuestion")}
+                description={ui(language, "removePlantDescription")}
+                onConfirm={removePlant}
+              />
+            ) : null}
           </div>
         </div>
       </div>

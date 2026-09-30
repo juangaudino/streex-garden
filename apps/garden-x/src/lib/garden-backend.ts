@@ -1559,7 +1559,10 @@ export async function updateCustomSystemLayoutRecord(
   if (error) throw new Error(error.message);
 }
 
-export async function updateGardenRecord(garden: Garden): Promise<void> {
+export async function updateGardenRecord(
+  garden: Garden,
+  options: { updateSystemName?: boolean } = { updateSystemName: false },
+): Promise<void> {
   const { error } = await getSupabaseClient().rpc("garden_x_update_garden_settings", {
     p_request_id: crypto.randomUUID(),
     p_garden_id: garden.id,
@@ -1568,7 +1571,7 @@ export async function updateGardenRecord(garden: Garden): Promise<void> {
     p_kind: garden.kind,
     p_place: garden.place,
     p_note: garden.note,
-    p_system_name: garden.machine?.name ?? null,
+    p_system_name: options.updateSystemName ? garden.machine?.name ?? null : null,
     p_archived: Boolean(garden.archived),
   });
   if (error) throw new Error(error.message);

@@ -61,7 +61,7 @@ import {
 import type { CustomSystemDraft, DeleteGardenResult, DeletePhotoResult, PendingGardenPhotoRetry } from "./garden-backend";
 import type { PlantOriginType } from "./garden-data";
 import { getSupabaseClient, hasSupabaseConfiguration } from "./supabase";
-import { projectPlantRelocation } from "./garden-logic";
+import { projectPlantRelocation, projectPlantRemoval } from "./garden-logic";
 import type { MeaningfulChangeResult } from "./meaningful-changes";
 import {
   GARDEN_SUMMARY_COALESCE_WINDOW_MS,
@@ -112,6 +112,7 @@ interface StoreApi extends GardenState {
   }) => Promise<string>;
   confirmPlantLibraryIdentity: (plantId: string, libraryPlantId: string) => Promise<void>;
   movePlant: (plantId: string, targetPositionId: string, movedDaysAgo: number) => Promise<void>;
+  removePlant: (plantId: string) => Promise<void>;
   updatePlant: (id: string, patch: Partial<Omit<Plant, "id">>) => void;
   updatePlantOrigin: (id: string, origin: Exclude<PlantOriginType, "unknown">) => Promise<void>;
   updateGarden: (id: string, patch: Partial<Omit<Garden, "id">>) => Promise<void>;
@@ -621,6 +622,20 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         // refresh must not turn that confirmed move into a false failure.
         void refreshFromBackend("mutation").catch(() => undefined);
       },
+      removePlant: async (plantId) => {
+        const current = state.plants.find((plant) => plant.id === plantId);
+        if (!current) throw new Error("Plant not found.");
+        if (current.backendGrowCycleId) {
+          await closePlantCycleRecord(current, 0, "removal", "Removed from active garden");
+        }
+        setState((snapshot) => {
+          const projected = projectPlantRemoval(snapshot.plants, snapshot.historicalPlants, plantId);
+          return { ...snapshot, ...projected };
+        });
+        if (current.backendGrowCycleId) {
+          void refreshFromBackend("mutation").catch(() => undefined);
+        }
+      },
       updatePlant: (id, patch) => {
         const current = state.plants.find((p) => p.id === id);
         if (current?.backendGrowCycleId) {
@@ -698,8 +713,17 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const current = state.gardens.find((g) => g.id === id);
         if (!current) throw new Error("Garden not found");
         if (current.backendSystemInstanceId) {
-          await updateGardenRecord({ ...current, ...patch });
-          await refreshFromBackend("mutation");
+          const next = { ...current, ...patch };
+          await updateGardenRecord(next, { updateSystemName: patch.machine !== undefined });
+          setState((snapshot) => ({
+            ...snapshot,
+            gardens: snapshot.gardens.map((garden) =>
+              garden.id === id ? { ...garden, ...patch } : garden,
+            ),
+          }));
+          // The canonical mutation has succeeded. A transient bootstrap failure must
+          // not turn a persisted Garden update into a false failure in the UI.
+          void refreshFromBackend("mutation").catch(() => undefined);
           return;
         }
         setState((s) => ({
@@ -726,7 +750,7 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
         if (!current.backendSystemInstanceId) return;
         try {
-          await updateGardenRecord({ ...current, archived });
+          await updateGardenRecord({ ...current, archived }, { updateSystemName: false });
           await refreshFromBackend();
         } catch (error) {
           setState((s) => ({

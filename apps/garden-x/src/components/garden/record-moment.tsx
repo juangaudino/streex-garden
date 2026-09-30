@@ -731,11 +731,9 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, i
               </Field>
               <Field label={ui(language, "positionPod")}>
                 <select
-                  value={targetPosition ? String(targetPosition.number) : ""}
+                  value={targetPosition?.id ?? ""}
                   onChange={(event) => {
-                    const nextPosition = availablePositions.find(
-                      (position) => String(position.number) === event.target.value,
-                    );
+                    const nextPosition = availablePositions.find((position) => position.id === event.target.value);
                     setTargetPositionId(nextPosition?.id ?? null);
                     setSlot(nextPosition ? `Pod ${nextPosition.number}` : "");
                   }}
@@ -744,7 +742,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, i
                 >
                   <option value="">{ui(language, "choosePosition")}</option>
                   {availablePositions.map((position) => (
-                    <option key={position.id} value={position.number}>
+                    <option key={position.id} value={position.id}>
                       Pod {position.number}
                     </option>
                   ))}

@@ -62,6 +62,30 @@ export function projectPlantRelocation(
   );
 }
 
+/** Projects a confirmed removal locally while the canonical refresh catches up. */
+export function projectPlantRemoval(
+  plants: Plant[],
+  historicalPlants: Plant[],
+  plantId: string,
+) {
+  const current = plants.find((plant) => plant.id === plantId);
+  if (!current) return { plants, historicalPlants };
+  const closed = {
+    ...current,
+    cycleClosed: true,
+    slot: undefined,
+    backendPositionId: undefined,
+    statusNote: "Removed from active garden",
+  };
+  return {
+    plants: plants.filter((plant) => plant.id !== plantId),
+    historicalPlants: [
+      ...historicalPlants.filter((plant) => plant.id !== plantId),
+      closed,
+    ],
+  };
+}
+
 /** Resolves a move destination by canonical position id before using its display label. */
 export function resolvePositionByIdOrLabel<T extends { id: string; number: number }>(
   positions: T[],

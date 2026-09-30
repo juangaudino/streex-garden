@@ -6,7 +6,7 @@ vi.mock("./supabase", () => ({
   getSupabaseClient: () => ({ rpc }),
 }));
 
-import { movePlantRecord } from "./garden-backend";
+import { closePlantCycleRecord, movePlantRecord } from "./garden-backend";
 
 describe("canonical plant relocation", () => {
   beforeEach(() => rpc.mockReset());
@@ -32,6 +32,38 @@ describe("canonical plant relocation", () => {
     rpc.mockResolvedValue({ data: null, error: { message: "Target position not found" } });
     await expect(movePlantRecord("plant-a", "missing", 0)).rejects.toThrow(
       "Target position not found",
+    );
+  });
+
+  it("closes the canonical cycle with the removal reason instead of deleting its records", async () => {
+    rpc.mockResolvedValue({ data: { revision: 4, grow_cycle_id: "cycle-a" }, error: null });
+    await closePlantCycleRecord(
+      {
+        id: "plant-a",
+        gardenId: "garden-a",
+        name: "Tiny Tim",
+        species: "Tomato",
+        scientific: "Solanum lycopersicum",
+        variety: "Tiny Tim",
+        knowledgeId: "tiny-tim",
+        plantedDaysAgo: 10,
+        status: "steady",
+        statusNote: "",
+        heroPhotoId: "",
+        identityConfirmed: true,
+        backendGrowCycleId: "cycle-a",
+      },
+      0,
+      "removal",
+      "Removed from active garden",
+    );
+    expect(rpc).toHaveBeenCalledWith(
+      "garden_close_cycle",
+      expect.objectContaining({
+        p_grow_cycle_id: "cycle-a",
+        p_expected_revision: 4,
+        p_reason: "removal",
+      }),
     );
   });
 });

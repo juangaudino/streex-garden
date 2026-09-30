@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { plantsAtPosition, projectPlantRelocation, resolvePositionByIdOrLabel } from "./garden-logic";
+import {
+  plantsAtPosition,
+  projectPlantRelocation,
+  projectPlantRemoval,
+  resolvePositionByIdOrLabel,
+} from "./garden-logic";
 import type { Plant } from "./garden-data";
 
 const plant = (id: string, positionId: string): Plant => ({
@@ -45,6 +50,14 @@ describe("relocation destination resolution", () => {
   it("falls back to the last number in a display label", () => {
     expect(resolvePositionByIdOrLabel(positions, null, "H1 · Pod 4")?.id).toBe("h1-p4");
   });
+
+  it("keeps the canonical id when visible position numbers collide across levels", () => {
+    const duplicateNumbers = [
+      { id: "h1-l1-p6", number: 6 },
+      { id: "h1-l2-p6", number: 6 },
+    ];
+    expect(resolvePositionByIdOrLabel(duplicateNumbers, "h1-l2-p6", "Pod 6")?.id).toBe("h1-l2-p6");
+  });
 });
 
 describe("confirmed relocation projection", () => {
@@ -57,5 +70,17 @@ describe("confirmed relocation projection", () => {
       slot: "Pod 4",
     });
     expect(next.find((item) => item.id === "other")?.backendPositionId).toBe("h1-p4");
+  });
+
+  it("moves a removed plant out of active occupancy without deleting its history projection", () => {
+    const active = [plant("tiny-tim", "h1-p2"), plant("basil", "h1-p3")];
+    const projected = projectPlantRemoval(active, [], "tiny-tim");
+    expect(projected.plants.map((item) => item.id)).toEqual(["basil"]);
+    expect(projected.historicalPlants[0]).toMatchObject({
+      id: "tiny-tim",
+      cycleClosed: true,
+      backendPositionId: undefined,
+      slot: undefined,
+    });
   });
 });

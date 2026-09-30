@@ -116,7 +116,23 @@ describe("Edit Garden canonical save", () => {
     expect(mocks.setGardenCoverPhoto).not.toHaveBeenCalled();
   });
 
-  it("does not report success when the separate cover persistence step fails", async () => {
+  it("keeps a Garden-only rename separate from the System Instance write", async () => {
+    render(<EditGarden garden={garden} plants={[]} photos={[]} />);
+    fireEvent.click(screen.getByRole("button", { name: /Edit garden/ }));
+    fireEvent.change(screen.getByLabelText("Garden name"), { target: { value: "H5 Greens renamed" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save garden" }));
+
+    await waitFor(() => expect(screen.queryByLabelText("Garden name")).toBeNull());
+    expect(mocks.updateGarden).toHaveBeenCalledWith("garden-h5", {
+      name: "H5 Greens renamed",
+      place: "Counter",
+      note: "Custom System Layout",
+    });
+    expect(mocks.toastSuccess).toHaveBeenCalled();
+    expect(mocks.toastError).not.toHaveBeenCalled();
+  });
+
+  it("reports a saved Garden and a separate cover failure accurately", async () => {
     mocks.loadGardenCoverPhotos.mockResolvedValueOnce([
       { id: "photo-cover-new", plantId: "plant-1", src: "new-cover.jpg", daysAgo: 1, capturedAt: null, capturedAtPrecision: "unknown", caption: "Choose this garden cover", metrics: { heightCm: null, leafCount: null, greenness: 0, density: null } },
     ]);
@@ -128,8 +144,8 @@ describe("Edit Garden canonical save", () => {
     fireEvent.click(screen.getByRole("button", { name: "Save garden" }));
 
     await waitFor(() => expect(mocks.toastError).toHaveBeenCalled());
-    expect(screen.getByLabelText("Garden name")).toBeTruthy();
-    expect(mocks.toastSuccess).not.toHaveBeenCalled();
+    expect(screen.queryByLabelText("Garden name")).toBeNull();
+    expect(mocks.toastSuccess).toHaveBeenCalled();
     expect(mocks.updateGarden).toHaveBeenCalledTimes(1);
     expect(mocks.setGardenCoverPhoto).toHaveBeenCalledWith("garden-h5", "photo-cover-new");
   });

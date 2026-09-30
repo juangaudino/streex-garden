@@ -72,19 +72,26 @@ export function EditGarden({ garden, plants, photos, className }: { garden: Gard
         name: name.trim(),
         place: place.trim(),
         note: note.trim(),
-        ...(machine !== undefined && { machine }),
+        ...(machine !== undefined && machine.name !== (garden.machine?.name ?? "") && { machine }),
       });
 
-      const nextCoverId = pendingCover
-        ? await uploadGardenCoverPhoto(garden.id, pendingCover.src, pendingCover.name)
-        : coverPhotoId === "auto"
-          ? null
-          : coverPhotoId;
-      if (garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null) && !pendingCover) {
-        await setGardenCoverPhoto(garden.id, nextCoverId);
-      }
-      if (!garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null)) {
-        await updateGarden(garden.id, { coverPhotoId: nextCoverId });
+      try {
+        const nextCoverId = pendingCover
+          ? await uploadGardenCoverPhoto(garden.id, pendingCover.src, pendingCover.name)
+          : coverPhotoId === "auto"
+            ? null
+            : coverPhotoId;
+        if (garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null) && !pendingCover) {
+          await setGardenCoverPhoto(garden.id, nextCoverId);
+        }
+        if (!garden.backendSystemInstanceId && nextCoverId !== (garden.coverPhotoId ?? null)) {
+          await updateGarden(garden.id, { coverPhotoId: nextCoverId });
+        }
+      } catch (error) {
+        setOpen(false);
+        toast.success(ui(language, "gardenUpdated"));
+        toast.error(localizeKnownError(error, language, ui(language, "gardenCoverUpdateFailed")));
+        return;
       }
       setOpen(false);
       toast.success(ui(language, "gardenUpdated"));

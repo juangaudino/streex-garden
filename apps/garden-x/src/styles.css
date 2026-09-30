@@ -158,6 +158,11 @@
     overflow-x: hidden;
   }
 
+  html,
+  body {
+    min-height: 100%;
+  }
+
   h1,
   h2,
   h3,
@@ -165,6 +170,84 @@
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.015em;
+  }
+}
+
+:root {
+  --garden-visual-viewport-height: 100dvh;
+  --garden-visual-viewport-offset-top: 0px;
+  --garden-keyboard-inset: 0px;
+}
+
+.garden-app-shell {
+  min-height: var(--garden-visual-viewport-height, 100dvh);
+}
+
+.garden-app-main {
+  min-width: 0;
+  padding-bottom: calc(var(--garden-mobile-nav-height, 4.5rem) + 1rem);
+}
+
+.garden-app-main--fullscreen {
+  min-height: var(--garden-visual-viewport-height, 100dvh);
+  padding-bottom: 0;
+}
+
+.garden-mobile-viewport {
+  top: var(--garden-visual-viewport-offset-top, 0px);
+  height: calc(var(--garden-visual-viewport-height, 100dvh) - var(--garden-mobile-nav-height, 4.5rem));
+}
+
+.garden-ai-composer {
+  bottom: var(--garden-mobile-nav-height, 4.35rem);
+}
+
+html[data-garden-keyboard="open"] .garden-ai-page {
+  padding-bottom: 1rem;
+}
+
+.garden-mobile-sheet {
+  max-height: calc(var(--garden-visual-viewport-height, 100dvh) - 1rem);
+  margin-bottom: var(--garden-keyboard-inset, 0px);
+}
+
+.garden-mobile-nav--keyboard-open {
+  display: none;
+}
+
+.garden-dialog-content {
+  max-height: calc(var(--garden-visual-viewport-height, 100dvh) - 1rem);
+}
+
+html[data-garden-keyboard="open"] .garden-app-main:not(.garden-app-main--fullscreen) {
+  padding-bottom: 1rem;
+}
+
+html[data-garden-keyboard="open"] .garden-dialog-content {
+  top: max(0.5rem, var(--garden-visual-viewport-offset-top, 0px));
+  transform: translateX(-50%);
+}
+
+html[data-garden-keyboard="open"] .garden-mobile-viewport {
+  height: var(--garden-visual-viewport-height, 100dvh);
+}
+
+html[data-garden-keyboard="open"] .garden-ai-composer {
+  bottom: var(--garden-keyboard-inset, 0px);
+}
+
+@media (min-width: 1024px) {
+  .garden-app-main {
+    padding-bottom: 0;
+  }
+
+  .garden-mobile-viewport {
+    top: auto;
+    height: auto;
+  }
+
+  .garden-ai-composer {
+    bottom: 0;
   }
 }
 

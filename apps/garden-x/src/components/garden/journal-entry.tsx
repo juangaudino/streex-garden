@@ -247,7 +247,7 @@ function JournalEntrySheet({
         role="dialog"
         aria-modal="true"
         aria-labelledby="journal-entry-title"
-        className="rise relative flex max-h-[min(92dvh,48rem)] w-full flex-col overflow-hidden rounded-t-[1.75rem] border border-border/70 bg-card shadow-lift sm:max-w-xl sm:rounded-[1.75rem]"
+        className="garden-mobile-sheet rise relative flex max-h-[min(92dvh,48rem)] w-full flex-col overflow-hidden rounded-t-[1.75rem] border border-border/70 bg-card shadow-lift sm:max-w-xl sm:rounded-[1.75rem]"
       >
         <header className="flex items-center gap-3 border-b border-border/60 px-5 py-4">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">

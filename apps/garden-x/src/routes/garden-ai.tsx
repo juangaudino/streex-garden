@@ -124,7 +124,7 @@ function GardenAI() {
   };
 
   return (
-    <div className="w-full min-w-0 max-w-full pb-64 lg:pb-52">
+    <div className="garden-ai-page w-full min-w-0 max-w-full pb-64 lg:pb-52">
       <div className="px-5 pt-6 pb-4 sm:hidden">
         <p className="eyebrow">Garden AI</p>
         <h1 className="mt-1 font-display text-3xl">{ui(language, "secondLook")}</h1>
@@ -251,7 +251,7 @@ function GardenAI() {
           </section>
       </div>
 
-      <div className="fixed inset-x-0 bottom-[4.35rem] z-30 min-w-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] py-3 pr-[max(1rem,env(safe-area-inset-right))] backdrop-blur-xl sm:px-8 lg:bottom-0 lg:left-60 lg:px-12">
+      <div className="garden-ai-composer fixed inset-x-0 z-30 min-w-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] py-3 pr-[max(1rem,env(safe-area-inset-right))] backdrop-blur-xl sm:px-8 lg:left-60 lg:px-12">
         <div className="mx-auto min-w-0 max-w-3xl">
           <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
             {suggestions.map((suggestion) => (

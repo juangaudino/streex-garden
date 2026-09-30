@@ -78,8 +78,7 @@ function GardenWideAsk() {
 
   return (
     <div
-      className="fixed inset-x-0 top-0 z-10 flex min-h-0 min-w-0 max-w-full flex-col lg:static lg:h-screen"
-      style={{ height: "calc(var(--garden-visual-viewport-height, 100dvh) - var(--garden-ask-bottom-reserve, 4.5rem))" }}
+      className="garden-mobile-viewport fixed inset-x-0 z-10 flex min-h-0 min-w-0 max-w-full flex-col lg:static lg:h-screen"
     >
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>

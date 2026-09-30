@@ -126,7 +126,7 @@ interface StoreApi extends GardenState {
   createCustomSystem: (
     draft: CustomSystemDraft,
   ) => Promise<{ gardenId: string; photoWarning?: string }>;
-  updateCustomSystemLayout: (gardenId: string, levels: Array<{ rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>) => Promise<void>;
+  updateCustomSystemLayout: (gardenId: string, levels: Array<{ rows: number; columns: number; activeCells?: Array<{ row: number; column: number }> }>, positionCapacity?: number) => Promise<void>;
   reorderGardens: (orderedIds: string[]) => void;
   publicStories: PublicStory[];
   savePublicStory: (story: PublicStory) => void;
@@ -801,8 +801,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         await refreshFromBackend();
         return result;
       },
-      updateCustomSystemLayout: async (gardenId, levels) => {
-        await updateCustomSystemLayoutRecord(gardenId, levels);
+      updateCustomSystemLayout: async (gardenId, levels, positionCapacity) => {
+        await updateCustomSystemLayoutRecord(gardenId, levels, positionCapacity);
         await refreshFromBackend();
       },
       reorderGardens: (orderedIds) => {

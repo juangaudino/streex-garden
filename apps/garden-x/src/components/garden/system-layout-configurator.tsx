@@ -9,9 +9,10 @@ type Props = {
   onChange: (levels: CustomSystemLevel[]) => void;
   language: "en" | "es";
   requiredPositionCount?: number;
+  capacityIsEditable?: boolean;
 };
 
-export function SystemLayoutConfigurator({ levels, onChange, language, requiredPositionCount }: Props) {
+export function SystemLayoutConfigurator({ levels, onChange, language, requiredPositionCount, capacityIsEditable = false }: Props) {
   const total = customSystemPositionCount(levels);
   const valid = canCreateCustomSystem(levels) && (requiredPositionCount === undefined || total === requiredPositionCount);
 
@@ -47,15 +48,15 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
 
   const positions = customSystemPositions(levels);
   return (
-    <div className="grid gap-3">
+    <div className="grid min-w-0 max-w-full gap-3">
       {levels.map((level, index) => (
-        <div key={index} className="rounded-2xl border border-border/70 bg-secondary/35 p-3">
-          <p className="text-sm font-medium">{ui(language, "level")} {index + 1}</p>
-          <div className="mt-3 grid grid-cols-2 gap-3">
+        <div key={index} className="min-w-0 max-w-full rounded-2xl border border-border/70 bg-secondary/35 p-3">
+          <p className="min-w-0 text-sm font-medium">{ui(language, "level")} {index + 1}</p>
+          <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 sm:gap-3">
             {(["rows", "columns"] as const).map((key) => (
-              <div key={key} className="rounded-xl bg-background p-2.5 text-center">
+              <div key={key} className="min-w-0 rounded-xl bg-background p-2 text-center sm:p-2.5">
                 <p className="text-[0.65rem] tracking-[0.12em] text-muted-foreground uppercase">{ui(language, key)}</p>
-                <div className="mt-2 flex items-center justify-center gap-3">
+                <div className="mt-2 flex items-center justify-center gap-1.5 sm:gap-3">
                   <Button type="button" variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => changeLevel(index, key, -1)} disabled={level[key] <= 1}>
                     <Minus className="h-3.5 w-3.5" />
                   </Button>
@@ -67,13 +68,13 @@ export function SystemLayoutConfigurator({ levels, onChange, language, requiredP
               </div>
             ))}
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">
+          <p className="mt-3 min-w-0 text-xs leading-relaxed text-muted-foreground">
             {level.rows} {ui(language, "rows").toLowerCase()} × {level.columns} {ui(language, "columns").toLowerCase()} · {activeGridCells(level).length}{requiredPositionCount !== undefined ? ` / ${requiredPositionCount}` : ""} {ui(language, "activePositions")}
           </p>
         </div>
       ))}
       <SystemPreview language={language} positions={positions} levels={levels} interactive onToggleCell={toggleCell} />
-      {!valid && requiredPositionCount !== undefined ? <p className="text-xs text-clay">{ui(language, "keepSamePositions")} ({requiredPositionCount}) {ui(language, "toSave")}</p> : null}
+      {!valid && requiredPositionCount !== undefined ? <p className="min-w-0 text-xs leading-relaxed text-clay">{ui(language, capacityIsEditable ? "selectCapacity" : "keepSamePositions")} ({requiredPositionCount}) {ui(language, "toSave")}</p> : null}
     </div>
   );
 }

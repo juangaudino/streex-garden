@@ -1,0 +1,325 @@
+[
+  {
+    "id": "kew-powo-wave1",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Plants of the World Online",
+    "url": "https://powo.science.kew.org/",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "taxonomy reconciliation input; verify individual taxon pages before publication",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "usda-plants-wave1",
+    "publisher": "USDA NRCS",
+    "title": "PLANTS Database",
+    "url": "https://plants.usda.gov/home",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "taxonomy reconciliation input; not runtime evidence",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-arugula-wave1",
+    "publisher": "University of Wisconsin Extension",
+    "title": "Arugula, Eruca sativa",
+    "url": "https://hort.extension.wisc.edu/articles/arugula/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "arugula crop-level sowing, harvest and problems; not named-cultivar proof",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-kale-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Kale — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/kale/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "kale crop-level guidance; not named-cultivar proof",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-chard-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Swiss chard — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/swiss-chard/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Swiss chard crop-level guidance; not named-cultivar proof",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-brassicas-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Brassica crops — growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/broccoli/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "broccoli and related Brassica crop context; scope must stay crop/type-level",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-cucumber-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Cucumber — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/cucumbers/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "cucumber crop-level sowing, support and harvest guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-carrots-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Carrots — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/carrots/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "carrot crop-level direct sowing and harvest guidance; includes Nantes type context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-beets-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Beets — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/beets/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "beet crop-level sowing and root harvest guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-turnips-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Turnips — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/turnips/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "turnip crop-level sowing and root harvest guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-onions-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Onions — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/onions/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "onion crop-level sowing and bulb development guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-leeks-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Leeks — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/leeks/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "leek crop-level sowing, blanching and harvest context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-beans-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Beans — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/beans/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "bean crop-level direct sowing and harvest guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-peas-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Peas — crop growing information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/peas/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "pea crop-level sowing, support and harvest guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-lemon-balm-wave1",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Lemon Balm — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/herbs/lemon-balm/lemon-balm-key-growing-information.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "lemon balm crop-level herb guidance; exact product cultivar not asserted",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-nasturtium-wave1",
+    "publisher": "University of Maryland Extension",
+    "title": "Nasturtium",
+    "url": "https://extension.umd.edu/resource/nasturtium",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "nasturtium crop-level ornamental guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-calendula-wave1",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Calendula in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/calendula-in-the-garden",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "calendula crop-level flowering guidance; culinary use remains source-scoped",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-borage-wave1",
+    "publisher": "University of Maryland Extension",
+    "title": "Borage",
+    "url": "https://extension.umd.edu/resource/borage",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "borage crop-level herb/flower guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-chamomile-wave1",
+    "publisher": "University of Wisconsin Extension",
+    "title": "German Chamomile, Matricaria chamomilla",
+    "url": "https://hort.extension.wisc.edu/articles/chamomile-matricaria-chamomilla/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "German chamomile crop-level herb/flower guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 1 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "seedling"
+    ]
+  }
+]

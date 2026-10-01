@@ -54,6 +54,15 @@
     "accessed": "2026-09-12"
   },
   {
+    "id": "usu-lettuce-physiological-problems",
+    "publisher": "Utah State University Extension",
+    "title": "Physiological Problems in Leafy Greens",
+    "url": "https://extension.usu.edu/vegetableguide/leafy-greens/physiological-problems",
+    "type": "university_extension",
+    "scope": "leafy_greens; tipburn, brown rib and bolting context; not cultivar-specific",
+    "accessed": "2026-10-01"
+  },
+  {
     "id": "johnnys-lettuce",
     "publisher": "Johnny's Selected Seeds",
     "title": "Lettuce — Key Growing Information",

@@ -48,9 +48,9 @@
       "thinning":{"short":"Una cabeza necesita espacio; baby leaf es otro modo","guidance":"Para una lechuga destinada a formar cabeza en un pod compacto, Garden normalmente debe favorecer una planta vigorosa una vez establecida. La producción baby leaf sigue reglas distintas."},
       "pruning":{"short":"Sin poda de formación; retirar hojas dañadas selectivamente","guidance":"La romana no necesita una poda tipo albahaca. El manejo es principalmente cosecha y saneamiento; debe protegerse el centro de crecimiento."},
       "harvest":{"short":"Hojas externas para continuidad o corte de la cabeza","guidance":"USU señala que la lechuga de hoja puede cosecharse retirando primero las hojas externas maduras para que las jóvenes sigan creciendo. La romana también puede cosecharse como cabeza."},
-      "flowering":{"short":"El espigado es un cambio de etapa y una alerta de calidad","guidance":"La calidad de la lechuga disminuye cuando la planta empieza a producir un tallo floral, especialmente bajo estrés por calor."},
+      "flowering":{"short":"El espigado es un cambio de etapa y una alerta de calidad","guidance":"La calidad de la lechuga disminuye cuando la planta empieza a producir un tallo floral, especialmente bajo estrés por calor. El espigado visible debe registrarse como cambio de etapa, no como una simple falla de nutrientes."},
       "hydroponics":{"short":"Objetivos de cultivo fresco con rangos dependientes del sistema","guidance":"UF/IFAS muestra un sistema de lechuga no circulante cerca de pH 5.5–6.0 y ~1.25 mS/cm; OSU ofrece un rango más amplio de EC de 1.2–1.8 mS/cm. Garden debe conservar el contexto de cada fuente."},
-      "problems":{"short":"El calor, el amargor y el daño de puntas importan","guidance":"La V0 debe señalar el contexto ambiental sin fingir que una regla de texto puede diagnosticar por sí sola problemas de nutrientes, raíces o tip burn."}
+      "problems":{"short":"El calor, el amargor y el daño de puntas importan","guidance":"El calor y el estrés hídrico pueden aumentar el amargor y el espigado. Tipburn y brown rib son señales fisiológicas reconocidas en hojas verdes; usa el historial de humedad, raíces y nutrientes antes de asignar una causa a bordes o nervaduras dañadas."}
     }
   },
   "common-mint": {

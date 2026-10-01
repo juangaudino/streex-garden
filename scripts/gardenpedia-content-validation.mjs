@@ -53,8 +53,17 @@ const taxonomy = JSON.parse(fs.readFileSync(path.join(root, "labs", "gardenpedia
 validateTaxonomyReconciliation(taxonomy, wavePlantIds);
 if (new Set(taxonomy.records.map((record) => record.plantIdentityId)).size !== wavePlants.length) throw new Error("Wave 1 taxonomy records do not cover every new identity");
 const allSeedProfileFiles = [read("seed-profiles-v0.json"), waveSeedProfiles];
+const existingSeedProfileIds = new Set(Object.keys(allSeedProfileFiles[0].profiles || {}));
+const waveSeedProfileIds = new Set(Object.keys(waveSeedProfiles.profiles || {}));
+const seedProfileOverlap = [...waveSeedProfileIds].filter((id) => existingSeedProfileIds.has(id));
+if (seedProfileOverlap.length > 0) throw new Error(`Wave 1 Seed Profile IDs overlap existing profiles: ${seedProfileOverlap.join(", ")}`);
 const seedProfileCount = allSeedProfileFiles.reduce((sum, bundle) => sum + Object.keys(bundle.profiles || {}).length, 0);
 if (seedProfileCount !== 69) throw new Error(`Expected 69 Seed Profiles after Wave 1, got ${seedProfileCount}`);
+const expectedUnprofiledIds = new Set(["italian-oregano", "fragrant-dwarf-dianthus-mix", "monterey-strawberry"]);
+const unprofiledPlantIds = [...plantIds].filter((id) => !existingSeedProfileIds.has(id) && !waveSeedProfileIds.has(id));
+if (unprofiledPlantIds.length !== expectedUnprofiledIds.size || unprofiledPlantIds.some((id) => !expectedUnprofiledIds.has(id))) {
+  throw new Error(`Unexpected Seed Profile exclusions: ${unprofiledPlantIds.join(", ")}`);
+}
 const publicText = JSON.stringify({ plants: wavePlants, sources: sources.filter((source) => source.id.endsWith("-wave1")), waveTranslations, waveSeedProfiles });
 if (/user zero|owner_id|user_id|seed_package_id|system_instance_id/i.test(publicText)) throw new Error("Private data marker detected in Wave 1 public data");
 console.log(JSON.stringify({ plants: plants.length, sources: sources.length, wavePlants: wavePlants.length, seedProfiles: seedProfileCount, unresolvedSourceIds: 0, taxonomyRecords: taxonomy.records.length }));

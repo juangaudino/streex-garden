@@ -1,0 +1,288 @@
+[
+  {
+    "id": "umn-asian-brassicas-wave2",
+    "publisher": "University of Minnesota Extension",
+    "title": "Brassica Bonanza: Asian greens and brassicas",
+    "url": "https://blog-fruit-vegetable-ipm.extension.umn.edu/2021/03/2021-considerations-brassica-bonanza.html",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Asian brassica crop context for mizuna, tatsoi and mustard greens; not named-cultivar proof",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "umn-fall-greens-wave2",
+    "publisher": "University of Minnesota Extension",
+    "title": "Planting vegetables for fall harvest",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/planting-vegetables-in-midsummer-for-fall-harvest",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "cool-season greens and harvest context; crop-level only",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "usu-brassica-varietal-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "Brassica varietal selection",
+    "url": "https://extension.usu.edu/vegetableguide/brassica/varietal-selection",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Brassica crop and variety context; does not prove each catalog type's performance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "usu-kohlrabi-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Kohlrabi in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/kohlrabi-in-the-garden",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "kohlrabi crop-level temperature, spacing and harvest context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "usu-water-vegetables-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "Water Recommendations for Vegetables",
+    "url": "https://extension.usu.edu/yardandgarden/research/water-recommendations-for-vegetables",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "vegetable moisture and stress context; not cultivar-specific",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "problems"
+    ]
+  },
+  {
+    "id": "usu-vegetable-varieties-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "Home Vegetable Garden Variety Recommendations",
+    "url": "https://extension.usu.edu/yardandgarden/research/home-vegetable-garden-variety-recommendations-for-utah",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "variety and crop context for common vegetables; regional guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "usu-harvest-storage-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "Harvest and Storage of Vegetables and Fruits",
+    "url": "https://extension.usu.edu/yardandgarden/research/harvest-and-storage-of-vegetables-and-fruits",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "crop-level harvest and storage context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "harvest",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "johnnys-tomato-variety-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "3 Ways to Choose the Best Tomato Varieties",
+    "url": "https://www.johnnyseeds.com/growers-library/vegetables/tomatoes/3-ways-to-choose-the-best-tomatoes.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "tomato growth-habit and type terminology; not a universal cultivar measurement",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "support"
+    ]
+  },
+  {
+    "id": "johnnys-tomato-catalog-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Tomato seed varieties",
+    "url": "https://prod-na02.johnnyseeds.com/vegetables/tomatoes/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "product/catalog identity context for named tomato types; product facts stay product-scoped",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar"
+    ]
+  },
+  {
+    "id": "johnnys-sun-gold-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Sun Gold F1 Tomato Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/tomatoes/cherry-tomatoes/sun-gold-f1-tomato-seed-770.53.html",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Sun Gold identity and product-specific growing facts; not all tomato evidence",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "seedling"
+    ]
+  },
+  {
+    "id": "johnnys-pepper-catalog-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Pepper seed varieties",
+    "url": "https://www.johnnyseeds.com/vegetables/peppers/?sz=72",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "pepper type and named-product identity context; not universal cultivar performance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar"
+    ]
+  },
+  {
+    "id": "johnnys-flower-guide-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Flower Growing Guide",
+    "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dw377bb4f5/assets/information/flower-growing-guide.pdf",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "flower seed starting and crop timing context for cosmos, zinnia and viola",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "johnnys-viola-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Viola/Pansy Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/flowers/viola-pansy/viola-pansy-key-growing-information.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "viola/pansy crop-level growth and flowering guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "flowering",
+      "harvest"
+    ]
+  },
+  {
+    "id": "johnnys-zinnia-wave2",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Zinnia Production",
+    "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dw3e9f4bd5/assets/information/8273-zinnia-production.pdf",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "zinnia production and disease context; not named-cultivar proof",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "flowering",
+      "problems"
+    ]
+  },
+  {
+    "id": "illinois-summer-savory-wave2",
+    "publisher": "University of Illinois Extension",
+    "title": "Summer Savory",
+    "url": "https://extension.illinois.edu/herbs/savory-summer",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "species-specific summer savory seed, habit, harvest and use guidance",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "illinois-herbs-wave2",
+    "publisher": "University of Illinois Extension",
+    "title": "Growing Herbs",
+    "url": "https://extension.illinois.edu/herbs/growing",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "general culinary herb container and maintenance context; not cultivar-specific",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "usu-anise-hyssop-wave2",
+    "publisher": "Utah State University Extension",
+    "title": "Long-blooming perennials: anise hyssop",
+    "url": "https://extension.usu.edu/news_sections/gardening/long-blooming-perennials.pdf",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "anise hyssop horticultural context; species/cultivar scope remains explicit",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "flowering"
+    ]
+  }
+]

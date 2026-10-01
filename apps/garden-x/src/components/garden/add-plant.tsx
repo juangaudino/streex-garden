@@ -205,7 +205,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
         disabled={busy}
         className="absolute inset-0 bg-ink/45 backdrop-blur-[3px]"
       />
-      <div className="garden-mobile-sheet rise relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-[2rem] border border-border/70 bg-card shadow-lift sm:max-w-lg sm:rounded-[2rem]">
+      <div className="garden-mobile-sheet rise relative flex flex-col overflow-hidden rounded-t-[2rem] border border-border/70 bg-card shadow-lift sm:max-w-lg sm:rounded-[2rem]">
         <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/60 px-5 py-4">
           <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-primary">
             <Sprout className="h-4 w-4" />

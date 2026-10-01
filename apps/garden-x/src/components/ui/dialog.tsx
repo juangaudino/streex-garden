@@ -40,7 +40,7 @@ const DialogContent = React.forwardRef<
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          "fixed left-[50%] top-[50%] z-[70] flex min-h-0 w-[calc(100vw-1rem)] max-h-[calc(100dvh-1rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] flex-col overflow-hidden overscroll-contain border border-border/80 bg-background/98 p-4 shadow-2xl ring-1 ring-black/10 duration-200 [padding-bottom:max(1rem,env(safe-area-inset-bottom))] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:max-h-[88vh] sm:w-full sm:rounded-lg sm:p-6 garden-dialog-content",
+          "fixed inset-x-2 top-2 bottom-2 z-[70] flex min-h-0 w-auto max-w-none flex-col overflow-hidden overscroll-contain rounded-3xl border border-border/80 bg-background/98 p-4 shadow-2xl ring-1 ring-black/10 duration-200 [padding-bottom:max(1rem,env(safe-area-inset-bottom))] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 sm:w-full sm:rounded-lg sm:p-6 garden-dialog-content",
           "garden-dialog-content",
           className,
         )}

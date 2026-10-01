@@ -173,7 +173,7 @@ function Ask() {
   }, [thread.length, thinking]);
 
   return (
-    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col">
+    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col overflow-hidden">
       {/* compact header */}
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
@@ -205,7 +205,7 @@ function Ask() {
 
       <main
         ref={conversationRef}
-        className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+        className="garden-chat-scroll min-h-0 flex-1 overflow-y-auto"
         onScroll={(event) => {
           const conversation = event.currentTarget;
           nearBottomRef.current = conversation.scrollHeight - conversation.scrollTop - conversation.clientHeight < 160;
@@ -254,9 +254,9 @@ function Ask() {
       </main>
 
       {/* composer */}
-      <div className="z-20 min-w-0 shrink-0 max-w-full border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
+      <div className="garden-chat-composer z-20 min-w-0 max-w-full shrink-0 border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto min-w-0 max-w-3xl">
-          <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
+          <div className="garden-suggestion-rail no-scrollbar mb-2.5 flex gap-2 overflow-x-auto pb-1">
             {askSuggestions(language).map((s) => (
               <button
                 key={s}

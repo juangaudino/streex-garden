@@ -111,4 +111,18 @@ describe("Garden-wide Ask Garden image turns", () => {
     fireEvent.submit(form);
     expect(await screen.findByText(/Long response/)).toBeTruthy();
   });
+
+  it("uses one internal chat scroll owner and a bounded three-part composer", () => {
+    mocks.useGarden.mockReturnValue({ language: "en", plants: [], gardens: [], events: [], photos: [], tasks: [] });
+    const GardenWideAsk = Route.options.component as React.ComponentType;
+    const { container } = render(<GardenWideAsk />);
+
+    expect(container.querySelector(".garden-ask-layout")?.className).toContain("overflow-hidden");
+    expect(container.querySelectorAll("main.garden-chat-scroll")).toHaveLength(1);
+    expect(container.querySelectorAll(".garden-chat-composer")).toHaveLength(1);
+    expect(container.querySelector(".garden-composer-row")).toBeTruthy();
+    expect(container.querySelector(".garden-composer-input")?.className).toContain("garden-composer-input");
+    expect(container.querySelector(".garden-composer-send")?.className).toContain("garden-composer-send");
+    expect(container.querySelector(".garden-suggestion-rail")?.className).toContain("overflow-x-auto");
+  });
 });

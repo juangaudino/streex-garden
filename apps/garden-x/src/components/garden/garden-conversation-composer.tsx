@@ -85,7 +85,7 @@ export function GardenConversationComposer({
           </Button>
         </div>
       ) : null}
-      <div className="garden-conversation-composer grid w-full min-w-0 max-w-full grid-cols-[auto_minmax(0,1fr)_minmax(0,auto)] items-end gap-2">
+      <div className="garden-conversation-composer garden-composer-row">
         <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
           <DialogTrigger asChild>
             <Button type="button" variant="outline" size="icon" className="h-11 w-11 shrink-0 rounded-full" disabled={disabled || sending || reading} aria-label={ui(language, "attachPhoto")}>
@@ -100,16 +100,18 @@ export function GardenConversationComposer({
             <PhotoSourcePicker language={language} onFile={handleFile} className="flex justify-start" />
           </DialogContent>
         </Dialog>
-        <input
-          ref={questionRef}
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-          disabled={disabled || sending}
-          placeholder={placeholder}
-          className="input-soft w-full min-w-0 max-w-full text-sm"
-          aria-label={placeholder}
-        />
-        <Button type="submit" size="sm" className="min-h-11 min-w-0 max-w-[7rem] whitespace-normal break-words px-2 text-center [overflow-wrap:anywhere]" disabled={disabled || sending || reading || !question.trim()}>
+        <div className="garden-composer-input">
+          <input
+            ref={questionRef}
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
+            disabled={disabled || sending}
+            placeholder={placeholder}
+            className="input-soft w-full min-w-0 max-w-full text-sm"
+            aria-label={placeholder}
+          />
+        </div>
+        <Button type="submit" size="sm" className="garden-composer-send min-h-11 px-2 text-center" disabled={disabled || sending || reading || !question.trim()}>
           {reading ? "…" : sendLabel}
         </Button>
       </div>

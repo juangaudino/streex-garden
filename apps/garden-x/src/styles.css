@@ -155,7 +155,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html,
@@ -174,39 +174,56 @@
 }
 
 .garden-app-shell {
+  min-width: 0;
   min-height: 100svh;
 }
 
 .garden-app-main {
   min-width: 0;
+  max-width: 100%;
   padding-bottom: calc(var(--garden-mobile-nav-height, 4.5rem) + 1rem);
 }
 
 .garden-app-main--fullscreen {
-  min-height: 100svh;
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  height: 100svh;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
   padding-bottom: 0;
 }
 
 .garden-ask-layout {
-  min-height: calc(100dvh - var(--garden-mobile-nav-height, 4.5rem));
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .garden-ai-composer {
-  position: fixed;
-  inset-inline: 0;
-  bottom: var(--garden-mobile-nav-height, 4.5rem);
-  z-index: 30;
+  position: static;
   min-width: 0;
   max-width: 100%;
 }
 
 .garden-ai-page {
+  min-width: 0;
+  max-width: 100%;
   padding-bottom: calc(var(--garden-mobile-nav-height, 4.5rem) + 1rem);
 }
 
 .garden-mobile-sheet {
+  width: calc(100% - 1rem);
+  min-width: 0;
   max-width: calc(100vw - 1rem);
-  max-height: calc(100dvh - 1rem);
+  height: calc(100svh - 1rem);
+  max-height: none;
 }
 
 .garden-mobile-nav--keyboard-open {
@@ -214,37 +231,111 @@
 }
 
 .garden-dialog-content {
+  left: 0.5rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: auto;
+  min-width: 0;
   max-width: calc(100vw - 1rem);
-  max-height: calc(100dvh - 1rem);
+  height: auto;
+  max-height: none;
+  transform: none !important;
+  translate: none !important;
 }
 
 html[data-garden-keyboard="open"] .garden-app-main:not(.garden-app-main--fullscreen) {
   padding-bottom: 1rem;
 }
 
-html[data-garden-keyboard="open"] .garden-dialog-content {
-  top: max(0.5rem, env(safe-area-inset-top));
-  translate: -50% 0;
-  max-height: calc(100dvh - 1rem);
-}
-
-html[data-garden-keyboard="open"] .garden-mobile-sheet {
-  margin-bottom: 0;
-  max-height: calc(100dvh - 1rem);
-}
-
-html[data-garden-keyboard="open"] .garden-ai-page {
-  padding-bottom: 1rem;
-}
-
-html[data-garden-keyboard="open"] .garden-ai-composer {
-  position: static;
-}
-
 .garden-conversation-composer,
 .garden-conversation-composer > * {
   min-width: 0;
   max-width: 100%;
+}
+
+.garden-chat-scroll,
+.garden-chat-scroll > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.garden-chat-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.garden-chat-composer {
+  min-width: 0;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.garden-composer-row {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.garden-composer-input {
+  min-width: 0;
+  max-width: 100%;
+  flex: 1 1 auto;
+}
+
+.garden-composer-send {
+  min-width: 0;
+  max-width: min(7rem, 30%);
+  flex: 0 1 auto;
+  overflow-wrap: anywhere;
+}
+
+.garden-suggestion-rail {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.garden-dialog-content > div,
+.garden-dialog-content > div > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.garden-mobile-sheet,
+.garden-mobile-sheet > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.garden-mobile-sheet > :is(div, section):last-child {
+  min-height: 0;
+}
+
+@media (min-width: 640px) {
+  .garden-dialog-content {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: 100%;
+    max-width: 32rem;
+    max-height: 88vh;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .garden-mobile-sheet {
+    width: 100%;
+    height: auto;
+    max-height: 92vh;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -257,13 +348,11 @@ html[data-garden-keyboard="open"] .garden-ai-composer {
   }
 
   .garden-ask-layout {
-    min-height: 100vh;
+    height: 100%;
   }
 
   .garden-ai-composer {
     position: static;
-    inset-inline: auto;
-    bottom: auto;
     max-width: none;
   }
 }

@@ -12,7 +12,11 @@ editable controls; it does not listen to `visualViewport`, `innerHeight`, or
 resize events and it does not write viewport dimensions or keyboard offsets.
 
 When editing is active, the shell hides mobile bottom navigation and removes
-its normal bottom reserve. Ask, sheets, and dialogs keep their own bounded
-layout and scroll their content internally. A screen must not add a second
-keyboard-height calculation, fixed composer compensation, or focus-specific
-viewport listener.
+its normal bottom reserve. That is the only keyboard-specific layout policy.
+Chat routes use one bounded column with one scrollable conversation and a
+normal-flow composer. Long forms and sheets use one bounded surface with one
+scrollable body; they do not recenter or translate themselves when focus
+changes. Dialogs and sheets must keep children at `min-width: 0`, and any
+intentional horizontal rail owns its own horizontal overflow. A screen must
+not add a second keyboard-height calculation, fixed composer compensation, or
+focus-specific viewport listener.

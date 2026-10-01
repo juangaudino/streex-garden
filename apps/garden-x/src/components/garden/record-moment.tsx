@@ -354,7 +354,7 @@ export function RecordMomentSheet({ plant, open, initialFlow, initialCareType, i
         onClick={onClose}
         className="absolute inset-0 bg-ink/45 backdrop-blur-[3px]"
       />
-      <div className="garden-mobile-sheet rise relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-[2rem] border border-border/70 bg-card shadow-lift sm:max-w-xl sm:rounded-[2rem]">
+      <div className="garden-mobile-sheet rise relative flex flex-col overflow-hidden rounded-t-[2rem] border border-border/70 bg-card shadow-lift sm:max-w-xl sm:rounded-[2rem]">
         {/* header */}
         <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/60 px-5 py-4">
           {flow && !done ? (

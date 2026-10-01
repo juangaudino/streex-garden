@@ -5,11 +5,6 @@ import { useGarden } from "@/lib/garden-store";
 import { askSuggestions, askWholeGarden, type AskAnswer } from "@/lib/garden-logic";
 import { askGardenAi } from "@/lib/garden-backend";
 import { ProvenanceTag } from "@/components/garden/atoms";
-import {
-  Conversation,
-  ConversationContent,
-  ConversationScrollButton,
-} from "@/components/ai-elements/conversation";
 import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { GardenConversationComposer } from "@/components/garden/garden-conversation-composer";
@@ -77,7 +72,7 @@ function GardenWideAsk() {
   }, [navigationImage, prompt, send]);
 
   return (
-    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col">
+    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col overflow-hidden">
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         <Link to="/garden-ai" className="press grid h-8 w-8 place-items-center rounded-full border border-border/70 bg-card" aria-label={ui(language, "backToGardenAI")}>
           <ChevronLeft className="h-4 w-4" />
@@ -89,8 +84,8 @@ function GardenWideAsk() {
         <Leaf className="h-4 w-4 text-primary" />
       </header>
 
-      <Conversation className="mx-auto min-h-0 w-full min-w-0 max-w-3xl flex-1">
-        <ConversationContent className="min-w-0 px-5 py-8 sm:px-8">
+      <main className="garden-chat-scroll relative mx-auto min-h-0 w-full min-w-0 max-w-3xl flex-1 overflow-y-auto" role="log">
+        <div className="flex min-w-0 max-w-full flex-col gap-8 px-5 py-8 sm:px-8">
           {thread.length === 0 ? (
             <div className="rise">
               <h1 className="font-display text-3xl">{ui(language, "whatKnow")}</h1>
@@ -122,13 +117,12 @@ function GardenWideAsk() {
             </div>
           ))}
           {thinking ? <Shimmer className="text-sm">{ui(language, "readingRecord")}</Shimmer> : null}
-        </ConversationContent>
-        <ConversationScrollButton />
-      </Conversation>
+        </div>
+      </main>
 
-      <div className="min-w-0 max-w-full shrink-0 border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
+      <div className="garden-chat-composer min-w-0 max-w-full shrink-0 border-t border-border/70 bg-background/90 px-[max(1rem,env(safe-area-inset-left))] pt-3 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(0.85rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:px-8 lg:px-12">
         <div className="mx-auto min-w-0 max-w-3xl">
-          <div className="no-scrollbar mb-2.5 flex min-w-0 max-w-full gap-2 overflow-x-auto">
+          <div className="garden-suggestion-rail no-scrollbar mb-2.5 flex gap-2 overflow-x-auto pb-1">
             {[ui(language, "whatNeedsAttention"), ui(language, "whatChangedRecently"), ...askSuggestions(language).slice(4)].map((suggestion) => (
               <button key={suggestion} type="button" onClick={() => send(suggestion)} className="press shrink-0 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs text-muted-foreground">{suggestion}</button>
             ))}

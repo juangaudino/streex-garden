@@ -1,0 +1,4888 @@
+[
+  {
+    "id": "mizuna",
+    "name": "Mizuna",
+    "spanishName": "Mizuna",
+    "scientificName": "Brassica rapa",
+    "variety": "Mizuna type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "mizuna",
+      "mizuna",
+      "mizuna",
+      "brassica rapa",
+      "mizuna type"
+    ],
+    "summary": "Mizuna is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Mizuna is resolved at Brassica rapa and Mizuna type type scope",
+        "guidance": "Mizuna is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "hydroponics": {
+        "short": "Hydroponic suitability remains pending",
+        "guidance": "No identity-specific Wave 2 evidence establishes system compatibility. Do not infer it from plant size or from another crop.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Wave 2 does not establish identity-specific hydroponic performance for this crop/type."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "tatsoi",
+    "name": "Tatsoi",
+    "spanishName": "Tatsoi",
+    "scientificName": "Brassica rapa",
+    "variety": "Tatsoi type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "tatsoi",
+      "tatsoi",
+      "tatsoi",
+      "brassica rapa",
+      "tatsoi type"
+    ],
+    "summary": "Tatsoi is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Tatsoi is resolved at Brassica rapa and Tatsoi type type scope",
+        "guidance": "Tatsoi is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "hydroponics": {
+        "short": "Hydroponic suitability remains pending",
+        "guidance": "No identity-specific Wave 2 evidence establishes system compatibility. Do not infer it from plant size or from another crop.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Wave 2 does not establish identity-specific hydroponic performance for this crop/type."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "mustard-greens",
+    "name": "Mustard Greens",
+    "spanishName": "Hojas de mostaza",
+    "scientificName": "Brassica juncea",
+    "variety": "Mustard green type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "mustard-greens",
+      "mustard greens",
+      "hojas de mostaza",
+      "brassica juncea",
+      "mustard green type"
+    ],
+    "summary": "Mustard Greens is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Mustard Greens is resolved at Brassica juncea and Mustard green type type scope",
+        "guidance": "Mustard Greens is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "hydroponics": {
+        "short": "Hydroponic suitability remains pending",
+        "guidance": "No identity-specific Wave 2 evidence establishes system compatibility. Do not infer it from plant size or from another crop.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Wave 2 does not establish identity-specific hydroponic performance for this crop/type."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica juncea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica juncea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "collard-greens",
+    "name": "Collard Greens",
+    "spanishName": "Col berza",
+    "scientificName": "Brassica oleracea",
+    "variety": "Collard type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "collard-greens",
+      "collard greens",
+      "col berza",
+      "brassica oleracea",
+      "collard type"
+    ],
+    "summary": "Collard Greens is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Collard Greens is resolved at Brassica oleracea and Collard type type scope",
+        "guidance": "Collard Greens is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "umn-fall-greens-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "umn-fall-greens-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "red-cabbage",
+    "name": "Red Cabbage",
+    "spanishName": "Col lombarda",
+    "scientificName": "Brassica oleracea",
+    "variety": "Red cabbage type",
+    "category": "vegetables",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "red-cabbage",
+      "red cabbage",
+      "col lombarda",
+      "brassica oleracea",
+      "red cabbage type"
+    ],
+    "summary": "Red Cabbage is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Red Cabbage is resolved at Brassica oleracea and Red cabbage type type scope",
+        "guidance": "Red Cabbage is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "johnnys-brassicas-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "johnnys-brassicas-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "brussels-sprouts",
+    "name": "Brussels Sprouts",
+    "spanishName": "Coles de Bruselas",
+    "scientificName": "Brassica oleracea",
+    "variety": "Brussels sprouts type",
+    "category": "vegetables",
+    "emoji": "🥦",
+    "guideCompletion": 68,
+    "tags": [
+      "brussels-sprouts",
+      "brussels sprouts",
+      "coles de bruselas",
+      "brassica oleracea",
+      "brussels sprouts type"
+    ],
+    "summary": "Brussels Sprouts is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Brussels Sprouts is resolved at Brassica oleracea and Brussels sprouts type type scope",
+        "guidance": "Brussels Sprouts is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-brassica-varietal-wave2",
+          "johnnys-brassicas-wave1"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "johnnys-brassicas-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-brassica-varietal-wave2",
+              "johnnys-brassicas-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "kohlrabi",
+    "name": "Kohlrabi",
+    "spanishName": "Colinabo",
+    "scientificName": "Brassica oleracea",
+    "variety": "Kohlrabi type",
+    "category": "vegetables",
+    "emoji": "🥦",
+    "guideCompletion": 68,
+    "tags": [
+      "kohlrabi",
+      "kohlrabi",
+      "colinabo",
+      "brassica oleracea",
+      "kohlrabi type"
+    ],
+    "summary": "Kohlrabi is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Kohlrabi is resolved at Brassica oleracea and Kohlrabi type type scope",
+        "guidance": "Kohlrabi is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-kohlrabi-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-kohlrabi-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-kohlrabi-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-kohlrabi-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-kohlrabi-wave2",
+              "usu-brassica-varietal-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-kohlrabi-wave2",
+              "usu-brassica-varietal-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica oleracea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "patio-tomato",
+    "name": "Patio Tomato",
+    "spanishName": "Tomate de patio",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Patio tomato type",
+    "category": "fruits",
+    "emoji": "🍅",
+    "guideCompletion": 68,
+    "tags": [
+      "patio-tomato",
+      "patio tomato",
+      "tomate de patio",
+      "solanum lycopersicum",
+      "patio tomato type"
+    ],
+    "summary": "Patio Tomato is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Patio Tomato is resolved at Solanum lycopersicum and Patio tomato type type scope",
+        "guidance": "Patio Tomato is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-variety-wave2",
+          "johnnys-tomato-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-variety-wave2",
+          "johnnys-tomato-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-variety-wave2",
+          "johnnys-tomato-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-variety-wave2",
+          "johnnys-tomato-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-variety-wave2",
+          "johnnys-tomato-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-variety-wave2",
+              "johnnys-tomato-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-variety-wave2",
+              "johnnys-tomato-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "sun-gold-tomato",
+    "name": "Sun Gold Tomato",
+    "spanishName": "Tomate Sun Gold",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Sun Gold F1",
+    "category": "fruits",
+    "emoji": "🍅",
+    "guideCompletion": 68,
+    "tags": [
+      "sun-gold-tomato",
+      "sun gold tomato",
+      "tomate sun gold",
+      "solanum lycopersicum",
+      "sun gold f1"
+    ],
+    "summary": "Sun Gold Tomato is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Sun Gold Tomato is resolved at Solanum lycopersicum and Sun Gold F1 type scope",
+        "guidance": "Sun Gold Tomato is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-sun-gold-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-sun-gold-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "supersweet-100-tomato",
+    "name": "Supersweet 100 Tomato",
+    "spanishName": "Tomate Supersweet 100",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Supersweet 100 F1",
+    "category": "fruits",
+    "emoji": "🍅",
+    "guideCompletion": 68,
+    "tags": [
+      "supersweet-100-tomato",
+      "supersweet 100 tomato",
+      "tomate supersweet 100",
+      "solanum lycopersicum",
+      "supersweet 100 f1"
+    ],
+    "summary": "Supersweet 100 Tomato is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Supersweet 100 Tomato is resolved at Solanum lycopersicum and Supersweet 100 F1 type scope",
+        "guidance": "Supersweet 100 Tomato is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-catalog-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-catalog-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "celebrity-tomato",
+    "name": "Celebrity Tomato",
+    "spanishName": "Tomate Celebrity",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Celebrity type",
+    "category": "fruits",
+    "emoji": "🍅",
+    "guideCompletion": 68,
+    "tags": [
+      "celebrity-tomato",
+      "celebrity tomato",
+      "tomate celebrity",
+      "solanum lycopersicum",
+      "celebrity type"
+    ],
+    "summary": "Celebrity Tomato is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Celebrity Tomato is resolved at Solanum lycopersicum and Celebrity type type scope",
+        "guidance": "Celebrity Tomato is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-tomato-catalog-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-catalog-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-tomato-catalog-wave2",
+              "johnnys-tomato-variety-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "mini-bell-pepper",
+    "name": "Mini Bell Pepper",
+    "spanishName": "Pimiento mini dulce",
+    "scientificName": "Capsicum annuum",
+    "variety": "Mini sweet pepper type",
+    "category": "fruits",
+    "emoji": "🫑",
+    "guideCompletion": 68,
+    "tags": [
+      "mini-bell-pepper",
+      "mini bell pepper",
+      "pimiento mini dulce",
+      "capsicum annuum",
+      "mini sweet pepper type"
+    ],
+    "summary": "Mini Bell Pepper is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Mini Bell Pepper is resolved at Capsicum annuum and Mini sweet pepper type type scope",
+        "guidance": "Mini Bell Pepper is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "poblano-pepper",
+    "name": "Poblano Pepper",
+    "spanishName": "Pimiento poblano",
+    "scientificName": "Capsicum annuum",
+    "variety": "Poblano type",
+    "category": "fruits",
+    "emoji": "🌶️",
+    "guideCompletion": 68,
+    "tags": [
+      "poblano-pepper",
+      "poblano pepper",
+      "pimiento poblano",
+      "capsicum annuum",
+      "poblano type"
+    ],
+    "summary": "Poblano Pepper is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Poblano Pepper is resolved at Capsicum annuum and Poblano type type scope",
+        "guidance": "Poblano Pepper is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "serrano-pepper",
+    "name": "Serrano Pepper",
+    "spanishName": "Pimiento serrano",
+    "scientificName": "Capsicum annuum",
+    "variety": "Serrano type",
+    "category": "fruits",
+    "emoji": "🌶️",
+    "guideCompletion": 68,
+    "tags": [
+      "serrano-pepper",
+      "serrano pepper",
+      "pimiento serrano",
+      "capsicum annuum",
+      "serrano type"
+    ],
+    "summary": "Serrano Pepper is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Serrano Pepper is resolved at Capsicum annuum and Serrano type type scope",
+        "guidance": "Serrano Pepper is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "shishito-pepper",
+    "name": "Shishito Pepper",
+    "spanishName": "Pimiento shishito",
+    "scientificName": "Capsicum annuum",
+    "variety": "Shishito type",
+    "category": "fruits",
+    "emoji": "🌶️",
+    "guideCompletion": 68,
+    "tags": [
+      "shishito-pepper",
+      "shishito pepper",
+      "pimiento shishito",
+      "capsicum annuum",
+      "shishito type"
+    ],
+    "summary": "Shishito Pepper is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Shishito Pepper is resolved at Capsicum annuum and Shishito type type scope",
+        "guidance": "Shishito Pepper is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum annuum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "habanero-pepper",
+    "name": "Habanero Pepper",
+    "spanishName": "Pimiento habanero",
+    "scientificName": "Capsicum chinense",
+    "variety": "Habanero type",
+    "category": "fruits",
+    "emoji": "🌶️",
+    "guideCompletion": 68,
+    "tags": [
+      "habanero-pepper",
+      "habanero pepper",
+      "pimiento habanero",
+      "capsicum chinense",
+      "habanero type"
+    ],
+    "summary": "Habanero Pepper is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Habanero Pepper is resolved at Capsicum chinense and Habanero type type scope",
+        "guidance": "Habanero Pepper is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-peppers",
+          "johnnys-pepper-catalog-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum chinense"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-peppers",
+              "johnnys-pepper-catalog-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Capsicum chinense"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "french-breakfast-radish",
+    "name": "French Breakfast Radish",
+    "spanishName": "Rábano French Breakfast",
+    "scientificName": "Raphanus sativus",
+    "variety": "French Breakfast type",
+    "category": "root vegetables",
+    "emoji": "🫜",
+    "guideCompletion": 68,
+    "tags": [
+      "french-breakfast-radish",
+      "french breakfast radish",
+      "rábano french breakfast",
+      "raphanus sativus",
+      "french breakfast type"
+    ],
+    "summary": "French Breakfast Radish is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "French Breakfast Radish is resolved at Raphanus sativus and French Breakfast type type scope",
+        "guidance": "French Breakfast Radish is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-radish",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Raphanus sativus"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-radish",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Raphanus sativus"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "daikon-radish",
+    "name": "Daikon Radish",
+    "spanishName": "Rábano daikon",
+    "scientificName": "Raphanus sativus",
+    "variety": "Daikon type",
+    "category": "root vegetables",
+    "emoji": "🫜",
+    "guideCompletion": 68,
+    "tags": [
+      "daikon-radish",
+      "daikon radish",
+      "rábano daikon",
+      "raphanus sativus",
+      "daikon type"
+    ],
+    "summary": "Daikon Radish is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Daikon Radish is resolved at Raphanus sativus and Daikon type type scope",
+        "guidance": "Daikon Radish is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-radish",
+          "usu-vegetable-varieties-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-radish",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Raphanus sativus"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-radish",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Raphanus sativus"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "golden-beet",
+    "name": "Golden Beet",
+    "spanishName": "Remolacha dorada",
+    "scientificName": "Beta vulgaris",
+    "variety": "Golden beet type",
+    "category": "root vegetables",
+    "emoji": "🫜",
+    "guideCompletion": 68,
+    "tags": [
+      "golden-beet",
+      "golden beet",
+      "remolacha dorada",
+      "beta vulgaris",
+      "golden beet type"
+    ],
+    "summary": "Golden Beet is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Golden Beet is resolved at Beta vulgaris and Golden beet type type scope",
+        "guidance": "Golden Beet is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-beets-wave1",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Beta vulgaris"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-beets-wave1",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Beta vulgaris"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "parsnip",
+    "name": "Parsnip",
+    "spanishName": "Chirivía",
+    "scientificName": "Pastinaca sativa",
+    "variety": "Parsnip type",
+    "category": "root vegetables",
+    "emoji": "🥕",
+    "guideCompletion": 68,
+    "tags": [
+      "parsnip",
+      "parsnip",
+      "chirivía",
+      "pastinaca sativa",
+      "parsnip type"
+    ],
+    "summary": "Parsnip is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Parsnip is resolved at Pastinaca sativa and Parsnip type type scope",
+        "guidance": "Parsnip is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "usu-water-vegetables-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-vegetable-varieties-wave2",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Pastinaca sativa"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-vegetable-varieties-wave2",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Pastinaca sativa"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "red-onion",
+    "name": "Red Onion",
+    "spanishName": "Cebolla roja",
+    "scientificName": "Allium cepa",
+    "variety": "Red bulb onion type",
+    "category": "alliums",
+    "emoji": "🧅",
+    "guideCompletion": 68,
+    "tags": [
+      "red-onion",
+      "red onion",
+      "cebolla roja",
+      "allium cepa",
+      "red bulb onion type"
+    ],
+    "summary": "Red Onion is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Red Onion is resolved at Allium cepa and Red bulb onion type type scope",
+        "guidance": "Red Onion is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-onions-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-onions-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-onions-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-onions-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-onions-wave1",
+          "usu-vegetable-varieties-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-onions-wave1",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Allium cepa"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-onions-wave1",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Allium cepa"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "bush-bean-royal-burgundy",
+    "name": "Royal Burgundy Bush Bean",
+    "spanishName": "Frijol de mata Royal Burgundy",
+    "scientificName": "Phaseolus vulgaris",
+    "variety": "Royal Burgundy bush type",
+    "category": "vegetables",
+    "emoji": "🫘",
+    "guideCompletion": 68,
+    "tags": [
+      "bush-bean-royal-burgundy",
+      "royal burgundy bush bean",
+      "frijol de mata royal burgundy",
+      "phaseolus vulgaris",
+      "royal burgundy bush type"
+    ],
+    "summary": "Royal Burgundy Bush Bean is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Royal Burgundy Bush Bean is resolved at Phaseolus vulgaris and Royal Burgundy bush type type scope",
+        "guidance": "Royal Burgundy Bush Bean is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beans-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beans-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beans-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-beans-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "bushy"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-beans-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Phaseolus vulgaris"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-beans-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Phaseolus vulgaris"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "sugar-snap-pea",
+    "name": "Sugar Snap Pea",
+    "spanishName": "Guisante de azúcar",
+    "scientificName": "Pisum sativum",
+    "variety": "Sugar snap type",
+    "category": "vegetables",
+    "emoji": "🫛",
+    "guideCompletion": 68,
+    "tags": [
+      "sugar-snap-pea",
+      "sugar snap pea",
+      "guisante de azúcar",
+      "pisum sativum",
+      "sugar snap type"
+    ],
+    "summary": "Sugar Snap Pea is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Sugar Snap Pea is resolved at Pisum sativum and Sugar snap type type scope",
+        "guidance": "Sugar Snap Pea is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-peas-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-peas-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-peas-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-peas-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-peas-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Pisum sativum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-peas-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Pisum sativum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "yellow-squash",
+    "name": "Yellow Squash",
+    "spanishName": "Calabaza amarilla",
+    "scientificName": "Cucurbita pepo",
+    "variety": "Yellow summer squash type",
+    "category": "vegetables",
+    "emoji": "🎃",
+    "guideCompletion": 68,
+    "tags": [
+      "yellow-squash",
+      "yellow squash",
+      "calabaza amarilla",
+      "cucurbita pepo",
+      "yellow summer squash type"
+    ],
+    "summary": "Yellow Squash is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Yellow Squash is resolved at Cucurbita pepo and Yellow summer squash type type scope",
+        "guidance": "Yellow Squash is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zucchini",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zucchini",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zucchini",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zucchini",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zucchini",
+          "usu-water-vegetables-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-zucchini",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cucurbita pepo"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-zucchini",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cucurbita pepo"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "pickling-cucumber",
+    "name": "Pickling Cucumber",
+    "spanishName": "Pepino para encurtir",
+    "scientificName": "Cucumis sativus",
+    "variety": "Pickling cucumber type",
+    "category": "fruits",
+    "emoji": "🥒",
+    "guideCompletion": 68,
+    "tags": [
+      "pickling-cucumber",
+      "pickling cucumber",
+      "pepino para encurtir",
+      "cucumis sativus",
+      "pickling cucumber type"
+    ],
+    "summary": "Pickling Cucumber is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Pickling Cucumber is resolved at Cucumis sativus and Pickling cucumber type type scope",
+        "guidance": "Pickling Cucumber is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-cucumber-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-cucumber-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest by maturity cues, not a fixed calendar promise",
+        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-cucumber-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-cucumber-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and fruit set are useful lifecycle events",
+        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-cucumber-wave1",
+          "usu-water-vegetables-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-cucumber-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cucumis sativus"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-cucumber-wave1",
+              "usu-water-vegetables-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cucumis sativus"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "marjoram",
+    "name": "Sweet Marjoram",
+    "spanishName": "Mejorana",
+    "scientificName": "Origanum majorana",
+    "variety": "Sweet marjoram",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 68,
+    "tags": [
+      "marjoram",
+      "sweet marjoram",
+      "mejorana",
+      "origanum majorana",
+      "sweet marjoram"
+    ],
+    "summary": "Sweet Marjoram is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Sweet Marjoram is resolved at Origanum majorana and Sweet marjoram type scope",
+        "guidance": "Sweet Marjoram is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-herbs-wave2",
+          "psu-herb-companions"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-herbs-wave2",
+          "psu-herb-companions"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-herbs-wave2",
+          "psu-herb-companions"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-herbs-wave2",
+          "psu-herb-companions"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "mounded"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "illinois-herbs-wave2",
+              "psu-herb-companions"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Origanum majorana"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "illinois-herbs-wave2",
+              "psu-herb-companions"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Origanum majorana"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "summer-savory",
+    "name": "Summer Savory",
+    "spanishName": "Ajedrea de verano",
+    "scientificName": "Satureja hortensis",
+    "variety": "Summer savory",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 68,
+    "tags": [
+      "summer-savory",
+      "summer savory",
+      "ajedrea de verano",
+      "satureja hortensis",
+      "summer savory"
+    ],
+    "summary": "Summer Savory is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Summer Savory is resolved at Satureja hortensis and Summer savory type scope",
+        "guidance": "Summer Savory is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-summer-savory-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-summer-savory-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-summer-savory-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-summer-savory-wave2",
+          "illinois-herbs-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "mounded"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "illinois-summer-savory-wave2",
+              "illinois-herbs-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Satureja hortensis"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "illinois-summer-savory-wave2",
+              "illinois-herbs-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Satureja hortensis"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "anise-hyssop",
+    "name": "Anise Hyssop",
+    "spanishName": "Hisopo anisado",
+    "scientificName": "Agastache foeniculum",
+    "variety": "Anise hyssop",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 68,
+    "tags": [
+      "anise-hyssop",
+      "anise hyssop",
+      "hisopo anisado",
+      "agastache foeniculum",
+      "anise hyssop"
+    ],
+    "summary": "Anise Hyssop is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Anise Hyssop is resolved at Agastache foeniculum and Anise hyssop type scope",
+        "guidance": "Anise Hyssop is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-anise-hyssop-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-anise-hyssop-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-anise-hyssop-wave2",
+          "illinois-herbs-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-anise-hyssop-wave2",
+          "illinois-herbs-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-anise-hyssop-wave2",
+              "illinois-herbs-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Agastache foeniculum"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-anise-hyssop-wave2",
+              "illinois-herbs-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Agastache foeniculum"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "cosmos-sensation",
+    "name": "Sensation Cosmos",
+    "spanishName": "Cosmos Sensation",
+    "scientificName": "Cosmos bipinnatus",
+    "variety": "Sensation type",
+    "category": "flowers",
+    "emoji": "🌸",
+    "guideCompletion": 68,
+    "tags": [
+      "cosmos-sensation",
+      "sensation cosmos",
+      "cosmos sensation",
+      "cosmos bipinnatus",
+      "sensation type"
+    ],
+    "summary": "Sensation Cosmos is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Sensation Cosmos is resolved at Cosmos bipinnatus and Sensation type type scope",
+        "guidance": "Sensation Cosmos is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Shape and deadhead according to the flower type",
+        "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest or enjoy flowers as an ornamental crop",
+        "guidance": "Wave 2 treats this identity primarily as ornamental; culinary use is not inferred without identity-specific edible-flower evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cosmos bipinnatus"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cosmos bipinnatus"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "french-marigold",
+    "name": "French Marigold",
+    "spanishName": "Caléndula francesa",
+    "scientificName": "Tagetes patula",
+    "variety": "French marigold type",
+    "category": "flowers",
+    "emoji": "🌼",
+    "guideCompletion": 68,
+    "tags": [
+      "french-marigold",
+      "french marigold",
+      "caléndula francesa",
+      "tagetes patula",
+      "french marigold type"
+    ],
+    "summary": "French Marigold is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "French Marigold is resolved at Tagetes patula and French marigold type type scope",
+        "guidance": "French Marigold is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-tagetes-patula",
+          "johnnys-marigold"
+        ]
+      },
+      "pruning": {
+        "short": "Shape and deadhead according to the flower type",
+        "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-tagetes-patula",
+          "johnnys-marigold"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest or enjoy flowers as an ornamental crop",
+        "guidance": "Wave 2 treats this identity primarily as ornamental; culinary use is not inferred without identity-specific edible-flower evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-tagetes-patula",
+          "johnnys-marigold"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-tagetes-patula",
+          "johnnys-marigold"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "mounded"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tagetes-patula",
+              "johnnys-marigold"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tagetes patula"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tagetes-patula",
+              "johnnys-marigold"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tagetes patula"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "zinnia-state-fair",
+    "name": "State Fair Zinnia",
+    "spanishName": "Zinnia State Fair",
+    "scientificName": "Zinnia elegans",
+    "variety": "State Fair type",
+    "category": "flowers",
+    "emoji": "🌸",
+    "guideCompletion": 68,
+    "tags": [
+      "zinnia-state-fair",
+      "state fair zinnia",
+      "zinnia state fair",
+      "zinnia elegans",
+      "state fair type"
+    ],
+    "summary": "State Fair Zinnia is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "State Fair Zinnia is resolved at Zinnia elegans and State Fair type type scope",
+        "guidance": "State Fair Zinnia is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zinnia-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Shape and deadhead according to the flower type",
+        "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zinnia-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest or enjoy flowers as an ornamental crop",
+        "guidance": "Wave 2 treats this identity primarily as ornamental; culinary use is not inferred without identity-specific edible-flower evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zinnia-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-zinnia-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-zinnia-wave2",
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Zinnia elegans"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-zinnia-wave2",
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Zinnia elegans"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "viola-pansy",
+    "name": "Viola / Pansy",
+    "spanishName": "Pensamiento / viola",
+    "scientificName": "Viola × wittrockiana",
+    "variety": "Pansy type",
+    "category": "flowers",
+    "emoji": "🌸",
+    "guideCompletion": 68,
+    "tags": [
+      "viola-pansy",
+      "viola / pansy",
+      "pensamiento / viola",
+      "viola × wittrockiana",
+      "pansy type"
+    ],
+    "summary": "Viola / Pansy is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Viola / Pansy is resolved at Viola × wittrockiana and Pansy type type scope",
+        "guidance": "Viola / Pansy is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-viola-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Shape and deadhead according to the flower type",
+        "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-viola-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest or enjoy flowers as an ornamental crop",
+        "guidance": "Wave 2 treats this identity primarily as ornamental; culinary use is not inferred without identity-specific edible-flower evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-viola-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-viola-wave2",
+          "johnnys-flower-guide-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "mounded"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-viola-wave2",
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Viola × wittrockiana"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-viola-wave2",
+              "johnnys-flower-guide-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Viola × wittrockiana"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "celosia-plumosa",
+    "name": "Plumosa Celosia",
+    "spanishName": "Celosia plumosa",
+    "scientificName": "Celosia argentea",
+    "variety": "Plumosa type",
+    "category": "flowers",
+    "emoji": "🌺",
+    "guideCompletion": 68,
+    "tags": [
+      "celosia-plumosa",
+      "plumosa celosia",
+      "celosia plumosa",
+      "celosia argentea",
+      "plumosa type"
+    ],
+    "summary": "Plumosa Celosia is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Plumosa Celosia is resolved at Celosia argentea and Plumosa type type scope",
+        "guidance": "Plumosa Celosia is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2",
+          "johnnys-zinnia-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Shape and deadhead according to the flower type",
+        "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2",
+          "johnnys-zinnia-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest or enjoy flowers as an ornamental crop",
+        "guidance": "Wave 2 treats this identity primarily as ornamental; culinary use is not inferred without identity-specific edible-flower evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2",
+          "johnnys-zinnia-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-flower-guide-wave2",
+          "johnnys-zinnia-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-flower-guide-wave2",
+              "johnnys-zinnia-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Celosia argentea"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "johnnys-flower-guide-wave2",
+              "johnnys-zinnia-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Celosia argentea"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "rutabaga",
+    "name": "Rutabaga",
+    "spanishName": "Colinabo sueco",
+    "scientificName": "Brassica napus",
+    "variety": "Rutabaga type",
+    "category": "root vegetables",
+    "emoji": "🫜",
+    "guideCompletion": 68,
+    "tags": [
+      "rutabaga",
+      "rutabaga",
+      "colinabo sueco",
+      "brassica napus",
+      "rutabaga type"
+    ],
+    "summary": "Rutabaga is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Rutabaga is resolved at Brassica napus and Rutabaga type type scope",
+        "guidance": "Rutabaga is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "johnnys-turnips-wave1"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "johnnys-turnips-wave1"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest the usable root or basal structure at the crop stage",
+        "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "johnnys-turnips-wave1"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "johnnys-turnips-wave1"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-vegetable-varieties-wave2",
+          "johnnys-turnips-wave1"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-vegetable-varieties-wave2",
+              "johnnys-turnips-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica napus"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-vegetable-varieties-wave2",
+              "johnnys-turnips-wave1"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica napus"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "broccoli-raab",
+    "name": "Broccoli Raab",
+    "spanishName": "Brócoli raab",
+    "scientificName": "Brassica rapa",
+    "variety": "Broccoli raab type",
+    "category": "vegetables",
+    "emoji": "🥦",
+    "guideCompletion": 68,
+    "tags": [
+      "broccoli-raab",
+      "broccoli raab",
+      "brócoli raab",
+      "brassica rapa",
+      "broccoli raab type"
+    ],
+    "summary": "Broccoli Raab is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Broccoli Raab is resolved at Brassica rapa and Broccoli raab type type scope",
+        "guidance": "Broccoli Raab is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-asian-brassicas-wave2",
+          "usu-brassica-varietal-wave2"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic evidence was accepted in Wave 2."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "usu-brassica-varietal-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asian-brassicas-wave2",
+              "usu-brassica-varietal-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Brassica rapa"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "endive",
+    "name": "Endive",
+    "spanishName": "Escarola",
+    "scientificName": "Cichorium endivia",
+    "variety": "Endive type",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "endive",
+      "endive",
+      "escarola",
+      "cichorium endivia",
+      "endive type"
+    ],
+    "summary": "Endive is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Endive is resolved at Cichorium endivia and Endive type type scope",
+        "guidance": "Endive is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-fall-greens-wave2",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "pruning": {
+        "short": "Manage by harvest, thinning, and visible crowding",
+        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-fall-greens-wave2",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest selectively while preserving active growth",
+        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-fall-greens-wave2",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "problems": {
+        "short": "Watch the problems that change management",
+        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-fall-greens-wave2",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "thinning": {
+        "short": "Thin or separate according to the intended harvest form",
+        "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-fall-greens-wave2",
+          "usu-vegetable-varieties-wave2"
+        ]
+      },
+      "hydroponics": {
+        "short": "Hydroponic suitability remains pending",
+        "guidance": "No identity-specific Wave 2 evidence establishes system compatibility. Do not infer it from plant size or from another crop.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "pending",
+        "reason": "Wave 2 does not establish identity-specific hydroponic performance for this crop/type."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-fall-greens-wave2",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cichorium endivia"
+            },
+            "note": "Crop/type-level growth habit; not a universal named-cultivar measurement."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Identity-specific mature height remains unresolved."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Identity-specific mature spread remains unresolved."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted into a universal Garden system position rule."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-fall-greens-wave2",
+              "usu-vegetable-varieties-wave2"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Cichorium endivia"
+            },
+            "note": "Crop-level light context; system response remains context-dependent."
+          }
+        ]
+      }
+    }
+  }
+]

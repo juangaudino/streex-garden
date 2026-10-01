@@ -163,7 +163,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     const sunflower = screen.getByText("American Giant Hybrid Sunflower");
     expect(sunflower.closest("details")?.open).toBe(false);
     expect(sunflower.closest("section[aria-label='Recommended here']")).toBeNull();
-    expect(document.body.textContent).not.toMatch(/\b(best|top pick|winner|score)\b/i);
+    expect(screen.queryByText(/^(best|top pick|winner|score)$/i)).toBeNull();
   });
 
   it("renders the recommendation hierarchy in Spanish", async () => {

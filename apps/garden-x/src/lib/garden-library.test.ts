@@ -48,9 +48,9 @@ const basil: Plant = {
 
 describe("Garden Library catalog and planting guidance", () => {
   it("publishes the current unique stable identities", () => {
-    expect(catalog.entries).toHaveLength(72);
+    expect(catalog.entries).toHaveLength(108);
     expect(new Set(catalog.entries.map((entry) => entry.libraryPlantId)).size).toBe(
-      72,
+      108,
     );
     expect(
       catalog.entries.every((entry) => entry.reference && Array.isArray(entry.reference.sourceIds)),

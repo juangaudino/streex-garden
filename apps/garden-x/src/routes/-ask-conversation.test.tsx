@@ -125,7 +125,6 @@ describe("Garden-wide Ask Garden image turns", () => {
     expect(container.querySelector(".garden-composer-send")?.className).toContain("garden-composer-send");
     expect(container.querySelector(".garden-suggestion-rail")?.className).toContain("overflow-x-auto");
   });
-
   it.each([375, 390, 430])("keeps the mobile contract at %ipx", (width) => {
     Object.defineProperty(window, "innerWidth", { configurable: true, value: width });
     mocks.useGarden.mockReturnValue({ language: "en", plants: [], gardens: [], events: [], photos: [], tasks: [] });

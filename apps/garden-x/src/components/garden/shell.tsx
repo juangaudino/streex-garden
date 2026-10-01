@@ -7,7 +7,7 @@ import { useGarden } from "@/lib/garden-store";
 import { isBackgroundHydration } from "@/lib/garden-store";
 import { ui } from "@/lib/ui-copy";
 import { useJournalEntry } from "@/components/garden/journal-entry-context";
-import { useGardenMobileViewport } from "@/lib/mobile-viewport";
+import { shouldHideMobileNavigation, useGardenMobileViewport } from "@/lib/mobile-viewport";
 
 const nav = [
   { to: "/", en: "Home", es: "Inicio", icon: Home },
@@ -109,7 +109,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* mobile tab bar */}
       <nav
         ref={mobileNavRef}
-        className={cn("garden-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden", keyboardOpen && "garden-mobile-nav--keyboard-open")}
+        className={cn(
+          "garden-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/85 backdrop-blur-xl lg:hidden",
+          shouldHideMobileNavigation(isAskRoute, keyboardOpen) && "garden-mobile-nav--keyboard-open",
+        )}
       >
         <div className="mx-auto grid max-w-lg grid-cols-5">
           {[...nav.slice(0, 2)].map((item) => {

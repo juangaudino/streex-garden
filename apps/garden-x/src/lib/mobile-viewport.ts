@@ -7,6 +7,10 @@ export type GardenMobileViewport = {
   keyboardOpen: boolean;
 };
 
+export function shouldHideMobileNavigation(isAskRoute: boolean, keyboardOpen: boolean) {
+  return isAskRoute || keyboardOpen;
+}
+
 const initialViewport: GardenMobileViewport = {
   editableFocused: false,
   keyboardOpen: false,

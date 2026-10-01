@@ -212,7 +212,7 @@ describe("plant-scoped Ask Garden real route composer", () => {
     expect(root.className).toContain("garden-ask-layout");
     expect(root.className).toContain("min-h-0");
     expect(scrollRegion?.className).toContain("min-h-0");
-    expect(scrollRegion?.className).toContain("overflow-y-auto");
+    expect(scrollRegion?.className).not.toContain("overflow-y-auto");
     expect(composer?.className).toContain("shrink-0");
     expect(composer?.className).not.toContain("sticky");
   });
@@ -222,7 +222,7 @@ describe("plant-scoped Ask Garden real route composer", () => {
     const PlantAsk = Route.options.component as React.ComponentType;
     const { container } = render(<PlantAsk />);
 
-    expect(container.querySelector(".garden-ask-layout")?.className).toContain("overflow-hidden");
+    expect(container.querySelector(".garden-ask-layout")?.className).not.toContain("overflow-hidden");
     expect(container.querySelectorAll("main.garden-chat-scroll")).toHaveLength(1);
     expect(container.querySelectorAll(".garden-chat-composer")).toHaveLength(1);
     expect(container.querySelector(".garden-composer-row")).toBeTruthy();

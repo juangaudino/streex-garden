@@ -173,7 +173,7 @@ function Ask() {
   }, [thread.length, thinking]);
 
   return (
-    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col overflow-hidden">
+    <div className="garden-ask-layout flex min-h-0 min-w-0 max-w-full flex-col">
       {/* compact header */}
       <header className="z-30 grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/70 bg-background/85 px-4 py-2.5 backdrop-blur-xl sm:px-8 lg:px-12">
         {from === "garden-ai" ? (
@@ -205,7 +205,7 @@ function Ask() {
 
       <main
         ref={conversationRef}
-        className="garden-chat-scroll min-h-0 flex-1 overflow-y-auto"
+        className="garden-chat-scroll min-h-0 flex-1"
         onScroll={(event) => {
           const conversation = event.currentTarget;
           nearBottomRef.current = conversation.scrollHeight - conversation.scrollTop - conversation.clientHeight < 160;

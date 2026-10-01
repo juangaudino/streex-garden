@@ -13,8 +13,10 @@ resize events and it does not write viewport dimensions or keyboard offsets.
 
 When editing is active, the shell hides mobile bottom navigation and removes
 its normal bottom reserve. That is the only keyboard-specific layout policy.
-Chat routes use one bounded column with one scrollable conversation and a
-normal-flow composer. Long forms and sheets use one bounded surface with one
+On narrow screens, Ask routes use document flow as the page scroll owner and
+keep the composer in normal flow. The fixed mobile navigation is hidden on Ask
+routes before it can cover the composer; it does not reserve or calculate
+keyboard space. Long forms and sheets use one bounded surface with one
 scrollable body; they do not recenter or translate themselves when focus
 changes. Dialogs and sheets must keep children at `min-width: 0`, and any
 intentional horizontal rail owns its own horizontal overflow. A screen must

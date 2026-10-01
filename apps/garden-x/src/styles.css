@@ -159,7 +159,11 @@
   }
 
   html,
-  body {
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 100%;
   }
 
@@ -174,11 +178,14 @@
 }
 
 .garden-app-shell {
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
   min-height: 100svh;
 }
 
 .garden-app-main {
+  width: 100%;
   min-width: 0;
   max-width: 100%;
   padding-bottom: calc(var(--garden-mobile-nav-height, 4.5rem) + 1rem);
@@ -186,12 +193,13 @@
 
 .garden-app-main--fullscreen {
   display: flex;
+  width: 100%;
   min-width: 0;
   max-width: 100%;
-  height: 100svh;
-  min-height: 0;
+  min-height: 100svh;
+  height: auto;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   padding-bottom: 0;
 }
 
@@ -200,10 +208,10 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  height: 100%;
-  min-height: 0;
+  min-height: 100svh;
+  height: auto;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .garden-ai-composer {
@@ -222,8 +230,8 @@
   width: calc(100% - 1rem);
   min-width: 0;
   max-width: calc(100vw - 1rem);
-  height: calc(100svh - 1rem);
-  max-height: none;
+  height: auto;
+  max-height: calc(100% - 1rem);
 }
 
 .garden-mobile-nav--keyboard-open {
@@ -261,10 +269,8 @@ html[data-garden-keyboard="open"] .garden-app-main:not(.garden-app-main--fullscr
 }
 
 .garden-chat-scroll {
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
+  overflow: visible;
 }
 
 .garden-chat-composer {
@@ -334,7 +340,7 @@ html[data-garden-keyboard="open"] .garden-app-main:not(.garden-app-main--fullscr
   .garden-mobile-sheet {
     width: 100%;
     height: auto;
-    max-height: 92vh;
+    max-height: min(92vh, calc(100% - 1rem));
   }
 }
 
@@ -348,12 +354,58 @@ html[data-garden-keyboard="open"] .garden-app-main:not(.garden-app-main--fullscr
   }
 
   .garden-ask-layout {
+    min-height: 0;
     height: 100%;
+    overflow: hidden;
+  }
+
+  .garden-app-main--fullscreen {
+    min-height: 0;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .garden-chat-scroll {
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .garden-ai-composer {
     position: static;
     max-width: none;
+  }
+}
+
+/*
+ * Mobile foundation contract:
+ * - document flow owns narrow-screen page scrolling;
+ * - dialogs/sheets own only their bounded body scroll;
+ * - Ask routes remove the fixed app navigation before it can cover the
+ *   composer; they do not calculate keyboard geometry;
+ * - native form controls stay at an iOS-safe size so Safari can preserve
+ *   accessible zoom without focus auto-zooming the page.
+ */
+@media (max-width: 639px) {
+  input,
+  textarea,
+  select {
+    font-size: 1rem;
+  }
+
+  .garden-app-main,
+  .garden-app-main--fullscreen,
+  .garden-ask-layout,
+  .garden-chat-composer,
+  .garden-conversation-composer,
+  .garden-composer-row,
+  .garden-suggestion-rail,
+  .garden-chat-scroll {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 }
 

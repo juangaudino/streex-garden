@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { act, cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { useGardenMobileViewport } from "./mobile-viewport";
+import { shouldHideMobileNavigation, useGardenMobileViewport } from "./mobile-viewport";
 
 function Harness() {
   const viewport = useGardenMobileViewport();
@@ -48,5 +48,12 @@ describe("shared Garden mobile viewport", () => {
 
     expect(document.documentElement.style.cssText).toBe("");
     expect(document.documentElement.dataset.gardenKeyboard).toBe("open");
+  });
+
+  it("hides the fixed mobile navigation before it can cover an Ask composer", () => {
+    expect(shouldHideMobileNavigation(true, false)).toBe(true);
+    expect(shouldHideMobileNavigation(true, true)).toBe(true);
+    expect(shouldHideMobileNavigation(false, true)).toBe(true);
+    expect(shouldHideMobileNavigation(false, false)).toBe(false);
   });
 });

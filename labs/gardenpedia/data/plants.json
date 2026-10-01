@@ -541,7 +541,8 @@
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "usu-lettuce"
+          "usu-lettuce",
+          "usu-lettuce-physiological-problems"
         ]
       },
       "hydroponics": {
@@ -560,12 +561,13 @@
       },
       "problems": {
         "short": "Heat stress, bitterness and tip issues matter",
-        "guidance": "Lettuce is highly sensitive to heat and stress. The V0 guide should flag environmental context without pretending that a text rule can diagnose tip burn, nutrient imbalance or root problems from age alone.",
+        "guidance": "Lettuce is highly sensitive to heat and water stress, which can increase bitterness and bolting. Tipburn and brown-rib symptoms are recognized physiological warning signs in leafy greens; use moisture, root-zone and nutrient history before assigning a cause to damaged edges or midribs.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
           "usu-lettuce",
-          "johnnys-lettuce"
+          "johnnys-lettuce",
+          "usu-lettuce-physiological-problems"
         ]
       }
     },

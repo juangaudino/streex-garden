@@ -28,6 +28,11 @@
       "note": "Variety-specific"
     },
     {
+      "label": "RHS size reference",
+      "value": "10–50 cm high/spread",
+      "note": "Tiny Tim cultivar reference; not a pod-spacing rule"
+    },
+    {
       "label": "Hydro pH / EC",
       "value": "6.0–6.5 / 2.0–4.0",
       "note": "OSU tomato crop-level reference"
@@ -54,11 +59,11 @@
     },
     "pruning": {
       "short": "Do not apply indeterminate-tomato pruning automatically",
-      "guidance": "Tiny Tim is determinate and micro-dwarf. Avoid aggressive sucker removal by default; prioritize healthy foliage and remove only damaged or clearly problematic growth unless real plant evidence supports more intervention.",
-      "evidenceType": "garden_adaptation",
+      "guidance": "Tiny Tim is a determinate, bush-type micro-dwarf. RHS states that bush cultivars do not need side shoots removed. Prioritize healthy foliage and remove only damaged or clearly problematic growth unless direct plant evidence supports more intervention.",
+      "evidenceType": "source_backed",
       "confidence": "high",
       "sourceIds": [
-        "reimer-tiny-tim"
+        "rhs-tiny-tim"
       ]
     },
     "harvest": {
@@ -67,7 +72,8 @@
       "evidenceType": "source_backed",
       "confidence": "high",
       "sourceIds": [
-        "reimer-tiny-tim"
+        "reimer-tiny-tim",
+        "rhs-tiny-tim"
       ]
     },
     "flowering": {
@@ -90,11 +96,12 @@
     },
     "problems": {
       "short": "Watch fruit load, light, heat and root-space limits",
-      "guidance": "A compact canopy does not mean a tiny root or nutrient demand. Garden should use actual history and photos to detect support, light or fruit-load issues.",
+      "guidance": "A compact canopy does not mean a tiny root or nutrient demand. RHS lists blossom-end rot, magnesium deficiency, tomato spotted wilt virus and grey mould among possible concerns for this cultivar context; use symptoms and actual history before assigning a cause or treatment.",
       "evidenceType": "garden_adaptation",
       "confidence": "medium",
       "sourceIds": [
-        "reimer-tiny-tim"
+        "reimer-tiny-tim",
+        "rhs-tiny-tim"
       ]
     }
   },

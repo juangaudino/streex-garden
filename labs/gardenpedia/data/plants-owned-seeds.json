@@ -1309,11 +1309,13 @@
         "sourceIds": []
       },
       "pruning": {
-        "short": "Cultivar- and system-specific shaping remains unresolved",
-        "guidance": "Do not copy pruning rules from Dwarf Bedding Petunia. Keep deadheading and shaping guidance open until a suitable cultivation source or actual plant behavior resolves it.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Deadhead for bloom; hard shaping remains unresolved",
+        "guidance": "UMN recommends removing faded petunia flowers to prolong bloom and notes that spreading types should not be pinched. Because this product has no named cultivar, apply deadheading as general petunia maintenance but leave hard cutting and shaping unresolved.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-petunias"
+        ]
       },
       "harvest": {
         "short": "Ornamental flowering identity; no food harvest guidance",
@@ -1324,10 +1326,12 @@
       },
       "flowering": {
         "short": "Flowering is the intended product outcome",
-        "guidance": "Track buds and bloom on the actual AeroGarden pod. No cultivar-specific flowering schedule is promoted here.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "guidance": "Petunias generally flower from spring toward frost when light is sufficient; UMN notes that low light reduces flower production. Track buds and bloom on the actual AeroGarden pod, without promoting a cultivar-specific schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-petunias"
+        ]
       },
       "hydroponics": {
         "short": "No accepted crop-specific hydro target yet",
@@ -1338,10 +1342,12 @@
       },
       "problems": {
         "short": "Actual habit and light response need observation",
-        "guidance": "Do not infer mature height or universal trailing behavior from the word cascading or from the Medium pod label. Validate the actual plant before recommending support, spacing or relocation.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "guidance": "Do not infer mature height or universal trailing behavior from the word cascading or from the Medium pod label. UMN notes that spreading types and hanging containers can need more frequent watering and that low light reduces flowering; use those as general petunia warning context, then validate the actual plant before recommending support, spacing or relocation.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-petunias"
+        ]
       }
     },
     "compatibilityProfile": {

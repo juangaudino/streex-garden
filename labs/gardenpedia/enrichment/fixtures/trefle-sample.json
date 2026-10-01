@@ -1,0 +1,12 @@
+{
+  "provider": "trefle",
+  "fixturePurpose": "adapter-contract-only",
+  "canonicalPublication": false,
+  "candidate": {
+    "id": "fixture-basil",
+    "scientific_name": "Ocimum basilicum",
+    "common_name": "Basil",
+    "synonyms": [],
+    "link": "https://trefle.io/"
+  }
+}

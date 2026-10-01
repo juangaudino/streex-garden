@@ -3,17 +3,18 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateCompatibilityProfile } from "./gardenpedia-compatibility-profile.mjs";
 import { validateGardenpediaLifeCapabilities } from "./gardenpedia-life-capabilities.mjs";
+import { loadSourceRegistry } from "./gardenpedia-source-registry.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = process.env.GARDENPEDIA_DATA_DIR
   ? path.resolve(process.env.GARDENPEDIA_DATA_DIR)
   : path.join(root, "labs", "gardenpedia", "data");
-const plantFiles = ["plants.json", "plants-current-gardens.json", "plants-owned-seeds.json", "plants-expansion-batch-a1.json", "plants-expansion-batch-b1.json", "plants-requests.json"];
-const sourceFiles = ["sources.json", "sources-current-gardens.json", "sources-owned-seeds.json", "sources-expansion-batch-a1.json", "sources-expansion-batch-b1.json", "sources-requests.json"];
+const plantFiles = ["plants.json", "plants-current-gardens.json", "plants-owned-seeds.json", "plants-expansion-batch-a1.json", "plants-expansion-batch-b1.json", "plants-expansion-wave-1.json", "plants-requests.json"];
+const sourceFiles = ["sources.json", "sources-current-gardens.json", "sources-owned-seeds.json", "sources-expansion-batch-a1.json", "sources-expansion-batch-b1.json", "sources-expansion-wave-1.json", "sources-requests.json"];
 const categories = new Set(["herbs", "leafy greens", "fruiting", "flowers", "alliums", "root vegetables", "vegetables", "fruits"]);
 const publicPlantFields = new Set(["id", "name", "spanishName", "scientificName", "variety", "category", "emoji", "guideCompletion", "tags", "summary", "metrics", "sections", "compatibilityProfile", "lifeCapabilities"]);
 const sectionNames = new Set(["identity", "germination", "thinning", "pruning", "harvest", "flowering", "hydroponics", "problems"]);
-const sourceTypes = new Set(["botanical_taxonomy", "grower_reference", "horticulture_reference", "product_reference", "purchase_listing", "specialist_grower", "university_extension", "university_research"]);
+const sourceTypes = new Set(["botanical_taxonomy", "grower_reference", "horticulture_reference", "product_reference", "purchase_listing", "specialist_grower", "university_extension", "university_research", "manufacturer_guide", "discovery_provider"]);
 const approvedDomains = ["cornell.edu", "highmowingseeds.com", "fedcoseeds.com", "usda.gov", "powo.science.kew.org", "kew.org", "johnnyseeds.com", "extension.usu.edu", "extension.okstate.edu", "ask.ifas.ufl.edu", "extension.umn.edu", "extension.illinois.edu", "extension.colostate.edu", "extension.wisc.edu", "extension.unh.edu", "extension.ncsu.edu", "extension.psu.edu", "extension.missouri.edu"];
 
 const read = (file) => {
@@ -112,7 +113,7 @@ function main() {
   if (!Array.isArray(proposedData.unknowns) || proposedData.unknowns.some((value) => typeof value !== "string")) throw new Error("Proposal unknowns must be text");
 
   const existingPlants = plantFiles.flatMap(read);
-  const existingSources = sourceFiles.flatMap(read);
+  const existingSources = loadSourceRegistry(source, sourceFiles);
   const knownSourceById = new Map(existingSources.map((record) => [record.id, record]));
   const knownSourceByUrl = new Map(existingSources.map((record) => [record.url, record]));
   const proposedSourceIds = new Map();

@@ -26,7 +26,11 @@ const APP_SHELL = [
   "./data/visuals.json",
   "./data/seed-inventory.json",
   "./data/neighbor-profiles.json",
-  "./data/harvest-use-v0.1.json"
+  "./data/harvest-use-v0.1.json",
+  "./data/plants-expansion-wave-1.json",
+  "./data/sources-expansion-wave-1.json",
+  "./data/translations-expansion-wave-1-es.json",
+  "./data/seed-profiles-expansion-wave-1.json"
 ];
 
 self.addEventListener("install", (event) => {

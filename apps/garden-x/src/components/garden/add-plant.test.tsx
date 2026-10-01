@@ -287,9 +287,11 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
     fireEvent.click(await screen.findByRole("button", { name: "Back to Library" }));
-    expect(await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeTruthy();
+    const librarySearch = await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…");
+    expect(librarySearch).toBeTruthy();
     expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
 
+    fireEvent.change(librarySearch, { target: { value: "Buttercrunch" } });
     fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));
     fireEvent.click(screen.getByRole("button", { name: "Add to this position" }));
     await waitFor(() =>
@@ -306,6 +308,8 @@ describe("AddPlantSheet contextual B3 entry point", () => {
   it("selects a contextual candidate using the existing Add Plant save flow", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Back to Library" }));
+    fireEvent.change(await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…"), { target: { value: "Buttercrunch" } });
     fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));
     expect(
       await screen.findByText("Buttercrunch Lettuce", { selector: "p.font-display" }),
@@ -324,6 +328,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
 
   it("records the selected stable cycle origin using localized labels", async () => {
     openSheet();
+    fireEvent.change(await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…"), { target: { value: "Buttercrunch" } });
     fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));
     const origin = await screen.findByLabelText("How this cycle began · optional");
     expect(origin.querySelector('option[value="bare_root"]')?.textContent).toBe("Bare root");
@@ -339,6 +344,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
   it("localizes origin choices in Spanish without changing their persisted IDs", async () => {
     mocks.language = "es";
     openSheet();
+    fireEvent.change(await screen.findByPlaceholderText("Buscar albahaca, Ocimum, Genovese…"), { target: { value: "Buttercrunch" } });
     fireEvent.click(await screen.findByRole("button", { name: /Lechuga Buttercrunch/ }));
     const origin = await screen.findByLabelText("Cómo comenzó este ciclo · opcional");
     expect(origin.querySelector('option[value="bare_root"]')?.textContent).toBe("Raíz desnuda");

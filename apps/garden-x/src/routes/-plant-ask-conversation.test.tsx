@@ -216,4 +216,16 @@ describe("plant-scoped Ask Garden real route composer", () => {
     expect(composer?.className).toContain("shrink-0");
     expect(composer?.className).not.toContain("sticky");
   });
+
+  it("uses the same bounded chat contract as global Ask Garden", () => {
+    mocks.useGarden.mockReturnValue(buildStore());
+    const PlantAsk = Route.options.component as React.ComponentType;
+    const { container } = render(<PlantAsk />);
+
+    expect(container.querySelector(".garden-ask-layout")?.className).toContain("overflow-hidden");
+    expect(container.querySelectorAll("main.garden-chat-scroll")).toHaveLength(1);
+    expect(container.querySelectorAll(".garden-chat-composer")).toHaveLength(1);
+    expect(container.querySelector(".garden-composer-row")).toBeTruthy();
+    expect(container.querySelector(".garden-suggestion-rail")?.className).toContain("overflow-x-auto");
+  });
 });

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "illinois-oregano-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Oregano",
+    "url": "https://extension.illinois.edu/herbs/oregano",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Greek and Mexican oregano identity context; species/type scope remains explicit",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "illinois-tarragon-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "French Tarragon",
+    "url": "https://extension.illinois.edu/herbs/tarragon-french",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "distinguishes seed-grown Russian tarragon from sterile French tarragon",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "propagation",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "illinois-winter-savory-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Winter Savory",
+    "url": "https://extension.illinois.edu/herbs/savory-winter",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "species-specific winter savory habit, propagation, care and harvest",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "illinois-caraway-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Caraway",
+    "url": "https://extension.illinois.edu/herbs/caraway",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "caraway herb identity and crop context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "illinois-epazote-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Epazote",
+    "url": "https://extension.illinois.edu/herbs/epazote",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "epazote seed, habit, harvest and culinary-use context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "johnnys-tomato-specialty-wave3",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Specialty tomato varieties",
+    "url": "https://www.johnnyseeds.com/vegetables/tomatoes/specialty-tomatoes/?srule=product-name-descending",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "named specialty tomato identity and type context; product facts stay scoped",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "johnnys-black-cherry-wave3",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Cherry tomato varieties",
+    "url": "https://www.johnnyseeds.com/vegetables/tomatoes/cherry-tomatoes/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "cherry tomato type and named-product discovery context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "harvest"
+    ]
+  },
+  {
+    "id": "johnnys-sunrise-sauce-wave3",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Sunrise Sauce F1 Tomato Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/tomatoes/paste-tomatoes/sunrise-sauce-f1-tomato-seed-3376.html",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Sunrise Sauce identity and product-specific determinate/container facts",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "johnnys-winter-squash-wave3",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Winter Squash — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/vegetable-library/winter-squash/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "winter squash direct sowing, culture, harvest and storage context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "cultivation",
+      "seedling",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "johnnys-squash-catalog-wave3",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Squash seed varieties",
+    "url": "https://www.johnnyseeds.com/vegetables/squash/",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "summer and winter squash type/product identity context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivar"
+    ]
+  },
+  {
+    "id": "usu-pollinator-garden-wave3",
+    "publisher": "Utah State University Extension",
+    "title": "Welcoming Pollinators in Home Gardens",
+    "url": "https://extension.usu.edu/utah4h/research/creating-sustainable-school-and-home-gardens-welcoming-pollinators",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "pollinator value and practical garden placement context; not a cultivar guide",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "flowering"
+    ]
+  },
+  {
+    "id": "illinois-snapdragon-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Snapdragon",
+    "url": "https://extension.illinois.edu/flowers/snapdragon",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "snapdragon identity, exposure, seasonal habit and deadheading context",
+    "accessed": "2026-10-01",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 3 source registry",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "flowering",
+      "harvest"
+    ]
+  }
+]

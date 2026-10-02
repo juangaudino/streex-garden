@@ -16,8 +16,10 @@ export interface PlantRecommendation {
 
 export interface AdvisorRequest {
   query: string;
+  language?: "en" | "es";
   activeFilters?: {
     category?: string;
+    indoorLight?: string;
     outdoorExposure?: string;
     inventory?: string;
   };

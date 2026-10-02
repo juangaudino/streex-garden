@@ -6,6 +6,7 @@ import {
   donorPlants,
   donorPlantsById,
   findCanonicalEntry,
+  normalizeIndoorLightFilter,
   normalizeOutdoorExposureFilter,
 } from "./canonical-adapter";
 import { filterDonorPlants } from "./explore";
@@ -93,12 +94,16 @@ describe("direct Gardenpedia presentation adapter", () => {
     });
     expect(fullSun.length).toBe(198);
     expect(partialSun.length).toBe(5);
-    expect(unknownLight.length).toBe(15);
+    expect(unknownLight.length).toBe(14);
     expect(fullSun.every((plant) => plant.outdoorExposures.includes("full_sun"))).toBe(true);
     expect(partialSun.every((plant) => plant.outdoorExposures.includes("partial_sun"))).toBe(true);
     expect(unknownLight.every((plant) => plant.outdoorExposures.includes("unknown"))).toBe(true);
-    expect(donorPlants.every((plant) => plant.lightIntensity === "unknown")).toBe(true);
-    expect(normalizeOutdoorExposureFilter("partial shade")).toBe("partial_sun");
+    expect(donorPlants.every((plant) => plant.indoorLightRequirement === "unknown")).toBe(true);
+    expect(normalizeIndoorLightFilter("high light")).toBe("high");
+    expect(normalizeIndoorLightFilter("luz media")).toBe("medium");
+    expect(normalizeIndoorLightFilter("low light")).toBe("low");
+    expect(normalizeIndoorLightFilter("not established")).toBe("unknown");
+    expect(normalizeOutdoorExposureFilter("partial shade")).toBe("partial_shade");
     expect(normalizeOutdoorExposureFilter("full sun")).toBe("full_sun");
     expect(normalizeOutdoorExposureFilter("low light")).toBeNull();
     expect(
@@ -109,7 +114,89 @@ describe("direct Gardenpedia presentation adapter", () => {
         outdoorExposure: "partial shade",
         inventory: "all",
       }),
+    ).toHaveLength(2);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "all",
+        indoorLight: "unknown",
+        outdoorExposure: "partial_sun",
+        inventory: "all",
+      }),
     ).toHaveLength(5);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "herbs",
+        indoorLight: "all",
+        outdoorExposure: "partial_sun",
+        inventory: "all",
+      }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "herbs",
+        indoorLight: "low",
+        outdoorExposure: "all",
+        inventory: "all",
+      }),
+    ).toHaveLength(0);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "leafy greens",
+        indoorLight: "medium",
+        outdoorExposure: "all",
+        inventory: "all",
+      }),
+    ).toHaveLength(0);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "all",
+        indoorLight: "high",
+        outdoorExposure: "full_sun",
+        inventory: "all",
+      }),
+    ).toHaveLength(0);
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "all",
+        indoorLight: "medium",
+        outdoorExposure: "partial_sun",
+        inventory: "all",
+      }),
+    ).toHaveLength(0);
+    const partialShade = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "all",
+      indoorLight: "all",
+      outdoorExposure: "partial_shade",
+      inventory: "all",
+    });
+    expect(partialShade).toHaveLength(2);
+    expect(partialShade.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining(["delphinium-magic-fountains-dwarf", "zinnia-lilliput-mixed"]),
+    );
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "all",
+        indoorLight: "all",
+        outdoorExposure: "shade",
+        inventory: "all",
+      }),
+    ).toHaveLength(0);
   });
 
   it("keeps a high-data reference and a lower/uncertain identity generic", () => {
@@ -152,6 +239,19 @@ describe("direct Gardenpedia presentation adapter", () => {
     const lowLight = await getPlantRecommendations({ query: "poca luz para interior" });
     expect(lowLight.recommendations).toHaveLength(0);
     expect(lowLight.summary).toContain("intensidad de luz interior");
+    const lowLightEnglish = await getPlantRecommendations({
+      query: "low light indoors",
+      language: "en",
+    });
+    expect(lowLightEnglish.recommendations).toHaveLength(0);
+    expect(lowLightEnglish.summary).toContain("indoor light-intensity");
+
+    const herbsEnglish = await getPlantRecommendations({
+      query: "herbs for cooking",
+      language: "en",
+    });
+    expect(herbsEnglish.recommendations.length).toBeGreaterThan(0);
+    expect(herbsEnglish.summary).toContain("public catalog identities");
 
     const hydro = await getPlantRecommendations({ query: "hidroponía compacta" });
     expect(

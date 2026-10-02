@@ -11,20 +11,32 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import { ADVISOR_PRESETS } from "./plant-advisor.data";
 import { getPlantRecommendations } from "./plant-advisor.service";
 import type { AdvisorResponse } from "./plant-advisor.types";
 import { donorPlants as plants, type DonorPlant } from "./canonical-adapter";
-import { cn } from "@/lib/utils";
 
 const plantsById = new Map<string, DonorPlant>(plants.map((plant) => [plant.id, plant]));
+
+const PRESET_TITLES: Record<string, { en: string; es: string }> = {
+  beginner: { en: "Beginner gardener", es: "Principiante sin experiencia" },
+  "low-light": { en: "Low light / indoors", es: "Poca luz / interior" },
+  "continuous-harvest": { en: "Continuous harvest", es: "Cosecha continua" },
+  "compact-hydro": { en: "Compact hydroponics", es: "Hidroponía compacta" },
+};
 
 export function PlantAdvisorDrawer({
   activeFilters,
   onApplyRecommendations,
   language = "es",
 }: {
-  activeFilters?: { category?: string; outdoorExposure?: string; inventory?: string };
+  activeFilters?: {
+    category?: string;
+    indoorLight?: string;
+    outdoorExposure?: string;
+    inventory?: string;
+  };
   onApplyRecommendations?: (plantIds: string[]) => void;
   language?: "en" | "es";
 }) {
@@ -44,6 +56,9 @@ export function PlantAdvisorDrawer({
           recommendations: "Recommendations",
           apply: "Filter catalog with these options",
           noMatch: "Try adding light hours, indoor or outdoor context, and available space.",
+          error: "We could not consult the advisor. Try again in a moment.",
+          inventoryOwned: "Own seed inventory",
+          viewDetail: "View full profile →",
         }
       : {
           title: "Ask Garden",
@@ -59,7 +74,11 @@ export function PlantAdvisorDrawer({
           recommendations: "Recomendaciones",
           apply: "Filtrar catálogo con estas opciones",
           noMatch: "Prueba indicando horas de luz, interior o exterior y espacio disponible.",
+          error: "No pudimos consultar el asesor. Intenta de nuevo en un momento.",
+          inventoryOwned: "Con semilla propia",
+          viewDetail: "Ver ficha completa →",
         };
+
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -75,11 +94,12 @@ export function PlantAdvisorDrawer({
     try {
       const response = await getPlantRecommendations({
         query: trimmed,
+        language,
         ...(activeFilters ? { activeFilters } : {}),
       });
       setResult(response);
     } catch {
-      setError("No pudimos consultar el asesor. Intenta de nuevo en un momento.");
+      setError(copy.error);
       setResult(null);
     } finally {
       setLoading(false);
@@ -157,12 +177,14 @@ export function PlantAdvisorDrawer({
                   type="button"
                   onClick={() => run(preset.query)}
                   disabled={loading}
-                  className="glass-soft flex min-h-12 items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/80 disabled:opacity-60"
+                  className="glass-soft flex items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/70 disabled:opacity-60"
                 >
                   <span aria-hidden="true" className="text-base">
                     {preset.badge}
                   </span>
-                  <span className="font-medium">{preset.title}</span>
+                  <span className="font-medium">
+                    {PRESET_TITLES[preset.id]?.[language] ?? preset.title}
+                  </span>
                 </button>
               ))}
             </div>
@@ -201,7 +223,7 @@ export function PlantAdvisorDrawer({
                             </span>
                             <div>
                               <h4 className="font-display text-base font-semibold leading-tight">
-                                {plant.spanishName}
+                                {language === "es" ? plant.spanishName : plant.name}
                               </h4>
                               <p className="text-xs italic text-muted-foreground">
                                 {plant.scientificName}
@@ -213,10 +235,14 @@ export function PlantAdvisorDrawer({
                               "shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold text-primary-foreground",
                             )}
                           >
-                            {item.score}%{" "}
-                            {language === "es" ? "coincidencia de criterios" : "criteria match"}
+                            {item.score}% {language === "es" ? "afinidad" : "criteria match"}
                           </span>
                         </div>
+                        {plant.inventory === "owned" ? (
+                          <p className="mt-3 inline-flex rounded-full bg-secondary px-2 py-1 text-[10px] font-semibold text-secondary-foreground">
+                            {copy.inventoryOwned}
+                          </p>
+                        ) : null}
                         <p className="mt-3 text-sm leading-6 text-muted-foreground">
                           {item.reason}
                         </p>
@@ -225,7 +251,7 @@ export function PlantAdvisorDrawer({
                           onClick={() => setOpen(false)}
                           className="mt-4 inline-flex text-xs font-semibold text-accent underline-offset-4 hover:underline"
                         >
-                          Ver ficha completa →
+                          {copy.viewDetail}
                         </a>
                       </article>
                     );

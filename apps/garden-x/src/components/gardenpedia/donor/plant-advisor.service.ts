@@ -30,7 +30,12 @@ export async function getPlantRecommendations(request: AdvisorRequest): Promise<
   return simulateLocalAdvisorResponse(request);
 }
 
-/** Heurística local solo para el demo: puntúa el catálogo por palabras clave. */
+/**
+ * Deterministic local matching against canonical attributes.
+ *
+ * The score is not a probability or an agronomic success prediction. It is
+ * simply matched requested, evidence-backed criteria / requested criteria.
+ */
 function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse {
   const text = normalize(request.query);
   const wantsLowLight = /(poca luz|sombra|interior|sin sol|ventana)/.test(text);
@@ -38,60 +43,109 @@ function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse 
   const wantsHerbs = /(hierba|aromatic|albahaca|menta|cocina|infusion)/.test(text);
   const wantsLeaves = /(hoja|ensalada|lechuga|verde)/.test(text);
   const wantsHydro = /(hidropon|aerogarden|uruq|encimera|pods)/.test(text);
+  const wantsFlowers = /(flor|ornamental|poliniz)/.test(text);
+  const wantsFruit = /(fruto|tomate|pimiento|pepper|fruit)/.test(text);
+  const wantsCompact = /(compact|pequeñ|enano|poco espacio|encimera|small)/.test(text);
   const wantsOwned =
     /(tengo semilla|inventario|mis semillas)/.test(text) ||
     request.activeFilters?.inventory === "owned";
 
   const scored = plants
     .map((plant) => {
-      let score = 55;
+      if (wantsLowLight && plant.light !== "partial_sun") return null;
+      if (
+        wantsHydro &&
+        plant.hydroponicSuitability !== "compatible" &&
+        plant.hydroponicSuitability !== "conditional"
+      ) {
+        return null;
+      }
       const reasons: string[] = [];
+      let criteria = 0;
+      let matches = 0;
 
       if (wantsLowLight) {
-        if (plant.light === "baja") {
-          score += 24;
-          reasons.push("prospera con luz escasa");
-        } else if (plant.light === "media") {
-          score += 12;
-          reasons.push("acepta luz moderada de interior");
-        } else {
-          score -= 18;
+        criteria += 1;
+        if (plant.light === "partial_sun") {
+          matches += 1;
+          reasons.push("tiene una necesidad de luz parcial documentada");
         }
       }
-      if (wantsHerbs && plant.category === "herbs") {
-        score += 18;
-        reasons.push("aromática de uso continuo en cocina");
+      if (wantsHerbs) {
+        criteria += 1;
+        if (plant.categoryKey === "herbs") {
+          matches += 1;
+          reasons.push("pertenece a la categoría de hierbas del catálogo");
+        }
       }
-      if (wantsLeaves && (plant.category === "leafy greens" || plant.category === "vegetables")) {
-        score += 18;
-        reasons.push("follaje comestible de ciclo corto");
+      if (wantsLeaves) {
+        criteria += 1;
+        if (
+          plant.categoryKey === "leafy greens" ||
+          (plant.harvestable && plant.categoryKey === "vegetables")
+        ) {
+          matches += 1;
+          reasons.push("tiene una categoría o uso de hoja respaldado por el catálogo");
+        }
       }
-      if (wantsHydro && (plant.category === "herbs" || plant.category === "leafy greens")) {
-        score += 14;
-        reasons.push("porte compacto apto para sistemas de mesa");
+      if (wantsHydro) {
+        criteria += 1;
+        if (
+          plant.hydroponicSuitability === "compatible" ||
+          plant.hydroponicSuitability === "conditional"
+        ) {
+          matches += 1;
+          reasons.push(
+            plant.hydroponicSuitability === "compatible"
+              ? "compatibilidad hidropónica respaldada"
+              : "compatibilidad hidropónica condicional",
+          );
+        }
       }
-      if (wantsEasy && plant.sourceCount >= 2) {
-        score += 10;
-        reasons.push("tiene más de una fuente canónica asociada");
+      if (wantsFlowers) {
+        criteria += 1;
+        if (plant.categoryKey === "flowers") {
+          matches += 1;
+          reasons.push("pertenece a la categoría de flores del catálogo");
+        }
       }
-      if (wantsOwned) reasons.push("el estado de inventario privado se revisa solo en Mi jardín");
+      if (wantsFruit) {
+        criteria += 1;
+        if (plant.categoryKey === "fruits") {
+          matches += 1;
+          reasons.push("pertenece a la categoría de frutos del catálogo");
+        }
+      }
+      if (wantsCompact) {
+        criteria += 1;
+        if (plant.growthHabits.includes("compact") || plant.growthHabits.includes("mounded")) {
+          matches += 1;
+          reasons.push("tiene un hábito compacto o amontonado documentado");
+        }
+      }
+      if (wantsOwned) reasons.push("el inventario privado se revisa solo en Mi jardín");
       if (request.activeFilters?.category && request.activeFilters.category !== "all") {
-        if (plant.category === request.activeFilters.category) score += 8;
-        else score -= 10;
+        criteria += 1;
+        if (plant.categoryKey === request.activeFilters.category) matches += 1;
       }
+
+      const score = criteria ? Math.round((matches / criteria) * 100) : 0;
 
       const recommendation: PlantRecommendation = {
         plantId: plant.id,
-        score: clamp(score),
+        score,
         reason: reasons.length
           ? capitalize(reasons.slice(0, 2).join(" y "))
-          : `Opción equilibrada del catálogo con ${plant.sourceCount} fuentes canónicas asociadas.`,
+          : wantsEasy
+            ? "La facilidad de cultivo no está establecida como un atributo canónico; no se usa para subir esta recomendación."
+            : "No hay una coincidencia canónica explícita para las condiciones indicadas.",
       };
       return recommendation;
     })
+    .filter((recommendation): recommendation is PlantRecommendation => Boolean(recommendation))
     .sort((a, b) => b.score - a.score);
 
-  const top = scored.filter((item) => item.score >= 62).slice(0, 4);
+  const top = scored.filter((item) => item.score > 0).slice(0, 4);
 
   return {
     query: request.query,
@@ -111,10 +165,6 @@ function normalize(value: string) {
     .toLocaleLowerCase("es")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
-}
-
-function clamp(value: number) {
-  return Math.max(0, Math.min(99, Math.round(value)));
 }
 
 function capitalize(value: string) {

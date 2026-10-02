@@ -18,7 +18,7 @@ const categoryLabels: Record<string, string> = {
 
 const detailLabels = {
   es: {
-    library: "Biblioteca",
+    library: "Gardenpedia",
     profile: "Ficha",
     backed: "Respaldado",
     adapted: "Adaptación Garden",
@@ -27,9 +27,26 @@ const detailLabels = {
     calculator: "Calculadora de mezcla nutritiva",
     guides: "Guías de manejo",
     sections: "secciones de cultivo",
+    seedProtocol: "Protocolo de germinación",
+    seedProtocolBody:
+      "El perfil de semillas canónico está disponible; su ficha detallada se abrirá en la siguiente integración.",
+    source: "Fuente",
+    openSource: "Abrir fuente",
+    harvestUse: "Qué puedes hacer ahora",
+    ediblePart: "Parte comestible",
+    bestUse: "Mejor uso",
+    quickUses: "Usos rápidos",
+    neighbors: "Buenas vecinas / Mejor separar",
+    supportedRelations:
+      "Relaciones respaldadas por evidencia; no son una promesa universal de companion planting.",
+    guideReference: "Referencia externa",
+    guide: "Guía visual",
+    sourceBacked: "Respaldado por fuente",
+    gardenAdaptation: "Adaptación de Garden",
+    pendingState: "Pendiente / desconocido",
   },
   en: {
-    library: "Library",
+    library: "Gardenpedia",
     profile: "Profile",
     backed: "Source-backed",
     adapted: "Garden adaptation",
@@ -38,6 +55,23 @@ const detailLabels = {
     calculator: "Nutrient mixing calculator",
     guides: "Growing guides",
     sections: "growing sections",
+    seedProtocol: "Germination protocol",
+    seedProtocolBody:
+      "A canonical Seed Profile is available; its detailed route will open in the next integration.",
+    source: "Source",
+    openSource: "Open source",
+    harvestUse: "What can you do now?",
+    ediblePart: "Edible part",
+    bestUse: "Best use",
+    quickUses: "Quick uses",
+    neighbors: "Good neighbors / Better separate",
+    supportedRelations:
+      "Evidence-backed relationships; not a universal companion-planting promise.",
+    guideReference: "External reference",
+    guide: "Visual guide",
+    sourceBacked: "Source-backed",
+    gardenAdaptation: "Garden adaptation",
+    pendingState: "Pending / unknown",
   },
 } as const;
 
@@ -130,6 +164,27 @@ function FullSheet({
           <p className="mt-2 text-sm italic text-muted-foreground">{detail.scientificName}</p>
           <p className="mt-4 text-sm leading-7 text-muted-foreground">{detail.summary}</p>
 
+          {detail.seedProfileAvailable && (
+            <div className="mt-5 rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <div className="flex items-start gap-3">
+                <span className="text-xl" aria-hidden="true">
+                  🌱
+                </span>
+                <div>
+                  <p className="font-display text-sm font-semibold">{labels.seedProtocol}</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                    {labels.seedProtocolBody}
+                  </p>
+                  <span className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground">
+                    {language === "es"
+                      ? "Conexión canónica preparada"
+                      : "Canonical connection prepared"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="mt-5 grid grid-cols-2 gap-3">
             {detail.metrics.map((metric) => (
               <div key={metric.label} className="glass-soft p-3">
@@ -179,14 +234,19 @@ function FullSheet({
         <NutrientCalculator
           plantIds={[detail.id]}
           defaultLiters={2.5}
+          language={language}
           eyebrow={language === "es" ? "Herramienta de cultivo" : "Growing tool"}
           title={labels.calculator}
           description={`${language === "es" ? detail.spanishName : detail.name}. ${language === "es" ? "Suma las demás plantas que comparten el mismo agua y los litros que tienes." : "Add other plants sharing the water and the liters in your reservoir."}`}
         />
         {detail.timeline && (
           <section className="glass-panel p-5 sm:p-6">
-            <p className="eyebrow text-[10px]">Calendar · v0.1</p>
-            <h2 className="mt-1 font-display text-xl font-semibold">Grow Timeline</h2>
+            <p className="eyebrow text-[10px]">
+              {language === "es" ? "Calendario · v0.1" : "Calendar · v0.1"}
+            </p>
+            <h2 className="mt-1 font-display text-xl font-semibold">
+              {language === "es" ? "Línea de cultivo" : "Grow timeline"}
+            </h2>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
               {detail.timeline.note}
             </p>
@@ -212,37 +272,42 @@ function FullSheet({
               ))}
             </ol>
             <p className="mt-4 border-t border-border pt-4 text-xs text-muted-foreground">
-              Observar y decidir: {detail.timeline.decide}
+              {language === "es" ? "Observar y decidir: " : "Observe and decide: "}
+              {detail.timeline.decide}
             </p>
           </section>
         )}
 
         {detail.harvestUse && (
           <section className="glass-panel p-5 sm:p-6">
-            <p className="eyebrow text-[10px]">Después de cosechar · Harvest use</p>
+            <p className="eyebrow text-[10px]">
+              {language === "es"
+                ? "Después de cosechar · Uso de la cosecha"
+                : "After harvest · Harvest use"}
+            </p>
             <div className="mt-1 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
               <h2 className="min-w-0 font-display text-2xl font-bold leading-tight">
-                ¿Qué puedes hacer ahora?
+                {labels.harvestUse}
               </h2>
               <span className="shrink-0 text-[10px] text-muted-foreground">
-                v0.2 · Source-backed
+                v0.2 · {labels.sourceBacked}
               </span>
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
               <div className="glass-soft p-4">
-                <p className="eyebrow text-[10px]">Parte comestible</p>
+                <p className="eyebrow text-[10px]">{labels.ediblePart}</p>
                 <p className="mt-2 font-display text-base font-semibold">
                   {detail.harvestUse.ediblePart}
                 </p>
               </div>
               <div className="glass-soft p-4">
-                <p className="eyebrow text-[10px]">Mejor uso</p>
+                <p className="eyebrow text-[10px]">{labels.bestUse}</p>
                 <p className="mt-2 text-sm font-semibold leading-6">{detail.harvestUse.bestUse}</p>
               </div>
             </div>
 
-            <p className="eyebrow mt-5 text-[10px]">Usos rápidos</p>
+            <p className="eyebrow mt-5 text-[10px]">{labels.quickUses}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {detail.harvestUse.quickUses.map((use) => (
                 <span
@@ -264,9 +329,12 @@ function FullSheet({
                     <span
                       className={cn(
                         "rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide",
-                        option.rank === "Mejor opción" && "bg-secondary text-secondary-foreground",
-                        option.rank === "Buena opción" && "bg-muted text-foreground",
-                        option.rank === "Posible" && "bg-accent/20 text-accent-foreground",
+                        ["Mejor opción", "Best option"].includes(option.rank) &&
+                          "bg-secondary text-secondary-foreground",
+                        ["Buena opción", "Good option"].includes(option.rank) &&
+                          "bg-muted text-foreground",
+                        ["Posible", "Possible"].includes(option.rank) &&
+                          "bg-accent/20 text-accent-foreground",
                       )}
                     >
                       {option.rank}
@@ -280,7 +348,7 @@ function FullSheet({
                     ))}
                   </ol>
                   <div className="mt-auto flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-border pt-3 text-xs">
-                    <span className="font-semibold text-muted-foreground">Fuentes</span>
+                    <span className="font-semibold text-muted-foreground">{labels.source}</span>
                     {option.sources.map((source) => (
                       <SourceLink key={source.url} label={source.label} url={source.url} />
                     ))}
@@ -293,19 +361,22 @@ function FullSheet({
 
         {detail.neighbors && (
           <section className="glass-panel p-5 sm:p-6">
-            <p className="eyebrow text-[10px]">↔ Vecinas</p>
+            <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>
             <div className="mt-1 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-end">
-              <h2 className="font-display text-2xl font-bold leading-tight">
-                Buenas vecinas / Mejor separar
-              </h2>
+              <h2 className="font-display text-2xl font-bold leading-tight">{labels.neighbors}</h2>
               <p className="text-xs leading-relaxed text-muted-foreground">
-                Garden prioriza compatibilidad real de cultivo. Una asociación tradicional solo sube
-                de nivel cuando una fuente confiable la respalda.
+                {labels.supportedRelations}
               </p>
             </div>
             <div className="mt-5 grid gap-3 lg:grid-cols-2">
-              <NeighborColumn title="✓ Buenas vecinas" entries={detail.neighbors.good} />
-              <NeighborColumn title="↔ Mejor separar" entries={detail.neighbors.avoid} />
+              <NeighborColumn
+                title={language === "es" ? "✓ Buenas vecinas" : "✓ Good neighbors"}
+                entries={detail.neighbors.good}
+              />
+              <NeighborColumn
+                title={language === "es" ? "↔ Mejor separar" : "↔ Better separate"}
+                entries={detail.neighbors.avoid}
+              />
             </div>
             <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
               ‘Mejor separar’ normalmente significa mala combinación de luz / espacio / raíces /
@@ -316,9 +387,9 @@ function FullSheet({
 
         {detail.visualGuide && (
           <section className="glass-panel p-5 sm:p-6">
-            <p className="eyebrow text-[10px]">Referencia externa</p>
+            <p className="eyebrow text-[10px]">{labels.guideReference}</p>
             <div className="mt-1 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-end">
-              <h2 className="font-display text-2xl font-bold leading-tight">Guía visual</h2>
+              <h2 className="font-display text-2xl font-bold leading-tight">{labels.guide}</h2>
               <p className="text-xs leading-relaxed text-muted-foreground">
                 Referencias externas elegidas por la acción que enseñan, no como fotos decorativas
                 de la planta.
@@ -347,14 +418,14 @@ function FullSheet({
                   {detail.visualGuide.description}
                 </p>
                 <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-border pt-3">
-                  <span className="truncate text-xs text-muted-foreground">Ver en la fuente</span>
+                  <span className="truncate text-xs text-muted-foreground">{labels.source}</span>
                   <a
                     href={detail.visualGuide.url}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="flex shrink-0 items-center gap-1 text-xs font-bold underline underline-offset-4"
                   >
-                    Abrir fuente <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                    {labels.openSource} <ArrowUpRight aria-hidden="true" className="size-3.5" />
                   </a>
                 </div>
               </div>
@@ -369,7 +440,12 @@ function FullSheet({
           </h2>
           <div className="mt-4 space-y-3">
             {detail.guides.map((guide, index) => (
-              <GuideAccordion key={guide.id} guide={guide} defaultOpen={index === 0} />
+              <GuideAccordion
+                key={guide.id}
+                guide={guide}
+                defaultOpen={index === 0}
+                language={language}
+              />
             ))}
           </div>
         </section>
@@ -426,9 +502,11 @@ function NeighborColumn({
 function GuideAccordion({
   guide,
   defaultOpen,
+  language,
 }: {
   guide: DonorGuideSection;
   defaultOpen?: boolean;
+  language: "en" | "es";
 }) {
   const [open, setOpen] = useState(Boolean(defaultOpen));
 
@@ -465,13 +543,13 @@ function GuideAccordion({
             ))}
             {guide.avoid && (
               <li>
-                <strong>Evitar:</strong> {guide.avoid}
+                <strong>{language === "es" ? "Evitar:" : "Avoid:"}</strong> {guide.avoid}
               </li>
             )}
           </ul>
           {guide.context && (
             <p className="mt-3 text-sm leading-7">
-              <strong>Contexto:</strong> {guide.context}
+              <strong>{language === "es" ? "Contexto:" : "Context:"}</strong> {guide.context}
             </p>
           )}
           <div className="mt-4 flex flex-wrap gap-2">
@@ -496,13 +574,19 @@ function GuideAccordion({
                 )}
               />
               {guide.backing === "source"
-                ? "Respaldado por fuente"
+                ? language === "es"
+                  ? "Respaldado por fuente"
+                  : "Source-backed"
                 : guide.backing === "pending"
-                  ? "Pendiente / desconocido"
-                  : "Adaptación de Garden"}
+                  ? language === "es"
+                    ? "Pendiente / desconocido"
+                    : "Pending / unknown"
+                  : language === "es"
+                    ? "Adaptación de Garden"
+                    : "Garden adaptation"}
             </span>
             <span className="rounded-full bg-muted px-3 py-1.5 text-xs font-semibold">
-              Confianza: {guide.confidence}
+              {language === "es" ? "Confianza" : "Confidence"}: {guide.confidence}
             </span>
           </div>
           <div className="mt-3 space-y-1.5">

@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { Check, ChevronRight, Leaf, Search, Sprout, Sun, TestTube2 } from "lucide-react";
+import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { donorPlants, type DonorPlant } from "./canonical-adapter";
+import { donorPlants, seedProfileCount, type DonorPlant } from "./canonical-adapter";
 
 type Plant = DonorPlant;
 type View = "library" | "seeds" | "machines";
@@ -14,12 +14,12 @@ export type GardenpediaLanguage = "en" | "es";
 
 const COPY = {
   es: {
-    library: "Biblioteca",
+    library: "Gardenpedia",
     seeds: "Semillas",
     machines: "Máquinas",
-    subtitle: "Biblioteca de cultivos · catálogo canónico",
+    subtitle: "Conocimiento vegetal · catálogo canónico",
     growGuide: "Guía de cultivo",
-    title: "Cultiva con evidencia, no con suposiciones",
+    title: "Cultiva con contexto y evidencia",
     description:
       "Explora identidades con datos canónicos, procedencia visible y estados de evidencia explícitos.",
     sheets: "fichas públicas",
@@ -32,9 +32,10 @@ const COPY = {
     light: "Luz",
     inventory: "Inventario",
     publicCatalog: "Catálogo público",
-    privateInventory: "Mis semillas (privado)",
+    privateInventory: "Mis semillas (requiere acceso)",
+    privateUnavailable: "Disponible solo en Mi jardín",
     knowledge: "Mapa de calidad del conocimiento",
-    knowledgeSub: "Cobertura de evidencia por categoría del catálogo",
+    knowledgeSub: "Unidades de evidencia evaluadas por categoría",
     catalog: "Catálogo Gardenpedia",
     ordered: "Ordenadas por identidad canónica · ES/EN",
     varieties: "identidades",
@@ -47,12 +48,12 @@ const COPY = {
       "La navegación conserva la arquitectura del donor. Las instancias, mapas y estados personales no se exponen en el catálogo público.",
   },
   en: {
-    library: "Library",
+    library: "Gardenpedia",
     seeds: "Seeds",
     machines: "Machines",
-    subtitle: "Plant knowledge library · canonical catalog",
+    subtitle: "Plant knowledge · canonical catalog",
     growGuide: "Grow Guide",
-    title: "Grow from evidence, not assumptions",
+    title: "Grow with context and evidence",
     description:
       "Explore canonical identities with visible provenance and explicit evidence states.",
     sheets: "public profiles",
@@ -65,9 +66,10 @@ const COPY = {
     light: "Light",
     inventory: "Inventory",
     publicCatalog: "Public catalog",
-    privateInventory: "My seeds (private)",
+    privateInventory: "My seeds (access required)",
+    privateUnavailable: "Available only in My Garden",
     knowledge: "Knowledge Quality Map",
-    knowledgeSub: "Evidence coverage by catalog category",
+    knowledgeSub: "Assessed evidence units by catalog category",
     catalog: "Gardenpedia catalog",
     ordered: "Ordered by canonical identity · EN/ES",
     varieties: "identities",
@@ -85,7 +87,6 @@ const categoryLabels: Record<string, string> = {
   all: "Todas",
   herbs: "Hierbas",
   "leafy greens": "Hojas verdes",
-  fruiting: "Frutos",
   fruits: "Frutos",
   alliums: "Alliums",
   flowers: "Flores",
@@ -95,16 +96,20 @@ const categoryLabels: Record<string, string> = {
 
 const lightLabels: Record<string, string> = {
   all: "Toda luz",
-  alta: "Luz alta",
-  media: "Luz media",
-  baja: "Luz baja",
+  full_sun: "Luz plena",
+  partial_sun: "Luz parcial",
+  unknown: "Sin dato de luz",
 };
 
 function lightLabel(level: string, language: GardenpediaLanguage) {
   if (language === "en") {
     return (
-      { all: "Any light", alta: "High light", media: "Medium light", baja: "Low light" }[level] ??
-      level
+      {
+        all: "Any light",
+        full_sun: "Full sun",
+        partial_sun: "Partial sun",
+        unknown: "Light not established",
+      }[level] ?? level
     );
   }
   return lightLabels[level] ?? level;
@@ -112,37 +117,43 @@ function lightLabel(level: string, language: GardenpediaLanguage) {
 
 function inventoryLabel(state: string, language: GardenpediaLanguage) {
   if (language === "en") {
-    return (
-      { all: "Public catalog", owned: "My seeds (private)", none: "No public packet" }[state] ??
-      state
-    );
+    return { all: "Public catalog", owned: "My seeds (access required)" }[state] ?? state;
   }
   return inventoryLabels[state] ?? state;
 }
 
 const inventoryLabels: Record<string, string> = {
   all: "Catálogo público",
-  owned: "Mis semillas (privado)",
-  none: "Sin paquete público",
+  owned: "Mis semillas (requiere acceso)",
 };
 
 function buildEvidenceGroups(plants: readonly Plant[]) {
-  const groups = new Map<string, { family: string; count: number; score: number }>();
-  const maxSources = Math.max(...plants.map((plant) => plant.sourceCount), 1);
+  const groups = new Map<
+    string,
+    { family: string; count: number; backed: number; assessed: number }
+  >();
   for (const plant of plants) {
-    const current = groups.get(plant.category) ?? { family: plant.category, count: 0, score: 0 };
+    const family = plant.categoryKey;
+    const current = groups.get(family) ?? { family, count: 0, backed: 0, assessed: 0 };
     current.count += 1;
-    current.score += Math.round((plant.sourceCount / maxSources) * 100);
-    groups.set(plant.category, current);
+    current.backed += plant.evidence.backed;
+    current.assessed += plant.evidence.assessed;
+    groups.set(family, current);
   }
   return [...groups.values()]
     .map((group) => ({
       ...group,
-      score: Math.round(group.score / group.count),
-      level: group.score >= 70 ? "high" : group.score >= 40 ? "medium" : "low",
+      score: group.assessed ? Math.round((group.backed / group.assessed) * 100) : 0,
+      level:
+        group.assessed === 0
+          ? "low"
+          : group.backed / group.assessed >= 0.7
+            ? "high"
+            : group.backed / group.assessed >= 0.4
+              ? "medium"
+              : "low",
     }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 6);
+    .sort((a, b) => b.count - a.count);
 }
 
 function categoryLabel(category: string, language: GardenpediaLanguage) {
@@ -186,10 +197,7 @@ export function filterDonorPlants({
       .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
   }
   return plants.filter((plant) => {
-    const categoryMatch =
-      category === "all" ||
-      plant.category === category ||
-      (category === "fruiting" && plant.category === "fruits");
+    const categoryMatch = category === "all" || plant.categoryKey === category;
     const lightMatch = light === "all" || plant.light === light;
     const inventoryMatch = inventory !== "owned";
     const searchMatch =
@@ -218,7 +226,18 @@ export function GardenLibrary({
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
 
   const categories = useMemo(
-    () => ["all", ...Array.from(new Set(donorPlants.map((plant) => plant.category)))],
+    () => [
+      "all",
+      ...[
+        "vegetables",
+        "leafy greens",
+        "herbs",
+        "fruits",
+        "root vegetables",
+        "alliums",
+        "flowers",
+      ].filter((category) => donorPlants.some((plant) => plant.categoryKey === category)),
+    ],
     [],
   );
   const evidenceGroups = useMemo(() => buildEvidenceGroups(donorPlants), []);
@@ -232,11 +251,15 @@ export function GardenLibrary({
       <div className="garden-shell mx-auto max-w-[1320px] px-4 py-4 sm:px-6 sm:py-6">
         <header className="glass-panel flex flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
-            <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
-              <Leaf aria-hidden="true" className="size-5" />
-            </span>
+            <img
+              src="/app-icon.svg"
+              alt="Garden X"
+              className="size-10 shrink-0 rounded-lg shadow-sm"
+            />
             <div>
-              <h1 className="font-display text-xl font-bold leading-none">Garden Library</h1>
+              <h1 className="font-display text-xl font-bold leading-none">
+                Gardenpedia by Garden X
+              </h1>
               <p className="mt-1 text-xs text-muted-foreground">
                 {copy.subtitle
                   .replace("catálogo canónico", `${donorPlants.length} ${copy.sheets}`)
@@ -341,7 +364,14 @@ function LibraryView({
   onQueryChange: (value: string) => void;
   language: GardenpediaLanguage;
   copy: (typeof COPY)[GardenpediaLanguage];
-  evidenceGroups: { family: string; count: number; score: number; level: string }[];
+  evidenceGroups: {
+    family: string;
+    count: number;
+    backed: number;
+    assessed: number;
+    score: number;
+    level: string;
+  }[];
 }) {
   return (
     <div className="animate-rise">
@@ -358,8 +388,8 @@ function LibraryView({
             <span className="glass-soft px-3 py-1.5">
               {donorPlants.length} {copy.sheets}
             </span>
-            <span className="glass-soft px-3 py-1.5">211 Seed Profiles V0</span>
-            <span className="glass-soft px-3 py-1.5">Public</span>
+            <span className="glass-soft px-3 py-1.5">{seedProfileCount} Seed Profiles V0</span>
+            <span className="glass-soft px-3 py-1.5">Garden X public</span>
           </div>
         </section>
         <section className="glass-panel p-5 sm:p-7 lg:col-span-5">
@@ -370,9 +400,21 @@ function LibraryView({
             </span>
           </div>
           <div className="mt-5 space-y-4">
-            <EvidenceRow tone="high" label={copy.backed} value="canonical" />
-            <EvidenceRow tone="medium" label={copy.adapted} value="explicit" />
-            <EvidenceRow tone="low" label={copy.pending} value="visible" />
+            <EvidenceRow
+              tone="high"
+              label={copy.backed}
+              value={`${donorPlants.reduce((total, plant) => total + plant.evidence.backed, 0)} ${language === "es" ? "unidades" : "units"}`}
+            />
+            <EvidenceRow
+              tone="medium"
+              label={copy.adapted}
+              value={`${donorPlants.reduce((total, plant) => total + plant.evidence.adapted, 0)} ${language === "es" ? "unidades" : "units"}`}
+            />
+            <EvidenceRow
+              tone="low"
+              label={copy.pending}
+              value={`${donorPlants.reduce((total, plant) => total + plant.evidence.pending, 0)} ${language === "es" ? "unidades" : "units"}`}
+            />
           </div>
         </section>
       </div>
@@ -431,7 +473,7 @@ function LibraryView({
                 <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <Sun className="size-3" aria-hidden="true" /> {copy.light}
                 </span>
-                {(["all", "alta", "media", "baja"] as const).map((item) => (
+                {(["all", "full_sun", "partial_sun", "unknown"] as const).map((item) => (
                   <Button
                     key={item}
                     size="sm"
@@ -450,12 +492,13 @@ function LibraryView({
                 <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <Sprout className="size-3" aria-hidden="true" /> {copy.inventory}
                 </span>
-                {(["all", "owned", "none"] as const).map((item) => (
+                {(["all", "owned"] as const).map((item) => (
                   <Button
                     key={item}
                     size="sm"
                     variant={inventory === item ? "default" : "outline"}
                     disabled={item === "owned"}
+                    title={item === "owned" ? copy.privateUnavailable : undefined}
                     onClick={() => onInventoryChange(item)}
                     className="rounded-full shadow-none"
                   >
@@ -478,21 +521,25 @@ function LibraryView({
             <p className="mt-1 text-xs text-quality-foreground/60">{copy.knowledgeSub}</p>
           </div>
           <span className="text-xs text-quality-foreground/70">
-            {Math.round(
-              evidenceGroups.reduce((total, group) => total + group.score, 0) /
-                Math.max(evidenceGroups.length, 1),
-            )}
-            % {language === "es" ? "cobertura de fuentes" : "source coverage"}
+            {(() => {
+              const backed = donorPlants.reduce((total, plant) => total + plant.evidence.backed, 0);
+              const assessed = donorPlants.reduce(
+                (total, plant) => total + plant.evidence.assessed,
+                0,
+              );
+              return `${backed}/${assessed} ${language === "es" ? "unidades respaldadas" : "source-backed units"}`;
+            })()}
           </span>
         </div>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
           {evidenceGroups.map((group) => (
             <div key={group.family} className={cn("quality-cell", `quality-${group.level}`)}>
               <p className="font-display text-sm font-semibold text-quality-foreground">
-                {group.family}
+                {categoryLabel(group.family, language)}
               </p>
               <p className="mt-1 text-[11px] text-quality-foreground/60">
-                {group.count} variedades
+                {group.count} {language === "es" ? "identidades" : "identities"} · {group.backed}/
+                {group.assessed}
               </p>
               <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-quality-foreground/10">
                 <div
@@ -525,7 +572,7 @@ function LibraryView({
                       {plant.emoji}
                     </span>
                     <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
-                      {categoryLabel(plant.category, language)}
+                      {categoryLabel(plant.categoryKey, language)}
                     </span>
                   </div>
                   <p className="mt-5 text-[11px] font-semibold text-accent">
@@ -587,8 +634,8 @@ function SeedView({ copy }: { copy: (typeof COPY)[GardenpediaLanguage] }) {
         </p>
       </div>
       <div className="glass-panel mt-5 p-6 text-sm text-muted-foreground">
-        211 Seed Profile V0 records are available through the canonical Gardenpedia contracts. Seed
-        package ownership remains private and is not rendered here.
+        {seedProfileCount} Seed Profile V0 records are available through the canonical Gardenpedia
+        contracts. Seed package ownership remains private and is not rendered here.
       </div>
     </section>
   );

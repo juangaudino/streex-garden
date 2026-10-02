@@ -26,6 +26,8 @@ export interface NutrientFormula {
   id: FormulaId;
   name: string;
   vendor: string;
+  /** Compact UI descriptor for the product line, when needed. */
+  descriptor?: string;
   /** One-line positioning of the product line. */
   philosophy: string;
   parts: NutrientPart[];

@@ -31,20 +31,34 @@ export function PlantAdvisorDrawer({
   const copy =
     language === "en"
       ? {
-          title: "Plant Advisor",
+          title: "Ask Garden",
           description: "Describe your space and we will suggest catalog plants.",
-          trigger: "Plant Advisor",
+          trigger: "Ask Garden",
           find: "Find plants",
           loading: "Evaluating catalog…",
           clear: "Clear",
+          question: "What conditions or plans do you have?",
+          placeholder: "E.g. east-facing balcony, little space, for salads",
+          quick: "Quick ideas",
+          diagnosis: "Assessment",
+          recommendations: "Recommendations",
+          apply: "Filter catalog with these options",
+          noMatch: "Try adding light hours, indoor or outdoor context, and available space.",
         }
       : {
-          title: "Asesor botánico",
+          title: "Ask Garden",
           description: "Describe tu espacio y te sugerimos cultivos del catálogo.",
-          trigger: "Asesor botánico",
+          trigger: "Ask Garden",
           find: "Encontrar cultivos",
           loading: "Evaluando catálogo…",
           clear: "Limpiar",
+          question: "¿Qué condiciones o planes tienes?",
+          placeholder: "Ej: balcón con sol de mañana, poco espacio, para ensaladas",
+          quick: "Ideas rápidas",
+          diagnosis: "Diagnóstico",
+          recommendations: "Recomendaciones",
+          apply: "Filtrar catálogo con estas opciones",
+          noMatch: "Prueba indicando horas de luz, interior o exterior y espacio disponible.",
         };
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -106,13 +120,13 @@ export function PlantAdvisorDrawer({
               className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
               htmlFor="advisor-query"
             >
-              ¿Qué condiciones o planes tienes?
+              {copy.question}
             </label>
             <Textarea
               id="advisor-query"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Ej: balcón con sol de mañana, poco espacio, para ensaladas"
+              placeholder={copy.placeholder}
               className="glass-soft min-h-24 resize-none border-0 text-sm shadow-none focus-visible:ring-1"
             />
             <div className="flex items-center gap-2">
@@ -134,7 +148,7 @@ export function PlantAdvisorDrawer({
 
           <div className="space-y-2">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Ideas rápidas
+              {copy.quick}
             </p>
             <div className="grid gap-2">
               {ADVISOR_PRESETS.map((preset) => (
@@ -143,7 +157,7 @@ export function PlantAdvisorDrawer({
                   type="button"
                   onClick={() => run(preset.query)}
                   disabled={loading}
-                  className="glass-soft flex items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/70 disabled:opacity-60"
+                  className="glass-card flex min-h-12 items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/80 disabled:opacity-60"
                 >
                   <span aria-hidden="true" className="text-base">
                     {preset.badge}
@@ -161,7 +175,7 @@ export function PlantAdvisorDrawer({
           {result ? (
             <div className="space-y-4 border-t border-border/70 pt-5">
               <div className="glass-soft p-4">
-                <p className="eyebrow">Diagnóstico</p>
+                <p className="eyebrow">{copy.diagnosis}</p>
                 <p className="mt-2 text-sm leading-6">{result.summary}</p>
               </div>
               {result.cultivationAdvice ? (
@@ -174,7 +188,7 @@ export function PlantAdvisorDrawer({
               {matches.length ? (
                 <div className="space-y-3">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    Recomendaciones ({matches.length})
+                    {copy.recommendations} ({matches.length})
                   </p>
                   {matches.map((item) => {
                     const plant = plantsById.get(item.plantId)!;
@@ -199,7 +213,8 @@ export function PlantAdvisorDrawer({
                               "shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold text-primary-foreground",
                             )}
                           >
-                            {item.score}% afinidad
+                            {item.score}%{" "}
+                            {language === "es" ? "coincidencia de criterios" : "criteria match"}
                           </span>
                         </div>
                         <p className="mt-3 text-sm leading-6 text-muted-foreground">
@@ -224,14 +239,12 @@ export function PlantAdvisorDrawer({
                         setOpen(false);
                       }}
                     >
-                      Filtrar catálogo con estas opciones
+                      {copy.apply}
                     </Button>
                   ) : null}
                 </div>
               ) : (
-                <p className="glass-soft px-4 py-3 text-sm text-muted-foreground">
-                  Prueba indicando horas de luz, interior o exterior y espacio disponible.
-                </p>
+                <p className="glass-soft px-4 py-3 text-sm text-muted-foreground">{copy.noMatch}</p>
               )}
             </div>
           ) : null}

@@ -68,12 +68,48 @@ describe("direct Gardenpedia presentation adapter", () => {
         inventory: "owned",
       }),
     ).toHaveLength(0);
+
+    const fullSun = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "all",
+      light: "full_sun",
+      inventory: "all",
+    });
+    const partialSun = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "all",
+      light: "partial_sun",
+      inventory: "all",
+    });
+    const unknownLight = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "all",
+      light: "unknown",
+      inventory: "all",
+    });
+    expect(fullSun.length).toBeGreaterThan(0);
+    expect(partialSun.length).toBeGreaterThan(0);
+    expect(unknownLight.length).toBeGreaterThan(0);
+    expect(fullSun.every((plant) => plant.light === "full_sun")).toBe(true);
+    expect(partialSun.every((plant) => plant.light === "partial_sun")).toBe(true);
+    expect(unknownLight.every((plant) => plant.light === "unknown")).toBe(true);
+    expect(donorPlants.some((plant) => plant.light === ("baja" as never))).toBe(false);
   });
 
   it("keeps a high-data reference and a lower/uncertain identity generic", () => {
     const basil = buildDonorPlantDetail(findCanonicalEntry("genovese-basil")!, "en");
     const oregano = buildDonorPlantDetail(findCanonicalEntry("italian-oregano")!, "en");
     expect(basil.id).toBe("genovese-basil");
+    expect(basil.summary).toContain("productive");
+    expect(basil.guides.length).toBeGreaterThanOrEqual(7);
+    expect(basil.harvestUse?.options.length).toBeGreaterThan(0);
+    expect(basil.seedProfileAvailable).toBe(true);
+    expect(basil.evidence.coverage).toMatch(/units/);
+    const spanishBasil = buildDonorPlantDetail(findCanonicalEntry("genovese-basil")!, "es");
+    expect(spanishBasil.summary).toContain("productiva");
     expect(
       basil.guides.every((guide) => guide.sources.every((source) => source.url.startsWith("http"))),
     ).toBe(true);
@@ -96,6 +132,24 @@ describe("direct Gardenpedia presentation adapter", () => {
     const response = await getPlantRecommendations({ query: "hierba fácil para cocina" });
     expect(response.recommendations.length).toBeGreaterThan(0);
     expect(response.recommendations.every((item) => donorPlantsById.has(item.plantId))).toBe(true);
+    expect(response.recommendations.every((item) => item.score >= 0 && item.score <= 100)).toBe(
+      true,
+    );
+
+    const lowLight = await getPlantRecommendations({ query: "poca luz para interior" });
+    expect(
+      lowLight.recommendations.every(
+        (item) => donorPlantsById.get(item.plantId)?.light === "partial_sun",
+      ),
+    ).toBe(true);
+
+    const hydro = await getPlantRecommendations({ query: "hidroponía compacta" });
+    expect(
+      hydro.recommendations.every((item) => {
+        const suitability = donorPlantsById.get(item.plantId)?.hydroponicSuitability;
+        return suitability === "compatible" || suitability === "conditional";
+      }),
+    ).toBe(true);
   });
 
   it("keeps the donor calculator pure and uses canonical plant ids", () => {

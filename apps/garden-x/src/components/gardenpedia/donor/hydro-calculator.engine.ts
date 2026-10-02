@@ -67,7 +67,7 @@ export const FORMULAS: NutrientFormula[] = [
   {
     id: "ab",
     name: "Fórmula A + B universal",
-    vendor: "iDOO · LetPot · URUQ y similares",
+    vendor: "URUQ · Ahopegarden · LetPot y similares",
     philosophy:
       "Bicomponente concentrado: A aporta calcio y hierro, B aporta fósforo, potasio y magnesio.",
     parts: [
@@ -93,6 +93,7 @@ export const FORMULAS: NutrientFormula[] = [
     id: "flora",
     name: "General Hydroponics FloraSeries",
     vendor: "General Hydroponics",
+    descriptor: "FloraSeries",
     philosophy:
       "Tricomponente profesional: ajustas nitrógeno o fósforo según la etapa del cultivo.",
     parts: [

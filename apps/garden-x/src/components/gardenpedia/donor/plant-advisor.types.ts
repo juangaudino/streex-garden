@@ -35,5 +35,6 @@ export interface QuickQueryPreset {
   badge: string;
   title: string;
   query: string;
-  response: AdvisorResponse;
+  /** Optional donor/demo response; canonical advisor ignores it. */
+  response?: AdvisorResponse;
 }

@@ -9,8 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = process.env.GARDENPEDIA_DATA_DIR
   ? path.resolve(process.env.GARDENPEDIA_DATA_DIR)
   : path.join(root, "labs", "gardenpedia", "data");
-const plantFiles = ["plants.json", "plants-current-gardens.json", "plants-owned-seeds.json", "plants-expansion-batch-a1.json", "plants-expansion-batch-b1.json", "plants-expansion-wave-1.json", "plants-expansion-wave-2.json", "plants-expansion-wave-3.json", "plants-requests.json"];
-const sourceFiles = ["sources.json", "sources-current-gardens.json", "sources-owned-seeds.json", "sources-expansion-batch-a1.json", "sources-expansion-batch-b1.json", "sources-expansion-wave-1.json", "sources-expansion-wave-2.json", "sources-expansion-wave-3.json", "sources-requests.json"];
+const plantFiles = ["plants.json", "plants-current-gardens.json", "plants-owned-seeds.json", "plants-expansion-batch-a1.json", "plants-expansion-batch-b1.json", "plants-expansion-wave-1.json", "plants-expansion-wave-2.json", "plants-expansion-wave-3.json", "plants-expansion-wave-4.json", "plants-requests.json"];
+const sourceFiles = ["sources.json", "sources-current-gardens.json", "sources-owned-seeds.json", "sources-expansion-batch-a1.json", "sources-expansion-batch-b1.json", "sources-expansion-wave-1.json", "sources-expansion-wave-2.json", "sources-expansion-wave-3.json", "sources-expansion-wave-4.json", "sources-requests.json"];
 const categories = new Set(["herbs", "leafy greens", "fruiting", "flowers", "alliums", "root vegetables", "vegetables", "fruits"]);
 const publicPlantFields = new Set(["id", "name", "spanishName", "scientificName", "variety", "category", "emoji", "guideCompletion", "tags", "summary", "metrics", "sections", "compatibilityProfile", "lifeCapabilities"]);
 const sectionNames = new Set(["identity", "germination", "thinning", "pruning", "harvest", "flowering", "hydroponics", "problems"]);

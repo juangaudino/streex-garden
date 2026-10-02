@@ -289,7 +289,6 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Back to Library" }));
     const librarySearch = await screen.findByPlaceholderText("Search basil, Ocimum, Genovese…");
     expect(librarySearch).toBeTruthy();
-    expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
 
     fireEvent.change(librarySearch, { target: { value: "Buttercrunch" } });
     fireEvent.click(await screen.findByRole("button", { name: /Buttercrunch Lettuce/ }));

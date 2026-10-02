@@ -1,0 +1,242 @@
+import { useState } from "react";
+import { Loader2, Sparkles, WandSparkles } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Textarea } from "@/components/ui/textarea";
+import { ADVISOR_PRESETS } from "./plant-advisor.data";
+import { getPlantRecommendations } from "./plant-advisor.service";
+import type { AdvisorResponse } from "./plant-advisor.types";
+import { donorPlants as plants, type DonorPlant } from "./canonical-adapter";
+import { cn } from "@/lib/utils";
+
+const plantsById = new Map<string, DonorPlant>(plants.map((plant) => [plant.id, plant]));
+
+export function PlantAdvisorDrawer({
+  activeFilters,
+  onApplyRecommendations,
+  language = "es",
+}: {
+  activeFilters?: { category?: string; light?: string; inventory?: string };
+  onApplyRecommendations?: (plantIds: string[]) => void;
+  language?: "en" | "es";
+}) {
+  const copy =
+    language === "en"
+      ? {
+          title: "Plant Advisor",
+          description: "Describe your space and we will suggest catalog plants.",
+          trigger: "Plant Advisor",
+          find: "Find plants",
+          loading: "Evaluating catalog…",
+          clear: "Clear",
+        }
+      : {
+          title: "Asesor botánico",
+          description: "Describe tu espacio y te sugerimos cultivos del catálogo.",
+          trigger: "Asesor botánico",
+          find: "Encontrar cultivos",
+          loading: "Evaluando catálogo…",
+          clear: "Limpiar",
+        };
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<AdvisorResponse | null>(null);
+
+  async function run(nextQuery: string) {
+    const trimmed = nextQuery.trim();
+    if (!trimmed || loading) return;
+    setQuery(trimmed);
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await getPlantRecommendations({
+        query: trimmed,
+        ...(activeFilters ? { activeFilters } : {}),
+      });
+      setResult(response);
+    } catch {
+      setError("No pudimos consultar el asesor. Intenta de nuevo en un momento.");
+      setResult(null);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function reset() {
+    setQuery("");
+    setResult(null);
+    setError(null);
+  }
+
+  const matches = (result?.recommendations ?? []).filter((item) => plantsById.has(item.plantId));
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button size="sm" className="rounded-full shadow-none">
+          <Sparkles className="size-4" aria-hidden="true" />
+          {copy.trigger}
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        side="right"
+        className="glass-dialog flex w-full flex-col gap-0 overflow-y-auto p-0 sm:max-w-[440px]"
+      >
+        <SheetHeader className="border-b border-border/70 px-5 py-5 text-left">
+          <SheetTitle className="flex items-center gap-2 font-display text-lg">
+            <WandSparkles className="size-5 text-accent" aria-hidden="true" />
+            {copy.title}
+          </SheetTitle>
+          <SheetDescription>{copy.description}</SheetDescription>
+        </SheetHeader>
+
+        <div className="space-y-5 px-5 py-5">
+          <div className="space-y-3">
+            <label
+              className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
+              htmlFor="advisor-query"
+            >
+              ¿Qué condiciones o planes tienes?
+            </label>
+            <Textarea
+              id="advisor-query"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Ej: balcón con sol de mañana, poco espacio, para ensaladas"
+              className="glass-soft min-h-24 resize-none border-0 text-sm shadow-none focus-visible:ring-1"
+            />
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={() => run(query)}
+                disabled={loading || !query.trim()}
+                className="flex-1"
+              >
+                {loading ? <Loader2 className="size-4 animate-spin" aria-hidden="true" /> : null}
+                {loading ? copy.loading : copy.find}
+              </Button>
+              {result || error ? (
+                <Button variant="ghost" onClick={reset}>
+                  {copy.clear}
+                </Button>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Ideas rápidas
+            </p>
+            <div className="grid gap-2">
+              {ADVISOR_PRESETS.map((preset) => (
+                <button
+                  key={preset.id}
+                  type="button"
+                  onClick={() => run(preset.query)}
+                  disabled={loading}
+                  className="glass-soft flex items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/70 disabled:opacity-60"
+                >
+                  <span aria-hidden="true" className="text-base">
+                    {preset.badge}
+                  </span>
+                  <span className="font-medium">{preset.title}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {error ? (
+            <p className="glass-soft px-4 py-3 text-sm text-muted-foreground">{error}</p>
+          ) : null}
+
+          {result ? (
+            <div className="space-y-4 border-t border-border/70 pt-5">
+              <div className="glass-soft p-4">
+                <p className="eyebrow">Diagnóstico</p>
+                <p className="mt-2 text-sm leading-6">{result.summary}</p>
+              </div>
+              {result.cultivationAdvice ? (
+                <div className="glass-soft p-4 text-sm leading-6">
+                  <span aria-hidden="true">💡 </span>
+                  {result.cultivationAdvice}
+                </div>
+              ) : null}
+
+              {matches.length ? (
+                <div className="space-y-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Recomendaciones ({matches.length})
+                  </p>
+                  {matches.map((item) => {
+                    const plant = plantsById.get(item.plantId)!;
+                    return (
+                      <article key={item.plantId} className="glass-card p-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-center gap-2">
+                            <span className="text-2xl" aria-hidden="true">
+                              {plant.emoji}
+                            </span>
+                            <div>
+                              <h4 className="font-display text-base font-semibold leading-tight">
+                                {plant.spanishName}
+                              </h4>
+                              <p className="text-xs italic text-muted-foreground">
+                                {plant.scientificName}
+                              </p>
+                            </div>
+                          </div>
+                          <span
+                            className={cn(
+                              "shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold text-primary-foreground",
+                            )}
+                          >
+                            {item.score}% afinidad
+                          </span>
+                        </div>
+                        <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                          {item.reason}
+                        </p>
+                        <a
+                          href={`/gardenpedia#${encodeURIComponent(plant.id)}`}
+                          onClick={() => setOpen(false)}
+                          className="mt-4 inline-flex text-xs font-semibold text-accent underline-offset-4 hover:underline"
+                        >
+                          Ver ficha completa →
+                        </a>
+                      </article>
+                    );
+                  })}
+                  {onApplyRecommendations ? (
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => {
+                        onApplyRecommendations(matches.map((item) => item.plantId));
+                        setOpen(false);
+                      }}
+                    >
+                      Filtrar catálogo con estas opciones
+                    </Button>
+                  ) : null}
+                </div>
+              ) : (
+                <p className="glass-soft px-4 py-3 text-sm text-muted-foreground">
+                  Prueba indicando horas de luz, interior o exterior y espacio disponible.
+                </p>
+              )}
+            </div>
+          ) : null}
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}

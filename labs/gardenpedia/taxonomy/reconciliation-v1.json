@@ -1908,6 +1908,1009 @@
         "usda-plants-wave1"
       ],
       "conflicts": []
+    },
+    {
+      "plantIdentityId": "red-sail-lettuce",
+      "acceptedScientificName": "Lactuca sativa",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Lactuca",
+      "species": "sativa",
+      "cultivar": null,
+      "horticulturalType": "Red Sails type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "parris-island-romaine",
+      "acceptedScientificName": "Lactuca sativa",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Lactuca",
+      "species": "sativa",
+      "cultivar": null,
+      "horticulturalType": "Parris Island type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "red-mustard-greens",
+      "acceptedScientificName": "Brassica juncea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "juncea",
+      "cultivar": null,
+      "horticulturalType": "Red mustard type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "watercress",
+      "acceptedScientificName": "Nasturtium officinale",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Nasturtium",
+      "species": "officinale",
+      "cultivar": null,
+      "horticulturalType": "Watercress type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "redbor-kale",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Redbor type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "georgia-collards",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Georgia type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "mizuna-red-streaks",
+      "acceptedScientificName": "Brassica rapa",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "rapa",
+      "cultivar": null,
+      "horticulturalType": "Red Streaks type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "mexican-tarragon",
+      "acceptedScientificName": "Tagetes lucida",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Tagetes",
+      "species": "lucida",
+      "cultivar": null,
+      "horticulturalType": "Mexican tarragon type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "purple-basil",
+      "acceptedScientificName": "Ocimum basilicum",
+      "synonyms": [],
+      "family": "Lamiaceae",
+      "genus": "Ocimum",
+      "species": "basilicum",
+      "cultivar": null,
+      "horticulturalType": "Purple basil type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "cinnamon-basil",
+      "acceptedScientificName": "Ocimum basilicum",
+      "synonyms": [],
+      "family": "Lamiaceae",
+      "genus": "Ocimum",
+      "species": "basilicum",
+      "cultivar": null,
+      "horticulturalType": "Cinnamon basil type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "anise",
+      "acceptedScientificName": "Pimpinella anisum",
+      "synonyms": [],
+      "family": "Apiaceae",
+      "genus": "Pimpinella",
+      "species": "anisum",
+      "cultivar": null,
+      "horticulturalType": "Anise type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "hyssop",
+      "acceptedScientificName": "Hyssopus officinalis",
+      "synonyms": [],
+      "family": "Lamiaceae",
+      "genus": "Hyssopus",
+      "species": "officinalis",
+      "cultivar": null,
+      "horticulturalType": "Hyssop type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "feverfew",
+      "acceptedScientificName": "Tanacetum parthenium",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Tanacetum",
+      "species": "parthenium",
+      "cultivar": null,
+      "horticulturalType": "Feverfew type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "stevia",
+      "acceptedScientificName": "Stevia rebaudiana",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Stevia",
+      "species": "rebaudiana",
+      "cultivar": null,
+      "horticulturalType": "Stevia type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "black-krim-tomato",
+      "acceptedScientificName": "Solanum lycopersicum",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Solanum",
+      "species": "lycopersicum",
+      "cultivar": null,
+      "horticulturalType": "Black Krim type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "san-marzano-tomato",
+      "acceptedScientificName": "Solanum lycopersicum",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Solanum",
+      "species": "lycopersicum",
+      "cultivar": null,
+      "horticulturalType": "San Marzano type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "cherry-bomb-tomato",
+      "acceptedScientificName": "Solanum lycopersicum",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Solanum",
+      "species": "lycopersicum",
+      "cultivar": null,
+      "horticulturalType": "Cherry Bomb type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "yellow-brandywine-tomato",
+      "acceptedScientificName": "Solanum lycopersicum",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Solanum",
+      "species": "lycopersicum",
+      "cultivar": null,
+      "horticulturalType": "Yellow Brandywine type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "black-beauty-eggplant",
+      "acceptedScientificName": "Solanum melongena",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Solanum",
+      "species": "melongena",
+      "cultivar": null,
+      "horticulturalType": "Black Beauty type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "tomatillo",
+      "acceptedScientificName": "Physalis philadelphica",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Physalis",
+      "species": "philadelphica",
+      "cultivar": null,
+      "horticulturalType": "Tomatillo type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "ground-cherry",
+      "acceptedScientificName": "Physalis pruinosa",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Physalis",
+      "species": "pruinosa",
+      "cultivar": null,
+      "horticulturalType": "Ground cherry type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "cantaloupe",
+      "acceptedScientificName": "Cucumis melo",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Cucumis",
+      "species": "melo",
+      "cultivar": null,
+      "horticulturalType": "Cantaloupe type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sugar-baby-watermelon",
+      "acceptedScientificName": "Citrullus lanatus",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Citrullus",
+      "species": "lanatus",
+      "cultivar": null,
+      "horticulturalType": "Sugar Baby type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sweet-chocolate-pepper",
+      "acceptedScientificName": "Capsicum annuum",
+      "synonyms": [],
+      "family": "Solanaceae",
+      "genus": "Capsicum",
+      "species": "annuum",
+      "cultivar": null,
+      "horticulturalType": "Sweet Chocolate type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "waltham-29-broccoli",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Waltham 29 type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "purple-of-sicily-cauliflower",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Purple of Sicily type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "golden-acre-cabbage",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Golden Acre type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "red-acre-cabbage",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Red Acre type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "early-white-vienna-kohlrabi",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Early White Vienna type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "gai-lan",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Chinese broccoli type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "purple-sprouting-broccoli",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Purple sprouting type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "brussels-sprouts-long-island",
+      "acceptedScientificName": "Brassica oleracea",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "oleracea",
+      "cultivar": null,
+      "horticulturalType": "Long Island Improved type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "danvers-carrot",
+      "acceptedScientificName": "Daucus carota",
+      "synonyms": [],
+      "family": "Apiaceae",
+      "genus": "Daucus",
+      "species": "carota",
+      "cultivar": null,
+      "horticulturalType": "Danvers type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "chioggia-beet",
+      "acceptedScientificName": "Beta vulgaris",
+      "synonyms": [],
+      "family": "Amaranthaceae",
+      "genus": "Beta",
+      "species": "vulgaris",
+      "cultivar": null,
+      "horticulturalType": "Chioggia type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "tokyo-cross-turnip",
+      "acceptedScientificName": "Brassica rapa",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Brassica",
+      "species": "rapa",
+      "cultivar": null,
+      "horticulturalType": "Tokyo Cross type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "watermelon-radish",
+      "acceptedScientificName": "Raphanus sativus",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Raphanus",
+      "species": "sativus",
+      "cultivar": null,
+      "horticulturalType": "Watermelon type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "salsify",
+      "acceptedScientificName": "Tragopogon porrifolius",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Tragopogon",
+      "species": "porrifolius",
+      "cultivar": null,
+      "horticulturalType": "Salsify type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "white-lisbon-bunching-onion",
+      "acceptedScientificName": "Allium cepa",
+      "synonyms": [],
+      "family": "Amaryllidaceae",
+      "genus": "Allium",
+      "species": "cepa",
+      "cultivar": null,
+      "horticulturalType": "White Lisbon type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "walla-walla-onion",
+      "acceptedScientificName": "Allium cepa",
+      "synonyms": [],
+      "family": "Amaryllidaceae",
+      "genus": "Allium",
+      "species": "cepa",
+      "cultivar": null,
+      "horticulturalType": "Walla Walla type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "giant-musselburgh-leek",
+      "acceptedScientificName": "Allium ampeloprasum",
+      "synonyms": [],
+      "family": "Amaryllidaceae",
+      "genus": "Allium",
+      "species": "ampeloprasum",
+      "cultivar": null,
+      "horticulturalType": "Giant Musselburgh type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sweet-spanish-onion",
+      "acceptedScientificName": "Allium cepa",
+      "synonyms": [],
+      "family": "Amaryllidaceae",
+      "genus": "Allium",
+      "species": "cepa",
+      "cultivar": null,
+      "horticulturalType": "Sweet Spanish type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "blue-lake-pole-bean",
+      "acceptedScientificName": "Phaseolus vulgaris",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Phaseolus",
+      "species": "vulgaris",
+      "cultivar": null,
+      "horticulturalType": "Blue Lake pole type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "provider-bush-bean",
+      "acceptedScientificName": "Phaseolus vulgaris",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Phaseolus",
+      "species": "vulgaris",
+      "cultivar": null,
+      "horticulturalType": "Provider bush type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sugar-ann-snow-pea",
+      "acceptedScientificName": "Pisum sativum",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Pisum",
+      "species": "sativum",
+      "cultivar": null,
+      "horticulturalType": "Sugar Ann type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "green-arrow-shelling-pea",
+      "acceptedScientificName": "Pisum sativum",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Pisum",
+      "species": "sativum",
+      "cultivar": null,
+      "horticulturalType": "Green Arrow type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "edamame",
+      "acceptedScientificName": "Glycine max",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Glycine",
+      "species": "max",
+      "cultivar": null,
+      "horticulturalType": "Edamame type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "fava-bean",
+      "acceptedScientificName": "Vicia faba",
+      "synonyms": [],
+      "family": "Fabaceae",
+      "genus": "Vicia",
+      "species": "faba",
+      "cultivar": null,
+      "horticulturalType": "Fava bean type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "straight-eight-cucumber",
+      "acceptedScientificName": "Cucumis sativus",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Cucumis",
+      "species": "sativus",
+      "cultivar": null,
+      "horticulturalType": "Straight Eight type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "armenian-cucumber",
+      "acceptedScientificName": "Cucumis melo",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Cucumis",
+      "species": "melo",
+      "cultivar": null,
+      "horticulturalType": "Armenian cucumber type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "eight-ball-zucchini",
+      "acceptedScientificName": "Cucurbita pepo",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Cucurbita",
+      "species": "pepo",
+      "cultivar": null,
+      "horticulturalType": "Eight Ball type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sugar-pumpkin",
+      "acceptedScientificName": "Cucurbita pepo",
+      "synonyms": [],
+      "family": "Cucurbitaceae",
+      "genus": "Cucurbita",
+      "species": "pepo",
+      "cultivar": null,
+      "horticulturalType": "Sugar pumpkin type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "alaska-nasturtium",
+      "acceptedScientificName": "Tropaeolum majus",
+      "synonyms": [],
+      "family": "Tropaeolaceae",
+      "genus": "Tropaeolum",
+      "species": "majus",
+      "cultivar": null,
+      "horticulturalType": "Alaska type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "ivory-princess-calendula",
+      "acceptedScientificName": "Calendula officinalis",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Calendula",
+      "species": "officinalis",
+      "cultivar": null,
+      "horticulturalType": "Ivory Princess type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "lemon-queen-sunflower",
+      "acceptedScientificName": "Helianthus annuus",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Helianthus",
+      "species": "annuus",
+      "cultivar": null,
+      "horticulturalType": "Lemon Queen type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "signet-marigold",
+      "acceptedScientificName": "Tagetes tenuifolia",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Tagetes",
+      "species": "tenuifolia",
+      "cultivar": null,
+      "horticulturalType": "Signet marigold type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "dwarf-cosmos",
+      "acceptedScientificName": "Cosmos bipinnatus",
+      "synonyms": [],
+      "family": "Asteraceae",
+      "genus": "Cosmos",
+      "species": "bipinnatus",
+      "cultivar": null,
+      "horticulturalType": "Dwarf cosmos type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "sweet-alyssum-white",
+      "acceptedScientificName": "Lobularia maritima",
+      "synonyms": [],
+      "family": "Brassicaceae",
+      "genus": "Lobularia",
+      "species": "maritima",
+      "cultivar": null,
+      "horticulturalType": "White sweet alyssum type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "love-in-a-mist",
+      "acceptedScientificName": "Nigella damascena",
+      "synonyms": [],
+      "family": "Ranunculaceae",
+      "genus": "Nigella",
+      "species": "damascena",
+      "cultivar": null,
+      "horticulturalType": "Love-in-a-mist type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
+    },
+    {
+      "plantIdentityId": "globe-amaranth",
+      "acceptedScientificName": "Gomphrena globosa",
+      "synonyms": [],
+      "family": "Amaranthaceae",
+      "genus": "Gomphrena",
+      "species": "globosa",
+      "cultivar": null,
+      "horticulturalType": "Globe amaranth type",
+      "status": "candidate-reconciled",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-wave1",
+        "usda-plants-wave1"
+      ],
+      "conflicts": []
     }
   ]
 }

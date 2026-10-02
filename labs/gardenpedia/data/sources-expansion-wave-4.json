@@ -1,0 +1,74 @@
+[
+  {
+    "id": "umn-eggplant-wave4",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing eggplant in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-eggplant",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "eggplant species cultivation, seedling establishment, support, harvest and common problems",
+    "accessed": "2026-10-02",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 4 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "umn-tomatillo-ground-cherry-wave4",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing tomatillos and ground cherries in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-tomatillos-and-ground-cherries",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "tomatillo and ground-cherry crop identity, seedling timing, fruit maturity and common problems",
+    "accessed": "2026-10-02",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 4 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "usu-watermelon-wave4",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Watermelon in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/watermelon-in-the-garden",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "watermelon seed sowing, warm soil, fruiting and harvest context",
+    "accessed": "2026-10-02",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 4 source registry",
+    "claimKinds": [
+      "identity",
+      "seedling",
+      "cultivation",
+      "harvest"
+    ]
+  },
+  {
+    "id": "illinois-edible-flowers-wave4",
+    "publisher": "University of Illinois Extension",
+    "title": "Spice up the garden with edible flowers",
+    "url": "https://extension.illinois.edu/blogs/over-garden-fence/2025-05-29-spice-garden-edible-flowers",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "selected edible-flower identity and use context; not universal cultivation or safety approval",
+    "accessed": "2026-10-02",
+    "license": null,
+    "provenance": "Gardenpedia Labs Wave 4 source registry",
+    "claimKinds": [
+      "identity",
+      "harvest"
+    ]
+  }
+]

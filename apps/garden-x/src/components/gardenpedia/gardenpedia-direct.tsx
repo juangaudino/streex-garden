@@ -4,20 +4,25 @@ import { preferredLanguage } from "@/lib/ui-copy";
 import { buildDonorPlantDetail, findCanonicalEntry } from "./donor/canonical-adapter";
 import { GardenLibrary, type GardenpediaLanguage } from "./donor/explore";
 import { DonorPlantDetailPage } from "./donor/plant-detail";
+import { SeedProfilePage } from "./donor/seed-profile";
+import { seedProfileForEntry } from "./donor/seed-profile-adapter";
 import "./donor/gardenpedia-direct.css";
 
-function hashPlantId() {
+function hashTarget() {
   if (typeof window === "undefined") return null;
   const value = window.location.hash.replace(/^#/, "").trim();
-  return value || null;
+  if (!value) return null;
+  return value.startsWith("seed:")
+    ? { kind: "seed" as const, id: value.slice("seed:".length) }
+    : { kind: "plant" as const, id: value };
 }
 
 export function GardenpediaDirect() {
   const [language, setLanguage] = useState<GardenpediaLanguage>(() => preferredLanguage());
-  const [selectedId, setSelectedId] = useState<string | null>(() => hashPlantId());
+  const [target, setTarget] = useState(() => hashTarget());
 
   useEffect(() => {
-    const onHashChange = () => setSelectedId(hashPlantId());
+    const onHashChange = () => setTarget(hashTarget());
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
@@ -26,7 +31,15 @@ export function GardenpediaDirect() {
     document.documentElement.lang = language;
   }, [language]);
 
-  const entry = selectedId ? findCanonicalEntry(selectedId) : null;
+  const entry = target?.kind === "plant" ? findCanonicalEntry(target.id) : null;
+  const seedProfile = target?.kind === "seed" ? seedProfileForEntry(target.id, language) : null;
+  if (seedProfile) {
+    return (
+      <div className="gardenpedia-direct">
+        <SeedProfilePage profile={seedProfile} language={language} onLanguageChange={setLanguage} />
+      </div>
+    );
+  }
   if (entry) {
     return (
       <div className="gardenpedia-direct">

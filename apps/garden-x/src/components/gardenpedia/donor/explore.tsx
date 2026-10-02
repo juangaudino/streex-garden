@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
+import { SeedLibraryView } from "./seed-profile";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -350,7 +351,7 @@ export function GardenLibrary({
             evidenceGroups={evidenceGroups}
           />
         )}
-        {view === "seeds" && <SeedView copy={copy} />}
+        {view === "seeds" && <SeedLibraryView language={language} />}
         {view === "machines" && <MachineView copy={copy} />}
       </div>
     </main>
@@ -643,24 +644,6 @@ function EvidenceRow({ tone, label, value }: { tone: string; label: string; valu
       </span>
       <strong className="text-xs">{value}</strong>
     </div>
-  );
-}
-
-function SeedView({ copy }: { copy: (typeof COPY)[GardenpediaLanguage] }) {
-  return (
-    <section className="animate-rise py-6">
-      <div className="glass-panel p-6 sm:p-8">
-        <p className="eyebrow">Gardenpedia</p>
-        <h2 className="mt-2 font-display text-3xl font-bold">{copy.publicSeeds}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-          {copy.publicSeedsBody}
-        </p>
-      </div>
-      <div className="glass-panel mt-5 p-6 text-sm text-muted-foreground">
-        {seedProfileCount} Seed Profile V0 records are available through the canonical Gardenpedia
-        contracts. Seed package ownership remains private and is not rendered here.
-      </div>
-    </section>
   );
 }
 

@@ -29,7 +29,7 @@ const detailLabels = {
     sections: "secciones de cultivo",
     seedProtocol: "Protocolo de germinación",
     seedProtocolBody:
-      "El perfil de semillas canónico está disponible; su ficha detallada se abrirá en la siguiente integración.",
+      "El perfil de semillas canónico está disponible; consulta el protocolo completo de semilla a plántula.",
     source: "Fuente",
     openSource: "Abrir fuente",
     harvestUse: "Qué puedes hacer ahora",
@@ -57,7 +57,7 @@ const detailLabels = {
     sections: "growing sections",
     seedProtocol: "Germination protocol",
     seedProtocolBody:
-      "A canonical Seed Profile is available; its detailed route will open in the next integration.",
+      "A canonical Seed Profile is available; open the complete seed-to-seedling protocol.",
     source: "Source",
     openSource: "Open source",
     harvestUse: "What can you do now?",
@@ -175,11 +175,13 @@ function FullSheet({
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">
                     {labels.seedProtocolBody}
                   </p>
-                  <span className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground">
-                    {language === "es"
-                      ? "Conexión canónica preparada"
-                      : "Canonical connection prepared"}
-                  </span>
+                  <a
+                    href={`/gardenpedia#seed:${detail.id}`}
+                    className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground transition-colors hover:bg-secondary"
+                  >
+                    {language === "es" ? "Abrir perfil de semilla" : "Open Seed Profile"}
+                    <ArrowUpRight aria-hidden="true" className="ml-1.5 size-3.5" />
+                  </a>
                 </div>
               </div>
             </div>

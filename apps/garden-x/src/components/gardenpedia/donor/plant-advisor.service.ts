@@ -38,7 +38,7 @@ export async function getPlantRecommendations(request: AdvisorRequest): Promise<
  */
 function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse {
   const text = normalize(request.query);
-  const wantsLowLight = /(poca luz|sombra|interior|sin sol|ventana)/.test(text);
+  const requestsUnmodeledLight = /(poca luz|sombra|interior|sin sol|ventana)/.test(text);
   const wantsEasy = /(facil|principiante|resistente|sin experiencia|olvido)/.test(text);
   const wantsHerbs = /(hierba|aromatic|albahaca|menta|cocina|infusion)/.test(text);
   const wantsLeaves = /(hoja|ensalada|lechuga|verde)/.test(text);
@@ -50,9 +50,19 @@ function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse 
     /(tengo semilla|inventario|mis semillas)/.test(text) ||
     request.activeFilters?.inventory === "owned";
 
+  if (requestsUnmodeledLight) {
+    return {
+      query: request.query,
+      summary:
+        "El catálogo distingue exposición exterior, pero todavía no publica una clasificación comparable de intensidad de luz interior.",
+      cultivationAdvice:
+        "No se asignó una planta por suponer que sol parcial equivale a poca luz interior. Revisa la ficha y el sistema de iluminación real.",
+      recommendations: [],
+    };
+  }
+
   const scored = plants
     .map((plant) => {
-      if (wantsLowLight && plant.light !== "partial_sun") return null;
       if (
         wantsHydro &&
         plant.hydroponicSuitability !== "compatible" &&
@@ -64,13 +74,6 @@ function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse 
       let criteria = 0;
       let matches = 0;
 
-      if (wantsLowLight) {
-        criteria += 1;
-        if (plant.light === "partial_sun") {
-          matches += 1;
-          reasons.push("tiene una necesidad de luz parcial documentada");
-        }
-      }
       if (wantsHerbs) {
         criteria += 1;
         if (plant.categoryKey === "herbs") {

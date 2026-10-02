@@ -6,6 +6,7 @@ import {
   donorPlants,
   donorPlantsById,
   findCanonicalEntry,
+  normalizeOutdoorExposureFilter,
 } from "./canonical-adapter";
 import { filterDonorPlants } from "./explore";
 import { calculateSingleCropDose } from "./hydro-calculator.engine";
@@ -25,7 +26,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "tomillo alemán",
         category: "all",
-        light: "all",
+        outdoorExposure: "all",
         inventory: "all",
       }).map((plant) => plant.id),
     ).toContain("german-thyme");
@@ -34,7 +35,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "Petunia × atkinsiana",
         category: "all",
-        light: "all",
+        outdoorExposure: "all",
         inventory: "all",
       }).map((plant) => plant.id),
     ).toContain("cascading-petunia");
@@ -43,7 +44,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "basil",
         category: "herbs",
-        light: "all",
+        outdoorExposure: "all",
         inventory: "all",
       }).every((plant) => plant.category === "herbs"),
     ).toBe(true);
@@ -54,7 +55,7 @@ describe("direct Gardenpedia presentation adapter", () => {
       plants: donorPlants,
       query: "",
       category: "flowers",
-      light: "all",
+      outdoorExposure: "all",
       inventory: "all",
     });
     expect(flowers.length).toBeGreaterThan(0);
@@ -64,7 +65,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "",
         category: "all",
-        light: "all",
+        outdoorExposure: "all",
         inventory: "owned",
       }),
     ).toHaveLength(0);
@@ -73,30 +74,42 @@ describe("direct Gardenpedia presentation adapter", () => {
       plants: donorPlants,
       query: "",
       category: "all",
-      light: "full_sun",
+      outdoorExposure: "full_sun",
       inventory: "all",
     });
     const partialSun = filterDonorPlants({
       plants: donorPlants,
       query: "",
       category: "all",
-      light: "partial_sun",
+      outdoorExposure: "partial_sun",
       inventory: "all",
     });
     const unknownLight = filterDonorPlants({
       plants: donorPlants,
       query: "",
       category: "all",
-      light: "unknown",
+      outdoorExposure: "unknown",
       inventory: "all",
     });
-    expect(fullSun.length).toBeGreaterThan(0);
-    expect(partialSun.length).toBeGreaterThan(0);
-    expect(unknownLight.length).toBeGreaterThan(0);
-    expect(fullSun.every((plant) => plant.light === "full_sun")).toBe(true);
-    expect(partialSun.every((plant) => plant.light === "partial_sun")).toBe(true);
-    expect(unknownLight.every((plant) => plant.light === "unknown")).toBe(true);
-    expect(donorPlants.some((plant) => plant.light === ("baja" as never))).toBe(false);
+    expect(fullSun.length).toBe(198);
+    expect(partialSun.length).toBe(5);
+    expect(unknownLight.length).toBe(15);
+    expect(fullSun.every((plant) => plant.outdoorExposures.includes("full_sun"))).toBe(true);
+    expect(partialSun.every((plant) => plant.outdoorExposures.includes("partial_sun"))).toBe(true);
+    expect(unknownLight.every((plant) => plant.outdoorExposures.includes("unknown"))).toBe(true);
+    expect(donorPlants.every((plant) => plant.lightIntensity === "unknown")).toBe(true);
+    expect(normalizeOutdoorExposureFilter("partial shade")).toBe("partial_sun");
+    expect(normalizeOutdoorExposureFilter("full sun")).toBe("full_sun");
+    expect(normalizeOutdoorExposureFilter("low light")).toBeNull();
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "all",
+        outdoorExposure: "partial shade",
+        inventory: "all",
+      }),
+    ).toHaveLength(5);
   });
 
   it("keeps a high-data reference and a lower/uncertain identity generic", () => {
@@ -137,11 +150,8 @@ describe("direct Gardenpedia presentation adapter", () => {
     );
 
     const lowLight = await getPlantRecommendations({ query: "poca luz para interior" });
-    expect(
-      lowLight.recommendations.every(
-        (item) => donorPlantsById.get(item.plantId)?.light === "partial_sun",
-      ),
-    ).toBe(true);
+    expect(lowLight.recommendations).toHaveLength(0);
+    expect(lowLight.summary).toContain("intensidad de luz interior");
 
     const hydro = await getPlantRecommendations({ query: "hidroponía compacta" });
     expect(

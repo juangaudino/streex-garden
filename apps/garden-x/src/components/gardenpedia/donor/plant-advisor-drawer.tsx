@@ -24,7 +24,7 @@ export function PlantAdvisorDrawer({
   onApplyRecommendations,
   language = "es",
 }: {
-  activeFilters?: { category?: string; light?: string; inventory?: string };
+  activeFilters?: { category?: string; outdoorExposure?: string; inventory?: string };
   onApplyRecommendations?: (plantIds: string[]) => void;
   language?: "en" | "es";
 }) {
@@ -104,7 +104,7 @@ export function PlantAdvisorDrawer({
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="glass-dialog flex w-full flex-col gap-0 overflow-y-auto p-0 sm:max-w-[440px]"
+        className="gardenpedia-direct-sheet glass-dialog flex w-full flex-col gap-0 overflow-y-auto p-0 sm:max-w-[440px]"
       >
         <SheetHeader className="border-b border-border/70 px-5 py-5 text-left">
           <SheetTitle className="flex items-center gap-2 font-display text-lg">
@@ -157,7 +157,7 @@ export function PlantAdvisorDrawer({
                   type="button"
                   onClick={() => run(preset.query)}
                   disabled={loading}
-                  className="glass-card flex min-h-12 items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/80 disabled:opacity-60"
+                  className="glass-soft flex min-h-12 items-center gap-3 px-3 py-2.5 text-left text-sm transition hover:bg-background/80 disabled:opacity-60"
                 >
                   <span aria-hidden="true" className="text-base">
                     {preset.badge}

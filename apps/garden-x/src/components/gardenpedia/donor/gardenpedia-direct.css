@@ -141,3 +141,41 @@
     transform: none;
   }
 }
+
+/* Radix Sheet renders in a body portal, outside .gardenpedia-direct. Keep the
+   donor surfaces visually identical without changing global Garden X styles. */
+.gardenpedia-direct-sheet {
+  border-color: color-mix(in oklab, white 70%, transparent);
+  background: color-mix(in oklab, var(--background) 88%, transparent);
+  backdrop-filter: blur(24px);
+}
+.gardenpedia-direct-sheet .glass-soft {
+  border: 1px solid color-mix(in oklab, white 48%, transparent);
+  border-radius: 0.5rem;
+  background: color-mix(in oklab, white 34%, transparent);
+  backdrop-filter: blur(12px);
+}
+.gardenpedia-direct-sheet .glass-card {
+  border: 1px solid color-mix(in oklab, white 62%, transparent);
+  border-radius: 0.5rem;
+  background: color-mix(in oklab, white 58%, transparent);
+  box-shadow: 0 10px 28px color-mix(in oklab, var(--foreground) 6%, transparent);
+  backdrop-filter: blur(16px);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.gardenpedia-direct-sheet .glass-card:hover {
+  transform: translateY(-2px);
+  background: color-mix(in oklab, white 72%, transparent);
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--foreground) 9%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gardenpedia-direct-sheet .glass-card {
+    transition: none;
+  }
+  .gardenpedia-direct-sheet .glass-card:hover {
+    transform: none;
+  }
+}

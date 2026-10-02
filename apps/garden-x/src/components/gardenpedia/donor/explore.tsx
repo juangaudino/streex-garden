@@ -5,7 +5,12 @@ import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { donorPlants, seedProfileCount, type DonorPlant } from "./canonical-adapter";
+import {
+  donorPlants,
+  normalizeOutdoorExposureFilter,
+  seedProfileCount,
+  type DonorPlant,
+} from "./canonical-adapter";
 
 type Plant = DonorPlant;
 type View = "library" | "seeds" | "machines";
@@ -29,7 +34,7 @@ const COPY = {
     pending: "Necesita validación",
     search: "Busca albahaca, basil, lechuga…",
     type: "Tipo",
-    light: "Luz",
+    light: "Exposición exterior",
     inventory: "Inventario",
     publicCatalog: "Catálogo público",
     privateInventory: "Mis semillas (requiere acceso)",
@@ -63,7 +68,7 @@ const COPY = {
     pending: "Needs validation",
     search: "Search basil, lettuce, tomato…",
     type: "Type",
-    light: "Light",
+    light: "Outdoor exposure",
     inventory: "Inventory",
     publicCatalog: "Public catalog",
     privateInventory: "My seeds (access required)",
@@ -94,25 +99,25 @@ const categoryLabels: Record<string, string> = {
   "root vegetables": "Raíces",
 };
 
-const lightLabels: Record<string, string> = {
-  all: "Toda luz",
-  full_sun: "Luz plena",
-  partial_sun: "Luz parcial",
-  unknown: "Sin dato de luz",
+const exposureLabels: Record<string, string> = {
+  all: "Cualquier exposición exterior",
+  full_sun: "Sol pleno",
+  partial_sun: "Sol parcial",
+  unknown: "No establecido",
 };
 
-function lightLabel(level: string, language: GardenpediaLanguage) {
+function exposureLabel(level: string, language: GardenpediaLanguage) {
   if (language === "en") {
     return (
       {
-        all: "Any light",
+        all: "Any outdoor exposure",
         full_sun: "Full sun",
         partial_sun: "Partial sun",
-        unknown: "Light not established",
+        unknown: "Not established",
       }[level] ?? level
     );
   }
-  return lightLabels[level] ?? level;
+  return exposureLabels[level] ?? level;
 }
 
 function inventoryLabel(state: string, language: GardenpediaLanguage) {
@@ -178,14 +183,14 @@ export function filterDonorPlants({
   plants,
   query,
   category,
-  light,
+  outdoorExposure,
   inventory,
   advisorIds,
 }: {
   plants: readonly Plant[];
   query: string;
   category: string;
-  light: string;
+  outdoorExposure: string;
   inventory: string;
   advisorIds?: readonly string[] | null;
 }) {
@@ -198,7 +203,10 @@ export function filterDonorPlants({
   }
   return plants.filter((plant) => {
     const categoryMatch = category === "all" || plant.categoryKey === category;
-    const lightMatch = light === "all" || plant.light === light;
+    const normalizedExposure = normalizeOutdoorExposureFilter(outdoorExposure);
+    const exposureMatch =
+      normalizedExposure === "all" ||
+      (normalizedExposure !== null && plant.outdoorExposures.includes(normalizedExposure));
     const inventoryMatch = inventory !== "owned";
     const searchMatch =
       !normalized ||
@@ -206,7 +214,7 @@ export function filterDonorPlants({
         .join(" ")
         .toLocaleLowerCase("es")
         .includes(normalized);
-    return categoryMatch && lightMatch && inventoryMatch && searchMatch;
+    return categoryMatch && exposureMatch && inventoryMatch && searchMatch;
   });
 }
 
@@ -221,7 +229,7 @@ export function GardenLibrary({
   const [view, setView] = useState<View>("library");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
-  const [light, setLight] = useState("all");
+  const [outdoorExposure, setOutdoorExposure] = useState("all");
   const [inventory, setInventory] = useState("all");
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
 
@@ -242,8 +250,16 @@ export function GardenLibrary({
   );
   const evidenceGroups = useMemo(() => buildEvidenceGroups(donorPlants), []);
   const filteredPlants = useMemo(
-    () => filterDonorPlants({ plants: donorPlants, query, category, light, inventory, advisorIds }),
-    [advisorIds, category, light, inventory, query],
+    () =>
+      filterDonorPlants({
+        plants: donorPlants,
+        query,
+        category,
+        outdoorExposure,
+        inventory,
+        advisorIds,
+      }),
+    [advisorIds, category, outdoorExposure, inventory, query],
   );
 
   return (
@@ -252,7 +268,7 @@ export function GardenLibrary({
         <header className="glass-panel flex flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="/app-icon.svg"
+              src="/icons/garden-x-512.png"
               alt="Garden X"
               className="size-10 shrink-0 rounded-lg shadow-sm"
             />
@@ -311,13 +327,13 @@ export function GardenLibrary({
             category={category}
             filteredPlants={filteredPlants}
             inventory={inventory}
-            light={light}
+            outdoorExposure={outdoorExposure}
             query={query}
             onAdvisorApply={setAdvisorIds}
             onAdvisorClear={() => setAdvisorIds(null)}
             onCategoryChange={setCategory}
             onInventoryChange={setInventory}
-            onLightChange={setLight}
+            onOutdoorExposureChange={setOutdoorExposure}
             onQueryChange={setQuery}
             language={language}
             copy={copy}
@@ -337,13 +353,13 @@ function LibraryView({
   category,
   filteredPlants,
   inventory,
-  light,
+  outdoorExposure,
   query,
   onAdvisorApply,
   onAdvisorClear,
   onCategoryChange,
   onInventoryChange,
-  onLightChange,
+  onOutdoorExposureChange,
   onQueryChange,
   language,
   copy,
@@ -354,13 +370,13 @@ function LibraryView({
   category: string;
   filteredPlants: Plant[];
   inventory: string;
-  light: string;
+  outdoorExposure: string;
   query: string;
   onAdvisorApply: (ids: string[]) => void;
   onAdvisorClear: () => void;
   onCategoryChange: (value: string) => void;
   onInventoryChange: (value: string) => void;
-  onLightChange: (value: string) => void;
+  onOutdoorExposureChange: (value: string) => void;
   onQueryChange: (value: string) => void;
   language: GardenpediaLanguage;
   copy: (typeof COPY)[GardenpediaLanguage];
@@ -434,7 +450,7 @@ function LibraryView({
             </label>
             <div className="flex items-center gap-2">
               <PlantAdvisorDrawer
-                activeFilters={{ category, light, inventory }}
+                activeFilters={{ category, outdoorExposure, inventory }}
                 onApplyRecommendations={onAdvisorApply}
                 language={language}
               />
@@ -468,7 +484,7 @@ function LibraryView({
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <div
                 className="flex flex-wrap items-center gap-2"
-                aria-label="Filtrar por necesidad de luz"
+                aria-label="Filtrar por exposición exterior"
               >
                 <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <Sun className="size-3" aria-hidden="true" /> {copy.light}
@@ -477,11 +493,11 @@ function LibraryView({
                   <Button
                     key={item}
                     size="sm"
-                    variant={light === item ? "default" : "outline"}
-                    onClick={() => onLightChange(item)}
+                    variant={outdoorExposure === item ? "default" : "outline"}
+                    onClick={() => onOutdoorExposureChange(item)}
                     className="rounded-full shadow-none"
                   >
-                    {lightLabel(item, language)}
+                    {exposureLabel(item, language)}
                   </Button>
                 ))}
               </div>

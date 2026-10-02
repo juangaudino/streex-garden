@@ -13,6 +13,7 @@ import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
 export type DonorSourceRef = { label: string; url: string };
 export type DonorBacking = "source" | "garden" | "pending";
 export type DonorConfidence = "alta" | "media" | "baja" | "pendiente";
+export type OutdoorExposure = "full_sun" | "partial_sun" | "unknown";
 
 export type DonorPlant = {
   id: string;
@@ -23,8 +24,10 @@ export type DonorPlant = {
   category: string;
   emoji: string;
   tags: string[];
-  /** Growing-phase light requirement, kept at canonical scope. */
-  light: "full_sun" | "partial_sun" | "unknown";
+  /** All supported growing-phase outdoor exposures, kept separate from indoor intensity. */
+  outdoorExposures: readonly OutdoorExposure[];
+  /** No canonical indoor intensity vocabulary is currently published. */
+  lightIntensity: "unknown";
   /** User-facing category key; fruiting and fruits intentionally share one filter. */
   categoryKey: string;
   hydroponicSuitability: "compatible" | "conditional" | "incompatible" | "unknown" | "pending";
@@ -251,19 +254,56 @@ function confidenceLabel(value: "high" | "medium" | "low" | undefined): DonorCon
         : "pendiente";
 }
 
-function lightLevel(entry: GardenLibraryEntry): DonorPlant["light"] {
-  const requirement =
+function outdoorExposureLevels(entry: GardenLibraryEntry): OutdoorExposure[] {
+  const requirements =
     entry.compatibilityProfile?.light.status === "known"
-      ? entry.compatibilityProfile.light.value.find((item) => item.phase === "growing")?.requirement
-      : undefined;
-  if (!requirement || !("kind" in requirement)) return "unknown";
-  return requirement.kind === "full_sun" || requirement.kind === "partial_sun"
-    ? requirement.kind
-    : "unknown";
+      ? entry.compatibilityProfile.light.value
+          .filter((item) => item.phase === "growing")
+          .map((item) => item.requirement)
+      : [];
+  const levels = requirements.flatMap((requirement) =>
+    "kind" in requirement && (requirement.kind === "full_sun" || requirement.kind === "partial_sun")
+      ? [requirement.kind]
+      : [],
+  );
+  return levels.length ? [...new Set(levels)] : ["unknown"];
 }
 
 export function normalizeCategory(category: string) {
   return category === "fruiting" ? "fruits" : category;
+}
+
+/**
+ * Normalize only the published outdoor-exposure vocabulary and its explicit
+ * aliases. Indoor intensity terms intentionally return null because the
+ * canonical catalog does not publish a comparable intensity field.
+ */
+export function normalizeOutdoorExposureFilter(value: string): OutdoorExposure | "all" | null {
+  const normalized = value
+    .trim()
+    .toLocaleLowerCase("en")
+    .replace(/[-\s]+/g, "_");
+  if (normalized === "all" || normalized === "any" || normalized === "any_outdoor_exposure") {
+    return "all";
+  }
+  if (normalized === "full_sun" || normalized === "sun") return "full_sun";
+  if (
+    normalized === "partial_sun" ||
+    normalized === "partial_shade" ||
+    normalized === "part_shade"
+  ) {
+    return "partial_sun";
+  }
+  if (
+    normalized === "unknown" ||
+    normalized === "pending" ||
+    normalized === "needs_validation" ||
+    normalized === "not_established" ||
+    normalized === "light_not_established"
+  ) {
+    return "unknown";
+  }
+  return null;
 }
 
 function hydroponicSuitability(entry: GardenLibraryEntry): DonorPlant["hydroponicSuitability"] {
@@ -336,7 +376,8 @@ export function toDonorPlants(entries: readonly GardenLibraryEntry[]): DonorPlan
       category: entry.category,
       emoji: CATEGORY_EMOJI[entry.category] ?? "🌱",
       tags: entry.aliases.filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
-      light: lightLevel(entry),
+      outdoorExposures: outdoorExposureLevels(entry),
+      lightIntensity: "unknown",
       categoryKey: normalizeCategory(entry.category),
       hydroponicSuitability: hydroponicSuitability(entry),
       growthHabits: growthHabits(entry),

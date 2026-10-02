@@ -18,7 +18,7 @@ export interface AdvisorRequest {
   query: string;
   activeFilters?: {
     category?: string;
-    light?: string;
+    outdoorExposure?: string;
     inventory?: string;
   };
 }

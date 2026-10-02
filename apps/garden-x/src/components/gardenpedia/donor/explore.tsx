@@ -3,6 +3,7 @@ import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { SeedLibraryView } from "./seed-profile";
+import { canonicalMachineModels } from "./machine-profile-adapter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -51,6 +52,9 @@ const COPY = {
     publicSeedsBody:
       "La navegación conserva la arquitectura del donor. Los paquetes y la propiedad de semillas se muestran únicamente en el contexto privado autorizado.",
     publicMachines: "Modelos públicos de máquinas",
+    machineProfile: "Ver ficha →",
+    machineBoundary:
+      "Machine Model, System Instance e Instance Layout permanecen como conceptos canónicos separados. Las instancias privadas no se exponen en esta ruta pública.",
     publicMachinesBody:
       "La navegación conserva la arquitectura del donor. Las instancias, mapas y estados personales no se exponen en el catálogo público.",
   },
@@ -85,6 +89,9 @@ const COPY = {
     publicSeedsBody:
       "This navigation preserves the donor architecture. Packet ownership and personal seed inventory appear only in the authorized private context.",
     publicMachines: "Public machine models",
+    machineProfile: "View profile →",
+    machineBoundary:
+      "Machine Model, System Instance and Instance Layout remain separate canonical concepts. Private instances are not exposed on this public route.",
     publicMachinesBody:
       "This navigation preserves the donor architecture. Personal instances, layouts, and statuses are not exposed in the public catalog.",
   },
@@ -648,18 +655,49 @@ function EvidenceRow({ tone, label, value }: { tone: string; label: string; valu
 }
 
 function MachineView({ copy }: { copy: (typeof COPY)[GardenpediaLanguage] }) {
+  const machines = canonicalMachineModels();
   return (
     <section className="animate-rise py-6">
       <div className="glass-panel p-6 sm:p-8">
-        <p className="eyebrow">Gardenpedia</p>
+        <p className="eyebrow">Gardenpedia · Machines</p>
         <h2 className="mt-2 font-display text-3xl font-bold">{copy.publicMachines}</h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
           {copy.publicMachinesBody}
         </p>
       </div>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {machines.map((machine) => {
+          const body = (
+            <>
+              <div className="flex items-center justify-between">
+                <span className="text-xl" aria-hidden="true">
+                  ⚙️
+                </span>
+                <span className="rounded-full bg-secondary px-2 py-1 text-[10px] font-semibold">
+                  {copy.publicMachines}
+                </span>
+              </div>
+              <h3 className="mt-5 font-display text-xl font-semibold">{machine.name}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{machine.modelNumber}</p>
+              <p className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs font-semibold">
+                {machine.source.publisher}
+                <span className="text-accent">{copy.machineProfile}</span>
+              </p>
+            </>
+          );
+          return (
+            <a
+              key={machine.id}
+              href={`/gardenpedia#machine:${machine.id}`}
+              className="glass-card block p-5 transition hover:-translate-y-0.5"
+            >
+              {body}
+            </a>
+          );
+        })}
+      </div>
       <div className="glass-panel mt-5 p-6 text-sm text-muted-foreground">
-        Machine Model, System Instance and Instance Layout remain separate canonical concepts.
-        Private machine instances are not exposed on this public route.
+        {copy.machineBoundary}
       </div>
     </section>
   );

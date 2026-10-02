@@ -49,6 +49,7 @@ const plantFiles = [
   "data/plants-expansion-batch-b1.json",
   "data/plants-expansion-wave-1.json",
   "data/plants-expansion-wave-2.json",
+  "data/plants-expansion-wave-3.json",
   "data/plants-requests.json",
 ];
 
@@ -66,6 +67,7 @@ const publicFiles = [
   "expansion-batch-b1.js",
   "expansion-wave-1.js",
   "expansion-wave-2.js",
+  "expansion-wave-3.js",
   "machines-v1.css",
   "machines-v1.js",
   "supabase-lab-transport.js",
@@ -83,6 +85,7 @@ const dataFiles = [
   "data/sources-expansion-batch-b1.json",
   "data/sources-expansion-wave-1.json",
   "data/sources-expansion-wave-2.json",
+  "data/sources-expansion-wave-3.json",
   "data/sources-requests.json",
   "data/translations-es.json",
   "data/translations-owned-seeds-es.json",
@@ -90,6 +93,7 @@ const dataFiles = [
   "data/translations-expansion-batch-b1-es.json",
   "data/translations-expansion-wave-1-es.json",
   "data/translations-expansion-wave-2-es.json",
+  "data/translations-expansion-wave-3-es.json",
   "data/translations-requests-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
@@ -98,6 +102,7 @@ const dataFiles = [
   "data/seed-profiles-v0.json",
   "data/seed-profiles-expansion-wave-1.json",
   "data/seed-profiles-expansion-wave-2.json",
+  "data/seed-profiles-expansion-wave-3.json",
 ];
 
 function readJson(relativePath) {
@@ -264,6 +269,7 @@ function buildCatalogManifest(plants) {
     "data/sources-expansion-batch-b1.json",
     "data/sources-expansion-wave-1.json",
     "data/sources-expansion-wave-2.json",
+    "data/sources-expansion-wave-3.json",
     "data/sources-requests.json",
   ].flatMap((file) => filterPublicSources(file));
   const sourceById = new Map(

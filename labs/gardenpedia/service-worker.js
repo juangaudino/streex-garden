@@ -34,7 +34,11 @@ const APP_SHELL = [
   "./data/plants-expansion-wave-2.json",
   "./data/sources-expansion-wave-2.json",
   "./data/translations-expansion-wave-2-es.json",
-  "./data/seed-profiles-expansion-wave-2.json"
+  "./data/seed-profiles-expansion-wave-2.json",
+  "./data/plants-expansion-wave-3.json",
+  "./data/sources-expansion-wave-3.json",
+  "./data/translations-expansion-wave-3-es.json",
+  "./data/seed-profiles-expansion-wave-3.json"
 ];
 
 self.addEventListener("install", (event) => {

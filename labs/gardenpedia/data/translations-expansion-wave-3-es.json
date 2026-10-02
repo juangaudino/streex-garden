@@ -1,0 +1,1069 @@
+{
+  "oakleaf-lettuce": {
+    "summary": "Identidad base de Wave 3 para Lechuga hoja de roble. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "little-gem-lettuce": {
+    "summary": "Identidad base de Wave 3 para Lechuga Little Gem. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "red-russian-kale": {
+    "summary": "Identidad base de Wave 3 para Col rizada Red Russian. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "lacinato-kale": {
+    "summary": "Identidad base de Wave 3 para Col rizada Lacinato. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "komatsuna": {
+    "summary": "Identidad base de Wave 3 para Komatsuna. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "greek-oregano": {
+    "summary": "Identidad base de Wave 3 para Orégano griego. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "russian-tarragon": {
+    "summary": "Identidad base de Wave 3 para Estragón ruso. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "winter-savory": {
+    "summary": "Identidad base de Wave 3 para Ajedrea de invierno. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "caraway": {
+    "summary": "Identidad base de Wave 3 para Alcaravea. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "epazote": {
+    "summary": "Identidad base de Wave 3 para Epazote. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "grape-tomato": {
+    "summary": "Identidad base de Wave 3 para Tomate uva. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "black-cherry-tomato": {
+    "summary": "Identidad base de Wave 3 para Tomate cherry negro. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "sunrise-sauce-tomato": {
+    "summary": "Identidad base de Wave 3 para Tomate Sunrise Sauce. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "anaheim-pepper": {
+    "summary": "Identidad base de Wave 3 para Pimiento Anaheim. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "banana-pepper": {
+    "summary": "Identidad base de Wave 3 para Pimiento banana. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "ancho-pepper": {
+    "summary": "Identidad base de Wave 3 para Pimiento ancho. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "cubanelle-pepper": {
+    "summary": "Identidad base de Wave 3 para Pimiento cubanelle. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "savoy-cabbage": {
+    "summary": "Identidad base de Wave 3 para Col de Saboya. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "napa-cabbage": {
+    "summary": "Identidad base de Wave 3 para Col napa. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "romanesco-cauliflower": {
+    "summary": "Identidad base de Wave 3 para Coliflor romanesco. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "broccolini": {
+    "summary": "Identidad base de Wave 3 para Broccolini. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "cherry-belle-radish": {
+    "summary": "Identidad base de Wave 3 para Rábano Cherry Belle. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "imperator-carrot": {
+    "summary": "Identidad base de Wave 3 para Zanahoria Imperator. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "cylindra-beet": {
+    "summary": "Identidad base de Wave 3 para Remolacha Cylindra. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "hakurei-turnip": {
+    "summary": "Identidad base de Wave 3 para Nabo Hakurei. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "tokyo-long-white-onion": {
+    "summary": "Identidad base de Wave 3 para Cebolla Tokyo Long White. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "king-richard-leek": {
+    "summary": "Identidad base de Wave 3 para Puerro King Richard. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "seed-grown-shallot": {
+    "summary": "Identidad base de Wave 3 para Chalota de semilla. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "thinning": {
+        "short": "Ralea según la forma de cosecha",
+        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      }
+    }
+  },
+  "kentucky-wonder-pole-bean": {
+    "summary": "Identidad base de Wave 3 para Frijol de enrame Kentucky Wonder. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "mammoth-melting-sugar-snow-pea": {
+    "summary": "Identidad base de Wave 3 para Guisante de nieve Mammoth Melting Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "little-marvel-shelling-pea": {
+    "summary": "Identidad base de Wave 3 para Guisante para desgranar Little Marvel. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "henderson-bush-lima-bean": {
+    "summary": "Identidad base de Wave 3 para Frijol lima de mata Henderson. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "purple-podded-bean": {
+    "summary": "Identidad base de Wave 3 para Frijol de vaina morada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "gherkin-cucumber": {
+    "summary": "Identidad base de Wave 3 para Pepino tipo gherkin. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "flowering": {
+        "short": "Registra floración y cuajado",
+        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+      }
+    }
+  },
+  "pattypan-squash": {
+    "summary": "Identidad base de Wave 3 para Calabaza pattypan. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "acorn-squash": {
+    "summary": "Identidad base de Wave 3 para Calabaza acorn. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "butternut-squash": {
+    "summary": "Identidad base de Wave 3 para Calabaza butternut. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "california-poppy": {
+    "summary": "Identidad base de Wave 3 para Amapola de California. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "phacelia-tanacetifolia": {
+    "summary": "Identidad base de Wave 3 para Facelia. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "bee-balm": {
+    "summary": "Identidad base de Wave 3 para Bergamota / monarda. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "snapdragon": {
+    "summary": "Identidad base de Wave 3 para Boca de dragón. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "teddy-bear-sunflower": {
+    "summary": "Identidad base de Wave 3 para Girasol Teddy Bear. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "dwarf-sunflower": {
+    "summary": "Identidad base de Wave 3 para Girasol enano. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "sweet-pea": {
+    "summary": "Identidad base de Wave 3 para Guisante de olor. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "cosmos-seashell": {
+    "summary": "Identidad base de Wave 3 para Cosmos Seashell. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "black-eyed-susan": {
+    "summary": "Identidad base de Wave 3 para Rudbeckia / Susana de ojos negros. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  },
+  "bachelor-button": {
+    "summary": "Identidad base de Wave 3 para Botón de soltero. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "sections": {
+      "identity": {
+        "short": "Identidad y alcance",
+        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      }
+    }
+  }
+}

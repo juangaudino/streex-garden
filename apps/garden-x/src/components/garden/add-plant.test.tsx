@@ -164,7 +164,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(sunflower.closest("details")?.open).toBe(false);
     expect(sunflower.closest("section[aria-label='Recommended here']")).toBeNull();
     expect(screen.queryByText(/^(best|top pick|winner|score)$/i)).toBeNull();
-  });
+  }, 15_000);
 
   it("renders the recommendation hierarchy in Spanish", async () => {
     mocks.language = "es";

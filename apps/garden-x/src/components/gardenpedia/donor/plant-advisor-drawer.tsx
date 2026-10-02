@@ -33,6 +33,8 @@ export function PlantAdvisorDrawer({
 }: {
   activeFilters?: {
     category?: string;
+    light?: string;
+    /** @deprecated Kept for callers from the previous two-axis pass. */
     indoorLight?: string;
     outdoorExposure?: string;
     inventory?: string;

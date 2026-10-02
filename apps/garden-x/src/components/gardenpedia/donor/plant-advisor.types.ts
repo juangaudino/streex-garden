@@ -19,6 +19,8 @@ export interface AdvisorRequest {
   language?: "en" | "es";
   activeFilters?: {
     category?: string;
+    light?: string;
+    /** @deprecated Kept for callers from the previous two-axis pass. */
     indoorLight?: string;
     outdoorExposure?: string;
     inventory?: string;

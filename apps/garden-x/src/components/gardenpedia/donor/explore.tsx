@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {
   donorPlants,
-  normalizeIndoorLightFilter,
+  normalizeLightFilter,
   normalizeOutdoorExposureFilter,
   seedProfileCount,
   type DonorPlant,
@@ -35,8 +35,7 @@ const COPY = {
     pending: "Necesita validación",
     search: "Busca albahaca, basil, lechuga…",
     type: "Tipo",
-    indoorLight: "Luz interior",
-    outdoorExposure: "Exposición exterior",
+    light: "Luz",
     inventory: "Inventario",
     publicCatalog: "Catálogo público",
     privateInventory: "Mis semillas (requiere acceso)",
@@ -70,8 +69,7 @@ const COPY = {
     pending: "Needs validation",
     search: "Search basil, lettuce, tomato…",
     type: "Type",
-    indoorLight: "Indoor grow light",
-    outdoorExposure: "Outdoor exposure",
+    light: "Light",
     inventory: "Inventory",
     publicCatalog: "Public catalog",
     privateInventory: "My seeds (access required)",
@@ -102,24 +100,14 @@ const categoryLabels: Record<string, string> = {
   "root vegetables": "Raíces",
 };
 
-const indoorLightLabels: Record<string, string> = {
+const lightLabels: Record<string, string> = {
   all: "Toda luz",
   high: "Luz alta",
   medium: "Luz media",
   low: "Luz baja",
-  unknown: "No establecido",
 };
 
-const exposureLabels: Record<string, string> = {
-  all: "Cualquier exposición exterior",
-  full_sun: "Sol pleno",
-  partial_sun: "Sol parcial",
-  partial_shade: "Sombra parcial",
-  shade: "Sombra",
-  unknown: "No establecido",
-};
-
-function indoorLightLabel(level: string, language: GardenpediaLanguage) {
+function lightLabel(level: string, language: GardenpediaLanguage) {
   if (language === "en") {
     return (
       {
@@ -127,27 +115,10 @@ function indoorLightLabel(level: string, language: GardenpediaLanguage) {
         high: "High light",
         medium: "Medium light",
         low: "Low light",
-        unknown: "Not established",
       }[level] ?? level
     );
   }
-  return indoorLightLabels[level] ?? level;
-}
-
-function exposureLabel(level: string, language: GardenpediaLanguage) {
-  if (language === "en") {
-    return (
-      {
-        all: "Any outdoor exposure",
-        full_sun: "Full sun",
-        partial_sun: "Partial sun",
-        partial_shade: "Partial shade",
-        shade: "Shade",
-        unknown: "Not established",
-      }[level] ?? level
-    );
-  }
-  return exposureLabels[level] ?? level;
+  return lightLabels[level] ?? level;
 }
 
 function inventoryLabel(state: string, language: GardenpediaLanguage) {
@@ -213,27 +184,31 @@ export function filterDonorPlants({
   plants,
   query,
   category,
+  light,
   indoorLight,
-  outdoorExposure,
+  outdoorExposure = "all",
   inventory,
   advisorIds,
 }: {
   plants: readonly Plant[];
   query: string;
   category: string;
+  light?: string;
+  /** @deprecated Kept for callers from the previous two-axis pass. */
   indoorLight?: string;
-  outdoorExposure: string;
+  /** Internal compatibility for callers outside Explore; never rendered here. */
+  outdoorExposure?: string;
   inventory: string;
   advisorIds?: readonly string[] | null;
 }) {
   const normalized = query.trim().toLocaleLowerCase("es");
   const filtered = plants.filter((plant) => {
     const categoryMatch = category === "all" || plant.categoryKey === category;
-    const normalizedIndoorLight = normalizeIndoorLightFilter(indoorLight ?? "all");
+    const normalizedLight = normalizeLightFilter(light ?? indoorLight ?? "all");
     const normalizedExposure = normalizeOutdoorExposureFilter(outdoorExposure);
-    const indoorLightMatch =
-      normalizedIndoorLight === "all" ||
-      (normalizedIndoorLight !== null && plant.indoorLightRequirement === normalizedIndoorLight);
+    const lightMatch =
+      normalizedLight === "all" ||
+      (normalizedLight !== null && plant.lightRequirement === normalizedLight);
     const exposureMatch =
       normalizedExposure === "all" ||
       (normalizedExposure !== null && plant.outdoorExposures.includes(normalizedExposure));
@@ -244,7 +219,7 @@ export function filterDonorPlants({
         .join(" ")
         .toLocaleLowerCase("es")
         .includes(normalized);
-    return categoryMatch && indoorLightMatch && exposureMatch && inventoryMatch && searchMatch;
+    return categoryMatch && lightMatch && exposureMatch && inventoryMatch && searchMatch;
   });
   if (!advisorIds?.length) return filtered;
   const order = new Map(advisorIds.map((id, index) => [id, index]));
@@ -264,8 +239,7 @@ export function GardenLibrary({
   const [view, setView] = useState<View>("library");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
-  const [indoorLight, setIndoorLight] = useState("all");
-  const [outdoorExposure, setOutdoorExposure] = useState("all");
+  const [light, setLight] = useState("all");
   const [inventory, setInventory] = useState("all");
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
 
@@ -291,12 +265,11 @@ export function GardenLibrary({
         plants: donorPlants,
         query,
         category,
-        indoorLight,
-        outdoorExposure,
+        light,
         inventory,
         advisorIds,
       }),
-    [advisorIds, category, indoorLight, outdoorExposure, inventory, query],
+    [advisorIds, category, light, inventory, query],
   );
 
   return (
@@ -364,15 +337,13 @@ export function GardenLibrary({
             category={category}
             filteredPlants={filteredPlants}
             inventory={inventory}
-            indoorLight={indoorLight}
-            outdoorExposure={outdoorExposure}
+            light={light}
             query={query}
             onAdvisorApply={setAdvisorIds}
             onAdvisorClear={() => setAdvisorIds(null)}
             onCategoryChange={setCategory}
             onInventoryChange={setInventory}
-            onIndoorLightChange={setIndoorLight}
-            onOutdoorExposureChange={setOutdoorExposure}
+            onLightChange={setLight}
             onQueryChange={setQuery}
             language={language}
             copy={copy}
@@ -392,15 +363,13 @@ function LibraryView({
   category,
   filteredPlants,
   inventory,
-  indoorLight,
-  outdoorExposure,
+  light,
   query,
   onAdvisorApply,
   onAdvisorClear,
   onCategoryChange,
   onInventoryChange,
-  onIndoorLightChange,
-  onOutdoorExposureChange,
+  onLightChange,
   onQueryChange,
   language,
   copy,
@@ -411,15 +380,13 @@ function LibraryView({
   category: string;
   filteredPlants: Plant[];
   inventory: string;
-  indoorLight: string;
-  outdoorExposure: string;
+  light: string;
   query: string;
   onAdvisorApply: (ids: string[]) => void;
   onAdvisorClear: () => void;
   onCategoryChange: (value: string) => void;
   onInventoryChange: (value: string) => void;
-  onIndoorLightChange: (value: string) => void;
-  onOutdoorExposureChange: (value: string) => void;
+  onLightChange: (value: string) => void;
   onQueryChange: (value: string) => void;
   language: GardenpediaLanguage;
   copy: (typeof COPY)[GardenpediaLanguage];
@@ -493,7 +460,7 @@ function LibraryView({
             </label>
             <div className="flex items-center gap-2">
               <PlantAdvisorDrawer
-                activeFilters={{ category, indoorLight, outdoorExposure, inventory }}
+                activeFilters={{ category, light, inventory }}
                 onApplyRecommendations={onAdvisorApply}
                 language={language}
               />
@@ -525,45 +492,21 @@ function LibraryView({
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <div
-                className="flex flex-wrap items-center gap-2"
-                aria-label="Filtrar por necesidad de luz interior"
-              >
+              <div className="flex flex-wrap items-center gap-2" aria-label="Filtrar por luz">
                 <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  <Sun className="size-3" aria-hidden="true" /> {copy.indoorLight}
+                  <Sun className="size-3" aria-hidden="true" /> {copy.light}
                 </span>
-                {(["all", "high", "medium", "low", "unknown"] as const).map((item) => (
+                {(["all", "high", "medium", "low"] as const).map((item) => (
                   <Button
                     key={item}
                     size="sm"
-                    variant={indoorLight === item ? "default" : "outline"}
-                    onClick={() => onIndoorLightChange(item)}
+                    variant={light === item ? "default" : "outline"}
+                    onClick={() => onLightChange(item)}
                     className="rounded-full shadow-none"
                   >
-                    {indoorLightLabel(item, language)}
+                    {lightLabel(item, language)}
                   </Button>
                 ))}
-              </div>
-              <div
-                className="flex flex-wrap items-center gap-2"
-                aria-label="Filtrar por exposición exterior"
-              >
-                <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  <Sun className="size-3" aria-hidden="true" /> {copy.outdoorExposure}
-                </span>
-                {(["all", "full_sun", "partial_sun", "partial_shade", "unknown"] as const).map(
-                  (item) => (
-                    <Button
-                      key={item}
-                      size="sm"
-                      variant={outdoorExposure === item ? "default" : "outline"}
-                      onClick={() => onOutdoorExposureChange(item)}
-                      className="rounded-full shadow-none"
-                    >
-                      {exposureLabel(item, language)}
-                    </Button>
-                  ),
-                )}
               </div>
               <div
                 className="flex flex-wrap items-center gap-2"

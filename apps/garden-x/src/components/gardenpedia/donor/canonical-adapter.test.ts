@@ -6,7 +6,7 @@ import {
   donorPlants,
   donorPlantsById,
   findCanonicalEntry,
-  normalizeIndoorLightFilter,
+  normalizeLightFilter,
   normalizeOutdoorExposureFilter,
 } from "./canonical-adapter";
 import { filterDonorPlants } from "./explore";
@@ -98,11 +98,45 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(fullSun.every((plant) => plant.outdoorExposures.includes("full_sun"))).toBe(true);
     expect(partialSun.every((plant) => plant.outdoorExposures.includes("partial_sun"))).toBe(true);
     expect(unknownLight.every((plant) => plant.outdoorExposures.includes("unknown"))).toBe(true);
-    expect(donorPlants.every((plant) => plant.indoorLightRequirement === "unknown")).toBe(true);
-    expect(normalizeIndoorLightFilter("high light")).toBe("high");
-    expect(normalizeIndoorLightFilter("luz media")).toBe("medium");
-    expect(normalizeIndoorLightFilter("low light")).toBe("low");
-    expect(normalizeIndoorLightFilter("not established")).toBe("unknown");
+    const highLight = donorPlants.filter((plant) => plant.lightRequirement === "high");
+    const mediumLight = donorPlants.filter((plant) => plant.lightRequirement === "medium");
+    const lowLight = donorPlants.filter((plant) => plant.lightRequirement === "low");
+    const unknownLightRequirement = donorPlants.filter(
+      (plant) => plant.lightRequirement === "unknown",
+    );
+    expect(highLight.map((plant) => plant.id)).toEqual(["genovese-basil"]);
+    expect(mediumLight.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining([
+        "common-mint",
+        "delphinium-magic-fountains-dwarf",
+        "garlic-chives",
+        "marigold-jolly-jester",
+        "tiny-tim-sweet-alyssum",
+        "zinnia-lilliput-mixed",
+      ]),
+    );
+    expect(lowLight).toHaveLength(0);
+    expect(unknownLightRequirement).toHaveLength(207);
+    expect(donorPlants.find((plant) => plant.id === "tiny-tim-tomato")?.lightRequirement).toBe(
+      "unknown",
+    );
+    expect(donorPlants.find((plant) => plant.id === "red-romaine-lettuce")?.lightRequirement).toBe(
+      "unknown",
+    );
+    expect(donorPlants.find((plant) => plant.id === "genovese-basil")?.lightRequirement).toBe(
+      "high",
+    );
+    expect(donorPlants.find((plant) => plant.id === "common-mint")?.lightRequirement).toBe(
+      "medium",
+    );
+    expect(
+      donorPlants.find((plant) => plant.id === "delphinium-magic-fountains-dwarf")
+        ?.lightRequirement,
+    ).toBe("medium");
+    expect(normalizeLightFilter("high light")).toBe("high");
+    expect(normalizeLightFilter("luz media")).toBe("medium");
+    expect(normalizeLightFilter("low light")).toBe("low");
+    expect(normalizeLightFilter("any light")).toBe("all");
     expect(normalizeOutdoorExposureFilter("partial shade")).toBe("partial_shade");
     expect(normalizeOutdoorExposureFilter("full sun")).toBe("full_sun");
     expect(normalizeOutdoorExposureFilter("low light")).toBeNull();
@@ -120,11 +154,10 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "",
         category: "all",
-        indoorLight: "unknown",
-        outdoorExposure: "partial_sun",
+        light: "high",
         inventory: "all",
-      }),
-    ).toHaveLength(5);
+      }).map((plant) => plant.id),
+    ).toEqual(["genovese-basil"]);
     expect(
       filterDonorPlants({
         plants: donorPlants,
@@ -140,7 +173,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "",
         category: "herbs",
-        indoorLight: "low",
+        light: "low",
         outdoorExposure: "all",
         inventory: "all",
       }),
@@ -150,7 +183,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "",
         category: "leafy greens",
-        indoorLight: "medium",
+        light: "medium",
         outdoorExposure: "all",
         inventory: "all",
       }),
@@ -160,21 +193,20 @@ describe("direct Gardenpedia presentation adapter", () => {
         plants: donorPlants,
         query: "",
         category: "all",
-        indoorLight: "high",
-        outdoorExposure: "full_sun",
+        light: "high",
         inventory: "all",
       }),
-    ).toHaveLength(0);
+    ).toHaveLength(1);
     expect(
       filterDonorPlants({
         plants: donorPlants,
         query: "",
         category: "all",
-        indoorLight: "medium",
+        light: "medium",
         outdoorExposure: "partial_sun",
         inventory: "all",
       }),
-    ).toHaveLength(0);
+    ).toHaveLength(5);
     const partialShade = filterDonorPlants({
       plants: donorPlants,
       query: "",

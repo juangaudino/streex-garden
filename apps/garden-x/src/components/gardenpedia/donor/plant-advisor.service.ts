@@ -1,7 +1,7 @@
 import { ADVISOR_PRESETS } from "./plant-advisor.data";
 import {
   donorPlants as plants,
-  normalizeIndoorLightFilter,
+  normalizeLightFilter,
   normalizeOutdoorExposureFilter,
 } from "./canonical-adapter";
 import type { AdvisorRequest, AdvisorResponse, PlantRecommendation } from "./plant-advisor.types";
@@ -58,7 +58,9 @@ function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse 
   const wantsOwned =
     /(tengo semilla|inventario|mis semillas)/.test(text) ||
     request.activeFilters?.inventory === "owned";
-  const indoorLight = normalizeIndoorLightFilter(request.activeFilters?.indoorLight ?? "all");
+  const light = normalizeLightFilter(
+    request.activeFilters?.light ?? request.activeFilters?.indoorLight ?? "all",
+  );
   const outdoorExposure = normalizeOutdoorExposureFilter(
     request.activeFilters?.outdoorExposure ?? "all",
   );
@@ -81,10 +83,7 @@ function simulateLocalAdvisorResponse(request: AdvisorRequest): AdvisorResponse 
       ) {
         return null;
       }
-      if (
-        indoorLight !== "all" &&
-        (indoorLight === null || plant.indoorLightRequirement !== indoorLight)
-      ) {
+      if (light !== "all" && (light === null || plant.lightRequirement !== light)) {
         return null;
       }
       if (

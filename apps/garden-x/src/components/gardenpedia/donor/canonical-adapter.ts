@@ -13,7 +13,9 @@ import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
 export type DonorSourceRef = { label: string; url: string };
 export type DonorBacking = "source" | "garden" | "pending";
 export type DonorConfidence = "alta" | "media" | "baja" | "pendiente";
-export type IndoorLightRequirement = "high" | "medium" | "low" | "unknown";
+export type LightRequirement = "high" | "medium" | "low" | "unknown";
+/** @deprecated Use LightRequirement; retained for callers from the prior two-axis pass. */
+export type IndoorLightRequirement = LightRequirement;
 export type OutdoorExposure = "full_sun" | "partial_sun" | "partial_shade" | "shade" | "unknown";
 
 export type DonorPlant = {
@@ -27,8 +29,8 @@ export type DonorPlant = {
   tags: string[];
   /** All supported growing-phase outdoor exposures, kept separate from indoor intensity. */
   outdoorExposures: readonly OutdoorExposure[];
-  /** Explicit indoor grow-light intensity; unknown until Gardenpedia publishes that vocabulary. */
-  indoorLightRequirement: IndoorLightRequirement;
+  /** Conservative growing-light tier derived from explicit canonical light evidence. */
+  lightRequirement: LightRequirement;
   /** User-facing category key; fruiting and fruits intentionally share one filter. */
   categoryKey: string;
   hydroponicSuitability: "compatible" | "conditional" | "incompatible" | "unknown" | "pending";
@@ -273,14 +275,30 @@ function outdoorExposureLevels(entry: GardenLibraryEntry): OutdoorExposure[] {
   return levels.length ? [...new Set(levels)] : ["unknown"];
 }
 
-function indoorLightRequirement(entry: GardenLibraryEntry): IndoorLightRequirement {
-  // Seed Profile light fields describe germination light/dark handling, while the
-  // published plant contract has no mature indoor intensity vocabulary. Do not
-  // turn outdoor sun, photoperiod hours, or seed-stage light into high/medium/low.
+function lightRequirement(entry: GardenLibraryEntry): LightRequirement {
+  // Seed Profile light fields describe germination light/dark handling and are not
+  // consulted here. Full sun alone is intentionally insufficient for a tier.
+  // A tier is published only when canonical evidence expresses intensity,
+  // photoperiod, or tolerance for lower-than-full exposure.
   const explicit = entry.reference.light?.trim().toLocaleLowerCase("en") ?? "";
-  if (/\bhigh\s+light\b|\bluz\s+alta\b/.test(explicit)) return "high";
+  if (/\bhigh\s+light\b|\bluz\s+alta\b|(?:≥|>=)\s*14\s*h(?:ours?)?\s*\/\s*day/.test(explicit)) {
+    return "high";
+  }
   if (/\bmedium\s+light\b|\bluz\s+media\b/.test(explicit)) return "medium";
   if (/\blow\s+light\b|\bluz\s+baja\b/.test(explicit)) return "low";
+
+  const growingRequirements =
+    entry.compatibilityProfile?.light.status === "known"
+      ? entry.compatibilityProfile.light.value.filter((item) => item.phase === "growing")
+      : [];
+  const hasPartialExposure = growingRequirements.some(
+    (item) => "kind" in item.requirement && item.requirement.kind === "partial_sun",
+  );
+  const hasPartialShadeText = /\bpartial\s+shade\b|\bpart\s+shade\b/.test(explicit);
+  if (hasPartialExposure || hasPartialShadeText) return "medium";
+
+  // A growing-phase shade value is retained as outdoor evidence, but is not
+  // silently promoted to low indoor light without an explicit intensity claim.
   return "unknown";
 }
 
@@ -316,7 +334,7 @@ export function normalizeOutdoorExposureFilter(value: string): OutdoorExposure |
   return null;
 }
 
-export function normalizeIndoorLightFilter(value: string): IndoorLightRequirement | "all" | null {
+export function normalizeLightFilter(value: string): LightRequirement | "all" | null {
   const normalized = value
     .trim()
     .toLocaleLowerCase("en")
@@ -342,6 +360,9 @@ export function normalizeIndoorLightFilter(value: string): IndoorLightRequiremen
   }
   return null;
 }
+
+/** @deprecated Use normalizeLightFilter. */
+export const normalizeIndoorLightFilter = normalizeLightFilter;
 
 function hydroponicSuitability(entry: GardenLibraryEntry): DonorPlant["hydroponicSuitability"] {
   return entry.compatibilityProfile?.hydroponicSuitability.status ?? "unknown";
@@ -414,7 +435,7 @@ export function toDonorPlants(entries: readonly GardenLibraryEntry[]): DonorPlan
       emoji: CATEGORY_EMOJI[entry.category] ?? "🌱",
       tags: entry.aliases.filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
       outdoorExposures: outdoorExposureLevels(entry),
-      indoorLightRequirement: indoorLightRequirement(entry),
+      lightRequirement: lightRequirement(entry),
       categoryKey: normalizeCategory(entry.category),
       hydroponicSuitability: hydroponicSuitability(entry),
       growthHabits: growthHabits(entry),

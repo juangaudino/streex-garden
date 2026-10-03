@@ -4,6 +4,7 @@ import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { SeedLibraryView } from "./seed-profile";
 import { canonicalMachineModels } from "./machine-profile-adapter";
+import { CalculatorPage } from "./calculator-page";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,7 @@ import {
 } from "./canonical-adapter";
 
 type Plant = DonorPlant;
-type View = "library" | "seeds" | "machines";
+type View = "library" | "seeds" | "machines" | "calculator";
 
 export type GardenpediaLanguage = "en" | "es";
 
@@ -25,6 +26,7 @@ const COPY = {
     library: "Gardenpedia",
     seeds: "Semillas",
     machines: "Máquinas",
+    calculator: "Calculadora",
     subtitle: "Conocimiento vegetal · catálogo canónico",
     growGuide: "Guía de cultivo",
     title: "Cultiva con contexto y evidencia",
@@ -62,6 +64,7 @@ const COPY = {
     library: "Gardenpedia",
     seeds: "Seeds",
     machines: "Machines",
+    calculator: "Calculator",
     subtitle: "Plant knowledge · canonical catalog",
     growGuide: "Grow Guide",
     title: "Grow with context and evidence",
@@ -280,6 +283,16 @@ export function GardenLibrary({
     [advisorIds, category, light, inventory, query],
   );
 
+  if (view === "calculator") {
+    return (
+      <CalculatorPage
+        language={language}
+        onLanguageChange={onLanguageChange ?? (() => undefined)}
+        onNavigate={(surface) => setView(surface)}
+      />
+    );
+  }
+
   return (
     <main className="garden-stage min-h-screen text-foreground">
       <div className="garden-shell mx-auto max-w-[1320px] px-4 py-4 sm:px-6 sm:py-6">
@@ -303,7 +316,7 @@ export function GardenLibrary({
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <nav aria-label="Secciones" className="glass-soft flex p-1">
-              {(["library", "seeds", "machines"] as View[]).map((item) => (
+              {(["library", "seeds", "machines", "calculator"] as View[]).map((item) => (
                 <Button
                   key={item}
                   variant="ghost"
@@ -318,7 +331,9 @@ export function GardenLibrary({
                     ? copy.library
                     : item === "seeds"
                       ? copy.seeds
-                      : copy.machines}
+                      : item === "machines"
+                        ? copy.machines
+                        : copy.calculator}
                 </Button>
               ))}
             </nav>

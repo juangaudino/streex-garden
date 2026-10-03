@@ -9,6 +9,24 @@ export type GardenpediaAuthState = {
 export type GardenpediaPrivateView = "my-plants" | "my-seeds" | "my-machines";
 
 /**
+ * A UI-only hint for the public Gardenpedia shell. It never authorizes a
+ * private read; private surfaces still perform their normal server-authorized
+ * Supabase session check. Keeping this probe local avoids booting Supabase
+ * Auth on the anonymous public catalog path.
+ */
+export function hasPersistedGardenpediaSession() {
+  if (typeof window === "undefined") return false;
+  try {
+    const configuredUrl = String(import.meta.env["VITE_SUPABASE_URL"] || "").trim();
+    if (!configuredUrl) return false;
+    const projectRef = new URL(configuredUrl).hostname.split(".")[0];
+    return Boolean(projectRef && window.localStorage.getItem(`sb-${projectRef}-auth-token`));
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Keep Supabase auth out of the public Gardenpedia entry chunk. The public
  * catalog can render first; the auth client is loaded only to reveal private
  * navigation when a session exists.

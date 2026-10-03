@@ -3,8 +3,8 @@ import { ArrowLeft, ArrowUpRight, Eye, Minus, Package, Plus, Sprout, User } from
 
 import { cn } from "@/lib/utils";
 
+import { buildSeedLibraryCards } from "./seed-library-adapter";
 import {
-  buildSeedProfiles,
   type SeedProfileLanguage,
   type SeedProfileViewModel,
   type SeedStepViewModel,
@@ -355,7 +355,7 @@ function PublicInventoryNotice({
 }
 
 export function SeedLibraryView({ language, onSeedSelect }: { language: SeedProfileLanguage; onSeedSelect?: ((id: string) => void) | undefined }) {
-  const profiles = buildSeedProfiles(language);
+  const profiles = buildSeedLibraryCards(language);
   const labels = copy[language];
   return (
     <section className="animate-rise py-6">
@@ -400,8 +400,8 @@ export function SeedLibraryView({ language, onSeedSelect }: { language: SeedProf
                 </p>
                 <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
                   <span className="font-semibold">
-                    {profile.metrics.length} {language === "es" ? "métricas" : "facts"} ·{" "}
-                    {profile.sources.length} {language === "es" ? "fuentes" : "sources"}
+                    {profile.quickFactCount} {language === "es" ? "métricas" : "facts"} ·{" "}
+                    {profile.sourceCount} {language === "es" ? "fuentes" : "sources"}
                   </span>
                   <ArrowUpRight
                     className="size-4 transition-transform group-hover:translate-x-1"

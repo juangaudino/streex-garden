@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
-import { useGardenpediaAuth } from "../gardenpedia-auth";
+import { hasPersistedGardenpediaSession, useGardenpediaAuth } from "../gardenpedia-auth";
 import type { GardenpediaPrivateView } from "../gardenpedia-auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -264,7 +264,6 @@ export function GardenLibrary({
   onMachineSelect?: ((id: string) => void) | undefined;
 }) {
   const copy = COPY[language];
-  const auth = useGardenpediaAuth(!diagnosticOnly);
   const [view, setView] = useState<View>(initialView);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
@@ -280,6 +279,14 @@ export function GardenLibrary({
   const [PrivateSurfaceComponent, setPrivateSurfaceComponent] =
     useState<PrivateSurfaceComponent | null>(null);
   const [diagnosticSelection, setDiagnosticSelection] = useState<Plant | null>(null);
+  const privateView = privateViewFor(view);
+  const [sessionHint, setSessionHint] = useState(hasPersistedGardenpediaSession);
+  const auth = useGardenpediaAuth(!diagnosticOnly && privateView !== null);
+
+  useEffect(() => {
+    if (!privateView || auth.loading) return;
+    setSessionHint(auth.signedIn);
+  }, [auth.loading, auth.signedIn, privateView]);
 
   useEffect(() => {
     setView(initialView);
@@ -363,8 +370,6 @@ export function GardenLibrary({
     );
   }
 
-  const privateView = privateViewFor(view);
-
   return (
     <main className="garden-stage min-h-screen text-foreground">
       <div className="garden-shell mx-auto max-w-[1320px] px-4 py-4 sm:px-6 sm:py-6">
@@ -411,7 +416,7 @@ export function GardenLibrary({
                         : copy.calculator}
                 </Button>
               ))}
-              {!diagnosticOnly && auth.signedIn ? (
+              {!diagnosticOnly && (sessionHint || auth.signedIn) ? (
                 <Button
                   variant="ghost"
                   size="sm"

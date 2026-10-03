@@ -27,4 +27,24 @@ describe("Gardenpedia public payload boundary", () => {
     expect(adapter).toContain("garden-seed-profile-index");
     expect(adapter).not.toMatch(/labs\/gardenpedia\/data\/seed-profiles-/);
   });
+
+  it("keeps the public Seeds list on card metadata and out of full profile bodies", () => {
+    const list = source("donor/seed-library-adapter.ts");
+    const page = source("donor/seed-profile.tsx");
+    const fullAdapter = source("donor/seed-profile-adapter.ts");
+
+    expect(list).toContain("gardenSeedProfileCatalog");
+    expect(list).not.toMatch(/seed-profiles-(?:v0|expansion)/);
+    expect(page).toContain("buildSeedLibraryCards");
+    expect(page).not.toContain("buildSeedProfiles");
+    expect(fullAdapter).toMatch(/seedProfilesV0|seedProfilesWave1/);
+  });
+
+  it("does not boot Supabase Auth while the public catalog is active", () => {
+    const explore = source("donor/explore.tsx");
+
+    expect(explore).toContain("hasPersistedGardenpediaSession");
+    expect(explore).toContain("privateView !== null");
+    expect(explore).toContain("sessionHint || auth.signedIn");
+  });
 });

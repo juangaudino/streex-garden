@@ -35,6 +35,44 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+/**
+ * Gardenpedia is a public route. Its SSR manifest currently knows about the
+ * authenticated Garden X route graph too, so TanStack can emit modulepreload
+ * hints for private/heavy chunks that are not part of the public surface.
+ * Avoid fetching that graph on a cold mobile visit; normal ES imports still
+ * load every module when its React surface is actually entered.
+ */
+export function stripPublicGardenpediaModulepreloads(html: string): string {
+  return html.replace(/<link\s+rel="modulepreload"[^>]*>\s*/g, "");
+}
+
+async function trimPublicGardenpediaPreloads(
+  request: Request,
+  response: Response,
+): Promise<Response> {
+  const pathname = new URL(request.url).pathname;
+  const contentType = response.headers.get("content-type") ?? "";
+  if (
+    response.status >= 500 ||
+    !pathname.startsWith("/gardenpedia") ||
+    !contentType.includes("text/html")
+  ) {
+    return response;
+  }
+
+  const body = await response.text();
+  const trimmed = stripPublicGardenpediaModulepreloads(body);
+  if (trimmed === body) return response;
+
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(trimmed, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 function isH3SwallowedErrorBody(body: string): boolean {
   try {
     const payload = JSON.parse(body) as { unhandled?: unknown; message?: unknown };
@@ -49,7 +87,8 @@ export default {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return await trimPublicGardenpediaPreloads(request, normalized);
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

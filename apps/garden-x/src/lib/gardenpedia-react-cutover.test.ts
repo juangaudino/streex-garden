@@ -77,4 +77,11 @@ describe("Gardenpedia React cutover", () => {
     expect(direct).not.toContain("hashchange");
     expect(explore).not.toContain("/gardenpedia#");
   });
+
+  it("keeps the public SSR document from preloading the private Garden X graph", () => {
+    const server = read("apps/garden-x/src/server.ts");
+    expect(server).toContain("stripPublicGardenpediaModulepreloads");
+    expect(server).toContain('pathname.startsWith("/gardenpedia")');
+    expect(server).toContain('rel="modulepreload"');
+  });
 });

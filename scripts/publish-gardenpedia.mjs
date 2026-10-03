@@ -144,8 +144,12 @@ function copy(relativePath) {
 }
 
 function configureGardenXAuthTransport() {
-  const url = String(process.env.VITE_SUPABASE_URL || "").trim().replace(/\/$/, "");
-  const publishableKey = String(process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "").trim();
+  const url = String(process.env.VITE_SUPABASE_URL || "")
+    .trim()
+    .replace(/\/$/, "");
+  const publishableKey = String(
+    process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "",
+  ).trim();
   const expectedUrl = `https://${gardenXProjectRef}.supabase.co`;
   if (url !== expectedUrl || !publishableKey) {
     throw new Error(
@@ -153,9 +157,13 @@ function configureGardenXAuthTransport() {
     );
   }
   const target = path.join(destination, "supabase-lab-transport.js");
-  const transport = fs.readFileSync(target, "utf8")
+  const transport = fs
+    .readFileSync(target, "utf8")
     .replace("__GARDEN_X_SUPABASE_URL__", JSON.stringify(url))
-    .replace("__GARDEN_X_SUPABASE_PUBLISHABLE_KEY__", JSON.stringify(publishableKey));
+    .replace(
+      "__GARDEN_X_SUPABASE_PUBLISHABLE_KEY__",
+      JSON.stringify(publishableKey),
+    );
   fs.writeFileSync(target, transport);
 }
 
@@ -205,29 +213,29 @@ function buildReference(plant, neighborData, sourceById) {
       .filter((pair) => pair.a === plant.id || pair.b === plant.id)
       .map((pair) => (pair.a === plant.id ? pair.b : pair.a)),
   );
-  const sourceIds = uniqueStrings(
-    [
-      ...Object.values(plant.sections || {}).flatMap(
-        (section) => section?.sourceIds || [],
-      ),
-      ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
-        claim?.status === "known"
-          ? claim.evidence.flatMap((item) => item.sourceIds || [])
+  const sourceIds = uniqueStrings([
+    ...Object.values(plant.sections || {}).flatMap(
+      (section) => section?.sourceIds || [],
+    ),
+    ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
+      claim?.status === "known"
+        ? claim.evidence.flatMap((item) => item.sourceIds || [])
+        : [],
+    ),
+    ...Object.values(plant.compatibilityProfile || {}).flatMap((claim) => {
+      if (!claim || typeof claim !== "object") return [];
+      if (Array.isArray(claim.evidence)) {
+        return claim.evidence.flatMap((item) => item.sourceIds || []);
+      }
+      return Object.values(claim).flatMap((nestedClaim) =>
+        nestedClaim &&
+        typeof nestedClaim === "object" &&
+        Array.isArray(nestedClaim.evidence)
+          ? nestedClaim.evidence.flatMap((item) => item.sourceIds || [])
           : [],
-      ),
-      ...Object.values(plant.compatibilityProfile || {}).flatMap((claim) => {
-        if (!claim || typeof claim !== "object") return [];
-        if (Array.isArray(claim.evidence)) {
-          return claim.evidence.flatMap((item) => item.sourceIds || []);
-        }
-        return Object.values(claim).flatMap((nestedClaim) =>
-          nestedClaim && typeof nestedClaim === "object" && Array.isArray(nestedClaim.evidence)
-            ? nestedClaim.evidence.flatMap((item) => item.sourceIds || [])
-            : [],
-        );
-      }),
-    ],
-  );
+      );
+    }),
+  ]);
   return {
     germination: metricValue(plant, ["Germination", "Best germination"]),
     light: metricValue(plant, ["Light"]),
@@ -298,18 +306,16 @@ function buildCatalogManifest(plants) {
       ]),
       category: plant.category || "uncategorized",
       status: "active",
-      provenance: uniqueStrings(
-        [
-          ...Object.values(plant.sections || {}).flatMap(
-            (section) => section?.sourceIds || [],
-          ),
-          ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
-            claim?.status === "known"
-              ? claim.evidence.flatMap((item) => item.sourceIds)
-              : [],
-          ),
-        ],
-      ),
+      provenance: uniqueStrings([
+        ...Object.values(plant.sections || {}).flatMap(
+          (section) => section?.sourceIds || [],
+        ),
+        ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
+          claim?.status === "known"
+            ? claim.evidence.flatMap((item) => item.sourceIds)
+            : [],
+        ),
+      ]),
       guidanceProfile: neighborData.profiles?.[plant.id] || null,
       ...(Object.hasOwn(plant, "compatibilityProfile")
         ? {
@@ -357,28 +363,45 @@ function writeGeneratedManifest(manifest) {
 
 function writeGeneratedMachineFacts() {
   const inventory = readJson("data/machine-inventory-v1.json");
-  const modelsById = new Map(inventory.models.map((model) => [model.id, model]));
+  const modelsById = new Map(
+    inventory.models.map((model) => [model.id, model]),
+  );
   const systemDefinitions = Object.fromEntries(
-    Object.entries(systemDefinitionMachineModels).map(([definitionKey, modelId]) => {
-      const model = modelsById.get(modelId);
-      const inches = model?.light?.maxHeightIn;
-      if (!model || !Number.isFinite(inches) || inches <= 0 || !model.referenceUrl) {
-        throw new Error(`Missing source-backed machine facts for ${definitionKey}/${modelId}.`);
-      }
-      return [definitionKey, {
-        modelId,
-        modelName: model.name,
-        modelNumber: model.model,
-        maxGrowHeightCm: Math.round(inches * 2.54 * 10) / 10,
-        originalMaxGrowHeightIn: inches,
-        source: {
-          title: `${model.name} (${model.model}) product specification`,
-          publisher: new URL(model.referenceUrl).hostname.replace(/^www\./, ""),
-          url: model.referenceUrl,
-          note: `${inches} in converted to ${Math.round(inches * 2.54 * 10) / 10} cm.`,
-        },
-      }];
-    }),
+    Object.entries(systemDefinitionMachineModels).map(
+      ([definitionKey, modelId]) => {
+        const model = modelsById.get(modelId);
+        const inches = model?.light?.maxHeightIn;
+        if (
+          !model ||
+          !Number.isFinite(inches) ||
+          inches <= 0 ||
+          !model.referenceUrl
+        ) {
+          throw new Error(
+            `Missing source-backed machine facts for ${definitionKey}/${modelId}.`,
+          );
+        }
+        return [
+          definitionKey,
+          {
+            modelId,
+            modelName: model.name,
+            modelNumber: model.model,
+            maxGrowHeightCm: Math.round(inches * 2.54 * 10) / 10,
+            originalMaxGrowHeightIn: inches,
+            source: {
+              title: `${model.name} (${model.model}) product specification`,
+              publisher: new URL(model.referenceUrl).hostname.replace(
+                /^www\./,
+                "",
+              ),
+              url: model.referenceUrl,
+              note: `${inches} in converted to ${Math.round(inches * 2.54 * 10) / 10} cm.`,
+            },
+          },
+        ];
+      },
+    ),
   );
   fs.mkdirSync(path.dirname(generatedMachineFacts), { recursive: true });
   fs.writeFileSync(
@@ -391,7 +414,7 @@ function filterPublicSources(relativePath) {
   return loadSourceRegistry(source, [relativePath], { publicOnly: true });
 }
 
-function prepare() {
+function loadPublicationManifest() {
   const allPlants = plantFiles.flatMap((file) => readJson(file));
   const ids = new Set(allPlants.map((plant) => plant.id));
   if (allPlants.length < 43 || ids.size !== allPlants.length) {
@@ -400,6 +423,21 @@ function prepare() {
     );
   }
   const catalogManifest = buildCatalogManifest(allPlants);
+
+  return { allPlants, ids, catalogManifest };
+}
+
+function prepareGeneratedArtifacts() {
+  const { ids, catalogManifest } = loadPublicationManifest();
+  writeGeneratedManifest(catalogManifest);
+  writeGeneratedMachineFacts();
+  console.log(
+    `Prepared Gardenpedia React artifacts with ${ids.size} varieties.`,
+  );
+}
+
+function prepareLegacy() {
+  const { ids, catalogManifest } = loadPublicationManifest();
 
   fs.rmSync(destination, { recursive: true, force: true });
   fs.mkdirSync(destination, { recursive: true });
@@ -551,7 +589,7 @@ function prepare() {
     );
   fs.writeFileSync(path.join(destination, "manifest.json"), manifest);
   console.log(
-    `Prepared public Gardenpedia artifact with ${ids.size} varieties.`,
+    `Prepared legacy Gardenpedia artifact with ${ids.size} varieties.`,
   );
 }
 
@@ -560,4 +598,5 @@ function clean() {
 }
 
 if (process.argv.includes("--clean")) clean();
-else prepare();
+else if (process.argv.includes("--legacy")) prepareLegacy();
+else prepareGeneratedArtifacts();

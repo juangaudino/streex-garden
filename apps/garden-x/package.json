@@ -8,6 +8,7 @@
     "prebuild": "node ../../scripts/publish-gardenpedia.mjs",
     "build": "vite build",
     "postbuild": "node ../../scripts/publish-gardenpedia.mjs --clean",
+    "publish:legacy": "node ../../scripts/publish-gardenpedia.mjs --legacy",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",

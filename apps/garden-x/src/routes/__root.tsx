@@ -12,7 +12,6 @@ import { lazy, Suspense, useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { recordGardenpediaMilestone } from "../lib/gardenpedia-diagnostic";
 import { Toaster } from "@/components/ui/sonner";
 import { preferredLanguage, ui } from "@/lib/ui-copy";
 
@@ -137,40 +136,6 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const { queryClient } = Route.useRouteContext();
-
-  useEffect(() => {
-    const isGardenpedia = pathname === "/gardenpedia" || pathname.startsWith("/gardenpedia/");
-    if (!isGardenpedia) return;
-
-    recordGardenpediaMilestone("gardenpedia_hydration_start");
-    recordGardenpediaMilestone("gardenpedia_storage_init", {
-      detail:
-        typeof window === "undefined"
-          ? "server"
-          : (() => {
-              try {
-                window.sessionStorage.getItem("gardenpedia-diagnostic-session-v1");
-                return "session-readable";
-              } catch {
-                return "session-blocked";
-              }
-            })(),
-    });
-    recordGardenpediaMilestone("gardenpedia_sw_state", {
-      detail:
-        typeof navigator === "undefined"
-          ? "unavailable"
-          : !("serviceWorker" in navigator)
-            ? "unsupported"
-            : navigator.serviceWorker.controller
-              ? "controlled"
-              : "uncontrolled",
-    });
-    const frame = window.requestAnimationFrame(() => {
-      recordGardenpediaMilestone("gardenpedia_hydration_complete");
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [pathname]);
 
   // Gardenpedia is a public, read-only laboratory surface. Keep it outside
   // the authenticated GardenProvider so it cannot hydrate private gardens,

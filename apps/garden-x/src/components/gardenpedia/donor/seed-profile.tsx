@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight, Eye, Minus, Package, Plus, Sprout, User } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { recordGardenpediaMilestone } from "@/lib/gardenpedia-diagnostic";
 
 import { buildSeedLibraryCards } from "./seed-library-adapter";
 import {
@@ -370,9 +369,6 @@ export function SeedLibraryView({
   const [visibleCount, setVisibleCount] = useState(SEED_LIBRARY_PAGE_SIZE);
   const labels = copy[language];
   const visibleProfiles = profiles.slice(0, visibleCount);
-  useEffect(() => {
-    recordGardenpediaMilestone("gardenpedia_seeds_mount", { view: "seeds" });
-  }, []);
   return (
     <section className="animate-rise py-6">
       <div className="glass-panel p-6 sm:p-8">

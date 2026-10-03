@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { preferredLanguage } from "@/lib/ui-copy";
-import { recordGardenpediaMilestone } from "@/lib/gardenpedia-diagnostic";
 import { buildDonorPlantDetail, findCanonicalEntry } from "./donor/canonical-adapter";
 import { GardenLibrary, type GardenpediaLanguage } from "./donor/explore";
 import type { SeedProfileViewModel } from "./donor/seed-profile-adapter";
@@ -74,17 +73,14 @@ export function GardenpediaDirect({
       });
     }
     if (target.kind === "seed") {
-      recordGardenpediaMilestone("gardenpedia_seeds_import_start", { view: "seeds" });
-      void Promise.all([import("./donor/seed-profile"), import("./donor/seed-profile-adapter")])
-        .then(([page, adapter]) => {
-          if (cancelled) return;
-          recordGardenpediaMilestone("gardenpedia_seeds_import_complete", { view: "seeds" });
-          setSeedProfileComponent(() => page.SeedProfilePage);
-          setSeedProfile(adapter.seedProfileForEntry(target.id, language));
-        })
-        .catch(() => {
-          recordGardenpediaMilestone("gardenpedia_seeds_import_error", { view: "seeds" });
-        });
+      void Promise.all([
+        import("./donor/seed-profile"),
+        import("./donor/seed-profile-adapter"),
+      ]).then(([page, adapter]) => {
+        if (cancelled) return;
+        setSeedProfileComponent(() => page.SeedProfilePage);
+        setSeedProfile(adapter.seedProfileForEntry(target.id, language));
+      });
     }
     if (target.kind === "machine") {
       void import("./donor/machine-profile").then(({ MachineProfilePage }) => {

@@ -70,6 +70,39 @@
   background: color-mix(in oklab, white 72%, transparent);
   box-shadow: 0 16px 36px color-mix(in oklab, var(--foreground) 9%, transparent);
 }
+
+/* Keep mobile WebKit on a bounded, non-composited surface. The desktop glass
+   treatment remains unchanged, while public catalog views avoid promoting
+   hundreds of blurred cards during a view transition. */
+@media (max-width: 767px) {
+  .gardenpedia-direct .garden-stage {
+    background-attachment: scroll;
+  }
+
+  .gardenpedia-direct .glass-panel,
+  .gardenpedia-direct .glass-soft,
+  .gardenpedia-direct .glass-card,
+  .gardenpedia-direct .quality-map {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .gardenpedia-direct .glass-panel,
+  .gardenpedia-direct .glass-soft,
+  .gardenpedia-direct .glass-card {
+    background: color-mix(in oklab, white 88%, var(--background));
+  }
+
+  .gardenpedia-direct .quality-map {
+    background: var(--quality);
+  }
+
+  .gardenpedia-direct .glass-card,
+  .gardenpedia-direct .animate-rise {
+    transition: none;
+    animation: none;
+  }
+}
 .gardenpedia-direct .quality-map {
   border: 1px solid color-mix(in oklab, white 14%, transparent);
   border-radius: 0.5rem;

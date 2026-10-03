@@ -45,6 +45,7 @@ const copy = {
     notEstablished: "No establecido",
     noSources: "No hay enlaces de fuente resueltos para este bloque.",
     noProfiles: "No encontramos perfiles de semilla.",
+    showMore: "Mostrar más perfiles",
   },
   en: {
     seeds: "Seeds",
@@ -79,8 +80,11 @@ const copy = {
     notEstablished: "Not established",
     noSources: "No resolved source links are available for this block.",
     noProfiles: "No seed profiles found.",
+    showMore: "Show more profiles",
   },
 } as const;
+
+const SEED_LIBRARY_PAGE_SIZE = 48;
 
 function localizedName(profile: SeedProfileViewModel, language: SeedProfileLanguage) {
   return language === "es" ? profile.spanishName : profile.name;
@@ -363,7 +367,9 @@ export function SeedLibraryView({
   onSeedSelect?: ((id: string) => void) | undefined;
 }) {
   const profiles = buildSeedLibraryCards(language);
+  const [visibleCount, setVisibleCount] = useState(SEED_LIBRARY_PAGE_SIZE);
   const labels = copy[language];
+  const visibleProfiles = profiles.slice(0, visibleCount);
   useEffect(() => {
     recordGardenpediaMilestone("gardenpedia_seeds_mount", { view: "seeds" });
   }, []);
@@ -384,44 +390,65 @@ export function SeedLibraryView({
         </div>
       </div>
       {profiles.length ? (
-        <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {profiles.map((profile) => (
-            <article key={profile.id} className="glass-card group">
-              <button type="button" onClick={() => onSeedSelect?.(profile.id)} className="block w-full p-5 text-left">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-3xl" aria-hidden="true">
-                    {profile.emoji}
-                  </span>
-                  <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
-                    {labels.publicProfile}
-                  </span>
-                </div>
-                <p className="mt-5 text-[11px] font-semibold text-accent">
-                  {language === "es" ? profile.spanishName : profile.name}
-                </p>
-                <h3 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
-                  {language === "es" ? profile.name : profile.spanishName}
-                </h3>
-                <p className="mt-1 truncate text-xs italic text-muted-foreground">
-                  {profile.scientificName || labels.notEstablished}
-                </p>
-                <p className="mt-4 line-clamp-3 text-sm leading-6 text-muted-foreground">
-                  {profile.summary}
-                </p>
-                <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
-                  <span className="font-semibold">
-                    {profile.quickFactCount} {language === "es" ? "métricas" : "facts"} ·{" "}
-                    {profile.sourceCount} {language === "es" ? "fuentes" : "sources"}
-                  </span>
-                  <ArrowUpRight
-                    className="size-4 transition-transform group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </div>
+        <>
+          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {visibleProfiles.map((profile) => (
+              <article key={profile.id} className="glass-card group">
+                <button
+                  type="button"
+                  onClick={() => onSeedSelect?.(profile.id)}
+                  className="block w-full p-5 text-left"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-3xl" aria-hidden="true">
+                      {profile.emoji}
+                    </span>
+                    <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
+                      {labels.publicProfile}
+                    </span>
+                  </div>
+                  <p className="mt-5 text-[11px] font-semibold text-accent">
+                    {language === "es" ? profile.spanishName : profile.name}
+                  </p>
+                  <h3 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
+                    {language === "es" ? profile.name : profile.spanishName}
+                  </h3>
+                  <p className="mt-1 truncate text-xs italic text-muted-foreground">
+                    {profile.scientificName || labels.notEstablished}
+                  </p>
+                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-muted-foreground">
+                    {profile.summary}
+                  </p>
+                  <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
+                    <span className="font-semibold">
+                      {profile.quickFactCount} {language === "es" ? "métricas" : "facts"} ·{" "}
+                      {profile.sourceCount} {language === "es" ? "fuentes" : "sources"}
+                    </span>
+                    <ArrowUpRight
+                      className="size-4 transition-transform group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </button>
+              </article>
+            ))}
+          </div>
+          {visibleCount < profiles.length ? (
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() =>
+                  setVisibleCount((count) =>
+                    Math.min(count + SEED_LIBRARY_PAGE_SIZE, profiles.length),
+                  )
+                }
+                className="rounded-full border border-border bg-background/70 px-4 py-2 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
+                {labels.showMore}
               </button>
-            </article>
-          ))}
-        </div>
+            </div>
+          ) : null}
+        </>
       ) : (
         <div className="glass-panel mt-5 grid min-h-48 place-items-center p-8 text-center text-sm text-muted-foreground">
           {labels.noProfiles}

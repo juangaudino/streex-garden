@@ -17,7 +17,7 @@ export function GardenpediaLibraryVisualDiagnostic() {
 
   return (
     <div className="gardenpedia-direct">
-      <GardenLibrary language={language} onLanguageChange={setLanguage} />
+      <GardenLibrary language={language} onLanguageChange={setLanguage} diagnosticOnly />
     </div>
   );
 }

@@ -13,7 +13,7 @@ export type GardenpediaPrivateView = "my-plants" | "my-seeds" | "my-machines";
  * catalog can render first; the auth client is loaded only to reveal private
  * navigation when a session exists.
  */
-export function useGardenpediaAuth(): GardenpediaAuthState {
+export function useGardenpediaAuth(enabled = true): GardenpediaAuthState {
   const [state, setState] = useState<GardenpediaAuthState>({
     loading: true,
     signedIn: false,
@@ -21,6 +21,8 @@ export function useGardenpediaAuth(): GardenpediaAuthState {
   });
 
   useEffect(() => {
+    if (!enabled) return;
+
     let active = true;
     let unsubscribe: (() => void) | undefined;
 
@@ -57,7 +59,7 @@ export function useGardenpediaAuth(): GardenpediaAuthState {
       active = false;
       unsubscribe?.();
     };
-  }, []);
+  }, [enabled]);
 
   return state;
 }

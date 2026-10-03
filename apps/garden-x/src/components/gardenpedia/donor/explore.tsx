@@ -247,12 +247,14 @@ export function filterDonorPlants({
 export function GardenLibrary({
   language = "es",
   onLanguageChange,
+  diagnosticOnly = false,
 }: {
   language?: GardenpediaLanguage;
   onLanguageChange?: (language: GardenpediaLanguage) => void;
+  diagnosticOnly?: boolean;
 }) {
   const copy = COPY[language];
-  const auth = useGardenpediaAuth();
+  const auth = useGardenpediaAuth(!diagnosticOnly);
   const [view, setView] = useState<View>("library");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
@@ -366,7 +368,10 @@ export function GardenLibrary({
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <nav aria-label="Secciones" className="glass-soft flex p-1">
-              {(["library", "seeds", "machines", "calculator"] as View[]).map((item) => (
+              {(diagnosticOnly
+                ? (["library"] as View[])
+                : (["library", "seeds", "machines", "calculator"] as View[])
+              ).map((item) => (
                 <Button
                   key={item}
                   variant="ghost"
@@ -386,7 +391,7 @@ export function GardenLibrary({
                         : copy.calculator}
                 </Button>
               ))}
-              {auth.signedIn ? (
+              {!diagnosticOnly && auth.signedIn ? (
                 <Button
                   variant="ghost"
                   size="sm"

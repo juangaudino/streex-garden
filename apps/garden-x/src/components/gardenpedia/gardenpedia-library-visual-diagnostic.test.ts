@@ -15,6 +15,7 @@ describe("Gardenpedia Library visual diagnostic", () => {
     expect(route).not.toContain("gardenpedia-library-text-diagnostic");
     expect(diagnostic).toContain('from "./donor/explore"');
     expect(diagnostic).not.toMatch(/seed-profile|machine-library|calculator-page|private-surfaces/);
+    expect(diagnostic).toContain("diagnosticOnly");
   });
 
   it("records the current image boundary instead of inventing a plant-image loader", () => {

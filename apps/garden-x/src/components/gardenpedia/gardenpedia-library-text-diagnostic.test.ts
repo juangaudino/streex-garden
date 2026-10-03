@@ -10,7 +10,7 @@ describe("Gardenpedia Library text-only diagnostic", () => {
     const route = source("routes/gardenpedia.index.tsx");
     const diagnostic = source("components/gardenpedia/gardenpedia-library-text-diagnostic.tsx");
 
-    expect(route).toContain("gardenpedia-library-text-diagnostic");
+    expect(route).toContain("gardenpedia-library-visual-diagnostic");
     expect(route).not.toContain("gardenpedia-direct");
     expect(route).not.toContain("gardenpedia-diagnostic-shell");
     expect(diagnostic).toContain("./donor/canonical-adapter");

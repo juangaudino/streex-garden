@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { GardenpediaLibraryTextDiagnostic } from "@/components/gardenpedia/gardenpedia-library-text-diagnostic";
+import { GardenpediaLibraryVisualDiagnostic } from "@/components/gardenpedia/gardenpedia-library-visual-diagnostic";
 
 export const Route = createFileRoute("/gardenpedia/")({
   head: () => ({
@@ -9,5 +9,5 @@ export const Route = createFileRoute("/gardenpedia/")({
 });
 
 function GardenpediaIndex() {
-  return <GardenpediaLibraryTextDiagnostic />;
+  return <GardenpediaLibraryVisualDiagnostic />;
 }

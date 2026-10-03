@@ -10,7 +10,7 @@ describe("Gardenpedia P0 diagnostic entry", () => {
     const route = source("routes/gardenpedia.index.tsx");
     const shell = source("components/gardenpedia/gardenpedia-diagnostic-shell.tsx");
 
-    expect(route).toContain("gardenpedia-library-text-diagnostic");
+    expect(route).toContain("gardenpedia-library-visual-diagnostic");
     expect(route).not.toContain("gardenpedia-diagnostic-shell");
     expect(route).not.toContain("gardenpedia-direct");
     expect(route).not.toContain("private-surfaces");

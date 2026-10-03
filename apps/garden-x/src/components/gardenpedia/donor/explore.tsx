@@ -4,6 +4,7 @@ import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { hasPersistedGardenpediaSession, useGardenpediaAuth } from "../gardenpedia-auth";
 import type { GardenpediaPrivateView } from "../gardenpedia-auth";
+import { recordGardenpediaMilestone } from "@/lib/gardenpedia-diagnostic";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -300,9 +301,16 @@ export function GardenLibrary({
   useEffect(() => {
     let cancelled = false;
     if (view === "seeds" && !SeedLibraryComponent) {
-      void import("./seed-profile").then(({ SeedLibraryView }) => {
-        if (!cancelled) setSeedLibraryComponent(() => SeedLibraryView);
-      });
+      recordGardenpediaMilestone("gardenpedia_seeds_import_start", { view: "seeds" });
+      void import("./seed-profile")
+        .then(({ SeedLibraryView }) => {
+          if (cancelled) return;
+          recordGardenpediaMilestone("gardenpedia_seeds_import_complete", { view: "seeds" });
+          setSeedLibraryComponent(() => SeedLibraryView);
+        })
+        .catch(() => {
+          recordGardenpediaMilestone("gardenpedia_seeds_import_error", { view: "seeds" });
+        });
     }
     if (view === "machines" && !MachineLibraryComponent) {
       void import("./machine-library").then(({ MachineView }) => {

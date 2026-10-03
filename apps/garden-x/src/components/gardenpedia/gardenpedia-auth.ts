@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { recordGardenpediaMilestone } from "@/lib/gardenpedia-diagnostic";
 
 export type GardenpediaAuthState = {
   loading: boolean;
@@ -40,6 +41,8 @@ export function useGardenpediaAuth(enabled = true): GardenpediaAuthState {
 
   useEffect(() => {
     if (!enabled) return;
+
+    recordGardenpediaMilestone("gardenpedia_auth_init", { detail: "enabled" });
 
     let active = true;
     let unsubscribe: (() => void) | undefined;

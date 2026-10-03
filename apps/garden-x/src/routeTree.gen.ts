@@ -19,6 +19,7 @@ import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ApiGardenpediaMachinePerformanceRouteImport } from './routes/api.gardenpedia-machine-performance'
+import { Route as GardenpediaIndexRouteImport } from './routes/gardenpedia.index'
 import { Route as GardenpediaAdminRouteImport } from './routes/gardenpedia.admin'
 import { Route as GardensIndexRouteImport } from './routes/gardens.index'
 import { Route as GardensGardenIdRouteImport } from './routes/gardens.$gardenId'
@@ -84,6 +85,11 @@ const ApiGardenpediaMachinePerformanceRoute =
     path: '/api/gardenpedia-machine-performance',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GardenpediaIndexRoute = GardenpediaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GardenpediaRoute,
+} as any)
 const GardenpediaAdminRoute = GardenpediaAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/gardens/$gardenId': typeof GardensGardenIdRouteWithChildren
   '/plants/$plantId': typeof PlantsPlantIdRouteWithChildren
   '/shared/$storyId': typeof SharedStoryIdRoute
+  '/gardenpedia/': typeof GardenpediaIndexRoute
   '/gardens/': typeof GardensIndexRoute
   '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
@@ -180,7 +187,6 @@ export interface FileRoutesByTo {
   '/ask': typeof AskRoute
   '/care': typeof CareRoute
   '/garden-ai': typeof GardenAiRoute
-  '/gardenpedia': typeof GardenpediaRouteWithChildren
   '/identify': typeof IdentifyRoute
   '/knowledge': typeof KnowledgeRoute
   '/library': typeof LibraryRoute
@@ -188,6 +194,7 @@ export interface FileRoutesByTo {
   '/api/gardenpedia-machine-performance': typeof ApiGardenpediaMachinePerformanceRoute
   '/gardenpedia/admin': typeof GardenpediaAdminRoute
   '/shared/$storyId': typeof SharedStoryIdRoute
+  '/gardenpedia': typeof GardenpediaIndexRoute
   '/gardens': typeof GardensIndexRoute
   '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
@@ -214,6 +221,7 @@ export interface FileRoutesById {
   '/gardens/$gardenId': typeof GardensGardenIdRouteWithChildren
   '/plants/$plantId': typeof PlantsPlantIdRouteWithChildren
   '/shared/$storyId': typeof SharedStoryIdRoute
+  '/gardenpedia/': typeof GardenpediaIndexRoute
   '/gardens/': typeof GardensIndexRoute
   '/api/garden-library/catalog': typeof ApiGardenLibraryCatalogRoute
   '/gardens/$gardenId/film': typeof GardensGardenIdFilmRoute
@@ -241,6 +249,7 @@ export interface FileRouteTypes {
     | '/gardens/$gardenId'
     | '/plants/$plantId'
     | '/shared/$storyId'
+    | '/gardenpedia/'
     | '/gardens/'
     | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
@@ -256,7 +265,6 @@ export interface FileRouteTypes {
     | '/ask'
     | '/care'
     | '/garden-ai'
-    | '/gardenpedia'
     | '/identify'
     | '/knowledge'
     | '/library'
@@ -264,6 +272,7 @@ export interface FileRouteTypes {
     | '/api/gardenpedia-machine-performance'
     | '/gardenpedia/admin'
     | '/shared/$storyId'
+    | '/gardenpedia'
     | '/gardens'
     | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
@@ -289,6 +298,7 @@ export interface FileRouteTypes {
     | '/gardens/$gardenId'
     | '/plants/$plantId'
     | '/shared/$storyId'
+    | '/gardenpedia/'
     | '/gardens/'
     | '/api/garden-library/catalog'
     | '/gardens/$gardenId/film'
@@ -390,6 +400,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiGardenpediaMachinePerformanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gardenpedia/': {
+      id: '/gardenpedia/'
+      path: '/'
+      fullPath: '/gardenpedia/'
+      preLoaderRoute: typeof GardenpediaIndexRouteImport
+      parentRoute: typeof GardenpediaRoute
+    }
     '/gardenpedia/admin': {
       id: '/gardenpedia/admin'
       path: '/admin'
@@ -486,10 +503,12 @@ declare module '@tanstack/react-router' {
 
 interface GardenpediaRouteChildren {
   GardenpediaAdminRoute: typeof GardenpediaAdminRoute
+  GardenpediaIndexRoute: typeof GardenpediaIndexRoute
 }
 
 const GardenpediaRouteChildren: GardenpediaRouteChildren = {
   GardenpediaAdminRoute: GardenpediaAdminRoute,
+  GardenpediaIndexRoute: GardenpediaIndexRoute,
 }
 
 const GardenpediaRouteWithChildren = GardenpediaRoute._addFileChildren(

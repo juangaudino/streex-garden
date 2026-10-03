@@ -45,7 +45,12 @@ describe("Gardenpedia React cutover", () => {
   it("registers both the React entry and protected admin route", () => {
     const routes = read("apps/garden-x/src/routeTree.gen.ts");
     const root = read("apps/garden-x/src/routes/__root.tsx");
+    const parent = read("apps/garden-x/src/routes/gardenpedia.tsx");
+    const index = read("apps/garden-x/src/routes/gardenpedia.index.tsx");
     expect(routes).toContain("'/gardenpedia/admin'");
+    expect(routes).toContain("'/gardenpedia/'");
+    expect(parent).toContain("<Outlet />");
+    expect(index).toContain('createFileRoute("/gardenpedia/")');
     expect(root).toContain('pathname === "/gardenpedia" || pathname.startsWith("/gardenpedia/")');
   });
 });

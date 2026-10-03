@@ -8,6 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {
+  GardenpediaShell,
+  type GardenpediaLanguage,
+  type GardenpediaSurface,
+} from "./gardenpedia-shell";
+import {
   donorPlants,
   normalizeLightFilter,
   normalizeOutdoorExposureFilter,
@@ -16,13 +21,11 @@ import {
 } from "./canonical-adapter";
 
 type Plant = DonorPlant;
-type View = "library" | "seeds" | "machines" | "calculator" | GardenpediaPrivateView;
+type View = GardenpediaSurface;
 type SeedLibraryComponent = typeof import("./seed-profile").SeedLibraryView;
 type MachineLibraryComponent = typeof import("./machine-library").MachineView;
 type CalculatorComponent = typeof import("./calculator-page").CalculatorPage;
 type PrivateSurfaceComponent = typeof import("../private-surfaces").MyGardenSurface;
-
-export type GardenpediaLanguage = "en" | "es";
 
 const COPY = {
   es: {
@@ -282,6 +285,7 @@ export function GardenLibrary({
   const privateView = privateViewFor(view);
   const [sessionHint, setSessionHint] = useState(hasPersistedGardenpediaSession);
   const auth = useGardenpediaAuth(!diagnosticOnly && privateView !== null);
+  const showPrivateNavigation = !diagnosticOnly && (sessionHint || auth.signedIn);
 
   useEffect(() => {
     if (!privateView || auth.loading) return;
@@ -359,144 +363,79 @@ export function GardenLibrary({
     [advisorIds, category, light, inventory, query],
   );
 
-  if (view === "calculator") {
-    if (!CalculatorComponent) return <DeferredSurface />;
-    return (
-      <CalculatorComponent
-        language={language}
-        onLanguageChange={onLanguageChange ?? (() => undefined)}
-        onNavigate={(surface) => changeView(surface)}
-      />
-    );
-  }
-
+  const subtitle = copy.subtitle
+    .replace("catálogo canónico", `${donorPlants.length} ${copy.sheets}`)
+    .replace("canonical catalog", `${donorPlants.length} ${copy.sheets}`);
   return (
-    <main className="garden-stage min-h-screen text-foreground">
-      <div className="garden-shell mx-auto max-w-[1320px] px-4 py-4 sm:px-6 sm:py-6">
-        <header className="glass-panel flex flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src="/icons/garden-x-512.png"
-              alt="Garden X"
-              className="size-10 shrink-0 rounded-lg shadow-sm"
+    <GardenpediaShell
+      activeView={view}
+      language={language}
+      onLanguageChange={onLanguageChange ?? (() => undefined)}
+      onViewChange={changeView}
+      showPrivateNavigation={showPrivateNavigation}
+      diagnosticOnly={diagnosticOnly}
+      subtitle={subtitle}
+    >
+      {view === "calculator" ? (
+        CalculatorComponent ? (
+          <CalculatorComponent language={language} />
+        ) : (
+          <DeferredSurface />
+        )
+      ) : (
+        <>
+          {diagnosticOnly && diagnosticSelection ? (
+            <div className="glass-panel mt-5 p-4 text-sm" role="status">
+              <p>Selected: {diagnosticSelection.name}</p>
+              <p>ID: {diagnosticSelection.id}</p>
+            </div>
+          ) : null}
+
+          {privateView && PrivateSurfaceComponent ? (
+            <PrivateSurfaceComponent
+              section={privateView}
+              language={language}
+              onSectionChange={changeView}
+              onBack={() => changeView("library")}
             />
-            <div>
-              <h1 className="font-display text-xl font-bold leading-none">
-                Gardenpedia by Garden X
-              </h1>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {copy.subtitle
-                  .replace("catálogo canónico", `${donorPlants.length} ${copy.sheets}`)
-                  .replace("canonical catalog", `${donorPlants.length} ${copy.sheets}`)}
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <nav aria-label="Secciones" className="glass-soft flex p-1">
-              {(diagnosticOnly
-                ? (["library"] as View[])
-                : (["library", "seeds", "machines", "calculator"] as View[])
-              ).map((item) => (
-                <Button
-                  key={item}
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => changeView(item)}
-                  className={cn(
-                    "rounded-md shadow-none",
-                    view === item && "bg-background/80 text-foreground shadow-sm",
-                  )}
-                >
-                  {item === "library"
-                    ? copy.library
-                    : item === "seeds"
-                      ? copy.seeds
-                      : item === "machines"
-                        ? copy.machines
-                        : copy.calculator}
-                </Button>
-              ))}
-              {!diagnosticOnly && (sessionHint || auth.signedIn) ? (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => changeView(privateView ?? "my-plants")}
-                  className={cn(
-                    "rounded-md shadow-none",
-                    privateView && "bg-background/80 text-foreground shadow-sm",
-                  )}
-                >
-                  {copy.myGarden}
-                </Button>
-              ) : null}
-            </nav>
-            <div className="glass-soft flex p-1 text-xs font-semibold" aria-label="Idioma">
-              <Button size="sm" onClick={() => onLanguageChange?.("es")} className="h-8 px-3">
-                ES
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onLanguageChange?.("en")}
-                className={cn("h-8 px-3", language === "es" && "text-muted-foreground")}
-              >
-                EN
-              </Button>
-            </div>
-          </div>
-        </header>
-
-        {diagnosticOnly && diagnosticSelection ? (
-          <div className="glass-panel mt-5 p-4 text-sm" role="status">
-            <p>Selected: {diagnosticSelection.name}</p>
-            <p>ID: {diagnosticSelection.id}</p>
-          </div>
-        ) : null}
-
-        {privateView && PrivateSurfaceComponent ? (
-          <PrivateSurfaceComponent
-            section={privateView}
-            language={language}
-            onSectionChange={changeView}
-            onBack={() => changeView("library")}
-          />
-        ) : null}
-        {privateView && !PrivateSurfaceComponent ? <DeferredSurface /> : null}
-        {view === "library" && (
-          <LibraryView
-            advisorActive={Boolean(advisorIds?.length)}
-            categories={categories}
-            category={category}
-            filteredPlants={filteredPlants}
-            inventory={inventory}
-            light={light}
-            query={query}
-            onAdvisorApply={setAdvisorIds}
-            onAdvisorClear={() => setAdvisorIds(null)}
-            onCategoryChange={setCategory}
-            onInventoryChange={setInventory}
-            onLightChange={setLight}
-            onQueryChange={setQuery}
-            language={language}
-            copy={copy}
-            evidenceGroups={evidenceGroups}
-            onPlantSelect={onPlantSelect ?? (diagnosticOnly ? setDiagnosticSelection : undefined)}
-          />
-        )}
-        {view === "seeds" &&
-          (SeedLibraryComponent ? (
-            <SeedLibraryComponent language={language} onSeedSelect={onSeedSelect} />
-          ) : (
-            <DeferredSurface />
-          ))}
-        {view === "machines" &&
-          (MachineLibraryComponent ? (
-            <MachineLibraryComponent copy={copy} onMachineSelect={onMachineSelect} />
-          ) : (
-            <DeferredSurface />
-          ))}
-      </div>
-    </main>
+          ) : null}
+          {privateView && !PrivateSurfaceComponent ? <DeferredSurface /> : null}
+          {view === "library" && (
+            <LibraryView
+              advisorActive={Boolean(advisorIds?.length)}
+              categories={categories}
+              category={category}
+              filteredPlants={filteredPlants}
+              inventory={inventory}
+              light={light}
+              query={query}
+              onAdvisorApply={setAdvisorIds}
+              onAdvisorClear={() => setAdvisorIds(null)}
+              onCategoryChange={setCategory}
+              onInventoryChange={setInventory}
+              onLightChange={setLight}
+              onQueryChange={setQuery}
+              language={language}
+              copy={copy}
+              evidenceGroups={evidenceGroups}
+              onPlantSelect={onPlantSelect ?? (diagnosticOnly ? setDiagnosticSelection : undefined)}
+            />
+          )}
+          {view === "seeds" &&
+            (SeedLibraryComponent ? (
+              <SeedLibraryComponent language={language} onSeedSelect={onSeedSelect} />
+            ) : (
+              <DeferredSurface />
+            ))}
+          {view === "machines" &&
+            (MachineLibraryComponent ? (
+              <MachineLibraryComponent copy={copy} onMachineSelect={onMachineSelect} />
+            ) : (
+              <DeferredSurface />
+            ))}
+        </>
+      )}
+    </GardenpediaShell>
   );
 }
 

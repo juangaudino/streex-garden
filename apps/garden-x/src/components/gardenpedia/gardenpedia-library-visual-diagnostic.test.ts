@@ -20,8 +20,10 @@ describe("Gardenpedia Library visual diagnostic", () => {
 
   it("records the current image boundary instead of inventing a plant-image loader", () => {
     const explore = source("components/gardenpedia/donor/explore.tsx");
+    const shell = source("components/gardenpedia/donor/gardenpedia-shell.tsx");
 
-    expect(explore).toContain('src="/icons/garden-x-512.png"');
+    expect(shell).toContain('src="/icons/garden-x-512.png"');
+    expect(explore).toContain("GardenpediaShell");
     expect(explore).not.toMatch(/thumbnailUrl|imageSrc|rendition|preload/i);
   });
 

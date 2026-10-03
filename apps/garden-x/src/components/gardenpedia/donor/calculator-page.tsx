@@ -233,15 +233,7 @@ const blank = (language: "en" | "es" = "es"): Mix => ({
   calibration: 1,
 });
 
-export function CalculatorPage({
-  language = "es",
-  onLanguageChange,
-  onNavigate,
-}: {
-  language?: "en" | "es";
-  onLanguageChange?: (language: "en" | "es") => void;
-  onNavigate: (surface: "library" | "seeds" | "machines") => void;
-}) {
+export function CalculatorPage({ language = "es" }: { language?: "en" | "es" }) {
   const copy = COPY[language];
   const [systems, setSystems] = useState<Mix[]>(DEMO);
   const [mix, setMix] = useState<Mix>(DEMO[0]!);
@@ -354,68 +346,18 @@ export function CalculatorPage({
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden px-4 py-5 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <header className="grid min-w-0 grid-cols-1 items-center gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:flex sm:justify-between">
-          <div className="min-w-0">
-            <p className="eyebrow">Gardenpedia</p>
-            <h1 className="truncate font-display text-2xl font-bold">{copy.calculator}</h1>
-          </div>
-          <nav
-            aria-label="Secciones"
-            className="glass-soft col-span-2 flex overflow-x-auto p-1 sm:col-span-1"
-          >
-            {[
-              ["library", copy.library],
-              ["seeds", copy.seeds],
-              ["machines", copy.machines],
-            ].map(([surface, label]) => (
-              <Button
-                key={surface}
-                variant="ghost"
-                size="sm"
-                className="shrink-0 rounded-md shadow-none"
-                onClick={() => onNavigate(surface as "library" | "seeds" | "machines")}
-              >
-                {label}
-              </Button>
-            ))}
-            <Button
-              size="sm"
-              variant="ghost"
-              className="shrink-0 rounded-md bg-background/80 shadow-sm"
-            >
-              {copy.calculator}
-            </Button>
-            <div
-              className="glass-soft flex justify-self-start p-1 text-xs font-semibold sm:justify-self-end"
-              aria-label="Idioma"
-            >
-              <Button size="sm" onClick={() => onLanguageChange?.("es")} className="h-8 px-3">
-                ES
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onLanguageChange?.("en")}
-                className="h-8 px-3"
-              >
-                EN
-              </Button>
-            </div>
-          </nav>
-        </header>
-
+    <div className="min-w-0 max-w-full px-1 py-2 sm:px-0 sm:py-0">
+      <div className="mx-auto min-w-0 max-w-6xl">
         {/* Dock */}
         <section
           aria-label="Sistemas guardados"
-          className="mt-5 -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0"
+          className="mt-5 flex min-w-0 max-w-full gap-2 overflow-x-auto px-2 py-2 [scroll-padding-inline:0.5rem]"
         >
           <button
             onClick={() => open(blank(language))}
             className={cn(
               "glass-soft flex shrink-0 items-center gap-2 px-4 py-3 text-sm font-semibold",
-              mix.id === "draft" && "ring-2 ring-primary",
+              mix.id === "draft" && "ring-2 ring-inset ring-primary",
             )}
           >
             <Plus className="h-4 w-4" /> {copy.quickMix}
@@ -428,7 +370,7 @@ export function CalculatorPage({
                 onClick={() => open(s)}
                 className={cn(
                   "glass-soft min-w-[190px] shrink-0 px-4 py-3 text-left",
-                  mix.id === s.id && "ring-2 ring-primary",
+                  mix.id === s.id && "ring-2 ring-inset ring-primary",
                 )}
               >
                 <span className="block truncate text-sm font-semibold">{s.name}</span>
@@ -736,7 +678,7 @@ export function CalculatorPage({
           </section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

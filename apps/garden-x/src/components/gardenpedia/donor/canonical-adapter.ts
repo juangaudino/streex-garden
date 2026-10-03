@@ -1,13 +1,9 @@
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
+import { gardenSeedProfileIds } from "@/generated/garden-seed-profile-index";
 import type { GardenLibraryEntry } from "@/lib/garden-library";
 import harvestUseData from "../../../../../../labs/gardenpedia/data/harvest-use-v0.1.json";
 import legacyPlantData from "../../../../../../labs/gardenpedia/data/plants.json";
 import legacySpanishTranslations from "../../../../../../labs/gardenpedia/data/translations-es.json";
-import seedProfilesV0 from "../../../../../../labs/gardenpedia/data/seed-profiles-v0.json";
-import seedProfilesWave1 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-1.json";
-import seedProfilesWave2 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-2.json";
-import seedProfilesWave3 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-3.json";
-import seedProfilesWave4 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-4.json";
 import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
 
 export type DonorSourceRef = { label: string; url: string };
@@ -173,17 +169,8 @@ const harvestSources = harvestDocument.sources ?? {};
 const visualCatalog = visualsData as Record<string, VisualRecord[]>;
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
-const seedProfileCatalogs = [
-  seedProfilesV0,
-  seedProfilesWave1,
-  seedProfilesWave2,
-  seedProfilesWave3,
-  seedProfilesWave4,
-] as const;
-export const seedProfileIds = new Set(
-  seedProfileCatalogs.flatMap((catalog) => Object.keys(catalog.profiles)),
-);
-export const seedProfileCount = seedProfileIds.size;
+export const seedProfileIds = new Set(gardenSeedProfileIds);
+export const seedProfileCount = gardenSeedProfileIds.length;
 
 const CATEGORY_EMOJI: Record<string, string> = {
   herbs: "🌿",

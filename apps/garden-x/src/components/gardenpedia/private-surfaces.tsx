@@ -3,7 +3,8 @@ import { ArrowLeft, Download, ExternalLink, RefreshCw, ShieldCheck, Trash2 } fro
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getSupabaseClient, hasSupabaseConfiguration } from "@/lib/supabase";
+import { getSupabaseClient } from "@/lib/supabase";
+import { useGardenpediaAuth } from "./gardenpedia-auth";
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 import { canonicalMachineModel } from "./donor/machine-profile-adapter";
 import { SeedProfilePage } from "./donor/seed-profile";
@@ -12,12 +13,6 @@ import { findCanonicalEntry } from "./donor/canonical-adapter";
 import type { GardenpediaLanguage } from "./donor/explore";
 
 export type GardenpediaPrivateView = "my-plants" | "my-seeds" | "my-machines";
-
-type SessionState = {
-  loading: boolean;
-  signedIn: boolean;
-  userId: string | null;
-};
 
 type SeedPackage = {
   id: string;
@@ -230,41 +225,6 @@ async function rpc<T>(name: string, args?: Record<string, unknown>): Promise<T> 
   const { data, error } = await getSupabaseClient().rpc(name, args);
   if (error) throw new Error(error.message);
   return data as T;
-}
-
-export function useGardenpediaAuth(): SessionState {
-  const [state, setState] = useState<SessionState>({
-    loading: hasSupabaseConfiguration(),
-    signedIn: false,
-    userId: null,
-  });
-
-  useEffect(() => {
-    if (!hasSupabaseConfiguration()) {
-      setState({ loading: false, signedIn: false, userId: null });
-      return;
-    }
-    const client = getSupabaseClient();
-    let active = true;
-    void client.auth.getSession().then(({ data }) => {
-      if (!active) return;
-      setState({
-        loading: false,
-        signedIn: Boolean(data.session),
-        userId: data.session?.user.id ?? null,
-      });
-    });
-    const { data } = client.auth.onAuthStateChange((_event, session) => {
-      if (active)
-        setState({ loading: false, signedIn: Boolean(session), userId: session?.user.id ?? null });
-    });
-    return () => {
-      active = false;
-      data.subscription.unsubscribe();
-    };
-  }, []);
-
-  return state;
 }
 
 function PrivateGate({

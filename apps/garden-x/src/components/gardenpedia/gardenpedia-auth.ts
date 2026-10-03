@@ -1,0 +1,63 @@
+import { useEffect, useState } from "react";
+
+export type GardenpediaAuthState = {
+  loading: boolean;
+  signedIn: boolean;
+  userId: string | null;
+};
+
+export type GardenpediaPrivateView = "my-plants" | "my-seeds" | "my-machines";
+
+/**
+ * Keep Supabase auth out of the public Gardenpedia entry chunk. The public
+ * catalog can render first; the auth client is loaded only to reveal private
+ * navigation when a session exists.
+ */
+export function useGardenpediaAuth(): GardenpediaAuthState {
+  const [state, setState] = useState<GardenpediaAuthState>({
+    loading: true,
+    signedIn: false,
+    userId: null,
+  });
+
+  useEffect(() => {
+    let active = true;
+    let unsubscribe: (() => void) | undefined;
+
+    void import("@/lib/supabase").then(({ getSupabaseClient, hasSupabaseConfiguration }) => {
+      if (!active) return;
+      if (!hasSupabaseConfiguration()) {
+        setState({ loading: false, signedIn: false, userId: null });
+        return;
+      }
+
+      const client = getSupabaseClient();
+      void client.auth.getSession().then(({ data }) => {
+        if (!active) return;
+        setState({
+          loading: false,
+          signedIn: Boolean(data.session),
+          userId: data.session?.user.id ?? null,
+        });
+      });
+
+      const authSubscription = client.auth.onAuthStateChange((_event, session) => {
+        if (active) {
+          setState({
+            loading: false,
+            signedIn: Boolean(session),
+            userId: session?.user.id ?? null,
+          });
+        }
+      });
+      unsubscribe = () => authSubscription.data.subscription.unsubscribe();
+    });
+
+    return () => {
+      active = false;
+      unsubscribe?.();
+    };
+  }, []);
+
+  return state;
+}

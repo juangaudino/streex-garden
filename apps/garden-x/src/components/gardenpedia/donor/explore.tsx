@@ -1,15 +1,9 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
-import { SeedLibraryView } from "./seed-profile";
-import { canonicalMachineModels } from "./machine-profile-adapter";
-import { CalculatorPage } from "./calculator-page";
-import {
-  MyGardenSurface,
-  useGardenpediaAuth,
-  type GardenpediaPrivateView,
-} from "../private-surfaces";
+import { useGardenpediaAuth } from "../gardenpedia-auth";
+import type { GardenpediaPrivateView } from "../gardenpedia-auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -23,6 +17,10 @@ import {
 
 type Plant = DonorPlant;
 type View = "library" | "seeds" | "machines" | "calculator" | GardenpediaPrivateView;
+type SeedLibraryComponent = typeof import("./seed-profile").SeedLibraryView;
+type MachineLibraryComponent = typeof import("./machine-library").MachineView;
+type CalculatorComponent = typeof import("./calculator-page").CalculatorPage;
+type PrivateSurfaceComponent = typeof import("../private-surfaces").MyGardenSurface;
 
 export type GardenpediaLanguage = "en" | "es";
 
@@ -261,6 +259,47 @@ export function GardenLibrary({
   const [light, setLight] = useState("all");
   const [inventory, setInventory] = useState("all");
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
+  const [SeedLibraryComponent, setSeedLibraryComponent] = useState<SeedLibraryComponent | null>(
+    null,
+  );
+  const [MachineLibraryComponent, setMachineLibraryComponent] =
+    useState<MachineLibraryComponent | null>(null);
+  const [CalculatorComponent, setCalculatorComponent] = useState<CalculatorComponent | null>(null);
+  const [PrivateSurfaceComponent, setPrivateSurfaceComponent] =
+    useState<PrivateSurfaceComponent | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (view === "seeds" && !SeedLibraryComponent) {
+      void import("./seed-profile").then(({ SeedLibraryView }) => {
+        if (!cancelled) setSeedLibraryComponent(() => SeedLibraryView);
+      });
+    }
+    if (view === "machines" && !MachineLibraryComponent) {
+      void import("./machine-library").then(({ MachineView }) => {
+        if (!cancelled) setMachineLibraryComponent(() => MachineView);
+      });
+    }
+    if (view === "calculator" && !CalculatorComponent) {
+      void import("./calculator-page").then(({ CalculatorPage }) => {
+        if (!cancelled) setCalculatorComponent(() => CalculatorPage);
+      });
+    }
+    if (privateViewFor(view) && !PrivateSurfaceComponent) {
+      void import("../private-surfaces").then(({ MyGardenSurface }) => {
+        if (!cancelled) setPrivateSurfaceComponent(() => MyGardenSurface);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    CalculatorComponent,
+    MachineLibraryComponent,
+    PrivateSurfaceComponent,
+    SeedLibraryComponent,
+    view,
+  ]);
 
   const categories = useMemo(
     () => [
@@ -292,8 +331,9 @@ export function GardenLibrary({
   );
 
   if (view === "calculator") {
+    if (!CalculatorComponent) return <DeferredSurface />;
     return (
-      <CalculatorPage
+      <CalculatorComponent
         language={language}
         onLanguageChange={onLanguageChange ?? (() => undefined)}
         onNavigate={(surface) => setView(surface)}
@@ -301,8 +341,7 @@ export function GardenLibrary({
     );
   }
 
-  const privateView =
-    view === "my-plants" || view === "my-seeds" || view === "my-machines" ? view : null;
+  const privateView = privateViewFor(view);
 
   return (
     <main className="garden-stage min-h-screen text-foreground">
@@ -377,14 +416,15 @@ export function GardenLibrary({
           </div>
         </header>
 
-        {privateView ? (
-          <MyGardenSurface
+        {privateView && PrivateSurfaceComponent ? (
+          <PrivateSurfaceComponent
             section={privateView}
             language={language}
             onSectionChange={setView}
             onBack={() => setView("library")}
           />
         ) : null}
+        {privateView && !PrivateSurfaceComponent ? <DeferredSurface /> : null}
         {view === "library" && (
           <LibraryView
             advisorActive={Boolean(advisorIds?.length)}
@@ -405,10 +445,28 @@ export function GardenLibrary({
             evidenceGroups={evidenceGroups}
           />
         )}
-        {view === "seeds" && <SeedLibraryView language={language} />}
-        {view === "machines" && <MachineView copy={copy} />}
+        {view === "seeds" &&
+          (SeedLibraryComponent ? (
+            <SeedLibraryComponent language={language} />
+          ) : (
+            <DeferredSurface />
+          ))}
+        {view === "machines" &&
+          (MachineLibraryComponent ? <MachineLibraryComponent copy={copy} /> : <DeferredSurface />)}
       </div>
     </main>
+  );
+}
+
+function privateViewFor(view: View): GardenpediaPrivateView | null {
+  return view === "my-plants" || view === "my-seeds" || view === "my-machines" ? view : null;
+}
+
+function DeferredSurface() {
+  return (
+    <div className="glass-panel mt-5 grid min-h-40 place-items-center p-8 text-center text-sm text-muted-foreground">
+      Loading…
+    </div>
   );
 }
 
@@ -698,54 +756,5 @@ function EvidenceRow({ tone, label, value }: { tone: string; label: string; valu
       </span>
       <strong className="text-xs">{value}</strong>
     </div>
-  );
-}
-
-function MachineView({ copy }: { copy: (typeof COPY)[GardenpediaLanguage] }) {
-  const machines = canonicalMachineModels();
-  return (
-    <section className="animate-rise py-6">
-      <div className="glass-panel p-6 sm:p-8">
-        <p className="eyebrow">Gardenpedia · Machines</p>
-        <h2 className="mt-2 font-display text-3xl font-bold">{copy.publicMachines}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-          {copy.publicMachinesBody}
-        </p>
-      </div>
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        {machines.map((machine) => {
-          const body = (
-            <>
-              <div className="flex items-center justify-between">
-                <span className="text-xl" aria-hidden="true">
-                  ⚙️
-                </span>
-                <span className="rounded-full bg-secondary px-2 py-1 text-[10px] font-semibold">
-                  {copy.publicMachines}
-                </span>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-semibold">{machine.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{machine.modelNumber}</p>
-              <p className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs font-semibold">
-                {machine.source.publisher}
-                <span className="text-accent">{copy.machineProfile}</span>
-              </p>
-            </>
-          );
-          return (
-            <a
-              key={machine.id}
-              href={`/gardenpedia#machine:${machine.id}`}
-              className="glass-card block p-5 transition hover:-translate-y-0.5"
-            >
-              {body}
-            </a>
-          );
-        })}
-      </div>
-      <div className="glass-panel mt-5 p-6 text-sm text-muted-foreground">
-        {copy.machineBoundary}
-      </div>
-    </section>
   );
 }

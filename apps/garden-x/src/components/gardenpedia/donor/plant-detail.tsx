@@ -98,22 +98,30 @@ function detailCategoryLabel(category: string, language: "en" | "es") {
 export function DonorPlantDetailPage({
   detail,
   language = "es",
+  onBack,
+  onSeedSelect,
 }: {
   detail: DonorPlantDetail;
   language?: "en" | "es";
+  onBack?: (() => void) | undefined;
+  onSeedSelect?: ((plantId: string) => void) | undefined;
 }) {
   const labels = detailLabels[language];
   return (
     <main className="garden-stage min-h-screen text-foreground">
       <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto grid max-w-[1320px] grid-cols-[auto_minmax(0,1fr)] items-center gap-3 px-4 py-3 sm:px-6">
-          <a
-            href="/gardenpedia"
-            className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary"
-          >
-            <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
-            <span className="hidden sm:inline">{labels.library}</span>
-          </a>
+          {onBack ? (
+            <button type="button" onClick={onBack} className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
+              <span className="hidden sm:inline">{labels.library}</span>
+            </button>
+          ) : (
+            <a href="/gardenpedia/" className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
+              <span className="hidden sm:inline">{labels.library}</span>
+            </a>
+          )}
           <div className="min-w-0">
             <p className="eyebrow truncate text-[10px]">Gardenpedia · {labels.profile}</p>
             <p className="truncate font-display text-sm font-bold leading-tight sm:text-base">
@@ -124,7 +132,7 @@ export function DonorPlantDetailPage({
       </header>
 
       <div className="mx-auto max-w-[1320px] px-4 py-6 sm:px-6 sm:py-8">
-        <FullSheet detail={detail} category={detail.category} language={language} />
+        <FullSheet detail={detail} category={detail.category} language={language} onSeedSelect={onSeedSelect} />
       </div>
     </main>
   );
@@ -134,10 +142,12 @@ function FullSheet({
   detail,
   category,
   language,
+  onSeedSelect,
 }: {
   detail: DonorPlantDetail;
   category: string;
   language: "en" | "es";
+  onSeedSelect?: ((plantId: string) => void) | undefined;
 }) {
   const labels = detailLabels[language];
   return (
@@ -175,13 +185,17 @@ function FullSheet({
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">
                     {labels.seedProtocolBody}
                   </p>
-                  <a
-                    href={`/gardenpedia#seed:${detail.id}`}
-                    className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground transition-colors hover:bg-secondary"
-                  >
-                    {language === "es" ? "Abrir perfil de semilla" : "Open Seed Profile"}
-                    <ArrowUpRight aria-hidden="true" className="ml-1.5 size-3.5" />
-                  </a>
+                  {onSeedSelect ? (
+                    <button type="button" onClick={() => onSeedSelect(detail.id)} className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground transition-colors hover:bg-secondary">
+                      {language === "es" ? "Abrir perfil de semilla" : "Open Seed Profile"}
+                      <ArrowUpRight aria-hidden="true" className="ml-1.5 size-3.5" />
+                    </button>
+                  ) : (
+                    <a href={`/gardenpedia/?seed=${encodeURIComponent(detail.id)}`} className="mt-3 inline-flex min-h-9 items-center rounded-full border border-primary/20 px-3 text-[11px] font-semibold text-muted-foreground transition-colors hover:bg-secondary">
+                      {language === "es" ? "Abrir perfil de semilla" : "Open Seed Profile"}
+                      <ArrowUpRight aria-hidden="true" className="ml-1.5 size-3.5" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

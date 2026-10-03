@@ -53,4 +53,28 @@ describe("Gardenpedia React cutover", () => {
     expect(index).toContain('createFileRoute("/gardenpedia/")');
     expect(root).toContain('pathname === "/gardenpedia" || pathname.startsWith("/gardenpedia/")');
   });
+
+  it("keeps the public Gardenpedia route out of the authenticated Garden X startup graph", () => {
+    const root = read("apps/garden-x/src/routes/__root.tsx");
+    const application = read("apps/garden-x/src/components/garden/garden-application.tsx");
+    const vite = read("apps/garden-x/vite.config.ts");
+
+    expect(root).toContain('import("@/components/garden/garden-application")');
+    expect(root).not.toContain('from "@/lib/garden-store"');
+    expect(root).not.toContain('from "@/components/garden/shell"');
+    expect(application).toContain("GardenProvider");
+    expect(vite).toContain("autoCodeSplitting: true");
+  });
+
+  it("uses query-state React navigation instead of document/hash navigation", () => {
+    const index = read("apps/garden-x/src/routes/gardenpedia.index.tsx");
+    const direct = read("apps/garden-x/src/components/gardenpedia/gardenpedia-direct.tsx");
+    const explore = read("apps/garden-x/src/components/gardenpedia/donor/explore.tsx");
+
+    expect(index).toContain("validateSearch");
+    expect(index).toContain("Route.useNavigate");
+    expect(direct).not.toContain("location.hash");
+    expect(direct).not.toContain("hashchange");
+    expect(explore).not.toContain("/gardenpedia#");
+  });
 });

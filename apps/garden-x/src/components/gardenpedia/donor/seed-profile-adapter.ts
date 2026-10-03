@@ -251,7 +251,7 @@ export function buildSeedProfile(
       sources: sourceRefs(entry, section.sourceIds),
     })),
     sources,
-    plantHref: `/gardenpedia#${entry.libraryPlantId}`,
+    plantHref: `/gardenpedia/?plant=${encodeURIComponent(entry.libraryPlantId)}`,
     evidence: evidenceCounts(profile),
   };
 }

@@ -66,9 +66,11 @@ const COPY = {
 export function MachineProfilePage({
   modelId,
   language,
+  onBack,
 }: {
   modelId: string;
   language: MachineProfileLanguage;
+  onBack?: (() => void) | undefined;
 }) {
   const model = canonicalMachineModel(modelId);
   if (!model) {
@@ -76,22 +78,24 @@ export function MachineProfilePage({
       <main className="garden-stage grid min-h-screen place-items-center p-6 text-foreground">
         <div className="glass-panel p-8 text-center">
           <p className="font-display text-xl font-semibold">{COPY[language].unavailable}</p>
-          <a href="/gardenpedia" className="mt-4 inline-block text-sm text-accent">
+          <a href="/gardenpedia/" className="mt-4 inline-block text-sm text-accent">
             ← {COPY[language].back}
           </a>
         </div>
       </main>
     );
   }
-  return <MachineSheet model={model} language={language} />;
+  return <MachineSheet model={model} language={language} onBack={onBack} />;
 }
 
 function MachineSheet({
   model,
   language,
+  onBack,
 }: {
   model: CanonicalMachineModel;
   language: MachineProfileLanguage;
+  onBack?: (() => void) | undefined;
 }) {
   const copy = COPY[language];
   const viewModel = publicMachineViewModel(model);
@@ -99,13 +103,17 @@ function MachineSheet({
     <main className="garden-stage min-h-screen text-foreground">
       <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <a
-            href="/gardenpedia"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-semibold transition-colors hover:bg-secondary"
-          >
-            <ArrowLeft className="size-4" />
-            {copy.back}
-          </a>
+          {onBack ? (
+            <button type="button" onClick={onBack} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft className="size-4" />
+              {copy.back}
+            </button>
+          ) : (
+            <a href="/gardenpedia/" className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft className="size-4" />
+              {copy.back}
+            </a>
+          )}
           <div className="glass-soft flex rounded-full p-1 text-xs font-semibold">
             <button
               type="button"

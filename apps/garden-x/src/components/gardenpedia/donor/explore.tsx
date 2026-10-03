@@ -248,14 +248,24 @@ export function GardenLibrary({
   language = "es",
   onLanguageChange,
   diagnosticOnly = false,
+  initialView = "library",
+  onViewChange,
+  onPlantSelect,
+  onSeedSelect,
+  onMachineSelect,
 }: {
   language?: GardenpediaLanguage;
   onLanguageChange?: (language: GardenpediaLanguage) => void;
   diagnosticOnly?: boolean;
+  initialView?: View;
+  onViewChange?: ((view: View) => void) | undefined;
+  onPlantSelect?: ((plant: Plant) => void) | undefined;
+  onSeedSelect?: ((id: string) => void) | undefined;
+  onMachineSelect?: ((id: string) => void) | undefined;
 }) {
   const copy = COPY[language];
   const auth = useGardenpediaAuth(!diagnosticOnly);
-  const [view, setView] = useState<View>("library");
+  const [view, setView] = useState<View>(initialView);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [light, setLight] = useState("all");
@@ -270,6 +280,15 @@ export function GardenLibrary({
   const [PrivateSurfaceComponent, setPrivateSurfaceComponent] =
     useState<PrivateSurfaceComponent | null>(null);
   const [diagnosticSelection, setDiagnosticSelection] = useState<Plant | null>(null);
+
+  useEffect(() => {
+    setView(initialView);
+  }, [initialView]);
+
+  const changeView = (next: View) => {
+    setView(next);
+    onViewChange?.(next);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -339,7 +358,7 @@ export function GardenLibrary({
       <CalculatorComponent
         language={language}
         onLanguageChange={onLanguageChange ?? (() => undefined)}
-        onNavigate={(surface) => setView(surface)}
+        onNavigate={(surface) => changeView(surface)}
       />
     );
   }
@@ -377,7 +396,7 @@ export function GardenLibrary({
                   key={item}
                   variant="ghost"
                   size="sm"
-                  onClick={() => setView(item)}
+                  onClick={() => changeView(item)}
                   className={cn(
                     "rounded-md shadow-none",
                     view === item && "bg-background/80 text-foreground shadow-sm",
@@ -396,7 +415,7 @@ export function GardenLibrary({
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => setView(privateView ?? "my-plants")}
+                  onClick={() => changeView(privateView ?? "my-plants")}
                   className={cn(
                     "rounded-md shadow-none",
                     privateView && "bg-background/80 text-foreground shadow-sm",
@@ -433,8 +452,8 @@ export function GardenLibrary({
           <PrivateSurfaceComponent
             section={privateView}
             language={language}
-            onSectionChange={setView}
-            onBack={() => setView("library")}
+            onSectionChange={changeView}
+            onBack={() => changeView("library")}
           />
         ) : null}
         {privateView && !PrivateSurfaceComponent ? <DeferredSurface /> : null}
@@ -456,17 +475,21 @@ export function GardenLibrary({
             language={language}
             copy={copy}
             evidenceGroups={evidenceGroups}
-            onPlantSelect={diagnosticOnly ? setDiagnosticSelection : undefined}
+            onPlantSelect={onPlantSelect ?? (diagnosticOnly ? setDiagnosticSelection : undefined)}
           />
         )}
         {view === "seeds" &&
           (SeedLibraryComponent ? (
-            <SeedLibraryComponent language={language} />
+            <SeedLibraryComponent language={language} onSeedSelect={onSeedSelect} />
           ) : (
             <DeferredSurface />
           ))}
         {view === "machines" &&
-          (MachineLibraryComponent ? <MachineLibraryComponent copy={copy} /> : <DeferredSurface />)}
+          (MachineLibraryComponent ? (
+            <MachineLibraryComponent copy={copy} onMachineSelect={onMachineSelect} />
+          ) : (
+            <DeferredSurface />
+          ))}
       </div>
     </main>
   );
@@ -526,7 +549,7 @@ function LibraryView({
     score: number;
     level: string;
   }[];
-  onPlantSelect?: (plant: Plant) => void;
+  onPlantSelect?: ((plant: Plant) => void) | undefined;
 }) {
   return (
     <div className="animate-rise">
@@ -719,7 +742,11 @@ function LibraryView({
             {filteredPlants.map((plant) => (
               <article key={plant.id} className="glass-card group">
                 <a
-                  href={onPlantSelect ? undefined : `/gardenpedia#${plant.id}`}
+                  href={
+                    onPlantSelect
+                      ? undefined
+                      : `/gardenpedia/?plant=${encodeURIComponent(plant.id)}`
+                  }
                   onClick={
                     onPlantSelect
                       ? (event) => {

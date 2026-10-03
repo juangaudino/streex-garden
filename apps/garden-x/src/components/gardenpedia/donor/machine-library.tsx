@@ -7,7 +7,7 @@ type MachineCopy = {
   machineBoundary: string;
 };
 
-export function MachineView({ copy }: { copy: MachineCopy }) {
+export function MachineView({ copy, onMachineSelect }: { copy: MachineCopy; onMachineSelect?: ((id: string) => void) | undefined }) {
   const machines = canonicalMachineModels();
   return (
     <section className="animate-rise py-6">
@@ -39,13 +39,14 @@ export function MachineView({ copy }: { copy: MachineCopy }) {
             </>
           );
           return (
-            <a
+            <button
               key={machine.id}
-              href={`/gardenpedia#machine:${machine.id}`}
-              className="glass-card block p-5 transition hover:-translate-y-0.5"
+              type="button"
+              onClick={() => onMachineSelect?.(machine.id)}
+              className="glass-card block w-full p-5 text-left transition hover:-translate-y-0.5"
             >
               {body}
-            </a>
+            </button>
           );
         })}
       </div>

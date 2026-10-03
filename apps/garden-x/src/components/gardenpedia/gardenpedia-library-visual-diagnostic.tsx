@@ -10,6 +10,7 @@ import "./donor/gardenpedia-direct.css";
  */
 export function GardenpediaLibraryVisualDiagnostic() {
   const [language, setLanguage] = useState<GardenpediaLanguage>(() => preferredLanguage());
+  const [selection, setSelection] = useState<{ name: string; id: string } | null>(null);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -17,7 +18,17 @@ export function GardenpediaLibraryVisualDiagnostic() {
 
   return (
     <div className="gardenpedia-direct">
-      <GardenLibrary language={language} onLanguageChange={setLanguage} diagnosticOnly />
+      <GardenLibrary
+        language={language}
+        onLanguageChange={setLanguage}
+        diagnosticOnly
+        onPlantSelect={(plant) => setSelection({ name: plant.name, id: plant.id })}
+      />
+      {selection ? (
+        <div role="status">
+          Selected: {selection.name} · ID: {selection.id}
+        </div>
+      ) : null}
     </div>
   );
 }

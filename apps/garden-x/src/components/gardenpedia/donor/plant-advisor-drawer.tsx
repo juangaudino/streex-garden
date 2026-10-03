@@ -249,7 +249,7 @@ export function PlantAdvisorDrawer({
                           {item.reason}
                         </p>
                         <a
-                          href={`/gardenpedia#${encodeURIComponent(plant.id)}`}
+                          href={`/gardenpedia/?plant=${encodeURIComponent(plant.id)}`}
                           onClick={() => setOpen(false)}
                           className="mt-4 inline-flex text-xs font-semibold text-accent underline-offset-4 hover:underline"
                         >

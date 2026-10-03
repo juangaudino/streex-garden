@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { preferredLanguage } from "@/lib/ui-copy";
 import { buildDonorPlantDetail, findCanonicalEntry } from "./donor/canonical-adapter";
@@ -10,20 +10,42 @@ type PlantDetailComponent = typeof import("./donor/plant-detail").DonorPlantDeta
 type SeedProfileComponent = typeof import("./donor/seed-profile").SeedProfilePage;
 type MachineProfileComponent = typeof import("./donor/machine-profile").MachineProfilePage;
 
-function hashTarget() {
-  if (typeof window === "undefined") return null;
-  const value = window.location.hash.replace(/^#/, "").trim();
-  if (!value) return null;
-  return value.startsWith("seed:")
-    ? { kind: "seed" as const, id: value.slice("seed:".length) }
-    : value.startsWith("machine:")
-      ? { kind: "machine" as const, id: value.slice("machine:".length) }
-      : { kind: "plant" as const, id: value };
-}
+export type GardenpediaView =
+  "library" | "seeds" | "machines" | "calculator" | "my-plants" | "my-seeds" | "my-machines";
 
-export function GardenpediaDirect() {
+export type GardenpediaSearch = {
+  view?: GardenpediaView;
+  plant?: string;
+  seed?: string;
+  machine?: string;
+};
+
+type GardenpediaNavigation = {
+  view?: GardenpediaView | undefined;
+  plant?: string | undefined;
+  seed?: string | undefined;
+  machine?: string | undefined;
+};
+
+export function GardenpediaDirect({
+  search,
+  onNavigate,
+}: {
+  search: GardenpediaSearch;
+  onNavigate: (next: GardenpediaNavigation) => void;
+}) {
   const [language, setLanguage] = useState<GardenpediaLanguage>(() => preferredLanguage());
-  const [target, setTarget] = useState(() => hashTarget());
+  const target = useMemo(
+    () =>
+      search.plant
+        ? { kind: "plant" as const, id: search.plant }
+        : search.seed
+          ? { kind: "seed" as const, id: search.seed }
+          : search.machine
+            ? { kind: "machine" as const, id: search.machine }
+            : null,
+    [search.machine, search.plant, search.seed],
+  );
   const [plantDetailComponent, setPlantDetailComponent] = useState<PlantDetailComponent | null>(
     null,
   );
@@ -33,12 +55,6 @@ export function GardenpediaDirect() {
   const [machineProfileComponent, setMachineProfileComponent] =
     useState<MachineProfileComponent | null>(null);
   const [seedProfile, setSeedProfile] = useState<SeedProfileViewModel | null>(null);
-
-  useEffect(() => {
-    const onHashChange = () => setTarget(hashTarget());
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -88,21 +104,40 @@ export function GardenpediaDirect() {
   if (target?.kind === "seed" && seedProfile && SeedProfilePage) {
     return (
       <div className="gardenpedia-direct">
-        <SeedProfilePage profile={seedProfile} language={language} onLanguageChange={setLanguage} />
+        <SeedProfilePage
+          profile={seedProfile}
+          language={language}
+          onLanguageChange={setLanguage}
+          onBack={() => onNavigate({ seed: undefined, view: "seeds" })}
+          onPlantSelect={(plantId) =>
+            onNavigate({ plant: plantId, view: "library", seed: undefined, machine: undefined })
+          }
+        />
       </div>
     );
   }
   if (machineId && MachineProfilePage) {
     return (
       <div className="gardenpedia-direct">
-        <MachineProfilePage modelId={machineId} language={language} />
+        <MachineProfilePage
+          modelId={machineId}
+          language={language}
+          onBack={() => onNavigate({ machine: undefined, view: "machines" })}
+        />
       </div>
     );
   }
   if (entry && DonorPlantDetailPage) {
     return (
       <div className="gardenpedia-direct">
-        <DonorPlantDetailPage detail={buildDonorPlantDetail(entry, language)} language={language} />
+        <DonorPlantDetailPage
+          detail={buildDonorPlantDetail(entry, language)}
+          language={language}
+          onBack={() => onNavigate({ plant: undefined, view: "library" })}
+          onSeedSelect={(seedId) =>
+            onNavigate({ seed: seedId, view: "seeds", plant: undefined, machine: undefined })
+          }
+        />
       </div>
     );
   }
@@ -119,7 +154,23 @@ export function GardenpediaDirect() {
 
   return (
     <div className="gardenpedia-direct">
-      <GardenLibrary language={language} onLanguageChange={setLanguage} />
+      <GardenLibrary
+        language={language}
+        onLanguageChange={setLanguage}
+        initialView={search.view ?? "library"}
+        onViewChange={(view) =>
+          onNavigate({ view, plant: undefined, seed: undefined, machine: undefined })
+        }
+        onPlantSelect={(plant) =>
+          onNavigate({ plant: plant.id, view: "library", seed: undefined, machine: undefined })
+        }
+        onSeedSelect={(id) =>
+          onNavigate({ seed: id, view: "seeds", plant: undefined, machine: undefined })
+        }
+        onMachineSelect={(id) =>
+          onNavigate({ machine: id, view: "machines", plant: undefined, seed: undefined })
+        }
+      />
     </div>
   );
 }

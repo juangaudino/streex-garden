@@ -1056,7 +1056,7 @@ function PlantProfile() {
                 <div className="flex items-center gap-3">
                   {libraryEntry ? (
                     <a
-                      href={`/gardenpedia#${encodeURIComponent(libraryEntry.libraryPlantId)}`}
+                      href={`/gardenpedia/?plant=${encodeURIComponent(libraryEntry.libraryPlantId)}`}
                       className="text-primary hover:underline"
                     >
                       {ui(language, "fullCatalog")}

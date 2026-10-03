@@ -269,9 +269,11 @@ function ModeSwitch({
 function PrivateInventoryNotice({
   profile,
   language,
+  onPlantSelect,
 }: {
   profile: SeedProfileViewModel;
   language: SeedProfileLanguage;
+  onPlantSelect?: ((plantId: string) => void) | undefined;
 }) {
   const labels = copy[language];
   return (
@@ -288,12 +290,15 @@ function PrivateInventoryNotice({
             <span className="flex min-h-11 items-center rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground">
               {labels.accessRequired}
             </span>
-            <a
-              href={profile.plantHref}
-              className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
-            >
-              {labels.plantCare}
-            </a>
+            {onPlantSelect ? (
+              <button type="button" onClick={() => onPlantSelect(profile.plantIdentityId)} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+                {labels.plantCare}
+              </button>
+            ) : (
+              <a href={profile.plantHref} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+                {labels.plantCare}
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -304,9 +309,11 @@ function PrivateInventoryNotice({
 function PublicInventoryNotice({
   profile,
   language,
+  onPlantSelect,
 }: {
   profile: SeedProfileViewModel;
   language: SeedProfileLanguage;
+  onPlantSelect?: ((plantId: string) => void) | undefined;
 }) {
   const labels = copy[language];
   return (
@@ -329,13 +336,17 @@ function PublicInventoryNotice({
             <span className="flex min-h-11 items-center rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground">
               {labels.publicProfile}
             </span>
-            <a
-              href={profile.plantHref}
-              className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
-            >
-              {labels.plantCare}
-              <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
-            </a>
+            {onPlantSelect ? (
+              <button type="button" onClick={() => onPlantSelect(profile.plantIdentityId)} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+                {labels.plantCare}
+                <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
+              </button>
+            ) : (
+              <a href={profile.plantHref} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+                {labels.plantCare}
+                <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -343,7 +354,7 @@ function PublicInventoryNotice({
   );
 }
 
-export function SeedLibraryView({ language }: { language: SeedProfileLanguage }) {
+export function SeedLibraryView({ language, onSeedSelect }: { language: SeedProfileLanguage; onSeedSelect?: ((id: string) => void) | undefined }) {
   const profiles = buildSeedProfiles(language);
   const labels = copy[language];
   return (
@@ -366,7 +377,7 @@ export function SeedLibraryView({ language }: { language: SeedProfileLanguage })
         <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {profiles.map((profile) => (
             <article key={profile.id} className="glass-card group">
-              <a href={`/gardenpedia#seed:${profile.id}`} className="block w-full p-5 text-left">
+              <button type="button" onClick={() => onSeedSelect?.(profile.id)} className="block w-full p-5 text-left">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-3xl" aria-hidden="true">
                     {profile.emoji}
@@ -397,7 +408,7 @@ export function SeedLibraryView({ language }: { language: SeedProfileLanguage })
                     aria-hidden="true"
                   />
                 </div>
-              </a>
+              </button>
             </article>
           ))}
         </div>
@@ -414,10 +425,14 @@ export function SeedProfilePage({
   profile,
   language,
   onLanguageChange,
+  onBack,
+  onPlantSelect,
 }: {
   profile: SeedProfileViewModel;
   language: SeedProfileLanguage;
   onLanguageChange: (language: SeedProfileLanguage) => void;
+  onBack?: (() => void) | undefined;
+  onPlantSelect?: ((plantId: string) => void) | undefined;
 }) {
   const [mode, setMode] = useState<"guest" | "member">("guest");
   const labels = copy[language];
@@ -426,13 +441,17 @@ export function SeedProfilePage({
     <main className="garden-stage min-h-screen text-foreground">
       <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto grid max-w-[1320px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6">
-          <a
-            href="/gardenpedia"
-            className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary"
-          >
-            <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
-            <span className="hidden sm:inline">{labels.seeds}</span>
-          </a>
+          {onBack ? (
+            <button type="button" onClick={onBack} className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
+              <span className="hidden sm:inline">{labels.seeds}</span>
+            </button>
+          ) : (
+            <a href="/gardenpedia/" className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+              <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
+              <span className="hidden sm:inline">{labels.seeds}</span>
+            </a>
+          )}
           <div className="min-w-0">
             <p className="eyebrow truncate text-[10px]">Gardenpedia · {labels.profile}</p>
             <p className="truncate font-display text-sm font-bold leading-tight sm:text-base">
@@ -528,9 +547,9 @@ export function SeedProfilePage({
 
           <div className="flex flex-col gap-5 lg:col-span-7 xl:col-span-8">
             {mode === "member" ? (
-              <PrivateInventoryNotice profile={profile} language={language} />
+              <PrivateInventoryNotice profile={profile} language={language} onPlantSelect={onPlantSelect} />
             ) : (
-              <PublicInventoryNotice profile={profile} language={language} />
+              <PublicInventoryNotice profile={profile} language={language} onPlantSelect={onPlantSelect} />
             )}
             <section>
               <p className="eyebrow text-[10px]">{labels.fromSeed}</p>

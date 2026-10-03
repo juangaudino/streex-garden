@@ -6,6 +6,9 @@ const isVercel = Boolean(process.env["VERCEL"]);
 
 export default defineConfig({
   tanstackStart: {
+    router: {
+      autoCodeSplitting: true,
+    },
     server: { entry: "server" },
   },
   nitro: isVercel

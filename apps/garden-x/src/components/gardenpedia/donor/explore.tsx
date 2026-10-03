@@ -269,6 +269,7 @@ export function GardenLibrary({
   const [CalculatorComponent, setCalculatorComponent] = useState<CalculatorComponent | null>(null);
   const [PrivateSurfaceComponent, setPrivateSurfaceComponent] =
     useState<PrivateSurfaceComponent | null>(null);
+  const [diagnosticSelection, setDiagnosticSelection] = useState<Plant | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -421,6 +422,13 @@ export function GardenLibrary({
           </div>
         </header>
 
+        {diagnosticOnly && diagnosticSelection ? (
+          <div className="glass-panel mt-5 p-4 text-sm" role="status">
+            <p>Selected: {diagnosticSelection.name}</p>
+            <p>ID: {diagnosticSelection.id}</p>
+          </div>
+        ) : null}
+
         {privateView && PrivateSurfaceComponent ? (
           <PrivateSurfaceComponent
             section={privateView}
@@ -448,6 +456,7 @@ export function GardenLibrary({
             language={language}
             copy={copy}
             evidenceGroups={evidenceGroups}
+            onPlantSelect={diagnosticOnly ? setDiagnosticSelection : undefined}
           />
         )}
         {view === "seeds" &&
@@ -492,6 +501,7 @@ function LibraryView({
   language,
   copy,
   evidenceGroups,
+  onPlantSelect,
 }: {
   advisorActive: boolean;
   categories: string[];
@@ -516,6 +526,7 @@ function LibraryView({
     score: number;
     level: string;
   }[];
+  onPlantSelect?: (plant: Plant) => void;
 }) {
   return (
     <div className="animate-rise">
@@ -707,7 +718,18 @@ function LibraryView({
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredPlants.map((plant) => (
               <article key={plant.id} className="glass-card group">
-                <a href={`/gardenpedia#${plant.id}`} className="block w-full p-5 text-left">
+                <a
+                  href={onPlantSelect ? undefined : `/gardenpedia#${plant.id}`}
+                  onClick={
+                    onPlantSelect
+                      ? (event) => {
+                          event.preventDefault();
+                          onPlantSelect(plant);
+                        }
+                      : undefined
+                  }
+                  className="block w-full p-5 text-left"
+                >
                   <div className="flex items-start justify-between gap-3">
                     <span className="text-3xl" aria-hidden="true">
                       {plant.emoji}

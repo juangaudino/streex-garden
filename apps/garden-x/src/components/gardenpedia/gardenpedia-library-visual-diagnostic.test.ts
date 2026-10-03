@@ -24,4 +24,12 @@ describe("Gardenpedia Library visual diagnostic", () => {
     expect(explore).toContain('src="/icons/garden-x-512.png"');
     expect(explore).not.toMatch(/thumbnailUrl|imageSrc|rendition|preload/i);
   });
+
+  it("uses local selection state instead of document navigation for the probe", () => {
+    const explore = source("components/gardenpedia/donor/explore.tsx");
+
+    expect(explore).toContain("onPlantSelect ? undefined : `/gardenpedia#${plant.id}`");
+    expect(explore).toContain("event.preventDefault()");
+    expect(explore).toContain("onPlantSelect(plant)");
+  });
 });

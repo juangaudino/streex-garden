@@ -1,0 +1,69 @@
+{
+  "version": "garden-nutrient-engine-v1",
+  "unit": "mS/cm",
+  "modes": {
+    "FRESH_RECIPE": {
+      "requiredInputs": ["recipeId"],
+      "optionalInputs": ["volumeL", "podCount", "feedingIndex", "contexts", "dosingEquipmentResolutionMl"],
+      "conditionalInputs": ["volumeL for mL/L recipes", "podCount for pod-group recipes", "feedingIndex when more than one manufacturer step matches"],
+      "derivedValues": ["component doses", "manufacturerRecipeExpectation", "cropCompatibility"],
+      "outputs": ["manufacturer recipe", "component doses", "mixing order"],
+      "warnings": ["CROP_COMPATIBILITY_UNCERTAIN", "CROP_COMPATIBILITY_CONFLICTING", "MANUFACTURER_CROP_EC_DISAGREEMENT", "DOSE_BELOW_EQUIPMENT_RESOLUTION"],
+      "errors": ["RECIPE_UNAVAILABLE", "UNSUPPORTED_POD_COUNT", "RECIPE_STAGE_REQUIRED", "VOLUME_REQUIRED", "INVALID_VOLUME"],
+      "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
+      "explainability": ["manufacturer dose", "manufacturer expected EC", "source", "compatibility uncertainty"]
+    },
+    "FRESH_TARGET_EC": {
+      "requiredInputs": ["contexts"],
+      "optionalInputs": ["userSelectedTarget", "meterResolution", "observations"],
+      "conditionalInputs": ["userSelectedTarget may proceed when crop evidence is insufficient"],
+      "derivedValues": ["common applicable range", "suggestedStartingPoint"],
+      "outputs": ["target range", "optional suggested starting point"],
+      "warnings": ["STARTING_POINT_POLICY", "STARTING_POINT_SUPPRESSED", "USER_TARGET_OUTSIDE_EVIDENCE", "USER_TARGET_WITHOUT_COMMON_EVIDENCE"],
+      "errors": ["INSUFFICIENT_EC_EVIDENCE"],
+      "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
+      "explainability": ["source range", "user target", "starting-point inference", "dependencies"]
+    },
+    "EC_CORRECTION": {
+      "requiredInputs": ["currentEc", "targetEc", "reservoirVolumeL", "calibration"],
+      "optionalInputs": ["policy.firstStepFraction", "policy.dosingEquipmentResolutionMl"],
+      "conditionalInputs": ["currentEc scope must be NUTRIENT_SOLUTION"],
+      "derivedValues": ["doseMl or waterMl", "optional firstStepDoseMl"],
+      "outputs": ["direction", "dose", "requiresRemeasurement"],
+      "warnings": ["CALIBRATION_EXTRAPOLATION", "PARTIAL_DOSE_POLICY", "DOSE_BELOW_EQUIPMENT_RESOLUTION"],
+      "errors": ["INCOMPATIBLE_MEASUREMENT_SCOPE"],
+      "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
+      "explainability": ["measured EC", "selected target", "calibration factor", "correction calculation"]
+    },
+    "TOP_UP_MAINTENANCE": {
+      "requiredInputs": ["currentVolumeL", "nominalVolumeL", "replacementWaterL", "currentEc", "targetEc"],
+      "optionalInputs": ["calibration", "policy.enableCumulativeTopUpHeuristic"],
+      "conditionalInputs": ["calibration when nutrient addition is required", "currentVolumeL is never inferred from nominal capacity"],
+      "derivedValues": ["resultingVolumeL", "EC after dilution", "optional nutrientDoseMl"],
+      "outputs": ["replacement water", "optional nutrient dose", "approximation marker"],
+      "warnings": ["LINEAR_MIXING_APPROXIMATION", "CALIBRATION_EXTRAPOLATION", "CUMULATIVE_TOP_UP_REPLACEMENT_GUIDANCE"],
+      "errors": ["CURRENT_VOLUME_REQUIRED", "RESERVOIR_CAPACITY_EXCEEDED", "CALIBRATION_REQUIRED"],
+      "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
+      "explainability": ["measured EC", "replacement water", "diluted EC", "calibration-derived dose", "not nutrient balance"]
+    }
+  },
+  "epistemicClasses": [
+    "SOURCE_BACKED_FACT",
+    "MANUFACTURER_INSTRUCTION",
+    "USER_CALIBRATION",
+    "DETERMINISTIC_CALCULATION",
+    "ENGINE_INFERENCE",
+    "UNVALIDATED_ASSUMPTION",
+    "USER_SELECTED"
+  ],
+  "measurementScopes": ["NUTRIENT_SOLUTION", "ROOT_ZONE", "SOURCE_WATER", "RUNOFF_OR_LEACHATE", "UNKNOWN"],
+  "scopeBases": ["STATED", "INFERRED", "UNKNOWN"],
+  "principles": [
+    "EC is not nutrient balance",
+    "PPM is outside V1; mS/cm and uS/cm conversion is deterministic",
+    "UNKNOWN scope never becomes NUTRIENT_SOLUTION",
+    "manufacturer expected EC is not crop requirement",
+    "plant count is contextual and never weights the target in V1",
+    "historical or low-tier evidence does not automatically create a target"
+  ]
+}

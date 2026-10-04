@@ -16,6 +16,35 @@ import type {
   NutrientFormula,
 } from "./hydro-calculator.types";
 
+/**
+ * Canonical V1 entry points live outside this legacy donor-compatible facade.
+ * The existing Calculator UI keeps its old shape until the parallel UX work
+ * consumes the machine-readable V1 contract; no V1 calculation may be added
+ * here as a second implementation.
+ */
+export {
+  AEROGARDEN_RECIPE,
+  CROP_EVIDENCE,
+  FLORA_RECIPE,
+  MANUFACTURER_RECIPES,
+  NUTRIENT_SOURCES,
+} from "@/lib/garden-nutrient-engine-v1";
+export {
+  assertNoFalseCertainty,
+  buildCalibrationModel,
+  calculateEcCorrection,
+  calculateFreshTargetEc,
+  calculatePolycultureRange,
+  calculateTopUpMaintenance,
+  executeFreshRecipe,
+  evaluateSourceWater,
+  getReplacementGuidance,
+  learnFromObservation,
+  selectApplicable,
+  toMsPerCm,
+  toUsPerCm,
+} from "@/lib/garden-nutrient-engine-v1";
+
 export const PHASE_LABELS: Record<GrowthPhase, string> = {
   seedling: "Plántula / trasplante",
   vegetative: "Crecimiento vegetativo",

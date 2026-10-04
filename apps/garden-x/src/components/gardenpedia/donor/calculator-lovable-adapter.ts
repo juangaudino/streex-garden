@@ -8,6 +8,8 @@ import {
   learnFromObservation,
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import { CROP_EVIDENCE, MANUFACTURER_RECIPES } from "@/lib/garden-nutrient-engine-v1/data";
+import { donorPlants, donorPlantsById } from "./canonical-adapter";
+import type { DonorPlant } from "./canonical-adapter";
 import type {
   CalibrationObservation,
   Claim,
@@ -23,35 +25,42 @@ export type Mode = "recipe" | "target" | "adjust" | "topup";
 export type Provenance = "official" | "garden" | "measured" | "user";
 export type Evidence = Lowercase<EvidenceState>;
 export type EcUnit = "mS" | "uS";
-export type Intensity = "light" | "medium" | "aggressive";
-
-export type DemoCrop = {
+export type CalculatorPlant = {
   id: string;
   emoji: string;
   name: Record<Lang, string>;
+  scientificName: string;
+  cultivar: string | null;
+  aliases: readonly string[];
 };
 
-export type DemoProduct = {
+export type CalculatorProduct = {
   id: string;
   name: string;
   basis: "liters" | "pods";
   parts: { id: string; label: string }[];
   hasRecipeStages?: boolean;
+  recipeId?: string;
+  available: boolean;
 };
 
-export const DEMO_CROPS: DemoCrop[] = [
-  { id: "genovese-basil", emoji: "🌿", name: { es: "Albahaca genovesa", en: "Genovese basil" } },
-  { id: "bibb-lettuce", emoji: "🥬", name: { es: "Lechuga Bibb", en: "Bibb lettuce" } },
-  { id: "cherry-tomato", emoji: "🍅", name: { es: "Tomate cherry", en: "Cherry tomato" } },
-  { id: "common-mint", emoji: "🌱", name: { es: "Menta", en: "Mint" } },
-];
+export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => ({
+  id: plant.id,
+  emoji: plant.emoji,
+  name: { es: plant.spanishName, en: plant.name },
+  scientificName: plant.scientificName,
+  cultivar: plant.variety,
+  aliases: plant.tags,
+}));
 
-export const DEMO_PRODUCTS: DemoProduct[] = [
+export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
   {
     id: "gh-flora",
     name: "GH FloraSeries",
     basis: "liters",
     hasRecipeStages: true,
+    recipeId: "general-hydroponics-floraseries-3part-2026-07-07",
+    available: true,
     parts: [
       { id: "micro", label: "FloraMicro" },
       { id: "gro", label: "FloraGro" },
@@ -62,12 +71,15 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
     id: "aerogarden",
     name: "AeroGarden Liquid Plant Food",
     basis: "pods",
+    recipeId: "aerogarden-liquid-plant-food-4-3-6",
+    available: true,
     parts: [{ id: "single", label: "Liquid Plant Food" }],
   },
   {
-    id: "custom-ab",
-    name: "A + B (calibrado)",
+    id: "ab",
+    name: "A + B",
     basis: "liters",
+    available: false,
     parts: [
       { id: "a", label: "Parte A" },
       { id: "b", label: "Parte B" },
@@ -75,15 +87,29 @@ export const DEMO_PRODUCTS: DemoProduct[] = [
   },
 ];
 
-export const DEMO_STAGES = [
-  { id: "w1", feedingIndex: 1, label: { es: "Semana 1 · Plántula", en: "Week 1 · Seedling" } },
-  { id: "w3", feedingIndex: 2, label: { es: "Semana 2 · Crecimiento", en: "Week 2 · Growth" } },
-  {
-    id: "w6",
-    feedingIndex: 4,
-    label: { es: "Semana 4 · Crecimiento tardío", en: "Week 4 · Late growth" },
+export const CALCULATOR_STAGES = MANUFACTURER_RECIPES.find(
+  (recipe) => recipe.id === "general-hydroponics-floraseries-3part-2026-07-07",
+)!.steps.map((step) => ({
+  id: `feeding-${step.feedingIndex ?? step.label}`,
+  feedingIndex: step.feedingIndex,
+  label: {
+    es: step.label
+      .replace("Grow week", "Grow · Semana")
+      .replace("Bloom week", "Bloom · Semana")
+      .replace(" / ", " · "),
+    en: step.label,
   },
-];
+}));
+
+const STAGE_ALIASES: Record<string, string> = {
+  w1: "feeding-1",
+  w3: "feeding-2",
+  w6: "feeding-4",
+};
+
+function stageForId(stageId: string) {
+  return CALCULATOR_STAGES.find((item) => item.id === (STAGE_ALIASES[stageId] ?? stageId));
+}
 
 export type SavedSystem = {
   id: string;
@@ -93,12 +119,50 @@ export type SavedSystem = {
   productId: string;
   water: { label: Record<Lang, string>; ec: number };
   meter: string;
+  stageId: string;
+  pods: number;
+  unit: EcUnit;
+  calibrationObservations?: CalibrationObservation[];
   calibration?: { learned: number; readings: number };
   lastEc?: number;
 };
 
-/** The dock is intentionally local-only until a canonical saved-system contract is approved. */
-export const DEMO_SYSTEMS: SavedSystem[] = [];
+export const CALCULATOR_STORAGE_KEY = "gardenpedia.calculator.systems.v1";
+
+export function loadSavedSystems(): SavedSystem[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(CALCULATOR_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((item): item is Partial<SavedSystem> => Boolean(item && typeof item === "object"))
+      .filter((item) => typeof item.id === "string" && typeof item.name === "string")
+      .map((item) => ({
+        id: item.id!,
+        name: item.name!,
+        crops: item.crops ?? {},
+        liters: item.liters ?? 1,
+        productId: item.productId ?? "gh-flora",
+        water: item.water ?? { label: { es: "Grifo", en: "Tap" }, ec: 0 },
+        meter: item.meter ?? "—",
+        stageId: item.stageId ?? "feeding-2",
+        pods: item.pods ?? 6,
+        unit: item.unit === "uS" ? "uS" : "mS",
+        calibrationObservations: item.calibrationObservations ?? [],
+        calibration: item.calibration,
+        lastEc: item.lastEc,
+      }));
+  } catch {
+    return [];
+  }
+}
+
+export function persistSavedSystems(systems: SavedSystem[]) {
+  if (typeof window !== "undefined")
+    window.localStorage.setItem(CALCULATOR_STORAGE_KEY, JSON.stringify(systems));
+}
 
 export type CalcInput = {
   mode: Mode;
@@ -106,7 +170,6 @@ export type CalcInput = {
   liters: number;
   productId: string;
   stageId: string;
-  intensity: Intensity;
   pods: number;
   sourceEc: number;
   currentEc: number | null;
@@ -130,36 +193,88 @@ export type CalcResult =
       evidenceNote: Record<Lang, string>;
       outsideEvidence?: boolean;
       sources: string[];
-      expectedEc?: number;
+      expectedEc?:
+        | { kind: "manufacturer"; min: number; max: number }
+        | { kind: "calculated"; min: number; max: number };
     };
 
-const RECIPE_IDS: Record<string, string | undefined> = {
-  "gh-flora": "general-hydroponics-floraseries-3part-2026-07-07",
-  aerogarden: "aerogarden-liquid-plant-food-4-3-6",
+const RECIPE_IDS = Object.fromEntries(
+  CALCULATOR_PRODUCTS.filter((product) => product.recipeId).map((product) => [
+    product.id,
+    product.recipeId,
+  ]),
+) as Record<string, string | undefined>;
+
+const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  "cinnamon-basil": "basil",
+  "genovese-basil": "basil",
+  "italian-large-leaf-basil": "basil",
+  "purple-basil": "basil",
+  "sweet-basil": "basil",
+  "thai-basil": "basil",
+  "bibb-lettuce": "lettuce",
+  "black-seeded-simpson": "lettuce",
+  "buttercrunch-lettuce": "lettuce",
+  "iceberg-lettuce": "lettuce",
+  "little-gem-lettuce": "lettuce",
+  "oakleaf-lettuce": "lettuce",
+  "red-romaine-lettuce": "lettuce",
+  "red-sail-lettuce": "lettuce",
+  "beefsteak-tomato": "tomato",
+  "black-cherry-tomato": "tomato",
+  "black-krim-tomato": "tomato",
+  "celebrity-tomato": "tomato",
+  "cherry-bomb-tomato": "tomato",
+  "cherry-tomato": "tomato",
+  "grape-tomato": "tomato",
+  "patio-tomato": "tomato",
+  "roma-tomato": "tomato",
+  "san-marzano-tomato": "tomato",
+  "sun-gold-tomato": "tomato",
+  "sunrise-sauce-tomato": "tomato",
+  "supersweet-100-tomato": "tomato",
+  "tiny-tim-tomato": "tomato",
+  "yellow-brandywine-tomato": "tomato",
+  "yellow-pear-tomato": "tomato",
+  "chinese-light-green-celery": "celery",
+  "anaheim-pepper": "pepper",
+  "ancho-pepper": "pepper",
+  "banana-pepper": "pepper",
+  "cayenne-pepper": "pepper",
+  "cubanelle-pepper": "pepper",
+  "habanero-pepper": "pepper",
+  "jalapeno-pepper": "pepper",
+  "mini-bell-pepper": "pepper",
+  "poblano-pepper": "pepper",
+  "serrano-pepper": "pepper",
+  "shishito-pepper": "pepper",
+  "sweet-chocolate-pepper": "pepper",
+  "monterey-strawberry": "strawberry",
+  "baby-spinach": "spinach",
+  "seaside-f1-spinach": "spinach",
+  "flat-leaf-parsley": "parsley",
+  "italian-giant-parsley": "parsley",
+  "broadleaf-sage": "sage",
 };
+
+export function resolveNutrientCropIdentity(plantId: string): string | undefined {
+  return NUTRIENT_IDENTITY_MAP[plantId];
+}
+
+export function calculatorPlantById(id: string): DonorPlant | undefined {
+  return donorPlantsById.get(id);
+}
 
 function evidenceLabel(state: EvidenceState): Evidence {
   return state.toLowerCase() as Evidence;
 }
 
-function cropIdentity(id: string): string {
-  if (id.includes("basil")) return "basil";
-  if (id.includes("lettuce")) return "lettuce";
-  if (id.includes("tomato")) return "tomato";
-  if (id.includes("mint")) return "mint";
-  return id;
-}
-
-function contextFor(
-  crops: Record<string, number>,
-  productId: string,
-  stageId: string,
-): CropContext[] {
-  const stage = stageId === "w1" ? "SEEDLING" : stageId === "w6" ? "FLOWERING" : "VEGETATIVE";
+export function contextFor(crops: Record<string, number>, productId: string): CropContext[] {
   const system = productId === "aerogarden" ? "COUNTERTOP_POD" : "GENERAL_HYDROPONIC";
   return Object.keys(crops).map((id) => ({
-    cropIdentity: cropIdentity(id),
-    phenologicalStage: stage,
+    cropIdentity: resolveNutrientCropIdentity(id) ?? id,
+    // A manufacturer feeding step is not evidence of plant phenology.
+    phenologicalStage: "UNSPECIFIED",
     hydroponicSystem: system,
     measurementScope: "NUTRIENT_SOLUTION",
   }));
@@ -233,7 +348,7 @@ function productIdentity(productId: string) {
 function recipeSignatureFor(productId: string, stageId: string, liters: number, pods: number) {
   const recipeId = RECIPE_IDS[productId];
   if (!recipeId) return undefined;
-  const stage = DEMO_STAGES.find((item) => item.id === stageId);
+  const stage = stageForId(stageId);
   const recipe = executeFreshRecipe({
     recipeId,
     feedingIndex: productId === "aerogarden" ? 1 : stage?.feedingIndex,
@@ -250,13 +365,14 @@ function recipeSignatureFor(productId: string, stageId: string, liters: number, 
 
 function actualDoseTotal(doses: Record<string, string>): number | undefined {
   const values = Object.values(doses).map((value) => Number(value.replace(",", ".")));
-  if (!values.length || values.some((value) => !Number.isFinite(value) || value <= 0))
+  if (!values.length || values.some((value) => !Number.isFinite(value) || value < 0))
     return undefined;
-  return values.reduce((sum, value) => sum + value, 0);
+  const total = values.reduce((sum, value) => sum + value, 0);
+  return total > 0 ? total : undefined;
 }
 
 export function calculateGardenResult(input: CalcInput): CalcResult {
-  const contexts = contextFor(input.crops, input.productId, input.stageId);
+  const contexts = contextFor(input.crops, input.productId);
   const range = rangeFor(contexts);
   const targetEngine = calculateFreshTargetEc({
     contexts,
@@ -276,7 +392,7 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
   if (input.mode === "recipe") {
     const recipeId = RECIPE_IDS[input.productId];
     if (!recipeId) return engineNeeds("No existe una receta oficial para esta formulación exacta.");
-    const stage = DEMO_STAGES.find((item) => item.id === input.stageId);
+    const stage = stageForId(input.stageId);
     const recipe = executeFreshRecipe({
       recipeId,
       volumeL: input.productId === "aerogarden" ? undefined : input.liters,
@@ -303,7 +419,13 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
       evidence: evidenceLabel(recipe.value.evidenceState),
       evidenceNote: noteFor(recipe.value.evidenceState),
       sources: [recipe.value.recipe.source.title],
-      expectedEc: recipe.value.manufacturerRecipeExpectation?.min,
+      expectedEc: recipe.value.manufacturerRecipeExpectation
+        ? {
+            kind: "manufacturer",
+            min: recipe.value.manufacturerRecipeExpectation.min,
+            max: recipe.value.manufacturerRecipeExpectation.max,
+          }
+        : undefined,
     };
   }
 
@@ -377,8 +499,11 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
       evidenceNote,
       outsideEvidence,
       sources: calibration.value.claims.map((claim) => claim.label),
-      expectedEc:
-        input.currentEc + (value.doseMl ? calibration.value.factorEcPerMl * value.doseMl : 0),
+      expectedEc: {
+        kind: "calculated",
+        min: input.currentEc + (value.doseMl ? calibration.value.factorEcPerMl * value.doseMl : 0),
+        max: input.currentEc + (value.doseMl ? calibration.value.factorEcPerMl * value.doseMl : 0),
+      },
     };
   }
 
@@ -409,7 +534,7 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
     evidenceNote,
     outsideEvidence,
     sources: value.claims.map((claim) => claim.label),
-    expectedEc: targetValue,
+    expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
   };
 }
 

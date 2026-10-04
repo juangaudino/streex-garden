@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { AEROGARDEN_RECIPE, FLORA_RECIPE } from "@/lib/garden-nutrient-engine-v1/data";
 import {
@@ -12,15 +12,25 @@ import {
 import { donorPlants } from "./canonical-adapter";
 import { MODE_TO_ENGINE, recipeSignature } from "./calculator-v1-adapter";
 import {
+  CALCULATOR_PLANTS,
+  CALCULATOR_STAGES,
   calculateGardenResult,
-  DEMO_SYSTEMS,
+  loadSavedSystems,
+  persistSavedSystems,
   recordActualDoses,
+  resolveNutrientCropIdentity,
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
   it("uses the canonical 214-identity catalog", () => {
     expect(donorPlants).toHaveLength(214);
+    expect(CALCULATOR_PLANTS).toHaveLength(214);
     expect(donorPlants.map((plant) => plant.id)).toContain("genovese-basil");
+  });
+
+  it("resolves only explicitly verified Gardenpedia identity mappings", () => {
+    expect(resolveNutrientCropIdentity("genovese-basil")).toBe("basil");
+    expect(resolveNutrientCropIdentity("common-mint")).toBeUndefined();
   });
 
   it("maps each UX mode to exactly one V1 operating mode", () => {
@@ -41,6 +51,48 @@ describe("Gardenpedia Calculator V1 integration", () => {
       "FloraBloom",
     ]);
     expect(result.value?.recipe.mixingOrder).toEqual(["micro", "gro", "bloom"]);
+  });
+
+  it("projects every verified FloraSeries feeding step without inventing plant phenology", () => {
+    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([1, 2, 4, 5, 7, 10, 12]);
+    const result = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 2,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.expectedEc).toEqual({ kind: "manufacturer", min: 0.9, max: 1.1 });
+      expect(result.evidence).toBe("high");
+    }
+  });
+
+  it("keeps an unmapped published identity insufficient instead of guessing a crop", () => {
+    const result = calculateGardenResult({
+      mode: "recipe",
+      crops: { "common-mint": 1 },
+      liters: 2,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") expect(result.evidence).toBe("insufficient");
   });
 
   it("uses supported AeroGarden pod/feed semantics without volume or interpolation", () => {
@@ -155,7 +207,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       liters: 2,
       productId: "gh-flora",
       stageId: "w3",
-      intensity: "medium",
       pods: 6,
       sourceEc: 0.2,
       currentEc: null,
@@ -182,7 +233,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       liters: 2,
       productId: "gh-flora",
       stageId: "w3",
-      intensity: "medium",
       pods: 6,
       sourceEc: 0.2,
       currentEc: null,
@@ -206,7 +256,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       liters: 2,
       productId: "aerogarden",
       stageId: "w1",
-      intensity: "medium",
       pods: 12,
       sourceEc: 0.2,
       currentEc: null,
@@ -234,6 +283,32 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("does not invent canonical saved systems for the transplanted dock", () => {
-    expect(DEMO_SYSTEMS).toEqual([]);
+    expect(loadSavedSystems()).toEqual([]);
+  });
+
+  it("persists and restores local saved-system configuration without a canonical write", () => {
+    const storage = new Map<string, string>();
+    vi.stubGlobal("window", {
+      localStorage: {
+        getItem: (key: string) => storage.get(key) ?? null,
+        setItem: (key: string, value: string) => storage.set(key, value),
+      },
+    });
+    const saved = {
+      id: "local-test-system",
+      name: "Test system",
+      crops: { "genovese-basil": 2 },
+      liters: 4,
+      productId: "gh-flora",
+      water: { label: { es: "Grifo", en: "Tap" }, ec: 0.2 },
+      meter: "Pocket meter",
+      stageId: "feeding-2",
+      pods: 6,
+      unit: "mS" as const,
+      calibrationObservations: [],
+    };
+    persistSavedSystems([saved]);
+    expect(loadSavedSystems()).toEqual([saved]);
+    vi.unstubAllGlobals();
   });
 });

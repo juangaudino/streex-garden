@@ -4,6 +4,7 @@ import { AEROGARDEN_RECIPE, CROP_EVIDENCE, FLORA_RECIPE, NUTRIENT_SOURCES } from
 import {
   buildCalibrationModel,
   calculateEcCorrection,
+  calculateFreshTargetEcDose,
   calculateFreshTargetEc,
   calculatePolycultureRange,
   calculateTopUpMaintenance,
@@ -142,6 +143,31 @@ describe("Garden Nutrient Engine V1", () => {
     expect(
       result.warnings.some((item) => item.code === "USER_TARGET_WITHOUT_COMMON_EVIDENCE"),
     ).toBe(true);
+  });
+
+  it("calculates a fresh target dose from exact calibration and scales it by volume", () => {
+    const { product, observations } = calibrationInput();
+    const model = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    });
+    const sourceWater = measurement(0.2, "SOURCE_WATER");
+    const fourLiters = calculateFreshTargetEcDose({
+      sourceWaterEc: sourceWater,
+      targetEc: 1.2,
+      reservoirVolumeL: 4,
+      calibration: model.value!,
+    });
+    const tenLiters = calculateFreshTargetEcDose({
+      sourceWaterEc: sourceWater,
+      targetEc: 1.2,
+      reservoirVolumeL: 10,
+      calibration: model.value!,
+    });
+    expect(fourLiters.value?.doseMl).toBeCloseTo(4);
+    expect(tenLiters.value?.doseMl).toBeCloseTo(10);
   });
 
   it("suppresses a starting point when the range is no wider than meter resolution", () => {

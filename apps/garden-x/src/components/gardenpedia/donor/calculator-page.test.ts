@@ -226,6 +226,106 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("changes official recipe doses with volume and manufacturer step, not crop identity", () => {
+    const input = {
+      mode: "recipe" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    };
+    const fourLiters = calculateGardenResult(input);
+    const tenLiters = calculateGardenResult({ ...input, liters: 10 });
+    const laterStage = calculateGardenResult({ ...input, stageId: "feeding-7" });
+    const strawberry = calculateGardenResult({
+      ...input,
+      crops: { "monterey-strawberry": 1 },
+    });
+    expect(fourLiters.kind).toBe("ok");
+    expect(tenLiters.kind).toBe("ok");
+    expect(laterStage.kind).toBe("ok");
+    expect(strawberry.kind).toBe("ok");
+    if (
+      fourLiters.kind === "ok" &&
+      tenLiters.kind === "ok" &&
+      laterStage.kind === "ok" &&
+      strawberry.kind === "ok"
+    ) {
+      expect(tenLiters.doses[0]!.amount / fourLiters.doses[0]!.amount).toBeCloseTo(2.5);
+      expect(laterStage.doses.map((dose) => dose.amount)).not.toEqual(
+        fourLiters.doses.map((dose) => dose.amount),
+      );
+      expect(strawberry.range).not.toEqual(fourLiters.range);
+    }
+  });
+
+  it("changes correction and top-up outputs when measured reservoir state changes", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 2,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    const base = {
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentLiters: 3,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [observation.value!],
+    };
+    const correctionLow = calculateGardenResult({
+      ...base,
+      mode: "adjust",
+      currentEc: 0.8,
+    });
+    const correctionHigh = calculateGardenResult({
+      ...base,
+      mode: "adjust",
+      currentEc: 1.0,
+    });
+    const topupSmall = calculateGardenResult({
+      ...base,
+      mode: "topup",
+      currentEc: 0.8,
+      waterAdded: 0.25,
+    });
+    const topupLarge = calculateGardenResult({
+      ...base,
+      mode: "topup",
+      currentEc: 0.8,
+      waterAdded: 0.75,
+    });
+    expect(correctionLow.kind).toBe("ok");
+    expect(correctionHigh.kind).toBe("ok");
+    expect(topupSmall.kind).toBe("ok");
+    expect(topupLarge.kind).toBe("ok");
+    if (
+      correctionLow.kind === "ok" &&
+      correctionHigh.kind === "ok" &&
+      topupSmall.kind === "ok" &&
+      topupLarge.kind === "ok"
+    ) {
+      expect(correctionLow.doses[0]?.amount).not.toBe(correctionHigh.doses[0]?.amount);
+      expect(topupSmall.doses[0]?.amount).not.toBe(topupLarge.doses[0]?.amount);
+    }
+  });
+
   it("keeps a user EC target in the Lovable presentation model", () => {
     const result = calculateGardenResult({
       mode: "target",
@@ -241,11 +341,93 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: 2.1,
       round: 1,
     });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") {
+      expect(result.target?.value).toBe(2.1);
+      expect(result.message).toContain("medición real");
+    }
+  });
+
+  it("produces an actionable By EC dose only after exact product calibration", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 2,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    expect(observation.ok).toBe(true);
+    const calibratedInput = {
+      mode: "target" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [observation.value!],
+    };
+    const result = calculateGardenResult(calibratedInput);
     expect(result.kind).toBe("ok");
     if (result.kind === "ok") {
-      expect(result.target?.value).toBe(2.1);
-      expect(result.provenance).toBe("user");
-      expect(result.target?.provenance).toBe("user");
+      expect(result.doses.length).toBeGreaterThan(0);
+      expect(result.doses.map((dose) => dose.label)).toEqual([
+        "FloraMicro",
+        "FloraGro",
+        "FloraBloom",
+      ]);
+    }
+  });
+
+  it("differentiates By EC by crop, target, and volume", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 2,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    const base = {
+      mode: "target" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [observation.value!],
+    };
+    const lettuce = calculateGardenResult({ ...base, crops: { "bibb-lettuce": 1 } });
+    const tomato = calculateGardenResult({ ...base, crops: { "cherry-tomato": 1 } });
+    const higherTarget = calculateGardenResult({ ...base, userTarget: 1.5 });
+    const largerVolume = calculateGardenResult({ ...base, liters: 10 });
+    expect(lettuce.kind).toBe("ok");
+    expect(tomato.kind).toBe("ok");
+    expect(higherTarget.kind).toBe("ok");
+    expect(largerVolume.kind).toBe("ok");
+    if (
+      lettuce.kind === "ok" &&
+      tomato.kind === "ok" &&
+      higherTarget.kind === "ok" &&
+      largerVolume.kind === "ok"
+    ) {
+      expect(lettuce.range).not.toEqual(tomato.range);
+      expect(higherTarget.doses[0]?.amount).not.toBe(lettuce.doses[0]?.amount);
+      expect(largerVolume.doses[0]?.amount).not.toBe(lettuce.doses[0]?.amount);
     }
   });
 
@@ -266,6 +448,62 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
     expect(result.kind).toBe("needs");
     if (result.kind === "needs") expect(result.message).toContain("will not interpolate");
+  });
+
+  it("differentiates supported AeroGarden feeding events without asking for volume", () => {
+    const first = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 2,
+      productId: "aerogarden",
+      stageId: "feeding-1",
+      pods: 9,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    const later = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 2,
+      productId: "aerogarden",
+      stageId: "feeding-3",
+      pods: 9,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(first.kind).toBe("ok");
+    expect(later.kind).toBe("ok");
+    if (first.kind === "ok" && later.kind === "ok") {
+      expect(first.doses[0]?.amount).toBe(8);
+      expect(later.doses[0]?.amount).toBe(12);
+    }
+  });
+
+  it("keeps unsupported canonical crops insufficient for crop-derived By EC", () => {
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: { "common-mint": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") expect(result.evidence).toBe("insufficient");
   });
 
   it("captures actual component doses through the engine calibration contract", () => {

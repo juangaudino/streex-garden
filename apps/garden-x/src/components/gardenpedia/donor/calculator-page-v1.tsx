@@ -29,7 +29,6 @@ import {
 import {
   CALCULATOR_PLANTS,
   CALCULATOR_PRODUCTS,
-  CALCULATOR_STAGES,
   calculateGardenResult,
   loadSavedSystems,
   persistSavedSystems,
@@ -566,7 +565,10 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       key={p.id}
                       active={productId === p.id}
                       disabled={!p.available}
-                      onClick={() => setProductId(p.id)}
+                      onClick={() => {
+                        setProductId(p.id);
+                        if (p.recipeStages[0]) setStageId(p.recipeStages[0].id);
+                      }}
                     >
                       {p.name.split(" (")[0]!.replace("Liquid Plant Food", "")}
                     </Chip>
@@ -580,7 +582,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       onChange={(e) => setStageId(e.target.value)}
                       className="h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm"
                     >
-                      {CALCULATOR_STAGES.map((s) => (
+                      {product.recipeStages.map((s) => (
                         <option key={s.id} value={s.id}>
                           {s.label[lang]}
                         </option>
@@ -681,7 +683,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 </Button>
               )}
 
-              {mode === "target" && result.kind === "ok" && result.target && (
+              {mode === "target" && result.target && (
                 <TargetControl
                   t={t}
                   unitLabel={unitLabel}

@@ -20,6 +20,7 @@ import type {
   TopUpResult,
   UserMeasurement,
   EcTargetResult,
+  FreshTargetDoseResult,
 } from "./types.ts";
 
 const AUTOMATIC_TIERS = new Set(["A", "B", "C", "D"]);
@@ -449,6 +450,172 @@ export function calculateFreshTargetEc(input: {
     [...warnings, ...derived.warnings],
     [],
     claims,
+  );
+}
+
+/**
+ * Calculates fresh-solution nutrient dose from a product-specific calibration.
+ *
+ * The calibration observations carry reservoir volume, so the EC response is
+ * normalized to the requested volume before calculating a dose. This is not a
+ * universal EC-to-mL constant: without an exact product/recipe calibration the
+ * operation returns CALIBRATION_UNAVAILABLE.
+ */
+export function calculateFreshTargetEcDose(input: {
+  sourceWaterEc: UserMeasurement;
+  targetEc: number;
+  reservoirVolumeL: number;
+  calibration: CalibrationModel;
+  policy?: EnginePolicy;
+}): EngineResult<FreshTargetDoseResult> {
+  const sourceEc = toMsPerCm(
+    input.sourceWaterEc.value,
+    input.sourceWaterEc.unit === "pH" ? "mS/cm" : input.sourceWaterEc.unit,
+  );
+  const claims: Claim[] = [
+    claim("fresh-source-water-ec", "Measured source-water EC", "USER_SELECTED", [], {
+      value: sourceEc,
+    }),
+    claim("fresh-target-ec", "Selected fresh-solution EC target", "USER_SELECTED", [], {
+      value: input.targetEc,
+    }),
+    claim(
+      "fresh-calibration-factor",
+      "Volume-normalized product calibration factor",
+      "USER_CALIBRATION",
+      input.calibration.observations.map((item) => item.id),
+      { value: input.calibration.factorEcPerMl },
+    ),
+  ];
+  if (
+    input.sourceWaterEc.context.scope !== "SOURCE_WATER" ||
+    input.sourceWaterEc.context.scopeBasis === "UNKNOWN"
+  )
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "SOURCE_WATER_SCOPE_REQUIRED",
+          "Fresh target dosing requires an explicitly scoped SOURCE_WATER EC measurement.",
+          ["sourceWaterEc"],
+        ),
+      ],
+      claims,
+    );
+  if (!Number.isFinite(input.targetEc) || input.targetEc <= 0 || input.reservoirVolumeL <= 0)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "INVALID_FRESH_TARGET_INPUT",
+          "Fresh target EC and reservoir volume must be positive.",
+        ),
+      ],
+      claims,
+    );
+  if (sourceEc > input.targetEc)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "SOURCE_WATER_ABOVE_TARGET",
+          "Source-water EC is already above the selected fresh-solution target; nutrient dosing cannot lower it.",
+          ["fresh-source-water-ec", "fresh-target-ec"],
+        ),
+      ],
+      claims,
+    );
+  if (Math.abs(sourceEc - input.targetEc) < Number.EPSILON)
+    return result(
+      {
+        mode: "FRESH_TARGET_EC",
+        direction: "NO_CHANGE",
+        targetEc: input.targetEc,
+        sourceEc,
+        reservoirVolumeL: input.reservoirVolumeL,
+        requiresMeasurement: true,
+        evidenceState: input.calibration.evidenceState,
+        warnings: [],
+        claims,
+      },
+      [],
+      [],
+      claims,
+    );
+
+  const normalizedFactors = input.calibration.observations
+    .filter((item) => item.doseAppliedMl > 0 && item.deltaEc > 0 && item.reservoirVolumeL > 0)
+    .map(
+      (item) =>
+        (item.deltaEc / item.doseAppliedMl) * (item.reservoirVolumeL / input.reservoirVolumeL),
+    );
+  if (!normalizedFactors.length || !Number.isFinite(median(normalizedFactors)))
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CALIBRATION_INVALID",
+          "Fresh target dosing requires calibration observations with a positive EC response.",
+        ),
+      ],
+      claims,
+    );
+  const factorAtVolume = median(normalizedFactors);
+  const doseMl = (input.targetEc - sourceEc) / factorAtVolume;
+  const warnings: EngineWarning[] = [];
+  if (
+    input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
+    input.reservoirVolumeL > input.calibration.validCalibrationRange.maxVolumeL ||
+    doseMl < input.calibration.validCalibrationRange.minDoseMl ||
+    doseMl > input.calibration.validCalibrationRange.maxDoseMl
+  )
+    warnings.push(
+      warning(
+        "CALIBRATION_EXTRAPOLATION",
+        "The fresh target dose is outside the validated calibration volume or dose range.",
+        ["fresh-calibration-factor"],
+      ),
+    );
+  if (
+    input.policy?.dosingEquipmentResolutionMl !== undefined &&
+    doseMl > 0 &&
+    doseMl < input.policy.dosingEquipmentResolutionMl
+  )
+    warnings.push(
+      warning(
+        "DOSE_BELOW_EQUIPMENT_RESOLUTION",
+        "The required dose is positive but below the configured dosing resolution.",
+        ["fresh-target-ec", "fresh-calibration-factor"],
+      ),
+    );
+  const doseClaim = claim(
+    "fresh-target-dose",
+    "Calculated fresh target nutrient dose",
+    "DETERMINISTIC_CALCULATION",
+    ["fresh-source-water-ec", "fresh-target-ec", "fresh-calibration-factor"],
+    { value: doseMl },
+  );
+  const allClaims = [...claims, doseClaim];
+  return result(
+    {
+      mode: "FRESH_TARGET_EC",
+      direction: "ADD_NUTRIENT",
+      targetEc: input.targetEc,
+      sourceEc,
+      reservoirVolumeL: input.reservoirVolumeL,
+      doseMl,
+      requiresMeasurement: true,
+      evidenceState: input.calibration.evidenceState,
+      warnings,
+      claims: allClaims,
+    },
+    warnings,
+    [],
+    allClaims,
   );
 }
 

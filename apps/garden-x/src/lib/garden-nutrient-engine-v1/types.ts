@@ -256,6 +256,19 @@ export interface EcTargetResult {
   claims: Claim[];
 }
 
+export interface FreshTargetDoseResult {
+  mode: "FRESH_TARGET_EC";
+  direction: "ADD_NUTRIENT" | "NO_CHANGE";
+  targetEc: number;
+  sourceEc: number;
+  reservoirVolumeL: number;
+  doseMl?: number;
+  requiresMeasurement: true;
+  evidenceState: EvidenceState;
+  warnings: EngineWarning[];
+  claims: Claim[];
+}
+
 export interface CorrectionResult {
   mode: "EC_CORRECTION";
   direction: "ADD_NUTRIENT" | "ADD_WATER" | "NO_CHANGE";

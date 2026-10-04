@@ -26,7 +26,7 @@ describe("Gardenpedia shared shell and Calculator mobile dock", () => {
     const calculator = source("calculator-page-v1.tsx");
 
     expect(calculator).toContain("overflow-x-auto");
-    expect(calculator).toContain("scroll-padding-inline");
+    expect(calculator).toContain("scrollPaddingInline");
     expect(calculator).toContain("min-w-0 max-w-full");
     expect(calculator).not.toContain("-mx-4");
     expect(calculator).not.toContain('aria-label="Secciones"');

@@ -11,6 +11,11 @@ import {
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import { donorPlants } from "./canonical-adapter";
 import { MODE_TO_ENGINE, recipeSignature } from "./calculator-v1-adapter";
+import {
+  calculateGardenResult,
+  DEMO_SYSTEMS,
+  recordActualDoses,
+} from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
   it("uses the canonical 214-identity catalog", () => {
@@ -141,5 +146,94 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(calculateTopUpMaintenance({ ...base, currentVolumeL: 4 }).errors[0]?.code).toBe(
       "RESERVOIR_CAPACITY_EXCEEDED",
     );
+  });
+
+  it("connects the transplanted Lovable recipe surface to real Flora components", () => {
+    const result = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 2 },
+      liters: 2,
+      productId: "gh-flora",
+      stageId: "w3",
+      intensity: "medium",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.provenance).toBe("official");
+      expect(result.doses.map((dose) => dose.label)).toEqual([
+        "FloraMicro",
+        "FloraGro",
+        "FloraBloom",
+      ]);
+    }
+  });
+
+  it("keeps a user EC target in the Lovable presentation model", () => {
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: { "genovese-basil": 2 },
+      liters: 2,
+      productId: "gh-flora",
+      stageId: "w3",
+      intensity: "medium",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 2.1,
+      round: 1,
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.target?.value).toBe(2.1);
+      expect(result.provenance).toBe("user");
+      expect(result.target?.provenance).toBe("user");
+    }
+  });
+
+  it("keeps unsupported AeroGarden states explicit instead of interpolating", () => {
+    const result = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 2,
+      productId: "aerogarden",
+      stageId: "w1",
+      intensity: "medium",
+      pods: 12,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") expect(result.message).toContain("will not interpolate");
+  });
+
+  it("captures actual component doses through the engine calibration contract", () => {
+    const result = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "w3",
+      liters: 2,
+      pods: 6,
+      baselineEc: 0.4,
+      resultingEc: 0.8,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    expect(result.ok).toBe(true);
+    expect(result.value?.doseAppliedMl).toBe(12);
+  });
+
+  it("does not invent canonical saved systems for the transplanted dock", () => {
+    expect(DEMO_SYSTEMS).toEqual([]);
   });
 });

@@ -1,1434 +1,1205 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  AlertTriangle,
+  ArrowRight,
+  BookOpen,
   Check,
+  ChevronDown,
+  Droplets,
+  FlaskConical,
   Gauge,
-  Leaf,
   Minus,
   Plus,
-  Save,
-  Sliders,
-  Sprout,
+  RefreshCw,
+  Sparkles,
+  Target,
+  Waves,
   X,
 } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  buildCalibrationModel,
-  calculateEcCorrection,
-  calculateFreshTargetEc,
-  calculateTopUpMaintenance,
-  executeFreshRecipe,
-  learnFromObservation,
-  selectCropRange,
-} from "@/lib/garden-nutrient-engine-v1/engine";
-import { CROP_EVIDENCE, MANUFACTURER_RECIPES } from "@/lib/garden-nutrient-engine-v1/data";
-import type {
-  CalibrationModel,
-  CalibrationObservation,
-  Claim,
-  EngineError,
-  EngineWarning,
-  EngineResult,
-  RecipeResult,
-  UserMeasurement,
-} from "@/lib/garden-nutrient-engine-v1/types";
+  calculateGardenResult,
+  DEMO_CROPS,
+  DEMO_PRODUCTS,
+  DEMO_STAGES,
+  DEMO_SYSTEMS,
+  recordActualDoses,
+  type CalcResult,
+  type EcUnit,
+  type Evidence,
+  type Intensity,
+  type Lang,
+  type Mode,
+  type Provenance,
+  type SavedSystem,
+} from "./calculator-lovable-adapter";
 import { cn } from "@/lib/utils";
 
-import { donorPlants as plants } from "./canonical-adapter";
-import {
-  buildCropContexts,
-  cropIdentityForPlant,
-  MODE_TO_ENGINE,
-  recipeIdForProduct,
-  recipeSignature,
-  sumComponentDoses,
-  type CalculatorMode,
-  type CalculatorPhase,
-  type CalculatorProduct,
-} from "./calculator-v1-adapter";
+/* ---------------------------------------------------------------- copy */
 
-type Language = "es" | "en";
-type MixState = {
-  name: string;
-  crops: Record<string, number>;
-  volumeL: number;
-  phase: CalculatorPhase;
-  product: CalculatorProduct;
-  feedingIndex: number;
-  podCount: number;
-  targetEc?: number;
-  currentEc?: number;
-  currentVolumeL?: number;
-  replacementWaterL?: number;
-  nominalVolumeL?: number;
-};
-type SavedSystem = MixState & { id: string };
-
-const LITER_CHIPS = [1, 2, 3, 4, 6.5, 10];
-const PHASES: CalculatorPhase[] = ["seedling", "vegetative", "flowering"];
-const MODE_ORDER: CalculatorMode[] = ["recipe", "target", "correction", "topup"];
-const PRODUCT_ORDER: CalculatorProduct[] = ["flora", "aerogarden", "ab"];
-
-const COPY = {
+const T = {
   es: {
-    calculator: "Calculadora",
-    quickMix: "Mezcla rápida",
-    plantsShare: "Plantas que comparten el agua",
-    plants: "plantas",
-    choosePlant: "Elige una planta…",
+    systems: "Tus sistemas",
+    quick: "Mezcla rápida",
+    quickHint: "Sin guardar",
+    modes: { recipe: "Receta", target: "Por EC", adjust: "Corregir", topup: "Rellenar" },
+    modeHint: {
+      recipe: "Prepara agua nueva siguiendo la receta oficial del producto.",
+      target: "Prepara agua nueva para alcanzar un EC objetivo.",
+      adjust: "Ajusta el EC de una solución que ya preparaste.",
+      topup: "Repón agua en un tanque que ya está en uso.",
+    },
+    plants: "Plantas en el tanque",
     addPlant: "Añadir planta",
-    waterLiters: "Litros de agua",
-    formulaStage: "Producto y etapa",
-    unsaved: "Sin guardar",
-    saveAs: "Guardar como sistema",
-    remove: "Eliminar",
-    recommendedDose: "Dosis recomendada",
-    targetEc: "EC objetivo",
-    reportedRange: "Rango reportado",
-    suggested: "Punto de partida sugerido",
-    calculated: "Calculado por Garden",
-    mixOrder: "Orden de mezcla",
-    measured: "Qué obtuviste",
-    measuredEc: "EC medida (mS/cm)",
-    baselineEc: "EC antes de añadir",
-    actualDose: "Lo que añadiste realmente",
-    resultEc: "EC después de mezclar",
-    calibration: "Calibrar este sistema",
-    confirmActual: "Confirmo que estas son las dosis realmente aplicadas",
-    record: "Registrar medición",
-    noCalibration: "Se necesita una calibración de este producto y receta exactos.",
-    addPlantFirst: "Añade al menos una planta para calcular.",
-    newSystem: "Nuevo sistema",
-    saveChanges: "Guardar cambios",
-    delete: "Eliminar",
-    noSaved: "Aún no hay sistemas guardados",
-    saved: "Sistemas guardados",
-    targetHint:
-      "El objetivo es una entrada. El punto sugerido es una política provisional de Garden, no un EC ideal.",
-    correctionHint:
-      "Mide → calcula → añade una dosis parcial si corresponde → mezcla, circula y estabiliza → vuelve a medir.",
-    topupHint:
-      "El modelo lineal es una aproximación: restaurar el EC no demuestra restaurar el equilibrio de nutrientes.",
-    unsupported: "Este producto o combinación no tiene una receta V1 ejecutable todavía.",
-    evidence: "Evidencia y procedencia",
-    claims: "Qué respalda este resultado",
-    nextMeasure: "Qué medir después",
-    sourceRecipe: "Receta oficial del fabricante",
-    sourceGarden: "Cálculo de Garden",
-    sourceUser: "Objetivo definido por el usuario",
-    sourceMeasurement: "Basado en tus mediciones",
-    product: "Producto",
-    stage: "Etapa / alimentación",
-    podCount: "Pods",
-    currentEc: "EC actual",
-    currentVolume: "Volumen actual",
+    volume: "Volumen del tanque",
+    pods: "Pods activos",
+    product: "Nutriente",
+    stage: "Etapa de la receta",
+    intensity: "Intensidad",
+    intensities: { light: "Suave", medium: "Media", aggressive: "Intensa" },
+    currentEc: "EC que mediste",
+    currentLiters: "Litros que quedan",
     waterAdded: "Agua añadida",
-    reservoir: "Capacidad del tanque",
-    selected: "Seleccionado",
-    noChange: "No se requiere cambio",
-    addNutrient: "Añadir nutriente",
-    addWater: "Añadir agua",
-    partial: "Primera dosis parcial",
-    remeasure: "Vuelve a medir después de mezclar y estabilizar",
-    saveLocal: "Se guarda solo en este dispositivo",
-    actualRequired: "Confirma las dosis reales antes de registrar.",
-    officialExpected: "EC esperado por el fabricante",
-    cropEvidence: "Evidencia aplicable del cultivo",
-    noRange: "Sin rango aplicable suficiente",
-    approximation: "Aproximación",
-    modeRecipe: "RECETA",
-    modeTarget: "POR EC",
-    modeCorrection: "CORREGIR",
-    modeTopup: "RELLENAR",
+    more: "Más ajustes",
+    unit: "Unidad EC",
+    sourceEc: "EC del agua de origen",
+    meter: "Medidor",
+    dosing: "Dosificación",
+    syringe: "Jeringa 1 mL",
+    cup: "Vaso medidor",
+    now: "Qué hacer ahora",
+    order: "En este orden",
+    next: "Qué medir después",
+    actAdd: "Añade al tanque",
+    actDilute: "Diluye con agua",
+    actHold: "Estás en el objetivo",
+    holdBody: "No añadas nada. Vuelve a medir en tu próximo control.",
+    stepMix: "Mezcla o circula el agua",
+    stepWait: "Deja que se estabilice",
+    stepMeasure: "Mide EC y pH",
+    waitNote: "El tiempo exacto lo indicará el fabricante o Garden.",
+    expect: "Deberías ver cerca de",
+    why: "Por qué y de dónde sale",
+    range: "Rango óptimo reportado",
+    start: "Punto de partida sugerido",
+    common: "Rango común",
+    noCommon: "Sin rango óptimo común",
+    noCommonBody: (p: string) =>
+      `${p} tiene el rango óptimo de EC reportado más bajo, así que Garden propone un compromiso operativo cerca de ese rango. No significa que las plantas sean incompatibles.`,
+    yourTarget: "Tu objetivo",
+    useSuggested: "Usar sugerido",
+    outside:
+      "Este objetivo está fuera del rango con evidencia disponible. Lo respetamos; vigila la respuesta de tus plantas.",
+    evidence: "Evidencia",
+    sources: "Fuentes",
+    ev: {
+      high: "Alta",
+      moderate: "Moderada",
+      low: "Baja",
+      conflicting: "Contradictoria",
+      insufficient: "Insuficiente",
+    },
+    prov: {
+      official: "Receta oficial del fabricante",
+      garden: "Cálculo de Garden",
+      measured: "Basado en tus mediciones",
+      user: "Objetivo elegido por ti",
+    },
+    needs: "Para calcular necesito",
+    needLabels: {
+      currentEc: "el EC que mediste",
+      currentLiters: "cuántos litros quedan",
+      waterAdded: "cuánta agua añadiste",
+    },
+    learnTitle: "¿Qué obtuviste?",
+    learnBody:
+      "Cuéntale a Garden lo que mediste y lo que añadiste de verdad. Así afina este sistema.",
+    gotEc: "EC medido",
+    gotMl: "mL que añadiste",
+    learn: "Guardar lectura",
+    learned: (n: number) => `Garden ajustó este sistema · ${n} lecturas`,
+    learnedNew: "Lectura guardada. La próxima dosis será más precisa para tu producto y tu agua.",
+    round: "Ronda",
+    again: "Medir otra vez",
+    closeEnough: "Listo, en rango",
+    calib: (p: number) => `Calibración personal ${p > 0 ? "+" : ""}${p}%`,
+    demo: "",
+    save: "Guardar como sistema",
   },
   en: {
-    calculator: "Calculator",
-    quickMix: "Quick Mix",
-    plantsShare: "Plants sharing the water",
-    plants: "plants",
-    choosePlant: "Choose a plant…",
+    systems: "Your systems",
+    quick: "Quick mix",
+    quickHint: "Unsaved",
+    modes: { recipe: "Recipe", target: "By EC", adjust: "Correct", topup: "Top up" },
+    modeHint: {
+      recipe: "Prepare fresh water using the product's official recipe.",
+      target: "Prepare fresh water toward a target EC.",
+      adjust: "Adjust the EC of a solution already prepared.",
+      topup: "Replace water in a reservoir already in use.",
+    },
+    plants: "Plants in the reservoir",
     addPlant: "Add plant",
-    waterLiters: "Water volume",
-    formulaStage: "Product and stage",
-    unsaved: "Unsaved",
-    saveAs: "Save as system",
-    remove: "Delete",
-    recommendedDose: "Recommended dose",
-    targetEc: "Target EC",
-    reportedRange: "Reported optimum range",
-    suggested: "Suggested starting point",
-    calculated: "Calculated by Garden",
-    mixOrder: "Mixing order",
-    measured: "What you obtained",
-    measuredEc: "Measured EC (mS/cm)",
-    baselineEc: "EC before adding",
-    actualDose: "What you actually added",
-    resultEc: "EC after mixing",
-    calibration: "Calibrate this system",
-    confirmActual: "I confirm these are the doses actually applied",
-    record: "Record measurement",
-    noCalibration: "A calibration for this exact product and recipe is required.",
-    addPlantFirst: "Add at least one plant to calculate.",
-    newSystem: "New system",
-    saveChanges: "Save changes",
-    delete: "Delete",
-    noSaved: "No saved systems yet",
-    saved: "Saved systems",
-    targetHint:
-      "The target is an input. The suggested point is a provisional Garden policy, not an ideal EC.",
-    correctionHint:
-      "Measure → calculate → apply a partial dose when appropriate → mix, circulate and stabilize → measure again.",
-    topupHint:
-      "The linear model is an approximation: restoring EC does not prove restored nutrient balance.",
-    unsupported: "This product or combination does not have an executable V1 recipe yet.",
-    evidence: "Evidence and provenance",
-    claims: "What supports this result",
-    nextMeasure: "What to measure next",
-    sourceRecipe: "Official manufacturer recipe",
-    sourceGarden: "Garden calculation",
-    sourceUser: "User-defined target",
-    sourceMeasurement: "Based on your measurements",
-    product: "Product",
-    stage: "Stage / feeding",
-    podCount: "Pods",
-    currentEc: "Current EC",
-    currentVolume: "Current volume",
+    volume: "Reservoir volume",
+    pods: "Active pods",
+    product: "Nutrient",
+    stage: "Recipe stage",
+    intensity: "Intensity",
+    intensities: { light: "Light", medium: "Medium", aggressive: "Aggressive" },
+    currentEc: "EC you measured",
+    currentLiters: "Liters remaining",
     waterAdded: "Water added",
-    reservoir: "Reservoir capacity",
-    selected: "Selected",
-    noChange: "No change required",
-    addNutrient: "Add nutrient",
-    addWater: "Add water",
-    partial: "Partial first dose",
-    remeasure: "Measure again after mixing and stabilizing",
-    saveLocal: "Saved only on this device",
-    actualRequired: "Confirm actual doses before recording.",
-    officialExpected: "Manufacturer expected EC",
-    cropEvidence: "Applicable crop evidence",
-    noRange: "No sufficient applicable range",
-    approximation: "Approximation",
-    modeRecipe: "RECIPE",
-    modeTarget: "BY EC",
-    modeCorrection: "CORRECT",
-    modeTopup: "TOP UP",
+    more: "More settings",
+    unit: "EC unit",
+    sourceEc: "Source-water EC",
+    meter: "Meter",
+    dosing: "Dosing",
+    syringe: "1 mL syringe",
+    cup: "Measuring cup",
+    now: "What to do now",
+    order: "In this order",
+    next: "What to measure next",
+    actAdd: "Add to the reservoir",
+    actDilute: "Dilute with water",
+    actHold: "You're on target",
+    holdBody: "Add nothing. Measure again at your next check.",
+    stepMix: "Mix or circulate",
+    stepWait: "Let it stabilize",
+    stepMeasure: "Measure EC and pH",
+    waitNote: "Exact timing will come from the manufacturer or Garden.",
+    expect: "You should see about",
+    why: "Why, and where it comes from",
+    range: "Reported optimum range",
+    start: "Suggested starting point",
+    common: "Common range",
+    noCommon: "No common optimum range",
+    noCommonBody: (p: string) =>
+      `${p} has the lower reported optimum EC range, so Garden offers an operational compromise near it. This does not mean the plants are incompatible.`,
+    yourTarget: "Your target",
+    useSuggested: "Use suggested",
+    outside:
+      "This target is outside the available evidence. We'll keep it; watch how your plants respond.",
+    evidence: "Evidence",
+    sources: "Sources",
+    ev: {
+      high: "High",
+      moderate: "Moderate",
+      low: "Low",
+      conflicting: "Conflicting",
+      insufficient: "Insufficient",
+    },
+    prov: {
+      official: "Official manufacturer recipe",
+      garden: "Garden calculation",
+      measured: "Based on your measurements",
+      user: "Your selected target",
+    },
+    needs: "To calculate I need",
+    needLabels: {
+      currentEc: "the EC you measured",
+      currentLiters: "how many liters remain",
+      waterAdded: "how much water you added",
+    },
+    learnTitle: "What did you get?",
+    learnBody: "Tell Garden what you measured and actually added. It tunes this system.",
+    gotEc: "Measured EC",
+    gotMl: "mL you added",
+    learn: "Save reading",
+    learned: (n: number) => `Garden tuned this system · ${n} readings`,
+    learnedNew: "Reading saved. Next dose will be more accurate for your product and water.",
+    round: "Round",
+    again: "Measure again",
+    closeEnough: "Done, in range",
+    calib: (p: number) => `Personal calibration ${p > 0 ? "+" : ""}${p}%`,
+    demo: "",
+    save: "Save as system",
   },
 } as const;
+type Copy = (typeof T)[Lang];
 
-type Copy = typeof COPY.es;
-const MODE_LABEL_KEY: Record<CalculatorMode, keyof Copy> = {
-  recipe: "modeRecipe",
-  target: "modeTarget",
-  correction: "modeCorrection",
-  topup: "modeTopup",
+const MODE_ICONS: Record<Mode, React.ComponentType<{ className?: string }>> = {
+  recipe: BookOpen,
+  target: Target,
+  adjust: Gauge,
+  topup: Droplets,
+};
+const MODES: Mode[] = ["recipe", "target", "adjust", "topup"];
+const LITERS = [2, 4, 6.5, 10];
+
+const QUICK: SavedSystem = {
+  id: "quick",
+  name: "",
+  crops: { "genovese-basil": 2 },
+  liters: 4,
+  productId: "custom-ab",
+  water: { label: { es: "Grifo", en: "Tap" }, ec: 0.3 },
+  meter: "—",
 };
 
-const modeDescription = {
-  es: {
-    recipe: "Prepara agua nueva siguiendo la receta oficial del producto.",
-    target: "Prepara agua nueva para alcanzar un EC objetivo.",
-    correction: "Ajusta el EC de una solución que ya preparaste.",
-    topup: "Repón agua en un tanque que ya está en uso.",
-  },
-  en: {
-    recipe: "Prepare fresh water using the product's official recipe.",
-    target: "Prepare fresh water toward a target EC.",
-    correction: "Adjust the EC of a solution already prepared.",
-    topup: "Replace water in a reservoir already in use.",
-  },
-} as const;
+/* ---------------------------------------------------------------- page */
 
-function initialMix(): MixState {
-  return {
-    name: "",
-    crops: plants[0] ? { [plants[0].id]: 1 } : {},
-    volumeL: 1,
-    phase: "vegetative",
-    product: "flora",
-    feedingIndex: 2,
-    podCount: 6,
+export function CalculatorPage({ language = "es" }: { language?: Lang }) {
+  const [lang, setLang] = useState<Lang>(language);
+  useEffect(() => setLang(language), [language]);
+  const t = T[lang];
+  const [sys, setSys] = useState<SavedSystem>(QUICK);
+  const [mode, setMode] = useState<Mode>("recipe");
+  const [crops, setCrops] = useState(sys.crops);
+  const [liters, setLiters] = useState(sys.liters);
+  const [productId, setProductId] = useState(sys.productId);
+  const [stageId, setStageId] = useState("w3");
+  const [intensity, setIntensity] = useState<Intensity>("medium");
+  const [pods, setPods] = useState(6);
+  const [unit, setUnit] = useState<EcUnit>("mS");
+  const [sourceEc, setSourceEc] = useState(sys.water.ec);
+  const [currentEc, setCurrentEc] = useState<string>("");
+  const [currentLiters, setCurrentLiters] = useState<string>("");
+  const [waterAdded, setWaterAdded] = useState<string>("");
+  const [userTarget, setUserTarget] = useState<number | null>(null);
+  const [round, setRound] = useState(1);
+  const [learnedCount, setLearnedCount] = useState(sys.calibration?.readings ?? 0);
+  const [justLearned, setJustLearned] = useState(false);
+  const [calibrationObservations, setCalibrationObservations] = useState<
+    import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[]
+  >([]);
+
+  const product = DEMO_PRODUCTS.find((p) => p.id === productId)!;
+
+  const pick = (s: SavedSystem) => {
+    setSys(s);
+    setCrops(s.crops);
+    setLiters(s.liters);
+    setProductId(s.productId);
+    setSourceEc(s.water.ec);
+    setUserTarget(null);
+    setCurrentEc("");
+    setCurrentLiters("");
+    setWaterAdded("");
+    setRound(1);
+    setLearnedCount(s.calibration?.readings ?? 0);
+    setJustLearned(false);
   };
-}
-
-function parseNumber(value: string): number | undefined {
-  const parsed = Number(value.replace(",", "."));
-  return Number.isFinite(parsed) ? parsed : undefined;
-}
-
-function formatNumber(value: number | undefined, digits = 2): string {
-  return value === undefined ? "—" : value.toFixed(digits);
-}
-
-function productLabel(product: CalculatorProduct): string {
-  return product === "flora"
-    ? "FloraSeries"
-    : product === "aerogarden"
-      ? "AeroGarden"
-      : "A+B exact product";
-}
-
-function evidenceLabel(state: string, language: Language): string {
-  if (language === "en") return state;
-  return (
-    {
-      HIGH: "Alta",
-      MODERATE: "Moderada",
-      LOW: "Baja",
-      CONFLICTING: "En conflicto",
-      INSUFFICIENT: "Insuficiente",
-    }[state] ?? state
-  );
-}
-
-function claimLabel(label: string, language: Language): string {
-  if (language === "en") return label;
-  return (
-    {
-      "Manufacturer recipe dose": "Dosis de receta del fabricante",
-      "Manufacturer expected EC": "EC esperado por el fabricante",
-      "Suggested starting point": "Punto de partida sugerido",
-      "Supported optimum range": "Rango óptimo respaldado",
-      "Common optimum range": "Rango óptimo común",
-      "User calibration factor": "Factor de calibración del usuario",
-      "Calculated correction dose": "Dosis de corrección calculada",
-      "Calculated nutrient dose after top-up": "Dosis nutritiva calculada tras rellenar",
-      "Recorded user calibration observation": "Observación de calibración registrada",
-    }[label] ?? label
-  );
-}
-
-function localizeCode(code: string, language: Language, fallback: string): string {
-  const es: Record<string, string> = {
-    RECIPE_UNAVAILABLE: "No existe una receta oficial para esta formulación exacta.",
-    UNSUPPORTED_POD_COUNT:
-      "El fabricante no documenta este número de pods; Garden no lo interpola.",
-    RECIPE_STAGE_REQUIRED: "Selecciona una sola etapa de alimentación del fabricante.",
-    VOLUME_REQUIRED: "Esta receta requiere un volumen explícito.",
-    INVALID_VOLUME: "El volumen debe ser positivo.",
-    INSUFFICIENT_EC_EVIDENCE:
-      "No hay evidencia comparable suficiente para establecer un objetivo automático.",
-    USER_TARGET_OUTSIDE_EVIDENCE:
-      "Tu objetivo está fuera del rango aplicable y se conserva sin reemplazarlo.",
-    USER_TARGET_WITHOUT_COMMON_EVIDENCE:
-      "Tu objetivo se conserva, pero no se pudo establecer un rango común aplicable.",
-    CROP_COMPATIBILITY_UNCERTAIN:
-      "La receta es ejecutable, pero la compatibilidad del cultivo no puede evaluarse con alta confianza.",
-    CROP_COMPATIBILITY_CONFLICTING:
-      "La receta es ejecutable, pero hay evidencia comparable en conflicto.",
-    MANUFACTURER_CROP_EC_DISAGREEMENT:
-      "El EC esperado por el fabricante y la evidencia del cultivo no se solapan.",
-    CALIBRATION_REQUIRED:
-      "Se necesita una calibración específica del producto para calcular la dosis.",
-    CALIBRATION_EXTRAPOLATION: "La dosis queda fuera del rango validado de calibración.",
-    CURRENT_VOLUME_REQUIRED:
-      "El volumen actual del tanque es obligatorio; no se usa la capacidad nominal como sustituto.",
-    RESERVOIR_CAPACITY_EXCEEDED: "El llenado superaría la capacidad conocida del tanque.",
-    INCOMPATIBLE_MEASUREMENT_SCOPE:
-      "La medición debe ser de la solución nutritiva; no se convierten otros ámbitos en silencio.",
-    DOSE_BELOW_EQUIPMENT_RESOLUTION:
-      "La dosis es positiva pero menor que la resolución del equipo.",
-    PARTIAL_DOSE_POLICY:
-      "La primera dosis parcial es una política experimental: mezcla, estabiliza y vuelve a medir.",
-    PARTIAL_DOSE_BELOW_RESOLUTION:
-      "La primera dosis parcial está por debajo de la resolución medible.",
-    LINEAR_MIXING_APPROXIMATION:
-      "El modelo lineal es una aproximación; restaurar EC no prueba restaurar el equilibrio de nutrientes.",
+  const changeMode = (m: Mode) => {
+    setMode(m);
+    setRound(1);
+    setJustLearned(false);
   };
-  const en: Record<string, string> = {
-    RECIPE_UNAVAILABLE: "No official recipe exists for this exact formulation.",
-    UNSUPPORTED_POD_COUNT:
-      "The manufacturer does not document this pod count; Garden will not interpolate it.",
-    RECIPE_STAGE_REQUIRED: "Select one manufacturer feeding stage.",
-    VOLUME_REQUIRED: "This recipe requires an explicit volume.",
-    INVALID_VOLUME: "Volume must be positive.",
-    INSUFFICIENT_EC_EVIDENCE: "There is not enough comparable evidence for an automatic target.",
-    USER_TARGET_OUTSIDE_EVIDENCE:
-      "Your target is outside applicable evidence and is preserved without replacement.",
-    USER_TARGET_WITHOUT_COMMON_EVIDENCE:
-      "Your target is preserved, but no common applicable range was established.",
-    CROP_COMPATIBILITY_UNCERTAIN:
-      "The recipe is executable, but crop compatibility cannot be evaluated with high confidence.",
-    CROP_COMPATIBILITY_CONFLICTING: "The recipe is executable, but comparable evidence conflicts.",
-    MANUFACTURER_CROP_EC_DISAGREEMENT: "Manufacturer expected EC and crop evidence do not overlap.",
-    CALIBRATION_REQUIRED: "An exact-product calibration is required to calculate the dose.",
-    CALIBRATION_EXTRAPOLATION: "The dose is outside the validated calibration range.",
-    CURRENT_VOLUME_REQUIRED:
-      "Current reservoir volume is required; nominal capacity is not used as a proxy.",
-    RESERVOIR_CAPACITY_EXCEEDED: "The fill would exceed known reservoir capacity.",
-    INCOMPATIBLE_MEASUREMENT_SCOPE:
-      "The measurement must be from nutrient solution; other scopes are not silently converted.",
-    DOSE_BELOW_EQUIPMENT_RESOLUTION: "The dose is positive but below equipment resolution.",
-    PARTIAL_DOSE_POLICY:
-      "The partial first dose is an experimental policy: mix, stabilize and measure again.",
-    PARTIAL_DOSE_BELOW_RESOLUTION: "The partial first dose is below measurable resolution.",
-    LINEAR_MIXING_APPROXIMATION:
-      "The linear model is an approximation; restoring EC does not prove restored nutrient balance.",
-  };
-  return (language === "es" ? es : en)[code] ?? fallback;
-}
 
-function epLabel(epistemic: Claim["epistemic"], language: Language): string {
-  const labels =
-    language === "es"
-      ? {
-          SOURCE_BACKED_FACT: "Hecho respaldado por fuente",
-          MANUFACTURER_INSTRUCTION: "Instrucción del fabricante",
-          USER_CALIBRATION: "Calibración del usuario",
-          DETERMINISTIC_CALCULATION: "Cálculo determinista de Garden",
-          ENGINE_INFERENCE: "Inferencia acotada de Garden",
-          UNVALIDATED_ASSUMPTION: "Supuesto no validado",
-          USER_SELECTED: "Seleccionado por el usuario",
-        }
-      : {
-          SOURCE_BACKED_FACT: "Source-backed fact",
-          MANUFACTURER_INSTRUCTION: "Manufacturer instruction",
-          USER_CALIBRATION: "User calibration",
-          DETERMINISTIC_CALCULATION: "Deterministic Garden calculation",
-          ENGINE_INFERENCE: "Bounded Garden inference",
-          UNVALIDATED_ASSUMPTION: "Unvalidated assumption",
-          USER_SELECTED: "User selected",
-        };
-  return labels[epistemic];
-}
-
-function NoticeList({
-  warnings,
-  errors,
-  language,
-}: {
-  warnings: EngineWarning[];
-  errors: EngineError[];
-  language: Language;
-}) {
-  if (warnings.length === 0 && errors.length === 0) return null;
-  return (
-    <div className="space-y-2" aria-live="polite">
-      {[
-        ...errors.map((item) => ({ ...item, error: true })),
-        ...warnings.map((item) => ({ ...item, error: false })),
-      ].map((item, index) => (
-        <div
-          key={`${item.code}-${index}`}
-          className={cn(
-            "flex min-w-0 gap-2 rounded-xl border px-3 py-2 text-xs leading-5",
-            item.error
-              ? "border-destructive/30 bg-destructive/5 text-destructive"
-              : "border-amber-500/30 bg-amber-500/5 text-foreground",
-          )}
-        >
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          <span className="min-w-0 break-words">
-            {localizeCode(item.code, language, item.message)}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ClaimsDisclosure({ claims, language }: { claims: Claim[]; language: Language }) {
-  if (!claims.length) return null;
-  return (
-    <details className="rounded-2xl border border-border/60 bg-muted/20 px-4 py-3">
-      <summary className="cursor-pointer text-sm font-medium">{COPY[language].claims}</summary>
-      <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
-        {claims.slice(0, 8).map((claim) => (
-          <li key={claim.id} className="flex min-w-0 flex-wrap gap-2">
-            <span className="font-medium text-foreground">{claimLabel(claim.label, language)}</span>
-            <span className="rounded-full border border-border px-2 py-0.5">
-              {epLabel(claim.epistemic, language)}
-            </span>
-            {claim.experimentalPolicy ? (
-              <span className="rounded-full border border-amber-500/40 px-2 py-0.5">
-                {language === "es" ? "política experimental" : "experimental policy"}
-              </span>
-            ) : null}
-          </li>
-        ))}
-      </ul>
-    </details>
-  );
-}
-
-function NumberField({
-  label,
-  value,
-  onChange,
-  step = "0.1",
-  min = "0",
-  suffix,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  step?: string;
-  min?: string;
-  suffix?: string;
-}) {
-  return (
-    <label className="block min-w-0 space-y-1.5 text-xs font-medium text-muted-foreground">
-      <span>{label}</span>
-      <span className="flex min-w-0 items-center gap-2">
-        <Input
-          inputMode="decimal"
-          type="number"
-          min={min}
-          step={step}
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          className="min-w-0"
-        />
-        {suffix ? <span className="shrink-0">{suffix}</span> : null}
-      </span>
-    </label>
-  );
-}
-
-export function CalculatorPageV1({ language = "es" }: { language?: Language }) {
-  const copy: Copy = COPY[language] as Copy;
-  const [mode, setMode] = useState<CalculatorMode>("recipe");
-  const [mix, setMix] = useState<MixState>(initialMix);
-  const [savedSystems, setSavedSystems] = useState<SavedSystem[]>([]);
-  const [activeSystemId, setActiveSystemId] = useState<string | null>(null);
-  const [actualDoses, setActualDoses] = useState<Record<string, string>>({});
-  const [baselineEc, setBaselineEc] = useState("");
-  const [resultEc, setResultEc] = useState("");
-  const [actualConfirmed, setActualConfirmed] = useState(false);
-  const [calibrationObservations, setCalibrationObservations] = useState<CalibrationObservation[]>(
-    [],
+  const num = useCallback(
+    (s: string) => {
+      if (s.trim() === "") return null;
+      const n = Number(s.replace(",", "."));
+      if (!Number.isFinite(n)) return null;
+      return unit === "uS" && s === currentEc ? n / 1000 : n;
+    },
+    [unit, currentEc],
   );
 
-  const plantsById = useMemo(() => new Map(plants.map((plant) => [plant.id, plant])), []);
-  const contexts = useMemo(
-    () => buildCropContexts(mix.crops, plantsById, mix.phase, mix.product),
-    [mix.crops, mix.phase, mix.product, plantsById],
+  const result = useMemo<CalcResult>(
+    () =>
+      calculateGardenResult({
+        mode,
+        crops,
+        liters,
+        productId,
+        stageId,
+        intensity,
+        pods,
+        sourceEc,
+        currentEc: num(currentEc),
+        currentLiters: num(currentLiters),
+        waterAdded: num(waterAdded),
+        userTarget,
+        round,
+        calibrationObservations,
+      }),
+    [
+      mode,
+      crops,
+      liters,
+      productId,
+      stageId,
+      intensity,
+      pods,
+      sourceEc,
+      currentEc,
+      currentLiters,
+      waterAdded,
+      userTarget,
+      round,
+      calibrationObservations,
+      num,
+    ],
   );
-  const selectedRecipe = useMemo(() => {
-    const recipeId = recipeIdForProduct(mix.product);
-    if (!recipeId) return null;
-    const input = {
-      recipeId,
-      feedingIndex: mix.feedingIndex,
-      contexts,
-      dosingEquipmentResolutionMl: 0.5,
-    } as Parameters<typeof executeFreshRecipe>[0];
-    if (mix.product === "flora") input.volumeL = mix.volumeL;
-    if (mix.product === "aerogarden") input.podCount = mix.podCount;
-    return executeFreshRecipe(input);
-  }, [contexts, mix.feedingIndex, mix.podCount, mix.product, mix.volumeL]);
-  const targetPreview = useMemo(
-    () => calculateFreshTargetEc({ contexts, meterResolution: 0.1 }),
-    [contexts],
-  );
-  const targetResult = useMemo(() => {
-    if (mode !== "target") return null;
-    const input = { contexts, meterResolution: 0.1 } as Parameters<
-      typeof calculateFreshTargetEc
-    >[0];
-    if (mix.targetEc !== undefined) input.userSelectedTarget = mix.targetEc;
-    return calculateFreshTargetEc(input);
-  }, [contexts, mix.targetEc, mode]);
-  const productRecipe = useMemo(
-    () => MANUFACTURER_RECIPES.find((recipe) => recipe.id === recipeIdForProduct(mix.product)),
-    [mix.product],
-  );
-  const recipeStepSignature = useMemo(() => {
-    const step = productRecipe?.steps.find(
-      (item) =>
-        item.feedingIndex === mix.feedingIndex &&
-        (mix.product !== "aerogarden" ||
-          item.stage === `POD_GROUP_${mix.podCount === 6 || mix.podCount === 7 ? "6_7" : "9"}`),
-    );
-    return step ? recipeSignature(step.doses) : undefined;
-  }, [mix.feedingIndex, mix.podCount, mix.product, productRecipe]);
-  const calibrationModel = useMemo<EngineResult<CalibrationModel> | null>(() => {
-    if (!productRecipe || !recipeStepSignature || !calibrationObservations.length) return null;
-    const input = {
-      productIdentity: productRecipe.product,
-      recipeSignature: recipeStepSignature,
-      observations: calibrationObservations,
-    } as Parameters<typeof buildCalibrationModel>[0];
-    if (productRecipe.product.formulationVersion)
-      input.formulationVersion = productRecipe.product.formulationVersion;
-    return buildCalibrationModel(input);
-  }, [calibrationObservations, productRecipe, recipeStepSignature]);
-  const correctionResult = useMemo(() => {
-    if (
-      mode !== "correction" ||
-      mix.currentEc === undefined ||
-      !calibrationModel?.value ||
-      mix.currentVolumeL === undefined
-    )
-      return null;
-    return calculateEcCorrection({
-      currentEc: {
-        value: mix.currentEc,
-        unit: "mS/cm",
-        context: { scope: "NUTRIENT_SOLUTION", scopeBasis: "STATED" },
-      },
-      targetEc: mix.targetEc ?? targetPreview.value?.suggestedStartingPoint ?? 0,
-      reservoirVolumeL: mix.currentVolumeL,
-      calibration: calibrationModel.value,
-      policy: { firstStepFraction: 0.5, dosingEquipmentResolutionMl: 0.5 },
-    });
-  }, [
-    calibrationModel,
-    mix.currentEc,
-    mix.currentVolumeL,
-    mix.targetEc,
-    mode,
-    targetPreview.value?.suggestedStartingPoint,
-  ]);
-  const topupResult = useMemo(() => {
-    if (
-      mode !== "topup" ||
-      mix.currentEc === undefined ||
-      mix.currentVolumeL === undefined ||
-      mix.replacementWaterL === undefined ||
-      mix.nominalVolumeL === undefined
-    )
-      return null;
-    const input = {
-      currentVolumeL: mix.currentVolumeL,
-      nominalVolumeL: mix.nominalVolumeL,
-      replacementWaterL: mix.replacementWaterL,
-      currentEc: {
-        value: mix.currentEc,
-        unit: "mS/cm" as const,
-        context: { scope: "NUTRIENT_SOLUTION" as const, scopeBasis: "STATED" as const },
-      },
-      targetEc: mix.targetEc ?? targetPreview.value?.suggestedStartingPoint ?? 0,
-      policy: { enableCumulativeTopUpHeuristic: false, dosingEquipmentResolutionMl: 0.5 },
-    } as Parameters<typeof calculateTopUpMaintenance>[0];
-    if (calibrationModel?.value) input.calibration = calibrationModel.value;
-    return calculateTopUpMaintenance(input);
-  }, [
-    calibrationModel,
-    mix.currentEc,
-    mix.currentVolumeL,
-    mix.nominalVolumeL,
-    mix.replacementWaterL,
-    mix.targetEc,
-    mode,
-    targetPreview.value?.suggestedStartingPoint,
-  ]);
 
-  const updateMix = <K extends keyof MixState>(key: K, value: MixState[K]) =>
-    setMix((current) => ({ ...current, [key]: value }));
-  const updateNumber = (key: keyof MixState, value: string) => {
-    const parsed = parseNumber(value);
-    setMix((current) => {
-      const next = { ...current };
-      if (parsed === undefined) delete next[key];
-      else (next as Record<string, unknown>)[key] = parsed;
-      return next;
-    });
-  };
-  const selectedPlantIds = Object.keys(mix.crops);
-  const addPlant = (id: string) => {
-    if (!id) return;
-    updateMix("crops", { ...mix.crops, [id]: 1 });
-  };
-  const removePlant = (id: string) => {
-    const next = { ...mix.crops };
-    delete next[id];
-    updateMix("crops", next);
-  };
-  const saveSystem = () => {
-    const id = `local-${Date.now()}`;
-    setSavedSystems((systems) => [
-      ...systems,
-      { ...mix, id, name: mix.name.trim() || `${productLabel(mix.product)} ${systems.length + 1}` },
-    ]);
-    setActiveSystemId(id);
-  };
-  const recordCalibration = () => {
-    if (
-      !selectedRecipe?.value ||
-      !productRecipe ||
-      !recipeStepSignature ||
-      !baselineEc ||
-      !resultEc ||
-      !actualConfirmed
-    )
-      return;
-    const doses = Object.fromEntries(
-      selectedRecipe.value.parts.map((part) => [
-        part.componentId,
-        parseNumber(actualDoses[part.componentId] ?? String(part.ml)) ?? 0,
-      ]),
-    );
-    if (Object.values(doses).some((dose) => dose <= 0)) return;
-    const input = {
-      productIdentity: productRecipe.product,
-      recipeSignature: recipeStepSignature,
-      baselineEc: parseNumber(baselineEc) ?? 0,
-      resultingEc: parseNumber(resultEc) ?? 0,
-      doseAppliedMl: sumComponentDoses(doses),
-      reservoirVolumeL: mix.volumeL,
-      timestamp: new Date().toISOString(),
-    } as Parameters<typeof learnFromObservation>[0];
-    if (productRecipe.product.formulationVersion)
-      input.formulationVersion = productRecipe.product.formulationVersion;
-    const observation = learnFromObservation(input);
-    if (observation.value) setCalibrationObservations((items) => [...items, observation.value!]);
-    setActualConfirmed(false);
-  };
-  const selectedEc =
-    mix.targetEc ?? targetPreview.value?.suggestedStartingPoint ?? targetPreview.value?.target.min;
-  const displayResult =
-    mode === "recipe"
-      ? selectedRecipe
-      : mode === "target"
-        ? targetResult
-        : mode === "correction"
-          ? correctionResult
-          : topupResult;
-  const displayValue = displayResult?.value;
-  const displayWarnings = displayResult?.warnings ?? [];
-  const displayErrors = displayResult?.errors ?? [];
-  const displayClaims =
-    displayResult?.claims ?? (displayValue && "claims" in displayValue ? displayValue.claims : []);
-  const cropRanges = contexts.map((context) => selectCropRange(context).ec);
+  const fmtEc = (v: number) => (unit === "mS" ? v.toFixed(2) : String(Math.round(v * 1000)));
+  const unitLabel = unit === "mS" ? "mS/cm" : "µS/cm";
+  const cropName = (id: string) => DEMO_CROPS.find((c) => c.id === id)?.name[lang] ?? id;
 
   return (
-    <main className="mx-auto w-full max-w-6xl min-w-0 px-4 pb-16 pt-4 sm:px-6 lg:px-8">
-      <div className="mb-5 flex min-w-0 items-start justify-between gap-4">
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            Gardenpedia
-          </p>
-          <h1 className="mt-1 flex items-center gap-2 text-2xl font-semibold tracking-tight">
-            <Gauge className="h-6 w-6 shrink-0 text-primary" />
-            {copy.calculator}
-          </h1>
-        </div>
-        <div className="hidden rounded-full border border-border px-3 py-1 text-xs text-muted-foreground sm:block">
-          {MODE_TO_ENGINE[mode]}
-        </div>
-      </div>
-      <section className="mb-6 min-w-0 rounded-3xl border border-border/70 bg-card p-4 shadow-sm sm:p-6">
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-semibold">{copy.saved}</p>
-            <p className="text-xs text-muted-foreground">{copy.saveLocal}</p>
-          </div>
-          <button
-            type="button"
-            className="inline-flex h-8 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-xs font-medium shadow-sm hover:bg-accent"
-            onClick={saveSystem}
+    <main className="min-h-screen px-4 pb-16 pt-[max(1.25rem,env(safe-area-inset-top))] sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        {/* Dock */}
+        <section aria-label={t.systems} className="mt-5">
+          <p className="mb-2 text-xs font-semibold text-muted-foreground">{t.systems}</p>
+          <div
+            className="min-w-0 max-w-full flex snap-x gap-2 overflow-x-auto px-1 py-1.5"
+            style={{ scrollPaddingInline: "0.75rem" }}
           >
-            <Save className="mr-2 h-4 w-4" />
-            {copy.saveAs}
-          </button>
-        </div>
+            <DockItem
+              active={sys.id === "quick"}
+              onClick={() => pick(QUICK)}
+              title={t.quick}
+              meta={t.quickHint}
+              icon={<Sparkles className="h-4 w-4" />}
+            />
+            {DEMO_SYSTEMS.map((s) => {
+              const n = Object.values(s.crops).reduce((a, b) => a + b, 0);
+              const p = DEMO_PRODUCTS.find((x) => x.id === s.productId)!;
+              return (
+                <DockItem
+                  key={s.id}
+                  active={sys.id === s.id}
+                  onClick={() => pick(s)}
+                  title={s.name}
+                  meta={`${s.liters} L · ${n} · ${p.name.split(" ")[0]}`}
+                  learned={!!s.calibration}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Modes */}
         <div
-          className="flex min-w-0 gap-3 overflow-x-auto px-1 py-2 [scroll-padding-inline:0.5rem]"
-          aria-label={copy.saved}
+          role="tablist"
+          aria-label="Modo"
+          className="glass-soft mt-4 grid grid-cols-4 gap-1 p-1"
         >
-          {savedSystems.length === 0 ? (
-            <div className="shrink-0 rounded-2xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground">
-              {copy.noSaved}
-            </div>
-          ) : (
-            savedSystems.map((system) => (
+          {MODES.map((m) => {
+            const Icon = MODE_ICONS[m];
+            return (
               <button
-                type="button"
-                key={system.id}
-                onClick={() => {
-                  setMix(system);
-                  setActiveSystemId(system.id);
-                }}
+                key={m}
+                role="tab"
+                aria-selected={mode === m}
+                onClick={() => changeMode(m)}
                 className={cn(
-                  "shrink-0 rounded-2xl border bg-background px-4 py-3 text-left text-sm transition hover:border-primary",
-                  activeSystemId === system.id ? "ring-2 ring-inset ring-primary" : "border-border",
+                  "flex flex-col items-center justify-center gap-1 rounded-md py-2.5 text-[11px] font-semibold transition-colors sm:flex-row sm:gap-2 sm:text-sm",
+                  mode === m
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-background/60",
                 )}
               >
-                <span className="block font-semibold">{system.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  {productLabel(system.product)} · {system.volumeL} L
-                </span>
+                <Icon className="h-4 w-4" /> {t.modes[m]}
               </button>
-            ))
-          )}
-          <span aria-hidden="true" className="block w-2 shrink-0" />
+            );
+          })}
         </div>
-      </section>
-      <div className="mb-6 grid min-w-0 grid-cols-2 gap-2 rounded-2xl border border-border/70 bg-muted/30 p-2 md:grid-cols-4">
-        {MODE_ORDER.map((item) => (
-          <button
-            type="button"
-            key={item}
-            onClick={() => setMode(item)}
-            aria-pressed={mode === item}
-            className={cn(
-              "min-w-0 rounded-xl px-2 py-3 text-center text-xs font-semibold transition sm:text-sm",
-              mode === item
-                ? "border border-primary bg-primary/10 text-primary shadow-sm"
-                : "border border-transparent text-muted-foreground hover:bg-background",
+        <p className="mt-2 px-1 text-sm text-muted-foreground">{t.modeHint[mode]}</p>
+
+        {/* Workbench */}
+        <div className="mt-4 grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+          <section className="glass-panel space-y-6 p-5 sm:p-6" aria-label="Workbench">
+            {(mode === "adjust" || mode === "topup") && (
+              <div className="grid gap-3 sm:grid-cols-3">
+                {mode === "topup" && (
+                  <Field
+                    label={t.currentLiters}
+                    suffix="L"
+                    value={currentLiters}
+                    onChange={setCurrentLiters}
+                    placeholder="3.0"
+                  />
+                )}
+                {mode === "topup" && (
+                  <Field
+                    label={t.waterAdded}
+                    suffix="L"
+                    value={waterAdded}
+                    onChange={setWaterAdded}
+                    placeholder="3.5"
+                  />
+                )}
+                <Field
+                  label={t.currentEc}
+                  suffix={unitLabel}
+                  value={currentEc}
+                  onChange={(v) => {
+                    setCurrentEc(v);
+                    setJustLearned(false);
+                  }}
+                  placeholder={unit === "mS" ? "1.10" : "1100"}
+                  highlight={mode === "adjust"}
+                  className={mode === "adjust" ? "sm:col-span-3" : ""}
+                />
+              </div>
             )}
-          >
-            <span className="block">{copy[MODE_LABEL_KEY[item]]}</span>
-            <span className="mt-1 block text-[11px] font-normal leading-4">
-              {modeDescription[language][item]}
-            </span>
-          </button>
-        ))}
-      </div>
-      <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        <section className="min-w-0 space-y-5 rounded-3xl border border-border/70 bg-card p-4 shadow-sm sm:p-6">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                {copy.quickMix}
-              </p>
-              <h2 className="mt-1 text-lg font-semibold">{copy.formulaStage}</h2>
-            </div>
-            <Sliders className="h-5 w-5 text-primary" />
-          </div>
-          <Input
-            value={mix.name}
-            onChange={(event) => updateMix("name", event.target.value)}
-            placeholder={copy.newSystem}
-            aria-label={copy.newSystem}
-          />
-          <div className="space-y-2">
-            <p className="text-sm font-medium">{copy.product}</p>
-            <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-3">
-              {PRODUCT_ORDER.map((product) => (
-                <button
-                  type="button"
-                  key={product}
-                  onClick={() => updateMix("product", product)}
-                  aria-pressed={mix.product === product}
-                  className={cn(
-                    "min-w-0 rounded-xl border px-3 py-2 text-left text-sm",
-                    mix.product === product
-                      ? "border-primary bg-primary/10 font-semibold"
-                      : "border-border",
-                  )}
-                >
-                  {productLabel(product)}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm font-medium">{copy.plantsShare}</p>
-            <div className="flex flex-wrap gap-2">
-              {selectedPlantIds.map((id) => {
-                const plant = plantsById.get(id);
-                return (
-                  <span
-                    key={id}
-                    className="inline-flex min-w-0 max-w-full items-center gap-1 rounded-full border border-border px-3 py-1 text-xs"
-                  >
-                    <Leaf className="h-3 w-3 shrink-0 text-primary" />
-                    <span className="truncate">{plant?.name ?? id}</span>
+
+            {mode !== "recipe" || product.basis === "liters" ? (
+              <Block title={t.plants} hint={`${Object.values(crops).reduce((a, b) => a + b, 0)}`}>
+                <ul className="space-y-1.5">
+                  {Object.keys(crops).map((id) => {
+                    const c = DEMO_CROPS.find((x) => x.id === id)!;
+                    return (
+                      <li
+                        key={id}
+                        className="flex items-center gap-3 rounded-md bg-background/50 px-3 py-1.5"
+                      >
+                        <span className="text-lg" aria-hidden>
+                          {c.emoji}
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-sm font-medium">
+                          {c.name[lang]}
+                        </span>
+                        <Stepper
+                          value={crops[id]!}
+                          onChange={(v) => setCrops({ ...crops, [id]: v })}
+                        />
+                        <button
+                          aria-label="Quitar"
+                          onClick={() => {
+                            const { [id]: _, ...r } = crops;
+                            setCrops(r);
+                          }}
+                          className="grid h-8 w-8 place-items-center text-muted-foreground"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {DEMO_CROPS.filter((c) => !crops[c.id]).map((c) => (
                     <button
-                      type="button"
-                      onClick={() => removePlant(id)}
-                      aria-label={`${copy.remove} ${plant?.name ?? id}`}
+                      key={c.id}
+                      onClick={() => setCrops({ ...crops, [c.id]: 1 })}
+                      className="flex h-9 items-center gap-1.5 rounded-full border border-dashed border-border px-3 text-xs font-medium text-muted-foreground hover:bg-background/60"
                     >
-                      <X className="h-3 w-3" />
+                      <Plus className="h-3 w-3" /> {c.emoji} {c.name[lang]}
                     </button>
-                  </span>
-                );
-              })}
-            </div>
-            <select
-              className="h-10 w-full min-w-0 rounded-xl border border-input bg-background px-3 text-sm"
-              aria-label={copy.choosePlant}
-              defaultValue=""
-              onChange={(event) => addPlant(event.target.value)}
-            >
-              <option value="">{copy.choosePlant}</option>
-              {plants
-                .filter((plant) => !mix.crops[plant.id])
-                .slice(0, 80)
-                .map((plant) => (
-                  <option key={plant.id} value={plant.id}>
-                    {plant.name} · {plant.scientificName}
-                  </option>
+                  ))}
+                </div>
+              </Block>
+            ) : null}
+
+            <Block title={t.product}>
+              <div className="grid grid-cols-3 gap-1.5">
+                {DEMO_PRODUCTS.map((p) => (
+                  <Chip key={p.id} active={productId === p.id} onClick={() => setProductId(p.id)}>
+                    {p.name.split(" (")[0]!.replace("Liquid Plant Food", "")}
+                  </Chip>
                 ))}
-            </select>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm font-medium">{copy.stage}</p>
-            <div className="grid grid-cols-3 gap-2">
-              {PHASES.map((phase) => (
-                <button
-                  type="button"
-                  key={phase}
-                  onClick={() => updateMix("phase", phase)}
-                  aria-pressed={mix.phase === phase}
-                  className={cn(
-                    "rounded-xl border px-2 py-2 text-xs",
-                    mix.phase === phase
-                      ? "border-primary bg-primary/10 font-semibold"
-                      : "border-border",
-                  )}
-                >
-                  {phase === "seedling"
-                    ? language === "es"
-                      ? "Plántula"
-                      : "Seedling"
-                    : phase === "vegetative"
-                      ? language === "es"
-                        ? "Vegetativa"
-                        : "Vegetative"
-                      : language === "es"
-                        ? "Floración"
-                        : "Flowering"}
-                </button>
-              ))}
-            </div>
-          </div>
-          {mode !== "target" || mix.product === "flora" ? (
-            <div className="space-y-2">
-              <p className="text-sm font-medium">{copy.waterLiters}</p>
-              <div className="flex flex-wrap gap-2">
-                {LITER_CHIPS.map((liters) => (
-                  <button
-                    type="button"
-                    key={liters}
-                    onClick={() => updateMix("volumeL", liters)}
-                    aria-pressed={mix.volumeL === liters}
-                    className={cn(
-                      "rounded-full border px-3 py-1.5 text-xs",
-                      mix.volumeL === liters
-                        ? "border-primary bg-primary/10 font-semibold"
-                        : "border-border",
-                    )}
+              </div>
+              {mode === "recipe" && product.hasRecipeStages && (
+                <div className="mt-3 space-y-2">
+                  <select
+                    aria-label={t.stage}
+                    value={stageId}
+                    onChange={(e) => setStageId(e.target.value)}
+                    className="h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm"
                   >
-                    {liters} L
-                  </button>
-                ))}
+                    {DEMO_STAGES.map((s) => (
+                      <option key={s.id} value={s.id}>
+                        {s.label[lang]}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    {(["light", "medium", "aggressive"] as Intensity[]).map((k) => (
+                      <Chip key={k} active={intensity === k} onClick={() => setIntensity(k)}>
+                        {t.intensities[k]}
+                      </Chip>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </Block>
+
+            {mode === "recipe" && product.basis === "pods" ? (
+              <Block title={t.pods}>
+                <div className="flex items-center gap-3">
+                  <Stepper value={pods} onChange={setPods} large />
+                  <span className="text-sm text-muted-foreground">pods</span>
+                </div>
+              </Block>
+            ) : mode !== "topup" ? (
+              <Block title={t.volume}>
+                <div className="flex flex-wrap gap-1.5">
+                  {LITERS.map((l) => (
+                    <Chip key={l} active={liters === l} onClick={() => setLiters(l)}>
+                      {l} L
+                    </Chip>
+                  ))}
+                  <Input
+                    type="number"
+                    inputMode="decimal"
+                    min={0.5}
+                    step={0.5}
+                    aria-label={t.volume}
+                    value={liters}
+                    onChange={(e) => setLiters(Math.max(0.1, Number(e.target.value) || 0.1))}
+                    className="h-10 w-20"
+                  />
+                </div>
+              </Block>
+            ) : null}
+
+            <details className="group rounded-md border border-border/70 bg-background/30">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-semibold">
+                {t.more}
+                <span className="flex items-center gap-2 text-xs font-normal text-muted-foreground">
+                  {unitLabel} · {sys.water.label[lang]} {fmtEc(sourceEc)}
+                  <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+                </span>
+              </summary>
+              <div className="grid gap-4 border-t border-border/70 p-4 sm:grid-cols-2">
+                <div>
+                  <p className="mb-1.5 text-xs text-muted-foreground">{t.unit}</p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <Chip active={unit === "mS"} onClick={() => setUnit("mS")}>
+                      mS/cm
+                    </Chip>
+                    <Chip active={unit === "uS"} onClick={() => setUnit("uS")}>
+                      µS/cm
+                    </Chip>
+                  </div>
+                </div>
+                <Field
+                  label={t.sourceEc}
+                  suffix="mS/cm"
+                  value={String(sourceEc)}
+                  onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
+                />
+                <div className="text-sm">
+                  <p className="text-xs text-muted-foreground">{t.meter}</p>
+                  <p className="mt-1 font-medium">{sys.meter}</p>
+                </div>
+                <div className="text-sm">
+                  <p className="text-xs text-muted-foreground">{t.dosing}</p>
+                  <p className="mt-1 font-medium">{t.syringe}</p>
+                </div>
               </div>
-            </div>
-          ) : null}
-          {mix.product === "aerogarden" ? (
-            <div className="grid grid-cols-2 gap-3">
-              <label className="space-y-1.5 text-xs font-medium text-muted-foreground">
-                <span>{copy.podCount}</span>
-                <select
-                  value={mix.podCount}
-                  onChange={(event) => updateMix("podCount", Number(event.target.value))}
-                  className="h-10 w-full rounded-xl border border-input bg-background px-3"
-                >
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={9}>9</option>
-                  <option value={12}>12</option>
-                </select>
-              </label>
-              <NumberField
-                label={copy.stage}
-                value={String(mix.feedingIndex)}
-                onChange={(value) => updateMix("feedingIndex", parseNumber(value) ?? 1)}
-                step="1"
-                min="1"
+            </details>
+
+            {sys.id === "quick" && (
+              <Button variant="outline" className="h-11 w-full">
+                {t.save}
+              </Button>
+            )}
+
+            {mode === "target" && result.kind === "ok" && result.target && (
+              <TargetControl
+                t={t}
+                unitLabel={unitLabel}
+                fmtEc={fmtEc}
+                value={result.target.value}
+                isUser={result.target.provenance === "user"}
+                outside={!!result.outsideEvidence}
+                onChange={(v) => setUserTarget(v)}
+                onReset={() => setUserTarget(null)}
               />
-            </div>
-          ) : (
-            <NumberField
-              label={copy.stage}
-              value={String(mix.feedingIndex)}
-              onChange={(value) => updateMix("feedingIndex", parseNumber(value) ?? 1)}
-              step="1"
-              min="1"
-            />
-          )}
-          {mode === "target" ? (
-            <div className="space-y-3 rounded-2xl border border-primary/30 bg-primary/5 p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-sm font-semibold">{copy.targetEc}</p>
-                  <p className="text-xs text-muted-foreground">{copy.targetHint}</p>
-                </div>
-                <Gauge className="h-5 w-5 shrink-0 text-primary" />
-              </div>
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-muted-foreground">{copy.reportedRange}</span>
-                  <strong className="mt-1 block">
-                    {targetPreview.value
-                      ? `${formatNumber(targetPreview.value.target.min)}–${formatNumber(targetPreview.value.target.max)} mS/cm`
-                      : copy.noRange}
-                  </strong>
-                </div>
-                <div>
-                  <span className="text-muted-foreground">{copy.suggested}</span>
-                  <strong className="mt-1 block">
-                    {formatNumber(targetPreview.value?.suggestedStartingPoint)} mS/cm
-                  </strong>
-                </div>
-              </div>
-              <div className="flex min-w-0 items-center gap-2">
-                <button
-                  type="button"
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-input bg-background shadow-sm"
-                  onClick={() => updateMix("targetEc", Math.max(0, (selectedEc ?? 0) - 0.1))}
-                  aria-label="Decrease EC"
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <Input
-                  className="min-w-0 text-center"
-                  inputMode="decimal"
-                  type="number"
-                  step="0.1"
-                  value={mix.targetEc ?? formatNumber(selectedEc)}
-                  onChange={(event) => updateNumber("targetEc", event.target.value)}
-                  aria-label={copy.targetEc}
-                />
-                <button
-                  type="button"
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-input bg-background shadow-sm"
-                  onClick={() => updateMix("targetEc", (selectedEc ?? 0) + 0.1)}
-                  aria-label="Increase EC"
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-                <span className="shrink-0 text-xs text-muted-foreground">mS/cm</span>
-              </div>
-            </div>
-          ) : null}
-          {mode === "correction" || mode === "topup" ? (
-            <div className="space-y-3 rounded-2xl border border-border bg-muted/20 p-4">
-              <p className="text-sm font-semibold">
-                {language === "es" ? "Medición del tanque" : "Reservoir measurement"}
-              </p>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <NumberField
-                  label={copy.currentEc}
-                  value={mix.currentEc === undefined ? "" : String(mix.currentEc)}
-                  onChange={(value) => updateNumber("currentEc", value)}
-                  suffix="mS/cm"
-                />
-                <NumberField
-                  label={copy.targetEc}
-                  value={
-                    mix.targetEc === undefined ? formatNumber(selectedEc) : String(mix.targetEc)
-                  }
-                  onChange={(value) => updateNumber("targetEc", value)}
-                  suffix="mS/cm"
-                />
-                <NumberField
-                  label={copy.currentVolume}
-                  value={mix.currentVolumeL === undefined ? "" : String(mix.currentVolumeL)}
-                  onChange={(value) => updateNumber("currentVolumeL", value)}
-                  suffix="L"
-                />
-                {mode === "topup" ? (
-                  <>
-                    <NumberField
-                      label={copy.waterAdded}
-                      value={
-                        mix.replacementWaterL === undefined ? "" : String(mix.replacementWaterL)
-                      }
-                      onChange={(value) => updateNumber("replacementWaterL", value)}
-                      suffix="L"
-                    />
-                    <NumberField
-                      label={copy.reservoir}
-                      value={mix.nominalVolumeL === undefined ? "" : String(mix.nominalVolumeL)}
-                      onChange={(value) => updateNumber("nominalVolumeL", value)}
-                      suffix="L"
-                    />
-                  </>
+            )}
+          </section>
+
+          {/* Result */}
+          <section className="space-y-4" aria-live="polite">
+            {result.kind === "needs" ? (
+              <div className="glass-panel p-6">
+                <p className="eyebrow">{t.now}</p>
+                <p className="mt-3 font-display text-xl font-semibold">{t.needs}</p>
+                {result.message ? (
+                  <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
+                ) : null}
+                {result.missing.length ? (
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {result.missing.map((m) => (
+                      <li key={m} className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                        {t.needLabels[m as keyof typeof t.needLabels] ?? m}
+                      </li>
+                    ))}
+                  </ul>
                 ) : null}
               </div>
-            </div>
-          ) : null}
-          {mode === "recipe" || mode === "correction" || mode === "topup" ? (
-            <CalibrationCapture
-              language={language}
-              copy={copy}
-              result={selectedRecipe}
-              actualDoses={actualDoses}
-              setActualDoses={setActualDoses}
-              baselineEc={baselineEc}
-              setBaselineEc={setBaselineEc}
-              resultEc={resultEc}
-              setResultEc={setResultEc}
-              actualConfirmed={actualConfirmed}
-              setActualConfirmed={setActualConfirmed}
-              recordCalibration={recordCalibration}
-            />
-          ) : null}
-          {mode === "correction" && !calibrationModel?.value ? (
-            <p className="rounded-xl border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs">
-              {copy.noCalibration}
-            </p>
-          ) : null}
-          <button
-            type="button"
-            className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-4 text-sm font-medium shadow-sm hover:bg-accent"
-            onClick={saveSystem}
-          >
-            <Save className="mr-2 h-4 w-4" />
-            {mix.name ? copy.saveChanges : copy.saveAs}
-          </button>
-        </section>
-        <section className="min-w-0 space-y-5 rounded-3xl border border-border/70 bg-card p-4 shadow-sm sm:p-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <Sprout className="h-5 w-5" />
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                {copy.calculator}
-              </p>
-              <h2 className="truncate text-xl font-semibold">
-                {mode === "recipe"
-                  ? copy.modeRecipe
-                  : mode === "target"
-                    ? copy.modeTarget
-                    : mode === "correction"
-                      ? copy.modeCorrection
-                      : copy.modeTopup}
-              </h2>
-            </div>
-          </div>
-          {selectedPlantIds.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-border px-4 py-6 text-sm text-muted-foreground">
-              {copy.addPlantFirst}
-            </p>
-          ) : (
-            <>
-              <NoticeList warnings={displayWarnings} errors={displayErrors} language={language} />
-              {mode === "recipe" && selectedRecipe?.value ? (
-                <RecipeResultCard
-                  language={language}
-                  copy={copy}
-                  result={selectedRecipe.value}
-                  cropRanges={cropRanges}
+            ) : (
+              <>
+                <div className="glass-panel animate-rise p-5 sm:p-6" key={`${mode}-${round}`}>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="eyebrow">
+                      {t.now}
+                      {mode === "adjust" && ` · ${t.round} ${round}`}
+                    </p>
+                    <ProvenanceTag kind={result.provenance} t={t} />
+                  </div>
+                  <h2 className="mt-3 font-display text-2xl font-bold">
+                    {result.action === "add"
+                      ? t.actAdd
+                      : result.action === "dilute"
+                        ? t.actDilute
+                        : t.actHold}
+                  </h2>
+                  {result.action === "hold" ? (
+                    <p className="mt-2 text-sm text-muted-foreground">{t.holdBody}</p>
+                  ) : (
+                    <>
+                      <p className="mt-4 text-xs font-semibold text-muted-foreground">{t.order}</p>
+                      <ol className="mt-2 divide-y divide-border/70">
+                        {result.doses.map((d, i) => (
+                          <li key={d.label} className="flex items-center gap-3 py-3">
+                            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-primary/40 text-xs font-bold">
+                              {i + 1}
+                            </span>
+                            <span className="min-w-0 flex-1 truncate text-sm font-medium">
+                              {d.label}
+                            </span>
+                            <span className="font-display text-3xl font-bold tabular-nums">
+                              {d.amount}
+                              <span className="ml-1 text-sm font-medium text-muted-foreground">
+                                {d.unit}
+                              </span>
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    </>
+                  )}
+
+                  {/* Next */}
+                  <div className="mt-5 rounded-lg bg-background/55 p-4">
+                    <p className="text-xs font-semibold text-muted-foreground">{t.next}</p>
+                    <ol className="mt-3 grid grid-cols-3 gap-2 text-center text-xs">
+                      {[
+                        { icon: Waves, label: t.stepMix },
+                        { icon: RefreshCw, label: t.stepWait },
+                        { icon: Gauge, label: t.stepMeasure },
+                      ].map(({ icon: Icon, label }, i) => (
+                        <li key={label} className="flex flex-col items-center gap-1.5">
+                          <span className="grid h-9 w-9 place-items-center rounded-full bg-secondary">
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <span className="leading-tight">
+                            <span className="sr-only">{i + 1}. </span>
+                            {label}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                    <p className="mt-3 text-center text-[11px] text-muted-foreground">
+                      {t.waitNote}
+                    </p>
+                    {result.expectedEc != null && (
+                      <p className="mt-3 border-t border-border/70 pt-3 text-center text-sm">
+                        {t.expect}{" "}
+                        <strong className="font-display tabular-nums">
+                          {fmtEc(result.expectedEc)} {unitLabel}
+                        </strong>
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Disclosure: why */}
+                  <details className="group mt-4">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-2 text-sm font-semibold">
+                      <span className="flex min-w-0 items-center gap-2">{t.why}</span>
+                      <span className="flex shrink-0 items-center gap-2">
+                        <EvidenceMark level={result.evidence} t={t} compact />
+                        <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+                      </span>
+                    </summary>
+                    <div className="space-y-4 pt-2 text-sm">
+                      {result.range && (
+                        <div className="grid grid-cols-2 gap-2">
+                          <Stat
+                            label={result.range.common ? t.range : t.noCommon}
+                            value={`${fmtEc(result.range.min)}–${fmtEc(result.range.max)}`}
+                          />
+                          {result.target && (
+                            <Stat
+                              label={result.target.provenance === "user" ? t.yourTarget : t.start}
+                              value={fmtEc(result.target.value)}
+                            />
+                          )}
+                        </div>
+                      )}
+                      {result.range && !result.range.common && result.range.limiting && (
+                        <p className="rounded-md border-l-2 border-accent bg-accent/10 p-3 text-sm">
+                          {t.noCommonBody(cropName(result.range.limiting))}
+                        </p>
+                      )}
+                      <EvidenceMark level={result.evidence} t={t} />
+                      <p className="text-muted-foreground">{result.evidenceNote[lang]}</p>
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground">{t.sources}</p>
+                        <ul className="mt-1 list-inside list-disc text-muted-foreground">
+                          {result.sources.map((s) => (
+                            <li key={s}>{s}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+
+                {/* Target control */}
+                {mode !== "recipe" && mode !== "target" && result.target && (
+                  <TargetControl
+                    t={t}
+                    unitLabel={unitLabel}
+                    fmtEc={fmtEc}
+                    value={result.target.value}
+                    isUser={result.target.provenance === "user"}
+                    outside={!!result.outsideEvidence}
+                    onChange={(v) => setUserTarget(v)}
+                    onReset={() => setUserTarget(null)}
+                  />
+                )}
+
+                {/* Learn / loop */}
+                <LearnCard
+                  key={`${sys.id}-${mode}-${round}`}
+                  t={t}
+                  unitLabel={unitLabel}
+                  system={sys}
+                  productId={productId}
+                  recommendedDoses={result.doses}
+                  learnedCount={learnedCount}
+                  justLearned={justLearned}
+                  onLearn={(ec, actualDoses) => {
+                    const measured = Number(ec.replace(",", "."));
+                    const measuredMs = unit === "uS" ? measured / 1000 : measured;
+                    const observation = recordActualDoses({
+                      productId,
+                      stageId,
+                      liters,
+                      pods,
+                      baselineEc: sourceEc,
+                      resultingEc: measuredMs,
+                      actualDoses,
+                    });
+                    if (!observation.ok || !observation.value) return;
+                    setCalibrationObservations((items) => [...items, observation.value!]);
+                    setLearnedCount((n) => n + 1);
+                    setJustLearned(true);
+                    if (mode === "adjust") {
+                      setCurrentEc(ec);
+                    }
+                  }}
+                  onAgain={() => {
+                    setRound((r) => r + 1);
+                    setJustLearned(false);
+                  }}
+                  canLoop={mode === "adjust" && result.action !== "hold"}
                 />
-              ) : null}
-              {mode === "target" && targetResult?.value ? (
-                <TargetResultCard language={language} copy={copy} result={targetResult.value} />
-              ) : null}
-              {mode === "correction" && correctionResult?.value ? (
-                <CorrectionResultCard
-                  language={language}
-                  copy={copy}
-                  result={correctionResult.value}
-                />
-              ) : null}
-              {mode === "topup" && topupResult?.value ? (
-                <TopupResultCard language={language} copy={copy} result={topupResult.value} />
-              ) : null}
-              {mode === "target" && !targetResult?.value && targetResult ? (
-                <p className="rounded-2xl border border-dashed border-border px-4 py-6 text-sm text-muted-foreground">
-                  {copy.noRange}
-                </p>
-              ) : null}
-              <ClaimsDisclosure claims={displayClaims} language={language} />
-            </>
-          )}
-        </section>
+              </>
+            )}
+            {t.demo ? (
+              <p className="text-center text-[11px] text-muted-foreground">{t.demo}</p>
+            ) : null}
+          </section>
+        </div>
       </div>
     </main>
   );
 }
 
-function CalibrationCapture({
-  copy,
-  result,
-  actualDoses,
-  setActualDoses,
-  baselineEc,
-  setBaselineEc,
-  resultEc,
-  setResultEc,
-  actualConfirmed,
-  setActualConfirmed,
-  recordCalibration,
+export const CalculatorPageV1 = CalculatorPage;
+
+/* ---------------------------------------------------------------- parts */
+
+function DockItem({
+  active,
+  onClick,
+  title,
+  meta,
+  icon,
+  learned,
 }: {
-  language: Language;
-  copy: Copy;
-  result: EngineResult<RecipeResult> | null;
-  actualDoses: Record<string, string>;
-  setActualDoses: (value: Record<string, string>) => void;
-  baselineEc: string;
-  setBaselineEc: (value: string) => void;
-  resultEc: string;
-  setResultEc: (value: string) => void;
-  actualConfirmed: boolean;
-  setActualConfirmed: (value: boolean) => void;
-  recordCalibration: () => void;
+  active: boolean;
+  onClick: () => void;
+  title: string;
+  meta: string;
+  icon?: React.ReactNode;
+  learned?: boolean;
 }) {
-  if (!result?.value)
-    return (
-      <div className="rounded-2xl border border-border bg-muted/20 p-4 text-sm">
-        {copy.unsupported}
-      </div>
-    );
   return (
-    <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
-      <div>
-        <p className="text-sm font-semibold">{copy.measured}</p>
-        <p className="text-xs text-muted-foreground">{copy.actualDose}</p>
+    <button
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        "glass-soft relative min-w-[150px] shrink-0 snap-start px-4 py-3 text-left transition-shadow sm:min-w-[180px]",
+        active && "bg-background/80 ring-2 ring-primary ring-offset-0",
+      )}
+    >
+      <span className="flex items-center gap-1.5 truncate text-sm font-semibold">
+        {icon}
+        {title}
+      </span>
+      <span className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
+        {meta}
+        {learned && <Sparkles className="h-3 w-3 text-accent" aria-label="calibrated" />}
+      </span>
+    </button>
+  );
+}
+
+const PROV_ICON: Record<Provenance, React.ComponentType<{ className?: string }>> = {
+  official: BookOpen,
+  garden: FlaskConical,
+  measured: Gauge,
+  user: Target,
+};
+function ProvenanceTag({ kind, t }: { kind: Provenance; t: Copy }) {
+  const Icon = PROV_ICON[kind];
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold",
+        kind === "official"
+          ? "border-primary/30 bg-primary/5"
+          : kind === "user"
+            ? "border-accent/60 bg-accent/10"
+            : "border-border bg-background/60",
+      )}
+    >
+      <Icon className="h-3.5 w-3.5" /> {t.prov[kind]}
+    </span>
+  );
+}
+
+const EV_LEVEL: Record<Evidence, number> = {
+  high: 3,
+  moderate: 2,
+  low: 1,
+  conflicting: -1,
+  insufficient: 0,
+};
+function EvidenceMark({ level, t, compact }: { level: Evidence; t: Copy; compact?: boolean }) {
+  const n = EV_LEVEL[level];
+  return (
+    <span className="inline-flex items-center gap-2 text-xs">
+      <span className="flex items-center gap-0.5" aria-hidden>
+        {n === -1 ? (
+          <>
+            <span className="h-2 w-2 rounded-full bg-foreground/70" />
+            <span className="h-2 w-2 rounded-full border border-foreground/70" />
+            <span className="h-2 w-2 rounded-full bg-foreground/70" />
+          </>
+        ) : (
+          [0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className={cn(
+                "h-2 w-2 rounded-full",
+                i < n ? "bg-foreground/75" : "border border-foreground/40",
+              )}
+            />
+          ))
+        )}
+      </span>
+      <span className={cn("font-semibold", compact && "hidden sm:inline")}>
+        {compact ? t.ev[level] : `${t.evidence}: ${t.ev[level]}`}
+      </span>
+    </span>
+  );
+}
+
+function TargetControl({
+  t,
+  value,
+  isUser,
+  outside,
+  onChange,
+  onReset,
+  unitLabel,
+  fmtEc,
+}: {
+  t: Copy;
+  value: number;
+  isUser: boolean;
+  outside: boolean;
+  onChange: (v: number) => void;
+  onReset: () => void;
+  unitLabel: string;
+  fmtEc: (v: number) => string;
+}) {
+  return (
+    <div className="glass-panel p-5">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-sm font-semibold">{isUser ? t.yourTarget : t.start}</p>
+        {isUser && (
+          <button
+            onClick={onReset}
+            className="text-xs font-semibold text-muted-foreground underline underline-offset-2"
+          >
+            {t.useSuggested}
+          </button>
+        )}
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {result.value.parts.map((part) => (
-          <NumberField
-            key={part.componentId}
-            label={part.label}
-            value={actualDoses[part.componentId] ?? part.ml.toFixed(2)}
-            onChange={(value) => setActualDoses({ ...actualDoses, [part.componentId]: value })}
-            suffix="mL"
-          />
-        ))}
+      <div className="mt-3 flex items-center gap-3">
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-11 w-11 shrink-0"
+          aria-label="−0.1"
+          onClick={() => onChange(Math.max(0.1, Math.round((value - 0.1) * 10) / 10))}
+        >
+          <Minus className="h-4 w-4" />
+        </Button>
+        <p className="flex-1 text-center font-display text-3xl font-bold tabular-nums">
+          {fmtEc(value)}
+          <span className="ml-1 text-sm font-medium text-muted-foreground">{unitLabel}</span>
+        </p>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-11 w-11 shrink-0"
+          aria-label="+0.1"
+          onClick={() => onChange(Math.round((value + 0.1) * 10) / 10)}
+        >
+          <Plus className="h-4 w-4" />
+        </Button>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <NumberField
-          label={copy.baselineEc}
-          value={baselineEc}
-          onChange={setBaselineEc}
-          suffix="mS/cm"
-        />
-        <NumberField label={copy.resultEc} value={resultEc} onChange={setResultEc} suffix="mS/cm" />
+      {outside && (
+        <p className="mt-3 flex gap-2 rounded-md border-l-2 border-accent bg-accent/10 p-3 text-xs">
+          <span aria-hidden>△</span>
+          {t.outside}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function LearnCard({
+  t,
+  unitLabel,
+  system,
+  productId,
+  recommendedDoses,
+  learnedCount,
+  justLearned,
+  onLearn,
+  onAgain,
+  canLoop,
+}: {
+  t: Copy;
+  unitLabel: string;
+  system: SavedSystem;
+  productId: string;
+  recommendedDoses: { label: string; amount: number; unit: "mL" | "L" }[];
+  learnedCount: number;
+  justLearned: boolean;
+  onLearn: (ec: string, actualDoses: Record<string, string>) => void;
+  onAgain: () => void;
+  canLoop: boolean;
+}) {
+  const [ec, setEc] = useState("");
+  const product = DEMO_PRODUCTS.find((item) => item.id === productId) ?? DEMO_PRODUCTS[0]!;
+  const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
+    Object.fromEntries(
+      product.parts.map((part) => {
+        const recommended = recommendedDoses.find((dose) => dose.label === part.label);
+        return [part.id, recommended ? String(recommended.amount) : ""];
+      }),
+    ),
+  );
+  return (
+    <div className="glass-panel p-5">
+      <div className="flex items-center justify-between gap-3">
+        <p className="font-display text-lg font-semibold">{t.learnTitle}</p>
+        {learnedCount > 0 && (
+          <span className="flex items-center gap-1 text-[11px] font-semibold text-muted-foreground">
+            <Sparkles className="h-3 w-3" />
+            {learnedCount}
+          </span>
+        )}
       </div>
-      <label className="flex min-w-0 items-start gap-2 text-xs text-muted-foreground">
-        <input
-          type="checkbox"
-          checked={actualConfirmed}
-          onChange={(event) => setActualConfirmed(event.target.checked)}
-          className="mt-0.5"
-        />{" "}
-        <span className="min-w-0 break-words">{copy.confirmActual}</span>
-      </label>
-      <button
-        type="button"
-        className="inline-flex h-8 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-xs font-medium shadow-sm hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
-        onClick={recordCalibration}
-        disabled={!actualConfirmed || !baselineEc || !resultEc}
+      {justLearned ? (
+        <div className="mt-3 space-y-3 animate-rise">
+          <p className="flex gap-2 text-sm">
+            <Check className="mt-0.5 h-4 w-4 shrink-0" />
+            {t.learnedNew}
+          </p>
+          {system.calibration && (
+            <p className="text-xs text-muted-foreground">
+              {t.calib(system.calibration.learned)} · {t.learned(learnedCount)}
+            </p>
+          )}
+          {canLoop && (
+            <div className="grid grid-cols-2 gap-2">
+              <Button className="h-11" onClick={onAgain}>
+                <RefreshCw className="h-4 w-4" />
+                {t.again}
+              </Button>
+              <Button variant="outline" className="h-11">
+                <Check className="h-4 w-4" />
+                {t.closeEnough}
+              </Button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <>
+          <p className="mt-1 text-sm text-muted-foreground">{t.learnBody}</p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <Field label={t.gotEc} suffix={unitLabel} value={ec} onChange={setEc} placeholder="—" />
+          </div>
+          <p className="mt-3 text-xs font-semibold text-muted-foreground">{t.actualDose}</p>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {product.parts.map((part) => (
+              <Field
+                key={part.id}
+                label={part.label}
+                suffix="mL"
+                value={actualDoses[part.id] ?? ""}
+                onChange={(value) =>
+                  setActualDoses((current) => ({ ...current, [part.id]: value }))
+                }
+                placeholder="—"
+              />
+            ))}
+          </div>
+          <Button
+            className="mt-3 h-11 w-full"
+            disabled={!ec}
+            onClick={() => onLearn(ec, actualDoses)}
+          >
+            {t.learn} <ArrowRight className="h-4 w-4" />
+          </Button>
+        </>
+      )}
+    </div>
+  );
+}
+
+function Block({
+  title,
+  hint,
+  children,
+}: {
+  title: string;
+  hint?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <div className="mb-2.5 flex items-center justify-between text-sm font-semibold">
+        <span>{title}</span>
+        {hint && <span className="text-xs font-normal text-muted-foreground">{hint}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function Field({
+  label,
+  suffix,
+  value,
+  onChange,
+  placeholder,
+  highlight,
+  className,
+}: {
+  label: string;
+  suffix?: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  highlight?: boolean;
+  className?: string;
+}) {
+  return (
+    <label className={cn("block text-xs text-muted-foreground", className)}>
+      {label}
+      <span
+        className={cn(
+          "mt-1 flex h-12 items-center rounded-md border bg-background/70 px-3",
+          highlight ? "border-primary/50" : "border-input",
+        )}
       >
-        <Check className="mr-2 h-4 w-4" />
-        {copy.record}
+        <input
+          inputMode="decimal"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className="min-w-0 flex-1 bg-transparent font-display text-lg font-semibold text-foreground outline-none"
+        />
+        {suffix && <span className="shrink-0 text-xs">{suffix}</span>}
+      </span>
+    </label>
+  );
+}
+
+function Chip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        "h-10 min-w-0 truncate rounded-md border px-3 text-xs font-medium transition-colors sm:text-sm",
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-background/60 hover:bg-background",
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
+function Stepper({
+  value,
+  onChange,
+  large,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+  large?: boolean;
+}) {
+  const s = large ? "h-11 w-11" : "h-8 w-8";
+  return (
+    <div className="flex shrink-0 items-center">
+      <button
+        aria-label="−"
+        onClick={() => onChange(Math.max(1, value - 1))}
+        className={cn("grid place-items-center", s)}
+      >
+        <Minus className="h-3.5 w-3.5" />
+      </button>
+      <span
+        className={cn(
+          "text-center font-semibold tabular-nums",
+          large ? "w-8 text-lg" : "w-5 text-sm",
+        )}
+      >
+        {value}
+      </span>
+      <button
+        aria-label="+"
+        onClick={() => onChange(value + 1)}
+        className={cn("grid place-items-center", s)}
+      >
+        <Plus className="h-3.5 w-3.5" />
       </button>
     </div>
   );
 }
 
-function RecipeResultCard({
-  language,
-  copy,
-  result,
-  cropRanges,
-}: {
-  language: Language;
-  copy: Copy;
-  result: RecipeResult;
-  cropRanges: ReturnType<typeof selectCropRange>["ec"][];
-}) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-          {copy.sourceRecipe}
-        </p>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          {result.parts.map((part) => (
-            <div
-              key={part.componentId}
-              className="flex min-w-0 items-center justify-between gap-3 border-b border-border/60 pb-2 text-sm"
-            >
-              <span className="min-w-0 truncate">{part.label}</span>
-              <strong className="shrink-0">{part.ml.toFixed(2)} mL</strong>
-            </div>
-          ))}
-        </div>
-        {result.manufacturerRecipeExpectation ? (
-          <p className="mt-4 text-xs text-muted-foreground">
-            {copy.officialExpected}: {result.manufacturerRecipeExpectation.min.toFixed(2)}–
-            {result.manufacturerRecipeExpectation.max.toFixed(2)} mS/cm
-          </p>
-        ) : null}
-      </div>
-      <div className="rounded-2xl border border-border p-4">
-        <p className="text-sm font-semibold">{copy.mixOrder}</p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {result.recipe.mixingOrder
-            .map((id) => result.recipe.components.find((part) => part.id === id)?.label ?? id)
-            .join(" → ")}
-        </p>
-      </div>
-      <EvidenceBlock language={language} copy={copy} ranges={cropRanges} />
-    </div>
-  );
-}
-
-function TargetResultCard({
-  language,
-  copy,
-  result,
-}: {
-  language: Language;
-  copy: Copy;
-  result: NonNullable<
-    EngineResult<
-      ReturnType<typeof calculateFreshTargetEc> extends EngineResult<infer T> ? T : never
-    >["value"]
-  >;
-}) {
-  return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-          {copy.sourceGarden}
-        </p>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <div>
-            <span className="text-xs text-muted-foreground">{copy.targetEc}</span>
-            <strong className="mt-1 block text-2xl">
-              {result.target.min.toFixed(2)}
-              {result.target.max !== result.target.min
-                ? `–${result.target.max.toFixed(2)}`
-                : ""}{" "}
-              <span className="text-sm font-normal">mS/cm</span>
-            </strong>
-          </div>
-          <div>
-            <span className="text-xs text-muted-foreground">{copy.suggested}</span>
-            <strong className="mt-1 block text-2xl">
-              {formatNumber(result.suggestedStartingPoint)}{" "}
-              <span className="text-sm font-normal">mS/cm</span>
-            </strong>
-          </div>
-        </div>
-      </div>
-      <p className="rounded-2xl border border-border bg-muted/20 p-4 text-sm text-muted-foreground">
-        {copy.targetHint}
-      </p>
-    </div>
-  );
-}
-
-function CorrectionResultCard({
-  language,
-  copy,
-  result,
-}: {
-  language: Language;
-  copy: Copy;
-  result: NonNullable<
-    EngineResult<
-      ReturnType<typeof calculateEcCorrection> extends EngineResult<infer T> ? T : never
-    >["value"]
-  >;
-}) {
-  const action =
-    result.direction === "NO_CHANGE"
-      ? copy.noChange
-      : result.direction === "ADD_WATER"
-        ? copy.addWater
-        : copy.addNutrient;
-  return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-          {copy.sourceMeasurement}
-        </p>
-        <h3 className="mt-2 text-2xl font-semibold">{action}</h3>
-        <p className="mt-2 text-lg">
-          {result.doseMl !== undefined
-            ? `${result.doseMl.toFixed(2)} mL`
-            : result.waterMl !== undefined
-              ? `${result.waterMl.toFixed(0)} mL`
-              : copy.noChange}
-        </p>
-        {result.firstStepDoseMl !== undefined ? (
-          <p className="mt-2 text-sm text-muted-foreground">
-            {copy.partial}: {result.firstStepDoseMl.toFixed(2)} mL
-          </p>
-        ) : null}
-      </div>
-      <p className="rounded-2xl border border-border bg-muted/20 p-4 text-sm text-muted-foreground">
-        {copy.correctionHint}
-      </p>
-      <p className="text-sm font-medium">
-        {copy.nextMeasure}: {copy.remeasure}
-      </p>
-    </div>
-  );
-}
-
-function TopupResultCard({
-  copy,
-  result,
-}: {
-  language: Language;
-  copy: Copy;
-  result: NonNullable<
-    EngineResult<
-      ReturnType<typeof calculateTopUpMaintenance> extends EngineResult<infer T> ? T : never
-    >["value"]
-  >;
-}) {
-  return (
-    <div className="space-y-4">
-      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-          {copy.sourceMeasurement}
-        </p>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <div>
-            <span className="text-xs text-muted-foreground">{copy.waterAdded}</span>
-            <strong className="mt-1 block text-2xl">
-              {result.replacementWaterMl.toFixed(0)} mL
-            </strong>
-          </div>
-          <div>
-            <span className="text-xs text-muted-foreground">{copy.resultEc}</span>
-            <strong className="mt-1 block text-2xl">
-              {result.nutrientDoseMl === undefined
-                ? copy.noChange
-                : `${result.nutrientDoseMl.toFixed(2)} mL`}
-            </strong>
-          </div>
-        </div>
-      </div>
-      <p className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm">
-        {copy.topupHint}
-      </p>
-    </div>
-  );
-}
-
-function EvidenceBlock({
-  language,
-  copy,
-  ranges,
-}: {
-  language: Language;
-  copy: Copy;
-  ranges: ReturnType<typeof selectCropRange>["ec"][];
-}) {
-  const values = ranges.filter((range) => range.ec);
-  return (
-    <div className="rounded-2xl border border-border p-4">
-      <p className="text-sm font-semibold">{copy.evidence}</p>
-      {values.length ? (
-        <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
-          {values.map((range) => (
-            <li
-              key={range.cropIdentity}
-              className="flex min-w-0 flex-wrap items-center justify-between gap-2"
-            >
-              <span className="font-medium text-foreground">{range.cropIdentity}</span>
-              <span>
-                {range.ec!.min.toFixed(2)}–{range.ec!.max.toFixed(2)} mS/cm ·{" "}
-                {evidenceLabel(range.evidenceState, language)}
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="mt-2 text-sm text-muted-foreground">{copy.noRange}</p>
-      )}
+    <div className="rounded-md bg-background/55 px-3 py-2.5">
+      <p className="text-[11px] text-muted-foreground">{label}</p>
+      <p className="mt-0.5 font-display text-base font-bold tabular-nums">{value}</p>
     </div>
   );
 }

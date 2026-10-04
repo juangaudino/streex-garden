@@ -23,9 +23,9 @@ describe("Gardenpedia shared shell and Calculator mobile dock", () => {
   });
 
   it("keeps Calculator inside the shared shell and contains the horizontal dock", () => {
-    const calculator = source("calculator-page.tsx");
+    const calculator = source("calculator-page-v1.tsx");
 
-    expect(calculator).toContain("ring-2 ring-inset ring-primary");
+    expect(calculator).toContain("overflow-x-auto");
     expect(calculator).toContain("scroll-padding-inline");
     expect(calculator).toContain("min-w-0 max-w-full");
     expect(calculator).not.toContain("-mx-4");

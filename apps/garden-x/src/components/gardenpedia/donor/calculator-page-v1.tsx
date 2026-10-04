@@ -267,6 +267,36 @@ function productLabel(product: CalculatorProduct): string {
       : "A+B exact product";
 }
 
+function evidenceLabel(state: string, language: Language): string {
+  if (language === "en") return state;
+  return (
+    {
+      HIGH: "Alta",
+      MODERATE: "Moderada",
+      LOW: "Baja",
+      CONFLICTING: "En conflicto",
+      INSUFFICIENT: "Insuficiente",
+    }[state] ?? state
+  );
+}
+
+function claimLabel(label: string, language: Language): string {
+  if (language === "en") return label;
+  return (
+    {
+      "Manufacturer recipe dose": "Dosis de receta del fabricante",
+      "Manufacturer expected EC": "EC esperado por el fabricante",
+      "Suggested starting point": "Punto de partida sugerido",
+      "Supported optimum range": "Rango óptimo respaldado",
+      "Common optimum range": "Rango óptimo común",
+      "User calibration factor": "Factor de calibración del usuario",
+      "Calculated correction dose": "Dosis de corrección calculada",
+      "Calculated nutrient dose after top-up": "Dosis nutritiva calculada tras rellenar",
+      "Recorded user calibration observation": "Observación de calibración registrada",
+    }[label] ?? label
+  );
+}
+
 function localizeCode(code: string, language: Language, fallback: string): string {
   const es: Record<string, string> = {
     RECIPE_UNAVAILABLE: "No existe una receta oficial para esta formulación exacta.",
@@ -404,13 +434,13 @@ function ClaimsDisclosure({ claims, language }: { claims: Claim[]; language: Lan
       <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
         {claims.slice(0, 8).map((claim) => (
           <li key={claim.id} className="flex min-w-0 flex-wrap gap-2">
-            <span className="font-medium text-foreground">{claim.label}</span>
+            <span className="font-medium text-foreground">{claimLabel(claim.label, language)}</span>
             <span className="rounded-full border border-border px-2 py-0.5">
               {epLabel(claim.epistemic, language)}
             </span>
             {claim.experimentalPolicy ? (
               <span className="rounded-full border border-amber-500/40 px-2 py-0.5">
-                experimental policy
+                {language === "es" ? "política experimental" : "experimental policy"}
               </span>
             ) : null}
           </li>
@@ -1390,7 +1420,8 @@ function EvidenceBlock({
             >
               <span className="font-medium text-foreground">{range.cropIdentity}</span>
               <span>
-                {range.ec!.min.toFixed(2)}–{range.ec!.max.toFixed(2)} mS/cm · {range.evidenceState}
+                {range.ec!.min.toFixed(2)}–{range.ec!.max.toFixed(2)} mS/cm ·{" "}
+                {evidenceLabel(range.evidenceState, language)}
               </span>
             </li>
           ))}

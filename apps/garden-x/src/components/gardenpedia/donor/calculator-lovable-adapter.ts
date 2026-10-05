@@ -555,6 +555,9 @@ function actualDoseTotal(doses: Record<string, string>): number | undefined {
 export function calculateGardenResult(input: CalcInput): CalcResult {
   const contexts = contextFor(input.crops, input.productId);
   const range = rangeFor(contexts);
+  if (input.mode !== "recipe" && contexts.length === 0) {
+    return engineNeeds("Añade al menos una planta para aplicar evidencia EC.");
+  }
   const targetEngine = calculateFreshTargetEc({
     contexts,
     userSelectedTarget: input.userTarget ?? undefined,

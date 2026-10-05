@@ -59,6 +59,28 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("distinguishes an empty Quick Mix from a crop with insufficient evidence", () => {
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: {},
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") {
+      expect(result.message).toContain("planta");
+      expect(result.message).not.toContain("No applicable comparable crop EC evidence");
+    }
+  });
+
   it("reports complete canonical crop-evidence coverage without guessing", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(214);

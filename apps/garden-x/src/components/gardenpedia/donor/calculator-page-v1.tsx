@@ -32,6 +32,7 @@ import {
   calculateGardenResult,
   loadSavedSystems,
   persistSavedSystems,
+  recipeStageLabel,
   recordActualDoses,
   type CalcResult,
   type EcUnit,
@@ -61,6 +62,7 @@ const T = {
     addPlant: "Añadir planta",
     volume: "Volumen del tanque",
     pods: "Pods activos",
+    podGroupsHint: "Grupos verificados: 6, 7 y 9 pods",
     product: "Nutriente",
     stage: "Etapa de la receta",
     currentEc: "EC que mediste",
@@ -158,6 +160,7 @@ const T = {
     addPlant: "Add plant",
     volume: "Reservoir volume",
     pods: "Active pods",
+    podGroupsHint: "Verified groups: 6, 7, and 9 pods",
     product: "Nutrient",
     stage: "Recipe stage",
     currentEc: "EC you measured",
@@ -254,10 +257,10 @@ const LITERS = [2, 4, 6.5, 10];
 const QUICK: SavedSystem = {
   id: "quick",
   name: "",
-  crops: { "genovese-basil": 2 },
+  crops: {},
   liters: 4,
   productId: "gh-flora",
-  water: { label: { es: "Grifo", en: "Tap" }, ec: 0.3 },
+  water: { label: { es: "Agua de origen", en: "Source water" }, ec: 0.3 },
   meter: "—",
   stageId: "feeding-2",
   pods: 6,
@@ -582,11 +585,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       onChange={(e) => setStageId(e.target.value)}
                       className="h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm"
                     >
-                      {product.recipeStages.map((s) => (
-                        <option key={s.id} value={s.id}>
-                          {s.label[lang]}
-                        </option>
-                      ))}
+                      {product.recipeStages
+                        .filter(
+                          (s) => product.id !== "aerogarden" || s.feedingIndex !== 3 || pods === 9,
+                        )
+                        .map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {recipeStageLabel(s, product.id, pods, lang)}
+                          </option>
+                        ))}
                     </select>
                   </div>
                 )}
@@ -594,9 +601,22 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
               {mode === "recipe" && product.basis === "pods" ? (
                 <Block title={t.pods}>
-                  <div className="flex items-center gap-3">
-                    <Stepper value={pods} onChange={setPods} large />
-                    <span className="text-sm text-muted-foreground">pods</span>
+                  <div className="space-y-2">
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {(product.podGroups ?? []).map((group) => (
+                        <Chip
+                          key={group}
+                          active={pods === group}
+                          onClick={() => {
+                            setPods(group);
+                            if (group !== 9 && stageId === "feeding-3") setStageId("feeding-1");
+                          }}
+                        >
+                          {group} pods
+                        </Chip>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground">{t.podGroupsHint}</p>
                   </div>
                 </Block>
               ) : mode !== "topup" ? (
@@ -621,11 +641,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 </Block>
               ) : null}
 
+              {mode !== "recipe" && (
+                <Field
+                  label={t.sourceEc}
+                  suffix="mS/cm"
+                  value={String(sourceEc)}
+                  onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
+                />
+              )}
+
               <details className="group rounded-md border border-border/70 bg-background/30">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-semibold">
                   {t.more}
                   <span className="flex items-center gap-2 text-xs font-normal text-muted-foreground">
-                    {unitLabel} · {sys.water.label[lang]} {fmtEc(sourceEc)}
+                    {unitLabel} · {fmtEc(sourceEc)}
                     <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
                   </span>
                 </summary>
@@ -641,12 +670,14 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       </Chip>
                     </div>
                   </div>
-                  <Field
-                    label={t.sourceEc}
-                    suffix="mS/cm"
-                    value={String(sourceEc)}
-                    onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
-                  />
+                  {mode === "recipe" && (
+                    <Field
+                      label={t.sourceEc}
+                      suffix="mS/cm"
+                      value={String(sourceEc)}
+                      onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
+                    />
+                  )}
                   <div className="text-sm">
                     <p className="text-xs text-muted-foreground">{t.meter}</p>
                     <p className="mt-1 font-medium">{sys.meter}</p>
@@ -946,6 +977,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
             value={saveName}
             onChange={setSaveName}
             placeholder={lang === "es" ? "Mi sistema" : "My system"}
+            type="text"
+            inputMode="text"
+            autoComplete="off"
           />
           <div className="grid grid-cols-2 gap-2">
             <Button variant="outline" className="h-11" onClick={() => setSaveOpen(false)}>
@@ -1364,6 +1398,9 @@ function Field({
   placeholder,
   highlight,
   className,
+  type = "text",
+  inputMode = "decimal",
+  autoComplete,
 }: {
   label: string;
   suffix?: string;
@@ -1372,6 +1409,9 @@ function Field({
   placeholder?: string;
   highlight?: boolean;
   className?: string;
+  type?: React.HTMLInputTypeAttribute;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  autoComplete?: string;
 }) {
   return (
     <label className={cn("block text-xs text-muted-foreground", className)}>
@@ -1383,7 +1423,9 @@ function Field({
         )}
       >
         <input
-          inputMode="decimal"
+          type={type}
+          inputMode={inputMode}
+          autoComplete={autoComplete}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}

@@ -13,7 +13,9 @@ import { donorPlants } from "./canonical-adapter";
 import { MODE_TO_ENGINE, recipeSignature } from "./calculator-v1-adapter";
 import {
   CALCULATOR_PLANTS,
+  CALCULATOR_PRODUCTS,
   CALCULATOR_STAGES,
+  buildCropEvidenceCoverage,
   calculateGardenResult,
   loadSavedSystems,
   persistSavedSystems,
@@ -31,6 +33,67 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("resolves only explicitly verified Gardenpedia identity mappings", () => {
     expect(resolveNutrientCropIdentity("genovese-basil")).toBe("basil");
     expect(resolveNutrientCropIdentity("common-mint")).toBeUndefined();
+  });
+
+  it("resolves Genovese Basil through applicable EC evidence before calibration", () => {
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") {
+      expect(result.range).toEqual({ min: 1, max: 1.6, common: true });
+      expect(result.evidence).toBe("high");
+      expect(result.message).toContain("medición real");
+      expect(result.message).not.toContain("No applicable comparable crop EC evidence");
+    }
+  });
+
+  it("reports complete canonical crop-evidence coverage without guessing", () => {
+    const report = buildCropEvidenceCoverage();
+    expect(report.rows).toHaveLength(214);
+    expect(report.totals).toEqual({
+      SUPPORTED_DIRECT: 0,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 49,
+      INSUFFICIENT: 165,
+      NOT_APPLICABLE: 0,
+    });
+    expect(report.rows.find((row) => row.plantId === "genovese-basil")).toEqual({
+      plantId: "genovese-basil",
+      classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      evidenceIdentity: "basil",
+    });
+    expect(report.rows.find((row) => row.plantId === "bibb-lettuce")?.classification).toBe(
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+    );
+    expect(report.rows.find((row) => row.plantId === "cherry-tomato")?.classification).toBe(
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+    );
+    expect(report.rows.find((row) => row.plantId === "monterey-strawberry")?.classification).toBe(
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+    );
+    expect(report.rows.find((row) => row.plantId === "anaheim-pepper")?.classification).toBe(
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+    );
+    expect(report.rows.find((row) => row.plantId === "common-mint")?.classification).toBe(
+      "INSUFFICIENT",
+    );
+  });
+
+  it("keeps AeroGarden UI projections aligned with verified pod groups", () => {
+    const aero = CALCULATOR_PRODUCTS.find((product) => product.id === "aerogarden");
+    expect(aero?.podGroups).toEqual([6, 7, 9]);
+    expect(aero?.recipeStages.map((stage) => stage.feedingIndex)).toEqual([1, 3]);
   });
 
   it("maps each UX mode to exactly one V1 operating mode", () => {

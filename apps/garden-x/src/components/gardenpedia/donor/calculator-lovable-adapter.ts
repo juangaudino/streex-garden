@@ -43,6 +43,7 @@ export type CalculatorProduct = {
   hasRecipeStages?: boolean;
   recipeId?: string;
   recipeStages: CalculatorStage[];
+  podGroups?: readonly number[];
   available: boolean;
 };
 
@@ -78,19 +79,62 @@ function spanishRecipeLabel(label: string): string {
     .replace("9-pod Bounty later feeding", "Alimentación Bounty posterior · 9 pods");
 }
 
-function projectRecipeStages(recipeId: string): CalculatorStage[] {
-  const recipe = MANUFACTURER_RECIPES.find((item) => item.id === recipeId);
-  return (recipe?.steps ?? []).map((step) => ({
-    id: `feeding-${step.feedingIndex ?? step.label}`,
-    feedingIndex: step.feedingIndex,
-    label: { es: spanishRecipeLabel(step.label), en: step.label },
-  }));
-}
-
 const FLORA_RECIPE_ID = "general-hydroponics-floraseries-3part-2026-07-07";
 const AEROGARDEN_RECIPE_ID = "aerogarden-liquid-plant-food-4-3-6";
+
+function projectRecipeStages(recipeId: string): CalculatorStage[] {
+  const recipe = MANUFACTURER_RECIPES.find((item) => item.id === recipeId);
+  const seenFeedingIndexes = new Set<number>();
+  return (recipe?.steps ?? [])
+    .filter((step) => {
+      if (recipeId !== AEROGARDEN_RECIPE_ID || step.feedingIndex === undefined) return true;
+      if (seenFeedingIndexes.has(step.feedingIndex)) return false;
+      seenFeedingIndexes.add(step.feedingIndex);
+      return true;
+    })
+    .map((step) => ({
+      id: `feeding-${step.feedingIndex ?? step.label}`,
+      feedingIndex: step.feedingIndex,
+      label: {
+        es:
+          recipeId === AEROGARDEN_RECIPE_ID
+            ? step.feedingIndex === 1
+              ? "Primera/segunda alimentación · grupo verificado"
+              : "Alimentación posterior · 9 pods"
+            : spanishRecipeLabel(step.label),
+        en:
+          recipeId === AEROGARDEN_RECIPE_ID
+            ? step.feedingIndex === 1
+              ? "First/second feeding · verified pod group"
+              : "Later feeding · 9 pods"
+            : step.label,
+      },
+    }));
+}
+
 const FLORA_STAGES = projectRecipeStages(FLORA_RECIPE_ID);
 const AEROGARDEN_STAGES = projectRecipeStages(AEROGARDEN_RECIPE_ID);
+
+export function recipeStageLabel(
+  stage: CalculatorStage,
+  productId: string,
+  pods: number,
+  lang: Lang,
+): string {
+  if (productId !== "aerogarden") return stage.label[lang];
+  if (stage.feedingIndex === 1) {
+    return lang === "es"
+      ? pods === 9
+        ? "Primera/segunda alimentación · Bounty · 9 pods"
+        : "Alimentación Harvest · 6/7 pods"
+      : pods === 9
+        ? "First/second feeding · Bounty · 9 pods"
+        : "Harvest feeding · 6/7 pods";
+  }
+  return lang === "es"
+    ? "Alimentación posterior · Bounty · 9 pods"
+    : "Later feeding · Bounty · 9 pods";
+}
 
 export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
   {
@@ -114,6 +158,7 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
     recipeId: AEROGARDEN_RECIPE_ID,
     hasRecipeStages: true,
     recipeStages: AEROGARDEN_STAGES,
+    podGroups: [6, 7, 9],
     available: true,
     parts: [{ id: "single", label: "Liquid Plant Food" }],
   },
@@ -301,8 +346,58 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "broadleaf-sage": "sage",
 };
 
+export type CropEvidenceCoverageClass =
+  "SUPPORTED_DIRECT" | "SUPPORTED_VIA_DEFENSIBLE_MAPPING" | "INSUFFICIENT" | "NOT_APPLICABLE";
+
+export type CropEvidenceCoverageRow = {
+  plantId: string;
+  classification: CropEvidenceCoverageClass;
+  evidenceIdentity?: string;
+};
+
+export type CropEvidenceCoverageReport = {
+  totals: Record<CropEvidenceCoverageClass, number>;
+  rows: CropEvidenceCoverageRow[];
+};
+
 export function resolveNutrientCropIdentity(plantId: string): string | undefined {
   return NUTRIENT_IDENTITY_MAP[plantId];
+}
+
+/**
+ * Audits every published Gardenpedia identity against the explicit nutrient
+ * evidence boundary. Unknown identities stay insufficient; no name matching
+ * or category guessing is used here.
+ */
+export function buildCropEvidenceCoverage(): CropEvidenceCoverageReport {
+  const rows = CALCULATOR_PLANTS.map(({ id }) => {
+    const evidenceIdentity = resolveNutrientCropIdentity(id);
+    const hasDirectEvidence = CROP_EVIDENCE.some((item) => item.cropIdentity === id);
+    if (hasDirectEvidence) {
+      return { plantId: id, classification: "SUPPORTED_DIRECT" as const, evidenceIdentity: id };
+    }
+    if (!evidenceIdentity) return { plantId: id, classification: "INSUFFICIENT" as const };
+
+    const applicability = calculatePolycultureRange(
+      contextFor({ [id]: 1 }, "gh-flora"),
+      CROP_EVIDENCE,
+    );
+    return applicability.status === "INSUFFICIENT"
+      ? { plantId: id, classification: "INSUFFICIENT" as const, evidenceIdentity }
+      : {
+          plantId: id,
+          classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING" as const,
+          evidenceIdentity,
+        };
+  });
+  const totals: Record<CropEvidenceCoverageClass, number> = {
+    SUPPORTED_DIRECT: 0,
+    SUPPORTED_VIA_DEFENSIBLE_MAPPING: 0,
+    INSUFFICIENT: 0,
+    NOT_APPLICABLE: 0,
+  };
+  for (const row of rows) totals[row.classification] += 1;
+  return { totals, rows };
 }
 
 export function calculatorPlantById(id: string): DonorPlant | undefined {
@@ -357,6 +452,7 @@ function sourceTitles(claims: Claim[]): string[] {
 
 function rangeFor(contexts: CropContext[]) {
   const result = calculatePolycultureRange(contexts, CROP_EVIDENCE);
+  if (result.status === "INSUFFICIENT") return undefined;
   if (result.status === "COMMON_OPTIMUM_RANGE" && result.range) {
     return { min: result.range.min, max: result.range.max, common: true };
   }

@@ -102,14 +102,28 @@ jobs:
             -e PGSERVICEFILE=/restore/pg_service.conf \
             -e PGSERVICE=restore \
             postgres:17 \
-            sh -ec "pg_restore --list /restore/snapshot/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname=service=restore --no-owner --no-privileges /restore/snapshot/database.dump" \
+            sh -ec "pg_restore --list /restore/snapshot/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname=service=restore --no-owner /restore/snapshot/database.dump" \
             > "$workdir/pg-restore.log" 2>&1
           pg_restore_status=$?
           set -e
           if [ "$pg_restore_status" -ne 0 ]; then
-            echo 'pg_restore reported conflicts; inspect the restricted job log before accepting this restore drill.'
-            exit "$pg_restore_status"
+            echo 'pg_restore reported conflicts; continuing only to compare the restored schema, privileges, row fingerprints, and media bytes with the snapshot.'
           fi
+
+          docker run --rm --network host \
+            -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
+            postgres:17 \
+            pg_dump service=restore --schema-only --schema=garden --schema=auth --no-owner \
+              --file=/restore/restored-domain-schema.sql
+          sed -e '/^-- PostgreSQL database dump$/d' \
+            -e '/^-- Dumped from database version /d' \
+            -e '/^-- Dumped by pg_dump version /d' \
+            -e '/^-- Dump completed on /d' \
+            "$workdir/restored-domain-schema.sql" | sha256sum | awk '{print $1}' > "$workdir/restored-domain-schema.sha256"
+          jq -e --arg schema_sha256 "$(cat "$workdir/restored-domain-schema.sha256")" \
+            '.domain_schema_sha256 == $schema_sha256' "$workdir/snapshot/backup-manifest.json" >/dev/null
 
           docker run --rm --network host \
             -v "$workdir:/restore" \

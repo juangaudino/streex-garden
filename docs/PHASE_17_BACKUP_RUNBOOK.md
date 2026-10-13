@@ -48,7 +48,7 @@ Antes de habilitar el workflow, configurar en GitHub Actions:
 
 - Secrets `PRODUCTION_SUPABASE_DB_URL`, `SUPABASE_CONFIG_READ_TOKEN`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token Supabase necesita únicamente `auth_config_read` para Production y el destino aislado; el token R2 solo necesita lectura en `garden-x-production-media`.
 - Variable `PRODUCTION_R2_BUCKET` con `garden-x-production-media`.
-- Secrets `BACKUP_R2_ENDPOINT`, `BACKUP_R2_ACCESS_KEY_ID` y `BACKUP_R2_SECRET_ACCESS_KEY`; este token solo necesita leer/escribir objetos en el bucket existente de backups.
+- The existing repository secrets `R2_ENDPOINT`, `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` are used for the backup destination; the previous backup workflow already used them with `streex-garden-backups`. The updated workflow first checks both buckets using list-only requests, before any database dump or upload.
 - Variable `BACKUP_R2_BUCKET` con `streex-garden-backups`.
 - Para el simulacro, secret `RESTORE_TARGET_SUPABASE_DB_URL` y variable `RESTORE_TARGET_PROJECT_REF` de un proyecto desechable y aislado. El workflow rechaza OLD y Production.
 

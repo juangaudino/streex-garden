@@ -12,6 +12,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W1 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.9020387769786686 | 1.90204 | 0.0000012230213313202398 | 0.000006 | PASS |
 | GH Light W1 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.9020387769786686 | 1.90204 | 0.0000012230213313202398 | 0.000006 | PASS |
 | GH Light W1 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.9020387769786686 | 1.90204 | 0.0000012230213313202398 | 0.000006 | PASS |
+| GH Light W1 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.4 | 0.4 | 0 | 0 | PASS |
+| GH Light W1 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.5 | 0.5 | 0 | 0 | PASS |
 | GH Light W1 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.090813012590337 | 3.090815 | 0.000001987409663062323 | 0.000006 | PASS |
 | GH Light W1 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.090813012590337 | 3.090815 | 0.000001987409663062323 | 0.000006 | PASS |
 | GH Light W1 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.090813012590337 | 3.090815 | 0.000001987409663062323 | 0.000006 | PASS |
@@ -24,6 +26,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W2 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.8040775539573373 | 3.804076 | 0.000001553957337474543 | 0.000006 | PASS |
 | GH Light W2 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.5927399120708183 | 3.59274 | 8.792918171351971e-8 | 0.000006 | PASS |
 | GH Light W2 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 2.7473893445247435 | 2.747388 | 0.0000013445247435406316 | 0.000006 | PASS |
+| GH Light W2 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.9 | 0.9 | 0 | 0 | PASS |
+| GH Light W2 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.1 | 1.1 | 0 | 0 | PASS |
 | GH Light W2 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 6.181626025180674 | 6.1816235 | 0.000002525180674339822 | 0.000006 | PASS |
 | GH Light W2 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 5.83820235711508 | 5.8382025 | 1.428849207840699e-7 | 0.000006 | PASS |
 | GH Light W2 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 4.464507684852709 | 4.4645055 | 0.0000021848527094192605 | 0.000006 | PASS |
@@ -36,6 +40,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W4 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 6.340129256595562 | 6.340128 | 0.0000012565955618271119 | 0.000006 | PASS |
 | GH Light W4 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 5.917453972822524 | 5.917452 | 0.0000019728225240100983 | 0.000006 | PASS |
 | GH Light W4 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 4.438090479616894 | 4.438092 | 0.0000015203831065235818 | 0.000006 | PASS |
+| GH Light W4 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.4 | 1.4 | 0 | 0 | PASS |
+| GH Light W4 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.7 | 1.7 | 0 | 0 | PASS |
 | GH Light W4 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 10.302710041967789 | 10.302707999999999 | 0.000002041967789523369 | 0.000006 | PASS |
 | GH Light W4 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 9.615862705836602 | 9.6158595 | 0.000003205836602404588 | 0.000006 | PASS |
 | GH Light W4 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 7.211897029377452 | 7.2118995 | 0.000002470622548322865 | 0.000006 | PASS |
@@ -48,6 +54,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W5 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 8.030830391687712 | 8.030832 | 0.0000016083122886811907 | 0.000006 | PASS |
 | GH Light W5 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 6.974142182255118 | 6.974144 | 0.0000018177448817269237 | 0.000006 | PASS |
 | GH Light W5 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 8.981849780177047 | 8.981848 | 0.0000017801770475500689 | 0.000006 | PASS |
+| GH Light W5 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 2 | 2 | 0 | 0 | PASS |
+| GH Light W5 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 2.4 | 2.4 | 0 | 0 | PASS |
 | GH Light W5 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 13.050099386492532 | 13.050102 | 0.000002613507469106935 | 0.000006 | PASS |
 | GH Light W5 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 11.332981046164567 | 11.332984 | 0.0000029538354322511395 | 0.000006 | PASS |
 | GH Light W5 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 14.5955058927877 | 14.595502999999999 | 0.0000028927877018247727 | 0.000006 | PASS |
@@ -60,6 +68,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W7 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 4.860765763389931 | 4.860764 | 0.0000017633899309643652 | 0.000006 | PASS |
 | GH Light W7 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 4.860765763389931 | 4.860764 | 0.0000017633899309643652 | 0.000006 | PASS |
 | GH Light W7 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 6.974142182255118 | 6.974144 | 0.0000018177448817269237 | 0.000006 | PASS |
+| GH Light W7 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.4 | 1.4 | 0 | 0 | PASS |
+| GH Light W7 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.7 | 1.7 | 0 | 0 | PASS |
 | GH Light W7 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 7.898744365508637 | 7.8987415 | 0.0000028655086374840266 | 0.000006 | PASS |
 | GH Light W7 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 7.898744365508637 | 7.8987415 | 0.0000028655086374840266 | 0.000006 | PASS |
 | GH Light W7 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 11.332981046164567 | 11.332984 | 0.0000029538354322511395 | 0.000006 | PASS |
@@ -72,6 +82,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W10 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.487071091127559 | 3.487072 | 9.088724408634619e-7 | 0.000006 | PASS |
 | GH Light W10 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.487071091127559 | 3.487072 | 9.088724408634619e-7 | 0.000006 | PASS |
 | GH Light W10 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 4.226752837730375 | 4.226752 | 8.377303748474674e-7 | 0.000006 | PASS |
+| GH Light W10 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.9 | 0.9 | 0 | 0 | PASS |
+| GH Light W10 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 1.1 | 1.1 | 0 | 0 | PASS |
 | GH Light W10 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 5.666490523082284 | 5.666492 | 0.0000014769177161255698 | 0.000006 | PASS |
 | GH Light W10 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 5.666490523082284 | 5.666492 | 0.0000014769177161255698 | 0.000006 | PASS |
 | GH Light W10 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 6.868473361311859 | 6.868472000000001 | 0.0000013613118587940676 | 0.000006 | PASS |
@@ -84,6 +96,8 @@ EC dosing checks use a SIMULATED QA observation (4 L; EC 0.20 → 1.10; actual M
 | GH Light W12 4L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 2.1133764188651876 | 2.113376 | 4.188651874237337e-7 | 0.000006 | PASS |
 | GH Light W12 4L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 2.1133764188651876 | 2.113376 | 4.188651874237337e-7 | 0.000006 | PASS |
 | GH Light W12 4L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.3814022701843 | 3.381404 | 0.000001729815700013404 | 0.000006 | PASS |
+| GH Light W12 expected EC minimum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.6 | 0.6 | 0 | 0 | PASS |
+| GH Light W12 expected EC maximum | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 0.8 | 0.8 | 0 | 0 | PASS |
 | GH Light W12 6.5L Micro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.4342366806559297 | 3.4342360000000003 | 6.806559293970338e-7 | 0.000006 | PASS |
 | GH Light W12 6.5L Gro | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 3.4342366806559297 | 3.4342360000000003 | 6.806559293970338e-7 | 0.000006 | PASS |
 | GH Light W12 6.5L Bloom | [Reference](https://generalhydroponics.com/pages/flora-series-3-part-feed-program) | 5.494778689049487 | 5.4947815 | 0.0000028109505132434265 | 0.000006 | PASS |

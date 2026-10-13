@@ -1,7 +1,7 @@
 {
   "calibrationEvidence": "SIMULATED QA observation. No empirical product-response validation claimed.",
   "calculations": 1979,
-  "externalComparisons": 135,
+  "externalComparisons": 149,
   "coverage": {
     "totals": {
       "SUPPORTED_DIRECT": 0,
@@ -973,6 +973,24 @@
       "pass": true
     },
     {
+      "test": "GH Light W1 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.4,
+      "gardenValue": 0.4,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.5,
+      "gardenValue": 0.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "test": "GH Light W1 6.5L Micro",
       "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
       "sourceValue": 3.090813012590337,
@@ -1078,6 +1096,24 @@
       "gardenValue": 2.747388,
       "difference": 0.0000013445247435406316,
       "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.9,
+      "gardenValue": 0.9,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.1,
+      "gardenValue": 1.1,
+      "difference": 0,
+      "tolerance": 0,
       "pass": true
     },
     {
@@ -1189,6 +1225,24 @@
       "pass": true
     },
     {
+      "test": "GH Light W4 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.4,
+      "gardenValue": 1.4,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.7,
+      "gardenValue": 1.7,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "test": "GH Light W4 6.5L Micro",
       "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
       "sourceValue": 10.302710041967789,
@@ -1294,6 +1348,24 @@
       "gardenValue": 8.981848,
       "difference": 0.0000017801770475500689,
       "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2,
+      "gardenValue": 2,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.4,
+      "gardenValue": 2.4,
+      "difference": 0,
+      "tolerance": 0,
       "pass": true
     },
     {
@@ -1405,6 +1477,24 @@
       "pass": true
     },
     {
+      "test": "GH Light W7 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.4,
+      "gardenValue": 1.4,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.7,
+      "gardenValue": 1.7,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "test": "GH Light W7 6.5L Micro",
       "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
       "sourceValue": 7.898744365508637,
@@ -1513,6 +1603,24 @@
       "pass": true
     },
     {
+      "test": "GH Light W10 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.9,
+      "gardenValue": 0.9,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.1,
+      "gardenValue": 1.1,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "test": "GH Light W10 6.5L Micro",
       "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
       "sourceValue": 5.666490523082284,
@@ -1618,6 +1726,24 @@
       "gardenValue": 3.381404,
       "difference": 0.000001729815700013404,
       "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 expected EC minimum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.6,
+      "gardenValue": 0.6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 expected EC maximum",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.8,
+      "gardenValue": 0.8,
+      "difference": 0,
+      "tolerance": 0,
       "pass": true
     },
     {

@@ -129,6 +129,10 @@ describe("Calculator objective independent validation", () => {
           ),
         );
         expect(value.expectedEc).toEqual({ kind: "manufacturer", min, max });
+        if (liters === 4 && value.expectedEc?.kind === "manufacturer") {
+          compare(`GH Light W${index} expected EC minimum`, ghUrl, min!, value.expectedEc.min, 0);
+          compare(`GH Light W${index} expected EC maximum`, ghUrl, max!, value.expectedEc.max, 0);
+        }
       }
   });
   it("compares AeroGarden with current official group and feeding instructions", () => {

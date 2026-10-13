@@ -76,7 +76,7 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 ## Final automated check snapshot
 
 - Relevant Gardenpedia/Calculator/engine suite: 14 files, 98 tests passed.
-- Numerical matrix: 1,979 executed calculations; 135 numeric comparisons passed, including 132 manufacturer/agronomic comparisons and 3 independently recomputed simulated-calibration cases.
+- Numerical matrix: 1,979 executed calculations; 149 numeric comparisons passed, including 146 manufacturer/agronomic comparisons and 3 independently recomputed simulated-calibration cases.
 - Full repository suite with four workers: 634 passed, 1 failed. The same Compare Timeline-query assertion fails on the unchanged reviewed baseline; no Compare code was changed. An unbounded-worker run additionally timed out in AddPlant; isolated and four-worker runs pass that file.
 - Root typecheck and the strict Calculator dependency-graph typecheck passed. This does not assert that unrelated app-wide pre-existing TypeScript errors were repaired.
 - Changed-file lint, production build, content validation and diff whitespace checks passed.
@@ -84,3 +84,7 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 - Browser workflow details and measured widths are in `browser-validation.md`.
 
 The requested empirical-calibration gate is **not proven** by these checks. An actual measured exact-product observation is needed for that gate. The software accepts, saves and consumes such observations; simulated QA entries must never be relabeled as physical evidence.
+
+## Preview platform prerequisite
+
+Vercel rejected the initial Preview because `@tanstack/react-start@1.168.32` is affected by [CVE-2026-102989 / GHSA-qx66-fv34-fjm8](https://github.com/TanStack/router/security/advisories/GHSA-qx66-fv34-fjm8). The corrective branch pins the official patched Start `1.168.60` and its matching Router `1.170.41`. No unsafe deployment bypass is enabled. Production/main are not changed by this branch-only prerequisite.

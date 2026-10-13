@@ -42,7 +42,7 @@ El 8 de septiembre de 2026 (UTC), `Garden restore drill` restauró correctamente
 
 El simulacro y el workflow descritos arriba corresponden al respaldo anterior de Supabase Storage `garden-originals`; no prueban que la base canónica actual ni el bucket R2 de Production puedan restaurarse. El workflow actualizado de `Garden Production backup` toma el dump de `fnhggqqnkhkrfwmnsqmy`, incluye los registros de `auth.users` y el conteo de jardines/fotos, copia `garden-x-production-media` a una instantánea única en `streex-garden-backups`, guarda checksums e inventario y verifica los bytes copiados. No elimina ni modifica objetos de origen.
 
-El manifest canónico también contiene filas y SHA-256 por tabla para las tablas base de `garden` y `auth`; el simulacro vuelve a calcularlas tras restaurar. Eso compara IDs, asociaciones y metadatos sin publicar filas personales. Las URL de conexión solo se convierten en archivos de servicio libpq locales con permisos `0600`; no se pasan como argumentos a `psql`, `pg_dump` o `pg_restore`.
+El dump canónico conserva las ACL PostgreSQL. El manifest también contiene una huella del esquema de `garden` y `auth` —incluidas políticas y privilegios—, además de filas y SHA-256 por tabla. El simulacro vuelve a calcular estas huellas, conteos y datos tras restaurar. Eso compara IDs, asociaciones y metadatos sin publicar filas personales. Las URL de conexión solo se convierten en archivos de servicio libpq locales con permisos `0600`; no se pasan como argumentos a `psql`, `pg_dump` o `pg_restore`.
 
 Antes de habilitar el workflow, configurar en GitHub Actions:
 

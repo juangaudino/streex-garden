@@ -82,7 +82,7 @@ jobs:
             -e PGSERVICEFILE=/backup/pg_service.conf \
             -e PGSERVICE=production \
             postgres:17 \
-            pg_dump service=production --format=custom --no-owner --no-privileges --file=/backup/database.dump
+            pg_dump service=production --format=custom --no-owner --file=/backup/database.dump
           test -s "$workdir/database.dump"
           docker run --rm --network host \
             -v "$workdir:/backup" \
@@ -92,6 +92,18 @@ jobs:
             psql service=production --no-align --tuples-only --set ON_ERROR_STOP=1 \
               --command "select json_build_object('gardens',(select count(*) from garden.gardens),'photos',(select count(*) from garden.photos),'auth_users',(select count(*) from auth.users));" \
               > "$workdir/domain-counts.json"
+          docker run --rm --network host \
+            -v "$workdir:/backup" \
+            -e PGSERVICEFILE=/backup/pg_service.conf \
+            -e PGSERVICE=production \
+            postgres:17 \
+            pg_dump service=production --schema-only --schema=garden --schema=auth --no-owner \
+              --file=/backup/domain-schema.sql
+          sed -e '/^-- PostgreSQL database dump$/d' \
+            -e '/^-- Dumped from database version /d' \
+            -e '/^-- Dumped by pg_dump version /d' \
+            -e '/^-- Dump completed on /d' \
+            "$workdir/domain-schema.sql" | sha256sum | awk '{print $1}' > "$workdir/domain-schema.sha256"
           docker run --rm --network host \
             -v "$workdir:/backup" \
             -e PGSERVICEFILE=/backup/pg_service.conf \
@@ -119,11 +131,12 @@ jobs:
             --arg project_ref 'fnhggqqnkhkrfwmnsqmy' \
             --arg source_bucket "$PRODUCTION_R2_BUCKET" \
             --arg database_sha256 "$(cat "$workdir/database.dump.sha256")" \
+            --arg domain_schema_sha256 "$(cat "$workdir/domain-schema.sha256")" \
             --argjson media_objects "$object_count" \
             --slurpfile domain_counts "$workdir/domain-counts.json" \
             --slurpfile domain_tables "$workdir/domain-tables.json" \
             --slurpfile media "$workdir/media-objects.json" \
-            '{snapshot:$snapshot, source_project_ref:$project_ref, source_media_bucket:$source_bucket, database_dump_sha256:$database_sha256, domain_counts:$domain_counts[0], domain_tables:$domain_tables[0], media_object_count:$media_objects, media_objects:[$media[0][] | select(.IsDir != true)]}' \
+            '{snapshot:$snapshot, source_project_ref:$project_ref, source_media_bucket:$source_bucket, database_dump_sha256:$database_sha256, domain_schema_sha256:$domain_schema_sha256, domain_counts:$domain_counts[0], domain_tables:$domain_tables[0], media_object_count:$media_objects, media_objects:[$media[0][] | select(.IsDir != true)]}' \
             > "$workdir/backup-manifest.json"
 
           prefix="backup:$BACKUP_R2_BUCKET/snapshots/$stamp"

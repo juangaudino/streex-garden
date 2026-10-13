@@ -6,6 +6,10 @@ The current Production bundle was previously verified to use Supabase project `f
 
 `prototypes/grow-guide/supabase-lab-transport.js` contained a hard-coded OLD URL and was not in the Garden Labs sync file list. It has been replaced by a retirement marker. The deployed Gardenpedia transport comes from `labs/gardenpedia/supabase-lab-transport.js`, which uses build placeholders and is populated from the canonical Production URL. `docs/OPERATIONS_AND_DEPLOYMENT.md` now targets the canonical Production project for function deploy/list commands.
 
+The current photo runtime calls the `garden-media` Edge Function through the canonical build-time Supabase URL; that gateway reads and writes Media V1 objects in R2. `scripts/backfill-photo-renditions.mjs` was an unreferenced manual tool that wrote to legacy Supabase Storage `garden-originals`. Its old entry point now exits with a retirement message so stale commands cannot reactivate that storage path. The historical recovery script remains available for audit evidence and is intentionally source-only for OLD.
+
+An authenticated Safari session in Garden X Production opened a historical Common Mint timeline photo successfully on 2026-10-13 UTC. The preserved recovery report separately records 236 canonical photos and 708/708 R2 rendition objects verified; it records a rendered browser comparison for two recovered photos.
+
 ## OLD Edge Functions
 
 All eight functions listed below remain deployed and `ACTIVE` on OLD. The available OLD log stream for 2026-10-12 02:37 UTC through 2026-10-13 02:37 UTC contained 3,212 `edge_logs` rows and zero `event_message` matches for `/functions/v1/`. The stream did not expose a separate `function_edge_logs` source, so this does not establish zero invocations across all gateway logs or outside that 24-hour window. The OLD database also had no `pg_cron` or `pg_net` extension and no `cron.job` relation. External schedulers still require owner-side confirmation.

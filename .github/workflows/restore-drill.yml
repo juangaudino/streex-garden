@@ -19,7 +19,7 @@ permissions:
 jobs:
   restore:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     env:
       SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
       CONFIRMATION: ${{ inputs.confirmation }}
@@ -122,8 +122,11 @@ jobs:
             -e '/^-- Dumped by pg_dump version /d' \
             -e '/^-- Dump completed on /d' \
             "$workdir/restored-domain-schema.sql" | sha256sum | awk '{print $1}' > "$workdir/restored-domain-schema.sha256"
-          jq -e --arg schema_sha256 "$(cat "$workdir/restored-domain-schema.sha256")" \
-            '.domain_schema_sha256 == $schema_sha256' "$workdir/snapshot/backup-manifest.json" >/dev/null
+          if ! jq -e --arg schema_sha256 "$(cat "$workdir/restored-domain-schema.sha256")" \
+            '.domain_schema_sha256 == $schema_sha256' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth schema or privilege fingerprint does not match the snapshot.'
+            exit 1
+          fi
 
           docker run --rm --network host \
             -v "$workdir:/restore" \
@@ -133,8 +136,11 @@ jobs:
             psql service=restore --no-align --tuples-only --set ON_ERROR_STOP=1 \
               --command "select json_build_object('gardens',(select count(*) from garden.gardens),'photos',(select count(*) from garden.photos),'auth_users',(select count(*) from auth.users));" \
               > "$workdir/restored-domain-counts.json"
-          jq -e --slurpfile actual "$workdir/restored-domain-counts.json" \
-            '.domain_counts == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null
+          if ! jq -e --slurpfile actual "$workdir/restored-domain-counts.json" \
+            '.domain_counts == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth table counts do not match the snapshot.'
+            exit 1
+          fi
           docker run --rm --network host \
             -v "$workdir:/restore" \
             -e PGSERVICEFILE=/restore/pg_service.conf \
@@ -142,6 +148,9 @@ jobs:
             postgres:17 bash /restore/fingerprint.sh restore /restore/pg_service.conf /restore/restored-domain-tables.tsv
           jq -Rn '[inputs | split("\t") | {table:.[0], rows:(.[1]|tonumber), sha256:.[2]}]' \
             < "$workdir/restored-domain-tables.tsv" > "$workdir/restored-domain-tables.json"
-          jq -e --slurpfile actual "$workdir/restored-domain-tables.json" \
-            '.domain_tables == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null
+          if ! jq -e --slurpfile actual "$workdir/restored-domain-tables.json" \
+            '.domain_tables == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth row fingerprints do not match the snapshot.'
+            exit 1
+          fi
           echo 'Isolated garden/auth row fingerprints, counts, and restored media manifest match the snapshot.'

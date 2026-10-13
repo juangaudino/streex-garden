@@ -46,7 +46,7 @@ El dump canónico conserva las ACL PostgreSQL. El manifest también contiene una
 
 Antes de habilitar el workflow, configurar en GitHub Actions:
 
-- Secrets `PRODUCTION_SUPABASE_DB_URL`, `SUPABASE_CONFIG_READ_TOKEN`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token Supabase necesita únicamente `auth_config_read` para Production y el destino aislado; el token R2 solo necesita lectura en `garden-x-production-media`.
+- Secret `PRODUCTION_SUPABASE_DB_URL` (preferido); si falta, el workflow prueba el secret heredado `SUPABASE_DB_URL` y solo lo acepta si su URL identifica explícitamente el proyecto canónico `fnhggqqnkhkrfwmnsqmy`. También se requieren `SUPABASE_CONFIG_READ_TOKEN`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token Supabase necesita únicamente `auth_config_read` para Production y el destino aislado; el token R2 solo necesita lectura en `garden-x-production-media`.
 - Variable `PRODUCTION_R2_BUCKET` con `garden-x-production-media`.
 - The existing repository secrets `R2_ENDPOINT`, `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` are used for the backup destination; the previous backup workflow already used them with `streex-garden-backups`. The updated workflow first checks both buckets using list-only requests, before any database dump or upload.
 - Variable `BACKUP_R2_BUCKET` con `streex-garden-backups`.

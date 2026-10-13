@@ -1,4 +1,4 @@
-project_id = "streex-garden"
+project_id = "garden-x-retirement-recovery"
 
 [functions.garden-identify]
 verify_jwt = true

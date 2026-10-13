@@ -46,12 +46,12 @@ El dump canónico conserva las ACL PostgreSQL. El manifest también contiene una
 
 Antes de habilitar el workflow, configurar en GitHub Actions:
 
-- Secrets `PRODUCTION_SUPABASE_DB_URL`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token R2 solo necesita lectura en `garden-x-production-media`.
+- Secrets `PRODUCTION_SUPABASE_DB_URL`, `SUPABASE_CONFIG_READ_TOKEN`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token Supabase necesita únicamente `auth_config_read` para Production y el destino aislado; el token R2 solo necesita lectura en `garden-x-production-media`.
 - Variable `PRODUCTION_R2_BUCKET` con `garden-x-production-media`.
 - Secrets `BACKUP_R2_ENDPOINT`, `BACKUP_R2_ACCESS_KEY_ID` y `BACKUP_R2_SECRET_ACCESS_KEY`; este token solo necesita leer/escribir objetos en el bucket existente de backups.
 - Variable `BACKUP_R2_BUCKET` con `streex-garden-backups`.
 - Para el simulacro, secret `RESTORE_TARGET_SUPABASE_DB_URL` y variable `RESTORE_TARGET_PROJECT_REF` de un proyecto desechable y aislado. El workflow rechaza OLD y Production.
 
-El dump incluye las filas de Auth y datos de Garden que viven en PostgreSQL. No contiene la configuración de proyecto de Supabase (proveedores OAuth, SMTP, secretos de funciones ni ajustes del proyecto); respaldar y comprobar esa configuración requiere acceso autorizado al proyecto y un inventario separado. No registrar valores secretos en GitHub logs, este runbook ni el chat.
+El dump incluye las filas de Auth y datos de Garden que viven en PostgreSQL. La instantánea guarda además la respuesta de `GET /v1/projects/{ref}/config/auth` (incluidos secretos de proveedores y SMTP cuando la API los devuelve) en el bucket independiente, con checksum y sin imprimirla en logs. El simulacro compara su checksum con el proyecto aislado y no aplica cambios a Production.
 
 El respaldo canónico y su restauración siguen **sin verificar** hasta que una ejecución nueva de ambos workflows termine correctamente y se compare el manifest completo en el proyecto aislado. El éxito del workflow legado del 8 de septiembre de 2026 no satisface este requisito.

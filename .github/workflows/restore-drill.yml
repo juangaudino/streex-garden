@@ -25,6 +25,7 @@ jobs:
       CONFIRMATION: ${{ inputs.confirmation }}
       RESTORE_TARGET_SUPABASE_DB_URL: ${{ secrets.RESTORE_TARGET_SUPABASE_DB_URL }}
       RESTORE_TARGET_PROJECT_REF: ${{ vars.RESTORE_TARGET_PROJECT_REF }}
+      SUPABASE_CONFIG_READ_TOKEN: ${{ secrets.SUPABASE_CONFIG_READ_TOKEN }}
       BACKUP_R2_ACCESS_KEY_ID: ${{ secrets.BACKUP_R2_ACCESS_KEY_ID }}
       BACKUP_R2_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_R2_SECRET_ACCESS_KEY }}
       BACKUP_R2_ENDPOINT: ${{ secrets.BACKUP_R2_ENDPOINT }}
@@ -38,9 +39,10 @@ jobs:
         run: |
           set -euo pipefail
           set +x
-          [[ "$SNAPSHOT_DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}-[0-9]{2}-[0-9]{2}Z-[0-9]+$ ]]
+          [[ "$SNAPSHOT_DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}-[0-9]{2}-[0-9]{2}Z-[0-9]+-[0-9]+$ ]]
           test "$CONFIRMATION" = "RESTORE-$SNAPSHOT_DATE"
           test -n "$RESTORE_TARGET_SUPABASE_DB_URL"
+          test -n "$SUPABASE_CONFIG_READ_TOKEN"
           [[ "$RESTORE_TARGET_PROJECT_REF" =~ ^[a-z0-9]{20}$ ]]
           [[ "$RESTORE_TARGET_SUPABASE_DB_URL" == *"$RESTORE_TARGET_PROJECT_REF"* ]]
           case "$RESTORE_TARGET_SUPABASE_DB_URL" in
@@ -73,13 +75,30 @@ jobs:
           rclone copyto "$prefix/database.dump" "$workdir/snapshot/database.dump"
           rclone copyto "$prefix/database.dump.sha256" "$workdir/snapshot/database.dump.sha256"
           rclone copyto "$prefix/backup-manifest.json" "$workdir/snapshot/backup-manifest.json"
+          rclone copyto "$prefix/auth-config.json" "$workdir/snapshot/auth-config.json"
+          rclone copyto "$prefix/auth-config.sha256" "$workdir/snapshot/auth-config.sha256"
           test -s "$workdir/snapshot/database.dump"
           test -s "$workdir/snapshot/database.dump.sha256"
           test -s "$workdir/snapshot/backup-manifest.json"
+          test -s "$workdir/snapshot/auth-config.json"
+          test -s "$workdir/snapshot/auth-config.sha256"
           (cd "$workdir/snapshot" && sha256sum --check database.dump.sha256)
+          (cd "$workdir/snapshot" && sha256sum --check auth-config.sha256)
+          jq -e --arg auth_sha "$(awk '{print $1}' "$workdir/snapshot/auth-config.sha256")" \
+            '.auth_config_sha256 == $auth_sha' "$workdir/snapshot/backup-manifest.json" >/dev/null
           jq -e --arg snapshot "$SNAPSHOT_DATE" \
             '.snapshot == $snapshot and .source_project_ref == "fnhggqqnkhkrfwmnsqmy" and .source_media_bucket == "garden-x-production-media"' \
             "$workdir/snapshot/backup-manifest.json" >/dev/null
+          curl --fail --silent --show-error --max-time 30 \
+            -H "Authorization: Bearer $SUPABASE_CONFIG_READ_TOKEN" \
+            -H 'Accept: application/json' \
+            "https://api.supabase.com/v1/projects/$RESTORE_TARGET_PROJECT_REF/config/auth" \
+            -o "$workdir/target-auth-config.raw.json"
+          jq -S . "$workdir/target-auth-config.raw.json" | sha256sum | awk '{print $1}' > "$workdir/target-auth-config.sha256"
+          if ! test "$(awk '{print $1}' "$workdir/snapshot/auth-config.sha256")" = "$(cat "$workdir/target-auth-config.sha256")"; then
+            echo 'Isolated restore target Auth project settings do not match the independent snapshot.'
+            exit 1
+          fi
           rclone copy "$prefix/media" "$workdir/restored-media"
           rclone check --download --one-way "$prefix/media" "$workdir/restored-media"
           jq -S '[.media_objects[] | {Path, Size}] | sort_by(.Path)' \

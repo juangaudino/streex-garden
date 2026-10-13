@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 90
     env:
       PRODUCTION_SUPABASE_DB_URL: ${{ secrets.PRODUCTION_SUPABASE_DB_URL }}
+      SUPABASE_CONFIG_READ_TOKEN: ${{ secrets.SUPABASE_CONFIG_READ_TOKEN }}
       PRODUCTION_R2_ENDPOINT: ${{ secrets.PRODUCTION_R2_ENDPOINT }}
       PRODUCTION_R2_BUCKET: ${{ vars.PRODUCTION_R2_BUCKET }}
       PRODUCTION_R2_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_R2_ACCESS_KEY_ID }}
@@ -33,6 +34,7 @@ jobs:
           set +x
 
           test -n "$PRODUCTION_SUPABASE_DB_URL"
+          test -n "$SUPABASE_CONFIG_READ_TOKEN"
           case "$PRODUCTION_SUPABASE_DB_URL" in
             *fnhggqqnkhkrfwmnsqmy*) ;;
             *) echo 'Refusing database backup: source is not the canonical Production project.'; exit 1 ;;
@@ -49,7 +51,7 @@ jobs:
             test -n "$value"
           done
 
-          stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)-${GITHUB_RUN_ID}"
+          stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           workdir="$(mktemp -d)"
           trap 'rm -rf "$workdir"' EXIT
           cat > "$workdir/rclone.conf" <<EOF
@@ -74,6 +76,18 @@ jobs:
           export RCLONE_CONFIG="$workdir/rclone.conf"
           python3 "$GITHUB_WORKSPACE/scripts/write-libpq-service.py" production "$workdir/pg_service.conf" PRODUCTION_SUPABASE_DB_URL
           cp "$GITHUB_WORKSPACE/scripts/garden-backup-fingerprint.sh" "$workdir/fingerprint.sh"
+
+          # Capture effective Auth project settings without writing them to logs.
+          curl --fail --silent --show-error --max-time 30 \
+            -H "Authorization: Bearer $SUPABASE_CONFIG_READ_TOKEN" \
+            -H 'Accept: application/json' \
+            'https://api.supabase.com/v1/projects/fnhggqqnkhkrfwmnsqmy/config/auth' \
+            -o "$workdir/auth-config.raw.json"
+          jq -e 'type == "object" and length > 0' "$workdir/auth-config.raw.json" >/dev/null
+          jq -S . "$workdir/auth-config.raw.json" > "$workdir/auth-config.json"
+          chmod 600 "$workdir/auth-config.json"
+          rm -f "$workdir/auth-config.raw.json"
+          (cd "$workdir" && sha256sum auth-config.json > auth-config.sha256)
 
           # A short read verifies the production token and bucket before the dump.
           rclone lsf "production:$PRODUCTION_R2_BUCKET" --files-only --max-depth 1 >/dev/null
@@ -114,7 +128,7 @@ jobs:
           docker run --rm --network host -v "$workdir:/backup" postgres:17 \
             pg_restore --list /backup/database.dump > "$workdir/database.toc"
           test -s "$workdir/database.toc"
-          sha256sum "$workdir/database.dump" | awk '{print $1}' > "$workdir/database.dump.sha256"
+          (cd "$workdir" && sha256sum database.dump > database.dump.sha256)
 
           # Snapshot paths are unique per run; copy never removes source objects.
           rclone lsjson --recursive --metadata "production:$PRODUCTION_R2_BUCKET" > "$workdir/media-objects.json"
@@ -132,16 +146,20 @@ jobs:
             --arg source_bucket "$PRODUCTION_R2_BUCKET" \
             --arg database_sha256 "$(cat "$workdir/database.dump.sha256")" \
             --arg domain_schema_sha256 "$(cat "$workdir/domain-schema.sha256")" \
+            --arg auth_config_sha256 "$(awk '{print $1}' "$workdir/auth-config.sha256")" \
             --argjson media_objects "$object_count" \
             --slurpfile domain_counts "$workdir/domain-counts.json" \
             --slurpfile domain_tables "$workdir/domain-tables.json" \
             --slurpfile media "$workdir/media-objects.json" \
-            '{snapshot:$snapshot, source_project_ref:$project_ref, source_media_bucket:$source_bucket, database_dump_sha256:$database_sha256, domain_schema_sha256:$domain_schema_sha256, domain_counts:$domain_counts[0], domain_tables:$domain_tables[0], media_object_count:$media_objects, media_objects:[$media[0][] | select(.IsDir != true)]}' \
+            '{snapshot:$snapshot, source_project_ref:$project_ref, source_media_bucket:$source_bucket, database_dump_sha256:$database_sha256, domain_schema_sha256:$domain_schema_sha256, auth_config_sha256:$auth_config_sha256, domain_counts:$domain_counts[0], domain_tables:$domain_tables[0], media_object_count:$media_objects, media_objects:[$media[0][] | select(.IsDir != true)]}' \
             > "$workdir/backup-manifest.json"
 
           prefix="backup:$BACKUP_R2_BUCKET/snapshots/$stamp"
-          rclone copyto "$workdir/database.dump" "$prefix/database.dump"
-          rclone copyto "$workdir/database.dump.sha256" "$prefix/database.dump.sha256"
-          rclone copyto "$workdir/backup-manifest.json" "$prefix/backup-manifest.json"
-          rclone check --download --one-way "$workdir/database.dump" "$prefix"
-          rclone check --download --one-way "$workdir/backup-manifest.json" "$prefix"
+          rclone copyto --immutable "$workdir/database.dump" "$prefix/database.dump"
+          rclone copyto --immutable "$workdir/database.dump.sha256" "$prefix/database.dump.sha256"
+          rclone copyto --immutable "$workdir/backup-manifest.json" "$prefix/backup-manifest.json"
+          rclone copyto --immutable "$workdir/auth-config.json" "$prefix/auth-config.json"
+          rclone copyto --immutable "$workdir/auth-config.sha256" "$prefix/auth-config.sha256"
+          rclone check --download --one-way "$workdir/database.dump" "$prefix/database.dump"
+          rclone check --download --one-way "$workdir/backup-manifest.json" "$prefix/backup-manifest.json"
+          rclone check --download --one-way "$workdir/auth-config.json" "$prefix/auth-config.json"

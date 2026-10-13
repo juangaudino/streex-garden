@@ -286,7 +286,16 @@ export const AEROGARDEN_RECIPE: ManufacturerRecipe = {
     {
       stage: "POD_GROUP_9",
       feedingIndex: 1,
-      label: "9-pod Bounty first or second feeding",
+      label: "9-pod Bounty first feeding",
+      doses: { single: 8 },
+      doseUnit: "mL",
+      source: aero,
+      epistemic: "MANUFACTURER_INSTRUCTION",
+    },
+    {
+      stage: "POD_GROUP_9",
+      feedingIndex: 2,
+      label: "9-pod Bounty second feeding",
       doses: { single: 8 },
       doseUnit: "mL",
       source: aero,
@@ -295,7 +304,7 @@ export const AEROGARDEN_RECIPE: ManufacturerRecipe = {
     {
       stage: "POD_GROUP_9",
       feedingIndex: 3,
-      label: "9-pod Bounty later feeding",
+      label: "9-pod Bounty third and later feedings",
       doses: { single: 12 },
       doseUnit: "mL",
       source: aero,

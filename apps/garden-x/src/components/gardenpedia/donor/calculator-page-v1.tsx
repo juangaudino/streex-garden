@@ -31,6 +31,7 @@ import {
   CALCULATOR_PRODUCTS,
   calculateGardenResult,
   loadSavedSystems,
+  manufacturerDoseDefaults,
   persistSavedSystems,
   recipeStageLabel,
   recordActualDoses,
@@ -61,16 +62,19 @@ const T = {
     plants: "Plantas en el tanque",
     addPlant: "Añadir planta",
     volume: "Volumen del tanque",
+    capacity: "Capacidad del tanque",
     pods: "Pods activos",
     podGroupsHint: "Grupos verificados: 6, 7 y 9 pods",
     product: "Nutriente",
     stage: "Etapa de la receta",
+    feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
     currentLiters: "Litros que quedan",
     waterAdded: "Agua añadida",
     more: "Más ajustes",
     unit: "Unidad EC",
     sourceEc: "EC del agua de origen",
+    targetEc: "EC objetivo",
     meter: "Medidor",
     dosing: "Dosificación",
     syringe: "Jeringa 1 mL",
@@ -126,6 +130,17 @@ const T = {
     gotEc: "EC medido",
     gotMl: "mL que añadiste",
     learn: "Guardar lectura",
+    actualDose: "Lo que añadiste realmente",
+    calibrate: "Calibrar este producto",
+    calibrationTitle: "Una medición real para calibrar",
+    calibrationInstructions:
+      "Prepara esta mezcla, mide el EC antes y después, y registra las cantidades que añadiste realmente.",
+    calibrationStage: "Receta usada",
+    calibrationBaseline: "EC antes de añadir",
+    calibrationAfter: "EC después de mezclar",
+    calibrationSave: "Guardar calibración",
+    calibrationInvalid: "Revisa las mediciones y las dosis reales antes de guardar.",
+    calibrationStorageError: "No se pudo guardar la calibración en este dispositivo.",
     learned: (n: number) => `Garden ajustó este sistema · ${n} lecturas`,
     learnedNew: "Lectura guardada. La próxima dosis será más precisa para tu producto y tu agua.",
     round: "Ronda",
@@ -159,16 +174,19 @@ const T = {
     plants: "Plants in the reservoir",
     addPlant: "Add plant",
     volume: "Reservoir volume",
+    capacity: "Reservoir capacity",
     pods: "Active pods",
     podGroupsHint: "Verified groups: 6, 7, and 9 pods",
     product: "Nutrient",
     stage: "Recipe stage",
+    feedingEvent: "Feeding event",
     currentEc: "EC you measured",
     currentLiters: "Liters remaining",
     waterAdded: "Water added",
     more: "More settings",
     unit: "EC unit",
     sourceEc: "Source-water EC",
+    targetEc: "Target EC",
     meter: "Meter",
     dosing: "Dosing",
     syringe: "1 mL syringe",
@@ -223,6 +241,17 @@ const T = {
     gotEc: "Measured EC",
     gotMl: "mL you added",
     learn: "Save reading",
+    actualDose: "What you actually added",
+    calibrate: "Calibrate this product",
+    calibrationTitle: "A real measurement to calibrate",
+    calibrationInstructions:
+      "Prepare this mix, measure EC before and after, and record the amounts you actually added.",
+    calibrationStage: "Recipe used",
+    calibrationBaseline: "EC before adding nutrients",
+    calibrationAfter: "EC after mixing",
+    calibrationSave: "Save calibration",
+    calibrationInvalid: "Check the measurements and actual doses before saving.",
+    calibrationStorageError: "Calibration could not be saved on this device.",
     learned: (n: number) => `Garden tuned this system · ${n} readings`,
     learnedNew: "Reading saved. Next dose will be more accurate for your product and water.",
     round: "Round",
@@ -253,6 +282,23 @@ const MODE_ICONS: Record<Mode, React.ComponentType<{ className?: string }>> = {
 };
 const MODES: Mode[] = ["recipe", "target", "adjust", "topup"];
 const LITERS = [2, 4, 6.5, 10];
+const QUICK_CALIBRATION_STORAGE_KEY = "gardenpedia.calculator.quick-calibration.v1";
+
+function parseDecimalInput(raw: string): number | null {
+  if (raw.trim() === "") return null;
+  const parsed = Number(raw.trim().replace(",", "."));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function loadQuickCalibrationObservations(): import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(QUICK_CALIBRATION_STORAGE_KEY) ?? "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
 
 const QUICK: SavedSystem = {
   id: "quick",
@@ -286,11 +332,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [stageId, setStageId] = useState(QUICK.stageId);
   const [pods, setPods] = useState(QUICK.pods);
   const [unit, setUnit] = useState<EcUnit>("mS");
-  const [sourceEc, setSourceEc] = useState(sys.water.ec);
   const [currentEc, setCurrentEc] = useState<string>("");
   const [currentLiters, setCurrentLiters] = useState<string>("");
   const [waterAdded, setWaterAdded] = useState<string>("");
   const [userTarget, setUserTarget] = useState<number | null>(null);
+  const [targetInput, setTargetInput] = useState("");
+  const [targetEdited, setTargetEdited] = useState(false);
+  const [sourceEcInput, setSourceEcInput] = useState(String(sys.water.ec));
+  const [calibrationOpen, setCalibrationOpen] = useState(false);
+  const [calibrationError, setCalibrationError] = useState("");
   const [round, setRound] = useState(1);
   const [learnedCount, setLearnedCount] = useState(
     sys.calibration?.readings ?? sys.calibrationObservations?.length ?? 0,
@@ -298,7 +348,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
     import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[]
-  >([]);
+  >(() => loadQuickCalibrationObservations());
 
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
 
@@ -310,15 +360,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setStageId(s.stageId);
     setPods(s.pods);
     setUnit(s.unit);
-    setSourceEc(s.water.ec);
+    setSourceEcInput(String(s.water.ec));
     setUserTarget(null);
+    setTargetInput("");
+    setTargetEdited(false);
     setCurrentEc("");
     setCurrentLiters("");
     setWaterAdded("");
     setRound(1);
-    setCalibrationObservations(s.calibrationObservations ?? []);
-    setLearnedCount(s.calibration?.readings ?? s.calibrationObservations?.length ?? 0);
+    const observations =
+      s.id === "quick" ? loadQuickCalibrationObservations() : (s.calibrationObservations ?? []);
+    setCalibrationObservations(observations);
+    setLearnedCount(s.calibration?.readings ?? observations.length);
     setJustLearned(false);
+    setCalibrationOpen(false);
   };
   const saveCurrentSystem = () => {
     const localId =
@@ -335,7 +390,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       stageId,
       pods,
       unit,
-      water: { ...sys.water, ec: sourceEc },
+      water: { ...sys.water, ec: parseDecimalInput(sourceEcInput) ?? 0 },
       calibrationObservations,
       calibration: calibrationObservations.length
         ? { learned: 0, readings: calibrationObservations.length }
@@ -360,11 +415,73 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setJustLearned(false);
   };
 
+  const sourceEc = parseDecimalInput(sourceEcInput) ?? 0;
+  const parseDisplayedEc = useCallback(
+    (raw: string) => {
+      const parsed = parseDecimalInput(raw);
+      if (parsed === null) return null;
+      return unit === "uS" ? parsed / 1000 : parsed;
+    },
+    [unit],
+  );
+  const editTarget = (raw: string) => {
+    setTargetEdited(true);
+    setTargetInput(raw);
+    setUserTarget(parseDisplayedEc(raw));
+  };
+  const changeUnit = (next: EcUnit) => {
+    if (next !== unit && targetInput.trim()) {
+      const currentMs = parseDisplayedEc(targetInput);
+      if (currentMs !== null) {
+        setTargetInput(next === "uS" ? String(Math.round(currentMs * 1000)) : currentMs.toFixed(2));
+      }
+    }
+    setUnit(next);
+  };
+
+  const saveCalibrationObservation = (
+    observation: import("@/lib/garden-nutrient-engine-v1").CalibrationObservation,
+  ) => {
+    const nextObservations = [...calibrationObservations, observation];
+    setCalibrationObservations(nextObservations);
+    setLearnedCount(nextObservations.length);
+    const snapshot: SavedSystem = {
+      ...sys,
+      crops: { ...crops },
+      liters,
+      productId,
+      stageId,
+      pods,
+      unit,
+      water: { ...sys.water, ec: sourceEc },
+      calibrationObservations: nextObservations,
+      calibration: { learned: 0, readings: nextObservations.length },
+    };
+    setSys(snapshot);
+    if (sys.id === "quick") {
+      try {
+        window.localStorage.setItem(
+          QUICK_CALIBRATION_STORAGE_KEY,
+          JSON.stringify(nextObservations),
+        );
+      } catch {
+        setCalibrationError(t.calibrationStorageError);
+      }
+    } else {
+      const nextSystems = savedSystems.map((item) => (item.id === sys.id ? snapshot : item));
+      setSavedSystems(nextSystems);
+      persistSavedSystems(nextSystems);
+    }
+    setCalibrationOpen(false);
+    setCalibrationError("");
+    setJustLearned(true);
+  };
+
   const num = useCallback(
     (s: string, convertUs = false) => {
       if (s.trim() === "") return null;
-      const n = Number(s.replace(",", "."));
-      if (!Number.isFinite(n)) return null;
+      const n = parseDecimalInput(s);
+      if (n === null) return null;
       return unit === "uS" && convertUs ? n / 1000 : n;
     },
     [unit],
@@ -482,6 +599,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 <div className="grid gap-3 sm:grid-cols-3">
                   {mode === "topup" && (
                     <Field
+                      label={t.capacity}
+                      suffix="L"
+                      value={String(liters)}
+                      onChange={(v) => setLiters(Math.max(0.1, parseDecimalInput(v) ?? 0.1))}
+                      placeholder="4.0"
+                    />
+                  )}
+                  {mode === "topup" && (
+                    <Field
                       label={t.currentLiters}
                       suffix="L"
                       value={currentLiters}
@@ -512,7 +638,6 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   />
                 </div>
               )}
-
               {mode !== "recipe" || product.basis === "liters" ? (
                 <Block title={t.plants} hint={`${Object.values(crops).reduce((a, b) => a + b, 0)}`}>
                   <ul className="space-y-1.5">
@@ -580,14 +705,14 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 {mode === "recipe" && product.hasRecipeStages && (
                   <div className="mt-3 space-y-2">
                     <select
-                      aria-label={t.stage}
+                      aria-label={product.id === "aerogarden" ? t.feedingEvent : t.stage}
                       value={stageId}
                       onChange={(e) => setStageId(e.target.value)}
                       className="h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm"
                     >
                       {product.recipeStages
                         .filter(
-                          (s) => product.id !== "aerogarden" || s.feedingIndex !== 3 || pods === 9,
+                          (s) => product.id !== "aerogarden" || s.feedingIndex === 1 || pods === 9,
                         )
                         .map((s) => (
                           <option key={s.id} value={s.id}>
@@ -609,7 +734,8 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           active={pods === group}
                           onClick={() => {
                             setPods(group);
-                            if (group !== 9 && stageId === "feeding-3") setStageId("feeding-1");
+                            if (group !== 9 && ["feeding-2", "feeding-3"].includes(stageId))
+                              setStageId("feeding-1");
                           }}
                         >
                           {group} pods
@@ -645,11 +771,37 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 <Field
                   label={t.sourceEc}
                   suffix="mS/cm"
-                  value={String(sourceEc)}
-                  onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
+                  value={sourceEcInput}
+                  onChange={setSourceEcInput}
                 />
               )}
 
+              {mode !== "recipe" && (
+                <TargetControl
+                  t={t}
+                  unitLabel={unitLabel}
+                  fmtEc={fmtEc}
+                  value={
+                    targetEdited ? targetInput : result.target ? fmtEc(result.target.value) : ""
+                  }
+                  range={result.range}
+                  isUser={result.target?.provenance === "user"}
+                  outside={!!result.outsideEvidence}
+                  onChange={editTarget}
+                  onStep={(delta) => {
+                    const displayed = parseDecimalInput(
+                      targetInput || (result.target ? fmtEc(result.target.value) : ""),
+                    );
+                    if (displayed !== null) editTarget(String(Math.max(0, displayed + delta)));
+                  }}
+                  onReset={() => {
+                    setTargetInput("");
+                    setTargetEdited(false);
+                    setUserTarget(null);
+                  }}
+                  step={unit === "uS" ? 100 : 0.1}
+                />
+              )}
               <details className="group rounded-md border border-border/70 bg-background/30">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-semibold">
                   {t.more}
@@ -662,10 +814,10 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   <div>
                     <p className="mb-1.5 text-xs text-muted-foreground">{t.unit}</p>
                     <div className="grid grid-cols-2 gap-1.5">
-                      <Chip active={unit === "mS"} onClick={() => setUnit("mS")}>
+                      <Chip active={unit === "mS"} onClick={() => changeUnit("mS")}>
                         mS/cm
                       </Chip>
-                      <Chip active={unit === "uS"} onClick={() => setUnit("uS")}>
+                      <Chip active={unit === "uS"} onClick={() => changeUnit("uS")}>
                         µS/cm
                       </Chip>
                     </div>
@@ -674,8 +826,8 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     <Field
                       label={t.sourceEc}
                       suffix="mS/cm"
-                      value={String(sourceEc)}
-                      onChange={(v) => setSourceEc(Number(v.replace(",", ".")) || 0)}
+                      value={sourceEcInput}
+                      onChange={setSourceEcInput}
                     />
                   )}
                   <div className="text-sm">
@@ -713,20 +865,6 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   {t.save}
                 </Button>
               )}
-
-              {mode === "target" && result.target && (
-                <TargetControl
-                  t={t}
-                  unitLabel={unitLabel}
-                  fmtEc={fmtEc}
-                  value={result.target.value}
-                  range={result.range}
-                  isUser={result.target.provenance === "user"}
-                  outside={!!result.outsideEvidence}
-                  onChange={(v) => setUserTarget(v)}
-                  onReset={() => setUserTarget(null)}
-                />
-              )}
             </section>
 
             {/* Result */}
@@ -738,6 +876,53 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   {result.message ? (
                     <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
                   ) : null}
+                  {result.calibrationRequired && product.basis === "liters" && (
+                    <Button
+                      className="mt-4 h-11 w-full"
+                      onClick={() => {
+                        setCalibrationError("");
+                        setCalibrationOpen((open) => !open);
+                      }}
+                    >
+                      {t.calibrate}
+                    </Button>
+                  )}
+                  {calibrationOpen && result.calibrationRequired && product.basis === "liters" && (
+                    <CalibrationCard
+                      t={t}
+                      lang={lang}
+                      product={product}
+                      stageId={stageId}
+                      onStageChange={setStageId}
+                      liters={liters}
+                      pods={pods}
+                      unit={unit}
+                      unitLabel={unitLabel}
+                      onSave={(baselineEc, resultingEc, actualDoses) => {
+                        const observation = recordActualDoses({
+                          productId,
+                          stageId,
+                          liters,
+                          pods,
+                          baselineEc,
+                          resultingEc,
+                          actualDoses,
+                        });
+                        if (!observation.ok || !observation.value) {
+                          setCalibrationError(
+                            observation.errors[0]?.message ?? t.calibrationInvalid,
+                          );
+                          return;
+                        }
+                        saveCalibrationObservation(observation.value);
+                      }}
+                    />
+                  )}
+                  {calibrationError && (
+                    <p role="alert" className="mt-3 text-sm text-destructive">
+                      {calibrationError}
+                    </p>
+                  )}
                   {result.missing.length ? (
                     <ul className="mt-3 space-y-2 text-sm">
                       {result.missing.map((m) => (
@@ -877,20 +1062,6 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   </div>
 
                   {/* Target control */}
-                  {mode !== "recipe" && mode !== "target" && result.target && (
-                    <TargetControl
-                      t={t}
-                      unitLabel={unitLabel}
-                      fmtEc={fmtEc}
-                      value={result.target.value}
-                      range={result.range}
-                      isUser={result.target.provenance === "user"}
-                      outside={!!result.outsideEvidence}
-                      onChange={(v) => setUserTarget(v)}
-                      onReset={() => setUserTarget(null)}
-                    />
-                  )}
-
                   {/* Learn / loop */}
                   <LearnCard
                     key={`${sys.id}-${mode}-${round}`}
@@ -909,14 +1080,13 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         stageId,
                         liters,
                         pods,
-                        baselineEc: sourceEc,
+                        baselineEc:
+                          mode === "adjust" ? (num(currentEc, true) ?? sourceEc) : sourceEc,
                         resultingEc: measuredMs,
                         actualDoses,
                       });
                       if (!observation.ok || !observation.value) return;
-                      setCalibrationObservations((items) => [...items, observation.value!]);
-                      setLearnedCount((n) => n + 1);
-                      setJustLearned(true);
+                      saveCalibrationObservation(observation.value);
                       if (mode === "adjust") {
                         setCurrentEc(ec);
                       }
@@ -1191,24 +1361,30 @@ function TargetControl({
   isUser,
   outside,
   onChange,
+  onStep,
   onReset,
   unitLabel,
   fmtEc,
+  step,
 }: {
   t: Copy;
-  value: number;
+  value: string;
   range?: { min: number; max: number; common: boolean };
   isUser: boolean;
   outside: boolean;
-  onChange: (v: number) => void;
+  onChange: (v: string) => void;
+  onStep: (delta: number) => void;
   onReset: () => void;
   unitLabel: string;
   fmtEc: (v: number) => string;
+  step: number;
 }) {
   return (
     <div className="glass-panel p-5">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-semibold">{isUser ? t.yourTarget : t.start}</p>
+        <p className="text-sm font-semibold">
+          {isUser ? t.yourTarget : value ? t.start : t.targetEc}
+        </p>
         {isUser && (
           <button
             onClick={onReset}
@@ -1228,21 +1404,32 @@ function TargetControl({
           variant="outline"
           size="icon"
           className="h-11 w-11 shrink-0"
-          aria-label="−0.1"
-          onClick={() => onChange(Math.max(0.1, Math.round((value - 0.1) * 10) / 10))}
+          aria-label={`−${step}`}
+          onClick={() => onStep(-step)}
         >
           <Minus className="h-4 w-4" />
         </Button>
-        <p className="flex-1 text-center font-display text-3xl font-bold tabular-nums">
-          {fmtEc(value)}
-          <span className="ml-1 text-sm font-medium text-muted-foreground">{unitLabel}</span>
-        </p>
+        <label className="min-w-0 flex-1 text-center">
+          <span className="sr-only">{t.targetEc}</span>
+          <span className="flex items-center justify-center gap-1">
+            <input
+              aria-label={t.targetEc}
+              type="text"
+              inputMode="decimal"
+              value={value}
+              onChange={(event) => onChange(event.target.value)}
+              placeholder="1.20"
+              className="w-full min-w-0 bg-transparent text-center font-display text-3xl font-bold tabular-nums outline-none"
+            />
+            <span className="shrink-0 text-sm font-medium text-muted-foreground">{unitLabel}</span>
+          </span>
+        </label>
         <Button
           variant="outline"
           size="icon"
           className="h-11 w-11 shrink-0"
-          aria-label="+0.1"
-          onClick={() => onChange(Math.round((value + 0.1) * 10) / 10)}
+          aria-label={`+${step}`}
+          onClick={() => onStep(step)}
         >
           <Plus className="h-4 w-4" />
         </Button>
@@ -1253,6 +1440,128 @@ function TargetControl({
           {t.outside}
         </p>
       )}
+    </div>
+  );
+}
+
+function CalibrationCard({
+  t,
+  lang,
+  product,
+  stageId,
+  onStageChange,
+  liters,
+  pods,
+  unit,
+  unitLabel,
+  onSave,
+}: {
+  t: Copy;
+  lang: Lang;
+  product: (typeof CALCULATOR_PRODUCTS)[number];
+  stageId: string;
+  onStageChange: (stageId: string) => void;
+  liters: number;
+  pods: number;
+  unit: EcUnit;
+  unitLabel: string;
+  onSave: (baselineEc: number, resultingEc: number, actualDoses: Record<string, string>) => void;
+}) {
+  const defaults = useMemo(
+    () => manufacturerDoseDefaults({ productId: product.id, stageId, liters, pods }),
+    [product.id, stageId, liters, pods],
+  );
+  const [baseline, setBaseline] = useState("");
+  const [resulting, setResulting] = useState("");
+  const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
+    Object.fromEntries(defaults.map((part) => [part.id, part.amount.toFixed(2)])),
+  );
+
+  useEffect(() => {
+    setActualDoses(Object.fromEntries(defaults.map((part) => [part.id, part.amount.toFixed(2)])));
+  }, [defaults]);
+
+  const submit = () => {
+    const before = parseDecimalInput(baseline);
+    const after = parseDecimalInput(resulting);
+    if (before === null || after === null || after <= before) return;
+    const toMs = (value: number) => (unit === "uS" ? value / 1000 : value);
+    onSave(toMs(before), toMs(after), actualDoses);
+  };
+
+  return (
+    <div className="mt-4 space-y-4 rounded-xl border border-primary/20 bg-background/70 p-4">
+      <div>
+        <h3 className="font-display text-lg font-semibold">{t.calibrationTitle}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">{t.calibrationInstructions}</p>
+      </div>
+      {product.recipeStages.length > 0 && (
+        <label className="block text-xs text-muted-foreground">
+          {product.id === "aerogarden" ? t.feedingEvent : t.calibrationStage}
+          <select
+            aria-label={product.id === "aerogarden" ? t.feedingEvent : t.calibrationStage}
+            value={stageId}
+            onChange={(event) => onStageChange(event.target.value)}
+            className="mt-1 h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm text-foreground"
+          >
+            {product.recipeStages
+              .filter(
+                (stage) => product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9,
+              )
+              .map((stage) => (
+                <option key={stage.id} value={stage.id}>
+                  {recipeStageLabel(stage, product.id, pods, lang)}
+                </option>
+              ))}
+          </select>
+        </label>
+      )}
+      <p className="text-xs text-muted-foreground">
+        {t.volume}: {liters} L
+      </p>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Field
+          label={t.calibrationBaseline}
+          suffix={unitLabel}
+          value={baseline}
+          onChange={setBaseline}
+          placeholder={unit === "mS" ? "0.20" : "200"}
+        />
+        <Field
+          label={t.calibrationAfter}
+          suffix={unitLabel}
+          value={resulting}
+          onChange={setResulting}
+          placeholder={unit === "mS" ? "1.00" : "1000"}
+        />
+      </div>
+      <div>
+        <p className="text-xs font-semibold text-muted-foreground">{t.actualDose}</p>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2">
+          {product.parts.map((part) => (
+            <Field
+              key={part.id}
+              label={part.label}
+              suffix="mL"
+              value={actualDoses[part.id] ?? ""}
+              onChange={(value) => setActualDoses((current) => ({ ...current, [part.id]: value }))}
+              placeholder={defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? "—"}
+            />
+          ))}
+        </div>
+      </div>
+      <Button
+        className="h-11 w-full"
+        disabled={
+          parseDecimalInput(baseline) === null ||
+          parseDecimalInput(resulting) === null ||
+          (parseDecimalInput(resulting) ?? 0) <= (parseDecimalInput(baseline) ?? 0) ||
+          product.parts.some((part) => !actualDoses[part.id])
+        }
+        onClick={submit}
+      >
+        {t.calibrationSave}
+      </Button>
     </div>
   );
 }

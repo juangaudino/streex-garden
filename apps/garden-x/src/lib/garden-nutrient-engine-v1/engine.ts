@@ -958,6 +958,7 @@ export function learnFromObservation(input: {
 
 export function calculateEcCorrection(input: {
   currentEc: UserMeasurement;
+  dilutionWaterEc?: UserMeasurement;
   targetEc: number;
   reservoirVolumeL: number;
   calibration: CalibrationModel;
@@ -979,6 +980,15 @@ export function calculateEcCorrection(input: {
       { value: input.calibration.factorEcPerMl },
     ),
   ];
+  if (input.dilutionWaterEc)
+    claims.push(
+      claim("correction-source-water-ec", "Dilution source-water EC", "USER_SELECTED", [], {
+        value: toMsPerCm(
+          input.dilutionWaterEc.value,
+          input.dilutionWaterEc.unit === "pH" ? "mS/cm" : input.dilutionWaterEc.unit,
+        ),
+      }),
+    );
   if (
     input.currentEc.context.scope !== "NUTRIENT_SOLUTION" ||
     input.currentEc.context.scopeBasis === "UNKNOWN"
@@ -1032,7 +1042,43 @@ export function calculateEcCorrection(input: {
       ),
     );
   if (difference < 0) {
-    const waterMl = input.reservoirVolumeL * MILLIS_PER_LITER * (1 - input.targetEc / currentEc);
+    const dilutionWaterEc = input.dilutionWaterEc
+      ? toMsPerCm(
+          input.dilutionWaterEc.value,
+          input.dilutionWaterEc.unit === "pH" ? "mS/cm" : input.dilutionWaterEc.unit,
+        )
+      : 0;
+    if (
+      input.dilutionWaterEc &&
+      (input.dilutionWaterEc.context.scope !== "SOURCE_WATER" ||
+        input.dilutionWaterEc.context.scopeBasis === "UNKNOWN")
+    )
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "INCOMPATIBLE_SOURCE_WATER_SCOPE",
+            "Dilution requires a source-water EC measurement.",
+          ),
+        ],
+        claims,
+      );
+    if (dilutionWaterEc >= input.targetEc)
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "DILUTION_WATER_EC_TOO_HIGH",
+            "The selected source water EC is at or above the target and cannot dilute the solution to that target.",
+          ),
+        ],
+        claims,
+      );
+    const waterMl =
+      (input.reservoirVolumeL * MILLIS_PER_LITER * (currentEc - input.targetEc)) /
+      (input.targetEc - dilutionWaterEc);
     return result(
       {
         mode: "EC_CORRECTION",
@@ -1046,6 +1092,7 @@ export function calculateEcCorrection(input: {
           claim("dilution-water", "Calculated dilution water", "DETERMINISTIC_CALCULATION", [
             "current-ec",
             "target-ec",
+            ...(input.dilutionWaterEc ? ["correction-source-water-ec"] : []),
           ]),
         ],
       },
@@ -1105,6 +1152,7 @@ export function calculateTopUpMaintenance(input: {
   nominalVolumeL: number;
   replacementWaterL: number;
   currentEc: UserMeasurement;
+  replacementWaterEc?: UserMeasurement;
   targetEc: number;
   calibration?: CalibrationModel;
   policy?: EnginePolicy;
@@ -1119,6 +1167,29 @@ export function calculateTopUpMaintenance(input: {
       value: input.replacementWaterL,
     }),
   ];
+  const replacementWaterEc = input.replacementWaterEc
+    ? toMsPerCm(
+        input.replacementWaterEc.value,
+        input.replacementWaterEc.unit === "pH" ? "mS/cm" : input.replacementWaterEc.unit,
+      )
+    : 0;
+  if (
+    input.replacementWaterEc &&
+    (input.replacementWaterEc.context.scope !== "SOURCE_WATER" ||
+      input.replacementWaterEc.context.scopeBasis === "UNKNOWN")
+  )
+    return result(
+      undefined,
+      [],
+      [error("INCOMPATIBLE_SOURCE_WATER_SCOPE", "Top-up requires a source-water EC measurement.")],
+      claims,
+    );
+  if (input.replacementWaterEc)
+    claims.push(
+      claim("top-up-source-water-ec", "Replacement source-water EC", "USER_SELECTED", [], {
+        value: replacementWaterEc,
+      }),
+    );
   if (input.currentVolumeL === undefined)
     return result(
       undefined,
@@ -1170,13 +1241,19 @@ export function calculateTopUpMaintenance(input: {
       claims,
     );
   const resultingVolumeL = input.currentVolumeL + input.replacementWaterL;
-  const afterWaterEc = (currentEc * input.currentVolumeL) / resultingVolumeL;
+  const afterWaterEc =
+    (currentEc * input.currentVolumeL + replacementWaterEc * input.replacementWaterL) /
+    resultingVolumeL;
   let nutrientDoseMl: number | undefined;
   const warnings: EngineWarning[] = [
     warning(
       "LINEAR_MIXING_APPROXIMATION",
       "This linear EC model is an approximation; restored EC does not prove restored nutrient balance.",
-      ["top-up-current-ec", "top-up-water"],
+      [
+        "top-up-current-ec",
+        "top-up-water",
+        ...(input.replacementWaterEc ? ["top-up-source-water-ec"] : []),
+      ],
     ),
   ];
   if (afterWaterEc < input.targetEc) {

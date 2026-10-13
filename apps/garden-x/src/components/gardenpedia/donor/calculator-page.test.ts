@@ -19,6 +19,7 @@ import {
   calculateGardenResult,
   loadSavedSystems,
   persistSavedSystems,
+  recipeStageLabel,
   recordActualDoses,
   resolveNutrientCropIdentity,
 } from "./calculator-lovable-adapter";
@@ -112,10 +113,22 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
   });
 
-  it("keeps AeroGarden UI projections aligned with verified pod groups", () => {
+  it("keeps AeroGarden UI projections aligned with verified groups and feeding events", () => {
     const aero = CALCULATOR_PRODUCTS.find((product) => product.id === "aerogarden");
     expect(aero?.podGroups).toEqual([6, 7, 9]);
-    expect(aero?.recipeStages.map((stage) => stage.feedingIndex)).toEqual([1, 3]);
+    expect(aero?.recipeStages.map((stage) => stage.feedingIndex)).toEqual([1, 2, 3]);
+    expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 6, "en")).toMatch(
+      /each feeding/i,
+    );
+    expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 9, "en")).toMatch(
+      /first feeding/i,
+    );
+    expect(recipeStageLabel(aero!.recipeStages[1]!, "aerogarden", 9, "en")).toMatch(
+      /second feeding/i,
+    );
+    expect(recipeStageLabel(aero!.recipeStages[2]!, "aerogarden", 9, "en")).toMatch(
+      /third and later/i,
+    );
   });
 
   it("maps each UX mode to exactly one V1 operating mode", () => {
@@ -188,6 +201,20 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
     expect(supported.ok).toBe(true);
     expect(supported.value?.parts[0]?.ml).toBe(8);
+    const second = executeFreshRecipe({
+      recipeId: AEROGARDEN_RECIPE.id,
+      podCount: 9,
+      feedingIndex: 2,
+    });
+    expect(second.ok).toBe(true);
+    expect(second.value?.parts[0]?.ml).toBe(8);
+    const third = executeFreshRecipe({
+      recipeId: AEROGARDEN_RECIPE.id,
+      podCount: 9,
+      feedingIndex: 3,
+    });
+    expect(third.ok).toBe(true);
+    expect(third.value?.parts[0]?.ml).toBe(12);
     const unsupported = executeFreshRecipe({
       recipeId: AEROGARDEN_RECIPE.id,
       podCount: 12,
@@ -536,38 +563,30 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("differentiates supported AeroGarden feeding events without asking for volume", () => {
-    const first = calculateGardenResult({
-      mode: "recipe",
-      crops: { "genovese-basil": 1 },
-      liters: 2,
-      productId: "aerogarden",
-      stageId: "feeding-1",
-      pods: 9,
-      sourceEc: 0.2,
-      currentEc: null,
-      currentLiters: null,
-      waterAdded: null,
-      userTarget: null,
-      round: 1,
-    });
-    const later = calculateGardenResult({
-      mode: "recipe",
-      crops: { "genovese-basil": 1 },
-      liters: 2,
-      productId: "aerogarden",
-      stageId: "feeding-3",
-      pods: 9,
-      sourceEc: 0.2,
-      currentEc: null,
-      currentLiters: null,
-      waterAdded: null,
-      userTarget: null,
-      round: 1,
-    });
+    const run = (stageId: string) =>
+      calculateGardenResult({
+        mode: "recipe",
+        crops: { "genovese-basil": 1 },
+        liters: 2,
+        productId: "aerogarden",
+        stageId,
+        pods: 9,
+        sourceEc: 0.2,
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+        userTarget: null,
+        round: 1,
+      });
+    const first = run("feeding-1");
+    const second = run("feeding-2");
+    const later = run("feeding-3");
     expect(first.kind).toBe("ok");
+    expect(second.kind).toBe("ok");
     expect(later.kind).toBe("ok");
-    if (first.kind === "ok" && later.kind === "ok") {
+    if (first.kind === "ok" && second.kind === "ok" && later.kind === "ok") {
       expect(first.doses[0]?.amount).toBe(8);
+      expect(second.doses[0]?.amount).toBe(8);
       expect(later.doses[0]?.amount).toBe(12);
     }
   });

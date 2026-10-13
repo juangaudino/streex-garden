@@ -99,14 +99,18 @@ function projectRecipeStages(recipeId: string): CalculatorStage[] {
         es:
           recipeId === AEROGARDEN_RECIPE_ID
             ? step.feedingIndex === 1
-              ? "Primera/segunda alimentación · grupo verificado"
-              : "Alimentación posterior · 9 pods"
+              ? "Primera alimentación · Bounty · 9 pods"
+              : step.feedingIndex === 2
+                ? "Segunda alimentación · Bounty · 9 pods"
+                : "Tercera y siguientes · Bounty · 9 pods"
             : spanishRecipeLabel(step.label),
         en:
           recipeId === AEROGARDEN_RECIPE_ID
             ? step.feedingIndex === 1
-              ? "First/second feeding · verified pod group"
-              : "Later feeding · 9 pods"
+              ? "First feeding · Bounty · 9 pods"
+              : step.feedingIndex === 2
+                ? "Second feeding · Bounty · 9 pods"
+                : "Third and later feedings · Bounty · 9 pods"
             : step.label,
       },
     }));
@@ -122,18 +126,47 @@ export function recipeStageLabel(
   lang: Lang,
 ): string {
   if (productId !== "aerogarden") return stage.label[lang];
-  if (stage.feedingIndex === 1) {
+  if (stage.feedingIndex === 1 && pods === 9) {
     return lang === "es"
-      ? pods === 9
-        ? "Primera/segunda alimentación · Bounty · 9 pods"
-        : "Alimentación Harvest · 6/7 pods"
-      : pods === 9
-        ? "First/second feeding · Bounty · 9 pods"
-        : "Harvest feeding · 6/7 pods";
+      ? "Primera alimentación · Bounty · 9 pods"
+      : "First feeding · Bounty · 9 pods";
+  }
+  if (stage.feedingIndex === 2) {
+    return lang === "es"
+      ? "Segunda alimentación · Bounty · 9 pods"
+      : "Second feeding · Bounty · 9 pods";
+  }
+  if (stage.feedingIndex === 3) {
+    return lang === "es"
+      ? "Tercera y siguientes · Bounty · 9 pods"
+      : "Third and later feedings · Bounty · 9 pods";
   }
   return lang === "es"
-    ? "Alimentación posterior · Bounty · 9 pods"
-    : "Later feeding · Bounty · 9 pods";
+    ? "En cada alimentación · Harvest · 6/7 pods"
+    : "At each feeding · Harvest · 6/7 pods";
+}
+
+export function manufacturerDoseDefaults(input: {
+  productId: string;
+  stageId: string;
+  liters: number;
+  pods: number;
+}): { id: string; label: string; amount: number }[] {
+  const recipeId = RECIPE_IDS[input.productId];
+  if (!recipeId) return [];
+  const stage = stageForId(input.stageId, input.productId);
+  const recipe = executeFreshRecipe({
+    recipeId,
+    ...(input.productId === "aerogarden" ? { podCount: input.pods } : { volumeL: input.liters }),
+    ...(stage?.feedingIndex === undefined ? {} : { feedingIndex: stage.feedingIndex }),
+  });
+  return recipe.ok && recipe.value
+    ? recipe.value.parts.map((part) => ({
+        id: part.componentId,
+        label: part.label,
+        amount: part.ml,
+      }))
+    : [];
 }
 
 export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
@@ -264,6 +297,7 @@ export type CalcResult =
       kind: "needs";
       missing: string[];
       message?: string;
+      calibrationRequired?: boolean;
       target?: { value: number; provenance: Provenance };
       range?: { min: number; max: number; common: boolean; limiting?: string };
       evidence?: Evidence;
@@ -466,8 +500,11 @@ function rangeFor(contexts: CropContext[]) {
     : undefined;
 }
 
-function engineNeeds(message: string): CalcResult {
-  return { kind: "needs", missing: [], message };
+function engineNeeds(
+  message: string,
+  details: Partial<Extract<CalcResult, { kind: "needs" }>> = {},
+): CalcResult {
+  return { kind: "needs", missing: [], message, ...details };
 }
 
 function makeMeasurement(value: number): UserMeasurement {
@@ -572,6 +609,21 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
     range &&
     (input.userTarget < range.min || input.userTarget > range.max),
   );
+  const targetPresentation = {
+    ...(targetValue === undefined
+      ? {}
+      : {
+          target: {
+            value: targetValue,
+            provenance: input.userTarget !== null ? ("user" as const) : ("garden" as const),
+          },
+        }),
+    ...(range ? { range } : {}),
+    evidence: evidenceLabel(evidenceState),
+    evidenceNote,
+    outsideEvidence,
+    sources,
+  };
 
   if (input.mode === "recipe") {
     const recipeId = RECIPE_IDS[input.productId];
@@ -615,29 +667,11 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
 
   if (input.mode === "target") {
     if (!targetEngine.ok || !targetEngine.value || targetValue === undefined) {
-      return {
-        kind: "needs",
-        missing: [],
-        message:
-          targetEngine.errors[0]?.message ?? "Elige un objetivo o aporta evidencia aplicable.",
-        range,
-        evidence: evidenceLabel(evidenceState),
-        evidenceNote,
-        outsideEvidence,
-        sources,
-      };
+      return engineNeeds(
+        targetEngine.errors[0]?.message ?? "Elige un objetivo o aporta evidencia aplicable.",
+        targetPresentation,
+      );
     }
-    const targetPresentation = {
-      target: {
-        value: targetValue,
-        provenance: input.userTarget !== null ? ("user" as const) : ("garden" as const),
-      },
-      range,
-      evidence: evidenceLabel(targetEngine.value.evidenceState),
-      evidenceNote,
-      outsideEvidence,
-      sources,
-    };
     const identity = productIdentity(input.productId);
     const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
     if (!identity || !signature) {
@@ -660,6 +694,7 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
         missing: [],
         message:
           "Registra una medición real en este producto y receta para calcular una dosis por EC.",
+        calibrationRequired: true,
         ...targetPresentation,
       };
     }
@@ -699,12 +734,14 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
     };
   }
 
-  if (targetValue === undefined) return engineNeeds("Selecciona un objetivo EC para continuar.");
+  if (targetValue === undefined)
+    return engineNeeds("Selecciona un objetivo EC para continuar.", targetPresentation);
   const identity = productIdentity(input.productId);
   const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
   if (!identity || !signature)
     return engineNeeds(
       "Este producto necesita una calibración exacta antes de corregir o rellenar.",
+      targetPresentation,
     );
   const calibration = buildCalibrationModel({
     productIdentity: identity,
@@ -713,25 +750,34 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
     observations: input.calibrationObservations ?? [],
   });
   if (!calibration.ok || !calibration.value)
-    return engineNeeds("Registra una medición real para calibrar este producto y receta exactos.");
+    return engineNeeds("Registra una medición real para calibrar este producto y receta exactos.", {
+      ...targetPresentation,
+      calibrationRequired: true,
+    });
 
   if (input.mode === "adjust") {
-    if (input.currentEc === null) return engineNeeds("el EC que mediste");
+    if (input.currentEc === null) return engineNeeds("el EC que mediste", targetPresentation);
     const correction = calculateEcCorrection({
       currentEc: makeMeasurement(input.currentEc),
+      dilutionWaterEc: makeSourceWaterMeasurement(input.sourceEc),
       targetEc: targetValue,
       reservoirVolumeL: input.liters,
       calibration: calibration.value,
       policy: { dosingEquipmentResolutionMl: 0.5 },
     });
     if (!correction.ok || !correction.value)
-      return engineNeeds(correction.errors[0]?.message ?? "No se pudo calcular la corrección.");
+      return engineNeeds(
+        correction.errors[0]?.message ?? "No se pudo calcular la corrección.",
+        targetPresentation,
+      );
     const value = correction.value;
     const doses =
       value.direction === "ADD_WATER" && value.waterMl !== undefined
         ? [{ label: "Agua", amount: value.waterMl / 1000, unit: "L" as const }]
         : value.doseMl !== undefined
-          ? [{ label: "Mezcla nutritiva", amount: value.doseMl, unit: "mL" as const }]
+          ? (dosePartsForTotal(input.productId, input.stageId, input.pods, value.doseMl) ?? [
+              { label: "Mezcla nutritiva", amount: value.doseMl, unit: "mL" as const },
+            ])
           : [];
     return {
       kind: "ok",
@@ -757,26 +803,32 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
     };
   }
 
-  if (input.currentEc === null) return engineNeeds("el EC que mediste");
-  if (input.currentLiters === null) return engineNeeds("cuántos litros quedan");
-  if (input.waterAdded === null) return engineNeeds("cuánta agua añadiste");
+  if (input.currentEc === null) return engineNeeds("el EC que mediste", targetPresentation);
+  if (input.currentLiters === null) return engineNeeds("cuántos litros quedan", targetPresentation);
+  if (input.waterAdded === null) return engineNeeds("cuánta agua añadiste", targetPresentation);
   const topup = calculateTopUpMaintenance({
     currentVolumeL: input.currentLiters,
     nominalVolumeL: input.liters,
     replacementWaterL: input.waterAdded,
     currentEc: makeMeasurement(input.currentEc),
+    replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
     calibration: calibration.value,
   });
   if (!topup.ok || !topup.value)
-    return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.");
+    return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.", {
+      ...targetPresentation,
+      calibrationRequired: topup.errors.some((item) => item.code === "CALIBRATION_REQUIRED"),
+    });
   const value = topup.value;
   return {
     kind: "ok",
     provenance: "measured",
     action: value.nutrientDoseMl ? "add" : "hold",
     doses: value.nutrientDoseMl
-      ? [{ label: "Mezcla nutritiva", amount: value.nutrientDoseMl, unit: "mL" as const }]
+      ? (dosePartsForTotal(input.productId, input.stageId, input.pods, value.nutrientDoseMl) ?? [
+          { label: "Mezcla nutritiva", amount: value.nutrientDoseMl, unit: "mL" as const },
+        ])
       : [],
     target: { value: targetValue, provenance: input.userTarget !== null ? "user" : "garden" },
     range,

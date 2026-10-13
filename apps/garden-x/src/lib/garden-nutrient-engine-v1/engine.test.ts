@@ -320,6 +320,25 @@ describe("Garden Nutrient Engine V1", () => {
     );
   });
 
+  it("uses measured source-water EC for correction dilution", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    });
+    const result = calculateEcCorrection({
+      currentEc: measurement(1.8, "NUTRIENT_SOLUTION"),
+      dilutionWaterEc: measurement(0.2, "SOURCE_WATER"),
+      targetEc: 1,
+      reservoirVolumeL: 10,
+      calibration: calibration.value!,
+    });
+    expect(result.value?.direction).toBe("ADD_WATER");
+    if (result.value?.direction === "ADD_WATER") expect(result.value.waterMl).toBeCloseTo(10000);
+  });
+
   it("blocks top-up when current volume is missing and checks reservoir capacity", () => {
     const missing = calculateTopUpMaintenance({
       nominalVolumeL: 10,
@@ -357,6 +376,29 @@ describe("Garden Nutrient Engine V1", () => {
     expect(result.value?.approximation).toBe(true);
     expect(result.warnings.some((item) => item.code === "LINEAR_MIXING_APPROXIMATION")).toBe(true);
     expect(JSON.stringify(result)).toMatch(/restored nutrient balance/i);
+  });
+
+  it("includes measured source-water EC in top-up mixing", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    });
+    const result = calculateTopUpMaintenance({
+      currentVolumeL: 8,
+      nominalVolumeL: 10,
+      replacementWaterL: 1,
+      currentEc: measurement(1, "NUTRIENT_SOLUTION"),
+      replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+      targetEc: 1.2,
+      calibration: calibration.value,
+    });
+    expect(
+      result.value?.claims.find((item) => item.id === "top-up-after-water-ec")?.value,
+    ).toBeCloseTo((1 * 8 + 0.2) / 9);
+    expect(result.value?.claims.find((item) => item.id === "top-up-dose")).toBeDefined();
   });
 
   it("reports deterministic source-water values without a universal threshold", () => {

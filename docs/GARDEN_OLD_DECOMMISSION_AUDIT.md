@@ -25,7 +25,9 @@ All eight functions listed below remain deployed and `ACTIVE` on OLD. The availa
 | `gardenpedia-research` | Published Gardenpedia calls this route through its build-injected Supabase URL. | Product capability is active; the OLD deployment is not the configured Production target. Verify its Production replacement before retiring OLD. |
 | `garden-photo-rendition-backfill` | Administrative backfill tool; historical photo recovery is complete and no current app caller was found. | Recovery-only/obsolete; external scheduled caller status unverified. |
 
-The Supabase API denied access to Production project details and deployed functions, and the Vercel API denied access to project `streex-garden` and its environment metadata. Therefore the Production replacement deployments and current scheduled Vercel jobs have not been verified in this audit. Do not disable or delete OLD functions based only on the available 24-hour log window.
+Production CLI access has since been verified. The Production project is `fnhggqqnkhkrfwmnsqmy` (`Garden X Production`, `ACTIVE_HEALTHY`) with active `garden-media`, `garden-ai`, `guest-garden-story`, and `guest-plant-story`. The current app also calls `garden-identify` and `gardenpedia-research`; neither appears in the deployed Production function list or has an implementation in this worktree, so those consumers lack verified Production replacements.
+
+The owner’s scoped read-only OLD CLI run on 2026-10-13 UTC verified project metadata and all eight OLD functions. Its previous-24-hour invocation query returned no matching rows; that does not prove zero use. The PAT was not saved in a CLI profile and Production authentication remained intact. The Vercel API still denies access to `streex-garden` project/environment metadata, so the deployed Production build target and Vercel schedules remain unverified. Do not disable or delete OLD functions based only on this 24-hour log result.
 
 ## Retirement gate
 

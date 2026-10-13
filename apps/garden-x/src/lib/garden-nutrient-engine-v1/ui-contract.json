@@ -85,8 +85,17 @@
     },
     "EC_CORRECTION": {
       "requiredInputs": ["currentEc", "targetEc", "reservoirVolumeL", "calibration"],
-      "optionalInputs": ["policy.firstStepFraction", "policy.dosingEquipmentResolutionMl"],
-      "conditionalInputs": ["currentEc scope must be NUTRIENT_SOLUTION"],
+      "optionalInputs": [
+        "reservoirCapacityL",
+        "dilutionWaterEc",
+        "policy.firstStepFraction",
+        "policy.dosingEquipmentResolutionMl"
+      ],
+      "conditionalInputs": [
+        "currentEc scope must be NUTRIENT_SOLUTION",
+        "reservoirVolumeL is the measured actual remaining volume, not nominal capacity",
+        "dilutionWaterEc is required when current EC exceeds target"
+      ],
       "derivedValues": ["doseMl or waterMl", "optional firstStepDoseMl"],
       "outputs": ["direction", "dose", "requiresRemeasurement"],
       "warnings": [
@@ -94,7 +103,11 @@
         "PARTIAL_DOSE_POLICY",
         "DOSE_BELOW_EQUIPMENT_RESOLUTION"
       ],
-      "errors": ["INCOMPATIBLE_MEASUREMENT_SCOPE"],
+      "errors": [
+        "INCOMPATIBLE_MEASUREMENT_SCOPE",
+        "INVALID_CORRECTION_INPUT",
+        "DILUTION_EXCEEDS_CAPACITY"
+      ],
       "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
       "explainability": [
         "measured EC",
@@ -111,19 +124,39 @@
         "currentEc",
         "targetEc"
       ],
-      "optionalInputs": ["calibration", "policy.enableCumulativeTopUpHeuristic"],
+      "optionalInputs": [
+        "calibration",
+        "replacementWaterEc",
+        "policy.enableCumulativeTopUpHeuristic"
+      ],
       "conditionalInputs": [
         "calibration when nutrient addition is required",
-        "currentVolumeL is never inferred from nominal capacity"
+        "currentVolumeL is never inferred from nominal capacity",
+        "replacementWaterEc is required for a positive replacementWaterL"
       ],
-      "derivedValues": ["resultingVolumeL", "EC after dilution", "optional nutrientDoseMl"],
-      "outputs": ["replacement water", "optional nutrient dose", "approximation marker"],
+      "derivedValues": [
+        "resultingVolumeL",
+        "afterWaterEc",
+        "optional nutrientDoseMl",
+        "optional dilutionWaterMl"
+      ],
+      "outputs": [
+        "replacement water",
+        "optional nutrient dose",
+        "optional further dilution",
+        "approximation marker"
+      ],
       "warnings": [
         "LINEAR_MIXING_APPROXIMATION",
         "CALIBRATION_EXTRAPOLATION",
         "CUMULATIVE_TOP_UP_REPLACEMENT_GUIDANCE"
       ],
-      "errors": ["CURRENT_VOLUME_REQUIRED", "RESERVOIR_CAPACITY_EXCEEDED", "CALIBRATION_REQUIRED"],
+      "errors": [
+        "CURRENT_VOLUME_REQUIRED",
+        "RESERVOIR_CAPACITY_EXCEEDED",
+        "DILUTION_EXCEEDS_CAPACITY",
+        "CALIBRATION_REQUIRED"
+      ],
       "evidenceStates": ["HIGH", "MODERATE", "LOW", "CONFLICTING", "INSUFFICIENT"],
       "explainability": [
         "measured EC",
@@ -133,6 +166,24 @@
         "not nutrient balance"
       ]
     }
+  },
+  "calibrationCapture": {
+    "requiredInputs": [
+      "exact productIdentity",
+      "formulationVersion",
+      "recipeContextSignature",
+      "componentRatioSignature",
+      "componentDosesMl actually applied",
+      "baselineEc",
+      "resultingEc",
+      "actual sample reservoirVolumeL"
+    ],
+    "rules": [
+      "Never substitute recommended dose for actual applied dose",
+      "Never substitute manufacturer expected EC for measured resulting EC",
+      "Reuse only applicable exact-product/recipe-context observations",
+      "Persist locally; no canonical Garden writes"
+    ]
   },
   "epistemicClasses": [
     "SOURCE_BACKED_FACT",

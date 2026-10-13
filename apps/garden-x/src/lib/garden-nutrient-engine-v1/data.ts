@@ -1,6 +1,6 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
-export const NUTRIENT_SOURCES: Record<string, SourceRef> = {
+export const NUTRIENT_SOURCES = {
   okstateEcPh: {
     id: "okstate-ecph",
     publisher: "Oklahoma State University Extension",
@@ -15,7 +15,7 @@ export const NUTRIENT_SOURCES: Record<string, SourceRef> = {
   generalHydroponicsFlora: {
     id: "general-hydroponics-floraseries-2026-07-07",
     publisher: "General Hydroponics",
-    title: "FloraSeries Professional 3-Part Nutrient System",
+    title: "FloraSeries Professional 3-Part Nutrient System · Light Feed",
     url: "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
     sourceClass: "MANUFACTURER",
     tier: "A",
@@ -27,26 +27,24 @@ export const NUTRIENT_SOURCES: Record<string, SourceRef> = {
   aerogardenBounty: {
     id: "aerogarden-bounty-liquid-food",
     publisher: "AeroGarden / ScottsMiracle-Gro",
-    title: "Bounty Basic product guidance and feeding FAQ",
-    url: "https://aerogarden.com/bounty-basic.html",
+    title: "AeroGarden Liquid Plant Food · manufacturer feeding instructions",
+    url: "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
     sourceClass: "MANUFACTURER",
     tier: "A",
-    publication: "2024",
     region: "US",
-    retrievedAt: "2026-10-03",
+    retrievedAt: "2026-10-12",
   },
   aerogardenLiquidFood: {
     id: "aerogarden-liquid-plant-food",
     publisher: "AeroGarden / ScottsMiracle-Gro",
     title: "Liquid Plant Food (Nutrients) - 3 oz",
-    url: "https://aerogarden.com/subscribe-to-save/100824-0000.html",
+    url: "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
     sourceClass: "MANUFACTURER",
     tier: "A",
-    publication: "2024",
     region: "US",
-    retrievedAt: "2026-10-03",
+    retrievedAt: "2026-10-12",
   },
-};
+} satisfies Record<string, SourceRef>;
 
 const source = NUTRIENT_SOURCES.okstateEcPh;
 

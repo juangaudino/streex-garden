@@ -46,73 +46,73 @@ export interface SourceRef {
   url: string;
   sourceClass: SourceClass;
   tier: EvidenceTier;
-  publication?: string;
-  revision?: string;
-  region?: string;
-  documentCode?: string;
+  publication?: string | undefined;
+  revision?: string | undefined;
+  region?: string | undefined;
+  documentCode?: string | undefined;
   retrievedAt: string;
-  contentHash?: string;
+  contentHash?: string | undefined;
 }
 
 export interface EvidenceObservation {
   id: string;
   metric: "EC" | "PH";
-  cropIdentity?: string;
-  cultivar?: string;
+  cropIdentity?: string | undefined;
+  cultivar?: string | undefined;
   stageApplicability: StageApplicability;
   hydroponicSystem: HydroponicSystem;
   measurementScope: MeasurementScope;
   scopeBasis: ScopeBasis;
-  environment?: string;
+  environment?: string | undefined;
   source: SourceRef;
   verificationStatus: VerificationStatus;
   evidenceState: EvidenceState;
-  publication?: string;
-  observedRange?: { min: number; max: number; unit: "mS/cm" | "pH" };
-  observedValue?: number;
-  notes?: string;
+  publication?: string | undefined;
+  observedRange?: { min: number; max: number; unit: "mS/cm" | "pH" } | undefined;
+  observedValue?: number | undefined;
+  notes?: string | undefined;
 }
 
 export interface MeasurementContext {
   scope: MeasurementScope;
   scopeBasis: ScopeBasis;
-  temperatureC?: number;
-  atcStatus?: "ON" | "OFF" | "UNKNOWN";
-  meterReferenceTemperatureC?: number;
-  phAdjustedBeforeMeasurement?: boolean;
+  temperatureC?: number | undefined;
+  atcStatus?: ("ON" | "OFF" | "UNKNOWN") | undefined;
+  meterReferenceTemperatureC?: number | undefined;
+  phAdjustedBeforeMeasurement?: boolean | undefined;
 }
 
 export interface UserMeasurement {
   value: number;
   unit: "mS/cm" | "uS/cm" | "pH";
   context: MeasurementContext;
-  meterResolution?: number;
-  timestamp?: string;
+  meterResolution?: number | undefined;
+  timestamp?: string | undefined;
 }
 
 export interface ProductIdentity {
   manufacturer: string;
   productFamily: string;
   exactProduct: string;
-  formulationVersion?: string;
-  region?: string;
-  edition?: string;
+  formulationVersion?: string | undefined;
+  region?: string | undefined;
+  edition?: string | undefined;
 }
 
 export interface RecipeComponent {
   id: string;
   label: string;
-  role?: string;
-  npk?: string;
+  role?: string | undefined;
+  npk?: string | undefined;
 }
 
 export interface RecipeStep {
   stage: string;
-  feedingIndex?: number;
+  feedingIndex?: number | undefined;
   label: string;
   doses: Record<string, number>;
   doseUnit: "mL/L" | "mL/gal" | "mL";
-  expectedEc?: { min: number; max: number; unit: "mS/cm" };
+  expectedEc?: { min: number; max: number; unit: "mS/cm" } | undefined;
   source: SourceRef;
   epistemic: "MANUFACTURER_INSTRUCTION";
 }
@@ -125,31 +125,34 @@ export interface ManufacturerRecipe {
   mixingOrder: string[];
   source: SourceRef;
   executable: boolean;
-  notes?: string[];
-  podCountGroups?: number[];
+  notes?: string[] | undefined;
+  podCountGroups?: number[] | undefined;
 }
 
 export interface CalibrationObservation {
   id: string;
   productIdentity: ProductIdentity;
-  formulationVersion?: string;
-  lot?: string;
+  formulationVersion?: string | undefined;
+  lot?: string | undefined;
   componentRatioOrRecipeSignature: string;
+  /** Manufacturer recipe context and the actual measured mix are separate. */
+  recipeContextSignature?: string | undefined;
+  componentDosesMl?: Record<string, number> | undefined;
   baselineEc: number;
   deltaEc: number;
   resultingEc: number;
   doseAppliedMl: number;
   reservoirVolumeL: number;
-  temperatureC?: number;
-  atcStatus?: "ON" | "OFF" | "UNKNOWN";
-  meterIdentity?: string;
-  meterResolution?: number;
+  temperatureC?: number | undefined;
+  atcStatus?: ("ON" | "OFF" | "UNKNOWN") | undefined;
+  meterIdentity?: string | undefined;
+  meterResolution?: number | undefined;
   timestamp: string;
 }
 
 export interface CalibrationModel {
   productIdentity: ProductIdentity;
-  formulationVersion?: string;
+  formulationVersion?: string | undefined;
   recipeSignature: string;
   observations: CalibrationObservation[];
   validCalibrationRange: {
@@ -167,13 +170,13 @@ export interface CalibrationModel {
 export interface Claim {
   id: string;
   label: string;
-  value?: string | number;
+  value?: (string | number) | undefined;
   epistemic: EpistemicClass;
-  evidenceState?: EvidenceState;
+  evidenceState?: EvidenceState | undefined;
   derivedFrom: string[];
-  sourceIds?: string[];
-  experimentalPolicy?: boolean;
-  note?: string;
+  sourceIds?: string[] | undefined;
+  experimentalPolicy?: boolean | undefined;
+  note?: string | undefined;
 }
 
 export interface EngineWarning {
@@ -181,13 +184,13 @@ export interface EngineWarning {
   message: string;
   epistemic: EpistemicClass;
   derivedFrom: string[];
-  experimentalPolicy?: boolean;
+  experimentalPolicy?: boolean | undefined;
 }
 
 export interface EngineError {
   code: string;
   message: string;
-  missing?: string[];
+  missing?: string[] | undefined;
 }
 
 export interface EngineResult<T> {
@@ -200,28 +203,28 @@ export interface EngineResult<T> {
 
 export interface CropContext {
   cropIdentity: string;
-  cultivar?: string;
-  phenologicalStage?: StageApplicability;
-  hydroponicSystem?: HydroponicSystem;
-  measurementScope?: MeasurementScope;
+  cultivar?: string | undefined;
+  phenologicalStage?: StageApplicability | undefined;
+  hydroponicSystem?: HydroponicSystem | undefined;
+  measurementScope?: MeasurementScope | undefined;
 }
 
 export interface RangeSelection {
   cropIdentity: string;
-  ec?: { min: number; max: number; unit: "mS/cm" };
-  ph?: { min: number; max: number; unit: "pH" };
+  ec?: { min: number; max: number; unit: "mS/cm" } | undefined;
+  ph?: { min: number; max: number; unit: "pH" } | undefined;
   evidenceState: EvidenceState;
   observations: EvidenceObservation[];
 }
 
 export interface PolycultureRange {
   status: "COMMON_OPTIMUM_RANGE" | "NO_COMMON_OPTIMUM_RANGE" | "INSUFFICIENT";
-  range?: { min: number; max: number; unit: "mS/cm" };
+  range?: { min: number; max: number; unit: "mS/cm" } | undefined;
   cropRanges: RangeSelection[];
   limitingCrops: string[];
-  deviations?: { cropIdentity: string; deviation: number }[];
-  separationRecommended?: boolean;
-  rationale?: string;
+  deviations?: { cropIdentity: string; deviation: number }[] | undefined;
+  separationRecommended?: boolean | undefined;
+  rationale?: string | undefined;
   evidenceState: EvidenceState;
   claims: Claim[];
 }
@@ -236,12 +239,12 @@ export interface DosePart {
 export interface RecipeResult {
   mode: "FRESH_RECIPE";
   recipe: ManufacturerRecipe;
-  volumeL?: number;
-  podCount?: number;
-  feedingIndex?: number;
+  volumeL?: number | undefined;
+  podCount?: number | undefined;
+  feedingIndex?: number | undefined;
   parts: DosePart[];
-  manufacturerRecipeExpectation?: { min: number; max: number; unit: "mS/cm" };
-  cropCompatibility?: RangeSelection[];
+  manufacturerRecipeExpectation?: { min: number; max: number; unit: "mS/cm" } | undefined;
+  cropCompatibility?: RangeSelection[] | undefined;
   evidenceState: EvidenceState;
   warnings: EngineWarning[];
   claims: Claim[];
@@ -250,7 +253,7 @@ export interface RecipeResult {
 export interface EcTargetResult {
   mode: "FRESH_TARGET_EC";
   target: { min: number; max: number; unit: "mS/cm" };
-  suggestedStartingPoint?: number;
+  suggestedStartingPoint?: number | undefined;
   evidenceState: EvidenceState;
   warnings: EngineWarning[];
   claims: Claim[];
@@ -262,7 +265,7 @@ export interface FreshTargetDoseResult {
   targetEc: number;
   sourceEc: number;
   reservoirVolumeL: number;
-  doseMl?: number;
+  doseMl?: number | undefined;
   requiresMeasurement: true;
   evidenceState: EvidenceState;
   warnings: EngineWarning[];
@@ -272,9 +275,9 @@ export interface FreshTargetDoseResult {
 export interface CorrectionResult {
   mode: "EC_CORRECTION";
   direction: "ADD_NUTRIENT" | "ADD_WATER" | "NO_CHANGE";
-  doseMl?: number;
-  waterMl?: number;
-  firstStepDoseMl?: number;
+  doseMl?: number | undefined;
+  waterMl?: number | undefined;
+  firstStepDoseMl?: number | undefined;
   requiresRemeasurement: true;
   evidenceState: EvidenceState;
   warnings: EngineWarning[];
@@ -284,8 +287,10 @@ export interface CorrectionResult {
 export interface TopUpResult {
   mode: "TOP_UP_MAINTENANCE";
   replacementWaterMl: number;
-  nutrientDoseMl?: number;
+  nutrientDoseMl?: number | undefined;
   resultingVolumeL: number;
+  afterWaterEc: number;
+  dilutionWaterMl?: number | undefined;
   approximation: true;
   evidenceState: EvidenceState;
   warnings: EngineWarning[];
@@ -293,9 +298,9 @@ export interface TopUpResult {
 }
 
 export interface EnginePolicy {
-  firstStepFraction?: number;
-  enableCumulativeTopUpHeuristic?: boolean;
-  cumulativeTopUpLiters?: number;
-  meterResolution?: number;
-  dosingEquipmentResolutionMl?: number;
+  firstStepFraction?: number | undefined;
+  enableCumulativeTopUpHeuristic?: boolean | undefined;
+  cumulativeTopUpLiters?: number | undefined;
+  meterResolution?: number | undefined;
+  dosingEquipmentResolutionMl?: number | undefined;
 }

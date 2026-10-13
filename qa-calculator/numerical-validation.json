@@ -1,0 +1,2137 @@
+{
+  "calibrationEvidence": "SIMULATED QA observation. No empirical product-response validation claimed.",
+  "calculations": 1979,
+  "externalComparisons": 135,
+  "coverage": {
+    "totals": {
+      "SUPPORTED_DIRECT": 0,
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING": 49,
+      "INSUFFICIENT": 165,
+      "NOT_APPLICABLE": 0
+    },
+    "rows": [
+      {
+        "plantId": "acorn-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "alaska-nasturtium",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "anaheim-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "ancho-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "anise",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "anise-hyssop",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "armenian-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "arugula",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "baby-spinach",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "spinach"
+      },
+      {
+        "plantId": "bachelor-button",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "banana-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "bee-balm",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "beefsteak-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "beet-detroit-dark-red",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bibb-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "black-beauty-eggplant",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "black-cherry-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "black-eyed-susan",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "black-krim-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "black-seeded-simpson",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "blue-lake-pole-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bok-choy",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "borage-blue",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "broadleaf-sage",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "sage"
+      },
+      {
+        "plantId": "broccoli-calabrese",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "broccoli-raab",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "broccolini",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "brussels-sprouts",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "brussels-sprouts-long-island",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bush-bean-blue-lake",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bush-bean-royal-burgundy",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bush-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "buttercrunch-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "butternut-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "calendula-pacific-beauty",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "california-poppy",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cantaloupe",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "caraway",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "carrot-nantes",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cascading-petunia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cauliflower-snowball",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cayenne-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "celebrity-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "celosia-plumosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cherry-belle-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cherry-bomb-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "cherry-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "chinese-light-green-celery",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "celery"
+      },
+      {
+        "plantId": "chioggia-beet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cilantro",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cinnamon-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "collard-greens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-chives",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-mint",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cosmos-seashell",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cosmos-sensation",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "crimson-giant-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cubanelle-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "cucumber-marketmore",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "curled-chervil",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cylindra-beet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "daikon-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "danvers-carrot",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dark-green-zucchini",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "delphinium-magic-fountains-dwarf",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dill-bouquet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dwarf-cosmos",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dwarf-sunflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "early-white-vienna-kohlrabi",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "edamame",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "eight-ball-zucchini",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "endive",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "english-thyme",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "epazote",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "evergreen-bunching-onion-nabuka",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "fava-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "feverfew",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "flat-leaf-parsley",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "parsley"
+      },
+      {
+        "plantId": "florence-fennel",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "fragrant-dwarf-dianthus-mix",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "french-breakfast-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "french-marigold",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "gai-lan",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "garlic-chives",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "genovese-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "georgia-collards",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "german-chamomile",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "german-thyme",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "gherkin-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "giant-musselburgh-leek",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "globe-amaranth",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "golden-acre-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "golden-beet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "grape-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "greek-oregano",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "green-arrow-shelling-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "ground-cherry",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "habanero-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "hakurei-turnip",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "henderson-bush-lima-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hyssop",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "iceberg-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "imperator-carrot",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "italian-giant-parsley",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "parsley"
+      },
+      {
+        "plantId": "italian-large-leaf-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "italian-oregano",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "ivory-princess-calendula",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "jalapeno-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "kale-dwarf-blue-curled",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "kentucky-wonder-pole-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "king-richard-leek",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "kohlrabi",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "komatsuna",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lacinato-kale",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lavender-vera",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "leek-american-flag",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lemon-balm",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lemon-queen-sunflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lemon-thyme",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lemongrass-homegrown",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "little-gem-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "little-marvel-shelling-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "love-in-a-mist",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mammoth-melting-sugar-snow-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "marigold-jolly-jester",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "marjoram",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mexican-tarragon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mini-bell-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "mini-lunchbox-sweet-pepper",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mizuna",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mizuna-red-streaks",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "monterey-strawberry",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "strawberry"
+      },
+      {
+        "plantId": "mustard-greens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "napa-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "nasturtium-empress-of-india",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "oakleaf-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "parris-island-romaine",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "parsnip",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "patio-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "pattypan-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "petunia-dwarf-bedding-mixed",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "phacelia-tanacetifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pickling-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "poblano-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "provider-bush-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "purple-of-sicily-cauliflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-podded-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-sprouting-broccoli",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-acre-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-mustard-greens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-romaine-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "red-russian-kale",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-sail-lettuce",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "redbor-kale",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "roma-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "romanesco-cauliflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rosemary",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "russian-tarragon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rutabaga",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "salsify",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "san-marzano-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "santo-cilantro",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "savoy-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "seaside-f1-spinach",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "spinach"
+      },
+      {
+        "plantId": "seed-grown-shallot",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "serrano-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "shishito-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "signet-marigold",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "snap-pea-oregon-sugar-pod",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "snapdragon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "spearmint",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "stevia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "straight-eight-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sugar-ann-snow-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sugar-baby-watermelon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sugar-pumpkin",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sugar-snap-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "summer-savory",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sun-gold-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "sunflower-american-giant-hybrid",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sunflower-autumn-beauty",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sunrise-sauce-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "supersweet-100-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "sweet-alyssum-white",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweet-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "sweet-chocolate-pepper",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "sweet-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweet-spanish-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "swiss-chard-rainbow",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "tatsoi",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "teddy-bear-sunflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "thai-basil",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "tiny-tim-sweet-alyssum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "tiny-tim-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "tokyo-cross-turnip",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "tokyo-long-white-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "tomatillo",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "turnip-purple-top-white-globe",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "viola-pansy",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "walla-walla-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "waltham-29-broccoli",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "watercress",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "watermelon-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "white-lisbon-bunching-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "winter-savory",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "yellow-brandywine-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "yellow-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "yellow-pear-tomato",
+        "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+        "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "yellow-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "zinnia-lilliput-mixed",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "zinnia-state-fair",
+        "classification": "INSUFFICIENT"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "test": "GH Light W1 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.9510193884893343,
+      "gardenValue": 0.95102,
+      "difference": 6.115106656601199e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.9510193884893343,
+      "gardenValue": 0.95102,
+      "difference": 6.115106656601199e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 0.9510193884893343,
+      "gardenValue": 0.95102,
+      "difference": 6.115106656601199e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.9020387769786686,
+      "gardenValue": 1.90204,
+      "difference": 0.0000012230213313202398,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.9020387769786686,
+      "gardenValue": 1.90204,
+      "difference": 0.0000012230213313202398,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.9020387769786686,
+      "gardenValue": 1.90204,
+      "difference": 0.0000012230213313202398,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.090813012590337,
+      "gardenValue": 3.090815,
+      "difference": 0.000001987409663062323,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.090813012590337,
+      "gardenValue": 3.090815,
+      "difference": 0.000001987409663062323,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.090813012590337,
+      "gardenValue": 3.090815,
+      "difference": 0.000001987409663062323,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.755096942446672,
+      "gardenValue": 4.7551,
+      "difference": 0.0000030575533278565104,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.755096942446672,
+      "gardenValue": 4.7551,
+      "difference": 0.0000030575533278565104,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W1 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.755096942446672,
+      "gardenValue": 4.7551,
+      "difference": 0.0000030575533278565104,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.9020387769786686,
+      "gardenValue": 1.902038,
+      "difference": 7.769786687372715e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.7963699560354092,
+      "gardenValue": 1.79637,
+      "difference": 4.3964590856759855e-8,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.3736946722623717,
+      "gardenValue": 1.373694,
+      "difference": 6.722623717703158e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.8040775539573373,
+      "gardenValue": 3.804076,
+      "difference": 0.000001553957337474543,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.5927399120708183,
+      "gardenValue": 3.59274,
+      "difference": 8.792918171351971e-8,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.7473893445247435,
+      "gardenValue": 2.747388,
+      "difference": 0.0000013445247435406316,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.181626025180674,
+      "gardenValue": 6.1816235,
+      "difference": 0.000002525180674339822,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.83820235711508,
+      "gardenValue": 5.8382025,
+      "difference": 1.428849207840699e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.464507684852709,
+      "gardenValue": 4.4645055,
+      "difference": 0.0000021848527094192605,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 9.510193884893344,
+      "gardenValue": 9.51019,
+      "difference": 0.000003884893343908402,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.981849780177047,
+      "gardenValue": 8.98185,
+      "difference": 2.1982295272948704e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W2 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.868473361311859,
+      "gardenValue": 6.86847,
+      "difference": 0.0000033613118590736235,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.170064628297781,
+      "gardenValue": 3.170064,
+      "difference": 6.282977809135559e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.958726986411262,
+      "gardenValue": 2.958726,
+      "difference": 9.864112620050491e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.219045239808447,
+      "gardenValue": 2.219046,
+      "difference": 7.601915532617909e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.340129256595562,
+      "gardenValue": 6.340128,
+      "difference": 0.0000012565955618271119,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.917453972822524,
+      "gardenValue": 5.917452,
+      "difference": 0.0000019728225240100983,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.438090479616894,
+      "gardenValue": 4.438092,
+      "difference": 0.0000015203831065235818,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 10.302710041967789,
+      "gardenValue": 10.302707999999999,
+      "difference": 0.000002041967789523369,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 9.615862705836602,
+      "gardenValue": 9.6158595,
+      "difference": 0.000003205836602404588,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 7.211897029377452,
+      "gardenValue": 7.2118995,
+      "difference": 0.000002470622548322865,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 15.850323141488905,
+      "gardenValue": 15.85032,
+      "difference": 0.000003141488905455958,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 14.793634932056312,
+      "gardenValue": 14.79363,
+      "difference": 0.0000049320563118016025,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W4 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 11.095226199042234,
+      "gardenValue": 11.09523,
+      "difference": 0.000003800957767197133,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.015415195843856,
+      "gardenValue": 4.015416,
+      "difference": 8.041561443405953e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.487071091127559,
+      "gardenValue": 3.487072,
+      "difference": 9.088724408634619e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.4909248900885235,
+      "gardenValue": 4.490924,
+      "difference": 8.900885237750344e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.030830391687712,
+      "gardenValue": 8.030832,
+      "difference": 0.0000016083122886811907,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.974142182255118,
+      "gardenValue": 6.974144,
+      "difference": 0.0000018177448817269237,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.981849780177047,
+      "gardenValue": 8.981848,
+      "difference": 0.0000017801770475500689,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 13.050099386492532,
+      "gardenValue": 13.050102,
+      "difference": 0.000002613507469106935,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 11.332981046164567,
+      "gardenValue": 11.332984,
+      "difference": 0.0000029538354322511395,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 14.5955058927877,
+      "gardenValue": 14.595502999999999,
+      "difference": 0.0000028927877018247727,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 20.07707597921928,
+      "gardenValue": 20.077080000000002,
+      "difference": 0.000004020780721702977,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 17.435355455637797,
+      "gardenValue": 17.43536,
+      "difference": 0.000004544362202096863,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W5 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 22.454624450442616,
+      "gardenValue": 22.45462,
+      "difference": 0.000004450442617098815,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.4303828816949653,
+      "gardenValue": 2.430382,
+      "difference": 8.816949654821826e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.4303828816949653,
+      "gardenValue": 2.430382,
+      "difference": 8.816949654821826e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.487071091127559,
+      "gardenValue": 3.487072,
+      "difference": 9.088724408634619e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.860765763389931,
+      "gardenValue": 4.860764,
+      "difference": 0.0000017633899309643652,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.860765763389931,
+      "gardenValue": 4.860764,
+      "difference": 0.0000017633899309643652,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.974142182255118,
+      "gardenValue": 6.974144,
+      "difference": 0.0000018177448817269237,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 7.898744365508637,
+      "gardenValue": 7.8987415,
+      "difference": 0.0000028655086374840266,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 7.898744365508637,
+      "gardenValue": 7.8987415,
+      "difference": 0.0000028655086374840266,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 11.332981046164567,
+      "gardenValue": 11.332984,
+      "difference": 0.0000029538354322511395,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 12.151914408474827,
+      "gardenValue": 12.151909999999999,
+      "difference": 0.000004408474827855002,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 12.151914408474827,
+      "gardenValue": 12.151909999999999,
+      "difference": 0.000004408474827855002,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W7 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 17.435355455637797,
+      "gardenValue": 17.43536,
+      "difference": 0.000004544362202096863,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.7435355455637795,
+      "gardenValue": 1.743536,
+      "difference": 4.5443622043173093e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.7435355455637795,
+      "gardenValue": 1.743536,
+      "difference": 4.5443622043173093e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.1133764188651876,
+      "gardenValue": 2.113376,
+      "difference": 4.188651874237337e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.487071091127559,
+      "gardenValue": 3.487072,
+      "difference": 9.088724408634619e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.487071091127559,
+      "gardenValue": 3.487072,
+      "difference": 9.088724408634619e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 4.226752837730375,
+      "gardenValue": 4.226752,
+      "difference": 8.377303748474674e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.666490523082284,
+      "gardenValue": 5.666492,
+      "difference": 0.0000014769177161255698,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.666490523082284,
+      "gardenValue": 5.666492,
+      "difference": 0.0000014769177161255698,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 6.868473361311859,
+      "gardenValue": 6.868472000000001,
+      "difference": 0.0000013613118587940676,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.717677727818899,
+      "gardenValue": 8.71768,
+      "difference": 0.0000022721811010484316,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.717677727818899,
+      "gardenValue": 8.71768,
+      "difference": 0.0000022721811010484316,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W10 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 10.566882094325937,
+      "gardenValue": 10.566880000000001,
+      "difference": 0.000002094325935786401,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 2L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.0566882094325938,
+      "gardenValue": 1.056688,
+      "difference": 2.0943259371186684e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 2L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.0566882094325938,
+      "gardenValue": 1.056688,
+      "difference": 2.0943259371186684e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 2L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 1.69070113509215,
+      "gardenValue": 1.690702,
+      "difference": 8.64907850006702e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 4L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.1133764188651876,
+      "gardenValue": 2.113376,
+      "difference": 4.188651874237337e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 4L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 2.1133764188651876,
+      "gardenValue": 2.113376,
+      "difference": 4.188651874237337e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 4L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.3814022701843,
+      "gardenValue": 3.381404,
+      "difference": 0.000001729815700013404,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 6.5L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.4342366806559297,
+      "gardenValue": 3.4342360000000003,
+      "difference": 6.806559293970338e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 6.5L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 3.4342366806559297,
+      "gardenValue": 3.4342360000000003,
+      "difference": 6.806559293970338e-7,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 6.5L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.494778689049487,
+      "gardenValue": 5.4947815,
+      "difference": 0.0000028109505132434265,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 10L Micro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.2834410471629685,
+      "gardenValue": 5.283440000000001,
+      "difference": 0.0000010471629678932004,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 10L Gro",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 5.2834410471629685,
+      "gardenValue": 5.283440000000001,
+      "difference": 0.0000010471629678932004,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "GH Light W12 10L Bloom",
+      "source": "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
+      "sourceValue": 8.45350567546075,
+      "gardenValue": 8.45351,
+      "difference": 0.000004324539249367376,
+      "tolerance": 0.000006,
+      "pass": true
+    },
+    {
+      "test": "Aero 6 pods feeding 1",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 6 pods feeding 2",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 6 pods feeding 3",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 6 pods feeding 8",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 7 pods feeding 1",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 7 pods feeding 2",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 7 pods feeding 3",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 7 pods feeding 8",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 9 pods feeding 1",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 9 pods feeding 2",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 8,
+      "gardenValue": 8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 9 pods feeding 3",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 12,
+      "gardenValue": 12,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Aero 9 pods feeding 8",
+      "source": "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+      "sourceValue": 12,
+      "gardenValue": 12,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU basil EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1,
+      "gardenValue": 1,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU basil EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.6,
+      "gardenValue": 1.6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU basil PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 5.5,
+      "gardenValue": 5.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU basil PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU lettuce EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.2,
+      "gardenValue": 1.2,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU lettuce EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU lettuce PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU lettuce PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 7,
+      "gardenValue": 7,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU tomato EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 2,
+      "gardenValue": 2,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU tomato EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 4,
+      "gardenValue": 4,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU tomato PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU tomato PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6.5,
+      "gardenValue": 6.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU pepper EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 0.8,
+      "gardenValue": 0.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU pepper EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU pepper PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 5.5,
+      "gardenValue": 5.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU pepper PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU strawberry EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU strawberry EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 2.2,
+      "gardenValue": 2.2,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU strawberry PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU strawberry PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU celery EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU celery EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 2.4,
+      "gardenValue": 2.4,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU celery PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6.5,
+      "gardenValue": 6.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU celery PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6.5,
+      "gardenValue": 6.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU spinach EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU spinach EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 2.3,
+      "gardenValue": 2.3,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU spinach PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU spinach PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 7,
+      "gardenValue": 7,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU parsley EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.8,
+      "gardenValue": 1.8,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU parsley EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 2.2,
+      "gardenValue": 2.2,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU parsley PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6,
+      "gardenValue": 6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU parsley PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6.5,
+      "gardenValue": 6.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU sage EC min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1,
+      "gardenValue": 1,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU sage EC max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 1.6,
+      "gardenValue": 1.6,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU sage PH min",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 5.5,
+      "gardenValue": 5.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "OSU sage PH max",
+      "source": "https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics",
+      "sourceValue": 6.5,
+      "gardenValue": 6.5,
+      "difference": 0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Fresh 4L .20→1.20",
+      "source": "SIMULATED CALIBRATION + INDEPENDENT MATHEMATICS",
+      "sourceValue": 10,
+      "gardenValue": 9.999999999999998,
+      "difference": 1.7763568394002505e-15,
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "Correct 4L .80→1.20",
+      "source": "SIMULATED CALIBRATION + INDEPENDENT MATHEMATICS",
+      "sourceValue": 4,
+      "gardenValue": 3.9999999999999982,
+      "difference": 1.7763568394002505e-15,
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "Top up 3L@.80 + 1L@.20 →1.20",
+      "source": "SIMULATED CALIBRATION + INDEPENDENT MATHEMATICS",
+      "sourceValue": 5.5,
+      "gardenValue": 5.499999999999997,
+      "difference": 2.6645352591003757e-15,
+      "tolerance": 1e-9,
+      "pass": true
+    }
+  ]
+}

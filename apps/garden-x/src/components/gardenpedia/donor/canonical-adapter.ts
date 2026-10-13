@@ -48,8 +48,8 @@ export type DonorGuideSection = {
   subtitle: string;
   body: string;
   bullets: string[];
-  avoid?: string;
-  context?: string;
+  avoid?: string | undefined;
+  context?: string | undefined;
   backing: DonorBacking;
   confidence: DonorConfidence;
   sources: DonorSourceRef[];
@@ -82,31 +82,39 @@ export type DonorPlantDetail = {
   emoji: string;
   summary: string;
   metrics: { label: string; value: string; note: string }[];
-  timeline?: {
-    note: string;
-    steps: { label: string; day: string; backed?: boolean }[];
-    decide: string;
-  };
+  timeline?:
+    | {
+        note: string;
+        steps: { label: string; day: string; backed?: boolean }[];
+        decide: string;
+      }
+    | undefined;
   evidence: { badge: string; backed: number; adapted: number; pending: number; coverage: string };
   seedProfileAvailable: boolean;
-  harvestUse?: {
-    ediblePart: string;
-    bestUse: string;
-    quickUses: string[];
-    options: DonorHarvestOption[];
-  };
-  neighbors?: {
-    good: DonorNeighbor[];
-    avoid: DonorNeighbor[];
-  };
-  visualGuide?: {
-    kind: string;
-    tag: string;
-    publisher: string;
-    title: string;
-    description: string;
-    url: string;
-  };
+  harvestUse?:
+    | {
+        ediblePart: string;
+        bestUse: string;
+        quickUses: string[];
+        options: DonorHarvestOption[];
+      }
+    | undefined;
+  neighbors?:
+    | {
+        good: DonorNeighbor[];
+        avoid: DonorNeighbor[];
+      }
+    | undefined;
+  visualGuide?:
+    | {
+        kind: string;
+        tag: string;
+        publisher: string;
+        title: string;
+        description: string;
+        url: string;
+      }
+    | undefined;
   guides: DonorGuideSection[];
 };
 
@@ -169,7 +177,7 @@ const harvestSources = harvestDocument.sources ?? {};
 const visualCatalog = visualsData as Record<string, VisualRecord[]>;
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
-export const seedProfileIds = new Set(gardenSeedProfileIds);
+export const seedProfileIds = new Set<string>(gardenSeedProfileIds);
 export const seedProfileCount = gardenSeedProfileIds.length;
 
 const CATEGORY_EMOJI: Record<string, string> = {
@@ -200,13 +208,13 @@ function evidenceRecords(entry: GardenLibraryEntry) {
     if (Array.isArray(value)) return value.forEach(visit);
     if (!value || typeof value !== "object") return;
     const record = value as Record<string, unknown>;
-    if (Array.isArray(record.evidence)) {
-      for (const item of record.evidence) {
+    if (Array.isArray(record["evidence"])) {
+      for (const item of record["evidence"]) {
         if (item && typeof item === "object") {
           const evidence = item as Record<string, unknown>;
           if (
-            evidence.evidenceType === "source_backed" ||
-            evidence.evidenceType === "garden_adaptation"
+            evidence["evidenceType"] === "source_backed" ||
+            evidence["evidenceType"] === "garden_adaptation"
           ) {
             records.push(evidence as (typeof records)[number]);
           }
@@ -226,7 +234,7 @@ function statusEvidence(entry: GardenLibraryEntry) {
     if (Array.isArray(value)) return value.forEach(visit);
     if (!value || typeof value !== "object") return;
     const record = value as Record<string, unknown>;
-    if (typeof record.status === "string") records.push(record.status);
+    if (typeof record["status"] === "string") records.push(record["status"]);
     Object.values(record).forEach(visit);
   };
   visit(entry.compatibilityProfile);
@@ -671,7 +679,9 @@ export function buildDonorPlantDetail(
     .filter((pair) => pair.a === entry.libraryPlantId || pair.b === entry.libraryPlantId)
     .map((pair) => {
       const id = pair.a === entry.libraryPlantId ? pair.b : pair.a;
-      const neighbor = gardenLibraryManifest.entries.find((item) => item.libraryPlantId === id);
+      const neighbor = (gardenLibraryManifest.entries as readonly GardenLibraryEntry[]).find(
+        (item) => item.libraryPlantId === id,
+      );
       const source = neighbor?.reference.sources.find((item) => item.id === pair.sourceId);
       return neighbor
         ? {

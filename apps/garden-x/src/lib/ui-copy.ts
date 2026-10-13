@@ -1,5 +1,13 @@
 export type UiLanguage = "en" | "es";
-export type SetupCopyId = "aera-one" | "aera-twelve" | "leaf-cabinet" | "aerogarden-sprout" | "balcony" | "backyard" | "herb" | "custom";
+export type SetupCopyId =
+  | "aera-one"
+  | "aera-twelve"
+  | "leaf-cabinet"
+  | "aerogarden-sprout"
+  | "balcony"
+  | "backyard"
+  | "herb"
+  | "custom";
 
 const copy = {
   en: {
@@ -17,7 +25,6 @@ const copy = {
     gardenUpdateFailed: "Garden could not be updated. Please try again.",
     gardenCoverUpdateFailed: "Garden details were saved, but the cover could not be updated.",
     gardenNameRequired: "Enter a garden name before saving.",
-    systemNameRequired: "Enter a system name before saving.",
     gardenName: "Garden name",
     location: "Location",
     growingSetup: "Growing setup",
@@ -66,7 +73,8 @@ const copy = {
     goodNeighbors: "Good neighbors",
     betterSeparate: "Better separate",
     noGuidance: "No documented guidance yet.",
-    referenceSeparation: "Knowledge from Gardenpedia. Your recorded history and current observations remain separate.",
+    referenceSeparation:
+      "Knowledge from Gardenpedia. Your recorded history and current observations remain separate.",
     sources: "Sources",
     noRelationships: "No documented relationships yet.",
     care: "Care",
@@ -83,7 +91,8 @@ const copy = {
     startSession: "Start session",
     continueSession: "Continue session",
     startNewSession: "Start a new session",
-    confirmStartNewCareSession: "An unfinished Care Session has progress. Start a new session and replace it?",
+    confirmStartNewCareSession:
+      "An unfinished Care Session has progress. Start a new session and replace it?",
     looksGood: "Looks good",
     chooseAtLeastOneGarden: "Select at least one garden with active plants.",
     careReviewPhoto: "Current review photo",
@@ -100,7 +109,8 @@ const copy = {
     gardenAiCheck: "Garden AI Check",
     askAboutThis: "Ask about this…",
     noReviewPhoto: "Choose a current photo to enable AI Check.",
-    careAskUnavailable: "Garden AI could not answer this follow-up. Nothing was recorded; please try again.",
+    careAskUnavailable:
+      "Garden AI could not answer this follow-up. Nothing was recorded; please try again.",
     worthCloserLook: "Worth a closer look",
     nothingAttention: "Nothing is asking for attention right now.",
     review: "Review",
@@ -155,7 +165,8 @@ const copy = {
     pagination: "Pagination",
     newMomentImage: "New moment",
     newPhoto: "New photo",
-    gardenAiNewPhotoHint: "Choose a current photo to check this plant with its existing cycle and history.",
+    gardenAiNewPhotoHint:
+      "Choose a current photo to check this plant with its existing cycle and history.",
     gardenAiPhotoOnlyHint: "Review a current photo without plant-specific history or identity.",
     day: "day",
     days: "days",
@@ -181,7 +192,8 @@ const copy = {
     storyEvidenceIdentity: "Gardenpedia identity",
     storyEvidenceOrigin: "Origin and cycle",
     storyEvidenceLocation: "Current location",
-    storyVisualComparisonInsufficient: "Garden has photos from the recorded moments, but not enough comparable observations yet to describe how the plant changed.",
+    storyVisualComparisonInsufficient:
+      "Garden has photos from the recorded moments, but not enough comparable observations yet to describe how the plant changed.",
     storySelectedEvents: "Selected history",
     storyGroupBegins: "The story begins",
     storyGroupNewPlace: "A new place",
@@ -189,14 +201,18 @@ const copy = {
     storyGroupPropagation: "Propagation",
     storyGroupRecordedCare: "Recorded care",
     storyNoVisualEvidence: "Not enough visual evidence yet",
-    storyHistoricalMediaUnavailable: "Some historical photo details are available, but the image itself is not available yet.",
-    storyNoInterpretation: "There is not yet enough evidence to interpret more than the recorded facts.",
+    storyHistoricalMediaUnavailable:
+      "Some historical photo details are available, but the image itself is not available yet.",
+    storyNoInterpretation:
+      "There is not yet enough evidence to interpret more than the recorded facts.",
     storyChangeEyebrow: "Change over time",
     storyChangeTitle: "What has changed",
     storyChangeRecorded: "Recorded measurements show a difference between these two moments.",
     storyChangeVisualAvailable: "Two usable photos are available for a closer visual comparison.",
-    storyChangeMetadataOnly: "The dates and recorded events are available, but the historical image bodies are not available for visual comparison.",
-    storyChangeNoComparable: "There is not enough comparable evidence yet to describe a meaningful change.",
+    storyChangeMetadataOnly:
+      "The dates and recorded events are available, but the historical image bodies are not available for visual comparison.",
+    storyChangeNoComparable:
+      "There is not enough comparable evidence yet to describe a meaningful change.",
     storyChangeUncertainty: "What remains uncertain",
     storyAnalyzeChange: "Read this change",
     storyAnalyzingChange: "Reading this change…",
@@ -207,7 +223,6 @@ const copy = {
     storyChangeIncreased: "increased",
     storyChangeDecreased: "decreased",
     daysHeld: "days, held in two photographs",
-    weeksHeld: "weeks, held in two photographs",
     monthsHeld: "months, held in two photographs",
     yearsHeld: "years, held in two photographs",
     sameDayHeld: "same day, held in two photographs",
@@ -231,11 +246,13 @@ const copy = {
     transplanted: "Transplanted",
     growthObserved: "Growth observed",
     lifeEvent_ended: "Cycle ended",
-    timelineReading: "A reading of recorded moments, not a rewritten biography. The complete record remains in Timeline.",
+    timelineReading:
+      "A reading of recorded moments, not a rewritten biography. The complete record remains in Timeline.",
     secondLook: "A second look",
     secondLookWhenNeeded: "A second look, when you need it",
     groundedInRecorded: "Grounded in what your garden has recorded.",
-    aiSupportsObservation: "AI supports what you observe. Recorded facts stay separate, and you confirm any identity change.",
+    aiSupportsObservation:
+      "AI supports what you observe. Recorded facts stay separate, and you confirm any identity change.",
     sourceStatement: "Every entry keeps its source: recorded, observed, or inferred.",
     yourGardenX: "Your Garden X",
     forReview: "to check",
@@ -289,9 +306,12 @@ const copy = {
     coverBackyard: "Backyard",
     systemReadyAddPlant: "Your system is ready. Add your first plant.",
     identityUnconfirmedTitle: "Identity not confirmed",
-    identityUnconfirmedBody: "This plant predates Library identity. Garden will preserve its history and only link it after you confirm the documented identity.",
-    severalIdentityMatches: "Several Library identities could match this plant. Choose the documented identity below.",
-    noUniqueIdentity: "No unique match was found. Search Garden Library to resolve this plant manually.",
+    identityUnconfirmedBody:
+      "This plant predates Library identity. Garden will preserve its history and only link it after you confirm the documented identity.",
+    severalIdentityMatches:
+      "Several Library identities could match this plant. Choose the documented identity below.",
+    noUniqueIdentity:
+      "No unique match was found. Search Garden Library to resolve this plant manually.",
     askGardenSecondLook: "Ask Garden AI for a second look",
     looksGoodNoAction: "Looks good · no action needed",
     nextPlant: "Next plant",
@@ -306,11 +326,13 @@ const copy = {
     allGardens: "All gardens",
     activePlants: "active plants",
     whatKnow: "What do you want to know about your garden?",
-    askDescription: "I can read across recorded plant histories, care, photos and open follow-ups. Anything beyond those records stays clearly marked as inference.",
+    askDescription:
+      "I can read across recorded plant histories, care, photos and open follow-ups. Anything beyond those records stays clearly marked as inference.",
     readingRecord: "Reading the garden record…",
     askPlaceholder: "Ask about your garden…",
     attachPhoto: "Attach a photo",
-    attachPhotoDescription: "Add one photo to this message. It is used only as conversation evidence.",
+    attachPhotoDescription:
+      "Add one photo to this message. It is used only as conversation evidence.",
     attachedPhotoPreview: "Attached photo",
     conversationPhotoUnsupported: "Choose a JPEG, PNG, or WebP photo.",
     conversationPhotoTooLarge: "This photo is too large to send. Choose a smaller image.",
@@ -367,7 +389,8 @@ const copy = {
     inactivePosition: "Inactive position",
     positionLabel: "Position",
     systemLayout: "System layout",
-    rearrangeLayout: "Rearrange positions or change this instance capacity without changing plants or history.",
+    rearrangeLayout:
+      "Rearrange positions or change this instance capacity without changing plants or history.",
     rearrangeLayoutFixed: "Rearrange the existing positions without changing plants or history.",
     capacity: "Capacity",
     saveLayout: "Save layout",
@@ -377,7 +400,8 @@ const copy = {
     layoutUpdated: "System layout updated. Plants and history were preserved.",
     layoutUpdateFailed: "System layout could not be updated.",
     dangerZone: "Danger zone",
-    deleteGardenWarning: "Deleting this garden permanently removes its plants, photographs, events, history and Growth Films. This cannot be undone.",
+    deleteGardenWarning:
+      "Deleting this garden permanently removes its plants, photographs, events, history and Growth Films. This cannot be undone.",
     typeNameToConfirm: "Type the garden name to confirm",
     deletePermanently: "Delete permanently",
     gardenDeleted: "Garden deleted permanently",
@@ -390,7 +414,8 @@ const copy = {
     deleting: "Deleting…",
     removePlant: "Remove plant",
     removePlantQuestion: "Remove this plant?",
-    removePlantDescription: "This will remove it from its current garden position. Its recorded history will be preserved.",
+    removePlantDescription:
+      "This will remove it from its current garden position. Its recorded history will be preserved.",
     plantRemoved: "Plant removed from the active garden. Its history is preserved.",
     plantRemoveFailed: "The plant could not be removed. Nothing was changed.",
     close: "Close",
@@ -405,7 +430,8 @@ const copy = {
     goHome: "Go home",
     gardensTitle: "Gardens",
     places: "Places",
-    gardensSubtitle: "Each garden holds its own conditions, its own rhythm, and its own plants — pots, beds, or pod positions.",
+    gardensSubtitle:
+      "Each garden holds its own conditions, its own rhythm, and its own plants — pots, beds, or pod positions.",
     allSteady: "All steady",
     toWatch: "to watch",
     restore: "Restore",
@@ -453,7 +479,6 @@ const copy = {
     openActions: "open actions",
     meaningfulChanges: "Meaningful changes",
     limitedComparability: "Limited comparability",
-    noMeaningfulChange: "No meaningful visual change detected.",
     comparisonUnavailable: "This comparison is not available yet.",
     gardenSummary: "Garden summary",
     summaryUpdated: "Updated",
@@ -464,22 +489,26 @@ const copy = {
     edit: "Edit",
     archivedBadge: "Archived",
     archiveQuestion: "Archive this garden?",
-    archiveDescription: "Its plants, photographs, events, history and Growth Films are all kept. The garden stays visible here in Edit mode and can be restored at any time.",
+    archiveDescription:
+      "Its plants, photographs, events, history and Growth Films are all kept. The garden stays visible here in Edit mode and can be restored at any time.",
     systemNamePlaceholder: "Kitchen grow shelf",
     photoCouldNotRead: "Photo could not be read.",
     momentSaveFailed: "The moment could not be saved completely. Please try again.",
-    momentPhotoSaveFailed: "The moment was recorded, but its photo could not be saved. Please try again.",
+    momentPhotoSaveFailed:
+      "The moment was recorded, but its photo could not be saved. Please try again.",
     maxPositions: "Maximum 64 positions per level.",
     photo: "Photo",
     event: "Event",
     observation: "Observation",
     gardenLoadFailed: "We couldn't load your garden.",
     libraryUnavailable: "Garden Library is unavailable.",
-    positionUnavailable: "This physical position is unavailable. Refresh the system map and try again.",
+    positionUnavailable:
+      "This physical position is unavailable. Refresh the system map and try again.",
     positionNotFound: "Choose a valid position from this system.",
     choosePosition: "Choose a position",
     positionAlreadyOccupied: "Position already occupied",
-    positionOccupiedBody: "{position} currently has another plant. You can move this plant here anyway while reorganizing.",
+    positionOccupiedBody:
+      "{position} currently has another plant. You can move this plant here anyway while reorganizing.",
     moveAnyway: "Move anyway",
     moveFailed: "The plant could not be moved. Nothing was changed.",
     sharedPositionWarning: "{count} plants here ⚠",
@@ -511,10 +540,13 @@ const copy = {
     deletePhotoQuestion: "Delete this photo?",
     deleteEventQuestion: "Delete this event?",
     photoEvidence: "Photographic evidence",
-    deletePhotoKeepEvent: "This removes the photo from the gallery and keeps the related event in the history.",
+    deletePhotoKeepEvent:
+      "This removes the photo from the gallery and keeps the related event in the history.",
     deletePhotoStorage: "This removes the photo from the gallery and its exact Storage files.",
-    deleteEventKeepPhotos: "This removes the event from the history. Its photos remain as photographic evidence.",
-    deleteEventNoPhotos: "This removes the event from the history. Your audit history keeps the correction recorded.",
+    deleteEventKeepPhotos:
+      "This removes the event from the history. Its photos remain as photographic evidence.",
+    deleteEventNoPhotos:
+      "This removes the event from the history. Your audit history keeps the correction recorded.",
     completedSession: "Completed in this session",
     identityConfirmed: "Garden Library identity confirmed.",
     addObservationFlow: "Add an observation",
@@ -591,7 +623,8 @@ const copy = {
     moveTo: "Move to",
     positionPod: "Position / pod",
     recordMove: "Record the move",
-    closeCycleBody: "Closing a cycle ends the active record. Every photo, event and milestone stays exactly where it is.",
+    closeCycleBody:
+      "Closing a cycle ends the active record. Every photo, event and milestone stays exactly where it is.",
     reason: "Reason",
     closingNote: "Closing note (optional)",
     closeThisCycle: "Close this cycle",
@@ -625,17 +658,21 @@ const copy = {
     readingImage: "Reading colour, density and leaf edges…",
     analysisRefinedAgainst: "Analysis refined against",
     analysisUnavailable: "Analysis unavailable",
-    analysisUnavailableBody: "Garden AI couldn't complete this check. Nothing was recorded. Please try again.",
+    analysisUnavailableBody:
+      "Garden AI couldn't complete this check. Nothing was recorded. Please try again.",
     analysePhoto: "Analyse this photo",
     analysing: "Analysing…",
     analyseAgain: "Analyse again",
     refiningReading: "Refining the reading",
     nothingClaimed: "Nothing claimed yet",
-    checkInstruction: "Pick a photo and run the check. Results are split into what is visible, what it might mean, and what to do.",
-    checkScanningInstruction: "First the image, then the history. Observations are separated from guesses.",
+    checkInstruction:
+      "Pick a photo and run the check. Results are split into what is visible, what it might mean, and what to do.",
+    checkScanningInstruction:
+      "First the image, then the history. Observations are separated from guesses.",
     saveTimeline: "Save to timeline",
     savedTimeline: "Saved to timeline",
-    savingDoesNotChange: "Saving stores the analysis as its own timeline event. It does not change the plant's identity, species, or status.",
+    savingDoesNotChange:
+      "Saving stores the analysis as its own timeline event. It does not change the plant's identity, species, or status.",
     compareDates: "Compare two dates",
     askAbout: "Ask about",
     twoPhotosNeeded: "Two recorded photos are needed to compare change.",
@@ -657,7 +694,8 @@ const copy = {
     wholeArcFilm: "See the whole arc as a film",
     identification: "Identify",
     whatPlant: "What is this plant?",
-    identificationDescription: "A suggestion is only a suggestion. Species and variety become canonical data on your plant only after you confirm.",
+    identificationDescription:
+      "A suggestion is only a suggestion. Species and variety become canonical data on your plant only after you confirm.",
     startWithPhoto: "Start with a photo",
     chooseClearImage: "Take one now or choose a clear image from your library.",
     takeChoosePhoto: "Take or choose photo",
@@ -678,7 +716,8 @@ const copy = {
     eventsInContext: "events",
     photosInContext: "photos in context",
     askPlantQuestion: "What do you want to know about",
-    askPlantDescription: "I read this plant's recorded events, maintenance, photos and past problems. Anything I cannot ground in that record, I mark as inference.",
+    askPlantDescription:
+      "I read this plant's recorded events, maintenance, photos and past problems. Anything I cannot ground in that record, I mark as inference.",
     readingRecordShort: "Reading the record…",
     pause: "Pause",
     playHistory: "Play history",
@@ -686,7 +725,8 @@ const copy = {
     chooseMomentsBelow: "Choose moments below",
     silence: "Silence",
     gardenStory: "Play garden story",
-    gardenSummaryBody: "A living record of what is growing, what changed, and what deserves a closer look.",
+    gardenSummaryBody:
+      "A living record of what is growing, what changed, and what deserves a closer look.",
     summaryBuiltFrom: "Built from",
     startMaintenanceShort: "Start care",
     systemNameRequired: "Give your system a name.",
@@ -700,12 +740,14 @@ const copy = {
     startFromBeginning: "Start from a clear beginning",
     realPlantsAppear: "Your real plants will appear here after you create a garden.",
     createGarden: "Create garden",
-    startCareSubtitle: "Take a quiet pass through the garden. Notice what changed, record what matters, and decide what deserves another look.",
+    startCareSubtitle:
+      "Take a quiet pass through the garden. Notice what changed, record what matters, and decide what deserves another look.",
     plantReviewed: "reviewed",
     gardenFilmShareReady: "Garden film share preview ready",
     acrossGarden: "Across the garden",
     manyPlantsOneSeason: "Many plants, one season",
-    filmDescription: "Each frame remains attached to the plant and date it came from. This sequence shows the garden changing as a whole.",
+    filmDescription:
+      "Each frame remains attached to the plant and date it came from. This sequence shows the garden changing as a whole.",
     shareGardenFilm: "Share garden film",
     closePhoto: "Close photo",
     noMoments: "No moments",
@@ -721,14 +763,17 @@ const copy = {
     cycleClosed: "Cycle closed",
     reseeded: "Reseeded",
     momentRecorded: "Moment recorded",
-    positionNotConnected: "This position is not connected to the real system map yet. Refresh before adding a plant.",
+    positionNotConnected:
+      "This position is not connected to the real system map yet. Refresh before adding a plant.",
     originalRecordCorrection: "The original record says planted",
-    correctionsStayVisible: "Corrections stay visible in the timeline — the old entry is never silently replaced.",
+    correctionsStayVisible:
+      "Corrections stay visible in the timeline — the old entry is never silently replaced.",
     nowPlanted: "Now planted",
     correctionRecorded: "Correction recorded",
     correctionVisible: "Correction visible in the timeline",
     movedTo: "Moved to",
-    replacedStoryBody: "The plant's story is kept and closed. A new record starts in the same place, ready to build its own.",
+    replacedStoryBody:
+      "The plant's story is kept and closed. A new record starts in the same place, ready to build its own.",
     inherits: "Inherits",
     canCorrectLater: "— you can correct it later.",
     reasonHarvestComplete: "Harvest complete",
@@ -752,7 +797,8 @@ const copy = {
     gardenCreatedMessage: "Garden created — you can keep completing it any time",
     personalNameUpdated: "Personal plant name updated",
     makeGardenYours: "Make this garden yours",
-    editGardenDescription: "Name, growing setup, and a cover chosen from this garden’s real photographs.",
+    editGardenDescription:
+      "Name, growing setup, and a cover chosen from this garden’s real photographs.",
     automaticCoverDescription: "Automatic always follows the newest real photograph available.",
     editPlantNamesDescription: "Edit personal names without changing recorded botanical identity.",
     gardenLibraryIdentity: "Garden Library identity",
@@ -764,7 +810,8 @@ const copy = {
     searchCatalogExample: "Search basil, Ocimum, Genovese…",
     whatCouldPlant: "What could I plant here?",
     positionEvidenceResults: "Evidence for this position",
-    positionEvidenceIntro: "Evidence and position signals order results; exact fit remains unknown.",
+    positionEvidenceIntro:
+      "Evidence and position signals order results; exact fit remains unknown.",
     backToLibrary: "Back to Library",
     evidenceSupports: "Evidence supports this",
     needsCondition: "Needs a condition",
@@ -778,7 +825,8 @@ const copy = {
       "Cultivation is supported, but a system or position detail still needs checking.",
     knownMachineGrowHeight: "Documented system maximum grow height",
     matureHeightWithinMachineLimit: "Fits the documented {height} cm grow-height limit.",
-    matureHeightExceedsMachineLimit: "Documented mature height exceeds the system limit; review fit.",
+    matureHeightExceedsMachineLimit:
+      "Documented mature height exceeds the system limit; review fit.",
     expansiveHabitNeedsClearance:
       "Spreading habit has no measured clearance beside occupied positions.",
     expansiveNeighborNeedsReview:
@@ -786,8 +834,10 @@ const copy = {
     otherPlantsInsufficient: "Other plants without enough evidence",
     insufficientEvidenceIntro: "Insufficient evidence here does not mean unsuitable.",
     moreSupportedCandidates: "More candidates with supporting evidence",
-    noContextualCandidates: "No candidates can be shown from the current compatibility evidence. You can still browse and search the full Library.",
-    positionContextUnavailable: "This position is no longer available as an empty slot. Return to the garden and choose an empty position again.",
+    noContextualCandidates:
+      "No candidates can be shown from the current compatibility evidence. You can still browse and search the full Library.",
+    positionContextUnavailable:
+      "This position is no longer available as an empty slot. Return to the garden and choose an empty position again.",
     cultivationEvidenceSupports: "Compatible for cultivation",
     conditionRequired: "Conditional evidence",
     gardenpediaCondition: "Gardenpedia documents this condition",
@@ -807,7 +857,8 @@ const copy = {
     systemFitUnconfirmed: "Fit for this specific system is not documented.",
     physicalFitSupported: "Physical fit supported by recorded dimensions.",
     physicalFitUnconfirmed: "Physical fit for this position is not confirmed.",
-    cultivationEvidenceUnavailable: "Cultivation compatibility is not established by current evidence.",
+    cultivationEvidenceUnavailable:
+      "Cultivation compatibility is not established by current evidence.",
     evidenceSources: "View evidence sources",
     evidencePropertyCultivation: "Cultivation",
     evidencePropertyHabit: "Growth habit",
@@ -820,7 +871,8 @@ const copy = {
     genusLevelEvidence: "Genus-level",
     familyLevelEvidence: "Family-level",
     loadingLibrary: "Loading Garden Library…",
-    notFoundLibrary: "Not found in Garden Library. Garden only creates plants from documented Library identities.",
+    notFoundLibrary:
+      "Not found in Garden Library. Garden only creates plants from documented Library identities.",
     personalName: "Personal name",
     datePlanting: "Planting date",
     datePrecision: "Date precision",
@@ -835,11 +887,13 @@ const copy = {
     editPlantOrigin: "Set or correct plant origin",
     resolvePlantOrigin: "Set plant origin",
     correctPlantOrigin: "Correct plant origin",
-    plantOriginEditorDescription: "Choose what you know about how this cycle began. Garden saves only after you confirm.",
+    plantOriginEditorDescription:
+      "Choose what you know about how this cycle began. Garden saves only after you confirm.",
     currentPlantOrigin: "Current origin",
     choosePlantOrigin: "Choose plant origin",
     savePlantOrigin: "Save origin",
-    plantOriginSaveFailed: "Origin could not be updated. The current value is unchanged. Try again.",
+    plantOriginSaveFailed:
+      "Origin could not be updated. The current value is unchanged. Try again.",
     exact: "Exact",
     approximate: "Approximate",
     unknown: "Unknown",
@@ -906,14 +960,16 @@ const copy = {
     savedFilms: "Saved films",
     sharePreview: "Share preview",
     savedFilmDescription: "A saved Growth Film built from recorded moments.",
-    curatedFilmDescription: "The film is already curated, so it can be shared as one complete artifact.",
+    curatedFilmDescription:
+      "The film is already curated, so it can be shared as one complete artifact.",
     storyUnavailable: "This story isn't available",
     storyUnavailableBody: "This story may have been revoked or is no longer available.",
     returnToGarden: "Return to Garden",
     copyStoryLink: "Copy story link",
     storyVisitorsSee: "This is what visitors will see.",
     chooseStoryToShare: "Choose the story to share",
-    storySelectionDescription: "Select real photos and milestones. Their recorded order stays intact.",
+    storySelectionDescription:
+      "Select real photos and milestones. Their recorded order stays intact.",
     noCaption: "No caption",
     publicCaption: "Optional public caption",
     useAsHero: "Use as hero",
@@ -924,15 +980,19 @@ const copy = {
     recordedHistory: "A recorded history",
     selectedHistory: "Selected history",
     momentsFromLife: "Moments from a life being tended.",
-    storyBody: "This story contains only moments its keeper chose from the plant's recorded history, shown in their original order.",
+    storyBody:
+      "This story contains only moments its keeper chose from the plant's recorded history, shown in their original order.",
     recordedInGarden: "Recorded in Garden",
     realPlantStory: "A real plant story, shared by its keeper.",
-    libraryPlaceholderBody: "For now, each plant profile keeps its concise, trusted reference close to the living record.",
-    gardenLabsBody: "Explore the experimental version of Garden Library, with its complete public plant knowledge and sources.",
+    libraryPlaceholderBody:
+      "For now, each plant profile keeps its concise, trusted reference close to the living record.",
+    gardenLabsBody:
+      "Explore the experimental version of Garden Library, with its complete public plant knowledge and sources.",
     saveEntry: "Save entry",
     everythingRecorded: "Everything recorded",
     photographicEvidence: "Photographic evidence",
-    recordedMomentsAndEvidence: "Recorded moments and historical photo evidence appear together here. Each frame keeps its capture date and provenance.",
+    recordedMomentsAndEvidence:
+      "Recorded moments and historical photo evidence appear together here. Each frame keeps its capture date and provenance.",
     makeFilm: "Make a film",
     guidedSession: "Guided session",
     allWaysToRecord: "All ways to record",
@@ -973,7 +1033,8 @@ const copy = {
     saturationDropped: "Colour saturation dropped",
     colourDeepened: "Colour deepened",
     colourUnchanged: "Colour is effectively unchanged.",
-    expansionPhase: "is in an expansion phase: height, leaf count, and fill all moved in the same direction. That is consistent with the maintenance recorded in between.",
+    expansionPhase:
+      "is in an expansion phase: height, leaf count, and fill all moved in the same direction. That is consistent with the maintenance recorded in between.",
     noMeaningfulChange: "The two frames are close enough that no meaningful change can be claimed.",
     heightIncreased: "Height increased",
     overDays: "over",
@@ -984,13 +1045,15 @@ const copy = {
     eventsForPlant: "recorded events for",
     referenceEntry: "Reference entry",
     currentStatus: "Current status",
-    askRecordedContext: "I answer from what is recorded here. Ask about watering, feeding, changes since a date, problems, or what to do today.",
+    askRecordedContext:
+      "I answer from what is recorded here. Ask about watering, feeding, changes since a date, problems, or what to do today.",
     nothingScheduled: "Nothing is currently scheduled across your active plants.",
     noAttentionPlants: "No active plant is recorded as watching or recovering.",
     noRecentHistory: "No recent history has been recorded yet.",
     activePlantsAcross: "active plants across",
     contextAvailable: "recorded events, photos, and open care items are available as context.",
-    askInterpretation: "Ask what needs attention, what changed recently, or about a specific plant. I will keep recorded information separate from interpretation.",
+    askInterpretation:
+      "Ask what needs attention, what changed recently, or about a specific plant. I will keep recorded information separate from interpretation.",
     taskEvidence: "Task",
     plantStatusEvidence: "Plant status",
     recordedEventEvidence: "Recorded event",
@@ -1020,9 +1083,9 @@ const copy = {
     saveGarden: "Guardar jardín",
     gardenUpdated: "Jardín actualizado",
     gardenUpdateFailed: "No se pudo actualizar el jardín. Inténtalo de nuevo.",
-    gardenCoverUpdateFailed: "Los datos del jardín se guardaron, pero no se pudo actualizar la portada.",
+    gardenCoverUpdateFailed:
+      "Los datos del jardín se guardaron, pero no se pudo actualizar la portada.",
     gardenNameRequired: "Escribe un nombre para el jardín antes de guardar.",
-    systemNameRequired: "Escribe un nombre para el sistema antes de guardar.",
     gardenName: "Nombre del jardín",
     location: "Ubicación",
     growingSetup: "Configuración de cultivo",
@@ -1051,7 +1114,8 @@ const copy = {
     exploreGardenLibrary: "Explorar Garden Library",
     enterGardenLabs: "Entrar a Garden Labs",
     fullCatalogComing: "El catálogo completo llegará más adelante",
-    gardenLibrarySubtitle: "Un catálogo más profundo de plantas y sistemas de cultivo está echando raíces aquí.",
+    gardenLibrarySubtitle:
+      "Un catálogo más profundo de plantas y sistemas de cultivo está echando raíces aquí.",
     reference: "Referencia",
     fullCatalog: "Catálogo completo",
     loadingReference: "Cargando referencia de Gardenpedia…",
@@ -1071,7 +1135,8 @@ const copy = {
     goodNeighbors: "Buenos vecinos",
     betterSeparate: "Mejor separar",
     noGuidance: "Todavía no hay orientación documentada.",
-    referenceSeparation: "El conocimiento proviene de Gardenpedia. Tu historial registrado y tus observaciones actuales permanecen separados.",
+    referenceSeparation:
+      "El conocimiento proviene de Gardenpedia. Tu historial registrado y tus observaciones actuales permanecen separados.",
     sources: "Fuentes",
     noRelationships: "Todavía no hay relaciones documentadas.",
     care: "Cuidados",
@@ -1088,7 +1153,8 @@ const copy = {
     startSession: "Iniciar sesión",
     continueSession: "Continuar sesión",
     startNewSession: "Empezar una sesión nueva",
-    confirmStartNewCareSession: "Hay una sesión de cuidado incompleta con progreso. ¿Empezar otra y reemplazarla?",
+    confirmStartNewCareSession:
+      "Hay una sesión de cuidado incompleta con progreso. ¿Empezar otra y reemplazarla?",
     looksGood: "La veo bien",
     chooseAtLeastOneGarden: "Selecciona al menos un jardín con plantas activas.",
     careReviewPhoto: "Foto de esta revisión",
@@ -1105,7 +1171,8 @@ const copy = {
     gardenAiCheck: "AI Check del jardín",
     askAboutThis: "Pregunta sobre esto…",
     noReviewPhoto: "Elige una foto actual para activar AI Check.",
-    careAskUnavailable: "Garden AI no pudo responder esta pregunta. No se registró nada; inténtalo de nuevo.",
+    careAskUnavailable:
+      "Garden AI no pudo responder esta pregunta. No se registró nada; inténtalo de nuevo.",
     worthCloserLook: "Merece una mirada más cercana",
     nothingAttention: "Ahora mismo ninguna planta requiere atención.",
     review: "Revisar",
@@ -1160,8 +1227,10 @@ const copy = {
     pagination: "Paginación",
     newMomentImage: "Momento nuevo",
     newPhoto: "Foto nueva",
-    gardenAiNewPhotoHint: "Elige una foto actual para revisar esta planta con su ciclo e historial existentes.",
-    gardenAiPhotoOnlyHint: "Revisa una foto actual sin historial ni identidad de una planta seleccionada.",
+    gardenAiNewPhotoHint:
+      "Elige una foto actual para revisar esta planta con su ciclo e historial existentes.",
+    gardenAiPhotoOnlyHint:
+      "Revisa una foto actual sin historial ni identidad de una planta seleccionada.",
     day: "día",
     days: "días",
     then: "Entonces",
@@ -1186,7 +1255,8 @@ const copy = {
     storyEvidenceIdentity: "Identidad de Gardenpedia",
     storyEvidenceOrigin: "Origen y ciclo",
     storyEvidenceLocation: "Ubicación actual",
-    storyVisualComparisonInsufficient: "Garden tiene fotos de los momentos registrados, pero todavía no hay suficientes observaciones comparables para describir cómo cambió la planta.",
+    storyVisualComparisonInsufficient:
+      "Garden tiene fotos de los momentos registrados, pero todavía no hay suficientes observaciones comparables para describir cómo cambió la planta.",
     storySelectedEvents: "Historial seleccionado",
     storyGroupBegins: "La historia comienza",
     storyGroupNewPlace: "Un nuevo lugar",
@@ -1194,14 +1264,20 @@ const copy = {
     storyGroupPropagation: "Propagación",
     storyGroupRecordedCare: "Cuidados registrados",
     storyNoVisualEvidence: "Todavía no hay suficiente evidencia visual",
-    storyHistoricalMediaUnavailable: "Hay detalles de algunas fotos históricas, pero la imagen todavía no está disponible.",
-    storyNoInterpretation: "Todavía no hay suficiente evidencia para interpretar algo más allá de los hechos registrados.",
+    storyHistoricalMediaUnavailable:
+      "Hay detalles de algunas fotos históricas, pero la imagen todavía no está disponible.",
+    storyNoInterpretation:
+      "Todavía no hay suficiente evidencia para interpretar algo más allá de los hechos registrados.",
     storyChangeEyebrow: "Cambio en el tiempo",
     storyChangeTitle: "Qué ha cambiado",
-    storyChangeRecorded: "Las mediciones registradas muestran una diferencia entre estos dos momentos.",
-    storyChangeVisualAvailable: "Hay dos fotos utilizables para una comparación visual más cercana.",
-    storyChangeMetadataOnly: "Las fechas y los eventos registrados están disponibles, pero los cuerpos de las fotos históricas no están disponibles para una comparación visual.",
-    storyChangeNoComparable: "Todavía no hay suficiente evidencia comparable para describir un cambio significativo.",
+    storyChangeRecorded:
+      "Las mediciones registradas muestran una diferencia entre estos dos momentos.",
+    storyChangeVisualAvailable:
+      "Hay dos fotos utilizables para una comparación visual más cercana.",
+    storyChangeMetadataOnly:
+      "Las fechas y los eventos registrados están disponibles, pero los cuerpos de las fotos históricas no están disponibles para una comparación visual.",
+    storyChangeNoComparable:
+      "Todavía no hay suficiente evidencia comparable para describir un cambio significativo.",
     storyChangeUncertainty: "Lo que sigue incierto",
     storyAnalyzeChange: "Leer este cambio",
     storyAnalyzingChange: "Leyendo este cambio…",
@@ -1212,7 +1288,6 @@ const copy = {
     storyChangeIncreased: "aumentó",
     storyChangeDecreased: "disminuyó",
     daysHeld: "días, conservados en dos fotografías",
-    weeksHeld: "semanas, conservadas en dos fotografías",
     monthsHeld: "meses, conservados en dos fotografías",
     yearsHeld: "años, conservados en dos fotografías",
     sameDayHeld: "el mismo día, conservado en dos fotografías",
@@ -1236,11 +1311,13 @@ const copy = {
     transplanted: "Se trasplantó",
     growthObserved: "Crecimiento observado",
     lifeEvent_ended: "Ciclo terminado",
-    timelineReading: "Una lectura de momentos registrados, no una biografía reescrita. El registro completo permanece en la línea de tiempo.",
+    timelineReading:
+      "Una lectura de momentos registrados, no una biografía reescrita. El registro completo permanece en la línea de tiempo.",
     secondLook: "Una segunda mirada",
     secondLookWhenNeeded: "Una segunda mirada, cuando la necesites",
     groundedInRecorded: "Basado en lo que tu jardín ha registrado.",
-    aiSupportsObservation: "La IA acompaña lo que observas. Los hechos registrados permanecen separados y tú confirmas cualquier cambio de identidad.",
+    aiSupportsObservation:
+      "La IA acompaña lo que observas. Los hechos registrados permanecen separados y tú confirmas cualquier cambio de identidad.",
     sourceStatement: "Cada registro conserva su fuente: registrado, observado o inferido.",
     yourGardenX: "Tu Garden X",
     forReview: "para revisar",
@@ -1287,15 +1364,19 @@ const copy = {
     newGardenSetupQuestion: "¿Cómo crece?",
     newGardenSetupHint: "Los sistemas conocidos ya definen sus propias posiciones.",
     newGardenCoverQuestion: "Elige una portada",
-    newGardenCoverHint: "Opcional — puedes cambiarlo desde la configuración del jardín cuando quieras.",
+    newGardenCoverHint:
+      "Opcional — puedes cambiarlo desde la configuración del jardín cuando quieras.",
     coverIndoor: "Interior",
     coverBalcony: "Balcón",
     coverBackyard: "Patio",
     systemReadyAddPlant: "Tu sistema está listo. Añade tu primera planta.",
     identityUnconfirmedTitle: "Identidad no confirmada",
-    identityUnconfirmedBody: "Esta planta es anterior a la identidad de Library. Garden conservará su historia y solo la vinculará después de que confirmes la identidad documentada.",
-    severalIdentityMatches: "Varias identidades de Library podrían coincidir con esta planta. Elige abajo la identidad documentada.",
-    noUniqueIdentity: "No se encontró una coincidencia única. Busca en Garden Library para resolver esta planta manualmente.",
+    identityUnconfirmedBody:
+      "Esta planta es anterior a la identidad de Library. Garden conservará su historia y solo la vinculará después de que confirmes la identidad documentada.",
+    severalIdentityMatches:
+      "Varias identidades de Library podrían coincidir con esta planta. Elige abajo la identidad documentada.",
+    noUniqueIdentity:
+      "No se encontró una coincidencia única. Busca en Garden Library para resolver esta planta manualmente.",
     askGardenSecondLook: "Pedir una segunda mirada a Garden AI",
     looksGoodNoAction: "Se ve bien · no requiere acción",
     nextPlant: "Siguiente planta",
@@ -1310,14 +1391,17 @@ const copy = {
     allGardens: "Todos los jardines",
     activePlants: "plantas activas",
     whatKnow: "¿Qué quieres saber sobre tu jardín?",
-    askDescription: "Puedo leer el historial registrado de tus plantas, sus cuidados, fotos y seguimientos abiertos. Todo lo que exceda esos registros queda marcado claramente como inferencia.",
+    askDescription:
+      "Puedo leer el historial registrado de tus plantas, sus cuidados, fotos y seguimientos abiertos. Todo lo que exceda esos registros queda marcado claramente como inferencia.",
     readingRecord: "Leyendo el registro del jardín…",
     askPlaceholder: "Pregunta sobre tu jardín…",
     attachPhoto: "Adjuntar una foto",
-    attachPhotoDescription: "Agrega una foto a este mensaje. Solo se usará como evidencia de la conversación.",
+    attachPhotoDescription:
+      "Agrega una foto a este mensaje. Solo se usará como evidencia de la conversación.",
     attachedPhotoPreview: "Foto adjunta",
     conversationPhotoUnsupported: "Elige una foto JPEG, PNG o WebP.",
-    conversationPhotoTooLarge: "La foto es demasiado grande para enviarla. Elige una imagen más pequeña.",
+    conversationPhotoTooLarge:
+      "La foto es demasiado grande para enviarla. Elige una imagen más pequeña.",
     whatNeedsAttention: "¿Qué necesita atención hoy?",
     whatChangedRecently: "¿Qué cambió recientemente?",
     searchPlants: "Buscar plantas",
@@ -1371,7 +1455,8 @@ const copy = {
     inactivePosition: "Posición inactiva",
     positionLabel: "Posición",
     systemLayout: "Distribución del sistema",
-    rearrangeLayout: "Reorganiza las posiciones o cambia la capacidad de este sistema sin cambiar plantas ni historial.",
+    rearrangeLayout:
+      "Reorganiza las posiciones o cambia la capacidad de este sistema sin cambiar plantas ni historial.",
     rearrangeLayoutFixed: "Reorganiza las posiciones existentes sin cambiar plantas ni historial.",
     capacity: "Capacidad",
     saveLayout: "Guardar distribución",
@@ -1381,7 +1466,8 @@ const copy = {
     layoutUpdated: "Distribución actualizada. Las plantas y el historial se conservaron.",
     layoutUpdateFailed: "No se pudo actualizar la distribución.",
     dangerZone: "Zona de peligro",
-    deleteGardenWarning: "Eliminar este jardín quitará definitivamente sus plantas, fotografías, eventos, historial y Growth Films. Esta acción no se puede deshacer.",
+    deleteGardenWarning:
+      "Eliminar este jardín quitará definitivamente sus plantas, fotografías, eventos, historial y Growth Films. Esta acción no se puede deshacer.",
     typeNameToConfirm: "Escribe el nombre del jardín para confirmar",
     deletePermanently: "Eliminar definitivamente",
     gardenDeleted: "Jardín eliminado definitivamente",
@@ -1394,7 +1480,8 @@ const copy = {
     deleting: "Eliminando…",
     removePlant: "Eliminar planta",
     removePlantQuestion: "¿Eliminar esta planta?",
-    removePlantDescription: "Se quitará de su posición actual en el jardín. Su historial registrado se conservará.",
+    removePlantDescription:
+      "Se quitará de su posición actual en el jardín. Su historial registrado se conservará.",
     plantRemoved: "Planta eliminada del jardín activo. Su historial se conserva.",
     plantRemoveFailed: "No se pudo eliminar la planta. No se modificó nada.",
     close: "Cerrar",
@@ -1409,7 +1496,8 @@ const copy = {
     goHome: "Ir al inicio",
     gardensTitle: "Jardines",
     places: "Lugares",
-    gardensSubtitle: "Cada jardín conserva sus propias condiciones, ritmo y plantas — macetas, bancales o posiciones.",
+    gardensSubtitle:
+      "Cada jardín conserva sus propias condiciones, ritmo y plantas — macetas, bancales o posiciones.",
     allSteady: "Todo estable",
     toWatch: "para vigilar",
     restore: "Restaurar",
@@ -1457,7 +1545,6 @@ const copy = {
     openActions: "acciones abiertas",
     meaningfulChanges: "Cambios significativos",
     limitedComparability: "Comparación limitada",
-    noMeaningfulChange: "No se detectó un cambio visual significativo.",
     comparisonUnavailable: "Esta comparación todavía no está disponible.",
     gardenSummary: "Resumen del jardín",
     summaryUpdated: "Actualizado",
@@ -1468,28 +1555,33 @@ const copy = {
     edit: "Editar",
     archivedBadge: "Archivado",
     archiveQuestion: "¿Archivar este jardín?",
-    archiveDescription: "Sus plantas, fotografías, eventos, historial y Growth Films se conservarán. El jardín seguirá visible aquí en modo de edición y podrás restaurarlo cuando quieras.",
+    archiveDescription:
+      "Sus plantas, fotografías, eventos, historial y Growth Films se conservarán. El jardín seguirá visible aquí en modo de edición y podrás restaurarlo cuando quieras.",
     systemNamePlaceholder: "Estantería de cultivo",
     photoCouldNotRead: "No se pudo leer la foto.",
     momentSaveFailed: "No se pudo guardar el momento completo. Inténtalo de nuevo.",
-    momentPhotoSaveFailed: "El momento quedó registrado, pero no se pudo guardar la foto. Inténtalo de nuevo.",
+    momentPhotoSaveFailed:
+      "El momento quedó registrado, pero no se pudo guardar la foto. Inténtalo de nuevo.",
     maxPositions: "Máximo 64 posiciones por nivel.",
     photo: "Foto",
     event: "Evento",
     observation: "Observación",
     gardenLoadFailed: "No pudimos cargar tu jardín.",
     libraryUnavailable: "Garden Library no está disponible.",
-    positionUnavailable: "Esta posición física no está disponible. Actualiza el mapa del sistema e inténtalo de nuevo.",
+    positionUnavailable:
+      "Esta posición física no está disponible. Actualiza el mapa del sistema e inténtalo de nuevo.",
     positionNotFound: "Elige una posición válida de este sistema.",
     choosePosition: "Elige una posición",
     positionAlreadyOccupied: "Posición ya ocupada",
-    positionOccupiedBody: "{position} tiene otra planta. Puedes mover esta planta aquí de todos modos mientras reorganizas.",
+    positionOccupiedBody:
+      "{position} tiene otra planta. Puedes mover esta planta aquí de todos modos mientras reorganizas.",
     moveAnyway: "Mover de todos modos",
     moveFailed: "No se pudo mover la planta. No se cambió nada.",
     sharedPositionWarning: "{count} plantas aquí ⚠",
     plantingDateRequired: "Añade la fecha de plantación o selecciona Desconocida.",
     plantAddFailed: "Garden no pudo añadir esta planta. Inténtalo de nuevo.",
-    chooseDocumentedPlant: "Elige una identidad de planta documentada. Tus datos personales vienen después.",
+    chooseDocumentedPlant:
+      "Elige una identidad de planta documentada. Tus datos personales vienen después.",
     changePlant: "Cambiar planta",
     scientificNameNotDocumented: "Nombre científico no documentado",
     matchFound: "Coincidencia encontrada en Garden Library",
@@ -1502,7 +1594,8 @@ const copy = {
     commonScientificCultivar: "Nombre común, científico o cultivar",
     identityConfirmFailed: "Garden no pudo confirmar esta identidad.",
     eventRemoveFailed: "No se pudo eliminar el evento.",
-    photoStorageWarning: "La foto se eliminó de Garden X, pero hay que revisar la limpieza de Storage.",
+    photoStorageWarning:
+      "La foto se eliminó de Garden X, pero hay que revisar la limpieza de Storage.",
     photoRemoved: "Foto eliminada.",
     photoRemoveFailed: "No se pudo eliminar la foto.",
     compare: "Compare",
@@ -1515,10 +1608,14 @@ const copy = {
     deletePhotoQuestion: "¿Eliminar esta foto?",
     deleteEventQuestion: "¿Eliminar este evento?",
     photoEvidence: "Evidencia fotográfica",
-    deletePhotoKeepEvent: "La foto se quitará de la galería y el evento relacionado permanecerá en el historial.",
-    deletePhotoStorage: "La foto se quitará de la galería y se eliminarán sus archivos exactos de Storage.",
-    deleteEventKeepPhotos: "El evento se quitará del historial. Sus fotos permanecerán como evidencia fotográfica.",
-    deleteEventNoPhotos: "El evento se quitará del historial. El historial de auditoría conservará la corrección registrada.",
+    deletePhotoKeepEvent:
+      "La foto se quitará de la galería y el evento relacionado permanecerá en el historial.",
+    deletePhotoStorage:
+      "La foto se quitará de la galería y se eliminarán sus archivos exactos de Storage.",
+    deleteEventKeepPhotos:
+      "El evento se quitará del historial. Sus fotos permanecerán como evidencia fotográfica.",
+    deleteEventNoPhotos:
+      "El evento se quitará del historial. El historial de auditoría conservará la corrección registrada.",
     completedSession: "Completado en esta sesión",
     identityConfirmed: "Identidad de Garden Library confirmada.",
     addObservationFlow: "Añadir una observación",
@@ -1577,7 +1674,8 @@ const copy = {
     recordShort: "Registrar",
     recordAnotherMoment: "Registrar otro momento",
     writtenTimeline: "Escrito en el historial. Nada se sobrescribe.",
-    everythingRecordedStory: "Todo lo que registres aquí forma parte de la historia de esta planta.",
+    everythingRecordedStory:
+      "Todo lo que registres aquí forma parte de la historia de esta planta.",
     whatNoticed: "¿Qué observaste?",
     saveObservation: "Guardar observación",
     observationAdded: "Observación añadida",
@@ -1595,7 +1693,8 @@ const copy = {
     moveTo: "Mover a",
     positionPod: "Posición / pod",
     recordMove: "Registrar traslado",
-    closeCycleBody: "Cerrar un ciclo termina el registro activo. Cada foto, evento e hito permanece exactamente donde está.",
+    closeCycleBody:
+      "Cerrar un ciclo termina el registro activo. Cada foto, evento e hito permanece exactamente donde está.",
     reason: "Motivo",
     closingNote: "Nota de cierre (opcional)",
     closeThisCycle: "Cerrar este ciclo",
@@ -1629,17 +1728,21 @@ const copy = {
     readingImage: "Leyendo color, densidad y bordes de las hojas…",
     analysisRefinedAgainst: "Análisis ajustado con",
     analysisUnavailable: "Análisis no disponible",
-    analysisUnavailableBody: "Garden AI no pudo completar esta comprobación. No se registró nada. Inténtalo de nuevo.",
+    analysisUnavailableBody:
+      "Garden AI no pudo completar esta comprobación. No se registró nada. Inténtalo de nuevo.",
     analysePhoto: "Analizar esta foto",
     analysing: "Analizando…",
     analyseAgain: "Analizar de nuevo",
     refiningReading: "Ajustando la lectura",
     nothingClaimed: "Todavía no hay conclusiones",
-    checkInstruction: "Elige una foto y ejecuta la comprobación. Los resultados separan lo visible, su posible significado y qué hacer.",
-    checkScanningInstruction: "Primero la imagen y después el historial. Las observaciones se separan de las suposiciones.",
+    checkInstruction:
+      "Elige una foto y ejecuta la comprobación. Los resultados separan lo visible, su posible significado y qué hacer.",
+    checkScanningInstruction:
+      "Primero la imagen y después el historial. Las observaciones se separan de las suposiciones.",
     saveTimeline: "Guardar en el historial",
     savedTimeline: "Guardado en el historial",
-    savingDoesNotChange: "Guardar almacena el análisis como un evento propio del historial. No cambia la identidad, especie ni estado de la planta.",
+    savingDoesNotChange:
+      "Guardar almacena el análisis como un evento propio del historial. No cambia la identidad, especie ni estado de la planta.",
     compareDates: "Comparar dos fechas",
     askAbout: "Preguntar sobre",
     twoPhotosNeeded: "Se necesitan dos fotos registradas para comparar el cambio.",
@@ -1661,7 +1764,8 @@ const copy = {
     wholeArcFilm: "Ver todo el recorrido como un film",
     identification: "Identify",
     whatPlant: "¿Qué planta es esta?",
-    identificationDescription: "Una sugerencia es sólo una sugerencia. La especie y la variedad se convierten en datos canónicos de tu planta sólo después de que confirmes.",
+    identificationDescription:
+      "Una sugerencia es sólo una sugerencia. La especie y la variedad se convierten en datos canónicos de tu planta sólo después de que confirmes.",
     startWithPhoto: "Empieza con una foto",
     chooseClearImage: "Tómala ahora o elige una imagen clara de tu biblioteca.",
     takeChoosePhoto: "Tomar o elegir foto",
@@ -1678,11 +1782,13 @@ const copy = {
     addToGarden: "Añadir a un jardín",
     nameIt: "Ponle un nombre",
     checkingLibrary: "Comprobando Garden Library…",
-    chooseIdentityBeforeAdd: "Elige una identidad documentada de Library antes de añadir esta planta.",
+    chooseIdentityBeforeAdd:
+      "Elige una identidad documentada de Library antes de añadir esta planta.",
     eventsInContext: "eventos",
     photosInContext: "fotos en contexto",
     askPlantQuestion: "¿Qué quieres saber sobre",
-    askPlantDescription: "Leo los eventos registrados, cuidados, fotos y problemas anteriores de esta planta. Todo lo que no pueda fundamentar en ese registro lo marco como inferencia.",
+    askPlantDescription:
+      "Leo los eventos registrados, cuidados, fotos y problemas anteriores de esta planta. Todo lo que no pueda fundamentar en ese registro lo marco como inferencia.",
     readingRecordShort: "Leyendo el registro…",
     pause: "Pausar",
     playHistory: "Reproducir historial",
@@ -1690,7 +1796,8 @@ const copy = {
     chooseMomentsBelow: "Elige momentos abajo",
     silence: "Silencio",
     gardenStory: "Reproducir historia del jardín",
-    gardenSummaryBody: "Un registro vivo de lo que crece, lo que cambió y lo que merece una mirada más cercana.",
+    gardenSummaryBody:
+      "Un registro vivo de lo que crece, lo que cambió y lo que merece una mirada más cercana.",
     summaryBuiltFrom: "Construido con",
     startMaintenanceShort: "Iniciar cuidado",
     systemNameRequired: "Ponle un nombre al sistema.",
@@ -1703,12 +1810,14 @@ const copy = {
     startFromBeginning: "Empieza desde un comienzo claro",
     realPlantsAppear: "Tus plantas reales aparecerán aquí después de crear un jardín.",
     createGarden: "Crear jardín",
-    startCareSubtitle: "Recorre el jardín con calma. Observa qué cambió, registra lo importante y decide qué merece otra mirada.",
+    startCareSubtitle:
+      "Recorre el jardín con calma. Observa qué cambió, registra lo importante y decide qué merece otra mirada.",
     plantReviewed: "revisada",
     gardenFilmShareReady: "La vista previa para compartir el film está lista",
     acrossGarden: "En todo el jardín",
     manyPlantsOneSeason: "Muchas plantas, una temporada",
-    filmDescription: "Cada imagen permanece ligada a la planta y fecha de origen. Esta secuencia muestra cómo cambia el jardín.",
+    filmDescription:
+      "Cada imagen permanece ligada a la planta y fecha de origen. Esta secuencia muestra cómo cambia el jardín.",
     shareGardenFilm: "Compartir film del jardín",
     closePhoto: "Cerrar foto",
     noMoments: "No hay momentos",
@@ -1724,14 +1833,17 @@ const copy = {
     cycleClosed: "Ciclo cerrado",
     reseeded: "Resembrado",
     momentRecorded: "Momento registrado",
-    positionNotConnected: "Esta posición todavía no está conectada al mapa real del sistema. Actualiza antes de añadir una planta.",
+    positionNotConnected:
+      "Esta posición todavía no está conectada al mapa real del sistema. Actualiza antes de añadir una planta.",
     originalRecordCorrection: "El registro original indica que se plantó",
-    correctionsStayVisible: "Las correcciones quedan visibles en la línea de tiempo; la entrada anterior nunca se reemplaza en silencio.",
+    correctionsStayVisible:
+      "Las correcciones quedan visibles en la línea de tiempo; la entrada anterior nunca se reemplaza en silencio.",
     nowPlanted: "Plantada ahora",
     correctionRecorded: "Corrección registrada",
     correctionVisible: "Corrección visible en la línea de tiempo",
     movedTo: "Trasladada a",
-    replacedStoryBody: "La historia de la planta se conserva y se cierra. Un registro nuevo comienza en el mismo lugar, listo para crear su propia historia.",
+    replacedStoryBody:
+      "La historia de la planta se conserva y se cierra. Un registro nuevo comienza en el mismo lugar, listo para crear su propia historia.",
     inherits: "Hereda",
     canCorrectLater: "; puedes corregirlo después.",
     reasonHarvestComplete: "Cosecha completada",
@@ -1755,9 +1867,11 @@ const copy = {
     gardenCreatedMessage: "Jardín creado — puedes completarlo cuando quieras",
     personalNameUpdated: "Nombre personal de la planta actualizado",
     makeGardenYours: "Haz tuyo este jardín",
-    editGardenDescription: "Nombre, configuración de cultivo y una portada elegida de las fotografías reales de este jardín.",
+    editGardenDescription:
+      "Nombre, configuración de cultivo y una portada elegida de las fotografías reales de este jardín.",
     automaticCoverDescription: "Automática siempre sigue la fotografía real más reciente.",
-    editPlantNamesDescription: "Edita nombres personales sin cambiar la identidad botánica registrada.",
+    editPlantNamesDescription:
+      "Edita nombres personales sin cambiar la identidad botánica registrada.",
     gardenLibraryIdentity: "Identidad de Garden Library",
     identityNotConfirmed: "Identidad no confirmada",
     askGarden: "Ask Garden",
@@ -1791,8 +1905,10 @@ const copy = {
     otherPlantsInsufficient: "Otras plantas sin evidencia suficiente",
     insufficientEvidenceIntro: "Falta evidencia; no significa que sean inadecuadas.",
     moreSupportedCandidates: "Más candidatas con evidencia de respaldo",
-    noContextualCandidates: "La evidencia de compatibilidad actual no permite mostrar candidatos. Puedes explorar y buscar en toda la Biblioteca.",
-    positionContextUnavailable: "Esta posición ya no está disponible como espacio vacío. Vuelve al jardín y elige una posición vacía.",
+    noContextualCandidates:
+      "La evidencia de compatibilidad actual no permite mostrar candidatos. Puedes explorar y buscar en toda la Biblioteca.",
+    positionContextUnavailable:
+      "Esta posición ya no está disponible como espacio vacío. Vuelve al jardín y elige una posición vacía.",
     cultivationEvidenceSupports: "Compatible con el método de cultivo",
     conditionRequired: "Evidencia condicional",
     gardenpediaCondition: "Gardenpedia documenta esta condición",
@@ -1812,7 +1928,8 @@ const copy = {
     systemFitUnconfirmed: "No hay documentación sobre el encaje con este sistema específico.",
     physicalFitSupported: "El encaje físico está respaldado por dimensiones registradas.",
     physicalFitUnconfirmed: "El encaje físico en esta posición no está confirmado.",
-    cultivationEvidenceUnavailable: "La evidencia disponible no establece compatibilidad con el método de cultivo.",
+    cultivationEvidenceUnavailable:
+      "La evidencia disponible no establece compatibilidad con el método de cultivo.",
     evidenceSources: "Ver fuentes de evidencia",
     evidencePropertyCultivation: "Cultivo",
     evidencePropertyHabit: "Hábito de crecimiento",
@@ -1825,7 +1942,8 @@ const copy = {
     genusLevelEvidence: "A nivel de género",
     familyLevelEvidence: "A nivel de familia",
     loadingLibrary: "Cargando Garden Library…",
-    notFoundLibrary: "No está en Garden Library. Garden sólo crea plantas a partir de identidades documentadas.",
+    notFoundLibrary:
+      "No está en Garden Library. Garden sólo crea plantas a partir de identidades documentadas.",
     personalName: "Nombre personal",
     datePlanting: "Fecha de plantación",
     datePrecision: "Precisión de fecha",
@@ -1840,11 +1958,13 @@ const copy = {
     editPlantOrigin: "Definir o corregir el origen de la planta",
     resolvePlantOrigin: "Definir origen de la planta",
     correctPlantOrigin: "Corregir origen de la planta",
-    plantOriginEditorDescription: "Elige lo que sabes sobre cómo comenzó este ciclo. Garden guardará el cambio solo cuando lo confirmes.",
+    plantOriginEditorDescription:
+      "Elige lo que sabes sobre cómo comenzó este ciclo. Garden guardará el cambio solo cuando lo confirmes.",
     currentPlantOrigin: "Origen actual",
     choosePlantOrigin: "Elegir origen de la planta",
     savePlantOrigin: "Guardar origen",
-    plantOriginSaveFailed: "No se pudo actualizar el origen. El valor actual no cambió. Inténtalo de nuevo.",
+    plantOriginSaveFailed:
+      "No se pudo actualizar el origen. El valor actual no cambió. Inténtalo de nuevo.",
     exact: "Exacta",
     approximate: "Aproximada",
     unknown: "Desconocida",
@@ -1861,7 +1981,8 @@ const copy = {
     searchLibraryShort: "Buscar en Garden Library",
     libraryNoMatch: "No está en Garden Library. Elige la identidad documentada correcta.",
     gardenLabel: "Jardín",
-    noEmptyPosition: "Este jardín no tiene una posición vacía. Libera o añade una posición primero.",
+    noEmptyPosition:
+      "Este jardín no tiene una posición vacía. Libera o añade una posición primero.",
     confirmIdentityAdd: "Confirmar identidad y añadir",
     addedToGarden: "Añadida a tu jardín",
     saving: "Guardando…",
@@ -1891,7 +2012,8 @@ const copy = {
     growthFilmSaved: "Growth Film guardado",
     recordedContext: "Contexto registrado",
     chooseMoments: "Elegir momentos",
-    realPhotographsOnly: "Sólo fotografías reales. La secuencia final siempre respeta el tiempo registrado.",
+    realPhotographsOnly:
+      "Sólo fotografías reales. La secuencia final siempre respeta el tiempo registrado.",
     continueToMusic: "Continuar a la música",
     chooseAmbience: "Elegir ambiente",
     continueToPreview: "Continuar a la vista previa",
@@ -1912,7 +2034,8 @@ const copy = {
     savedFilms: "Films guardados",
     sharePreview: "Compartir vista previa",
     savedFilmDescription: "Un Growth Film creado con momentos registrados.",
-    curatedFilmDescription: "El film ya está seleccionado y puede compartirse como una pieza completa.",
+    curatedFilmDescription:
+      "El film ya está seleccionado y puede compartirse como una pieza completa.",
     storyUnavailable: "Esta historia no está disponible",
     storyUnavailableBody: "La historia pudo ser revocada o ya no está disponible.",
     returnToGarden: "Volver a Garden",
@@ -1931,15 +2054,19 @@ const copy = {
     recordedHistory: "Un historial registrado",
     selectedHistory: "Historial seleccionado",
     momentsFromLife: "Momentos de una vida cuidada.",
-    storyBody: "Esta historia sólo contiene momentos que su cuidador eligió del historial registrado de la planta, en su orden original.",
+    storyBody:
+      "Esta historia sólo contiene momentos que su cuidador eligió del historial registrado de la planta, en su orden original.",
     recordedInGarden: "Registrado en Garden",
     realPlantStory: "Una historia real de planta, compartida por quien la cuida.",
-    libraryPlaceholderBody: "Por ahora, cada perfil de planta mantiene su referencia breve y confiable junto a su historial vivo.",
-    gardenLabsBody: "Explora la versión experimental de Garden Library, con su conocimiento público completo y sus fuentes.",
+    libraryPlaceholderBody:
+      "Por ahora, cada perfil de planta mantiene su referencia breve y confiable junto a su historial vivo.",
+    gardenLabsBody:
+      "Explora la versión experimental de Garden Library, con su conocimiento público completo y sus fuentes.",
     saveEntry: "Guardar entrada",
     everythingRecorded: "Todo lo registrado",
     photographicEvidence: "Evidencia fotográfica",
-    recordedMomentsAndEvidence: "Los momentos registrados y la evidencia fotográfica histórica aparecen juntos aquí. Cada imagen conserva su fecha de captura y procedencia.",
+    recordedMomentsAndEvidence:
+      "Los momentos registrados y la evidencia fotográfica histórica aparecen juntos aquí. Cada imagen conserva su fecha de captura y procedencia.",
     makeFilm: "Crear un film",
     guidedSession: "Sesión guiada",
     allWaysToRecord: "Todas las formas de registrar",
@@ -1980,8 +2107,10 @@ const copy = {
     saturationDropped: "La saturación del color bajó",
     colourDeepened: "El color se intensificó",
     colourUnchanged: "El color prácticamente no cambió.",
-    expansionPhase: "está en una fase de expansión: la altura, el número de hojas y el volumen avanzaron en la misma dirección. Es coherente con los cuidados registrados entre ambas imágenes.",
-    noMeaningfulChange: "Las dos imágenes son suficientemente parecidas como para no afirmar un cambio significativo.",
+    expansionPhase:
+      "está en una fase de expansión: la altura, el número de hojas y el volumen avanzaron en la misma dirección. Es coherente con los cuidados registrados entre ambas imágenes.",
+    noMeaningfulChange:
+      "Las dos imágenes son suficientemente parecidas como para no afirmar un cambio significativo.",
     heightIncreased: "La altura aumentó",
     overDays: "durante",
     daysAbout: "días (aproximadamente",
@@ -1991,13 +2120,16 @@ const copy = {
     eventsForPlant: "eventos registrados de",
     referenceEntry: "Entrada de referencia",
     currentStatus: "Estado actual",
-    askRecordedContext: "Respondo a partir de lo que está registrado aquí. Pregunta por riego, nutrientes, cambios desde una fecha, problemas o qué hacer hoy.",
+    askRecordedContext:
+      "Respondo a partir de lo que está registrado aquí. Pregunta por riego, nutrientes, cambios desde una fecha, problemas o qué hacer hoy.",
     nothingScheduled: "No hay nada programado ahora mismo para tus plantas activas.",
     noAttentionPlants: "No hay ninguna planta activa registrada en observación o recuperación.",
     noRecentHistory: "Todavía no hay historial reciente registrado.",
     activePlantsAcross: "plantas activas en",
-    contextAvailable: "eventos registrados, fotos y tareas de cuidado abiertas están disponibles como contexto.",
-    askInterpretation: "Pregunta qué requiere atención, qué cambió recientemente o por una planta concreta. Mantendré separada la información registrada de la interpretación.",
+    contextAvailable:
+      "eventos registrados, fotos y tareas de cuidado abiertas están disponibles como contexto.",
+    askInterpretation:
+      "Pregunta qué requiere atención, qué cambió recientemente o por una planta concreta. Mantendré separada la información registrada de la interpretación.",
     taskEvidence: "Tarea",
     plantStatusEvidence: "Estado de planta",
     recordedEventEvidence: "Evento registrado",
@@ -2026,8 +2158,14 @@ export function setupCopy(language: UiLanguage, id: SetupCopyId, field: "label" 
   const en = {
     "aera-one": { label: "URUQ 8-Pod", hint: "Published Gardenpedia machine · 8 positions" },
     "aera-twelve": { label: "URUQ 12-Pod", hint: "Published Gardenpedia machine · 12 positions" },
-    "leaf-cabinet": { label: "Ahopegarden 10-Pod", hint: "Published Gardenpedia machine · 10 positions" },
-    "aerogarden-sprout": { label: "AeroGarden Sprout", hint: "Published Gardenpedia machine · 3 positions" },
+    "leaf-cabinet": {
+      label: "Ahopegarden 10-Pod",
+      hint: "Published Gardenpedia machine · 10 positions",
+    },
+    "aerogarden-sprout": {
+      label: "AeroGarden Sprout",
+      hint: "Published Gardenpedia machine · 3 positions",
+    },
     balcony: { label: "Balcony pots", hint: "Pots and planters, no fixed positions" },
     backyard: { label: "Backyard beds", hint: "Open ground or raised beds" },
     herb: { label: "Herb corner", hint: "A small indoor herb collection" },
@@ -2035,9 +2173,18 @@ export function setupCopy(language: UiLanguage, id: SetupCopyId, field: "label" 
   } as const;
   const es = {
     "aera-one": { label: "URUQ 8-Pod", hint: "Máquina publicada en Gardenpedia · 8 posiciones" },
-    "aera-twelve": { label: "URUQ 12-Pod", hint: "Máquina publicada en Gardenpedia · 12 posiciones" },
-    "leaf-cabinet": { label: "Ahopegarden 10-Pod", hint: "Máquina publicada en Gardenpedia · 10 posiciones" },
-    "aerogarden-sprout": { label: "AeroGarden Sprout", hint: "Máquina publicada en Gardenpedia · 3 posiciones" },
+    "aera-twelve": {
+      label: "URUQ 12-Pod",
+      hint: "Máquina publicada en Gardenpedia · 12 posiciones",
+    },
+    "leaf-cabinet": {
+      label: "Ahopegarden 10-Pod",
+      hint: "Máquina publicada en Gardenpedia · 10 posiciones",
+    },
+    "aerogarden-sprout": {
+      label: "AeroGarden Sprout",
+      hint: "Máquina publicada en Gardenpedia · 3 posiciones",
+    },
     balcony: { label: "Macetas de balcón", hint: "Macetas y jardineras, sin posiciones fijas" },
     backyard: { label: "Bancales de patio", hint: "Suelo abierto o bancales elevados" },
     herb: { label: "Rincón de hierbas", hint: "Una pequeña colección interior de hierbas" },
@@ -2057,9 +2204,11 @@ export function preferredLanguage(): UiLanguage {
 
 export function localizeKnownError(error: unknown, language: UiLanguage, fallback: string) {
   if (!(error instanceof Error)) return fallback;
-  if (/garden library .*unavailable|invalid catalog/i.test(error.message)) return ui(language, "libraryUnavailable");
+  if (/garden library .*unavailable|invalid catalog/i.test(error.message))
+    return ui(language, "libraryUnavailable");
   if (/system name is required/i.test(error.message)) return ui(language, "systemNameRequired");
-  if (/position .*already|position .*occupied/i.test(error.message)) return ui(language, "positionUnavailable");
+  if (/position .*already|position .*occupied/i.test(error.message))
+    return ui(language, "positionUnavailable");
   if (/photo.*read/i.test(error.message)) return ui(language, "photoCouldNotRead");
   if (/storage/i.test(error.message)) return ui(language, "photoStorageWarning");
   return fallback;

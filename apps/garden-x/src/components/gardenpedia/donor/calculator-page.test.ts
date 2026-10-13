@@ -648,6 +648,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
       pods: 6,
       unit: "mS" as const,
       calibrationObservations: [],
+      mode: "target" as const,
+      userTarget: 1,
+      currentEc: 0.8,
+      currentLiters: 3,
+      waterAdded: 1,
+      dosingResolutionMl: 0.1,
+      capacityLiters: 8,
+      sourceEcKnown: true,
     };
     persistSavedSystems([saved]);
     expect(loadSavedSystems()).toEqual([saved]);

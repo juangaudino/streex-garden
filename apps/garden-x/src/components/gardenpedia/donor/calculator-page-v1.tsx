@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -30,6 +30,7 @@ import {
   CALCULATOR_PLANTS,
   CALCULATOR_PRODUCTS,
   calculateGardenResult,
+  calculatorSourceUrl,
   loadSavedSystems,
   manufacturerDoseDefaults,
   persistSavedSystems,
@@ -63,7 +64,7 @@ const T = {
     addPlant: "Añadir planta",
     volume: "Volumen del tanque",
     capacity: "Capacidad del tanque",
-    pods: "Pods activos",
+    pods: "Capacidad del modelo (pods)",
     podGroupsHint: "Grupos verificados: 6, 7 y 9 pods",
     product: "Nutriente",
     stage: "Etapa de la receta",
@@ -89,7 +90,7 @@ const T = {
     stepMix: "Mezcla o circula el agua",
     stepWait: "Deja que se estabilice",
     stepMeasure: "Mide EC y pH",
-    waitNote: "El tiempo exacto lo indicará el fabricante o Garden.",
+    waitNote: "Espera una lectura estable. No hay un tiempo universal de estabilización.",
     expect: "Deberías ver cerca de",
     manufacturerExpected: "EC esperado por el fabricante",
     why: "Por qué y de dónde sale",
@@ -142,10 +143,11 @@ const T = {
     calibrationInvalid: "Revisa las mediciones y las dosis reales antes de guardar.",
     calibrationStorageError: "No se pudo guardar la calibración en este dispositivo.",
     learned: (n: number) => `Garden ajustó este sistema · ${n} lecturas`,
-    learnedNew: "Lectura guardada. La próxima dosis será más precisa para tu producto y tu agua.",
+    learnedNew:
+      "Medición guardada. Garden usará la respuesta de esta mezcla; vuelve a medir después de dosificar.",
     round: "Ronda",
     again: "Medir otra vez",
-    closeEnough: "Listo, en rango",
+    closeEnough: "Finalizar esta iteración",
     calib: (p: number) => `Calibración personal ${p > 0 ? "+" : ""}${p}%`,
     demo: "",
     save: "Guardar como sistema",
@@ -175,7 +177,7 @@ const T = {
     addPlant: "Add plant",
     volume: "Reservoir volume",
     capacity: "Reservoir capacity",
-    pods: "Active pods",
+    pods: "Model capacity (pods)",
     podGroupsHint: "Verified groups: 6, 7, and 9 pods",
     product: "Nutrient",
     stage: "Recipe stage",
@@ -201,7 +203,7 @@ const T = {
     stepMix: "Mix or circulate",
     stepWait: "Let it stabilize",
     stepMeasure: "Measure EC and pH",
-    waitNote: "Exact timing will come from the manufacturer or Garden.",
+    waitNote: "Wait for a stable reading. There is no universal stabilization time.",
     expect: "You should see about",
     manufacturerExpected: "Manufacturer expected EC",
     why: "Why, and where it comes from",
@@ -253,10 +255,11 @@ const T = {
     calibrationInvalid: "Check the measurements and actual doses before saving.",
     calibrationStorageError: "Calibration could not be saved on this device.",
     learned: (n: number) => `Garden tuned this system · ${n} readings`,
-    learnedNew: "Reading saved. Next dose will be more accurate for your product and water.",
+    learnedNew:
+      "Measurement saved. Garden will use this mixture's response; remeasure after dosing.",
     round: "Round",
     again: "Measure again",
-    closeEnough: "Done, in range",
+    closeEnough: "Finish this iteration",
     calib: (p: number) => `Personal calibration ${p > 0 ? "+" : ""}${p}%`,
     demo: "",
     save: "Save as system",
@@ -306,7 +309,8 @@ const QUICK: SavedSystem = {
   crops: {},
   liters: 4,
   productId: "gh-flora",
-  water: { label: { es: "Agua de origen", en: "Source water" }, ec: 0.3 },
+  water: { label: { es: "Agua de origen", en: "Source water" }, ec: 0 },
+  sourceEcKnown: false,
   meter: "—",
   stageId: "feeding-2",
   pods: 6,
@@ -320,6 +324,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   useEffect(() => setLang(language), [language]);
   const t = T[lang];
   const [sys, setSys] = useState<SavedSystem>(QUICK);
+  const quickDraft = useRef<SavedSystem>(QUICK);
   const [savedSystems, setSavedSystems] = useState(() => loadSavedSystems());
   const [saveOpen, setSaveOpen] = useState(false);
   const [saveName, setSaveName] = useState("");
@@ -334,13 +339,17 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [unit, setUnit] = useState<EcUnit>("mS");
   const [currentEc, setCurrentEc] = useState<string>("");
   const [currentLiters, setCurrentLiters] = useState<string>("");
+  const [capacityInput, setCapacityInput] = useState<string>("");
   const [waterAdded, setWaterAdded] = useState<string>("");
   const [userTarget, setUserTarget] = useState<number | null>(null);
   const [targetInput, setTargetInput] = useState("");
   const [targetEdited, setTargetEdited] = useState(false);
-  const [sourceEcInput, setSourceEcInput] = useState(String(sys.water.ec));
-  const [calibrationOpen, setCalibrationOpen] = useState(false);
+  const [sourceEcInput, setSourceEcInput] = useState("");
+  const [calibrationOpen, setCalibrationOpen] = useState(true);
   const [calibrationError, setCalibrationError] = useState("");
+  const [saveError, setSaveError] = useState("");
+  const [dosingResolutionInput, setDosingResolutionInput] = useState("0.5");
+  const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? 0;
   const [round, setRound] = useState(1);
   const [learnedCount, setLearnedCount] = useState(
     sys.calibration?.readings ?? sys.calibrationObservations?.length ?? 0,
@@ -352,7 +361,28 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
 
-  const pick = (s: SavedSystem) => {
+  const pick = (selection: SavedSystem) => {
+    if (sys.id === "quick")
+      quickDraft.current = {
+        ...sys,
+        crops,
+        liters,
+        productId,
+        stageId,
+        pods,
+        unit,
+        mode,
+        userTarget,
+        currentEc: parseDisplayedEc(currentEc),
+        currentLiters: parseDecimalInput(currentLiters),
+        capacityLiters: parseDecimalInput(capacityInput),
+        waterAdded: parseDecimalInput(waterAdded),
+        dosingResolutionMl,
+        water: { ...sys.water, ec: sourceEc },
+        sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
+        calibrationObservations,
+      };
+    const s = selection.id === "quick" ? quickDraft.current : selection;
     setSys(s);
     setCrops(s.crops);
     setLiters(s.liters);
@@ -360,20 +390,27 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setStageId(s.stageId);
     setPods(s.pods);
     setUnit(s.unit);
-    setSourceEcInput(String(s.water.ec));
-    setUserTarget(null);
-    setTargetInput("");
-    setTargetEdited(false);
-    setCurrentEc("");
-    setCurrentLiters("");
-    setWaterAdded("");
+    setSourceEcInput(s.sourceEcKnown === false ? "" : String(s.water.ec));
+    setMode(s.mode ?? "recipe");
+    setUserTarget(s.userTarget ?? null);
+    setTargetInput(
+      s.userTarget == null ? "" : String(s.unit === "uS" ? s.userTarget * 1000 : s.userTarget),
+    );
+    setTargetEdited(s.userTarget != null);
+    setCurrentEc(
+      s.currentEc == null ? "" : String(s.unit === "uS" ? s.currentEc * 1000 : s.currentEc),
+    );
+    setCurrentLiters(s.currentLiters == null ? "" : String(s.currentLiters));
+    setCapacityInput(s.capacityLiters == null ? "" : String(s.capacityLiters));
+    setWaterAdded(s.waterAdded == null ? "" : String(s.waterAdded));
+    setDosingResolutionInput(String(s.dosingResolutionMl ?? 0.5));
     setRound(1);
     const observations =
       s.id === "quick" ? loadQuickCalibrationObservations() : (s.calibrationObservations ?? []);
     setCalibrationObservations(observations);
     setLearnedCount(s.calibration?.readings ?? observations.length);
     setJustLearned(false);
-    setCalibrationOpen(false);
+    setCalibrationOpen(true);
   };
   const saveCurrentSystem = () => {
     const localId =
@@ -391,22 +428,49 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       pods,
       unit,
       water: { ...sys.water, ec: parseDecimalInput(sourceEcInput) ?? 0 },
+      sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
       calibrationObservations,
+      mode,
+      userTarget,
+      currentEc: parseDisplayedEc(currentEc),
+      currentLiters: parseDecimalInput(currentLiters),
+      capacityLiters: parseDecimalInput(capacityInput),
+      waterAdded: parseDecimalInput(waterAdded),
+      dosingResolutionMl,
       calibration: calibrationObservations.length
         ? { learned: 0, readings: calibrationObservations.length }
         : undefined,
     };
     const nextSystems = [...savedSystems.filter((item) => item.id !== next.id), next];
+    try {
+      persistSavedSystems(nextSystems);
+    } catch {
+      setSaveError(
+        lang === "es"
+          ? "No se pudo guardar en este dispositivo. La configuración sigue abierta."
+          : "Could not save on this device. Your configuration is still open.",
+      );
+      return;
+    }
+    setSaveError("");
     setSavedSystems(nextSystems);
-    persistSavedSystems(nextSystems);
     setSys(next);
     setSaveOpen(false);
     setSaveName("");
   };
   const removeSavedSystem = (id: string) => {
     const next = savedSystems.filter((item) => item.id !== id);
+    try {
+      persistSavedSystems(next);
+    } catch {
+      setSaveError(
+        lang === "es"
+          ? "No se pudo eliminar el sistema en este dispositivo."
+          : "Could not remove the system on this device.",
+      );
+      return;
+    }
     setSavedSystems(next);
-    persistSavedSystems(next);
     if (sys.id === id) pick(QUICK);
   };
   const changeMode = (m: Mode) => {
@@ -437,6 +501,10 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       }
     }
     setUnit(next);
+    if (next !== unit && currentEc.trim()) {
+      const currentMs = parseDisplayedEc(currentEc);
+      if (currentMs !== null) setCurrentEc(String(next === "uS" ? currentMs * 1000 : currentMs));
+    }
   };
 
   const saveCalibrationObservation = (
@@ -454,7 +522,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       pods,
       unit,
       water: { ...sys.water, ec: sourceEc },
+      sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
       calibrationObservations: nextObservations,
+      mode,
+      userTarget,
+      currentEc: parseDisplayedEc(currentEc),
+      currentLiters: parseDecimalInput(currentLiters),
+      capacityLiters: parseDecimalInput(capacityInput),
+      waterAdded: parseDecimalInput(waterAdded),
+      dosingResolutionMl,
       calibration: { learned: 0, readings: nextObservations.length },
     };
     setSys(snapshot);
@@ -466,11 +542,17 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         );
       } catch {
         setCalibrationError(t.calibrationStorageError);
+        return;
       }
     } else {
       const nextSystems = savedSystems.map((item) => (item.id === sys.id ? snapshot : item));
+      try {
+        persistSavedSystems(nextSystems);
+      } catch {
+        setCalibrationError(t.calibrationStorageError);
+        return;
+      }
       setSavedSystems(nextSystems);
-      persistSavedSystems(nextSystems);
     }
     setCalibrationOpen(false);
     setCalibrationError("");
@@ -490,6 +572,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const result = useMemo<CalcResult>(
     () =>
       calculateGardenResult({
+        language: lang,
         mode,
         crops,
         liters,
@@ -499,12 +582,22 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         sourceEc,
         currentEc: num(currentEc, true),
         currentLiters: num(currentLiters),
+        capacityLiters: num(capacityInput),
         waterAdded: num(waterAdded),
         userTarget,
         round,
         calibrationObservations,
+        dosingResolutionMl,
+        invalidFields: [
+          ...(mode !== "recipe" && parseDecimalInput(sourceEcInput) === null ? [t.sourceEc] : []),
+          ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
+            ? [t.targetEc]
+            : []),
+          ...(dosingResolutionMl <= 0 ? [t.dosing] : []),
+        ],
       }),
     [
+      lang,
       mode,
       crops,
       liters,
@@ -514,10 +607,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       sourceEc,
       currentEc,
       currentLiters,
+      capacityInput,
       waterAdded,
       userTarget,
       round,
       calibrationObservations,
+      dosingResolutionMl,
+      sourceEcInput,
+      targetEdited,
+      t,
       num,
     ],
   );
@@ -533,6 +631,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         <div className="mx-auto max-w-6xl">
           {/* Dock */}
           <section aria-label={t.systems} className="mt-5">
+            {saveError && !saveOpen && (
+              <p role="alert" className="mb-2 text-sm text-destructive">
+                {saveError}
+              </p>
+            )}
             <p className="mb-2 text-xs font-semibold text-muted-foreground">{t.systems}</p>
             <div
               className="min-w-0 max-w-full flex snap-x gap-2 overflow-x-auto px-1 py-1.5"
@@ -593,20 +696,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
           <p className="mt-2 px-1 text-sm text-muted-foreground">{t.modeHint[mode]}</p>
 
           {/* Workbench */}
-          <div className="mt-4 grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-            <section className="glass-panel space-y-6 p-5 sm:p-6" aria-label="Workbench">
+          <div className="mt-4 grid min-w-0 grid-cols-[minmax(0,1fr)] items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+            <section className="glass-panel min-w-0 space-y-6 p-5 sm:p-6" aria-label="Workbench">
               {(mode === "adjust" || mode === "topup") && (
                 <div className="grid gap-3 sm:grid-cols-3">
                   {mode === "topup" && (
                     <Field
                       label={t.capacity}
                       suffix="L"
-                      value={String(liters)}
-                      onChange={(v) => setLiters(Math.max(0.1, parseDecimalInput(v) ?? 0.1))}
+                      value={capacityInput}
+                      onChange={setCapacityInput}
                       placeholder="4.0"
                     />
                   )}
-                  {mode === "topup" && (
+                  {(mode === "topup" || mode === "adjust") && (
                     <Field
                       label={t.currentLiters}
                       suffix="L"
@@ -745,7 +848,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     <p className="text-xs text-muted-foreground">{t.podGroupsHint}</p>
                   </div>
                 </Block>
-              ) : mode !== "topup" ? (
+              ) : mode !== "topup" && mode !== "adjust" ? (
                 <Block title={t.volume}>
                   <div className="flex flex-wrap gap-1.5">
                     {LITERS.map((l) => (
@@ -806,11 +909,28 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-semibold">
                   {t.more}
                   <span className="flex items-center gap-2 text-xs font-normal text-muted-foreground">
-                    {unitLabel} · {fmtEc(sourceEc)}
+                    {unitLabel} · {sourceEcInput.trim() ? fmtEc(sourceEc) : "—"}
                     <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
                   </span>
                 </summary>
                 <div className="grid gap-4 border-t border-border/70 p-4 sm:grid-cols-2">
+                  {mode !== "recipe" && product.basis === "liters" && (
+                    <label className="text-xs text-muted-foreground">
+                      {t.calibrationStage}
+                      <select
+                        aria-label={t.calibrationStage}
+                        value={stageId}
+                        onChange={(event) => setStageId(event.target.value)}
+                        className="mt-1 h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
+                      >
+                        {product.recipeStages.map((stage) => (
+                          <option key={stage.id} value={stage.id}>
+                            {recipeStageLabel(stage, product.id, pods, lang)}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  )}
                   <div>
                     <p className="mb-1.5 text-xs text-muted-foreground">{t.unit}</p>
                     <div className="grid grid-cols-2 gap-1.5">
@@ -830,14 +950,25 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       onChange={setSourceEcInput}
                     />
                   )}
+                  {mode === "adjust" && (
+                    <Field
+                      label={t.capacity}
+                      suffix="L"
+                      value={capacityInput}
+                      onChange={setCapacityInput}
+                      placeholder="—"
+                    />
+                  )}
                   <div className="text-sm">
                     <p className="text-xs text-muted-foreground">{t.meter}</p>
                     <p className="mt-1 font-medium">{sys.meter}</p>
                   </div>
-                  <div className="text-sm">
-                    <p className="text-xs text-muted-foreground">{t.dosing}</p>
-                    <p className="mt-1 font-medium">{t.syringe}</p>
-                  </div>
+                  <Field
+                    label={lang === "es" ? "Resolución de dosificación" : "Dosing resolution"}
+                    suffix="mL"
+                    value={dosingResolutionInput}
+                    onChange={setDosingResolutionInput}
+                  />
                 </div>
               </details>
 
@@ -876,12 +1007,19 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   {result.message ? (
                     <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
                   ) : null}
+                  {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
+                    <p className="mt-3 text-sm">
+                      {lang === "es"
+                        ? "Los rangos publicados no se solapan. Separa los cultivos o define un objetivo explícito; Garden no inventa un rango común."
+                        : "The reported ranges do not overlap. Separate the crops or select an explicit target; Garden does not invent a common range."}
+                    </p>
+                  )}
                   {result.calibrationRequired && product.basis === "liters" && (
                     <Button
                       className="mt-4 h-11 w-full"
                       onClick={() => {
                         setCalibrationError("");
-                        setCalibrationOpen((open) => !open);
+                        setCalibrationOpen(true);
                       }}
                     >
                       {t.calibrate}
@@ -889,6 +1027,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   )}
                   {calibrationOpen && result.calibrationRequired && product.basis === "liters" && (
                     <CalibrationCard
+                      key={`${productId}-${unit}`}
                       t={t}
                       lang={lang}
                       product={product}
@@ -898,11 +1037,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       pods={pods}
                       unit={unit}
                       unitLabel={unitLabel}
-                      onSave={(baselineEc, resultingEc, actualDoses) => {
+                      onSave={(baselineEc, resultingEc, actualDoses, sampleVolumeL) => {
                         const observation = recordActualDoses({
                           productId,
                           stageId,
-                          liters,
+                          liters: sampleVolumeL,
                           pods,
                           baselineEc,
                           resultingEc,
@@ -944,6 +1083,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       </p>
                       <ProvenanceTag kind={result.provenance} t={t} />
                     </div>
+                    {mode === "topup" && (
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        {lang === "es"
+                          ? "La mezcla de EC es una aproximación. Recuperar el EC no demuestra recuperar la composición original de nutrientes."
+                          : "EC mixing is approximate. Restoring EC does not prove restoration of the original nutrient composition."}
+                      </p>
+                    )}
+                    {mode === "recipe" && product.basis === "liters" && (
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        {lang === "es"
+                          ? "La dosis sigue el programa oficial Light Feed de GH; las plantas seleccionadas se evalúan por separado."
+                          : "Doses follow GH's official Light Feed program; selected crops are evaluated separately."}
+                      </p>
+                    )}
                     <h2 className="mt-3 font-display text-2xl font-bold">
                       {result.action === "add"
                         ? t.actAdd
@@ -965,10 +1118,18 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                 {i + 1}
                               </span>
                               <span className="min-w-0 flex-1 truncate text-sm font-medium">
-                                {d.label}
+                                {d.label === "Replacement water"
+                                  ? lang === "es"
+                                    ? "Agua de reposición"
+                                    : d.label
+                                  : d.label === "Water" || d.label === "Agua"
+                                    ? lang === "es"
+                                      ? "Agua"
+                                      : "Water"
+                                    : d.label}
                               </span>
                               <span className="font-display text-3xl font-bold tabular-nums">
-                                {d.amount.toFixed(2)}
+                                {d.amount > 0 && d.amount < 0.005 ? "<0.01" : d.amount.toFixed(2)}
                                 <span className="ml-1 text-sm font-medium text-muted-foreground">
                                   {d.unit}
                                 </span>
@@ -1028,6 +1189,14 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         </span>
                       </summary>
                       <div className="space-y-4 pt-2 text-sm">
+                        {result.compatibility && (
+                          <p className="font-medium">
+                            {lang === "es" ? "Compatibilidad de cultivos" : "Crop compatibility"}:{" "}
+                            {result.compatibility.status === "INSUFFICIENT"
+                              ? "INSUFFICIENT_EVIDENCE"
+                              : result.compatibility.status}
+                          </p>
+                        )}
                         {result.range && (
                           <div className="grid grid-cols-2 gap-2">
                             <Stat
@@ -1049,11 +1218,24 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         )}
                         <EvidenceMark level={result.evidence} t={t} />
                         <p className="text-muted-foreground">{result.evidenceNote[lang]}</p>
+                        {result.warnings?.map((message) => (
+                          <p key={message} className="text-sm text-muted-foreground">
+                            {message}
+                          </p>
+                        ))}
                         <div>
                           <p className="text-xs font-semibold text-muted-foreground">{t.sources}</p>
                           <ul className="mt-1 list-inside list-disc text-muted-foreground">
                             {result.sources.map((s) => (
-                              <li key={s}>{s}</li>
+                              <li key={s}>
+                                {calculatorSourceUrl(s) ? (
+                                  <a href={calculatorSourceUrl(s)} target="_blank" rel="noreferrer">
+                                    {s}
+                                  </a>
+                                ) : (
+                                  s
+                                )}
+                              </li>
                             ))}
                           </ul>
                         </div>
@@ -1063,40 +1245,62 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
                   {/* Target control */}
                   {/* Learn / loop */}
-                  <LearnCard
-                    key={`${sys.id}-${mode}-${round}`}
-                    t={t}
-                    unitLabel={unitLabel}
-                    system={sys}
-                    productId={productId}
-                    recommendedDoses={result.doses}
-                    learnedCount={learnedCount}
-                    justLearned={justLearned}
-                    onLearn={(ec, actualDoses) => {
-                      const measured = Number(ec.replace(",", "."));
-                      const measuredMs = unit === "uS" ? measured / 1000 : measured;
-                      const observation = recordActualDoses({
-                        productId,
-                        stageId,
-                        liters,
-                        pods,
-                        baselineEc:
-                          mode === "adjust" ? (num(currentEc, true) ?? sourceEc) : sourceEc,
-                        resultingEc: measuredMs,
-                        actualDoses,
-                      });
-                      if (!observation.ok || !observation.value) return;
-                      saveCalibrationObservation(observation.value);
-                      if (mode === "adjust") {
-                        setCurrentEc(ec);
-                      }
-                    }}
-                    onAgain={() => {
-                      setRound((r) => r + 1);
-                      setJustLearned(false);
-                    }}
-                    canLoop={mode === "adjust" && result.action !== "hold"}
-                  />
+                  {product.basis === "liters" &&
+                    result.action === "add" &&
+                    result.doses.some((dose) => dose.unit === "mL" && dose.amount > 0) && (
+                      <LearnCard
+                        key={`${sys.id}-${mode}-${round}-${unit}`}
+                        t={t}
+                        unitLabel={unitLabel}
+                        system={sys}
+                        productId={productId}
+                        recommendedDoses={result.doses}
+                        learnedCount={learnedCount}
+                        justLearned={justLearned}
+                        requireMeasuredBaseline={mode === "recipe" || mode === "topup"}
+                        onLearn={(ec, actualDoses, baseline) => {
+                          const measured = Number(ec.replace(",", "."));
+                          const measuredMs = unit === "uS" ? measured / 1000 : measured;
+                          const observation = recordActualDoses({
+                            productId,
+                            stageId,
+                            liters:
+                              mode === "adjust"
+                                ? (num(currentLiters) ?? NaN)
+                                : mode === "topup"
+                                  ? (num(currentLiters) ?? 0) + (num(waterAdded) ?? 0)
+                                  : liters,
+                            pods,
+                            baselineEc:
+                              mode === "recipe" || mode === "topup"
+                                ? (num(baseline, true) ?? NaN)
+                                : mode === "adjust"
+                                  ? (num(currentEc, true) ?? sourceEc)
+                                  : sourceEc,
+                            resultingEc: measuredMs,
+                            actualDoses,
+                          });
+                          if (!observation.ok || !observation.value) {
+                            setCalibrationError(t.calibrationInvalid);
+                            return;
+                          }
+                          saveCalibrationObservation(observation.value);
+                          if (mode === "adjust") {
+                            setCurrentEc(ec);
+                          }
+                        }}
+                        onAgain={() => {
+                          setRound((r) => r + 1);
+                          setJustLearned(false);
+                        }}
+                        canLoop={mode === "adjust"}
+                      />
+                    )}
+                  {calibrationError && (
+                    <p role="alert" className="text-sm text-destructive">
+                      {calibrationError}
+                    </p>
+                  )}
                 </>
               )}
               {t.demo ? (
@@ -1142,6 +1346,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
             <DialogTitle className="font-display text-2xl font-medium">{t.saveTitle}</DialogTitle>
             <DialogDescription>{t.saveDescription}</DialogDescription>
           </DialogHeader>
+          {saveError && <p role="alert">{saveError}</p>}
           <Field
             label={t.systemName}
             value={saveName}
@@ -1369,7 +1574,7 @@ function TargetControl({
 }: {
   t: Copy;
   value: string;
-  range?: { min: number; max: number; common: boolean };
+  range?: { min: number; max: number; common: boolean } | undefined;
   isUser: boolean;
   outside: boolean;
   onChange: (v: string) => void;
@@ -1465,11 +1670,18 @@ function CalibrationCard({
   pods: number;
   unit: EcUnit;
   unitLabel: string;
-  onSave: (baselineEc: number, resultingEc: number, actualDoses: Record<string, string>) => void;
+  onSave: (
+    baselineEc: number,
+    resultingEc: number,
+    actualDoses: Record<string, string>,
+    sampleVolumeL: number,
+  ) => void;
 }) {
+  const [sampleVolumeInput, setSampleVolumeInput] = useState(String(liters));
+  const sampleVolumeL = parseDecimalInput(sampleVolumeInput) ?? 0;
   const defaults = useMemo(
-    () => manufacturerDoseDefaults({ productId: product.id, stageId, liters, pods }),
-    [product.id, stageId, liters, pods],
+    () => manufacturerDoseDefaults({ productId: product.id, stageId, liters: sampleVolumeL, pods }),
+    [product.id, stageId, sampleVolumeL, pods],
   );
   const [baseline, setBaseline] = useState("");
   const [resulting, setResulting] = useState("");
@@ -1486,7 +1698,7 @@ function CalibrationCard({
     const after = parseDecimalInput(resulting);
     if (before === null || after === null || after <= before) return;
     const toMs = (value: number) => (unit === "uS" ? value / 1000 : value);
-    onSave(toMs(before), toMs(after), actualDoses);
+    onSave(toMs(before), toMs(after), actualDoses, sampleVolumeL);
   };
 
   return (
@@ -1516,9 +1728,12 @@ function CalibrationCard({
           </select>
         </label>
       )}
-      <p className="text-xs text-muted-foreground">
-        {t.volume}: {liters} L
-      </p>
+      <Field
+        label={lang === "es" ? "Volumen real de la muestra" : "Actual sample volume"}
+        suffix="L"
+        value={sampleVolumeInput}
+        onChange={setSampleVolumeInput}
+      />
       <div className="grid gap-3 sm:grid-cols-2">
         <Field
           label={t.calibrationBaseline}
@@ -1554,6 +1769,7 @@ function CalibrationCard({
         className="h-11 w-full"
         disabled={
           parseDecimalInput(baseline) === null ||
+          sampleVolumeL <= 0 ||
           parseDecimalInput(resulting) === null ||
           (parseDecimalInput(resulting) ?? 0) <= (parseDecimalInput(baseline) ?? 0) ||
           product.parts.some((part) => !actualDoses[part.id])
@@ -1575,6 +1791,7 @@ function LearnCard({
   learnedCount,
   justLearned,
   onLearn,
+  requireMeasuredBaseline,
   onAgain,
   canLoop,
 }: {
@@ -1585,11 +1802,14 @@ function LearnCard({
   recommendedDoses: { label: string; amount: number; unit: "mL" | "L" }[];
   learnedCount: number;
   justLearned: boolean;
-  onLearn: (ec: string, actualDoses: Record<string, string>) => void;
+  onLearn: (ec: string, actualDoses: Record<string, string>, baseline: string) => void;
+  requireMeasuredBaseline: boolean;
   onAgain: () => void;
   canLoop: boolean;
 }) {
   const [ec, setEc] = useState("");
+  const [baseline, setBaseline] = useState("");
+  const [iterationClosed, setIterationClosed] = useState(false);
   const product =
     CALCULATOR_PRODUCTS.find((item) => item.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
   const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
@@ -1628,17 +1848,15 @@ function LearnCard({
             {t.learnedNew}
           </p>
           {system.calibration && (
-            <p className="text-xs text-muted-foreground">
-              {t.calib(system.calibration.learned)} · {t.learned(learnedCount)}
-            </p>
+            <p className="text-xs text-muted-foreground">{t.learned(learnedCount)}</p>
           )}
-          {canLoop && (
+          {canLoop && !iterationClosed && (
             <div className="grid grid-cols-2 gap-2">
               <Button className="h-11" onClick={onAgain}>
                 <RefreshCw className="h-4 w-4" />
                 {t.again}
               </Button>
-              <Button variant="outline" className="h-11">
+              <Button variant="outline" className="h-11" onClick={() => setIterationClosed(true)}>
                 <Check className="h-4 w-4" />
                 {t.closeEnough}
               </Button>
@@ -1649,6 +1867,15 @@ function LearnCard({
         <>
           <p className="mt-1 text-sm text-muted-foreground">{t.learnBody}</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            {requireMeasuredBaseline && (
+              <Field
+                label={t.calibrationBaseline}
+                suffix={unitLabel}
+                value={baseline}
+                onChange={setBaseline}
+                placeholder="—"
+              />
+            )}
             <Field label={t.gotEc} suffix={unitLabel} value={ec} onChange={setEc} placeholder="—" />
           </div>
           <p className="mt-3 text-xs font-semibold text-muted-foreground">{t.actualDose}</p>
@@ -1668,8 +1895,8 @@ function LearnCard({
           </div>
           <Button
             className="mt-3 h-11 w-full"
-            disabled={!ec}
-            onClick={() => onLearn(ec, actualDoses)}
+            disabled={!ec || (requireMeasuredBaseline && parseDecimalInput(baseline) === null)}
+            onClick={() => onLearn(ec, actualDoses, baseline)}
           >
             {t.learn} <ArrowRight className="h-4 w-4" />
           </Button>

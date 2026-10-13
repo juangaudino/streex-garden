@@ -371,9 +371,9 @@ export function deriveSuggestedStartingPoint(
 
 export function calculateFreshTargetEc(input: {
   contexts: CropContext[];
-  observations?: EvidenceObservation[];
-  userSelectedTarget?: number;
-  meterResolution?: number;
+  observations?: EvidenceObservation[] | undefined;
+  userSelectedTarget?: number | undefined;
+  meterResolution?: number | undefined;
 }): EngineResult<EcTargetResult> {
   const polyculture = calculatePolycultureRange(
     input.contexts,
@@ -383,6 +383,13 @@ export function calculateFreshTargetEc(input: {
   const claims: Claim[] = [];
   if (input.userSelectedTarget !== undefined) {
     const target = input.userSelectedTarget;
+    if (!Number.isFinite(target) || target <= 0)
+      return result(
+        undefined,
+        [],
+        [error("INVALID_EC_TARGET", "The selected EC target must be finite and positive.")],
+        [],
+      );
     claims.push(
       claim("user-target", "User-selected EC target", "USER_SELECTED", [], { value: target }),
     );
@@ -466,7 +473,7 @@ export function calculateFreshTargetEcDose(input: {
   targetEc: number;
   reservoirVolumeL: number;
   calibration: CalibrationModel;
-  policy?: EnginePolicy;
+  policy?: EnginePolicy | undefined;
 }): EngineResult<FreshTargetDoseResult> {
   const sourceEc = toMsPerCm(
     input.sourceWaterEc.value,
@@ -484,7 +491,7 @@ export function calculateFreshTargetEcDose(input: {
       "Volume-normalized product calibration factor",
       "USER_CALIBRATION",
       input.calibration.observations.map((item) => item.id),
-      { value: input.calibration.factorEcPerMl },
+      { value: calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL) },
     ),
   ];
   if (
@@ -503,7 +510,12 @@ export function calculateFreshTargetEcDose(input: {
       ],
       claims,
     );
-  if (!Number.isFinite(input.targetEc) || input.targetEc <= 0 || input.reservoirVolumeL <= 0)
+  if (
+    ![sourceEc, input.targetEc, input.reservoirVolumeL].every(Number.isFinite) ||
+    sourceEc < 0 ||
+    input.targetEc <= 0 ||
+    input.reservoirVolumeL <= 0
+  )
     return result(
       undefined,
       [],
@@ -566,6 +578,13 @@ export function calculateFreshTargetEcDose(input: {
     );
   const factorAtVolume = median(normalizedFactors);
   const doseMl = (input.targetEc - sourceEc) / factorAtVolume;
+  if (!Number.isFinite(doseMl))
+    return result(
+      undefined,
+      [],
+      [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+      [],
+    );
   const warnings: EngineWarning[] = [];
   if (
     input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
@@ -621,12 +640,12 @@ export function calculateFreshTargetEcDose(input: {
 
 export function executeFreshRecipe(input: {
   recipeId: string;
-  volumeL?: number;
-  podCount?: number;
-  feedingIndex?: number;
-  contexts?: CropContext[];
-  observations?: EvidenceObservation[];
-  dosingEquipmentResolutionMl?: number;
+  volumeL?: number | undefined;
+  podCount?: number | undefined;
+  feedingIndex?: number | undefined;
+  contexts?: CropContext[] | undefined;
+  observations?: EvidenceObservation[] | undefined;
+  dosingEquipmentResolutionMl?: number | undefined;
 }): EngineResult<RecipeResult> {
   const recipe = MANUFACTURER_RECIPES.find((item) => item.id === input.recipeId);
   if (!recipe)
@@ -651,7 +670,7 @@ export function executeFreshRecipe(input: {
         [
           error(
             "UNSUPPORTED_POD_COUNT",
-            "The manufacturer recipe does not document this pod count; Garden will not interpolate it.",
+            "This pod count is not included in Garden's currently supported recipe dataset; Garden will not interpolate it.",
             ["podCount"],
           ),
         ],
@@ -663,8 +682,13 @@ export function executeFreshRecipe(input: {
         step.stage === `POD_GROUP_${input.podCount === 6 || input.podCount === 7 ? "6_7" : "9"}`,
     );
   }
-  if (input.feedingIndex !== undefined)
-    steps = steps.filter((step) => step.feedingIndex === input.feedingIndex);
+  if (input.feedingIndex !== undefined) {
+    const feedingIndex =
+      recipe.podCountGroups && input.podCount === 9 && input.feedingIndex >= 3
+        ? 3
+        : input.feedingIndex;
+    steps = steps.filter((step) => step.feedingIndex === feedingIndex);
+  }
   if (steps.length !== 1)
     return result(
       undefined,
@@ -690,7 +714,7 @@ export function executeFreshRecipe(input: {
       ],
       [],
     );
-  if (input.volumeL !== undefined && input.volumeL <= 0)
+  if (input.volumeL !== undefined && (!Number.isFinite(input.volumeL) || input.volumeL <= 0))
     return result(
       undefined,
       [],
@@ -698,6 +722,17 @@ export function executeFreshRecipe(input: {
       [],
     );
   const volume = input.volumeL ?? 1;
+  if (
+    Object.values(step.doses).some(
+      (dose) => !Number.isFinite(step.doseUnit === "mL/L" ? dose * volume : dose),
+    )
+  )
+    return result(
+      undefined,
+      [],
+      [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+      [],
+    );
   const parts: RecipeResult["parts"] = Object.entries(step.doses).map(([componentId, perUnit]) => {
     const ml = step.doseUnit === "mL/L" ? perUnit * volume : perUnit;
     const resolution = input.dosingEquipmentResolutionMl;
@@ -820,9 +855,27 @@ function median(values: number[]): number {
   return sorted.length % 2 === 0 ? (sorted[middle - 1]! + sorted[middle]!) / 2 : sorted[middle]!;
 }
 
+/** Same observed mixture, normalized to the actual solution volume. */
+export function calibrationResponseAtVolume(model: CalibrationModel, volumeL: number): number {
+  if (!Number.isFinite(volumeL) || volumeL <= 0) return NaN;
+  return median(
+    model.observations
+      .filter(
+        (item) =>
+          Number.isFinite(item.deltaEc) &&
+          item.deltaEc > 0 &&
+          Number.isFinite(item.doseAppliedMl) &&
+          item.doseAppliedMl > 0 &&
+          Number.isFinite(item.reservoirVolumeL) &&
+          item.reservoirVolumeL > 0,
+      )
+      .map((item) => (item.deltaEc * item.reservoirVolumeL) / item.doseAppliedMl / volumeL),
+  );
+}
+
 export function buildCalibrationModel(input: {
   productIdentity: CalibrationObservation["productIdentity"];
-  formulationVersion?: string;
+  formulationVersion?: string | undefined;
   recipeSignature: string;
   observations: CalibrationObservation[];
 }): EngineResult<CalibrationModel> {
@@ -830,7 +883,18 @@ export function buildCalibrationModel(input: {
     (item) =>
       sameProductIdentity(input.productIdentity, item.productIdentity) &&
       item.formulationVersion === input.formulationVersion &&
-      item.componentRatioOrRecipeSignature === input.recipeSignature,
+      item.componentRatioOrRecipeSignature === input.recipeSignature &&
+      [
+        item.baselineEc,
+        item.resultingEc,
+        item.deltaEc,
+        item.doseAppliedMl,
+        item.reservoirVolumeL,
+      ].every(Number.isFinite) &&
+      item.baselineEc >= 0 &&
+      item.deltaEc > 0 &&
+      item.doseAppliedMl > 0 &&
+      item.reservoirVolumeL > 0,
   );
   if (applicable.length === 0)
     return result(
@@ -911,15 +975,32 @@ export function buildCalibrationModel(input: {
 
 export function learnFromObservation(input: {
   productIdentity: CalibrationObservation["productIdentity"];
-  formulationVersion?: string;
+  formulationVersion?: string | undefined;
   recipeSignature: string;
   baselineEc: number;
   resultingEc: number;
-  doseAppliedMl?: number;
+  doseAppliedMl?: number | undefined;
   reservoirVolumeL: number;
   timestamp: string;
 }): EngineResult<CalibrationObservation> {
-  if (!input.doseAppliedMl || input.doseAppliedMl <= 0)
+  if (
+    ![input.baselineEc, input.resultingEc, input.reservoirVolumeL].every(Number.isFinite) ||
+    input.baselineEc < 0 ||
+    input.resultingEc <= input.baselineEc ||
+    input.reservoirVolumeL <= 0
+  )
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "INVALID_CALIBRATION_MEASUREMENT",
+          "Record a positive solution volume and a measured EC increase from a non-negative baseline.",
+        ),
+      ],
+      [],
+    );
+  if (!Number.isFinite(input.doseAppliedMl) || !input.doseAppliedMl || input.doseAppliedMl <= 0)
     return result(
       undefined,
       [],
@@ -958,17 +1039,52 @@ export function learnFromObservation(input: {
 
 export function calculateEcCorrection(input: {
   currentEc: UserMeasurement;
-  dilutionWaterEc?: UserMeasurement;
+  dilutionWaterEc?: UserMeasurement | undefined;
   targetEc: number;
   reservoirVolumeL: number;
+  reservoirCapacityL?: number | undefined;
   calibration: CalibrationModel;
-  policy?: EnginePolicy;
+  policy?: EnginePolicy | undefined;
 }): EngineResult<CorrectionResult> {
   const warnings: EngineWarning[] = [];
   const currentEc = toMsPerCm(
     input.currentEc.value,
     input.currentEc.unit === "pH" ? "mS/cm" : input.currentEc.unit,
   );
+  if (
+    ![currentEc, input.targetEc, input.reservoirVolumeL].every(Number.isFinite) ||
+    currentEc < 0 ||
+    input.targetEc <= 0 ||
+    input.reservoirVolumeL <= 0 ||
+    (input.reservoirCapacityL !== undefined &&
+      (!Number.isFinite(input.reservoirCapacityL) ||
+        input.reservoirCapacityL <= 0 ||
+        input.reservoirVolumeL > input.reservoirCapacityL))
+  )
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "INVALID_CORRECTION_INPUT",
+          "Measured EC must be non-negative; target and actual volume must be positive.",
+        ),
+      ],
+      [],
+    );
+  const factorAtVolume = calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL);
+  if (!Number.isFinite(factorAtVolume) || factorAtVolume <= 0)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CALIBRATION_INVALID",
+          "A measured positive response is required for this solution volume.",
+        ),
+      ],
+      [],
+    );
   const claims: Claim[] = [
     claim("current-ec", "Measured current EC", "USER_SELECTED", [], { value: currentEc }),
     claim("target-ec", "Selected EC target", "USER_SELECTED", [], { value: input.targetEc }),
@@ -977,7 +1093,7 @@ export function calculateEcCorrection(input: {
       "Calibration factor",
       "USER_CALIBRATION",
       input.calibration.observations.map((item) => item.id),
-      { value: input.calibration.factorEcPerMl },
+      { value: factorAtVolume },
     ),
   ];
   if (input.dilutionWaterEc)
@@ -1019,10 +1135,19 @@ export function calculateEcCorrection(input: {
       [],
       claims,
     );
-  const doseMl = Math.abs(difference) / input.calibration.factorEcPerMl;
+  const doseMl = Math.abs(difference) / factorAtVolume;
+  if (!Number.isFinite(doseMl))
+    return result(
+      undefined,
+      [],
+      [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+      [],
+    );
   if (
     doseMl < input.calibration.validCalibrationRange.minDoseMl ||
-    doseMl > input.calibration.validCalibrationRange.maxDoseMl
+    doseMl > input.calibration.validCalibrationRange.maxDoseMl ||
+    input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
+    input.reservoirVolumeL > input.calibration.validCalibrationRange.maxVolumeL
   )
     warnings.push(
       warning(
@@ -1079,6 +1204,28 @@ export function calculateEcCorrection(input: {
     const waterMl =
       (input.reservoirVolumeL * MILLIS_PER_LITER * (currentEc - input.targetEc)) /
       (input.targetEc - dilutionWaterEc);
+    if (!Number.isFinite(waterMl))
+      return result(
+        undefined,
+        [],
+        [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+        [],
+      );
+    if (
+      input.reservoirCapacityL !== undefined &&
+      input.reservoirVolumeL + waterMl / MILLIS_PER_LITER > input.reservoirCapacityL
+    )
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "DILUTION_EXCEEDS_CAPACITY",
+            "Further dilution would exceed capacity. Remove or replace solution before recalculating with the actual remaining volume.",
+          ),
+        ],
+        claims,
+      );
     return result(
       {
         mode: "EC_CORRECTION",
@@ -1148,19 +1295,39 @@ export function calculateEcCorrection(input: {
 }
 
 export function calculateTopUpMaintenance(input: {
-  currentVolumeL?: number;
+  currentVolumeL?: number | undefined;
   nominalVolumeL: number;
   replacementWaterL: number;
   currentEc: UserMeasurement;
-  replacementWaterEc?: UserMeasurement;
+  replacementWaterEc?: UserMeasurement | undefined;
   targetEc: number;
-  calibration?: CalibrationModel;
-  policy?: EnginePolicy;
+  calibration?: CalibrationModel | undefined;
+  policy?: EnginePolicy | undefined;
 }): EngineResult<TopUpResult> {
   const currentEc = toMsPerCm(
     input.currentEc.value,
     input.currentEc.unit === "pH" ? "mS/cm" : input.currentEc.unit,
   );
+  if (
+    ![currentEc, input.targetEc, input.nominalVolumeL, input.replacementWaterL].every(
+      Number.isFinite,
+    ) ||
+    currentEc < 0 ||
+    input.targetEc <= 0 ||
+    input.nominalVolumeL <= 0 ||
+    (input.currentVolumeL !== undefined && !Number.isFinite(input.currentVolumeL))
+  )
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "INVALID_TOP_UP_INPUT",
+          "Use finite measured EC and positive target/capacity/volume values.",
+        ),
+      ],
+      [],
+    );
   const claims: Claim[] = [
     claim("top-up-current-ec", "Measured current EC", "USER_SELECTED", [], { value: currentEc }),
     claim("top-up-water", "Replacement water amount", "USER_SELECTED", [], {
@@ -1173,6 +1340,13 @@ export function calculateTopUpMaintenance(input: {
         input.replacementWaterEc.unit === "pH" ? "mS/cm" : input.replacementWaterEc.unit,
       )
     : 0;
+  if (!Number.isFinite(replacementWaterEc) || replacementWaterEc < 0)
+    return result(
+      undefined,
+      [],
+      [error("INVALID_SOURCE_WATER_EC", "Source water EC must be finite and non-negative.")],
+      claims,
+    );
   if (
     input.replacementWaterEc &&
     (input.replacementWaterEc.context.scope !== "SOURCE_WATER" ||
@@ -1269,10 +1443,42 @@ export function calculateTopUpMaintenance(input: {
         ],
         claims,
       );
-    nutrientDoseMl = (input.targetEc - afterWaterEc) / input.calibration.factorEcPerMl;
+    const factorAtVolume = calibrationResponseAtVolume(input.calibration, resultingVolumeL);
+    if (!Number.isFinite(factorAtVolume) || factorAtVolume <= 0)
+      return result(
+        undefined,
+        warnings,
+        [error("CALIBRATION_INVALID", "A measured positive EC response is required.")],
+        claims,
+      );
+    nutrientDoseMl = (input.targetEc - afterWaterEc) / factorAtVolume;
+    if (
+      Number.isFinite(nutrientDoseMl) &&
+      resultingVolumeL + nutrientDoseMl / 1000 > input.nominalVolumeL
+    )
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "RESERVOIR_CAPACITY_EXCEEDED",
+            "Leave room for the nutrient stock as well as replacement water; the calculated additions exceed known capacity.",
+          ),
+        ],
+        claims,
+      );
+    if (!Number.isFinite(nutrientDoseMl))
+      return result(
+        undefined,
+        warnings,
+        [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+        [],
+      );
     if (
       nutrientDoseMl < input.calibration.validCalibrationRange.minDoseMl ||
-      nutrientDoseMl > input.calibration.validCalibrationRange.maxDoseMl
+      nutrientDoseMl > input.calibration.validCalibrationRange.maxDoseMl ||
+      resultingVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
+      resultingVolumeL > input.calibration.validCalibrationRange.maxVolumeL
     )
       warnings.push(
         warning(
@@ -1280,6 +1486,36 @@ export function calculateTopUpMaintenance(input: {
           "The top-up dose is outside the validated calibration range.",
           ["calibration-factor"],
         ),
+      );
+  }
+  let dilutionWaterMl: number | undefined;
+  if (afterWaterEc > input.targetEc) {
+    if (replacementWaterEc >= input.targetEc)
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "DILUTION_WATER_EC_TOO_HIGH",
+            "This source water cannot dilute the solution to the selected target.",
+          ),
+        ],
+        claims,
+      );
+    dilutionWaterMl =
+      (resultingVolumeL * MILLIS_PER_LITER * (afterWaterEc - input.targetEc)) /
+      (input.targetEc - replacementWaterEc);
+    if (resultingVolumeL + dilutionWaterMl / MILLIS_PER_LITER > input.nominalVolumeL)
+      return result(
+        undefined,
+        warnings,
+        [
+          error(
+            "DILUTION_EXCEEDS_CAPACITY",
+            "Further dilution would exceed capacity. Remove or replace solution before recalculating with the actual remaining volume.",
+          ),
+        ],
+        claims,
       );
   }
   if (
@@ -1302,6 +1538,8 @@ export function calculateTopUpMaintenance(input: {
       replacementWaterMl: input.replacementWaterL * MILLIS_PER_LITER,
       nutrientDoseMl,
       resultingVolumeL,
+      afterWaterEc,
+      dilutionWaterMl,
       approximation: true,
       evidenceState: input.calibration?.evidenceState ?? "MODERATE",
       warnings,
@@ -1335,7 +1573,11 @@ export function calculateTopUpMaintenance(input: {
 export function evaluateSourceWater(input: {
   sourceEc: UserMeasurement;
   targetEc: number;
-}): EngineResult<{ sourceEc: number; sourceToTargetRatio?: number; targetMinusSource?: number }> {
+}): EngineResult<{
+  sourceEc: number;
+  sourceToTargetRatio?: number | undefined;
+  targetMinusSource?: number | undefined;
+}> {
   const sourceEc = toMsPerCm(
     input.sourceEc.value,
     input.sourceEc.unit === "pH" ? "mS/cm" : input.sourceEc.unit,

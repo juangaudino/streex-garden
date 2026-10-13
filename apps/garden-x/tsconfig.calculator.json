@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "types": ["vite/client", "node"] },
+  "include": [
+    "src/components/gardenpedia/donor/calculator-page-v1.tsx",
+    "src/components/gardenpedia/donor/calculator-lovable-adapter.ts",
+    "src/components/gardenpedia/donor/calculator-objective.test.ts",
+    "src/components/gardenpedia/donor/calculator-page.test.ts",
+    "src/components/gardenpedia/donor/calculator-page.interaction.test.tsx",
+    "src/lib/garden-nutrient-engine-v1/**/*.ts"
+  ]
+}

@@ -37,3 +37,21 @@ Los event triggers internos de Supabase se omiten durante la restauración: pert
 ## Simulacro comprobado
 
 El 8 de septiembre de 2026 (UTC), `Garden restore drill` restauró correctamente el snapshot `2026-09-08` en el proyecto aislado. La verificación comparó cada ruta y tamaño del manifiesto fuente con el destino y confirmó 2 jardines, 9 fotos y 7 objetos en `garden-originals`. Los avisos de objetos internos ya presentes en Supabase se registraron como conflictos de plataforma esperados; las verificaciones de dominio y Storage terminaron correctamente.
+
+## Retiro de OLD: respaldo canónico pendiente
+
+El simulacro y el workflow descritos arriba corresponden al respaldo anterior de Supabase Storage `garden-originals`; no prueban que la base canónica actual ni el bucket R2 de Production puedan restaurarse. El workflow actualizado de `Garden Production backup` toma el dump de `fnhggqqnkhkrfwmnsqmy`, incluye los registros de `auth.users` y el conteo de jardines/fotos, copia `garden-x-production-media` a una instantánea única en `streex-garden-backups`, guarda checksums e inventario y verifica los bytes copiados. No elimina ni modifica objetos de origen.
+
+El manifest canónico también contiene filas y SHA-256 por tabla para las tablas base de `garden` y `auth`; el simulacro vuelve a calcularlas tras restaurar. Eso compara IDs, asociaciones y metadatos sin publicar filas personales. Las URL de conexión solo se convierten en archivos de servicio libpq locales con permisos `0600`; no se pasan como argumentos a `psql`, `pg_dump` o `pg_restore`.
+
+Antes de habilitar el workflow, configurar en GitHub Actions:
+
+- Secrets `PRODUCTION_SUPABASE_DB_URL`, `PRODUCTION_R2_ENDPOINT`, `PRODUCTION_R2_ACCESS_KEY_ID` y `PRODUCTION_R2_SECRET_ACCESS_KEY`; el token R2 solo necesita lectura en `garden-x-production-media`.
+- Variable `PRODUCTION_R2_BUCKET` con `garden-x-production-media`.
+- Secrets `BACKUP_R2_ENDPOINT`, `BACKUP_R2_ACCESS_KEY_ID` y `BACKUP_R2_SECRET_ACCESS_KEY`; este token solo necesita leer/escribir objetos en el bucket existente de backups.
+- Variable `BACKUP_R2_BUCKET` con `streex-garden-backups`.
+- Para el simulacro, secret `RESTORE_TARGET_SUPABASE_DB_URL` y variable `RESTORE_TARGET_PROJECT_REF` de un proyecto desechable y aislado. El workflow rechaza OLD y Production.
+
+El dump incluye las filas de Auth y datos de Garden que viven en PostgreSQL. No contiene la configuración de proyecto de Supabase (proveedores OAuth, SMTP, secretos de funciones ni ajustes del proyecto); respaldar y comprobar esa configuración requiere acceso autorizado al proyecto y un inventario separado. No registrar valores secretos en GitHub logs, este runbook ni el chat.
+
+El respaldo canónico y su restauración siguen **sin verificar** hasta que una ejecución nueva de ambos workflows termine correctamente y se compare el manifest completo en el proyecto aislado. El éxito del workflow legado del 8 de septiembre de 2026 no satisface este requisito.

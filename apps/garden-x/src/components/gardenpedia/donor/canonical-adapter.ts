@@ -7,6 +7,7 @@ import harvestUseRichnessAdditions from "../../../../../../labs/gardenpedia/data
 import legacyPlantData from "../../../../../../labs/gardenpedia/data/plants.json";
 import legacySpanishTranslations from "../../../../../../labs/gardenpedia/data/translations-es.json";
 import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
+import visualGuidesBatch10 from "../../../../../../labs/gardenpedia/data/visual-guides-batch-10.json";
 
 export type DonorSourceRef = { label: string; url: string };
 export type DonorBacking = "source" | "garden" | "pending";
@@ -196,7 +197,10 @@ const harvestRichnessDocument = harvestUseRichnessAdditions as {
 };
 const harvestCatalog: Record<string, HarvestRecord> = { ...(harvestDocument.plants ?? {}), ...harvestRichnessDocument.plants };
 const harvestSources = { ...(harvestDocument.sources ?? {}), ...harvestRichnessDocument.sources };
-const visualCatalog = visualsData as Record<string, VisualRecord[]>;
+const visualCatalog: Record<string, VisualRecord[]> = {
+  ...(visualsData as Record<string, VisualRecord[]>),
+  ...(visualGuidesBatch10 as Record<string, VisualRecord[]>),
+};
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
 const publicPlantProfiles = gardenPlantProfileCatalog as Record<string, PublicPlantProfile>;

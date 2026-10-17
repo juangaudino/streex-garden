@@ -4,6 +4,11 @@ import {
   gardenSeedProfileIds,
 } from "@/generated/garden-seed-profile-index";
 import propagationGuidance from "../../../../../../labs/gardenpedia/data/propagation-guidance-v1.json";
+import {
+  seedProfileContentLevel,
+  seedProfileSummaryForDisplay,
+  type SeedProfileContentLevel,
+} from "./seed-profile-quality";
 
 export type SeedLibraryLanguage = "en" | "es";
 
@@ -23,6 +28,7 @@ export type SeedLibraryCardViewModel = {
   sources: readonly { id: string; label: string; url: string }[];
   aliases: readonly string[];
   hasSeedProfile: boolean;
+  contentLevel: SeedProfileContentLevel | null;
 };
 
 type Localized = { en: string; es: string };
@@ -78,6 +84,7 @@ export function buildSeedLibraryCards(language: SeedLibraryLanguage) {
     .map((entry) => {
       const metadata = metadataById.get(entry.libraryPlantId);
       const hasSeedProfile = publishedIds.has(entry.libraryPlantId) && Boolean(metadata);
+      const rawSummary = metadata ? localize(metadata.summary, language) : "";
       const specificGuidance = propagationRecords[entry.libraryPlantId];
       const sourceIds = specificGuidance?.sourceIds ?? [];
       const sources = sourceIds
@@ -97,7 +104,7 @@ export function buildSeedLibraryCards(language: SeedLibraryLanguage) {
         emoji: CATEGORY_EMOJI[entry.category] ?? "🌱",
         summary:
           hasSeedProfile && metadata
-            ? localize(metadata.summary, language)
+            ? seedProfileSummaryForDisplay(rawSummary, language)
             : (specificGuidance?.summary[language] ?? undocumentedPropagationSummary(language)),
         quickFactCount: metadata?.quickFactCount ?? 0,
         sourceCount: metadata?.sourceCount ?? sources.length,
@@ -110,11 +117,12 @@ export function buildSeedLibraryCards(language: SeedLibraryLanguage) {
         propagationSummary:
           specificGuidance?.summary[language] ??
           (hasSeedProfile && metadata
-            ? localize(metadata.summary, language)
+            ? seedProfileSummaryForDisplay(rawSummary, language)
             : undocumentedPropagationSummary(language)),
         sources,
         aliases: entry.aliases,
         hasSeedProfile,
+        contentLevel: metadata ? seedProfileContentLevel(metadata.summary.en) : null,
       } satisfies SeedLibraryCardViewModel;
     })
     .sort((a, b) => a.name.localeCompare(b.name));

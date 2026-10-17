@@ -332,8 +332,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "acorn-squash",
     "summary": {
-      "en": "A seed-to-established-plant path for Acorn Squash. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Calabaza acorn. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny's crop guide supports direct sowing after frost danger in warm soil, or starting transplants about 3 weeks before planting out. This is winter-squash guidance, not a guarantee for a specific seed packet.",
+      "es": "La guía del cultivo de Johnny's respalda la siembra directa cuando ya pasó el riesgo de heladas y el suelo está cálido, o iniciar trasplantes unas 3 semanas antes de llevarlos afuera. Es una guía para calabazas de invierno, no una garantía para un paquete específico."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -386,8 +386,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "anaheim-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Anaheim Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento Anaheim. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -395,8 +395,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "ancho-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Ancho Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento ancho. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -485,8 +485,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "banana-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Banana Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento banana. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -512,8 +512,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "beefsteak-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Beefsteak Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate beefsteak. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
     "sourceCount": 3
@@ -557,11 +557,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "black-cherry-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Black Cherry Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate cherry negro. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 3
+    "sourceCount": 4
   },
   {
     "id": "black-eyed-susan",
@@ -575,11 +575,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "black-krim-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Black Krim Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Black Krim. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "black-pearl-ornamental-pepper",
@@ -809,8 +809,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "butternut-squash",
     "summary": {
-      "en": "A seed-to-established-plant path for Butternut Squash. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Calabaza butternut. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny's crop guide supports direct sowing after frost danger in warm soil, or starting transplants about 3 weeks before planting out. This is winter-squash guidance, not a guarantee for a specific seed packet.",
+      "es": "La guía del cultivo de Johnny's respalda la siembra directa cuando ya pasó el riesgo de heladas y el suelo está cálido, o iniciar trasplantes unas 3 semanas antes de llevarlos afuera. Es una guía para calabazas de invierno, no una garantía para un paquete específico."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -890,8 +890,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "cayenne-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Cayenne Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento cayena. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 3
@@ -899,11 +899,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "celebrity-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Celebrity Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Celebrity. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "celeriac-apium-graveolens",
@@ -953,11 +953,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "cherry-bomb-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Cherry Bomb Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Cherry Bomb. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "cherry-tomato",
@@ -1151,8 +1151,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "cubanelle-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Cubanelle Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento cubanelle. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -1547,11 +1547,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "grape-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Grape Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate uva. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "greek-oregano",
@@ -1745,8 +1745,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "jalapeno-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Jalapeño Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento jalapeño. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 3
@@ -1997,8 +1997,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "mini-bell-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Mini Bell Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento mini dulce. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -2213,11 +2213,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "patio-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Patio Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate de patio. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "pattypan-squash",
@@ -2303,8 +2303,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "poblano-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Poblano Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento poblano. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -2501,8 +2501,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "roma-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Roma Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Roma. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
     "sourceCount": 3
@@ -2573,11 +2573,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "san-marzano-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for San Marzano Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate San Marzano. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "santo-cilantro",
@@ -2636,8 +2636,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "serrano-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Serrano Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento serrano. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -2654,8 +2654,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "shishito-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Shishito Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento shishito. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -2798,8 +2798,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "sugar-pumpkin",
     "summary": {
-      "en": "A seed-to-established-plant path for Sugar Pumpkin. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Calabaza Sugar. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny's winter-squash crop guide supports direct sowing after frost danger in warm soil, or starting transplants about 3 weeks before planting out. This is crop-level guidance, not a Sugar Pumpkin packet guarantee.",
+      "es": "La guía de calabaza de invierno de Johnny's respalda la siembra directa cuando ya pasó el riesgo de heladas y el suelo está cálido, o iniciar trasplantes unas 3 semanas antes de llevarlos afuera. Es una guía a nivel de cultivo, no una garantía del paquete de Sugar Pumpkin."
     },
     "quickFactCount": 4,
     "sourceCount": 5
@@ -2825,11 +2825,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "sun-gold-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Sun Gold Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Sun Gold. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "sunflower-american-giant-hybrid",
@@ -2861,20 +2861,20 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "sunrise-sauce-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Sunrise Sauce Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Sunrise Sauce. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 3
+    "sourceCount": 4
   },
   {
     "id": "supersweet-100-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Supersweet 100 Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Supersweet 100. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "sweet-alyssum-white",
@@ -2897,8 +2897,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "sweet-chocolate-pepper",
     "summary": {
-      "en": "A seed-to-established-plant path for Sweet Chocolate Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento Sweet Chocolate. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+      "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
     },
     "quickFactCount": 4,
     "sourceCount": 4
@@ -3212,11 +3212,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "yellow-brandywine-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Yellow Brandywine Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Yellow Brandywine. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "yellow-onion",
@@ -3230,8 +3230,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "yellow-pear-tomato",
     "summary": {
-      "en": "A seed-to-established-plant path for Yellow Pear Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate pera amarilla. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+      "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+      "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
     },
     "quickFactCount": 4,
     "sourceCount": 3

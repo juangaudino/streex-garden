@@ -33,6 +33,7 @@ const copy = {
     familyUnknown: "Familia no establecida por la ficha actual",
     plantCare: "Cuidado de la planta madura",
     seedProfile: "PERFIL DE SEMILLA",
+    cropLevelBaseline: "Base a nivel de cultivo",
     visitor: "Visitante",
     myGarden: "Mi jardín",
     publicInventory: "Conocimiento público",
@@ -87,6 +88,7 @@ const copy = {
     familyUnknown: "Family not established by the current profile",
     plantCare: "Mature plant care",
     seedProfile: "SEED PROFILE",
+    cropLevelBaseline: "Crop-level baseline",
     visitor: "Visitor",
     myGarden: "My Garden",
     publicInventory: "Public knowledge",
@@ -654,6 +656,11 @@ export function SeedLibraryView({
                             ? labels.vegetativePreferred
                             : labels.propagationPending}
                       </span>
+                      {profile.contentLevel === "crop_level_baseline" ? (
+                        <span className="rounded-full border border-amber-500/30 px-2.5 py-1 text-[10px] font-medium text-amber-800 dark:text-amber-200">
+                          {labels.cropLevelBaseline}
+                        </span>
+                      ) : null}
                       {browseMode === "propagation" ? (
                         <span
                           className={cn(
@@ -827,6 +834,11 @@ export function SeedProfilePage({
                 {profile.scientificName || labels.notEstablished}
               </p>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">{profile.summary}</p>
+              {profile.contentLevel === "crop_level_baseline" ? (
+                <p className="mt-3 rounded-xl border border-amber-500/25 bg-amber-500/5 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-100">
+                  {labels.cropLevelBaseline}
+                </p>
+              ) : null}
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {profile.metrics.map((metric) => (
                   <div key={metric.key} className="glass-soft p-3">

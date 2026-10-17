@@ -84,6 +84,25 @@ describe("lightweight public Seed library adapter", () => {
     expect(spanish?.summary).not.toBe(english?.summary);
   });
 
+  it("marks template-based profiles as crop-level baselines in both languages", () => {
+    const english = buildSeedLibraryCards("en").find((card) => card.id === "arugula");
+    const spanish = buildSeedLibraryCards("es").find((card) => card.id === "arugula");
+
+    expect(english?.contentLevel).toBe("crop_level_baseline");
+    expect(english?.summary).toMatch(/crop-level baseline/i);
+    expect(spanish?.contentLevel).toBe("crop_level_baseline");
+    expect(spanish?.summary).toMatch(/guía base a nivel de cultivo/i);
+  });
+
+  it("keeps crop-level seed facts useful without implying cultivar-specific evidence", () => {
+    const english = buildSeedLibraryCards("en").find((card) => card.id === "acorn-squash");
+    const spanish = buildSeedLibraryCards("es").find((card) => card.id === "acorn-squash");
+
+    expect(english?.contentLevel).toBe("editorial_profile");
+    expect(english?.summary).toMatch(/winter-squash guidance/i);
+    expect(spanish?.summary).toMatch(/calabazas de invierno/i);
+  });
+
   it("classifies houseplant propagation without inventing seed protocols", () => {
     const cards = buildSeedLibraryCards("en");
     expect(cards.find((card) => card.id === "snake-plant-dracaena-trifasciata")).toMatchObject({

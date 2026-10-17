@@ -132,6 +132,10 @@ describe("direct Gardenpedia presentation adapter", () => {
       expect(detail.name).toBeTruthy();
       expect(detail.summary).toBeTruthy();
       expect(
+        detail.guides.length,
+        `${entry.libraryPlantId} should render its available public facts or explicit guidance gaps`,
+      ).toBeGreaterThan(0);
+      expect(
         detail.guides.every((guide) =>
           guide.sources.every((source) => /^https?:\/\//.test(source.url)),
         ),

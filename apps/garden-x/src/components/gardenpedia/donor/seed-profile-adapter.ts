@@ -94,6 +94,11 @@ import sourcesWave57 from "../../../../../../labs/gardenpedia/data/sources-expan
 import sourcesWave58 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-58.json";
 import sourcesWave60 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-60.json";
 import sourcesWave61 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-61.json";
+import {
+  seedProfileContentLevel,
+  seedProfileSummaryForDisplay,
+  type SeedProfileContentLevel,
+} from "./seed-profile-quality";
 
 export type SeedProfileLanguage = "en" | "es";
 type Localized = { en: string; es: string };
@@ -298,6 +303,7 @@ export type SeedProfileViewModel = {
   category: string;
   emoji: string;
   summary: string;
+  contentLevel: SeedProfileContentLevel;
   metrics: readonly SeedMetricViewModel[];
   protocol: readonly SeedStepViewModel[];
   sources: readonly SeedSourceRef[];
@@ -389,7 +395,8 @@ export function buildSeedProfile(
     family: null,
     category: entry.category,
     emoji: CATEGORY_EMOJI[entry.category] ?? "🌱",
-    summary: localize(profile.summary, language),
+    summary: seedProfileSummaryForDisplay(localize(profile.summary, language), language),
+    contentLevel: seedProfileContentLevel(profile.summary.en),
     metrics: profile.quickFacts.map((fact) => ({
       key: fact.key,
       label: localize(fact.label, language),

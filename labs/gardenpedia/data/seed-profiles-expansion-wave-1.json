@@ -1459,8 +1459,8 @@
         "es": "PERFIL DE SEMILLA"
       },
       "summary": {
-        "en": "A seed-to-established-plant path for Roma Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-        "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate Roma. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+        "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+        "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
       },
       "quickFacts": [
         {
@@ -1470,16 +1470,18 @@
             "es": "Germinación"
           },
           "value": {
-            "en": "Crop-specific range pending",
-            "es": "Rango específico del cultivo pendiente"
+            "en": "Typically 5–7 days at crop level",
+            "es": "Típicamente 5–7 días a nivel de cultivo"
           },
           "note": {
-            "en": "Do not turn a general crop window into a packet guarantee",
-            "es": "No conviertas una ventana general del cultivo en garantía del paquete"
+            "en": "Johnny’s tomato guide; not a guarantee for this named variety or packet",
+            "es": "Guía de tomate de Johnny’s; no es garantía para esta variedad o paquete"
           },
-          "evidenceType": "needs_validation",
-          "confidence": "pending",
-          "sourceIds": []
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": [
+            "johnnys-tomato"
+          ]
         },
         {
           "key": "temperature",
@@ -1488,12 +1490,12 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "75–85°F (24–29°C) during germination",
+            "es": "75–85°F (24–29°C) durante la germinación"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 1",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 1"
+            "en": "Crop-level tomato guidance; packet instructions take precedence",
+            "es": "Guía a nivel de cultivo para tomate; prevalecen las instrucciones del paquete"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
@@ -1508,18 +1510,17 @@
             "es": "Profundidad de siembra"
           },
           "value": {
-            "en": "Follow the crop-specific guide",
-            "es": "Sigue la guía específica del cultivo"
+            "en": "¼ in (about 6 mm), lightly covered",
+            "es": "¼ de pulgada (unos 6 mm), con una cubierta ligera"
           },
           "note": {
-            "en": "Packet depth should win when the actual packet is available",
-            "es": "La profundidad del paquete debe prevalecer cuando el paquete real esté disponible"
+            "en": "Crop-level tomato sowing guidance; not cultivar-specific",
+            "es": "Guía de siembra a nivel de cultivo para tomate; no específica del cultivar"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato",
-            "johnnys-seed-starting"
+            "johnnys-tomato"
           ]
         },
         {
@@ -1550,18 +1551,18 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Start indoors about 5–6 weeks before transplanting",
+            "es": "Inicia bajo techo unas 5–6 semanas antes del trasplante"
           },
           "guidance": {
-            "en": "Use the Roma Tomato crop guide for sowing method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Tomate Roma para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "For tomatoes at crop level, sow about 5–6 weeks before transplanting, ¼ in (6 mm) deep, and lightly cover. Johnny’s describes flats or one seed per cell; follow the packet if its directions differ.",
+            "es": "Para tomates a nivel de cultivo, siembra unas 5–6 semanas antes del trasplante, a ¼ de pulgada (6 mm) y cubre ligeramente. Johnny’s describe bandejas o una semilla por celda; sigue el paquete si indica otra cosa."
           },
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related cultivars.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de cultivares relacionados."
+                "en": "Keep the sowing medium moderately moist; the guide gives the crop method, not an exact packet-specific moisture schedule.",
+                "es": "Mantén el medio de siembra moderadamente húmedo; la guía indica el método del cultivo, no un calendario exacto de humedad para el paquete."
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
@@ -1584,18 +1585,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Warm the medium and allow the crop-level 5–7 day window",
+            "es": "Mantén cálido el medio y considera la ventana de 5–7 días del cultivo"
           },
           "guidance": {
-            "en": "The reviewed Roma Tomato evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Tomate Roma respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "Johnny’s reports typical tomato germination in 5–7 days and recommends 75–85°F (24–29°C) with moderate moisture for sowing. Treat both as crop-level guidance; the exact variety or packet may differ.",
+            "es": "Johnny’s indica una germinación típica del tomate en 5–7 días y recomienda 75–85°F (24–29°C) con humedad moderada para la siembra. Ambos datos son guía a nivel de cultivo; la variedad o el paquete pueden diferir."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Do not interpret the crop-level range as a guaranteed emergence date for this variety; packet-specific light/dark instructions remain unverified.",
+                "es": "No interpretes el rango del cultivo como fecha garantizada de emergencia para esta variedad; las instrucciones específicas de luz/oscuridad del paquete no están verificadas."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -1616,20 +1617,20 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "Pot up at the first true leaf and keep seedlings sturdy",
+            "es": "Trasplanta a una maceta mayor al aparecer la primera hoja verdadera y mantén plántulas robustas"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes the seedling's development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "Johnny’s advises potting up at the first true leaf. It then gives a 60–70°F (16–21°C) growing range until hardening off; this is general tomato guidance, not a cultivar-specific schedule.",
+            "es": "Johnny’s aconseja pasar a un recipiente mayor al aparecer la primera hoja verdadera. Después indica 60–70°F (16–21°C) durante el crecimiento hasta el endurecimiento; es guía general para tomate, no un calendario específico del cultivar."
           },
           "items": [
             {
               "text": {
-                "en": "Cut unwanted crowded seedlings at the base when pulling would disturb the plant being kept.",
-                "es": "Corta en la base las plántulas sobrantes cuando arrancarlas pueda alterar la planta conservada."
+                "en": "Avoid starting so early that transplants become leggy, root-bound, or flower before planting out.",
+                "es": "Evita iniciar tan temprano que los trasplantes se alarguen, queden con raíces apretadas o florezcan antes de llevarlos afuera."
               },
-              "evidenceType": "garden_adaptation",
+              "evidenceType": "source_backed",
               "confidence": "medium",
               "sourceIds": [
                 "johnnys-tomato"
@@ -1639,7 +1640,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato"
+            "johnnys-tomato",
+            "johnnys-seed-starting"
           ]
         },
         {
@@ -1749,8 +1751,8 @@
         "es": "PERFIL DE SEMILLA"
       },
       "summary": {
-        "en": "A seed-to-established-plant path for Beefsteak Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-        "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate beefsteak. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+        "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+        "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
       },
       "quickFacts": [
         {
@@ -1760,16 +1762,18 @@
             "es": "Germinación"
           },
           "value": {
-            "en": "Crop-specific range pending",
-            "es": "Rango específico del cultivo pendiente"
+            "en": "Typically 5–7 days at crop level",
+            "es": "Típicamente 5–7 días a nivel de cultivo"
           },
           "note": {
-            "en": "Do not turn a general crop window into a packet guarantee",
-            "es": "No conviertas una ventana general del cultivo en garantía del paquete"
+            "en": "Johnny’s tomato guide; not a guarantee for this named variety or packet",
+            "es": "Guía de tomate de Johnny’s; no es garantía para esta variedad o paquete"
           },
-          "evidenceType": "needs_validation",
-          "confidence": "pending",
-          "sourceIds": []
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": [
+            "johnnys-tomato"
+          ]
         },
         {
           "key": "temperature",
@@ -1778,12 +1782,12 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "75–85°F (24–29°C) during germination",
+            "es": "75–85°F (24–29°C) durante la germinación"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 1",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 1"
+            "en": "Crop-level tomato guidance; packet instructions take precedence",
+            "es": "Guía a nivel de cultivo para tomate; prevalecen las instrucciones del paquete"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
@@ -1798,18 +1802,17 @@
             "es": "Profundidad de siembra"
           },
           "value": {
-            "en": "Follow the crop-specific guide",
-            "es": "Sigue la guía específica del cultivo"
+            "en": "¼ in (about 6 mm), lightly covered",
+            "es": "¼ de pulgada (unos 6 mm), con una cubierta ligera"
           },
           "note": {
-            "en": "Packet depth should win when the actual packet is available",
-            "es": "La profundidad del paquete debe prevalecer cuando el paquete real esté disponible"
+            "en": "Crop-level tomato sowing guidance; not cultivar-specific",
+            "es": "Guía de siembra a nivel de cultivo para tomate; no específica del cultivar"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato",
-            "johnnys-seed-starting"
+            "johnnys-tomato"
           ]
         },
         {
@@ -1840,18 +1843,18 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Start indoors about 5–6 weeks before transplanting",
+            "es": "Inicia bajo techo unas 5–6 semanas antes del trasplante"
           },
           "guidance": {
-            "en": "Use the Beefsteak Tomato crop guide for sowing method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Tomate beefsteak para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "For tomatoes at crop level, sow about 5–6 weeks before transplanting, ¼ in (6 mm) deep, and lightly cover. Johnny’s describes flats or one seed per cell; follow the packet if its directions differ.",
+            "es": "Para tomates a nivel de cultivo, siembra unas 5–6 semanas antes del trasplante, a ¼ de pulgada (6 mm) y cubre ligeramente. Johnny’s describe bandejas o una semilla por celda; sigue el paquete si indica otra cosa."
           },
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related cultivars.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de cultivares relacionados."
+                "en": "Keep the sowing medium moderately moist; the guide gives the crop method, not an exact packet-specific moisture schedule.",
+                "es": "Mantén el medio de siembra moderadamente húmedo; la guía indica el método del cultivo, no un calendario exacto de humedad para el paquete."
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
@@ -1874,18 +1877,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Warm the medium and allow the crop-level 5–7 day window",
+            "es": "Mantén cálido el medio y considera la ventana de 5–7 días del cultivo"
           },
           "guidance": {
-            "en": "The reviewed Beefsteak Tomato evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Tomate beefsteak respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "Johnny’s reports typical tomato germination in 5–7 days and recommends 75–85°F (24–29°C) with moderate moisture for sowing. Treat both as crop-level guidance; the exact variety or packet may differ.",
+            "es": "Johnny’s indica una germinación típica del tomate en 5–7 días y recomienda 75–85°F (24–29°C) con humedad moderada para la siembra. Ambos datos son guía a nivel de cultivo; la variedad o el paquete pueden diferir."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Do not interpret the crop-level range as a guaranteed emergence date for this variety; packet-specific light/dark instructions remain unverified.",
+                "es": "No interpretes el rango del cultivo como fecha garantizada de emergencia para esta variedad; las instrucciones específicas de luz/oscuridad del paquete no están verificadas."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -1906,20 +1909,20 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "Pot up at the first true leaf and keep seedlings sturdy",
+            "es": "Trasplanta a una maceta mayor al aparecer la primera hoja verdadera y mantén plántulas robustas"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes the seedling's development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "Johnny’s advises potting up at the first true leaf. It then gives a 60–70°F (16–21°C) growing range until hardening off; this is general tomato guidance, not a cultivar-specific schedule.",
+            "es": "Johnny’s aconseja pasar a un recipiente mayor al aparecer la primera hoja verdadera. Después indica 60–70°F (16–21°C) durante el crecimiento hasta el endurecimiento; es guía general para tomate, no un calendario específico del cultivar."
           },
           "items": [
             {
               "text": {
-                "en": "Cut unwanted crowded seedlings at the base when pulling would disturb the plant being kept.",
-                "es": "Corta en la base las plántulas sobrantes cuando arrancarlas pueda alterar la planta conservada."
+                "en": "Avoid starting so early that transplants become leggy, root-bound, or flower before planting out.",
+                "es": "Evita iniciar tan temprano que los trasplantes se alarguen, queden con raíces apretadas o florezcan antes de llevarlos afuera."
               },
-              "evidenceType": "garden_adaptation",
+              "evidenceType": "source_backed",
               "confidence": "medium",
               "sourceIds": [
                 "johnnys-tomato"
@@ -1929,7 +1932,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato"
+            "johnnys-tomato",
+            "johnnys-seed-starting"
           ]
         },
         {
@@ -2039,8 +2043,8 @@
         "es": "PERFIL DE SEMILLA"
       },
       "summary": {
-        "en": "A seed-to-established-plant path for Yellow Pear Tomato. Crop-level evidence is kept separate from exact cultivar or system claims.",
-        "es": "Un recorrido desde la semilla hasta una planta establecida de Tomate pera amarilla. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+        "en": "Johnny’s tomato guide supports sowing about 5–6 weeks before transplanting, ¼ in deep, at 75–85°F; typical crop-level germination is 5–7 days. These are tomato-crop ranges, not a guarantee for this named variety or packet.",
+        "es": "La guía de tomate de Johnny’s respalda sembrar unas 5–6 semanas antes del trasplante, a ¼ de pulgada y a 75–85°F; la germinación típica del cultivo es de 5–7 días. Son rangos del cultivo de tomate, no una garantía para esta variedad o paquete."
       },
       "quickFacts": [
         {
@@ -2050,16 +2054,18 @@
             "es": "Germinación"
           },
           "value": {
-            "en": "Crop-specific range pending",
-            "es": "Rango específico del cultivo pendiente"
+            "en": "Typically 5–7 days at crop level",
+            "es": "Típicamente 5–7 días a nivel de cultivo"
           },
           "note": {
-            "en": "Do not turn a general crop window into a packet guarantee",
-            "es": "No conviertas una ventana general del cultivo en garantía del paquete"
+            "en": "Johnny’s tomato guide; not a guarantee for this named variety or packet",
+            "es": "Guía de tomate de Johnny’s; no es garantía para esta variedad o paquete"
           },
-          "evidenceType": "needs_validation",
-          "confidence": "pending",
-          "sourceIds": []
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": [
+            "johnnys-tomato"
+          ]
         },
         {
           "key": "temperature",
@@ -2068,12 +2074,12 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "75–85°F (24–29°C) during germination",
+            "es": "75–85°F (24–29°C) durante la germinación"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 1",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 1"
+            "en": "Crop-level tomato guidance; packet instructions take precedence",
+            "es": "Guía a nivel de cultivo para tomate; prevalecen las instrucciones del paquete"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
@@ -2088,18 +2094,17 @@
             "es": "Profundidad de siembra"
           },
           "value": {
-            "en": "Follow the crop-specific guide",
-            "es": "Sigue la guía específica del cultivo"
+            "en": "¼ in (about 6 mm), lightly covered",
+            "es": "¼ de pulgada (unos 6 mm), con una cubierta ligera"
           },
           "note": {
-            "en": "Packet depth should win when the actual packet is available",
-            "es": "La profundidad del paquete debe prevalecer cuando el paquete real esté disponible"
+            "en": "Crop-level tomato sowing guidance; not cultivar-specific",
+            "es": "Guía de siembra a nivel de cultivo para tomate; no específica del cultivar"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato",
-            "johnnys-seed-starting"
+            "johnnys-tomato"
           ]
         },
         {
@@ -2130,18 +2135,18 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Start indoors about 5–6 weeks before transplanting",
+            "es": "Inicia bajo techo unas 5–6 semanas antes del trasplante"
           },
           "guidance": {
-            "en": "Use the Yellow Pear Tomato crop guide for sowing method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Tomate pera amarilla para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "For tomatoes at crop level, sow about 5–6 weeks before transplanting, ¼ in (6 mm) deep, and lightly cover. Johnny’s describes flats or one seed per cell; follow the packet if its directions differ.",
+            "es": "Para tomates a nivel de cultivo, siembra unas 5–6 semanas antes del trasplante, a ¼ de pulgada (6 mm) y cubre ligeramente. Johnny’s describe bandejas o una semilla por celda; sigue el paquete si indica otra cosa."
           },
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related cultivars.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de cultivares relacionados."
+                "en": "Keep the sowing medium moderately moist; the guide gives the crop method, not an exact packet-specific moisture schedule.",
+                "es": "Mantén el medio de siembra moderadamente húmedo; la guía indica el método del cultivo, no un calendario exacto de humedad para el paquete."
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
@@ -2164,18 +2169,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Warm the medium and allow the crop-level 5–7 day window",
+            "es": "Mantén cálido el medio y considera la ventana de 5–7 días del cultivo"
           },
           "guidance": {
-            "en": "The reviewed Yellow Pear Tomato evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Tomate pera amarilla respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "Johnny’s reports typical tomato germination in 5–7 days and recommends 75–85°F (24–29°C) with moderate moisture for sowing. Treat both as crop-level guidance; the exact variety or packet may differ.",
+            "es": "Johnny’s indica una germinación típica del tomate en 5–7 días y recomienda 75–85°F (24–29°C) con humedad moderada para la siembra. Ambos datos son guía a nivel de cultivo; la variedad o el paquete pueden diferir."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Do not interpret the crop-level range as a guaranteed emergence date for this variety; packet-specific light/dark instructions remain unverified.",
+                "es": "No interpretes el rango del cultivo como fecha garantizada de emergencia para esta variedad; las instrucciones específicas de luz/oscuridad del paquete no están verificadas."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -2196,20 +2201,20 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "Pot up at the first true leaf and keep seedlings sturdy",
+            "es": "Trasplanta a una maceta mayor al aparecer la primera hoja verdadera y mantén plántulas robustas"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes the seedling's development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "Johnny’s advises potting up at the first true leaf. It then gives a 60–70°F (16–21°C) growing range until hardening off; this is general tomato guidance, not a cultivar-specific schedule.",
+            "es": "Johnny’s aconseja pasar a un recipiente mayor al aparecer la primera hoja verdadera. Después indica 60–70°F (16–21°C) durante el crecimiento hasta el endurecimiento; es guía general para tomate, no un calendario específico del cultivar."
           },
           "items": [
             {
               "text": {
-                "en": "Cut unwanted crowded seedlings at the base when pulling would disturb the plant being kept.",
-                "es": "Corta en la base las plántulas sobrantes cuando arrancarlas pueda alterar la planta conservada."
+                "en": "Avoid starting so early that transplants become leggy, root-bound, or flower before planting out.",
+                "es": "Evita iniciar tan temprano que los trasplantes se alarguen, queden con raíces apretadas o florezcan antes de llevarlos afuera."
               },
-              "evidenceType": "garden_adaptation",
+              "evidenceType": "source_backed",
               "confidence": "medium",
               "sourceIds": [
                 "johnnys-tomato"
@@ -2219,7 +2224,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "johnnys-tomato"
+            "johnnys-tomato",
+            "johnnys-seed-starting"
           ]
         },
         {
@@ -2329,8 +2335,8 @@
         "es": "PERFIL DE SEMILLA"
       },
       "summary": {
-        "en": "A seed-to-established-plant path for Jalapeño Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-        "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento jalapeño. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+        "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+        "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
       },
       "quickFacts": [
         {
@@ -2358,12 +2364,12 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "80°F until the seed root emerges; then 65–75°F in sterile seed mix",
+            "es": "80°F hasta que emerja la raíz; después 65–75°F en mezcla estéril para semilleros"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 1",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 1"
+            "en": "Utah State Extension pepper-crop protocol; not a cultivar-specific packet range",
+            "es": "Protocolo de pimiento de Utah State Extension; no es un rango específico del paquete o cultivar"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
@@ -2420,12 +2426,12 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Use a warm germination phase, then transfer after root emergence",
+            "es": "Usa una fase cálida de germinación y traslada al emerger la raíz"
           },
           "guidance": {
-            "en": "Use the Jalapeño Pepper crop guide for sowing method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Pimiento jalapeño para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "Utah State Extension advises germinating pepper seed at 80°F until the seed root emerges, then transferring it to sterile seed-starting mix. The source’s regional outdoor timing is not generalized here; follow the packet for depth and any treatment instructions.",
+            "es": "Utah State Extension aconseja germinar la semilla de pimiento a 80°F hasta que emerja la raíz y luego pasarla a mezcla estéril para semilleros. Aquí no se generaliza el calendario regional de siembra exterior; sigue el paquete para profundidad e instrucciones de tratamiento."
           },
           "items": [
             {
@@ -2454,18 +2460,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Warm until the seed root appears; exact emergence days remain unknown",
+            "es": "Mantén calor hasta que aparezca la raíz; los días exactos de emergencia siguen sin conocerse"
           },
           "guidance": {
-            "en": "The reviewed Jalapeño Pepper evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Pimiento jalapeño respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "The extension protocol specifies 80°F through seed-root emergence, then 65–75°F after transfer to sterile mix. It does not provide a packet-specific day range for this identity.",
+            "es": "El protocolo de extensión indica 80°F hasta la emergencia de la raíz y luego 65–75°F tras el traslado a mezcla estéril. No ofrece un rango de días específico para el paquete de esta identidad."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Exact emergence time, sowing depth, and light/dark requirement for this named identity: needs validation.",
+                "es": "Tiempo exacto de emergencia, profundidad de siembra y requisito de luz/oscuridad para esta identidad: requieren validación."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -2486,12 +2492,12 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "After root emergence, move to sterile mix and grow at 65–75°F",
+            "es": "Tras emerger la raíz, pasa a mezcla estéril y crece a 65–75°F"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes the seedling's development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "Utah State Extension gives 65–75°F for growing the pepper seedling after transfer from germination. This is general pepper guidance; it does not specify a transplant-ready leaf stage for this variety.",
+            "es": "Utah State Extension indica 65–75°F para cultivar la plántula de pimiento después de trasladarla desde la germinación. Es guía general para pimientos; no especifica una etapa de hojas para trasplantar esta variedad."
           },
           "items": [
             {
@@ -2619,8 +2625,8 @@
         "es": "PERFIL DE SEMILLA"
       },
       "summary": {
-        "en": "A seed-to-established-plant path for Cayenne Pepper. Crop-level evidence is kept separate from exact cultivar or system claims.",
-        "es": "Un recorrido desde la semilla hasta una planta establecida de Pimiento cayena. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
+        "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
+        "es": "Utah State Extension describe una secuencia para iniciar pimientos: germinar a 80°F hasta que emerja la raíz de la semilla, luego pasar a mezcla estéril para semilleros y crecer a 65–75°F. Es guía para el cultivo de pimiento, no garantía del paquete de una variedad nombrada."
       },
       "quickFacts": [
         {
@@ -2648,12 +2654,12 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "80°F until the seed root emerges; then 65–75°F in sterile seed mix",
+            "es": "80°F hasta que emerja la raíz; después 65–75°F en mezcla estéril para semilleros"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 1",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 1"
+            "en": "Utah State Extension pepper-crop protocol; not a cultivar-specific packet range",
+            "es": "Protocolo de pimiento de Utah State Extension; no es un rango específico del paquete o cultivar"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
@@ -2710,12 +2716,12 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Use a warm germination phase, then transfer after root emergence",
+            "es": "Usa una fase cálida de germinación y traslada al emerger la raíz"
           },
           "guidance": {
-            "en": "Use the Cayenne Pepper crop guide for sowing method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Pimiento cayena para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "Utah State Extension advises germinating pepper seed at 80°F until the seed root emerges, then transferring it to sterile seed-starting mix. The source’s regional outdoor timing is not generalized here; follow the packet for depth and any treatment instructions.",
+            "es": "Utah State Extension aconseja germinar la semilla de pimiento a 80°F hasta que emerja la raíz y luego pasarla a mezcla estéril para semilleros. Aquí no se generaliza el calendario regional de siembra exterior; sigue el paquete para profundidad e instrucciones de tratamiento."
           },
           "items": [
             {
@@ -2744,18 +2750,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Warm until the seed root appears; exact emergence days remain unknown",
+            "es": "Mantén calor hasta que aparezca la raíz; los días exactos de emergencia siguen sin conocerse"
           },
           "guidance": {
-            "en": "The reviewed Cayenne Pepper evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Pimiento cayena respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "The extension protocol specifies 80°F through seed-root emergence, then 65–75°F after transfer to sterile mix. It does not provide a packet-specific day range for this identity.",
+            "es": "El protocolo de extensión indica 80°F hasta la emergencia de la raíz y luego 65–75°F tras el traslado a mezcla estéril. No ofrece un rango de días específico para el paquete de esta identidad."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Exact emergence time, sowing depth, and light/dark requirement for this named identity: needs validation.",
+                "es": "Tiempo exacto de emergencia, profundidad de siembra y requisito de luz/oscuridad para esta identidad: requieren validación."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -2776,12 +2782,12 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "After root emergence, move to sterile mix and grow at 65–75°F",
+            "es": "Tras emerger la raíz, pasa a mezcla estéril y crece a 65–75°F"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes the seedling's development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "Utah State Extension gives 65–75°F for growing the pepper seedling after transfer from germination. This is general pepper guidance; it does not specify a transplant-ready leaf stage for this variety.",
+            "es": "Utah State Extension indica 65–75°F para cultivar la plántula de pimiento después de trasladarla desde la germinación. Es guía general para pimientos; no especifica una etapa de hojas para trasplantar esta variedad."
           },
           "items": [
             {

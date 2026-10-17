@@ -254,6 +254,55 @@ describe("canonical Seed Profile adapter", () => {
     expect(profile?.protocol[0]?.title).toBeTruthy();
   });
 
+  it("labels low-specificity starter content honestly instead of presenting it as packet guidance", () => {
+    const english = seedProfileForEntry("arugula", "en");
+    const spanish = seedProfileForEntry("arugula", "es");
+
+    expect(english?.contentLevel).toBe("crop_level_baseline");
+    expect(english?.summary).toMatch(/crop-level baseline/i);
+    expect(english?.summary).toMatch(/packet-specific instructions/i);
+    expect(spanish?.contentLevel).toBe("crop_level_baseline");
+    expect(spanish?.summary).toMatch(/guía base a nivel de cultivo/i);
+    expect(spanish?.summary).toMatch(/instrucciones del paquete/i);
+  });
+
+  it("preserves scoped winter-squash seed facts and leaves unsupported timing unresolved", () => {
+    const profile = seedProfileForEntry("acorn-squash", "en");
+    const temperature = profile?.metrics.find((metric) => metric.key === "temperature");
+    const depth = profile?.metrics.find((metric) => metric.key === "depth");
+    const germination = profile?.metrics.find((metric) => metric.key === "germination");
+
+    expect(temperature?.value).toMatch(/62°F.*70°F/);
+    expect(temperature?.sourceIds).toContain("johnnys-winter-squash-wave3");
+    expect(depth?.value).toMatch(/½–1 in/);
+    expect(depth?.sourceIds).toContain("johnnys-winter-squash-wave3");
+    expect(germination?.evidenceType).toBe("needs_validation");
+    expect(germination?.value).toMatch(/pending/i);
+    expect(JSON.stringify(profile)).not.toMatch(/cultivar-specific germination/i);
+  });
+
+  it("keeps tomato and pepper seed guidance at crop scope without extending Capsicum annuum facts to Habanero", () => {
+    const tomato = seedProfileForEntry("grape-tomato", "en");
+    const tomatoGermination = tomato?.metrics.find((metric) => metric.key === "germination");
+    const tomatoDepth = tomato?.metrics.find((metric) => metric.key === "depth");
+    expect(tomatoGermination?.value).toMatch(/5–7 days at crop level/);
+    expect(tomatoGermination?.sourceIds).toContain("johnnys-tomato");
+    expect(tomatoDepth?.value).toMatch(/¼ in/);
+    expect(tomato?.summary).toMatch(/not a guarantee for this named variety or packet/);
+
+    const pepper = seedProfileForEntry("anaheim-pepper", "en");
+    const pepperTemperature = pepper?.metrics.find((metric) => metric.key === "temperature");
+    expect(pepperTemperature?.value).toMatch(/80°F.*65–75°F/);
+    expect(pepperTemperature?.sourceIds).toContain("usu-peppers");
+
+    const habanero = seedProfileForEntry("habanero-pepper", "en");
+    const habaneroTemperature = habanero?.metrics.find((metric) => metric.key === "temperature");
+    expect(habaneroTemperature?.value).not.toMatch(/80°F/);
+    expect(habanero?.summary).not.toMatch(
+      /Utah State Extension describes a pepper seed-starting sequence/,
+    );
+  });
+
   it("preserves uncertainty in a lower-density profile instead of filling donor slots", () => {
     const profile = seedProfileForEntry("arugula", "en");
 

@@ -68,10 +68,6 @@
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": [],
-        "items": [
-          "No product-specific pest, disease or physiological-problem evidence is represented in this profile.",
-          "Do not infer a diagnosis from species identity alone."
-        ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
     },
@@ -174,9 +170,7 @@
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
-          "University Extension describes deadheading and light trimming for petunias generally.",
-          "Gardyn gives its own pod-care instructions.",
-          "The guidance is not evidence that all petunia types respond identically, and no named cultivar is inferred."
+          "University Extension describes deadheading and light trimming for petunias generally."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -189,8 +183,7 @@
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
-          "Gardyn names spider mites as a common pest in its product-care guidance.",
-          "This is retained as a product-care note, not a claim that this selection is uniquely susceptible or that the list is exhaustive."
+          "Gardyn names spider mites as a common pest in its product-care guidance."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
@@ -285,8 +278,7 @@
           "gardyn-black-viola-wave28"
         ],
         "items": [
-          "Extension describes creeping and ascending stems for Viola cornuta.",
-          "Gardyn lists a product size under one foot, but that label is kept at product scope and is not converted into a universal mature-height range."
+          "Extension describes creeping and ascending stems for Viola cornuta."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -296,10 +288,6 @@
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": [],
-        "items": [
-          "This identity is presented as an ornamental product.",
-          "Although the manufacturer discusses edible-garnish use, Gardenpedia does not make a food-safety or edibility claim for the unspecified product selection in this baseline profile."
-        ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
@@ -311,8 +299,7 @@
           "ncsu-viola-cornuta-wave28"
         ],
         "items": [
-          "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta.",
-          "This is species-level context, not a diagnosis or product-specific susceptibility claim."
+          "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }

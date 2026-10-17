@@ -23,17 +23,13 @@
         "short": "Especie perenne; porte sin confirmar",
         "guidance": "Kew clasifica la especie como perenne o helófita. No hay dimensiones confirmadas para la selección Blush.",
         "items": [
-          "Kew clasifica la especie como perenne o helófita.",
-          "No hay dimensiones confirmadas para la selección Blush."
+          "Kew clasifica la especie como perenne o helófita."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {
         "short": "Problemas específicos sin evidencia",
         "guidance": "No hay evidencia suficiente para afirmar plagas o enfermedades particulares de esta selección.",
-        "items": [
-          "No hay evidencia suficiente para afirmar plagas o enfermedades particulares de esta selección."
-        ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }
     }
@@ -113,9 +109,6 @@
       "harvest": {
         "short": "Uso ornamental; comestibilidad no verificada",
         "guidance": "Esta ficha no afirma seguridad alimentaria de la selección comercial.",
-        "items": [
-          "Esta ficha no afirma seguridad alimentaria de la selección comercial."
-        ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {

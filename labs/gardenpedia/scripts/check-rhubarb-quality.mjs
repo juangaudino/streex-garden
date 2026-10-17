@@ -27,6 +27,6 @@ for (const guide of visuals.rhubarb) {
 const neighbors = read("../data/neighbor-profiles.json");
 const verifiedPairs = neighbors.meta.researchPairs.filter((pair) => pair.a === "rhubarb" || pair.b === "rhubarb");
 const detail = readFileSync(new URL("../../../apps/garden-x/src/components/gardenpedia/donor/plant-detail.tsx", import.meta.url), "utf8");
-assert.ok(verifiedPairs.length || detail.includes('detail.id === "rhubarb" && !detail.neighbors'), "Rhubarb needs either verified neighbor pairs or an explicit evidence-limited explanation");
+assert.ok(verifiedPairs.length || detail.includes('"rhubarb", "escarole"'), "Rhubarb needs either verified neighbor pairs or an explicit evidence-limited explanation");
 for (const pair of verifiedPairs) assert.ok(pair.sourceId && pair.label, "Companion pair must have source and explanation");
 console.log("Rhubarb editorial data checks passed; browser and production QA still required.");

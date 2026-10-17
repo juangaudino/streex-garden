@@ -1,40 +1,350 @@
 [
   {
-    "id":"blush-hibiscus","name":"Blush Hibiscus","spanishName":"Hibisco Blush","scientificName":"Muenchhusia moscheutos","variety":"Gardyn product selection; named cultivar not established","category":"flowers","emoji":"🌺","guideCompletion":22,
-    "tags":["blush hibiscus","hibiscus blush","hibisco blush","hardy hibiscus","rose mallow","Muenchhusia moscheutos","Hibiscus moscheutos","gardyn"],
-    "summary":"Gardyn’s Blush Hibiscus product selection is documented under the historical botanical name Hibiscus moscheutos. Kew now accepts Muenchhusia moscheutos; the product page does not establish a named cultivar.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Muenchhusia moscheutos","guidance":"Kew accepts Muenchhusia moscheutos and lists Hibiscus moscheutos as a synonym. Gardyn’s Blush label is treated as a product selection within this species, not a named cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-muenchhusia-moscheutos-wave28","gardyn-blush-hibiscus-wave28"]},
-      "cultivation":{"short":"Gardyn-specific establishment notes only","guidance":"Gardyn’s product page supplies instructions for its own pod and growing system. Those instructions are not generalized to outdoor hibiscus cultivation or other systems; field conditions, mature dimensions and broader care remain unvalidated here.","evidenceType":"source_backed","confidence":"medium","sourceIds":["gardyn-blush-hibiscus-wave28"]},
-      "growth":{"short":"Species is perennial; product habit is not resolved","guidance":"Kew classifies Muenchhusia moscheutos as perennial or helophytic. The source does not establish the mature habit or dimensions of Gardyn’s Blush product selection, so no product-specific size is assigned.","evidenceType":"source_backed","confidence":"medium","sourceIds":["kew-muenchhusia-moscheutos-wave28"]},
-      "problems":{"short":"Product-specific issues remain to be validated","guidance":"No product-specific pest, disease or physiological-problem evidence is represented in this profile. Do not infer a diagnosis from species identity alone.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]}
+    "id": "blush-hibiscus",
+    "name": "Blush Hibiscus",
+    "spanishName": "Hibisco Blush",
+    "scientificName": "Muenchhusia moscheutos",
+    "variety": "Gardyn product selection; named cultivar not established",
+    "category": "flowers",
+    "emoji": "🌺",
+    "guideCompletion": 22,
+    "tags": [
+      "blush hibiscus",
+      "hibiscus blush",
+      "hibisco blush",
+      "hardy hibiscus",
+      "rose mallow",
+      "Muenchhusia moscheutos",
+      "Hibiscus moscheutos",
+      "gardyn"
+    ],
+    "summary": "Gardyn’s Blush Hibiscus product selection is documented under the historical botanical name Hibiscus moscheutos. Kew now accepts Muenchhusia moscheutos; the product page does not establish a named cultivar.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Muenchhusia moscheutos",
+        "guidance": "Kew accepts Muenchhusia moscheutos and lists Hibiscus moscheutos as a synonym. Gardyn’s Blush label is treated as a product selection within this species, not a named cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-muenchhusia-moscheutos-wave28",
+          "gardyn-blush-hibiscus-wave28"
+        ],
+        "items": [
+          "Kew accepts Muenchhusia moscheutos and lists Hibiscus moscheutos as a synonym.",
+          "Gardyn’s Blush label is treated as a product selection within this species, not a named cultivar."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Gardyn-specific establishment notes only",
+        "guidance": "Gardyn’s product page supplies instructions for its own pod and growing system. Those instructions are not generalized to outdoor hibiscus cultivation or other systems; field conditions, mature dimensions and broader care remain unvalidated here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "gardyn-blush-hibiscus-wave28"
+        ],
+        "items": [
+          "Gardyn’s product page supplies instructions for its own pod and growing system."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Species is perennial; product habit is not resolved",
+        "guidance": "Kew classifies Muenchhusia moscheutos as perennial or helophytic. The source does not establish the mature habit or dimensions of Gardyn’s Blush product selection, so no product-specific size is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "kew-muenchhusia-moscheutos-wave28"
+        ],
+        "items": [
+          "Kew classifies Muenchhusia moscheutos as perennial or helophytic."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Product-specific issues remain to be validated",
+        "guidance": "No product-specific pest, disease or physiological-problem evidence is represented in this profile. Do not infer a diagnosis from species identity alone.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": [],
+        "items": [
+          "No product-specific pest, disease or physiological-problem evidence is represented in this profile.",
+          "Do not infer a diagnosis from species identity alone."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The Gardyn product guide is limited to its named system and does not establish compatibility across hydroponic methods."},"growthHabits":{"status":"unknown","reason":"No controlled growth-habit value is established for the Gardyn product selection."},"matureSize":{"height":{"status":"unknown","reason":"No defensible product-selection height is established."},"spread":{"status":"unknown","reason":"No defensible product-selection spread is established."}},"spacing":{"status":"unknown","reason":"Gardyn pod thinning guidance is not a general plant-spacing value."},"light":{"status":"unknown","reason":"A Gardyn light-zone placement is not mapped to the canonical indoor grow-light requirement."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The Gardyn product guide is limited to its named system and does not establish compatibility across hydroponic methods."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No controlled growth-habit value is established for the Gardyn product selection."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No defensible product-selection height is established."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible product-selection spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Gardyn pod thinning guidance is not a general plant-spacing value."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "A Gardyn light-zone placement is not mapped to the canonical indoor grow-light requirement."
+      }
+    }
   },
   {
-    "id":"pink-petunia","name":"Pink Petunia","spanishName":"Petunia rosa","scientificName":"Petunia × atkinsiana","variety":"Gardyn pink-flowered product selection; named cultivar not established","category":"flowers","emoji":"🌸","guideCompletion":30,
-    "tags":["pink petunia","petunia rosa","Petunia × atkinsiana","Petunia × hybrida","garden petunia","Gardyn"],
-    "summary":"Gardyn’s Pink Petunia is a pink-flowered product selection identified as Petunia × hybrida, the synonym of Kew’s accepted Petunia × atkinsiana. No named cultivar is established.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted hybrid: Petunia × atkinsiana","guidance":"Kew accepts Petunia × atkinsiana and lists Petunia × hybrida as a synonym. Gardyn documents a pink-flowered product selection, but does not provide a cultivar denomination; the color label is not promoted to a cultivar name.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-petunia-atkinsiana","gardyn-pink-petunia-wave28"]},
-      "cultivation":{"short":"Separate product instructions from general petunia guidance","guidance":"Gardyn describes conditions and care for its own pod. General Extension petunia guidance can inform the broader hybrid crop, but does not establish this selection’s outdoor performance or exact cultivar requirements.","evidenceType":"source_backed","confidence":"medium","sourceIds":["gardyn-pink-petunia-wave28","umn-petunias"]},
-      "growth":{"short":"Pink flower selection; exact habit and dimensions unresolved","guidance":"Gardyn describes this product as spreading before bloom and gives a product size classification. These are product-page claims, not evidence for a named cultivar or a universal mature dimension; no exact height or spread is assigned.","evidenceType":"source_backed","confidence":"medium","sourceIds":["gardyn-pink-petunia-wave28"]},
-      "maintenance":{"short":"Deadheading and trimming are documented at crop scope","guidance":"University Extension describes deadheading and light trimming for petunias generally. Gardyn gives its own pod-care instructions. The guidance is not evidence that all petunia types respond identically, and no named cultivar is inferred.","evidenceType":"source_backed","confidence":"medium","sourceIds":["umn-petunias","gardyn-pink-petunia-wave28"]},
-      "problems":{"short":"Product page notes spider mites","guidance":"Gardyn names spider mites as a common pest in its product-care guidance. This is retained as a product-care note, not a claim that this selection is uniquely susceptible or that the list is exhaustive.","evidenceType":"source_backed","confidence":"medium","sourceIds":["gardyn-pink-petunia-wave28"]}
+    "id": "pink-petunia",
+    "name": "Pink Petunia",
+    "spanishName": "Petunia rosa",
+    "scientificName": "Petunia × atkinsiana",
+    "variety": "Gardyn pink-flowered product selection; named cultivar not established",
+    "category": "flowers",
+    "emoji": "🌸",
+    "guideCompletion": 30,
+    "tags": [
+      "pink petunia",
+      "petunia rosa",
+      "Petunia × atkinsiana",
+      "Petunia × hybrida",
+      "garden petunia",
+      "Gardyn"
+    ],
+    "summary": "Gardyn’s Pink Petunia is a pink-flowered product selection identified as Petunia × hybrida, the synonym of Kew’s accepted Petunia × atkinsiana. No named cultivar is established.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted hybrid: Petunia × atkinsiana",
+        "guidance": "Kew accepts Petunia × atkinsiana and lists Petunia × hybrida as a synonym. Gardyn documents a pink-flowered product selection, but does not provide a cultivar denomination; the color label is not promoted to a cultivar name.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-petunia-atkinsiana",
+          "gardyn-pink-petunia-wave28"
+        ],
+        "items": [
+          "Kew accepts Petunia × atkinsiana and lists Petunia × hybrida as a synonym.",
+          "Gardyn documents a pink-flowered product selection, but does not provide a cultivar denomination; the color label is not promoted to a cultivar name."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Separate product instructions from general petunia guidance",
+        "guidance": "Gardyn describes conditions and care for its own pod. General Extension petunia guidance can inform the broader hybrid crop, but does not establish this selection’s outdoor performance or exact cultivar requirements.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "gardyn-pink-petunia-wave28",
+          "umn-petunias"
+        ],
+        "items": [
+          "Gardyn describes conditions and care for its own pod."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Pink flower selection; exact habit and dimensions unresolved",
+        "guidance": "Gardyn describes this product as spreading before bloom and gives a product size classification. These are product-page claims, not evidence for a named cultivar or a universal mature dimension; no exact height or spread is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "gardyn-pink-petunia-wave28"
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Deadheading and trimming are documented at crop scope",
+        "guidance": "University Extension describes deadheading and light trimming for petunias generally. Gardyn gives its own pod-care instructions. The guidance is not evidence that all petunia types respond identically, and no named cultivar is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-petunias",
+          "gardyn-pink-petunia-wave28"
+        ],
+        "items": [
+          "University Extension describes deadheading and light trimming for petunias generally.",
+          "Gardyn gives its own pod-care instructions.",
+          "The guidance is not evidence that all petunia types respond identically, and no named cultivar is inferred."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Product page notes spider mites",
+        "guidance": "Gardyn names spider mites as a common pest in its product-care guidance. This is retained as a product-care note, not a claim that this selection is uniquely susceptible or that the list is exhaustive.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "gardyn-pink-petunia-wave28"
+        ],
+        "items": [
+          "Gardyn names spider mites as a common pest in its product-care guidance.",
+          "This is retained as a product-care note, not a claim that this selection is uniquely susceptible or that the list is exhaustive."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Gardyn pod evidence does not establish compatibility with hydroponics generally."},"growthHabits":{"status":"unknown","reason":"The product's brief spreading description does not map to a controlled canonical habit class."},"matureSize":{"height":{"status":"unknown","reason":"The product-page height and size statements are not reconciled as a cultivar-specific mature dimension."},"spread":{"status":"unknown","reason":"No supported numeric product-selection spread is available."}},"spacing":{"status":"unknown","reason":"Gardyn's yCube thinning count is not a general spacing recommendation."},"light":{"status":"unknown","reason":"Gardyn's Medium light zone is system-specific and is not converted to a general indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Gardyn pod evidence does not establish compatibility with hydroponics generally."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The product's brief spreading description does not map to a controlled canonical habit class."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The product-page height and size statements are not reconciled as a cultivar-specific mature dimension."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported numeric product-selection spread is available."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Gardyn's yCube thinning count is not a general spacing recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Gardyn's Medium light zone is system-specific and is not converted to a general indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"black-viola","name":"Black Viola","spanishName":"Viola negra","scientificName":"Viola cornuta","variety":"Gardyn dark-flowered product selection; named cultivar not established","category":"flowers","emoji":"🖤","guideCompletion":28,
-    "tags":["black viola","viola negra","horned violet","tufted violet","Viola cornuta","Gardyn"],
-    "summary":"Gardyn identifies its Black Viola product as Viola cornuta and describes dark flowers. Kew accepts Viola cornuta as a species; the product does not establish a named cultivar.","metrics":[],
-    "sections":{
-      "identity":{"short":"Species identity: Viola cornuta","guidance":"Gardyn identifies the Black Viola product as Viola cornuta. Kew accepts this species. The dark-flower product label is retained as a selection description, not as a cultivar denomination.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-viola-cornuta-wave28","gardyn-black-viola-wave28"]},
-      "cultivation":{"short":"Species context plus Gardyn-specific pod care","guidance":"NC State Extension describes Viola cornuta as a cool-season ornamental used in beds and groundcover. Gardyn’s darkness and temperature directions apply to its seed pod/system context and should not be generalized as a full outdoor protocol.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-viola-cornuta-wave28","gardyn-black-viola-wave28"]},
-      "growth":{"short":"Compact species context; product dimensions unverified","guidance":"Extension describes creeping and ascending stems for Viola cornuta. Gardyn lists a product size under one foot, but that label is kept at product scope and is not converted into a universal mature-height range.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-viola-cornuta-wave28","gardyn-black-viola-wave28"]},
-      "harvest":{"short":"Ornamental use represented; food use not asserted","guidance":"This identity is presented as an ornamental product. Although the manufacturer discusses edible-garnish use, Gardenpedia does not make a food-safety or edibility claim for the unspecified product selection in this baseline profile.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
-      "problems":{"short":"Species-level pests and disease context","guidance":"NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta. This is species-level context, not a diagnosis or product-specific susceptibility claim.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-viola-cornuta-wave28"]}
+    "id": "black-viola",
+    "name": "Black Viola",
+    "spanishName": "Viola negra",
+    "scientificName": "Viola cornuta",
+    "variety": "Gardyn dark-flowered product selection; named cultivar not established",
+    "category": "flowers",
+    "emoji": "🖤",
+    "guideCompletion": 28,
+    "tags": [
+      "black viola",
+      "viola negra",
+      "horned violet",
+      "tufted violet",
+      "Viola cornuta",
+      "Gardyn"
+    ],
+    "summary": "Gardyn identifies its Black Viola product as Viola cornuta and describes dark flowers. Kew accepts Viola cornuta as a species; the product does not establish a named cultivar.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Species identity: Viola cornuta",
+        "guidance": "Gardyn identifies the Black Viola product as Viola cornuta. Kew accepts this species. The dark-flower product label is retained as a selection description, not as a cultivar denomination.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-viola-cornuta-wave28",
+          "gardyn-black-viola-wave28"
+        ],
+        "items": [
+          "Gardyn identifies the Black Viola product as Viola cornuta.",
+          "The dark-flower product label is retained as a selection description, not as a cultivar denomination."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Species context plus Gardyn-specific pod care",
+        "guidance": "NC State Extension describes Viola cornuta as a cool-season ornamental used in beds and groundcover. Gardyn’s darkness and temperature directions apply to its seed pod/system context and should not be generalized as a full outdoor protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-viola-cornuta-wave28",
+          "gardyn-black-viola-wave28"
+        ],
+        "items": [
+          "NC State Extension describes Viola cornuta as a cool-season ornamental used in beds and groundcover.",
+          "Gardyn’s darkness and temperature directions apply to its seed pod/system context and should not be generalized as a full outdoor protocol."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Compact species context; product dimensions unverified",
+        "guidance": "Extension describes creeping and ascending stems for Viola cornuta. Gardyn lists a product size under one foot, but that label is kept at product scope and is not converted into a universal mature-height range.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-viola-cornuta-wave28",
+          "gardyn-black-viola-wave28"
+        ],
+        "items": [
+          "Extension describes creeping and ascending stems for Viola cornuta.",
+          "Gardyn lists a product size under one foot, but that label is kept at product scope and is not converted into a universal mature-height range."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "harvest": {
+        "short": "Ornamental use represented; food use not asserted",
+        "guidance": "This identity is presented as an ornamental product. Although the manufacturer discusses edible-garnish use, Gardenpedia does not make a food-safety or edibility claim for the unspecified product selection in this baseline profile.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": [],
+        "items": [
+          "This identity is presented as an ornamental product.",
+          "Although the manufacturer discusses edible-garnish use, Gardenpedia does not make a food-safety or edibility claim for the unspecified product selection in this baseline profile."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Species-level pests and disease context",
+        "guidance": "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta. This is species-level context, not a diagnosis or product-specific susceptibility claim.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-viola-cornuta-wave28"
+        ],
+        "items": [
+          "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta.",
+          "This is species-level context, not a diagnosis or product-specific susceptibility claim."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Gardyn pod context does not establish general hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"The controlled compatibility vocabulary does not encode the species' creeping/ascending ornamental form."},"matureSize":{"height":{"status":"unknown","reason":"The Gardyn size label is product-specific and not reconciled to a general mature-size value."},"spread":{"status":"unknown","reason":"No supported product-selection spread is available."}},"spacing":{"status":"unknown","reason":"Gardyn thinning to multiple plants per yCube is not a general outdoor spacing recommendation."},"light":{"status":"unknown","reason":"The Gardyn Medium zone is not equivalent to outdoor partial shade or a general grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Gardyn pod context does not establish general hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled compatibility vocabulary does not encode the species' creeping/ascending ornamental form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The Gardyn size label is product-specific and not reconciled to a general mature-size value."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported product-selection spread is available."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Gardyn thinning to multiple plants per yCube is not a general outdoor spacing recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The Gardyn Medium zone is not equivalent to outdoor partial shade or a general grow-light tier."
+      }
+    }
   }
 ]

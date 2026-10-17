@@ -287,33 +287,50 @@
       "hon tsai tai greens",
       "brassica rapa parachinensis"
     ],
-    "summary": "Hon Tsai Tai is a flowering-stem Asian green in the Brassica rapa choy-sum/parachinensis crop group. The seed listing supports the named seed product; the production guide is regional crop-level guidance.",
+    "summary": "Hon Tsai Tai is a flowering-stem Asian green within the Brassica rapa choy-sum/cai xin crop group. Its established-plant harvest is the tender stem with leaves and developed flower buds; choy-sum crop guidance is kept distinct from product-specific facts.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Brassica rapa choy-sum crop type",
-        "guidance": "Fedco sells Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym of that species; the crop group remains a horticultural distinction, not a separate accepted species here.",
+        "short": "Hon Tsai Tai is a choy-sum/cai xin horticultural type within Brassica rapa",
+        "guidance": "Fedco lists Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym at species level. Sources use choy sum, cai xin and Hon Tsai Tai with overlapping horticultural scope; this record does not elevate the crop name to a separate accepted species or assert a named cultivar.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "fedco-hon-tsai-tai-500",
-          "kew-brassica-rapa-500",
-          "ufifas-choy-sum-500"
-        ]
+        "sourceIds": ["fedco-hon-tsai-tai-500", "kew-brassica-rapa-500", "ufifas-choy-sum-500", "oregonstate-chinese-brassicas-500"]
+      },
+      "growth": {
+        "short": "An edible flowering-stem green, not a crop grown to suppress flowering",
+        "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form. The choy-sum group has leafy shoots topped by small flowers; UF/IFAS reports group-level plant height varying with genetics and environment. That range is not assigned as a cultivar measurement for every Hon Tsai Tai seed lot.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["oregonstate-chinese-brassicas-500", "ufifas-choy-sum-500"]
       },
       "cultivation": {
-        "short": "Use choy-sum guidance at crop scope",
-        "guidance": "UF/IFAS provides production information for choy sum in Florida. Regional field recommendations should not be converted into indoor Garden spacing, a hydroponic recipe, or Hon Tsai Tai cultivar-specific performance.",
+        "short": "Cool-season choy-sum guidance; avoid persistently waterlogged soil",
+        "guidance": "UF/IFAS describes choy sum as a cool-season crop and reports stronger stalks and sweeter quality in its cited 59–77°F (15–25°C) context. It favors fertile, well-drained soil and notes susceptibility to waterlogging. These are choy-sum group/Florida production findings, not a Hon Tsai Tai indoor temperature, nutrient, or pod-spacing prescription.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["ufifas-choy-sum-500"]
       },
+      "care": {
+        "short": "Flower-bud development is the harvest cue, not a reason to deadhead",
+        "guidance": "Unlike a leaf crop where bolting ends the desired harvest, choy sum is grown for flowering shoots. UF/IFAS recommends harvest when buds are fully developed but not yet open; Johnny's classifies choy sum as a budding/cutting type and says a few blooms may be visible. Field succession timing remains production context, not a home-system schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
+      },
       "harvest": {
-        "short": "Flowering stems and leaves are the crop focus",
-        "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form harvested for tender flowering stems and young leaves as flowers begin to open. This is crop-type context and not a product-specific harvest date.",
+        "short": "Cut tender stems with leaves and flower buds together; repeat cuts are possible",
+        "guidance": "UF/IFAS says leaves, flower buds and stems are harvested together when the buds are developed but unopened, and reports two to three harvests per season in the production setting it cites. Johnny's notes that multiple harvests are possible for budding/cutting types. These sources support the crop's repeat-harvest behavior but not a guaranteed number of cuts for an individual home-grown plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
+      },
+      "problems": {
+        "short": "Watch for waterlogging-related soft rot and brassica-feeding insects",
+        "guidance": "UF/IFAS reports choy sum susceptibility to waterlogging and bacterial soft rot, and lists aphids, armyworms and diamondback moth among pests in its Florida production context. Johnny's names flea beetles for Asian greens and recommends row-cover exclusion from sowing in field production. These are risk alerts, not a diagnosis or indoor intervention protocol.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["oregonstate-chinese-brassicas-500"]
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
       }
     },
     "compatibilityProfile": {

@@ -665,8 +665,14 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Fedco sources conflict on F1 versus open-pollinated status; the selection identity is retained pending clarification.",
+            "es": "Las fuentes de Fedco discrepan entre F1 y polinización abierta; se conserva la identidad de la selección hasta aclararlo."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Leaf dimensions are a supplier description, not whole-plant mature size.",
+            "es": "Las medidas de las hojas son una descripción comercial, no el tamaño maduro de toda la planta."
           }
         },
         "cultivation": {
@@ -675,10 +681,28 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "Field pest exclusion guidance is not an indoor treatment or cultivar-resistance claim.",
+            "es": "La exclusión de plagas en campo no es tratamiento interior ni una afirmación de resistencia varietal."
+          }
+        },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "The 45-day value is a supplier estimate; repeat cutting is not established for this selection.",
+            "es": "Los 45 días son una estimación del proveedor; no se establece cosecha repetida para esta selección."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "No cultivar-specific resistance is established; supplier bolting language is not immunity.",
+            "es": "No hay resistencia varietal establecida; la mención comercial del espigado no significa inmunidad."
+          }
+        },
+        "needsValidation": {
+          "context": {
+            "en": "Resolve the conflicting Fedco hybrid-status records before updating the paired Seed Profile.",
+            "es": "Resolver las fichas contradictorias de Fedco antes de actualizar el Seed Profile asociado."
           }
         }
       }
@@ -692,16 +716,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Supplier dimensions apply to Scarlet Red; NC State morphology is tatsoi-type guidance.",
+            "es": "Las dimensiones comerciales aplican a Scarlet Red; la morfología de NC State es guía del tipo tatsoi."
+          }
+        },
         "cultivation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Outdoor sun and field spacing are not indoor lamp levels or Garden pod spacing.",
+            "es": "El sol exterior y la distancia de campo no equivalen a luz interior ni separación de pods."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "The supplier discourages cut-and-come-again harvest for this selection.",
+            "es": "El proveedor no recomienda cosecha continua de corte y rebrote para esta selección."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "The 50-day maturity figure is supplier-estimated, not a guaranteed indoor date.",
+            "es": "Los 50 días a madurez son una estimación comercial, no una fecha interior garantizada."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Potentially lower flea-beetle damage is tentative, not a resistance rating.",
+            "es": "El posible menor daño de escarabajos pulga es tentativo, no una calificación de resistencia."
           }
         }
       }
@@ -855,16 +897,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Choy-sum height varies by genetics and environment; no fixed Hon Tsai Tai dimension is assigned.",
+            "es": "La altura del choy sum varía con la genética y el ambiente; no se asigna una medida fija a Hon Tsai Tai."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "Flower-bud development is desired for this flowering-stem crop, unlike ordinary leaf lettuce bolting.",
+            "es": "El desarrollo de botones es deseado en este cultivo de tallos florales, a diferencia del espigado indeseado de una lechuga de hoja."
+          }
+        },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Repeat harvest figures refer to production guidance and are not a per-plant home guarantee.",
+            "es": "Las cosechas repetidas corresponden a guía productiva y no garantizan cortes por planta doméstica."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Florida field pest and waterlogging risks are not an indoor diagnosis or treatment protocol.",
+            "es": "Los riesgos de plagas y anegamiento de campo en Florida no son diagnóstico ni tratamiento interior."
           }
         }
       }

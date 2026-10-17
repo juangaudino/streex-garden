@@ -153,7 +153,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "cultivation", "harvest"]
+    "claimKinds": ["identity", "cultivation", "harvest", "use", "problems"]
   },
   {
     "id": "fedco-hon-tsai-tai-500",
@@ -227,11 +227,11 @@
     "url": "https://horticulture.oregonstate.edu/oregon-vegetables/cabbage-chinese",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Crop-type context identifies Hon Tsai Tai as purple-stemmed Brassica rapa harvested for tender flowering stems and young leaves; not product-specific timing",
+    "scope": "OSU distinguishes Asian Brassica rapa crop types: Hon Tsai Tai/choy-sum forms are grown for tender flowering stems and young leaves; komatsuna has dark-green bunching leaves with slender petioles; tatsoi forms a low, flat rosette with thick spoon-shaped leaves. Crop/type context only, not cultivar-specific timing, dimensions or hydroponic prescriptions",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "harvest"]
+    "claimKinds": ["identity", "growth", "harvest"]
   },
   {
     "id": "seedman-large-red-cherry-500",

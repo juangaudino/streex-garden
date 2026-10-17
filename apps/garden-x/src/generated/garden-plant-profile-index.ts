@@ -26480,8 +26480,8 @@ export const gardenPlantProfileCatalog = {
   },
   "lady-murasaki-komatsuna": {
     "summary": {
-      "en": "Lady Murasaki is a named F1 komatsuna product from Fedco, within Brassica rapa. Product-level color and maturity statements are not generalized to komatsuna as a species.",
-      "es": "Lady Murasaki es un producto F1 de komatsuna nombrado por Fedco, dentro de Brassica rapa. Los rasgos y tiempos indicados por el proveedor no se generalizan a la especie."
+      "en": "Lady Murasaki is a named komatsuna selection within Brassica rapa. Fedco's current product page labels it F1 while its 2025 catalog calls it open-pollinated; that identity conflict remains unresolved. Supplier-described deep-purple leaves and 45-day maturity remain product-scoped.",
+      "es": "Lady Murasaki es una selección nombrada de komatsuna dentro de Brassica rapa. Fedco la describe como F1 en su ficha actual y como de polinización abierta en su catálogo de 2025; esa discrepancia sigue sin resolver. Las hojas moradas y los 45 días son datos del producto."
     },
     "metrics": {
       "en": [],
@@ -26490,21 +26490,43 @@ export const gardenPlantProfileCatalog = {
     "sections": {
       "identity": {
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
           "fedco-lady-murasaki-komatsuna-500",
+          "fedco-asian-greens-catalog-2025",
           "kew-brassica-rapa-500"
         ],
         "en": {
-          "short": "Named F1 komatsuna selection",
-          "guidance": "Fedco identifies Lady Murasaki as an F1 komatsuna; Kew accepts Brassica rapa. The hybrid/product designation is retained without treating it as the species name.",
+          "short": "Named komatsuna selection; supplier records conflict on hybrid status",
+          "guidance": "Fedco's current product page calls Lady Murasaki an F1 hybrid, while its 2025 catalog lists the same named komatsuna as open-pollinated. Both records identify it within Brassica rapa. Keep the variety identity, but do not publish either genetic-status claim as settled until Fedco clarifies the discrepancy.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Named F1 komatsuna selection",
-          "guidance": "Fedco identifica Lady Murasaki como un F1 de komatsuna; Kew acepta Brassica rapa. El nombre de híbrido/producto se conserva sin tratarlo como nombre de especie.",
+          "short": "Selección de komatsuna; las fuentes de Fedco discrepan sobre su condición híbrida",
+          "guidance": "La ficha actual de Fedco llama a Lady Murasaki un híbrido F1, mientras que su catálogo de 2025 la describe como de polinización abierta. Ambas fuentes la sitúan dentro de Brassica rapa. Se conserva la identidad de la selección, pero ninguna condición genética se publica como resuelta hasta que Fedco aclare la discrepancia.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "fedco-lady-murasaki-komatsuna-500"
+        ],
+        "en": {
+          "short": "Supplier describes rounded, deep-purple leaves about 8–10 inches long",
+          "guidance": "Fedco describes slow-growing, rounded deep-purple leaves that stand upright and gives an approximate leaf length of 8–10 inches. These are seller-described product traits, not a measured whole-plant height or spread; no mature dimensions are inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Hojas redondeadas y moradas de unos 8–10 pulgadas según el proveedor",
+          "guidance": "Fedco describe hojas redondeadas, moradas y erguidas, de crecimiento lento, y estima una longitud de 8–10 pulgadas. Son rasgos comerciales del producto, no altura o extensión de toda la planta.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26514,18 +26536,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "fedco-lady-murasaki-komatsuna-500"
+          "johnnys-asian-greens-grower-guide-2026",
+          "oregonstate-chinese-brassicas-500"
         ],
         "en": {
-          "short": "Product-specific traits remain supplier scoped",
-          "guidance": "Fedco's listing supports this named product's type and seller-described characteristics. No broad cultivar-family performance, hydroponic suitability, or exact Garden spacing is inferred.",
+          "short": "Cool-season Asian-green crop; no indoor settings established",
+          "guidance": "Johnny's general Asian-greens guide gives a broad sowing season from early spring through midsummer and late-fall sowing only in mild or protected conditions. This is production guidance for the group, not a Lady Murasaki indoor temperature, nutrient recipe or system spacing. Oregon State describes komatsuna as a bunching green with dark leaves and slender petioles, at crop-type scope.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Product-specific traits remain supplier scoped",
-          "guidance": "La ficha de Fedco respalda el tipo y las características descritas para este producto. No se infieren desempeño hidropónico, dimensiones universales ni una separación exacta para Garden.",
+          "short": "Contexto de cultivo para brassicas asiáticas; sin parámetros interiores establecidos",
+          "guidance": "La guía de Johnny's sitúa las brassicas asiáticas en una temporada amplia de siembra exterior y limita la siembra tardía a lugares templados o protegidos. Es contexto de producción, no una temperatura interior, receta nutritiva o distancia entre pods para Lady Murasaki. Oregon State describe la komatsuna, como tipo de cultivo, con hojas oscuras y pecíolos delgados.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-asian-greens-grower-guide-2026"
+        ],
+        "en": {
+          "short": "Monitor flea-beetle feeding in outdoor beds",
+          "guidance": "Johnny's Asian-greens guide identifies flea beetles as a production pest and recommends floating row cover from sowing in field settings. Apply that as outdoor exclusion guidance only; it is not a treatment for indoor plants and does not establish Lady Murasaki resistance.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila el daño de escarabajos pulga en cultivos exteriores",
+          "guidance": "Johnny's identifica los escarabajos pulga como una plaga de producción de brassicas asiáticas y recomienda cubrir los cultivos de campo desde la siembra. Esta orientación es para exclusión en exterior; no es un tratamiento de interior ni demuestra resistencia de Lady Murasaki.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26535,18 +26579,62 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "fedco-lady-murasaki-komatsuna-500"
+          "fedco-lady-murasaki-komatsuna-500",
+          "johnnys-asian-greens-grower-guide-2026"
         ],
         "en": {
-          "short": "Use supplier maturity as a product estimate only",
-          "guidance": "Any maturity figure on the Fedco product listing is a seller estimate and not a guaranteed indoor or hydroponic harvest date.",
+          "short": "Supplier lists about 45 days; harvest stage depends on intended size",
+          "guidance": "Fedco lists 45 days to maturity and describes mild leaves; treat the timing as a supplier estimate rather than a fixed home-system date. Johnny's classifies komatsuna among heading types that may be harvested from medium to full size. The broader crop guide does not establish a Lady Murasaki-specific repeat-cut response.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use supplier maturity as a product estimate only",
-          "guidance": "Cualquier cifra de madurez de la ficha de Fedco es una estimación del vendedor, no una fecha garantizada para interior o hidroponía.",
+          "short": "El proveedor estima unos 45 días; la etapa depende del tamaño deseado",
+          "guidance": "Fedco indica 45 días a madurez y describe hojas de sabor suave. La cifra es una estimación del vendedor, no una fecha fija para un sistema doméstico. Johnny's clasifica la komatsuna entre los tipos que pueden cosecharse de tamaño mediano a completo; no establece rebrote repetido específico de Lady Murasaki.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": [
+          "fedco-lady-murasaki-komatsuna-500"
+        ],
+        "en": {
+          "short": "No cultivar-specific disease or pest resistance is established",
+          "guidance": "The selected evidence does not give a validated Lady Murasaki disease-resistance rating. Fedco's statement that it grows without bolting is a supplier description, not proof of immunity across seasons; heat and day-length thresholds for this selection remain unestablished.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No hay resistencia específica a enfermedades o plagas establecida",
+          "guidance": "Las fuentes seleccionadas no ofrecen una calificación validada de resistencia para Lady Murasaki. La descripción de Fedco de que crece sin espigarse no demuestra inmunidad en todas las estaciones; tampoco se han establecido umbrales de calor o duración del día para esta selección.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "needsValidation": {
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": [
+          "fedco-lady-murasaki-komatsuna-500",
+          "fedco-asian-greens-catalog-2025"
+        ],
+        "en": {
+          "short": "Confirm whether Lady Murasaki is F1 or open-pollinated",
+          "guidance": "Fedco's current product page and 2025 catalog conflict on hybrid status. The plant profile records both source claims and leaves the genetic status unresolved; the Seed Profile currently repeats the product-page F1 claim and should be reconciled after the supplier discrepancy is resolved.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Confirmar si Lady Murasaki es F1 o de polinización abierta",
+          "guidance": "La ficha actual y el catálogo 2025 de Fedco se contradicen sobre la condición híbrida. El perfil conserva ambas afirmaciones como conflicto sin resolver. El Seed Profile todavía repite la afirmación F1 de la ficha comercial y deberá conciliarse cuando el proveedor aclare la discrepancia.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26556,8 +26644,8 @@ export const gardenPlantProfileCatalog = {
   },
   "scarlet-red-tatsoi": {
     "summary": {
-      "en": "Scarlet Red Tatsoi is a supplier-listed red-leaved tatsoi selection within Brassica rapa. Its commercial name is preserved without claiming a formal cultivar registration.",
-      "es": "Scarlet Red Tatsoi es una selección de hojas rojas listada por un proveedor dentro de Brassica rapa. Se conserva el nombre comercial sin afirmar registro formal de cultivar."
+      "en": "Scarlet Red Tatsoi is a supplier-listed red selection of Brassica rapa tatsoi. Hudson Valley Seed describes plum-colored leaves, a semi-heading rosette and container use; its flea-beetle tolerance statement is explicitly tentative.",
+      "es": "Scarlet Red Tatsoi es una selección roja listada por un proveedor dentro de Brassica rapa. Hudson Valley Seed describe una roseta semiceñida, hojas color ciruela y uso en recipientes; su posible menor daño por escarabajos pulga es una observación tentativa."
     },
     "metrics": {
       "en": [],
@@ -26569,18 +26657,41 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "hudson-valley-scarlet-red-tatsoi-500",
-          "kew-brassica-rapa-500"
+          "kew-brassica-rapa-500",
+          "ncsu-tatsoi-plant-toolbox-2026"
         ],
         "en": {
-          "short": "Supplier-listed red tatsoi selection",
-          "guidance": "Hudson Valley Seed Company lists Scarlet Red Tatsoi; Kew accepts Brassica rapa. The product name does not by itself establish formal cultivar registration.",
+          "short": "Supplier-listed red tatsoi selection within Brassica rapa",
+          "guidance": "Hudson Valley Seed lists Scarlet Red Tatsoi as Brassica rapa; Kew accepts B. rapa. North Carolina State Extension describes tatsoi as B. rapa var. rosularis. The product name is retained without claiming formal cultivar registration or a separate accepted species.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Supplier-listed red tatsoi selection",
-          "guidance": "Hudson Valley Seed Company lista Scarlet Red Tatsoi; Kew acepta Brassica rapa. El nombre del producto no establece por sí solo un registro formal de cultivar.",
+          "short": "Selección de tatsoi rojo listada dentro de Brassica rapa",
+          "guidance": "Hudson Valley Seed lista Scarlet Red Tatsoi como Brassica rapa; Kew acepta B. rapa. NC State Extension describe el tatsoi como B. rapa var. rosularis. Se conserva el nombre del producto sin afirmar que sea un cultivar formalmente registrado ni una especie distinta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "hudson-valley-scarlet-red-tatsoi-500",
+          "ncsu-tatsoi-plant-toolbox-2026"
+        ],
+        "en": {
+          "short": "Semi-heading rosette with plum leaves and bright-green stems",
+          "guidance": "Hudson Valley Seed describes Scarlet Red's plum-colored leaves, bright-green stems and semi-heading rosette; NC State's broader tatsoi entry describes a low, flat rosette with thick spoon-shaped leaves. The supplier's 12-inch height and 16-inch width are estimates for this product, not guarantees across systems or for all tatsoi.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Roseta semiceñida con hojas ciruela y tallos verde brillante",
+          "guidance": "Hudson Valley Seed describe hojas color ciruela, tallos verde brillante y una roseta semiceñida para Scarlet Red. NC State describe el tatsoi, a nivel de tipo, como una roseta baja y plana con hojas gruesas en forma de cuchara. Las medidas comerciales de 12 pulgadas de alto y 16 de ancho son estimaciones de este producto, no garantías ni dimensiones de todo tatsoi.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26590,18 +26701,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "hudson-valley-scarlet-red-tatsoi-500"
+          "hudson-valley-scarlet-red-tatsoi-500",
+          "ncsu-tatsoi-plant-toolbox-2026"
         ],
         "en": {
-          "short": "Keep supplier instructions at product scope",
-          "guidance": "Supplier instructions support this listed seed selection. Broader Brassica rapa crop guidance may inform general care, but exact dimensions, disease resistance, and hydroponic compatibility are not inferred.",
+          "short": "Supplier lists full sun and container suitability; pod spacing remains unknown",
+          "guidance": "Hudson Valley Seed lists full sun (8+ hours) and container suitability for Scarlet Red. NC State describes tatsoi as a cool-weather crop and notes full sun or partial shade at species/type scope. The product page's 6-inch field spacing is not converted into a Garden pod count; no nutrient recipe or household hydroponic compatibility is established.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Keep supplier instructions at product scope",
-          "guidance": "Las instrucciones del proveedor respaldan esta selección listada. No se infieren dimensiones exactas, resistencia a enfermedades ni compatibilidad hidropónica.",
+          "short": "El proveedor indica sol pleno y cultivo en recipiente; la distancia entre pods sigue desconocida",
+          "guidance": "Hudson Valley Seed indica sol pleno (8 horas o más) y aptitud para recipientes para Scarlet Red. NC State describe el tatsoi como cultivo de clima fresco y admite sol pleno o sombra parcial a nivel de especie/tipo. La separación de 6 pulgadas del proveedor es de campo y no se convierte en cantidad de pods; tampoco se ha establecido compatibilidad hidropónica doméstica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "hudson-valley-scarlet-red-tatsoi-500"
+        ],
+        "en": {
+          "short": "Harvest the intended form; do not assume repeated regrowth",
+          "guidance": "Hudson Valley Seed says Scarlet Red may be grown for baby clippings or to a full rosette, but its growing instructions specifically recommend whole-head harvest and say it is not ideal as cut-and-come-again. Follow that product-specific instruction rather than generalizing repeated cutting from other Asian greens.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Elige la etapa de cosecha; no presupongas rebrote repetido",
+          "guidance": "Hudson Valley Seed permite cultivar Scarlet Red para hojas baby o hasta una roseta completa, pero sus instrucciones aconsejan cortar la cabeza entera y dicen que no es ideal para cosecha continua de hoja. Sigue esa indicación específica en vez de atribuirle el rebrote de otras brassicas asiáticas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26609,20 +26742,42 @@ export const gardenPlantProfileCatalog = {
       },
       "harvest": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
           "hudson-valley-scarlet-red-tatsoi-500"
         ],
         "en": {
-          "short": "Harvest details follow the listed selection's source scope",
-          "guidance": "Use the seed supplier's stated harvest guidance as a product estimate. It is not a guarantee for every climate or indoor system.",
+          "short": "Supplier estimates about 50 days to a whole head",
+          "guidance": "Hudson Valley Seed lists 50 days to maturity and directs growers to harvest the whole head. This is a supplier estimate, not a guaranteed date; local conditions and the chosen baby-leaf versus full-rosette stage affect timing. Avoid promising multiple harvests from this selection.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Harvest details follow the listed selection's source scope",
-          "guidance": "Sigue las indicaciones de cosecha del proveedor como estimación del producto; no son garantía para todo clima o sistema interior.",
+          "short": "El proveedor estima unos 50 días para una cabeza completa",
+          "guidance": "Hudson Valley Seed indica 50 días a madurez y recomienda cosechar la cabeza entera. Es una estimación comercial, no una fecha garantizada; las condiciones y la etapa elegida —hojas baby o roseta completa— cambian el momento. No se prometen varias cosechas de esta selección.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-tatsoi-plant-toolbox-2026",
+          "hudson-valley-scarlet-red-tatsoi-500"
+        ],
+        "en": {
+          "short": "Heat, inadequate water and flea beetles can disrupt tatsoi",
+          "guidance": "NC State Extension reports that higher temperatures and inadequate water can cause tatsoi to bolt, reducing harvest quality, and lists slugs, snails, cutworms and flea beetles as potential problems. Hudson Valley Seed says Scarlet Red may be less affected by flea beetles because of its dark color, but labels this as possible; it is not an established resistance rating.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor, la falta de agua y algunas plagas pueden afectar el tatsoi",
+          "guidance": "NC State Extension informa que el calor y la falta de agua pueden provocar espigado en tatsoi, y enumera babosas, caracoles, gusanos cortadores y escarabajos pulga como problemas posibles. Hudson Valley Seed dice que el color oscuro quizá reduzca el daño de escarabajos pulga, pero lo presenta como posibilidad, no como resistencia confirmada.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27107,8 +27262,8 @@ export const gardenPlantProfileCatalog = {
   },
   "hon-tsai-tai": {
     "summary": {
-      "en": "Hon Tsai Tai is a flowering-stem Asian green in the Brassica rapa choy-sum/parachinensis crop group. The seed listing supports the named seed product; the production guide is regional crop-level guidance.",
-      "es": "Hon Tsai Tai es un producto de semilla de Brassica rapa para hojas y tallos florales tiernos. La estimación de 37 días es del proveedor."
+      "en": "Hon Tsai Tai is a flowering-stem Asian green within the Brassica rapa choy-sum/cai xin crop group. Its established-plant harvest is the tender stem with leaves and developed flower buds; choy-sum crop guidance is kept distinct from product-specific facts.",
+      "es": "Hon Tsai Tai es un tipo de Brassica rapa de tallos florales comestibles, no una lechuga que deba mantenerse sin florecer. La ficha se centra en la planta establecida y distingue la guía de choy sum de los rasgos del producto Hon Tsai Tai."
     },
     "metrics": {
       "en": [],
@@ -27121,18 +27276,41 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "fedco-hon-tsai-tai-500",
           "kew-brassica-rapa-500",
-          "ufifas-choy-sum-500"
+          "ufifas-choy-sum-500",
+          "oregonstate-chinese-brassicas-500"
         ],
         "en": {
-          "short": "Brassica rapa choy-sum crop type",
-          "guidance": "Fedco sells Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym of that species; the crop group remains a horticultural distinction, not a separate accepted species here.",
+          "short": "Hon Tsai Tai is a choy-sum/cai xin horticultural type within Brassica rapa",
+          "guidance": "Fedco lists Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym at species level. Sources use choy sum, cai xin and Hon Tsai Tai with overlapping horticultural scope; this record does not elevate the crop name to a separate accepted species or assert a named cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Brassica rapa choy-sum crop type",
-          "guidance": "Fedco lista Hon Tsai Tai como variedad de polinización abierta con costillas moradas. La fuente institucional describe el cultivo como brassica asiática; no se fuerza una clasificación infraespecífica.",
+          "short": "Hon Tsai Tai es un tipo hortícola de choy sum/cai xin dentro de Brassica rapa",
+          "guidance": "Fedco ofrece Hon Tsai Tai como producto de semilla de polinización abierta. Kew acepta Brassica rapa y trata Brassica parachinensis como sinónimo a nivel de especie. Las fuentes usan choy sum, cai xin y Hon Tsai Tai con alcances hortícolas parcialmente superpuestos; este perfil no los presenta como especies aceptadas distintas ni afirma un cultivar nombrado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "oregonstate-chinese-brassicas-500",
+          "ufifas-choy-sum-500"
+        ],
+        "en": {
+          "short": "An edible flowering-stem green, not a crop grown to suppress flowering",
+          "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form. The choy-sum group has leafy shoots topped by small flowers; UF/IFAS reports group-level plant height varying with genetics and environment. That range is not assigned as a cultivar measurement for every Hon Tsai Tai seed lot.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Verdura de tallos florales comestibles; no se cultiva para impedir la floración",
+          "guidance": "Oregon State describe Hon Tsai Tai como una forma de Brassica rapa de tallos morados. El grupo choy sum produce brotes frondosos rematados por flores pequeñas; UF/IFAS informa que la altura del grupo varía con la genética y el ambiente. Ese rango no se asigna como medida de cada lote de Hon Tsai Tai.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27145,15 +27323,37 @@ export const gardenPlantProfileCatalog = {
           "ufifas-choy-sum-500"
         ],
         "en": {
-          "short": "Use choy-sum guidance at crop scope",
-          "guidance": "UF/IFAS provides production information for choy sum in Florida. Regional field recommendations should not be converted into indoor Garden spacing, a hydroponic recipe, or Hon Tsai Tai cultivar-specific performance.",
+          "short": "Cool-season choy-sum guidance; avoid persistently waterlogged soil",
+          "guidance": "UF/IFAS describes choy sum as a cool-season crop and reports stronger stalks and sweeter quality in its cited 59–77°F (15–25°C) context. It favors fertile, well-drained soil and notes susceptibility to waterlogging. These are choy-sum group/Florida production findings, not a Hon Tsai Tai indoor temperature, nutrient, or pod-spacing prescription.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use choy-sum guidance at crop scope",
-          "guidance": "La guía institucional de brassicas asiáticas ofrece contexto de cultivo, no una receta de distancia para pods ni afirmaciones de compatibilidad hidropónica.",
+          "short": "Guía de choy sum para clima fresco; evita suelos permanentemente anegados",
+          "guidance": "UF/IFAS describe choy sum como cultivo de clima fresco y señala que, en su contexto citado, 15–25 °C favorecieron tallos más firmes y dulces. Prefiere suelo fértil y drenado y es susceptible al anegamiento. Es evidencia del grupo choy sum y de producción en Florida, no una temperatura interior, receta nutritiva o distancia entre pods para Hon Tsai Tai.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-choy-sum-500",
+          "johnnys-asian-greens-grower-guide-2026"
+        ],
+        "en": {
+          "short": "Flower-bud development is the harvest cue, not a reason to deadhead",
+          "guidance": "Unlike a leaf crop where bolting ends the desired harvest, choy sum is grown for flowering shoots. UF/IFAS recommends harvest when buds are fully developed but not yet open; Johnny's classifies choy sum as a budding/cutting type and says a few blooms may be visible. Field succession timing remains production context, not a home-system schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los botones florales indican la etapa de cosecha, no una necesidad de despuntar",
+          "guidance": "A diferencia de un cultivo de hojas en el que el espigado termina la cosecha deseada, el choy sum se cultiva por sus brotes florales. UF/IFAS recomienda cosechar cuando los botones estén desarrollados pero aún cerrados; Johnny's clasifica el choy sum como tipo de brotes que se cortan y señala que puede haber algunas flores abiertas. La sucesión de siembras es contexto de producción, no un calendario doméstico.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27161,20 +27361,43 @@ export const gardenPlantProfileCatalog = {
       },
       "harvest": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "oregonstate-chinese-brassicas-500"
+          "ufifas-choy-sum-500",
+          "johnnys-asian-greens-grower-guide-2026"
         ],
         "en": {
-          "short": "Flowering stems and leaves are the crop focus",
-          "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form harvested for tender flowering stems and young leaves as flowers begin to open. This is crop-type context and not a product-specific harvest date.",
+          "short": "Cut tender stems with leaves and flower buds together; repeat cuts are possible",
+          "guidance": "UF/IFAS says leaves, flower buds and stems are harvested together when the buds are developed but unopened, and reports two to three harvests per season in the production setting it cites. Johnny's notes that multiple harvests are possible for budding/cutting types. These sources support the crop's repeat-harvest behavior but not a guaranteed number of cuts for an individual home-grown plant.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Flowering stems and leaves are the crop focus",
-          "guidance": "Oregon State describe la cosecha de brotes florales tiernos cuando empiezan a abrirse las flores. Los 37 días de Fedco son una estimación comercial, no una fecha garantizada.",
+          "short": "Corta juntos los tallos tiernos, las hojas y los botones florales; puede haber cortes sucesivos",
+          "guidance": "UF/IFAS indica que se cosechan juntos hojas, botones y tallos cuando los botones están desarrollados pero sin abrir, y reporta dos o tres cosechas por temporada en su contexto productivo. Johnny's también señala que los tipos de corte y rebrote pueden dar más de una cosecha. Esto describe el comportamiento del cultivo, no garantiza un número de cortes por planta doméstica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ufifas-choy-sum-500",
+          "johnnys-asian-greens-grower-guide-2026"
+        ],
+        "en": {
+          "short": "Watch for waterlogging-related soft rot and brassica-feeding insects",
+          "guidance": "UF/IFAS reports choy sum susceptibility to waterlogging and bacterial soft rot, and lists aphids, armyworms and diamondback moth among pests in its Florida production context. Johnny's names flea beetles for Asian greens and recommends row-cover exclusion from sowing in field production. These are risk alerts, not a diagnosis or indoor intervention protocol.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila la pudrición asociada al anegamiento y las plagas de brassicas",
+          "guidance": "UF/IFAS informa susceptibilidad del choy sum al anegamiento y a la pudrición blanda bacteriana, además de plagas en el contexto productivo de Florida. Johnny's menciona escarabajos pulga en brassicas asiáticas y recomienda barreras de tela desde la siembra en campo. Son riesgos de cultivo, no diagnóstico ni protocolo de tratamiento interior.",
           "items": [],
           "avoid": "",
           "context": ""

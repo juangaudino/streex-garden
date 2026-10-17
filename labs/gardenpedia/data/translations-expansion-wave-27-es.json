@@ -15,8 +15,9 @@
         "short": "Requiere un sitio preparado y ácido",
         "guidance": "La guía de Extension destaca la preparación del sitio, acidez adecuada, humedad, acolchado y selección del cultivar. Son recomendaciones para suelo exterior; no establecen receta hidropónica ni cultivo genérico en maceta.",
         "items": [
-          "La guía de Extension destaca la preparación del sitio, acidez adecuada, humedad, acolchado y selección del cultivar.",
-          "Son recomendaciones para suelo exterior; no establecen receta hidropónica ni cultivo genérico en maceta."
+          "Prepara un lugar exterior ácido y bien drenado antes de plantar.",
+          "Mantén húmeda la zona de raíces superficiales y usa acolchado adecuado.",
+          "Elige un cultivar adaptado al clima; no deduzcas una fórmula nutritiva hidropónica."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -33,7 +34,8 @@
         "short": "Renueva gradualmente los tallos viejos tras el establecimiento",
         "guidance": "University of Maryland Extension describe poda de renovación: retirar tallos viejos y menos productivos para impulsar reemplazos. Las plantas jóvenes requieren otro manejo; no se aplica poda de arbusto adulto al trasplante nuevo.",
         "items": [
-          "University of Maryland Extension describe poda de renovación: retirar tallos viejos y menos productivos para impulsar reemplazos."
+          "Deja que las plantas jóvenes se establezcan antes de aplicar podas de arbustos adultos.",
+          "En plantas establecidas, retira gradualmente cañas viejas y poco productivas para estimular reemplazos."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -41,8 +43,8 @@
         "short": "Cosecha las bayas maduras cuando se desprendan fácilmente",
         "guidance": "La guía describe que las bayas maduras se desprenden con facilidad del pedicelo y explica la edad de las ramas fructíferas. La fecha varía por cultivar y condiciones locales.",
         "items": [
-          "La guía describe que las bayas maduras se desprenden con facilidad del pedicelo y explica la edad de las ramas fructíferas.",
-          "La fecha varía por cultivar y condiciones locales."
+          "Recoge bayas maduras que se desprendan fácilmente.",
+          "Revisa la maduración en varias ocasiones: depende del cultivar y el clima."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -79,7 +81,8 @@
         "short": "Raíces perennes; los tallos tienen un ciclo de dos años en variedades de verano",
         "guidance": "En las variedades de verano, las primocañas del primer año suelen fructificar como floricañas la temporada siguiente y luego mueren. Algunas variedades fructifican en tallos del primer año; sin cultivar, el calendario queda sin resolver.",
         "items": [
-          "En las variedades de verano, las primocañas del primer año suelen fructificar como floricañas la temporada siguiente y luego mueren."
+          "Identifica si el cultivar fructifica en cañas de segundo año o en primocañas.",
+          "Registra qué cañas dieron fruto antes de decidir cuáles retirar."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -87,8 +90,8 @@
         "short": "La poda depende del tipo de fructificación",
         "guidance": "Penn State Extension distingue tipos de verano y de primocaña, con manejo de tallos diferente. Identifica la variedad y el objetivo de cosecha antes de elegir una rutina de poda.",
         "items": [
-          "Penn State Extension distingue tipos de verano y de primocaña, con manejo de tallos diferente.",
-          "Identifica la variedad y el objetivo de cosecha antes de elegir una rutina de poda."
+          "Confirma el tipo de fructificación antes de elegir un calendario de poda.",
+          "Retira floricañas agotadas según el ciclo del cultivar; no elimines primocañas productivas por suposición."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -96,8 +99,8 @@
         "short": "La temporada varía con el tipo y las heladas locales",
         "guidance": "Las frambuesas de verano y las de primocaña producen en épocas distintas. La fuente da ejemplos regionales, no un calendario universal para una variedad no especificada.",
         "items": [
-          "Las frambuesas de verano y las de primocaña producen en épocas distintas.",
-          "La fuente da ejemplos regionales, no un calendario universal para una variedad no especificada."
+          "Cosecha según el tipo de fructificación, no por una fecha universal.",
+          "Observa la madurez de los frutos y las condiciones locales durante la temporada."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -126,7 +129,8 @@
         "short": "La guía de Oregon enfatiza sol y suelo bien drenado",
         "guidance": "Oregon State Extension recomienda un lugar soleado y suelo bien drenado para higos en su guía regional. No establece un rendimiento universal en maceta o interior.",
         "items": [
-          "Oregon State Extension recomienda un lugar soleado y suelo bien drenado para higos en su guía regional."
+          "Elige un sitio exterior soleado y bien drenado.",
+          "Comprueba cultivar e invierno local antes de suponer resistencia al frío o facilidad en maceta."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -142,8 +146,8 @@
         "short": "Poda según el crecimiento y la fructificación local",
         "guidance": "La guía recomienda conservar parte del crecimiento de un año, donde se forma fruto, y podar para permitir luz en la copa. También advierte que la higuera es vigorosa y prefiere el suelo; la maceta requiere cautela.",
         "items": [
-          "La guía recomienda conservar parte del crecimiento de un año, donde se forma fruto, y podar para permitir luz en la copa.",
-          "También advierte que la higuera es vigorosa y prefiere el suelo; la maceta requiere cautela."
+          "Planifica la poda según el patrón local de fructificación y la madera productiva.",
+          "Permite entrada de luz a la copa sin suponer que todos los cultivares requieren los mismos cortes."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -151,8 +155,8 @@
         "short": "La fructificación puede tardar varias temporadas tras plantar",
         "guidance": "La guía regional aconseja paciencia: pueden pasar varias temporadas antes del fruto. No respalda una fecha fija para todos los cultivares y lugares.",
         "items": [
-          "La guía regional aconseja paciencia: pueden pasar varias temporadas antes del fruto.",
-          "No respalda una fecha fija para todos los cultivares y lugares."
+          "Da tiempo al establecimiento; no prometas frutos en la primera temporada.",
+          "Registra cuajado y maduración según cultivar y lugar."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -181,8 +185,8 @@
         "short": "Ajusta el cultivar y la temporada de crecimiento al clima local",
         "guidance": "Oregon State Extension destaca elegir cultivares adecuados a la duración de la temporada local y formar la vid. La guía regional no es un protocolo universal de interior o hidroponía.",
         "items": [
-          "Oregon State Extension destaca elegir cultivares adecuados a la duración de la temporada local y formar la vid.",
-          "La guía regional no es un protocolo universal de interior o hidroponía."
+          "Elige una variedad de uva de mesa compatible con la duración de la temporada local.",
+          "Prepara un soporte permanente y un sistema de formación para la vid."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -199,8 +203,9 @@
         "short": "La poda anual es central para la vid manejada",
         "guidance": "La guía de OSU identifica la poda insuficiente como un problema frecuente y explica la conducción. El sistema y los cortes dependen de cultivar, soporte y clima.",
         "items": [
-          "La guía de OSU identifica la poda insuficiente como un problema frecuente y explica la conducción.",
-          "El sistema y los cortes dependen de cultivar, soporte y clima."
+          "Guía los brotes jóvenes por la estructura de soporte elegida.",
+          "Poda cada año según cultivar, sistema de formación y condiciones locales.",
+          "Evita mantener una copa sin podar y excesivamente densa."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -208,7 +213,8 @@
         "short": "La calidad depende del cultivar y la duración de temporada",
         "guidance": "La guía advierte que una temporada demasiado corta puede producir fruta de menor calidad y azúcar al cosechar. No se asigna una fecha de madurez a un cultivar no especificado.",
         "items": [
-          "La guía advierte que una temporada demasiado corta puede producir fruta de menor calidad y azúcar al cosechar."
+          "Comprueba la madurez del cultivar y la duración de la temporada.",
+          "No deduzcas dulzor ni fecha de cosecha solo por la especie."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },

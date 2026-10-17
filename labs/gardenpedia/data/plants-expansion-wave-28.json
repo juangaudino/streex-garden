@@ -31,8 +31,8 @@
           "gardyn-blush-hibiscus-wave28"
         ],
         "items": [
-          "Kew accepts Muenchhusia moscheutos and lists Hibiscus moscheutos as a synonym.",
-          "Gardyn’s Blush label is treated as a product selection within this species, not a named cultivar."
+          "Keep the Gardyn product name distinct from a formally identified cultivar.",
+          "Use the accepted species name Muenchhusia moscheutos for taxonomy."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -45,7 +45,8 @@
           "gardyn-blush-hibiscus-wave28"
         ],
         "items": [
-          "Gardyn’s product page supplies instructions for its own pod and growing system."
+          "Follow Gardyn instructions only when using the documented Gardyn pod and system.",
+          "Record the actual system and plant response before adapting instructions elsewhere."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -68,7 +69,11 @@
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": [],
-        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar.",
+        "items": [
+          "Document symptoms with photographs and dates.",
+          "Avoid a specific pest or disease diagnosis without supporting evidence."
+        ]
       }
     },
     "compatibilityProfile": {
@@ -146,7 +151,8 @@
           "umn-petunias"
         ],
         "items": [
-          "Gardyn describes conditions and care for its own pod."
+          "Distinguish the Gardyn product care from general outdoor petunia guidance.",
+          "Record the actual system and light conditions instead of assuming a universal setup."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -170,7 +176,8 @@
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
-          "University Extension describes deadheading and light trimming for petunias generally."
+          "Remove faded blooms when appropriate to encourage a tidy plant.",
+          "Use light trimming based on the plant's actual growth rather than a fixed cultivar schedule."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -183,7 +190,8 @@
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
-          "Gardyn names spider mites as a common pest in its product-care guidance."
+          "Inspect leaves for mites if damage suggests pest activity.",
+          "Do not diagnose spider mites from the product name alone."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
@@ -263,8 +271,8 @@
           "gardyn-black-viola-wave28"
         ],
         "items": [
-          "NC State Extension describes Viola cornuta as a cool-season ornamental used in beds and groundcover.",
-          "Gardyn’s darkness and temperature directions apply to its seed pod/system context and should not be generalized as a full outdoor protocol."
+          "Use Gardyn-specific germination guidance only for the Gardyn pod.",
+          "For outdoor decisions, use the species' cool-season context and check local conditions."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -288,7 +296,11 @@
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": [],
-        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar.",
+        "items": [
+          "Treat the unidentified commercial selection as ornamental.",
+          "Do not recommend eating flowers without verified food-safety information for the actual product."
+        ]
       },
       "problems": {
         "short": "Species-level pests and disease context",
@@ -299,7 +311,8 @@
           "ncsu-viola-cornuta-wave28"
         ],
         "items": [
-          "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta."
+          "Inspect for slugs and snails where feeding damage is visible.",
+          "Document leaf spotting before inferring a fungal cause."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }

@@ -1,51 +1,386 @@
 [
   {
-    "id":"asparagus","name":"Asparagus","spanishName":"Espárrago","scientificName":"Asparagus officinalis","variety":"Garden asparagus; cultivar unspecified","category":"vegetables","emoji":"🌱","guideCompletion":37,
-    "tags":["asparagus","garden asparagus","espárrago","Asparagus officinalis","perennial vegetable"],
-    "summary":"A long-lived perennial vegetable grown for its spring spears and feathery summer fern. The edible spears are shoots from an underground crown; leaving later shoots to fern is essential because the foliage replenishes reserves for future seasons. This species-level profile does not represent a named cultivar or a hydroponic crop.","metrics":[
-      {"label":"Typical garden-bed lifespan according to UMN Extension","value":"15+ years","note":"Minnesota home-garden context; choose the site as a long-term planting."},
-      {"label":"Soil pH reported by UMN Extension","value":"6.5–7.0","note":"Outdoor soil guidance, not solution pH for hydroponics."},
-      {"label":"First harvest after crown planting","value":"Second spring, if plants established well","note":"Regional home-garden guidance; some growers wait until year three."},
-      {"label":"Harvest season for a mature Minnesota stand","value":"6–8 weeks","note":"Regional season length; stop when local growth slows or the season ends."},
-      {"label":"First harvest-year picking period","value":"About 2 weeks","note":"UMN home-garden guidance, followed by fern growth to rebuild crown reserves."}
+    "id": "asparagus",
+    "name": "Asparagus",
+    "spanishName": "Espárrago",
+    "scientificName": "Asparagus officinalis",
+    "variety": "Garden asparagus; cultivar unspecified",
+    "category": "vegetables",
+    "emoji": "🌱",
+    "guideCompletion": 37,
+    "tags": [
+      "asparagus",
+      "garden asparagus",
+      "espárrago",
+      "Asparagus officinalis",
+      "perennial vegetable"
     ],
-    "sections":{
-      "identity":{"short":"Accepted perennial species: Asparagus officinalis","guidance":"Kew accepts Asparagus officinalis in Asparagaceae. This is the garden asparagus crop at species level, with cultivar unspecified. UMN describes male and female plants as separate (dioecious); both produce edible spears, while female plants may set red, inedible berries. Some named hybrids are all-male, but this record does not imply a sex or hybrid cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-asparagus-officinalis-wave29","umn-asparagus-home-wave29"]},
-      "cultivation":{"short":"Permanent sunny site; deep roots need moist, well-drained soil","guidance":"UMN recommends a fertile, sunny, well-drained site that retains moisture, avoiding shallow or waterlogged ground and frost pockets. The planting may persist for 15 years or more. Its pH 6.5–7.0, bed preparation and row spacing are outdoor soil recommendations, not container dimensions, indoor light settings or hydroponic instructions. Tall mature ferns can shade nearby crops; the source suggests locating a bed at the north end of a larger garden in Minnesota.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29"]},
-      "growth":{"short":"Underground crowns produce spears that become energy-storing ferns","guidance":"UMN explains that edible spears are stems emerging from buds on the underground crown. Unharvested spears branch into tall, feathery foliage called fern; this foliage replenishes reserves used for the next year's crop. Spears can grow rapidly during peak season, so frequent observation matters. The crop is a persistent perennial, not a compact leafy green.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-asparagus-officinalis-wave29","umn-asparagus-home-wave29","umn-asparagus-harvest-wave29"]},
-      "maintenance":{"short":"After harvest, let the fern grow and keep it healthy","guidance":"Do not cut down green fern after the spear season: it builds reserves for the following year. UMN recommends removing fully brown, dormant old fern in late fall or early spring in its pest-management context; avoid removing it while still green. Maintain moisture during fern growth, control weeds carefully, and base fertilizer on a soil test rather than applying a fixed routine. Shallow cultivation is restricted because crowns and emerging spears can be damaged.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29","umn-asparagus-harvest-wave29","umn-asparagus-pest-wave29"]},
-      "flowering":{"short":"Separate male and female plants; only female plants set berries","guidance":"UMN Extension describes asparagus as dioecious. Both sexes produce edible spears; female plants can form red berries containing seed, while many named hybrids are all-male. Those differences belong to sex or specific variety identity and are not assigned to this cultivar-unspecified profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29"]},
-      "harvest":{"short":"Cut spears at harvest size, then stop to restore crown reserves","guidance":"In the Minnesota home-garden guide, allow crowns to establish before harvesting; a strong planting may begin in its second spring, while some gardeners wait until year three. UMN's commercial harvest guide gives 6–10 inches as a harvest size and describes a 6–8 week season for mature Minnesota stands; these are regional references, not a universal calendar. In the first picking year, limit harvest to about two weeks, then let spears fern. In later years, stop around the local season's end or when spears become pencil-thin / growth slows. Remove spears by snapping or cutting without injuring the crown; harvesting too long can weaken next year's crop.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29","umn-asparagus-harvest-wave29"]},
-      "uses":{"short":"Harvest young shoots as a spring vegetable; store promptly","guidance":"The edible portion is the young spear, used as a vegetable. UMN notes that freshly cut spears can be eaten soon after harvest and gives refrigeration, freezing and pressure-canning guidance for the home garden. Storage-life figures vary by source and handling, so this profile does not promise one universal shelf life. The later fern is important to plant health and is not the harvested vegetable.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29","umn-asparagus-harvest-wave29"]},
-      "problems":{"short":"Recognize frost-damaged spears, beetle feeding and fern disease","guidance":"UMN notes that late spring frost can kill exposed spears. Common asparagus beetle larvae can make a spear curve into a shepherd's crook; dark eggs may be visible on spears or fern. On fern, rust can show cream-colored lesions or orange stripes, while Cercospora may cause tan/gray lesions with reddish borders and progressive yellowing. These are warning signs from Minnesota production guidance, not claims that every plant will be affected or that this species has resistance. Removing fully dormant old fern may reduce pest carryover; pesticide choices and legal labels are outside this general profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-asparagus-home-wave29","umn-asparagus-pest-wave29"]}
+    "summary": "A long-lived perennial vegetable grown for its spring spears and feathery summer fern. The edible spears are shoots from an underground crown; leaving later shoots to fern is essential because the foliage replenishes reserves for future seasons. This species-level profile does not represent a named cultivar or a hydroponic crop.",
+    "metrics": [
+      {
+        "label": "Typical garden-bed lifespan according to UMN Extension",
+        "value": "15+ years",
+        "note": "Minnesota home-garden context; choose the site as a long-term planting."
+      },
+      {
+        "label": "Soil pH reported by UMN Extension",
+        "value": "6.5–7.0",
+        "note": "Outdoor soil guidance, not solution pH for hydroponics."
+      },
+      {
+        "label": "First harvest after crown planting",
+        "value": "Second spring, if plants established well",
+        "note": "Regional home-garden guidance; some growers wait until year three."
+      },
+      {
+        "label": "Harvest season for a mature Minnesota stand",
+        "value": "6–8 weeks",
+        "note": "Regional season length; stop when local growth slows or the season ends."
+      },
+      {
+        "label": "First harvest-year picking period",
+        "value": "About 2 weeks",
+        "note": "UMN home-garden guidance, followed by fern growth to rebuild crown reserves."
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Accepted perennial species: Asparagus officinalis",
+        "guidance": "Kew accepts Asparagus officinalis in Asparagaceae. This is the garden asparagus crop at species level, with cultivar unspecified. UMN describes male and female plants as separate (dioecious); both produce edible spears, while female plants may set red, inedible berries. Some named hybrids are all-male, but this record does not imply a sex or hybrid cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-asparagus-officinalis-wave29",
+          "umn-asparagus-home-wave29"
+        ]
+      },
+      "cultivation": {
+        "short": "Permanent sunny site; deep roots need moist, well-drained soil",
+        "guidance": "UMN recommends a fertile, sunny, well-drained site that retains moisture, avoiding shallow or waterlogged ground and frost pockets. The planting may persist for 15 years or more. Its pH 6.5–7.0, bed preparation and row spacing are outdoor soil recommendations, not container dimensions, indoor light settings or hydroponic instructions. Tall mature ferns can shade nearby crops; the source suggests locating a bed at the north end of a larger garden in Minnesota.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29"
+        ]
+      },
+      "growth": {
+        "short": "Underground crowns produce spears that become energy-storing ferns",
+        "guidance": "UMN explains that edible spears are stems emerging from buds on the underground crown. Unharvested spears branch into tall, feathery foliage called fern; this foliage replenishes reserves used for the next year's crop. Spears can grow rapidly during peak season, so frequent observation matters. The crop is a persistent perennial, not a compact leafy green.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-asparagus-officinalis-wave29",
+          "umn-asparagus-home-wave29",
+          "umn-asparagus-harvest-wave29"
+        ]
+      },
+      "maintenance": {
+        "short": "After harvest, let the fern grow and keep it healthy",
+        "guidance": "Do not cut down green fern after the spear season: it builds reserves for the following year. UMN recommends removing fully brown, dormant old fern in late fall or early spring in its pest-management context; avoid removing it while still green. Maintain moisture during fern growth, control weeds carefully, and base fertilizer on a soil test rather than applying a fixed routine. Shallow cultivation is restricted because crowns and emerging spears can be damaged.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29",
+          "umn-asparagus-harvest-wave29",
+          "umn-asparagus-pest-wave29"
+        ]
+      },
+      "flowering": {
+        "short": "Separate male and female plants; only female plants set berries",
+        "guidance": "UMN Extension describes asparagus as dioecious. Both sexes produce edible spears; female plants can form red berries containing seed, while many named hybrids are all-male. Those differences belong to sex or specific variety identity and are not assigned to this cultivar-unspecified profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29"
+        ]
+      },
+      "harvest": {
+        "short": "Cut spears at harvest size, then stop to restore crown reserves",
+        "guidance": "In the Minnesota home-garden guide, allow crowns to establish before harvesting; a strong planting may begin in its second spring, while some gardeners wait until year three. UMN's commercial harvest guide gives 6–10 inches as a harvest size and describes a 6–8 week season for mature Minnesota stands; these are regional references, not a universal calendar. In the first picking year, limit harvest to about two weeks, then let spears fern. In later years, stop around the local season's end or when spears become pencil-thin / growth slows. Remove spears by snapping or cutting without injuring the crown; harvesting too long can weaken next year's crop.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29",
+          "umn-asparagus-harvest-wave29"
+        ]
+      },
+      "uses": {
+        "short": "Harvest young shoots as a spring vegetable; store promptly",
+        "guidance": "The edible portion is the young spear, used as a vegetable. UMN notes that freshly cut spears can be eaten soon after harvest and gives refrigeration, freezing and pressure-canning guidance for the home garden. Storage-life figures vary by source and handling, so this profile does not promise one universal shelf life. The later fern is important to plant health and is not the harvested vegetable.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29",
+          "umn-asparagus-harvest-wave29"
+        ]
+      },
+      "problems": {
+        "short": "Recognize frost-damaged spears, beetle feeding and fern disease",
+        "guidance": "UMN notes that late spring frost can kill exposed spears. Common asparagus beetle larvae can make a spear curve into a shepherd's crook; dark eggs may be visible on spears or fern. On fern, rust can show cream-colored lesions or orange stripes, while Cercospora may cause tan/gray lesions with reddish borders and progressive yellowing. These are warning signs from Minnesota production guidance, not claims that every plant will be affected or that this species has resistance. Removing fully dormant old fern may reduce pest carryover; pesticide choices and legal labels are outside this general profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-asparagus-home-wave29",
+          "umn-asparagus-pest-wave29"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The cited sources cover long-lived outdoor bed culture, not recirculating hydroponics."},"growthHabits":{"status":"unknown","reason":"The controlled vocabulary does not encode asparagus crown and fern architecture."},"matureSize":{"height":{"status":"unknown","reason":"No single cultivar-specific mature dimension is selected for this crop identity."},"spread":{"status":"unknown","reason":"The cited row/bed spacing is not a mature spread value or indoor spacing recommendation."}},"spacing":{"status":"unknown","reason":"Field bed spacing is not a hydroponic position or pod recommendation."},"light":{"status":"unknown","reason":"The outdoor sunny-site advice is not translated into an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The cited sources cover long-lived outdoor bed culture, not recirculating hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled vocabulary does not encode asparagus crown and fern architecture."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No single cultivar-specific mature dimension is selected for this crop identity."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The cited row/bed spacing is not a mature spread value or indoor spacing recommendation."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field bed spacing is not a hydroponic position or pod recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The outdoor sunny-site advice is not translated into an indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"rhubarb","name":"Rhubarb","spanishName":"Ruibarbo","scientificName":"Rheum rhabarbarum","variety":"Species-level garden rhubarb; cultivar unspecified","category":"vegetables","emoji":"🌿","guideCompletion":39,
-    "tags":["rhubarb","pie plant","ruibarbo","Rheum rhabarbarum","perennial vegetable"],
-    "summary":"A large, cold-hardy perennial vegetable harvested for cooked leaf stalks. Seed starting is documented, while divisions are a practical way to establish or share known plants; leaves and roots are not food.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Rheum rhabarbarum","guidance":"Kew accepts Rheum rhabarbarum in Polygonaceae. This profile is the species-level garden crop, not a red-stalk cultivar; UMN notes that size, color, sourness and fiber vary among varieties.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-rheum-rhabarbarum-wave29","umn-rhubarb-home-wave29"]},
-      "cultivation":{"short":"Allow substantial space in a well-drained site","guidance":"UMN Extension describes a large perennial plant suited to well-drained garden soil and notes a typical 3-by-3-foot garden area. This is outdoor garden guidance and does not establish container or hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-rhubarb-home-wave29"]},
-      "growth":{"short":"Large perennial crown; varieties differ in vigor and stalk traits","guidance":"UMN describes rhubarb as a perennial that can live for many years; green-stalked varieties are often more vigorous and longer-stalked than red types. No color or size is assigned to an unspecified cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-rheum-rhabarbarum-wave29","umn-rhubarb-home-wave29"]},
-      "harvest":{"short":"Harvest petioles after establishment; discard leaves","guidance":"UMN advises waiting until the second season to harvest established plants, or the third season when started from seed. Only the stalks are edible; leaves are toxic and should be removed and discarded.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-rhubarb-home-wave29"]},
-      "maintenance":{"short":"Divide a mature crown when it becomes crowded or unproductive","guidance":"UMN explains that the crown expands outward and may benefit from division every few years. Division is a practical vegetative route; it does not mean seed propagation is impossible.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-rhubarb-home-wave29"]},
-      "problems":{"short":"Do not eat the leaves; drainage and crown health matter","guidance":"UMN identifies rhubarb leaves as toxic and notes crown/root rot risk in wet or poorly drained conditions. This is safety and crop-level care guidance, not a diagnosis of an individual plant.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-rhubarb-home-wave29"]}
+    "id": "rhubarb",
+    "name": "Rhubarb",
+    "spanishName": "Ruibarbo",
+    "scientificName": "Rheum rhabarbarum",
+    "variety": "Species-level garden rhubarb; cultivar unspecified",
+    "category": "vegetables",
+    "emoji": "🌿",
+    "guideCompletion": 39,
+    "tags": [
+      "rhubarb",
+      "pie plant",
+      "ruibarbo",
+      "Rheum rhabarbarum",
+      "perennial vegetable"
+    ],
+    "summary": "A long-lived, cold-hardy perennial grown for its tart edible leaf stalks, not its leaves. The plant forms a large crown and needs space, moisture and a long establishment period. Stalk color and vigor vary by variety; this profile does not represent a named cultivar.",
+    "metrics": [
+      {
+        "label": "Potential life of a well-maintained planting (UMN)",
+        "value": "15+ years",
+        "note": "Outdoor garden context, not a guaranteed lifespan."
+      },
+      {
+        "label": "Typical garden footprint (UMN)",
+        "value": "3 × 3 ft",
+        "note": "Ground planting area per plant; not a hydroponic pod-spacing recommendation."
+      },
+      {
+        "label": "First regular harvest",
+        "value": "Second season; third from seed",
+        "note": "UMN home-garden establishment guidance."
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Rheum rhabarbarum",
+        "guidance": "Kew accepts Rheum rhabarbarum in Polygonaceae. This profile is the species-level garden crop, not a red-stalk cultivar; UMN notes that size, color, sourness and fiber vary among varieties.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-rheum-rhabarbarum-wave29",
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "cultivation": {
+        "short": "Sunny, well-drained garden site with room for a large crown",
+        "guidance": "UMN recommends full-day sun, moisture-retentive well-drained soil and a substantial garden area for each plant. Loam retains water and nutrients better than sand. In Minnesota garden soils, rhubarb tolerates a broad soil pH range; no hydroponic solution pH, container size or indoor-light requirement is inferred. Apply compost or fertilizer according to soil conditions and plant vigor, avoiding unnecessary phosphorus accumulation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "growth": {
+        "short": "Persistent crown produces large leaves and expanding stalk clusters",
+        "guidance": "Rhubarb is a long-lived perennial whose crown expands outward, forming buds for following seasons. A well-managed planting may live 15 years or more. Stalk color, length, fiber and vigor vary among varieties, so a species-level record cannot promise red stalks. The foliage is necessary for replenishing reserves after harvest.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "harvest": {
+        "short": "Twist-pull mature stalks; keep leaves out of food",
+        "guidance": "Wait until the second growing season to harvest, or the third if the plant was started from seed. When stalks reach full length, grasp near the base, pull and twist rather than cutting at the crown. Trim and discard the leaf blades promptly because they are toxic. Minnesota guidance places the main harvest in spring to early summer; stop regular picking so remaining leaves replenish the crown. This is regional timing, not a universal harvest calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "maintenance": {
+        "short": "Water through summer, control weeds and divide aging crowns",
+        "guidance": "UMN recommends thorough watering during the growing season, including after harvest, and careful weed control while plants establish. Divide older crowns in early spring as growth begins if the center becomes less productive; each division needs viable buds. Remove emerging flower stalks to redirect resources to vegetative growth. Leave healthy leaves in place after harvest so the crown can rebuild reserves.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "problems": {
+        "short": "Watch for waterlogging, crown rot and damaged or spotted foliage",
+        "guidance": "Poor drainage and wet conditions can promote root or crown rot. UMN describes rhubarb curculio and stalk borers as possible causes of holes in stalks or crowns, and Ascochyta or Ramularia as causes of leaf spots in Minnesota. Unusual leaf color and declining vigor may have several causes, including viruses; symptoms alone do not establish a diagnosis. Remove fully dead foliage after hard frost where appropriate; avoid treating all leaf spotting as one disease.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      },
+      "uses": {
+        "short": "Cook the tart stalks; never use the leaves as food",
+        "guidance": "The edible portion is the leaf petiole (stalk), typically cooked and sweetened for pies, sauces, cakes, preserves or drinks. Green and red stalks can both be edible; red color does not establish sweetness. The leaf blades are toxic and must be discarded. The roots are not part of the edible harvest.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The cited guidance describes a large outdoor perennial, not hydroponic production."},"growthHabits":{"status":"unknown","reason":"The controlled vocabulary does not represent a large perennial crown and broad leaf canopy."},"matureSize":{"height":{"status":"unknown","reason":"No species-level numeric mature height is needed or established here."},"spread":{"status":"unknown","reason":"Garden bed area is not a plant spread measurement or indoor spacing."}},"spacing":{"status":"unknown","reason":"The recommended garden area is not converted to a hydroponic position."},"light":{"status":"unknown","reason":"All-day outdoor sun advice is not mapped to an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The cited guidance describes a large outdoor perennial, not hydroponic production."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled vocabulary does not represent a large perennial crown and broad leaf canopy."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No species-level numeric mature height is needed or established here."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Garden bed area is not a plant spread measurement or indoor spacing."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The recommended garden area is not converted to a hydroponic position."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "All-day outdoor sun advice is not mapped to an indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"escarole","name":"Escarole","spanishName":"Escarola","scientificName":"Cichorium endivia","variety":"Broad-leaved escarole type; cultivar unspecified","category":"leafy greens","emoji":"🥬","guideCompletion":42,
-    "tags":["escarole","escarola","broad-leaved endive","broad leaf endive","Cichorium endivia","chicory greens"],
-    "summary":"A broad-leaved form of endive grown as a salad and cooking green. It shares crop-level culture with other chicories, while its broad, smoother leaves distinguish it from curly endive.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Cichorium endivia; broad-leaved escarole type","guidance":"Kew accepts Cichorium endivia. UMN Extension distinguishes escarole as a broad, smooth-leaved form of endive and curly endive as another type; this record does not name a cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-cichorium-endivia-wave29","umn-lettuce-endive-radicchio-wave29"]},
-      "cultivation":{"short":"Cool-season chicory culture; keep shallow roots moist","guidance":"UMN Extension groups escarole with chicories and gives regional seed-starting, direct-seeding and soil-moisture guidance for the crop group. Minnesota planting dates and field spacing are not generalized to other climates or indoor pods.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-lettuce-endive-radicchio-wave29"]},
-      "growth":{"short":"Broad, smooth leaves distinguish escarole from curly endive","guidance":"The Extension source explicitly describes escarole as a form of endive with broader, smoother leaves. That is a horticultural type distinction within Cichorium endivia, not a separate species or named cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-cichorium-endivia-wave29","umn-lettuce-endive-radicchio-wave29"]},
-      "harvest":{"short":"Use leaves as a salad or cooking green","guidance":"UMN Extension describes escarole as a salad and cooking green and recommends frequent leaf harvest for fresh salads across the guide's leafy crop scope. No cultivar-specific harvest date is assigned.","evidenceType":"source_backed","confidence":"medium","sourceIds":["umn-lettuce-endive-radicchio-wave29"]},
-      "problems":{"short":"Heat, dry soil and bolting can reduce quality","guidance":"UMN reports that the chicory group performs best in cool conditions and that heat/long days may cause bolting and bitterness. These are regional crop-level concerns, not cultivar-specific resistance claims.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-lettuce-endive-radicchio-wave29"]}
+    "id": "escarole",
+    "name": "Escarole",
+    "spanishName": "Escarola",
+    "scientificName": "Cichorium endivia",
+    "variety": "Broad-leaved escarole type; cultivar unspecified",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 42,
+    "tags": [
+      "escarole",
+      "escarola",
+      "broad-leaved endive",
+      "broad leaf endive",
+      "Cichorium endivia",
+      "chicory greens"
+    ],
+    "summary": "A broad-leaved form of endive grown as a salad and cooking green. It shares crop-level culture with other chicories, while its broad, smoother leaves distinguish it from curly endive.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Cichorium endivia; broad-leaved escarole type",
+        "guidance": "Kew accepts Cichorium endivia. UMN Extension distinguishes escarole as a broad, smooth-leaved form of endive and curly endive as another type; this record does not name a cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-cichorium-endivia-wave29",
+          "umn-lettuce-endive-radicchio-wave29"
+        ]
+      },
+      "cultivation": {
+        "short": "Cool-season chicory culture; keep shallow roots moist",
+        "guidance": "UMN Extension groups escarole with chicories and gives regional seed-starting, direct-seeding and soil-moisture guidance for the crop group. Minnesota planting dates and field spacing are not generalized to other climates or indoor pods.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-endive-radicchio-wave29"
+        ]
+      },
+      "growth": {
+        "short": "Broad, smooth leaves distinguish escarole from curly endive",
+        "guidance": "The Extension source explicitly describes escarole as a form of endive with broader, smoother leaves. That is a horticultural type distinction within Cichorium endivia, not a separate species or named cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-cichorium-endivia-wave29",
+          "umn-lettuce-endive-radicchio-wave29"
+        ]
+      },
+      "harvest": {
+        "short": "Use leaves as a salad or cooking green",
+        "guidance": "UMN Extension describes escarole as a salad and cooking green and recommends frequent leaf harvest for fresh salads across the guide's leafy crop scope. No cultivar-specific harvest date is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-lettuce-endive-radicchio-wave29"
+        ]
+      },
+      "problems": {
+        "short": "Heat, dry soil and bolting can reduce quality",
+        "guidance": "UMN reports that the chicory group performs best in cool conditions and that heat/long days may cause bolting and bitterness. These are regional crop-level concerns, not cultivar-specific resistance claims.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-endive-radicchio-wave29"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The cited source concerns soil-grown chicory crops and does not validate this type in recirculating hydroponics."},"growthHabits":{"status":"unknown","reason":"A controlled compatibility habit class is not established for this crop type."},"matureSize":{"height":{"status":"unknown","reason":"No specific mature height is selected for the broad-leaved type."},"spread":{"status":"unknown","reason":"The crop guide's spacing is not a mature spread measurement."}},"spacing":{"status":"unknown","reason":"Field spacing varies with harvest stage and is not converted to indoor pod spacing."},"light":{"status":"unknown","reason":"Outdoor cool-season guidance is not mapped to a grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The cited source concerns soil-grown chicory crops and does not validate this type in recirculating hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "A controlled compatibility habit class is not established for this crop type."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No specific mature height is selected for the broad-leaved type."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The crop guide's spacing is not a mature spread measurement."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing varies with harvest stage and is not converted to indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor cool-season guidance is not mapped to a grow-light tier."
+      }
+    }
   }
 ]

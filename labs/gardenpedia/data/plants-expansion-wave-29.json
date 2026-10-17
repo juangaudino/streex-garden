@@ -52,7 +52,13 @@
         "sourceIds": [
           "kew-asparagus-officinalis-wave29",
           "umn-asparagus-home-wave29"
-        ]
+        ],
+        "items": [
+          "Kew accepts Asparagus officinalis in Asparagaceae.",
+          "This is the garden asparagus crop at species level, with cultivar unspecified.",
+          "UMN describes male and female plants as separate (dioecious); both produce edible spears, while female plants may set red, inedible berries."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
         "short": "Permanent sunny site; deep roots need moist, well-drained soil",
@@ -61,7 +67,13 @@
         "confidence": "high",
         "sourceIds": [
           "umn-asparagus-home-wave29"
-        ]
+        ],
+        "items": [
+          "UMN recommends a fertile, sunny, well-drained site that retains moisture, avoiding shallow or waterlogged ground and frost pockets.",
+          "The planting may persist for 15 years or more.",
+          "Its pH 6.5–7.0, bed preparation and row spacing are outdoor soil recommendations, not container dimensions, indoor light settings or hydroponic instructions."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
         "short": "Underground crowns produce spears that become energy-storing ferns",
@@ -72,7 +84,13 @@
           "kew-asparagus-officinalis-wave29",
           "umn-asparagus-home-wave29",
           "umn-asparagus-harvest-wave29"
-        ]
+        ],
+        "items": [
+          "UMN explains that edible spears are stems emerging from buds on the underground crown.",
+          "Unharvested spears branch into tall, feathery foliage called fern; this foliage replenishes reserves used for the next year's crop.",
+          "Spears can grow rapidly during peak season, so frequent observation matters."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "maintenance": {
         "short": "After harvest, let the fern grow and keep it healthy",
@@ -83,7 +101,13 @@
           "umn-asparagus-home-wave29",
           "umn-asparagus-harvest-wave29",
           "umn-asparagus-pest-wave29"
-        ]
+        ],
+        "items": [
+          "Do not cut down green fern after the spear season: it builds reserves for the following year.",
+          "UMN recommends removing fully brown, dormant old fern in late fall or early spring in its pest-management context; avoid removing it while still green.",
+          "Maintain moisture during fern growth, control weeds carefully, and base fertilizer on a soil test rather than applying a fixed routine."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "flowering": {
         "short": "Separate male and female plants; only female plants set berries",
@@ -92,7 +116,12 @@
         "confidence": "high",
         "sourceIds": [
           "umn-asparagus-home-wave29"
-        ]
+        ],
+        "items": [
+          "UMN Extension describes asparagus as dioecious.",
+          "Both sexes produce edible spears; female plants can form red berries containing seed, while many named hybrids are all-male."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "harvest": {
         "short": "Cut spears at harvest size, then stop to restore crown reserves",
@@ -102,7 +131,13 @@
         "sourceIds": [
           "umn-asparagus-home-wave29",
           "umn-asparagus-harvest-wave29"
-        ]
+        ],
+        "items": [
+          "In the Minnesota home-garden guide, allow crowns to establish before harvesting; a strong planting may begin in its second spring, while some gardeners wait until year three.",
+          "UMN's commercial harvest guide gives 6–10 inches as a harvest size and describes a 6–8 week season for mature Minnesota stands; these are regional references, not a universal calendar.",
+          "In the first picking year, limit harvest to about two weeks, then let spears fern."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "uses": {
         "short": "Harvest young shoots as a spring vegetable; store promptly",
@@ -112,7 +147,13 @@
         "sourceIds": [
           "umn-asparagus-home-wave29",
           "umn-asparagus-harvest-wave29"
-        ]
+        ],
+        "items": [
+          "The edible portion is the young spear, used as a vegetable.",
+          "UMN notes that freshly cut spears can be eaten soon after harvest and gives refrigeration, freezing and pressure-canning guidance for the home garden.",
+          "Storage-life figures vary by source and handling, so this profile does not promise one universal shelf life."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
         "short": "Recognize frost-damaged spears, beetle feeding and fern disease",
@@ -122,7 +163,13 @@
         "sourceIds": [
           "umn-asparagus-home-wave29",
           "umn-asparagus-pest-wave29"
-        ]
+        ],
+        "items": [
+          "UMN notes that late spring frost can kill exposed spears.",
+          "Common asparagus beetle larvae can make a spear curve into a shepherd's crook; dark eggs may be visible on spears or fern.",
+          "On fern, rust can show cream-colored lesions or orange stripes, while Cercospora may cause tan/gray lesions with reddish borders and progressive yellowing."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
     },
     "compatibilityProfile": {
@@ -205,7 +252,8 @@
         ],
         "avoid": [
           "Assuming red stalks are the only edible stalks."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
         "short": "Sunny, well-drained garden site with room for a large crown",
@@ -223,7 +271,8 @@
         "avoid": [
           "Translating outdoor soil pH guidance into a hydroponic nutrient-solution target.",
           "Planting in a cramped indoor pod as though rhubarb were a compact leafy green."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
         "short": "Persistent crown produces large leaves and expanding stalk clusters",
@@ -240,7 +289,8 @@
         ],
         "avoid": [
           "Interpreting a green-stalk cultivar as unripe solely because it is not red."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "harvest": {
         "short": "Twist-pull mature stalks; keep leaves out of food",
@@ -260,7 +310,8 @@
           "Eating or cooking rhubarb leaves: the leaf blades are toxic.",
           "Harvesting so heavily that the young or recovering crown is stripped of foliage.",
           "Applying Minnesota harvest dates unchanged to every climate."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "maintenance": {
         "short": "Water through summer, control weeds and divide aging crowns",
@@ -278,7 +329,8 @@
         ],
         "avoid": [
           "Removing healthy leaves after harvest when they are needed to replenish the crown."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
         "short": "Watch for waterlogging, crown rot and damaged or spotted foliage",
@@ -297,7 +349,8 @@
         "avoid": [
           "Declaring a specific pathogen from an isolated leaf photo.",
           "Assuming every spotted leaf requires the same treatment."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "uses": {
         "short": "Cook the tart stalks; never use the leaves as food",
@@ -315,7 +368,8 @@
         "avoid": [
           "Using leaf blades or roots as food.",
           "Confusing the leaf stalk (petiole) with the leaf blade."
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
     },
     "compatibilityProfile": {
@@ -376,7 +430,8 @@
         "sourceIds": [
           "kew-cichorium-endivia-wave29",
           "umn-lettuce-endive-radicchio-wave29"
-        ]
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
         "short": "Cool-season chicory culture; keep shallow roots moist",
@@ -385,7 +440,11 @@
         "confidence": "high",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
-        ]
+        ],
+        "items": [
+          "UMN Extension groups escarole with chicories and gives regional seed-starting, direct-seeding and soil-moisture guidance for the crop group."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
         "short": "Broad, smooth leaves distinguish escarole from curly endive",
@@ -395,7 +454,12 @@
         "sourceIds": [
           "kew-cichorium-endivia-wave29",
           "umn-lettuce-endive-radicchio-wave29"
-        ]
+        ],
+        "items": [
+          "The Extension source explicitly describes escarole as a form of endive with broader, smoother leaves.",
+          "That is a horticultural type distinction within Cichorium endivia, not a separate species or named cultivar."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "harvest": {
         "short": "Use leaves as a salad or cooking green",
@@ -404,7 +468,12 @@
         "confidence": "medium",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
-        ]
+        ],
+        "items": [
+          "UMN Extension describes escarole as a salad and cooking green and recommends frequent leaf harvest for fresh salads across the guide's leafy crop scope.",
+          "No cultivar-specific harvest date is assigned."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
         "short": "Heat, dry soil and bolting can reduce quality",
@@ -413,7 +482,12 @@
         "confidence": "high",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
-        ]
+        ],
+        "items": [
+          "UMN reports that the chicory group performs best in cool conditions and that heat/long days may cause bolting and bitterness.",
+          "These are regional crop-level concerns, not cultivar-specific resistance claims."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
     },
     "compatibilityProfile": {

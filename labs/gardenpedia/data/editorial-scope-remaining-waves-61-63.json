@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "society-garlic-tulbaghia-violacea": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "cuban-oregano-plectranthus-amboinicus": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "moonflower-ipomoea-alba": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "sweet-woodruff-galium-odoratum": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "sweet-scabiosa-scabiosa-atropurpurea": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "sea-thrift-armeria-maritima": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "caucasian-pincushion-lomelosia-caucasica": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "No validated identity-specific growing-system guidance is available.",
+            "es": "No hay guía validada específica para esta identidad y sistema."
+          }
+        }
+      }
+    },
+    "common-rue-ruta-graveolens": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "garden-angelica-angelica-archangelica": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "blazing-star-liatris-spicata": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "snow-in-summer-cerastium-tomentosum": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "lambs-ear-stachys-byzantina": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "globe-thistle-echinops-ritro": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "clary-sage-salvia-sclarea": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "butterfly-weed-asclepias-tuberosa": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "wild-bergamot-monarda-fistulosa": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "mexican-sunflower-tithonia-rotundifolia": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "common-yarrow-achillea-millefolium": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "blue-false-indigo-baptisia-australis": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "flowering-tobacco-nicotiana-alata": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "snapdragon-antirrhinum-majus": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "pink-turtlehead-chelone-obliqua": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "No validated identity-specific growing-system guidance is available.",
+            "es": "No hay guía validada específica para esta identidad y sistema."
+          }
+        }
+      }
+    },
+    "green-columbine-aquilegia-viridiflora": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "No validated identity-specific growing-system guidance is available.",
+            "es": "No hay guía validada específica para esta identidad y sistema."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "No validated identity-specific growing-system guidance is available.",
+            "es": "No hay guía validada específica para esta identidad y sistema."
+          }
+        }
+      }
+    },
+    "flowering-tobacco-hybrid-nicotiana-sanderi": {
+      "wave": 61,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "taro-colocasia-esculenta": {
+      "wave": 62,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "cassava-manihot-esculenta": {
+      "wave": 62,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "black-eyed-pea-vigna-unguiculata-unguiculata": {
+      "wave": 62,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "greater-galangal-alpinia-galanga": {
+      "wave": 63,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "common-sage-salvia-officinalis": {
+      "wave": 63,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    },
+    "curry-leaf-tree-bergera-koenigii": {
+      "wave": 63,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "light": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence applies only at the documented identity and cultivation scope.",
+            "es": "La evidencia se aplica solo a la identidad y contexto de cultivo documentados."
+          }
+        }
+      }
+    }
+  }
+}

@@ -198,6 +198,13 @@
         "sourceIds": [
           "kew-rheum-rhabarbarum-wave29",
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Confirm that the plant has a perennial crown and large leaf stalks; do not identify a cultivar by stalk color alone.",
+          "Record the actual cultivar only when a seed packet, plant label or reliable record confirms it."
+        ],
+        "avoid": [
+          "Assuming red stalks are the only edible stalks."
         ]
       },
       "cultivation": {
@@ -207,6 +214,15 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Choose a sunny outdoor bed with good drainage and room for the crown to expand.",
+          "Keep soil evenly supplied with moisture during active growth, without waterlogging.",
+          "Use soil conditions and plant vigor to decide whether compost or fertilizer is needed."
+        ],
+        "avoid": [
+          "Translating outdoor soil pH guidance into a hydroponic nutrient-solution target.",
+          "Planting in a cramped indoor pod as though rhubarb were a compact leafy green."
         ]
       },
       "growth": {
@@ -216,6 +232,14 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Expect a perennial crown to persist while above-ground foliage changes seasonally.",
+          "Keep enough healthy foliage to rebuild crown reserves after the spring harvest.",
+          "Record seasonal growth and crown vigor rather than using stalk color alone as a maturity signal."
+        ],
+        "avoid": [
+          "Interpreting a green-stalk cultivar as unripe solely because it is not red."
         ]
       },
       "harvest": {
@@ -225,6 +249,17 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Avoid regular harvest during the first growing season; from seed, wait until the third season according to UMN's establishment guidance.",
+          "Select full-length mature stalks; grasp each near its base, then pull and twist to detach it.",
+          "Remove the leaf blade and discard it; use only the edible stalk.",
+          "Stop regular picking after the spring-to-early-summer harvest period in the Minnesota guidance, leaving foliage for crown recovery."
+        ],
+        "avoid": [
+          "Eating or cooking rhubarb leaves: the leaf blades are toxic.",
+          "Harvesting so heavily that the young or recovering crown is stripped of foliage.",
+          "Applying Minnesota harvest dates unchanged to every climate."
         ]
       },
       "maintenance": {
@@ -234,6 +269,15 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Water thoroughly during active growth, including after the main harvest.",
+          "Control weeds carefully around the crown, particularly while the planting establishes.",
+          "Remove flower stalks as they appear when the aim is sustained vegetative growth.",
+          "Consider dividing an older, less productive crown in early spring; retain viable buds on each division."
+        ],
+        "avoid": [
+          "Removing healthy leaves after harvest when they are needed to replenish the crown."
         ]
       },
       "problems": {
@@ -243,6 +287,16 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Check drainage and root-zone wetness when the crown declines or tissues rot.",
+          "Inspect holes in stalks and crown before inferring insect damage; several pests can produce injury.",
+          "Photograph leaf spots and track their progression; visual symptoms alone do not identify Ascochyta, Ramularia or viruses.",
+          "Escalate persistent crown decline for local extension diagnosis rather than treating from a photo alone."
+        ],
+        "avoid": [
+          "Declaring a specific pathogen from an isolated leaf photo.",
+          "Assuming every spotted leaf requires the same treatment."
         ]
       },
       "uses": {
@@ -252,6 +306,15 @@
         "confidence": "high",
         "sourceIds": [
           "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Separate edible petioles from toxic leaf blades immediately after harvest.",
+          "Wash and cut the stalks, then cook for sauces, pies, preserves or other tart preparations.",
+          "Treat red versus green stalk color as a cultivar trait, not a food-safety test."
+        ],
+        "avoid": [
+          "Using leaf blades or roots as food.",
+          "Confusing the leaf stalk (petiole) with the leaf blade."
         ]
       }
     },

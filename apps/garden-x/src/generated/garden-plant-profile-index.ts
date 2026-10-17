@@ -5267,8 +5267,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bush-bean-blue-lake": {
     "summary": {
-      "en": "Blue Lake Bush Bean is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 1 para Frijol de mata Blue Lake. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Blue Lake Bush Bean is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 1 para Frijol de mata Blue Lake. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -5296,43 +5296,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1"
-        ],
-        "en": {
-          "short": "Manage by harvest and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving the growing point",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -5340,20 +5319,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "An upright bush habit usually needs no trellis",
+          "guidance": "UMN Extension describes bush beans as upright plants around two feet tall, with a shorter, more concentrated flowering and pod-set period than pole beans. This is crop-type context, not cultivar-specific measurement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hábito de mata es erguido y normalmente no necesita espaldera",
+          "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies, con floración y cuajado más concentrados que los tipos de enrame. Es contexto del tipo de cultivo, no una medida específica del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -5363,8 +5424,8 @@ export const gardenPlantProfileCatalog = {
   },
   "snap-pea-oregon-sugar-pod": {
     "summary": {
-      "en": "Oregon Sugar Pod Snap Pea is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 1 para Guisante tirabeque Oregon Sugar Pod. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Oregon Sugar Pod Snap Pea is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 1 para Guisante tirabeque Oregon Sugar Pod. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -5392,43 +5453,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-peas-wave1"
-        ],
-        "en": {
-          "short": "Manage by harvest and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving the growing point",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
+          "short": "Pick snow peas while pods are full-length and flat",
+          "guidance": "Harvest edible pods when they reach the length described for the variety but peas inside are only small traces; older pods can become tough. The source gives a type-level cue, not a date for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los tirabeques cuando la vaina ya tenga su largo pero siga plana",
+          "guidance": "Cosecha las vainas comestibles cuando alcancen el largo descrito para la variedad y las semillas internas apenas se noten; las vainas más maduras pueden endurecerse. Es una señal del tipo, no una fecha para esta entrada con nombre.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -5436,20 +5476,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -8828,8 +8950,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bush-bean-royal-burgundy": {
     "summary": {
-      "en": "Royal Burgundy Bush Bean is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Frijol de mata Royal Burgundy. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Royal Burgundy Bush Bean is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 2 para Frijol de mata Royal Burgundy. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -8858,45 +8980,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -8904,21 +9003,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "An upright bush habit usually needs no trellis",
+          "guidance": "UMN Extension describes bush beans as upright plants around two feet tall, with a shorter, more concentrated flowering and pod-set period than pole beans. This is crop-type context, not cultivar-specific measurement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hábito de mata es erguido y normalmente no necesita espaldera",
+          "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies, con floración y cuajado más concentrados que los tipos de enrame. Es contexto del tipo de cultivo, no una medida específica del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -8928,8 +9108,8 @@ export const gardenPlantProfileCatalog = {
   },
   "sugar-snap-pea": {
     "summary": {
-      "en": "Sugar Snap Pea is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Guisante de azúcar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Sugar Snap Pea is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 2 para Guisante de azúcar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -8958,45 +9138,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods when plump but still tender",
+          "guidance": "UMN Extension recommends harvesting sugar snaps when pods are nearly filled and remain sweet, juicy, and tender. Sample frequently because quality drops quickly after maturity; this is a type-level cue, not a cultivar-specific calendar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas snap cuando estén llenas pero aún tiernas",
+          "guidance": "UMN Extension recomienda cosechar los guisantes snap cuando las vainas estén casi llenas y sigan dulces, jugosas y tiernas. Prueba con frecuencia porque la calidad cae rápido tras la madurez; es una señal del tipo, no un calendario del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -9004,21 +9161,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13647,8 +13885,8 @@ export const gardenPlantProfileCatalog = {
   },
   "kentucky-wonder-pole-bean": {
     "summary": {
-      "en": "Kentucky Wonder Pole Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Frijol de enrame Kentucky Wonder. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Kentucky Wonder Pole Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 3 para Frijol de enrame Kentucky Wonder. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -13677,45 +13915,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13723,21 +13938,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A twining climbing habit needs a support structure",
+          "guidance": "UMN Extension describes pole beans as twining vines that can exceed six feet and produce new pods over the season. This is general pole-bean guidance; the figure is not presented as a measurement of this named type.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hábito trepador y voluble requiere soporte",
+          "guidance": "UMN Extension describe los frijoles de enrame como guías volubles que pueden superar seis pies y producir vainas durante la temporada. Es guía general para este tipo; la cifra no se presenta como medida de esta variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13747,8 +14043,8 @@ export const gardenPlantProfileCatalog = {
   },
   "mammoth-melting-sugar-snow-pea": {
     "summary": {
-      "en": "Mammoth Melting Sugar Snow Pea is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Guisante de nieve Mammoth Melting Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Mammoth Melting Sugar Snow Pea is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 3 para Guisante de nieve Mammoth Melting Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -13777,45 +14073,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snow peas while pods are full-length and flat",
+          "guidance": "Harvest edible pods when they reach the length described for the variety but peas inside are only small traces; older pods can become tough. The source gives a type-level cue, not a date for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los tirabeques cuando la vaina ya tenga su largo pero siga plana",
+          "guidance": "Cosecha las vainas comestibles cuando alcancen el largo descrito para la variedad y las semillas internas apenas se noten; las vainas más maduras pueden endurecerse. Es una señal del tipo, no una fecha para esta entrada con nombre.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13823,21 +14096,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13847,8 +14201,8 @@ export const gardenPlantProfileCatalog = {
   },
   "little-marvel-shelling-pea": {
     "summary": {
-      "en": "Little Marvel Shelling Pea is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Guisante para desgranar Little Marvel. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Little Marvel Shelling Pea is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 3 para Guisante para desgranar Little Marvel. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -13877,45 +14231,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest shelling peas when seeds reach full size",
+          "guidance": "For shelling peas, sample pods as they fill and pick when seeds are full-sized, tender, and not starchy. Overmature peas quickly lose sweetness and develop tougher skins; no fixed maturity day is assigned here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los guisantes para desgranar cuando las semillas alcancen su tamaño",
+          "guidance": "En guisantes para desgranar, revisa las vainas mientras se llenan y cosecha cuando las semillas tengan tamaño completo, estén tiernas y no sepan feculentas. Los guisantes sobremaduros pierden dulzor rápidamente y endurecen la piel; aquí no se fija un día de madurez.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13923,21 +14254,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -13947,8 +14359,8 @@ export const gardenPlantProfileCatalog = {
   },
   "henderson-bush-lima-bean": {
     "summary": {
-      "en": "Henderson Bush Lima Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Frijol lima de mata Henderson. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Henderson Bush Lima Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 3 para Frijol lima de mata Henderson. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -13977,67 +14389,123 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Harvest fresh lima beans as seeds swell in green pods",
+          "guidance": "UMN Extension recommends picking lima beans for fresh shelling after seeds change from green toward cream or white and pods begin to bulge. For dry use, leave pods until completely dry. These are species/crop cues, not a Henderson-specific date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Cosecha las limas frescas cuando las semillas hinchen la vaina verde",
+          "guidance": "UMN Extension recomienda cosechar las limas para desgranar frescas cuando las semillas cambian de verde hacia crema o blanco y las vainas comienzan a abultarse. Para uso seco, deja que las vainas se sequen por completo. Son señales del cultivo, no una fecha específica de Henderson.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
-      "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Lima beans differ from common beans in soil preference",
+          "guidance": "UMN Extension notes that lima beans grow best in coarser, sandier soil than common beans and can be grown with bush or pole habits. This is regional species guidance for Phaseolus lunatus, not a Henderson-specific size claim.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El frijol lima difiere del frijol común en su preferencia de suelo",
+          "guidance": "UMN Extension señala que el frijol lima crece mejor en suelo más grueso y arenoso que el frijol común y puede tener hábito de mata o de enrame. Es guía regional para Phaseolus lunatus, no una afirmación de tamaño específica de Henderson.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "problems": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
-        ],
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Cultivar-level problem profile not established",
+          "guidance": "The available source supports soil and harvest distinctions for lima beans but is not a focused diagnostic guide to problems for Henderson. Do not infer cultivar-specific disease or pest susceptibility; needs validation.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "No se establece un perfil de problemas para este cultivar",
+          "guidance": "La fuente disponible respalda diferencias de suelo y cosecha para el frijol lima, pero no es una guía diagnóstica de problemas para Henderson. No infieras susceptibilidad a plagas o enfermedades específica del cultivar; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14047,8 +14515,8 @@ export const gardenPlantProfileCatalog = {
   },
   "purple-podded-bean": {
     "summary": {
-      "en": "Purple-Podded Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Frijol de vaina morada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Purple-Podded Bean is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 3 para Frijol de vaina morada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -14077,45 +14545,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14123,21 +14568,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Fava beans are a cool-season, upright legume",
+          "guidance": "UMN Extension distinguishes fava (Vicia faba) from common beans: it grows under cool conditions similar to peas and its sturdy upright plants generally do not need support. This is species-level guidance, not a cultivar measurement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El haba es una legumbre erguida de estación fresca",
+          "guidance": "UMN Extension distingue el haba (Vicia faba) del frijol común: crece en condiciones frescas similares a las de los guisantes y sus plantas erguidas y robustas generalmente no necesitan soporte. Es guía a nivel de especie, no una medida del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20166,8 +20692,8 @@ export const gardenPlantProfileCatalog = {
   },
   "blue-lake-pole-bean": {
     "summary": {
-      "en": "Blue Lake Pole Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Frijol de enrame Blue Lake. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Blue Lake Pole Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 4 para Frijol de enrame Blue Lake. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -20197,47 +20723,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20245,22 +20746,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A twining climbing habit needs a support structure",
+          "guidance": "UMN Extension describes pole beans as twining vines that can exceed six feet and produce new pods over the season. This is general pole-bean guidance; the figure is not presented as a measurement of this named type.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hábito trepador y voluble requiere soporte",
+          "guidance": "UMN Extension describe los frijoles de enrame como guías volubles que pueden superar seis pies y producir vainas durante la temporada. Es guía general para este tipo; la cifra no se presenta como medida de esta variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20270,8 +20851,8 @@ export const gardenPlantProfileCatalog = {
   },
   "provider-bush-bean": {
     "summary": {
-      "en": "Provider Bush Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Frijol de mata Provider. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Provider Bush Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 4 para Frijol de mata Provider. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -20301,47 +20882,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snap pods before seeds bulge",
+          "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+          "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20349,22 +20905,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat during flowering can interrupt pod set",
+          "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor durante la floración puede interrumpir el cuajado",
+          "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Wait for warm soil before outdoor sowing",
+          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "An upright bush habit usually needs no trellis",
+          "guidance": "UMN Extension describes bush beans as upright plants around two feet tall, with a shorter, more concentrated flowering and pod-set period than pole beans. This is crop-type context, not cultivar-specific measurement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hábito de mata es erguido y normalmente no necesita espaldera",
+          "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies, con floración y cuajado más concentrados que los tipos de enrame. Es contexto del tipo de cultivo, no una medida específica del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20374,8 +21010,8 @@ export const gardenPlantProfileCatalog = {
   },
   "sugar-ann-snow-pea": {
     "summary": {
-      "en": "Sugar Ann Snow Pea is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Guisante de nieve Sugar Ann. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Sugar Ann Snow Pea is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 4 para Guisante de nieve Sugar Ann. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -20405,47 +21041,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick snow peas while pods are full-length and flat",
+          "guidance": "Harvest edible pods when they reach the length described for the variety but peas inside are only small traces; older pods can become tough. The source gives a type-level cue, not a date for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los tirabeques cuando la vaina ya tenga su largo pero siga plana",
+          "guidance": "Cosecha las vainas comestibles cuando alcancen el largo descrito para la variedad y las semillas internas apenas se noten; las vainas más maduras pueden endurecerse. Es una señal del tipo, no una fecha para esta entrada con nombre.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20453,22 +21064,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20478,8 +21169,8 @@ export const gardenPlantProfileCatalog = {
   },
   "green-arrow-shelling-pea": {
     "summary": {
-      "en": "Green Arrow Shelling Pea is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Guisante para desgranar Green Arrow. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Green Arrow Shelling Pea is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 4 para Guisante para desgranar Green Arrow. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -20509,47 +21200,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest shelling peas when seeds reach full size",
+          "guidance": "For shelling peas, sample pods as they fill and pick when seeds are full-sized, tender, and not starchy. Overmature peas quickly lose sweetness and develop tougher skins; no fixed maturity day is assigned here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los guisantes para desgranar cuando las semillas alcancen su tamaño",
+          "guidance": "En guisantes para desgranar, revisa las vainas mientras se llenan y cosecha cuando las semillas tengan tamaño completo, estén tiernas y no sepan feculentas. Los guisantes sobremaduros pierden dulzor rápidamente y endurecen la piel; aquí no se fija un día de madurez.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20557,22 +21223,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-peas-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can end flowering and pod production",
+          "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede detener la floración y la producción de vainas",
+          "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A cool-season vine, with habit varying by type",
+          "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de estación fresca, con hábito según el tipo",
+          "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Grow for cool conditions and steady soil moisture",
+          "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+          "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Support climbing vines and keep irrigation off foliage",
+          "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+          "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20686,8 +21432,8 @@ export const gardenPlantProfileCatalog = {
   },
   "fava-bean": {
     "summary": {
-      "en": "Fava Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Haba. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Fava Bean is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+      "es": "Identidad base de Wave 4 para Haba. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos."
     },
     "metrics": {
       "en": [],
@@ -20717,47 +21463,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick green fava pods while seeds are swelling",
+          "guidance": "UMN Extension recommends picking fava pods while green as seeds begin to bulge; fully mature pods may instead be dried. It also cautions that some people can become ill from raw fava seeds, so cook them thoroughly.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha las vainas verdes de haba cuando las semillas comiencen a hincharse",
+          "guidance": "UMN Extension recomienda cosechar las vainas de haba verdes cuando las semillas empiezan a abultarse; las vainas maduras también pueden dejarse secar. Advierte que algunas personas pueden enfermar por consumir habas crudas, por lo que deben cocinarse bien.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -20765,22 +21486,102 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1",
-          "johnnys-peas-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can shorten the fava pod-setting window",
+          "guidance": "UMN Extension notes that fava beans may set only a few pods before hot weather arrives in Minnesota. Treat heat as a regional crop limitation, not a cultivar-specific threshold.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede acortar la ventana de cuajado del haba",
+          "guidance": "UMN Extension señala que las habas pueden producir pocas vainas antes de que llegue el calor en Minnesota. Es una limitación regional del cultivo, no un umbral específico del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Sow fava beans early into cool-season conditions",
+          "guidance": "UMN Extension recommends growing fava beans like peas and planting early in spring; the plants set fewer pods when weather turns hot. This Minnesota guidance is not an indoor or hydroponic setting.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Siembra las habas temprano en condiciones frescas",
+          "guidance": "UMN Extension recomienda cultivar las habas como los guisantes y sembrarlas temprano en primavera; producen menos vainas cuando llega el calor. Es guía de Minnesota, no un ajuste interior o hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Match support to the documented growth habit",
+          "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Adapta el soporte al hábito documentado",
+          "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Fava beans are a cool-season, upright legume",
+          "guidance": "UMN Extension distinguishes fava (Vicia faba) from common beans: it grows under cool conditions similar to peas and its sturdy upright plants generally do not need support. This is species-level guidance, not a cultivar measurement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El haba es una legumbre erguida de estación fresca",
+          "guidance": "UMN Extension distingue el haba (Vicia faba) del frijol común: crece en condiciones frescas similares a las de los guisantes y sus plantas erguidas y robustas generalmente no necesitan soporte. Es guía a nivel de especie, no una medida del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": [],
+        "en": {
+          "short": "Pruning guidance is not established",
+          "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No se establece una guía de poda",
+          "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación.",
           "items": [],
           "avoid": "",
           "context": ""

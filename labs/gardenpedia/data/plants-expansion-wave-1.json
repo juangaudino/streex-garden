@@ -2530,7 +2530,7 @@
       "phaseolus vulgaris",
       "blue lake bush type"
     ],
-    "summary": "Blue Lake Bush Bean is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Blue Lake Bush Bean is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -2542,32 +2542,57 @@
           "johnnys-beans-wave1"
         ]
       },
-      "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1"
-        ]
-      },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick snap pods before seeds bulge",
+        "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1"
+          "umn-beans-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Heat during flowering can interrupt pod set",
+        "guidance": "UMN Extension notes that very hot weather during flowering may reduce fruit set. Treat missing pods as a possible weather response, not a diagnosis of disease or a claim about this named variety’s heat tolerance.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-beans-wave1"
+          "umn-beans-home-gardens-2026"
         ]
+      },
+      "cultivation": {
+        "short": "Wait for warm soil before outdoor sowing",
+        "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Match support to the documented growth habit",
+        "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ]
+      },
+      "growth": {
+        "short": "An upright bush habit usually needs no trellis",
+        "guidance": "UMN Extension describes bush beans as upright plants around two feet tall, with a shorter, more concentrated flowering and pod-set period than pole beans. This is crop-type context, not cultivar-specific measurement.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-beans-home-gardens-2026"
+        ]
+      },
+      "pruning": {
+        "short": "Pruning guidance is not established",
+        "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": []
       }
     },
     "compatibilityProfile": {
@@ -2653,7 +2678,7 @@
       "pisum sativum",
       "oregon sugar pod type"
     ],
-    "summary": "Oregon Sugar Pod Snap Pea is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Oregon Sugar Pod Snap Pea is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -2665,32 +2690,57 @@
           "johnnys-peas-wave1"
         ]
       },
-      "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-peas-wave1"
-        ]
-      },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick snow peas while pods are full-length and flat",
+        "guidance": "Harvest edible pods when they reach the length described for the variety but peas inside are only small traces; older pods can become tough. The source gives a type-level cue, not a date for this named entry.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1"
+          "umn-peas-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Heat can end flowering and pod production",
+        "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-peas-wave1"
+          "umn-peas-home-gardens-2026"
         ]
+      },
+      "growth": {
+        "short": "A cool-season vine, with habit varying by type",
+        "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Grow for cool conditions and steady soil moisture",
+        "guidance": "UMN Extension gives 55–65°F as a good growing range for peas and recommends full sun and well-drained soil. These are Minnesota outdoor crop references, not an indoor or hydroponic set point.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Support climbing vines and keep irrigation off foliage",
+        "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peas-home-gardens-2026"
+        ]
+      },
+      "pruning": {
+        "short": "Pruning guidance is not established",
+        "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+        "evidenceType": "needs_validation",
+        "confidence": "low",
+        "sourceIds": []
       }
     },
     "compatibilityProfile": {

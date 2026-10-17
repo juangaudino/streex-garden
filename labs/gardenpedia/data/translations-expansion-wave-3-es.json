@@ -688,107 +688,167 @@
     }
   },
   "kentucky-wonder-pole-bean": {
-    "summary": "Identidad base de Wave 3 para Frijol de enrame Kentucky Wonder. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad base de Wave 3 para Frijol de enrame Kentucky Wonder. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+        "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor durante la floración puede interrumpir el cuajado",
+        "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad."
+      },
+      "cultivation": {
+        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+      },
+      "care": {
+        "short": "Adapta el soporte al hábito documentado",
+        "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
+      },
+      "growth": {
+        "short": "El hábito trepador y voluble requiere soporte",
+        "guidance": "UMN Extension describe los frijoles de enrame como guías volubles que pueden superar seis pies y producir vainas durante la temporada. Es guía general para este tipo; la cifra no se presenta como medida de esta variedad con nombre."
+      },
+      "pruning": {
+        "short": "No se establece una guía de poda",
+        "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
       }
     }
   },
   "mammoth-melting-sugar-snow-pea": {
-    "summary": "Identidad base de Wave 3 para Guisante de nieve Mammoth Melting Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad base de Wave 3 para Guisante de nieve Mammoth Melting Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha los tirabeques cuando la vaina ya tenga su largo pero siga plana",
+        "guidance": "Cosecha las vainas comestibles cuando alcancen el largo descrito para la variedad y las semillas internas apenas se noten; las vainas más maduras pueden endurecerse. Es una señal del tipo, no una fecha para esta entrada con nombre."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor puede detener la floración y la producción de vainas",
+        "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar."
+      },
+      "growth": {
+        "short": "Enredadera de estación fresca, con hábito según el tipo",
+        "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre."
+      },
+      "cultivation": {
+        "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+        "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía."
+      },
+      "care": {
+        "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+        "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas."
+      },
+      "pruning": {
+        "short": "No se establece una guía de poda",
+        "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
       }
     }
   },
   "little-marvel-shelling-pea": {
-    "summary": "Identidad base de Wave 3 para Guisante para desgranar Little Marvel. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad base de Wave 3 para Guisante para desgranar Little Marvel. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha los guisantes para desgranar cuando las semillas alcancen su tamaño",
+        "guidance": "En guisantes para desgranar, revisa las vainas mientras se llenan y cosecha cuando las semillas tengan tamaño completo, estén tiernas y no sepan feculentas. Los guisantes sobremaduros pierden dulzor rápidamente y endurecen la piel; aquí no se fija un día de madurez."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor puede detener la floración y la producción de vainas",
+        "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar."
+      },
+      "growth": {
+        "short": "Enredadera de estación fresca, con hábito según el tipo",
+        "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre."
+      },
+      "cultivation": {
+        "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
+        "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía."
+      },
+      "care": {
+        "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
+        "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas."
+      },
+      "pruning": {
+        "short": "No se establece una guía de poda",
+        "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
       }
     }
   },
   "henderson-bush-lima-bean": {
-    "summary": "Identidad base de Wave 3 para Frijol lima de mata Henderson. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad base de Wave 3 para Frijol lima de mata Henderson. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha las limas frescas cuando las semillas hinchen la vaina verde",
+        "guidance": "UMN Extension recomienda cosechar las limas para desgranar frescas cuando las semillas cambian de verde hacia crema o blanco y las vainas comienzan a abultarse. Para uso seco, deja que las vainas se sequen por completo. Son señales del cultivo, no una fecha específica de Henderson."
+      },
+      "cultivation": {
+        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+      },
+      "care": {
+        "short": "Adapta el soporte al hábito documentado",
+        "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
+      },
+      "growth": {
+        "short": "El frijol lima difiere del frijol común en su preferencia de suelo",
+        "guidance": "UMN Extension señala que el frijol lima crece mejor en suelo más grueso y arenoso que el frijol común y puede tener hábito de mata o de enrame. Es guía regional para Phaseolus lunatus, no una afirmación de tamaño específica de Henderson."
+      },
+      "pruning": {
+        "short": "No se establece una guía de poda",
+        "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "No se establece un perfil de problemas para este cultivar",
+        "guidance": "La fuente disponible respalda diferencias de suelo y cosecha para el frijol lima, pero no es una guía diagnóstica de problemas para Henderson. No infieras susceptibilidad a plagas o enfermedades específica del cultivar; requiere validación."
       }
     }
   },
   "purple-podded-bean": {
-    "summary": "Identidad base de Wave 3 para Frijol de vaina morada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad base de Wave 3 para Frijol de vaina morada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
+        "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor durante la floración puede interrumpir el cuajado",
+        "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad."
+      },
+      "cultivation": {
+        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
+        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+      },
+      "care": {
+        "short": "Adapta el soporte al hábito documentado",
+        "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
+      },
+      "growth": {
+        "short": "El haba es una legumbre erguida de estación fresca",
+        "guidance": "UMN Extension distingue el haba (Vicia faba) del frijol común: crece en condiciones frescas similares a las de los guisantes y sus plantas erguidas y robustas generalmente no necesitan soporte. Es guía a nivel de especie, no una medida del cultivar."
+      },
+      "pruning": {
+        "short": "No se establece una guía de poda",
+        "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
       }
     }
   },

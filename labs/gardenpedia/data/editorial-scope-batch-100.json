@@ -808,22 +808,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -845,22 +841,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover pea habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha de guisantes, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+            "en": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+            "es": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -2117,22 +2109,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -2154,22 +2142,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover pea habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha de guisantes, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+            "es": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -3892,22 +3876,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -3929,22 +3909,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover pea habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha de guisantes, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+            "es": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -3966,22 +3942,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover pea habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha de guisantes, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
+            "es": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -4003,22 +3975,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -4040,22 +4008,18 @@
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
+            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
+            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {

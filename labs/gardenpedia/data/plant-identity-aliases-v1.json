@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"gardenpedia_plant_identity_aliases_v1",
+  "publicationBoundary":"public-search-and-route-aliases-only",
+  "aliases":[
+    {"aliasId":"parsnip","canonicalPlantId":"parsnip-pastinaca-sativa","aliasName":"Parsnip","aliasScientificName":"Pastinaca sativa","reason":"Both records describe the same species-level parsnip crop identity; 'Parsnip type' is not a named cultivar or distinct horticultural selection.","sourceIds":["usu-water-vegetables-wave2","umn-carrots-parsnips-home-wave45","kew-pastinaca-sativa-wave45"]},
+    {"aliasId":"rutabaga","canonicalPlantId":"rutabaga-brassica-napus","aliasName":"Rutabaga","aliasScientificName":"Brassica napus","reason":"Both records describe the same species-level rutabaga crop form; no named cultivar or distinct infraspecific identity differentiates them.","sourceIds":["usu-rutabagas-turnips-wave45","kew-brassica-napus-wave45","johnnys-turnips-wave1"]},
+    {"aliasId":"snapdragon","canonicalPlantId":"snapdragon-antirrhinum-majus","aliasName":"Snapdragon","aliasScientificName":"Antirrhinum majus","reason":"Common-name and ID alias for the same non-cultivar species record; tall and dwarf cultivars remain unassigned.","sourceIds":["illinois-snapdragon-wave3","ncsu-antirrhinum-majus-wave61"]},
+    {"aliasId":"bachelor-button","canonicalPlantId":"cornflower-centaurea-cyanus","aliasName":"Bachelor Button","aliasScientificName":"Centaurea cyanus","reason":"Bachelor button and cornflower are common names for the same Centaurea cyanus identity in these records; the name can be ambiguous elsewhere, so the canonical target retains the scientific name.","sourceIds":["usu-pollinator-garden-wave3","kew-centaurea-cyanus-wave56","ncsu-centaurea-cyanus-wave56"]},
+    {"aliasId":"cuban-oregano-plectranthus-amboinicus","canonicalPlantId":"cuban-oregano-coleus-amboinicus","aliasName":"Cuban Oregano","aliasScientificName":"Plectranthus amboinicus","reason":"Kew accepts Coleus amboinicus and lists Plectranthus amboinicus as a synonym; both profile IDs refer to the same Cuban oregano species, not true Origanum oregano.","sourceIds":["kew-coleus-amboinicus-wave32","ncsu-cuban-oregano-wave32","ncsu-plectranthus-amboinicus-wave61"]}
+  ]
+}

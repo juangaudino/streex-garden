@@ -16,7 +16,6 @@ export const gardenSeedProfileIds = [
   "asparagus",
   "astro-arugula",
   "baby-spinach",
-  "bachelor-button",
   "banana-pepper",
   "basil-ocimum-basilicum",
   "bee-balm",
@@ -26,6 +25,7 @@ export const gardenSeedProfileIds = [
   "bitter-melon-momordica-charantia",
   "black-beauty-eggplant",
   "black-cherry-tomato",
+  "black-eyed-pea-vigna-unguiculata-unguiculata",
   "black-eyed-susan",
   "black-krim-tomato",
   "black-pearl-ornamental-pepper",
@@ -85,6 +85,7 @@ export const gardenSeedProfileIds = [
   "common-mint",
   "common-morning-glory-ipomoea-purpurea",
   "common-purslane-portulaca-oleracea",
+  "common-sage-salvia-officinalis",
   "common-sorrel-rumex-acetosa",
   "corn-salad-valeriana-locusta",
   "cornflower-centaurea-cyanus",
@@ -95,6 +96,7 @@ export const gardenSeedProfileIds = [
   "cucumber-marketmore",
   "culantro",
   "curled-chervil",
+  "curry-leaf-tree-bergera-koenigii",
   "cylindra-beet",
   "daikon-radish",
   "danvers-carrot",
@@ -205,7 +207,6 @@ export const gardenSeedProfileIds = [
   "papalo-porophyllum-ruderale",
   "papaya",
   "parris-island-romaine",
-  "parsnip",
   "parsnip-pastinaca-sativa",
   "passion-fruit",
   "patio-baby-f1-eggplant",
@@ -246,7 +247,6 @@ export const gardenSeedProfileIds = [
   "romanesco-cauliflower",
   "rosemary",
   "russian-tarragon",
-  "rutabaga",
   "rutabaga-brassica-napus",
   "salsify",
   "san-marzano-tomato",
@@ -263,7 +263,7 @@ export const gardenSeedProfileIds = [
   "signet-marigold",
   "smooth-luffa-luffa-aegyptiaca",
   "snap-pea-oregon-sugar-pod",
-  "snapdragon",
+  "snapdragon-antirrhinum-majus",
   "southern-pea-vigna-unguiculata",
   "spearmint",
   "spring-barley-hordeum-vulgare",
@@ -474,15 +474,6 @@ export const gardenSeedProfileCatalog = [
     "sourceCount": 3
   },
   {
-    "id": "bachelor-button",
-    "summary": {
-      "en": "A seed-to-established-plant path for Bachelor Button. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Botón de soltero. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
-    },
-    "quickFactCount": 4,
-    "sourceCount": 4
-  },
-  {
     "id": "banana-pepper",
     "summary": {
       "en": "Utah State Extension describes a pepper seed-starting sequence: germinate at 80°F until the seed root emerges, then move to sterile seed mix and grow at 65–75°F. This is pepper-crop guidance, not a named-variety packet guarantee.",
@@ -562,6 +553,15 @@ export const gardenSeedProfileCatalog = [
     },
     "quickFactCount": 4,
     "sourceCount": 4
+  },
+  {
+    "id": "black-eyed-pea-vigna-unguiculata-unguiculata",
+    "summary": {
+      "en": "A seed-to-established-plant guide for blackeye/southern pea. Extension evidence supports warm-soil sowing and crop-specific field depth; no germination duration or indoor pod spacing is invented.",
+      "es": "Una guía desde la semilla hasta la planta establecida para el caupí de ojo negro/guisante sureño. La evidencia de Extensión respalda la siembra en suelo cálido y una profundidad de campo específica del cultivo; no se inventa duración de germinación ni separación para pods interiores."
+    },
+    "quickFactCount": 3,
+    "sourceCount": 3
   },
   {
     "id": "black-eyed-susan",
@@ -1052,11 +1052,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "common-fenugreek-trigonella-foenum-graecum",
     "summary": {
-      "en": "NC State Extension lists seed as the propagation route for fenugreek but does not provide a home sowing depth or germination schedule in the selected record. Keep these fields pending until a matching packet or stronger crop guide documents them.",
-      "es": "NC State Extension indica la semilla como vía de propagación del fenogreco, pero la ficha seleccionada no aporta profundidad ni calendario de germinación doméstico. Mantén esos campos pendientes hasta contar con un paquete o guía de cultivo más específica."
+      "en": "Fenugreek seed guidance is now supported by OMAFRA and PROSEA crop references: a 12-hour pre-sowing soak, an Ontario field sowing-temperature threshold, a field-depth reference, and a reported emergence interval. These are scoped source recommendations, not packet-specific guarantees.",
+      "es": "Las guías de semilla de fenogreco se apoyan ahora en referencias de cultivo de OMAFRA y PROSEA: remojo previo de 12 horas, umbral de temperatura de siembra en campo para Ontario, referencia de profundidad y un intervalo publicado de emergencia. Son recomendaciones con alcance de fuente, no garantías del paquete."
     },
-    "quickFactCount": 3,
-    "sourceCount": 1
+    "quickFactCount": 6,
+    "sourceCount": 3
   },
   {
     "id": "common-foxglove-digitalis-purpurea",
@@ -1093,6 +1093,15 @@ export const gardenSeedProfileCatalog = [
     },
     "quickFactCount": 1,
     "sourceCount": 2
+  },
+  {
+    "id": "common-sage-salvia-officinalis",
+    "summary": {
+      "en": "Common sage can be started from seed, although Wisconsin Extension notes that many named varieties are propagated vegetatively and may not come true from seed. The selected source gives seasonal sowing guidance but not a reliable depth, germination time, or temperature.",
+      "es": "La salvia común puede iniciarse desde semilla, aunque Wisconsin Extension señala que muchas variedades nombradas se propagan vegetativamente y pueden no reproducir fielmente sus características por semilla. La fuente seleccionada ofrece una época de siembra, pero no profundidad, tiempo ni temperatura confiables de germinación."
+    },
+    "quickFactCount": 4,
+    "sourceCount": 1
   },
   {
     "id": "common-sorrel-rumex-acetosa",
@@ -1183,6 +1192,15 @@ export const gardenSeedProfileCatalog = [
     },
     "quickFactCount": 4,
     "sourceCount": 2
+  },
+  {
+    "id": "curry-leaf-tree-bergera-koenigii",
+    "summary": {
+      "en": "Curry leaf is seed-grown but the selected UC Master Gardener source advises fresh ripe seed because germination can be erratic and take more than a month. It gives a regional sowing season and minimum temperature, but no seed depth or guaranteed schedule.",
+      "es": "El árbol de hojas de curry puede cultivarse desde semilla, pero la fuente seleccionada de UC Master Gardeners recomienda semilla fresca y madura porque la germinación puede ser irregular y tardar más de un mes. Aporta época regional y temperatura mínima, pero no profundidad ni calendario garantizado."
+    },
+    "quickFactCount": 5,
+    "sourceCount": 1
   },
   {
     "id": "cylindra-beet",
@@ -2175,15 +2193,6 @@ export const gardenSeedProfileCatalog = [
     "sourceCount": 4
   },
   {
-    "id": "parsnip",
-    "summary": {
-      "en": "A seed-to-established-plant path for Parsnip. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Chirivía. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
-    },
-    "quickFactCount": 4,
-    "sourceCount": 4
-  },
-  {
     "id": "parsnip-pastinaca-sativa",
     "summary": {
       "en": "Parsnips should be direct-sown because the taproot begins developing early and transplanting can deform it. UMN reports emergence can take up to three weeks; sowing depth and a universal germination-temperature target remain unresolved.",
@@ -2544,15 +2553,6 @@ export const gardenSeedProfileCatalog = [
     "sourceCount": 4
   },
   {
-    "id": "rutabaga",
-    "summary": {
-      "en": "A seed-to-established-plant path for Rutabaga. Crop-level evidence is kept separate from exact cultivar or system claims.",
-      "es": "Un recorrido desde la semilla hasta una planta establecida de Colinabo sueco. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
-    },
-    "quickFactCount": 4,
-    "sourceCount": 4
-  },
-  {
     "id": "rutabaga-brassica-napus",
     "summary": {
       "en": "USU Extension says rutabaga is grown from seed, usually as a summer-sown fall crop. It gives a shared rutabaga/turnip germination range and sowing depth; no cultivar-specific schedule is claimed.",
@@ -2697,7 +2697,7 @@ export const gardenSeedProfileCatalog = [
     "sourceCount": 3
   },
   {
-    "id": "snapdragon",
+    "id": "snapdragon-antirrhinum-majus",
     "summary": {
       "en": "A seed-to-established-plant path for Snapdragon. Crop-level evidence is kept separate from exact cultivar or system claims.",
       "es": "Un recorrido desde la semilla hasta una planta establecida de Boca de dragón. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."

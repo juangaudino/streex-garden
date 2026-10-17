@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { gardenPlantProfileCatalog } from "@/generated/garden-plant-profile-index";
 
 import {
   buildDonorPlantDetail,
@@ -14,6 +15,18 @@ import { calculateSingleCropDose } from "./hydro-calculator.engine";
 import { getPlantRecommendations } from "./plant-advisor.service";
 
 describe("direct Gardenpedia presentation adapter", () => {
+  it("publishes a structured bilingual profile for every canonical identity", () => {
+    const profileIds = Object.keys(gardenPlantProfileCatalog).sort();
+    const identityIds = canonicalEntries.map((entry) => entry.libraryPlantId).sort();
+
+    expect(profileIds).toEqual(identityIds);
+    for (const profile of Object.values(gardenPlantProfileCatalog)) {
+      expect(profile.summary.en.trim()).not.toBe("");
+      expect(profile.summary.es.trim()).not.toBe("");
+      expect(profile.metrics.en).toHaveLength(profile.metrics.es.length);
+    }
+  });
+
   it("exposes the new cover-crop category as a real canonical Explore filter", () => {
     const coverCrops = filterDonorPlants({
       plants: donorPlants,
@@ -91,9 +104,32 @@ describe("direct Gardenpedia presentation adapter", () => {
       expect(spanish.id).toBe(entry.libraryPlantId);
       expect(english.summary.trim()).not.toBe("");
       expect(spanish.summary.trim()).not.toBe("");
+      expect(spanish.metrics).toHaveLength(english.metrics.length);
       expect(english.guides.length).toBeGreaterThan(0);
       expect(spanish.guides.length).toBeGreaterThan(0);
     }
+  });
+
+  it("keeps fenugreek's established-plant metrics bilingual and separate from seed production", () => {
+    const entry = findCanonicalEntry("common-fenugreek-trigonella-foenum-graecum");
+    expect(entry).toBeDefined();
+    const english = buildDonorPlantDetail(entry!, "en");
+    const spanish = buildDonorPlantDetail(entry!, "es");
+
+    expect(english.metrics.map((metric) => metric.label)).toEqual([
+      "Mature height",
+      "Ontario field context",
+      "Herb harvest",
+    ]);
+    expect(spanish.metrics.map((metric) => metric.label)).toEqual([
+      "Altura adulta",
+      "Contexto de campo en Ontario",
+      "Cosecha de hierba",
+    ]);
+    expect(english.metrics.some((metric) => /seed production/i.test(metric.label))).toBe(false);
+    expect(spanish.metrics.some((metric) => /producción de semilla/i.test(metric.label))).toBe(
+      false,
+    );
   });
 
   it("searches canonical names without accent or case sensitivity", () => {
@@ -413,8 +449,8 @@ describe("direct Gardenpedia presentation adapter", () => {
       outdoorExposure: "unknown",
       inventory: "all",
     });
-    expect(fullSun.length).toBe(226);
-    expect(partialSun.length).toBe(10);
+    expect(fullSun.length).toBe(224);
+    expect(partialSun.length).toBe(11);
     expect(unknownLight).toHaveLength(
       donorPlants.filter((plant) => plant.outdoorExposures.includes("unknown")).length,
     );

@@ -1,0 +1,37 @@
+{
+  "common-sage-salvia-officinalis": {
+    "summary":"La salvia común es una hierba culinaria perenne y leñosa, con hojas aromáticas verde grisáceas. Se distingue de la salvia piña y de otras especies de Salvia; la poda, la cosecha y el tamaño conservan el alcance de especie o de la guía regional.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Salvia officinalis dentro de Lamiaceae. Es la salvia común culinaria, no salvia piña (S. elegans), salvia esclarea (S. sclarea) ni un cultivar nombrado por el color de sus hojas."},
+      "growth":{"guidance":"University Extension describe la salvia común como perenne leñosa, con hojas oblongas, suaves y verde grisáceas, que tiende a volverse leñosa con la edad. Las fuentes hablan de plantas de jardín establecidas; no se infiere tamaño para un sistema interior."},
+      "cultivation":{"guidance":"Maryland Extension recomienda pleno sol y suelo muy bien drenado, en especial para pasar el invierno. Es guía de jardín exterior; no define un nivel de luz de cultivo interior, receta hidropónica ni calendario universal de riego."},
+      "care":{"guidance":"Wisconsin Extension recomienda podar en primavera y durante la temporada para favorecer brotes jóvenes y limitar el crecimiento ralo y leñoso. Advierte que los tallos leñosos maduros pueden no rebrotar si se cortan demasiado. No es una fórmula de poda para un cultivar específico."},
+      "harvest":{"guidance":"NC State recomienda cosechar con moderación durante el primer año mientras la planta se establece. Wisconsin Extension describe cortar brotes y tomar hojas antes de la floración; según esa fuente, no retires más de la mitad de la planta de una vez."},
+      "propagation":{"guidance":"Wisconsin Extension enumera semilla, acodo, división y esquejes para la salvia, y señala que muchas variedades nombradas se propagan vegetativamente y pueden no reproducirse fielmente desde semilla. Esta ficha de especie no promete obtener un cultivar por semilla; consulta su Perfil de Semilla para la evidencia de establecimiento."},
+      "problems":{"guidance":"Maryland Extension enfatiza el suelo muy bien drenado y Wisconsin Extension describe menor calidad de follaje cuando las plantas envejecen y se vuelven leñosas. Son consideraciones de cultivo; no se atribuye resistencia a enfermedades ni se diagnostica una planta individual."}
+    }
+  },
+  "curry-leaf-tree-bergera-koenigii": {
+    "summary":"Un arbusto o arbolito aromático de clima tropical a subtropical, apreciado por sus hojas frescas en la cocina del sur de Asia. Kew acepta Bergera koenigii y registra Murraya koenigii como sinónimo; no es el curry en polvo ni un cultivar compacto nombrado.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Bergera koenigii dentro de Rutaceae y registra Murraya koenigii como sinónimo, nombre que aún aparece en fuentes hortícolas. UC Master Gardeners distingue la planta del curry en polvo y describe sus hojas aromáticas como ingrediente básico de la cocina del sur de Asia."},
+      "growth":{"guidance":"Kew clasifica la especie como arbusto y UC Master Gardeners la describe como arbolito. La fuente señala que existen formas regulares, enanas y compactas, pero esta ficha no asigna un cultivar; no se fija una dimensión única."},
+      "cultivation":{"guidance":"La guía de UC Master Gardeners para el condado de Santa Clara describe una perenne que puede conservar hojas en la zona 10 y perderlas en microclimas más fríos; recomienda protegerla de las heladas. Indica suelo bien drenado y dejar que se seque entre riegos; es orientación regional, no calendario universal de maceta."},
+      "light":{"guidance":"La fuente de UC Master Gardeners indica una exposición exterior entre pleno sol y sombra parcial, y recomienda proteger la planta del sol directo intenso durante el calor del verano en su contexto local. No es un requisito normalizado de luz interior."},
+      "harvest":{"guidance":"UC Master Gardeners indica que las hojas pueden cosecharse cuando se necesiten para uso fresco y congelarse para guardarlas; advierte que secarlas reduce el sabor. La fuente no establece rendimiento, intervalo de poda ni cantidad universal de cosecha."},
+      "propagation":{"guidance":"UC Master Gardeners describe semilla fresca y madura, chupones de raíz y esquejes. La germinación puede ser irregular y tardar más de un mes en esa guía regional; el Perfil de Semilla conserva ese contexto y deja pendientes la profundidad y el calendario de plántula no documentados."},
+      "problems":{"guidance":"La fuente regional advierte sobre las heladas en microclimas fríos y las quemaduras de sol en verano caluroso. También menciona consideraciones locales de cuarentena por el psílido asiático de los cítricos; no se presentan como plaga universal ni como restricción de todo lugar."}
+    }
+  },
+  "greater-galangal-alpinia-galanga": {
+    "summary":"Un cultivo tropical rizomatoso usado como especia en la cocina del sudeste asiático. Es botánicamente distinto del jengibre culinario y de la galanga menor; las fuentes seleccionadas documentan material de plantación en forma de rizoma o cultivo de tejidos, no un protocolo de semilla.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Alpinia galanga dentro de Zingiberaceae. UF/IFAS distingue la galanga mayor de la galanga menor (Alpinia officinarum), la raíz dedo (Boesenbergia rotunda) y el jengibre aromático o galanga negra (Kaempferia galanga). No se asigna cultivar."},
+      "growth":{"guidance":"UF/IFAS agrupa la galanga con cultivos tropicales de rizoma y describe su producción en contenedores o camas de campo bajo condiciones de Florida. Aquí no se establecen dimensiones específicas de cultivar ni un hábito compacto para interiores."},
+      "cultivation":{"guidance":"La orientación de producción de UF/IFAS para jengibre y galanga describe condiciones cálidas y sombra parcial en Florida para reducir el estrés del cultivo. Es una recomendación regional para campo o contenedor; no establece intensidad de luz interior, receta hidropónica ni calendario doméstico universal."},
+      "propagation":{"guidance":"UF/IFAS documenta iniciar estos cultivos desde rizomas o plantas de cultivo de tejidos e indica que la galanga muestra vigor a partir de cultivo de tejidos. La fuente seleccionada no documenta propagación por semilla, por lo que no se infiere un método."},
+      "harvestUse":{"guidance":"UF/IFAS describe los rizomas de galanga como producto del cultivo y menciona su uso fresco, conservado o seco. El calendario de producción es regional y en parte comercial; no se fija una fecha universal de cosecha doméstica."},
+      "problems":{"guidance":"La fuente de UF/IFAS trata la galanga como cultivo tropical y enfatiza material de plantación limpio y prevención de enfermedades del sistema radicular. No se afirma resistencia específica ni se ofrece un diagnóstico para sistemas interiores."}
+    }
+  }
+}

@@ -132,6 +132,8 @@ const plantFiles = [
   "data/plants-expansion-wave-59.json",
   "data/plants-expansion-wave-60.json",
   "data/plants-expansion-wave-61.json",
+  "data/plants-expansion-wave-62.json",
+  "data/plants-expansion-wave-63.json",
   "data/plants-requests.json",
 ];
 
@@ -227,6 +229,8 @@ const dataFiles = [
   "data/sources-expansion-wave-59.json",
   "data/sources-expansion-wave-60.json",
   "data/sources-expansion-wave-61.json",
+  "data/sources-expansion-wave-62.json",
+  "data/sources-expansion-wave-63.json",
   "data/sources-requests.json",
   "data/translations-es.json",
   "data/translations-owned-seeds-es.json",
@@ -293,6 +297,8 @@ const dataFiles = [
   "data/translations-expansion-wave-59-es.json",
   "data/translations-expansion-wave-60-es.json",
   "data/translations-expansion-wave-61-es.json",
+  "data/translations-expansion-wave-62-es.json",
+  "data/translations-expansion-wave-63-es.json",
   "data/translations-requests-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
@@ -350,6 +356,9 @@ const dataFiles = [
   "data/seed-profiles-expansion-wave-59.json",
   "data/seed-profiles-expansion-wave-60.json",
   "data/seed-profiles-expansion-wave-61.json",
+  "data/seed-profiles-expansion-wave-62.json",
+  "data/seed-profiles-expansion-wave-63.json",
+  "data/plant-identity-aliases-v1.json",
   "data/propagation-guidance-v1.json",
 ];
 
@@ -401,6 +410,8 @@ const seedProfileFiles = [
   "data/seed-profiles-expansion-wave-59.json",
   "data/seed-profiles-expansion-wave-60.json",
   "data/seed-profiles-expansion-wave-61.json",
+  "data/seed-profiles-expansion-wave-62.json",
+  "data/seed-profiles-expansion-wave-63.json",
 ];
 
 function readJson(relativePath) {
@@ -577,7 +588,7 @@ function buildReference(plant, neighborData, sourceById) {
   };
 }
 
-function buildCatalogManifest(plants) {
+function buildCatalogManifest(plants, identityAliases) {
   const neighborData = readJson("data/neighbor-profiles.json");
   const sourceRecords = [
     "data/sources.json",
@@ -646,12 +657,36 @@ function buildCatalogManifest(plants) {
     "data/sources-expansion-wave-59.json",
     "data/sources-expansion-wave-60.json",
     "data/sources-expansion-wave-61.json",
+    "data/sources-expansion-wave-62.json",
+    "data/sources-expansion-wave-63.json",
     "data/sources-requests.json",
   ].flatMap((file) => filterPublicSources(file));
   const sourceById = new Map(
     sourceRecords.map((source) => [source.id, source]),
   );
   const knownSourceIds = new Set(sourceById.keys());
+  const canonicalIds = new Set(plants.map((plant) => plant.id));
+  const aliasIds = new Set();
+  const aliasesByCanonicalId = new Map();
+  for (const alias of identityAliases) {
+    if (
+      !alias?.aliasId ||
+      !alias.canonicalPlantId ||
+      aliasIds.has(alias.aliasId) ||
+      canonicalIds.has(alias.aliasId) ||
+      !canonicalIds.has(alias.canonicalPlantId)
+    ) {
+      throw new Error(`Invalid or duplicate Gardenpedia identity alias: ${alias?.aliasId}`);
+    }
+    if ((alias.sourceIds || []).some((id) => !knownSourceIds.has(id))) {
+      throw new Error(`Identity alias has unresolved source references: ${alias.aliasId}`);
+    }
+    aliasIds.add(alias.aliasId);
+    aliasesByCanonicalId.set(alias.canonicalPlantId, [
+      ...(aliasesByCanonicalId.get(alias.canonicalPlantId) || []),
+      alias,
+    ]);
+  }
   const entries = plants
     .map((plant) => ({
       libraryPlantId: plant.id,
@@ -664,6 +699,11 @@ function buildCatalogManifest(plants) {
         plant.spanishName,
         plant.scientificName,
         publicCultivar(plant),
+        ...(aliasesByCanonicalId.get(plant.id) || []).flatMap((alias) => [
+          alias.aliasId,
+          alias.aliasName,
+          alias.aliasScientificName,
+        ]),
         ...(plant.tags || []).filter((tag) => !PUBLIC_TAG_EXCLUSIONS.test(tag)),
       ]).filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
       category: plant.category || "uncategorized",
@@ -708,6 +748,7 @@ function buildCatalogManifest(plants) {
     catalogVersion: `gardenpedia-${identityDigest}`,
     generatedAt: new Date().toISOString(),
     entries,
+    identityAliases,
     neighborRules: {
       researchPairs: neighborData.meta?.researchPairs || [],
       beneficialRoles: neighborData.meta?.beneficialRoles || {},
@@ -724,12 +765,21 @@ function writeGeneratedManifest(manifest) {
 }
 
 function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
+  const aliasIds = new Set(
+    (catalogManifest.identityAliases || []).map((alias) => alias.aliasId),
+  );
   const publicProfileFiles = plantFiles.filter(
     (file) =>
       file === "data/plants.json" ||
       /data\/plants-expansion-(?:batch-[ab]1|wave-\d+)\.json$/.test(file),
   );
-  const publicPlants = publicProfileFiles.flatMap((file) => readJson(file));
+  const publicPlants = [
+    ...publicProfileFiles.flatMap((file) => readJson(file)),
+    // Curated public-only enrichments for catalog identities whose original
+    // candidate notes live in private Garden/seed context files. This file is
+    // independently reviewed content; those private files are never published.
+    ...readJson("data/plant-profile-enrichment-v1.json"),
+  ].filter((plant) => !aliasIds.has(plant.id));
   if (
     new Set(publicPlants.map((plant) => plant.id)).size !== publicPlants.length
   ) {
@@ -785,9 +835,12 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
       ).filter(Boolean),
     );
   };
-  const publicMetric = (metric) =>
-    !/germination|sowing|seed|owned|user zero|inventory|purchase|garden position|yCube/i.test(
-      `${metric?.label || ""} ${metric?.value || ""} ${metric?.note || ""}`,
+  const publicMetric = (metric, translatedMetric) =>
+    !/germination|sowing|seed|germinaci[oó]n|siembra|semillas?|owned|user zero|inventory|purchase|garden position|yCube/i.test(
+      [metric, translatedMetric]
+        .flatMap((item) => [item?.label, item?.value, item?.note])
+        .filter(Boolean)
+        .join(" "),
     );
   const profiles = Object.fromEntries(
     publicPlants.map((plant) => {
@@ -800,15 +853,21 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
           )
           .map(([id, section]) => {
           const translatedSection = translated.sections?.[id] || {};
+          const spanishValue = (value, translatedValue) => {
+            const inlineSpanish =
+              value && typeof value === "object" && typeof value.es === "string"
+                ? publicText(value, "es")
+                : "";
+            return inlineSpanish || publicText(translatedValue, "es") || publicText(value, "en");
+          };
           const localized = (locale) => ({
             short:
               locale === "es"
-                ? publicText(translatedSection.short, "es") || publicText(section.short, "en")
+                ? spanishValue(section.short, translatedSection.short)
                 : publicText(section.short, "en"),
             guidance:
               locale === "es"
-                ? publicText(translatedSection.guidance, "es") ||
-                  publicText(section.guidance, "en")
+                ? spanishValue(section.guidance, translatedSection.guidance)
                 : publicText(section.guidance, "en"),
             items: itemsOf(
               section.items,
@@ -838,13 +897,19 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
         }),
       );
       const metrics = (locale) =>
-        (locale === "es" ? translated.metrics || plant.metrics : plant.metrics)
-          ?.filter(publicMetric)
-          .map((metric) => ({
-            label: textOf(metric.label, locale),
-            value: textOf(metric.value, locale),
-            note: textOf(metric.note, locale),
-          })) || [];
+        (plant.metrics || []).flatMap((metric, index) => {
+          const translatedMetric = translated.metrics?.[index];
+          if (!publicMetric(metric, translatedMetric)) return [];
+          const localizedMetric =
+            locale === "es" && translatedMetric ? translatedMetric : metric;
+          return [
+            {
+              label: textOf(localizedMetric.label, locale),
+              value: textOf(localizedMetric.value, locale),
+              note: textOf(localizedMetric.note, locale),
+            },
+          ];
+        });
       return [
         plant.id,
         {
@@ -853,8 +918,13 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
               publicText(plant.summary, "en") ||
               publicText(plant.sections?.identity?.short, "en"),
             es:
-              publicText(translated.summary, "es") ||
+              (plant.summary &&
+              typeof plant.summary === "object" &&
+              typeof plant.summary.es === "string"
+                ? publicText(plant.summary, "es")
+                : publicText(translated.summary, "es")) ||
               publicText(translated.sections?.identity?.short, "es") ||
+              publicText(plant.sections?.identity?.short, "es") ||
               publicText(plant.sections?.identity?.short, "en"),
           },
           metrics: { en: metrics("en"), es: metrics("es") },
@@ -926,9 +996,25 @@ function writeGeneratedMachineFacts() {
 
 function writeGeneratedSeedProfileIndex() {
   const profiles = new Map();
+  const aliases = readJson("data/plant-identity-aliases-v1.json").aliases;
+  const canonicalIdFor = new Map(
+    aliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),
+  );
   for (const file of seedProfileFiles) {
     for (const [id, profile] of Object.entries(readJson(file).profiles || {})) {
-      profiles.set(id, profile);
+      if (canonicalIdFor.has(id)) continue;
+      profiles.set(id, { ...profile, plantIdentityId: id });
+    }
+  }
+  for (const file of seedProfileFiles) {
+    for (const [id, profile] of Object.entries(readJson(file).profiles || {})) {
+      const canonicalId = canonicalIdFor.get(id) || id;
+      if (canonicalId !== id && !profiles.has(canonicalId)) {
+        profiles.set(canonicalId, {
+          ...profile,
+          plantIdentityId: canonicalId,
+        });
+      }
     }
   }
   const ids = [...profiles.keys()].sort();
@@ -961,21 +1047,30 @@ function filterPublicSources(relativePath) {
 
 function loadPublicationManifest() {
   const allPlants = plantFiles.flatMap((file) => readJson(file));
-  const ids = new Set(allPlants.map((plant) => plant.id));
-  if (allPlants.length < 500 || ids.size !== allPlants.length) {
+  const allIds = new Set(allPlants.map((plant) => plant.id));
+  const aliases = readJson("data/plant-identity-aliases-v1.json").aliases;
+  const aliasIds = new Set(aliases.map((alias) => alias.aliasId));
+  if (allIds.size !== allPlants.length) {
     throw new Error(
-      `Gardenpedia library must contain at least 500 unique varieties; got ${allPlants.length}/${ids.size}.`,
+      `Gardenpedia source files contain duplicate plant record IDs: ${allPlants.length}/${allIds.size}.`,
     );
   }
-  const catalogManifest = buildCatalogManifest(allPlants);
+  const canonicalPlants = allPlants.filter((plant) => !aliasIds.has(plant.id));
+  const ids = new Set(canonicalPlants.map((plant) => plant.id));
+  if (ids.size < 500) {
+    throw new Error(
+      `Gardenpedia requires at least 500 distinct canonical identities after alias reconciliation; got ${ids.size}.`,
+    );
+  }
+  const catalogManifest = buildCatalogManifest(canonicalPlants, aliases);
 
-  return { allPlants, ids, catalogManifest };
+  return { allPlants, canonicalPlants, ids, aliasIds, aliases, catalogManifest };
 }
 
 function prepareGeneratedArtifacts() {
-  const { ids, allPlants, catalogManifest } = loadPublicationManifest();
+  const { ids, canonicalPlants, catalogManifest } = loadPublicationManifest();
   writeGeneratedManifest(catalogManifest);
-  writeGeneratedPlantProfileIndex(allPlants, catalogManifest);
+  writeGeneratedPlantProfileIndex(canonicalPlants, catalogManifest);
   writeGeneratedMachineFacts();
   writeGeneratedSeedProfileIndex();
   console.log(
@@ -984,7 +1079,7 @@ function prepareGeneratedArtifacts() {
 }
 
 function prepareLegacy() {
-  const { ids, allPlants, catalogManifest } = loadPublicationManifest();
+  const { ids, canonicalPlants, aliasIds, aliases, catalogManifest } = loadPublicationManifest();
 
   fs.rmSync(destination, { recursive: true, force: true });
   fs.mkdirSync(destination, { recursive: true });
@@ -1006,18 +1101,53 @@ function prepareLegacy() {
     );
   }
 
+  const canonicalIdFor = new Map(
+    aliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),
+  );
   for (const file of dataFiles) {
     if (file.startsWith("data/sources-"))
       writeJson(file, publicize(filterPublicSources(file)));
     else if (file === "data/seed-inventory.json") continue;
+    else if (file.startsWith("data/plants-") || file === "data/plants.json")
+      writeJson(
+        file,
+        publicize(readJson(file).filter((plant) => !aliasIds.has(plant.id))),
+      );
+    else if (file.startsWith("data/seed-profiles-")) {
+      const bundle = readJson(file);
+      const profiles = {};
+      for (const [id, profile] of Object.entries(bundle.profiles || {})) {
+        const canonicalId = canonicalIdFor.get(id) || id;
+        profiles[canonicalId] = { ...profile, plantIdentityId: canonicalId };
+      }
+      writeJson(file, publicize({ ...bundle, profiles }));
+    }
+    else if (file === "data/propagation-guidance-v1.json") {
+      const bundle = readJson(file);
+      const records = Object.fromEntries(
+        Object.entries(bundle.records || {}).filter(
+          ([id]) => !aliasIds.has(id),
+        ),
+      );
+      for (const [aliasId, canonicalId] of canonicalIdFor) {
+        if (!records[canonicalId] && bundle.records?.[aliasId])
+          records[canonicalId] = bundle.records[aliasId];
+      }
+      writeJson(file, publicize({ ...bundle, records }));
+    }
     else if (file === "data/machine-inventory-v1.json") {
       const catalog = publicize(readJson(file));
       writeJson(file, { ...catalog, instances: [] });
     } else writeJson(file, publicize(readJson(file)));
   }
   writeJson("data/catalog-manifest.json", catalogManifest);
+  writeJson("data/plant-identity-aliases-v1.json", {
+    schemaVersion: "gardenpedia_plant_identity_aliases_v1",
+    publicationBoundary: "public-search-and-route-aliases-only",
+    aliases,
+  });
   writeGeneratedManifest(catalogManifest);
-  writeGeneratedPlantProfileIndex(allPlants, catalogManifest);
+  writeGeneratedPlantProfileIndex(canonicalPlants, catalogManifest);
   writeGeneratedMachineFacts();
   writeJson("data/seed-inventory.json", {
     capturedAt: null,

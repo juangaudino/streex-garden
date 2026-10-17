@@ -25,11 +25,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación",
-          "value": "5–10 días",
-          "note": "Referencia a 65–70°F"
-        },
-        {
           "label": "pH hidro",
           "value": "5.8–6.2",
           "note": "Referencia de producción hidropónica de Johnny's"
@@ -246,11 +241,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación",
-          "value": "~21 días",
-          "note": "Referencia de USU"
-        },
-        {
           "label": "Cosecha de hojas",
           "value": "4–6 in",
           "note": "Guía de cosecha de USU"
@@ -442,11 +432,6 @@ export const gardenPlantProfileCatalog = {
         }
       ],
       "es": [
-        {
-          "label": "Germinación óptima",
-          "value": "60–68°F",
-          "note": "Referencia de Johnny's"
-        },
         {
           "label": "pH hidro",
           "value": "5.5–6.0*",
@@ -833,11 +818,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación",
-          "value": "5–7 días",
-          "note": "Referencia de Johnny's"
-        },
-        {
           "label": "pH hidro",
           "value": "6.0–6.5",
           "note": "Tabla de referencia de OSU"
@@ -1025,11 +1005,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación",
-          "value": "",
-          "note": "Home Grown + referencia Thai de Johnny's"
-        },
-        {
           "label": "Ventana de cosecha",
           "value": "",
           "note": "Depende de fuente/cultivar"
@@ -1205,11 +1180,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación",
-          "value": "",
-          "note": "Home Grown; consistente con referencia general de albahaca"
-        },
-        {
           "label": "Punto de cosecha",
           "value": "",
           "note": "Guía varietal Home Grown"
@@ -1384,11 +1354,6 @@ export const gardenPlantProfileCatalog = {
         }
       ],
       "es": [
-        {
-          "label": "Germinación",
-          "value": "",
-          "note": "USU Extension; Home Grown 7–14"
-        },
         {
           "label": "Madurez",
           "value": "",
@@ -1566,11 +1531,6 @@ export const gardenPlantProfileCatalog = {
           "note": "Especie exacta aún sin resolver"
         },
         {
-          "label": "Germinación",
-          "value": "",
-          "note": "Guía Home Grown a nivel de género"
-        },
-        {
           "label": "Punto de cosecha",
           "value": "",
           "note": "El diámetro varía por fuente/especie"
@@ -1735,11 +1695,6 @@ export const gardenPlantProfileCatalog = {
         }
       ],
       "es": [
-        {
-          "label": "Germinación",
-          "value": "",
-          "note": "Home Grown; referencia genérica de menta 10–14"
-        },
         {
           "label": "Ventana de cosecha",
           "value": "",
@@ -2606,11 +2561,6 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Germinación del vendedor",
-          "value": "",
-          "note": "Listing comprado; no verificado por Extension a nivel de cultivar"
-        },
-        {
           "label": "Altura del vendedor",
           "value": "",
           "note": "Listing Tiny Tim"
@@ -2741,11 +2691,6 @@ export const gardenPlantProfileCatalog = {
     "metrics": {
       "en": [
         {
-          "label": "Flowering type",
-          "value": "Day-neutral",
-          "note": "UC Davis cultivar authority"
-        },
-        {
           "label": "Hydro pH / EC",
           "value": "6.0 / 1.8–2.2",
           "note": "OSU strawberry crop-level reference"
@@ -2756,11 +2701,6 @@ export const gardenPlantProfileCatalog = {
           "label": "Tipo de floración",
           "value": "",
           "note": "Autoridad varietal UC Davis"
-        },
-        {
-          "label": "pH / EC hidro",
-          "value": "",
-          "note": "Referencia OSU a nivel de cultivo fresa"
         }
       ]
     },
@@ -2897,11 +2837,6 @@ export const gardenPlantProfileCatalog = {
           "label": "Madurez",
           "value": "",
           "note": "Johnny's cultivar exacto"
-        },
-        {
-          "label": "Contexto de germinación",
-          "value": "",
-          "note": "USU a nivel de cultivo espinaca"
         },
         {
           "label": "pH / EC hidro",
@@ -8428,128 +8363,6 @@ export const gardenPlantProfileCatalog = {
       }
     }
   },
-  "parsnip": {
-    "summary": {
-      "en": "Parsnip is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Chirivía. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
-    },
-    "metrics": {
-      "en": [],
-      "es": []
-    },
-    "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Parsnip is resolved at Pastinaca sativa and Parsnip type type scope",
-          "guidance": "Parsnip is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Harvest the usable root or basal structure at the crop stage",
-          "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "problems": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "thinning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ],
-        "en": {
-          "short": "Thin or separate according to the intended harvest form",
-          "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Ralea según la forma de cosecha",
-          "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      }
-    }
-  },
   "red-onion": {
     "summary": {
       "en": "Red Onion is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
@@ -9905,128 +9718,6 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Observa las señales que cambian el manejo",
           "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      }
-    }
-  },
-  "rutabaga": {
-    "summary": {
-      "en": "Rutabaga is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Colinabo sueco. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
-    },
-    "metrics": {
-      "en": [],
-      "es": []
-    },
-    "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "johnnys-turnips-wave1"
-        ],
-        "en": {
-          "short": "Rutabaga is resolved at Brassica napus and Rutabaga type type scope",
-          "guidance": "Rutabaga is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "johnnys-turnips-wave1"
-        ],
-        "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "johnnys-turnips-wave1"
-        ],
-        "en": {
-          "short": "Harvest the usable root or basal structure at the crop stage",
-          "guidance": "Manage toward the edible root or bulb. Exact timing depends on temperature, planting method, and the actual plant.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "problems": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "johnnys-turnips-wave1"
-        ],
-        "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and context before assigning a cause.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "thinning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "johnnys-turnips-wave1"
-        ],
-        "en": {
-          "short": "Thin or separate according to the intended harvest form",
-          "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Ralea según la forma de cosecha",
-          "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14707,106 +14398,6 @@ export const gardenPlantProfileCatalog = {
       }
     }
   },
-  "snapdragon": {
-    "summary": {
-      "en": "Snapdragon is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Boca de dragón. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
-    },
-    "metrics": {
-      "en": [],
-      "es": []
-    },
-    "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "illinois-snapdragon-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Snapdragon is resolved at Antirrhinum majus and Snapdragon type type scope",
-          "guidance": "Snapdragon is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "illinois-snapdragon-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Shape or deadhead according to the flower type",
-          "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "illinois-snapdragon-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Harvest or enjoy flowers as an ornamental crop",
-          "guidance": "Wave 3 treats this identity primarily as ornamental or pollinator-supporting. Culinary use is not inferred without identity-specific edible-flower evidence.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "problems": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "illinois-snapdragon-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      }
-    }
-  },
   "teddy-bear-sunflower": {
     "summary": {
       "en": "Teddy Bear Sunflower is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
@@ -15221,106 +14812,6 @@ export const gardenPlantProfileCatalog = {
         "en": {
           "short": "Black-Eyed Susan is resolved at Rudbeckia hirta and Black-eyed Susan type type scope",
           "guidance": "Black-Eyed Susan is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-pollinator-garden-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Shape or deadhead according to the flower type",
-          "guidance": "Deadhead or shape when the documented flower habit benefits from it, while preserving the plant's natural form.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-pollinator-garden-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Harvest or enjoy flowers as an ornamental crop",
-          "guidance": "Wave 3 treats this identity primarily as ornamental or pollinator-supporting. Culinary use is not inferred without identity-specific edible-flower evidence.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "problems": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-pollinator-garden-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Watch stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      }
-    }
-  },
-  "bachelor-button": {
-    "summary": {
-      "en": "Bachelor Button is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Botón de soltero. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
-    },
-    "metrics": {
-      "en": [],
-      "es": []
-    },
-    "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-pollinator-garden-wave3",
-          "johnnys-flower-guide-wave2"
-        ],
-        "en": {
-          "short": "Bachelor Button is resolved at Centaurea cyanus and Bachelor button type type scope",
-          "guidance": "Bachelor Button is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -22852,12 +22343,44 @@ export const gardenPlantProfileCatalog = {
   },
   "common-fenugreek-trigonella-foenum-graecum": {
     "summary": {
-      "en": "Common fenugreek is the annual species Trigonella foenum-graecum. NC State Extension documents seed propagation, edible foliage and seeds, and warns that wet soils are unsuitable; no named cultivar is represented.",
-      "es": "El fenogreco común es la especie anual Trigonella foenum-graecum. NC State Extension documenta su propagación por semilla, el uso comestible del follaje y las semillas, y advierte que los suelos húmedos no son adecuados; no se representa un cultivar."
+      "en": "Common fenugreek is the annual species Trigonella foenum-graecum, grown for its foliage and mature seeds. NC State describes the species, while OMAFRA adds regional Ontario field-production and harvest context; no named cultivar or hydroponic recipe is represented.",
+      "es": "El fenogreco común es la especie anual Trigonella foenum-graecum, cultivada por sus hojas y semillas maduras. NC State describe la especie y OMAFRA aporta contexto regional de cultivo y cosecha en campo en Ontario; no se representa un cultivar ni una receta hidropónica."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Mature height",
+          "value": "38–61 cm",
+          "note": "Species-level outdoor range · NC State Extension"
+        },
+        {
+          "label": "Ontario field context",
+          "value": "18–27 °C",
+          "note": "Regional crop-production range · OMAFRA"
+        },
+        {
+          "label": "Herb harvest",
+          "value": "30–40 days",
+          "note": "Ontario crop guidance; not a universal home-garden countdown · OMAFRA"
+        }
+      ],
+      "es": [
+        {
+          "label": "Altura adulta",
+          "value": "38–61 cm",
+          "note": "Rango exterior a nivel de especie · NC State Extension"
+        },
+        {
+          "label": "Contexto de campo en Ontario",
+          "value": "18–27 °C",
+          "note": "Rango regional de producción del cultivo · OMAFRA"
+        },
+        {
+          "label": "Cosecha de hierba",
+          "value": "30–40 días",
+          "note": "Guía de cultivo en Ontario; no es un plazo universal doméstico · OMAFRA"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -22886,18 +22409,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ],
         "en": {
           "short": "Full sun; avoid persistently wet soil",
-          "guidance": "North Carolina Extension lists full sun, good drainage and an erect annual habit. Its soil and climate guidance is regional and is not converted to a hydroponic recipe.",
+          "guidance": "North Carolina Extension lists full sun and good drainage. OMAFRA describes fenugreek production in Ontario at 18–27°C, in well-drained loamy soil, and notes vegetative-stage frost tolerance; these are field-crop conditions, not an indoor or hydroponic prescription.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Full sun; avoid persistently wet soil",
-          "guidance": "NC State Extension indica pleno sol, buen drenaje y hábito erecto anual. Su guía de suelo y clima es regional y no se convierte en receta hidropónica.",
+          "guidance": "NC State recomienda pleno sol y buen drenaje. OMAFRA describe producción en Ontario a 18–27 °C y suelos francos bien drenados; también informa tolerancia a heladas solo durante la fase vegetativa. Son condiciones regionales de campo, no una receta interior o hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -22934,18 +22458,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ],
         "en": {
           "short": "Seed propagation is documented",
-          "guidance": "NC State lists seed as the propagation strategy. It does not provide a home-germination schedule, sowing depth or temperature in the selected page; those details remain unestablished here.",
+          "guidance": "NC State and OMAFRA identify seed as a propagation route. Detailed sowing, seed handling and germination evidence is kept in the linked Seed Profile rather than duplicated in established-plant care.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Seed propagation is documented",
-          "guidance": "NC State enumera la semilla como estrategia de propagación. La página seleccionada no proporciona calendario de germinación, profundidad ni temperatura para cultivo doméstico.",
+          "guidance": "NC State y OMAFRA identifican la semilla como vía de propagación. El detalle de siembra, manejo de semillas y germinación se conserva en el Perfil de Semilla vinculado, sin duplicarlo en los cuidados de la planta establecida.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -22955,18 +22480,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ],
         "en": {
-          "short": "Foliage and mature seed have different uses",
-          "guidance": "NC State describes green plant parts as an herb/spice and mature seeds as a condiment. It cautions that seed harvest timing affects drying and leaf loss; no exact Garden harvest date is inferred.",
+          "short": "Leaf harvest and seed production follow different schedules",
+          "guidance": "NC State describes green plant parts as an herb/spice and mature seeds as a condiment. In Ontario production guidance, OMAFRA gives 30–40 days for herb harvest and 105–140 days for seed production, with earlier summer herb harvest sometimes needed to avoid flowering. These are regional crop ranges, not a universal home-garden countdown or named-cultivar promise.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Foliage and mature seed have different uses",
-          "guidance": "NC State describe las partes verdes como hierba/especia y las semillas maduras como condimento. Advierte que la época de cosecha afecta el secado y la pérdida de hojas; no se infiere una fecha exacta para el jardín.",
+          "short": "Las hojas y la producción de semilla tienen calendarios distintos",
+          "guidance": "NC State describe las partes verdes como hierba/especia y las semillas maduras como condimento. Para Ontario, OMAFRA informa 30–40 días para cosecha de hierba y 105–140 días para producción de semilla; en verano puede requerirse cosechar la hierba antes para evitar la floración. Son rangos regionales de cultivo, no una cuenta regresiva universal ni una promesa para un cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -22976,18 +22502,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ],
         "en": {
           "short": "Wet soils are a documented concern",
-          "guidance": "NC State warns that wet soils are unsuitable and lists several regional disease and pest concerns. This is a recognition cue, not a universal diagnosis or treatment prescription.",
+          "guidance": "NC State warns that wet soils are unsuitable. OMAFRA's limited Ontario crop observations include leafhoppers, tarnished plant bug, Alternaria leaf spot and root rot; it is a regional observation list, not a complete pest inventory or a diagnosis for an individual plant. OMAFRA notes good site selection and airflow as disease-pressure considerations.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Wet soils are a documented concern",
-          "guidance": "NC State advierte que los suelos húmedos no son adecuados y enumera algunas enfermedades y plagas de contexto regional. Son señales para reconocer, no un diagnóstico o tratamiento universal.",
+          "guidance": "NC State advierte que los suelos húmedos no son adecuados. Las observaciones limitadas de OMAFRA en Ontario incluyen chicharritas, chinche lygus, mancha foliar por Alternaria y pudrición de raíz; no son una lista completa ni un diagnóstico individual. OMAFRA destaca la selección del sitio y la circulación de aire como factores para reducir presión de enfermedades.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -53943,123 +53470,6 @@ export const gardenPlantProfileCatalog = {
       }
     }
   },
-  "cuban-oregano-plectranthus-amboinicus": {
-    "summary": {
-      "en": "A strongly aromatic, fleshy-leaved tropical perennial in the mint family, not a true oregano (Origanum) species.",
-      "es": "Una perenne tropical de hojas carnosas y muy aromáticas, de la familia de la menta; no es una especie verdadera de orégano (Origanum)."
-    },
-    "metrics": {
-      "en": [],
-      "es": []
-    },
-    "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-plectranthus-amboinicus-wave61"
-        ],
-        "en": {
-          "short": "Species: Plectranthus amboinicus",
-          "guidance": "NC State lists Cuban oregano, Indian borage and French thyme among common names for Plectranthus amboinicus; it is not an Origanum oregano.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Species: Plectranthus amboinicus",
-          "guidance": "NC State lista orégano cubano, borraja india y tomillo francés entre los nombres comunes de Plectranthus amboinicus; no pertenece al género Origanum.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "growth": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-plectranthus-amboinicus-wave61"
-        ],
-        "en": {
-          "short": "Fleshy herbaceous perennial with semi-woody older stems",
-          "guidance": "The extension source describes plants about 1–3 ft tall and wide and succulent young stems that become semi-woody with age.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Fleshy herbaceous perennial with semi-woody older stems",
-          "guidance": "La fuente describe plantas de unos 30–90 cm de alto y ancho, con tallos jóvenes suculentos que se vuelven semileñosos al madurar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "cultivation": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-plectranthus-amboinicus-wave61"
-        ],
-        "en": {
-          "short": "Warm conditions; shield leaves from intense hot sun",
-          "guidance": "NC State notes growth is concentrated in spring and summer, a preference for hot, relatively dry conditions, and that full sun can burn leaves; the source favors some protection from hot summer sun. No indoor light or hydroponic rule is inferred.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Warm conditions; shield leaves from intense hot sun",
-          "guidance": "NC State señala crecimiento principalmente en primavera y verano y preferencia por condiciones cálidas y relativamente secas; el sol intenso puede quemar las hojas, por lo que recomienda cierta protección. No se infiere una regla hidropónica ni de iluminación interior.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "propagation": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-plectranthus-amboinicus-wave61"
-        ],
-        "en": {
-          "short": "Stem cuttings or division",
-          "guidance": "NC State reports easy stem-cutting propagation and spring division. It does not establish a seed-starting protocol for this identity.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Stem cuttings or division",
-          "guidance": "NC State describe esquejes de tallo fáciles y división en primavera. No establece un protocolo de semilla para esta identidad.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "harvestUse": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-plectranthus-amboinicus-wave61"
-        ],
-        "en": {
-          "short": "Aromatic leaves are used as a flavoring",
-          "guidance": "The source describes fragrant leaves with oregano-like aroma and culinary flavoring use. Common name does not make this plant taxonomically equivalent to true oregano.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Aromatic leaves are used as a flavoring",
-          "guidance": "La fuente describe hojas aromáticas usadas como condimento y con olor parecido al orégano. El nombre común no la convierte taxonómicamente en orégano verdadero.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      }
-    }
-  },
   "moonflower-ipomoea-alba": {
     "summary": {
       "en": "A warm-climate twining vine with fragrant white flowers that open at night. This identity is Ipomoea alba, not Datura, which is also sometimes called moonflower.",
@@ -56640,6 +56050,2349 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "All plant parts are poisonous",
           "guidance": "NC State advierte que todas las partes de este híbrido son venenosas. Mantener lejos de niños y mascotas; no usar como alimento.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "taro-colocasia-esculenta": {
+    "summary": {
+      "en": "A tropical, corm-forming perennial grown for its starchy edible corm and, in some food traditions, leaves and petioles. This entry is Colocasia esculenta; elephant-ear lookalikes and other aroids are not interchangeable identities.",
+      "es": "Una perenne tropical que forma cormos y se cultiva por su cormo comestible rico en almidón y, en algunas tradiciones culinarias, por sus hojas y pecíolos. Esta ficha es de Colocasia esculenta; otras aráceas llamadas oreja de elefante o malanga no son identidades intercambiables."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-colocasia-esculenta-wave62",
+          "ncsu-colocasia-esculenta-wave62"
+        ],
+        "en": {
+          "short": "Species: Colocasia esculenta",
+          "guidance": "Kew accepts Colocasia esculenta. NC State describes taro as a tender herbaceous perennial in Araceae that grows from a corm. Common names such as elephant ear and malanga can also refer to other aroids, so this record is limited to C. esculenta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Species: Colocasia esculenta",
+          "guidance": "Kew acepta Colocasia esculenta. NC State describe el taro como una perenne herbácea tierna de Araceae que crece desde un cormo. Nombres comunes como oreja de elefante y malanga también pueden referirse a otras aráceas; esta ficha se limita a C. esculenta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-colocasia-esculenta-wave62"
+        ],
+        "en": {
+          "short": "Corm-forming perennial with large leaves",
+          "guidance": "NC State describes a clumping perennial with large, heart- to arrow-shaped leaves. Its landscape dimensions vary with growing conditions and are not represented as a container or indoor-system size.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Corm-forming perennial with large leaves",
+          "guidance": "NC State describe una perenne en grupos con hojas grandes, acorazonadas a sagitadas. Las dimensiones de jardín varían según el cultivo y no se presentan como tamaño de maceta o sistema interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-colocasia-esculenta-wave62",
+          "ufifas-root-crops-wave62"
+        ],
+        "en": {
+          "short": "Warm conditions, rich moisture-retentive soil",
+          "guidance": "NC State recommends partial shade or filtered sun and moist, rich soil. UF/IFAS documents both wetland and dryland production contexts for taro; those agricultural systems do not establish hydroponic suitability. Protect the plant from drying and strong wind in the cited landscape context.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Warm conditions, rich moisture-retentive soil",
+          "guidance": "NC State recomienda sombra parcial o luz filtrada y suelo rico que retenga humedad. UF/IFAS documenta producción de taro tanto en contextos húmedos como secos; esos sistemas agrícolas no demuestran aptitud hidropónica. En el contexto paisajístico citado, evita que la planta se seque y protégela del viento fuerte.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-colocasia-esculenta-wave62",
+          "ufifas-root-crops-wave62"
+        ],
+        "en": {
+          "short": "Corms, cormels, or division—not a seed-starting protocol",
+          "guidance": "The selected NC State source lists division as the practical propagation strategy, while UF/IFAS describes planting propagative corm material. This profile does not claim a seed protocol for the represented food crop.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Corms, cormels, or division—not a seed-starting protocol",
+          "guidance": "La fuente seleccionada de NC State enumera la división como método práctico; UF/IFAS describe el uso de material de propagación en forma de cormo. Esta ficha no afirma un protocolo de semilla para el cultivo alimentario representado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvestUse": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uh-ctahr-taro-wave62",
+          "ncsu-colocasia-esculenta-wave62"
+        ],
+        "en": {
+          "short": "Corm is a major food harvest; cook plant parts thoroughly",
+          "guidance": "The edible corm is a starchy food crop. University of Hawai‘i CTAHR states that taro corms, leaves, and petioles must be cooked before eating because of acridity associated with calcium-oxalate crystals; do not eat them raw. This identity is not a safety endorsement for other plants called taro.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Corm is a major food harvest; cook plant parts thoroughly",
+          "guidance": "El cormo comestible es un cultivo alimentario rico en almidón. CTAHR de la Universidad de Hawái indica que los cormos, hojas y pecíolos de taro deben cocinarse antes de comerlos por la acritud asociada a cristales de oxalato de calcio; no los comas crudos. Esto no certifica la seguridad de otras plantas llamadas taro.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-colocasia-esculenta-wave62",
+          "uh-ctahr-taro-wave62"
+        ],
+        "en": {
+          "short": "Raw tissue can cause oral irritation",
+          "guidance": "NC State reports calcium-oxalate-related oral irritation and lists all plant parts as poisonous unless cooked. Keep raw plant material away from children and pets; follow food-preparation guidance for correctly identified taro rather than using raw leaves or corms.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Raw tissue can cause oral irritation",
+          "guidance": "NC State informa irritación oral relacionada con oxalato de calcio y clasifica todas las partes de la planta como tóxicas salvo que se cocinen. Mantén el material crudo lejos de niños y mascotas; sigue orientación alimentaria para taro correctamente identificado, en vez de usar hojas o cormos crudos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "cassava-manihot-esculenta": {
+    "summary": {
+      "en": "A tropical shrub grown for its starchy storage roots and usually established from stem cuttings. Cassava roots and leaves require appropriate cooking; cyanogenic compounds make raw use unsafe, and sweet/bitter type is not specified here.",
+      "es": "Un arbusto tropical cultivado por sus raíces de reserva ricas en almidón y que suele establecerse mediante esquejes de tallo. Las raíces y hojas de yuca requieren cocción adecuada; los compuestos cianogénicos hacen inseguro el consumo crudo, y esta ficha no identifica el tipo dulce o amargo."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-manihot-esculenta-wave62",
+          "ufifas-cassava-wave62"
+        ],
+        "en": {
+          "short": "Species: Manihot esculenta",
+          "guidance": "Kew accepts Manihot esculenta. UF/IFAS uses cassava for this species and lists yuca, manioc, and mandioca as common names. The entry does not assign a sweet/bitter type or named cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Species: Manihot esculenta",
+          "guidance": "Kew acepta Manihot esculenta. UF/IFAS usa cassava para esta especie y enumera yuca, mandioca y manioc entre sus nombres comunes. La ficha no asigna tipo dulce/amargo ni un cultivar nombrado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-cassava-wave62"
+        ],
+        "en": {
+          "short": "Tropical perennial shrub with storage roots",
+          "guidance": "UF/IFAS describes cassava as a shrubby perennial with erect stems and starchy storage roots. Its Florida landscape and crop dimensions are regional and are not presented as indoor-container specifications.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Tropical perennial shrub with storage roots",
+          "guidance": "UF/IFAS describe la yuca como arbusto perenne de tallos erectos y raíces de reserva ricas en almidón. Las dimensiones de paisaje y cultivo en Florida son regionales y no se presentan como especificaciones de interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-cassava-wave62"
+        ],
+        "en": {
+          "short": "Requires a long, frost-free growing season",
+          "guidance": "UF/IFAS reports that edible roots need roughly eight to eleven frost-free months in its Florida growing context and describes planting in warm conditions. These regional crop timings should not be treated as a universal harvest guarantee.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Requires a long, frost-free growing season",
+          "guidance": "UF/IFAS informa que las raíces comestibles requieren aproximadamente ocho a once meses sin heladas en su contexto de cultivo floridano y describe siembra en condiciones cálidas. Estos tiempos regionales no son una garantía universal de cosecha.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-cassava-wave62"
+        ],
+        "en": {
+          "short": "Established from stem sections",
+          "guidance": "UF/IFAS recommends planting short stem sections for propagation. This is a vegetative planting-material crop entry; no seed germination or seedling protocol is represented.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Established from stem sections",
+          "guidance": "UF/IFAS recomienda plantar segmentos cortos de tallo para propagar. Esta ficha representa un cultivo de material vegetativo; no ofrece protocolo de germinación o plántula.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvestUse": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-cassava-wave62",
+          "ufifas-root-crops-wave62"
+        ],
+        "en": {
+          "short": "Starchy roots are the main food harvest",
+          "guidance": "UF/IFAS identifies the roots as the principal food product and notes that harvested roots deteriorate quickly. It also warns that cassava contains cyanogenic compounds: roots and leaves must not be eaten raw, and suitable peeling and cooking are necessary. The sweet/bitter type and a complete processing method are not established for this identity.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Starchy roots are the main food harvest",
+          "guidance": "UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. También advierte que la yuca contiene compuestos cianogénicos: las raíces y hojas no deben comerse crudas y requieren pelado y cocción adecuados. El tipo dulce/amargo y un método completo de procesamiento no están establecidos para esta identidad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-cassava-wave62",
+          "ufifas-root-crops-wave62"
+        ],
+        "en": {
+          "short": "Food-safety risk if raw or improperly prepared",
+          "guidance": "UF/IFAS documents hydrocyanic-acid-related toxicity and distinguishes lower- and higher-cyanogenic types. This profile does not identify which type a user has; do not eat raw roots or leaves, and do not assume a generic preparation method makes an unknown type safe.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Food-safety risk if raw or improperly prepared",
+          "guidance": "UF/IFAS documenta toxicidad relacionada con ácido cianhídrico y distingue tipos de menor y mayor contenido cianogénico. Esta ficha no determina qué tipo tienes; no comas raíces ni hojas crudas ni supongas que una preparación genérica vuelve seguro un tipo desconocido.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "black-eyed-pea-vigna-unguiculata-unguiculata": {
+    "summary": {
+      "en": "A warm-season cowpea crop harvested for fresh shelled peas or dry seed. It is represented at the accepted subspecies and crop-form level, without assigning a specific blackeye cultivar; yardlong bean is a separate horticultural form associated with subsp. sesquipedalis.",
+      "es": "Un cultivo de caupí de temporada cálida que se cosecha por sus guisantes frescos desgranados o semillas secas. Se representa en el nivel de subespecie aceptada y forma de cultivo, sin asignar un cultivar específico de ojo negro; el frijol espárrago es otra forma hortícola asociada a subsp. sesquipedalis."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vigna-unguiculata-wave62",
+          "clemson-southern-peas-wave62",
+          "ncsu-vigna-unguiculata-wave62"
+        ],
+        "en": {
+          "short": "Blackeye crop form of Vigna unguiculata subsp. unguiculata",
+          "guidance": "Kew accepts Vigna unguiculata and lists subsp. unguiculata among its accepted infraspecific taxa. Clemson Extension groups black-eyed peas, southern peas, and cowpeas within this crop. This entry is not a named cultivar and is distinct in crop use from the yardlong-bean subspecies represented elsewhere.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Blackeye crop form of Vigna unguiculata subsp. unguiculata",
+          "guidance": "Kew acepta Vigna unguiculata y enumera subsp. unguiculata entre sus taxones infraespecíficos aceptados. Clemson Extension agrupa el guisante de ojo negro, el guisante sureño y el caupí dentro de este cultivo. La ficha no es de un cultivar nombrado y se distingue por su uso del frijol espárrago, asociado a otra subespecie.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "clemson-southern-peas-wave62",
+          "ncsu-vigna-unguiculata-wave62"
+        ],
+        "en": {
+          "short": "Warm-season annual legume",
+          "guidance": "Clemson Extension describes southern peas as warm-season annual legumes that set edible pods and seeds. Cowpea forms vary in whether they are bushy or vining; this species-level crop entry does not assign a growth habit or dimensions to an unspecified cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Warm-season annual legume",
+          "guidance": "Clemson Extension describe los guisantes sureños como legumbres anuales de temporada cálida que producen vainas y semillas comestibles. Las formas de caupí varían entre arbustivas y trepadoras; esta ficha de cultivo a nivel de especie no asigna porte ni dimensiones de un cultivar no especificado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "vt-southern-peas-wave62",
+          "clemson-southern-peas-wave62"
+        ],
+        "en": {
+          "short": "Sow after soil warms; avoid waterlogged ground",
+          "guidance": "Virginia Cooperative Extension reports that southern peas need warm soil and describes regional sowing depths and spacing by bush or vining type. Clemson Extension notes frost sensitivity and warm-season planting. Those field recommendations are not indoor pod spacing, and no exact cultivar is represented.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sow after soil warms; avoid waterlogged ground",
+          "guidance": "Virginia Cooperative Extension informa que los guisantes sureños necesitan suelo cálido y describe profundidades y separaciones regionales según el tipo arbustivo o trepador. Clemson Extension señala sensibilidad a heladas y siembra de temporada cálida. Las recomendaciones de campo no equivalen a separación de pods interiores y no se representa un cultivar exacto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "vt-southern-peas-wave62",
+          "clemson-southern-peas-wave62"
+        ],
+        "en": {
+          "short": "Direct seed is the documented crop method",
+          "guidance": "The selected Extension crop guidance establishes southern peas from seed in warm soil. Use the Seed Profile for sowing-stage instructions; this section describes propagation method only and does not imply that germination conditions are mature-plant requirements.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Direct seed is the documented crop method",
+          "guidance": "La guía de Extensión seleccionada establece los guisantes sureños desde semilla en suelo cálido. Consulta el Perfil de Semilla para indicaciones de siembra; esta sección solo describe el método de propagación y no implica que la germinación y el cultivo adulto compartan los mismos requisitos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvestUse": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "clemson-southern-peas-wave62"
+        ],
+        "en": {
+          "short": "Harvest green pods or mature dry seed",
+          "guidance": "Clemson Extension describes southern peas as usable shelled fresh, processed at the green stage, or left to dry on the vine. Harvest form is a crop-use distinction, not a claim about a particular cultivar's maturity date.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Harvest green pods or mature dry seed",
+          "guidance": "Clemson Extension describe el uso de guisantes sureños desgranados frescos, procesados en estado verde o dejados secar en la planta. La forma de cosecha es una distinción de uso del cultivo, no una fecha de madurez de un cultivar específico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-vigna-unguiculata-wave62"
+        ],
+        "en": {
+          "short": "Cold, frost, and excess soil water are limiting",
+          "guidance": "NC State reports frost intolerance and intolerance of waterlogged soil for Vigna unguiculata. Warm-season guidance is regional, and cultivar-specific pest resistance is not established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cold, frost, and excess soil water are limiting",
+          "guidance": "NC State informa que Vigna unguiculata no tolera las heladas ni los suelos anegados. La guía cálida es regional y aquí no se establece resistencia a plagas de un cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "greater-galangal-alpinia-galanga": {
+    "summary": {
+      "en": "A tropical rhizomatous spice crop used in Southeast Asian cooking. It is botanically distinct from culinary ginger and from lesser galangal; the selected sources document rhizome or tissue-culture planting material, not a seed protocol.",
+      "es": "Un cultivo tropical rizomatoso usado como especia en la cocina del sudeste asiático. Es botánicamente distinto del jengibre culinario y de la galanga menor; las fuentes seleccionadas documentan material de plantación en forma de rizoma o cultivo de tejidos, no un protocolo de semilla."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-alpinia-galanga-wave63",
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "Accepted species: Alpinia galanga",
+          "guidance": "Kew accepts Alpinia galanga in Zingiberaceae. UF/IFAS distinguishes greater galangal from lesser galangal (Alpinia officinarum), fingerroot (Boesenbergia rotunda), and sand ginger (Kaempferia galanga). No cultivar is assigned.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Accepted species: Alpinia galanga",
+          "guidance": "Kew acepta Alpinia galanga dentro de Zingiberaceae. UF/IFAS distingue la galanga mayor de la galanga menor (Alpinia officinarum), la raíz dedo (Boesenbergia rotunda) y el jengibre aromático o galanga negra (Kaempferia galanga). No se asigna cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "Tropical perennial forming rhizomes",
+          "guidance": "UF/IFAS groups galangal with tropical rhizome crops and describes production in containers or field beds under Florida conditions. No cultivar-specific dimensions or compact indoor habit are established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Tropical perennial forming rhizomes",
+          "guidance": "UF/IFAS agrupa la galanga con cultivos tropicales de rizoma y describe su producción en contenedores o camas de campo bajo condiciones de Florida. Aquí no se establecen dimensiones específicas de cultivar ni un hábito compacto para interiores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "Warm conditions and regional shade management",
+          "guidance": "UF/IFAS production guidance for ginger and galangal describes warm growing conditions and partial shade in Florida to reduce crop stress. This is regional field/container advice; it does not establish indoor light intensity, a hydroponic recipe, or a universal household schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Warm conditions and regional shade management",
+          "guidance": "La orientación de producción de UF/IFAS para jengibre y galanga describe condiciones cálidas y sombra parcial en Florida para reducir el estrés del cultivo. Es una recomendación regional para campo o contenedor; no establece intensidad de luz interior, receta hidropónica ni calendario doméstico universal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "Rhizomes or tissue-culture plants are documented planting material",
+          "guidance": "UF/IFAS documents starting these crops from rhizomes or tissue-culture plants and identifies galangal as vigorous from tissue culture. The selected source does not document seed propagation, so no seed method is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Rhizomes or tissue-culture plants are documented planting material",
+          "guidance": "UF/IFAS documenta iniciar estos cultivos desde rizomas o plantas de cultivo de tejidos e indica que la galanga muestra vigor a partir de cultivo de tejidos. La fuente seleccionada no documenta propagación por semilla, por lo que no se infiere un método.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvestUse": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "The aromatic rhizome is the culinary product",
+          "guidance": "UF/IFAS describes galangal rhizomes as a crop product and notes their use fresh, preserved, or dried. Its production timing is regional and intended partly for commercial growers; no universal home harvest date is assigned.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "The aromatic rhizome is the culinary product",
+          "guidance": "UF/IFAS describe los rizomas de galanga como producto del cultivo y menciona su uso fresco, conservado o seco. El calendario de producción es regional y en parte comercial; no se fija una fecha universal de cosecha doméstica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ufifas-ginger-turmeric-production-wave62"
+        ],
+        "en": {
+          "short": "Cold sensitivity and rhizome health matter",
+          "guidance": "The selected UF/IFAS source treats galangal as a tropical crop and emphasizes clean planting material and prevention of root disease. No species-specific resistance claim or indoor-system diagnosis is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cold sensitivity and rhizome health matter",
+          "guidance": "La fuente de UF/IFAS trata la galanga como cultivo tropical y enfatiza material de plantación limpio y prevención de enfermedades del sistema radicular. No se afirma resistencia específica ni se ofrece un diagnóstico para sistemas interiores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "common-sage-salvia-officinalis": {
+    "summary": {
+      "en": "A woody perennial culinary herb with aromatic gray-green leaves. Common sage is distinct from pineapple sage and other Salvia species; pruning, harvest and dimensions here remain at species or regional garden-guidance scope.",
+      "es": "La salvia común es una hierba culinaria perenne y leñosa, con hojas aromáticas verde grisáceas. Se distingue de la salvia piña y de otras especies de Salvia; la poda, la cosecha y el tamaño conservan el alcance de especie o de la guía regional."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-salvia-officinalis-wave63",
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Accepted species: Salvia officinalis",
+          "guidance": "Kew accepts Salvia officinalis in Lamiaceae. This is common culinary sage, not pineapple sage (S. elegans), clary sage (S. sclarea), or a named leaf-color cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Accepted species: Salvia officinalis",
+          "guidance": "Kew acepta Salvia officinalis dentro de Lamiaceae. Es la salvia común culinaria, no salvia piña (S. elegans), salvia esclarea (S. sclarea) ni un cultivar nombrado por el color de sus hojas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umd-sage-wave63",
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Woody perennial with aromatic, gray-green leaves",
+          "guidance": "University Extension describes common sage as a woody perennial with oblong, softly textured gray-green leaves and a tendency to become woody with age. The sources describe established garden plants; no indoor-system size is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Woody perennial with aromatic, gray-green leaves",
+          "guidance": "University Extension describe la salvia común como perenne leñosa, con hojas oblongas, suaves y verde grisáceas, que tiende a volverse leñosa con la edad. Las fuentes hablan de plantas de jardín establecidas; no se infiere tamaño para un sistema interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umd-sage-wave63"
+        ],
+        "en": {
+          "short": "Full sun and very well-drained soil",
+          "guidance": "Maryland Extension recommends full sun and very well-drained soil, especially for overwintering. This is outdoor garden guidance and does not define an indoor grow-light tier, hydroponic recipe, or universal watering schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Full sun and very well-drained soil",
+          "guidance": "Maryland Extension recomienda pleno sol y suelo muy bien drenado, en especial para pasar el invierno. Es guía de jardín exterior; no define un nivel de luz de cultivo interior, receta hidropónica ni calendario universal de riego.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Prune in spring without cutting into old woody stems",
+          "guidance": "Wisconsin Extension recommends spring and in-season pruning to encourage young shoots and limit leggy, woody growth. It cautions against cutting back into mature woody stems that may not resprout. This is maintenance guidance, not a cultivar-specific pruning formula.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Prune in spring without cutting into old woody stems",
+          "guidance": "Wisconsin Extension recomienda podar en primavera y durante la temporada para favorecer brotes jóvenes y limitar el crecimiento ralo y leñoso. Advierte que los tallos leñosos maduros pueden no rebrotar si se cortan demasiado. No es una fórmula de poda para un cultivar específico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Harvest leaves before flowering; avoid removing more than half at once",
+          "guidance": "Wisconsin Extension describes cutting shoots and taking leaves before flowering; it cautions against removing more than half of the plant at once. No first-year harvest schedule is asserted in this profile.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Harvest leaves before flowering; avoid removing more than half at once",
+          "guidance": "NC State recomienda cosechar con moderación durante el primer año mientras la planta se establece. Wisconsin Extension describe cortar brotes y tomar hojas antes de la floración; según esa fuente, no retires más de la mitad de la planta de una vez.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Seed and vegetative routes are documented; named cultivars may not come true from seed",
+          "guidance": "Wisconsin Extension lists seed, layering, division and stem cuttings for sage, and notes that many named varieties are vegetatively propagated and may not come true from seed. This species-level profile does not promise a named cultivar from seed; consult the Seed Profile for its establishment evidence.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Seed and vegetative routes are documented; named cultivars may not come true from seed",
+          "guidance": "Wisconsin Extension enumera semilla, acodo, división y esquejes para la salvia, y señala que muchas variedades nombradas se propagan vegetativamente y pueden no reproducirse fielmente desde semilla. Esta ficha de especie no promete obtener un cultivar por semilla; consulta su Perfil de Semilla para la evidencia de establecimiento.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umd-sage-wave63",
+          "uw-sage-salvia-officinalis-wave63"
+        ],
+        "en": {
+          "short": "Avoid persistently wet soil and aging woody growth",
+          "guidance": "Maryland Extension emphasizes very well-drained soil, while Wisconsin Extension describes declining foliage quality as plants become old and woody. These are cultivation concerns; the profile does not assert a disease-resistance trait or diagnose a particular plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Avoid persistently wet soil and aging woody growth",
+          "guidance": "Maryland Extension enfatiza el suelo muy bien drenado y Wisconsin Extension describe menor calidad de follaje cuando las plantas envejecen y se vuelven leñosas. Son consideraciones de cultivo; no se atribuye resistencia a enfermedades ni se diagnostica una planta individual.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "curry-leaf-tree-bergera-koenigii": {
+    "summary": {
+      "en": "A tropical-to-subtropical aromatic shrub or small tree valued for fresh curry leaves in South Asian cooking. Kew accepts Bergera koenigii and lists Murraya koenigii as a synonym; this is not curry powder or a named compact cultivar.",
+      "es": "Un arbusto o arbolito aromático de clima tropical a subtropical, apreciado por sus hojas frescas en la cocina del sur de Asia. Kew acepta Bergera koenigii y registra Murraya koenigii como sinónimo; no es el curry en polvo ni un cultivar compacto nombrado."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-bergera-koenigii-wave63",
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Accepted name Bergera koenigii; Murraya koenigii is a synonym",
+          "guidance": "Kew accepts Bergera koenigii in Rutaceae and lists Murraya koenigii as a synonym, a name still used in horticultural sources. UC Master Gardeners distinguish the plant from curry powder and describe its aromatic leaves as a South Asian culinary staple.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Accepted name Bergera koenigii; Murraya koenigii is a synonym",
+          "guidance": "Kew acepta Bergera koenigii dentro de Rutaceae y registra Murraya koenigii como sinónimo, nombre que aún aparece en fuentes hortícolas. UC Master Gardeners distingue la planta del curry en polvo y describe sus hojas aromáticas como ingrediente básico de la cocina del sur de Asia.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-bergera-koenigii-wave63",
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Aromatic shrub or small tree; size varies by form and climate",
+          "guidance": "Kew classifies the species as a shrub, and UC Master Gardeners describe a small tree. The source notes regular, dwarf and compact forms exist but does not identify a cultivar in this profile; no single mature dimension is assigned.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Aromatic shrub or small tree; size varies by form and climate",
+          "guidance": "Kew clasifica la especie como arbusto y UC Master Gardeners la describe como arbolito. La fuente señala que existen formas regulares, enanas y compactas, pero esta ficha no asigna un cultivar; no se fija una dimensión única.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Protect from frost; allow the soil to dry between waterings",
+          "guidance": "UC Master Gardeners' Santa Clara County guidance describes a perennial that can remain evergreen in Zone 10, may lose leaves in colder microclimates, and should be protected from frost. It recommends well-drained soil and allowing soil to dry between waterings; these are regional recommendations, not a universal container schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Protect from frost; allow the soil to dry between waterings",
+          "guidance": "La guía de UC Master Gardeners para el condado de Santa Clara describe una perenne que puede conservar hojas en la zona 10 y perderlas en microclimas más fríos; recomienda protegerla de las heladas. Indica suelo bien drenado y dejar que se seque entre riegos; es orientación regional, no calendario universal de maceta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "light": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Outdoor exposure ranges from full sun to partial shade",
+          "guidance": "The UC Master Gardener source lists full sun to partial shade and recommends protecting plants from direct summer sun in its local hot-weather context. This is outdoor exposure guidance, not a normalized indoor grow-light requirement.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Outdoor exposure ranges from full sun to partial shade",
+          "guidance": "La fuente de UC Master Gardeners indica una exposición exterior entre pleno sol y sombra parcial, y recomienda proteger la planta del sol directo intenso durante el calor del verano en su contexto local. No es un requisito normalizado de luz interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Pick leaves for fresh use; freezing is preferred to drying in the cited guidance",
+          "guidance": "UC Master Gardeners say leaves can be harvested anytime for fresh use and frozen for later; the source cautions that drying reduces flavor. No yield, pruning interval or universal harvest amount is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Pick leaves for fresh use; freezing is preferred to drying in the cited guidance",
+          "guidance": "UC Master Gardeners indica que las hojas pueden cosecharse cuando se necesiten para uso fresco y congelarse para guardarlas; advierte que secarlas reduce el sabor. La fuente no establece rendimiento, intervalo de poda ni cantidad universal de cosecha.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Fresh seed and vegetative methods are documented",
+          "guidance": "UC Master Gardeners describe fresh ripe seed, root suckers and cuttings. Seed germination can be erratic and take more than a month in that regional guidance, so the Seed Profile preserves the fresh-seed context and leaves unsupported depth and seedling timing unresolved.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Fresh seed and vegetative methods are documented",
+          "guidance": "UC Master Gardeners describe semilla fresca y madura, chupones de raíz y esquejes. La germinación puede ser irregular y tardar más de un mes en esa guía regional; el Perfil de Semilla conserva ese contexto y deja pendientes la profundidad y el calendario de plántula no documentados.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ucanr-curry-leaf-wave63"
+        ],
+        "en": {
+          "short": "Cold and strong summer sun can stress the plant",
+          "guidance": "The selected regional source warns about frost in colder microclimates and sunburn during hot summer weather. It also notes local Asian citrus psyllid quarantine considerations; those are location-specific regulatory guidance and are not generalized as a universal pest claim here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cold and strong summer sun can stress the plant",
+          "guidance": "La fuente regional advierte sobre las heladas en microclimas fríos y las quemaduras de sol en verano caluroso. También menciona consideraciones locales de cuarentena por el psílido asiático de los cítricos; no se presentan como plaga universal ni como restricción de todo lugar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "bibb-lettuce": {
+    "summary": {
+      "en": "Bibb is a butterhead type of Lactuca sativa. The profile separates head and leaf goals from general lettuce-level hydroponic references.",
+      "es": "Bibb es un tipo mantecosa de Lactuca sativa. La ficha distingue los objetivos de hoja y cabeza de las referencias hidropónicas generales para lechuga."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-lettuce"
+        ],
+        "en": {
+          "short": "A rising central stalk signals bolting",
+          "guidance": "In lettuce, a central seed stalk marks the shift to flowering and can reduce leaf quality. This is crop-level guidance, not a Bibb-specific heat threshold.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Un tallo central ascendente indica espigado",
+          "guidance": "En la lechuga, un tallo central con semillas marca el paso a floración y puede reducir la calidad de las hojas. Es una guía del cultivo, no un umbral térmico específico de Bibb.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "hydroponics": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ],
+        "en": {
+          "short": "Published lettuce solution values vary by method",
+          "guidance": "UF/IFAS describes one non-circulating lettuce method near pH 5.5–6.0 and 1.25 mS/cm; Oklahoma State gives a broader lettuce EC range. These are lettuce-level references, not a Bibb-specific prescription or pod-spacing rule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los valores publicados para solución de lechuga varían según el método",
+          "guidance": "UF/IFAS describe un método de lechuga sin circulación cerca de pH 5.5–6.0 y 1.25 mS/cm; Oklahoma State ofrece un rango de EC más amplio para lechuga. Son referencias del cultivo, no una receta específica de Bibb ni una regla de separación por cápsula.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "black-seeded-simpson": {
+    "summary": {
+      "en": "Black Seeded Simpson is a looseleaf lettuce identity. Its documented management references remain at lettuce or crop-type scope unless a source names the cultivar.",
+      "es": "Black Seeded Simpson es una identidad de lechuga de hoja suelta. Sus referencias de manejo se mantienen al nivel de lechuga o tipo de cultivo, salvo que una fuente nombre el cultivar."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-lettuce"
+        ],
+        "en": {
+          "short": "Bolting changes both leaf quality and plant form",
+          "guidance": "A central seed stalk is a reproductive transition, not a fresh flush of edible leaves. General lettuce guidance warns that quality can decline; no Black Seeded Simpson-specific bolting date is established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El espigado cambia la calidad de la hoja y la forma de la planta",
+          "guidance": "Un tallo central con semillas indica una transición reproductiva, no una nueva tanda de hojas comestibles. La guía general de lechuga advierte que la calidad puede bajar; aquí no se establece una fecha de espigado específica para Black Seeded Simpson.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "hydroponics": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ],
+        "en": {
+          "short": "Use lettuce-level solution references with their system context",
+          "guidance": "UF/IFAS and Oklahoma State publish lettuce-level nutrient-solution references. Their different methods and ranges should remain visible; neither source establishes a cultivar-specific optimum for Black Seeded Simpson.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Usa referencias de solución para lechuga conservando el contexto del sistema",
+          "guidance": "UF/IFAS y Oklahoma State publican referencias de solución nutritiva para lechuga. Deben conservarse sus métodos y rangos distintos; ninguna fuente establece un óptimo específico del cultivar Black Seeded Simpson.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "broadleaf-sage": {
+    "summary": {
+      "en": "Common sage is harvested differently as it matures: light leaf harvest is supported for established young plants, while larger stem cuts belong to mature plants.",
+      "es": "La salvia común se cosecha de forma distinta al madurar: se respaldan cortes ligeros de hojas en plantas jóvenes establecidas y cortes mayores de tallos en plantas maduras."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-sage"
+        ],
+        "en": {
+          "short": "Keep juvenile leaf harvest distinct from mature stem cutting",
+          "guidance": "Johnny’s separates first-year individual-leaf harvest from later stem cutting near flowering. Do not apply mature-plant cutting heights to a juvenile sage plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Distingue la cosecha de hojas jóvenes del corte de tallos maduros",
+          "guidance": "Johnny’s distingue la cosecha de hojas individuales del primer año del corte de tallos en años posteriores, cerca de la floración. No apliques alturas de corte de plantas maduras a una salvia juvenil.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-sage"
+        ],
+        "en": {
+          "short": "Harvest individual leaves after establishment",
+          "guidance": "Johnny’s supports taking individual leaves in the first year after establishment; larger stem harvests are described for more mature plants.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha hojas individuales después del establecimiento",
+          "guidance": "Johnny’s respalda cosechar hojas individuales durante el primer año, una vez establecida la planta; la cosecha de tallos mayores se describe para plantas más maduras.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-sage"
+        ],
+        "en": {
+          "short": "Woody stems can be normal as a perennial sage ages",
+          "guidance": "The cultivation source notes that older sage plants become woody over time. Woodiness alone is not evidence of an acute problem; evaluate the plant’s current growth and condition.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los tallos leñosos pueden ser normales al envejecer una salvia perenne",
+          "guidance": "La fuente de cultivo señala que las salvias más viejas se vuelven leñosas con el tiempo. La lignificación por sí sola no demuestra un problema agudo; evalúa el crecimiento y estado actuales de la planta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "buttercrunch-lettuce": {
+    "summary": {
+      "en": "Buttercrunch is a butterhead type of Lactuca sativa. Bolting and hydroponic references below are scoped to lettuce generally, not a cultivar-specific recipe.",
+      "es": "Buttercrunch es un tipo mantecosa de Lactuca sativa. Las referencias siguientes sobre espigado e hidroponía corresponden a la lechuga en general, no a una receta específica del cultivar."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-lettuce"
+        ],
+        "en": {
+          "short": "A central stalk is an early quality warning",
+          "guidance": "A rising central stalk indicates lettuce is moving toward flowering. Treat it as a stage change; leaf quality may decline, but no Buttercrunch-specific bolting threshold is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Un tallo central es una alerta temprana de calidad",
+          "guidance": "Un tallo central ascendente indica que la lechuga se acerca a la floración. Trátalo como un cambio de etapa; la calidad de las hojas puede bajar, pero no se establece un umbral de espigado específico para Buttercrunch.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "hydroponics": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ],
+        "en": {
+          "short": "General lettuce solution guidance is not Buttercrunch-specific",
+          "guidance": "UF/IFAS and Oklahoma State provide useful lettuce-level solution references. Keep their method and range context; neither source establishes a Buttercrunch-specific optimum.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La guía general de solución para lechuga no es específica de Buttercrunch",
+          "guidance": "UF/IFAS y Oklahoma State ofrecen referencias útiles de solución a nivel de lechuga. Conserva el contexto de método y rango; ninguna establece un óptimo específico de Buttercrunch.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "cascading-petunia": {
+    "summary": {
+      "en": "Cascading Petunia is represented as Petunia × atkinsiana; “cascading” describes the product’s habit, not a verified named cultivar.",
+      "es": "Cascading Petunia se representa como Petunia × atkinsiana; «cascading» describe el hábito del producto, no un cultivar con nombre verificado."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-petunia-atkinsiana",
+          "aerogarden-cascading-petunia"
+        ],
+        "en": {
+          "short": "Kew accepts Petunia × atkinsiana; Petunia × hybrida is a synonym",
+          "guidance": "Kew lists Petunia × atkinsiana as the accepted name and Petunia × hybrida as a synonym. The AeroGarden product is named Cascading Petunia; no cultivar name is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Kew acepta Petunia × atkinsiana; Petunia × hybrida es un sinónimo",
+          "guidance": "Kew indica Petunia × atkinsiana como nombre aceptado y Petunia × hybrida como sinónimo. El producto de AeroGarden se denomina Cascading Petunia; no se infiere un nombre de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-petunias"
+        ],
+        "en": {
+          "short": "Flowering is the intended ornamental outcome",
+          "guidance": "University of Minnesota notes that petunias flower from spring toward frost when light is adequate, and low light can reduce blooms. This is general petunia guidance, not a schedule for this product pod.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La floración es el resultado ornamental esperado",
+          "guidance": "University of Minnesota señala que las petunias florecen desde primavera hasta las heladas cuando reciben luz adecuada, y que la poca luz puede reducir las flores. Es una guía general para petunias, no un calendario para esta cápsula del producto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "common-chives": {
+    "summary": {
+      "en": "Established chives are maintained mainly by harvest rather than node-based shaping; flowering stalks can differ in texture from leaves.",
+      "es": "El cebollino establecido se maneja principalmente mediante la cosecha, no con poda por nudos; los tallos florales pueden tener una textura distinta de las hojas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-chives",
+          "usu-chives"
+        ],
+        "en": {
+          "short": "Cutting is harvest, not shaping",
+          "guidance": "Chive guidance describes cutting established foliage and allowing it to regrow; basil-style node pruning is not the cited management method.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El corte es cosecha, no poda de formación",
+          "guidance": "La guía de cebollino describe cortar el follaje establecido y permitir que vuelva a crecer; la poda por nudos al estilo de la albahaca no es el método de manejo citado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-chives"
+        ],
+        "en": {
+          "short": "Flower stalks may be less palatable than leaves",
+          "guidance": "Utah State Extension notes that chives flower and that the flower stalks become less palatable. This is a harvest-quality distinction, not a disease sign.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los tallos florales pueden ser menos agradables que las hojas",
+          "guidance": "Utah State Extension señala que el cebollino florece y que los tallos florales se vuelven menos agradables al paladar. Es una diferencia de calidad de cosecha, no un signo de enfermedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "crimson-giant-radish": {
+    "summary": {
+      "en": "Crimson Giant is a named radish type. Prompt harvest and cool, consistent growing conditions matter more than routine pruning.",
+      "es": "Crimson Giant es un tipo de rábano con nombre. La cosecha oportuna y condiciones frescas y constantes importan más que la poda rutinaria."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-radish",
+          "ferry-crimson-giant-radish"
+        ],
+        "en": {
+          "short": "Harvest promptly at a useful root size",
+          "guidance": "Johnny’s cautions that radishes left too long can become tough or pithy. The exact packet-day target is not repeated here as a universal harvest date.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha a tiempo cuando la raíz alcance un tamaño útil",
+          "guidance": "Johnny’s advierte que los rábanos que se dejan demasiado tiempo pueden volverse duros o esponjosos. Aquí no se presenta como fecha universal el plazo indicado en un paquete específico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-radish"
+        ],
+        "en": {
+          "short": "Heat and dry conditions can reduce root quality",
+          "guidance": "Johnny’s notes that hot, dry conditions can make radish roots tougher, pithier, or more pungent. These are crop-level risks; assess actual conditions before attributing symptoms.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor y la sequedad pueden reducir la calidad de la raíz",
+          "guidance": "Johnny’s señala que el calor y la sequedad pueden volver las raíces de rábano más duras, esponjosas o picantes. Son riesgos del cultivo; evalúa las condiciones reales antes de atribuir síntomas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "curled-chervil": {
+    "summary": {
+      "en": "Curled chervil is a cool-season leafy herb: leaf quality is best before flowering, while heat and dryness are useful stress checks.",
+      "es": "El perifollo rizado es una hierba foliar de estación fresca: la calidad de las hojas es mejor antes de florecer, y el calor y la sequedad son señales útiles de estrés."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-chervil"
+        ],
+        "en": {
+          "short": "Leaf flavor is best just before flowering",
+          "guidance": "Johnny’s identifies the period just before flowering as the preferred leaf-harvest stage. Harvest stage varies with actual development; no fixed indoor day count is implied.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El sabor de las hojas es mejor justo antes de florecer",
+          "guidance": "Johnny’s identifica el periodo justo antes de la floración como la etapa preferida para cosechar hojas. La etapa depende del desarrollo real; no se implica un número fijo de días en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-chervil"
+        ],
+        "en": {
+          "short": "Heat and dry conditions can shorten the leafy phase",
+          "guidance": "The crop guide describes chervil as preferring rich, moist conditions and being sensitive to hot weather. Treat heat-related bolting as a crop response, not automatically as a pest or disease.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor y las condiciones secas pueden acortar la fase foliar",
+          "guidance": "La guía del cultivo indica que el perifollo prefiere condiciones fértiles y húmedas y es sensible al calor. Trata el espigado asociado al calor como respuesta del cultivo, no automáticamente como plaga o enfermedad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "dark-green-zucchini": {
+    "summary": {
+      "en": "Dark Green Zucchini is a Cucurbita pepo summer squash. Fruit set depends on pollination, and regular picking of young fruit supports ongoing harvest; small countertop systems are not implied.",
+      "es": "Dark Green Zucchini es una calabaza de verano Cucurbita pepo. El cuajado depende de la polinización y la cosecha regular de frutos jóvenes permite continuar cosechando; no se presupone su uso en sistemas pequeños de encimera."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-dark-green-zucchini"
+        ],
+        "en": {
+          "short": "Pick young fruit regularly once production begins",
+          "guidance": "Regular picking of young zucchini fruit supports continued harvest. A packet-specific days-to-maturity figure is intentionally omitted as a universal countdown.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha frutos jóvenes con regularidad cuando comience la producción",
+          "guidance": "La cosecha regular de frutos jóvenes de calabacín permite continuar cosechando. Se omite deliberadamente como cuenta regresiva universal cualquier plazo de madurez específico de un paquete.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-zucchini"
+        ],
+        "en": {
+          "short": "Pollination directly affects fruit set",
+          "guidance": "Johnny’s identifies inadequate pollination as one possible reason for poor fruit development. Flower presence alone does not guarantee pollination or fruit set.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La polinización afecta directamente el cuajado",
+          "guidance": "Johnny’s identifica la polinización insuficiente como una posible causa del mal desarrollo del fruto. La presencia de flores por sí sola no garantiza polinización ni cuajado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-zucchini"
+        ],
+        "en": {
+          "short": "Airflow, mildew, and pollination merit attention",
+          "guidance": "Johnny’s discusses powdery and downy mildew, bacterial wilt, drainage, and airflow in zucchini production. This is a crop-level watch list, not a diagnosis of an individual plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Conviene vigilar la ventilación, el mildiu y la polinización",
+          "guidance": "Johnny’s aborda el oídio, el mildiu, la marchitez bacteriana, el drenaje y la ventilación en la producción de calabacín. Es una lista de vigilancia del cultivo, no un diagnóstico de una planta concreta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "delphinium-magic-fountains-dwarf": {
+    "summary": {
+      "en": "Magic Fountains is a mixed-color dwarf Delphinium elatum ornamental. The available product listing supports a cut-flower role, not culinary use or a general safety profile for every delphinium.",
+      "es": "Magic Fountains es un ornamental enano de Delphinium elatum en mezcla de colores. La ficha comercial disponible respalda el uso como flor de corte, no el uso culinario ni un perfil general de seguridad para todos los delfinios."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "walmart-delphinium-magic-fountains"
+        ],
+        "en": {
+          "short": "Represent as an ornamental cut flower, not a food crop",
+          "guidance": "The product listing presents this named mix for ornamental flowers and warns against ingesting its seed or plant material. This is product-page guidance and is not generalized as a species-wide toxicity assessment.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Represéntalo como flor ornamental de corte, no como cultivo alimentario",
+          "guidance": "La ficha del producto presenta esta mezcla para flores ornamentales y advierte que no se ingieran sus semillas ni partes de la planta. Es una indicación de la ficha comercial, no una evaluación de toxicidad general para toda la especie.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "walmart-delphinium-magic-fountains"
+        ],
+        "en": {
+          "short": "Compact flower spikes are the documented ornamental feature",
+          "guidance": "The named product is described as a dwarf perennial delphinium with mixed-color spikes. The product description does not establish performance in every climate or container.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las espigas florales compactas son el rasgo ornamental documentado",
+          "guidance": "El producto con nombre se describe como un delfinio perenne enano con espigas de varios colores. La descripción comercial no establece su desempeño en todos los climas o recipientes.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "dill-bouquet": {
+    "summary": {
+      "en": "Bouquet dill is useful for both foliage and flower heads. Flowering is not automatically a failure; its significance depends on whether leaves, flowers, or seed are the goal.",
+      "es": "El eneldo Bouquet sirve tanto por sus hojas como por sus cabezuelas florales. La floración no es automáticamente un fallo; su importancia depende de si el objetivo son hojas, flores o semillas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-dill",
+          "usu-dill"
+        ],
+        "en": {
+          "short": "Harvest foliage after establishment; preserve flower heads when wanted",
+          "guidance": "Johnny’s and Utah State describe foliage harvest after establishment and around the start of flowering. If seed or flower heads are the goal, leave selected heads to mature rather than removing all of them.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha el follaje tras el establecimiento; conserva las flores si las deseas",
+          "guidance": "Johnny’s y Utah State describen la cosecha de follaje tras el establecimiento y cerca del inicio de la floración. Si buscas semillas o cabezuelas florales, deja madurar algunas en lugar de retirarlas todas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-dill"
+        ],
+        "en": {
+          "short": "Bouquet is valued for its flower heads",
+          "guidance": "Utah State notes the use of dill flowers and seed, while Bouquet is grown for its flower heads. Whether to delay flowering depends on the intended harvest.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Bouquet se valora por sus cabezuelas florales",
+          "guidance": "Utah State señala el uso de las flores y semillas de eneldo, y Bouquet se cultiva por sus cabezuelas. Retrasar la floración depende del tipo de cosecha deseada.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-dill"
+        ],
+        "en": {
+          "short": "Heat, crowding, and excess moisture can raise management concerns",
+          "guidance": "Utah State identifies heat and crowding as bolting concerns and overwatering as a disease risk. These factors should be checked in context rather than inferred from plant age alone.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor, el hacinamiento y el exceso de humedad pueden complicar el manejo",
+          "guidance": "Utah State identifica el calor y el hacinamiento como factores de espigado y el exceso de riego como riesgo de enfermedad. Deben comprobarse en contexto, no inferirse solo por la edad de la planta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "english-thyme": {
+    "summary": {
+      "en": "Thyme benefits from restrained management while young. Pinching upright types and harvesting more substantially near flowering are source-backed practices, distinct from hard cutting of mature woody plants.",
+      "es": "El tomillo se beneficia de un manejo moderado cuando es joven. El pinzado de tipos erguidos y una cosecha más amplia cerca de la floración están respaldados por fuentes y se distinguen del corte fuerte de plantas leñosas maduras."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-thyme"
+        ],
+        "en": {
+          "short": "Pinch upright growing tips after establishment",
+          "guidance": "Johnny’s recommends pinching growing tips of upright thyme varieties to encourage bushier growth. This does not justify applying a mature-plant cut-back to a small young plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Pinza las puntas erguidas después del establecimiento",
+          "guidance": "Johnny’s recomienda pinzar las puntas de variedades erguidas de tomillo para favorecer un crecimiento más tupido. Esto no justifica aplicar a una planta joven y pequeña un corte propio de una planta madura.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-thyme"
+        ],
+        "en": {
+          "short": "Use light stem harvest while young",
+          "guidance": "Johnny’s advises taking only a few stems in the first year and larger cuts near flowering in later years. This is production guidance, not a fixed indoor schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha tallos con moderación mientras es joven",
+          "guidance": "Johnny’s aconseja tomar solo unos pocos tallos durante el primer año y hacer cortes mayores cerca de la floración en años posteriores. Es una guía de producción, no un calendario fijo para interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-thyme"
+        ],
+        "en": {
+          "short": "Flowering can mark a harvest stage on established thyme",
+          "guidance": "Thyme is commonly harvested as flowers begin to open in the referenced production guidance. Record the actual stage and intended use rather than assuming an age-based trigger.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La floración puede marcar una etapa de cosecha en tomillo establecido",
+          "guidance": "La guía de producción citada suele cosechar el tomillo cuando empiezan a abrirse las flores. Registra la etapa real y el uso previsto en vez de asumir un disparador basado en la edad.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "evergreen-bunching-onion-nabuka": {
+    "summary": {
+      "en": "Evergreen Bunching Onion Nabuka is an Allium fistulosum bunching-onion identity. Crowding can reduce stalk thickness; no universal pod count is inferred.",
+      "es": "Evergreen Bunching Onion Nabuka es una identidad de cebolla de verdeo Allium fistulosum. El hacinamiento puede reducir el grosor de los tallos; no se infiere una cantidad universal por cápsula."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-bunching-onion"
+        ],
+        "en": {
+          "short": "Crowding can reduce stalk diameter",
+          "guidance": "Johnny’s bunching-onion guidance emphasizes adequate light and root volume for stalk development. Field or cell spacing is not converted here into a hydroponic pod count.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El hacinamiento puede reducir el diámetro de los tallos",
+          "guidance": "La guía de Johnny’s para cebolla de verdeo enfatiza luz y volumen radicular adecuados para el desarrollo del tallo. Aquí no se convierten las distancias de campo o celda en una cantidad de cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "garlic-chives": {
+    "summary": {
+      "en": "Garlic chives provide edible young leaves and flowers after establishment. Dense clumps and self-seeding are relevant long-term management considerations.",
+      "es": "El cebollino chino produce hojas jóvenes y flores comestibles tras establecerse. Los macizos densos y la autosiembra son aspectos relevantes del manejo a largo plazo."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "unh-garlic-chives"
+        ],
+        "en": {
+          "short": "Young leaves can be harvested after establishment",
+          "guidance": "University of New Hampshire Extension describes young garlic-chive leaves as harvestable after establishment and notes that flowers are edible shortly after opening.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las hojas jóvenes pueden cosecharse tras el establecimiento",
+          "guidance": "University of New Hampshire Extension indica que las hojas jóvenes del cebollino chino pueden cosecharse tras el establecimiento y que las flores son comestibles poco después de abrirse.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "unh-garlic-chives"
+        ],
+        "en": {
+          "short": "Flowers are edible; deadheading limits seed spread",
+          "guidance": "UNH Extension notes edible flowers and recommends deadheading before seed set when self-seeding is unwanted.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores son comestibles; retirar las marchitas limita la dispersión de semillas",
+          "guidance": "UNH Extension señala que las flores son comestibles y recomienda retirarlas antes de que formen semillas cuando se desea evitar la autosiembra.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "unh-garlic-chives"
+        ],
+        "en": {
+          "short": "Dense clumps may need division in long-lived culture",
+          "guidance": "UNH Extension identifies overcrowding and self-seeding as structural considerations and describes periodic division for established clumps.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los macizos densos pueden requerir división en cultivos longevos",
+          "guidance": "UNH Extension identifica el exceso de densidad y la autosiembra como aspectos estructurales, y describe la división periódica de macizos establecidos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "german-thyme": {
+    "summary": {
+      "en": "German thyme is treated as a common name for Thymus vulgaris, not as proof of a separate cultivar. Established plants can be pinched and harvested conservatively while young.",
+      "es": "Tomillo alemán se trata como nombre común de Thymus vulgaris, no como prueba de un cultivar distinto. Las plantas establecidas pueden pinzarse y cosecharse con moderación mientras son jóvenes."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-thymus-vulgaris"
+        ],
+        "en": {
+          "short": "NC State lists German thyme as a common name for Thymus vulgaris",
+          "guidance": "NC State Extension lists German thyme among the common names for Thymus vulgaris. The name alone does not establish a distinct named cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "NC State incluye tomillo alemán entre los nombres comunes de Thymus vulgaris",
+          "guidance": "NC State Extension incluye tomillo alemán entre los nombres comunes de Thymus vulgaris. El nombre por sí solo no establece un cultivar con nombre propio.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-thyme"
+        ],
+        "en": {
+          "short": "Pinch upright tips after establishment",
+          "guidance": "Johnny’s recommends pinching growing tips of upright thyme types. Avoid transferring mature woody-plant cutting practices to a small young plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Pinza las puntas erguidas después del establecimiento",
+          "guidance": "Johnny’s recomienda pinzar las puntas de tipos erguidos de tomillo. Evita trasladar prácticas de corte de plantas leñosas maduras a una planta joven y pequeña.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-thyme",
+          "ncsu-thymus-vulgaris"
+        ],
+        "en": {
+          "short": "Harvest lightly while young; use flowering as a stage cue",
+          "guidance": "Johnny’s describes lighter first-year stem harvest and larger cuts near flowering in later years; NC State provides common-thyme flowering context. These are species-level practices, not a cultivar distinction.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha con moderación cuando es joven y usa la floración como señal de etapa",
+          "guidance": "Johnny’s describe una cosecha más ligera de tallos durante el primer año y cortes mayores cerca de la floración en años posteriores; NC State aporta contexto de floración para el tomillo común. Son prácticas a nivel de especie, no una distinción de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "iceberg-lettuce": {
+    "summary": {
+      "en": "Iceberg is a crisphead type of Lactuca sativa. Head formation, bolting, and system-specific lettuce references should not be conflated with looseleaf harvest advice.",
+      "es": "Iceberg es un tipo arrepollado de Lactuca sativa. La formación de cabeza, el espigado y las referencias de lechuga según sistema no deben confundirse con consejos de cosecha de hoja suelta."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-lettuce"
+        ],
+        "en": {
+          "short": "Bolting moves the plant away from head-quality growth",
+          "guidance": "A rising seed stalk indicates reproductive transition in lettuce and can compromise head quality. This does not provide a cultivar-specific temperature threshold.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El espigado aleja a la planta del crecimiento de calidad para cabeza",
+          "guidance": "Un tallo con semillas ascendente indica una transición reproductiva en la lechuga y puede perjudicar la calidad de la cabeza. Esto no aporta un umbral térmico específico del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "hydroponics": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uf-hydro-lettuce",
+          "okstate-ecph"
+        ],
+        "en": {
+          "short": "Lettuce nutrient references depend on the production method",
+          "guidance": "UF/IFAS and Oklahoma State provide lettuce-level solution ranges in different production contexts. They are not an Iceberg-specific recipe and do not establish pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las referencias nutritivas para lechuga dependen del método de producción",
+          "guidance": "UF/IFAS y Oklahoma State ofrecen rangos de solución para lechuga en distintos contextos de producción. No son una receta específica para Iceberg ni establecen separación entre cápsulas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "italian-giant-parsley": {
+    "summary": {
+      "en": "Italian Giant is represented as a flat-leaf type of Petroselinum crispum. Parsley’s biennial flowering is a stage change, not ordinary pruning.",
+      "es": "Italian Giant se representa como tipo de hoja plana de Petroselinum crispum. La floración bienal del perejil es un cambio de etapa, no una poda rutinaria."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-parsley"
+        ],
+        "en": {
+          "short": "Biennial flowering changes the leaf-production phase",
+          "guidance": "Parsley is biennial. Reproductive growth indicates a stage transition; it should not be treated as an ordinary pruning event. This is species-level guidance, not a cultivar-specific schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La floración bienal cambia la fase de producción de hojas",
+          "guidance": "El perejil es bienal. El crecimiento reproductivo indica un cambio de etapa y no debe tratarse como una poda rutinaria. Es una guía a nivel de especie, no un calendario específico del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "italian-oregano": {
+    "summary": {
+      "en": "The packet identity remains unresolved within Origanum. Species-specific cultivation claims are withheld until the identity is verified.",
+      "es": "La identidad del paquete sigue sin resolverse dentro de Origanum. Se retienen las afirmaciones de cultivo específicas de especie hasta verificar la identidad."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": [],
+        "en": {
+          "short": "Identity resolution needed",
+          "guidance": "The available material does not establish which Origanum species or named type this identity represents. Greek oregano evidence is not promoted to this unresolved packet. Taxonomy and species-specific plant guidance remain pending.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se necesita resolver la identidad",
+          "guidance": "El material disponible no establece qué especie de Origanum ni qué tipo con nombre representa esta identidad. La evidencia de orégano griego no se atribuye a este paquete sin resolver. La taxonomía y la guía de planta específica de especie siguen pendientes.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "lavender-vera": {
+    "summary": {
+      "en": "Vera is listed as a variety of English lavender. Flower harvest timing depends on the intended use, while persistently wet roots are a documented concern.",
+      "es": "Vera aparece como variedad de lavanda inglesa. El momento de cosecha floral depende del uso previsto, mientras que las raíces persistentemente húmedas son una preocupación documentada."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-lavender",
+          "usu-lavender"
+        ],
+        "en": {
+          "short": "Harvest flower spikes according to the intended use",
+          "guidance": "Johnny’s harvest guidance targets spikes just before flowers open; Utah State describes cutting for dried flowers after the first flowers open. The sources differ by use, so no universal timing is asserted.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha las espigas florales según el uso previsto",
+          "guidance": "La guía de cosecha de Johnny’s apunta a cortar las espigas justo antes de abrirse las flores; Utah State describe el corte para secado cuando se abren las primeras. Las fuentes varían según el uso, por lo que no se afirma un momento universal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-lavender"
+        ],
+        "en": {
+          "short": "Persistently saturated root conditions raise root-rot concern",
+          "guidance": "Utah State Extension warns against saturated conditions and notes root-rot risk. In a hydroponic setting, this does not by itself diagnose a problem; assess root appearance and system conditions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La saturación persistente de las raíces aumenta la preocupación por pudrición",
+          "guidance": "Utah State Extension advierte sobre condiciones saturadas y señala riesgo de pudrición radicular. En hidroponía, esto por sí solo no diagnostica un problema; evalúa el aspecto de las raíces y las condiciones del sistema.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "marigold-jolly-jester": {
+    "summary": {
+      "en": "Jolly Jester is represented as a Tagetes patula packet variety. Extension guidance includes marigolds in some companion-planting practices, but that does not prove every pest-control pairing.",
+      "es": "Jolly Jester se representa como una variedad comercial de Tagetes patula. La guía de extensión incluye caléndulas francesas en algunas prácticas de asociación, pero eso no demuestra toda combinación para control de plagas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-companion-2025"
+        ],
+        "en": {
+          "short": "Companion-planting claims need specific evidence",
+          "guidance": "Utah State Extension includes marigolds among plants used near some vulnerable vegetables. This supports reporting that practice, not a universal claim that Jolly Jester repels all pests or benefits every neighbor.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las afirmaciones de asociación requieren evidencia específica",
+          "guidance": "Utah State Extension incluye caléndulas entre las plantas usadas cerca de algunos vegetales vulnerables. Esto respalda informar esa práctica, no afirmar universalmente que Jolly Jester repele todas las plagas o beneficia a cualquier vecina.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "petunia-dwarf-bedding-mixed": {
+    "summary": {
+      "en": "Dwarf Bedding Mixed Colors is a product-level petunia mix, not a resolved species or named cultivar. Supplier guidance describes compact bedding use and continuous flowering.",
+      "es": "Dwarf Bedding Mixed Colors es una mezcla comercial de petunias, no una especie ni un cultivar con nombre resueltos. El proveedor describe un uso compacto en macizos y floración continua."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-petunia-dwarf"
+        ],
+        "en": {
+          "short": "The product is sold for continuous seasonal bloom",
+          "guidance": "The supplier describes heavy, continuous flowering from spring toward frost for this product. Do not infer a specific Petunia species or cultivar from the mixed-color label.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El producto se ofrece para una floración estacional continua",
+          "guidance": "El proveedor describe una floración abundante y continua desde primavera hasta las heladas para este producto. No infieras una especie o cultivar específico de Petunia a partir de la etiqueta de mezcla de colores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "thinning": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-petunia-dwarf"
+        ],
+        "en": {
+          "short": "Thin after seedlings are established",
+          "guidance": "The supplier directs thinning after establishment. Its product instructions do not establish a universal hydroponic pod count.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Realiza el raleo después de que las plántulas se establezcan",
+          "guidance": "El proveedor indica ralear después del establecimiento. Sus instrucciones de producto no establecen una cantidad universal de cápsulas hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "rosemary": {
+    "summary": {
+      "en": "Rosemary is a slow-growing woody herb. A commercial production reference gives an approximate start to stem-tip harvest, but actual vigor and establishment remain more useful than a calendar promise.",
+      "es": "El romero es una hierba leñosa de crecimiento lento. Una referencia comercial de producción da un inicio aproximado para cosechar puntas, pero el vigor y establecimiento reales son más útiles que una promesa de calendario."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-rosemary"
+        ],
+        "en": {
+          "short": "Stem-tip harvest is reported after an extended production period",
+          "guidance": "Johnny’s production reference lists roughly 80–100 days from planting for stem-tip harvest. This is a source-specific estimate, not a guaranteed home-growing countdown or a cultivar-specific value.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La cosecha de puntas de tallo se reporta tras un periodo de producción prolongado",
+          "guidance": "La referencia de producción de Johnny’s indica aproximadamente 80–100 días desde la siembra para cosechar puntas de tallo. Es una estimación específica de la fuente, no una cuenta regresiva garantizada para casa ni un valor propio de un cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "sunflower-american-giant-hybrid": {
+    "summary": {
+      "en": "American Giant Hybrid is a tall named sunflower selection. Its source-described flowers and mature seed heads support ornamental, pollinator, and seed uses; size makes small indoor systems a poor fit.",
+      "es": "American Giant Hybrid es una selección alta de girasol con nombre. Sus flores y cabezuelas maduras descritas por la fuente respaldan usos ornamentales, para polinizadores y semillas; su tamaño no encaja bien en sistemas interiores pequeños."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ferry-sunflower-american-giant"
+        ],
+        "en": {
+          "short": "Large flowers and mature heads support ornamental and wildlife value",
+          "guidance": "The supplier describes large flowers with pollinator value and mature seed heads used by birds. These product-specific claims do not establish indoor or hydroponic suitability.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores grandes y cabezuelas maduras aportan valor ornamental y para fauna",
+          "guidance": "El proveedor describe flores grandes con valor para polinizadores y cabezuelas maduras aprovechadas por aves. Estas afirmaciones específicas del producto no establecen aptitud interior o hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-sunflower-american-giant"
+        ],
+        "en": {
+          "short": "Flowers and fully mature seed heads are distinct harvest endpoints",
+          "guidance": "The supplier describes ornamental bloom and edible seed harvest after heads mature and dry. This does not imply that immature heads are ready for seed harvest.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores y las cabezuelas con semillas plenamente maduras son cosechas distintas",
+          "guidance": "El proveedor describe la flor ornamental y la cosecha de semillas comestibles después de que las cabezuelas maduran y se secan. Esto no implica que las cabezuelas inmaduras estén listas para cosechar semillas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "sunflower-autumn-beauty": {
+    "summary": {
+      "en": "Autumn Beauty is a branching mixed-color sunflower selection. Deadheading may prolong display, while leaving mature heads supports seed and bird use.",
+      "es": "Autumn Beauty es una selección de girasol ramificada y de varios colores. Retirar flores marchitas puede prolongar la exhibición, mientras que dejar cabezuelas maduras permite el uso de semillas y alimento para aves."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ferry-sunflower-autumn-beauty"
+        ],
+        "en": {
+          "short": "Deadhead faded flowers when extending the display is the goal",
+          "guidance": "The supplier recommends removing faded flowers to prolong bloom. This is display management; it does not imply that every head should be removed when seed or bird use is desired.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Retira las flores marchitas si buscas prolongar la exhibición",
+          "guidance": "El proveedor recomienda retirar flores marchitas para prolongar la floración. Es manejo ornamental; no implica quitar todas las cabezuelas cuando se desean semillas o alimento para aves.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ferry-sunflower-autumn-beauty"
+        ],
+        "en": {
+          "short": "The named mix is described for multicolor branching blooms",
+          "guidance": "The supplier describes gold, rust, orange, and red flowers and pollinator value for this named mix. These are product-level characteristics, not universal sunflower traits.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La mezcla con nombre se describe por sus flores ramificadas y multicolores",
+          "guidance": "El proveedor describe flores doradas, óxido, naranjas y rojas, además de valor para polinizadores, para esta mezcla con nombre. Son características del producto, no rasgos universales de los girasoles.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "sweet-basil": {
+    "summary": {
+      "en": "Sweet basil supports repeat harvest when cuts preserve active nodes and enough foliage. Removing flower buds is relevant when the goal is continued leaf production.",
+      "es": "La albahaca dulce permite cosechas repetidas cuando los cortes conservan nudos activos y suficiente follaje. Retirar botones florales es pertinente cuando se busca mantener la producción de hojas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-sweet-basil"
+        ],
+        "en": {
+          "short": "Harvest stems while preserving active growth points",
+          "guidance": "The cited sweet-basil product guidance recommends stem harvest that leaves active nodes and enough foliage for continued growth. This is not a quantified yield guarantee.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha tallos conservando los puntos de crecimiento activos",
+          "guidance": "La guía citada del producto de albahaca dulce recomienda cosechar tallos dejando nudos activos y suficiente follaje para continuar creciendo. No es una garantía cuantificada de rendimiento.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-sweet-basil"
+        ],
+        "en": {
+          "short": "Remove flower buds when leaf production is the priority",
+          "guidance": "The cited supplier recommends removing flower buds to encourage fuller, leafier growth for culinary harvest. The advice is tied to that production goal, not a rule that flowering is abnormal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Retira los botones florales cuando priorices la producción de hojas",
+          "guidance": "El proveedor citado recomienda retirar botones florales para favorecer un crecimiento más frondoso y foliar cuando se prioriza la cosecha culinaria. El consejo depende de ese objetivo; no significa que la floración sea anormal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "zinnia-lilliput-mixed": {
+    "summary": {
+      "en": "Lilliput mixed zinnias are described as compact summer flowers for bedding and cutting. Deadheading and airflow are useful management considerations within the supplier’s scope.",
+      "es": "Las zinnias Lilliput en mezcla se describen como flores estivales compactas para macizos y corte. Retirar flores marchitas y mantener ventilación son aspectos útiles dentro del alcance del proveedor."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ferry-zinnia-lilliput"
+        ],
+        "en": {
+          "short": "Remove faded blooms to prolong flowering",
+          "guidance": "The supplier recommends deadheading through the season. This is the cited maintenance approach; no cultivar-specific disease resistance is claimed.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Retira las flores marchitas para prolongar la floración",
+          "guidance": "El proveedor recomienda retirar flores marchitas durante la temporada. Este es el manejo citado; no se afirma resistencia a enfermedades específica del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-zinnia-lilliput"
+        ],
+        "en": {
+          "short": "The named mix is marketed for cut flowers as well as bedding",
+          "guidance": "The supplier describes Lilliput as suitable for long-lasting cut flowers and bedding use. This product claim does not guarantee vase life under every harvest condition.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La mezcla con nombre se comercializa para flor de corte y para macizos",
+          "guidance": "El proveedor describe Lilliput como adecuada para flores de corte duraderas y para macizos. Esta afirmación del producto no garantiza la duración en florero en cualquier condición de cosecha.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ferry-zinnia-lilliput"
+        ],
+        "en": {
+          "short": "The mix is described for summer color and pollinator value",
+          "guidance": "The supplier describes long summer color and pollinator value. The mix identity is retained; no uniform flower color or named single cultivar is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La mezcla se describe por su color de verano y valor para polinizadores",
+          "guidance": "El proveedor describe color prolongado durante el verano y valor para polinizadores. Se conserva la identidad de mezcla; no se infiere un color uniforme ni un único cultivar con nombre.",
           "items": [],
           "avoid": "",
           "context": ""

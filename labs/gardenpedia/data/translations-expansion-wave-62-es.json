@@ -1,0 +1,35 @@
+{
+  "taro-colocasia-esculenta": {
+    "summary":"Una perenne tropical que forma cormos y se cultiva por su cormo comestible rico en almidón y, en algunas tradiciones culinarias, por sus hojas y pecíolos. Esta ficha es de Colocasia esculenta; otras aráceas llamadas oreja de elefante o malanga no son identidades intercambiables.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Colocasia esculenta. NC State describe el taro como una perenne herbácea tierna de Araceae que crece desde un cormo. Nombres comunes como oreja de elefante y malanga también pueden referirse a otras aráceas; esta ficha se limita a C. esculenta."},
+      "growth":{"guidance":"NC State describe una perenne en grupos con hojas grandes, acorazonadas a sagitadas. Las dimensiones de jardín varían según el cultivo y no se presentan como tamaño de maceta o sistema interior."},
+      "cultivation":{"guidance":"NC State recomienda sombra parcial o luz filtrada y suelo rico que retenga humedad. UF/IFAS documenta producción de taro tanto en contextos húmedos como secos; esos sistemas agrícolas no demuestran aptitud hidropónica. En el contexto paisajístico citado, evita que la planta se seque y protégela del viento fuerte."},
+      "propagation":{"guidance":"La fuente seleccionada de NC State enumera la división como método práctico; UF/IFAS describe el uso de material de propagación en forma de cormo. Esta ficha no afirma un protocolo de semilla para el cultivo alimentario representado."},
+      "harvestUse":{"guidance":"El cormo comestible es un cultivo alimentario rico en almidón. CTAHR de la Universidad de Hawái indica que los cormos, hojas y pecíolos de taro deben cocinarse antes de comerlos por la acritud asociada a cristales de oxalato de calcio; no los comas crudos. Esto no certifica la seguridad de otras plantas llamadas taro."},
+      "problems":{"guidance":"NC State informa irritación oral relacionada con oxalato de calcio y clasifica todas las partes de la planta como tóxicas salvo que se cocinen. Mantén el material crudo lejos de niños y mascotas; sigue orientación alimentaria para taro correctamente identificado, en vez de usar hojas o cormos crudos."}
+    }
+  },
+  "cassava-manihot-esculenta": {
+    "summary":"Un arbusto tropical cultivado por sus raíces de reserva ricas en almidón y que suele establecerse mediante esquejes de tallo. Las raíces y hojas de yuca requieren cocción adecuada; los compuestos cianogénicos hacen inseguro el consumo crudo, y esta ficha no identifica el tipo dulce o amargo.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Manihot esculenta. UF/IFAS usa cassava para esta especie y enumera yuca, mandioca y manioc entre sus nombres comunes. La ficha no asigna tipo dulce/amargo ni un cultivar nombrado."},
+      "growth":{"guidance":"UF/IFAS describe la yuca como arbusto perenne de tallos erectos y raíces de reserva ricas en almidón. Las dimensiones de paisaje y cultivo en Florida son regionales y no se presentan como especificaciones de interior."},
+      "cultivation":{"guidance":"UF/IFAS informa que las raíces comestibles requieren aproximadamente ocho a once meses sin heladas en su contexto de cultivo floridano y describe siembra en condiciones cálidas. Estos tiempos regionales no son una garantía universal de cosecha."},
+      "propagation":{"guidance":"UF/IFAS recomienda plantar segmentos cortos de tallo para propagar. Esta ficha representa un cultivo de material vegetativo; no ofrece protocolo de germinación o plántula."},
+      "harvestUse":{"guidance":"UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. También advierte que la yuca contiene compuestos cianogénicos: las raíces y hojas no deben comerse crudas y requieren pelado y cocción adecuados. El tipo dulce/amargo y un método completo de procesamiento no están establecidos para esta identidad."},
+      "problems":{"guidance":"UF/IFAS documenta toxicidad relacionada con ácido cianhídrico y distingue tipos de menor y mayor contenido cianogénico. Esta ficha no determina qué tipo tienes; no comas raíces ni hojas crudas ni supongas que una preparación genérica vuelve seguro un tipo desconocido."}
+    }
+  },
+  "black-eyed-pea-vigna-unguiculata-unguiculata": {
+    "summary":"Un cultivo de caupí de temporada cálida que se cosecha por sus guisantes frescos desgranados o semillas secas. Se representa en el nivel de subespecie aceptada y forma de cultivo, sin asignar un cultivar específico de ojo negro; el frijol espárrago es otra forma hortícola asociada a subsp. sesquipedalis.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Vigna unguiculata y enumera subsp. unguiculata entre sus taxones infraespecíficos aceptados. Clemson Extension agrupa el guisante de ojo negro, el guisante sureño y el caupí dentro de este cultivo. La ficha no es de un cultivar nombrado y se distingue por su uso del frijol espárrago, asociado a otra subespecie."},
+      "growth":{"guidance":"Clemson Extension describe los guisantes sureños como legumbres anuales de temporada cálida que producen vainas y semillas comestibles. Las formas de caupí varían entre arbustivas y trepadoras; esta ficha de cultivo a nivel de especie no asigna porte ni dimensiones de un cultivar no especificado."},
+      "cultivation":{"guidance":"Virginia Cooperative Extension informa que los guisantes sureños necesitan suelo cálido y describe profundidades y separaciones regionales según el tipo arbustivo o trepador. Clemson Extension señala sensibilidad a heladas y siembra de temporada cálida. Las recomendaciones de campo no equivalen a separación de pods interiores y no se representa un cultivar exacto."},
+      "propagation":{"guidance":"La guía de Extensión seleccionada establece los guisantes sureños desde semilla en suelo cálido. Consulta el Perfil de Semilla para indicaciones de siembra; esta sección solo describe el método de propagación y no implica que la germinación y el cultivo adulto compartan los mismos requisitos."},
+      "harvestUse":{"guidance":"Clemson Extension describe el uso de guisantes sureños desgranados frescos, procesados en estado verde o dejados secar en la planta. La forma de cosecha es una distinción de uso del cultivo, no una fecha de madurez de un cultivar específico."},
+      "problems":{"guidance":"NC State informa que Vigna unguiculata no tolera las heladas ni los suelos anegados. La guía cálida es regional y aquí no se establece resistencia a plagas de un cultivar."}
+    }
+  }
+}

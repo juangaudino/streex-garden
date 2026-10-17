@@ -74,6 +74,8 @@ const plantFiles = [
   "plants-expansion-wave-59.json",
   "plants-expansion-wave-60.json",
   "plants-expansion-wave-61.json",
+  "plants-expansion-wave-62.json",
+  "plants-expansion-wave-63.json",
   "plants-requests.json",
 ];
 const sourceFiles = [
@@ -143,12 +145,21 @@ const sourceFiles = [
   "sources-expansion-wave-59.json",
   "sources-expansion-wave-60.json",
   "sources-expansion-wave-61.json",
+  "sources-expansion-wave-62.json",
+  "sources-expansion-wave-63.json",
   "sources-requests.json",
 ];
 const read = (file) =>
   JSON.parse(fs.readFileSync(path.join(dataDir, file), "utf8"));
 const plants = plantFiles.flatMap(read);
+const identityAliases = read("plant-identity-aliases-v1.json").aliases;
+const aliasIds = new Set(identityAliases.map((alias) => alias.aliasId));
+const canonicalIdByAlias = new Map(
+  identityAliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),
+);
+const profileEnrichments = read("plant-profile-enrichment-v1.json");
 const sources = loadSourceRegistry(dataDir, sourceFiles);
+const publicSources = loadSourceRegistry(dataDir, sourceFiles, { publicOnly: true });
 const sourceIds = new Set(sources.map((source) => source.id));
 const plantIds = new Set();
 const wave1Plants = read("plants-expansion-wave-1.json");
@@ -212,6 +223,8 @@ const wave58Plants = read("plants-expansion-wave-58.json");
 const wave59Plants = read("plants-expansion-wave-59.json");
 const wave60Plants = read("plants-expansion-wave-60.json");
 const wave61Plants = read("plants-expansion-wave-61.json");
+const wave62Plants = read("plants-expansion-wave-62.json");
+const wave63Plants = read("plants-expansion-wave-63.json");
 const wave1Translations = read("translations-expansion-wave-1-es.json");
 const wave2Translations = read("translations-expansion-wave-2-es.json");
 const wave3Translations = read("translations-expansion-wave-3-es.json");
@@ -273,6 +286,8 @@ const wave58Translations = read("translations-expansion-wave-58-es.json");
 const wave59Translations = read("translations-expansion-wave-59-es.json");
 const wave60Translations = read("translations-expansion-wave-60-es.json");
 const wave61Translations = read("translations-expansion-wave-61-es.json");
+const wave62Translations = read("translations-expansion-wave-62-es.json");
+const wave63Translations = read("translations-expansion-wave-63-es.json");
 const wave1SeedProfiles = read("seed-profiles-expansion-wave-1.json");
 const wave2SeedProfiles = read("seed-profiles-expansion-wave-2.json");
 const wave3SeedProfiles = read("seed-profiles-expansion-wave-3.json");
@@ -407,7 +422,10 @@ const wavePlantIds = new Set([
   ...wave59PlantIds,
   ...wave60PlantIds,
   ...wave61PlantIds,
+  ...new Set(wave62Plants.map((plant) => plant.id)),
+  ...new Set(wave63Plants.map((plant) => plant.id)),
 ]);
+for (const aliasId of aliasIds) wavePlantIds.delete(aliasId);
 
 function collectSourceIds(value, result = new Set()) {
   if (Array.isArray(value))
@@ -455,6 +473,28 @@ for (const plant of plants) {
 if (plants.length < 500 || plantIds.size !== plants.length)
   throw new Error(
     `Expected at least 500 unique identities, got ${plants.length}/${plantIds.size}`,
+  );
+for (const alias of identityAliases) {
+  if (
+    !alias.aliasId ||
+    !alias.canonicalPlantId ||
+    alias.aliasId === alias.canonicalPlantId ||
+    !plantIds.has(alias.aliasId) ||
+    !plantIds.has(alias.canonicalPlantId) ||
+    !Array.isArray(alias.sourceIds) ||
+    alias.sourceIds.length === 0 ||
+    alias.sourceIds.some((id) => !sourceIds.has(id))
+  )
+    throw new Error(`Invalid Gardenpedia identity alias: ${alias.aliasId}`);
+}
+if (aliasIds.size !== identityAliases.length)
+  throw new Error("Duplicate Gardenpedia identity alias IDs");
+const canonicalPlantIds = new Set(
+  [...plantIds].filter((id) => !aliasIds.has(id)),
+);
+if (canonicalPlantIds.size < 500)
+  throw new Error(
+    `Expected at least 500 distinct canonical identities after alias reconciliation, got ${canonicalPlantIds.size}`,
   );
 if (
   wave1Plants.length !== 29 ||
@@ -639,6 +679,18 @@ if (wave60Plants.length !== 12 || Object.keys(wave60Translations).length !== wav
 if (wave61Plants.length !== 24 || Object.keys(wave61Translations).length !== wave61Plants.length || Object.keys(read("seed-profiles-expansion-wave-61.json").profiles).length !== 1)
   throw new Error("Wave 61 must contain twenty-four bilingual profiles and one evidence-supported Seed Profile");
 if (
+  wave62Plants.length !== 3 ||
+  Object.keys(wave62Translations).length !== wave62Plants.length ||
+  Object.keys(read("seed-profiles-expansion-wave-62.json").profiles).length !== 1
+)
+  throw new Error("Wave 62 must contain three bilingual profiles and one evidence-supported Seed Profile");
+if (
+  wave63Plants.length !== 3 ||
+  Object.keys(wave63Translations).length !== wave63Plants.length ||
+  Object.keys(read("seed-profiles-expansion-wave-63.json").profiles).length !== 2
+)
+  throw new Error("Wave 63 must contain three bilingual profiles and two evidence-supported Seed Profiles");
+if (
   [...wave1PlantIds].some(
     (id) =>
       wave2PlantIds.has(id) || wave3PlantIds.has(id) || wave4PlantIds.has(id) || wave5PlantIds.has(id) || wave6PlantIds.has(id) || wave7PlantIds.has(id),
@@ -712,6 +764,8 @@ for (const [waveName, waveData, translations] of [
   ["Wave 59", wave59Plants, wave59Translations],
   ["Wave 60", wave60Plants, wave60Translations],
   ["Wave 61", wave61Plants, wave61Translations],
+  ["Wave 62", wave62Plants, wave62Translations],
+  ["Wave 63", wave63Plants, wave63Translations],
 ])
   for (const plant of waveData) {
     const translation = translations[plant.id];
@@ -724,8 +778,43 @@ for (const [waveName, waveData, translations] of [
         );
   }
 const allSourceRefs = collectSourceIds(plants);
+identityAliases.forEach((alias) =>
+  alias.sourceIds.forEach((id) => allSourceRefs.add(id)),
+);
 if ([...allSourceRefs].some((id) => !sourceIds.has(id)))
   throw new Error("Unresolved source reference in catalog");
+const profileEnrichmentIds = new Set();
+for (const profile of profileEnrichments) {
+  if (!plantIds.has(profile.id) || profileEnrichmentIds.has(profile.id))
+    throw new Error(`Profile enrichment is duplicate or unpublished: ${profile.id}`);
+  profileEnrichmentIds.add(profile.id);
+  if (!profile.summary?.en || !profile.summary?.es)
+    throw new Error(`Profile enrichment is not bilingual: ${profile.id}`);
+  if (/user zero|owned seed|seed lot|inventory|garden position|ycube|owner_id|seed_package_id/i.test(JSON.stringify(profile.summary)))
+    throw new Error(`Private-context text found in public profile summary: ${profile.id}`);
+  for (const [sectionId, section] of Object.entries(profile.sections || {})) {
+    if (/germination|sowing|seed/i.test(sectionId))
+      throw new Error(`Seed-stage content must stay out of Plant Profile: ${profile.id}.${sectionId}`);
+    if (
+      !section.short?.en ||
+      !section.short?.es ||
+      !section.guidance?.en ||
+      !section.guidance?.es
+    )
+      throw new Error(`Profile enrichment section is incomplete: ${profile.id}.${sectionId}`);
+    if (!['source_backed', 'garden_adaptation', 'needs_validation'].includes(section.evidenceType))
+      throw new Error(`Invalid profile enrichment evidence type: ${profile.id}.${sectionId}`);
+    if (!['high', 'medium', 'low', 'pending'].includes(section.confidence))
+      throw new Error(`Invalid profile enrichment confidence: ${profile.id}.${sectionId}`);
+    if (section.evidenceType !== 'needs_validation' && !(section.sourceIds || []).length)
+      throw new Error(`Sourced profile enrichment has no provenance: ${profile.id}.${sectionId}`);
+    for (const sourceId of section.sourceIds || [])
+      if (!sourceIds.has(sourceId))
+        throw new Error(`Unresolved profile enrichment source ${sourceId} in ${profile.id}`);
+    if (/user zero|owned seed|seed lot|inventory|garden position|ycube|owner_id|seed_package_id/i.test(JSON.stringify(section)))
+      throw new Error(`Private-context text found in public profile enrichment: ${profile.id}.${sectionId}`);
+  }
+}
 const taxonomy = JSON.parse(
   fs.readFileSync(
     path.join(
@@ -789,21 +878,25 @@ const allSeedProfileFiles = [
   read("seed-profiles-expansion-wave-59.json"),
   read("seed-profiles-expansion-wave-60.json"),
   read("seed-profiles-expansion-wave-61.json"),
+  read("seed-profiles-expansion-wave-62.json"),
+  read("seed-profiles-expansion-wave-63.json"),
 ];
-const seedProfileCount = allSeedProfileFiles.reduce(
-  (sum, bundle) => sum + Object.keys(bundle.profiles || {}).length,
-  0,
-);
-if (seedProfileCount !== 326)
-  throw new Error(
-    `Expected 326 published Seed Profiles, got ${seedProfileCount}`,
-  );
-const seedProfileIds = new Set(
-  allSeedProfileFiles.flatMap((bundle) => Object.keys(bundle.profiles || {})),
-);
-if (seedProfileIds.size !== seedProfileCount)
-  throw new Error("Duplicate Seed Profile identity IDs");
-if ([...seedProfileIds].some((id) => !plantIds.has(id)))
+const seedProfileByCanonicalId = new Map();
+for (const bundle of allSeedProfileFiles) {
+  for (const [id, profile] of Object.entries(bundle.profiles || {})) {
+    if (!aliasIds.has(id)) seedProfileByCanonicalId.set(id, profile);
+  }
+}
+for (const bundle of allSeedProfileFiles) {
+  for (const [id, profile] of Object.entries(bundle.profiles || {})) {
+    const canonicalId = canonicalIdByAlias.get(id);
+    if (canonicalId && !seedProfileByCanonicalId.has(canonicalId))
+      seedProfileByCanonicalId.set(canonicalId, profile);
+  }
+}
+const seedProfileIds = new Set(seedProfileByCanonicalId.keys());
+const seedProfileCount = seedProfileIds.size;
+if ([...seedProfileIds].some((id) => !canonicalPlantIds.has(id)))
   throw new Error("Seed Profile references an unpublished plant identity");
 const propagationGuidance = read("propagation-guidance-v1.json");
 if (
@@ -841,18 +934,25 @@ for (const [plantId, record] of Object.entries(propagationGuidance.records)) {
       `Pending propagation guidance must not cite unsupported sources: ${plantId}`,
     );
 }
-for (const plantId of plantIds) {
+for (const plantId of canonicalPlantIds) {
   const hasSeedProfile = seedProfileIds.has(plantId);
-  const hasPropagationGuidance = Object.hasOwn(
-    propagationGuidance.records,
-    plantId,
+  const aliasPropagation = [...canonicalIdByAlias].find(
+    ([aliasId, canonicalId]) =>
+      canonicalId === plantId &&
+      Object.hasOwn(propagationGuidance.records, aliasId),
   );
+  const propagationRecord =
+    propagationGuidance.records[plantId] ||
+    (aliasPropagation
+      ? propagationGuidance.records[aliasPropagation[0]]
+      : null);
+  const hasPropagationGuidance = Boolean(propagationRecord);
   if (!hasSeedProfile && !hasPropagationGuidance)
     throw new Error(`Identity is missing from public Seeds / Propagation: ${plantId}`);
   if (
     hasSeedProfile &&
     hasPropagationGuidance &&
-    propagationGuidance.records[plantId].classification !== "vegetative_preferred"
+    propagationRecord.classification !== "vegetative_preferred"
   )
     throw new Error(`Identity has incompatible seed and propagation records: ${plantId}`);
 }
@@ -864,51 +964,8 @@ for (const id of [
   if (wave3SeedProfiles.profiles?.[id])
     throw new Error(`Wave 3 must not create a Seed Profile for ${id}`);
 const publicText = JSON.stringify({
-  plants: [...wave1Plants, ...wave2Plants, ...wave3Plants, ...wave4Plants, ...wave5Plants, ...wave6Plants, ...wave7Plants, ...wave8Plants, ...wave9Plants, ...wave10Plants, ...wave11Plants, ...wave12Plants, ...wave13Plants, ...wave14Plants, ...wave15Plants, ...wave16Plants, ...wave17Plants, ...wave18Plants, ...wave19Plants, ...wave20Plants, ...wave21Plants, ...wave22Plants, ...wave23Plants, ...wave24Plants, ...wave25Plants, ...wave26Plants, ...wave27Plants, ...wave28Plants, ...wave29Plants, ...wave30Plants, ...wave31Plants, ...wave32Plants, ...wave33Plants, ...wave34Plants, ...wave35Plants, ...wave36Plants, ...wave37Plants, ...wave38Plants, ...wave39Plants, ...wave40Plants, ...wave41Plants, ...wave42Plants, ...wave43Plants, ...wave44Plants, ...wave45Plants, ...wave46Plants, ...wave47Plants, ...wave48Plants, ...wave49Plants, ...wave50Plants, ...wave51Plants, ...wave52Plants, ...wave53Plants, ...wave54Plants, ...wave55Plants, ...wave56Plants, ...wave57Plants, ...wave58Plants, ...wave59Plants, ...wave60Plants, ...wave61Plants],
-  sources: sources.filter(
-    (source) =>
-      source.id.endsWith("-wave1") ||
-      source.id.endsWith("-wave2") ||
-      source.id.endsWith("-wave3") ||
-      source.id.endsWith("-wave4") ||
-      source.id.endsWith("-wave26") ||
-      source.id.endsWith("-wave27") ||
-      source.id.endsWith("-wave28") ||
-      source.id.endsWith("-wave29") ||
-      source.id.endsWith("-wave30") ||
-      source.id.endsWith("-wave31") ||
-      source.id.endsWith("-wave32") ||
-      source.id.endsWith("-wave33") ||
-      source.id.endsWith("-wave34") ||
-      source.id.endsWith("-wave35") ||
-      source.id.endsWith("-wave36") ||
-      source.id.endsWith("-wave37") ||
-      source.id.endsWith("-wave38") ||
-      source.id.endsWith("-wave39") ||
-      source.id.endsWith("-wave40") ||
-      source.id.endsWith("-wave41") ||
-      source.id.endsWith("-wave42") ||
-      source.id.endsWith("-wave43") ||
-      source.id.endsWith("-wave44") ||
-      source.id.endsWith("-wave45") ||
-      source.id.endsWith("-wave46") ||
-      source.id.endsWith("-wave47") ||
-      source.id.endsWith("-wave48") ||
-      source.id.endsWith("-wave49") ||
-      source.id.endsWith("-wave50") ||
-      source.id.endsWith("-wave51") ||
-      source.id.endsWith("-wave52") ||
-      source.id.endsWith("-wave53") ||
-      source.id.endsWith("-wave54") ||
-      source.id.endsWith("-wave55") ||
-      source.id.endsWith("-wave56") ||
-      source.id.endsWith("-wave57") ||
-      source.id.endsWith("-wave58") ||
-      source.id.endsWith("-wave59") ||
-      source.id.endsWith("-wave60") ||
-      source.id.endsWith("-wave61") ||
-      source.id.endsWith("-500"),
-  ),
+  plants: [...wave1Plants, ...wave2Plants, ...wave3Plants, ...wave4Plants, ...wave5Plants, ...wave6Plants, ...wave7Plants, ...wave8Plants, ...wave9Plants, ...wave10Plants, ...wave11Plants, ...wave12Plants, ...wave13Plants, ...wave14Plants, ...wave15Plants, ...wave16Plants, ...wave17Plants, ...wave18Plants, ...wave19Plants, ...wave20Plants, ...wave21Plants, ...wave22Plants, ...wave23Plants, ...wave24Plants, ...wave25Plants, ...wave26Plants, ...wave27Plants, ...wave28Plants, ...wave29Plants, ...wave30Plants, ...wave31Plants, ...wave32Plants, ...wave33Plants, ...wave34Plants, ...wave35Plants, ...wave36Plants, ...wave37Plants, ...wave38Plants, ...wave39Plants, ...wave40Plants, ...wave41Plants, ...wave42Plants, ...wave43Plants, ...wave44Plants, ...wave45Plants, ...wave46Plants, ...wave47Plants, ...wave48Plants, ...wave49Plants, ...wave50Plants, ...wave51Plants, ...wave52Plants, ...wave53Plants, ...wave54Plants, ...wave55Plants, ...wave56Plants, ...wave57Plants, ...wave58Plants, ...wave59Plants, ...wave60Plants, ...wave61Plants, ...wave62Plants, ...wave63Plants],
+  sources: publicSources,
   wave1Translations,
   wave2Translations,
   wave3Translations,
@@ -970,6 +1027,8 @@ const publicText = JSON.stringify({
   wave59Translations,
   wave60Translations,
   wave61Translations,
+  wave62Translations,
+  wave63Translations,
   seedProfiles: [
     wave1SeedProfiles,
     wave2SeedProfiles,
@@ -1016,8 +1075,12 @@ const publicText = JSON.stringify({
     read("seed-profiles-expansion-wave-59.json"),
   read("seed-profiles-expansion-wave-60.json"),
   read("seed-profiles-expansion-wave-61.json"),
+    read("seed-profiles-expansion-wave-62.json"),
+    read("seed-profiles-expansion-wave-63.json"),
     read("seed-profiles-expansion-wave-46.json"),
   ],
+  identityAliases: read("plant-identity-aliases-v1.json"),
+  curatedPlantProfileEnrichment: read("plant-profile-enrichment-v1.json"),
   propagationGuidance,
 });
 if (

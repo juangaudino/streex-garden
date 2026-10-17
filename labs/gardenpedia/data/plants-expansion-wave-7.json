@@ -164,8 +164,13 @@
       "trigonella foenum-graecum",
       "fenogreco"
     ],
-    "summary": "Common fenugreek is the annual species Trigonella foenum-graecum. NC State Extension documents seed propagation, edible foliage and seeds, and warns that wet soils are unsuitable; no named cultivar is represented.",
-    "metrics": [],
+    "summary": "Common fenugreek is the annual species Trigonella foenum-graecum, grown for its foliage and mature seeds. NC State describes the species, while OMAFRA adds regional Ontario field-production and harvest context; no named cultivar or hydroponic recipe is represented.",
+    "metrics": [
+      {"label":"Mature height","value":"38–61 cm","note":"Species-level outdoor range · NC State Extension"},
+      {"label":"Ontario field context","value":"18–27 °C","note":"Regional crop-production range · OMAFRA"},
+      {"label":"Herb harvest","value":"30–40 days","note":"Ontario crop guidance; not a universal home-garden countdown · OMAFRA"},
+      {"label":"Seed production","value":"105–140 days","note":"Ontario crop guidance; distinct from leaf harvest · OMAFRA"}
+    ],
     "sections": {
       "identity": {
         "short": "Accepted identity: Trigonella foenum-graecum",
@@ -179,11 +184,12 @@
       },
       "cultivation": {
         "short": "Full sun; avoid persistently wet soil",
-        "guidance": "North Carolina Extension lists full sun, good drainage and an erect annual habit. Its soil and climate guidance is regional and is not converted to a hydroponic recipe.",
+        "guidance": "North Carolina Extension lists full sun and good drainage. OMAFRA describes fenugreek production in Ontario at 18–27°C, in well-drained loamy soil, and notes vegetative-stage frost tolerance; these are field-crop conditions, not an indoor or hydroponic prescription.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ]
       },
       "growth": {
@@ -201,29 +207,32 @@
       },
       "propagation": {
         "short": "Seed propagation is documented",
-        "guidance": "NC State lists seed as the propagation strategy. It does not provide a home-germination schedule, sowing depth or temperature in the selected page; those details remain unestablished here.",
+        "guidance": "NC State and OMAFRA identify seed as a propagation route. Detailed sowing, seed handling and germination evidence is kept in the linked Seed Profile rather than duplicated in established-plant care.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ]
       },
       "harvest": {
-        "short": "Foliage and mature seed have different uses",
-        "guidance": "NC State describes green plant parts as an herb/spice and mature seeds as a condiment. It cautions that seed harvest timing affects drying and leaf loss; no exact Garden harvest date is inferred.",
+        "short": "Leaf harvest and seed production follow different schedules",
+        "guidance": "NC State describes green plant parts as an herb/spice and mature seeds as a condiment. In Ontario production guidance, OMAFRA gives 30–40 days for herb harvest and 105–140 days for seed production, with earlier summer herb harvest sometimes needed to avoid flowering. These are regional crop ranges, not a universal home-garden countdown or named-cultivar promise.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ]
       },
       "problems": {
         "short": "Wet soils are a documented concern",
-        "guidance": "NC State warns that wet soils are unsuitable and lists several regional disease and pest concerns. This is a recognition cue, not a universal diagnosis or treatment prescription.",
+        "guidance": "NC State warns that wet soils are unsuitable. OMAFRA's limited Ontario crop observations include leafhoppers, tarnished plant bug, Alternaria leaf spot and root rot; it is a regional observation list, not a complete pest inventory or a diagnosis for an individual plant. OMAFRA notes good site selection and airflow as disease-pressure considerations.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-trigonella-foenum-graecum-500"
+          "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
         ]
       }
     },

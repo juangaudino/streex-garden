@@ -42,6 +42,8 @@ import seedProfilesWave58 from "../../../../../../labs/gardenpedia/data/seed-pro
 import seedProfilesWave59 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-59.json";
 import seedProfilesWave60 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-60.json";
 import seedProfilesWave61 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-61.json";
+import seedProfilesWave62 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-62.json";
+import seedProfilesWave63 from "../../../../../../labs/gardenpedia/data/seed-profiles-expansion-wave-63.json";
 import sources from "../../../../../../labs/gardenpedia/data/sources.json";
 import sourcesOwnedSeeds from "../../../../../../labs/gardenpedia/data/sources-owned-seeds.json";
 import sourcesWave1 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-1.json";
@@ -94,6 +96,8 @@ import sourcesWave57 from "../../../../../../labs/gardenpedia/data/sources-expan
 import sourcesWave58 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-58.json";
 import sourcesWave60 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-60.json";
 import sourcesWave61 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-61.json";
+import sourcesWave62 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-62.json";
+import sourcesWave63 from "../../../../../../labs/gardenpedia/data/sources-expansion-wave-63.json";
 import {
   seedProfileContentLevel,
   seedProfileSummaryForDisplay,
@@ -187,11 +191,30 @@ const profileBundles = [
   seedProfilesWave59,
   seedProfilesWave60,
   seedProfilesWave61,
+  seedProfilesWave62,
+  seedProfilesWave63,
 ] as readonly SeedProfileBundle[];
 
 const profileById = new Map<string, SeedProfileRecord>();
+const canonicalIdByAlias = new Map(
+  gardenLibraryManifest.identityAliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),
+);
 for (const bundle of profileBundles) {
-  for (const [id, profile] of Object.entries(bundle.profiles)) profileById.set(id, profile);
+  for (const [id, profile] of Object.entries(bundle.profiles)) {
+    if (canonicalIdByAlias.has(id)) continue;
+    profileById.set(id, { ...profile, plantIdentityId: id });
+  }
+}
+for (const bundle of profileBundles) {
+  for (const [id, profile] of Object.entries(bundle.profiles)) {
+    const canonicalId = canonicalIdByAlias.get(id);
+    if (canonicalId && !profileById.has(canonicalId)) {
+      profileById.set(canonicalId, {
+        ...profile,
+        plantIdentityId: canonicalId,
+      });
+    }
+  }
 }
 
 const sourceById = new Map<string, SourceRecord>();
@@ -248,6 +271,8 @@ for (const source of [
   sourcesWave58,
   sourcesWave60,
   sourcesWave61,
+  sourcesWave62,
+  sourcesWave63,
 ].flat()) {
   sourceById.set(source.id, source);
 }
@@ -376,7 +401,7 @@ function evidenceCounts(profile: SeedProfileRecord) {
 }
 
 export function findSeedProfile(id: string) {
-  return profileById.get(id) ?? null;
+  return profileById.get(canonicalIdByAlias.get(id) ?? id) ?? null;
 }
 
 export function buildSeedProfile(

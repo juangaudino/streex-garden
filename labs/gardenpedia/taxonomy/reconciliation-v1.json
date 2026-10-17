@@ -820,23 +820,6 @@
       "conflicts": []
     },
     {
-      "plantIdentityId": "parsnip",
-      "acceptedScientificName": "Pastinaca sativa",
-      "synonyms": [],
-      "family": "Apiaceae",
-      "genus": "Pastinaca",
-      "species": "sativa",
-      "cultivar": null,
-      "horticulturalType": "Parsnip type",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
-      "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
-      ],
-      "conflicts": []
-    },
-    {
       "plantIdentityId": "red-onion",
       "acceptedScientificName": "Allium cepa",
       "synonyms": [],
@@ -1049,23 +1032,6 @@
       "species": "argentea",
       "cultivar": null,
       "horticulturalType": "Plumosa type",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
-      "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
-      ],
-      "conflicts": []
-    },
-    {
-      "plantIdentityId": "rutabaga",
-      "acceptedScientificName": "Brassica napus",
-      "synonyms": [],
-      "family": "Brassicaceae",
-      "genus": "Brassica",
-      "species": "napus",
-      "cultivar": null,
-      "horticulturalType": "Rutabaga type",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -1791,23 +1757,6 @@
       "conflicts": []
     },
     {
-      "plantIdentityId": "snapdragon",
-      "acceptedScientificName": "Antirrhinum majus",
-      "synonyms": [],
-      "family": "Plantaginaceae",
-      "genus": "Antirrhinum",
-      "species": "majus",
-      "cultivar": null,
-      "horticulturalType": "Snapdragon type",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
-      "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
-      ],
-      "conflicts": []
-    },
-    {
       "plantIdentityId": "teddy-bear-sunflower",
       "acceptedScientificName": "Helianthus annuus",
       "synonyms": [],
@@ -1884,23 +1833,6 @@
       "species": "hirta",
       "cultivar": null,
       "horticulturalType": "Black-eyed Susan type",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
-      "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
-      ],
-      "conflicts": []
-    },
-    {
-      "plantIdentityId": "bachelor-button",
-      "acceptedScientificName": "Centaurea cyanus",
-      "synonyms": [],
-      "family": "Asteraceae",
-      "genus": "Centaurea",
-      "species": "cyanus",
-      "cultivar": null,
-      "horticulturalType": "Bachelor button type",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -5243,7 +5175,6 @@
     {"plantIdentityId":"horseradish-armoracia-rusticana","acceptedScientificName":"Armoracia rusticana","synonyms":[],"family":"Brassicaceae","genus":"Armoracia","species":"Armoracia rusticana","cultivar":null,"horticulturalType":"Horseradish species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-armoracia-rusticana-wave60","ncsu-horseradish-wave60"],"conflicts":["Horseradish is not the common radish Raphanus sativus; common names and edible root use should not merge the identities."]},
     {"plantIdentityId":"prickly-pear-opuntia-ficus-indica","acceptedScientificName":"Opuntia ficus-indica","synonyms":[],"family":"Cactaceae","genus":"Opuntia","species":"Opuntia ficus-indica","cultivar":null,"horticulturalType":"Domesticated edible nopal species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-opuntia-ficus-indica-wave60","arizona-opuntia-ficus-indica-wave60"],"conflicts":["Prickly pear is used for many Opuntia species; this entry is specifically O. ficus-indica, not a claim about all prickly pears."]},
     {"plantIdentityId":"society-garlic-tulbaghia-violacea","acceptedScientificName":"Tulbaghia violacea","synonyms":[],"family":"Amaryllidaceae","genus":"Tulbaghia","species":"Tulbaghia violacea","cultivar":null,"horticulturalType":"Society garlic species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-tulbaghia-violacea-wave61"],"conflicts":["Despite a garlic-like common name and aroma, this is Tulbaghia, not Allium sativum or garlic chives."]},
-    {"plantIdentityId":"cuban-oregano-plectranthus-amboinicus","acceptedScientificName":"Plectranthus amboinicus","synonyms":[],"family":"Lamiaceae","genus":"Plectranthus","species":"Plectranthus amboinicus","cultivar":null,"horticulturalType":"Cuban oregano / Indian borage species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-plectranthus-amboinicus-wave61"],"conflicts":["Cuban oregano is a common name and culinary resemblance, not an Origanum species identity."]},
     {"plantIdentityId":"moonflower-ipomoea-alba","acceptedScientificName":"Ipomoea alba","synonyms":[],"family":"Convolvulaceae","genus":"Ipomoea","species":"Ipomoea alba","cultivar":null,"horticulturalType":"Moonflower vine species; not Datura moonflower","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-ipomoea-alba-wave61"],"conflicts":["Moonflower is also used for Datura; this identity is specifically Ipomoea alba."]},
     {"plantIdentityId":"sweet-woodruff-galium-odoratum","acceptedScientificName":"Galium odoratum","synonyms":[],"family":"Rubiaceae","genus":"Galium","species":"Galium odoratum","cultivar":null,"horticulturalType":"Sweet woodruff species; shade groundcover","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-galium-odoratum-wave61"],"conflicts":[]},
     {"plantIdentityId":"sweet-scabiosa-scabiosa-atropurpurea","acceptedScientificName":"Scabiosa atropurpurea","synonyms":[],"family":"Caprifoliaceae","genus":"Scabiosa","species":"Scabiosa atropurpurea","cultivar":null,"horticulturalType":"Sweet scabiosa species; annual ornamental","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-scabiosa-atropurpurea-wave61"],"conflicts":["Pincushion flower is shared by other taxa; this record is limited to Scabiosa atropurpurea."]},
@@ -5266,5 +5197,11 @@
     {"plantIdentityId":"pink-turtlehead-chelone-obliqua","acceptedScientificName":"Chelone obliqua","synonyms":[],"family":"Plantaginaceae","genus":"Chelone","species":"Chelone obliqua","cultivar":null,"horticulturalType":"Pink turtlehead species; wet-site perennial","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-chelone-obliqua-wave61"],"conflicts":["The selected page is a species identity source and does not support propagation guidance for this entry."]},
     {"plantIdentityId":"green-columbine-aquilegia-viridiflora","acceptedScientificName":"Aquilegia viridiflora","synonyms":[],"family":"Ranunculaceae","genus":"Aquilegia","species":"Aquilegia viridiflora","cultivar":null,"horticulturalType":"Green columbine species; not genus-wide columbine guidance","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-aquilegia-viridiflora-wave61"],"conflicts":["Species-specific evidence is sparse; genus-level columbine traits are not assigned here."]},
     {"plantIdentityId":"flowering-tobacco-hybrid-nicotiana-sanderi","acceptedScientificName":"Nicotiana × sanderi","synonyms":[],"family":"Solanaceae","genus":"Nicotiana","species":"Nicotiana × sanderi","cultivar":null,"horticulturalType":"Nicotiana alata × N. forgetiana hybrid; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-nicotiana-sanderi-wave61"],"conflicts":["This hybrid is distinct from N. alata; product cultivars and compactness are not specified."]}
+    ,{"plantIdentityId":"taro-colocasia-esculenta","acceptedScientificName":"Colocasia esculenta","synonyms":["Colocasia antiquorum"],"family":"Araceae","genus":"Colocasia","species":"Colocasia esculenta","cultivar":null,"horticulturalType":"Taro food-crop identity; no named cultivar or horticultural subgroup assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-colocasia-esculenta-wave62","ncsu-colocasia-esculenta-wave62"],"conflicts":["Common names taro, malanga, dasheen, and elephant ear can refer to other aroids; this identity is specifically Colocasia esculenta."]},
+    {"plantIdentityId":"cassava-manihot-esculenta","acceptedScientificName":"Manihot esculenta","synonyms":[],"family":"Euphorbiaceae","genus":"Manihot","species":"Manihot esculenta","cultivar":null,"horticulturalType":"Cassava/yuca crop species; sweet/bitter type and cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-manihot-esculenta-wave62","ufifas-cassava-wave62"],"conflicts":["UF/IFAS distinguishes sweet and bitter cyanogenic types; this profile does not resolve type or cultivar and preserves food-safety uncertainty."]},
+    {"plantIdentityId":"black-eyed-pea-vigna-unguiculata-unguiculata","acceptedScientificName":"Vigna unguiculata subsp. unguiculata","synonyms":[],"family":"Fabaceae","genus":"Vigna","species":"Vigna unguiculata","cultivar":null,"horticulturalType":"Blackeye/southern-pea crop form associated with accepted subsp. unguiculata; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-vigna-unguiculata-wave62","clemson-southern-peas-wave62","ncsu-vigna-unguiculata-wave62"],"conflicts":["Common-name use overlaps broadly with cowpea; this identity is scoped to the blackeye/southern-pea crop form and kept distinct from V. unguiculata subsp. sesquipedalis yardlong bean."]},
+    {"plantIdentityId":"greater-galangal-alpinia-galanga","acceptedScientificName":"Alpinia galanga","synonyms":[],"family":"Zingiberaceae","genus":"Alpinia","species":"Alpinia galanga","cultivar":null,"horticulturalType":"Greater galangal culinary species; distinct from lesser galangal and other galangal-named taxa","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-alpinia-galanga-wave63","ufifas-ginger-turmeric-production-wave62"],"conflicts":["Common names galangal and Thai ginger also refer to other species; this identity is specifically A. galanga."]},
+    {"plantIdentityId":"common-sage-salvia-officinalis","acceptedScientificName":"Salvia officinalis","synonyms":[],"family":"Lamiaceae","genus":"Salvia","species":"Salvia officinalis","cultivar":null,"horticulturalType":"Common culinary sage species; no named cultivar assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-salvia-officinalis-wave63","uw-sage-salvia-officinalis-wave63"],"conflicts":["Common sage is distinct from pineapple sage (Salvia elegans), clary sage (S. sclarea), and named leaf-color cultivars."]},
+    {"plantIdentityId":"curry-leaf-tree-bergera-koenigii","acceptedScientificName":"Bergera koenigii","synonyms":["Murraya koenigii (L.) Spreng."],"family":"Rutaceae","genus":"Bergera","species":"Bergera koenigii","cultivar":null,"horticulturalType":"Curry-leaf tree species; no named compact or dwarf form assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-bergera-koenigii-wave63","ucanr-curry-leaf-wave63"],"conflicts":["Kew accepts Bergera koenigii and lists Murraya koenigii as a synonym; older horticultural and nursery references continue to use the synonym. This is one species identity, not two catalog records."]}
   ]
 }

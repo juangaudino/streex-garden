@@ -319,6 +319,26 @@ describe("lightweight public Seed library adapter", () => {
       propagationStatus: "source_backed",
       hasSeedProfile: false,
     });
+    expect(
+      all.find((card) => card.id === "greater-galangal-alpinia-galanga"),
+    ).toMatchObject({
+      propagationClass: "vegetative_preferred",
+      hasSeedProfile: false,
+    });
+    expect(all.find((card) => card.id === "taro-colocasia-esculenta")).toMatchObject({
+      propagationClass: "vegetative_preferred",
+      hasSeedProfile: false,
+    });
+    expect(
+      all.find((card) => card.id === "black-eyed-pea-vigna-unguiculata-unguiculata")
+        ?.hasSeedProfile,
+    ).toBe(true);
+    expect(
+      all.find((card) => card.id === "common-sage-salvia-officinalis")?.hasSeedProfile,
+    ).toBe(true);
+    expect(
+      all.find((card) => card.id === "curry-leaf-tree-bergera-koenigii")?.hasSeedProfile,
+    ).toBe(true);
     for (const id of [
       "pothos-epipremnum-aureum",
       "zz-plant-zamioculcas-zamiifolia",

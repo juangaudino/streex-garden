@@ -6,8 +6,8 @@
         "short": "Especie aceptada: Muenchhusia moscheutos",
         "guidance": "Kew acepta Muenchhusia moscheutos y considera Hibiscus moscheutos un sinónimo. Blush es una selección comercial de Gardyn, no un cultivar confirmado.",
         "items": [
-          "Kew acepta Muenchhusia moscheutos y considera Hibiscus moscheutos un sinónimo.",
-          "Blush es una selección comercial de Gardyn, no un cultivar confirmado."
+          "Distingue el nombre comercial Gardyn de un cultivar identificado formalmente.",
+          "Usa Muenchhusia moscheutos como nombre aceptado de la especie."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -15,7 +15,8 @@
         "short": "Cultivo documentado solo para Gardyn",
         "guidance": "Gardyn describe el manejo de su propio pod. No se extrapola a exteriores ni otros sistemas.",
         "items": [
-          "Gardyn describe el manejo de su propio pod."
+          "Sigue las instrucciones de Gardyn solo con el pod y sistema documentados.",
+          "Registra el sistema real y la respuesta de la planta antes de adaptar indicaciones."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -30,7 +31,11 @@
       "problems": {
         "short": "Problemas específicos sin evidencia",
         "guidance": "No hay evidencia suficiente para afirmar plagas o enfermedades particulares de esta selección.",
-        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar.",
+        "items": [
+          "Documenta síntomas con fotografías y fechas.",
+          "Evita diagnosticar una plaga o enfermedad concreta sin evidencia."
+        ]
       }
     }
   },
@@ -50,7 +55,8 @@
         "short": "Distinguir cultivo Gardyn del general",
         "guidance": "Gardyn documenta su pod; la orientación general de Extension no demuestra el rendimiento de esta selección en todos los sistemas.",
         "items": [
-          "Gardyn documenta su pod; la orientación general de Extension no demuestra el rendimiento de esta selección en todos los sistemas."
+          "Distingue los cuidados del producto Gardyn de las recomendaciones generales para petunias exteriores.",
+          "Registra el sistema y la iluminación reales sin suponer un montaje universal."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -63,7 +69,8 @@
         "short": "Despunte y recorte moderado",
         "guidance": "Extension describe retirar flores marchitas y recortar ligeramente petunias en general, no la respuesta exacta de esta selección.",
         "items": [
-          "Extension describe retirar flores marchitas y recortar ligeramente petunias en general, no la respuesta exacta de esta selección."
+          "Retira flores marchitas cuando corresponda para mantener la planta.",
+          "Recorta ligeramente según el crecimiento real, no por un calendario varietal supuesto."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -71,7 +78,8 @@
         "short": "Posibles ácaros",
         "guidance": "Gardyn menciona araña roja como posible plaga, sin demostrar una susceptibilidad exclusiva.",
         "items": [
-          "Gardyn menciona araña roja como posible plaga, sin demostrar una susceptibilidad exclusiva."
+          "Inspecciona las hojas en busca de ácaros si el daño sugiere plagas.",
+          "No diagnostiques araña roja solo por el nombre del producto."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }
@@ -93,8 +101,8 @@
         "short": "Cultivo de temporada fresca",
         "guidance": "NC State Extension describe la especie como ornamental de temporada fresca. Las instrucciones de Gardyn son específicas de su pod.",
         "items": [
-          "NC State Extension describe la especie como ornamental de temporada fresca.",
-          "Las instrucciones de Gardyn son específicas de su pod."
+          "Aplica la germinación de Gardyn únicamente al pod Gardyn.",
+          "Para exteriores, considera que es una especie de temporada fresca y verifica el clima local."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
@@ -109,13 +117,18 @@
       "harvest": {
         "short": "Uso ornamental; comestibilidad no verificada",
         "guidance": "Esta ficha no afirma seguridad alimentaria de la selección comercial.",
-        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar.",
+        "items": [
+          "Trata la selección comercial no identificada como ornamental.",
+          "No recomiendes comer sus flores sin comprobar la seguridad alimentaria del producto real."
+        ]
       },
       "problems": {
         "short": "Babosas, caracoles y hongos foliares",
         "guidance": "NC State Extension menciona estas posibilidades en la especie, sin confirmar un diagnóstico para una planta concreta.",
         "items": [
-          "NC State Extension menciona estas posibilidades en la especie, sin confirmar un diagnóstico para una planta concreta."
+          "Revisa babosas y caracoles si observas daños de alimentación.",
+          "Documenta las manchas foliares antes de atribuirlas a hongos."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }

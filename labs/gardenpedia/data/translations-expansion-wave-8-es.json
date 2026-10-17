@@ -26,11 +26,14 @@
     }
   },
   "romaine-lettuce": {
-    "summary": "La romana es un tipo hortícola de Lactuca sativa, no un cultivar nombrado. Esta identidad general no reemplaza Red Romaine ni los cultivares Breen y Pandero.",
+    "summary": "La romana es un tipo hortícola de Lactuca sativa, no un cultivar nombrado. Se describe su forma de cabeza y el manejo general sin atribuirle dimensiones, madurez o tolerancia al calor de un cultivar concreto.",
     "sections": {
-      "identity": { "guidance": "Kew acepta Lactuca sativa como la especie de la lechuga cultivada. Romaine/cos se representa como tipo hortícola sin asignarle cultivar. Las identidades de romana roja y de cultivares nombrados permanecen separadas." },
-      "cultivation": { "guidance": "Se usa orientación de lechuga al nivel del cultivo. La temperatura influye en establecimiento y espigado; no se infieren dimensiones, madurez, tolerancia al calor, resistencia a enfermedades ni separación de sistema para este tipo genérico." },
-      "problems": { "guidance": "La respuesta a temperatura y espigado varía con variedad y ambiente. Este perfil de tipo/especie no hereda rasgos de Red Romaine ni de cultivares nombrados." }
+      "identity": { "guidance": "Kew acepta Lactuca sativa como especie de la lechuga cultivada. Romaine/cos se representa como tipo hortícola sin asignarle cultivar. Las identidades de romana roja y de cultivares nombrados permanecen separadas." },
+      "growth": { "short": "Tipo de lechuga que forma cabeza; dimensiones varían", "guidance": "USU Extension clasifica cos/romana como tipo arrepollado y describe su cosecha al inicio de formación de cabeza. Esta identidad general no establece cultivar, tamaño final, dimensiones de hojas ni extensión madura." },
+      "cultivation": { "short": "Cultivo de estación fresca y raíces superficiales", "guidance": "UMN Extension señala que la lechuga tiene raíces superficiales y es sensible al espigado relacionado con temperatura. Mantén humedad uniforme; las fechas de Minnesota y la separación de campo son orientación regional, no horarios de interior ni distancias entre pods hidropónicos." },
+      "care": { "short": "Vigila cambios de humedad y quemadura apical", "guidance": "UMN Extension describe bordes foliares pardos (quemadura apical) después de un periodo seco seguido de agua y crecimiento renovados. Comprueba la uniformidad de humedad antes de asumir carencia nutritiva o enfermedad; es una alerta general, no un diagnóstico." },
+      "harvest": { "short": "Cosecha hojas o una cabeza formada según el objetivo", "guidance": "USU Extension describe la romana/cos cosechada al inicio de formación de cabeza; la guía general también permite recoger hojas utilizables o cortar la planta entera. La madurez exacta y la elección entre recoger hojas y cosechar toda la cabeza dependen de la variedad; no se asigna una fecha a este tipo genérico." },
+      "problems": { "short": "El espigado termina la ventana normal de cosecha foliar", "guidance": "UMN Extension indica que el calor y los días largos pueden provocar espigado en la lechuga; las hojas pueden amargarse y la planta deja el crecimiento foliar normal. La tolerancia al calor y resistencia a enfermedades del tipo romano genérico siguen sin establecerse." }
     }
   },
   "pinguicula-weser": {

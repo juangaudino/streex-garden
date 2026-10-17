@@ -25527,8 +25527,8 @@ export const gardenPlantProfileCatalog = {
   },
   "romaine-lettuce": {
     "summary": {
-      "en": "Romaine is a horticultural type within Lactuca sativa, not one named cultivar. This broad identity supports generic romaine references without replacing Red Romaine or named cultivars such as Breen and Pandero.",
-      "es": "La romana es un tipo hortícola de Lactuca sativa, no un cultivar nombrado. Esta identidad general no reemplaza Red Romaine ni los cultivares Breen y Pandero."
+      "en": "Romaine is a horticultural type within Lactuca sativa, not one named cultivar. Its upright head-forming form and crop-level care are described without assigning a cultivar's dimensions, maturity or heat tolerance.",
+      "es": "La romana es un tipo hortícola de Lactuca sativa, no un cultivar nombrado. Se describe su forma de cabeza y el manejo general sin atribuirle dimensiones, madurez o tolerancia al calor de un cultivar concreto."
     },
     "metrics": {
       "en": [],
@@ -25550,7 +25550,28 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Species identity: Lactuca sativa; romaine/cos type",
-          "guidance": "Kew acepta Lactuca sativa como la especie de la lechuga cultivada. Romaine/cos se representa como tipo hortícola sin asignarle cultivar. Las identidades de romana roja y de cultivares nombrados permanecen separadas.",
+          "guidance": "Kew acepta Lactuca sativa como especie de la lechuga cultivada. Romaine/cos se representa como tipo hortícola sin asignarle cultivar. Las identidades de romana roja y de cultivares nombrados permanecen separadas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-lettuce"
+        ],
+        "en": {
+          "short": "A head-forming lettuce type; cultivar dimensions vary",
+          "guidance": "USU Extension treats cos/romaine as a heading lettuce type and describes its harvest at early heading. This generic identity does not specify a cultivar, final head size, leaf dimensions or mature spread.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Tipo de lechuga que forma cabeza; dimensiones varían",
+          "guidance": "USU Extension clasifica cos/romana como tipo arrepollado y describe su cosecha al inicio de formación de cabeza. Esta identidad general no establece cultivar, tamaño final, dimensiones de hojas ni extensión madura.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25558,40 +25579,85 @@ export const gardenPlantProfileCatalog = {
       },
       "cultivation": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
+          "umn-lettuce-home-gardens-2024",
           "usu-lettuce"
         ],
         "en": {
-          "short": "Use lettuce guidance at crop scope",
-          "guidance": "Lettuce is a cool-season crop and temperature can affect establishment and bolting. Cultivar-specific maturity, head dimensions, heat tolerance, disease resistance, and system spacing are not inferred from this generic type record.",
+          "short": "Cool-season crop with shallow roots",
+          "guidance": "UMN Extension notes that lettuce has shallow roots and is sensitive to temperature-related bolting. Keep soil moisture even; interpret Minnesota outdoor dates and field spacing as regional crop guidance only, not indoor schedules or hydroponic pod spacing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use lettuce guidance at crop scope",
-          "guidance": "Se usa orientación de lechuga al nivel del cultivo. La temperatura influye en establecimiento y espigado; no se infieren dimensiones, madurez, tolerancia al calor, resistencia a enfermedades ni separación de sistema para este tipo genérico.",
+          "short": "Cultivo de estación fresca y raíces superficiales",
+          "guidance": "UMN Extension señala que la lechuga tiene raíces superficiales y es sensible al espigado relacionado con temperatura. Mantén humedad uniforme; las fechas de Minnesota y la separación de campo son orientación regional, no horarios de interior ni distancias entre pods hidropónicos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Watch for moisture swings and tipburn",
+          "guidance": "UMN Extension describes browning leaf margins (tipburn) after a dry spell is followed by renewed watering and growth. Check root-zone moisture consistency before assuming a nutrient deficiency or disease; this is a crop-level warning, not a diagnosis.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila cambios de humedad y quemadura apical",
+          "guidance": "UMN Extension describe bordes foliares pardos (quemadura apical) después de un periodo seco seguido de agua y crecimiento renovados. Comprueba la uniformidad de humedad antes de asumir carencia nutritiva o enfermedad; es una alerta general, no un diagnóstico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-lettuce",
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Pick leaves or cut a formed head, depending on the type and goal",
+          "guidance": "USU Extension describes cos/romaine as harvested in early heading, while general lettuce guidance allows usable leaf harvest and whole-plant cutting. Exact maturity and the choice between repeated leaf picking and whole-head harvest depend on the variety; no cultivar date is assigned to this generic record.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha hojas o una cabeza formada según el objetivo",
+          "guidance": "USU Extension describe la romana/cos cosechada al inicio de formación de cabeza; la guía general también permite recoger hojas utilizables o cortar la planta entera. La madurez exacta y la elección entre recoger hojas y cosechar toda la cabeza dependen de la variedad; no se asigna una fecha a este tipo genérico.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "problems": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
         "en": {
-          "short": "Cultivar-specific performance remains unresolved",
-          "guidance": "Temperature response and bolting vary by variety and growing conditions. This species-level profile does not inherit the traits of Red Romaine or any named romaine cultivar.",
+          "short": "Bolting ends the normal leafy harvest window",
+          "guidance": "UMN Extension reports that heat and long days can trigger bolting in lettuce; leaves may become bitter and the plant stops normal leafy growth. Cultivar-specific heat tolerance and disease resistance remain unknown for this generic romaine type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cultivar-specific performance remains unresolved",
-          "guidance": "La respuesta a temperatura y espigado varía con variedad y ambiente. Este perfil de tipo/especie no hereda rasgos de Red Romaine ni de cultivares nombrados.",
+          "short": "El espigado termina la ventana normal de cosecha foliar",
+          "guidance": "UMN Extension indica que el calor y los días largos pueden provocar espigado en la lechuga; las hojas pueden amargarse y la planta deja el crecimiento foliar normal. La tolerancia al calor y resistencia a enfermedades del tipo romano genérico siguen sin establecerse.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25804,8 +25870,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bronze-arrow-lettuce": {
     "summary": {
-      "en": "Bronze Arrow is represented as a named Lactuca sativa variety. Cornell's variety record includes community-submitted observations; those reports are not treated as controlled trial results.",
-      "es": "Bronze Arrow se representa como una variedad nombrada de Lactuca sativa. Cornell mantiene una ficha con observaciones aportadas por la comunidad; no se tratan como resultados de ensayos controlados."
+      "en": "Bronze Arrow is a named looseleaf Lactuca sativa variety with bronze-tinted, arrow-shaped foliage. Cornell's 2019 summer trial provides one location-season snapshot; its results are not a universal performance guarantee.",
+      "es": "Bronze Arrow es una variedad nombrada de Lactuca sativa de hoja suelta y follaje bronceado en forma de flecha. El ensayo estival de Cornell de 2019 aporta una observación de un sitio y una temporada, no una garantía universal de desempeño."
     },
     "metrics": {
       "en": [],
@@ -25820,15 +25886,36 @@ export const gardenPlantProfileCatalog = {
           "kew-lactuca-sativa-500"
         ],
         "en": {
-          "short": "Named variety: Bronze Arrow",
-          "guidance": "Cornell Cooperative Extension maintains a variety record for Bronze Arrow lettuce. The species identity is Lactuca sativa; community reports do not establish a registered cultivar or controlled performance claim.",
+          "short": "Named looseleaf variety with bronze-tinted foliage",
+          "guidance": "Cornell's citizen-science variety record classifies Bronze Arrow as looseleaf and describes dark red-green, arrow-shaped leaves with bronze tinting. This supports variety context, not a formal registration claim.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Named variety: Bronze Arrow",
-          "guidance": "Cornell Cooperative Extension mantiene una ficha de variedad para la lechuga Bronze Arrow. La identidad de especie es Lactuca sativa; los informes comunitarios no prueban registro varietal ni rendimiento bajo ensayo controlado.",
+          "short": "Variedad nombrada de hoja suelta y follaje bronceado",
+          "guidance": "El registro de variedades de Cornell, un programa de ciencia ciudadana, clasifica Bronze Arrow como lechuga de hoja suelta y describe hojas rojo-verdosas en forma de flecha con tonos bronce. Esto contextualiza la variedad, pero no demuestra registro formal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "cornell-bronze-arrow-500"
+        ],
+        "en": {
+          "short": "Looseleaf form; no head-size target is established",
+          "guidance": "Cornell describes a looseleaf plant rather than a romaine or heading type. Its listed 46–60 day maturity is variety-directory information, not a controlled estimate for every site or indoor system; no mature dimensions are established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Forma de hoja suelta; tamaño de cabeza no establecido",
+          "guidance": "Cornell describe una planta de hoja suelta, no una romana ni una variedad arrepollada. Los 46–60 días del directorio son información de la variedad, no una estimación controlada para todo sitio o sistema interior; aquí no se establecen dimensiones maduras.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25838,38 +25925,83 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "cornell-lettuce-trial-2019-bronze-arrow"
         ],
         "en": {
-          "short": "Use lettuce crop guidance; variety traits remain limited",
-          "guidance": "General lettuce guidance may inform this variety at crop scope. No exact mature dimensions, heat tolerance, disease resistance, or hydroponic performance is asserted from community observations.",
+          "short": "One Cornell summer-trial result; keep its limits visible",
+          "guidance": "In Cornell's reported 2019 summer lettuce trial, Bronze Arrow's row recorded 7 oz, a disease score of 5/5, taste 4/5, bitterness 2/3, and zero plants bolted. The report says planting was May 29, harvest July 23, at one-foot spacing. This is one trial result, not proof of lasting disease resistance or universal slow-bolting performance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use lettuce crop guidance; variety traits remain limited",
-          "guidance": "La guía general de lechuga puede orientar a nivel de cultivo. No se afirman dimensiones exactas, tolerancia al calor, resistencia a enfermedades ni rendimiento hidropónico a partir de observaciones comunitarias.",
+          "short": "Resultado de un ensayo estival de Cornell",
+          "guidance": "En el ensayo estival de lechugas de Cornell de 2019, Bronze Arrow registró 7 oz, puntuación de enfermedad 5/5, sabor 4/5, amargor 2/3 y cero plantas espigadas. El informe indica siembra el 29 de mayo, cosecha el 23 de julio y separación de un pie. Es un resultado de un ensayo, no prueba de resistencia duradera ni desempeño universal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Keep the shallow root zone evenly moist",
+          "guidance": "UMN Extension explains that lettuce has shallow roots and can develop tipburn after a dry spell is followed by renewed water and growth. Check moisture consistency; do not infer that browned edges alone indicate disease or a nutrient deficiency. This is lettuce-level outdoor guidance, not an indoor watering schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén húmeda de forma uniforme la zona de raíces superficiales",
+          "guidance": "UMN Extension explica que la lechuga tiene raíces superficiales y puede desarrollar quemadura apical cuando un periodo seco es seguido por agua y crecimiento renovados. Revisa la regularidad de humedad; no tomes ese síntoma por sí solo como prueba de enfermedad o carencia nutritiva. Es orientación de lechuga al aire libre, no un calendario interior.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "cornell-lettuce-trial-2019-bronze-arrow",
+          "umn-lettuce-home-gardens-2024"
+        ],
         "en": {
-          "short": "Variety-specific harvest timing not established here",
-          "guidance": "The selected identity record does not provide a controlled maturity estimate. Use the seed supplier's exact packet or trial data when available.",
+          "short": "Pick leaves while tender; avoid delaying into bolting",
+          "guidance": "As a looseleaf lettuce, Bronze Arrow can be harvested as usable leaves; UMN also describes repeated leaf picking when most small leaves remain, or cutting the whole plant. The Cornell trial recorded no bolting in its single summer trial, but that result is not a guaranteed harvest window for this variety.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Variety-specific harvest timing not established here",
-          "guidance": "La ficha seleccionada no aporta una estimación de madurez obtenida mediante ensayos. Usa el paquete específico o datos de ensayos cuando estén disponibles.",
+          "short": "Cosecha hojas tiernas y no retrases hasta el espigado",
+          "guidance": "Como lechuga de hoja suelta, Bronze Arrow puede cosecharse por hojas aprovechables. UMN describe cosechas repetidas cuando se dejan crecer la mayoría de las hojas pequeñas, o cortar la planta entera. El cero de espigado del único ensayo de Cornell no garantiza una ventana de cosecha para otras temporadas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024",
+          "cornell-lettuce-trial-2019-bronze-arrow"
+        ],
+        "en": {
+          "short": "Heat and long days can still trigger bolting",
+          "guidance": "UMN Extension notes that heat and long days can cause lettuce to send up a flowering stalk; leaves may become bitter and the harvest ends. A zero-bolting result in Cornell's 2019 trial does not establish immunity or performance in other seasons. No specific Bronze Arrow disease resistance is asserted.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor y los días largos aún pueden provocar espigado",
+          "guidance": "UMN Extension señala que el calor y los días largos pueden hacer que la lechuga forme un tallo floral; las hojas pueden amargarse y la cosecha termina. El resultado sin espigado de Cornell en 2019 no demuestra inmunidad ni rendimiento en otras temporadas. No se afirma resistencia específica de Bronze Arrow.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25880,7 +26012,7 @@ export const gardenPlantProfileCatalog = {
   "breen-romaine-lettuce": {
     "summary": {
       "en": "Breen is Johnny's named compact red mini-romaine variety. The seller reports an early compact mini head, 45 days to maturity, and an average height near 8 inches; these remain product-scoped claims.",
-      "es": "Breen es la variedad compacta de minirromana roja nombrada por Johnny's. El proveedor informa cabeza compacta temprana, 45 días a madurez y una altura promedio cercana a 8 pulgadas; las afirmaciones se mantienen al alcance del producto."
+      "es": "Breen es una variedad de minirromana roja de polinización abierta. Johnny's informa cabeza compacta que se forma temprano, altura promedio cercana a 8 pulgadas y resistencia alta a razas especificadas de mildiu velloso; son afirmaciones del producto."
     },
     "metrics": {
       "en": [],
@@ -25902,8 +26034,29 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Named open-pollinated mini-romaine variety",
-          "guidance": "Johnny's identifica Breen como Lactuca sativa, de polinización abierta, compacta y de minirromana roja. Es distinta de la romana genérica y de Red Romaine.",
+          "short": "Variedad de minirromana compacta de polinización abierta",
+          "guidance": "Johnny's identifica Breen como Lactuca sativa, de polinización abierta, compacta y minirromana roja. Es distinta de la romana genérica y de Red Romaine.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-breen-lettuce-500"
+        ],
+        "en": {
+          "short": "A short, compact mini head with bronze-red color",
+          "guidance": "Johnny's describes Breen as a very compact mini-romaine head that forms early and stays at mini size for a period; the seller reports an average height near 8 inches and bronze-red color. These are product-level characteristics, not a general dimension for romaine lettuce.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cabeza mini compacta y color bronce-rojo",
+          "guidance": "Johnny's describe una cabeza mini muy compacta que se forma temprano y suele mantenerse en tamaño mini por un tiempo; el proveedor informa altura promedio cercana a 8 pulgadas y color bronce-rojo. Son características del producto, no dimensiones de todas las romanas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25916,15 +26069,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-breen-lettuce-500"
         ],
         "en": {
-          "short": "Compact mini-head habit; seller reports hydroponic performance",
-          "guidance": "Johnny's describes an early compact mini head averaging about 8 inches tall and lists the variety as a hydroponic performer. These are supplier-specific product claims and do not define pod spacing or compatibility with every system.",
+          "short": "Supplier reports greenhouse and hydroponic performance",
+          "guidance": "Johnny's lists Breen as a greenhouse and hydroponic performer. This supports the named product in the supplier's stated context, not a guarantee for every Garden system; field row spacing is not converted to pod spacing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Compact mini-head habit; seller reports hydroponic performance",
-          "guidance": "Johnny's describe una cabeza mini temprana y compacta de unos 8 pulgadas de alto en promedio, y clasifica la variedad como apta para hidroponía. Son datos específicos del proveedor; no determinan separación de pods ni compatibilidad con todo sistema.",
+          "short": "Desempeño de invernadero e hidroponía indicado por el proveedor",
+          "guidance": "Johnny's clasifica Breen como apta para invernadero e hidroponía. Esto respalda la variedad en el contexto indicado por el proveedor, no garantiza resultados en todo sistema Garden; la distancia entre hileras no se convierte en separación de pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Maintain steady moisture after establishment",
+          "guidance": "Lettuce has shallow roots; UMN Extension links moisture swings—especially renewed growth after dry soil—with tipburn. Keep the root zone consistently supplied in soil cultivation. No hydroponic irrigation interval is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén humedad constante después del establecimiento",
+          "guidance": "La lechuga tiene raíces superficiales; UMN Extension relaciona los cambios de humedad, en especial el rebrote tras suelo seco, con quemadura apical. Esta guía general de cultivo no fija intervalos de riego hidropónico.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25934,18 +26108,41 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-breen-lettuce-500"
+          "johnnys-breen-lettuce-500",
+          "umn-lettuce-home-gardens-2024"
         ],
         "en": {
-          "short": "Mini-head or cut-and-come-again use",
-          "guidance": "Johnny's describes Breen for mini heads and also as usable for cut-and-come-again harvest. Its 45-day maturity estimate is product-scoped and not a guaranteed Garden harvest date.",
+          "short": "Harvest as a mini head or pick leaves for a repeat cut",
+          "guidance": "Johnny's describes Breen for mini heads and also as usable for cut-and-come-again harvest. Its 45-day maturity figure is a product estimate, not a guaranteed Garden harvest date. General lettuce guidance supports removing leaves while leaving most small leaves growing, or cutting the whole plant.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Mini-head or cut-and-come-again use",
-          "guidance": "Johnny's describe uso como minirromana y también cosecha de corte y rebrote. Su estimación de 45 días no garantiza una fecha de cosecha en interior.",
+          "short": "Cosecha como cabeza mini o recoge hojas para varias pasadas",
+          "guidance": "Johnny's destina Breen a cabezas mini y también describe su uso para cortar y volver a cosechar. La cifra de 45 días es una estimación del producto, no una fecha garantizada en Garden. La guía general permite recoger hojas dejando la mayoría de las pequeñas, o cortar la planta entera.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-breen-lettuce-500",
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Supplier lists downy-mildew resistance; bolting remains possible",
+          "guidance": "Johnny's lists high resistance for specified downy-mildew races (EU 16–21, 23–26, 28–37; US 5–9). This is the supplier's cultivar-specific rating, not immunity or a diagnosis. Like lettuce generally, Breen can still bolt under heat and long-day conditions; the species-level warning is not a Breen-specific heat threshold.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Resistencia indicada a mildiu velloso; el espigado sigue siendo posible",
+          "guidance": "Johnny's informa resistencia alta a razas concretas de mildiu velloso (UE 16–21, 23–26, 28–37; EE. UU. 5–9). Es una calificación del proveedor, no inmunidad ni diagnóstico. Como otras lechugas, Breen aún puede espigarse con calor y días largos; la advertencia general no define un umbral específico de Breen.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25956,7 +26153,7 @@ export const gardenPlantProfileCatalog = {
   "muir-lettuce": {
     "summary": {
       "en": "Muir is a named Batavian lettuce variety. Johnny's reports heat tolerance, slower bolting in its summer trials, a compact dense head that can be harvested mini or full-size, and hydroponic performance; these are seller-scoped claims.",
-      "es": "Muir es una variedad de lechuga Batavia nombrada. Johnny's reporta tolerancia al calor, espigado más lento en sus ensayos de verano, cabezas densas que pueden cosecharse pequeñas o completas y desempeño hidropónico; son afirmaciones del proveedor."
+      "es": "Muir es una variedad Batavia de hoja muy ondulada y cabeza densa. Johnny's reporta cosecha mini o completa, desempeño hidropónico y calificaciones de resistencia específicas para algunos patógenos y plagas; todas son afirmaciones del proveedor."
     },
     "metrics": {
       "en": [
@@ -25983,15 +26180,36 @@ export const gardenPlantProfileCatalog = {
           "kew-lactuca-sativa-500"
         ],
         "en": {
-          "short": "Named Batavian lettuce variety",
+          "short": "Named Batavian (summer-crisp) lettuce variety",
           "guidance": "Johnny's lists Muir as Lactuca sativa and technically a Batavian type. This named variety remains distinct from general lettuce or romaine types.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Named Batavian lettuce variety",
-          "guidance": "Johnny's identifica Muir como Lactuca sativa y tipo Batavia. Se conserva como variedad nombrada, separada de la lechuga genérica y de tipos romanos.",
+          "short": "Variedad Batavia (summer-crisp) nombrada",
+          "guidance": "Johnny's identifica Muir como Lactuca sativa y tipo Batavia. Se conserva como variedad nombrada, separada de la lechuga genérica y de los tipos romanos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-muir-lettuce-500"
+        ],
+        "en": {
+          "short": "Wavy leaves form dense heads from mini to full size",
+          "guidance": "Johnny's describes light-green, extra-wavy leaves forming dense heads that can be picked at mini size or allowed to bulk into large full-size heads. These are Muir product characteristics; no numeric mature dimensions are provided here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Hojas muy onduladas forman cabezas densas",
+          "guidance": "Johnny's describe hojas verde claro muy onduladas y cabezas densas que pueden cosecharse pequeñas o dejarse crecer hasta tamaño completo. Son rasgos del producto; aquí no se publican dimensiones numéricas maduras.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26004,15 +26222,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-muir-lettuce-500"
         ],
         "en": {
-          "short": "Supplier reports heat tolerance and hydroponic performance",
-          "guidance": "Johnny's describes Muir as heat tolerant and slow to bolt in its summer trials, with dense heads and hydroponic suitability. These are supplier-reported variety claims; they do not establish a precise indoor climate setpoint or system layout.",
+          "short": "Seller reports heat tolerance and hydroponic performance",
+          "guidance": "Johnny's describes Muir as heat tolerant and slow to bolt in its summer trials, and lists hydroponic suitability. These supplier-reported cultivar claims do not establish a precise indoor climate setpoint, nutrient target, or system layout.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Supplier reports heat tolerance and hydroponic performance",
-          "guidance": "Johnny's describe Muir como tolerante al calor y lenta para espigar en sus ensayos estivales, con cabezas densas y aptitud hidropónica. Son afirmaciones del proveedor, no consignas ambientales exactas ni diseño de sistema.",
+          "short": "El proveedor reporta tolerancia al calor e hidroponía",
+          "guidance": "Johnny's describe Muir como tolerante al calor y lenta para espigarse en sus ensayos estivales, y la lista para hidroponía. Estas afirmaciones de la variedad no fijan temperatura interior, nutrición ni diseño del sistema.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Steady moisture supports even lettuce growth",
+          "guidance": "UMN Extension notes that lettuce has shallow roots and that a dry spell followed by renewed watering and growth can lead to tipburn. Use this as general lettuce care guidance; it is not a diagnosis of Muir or a nutrient recipe.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La humedad constante favorece un crecimiento uniforme",
+          "guidance": "UMN Extension señala que la lechuga tiene raíces superficiales y que un periodo seco seguido de riego y crecimiento renovados puede causar quemadura apical. Es guía general, no diagnóstico de Muir ni receta nutritiva.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26025,15 +26264,37 @@ export const gardenPlantProfileCatalog = {
           "johnnys-muir-lettuce-500"
         ],
         "en": {
-          "short": "Harvest as a mini head or allow a larger head",
-          "guidance": "Johnny's describes harvest at mini or full-size head stage and lists about 50 days to maturity. The figure is an estimate from the seller, not a guaranteed harvest date.",
+          "short": "Choose mini-head or full-head harvest",
+          "guidance": "Johnny's describes Muir heads as harvestable at mini size or after further bulking, and lists an average 50 days to maturity from seeding. The timing is a supplier estimate and not a guaranteed indoor harvest date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Harvest as a mini head or allow a larger head",
-          "guidance": "Johnny's describe cosecha en etapa mini o como cabeza completa y estima cerca de 50 días. Es un cálculo del proveedor, no una fecha garantizada.",
+          "short": "Elige entre cosecha de cabeza mini o completa",
+          "guidance": "Johnny's describe la cosecha de Muir en tamaño mini o después de que la cabeza aumente; indica un promedio cercano a 50 días desde siembra. Es una estimación del proveedor, no una fecha garantizada en interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-muir-lettuce-500",
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Resistance ratings are specific to the seller-listed races and pests",
+          "guidance": "Johnny's lists high resistance to downy mildew EU races 16–26, 28, 32 and US races 5–9, lettuce leaf aphid, and Tomato Bushy Stunt Virus; it lists intermediate resistance to Lettuce Mosaic Virus. These are seller ratings, not immunity and not a substitute for diagnosis. General lettuce can still bolt under stress; Muir's slower bolting claim is limited to the supplier's summer trials.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las calificaciones de resistencia se limitan a patógenos y plagas indicados",
+          "guidance": "Johnny's informa resistencia alta a mildiu velloso UE 16–26, 28, 32 y EE. UU. 5–9, al pulgón de la lechuga y al virus del enanismo arbustivo del tomate; califica como intermedia la resistencia al virus del mosaico de la lechuga. Son calificaciones comerciales, no inmunidad ni diagnóstico. La afirmación de espigado lento se limita a los ensayos estivales del proveedor.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26043,8 +26304,8 @@ export const gardenPlantProfileCatalog = {
   },
   "pandero-romaine-lettuce": {
     "summary": {
-      "en": "Pandero is represented as the named red-romaine lettuce variety listed by Adaptive Seeds. Seller descriptions are kept product-scoped; no cultivar registration, disease resistance, or Garden-system performance is inferred.",
-      "es": "Pandero se representa como la variedad de romana roja listada por Adaptive Seeds. Las descripciones del vendedor permanecen al alcance del producto; no se afirma registro varietal, resistencia a enfermedades ni desempeño en sistemas de Garden."
+      "en": "Pandero is a supplier-listed red romaine with dense heads. Adaptive Seeds describes slow bolting, heat and cold tolerance, downy-mildew resistance, and about 30 days for baby leaves or 60 for a full head; these remain supplier-scoped claims.",
+      "es": "Pandero es una romana roja de cabeza densa listada por Adaptive Seeds. El proveedor indica madurez aproximada de 30 días para hoja baby y 60 para cabeza completa, además de espigado lento y resistencia a mildiu velloso; son afirmaciones comerciales."
     },
     "metrics": {
       "en": [],
@@ -26060,14 +26321,35 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Supplier-listed red-romaine variety",
-          "guidance": "Adaptive Seeds lists Pandero as a red-romaine lettuce. Kew provides the accepted species Lactuca sativa; the supplier listing supports the named variety but is not independent cultivar-registration evidence.",
+          "guidance": "Adaptive Seeds lists Pandero as Lactuca sativa and red romaine. The supplier listing supports this named product identity but does not establish independent cultivar registration.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Supplier-listed red-romaine variety",
-          "guidance": "Adaptive Seeds lista Pandero como lechuga romana roja. Kew proporciona la especie aceptada Lactuca sativa; la ficha comercial respalda el nombre, pero no demuestra un registro varietal independiente.",
+          "short": "Romana roja listada por un proveedor",
+          "guidance": "Adaptive Seeds lista Pandero como Lactuca sativa de tipo romana roja. La página respalda el nombre del producto, pero no demuestra un registro varietal independiente.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "adaptive-pandero-lettuce-500"
+        ],
+        "en": {
+          "short": "Dense red heads; color develops early per supplier",
+          "guidance": "Adaptive Seeds describes Pandero as a deep-red version of Winter Density, with dense heads and early-developing red color. This is a supplier description, not a claim that it is genetically identical to Winter Density.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cabezas densas y color rojo temprano según el proveedor",
+          "guidance": "Adaptive Seeds describe Pandero como una versión de color rojo intenso de Winter Density, con cabezas densas y color que aparece temprano. La comparación no significa que sea genéticamente idéntica a Winter Density.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26078,38 +26360,82 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "adaptive-pandero-lettuce-500",
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "umn-lettuce-home-gardens-2024"
         ],
         "en": {
-          "short": "Cultivar-specific growing data remain limited",
-          "guidance": "General lettuce guidance may be used at crop scope. No exact Pandero dimensions, heat tolerance, disease resistance, indoor spacing, or hydroponic response is published here.",
+          "short": "Supplier describes cool- and warm-weather tolerance",
+          "guidance": "Adaptive Seeds describes Pandero as slow to bolt and tolerant of heat and cold. Keep these as product claims: no numeric temperature limits, indoor spacing, or hydroponic performance is established. General lettuce guidance still favors steady moisture and cool-season growth.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cultivar-specific growing data remain limited",
-          "guidance": "La guía general de lechuga puede aplicarse al alcance del cultivo. Aquí no se publican dimensiones exactas de Pandero, tolerancia al calor, resistencia a enfermedades, separación interior ni desempeño hidropónico.",
+          "short": "El proveedor describe tolerancia al calor y al frío",
+          "guidance": "Adaptive Seeds describe a Pandero como lenta para espigarse y tolerante al calor y al frío. Son afirmaciones comerciales sin límites numéricos de temperatura; no establecen separación interior ni desempeño hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Avoid moisture swings in the shallow root zone",
+          "guidance": "UMN Extension describes lettuce as shallow-rooted and associates tipburn with a dry spell followed by renewed water and growth. Maintain more even soil moisture; this crop-level advice does not establish an indoor watering interval for Pandero.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Evita cambios bruscos de humedad en la zona radicular superficial",
+          "guidance": "UMN Extension describe raíces superficiales en lechuga y asocia la quemadura apical con sequedad seguida de riego y crecimiento renovados. Mantén más pareja la humedad del suelo; no se fija aquí un intervalo de riego interior.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "adaptive-pandero-lettuce-500",
+          "usu-lettuce"
+        ],
         "en": {
-          "short": "Maturity and harvest behavior need cultivar-specific confirmation",
-          "guidance": "The selected sources do not establish a comparable maturity window or repeat-harvest behavior for Pandero in Garden conditions.",
+          "short": "Supplier lists baby-leaf and full-head windows",
+          "guidance": "Adaptive Seeds lists about 30 days for baby leaves and 60 days for full heads. These are product estimates; they vary with conditions and are not guaranteed Garden dates. USU describes cos/romaine harvest at early heading, while general lettuce can also be picked as leaves.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Maturity and harvest behavior need cultivar-specific confirmation",
-          "guidance": "Las fuentes seleccionadas no establecen una ventana comparable de madurez ni comportamiento de cosecha repetida para Pandero en condiciones de Garden.",
+          "short": "Ventanas comerciales para hoja baby y cabeza completa",
+          "guidance": "Adaptive Seeds indica unos 30 días para hoja baby y 60 para cabeza completa. Son estimaciones del producto, variables según condiciones, no fechas garantizadas. USU describe la cosecha de cos/romana al inicio de formación de cabeza; la lechuga también puede cosecharse por hojas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "adaptive-pandero-lettuce-500"
+        ],
+        "en": {
+          "short": "Downy-mildew resistance is a supplier claim, not immunity",
+          "guidance": "Adaptive Seeds lists Pandero as resistant to downy mildew and describes slow bolting, but does not provide race coverage or a rating scale on the selected product listing. Treat this as supplier-scoped information, not guaranteed protection; no other disease resistance is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Resistencia a mildiu velloso informada por el proveedor",
+          "guidance": "Adaptive Seeds lista a Pandero como resistente al mildiu velloso y describe espigado lento, pero no indica razas ni escala de calificación. Trátalo como información del producto, no protección garantizada; no se infieren otras resistencias.",
           "items": [],
           "avoid": "",
           "context": ""

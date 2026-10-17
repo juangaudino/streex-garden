@@ -29,6 +29,41 @@
       "publisher": "University of Minnesota Extension",
       "title": "Growing Chinese cabbage and bok choy in home gardens",
       "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-chinese-cabbage-and-bok-choy"
+    },
+    "umn-lettuce-home-gardens-2024": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing lettuce, endive and radicchio in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio"
+    },
+    "usu-lettuce": {
+      "publisher": "Utah State University Extension",
+      "title": "How to Grow Lettuce in Your Garden",
+      "url": "https://extension.usu.edu/yardandgarden/research/lettuce-in-the-garden"
+    },
+    "usu-leafy-storage": {
+      "publisher": "Utah State University Extension",
+      "title": "Harvest and Storage — Leafy Greens",
+      "url": "https://extension.usu.edu/vegetableguide/leafy-greens/harvest-storage"
+    },
+    "johnnys-breen-lettuce-500": {
+      "publisher": "Johnny's Selected Seeds",
+      "title": "Breen Lettuce Seed",
+      "url": "https://www.johnnyseeds.com/vegetables/lettuce/romaine-lettuce-cos/breen-lettuce-seed-118.html"
+    },
+    "johnnys-muir-lettuce-500": {
+      "publisher": "Johnny's Selected Seeds",
+      "title": "Muir Organic Pelleted Lettuce Seed",
+      "url": "https://prod-na02.johnnyseeds.com/vegetables/lettuce/summer-crisp-lettuce-batavia/muir-organic-pelleted-lettuce-seed-3881GP.html"
+    },
+    "adaptive-pandero-lettuce-500": {
+      "publisher": "Adaptive Seeds",
+      "title": "Lettuce, Pandero",
+      "url": "https://www.adaptiveseeds.com/product/vegetables/lettuce/lettuce-pandero-organic/"
+    },
+    "cornell-lettuce-trial-2019-bronze-arrow": {
+      "publisher": "Cornell Cooperative Extension Vegetable Program",
+      "title": "2019 Summer Lettuce Variety Trial Results",
+      "url": "https://rvpadmin.cce.cornell.edu/uploads/doc_837.pdf"
     }
   },
   "plants": {
@@ -234,6 +269,52 @@
             "umn-rhubarb-home-wave29"
           ]
         }
+      ]
+    }
+    ,
+    "romaine-lettuce": {
+      "edibleParts": {"en":"Leaves and the formed head","es":"Hojas y la cabeza formada"},
+      "bestUse": {"en":"Use tender leaves in fresh salads, sandwiches or wraps. Handle gently and keep harvested lettuce cold and moist; cultivar-specific storage life is not assigned here.","es":"Usa las hojas tiernas en ensaladas frescas, sándwiches o wraps. Manipula con cuidado y conserva la lechuga cosechada fría y húmeda; aquí no se asigna una duración de almacenamiento específica del cultivar."},
+      "quickUses": {"en":["Fresh salads","Sandwiches","Wraps","Lettuce cups"],"es":["Ensaladas frescas","Sándwiches","Wraps","Tacos de lechuga"]},
+      "methods": [
+        {"id":"harvest-romaine-leaves-or-head","icon":"🥬","status":"best","title":{"en":"Harvest leaves or a formed head","es":"Cosechar hojas o una cabeza formada"},"summary":{"en":"Cos lettuce is commonly harvested as it begins heading; leaf picking is also possible when that suits the variety.","es":"La romana/cos suele cosecharse al comenzar a formar cabeza; también es posible recoger hojas si corresponde a la variedad."},"steps":{"en":["For a head harvest, use the variety's maturity guidance and cut the head cleanly; for leaf harvest, take usable leaves without treating a generic date as cultivar-specific.","Wash and handle gently before serving fresh."],"es":["Para cosechar una cabeza, sigue la guía de madurez de la variedad y córtala limpiamente; para cosechar hojas, recoge las utilizables sin tratar una fecha general como propia del cultivar.","Lava y manipula con cuidado antes de servir fresca."]},"sourceIds":["usu-lettuce","umn-lettuce-home-gardens-2024"]},
+        {"id":"store-romaine-cold-moist","icon":"🧊","status":"good","title":{"en":"Keep harvested lettuce cold and moist","es":"Mantener la lechuga cosechada fría y húmeda"},"summary":{"en":"Cool, humid storage helps retain quality; commercial storage specifications are not a home-fridge guarantee.","es":"El almacenamiento frío y húmedo ayuda a conservar la calidad; las condiciones comerciales no garantizan el mismo resultado en una nevera doméstica."},"steps":{"en":["Cool the harvest promptly and protect leaves from bruising and drying.","Keep refrigerated and avoid assigning a universal storage duration to this unspecified romaine type."],"es":["Enfría pronto la cosecha y protege las hojas de golpes y deshidratación.","Refrigera y evita asignar una duración universal a este tipo romano sin cultivar especificado."]},"sourceIds":["umn-lettuce-home-gardens-2024","usu-leafy-storage"]}
+      ]
+    },
+    "bronze-arrow-lettuce": {
+      "edibleParts": {"en":"Looseleaf blades","es":"Láminas de hojas sueltas"},
+      "bestUse": {"en":"Use the tender bronze-green leaves as a fresh salad green. Cornell's variety record describes the flavor as mild; individual taste and growing conditions vary.","es":"Usa las hojas tiernas bronce-verdosas como verdura fresca para ensalada. El registro varietal de Cornell describe un sabor suave; el gusto individual y las condiciones de cultivo varían."},
+      "quickUses": {"en":["Fresh salads","Sandwiches","Wraps","Mixed greens"],"es":["Ensaladas frescas","Sándwiches","Wraps","Mezcla de hojas" ]},
+      "methods": [
+        {"id":"use-bronze-arrow-leaves-fresh","icon":"🥬","status":"best","title":{"en":"Pick tender leaves for fresh use","es":"Recoger hojas tiernas para consumir frescas"},"summary":{"en":"This is a looseleaf variety; the selected sources do not promise repeat regrowth after cutting.","es":"Es una variedad de hoja suelta; las fuentes seleccionadas no garantizan rebrote repetido después del corte."},"steps":{"en":["Harvest leaves while tender and choose the amount needed for the meal.","Wash gently and use fresh in salads or other leafy-green dishes."],"es":["Cosecha las hojas mientras estén tiernas y recoge la cantidad necesaria para la comida.","Lávalas con cuidado y úsalas frescas en ensaladas u otros platos de hojas verdes."]},"sourceIds":["cornell-bronze-arrow-500","usu-lettuce"]},
+        {"id":"store-bronze-arrow-cold-moist","icon":"🧊","status":"good","title":{"en":"Refrigerate gently","es":"Refrigerar con cuidado"},"summary":{"en":"Lettuce quality is best protected by cold, moist storage and gentle handling.","es":"La calidad de la lechuga se protege mejor con almacenamiento frío y húmedo y manipulación cuidadosa."},"steps":{"en":["Cool soon after harvest and avoid crushing the leaves.","Refrigerate; no fixed shelf-life is assigned to Bronze Arrow here."],"es":["Enfría poco después de cosechar y evita aplastar las hojas.","Refrigera; aquí no se asigna una vida útil fija a Bronze Arrow."]},"sourceIds":["umn-lettuce-home-gardens-2024","usu-leafy-storage"]}
+      ]
+    },
+    "breen-romaine-lettuce": {
+      "edibleParts": {"en":"Compact mini heads and leaves","es":"Cabezas mini compactas y hojas"},
+      "bestUse": {"en":"Johnny's describes Breen for compact mini heads and cut-and-come-again use. Serve tender leaves fresh; the supplier's harvest estimate is not a guaranteed indoor date.","es":"Johnny's describe Breen para cabezas mini compactas y cosecha de corte y rebrote. Sirve las hojas tiernas frescas; la estimación del proveedor no es una fecha garantizada para interior."},
+      "quickUses": {"en":["Mini-head salads","Sandwiches","Wraps","Fresh side"],"es":["Ensaladas con cabeza mini","Sándwiches","Wraps","Acompañamiento fresco"]},
+      "methods": [
+        {"id":"harvest-breen-mini-or-leaves","icon":"🥬","status":"best","title":{"en":"Use as a mini head or pick leaves","es":"Usar como cabeza mini o recoger hojas"},"summary":{"en":"The supplier describes both compact mini-head and cut-and-come-again use.","es":"El proveedor describe tanto cabezas mini compactas como cosecha de corte y rebrote."},"steps":{"en":["Harvest the compact head at the intended mini stage, or pick leaves while leaving growing points according to the supplier's cut-and-come-again description.","Wash gently and serve fresh; no guaranteed Garden harvest day is implied."],"es":["Cosecha la cabeza compacta en la etapa mini deseada, o recoge hojas dejando puntos de crecimiento según la descripción del proveedor para corte y rebrote.","Lava con cuidado y sirve fresca; no se implica una fecha garantizada de cosecha en Garden."]},"sourceIds":["johnnys-breen-lettuce-500"]},
+        {"id":"store-breen-cold-moist","icon":"🧊","status":"good","title":{"en":"Keep the harvest cool and protected","es":"Mantener la cosecha fresca y protegida"},"summary":{"en":"Fresh lettuce is delicate; avoid bruising and drying during storage.","es":"La lechuga fresca es delicada; evita golpes y deshidratación durante el almacenamiento."},"steps":{"en":["Cool promptly after harvest.","Refrigerate under cold, moist conditions; no cultivar-specific storage duration is claimed."],"es":["Enfría pronto después de cosechar.","Refrigera en condiciones frías y húmedas; no se afirma una duración de almacenamiento específica del cultivar."]},"sourceIds":["umn-lettuce-home-gardens-2024","usu-leafy-storage"]}
+      ]
+    },
+    "muir-lettuce": {
+      "edibleParts": {"en":"Crisp leaves in dense mini or full-size heads","es":"Hojas crujientes en cabezas densas mini o completas"},
+      "bestUse": {"en":"Johnny's describes Muir's leaves as crisp and suitable for mini or full-size harvest. Use the leaves fresh in salads or sandwiches and handle gently.","es":"Johnny's describe las hojas de Muir como crujientes y aptas para cosecha mini o completa. Usa las hojas frescas en ensaladas o sándwiches y manipúlalas con cuidado."},
+      "quickUses": {"en":["Fresh salads","Sandwiches","Mini heads","Mixed greens"],"es":["Ensaladas frescas","Sándwiches","Cabezas mini","Mezcla de hojas"]},
+      "methods": [
+        {"id":"harvest-muir-mini-or-full","icon":"🥬","status":"best","title":{"en":"Choose mini or full-head harvest","es":"Elegir cosecha mini o de cabeza completa"},"summary":{"en":"The supplier describes dense heads that may be harvested small or allowed to bulk up.","es":"El proveedor describe cabezas densas que pueden cosecharse pequeñas o dejarse aumentar de tamaño."},"steps":{"en":["Harvest at the intended mini or full-head stage; the listed 50-day figure is a supplier estimate, not a guarantee.","Keep the leaves intact and use fresh for best crisp texture."],"es":["Cosecha en la etapa mini o de cabeza completa deseada; los 50 días indicados son una estimación del proveedor, no una garantía.","Conserva las hojas intactas y úsalas frescas para mantener una textura crujiente."]},"sourceIds":["johnnys-muir-lettuce-500"]},
+        {"id":"store-muir-cold-moist","icon":"🧊","status":"good","title":{"en":"Refrigerate promptly","es":"Refrigerar pronto"},"summary":{"en":"Cold, humid conditions help limit wilting; handle the delicate leaves gently.","es":"Las condiciones frías y húmedas ayudan a reducir el marchitamiento; manipula con cuidado las hojas delicadas."},"steps":{"en":["Cool the harvest promptly and avoid crushing the leaves.","Refrigerate; no specific home storage duration is established for Muir."],"es":["Enfría pronto la cosecha y evita aplastar las hojas.","Refrigera; no se establece una duración específica de almacenamiento doméstico para Muir."]},"sourceIds":["umn-lettuce-home-gardens-2024","usu-leafy-storage"]}
+      ]
+    },
+    "pandero-romaine-lettuce": {
+      "edibleParts": {"en":"Red leaves and formed romaine heads","es":"Hojas rojas y cabezas romanas formadas"},
+      "bestUse": {"en":"Adaptive Seeds lists Pandero for baby-leaf salad mix as well as full-head harvest. Its early red color is a supplier-described product trait.","es":"Adaptive Seeds lista Pandero tanto para mezclas de ensalada baby como para cosecha de cabeza completa. Su color rojo temprano es un rasgo descrito por el proveedor."},
+      "quickUses": {"en":["Red salad mix","Fresh salads","Sandwiches","Mini heads"],"es":["Mezcla roja para ensalada","Ensaladas frescas","Sándwiches","Cabezas mini"]},
+      "methods": [
+        {"id":"harvest-pandero-baby-or-head","icon":"🥬","status":"best","title":{"en":"Harvest baby leaves or a full head","es":"Cosechar hojas baby o una cabeza completa"},"summary":{"en":"The supplier lists separate approximate harvest windows for baby leaves and full heads.","es":"El proveedor indica ventanas aproximadas distintas para hojas baby y cabezas completas."},"steps":{"en":["Use about 30 days for baby leaves or about 60 for a full head only as supplier estimates; local conditions change timing.","Wash gently and use fresh in a salad mix or as a head lettuce."],"es":["Usa unos 30 días para hojas baby o unos 60 para una cabeza completa solo como estimaciones del proveedor; las condiciones locales cambian el tiempo.","Lava con cuidado y consume fresca en mezcla de ensalada o como lechuga de cabeza."]},"sourceIds":["adaptive-pandero-lettuce-500"]},
+        {"id":"store-pandero-cold-moist","icon":"🧊","status":"good","title":{"en":"Keep leaves cold and avoid bruising","es":"Mantener las hojas frías y evitar golpes"},"summary":{"en":"Fresh lettuce keeps quality best with prompt cooling and gentle handling.","es":"La lechuga fresca conserva mejor su calidad con enfriamiento pronto y manipulación cuidadosa."},"steps":{"en":["Cool after harvest and protect the red leaves from crushing.","Refrigerate under cold, moist conditions; no fixed cultivar shelf-life is promised."],"es":["Enfría después de cosechar y protege las hojas rojas de aplastamientos.","Refrigera en condiciones frías y húmedas; no se promete una vida útil fija del cultivar."]},"sourceIds":["umn-lettuce-home-gardens-2024","usu-leafy-storage"]}
       ]
     }
   }

@@ -411,16 +411,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Cos/romaine type-level evidence; dimensions and cultivar traits remain unspecified.",
+            "es": "Evidencia del tipo cos/romana; dimensiones y rasgos de cultivar no especificados."
+          }
+        },
         "cultivation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Crop-level outdoor lettuce guidance, not an indoor schedule or hydroponic spacing rule.",
+            "es": "Guía de lechuga al aire libre a nivel de cultivo, no horario interior ni regla de separación hidropónica."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "General moisture and tipburn context; not a nutrient diagnosis.",
+            "es": "Contexto general de humedad y quemadura apical; no es diagnóstico nutritivo."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "General lettuce and cos harvest options; exact timing depends on the unspecified variety.",
+            "es": "Opciones generales de cosecha de lechuga y cos; el momento exacto depende de la variedad no especificada."
           }
         },
         "problems": {
           "context": {
-            "en": "Unverified for this identity or growing system.",
-            "es": "Sin verificar para esta identidad o sistema de cultivo."
+            "en": "Lettuce-level bolting and tipburn context; no romaine-group resistance claim.",
+            "es": "Contexto de espigado y quemadura apical a nivel de lechuga; sin afirmación de resistencia del grupo romano."
           }
         }
       }
@@ -483,20 +501,38 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Cornell's citizen-science variety record; identity and description only, not formal registration.",
+            "es": "Registro varietal de ciencia ciudadana de Cornell; identidad y descripción, no registro formal."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Directory description and maturity listing are not controlled performance guarantees.",
+            "es": "La descripción y madurez del directorio no son garantías de desempeño controladas."
           }
         },
         "cultivation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "A single Cornell 2019 summer trial; scores and bolting count are not universal trait guarantees.",
+            "es": "Un ensayo estival de Cornell de 2019; puntuaciones y conteo de espigado no garantizan rasgos universales."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "General lettuce moisture guidance; outdoor soil context only.",
+            "es": "Guía general de humedad para lechuga; solo contexto de suelo al aire libre."
           }
         },
         "harvest": {
           "context": {
-            "en": "Unverified for this identity or growing system.",
-            "es": "Sin verificar para esta identidad o sistema de cultivo."
+            "en": "General leaf-lettuce harvest guidance; trial results are limited to one site and season.",
+            "es": "Guía general de cosecha de lechuga de hoja; los resultados del ensayo se limitan a un sitio y temporada."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "General lettuce bolting guidance; the trial score is not cultivar disease resistance.",
+            "es": "Guía general de espigado en lechuga; la puntuación del ensayo no es resistencia del cultivar."
           }
         }
       }
@@ -510,16 +546,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Johnny's product-specific mini-head form, color and height; not all romaine cultivars.",
+            "es": "Forma de cabeza mini, color y altura específicos del producto Johnny's; no de todas las romanas."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "General lettuce moisture guidance; no hydroponic interval inferred.",
+            "es": "Guía general de humedad para lechuga; no se infiere un intervalo hidropónico."
+          }
+        },
         "harvest": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Johnny's race-specific downy-mildew ratings and general lettuce bolting context; not immunity.",
+            "es": "Calificaciones de mildiu velloso por razas de Johnny's y contexto general de espigado; no es inmunidad."
           }
         }
       }
@@ -533,16 +587,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Johnny's product description of texture and head stages; no numeric mature dimensions.",
+            "es": "Descripción de Johnny's sobre textura y etapas de cabeza; sin dimensiones maduras numéricas."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "General lettuce moisture guidance, not a Muir-specific indoor recipe.",
+            "es": "Guía general de humedad para lechuga, no receta interior específica de Muir."
+          }
+        },
         "harvest": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Commercial race/pest ratings and supplier summer-trial bolting claim; not immunity.",
+            "es": "Calificaciones comerciales por razas/plagas y espigado en ensayos estivales del proveedor; no es inmunidad."
           }
         }
       }
@@ -556,16 +628,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Adaptive Seeds product description; similarity to Winter Density is not genetic identity.",
+            "es": "Descripción comercial de Adaptive Seeds; la similitud con Winter Density no afirma identidad genética."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "General outdoor lettuce moisture guidance; not a controlled-environment schedule.",
+            "es": "Guía general de humedad para lechuga al aire libre; no es un horario de ambiente controlado."
+          }
+        },
         "harvest": {
           "context": {
-            "en": "Unverified for this identity or growing system.",
-            "es": "Sin verificar para esta identidad o sistema de cultivo."
+            "en": "Supplier baby/full-head estimates plus general cos guidance; no indoor date guarantee.",
+            "es": "Estimaciones comerciales para hoja baby/cabeza y guía general cos; sin fecha interior garantizada."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Supplier-listed traits without race details or independent validation; not immunity.",
+            "es": "Rasgos indicados por proveedor sin detalle de razas ni validación independiente; no es inmunidad."
           }
         }
       }

@@ -344,23 +344,31 @@
     }
   },
   "broccoli-calabrese": {
-    "summary": "Identidad base de Wave 1 para Brócoli calabrés. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El brócoli calabrés es un tipo de brócoli de cabeza de Brassica oleracea. Se cosecha el racimo central de botones florales verdes y cerrados; después del corte pueden desarrollarse brotes laterales menores. El calor y el frío afectan la formación de la cabeza; la evidencia citada no es específica de un cultivar.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo calabrés de brócoli de cabeza dentro de Brassica oleracea",
+        "guidance": "Esta ficha representa el tipo calabrés/de cabeza, no un cultivar con nombre. UMN distingue el brócoli de cabeza de los tipos de brotes; su guía general no establece tamaño ni tolerancia al calor específicos de un cultivar calabrés."
+      },
+      "cultivation": {
+        "short": "Cultivo de cabeza de estación fresca; humedad constante durante su formación",
+        "guidance": "UMN incluye el brócoli entre los cultivos de estación fresca e identifica la formación de la cabeza como una etapa crítica de humedad. Su orientación de clima y campo es regional y para suelo exterior; no determina parámetros hidropónicos ni un umbral térmico propio del tipo calabrés."
+      },
+      "growth": {
+        "short": "La cabeza central es un racimo de botones florales cerrados",
+        "guidance": "La parte comestible está formada por botones florales pequeños sobre un tallo central. Tras cosechar la cabeza pueden aparecer brotes laterales menores; su cantidad y momento no están garantizados para esta identidad ni para todos los sistemas."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "No requiere poda rutinaria; corta la cabeza central limpiamente al cosechar",
+        "guidance": "La fuente no prescribe poda rutinaria. Corta la cabeza central madura con un tramo corto de tallo y deja la parte inferior de la planta para que puedan desarrollarse brotes secundarios; es un corte de cosecha, no un régimen para dar forma al follaje."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta cuando los botones estén verdes y apretados, antes de abrirse",
+        "guidance": "UMN recomienda cosechar cuando la cabeza alcanza un tamaño utilizable y los botones siguen cerrados y verdes. Corta la cabeza central con un tramo corto de tallo; deja la planta para que produzca brotes laterales y cosecha esos brotes cuando sean utilizables. Si las flores empiezan a abrirse, cosecha pronto porque la calidad disminuye."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor puede aflojar o abrir la cabeza; el frío temprano puede causar cabezas pequeñas",
+        "guidance": "En la orientación regional de UMN, el calor alto después de formarse la cabeza puede adelantar la floración; el frío antes de que la planta tenga suficiente follaje puede producir cabezas pequeñas y deformes (buttoning). Son respuestas posibles a la temperatura, no una susceptibilidad propia del tipo calabrés ni un pronóstico local."
       }
     }
   },

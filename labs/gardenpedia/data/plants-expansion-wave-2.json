@@ -599,20 +599,14 @@
         "guidance": "Red Cabbage is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
       },
       "pruning": {
         "short": "Manage by harvest, thinning, and visible crowding",
         "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
       },
       "harvest": {
         "short": "Harvest selectively while preserving active growth",
@@ -720,47 +714,54 @@
       "brassica oleracea",
       "brussels sprouts type"
     ],
-    "summary": "Brussels Sprouts is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Brussels sprouts form a sequence of compact buds along a tall leafy Brassica oleracea stalk, beginning at the lower leaf axils and progressing upward. Consistent soil moisture supports tight, tender sprouts; cooler autumn weather can improve flavor, but Minnesota season guidance is regional.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Brussels Sprouts is resolved at Brassica oleracea and Brussels sprouts type type scope",
-        "guidance": "Brussels Sprouts is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Sprout-forming type of Brassica oleracea",
+        "guidance": "UMN describes Brussels sprouts as compact heads of tender leaves forming along the stalk of a tall leafy plant. This is crop/type evidence; it does not establish the mature dimensions or cold tolerance of a named cultivar.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "usu-brassica-varietal-wave2",
           "johnnys-brassicas-wave1"
         ]
+      },
+      "cultivation": {
+        "short": "Keep soil moisture consistent as sprouts develop",
+        "guidance": "UMN notes that Brussels sprouts need consistent soil moisture for tender, tight, well-flavored buds; dry spells can leave sprouts loose, poorly formed, or bitter. Its weekly watering quantity and fall calendar are Minnesota soil-garden guidance, not a universal system setting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
+      },
+      "growth": {
+        "short": "Sprouts develop in leaf axils from the bottom upward",
+        "guidance": "Each sprout forms where a leaf joins the main stem, starting low and continuing upward. A tall stalk with many large leaves is normal; small sprouts should not be mistaken for a single compact cabbage head.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Topping is optional and tied to lower-sprout development",
+        "guidance": "UMN suggests cutting off the growing top after the lowest sprouts reach about one inch to encourage upper sprouts to enlarge. This is a conditional management option from regional guidance, not a required pruning rule or cultivar-specific guarantee.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
-        ]
+        "short": "Pick developed sprouts along the stalk; cool weather can improve flavor",
+        "guidance": "Sprouts enlarge from the bottom upward. Harvest developed lower sprouts as needed or cut and store the stalk when the crop is mature; UMN reports that cool fall weather improves flavor. Its frost thresholds and storage schedule are regional and not cultivar-specific.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Dry spells affect sprout texture; rotate the cabbage family",
+        "guidance": "Inconsistent moisture can produce loose, poorly developed, bitter sprouts. UMN also lists several cabbage-family diseases and recommends a four-year rotation away from cole crops to reduce disease carryover. Disease pressure varies; this is prevention guidance, not diagnosis or cultivar resistance.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ]
       }
     },
@@ -849,47 +850,51 @@
       "brassica oleracea",
       "kohlrabi type"
     ],
-    "summary": "Kohlrabi is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Kohlrabi is a cool-season Brassica oleracea grown for a swollen stem that forms above the soil, not for a root bulb. Harvest it while crisp and tender; oversized stems can become woody, and the leaves are also edible.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Kohlrabi is resolved at Brassica oleracea and Kohlrabi type type scope",
-        "guidance": "Kohlrabi is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Kohlrabi is an enlarged-stem type of Brassica oleracea",
+        "guidance": "UMN identifies kohlrabi as Brassica oleracea var. gongylodes and describes the edible swollen stem above ground. The Garden identity retains species-level naming and kohlrabi type; no named cultivar is represented.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "Cool-season growth with steady moisture and fertile, drained soil",
+        "guidance": "UMN describes best quality under cool conditions and steady growth without heat or moisture stress, in fertile soil that retains moisture but drains well. The stated 65–75°F range and regional soil recommendations are crop guidance, not a cultivar-specific indoor or hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
+      },
+      "growth": {
+        "short": "The edible swollen stem sits above the soil surface",
+        "guidance": "The bulb-like portion is an enlarged stem formed just above the ground, topped by upright leaves; it is not an underground root. UMN also notes that the leaves can be eaten as cooked greens.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "No routine pruning protocol is documented",
+        "guidance": "The cited home-garden guide does not prescribe routine pruning. Keep the developing stem visible and avoid burying or damaging it during cultivation; this is a practical handling adaptation, not a cultivar-specific growing rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "short": "Harvest the stem while it is still crisp and tender",
+        "guidance": "UMN gives 2–3 inches across as a regional harvest cue and warns that larger kohlrabi can become tough, woody and bitter. Treat size as a guide rather than a universal cutoff; the leaves are edible too.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Heat, drought, and oversized stems reduce quality",
+        "guidance": "UMN reports that rapid growth without heat or moisture stress supports good quality, while oversized stems can turn tough, woody and bitter. These are crop-level quality cues, not a disease diagnosis or a named-cultivar trait.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
+          "umn-kohlrabi-home-gardens-2026"
         ]
       }
     },
@@ -4749,47 +4754,51 @@
       "brassica rapa",
       "broccoli raab type"
     ],
-    "summary": "Broccoli Raab is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Broccoli raab (rapini) is a Brassica rapa leafy flowering shoot, not true heading broccoli (B. oleracea). It is harvested for tender leaves, stems and unopened buds; high temperatures can trigger bolting and shorten the tender harvest window.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Broccoli Raab is resolved at Brassica rapa and Broccoli raab type type scope",
-        "guidance": "Broccoli Raab is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Rapini is a Brassica rapa type, distinct from true broccoli",
+        "guidance": "UC Master Gardener guidance identifies rapini/broccoli raab with Brassica rapa var. rapa, related to turnip rather than heading broccoli (B. oleracea). The Garden identity stays at Brassica rapa and a horticultural raab type; no named cultivar is asserted.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "sourceIds": ["ucanr-rapini-home-gardens-2026", "umn-asian-brassicas-wave2"]
+      },
+      "cultivation": {
+        "short": "Cool-season crop; heat and longer days can trigger bolting",
+        "guidance": "UC Master Gardener describes rapini as a cool-season crop grown to mature in cool weather and notes that high temperatures can trigger flowering. Sonoma County dates are regional; do not reuse them as a universal calendar or as indoor light requirements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-rapini-home-gardens-2026"]
+      },
+      "growth": {
+        "short": "The edible harvest includes leaves, stems and flower buds",
+        "guidance": "Unlike heading broccoli, rapini is grown for tender leafy tops and flowering stems. Small yellow flowers can appear among the buds; this is part of its crop identity, although the most tender harvest is before buds open.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-rapini-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Harvest the shoot rather than shaping it as a broccoli head",
+        "guidance": "The source does not give a routine pruning schedule. A careful cut can leave two leaves intact, after which some plants may resprout; this repeat growth is reported as possible, not guaranteed for every plant or system.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "sourceIds": ["ucanr-rapini-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
-        ]
+        "short": "Cut tender shoots before buds open",
+        "guidance": "UC Master Gardener recommends cutting rapini before the buds open; its Sonoma County guide gives 10–15 inches as a local harvest cue, not a universal threshold. Cut where the stem becomes succulent rather than tough. Leaves, stems and buds are all part of the harvest; leaving two leaves may allow some resprouting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-rapini-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Heat and dry soil can shorten the tender harvest window",
+        "guidance": "The UC Master Gardener guide reports that rapini bolts in high temperatures and warns that improper watering can contribute to sudden head splitting. These are crop-level regional notes, not a named-cultivar resistance claim. Keep soil from becoming severely dry and inspect buds as temperatures rise.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
+          "ucanr-rapini-home-gardens-2026"
         ]
       }
     },

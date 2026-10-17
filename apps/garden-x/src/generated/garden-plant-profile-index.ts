@@ -4578,8 +4578,8 @@ export const gardenPlantProfileCatalog = {
   },
   "broccoli-calabrese": {
     "summary": {
-      "en": "Calabrese Broccoli is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 1 para Brócoli calabrés. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Calabrese broccoli is a heading-broccoli type of Brassica oleracea. The useful harvest is the tight central cluster of unopened flower buds; cutting it promptly can allow smaller side shoots to follow. Heat and cold history affect head development, and the cited guidance is not cultivar-specific.",
+      "es": "El brócoli calabrés es un tipo de brócoli de cabeza de Brassica oleracea. Se cosecha el racimo central de botones florales verdes y cerrados; después del corte pueden desarrollarse brotes laterales menores. El calor y el frío afectan la formación de la cabeza; la evidencia citada no es específica de un cultivar."
     },
     "metrics": {
       "en": [],
@@ -4590,18 +4590,62 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-broccoli-home-gardens-2026"
         ],
         "en": {
-          "short": "Calabrese Broccoli identity is resolved at Brassica oleracea and Calabrese type type scope",
-          "guidance": "Calabrese Broccoli is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+          "short": "Calabrese heading broccoli within Brassica oleracea",
+          "guidance": "This identity is represented as a Calabrese/heading-broccoli type, not a named cultivar. UMN describes standard heading broccoli separately from sprouting types; its generic crop instructions do not establish Calabrese-specific size or heat tolerance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo calabrés de brócoli de cabeza dentro de Brassica oleracea",
+          "guidance": "Esta ficha representa el tipo calabrés/de cabeza, no un cultivar con nombre. UMN distingue el brócoli de cabeza de los tipos de brotes; su guía general no establece tamaño ni tolerancia al calor específicos de un cultivar calabrés.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-broccoli-home-gardens-2026",
+          "umn-cool-season-crop-stress-2026",
+          "umn-irrigation-strategies-vegetables-2026"
+        ],
+        "en": {
+          "short": "A cool-season head crop; keep moisture steady during head development",
+          "guidance": "UMN includes broccoli among cool-season crops and identifies head development as a critical moisture period. Its climate and field guidance are regional outdoor-soil context; this does not establish hydroponic settings or a Calabrese-specific temperature threshold.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultivo de cabeza de estación fresca; humedad constante durante su formación",
+          "guidance": "UMN incluye el brócoli entre los cultivos de estación fresca e identifica la formación de la cabeza como una etapa crítica de humedad. Su orientación de clima y campo es regional y para suelo exterior; no determina parámetros hidropónicos ni un umbral térmico propio del tipo calabrés.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-broccoli-home-gardens-2026"
+        ],
+        "en": {
+          "short": "The central head is a cluster of unopened flower buds",
+          "guidance": "The edible head is made of small flower buds on a central stalk. Once cut, the plant can form smaller side shoots; the number and timing are not guaranteed for this identity or growing environment.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La cabeza central es un racimo de botones florales cerrados",
+          "guidance": "La parte comestible está formada por botones florales pequeños sobre un tallo central. Tras cosechar la cabeza pueden aparecer brotes laterales menores; su cantidad y momento no están garantizados para esta identidad ni para todos los sistemas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -4611,39 +4655,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-broccoli-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "No routine pruning; remove the central head cleanly at harvest",
+          "guidance": "The cited guidance does not prescribe routine pruning. Cut the mature central head with a short stalk and leave the lower plant in place so secondary shoots may develop; this is a harvest cut, not a canopy-shaping regimen.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
+          "short": "No requiere poda rutinaria; corta la cabeza central limpiamente al cosechar",
+          "guidance": "La fuente no prescribe poda rutinaria. Corta la cabeza central madura con un tramo corto de tallo y deja la parte inferior de la planta para que puedan desarrollarse brotes secundarios; es un corte de cosecha, no un régimen para dar forma al follaje.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-broccoli-home-gardens-2026",
+          "umn-harvesting-home-garden-vegetables-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving the growing point",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
+          "short": "Cut while buds are tight and green, before they open",
+          "guidance": "UMN recommends harvesting broccoli when the head reaches usable size while its buds remain tight and green. Cut the central head with a short stalk; leave the lower plant for side shoots and harvest those when usable. If flowers begin opening, harvest promptly because quality declines.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Corta cuando los botones estén verdes y apretados, antes de abrirse",
+          "guidance": "UMN recomienda cosechar cuando la cabeza alcanza un tamaño utilizable y los botones siguen cerrados y verdes. Corta la cabeza central con un tramo corto de tallo; deja la planta para que produzca brotes laterales y cosecha esos brotes cuando sean utilizables. Si las flores empiezan a abrirse, cosecha pronto porque la calidad disminuye.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -4653,18 +4698,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-cool-season-crop-stress-2026"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can loosen or open the head; early cold can cause buttoning",
+          "guidance": "In UMN's regional guidance, high heat after head formation can trigger premature flowering, while cold exposure before enough leafy growth can cause small, misshapen heads (buttoning). Treat these as temperature-related possibilities, not Calabrese-specific susceptibility or a local forecast.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor puede aflojar o abrir la cabeza; el frío temprano puede causar cabezas pequeñas",
+          "guidance": "En la orientación regional de UMN, el calor alto después de formarse la cabeza puede adelantar la floración; el frío antes de que la planta tenga suficiente follaje puede producir cabezas pequeñas y deformes (buttoning). Son respuestas posibles a la temperatura, no una susceptibilidad propia del tipo calabrés ni un pronóstico local.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -6994,8 +7039,7 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ],
         "en": {
           "short": "Red Cabbage is resolved at Brassica oleracea and Red cabbage type type scope",
@@ -7016,8 +7060,7 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ],
         "en": {
           "short": "Manage by harvest, thinning, and visible crowding",
@@ -7082,8 +7125,8 @@ export const gardenPlantProfileCatalog = {
   },
   "brussels-sprouts": {
     "summary": {
-      "en": "Brussels Sprouts is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Coles de Bruselas. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Brussels sprouts form a sequence of compact buds along a tall leafy Brassica oleracea stalk, beginning at the lower leaf axils and progressing upward. Consistent soil moisture supports tight, tender sprouts; cooler autumn weather can improve flavor, but Minnesota season guidance is regional.",
+      "es": "Las coles de Bruselas forman pequeños brotes compactos a lo largo de un tallo alto y frondoso de Brassica oleracea; empiezan en las axilas inferiores de las hojas y siguen hacia arriba. La humedad constante favorece brotes firmes y tiernos. El clima fresco de otoño puede mejorar el sabor, aunque las fechas de Minnesota son regionales."
     },
     "metrics": {
       "en": [],
@@ -7098,15 +7141,57 @@ export const gardenPlantProfileCatalog = {
           "johnnys-brassicas-wave1"
         ],
         "en": {
-          "short": "Brussels Sprouts is resolved at Brassica oleracea and Brussels sprouts type type scope",
-          "guidance": "Brussels Sprouts is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Sprout-forming type of Brassica oleracea",
+          "guidance": "UMN describes Brussels sprouts as compact heads of tender leaves forming along the stalk of a tall leafy plant. This is crop/type evidence; it does not establish the mature dimensions or cold tolerance of a named cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo de Brassica oleracea que forma brotes a lo largo del tallo",
+          "guidance": "UMN describe pequeñas cabezas de hojas tiernas que se forman a lo largo del tallo de una planta alta y frondosa. Es evidencia del cultivo/tipo; no determina las dimensiones maduras ni la tolerancia al frío de un cultivar con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-brussels-sprouts-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep soil moisture consistent as sprouts develop",
+          "guidance": "UMN notes that Brussels sprouts need consistent soil moisture for tender, tight, well-flavored buds; dry spells can leave sprouts loose, poorly formed, or bitter. Its weekly watering quantity and fall calendar are Minnesota soil-garden guidance, not a universal system setting.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén humedad del suelo constante mientras se desarrollan los brotes",
+          "guidance": "UMN señala que la humedad constante favorece brotes tiernos, compactos y de buen sabor; los periodos secos pueden dejarlos flojos, poco desarrollados o amargos. La cantidad semanal de agua y el calendario otoñal corresponden a jardines en suelo de Minnesota, no a una receta universal para otros sistemas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-brussels-sprouts-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Sprouts develop in leaf axils from the bottom upward",
+          "guidance": "Each sprout forms where a leaf joins the main stem, starting low and continuing upward. A tall stalk with many large leaves is normal; small sprouts should not be mistaken for a single compact cabbage head.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los brotes se desarrollan desde abajo hacia arriba en las axilas foliares",
+          "guidance": "Cada brote aparece donde una hoja se une al tallo principal, comenzando abajo y continuando hacia arriba. Es normal que la planta tenga un tallo alto y hojas grandes; los brotes no forman una sola cabeza de repollo.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7116,41 +7201,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Topping is optional and tied to lower-sprout development",
+          "guidance": "UMN suggests cutting off the growing top after the lowest sprouts reach about one inch to encourage upper sprouts to enlarge. This is a conditional management option from regional guidance, not a required pruning rule or cultivar-specific guarantee.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "El despunte es opcional y depende del desarrollo de los brotes inferiores",
+          "guidance": "UMN propone cortar la punta de crecimiento cuando los brotes inferiores alcanzan alrededor de una pulgada para favorecer el crecimiento de los superiores. Es una opción condicionada de manejo regional, no una poda obligatoria ni una garantía específica de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Pick developed sprouts along the stalk; cool weather can improve flavor",
+          "guidance": "Sprouts enlarge from the bottom upward. Harvest developed lower sprouts as needed or cut and store the stalk when the crop is mature; UMN reports that cool fall weather improves flavor. Its frost thresholds and storage schedule are regional and not cultivar-specific.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los brotes desarrollados a lo largo del tallo",
+          "guidance": "Los brotes aumentan de tamaño desde la base hacia arriba. Puedes cosechar los inferiores ya desarrollados según los necesites o cortar y guardar el tallo cuando la cosecha esté madura. UMN indica que el otoño fresco mejora el sabor; sus umbrales de helada y calendario de almacenamiento son regionales.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7160,19 +7243,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "johnnys-brassicas-wave1"
+          "umn-brussels-sprouts-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Dry spells affect sprout texture; rotate the cabbage family",
+          "guidance": "Inconsistent moisture can produce loose, poorly developed, bitter sprouts. UMN also lists several cabbage-family diseases and recommends a four-year rotation away from cole crops to reduce disease carryover. Disease pressure varies; this is prevention guidance, not diagnosis or cultivar resistance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Los periodos secos afectan la textura; rota los cultivos de la familia del repollo",
+          "guidance": "La humedad irregular puede producir brotes flojos, poco desarrollados o amargos. UMN también enumera enfermedades de las brassicas y recomienda una rotación de cuatro años sin cultivos relacionados para reducir su persistencia. La presión de enfermedades varía; esto es prevención, no diagnóstico ni resistencia de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7182,8 +7264,8 @@ export const gardenPlantProfileCatalog = {
   },
   "kohlrabi": {
     "summary": {
-      "en": "Kohlrabi is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Colinabo. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Kohlrabi is a cool-season Brassica oleracea grown for a swollen stem that forms above the soil, not for a root bulb. Harvest it while crisp and tender; oversized stems can become woody, and the leaves are also edible.",
+      "es": "El colinabo es una Brassica oleracea de estación fresca que se cultiva por su tallo engrosado sobre el suelo, no por una raíz bulbosa. Cosecha el tallo mientras esté crujiente y tierno; si crece demasiado puede volverse fibroso. Las hojas también son comestibles."
     },
     "metrics": {
       "en": [],
@@ -7194,19 +7276,60 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
+          "umn-kohlrabi-home-gardens-2026"
         ],
         "en": {
-          "short": "Kohlrabi is resolved at Brassica oleracea and Kohlrabi type type scope",
-          "guidance": "Kohlrabi is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Kohlrabi is an enlarged-stem type of Brassica oleracea",
+          "guidance": "UMN identifies kohlrabi as Brassica oleracea var. gongylodes and describes the edible swollen stem above ground. The Garden identity retains species-level naming and kohlrabi type; no named cultivar is represented.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo de Brassica oleracea con tallo engrosado",
+          "guidance": "UMN identifica el colinabo como Brassica oleracea var. gongylodes y describe el tallo engrosado comestible que crece sobre el suelo. Garden conserva aquí la identidad de especie y tipo hortícola; no se representa un cultivar con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-kohlrabi-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Cool-season growth with steady moisture and fertile, drained soil",
+          "guidance": "UMN describes best quality under cool conditions and steady growth without heat or moisture stress, in fertile soil that retains moisture but drains well. The stated 65–75°F range and regional soil recommendations are crop guidance, not a cultivar-specific indoor or hydroponic prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultivo de estación fresca con humedad constante y suelo fértil drenado",
+          "guidance": "UMN describe mejor calidad en condiciones frescas y con crecimiento constante sin estrés por calor o falta de agua, en suelo fértil que retenga humedad y drene bien. El rango de 65–75 °F y las recomendaciones regionales de suelo son guía del cultivo, no una receta de interior o hidroponía específica de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-kohlrabi-home-gardens-2026"
+        ],
+        "en": {
+          "short": "The edible swollen stem sits above the soil surface",
+          "guidance": "The bulb-like portion is an enlarged stem formed just above the ground, topped by upright leaves; it is not an underground root. UMN also notes that the leaves can be eaten as cooked greens.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El tallo engrosado comestible se forma sobre la superficie del suelo",
+          "guidance": "La parte bulbosa es un tallo agrandado que se forma justo encima del suelo, con hojas erguidas en la parte superior; no es una raíz subterránea. UMN también señala que las hojas pueden cocinarse como verduras.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7216,41 +7339,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
+          "umn-kohlrabi-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "No routine pruning protocol is documented",
+          "guidance": "The cited home-garden guide does not prescribe routine pruning. Keep the developing stem visible and avoid burying or damaging it during cultivation; this is a practical handling adaptation, not a cultivar-specific growing rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No hay un protocolo documentado de poda rutinaria",
+          "guidance": "La guía citada no prescribe poda rutinaria. Mantén visible el tallo en desarrollo y evita cubrirlo o dañarlo durante el cultivo; es una adaptación práctica de manejo, no una regla de crecimiento específica de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
+          "umn-kohlrabi-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest the stem while it is still crisp and tender",
+          "guidance": "UMN gives 2–3 inches across as a regional harvest cue and warns that larger kohlrabi can become tough, woody and bitter. Treat size as a guide rather than a universal cutoff; the leaves are edible too.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha el tallo cuando todavía esté crujiente y tierno",
+          "guidance": "UMN da 2–3 pulgadas de diámetro como referencia regional de cosecha y advierte que los colinabos más grandes pueden volverse duros, fibrosos y amargos. Usa el tamaño como orientación, no como límite universal; las hojas también son comestibles.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7260,19 +7381,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-kohlrabi-wave2",
-          "usu-brassica-varietal-wave2"
+          "umn-kohlrabi-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat, drought, and oversized stems reduce quality",
+          "guidance": "UMN reports that rapid growth without heat or moisture stress supports good quality, while oversized stems can turn tough, woody and bitter. These are crop-level quality cues, not a disease diagnosis or a named-cultivar trait.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor, la sequía y el crecimiento excesivo reducen la calidad",
+          "guidance": "UMN indica que el crecimiento rápido sin estrés por calor o humedad favorece la calidad, mientras que los tallos demasiado grandes pueden volverse duros, fibrosos y amargos. Son señales de calidad del cultivo, no un diagnóstico de enfermedad ni un rasgo de cultivar con nombre.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -10432,8 +10552,8 @@ export const gardenPlantProfileCatalog = {
   },
   "broccoli-raab": {
     "summary": {
-      "en": "Broccoli Raab is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Brócoli raab. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Broccoli raab (rapini) is a Brassica rapa leafy flowering shoot, not true heading broccoli (B. oleracea). It is harvested for tender leaves, stems and unopened buds; high temperatures can trigger bolting and shorten the tender harvest window.",
+      "es": "El brócoli raab (rapini) es una hortaliza de hojas y brotes florales de Brassica rapa, distinta del brócoli de cabeza (B. oleracea). Se cosechan hojas, tallos y botones tiernos; las temperaturas altas pueden inducir floración y acortar la ventana de cosecha tierna."
     },
     "metrics": {
       "en": [],
@@ -10444,19 +10564,61 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
+          "ucanr-rapini-home-gardens-2026",
+          "umn-asian-brassicas-wave2"
         ],
         "en": {
-          "short": "Broccoli Raab is resolved at Brassica rapa and Broccoli raab type type scope",
-          "guidance": "Broccoli Raab is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Rapini is a Brassica rapa type, distinct from true broccoli",
+          "guidance": "UC Master Gardener guidance identifies rapini/broccoli raab with Brassica rapa var. rapa, related to turnip rather than heading broccoli (B. oleracea). The Garden identity stays at Brassica rapa and a horticultural raab type; no named cultivar is asserted.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Rapini es un tipo de Brassica rapa, distinto del brócoli de cabeza",
+          "guidance": "UC Master Gardener identifica rapini/brócoli raab como Brassica rapa var. rapa, relacionada con el nabo y distinta del brócoli de cabeza (B. oleracea). La ficha se mantiene al nivel de Brassica rapa y tipo hortícola raab; no afirma un cultivar con nombre.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-rapini-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Cool-season crop; heat and longer days can trigger bolting",
+          "guidance": "UC Master Gardener describes rapini as a cool-season crop grown to mature in cool weather and notes that high temperatures can trigger flowering. Sonoma County dates are regional; do not reuse them as a universal calendar or as indoor light requirements.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultivo de estación fresca; el calor puede inducir floración",
+          "guidance": "UC Master Gardener describe el rapini como cultivo de estación fresca y recomienda que madure con clima fresco; las temperaturas altas pueden inducir la floración. Las fechas de Sonoma County son regionales y no deben usarse como calendario universal ni como requisito de luz interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-rapini-home-gardens-2026"
+        ],
+        "en": {
+          "short": "The edible harvest includes leaves, stems and flower buds",
+          "guidance": "Unlike heading broccoli, rapini is grown for tender leafy tops and flowering stems. Small yellow flowers can appear among the buds; this is part of its crop identity, although the most tender harvest is before buds open.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La cosecha incluye hojas, tallos y botones florales",
+          "guidance": "A diferencia del brócoli de cabeza, el rapini se cultiva por sus brotes frondosos y tallos florales tiernos. Puede haber flores amarillas pequeñas entre los botones; la cosecha más tierna se hace antes de que se abran.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -10466,41 +10628,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
+          "ucanr-rapini-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Harvest the shoot rather than shaping it as a broccoli head",
+          "guidance": "The source does not give a routine pruning schedule. A careful cut can leave two leaves intact, after which some plants may resprout; this repeat growth is reported as possible, not guaranteed for every plant or system.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Cosecha los brotes en lugar de formar una cabeza de brócoli",
+          "guidance": "La fuente no establece un calendario de poda rutinaria. Un corte cuidadoso puede dejar dos hojas intactas, tras lo cual algunas plantas vuelven a brotar; no se garantiza que ocurra en todas las plantas o sistemas.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
+          "ucanr-rapini-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Cut tender shoots before buds open",
+          "guidance": "UC Master Gardener recommends cutting rapini before the buds open; its Sonoma County guide gives 10–15 inches as a local harvest cue, not a universal threshold. Cut where the stem becomes succulent rather than tough. Leaves, stems and buds are all part of the harvest; leaving two leaves may allow some resprouting.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Corta los brotes tiernos antes de que se abran los botones",
+          "guidance": "UC Master Gardener recomienda cosechar antes de que se abran los botones; su guía de Sonoma County usa 10–15 pulgadas como señal local, no como umbral universal. Corta donde el tallo deja de ser fibroso y se vuelve tierno. Se consumen hojas, tallos y botones; dejar dos hojas puede permitir que algunas plantas rebroten.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -10510,19 +10670,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "umn-asian-brassicas-wave2",
-          "usu-brassica-varietal-wave2"
+          "ucanr-rapini-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat and dry soil can shorten the tender harvest window",
+          "guidance": "The UC Master Gardener guide reports that rapini bolts in high temperatures and warns that improper watering can contribute to sudden head splitting. These are crop-level regional notes, not a named-cultivar resistance claim. Keep soil from becoming severely dry and inspect buds as temperatures rise.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El calor y el riego irregular pueden acortar o dañar la cosecha",
+          "guidance": "La guía de UC Master Gardener indica que el rapini florece prematuramente con temperaturas altas y advierte que el riego inadecuado puede hacer que los capítulos se abran de golpe. Son observaciones regionales del cultivo, no resistencia o susceptibilidad de un cultivar. Evita que el suelo se seque mucho e inspecciona los botones cuando suba la temperatura.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -12857,8 +13016,8 @@ export const gardenPlantProfileCatalog = {
   },
   "napa-cabbage": {
     "summary": {
-      "en": "Napa Cabbage is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Col napa. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Napa cabbage (Chinese cabbage, pekinensis type) forms a dense upright barrel-shaped head of tender leaves. It needs steady moisture through head formation; uneven moisture can contribute to tipburn, while cold-triggered bolting and hot head formation can reduce head quality.",
+      "es": "La col napa (col china, tipo pekinensis) forma una cabeza erguida, densa y alargada de hojas tiernas. Necesita humedad constante durante la formación de la cabeza; la humedad irregular puede favorecer tipburn, mientras que el frío seguido de calor puede inducir floración y el calor durante el llenado puede reducir la densidad."
     },
     "metrics": {
       "en": [],
@@ -12869,19 +13028,60 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
+          "umn-chinese-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Napa Cabbage is resolved at Brassica rapa and Napa cabbage type type scope",
-          "guidance": "Napa Cabbage is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+          "short": "Napa cabbage is the pekinensis type of Brassica rapa",
+          "guidance": "UMN identifies Chinese/Napa cabbage as Brassica rapa pekinensis and distinguishes it from bok choy (B. rapa chinensis). This profile describes the Napa head-forming type, not a named cultivar or bok choy care pattern.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "La col napa es el tipo pekinensis de Brassica rapa",
+          "guidance": "UMN identifica la col china/napa como Brassica rapa pekinensis y la distingue del bok choy (B. rapa chinensis). Esta ficha describe el tipo que forma cabeza, no un cultivar con nombre ni el manejo de bok choy.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-chinese-cabbage-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Fertile, moisture-retentive soil and steady water",
+          "guidance": "UMN recommends fertile soil that holds moisture while draining well and steady access to water and nutrients during growth. The Minnesota fall planting schedule and field amounts are regional soil guidance, not a universal calendar or hydroponic nutrient/water formula.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Suelo fértil que retenga humedad y riego constante",
+          "guidance": "UMN recomienda suelo fértil que retenga humedad y drene bien, con acceso constante a agua y nutrientes durante el crecimiento. Las fechas de plantación de Minnesota y cantidades para campo son orientación regional para suelo, no calendario universal ni fórmula hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-chinese-cabbage-home-gardens-2026"
+        ],
+        "en": {
+          "short": "A tall, dense barrel-shaped head of pale tender leaves",
+          "guidance": "UMN describes Napa cabbage as upright leaves forming a dense, barrel-shaped head; the leaves are thin and more tender than round cabbage. A loose head may still be developing or reflect growing conditions; it is not automatically a cultivar identity issue.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cabeza erguida, densa y alargada de hojas pálidas y tiernas",
+          "guidance": "UMN describe hojas erguidas que forman una cabeza densa y alargada; son más finas y tiernas que las de la col redonda. Una cabeza todavía floja puede estar desarrollándose o reflejar las condiciones de cultivo; no indica por sí sola un problema de identidad varietal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -12891,41 +13091,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
+          "umn-chinese-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "No routine pruning is documented for the head-forming crop",
+          "guidance": "The cited guide does not recommend routine pruning. Protect the growing point and outer leaves; harvest the mature head by cutting above the outer leaves rather than removing the plant's head-forming tissue early.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No se documenta poda rutinaria para este cultivo de cabeza",
+          "guidance": "La guía citada no recomienda poda rutinaria. Protege el punto de crecimiento y las hojas exteriores; al madurar, corta la cabeza por encima de las hojas externas en vez de retirar temprano el tejido que forma la cabeza.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
+          "umn-chinese-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest when the head is firm and dense at usable size",
+          "guidance": "UMN recommends cutting Chinese/Napa cabbage when the head reaches usable size and feels firm and dense when pressed. Harvest promptly once mature because it can bolt and lose quality rather than holding in the garden like round cabbage. Minnesota freeze timing is regional.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha cuando la cabeza esté firme y densa",
+          "guidance": "UMN recomienda cortar la col china/napa cuando la cabeza alcance tamaño utilizable y se sienta firme y densa al presionarla. Cosecha pronto al madurar: puede espigarse y perder calidad en vez de mantenerse en el huerto como una col redonda. El calendario de heladas de Minnesota es regional.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -12935,19 +13133,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
+          "umn-chinese-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Uneven moisture can cause tipburn; cold or heat can disrupt heading",
+          "guidance": "UMN links uneven soil moisture to tipburn through impaired calcium uptake; keep moisture even rather than assuming a calcium shortage. A cold spell followed by warmth can trigger bolting, while hot conditions during head formation can produce narrower, less dense heads. These are crop-level responses; no cultivar resistance is asserted.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "La humedad irregular puede causar tipburn; frío y calor pueden alterar la formación",
+          "guidance": "UMN relaciona la humedad irregular del suelo con tipburn por una absorción deficiente de calcio; procura humedad pareja en vez de asumir una carencia de calcio. Un periodo frío seguido de calor puede inducir floración, y el calor durante la formación puede dar cabezas más estrechas y menos densas. Son respuestas del tipo de cultivo; no se afirma resistencia varietal.",
           "items": [],
           "avoid": "",
           "context": ""

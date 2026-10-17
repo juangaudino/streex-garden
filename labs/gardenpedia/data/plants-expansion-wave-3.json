@@ -2487,47 +2487,51 @@
       "brassica rapa",
       "napa cabbage type"
     ],
-    "summary": "Napa Cabbage is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Napa cabbage (Chinese cabbage, pekinensis type) forms a dense upright barrel-shaped head of tender leaves. It needs steady moisture through head formation; uneven moisture can contribute to tipburn, while cold-triggered bolting and hot head formation can reduce head quality.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Napa Cabbage is resolved at Brassica rapa and Napa cabbage type type scope",
-        "guidance": "Napa Cabbage is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+        "short": "Napa cabbage is the pekinensis type of Brassica rapa",
+        "guidance": "UMN identifies Chinese/Napa cabbage as Brassica rapa pekinensis and distinguishes it from bok choy (B. rapa chinensis). This profile describes the Napa head-forming type, not a named cultivar or bok choy care pattern.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
-        ]
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "Fertile, moisture-retentive soil and steady water",
+        "guidance": "UMN recommends fertile soil that holds moisture while draining well and steady access to water and nutrients during growth. The Minnesota fall planting schedule and field amounts are regional soil guidance, not a universal calendar or hydroponic nutrient/water formula.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+      },
+      "growth": {
+        "short": "A tall, dense barrel-shaped head of pale tender leaves",
+        "guidance": "UMN describes Napa cabbage as upright leaves forming a dense, barrel-shaped head; the leaves are thin and more tender than round cabbage. A loose head may still be developing or reflect growing conditions; it is not automatically a cultivar identity issue.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "No routine pruning is documented for the head-forming crop",
+        "guidance": "The cited guide does not recommend routine pruning. Protect the growing point and outer leaves; harvest the mature head by cutting above the outer leaves rather than removing the plant's head-forming tissue early.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
-        ]
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
-        ]
+        "short": "Harvest when the head is firm and dense at usable size",
+        "guidance": "UMN recommends cutting Chinese/Napa cabbage when the head reaches usable size and feels firm and dense when pressed. Harvest promptly once mature because it can bolt and lose quality rather than holding in the garden like round cabbage. Minnesota freeze timing is regional.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Uneven moisture can cause tipburn; cold or heat can disrupt heading",
+        "guidance": "UMN links uneven soil moisture to tipburn through impaired calcium uptake; keep moisture even rather than assuming a calcium shortage. A cold spell followed by warmth can trigger bolting, while hot conditions during head formation can produce narrower, less dense heads. These are crop-level responses; no cultivar resistance is asserted.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-brassica-varietal-wave2",
-          "umn-asian-brassicas-wave2"
+          "umn-chinese-cabbage-home-gardens-2026"
         ]
       }
     },

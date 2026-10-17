@@ -1664,43 +1664,51 @@
       "brassica oleracea",
       "calabrese type"
     ],
-    "summary": "Calabrese Broccoli is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Calabrese broccoli is a heading-broccoli type of Brassica oleracea. The useful harvest is the tight central cluster of unopened flower buds; cutting it promptly can allow smaller side shoots to follow. Heat and cold history affect head development, and the cited guidance is not cultivar-specific.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Calabrese Broccoli identity is resolved at Brassica oleracea and Calabrese type type scope",
-        "guidance": "Calabrese Broccoli is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Calabrese heading broccoli within Brassica oleracea",
+        "guidance": "This identity is represented as a Calabrese/heading-broccoli type, not a named cultivar. UMN describes standard heading broccoli separately from sprouting types; its generic crop instructions do not establish Calabrese-specific size or heat tolerance.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-broccoli-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "A cool-season head crop; keep moisture steady during head development",
+        "guidance": "UMN includes broccoli among cool-season crops and identifies head development as a critical moisture period. Its climate and field guidance are regional outdoor-soil context; this does not establish hydroponic settings or a Calabrese-specific temperature threshold.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-broccoli-home-gardens-2026", "umn-cool-season-crop-stress-2026", "umn-irrigation-strategies-vegetables-2026"]
+      },
+      "growth": {
+        "short": "The central head is a cluster of unopened flower buds",
+        "guidance": "The edible head is made of small flower buds on a central stalk. Once cut, the plant can form smaller side shoots; the number and timing are not guaranteed for this identity or growing environment.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-broccoli-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "No routine pruning; remove the central head cleanly at harvest",
+        "guidance": "The cited guidance does not prescribe routine pruning. Cut the mature central head with a short stalk and leave the lower plant in place so secondary shoots may develop; this is a harvest cut, not a canopy-shaping regimen.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-broccoli-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "short": "Cut while buds are tight and green, before they open",
+        "guidance": "UMN recommends harvesting broccoli when the head reaches usable size while its buds remain tight and green. Cut the central head with a short stalk; leave the lower plant for side shoots and harvest those when usable. If flowers begin opening, harvest promptly because quality declines.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-broccoli-home-gardens-2026", "umn-harvesting-home-garden-vegetables-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Heat can loosen or open the head; early cold can cause buttoning",
+        "guidance": "In UMN's regional guidance, high heat after head formation can trigger premature flowering, while cold exposure before enough leafy growth can cause small, misshapen heads (buttoning). Treat these as temperature-related possibilities, not Calabrese-specific susceptibility or a local forecast.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-cool-season-crop-stress-2026"
         ]
       }
     },

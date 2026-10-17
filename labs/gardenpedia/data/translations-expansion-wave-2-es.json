@@ -133,44 +133,60 @@
     }
   },
   "brussels-sprouts": {
-    "summary": "Identidad base de Wave 2 para Coles de Bruselas. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Las coles de Bruselas forman pequeños brotes compactos a lo largo de un tallo alto y frondoso de Brassica oleracea; empiezan en las axilas inferiores de las hojas y siguen hacia arriba. La humedad constante favorece brotes firmes y tiernos. El clima fresco de otoño puede mejorar el sabor, aunque las fechas de Minnesota son regionales.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de Brassica oleracea que forma brotes a lo largo del tallo",
+        "guidance": "UMN describe pequeñas cabezas de hojas tiernas que se forman a lo largo del tallo de una planta alta y frondosa. Es evidencia del cultivo/tipo; no determina las dimensiones maduras ni la tolerancia al frío de un cultivar con nombre."
+      },
+      "cultivation": {
+        "short": "Mantén humedad del suelo constante mientras se desarrollan los brotes",
+        "guidance": "UMN señala que la humedad constante favorece brotes tiernos, compactos y de buen sabor; los periodos secos pueden dejarlos flojos, poco desarrollados o amargos. La cantidad semanal de agua y el calendario otoñal corresponden a jardines en suelo de Minnesota, no a una receta universal para otros sistemas."
+      },
+      "growth": {
+        "short": "Los brotes se desarrollan desde abajo hacia arriba en las axilas foliares",
+        "guidance": "Cada brote aparece donde una hoja se une al tallo principal, comenzando abajo y continuando hacia arriba. Es normal que la planta tenga un tallo alto y hojas grandes; los brotes no forman una sola cabeza de repollo."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "El despunte es opcional y depende del desarrollo de los brotes inferiores",
+        "guidance": "UMN propone cortar la punta de crecimiento cuando los brotes inferiores alcanzan alrededor de una pulgada para favorecer el crecimiento de los superiores. Es una opción condicionada de manejo regional, no una poda obligatoria ni una garantía específica de cultivar."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha los brotes desarrollados a lo largo del tallo",
+        "guidance": "Los brotes aumentan de tamaño desde la base hacia arriba. Puedes cosechar los inferiores ya desarrollados según los necesites o cortar y guardar el tallo cuando la cosecha esté madura. UMN indica que el otoño fresco mejora el sabor; sus umbrales de helada y calendario de almacenamiento son regionales."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Los periodos secos afectan la textura; rota los cultivos de la familia del repollo",
+        "guidance": "La humedad irregular puede producir brotes flojos, poco desarrollados o amargos. UMN también enumera enfermedades de las brassicas y recomienda una rotación de cuatro años sin cultivos relacionados para reducir su persistencia. La presión de enfermedades varía; esto es prevención, no diagnóstico ni resistencia de cultivar."
       }
     }
   },
   "kohlrabi": {
-    "summary": "Identidad base de Wave 2 para Colinabo. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El colinabo es una Brassica oleracea de estación fresca que se cultiva por su tallo engrosado sobre el suelo, no por una raíz bulbosa. Cosecha el tallo mientras esté crujiente y tierno; si crece demasiado puede volverse fibroso. Las hojas también son comestibles.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de Brassica oleracea con tallo engrosado",
+        "guidance": "UMN identifica el colinabo como Brassica oleracea var. gongylodes y describe el tallo engrosado comestible que crece sobre el suelo. Garden conserva aquí la identidad de especie y tipo hortícola; no se representa un cultivar con nombre."
+      },
+      "cultivation": {
+        "short": "Cultivo de estación fresca con humedad constante y suelo fértil drenado",
+        "guidance": "UMN describe mejor calidad en condiciones frescas y con crecimiento constante sin estrés por calor o falta de agua, en suelo fértil que retenga humedad y drene bien. El rango de 65–75 °F y las recomendaciones regionales de suelo son guía del cultivo, no una receta de interior o hidroponía específica de cultivar."
+      },
+      "growth": {
+        "short": "El tallo engrosado comestible se forma sobre la superficie del suelo",
+        "guidance": "La parte bulbosa es un tallo agrandado que se forma justo encima del suelo, con hojas erguidas en la parte superior; no es una raíz subterránea. UMN también señala que las hojas pueden cocinarse como verduras."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No hay un protocolo documentado de poda rutinaria",
+        "guidance": "La guía citada no prescribe poda rutinaria. Mantén visible el tallo en desarrollo y evita cubrirlo o dañarlo durante el cultivo; es una adaptación práctica de manejo, no una regla de crecimiento específica de cultivar."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha el tallo cuando todavía esté crujiente y tierno",
+        "guidance": "UMN da 2–3 pulgadas de diámetro como referencia regional de cosecha y advierte que los colinabos más grandes pueden volverse duros, fibrosos y amargos. Usa el tamaño como orientación, no como límite universal; las hojas también son comestibles."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor, la sequía y el crecimiento excesivo reducen la calidad",
+        "guidance": "UMN indica que el crecimiento rápido sin estrés por calor o humedad favorece la calidad, mientras que los tallos demasiado grandes pueden volverse duros, fibrosos y amargos. Son señales de calidad del cultivo, no un diagnóstico de enfermedad ni un rasgo de cultivar con nombre."
       }
     }
   },
@@ -874,23 +890,31 @@
     }
   },
   "broccoli-raab": {
-    "summary": "Identidad base de Wave 2 para Brócoli raab. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El brócoli raab (rapini) es una hortaliza de hojas y brotes florales de Brassica rapa, distinta del brócoli de cabeza (B. oleracea). Se cosechan hojas, tallos y botones tiernos; las temperaturas altas pueden inducir floración y acortar la ventana de cosecha tierna.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Rapini es un tipo de Brassica rapa, distinto del brócoli de cabeza",
+        "guidance": "UC Master Gardener identifica rapini/brócoli raab como Brassica rapa var. rapa, relacionada con el nabo y distinta del brócoli de cabeza (B. oleracea). La ficha se mantiene al nivel de Brassica rapa y tipo hortícola raab; no afirma un cultivar con nombre."
+      },
+      "cultivation": {
+        "short": "Cultivo de estación fresca; el calor puede inducir floración",
+        "guidance": "UC Master Gardener describe el rapini como cultivo de estación fresca y recomienda que madure con clima fresco; las temperaturas altas pueden inducir la floración. Las fechas de Sonoma County son regionales y no deben usarse como calendario universal ni como requisito de luz interior."
+      },
+      "growth": {
+        "short": "La cosecha incluye hojas, tallos y botones florales",
+        "guidance": "A diferencia del brócoli de cabeza, el rapini se cultiva por sus brotes frondosos y tallos florales tiernos. Puede haber flores amarillas pequeñas entre los botones; la cosecha más tierna se hace antes de que se abran."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Cosecha los brotes en lugar de formar una cabeza de brócoli",
+        "guidance": "La fuente no establece un calendario de poda rutinaria. Un corte cuidadoso puede dejar dos hojas intactas, tras lo cual algunas plantas vuelven a brotar; no se garantiza que ocurra en todas las plantas o sistemas."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta los brotes tiernos antes de que se abran los botones",
+        "guidance": "UC Master Gardener recomienda cosechar antes de que se abran los botones; su guía de Sonoma County usa 10–15 pulgadas como señal local, no como umbral universal. Corta donde el tallo deja de ser fibroso y se vuelve tierno. Se consumen hojas, tallos y botones; dejar dos hojas puede permitir que algunas plantas rebroten."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor y el riego irregular pueden acortar o dañar la cosecha",
+        "guidance": "La guía de UC Master Gardener indica que el rapini florece prematuramente con temperaturas altas y advierte que el riego inadecuado puede hacer que los capítulos se abran de golpe. Son observaciones regionales del cultivo, no resistencia o susceptibilidad de un cultivar. Evita que el suelo se seque mucho e inspecciona los botones cuando suba la temperatura."
       }
     }
   },

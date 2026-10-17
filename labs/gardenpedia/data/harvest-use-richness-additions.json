@@ -4,9 +4,186 @@
       "publisher": "University of Minnesota Extension",
       "title": "Growing rhubarb in home gardens",
       "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-rhubarb"
+    },
+    "umn-broccoli-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing broccoli in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-broccoli"
+    },
+    "ucanr-rapini-home-gardens-2026": {
+      "publisher": "UC Master Gardener Program of Sonoma County",
+      "title": "Rapini (Broccoli Raab)",
+      "url": "https://ucanr.edu/site/uc-master-gardener-program-sonoma-county/rapini-broccoli-raab"
+    },
+    "umn-brussels-sprouts-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing Brussels sprouts in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-brussels-sprouts"
+    },
+    "umn-kohlrabi-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing kohlrabi in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-kohlrabi"
+    },
+    "umn-chinese-cabbage-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing Chinese cabbage and bok choy in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-chinese-cabbage-and-bok-choy"
     }
   },
   "plants": {
+    "broccoli-calabrese": {
+      "edibleParts": {
+        "en": "Central flower head, tender stalks, side shoots and leaves",
+        "es": "Cabeza floral central, tallos tiernos, brotes laterales y hojas"
+      },
+      "bestUse": {
+        "en": "Use the tight flower buds and tender stalks fresh or cooked; broccoli leaves can be prepared like kale or collards.",
+        "es": "Usa los botones florales cerrados y los tallos tiernos frescos o cocidos; las hojas pueden prepararse como kale o berza."
+      },
+      "quickUses": {
+        "en": ["Raw vegetable platter", "Salads and slaw", "Steamed or sautéed florets", "Cooked leaves"],
+        "es": ["Crudités", "Ensaladas y ensalada de col", "Ramilletes al vapor o salteados", "Hojas cocidas"]
+      },
+      "methods": [
+        {
+          "id": "use-head-and-stalk",
+          "icon": "🥦",
+          "status": "best",
+          "title": {"en": "Use the head and tender stalks", "es": "Aprovechar la cabeza y los tallos tiernos"},
+          "summary": {"en": "Harvest buds before they open and use the tender stalks with them.", "es": "Cosecha los botones antes de que se abran y aprovecha también los tallos tiernos."},
+          "steps": {
+            "en": ["Choose a tight, green head and tender stalks.", "Serve raw in salads or a vegetable platter, or cook by steaming, sautéing or another preferred method."],
+            "es": ["Elige una cabeza verde y compacta con tallos tiernos.", "Sírvela cruda en ensaladas o crudités, o cocínala al vapor, salteada u otro método de preferencia."]
+          },
+          "sourceIds": ["umn-broccoli-home-gardens-2026"]
+        },
+        {
+          "id": "cook-leaves",
+          "icon": "🥬",
+          "status": "good",
+          "title": {"en": "Cook the leaves", "es": "Cocinar las hojas"},
+          "summary": {"en": "Broccoli leaves are edible and can be used like kale or collards.", "es": "Las hojas de brócoli son comestibles y pueden usarse como kale o berza."},
+          "steps": {
+            "en": ["Select sound leaves and wash them.", "Prepare them as you would kale or collards; the source does not prescribe a single recipe."],
+            "es": ["Selecciona hojas sanas y lávalas.", "Prepáralas como kale o berza; la fuente no prescribe una receta única."]
+          },
+          "sourceIds": ["umn-broccoli-home-gardens-2026"]
+        }
+      ]
+    },
+    "broccoli-raab": {
+      "edibleParts": {
+        "en": "Young leaves, tender stems, unopened buds and small flowers",
+        "es": "Hojas jóvenes, tallos tiernos, botones cerrados y flores pequeñas"
+      },
+      "bestUse": {
+        "en": "Use the tender shoots and leaves as leafy greens; UC Master Gardener compares the young leaves with turnip tops and greens.",
+        "es": "Usa los brotes tiernos y las hojas como verduras; UC Master Gardener compara las hojas jóvenes con las hojas y grelos de nabo."
+      },
+      "quickUses": {
+        "en": ["Cooked leafy greens", "Tender shoots before flowering", "Italian-, Galician- or Portuguese-style dishes"],
+        "es": ["Verduras de hoja cocidas", "Brotes tiernos antes de florecer", "Preparaciones de tradición italiana, gallega o portuguesa"]
+      },
+      "methods": [
+        {
+          "id": "prepare-rapini-greens",
+          "icon": "🥬",
+          "status": "best",
+          "title": {"en": "Prepare as leafy greens", "es": "Prepararlo como verdura de hoja"},
+          "summary": {"en": "The young leaves are used like turnip greens; buds, stems and leaves are harvested together while tender.", "es": "Las hojas jóvenes se usan como grelos de nabo; botones, tallos y hojas se cosechan juntos mientras están tiernos."},
+          "steps": {
+            "en": ["Choose succulent shoots and harvest before buds open for a tender crop.", "Wash and use the young leaves as you would turnip tops or greens; the source describes a bitter, pungent flavor."],
+            "es": ["Elige brotes tiernos y cosecha antes de que se abran los botones.", "Lava y usa las hojas jóvenes como hojas o grelos de nabo; la fuente describe un sabor amargo y pungente."]
+          },
+          "sourceIds": ["ucanr-rapini-home-gardens-2026"]
+        }
+      ]
+    },
+    "brussels-sprouts": {
+      "edibleParts": {
+        "en": "Compact sprouts and leaves",
+        "es": "Brotes compactos y hojas"
+      },
+      "bestUse": {
+        "en": "Use the sprouts as a vegetable and do not discard sound leaves; UMN says the leaves can be prepared like collards.",
+        "es": "Usa los brotes como verdura y no descartes las hojas sanas; UMN indica que pueden prepararse como berza."
+      },
+      "quickUses": {
+        "en": ["Cooked sprouts", "Leaves prepared like collards", "Freeze or pickle the sprouts"],
+        "es": ["Brotes cocidos", "Hojas preparadas como berza", "Congelar o encurtir los brotes"]
+      },
+      "methods": [
+        {
+          "id": "use-sprouts-and-leaves",
+          "icon": "🥬",
+          "status": "best",
+          "title": {"en": "Use sprouts and leaves", "es": "Aprovechar brotes y hojas"},
+          "summary": {"en": "The sprouts are the familiar harvest; the larger leaves are edible too.", "es": "Los brotes son la cosecha habitual; las hojas grandes también son comestibles."},
+          "steps": {
+            "en": ["Remove developed sprouts from the stalk and trim damaged outer leaves.", "Use the sprouts as a vegetable; prepare sound leaves as you would collards."],
+            "es": ["Retira del tallo los brotes desarrollados y quita las hojas exteriores dañadas.", "Usa los brotes como verdura y prepara las hojas sanas como berza."]
+          },
+          "sourceIds": ["umn-brussels-sprouts-home-gardens-2026"]
+        }
+      ]
+    },
+    "kohlrabi": {
+      "edibleParts": {
+        "en": "Swollen above-ground stem and leaves",
+        "es": "Tallo engrosado sobre el suelo y hojas"
+      },
+      "bestUse": {
+        "en": "The crisp, mild stem works raw in salads or slaw and cooked in stir-fries or sautés; leaves can be cooked as greens.",
+        "es": "El tallo crujiente y suave sirve crudo en ensaladas o ensalada de col y cocido en salteados; las hojas pueden cocinarse como verdura."
+      },
+      "quickUses": {
+        "en": ["Raw vegetable platter", "Salads and slaw", "Stir-fries and sautés", "Cooked leaves"],
+        "es": ["Crudités", "Ensaladas y ensalada de col", "Salteados", "Hojas cocidas"]
+      },
+      "methods": [
+        {
+          "id": "use-stem-and-leaves",
+          "icon": "🥗",
+          "status": "best",
+          "title": {"en": "Use the stem and leaves", "es": "Aprovechar el tallo y las hojas"},
+          "summary": {"en": "The swollen stem is the crisp edible portion; the leaves can be cooked too.", "es": "El tallo engrosado es la parte comestible y crujiente; las hojas también se pueden cocinar."},
+          "steps": {
+            "en": ["Peel or trim only as needed and slice the crisp stem for a raw platter, salad or slaw.", "For cooked use, add it to a stir-fry or sauté; prepare the leaves as cooked greens."],
+            "es": ["Pela o recorta solo lo necesario y corta el tallo crujiente para crudités, ensalada o ensalada de col.", "Para usarlo cocido, incorpóralo a un salteado; prepara las hojas como verdura cocida."]
+          },
+          "sourceIds": ["umn-kohlrabi-home-gardens-2026"]
+        }
+      ]
+    },
+    "napa-cabbage": {
+      "edibleParts": {
+        "en": "Tender leaves of the dense head",
+        "es": "Hojas tiernas de la cabeza densa"
+      },
+      "bestUse": {
+        "en": "Use the tender leaves in soups or stir-fries, or ferment them as kimchi; UMN also documents a sauerkraut-style use.",
+        "es": "Usa las hojas tiernas en sopas o salteados, o fermentadas como kimchi; UMN también documenta un uso tipo chucrut."
+      },
+      "quickUses": {
+        "en": ["Soups", "Stir-fries", "Kimchi", "Sauerkraut-style fermentation"],
+        "es": ["Sopas", "Salteados", "Kimchi", "Fermentación tipo chucrut"]
+      },
+      "methods": [
+        {
+          "id": "cook-or-ferment-leaves",
+          "icon": "🥬",
+          "status": "best",
+          "title": {"en": "Cook or ferment the leaves", "es": "Cocinar o fermentar las hojas"},
+          "summary": {"en": "Napa cabbage's tender leaves suit cooked dishes; fermentation is a documented traditional use.", "es": "Las hojas tiernas de la col napa sirven para platos cocidos; la fermentación es un uso tradicional documentado."},
+          "steps": {
+            "en": ["Separate and wash the leaves, then use them in soup or stir-fry.", "For preservation, follow a tested kimchi or sauerkraut recipe; this profile does not provide a fermentation formula."],
+            "es": ["Separa y lava las hojas; úsalas en sopa o salteado.", "Para conservarlas, sigue una receta probada de kimchi o chucrut; esta ficha no aporta una fórmula de fermentación."]
+          },
+          "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+        }
+      ]
+    },
     "rhubarb": {
       "edibleParts": {
         "en": "Leaf stalks (petioles) only; the leaves are toxic",

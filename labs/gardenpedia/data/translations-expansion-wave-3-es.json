@@ -450,23 +450,31 @@
     }
   },
   "napa-cabbage": {
-    "summary": "Identidad base de Wave 3 para Col napa. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La col napa (col china, tipo pekinensis) forma una cabeza erguida, densa y alargada de hojas tiernas. Necesita humedad constante durante la formación de la cabeza; la humedad irregular puede favorecer tipburn, mientras que el frío seguido de calor puede inducir floración y el calor durante el llenado puede reducir la densidad.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "La col napa es el tipo pekinensis de Brassica rapa",
+        "guidance": "UMN identifica la col china/napa como Brassica rapa pekinensis y la distingue del bok choy (B. rapa chinensis). Esta ficha describe el tipo que forma cabeza, no un cultivar con nombre ni el manejo de bok choy."
+      },
+      "cultivation": {
+        "short": "Suelo fértil que retenga humedad y riego constante",
+        "guidance": "UMN recomienda suelo fértil que retenga humedad y drene bien, con acceso constante a agua y nutrientes durante el crecimiento. Las fechas de plantación de Minnesota y cantidades para campo son orientación regional para suelo, no calendario universal ni fórmula hidropónica."
+      },
+      "growth": {
+        "short": "Cabeza erguida, densa y alargada de hojas pálidas y tiernas",
+        "guidance": "UMN describe hojas erguidas que forman una cabeza densa y alargada; son más finas y tiernas que las de la col redonda. Una cabeza todavía floja puede estar desarrollándose o reflejar las condiciones de cultivo; no indica por sí sola un problema de identidad varietal."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No se documenta poda rutinaria para este cultivo de cabeza",
+        "guidance": "La guía citada no recomienda poda rutinaria. Protege el punto de crecimiento y las hojas exteriores; al madurar, corta la cabeza por encima de las hojas externas en vez de retirar temprano el tejido que forma la cabeza."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha cuando la cabeza esté firme y densa",
+        "guidance": "UMN recomienda cortar la col china/napa cuando la cabeza alcance tamaño utilizable y se sienta firme y densa al presionarla. Cosecha pronto al madurar: puede espigarse y perder calidad en vez de mantenerse en el huerto como una col redonda. El calendario de heladas de Minnesota es regional."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "La humedad irregular puede causar tipburn; frío y calor pueden alterar la formación",
+        "guidance": "UMN relaciona la humedad irregular del suelo con tipburn por una absorción deficiente de calcio; procura humedad pareja en vez de asumir una carencia de calcio. Un periodo frío seguido de calor puede inducir floración, y el calor durante la formación puede dar cabezas más estrechas y menos densas. Son respuestas del tipo de cultivo; no se afirma resistencia varietal."
       }
     }
   },

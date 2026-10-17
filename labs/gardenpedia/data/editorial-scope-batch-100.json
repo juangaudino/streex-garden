@@ -60,8 +60,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+          "en": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+          "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
           }
         },
         "harvest": {
@@ -70,8 +70,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+          "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
+          "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
           }
         },
         "problems": {
@@ -533,34 +533,46 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "UMN identifies Calabrese as a heading-broccoli type; the profile does not claim a named cultivar or Calabrese-specific dimensions.",
+            "es": "UMN identifica el tipo calabrés como brócoli de cabeza; esta ficha no afirma un cultivar con nombre ni dimensiones propias del tipo calabrés."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-season and moisture guidance is crop-level Minnesota Extension evidence; it does not define an indoor or hydroponic recipe.",
+            "es": "La orientación de estación fresca y humedad es evidencia de cultivo de UMN Extension para Minnesota; no define una receta interior o hidropónica."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The central floral head and possible side shoots are standard heading-broccoli crop traits, not guaranteed cultivar output.",
+            "es": "La cabeza floral central y los posibles brotes laterales son rasgos del brócoli de cabeza, no una producción garantizada del cultivar."
           }
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The source describes cutting the central head and leaving the plant for side shoots; presenting this under management is an editorial placement, not a separate pruning protocol.",
+            "es": "La fuente describe cortar la cabeza central y dejar la planta para que produzca brotes laterales; presentarlo como manejo no constituye un protocolo de poda aparte."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+            "en": "The cited guidance does not prescribe routine pruning. Cut the mature central head with a short stalk and leave the lower plant in place so secondary shoots may develop; this is a harvest cut, not a canopy-shaping regimen.",
+            "es": "La fuente no prescribe poda rutinaria. Corta la cabeza central madura con un tramo corto de tallo y deja la parte inferior de la planta para que puedan desarrollarse brotes secundarios; es un corte de cosecha, no un régimen para dar forma al follaje."
           }
         },
         "harvest": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "Harvest is based on visible head maturity; UMN's Minnesota season and field timing are not universal dates.",
+            "es": "La cosecha depende de señales visibles de madurez de la cabeza; las fechas y temporadas de campo de UMN para Minnesota no son universales."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+            "en": "UMN recommends harvesting broccoli when the head reaches usable size while its buds remain tight and green. Cut the central head with a short stalk; leave the lower plant for side shoots and harvest those when usable. If flowers begin opening, harvest promptly because quality declines.",
+            "es": "UMN recomienda cosechar cuando la cabeza alcanza un tamaño utilizable y los botones siguen cerrados y verdes. Corta la cabeza central con un tramo corto de tallo; deja la planta para que produzca brotes laterales y cosecha esos brotes cuando sean utilizables. Si las flores empiezan a abrirse, cosecha pronto porque la calidad disminuye."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "Temperature responses are regional crop-level guidance; no Calabrese-specific tolerance is claimed.",
+            "es": "Las respuestas a la temperatura son orientación regional a nivel de cultivo; no se afirma tolerancia específica del tipo calabrés."
           }
         }
       }
@@ -1391,34 +1403,46 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "UMN describes the Brussels sprout crop type; cultivar-specific dimensions and cold tolerance are not established here.",
+            "es": "UMN describe el tipo de cultivo de coles de Bruselas; aquí no se establecen dimensiones ni tolerancia al frío específicas de cultivar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Consistent-moisture advice is Minnesota home-garden soil guidance, not a fixed irrigation prescription for other systems.",
+            "es": "La recomendación de humedad constante corresponde a jardines en suelo de Minnesota, no a una receta de riego fija para otros sistemas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The sequential sprouts in leaf axils and tall leafy stalk describe the crop form, not a named cultivar's dimensions.",
+            "es": "Los brotes sucesivos en las axilas foliares y el tallo alto y frondoso describen la forma del cultivo, no las dimensiones de un cultivar con nombre."
           }
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "UMN presents topping as an optional, conditional practice after lower sprouts reach about one inch, not routine pruning.",
+            "es": "UMN presenta el despunte como práctica opcional y condicionada cuando los brotes inferiores alcanzan alrededor de una pulgada, no como poda rutinaria."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+          "en": "UMN suggests cutting off the growing top after the lowest sprouts reach about one inch to encourage upper sprouts to enlarge. This is a conditional management option from regional guidance, not a required pruning rule or cultivar-specific guarantee.",
+          "es": "UMN propone cortar la punta de crecimiento cuando los brotes inferiores alcanzan alrededor de una pulgada para favorecer el crecimiento de los superiores. Es una opción condicionada de manejo regional, no una poda obligatoria ni una garantía específica de cultivar."
           }
         },
         "harvest": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "Cool-autumn flavor and frost timing are reported in Minnesota guidance and should not be treated as universal harvest dates.",
+            "es": "El efecto del otoño fresco en el sabor y las fechas de helada proceden de orientación para Minnesota y no deben tratarse como fechas universales de cosecha."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+          "en": "Sprouts enlarge from the bottom upward. Harvest developed lower sprouts as needed or cut and store the stalk when the crop is mature; UMN reports that cool fall weather improves flavor. Its frost thresholds and storage schedule are regional and not cultivar-specific.",
+          "es": "Los brotes aumentan de tamaño desde la base hacia arriba. Puedes cosechar los inferiores ya desarrollados según los necesites o cortar y guardar el tallo cuando la cosecha esté madura. UMN indica que el otoño fresco mejora el sabor; sus umbrales de helada y calendario de almacenamiento son regionales."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "Moisture effects and rotation advice are crop-level prevention guidance; disease pressure varies and is not a resistance claim.",
+            "es": "Los efectos de humedad y la rotación son prevención a nivel de cultivo; la presión de enfermedades varía y esto no es una afirmación de resistencia."
           }
         }
       }
@@ -1428,34 +1452,46 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "UMN identifies Brassica oleracea var. gongylodes; this Garden identity is species/type-level and names no cultivar.",
+            "es": "UMN identifica Brassica oleracea var. gongylodes; esta identidad de Garden corresponde a especie/tipo y no nombra un cultivar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Temperature, soil and moisture guidance comes from Minnesota home-garden cultivation; no indoor-light or hydroponic recipe is established.",
+            "es": "La orientación de temperatura, suelo y humedad procede del cultivo doméstico en Minnesota; no establece una receta de luz interior o hidroponía."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The harvested swollen part is an above-ground stem, not a root; leaves are also documented as edible.",
+            "es": "La parte engrosada que se cosecha es un tallo sobre el suelo, no una raíz; también se documenta que las hojas son comestibles."
           }
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "UMN does not prescribe routine pruning; keeping the swollen stem visible and undamaged is a Garden handling adaptation.",
+            "es": "UMN no prescribe poda rutinaria; mantener visible y sin daños el tallo engrosado es una adaptación práctica de manejo de Garden."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+          "en": "The cited home-garden guide does not prescribe routine pruning. Keep the developing stem visible and avoid burying or damaging it during cultivation; this is a practical handling adaptation, not a cultivar-specific growing rule.",
+          "es": "La guía citada no prescribe poda rutinaria. Mantén visible el tallo en desarrollo y evita cubrirlo o dañarlo durante el cultivo; es una adaptación práctica de manejo, no una regla de crecimiento específica de cultivar."
           }
         },
         "harvest": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The 2–3 inch diameter is UMN's regional quality cue, not a universal cutoff; overgrown stems can become woody and bitter.",
+            "es": "El diámetro de 2–3 pulgadas es una referencia regional de calidad de UMN, no un límite universal; los tallos demasiado grandes pueden volverse fibrosos y amargos."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+          "en": "UMN gives 2–3 inches across as a regional harvest cue and warns that larger kohlrabi can become tough, woody and bitter. Treat size as a guide rather than a universal cutoff; the leaves are edible too.",
+          "es": "UMN da 2–3 pulgadas de diámetro como referencia regional de cosecha y advierte que los colinabos más grandes pueden volverse duros, fibrosos y amargos. Usa el tamaño como orientación, no como límite universal; las hojas también son comestibles."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "Heat/moisture stress and woody oversized stems are crop-quality observations, not disease or cultivar-resistance claims.",
+            "es": "El estrés por calor/humedad y los tallos grandes y fibrosos son observaciones de calidad del cultivo, no afirmaciones de enfermedad o resistencia varietal."
           }
         }
       }
@@ -2582,34 +2618,46 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "UC Master Gardener identifies rapini as Brassica rapa var. rapa, distinct from heading broccoli; no named cultivar is represented.",
+            "es": "UC Master Gardener identifica el rapini como Brassica rapa var. rapa, distinto del brócoli de cabeza; no se representa un cultivar con nombre."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-season guidance and heat-related bolting come from UC Master Gardener; Sonoma County timing is regional.",
+            "es": "La orientación de estación fresca y floración por calor procede de UC Master Gardener; las fechas de Sonoma County son regionales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Rapini is a leafy flowering shoot crop, not a central heading-broccoli crop.",
+            "es": "El rapini se cultiva por sus hojas y brotes florales, no por una cabeza central como el brócoli de cabeza."
           }
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The source describes a harvest cut that may leave two leaves for possible regrowth; it does not establish routine pruning.",
+            "es": "La fuente describe un corte de cosecha que puede dejar dos hojas para un posible rebrote; no establece poda rutinaria."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+          "en": "The source does not give a routine pruning schedule. A careful cut can leave two leaves intact, after which some plants may resprout; this repeat growth is reported as possible, not guaranteed for every plant or system.",
+            "es": "La fuente no establece un calendario de poda rutinaria. Un corte cuidadoso puede dejar dos hojas intactas, tras lo cual algunas plantas vuelven a brotar; no se garantiza que ocurra en todas las plantas o sistemas."
           }
         },
         "harvest": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "The 10–15 inch cue comes from Sonoma County and is not a universal size threshold.",
+            "es": "La referencia de 10–15 pulgadas procede de Sonoma County y no es un umbral universal."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+          "en": "UC Master Gardener recommends cutting rapini before the buds open; its Sonoma County guide gives 10–15 inches as a local harvest cue, not a universal threshold. Cut where the stem becomes succulent rather than tough. Leaves, stems and buds are all part of the harvest; leaving two leaves may allow some resprouting.",
+          "es": "UC Master Gardener recomienda cosechar antes de que se abran los botones; su guía de Sonoma County usa 10–15 pulgadas como señal local, no como umbral universal. Corta donde el tallo deja de ser fibroso y se vuelve tierno. Se consumen hojas, tallos y botones; dejar dos hojas puede permitir que algunas plantas rebroten."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "Bolting and watering notes are crop-level observations from the regional UC Master Gardener guide, not cultivar resistance claims.",
+            "es": "Las notas sobre floración y riego son observaciones del cultivo en la guía regional de UC Master Gardener, no afirmaciones de resistencia varietal."
           }
         }
       }
@@ -3458,34 +3506,46 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "UMN distinguishes Napa/pekinensis heading Chinese cabbage from bok choy/chinensis; no named cultivar is represented.",
+            "es": "UMN distingue la col china de cabeza Napa/pekinensis del bok choy/chinensis; no se representa un cultivar con nombre."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Soil, water and Minnesota planting-calendar guidance is regional outdoor cultivation evidence, not a hydroponic formula.",
+            "es": "La orientación de suelo, agua y calendario de Minnesota es evidencia regional de cultivo exterior, no una fórmula hidropónica."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The dense upright barrel-shaped head describes Napa type and distinguishes it from the leafy-stalk form of bok choy.",
+            "es": "La cabeza erguida, densa y alargada describe el tipo Napa y lo distingue del bok choy, que forma una mata de hojas con pecíolos gruesos."
           }
         },
         "pruning": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "UMN does not prescribe routine pruning; protecting the growing point and cutting the mature head above outer leaves is handling guidance.",
+            "es": "UMN no prescribe poda rutinaria; proteger el punto de crecimiento y cortar la cabeza madura por encima de las hojas exteriores es orientación de manejo."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+          "en": "The cited guide does not recommend routine pruning. Protect the growing point and outer leaves; harvest the mature head by cutting above the outer leaves rather than removing the plant's head-forming tissue early.",
+          "es": "La guía citada no recomienda poda rutinaria. Protege el punto de crecimiento y las hojas exteriores; al madurar, corta la cabeza por encima de las hojas externas en vez de retirar temprano el tejido que forma la cabeza."
           }
         },
         "harvest": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
+            "en": "Firmness and density are harvest cues; Minnesota freeze timing and planting dates remain regional.",
+            "es": "La firmeza y densidad son señales de cosecha; las fechas de plantación y heladas de Minnesota siguen siendo regionales."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+          "en": "UMN recommends cutting Chinese/Napa cabbage when the head reaches usable size and feels firm and dense when pressed. Harvest promptly once mature because it can bolt and lose quality rather than holding in the garden like round cabbage. Minnesota freeze timing is regional.",
+          "es": "UMN recomienda cortar la col china/napa cuando la cabeza alcance tamaño utilizable y se sienta firme y densa al presionarla. Cosecha pronto al madurar: puede espigarse y perder calidad en vez de mantenerse en el huerto como una col redonda. El calendario de heladas de Minnesota es regional."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
+            "en": "Tipburn, bolting and head-density responses are UMN crop-level observations; no cultivar resistance is asserted.",
+            "es": "El tipburn, la floración prematura y la densidad de cabeza son observaciones de UMN a nivel de cultivo; no se afirma resistencia de cultivar."
           }
         }
       }

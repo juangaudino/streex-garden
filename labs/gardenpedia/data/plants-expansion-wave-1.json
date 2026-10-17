@@ -1052,6 +1052,20 @@
           "usu-peppers"
         ]
       },
+      "cultivation": {
+        "short": "Keep the root zone evenly moist; avoid wetting foliage",
+        "guidance": "UMN Extension recommends consistent soil moisture for quality pepper fruit and discourages overhead sprinkling because wet foliage is more disease-prone. This is outdoor Capsicum guidance; Minnesota temperatures and field conditions do not define an indoor or hydroponic setpoint for Jalapeño.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Avoid drought stress and shallow surface-only watering",
+        "guidance": "UMN Extension notes that dry soil can weaken pepper growth and light, surface-only watering can encourage shallow roots. Check moisture through the root zone; do not convert its garden watering schedule into a universal container or system volume.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",

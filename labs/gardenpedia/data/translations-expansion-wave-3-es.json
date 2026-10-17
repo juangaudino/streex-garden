@@ -361,6 +361,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Evita que el suelo se seque durante floración y crecimiento inicial del fruto",
+        "guidance": "UMN Extension relaciona la humedad constante del suelo con mejor calidad del fruto y advierte que el suelo seco puede debilitar flores y frutos pequeños. Es orientación para Capsicum a nivel de cultivo; las condiciones de Minnesota y de campo no son instrucciones específicas de Ancho/poblano ni de hidroponía."
+      },
+      "care": {
+        "short": "Riega lo suficiente para alcanzar las raíces, no solo la superficie",
+        "guidance": "UMN Extension señala que un riego ligero solo superficial puede favorecer raíces poco profundas y reducir la calidad del fruto; en jardín recomienda humedecer bien el suelo. Comprueba la humedad bajo la superficie; su referencia semanal de lluvia no es una cantidad universal para macetas o sistemas interiores."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."

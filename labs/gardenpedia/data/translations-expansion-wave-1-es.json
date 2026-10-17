@@ -194,6 +194,22 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Mantén uniforme la humedad de las raíces y evita mojar el follaje",
+        "guidance": "UMN Extension recomienda humedad constante del suelo para obtener frutos de calidad y desaconseja el riego por aspersión sobre la planta porque el follaje mojado es más propenso a enfermedades. Es una guía de Capsicum en exterior; las temperaturas y condiciones de campo de Minnesota no definen un ajuste interior o hidropónico para el jalapeño."
+      },
+      "care": {
+        "short": "Evita la sequía y el riego superficial",
+        "guidance": "UMN Extension señala que el suelo seco puede debilitar el crecimiento del pimiento y que un riego ligero solo superficial puede favorecer raíces poco profundas. Comprueba la humedad en la zona radicular; no conviertas el calendario de jardín en un volumen universal para recipientes o sistemas."
+      },
+      "harvest": {
+        "short": "Cosecha según la etapa del cultivo",
+        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+      },
+      "problems": {
+        "short": "Observa las señales que cambian el manejo",
+        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."

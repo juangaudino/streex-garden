@@ -331,6 +331,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Mantén estable la humedad del suelo durante el desarrollo del fruto",
+        "guidance": "UMN Extension relaciona la humedad constante del suelo con frutos de mejor calidad y advierte que el suelo seco puede debilitar flores y frutos pequeños. Es orientación de exterior para Capsicum a nivel de cultivo, no un volumen de riego específico para Serrano ni una recomendación hidropónica."
+      },
+      "care": {
+        "short": "Riega la zona radicular en vez de mojar repetidamente las hojas",
+        "guidance": "UMN Extension desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades, y señala que regar solo la superficie puede favorecer raíces superficiales. Mantén humedad constante en las raíces; aquí no se establece cantidad ni intervalo para sistemas interiores."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
@@ -380,6 +388,14 @@
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "cultivation": {
+        "short": "Mantén humedad uniforme durante floración y desarrollo del fruto",
+        "guidance": "UMN Extension recomienda humedad constante del suelo para la calidad del fruto y señala que una humedad inadecuada puede debilitar flores y frutos pequeños. La guía cubre el cultivo del pimiento, incluidos tipos picantes, pero no establece un calendario de agua ni un ajuste hidropónico específico para Habanero."
+      },
+      "care": {
+        "short": "Riega las raíces y evita mojar la planta desde arriba",
+        "guidance": "UMN Extension desaconseja el riego por aspersión porque el follaje mojado es más propenso a enfermedades y advierte que mojar solo la superficie favorece raíces poco profundas. Es orientación de jardín; no se afirma una humedad interior ni un intervalo de depósito."
       },
       "pruning": {
         "short": "Manejo según porte y observación",

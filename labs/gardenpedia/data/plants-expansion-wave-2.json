@@ -1825,6 +1825,20 @@
           "johnnys-pepper-catalog-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Maintain steady soil moisture during fruit development",
+        "guidance": "UMN Extension links consistent soil moisture with better-quality pepper fruit and warns that dry soil can weaken flowers and small fruit. This is Capsicum crop-level outdoor guidance, not a Serrano-specific irrigation volume or hydroponic recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Water the root zone rather than repeatedly wetting leaves",
+        "guidance": "UMN Extension advises against overhead sprinkling because wet leaves are more disease-prone, and says surface-only watering can promote shallow rooting. Keep moisture consistent in the root zone; no amount or interval is established here for indoor systems.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
@@ -2102,6 +2116,20 @@
           "usu-peppers",
           "johnnys-pepper-catalog-wave2"
         ]
+      },
+      "cultivation": {
+        "short": "Keep moisture even through flowering and fruit development",
+        "guidance": "UMN Extension recommends consistent soil moisture for pepper fruit quality and notes that poor moisture can weaken flowers and small fruits. This crop-level guidance includes hot types but does not establish a Habanero-specific water schedule or hydroponic setting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Use root-zone watering and avoid overhead wetting",
+        "guidance": "UMN Extension discourages overhead sprinkling because wet foliage is more disease-prone and cautions that shallow surface wetting encourages shallow roots. Apply this as garden-level care; no indoor humidity or reservoir interval is asserted.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
       },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",

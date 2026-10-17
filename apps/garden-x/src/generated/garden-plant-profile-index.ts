@@ -3880,6 +3880,48 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep the root zone evenly moist; avoid wetting foliage",
+          "guidance": "UMN Extension recommends consistent soil moisture for quality pepper fruit and discourages overhead sprinkling because wet foliage is more disease-prone. This is outdoor Capsicum guidance; Minnesota temperatures and field conditions do not define an indoor or hydroponic setpoint for Jalapeño.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén uniforme la humedad de las raíces y evita mojar el follaje",
+          "guidance": "UMN Extension recomienda humedad constante del suelo para obtener frutos de calidad y desaconseja el riego por aspersión sobre la planta porque el follaje mojado es más propenso a enfermedades. Es una guía de Capsicum en exterior; las temperaturas y condiciones de campo de Minnesota no definen un ajuste interior o hidropónico para el jalapeño.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Avoid drought stress and shallow surface-only watering",
+          "guidance": "UMN Extension notes that dry soil can weaken pepper growth and light, surface-only watering can encourage shallow roots. Check moisture through the root zone; do not convert its garden watering schedule into a universal container or system volume.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Evita la sequía y el riego superficial",
+          "guidance": "UMN Extension señala que el suelo seco puede debilitar el crecimiento del pimiento y que un riego ligero solo superficial puede favorecer raíces poco profundas. Comprueba la humedad en la zona radicular; no conviertas el calendario de jardín en un volumen universal para recipientes o sistemas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -7663,6 +7705,48 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Maintain steady soil moisture during fruit development",
+          "guidance": "UMN Extension links consistent soil moisture with better-quality pepper fruit and warns that dry soil can weaken flowers and small fruit. This is Capsicum crop-level outdoor guidance, not a Serrano-specific irrigation volume or hydroponic recommendation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén estable la humedad del suelo durante el desarrollo del fruto",
+          "guidance": "UMN Extension relaciona la humedad constante del suelo con frutos de mejor calidad y advierte que el suelo seco puede debilitar flores y frutos pequeños. Es orientación de exterior para Capsicum a nivel de cultivo, no un volumen de riego específico para Serrano ni una recomendación hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Water the root zone rather than repeatedly wetting leaves",
+          "guidance": "UMN Extension advises against overhead sprinkling because wet leaves are more disease-prone, and says surface-only watering can promote shallow rooting. Keep moisture consistent in the root zone; no amount or interval is established here for indoor systems.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega la zona radicular en vez de mojar repetidamente las hojas",
+          "guidance": "UMN Extension desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades, y señala que regar solo la superficie puede favorecer raíces superficiales. Mantén humedad constante en las raíces; aquí no se establece cantidad ni intervalo para sistemas interiores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -7902,6 +7986,48 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep moisture even through flowering and fruit development",
+          "guidance": "UMN Extension recommends consistent soil moisture for pepper fruit quality and notes that poor moisture can weaken flowers and small fruits. This crop-level guidance includes hot types but does not establish a Habanero-specific water schedule or hydroponic setting.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén humedad uniforme durante floración y desarrollo del fruto",
+          "guidance": "UMN Extension recomienda humedad constante del suelo para la calidad del fruto y señala que una humedad inadecuada puede debilitar flores y frutos pequeños. La guía cubre el cultivo del pimiento, incluidos tipos picantes, pero no establece un calendario de agua ni un ajuste hidropónico específico para Habanero.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Use root-zone watering and avoid overhead wetting",
+          "guidance": "UMN Extension discourages overhead sprinkling because wet foliage is more disease-prone and cautions that shallow surface wetting encourages shallow roots. Apply this as garden-level care; no indoor humidity or reservoir interval is asserted.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega las raíces y evita mojar la planta desde arriba",
+          "guidance": "UMN Extension desaconseja el riego por aspersión porque el follaje mojado es más propenso a enfermedades y advierte que mojar solo la superficie favorece raíces poco profundas. Es orientación de jardín; no se afirma una humedad interior ni un intervalo de depósito.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -11705,6 +11831,48 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Avoid dry soil during flowering and early fruit growth",
+          "guidance": "UMN Extension links consistent soil moisture with better pepper fruit quality and warns that dry soil can weaken flowers and small fruits. This is Capsicum crop-level garden advice; Minnesota climate notes and field conditions are not Ancho/poblano-specific or hydroponic instructions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Evita que el suelo se seque durante floración y crecimiento inicial del fruto",
+          "guidance": "UMN Extension relaciona la humedad constante del suelo con mejor calidad del fruto y advierte que el suelo seco puede debilitar flores y frutos pequeños. Es orientación para Capsicum a nivel de cultivo; las condiciones de Minnesota y de campo no son instrucciones específicas de Ancho/poblano ni de hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Water deeply enough to reach roots, not just the surface",
+          "guidance": "UMN Extension says surface-only light watering can promote shallow roots and reduce fruit quality; it advises thorough soil soaking in its home-garden context. Check moisture below the surface; its weekly rainfall reference is not a universal amount for pots or indoor systems.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega lo suficiente para alcanzar las raíces, no solo la superficie",
+          "guidance": "UMN Extension señala que un riego ligero solo superficial puede favorecer raíces poco profundas y reducir la calidad del fruto; en jardín recomienda humedecer bien el suelo. Comprueba la humedad bajo la superficie; su referencia semanal de lluvia no es una cantidad universal para macetas o sistemas interiores.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -2051,6 +2051,20 @@
           "johnnys-pepper-catalog-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Avoid dry soil during flowering and early fruit growth",
+        "guidance": "UMN Extension links consistent soil moisture with better pepper fruit quality and warns that dry soil can weaken flowers and small fruits. This is Capsicum crop-level garden advice; Minnesota climate notes and field conditions are not Ancho/poblano-specific or hydroponic instructions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Water deeply enough to reach roots, not just the surface",
+        "guidance": "UMN Extension says surface-only light watering can promote shallow roots and reduce fruit quality; it advises thorough soil soaking in its home-garden context. Check moisture below the surface; its weekly rainfall reference is not a universal amount for pots or indoor systems.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",

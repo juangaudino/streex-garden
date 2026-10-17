@@ -1,0 +1,63 @@
+{
+  "sources": {
+    "umn-rhubarb-home-wave29": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing rhubarb in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-rhubarb"
+    }
+  },
+  "plants": {
+    "rhubarb": {
+      "edibleParts": {
+        "en": "Leaf stalks (petioles) only; the leaves are toxic",
+        "es": "Solo pecíolos (tallos de las hojas); las hojas son tóxicas"
+      },
+      "bestUse": {
+        "en": "Cook the tart stalks for pies, sauces or preserves. Remove and discard the toxic leaves.",
+        "es": "Cocina los tallos ácidos para tartas, salsas o conservas. Retira y desecha las hojas tóxicas."
+      },
+      "quickUses": {
+        "en": [
+          "Cooked sauces",
+          "Pies and crumbles",
+          "Jams and preserves"
+        ],
+        "es": [
+          "Salsas cocidas",
+          "Tartas y crumbles",
+          "Mermeladas y conservas"
+        ]
+      },
+      "methods": [
+        {
+          "id": "cook-stalks",
+          "icon": "🥧",
+          "status": "best",
+          "title": {
+            "en": "Prepare the edible stalks",
+            "es": "Preparar los tallos comestibles"
+          },
+          "summary": {
+            "en": "Use stalks only; remove the toxic leaf blades.",
+            "es": "Usa solo los tallos; retira las láminas foliares tóxicas."
+          },
+          "steps": {
+            "en": [
+              "Harvest established stalks by grasping near the base, pulling and twisting.",
+              "Remove and discard the leaves; wash and trim the stalks.",
+              "Cook the tart stalks for a sauce or baked filling."
+            ],
+            "es": [
+              "Cosecha tallos de plantas establecidas sujetándolos cerca de la base, tirando y girando.",
+              "Retira y desecha las hojas; lava y recorta los tallos.",
+              "Cocina los tallos ácidos para una salsa o un relleno horneado."
+            ]
+          },
+          "sourceIds": [
+            "umn-rhubarb-home-wave29"
+          ]
+        }
+      ]
+    }
+  }
+}

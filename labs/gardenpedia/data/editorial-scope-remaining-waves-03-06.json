@@ -6,26 +6,48 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "UMN places acorn squash within Cucurbita pepo winter squash; this is type-level context, not a named cultivar.",
+            "es": "UMN ubica la calabaza acorn entre las calabazas de invierno Cucurbita pepo; es contexto de tipo, no de un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor soil guidance only; field spacing is not hydroponic pod spacing.",
+            "es": "Guía para suelo exterior; el espaciamiento de campo no equivale a separación hidropónica de pods."
+          },
+          "action": {
+            "en": "Allow room for a spreading winter-squash vine and keep the root zone draining. The cited source does not establish an indoor or hydroponic system prescription.",
+            "es": "Deja espacio para una guía extendida de calabaza de invierno y conserva drenaje en la zona de raíces. La fuente citada no establece una prescripción de sistema interior o hidropónico."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "No routine pruning schedule for the acorn type was established in the sources reviewed.",
+            "es": "Las fuentes revisadas no establecen un calendario rutinario de poda para el tipo acorn."
+          },
+          "action": {
+            "en": "Preserve healthy leaf area supporting developing fruit. Removing damaged tissue is an observation-led Garden adaptation, not an acorn-specific yield rule.",
+            "es": "Conserva el follaje sano que sostiene los frutos en desarrollo. Retirar tejido dañado es una adaptación de Garden guiada por observación, no una regla de rendimiento propia de acorn."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Maturity cues apply to winter squash broadly, not a named acorn cultivar or fixed calendar.",
+            "es": "Las señales de madurez se aplican a calabazas de invierno en general, no a un cultivar acorn ni a un calendario fijo."
+          },
+          "action": {
+            "en": "Leave fruit on the vine until the rind resists a fingernail and the stem hardens; cut the stem rather than pulling the fruit off. Winter squash does not continue ripening after harvest.",
+            "es": "Deja el fruto en la guía hasta que la cáscara resista una uña y el tallo se endurezca; córtalo en vez de arrancarlo. La calabaza de invierno no sigue madurando después de cosecharse."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Downy-mildew symptoms are crop-group and regional evidence, not a diagnosis or cultivar-resistance claim.",
+            "es": "Los síntomas de mildiu velloso son evidencia del grupo de cultivo y contexto regional, no diagnóstico ni afirmación de resistencia varietal."
+          },
+          "action": {
+            "en": "Look for angular yellow leaf spots and gray-purple growth underneath in humid conditions. Similar symptoms can have other causes; confirm the pattern before treating.",
+            "es": "Busca manchas foliares amarillas angulares y crecimiento gris violáceo debajo en condiciones húmedas. Otros problemas pueden parecerse; confirma el patrón antes de tratar."
           }
         }
       }
@@ -35,26 +57,48 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "UMN identifies butternut as Cucurbita moschata winter squash; guidance is crop-type, not named-cultivar specific.",
+            "es": "UMN identifica butternut como calabaza de invierno Cucurbita moschata; la guía corresponde al tipo, no a un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Johnny's describes outdoor winter-squash culture; no indoor or hydroponic suitability is established.",
+            "es": "Johnny's describe el cultivo exterior de calabaza de invierno; no establece idoneidad interior o hidropónica."
+          },
+          "action": {
+            "en": "Treat butternut as a spreading warm-season vine and preserve healthy canopy. Exact mature spread remains unknown for this represented type.",
+            "es": "Maneja butternut como una guía extendida de estación cálida y conserva el follaje sano. La extensión adulta exacta sigue sin conocerse para este tipo representado."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "The reviewed sources do not establish a butternut-specific pruning schedule.",
+            "es": "Las fuentes revisadas no establecen un calendario de poda específico para butternut."
+          },
+          "action": {
+            "en": "Do not remove healthy leaves solely to reduce apparent vine size; this is a cautious management adaptation, not a proven yield result.",
+            "es": "No retires hojas sanas solo para reducir el tamaño aparente de la guía; es una adaptación cautelosa, no un resultado de rendimiento demostrado."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Winter-squash maturity indicators; not a fixed butternut harvest date or storage guarantee.",
+            "es": "Indicadores de madurez de calabaza de invierno; no son fecha fija ni garantía de almacenamiento de butternut."
+          },
+          "action": {
+            "en": "Wait until the rind resists a fingernail and the stem has become hard and woody. Cut the fruit with its stem attached; it will not ripen further after harvest.",
+            "es": "Espera a que la cáscara resista una uña y el tallo esté duro y leñoso. Corta el fruto dejando el tallo unido; no seguirá madurando después de la cosecha."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Regional cucurbit disease guidance; similar leaf symptoms require confirmation and do not establish resistance.",
+            "es": "Guía regional de enfermedades de cucurbitáceas; los síntomas foliares similares deben confirmarse y no establecen resistencia."
+          },
+          "action": {
+            "en": "Check both leaf surfaces for angular yellow lesions and gray-purple growth underneath during humid weather; confirm before choosing management.",
+            "es": "Revisa ambas caras de la hoja para detectar lesiones amarillas angulares y crecimiento gris violáceo debajo con humedad; confirma antes de elegir manejo."
           }
         }
       }
@@ -1047,32 +1091,58 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "USU guidance is cantaloupe/muskmelon crop-level evidence, not a named-cultivar claim.",
+            "es": "La guía de USU corresponde al cultivo de cantalupo/melón, no a un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Utah outdoor-soil recommendations; do not translate field water or spacing into hydroponic settings.",
+            "es": "Recomendaciones de suelo exterior para Utah; no conviertas riego ni distancias de campo en ajustes hidropónicos."
+          },
+          "action": {
+            "en": "Keep moisture reaching the root zone, especially around flowering and fruit set. USU's recommendation to reduce water near ripening is regional crop advice, not a universal indoor target.",
+            "es": "Procura que la humedad llegue a la zona de raíces, sobre todo durante floración y cuajado. La recomendación regional de USU de reducir el agua al acercarse la madurez no es un objetivo universal de interior."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Trellising is an optional small-garden adaptation, not a pruning requirement.",
+            "es": "El enrejado es una adaptación opcional para jardines pequeños, no un requisito de poda."
+          },
+          "action": {
+            "en": "If you train vines vertically, support each enlarging melon so its weight does not injure the vine; USU does not establish a cultivar-specific pruning regimen.",
+            "es": "Si guías las enredaderas en vertical, sostiene cada melón que aumente de tamaño para que su peso no dañe la guía; USU no establece un régimen de poda propio de cultivar."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "USU maturity cues apply to cantaloupe crop types; days from flowering vary by temperature and variety.",
+            "es": "Las señales de madurez de USU corresponden a tipos de cantalupo; los días desde floración varían con temperatura y variedad."
+          },
+          "action": {
+            "en": "Use several signs together: coarser netting, creamy-yellow background color, and fruit separating easily with a gentle twist. Pick ripe fruit rather than relying on a single date.",
+            "es": "Combina varias señales: red más áspera, color de fondo crema-amarillo y separación fácil del fruto con un giro suave. Cosecha cuando esté maduro, no solo por una fecha."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Fruit-set causes and downy-mildew symptoms are crop-level; confirm symptoms before intervention.",
+            "es": "Las causas de cuajado y síntomas de mildiu velloso corresponden al cultivo; confirma antes de intervenir."
+          },
+          "action": {
+            "en": "When female flowers fail to set fruit, consider pollination, heat, and water stress rather than assuming a cultivar defect. For angular yellow lesions and gray-purple undersides, verify downy mildew with a reliable diagnosis.",
+            "es": "Si las flores femeninas no cuajan, considera polinización, calor y estrés hídrico antes de asumir un defecto de cultivar. Ante lesiones amarillas angulares y envés gris violáceo, confirma el mildiu con diagnóstico confiable."
           }
         },
         "flowering": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "USU's male/female flower description is cantaloupe crop guidance.",
+            "es": "La descripción de flores masculinas y femeninas de USU es guía del cultivo de cantalupo."
+          },
+          "action": {
+            "en": "Male flowers commonly appear first. A female bloom has a small swelling behind it that becomes fruit after pollination; early male-flower drop alone is normal.",
+            "es": "Las flores masculinas suelen aparecer primero. Detrás de la flor femenina hay un pequeño ovario que puede convertirse en fruto tras la polinización; que caigan las primeras flores masculinas es normal."
           }
         }
       }
@@ -1082,32 +1152,58 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "USU watermelon advice is species/crop-level and is not Sugar Baby cultivar evidence.",
+            "es": "La guía de sandía de USU corresponde a especie/cultivo y no es evidencia específica de Sugar Baby."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor Utah soil guidance; spacing and water amounts are not indoor or hydroponic settings.",
+            "es": "Guía de suelo exterior de Utah; distancias y cantidades de agua no son ajustes de interior o hidroponía."
+          },
+          "action": {
+            "en": "Maintain deep root-zone moisture as vines and fruit develop. Do not interpret a reduction near harvest as permission to let the plant wilt or as a fixed irrigation formula.",
+            "es": "Mantén humedad profunda en la zona de raíces mientras crecen las guías y frutos. Reducir agua cerca de cosecha no significa dejar marchitar la planta ni aplicar una fórmula fija."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "No Sugar Baby-specific pruning, trellising, or compactness evidence was found in the cited crop guide.",
+            "es": "La guía del cultivo no aporta evidencia de poda, enrejado o porte compacto específicos de Sugar Baby."
+          },
+          "action": {
+            "en": "Handle the trailing vine carefully and avoid assuming that a smaller-fruited name means a compact plant.",
+            "es": "Manipula con cuidado la guía rastrera y no supongas que un nombre asociado a frutos pequeños significa una planta compacta."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "These are general watermelon maturity cues; no Sugar Baby date or size threshold is established.",
+            "es": "Son señales generales de madurez de sandía; no se establece fecha ni umbral de tamaño para Sugar Baby."
+          },
+          "action": {
+            "en": "Check the tendril opposite the fruit, the ground spot, and whether the rind has dulled; combine indicators instead of judging by tapping or calendar alone.",
+            "es": "Revisa el zarcillo opuesto al fruto, la mancha de apoyo y si la cáscara se volvió opaca; combina indicadores en vez de depender solo del sonido o calendario."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Stress and downy-mildew guidance is crop-level and cannot diagnose an individual plant or claim cultivar resistance.",
+            "es": "La guía de estrés y mildiu es del cultivo; no diagnostica una planta ni demuestra resistencia de cultivar."
+          },
+          "action": {
+            "en": "Note wilting, heat, and soil moisture when flavor or fruit development is poor. Angular lesions with gray-purple growth beneath leaves can indicate downy mildew, but confirm before treatment.",
+            "es": "Registra marchitez, calor y humedad del suelo si el sabor o desarrollo del fruto es deficiente. Lesiones angulares con crecimiento gris violáceo debajo pueden indicar mildiu velloso; confirma antes de tratar."
           }
         },
         "flowering": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "The crop sources do not establish a Sugar Baby flower-removal practice.",
+            "es": "Las fuentes del cultivo no establecen una práctica de retirar flores para Sugar Baby."
+          },
+          "action": {
+            "en": "Track flowering and fruit set separately and note environmental stress; do not remove flowers based on a generic herb-care rule.",
+            "es": "Registra floración y cuajado por separado y anota estrés ambiental; no retires flores aplicando una regla genérica de hierbas."
           }
         }
       }
@@ -1902,26 +1998,68 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "UF/IFAS identifies Armenian cucumber as Cucumis melo var. flexuosus, not Cucumis sativus; cultivar within the type is unresolved.",
+            "es": "UF/IFAS identifica el pepino armenio como Cucumis melo var. flexuosus, no Cucumis sativus; el cultivar dentro del tipo no está resuelto."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "UF/IFAS guidance reflects a northeast Florida demonstration; its exact pH, spacing, and dates are regional.",
+            "es": "La guía de UF/IFAS refleja una demostración del noreste de Florida; pH, distancias y fechas exactas son regionales."
+          },
+          "action": {
+            "en": "Provide full sun, warm conditions, drainage, and consistent water in soil culture. Vines can climb or trail; the source does not establish hydroponic compatibility.",
+            "es": "En cultivo en suelo, ofrece sol pleno, condiciones cálidas, drenaje y agua constante. Las guías pueden trepar o extenderse; la fuente no establece compatibilidad hidropónica."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Fruit form is described at Armenian cucumber type scope, not for one named cultivar.",
+            "es": "La forma del fruto se describe para el tipo de pepino armenio, no para un cultivar nombrado."
+          },
+          "action": {
+            "en": "Expect long, slender, thin-skinned fruit with longitudinal ridges; shape can be straight or curved. Trellising may produce straighter fruit in the cited demonstration, not a guaranteed cultivar trait.",
+            "es": "Espera frutos largos, delgados y de piel fina con surcos longitudinales; pueden ser rectos o curvos. En la demostración citada el enrejado produjo frutos más rectos, no es un rasgo garantizado de cultivar."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Trellising is optional and the source does not give routine pruning instructions.",
+            "es": "El enrejado es opcional y la fuente no ofrece instrucciones de poda rutinaria."
+          },
+          "action": {
+            "en": "Guide vines onto support without forcing them, or let them trail. Cut fruit from the vine rather than twisting or pulling it.",
+            "es": "Guía las enredaderas sobre el soporte sin forzarlas, o deja que se extiendan. Corta el fruto en vez de torcerlo o arrancarlo."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "12–14 inches is a local UF/IFAS flavor cue, not a universal cultivar size threshold.",
+            "es": "12–14 pulgadas es una referencia local de sabor de UF/IFAS, no un umbral universal de tamaño de cultivar."
+          },
+          "action": {
+            "en": "Harvest frequently while fruit is tender; cut it cleanly to avoid vine injury. Regular picking can encourage continued production in the cited trial.",
+            "es": "Cosecha con frecuencia mientras el fruto esté tierno; córtalo limpiamente para no herir la guía. En la prueba citada, la cosecha regular puede favorecer producción continua."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Pollinator access advice comes from a northeast Florida demonstration and is not proof every setup needs hand pollination.",
+            "es": "La recomendación de acceso a polinizadores proviene de una demostración del noreste de Florida y no prueba que todo sistema requiera polinización manual."
+          },
+          "action": {
+            "en": "If using row covers, uncover during the day or consider hand pollination so flowers can set fruit; the local source does not establish this as a universal requirement.",
+            "es": "Si usas cubiertas, retíralas durante el día o considera polinización manual para que las flores puedan cuajar; la fuente local no lo establece como requisito universal."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Downy-mildew guidance covers cucurbits regionally; symptoms can resemble other disorders.",
+            "es": "La guía de mildiu velloso cubre cucurbitáceas en contexto regional; sus síntomas pueden parecerse a otros trastornos."
+          },
+          "action": {
+            "en": "Inspect angular yellow lesions and gray-purple growth beneath leaves; confirm the diagnosis before choosing treatment. No Armenian cucumber resistance claim is available.",
+            "es": "Inspecciona lesiones amarillas angulares y crecimiento gris violáceo bajo las hojas; confirma el diagnóstico antes de tratar. No hay una afirmación de resistencia para pepino armenio."
           }
         }
       }
@@ -1960,26 +2098,48 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Sugar/pie pumpkin is represented as a horticultural type within Cucurbita pepo, not a named cultivar.",
+            "es": "La calabaza Sugar o para pay se representa como tipo hortícola dentro de Cucurbita pepo, no como cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor winter-squash crop guidance; no indoor or hydroponic footprint is established.",
+            "es": "Guía de cultivo exterior para calabaza de invierno; no establece huella interior o hidropónica."
+          },
+          "action": {
+            "en": "Allow the spreading vine room and retain healthy canopy while fruit develops. Exact mature spread and cultivar dimensions remain unknown.",
+            "es": "Deja espacio para la guía extendida y conserva el follaje sano durante el desarrollo del fruto. La extensión adulta exacta y dimensiones de cultivar siguen desconocidas."
           }
         },
         "pruning": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "No routine pruning schedule for this pumpkin type was established in the reviewed sources.",
+            "es": "Las fuentes revisadas no establecen un calendario rutinario de poda para este tipo de calabaza."
+          },
+          "action": {
+            "en": "Avoid removing healthy leaves just to make the vine smaller; this is a conservative management adaptation, not a proven yield rule.",
+            "es": "Evita retirar hojas sanas solo para reducir la guía; es una adaptación conservadora de manejo, no una regla demostrada de rendimiento."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Maturity cues apply to pumpkins/winter squash broadly; curing applies only when storage is intended and conditions allow.",
+            "es": "Las señales de madurez corresponden a calabazas en general; el curado se aplica si se almacenará el fruto y las condiciones lo permiten."
+          },
+          "action": {
+            "en": "Wait for a hard rind and woody stem, then cut with stem attached. Cure only in dry, warm, ventilated conditions; the source does not promise a fixed storage life for this type.",
+            "es": "Espera una cáscara dura y un tallo leñoso; corta dejando el tallo unido. Cura solo con condiciones secas, cálidas y ventiladas; la fuente no promete duración fija de almacenamiento para este tipo."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Regional cucurbit disease recognition does not diagnose an individual pumpkin or imply type resistance.",
+            "es": "El reconocimiento regional de enfermedades de cucurbitáceas no diagnostica una calabaza ni implica resistencia del tipo."
+          },
+          "action": {
+            "en": "Look for angular yellow spots and gray-purple growth beneath leaves in humid conditions; similar symptoms require confirmation before intervention.",
+            "es": "Busca manchas amarillas angulares y crecimiento gris violáceo bajo las hojas con humedad; síntomas similares requieren confirmación antes de intervenir."
           }
         }
       }

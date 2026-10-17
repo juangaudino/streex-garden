@@ -2899,12 +2899,12 @@
       "cucumis melo",
       "cantaloupe type"
     ],
-    "summary": "Cantaloupe is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Cantaloupe (muskmelon) is a vining Cucumis melo crop. After establishment, root-zone moisture, pollination, and recognizing natural slip and color cues matter more than a fixed harvest date; these are crop-level, not named-cultivar claims.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Cantaloupe is resolved at Cucumis melo and Cantaloupe type type scope",
-        "guidance": "Cantaloupe is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Cantaloupe type within Cucumis melo",
+        "guidance": "The catalog identifies a cantaloupe type of Cucumis melo, not a named cultivar. USU Extension evidence below describes cantaloupe/muskmelon crop practices and does not establish cultivar-specific dimensions or timing.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -2912,9 +2912,16 @@
           "usu-water-vegetables-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Full sun, drainage, and deep root-zone watering",
+        "guidance": "USU Extension describes cantaloupe as a full-sun crop for fertile, well-drained soil and recommends deep, infrequent irrigation in its Utah garden context. Water needs rise around flowering and fruit set; reduce irrigation near maturity only as appropriate locally. Soil quantities are not hydroponic settings.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cantaloupe-home-gardens-2026", "usu-water-vegetables-wave2"]
+      },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "short": "Vines may be trained, but enlarging fruit needs support",
+        "guidance": "USU notes cantaloupe vines may be guided onto a fence or trellis in a small garden; once fruit enlarges, support the fruit so its weight does not damage the vine. This is a space-management option, not a requirement or cultivar-specific pruning prescription.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
@@ -2923,33 +2930,29 @@
         ]
       },
       "harvest": {
-        "short": "Harvest by maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
-        ]
+        "short": "Look for natural slip and a creamy-yellow background",
+        "guidance": "USU describes ripe cantaloupe as developing coarse netting, a creamy-to-yellow background, and a stem that separates easily with a slight twist. Pick as fruit ripens; days from flowering vary with temperature and variety, so a fixed date is not proof of maturity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cantaloupe-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Poor fruit set can reflect pollination or stress",
+        "guidance": "USU notes poor fruit set may follow inadequate bee pollination, very hot weather, or water stress. Angular yellow lesions with gray-purple growth beneath leaves may indicate cucurbit downy mildew, but other disorders can resemble it; check the full symptom pattern before acting. No cultivar resistance is implied.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
+          "usu-cantaloupe-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "short": "Male flowers appear first; female blooms carry an ovary",
+        "guidance": "USU explains that early cantaloupe blossoms are male; a female flower has a swelling at its base that becomes fruit after bee pollination. Early male-flower drop is not by itself evidence of a problem.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
+          "usu-cantaloupe-home-gardens-2026"
         ]
       }
     },
@@ -3038,12 +3041,12 @@
       "citrullus lanatus",
       "sugar baby type"
     ],
-    "summary": "Sugar Baby Watermelon is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Sugar Baby is represented as a watermelon type of Citrullus lanatus. Manage the established vine for warm, sunny outdoor growth and even moisture, then judge maturity from multiple fruit and vine cues; generic watermelon guidance does not establish Sugar Baby dimensions or yield.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Sugar Baby Watermelon is resolved at Citrullus lanatus and Sugar Baby type type scope",
-        "guidance": "Sugar Baby Watermelon is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Sugar Baby is a watermelon type within Citrullus lanatus",
+        "guidance": "The identity is cataloged as Sugar Baby watermelon, within Citrullus lanatus. The cited USU cultivation source is species/crop-level and does not verify Sugar Baby's mature dimensions, fruit count, disease resistance, or exact harvest interval.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -3051,9 +3054,16 @@
           "usu-water-vegetables-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Full sun, well-drained soil, and deep watering",
+        "guidance": "USU Extension describes watermelon as a warm-season outdoor crop for sunny, well-drained soil and deep, infrequent irrigation. Utah rainfall quantities and field spacing are regional soil guidance, not container or hydroponic prescriptions and not Sugar Baby-specific requirements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-watermelon-home-gardens-2026", "usu-water-vegetables-wave2"]
+      },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "short": "No Sugar Baby pruning or trellising rule established",
+        "guidance": "The crop-level source describes trailing watermelon vines but does not establish a Sugar Baby-specific pruning or trellising protocol. Avoid damaging fruiting vines during routine care; do not infer compactness or support needs from the name.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
@@ -3062,33 +3072,29 @@
         ]
       },
       "harvest": {
-        "short": "Harvest by maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
-        ]
+        "short": "Combine tendril, ground-spot, and rind cues",
+        "guidance": "USU recommends checking that the tendril opposite the fruit is brown and withered, the ground spot changes from white to yellow, and the rind shifts from shiny to dull. Days from flowering vary with temperature and variety; one sign or a fixed calendar should not be treated as a guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-watermelon-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Moisture and heat stress can affect fruit quality",
+        "guidance": "USU reports that wilting vines, high temperatures, or a short season can contribute to poor flavor, while very dry conditions during fruit growth can contribute to fruit-end disorders. Angular yellow leaf lesions with gray-purple growth beneath may indicate downy mildew; verify symptoms before intervening. These are crop-level observations, not Sugar Baby resistance claims.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
+          "usu-watermelon-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+        "short": "Track flowering, fruit set, and stress as separate events",
+        "guidance": "Record flowering and fruit set separately and note heat or moisture stress if fruit does not develop normally. The selected sources do not support a Sugar Baby-specific flower-removal practice.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
+          "usu-watermelon-home-gardens-2026"
         ]
       }
     },
@@ -6560,51 +6566,47 @@
       "cucumis sativus",
       "straight eight type"
     ],
-    "summary": "Straight Eight Cucumber is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Straight Eight is cataloged as a Cucumis sativus cucumber identity. General cucumber cultivation and harvest guidance is useful here, but the cited sources do not establish cultivar-specific dimensions or performance.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Straight Eight Cucumber is resolved at Cucumis sativus and Straight Eight type type scope",
-        "guidance": "Straight Eight Cucumber is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Straight Eight remains within Cucumis sativus",
+        "guidance": "Straight Eight is represented as a cucumber identity within Cucumis sativus. The sources applied to this profile support general cucumber culture; they do not establish this identity's exact fruit dimensions, disease resistance, or hydroponic behavior.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-cucumber-wave1",
           "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "johnnys-winter-squash-wave3",
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Support only if the observed vine habit calls for it",
+        "guidance": "Cucumber varieties differ: some grow long vines that may use a trellis, while bush types stay short. Guide this plant according to its actual growth and avoid disturbing established vine joints; the crop-level source does not define a Straight Eight pruning or support specification.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest before fruits become oversized and yellow",
+        "guidance": "UMN Extension recommends picking slicer cucumbers at the preferred size before they become large, yellow-skinned and full of large seeds. Harvest frequently and do not disturb the vine; no Straight Eight-specific maturity date or size is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Poor fruit set, bitterness and leaf symptoms have different causes",
+        "guidance": "Insufficient pollination can reduce fruit set, and bitterness varies among cucumber varieties. Angular yellow lesions with gray-purple growth under leaves in humid conditions can indicate downy mildew; confirm symptoms before intervention. These are crop-level concerns, not claims about Straight Eight resistance.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       }
     },
@@ -6695,52 +6697,57 @@
       "cucumis melo",
       "armenian cucumber type"
     ],
-    "summary": "Armenian Cucumber is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Armenian cucumber is a long-fruited Cucumis melo type, not Cucumis sativus. Its established plant is a vigorous climber; frequent cutting at the tender stage protects the vine and encourages continued production, while reported dimensions and timing remain source-contextual.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Armenian Cucumber is resolved at Cucumis melo and Armenian cucumber type type scope",
-        "guidance": "Armenian Cucumber is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Armenian cucumber is a melon type, not a true cucumber",
+        "guidance": "UF/IFAS identifies Armenian cucumber as Cucumis melo var. flexuosus, distinct from true cucumber (C. sativus). The profile retains Cucumis melo as its species identity and Armenian cucumber as a horticultural type; it does not resolve one named cultivar among the many forms.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
+      },
+      "cultivation": {
+        "short": "Vigorous climber; warm soil, full sun, and steady moisture",
+        "guidance": "UF/IFAS describes this type as a vigorous climber that can use a trellis or fence, or trail along the ground. Its northeast Florida guide recommends full sun, warm conditions, fertile well-drained soil, and consistent water. Regional pH, spacing and timing are not universal or hydroponic prescriptions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
+      },
+      "growth": {
+        "short": "Long, thin-skinned fruit may be straight or curved",
+        "guidance": "UF/IFAS describes long, slender fruit with thin, longitudinally rippled skin; fruit may be straight or curled. These observations do not establish a fixed mature plant footprint or named-cultivar dimensions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Guide the climbing vine; do not pull fruit from it",
+        "guidance": "A trellis is optional: UF/IFAS reports that the vine can climb a fence or trellis and can also grow on the ground. The source gives no routine pruning method. Cut fruit from the vine rather than pulling, to avoid damage.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
-      },
-      "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Harvest regularly while fruit is tender",
+        "guidance": "In its local trial, UF/IFAS recommends harvesting Armenian cucumber around 12–14 inches for best flavor and says longer fruit can remain edible. Cut rather than pull, and harvest regularly to encourage continued fruiting. Treat that length as a regional trial cue, not a universal cultivar standard.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
+      },
+      "flowering": {
+        "short": "Allow pollinator access when using row covers",
+        "guidance": "UF/IFAS recommends uncovering plants during the day so pollination can occur, or hand-pollinating when covers are used. This is a practical note from one local demonstration, not proof that every setting requires hand pollination.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ufifas-armenian-cucumber-2025"]
+      },
+      "problems": {
+        "short": "Inspect leaf undersides for angular lesions in humid weather",
+        "guidance": "Cucurbit downy mildew can cause angular yellow spots and gray-purple growth beneath leaves, but other disorders may look similar and regional disease pressure varies. Confirm the pattern before treating; no Armenian-cucumber-specific resistance claim is established.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-cucurbit-downy-mildew-2026"]
       }
     },
     "compatibilityProfile": {
@@ -6756,11 +6763,7 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-cucumber-wave1",
-              "johnnys-zucchini",
-              "johnnys-winter-squash-wave3"
-            ],
+            "sourceIds": ["ufifas-armenian-cucumber-2025"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
@@ -6797,11 +6800,7 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-cucumber-wave1",
-              "johnnys-zucchini",
-              "johnnys-winter-squash-wave3"
-            ],
+            "sourceIds": ["ufifas-armenian-cucumber-2025"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
@@ -6830,51 +6829,63 @@
       "cucurbita pepo",
       "eight ball type"
     ],
-    "summary": "Eight Ball Zucchini is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Eight Ball is represented as a zucchini identity within Cucurbita pepo. General summer-squash care and harvest guidance applies at crop scope; the available evidence here does not establish cultivar-specific mature size or system suitability.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Eight Ball Zucchini is resolved at Cucurbita pepo and Eight Ball type type scope",
-        "guidance": "Eight Ball Zucchini is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Eight Ball remains a zucchini identity within Cucurbita pepo",
+        "guidance": "The catalog records Eight Ball Zucchini under Cucurbita pepo. UMN Extension's guidance supports summer squash and zucchini at crop level; it does not establish Eight Ball's exact mature dimensions, disease resistance or indoor-system behavior.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
           "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Do not infer a compact footprint from the cultivar name",
+        "guidance": "Summer-squash forms range from bush plants to longer vines. Observe this plant's actual growth before deciding whether to guide or support it; the available general zucchini source does not verify Eight Ball's mature spread or a cultivar-specific pruning method.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-weather growth benefits from steady soil moisture",
+        "guidance": "UMN Extension describes zucchini and summer squash as warm-season crops and recommends moisture-retentive, well-drained soil. Water thoroughly at the root zone and keep foliage dry when practical; regional outdoor quantities do not define indoor or hydroponic settings.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Monitor crown and leaves for distinct warning signs",
+        "guidance": "A sudden whole-plant wilt, ragged leaves, or white powdery patches can point to different issues such as squash vine borer, squash bugs or powdery mildew. Inspect the plant and identify the likely cause before intervention; these are crop-level warnings, not Eight Ball-specific susceptibility claims.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest at the tender stage; no Eight Ball size is asserted",
+        "guidance": "As summer squash, harvest the fruit before seeds become large, skin hard and flesh fibrous or watery. Pick regularly so oversized fruit does not remain on the plant and reduce later yield. A particular Eight Ball diameter or maturity day is not supported by the sources used here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Separate pollination trouble from pests and leaf disease",
+        "guidance": "Poor pollination can limit early fruit set, especially in cold, rainy or cloudy weather. White powdery leaf patches, ragged feeding damage, a wilted crown, and angular yellow spots with gray-purple growth beneath leaves indicate different possible problems; confirm the symptom pattern before treating. No named-cultivar resistance is claimed.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       }
     },
@@ -6965,51 +6976,44 @@
       "cucurbita pepo",
       "sugar pumpkin type"
     ],
-    "summary": "Sugar Pumpkin is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Sugar pumpkin is a small-pie-pumpkin type within Cucurbita pepo. The established plant is managed as a spreading winter squash; leave fruit on the vine until the rind is hard and stem woody, then cut and cure it if storage is intended. No named cultivar is represented.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Sugar Pumpkin is resolved at Cucurbita pepo and Sugar pumpkin type type scope",
-        "guidance": "Sugar Pumpkin is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Sugar pumpkin is a Cucurbita pepo pumpkin type",
+        "guidance": "The catalog represents the sugar/pie pumpkin horticultural type within Cucurbita pepo, not a named cultivar. UMN Extension classifies pumpkins among winter squashes and notes that small pie pumpkins are better suited to baking than large jack-o'-lantern types; no cultivar-specific size is inferred.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "sourceIds": ["johnnys-squash-catalog-wave3", "umn-melon-squash-pumpkin-harvest-2026"]
+      },
+      "cultivation": {
+        "short": "Spreading, warm-season vine; outdoor soil guidance",
+        "guidance": "Johnny's winter-squash guidance applies to outdoor soil culture and describes a crop group that includes pumpkins. Allow for spreading growth and preserve healthy leaves that support developing fruit; no pod count, indoor suitability, or exact footprint is established.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-winter-squash-wave3"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "A Sugar Pumpkin pruning schedule is not established",
+        "guidance": "The reviewed sources do not establish a routine pruning schedule for this pumpkin type. Avoid removing healthy canopy solely to reduce vine size; this is a conservative Garden adaptation, not a source-backed yield rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "sourceIds": ["johnnys-winter-squash-wave3"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
-        ]
+        "short": "Let fruit mature fully on the vine",
+        "guidance": "UMN Extension notes that pumpkins do not continue ripening after harvest. Mature fruit has a firm rind that resists a fingernail and a hard, woody stem; cut it with stem attached. If storing, curing is a separate postharvest step and depends on dry, warm conditions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-melon-squash-pumpkin-harvest-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Check angular leaf lesions before diagnosing disease",
+        "guidance": "Cucurbit downy mildew can cause angular yellow leaf spots with gray-purple growth beneath leaves, especially under humid conditions. Symptoms can resemble other disorders and disease timing varies regionally; confirm before intervening. No pumpkin-type resistance is claimed.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ]
       }
     },
@@ -7026,11 +7030,7 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-cucumber-wave1",
-              "johnnys-zucchini",
-              "johnnys-winter-squash-wave3"
-            ],
+            "sourceIds": ["johnnys-winter-squash-wave3"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
@@ -7067,11 +7067,7 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-cucumber-wave1",
-              "johnnys-zucchini",
-              "johnnys-winter-squash-wave3"
-            ],
+            "sourceIds": ["johnnys-winter-squash-wave3"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {

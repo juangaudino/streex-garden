@@ -513,52 +513,60 @@
     }
   },
   "cantaloupe": {
-    "summary": "Identidad base de Wave 4 para Melón cantalupo. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El melón cantalupo es un cultivo trepador de Cucumis melo. Una vez establecido, importan la humedad en la zona de raíces, la polinización y reconocer el desprendimiento natural y el cambio de color del fruto, más que una fecha fija; son pautas del cultivo, no de un cultivar nombrado.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo cantalupo dentro de Cucumis melo",
+        "guidance": "El catálogo identifica un tipo cantalupo de Cucumis melo, no un cultivar nombrado. La evidencia de USU Extension describe prácticas del cultivo cantalupo/melón y no establece dimensiones ni calendario de un cultivar concreto."
+      },
+      "cultivation": {
+        "short": "Sol pleno, drenaje y riego profundo en raíces",
+        "guidance": "USU Extension describe el cantalupo como cultivo de sol pleno en suelo fértil y bien drenado, con riego profundo e infrecuente en el contexto de sus jardines de Utah. La demanda de agua aumenta cerca de floración y cuajado; reducir el riego al acercarse la madurez depende de las condiciones locales. Las cantidades para suelo no son ajustes hidropónicos."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Se pueden guiar las guías, pero el fruto grande requiere soporte",
+        "guidance": "USU señala que las guías pueden dirigirse a una cerca o enrejado en jardines pequeños; cuando el fruto crece, hay que sostenerlo para que el peso no dañe la guía. Es una opción para ahorrar espacio, no una obligación ni una pauta de poda propia de un cultivar."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Busca el desprendimiento natural y un fondo amarillo cremoso",
+        "guidance": "USU describe el cantalupo maduro con una red exterior más áspera, fondo de color crema a amarillo y separación fácil del tallo con un giro suave. Cosecha los frutos conforme maduren; los días desde floración varían con temperatura y variedad, así que una fecha fija no confirma madurez."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El cuajado deficiente puede deberse a polinización o estrés",
+        "guidance": "USU indica que el cuajado deficiente puede relacionarse con poca polinización por abejas, mucho calor o estrés hídrico. Lesiones amarillas angulares con crecimiento gris violáceo bajo las hojas pueden indicar mildiu velloso, pero otros trastornos pueden parecerse; revisa el patrón completo antes de actuar. No se implica resistencia de cultivar."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Las flores masculinas aparecen primero; las femeninas muestran un ovario",
+        "guidance": "USU explica que las primeras flores del cantalupo son masculinas; una flor femenina tiene un engrosamiento en la base que puede convertirse en fruto después de la polinización por abejas. La caída temprana de flores masculinas no demuestra por sí sola un problema."
       }
     }
   },
   "sugar-baby-watermelon": {
-    "summary": "Identidad base de Wave 4 para Sandía Sugar Baby. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Sugar Baby se representa como un tipo de sandía de Citrullus lanatus. Maneja la guía establecida para cultivo cálido y soleado en exterior con humedad uniforme; evalúa la madurez mediante varias señales del fruto y la planta. La guía general de sandía no establece dimensiones ni rendimiento de Sugar Baby.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Sugar Baby es un tipo de sandía dentro de Citrullus lanatus",
+        "guidance": "La identidad se registra como sandía Sugar Baby dentro de Citrullus lanatus. La guía de cultivo de USU citada es del cultivo/especie y no verifica dimensiones adultas, número de frutos, resistencia a enfermedades ni intervalo exacto de cosecha de Sugar Baby."
+      },
+      "cultivation": {
+        "short": "Sol pleno, suelo drenado y riego profundo",
+        "guidance": "USU Extension describe la sandía como cultivo cálido de exterior, para lugar soleado y suelo bien drenado, con riego profundo e infrecuente. Las cantidades de lluvia y distancias de campo de Utah son orientación regional para suelo, no reglas de contenedor o hidroponía ni necesidades específicas de Sugar Baby."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No se estableció una pauta de poda o enrejado para Sugar Baby",
+        "guidance": "La fuente del cultivo describe guías rastreras de sandía, pero no establece poda ni conducción propias de Sugar Baby. Evita dañar las guías con fruto durante el manejo habitual; no deduzcas porte compacto ni necesidad de soporte por el nombre."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Combina señales del zarcillo, la mancha del suelo y la cáscara",
+        "guidance": "USU recomienda comprobar que el zarcillo opuesto al fruto esté marrón y seco, que la mancha de apoyo haya cambiado de blanca a amarilla y que la cáscara pase de brillante a opaca. Los días desde floración varían según temperatura y variedad; ni una sola señal ni un calendario fijo garantizan madurez."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El estrés de humedad y calor puede afectar la calidad del fruto",
+        "guidance": "USU informa que guías marchitas, temperaturas altas o una temporada corta pueden contribuir a un sabor deficiente; condiciones muy secas durante el desarrollo también pueden asociarse con trastornos en el extremo del fruto. Lesiones amarillas angulares con crecimiento gris violáceo debajo pueden indicar mildiu velloso; confirma los síntomas. No se afirma resistencia de Sugar Baby."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Registra floración, cuajado y estrés por separado",
+        "guidance": "Anota floración y cuajado como eventos distintos y registra calor o estrés de humedad si los frutos no se desarrollan normalmente. Las fuentes elegidas no respaldan retirar flores en Sugar Baby."
       }
     }
   },
@@ -1167,86 +1175,110 @@
     }
   },
   "straight-eight-cucumber": {
-    "summary": "Identidad base de Wave 4 para Pepino Straight Eight. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Straight Eight se cataloga como una identidad de pepino dentro de Cucumis sativus. Las pautas generales de cultivo y cosecha son útiles, pero las fuentes citadas no establecen dimensiones ni rendimiento específicos del cultivar.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Straight Eight permanece dentro de Cucumis sativus",
+        "guidance": "Straight Eight se representa como una identidad de pepino dentro de Cucumis sativus. Las fuentes aplicadas respaldan el cultivo general del pepino, pero no establecen dimensiones exactas, resistencia a enfermedades ni comportamiento hidropónico de esta identidad."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Añade soporte solo si el crecimiento observado lo requiere",
+        "guidance": "Las variedades de pepino difieren: algunas producen enredaderas largas que pueden usar un enrejado, mientras que las de mata son cortas. Guía la planta según su crecimiento real y evita mover los nudos establecidos; la fuente general no define poda ni soporte propios de Straight Eight."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha antes de que los frutos sean grandes y amarillos",
+        "guidance": "UMN Extension recomienda recoger los pepinos de ensalada al tamaño preferido, antes de que se vuelvan grandes, amarillentos y tengan semillas grandes. Cosecha con frecuencia y no alteres la enredadera; no se asigna una fecha ni tamaño de madurez propio de Straight Eight."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El cuajado pobre, el amargor y las lesiones foliares tienen causas distintas",
+        "guidance": "La falta de polinización puede reducir el cuajado y el amargor varía entre variedades de pepino. Lesiones angulares amarillas con crecimiento gris violáceo bajo las hojas en humedad alta pueden indicar mildiu velloso; confirma los síntomas antes de intervenir. Son problemas del cultivo, no afirmaciones de resistencia de Straight Eight."
       }
     }
   },
   "armenian-cucumber": {
-    "summary": "Identidad base de Wave 4 para Pepino armenio. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El pepino armenio es un tipo de fruto largo de Cucumis melo, no Cucumis sativus. La planta establecida trepa con vigor; cortar frutos tiernos con regularidad protege la guía y favorece la producción continua. Las dimensiones y el calendario publicados son contextuales a la fuente.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Un tipo de melón, no un pepino verdadero",
+        "guidance": "UF/IFAS identifica el pepino armenio como Cucumis melo var. flexuosus, distinto del pepino verdadero (C. sativus). El perfil conserva Cucumis melo como especie y pepino armenio como tipo hortícola; no resuelve un cultivar nombrado entre sus muchas formas."
+      },
+      "cultivation": {
+        "short": "Trepadora vigorosa; calor, sol pleno y humedad constante",
+        "guidance": "UF/IFAS describe este tipo como trepador vigoroso, apto para cerca o enrejado, aunque también puede extenderse por el suelo. Su guía del noreste de Florida recomienda sol pleno, condiciones cálidas, suelo fértil con buen drenaje y agua constante. El pH, las distancias y fechas regionales no son universales ni prescripciones hidropónicas."
+      },
+      "growth": {
+        "short": "Frutos largos y delgados, rectos o curvos",
+        "guidance": "UF/IFAS describe frutos largos y delgados, de piel fina con surcos longitudinales; pueden ser rectos o curvos. La observación no establece una huella adulta fija ni dimensiones de un cultivar nombrado."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Guía la enredadera; corta el fruto en vez de tirar",
+        "guidance": "El enrejado es opcional: UF/IFAS informa que la planta puede trepar una cerca o enrejado y también crecer en el suelo. La fuente no ofrece una pauta de poda rutinaria. Corta el fruto de la guía para evitar dañarla."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha regularmente mientras el fruto esté tierno",
+        "guidance": "En su prueba local, UF/IFAS recomienda cosechar alrededor de 12–14 pulgadas para mejor sabor, aunque señala que frutos más largos siguen siendo comestibles. Corta en vez de tirar y cosecha con regularidad para estimular producción continua. Esa longitud es una referencia de una prueba regional, no un estándar universal."
       },
-      "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+    "flowering": {
+      "short": "Deja acceso a polinizadores cuando uses cubiertas",
+      "guidance": "UF/IFAS recomienda retirar las cubiertas durante el día para permitir la polinización o polinizar a mano si se mantienen. Es una recomendación práctica de una demostración local, no una prueba de que todos los jardines necesiten polinización manual."
+    },
+    "problems": {
+      "short": "Revisa lesiones angulares bajo condiciones húmedas",
+      "guidance": "El mildiu velloso puede causar manchas amarillas angulares y crecimiento gris violáceo bajo las hojas, pero otros trastornos pueden parecerse y la presión regional varía. Confirma el patrón antes de tratar; no se establece resistencia propia del pepino armenio."
       }
     }
   },
   "eight-ball-zucchini": {
-    "summary": "Identidad base de Wave 4 para Calabacín Eight Ball. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Eight Ball se representa como una identidad de calabacín dentro de Cucurbita pepo. Se aplican pautas generales de cuidado y cosecha de calabaza de verano; la evidencia disponible no establece su tamaño adulto ni idoneidad para un sistema.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Eight Ball permanece dentro de Cucurbita pepo",
+        "guidance": "El catálogo registra Eight Ball Zucchini bajo Cucurbita pepo. UMN Extension respalda pautas generales para calabaza de verano y calabacín, pero no establece dimensiones adultas exactas, resistencia a enfermedades ni comportamiento interior de Eight Ball."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No deduzcas una huella compacta solo por el nombre del cultivar",
+        "guidance": "Las calabazas de verano incluyen matas y formas con enredaderas más largas. Observa el crecimiento real antes de guiar o sostener la planta; la fuente general de calabacín no verifica el tamaño adulto ni un método de poda propio de Eight Ball."
+      },
+      "cultivation": {
+        "short": "El crecimiento de clima cálido se beneficia de humedad constante en el suelo",
+        "guidance": "UMN Extension describe el calabacín y otras calabazas de verano como cultivos cálidos y recomienda suelo húmedo pero bien drenado. Riega a fondo en la zona de raíces y procura mantener seco el follaje; las cantidades regionales no definen ajustes para interior o hidroponía."
+      },
+      "care": {
+        "short": "Observa la corona y las hojas para reconocer señales distintas",
+        "guidance": "El marchitamiento súbito de toda la planta, las hojas deshilachadas o las manchas blancas polvorientas pueden corresponder a problemas distintos, como barrenador, chinches o mildiu polvoriento. Examina la planta e identifica la causa probable antes de intervenir; no se afirma una susceptibilidad propia de Eight Ball."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha en etapa tierna; no se afirma un tamaño propio de Eight Ball",
+        "guidance": "Como calabaza de verano, el fruto se cosecha antes de que las semillas crezcan, la piel se endurezca y la pulpa se vuelva fibrosa o acuosa. Recolecta con regularidad para que no queden frutos demasiado grandes en la planta y reduzcan la producción posterior. Las fuentes no respaldan un diámetro ni día de madurez específico de Eight Ball."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Distingue problemas de polinización, plagas y enfermedades foliares",
+        "guidance": "La polinización deficiente puede limitar el cuajado inicial, sobre todo con frío, lluvia o nubosidad. Manchas blancas polvorientas, daño de alimentación deshilachado, una corona marchita o lesiones angulares amarillas con crecimiento gris violáceo bajo las hojas pueden señalar causas distintas; confirma el patrón antes de tratar. No se afirma resistencia del cultivar."
       }
     }
   },
   "sugar-pumpkin": {
-    "summary": "Identidad base de Wave 4 para Calabaza Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La calabaza Sugar es un tipo de calabaza pequeña para pay dentro de Cucurbita pepo. La planta establecida se maneja como una calabaza de invierno extendida; deja que el fruto madure en la guía hasta que la cáscara se endurezca y el tallo se vuelva leñoso, y córtalo para almacenarlo. No se representa un cultivar nombrado.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de calabaza Sugar dentro de Cucurbita pepo",
+        "guidance": "El catálogo representa el tipo hortícola de calabaza Sugar o para pay dentro de Cucurbita pepo, no un cultivar nombrado. UMN Extension clasifica las calabazas entre las de invierno y señala que las pequeñas para pay son más apropiadas para hornear que las grandes de Halloween; no se infiere un tamaño de cultivar."
+      },
+      "cultivation": {
+        "short": "Enredadera extendida de estación cálida; guía exterior en suelo",
+        "guidance": "La guía de Johnny's sobre calabazas de invierno corresponde al cultivo exterior en suelo e incluye el grupo de las calabazas. Deja sitio para su porte extendido y conserva hojas sanas que alimentan los frutos; no se establece número de pods, cultivo interior ni huella exacta."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No se estableció un calendario de poda para Sugar Pumpkin",
+        "guidance": "Las fuentes revisadas no establecen poda rutinaria para este tipo de calabaza. Evita retirar follaje sano solo para reducir el tamaño de la guía; es una adaptación conservadora de Garden, no una regla de rendimiento respaldada por fuente."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Deja que el fruto madure por completo en la planta",
+        "guidance": "UMN Extension señala que la calabaza no sigue madurando tras la cosecha. El fruto maduro tiene cáscara firme que resiste la uña y un tallo duro y leñoso; córtalo dejando el tallo unido. Si se almacenará, el curado es un paso poscosecha aparte que depende de condiciones cálidas y secas."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa lesiones angulares antes de diagnosticar enfermedad",
+        "guidance": "El mildiu velloso de cucurbitáceas puede causar manchas amarillas angulares y crecimiento gris violáceo bajo las hojas, especialmente con humedad. Los síntomas pueden parecerse a otros trastornos y la presión regional varía; confirma antes de intervenir. No se afirma resistencia del tipo de calabaza."
       }
     }
   },

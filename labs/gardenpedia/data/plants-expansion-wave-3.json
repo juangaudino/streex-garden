@@ -4600,57 +4600,55 @@
       "cucumis sativus",
       "gherkin type"
     ],
-    "summary": "Gherkin Cucumber is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Gherkin cucumber is represented as a Cucumis sativus horticultural type, not a named cultivar. The profile focuses on general cucumber management and leaves exact fruit size and cultivar performance unresolved.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Gherkin Cucumber is resolved at Cucumis sativus and Gherkin type type scope",
-        "guidance": "Gherkin Cucumber is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+        "short": "Gherkin is a horticultural type within Cucumis sativus",
+        "guidance": "The catalog represents Gherkin Cucumber as a horticultural type of Cucumis sativus. The available general cucumber sources do not identify a particular gherkin cultivar or establish an exact fruit-size threshold, so neither is asserted.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Avoid disturbing vines while gathering small fruits",
+        "guidance": "Cucumber vines can form roots at their joints. Harvest by handling fruits rather than pulling or relocating the established vine; any trellising or shaping should follow the observed growth habit, not an assumed gherkin-specific rule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest regularly at the size intended for the use",
+        "guidance": "For pickling use, UMN Extension recommends picking cucumbers at a uniform preferred size and harvesting often. That guidance supports consistent picking, but the source does not establish a gherkin-specific length or a universal calendar for this catalog identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Investigate pollination failure and angular leaf lesions",
+        "guidance": "Cold, rainy or cloudy weather can reduce cucumber pollination and fruit set. Yellow angular leaf spots, especially with gray-purple fuzz on leaf undersides in humid conditions, are warning signs consistent with cucurbit downy mildew; confirm the diagnosis because other disorders can look similar. No resistance claim is made for this type.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Do not mistake the first male flowers for failed fruiting",
+        "guidance": "Cucumber plants carry male and female flowers separately; male blooms usually appear first. Female flowers have an ovary at the base and need pollination to develop fruit, so the first flowers dropping can be normal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       }
     },
@@ -4739,47 +4737,73 @@
       "cucurbita pepo",
       "pattypan type"
     ],
-    "summary": "Pattypan Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Pattypan is a summer-squash type of Cucurbita pepo. Its useful management distinction is the tender-fruit harvest stage; no single pattypan cultivar, exact fruit size or system footprint is asserted.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Pattypan Squash is resolved at Cucurbita pepo and Pattypan type type scope",
-        "guidance": "Pattypan Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+        "short": "Pattypan is a summer-squash type within Cucurbita pepo",
+        "guidance": "UMN Extension explicitly includes patty pan among summer-squash types in Cucurbita pepo. The source supports crop-level care and harvest advice, not an unnamed pattypan cultivar's dimensions or hydroponic behavior.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "johnnys-zucchini",
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Distinguish compact bush forms from long-vining squash",
+        "guidance": "Summer-squash types can have short bush growth or longer, spreading vines. Check the actual plant habit before deciding whether to guide it; the crop source does not say that every pattypan needs a trellis or pruning.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Warmth, steady soil moisture and good drainage support fruiting",
+        "guidance": "Summer squash grows and produces best in warm weather. UMN Extension recommends moisture-retentive yet well-drained soil and thorough watering at the root zone; Minnesota timing and field spacing are regional garden guidance, not an indoor planting plan.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Keep leaves dry during watering and avoid injuring roots",
+        "guidance": "Water the soil thoroughly rather than spraying foliage. Shallow cultivation is safer near the plant because squash roots extend close to the soil surface; this is a maintenance cue, not a fixed watering volume for all climates.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest pattypan fruits young and tender for summer-squash use",
+        "guidance": "UMN Extension includes patty pan among summer squash and recommends harvesting while fruits are tender, before large seeds, hard skin and fibrous or watery flesh develop. It does not specify one pattypan diameter; use the desired culinary size and pick regularly.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Check pollination and recognize common squash warning signs",
+        "guidance": "Male flowers appear before female flowers; insufficient pollination can cause poor early fruit set. Powdery white leaf patches, ragged leaves with grouped squash bugs, or a suddenly wilting crown can point to different problems. These signs warrant closer identification, not an automatic diagnosis or cultivar-resistance claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
+        ]
+      },
+      "flowering": {
+        "short": "Male flowers arrive first; female flowers show a small fruiting ovary",
+        "guidance": "Summer squash bears male and female flowers separately on one plant. Male flowers usually appear first, and early blossoms may drop without indicating a problem. The ovary behind a female flower develops only after pollination.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
         ]
       }
     },
@@ -4868,12 +4892,12 @@
       "cucurbita pepo",
       "acorn type"
     ],
-    "summary": "Acorn Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Acorn squash is a winter squash type within Cucurbita pepo. Grow it as a warm-season, spreading vine and leave fruit on the plant until the rind and stem show maturity; no named cultivar or exact footprint is represented.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Acorn Squash is resolved at Cucurbita pepo and Acorn type type scope",
-        "guidance": "Acorn Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+        "short": "Winter-squash type within Cucurbita pepo",
+        "guidance": "UMN Extension places acorn squash among Cucurbita pepo winter squashes. This is a horticultural type identity, not a named cultivar; general winter-squash guidance below is not an acorn-specific size or yield claim.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -4881,9 +4905,16 @@
           "johnnys-squash-catalog-wave3"
         ]
       },
+      "cultivation": {
+        "short": "Warm-season vine; full sun and drained soil",
+        "guidance": "The cited winter-squash growing guidance is for outdoor soil cultivation. Give the spreading vine room and avoid persistently wet root-zone conditions; its field spacing is not a Garden pod-spacing rule.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-winter-squash-wave3"]
+      },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "No acorn-specific pruning regimen established",
+        "guidance": "The sources reviewed do not establish a routine pruning schedule for this type. Preserve healthy leaves that support fruit growth; remove damaged tissue only when observed, as a Garden management adaptation rather than a cultivar-specific rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
@@ -4892,23 +4923,19 @@
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
-        ]
+        "short": "Wait for mature rind and a hard, woody stem",
+        "guidance": "Winter squash does not continue ripening after harvest. Harvest only when the rind resists a fingernail and the stem at the fruit has hardened; cut the stem rather than pulling it off. These are winter-squash maturity cues, not an acorn cultivar calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-melon-squash-pumpkin-harvest-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Distinguish leaf disease from normal vine decline",
+        "guidance": "Downy mildew can begin as angular yellow leaf spots and develop gray-purple growth beneath leaves in humid conditions. Symptoms can resemble other problems and regional pressure varies; inspect both leaf surfaces and confirm before choosing treatment. No acorn-specific resistance is established.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ]
       }
     },
@@ -4997,12 +5024,12 @@
       "cucurbita moschata",
       "butternut type"
     ],
-    "summary": "Butternut Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Butternut squash is a winter-squash type within Cucurbita moschata. Its established plant is a spreading warm-season vine; harvest only after the fruit reaches mature rind and stem cues, without treating crop guidance as cultivar dimensions.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Butternut Squash is resolved at Cucurbita moschata and Butternut type type scope",
-        "guidance": "Butternut Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+        "short": "Butternut type within Cucurbita moschata",
+        "guidance": "UMN Extension identifies butternut among Cucurbita moschata winter squashes. The catalog represents a horticultural type rather than a named cultivar; type-level harvest guidance is not a cultivar-specific size or storage guarantee.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -5010,9 +5037,16 @@
           "johnnys-squash-catalog-wave3"
         ]
       },
+      "cultivation": {
+        "short": "Warm-season spreading vine; outdoor soil guidance",
+        "guidance": "Johnny's winter-squash guidance supports outdoor crop culture, while the type is represented as spreading rather than compact. Keep soil draining and preserve healthy foliage; no indoor or hydroponic compatibility is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-winter-squash-wave3"]
+      },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Type-specific pruning instructions are not established",
+        "guidance": "The cited sources do not establish a butternut-specific pruning schedule. Avoid removing healthy canopy simply to reduce the apparent footprint; that is a cautious Garden adaptation, not a proven yield rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
@@ -5021,23 +5055,19 @@
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving active growth",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
-        ]
+        "short": "Harvest at full maturity; keep the stem attached",
+        "guidance": "The fruit should remain on the vine until the rind resists a fingernail and the stem section becomes hard and woody. Cut the fruit with a sharp tool instead of detaching it; winter squash does not ripen further after picking. These are crop-group cues, not a fixed butternut date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-melon-squash-pumpkin-harvest-2026"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Check underside of leaves when angular yellow spots appear",
+        "guidance": "Downy mildew may show angular yellow lesions on upper leaf surfaces and gray-purple growth below during humid weather. Other disorders can look similar; confirm the pattern before acting. No resistance claim is made for the butternut type.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ]
       }
     },

@@ -623,52 +623,60 @@
     }
   },
   "yellow-squash": {
-    "summary": "Identidad base de Wave 2 para Calabaza amarilla. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La calabaza amarilla de verano es un tipo de Cucurbita pepo que se cosecha inmadura, con la piel y la pulpa tiernas. La ficha la distingue de la madurez de las calabazas de invierno y no atribuye tamaños específicos a un cultivar.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "La calabaza amarilla de verano es un tipo de Cucurbita pepo",
+        "guidance": "UMN Extension incluye la calabaza amarilla de verano entre las calabazas de verano de Cucurbita pepo. Esta ficha usa evidencia del tipo de cultivo y no afirma un cultivar con nombre, dimensiones adultas exactas ni configuración hidropónica."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Observa si es una mata o una enredadera antes de guiarla",
+        "guidance": "UMN Extension señala que algunas calabazas de verano forman enredaderas largas y otras crecen como matas compactas. No apliques una regla única de conducción o poda a ambos portes; la fuente no identifica la arquitectura exacta de cada cultivar amarillo."
+      },
+      "cultivation": {
+        "short": "El crecimiento cálido requiere suelo húmedo pero bien drenado",
+        "guidance": "UMN Extension describe la calabaza de verano como un cultivo de clima cálido y recomienda suelo que retenga humedad y drene bien. Riega a fondo al nivel del suelo para evitar mojar las hojas; las fechas y cantidades de Minnesota son contexto regional, no ajustes de un sistema interior."
+      },
+      "care": {
+        "short": "Conserva la humedad y evita cultivar profundamente junto a la planta",
+        "guidance": "Las raíces de la calabaza incluyen ramificaciones superficiales. Mantén la humedad y deshierba superficialmente para no dañarlas; cuando sea posible, riega al nivel del suelo y mantén secas las hojas. Es cuidado de jardín en suelo, no una receta nutritiva o hidropónica."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha cuando el fruto aún está tierno, antes de que crezca demasiado",
+        "guidance": "Cosecha la calabaza de verano al tamaño deseado, antes de que las semillas crezcan, la piel se endurezca y la pulpa se vuelva fibrosa o acuosa. Recolecta con frecuencia; dejar frutos demasiado grandes puede reducir la producción. No se asigna una longitud ni un día de madurez propios de este tipo amarillo."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila fallas de polinización, mildiu y daños en la corona",
+        "guidance": "Los primeros frutos mal polinizados pueden abortar; el frío, la lluvia o la nubosidad limitan la polinización. Manchas blancas polvorientas, brotes nuevos deformes o una corona que se marchita repentinamente pueden indicar problemas diferentes. Identifica la causa antes de intervenir; las lesiones de mildiu velloso también pueden parecerse a otras manchas foliares."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Las flores masculinas aparecen antes que las femeninas, con un ovario visible",
+        "guidance": "La calabaza de verano produce flores masculinas y femeninas separadas en la misma planta. Las masculinas suelen aparecer primero; las femeninas tienen un pequeño ovario en la base. La caída inicial de flores masculinas es normal, mientras que la polinización deficiente puede detener el desarrollo de un fruto joven."
       }
     }
   },
   "pickling-cucumber": {
-    "summary": "Identidad base de Wave 2 para Pepino para encurtir. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El pepino para encurtir es un tipo de Cucumis sativus cosechado para ese uso. Importan la cosecha frecuente y uniforme y el manejo cuidadoso de la enredadera; no se especifican dimensiones ni fechas de un cultivar concreto.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Encurtir describe el uso previsto dentro de Cucumis sativus",
+        "guidance": "Esta ficha representa pepinos cultivados para encurtir, no un cultivar con nombre. La evidencia general respalda pautas de floración, humedad y cosecha, pero no fija una longitud, días a madurez ni requisito hidropónico particular."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Cosecha con cuidado en vez de imponer una poda genérica",
+        "guidance": "Las enredaderas pueden producir raíces en sus nudos; evita levantarlas o moverlas repetidamente al recolectar. Se puede guiar un tipo trepador, pero esta orientación general no indica que todo pepino para encurtir necesite soporte o poda."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Recolecta los frutos para encurtir con tamaño preferido uniforme",
+        "guidance": "UMN Extension recomienda cosechar los pepinos para encurtir con un tamaño uniforme. Recógelos a menudo y evita que se sobredimensionen; dejar frutos muy grandes puede reducir la producción posterior. No se afirma una longitud única porque depende del producto y del cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Distingue polinización deficiente, amargor y síntomas foliares",
+        "guidance": "Una polinización insuficiente puede reducir el cuajado, sobre todo con frío, lluvia o nubosidad. El amargor varía entre variedades. Manchas angulares amarillas con crecimiento gris violáceo bajo las hojas en ambiente húmedo pueden corresponder a mildiu velloso; otros trastornos se parecen y requieren confirmación."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Las flores masculinas suelen preceder a las femeninas y al fruto",
+        "guidance": "Las flores masculinas y femeninas aparecen por separado en la misma planta. Las masculinas suelen salir primero; detrás de la flor femenina hay un ovario pequeño que, tras la polinización, puede desarrollarse como fruto. La caída inicial de flores masculinas es normal."
       }
     }
   },

@@ -853,91 +853,81 @@
     }
   },
   "gherkin-cucumber": {
-    "summary": "Identidad base de Wave 3 para Pepino tipo gherkin. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El pepino tipo gherkin se representa como un tipo hortícola de Cucumis sativus, no como cultivar con nombre. La ficha se centra en el manejo general y deja sin resolver el tamaño exacto del fruto y el rendimiento varietal.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Gherkin es un tipo hortícola dentro de Cucumis sativus",
+        "guidance": "El catálogo representa el pepino tipo gherkin como un tipo hortícola de Cucumis sativus. Las fuentes generales disponibles no identifican aquí un cultivar concreto ni un tamaño exacto de cosecha, por lo que no se afirman."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Evita mover las enredaderas al recolectar frutos pequeños",
+        "guidance": "Las enredaderas de pepino pueden echar raíces en sus nudos. Recoge los frutos sin tirar ni desplazar la planta establecida; el enrejado o la conducción deben responder al crecimiento observado, no a una regla específica de gherkin."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha regularmente al tamaño previsto para el uso",
+        "guidance": "Para encurtidos, UMN Extension recomienda recolectar pepinos al tamaño preferido de forma uniforme y hacerlo con frecuencia. La fuente respalda la regularidad, pero no fija una longitud de gherkin ni un calendario universal para esta identidad."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Investiga el cuajado pobre y las lesiones foliares angulares",
+        "guidance": "El frío, la lluvia o la nubosidad pueden reducir la polinización del pepino y el cuajado. Manchas amarillas angulares y pelusa gris violácea en el envés con alta humedad son señales de alerta compatibles con mildiu velloso; confirma la causa porque otros trastornos pueden parecerse. No se atribuye resistencia a este tipo."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Las primeras flores masculinas no significan que haya fallado la fructificación",
+        "guidance": "La planta de pepino tiene flores masculinas y femeninas por separado; las masculinas suelen aparecer primero. Las femeninas tienen un ovario en la base y necesitan polinización para desarrollar el fruto, así que la caída inicial de flores masculinas puede ser normal."
       }
     }
   },
   "pattypan-squash": {
-    "summary": "Identidad base de Wave 3 para Calabaza pattypan. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Pattypan es un tipo de calabaza de verano de Cucurbita pepo. Su aspecto práctico es la cosecha del fruto tierno; no se afirma un cultivar concreto, tamaño exacto ni huella de sistema.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Pattypan es un tipo de calabaza de verano de Cucurbita pepo",
+        "guidance": "UMN Extension incluye patty pan entre los tipos de calabaza de verano de Cucurbita pepo. La fuente respalda el cuidado y la cosecha generales del cultivo, no las dimensiones de un cultivar pattypan sin nombre ni su comportamiento hidropónico."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Distingue las matas compactas de las enredaderas largas",
+        "guidance": "Los tipos de calabaza de verano pueden crecer como matas cortas o formar enredaderas más largas. Observa el porte real antes de guiar la planta; la fuente no indica que todos los pattypan necesiten enrejado o poda."
+      },
+      "cultivation": {
+        "short": "Calor, humedad constante y buen drenaje favorecen la fructificación",
+        "guidance": "La calabaza de verano crece y produce mejor con clima cálido. UMN Extension recomienda suelo que retenga humedad pero drene bien y riego profundo en la zona de raíces; las fechas y distancias de Minnesota son guía regional exterior, no un plan de plantación interior."
+      },
+      "care": {
+        "short": "Mantén secas las hojas al regar y evita dañar las raíces",
+        "guidance": "Riega el suelo a fondo en vez de rociar el follaje. La labor superficial reduce el riesgo de lesionar raíces que se extienden cerca de la superficie; es una pauta de mantenimiento, no un volumen fijo de riego para todos los climas."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha pattypan joven y tierno para uso como calabaza de verano",
+        "guidance": "UMN Extension incluye patty pan entre las calabazas de verano y recomienda cosechar antes de que se formen semillas grandes, piel dura y pulpa fibrosa o acuosa. No especifica un diámetro único: elige el tamaño culinario deseado y recolecta con regularidad."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa la polinización y reconoce señales comunes de la calabaza",
+        "guidance": "Las flores masculinas aparecen primero; una polinización insuficiente puede impedir el cuajado inicial. Manchas blancas polvorientas, hojas deshilachadas con grupos de chinches o una corona que se marchita de repente apuntan a problemas distintos. Identifica las señales antes de diagnosticar; no se afirma resistencia varietal."
+      },
+      "flowering": {
+        "short": "Las flores masculinas salen primero; las femeninas muestran un ovario pequeño",
+        "guidance": "La calabaza de verano produce flores masculinas y femeninas por separado en una planta. Las masculinas suelen aparecer primero y las flores iniciales pueden caer sin indicar un problema. El ovario detrás de la flor femenina solo se desarrolla tras la polinización."
       }
     }
   },
   "acorn-squash": {
-    "summary": "Identidad base de Wave 3 para Calabaza acorn. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La calabaza acorn es un tipo de calabaza de invierno dentro de Cucurbita pepo. Se cultiva como una enredadera de estación cálida y se deja en la planta hasta que la cáscara y el tallo muestran madurez; no se representa un cultivar ni una huella exacta.",
     "sections": {
-      "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
-      },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
-      "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
-      },
-      "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      }
+      "identity": {"short":"Tipo de calabaza de invierno dentro de Cucurbita pepo","guidance":"UMN Extension incluye la calabaza acorn entre las calabazas de invierno Cucurbita pepo. Es una identidad de tipo hortícola, no un cultivar nombrado; la guía general de cosecha no establece tamaño ni rendimiento propios de acorn."},
+      "cultivation": {"short":"Enredadera de clima cálido; sol y suelo drenado","guidance":"La guía citada de calabaza de invierno es para cultivo exterior en suelo. Deja espacio para el porte extendido y evita mantener mojada la zona de raíces; el espaciamiento de campo no se convierte en una regla de pods de Garden."},
+      "pruning": {"short":"No se estableció un régimen de poda específico para acorn","guidance":"Las fuentes revisadas no establecen un calendario rutinario de poda para este tipo. Conserva hojas sanas que sostienen el crecimiento del fruto y retira tejido dañado solo si lo observas; esto último es una adaptación de manejo de Garden, no una regla de cultivar."},
+      "harvest": {"short":"Espera una cáscara madura y un tallo duro y leñoso","guidance":"La calabaza de invierno no sigue madurando después de cosecharse. Recoge cuando la cáscara resista la presión de una uña y el tallo junto al fruto se haya endurecido; corta el tallo en vez de arrancarlo. Son señales del grupo, no un calendario de cultivar acorn."},
+      "problems": {"short":"Distingue enfermedad foliar del declive normal de la enredadera","guidance":"El mildiu velloso puede comenzar con manchas foliares amarillas angulares y desarrollar crecimiento gris violáceo debajo de las hojas en condiciones húmedas. Los síntomas pueden parecerse a otros problemas y la presión regional varía; revisa ambas caras y confirma antes de tratar. No se establece resistencia propia de acorn."}
     }
   },
   "butternut-squash": {
-    "summary": "Identidad base de Wave 3 para Calabaza butternut. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La calabaza butternut es un tipo de calabaza de invierno dentro de Cucurbita moschata. La planta establecida es una enredadera extendida de estación cálida; cosecha cuando la cáscara y el tallo alcanzan señales de madurez, sin convertir la guía del cultivo en dimensiones de cultivar.",
     "sections": {
-      "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
-      },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
-      "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
-      },
-      "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      }
+      "identity": {"short":"Tipo butternut dentro de Cucurbita moschata","guidance":"UMN Extension identifica butternut entre las calabazas de invierno Cucurbita moschata. El catálogo representa un tipo hortícola, no un cultivar nombrado; las señales de cosecha son de grupo y no garantizan tamaño o almacenamiento de un cultivar concreto."},
+      "cultivation": {"short":"Enredadera extendida de estación cálida; guía para suelo exterior","guidance":"La guía de Johnny's sobre calabazas de invierno corresponde al cultivo exterior en suelo, y este tipo se representa con porte extendido, no compacto. Mantén drenaje y conserva follaje sano; no se infiere compatibilidad interior ni hidropónica."},
+      "pruning": {"short":"No se estableció una pauta de poda específica para butternut","guidance":"Las fuentes citadas no establecen un calendario de poda propio de butternut. Evita retirar follaje sano solo para reducir la huella aparente; es una adaptación cautelosa de Garden, no una regla de rendimiento demostrada."},
+      "harvest": {"short":"Cosecha completamente madura y conserva el tallo","guidance":"Deja el fruto en la planta hasta que la cáscara resista una uña y la sección del tallo se endurezca y vuelva leñosa. Córtalo en lugar de desprenderlo; la calabaza de invierno no sigue madurando después de cosecharse. Estas señales son del grupo, no una fecha fija para butternut."},
+      "problems": {"short":"Revisa el envés si aparecen manchas amarillas angulares","guidance":"El mildiu velloso puede causar lesiones amarillas angulares arriba y crecimiento gris violáceo debajo de las hojas en clima húmedo. Otros trastornos pueden parecerse; confirma el patrón antes de intervenir. No se afirma resistencia de butternut."}
     }
   },
   "california-poppy": {

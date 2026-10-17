@@ -4256,8 +4256,8 @@ export const gardenPlantProfileCatalog = {
   },
   "cucumber-marketmore": {
     "summary": {
-      "en": "Marketmore Cucumber is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 1 para Pepino Marketmore. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "The catalog records Marketmore type within Cucumis sativus. The cultivation guidance is cucumber-level; cultivar-specific dimensions, performance and indoor-system advice are not established here.",
+      "es": "El catálogo registra el tipo Marketmore dentro de Cucumis sativus. La guía de cultivo corresponde al pepino en general; aquí no se establecen dimensiones, rendimiento ni manejo interior propios del cultivar."
     },
     "metrics": {
       "en": [],
@@ -4268,60 +4268,103 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "johnnys-cucumber-wave1",
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Marketmore Cucumber identity is resolved at Cucumis sativus and Marketmore type type scope",
-          "guidance": "Marketmore Cucumber is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+          "short": "Marketmore type is recorded within Cucumis sativus",
+          "guidance": "The catalog records Marketmore type under Cucumis sativus. The home-garden sources used in this profile provide cucumber-level guidance; they do not establish cultivar-specific dimensions, disease resistance or hydroponic settings.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "El tipo Marketmore se registra dentro de Cucumis sativus",
+          "guidance": "El catálogo registra el tipo Marketmore bajo Cucumis sativus. Las fuentes de huerto usadas en esta ficha ofrecen guía general para pepino; no establecen dimensiones, resistencia a enfermedades ni parámetros hidropónicos propios del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
+          "short": "Guide vines gently; avoid routine pruning assumptions",
+          "guidance": "UMN Extension notes that some cucumber varieties form long vines and may use a trellis. Guide a vining plant onto support without damaging stems; this crop guidance does not establish a Marketmore-specific pruning regimen or prove indoor-system suitability.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
+          "short": "Guía las enredaderas con cuidado; no presupongas una poda rutinaria",
+          "guidance": "UMN Extension señala que algunas variedades de pepino forman enredaderas largas y pueden usar un enrejado. Guía la planta trepadora sin dañar los tallos; esta recomendación general no establece un régimen de poda propio de Marketmore ni demuestra su idoneidad para un sistema interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep the root zone evenly moist in warm growing conditions",
+          "guidance": "Cucumbers are warm-weather crops. UMN Extension recommends moisture-retentive yet well-drained soil and thorough watering while keeping foliage dry; its Minnesota soil and weekly water guidance is regional outdoor context, not a hydroponic recipe.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén la zona radicular uniformemente húmeda en condiciones cálidas",
+          "guidance": "El pepino es un cultivo de clima cálido. UMN Extension recomienda un suelo que retenga humedad pero drene bien y un riego profundo que mantenga seco el follaje; el calendario, el suelo y la cantidad semanal de agua de Minnesota son contexto regional exterior, no una receta hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Protect shallow vine roots during maintenance",
+          "guidance": "Cucumber roots include surface branches, and vines may root at their joints. Weed shallowly and avoid repeatedly shifting or lifting established vines; this reduces avoidable root and stem disturbance rather than prescribing a pruning schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Protege las raíces superficiales durante el mantenimiento",
+          "guidance": "El pepino forma raíces laterales cerca de la superficie, y la enredadera puede enraizar en sus nudos. Deshierba superficialmente y evita mover o levantar repetidamente la planta establecida; esto previene daños evitables, no prescribe un calendario de poda.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
+          "short": "Pick at the intended slicer size before fruits overmature",
+          "guidance": "UMN Extension advises harvesting cucumber slicers before fruits become overlarge, yellow-skinned, and full of large seeds. Pick often and handle the vine gently; leaving oversized fruit can reduce continued yield. This is species/crop guidance, not a Marketmore-specific size threshold.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha los frutos de corte antes de que sobremaduren",
+          "guidance": "UMN Extension recomienda cosechar los pepinos de ensalada antes de que sean demasiado grandes, amarillentos y tengan semillas grandes. Cosecha con frecuencia y manipula la enredadera con cuidado; dejar frutos demasiado grandes puede reducir la producción posterior. No se fija un tamaño propio de Marketmore.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -4329,41 +4372,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+          "short": "Check pollination and moisture before diagnosing poor fruit",
+          "guidance": "Poor fruit set can follow inadequate pollination, including during cold, rainy, or cloudy weather. UMN Extension also notes that cucumber bitterness varies among varieties and can be more noticeable near the blossom end. In humid conditions, angular yellow leaf spots with gray-purple growth underneath can be a downy-mildew warning; symptoms can resemble other disorders, so do not treat this as a diagnosis or cultivar-resistance claim.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Revisa polinización y humedad antes de diagnosticar frutos deficientes",
+          "guidance": "Una polinización insuficiente puede causar poco cuajado, especialmente con frío, lluvia o nubosidad. La amargura varía entre variedades y puede notarse más cerca del extremo floral. En condiciones húmedas, vigila manchas amarillas angulares y crecimiento gris violáceo bajo las hojas; son señales compatibles con mildiu velloso, no un diagnóstico definitivo ni una afirmación de resistencia del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
+          "short": "Early male flowers normally precede fruit-bearing female flowers",
+          "guidance": "Cucumber plants produce separate male and female flowers on the same plant. Male flowers commonly appear first; female flowers have a small ovary behind the bloom and need pollen transfer for fruit development. Early flower drop alone is therefore not proof of a plant problem.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Las flores masculinas suelen aparecer antes que las femeninas",
+          "guidance": "La planta produce flores masculinas y femeninas por separado. Las masculinas suelen aparecer primero; detrás de las femeninas se ve un ovario pequeño que puede convertirse en fruto tras recibir polen. La caída inicial de flores masculinas, por sí sola, no indica un problema.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -4373,8 +4417,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bush-cucumber": {
     "summary": {
-      "en": "Bush Cucumber is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 1 para Pepino de mata. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Bush cucumber is a compact horticultural growth type within Cucumis sativus. Crop-level guidance supports its smaller-garden role, while exact dimensions and performance remain unspecified.",
+      "es": "El pepino de mata es un tipo de crecimiento compacto dentro de Cucumis sativus. La guía general respalda su utilidad en jardines pequeños, pero no establece dimensiones ni rendimiento exactos."
     },
     "metrics": {
       "en": [],
@@ -4385,60 +4429,103 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "johnnys-cucumber-wave1",
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Bush Cucumber identity is resolved at Cucumis sativus and Bush type type scope",
-          "guidance": "Bush Cucumber is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+          "short": "Bush describes a growth type, not a named cultivar",
+          "guidance": "This identity represents bush-type cucumber within Cucumis sativus. UMN Extension distinguishes bush forms with short vines from long-vining types; no named cultivar or exact mature spread is established here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Mata describe un tipo de crecimiento, no un cultivar con nombre",
+          "guidance": "Esta identidad representa el tipo de pepino de mata dentro de Cucumis sativus. UMN Extension distingue las formas de enredadera corta de las trepadoras; aquí no se establece un cultivar ni una extensión adulta exacta.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
+          "short": "The bush habit reduces vine sprawl; inspect before adding support",
+          "guidance": "UMN Extension describes bush cucumber types as having very short vines and fitting smaller gardens better than long-vining forms. That type-level distinction does not establish an exact footprint or eliminate the need to inspect the actual plant as fruit develops.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
+          "short": "El porte de mata limita la expansión de las guías; observa antes de añadir soporte",
+          "guidance": "UMN Extension describe los tipos de mata como plantas con guías muy cortas, más adecuadas para jardines pequeños que las formas largas. Esa diferencia de tipo no define una huella exacta ni elimina la necesidad de observar la planta conforme se desarrollan los frutos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Warm conditions and well-drained, moisture-retentive soil",
+          "guidance": "Cucumbers grow best in warm weather. UMN Extension recommends soil that holds moisture but drains well and thorough watering that avoids wetting foliage; Minnesota calendars and field watering amounts are not universal instructions for other climates or indoor systems.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Condiciones cálidas y suelo húmedo pero bien drenado",
+          "guidance": "El pepino crece mejor con clima cálido. UMN Extension recomienda suelo que retenga humedad pero drene bien y riego profundo sin mojar el follaje; las fechas y cantidades para Minnesota no son instrucciones universales para otros climas o sistemas interiores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Maintain moisture and avoid injuring surface roots",
+          "guidance": "Check the root zone regularly during active growth. Cucumber roots branch near the soil surface, so shallow hand-weeding is safer than deep cultivation close to the plant. This is outdoor crop care, not hydroponic guidance.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Conserva la humedad y evita lesionar las raíces superficiales",
+          "guidance": "Revisa la zona radicular durante el crecimiento activo. Como las raíces se ramifican cerca de la superficie, el deshierbe manual y superficial es más seguro que cultivar profundamente junto a la planta. Es cuidado exterior del cultivo, no una pauta hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
+          "short": "Frequent picking supports a continuing harvest",
+          "guidance": "Harvest fruits at the size appropriate to their intended use and before they become overlarge and yellow. Pick regularly and handle the plant gently; leaving oversized cucumbers on the vine can lower yield. No fixed mature spread or harvest date is assigned to this bush type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema.",
+          "short": "La cosecha frecuente permite seguir recolectando",
+          "guidance": "Cosecha los frutos al tamaño adecuado para su uso y antes de que se vuelvan demasiado grandes y amarillos. Recolecta con regularidad y manipula la planta con suavidad; dejar pepinos sobredimensionados puede reducir la producción. No se asigna una fecha ni extensión exacta a este tipo de mata.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -4446,41 +4533,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+          "short": "Poor fruit set can be a pollination issue",
+          "guidance": "Cucumber flowers need pollen transfer for fruit set; cold, rainy, or cloudy conditions may reduce pollination. Bitterness can vary among cucumber varieties. These are general crop risks, not evidence that this bush type has a particular disease or resistance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Un cuajado pobre puede deberse a la polinización",
+          "guidance": "Las flores necesitan transferencia de polen para formar frutos; el frío, la lluvia o la nubosidad pueden reducir la polinización. La amargura también varía entre pepinos. Son riesgos generales del cultivo, no evidencia de enfermedad o resistencia propia de este tipo de mata.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
+          "short": "Male blooms come first; female blooms carry a tiny ovary",
+          "guidance": "In cucumber, male flowers often appear before female flowers. The small swelling behind a female flower is the developing ovary; pollen transfer is needed for fruit development in the typical varieties described by UMN Extension. The first male flowers dropping is normal.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Primero salen flores masculinas; las femeninas llevan un ovario pequeño",
+          "guidance": "En el pepino, las flores masculinas suelen preceder a las femeninas. El pequeño engrosamiento detrás de la flor femenina es el ovario; las variedades típicas descritas por UMN Extension necesitan transferencia de polen para desarrollar el fruto. Es normal que caigan las primeras flores masculinas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -9266,8 +9354,8 @@ export const gardenPlantProfileCatalog = {
   },
   "yellow-squash": {
     "summary": {
-      "en": "Yellow Squash is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Calabaza amarilla. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Yellow summer squash is a Cucurbita pepo crop type harvested immature while the rind and flesh remain tender. The profile distinguishes this repeat-harvest stage from winter squash maturity and avoids cultivar-specific size claims.",
+      "es": "La calabaza amarilla de verano es un tipo de Cucurbita pepo que se cosecha inmadura, con la piel y la pulpa tiernas. La ficha la distingue de la madurez de las calabazas de invierno y no atribuye tamaños específicos a un cultivar."
     },
     "metrics": {
       "en": [],
@@ -9279,62 +9367,103 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Yellow Squash is resolved at Cucurbita pepo and Yellow summer squash type type scope",
-          "guidance": "Yellow Squash is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Yellow summer squash is a Cucurbita pepo crop type",
+          "guidance": "UMN Extension groups yellow summer squash with Cucurbita pepo summer squash. This profile uses that crop-type evidence and does not assert a named cultivar, exact mature dimensions, or a hydroponic configuration.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "La calabaza amarilla de verano es un tipo de Cucurbita pepo",
+          "guidance": "UMN Extension incluye la calabaza amarilla de verano entre las calabazas de verano de Cucurbita pepo. Esta ficha usa evidencia del tipo de cultivo y no afirma un cultivar con nombre, dimensiones adultas exactas ni configuración hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+          "short": "Observe whether the plant is bush-form or vining before supporting it",
+          "guidance": "UMN Extension notes that summer-squash varieties may form long vines or compact bush forms. Do not apply a single training or pruning rule across both habits; the source does not identify the exact architecture of every yellow-squash cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Observa si es una mata o una enredadera antes de guiarla",
+          "guidance": "UMN Extension señala que algunas calabazas de verano forman enredaderas largas y otras crecen como matas compactas. No apliques una regla única de conducción o poda a ambos portes; la fuente no identifica la arquitectura exacta de cada cultivar amarillo.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Warm-season growth needs moisture-retentive, well-drained soil",
+          "guidance": "UMN Extension describes summer squash as a warm-weather crop and recommends soil that holds moisture yet drains well. Water thoroughly at the soil rather than wetting leaves; regional Minnesota timing and field quantities are not indoor-system settings.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El crecimiento cálido requiere suelo húmedo pero bien drenado",
+          "guidance": "UMN Extension describe la calabaza de verano como un cultivo de clima cálido y recomienda suelo que retenga humedad y drene bien. Riega a fondo al nivel del suelo para evitar mojar las hojas; las fechas y cantidades de Minnesota son contexto regional, no ajustes de un sistema interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep the root zone moist and avoid deep cultivation near the plant",
+          "guidance": "Squash roots include shallow branches. Maintain soil moisture and weed shallowly so maintenance does not injure surface roots; water at soil level where possible to keep leaves dry. This is garden-soil guidance, not a nutrient or hydroponic prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Conserva la humedad y evita cultivar profundamente junto a la planta",
+          "guidance": "Las raíces de la calabaza incluyen ramificaciones superficiales. Mantén la humedad y deshierba superficialmente para no dañarlas; cuando sea posible, riega al nivel del suelo y mantén secas las hojas. Es cuidado de jardín en suelo, no una receta nutritiva o hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+          "short": "Harvest while fruits are tender, before they become oversized",
+          "guidance": "Pick summer squash at the size you prefer, before seeds become large, skins hard and flesh fibrous or watery. Harvest frequently; leaving oversized fruits on the plant can reduce further yield. No cultivar-specific length or maturity day is assigned to this yellow-squash type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha cuando el fruto aún está tierno, antes de que crezca demasiado",
+          "guidance": "Cosecha la calabaza de verano al tamaño deseado, antes de que las semillas crezcan, la piel se endurezca y la pulpa se vuelva fibrosa o acuosa. Recolecta con frecuencia; dejar frutos demasiado grandes puede reducir la producción. No se asigna una longitud ni un día de madurez propios de este tipo amarillo.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -9342,43 +9471,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Look for pollination failure, mildew and borer damage",
+          "guidance": "Poorly pollinated early fruit may abort; cold, rainy or cloudy weather can limit pollination. White powdery patches, distorted new growth, or a suddenly wilted crown can indicate different problems such as powdery mildew, virus or squash vine borer; identify the cause before choosing control. Downy-mildew symptoms can overlap with other leaf spots.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Vigila fallas de polinización, mildiu y daños en la corona",
+          "guidance": "Los primeros frutos mal polinizados pueden abortar; el frío, la lluvia o la nubosidad limitan la polinización. Manchas blancas polvorientas, brotes nuevos deformes o una corona que se marchita repentinamente pueden indicar problemas diferentes. Identifica la causa antes de intervenir; las lesiones de mildiu velloso también pueden parecerse a otras manchas foliares.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+          "short": "Male blossoms precede female blossoms with a visible ovary",
+          "guidance": "Summer squash produces separate male and female flowers on the same plant. Male flowers commonly appear first; a female flower has a small ovary at its base. Early male-flower drop is normal, while poor pollination can cause a young fruit to stop developing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Las flores masculinas aparecen antes que las femeninas, con un ovario visible",
+          "guidance": "La calabaza de verano produce flores masculinas y femeninas separadas en la misma planta. Las masculinas suelen aparecer primero; las femeninas tienen un pequeño ovario en la base. La caída inicial de flores masculinas es normal, mientras que la polinización deficiente puede detener el desarrollo de un fruto joven.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -9388,8 +9516,8 @@ export const gardenPlantProfileCatalog = {
   },
   "pickling-cucumber": {
     "summary": {
-      "en": "Pickling Cucumber is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 2 para Pepino para encurtir. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Pickling cucumber is a Cucumis sativus crop type harvested for pickling use. Frequent, size-consistent harvest and careful vine handling matter; exact cultivar dimensions and dates remain unspecified.",
+      "es": "El pepino para encurtir es un tipo de Cucumis sativus cosechado para ese uso. Importan la cosecha frecuente y uniforme y el manejo cuidadoso de la enredadera; no se especifican dimensiones ni fechas de un cultivar concreto."
     },
     "metrics": {
       "en": [],
@@ -9401,62 +9529,61 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Pickling Cucumber is resolved at Cucumis sativus and Pickling cucumber type type scope",
-          "guidance": "Pickling Cucumber is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Pickling describes the intended harvest use within Cucumis sativus",
+          "guidance": "This record represents cucumbers grown for pickling, not a named cultivar. General cucumber evidence supports the crop's flowering, moisture and harvest management; it does not establish a particular pickle length, days to maturity or hydroponic requirement.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Encurtir describe el uso previsto dentro de Cucumis sativus",
+          "guidance": "Esta ficha representa pepinos cultivados para encurtir, no un cultivar con nombre. La evidencia general respalda pautas de floración, humedad y cosecha, pero no fija una longitud, días a madurez ni requisito hidropónico particular.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+          "short": "Harvest carefully instead of imposing a generic pruning routine",
+          "guidance": "Cucumber vines can root at their joints, so avoid repeatedly lifting or disturbing an established vine while picking. A trellis can be used for vining types, but this general guidance does not establish that every pickling type needs support or pruning.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Cosecha con cuidado en vez de imponer una poda genérica",
+          "guidance": "Las enredaderas pueden producir raíces en sus nudos; evita levantarlas o moverlas repetidamente al recolectar. Se puede guiar un tipo trepador, pero esta orientación general no indica que todo pepino para encurtir necesite soporte o poda.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+          "short": "Pick pickling fruits at a consistent preferred size",
+          "guidance": "UMN Extension recommends harvesting pickling cucumbers at a uniform size. Pick often and do not leave fruits to become oversized; continued harvest helps avoid the yield decline associated with very large fruits. No single pickle size is asserted because the intended product and cultivar vary.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Recolecta los frutos para encurtir con tamaño preferido uniforme",
+          "guidance": "UMN Extension recomienda cosechar los pepinos para encurtir con un tamaño uniforme. Recógelos a menudo y evita que se sobredimensionen; dejar frutos muy grandes puede reducir la producción posterior. No se afirma una longitud única porque depende del producto y del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -9464,43 +9591,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Check pollination, bitter fruit and leaf symptoms",
+          "guidance": "Poor fruit set can follow inadequate pollination, including during cold, rainy or cloudy weather. Bitterness varies among varieties; angular yellow leaf spots with gray-purple growth underneath in humid conditions may indicate downy mildew, but other leaf disorders can look similar and require confirmation.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Distingue polinización deficiente, amargor y síntomas foliares",
+          "guidance": "Una polinización insuficiente puede reducir el cuajado, sobre todo con frío, lluvia o nubosidad. El amargor varía entre variedades. Manchas angulares amarillas con crecimiento gris violáceo bajo las hojas en ambiente húmedo pueden corresponder a mildiu velloso; otros trastornos se parecen y requieren confirmación.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+          "short": "Male flowers normally precede female flowers and fruit set",
+          "guidance": "Male and female flowers occur separately on the same cucumber plant. Male flowers often appear first; the small ovary behind a female flower develops into a fruit after pollination. Early male-flower drop is a normal stage, not by itself a disorder.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Las flores masculinas suelen preceder a las femeninas y al fruto",
+          "guidance": "Las flores masculinas y femeninas aparecen por separado en la misma planta. Las masculinas suelen salir primero; detrás de la flor femenina hay un ovario pequeño que, tras la polinización, puede desarrollarse como fruto. La caída inicial de flores masculinas es normal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14673,8 +14799,8 @@ export const gardenPlantProfileCatalog = {
   },
   "gherkin-cucumber": {
     "summary": {
-      "en": "Gherkin Cucumber is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Pepino tipo gherkin. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Gherkin cucumber is represented as a Cucumis sativus horticultural type, not a named cultivar. The profile focuses on general cucumber management and leaves exact fruit size and cultivar performance unresolved.",
+      "es": "El pepino tipo gherkin se representa como un tipo hortícola de Cucumis sativus, no como cultivar con nombre. La ficha se centra en el manejo general y deja sin resolver el tamaño exacto del fruto y el rendimiento varietal."
     },
     "metrics": {
       "en": [],
@@ -14686,62 +14812,61 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Gherkin Cucumber is resolved at Cucumis sativus and Gherkin type type scope",
-          "guidance": "Gherkin Cucumber is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+          "short": "Gherkin is a horticultural type within Cucumis sativus",
+          "guidance": "The catalog represents Gherkin Cucumber as a horticultural type of Cucumis sativus. The available general cucumber sources do not identify a particular gherkin cultivar or establish an exact fruit-size threshold, so neither is asserted.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Gherkin es un tipo hortícola dentro de Cucumis sativus",
+          "guidance": "El catálogo representa el pepino tipo gherkin como un tipo hortícola de Cucumis sativus. Las fuentes generales disponibles no identifican aquí un cultivar concreto ni un tamaño exacto de cosecha, por lo que no se afirman.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+          "short": "Avoid disturbing vines while gathering small fruits",
+          "guidance": "Cucumber vines can form roots at their joints. Harvest by handling fruits rather than pulling or relocating the established vine; any trellising or shaping should follow the observed growth habit, not an assumed gherkin-specific rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Evita mover las enredaderas al recolectar frutos pequeños",
+          "guidance": "Las enredaderas de pepino pueden echar raíces en sus nudos. Recoge los frutos sin tirar ni desplazar la planta establecida; el enrejado o la conducción deben responder al crecimiento observado, no a una regla específica de gherkin.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+          "short": "Harvest regularly at the size intended for the use",
+          "guidance": "For pickling use, UMN Extension recommends picking cucumbers at a uniform preferred size and harvesting often. That guidance supports consistent picking, but the source does not establish a gherkin-specific length or a universal calendar for this catalog identity.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha regularmente al tamaño previsto para el uso",
+          "guidance": "Para encurtidos, UMN Extension recomienda recolectar pepinos al tamaño preferido de forma uniforme y hacerlo con frecuencia. La fuente respalda la regularidad, pero no fija una longitud de gherkin ni un calendario universal para esta identidad.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14749,43 +14874,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Investigate pollination failure and angular leaf lesions",
+          "guidance": "Cold, rainy or cloudy weather can reduce cucumber pollination and fruit set. Yellow angular leaf spots, especially with gray-purple fuzz on leaf undersides in humid conditions, are warning signs consistent with cucurbit downy mildew; confirm the diagnosis because other disorders can look similar. No resistance claim is made for this type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Investiga el cuajado pobre y las lesiones foliares angulares",
+          "guidance": "El frío, la lluvia o la nubosidad pueden reducir la polinización del pepino y el cuajado. Manchas amarillas angulares y pelusa gris violácea en el envés con alta humedad son señales de alerta compatibles con mildiu velloso; confirma la causa porque otros trastornos pueden parecerse. No se atribuye resistencia a este tipo.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+          "short": "Do not mistake the first male flowers for failed fruiting",
+          "guidance": "Cucumber plants carry male and female flowers separately; male blooms usually appear first. Female flowers have an ovary at the base and need pollination to develop fruit, so the first flowers dropping can be normal.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Las primeras flores masculinas no significan que haya fallado la fructificación",
+          "guidance": "La planta de pepino tiene flores masculinas y femeninas por separado; las masculinas suelen aparecer primero. Las femeninas tienen un ovario en la base y necesitan polinización para desarrollar el fruto, así que la caída inicial de flores masculinas puede ser normal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14795,8 +14919,8 @@ export const gardenPlantProfileCatalog = {
   },
   "pattypan-squash": {
     "summary": {
-      "en": "Pattypan Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Calabaza pattypan. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Pattypan is a summer-squash type of Cucurbita pepo. Its useful management distinction is the tender-fruit harvest stage; no single pattypan cultivar, exact fruit size or system footprint is asserted.",
+      "es": "Pattypan es un tipo de calabaza de verano de Cucurbita pepo. Su aspecto práctico es la cosecha del fruto tierno; no se afirma un cultivar concreto, tamaño exacto ni huella de sistema."
     },
     "metrics": {
       "en": [],
@@ -14808,62 +14932,103 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "johnnys-zucchini",
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Pattypan Squash is resolved at Cucurbita pepo and Pattypan type type scope",
-          "guidance": "Pattypan Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+          "short": "Pattypan is a summer-squash type within Cucurbita pepo",
+          "guidance": "UMN Extension explicitly includes patty pan among summer-squash types in Cucurbita pepo. The source supports crop-level care and harvest advice, not an unnamed pattypan cultivar's dimensions or hydroponic behavior.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Pattypan es un tipo de calabaza de verano de Cucurbita pepo",
+          "guidance": "UMN Extension incluye patty pan entre los tipos de calabaza de verano de Cucurbita pepo. La fuente respalda el cuidado y la cosecha generales del cultivo, no las dimensiones de un cultivar pattypan sin nombre ni su comportamiento hidropónico.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Distinguish compact bush forms from long-vining squash",
+          "guidance": "Summer-squash types can have short bush growth or longer, spreading vines. Check the actual plant habit before deciding whether to guide it; the crop source does not say that every pattypan needs a trellis or pruning.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Distingue las matas compactas de las enredaderas largas",
+          "guidance": "Los tipos de calabaza de verano pueden crecer como matas cortas o formar enredaderas más largas. Observa el porte real antes de guiar la planta; la fuente no indica que todos los pattypan necesiten enrejado o poda.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Warmth, steady soil moisture and good drainage support fruiting",
+          "guidance": "Summer squash grows and produces best in warm weather. UMN Extension recommends moisture-retentive yet well-drained soil and thorough watering at the root zone; Minnesota timing and field spacing are regional garden guidance, not an indoor planting plan.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Calor, humedad constante y buen drenaje favorecen la fructificación",
+          "guidance": "La calabaza de verano crece y produce mejor con clima cálido. UMN Extension recomienda suelo que retenga humedad pero drene bien y riego profundo en la zona de raíces; las fechas y distancias de Minnesota son guía regional exterior, no un plan de plantación interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Keep leaves dry during watering and avoid injuring roots",
+          "guidance": "Water the soil thoroughly rather than spraying foliage. Shallow cultivation is safer near the plant because squash roots extend close to the soil surface; this is a maintenance cue, not a fixed watering volume for all climates.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén secas las hojas al regar y evita dañar las raíces",
+          "guidance": "Riega el suelo a fondo en vez de rociar el follaje. La labor superficial reduce el riesgo de lesionar raíces que se extienden cerca de la superficie; es una pauta de mantenimiento, no un volumen fijo de riego para todos los climas.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest pattypan fruits young and tender for summer-squash use",
+          "guidance": "UMN Extension includes patty pan among summer squash and recommends harvesting while fruits are tender, before large seeds, hard skin and fibrous or watery flesh develop. It does not specify one pattypan diameter; use the desired culinary size and pick regularly.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha pattypan joven y tierno para uso como calabaza de verano",
+          "guidance": "UMN Extension incluye patty pan entre las calabazas de verano y recomienda cosechar antes de que se formen semillas grandes, piel dura y pulpa fibrosa o acuosa. No especifica un diámetro único: elige el tamaño culinario deseado y recolecta con regularidad.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14871,21 +15036,42 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-squash-catalog-wave3",
-          "johnnys-zucchini"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Check pollination and recognize common squash warning signs",
+          "guidance": "Male flowers appear before female flowers; insufficient pollination can cause poor early fruit set. Powdery white leaf patches, ragged leaves with grouped squash bugs, or a suddenly wilting crown can point to different problems. These signs warrant closer identification, not an automatic diagnosis or cultivar-resistance claim.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Revisa la polinización y reconoce señales comunes de la calabaza",
+          "guidance": "Las flores masculinas aparecen primero; una polinización insuficiente puede impedir el cuajado inicial. Manchas blancas polvorientas, hojas deshilachadas con grupos de chinches o una corona que se marchita de repente apuntan a problemas distintos. Identifica las señales antes de diagnosticar; no se afirma resistencia varietal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Male flowers arrive first; female flowers show a small fruiting ovary",
+          "guidance": "Summer squash bears male and female flowers separately on one plant. Male flowers usually appear first, and early blossoms may drop without indicating a problem. The ovary behind a female flower develops only after pollination.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores masculinas salen primero; las femeninas muestran un ovario pequeño",
+          "guidance": "La calabaza de verano produce flores masculinas y femeninas por separado en una planta. Las masculinas suelen aparecer primero y las flores iniciales pueden caer sin indicar un problema. El ovario detrás de la flor femenina solo se desarrolla tras la polinización.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14895,8 +15081,8 @@ export const gardenPlantProfileCatalog = {
   },
   "acorn-squash": {
     "summary": {
-      "en": "Acorn Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Calabaza acorn. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Acorn squash is a winter squash type within Cucurbita pepo. Grow it as a warm-season, spreading vine and leave fruit on the plant until the rind and stem show maturity; no named cultivar or exact footprint is represented.",
+      "es": "La calabaza acorn es un tipo de calabaza de invierno dentro de Cucurbita pepo. Se cultiva como una enredadera de estación cálida y se deja en la planta hasta que la cáscara y el tallo muestran madurez; no se representa un cultivar ni una huella exacta."
     },
     "metrics": {
       "en": [],
@@ -14911,15 +15097,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-squash-catalog-wave3"
         ],
         "en": {
-          "short": "Acorn Squash is resolved at Cucurbita pepo and Acorn type type scope",
-          "guidance": "Acorn Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+          "short": "Winter-squash type within Cucurbita pepo",
+          "guidance": "UMN Extension places acorn squash among Cucurbita pepo winter squashes. This is a horticultural type identity, not a named cultivar; general winter-squash guidance below is not an acorn-specific size or yield claim.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo de calabaza de invierno dentro de Cucurbita pepo",
+          "guidance": "UMN Extension incluye la calabaza acorn entre las calabazas de invierno Cucurbita pepo. Es una identidad de tipo hortícola, no un cultivar nombrado; la guía general de cosecha no establece tamaño ni rendimiento propios de acorn.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-winter-squash-wave3"
+        ],
+        "en": {
+          "short": "Warm-season vine; full sun and drained soil",
+          "guidance": "The cited winter-squash growing guidance is for outdoor soil cultivation. Give the spreading vine room and avoid persistently wet root-zone conditions; its field spacing is not a Garden pod-spacing rule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera de clima cálido; sol y suelo drenado",
+          "guidance": "La guía citada de calabaza de invierno es para cultivo exterior en suelo. Deja espacio para el porte extendido y evita mantener mojada la zona de raíces; el espaciamiento de campo no se convierte en una regla de pods de Garden.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14933,37 +15140,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-squash-catalog-wave3"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "No acorn-specific pruning regimen established",
+          "guidance": "The sources reviewed do not establish a routine pruning schedule for this type. Preserve healthy leaves that support fruit growth; remove damaged tissue only when observed, as a Garden management adaptation rather than a cultivar-specific rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No se estableció un régimen de poda específico para acorn",
+          "guidance": "Las fuentes revisadas no establecen un calendario rutinario de poda para este tipo. Conserva hojas sanas que sostienen el crecimiento del fruto y retira tejido dañado solo si lo observas; esto último es una adaptación de manejo de Garden, no una regla de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-melon-squash-pumpkin-harvest-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Wait for mature rind and a hard, woody stem",
+          "guidance": "Winter squash does not continue ripening after harvest. Harvest only when the rind resists a fingernail and the stem at the fruit has hardened; cut the stem rather than pulling it off. These are winter-squash maturity cues, not an acorn cultivar calendar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Espera una cáscara madura y un tallo duro y leñoso",
+          "guidance": "La calabaza de invierno no sigue madurando después de cosecharse. Recoge cuando la cáscara resista la presión de una uña y el tallo junto al fruto se haya endurecido; corta el tallo en vez de arrancarlo. Son señales del grupo, no un calendario de cultivar acorn.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14973,19 +15179,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Distinguish leaf disease from normal vine decline",
+          "guidance": "Downy mildew can begin as angular yellow leaf spots and develop gray-purple growth beneath leaves in humid conditions. Symptoms can resemble other problems and regional pressure varies; inspect both leaf surfaces and confirm before choosing treatment. No acorn-specific resistance is established.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Distingue enfermedad foliar del declive normal de la enredadera",
+          "guidance": "El mildiu velloso puede comenzar con manchas foliares amarillas angulares y desarrollar crecimiento gris violáceo debajo de las hojas en condiciones húmedas. Los síntomas pueden parecerse a otros problemas y la presión regional varía; revisa ambas caras y confirma antes de tratar. No se establece resistencia propia de acorn.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -14995,8 +15200,8 @@ export const gardenPlantProfileCatalog = {
   },
   "butternut-squash": {
     "summary": {
-      "en": "Butternut Squash is a Wave 3 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 3 para Calabaza butternut. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Butternut squash is a winter-squash type within Cucurbita moschata. Its established plant is a spreading warm-season vine; harvest only after the fruit reaches mature rind and stem cues, without treating crop guidance as cultivar dimensions.",
+      "es": "La calabaza butternut es un tipo de calabaza de invierno dentro de Cucurbita moschata. La planta establecida es una enredadera extendida de estación cálida; cosecha cuando la cáscara y el tallo alcanzan señales de madurez, sin convertir la guía del cultivo en dimensiones de cultivar."
     },
     "metrics": {
       "en": [],
@@ -15011,15 +15216,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-squash-catalog-wave3"
         ],
         "en": {
-          "short": "Butternut Squash is resolved at Cucurbita moschata and Butternut type type scope",
-          "guidance": "Butternut Squash is published as a practical horticultural type. Evidence for the crop or species is not promoted into unsupported named-cultivar certainty.",
+          "short": "Butternut type within Cucurbita moschata",
+          "guidance": "UMN Extension identifies butternut among Cucurbita moschata winter squashes. The catalog represents a horticultural type rather than a named cultivar; type-level harvest guidance is not a cultivar-specific size or storage guarantee.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo butternut dentro de Cucurbita moschata",
+          "guidance": "UMN Extension identifica butternut entre las calabazas de invierno Cucurbita moschata. El catálogo representa un tipo hortícola, no un cultivar nombrado; las señales de cosecha son de grupo y no garantizan tamaño o almacenamiento de un cultivar concreto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-winter-squash-wave3"
+        ],
+        "en": {
+          "short": "Warm-season spreading vine; outdoor soil guidance",
+          "guidance": "Johnny's winter-squash guidance supports outdoor crop culture, while the type is represented as spreading rather than compact. Keep soil draining and preserve healthy foliage; no indoor or hydroponic compatibility is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera extendida de estación cálida; guía para suelo exterior",
+          "guidance": "La guía de Johnny's sobre calabazas de invierno corresponde al cultivo exterior en suelo, y este tipo se representa con porte extendido, no compacto. Mantén drenaje y conserva follaje sano; no se infiere compatibilidad interior ni hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -15033,37 +15259,36 @@ export const gardenPlantProfileCatalog = {
           "johnnys-squash-catalog-wave3"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Type-specific pruning instructions are not established",
+          "guidance": "The cited sources do not establish a butternut-specific pruning schedule. Avoid removing healthy canopy simply to reduce the apparent footprint; that is a cautious Garden adaptation, not a proven yield rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No se estableció una pauta de poda específica para butternut",
+          "guidance": "Las fuentes citadas no establecen un calendario de poda propio de butternut. Evita retirar follaje sano solo para reducir la huella aparente; es una adaptación cautelosa de Garden, no una regla de rendimiento demostrada.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-melon-squash-pumpkin-harvest-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest at full maturity; keep the stem attached",
+          "guidance": "The fruit should remain on the vine until the rind resists a fingernail and the stem section becomes hard and woody. Cut the fruit with a sharp tool instead of detaching it; winter squash does not ripen further after picking. These are crop-group cues, not a fixed butternut date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha completamente madura y conserva el tallo",
+          "guidance": "Deja el fruto en la planta hasta que la cáscara resista una uña y la sección del tallo se endurezca y vuelva leñosa. Córtalo en lugar de desprenderlo; la calabaza de invierno no sigue madurando después de cosecharse. Estas señales son del grupo, no una fecha fija para butternut.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -15073,19 +15298,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-winter-squash-wave3",
-          "johnnys-squash-catalog-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Check underside of leaves when angular yellow spots appear",
+          "guidance": "Downy mildew may show angular yellow lesions on upper leaf surfaces and gray-purple growth below during humid weather. Other disorders can look similar; confirm the pattern before acting. No resistance claim is made for the butternut type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Revisa el envés si aparecen manchas amarillas angulares",
+          "guidance": "El mildiu velloso puede causar lesiones amarillas angulares arriba y crecimiento gris violáceo debajo de las hojas en clima húmedo. Otros trastornos pueden parecerse; confirma el patrón antes de intervenir. No se afirma resistencia de butternut.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18388,8 +18612,8 @@ export const gardenPlantProfileCatalog = {
   },
   "cantaloupe": {
     "summary": {
-      "en": "Cantaloupe is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Melón cantalupo. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Cantaloupe (muskmelon) is a vining Cucumis melo crop. After establishment, root-zone moisture, pollination, and recognizing natural slip and color cues matter more than a fixed harvest date; these are crop-level, not named-cultivar claims.",
+      "es": "El melón cantalupo es un cultivo trepador de Cucumis melo. Una vez establecido, importan la humedad en la zona de raíces, la polinización y reconocer el desprendimiento natural y el cambio de color del fruto, más que una fecha fija; son pautas del cultivo, no de un cultivar nombrado."
     },
     "metrics": {
       "en": [],
@@ -18404,15 +18628,37 @@ export const gardenPlantProfileCatalog = {
           "usu-water-vegetables-wave2"
         ],
         "en": {
-          "short": "Cantaloupe is resolved at Cucumis melo and Cantaloupe type type scope",
-          "guidance": "Cantaloupe is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Cantaloupe type within Cucumis melo",
+          "guidance": "The catalog identifies a cantaloupe type of Cucumis melo, not a named cultivar. USU Extension evidence below describes cantaloupe/muskmelon crop practices and does not establish cultivar-specific dimensions or timing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo cantalupo dentro de Cucumis melo",
+          "guidance": "El catálogo identifica un tipo cantalupo de Cucumis melo, no un cultivar nombrado. La evidencia de USU Extension describe prácticas del cultivo cantalupo/melón y no establece dimensiones ni calendario de un cultivar concreto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-cantaloupe-home-gardens-2026",
+          "usu-water-vegetables-wave2"
+        ],
+        "en": {
+          "short": "Full sun, drainage, and deep root-zone watering",
+          "guidance": "USU Extension describes cantaloupe as a full-sun crop for fertile, well-drained soil and recommends deep, infrequent irrigation in its Utah garden context. Water needs rise around flowering and fruit set; reduce irrigation near maturity only as appropriate locally. Soil quantities are not hydroponic settings.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sol pleno, drenaje y riego profundo en raíces",
+          "guidance": "USU Extension describe el cantalupo como cultivo de sol pleno en suelo fértil y bien drenado, con riego profundo e infrecuente en el contexto de sus jardines de Utah. La demanda de agua aumenta cerca de floración y cuajado; reducir el riego al acercarse la madurez depende de las condiciones locales. Las cantidades para suelo no son ajustes hidropónicos.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18426,37 +18672,36 @@ export const gardenPlantProfileCatalog = {
           "usu-water-vegetables-wave2"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+          "short": "Vines may be trained, but enlarging fruit needs support",
+          "guidance": "USU notes cantaloupe vines may be guided onto a fence or trellis in a small garden; once fruit enlarges, support the fruit so its weight does not damage the vine. This is a space-management option, not a requirement or cultivar-specific pruning prescription.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Se pueden guiar las guías, pero el fruto grande requiere soporte",
+          "guidance": "USU señala que las guías pueden dirigirse a una cerca o enrejado en jardines pequeños; cuando el fruto crece, hay que sostenerlo para que el peso no dañe la guía. Es una opción para ahorrar espacio, no una obligación ni una pauta de poda propia de un cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
+          "usu-cantaloupe-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+          "short": "Look for natural slip and a creamy-yellow background",
+          "guidance": "USU describes ripe cantaloupe as developing coarse netting, a creamy-to-yellow background, and a stem that separates easily with a slight twist. Pick as fruit ripens; days from flowering vary with temperature and variety, so a fixed date is not proof of maturity.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Busca el desprendimiento natural y un fondo amarillo cremoso",
+          "guidance": "USU describe el cantalupo maduro con una red exterior más áspera, fondo de color crema a amarillo y separación fácil del tallo con un giro suave. Cosecha los frutos conforme maduren; los días desde floración varían con temperatura y variedad, así que una fecha fija no confirma madurez.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18466,19 +18711,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
+          "usu-cantaloupe-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Poor fruit set can reflect pollination or stress",
+          "guidance": "USU notes poor fruit set may follow inadequate bee pollination, very hot weather, or water stress. Angular yellow lesions with gray-purple growth beneath leaves may indicate cucurbit downy mildew, but other disorders can resemble it; check the full symptom pattern before acting. No cultivar resistance is implied.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El cuajado deficiente puede deberse a polinización o estrés",
+          "guidance": "USU indica que el cuajado deficiente puede relacionarse con poca polinización por abejas, mucho calor o estrés hídrico. Lesiones amarillas angulares con crecimiento gris violáceo bajo las hojas pueden indicar mildiu velloso, pero otros trastornos pueden parecerse; revisa el patrón completo antes de actuar. No se implica resistencia de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18488,19 +18733,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-vegetable-varieties-wave2",
-          "usu-water-vegetables-wave2"
+          "usu-cantaloupe-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+          "short": "Male flowers appear first; female blooms carry an ovary",
+          "guidance": "USU explains that early cantaloupe blossoms are male; a female flower has a swelling at its base that becomes fruit after bee pollination. Early male-flower drop is not by itself evidence of a problem.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Las flores masculinas aparecen primero; las femeninas muestran un ovario",
+          "guidance": "USU explica que las primeras flores del cantalupo son masculinas; una flor femenina tiene un engrosamiento en la base que puede convertirse en fruto después de la polinización por abejas. La caída temprana de flores masculinas no demuestra por sí sola un problema.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18510,8 +18754,8 @@ export const gardenPlantProfileCatalog = {
   },
   "sugar-baby-watermelon": {
     "summary": {
-      "en": "Sugar Baby Watermelon is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Sandía Sugar Baby. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Sugar Baby is represented as a watermelon type of Citrullus lanatus. Manage the established vine for warm, sunny outdoor growth and even moisture, then judge maturity from multiple fruit and vine cues; generic watermelon guidance does not establish Sugar Baby dimensions or yield.",
+      "es": "Sugar Baby se representa como un tipo de sandía de Citrullus lanatus. Maneja la guía establecida para cultivo cálido y soleado en exterior con humedad uniforme; evalúa la madurez mediante varias señales del fruto y la planta. La guía general de sandía no establece dimensiones ni rendimiento de Sugar Baby."
     },
     "metrics": {
       "en": [],
@@ -18526,15 +18770,37 @@ export const gardenPlantProfileCatalog = {
           "usu-water-vegetables-wave2"
         ],
         "en": {
-          "short": "Sugar Baby Watermelon is resolved at Citrullus lanatus and Sugar Baby type type scope",
-          "guidance": "Sugar Baby Watermelon is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Sugar Baby is a watermelon type within Citrullus lanatus",
+          "guidance": "The identity is cataloged as Sugar Baby watermelon, within Citrullus lanatus. The cited USU cultivation source is species/crop-level and does not verify Sugar Baby's mature dimensions, fruit count, disease resistance, or exact harvest interval.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Sugar Baby es un tipo de sandía dentro de Citrullus lanatus",
+          "guidance": "La identidad se registra como sandía Sugar Baby dentro de Citrullus lanatus. La guía de cultivo de USU citada es del cultivo/especie y no verifica dimensiones adultas, número de frutos, resistencia a enfermedades ni intervalo exacto de cosecha de Sugar Baby.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-watermelon-home-gardens-2026",
+          "usu-water-vegetables-wave2"
+        ],
+        "en": {
+          "short": "Full sun, well-drained soil, and deep watering",
+          "guidance": "USU Extension describes watermelon as a warm-season outdoor crop for sunny, well-drained soil and deep, infrequent irrigation. Utah rainfall quantities and field spacing are regional soil guidance, not container or hydroponic prescriptions and not Sugar Baby-specific requirements.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Sol pleno, suelo drenado y riego profundo",
+          "guidance": "USU Extension describe la sandía como cultivo cálido de exterior, para lugar soleado y suelo bien drenado, con riego profundo e infrecuente. Las cantidades de lluvia y distancias de campo de Utah son orientación regional para suelo, no reglas de contenedor o hidroponía ni necesidades específicas de Sugar Baby.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18548,37 +18814,36 @@ export const gardenPlantProfileCatalog = {
           "usu-water-vegetables-wave2"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
-          "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+          "short": "No Sugar Baby pruning or trellising rule established",
+          "guidance": "The crop-level source describes trailing watermelon vines but does not establish a Sugar Baby-specific pruning or trellising protocol. Avoid damaging fruiting vines during routine care; do not infer compactness or support needs from the name.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No se estableció una pauta de poda o enrejado para Sugar Baby",
+          "guidance": "La fuente del cultivo describe guías rastreras de sandía, pero no establece poda ni conducción propias de Sugar Baby. Evita dañar las guías con fruto durante el manejo habitual; no deduzcas porte compacto ni necesidad de soporte por el nombre.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
+          "usu-watermelon-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest by maturity cues, not a fixed calendar promise",
-          "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
+          "short": "Combine tendril, ground-spot, and rind cues",
+          "guidance": "USU recommends checking that the tendril opposite the fruit is brown and withered, the ground spot changes from white to yellow, and the rind shifts from shiny to dull. Days from flowering vary with temperature and variety; one sign or a fixed calendar should not be treated as a guarantee.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Combina señales del zarcillo, la mancha del suelo y la cáscara",
+          "guidance": "USU recomienda comprobar que el zarcillo opuesto al fruto esté marrón y seco, que la mancha de apoyo haya cambiado de blanca a amarilla y que la cáscara pase de brillante a opaca. Los días desde floración varían según temperatura y variedad; ni una sola señal ni un calendario fijo garantizan madurez.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18588,19 +18853,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
+          "usu-watermelon-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Moisture and heat stress can affect fruit quality",
+          "guidance": "USU reports that wilting vines, high temperatures, or a short season can contribute to poor flavor, while very dry conditions during fruit growth can contribute to fruit-end disorders. Angular yellow leaf lesions with gray-purple growth beneath may indicate downy mildew; verify symptoms before intervening. These are crop-level observations, not Sugar Baby resistance claims.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El estrés de humedad y calor puede afectar la calidad del fruto",
+          "guidance": "USU informa que guías marchitas, temperaturas altas o una temporada corta pueden contribuir a un sabor deficiente; condiciones muy secas durante el desarrollo también pueden asociarse con trastornos en el extremo del fruto. Lesiones amarillas angulares con crecimiento gris violáceo debajo pueden indicar mildiu velloso; confirma los síntomas. No se afirma resistencia de Sugar Baby.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -18610,19 +18875,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-watermelon-wave4",
-          "usu-water-vegetables-wave2"
+          "usu-watermelon-home-gardens-2026"
         ],
         "en": {
-          "short": "Flowering and fruit set are useful lifecycle events",
-          "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
+          "short": "Track flowering, fruit set, and stress as separate events",
+          "guidance": "Record flowering and fruit set separately and note heat or moisture stress if fruit does not develop normally. The selected sources do not support a Sugar Baby-specific flower-removal practice.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Registra floración y cuajado",
-          "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica.",
+          "short": "Registra floración, cuajado y estrés por separado",
+          "guidance": "Anota floración y cuajado como eventos distintos y registra calor o estrés de humedad si los frutos no se desarrollan normalmente. Las fuentes elegidas no respaldan retirar flores en Sugar Baby.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21591,8 +21855,8 @@ export const gardenPlantProfileCatalog = {
   },
   "straight-eight-cucumber": {
     "summary": {
-      "en": "Straight Eight Cucumber is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Pepino Straight Eight. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Straight Eight is cataloged as a Cucumis sativus cucumber identity. General cucumber cultivation and harvest guidance is useful here, but the cited sources do not establish cultivar-specific dimensions or performance.",
+      "es": "Straight Eight se cataloga como una identidad de pepino dentro de Cucumis sativus. Las pautas generales de cultivo y cosecha son útiles, pero las fuentes citadas no establecen dimensiones ni rendimiento específicos del cultivar."
     },
     "metrics": {
       "en": [],
@@ -21605,64 +21869,61 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "johnnys-cucumber-wave1",
           "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "johnnys-winter-squash-wave3",
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Straight Eight Cucumber is resolved at Cucumis sativus and Straight Eight type type scope",
-          "guidance": "Straight Eight Cucumber is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Straight Eight remains within Cucumis sativus",
+          "guidance": "Straight Eight is represented as a cucumber identity within Cucumis sativus. The sources applied to this profile support general cucumber culture; they do not establish this identity's exact fruit dimensions, disease resistance, or hydroponic behavior.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Straight Eight permanece dentro de Cucumis sativus",
+          "guidance": "Straight Eight se representa como una identidad de pepino dentro de Cucumis sativus. Las fuentes aplicadas respaldan el cultivo general del pepino, pero no establecen dimensiones exactas, resistencia a enfermedades ni comportamiento hidropónico de esta identidad.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Support only if the observed vine habit calls for it",
+          "guidance": "Cucumber varieties differ: some grow long vines that may use a trellis, while bush types stay short. Guide this plant according to its actual growth and avoid disturbing established vine joints; the crop-level source does not define a Straight Eight pruning or support specification.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Añade soporte solo si el crecimiento observado lo requiere",
+          "guidance": "Las variedades de pepino difieren: algunas producen enredaderas largas que pueden usar un enrejado, mientras que las de mata son cortas. Guía la planta según su crecimiento real y evita mover los nudos establecidos; la fuente general no define poda ni soporte propios de Straight Eight.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest before fruits become oversized and yellow",
+          "guidance": "UMN Extension recommends picking slicer cucumbers at the preferred size before they become large, yellow-skinned and full of large seeds. Harvest frequently and do not disturb the vine; no Straight Eight-specific maturity date or size is assigned.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha antes de que los frutos sean grandes y amarillos",
+          "guidance": "UMN Extension recomienda recoger los pepinos de ensalada al tamaño preferido, antes de que se vuelvan grandes, amarillentos y tengan semillas grandes. Cosecha con frecuencia y no alteres la enredadera; no se asigna una fecha ni tamaño de madurez propio de Straight Eight.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21670,22 +21931,21 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Poor fruit set, bitterness and leaf symptoms have different causes",
+          "guidance": "Insufficient pollination can reduce fruit set, and bitterness varies among cucumber varieties. Angular yellow lesions with gray-purple growth under leaves in humid conditions can indicate downy mildew; confirm symptoms before intervention. These are crop-level concerns, not claims about Straight Eight resistance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "El cuajado pobre, el amargor y las lesiones foliares tienen causas distintas",
+          "guidance": "La falta de polinización puede reducir el cuajado y el amargor varía entre variedades de pepino. Lesiones angulares amarillas con crecimiento gris violáceo bajo las hojas en humedad alta pueden indicar mildiu velloso; confirma los síntomas antes de intervenir. Son problemas del cultivo, no afirmaciones de resistencia de Straight Eight.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21695,8 +21955,8 @@ export const gardenPlantProfileCatalog = {
   },
   "armenian-cucumber": {
     "summary": {
-      "en": "Armenian Cucumber is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Pepino armenio. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Armenian cucumber is a long-fruited Cucumis melo type, not Cucumis sativus. Its established plant is a vigorous climber; frequent cutting at the tender stage protects the vine and encourages continued production, while reported dimensions and timing remain source-contextual.",
+      "es": "El pepino armenio es un tipo de fruto largo de Cucumis melo, no Cucumis sativus. La planta establecida trepa con vigor; cortar frutos tiernos con regularidad protege la guía y favorece la producción continua. Las dimensiones y el calendario publicados son contextuales a la fuente."
     },
     "metrics": {
       "en": [],
@@ -21707,20 +21967,60 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "ufifas-armenian-cucumber-2025"
         ],
         "en": {
-          "short": "Armenian Cucumber is resolved at Cucumis melo and Armenian cucumber type type scope",
-          "guidance": "Armenian Cucumber is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Armenian cucumber is a melon type, not a true cucumber",
+          "guidance": "UF/IFAS identifies Armenian cucumber as Cucumis melo var. flexuosus, distinct from true cucumber (C. sativus). The profile retains Cucumis melo as its species identity and Armenian cucumber as a horticultural type; it does not resolve one named cultivar among the many forms.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Un tipo de melón, no un pepino verdadero",
+          "guidance": "UF/IFAS identifica el pepino armenio como Cucumis melo var. flexuosus, distinto del pepino verdadero (C. sativus). El perfil conserva Cucumis melo como especie y pepino armenio como tipo hortícola; no resuelve un cultivar nombrado entre sus muchas formas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-armenian-cucumber-2025"
+        ],
+        "en": {
+          "short": "Vigorous climber; warm soil, full sun, and steady moisture",
+          "guidance": "UF/IFAS describes this type as a vigorous climber that can use a trellis or fence, or trail along the ground. Its northeast Florida guide recommends full sun, warm conditions, fertile well-drained soil, and consistent water. Regional pH, spacing and timing are not universal or hydroponic prescriptions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Trepadora vigorosa; calor, sol pleno y humedad constante",
+          "guidance": "UF/IFAS describe este tipo como trepador vigoroso, apto para cerca o enrejado, aunque también puede extenderse por el suelo. Su guía del noreste de Florida recomienda sol pleno, condiciones cálidas, suelo fértil con buen drenaje y agua constante. El pH, las distancias y fechas regionales no son universales ni prescripciones hidropónicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-armenian-cucumber-2025"
+        ],
+        "en": {
+          "short": "Long, thin-skinned fruit may be straight or curved",
+          "guidance": "UF/IFAS describes long, slender fruit with thin, longitudinally rippled skin; fruit may be straight or curled. These observations do not establish a fixed mature plant footprint or named-cultivar dimensions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Frutos largos y delgados, rectos o curvos",
+          "guidance": "UF/IFAS describe frutos largos y delgados, de piel fina con surcos longitudinales; pueden ser rectos o curvos. La observación no establece una huella adulta fija ni dimensiones de un cultivar nombrado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21730,43 +22030,60 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "ufifas-armenian-cucumber-2025"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Guide the climbing vine; do not pull fruit from it",
+          "guidance": "A trellis is optional: UF/IFAS reports that the vine can climb a fence or trellis and can also grow on the ground. The source gives no routine pruning method. Cut fruit from the vine rather than pulling, to avoid damage.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Guía la enredadera; corta el fruto en vez de tirar",
+          "guidance": "El enrejado es opcional: UF/IFAS informa que la planta puede trepar una cerca o enrejado y también crecer en el suelo. La fuente no ofrece una pauta de poda rutinaria. Corta el fruto de la guía para evitar dañarla.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
+        "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "ufifas-armenian-cucumber-2025"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest regularly while fruit is tender",
+          "guidance": "In its local trial, UF/IFAS recommends harvesting Armenian cucumber around 12–14 inches for best flavor and says longer fruit can remain edible. Cut rather than pull, and harvest regularly to encourage continued fruiting. Treat that length as a regional trial cue, not a universal cultivar standard.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha regularmente mientras el fruto esté tierno",
+          "guidance": "En su prueba local, UF/IFAS recomienda cosechar alrededor de 12–14 pulgadas para mejor sabor, aunque señala que frutos más largos siguen siendo comestibles. Corta en vez de tirar y cosecha con regularidad para estimular producción continua. Esa longitud es una referencia de una prueba regional, no un estándar universal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ufifas-armenian-cucumber-2025"
+        ],
+        "en": {
+          "short": "Allow pollinator access when using row covers",
+          "guidance": "UF/IFAS recommends uncovering plants during the day so pollination can occur, or hand-pollinating when covers are used. This is a practical note from one local demonstration, not proof that every setting requires hand pollination.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Deja acceso a polinizadores cuando uses cubiertas",
+          "guidance": "UF/IFAS recomienda retirar las cubiertas durante el día para permitir la polinización o polinizar a mano si se mantienen. Es una recomendación práctica de una demostración local, no una prueba de que todos los jardines necesiten polinización manual.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21776,20 +22093,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Inspect leaf undersides for angular lesions in humid weather",
+          "guidance": "Cucurbit downy mildew can cause angular yellow spots and gray-purple growth beneath leaves, but other disorders may look similar and regional disease pressure varies. Confirm the pattern before treating; no Armenian-cucumber-specific resistance claim is established.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Revisa lesiones angulares bajo condiciones húmedas",
+          "guidance": "El mildiu velloso puede causar manchas amarillas angulares y crecimiento gris violáceo bajo las hojas, pero otros trastornos pueden parecerse y la presión regional varía. Confirma el patrón antes de tratar; no se establece resistencia propia del pepino armenio.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21799,8 +22114,8 @@ export const gardenPlantProfileCatalog = {
   },
   "eight-ball-zucchini": {
     "summary": {
-      "en": "Eight Ball Zucchini is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Calabacín Eight Ball. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Eight Ball is represented as a zucchini identity within Cucurbita pepo. General summer-squash care and harvest guidance applies at crop scope; the available evidence here does not establish cultivar-specific mature size or system suitability.",
+      "es": "Eight Ball se representa como una identidad de calabacín dentro de Cucurbita pepo. Se aplican pautas generales de cuidado y cosecha de calabaza de verano; la evidencia disponible no establece su tamaño adulto ni idoneidad para un sistema."
     },
     "metrics": {
       "en": [],
@@ -21811,66 +22126,103 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
           "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Eight Ball Zucchini is resolved at Cucurbita pepo and Eight Ball type type scope",
-          "guidance": "Eight Ball Zucchini is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Eight Ball remains a zucchini identity within Cucurbita pepo",
+          "guidance": "The catalog records Eight Ball Zucchini under Cucurbita pepo. UMN Extension's guidance supports summer squash and zucchini at crop level; it does not establish Eight Ball's exact mature dimensions, disease resistance or indoor-system behavior.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Eight Ball permanece dentro de Cucurbita pepo",
+          "guidance": "El catálogo registra Eight Ball Zucchini bajo Cucurbita pepo. UMN Extension respalda pautas generales para calabaza de verano y calabacín, pero no establece dimensiones adultas exactas, resistencia a enfermedades ni comportamiento interior de Eight Ball.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Do not infer a compact footprint from the cultivar name",
+          "guidance": "Summer-squash forms range from bush plants to longer vines. Observe this plant's actual growth before deciding whether to guide or support it; the available general zucchini source does not verify Eight Ball's mature spread or a cultivar-specific pruning method.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No deduzcas una huella compacta solo por el nombre del cultivar",
+          "guidance": "Las calabazas de verano incluyen matas y formas con enredaderas más largas. Observa el crecimiento real antes de guiar o sostener la planta; la fuente general de calabacín no verifica el tamaño adulto ni un método de poda propio de Eight Ball.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Warm-weather growth benefits from steady soil moisture",
+          "guidance": "UMN Extension describes zucchini and summer squash as warm-season crops and recommends moisture-retentive, well-drained soil. Water thoroughly at the root zone and keep foliage dry when practical; regional outdoor quantities do not define indoor or hydroponic settings.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El crecimiento de clima cálido se beneficia de humedad constante en el suelo",
+          "guidance": "UMN Extension describe el calabacín y otras calabazas de verano como cultivos cálidos y recomienda suelo húmedo pero bien drenado. Riega a fondo en la zona de raíces y procura mantener seco el follaje; las cantidades regionales no definen ajustes para interior o hidroponía.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ],
+        "en": {
+          "short": "Monitor crown and leaves for distinct warning signs",
+          "guidance": "A sudden whole-plant wilt, ragged leaves, or white powdery patches can point to different issues such as squash vine borer, squash bugs or powdery mildew. Inspect the plant and identify the likely cause before intervention; these are crop-level warnings, not Eight Ball-specific susceptibility claims.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Observa la corona y las hojas para reconocer señales distintas",
+          "guidance": "El marchitamiento súbito de toda la planta, las hojas deshilachadas o las manchas blancas polvorientas pueden corresponder a problemas distintos, como barrenador, chinches o mildiu polvoriento. Examina la planta e identifica la causa probable antes de intervenir; no se afirma una susceptibilidad propia de Eight Ball.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest at the tender stage; no Eight Ball size is asserted",
+          "guidance": "As summer squash, harvest the fruit before seeds become large, skin hard and flesh fibrous or watery. Pick regularly so oversized fruit does not remain on the plant and reduce later yield. A particular Eight Ball diameter or maturity day is not supported by the sources used here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha en etapa tierna; no se afirma un tamaño propio de Eight Ball",
+          "guidance": "Como calabaza de verano, el fruto se cosecha antes de que las semillas crezcan, la piel se endurezca y la pulpa se vuelva fibrosa o acuosa. Recolecta con regularidad para que no queden frutos demasiado grandes en la planta y reduzcan la producción posterior. Las fuentes no respaldan un diámetro ni día de madurez específico de Eight Ball.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21878,22 +22230,21 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Separate pollination trouble from pests and leaf disease",
+          "guidance": "Poor pollination can limit early fruit set, especially in cold, rainy or cloudy weather. White powdery leaf patches, ragged feeding damage, a wilted crown, and angular yellow spots with gray-purple growth beneath leaves indicate different possible problems; confirm the symptom pattern before treating. No named-cultivar resistance is claimed.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Distingue problemas de polinización, plagas y enfermedades foliares",
+          "guidance": "La polinización deficiente puede limitar el cuajado inicial, sobre todo con frío, lluvia o nubosidad. Manchas blancas polvorientas, daño de alimentación deshilachado, una corona marchita o lesiones angulares amarillas con crecimiento gris violáceo bajo las hojas pueden señalar causas distintas; confirma el patrón antes de tratar. No se afirma resistencia del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21903,8 +22254,8 @@ export const gardenPlantProfileCatalog = {
   },
   "sugar-pumpkin": {
     "summary": {
-      "en": "Sugar Pumpkin is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Calabaza Sugar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Sugar pumpkin is a small-pie-pumpkin type within Cucurbita pepo. The established plant is managed as a spreading winter squash; leave fruit on the vine until the rind is hard and stem woody, then cut and cure it if storage is intended. No named cultivar is represented.",
+      "es": "La calabaza Sugar es un tipo de calabaza pequeña para pay dentro de Cucurbita pepo. La planta establecida se maneja como una calabaza de invierno extendida; deja que el fruto madure en la guía hasta que la cáscara se endurezca y el tallo se vuelva leñoso, y córtalo para almacenarlo. No se representa un cultivar nombrado."
     },
     "metrics": {
       "en": [],
@@ -21915,20 +22266,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "johnnys-squash-catalog-wave3",
+          "umn-melon-squash-pumpkin-harvest-2026"
         ],
         "en": {
-          "short": "Sugar Pumpkin is resolved at Cucurbita pepo and Sugar pumpkin type type scope",
-          "guidance": "Sugar Pumpkin is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Sugar pumpkin is a Cucurbita pepo pumpkin type",
+          "guidance": "The catalog represents the sugar/pie pumpkin horticultural type within Cucurbita pepo, not a named cultivar. UMN Extension classifies pumpkins among winter squashes and notes that small pie pumpkins are better suited to baking than large jack-o'-lantern types; no cultivar-specific size is inferred.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Tipo de calabaza Sugar dentro de Cucurbita pepo",
+          "guidance": "El catálogo representa el tipo hortícola de calabaza Sugar o para pay dentro de Cucurbita pepo, no un cultivar nombrado. UMN Extension clasifica las calabazas entre las de invierno y señala que las pequeñas para pay son más apropiadas para hornear que las grandes de Halloween; no se infiere un tamaño de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-winter-squash-wave3"
+        ],
+        "en": {
+          "short": "Spreading, warm-season vine; outdoor soil guidance",
+          "guidance": "Johnny's winter-squash guidance applies to outdoor soil culture and describes a crop group that includes pumpkins. Allow for spreading growth and preserve healthy leaves that support developing fruit; no pod count, indoor suitability, or exact footprint is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Enredadera extendida de estación cálida; guía exterior en suelo",
+          "guidance": "La guía de Johnny's sobre calabazas de invierno corresponde al cultivo exterior en suelo e incluye el grupo de las calabazas. Deja sitio para su porte extendido y conserva hojas sanas que alimentan los frutos; no se establece número de pods, cultivo interior ni huella exacta.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21938,43 +22309,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
           "johnnys-winter-squash-wave3"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "A Sugar Pumpkin pruning schedule is not established",
+          "guidance": "The reviewed sources do not establish a routine pruning schedule for this pumpkin type. Avoid removing healthy canopy solely to reduce vine size; this is a conservative Garden adaptation, not a source-backed yield rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "No se estableció un calendario de poda para Sugar Pumpkin",
+          "guidance": "Las fuentes revisadas no establecen poda rutinaria para este tipo de calabaza. Evita retirar follaje sano solo para reducir el tamaño de la guía; es una adaptación conservadora de Garden, no una regla de rendimiento respaldada por fuente.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-melon-squash-pumpkin-harvest-2026"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Let fruit mature fully on the vine",
+          "guidance": "UMN Extension notes that pumpkins do not continue ripening after harvest. Mature fruit has a firm rind that resists a fingernail and a hard, woody stem; cut it with stem attached. If storing, curing is a separate postharvest step and depends on dry, warm conditions.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Deja que el fruto madure por completo en la planta",
+          "guidance": "UMN Extension señala que la calabaza no sigue madurando tras la cosecha. El fruto maduro tiene cáscara firme que resiste la uña y un tallo duro y leñoso; córtalo dejando el tallo unido. Si se almacenará, el curado es un paso poscosecha aparte que depende de condiciones cálidas y secas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -21984,20 +22351,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "johnnys-zucchini",
-          "johnnys-winter-squash-wave3"
+          "umn-cucurbit-downy-mildew-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Check angular leaf lesions before diagnosing disease",
+          "guidance": "Cucurbit downy mildew can cause angular yellow leaf spots with gray-purple growth beneath leaves, especially under humid conditions. Symptoms can resemble other disorders and disease timing varies regionally; confirm before intervening. No pumpkin-type resistance is claimed.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
+          "short": "Revisa lesiones angulares antes de diagnosticar enfermedad",
+          "guidance": "El mildiu velloso de cucurbitáceas puede causar manchas amarillas angulares y crecimiento gris violáceo bajo las hojas, especialmente con humedad. Los síntomas pueden parecerse a otros trastornos y la presión regional varía; confirma antes de intervenir. No se afirma resistencia del tipo de calabaza.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -3292,57 +3292,73 @@
       "cucurbita pepo",
       "yellow summer squash type"
     ],
-    "summary": "Yellow Squash is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Yellow summer squash is a Cucurbita pepo crop type harvested immature while the rind and flesh remain tender. The profile distinguishes this repeat-harvest stage from winter squash maturity and avoids cultivar-specific size claims.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Yellow Squash is resolved at Cucurbita pepo and Yellow summer squash type type scope",
-        "guidance": "Yellow Squash is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Yellow summer squash is a Cucurbita pepo crop type",
+        "guidance": "UMN Extension groups yellow summer squash with Cucurbita pepo summer squash. This profile uses that crop-type evidence and does not assert a named cultivar, exact mature dimensions, or a hydroponic configuration.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Observe whether the plant is bush-form or vining before supporting it",
+        "guidance": "UMN Extension notes that summer-squash varieties may form long vines or compact bush forms. Do not apply a single training or pruning rule across both habits; the source does not identify the exact architecture of every yellow-squash cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-season growth needs moisture-retentive, well-drained soil",
+        "guidance": "UMN Extension describes summer squash as a warm-weather crop and recommends soil that holds moisture yet drains well. Water thoroughly at the soil rather than wetting leaves; regional Minnesota timing and field quantities are not indoor-system settings.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Keep the root zone moist and avoid deep cultivation near the plant",
+        "guidance": "Squash roots include shallow branches. Maintain soil moisture and weed shallowly so maintenance does not injure surface roots; water at soil level where possible to keep leaves dry. This is garden-soil guidance, not a nutrient or hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest while fruits are tender, before they become oversized",
+        "guidance": "Pick summer squash at the size you prefer, before seeds become large, skins hard and flesh fibrous or watery. Harvest frequently; leaving oversized fruits on the plant can reduce further yield. No cultivar-specific length or maturity day is assigned to this yellow-squash type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Look for pollination failure, mildew and borer damage",
+        "guidance": "Poorly pollinated early fruit may abort; cold, rainy or cloudy weather can limit pollination. White powdery patches, distorted new growth, or a suddenly wilted crown can indicate different problems such as powdery mildew, virus or squash vine borer; identify the cause before choosing control. Downy-mildew symptoms can overlap with other leaf spots.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Male blossoms precede female blossoms with a visible ovary",
+        "guidance": "Summer squash produces separate male and female flowers on the same plant. Male flowers commonly appear first; a female flower has a small ovary at its base. Early male-flower drop is normal, while poor pollination can cause a young fruit to stop developing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-zucchini",
-          "usu-water-vegetables-wave2"
+          "umn-summer-squash-home-gardens-2026"
         ]
       }
     },
@@ -3431,57 +3447,55 @@
       "cucumis sativus",
       "pickling cucumber type"
     ],
-    "summary": "Pickling Cucumber is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Pickling cucumber is a Cucumis sativus crop type harvested for pickling use. Frequent, size-consistent harvest and careful vine handling matter; exact cultivar dimensions and dates remain unspecified.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Pickling Cucumber is resolved at Cucumis sativus and Pickling cucumber type type scope",
-        "guidance": "Pickling Cucumber is published as a practical horticultural type. Crop evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Pickling describes the intended harvest use within Cucumis sativus",
+        "guidance": "This record represents cucumbers grown for pickling, not a named cultivar. General cucumber evidence supports the crop's flowering, moisture and harvest management; it does not establish a particular pickle length, days to maturity or hydroponic requirement.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "usu-water-vegetables-wave2",
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest carefully instead of imposing a generic pruning routine",
+        "guidance": "Cucumber vines can root at their joints, so avoid repeatedly lifting or disturbing an established vine while picking. A trellis can be used for vining types, but this general guidance does not establish that every pickling type needs support or pruning.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick pickling fruits at a consistent preferred size",
+        "guidance": "UMN Extension recommends harvesting pickling cucumbers at a uniform size. Pick often and do not leave fruits to become oversized; continued harvest helps avoid the yield decline associated with very large fruits. No single pickle size is asserted because the intended product and cultivar vary.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+        "short": "Check pollination, bitter fruit and leaf symptoms",
+        "guidance": "Poor fruit set can follow inadequate pollination, including during cold, rainy or cloudy weather. Bitterness varies among varieties; angular yellow leaf spots with gray-purple growth underneath in humid conditions may indicate downy mildew, but other leaf disorders can look similar and require confirmation.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Male flowers normally precede female flowers and fruit set",
+        "guidance": "Male and female flowers occur separately on the same cucumber plant. Male flowers often appear first; the small ovary behind a female flower develops into a fruit after pollination. Early male-flower drop is a normal stage, not by itself a disorder.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1",
-          "usu-water-vegetables-wave2"
+          "umn-cucumbers-home-gardens-2026"
         ]
       }
     },

@@ -1360,52 +1360,72 @@
       "cucumis sativus",
       "marketmore type"
     ],
-    "summary": "Marketmore Cucumber is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "The catalog records Marketmore type within Cucumis sativus. The cultivation guidance is cucumber-level; cultivar-specific dimensions, performance and indoor-system advice are not established here.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Marketmore Cucumber identity is resolved at Cucumis sativus and Marketmore type type scope",
-        "guidance": "Marketmore Cucumber is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Marketmore type is recorded within Cucumis sativus",
+        "guidance": "The catalog records Marketmore type under Cucumis sativus. The home-garden sources used in this profile provide cucumber-level guidance; they do not establish cultivar-specific dimensions, disease resistance or hydroponic settings.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "johnnys-cucumber-wave1",
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Guide vines gently; avoid routine pruning assumptions",
+        "guidance": "UMN Extension notes that some cucumber varieties form long vines and may use a trellis. Guide a vining plant onto support without damaging stems; this crop guidance does not establish a Marketmore-specific pruning regimen or prove indoor-system suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Keep the root zone evenly moist in warm growing conditions",
+        "guidance": "Cucumbers are warm-weather crops. UMN Extension recommends moisture-retentive yet well-drained soil and thorough watering while keeping foliage dry; its Minnesota soil and weekly water guidance is regional outdoor context, not a hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Protect shallow vine roots during maintenance",
+        "guidance": "Cucumber roots include surface branches, and vines may root at their joints. Weed shallowly and avoid repeatedly shifting or lifting established vines; this reduces avoidable root and stem disturbance rather than prescribing a pruning schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick at the intended slicer size before fruits overmature",
+        "guidance": "UMN Extension advises harvesting cucumber slicers before fruits become overlarge, yellow-skinned, and full of large seeds. Pick often and handle the vine gently; leaving oversized fruit can reduce continued yield. This is species/crop guidance, not a Marketmore-specific size threshold.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Check pollination and moisture before diagnosing poor fruit",
+        "guidance": "Poor fruit set can follow inadequate pollination, including during cold, rainy, or cloudy weather. UMN Extension also notes that cucumber bitterness varies among varieties and can be more noticeable near the blossom end. In humid conditions, angular yellow leaf spots with gray-purple growth underneath can be a downy-mildew warning; symptoms can resemble other disorders, so do not treat this as a diagnosis or cultivar-resistance claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Early male flowers normally precede fruit-bearing female flowers",
+        "guidance": "Cucumber plants produce separate male and female flowers on the same plant. Male flowers commonly appear first; female flowers have a small ovary behind the bloom and need pollen transfer for fruit development. Early flower drop alone is therefore not proof of a plant problem.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ]
       }
     },
@@ -1492,52 +1512,72 @@
       "cucumis sativus",
       "bush type"
     ],
-    "summary": "Bush Cucumber is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Bush cucumber is a compact horticultural growth type within Cucumis sativus. Crop-level guidance supports its smaller-garden role, while exact dimensions and performance remain unspecified.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Bush Cucumber identity is resolved at Cucumis sativus and Bush type type scope",
-        "guidance": "Bush Cucumber is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Bush describes a growth type, not a named cultivar",
+        "guidance": "This identity represents bush-type cucumber within Cucumis sativus. UMN Extension distinguishes bush forms with short vines from long-vining types; no named cultivar or exact mature spread is established here.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "johnnys-cucumber-wave1",
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "The bush habit reduces vine sprawl; inspect before adding support",
+        "guidance": "UMN Extension describes bush cucumber types as having very short vines and fitting smaller gardens better than long-vining forms. That type-level distinction does not establish an exact footprint or eliminate the need to inspect the actual plant as fruit develops.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm conditions and well-drained, moisture-retentive soil",
+        "guidance": "Cucumbers grow best in warm weather. UMN Extension recommends soil that holds moisture but drains well and thorough watering that avoids wetting foliage; Minnesota calendars and field watering amounts are not universal instructions for other climates or indoor systems.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
+        ]
+      },
+      "care": {
+        "short": "Maintain moisture and avoid injuring surface roots",
+        "guidance": "Check the root zone regularly during active growth. Cucumber roots branch near the soil surface, so shallow hand-weeding is safer than deep cultivation close to the plant. This is outdoor crop care, not hydroponic guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Frequent picking supports a continuing harvest",
+        "guidance": "Harvest fruits at the size appropriate to their intended use and before they become overlarge and yellow. Pick regularly and handle the plant gently; leaving oversized cucumbers on the vine can lower yield. No fixed mature spread or harvest date is assigned to this bush type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Poor fruit set can be a pollination issue",
+        "guidance": "Cucumber flowers need pollen transfer for fruit set; cold, rainy, or cloudy conditions may reduce pollination. Bitterness can vary among cucumber varieties. These are general crop risks, not evidence that this bush type has a particular disease or resistance.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026",
+          "umn-cucurbit-downy-mildew-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Male blooms come first; female blooms carry a tiny ovary",
+        "guidance": "In cucumber, male flowers often appear before female flowers. The small swelling behind a female flower is the developing ovary; pollen transfer is needed for fruit development in the typical varieties described by UMN Extension. The first male flowers dropping is normal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cucumber-wave1"
+          "umn-cucumbers-home-gardens-2026"
         ]
       }
     },

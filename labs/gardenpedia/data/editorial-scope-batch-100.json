@@ -449,8 +449,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+            "en": "UMN Extension notes that some cucumber varieties form long vines and may use a trellis. Guide a vining plant onto support without damaging stems; this crop guidance does not establish a Marketmore-specific pruning regimen or prove indoor-system suitability.",
+            "es": "UMN Extension señala que algunas variedades de pepino forman enredaderas largas y pueden usar un enrejado. Guía la planta trepadora sin dañar los tallos; esta recomendación general no establece un régimen de poda propio de Marketmore ni demuestra su idoneidad para un sistema interior."
           }
         },
         "harvest": {
@@ -459,8 +459,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+            "en": "UMN Extension advises harvesting cucumber slicers before fruits become overlarge, yellow-skinned, and full of large seeds. Pick often and handle the vine gently; leaving oversized fruit can reduce continued yield. This is species/crop guidance, not a Marketmore-specific size threshold.",
+            "es": "UMN Extension recomienda cosechar los pepinos de ensalada antes de que sean demasiado grandes, amarillentos y tengan semillas grandes. Cosecha con frecuencia y manipula la enredadera con cuidado; dejar frutos demasiado grandes puede reducir la producción posterior. No se fija un tamaño propio de Marketmore."
           }
         },
         "problems": {
@@ -475,8 +475,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+            "en": "Cucumber plants produce separate male and female flowers on the same plant. Male flowers commonly appear first; female flowers have a small ovary behind the bloom and need pollen transfer for fruit development. Early flower drop alone is therefore not proof of a plant problem.",
+            "es": "La planta produce flores masculinas y femeninas por separado. Las masculinas suelen aparecer primero; detrás de las femeninas se ve un ovario pequeño que puede convertirse en fruto tras recibir polen. La caída inicial de flores masculinas, por sí sola, no indica un problema."
           }
         }
       }
@@ -496,8 +496,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+            "en": "UMN Extension describes bush cucumber types as having very short vines and fitting smaller gardens better than long-vining forms. That type-level distinction does not establish an exact footprint or eliminate the need to inspect the actual plant as fruit develops.",
+            "es": "UMN Extension describe los tipos de mata como plantas con guías muy cortas, más adecuadas para jardines pequeños que las formas largas. Esa diferencia de tipo no define una huella exacta ni elimina la necesidad de observar la planta conforme se desarrollan los frutos."
           }
         },
         "harvest": {
@@ -506,8 +506,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+            "en": "Harvest fruits at the size appropriate to their intended use and before they become overlarge and yellow. Pick regularly and handle the plant gently; leaving oversized cucumbers on the vine can lower yield. No fixed mature spread or harvest date is assigned to this bush type.",
+            "es": "Cosecha los frutos al tamaño adecuado para su uso y antes de que se vuelvan demasiado grandes y amarillos. Recolecta con regularidad y manipula la planta con suavidad; dejar pepinos sobredimensionados puede reducir la producción. No se asigna una fecha ni extensión exacta a este tipo de mata."
           }
         },
         "problems": {
@@ -522,8 +522,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+            "en": "In cucumber, male flowers often appear before female flowers. The small swelling behind a female flower is the developing ovary; pollen transfer is needed for fruit development in the typical varieties described by UMN Extension. The first male flowers dropping is normal.",
+            "es": "En el pepino, las flores masculinas suelen preceder a las femeninas. El pequeño engrosamiento detrás de la flor femenina es el ovario; las variedades típicas descritas por UMN Extension necesitan transferencia de polen para desarrollar el fruto. Es normal que caigan las primeras flores masculinas."
           }
         }
       }
@@ -2179,8 +2179,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "UMN Extension notes that summer-squash varieties may form long vines or compact bush forms. Do not apply a single training or pruning rule across both habits; the source does not identify the exact architecture of every yellow-squash cultivar.",
+            "es": "UMN Extension señala que algunas calabazas de verano forman enredaderas largas y otras crecen como matas compactas. No apliques una regla única de conducción o poda a ambos portes; la fuente no identifica la arquitectura exacta de cada cultivar amarillo."
           }
         },
         "harvest": {
@@ -2189,8 +2189,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+            "en": "Pick summer squash at the size you prefer, before seeds become large, skins hard and flesh fibrous or watery. Harvest frequently; leaving oversized fruits on the plant can reduce further yield. No cultivar-specific length or maturity day is assigned to this yellow-squash type.",
+            "es": "Cosecha la calabaza de verano al tamaño deseado, antes de que las semillas crezcan, la piel se endurezca y la pulpa se vuelva fibrosa o acuosa. Recolecta con frecuencia; dejar frutos demasiado grandes puede reducir la producción. No se asigna una longitud ni un día de madurez propios de este tipo amarillo."
           }
         },
         "problems": {
@@ -2205,8 +2205,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+            "en": "Summer squash produces separate male and female flowers on the same plant. Male flowers commonly appear first; a female flower has a small ovary at its base. Early male-flower drop is normal, while poor pollination can cause a young fruit to stop developing.",
+            "es": "La calabaza de verano produce flores masculinas y femeninas separadas en la misma planta. Las masculinas suelen aparecer primero; las femeninas tienen un pequeño ovario en la base. La caída inicial de flores masculinas es normal, mientras que la polinización deficiente puede detener el desarrollo de un fruto joven."
           }
         }
       }
@@ -2226,8 +2226,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "Cucumber vines can root at their joints, so avoid repeatedly lifting or disturbing an established vine while picking. A trellis can be used for vining types, but this general guidance does not establish that every pickling type needs support or pruning.",
+            "es": "Las enredaderas pueden producir raíces en sus nudos; evita levantarlas o moverlas repetidamente al recolectar. Se puede guiar un tipo trepador, pero esta orientación general no indica que todo pepino para encurtir necesite soporte o poda."
           }
         },
         "harvest": {
@@ -2236,8 +2236,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+            "en": "UMN Extension recommends harvesting pickling cucumbers at a uniform size. Pick often and do not leave fruits to become oversized; continued harvest helps avoid the yield decline associated with very large fruits. No single pickle size is asserted because the intended product and cultivar vary.",
+            "es": "UMN Extension recomienda cosechar los pepinos para encurtir con un tamaño uniforme. Recógelos a menudo y evita que se sobredimensionen; dejar frutos muy grandes puede reducir la producción posterior. No se afirma una longitud única porque depende del producto y del cultivar."
           }
         },
         "problems": {
@@ -2252,8 +2252,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+            "en": "Male and female flowers occur separately on the same cucumber plant. Male flowers often appear first; the small ovary behind a female flower develops into a fruit after pollination. Early male-flower drop is a normal stage, not by itself a disorder.",
+            "es": "Las flores masculinas y femeninas aparecen por separado en la misma planta. Las masculinas suelen salir primero; detrás de la flor femenina hay un ovario pequeño que, tras la polinización, puede desarrollarse como fruto. La caída inicial de flores masculinas es normal."
           }
         }
       }
@@ -4045,8 +4045,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "Cucumber vines can form roots at their joints. Harvest by handling fruits rather than pulling or relocating the established vine; any trellising or shaping should follow the observed growth habit, not an assumed gherkin-specific rule.",
+            "es": "Las enredaderas de pepino pueden echar raíces en sus nudos. Recoge los frutos sin tirar ni desplazar la planta establecida; el enrejado o la conducción deben responder al crecimiento observado, no a una regla específica de gherkin."
           }
         },
         "harvest": {
@@ -4055,8 +4055,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use firmness, color, size, and plant condition as harvest signals. Source calendars remain crop/type references rather than guarantees.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+            "en": "For pickling use, UMN Extension recommends picking cucumbers at a uniform preferred size and harvesting often. That guidance supports consistent picking, but the source does not establish a gherkin-specific length or a universal calendar for this catalog identity.",
+            "es": "Para encurtidos, UMN Extension recomienda recolectar pepinos al tamaño preferido de forma uniforme y hacerlo con frecuencia. La fuente respalda la regularidad, pero no fija una longitud de gherkin ni un calendario universal para esta identidad."
           }
         },
         "problems": {
@@ -4071,8 +4071,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Record first flowers, fruit set, and flower drop as separate observations. Do not apply leaf-herb care rules to fruiting crops.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+            "en": "Cucumber plants carry male and female flowers separately; male blooms usually appear first. Female flowers have an ovary at the base and need pollination to develop fruit, so the first flowers dropping can be normal.",
+            "es": "La planta de pepino tiene flores masculinas y femeninas por separado; las masculinas suelen aparecer primero. Las femeninas tienen un ovario en la base y necesitan polinización para desarrollar el fruto, así que la caída inicial de flores masculinas puede ser normal."
           }
         }
       }
@@ -4092,8 +4092,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+            "en": "Summer-squash types can have short bush growth or longer, spreading vines. Check the actual plant habit before deciding whether to guide it; the crop source does not say that every pattypan needs a trellis or pruning.",
+            "es": "Los tipos de calabaza de verano pueden crecer como matas cortas o formar enredaderas más largas. Observa el porte real antes de guiar la planta; la fuente no indica que todos los pattypan necesiten enrejado o poda."
           }
         },
         "harvest": {
@@ -4102,8 +4102,8 @@
             "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           },
           "action": {
-            "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
-            "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+            "en": "UMN Extension includes patty pan among summer squash and recommends harvesting while fruits are tender, before large seeds, hard skin and fibrous or watery flesh develop. It does not specify one pattypan diameter; use the desired culinary size and pick regularly.",
+            "es": "UMN Extension incluye patty pan entre las calabazas de verano y recomienda cosechar antes de que se formen semillas grandes, piel dura y pulpa fibrosa o acuosa. No especifica un diámetro único: elige el tamaño culinario deseado y recolecta con regularidad."
           }
         },
         "problems": {

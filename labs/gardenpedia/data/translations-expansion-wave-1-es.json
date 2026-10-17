@@ -278,52 +278,68 @@
     }
   },
   "cucumber-marketmore": {
-    "summary": "Identidad base de Wave 1 para Pepino Marketmore. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El catálogo registra el tipo Marketmore dentro de Cucumis sativus. La guía de cultivo corresponde al pepino en general; aquí no se establecen dimensiones, rendimiento ni manejo interior propios del cultivar.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "El tipo Marketmore se registra dentro de Cucumis sativus",
+        "guidance": "El catálogo registra el tipo Marketmore bajo Cucumis sativus. Las fuentes de huerto usadas en esta ficha ofrecen guía general para pepino; no establecen dimensiones, resistencia a enfermedades ni parámetros hidropónicos propios del cultivar."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Guía las enredaderas con cuidado; no presupongas una poda rutinaria",
+        "guidance": "UMN Extension señala que algunas variedades de pepino forman enredaderas largas y pueden usar un enrejado. Guía la planta trepadora sin dañar los tallos; esta recomendación general no establece un régimen de poda propio de Marketmore ni demuestra su idoneidad para un sistema interior."
+      },
+      "cultivation": {
+        "short": "Mantén la zona radicular uniformemente húmeda en condiciones cálidas",
+        "guidance": "El pepino es un cultivo de clima cálido. UMN Extension recomienda un suelo que retenga humedad pero drene bien y un riego profundo que mantenga seco el follaje; el calendario, el suelo y la cantidad semanal de agua de Minnesota son contexto regional exterior, no una receta hidropónica."
+      },
+      "care": {
+        "short": "Protege las raíces superficiales durante el mantenimiento",
+        "guidance": "El pepino forma raíces laterales cerca de la superficie, y la enredadera puede enraizar en sus nudos. Deshierba superficialmente y evita mover o levantar repetidamente la planta establecida; esto previene daños evitables, no prescribe un calendario de poda."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha los frutos de corte antes de que sobremaduren",
+        "guidance": "UMN Extension recomienda cosechar los pepinos de ensalada antes de que sean demasiado grandes, amarillentos y tengan semillas grandes. Cosecha con frecuencia y manipula la enredadera con cuidado; dejar frutos demasiado grandes puede reducir la producción posterior. No se fija un tamaño propio de Marketmore."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa polinización y humedad antes de diagnosticar frutos deficientes",
+        "guidance": "Una polinización insuficiente puede causar poco cuajado, especialmente con frío, lluvia o nubosidad. La amargura varía entre variedades y puede notarse más cerca del extremo floral. En condiciones húmedas, vigila manchas amarillas angulares y crecimiento gris violáceo bajo las hojas; son señales compatibles con mildiu velloso, no un diagnóstico definitivo ni una afirmación de resistencia del cultivar."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Las flores masculinas suelen aparecer antes que las femeninas",
+        "guidance": "La planta produce flores masculinas y femeninas por separado. Las masculinas suelen aparecer primero; detrás de las femeninas se ve un ovario pequeño que puede convertirse en fruto tras recibir polen. La caída inicial de flores masculinas, por sí sola, no indica un problema."
       }
     }
   },
   "bush-cucumber": {
-    "summary": "Identidad base de Wave 1 para Pepino de mata. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El pepino de mata es un tipo de crecimiento compacto dentro de Cucumis sativus. La guía general respalda su utilidad en jardines pequeños, pero no establece dimensiones ni rendimiento exactos.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Mata describe un tipo de crecimiento, no un cultivar con nombre",
+        "guidance": "Esta identidad representa el tipo de pepino de mata dentro de Cucumis sativus. UMN Extension distingue las formas de enredadera corta de las trepadoras; aquí no se establece un cultivar ni una extensión adulta exacta."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "El porte de mata limita la expansión de las guías; observa antes de añadir soporte",
+        "guidance": "UMN Extension describe los tipos de mata como plantas con guías muy cortas, más adecuadas para jardines pequeños que las formas largas. Esa diferencia de tipo no define una huella exacta ni elimina la necesidad de observar la planta conforme se desarrollan los frutos."
+      },
+      "cultivation": {
+        "short": "Condiciones cálidas y suelo húmedo pero bien drenado",
+        "guidance": "El pepino crece mejor con clima cálido. UMN Extension recomienda suelo que retenga humedad pero drene bien y riego profundo sin mojar el follaje; las fechas y cantidades para Minnesota no son instrucciones universales para otros climas o sistemas interiores."
+      },
+      "care": {
+        "short": "Conserva la humedad y evita lesionar las raíces superficiales",
+        "guidance": "Revisa la zona radicular durante el crecimiento activo. Como las raíces se ramifican cerca de la superficie, el deshierbe manual y superficial es más seguro que cultivar profundamente junto a la planta. Es cuidado exterior del cultivo, no una pauta hidropónica."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "La cosecha frecuente permite seguir recolectando",
+        "guidance": "Cosecha los frutos al tamaño adecuado para su uso y antes de que se vuelvan demasiado grandes y amarillos. Recolecta con regularidad y manipula la planta con suavidad; dejar pepinos sobredimensionados puede reducir la producción. No se asigna una fecha ni extensión exacta a este tipo de mata."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Un cuajado pobre puede deberse a la polinización",
+        "guidance": "Las flores necesitan transferencia de polen para formar frutos; el frío, la lluvia o la nubosidad pueden reducir la polinización. La amargura también varía entre pepinos. Son riesgos generales del cultivo, no evidencia de enfermedad o resistencia propia de este tipo de mata."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Primero salen flores masculinas; las femeninas llevan un ovario pequeño",
+        "guidance": "En el pepino, las flores masculinas suelen preceder a las femeninas. El pequeño engrosamiento detrás de la flor femenina es el ovario; las variedades típicas descritas por UMN Extension necesitan transferencia de polen para desarrollar el fruto. Es normal que caigan las primeras flores masculinas."
       }
     }
   },

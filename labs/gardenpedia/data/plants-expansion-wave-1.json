@@ -656,6 +656,20 @@
           "johnnys-tomato"
         ]
       },
+      "cultivation": {
+        "short": "Grow in warmth and full sun after frost risk has passed",
+        "guidance": "UMN Extension describes tomatoes as heat-loving, full-sun plants needing a long frost-free season. This is general outdoor tomato guidance; it does not establish a Roma-specific temperature, date, field spacing or indoor-light prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Keep soil moisture steady through fruit growth",
+        "guidance": "UMN Extension links fluctuating soil moisture during tomato fruit growth with blossom-end rot and advises watering the soil rather than wetting leaves. This applies at crop scope in garden soil; no Roma-specific watering volume or hydroponic reservoir rule is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
@@ -788,6 +802,20 @@
           "johnnys-tomato"
         ]
       },
+      "cultivation": {
+        "short": "Choose a warm, sunny outdoor position",
+        "guidance": "UMN Extension describes tomato as a heat-loving crop that needs full sun and a long frost-free season. The guidance is species/crop-level and regional; it gives no Beefsteak cultivar heat limit, indoor grow-light value or hydroponic compatibility claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Avoid large moisture swings as fruit enlarges",
+        "guidance": "UMN Extension reports that soil-moisture fluctuations during fruit growth can contribute to blossom-end rot. It also advises keeping water off foliage to reduce disease pressure. These are general garden recommendations, not a Beefsteak-specific irrigation schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
@@ -919,6 +947,20 @@
         "sourceIds": [
           "johnnys-tomato"
         ]
+      },
+      "cultivation": {
+        "short": "Tomatoes need warmth, full sun and a frost-free growing window",
+        "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. This is tomato-crop guidance in a Minnesota garden context, not a Yellow Pear-specific calendar or indoor-light setting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Water the root zone consistently and keep leaves dry",
+        "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and advises against overhead sprinkling because wet leaves are more disease-prone. Apply this as outdoor soil guidance; no Yellow Pear irrigation quantity or hydroponic rule is established.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",

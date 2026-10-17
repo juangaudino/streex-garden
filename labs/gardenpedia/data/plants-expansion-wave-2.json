@@ -1130,6 +1130,30 @@
           "johnnys-tomato-variety-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Give the established tomato warmth and full sun",
+        "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. These are outdoor crop-level conditions, not a Sun Gold-specific threshold, indoor-light target or hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Keep moisture even and direct irrigation to the soil",
+        "guidance": "UMN Extension says consistent soil moisture supports tomato fruit quality and that overhead sprinkling leaves foliage more disease-prone. This applies to garden-grown tomatoes generally; it does not establish a Sun Gold-specific water volume or reservoir interval.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+      },
+      "pruning": {
+        "short": "Manage structure without assuming a universal pruning rule",
+        "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-sun-gold-wave2",
+          "johnnys-tomato-variety-wave2"
+        ]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
@@ -1407,6 +1431,20 @@
           "johnnys-tomato-catalog-wave2",
           "johnnys-tomato-variety-wave2"
         ]
+      },
+      "cultivation": {
+        "short": "Use a warm, full-sun site for outdoor tomato growth",
+        "guidance": "UMN Extension describes tomatoes as heat-loving and requiring full sun and a long frost-free season. This is crop-level garden guidance; the cultivar's specific temperature tolerance and indoor or hydroponic requirements are not established by this source.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Keep soil moisture consistent as fruit develops",
+        "guidance": "UMN Extension links fluctuating soil moisture during fruit growth with blossom-end rot and recommends watering the soil rather than foliage. These are general tomato-crop practices, not a Celebrity-specific schedule or nutrient treatment.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",

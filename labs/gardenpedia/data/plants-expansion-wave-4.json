@@ -2071,6 +2071,20 @@
           "johnnys-tomato-catalog-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Tomatoes need warmth, full sun and a long frost-free season",
+        "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. This is species/crop-level outdoor guidance; no San Marzano-specific temperature threshold or indoor-light prescription is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Avoid moisture fluctuations while fruit is developing",
+        "guidance": "UMN Extension links fluctuating soil moisture during tomato fruit growth with blossom-end rot and advises against overhead sprinkling because wet foliage is more disease-prone. This is garden crop guidance, not a San Marzano-specific irrigation amount or hydroponic schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
@@ -2209,6 +2223,20 @@
           "johnnys-tomato-variety-wave2",
           "johnnys-tomato-catalog-wave2"
         ]
+      },
+      "cultivation": {
+        "short": "Give the established plant warmth and full sun",
+        "guidance": "UMN Extension describes tomatoes as heat-loving plants that need full sun and a long frost-free season. The reference is crop-level outdoor guidance and does not prove Cherry Bomb's individual heat tolerance, dimensions or hydroponic suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Water the soil consistently rather than wetting leaves",
+        "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and notes that wet leaves are more disease-prone. It does not establish a Cherry Bomb-specific amount or schedule, and this garden advice is not a hydroponic reservoir rule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",

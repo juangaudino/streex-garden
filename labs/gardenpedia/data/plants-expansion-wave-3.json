@@ -1368,6 +1368,20 @@
           "johnnys-tomato-variety-wave2"
         ]
       },
+      "cultivation": {
+        "short": "Provide warmth, full sun and a frost-free outdoor season",
+        "guidance": "UMN Extension describes tomatoes as warm-season, heat-loving plants requiring full sun and a long frost-free season. This is crop-level guidance and does not provide a Grape-type maturity date or indoor growing specification.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Water at the soil and keep moisture more even",
+        "guidance": "UMN Extension recommends consistent soil moisture and watering the soil rather than leaves. These are garden-soil recommendations for tomatoes generally; no Grape tomato irrigation volume or hydroponic reservoir behavior is established.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+      },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",
         "guidance": "Use support or shaping only when the actual plant architecture needs it; compact, determinate, and vining habits are not interchangeable.",
@@ -1506,6 +1520,20 @@
           "johnnys-black-cherry-wave3",
           "johnnys-tomato-variety-wave2"
         ]
+      },
+      "cultivation": {
+        "short": "Give tomato plants warmth and full sun",
+        "guidance": "UMN Extension describes tomatoes as heat-loving, full-sun plants needing a long frost-free season. This is crop-level outdoor guidance, not a Black Cherry-specific temperature, calendar or hydroponic setting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Maintain even soil moisture and avoid wet foliage",
+        "guidance": "UMN Extension links steady soil moisture with tomato fruit quality and advises against overhead watering because wet leaves are more disease-prone. Cherry fruit type does not establish immunity or a cultivar-specific watering amount; this remains garden-crop guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
         "short": "Manage structure without assuming a universal pruning rule",

@@ -119,6 +119,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Cultiva con calor y sol pleno después del riesgo de heladas",
+        "guidance": "UMN Extension describe el tomate como planta amante del calor, de sol pleno y con una temporada larga sin heladas. Es guía general para tomate al aire libre; no establece temperatura, fecha, distancia de campo ni iluminación interior específica para Roma."
+      },
+      "care": {
+        "short": "Mantén estable la humedad del suelo mientras crece el fruto",
+        "guidance": "UMN Extension relaciona las fluctuaciones de humedad del suelo durante el crecimiento del tomate con la pudrición apical y aconseja regar el suelo en vez de mojar las hojas. Es orientación general de jardín, no un volumen específico para Roma ni una regla de depósito hidropónico."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
@@ -144,6 +152,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Elige un sitio cálido y soleado para cultivar al aire libre",
+        "guidance": "UMN Extension describe el tomate como cultivo amante del calor que requiere sol pleno y una temporada larga sin heladas. La guía es de especie/cultivo y regional; no fija tolerancia térmica de Beefsteak, luz artificial ni aptitud hidropónica."
+      },
+      "care": {
+        "short": "Evita grandes cambios de humedad mientras engorda el fruto",
+        "guidance": "UMN Extension informa que las fluctuaciones de humedad del suelo durante el desarrollo del fruto pueden contribuir a la pudrición apical y recomienda no mojar el follaje. Son prácticas generales de jardín, no un programa de riego específico para Beefsteak."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
@@ -168,6 +184,14 @@
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "cultivation": {
+        "short": "Los tomates necesitan calor, sol pleno y una temporada sin heladas",
+        "guidance": "UMN Extension describe el tomate como planta amante del calor que requiere sol pleno y una temporada larga sin heladas. Es guía de cultivo en el contexto de Minnesota, no un calendario específico de Yellow Pear ni un ajuste de luz interior."
+      },
+      "care": {
+        "short": "Riega las raíces con regularidad y mantén secas las hojas",
+        "guidance": "UMN Extension recomienda humedad constante para la calidad del fruto y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. Es guía general de suelo exterior; no establece una cantidad para Yellow Pear ni una regla hidropónica."
       },
       "pruning": {
         "short": "Manejo según porte y observación",

@@ -353,6 +353,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Los tomates necesitan calor, sol pleno y una temporada larga sin heladas",
+        "guidance": "UMN Extension describe los tomates como plantas amantes del calor que requieren sol pleno y una temporada larga sin heladas. Es guía exterior para la especie/cultivo; no se infiere un umbral térmico de San Marzano ni una luz artificial específica."
+      },
+      "care": {
+        "short": "Evita fluctuaciones de humedad durante el desarrollo del fruto",
+        "guidance": "UMN Extension relaciona los cambios de humedad del suelo durante el crecimiento del tomate con la pudrición apical y desaconseja mojar el follaje desde arriba. Es orientación general de jardín, no una cantidad de riego para San Marzano ni un calendario hidropónico."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
@@ -377,6 +385,14 @@
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "cultivation": {
+        "short": "Proporciona calor y sol pleno a la planta establecida",
+        "guidance": "UMN Extension describe el tomate como planta amante del calor que necesita sol pleno y una temporada larga sin heladas. La referencia es del cultivo al aire libre y no demuestra tolerancia térmica, dimensiones ni aptitud hidropónica de Cherry Bomb."
+      },
+      "care": {
+        "short": "Riega el suelo de forma constante en vez de mojar las hojas",
+        "guidance": "UMN Extension recomienda humedad estable para la calidad del fruto y señala que las hojas mojadas son más propensas a enfermedades. No establece una cantidad ni frecuencia para Cherry Bomb; esta guía de jardín tampoco es una regla para depósitos hidropónicos."
       },
       "pruning": {
         "short": "Manejo según porte y observación",

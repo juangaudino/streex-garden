@@ -3529,6 +3529,49 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Grow in warmth and full sun after frost risk has passed",
+          "guidance": "UMN Extension describes tomatoes as heat-loving, full-sun plants needing a long frost-free season. This is general outdoor tomato guidance; it does not establish a Roma-specific temperature, date, field spacing or indoor-light prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultiva con calor y sol pleno después del riesgo de heladas",
+          "guidance": "UMN Extension describe el tomate como planta amante del calor, de sol pleno y con una temporada larga sin heladas. Es guía general para tomate al aire libre; no establece temperatura, fecha, distancia de campo ni iluminación interior específica para Roma.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Keep soil moisture steady through fruit growth",
+          "guidance": "UMN Extension links fluctuating soil moisture during tomato fruit growth with blossom-end rot and advises watering the soil rather than wetting leaves. This applies at crop scope in garden soil; no Roma-specific watering volume or hydroponic reservoir rule is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén estable la humedad del suelo mientras crece el fruto",
+          "guidance": "UMN Extension relaciona las fluctuaciones de humedad del suelo durante el crecimiento del tomate con la pudrición apical y aconseja regar el suelo en vez de mojar las hojas. Es orientación general de jardín, no un volumen específico para Roma ni una regla de depósito hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -3646,6 +3689,49 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Choose a warm, sunny outdoor position",
+          "guidance": "UMN Extension describes tomato as a heat-loving crop that needs full sun and a long frost-free season. The guidance is species/crop-level and regional; it gives no Beefsteak cultivar heat limit, indoor grow-light value or hydroponic compatibility claim.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Elige un sitio cálido y soleado para cultivar al aire libre",
+          "guidance": "UMN Extension describe el tomate como cultivo amante del calor que requiere sol pleno y una temporada larga sin heladas. La guía es de especie/cultivo y regional; no fija tolerancia térmica de Beefsteak, luz artificial ni aptitud hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Avoid large moisture swings as fruit enlarges",
+          "guidance": "UMN Extension reports that soil-moisture fluctuations during fruit growth can contribute to blossom-end rot. It also advises keeping water off foliage to reduce disease pressure. These are general garden recommendations, not a Beefsteak-specific irrigation schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Evita grandes cambios de humedad mientras engorda el fruto",
+          "guidance": "UMN Extension informa que las fluctuaciones de humedad del suelo durante el desarrollo del fruto pueden contribuir a la pudrición apical y recomienda no mojar el follaje. Son prácticas generales de jardín, no un programa de riego específico para Beefsteak.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -3758,6 +3844,49 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Tomatoes need warmth, full sun and a frost-free growing window",
+          "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. This is tomato-crop guidance in a Minnesota garden context, not a Yellow Pear-specific calendar or indoor-light setting.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los tomates necesitan calor, sol pleno y una temporada sin heladas",
+          "guidance": "UMN Extension describe el tomate como planta amante del calor que requiere sol pleno y una temporada larga sin heladas. Es guía de cultivo en el contexto de Minnesota, no un calendario específico de Yellow Pear ni un ajuste de luz interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Water the root zone consistently and keep leaves dry",
+          "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and advises against overhead sprinkling because wet leaves are more disease-prone. Apply this as outdoor soil guidance; no Yellow Pear irrigation quantity or hydroponic rule is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega las raíces con regularidad y mantén secas las hojas",
+          "guidance": "UMN Extension recomienda humedad constante para la calidad del fruto y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. Es guía general de suelo exterior; no establece una cantidad para Yellow Pear ni una regla hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -7095,6 +7224,49 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Give the established tomato warmth and full sun",
+          "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. These are outdoor crop-level conditions, not a Sun Gold-specific threshold, indoor-light target or hydroponic prescription.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Da al tomate establecido calor y sol pleno",
+          "guidance": "UMN Extension describe el tomate como planta amante del calor que requiere sol pleno y una temporada larga sin heladas. Son condiciones de cultivo al aire libre, no un umbral específico de Sun Gold, objetivo de luz interior ni receta hidropónica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Keep moisture even and direct irrigation to the soil",
+          "guidance": "UMN Extension says consistent soil moisture supports tomato fruit quality and that overhead sprinkling leaves foliage more disease-prone. This applies to garden-grown tomatoes generally; it does not establish a Sun Gold-specific water volume or reservoir interval.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén la humedad uniforme y dirige el riego al suelo",
+          "guidance": "UMN Extension señala que la humedad constante favorece la calidad del fruto y que el riego por aspersión deja el follaje más propenso a enfermedades. Aplica esto a tomates de jardín; no establece un volumen específico ni un intervalo de depósito para Sun Gold.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -7334,6 +7506,49 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Use a warm, full-sun site for outdoor tomato growth",
+          "guidance": "UMN Extension describes tomatoes as heat-loving and requiring full sun and a long frost-free season. This is crop-level garden guidance; the cultivar's specific temperature tolerance and indoor or hydroponic requirements are not established by this source.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Usa un sitio cálido y de sol pleno para el cultivo exterior",
+          "guidance": "UMN Extension describe el tomate como amante del calor y del sol pleno, con una temporada larga sin heladas. Es guía general del cultivo; esta fuente no establece tolerancia térmica, requisitos interiores o hidroponía específicos de Celebrity.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Keep soil moisture consistent as fruit develops",
+          "guidance": "UMN Extension links fluctuating soil moisture during fruit growth with blossom-end rot and recommends watering the soil rather than foliage. These are general tomato-crop practices, not a Celebrity-specific schedule or nutrient treatment.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén constante la humedad del suelo al desarrollarse el fruto",
+          "guidance": "UMN Extension relaciona las fluctuaciones de humedad durante el crecimiento del fruto con la pudrición apical y recomienda regar el suelo en lugar del follaje. Son prácticas generales para tomate, no un calendario o tratamiento nutritivo específico de Celebrity.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -11234,6 +11449,49 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Provide warmth, full sun and a frost-free outdoor season",
+          "guidance": "UMN Extension describes tomatoes as warm-season, heat-loving plants requiring full sun and a long frost-free season. This is crop-level guidance and does not provide a Grape-type maturity date or indoor growing specification.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Proporciona calor, sol pleno y una temporada exterior sin heladas",
+          "guidance": "UMN Extension describe el tomate como cultivo cálido que necesita sol pleno y una temporada larga sin heladas. Es guía general del cultivo; no aporta una fecha de madurez para el tipo Grape ni una especificación de interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Water at the soil and keep moisture more even",
+          "guidance": "UMN Extension recommends consistent soil moisture and watering the soil rather than leaves. These are garden-soil recommendations for tomatoes generally; no Grape tomato irrigation volume or hydroponic reservoir behavior is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega el suelo y procura una humedad más uniforme",
+          "guidance": "UMN Extension recomienda mantener constante la humedad del suelo y regar la base en vez de las hojas. Estas recomendaciones son para tomates de jardín; no fijan volumen para Grape ni comportamiento de un depósito hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -11351,6 +11609,49 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Give tomato plants warmth and full sun",
+          "guidance": "UMN Extension describes tomatoes as heat-loving, full-sun plants needing a long frost-free season. This is crop-level outdoor guidance, not a Black Cherry-specific temperature, calendar or hydroponic setting.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Da calor y sol pleno a las plantas de tomate",
+          "guidance": "UMN Extension describe los tomates como plantas amantes del calor y del sol pleno que necesitan una temporada larga sin heladas. Es guía exterior a nivel del cultivo, no una temperatura, fecha o ajuste hidropónico de Black Cherry.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Maintain even soil moisture and avoid wet foliage",
+          "guidance": "UMN Extension links steady soil moisture with tomato fruit quality and advises against overhead watering because wet leaves are more disease-prone. Cherry fruit type does not establish immunity or a cultivar-specific watering amount; this remains garden-crop guidance.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén uniforme la humedad y evita mojar el follaje",
+          "guidance": "UMN Extension relaciona la humedad constante con mejor calidad del fruto y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. El tipo cherry no implica inmunidad ni un volumen de agua específico para este cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -16788,6 +17089,49 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Tomatoes need warmth, full sun and a long frost-free season",
+          "guidance": "UMN Extension describes tomatoes as heat-loving plants that require full sun and a long frost-free season. This is species/crop-level outdoor guidance; no San Marzano-specific temperature threshold or indoor-light prescription is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los tomates necesitan calor, sol pleno y una temporada larga sin heladas",
+          "guidance": "UMN Extension describe los tomates como plantas amantes del calor que requieren sol pleno y una temporada larga sin heladas. Es guía exterior para la especie/cultivo; no se infiere un umbral térmico de San Marzano ni una luz artificial específica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Avoid moisture fluctuations while fruit is developing",
+          "guidance": "UMN Extension links fluctuating soil moisture during tomato fruit growth with blossom-end rot and advises against overhead sprinkling because wet foliage is more disease-prone. This is garden crop guidance, not a San Marzano-specific irrigation amount or hydroponic schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Evita fluctuaciones de humedad durante el desarrollo del fruto",
+          "guidance": "UMN Extension relaciona los cambios de humedad del suelo durante el crecimiento del tomate con la pudrición apical y desaconseja mojar el follaje desde arriba. Es orientación general de jardín, no una cantidad de riego para San Marzano ni un calendario hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -16905,6 +17249,49 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Identidad y alcance",
           "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Give the established plant warmth and full sun",
+          "guidance": "UMN Extension describes tomatoes as heat-loving plants that need full sun and a long frost-free season. The reference is crop-level outdoor guidance and does not prove Cherry Bomb's individual heat tolerance, dimensions or hydroponic suitability.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Proporciona calor y sol pleno a la planta establecida",
+          "guidance": "UMN Extension describe el tomate como planta amante del calor que necesita sol pleno y una temporada larga sin heladas. La referencia es del cultivo al aire libre y no demuestra tolerancia térmica, dimensiones ni aptitud hidropónica de Cherry Bomb.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-tomatoes-home-gardens-2024",
+          "umn-tomato-leaf-spots-2024"
+        ],
+        "en": {
+          "short": "Water the soil consistently rather than wetting leaves",
+          "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and notes that wet leaves are more disease-prone. It does not establish a Cherry Bomb-specific amount or schedule, and this garden advice is not a hydroponic reservoir rule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Riega el suelo de forma constante en vez de mojar las hojas",
+          "guidance": "UMN Extension recomienda humedad estable para la calidad del fruto y señala que las hojas mojadas son más propensas a enfermedades. No establece una cantidad ni frecuencia para Cherry Bomb; esta guía de jardín tampoco es una regla para depósitos hidropónicos.",
           "items": [],
           "avoid": "",
           "context": ""

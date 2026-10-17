@@ -236,6 +236,14 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
+      "cultivation": {
+        "short": "Proporciona calor, sol pleno y una temporada exterior sin heladas",
+        "guidance": "UMN Extension describe el tomate como cultivo cálido que necesita sol pleno y una temporada larga sin heladas. Es guía general del cultivo; no aporta una fecha de madurez para el tipo Grape ni una especificación de interior."
+      },
+      "care": {
+        "short": "Riega el suelo y procura una humedad más uniforme",
+        "guidance": "UMN Extension recomienda mantener constante la humedad del suelo y regar la base en vez de las hojas. Estas recomendaciones son para tomates de jardín; no fijan volumen para Grape ni comportamiento de un depósito hidropónico."
+      },
       "pruning": {
         "short": "Manejo según porte y observación",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
@@ -260,6 +268,14 @@
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "cultivation": {
+        "short": "Da calor y sol pleno a las plantas de tomate",
+        "guidance": "UMN Extension describe los tomates como plantas amantes del calor y del sol pleno que necesitan una temporada larga sin heladas. Es guía exterior a nivel del cultivo, no una temperatura, fecha o ajuste hidropónico de Black Cherry."
+      },
+      "care": {
+        "short": "Mantén uniforme la humedad y evita mojar el follaje",
+        "guidance": "UMN Extension relaciona la humedad constante con mejor calidad del fruto y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. El tipo cherry no implica inmunidad ni un volumen de agua específico para este cultivar."
       },
       "pruning": {
         "short": "Manejo según porte y observación",

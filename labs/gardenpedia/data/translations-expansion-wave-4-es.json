@@ -1,51 +1,59 @@
 {
   "red-sail-lettuce": {
-    "summary": "Identidad base de Wave 4 para Lechuga Red Sails. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Red Sails es una variedad nombrada de lechuga de hoja suelta, reconocida por All-America Selections por sus hojas bronce rojizas y rizadas, de valor comestible y ornamental. Las fechas del proveedor son estimaciones, no garantías.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Variedad nombrada de Lactuca sativa, de hoja suelta",
+        "guidance": "All-America Selections identifica Red Sails como lechuga de hoja suelta y ganadora de su premio de hortalizas comestibles de 1985. Describe hojas bronce rojizas, rizadas y savoyadas; no establece una calificación moderna de resistencia a enfermedades ni un rendimiento garantizado en todo clima."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "growth": {
+        "short": "Hojas sueltas rizadas, bronce rojizas; comestible y ornamental",
+        "guidance": "AAS describe Red Sails como lechuga de hoja rizada que también puede usarse como borde ornamental. Johnny's la ofrece para cosecha baby y de tamaño completo. Son descripciones de la variedad/producto, no indican que forme una cabeza romana compacta."
+      },
+      "cultivation": {
+        "short": "Lechuga de estación fresca; mantén estable la humedad de raíces",
+        "guidance": "UMN Extension describe la lechuga como cultivo de estación fresca y raíces poco profundas. Mantén la humedad razonablemente uniforme: un periodo seco seguido de riego y crecimiento rápido puede asociarse con tipburn o quemadura de bordes. Las fechas y distancias exteriores de UMN son regionales, no instrucciones de luz artificial, nutrientes ni separación entre pods."
+      },
+      "care": {
+        "short": "Elige cosecha baby o completa; el rebrote no está garantizado",
+        "guidance": "Johnny's describe cortar las hojas baby por encima del punto de crecimiento y retirar restos para favorecer la calidad del rebrote; las instrucciones de planta completa son distintas. Considera el rebrote una posibilidad, no una promesa uniforme. Estas fuentes no establecen una regla de poda o aclareo exclusiva de Red Sails."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "El proveedor estima unos 30 días para baby y 55 para tamaño completo",
+        "guidance": "Johnny's indica aproximadamente 30 días para hojas baby y 55 para tamaño completo. Son estimaciones del proveedor, no fechas garantizadas. Para baby, recomienda cortar las hojas unos 2.5 cm por encima del punto de crecimiento cuando midan aproximadamente 7.5–10 cm; para tamaño completo, indica cortar la planta en la base. Elige la forma de cosecha antes de interpretar la madurez."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "El calor puede provocar espigado, amargor y fin de la cosecha de hojas",
+        "guidance": "UMN indica que las temperaturas altas y los días largos pueden provocar espigado en lechuga; las hojas pueden amargarse y termina el crecimiento foliar normal. Si los bordes se oscurecen tras sequía y reanudación del riego, considera tipburn relacionado con la humedad antes de asumir enfermedad o deficiencia. Estas fuentes no establecen tolerancia al calor ni resistencia a enfermedades específicas de Red Sails."
       }
     }
   },
   "parris-island-romaine": {
-    "summary": "Identidad base de Wave 4 para Lechuga romana Parris Island. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Parris Island es una variedad romana de polinización abierta para cosecha baby y de tamaño completo. Johnny's describe hojas ovaladas verde medio y ofrece estimaciones distintas para cada forma de cosecha.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Variedad romana nombrada y de polinización abierta de Lactuca sativa",
+        "guidance": "Johnny's identifica Parris Island como Lactuca sativa, anual y de polinización abierta. Su página es una ficha de producto de un proveedor de semillas: respalda los rasgos e instrucciones que atribuye a esta variedad, no todas las características de la romana."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "growth": {
+        "short": "Romana erguida con hojas ovaladas verde medio",
+        "guidance": "Johnny's describe hojas ovaladas verde medio y porte erguido, y presenta Parris Island como una romana verde estándar para hojas baby. Su ficha estima unos 29 días para baby y 56 para tamaño completo; son estimaciones del proveedor, no dimensiones garantizadas de cabeza ni tiempos para interior."
+      },
+      "cultivation": {
+        "short": "Romana de estación fresca; la separación depende de la cosecha",
+        "guidance": "Johnny's recomienda condiciones frescas y da separaciones de campo distintas para cabezas romanas y filas de hojas baby. Esas distancias de suelo no son conteos de pods en Garden. UMN señala que la lechuga tiene raíces poco profundas y es sensible a calor y cambios de humedad en su contexto regional; adapta el calendario y no infieras parámetros hidropónicos de él."
+      },
+      "care": {
+        "short": "La siembra escalonada puede distribuir la cosecha",
+        "guidance": "Johnny's sugiere sembrar cada 2–3 semanas para un suministro continuo en su contexto de producción. En casa, considéralo una opción, no un ciclo obligatorio; aclara o separa según se busquen cabezas o hojas baby y no conviertas distancias de campo en posiciones del sistema."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas baby o una cabeza romana",
+        "guidance": "Johnny's estima aproximadamente 29 días para hojas baby y 56 para plantas de tamaño completo. Para baby recomienda cortar a unos 2.5 cm sobre el punto de crecimiento cuando las hojas midan aproximadamente 7.5–10 cm; para una cabeza indica cortar en la base. Son estimaciones e instrucciones del proveedor: las condiciones locales cambian el tiempo y ambas etapas no son intercambiables."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Espigado y tipburn son señales útiles",
+        "guidance": "UMN Extension describe el calor y los días largos como desencadenantes de espigado en lechuga; el espigado termina la cosecha foliar normal y puede amargar las hojas. Los bordes marrones tras sequía y reanudación del riego pueden indicar tipburn asociado al crecimiento rápido. Ninguna señal demuestra por sí sola enfermedad o deficiencia; estas fuentes no establecen resistencia específica de Parris Island."
       }
     }
   },

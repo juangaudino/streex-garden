@@ -398,32 +398,38 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "AAS award description and supplier record are specific to Red Sails; neither establishes a current disease-resistance rating.",
+            "es": "La descripción del premio AAS y la ficha del proveedor son específicas de Red Sails; ninguna establece una calificación actual de resistencia a enfermedades."
           }
         },
-        "pruning": {
+        "growth": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Looseleaf habit and bronze-red crinkled foliage are variety-specific descriptions, not romaine traits.",
+            "es": "El porte de hoja suelta y el follaje bronce rojizo rizado son descripciones de la variedad, no rasgos de la romana."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Shallow roots, moisture and heat/bolting guidance come from UMN's general lettuce guidance, not Red Sails trials.",
+            "es": "Las raíces poco profundas y la guía de humedad y calor/espigado proceden de la guía general de lechuga de UMN, no de ensayos de Red Sails."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Cutting guidance is supplier-specific; repeat regrowth is not guaranteed.",
+            "es": "La guía de corte es específica del proveedor; no se garantiza el rebrote repetido."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Baby/full-size dates and technique are supplier estimates/instructions, not local guarantees.",
+            "es": "Las fechas y técnicas baby/completa son estimaciones e instrucciones del proveedor, no garantías locales."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Bolting and tipburn are crop-level lettuce guidance; no Red Sails-specific tolerance or resistance claim is made.",
+            "es": "El espigado y el tipburn son guía general del cultivo de lechuga; no se afirma tolerancia o resistencia específica de Red Sails."
           }
         }
       }
@@ -433,32 +439,38 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Named variety, annual/open-pollinated status and type are from Johnny's product documentation.",
+            "es": "La variedad nombrada, su condición anual/de polinización abierta y el tipo proceden de la documentación de producto de Johnny's."
           }
         },
-        "pruning": {
+        "growth": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Leaf color/shape and maturity estimates are specific to Johnny's Parris Island listing.",
+            "es": "El color/forma de hoja y las estimaciones de madurez son específicas de la ficha Parris Island de Johnny's."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Field distances are production guidance and are explicitly not converted to Garden pod spacing; UMN context is crop-level.",
+            "es": "Las distancias de campo son guía de producción y no se convierten en separación de pods de Garden; el contexto UMN es general del cultivo."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Succession sowing is presented as an optional home adaptation of the supplier's production suggestion.",
+            "es": "La siembra escalonada se presenta como adaptación doméstica opcional de la sugerencia productiva del proveedor."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Baby/full-size dates and harvest methods are supplier estimates/instructions, not guaranteed local timing.",
+            "es": "Las fechas y formas de cosecha baby/completa son estimaciones e instrucciones del proveedor, no tiempos locales garantizados."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Bolting/tipburn guidance is general lettuce evidence; no Parris Island resistance profile is established.",
+            "es": "La guía sobre espigado/tipburn es evidencia general de lechuga; no se establece un perfil de resistencia de Parris Island."
           }
         }
       }

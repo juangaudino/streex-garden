@@ -16310,8 +16310,8 @@ export const gardenPlantProfileCatalog = {
   },
   "red-sail-lettuce": {
     "summary": {
-      "en": "Red Sails Lettuce is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Lechuga Red Sails. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Red Sails is a named looseleaf lettuce variety recognized by All-America Selections for its crinkled bronze-red leaves and ornamental as well as edible value. Supplier harvest dates are estimates, not guarantees.",
+      "es": "Red Sails es una variedad nombrada de lechuga de hoja suelta, reconocida por All-America Selections por sus hojas bronce rojizas y rizadas, de valor comestible y ornamental. Las fechas del proveedor son estimaciones, no garantías."
     },
     "metrics": {
       "en": [],
@@ -16320,65 +16320,106 @@ export const gardenPlantProfileCatalog = {
     "sections": {
       "identity": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "aas-red-sails-lettuce",
+          "johnnys-red-sails-lettuce-500"
         ],
         "en": {
-          "short": "Red Sails Lettuce is resolved at Lactuca sativa and Red Sails type type scope",
-          "guidance": "Red Sails Lettuce is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Named looseleaf variety of Lactuca sativa",
+          "guidance": "All-America Selections identifies Red Sails as looseleaf lettuce and its 1985 edible-vegetable winner. The award profile describes savoyed, crinkled bronze-red leaves; it does not establish a modern disease-resistance rating or guaranteed performance in every climate.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Variedad nombrada de Lactuca sativa, de hoja suelta",
+          "guidance": "All-America Selections identifica Red Sails como lechuga de hoja suelta y ganadora de su premio de hortalizas comestibles de 1985. Describe hojas bronce rojizas, rizadas y savoyadas; no establece una calificación moderna de resistencia a enfermedades ni un rendimiento garantizado en todo clima.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "aas-red-sails-lettuce",
+          "johnnys-red-sails-lettuce-500"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Crinkled, bronze-red loose leaves; ornamental and edible",
+          "guidance": "AAS describes Red Sails as a savoyed, crinkled leaf lettuce that can also be used as decorative edging. Johnny's lists it for baby-leaf and full-size harvest. These are variety/product descriptions, not a claim that it forms a tight romaine head.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Hojas sueltas rizadas, bronce rojizas; comestible y ornamental",
+          "guidance": "AAS describe Red Sails como lechuga de hoja rizada que también puede usarse como borde ornamental. Johnny's la ofrece para cosecha baby y de tamaño completo. Son descripciones de la variedad/producto, no indican que forme una cabeza romana compacta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Cool-season lettuce; keep root-zone moisture even",
+          "guidance": "UMN Extension describes lettuce as a cool-season crop with shallow roots. Keep moisture reasonably even: a dry spell followed by renewed water and rapid growth can be associated with tipburn. UMN's outdoor calendar and field spacing are regional guidance, not indoor lamp, nutrient, or pod-spacing prescriptions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Lechuga de estación fresca; mantén estable la humedad de raíces",
+          "guidance": "UMN Extension describe la lechuga como cultivo de estación fresca y raíces poco profundas. Mantén la humedad razonablemente uniforme: un periodo seco seguido de riego y crecimiento rápido puede asociarse con tipburn o quemadura de bordes. Las fechas y distancias exteriores de UMN son regionales, no instrucciones de luz artificial, nutrientes ni separación entre pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-red-sails-lettuce-500"
+        ],
+        "en": {
+          "short": "Choose baby-leaf or full-size harvest; regrowth is not guaranteed",
+          "guidance": "Johnny's describes baby-leaf harvest by cutting above the growing point and removing harvest debris to support regrowth quality; its full-size instructions are distinct. Treat repeat harvest as a possible method, not a promise that every cut plant regrows uniformly. No pruning or thinning rule unique to Red Sails is established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Elige cosecha baby o completa; el rebrote no está garantizado",
+          "guidance": "Johnny's describe cortar las hojas baby por encima del punto de crecimiento y retirar restos para favorecer la calidad del rebrote; las instrucciones de planta completa son distintas. Considera el rebrote una posibilidad, no una promesa uniforme. Estas fuentes no establecen una regla de poda o aclareo exclusiva de Red Sails.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "johnnys-red-sails-lettuce-500"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Supplier estimates about 30 days for baby leaf, 55 for full size",
+          "guidance": "Johnny's lists approximately 30 days to baby leaf and 55 days to full size. These are supplier estimates, not guaranteed dates. Its baby-leaf guidance is to cut leaves about 1 inch above the growing point when roughly 3–4 inches long; full-size instructions describe cutting the plant at the base. Choose the harvest form before interpreting maturity.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "El proveedor estima unos 30 días para baby y 55 para tamaño completo",
+          "guidance": "Johnny's indica aproximadamente 30 días para hojas baby y 55 para tamaño completo. Son estimaciones del proveedor, no fechas garantizadas. Para baby, recomienda cortar las hojas unos 2.5 cm por encima del punto de crecimiento cuando midan aproximadamente 7.5–10 cm; para tamaño completo, indica cortar la planta en la base. Elige la forma de cosecha antes de interpretar la madurez.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -16386,43 +16427,20 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "umn-lettuce-home-gardens-2024"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Heat can trigger bolting, bitterness, and the end of leaf harvest",
+          "guidance": "UMN reports that high temperatures and long days can trigger bolting in lettuce; leaves may become bitter and normal leafy growth stops. If margins brown after a dry spell and renewed growth, consider moisture-related tipburn before assuming disease or nutrient deficiency. Red Sails-specific heat tolerance and disease resistance are not established by these sources.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "thinning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
-        ],
-        "en": {
-          "short": "Thin or separate according to the intended harvest form",
-          "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Ralea según la forma de cosecha",
-          "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden.",
+          "short": "El calor puede provocar espigado, amargor y fin de la cosecha de hojas",
+          "guidance": "UMN indica que las temperaturas altas y los días largos pueden provocar espigado en lechuga; las hojas pueden amargarse y termina el crecimiento foliar normal. Si los bordes se oscurecen tras sequía y reanudación del riego, considera tipburn relacionado con la humedad antes de asumir enfermedad o deficiencia. Estas fuentes no establecen tolerancia al calor ni resistencia a enfermedades específicas de Red Sails.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -16432,8 +16450,8 @@ export const gardenPlantProfileCatalog = {
   },
   "parris-island-romaine": {
     "summary": {
-      "en": "Parris Island Romaine is a Wave 4 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
-      "es": "Identidad base de Wave 4 para Lechuga romana Parris Island. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema."
+      "en": "Parris Island is an open-pollinated romaine variety used for baby leaf and full-size harvest. Johnny's describes upright, medium-green oval leaves and gives separate supplier estimates for baby-leaf and full-size harvest.",
+      "es": "Parris Island es una variedad romana de polinización abierta para cosecha baby y de tamaño completo. Johnny's describe hojas ovaladas verde medio y ofrece estimaciones distintas para cada forma de cosecha."
     },
     "metrics": {
       "en": [],
@@ -16442,65 +16460,105 @@ export const gardenPlantProfileCatalog = {
     "sections": {
       "identity": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "johnnys-parris-island-lettuce-500"
         ],
         "en": {
-          "short": "Parris Island Romaine is resolved at Lactuca sativa and Parris Island type type scope",
-          "guidance": "Parris Island Romaine is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Named open-pollinated romaine variety of Lactuca sativa",
+          "guidance": "Johnny's identifies Parris Island as Lactuca sativa, an annual, open-pollinated romaine variety. The page is a seed supplier's product record; it supports this variety's stated traits and instructions, not universal romaine characteristics.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Identidad y alcance",
-          "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar.",
+          "short": "Variedad romana nombrada y de polinización abierta de Lactuca sativa",
+          "guidance": "Johnny's identifica Parris Island como Lactuca sativa, anual y de polinización abierta. Su página es una ficha de producto de un proveedor de semillas: respalda los rasgos e instrucciones que atribuye a esta variedad, no todas las características de la romana.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
-      "pruning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "johnnys-parris-island-lettuce-500"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
-          "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
+          "short": "Upright romaine with medium-green oval leaves",
+          "guidance": "Johnny's describes an upright, medium-green oval leaf and positions Parris Island as a standard green romaine for baby leaf. Its product listing gives about 29 days to baby leaf and 56 to full size; these are supplier crop estimates, not guaranteed head dimensions or indoor timing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
-          "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo.",
+          "short": "Romana erguida con hojas ovaladas verde medio",
+          "guidance": "Johnny's describe hojas ovaladas verde medio y porte erguido, y presenta Parris Island como una romana verde estándar para hojas baby. Su ficha estima unos 29 días para baby y 56 para tamaño completo; son estimaciones del proveedor, no dimensiones garantizadas de cabeza ni tiempos para interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-parris-island-lettuce-500",
+          "umn-lettuce-home-gardens-2024"
+        ],
+        "en": {
+          "short": "Cool-season romaine; field spacing depends on harvest form",
+          "guidance": "Johnny's recommends cool-weather conditions and gives different field spacing for romaine heads versus baby-leaf rows. Those soil-production distances are not Garden pod counts. UMN notes lettuce's shallow roots and regional sensitivity to heat and moisture swings; adapt the outdoor calendar locally and do not infer hydroponic settings from it.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Romana de estación fresca; la separación depende de la cosecha",
+          "guidance": "Johnny's recomienda condiciones frescas y da separaciones de campo distintas para cabezas romanas y filas de hojas baby. Esas distancias de suelo no son conteos de pods en Garden. UMN señala que la lechuga tiene raíces poco profundas y es sensible a calor y cambios de humedad en su contexto regional; adapta el calendario y no infieras parámetros hidropónicos de él.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-parris-island-lettuce-500"
+        ],
+        "en": {
+          "short": "Succession sowing is an optional way to stagger harvest",
+          "guidance": "Johnny's suggests sowing every 2–3 weeks for a continuous supply in its production context. For a home setup, treat succession as optional rather than a required cycle; thin or space for the intended head or baby-leaf form, and do not map field distances to system positions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La siembra escalonada puede distribuir la cosecha",
+          "guidance": "Johnny's sugiere sembrar cada 2–3 semanas para un suministro continuo en su contexto de producción. En casa, considéralo una opción, no un ciclo obligatorio; aclara o separa según se busquen cabezas o hojas baby y no conviertas distancias de campo en posiciones del sistema.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "johnnys-parris-island-lettuce-500"
         ],
         "en": {
-          "short": "Harvest selectively while preserving active growth",
-          "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
+          "short": "Harvest baby leaf or a romaine head",
+          "guidance": "Johnny's lists approximately 29 days for baby leaf and 56 days for full-size plants. For baby leaf it advises cutting leaves around 1 inch above the growing point at roughly 3–4 inches; for a head it advises cutting at the base. These are supplier estimates and instructions; local conditions affect timing, and the two harvest stages are not interchangeable.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha según la etapa del cultivo",
-          "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema.",
+          "short": "Cosecha hojas baby o una cabeza romana",
+          "guidance": "Johnny's estima aproximadamente 29 días para hojas baby y 56 para plantas de tamaño completo. Para baby recomienda cortar a unos 2.5 cm sobre el punto de crecimiento cuando las hojas midan aproximadamente 7.5–10 cm; para una cabeza indica cortar en la base. Son estimaciones e instrucciones del proveedor: las condiciones locales cambian el tiempo y ambas etapas no son intercambiables.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -16508,43 +16566,20 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "umn-lettuce-home-gardens-2024"
         ],
         "en": {
-          "short": "Watch the problems that change management",
-          "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use crop context plus actual observations before choosing an intervention.",
+          "short": "Bolting and tipburn are useful warning signs",
+          "guidance": "UMN Extension describes heat and long days as bolting triggers in lettuce; bolting ends normal leafy harvest and can make leaves bitter. Browning margins after a dry spell followed by renewed watering can indicate tipburn associated with rapid growth. Neither sign alone proves a disease or nutrient deficiency; Parris Island-specific resistance is not established here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
-          "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "thinning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-lettuce",
-          "usu-lettuce"
-        ],
-        "en": {
-          "short": "Thin or separate according to the intended harvest form",
-          "guidance": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Ralea según la forma de cosecha",
-          "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden.",
+          "short": "Espigado y tipburn son señales útiles",
+          "guidance": "UMN Extension describe el calor y los días largos como desencadenantes de espigado en lechuga; el espigado termina la cosecha foliar normal y puede amargar las hojas. Los bordes marrones tras sequía y reanudación del riego pueden indicar tipburn asociado al crecimiento rápido. Ninguna señal demuestra por sí sola enfermedad o deficiencia; estas fuentes no establecen resistencia específica de Parris Island.",
           "items": [],
           "avoid": "",
           "context": ""

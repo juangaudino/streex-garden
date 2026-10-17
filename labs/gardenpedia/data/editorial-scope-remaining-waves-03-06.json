@@ -1,0 +1,2452 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "acorn-squash": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "butternut-squash": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "california-poppy": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "phacelia-tanacetifolia": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "bee-balm": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "snapdragon": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "teddy-bear-sunflower": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "dwarf-sunflower": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sweet-pea": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cosmos-seashell": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "black-eyed-susan": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "bachelor-button": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "red-sail-lettuce": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "parris-island-romaine": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "red-mustard-greens": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "watercress": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "redbor-kale": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "georgia-collards": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "mizuna-red-streaks": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "mexican-tarragon": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "purple-basil": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cinnamon-basil": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "anise": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "hyssop": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "feverfew": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "stevia": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "black-krim-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "san-marzano-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cherry-bomb-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "yellow-brandywine-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "black-beauty-eggplant": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "tomatillo": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "ground-cherry": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cantaloupe": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sugar-baby-watermelon": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sweet-chocolate-pepper": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "waltham-29-broccoli": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "purple-of-sicily-cauliflower": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "golden-acre-cabbage": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "red-acre-cabbage": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "early-white-vienna-kohlrabi": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "gai-lan": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "purple-sprouting-broccoli": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "brussels-sprouts-long-island": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "danvers-carrot": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "chioggia-beet": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "tokyo-cross-turnip": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "watermelon-radish": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "salsify": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "white-lisbon-bunching-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "walla-walla-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "giant-musselburgh-leek": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sweet-spanish-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "blue-lake-pole-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "provider-bush-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sugar-ann-snow-pea": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "green-arrow-shelling-pea": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "edamame": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "fava-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "straight-eight-cucumber": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "armenian-cucumber": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "eight-ball-zucchini": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sugar-pumpkin": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "alaska-nasturtium": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "ivory-princess-calendula": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "lemon-queen-sunflower": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "signet-marigold": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "dwarf-cosmos": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sweet-alyssum-white": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "love-in-a-mist": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "globe-amaranth": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "culantro": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "papalo-porophyllum-ruderale": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "shiso-perilla-frutescens": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "bloody-dock-rumex-sanguineus": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "venus-flytrap-dionaea-muscipula": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cape-sundew-drosera-capensis": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "pinguicula-primuliflora": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "nepenthes-x-ventrata": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    }
+  }
+}

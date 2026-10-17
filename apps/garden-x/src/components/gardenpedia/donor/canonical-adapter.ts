@@ -3,6 +3,7 @@ import { gardenPlantProfileCatalog } from "@/generated/garden-plant-profile-inde
 import { gardenSeedProfileIds } from "@/generated/garden-seed-profile-index";
 import type { GardenLibraryEntry } from "@/lib/garden-library";
 import harvestUseData from "../../../../../../labs/gardenpedia/data/harvest-use-v0.1.json";
+import harvestUseRichnessAdditions from "../../../../../../labs/gardenpedia/data/harvest-use-richness-additions.json";
 import legacyPlantData from "../../../../../../labs/gardenpedia/data/plants.json";
 import legacySpanishTranslations from "../../../../../../labs/gardenpedia/data/translations-es.json";
 import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
@@ -189,8 +190,12 @@ const harvestDocument = harvestUseData as {
   plants?: Record<string, HarvestRecord>;
   sources?: Record<string, { publisher: string; title: string; url: string }>;
 };
-const harvestCatalog = harvestDocument.plants ?? {};
-const harvestSources = harvestDocument.sources ?? {};
+const harvestRichnessDocument = harvestUseRichnessAdditions as {
+  plants: Record<string, HarvestRecord>;
+  sources: Record<string, { publisher: string; title: string; url: string }>;
+};
+const harvestCatalog: Record<string, HarvestRecord> = { ...(harvestDocument.plants ?? {}), ...harvestRichnessDocument.plants };
+const harvestSources = { ...(harvestDocument.sources ?? {}), ...harvestRichnessDocument.sources };
 const visualCatalog = visualsData as Record<string, VisualRecord[]>;
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
@@ -511,7 +516,7 @@ function section(
 
 function harvestDetail(entry: GardenLibraryEntry, language: "en" | "es") {
   const record = harvestCatalog[entry.libraryPlantId];
-  if (!record && !entry.reference.harvest) return undefined;
+  if (!record) return undefined;
   const locale = language === "es" ? "es" : "en";
   const ediblePart =
     record?.edibleParts?.[locale] ||

@@ -1,0 +1,182 @@
+{
+  "asparagus": [
+    {
+      "id": "asparagus-harvest-source-guide",
+      "action": "harvest",
+      "mediaType": "guide",
+      "title": {
+        "en": "Harvest asparagus without weakening the crown",
+        "es": "Cosecha espárragos sin debilitar la corona"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "University of Minnesota Extension",
+      "sourceUrl": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/harvesting-asparagus",
+      "thumbnailUrl": null,
+      "credit": "University of Minnesota Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "escarole": [
+    {
+      "id": "escarole-cultivation-source-guide",
+      "action": "cultivation",
+      "mediaType": "guide",
+      "title": {
+        "en": "Grow escarole in cool conditions",
+        "es": "Cultiva escarola en condiciones frescas"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "University of Minnesota Extension",
+      "sourceUrl": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+      "thumbnailUrl": null,
+      "credit": "University of Minnesota Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "blush-hibiscus": [
+    {
+      "id": "blush-hibiscus-cultivation-source-guide",
+      "action": "cultivation",
+      "mediaType": "guide",
+      "title": {
+        "en": "Blush hibiscus product growing guide",
+        "es": "Guía de cultivo del hibisco Blush"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Gardyn Help Center",
+      "sourceUrl": "https://help.mygardyn.com/en/articles/1782401",
+      "thumbnailUrl": null,
+      "credit": "Gardyn Help Center",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "pink-petunia": [
+    {
+      "id": "pink-petunia-maintenance-source-guide",
+      "action": "maintenance",
+      "mediaType": "guide",
+      "title": {
+        "en": "Pink petunia product care guide",
+        "es": "Guía de cuidados de la petunia rosa"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Gardyn Help Center",
+      "sourceUrl": "https://help.mygardyn.com/en/articles/1783105",
+      "thumbnailUrl": null,
+      "credit": "Gardyn Help Center",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "black-viola": [
+    {
+      "id": "black-viola-cultivation-source-guide",
+      "action": "cultivation",
+      "mediaType": "guide",
+      "title": {
+        "en": "Black viola product growing guide",
+        "es": "Guía de cultivo de la viola negra"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Gardyn Help Center",
+      "sourceUrl": "https://help.mygardyn.com/en/articles/2644289",
+      "thumbnailUrl": null,
+      "credit": "Gardyn Help Center",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "northern-highbush-blueberry": [
+    {
+      "id": "northern-highbush-blueberry-maintenance-source-guide",
+      "action": "maintenance",
+      "mediaType": "guide",
+      "title": {
+        "en": "Home-garden blueberry care",
+        "es": "Cuidados de arándanos en el jardín"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "University of Maryland Extension",
+      "sourceUrl": "https://www.extension.umd.edu/resource/growing-blueberries-home-garden",
+      "thumbnailUrl": null,
+      "credit": "University of Maryland Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "red-raspberry": [
+    {
+      "id": "red-raspberry-maintenance-source-guide",
+      "action": "maintenance",
+      "mediaType": "guide",
+      "title": {
+        "en": "Manage raspberry canes",
+        "es": "Maneja las cañas de frambuesa"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Penn State Extension",
+      "sourceUrl": "https://extension.psu.edu/brambles-in-the-home-fruit-planting",
+      "thumbnailUrl": null,
+      "credit": "Penn State Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "common-fig": [
+    {
+      "id": "common-fig-maintenance-source-guide",
+      "action": "maintenance",
+      "mediaType": "guide",
+      "title": {
+        "en": "Grow and prune figs in Oregon",
+        "es": "Cultiva y poda higueras en Oregón"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Oregon State University Extension",
+      "sourceUrl": "https://extension.oregonstate.edu/es/node/80621/printable/print",
+      "thumbnailUrl": null,
+      "credit": "Oregon State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ],
+  "table-grape-vine": [
+    {
+      "id": "table-grape-vine-maintenance-source-guide",
+      "action": "maintenance",
+      "mediaType": "guide",
+      "title": {
+        "en": "Train and prune table grapevines",
+        "es": "Forma y poda vides de uva de mesa"
+      },
+      "description": {
+        "en": "Source-linked instructional reference. Apply only within the documented crop, product and regional scope.",
+        "es": "Referencia instructiva enlazada a su fuente. Aplicar solo al cultivo, producto y ámbito regional documentados."
+      },
+      "sourceName": "Oregon State University Extension",
+      "sourceUrl": "https://extension.oregonstate.edu/catalog/ec-1639-growing-table-grapes",
+      "thumbnailUrl": null,
+      "credit": "Oregon State University Extension",
+      "rightsStatus": "source_link_only"
+    }
+  ]
+}

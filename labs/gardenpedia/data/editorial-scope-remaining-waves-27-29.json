@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "northern-highbush-blueberry": {
+      "wave": 27,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "red-raspberry": {
+      "wave": 27,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "common-fig": {
+      "wave": 27,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "table-grape-vine": {
+      "wave": 27,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "blush-hibiscus": {
+      "wave": 28,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "This system-specific claim remains unverified.",
+            "es": "Esta afirmación específica del sistema sigue sin verificar."
+          }
+        }
+      }
+    },
+    "pink-petunia": {
+      "wave": 28,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "black-viola": {
+      "wave": 28,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "This system-specific claim remains unverified.",
+            "es": "Esta afirmación específica del sistema sigue sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "asparagus": {
+      "wave": 29,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "rhubarb": {
+      "wave": 29,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    },
+    "escarole": {
+      "wave": 29,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Preserve source-supported identity scope and distinguish observed facts from extrapolations.",
+            "es": "Conserva el alcance respaldado por fuentes y distingue hechos observados de extrapolaciones."
+          }
+        }
+      }
+    }
+  }
+}

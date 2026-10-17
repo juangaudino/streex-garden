@@ -1,0 +1,1437 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "stalk-celery-apium-graveolens": {
+      "wave": 54,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "chia-salvia-hispanica": {
+      "wave": 54,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "quinoa-chenopodium-quinoa": {
+      "wave": 54,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "grain-amaranth-amaranthus-hypochondriacus": {
+      "wave": 54,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "mexican-snowball-echeveria-elegans": {
+      "wave": 55,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "zebra-haworthiopsis-attenuata": {
+      "wave": 55,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "burros-tail-sedum-morganianum": {
+      "wave": 55,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "common-houseleek-sempervivum-tectorum": {
+      "wave": 55,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "cornflower-centaurea-cyanus": {
+      "wave": 56,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "strawflower-xerochrysum-bracteatum": {
+      "wave": 56,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "sesame-sesamum-indicum": {
+      "wave": 57,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "purple-pitcher-plant-sarracenia-purpurea": {
+      "wave": 57,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "sweet-william-dianthus-barbatus": {
+      "wave": 58,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "hollyhock-alcea-rosea": {
+      "wave": 58,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "common-foxglove-digitalis-purpurea": {
+      "wave": 58,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "annual-babys-breath-gypsophila-elegans": {
+      "wave": 58,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "apple-malus-domestica": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "european-pear-pyrus-communis": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "asian-pear-pyrus-pyrifolia": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "peach-prunus-persica": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "european-plum-prunus-domestica": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "japanese-plum-prunus-salicina": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "sweet-cherry-prunus-avium": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "sour-cherry-prunus-cerasus": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "apricot-prunus-armeniaca": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "blackberry-rubus-canadensis": {
+      "wave": 59,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "celtuce-lactuca-sativa-augustana": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "flax-linum-usitatissimum": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "rice-oryza-sativa": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "spring-barley-hordeum-vulgare": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "grain-sorghum-sorghum-bicolor": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "proso-millet-panicum-miliaceum": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "adzuki-bean-vigna-angularis": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "pigeon-pea-cajanus-cajan": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Identity-specific or system-specific validation is pending.",
+            "es": "Pendiente de validación específica de la identidad o sistema."
+          }
+        }
+      }
+    },
+    "french-sorrel-rumex-scutatus": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "cardoon-cynara-cardunculus": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "horseradish-armoracia-rusticana": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    },
+    "prickly-pear-opuntia-ficus-indica": {
+      "wave": 60,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Keep the source-backed scope distinct from Garden adaptations and unsupported extrapolations.",
+            "es": "Distingue el alcance respaldado por fuentes de las adaptaciones Garden y extrapolaciones no demostradas."
+          }
+        }
+      }
+    }
+  }
+}

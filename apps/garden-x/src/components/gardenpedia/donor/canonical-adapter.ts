@@ -7,6 +7,20 @@ import harvestUseRichnessAdditions from "../../../../../../labs/gardenpedia/data
 import legacyPlantData from "../../../../../../labs/gardenpedia/data/plants.json";
 import legacySpanishTranslations from "../../../../../../labs/gardenpedia/data/translations-es.json";
 import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
+import visualGuidesBatch10 from "../../../../../../labs/gardenpedia/data/visual-guides-batch-10.json";
+import editorialScopeBatch100 from "../../../../../../labs/gardenpedia/data/editorial-scope-batch-100.json";
+import editorialScopeExtra1 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-03-06.json";
+import editorialScopeExtra2 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-07-12.json";
+import editorialScopeExtra3 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-13-18.json";
+import editorialScopeExtra4 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-19-26.json";
+import editorialScopeExtra5 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-27-29.json";
+import editorialScopeExtra6 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-30-37.json";
+import editorialScopeExtra7 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-38-45.json";
+import editorialScopeExtra8 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-46-53.json";
+import editorialScopeExtra9 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-54-60.json";
+import editorialScopeExtra10 from "../../../../../../labs/gardenpedia/data/editorial-scope-remaining-waves-61-63.json";
+import editorialScopeExtra11 from "../../../../../../labs/gardenpedia/data/editorial-scope-base-profiles.json";
+import editorialScopeExtra12 from "../../../../../../labs/gardenpedia/data/editorial-scope-current-gardens.json";
 
 export type DonorSourceRef = { label: string; url: string };
 export type DonorBacking = "source" | "garden" | "pending";
@@ -196,10 +210,29 @@ const harvestRichnessDocument = harvestUseRichnessAdditions as {
 };
 const harvestCatalog: Record<string, HarvestRecord> = { ...(harvestDocument.plants ?? {}), ...harvestRichnessDocument.plants };
 const harvestSources = { ...(harvestDocument.sources ?? {}), ...harvestRichnessDocument.sources };
-const visualCatalog = visualsData as Record<string, VisualRecord[]>;
+const visualCatalog: Record<string, VisualRecord[]> = {
+  ...(visualsData as Record<string, VisualRecord[]>),
+  ...(visualGuidesBatch10 as Record<string, VisualRecord[]>),
+};
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
 const publicPlantProfiles = gardenPlantProfileCatalog as Record<string, PublicPlantProfile>;
+type EditorialScopeSection = { context: { en: string; es: string }; action?: { en: string; es: string } };
+const editorialScopeProfiles: Record<string, { sections: Record<string, EditorialScopeSection> }> = {
+  ...(editorialScopeBatch100.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra1.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra2.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra3.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra4.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra5.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra6.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra7.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra8.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra9.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra10.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra11.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+  ...(editorialScopeExtra12.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>),
+};
 export const seedProfileIds = new Set<string>(gardenSeedProfileIds);
 export const seedProfileCount = gardenSeedProfileIds.length;
 
@@ -672,6 +705,9 @@ export function buildDonorPlantDetail(
   const publicSections = Object.entries(publicProfile?.sections ?? {}).map(([id, guide]) => {
     const label = guideLabels[id] ?? { title: id, emoji: "🌱" };
     const localized = language === "es" ? guide.es : guide.en;
+    const scoped = editorialScopeProfiles[entry.libraryPlantId]?.sections[id];
+    const localizedAction = scoped?.action?.[language];
+    const localizedContext = scoped?.context?.[language];
     const backing: DonorBacking =
       guide.evidenceType === "garden_adaptation"
         ? "garden"
@@ -700,9 +736,9 @@ export function buildDonorPlantDetail(
         (language === "es"
           ? "No establecido por la evidencia actual."
           : "Not established by current evidence."),
-      bullets: [...localized.items],
+      bullets: localized.items.length ? [...localized.items] : localizedAction ? [localizedAction] : [],
       avoid: localized.avoid || undefined,
-      context: localized.context || undefined,
+      context: localized.context || localizedContext || undefined,
       backing,
       confidence,
       sources: sourceRefsForIds(entry, guide.sourceIds),

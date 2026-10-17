@@ -7,18 +7,150 @@
     "variety": "Northern highbush type",
     "category": "fruits",
     "emoji": "🫐",
-    "tags": ["highbush blueberry", "arándano", "arándano alto", "Vaccinium corymbosum", "northern highbush"],
+    "tags": [
+      "highbush blueberry",
+      "arándano",
+      "arándano alto",
+      "Vaccinium corymbosum",
+      "northern highbush"
+    ],
     "summary": "A deciduous North American shrub cultivated for edible berries. The listed 3–6 ft height is for northern highbush plants in the cited Extension guide; container size and performance depend on cultivar.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species: Vaccinium corymbosum", "guidance": "Kew accepts Vaccinium corymbosum. University of Maryland Extension distinguishes northern highbush from southern highbush hybrids and rabbiteye blueberries; this record represents the northern highbush type, not every plant sold as blueberry.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vaccinium-corymbosum-wave27", "umd-blueberry-home-garden-wave27"]},
-      "cultivation": {"short": "Requires an acidic, well-prepared growing site", "guidance": "The Extension source emphasizes site preparation, appropriate soil acidity, moisture, mulch, and cultivar selection. These are outdoor soil recommendations; they do not establish a nutrient recipe for hydroponics or a generic container recipe.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umd-blueberry-home-garden-wave27"]},
-      "growth": {"short": "Deciduous shrub with perennial canes", "guidance": "The home-garden guide describes blueberry plants as woody, multi-stemmed perennial shrubs with shallow fibrous roots. It lists 3–6 ft for northern highbush types; other blueberry types and named cultivars differ.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vaccinium-corymbosum-wave27", "umd-blueberry-home-garden-wave27"]},
-      "maintenance": {"short": "Renew old canes gradually after establishment", "guidance": "University of Maryland Extension describes renewal pruning: remove older, declining canes to encourage replacement growth. Young plants are managed differently from established bushes; do not apply mature-bush pruning immediately to a new transplant.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umd-blueberry-home-garden-wave27"]},
-      "harvest": {"short": "Harvest ripe berries as they release easily", "guidance": "The Extension guide describes ripe berries as detaching readily from the pedicel and notes that the bearing wood has an age structure. Harvest timing varies by cultivar and local conditions.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umd-blueberry-home-garden-wave27"]},
-      "problems": {"short": "Poor site conditions and pollination can limit fruiting", "guidance": "The guide explains that blueberry roots are shallow and that site preparation, soil pH, moisture, and pollination affect performance. The profile does not claim a named-cultivar disease resistance or universal yield.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umd-blueberry-home-garden-wave27"]}
+      "identity": {
+        "short": "Accepted species: Vaccinium corymbosum",
+        "guidance": "Kew accepts Vaccinium corymbosum. University of Maryland Extension distinguishes northern highbush from southern highbush hybrids and rabbiteye blueberries; this record represents the northern highbush type, not every plant sold as blueberry.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vaccinium-corymbosum-wave27",
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "Kew accepts Vaccinium corymbosum.",
+          "University of Maryland Extension distinguishes northern highbush from southern highbush hybrids and rabbiteye blueberries; this record represents the northern highbush type, not every plant sold as blueberry."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Requires an acidic, well-prepared growing site",
+        "guidance": "The Extension source emphasizes site preparation, appropriate soil acidity, moisture, mulch, and cultivar selection. These are outdoor soil recommendations; they do not establish a nutrient recipe for hydroponics or a generic container recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "Prepare an acidic, well-drained outdoor growing site before planting.",
+          "Keep the shallow root zone supplied with moisture and appropriate mulch.",
+          "Choose a cultivar suited to local conditions; do not infer a hydroponic nutrient formula."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Deciduous shrub with perennial canes",
+        "guidance": "The home-garden guide describes blueberry plants as woody, multi-stemmed perennial shrubs with shallow fibrous roots. It lists 3–6 ft for northern highbush types; other blueberry types and named cultivars differ.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vaccinium-corymbosum-wave27",
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "The home-garden guide describes blueberry plants as woody, multi-stemmed perennial shrubs with shallow fibrous roots.",
+          "It lists 3–6 ft for northern highbush types; other blueberry types and named cultivars differ."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Renew old canes gradually after establishment",
+        "guidance": "University of Maryland Extension describes renewal pruning: remove older, declining canes to encourage replacement growth. Young plants are managed differently from established bushes; do not apply mature-bush pruning immediately to a new transplant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "Allow young plants to establish before applying mature-bush pruning.",
+          "On established plants, gradually remove older, declining canes to encourage replacement growth."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "harvest": {
+        "short": "Harvest ripe berries as they release easily",
+        "guidance": "The Extension guide describes ripe berries as detaching readily from the pedicel and notes that the bearing wood has an age structure. Harvest timing varies by cultivar and local conditions.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "Pick berries that are fully ripe and detach readily.",
+          "Check ripening repeatedly: timing depends on cultivar and local weather."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Poor site conditions and pollination can limit fruiting",
+        "guidance": "The guide explains that blueberry roots are shallow and that site preparation, soil pH, moisture, and pollination affect performance. The profile does not claim a named-cultivar disease resistance or universal yield.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umd-blueberry-home-garden-wave27"
+        ],
+        "items": [
+          "The guide explains that blueberry roots are shallow and that site preparation, soil pH, moisture, and pollination affect performance."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected home-garden sources do not validate blueberry in recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "The controlled compatibility vocabulary does not encode woody shrub form."}, "matureSize": {"height": {"status": "known", "value": {"minCm": 91, "maxCm": 183, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["umd-blueberry-home-garden-wave27"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Vaccinium corymbosum"}, "note": "Extension lists 3–6 ft for the northern highbush horticultural type; converted to cm and not generalized to every cultivar."}]}, "spread": {"status": "unknown", "reason": "No defensible spread value for this broad type was selected."}}, "spacing": {"status": "unknown", "reason": "Outdoor spacing is not a hydroponic position or pod recommendation."}, "light": {"status": "unknown", "reason": "Outdoor site descriptions are not converted into an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected home-garden sources do not validate blueberry in recirculating hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled compatibility vocabulary does not encode woody shrub form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 91,
+            "maxCm": 183,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "umd-blueberry-home-garden-wave27"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Vaccinium corymbosum"
+              },
+              "note": "Extension lists 3–6 ft for the northern highbush horticultural type; converted to cm and not generalized to every cultivar."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible spread value for this broad type was selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor spacing is not a hydroponic position or pod recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor site descriptions are not converted into an indoor grow-light tier."
+      }
+    }
   },
   {
     "id": "red-raspberry",
@@ -28,18 +160,129 @@
     "variety": "Red raspberry crop type; fruiting habit varies by cultivar",
     "category": "fruits",
     "emoji": "🍓",
-    "tags": ["raspberry", "red raspberry", "frambuesa", "frambuesa roja", "Rubus idaeus", "bramble"],
+    "tags": [
+      "raspberry",
+      "red raspberry",
+      "frambuesa",
+      "frambuesa roja",
+      "Rubus idaeus",
+      "bramble"
+    ],
     "summary": "A perennial-rooted bramble whose canes and fruiting cycle depend on the variety. Do not infer summer-bearing or primocane-fruiting behavior without a cultivar identity.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species: Rubus idaeus", "guidance": "Kew accepts Rubus idaeus. Penn State Extension distinguishes red, black, and other raspberry types and describes substantial cultivar variation; this identity is a red-raspberry crop type, not a named variety.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-rubus-idaeus-wave27", "psu-brambles-home-fruit-wave27"]},
-      "cultivation": {"short": "Choose a sunny, well-drained site", "guidance": "Penn State Extension describes brambles as suited to sunny sites with well-drained soil. Its field spacings are not transferable to an indoor system or container without separate evidence.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["psu-brambles-home-fruit-wave27"]},
-      "growth": {"short": "Perennial roots produce canes with a two-year cycle in summer-bearing types", "guidance": "In summer-bearing raspberries, first-year primocanes generally fruit as floricanes the next season and then die. Some varieties fruit on first-year canes; without a cultivar, the record keeps the bearing schedule unresolved.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["psu-brambles-home-fruit-wave27"]},
-      "maintenance": {"short": "Pruning depends on the fruiting type", "guidance": "Penn State Extension distinguishes summer-bearing from primocane-fruiting types and describes different cane-management approaches. Identify the variety and intended crop before choosing a pruning schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["psu-brambles-home-fruit-wave27"]},
-      "harvest": {"short": "Season varies by bearing type and local frost", "guidance": "Summer-bearing and primocane-fruiting raspberries crop at different times. The source gives regional examples, not a universal harvest calendar for an unspecified variety.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["psu-brambles-home-fruit-wave27"]},
-      "problems": {"short": "Airflow, drainage, and prompt sanitation matter", "guidance": "The Extension guidance notes disease and insect pressure in brambles and recommends site selection and management appropriate to the type. No disease resistance is asserted for this generic crop identity.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["psu-brambles-home-fruit-wave27"]}
+      "identity": {
+        "short": "Accepted species: Rubus idaeus",
+        "guidance": "Kew accepts Rubus idaeus. Penn State Extension distinguishes red, black, and other raspberry types and describes substantial cultivar variation; this identity is a red-raspberry crop type, not a named variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-rubus-idaeus-wave27",
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "Penn State Extension distinguishes red, black, and other raspberry types and describes substantial cultivar variation; this identity is a red-raspberry crop type, not a named variety."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Choose a sunny, well-drained site",
+        "guidance": "Penn State Extension describes brambles as suited to sunny sites with well-drained soil. Its field spacings are not transferable to an indoor system or container without separate evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "Penn State Extension describes brambles as suited to sunny sites with well-drained soil."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Perennial roots produce canes with a two-year cycle in summer-bearing types",
+        "guidance": "In summer-bearing raspberries, first-year primocanes generally fruit as floricanes the next season and then die. Some varieties fruit on first-year canes; without a cultivar, the record keeps the bearing schedule unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "Identify whether the cultivar bears on second-year canes or first-year primocanes.",
+          "Record which canes fruited before deciding what to remove."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Pruning depends on the fruiting type",
+        "guidance": "Penn State Extension distinguishes summer-bearing from primocane-fruiting types and describes different cane-management approaches. Identify the variety and intended crop before choosing a pruning schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "Confirm the bearing type before selecting a pruning schedule.",
+          "Remove spent floricanes according to the cultivar's fruiting cycle; do not remove productive primocanes by assumption."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "harvest": {
+        "short": "Season varies by bearing type and local frost",
+        "guidance": "Summer-bearing and primocane-fruiting raspberries crop at different times. The source gives regional examples, not a universal harvest calendar for an unspecified variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "Harvest according to the cultivar's bearing type rather than a fixed universal date.",
+          "Observe fruit maturity and local conditions during the picking season."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Airflow, drainage, and prompt sanitation matter",
+        "guidance": "The Extension guidance notes disease and insect pressure in brambles and recommends site selection and management appropriate to the type. No disease resistance is asserted for this generic crop identity.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "psu-brambles-home-fruit-wave27"
+        ],
+        "items": [
+          "The Extension guidance notes disease and insect pressure in brambles and recommends site selection and management appropriate to the type."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The cited sources concern outdoor bramble production, not recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Canopy and cane habit vary materially among raspberry types and cultivars."}, "matureSize": {"height": {"status": "unknown", "reason": "No single mature height applies to unspecified red raspberry cultivars."}, "spread": {"status": "unknown", "reason": "Root suckering and row width depend on type and management."}}, "spacing": {"status": "unknown", "reason": "Field spacing is not converted to indoor plant or pod spacing."}, "light": {"status": "unknown", "reason": "The source's outdoor sunny-site advice is not mapped to an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The cited sources concern outdoor bramble production, not recirculating hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Canopy and cane habit vary materially among raspberry types and cultivars."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No single mature height applies to unspecified red raspberry cultivars."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Root suckering and row width depend on type and management."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted to indoor plant or pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The source's outdoor sunny-site advice is not mapped to an indoor grow-light tier."
+      }
+    }
   },
   {
     "id": "common-fig",
@@ -49,18 +292,129 @@
     "variety": "Edible fig species; cultivar not specified",
     "category": "fruits",
     "emoji": "🫒",
-    "tags": ["fig", "common fig", "higo", "higuera", "Ficus carica", "fig tree"],
+    "tags": [
+      "fig",
+      "common fig",
+      "higo",
+      "higuera",
+      "Ficus carica",
+      "fig tree"
+    ],
     "summary": "A fruiting woody plant that can be established from dormant hardwood cuttings. Fig size, cold adaptation, and fruiting traits vary by cultivar and region.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species: Ficus carica", "guidance": "Kew accepts Ficus carica as a species. This record does not identify a particular fig cultivar or promise a specific crop type or cold tolerance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-ficus-carica-wave27"]},
-      "cultivation": {"short": "A sunny, well-drained site is emphasized in Oregon guidance", "guidance": "Oregon State Extension describes a sunny location and well-drained soil for figs in its regional guide. These recommendations are region-specific and do not establish universal container or indoor performance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["osu-figs-oregon-wave27"]},
-      "growth": {"short": "Woody shrub or small tree; cultivar and training affect form", "guidance": "Kew records Ficus carica as a tree, while cultivated plants are commonly managed as multi-stemmed shrubs or small trees. No exact mature dimensions are assigned to this unspecified cultivar identity.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["kew-ficus-carica-wave27", "osu-figs-oregon-wave27"]},
-      "maintenance": {"short": "Prune with the local fruiting and growth habit in mind", "guidance": "The Extension guide discusses retaining productive one-year growth and pruning to maintain light in the canopy. It also cautions that figs are vigorous and prefer in-ground planting; container management is not assumed to be effortless.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["osu-figs-oregon-wave27"]},
-      "harvest": {"short": "Fruit may take several seasons after planting", "guidance": "The regional guide advises patience because fruit may take a few seasons. It does not support a fixed first-harvest date for all cultivars and locations.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["osu-figs-oregon-wave27"]},
-      "problems": {"short": "Cold adaptation and container vigor remain cultivar- and site-dependent", "guidance": "The selected guide is for Oregon and notes fig vigor and a preference for in-ground growth. It does not establish cold hardiness for every fig cultivar or indoor suitability.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["osu-figs-oregon-wave27"]}
+      "identity": {
+        "short": "Accepted species: Ficus carica",
+        "guidance": "Kew accepts Ficus carica as a species. This record does not identify a particular fig cultivar or promise a specific crop type or cold tolerance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-ficus-carica-wave27"
+        ],
+        "items": [
+          "Kew accepts Ficus carica as a species."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "A sunny, well-drained site is emphasized in Oregon guidance",
+        "guidance": "Oregon State Extension describes a sunny location and well-drained soil for figs in its regional guide. These recommendations are region-specific and do not establish universal container or indoor performance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "osu-figs-oregon-wave27"
+        ],
+        "items": [
+          "Choose a sunny outdoor site with good drainage.",
+          "Check the cultivar and local winter conditions before assuming cold hardiness or easy container production."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Woody shrub or small tree; cultivar and training affect form",
+        "guidance": "Kew records Ficus carica as a tree, while cultivated plants are commonly managed as multi-stemmed shrubs or small trees. No exact mature dimensions are assigned to this unspecified cultivar identity.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "kew-ficus-carica-wave27",
+          "osu-figs-oregon-wave27"
+        ],
+        "items": [
+          "Kew records Ficus carica as a tree, while cultivated plants are commonly managed as multi-stemmed shrubs or small trees."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Prune with the local fruiting and growth habit in mind",
+        "guidance": "The Extension guide discusses retaining productive one-year growth and pruning to maintain light in the canopy. It also cautions that figs are vigorous and prefer in-ground planting; container management is not assumed to be effortless.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "osu-figs-oregon-wave27"
+        ],
+        "items": [
+          "Plan pruning around the local fruiting pattern and retained productive growth.",
+          "Open the canopy to light without assuming all fig cultivars require identical cuts."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "harvest": {
+        "short": "Fruit may take several seasons after planting",
+        "guidance": "The regional guide advises patience because fruit may take a few seasons. It does not support a fixed first-harvest date for all cultivars and locations.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "osu-figs-oregon-wave27"
+        ],
+        "items": [
+          "Expect establishment to take time; do not promise fruit in the first season.",
+          "Record fruit set and ripening by cultivar and location."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Cold adaptation and container vigor remain cultivar- and site-dependent",
+        "guidance": "The selected guide is for Oregon and notes fig vigor and a preference for in-ground growth. It does not establish cold hardiness for every fig cultivar or indoor suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "osu-figs-oregon-wave27"
+        ],
+        "items": [
+          "The selected guide is for Oregon and notes fig vigor and a preference for in-ground growth."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "No cited source validates common fig in a recirculating hydroponic system."}, "growthHabits": {"status": "unknown", "reason": "The controlled compatibility vocabulary does not encode tree or shrub form."}, "matureSize": {"height": {"status": "unknown", "reason": "No cultivar-specific mature height is assigned."}, "spread": {"status": "unknown", "reason": "No cultivar-specific mature spread is assigned."}}, "spacing": {"status": "unknown", "reason": "Outdoor planting advice is not an indoor spacing recommendation."}, "light": {"status": "unknown", "reason": "Regional outdoor sun guidance is not translated into a grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No cited source validates common fig in a recirculating hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled compatibility vocabulary does not encode tree or shrub form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar-specific mature height is assigned."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-specific mature spread is assigned."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor planting advice is not an indoor spacing recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Regional outdoor sun guidance is not translated into a grow-light tier."
+      }
+    }
   },
   {
     "id": "table-grape-vine",
@@ -70,17 +424,131 @@
     "variety": "Table-grape type; cultivar not specified",
     "category": "fruits",
     "emoji": "🍇",
-    "tags": ["table grape", "grapevine", "uva de mesa", "vid", "Vitis vinifera", "grapes"],
+    "tags": [
+      "table grape",
+      "grapevine",
+      "uva de mesa",
+      "vid",
+      "Vitis vinifera",
+      "grapes"
+    ],
     "summary": "A perennial climbing vine represented at table-grape crop scope. Cultivar selection, climate fit, training, and pruning determine whether it fruits well in a given home garden.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species: Vitis vinifera", "guidance": "Kew accepts Vitis vinifera. The identity is a table-grape horticultural type; it does not name a cultivar or imply that all grapevines share the same climate requirements.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vitis-vinifera-wave27", "osu-table-grapes-wave27"]},
-      "cultivation": {"short": "Match cultivar and growing season to the local climate", "guidance": "Oregon State Extension emphasizes choosing table-grape cultivars suited to the length of the local growing season and establishing a trained vine. Its regional guidance is not a universal indoor or hydroponic protocol.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["osu-table-grapes-wave27"]},
-      "growth": {"short": "Woody perennial vine requiring training", "guidance": "Kew classifies Vitis vinifera as a liana. The Extension guide describes training a young vine and notes that under-pruning is a common home-garden problem; no cultivar-specific canopy dimensions are assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vitis-vinifera-wave27", "osu-table-grapes-wave27"]},
-      "maintenance": {"short": "Annual pruning is central to managed grape production", "guidance": "The OSU guide identifies inadequate pruning as a common home-garden issue and explains training. The exact system and pruning cuts depend on cultivar, support, and climate.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["osu-table-grapes-wave27"]},
-      "harvest": {"short": "Fruit quality depends on cultivar and season length", "guidance": "The cited guide warns that a growing season too short for a cultivar can result in poorer-quality, lower-sugar fruit at harvest. No fixed maturity date is assigned to an unspecified cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["osu-table-grapes-wave27"]},
-      "problems": {"short": "Poor climate fit and insufficient pruning can limit quality", "guidance": "The Extension source identifies season length and inadequate pruning as relevant management concerns. It does not establish disease resistance or indoor-system compatibility for this unspecified type.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["osu-table-grapes-wave27"]}
+      "identity": {
+        "short": "Accepted species: Vitis vinifera",
+        "guidance": "Kew accepts Vitis vinifera. The identity is a table-grape horticultural type; it does not name a cultivar or imply that all grapevines share the same climate requirements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vitis-vinifera-wave27",
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "The identity is a table-grape horticultural type; it does not name a cultivar or imply that all grapevines share the same climate requirements."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "cultivation": {
+        "short": "Match cultivar and growing season to the local climate",
+        "guidance": "Oregon State Extension emphasizes choosing table-grape cultivars suited to the length of the local growing season and establishing a trained vine. Its regional guidance is not a universal indoor or hydroponic protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "Choose a table-grape cultivar compatible with the local growing-season length.",
+          "Plan a permanent support and training system for the woody vine."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "growth": {
+        "short": "Woody perennial vine requiring training",
+        "guidance": "Kew classifies Vitis vinifera as a liana. The Extension guide describes training a young vine and notes that under-pruning is a common home-garden problem; no cultivar-specific canopy dimensions are assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vitis-vinifera-wave27",
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "Kew classifies Vitis vinifera as a liana.",
+          "The Extension guide describes training a young vine and notes that under-pruning is a common home-garden problem; no cultivar-specific canopy dimensions are assigned."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Annual pruning is central to managed grape production",
+        "guidance": "The OSU guide identifies inadequate pruning as a common home-garden issue and explains training. The exact system and pruning cuts depend on cultivar, support, and climate.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "Train young shoots to the intended support structure.",
+          "Prune annually according to cultivar, training system and local conditions.",
+          "Avoid leaving an unpruned, overcrowded canopy."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "harvest": {
+        "short": "Fruit quality depends on cultivar and season length",
+        "guidance": "The cited guide warns that a growing season too short for a cultivar can result in poorer-quality, lower-sugar fruit at harvest. No fixed maturity date is assigned to an unspecified cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "Check cultivar maturity and available growing-season length.",
+          "Do not infer sweetness or a harvest date from species identity alone."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "problems": {
+        "short": "Poor climate fit and insufficient pruning can limit quality",
+        "guidance": "The Extension source identifies season length and inadequate pruning as relevant management concerns. It does not establish disease resistance or indoor-system compatibility for this unspecified type.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "osu-table-grapes-wave27"
+        ],
+        "items": [
+          "The Extension source identifies season length and inadequate pruning as relevant management concerns."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources concern trained outdoor vines, not recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "The controlled compatibility vocabulary does not encode woody vine form."}, "matureSize": {"height": {"status": "unknown", "reason": "Training height depends on the selected cultivar and support system."}, "spread": {"status": "unknown", "reason": "Vine spread is determined by pruning and trellis, not a fixed plant dimension."}}, "spacing": {"status": "unknown", "reason": "Field trellis spacing is not a machine position or pod count."}, "light": {"status": "unknown", "reason": "Outdoor site selection is not mapped to indoor grow-light intensity."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources concern trained outdoor vines, not recirculating hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled compatibility vocabulary does not encode woody vine form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Training height depends on the selected cultivar and support system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Vine spread is determined by pruning and trellis, not a fixed plant dimension."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field trellis spacing is not a machine position or pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor site selection is not mapped to indoor grow-light intensity."
+      }
+    }
   }
 ]

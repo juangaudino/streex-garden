@@ -422,6 +422,34 @@ function FullSheet({
           </section>
         )}
 
+        {(
+          [
+            "asparagus", "rhubarb", "escarole", "blush-hibiscus", "pink-petunia",
+            "black-viola", "northern-highbush-blueberry", "red-raspberry",
+            "common-fig", "table-grape-vine",
+          ].includes(detail.id)
+        ) && !detail.neighbors && (
+          <section className="glass-panel p-5 sm:p-6">
+            <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>
+            <h2 className="mt-1 font-display text-2xl font-bold leading-tight">{labels.neighbors}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {language === "es"
+                ? "No tenemos una pareja de plantas con beneficio demostrado para esta ficha. Una lista tradicional de acompañantes no equivale a evidencia experimental."
+                : "No verified beneficial companion pair is documented for this profile. Traditional companion-planting lists are not equivalent to experimental evidence."}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed">
+              {language === "es"
+                ? "Para decidir qué colocar cerca, compara el espacio adulto, la luz, el agua, las raíces y el método de cultivo. La compatibilidad física no demuestra que una planta beneficie a otra."
+                : "For nearby planting, compare mature space, light, water, roots and growing method. Physical compatibility does not prove that one plant benefits another."}
+            </p>
+            {detail.visualGuide && (
+              <p className="mt-3 text-xs text-muted-foreground">
+                <SourceLink label={detail.visualGuide.publisher} url={detail.visualGuide.url} />
+              </p>
+            )}
+          </section>
+        )}
+
         {detail.neighbors && (
           <section className="glass-panel p-5 sm:p-6">
             <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>

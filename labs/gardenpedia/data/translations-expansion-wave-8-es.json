@@ -18,11 +18,15 @@
     }
   },
   "bush-nasturtium-tropaeolum-minus": {
-    "summary": "La capuchina enana es Tropaeolum minus, distinta de las formas colgantes de T. majus y del berro de agua (Nasturtium officinale). La guía de siembra compartida se conserva al alcance del grupo de capuchinas de jardín.",
+    "summary": "La capuchina enana es Tropaeolum minus, distinta de la T. majus colgante y del berro de agua (Nasturtium officinale). Wisconsin Extension describe como comestibles las hojas y flores de capuchina, ofrece cuidados de la planta adulta y distingue las especies arbustivas y colgantes; no se asignan dimensiones de cultivar.",
     "sections": {
-      "identity": { "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus como tipo arbustivo y T. majus como tipo colgante. No debe confundirse con el berro de agua, de otro género y familia." },
-      "cultivation": { "guidance": "Wisconsin Extension describe cultivares arbustivos de T. minus y formas colgantes de T. majus. Su consejo general incluye suelo relativamente pobre y humedad regular durante el crecimiento; no se transfieren dimensiones de cultivares colgantes." },
-      "harvest": { "guidance": "Wisconsin Extension describe flores comestibles para las capuchinas de jardín. La fuente no establece sabor ni calendario de cosecha específico para esta identidad." }
+      "identity": { "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus arbustiva de T. majus colgante. No debe confundirse con berro de agua, que pertenece a otro género y familia." },
+      "growth": { "short": "Crecimiento arbustivo; las dimensiones dependen de especie y cultivar", "guidance": "Wisconsin Extension describe capuchinas de jardín que forman montículos bajos o tallos colgantes y diferencia T. minus arbustiva de T. majus colgante. Como esta ficha no nombra cultivar, no asigna altura ni extensión maduras únicas." },
+      "cultivation": { "short": "Suelo poco abonado y humedad regular favorecen la floración", "guidance": "Wisconsin Extension desaconseja fertilizar de rutina salvo suelos muy pobres, pues el exceso favorece hojas en lugar de flores. La capuchina tolera suelos secos, aunque el riego regular durante el crecimiento ayuda a mantener la floración. No es receta de interior ni de hidroponía para T. minus." },
+      "care": { "short": "Retira flores marchitas para prolongar la floración", "guidance": "Wisconsin Extension indica que quitar o recoger flores prolonga la floración. Es orientación para capuchinas de jardín; no se establece una respuesta de poda específica de cultivar." },
+      "flowering": { "short": "Florece hasta las heladas en jardines estacionales", "guidance": "Wisconsin Extension señala que la capuchina sigue floreciendo hasta las heladas. En climas cálidos y templados puede florecer y producir semillas todo el año y resiembrarse mucho; no es un calendario universal de floración interior." },
+      "harvest": { "short": "Hojas y flores comestibles; las hojas jóvenes son más suaves", "guidance": "Wisconsin Extension describe hojas y flores comestibles, apropiadas para ensaladas, con sabor picante parecido al berro. El sabor puede intensificarse con sol y calor, y las hojas viejas pueden amargar. Estas características corresponden al grupo de capuchinas de jardín, no a una prueba de sabor de cada selección de T. minus." },
+      "problems": { "short": "Vigila pulgones y orugas; los rastros de minador suelen causar poco daño", "guidance": "Wisconsin Extension menciona pulgones y orugas de la col importadas entre las plagas comunes de capuchina. Los minadores pueden dejar galerías sinuosas, pero suelen causar poco daño. La resiembra abundante puede requerir manejo en climas cálidos; no se establece resistencia específica de T. minus." }
     }
   },
   "romaine-lettuce": {

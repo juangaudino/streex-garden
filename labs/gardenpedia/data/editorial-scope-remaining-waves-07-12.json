@@ -384,20 +384,44 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "T. minus is bush nasturtium; do not confuse it with trailing T. majus or watercress.",
+            "es": "T. minus es capuchina arbustiva; no confundir con T. majus colgante ni con berro de agua."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Garden-nasturtium forms vary; no cultivar-independent mature dimensions are assigned.",
+            "es": "Las formas de capuchina varían; no se asignan dimensiones maduras independientes del cultivar."
           }
         },
         "cultivation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Shared outdoor garden advice; not an indoor or hydroponic recipe.",
+            "es": "Consejos compartidos para jardín exterior; no son receta de interior o hidroponía."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Deadheading guidance applies to garden nasturtiums; no cultivar-specific response is measured.",
+            "es": "La eliminación de flores marchitas aplica a capuchinas de jardín; no se mide respuesta de cultivar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Frost and year-round flowering notes depend on outdoor climate.",
+            "es": "La floración hasta heladas o todo el año depende del clima exterior."
           }
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Edibility and flavor are described at garden-nasturtium group scope, not tested for each T. minus selection.",
+            "es": "Comestibilidad y sabor se describen para el grupo de capuchinas, no se prueban en cada selección de T. minus."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "General garden-nasturtium pests and reseeding; no resistance claim for T. minus.",
+            "es": "Plagas generales y resiembra de capuchina; sin afirmación de resistencia para T. minus."
           }
         }
       }
@@ -938,16 +962,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Red tops and dual-purpose use are from Cornell's community variety record, not a controlled trial.",
+            "es": "Las hojas rojas y el uso dual proceden de la ficha varietal comunitaria de Cornell, no de ensayo controlado."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "Moisture guidance is general field beet advice, not an indoor watering schedule.",
+            "es": "La humedad es orientación general de remolacha de campo, no un horario de riego interior."
+          }
+        },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Leaf and root harvest stages are general beet guidance; no fixed Bull's Blood date is assigned.",
+            "es": "Las etapas de cosecha de hojas y raíces son guía general; no se asigna fecha fija a Bull's Blood."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Chilling, crowding and water/heat stress are crop risks, not Bull's Blood resistance ratings.",
+            "es": "Frío, competencia y estrés hídrico/térmico son riesgos del cultivo, no calificaciones de Bull's Blood."
           }
         }
       }
@@ -1031,16 +1073,34 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "Species-level diversity; mature size and branching depend on the unnamed type.",
+            "es": "Diversidad a nivel de especie; tamaño y ramificación dependen del tipo no especificado."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "flowering": {
+          "context": {
+            "en": "Sun-tracking and east-facing mature heads are general sunflower behavior, not cultivar traits.",
+            "es": "El seguimiento del sol y la orientación este de cabezas maduras son rasgos generales, no de cultivar."
+          }
+        },
         "harvest": {
           "context": {
-            "en": "Unverified for this identity or growing system.",
-            "es": "Sin verificar para esta identidad o sistema de cultivo."
+            "en": "Cut-flower and seed-head cues are general; intended product use remains unspecified.",
+            "es": "Las señales de flor de corte y semilla son generales; el uso del producto sigue sin especificarse."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Wildlife feeding can be desirable or compete with seed harvest; not a disease claim.",
+            "es": "La fauna puede ser bienvenida o competir con la cosecha; no es afirmación de enfermedad."
           }
         }
       }

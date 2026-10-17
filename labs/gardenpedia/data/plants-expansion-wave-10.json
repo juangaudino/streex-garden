@@ -379,7 +379,7 @@
       "remolacha bull's blood",
       "leaf beet"
     ],
-    "summary": "Bull's Blood is a named beet variety with red foliage and root use described in Cornell's community variety record. Beet sowing guidance remains crop-level rather than a cultivar-specific germination prescription.",
+    "summary": "Bull's Blood is a named dual-purpose beet selection: Cornell's variety record describes red tops as well as root use. Established-plant guidance here separates leaf harvest from root sizing and keeps general beet stress advice at crop scope; Cornell's observations are community-submitted, not controlled trials.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -389,19 +389,40 @@
         "confidence": "medium",
         "sourceIds": ["cornell-bulls-blood-500", "kew-beta-vulgaris-500"]
       },
-      "cultivation": {
-        "short": "Use beet crop guidance; preserve the cultivar scope",
-        "guidance": "Johnny's beet guide provides crop-level sowing and cultivation instructions. No Bull's Blood-specific indoor size, hydroponic suitability or system spacing is inferred from the general beet guide.",
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": ["johnnys-beets-wave1"]
-      },
-      "harvest": {
-        "short": "Leaves and roots are both described uses",
-        "guidance": "Cornell's variety listing calls Bull's Blood dual-purpose and records glossy red tops as harvestable. A specific Garden harvest date or root size is not inferred from community observations.",
+      "growth": {
+        "short": "Red beet tops and a storage-root crop",
+        "guidance": "Cornell's Bull's Blood record describes glossy red tops and the variety as dual-purpose. That supports using the foliage and root, but it is a community-sourced variety record rather than a controlled comparison; no exact root size or leaf yield is assigned here.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["cornell-bulls-blood-500"]
+      },
+      "cultivation": {
+        "short": "Use beet crop guidance; preserve the cultivar scope",
+        "guidance": "Johnny's and Utah State Extension provide general beet cultivation guidance. This supports outdoor crop management, not Bull's Blood-specific indoor dimensions, hydroponic suitability or Garden pod spacing; the beet root needs adequate soil growing room in field culture.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-beets-wave1", "usu-beets-home-gardens-2020"]
+      },
+      "care": {
+        "short": "Keep moisture more even while roots size",
+        "guidance": "Utah State Extension says moisture fluctuations can crack roots and reduce growth or yield. Avoid interpreting a single symptom as a nutrient problem; this is broad beet-crop field guidance, not an indoor watering schedule or a Bull's Blood-specific response.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
+      },
+      "harvest": {
+        "short": "Harvest greens separately or lift roots as they size",
+        "guidance": "Cornell characterizes Bull's Blood as dual-purpose. Utah State Extension says young beet leaves can be harvested around 4–6 inches and roots can be lifted once sizing begins; harvest timing depends on the desired stage and local conditions. These are crop-level guides, not fixed Bull's Blood or indoor dates.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["cornell-bulls-blood-500", "usu-beets-home-gardens-2020"]
+      },
+      "problems": {
+        "short": "Chilling, crowding, heat and water stress affect beet roots",
+        "guidance": "Utah State Extension reports that early chilling can trigger flowering instead of root swelling, crowding can limit root development, and hot weather or water stress can make roots woody. These are beet-crop risks, not a Bull's Blood resistance or sensitivity rating; no disease resistance is established by the selected variety listing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       }
     },
     "compatibilityProfile": {
@@ -625,7 +646,7 @@
     "category": "flowers",
     "emoji": "🌻",
     "tags": ["sunflower", "girasol", "common sunflower", "helianthus annuus"],
-    "summary": "This species-level entry represents an unspecified common sunflower seed product without assigning it to American Giant, Autumn Beauty, or another named cultivar. Cultivar size, branching and bloom behavior vary.",
+    "summary": "This species-level entry represents common sunflower (Helianthus annuus), not a named cultivar. Sunflower forms differ in mature size, branching and flower number; the established plant develops a conspicuous head that can be grown for display, cut flowers or seed, depending on the selected type.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -635,19 +656,40 @@
         "confidence": "high",
         "sourceIds": ["kew-helianthus-annuus-500"]
       },
+      "growth": {
+        "short": "Mature size, branching and flower number vary by type",
+        "guidance": "Illinois Extension notes substantial variation among sunflower types in height, branching and flower number. Because this identity names no cultivar, do not apply dimensions or a single-stem/branching habit from a named packet to it.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
       "cultivation": {
-        "short": "Warm-season, sunny garden crop",
-        "guidance": "Illinois Extension notes that sunflower types vary in branching and flower number and recommends following the particular seed packet for spacing. This profile does not assert one species-wide mature height or universal Garden placement.",
+        "short": "Sunny outdoor site; follow the selected type's instructions",
+        "guidance": "Illinois Extension recommends a sunny outdoor site and directs gardeners to the seed packet for spacing because sunflower types vary. That outdoor advice does not establish an indoor-light tier, Garden pod count or compatibility with a small hydroponic unit.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "flowering": {
+        "short": "Young flower buds move; mature heads become fixed facing east",
+        "guidance": "Illinois Extension explains that developing flower buds can follow the sun's daily path, but mature stems stiffen and the heads remain oriented east. Pollinators visit flowering sunflowers; the exact flower color and branching pattern depend on the selected variety.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["illinois-sunflowers-500"]
       },
       "harvest": {
-        "short": "Flower and seed uses depend on the selection",
-        "guidance": "Sunflowers may be grown for display, cutting, or seed, but the unnamed product's intended use and harvest stage are not established. Keep those choices tied to its packet or an identified cultivar.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Cut flowers as petals begin to open; harvest seed heads as they dry",
+        "guidance": "Illinois Extension gives two distinct harvest cues: cut flowers when ray petals begin to rise, and collect seed heads when the back turns yellow-brown and droops. These are general sunflower harvest instructions; the unspecified identity does not establish whether its seed product is intended for cutting, edible seed or both.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "problems": {
+        "short": "Birds and other wildlife may consume developing seed heads",
+        "guidance": "Illinois Extension notes that birds and other wildlife feed on drying sunflower heads. This may be welcome for wildlife planting or may compete with a seed harvest; it is not a disease or cultivar-specific pest-resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-sunflowers-500"]
       }
     },
     "compatibilityProfile": {

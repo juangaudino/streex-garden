@@ -25486,8 +25486,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bush-nasturtium-tropaeolum-minus": {
     "summary": {
-      "en": "Bush nasturtium is Tropaeolum minus, distinct from trailing T. majus and watercress (Nasturtium officinale). Wisconsin Extension identifies the two garden species separately; its shared sowing guidance is retained at garden-nasturtium scope.",
-      "es": "La capuchina enana es Tropaeolum minus, distinta de las formas colgantes de T. majus y del berro de agua (Nasturtium officinale). La guía de siembra compartida se conserva al alcance del grupo de capuchinas de jardín."
+      "en": "Bush nasturtium is Tropaeolum minus, distinct from trailing T. majus and watercress (Nasturtium officinale). Wisconsin Extension describes garden nasturtium leaves and flowers as edible, provides mature-plant care guidance and distinguishes the bush and trailing species; cultivar-specific dimensions remain unassigned.",
+      "es": "La capuchina enana es Tropaeolum minus, distinta de la T. majus colgante y del berro de agua (Nasturtium officinale). Wisconsin Extension describe como comestibles las hojas y flores de capuchina, ofrece cuidados de la planta adulta y distingue las especies arbustivas y colgantes; no se asignan dimensiones de cultivar."
     },
     "metrics": {
       "en": [],
@@ -25510,7 +25510,28 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Accepted species: Tropaeolum minus",
-          "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus como tipo arbustivo y T. majus como tipo colgante. No debe confundirse con el berro de agua, de otro género y familia.",
+          "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus arbustiva de T. majus colgante. No debe confundirse con berro de agua, que pertenece a otro género y familia.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-tropaeolum-garden-nasturtium-500"
+        ],
+        "en": {
+          "short": "Bush-type growth; dimensions depend on species and cultivar",
+          "guidance": "Wisconsin Extension describes garden nasturtiums as either low mounds or trailing plants, and distinguishes bush T. minus from trailing T. majus. Because this entry is species-level and names no cultivar, no single mature height or spread is assigned.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Crecimiento arbustivo; las dimensiones dependen de especie y cultivar",
+          "guidance": "Wisconsin Extension describe capuchinas de jardín que forman montículos bajos o tallos colgantes y diferencia T. minus arbustiva de T. majus colgante. Como esta ficha no nombra cultivar, no asigna altura ni extensión maduras únicas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25523,15 +25544,57 @@ export const gardenPlantProfileCatalog = {
           "uw-tropaeolum-garden-nasturtium-500"
         ],
         "en": {
-          "short": "Bush type, not the trailing T. majus habit",
-          "guidance": "Wisconsin Extension describes T. minus cultivars among bush nasturtiums, while trailing forms are treated as T. majus. Its general nasturtium advice includes leaner soil and regular moisture during active growth; do not apply trailing-cultivar dimensions to this species.",
+          "short": "Lean soil and regular moisture support flowering",
+          "guidance": "Wisconsin Extension advises against routine fertilization except in very poor soil because high fertilizer rates favor foliage over flowers. Nasturtiums tolerate dry soil, but regular watering during growth helps maintain flowering. These are shared garden-nasturtium recommendations, not an indoor or hydroponic recipe for T. minus.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Bush type, not the trailing T. majus habit",
-          "guidance": "Wisconsin Extension describe cultivares arbustivos de T. minus y formas colgantes de T. majus. Su consejo general incluye suelo relativamente pobre y humedad regular durante el crecimiento; no se transfieren dimensiones de cultivares colgantes.",
+          "short": "Suelo poco abonado y humedad regular favorecen la floración",
+          "guidance": "Wisconsin Extension desaconseja fertilizar de rutina salvo suelos muy pobres, pues el exceso favorece hojas en lugar de flores. La capuchina tolera suelos secos, aunque el riego regular durante el crecimiento ayuda a mantener la floración. No es receta de interior ni de hidroponía para T. minus.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-tropaeolum-garden-nasturtium-500"
+        ],
+        "en": {
+          "short": "Remove spent flowers to prolong bloom",
+          "guidance": "Wisconsin Extension reports that deadheading or picking flowers prolongs blooming. Treat this as garden-nasturtium guidance; no cultivar-specific pruning response is established for this species record.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Retira flores marchitas para prolongar la floración",
+          "guidance": "Wisconsin Extension indica que quitar o recoger flores prolonga la floración. Es orientación para capuchinas de jardín; no se establece una respuesta de poda específica de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uw-tropaeolum-garden-nasturtium-500"
+        ],
+        "en": {
+          "short": "Flowers continue until frost in seasonal garden settings",
+          "guidance": "Wisconsin Extension says garden nasturtiums continue blooming until frost. In warm, mild climates they may bloom and set seed year-round and can self-seed enough to become invasive; this seasonal behavior is not a universal indoor flowering calendar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Florece hasta las heladas en jardines estacionales",
+          "guidance": "Wisconsin Extension señala que la capuchina sigue floreciendo hasta las heladas. En climas cálidos y templados puede florecer y producir semillas todo el año y resiembrarse mucho; no es un calendario universal de floración interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -25539,20 +25602,41 @@ export const gardenPlantProfileCatalog = {
       },
       "harvest": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
           "uw-tropaeolum-garden-nasturtium-500"
         ],
         "en": {
-          "short": "Flowers are edible in the garden-nasturtium group",
-          "guidance": "Wisconsin Extension describes edible flowers for garden nasturtiums. It does not establish a cultivar-specific flavor or harvest schedule for this species identity.",
+          "short": "Leaves and flowers are edible; younger leaves are milder",
+          "guidance": "Wisconsin Extension describes nasturtium flowers and leaves as edible and suitable for salads. It reports a peppery, watercress-like flavor, stronger in hotter, sunnier conditions; older leaves may be bitter. These are garden-nasturtium group characteristics, not a flavor trial of every T. minus selection.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Flowers are edible in the garden-nasturtium group",
-          "guidance": "Wisconsin Extension describe flores comestibles para las capuchinas de jardín. La fuente no establece sabor ni calendario de cosecha específico para esta identidad.",
+          "short": "Hojas y flores comestibles; las hojas jóvenes son más suaves",
+          "guidance": "Wisconsin Extension describe hojas y flores comestibles, apropiadas para ensaladas, con sabor picante parecido al berro. El sabor puede intensificarse con sol y calor, y las hojas viejas pueden amargar. Estas características corresponden al grupo de capuchinas de jardín, no a una prueba de sabor de cada selección de T. minus.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uw-tropaeolum-garden-nasturtium-500"
+        ],
+        "en": {
+          "short": "Watch for aphids and caterpillar feeding; leafminer trails are usually minor",
+          "guidance": "Wisconsin Extension lists aphids and imported cabbageworm caterpillars among common garden-nasturtium pests. Leafminers may make winding trails in leaves but are reported as causing little damage. Warm-climate self-seeding can also require management; no T. minus-specific resistance is established.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila pulgones y orugas; los rastros de minador suelen causar poco daño",
+          "guidance": "Wisconsin Extension menciona pulgones y orugas de la col importadas entre las plagas comunes de capuchina. Los minadores pueden dejar galerías sinuosas, pero suelen causar poco daño. La resiembra abundante puede requerir manejo en climas cálidos; no se establece resistencia específica de T. minus.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27407,8 +27491,8 @@ export const gardenPlantProfileCatalog = {
   },
   "bulls-blood-beet": {
     "summary": {
-      "en": "Bull's Blood is a named beet variety with red foliage and root use described in Cornell's community variety record. Beet sowing guidance remains crop-level rather than a cultivar-specific germination prescription.",
-      "es": "Bull's Blood se representa como una variedad nombrada de Beta vulgaris. Las observaciones de Cornell son aportes comunitarios, no ensayos controlados."
+      "en": "Bull's Blood is a named dual-purpose beet selection: Cornell's variety record describes red tops as well as root use. Established-plant guidance here separates leaf harvest from root sizing and keeps general beet stress advice at crop scope; Cornell's observations are community-submitted, not controlled trials.",
+      "es": "Bull's Blood es una selección nombrada de remolacha para raíz y follaje: Cornell describe sus hojas rojas y el uso dual. La guía de planta establecida distingue la cosecha de hojas del engrosamiento de la raíz y mantiene los riesgos generales a nivel de cultivo."
     },
     "metrics": {
       "en": [],
@@ -27430,8 +27514,29 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Named Beta vulgaris variety",
-          "guidance": "Kew acepta Beta vulgaris. Cornell mantiene una ficha de Bull's Blood con información de variedades aportada por participantes; el nombre no se trata como evidencia de registro formal.",
+          "short": "Variedad nombrada de Beta vulgaris",
+          "guidance": "Cornell Cooperative Extension mantiene una ficha de Bull's Blood que la describe como variedad de polinización abierta y de uso dual. Incluye observaciones enviadas por usuarios, no resultados de ensayos controlados. Kew acepta Beta vulgaris.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "cornell-bulls-blood-500"
+        ],
+        "en": {
+          "short": "Red beet tops and a storage-root crop",
+          "guidance": "Cornell's Bull's Blood record describes glossy red tops and the variety as dual-purpose. That supports using the foliage and root, but it is a community-sourced variety record rather than a controlled comparison; no exact root size or leaf yield is assigned here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Follaje rojo y cultivo de raíz",
+          "guidance": "La ficha comunitaria de Cornell describe hojas superiores rojas y caracteriza Bull's Blood como de uso dual. Esto respalda aprovechar follaje y raíz, pero no fija tamaño de raíz ni rendimiento foliar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27441,18 +27546,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-beets-wave1"
+          "johnnys-beets-wave1",
+          "usu-beets-home-gardens-2020"
         ],
         "en": {
           "short": "Use beet crop guidance; preserve the cultivar scope",
-          "guidance": "Johnny's beet guide provides crop-level sowing and cultivation instructions. No Bull's Blood-specific indoor size, hydroponic suitability or system spacing is inferred from the general beet guide.",
+          "guidance": "Johnny's and Utah State Extension provide general beet cultivation guidance. This supports outdoor crop management, not Bull's Blood-specific indoor dimensions, hydroponic suitability or Garden pod spacing; the beet root needs adequate soil growing room in field culture.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use beet crop guidance; preserve the cultivar scope",
-          "guidance": "La guía general de remolacha puede aportar contexto de cultivo, pero no establece dimensiones o compatibilidad hidropónica específicas de Bull's Blood.",
+          "short": "Guía general de remolacha; sin receta hidropónica",
+          "guidance": "Johnny's y Utah State Extension aportan orientación general para remolacha de campo. No demuestra dimensiones interiores, idoneidad hidropónica ni separación de pods específicas de Bull's Blood.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-beets-home-gardens-2020"
+        ],
+        "en": {
+          "short": "Keep moisture more even while roots size",
+          "guidance": "Utah State Extension says moisture fluctuations can crack roots and reduce growth or yield. Avoid interpreting a single symptom as a nutrient problem; this is broad beet-crop field guidance, not an indoor watering schedule or a Bull's Blood-specific response.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Mantén la humedad más uniforme mientras crece la raíz",
+          "guidance": "Utah State Extension señala que las fluctuaciones de humedad pueden agrietar las raíces y reducir el crecimiento o rendimiento. No interpretes un síntoma aislado como deficiencia nutritiva; no es un horario de riego interior ni una respuesta específica de Bull's Blood.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27462,18 +27589,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "cornell-bulls-blood-500"
+          "cornell-bulls-blood-500",
+          "usu-beets-home-gardens-2020"
         ],
         "en": {
-          "short": "Leaves and roots are both described uses",
-          "guidance": "Cornell's variety listing calls Bull's Blood dual-purpose and records glossy red tops as harvestable. A specific Garden harvest date or root size is not inferred from community observations.",
+          "short": "Harvest greens separately or lift roots as they size",
+          "guidance": "Cornell characterizes Bull's Blood as dual-purpose. Utah State Extension says young beet leaves can be harvested around 4–6 inches and roots can be lifted once sizing begins; harvest timing depends on the desired stage and local conditions. These are crop-level guides, not fixed Bull's Blood or indoor dates.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Leaves and roots are both described uses",
-          "guidance": "La ficha comunitaria distingue el uso temprano de hojas del desarrollo de raíces y ofrece intervalos de madurez reportados. Son observaciones de la ficha, no resultados de ensayo controlado.",
+          "short": "Cosecha hojas por separado o levanta raíces cuando comiencen a crecer",
+          "guidance": "Cornell describe Bull's Blood como remolacha de uso dual. Utah State indica que las hojas jóvenes pueden cosecharse cuando miden unos 10–15 cm y que las raíces se pueden levantar cuando empiezan a engrosar. Son guías generales, no fechas fijas para esta variedad o interior.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-beets-home-gardens-2020"
+        ],
+        "en": {
+          "short": "Chilling, crowding, heat and water stress affect beet roots",
+          "guidance": "Utah State Extension reports that early chilling can trigger flowering instead of root swelling, crowding can limit root development, and hot weather or water stress can make roots woody. These are beet-crop risks, not a Bull's Blood resistance or sensitivity rating; no disease resistance is established by the selected variety listing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El frío, la competencia, el calor y la falta de agua afectan la raíz",
+          "guidance": "Utah State Extension informa que el frío temprano puede inducir floración en vez de engrosamiento de la raíz; el amontonamiento limita su desarrollo; y el calor o estrés hídrico puede volverla fibrosa. Son riesgos del cultivo de remolacha, no una calificación de resistencia de Bull's Blood.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27724,8 +27873,8 @@ export const gardenPlantProfileCatalog = {
   },
   "sunflower-helianthus-annuus": {
     "summary": {
-      "en": "This species-level entry represents an unspecified common sunflower seed product without assigning it to American Giant, Autumn Beauty, or another named cultivar. Cultivar size, branching and bloom behavior vary.",
-      "es": "Este perfil representa girasol común a nivel de especie, no un cultivar particular. Las formas y tamaños dependen de la variedad elegida."
+      "en": "This species-level entry represents common sunflower (Helianthus annuus), not a named cultivar. Sunflower forms differ in mature size, branching and flower number; the established plant develops a conspicuous head that can be grown for display, cut flowers or seed, depending on the selected type.",
+      "es": "Este perfil representa el girasol común (Helianthus annuus) a nivel de especie, no un cultivar nombrado. Las variedades difieren en tamaño, ramificación y número de flores; la planta adulta puede cultivarse para exhibición, flor de corte o semilla según el tipo."
     },
     "metrics": {
       "en": [],
@@ -27747,7 +27896,28 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Species-level identity; cultivar unspecified",
-          "guidance": "Kew acepta Helianthus annuus. No se especifica cultivar ni altura de planta para esta identidad general.",
+          "guidance": "Kew acepta Helianthus annuus. Esta ficha general se mantiene separada de cultivares nombrados y no toma prestados sus tamaños, ramificación ni colores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "illinois-sunflowers-500"
+        ],
+        "en": {
+          "short": "Mature size, branching and flower number vary by type",
+          "guidance": "Illinois Extension notes substantial variation among sunflower types in height, branching and flower number. Because this identity names no cultivar, do not apply dimensions or a single-stem/branching habit from a named packet to it.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El tamaño, la ramificación y el número de flores varían",
+          "guidance": "Illinois Extension señala que los tipos de girasol varían mucho en altura, ramificación y número de flores. Como aquí no se especifica cultivar, no se asigna una altura ni forma única.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27760,34 +27930,78 @@ export const gardenPlantProfileCatalog = {
           "illinois-sunflowers-500"
         ],
         "en": {
-          "short": "Warm-season, sunny garden crop",
-          "guidance": "Illinois Extension notes that sunflower types vary in branching and flower number and recommends following the particular seed packet for spacing. This profile does not assert one species-wide mature height or universal Garden placement.",
+          "short": "Sunny outdoor site; follow the selected type's instructions",
+          "guidance": "Illinois Extension recommends a sunny outdoor site and directs gardeners to the seed packet for spacing because sunflower types vary. That outdoor advice does not establish an indoor-light tier, Garden pod count or compatibility with a small hydroponic unit.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Warm-season, sunny garden crop",
-          "guidance": "La fuente de University of Illinois aporta contexto para girasoles de jardín; no se atribuyen a esta identidad dimensiones de cultivar, desempeño en contenedor ni compatibilidad hidropónica.",
+          "short": "Lugar exterior soleado; sigue las indicaciones del tipo elegido",
+          "guidance": "Illinois Extension recomienda un sitio soleado y remite al paquete para el espaciamiento, ya que los tipos difieren. Esa guía exterior no define intensidad de luz interior, cantidad de pods ni compatibilidad con un sistema hidropónico pequeño.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-sunflowers-500"
+        ],
+        "en": {
+          "short": "Young flower buds move; mature heads become fixed facing east",
+          "guidance": "Illinois Extension explains that developing flower buds can follow the sun's daily path, but mature stems stiffen and the heads remain oriented east. Pollinators visit flowering sunflowers; the exact flower color and branching pattern depend on the selected variety.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los botones jóvenes se mueven; las cabezas maduras quedan orientadas al este",
+          "guidance": "Illinois Extension explica que los botones en desarrollo pueden seguir el recorrido diario del sol, pero al endurecerse el tallo las cabezas maduras permanecen orientadas al este. Las flores atraen polinizadores; el color y la ramificación dependen de la variedad.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "illinois-sunflowers-500"
+        ],
         "en": {
-          "short": "Flower and seed uses depend on the selection",
-          "guidance": "Sunflowers may be grown for display, cutting, or seed, but the unnamed product's intended use and harvest stage are not established. Keep those choices tied to its packet or an identified cultivar.",
+          "short": "Cut flowers as petals begin to open; harvest seed heads as they dry",
+          "guidance": "Illinois Extension gives two distinct harvest cues: cut flowers when ray petals begin to rise, and collect seed heads when the back turns yellow-brown and droops. These are general sunflower harvest instructions; the unspecified identity does not establish whether its seed product is intended for cutting, edible seed or both.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Flower and seed uses depend on the selection",
-          "guidance": "Las flores y semillas pueden tener usos de jardín distintos según el cultivar y el propósito de cultivo; no se asigna una fecha de cosecha sin una selección concreta.",
+          "short": "Corta flores al abrirse los pétalos; recoge las cabezas cuando se sequen",
+          "guidance": "Illinois Extension ofrece dos señales distintas: cortar flores cuando comienzan a elevarse los pétalos y recoger cabezas de semilla cuando el dorso se vuelve amarillo-marrón y cae. Son pautas generales; esta identidad sin cultivar no indica si el paquete es para flor de corte, semilla comestible o ambos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-sunflowers-500"
+        ],
+        "en": {
+          "short": "Birds and other wildlife may consume developing seed heads",
+          "guidance": "Illinois Extension notes that birds and other wildlife feed on drying sunflower heads. This may be welcome for wildlife planting or may compete with a seed harvest; it is not a disease or cultivar-specific pest-resistance claim.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Aves y fauna pueden consumir las cabezas con semillas",
+          "guidance": "Illinois Extension señala que las aves y otros animales comen las cabezas que se están secando. Puede ser deseable para fauna o competir con la cosecha de semilla; no es una enfermedad ni una afirmación de resistencia varietal.",
           "items": [],
           "avoid": "",
           "context": ""

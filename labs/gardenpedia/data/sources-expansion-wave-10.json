@@ -279,10 +279,10 @@
     "url": "https://extension.illinois.edu/blogs/good-growing/2022-03-18-how-grow-sunflowers-home-great-addition-any-garden",
     "type": "university_extension",
     "tier": 1,
-    "scope": "General sunflower home-growing context and warning that branching, flower number and spacing depend on type/seed packet",
+    "scope": "General sunflower home-growing context: flowering and head development, cut-flower and seed harvest cues, wildlife use, and warning that branching, flower number, mature size and spacing depend on type/seed packet; not evidence for a named cultivar",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["cultivation", "care"]
+    "claimKinds": ["growth", "cultivation", "care", "flowering", "harvest", "use", "problems"]
   }
 ]

@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "italian-oregano": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "english-thyme": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "italian-giant-parsley": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "common-chives": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "dill-bouquet": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "rosemary": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "lavender-vera": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "bibb-lettuce": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "iceberg-lettuce": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "buttercrunch-lettuce": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "broadleaf-sage": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Evidence pending for this specific identity and growing system.",
+            "es": "Evidencia pendiente para esta identidad y sistema específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    },
+    "black-seeded-simpson": {
+      "source": "plants-current-gardens.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
+            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+          }
+        }
+      }
+    }
+  }
+}

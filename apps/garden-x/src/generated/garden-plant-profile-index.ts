@@ -25551,8 +25551,8 @@ export const gardenPlantProfileCatalog = {
   },
   "wasabina-mustard-greens": {
     "summary": {
-      "en": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). USDA GRIN taxonomy and Kew's alternative treatment differ on the name Brassica juncea; that conflict is retained.",
-      "es": "Wasabina es una mostaza de hoja vendida como semilla. El nombre alude a su sabor; no significa que sea Wasabia japonica."
+      "en": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). NC State and Utah State Extension provide useful mustard-crop cultivation and harvest guidance, but do not document Wasabina-specific performance. USDA and Kew's taxonomic treatments differ; that conflict remains open.",
+      "es": "Wasabina es una selección de mostaza de hoja (Brassica juncea) ofrecida por un proveedor; no es wasabi verdadero (Wasabia japonica/Eutrema japonicum). NC State y Utah State Extension aportan orientación útil para el cultivo y la cosecha de mostazas, pero no documentan el desempeño específico de Wasabina. USDA y Kew presentan tratamientos taxonómicos distintos, conflicto que sigue pendiente."
     },
     "metrics": {
       "en": [],
@@ -25565,7 +25565,8 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "hudson-valley-wasabina-500",
           "usda-brassica-juncea-500",
-          "kew-brassica-juncea-conflict-500"
+          "kew-brassica-juncea-conflict-500",
+          "ncstate-brassica-juncea-gardener-500"
         ],
         "en": {
           "short": "Mustard green product; not botanical wasabi",
@@ -25576,45 +25577,115 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Mustard green product; not botanical wasabi",
-          "guidance": "Hudson Valley Seed Company identifica el producto como Brassica juncea y explica que el nombre alude al sabor parecido al wasabi. Kew y USDA difieren en el tratamiento taxonómico consultado; se conserva el conflicto para revisión.",
+          "guidance": "Hudson Valley Seed Company identifica el producto Wasabina como Brassica juncea. El nombre comercial alude a una mostaza de hoja, no demuestra que sea wasabi verdadero. NC State describe Brassica juncea como anual; Kew adopta × Brassarda juncea mientras USDA PLANTS lista Brassica juncea. Se conserva esta discrepancia para revisión, sin inventar dimensiones ni formalidad de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncstate-brassica-juncea-gardener-500"
+        ],
+        "en": {
+          "short": "Brassica juncea is an annual mustard; Wasabina-specific size is unknown",
+          "guidance": "NC State Extension describes Brassica juncea as an annual herb in the mustard family. This supports species-level lifecycle context only; it does not establish Wasabina's mature dimensions, leaf form, or formal cultivar status.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Brassica juncea es una mostaza anual; se desconocen las dimensiones de Wasabina",
+          "guidance": "NC State Extension describe Brassica juncea como una hierba anual de la familia de las mostazas. Esto respalda el ciclo de vida a nivel de especie, pero no establece las dimensiones maduras, la forma de las hojas ni el estatus formal de cultivar de Wasabina.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "cultivation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncstate-brassica-juncea-gardener-500",
+          "usuext-mustard-garden-500"
+        ],
         "en": {
-          "short": "Use mustard-green guidance at crop scope",
-          "guidance": "The selected seller page identifies the seed product but does not establish a complete cultivation schedule. Use an appropriate mustard-green crop guide when available; no cultivar-specific hydroponic suitability or spacing is asserted.",
+          "short": "Cool-season mustard greens; field guidance is not a hydroponic recipe",
+          "guidance": "NC State Extension describes Brassica juncea mustard as a cool-season crop for spring and fall, grown in full sun to part shade in rich, well-drained, consistently moist soil. It notes that heat and moisture stress can intensify flavor and encourage bolting. Utah State Extension gives field cultivation guidance for mustard greens; neither source establishes Wasabina-specific hydroponic suitability, indoor lighting, nutrient targets, or pod spacing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use mustard-green guidance at crop scope",
-          "guidance": "La ficha de producto recomienda sol pleno y ofrece instrucciones regionales de siembra. Son indicaciones del proveedor para Wasabina, no reglas para todas las mostazas.",
+          "short": "Mostaza de clima fresco; la guía de campo no es una receta hidropónica",
+          "guidance": "NC State Extension describe la mostaza Brassica juncea como cultivo de clima fresco para primavera y otoño, en sol pleno o sombra parcial, con suelo rico, bien drenado y constantemente húmedo. Señala que el calor y el estrés hídrico pueden intensificar el sabor y favorecer el espigado. Utah State Extension aporta orientación de campo para mostazas de hoja; ninguna fuente establece compatibilidad hidropónica específica de Wasabina, iluminación interior, objetivos nutritivos ni distancia entre pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usuext-mustard-garden-500",
+          "ncstate-brassica-juncea-gardener-500"
+        ],
+        "en": {
+          "short": "Long, warm days can bring a normal flower stalk",
+          "guidance": "Utah State Extension describes mustard as a cool-season crop that naturally flowers during long, warm summer days; NC State Extension also notes summer bolting. Flowering is ordinary crop development, not evidence of disease or a Wasabina-specific timing trait.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los días cálidos y largos pueden producir un tallo floral normal",
+          "guidance": "Utah State Extension describe que las mostazas de clima fresco florecen naturalmente durante los días largos y cálidos del verano; NC State Extension también señala el espigado estival. La floración forma parte del desarrollo normal del cultivo y no es evidencia de enfermedad ni de un calendario específico de Wasabina.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usuext-mustard-garden-500"
+        ],
         "en": {
-          "short": "Product-specific harvest guidance remains open",
-          "guidance": "No reliable harvest stage or timing is selected for this product. Follow the exact packet and add validated crop guidance when available.",
+          "short": "Pick young leaves or cut above an intact growing point",
+          "guidance": "Utah State Extension recommends harvesting mustard leaves before the seed stalk forms, either by removing older leaves or cutting near the soil while leaving the growing point intact for continued growth. This is general mustard guidance; Wasabina-specific harvest days and yield remain unverified.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Product-specific harvest guidance remains open",
-          "guidance": "El proveedor estima 45 días y describe hojas de cosecha. La cifra es una estimación del producto, no una garantía climática.",
+          "short": "Recoge hojas jóvenes o corta sin dañar el punto de crecimiento",
+          "guidance": "Utah State Extension recomienda cosechar las hojas de mostaza antes de que aparezca el tallo de semilla, retirando hojas mayores o cortando cerca del suelo sin dañar el punto de crecimiento para permitir que continúe el desarrollo. Es orientación general para mostazas; los días y el rendimiento de cosecha específicos de Wasabina no están verificados.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncstate-brassica-juncea-gardener-500",
+          "usuext-mustard-garden-500"
+        ],
+        "en": {
+          "short": "Heat-related bolting and leaf pests are useful warning signs",
+          "guidance": "NC State and Utah State Extension describe summer heat or long warm days as causes of bolting, stronger flavor, or poorer leaf quality in mustard greens. Utah State identifies aphids by curled or crinkled leaves, chewing caterpillars by holes, and flea beetles by tiny holes in seedlings and leaves. These are crop-level risks, not Wasabina-specific susceptibility or resistance claims.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El espigado por calor y las plagas foliares son señales útiles",
+          "guidance": "NC State y Utah State Extension describen el calor estival o los días largos y cálidos como causas de espigado, sabor más fuerte o menor calidad de las hojas de mostaza. Utah State identifica pulgones por hojas enrolladas o arrugadas, orugas por agujeros de mordedura y escarabajos pulga por pequeños agujeros en plántulas y hojas. Son riesgos generales del cultivo, no susceptibilidad ni resistencia específica de Wasabina.",
           "items": [],
           "avoid": "",
           "context": ""

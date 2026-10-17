@@ -518,7 +518,7 @@
       "mostaza wasabi",
       "brassica juncea"
     ],
-    "summary": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). USDA GRIN taxonomy and Kew's alternative treatment differ on the name Brassica juncea; that conflict is retained.",
+    "summary": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). NC State and Utah State Extension provide useful mustard-crop cultivation and harvest guidance, but do not document Wasabina-specific performance. USDA and Kew's taxonomic treatments differ; that conflict remains open.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -529,22 +529,44 @@
         "sourceIds": [
           "hudson-valley-wasabina-500",
           "usda-brassica-juncea-500",
-          "kew-brassica-juncea-conflict-500"
+          "kew-brassica-juncea-conflict-500",
+          "ncstate-brassica-juncea-gardener-500"
         ]
       },
+      "growth": {
+        "short": "Brassica juncea is an annual mustard; Wasabina-specific size is unknown",
+        "guidance": "NC State Extension describes Brassica juncea as an annual herb in the mustard family. This supports species-level lifecycle context only; it does not establish Wasabina's mature dimensions, leaf form, or formal cultivar status.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncstate-brassica-juncea-gardener-500"]
+      },
       "cultivation": {
-        "short": "Use mustard-green guidance at crop scope",
-        "guidance": "The selected seller page identifies the seed product but does not establish a complete cultivation schedule. Use an appropriate mustard-green crop guide when available; no cultivar-specific hydroponic suitability or spacing is asserted.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Cool-season mustard greens; field guidance is not a hydroponic recipe",
+        "guidance": "NC State Extension describes Brassica juncea mustard as a cool-season crop for spring and fall, grown in full sun to part shade in rich, well-drained, consistently moist soil. It notes that heat and moisture stress can intensify flavor and encourage bolting. Utah State Extension gives field cultivation guidance for mustard greens; neither source establishes Wasabina-specific hydroponic suitability, indoor lighting, nutrient targets, or pod spacing.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncstate-brassica-juncea-gardener-500", "usuext-mustard-garden-500"]
+      },
+      "flowering": {
+        "short": "Long, warm days can bring a normal flower stalk",
+        "guidance": "Utah State Extension describes mustard as a cool-season crop that naturally flowers during long, warm summer days; NC State Extension also notes summer bolting. Flowering is ordinary crop development, not evidence of disease or a Wasabina-specific timing trait.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usuext-mustard-garden-500", "ncstate-brassica-juncea-gardener-500"]
       },
       "harvest": {
-        "short": "Product-specific harvest guidance remains open",
-        "guidance": "No reliable harvest stage or timing is selected for this product. Follow the exact packet and add validated crop guidance when available.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Pick young leaves or cut above an intact growing point",
+        "guidance": "Utah State Extension recommends harvesting mustard leaves before the seed stalk forms, either by removing older leaves or cutting near the soil while leaving the growing point intact for continued growth. This is general mustard guidance; Wasabina-specific harvest days and yield remain unverified.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usuext-mustard-garden-500"]
+      },
+      "problems": {
+        "short": "Heat-related bolting and leaf pests are useful warning signs",
+        "guidance": "NC State and Utah State Extension describe summer heat or long warm days as causes of bolting, stronger flavor, or poorer leaf quality in mustard greens. Utah State identifies aphids by curled or crinkled leaves, chewing caterpillars by holes, and flea beetles by tiny holes in seedlings and leaves. These are crop-level risks, not Wasabina-specific susceptibility or resistance claims.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncstate-brassica-juncea-gardener-500", "usuext-mustard-garden-500"]
       }
     },
     "compatibilityProfile": {

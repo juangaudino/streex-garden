@@ -13,11 +13,7 @@
     "claimKinds": [
       "identity",
       "cultivation",
-      "seedling",
-      "physical_characteristics",
-      "flowering",
-      "harvest",
-      "problems"
+      "seedling"
     ]
   },
   {
@@ -38,6 +34,44 @@
     ]
   },
   {
+    "id": "ncstate-brassica-juncea-gardener-500",
+    "publisher": "NC State Extension",
+    "title": "Brassica juncea — NC Extension Gardener Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/brassica-juncea/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Brassica juncea species-level identity and mustard-greens cultivation, flowering, edible uses and problems; not Wasabina-specific proof",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog quality enrichment",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "physical_characteristics",
+      "flowering",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "usuext-mustard-garden-500",
+    "publisher": "Utah State University Extension",
+    "title": "How to Grow Mustard in Your Garden",
+    "url": "https://extension.usu.edu/yardandgarden/research/mustard-in-the-garden.pdf",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "General mustard-greens cultivation, harvest and problem guidance; not Wasabina-specific or hydroponic guidance",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog quality enrichment",
+    "claimKinds": [
+      "cultivation",
+      "flowering",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
     "id": "johnnys-arugula-wave1",
     "publisher": "University of Wisconsin Extension",
     "title": "Arugula, Eruca sativa",
@@ -51,7 +85,11 @@
     "claimKinds": [
       "identity",
       "cultivation",
-      "seedling"
+      "seedling",
+      "physical_characteristics",
+      "flowering",
+      "harvest",
+      "problems"
     ]
   },
   {

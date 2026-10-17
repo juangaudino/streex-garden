@@ -677,6 +677,29 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(entry.compatibilityProfile?.matureSize.height.status).toBe("unknown");
   });
 
+  it("enriches Wasabina with mustard-crop guidance while preserving cultivar and taxonomy limits", () => {
+    const entry = findCanonicalEntry("wasabina-mustard-greens")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+
+    expect(english.guides.find((guide) => guide.id === "growth")?.body).toMatch(
+      /species-level lifecycle context only/i,
+    );
+    expect(english.guides.find((guide) => guide.id === "cultivation")?.body).toMatch(
+      /neither source establishes Wasabina-specific hydroponic suitability/i,
+    );
+    expect(english.guides.find((guide) => guide.id === "harvest")?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Utah State University") }),
+      ]),
+    );
+    expect(spanish.guides.find((guide) => guide.id === "problems")?.body).toMatch(
+      /escarabajos pulga/i,
+    );
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    expect(entry.compatibilityProfile?.spacing.status).toBe("unknown");
+  });
+
   it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {
     const passionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "en");
     const spanishPassionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "es");

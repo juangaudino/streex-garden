@@ -64,31 +64,48 @@
     }
   },
   "rhubarb": {
-    "summary": "Hortaliza perenne grande y resistente al frío, cosechada por sus pecíolos cocidos. Se documenta la siembra y la división; las hojas son tóxicas y no deben comerse.",
-    "sections": {
-      "identity": {
-        "short": "Especie aceptada: Rheum rhabarbarum",
-        "guidance": "Kew acepta Rheum rhabarbarum, de la familia Polygonaceae. Esta ficha representa el cultivo de jardín a nivel de especie, no una variedad de tallos rojos; UMN indica que tamaño, color, acidez y fibra varían entre variedades."
+    "summary": "Perenne resistente al frío cultivada por sus pecíolos comestibles y ácidos, no por sus hojas. Forma una corona grande y necesita espacio, humedad y tiempo para establecerse. El color y vigor de los tallos varían según la variedad; esta ficha no representa un cultivar nombrado.",
+    "metrics": [
+      {
+        "label": "Vida posible con buen manejo (UMN)",
+        "value": "15+ años",
+        "note": "Contexto de jardín exterior; no es una duración garantizada."
       },
+      {
+        "label": "Superficie típica de cultivo (UMN)",
+        "value": "3 × 3 pies",
+        "note": "Espacio en suelo por planta; no separación entre pods hidropónicos."
+      },
+      {
+        "label": "Primera cosecha habitual",
+        "value": "Segunda temporada; tercera desde semilla",
+        "note": "Orientación de establecimiento para jardín doméstico de UMN."
+      }
+    ],
+    "sections": {
       "cultivation": {
-        "short": "Planta grande para suelo de jardín bien drenado",
-        "guidance": "UMN Extension describe una planta perenne grande adecuada para suelo de jardín bien drenado y cita un área de cultivo típica de 3 por 3 pies. Es una referencia para jardín exterior; no establece aptitud para maceta o hidroponía."
+        "short": "Lugar soleado, bien drenado y con espacio para una corona grande",
+        "guidance": "UMN recomienda sol durante todo el día, suelo bien drenado que conserve humedad y suficiente espacio para cada planta. Los suelos francos retienen mejor agua y nutrientes que los arenosos. En los suelos de jardín de Minnesota tolera un rango amplio de pH; esto no determina pH de solución hidropónica, tamaño de maceta ni iluminación interior. Aporta compost o fertilizante según el suelo y el vigor, evitando acumular fósforo innecesariamente."
       },
       "growth": {
-        "short": "Perenne de larga vida cuyo tamaño y color dependen de la variedad",
-        "guidance": "UMN describe el ruibarbo como una perenne que puede vivir muchos años. Algunas variedades de tallo verde suelen ser más vigorosas y producir tallos más largos que las rojas; no se asigna color ni tamaño a una variedad no especificada."
-      },
-      "harvest": {
-        "short": "Cosecha los pecíolos; descarta las hojas",
-        "guidance": "UMN recomienda esperar hasta la segunda temporada para plantas establecidas, o la tercera si se iniciaron desde semilla. Solo se comen los pecíolos: las hojas son tóxicas y deben retirarse y desecharse."
+        "short": "La corona persistente forma hojas grandes y grupos de tallos",
+        "guidance": "La corona del ruibarbo se expande y forma yemas para las temporadas siguientes. Una plantación bien cuidada puede durar 15 años o más. Color, longitud, fibra y vigor varían entre variedades, por lo que esta ficha de especie no promete tallos rojos. Las hojas permiten recuperar reservas después de cosechar."
       },
       "maintenance": {
-        "short": "La corona puede dividirse al expandirse",
-        "guidance": "UMN explica que la corona se expande hacia afuera y puede beneficiarse de división cada ciertos años. Es una vía vegetativa práctica, no evidencia de que la propagación por semilla sea imposible."
+        "short": "Riega durante el verano, controla malezas y divide coronas viejas",
+        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas."
+      },
+      "harvest": {
+        "short": "Extrae los tallos maduros girando y tirando; descarta las hojas",
+        "guidance": "Espera hasta la segunda temporada para cosechar, o la tercera si se inició desde semilla. Cuando los tallos alcancen su longitud completa, sujétalos cerca de la base, tira y gira en lugar de cortar la corona. Recorta y desecha de inmediato las láminas foliares, que son tóxicas. En Minnesota la cosecha principal va de primavera a principios de verano; después deja de recolectar regularmente para que las hojas restantes recuperen reservas. No es un calendario universal."
+      },
+      "uses": {
+        "short": "Cocina los tallos ácidos; nunca consumas las hojas",
+        "guidance": "La parte comestible es el pecíolo o tallo de la hoja, que suele cocinarse y endulzarse para tartas, salsas, pasteles, conservas o bebidas. Los tallos verdes y rojos pueden ser comestibles; el color rojo no garantiza mayor dulzor. Las láminas foliares son tóxicas y deben desecharse. Las raíces no forman parte de la cosecha alimentaria."
       },
       "problems": {
-        "short": "Evita condiciones muy húmedas alrededor de la corona",
-        "guidance": "UMN identifica las hojas como tóxicas y señala riesgo de pudrición de corona o raíces en condiciones húmedas o con drenaje deficiente. Es orientación de seguridad y cultivo a nivel de especie, no diagnóstico de una planta individual."
+        "short": "Vigila encharcamiento, pudrición de corona y manchas en hojas",
+        "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad."
       }
     }
   },

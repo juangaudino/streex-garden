@@ -17,6 +17,7 @@ import {
   CALCULATOR_STAGES,
   buildCropEvidenceCoverage,
   calculateGardenResult,
+  hasApplicableCropNutrientEvidence,
   loadSavedSystems,
   persistSavedSystems,
   recipeStageLabel,
@@ -35,6 +36,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(resolveNutrientCropIdentity("genovese-basil")).toBe("basil");
     expect(resolveNutrientCropIdentity("common-mint")).toBeUndefined();
     expect(resolveNutrientCropIdentity("hoja-santa-piper-auritum")).toBeUndefined();
+  });
+
+  it("keeps embedded nutrient guidance insufficient when there is no applicable crop evidence", () => {
+    const fenugreekHasNutrientEvidence = hasApplicableCropNutrientEvidence(
+      "common-fenugreek-trigonella-foenum-graecum",
+    );
+    expect(fenugreekHasNutrientEvidence).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("genovese-basil")).toBe(true);
   });
 
   it("resolves Genovese Basil through applicable EC evidence before calibration", () => {

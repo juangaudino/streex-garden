@@ -430,6 +430,19 @@ export function resolveNutrientCropIdentity(plantId: string): string | undefined
 }
 
 /**
+ * Whether this published identity has applicable crop-level EC evidence for
+ * the embedded Plant Detail calculator. Unknown identities must not inherit
+ * the legacy calculator's broad category defaults.
+ */
+export function hasApplicableCropNutrientEvidence(plantId: string): boolean {
+  if (CROP_EVIDENCE.some((item) => item.cropIdentity === plantId)) return true;
+  if (!resolveNutrientCropIdentity(plantId)) return false;
+
+  const result = calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE);
+  return result.status !== "INSUFFICIENT";
+}
+
+/**
  * Audits every published Gardenpedia identity against the explicit nutrient
  * evidence boundary. Unknown identities stay insufficient; no name matching
  * or category guessing is used here.
@@ -443,11 +456,7 @@ export function buildCropEvidenceCoverage(): CropEvidenceCoverageReport {
     }
     if (!evidenceIdentity) return { plantId: id, classification: "INSUFFICIENT" as const };
 
-    const applicability = calculatePolycultureRange(
-      contextFor({ [id]: 1 }, "gh-flora"),
-      CROP_EVIDENCE,
-    );
-    return applicability.status === "INSUFFICIENT"
+    return !hasApplicableCropNutrientEvidence(id)
       ? { plantId: id, classification: "INSUFFICIENT" as const, evidenceIdentity }
       : {
           plantId: id,

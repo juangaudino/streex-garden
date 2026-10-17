@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Minus, Play, Plus } from "lucide-react";
 import type { DonorGuideSection, DonorPlantDetail } from "./canonical-adapter";
 import { cn } from "@/lib/utils";
 import { NutrientCalculator } from "./nutrient-calculator";
+import { hasApplicableCropNutrientEvidence } from "./calculator-lovable-adapter";
 
 const categoryLabels: Record<string, string> = {
   herbs: "Hierbas",
@@ -26,6 +27,10 @@ const detailLabels = {
     pending: "Por validar",
     coverage: "Cobertura de fuentes",
     calculator: "Calculadora de mezcla nutritiva",
+    nutrientGuidanceUnavailable: "Guía nutritiva no disponible para esta identidad",
+    nutrientGuidanceUnavailableBody:
+      "Gardenpedia aún no tiene evidencia nutritiva aplicable y verificada para esta planta. No sustituimos ese dato con un rango genérico de su categoría.",
+    insufficientEvidence: "Evidencia insuficiente",
     guides: "Guías de manejo",
     sections: "secciones de cultivo",
     seedProtocol: "Protocolo de germinación",
@@ -54,6 +59,10 @@ const detailLabels = {
     pending: "Needs validation",
     coverage: "Source coverage",
     calculator: "Nutrient mixing calculator",
+    nutrientGuidanceUnavailable: "No crop-specific nutrient target available",
+    nutrientGuidanceUnavailableBody:
+      "Gardenpedia does not yet have applicable, verified nutrient evidence for this identity. A generic category range is not substituted.",
+    insufficientEvidence: "Insufficient evidence",
     guides: "Growing guides",
     sections: "growing sections",
     seedProtocol: "Germination protocol",
@@ -268,14 +277,31 @@ function FullSheet({
 
       {/* Right column */}
       <div className="flex flex-col gap-5 lg:col-span-7 xl:col-span-8">
-        <NutrientCalculator
-          plantIds={[detail.id]}
-          defaultLiters={2.5}
-          language={language}
-          eyebrow={language === "es" ? "Herramienta de cultivo" : "Growing tool"}
-          title={labels.calculator}
-          description={`${language === "es" ? detail.spanishName : detail.name}. ${language === "es" ? "Suma las demás plantas que comparten el mismo agua y los litros que tienes." : "Add other plants sharing the water and the liters in your reservoir."}`}
-        />
+        {hasApplicableCropNutrientEvidence(detail.id) ? (
+          <NutrientCalculator
+            plantIds={[detail.id]}
+            defaultLiters={2.5}
+            language={language}
+            eyebrow={language === "es" ? "Herramienta de cultivo" : "Growing tool"}
+            title={labels.calculator}
+            description={`${language === "es" ? detail.spanishName : detail.name}. ${language === "es" ? "Suma las demás plantas que comparten el mismo agua y los litros que tienes." : "Add other plants sharing the water and the liters in your reservoir."}`}
+          />
+        ) : (
+          <section className="glass-panel p-5 sm:p-6" role="note">
+            <p className="eyebrow text-[10px]">
+              {language === "es" ? "Herramienta de cultivo" : "Growing tool"}
+            </p>
+            <h2 className="mt-1 font-display text-xl font-semibold">
+              {labels.nutrientGuidanceUnavailable}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {labels.nutrientGuidanceUnavailableBody}
+            </p>
+            <span className="mt-4 inline-flex rounded-full border border-border px-3 py-1 text-xs font-semibold text-muted-foreground">
+              {labels.insufficientEvidence}
+            </span>
+          </section>
+        )}
         {detail.timeline && (
           <section className="glass-panel p-5 sm:p-6">
             <p className="eyebrow text-[10px]">

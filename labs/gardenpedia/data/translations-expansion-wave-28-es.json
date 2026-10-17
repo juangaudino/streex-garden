@@ -1,5 +1,131 @@
 {
-  "blush-hibiscus":{"summary":"La selección Blush Hibiscus de Gardyn aparece documentada con el nombre botánico histórico Hibiscus moscheutos. Kew acepta ahora Muenchhusia moscheutos; la página del producto no establece un cultivar nombrado."},
-  "pink-petunia":{"summary":"Pink Petunia de Gardyn es una selección de flores rosas identificada como Petunia × hybrida, sinónimo del nombre aceptado por Kew Petunia × atkinsiana. No se establece un cultivar nombrado."},
-  "black-viola":{"summary":"Gardyn identifica su producto Black Viola como Viola cornuta y describe flores oscuras. Kew acepta Viola cornuta como especie; el producto no establece un cultivar nombrado."}
+  "blush-hibiscus": {
+    "summary": "La selección Blush Hibiscus de Gardyn aparece documentada con el nombre botánico histórico Hibiscus moscheutos. Kew acepta ahora Muenchhusia moscheutos; la página del producto no establece un cultivar nombrado.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Muenchhusia moscheutos",
+        "guidance": "Kew acepta Muenchhusia moscheutos y considera Hibiscus moscheutos un sinónimo. Blush es una selección comercial de Gardyn, no un cultivar confirmado.",
+        "items": [
+          "Kew acepta Muenchhusia moscheutos y considera Hibiscus moscheutos un sinónimo.",
+          "Blush es una selección comercial de Gardyn, no un cultivar confirmado."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Cultivo documentado solo para Gardyn",
+        "guidance": "Gardyn describe el manejo de su propio pod. No se extrapola a exteriores ni otros sistemas.",
+        "items": [
+          "Gardyn describe el manejo de su propio pod."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Especie perenne; porte sin confirmar",
+        "guidance": "Kew clasifica la especie como perenne o helófita. No hay dimensiones confirmadas para la selección Blush.",
+        "items": [
+          "Kew clasifica la especie como perenne o helófita.",
+          "No hay dimensiones confirmadas para la selección Blush."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "problems": {
+        "short": "Problemas específicos sin evidencia",
+        "guidance": "No hay evidencia suficiente para afirmar plagas o enfermedades particulares de esta selección.",
+        "items": [
+          "No hay evidencia suficiente para afirmar plagas o enfermedades particulares de esta selección."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      }
+    }
+  },
+  "pink-petunia": {
+    "summary": "Pink Petunia de Gardyn es una selección de flores rosas identificada como Petunia × hybrida, sinónimo del nombre aceptado por Kew Petunia × atkinsiana. No se establece un cultivar nombrado.",
+    "sections": {
+      "identity": {
+        "short": "Híbrido aceptado: Petunia × atkinsiana",
+        "guidance": "Kew acepta Petunia × atkinsiana; Petunia × hybrida es sinónimo. El color rosa no identifica un cultivar.",
+        "items": [
+          "Kew acepta Petunia × atkinsiana; Petunia × hybrida es sinónimo.",
+          "El color rosa no identifica un cultivar."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Distinguir cultivo Gardyn del general",
+        "guidance": "Gardyn documenta su pod; la orientación general de Extension no demuestra el rendimiento de esta selección en todos los sistemas.",
+        "items": [
+          "Gardyn documenta su pod; la orientación general de Extension no demuestra el rendimiento de esta selección en todos los sistemas."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Flor rosa; dimensiones sin confirmar",
+        "guidance": "La descripción de tamaño de Gardyn es comercial y no establece altura o extensión universal.",
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "maintenance": {
+        "short": "Despunte y recorte moderado",
+        "guidance": "Extension describe retirar flores marchitas y recortar ligeramente petunias en general, no la respuesta exacta de esta selección.",
+        "items": [
+          "Extension describe retirar flores marchitas y recortar ligeramente petunias en general, no la respuesta exacta de esta selección."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "problems": {
+        "short": "Posibles ácaros",
+        "guidance": "Gardyn menciona araña roja como posible plaga, sin demostrar una susceptibilidad exclusiva.",
+        "items": [
+          "Gardyn menciona araña roja como posible plaga, sin demostrar una susceptibilidad exclusiva."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      }
+    }
+  },
+  "black-viola": {
+    "summary": "Gardyn identifica su producto Black Viola como Viola cornuta y describe flores oscuras. Kew acepta Viola cornuta como especie; el producto no establece un cultivar nombrado.",
+    "sections": {
+      "identity": {
+        "short": "Identidad: Viola cornuta",
+        "guidance": "Gardyn identifica Black Viola como Viola cornuta y Kew acepta la especie. El color oscuro no es un cultivar confirmado.",
+        "items": [
+          "Gardyn identifica Black Viola como Viola cornuta y Kew acepta la especie.",
+          "El color oscuro no es un cultivar confirmado."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Cultivo de temporada fresca",
+        "guidance": "NC State Extension describe la especie como ornamental de temporada fresca. Las instrucciones de Gardyn son específicas de su pod.",
+        "items": [
+          "NC State Extension describe la especie como ornamental de temporada fresca.",
+          "Las instrucciones de Gardyn son específicas de su pod."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Tallos rastreros y ascendentes",
+        "guidance": "Extension describe el hábito de la especie; el tamaño comercial de Gardyn no es una medida universal.",
+        "items": [
+          "Extension describe el hábito de la especie; el tamaño comercial de Gardyn no es una medida universal."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "harvest": {
+        "short": "Uso ornamental; comestibilidad no verificada",
+        "guidance": "Esta ficha no afirma seguridad alimentaria de la selección comercial.",
+        "items": [
+          "Esta ficha no afirma seguridad alimentaria de la selección comercial."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "problems": {
+        "short": "Babosas, caracoles y hongos foliares",
+        "guidance": "NC State Extension menciona estas posibilidades en la especie, sin confirmar un diagnóstico para una planta concreta.",
+        "items": [
+          "NC State Extension menciona estas posibilidades en la especie, sin confirmar un diagnóstico para una planta concreta."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      }
+    }
+  }
 }

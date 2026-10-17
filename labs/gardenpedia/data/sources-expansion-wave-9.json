@@ -11,5 +11,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
     "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "umn-lettuce-home-garden-500",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing lettuce, endive and radicchio in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Regional lettuce crop guidance for cool-season growth, moisture, bolting, leaf/whole-plant harvest and common problems; not Salanova cultivar-specific or hydroponic spacing guidance",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs reference-coverage enrichment",
+    "claimKinds": ["cultivation", "harvest", "problems"]
   }
 ]

@@ -24826,8 +24826,8 @@ export const gardenPlantProfileCatalog = {
   },
   "green-salanova-lettuce": {
     "summary": {
-      "en": "Salanova is a Rijk Zwaan brand/range containing multiple lettuce types and varieties. This identity represents the green Salanova type named in the reference context, not one exact cultivar.",
-      "es": "Salanova es una marca/gama de Rijk Zwaan con varios tipos y variedades de lechuga. Esta identidad representa el tipo Salanova verde indicado, no un cultivar exacto."
+      "en": "Green Salanova represents a branded group of green Lactuca sativa types, not one exact cultivar. Rijk Zwaan describes its range as suitable for commercial hydroponic production and a one-cut harvest; University of Minnesota Extension supplies separate crop-level guidance on cool conditions, repeated leaf harvest and bolting.",
+      "es": "Green Salanova representa un grupo comercial de tipos verdes de Lactuca sativa, no un cultivar exacto. Rijk Zwaan describe su gama como apta para producción hidropónica comercial y cosecha de un solo corte; University of Minnesota Extension aporta por separado orientación general para lechuga sobre clima fresco, cosecha repetida de hojas y espigado."
     },
     "metrics": {
       "en": [],
@@ -24842,15 +24842,36 @@ export const gardenPlantProfileCatalog = {
           "kew-lactuca-sativa-500"
         ],
         "en": {
-          "short": "Green branded lettuce type; exact variety unresolved",
-          "guidance": "Rijk Zwaan describes Salanova as a range with multiple types and varieties. Kew accepts Lactuca sativa. Green Salanova is retained as a useful horticultural/product type; no single cultivar is inferred.",
+          "short": "Green Salanova brand group; exact variety unresolved",
+          "guidance": "Rijk Zwaan describes Salanova as a brand range containing multiple lettuce types and varieties, available in green and red. Kew accepts Lactuca sativa. This identity represents the green Salanova group named in the reference context; it is not promoted to a single cultivar or specific leaf/head form.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Green branded lettuce type; exact variety unresolved",
-          "guidance": "Rijk Zwaan describe Salanova como una gama con múltiples tipos y variedades. Kew acepta Lactuca sativa. Se conserva Green Salanova como tipo hortícola/comercial útil, sin inferir un cultivar único.",
+          "short": "Green Salanova brand group; exact variety unresolved",
+          "guidance": "Rijk Zwaan describe Salanova como una marca con varios tipos y variedades de lechuga, disponibles en verde y rojo. Kew acepta Lactuca sativa. Esta ficha representa el grupo Salanova verde indicado en el contexto de referencia; no lo convierte en un cultivar ni en una forma específica de hoja o cabeza.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "rijkzwaan-salanova-brand-500"
+        ],
+        "en": {
+          "short": "Many baby-sized leaves; Salanova types vary",
+          "guidance": "Rijk Zwaan describes the Salanova range as producing numerous baby-sized leaves in several lettuce types. Its ‘one cut, ready’ description refers to cutting the head at the base and separating the leaves; it is a brand-level harvest presentation, not a claim that every green selection has the same shape or mature dimensions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Muchas hojas pequeñas; los tipos Salanova varían",
+          "guidance": "Rijk Zwaan describe la gama Salanova como productora de numerosas hojas pequeñas en varios tipos de lechuga. Su descripción «un corte, lista» se refiere a cortar la cabeza por la base y separar las hojas; es una presentación de cosecha a nivel de marca, no una afirmación de que toda selección verde tenga la misma forma o dimensiones maduras.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -24861,19 +24882,61 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "rijkzwaan-salanova-brand-500",
-          "johnnys-lettuce",
-          "usu-lettuce"
+          "umn-lettuce-home-garden-500"
         ],
         "en": {
-          "short": "Cultivar-specific growing traits require exact product identity",
-          "guidance": "General lettuce guidance applies only at crop scope. The selected brand source does not establish which green Salanova variety is represented or provide a universal set of dimensions and hydroponic requirements.",
+          "short": "Commercial hydroponics documented; household system details remain open",
+          "guidance": "Rijk Zwaan says Salanova is well suited to hydroponic production as whole heads at high density. This supports the branded range at commercial-production scope; it does not establish performance in every home unit, pod count, nutrient recipe or exact unresolved green variety. For lettuce crop care, University of Minnesota Extension recommends cool-season conditions and keeping soil moist; its regional field spacing is not converted to Garden system spacing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cultivar-specific growing traits require exact product identity",
-          "guidance": "La orientación general de lechuga aplica solo al alcance del cultivo. La fuente de marca no identifica cuál variedad verde se representa ni establece dimensiones o requisitos hidropónicos universales.",
+          "short": "Hidroponía comercial documentada; detalles para sistemas domésticos pendientes",
+          "guidance": "Rijk Zwaan indica que Salanova es muy adecuada para producción hidropónica comercial como cabeza completa y a alta densidad. Esto respalda la gama comercial, pero no garantiza el rendimiento en cualquier unidad doméstica, la cantidad de pods, una receta nutritiva ni una variedad verde exacta aún no resuelta. Para el cultivo general de lechuga, University of Minnesota Extension recomienda condiciones frescas y mantener húmedo el suelo; su espaciamiento regional de campo no se convierte en espaciamiento para un sistema Garden.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "harvest": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "rijkzwaan-salanova-brand-500",
+          "umn-lettuce-home-garden-500"
+        ],
+        "en": {
+          "short": "One-cut head harvest; crop-level leaf picking also documented",
+          "guidance": "Rijk Zwaan describes Salanova’s ‘one cut, ready’ approach: cut the head at the base to release baby-sized leaves. Separately, University of Minnesota Extension says lettuce leaves can be picked once usable; leaving most small leaves can allow multiple harvests, while the whole plant can also be cut at or just above the soil. The repeat-cut guidance is general lettuce crop evidence, not a guarantee for an unspecified Salanova type.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cosecha de cabeza en un corte; también hay guía general para recoger hojas",
+          "guidance": "Rijk Zwaan describe el enfoque Salanova «un corte, lista»: cortar la cabeza por la base para desprender sus hojas pequeñas. Por separado, University of Minnesota Extension indica que se pueden recoger hojas de lechuga cuando alcanzan tamaño utilizable; si se conservan la mayoría de las hojas pequeñas puede haber varios cortes, y también se puede cortar la planta entera a ras o apenas por encima del suelo. La cosecha repetida es evidencia general del cultivo de lechuga, no una garantía para un tipo Salanova sin especificar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-lettuce-home-garden-500"
+        ],
+        "en": {
+          "short": "Heat and long days can trigger bolting",
+          "guidance": "University of Minnesota Extension reports that heat and long days can trigger lettuce bolting; leaves may become tough or bitter and harvest ends when the plant bolts. This is crop-level lettuce guidance, not a Salanova-specific heat-tolerance rating. No cultivar resistance is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El calor y los días largos pueden provocar espigado",
+          "guidance": "University of Minnesota Extension informa que el calor y los días largos pueden provocar el espigado de la lechuga; las hojas pueden volverse duras o amargas y la cosecha termina cuando la planta espiga. Es orientación general para lechuga, no una calificación de tolerancia al calor específica de Salanova. No se infiere resistencia varietal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -24884,15 +24947,15 @@ export const gardenPlantProfileCatalog = {
         "confidence": "pending",
         "sourceIds": [],
         "en": {
-          "short": "Exact green Salanova variety remains unresolved",
-          "guidance": "The brand contains multiple varieties. A product/seed packet name is required before publishing cultivar-specific color, head type, maturity, or resistance claims.",
+          "short": "Exact green Salanova variety and home-system performance remain unresolved",
+          "guidance": "The commercial range contains multiple varieties and lettuce forms. A packet or breeder variety name is needed for cultivar-specific dimensions, maturity and resistance. Commercial hydroponic suitability does not establish fit, spacing or nutrient targets for a particular Garden system.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Exact green Salanova variety remains unresolved",
-          "guidance": "La gama contiene varias variedades. Hace falta el nombre exacto del producto o paquete para publicar afirmaciones específicas sobre color, forma, madurez o resistencia.",
+          "short": "Falta resolver la variedad Salanova verde exacta y su desempeño en sistemas domésticos",
+          "guidance": "La gama comercial incluye varias variedades y formas de lechuga. Se necesita el nombre de la variedad del paquete o del obtentor para establecer dimensiones, madurez y resistencia específicas. La aptitud hidropónica comercial no establece compatibilidad, espaciamiento ni objetivos nutritivos para un sistema Garden particular.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -630,6 +630,29 @@ describe("direct Gardenpedia presentation adapter", () => {
     );
   });
 
+  it("keeps Salanova range evidence distinct from exact cultivar and home-system claims", () => {
+    const entry = findCanonicalEntry("green-salanova-lettuce")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const englishHarvest = english.guides.find((guide) => guide.id === "harvest");
+
+    expect(english.summary).toMatch(/not one exact cultivar/i);
+    expect(english.guides.find((guide) => guide.id === "cultivation")?.body).toMatch(
+      /commercial-production scope/i,
+    );
+    expect(english.guides.find((guide) => guide.id === "problems")?.body).toMatch(/bolting/i);
+    expect(englishHarvest?.body).toMatch(/general lettuce crop evidence/i);
+    expect(englishHarvest?.sources.map((source) => source.url)).toContain(
+      "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+    );
+    expect(spanish.guides.find((guide) => guide.id === "harvest")?.body).toMatch(
+      /evidencia general del cultivo de lechuga/i,
+    );
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("compatible");
+    expect(entry.compatibilityProfile?.spacing.status).toBe("unknown");
+    expect(entry.compatibilityProfile?.matureSize.height.status).toBe("unknown");
+  });
+
   it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {
     const passionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "en");
     const spanishPassionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "es");

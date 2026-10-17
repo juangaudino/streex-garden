@@ -653,6 +653,30 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(entry.compatibilityProfile?.matureSize.height.status).toBe("unknown");
   });
 
+  it("adds useful crop-scoped arugula care without turning it into Astro-specific evidence", () => {
+    const entry = findCanonicalEntry("astro-arugula")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const harvest = english.guides.find((guide) => guide.id === "harvest");
+
+    expect(english.guides.find((guide) => guide.id === "growth")?.body).toMatch(
+      /not measurements or a bolting-resistance claim for Astro/i,
+    );
+    expect(english.guides.find((guide) => guide.id === "cultivation")?.body).toMatch(
+      /not converted to indoor pod counts/i,
+    );
+    expect(harvest?.body).toMatch(/cut the plant an inch or two above ground/i);
+    expect(
+      harvest?.sources.some((source) => source.label.includes("University of Wisconsin")),
+    ).toBe(true);
+    expect(spanish.guides.find((guide) => guide.id === "problems")?.body).toMatch(
+      /escarabajos pulga/i,
+    );
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("compatible");
+    expect(entry.compatibilityProfile?.spacing.status).toBe("unknown");
+    expect(entry.compatibilityProfile?.matureSize.height.status).toBe("unknown");
+  });
+
   it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {
     const passionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "en");
     const spanishPassionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "es");

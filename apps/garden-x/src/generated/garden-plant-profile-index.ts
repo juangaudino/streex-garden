@@ -24965,8 +24965,8 @@ export const gardenPlantProfileCatalog = {
   },
   "astro-arugula": {
     "summary": {
-      "en": "Astro is a named arugula seed product. Kew accepts Eruca vesicaria; University of Wisconsin Extension's crop guidance is applied only at general arugula scope, not as an Astro-specific performance claim.",
-      "es": "Astro es un producto de semilla de rúcula. La guía de cultivo general no se presenta como un ensayo de Astro."
+      "en": "Astro is a supplier-listed arugula seed product. University of Wisconsin–Madison Extension describes the crop-level annual rosette, cool-season care, leaf harvest and bolting behavior; those facts are not Astro-specific trial results. Johnny's hydroponic-performer tag remains product-scoped and does not supply a nutrient recipe or home-system guarantee.",
+      "es": "Astro es un producto de semilla de rúcula listado por un proveedor. University of Wisconsin–Madison Extension describe a nivel del cultivo su roseta anual, manejo de clima fresco, cosecha de hojas y espigado; esos datos no son ensayos específicos de Astro. La etiqueta hidropónica de Johnny's se limita al producto y no ofrece receta nutritiva ni garantía para sistemas domésticos."
     },
     "metrics": {
       "en": [],
@@ -24989,7 +24989,28 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Supplier-listed Astro arugula selection",
-          "guidance": "Johnny's lista Astro como producto de semilla de rúcula. Kew acepta Eruca vesicaria; la ficha comercial no demuestra registro formal del cultivar.",
+          "guidance": "Johnny's lista Astro como producto de semilla de rúcula. Kew acepta Eruca vesicaria; la ficha comercial respalda la identidad del producto, no un registro formal del cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-arugula-wave1"
+        ],
+        "en": {
+          "short": "Annual rosette crop; bolting produces a flower stalk",
+          "guidance": "University of Wisconsin–Madison Extension describes salad arugula at crop scope as an annual rosette with lobed leaves. Long days, high temperatures, or dry soil can trigger a branched flowering stem. These are general arugula traits, not measurements or a bolting-resistance claim for Astro.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultivo anual en roseta; el espigado produce un tallo floral",
+          "guidance": "University of Wisconsin–Madison Extension describe la rúcula de ensalada, a nivel del cultivo, como una planta anual en roseta con hojas lobuladas. Los días largos, las temperaturas altas o el suelo seco pueden provocar un tallo floral ramificado. Son rasgos generales de la rúcula, no mediciones ni una afirmación de resistencia al espigado de Astro.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -24999,37 +25020,82 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-arugula-wave1"
+          "johnnys-arugula-wave1",
+          "johnnys-astro-arugula-500"
         ],
         "en": {
-          "short": "Use general arugula crop guidance",
-          "guidance": "University of Wisconsin Extension provides crop-level arugula growing guidance. Johnny's marks its Astro listing as a hydroponic performer; that supplier designation is product-scoped and is not a system-specific yield or nutrient prescription.",
+          "short": "Cool-season crop; crop-level spacing is not pod spacing",
+          "guidance": "University of Wisconsin–Madison Extension recommends full sun in fertile, well-drained soil, with light shade as one way to slow bolting during hot weather. It describes successive outdoor sowings every two to three weeks and container growing, including a bright windowsill. Its field spacing is not converted to indoor pod counts. Johnny's separately labels the Astro product a hydroponic performer; this does not establish a nutrient recipe, yield, or fit in every home system.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Use general arugula crop guidance",
-          "guidance": "University of Wisconsin Extension aporta guía al nivel del cultivo. Johnny's etiqueta su ficha Astro como apta para hidroponía; esa designación comercial se limita al producto y no garantiza rendimiento en todo sistema ni receta nutritiva.",
+          "short": "Cultivo de clima fresco; la distancia de campo no es distancia entre pods",
+          "guidance": "University of Wisconsin–Madison Extension recomienda sol pleno en suelo fértil y bien drenado; algo de sombra puede ayudar a retrasar el espigado en épocas calurosas. Describe siembras sucesivas al exterior cada dos o tres semanas y cultivo en recipientes, incluso en una ventana luminosa. Su espaciamiento de campo no se convierte en cantidad de pods interiores. Johnny's etiqueta por separado el producto Astro como apto para hidroponía; eso no establece receta nutritiva, rendimiento ni compatibilidad con todo sistema doméstico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-arugula-wave1"
+        ],
+        "en": {
+          "short": "Small edible flowers follow bolting",
+          "guidance": "The extension describes creamy-white arugula flowers with contrasting veins and notes that the blossoms are edible as a mild garnish. Flowering is normal crop development after bolting; timing and color intensity are not asserted specifically for Astro.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Pequeñas flores comestibles después del espigado",
+          "guidance": "La extensión describe flores de rúcula color crema con venas contrastantes y señala que pueden usarse como guarnición suave comestible. La floración es parte normal del desarrollo del cultivo tras el espigado; aquí no se afirma un calendario ni intensidad de color específicos de Astro.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-arugula-wave1"
+        ],
         "en": {
-          "short": "Crop-level leaf harvest",
-          "guidance": "Follow crop-level arugula guidance and the product packet for harvest timing. No Astro-specific number of harvest days or repeat-cut yield is asserted here.",
+          "short": "Pick young leaves or cut above the base for regrowth",
+          "guidance": "University of Wisconsin–Madison Extension says leaves can be harvested when a couple of inches long: remove individual rosette leaves, or cut the plant an inch or two above ground and harvest again from regrowth. It also notes that regular picking can delay seed set and that older leaves may taste stronger or more bitter. This is crop-level guidance; no Astro-specific harvest date or yield is claimed.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Crop-level leaf harvest",
-          "guidance": "Sigue el paquete para el tiempo del producto. No se afirma aquí una fecha de cosecha ni rendimiento repetido específico de Astro.",
+          "short": "Recoge hojas jóvenes o corta sobre la base para permitir rebrote",
+          "guidance": "University of Wisconsin–Madison Extension indica que las hojas pueden cosecharse cuando miden unos pocos centímetros: se pueden retirar hojas individuales de la roseta o cortar la planta a unos pocos centímetros del suelo y volver a cosechar el rebrote. También señala que recogerlas con regularidad puede retrasar la formación de semilla y que las hojas mayores pueden tener un sabor más intenso o amargo. Es guía general del cultivo; no se afirma fecha ni rendimiento específicos de Astro.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "johnnys-arugula-wave1"
+        ],
+        "en": {
+          "short": "Heat, long days, drought and flea beetles matter",
+          "guidance": "The extension identifies long days, high temperatures, or dry soil as bolting triggers; hot and dry conditions can also intensify leaf flavor. Flea beetles may leave small shot holes or severely damage seedlings. These are general arugula risks, not an Astro-specific resistance rating.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Influyen el calor, los días largos, la sequía y los escarabajos pulga",
+          "guidance": "La extensión identifica los días largos, las temperaturas altas o el suelo seco como desencadenantes del espigado; el calor y la sequía también pueden intensificar el sabor. Los escarabajos pulga pueden dejar pequeños agujeros o dañar mucho las plántulas. Son riesgos generales de la rúcula, no una calificación de resistencia específica de Astro.",
           "items": [],
           "avoid": "",
           "context": ""

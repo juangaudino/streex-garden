@@ -1,0 +1,1462 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "genovese-basil": {
+      "source": "plants.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "cilantro": {
+      "source": "plants.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "red-romaine-lettuce": {
+      "source": "plants.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "common-mint": {
+      "source": "plants.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "cherry-tomato": {
+      "source": "plants.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "sweet-basil": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "curled-chervil": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "garlic-chives": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "evergreen-bunching-onion-nabuka": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "petunia-dwarf-bedding-mixed": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "sunflower-american-giant-hybrid": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "sunflower-autumn-beauty": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "marigold-jolly-jester": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "zinnia-lilliput-mixed": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "delphinium-magic-fountains-dwarf": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "dark-green-zucchini": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "crimson-giant-radish": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "german-thyme": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "cascading-petunia": {
+      "source": "plants-owned-seeds.json",
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "thai-basil": {
+      "source": "plants-expansion-batch-a1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "italian-large-leaf-basil": {
+      "source": "plants-expansion-batch-a1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "florence-fennel": {
+      "source": "plants-expansion-batch-a1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "lemongrass-homegrown": {
+      "source": "plants-expansion-batch-a1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "spearmint": {
+      "source": "plants-expansion-batch-a1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "tiny-tim-tomato": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "fragrant-dwarf-dianthus-mix": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "mini-lunchbox-sweet-pepper": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "chinese-light-green-celery": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "tiny-tim-sweet-alyssum": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Identity-specific evidence is still pending.",
+            "es": "Sigue pendiente la evidencia específica de esta identidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "monterey-strawberry": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    },
+    "seaside-f1-spinach": {
+      "source": "plants-expansion-batch-b1.json",
+      "sections": {
+        "germination": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "hydroponics": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
+            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+[
+  {
+    "id": "parsnip-pastinaca-sativa",
+    "name": "Parsnip",
+    "spanishName": "Chirivía",
+    "scientificName": "Pastinaca sativa",
+    "variety": null,
+    "category": "root vegetables",
+    "emoji": "🥕",
+    "tags": ["parsnip", "chirivía", "Pastinaca sativa", "root crop"],
+    "summary": "Pastinaca sativa is the accepted parsnip species. Its edible taproot is particularly sensitive to transplant disturbance and needs a deep, stone-free growing bed; UMN Extension recommends direct sowing and scopes timing advice to Minnesota.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Accepted species: Pastinaca sativa", "guidance": "Kew accepts Pastinaca sativa. This profile represents the crop species, not a named cultivar such as Hollow Crown.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-pastinaca-sativa-wave45"] },
+      "growth": { "short": "Biennial root crop grown for its taproot", "guidance": "Kew describes the species as biennial. UMN Extension describes a long, tapering edible root and notes that parsnip seedlings form a taproot early; transplanting can damage and misdirect root growth.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-pastinaca-sativa-wave45", "umn-carrots-parsnips-home-wave45"] },
+      "cultivation": { "short": "Direct sow into deep, loose soil", "guidance": "UMN recommends direct seeding parsnips rather than starting in pots, with deep sandy-loam soil favored over shallow, heavy or rocky ground. These are Minnesota home-garden recommendations; no hydroponic suitability is inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-carrots-parsnips-home-wave45"] },
+      "maintenance": { "short": "Thin crowded seedlings and maintain even moisture", "guidance": "UMN advises thinning both carrots and parsnips to make room for root development and keeping soil moisture steady. Crowding can limit roots; crusting at the surface can hinder emergence.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-carrots-parsnips-home-wave45"] },
+      "harvest": { "short": "Cool soil improves the late-season root", "guidance": "UMN recommends leaving parsnips in the ground into late fall or even early spring where conditions permit; cold soil can increase sweetness. The source's timing is regional, not a fixed date for every climate.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-carrots-parsnips-home-wave45"] },
+      "problems": { "short": "Compaction, drought and contact irritation matter", "guidance": "UMN associates rocky, heavy or compacted soil with forked roots and inadequate moisture with poor root quality. It also warns that parsnip foliage can irritate skin in some people, especially in bright sun; use protective clothing when handling if sensitive.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-carrots-parsnips-home-wave45"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The selected evidence addresses a taproot crop in deep soil and does not establish a Garden system configuration." }, "growthHabits": { "status": "unknown", "reason": "The compatibility vocabulary does not describe taproot crop architecture." }, "matureSize": { "height": { "status": "unknown", "reason": "No species-wide dimensions selected." }, "spread": { "status": "unknown", "reason": "No species-wide dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Outdoor row spacing is not converted to system positions." }, "light": { "status": "unknown", "reason": "Outdoor garden guidance is not converted to indoor grow-light tiers." } }
+  },
+  {
+    "id": "rutabaga-brassica-napus",
+    "name": "Rutabaga",
+    "spanishName": "Nabo sueco",
+    "scientificName": "Brassica napus",
+    "variety": "Rutabaga crop type; no cultivar assigned",
+    "category": "root vegetables",
+    "emoji": "🥕",
+    "tags": ["rutabaga", "swede", "nabo sueco", "Brassica napus", "legume-free root crop"],
+    "summary": "Rutabaga is a cultivated root-crop type within accepted Brassica napus, not a separate species. Utah State Extension describes it as a cool-season crop usually grown from seed for fall harvest; the profile keeps crop-type guidance distinct from species taxonomy.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Rutabaga crop type within Brassica napus", "guidance": "Kew accepts Brassica napus at species level; USU Extension treats rutabaga as a crop type and lists rutabaga varieties separately. No named cultivar or infraspecific taxon is assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-brassica-napus-wave45", "usu-rutabagas-turnips-wave45"] },
+      "growth": { "short": "Cool-season crop grown for its swollen root", "guidance": "USU Extension describes rutabaga as a cool-season root crop that develops slowly and is generally planted for fall production. This is crop-level guidance and does not imply every cultivar matures on the same schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-rutabagas-turnips-wave45"] },
+      "cultivation": { "short": "Direct sow in deep, fertile, well-drained soil", "guidance": "USU recommends direct sowing in deep, fertile, well-drained soil, with summer sowing for a fall crop in its Utah context. It warns that heat and moisture stress reduce root quality; outdoor spacing is not a hydroponic planting prescription.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-rutabagas-turnips-wave45"] },
+      "maintenance": { "short": "Keep moisture even and thin after emergence", "guidance": "USU advises thinning rutabaga seedlings after emergence and maintaining regular, uniform moisture. Moisture fluctuations can contribute to cracking, woody or pithy roots; the advice is for field rows, not indoor pod spacing.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-rutabagas-turnips-wave45"] },
+      "harvest": { "short": "Harvest roots once they reach usable size", "guidance": "USU gives root size and crop timing as harvest cues for rutabaga, but the exact size and maturity vary by cultivar and growing conditions. No cultivar-specific harvest date is assigned.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-rutabagas-turnips-wave45"] },
+      "problems": { "short": "Avoid hot, dry or uneven growth", "guidance": "USU notes heat stress and irregular water can reduce quality and contribute to bitter flavors or root disorders. These are crop-level environmental risks, not a disease-resistance statement.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-rutabagas-turnips-wave45"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The evidence is for root development in soil and does not establish system suitability." }, "growthHabits": { "status": "unknown", "reason": "Root-crop form is not represented by the controlled compatibility habit vocabulary." }, "matureSize": { "height": { "status": "unknown", "reason": "No species-wide dimensions selected." }, "spread": { "status": "unknown", "reason": "No species-wide dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Field spacing is not translated into system pod spacing." }, "light": { "status": "unknown", "reason": "Outdoor sun guidance is not converted to an indoor light tier." } }
+  },
+  {
+    "id": "hyacinth-bean-lablab-purpureus",
+    "name": "Hyacinth Bean",
+    "spanishName": "Frijol jacinto",
+    "scientificName": "Lablab purpureus",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌸",
+    "tags": ["hyacinth bean", "lablab", "frijol jacinto", "Dolichos lablab", "ornamental vine"],
+    "summary": "Hyacinth bean is the accepted Lablab purpureus species, grown as a striking climbing ornamental. Illinois Extension recommends full sun, support, and soaking seed overnight in warm water for quicker germination; no cultivar is assigned.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Accepted species: Lablab purpureus", "guidance": "Kew accepts Lablab purpureus and lists Dolichos purpureus as a synonym. Hyacinth bean is a common name; no named cultivar or food-use claim is inferred for this ornamental profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-lablab-purpureus-wave45", "illinois-hyacinth-bean-wave45"] },
+      "growth": { "short": "Vigorous climbing annual or perennial", "guidance": "Kew describes the species as scrambling and annual or perennial; Illinois Extension presents hyacinth bean as a vigorous ornamental vine. A fixed mature size is not selected because growth depends on climate and support.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-lablab-purpureus-wave45", "illinois-hyacinth-bean-wave45"] },
+      "cultivation": { "short": "Warm-season vine for a sunny supported site", "guidance": "Illinois Extension recommends full sun and notes that seeds may be started indoors before planting out in its local spring schedule. Provide a suitable support for the climbing habit; its calendar is regional, not a universal frost date.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["illinois-hyacinth-bean-wave45"] },
+      "maintenance": { "short": "Give the climbing stems room and support", "guidance": "The Illinois Extension listing identifies hyacinth bean as a vigorous vine and recommends an early indoor start for quick establishment. It does not establish a universal pruning or container-size prescription.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["illinois-hyacinth-bean-wave45"] },
+      "propagation": { "short": "Seed propagation is documented", "guidance": "Illinois Extension describes hyacinth bean as easy to grow from seed and recommends soaking seed overnight in warm water before sowing to encourage quicker germination. This is the source's horticultural guidance; no exact germination duration is claimed.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["illinois-hyacinth-bean-wave45"] },
+      "problems": { "short": "Cultivar, food safety and climate need local context", "guidance": "The selected ornamental source does not establish cultivar-specific disease resistance or edible-use preparation. This profile therefore makes no food-safety claim about pods or seeds and leaves those uses outside scope.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The sources describe a vigorous outdoor climbing ornamental, not Garden system performance." }, "growthHabits": { "status": "unknown", "reason": "The compatibility schema has no climbing-vine value; habit is described in the Plant Profile." }, "matureSize": { "height": { "status": "unknown", "reason": "No stable species-wide size selected." }, "spread": { "status": "unknown", "reason": "No stable species-wide size selected." } }, "spacing": { "status": "unknown", "reason": "No outdoor vine spacing is converted into system positions." }, "light": { "status": "unknown", "reason": "Full-sun garden advice is not an indoor grow-light classification." } }
+  },
+  {
+    "id": "winged-bean-psophocarpus-tetragonolobus",
+    "name": "Winged Bean",
+    "spanishName": "Frijol alado",
+    "scientificName": "Psophocarpus tetragonolobus",
+    "variety": null,
+    "category": "vegetables",
+    "emoji": "🫛",
+    "tags": ["winged bean", "goa bean", "frijol alado", "Psophocarpus tetragonolobus", "tropical legume"],
+    "summary": "Winged bean is a tropical climbing legume whose distinctive four-edged pods and multi-part uses make it different from ordinary snap beans. UF/IFAS documents warm-region cultivation and seed scarification/soaking, but its Florida context should not be generalized to cool climates.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Accepted species: Psophocarpus tetragonolobus", "guidance": "Kew accepts Psophocarpus tetragonolobus. UF/IFAS identifies winged bean by its climbing habit and four longitudinal pod wings; common names such as goa bean are search aliases, not separate identities.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-psophocarpus-tetragonolobus-wave45", "ufifas-winged-bean-wave45"] },
+      "growth": { "short": "Climbing tropical legume with distinctive winged pods", "guidance": "UF/IFAS describes a climbing plant with weak vining stems and pods bearing four angled wings. It notes daylength sensitivity in traditional types and availability of day-neutral cultivars; no particular cultivar is represented here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-winged-bean-wave45"] },
+      "cultivation": { "short": "Heat-loving crop with regional seasonal limits", "guidance": "UF/IFAS reports winged bean as suited to hot, humid Florida conditions, sensitive to frost, and requiring irrigation in dry weather. Those conditions do not establish suitability in every home garden or hydroponic system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-winged-bean-wave45"] },
+      "maintenance": { "short": "Install support before sowing", "guidance": "UF/IFAS recommends direct sowing because the plants have weak root systems and says to install a trellis or other support before planting. The source describes an outdoor tropical crop, not a Garden pod-placement plan.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-winged-bean-wave45"] },
+      "harvest": { "short": "Harvest pods while immature and tender", "guidance": "UF/IFAS describes young pods as a food crop and notes that mature beans require longer cooking because of their hard shells. Follow regionally appropriate food preparation; no maturity calendar is generalized from the Florida source.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ufifas-winged-bean-wave45"] },
+      "propagation": { "short": "Scarify and soak hard seed before direct sowing", "guidance": "UF/IFAS says winged bean seed is very tough and recommends scarification and a 12-hour warm-water soak to encourage germination, followed by direct sowing. No exact germination temperature or days-to-emergence is given there.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-winged-bean-wave45"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The cited cultivation source addresses warm-region soil production, not hydroponic performance." }, "growthHabits": { "status": "unknown", "reason": "Vining habit is documented but the controlled compatibility profile does not represent trellised tropical legumes." }, "matureSize": { "height": { "status": "unknown", "reason": "No species-wide dimensions selected." }, "spread": { "status": "unknown", "reason": "No stable species-wide spread selected." } }, "spacing": { "status": "unknown", "reason": "Field support and spacing are not converted to indoor system positions." }, "light": { "status": "unknown", "reason": "Sunny outdoor exposure is not equated with an indoor grow-light tier." } }
+  },
+  {
+    "id": "pineapple-sage-salvia-elegans",
+    "name": "Pineapple Sage",
+    "spanishName": "Salvia piña",
+    "scientificName": "Salvia elegans",
+    "variety": null,
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": ["pineapple sage", "salvia piña", "Salvia elegans", "hummingbird sage"],
+    "summary": "Pineapple sage is the accepted Salvia elegans species, a tender perennial subshrub grown for aromatic foliage and late-season red flowers. Extension sources differ in emphasis: one cautions against routine seed growing, while another notes seed and cutting routes; named cultivars should be preserved vegetatively.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Accepted species: Salvia elegans", "guidance": "Kew accepts Salvia elegans. The profile is species-level and does not assign cultivars such as Golden Delicious or Honey Melon, which have distinct vegetative selection traits.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-salvia-elegans-wave45", "uwisc-pineapple-sage-wave45"] },
+      "growth": { "short": "Tender perennial subshrub with late flowers", "guidance": "Kew characterizes the species as a subshrub. UW–Madison Extension describes an open, upright plant with late-season scarlet flowers; it may be grown as an annual in colder climates and can die back after frost.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-salvia-elegans-wave45", "uwisc-pineapple-sage-wave45"] },
+      "cultivation": { "short": "Full sun and consistent moisture", "guidance": "UW–Madison Extension recommends full sun and moist, well-drained soil, noting leaf drop or wilting when plants dry out. Its regional overwintering guidance depends on local climate; no hydroponic suitability is inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uwisc-pineapple-sage-wave45"] },
+      "maintenance": { "short": "Pinch young plants; remove old wood when regrowth begins", "guidance": "UW–Madison Extension says pinching young pineapple sage encourages branching and denser growth; old woody shoots can be removed when new growth appears. It also notes tall stems can be vulnerable to wind damage.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uwisc-pineapple-sage-wave45"] },
+      "harvest": { "short": "Leaves and flowers have culinary and ornamental uses", "guidance": "UW–Madison Extension describes the leaves and flowers as edible and suggests using young leaves fresh; NCSU Extension also describes edible flowers. Use correctly identified plants and ordinary food-handling practices; no medicinal effects are claimed.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uwisc-pineapple-sage-wave45", "ncsu-pineapple-sage-wave45"] },
+      "propagation": { "short": "Seed is possible; cuttings retain named selections", "guidance": "UW–Madison Extension says the species can be grown from seed but cultivars are propagated from tip cuttings. NCSU advises against seed growing unless starts are raised indoors and planted out as established plants. These sources differ in recommendation strength, so seed use is possible but vegetative material is preferred for named cultivars.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uwisc-pineapple-sage-wave45", "ncsu-pineapple-sage-wave45"] },
+      "problems": { "short": "Drought and late flowering can limit performance", "guidance": "UW–Madison Extension reports wilting, leaf curl or leaf drop when too dry and notes that flowering may occur late enough to be cut short by frost in colder regions. Greenhouse pests are not generalized to every outdoor plant.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uwisc-pineapple-sage-wave45"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The selected sources describe garden and container cultivation, not a hydroponic production trial." }, "growthHabits": { "status": "unknown", "reason": "Subshrub habit does not map to the compatibility profile's supported growth-habit categories." }, "matureSize": { "height": { "status": "unknown", "reason": "UW–Madison reports species range and cultivar variation; no representative mature dimension selected." }, "spread": { "status": "unknown", "reason": "UW–Madison reports species range and cultivar variation; no representative mature dimension selected." } }, "spacing": { "status": "unknown", "reason": "No sourced species-wide spacing selected." }, "light": { "status": "unknown", "reason": "Outdoor full-sun guidance is not mapped to an indoor grow-light tier." } }
+  }
+]

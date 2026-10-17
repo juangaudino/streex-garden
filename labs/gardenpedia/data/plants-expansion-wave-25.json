@@ -1,0 +1,83 @@
+[
+  {
+    "id": "southern-pea-vigna-unguiculata",
+    "name": "Southern Pea (Cowpea)",
+    "spanishName": "Caupí (frijol de vaca)",
+    "scientificName": "Vigna unguiculata",
+    "variety": "Southern-pea/cowpea crop type; no named cultivar or black-eye market class assigned",
+    "category": "legumes",
+    "emoji": "🫘",
+    "tags": ["southern pea", "cowpea", "black-eyed pea", "blackeye pea", "caupí", "frijol caupí", "Vigna unguiculata"],
+    "summary": "A warm-season legume grown for green-shell or dry seed. Southern peas are Vigna unguiculata crop types, distinct from common beans and from the yardlong-bean subspecies; cultivar and seed-color class are unspecified.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Cowpea species; southern-pea crop type", "guidance": "Kew accepts Vigna unguiculata. University of Minnesota Extension distinguishes southern peas/black-eyed peas, grown mainly for mature seed, from yardlong beans, while Kew recognizes the yardlong subspecies separately. No black-eye cultivar or seed-color class is assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vigna-unguiculata-wave25", "umn-beans-home-gardens-wave25"]},
+      "cultivation": {"short": "Sow after soil warms; this is a heat-loving crop", "guidance": "UGA Cooperative Extension describes southern peas as requiring warm soil and reports waiting until soil reaches about 60°F in its Georgia production guidance. That threshold and regional planting calendar are not converted into an indoor temperature or a universal schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-southern-peas-wave25", "umn-beans-home-gardens-wave25"]},
+      "growth": {"short": "Bush and vining forms occur within the crop group", "guidance": "University of Minnesota Extension says black-eyed pea and cowpea garden types are commonly bush forms, while the closely related yardlong crop is a long vine needing support. Do not transfer the yardlong growth habit or pod length to this unspecified southern-pea identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-beans-home-gardens-wave25"]},
+      "harvest": {"short": "Harvest as green-shell or dry peas", "guidance": "University of Maryland Extension describes southern peas as harvested at green-shell or dried-pea stage. The profile does not set a maturity day or claim a specific black-eyed cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-beans-home-gardens-wave25", "uga-southern-peas-wave25"]},
+      "problems": {"short": "Cold soil can weaken establishment", "guidance": "UGA Cooperative Extension warns that planting southern peas too early can cause poor stands and replanting. This is crop-level regional guidance; no disease resistance or guaranteed yield is claimed.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uga-southern-peas-wave25"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources describe soil-grown field and home-garden crops, not validated recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Bush and vining crop forms vary; the identity does not specify a cultivar and the controlled habit vocabulary does not encode that distinction."}, "matureSize": {"height": {"status": "unknown", "reason": "No selected source establishes a defensible height for this cultivar-unspecified crop type."}, "spread": {"status": "unknown", "reason": "No cultivar-specific or generally transferable mature spread is established."}}, "spacing": {"status": "unknown", "reason": "Field row and in-row spacings are not indoor pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor full-sun guidance is not mapped to an indoor grow-light tier."}}
+  },
+  {
+    "id": "mung-bean-vigna-radiata",
+    "name": "Mung Bean",
+    "spanishName": "Frijol mungo",
+    "scientificName": "Vigna radiata",
+    "variety": "Species-level mung bean; cultivar unspecified",
+    "category": "legumes",
+    "emoji": "🫘",
+    "tags": ["mung bean", "mungbean", "green gram", "frijol mungo", "Vigna radiata"],
+    "summary": "A warm-season legume grown for dry seed and sprouts. Arkansas Extension describes direct sowing after soil warms; its cultivar-table maturity and sprout timings are not generalized to this cultivar-unspecified profile.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Vigna radiata", "guidance": "Kew accepts Vigna radiata in Fabaceae. The University of Arkansas home-garden guide identifies mung bean under this name and discusses dry-bean and sprout uses; no listed cultivar is assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-vigna-radiata-wave25", "uaex-mungbeans-wave25"]},
+      "cultivation": {"short": "Warm-season annual for sunny, well-drained sites", "guidance": "Arkansas Extension recommends direct seeding in warm weather and describes the crop as tender annual. Its soil and planting guidance is regional home-garden information, not a hydroponic recommendation.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uaex-mungbeans-wave25"]},
+      "growth": {"short": "Compact-to-erect crop forms are described at species level", "guidance": "Kew's species account describes Vigna radiata as a scrambling annual or perennial and cites an erect herb form in its botanical descriptions. No single mature habit or size is assigned to the garden crop because no cultivar is specified.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["kew-vigna-radiata-wave25"]},
+      "harvest": {"short": "Dry pods for beans; sprouting is a separate use", "guidance": "Arkansas Extension describes harvesting the crop for dry beans and separately notes mung bean seed used for sprouts. The listed Berken and Mappe Green timing remains cultivar-specific and is not applied to this species-level record.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uaex-mungbeans-wave25"]},
+      "problems": {"short": "Harvest maturity is not uniform across pods", "guidance": "The Arkansas guide notes pods do not all mature at once and gives a harvest method for the crop. Its numeric maturity percentages are production guidance and are not used as a universal home-garden threshold here.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uaex-mungbeans-wave25"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "No selected source validates mung bean for recirculating home hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Species accounts describe variable forms; no cultivar-specific habit is available."}, "matureSize": {"height": {"status": "unknown", "reason": "No single cultivar-independent garden height is selected."}, "spread": {"status": "unknown", "reason": "No mature spread is established for the unspecified cultivar."}}, "spacing": {"status": "unknown", "reason": "Arkansas row spacing is outdoor soil guidance, not pod spacing."}, "light": {"status": "unknown", "reason": "Sunny outdoor exposure does not establish indoor grow-light intensity."}}
+  },
+  {
+    "id": "tong-hao-glebionis-coronaria",
+    "name": "Tong Hao (Shungiku)",
+    "spanishName": "Tong Hao (shungiku)",
+    "scientificName": "Glebionis coronaria",
+    "variety": "Edible-leaf crop type; broadleaf/narrow-leaf forms not selected",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["tong hao", "shungiku", "chrysanthemum greens", "edible chrysanthemum", "crown daisy", "garland chrysanthemum", "Glebionis coronaria", "Chrysanthemum coronarium"],
+    "summary": "An Asian edible-leaf crop also grown for flowers. UF/IFAS distinguishes broad- and narrow-leaf crop forms with different seasonal contexts; this identity does not claim a particular form or cultivar.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted name: Glebionis coronaria", "guidance": "Kew accepts Glebionis coronaria and lists Chrysanthemum coronarium as a synonym. UF/IFAS identifies Tong Hao, shungiku, edible chrysanthemum and related regional names as this crop; no named cultivar is represented.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-glebionis-coronaria-wave25", "ufifas-tong-hao-wave25"]},
+      "cultivation": {"short": "Cool-to-moderate conditions; warm-season bitterness is possible", "guidance": "UF/IFAS reports an optimum growth range of 68–84°F, partial-shade tolerance, and slightly bitter flavor when grown in hot summer conditions in Florida. Its Florida seasonal windows are regional, not a universal calendar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tong-hao-wave25"]},
+      "growth": {"short": "Upright, branched annual with edible foliage and daisy-like flowers", "guidance": "UF/IFAS describes Tong Hao as an erect, branched annual that may reach 1–3 feet and form dense stands. These are crop-level observations; broad- and narrow-leaf varieties differ, and no single mature size is assigned to a cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tong-hao-wave25"]},
+      "harvest": {"short": "Leaf harvest can be single-cut or repeated by crop type", "guidance": "UF/IFAS reports broadleaf types may be cut once or repeatedly, leaving basal branches/leaves for regrowth; small-leaf types are described as one-time harvest. Because the form is unspecified, both are presented as alternatives, not promises for every plant.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tong-hao-wave25"]},
+      "problems": {"short": "Heat and unmanaged dense stands affect quality and spread", "guidance": "UF/IFAS notes hot summer conditions may make leaves slightly bitter and warns that unmanaged dense stands can crowd native vegetation. This is a management caution from the cited Florida account, not an invasive-status claim for every region.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tong-hao-wave25"]},
+      "uses": {"short": "Leaves are used cooked or fresh; flowers are ornamental", "guidance": "UF/IFAS describes Tong Hao in stir-fries, hot pots, soups and salads, and notes it can also be grown for its flowers. These are culinary and ornamental uses, not a medicinal recommendation.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tong-hao-wave25"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "UF/IFAS provides field and garden guidance but no validated recirculating hydroponic protocol."}, "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ufifas-tong-hao-wave25"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Glebionis coronaria"}, "note": "UF/IFAS describes Tong Hao as erect and branched; controlled-vocabulary upright is a broad habit mapping, not a cultivar-specific form."}]}, "matureSize": {"height": {"status": "known", "value": {"minCm": 30, "maxCm": 91, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["ufifas-tong-hao-wave25"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Glebionis coronaria"}, "note": "UF/IFAS reports 1–3 feet for the crop; broad/narrow leaf form and region vary."}]}, "spread": {"status": "unknown", "reason": "The source describes dense stands but does not provide an individual mature spread."}}, "spacing": {"status": "unknown", "reason": "UF/IFAS row and plant spacing are outdoor soil guidance, not hydroponic pod spacing."}, "light": {"status": "unknown", "reason": "Partial shade outdoor guidance is not converted into an indoor grow-light tier."}}
+  },
+  {
+    "id": "honeydew-melon-cucumis-melo",
+    "name": "Honeydew Melon",
+    "spanishName": "Melón honeydew (melón verde)",
+    "scientificName": "Cucumis melo",
+    "variety": "Honeydew horticultural group within Cucumis melo; no named cultivar assigned",
+    "category": "fruits",
+    "emoji": "🍈",
+    "tags": ["honeydew", "honeydew melon", "green melon", "melón verde", "Cucumis melo", "inodorus group"],
+    "summary": "A smooth-rinded, green-fleshed melon in the Cucumis melo inodorus cultivated group. This is a horticultural crop type, not a separate species or named cultivar; fruiting depends on warm conditions and pollination.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Honeydew is a cultivated Cucumis melo group", "guidance": "Kew accepts Cucumis melo at species level. Iowa State Extension describes honeydew as a cultivated variety/type in the inodorus group with green flesh and smooth green rind. No named cultivar is assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-cucumis-melo-wave25", "iastate-melons-home-wave25"]},
+      "cultivation": {"short": "Warm-season vine requiring pollination and substantial space", "guidance": "Iowa State Extension describes melons as vining warm-season plants, usually allowed to ramble or trained to a trellis with fruit support. Its full-sun, soil and planting recommendations are outdoor regional crop guidance, not indoor-system compatibility.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["iastate-melons-home-wave25"]},
+      "growth": {"short": "Separate male and female flowers require pollination", "guidance": "Iowa State Extension explains that honeydew and related melons have separate male and female flowers on the same plant and rely on pollinators for fruit set. This is species/crop-group guidance, not cultivar-specific yield information.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["iastate-melons-home-wave25"]},
+      "harvest": {"short": "Honeydew does not slip from the vine when ripe", "guidance": "Iowa State Extension distinguishes honeydew from muskmelon: maturity signs include rind color changing from pale green toward yellowish-white, slight softening at the blossom end and a light aroma. These indicators are crop-group guidance; no days-to-maturity is assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["iastate-melons-home-wave25"]},
+      "problems": {"short": "Poor pollination and uneven moisture can harm fruit development", "guidance": "Iowa State Extension describes poor fruit set under limited pollinator activity and notes that inconsistent moisture can affect fruit development. Disease and pest details remain at the cited melon crop-group scope, not as honeydew-specific resistance claims.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["iastate-melons-home-wave25"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected guidance is for open-air soil gardens; it does not establish compatibility with Garden's recirculating systems."}, "growthHabits": {"status": "unknown", "reason": "Vining is described, but the existing controlled vocabulary lacks a climbing/vining option."}, "matureSize": {"height": {"status": "unknown", "reason": "Trellised vine dimensions depend on cultivar and training; no named cultivar is supplied."}, "spread": {"status": "unknown", "reason": "Ground-spread varies with cultivar and management and is not quantified for this identity."}}, "spacing": {"status": "unknown", "reason": "Soil-bed hill and row spacing is not hydroponic pod spacing."}, "light": {"status": "unknown", "reason": "Full outdoor sun is not mapped to indoor grow-light intensity."}}
+  }
+]

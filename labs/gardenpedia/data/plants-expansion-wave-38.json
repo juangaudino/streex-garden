@@ -1,0 +1,138 @@
+[
+  {
+    "id": "bird-of-paradise-strelitzia-reginae",
+    "name": "Bird of Paradise",
+    "spanishName": "Ave del paraíso",
+    "scientificName": "Strelitzia reginae",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🕊️",
+    "tags": ["bird of paradise", "ave del paraíso", "crane flower", "flor grulla", "Strelitzia reginae", "bird-of-paradise flower"],
+    "summary": "Kew accepts Strelitzia reginae; NC State Extension describes a clumping South African perennial grown as a striking houseplant or warm-climate ornamental. Its rhizomes, large leaves and bird-shaped flowers distinguish it from the giant white bird of paradise, Strelitzia nicolai.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species; distinct from giant white bird of paradise", "guidance": "Kew accepts Strelitzia reginae and lists Strelitzia regalis as a synonym. The common name Bird of Paradise is also used for other species, including S. nicolai; this catalog identity is specifically S. reginae.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-strelitzia-reginae-wave38", "ncsu-strelitzia-reginae-wave38"]},
+      "growth": {"short": "Clumping tropical perennial with large leaves and showy flowers", "guidance": "NC State describes a South African clumping perennial with gray-green leaves arising from underground rhizomes and a distinctive orange-and-blue bird-like inflorescence. It lists a typical landscape height and width of 3–4 ft; indoor dimensions can differ with age and container conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-strelitzia-reginae-wave38"]},
+      "cultivation": {"short": "Bright, sunny placement; keep the potting medium well drained", "guidance": "NC State recommends a well-lit sunny indoor location in fertile, well-drained loamy soil, regular watering and feeding in spring and summer, and drier conditions in winter. Its 55–65°F nighttime temperature guidance is presented as source context, not a universal indoor setpoint.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-strelitzia-reginae-wave38"]},
+      "maintenance": {"short": "Division is listed; no seed-starting protocol is supplied", "guidance": "NC State lists division as a propagation strategy. The consulted species profile does not give seed-sowing or germination instructions, so seed requirements remain undocumented here rather than being treated as impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-strelitzia-reginae-wave38"]},
+      "problems": {"short": "Avoid waterlogged media and keep pets from eating plant material", "guidance": "NC State notes root rot risk in poorly drained soil and low-severity poison characteristics affecting pets and horses. This is a source-level warning, not individualized veterinary or medical advice.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-strelitzia-reginae-wave38"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected references describe soil/container and landscape culture, not a validated hydroponic production system."},
+      "growthHabits": {"status": "unknown", "reason": "The documented clumping rhizomatous form is not represented by the current controlled compatibility vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "The listed 3–4 ft dimensions are not separated by indoor versus outdoor context for compatibility use."}, "spread": {"status": "unknown", "reason": "The listed 3–4 ft dimensions are not separated by indoor versus outdoor context for compatibility use."}},
+      "spacing": {"status": "unknown", "reason": "No spacing suitable for containers or hydroponic systems is established."},
+      "light": {"status": "unknown", "reason": "Sunny indoor placement and outdoor sun categories do not establish a controlled indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "string-of-hearts-ceropegia-woodii",
+    "name": "String of Hearts",
+    "spanishName": "Cadena de corazones",
+    "scientificName": "Ceropegia woodii",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "💚",
+    "tags": ["string of hearts", "cadena de corazones", "rosary vine", "enredadera rosario", "Ceropegia woodii", "chain of hearts", "sweetheart vine"],
+    "summary": "Kew accepts Ceropegia woodii and recognizes Ceropegia linearis subsp. woodii as a synonym. NC State Extension describes a trailing succulent vine with heart-shaped leaves, aerial tubers and flowers; tubercles can root on contact with the growing medium.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species; former name remains searchable", "guidance": "Kew accepts Ceropegia woodii and lists Ceropegia linearis subsp. woodii among its synonyms. NC State uses String of Hearts and Rosary Vine as common names. No named cultivar is selected in this profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-ceropegia-woodii-wave38", "ncsu-ceropegia-woodii-wave38"]},
+      "growth": {"short": "Trailing succulent vine with bead-like aerial tubers", "guidance": "NC State describes long cascading stems with small heart-shaped leaves and aerial tubercles that can root when they touch soil. In containers, stems drape about 3 ft; the much longer native-vine length is not used as a container-size promise.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ceropegia-woodii-wave38"]},
+      "cultivation": {"short": "Bright indirect light and a well-drained, dry-between-watering mix", "guidance": "NC State recommends bright indirect light, sandy well-drained potting soil, and allowing the medium to dry fully between waterings, with less water during winter dormancy. Excess sun may scorch leaves and excess water may cause root rot.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ceropegia-woodii-wave38"]},
+      "maintenance": {"short": "Layering, stem cuttings and seed are listed propagation routes", "guidance": "NC State lists layering, seed and stem cuttings, and notes that aerial tubercles root when in contact with soil. A vegetative route can retain a selected plant form; the page provides no detailed seed protocol, so no germination parameters are asserted.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ceropegia-woodii-wave38"]},
+      "problems": {"short": "Watch for stretched growth, scorch and rot", "guidance": "NC State associates widely spaced leaves with inadequate light, scorched leaves with excessive sun, and yellowing or root rot with watering problems. These signs are contextual clues, not a diagnosis by themselves.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ceropegia-woodii-wave38"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The cited care guidance uses a well-drained potting medium and does not validate hydroponic culture."},
+      "growthHabits": {"status": "unknown", "reason": "The documented trailing/climbing succulent vine habit is not represented by the current compatibility vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "The source's container stem length is not a standardized upright plant height."}, "spread": {"status": "unknown", "reason": "No standard spread is provided for hanging or trained container growth."}},
+      "spacing": {"status": "unknown", "reason": "No applicable container or hydroponic spacing is established."},
+      "light": {"status": "unknown", "reason": "Bright indirect indoor light is not mapped to a validated numerical grow-light tier."}
+    }
+  },
+  {
+    "id": "string-of-pearls-curio-rowleyanus",
+    "name": "String of Pearls",
+    "spanishName": "Collar de perlas",
+    "scientificName": "Curio rowleyanus",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🫧",
+    "tags": ["string of pearls", "collar de perlas", "Curio rowleyanus", "Senecio rowleyanus", "rosary vine", "bead plant", "string of beads"],
+    "summary": "Kew accepts Curio rowleyanus and lists Senecio rowleyanus as a synonym. NC State Extension describes the familiar String of Pearls as a trailing succulent for hanging containers, with pea-shaped leaves, bright-indirect-light needs and a documented stem-cutting method.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted name Curio rowleyanus; Senecio rowleyanus is a synonym", "guidance": "Kew accepts Curio rowleyanus and records Senecio rowleyanus as a synonym. NC State uses String of Pearls and related common names; the separate species Curio radicans is not included in this identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-curio-rowleyanus-wave38", "ncsu-curio-rowleyanus-wave38"]},
+      "growth": {"short": "Cascading succulent with bead-like leaves", "guidance": "NC State describes trailing stems with spherical pea-shaped leaves and lists a container size around 1–2 ft in height and 1–3 ft in width/length. The unusual leaf window is a visible identification feature; hanging growth can change the apparent dimensions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-curio-rowleyanus-wave38"]},
+      "cultivation": {"short": "Bright indirect light; prevent both soggy and bone-dry conditions", "guidance": "NC State recommends bright indirect indoor light and a well-drained cactus mix or soil amended with sand/perlite. It warns against overwatering and complete drying; temperature and watering frequency depend on the growing environment, so no fixed schedule is supplied.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-curio-rowleyanus-wave38"]},
+      "maintenance": {"short": "Stem cuttings are the quick, documented renewal method", "guidance": "NC State describes 3–5 inch stem cuttings with several nodes covered in potting mix as a quick propagation approach; it calls leaf-only propagation slower and less reliable. Seeds are produced after flowering, but no seed-start protocol is given here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-curio-rowleyanus-wave38"]},
+      "problems": {"short": "Avoid overwatering, underwatering and ingestion", "guidance": "NC State warns that the plant's leaves and sap are slightly toxic and that excess or insufficient water and inadequate light can cause visible decline. It recommends monitoring for common indoor pests; no resistance claims are made.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-curio-rowleyanus-wave38"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The source recommends cactus/potting medium and does not establish hydroponic production."},
+      "growthHabits": {"status": "unknown", "reason": "The documented cascading succulent vine form is not represented by the current controlled habit vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "Source dimensions vary with hanging/trailing presentation and are not standardized for compatibility use."}, "spread": {"status": "unknown", "reason": "Source dimensions vary with hanging/trailing presentation and are not standardized for compatibility use."}},
+      "spacing": {"status": "unknown", "reason": "No system spacing is established for this ornamental hanging plant."},
+      "light": {"status": "unknown", "reason": "Bright indirect light does not establish a numerical indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "ripple-peperomia-peperomia-caperata",
+    "name": "Ripple Peperomia",
+    "spanishName": "Peperomia ondulada",
+    "scientificName": "Peperomia caperata",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🌱",
+    "tags": ["ripple peperomia", "peperomia ondulada", "Peperomia caperata", "emerald ripple peperomia", "radiator plant", "peperomia argentea"],
+    "summary": "Kew accepts Peperomia caperata; NC State Extension describes the species as a compact indoor foliage plant with deeply ridged heart-shaped leaves. The record remains at species level and does not select among the many named foliage cultivars.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species; named foliage cultivars remain distinct", "guidance": "Kew accepts Peperomia caperata and records Peperomia argentea as a synonym. NC State describes multiple cultivars with distinct leaf colors and forms; this profile represents the species and does not assign 'Emerald Ripple' or another named cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-peperomia-caperata-wave38", "ncsu-peperomia-caperata-wave38"]},
+      "growth": {"short": "Small evergreen herb with deeply furrowed heart-shaped leaves", "guidance": "NC State describes an erect, bushy tropical herbaceous perennial commonly grown as a houseplant and reaching up to about 8 inches in the tropics. The wrinkled dark foliage and cream-colored flower spikes are characteristic; cultivar colors vary.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-caperata-wave38"]},
+      "cultivation": {"short": "Filtered medium light and a porous mix that dries between watering", "guidance": "NC State says medium filtered light is ideal, the plant tolerates low light for several months, and the growing mix should dry between waterings. It warns that waterlogged or extremely dry soil and drafts can stress plants; bright fluorescent office lighting is described by the source but does not imply a specific Garden X device fit.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-caperata-wave38"]},
+      "maintenance": {"short": "Spring leaf or stem-tip cuttings are documented", "guidance": "NC State recommends leaf or stem-tip cuttings in spring. This species-level vegetative guidance does not provide a seed germination protocol, and seedlings should not be assumed to retain a selected cultivar's leaf pattern.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-caperata-wave38"]},
+      "problems": {"short": "Wet soil can lead to root rot; watch for common indoor pests", "guidance": "NC State identifies root rot risk in poorly drained media and lists whiteflies, mealybugs and spider mites among potential pests. Avoid wetting leaves and maintain air movement to reduce leaf-spot risk; these recommendations are not claims of disease resistance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-caperata-wave38"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The references discuss potting media and do not validate a hydroponic production method."},
+      "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ncsu-peperomia-caperata-wave38"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Peperomia caperata"}, "note": "NC State describes the species as an erect, bushy herb; the broad upright mapping does not infer system compatibility."}]},
+      "matureSize": {"height": {"status": "unknown", "reason": "The page gives tropical species height but not a consistent indoor cultivar range."}, "spread": {"status": "unknown", "reason": "No species-specific indoor spread applicable across cultivars is established."}},
+      "spacing": {"status": "unknown", "reason": "No compatible hydroponic or indoor spacing recommendation is documented."},
+      "light": {"status": "unknown", "reason": "Filtered-medium household light is not mapped to a controlled grow-light tier."}
+    }
+  },
+  {
+    "id": "panda-plant-kalanchoe-tomentosa",
+    "name": "Panda Plant",
+    "spanishName": "Kalanchoe panda",
+    "scientificName": "Kalanchoe tomentosa",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🐼",
+    "tags": ["panda plant", "kalanchoe panda", "Kalanchoe tomentosa", "panda bear plant", "plush plant", "velvet leaf kalanchoe"],
+    "summary": "Kew accepts Kalanchoe tomentosa. NC State Extension describes a fuzzy-leaved succulent houseplant, lists leaf cuttings or offshoots for propagation, and warns of toxicity if ingested. This species record does not identify a named cultivar such as 'Chocolate Soldier'.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species; cultivar unspecified", "guidance": "Kew accepts Kalanchoe tomentosa in Crassulaceae and records Bryophyllum triangulare as a synonym. NC State uses Panda Plant and related common names. No named horticultural selection is assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-kalanchoe-tomentosa-wave38", "ncsu-kalanchoe-tomentosa-wave38"]},
+      "growth": {"short": "Slow-growing succulent with soft, fuzzy leaves", "guidance": "NC State describes an erect perennial succulent whose pale green leaves have dense gray-white hairs and brown-marked margins. It reports about 1–3 ft height and 2–3 ft spread in its plant-toolbox context; indoor size varies with age and container culture.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"]},
+      "cultivation": {"short": "Bright indirect light and a fast-draining succulent mix", "guidance": "NC State recommends bright indirect light, a well-drained cactus/succulent mix, and allowing the soil to dry between waterings. It notes heat sensitivity, low humidity preference and cold sensitivity; its outdoor temperature and zone guidance is regional and not an indoor grow-light prescription.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"]},
+      "maintenance": {"short": "Leaf cuttings or offshoots are the documented alternatives", "guidance": "NC State describes leaf cuttings or offshoots as propagation approaches and notes that this fuzzy-leaved species is more difficult to propagate than some succulents. No seed-sowing protocol is supplied by the consulted profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"]},
+      "safety": {"short": "Keep away from children and pets that may ingest it", "guidance": "NC State marks the plant as poisonous if ingested and advises keeping it out of reach of children and pets. The summary preserves that warning without adding medical treatment advice.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"]},
+      "problems": {"short": "Shriveling and mushy leaves can indicate water stress", "guidance": "NC State associates wrinkling with underwatering and yellow/mushy leaves or stems with overwatering; it also lists mealybugs and spider mites. These are possible signs, not a diagnosis without examining the plant and conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The cited cultivation guidance is for succulent potting mix, not hydroponic production."},
+      "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ncsu-kalanchoe-tomentosa-wave38"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Kalanchoe tomentosa"}, "note": "NC State describes the species as erect; mapped only to the broad upright habit."}]},
+      "matureSize": {"height": {"status": "unknown", "reason": "The listed broad outdoor/landscape size is not an indoor cultivar-specific range."}, "spread": {"status": "unknown", "reason": "The listed broad outdoor/landscape size is not an indoor cultivar-specific range."}},
+      "spacing": {"status": "unknown", "reason": "No system spacing is established for this ornamental succulent."},
+      "light": {"status": "unknown", "reason": "Bright indirect placement is not mapped to a measured grow-light requirement."}
+    }
+  }
+]

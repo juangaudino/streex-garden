@@ -25,15 +25,16 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
-  it("uses the canonical 214-identity catalog", () => {
-    expect(donorPlants).toHaveLength(214);
-    expect(CALCULATOR_PLANTS).toHaveLength(214);
+  it("uses the complete canonical identity catalog", () => {
+    expect(donorPlants.length).toBeGreaterThanOrEqual(500);
+    expect(CALCULATOR_PLANTS).toHaveLength(donorPlants.length);
     expect(donorPlants.map((plant) => plant.id)).toContain("genovese-basil");
   });
 
   it("resolves only explicitly verified Gardenpedia identity mappings", () => {
     expect(resolveNutrientCropIdentity("genovese-basil")).toBe("basil");
     expect(resolveNutrientCropIdentity("common-mint")).toBeUndefined();
+    expect(resolveNutrientCropIdentity("hoja-santa-piper-auritum")).toBeUndefined();
   });
 
   it("resolves Genovese Basil through applicable EC evidence before calibration", () => {
@@ -84,13 +85,24 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("reports complete canonical crop-evidence coverage without guessing", () => {
     const report = buildCropEvidenceCoverage();
-    expect(report.rows).toHaveLength(214);
+    expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 0,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 49,
-      INSUFFICIENT: 165,
+      INSUFFICIENT: 451,
       NOT_APPLICABLE: 0,
     });
+    for (const plantId of [
+      "goeppertia-orbifolia",
+      "croton-codiaeum-variegatum",
+      "florist-kalanchoe-kalanchoe-blossfeldiana",
+      "dwarf-umbrella-tree-heptapleurum-arboricola",
+      "weeping-fig-ficus-benjamina",
+    ]) {
+      expect(report.rows.find((row) => row.plantId === plantId)?.classification).toBe(
+        "INSUFFICIENT",
+      );
+    }
     expect(report.rows.find((row) => row.plantId === "genovese-basil")).toEqual({
       plantId: "genovese-basil",
       classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
@@ -108,9 +120,33 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows.find((row) => row.plantId === "anaheim-pepper")?.classification).toBe(
       "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
     );
+    expect(report.rows.find((row) => row.plantId === "hoja-santa-piper-auritum")).toMatchObject({
+      plantId: "hoja-santa-piper-auritum",
+      classification: "INSUFFICIENT",
+    });
     expect(report.rows.find((row) => row.plantId === "common-mint")?.classification).toBe(
       "INSUFFICIENT",
     );
+    for (const plantId of [
+      "venus-flytrap-dionaea-muscipula",
+      "cape-sundew-drosera-capensis",
+      "pinguicula-primuliflora",
+      "nepenthes-x-ventrata",
+      "tulsi-holy-basil-ocimum-tenuiflorum",
+      "common-fenugreek-trigonella-foenum-graecum",
+      "peppermint-mentha-piperita",
+      "wishbone-flower-torenia-fournieri",
+      "alice-sundew-drosera-aliciae",
+      "tennessee-coneflower-echinacea-tennesseensis",
+      "micro-tom-tomato",
+      "orange-hat-micro-dwarf-tomato",
+      "black-pearl-ornamental-pepper",
+      "white-carolina-pineberry",
+    ]) {
+      expect(report.rows.find((row) => row.plantId === plantId)?.classification).toBe(
+        "INSUFFICIENT",
+      );
+    }
   });
 
   it("keeps AeroGarden UI projections aligned with verified groups and feeding events", () => {

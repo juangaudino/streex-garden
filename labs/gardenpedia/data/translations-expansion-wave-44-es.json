@@ -1,0 +1,49 @@
+{
+  "american-gooseberry-ribes-hirtellum": {
+    "summary": "Ribes hirtellum es la especie de grosella espinosa americana, distinta de R. uva-crispa europea y de sus híbridos. UMN Extension ofrece recomendaciones compartidas para grosellas y uvas espina en el Alto Medio Oeste; no establece el rendimiento de un cultivar de esta especie.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Ribes hirtellum. UMN Extension identifica las grosellas espinosas de origen americano como R. hirtellum o sus híbridos, y las distingue de R. uva-crispa europea. Aquí no se asigna cultivar ni híbrido." },
+      "growth": { "guidance": "La descripción general de uva espina de UMN indica que las cañas suelen tener una espina en cada nudo foliar y bayas del tamaño de una uva solas o en grupos pequeños. La identidad botánica es la especie americana; la fuente no afirma que todas sus selecciones tengan frutos idénticos." },
+      "cultivation": { "guidance": "UMN recomienda de pleno sol a sombra parcial, suelo rico y bien drenado y poda anual para grosellas y uvas espina en el contexto del Alto Medio Oeste. Las restricciones por roya vesicular del pino blanco dependen de la jurisdicción; consulta la normativa local vigente antes de obtener una planta." },
+      "harvest": { "guidance": "UMN indica que las uvas espina están listas cuando cambian de color, se ablandan y se desprenden fácilmente; el color depende de la variedad. La guía trata el cultivo en general, no ofrece un calendario específico para R. hirtellum." },
+      "propagation": { "guidance": "La página doméstica de UMN habla de comprar plantas a raíz desnuda o en maceta y de acodar puntas de cañas, pero no ofrece un protocolo de semilla para R. hirtellum. Garden no infiere el comportamiento de semillas a partir de otros Ribes." },
+      "problems": { "guidance": "UMN advierte que algunas regiones restringen Ribes por la roya vesicular del pino blanco y recomienda cultivares localmente apropiados con resistencia conocida cuando corresponda. Es una alerta regional, no una prohibición universal ni una afirmación de resistencia de esta especie." }
+    }
+  },
+  "black-hawk-black-raspberry": {
+    "summary": "Black Hawk es un cultivar de frambuesa negra Rubus occidentalis incluido por University of Minnesota. La tabla de cultivares lo describe como tipo floricane; el manejo de cañas del perfil sigue las recomendaciones de UMN para frambuesas negras, no un ensayo adicional específico del cultivar.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Rubus occidentalis como especie. UMN Extension incluye Black Hawk entre los cultivares de frambuesa negra y lo identifica como floricane. No se añade ninguna afirmación de resistencia o rendimiento más allá de la fuente." },
+      "growth": { "guidance": "UMN describe raíces y coronas de frambuesa como perennes y las cañas con una vida de dos veranos. Para Black Hawk, su tabla identifica fructificación en floricanes; las frambuesas negras forman matas, no las filas de chupones radicales descritas para las rojas." },
+      "cultivation": { "guidance": "UMN recomienda pleno sol para una mejor producción y suelo rico y bien drenado para frambuesas de jardín. Es orientación doméstica de Minnesota; revisa la adaptación climática del cultivar para tu región." },
+      "maintenance": { "guidance": "UMN recomienda despuntar las cañas de frambuesas negras y moradas cuando los primocanes miden alrededor de 24–30 pulgadas, seleccionar 4–5 cañas por mata y retirar al ras las floricanes que ya fructificaron. El momento depende de la temporada local; la fuente del cultivar confirma que Black Hawk es floricane." },
+      "harvest": { "guidance": "UMN describe las frambuesas maduras como totalmente coloreadas, llenas y tiernas, y listas para desprenderse con un tirón suave. La fecha depende de la temporada; no se asigna un calendario específico al cultivar." },
+      "propagation": { "guidance": "UMN recomienda obtener plantas sanas de viveros confiables porque el material infectado puede introducir virus difíciles de controlar. La guía doméstica no establece un protocolo de semilla para Black Hawk y no se inventa uno." },
+      "problems": { "guidance": "UMN indica que la antracnosis suele ser más grave en frambuesas negras y recomienda mantener plantaciones abiertas y retirar cañas afectadas o ya fructificadas según corresponda. La resistencia y el calendario de plagas son regionales; no se atribuye resistencia al cultivar." }
+    }
+  },
+  "american-elderberry-sambucus-canadensis": {
+    "summary": "Kew acepta Sambucus canadensis. La literatura de extensión también usa S. nigra subsp. canadensis para el sauco americano y señala diferencias regionales de nomenclatura e identidad. Este perfil a nivel de especie no asigna cultivar y limita la guía de producción de Florida a la región fuente.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Sambucus canadensis. UF/IFAS analiza el sauco americano y señala que también se lo ha llamado S. nigra subsp. canadensis; los fenotipos nativos de Florida y el material americano del norte no se consideran intercambiables automáticamente." },
+      "growth": { "guidance": "UF/IFAS describe una forma de crecimiento que varía entre arbusto y árbol según la región de Norteamérica. No se asigna una altura madura ni una forma de cultivar fija a este registro de especie." },
+      "cultivation": { "guidance": "UF/IFAS ofrece contexto de producción para Florida y señala que el establecimiento depende del riego, control de malezas y selección probada. También describe documentación limitada y variación entre materiales americanos; no se transfieren sin cambios a otras regiones los calendarios, rendimientos ni recomendaciones de cultivares de Florida." },
+      "maintenance": { "guidance": "UF/IFAS describe poda en dormancia para retirar tallos muertos, dañados o enfermos en huertos domésticos y analiza el rebaje total de cañas como una opción comercial cuyos resultados dependen de la variedad. No se recomienda el rebaje anual como regla universal." },
+      "harvest": { "guidance": "UF/IFAS señala que el sauco madura de forma irregular y recomienda separar bayas verdes/no maduras y pedicelos. No se deben consumir hojas, tallos, cañas, raíces ni bayas inmaduras; manipula y procesa el fruto según pautas autorizadas de seguridad alimentaria. No se hacen afirmaciones medicinales." },
+      "propagation": { "guidance": "UF/IFAS documenta esquejes leñosos y blandos, estolones y semillas. Advierte que las poblaciones de plántulas varían y que los esquejes suelen preferirse por su facilidad y menor costo a escala; esto no significa que la propagación por semilla sea imposible." },
+      "problems": { "guidance": "UF/IFAS advierte sobre la confusión de nombres y materiales propagados entre regiones y selecciones. También describe compuestos cianogénicos en partes distintas del fruto maduro y las flores; retira tallos y bayas verdes y sigue pautas de procesamiento seguro. La fuente cubre saucos americanos en Florida, no todo Sambucus." }
+    }
+  },
+  "american-cranberry-vaccinium-macrocarpon": {
+    "summary": "Vaccinium macrocarpon es el cranberry americano, una enredadera perenne rastrera, no una planta que crece sumergida en una turbera. UMass Extension advierte que obtener frutos requiere terreno ácido y bien drenado cuidadosamente preparado y manejo climático; no es una promesa de cultivo sencillo en maceta.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Vaccinium macrocarpon como el cranberry americano. UMass lo describe como una enredadera perenne rastrera y leñosa; el contexto comercial de cosecha con inundación no significa que la planta deba crecer siempre sumergida." },
+      "growth": { "guidance": "UMass indica que las enredaderas colonizan terreno abierto y pueden formar una cubierta vegetal densa. Crecen en tierra, no dentro del agua, según la guía." },
+      "cultivation": { "guidance": "UMass recomienda suelo con pH inferior a 5 y buen drenaje; señala una necesidad aproximada de tres meses de frío invernal entre 32–45°F, con variación regional. Advierte que el agua alcalina dificulta el cultivo y que producir fruta en casa exige espacio y manejo." },
+      "maintenance": { "guidance": "UMass describe protección frente a deshidratación invernal y heladas de primavera. Según la región, se puede usar inundación contenida o acolchado como protección invernal; inundar es una técnica de manejo, no una afirmación de crecimiento permanentemente acuático." },
+      "harvest": { "guidance": "UMass indica que para fructificar se requiere polinización y una cobertura establecida de vides. Su estimación de rendimiento es una guía de planificación condicionada a densidad y polinización, no una promesa para una planta doméstica." },
+      "propagation": { "guidance": "La guía de UMass para hogares explica establecimiento con material vegetativo enraizado y esquejes, y señala que iniciar cranberry desde semilla requiere mucha paciencia y no se recomienda. Por eso este catálogo no le asigna un Seed Profile." },
+      "problems": { "guidance": "UMass identifica como límites prácticos el frío invernal insuficiente, agua alcalina, mal drenaje, deshidratación invernal y heladas de primavera. Son condiciones de sitio y clima, no afirmaciones de resistencia a enfermedades." }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "butterfly-pea-clitoria-ternatea": {
+    "summary": "Leguminosa tropical trepadora con flores azules intensas, usadas para teñir alimentos y preparar té. Se propaga por semilla; el calendario y la sensibilidad a heladas dependen del clima.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Clitoria ternatea. NC State indica que existen cultivares de flor blanca o doble; esta ficha de especie no asigna ninguno."},
+      "growth": {"guidance":"Kew la describe como perenne trepadora. NC State informa que suele cultivarse como anual en regiones templadas y que puede alcanzar unos 4.6 m al aire libre; no es una promesa de tamaño en recipiente."},
+      "cultivation": {"guidance":"NC State recomienda pleno sol, suelo bien drenado y riego constante para mejor crecimiento; UF/IFAS recomienda un enrejado o cerca como soporte. Son recomendaciones para exterior, no evidencia de hidroponía."},
+      "harvest": {"guidance":"UF/IFAS describe el uso de las flores para colorante y té que cambia de color, e informa que hojas, flores, brotes jóvenes y vainas tiernas son comestibles. No se afirma ningún efecto médico."},
+      "propagation": {"guidance":"NC State enumera la semilla como estrategia de propagación recomendada. El Perfil de Semilla asociado incluye únicamente la información respaldada y deja sin resolver las mediciones de germinación no publicadas."},
+      "problems": {"guidance":"NC State describe su ciclo perenne tropical y su cultivo como anual en zonas templadas. También enumera ácaros y moscas blancas entre plagas posibles; son riesgos, no diagnósticos ni ocurrencias garantizadas."}
+    }
+  },
+  "moringa-moringa-oleifera": {
+    "summary": "Árbol tropical de crecimiento rápido, cultivado por sus hojas y vainas jóvenes. Es sensible al frío; la guía regional de California permite siembra directa o almácigo, pero no demuestra aptitud hidropónica interior.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Moringa oleifera y la describe como árbol originario de la región entre Pakistán e India. Esta ficha representa la especie, no una selección nombrada."},
+      "growth": {"guidance":"Kew caracteriza la especie como árbol de biomas tropicales estacionalmente secos. La Extensión Cooperativa de California la describe como de crecimiento rápido y sensible al frío; su respuesta corresponde al contexto del centro de California."},
+      "cultivation": {"guidance":"La Extensión Cooperativa de California reporta cultivo en zona USDA 9b y más cálidas, y señala el uso de recipientes o cultivo anual en climas más fríos. Es recomendación regional, no garantía universal de rusticidad ni recomendación hidropónica."},
+      "care": {"guidance":"La Extensión informa que la poda regular promueve crecimiento más tupido y más producción de hojas, mientras que las plantas sin podar producen más vainas. Esto describe el contexto de cultivo de la fuente."},
+      "harvest": {"guidance":"La Extensión describe el cultivo de moringa por hojas y/o vainas. La fuente respalda esos usos, pero no establece un calendario de cosecha doméstico ni un rendimiento."},
+      "propagation": {"guidance":"La Extensión informa que puede sembrarse directamente o iniciarse en vivero y reporta 7–14 días para germinar en su artículo del centro de California. El Perfil de Semilla asociado deja sin resolver la temperatura y profundidad que la fuente no especifica."}
+    }
+  },
+  "mexican-oregano-lippia-origanoides": {
+    "summary": "Arbusto de América tropical y subtropical usado como hierba culinaria. Kew trata Lippia graveolens como sinónimo de Lippia origanoides; es distinto del orégano italiano del género Origanum.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Lippia origanoides y enumera Lippia graveolens entre sus sinónimos. El nombre común orégano mexicano se usa para esta identidad de Lippia; no es Origanum vulgare ni resuelve la identidad pendiente del paquete de orégano italiano."},
+      "growth": {"guidance":"Kew describe Lippia origanoides como arbusto de América tropical y subtropical. Ese hábito de exterior a nivel de especie no establece tamaño maduro en maceta."},
+      "harvest": {"guidance":"El registro Plants of the World Online de Kew incluye uso como alimento. La fuente seleccionada no establece un método detallado de cosecha culinaria ni un protocolo doméstico de cultivo."},
+      "cultivation": {"guidance":"El registro institucional seleccionado resuelve la taxonomía y ecología amplia, pero no aporta un protocolo de cultivo doméstico. Luz, riego, poda, dimensiones y aptitud interior quedan sin establecer."},
+      "propagation": {"guidance":"La fuente seleccionada no establece un método doméstico fiable de semilla o propagación vegetativa. Estos datos quedan pendientes en vez de inferirse por el hábito arbustivo o el uso culinario."}
+    }
+  }
+}

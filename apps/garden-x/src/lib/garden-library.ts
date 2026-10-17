@@ -172,13 +172,19 @@ export function loadGardenLibraryCatalog(force = false) {
 }
 
 export function searchGardenLibrary(catalog: GardenLibraryManifest, query: string) {
-  const needle = query.trim().toLocaleLowerCase();
+  const normalizeSearchText = (value: string) =>
+    value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase()
+      .trim();
+  const needle = normalizeSearchText(query);
   const active = catalog.entries.filter((entry) => entry.status === "active");
   if (!needle) return active;
   return active.filter((entry) =>
-    [entry.commonName, entry.scientificName, entry.cultivar, ...entry.aliases]
+    [entry.commonName, entry.spanishName, entry.scientificName, entry.cultivar, ...entry.aliases]
       .filter(Boolean)
-      .some((value) => value!.toLocaleLowerCase().includes(needle)),
+      .some((value) => normalizeSearchText(value!).includes(needle)),
   );
 }
 

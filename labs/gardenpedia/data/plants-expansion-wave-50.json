@@ -1,0 +1,469 @@
+[
+  {
+    "id": "catnip-nepeta-cataria",
+    "name": "Catnip",
+    "spanishName": "Hierba gatera",
+    "scientificName": "Nepeta cataria",
+    "variety": null,
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "catnip",
+      "catmint",
+      "catswort",
+      "Nepeta cataria",
+      "hierba gatera",
+      "menta de gato"
+    ],
+    "summary": "A perennial culinary and pollinator herb with aromatic foliage. Catnip can spread readily and may cause gastrointestinal effects in cats; this species profile does not prescribe a seed-starting protocol.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; no cultivar assigned",
+        "guidance": "Kew accepts Nepeta cataria. NC State lists catnip, catmint and catswort as common names; this record is the species, not a named selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-nepeta-cataria-wave50", "ncsu-nepeta-cataria-wave50"]
+      },
+      "growth": {
+        "short": "Clumping, erect-to-spreading perennial herb",
+        "guidance": "NC State describes a rapidly growing herbaceous perennial with clumping and erect or spreading habit. It may become weedy; the page suggests considering container culture.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      },
+      "cultivation": {
+        "short": "Full sun to partial shade; good drainage",
+        "guidance": "NC State reports full sun to partial shade, good drainage and tolerance of varied soils. It notes some intolerance of heat and humidity and suggests afternoon shade in such conditions. This outdoor guidance does not establish indoor hydroponic suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      },
+      "propagation": {
+        "short": "Seed and division are listed; sowing details unresolved",
+        "guidance": "NC State lists division or seed as propagation methods but gives no seed depth, timing, temperature or germination procedure on the selected page. The broad propagation record therefore leaves seed establishment insufficiently documented.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      },
+      "harvest": {
+        "short": "Leaves used as a culinary herb",
+        "guidance": "NC State describes the minty-flavored leaves as usable in teas, soups, stews, sauces, vegetables and pasta. No harvest schedule is specified by this source.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      },
+      "safety": {
+        "short": "Use caution around cats",
+        "guidance": "NC State notes that ingestion can cause vomiting and diarrhea in cats and that responses may vary. This is a pet-safety caution, not a claim about ordinary garden contact.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor soil and garden guidance does not establish performance in nutrient-solution systems."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": ["clumping", "upright", "spreading"],
+        "evidence": [
+          {
+            "sourceIds": ["ncsu-nepeta-cataria-wave50"],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": { "level": "species", "taxon": "Nepeta cataria" },
+            "note": "NC State describes clumping, erect and spreading forms."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The source does not provide a single species-level mature height for this identity."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Available space range is broad and is not a measured cultivar-independent spread."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor garden space guidance is not indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun exposure is not mapped to indoor grow-light intensity."
+      }
+    }
+  },
+  {
+    "id": "bay-laurel-laurus-nobilis",
+    "name": "Bay Laurel",
+    "spanishName": "Laurel",
+    "scientificName": "Laurus nobilis",
+    "variety": null,
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "bay laurel",
+      "bay leaf tree",
+      "sweet bay",
+      "true laurel",
+      "Laurus nobilis",
+      "laurel de cocina",
+      "laurel"
+    ],
+    "summary": "An aromatic evergreen culinary tree often kept in a container in cooler climates. The selected Extension profile does not establish a home propagation protocol, so propagation details remain unresolved.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; distinct from plants also called laurel",
+        "guidance": "Kew accepts Laurus nobilis in Lauraceae. Common name “laurel” is ambiguous; this identity is specifically bay laurel, not Kalmia or Quercus species also called laurel.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-laurus-nobilis-wave50", "ncsu-laurus-nobilis-wave50"]
+      },
+      "growth": {
+        "short": "Slow-growing evergreen tree or shrub",
+        "guidance": "NC State describes a Mediterranean evergreen that may reach a large tree size in its native context, but is generally grown much smaller in containers in its regional gardening context. It is dioecious; only female plants bear fruit.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-laurus-nobilis-wave50"]
+      },
+      "cultivation": {
+        "short": "Full sun to partial shade; well-drained soil",
+        "guidance": "NC State reports tolerance of a range of well-drained soils and full sun to partial shade. In regions colder than USDA zone 8b it should be brought indoors for winter protection; this is regional guidance, not a universal indoor growing requirement.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-laurus-nobilis-wave50"]
+      },
+      "harvest": {
+        "short": "Aromatic leaves flavor cooked foods",
+        "guidance": "NC State describes fresh or dried leaves used to flavor soups and pasta. It cautions that whole leaves should not be eaten because their shape can cause choking or cuts; remove them before serving.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-laurus-nobilis-wave50"]
+      },
+      "propagation": {
+        "short": "Home propagation method not established here",
+        "guidance": "The selected NC State species page provides no home seed-starting or vegetative propagation procedure. Do not infer a method or create Seed Profile V0 from this absence; the propagation route needs identity-matched evidence.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Container and landscape guidance does not establish compatibility with hydroponic systems."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The source describes tree and shrub forms but does not assign a controlled growth-habit value for this identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Native mature dimensions are not representative of the container-grown plants described for home use."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The regional source gives a broad landscape range and not a container-form dimension."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor system spacing is established."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun exposure is not mapped to indoor grow-light intensity."
+      }
+    }
+  },
+  {
+    "id": "pineapple-ananas-comosus",
+    "name": "Pineapple",
+    "spanishName": "Piña",
+    "scientificName": "Ananas comosus",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍍",
+    "tags": [
+      "pineapple",
+      "Ananas comosus",
+      "piña",
+      "ananas",
+      "pineapple plant"
+    ],
+    "summary": "A tropical, seedless cultivated fruiting bromeliad that can also grow as a container plant. Home propagation uses crowns, basal suckers or fruitlet plantlets rather than seed.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; cultivated fruit forms not specified",
+        "guidance": "Kew accepts Ananas comosus. Commercial pineapple forms and cultivars vary; this profile does not assign a named cultivar or infer that all ornamental bromeliads share pineapple's cultivation requirements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-ananas-comosus-wave50", "ncsu-ananas-comosus-wave50"]
+      },
+      "growth": {
+        "short": "Slow tropical rosette-forming perennial",
+        "guidance": "NC State describes a slow-growing perennial with a stiff, spiny basal rosette, commonly about 3–4 ft in height and width in its profile. A fruiting-size container plant may take years to develop; exact fruit timing varies by conditions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ananas-comosus-wave50"]
+      },
+      "cultivation": {
+        "short": "Warmth, bright light and fast drainage",
+        "guidance": "NC State reports warm conditions, bright indirect light for crown establishment, moist well-drained medium and sensitivity to frost. Its page gives a moderate-to-high humidity and temperature range of 68–86°F; these species-level outdoor/container notes do not establish nutrient-solution hydroponics.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ananas-comosus-wave50"]
+      },
+      "propagation": {
+        "short": "Crown, basal suckers or fruitlet plantlets",
+        "guidance": "NC State describes asexual propagation from the fruit crown, basal suckers or plantlets below the inflorescence. It explains crown trimming and drying before planting and notes crown-grown plants may take at least 24 months to flower. Kew describes cultivated pineapple as seedless; this is not a seed-propagated identity for the represented crop.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-ananas-comosus-wave50", "ncsu-ananas-comosus-wave50"]
+      },
+      "problems": {
+        "short": "Avoid cold, standing water and sharp leaf margins",
+        "guidance": "NC State warns against frost and prolonged wet conditions, notes possible rot and pests, and cautions that the leaf edges can injure. It also reports that bromelain may cause contact dermatitis or mouth/throat irritation in some circumstances.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ananas-comosus-wave50"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Container/soil culture and vegetative propagation do not establish nutrient-solution compatibility."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": ["rosette", "upright"],
+        "evidence": [
+          {
+            "sourceIds": ["ncsu-ananas-comosus-wave50"],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": { "level": "species", "taxon": "Ananas comosus" },
+            "note": "NC State describes a central crown and basal rosette."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "NC State range describes its profile context and varies by cultivated form; no specific cultivar is identified."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-specific container spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor landscape dimensions do not determine system pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The source's bright-indirect light for crown rooting is not a measured mature indoor grow-light requirement."
+      }
+    }
+  },
+  {
+    "id": "french-tarragon-artemisia-dracunculus-sativa",
+    "name": "French Tarragon",
+    "spanishName": "Estragón francés",
+      "scientificName": "Artemisia dracunculus",
+      "variety": "French tarragon (var. sativa horticultural type)",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "French tarragon",
+      "estragon",
+      "Artemisia dracunculus var. sativa",
+      "Sativa",
+      "estragón francés"
+    ],
+    "summary": "A prized anise-scented culinary tarragon selection, distinct from seed-grown Russian tarragon. True French tarragon is maintained vegetatively because its flowers are sterile and it does not produce viable seed.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "French culinary type; distinct from Russian tarragon",
+        "guidance": "University of Illinois identifies French tarragon as Artemisia dracunculus var. sativa and distinguishes it from Russian tarragon, whose seed is commonly sold but whose flavor is considered inferior. Kew supports the accepted parent species Artemisia dracunculus; this horticultural variety/type is represented at the scope used by Extension, not asserted as a Kew-accepted infraspecific taxon.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-artemisia-dracunculus-wave50",
+          "illinois-french-tarragon-wave50"
+        ]
+      },
+      "growth": {
+        "short": "Open perennial herb, roughly 2–3 ft tall",
+        "guidance": "University of Illinois describes a loose, open perennial about 2–3 ft tall with narrow, dark-green aromatic leaves. The source distinguishes its flavor and sterile flowers from Russian tarragon.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
+      "cultivation": {
+        "short": "Full sun, well-drained soil; avoid winter wetness",
+        "guidance": "Illinois Extension recommends full sun with tolerance of light shade and well-prepared, well-drained soil. It warns that poorly drained winter soil can prevent overwintering. Its outdoor guidance does not establish indoor hydroponic suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
+      "propagation": {
+        "short": "Cuttings or root division; no viable seed",
+        "guidance": "Illinois Extension says true French tarragon is available as plants grown from cuttings or root divisions and its flowers are sterile, so it cannot be grown from seed. Do not confuse seed packets labeled simply “tarragon,” which may produce Russian tarragon, with this culinary type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
+      "harvest": {
+        "short": "Harvest young tips and leaves as needed",
+        "guidance": "Illinois Extension describes harvesting young stem tips and leaves through the season and says fresh use best preserves the characteristic flavor. It also gives drying and storage advice, but no yield or harvest interval is quantified.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor soil cultivation information does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Illinois Extension describes a loose, open form, which has no equivalent value in the current controlled growth-habit list."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The extension's 2–3 ft outdoor height range is not converted into a Garden X system-size estimate."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No spread measurement is reported."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No supported indoor pod spacing is available."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun/shade is not mapped to an indoor grow-light level."
+      }
+    }
+  },
+  {
+    "id": "wintergreen-gaultheria-procumbens",
+    "name": "Wintergreen",
+    "spanishName": "Gaulteria (wintergreen)",
+    "scientificName": "Gaultheria procumbens",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍒",
+    "tags": [
+      "wintergreen",
+      "eastern teaberry",
+      "checkerberry",
+      "Gaultheria procumbens",
+      "gaulteria",
+      "teaberry"
+    ],
+    "summary": "A low, evergreen woodland groundcover with red fruits and aromatic foliage. Although seed and root-cutting propagation are listed, the selected Extension source gives no sowing protocol and cautions that wintergreen-leaf tea is no longer recommended.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; not a generic mint or tea herb",
+        "guidance": "Kew accepts Gaultheria procumbens in Ericaceae. The common names wintergreen and teaberry refer here to this woody groundcover, not to Mentha or unrelated plants with similar flavor names.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-gaultheria-procumbens-wave50",
+          "ncsu-gaultheria-procumbens-wave50"
+        ]
+      },
+      "growth": {
+        "short": "Low, spreading evergreen subshrub",
+        "guidance": "NC State describes an evergreen understory plant about 4–8 inches high that spreads into a carpet. It bears white-to-pink urn-shaped flowers and red fruits; landscape spacing is not a hydroponic pod recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
+      },
+      "cultivation": {
+        "short": "Acidic, moist, well-drained shade-garden conditions",
+        "guidance": "NC State describes wintergreen in light-to-moderate woodland shade and acidic, moist, well-drained soils, with tolerance of heavier shade. This habitat evidence does not establish indoor grow-light or nutrient-solution needs.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
+      },
+      "propagation": {
+        "short": "Seed and root cuttings are listed; seed protocol absent",
+        "guidance": "NC State lists seed and root cutting but does not provide a sowing depth, pretreatment, germination time or temperature on the selected page. Seed establishment remains insufficiently documented; root cutting is a documented alternative route.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
+      },
+      "safety": {
+        "short": "Do not recommend wintergreen-leaf tea",
+        "guidance": "NC State explicitly says leaf tea was once used but is no longer recommended. Avoid presenting traditional medicinal use as advice. The page notes edible fruits, but this profile does not provide a food-safety or serving recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Woodland groundcover guidance does not establish compatibility with hydroponic systems."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": ["spreading"],
+        "evidence": [
+          {
+            "sourceIds": ["ncsu-gaultheria-procumbens-wave50"],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Gaultheria procumbens"
+            },
+            "note": "NC State describes a low evergreen spreading groundcover."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor groundcover height is not used to infer a Garden X system-size limit."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The source gives landscape spacing but not a maximum mature spread."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor groundcover spacing is not indoor system pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor shade exposure is not translated into an indoor grow-light intensity."
+      }
+    }
+  }
+]

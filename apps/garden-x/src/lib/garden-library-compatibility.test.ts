@@ -32,11 +32,11 @@ function evidence() {
 
 describe("Gardenpedia compatibility profile contract", () => {
   it("publishes a v1 compatibility profile for every current catalog identity", () => {
-    expect(gardenLibraryManifest.entries).toHaveLength(214);
+    expect(gardenLibraryManifest.entries.length).toBeGreaterThanOrEqual(500);
     const profiled = gardenLibraryManifest.entries.filter((entry) => entry.compatibilityProfile);
-    expect(profiled).toHaveLength(214);
+    expect(profiled).toHaveLength(gardenLibraryManifest.entries.length);
     expect(profiled.every((entry) => entry.compatibilityProfile?.profileVersion === 1)).toBe(true);
-    expect(new Set(profiled.map((entry) => entry.libraryPlantId)).size).toBe(214);
+    expect(new Set(profiled.map((entry) => entry.libraryPlantId)).size).toBe(profiled.length);
   });
 
   it("keeps cultivar evidence separate from generic crop identities", () => {

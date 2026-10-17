@@ -1,0 +1,65 @@
+[
+  {
+    "id": "trailing-nasturtium-tropaeolum-majus",
+    "name": "Trailing Nasturtium",
+    "spanishName": "Capuchina colgante",
+    "scientificName": "Tropaeolum majus",
+    "variety": "Trailing garden-nasturtium horticultural type; no named cultivar specified",
+    "category": "flowers",
+    "emoji": "🌼",
+    "guideCompletion": 63,
+    "tags": ["trailing nasturtium", "garden nasturtium", "Tropaeolum majus", "capuchina colgante", "capuchina rastrera", "Indian cress"],
+    "summary": "A trailing type of garden nasturtium, botanically distinct from bush nasturtium (Tropaeolum minus). University of Wisconsin Extension documents its cascading use, edible leaves and flowers, and seed propagation; no specific cultivar is represented.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Trailing garden type of Tropaeolum majus", "guidance": "Kew accepts Tropaeolum majus. Wisconsin Extension distinguishes trailing T. majus from bush T. minus. This identity represents the trailing horticultural type, not a cultivar or every product sold as nasturtium.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-tropaeolum-majus-500", "uw-tropaeolum-garden-nasturtium-500"]},
+      "cultivation": {"short": "Full sun supports flowering; partial shade can reduce bloom", "guidance": "Wisconsin Extension recommends well-drained soil and full sun, noting plants grow in partial shade but flower less well. Trailing types suit hanging baskets, window boxes, or a wall edge; the article says they do not climb well on their own. This is garden/container guidance, not evidence of hydroponic suitability.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uw-tropaeolum-garden-nasturtium-500"]},
+      "growth": {"short": "Trailing rather than self-climbing", "guidance": "The extension source describes trailing forms and cautions that so-called climbing nasturtiums lack tendrils and do not climb well without help. Trim only when the plant is crowding nearby plants; no fixed pruning schedule is claimed.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uw-tropaeolum-garden-nasturtium-500"]},
+      "harvest": {"short": "Young leaves and flowers are edible", "guidance": "Wisconsin Extension describes leaves and flowers as edible, with a peppery flavor; young leaves are preferred because older leaves can be bitter. This is culinary-use information, not a medicinal claim.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uw-tropaeolum-garden-nasturtium-500"]},
+      "problems": {"short": "Monitor aphids and caterpillar feeding", "guidance": "Wisconsin Extension identifies aphids, imported cabbageworm caterpillars, and leafminers among observed pests; it notes leafminer trails usually do not damage the plant. Inspect first and avoid treating cosmetic trails as severe injury.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uw-tropaeolum-garden-nasturtium-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Garden/container guidance does not establish long-term hydroponic production."}, "growthHabits": {"status": "known", "value": ["trailing"], "evidence": [{"sourceIds": ["uw-tropaeolum-garden-nasturtium-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Tropaeolum majus"}, "note": "The source distinguishes trailing T. majus from bush T. minus; no named cultivar is implied."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The cited source describes varying trailing forms rather than a single reliable mature height for this type."}, "spread": {"status": "unknown", "reason": "A cultivar-independent mature spread is not established for the represented type."}}, "spacing": {"status": "unknown", "reason": "Outdoor planting distances are not a universal indoor pod count."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["uw-tropaeolum-garden-nasturtium-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Tropaeolum majus"}, "note": "Extension recommends full sun for flowering; partial shade is tolerated with reduced bloom. This is outdoor exposure, not an indoor grow-light tier."}]}}
+  },
+  {
+    "id": "purple-kohlrabi",
+    "name": "Purple Kohlrabi",
+    "spanishName": "Colinabo morado",
+    "scientificName": "Brassica oleracea",
+    "variety": "Purple-skinned kohlrabi horticultural type; exact cultivar unspecified",
+    "category": "vegetables",
+    "emoji": "🥬",
+    "guideCompletion": 63,
+    "tags": ["purple kohlrabi", "purple-skinned kohlrabi", "colinabo morado", "Brassica oleracea gongylodes", "gongylodes group"],
+    "summary": "A color/type identity within kohlrabi, not a named cultivar. Wisconsin Extension notes purple cultivars have colored skin and white flesh; Kew treats the botanical name Brassica oleracea var. gongylodes as a synonym of B. oleracea.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Kohlrabi color type within Brassica oleracea", "guidance": "Kew accepts Brassica oleracea and synonymizes the botanical varietal name gongylodes with that species. Wisconsin Extension describes purple-skinned kohlrabi cultivars as having white interior flesh. This entry represents the useful purple-skinned crop type only; no cultivar such as Delicacy Purple is inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-brassica-oleracea-500", "wisconsin-kohlrabi-500"]},
+      "cultivation": {"short": "Cool-season crop; keep soil evenly moist", "guidance": "Wisconsin Extension recommends full sun and moist, well-drained soil rich in organic matter, and describes kohlrabi as a cool-weather crop that tolerates more heat than many cole crops. This is open-ground guidance; exact hydroponic conditions are not established.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["wisconsin-kohlrabi-500"]},
+      "growth": {"short": "The edible swollen stem develops above the soil", "guidance": "Kohlrabi's edible rounded portion is a thickened stem above the soil line, not a root or true bulb. The source describes multiple maturity types; a single cultivar-specific size is not assigned to this color type.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["wisconsin-kohlrabi-500"]},
+      "harvest": {"short": "Harvest timing depends on the selected cultivar", "guidance": "Wisconsin Extension lists different maturity estimates for individual named cultivars. Because this profile does not resolve a cultivar, those day counts are not copied here; consult the specific seed packet for its maturity estimate.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["wisconsin-kohlrabi-500"]},
+      "problems": {"short": "Prevent stress that can interrupt stem development", "guidance": "The selected crop guide supports cool-season, moist-soil culture but does not establish a type-specific disease-resistance claim. Monitor the swollen stem and foliage for stress; diagnose symptoms before treatment.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The source covers soil-grown kohlrabi, not hydroponic systems."}, "growthHabits": {"status": "known", "value": ["rosette"], "evidence": [{"sourceIds": ["wisconsin-kohlrabi-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Brassica oleracea"}, "note": "Crop-level habit; purple skin does not establish a distinct growth habit."}]}, "matureSize": {"height": {"status": "unknown", "reason": "No type-specific mature height is established."}, "spread": {"status": "unknown", "reason": "No type-specific mature spread is established."}}, "spacing": {"status": "unknown", "reason": "Field spacing is not converted into indoor pod spacing."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["wisconsin-kohlrabi-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Brassica oleracea"}, "note": "Full-sun recommendation for outdoor soil culture; not an indoor grow-light requirement."}]}}
+  },
+  {
+    "id": "resina-calendula",
+    "name": "Resina Calendula",
+    "spanishName": "Caléndula Resina",
+    "scientificName": "Calendula officinalis",
+    "variety": "Named supplier-listed cultivar/product 'Resina'; no formal cultivar registration asserted",
+    "category": "flowers",
+    "emoji": "🌼",
+    "guideCompletion": 63,
+    "tags": ["resina calendula", "resin calendula", "calendula resina", "Calendula officinalis Resina", "pot marigold", "caléndula"],
+    "summary": "Fedco lists Resina as an open-pollinated Calendula officinalis seed product selected for resinous flowers. A Montana State University field comparison reports cultivar-specific observations; its trial results are not guarantees for home gardens.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Resina product identity within Calendula officinalis", "guidance": "Kew accepts Calendula officinalis. Fedco lists Resina as an open-pollinated seed product; the listing supports the product/cultivar name but does not establish formal registration. The Montana field trial also names Resina as a tested cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-calendula-officinalis-500", "fedco-resina-calendula-500", "montana-state-calendula-resina-trial-500"]},
+      "cultivation": {"short": "Cool-weather flowering; full sun and room to grow", "guidance": "Fedco describes Calendula as thriving in cool weather, flowering over a long season, and recommends full sun without crowding. These are supplier crop-level instructions, not Resina-specific controlled trials. Its listed 70-day maturity is a seller estimate, not a guaranteed Garden schedule.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["fedco-resina-calendula-500"]},
+      "growth": {"short": "Resinous yellow-to-orange flowers in the product description", "guidance": "Fedco describes Resina's medium-sized single blooms as primarily bright yellow, with some orange flowers, and notes the flowers are resinous. The page's general Calendula height range is crop-level, so no Resina-specific mature-size value is assigned.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["fedco-resina-calendula-500"]},
+      "harvest": {"short": "Repeated flower harvest is documented", "guidance": "The Montana trial hand-harvested flowers repeatedly and observed Resina beginning to flower a few days before Erfurter Orangefarbige under the trial conditions. This timing comparison is specific to that Montana trial and is not a universal first-harvest date.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["montana-state-calendula-resina-trial-500"]},
+      "problems": {"short": "Aster yellows affected plants in the field trial", "guidance": "The Montana field report recorded aster-yellows symptoms in Resina plots in 1998 and 1999. This documents susceptibility in those trials, not an estimate of risk in every location. No disease resistance is claimed.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["montana-state-calendula-resina-trial-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The product and field-trial sources do not establish hydroponic flower production."}, "growthHabits": {"status": "unknown", "reason": "Selected evidence does not establish a controlled growth-habit value for Resina."}, "matureSize": {"height": {"status": "unknown", "reason": "Fedco's height range is general Calendula crop information, not specifically measured for Resina."}, "spread": {"status": "unknown", "reason": "No Resina-specific mature spread is established."}}, "spacing": {"status": "unknown", "reason": "No Resina-specific home-garden or indoor system spacing is selected."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["fedco-resina-calendula-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Calendula officinalis"}, "note": "Fedco's general crop guidance; not a Resina-specific controlled-light result."}]}}
+  }
+]

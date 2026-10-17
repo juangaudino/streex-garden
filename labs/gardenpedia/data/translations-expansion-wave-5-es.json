@@ -1,0 +1,40 @@
+{
+  "culantro": {
+    "summary": "El culantro es una hierba Apiaceae distinta del cilantro (Coriandrum sativum). UF/IFAS indica que es bienal y prefiere condiciones cálidas y sombra; Kew acepta su identidad taxonómica.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Eryngium foetidum L. UF/IFAS identifica el culantro como esta especie y distingue sus hojas largas y dentadas de las del cilantro. La semejanza de los nombres comunes no hace intercambiables estas identidades."},
+      "cultivation": {"guidance":"UF/IFAS indica que el culantro crece mejor a la sombra, en suelo húmedo y bien drenado; la sombra también ayuda a retrasar el espigado. Su guía de Florida es regional y no se convierte en una recomendación de luz interior ni de hidroponía."},
+      "propagation": {"guidance":"UF/IFAS informa que el culantro suele sembrarse y que la germinación tarda alrededor de tres semanas. La fuente no proporciona temperatura ni profundidad específicas, por lo que no se completan esos datos."},
+      "harvest": {"guidance":"UF/IFAS describe cosechar hojas según se necesiten, a menudo retirando las más viejas cerca de la base y dejando madurar las jóvenes. Señala que las hojas enteras pueden ser duras y suelen picarse finamente; esto no es una afirmación sobre un producto culinario específico."},
+      "problems": {"guidance":"UF/IFAS señala que la sombra ayuda a retrasar el espigado y que la planta es menos deseable como hierba culinaria después de florecer y producir semilla. Esta fuente no establece otras plagas o enfermedades."}
+    }
+  },
+  "papalo-porophyllum-ruderale": {
+    "summary": "El pápalo se publica a nivel de especie como Porophyllum ruderale. Kew reconoce dos variedades aceptadas, pero la referencia no determina cuál; por eso la identidad se mantiene al nivel de especie.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Porophyllum ruderale y enumera dos variedades aceptadas. Las fuentes no resuelven la identidad suministrada de pápalo a una de ellas, así que no se asigna una variedad infraespecífica."},
+      "cultivation": {"guidance":"El perfil del jardín botánico de la FES Zaragoza de la UNAM describe el pápalo como hierba aromática y reporta cultivo en suelo suelto y bien drenado, a pleno sol y con riego moderado. Se conserva el contexto de esa fuente y no se convierte en una receta hidropónica."},
+      "propagation": {"guidance":"El perfil del jardín botánico de la UNAM indica que el pápalo se propaga por semilla. No establece un calendario de germinación, temperatura ni requisito de luz para el producto representado."},
+      "harvest": {"guidance":"Kew registra Porophyllum ruderale como planta usada para alimento. El momento y la técnica específicos de cosecha para el producto representado siguen sin verificarse."}
+    }
+  },
+  "shiso-perilla-frutescens": {
+    "summary": "El shiso se publica a nivel de especie como Perilla frutescens, no como un cultivar verde o morado particular. NC State Extension documenta propagación por semilla, hojas comestibles, resiembra y preocupación invasiva en varias regiones.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Perilla frutescens y reconoce taxones infraespecíficos. La referencia agrupa perilla morada y verde, pero no identifica una variedad botánica ni un cultivar específico; el perfil permanece a nivel de especie."},
+      "cultivation": {"guidance":"NC State Extension describe esta especie en pleno sol o sombra parcial y en suelos de húmedos a secos. También informa crecimiento rápido, agresivo y autosiembra; la señala como invasora en Carolina del Norte y otras regiones indicadas. Consulta la guía local sobre plantas invasoras antes de cultivarla al aire libre."},
+      "propagation": {"guidance":"NC State Extension lista la semilla como método de propagación y señala la autosiembra abundante. No brinda aquí un calendario de germinación ni profundidad específicos del producto; esos datos quedan sin resolver."},
+      "harvest": {"guidance":"NC State Extension identifica las hojas como comestibles y usadas en ensaladas o como condimento. Es evidencia de uso a nivel de especie y no identifica qué color o tipo culinario representa la etiqueta de referencia."},
+      "problems": {"guidance":"NC State Extension advierte del comportamiento invasivo en su región e indica que la planta puede ser tóxica para el ganado. Son precauciones regionales y de exposición; no constituyen una afirmación general sobre toxicidad humana."}
+    }
+  },
+  "bloody-dock-rumex-sanguineus": {
+    "summary": "La acedera de venas rojas (Rumex sanguineus) es una especie perenne de hojas comestibles y ornamentales. NC State Extension describe propagación por semilla o división; el uso y las precauciones se mantienen a nivel de especie.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Rumex sanguineus L. NC State Extension usa Bloody Dock y Red-Veined Dock como nombres comunes de esta especie. La referencia no establece un cultivar nombrado."},
+      "cultivation": {"guidance":"NC State Extension describe pleno sol y suelo húmedo pero bien drenado. Indica que se pueden cortar los tallos florales para estimular hojas más tupidas y limitar la autosiembra; es orientación para la especie, no una instrucción hidropónica."},
+      "propagation": {"guidance":"NC State Extension enumera tanto semilla como división y recomienda sembrar en primavera. La fuente no proporciona condiciones ni duración exactas de germinación."},
+      "harvest": {"guidance":"NC State Extension indica que las hojas jóvenes pueden comerse crudas o cocidas y que las maduras se vuelven amargas y duras. También menciona posible malestar estomacal leve e irritación cutánea en personas sensibles, especialmente con grandes cantidades; no debe interpretarse como autorización irrestricta de consumo."}
+    }
+  }
+}

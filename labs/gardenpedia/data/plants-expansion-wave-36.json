@@ -1,0 +1,66 @@
+[
+  {
+    "id": "hoja-santa-piper-auritum",
+    "name": "Hoja Santa",
+    "spanishName": "Hoja santa",
+    "scientificName": "Piper auritum",
+    "variety": "Accepted species identity; cultivar unspecified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": ["hoja santa", "hoja-santa", "hierba santa", "acuyo", "mexican pepperleaf", "sacred pepper", "Piper auritum"],
+    "summary": "A tender aromatic shrub with large leaves used for food. Kew accepts Piper auritum; RHS documents partial-shade cultivation and propagation by seed or semi-ripe cuttings. No cultivar or hydroponic system fit is implied.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Piper auritum",
+        "guidance": "Kew accepts Piper auritum in Piperaceae. The RHS profile uses the common name hoja santa. This record is the species without a named cultivar or horticultural selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-piper-auritum-wave36", "rhs-piper-auritum-wave36"]
+      },
+      "growth": {
+        "short": "Tender, bushy shrub with large aromatic leaves",
+        "guidance": "RHS describes a tender shrub with large, heart-shaped aromatic leaves and reports a mature height and spread of 1–1.5 m in its garden context. These dimensions are not an indoor appliance target, and no named cultivar is specified.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-piper-auritum-wave36"]
+      },
+      "cultivation": {
+        "short": "Shelter from cold; use filtered light and moist, draining medium",
+        "guidance": "RHS recommends bright filtered light and high humidity under heated glass, or a sheltered outdoor site with moist but well-drained soil in light shade. This is RHS guidance in its UK horticultural context; partial shade is not converted into an indoor grow-light tier or a hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-piper-auritum-wave36"]
+      },
+      "propagation": {
+        "short": "Seed and semi-ripe cuttings are both documented",
+        "guidance": "RHS lists sowing seed in heat in early spring and semi-ripe cuttings as propagation routes. It does not give seed depth, germination duration, or a numeric germination temperature on this profile; those values remain unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-piper-auritum-wave36"]
+      },
+      "harvest": {
+        "short": "Aromatic leaves; food use is documented",
+        "guidance": "Kew records Piper auritum as used for food, and RHS describes its aromatic leaves. The reviewed sources do not establish a harvest-start time or a species-specific harvesting schedule, so neither is supplied.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["kew-piper-auritum-wave36", "rhs-piper-auritum-wave36"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources describe horticultural soil/container culture and do not validate hydroponic production."},
+      "growthHabits": {
+        "status": "known",
+        "value": ["bushy"],
+        "evidence": [{"sourceIds": ["rhs-piper-auritum-wave36"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Piper auritum"}, "note": "RHS lists a bushy habit for Piper auritum."}]
+      },
+      "matureSize": {
+        "height": {"status": "known", "value": {"minCm": 100, "maxCm": 150, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["rhs-piper-auritum-wave36"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Piper auritum"}, "note": "RHS lists 1–1.5 m; converted to centimeters and retained as RHS garden-context dimensions."}]},
+        "spread": {"status": "known", "value": {"minCm": 100, "maxCm": 150, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["rhs-piper-auritum-wave36"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Piper auritum"}, "note": "RHS lists 1–1.5 m; converted to centimeters and retained as RHS garden-context dimensions."}]}
+      },
+      "spacing": {"status": "unknown", "reason": "No applicable container or hydroponic spacing is established by the selected sources."},
+      "light": {"status": "unknown", "reason": "RHS recommends partial shade or bright filtered light, but this does not establish an indoor grow-light tier; the current controlled profile does not encode partial shade as a distinct evidence value."}
+    }
+  }
+]

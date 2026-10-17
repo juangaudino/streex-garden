@@ -1,0 +1,111 @@
+[
+  {
+    "id": "basil-ocimum-basilicum",
+    "name": "Basil",
+    "spanishName": "Albahaca",
+    "scientificName": "Ocimum basilicum",
+    "variety": "Species-level sweet-basil crop identity; cultivar unspecified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 63,
+    "tags": ["basil", "albahaca", "Ocimum basilicum", "common basil", "culinary basil"],
+    "summary": "A species-level basil profile for records labeled only “Basil.” It is distinct from Genovese, Sweet Basil, and named basil types; cultivar-specific traits are not inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Species identity: Ocimum basilicum; cultivar unspecified",
+        "guidance": "Kew accepts Ocimum basilicum. This profile represents basil where no cultivar or horticultural type is identified. Genovese, Sweet, Thai, and other named types remain separate identities.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-ocimum-basilicum-500"]
+      },
+      "cultivation": {
+        "short": "Warm-season herb for a sunny, well-drained site",
+        "guidance": "USU Extension recommends full sun, warm conditions, regular moisture, and well-drained soil for basil generally. This crop-level guidance is not a claim about any one named cultivar and does not establish hydroponic nutrient suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-basil"]
+      },
+      "growth": {
+        "short": "Annual herb or subshrub, with form varying across cultivars",
+        "guidance": "Kew describes O. basilicum as an annual or subshrub and notes variation among cultivars. No single mature height or growth form is assigned to this cultivar-unspecified profile.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["kew-ocimum-basilicum-500"]
+      },
+      "harvest": {
+        "short": "USU begins harvest after plants develop 6–8 leaves",
+        "guidance": "USU Extension gives 6–8 leaves as a harvest-readiness cue for basil and advises cutting stems while retaining several leaves. The timing is general basil guidance, not a cultivar-specific harvest date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-basil"]
+      },
+      "problems": {
+        "short": "Heat and water stress can promote flowering; watch for rot and leaf injury",
+        "guidance": "USU Extension notes that high summer temperature and water stress can promote flowering and that root rot and basil shoot blight may occur. These are crop-level observations; no cultivar-specific resistance is claimed.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-basil"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "General garden basil guidance does not establish hydroponic nutrient requirements or performance for this identity."},
+      "growthHabits": {"status": "unknown", "reason": "Kew notes that growth form varies by cultivar; none is identified here."},
+      "matureSize": {"height": {"status": "unknown", "reason": "Cultivar-unspecified basil varies in mature size."}, "spread": {"status": "unknown", "reason": "Cultivar-unspecified basil varies in mature spread."}},
+      "spacing": {"status": "unknown", "reason": "Outdoor crop spacing is not a hydroponic pod-spacing recommendation."},
+      "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["usu-basil"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Ocimum basilicum"}, "note": "USU recommends full sun for basil in garden culture; this outdoor exposure is not translated into an indoor grow-light tier."}]}
+    }
+  },
+  {
+    "id": "bunching-onion-allium-fistulosum",
+    "name": "Bunching Onion",
+    "spanishName": "Cebolla de verdeo",
+    "scientificName": "Allium fistulosum",
+    "variety": "Species-level scallion identity; cultivar unspecified",
+    "category": "alliums",
+    "emoji": "🧅",
+    "guideCompletion": 63,
+    "tags": ["bunching onion", "bunching onions", "scallion", "green onion", "Welsh onion", "cebolla de verdeo", "cebolla larga", "Allium fistulosum"],
+    "summary": "The non-bulbing scallion species Allium fistulosum, kept separate from the named Nebuka selection and from Allium cepa bunching types such as White Lisbon.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Species-level scallion: Allium fistulosum",
+        "guidance": "Kew accepts Allium fistulosum. UMN Extension identifies scallions/bunching onions as A. fistulosum and distinguishes Egyptian walking onion (A. cepa var. proliferum). This entry has no named cultivar and does not replace Nebuka or White Lisbon.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-allium-fistulosum-500", "umn-growing-scallions-500"]
+      },
+      "cultivation": {
+        "short": "Full sun; keep soil evenly watered and seedlings weeded",
+        "guidance": "UMN recommends a sunny location, watering when rainfall is insufficient, and frequent gentle weed control while plants are small. These are outdoor garden recommendations, not hydroponic system specifications.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-growing-scallions-500"]
+      },
+      "growth": {
+        "short": "Green and white stalks without a formed bulb",
+        "guidance": "UMN describes A. fistulosum scallions as green and white stalks that do not form bulbs. This species-level description is not a claim about all green onions, which may also be immature A. cepa.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-growing-scallions-500"]
+      },
+      "harvest": {
+        "short": "Pull scallions when they reach usable size",
+        "guidance": "UMN advises pulling scallions when they reach usable size and loosening soil first if needed to avoid breaking stalks. No fixed days-to-harvest is assigned to this cultivar-unspecified identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-growing-scallions-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "Garden scallion guidance does not establish long-term hydroponic performance."},
+      "growthHabits": {"status": "known", "value": ["upright", "clumping"], "evidence": [{"sourceIds": ["umn-growing-scallions-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Allium fistulosum"}, "note": "UMN documents the non-bulbing species form; clumping is supported by the general A. fistulosum crop identity but not a specific cultivar."}]},
+      "matureSize": {"height": {"status": "unknown", "reason": "No cultivar-independent mature height is selected for this profile."}, "spread": {"status": "unknown", "reason": "No cultivar-independent mature spread is selected for this profile."}},
+      "spacing": {"status": "unknown", "reason": "Outdoor spacing is not a hydroponic pod-spacing recommendation."},
+      "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["umn-growing-scallions-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Allium fistulosum"}, "note": "UMN says onions require full sun for best garden growth; this is outdoor exposure, not an indoor lamp tier."}]}
+    }
+  }
+]

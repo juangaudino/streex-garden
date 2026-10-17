@@ -1,0 +1,106 @@
+[
+  {
+    "id": "purple-shamrock-oxalis-triangularis",
+    "name": "Purple Shamrock",
+    "spanishName": "Oxalis morada",
+    "scientificName": "Oxalis triangularis",
+    "variety": "Species; leaf-color forms and cultivars not specified",
+    "category": "ornamentals",
+    "emoji": "🍀",
+    "guideCompletion": 40,
+    "tags": ["purple shamrock", "false shamrock", "purple wood sorrel", "oxalis morada", "falso trébol", "Oxalis triangularis", "houseplant", "rhizome"],
+    "summary": "A South American rhizomatous perennial grown as a container ornamental for its trifoliate leaves, which fold at night. NC State Extension documents rhizome division as a propagation route; seed is also listed, but no germination protocol is established here.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted identity: Oxalis triangularis", "guidance": "Kew accepts Oxalis triangularis. NC State Extension calls it purple shamrock and notes Oxalis regnellii as a previous name; the profile represents the species, not one of the named cultivars listed by the extension source.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-oxalis-triangularis-wave33", "ncsu-oxalis-triangularis-wave33"]},
+      "cultivation": {"short": "Container ornamental with a seasonal dormancy pattern", "guidance": "NC State Extension describes well-drained potting mix and full sun to partial shade in its regional guidance. It reports the plant may go dormant when conditions are hot or dry and recommends reducing watering while dormant; this is not an indoor grow-light tier.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-oxalis-triangularis-wave33"]},
+      "growth": {"short": "Rhizomatous perennial with leaves that fold at night", "guidance": "NC State Extension describes a herbaceous perennial arising from rhizomes with trifoliate leaves that close at night or when disturbed. The source lists multiple named cultivars and forms; no single leaf color or cultivar is assigned to this species-level entry.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-oxalis-triangularis-wave33"]},
+      "maintenance": {"short": "Reduce watering during dormancy; divide rhizomes to propagate", "guidance": "NC State Extension describes reducing watering when the plant enters dormancy and says rhizome division or detached scale leaves can produce new plants. Its source also lists seed as a propagation strategy, but does not provide a sowing or germination protocol.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-oxalis-triangularis-wave33"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The extension source describes container and garden culture, not hydroponic production."}, "growthHabits": {"status": "known", "value": ["clumping"], "evidence": [{"sourceIds": ["ncsu-oxalis-triangularis-wave33"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Oxalis triangularis"}, "note": "NC State describes the species as growing from rhizomes; this does not establish fit for a specific machine."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Regional garden dimensions do not establish an indoor-system mature height."}, "spread": {"status": "unknown", "reason": "No controlled-system spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing recommendation is supported."}, "light": {"status": "unknown", "reason": "Outdoor sun exposure is not an indoor grow-light classification."}}
+  },
+  {
+    "id": "arrowhead-plant-syngonium-podophyllum",
+    "name": "Arrowhead Plant",
+    "spanishName": "Singonio",
+    "scientificName": "Syngonium podophyllum",
+    "variety": "Species; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 41,
+    "tags": ["arrowhead plant", "arrowhead vine", "singonio", "Syngonium podophyllum", "American evergreen", "houseplant", "aroid"],
+    "summary": "A tropical evergreen aroid commonly grown indoors for arrow-shaped juvenile foliage. NC State Extension documents cuttings, layering and division, and notes that leaf shape changes as the plant matures.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Syngonium podophyllum", "guidance": "Kew's Plants of the World Online lists Syngonium podophyllum within the accepted genus. NC State Extension identifies this species as American evergreen and arrowhead plant; named cultivar traits are not assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-syngonium-podophyllum-wave33", "ncsu-syngonium-podophyllum-wave33"]},
+      "cultivation": {"short": "Bright shade, warmth and humidity suit indoor growth", "guidance": "NC State Extension recommends a warm, humid location and avoiding full sun because direct light can burn or bleach foliage. These are houseplant/landscape recommendations; they do not prove compatibility with a hydroponic appliance.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-syngonium-podophyllum-wave33"]},
+      "growth": {"short": "Young plants are bushy; mature growth becomes vine-like", "guidance": "NC State Extension describes a shrub-like juvenile form that becomes climbing or trailing with age, with leaves changing from arrow-shaped to more divided adult forms. Its source includes several named cultivars; this record is species-level only.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-syngonium-podophyllum-wave33"]},
+      "maintenance": {"short": "Prune stems to retain a bushier juvenile form", "guidance": "NC State Extension says cutting stems as they begin to develop can retain the arrowhead foliage and a more shrub-like habit; it also documents division, layering and stem cuttings. This management guidance is not a cultivar-specific pruning schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-syngonium-podophyllum-wave33"]},
+      "problems": {"short": "Watch for pests and leaf/soft-rot problems", "guidance": "NC State Extension lists aphids, mealybugs, spider mites, bacterial leaf spots and soft rot as possible issues. This is a monitoring list, not a claim that every plant will develop them or that the identity has resistance traits.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-syngonium-podophyllum-wave33"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources address houseplant and garden care, not production in a recirculating hydroponic system."}, "growthHabits": {"status": "known", "value": ["trailing"], "evidence": [{"sourceIds": ["ncsu-syngonium-podophyllum-wave33"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Syngonium podophyllum"}, "note": "The species becomes vine-like with age; this alone does not establish system fit."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Climbing length and outdoor growth are not a controlled indoor-system mature height."}, "spread": {"status": "unknown", "reason": "No finite machine-compatible spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod spacing is supported."}, "light": {"status": "unknown", "reason": "Outdoor shade and houseplant advice are not mapped to an indoor grow-light tier."}}
+  },
+  {
+    "id": "baby-rubber-plant-peperomia-obtusifolia",
+    "name": "Baby Rubber Plant",
+    "spanishName": "Peperomia de hoja oval",
+    "scientificName": "Peperomia obtusifolia",
+    "variety": "Species; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 41,
+    "tags": ["baby rubber plant", "oval leaf peperomia", "peperomia de hoja oval", "Peperomia obtusifolia", "American rubber plant", "houseplant"],
+    "summary": "A compact tropical evergreen houseplant with glossy, fleshy, oval leaves. NC State Extension recommends bright indirect light and cautions that overwatering can yellow leaves and lead to root rot; leaf and stem cuttings are documented propagation methods.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Peperomia obtusifolia", "guidance": "World Flora Online lists Peperomia obtusifolia as a botanical species in Piperaceae. NC State Extension describes the oval-leaf peperomia and notes that other cultivars exist; this identity does not specify a variegated cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["wfo-peperomia-obtusifolia-wave33", "ncsu-peperomia-obtusifolia-wave33"]},
+      "cultivation": {"short": "Bright indirect light; avoid persistently wet or very dry soil", "guidance": "NC State Extension describes bright indirect light, notes that non-variegated forms can tolerate lower light for several months, and warns against wet or very dry soil. This is houseplant guidance and does not define a grow-light tier or hydroponic suitability.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-peperomia-obtusifolia-wave33"]},
+      "growth": {"short": "Erect, bushy tropical evergreen shrub", "guidance": "NC State Extension describes an erect, bushy herbaceous shrub with glossy cupped leaves and distinct branched stems. The page lists several cultivars, but no cultivar-specific color or dimensions are applied to this species record.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-obtusifolia-wave33"]},
+      "maintenance": {"short": "Use leaf or stem cuttings for vegetative propagation", "guidance": "NC State Extension lists leaf and stem cuttings as propagation strategies. The source does not provide a seed-starting protocol, so no seed germination claims are made.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-obtusifolia-wave33"]},
+      "problems": {"short": "Overwatering can yellow leaves and contribute to root rot", "guidance": "NC State Extension identifies overwatering as a major problem and lists yellowing and root rot as possible outcomes; it also recommends monitoring for mealybugs, spider mites and whiteflies. This is risk guidance, not a diagnosis of an individual plant.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-peperomia-obtusifolia-wave33"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Houseplant and potting-mix guidance does not establish production in a hydroponic system."}, "growthHabits": {"status": "known", "value": ["compact"], "evidence": [{"sourceIds": ["ncsu-peperomia-obtusifolia-wave33"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Peperomia obtusifolia"}, "note": "The extension source describes an erect, bushy houseplant; compactness does not establish machine compatibility."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The selected evidence does not establish controlled-system mature height for this identity."}, "spread": {"status": "unknown", "reason": "No machine-compatible spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing guidance is supported."}, "light": {"status": "unknown", "reason": "Outdoor and indoor ambient-light descriptions are not a grow-light intensity classification."}}
+  },
+  {
+    "id": "satin-pothos-scindapsus-pictus",
+    "name": "Satin Pothos",
+    "spanishName": "Poto satinado",
+    "scientificName": "Scindapsus pictus",
+    "variety": "Species; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 42,
+    "tags": ["satin pothos", "silk pothos", "silver pothos", "poto satinado", "Scindapsus pictus", "Scindapsus argyraeus", "houseplant", "trailing vine"],
+    "summary": "A tropical climbing aroid with silver-mottled foliage, often grown as a trailing houseplant. NC State Extension documents stem cuttings and describes bright indirect indoor light; no universal hydroponic compatibility is inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Scindapsus pictus", "guidance": "Kew accepts Scindapsus pictus. NC State Extension lists satin pothos and silver pothos as common names and Scindapsus argyraeus among previously used names; this entry does not select one of the named cultivars on the page.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-scindapsus-pictus-wave33", "ncsu-scindapsus-pictus-wave33"]},
+      "cultivation": {"short": "Bright indirect light and well-drained potting soil", "guidance": "NC State Extension describes bright indirect light and moist, well-drained potting soil for houseplant use, and gives a room-temperature range in its cultivation guidance. These conditions do not establish nutrient solution targets or hydroponic system compatibility.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-scindapsus-pictus-wave33"]},
+      "growth": {"short": "Climbing or trailing vine with silver-marked leaves", "guidance": "NC State Extension describes a tropical evergreen vine that may climb on support or trail from a hanging container; juvenile leaves are silver-mottled and adult leaves may become lobed. Indoor flowering is uncommon in the source context.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-scindapsus-pictus-wave33"]},
+      "maintenance": {"short": "Pinch stems to keep the plant tidy; stem cuttings propagate it", "guidance": "NC State Extension says pinching stems helps keep the plant tidy and documents stem cuttings as a propagation method. This does not claim a seed protocol or cultivar-specific pruning response.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-scindapsus-pictus-wave33"]},
+      "problems": {"short": "Poor drainage can contribute to root rot", "guidance": "NC State Extension notes root rot risk in poorly drained or wet soil and says yellow leaves may signal overwatering while curling may indicate underwatering. These are possible signs, not definitive diagnoses.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-scindapsus-pictus-wave33"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected source supports houseplant potting culture, not hydroponic production."}, "growthHabits": {"status": "known", "value": ["trailing"], "evidence": [{"sourceIds": ["ncsu-scindapsus-pictus-wave33"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Scindapsus pictus"}, "note": "Climbing and trailing habit is documented; it does not establish machine fit."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The source gives both indoor and native vine context; no controlled-system mature height is selected."}, "spread": {"status": "unknown", "reason": "No controlled mature spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod spacing is supported."}, "light": {"status": "unknown", "reason": "Ambient indoor light guidance is not mapped to Garden X grow-light intensity."}}
+  },
+  {
+    "id": "chinese-money-plant-pilea-peperomioides",
+    "name": "Chinese Money Plant",
+    "spanishName": "Planta china del dinero",
+    "scientificName": "Pilea peperomioides",
+    "variety": "Species; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 42,
+    "tags": ["Chinese money plant", "coin plant", "pancake plant", "friendship plant", "planta china del dinero", "Pilea peperomioides", "houseplant"],
+    "summary": "A compact Chinese evergreen perennial houseplant with round, peltate leaves and a clumping habit. NC State Extension documents propagation by offsets and stem cuttings during active growth; this profile does not imply seed availability.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Pilea peperomioides", "guidance": "Kew accepts Pilea peperomioides in Urticaceae. NC State Extension lists Chinese money plant, coin plant and pancake plant as common names; no cultivar is specified.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-pilea-peperomioides-wave33", "ncsu-pilea-peperomioides-wave33"]},
+      "cultivation": {"short": "Bright indirect light and evenly moist, well-drained mix", "guidance": "NC State Extension describes bright indirect sunlight, moist well-drained potting mix and tolerance of average household humidity. Its page presents houseplant care, not a controlled grow-light setting or hydroponic recipe.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-pilea-peperomioides-wave33"]},
+      "growth": {"short": "Compact, erect and clumping with round peltate leaves", "guidance": "NC State Extension describes a compact, erect, clumping perennial with circular leaves attaching at their centers, and gives an 8–12 inch height and width in its houseplant profile. These measurements are not presented as guaranteed dimensions in a hydroponic system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-pilea-peperomioides-wave33"]},
+      "maintenance": {"short": "Separate offsets or use stem cuttings in active growth", "guidance": "NC State Extension documents offsets or pups and stem cuttings, with propagation best during spring or early summer active growth. This is vegetative propagation guidance; no seed germination protocol is provided.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-pilea-peperomioides-wave33"]},
+      "problems": {"short": "Avoid overwatering and monitor for common houseplant pests", "guidance": "NC State Extension warns that overwatering can lead to root rot and lists spider mites, mealybugs, fungus gnats and scale for monitoring. It also notes leggy growth can result from inadequate light; these are possible issues rather than a diagnosis.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-pilea-peperomioides-wave33"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Houseplant potting-mix guidance does not establish hydroponic-system compatibility."}, "growthHabits": {"status": "known", "value": ["compact", "clumping"], "evidence": [{"sourceIds": ["ncsu-pilea-peperomioides-wave33"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Pilea peperomioides"}, "note": "The source describes compact clumping growth; this does not establish fit for any specific machine."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Houseplant dimensions do not establish a Garden X system mature height."}, "spread": {"status": "unknown", "reason": "Houseplant dimensions do not establish a system-compatible spread."}}, "spacing": {"status": "unknown", "reason": "No pod spacing is supported."}, "light": {"status": "unknown", "reason": "Bright indirect window light is not mapped to an indoor grow-light intensity tier."}}
+  }
+]

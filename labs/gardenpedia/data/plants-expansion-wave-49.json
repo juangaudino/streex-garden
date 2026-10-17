@@ -1,0 +1,170 @@
+[
+  {
+    "id": "african-marigold-tagetes-erecta",
+    "name": "African Marigold",
+    "spanishName": "Cempasúchil africano",
+    "scientificName": "Tagetes erecta",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌼",
+    "tags": ["African marigold", "American marigold", "Aztec marigold", "Mexican marigold", "Tagetes erecta", "cempasúchil"],
+    "summary": "A tender flowering annual with many garden cultivars. This species-level profile does not identify a particular flower color, series, or height class.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; no cultivar assigned","guidance":"Kew accepts Tagetes erecta. NC State lists multiple cultivars with differing sizes and traits; this identity represents the species, not any named series.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-tagetes-erecta-wave49","ncsu-tagetes-erecta-wave49"]},
+      "growth": {"short":"Tender flowering annual; cultivar sizes vary","guidance":"NC State reports garden forms spanning roughly 1–4 ft tall and 1–2 ft wide. Tall forms may need staking; do not treat those species-level ranges as dimensions for every cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-tagetes-erecta-wave49"]},
+      "cultivation": {"short":"Full sun, even moisture and drainage","guidance":"NC State recommends full sun, evenly moist well-drained soil, and starting seed indoors 6–8 weeks before the last frost in its regional context. This does not establish indoor hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-tagetes-erecta-wave49"]},
+      "care": {"short":"Pinch young plants; deadhead heavy spent flowers","guidance":"NC State reports pinching young stems to encourage bushier growth and promptly removing spent heavy flower heads that could snap stems. Cultivar resistance to diseases varies.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-tagetes-erecta-wave49"]},
+      "propagation": {"short":"Seed is the documented preferred method","guidance":"NC State describes seed as the best propagation method and gives an indoor-start window; exact sowing depth, germination temperature and duration are not established here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-tagetes-erecta-wave49"]},
+      "problems": {"short":"Disease and pest susceptibility varies by cultivar","guidance":"NC State lists possible botrytis, leaf spot, phytophthora, powdery mildew, rots, thrips, slugs and spider mites. Reported resistance differs among cultivars, so none is attributed to this unspecified identity.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-tagetes-erecta-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Outdoor bedding culture does not establish compatibility with indoor nutrient-solution systems."},
+      "growthHabits":{"status":"known","value":["upright"],"evidence":[{"sourceIds":["ncsu-tagetes-erecta-wave49"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Tagetes erecta"},"note":"NC State describes the species as erect; cultivar form and size vary."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"NC State dimensions span cultivars; no cultivar is identified."},"spread":{"status":"unknown","reason":"NC State dimensions span cultivars; no cultivar is identified."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor full-sun guidance is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "purple-coneflower-echinacea-purpurea",
+    "name": "Purple Coneflower",
+    "spanishName": "Equinácea púrpura",
+    "scientificName": "Echinacea purpurea",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌸",
+    "tags": ["purple coneflower", "eastern purple coneflower", "Echinacea purpurea", "coneflower", "equinácea"],
+    "summary": "A North American herbaceous perennial used in pollinator and native gardens. It is distinct from Echinacea pallida and the separately cataloged Tennessee coneflower.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; not a named coneflower cultivar","guidance":"Kew accepts Echinacea purpurea. NC State notes many cultivars with variable size, color and disease response; this record does not assign cultivar traits.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-echinacea-purpurea-wave49","ncsu-echinacea-purpurea-wave49"]},
+      "growth": {"short":"Long-blooming perennial, about 3–4 ft in regional gardens","guidance":"NC State reports a 3–4 ft species-level garden range and summer-to-mid-fall flowering. The dimensions are not an indoor container estimate.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-purpurea-wave49"]},
+      "cultivation": {"short":"Moist, well-drained soil; full sun to partial shade","guidance":"NC State describes adaptable soil tolerance, preference for moist well-drained loam, and full sun to partial shade in landscape use. This is not hydroponic compatibility evidence.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-purpurea-wave49"]},
+      "care": {"short":"Leave some stems standing for stem-nesting bees","guidance":"NC State recommends leaving dead stems at 12–24 inches until they disintegrate to provide habitat for stem-nesting native bees. This is pollinator-garden guidance.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-purpurea-wave49"]},
+      "propagation": {"short":"Seed propagation is possible; household protocol unresolved here","guidance":"NC State says the species is readily propagated by seed, but the selected species page does not specify germination conditions or a sowing protocol. Do not borrow a protocol from other Echinacea species.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-purpurea-wave49"]},
+      "problems": {"short":"Occasional Japanese beetles and leaf spot; aster yellows reported","guidance":"NC State lists Japanese beetles, leaf spot and susceptibility to aster yellows. Phytophthora resistance is reported for some cultivars only and is not assigned to this species-level identity.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-purpurea-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Native perennial landscape guidance does not establish indoor hydroponic suitability."},
+      "growthHabits":{"status":"known","value":["upright"],"evidence":[{"sourceIds":["ncsu-echinacea-purpurea-wave49"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Echinacea purpurea"},"note":"NC State describes erect stems and terminal flower heads."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"Outdoor mature dimensions are not an indoor-system size estimate."},"spread":{"status":"unknown","reason":"No indoor pod footprint is documented."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor sun exposure is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "pale-purple-coneflower-echinacea-pallida",
+    "name": "Pale Purple Coneflower",
+    "spanishName": "Equinácea pálida",
+    "scientificName": "Echinacea pallida",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌸",
+    "tags": ["pale purple coneflower", "Echinacea pallida", "equinácea pálida", "pale coneflower"],
+    "summary": "A distinct North American perennial coneflower. NC State documents seed handling that varies with stratification and fall or spring sowing.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; distinct from E. purpurea","guidance":"Kew accepts Echinacea pallida; NC State distinguishes it from purple coneflower by earlier flowering and narrower, hairier leaves. It is also distinct from E. tennesseensis.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-echinacea-pallida-wave49","ncsu-echinacea-pallida-wave49"]},
+      "growth": {"short":"Upright perennial, around 3 ft in NC State guidance","guidance":"NC State describes stout erect stems around 3 ft tall and a short summer flowering period. The long taproot and outdoor measurements are not interpreted as indoor-system fit.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-pallida-wave49"]},
+      "cultivation": {"short":"Full sun and well-drained soil","guidance":"NC State recommends well-drained soil and full sun; the taproot supports drought tolerance after establishment. These outdoor traits do not establish hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-pallida-wave49"]},
+      "care": {"short":"Choose sowing season according to seed stratification","guidance":"NC State says unstratified seed should be planted in fall and stratified seed may be planted in spring. It also notes clump division may be needed after several years.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-pallida-wave49"]},
+      "propagation": {"short":"Seed and division are documented","guidance":"NC State lists both seed and division. Its seed guidance is represented separately in Seed Profile; no cultivar is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echinacea-pallida-wave49"]},
+      "problems": {"short":"Japanese beetles and leaf spot may occur","guidance":"NC State reports Japanese beetles and leaf spot. No disease resistance claim is made for this species-level identity.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-echinacea-pallida-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Outdoor perennial culture does not establish indoor nutrient-solution compatibility."},
+      "growthHabits":{"status":"known","value":["upright"],"evidence":[{"sourceIds":["ncsu-echinacea-pallida-wave49"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Echinacea pallida"},"note":"NC State describes stout erect stems."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"Landscape height is not an indoor-system height estimate."},"spread":{"status":"unknown","reason":"An indoor footprint is not documented."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor full sun is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "moss-rose-portulaca-grandiflora",
+    "name": "Moss Rose",
+    "spanishName": "Rosa de musgo",
+    "scientificName": "Portulaca grandiflora",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌺",
+    "tags": ["moss rose", "rose moss", "Portulaca grandiflora", "sun plant", "portulaca ornamental"],
+    "summary": "A low-growing, heat- and drought-tolerant ornamental succulent annual. Keep this species distinct from common purslane, Portulaca oleracea.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted ornamental species; no cultivar assigned","guidance":"Kew accepts Portulaca grandiflora. NC State explicitly distinguishes other plants also called purslane or moss rose, including P. oleracea; no named series is represented here.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-portulaca-grandiflora-wave49","ncsu-portulaca-grandiflora-wave49"]},
+      "growth": {"short":"Prostrate mat-forming annual; about 8 in tall and 1 ft wide","guidance":"NC State reports a low mat-forming habit and these landscape dimensions. Flowers close overnight and in cloudy or rainy weather; no cultivar-specific flower form is claimed.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-portulaca-grandiflora-wave49"]},
+      "cultivation": {"short":"Full sun and sharply drained sandy or rocky soil","guidance":"NC State describes heat and drought tolerance and recommends well-drained sandy or rocky soil in full sun. These conditions do not establish hydroponic suitability.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-portulaca-grandiflora-wave49"]},
+      "care": {"short":"Handle seedlings carefully; deadheading limits self-seeding","guidance":"NC State notes poor transplant tolerance, advises care when handling seedlings, and reports deadheading can deter self-seeding. This does not supply a seed-start protocol.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-portulaca-grandiflora-wave49"]},
+      "propagation": {"short":"Self-seeds, but a practical sowing protocol is not established","guidance":"NC State reports self-seeding and sensitivity to transplanting. The selected source does not establish sowing depth, germination temperature or timing; the public propagation classification remains insufficiently documented.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-portulaca-grandiflora-wave49"]},
+      "problems": {"short":"Poor drainage may cause crown rot; aphids and slugs may occur","guidance":"NC State lists occasional aphids and slugs and crown rot in poorly drained soil.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-portulaca-grandiflora-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Drought-adapted soil culture does not establish compatibility with nutrient solution."},
+      "growthHabits":{"status":"known","value":["trailing","mounded"],"evidence":[{"sourceIds":["ncsu-portulaca-grandiflora-wave49"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Portulaca grandiflora"},"note":"NC State describes a low prostrate, spreading mat habit."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"Outdoor dimensions are not translated into a Garden X indoor-system estimate."},"spread":{"status":"unknown","reason":"No indoor footprint is documented."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor full sun is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "indian-blanket-flower-gaillardia-pulchella",
+    "name": "Indian Blanket Flower",
+    "spanishName": "Flor de manta india",
+    "scientificName": "Gaillardia pulchella",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌼",
+    "tags": ["Indian blanket flower", "blanket flower", "firewheel", "Gaillardia pulchella", "gaillardia anual"],
+    "summary": "An annual species-level Gaillardia with two-toned flowering heads and pollinator value. Distinct from perennial G. aristata and interspecific commercial hybrids.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted annual species; not a commercial hybrid","guidance":"Kew accepts Gaillardia pulchella. NC State notes other plants share the blanket-flower common name, including G. aristata and G. × grandiflora; this record is specifically G. pulchella.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-gaillardia-pulchella-wave49","ncsu-gaillardia-pulchella-wave49"]},
+      "growth": {"short":"Erect annual or short-lived perennial; about 1.5–2 ft tall","guidance":"NC State describes an erect plant around 1.5–2 ft tall and about 1 ft wide in its regional garden context, flowering from summer into fall.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-pulchella-wave49"]},
+      "cultivation": {"short":"Full sun, drainage and steady moisture during germination","guidance":"NC State recommends full sun and well-drained soil. It specifies constant moisture for good germination; established plants tolerate heat, drought and salt in regional outdoor settings.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-pulchella-wave49"]},
+      "care": {"short":"Remove or retain seed heads according to reseeding goals","guidance":"NC State notes seed heads support songbirds if left over winter. The species naturalizes; manage seed set according to local garden conditions.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-gaillardia-pulchella-wave49"]},
+      "propagation": {"short":"Direct-sow in fall; lightly rake in","guidance":"NC State gives a species-level fall direct-sowing instruction with light raking-in and constant moisture for germination. It does not give a precise depth, temperature or germination duration.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-pulchella-wave49"]},
+      "problems": {"short":"Avoid waterlogged soil; aphids and thrips may occur","guidance":"NC State reports the species will not survive waterlogged soil and lists aphids and thrips as possible problems.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-gaillardia-pulchella-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Outdoor border and container guidance does not establish indoor hydroponic compatibility."},
+      "growthHabits":{"status":"known","value":["upright"],"evidence":[{"sourceIds":["ncsu-gaillardia-pulchella-wave49"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Gaillardia pulchella"},"note":"NC State describes an erect flowering habit."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"Regional garden dimensions are not an indoor-system height estimate."},"spread":{"status":"unknown","reason":"Indoor footprint is not documented."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor sun exposure is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "great-blanketflower-gaillardia-aristata",
+    "name": "Great Blanket Flower",
+    "spanishName": "Gaillardia grande",
+    "scientificName": "Gaillardia aristata",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌼",
+    "tags": ["great blanket flower", "blanketflower", "Gaillardia aristata", "perennial blanket flower"],
+    "summary": "A North American perennial wildflower distinct from annual Indian blanket flower (Gaillardia pulchella) and their commercial hybrids.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted perennial species; distinct from G. pulchella","guidance":"Kew accepts Gaillardia aristata. NC State notes that commercial G. × grandiflora is a hybrid of G. aristata and G. pulchella; this record does not represent that hybrid.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-gaillardia-aristata-wave49","ncsu-gaillardia-aristata-wave49"]},
+      "growth": {"short":"Taprooted perennial, about 1–3 ft tall and 1–2 ft wide","guidance":"NC State gives these species-level landscape dimensions and describes hairy erect stems with solitary flower heads. They are outdoor garden ranges.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-aristata-wave49"]},
+      "cultivation": {"short":"Full sun; hot, dry sites and well-drained soil","guidance":"NC State describes performance in full sun and hot, dry sites, with supplemental water during extended drought. This does not establish indoor hydroponic suitability.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-aristata-wave49"]},
+      "care": {"short":"Watch drainage and avoid skin contact with fuzzy hairs","guidance":"NC State warns that poor drainage can cause root rot and recommends gloves to reduce skin irritation from hairy plant surfaces.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-aristata-wave49"]},
+      "propagation": {"short":"Seed and division are listed; seed protocol unresolved","guidance":"NC State lists seed and division but supplies no household seed-starting instructions on the selected species page. Seed propagation is possible; requirements remain insufficiently documented here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gaillardia-aristata-wave49"]},
+      "problems": {"short":"Powdery mildew, leaf spot, aster yellows and root rot may occur","guidance":"NC State lists these disease concerns and notes the species may reseed and become weedy. Manage seed set locally.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-gaillardia-aristata-wave49"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion":1,
+      "hydroponicSuitability":{"status":"unknown","reason":"Native perennial landscape use does not establish compatibility with indoor nutrient-solution systems."},
+      "growthHabits":{"status":"known","value":["upright","clumping"],"evidence":[{"sourceIds":["ncsu-gaillardia-aristata-wave49"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Gaillardia aristata"},"note":"NC State describes erect stems and a clumping/mounding form."}]},
+      "matureSize":{"height":{"status":"unknown","reason":"Outdoor dimensions are not used as an indoor-system estimate."},"spread":{"status":"unknown","reason":"Indoor footprint is not documented."}},
+      "spacing":{"status":"unknown","reason":"Outdoor spacing is not indoor pod spacing."},
+      "light":{"status":"unknown","reason":"Outdoor full sun is not an indoor grow-light tier."}
+    }
+  }
+]

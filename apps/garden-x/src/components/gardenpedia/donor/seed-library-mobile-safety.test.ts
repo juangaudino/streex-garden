@@ -10,7 +10,7 @@ const stylesSource = readFileSync(resolve(donorRoot, "gardenpedia-direct.css"), 
 describe("Gardenpedia mobile seed landing", () => {
   it("keeps the public seed landing progressively rendered", () => {
     expect(seedProfileSource).toContain("const SEED_LIBRARY_PAGE_SIZE = 48");
-    expect(seedProfileSource).toContain("profiles.slice(0, visibleCount)");
+    expect(seedProfileSource).toContain("filteredProfiles.slice(0, visibleCount)");
     expect(seedProfileSource).toContain("labels.showMore");
   });
 

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "gardenpedia_seed_profile_v0",
+  "scope": "published-seed-grown-identities",
+  "profiles": {
+    "moonflower-ipomoea-alba": {
+      "plantIdentityId": "moonflower-ipomoea-alba",
+      "label": {"en":"SEED PROFILE","es":"PERFIL DE SEMILLA"},
+      "summary": {
+        "en":"NC State Extension recommends starting Ipomoea alba 4–6 weeks before the last spring frost and soaking seed overnight in warm water or nicking the seed coat. Germination temperature, light, sowing depth and duration are not established by this source.",
+        "es":"NC State Extension recomienda iniciar Ipomoea alba 4–6 semanas antes de la última helada primaveral y remojar la semilla una noche en agua tibia o hacer una pequeña muesca en la cubierta. La fuente no establece temperatura, luz, profundidad ni duración de germinación."
+      },
+      "quickFacts": [
+        {"key":"pretreatment","label":{"en":"Before sowing","es":"Antes de sembrar"},"value":{"en":"Soak overnight in warm water or nick the seed coat","es":"Remojar una noche en agua tibia o hacer una muesca en la cubierta"},"note":{"en":"NC State species-level guidance; choose one method, not both by default","es":"Guía de NC State a nivel de especie; elegir un método, no asumir ambos"},"evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-ipomoea-alba-wave61"]},
+        {"key":"startTiming","label":{"en":"Suggested start timing","es":"Momento sugerido de inicio"},"value":{"en":"4–6 weeks before last spring frost","es":"4–6 semanas antes de la última helada primaveral"},"note":{"en":"Regional outdoor timing; local frost dates matter","es":"Calendario regional para exterior; depende de la fecha local de heladas"},"evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-ipomoea-alba-wave61"]}
+      ],
+      "sections": [
+        {"key":"sowing","title":{"en":"Sowing","es":"Siembra"},"icon":"🌱","short":{"en":"Prepare the hard seed coat before starting","es":"Prepara la cubierta dura antes de iniciar"},"guidance":{"en":"NC State recommends soaking seeds overnight in warm water or nicking the seed coat with a file, then starting 4–6 weeks before the last spring frost. The source does not specify sowing depth or whether to cover seed; follow packet instructions for those details rather than guessing.","es":"NC State recomienda remojar las semillas una noche en agua tibia o hacer una muesca en la cubierta con una lima, e iniciar 4–6 semanas antes de la última helada primaveral. La fuente no especifica profundidad ni si se debe cubrir la semilla; sigue el paquete para esos detalles en vez de adivinarlos."},"items":[],"evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-ipomoea-alba-wave61"]},
+        {"key":"germination","title":{"en":"Germination","es":"Germinación"},"icon":"⏳","short":{"en":"Temperature, light and duration are not stated","es":"No se indican temperatura, luz ni duración"},"guidance":{"en":"The selected institutional source supports presowing soak/scarification and calendar timing, but it does not report a reliable germination temperature, light/dark requirement or number of days. These remain unknown; do not infer them from the plant's tropical origin.","es":"La fuente institucional respalda remojo/escarificación previa y calendario de inicio, pero no informa temperatura fiable de germinación, requisito de luz/oscuridad ni número de días. Se dejan desconocidos; no se infieren del origen tropical de la planta."},"items":[],"evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+        {"key":"establishment","title":{"en":"After emergence","es":"Después de emerger"},"icon":"🌿","short":{"en":"Grow on with a support plan","es":"Continúa el crecimiento con un plan de soporte"},"guidance":{"en":"NC State describes Moonflower as a twining vine and recommends a fence, arbor or trellis for the established plant. It does not specify a seedling transplant stage or indoor system; those decisions require local conditions and container planning.","es":"NC State describe Moonflower como enredadera y recomienda cerca, pérgola o espaldera para la planta establecida. No especifica etapa de trasplante de plántula ni sistema interior; esas decisiones requieren considerar condiciones locales y espacio del recipiente."},"items":[],"evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-ipomoea-alba-wave61"]}
+      ],
+      "sourceIds":["ncsu-ipomoea-alba-wave61"]
+    }
+  }
+}

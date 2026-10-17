@@ -1,0 +1,42 @@
+{
+  "philippine-evergreen-aglaonema-commutatum": {
+    "summary": "Kew acepta Aglaonema commutatum como especie nativa de Filipinas y Sulawesi. Las indicaciones de cultivo de NC State corresponden al género Aglaonema en general, por lo que aquí se señalan explícitamente como orientación a nivel de género y no se atribuye ningún cultivar nombrado.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Aglaonema commutatum dentro de Araceae y registra Aglaonema marantifolium var. commutatum como sinónimo. Este registro corresponde a la especie y no a uno de los numerosos cultivares hortícolas que enumera NC State."},
+      "growth": {"guidance":"Kew clasifica la especie como subarbusto de biomas tropicales húmedos. La descripción de NC State para el género caracteriza Aglaonema como planta perenne de follaje, cespitosa y con varios tallos; esos rasgos de género no son dimensiones específicas de esta especie."},
+      "cultivation": {"guidance":"La guía de NC State para el género incluye sombra profunda y parcial, suelo húmedo pero bien drenado y uso interior. El alcance es el género; no establece un nivel de luz artificial interior, aptitud hidropónica ni requisitos exactos para cada cultivar."},
+      "maintenance": {"guidance":"NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar."},
+      "problems": {"guidance":"NC State señala toxicidad y riesgos por contacto o ingestión para Aglaonema. Mantén la planta lejos de niños y mascotas; es información a nivel de género, no una estimación del riesgo de exposición de un cultivar concreto."}
+    }
+  },
+  "giant-white-bird-of-paradise-strelitzia-nicolai": {
+    "summary": "Strelitzia nicolai es una especie aceptada distinta de la Strelitzia reginae, cespitosa y de menor tamaño. NC State describe una gran perenne tropical de hojas similares a las del banano, usada como planta de interior de exhibición, pero que puede superar el espacio de una habitación común.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Strelitzia nicolai y registra Strelitzia alba subsp. nicolai y Strelitzia quensonii como sinónimos. El nombre común puede aplicarse a otras especies de Strelitzia; este registro se refiere específicamente a S. nicolai."},
+      "growth": {"guidance":"NC State informa una altura de 20–30 pies y anchura de 6–10 pies en contextos de paisaje o hábitat, y hojas de hasta 6.5 pies. Esas dimensiones exteriores no se presentan como dimensiones de maceta interior; una planta madura puede ser demasiado grande para una habitación típica."},
+      "cultivation": {"guidance":"NC State recomienda luz brillante indirecta, suelo húmedo pero bien drenado y regar cuando se seque la capa superior; indica 65–85 °F como rango preferido y advierte que no tolera menos de 50 °F. Son recomendaciones para cultivo en suelo o recipiente, no especificaciones hidropónicas."},
+      "maintenance": {"guidance":"NC State señala que el viento puede rasgar las hojas grandes y recomienda retirar las hojas rasgadas. El tamaño adulto y las raíces agresivas importan al elegir un sitio exterior permanente; no se debe asumir que la poda interior normal mantendrá pequeño un ejemplar maduro."},
+      "problems": {"guidance":"NC State identifica daños por viento y recomienda vigilar escamas, araña roja, pulgones y cochinillas. No se establece resistencia a plagas o enfermedades en hidroponía."}
+    }
+  },
+  "madagascar-dragon-tree-dracaena-reflexa-angustifolia": {
+    "summary": "Kew acepta Dracaena reflexa var. angustifolia y registra Dracaena marginata como sinónimo. NC State describe la drácena conocida por sus hojas estrechas con bordes rojizos como arbusto o árbol de interior de crecimiento lento; la orientación corresponde a esta variedad aceptada.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Dracaena reflexa var. angustifolia. Entre sus sinónimos figuran Dracaena marginata, Cordyline marginata y Pleomele marginata. NC State usa el nombre aceptado; Dracaena marginata se conserva como alias de búsqueda, no como identidad separada."},
+      "growth": {"guidance":"NC State informa que puede alcanzar aproximadamente 6 pies como planta de interior, frente a hasta 20 pies en contextos nativos o de paisaje; describe hojas estrechas, acintadas y con bordes rojizos. También señala que los tallos suelen ramificarse tras la poda."},
+      "cultivation": {"guidance":"NC State recomienda luz brillante indirecta, sustrato bien drenado y dejar que se seque entre riegos sin permitir que se reseque en exceso. Señala sensibilidad al fluoruro y recomienda agua destilada o sin fluoruro; es cuidado en maceta, no una receta hidropónica."},
+      "maintenance": {"guidance":"NC State indica que se puede podar para reducir la altura y que los tallos podados suelen producir dos o más ramas. Trenzar o dar forma en espiral son técnicas de entrenamiento, no identidades de cultivar inherentes."},
+      "problems": {"guidance":"NC State identifica la sensibilidad al fluoruro como causa de decoloración foliar y menciona ácaros, trips, insectos masticadores y manchas foliares. También señala toxicidad; mantén la planta lejos de mascotas y niños."}
+    }
+  },
+  "gold-dust-dracaena-dracaena-surculosa": {
+    "summary": "Kew acepta Dracaena surculosa y registra Draco surculosa y Pleomele surculosa como sinónimos. NC State describe una planta tropical de follaje, ramificada y de crecimiento lento, con manchas crema-amarillas; es una especie distinta de la drácena de Madagascar.",
+    "sections": {
+      "identity": {"guidance":"Kew acepta Dracaena surculosa y registra Draco surculosa y Pleomele surculosa como sinónimos. El nombre Gold Dust Dracaena se refiere aquí a D. surculosa, no a Dracaena reflexa var. angustifolia."},
+      "growth": {"guidance":"NC State describe ramas delgadas y erguidas, a veces arqueadas, con hojas verde oscuro brillantes y manchas crema o amarillas. Su ficha indica 2–3 pies de altura y 3–4 pies de anchura; son dimensiones de la ficha paisajística, no garantías para una maceta interior."},
+      "cultivation": {"guidance":"NC State recomienda luz brillante sin sol directo y mantener el suelo húmedo durante el crecimiento activo, evitando encharcamientos y exceso de riego. Indica que demasiada luz puede causar pardeamiento o caída de hojas y muy poca puede reducir la intensidad del color; son señales cualitativas, no umbrales calibrados de luz interior."},
+      "maintenance": {"guidance":"NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura, y enumera esquejes apicales o de tallo y división. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta."},
+      "problems": {"guidance":"NC State advierte que el agua estancada y el exceso de riego pueden causar pudrición de raíces, y que las cochinillas de raíz pueden frenar el crecimiento. No se afirma resistencia a enfermedades."}
+    }
+  }
+}

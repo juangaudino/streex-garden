@@ -1,0 +1,1467 @@
+{
+  "schemaVersion": "gardenpedia_propagation_guidance_v1",
+  "records": {
+    "mexican-snowball-echeveria-elegans": {"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"Offsets and leaf cuttings are documented and preserve the identified plant form; no named cultivar is represented.","es":"Se documentan retoños y esquejes de hoja, que conservan la forma identificada; no se representa un cultivar nombrado."},"sourceIds":["ncsu-echeveria-elegans-wave55"]},
+    "zebra-haworthiopsis-attenuata": {"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"Offsets are the practical documented propagation route; this catalog entry does not claim a seed-starting protocol.","es":"Los retoños son la ruta práctica documentada; esta entrada no afirma un protocolo de siembra."},"sourceIds":["ncsu-haworthiopsis-attenuata-wave55"]},
+    "burros-tail-sedum-morganianum": {"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"Leaf and stem cuttings are documented and readily root; use vegetative propagation for the represented plant form.","es":"Se documentan esquejes de hoja y tallo que enraízan con facilidad; se prioriza la propagación vegetativa para conservar la forma representada."},"sourceIds":["ncsu-sedum-morganianum-wave55"]},
+    "common-houseleek-sempervivum-tectorum": {"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"Offsets/division are readily available and preserve the parent rosette; seed is listed as possible but no germination protocol is provided here.","es":"Los retoños/división son accesibles y conservan la roseta madre; la semilla se enumera como posible, pero aquí no se ofrece protocolo de germinación."},"sourceIds":["ncsu-sempervivum-tectorum-wave55"]},
+    "grain-amaranth-amaranthus-hypochondriacus": {
+      "classification": "insufficient_documentation",
+      "status": "needs_validation",
+      "summary": {
+        "en": "Seed propagation is documented for this species, but the selected sources do not provide a sufficiently specific home sowing and establishment protocol. Do not substitute the separate vegetable-amaranth guidance.",
+        "es": "La propagación por semilla está documentada para esta especie, pero las fuentes seleccionadas no ofrecen un protocolo doméstico suficientemente específico de siembra y establecimiento. No sustituyas la guía del amaranto vegetal, que es otra especie."
+      },
+      "sourceIds": ["ncsu-amaranthus-hypochondriacus-wave54"]
+    },
+    "goeppertia-orbifolia": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists spring division as the recommended propagation route. The selected source does not provide a seed-starting protocol; this records the documented practical method without claiming seed propagation is impossible.",
+        "es": "NC State Extension enumera la división en primavera como vía de propagación recomendada. La fuente seleccionada no ofrece un protocolo de siembra; se registra el método práctico documentado sin afirmar que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-goeppertia-orbifolia-wave37"
+      ]
+    },
+    "croton-codiaeum-variegatum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "UF/IFAS reports that fresh seed can germinate easily but produces much variability; air layering and softwood, tip, or leaf-bud cuttings are documented. Prefer vegetative propagation when preserving a named croton cultivar; this profile does not claim that species-level seed propagation is impossible.",
+        "es": "UF/IFAS informa que la semilla fresca puede germinar con facilidad, pero produce mucha variación; documenta acodo aéreo y esquejes blandos, apicales o de yema foliar. Prefiere la propagación vegetativa para conservar un cultivar nombrado; este perfil no afirma que la especie no pueda propagarse por semilla."
+      },
+      "sourceIds": [
+        "ufifas-codiaeum-propagation-wave37"
+      ]
+    },
+    "florist-kalanchoe-kalanchoe-blossfeldiana": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists stem and leaf cuttings for florist kalanchoe. Cultivars are commonly maintained as selected flowering forms; the cited page does not provide seed-starting instructions, so no seed protocol is asserted.",
+        "es": "NC State Extension enumera esquejes de tallo y hoja para el kalanchoe de flor. Los cultivares se mantienen comúnmente como selecciones florales; la página citada no da instrucciones de siembra, así que no se afirma un protocolo de semilla."
+      },
+      "sourceIds": [
+        "ncsu-kalanchoe-blossfeldiana-wave37"
+      ]
+    },
+    "dwarf-umbrella-tree-heptapleurum-arboricola": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists both seed and stem cutting as propagation methods but supplies no seed-starting protocol or comparative guidance. A stem cutting is a verified alternative; seed requirements remain insufficiently documented rather than declared impossible.",
+        "es": "NC State enumera semilla y esqueje de tallo como métodos de propagación, pero no ofrece protocolo de siembra ni una comparación entre ellos. El esqueje es una alternativa verificada; los requisitos de semilla quedan insuficientemente documentados, no declarados imposibles."
+      },
+      "sourceIds": [
+        "ncsu-heptapleurum-arboricola-wave37"
+      ]
+    },
+    "weeping-fig-ficus-benjamina": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists stem cuttings as the propagation strategy for the common houseplant. The source does not give a seed-starting protocol; named cultivars should be maintained with a documented vegetative route rather than assuming seedlings retain their identity.",
+        "es": "NC State Extension enumera esquejes de tallo como estrategia de propagación para la planta de interior común. La fuente no da un protocolo de siembra; los cultivares nombrados deben conservarse con una vía vegetativa documentada, sin asumir que las plántulas mantengan su identidad."
+      },
+      "sourceIds": [
+        "ncsu-ficus-benjamina-wave37"
+      ]
+    },
+    "monterey-strawberry": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Runner-based vegetative propagation is documented for this cultivar. Use it when preserving the cultivar identity is the goal; this does not establish seed-starting instructions.",
+        "es": "Se documenta la propagación vegetativa mediante estolones para este cultivar. Úsala cuando se busque conservar la identidad del cultivar; esto no establece instrucciones de germinación."
+      },
+      "sourceIds": [
+        "ucd-monterey-runner-trials"
+      ]
+    },
+    "italian-oregano": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "Propagation guidance is held pending resolution of the packet's botanical identity. This is not a claim that oregano cannot be grown from seed.",
+        "es": "La guía de propagación queda pendiente hasta resolver la identidad botánica del paquete. Esto no afirma que el orégano no pueda cultivarse desde semilla."
+      },
+      "sourceIds": []
+    },
+    "fragrant-dwarf-dianthus-mix": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "Propagation guidance is held pending resolution of the packet's Dianthus species and identity. This is not a claim that Dianthus cannot be grown from seed.",
+        "es": "La guía de propagación queda pendiente hasta resolver la especie e identidad de Dianthus del paquete. Esto no afirma que Dianthus no pueda cultivarse desde semilla."
+      },
+      "sourceIds": []
+    },
+    "pinguicula-primuliflora": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "The species account documents leaf-tip plantlets as a practical propagation route. Seed formation is described as occasional in the clone discussed, so a routine seed-starting protocol is not claimed.",
+        "es": "La ficha de la especie documenta hijuelos en las puntas de las hojas como vía práctica de propagación. La formación de semillas se describe como ocasional en el clon tratado; no se afirma que exista un protocolo rutinario de germinación."
+      },
+      "sourceIds": [
+        "pinguicula-org-primuliflora-500"
+      ]
+    },
+    "black-currant-ribes-nigrum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMN Extension documents tip layering of low currant canes as a vegetative route, but its page does not provide a seed-starting protocol for Ribes nigrum. Seed requirements remain undocumented here; this is not a claim that the species cannot be grown from seed.",
+        "es": "UMN Extension documenta el acodo de puntas de cañas bajas de grosella como vía vegetativa, pero su página no ofrece un protocolo de siembra para Ribes nigrum. Los requisitos de germinación quedan sin documentar aquí; esto no afirma que la especie no pueda cultivarse desde semilla."
+      },
+      "sourceIds": [
+        "umn-currants-gooseberries-wave43"
+      ]
+    },
+    "red-currant-ribes-rubrum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMN Extension mentions covering drooping currant canes to encourage rooting but does not provide seed-starting instructions for Ribes rubrum. No Seed Profile is assigned until seed-establishment evidence is available; seed propagation is not declared impossible.",
+        "es": "UMN Extension menciona cubrir cañas arqueadas de grosella para fomentar el enraizamiento, pero no ofrece instrucciones de siembra para Ribes rubrum. No se asigna Seed Profile hasta disponer de evidencia de establecimiento desde semilla; no se declara imposible esa propagación."
+      },
+      "sourceIds": [
+        "umn-currants-gooseberries-wave43"
+      ]
+    },
+    "european-gooseberry-ribes-uva-crispa": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMN Extension describes tip layering where gooseberry canes touch soil but does not provide a seed-starting protocol for Ribes uva-crispa. Seed-establishment information remains insufficient in this source; that does not mean seed propagation is impossible.",
+        "es": "UMN Extension describe el acodo de puntas cuando las cañas de uva espina tocan el suelo, pero no ofrece un protocolo de siembra para Ribes uva-crispa. La información de establecimiento desde semilla es insuficiente en esta fuente; eso no significa que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "umn-currants-gooseberries-wave43"
+      ]
+    },
+    "meyer-lemon": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "University of Minnesota Extension says citrus stem cuttings root easily. This is genus-level guidance and does not establish the rootstock or exact propagation method of a particular Meyer lemon; a verified vegetative plant is preferable when retaining the named selection matters.",
+        "es": "La Extensión de la Universidad de Minnesota indica que los esquejes de cítricos enraízan con facilidad. Es orientación a nivel de género y no establece el portainjerto ni el método exacto de un limón Meyer particular; conviene usar una planta vegetativa verificada cuando importe conservar la selección nombrada."
+      },
+      "sourceIds": [
+        "umn-citrus-indoors-wave37"
+      ]
+    },
+    "calamondin": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "University of Minnesota Extension documents citrus stem cuttings as an easy propagation route. The guidance is citrus-level, not a Calamondin-specific protocol; use a verified vegetative plant when retaining a selected hybrid identity matters. This does not mean seed propagation is biologically impossible.",
+        "es": "La Extensión de la Universidad de Minnesota documenta los esquejes de cítricos como una vía de propagación sencilla. La guía es general para cítricos, no un protocolo específico de Calamondin; usa una planta vegetativa verificada cuando importe conservar la identidad del híbrido seleccionado. Esto no significa que la propagación por semilla sea biológicamente imposible."
+      },
+      "sourceIds": [
+        "umn-citrus-indoors-wave37"
+      ]
+    },
+    "sweet-potato-ipomoea-batatas": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists root cuttings as the propagation strategy for sweetpotato. Garden crops are established vegetatively; this record does not imply that the species cannot produce botanical seed.",
+        "es": "NC State Extension indica esquejes de raíz como estrategia de propagación de la batata. Los cultivos de jardín se establecen vegetativamente; esta ficha no afirma que la especie no pueda producir semilla botánica."
+      },
+      "sourceIds": [
+        "ncsu-sweet-potato-500"
+      ]
+    },
+    "potato-solanum-tuberosum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Home-garden potatoes are normally planted from disease-free seed tubers or tuber pieces with eyes, not botanical seed. Here, “seed potato” means vegetative planting stock.",
+        "es": "Las papas de huerto normalmente se plantan desde tubérculos-semilla sanos o trozos con yemas, no desde semilla botánica. Aquí “papa semilla” significa material vegetativo de plantación."
+      },
+      "sourceIds": [
+        "umn-potatoes-home-500"
+      ]
+    },
+    "garlic-allium-sativum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Home-garden garlic is planted from individual cloves; each clove develops into a bulb. Do not confuse this vegetative planting material with true seed or elephant garlic (Allium ampeloprasum).",
+        "es": "El ajo de huerto se planta desde dientes individuales; cada diente produce un bulbo. No confundas este material vegetativo con semilla verdadera ni con ajo elefante (Allium ampeloprasum)."
+      },
+      "sourceIds": [
+        "usu-garlic-home-500"
+      ]
+    },
+    "ginger-zingiber-officinale": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents planting fresh rhizome pieces with healthy buds as the practical propagation route. This does not assert that seed reproduction is impossible.",
+        "es": "NC State Extension documenta la plantación de trozos frescos de rizoma con yemas sanas como vía práctica de propagación. Esto no afirma que la reproducción por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-ginger-500"
+      ]
+    },
+    "turmeric-curcuma-longa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents rhizome division and reports sterile flowers with nonviable seed. Propagate by rhizome division rather than treating this as a seed-grown crop.",
+        "es": "NC State Extension documenta la división del rizoma e informa flores estériles y semillas no viables. Se propaga por división del rizoma, no como cultivo de semilla."
+      },
+      "sourceIds": [
+        "ncsu-turmeric-500"
+      ]
+    },
+    "nepenthes-x-ventrata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NParks reports widespread tissue-culture propagation for this hybrid. This establishes a documented commercial propagation route, not that seed production is impossible or that every plant is the same clone.",
+        "es": "NParks informa propagación extendida por cultivo de tejidos para este híbrido. Esto establece una vía comercial documentada, no que producir semilla sea imposible ni que todas las plantas sean el mismo clon."
+      },
+      "sourceIds": [
+        "nparks-nepenthes-ventrata-500"
+      ]
+    },
+    "peppermint-mentha-piperita": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists division and stem cuttings for peppermint and notes that it rarely sets seed. Vegetative propagation is the documented practical route for maintaining this hybrid identity; no seed-starting protocol is asserted.",
+        "es": "NC State Extension enumera división y esquejes de tallo para la menta piperita y señala que rara vez produce semilla. La propagación vegetativa es la vía práctica documentada para conservar la identidad de este híbrido; no se afirma un protocolo de germinación."
+      },
+      "sourceIds": [
+        "ncsu-mentha-piperita-500"
+      ]
+    },
+    "white-carolina-pineberry": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The reviewed sources identify White Carolina as a supplier-listed pineberry name but do not establish cultivar-specific seed or vegetative propagation. Illinois Extension discusses pineberries generally and recommends nursery transplants; no method is assigned to this named record until stronger evidence is available.",
+        "es": "Las fuentes revisadas identifican White Carolina como nombre comercial de pineberry, pero no establecen propagación por semilla o vegetativa específica del cultivar. Illinois Extension habla de pineberries en general y recomienda trasplantes de vivero; no se asigna un método a este registro sin evidencia más sólida."
+      },
+      "sourceIds": []
+    },
+    "pineapple-mint-mentha-suaveolens-variegata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "RHS documents division and rhizome planting for Mentha suaveolens 'Variegata'. Use a vegetative route when preserving the named variegated cultivar matters; no seed profile is asserted.",
+        "es": "RHS documenta división y plantación de rizomas para Mentha suaveolens 'Variegata'. Usa una vía vegetativa si importa conservar el cultivar variegado; no se afirma un perfil de semilla."
+      },
+      "sourceIds": [
+        "rhs-pineapple-mint-500"
+      ]
+    },
+    "pinguicula-weser": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected sources resolve the cultivated hybrid name and parentage, but do not establish a reliable seed or vegetative propagation method for this identity.",
+        "es": "Las fuentes seleccionadas resuelven el nombre del híbrido cultivado y su parentaje, pero no establecen un método fiable de propagación por semilla o vegetativa para esta identidad."
+      },
+      "sourceIds": []
+    },
+    "pinguicula-lilac-lollipop": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "California Carnivores demonstrates leaf-pulling propagation for Pinguicula generally. A vegetative route is preferred when retaining a named hybrid identity; the exact cross remains unresolved and no seed protocol is claimed.",
+        "es": "California Carnivores muestra propagación por hojas para Pinguicula en general. Se prefiere una vía vegetativa para conservar una identidad híbrida nombrada; el cruce exacto sigue sin resolverse y no se afirma un protocolo de semilla."
+      },
+      "sourceIds": [
+        "calif-carnivores-pinguicula-propagation-500",
+        "calif-carnivores-lilac-lollipop-500"
+      ]
+    },
+    "pothos-epipremnum-aureum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents stem cuttings, including rooting vines in water, for Epipremnum aureum. The selected source does not provide seed-starting guidance for the common houseplant; that is a documentation gap, not evidence that seeds cannot germinate.",
+        "es": "NC State Extension documenta esquejes de tallo, incluido el enraizamiento de tallos en agua, para Epipremnum aureum. La fuente seleccionada no ofrece guía de siembra para la planta de interior común; es una brecha documental, no evidencia de que las semillas no germinen."
+      },
+      "sourceIds": [
+        "ncsu-epipremnum-aureum-500"
+      ]
+    },
+    "zz-plant-zamioculcas-zamiifolia": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists division and leaf cuttings for Zamioculcas zamiifolia. The selected source does not establish a seed-starting protocol for this houseplant; seed propagation is left undocumented rather than declared impossible.",
+        "es": "NC State Extension enumera división y esquejes de hoja para Zamioculcas zamiifolia. La fuente seleccionada no establece un protocolo de siembra para esta planta de interior; la propagación por semilla queda sin documentar, no declarada imposible."
+      },
+      "sourceIds": [
+        "ncsu-zamioculcas-zamiifolia-500"
+      ]
+    },
+    "spider-plant-chlorophytum-comosum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents plantlets on stolons and division for Chlorophytum comosum. The selected source does not provide a seed protocol; this classification records a source gap, not biological inability to grow from seed.",
+        "es": "NC State Extension documenta hijuelos en estolones y división para Chlorophytum comosum. La fuente seleccionada no ofrece un protocolo de semilla; esta clasificación registra una brecha de fuentes, no una imposibilidad biológica de crecer desde semilla."
+      },
+      "sourceIds": [
+        "ncsu-chlorophytum-comosum-500"
+      ]
+    },
+    "monstera-adansonii": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists stem cuttings for Monstera adansonii. The selected source does not provide seed-starting instructions for this species; seed propagation is not claimed to be impossible.",
+        "es": "NC State Extension enumera esquejes de tallo para Monstera adansonii. La fuente seleccionada no ofrece instrucciones de siembra para esta especie; no se afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-monstera-adansonii-500"
+      ]
+    },
+    "snake-plant-dracaena-trifasciata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists division and stem cuttings for Dracaena trifasciata. These vegetative routes are directly documented; the selected source does not supply a seed-starting protocol for the common houseplant.",
+        "es": "NC State enumera división y esquejes de tallo para Dracaena trifasciata. Estas vías vegetativas están documentadas; la fuente seleccionada no ofrece un protocolo de semilla para la planta de interior común."
+      },
+      "sourceIds": [
+        "ncsu-dracaena-trifasciata-500"
+      ]
+    },
+    "spathiphyllum-wallisii": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists division as a propagation strategy for the peace-lily group. This is genus/group-level evidence, not a species-specific seed protocol for every Spathiphyllum wallisii plant.",
+        "es": "NC State enumera la división como estrategia de propagación para el grupo de peace lilies. Es evidencia de género/grupo, no un protocolo de semilla específico de cada planta Spathiphyllum wallisii."
+      },
+      "sourceIds": [
+        "ncsu-spathiphyllum-500"
+      ]
+    },
+    "rubber-plant-ficus-elastica": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed, layering, and root cuttings for Ficus elastica but gives no seed-starting protocol. Layering or root cuttings are documented alternatives; seed propagation is not claimed to be impossible.",
+        "es": "NC State enumera semilla, acodo y esquejes de raíz para Ficus elastica, pero no ofrece un protocolo de siembra. El acodo o los esquejes de raíz son alternativas documentadas; no se afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-ficus-elastica-500"
+      ]
+    },
+    "boston-fern-nephrolepis-exaltata": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "Boston fern reproduces by spores, not seeds. NC State documents spores on fronds but does not provide a home sowing protocol, so spores are noted as the alternative route and seed-specific propagation remains not applicable.",
+        "es": "El helecho de Boston se reproduce por esporas, no por semillas. NC State documenta esporas en las frondas, pero no ofrece un protocolo doméstico de siembra; se indican como vía alternativa y la propagación por semilla no aplica."
+      },
+      "sourceIds": [
+        "ncsu-nephrolepis-exaltata-500"
+      ]
+    },
+    "monstera-deliciosa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents layering and stem cuttings for Monstera deliciosa. These are the supported practical routes in the selected houseplant source; it does not supply a seed-starting protocol.",
+        "es": "NC State documenta acodo y esquejes de tallo para Monstera deliciosa. Son las vías prácticas respaldadas en la fuente seleccionada para plantas de interior; no ofrece un protocolo de siembra."
+      },
+      "sourceIds": [
+        "ncsu-monstera-deliciosa-500"
+      ]
+    },
+    "heartleaf-philodendron-philodendron-hederaceum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State identifies stem cuttings as a propagation strategy for Philodendron hederaceum. This documents a vegetative route, not an assertion that the species cannot reproduce by seed.",
+        "es": "NC State identifica los esquejes de tallo como estrategia de propagación para Philodendron hederaceum. Documenta una vía vegetativa; no afirma que la especie no pueda reproducirse por semilla."
+      },
+      "sourceIds": [
+        "ncsu-philodendron-hederaceum-500"
+      ]
+    },
+    "aloe-vera": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents offsets and division for Aloe vera. This profile records vegetative propagation because the selected source provides no seed-starting protocol.",
+        "es": "NC State documenta hijuelos y división para Aloe vera. Esta ficha registra propagación vegetativa porque la fuente seleccionada no ofrece un protocolo de siembra."
+      },
+      "sourceIds": [
+        "ncsu-aloe-vera-500"
+      ]
+    },
+    "jade-plant-crassula-ovata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents leaf and stem cuttings for Crassula ovata. The profile names those vegetative methods without implying seed propagation is impossible.",
+        "es": "NC State documenta esquejes de hoja y tallo para Crassula ovata. La ficha indica esos métodos vegetativos sin afirmar que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-crassula-ovata-500"
+      ]
+    },
+    "fiddle-leaf-fig-ficus-lyrata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists stem cuttings for Ficus lyrata. This documents a vegetative propagation route; the selected source does not establish a seed-starting protocol.",
+        "es": "NC State enumera esquejes de tallo para Ficus lyrata. Documenta una vía de propagación vegetativa; la fuente seleccionada no establece un protocolo de siembra."
+      },
+      "sourceIds": [
+        "ncsu-ficus-lyrata-500"
+      ]
+    },
+    "wax-plant-hoya-carnosa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists stem cuttings for Hoya carnosa. The record does not claim that seed propagation is biologically impossible; the reviewed houseplant source only documents this practical route.",
+        "es": "NC State enumera esquejes de tallo para Hoya carnosa. La ficha no afirma que la propagación por semilla sea biológicamente imposible; la fuente consultada para plantas de interior solo documenta esta vía práctica."
+      },
+      "sourceIds": [
+        "ncsu-hoya-carnosa-500"
+      ]
+    },
+    "inch-plant-tradescantia-zebrina": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents stem cuttings that root at the nodes for Tradescantia zebrina. Seed reproduction is not ruled out; a seed-starting protocol is not provided in the selected source.",
+        "es": "NC State documenta esquejes de tallo que enraízan en los nudos para Tradescantia zebrina. No se descarta la reproducción por semilla; la fuente seleccionada no ofrece un protocolo de germinación."
+      },
+      "sourceIds": [
+        "ncsu-tradescantia-zebrina-500"
+      ]
+    },
+    "corn-plant-dracaena-fragrans": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists stem cuttings for Dracaena fragrans. The species profile records that documented vegetative route without inferring cultivar-level behavior or a seed protocol.",
+        "es": "NC State enumera esquejes de tallo para Dracaena fragrans. La ficha registra esa vía vegetativa documentada sin inferir comportamiento de cultivar ni un protocolo de semilla."
+      },
+      "sourceIds": [
+        "ncsu-dracaena-fragrans-500"
+      ]
+    },
+    "prayer-plant-maranta-leuconeura": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents rhizomatous division for Maranta leuconeura. This is the supported practical route for the houseplant identity; the selected source does not provide a seed-starting protocol.",
+        "es": "NC State documenta la división de rizomas para Maranta leuconeura. Es la vía práctica respaldada para esta identidad de planta de interior; la fuente seleccionada no ofrece un protocolo de siembra."
+      },
+      "sourceIds": [
+        "ncsu-maranta-leuconeura-500"
+      ]
+    },
+    "northern-highbush-blueberry": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected home-garden source supports planting established nursery bushes but does not establish a seed-starting or propagation protocol for this identity. This is a documentation gap, not a claim that blueberry cannot be propagated by other methods.",
+        "es": "La fuente de huerto consultada respalda plantar arbustos de vivero establecidos, pero no determina un protocolo de germinación o propagación para esta identidad. Es una brecha documental, no una afirmación de que el arándano no pueda propagarse por otros métodos."
+      },
+      "sourceIds": []
+    },
+    "red-raspberry": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Penn State Extension documents red raspberry canes arising from root buds as suckers. This describes a vegetative route in established plantings; fruiting type and exact behavior still vary by cultivar.",
+        "es": "Penn State Extension documenta que las cañas de frambuesa roja pueden surgir como hijuelos de yemas en las raíces. Describe una vía vegetativa en plantaciones establecidas; el tipo de fructificación y el comportamiento exacto varían por cultivar."
+      },
+      "sourceIds": [
+        "psu-brambles-home-fruit-wave27"
+      ]
+    },
+    "common-fig": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Oregon State Extension describes dormant hardwood cuttings as a practical propagation route for figs. This regional method does not establish cultivar-specific rooting success or rule out botanical seed reproduction.",
+        "es": "Oregon State Extension describe los esquejes de madera dura en reposo como vía práctica para propagar higueras. Este método regional no determina el éxito de enraizado de un cultivar ni descarta la reproducción por semilla botánica."
+      },
+      "sourceIds": [
+        "osu-figs-oregon-wave27"
+      ]
+    },
+    "waterleaf-talinum-fruticosum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "UF/IFAS reports that seed establishment can be difficult and encourages mature-stem cuttings as a practical alternative. A Seed Profile remains available for people who have seed; this classification does not mean seed propagation is impossible.",
+        "es": "UF/IFAS informa que el establecimiento desde semilla puede ser difícil y recomienda esquejes de tallo maduro como alternativa práctica. El Perfil de Semilla sigue disponible para quien tenga semillas; esta clasificación no significa que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ufifas-waterleaf-wave31"
+      ]
+    },
+    "lemon-verbena-aloysia-citrodora": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "North Carolina Extension recommends stem cuttings because seed set is variable in North America; Illinois Extension also reports that tip cuttings root easily. This supports vegetative propagation as the practical route in those contexts, not a claim that seed propagation is impossible.",
+        "es": "NC State Extension recomienda esquejes de tallo porque la producción de semilla es variable en Norteamérica; University of Illinois Extension también informa que los esquejes apicales enraízan con facilidad. Esto respalda la propagación vegetativa como vía práctica en esos contextos, no afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-lemon-verbena-wave32",
+        "illinois-lemon-verbena-wave32"
+      ]
+    },
+    "cuban-oregano-coleus-amboinicus": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents easy stem-cutting propagation and spring division. These established vegetative methods are the practical propagation guidance represented here; the source does not say seed propagation is impossible.",
+        "es": "NC State Extension documenta la propagación fácil mediante esquejes de tallo y la división en primavera. Estos métodos vegetativos establecidos son la guía práctica representada aquí; la fuente no afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-cuban-oregano-wave32"
+      ]
+    },
+    "purple-shamrock-oxalis-triangularis": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents rhizome division and detached scale leaves as propagation routes and also lists seed, but the selected evidence gives no seed-starting or germination protocol. This records a documentation gap, not an inability to grow Oxalis from seed.",
+        "es": "NC State Extension documenta la división de rizomas y el uso de escamas separadas como vías de propagación, y también menciona semilla, pero la evidencia consultada no ofrece un protocolo de siembra o germinación. Es una brecha documental, no una imposibilidad de cultivar Oxalis desde semilla."
+      },
+      "sourceIds": [
+        "ncsu-oxalis-triangularis-wave33"
+      ]
+    },
+    "arrowhead-plant-syngonium-podophyllum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents division, layering and stem cuttings for Syngonium podophyllum. The profile represents these practical vegetative methods; the selected source does not establish a seed protocol or state that seed is impossible.",
+        "es": "NC State Extension documenta división, acodo y esquejes de tallo para Syngonium podophyllum. El perfil representa estos métodos vegetativos prácticos; la fuente consultada no establece un protocolo de semilla ni afirma que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-syngonium-podophyllum-wave33"
+      ]
+    },
+    "baby-rubber-plant-peperomia-obtusifolia": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents leaf and stem cuttings for Peperomia obtusifolia. These are the established propagation methods represented here; no seed-starting protocol is supplied and seed propagation is not declared impossible.",
+        "es": "NC State Extension documenta esquejes de hoja y tallo para Peperomia obtusifolia. Son los métodos de propagación establecidos que se representan aquí; no se ofrece un protocolo de semilla ni se declara imposible esa propagación."
+      },
+      "sourceIds": [
+        "ncsu-peperomia-obtusifolia-wave33"
+      ]
+    },
+    "satin-pothos-scindapsus-pictus": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents stem cuttings for Scindapsus pictus. This practical vegetative route is represented for the houseplant; the selected source does not establish seed starting or claim seed propagation is impossible.",
+        "es": "NC State Extension documenta esquejes de tallo para Scindapsus pictus. Se representa esta vía vegetativa práctica para la planta de interior; la fuente consultada no establece siembra ni afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-scindapsus-pictus-wave33"
+      ]
+    },
+    "chinese-money-plant-pilea-peperomioides": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents offsets and stem cuttings for Pilea peperomioides. These vegetative methods establish the public propagation guidance; a seed-starting protocol is not supplied and seed propagation is not declared impossible.",
+        "es": "NC State Extension documenta hijuelos y esquejes de tallo para Pilea peperomioides. Estos métodos vegetativos constituyen la guía pública de propagación; no se ofrece un protocolo de semilla ni se declara imposible esa propagación."
+      },
+      "sourceIds": [
+        "ncsu-pilea-peperomioides-wave33"
+      ]
+    },
+    "table-grape-vine": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Oregon State Extension recommends cuttings rather than seed when reproducing a grape variety because seedlings do not retain the parent characteristics. This is cultivar-preservation guidance, not a claim that grape seed cannot germinate.",
+        "es": "Oregon State Extension recomienda esquejes en vez de semilla para reproducir una variedad de uva, porque las plántulas no conservan las características parentales. Es orientación para preservar el cultivar, no una afirmación de que la semilla de uva no pueda germinar."
+      },
+      "sourceIds": [
+        "osu-table-grapes-wave27"
+      ]
+    },
+    "cast-iron-plant-aspidistra-elatior": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The reviewed species sources describe rhizomatous growth but do not establish a home-propagation procedure. Seed and vegetative propagation remain unclassified pending a suitable propagation source.",
+        "es": "Las fuentes consultadas describen el crecimiento rizomatoso, pero no establecen un procedimiento doméstico de propagación. La propagación por semilla o vegetativa queda sin clasificar hasta contar con una fuente adecuada."
+      },
+      "sourceIds": []
+    },
+    "parlor-palm-chamaedorea-elegans": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected sources establish the species and houseplant care but do not document a practical propagation method or seed-starting protocol for this identity. No method is inferred.",
+        "es": "Las fuentes seleccionadas establecen la especie y sus cuidados como planta de interior, pero no documentan un método práctico de propagación ni un protocolo de semilla para esta identidad. No se infiere ningún método."
+      },
+      "sourceIds": []
+    },
+    "birds-nest-fern-asplenium-nidus": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension notes that Asplenium nidus reproduces by spores, but the selected account does not give a practical spore-sowing protocol. The existence of spores is not presented as a ready-to-use seed profile.",
+        "es": "NC State Extension señala que Asplenium nidus se reproduce mediante esporas, pero la ficha consultada no ofrece un protocolo práctico de siembra de esporas. La existencia de esporas no se presenta como un perfil de semilla listo para usar."
+      },
+      "sourceIds": [
+        "ncsu-asplenium-nidus-wave34"
+      ]
+    },
+    "african-violet-streptocarpus-ionanthus": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents leaf and stem cuttings and lists seed among propagation strategies for African violets/related Streptocarpus, but the selected guidance does not establish a species-scoped seed protocol. No germination profile is inferred.",
+        "es": "NC State Extension documenta esquejes de hoja y tallo y enumera semilla entre las estrategias de propagación de violetas africanas/Streptocarpus relacionados, pero la guía consultada no establece un protocolo de semilla a nivel de especie. No se infiere un perfil de germinación."
+      },
+      "sourceIds": [
+        "ncsu-streptocarpus-ionanthus-wave34"
+      ]
+    },
+    "english-ivy-hedera-helix": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists seed, division, root cuttings and stem cuttings for Hedera helix, but the selected page gives no seed-starting protocol. The species is reachable here through propagation guidance without inventing germination parameters.",
+        "es": "NC State Extension enumera semillas, división y esquejes de raíz y tallo para Hedera helix, pero la página consultada no ofrece un protocolo de siembra. La especie puede encontrarse aquí mediante la guía de propagación sin inventar parámetros de germinación."
+      },
+      "sourceIds": [
+        "ncsu-hedera-helix-wave35"
+      ]
+    },
+    "dumbcane-dieffenbachia-seguine": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents division and stem/root cuttings for Dieffenbachia seguine. Those vegetative methods are supported; the selected source does not establish a seed protocol or claim that seed propagation is impossible.",
+        "es": "NC State Extension documenta división y esquejes de tallo/raíz para Dieffenbachia seguine. Esos métodos vegetativos están respaldados; la fuente consultada no establece un protocolo de semilla ni afirma que propagar por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-dieffenbachia-seguine-wave35"
+      ]
+    },
+    "flamingo-flower-anthurium-andraeanum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension's genus-level Anthurium page lists stem cuttings and seeds, but it does not provide a species-scoped seed-starting protocol for A. andraeanum. No germination profile or cultivar-retention claim is inferred.",
+        "es": "La página de NC State Extension para el género Anthurium enumera esquejes de tallo y semillas, pero no ofrece un protocolo de siembra a nivel de especie para A. andraeanum. No se infiere un perfil de germinación ni una afirmación sobre conservación de cultivares."
+      },
+      "sourceIds": [
+        "ncsu-anthurium-genus-wave35"
+      ]
+    },
+    "polka-dot-begonia-begonia-maculata": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension's Begonia genus page lists division, leaf cuttings, seed and stem cuttings across the genus, but does not resolve which method or protocol applies specifically to Begonia maculata. No species-level seed guidance is inferred.",
+        "es": "La página del género Begonia de NC State Extension enumera división, esquejes de hoja y tallo y semillas para el género, pero no resuelve qué método o protocolo corresponde específicamente a Begonia maculata. No se infiere guía de semilla a nivel de especie."
+      },
+      "sourceIds": [
+        "ncsu-begonia-genus-wave35"
+      ]
+    },
+    "bird-of-paradise-strelitzia-reginae": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists division for Strelitzia reginae but gives no seed-starting instructions in the selected species profile. Division is a documented alternative; seed requirements remain unresolved rather than being described as impossible.",
+        "es": "NC State Extension enumera la división para Strelitzia reginae, pero la ficha de especie consultada no ofrece instrucciones de siembra. La división es una alternativa documentada; los requisitos de semilla siguen sin resolverse y no se describen como imposibles."
+      },
+      "sourceIds": [
+        "ncsu-strelitzia-reginae-wave38"
+      ]
+    },
+    "string-of-hearts-ceropegia-woodii": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists seed, layering and stem cuttings and documents that aerial tubercles root on contact with the growing medium. Vegetative propagation is the practical route for retaining a selected plant form; no numeric seed protocol is provided.",
+        "es": "NC State Extension enumera semilla, acodo y esquejes de tallo, y documenta que los tubérculos aéreos enraízan al tocar el sustrato. La propagación vegetativa es la vía práctica para conservar una forma seleccionada; no se ofrece un protocolo numérico de germinación."
+      },
+      "sourceIds": [
+        "ncsu-ceropegia-woodii-wave38"
+      ]
+    },
+    "string-of-pearls-curio-rowleyanus": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension documents 3–5 inch stem cuttings as a quick propagation method and says seed is dispersed after flowering without giving a sowing protocol. Choose stem cuttings when a practical, faster renewal route is wanted; no seed parameters are invented.",
+        "es": "NC State Extension documenta esquejes de tallo de 3–5 pulgadas como método rápido y señala que la semilla se dispersa tras la floración, sin ofrecer un protocolo de siembra. Elige esquejes cuando se busque una renovación práctica y rápida; no se inventan parámetros de germinación."
+      },
+      "sourceIds": [
+        "ncsu-curio-rowleyanus-wave38"
+      ]
+    },
+    "ripple-peperomia-peperomia-caperata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension recommends spring leaf or stem-tip cuttings for Peperomia caperata. The cited source does not describe seed propagation; cuttings are the documented route, without claiming seed propagation is impossible.",
+        "es": "NC State Extension recomienda esquejes de hoja o de punta de tallo en primavera para Peperomia caperata. La fuente citada no describe la propagación por semilla; los esquejes son la vía documentada, sin afirmar que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-peperomia-caperata-wave38"
+      ]
+    },
+    "panda-plant-kalanchoe-tomentosa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension describes leaf cuttings or offshoots for Kalanchoe tomentosa and notes that this fuzzy-leaved species can be harder to propagate than other succulents. The selected page gives no seed protocol; no claim is made that seed propagation is impossible.",
+        "es": "NC State Extension describe esquejes de hoja o hijuelos para Kalanchoe tomentosa y señala que esta especie de hojas vellosas puede ser más difícil de propagar que otras suculentas. La página no ofrece un protocolo de semilla; no se afirma que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-kalanchoe-tomentosa-wave38"
+      ]
+    },
+    "philippine-evergreen-aglaonema-commutatum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists division and stem cuttings for Aglaonema at genus level. The source does not provide a seed-starting protocol for this species, so the documented vegetative routes are shown without claiming seed propagation is impossible.",
+        "es": "NC State enumera división y esquejes de tallo para Aglaonema a nivel de género. La fuente no ofrece un protocolo de siembra para esta especie; se muestran las vías vegetativas documentadas sin afirmar que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-aglaonema-genus-wave39"
+      ]
+    },
+    "giant-white-bird-of-paradise-strelitzia-nicolai": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists both division and seed as propagation options for Strelitzia nicolai, but the selected source gives no sowing or seedling-establishment protocol. Seed Profile V0 is therefore not created; the propagation record preserves the documented options and the missing seed-specific detail.",
+        "es": "NC State enumera la división y la semilla como opciones de propagación para Strelitzia nicolai, pero la fuente seleccionada no ofrece un protocolo de siembra ni de establecimiento de plántulas. Por eso no se crea un Seed Profile V0; el registro conserva las opciones documentadas y la falta de detalle específico para semilla."
+      },
+      "sourceIds": [
+        "ncsu-strelitzia-nicolai-wave39"
+      ]
+    },
+    "madagascar-dragon-tree-dracaena-reflexa-angustifolia": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State recommends stem cuttings for Dracaena reflexa var. angustifolia. The source does not supply a seed protocol; stem cuttings are the documented propagation method, not proof that seed propagation is impossible.",
+        "es": "NC State recomienda esquejes de tallo para Dracaena reflexa var. angustifolia. La fuente no ofrece un protocolo de semilla; los esquejes son el método documentado, no una prueba de que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-dracaena-reflexa-angustifolia-wave39"
+      ]
+    },
+    "gold-dust-dracaena-dracaena-surculosa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents division and tip or stem cuttings for Dracaena surculosa. The selected source does not provide a seed-starting protocol, so no Seed Profile is created and seed propagation is not ruled out.",
+        "es": "NC State documenta división y esquejes apicales o de tallo para Dracaena surculosa. La fuente seleccionada no ofrece un protocolo de siembra; por ello no se crea un Seed Profile y no se descarta la propagación por semilla."
+      },
+      "sourceIds": [
+        "ncsu-dracaena-surculosa-wave39"
+      ]
+    },
+    "ponytail-palm-beaucarnea-recurvata": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected NC State profile documents this plant's container care but does not provide a seed or alternative propagation protocol. Propagation method remains unresolved pending a suitable authoritative source.",
+        "es": "La ficha de NC State consultada documenta el cultivo en recipiente, pero no ofrece un protocolo de semilla ni de propagación alternativa. El método queda sin resolver hasta encontrar una fuente autorizada adecuada."
+      },
+      "sourceIds": []
+    },
+    "cape-jasmine-gardenia-jasminoides": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed, grafting, layering and stem cuttings for Gardenia jasminoides, but the selected page gives no seed-starting parameters. Seed propagation is documented as an option; no Seed Profile is created until useful sowing guidance is available.",
+        "es": "NC State enumera semilla, injerto, acodo y esquejes de tallo para Gardenia jasminoides, pero la ficha consultada no da parámetros de siembra. La semilla está documentada como opción; no se crea un Seed Profile hasta disponer de orientación útil para sembrar."
+      },
+      "sourceIds": [
+        "ncsu-gardenia-jasminoides-wave40"
+      ]
+    },
+    "chinese-hibiscus-hibiscus-rosa-sinensis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State recommends stem cuttings for the Chinese hibiscus ornamental group. The cited profile does not give seed-specific guidance; cuttings are the documented route for the represented hybrid group, not proof that seed is impossible.",
+        "es": "NC State recomienda esquejes de tallo para el grupo ornamental del hibisco chino. La ficha citada no ofrece instrucciones de semilla; los esquejes son la vía documentada para el grupo híbrido representado, no una prueba de que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-hibiscus-rosa-sinensis-wave40"
+      ]
+    },
+    "roselle-sabdariffa-gossypiifolia": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and stem cuttings and says germination is very rapid, but supplies no sowing depth, temperature or time range. Seed Profile V0 is not created without a useful establishment protocol; the nonnumeric germination statement is retained at its actual scope.",
+        "es": "NC State enumera semilla y esquejes de tallo e indica que la germinación es muy rápida, pero no especifica profundidad, temperatura ni plazo. No se crea Seed Profile V0 sin un protocolo útil de establecimiento; se conserva la afirmación no numérica con su alcance real."
+      },
+      "sourceIds": [
+        "ncsu-sabdariffa-gossypiifolia-wave40"
+      ]
+    },
+    "rose-of-sharon-hibiscus-syriacus": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected NC State profile focuses on established landscape shrubs and does not establish a seed or vegetative propagation method. Propagation remains an evidence gap rather than an assumed seed route.",
+        "es": "La ficha de NC State seleccionada se centra en arbustos de paisaje establecidos y no determina un método de propagación por semilla o vegetativa. La propagación queda como brecha de evidencia, no como una vía de semilla supuesta."
+      },
+      "sourceIds": []
+    },
+    "polka-dot-plant-hypoestes-phyllostachya": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists both seed and stem cuttings for Hypoestes phyllostachya and describes reseeding in warm, temperate settings. It supplies no sowing or germination protocol, so cuttings are the usable documented route while seed establishment remains unresolved.",
+        "es": "NC State enumera tanto semillas como esquejes de tallo para Hypoestes phyllostachya y describe resiembra en lugares cálidos y templados. No ofrece protocolo de siembra ni germinación; los esquejes son la vía práctica documentada y el establecimiento por semilla sigue sin resolverse."
+      },
+      "sourceIds": [
+        "ncsu-hypoestes-phyllostachya-wave41"
+      ]
+    },
+    "purple-heart-tradescantia-pallida": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents stem cuttings for Tradescantia pallida. The selected profile does not give a seed-starting protocol; cuttings are the verified practical route, not proof that seed propagation is impossible.",
+        "es": "NC State documenta esquejes de tallo para Tradescantia pallida. La ficha seleccionada no ofrece un protocolo de siembra; los esquejes son la vía práctica verificada, no una prueba de que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-tradescantia-pallida-wave41"
+      ]
+    },
+    "wax-plant-hoya-pubicalyx": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists stem cuttings for Hoya pubicalyx. The source does not establish a seed protocol; this record favors the documented vegetative route without claiming seed propagation is impossible.",
+        "es": "NC State enumera esquejes de tallo para Hoya pubicalyx. La fuente no establece un protocolo de semilla; este registro prioriza la vía vegetativa documentada sin afirmar que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-hoya-pubicalyx-wave41"
+      ]
+    },
+    "common-staghorn-fern-platycerium-bifurcatum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "Platycerium bifurcatum reproduces by spores, but the selected NC State source gives no spore-sowing establishment protocol. It documents division of large plants and rhizome pups as a practical alternative; spores are not seeds and no Seed Profile is appropriate.",
+        "es": "Platycerium bifurcatum se reproduce por esporas, pero la fuente seleccionada de NC State no ofrece un protocolo para establecerlas por siembra. Documenta la división de plantas grandes y los hijuelos rizomatosos como alternativa práctica; las esporas no son semillas y no corresponde crear un Seed Profile."
+      },
+      "sourceIds": [
+        "ncsu-platycerium-bifurcatum-wave41"
+      ]
+    },
+    "delta-maidenhair-fern-adiantum-raddianum": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists division for Adiantum raddianum and describes creeping rhizomes. Fern spores are not seeds; no spore-starting protocol is supplied, so the accessible propagation guidance focuses on documented division.",
+        "es": "NC State enumera la división para Adiantum raddianum y describe rizomas rastreros. Las esporas de helecho no son semillas; no se ofrece un protocolo para iniciarlas, por lo que la guía de propagación se centra en la división documentada."
+      },
+      "sourceIds": [
+        "ncsu-adiantum-raddianum-wave41"
+      ]
+    },
+    "scarlet-star-guzmania-lingulata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents basal offsets and division for Guzmania lingulata after the flowering rosette declines. The source does not provide seed-starting guidance; the offset route is documented without asserting that seed propagation is impossible.",
+        "es": "NC State documenta hijuelos basales y división para Guzmania lingulata después de que declina la roseta florecida. La fuente no ofrece guía de siembra; se registra la vía por hijuelos sin afirmar que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-guzmania-lingulata-wave41"
+      ]
+    },
+    "thanksgiving-cactus-schlumbergera-truncata": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State recommends stem-segment cuttings for Schlumbergera truncata and gives a basic callusing and rooting procedure. No seed establishment protocol is selected; use a verified species-identified cutting when preserving the represented holiday-cactus identity matters.",
+        "es": "NC State recomienda esquejes de segmentos de tallo para Schlumbergera truncata y describe un procedimiento básico de cicatrización y enraizado. No se selecciona un protocolo de establecimiento por semilla; usa un esqueje con identidad de especie verificada cuando importe conservar esta identidad de cactus festivo."
+      },
+      "sourceIds": [
+        "ncsu-schlumbergera-truncata-wave41"
+      ]
+    },
+    "arabian-jasmine-jasminum-sambac": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Missouri Botanical Garden recommends summer cuttings for Jasminum sambac. The selected source does not supply seed-starting parameters; cuttings are the documented practical route without claiming seed propagation is impossible.",
+        "es": "Missouri Botanical Garden recomienda esquejes de verano para Jasminum sambac. La fuente seleccionada no aporta parámetros de siembra; los esquejes son la vía práctica documentada sin afirmar que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "mobot-jasminum-sambac-wave41"
+      ]
+    },
+    "areca-palm-chrysalidocarpus-lutescens": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and division for Chrysalidocarpus lutescens but supplies no household sowing or germination protocol. Division is the documented practical route; seed establishment remains unresolved and no Seed Profile V0 is created.",
+        "es": "NC State enumera semilla y división para Chrysalidocarpus lutescens, pero no aporta un protocolo doméstico de siembra o germinación. La división es la vía práctica documentada; el establecimiento por semilla sigue sin resolverse y no se crea Seed Profile V0."
+      },
+      "sourceIds": [
+        "ncsu-chrysalidocarpus-lutescens-wave42"
+      ]
+    },
+    "norfolk-island-pine-araucaria-heterophylla": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "The selected NC State profile describes the established Norfolk Island pine and mentions propagation, but does not supply a usable seed-starting protocol. Do not infer temperature, pretreatment or timing; seed establishment needs stronger evidence.",
+        "es": "La ficha seleccionada de NC State describe el pino de Norfolk establecido y menciona propagación, pero no ofrece un protocolo útil de inicio por semilla. No se infieren temperatura, tratamiento previo ni tiempos; el establecimiento por semilla requiere evidencia más sólida."
+      },
+      "sourceIds": [
+        "ncsu-araucaria-heterophylla-wave42"
+      ]
+    },
+    "nerve-plant-fittonia-albivenis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents stem cuttings and notes that creeping stems root for Fittonia albivenis. The selected species page supplies no seed-starting protocol; vegetative propagation is the documented practical route, not proof that seed is impossible.",
+        "es": "NC State documenta esquejes de tallo y señala que los tallos rastreros enraízan en Fittonia albivenis. La ficha de especie no ofrece protocolo de semilla; la propagación vegetativa es la vía práctica documentada, no prueba de que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-fittonia-albivenis-wave42"
+      ]
+    },
+    "sweetheart-hoya-hoya-kerrii": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State warns that a rooted Hoya kerrii leaf without a stem node may not develop a vine. Propagation guidance must distinguish leaf-only retail material from node-bearing stem tissue; no seed protocol is established by the selected source.",
+        "es": "NC State advierte que una hoja enraizada de Hoya kerrii sin nodo de tallo puede no desarrollar una enredadera. La guía debe distinguir material minorista de solo hoja del tejido de tallo con nodo; la fuente elegida no establece protocolo de semilla."
+      },
+      "sourceIds": [
+        "ncsu-hoya-kerrii-wave42"
+      ]
+    },
+    "rattlesnake-plant-goeppertia-insignis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State recommends division for Goeppertia insignis. The selected species profile does not provide seed-starting parameters; division is the documented route, not evidence that seed propagation is impossible.",
+        "es": "NC State recomienda la división para Goeppertia insignis. La ficha de especie seleccionada no da parámetros de siembra; la división es la vía documentada, no prueba de que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-goeppertia-insignis-wave42"
+      ]
+    },
+    "watermelon-peperomia-peperomia-argyraea": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected NC State species profile does not specify seed or vegetative propagation. No genus-level method is promoted to this species; propagation remains unresolved pending identity-matched evidence.",
+        "es": "La ficha de especie de NC State seleccionada no especifica propagación por semilla ni vegetativa. No se eleva un método del género a esta especie; la propagación queda sin resolver hasta contar con evidencia específica."
+      },
+      "sourceIds": []
+    },
+    "lipstick-plant-aeschynanthus-radicans": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State documents soft-stem cuttings with three nodes for Aeschynanthus radicans. It gives no seed-establishment protocol; the verified cutting method is retained without claiming seed propagation is impossible.",
+        "es": "NC State documenta esquejes blandos de tres nodos para Aeschynanthus radicans. No aporta protocolo de establecimiento por semilla; se conserva el método de esqueje verificado sin afirmar que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-aeschynanthus-radicans-wave42"
+      ]
+    },
+    "mistletoe-cactus-rhipsalis-baccifera": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seeds and cuttings for Rhipsalis baccifera but supplies no seed-sowing or germination parameters. Cuttings are the documented alternative; seed establishment remains unresolved and no Seed Profile V0 is created.",
+        "es": "NC State enumera semillas y esquejes para Rhipsalis baccifera, pero no ofrece parámetros de siembra o germinación. Los esquejes son la alternativa documentada; el establecimiento por semilla sigue sin resolverse y no se crea Seed Profile V0."
+      },
+      "sourceIds": [
+        "ncsu-rhipsalis-baccifera-wave42"
+      ]
+    },
+    "american-gooseberry-ribes-hirtellum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMN Extension documents vegetative tip layering for gooseberries but does not provide a seed-establishment protocol for Ribes hirtellum. Seed propagation is not declared impossible; the public catalog marks the seed route insufficiently documented.",
+        "es": "UMN Extension documenta el acodo vegetativo de puntas para uvas espina, pero no aporta un protocolo de establecimiento por semilla para Ribes hirtellum. No se declara imposible la propagación por semilla; el catálogo indica que la ruta está insuficientemente documentada."
+      },
+      "sourceIds": [
+        "umn-currants-gooseberries-wave43"
+      ]
+    },
+    "black-hawk-black-raspberry": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMN recommends verified nursery stock and provides cane management for black raspberries, but its cited home-garden source does not establish a seed protocol for the Black Hawk cultivar. This is an evidence gap, not a claim that seed propagation is biologically impossible.",
+        "es": "UMN recomienda plantas verificadas de vivero y describe el manejo de cañas de frambuesas negras, pero la guía doméstica citada no establece un protocolo de semilla para el cultivar Black Hawk. Es una falta de evidencia, no una afirmación de que la propagación por semilla sea biológicamente imposible."
+      },
+      "sourceIds": [
+        "umn-raspberries-home-garden-wave44"
+      ]
+    },
+    "american-elderberry-sambucus-canadensis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "UF/IFAS documents American elderberry seed propagation but says seedlings vary and propagation from cuttings is generally preferred for maintaining selected material. Seed propagation is possible; the separate V0 profile retains only the limited documented treatment and timing statements.",
+        "es": "UF/IFAS documenta la propagación por semilla del sauco americano, pero indica que las plántulas varían y que suelen preferirse los esquejes para conservar material seleccionado. La semilla es posible; el perfil V0 separado conserva solo las indicaciones limitadas de tratamiento y tiempo respaldadas."
+      },
+      "sourceIds": [
+        "ufifas-elderberry-florida-wave44"
+      ]
+    },
+    "american-cranberry-vaccinium-macrocarpon": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "UMass Extension recommends vegetative cranberry vine material for homeowner establishment and says growing from seed is not recommended because it is extremely slow. The public propagation view emphasizes rooted vegetative material; no Seed Profile is created.",
+        "es": "UMass Extension recomienda material vegetativo enraizado para establecer cranberry en casa e indica que no recomienda cultivarlo desde semilla porque el proceso es extremadamente lento. La vista pública de propagación prioriza material vegetativo; no se crea Seed Profile."
+      },
+      "sourceIds": [
+        "umass-cranberry-home-propagation-wave44"
+      ]
+    },
+    "pineapple-sage-salvia-elegans": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Pineapple sage can be grown from seed, but NCSU advises starting it indoors and setting it out as a well-developed plant; Wisconsin Extension says named cultivars are propagated by tip cuttings. Seed is possible for the species, while cuttings are preferred to preserve cultivar identity.",
+        "es": "La salvia piña puede cultivarse desde semilla, pero NCSU recomienda iniciarla en interior y plantarla cuando esté bien desarrollada; Wisconsin Extension indica que los cultivares nombrados se propagan por esquejes terminales. La semilla es posible para la especie, pero se prefieren esquejes para conservar la identidad del cultivar."
+      },
+      "sourceIds": [
+        "ncsu-pineapple-sage-wave45",
+        "uwisc-pineapple-sage-wave45"
+      ]
+    },
+    "rose-painted-calathea-goeppertia-roseopicta": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension recommends division of Goeppertia roseopicta rhizomes. The selected source does not provide seed establishment guidance; division is the supported home propagation route, not proof seed is impossible.",
+        "es": "NC State Extension recomienda dividir los rizomas de Goeppertia roseopicta. La fuente seleccionada no ofrece guía de establecimiento por semilla; la división es la vía doméstica respaldada, no una prueba de que la semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-goeppertia-roseopicta-wave46"
+      ]
+    },
+    "beautiful-hoya-hoya-bella": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension recommends spring or summer stem cuttings for Hoya bella. No home seed protocol is established by the selected source; use the documented vegetative route.",
+        "es": "NC State Extension recomienda esquejes de tallo en primavera o verano para Hoya bella. La fuente seleccionada no establece un protocolo doméstico de semilla; utiliza la vía vegetativa documentada."
+      },
+      "sourceIds": [
+        "ncsu-hoya-bella-wave46"
+      ]
+    },
+    "common-hoya-hoya-australis": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists both seed and stem cutting for Hoya australis but supplies no germination or sowing protocol and does not establish which route is preferred. Seed propagation is not presented as impossible; the public route remains insufficiently documented.",
+        "es": "NC State enumera semilla y esqueje de tallo para Hoya australis, pero no aporta protocolo de germinación o siembra ni establece qué vía se prefiere. No se presenta la semilla como imposible; la vía pública queda insuficientemente documentada."
+      },
+      "sourceIds": [
+        "ncsu-hoya-australis-wave46"
+      ]
+    },
+    "schillers-moth-orchid-phalaenopsis-schilleriana": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected species and Extension sources do not establish a practical home propagation protocol for Phalaenopsis schilleriana. Do not equate orchid seed production or commercial hybrid culture with a household seed route; identity-matched propagation evidence is needed.",
+        "es": "Las fuentes seleccionadas de especie y Extension no establecen un protocolo doméstico práctico de propagación para Phalaenopsis schilleriana. No equipares la producción de semillas de orquídea ni el cultivo comercial de híbridos con una vía doméstica; hace falta evidencia de propagación para esta identidad."
+      },
+      "sourceIds": []
+    },
+    "giant-bamburanta-ctenanthe-oppenheimiana": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State Extension lists division and stem cuttings for Ctenanthe oppenheimiana. No seed-starting protocol is selected; these documented vegetative routes are shown without claiming seed propagation is impossible.",
+        "es": "NC State Extension enumera división y esquejes de tallo para Ctenanthe oppenheimiana. No se selecciona protocolo de siembra; se muestran las vías vegetativas documentadas sin afirmar que la propagación por semilla sea imposible."
+      },
+      "sourceIds": [
+        "ncsu-ctenanthe-oppenheimiana-wave46"
+      ]
+    },
+    "cardinal-flower-lobelia-cardinalis": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and spring division for Lobelia cardinalis but does not provide a seed-starting protocol. Seed propagation is documented as a route, while its household sowing requirements remain unresolved; no Seed Profile V0 is created yet.",
+        "es": "NC State enumera semilla y división primaveral para Lobelia cardinalis, pero no ofrece un protocolo de siembra. La semilla está documentada como vía de propagación, mientras sus requisitos domésticos siguen sin resolverse; todavía no se crea Seed Profile V0."
+      },
+      "sourceIds": [
+        "ncsu-lobelia-cardinalis-wave48"
+      ]
+    },
+    "purple-coneflower-echinacea-purpurea": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State confirms seed as a propagation route for Echinacea purpurea but does not provide a home sowing or germination protocol. Seed is possible; establishment details remain unresolved and no Seed Profile V0 is created.",
+        "es": "NC State confirma la semilla como vía de propagación para Echinacea purpurea, pero no ofrece un protocolo doméstico de siembra o germinación. La semilla es posible; los detalles de establecimiento siguen sin resolverse y no se crea Seed Profile V0."
+      },
+      "sourceIds": [
+        "ncsu-echinacea-purpurea-wave49"
+      ]
+    },
+    "moss-rose-portulaca-grandiflora": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State describes this ornamental Portulaca grandiflora but the selected source does not establish a seed-starting protocol. Do not transfer germination guidance from P. oleracea; seed establishment remains insufficiently documented.",
+        "es": "NC State describe esta Portulaca grandiflora ornamental, pero la fuente consultada no establece un protocolo de siembra. No transfieras indicaciones de germinación de P. oleracea; el establecimiento por semilla sigue insuficientemente documentado."
+      },
+      "sourceIds": [
+        "ncsu-portulaca-grandiflora-wave49"
+      ]
+    },
+    "great-blanketflower-gaillardia-aristata": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and division for perennial Gaillardia aristata without giving a household sowing protocol. Keep this distinct from annual G. pulchella and hybrid blanket flowers; seed requirements remain unresolved.",
+        "es": "NC State enumera semilla y división para la perenne Gaillardia aristata sin ofrecer un protocolo doméstico de siembra. Mantenla distinta de la anual G. pulchella y de los híbridos de blanket flower; los requisitos de semilla siguen sin resolverse."
+      },
+      "sourceIds": [
+        "ncsu-gaillardia-aristata-wave49"
+      ]
+    },
+    "catnip-nepeta-cataria": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and division for Nepeta cataria but provides no home sowing or germination protocol on the selected species page. Seed propagation is possible; its establishment requirements remain insufficiently documented and no Seed Profile V0 is created.",
+        "es": "NC State enumera semilla y división para Nepeta cataria, pero no ofrece un protocolo doméstico de siembra o germinación en la ficha de especie consultada. La semilla es posible; sus requisitos de establecimiento siguen insuficientemente documentados y no se crea Seed Profile V0."
+      },
+      "sourceIds": [
+        "ncsu-nepeta-cataria-wave50"
+      ]
+    },
+    "bay-laurel-laurus-nobilis": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected sources establish bay laurel identity and cultivation but do not provide a practical home propagation method. Do not infer seed or cutting instructions; propagation research is pending.",
+        "es": "Las fuentes consultadas establecen la identidad y el cultivo del laurel, pero no ofrecen un método práctico de propagación doméstica. No se infieren instrucciones para semilla o esqueje; la investigación de propagación sigue pendiente."
+      },
+      "sourceIds": []
+    },
+    "pineapple-ananas-comosus": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Kew describes cultivated pineapple as a seedless cultigen; NC State documents propagation from fruit crowns, basal suckers or fruitlet plantlets. Use those verified vegetative materials rather than inventing a seed-starting route.",
+        "es": "Kew describe la piña cultivada como un cultígeno sin semillas; NC State documenta propagación mediante corona del fruto, hijuelos basales o plántulas de la inflorescencia. Usa esos materiales vegetativos verificados en lugar de inventar una vía de siembra."
+      },
+      "sourceIds": [
+        "kew-ananas-comosus-wave50",
+        "ncsu-ananas-comosus-wave50"
+      ]
+    },
+    "french-tarragon-artemisia-dracunculus-sativa": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "Illinois Extension identifies French tarragon as Artemisia dracunculus var. sativa and says its flowers are sterile; maintain this culinary type through cuttings or root divisions. Seed-raised Russian tarragon is a distinct horticultural type and is not interchangeable.",
+        "es": "Illinois Extension identifica el estragón francés como Artemisia dracunculus var. sativa e indica que sus flores son estériles; conserva este tipo culinario mediante esquejes o división de raíz. El estragón ruso sembrado desde semilla es un tipo hortícola distinto y no es intercambiable."
+      },
+      "sourceIds": [
+        "illinois-french-tarragon-wave50"
+      ]
+    },
+    "wintergreen-gaultheria-procumbens": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists both seed and root cuttings for Gaultheria procumbens, but does not supply a household seed protocol. Root cutting is documented; seed establishment remains insufficiently documented rather than declared impossible.",
+        "es": "NC State enumera semilla y esquejes de raíz para Gaultheria procumbens, pero no aporta un protocolo doméstico de semilla. El esqueje de raíz está documentado; el establecimiento por semilla sigue insuficientemente documentado, no declarado imposible."
+      },
+      "sourceIds": [
+        "ncsu-gaultheria-procumbens-wave50"
+      ]
+    },
+    "pomegranate-punica-granatum": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected source does not provide a practical home propagation method or seed-starting protocol for this identity. Keep propagation unresolved rather than infer a method from fruit seeds.",
+        "es": "La fuente seleccionada no ofrece un método práctico de propagación doméstica ni un protocolo de siembra para esta identidad. Mantén la propagación sin resolver en vez de inferir un método a partir de las semillas del fruto."
+      },
+      "sourceIds": []
+    },
+    "starfruit-averrhoa-carambola": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {
+        "en": "UF/IFAS reports that carambola cultivars are generally grafted on seedling rootstocks and documents veneer grafting and chip budding. Seedlings are used as rootstocks; this does not claim seed growth is impossible, but grafting is the verified route for retaining a cultivar.",
+        "es": "UF/IFAS informa que los cultivares de carambola generalmente se injertan sobre portainjertos de plántulas y documenta injerto de chapa y yema chip. Las plántulas sirven como portainjertos; no se afirma que crecer desde semilla sea imposible, pero el injerto es la vía verificada para conservar un cultivar."
+      },
+      "sourceIds": [
+        "ufifas-carambola-wave51"
+      ]
+    },
+    "pawpaw-asimina-triloba": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected identity-matched sources do not provide a home seed-starting protocol or a sufficiently documented alternative propagation route. Keep the propagation method unresolved rather than borrowing papaya guidance.",
+        "es": "Las fuentes seleccionadas y correspondientes a esta identidad no ofrecen un protocolo doméstico de siembra ni una vía alternativa suficientemente documentada. Mantén sin resolver el método de propagación en vez de tomar prestadas indicaciones de papaya."
+      },
+      "sourceIds": []
+    },
+    "american-persimmon-diospyros-virginiana": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed, root cutting and grafting but does not give a complete home seed-starting protocol. Seed is a documented route; establishment details remain insufficient for a Seed Profile.",
+        "es": "NC State enumera semilla, esqueje de raíz e injerto, pero no proporciona un protocolo doméstico completo de siembra. La semilla es una vía documentada; los detalles de establecimiento son insuficientes para un Seed Profile."
+      },
+      "sourceIds": [
+        "ncsu-diospyros-virginiana-wave51"
+      ]
+    },
+    "asian-persimmon-diospyros-kaki": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and grafting but gives no home seed-starting procedure on the selected page. Seed propagation is possible; requirements and cultivar fidelity remain unresolved.",
+        "es": "NC State enumera semilla e injerto, pero no ofrece un procedimiento doméstico de inicio de semilla en la página consultada. La propagación por semilla es posible; sus requisitos y la fidelidad al cultivar siguen sin resolverse."
+      },
+      "sourceIds": [
+        "ncsu-diospyros-kaki-wave51"
+      ]
+    },
+    "loquat-eriobotrya-japonica": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected Extension page provides cold-sensitivity context but no identity-matched propagation procedure. Keep seed and vegetative methods unresolved rather than infer from another Rosaceae fruit tree.",
+        "es": "La página de Extension consultada aporta contexto de sensibilidad al frío, pero ningún procedimiento de propagación para esta identidad. Mantén sin resolver los métodos de semilla y vegetativos en vez de inferirlos de otro frutal de Rosaceae."
+      },
+      "sourceIds": []
+    },
+    "chinese-jujube-ziziphus-jujuba": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {
+        "en": "The selected sources describe the edible species and garden context but do not establish a practical home propagation method. No seed protocol is invented.",
+        "es": "Las fuentes consultadas describen la especie comestible y su contexto de jardín, pero no establecen un método práctico de propagación doméstica. No se inventa un protocolo de semilla."
+      },
+      "sourceIds": []
+    },
+    "hardy-kiwi-actinidia-arguta": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and stem cuttings and reports 1–2 months of cold stratification, but the selected page does not give a complete sowing and seedling protocol. The species is seed-propagable; practical establishment details remain insufficient for a Seed Profile.",
+        "es": "NC State enumera semilla y esquejes de tallo e indica 1–2 meses de estratificación fría, pero la página consultada no ofrece un protocolo completo de siembra y plántulas. La especie puede propagarse por semilla; faltan detalles prácticos de establecimiento para un Seed Profile."
+      },
+      "sourceIds": [
+        "ncsu-actinidia-arguta-wave51"
+      ]
+    },
+    "red-mulberry-morus-rubra": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {
+        "en": "NC State lists seed and stem cuttings but does not provide a seed-starting protocol. Seed propagation is possible; germination and seedling requirements remain undocumented here.",
+        "es": "NC State enumera semilla y esquejes de tallo, pero no ofrece un protocolo de siembra. La propagación por semilla es posible; los requisitos de germinación y plántula quedan sin documentar aquí."
+      },
+      "sourceIds": [
+        "ncsu-morus-rubra-wave51"
+      ]
+    },
+    "buckwheat-fagopyrum-esculentum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"Extension identifies buckwheat as a sown cover crop and gives regional field timing and rates, but a home-scale germination and seedling protocol is not documented.","es":"La Extensión identifica el trigo sarraceno como cultivo de cobertura sembrado y ofrece fechas y tasas regionales de campo, pero no documenta un protocolo doméstico de germinación y plántula."},
+      "sourceIds": ["umn-cover-crops-guide-wave52"]
+    },
+    "crimson-clover-trifolium-incarnatum": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"Crimson clover is documented as a seeded cover crop, but the selected regional guidance does not establish a full home-garden seed-starting protocol.","es":"El trébol encarnado está documentado como cobertura sembrada, pero la guía regional consultada no establece un protocolo doméstico completo de inicio desde semilla."},
+      "sourceIds": ["umn-cover-crops-guide-wave52"]
+    },
+    "white-clover-trifolium-repens": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"White clover is used as a seeded cover crop, but specific home-garden sowing and seedling details are not documented in the selected sources.","es":"El trébol blanco se usa como cobertura sembrada, pero las fuentes consultadas no documentan detalles específicos de siembra y plántula para el jardín doméstico."},
+      "sourceIds": ["umn-cover-crops-guide-wave52"]
+    },
+    "cereal-rye-secale-cereale": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"Cereal rye is established by sowing in regional cover-crop systems, but a home-scale seed-starting protocol has not been established here.","es":"El centeno de cereal se establece por siembra en sistemas regionales de cobertura, pero aquí no se establece un protocolo doméstico de inicio desde semilla."},
+      "sourceIds": ["umn-cover-crops-guide-wave52"]
+    },
+    "oats-avena-sativa": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"Oats are sown as a cover crop in the cited regional guidance, but the selected sources do not provide a complete small-garden germination and seedling procedure.","es":"La guía regional citada establece la siembra de avena como cobertura, pero las fuentes consultadas no ofrecen un procedimiento completo de germinación y plántula para un jardín pequeño."},
+      "sourceIds": ["umn-cover-crops-guide-wave52"]
+    },
+    "alpine-strawberry-fragaria-vesca": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"The Extension source says alpine strawberries are often grown from seed but does not give seed depth, temperature or germination procedure; a Seed Profile is therefore not yet justified.","es":"La fuente de Extensión indica que las fresas alpinas suelen cultivarse desde semilla, pero no aporta profundidad, temperatura ni procedimiento de germinación; aún no se justifica un Perfil de Semilla."},
+      "sourceIds": ["umn-alpine-strawberry-wave52"]
+    },
+    "black-chokeberry-aronia-melanocarpa": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"The selected species profile does not establish a home propagation method; seed, cutting and division routes remain unresolved.","es":"El perfil de especie consultado no establece un método de propagación doméstica; las vías por semilla, esqueje y división siguen sin resolverse."},
+      "sourceIds": []
+    },
+    "honeyberry-lonicera-caerulea": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"The selected species and fruit-growing sources do not provide a home propagation protocol; seed and vegetative routes remain unresolved.","es":"Las fuentes de especie y cultivo frutal consultadas no aportan un protocolo doméstico; las vías por semilla y vegetativa siguen sin resolverse."},
+      "sourceIds": []
+    },
+    "lingonberry-vaccinium-vitis-idaea": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"Regional cultivation guidance is available, but the selected sources do not document home seed or vegetative propagation for this identity.","es":"Hay guía regional de cultivo, pero las fuentes consultadas no documentan propagación doméstica por semilla o vía vegetativa para esta identidad."},
+      "sourceIds": []
+    },
+    "saskatoon-serviceberry-amelanchier-alnifolia": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"Identity and genus-level landscape guidance are available, but a home propagation protocol for A. alnifolia is not established in the selected sources.","es":"Hay información de identidad y guía de paisaje para el género, pero las fuentes consultadas no establecen un protocolo doméstico de propagación para A. alnifolia."},
+      "sourceIds": []
+    },
+    "mexican-oregano-lippia-origanoides": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"Kew resolves Mexican oregano to Lippia origanoides but the selected botanical source does not document home seed or vegetative propagation. Do not infer a method from the shrub habit.","es":"Kew resuelve el orégano mexicano como Lippia origanoides, pero la fuente botánica seleccionada no documenta propagación doméstica por semilla o vía vegetativa. No infieras un método por su hábito arbustivo."},
+      "sourceIds": []
+    },
+    "apple-malus-domestica": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State lists both seed and grafting, and describes nursery apples as grafted cultivar/rootstock combinations. Use grafted stock when preserving a named apple cultivar matters; the source does not give a home seed-starting protocol.","es":"NC State enumera semilla e injerto y describe los manzanos de vivero como combinaciones injertadas de cultivar y portainjerto. Usa material injertado si importa conservar un cultivar nombrado; la fuente no ofrece un protocolo doméstico de siembra."},
+      "sourceIds": ["ncsu-malus-domestica-wave59"]
+    },
+    "european-pear-pyrus-communis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State identifies grafting as the propagation method for European pear. This supports retaining a selected cultivar/rootstock combination; no seed-starting protocol is supplied.","es":"NC State identifica el injerto como método de propagación del peral europeo. Esto permite conservar una combinación seleccionada de cultivar y portainjerto; no se ofrece un protocolo de siembra."},
+      "sourceIds": ["ncsu-pyrus-communis-wave59"]
+    },
+    "asian-pear-pyrus-pyrifolia": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State notes that Asian pear size depends on the grafted rootstock. Use verified grafted nursery stock when a selected cultivar and predictable tree form are intended; this page does not provide a seed-starting protocol.","es":"NC State señala que el tamaño del peral asiático depende del portainjerto injertado. Usa material injertado verificado si se busca un cultivar seleccionado y una forma predecible; esta página no ofrece un protocolo de siembra."},
+      "sourceIds": ["ncsu-pyrus-pyrifolia-wave59"]
+    },
+    "peach-prunus-persica": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"The selected species and Extension references do not establish a reliable home seed-starting or vegetative propagation protocol for this generic peach identity. Keep propagation unresolved rather than infer instructions from other Prunus species.","es":"Las fuentes de especie y extensión seleccionadas no establecen un protocolo doméstico fiable de siembra o propagación vegetativa para esta identidad genérica de durazno. La propagación queda sin resolver; no se infieren instrucciones de otras especies de Prunus."},
+      "sourceIds": []
+    },
+    "european-plum-prunus-domestica": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State lists grafting, root cuttings and seed for European plum. The source does not give a home seed protocol; grafting or verified vegetative stock is the relevant route when preserving a named cultivar matters.","es":"NC State enumera injerto, esquejes de raíz y semilla para la ciruela europea. La fuente no ofrece un protocolo doméstico de siembra; el injerto o material vegetativo verificado es la vía pertinente cuando importa conservar un cultivar nombrado."},
+      "sourceIds": ["ncsu-prunus-domestica-wave59"]
+    },
+    "japanese-plum-prunus-salicina": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"NC State lists seed and stem cutting as propagation strategies but provides no seed-establishment protocol. Treat the seed route as undocumented here; do not imply that seedlings preserve a selected cultivar.","es":"NC State enumera semilla y esqueje de tallo como estrategias de propagación, pero no ofrece un protocolo de establecimiento desde semilla. Aquí esa vía queda sin documentar; no se implica que las plántulas conserven un cultivar seleccionado."},
+      "sourceIds": ["ncsu-prunus-salicina-wave59"]
+    },
+    "sweet-cherry-prunus-avium": {
+      "classification": "insufficient_documentation",
+      "status": "pending",
+      "summary": {"en":"The selected sweet-cherry references do not document home seed starting or an alternative propagation protocol. Keep both routes unresolved instead of borrowing methods from sour cherry or other Prunus species.","es":"Las fuentes seleccionadas sobre cerezo dulce no documentan siembra doméstica ni un protocolo alternativo de propagación. Ambas vías quedan sin resolver; no se toman prestados métodos de cerezo ácido u otras especies de Prunus."},
+      "sourceIds": []
+    },
+    "sour-cherry-prunus-cerasus": {
+      "classification": "insufficient_documentation",
+      "status": "source_backed",
+      "summary": {"en":"NC State notes that sour cherry can reseed in gardens, but does not provide seed collection, dormancy, sowing or seedling-establishment guidance. Seed propagation is therefore insufficiently documented for a user protocol.","es":"NC State señala que el cerezo ácido puede resembrarse en jardines, pero no ofrece guía para recolectar semillas, tratar dormancia, sembrar o establecer plántulas. Por ello, la propagación por semilla no tiene documentación suficiente para un protocolo de usuario."},
+      "sourceIds": ["ncsu-prunus-cerasus-wave59"]
+    },
+    "apricot-prunus-armeniaca": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State documents cuttings and grafting for apricot. Those are the supported alternatives when establishing a selected tree; the source does not provide a seed-starting protocol or guarantee cultivar fidelity from seed.","es":"NC State documenta esquejes e injerto para el albaricoquero. Son las alternativas respaldadas para establecer un árbol seleccionado; la fuente no ofrece un protocolo de siembra ni garantiza fidelidad varietal desde semilla."},
+      "sourceIds": ["ncsu-prunus-armeniaca-wave59"]
+    },
+    "blackberry-rubus-canadensis": {
+      "classification": "vegetative_preferred",
+      "status": "source_backed",
+      "summary": {"en":"NC State lists division and stem cuttings as propagation strategies for smooth blackberry and describes its rhizomatous spread. Seed-starting instructions are not supplied; use a documented vegetative method when establishing this species.","es":"NC State enumera división y esquejes de tallo como estrategias para la zarzamora lisa y describe su expansión por rizomas. No ofrece instrucciones de siembra; usa un método vegetativo documentado para establecer esta especie."},
+      "sourceIds": ["ncsu-rubus-canadensis-wave59"]
+    },
+    "flax-linum-usitatissimum": {"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected sources do not establish a home seed-sowing and establishment protocol for the represented flax type. Fiber flax and linseed have different uses; this is an evidence gap, not a claim that flax cannot be grown from seed.","es":"Las fuentes seleccionadas no establecen un protocolo doméstico de siembra y establecimiento para el tipo de lino representado. El lino de fibra y el de semilla tienen usos distintos; es una brecha de evidencia, no una afirmación de que el lino no pueda cultivarse desde semilla."},"sourceIds":[]},
+    "rice-oryza-sativa": {"classification":"insufficient_documentation","status":"pending","summary":{"en":"The catalog sources establish cultivated rice identity and commercial production context but do not provide a reliable home seed-starting protocol. This does not imply rice cannot be propagated from seed.","es":"Las fuentes del catálogo establecen la identidad del arroz cultivado y su contexto de producción comercial, pero no ofrecen un protocolo fiable de inicio doméstico desde semilla. Esto no implica que el arroz no pueda propagarse por semilla."},"sourceIds":[]},
+    "grain-sorghum-sorghum-bicolor": {"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected sources distinguish grain sorghum but do not establish an appropriate home seed protocol for an unspecified variety. Field-crop conditions are not converted into indoor or container instructions.","es":"Las fuentes seleccionadas distinguen el sorgo de grano, pero no establecen un protocolo doméstico adecuado para una variedad no especificada. Las condiciones de cultivo de campo no se convierten en instrucciones de interior o recipiente."},"sourceIds":[]},
+    "proso-millet-panicum-miliaceum": {"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected sources identify proso millet and provide limited agricultural context, but not a dependable home sowing and seedling-establishment protocol. This is insufficient documentation, not seed impossibility.","es":"Las fuentes seleccionadas identifican el mijo proso y aportan contexto agrícola limitado, pero no un protocolo doméstico fiable de siembra y establecimiento de plántulas. Es documentación insuficiente, no imposibilidad de propagación por semilla."},"sourceIds":[]},
+    "french-sorrel-rumex-scutatus": {"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State lists seed as a propagation strategy but does not provide a germination or seedling-establishment protocol. Seed propagation is possible at species level, while the user-facing instructions remain insufficiently documented.","es":"NC State enumera la semilla como estrategia de propagación, pero no ofrece un protocolo de germinación o establecimiento de plántulas. La propagación por semilla es posible a nivel de especie, aunque faltan instrucciones útiles para el usuario."},"sourceIds":["ncsu-french-sorrel-wave60"]},
+    "cardoon-cynara-cardunculus": {"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State describes seed and vegetative propagation for cardoon, but the selected record does not support a complete seed-starting protocol. The profile preserves the crop form without implying that division is required.","es":"NC State describe propagación por semilla y vegetativa para cardoon, pero la ficha seleccionada no respalda un protocolo completo de inicio desde semilla. El perfil conserva la forma hortícola sin afirmar que la división sea obligatoria."},"sourceIds":["ncsu-cardoon-wave60"]},
+    "horseradish-armoracia-rusticana": {"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents root cuttings and division as practical propagation routes, while the selected source does not establish a seed protocol. Use the verified root-based methods; seed impossibility is not claimed.","es":"NC State documenta esquejes de raíz y división como vías prácticas, mientras que la fuente seleccionada no establece un protocolo de semilla. Usa los métodos de raíz verificados; no se afirma que la semilla sea imposible."},"sourceIds":["ncsu-horseradish-wave60"]},
+    "prickly-pear-opuntia-ficus-indica": {"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"The University of Arizona documents establishment from pads; the selected sources do not provide a dependable seed-starting protocol. Pad propagation is the supported practical route, without claiming seed propagation is impossible.","es":"La Universidad de Arizona documenta el establecimiento desde pencas; las fuentes seleccionadas no ofrecen un protocolo fiable de inicio por semilla. La propagación por pencas es la vía práctica respaldada, sin afirmar que la semilla sea imposible."},"sourceIds":["arizona-opuntia-ficus-indica-wave60"]},
+    "society-garlic-tulbaghia-violacea":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents root-cutting propagation for this species but does not establish seed propagation or a seed-starting protocol. The classification reflects the available evidence, not a claim that seed propagation is impossible.","es":"NC State documenta esquejes de raíz para esta especie, pero no establece propagación por semilla ni un protocolo de siembra. La clasificación refleja la evidencia disponible, no afirma que la semilla sea imposible."},"sourceIds":["ncsu-tulbaghia-violacea-wave61"]},
+    "cuban-oregano-plectranthus-amboinicus":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents stem cuttings and division but does not provide seed-starting evidence for this species. Use the cited vegetative methods; seed propagation is not declared impossible.","es":"NC State documenta esquejes de tallo y división, pero no aporta evidencia de inicio por semilla para esta especie. Se registran las vías vegetativas citadas; no se declara imposible la semilla."},"sourceIds":["ncsu-plectranthus-amboinicus-wave61"]},
+    "sweet-woodruff-galium-odoratum":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists both seed and division and describes rhizomatous spread. Division is the practical documented route; the source does not provide seed germination instructions.","es":"NC State enumera semilla y división, y describe expansión por rizomas. La división es la vía práctica documentada; la fuente no ofrece instrucciones de germinación."},"sourceIds":["ncsu-galium-odoratum-wave61"]},
+    "sweet-scabiosa-scabiosa-atropurpurea":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State lists seed propagation but the cited profile does not provide a useful seed establishment protocol. No vegetative alternative is invented.","es":"NC State enumera propagación por semilla, pero la ficha citada no proporciona un protocolo útil de establecimiento. No se inventa una alternativa vegetativa."},"sourceIds":["ncsu-scabiosa-atropurpurea-wave61"]},
+    "sea-thrift-armeria-maritima":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists both seed and division. Division is a documented practical route; the profile does not include a seed germination protocol.","es":"NC State enumera semilla y división. La división es una vía práctica documentada; el perfil no incluye protocolo de germinación."},"sourceIds":["ncsu-armeria-maritima-wave61"]},
+    "caucasian-pincushion-lomelosia-caucasica":{"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected institutional source establishes identity and garden context but not propagation. Seed or vegetative classification requires further evidence.","es":"La fuente institucional seleccionada establece identidad y contexto de jardín, pero no propagación. La clasificación por semilla o vía vegetativa requiere más evidencia."},"sourceIds":[]},
+    "common-rue-ruta-graveolens":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists seed, stem cuttings and division. The source documents vegetative alternatives but does not give seed-starting details; this is not a claim that seeds cannot grow.","es":"NC State enumera semillas, esquejes de tallo y división. La fuente documenta alternativas vegetativas, pero no detalla inicio de semilla; no se afirma que la semilla no pueda crecer."},"sourceIds":["ncsu-ruta-graveolens-wave61"]},
+    "garden-angelica-angelica-archangelica":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists seed and second-year root cuttings. Both routes are documented; the root-cutting option is not generalized to other Angelica species.","es":"NC State enumera semillas y esquejes de raíz en el segundo año. Ambas vías están documentadas; el esqueje de raíz no se generaliza a otras especies de Angelica."},"sourceIds":["ncsu-angelica-archangelica-wave61"]},
+    "blazing-star-liatris-spicata":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State reports that this species often propagates by seed and also forms colonies from corms. Corms are the practical vegetative material; no seed protocol is provided here.","es":"NC State informa que esta especie suele propagarse por semilla y también forma colonias desde cormos. Los cormos son el material vegetativo práctico; aquí no se ofrece protocolo de semilla."},"sourceIds":["ncsu-liatris-spicata-wave61"]},
+    "snow-in-summer-cerastium-tomentosum":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State describes self-seeding, division and cuttings. Division/cuttings are documented alternatives; no sowing or germination protocol is stated.","es":"NC State describe resiembra, división y esquejes. División y esquejes son alternativas documentadas; no indica protocolo de siembra o germinación."},"sourceIds":["ncsu-cerastium-tomentosum-wave61"]},
+    "lambs-ear-stachys-byzantina":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists seed and division, while describing division as the routine practical propagation method. No seed protocol is supplied, and seed propagation is not ruled out.","es":"NC State enumera semilla y división, y describe la división como método práctico habitual. No aporta protocolo de semilla ni descarta esa vía."},"sourceIds":["ncsu-stachys-byzantina-wave61"]},
+    "globe-thistle-echinops-ritro":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"The source documents division and root cuttings but does not establish seed propagation or seed-starting instructions for this species.","es":"La fuente documenta división y esquejes de raíz, pero no establece propagación por semilla ni instrucciones de siembra para esta especie."},"sourceIds":["ncsu-echinops-ritro-wave61"]},
+    "clary-sage-salvia-sclarea":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents seed propagation but gives no practical sowing or seedling protocol in the selected profile. No vegetative preference is asserted.","es":"NC State documenta propagación por semilla, pero la ficha seleccionada no ofrece un protocolo práctico de siembra o plántula. No se afirma preferencia vegetativa."},"sourceIds":["ncsu-salvia-sclarea-wave61"]},
+    "butterfly-weed-asclepias-tuberosa":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State says the species grows readily from seed but does not provide a germination protocol in the selected source. Seed establishment can take years to flowering; no alternative is inferred.","es":"NC State indica que la especie crece fácilmente desde semilla, pero la fuente seleccionada no ofrece protocolo de germinación. La floración puede tardar años; no se infiere una alternativa."},"sourceIds":["ncsu-asclepias-tuberosa-wave61"]},
+    "wild-bergamot-monarda-fistulosa":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State lists seed propagation but provides no seed-starting protocol in the selected species profile. Do not substitute instructions for another Monarda species.","es":"NC State enumera propagación por semilla, pero la ficha seleccionada no ofrece protocolo de inicio. No se sustituyen instrucciones de otra especie de Monarda."},"sourceIds":["ncsu-monarda-fistulosa-wave61"]},
+    "mexican-sunflower-tithonia-rotundifolia":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents sowing seed after the last frost but does not supply depth, germination conditions or seedling-care detail for a complete profile.","es":"NC State documenta sembrar después de la última helada, pero no aporta profundidad, condiciones de germinación ni cuidado de plántula suficientes para un perfil completo."},"sourceIds":["ncsu-tithonia-rotundifolia-wave61"]},
+    "common-yarrow-achillea-millefolium":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State documents seed and rhizome spread/division. The vegetative route is an option for establishment, while no seed-starting protocol is supplied in this record.","es":"NC State documenta semilla y expansión/división por rizomas. La vía vegetativa es una opción de establecimiento; esta ficha no ofrece protocolo de semilla."},"sourceIds":["ncsu-achillea-millefolium-wave61"]},
+    "blue-false-indigo-baptisia-australis":{"classification":"vegetative_preferred","status":"source_backed","summary":{"en":"NC State lists seed and stem cuttings. The species' deep taproot makes later transplanting difficult; no germination schedule is provided.","es":"NC State enumera semillas y esquejes de tallo. La raíz pivotante profunda dificulta el trasplante posterior; no se ofrece calendario de germinación."},"sourceIds":["ncsu-baptisia-australis-wave61"]},
+    "flowering-tobacco-nicotiana-alata":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State lists direct sowing or indoor seed starting and notes very small seed, but the cited page lacks detail for a complete Seed Profile.","es":"NC State enumera siembra directa o inicio interior y señala que la semilla es muy pequeña, pero la página citada carece de detalle para un Perfil de Semilla completo."},"sourceIds":["ncsu-nicotiana-alata-wave61"]},
+    "snapdragon-antirrhinum-majus":{"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected NC State profile supports ornamental use and care but does not provide a seed-starting protocol; a useful Seed Profile needs a stronger seed-specific source.","es":"La ficha seleccionada de NC State respalda uso ornamental y cuidados, pero no ofrece un protocolo de inicio desde semilla; para un Perfil de Semilla útil hace falta una fuente más específica."},"sourceIds":[]},
+    "pink-turtlehead-chelone-obliqua":{"classification":"insufficient_documentation","status":"pending","summary":{"en":"The selected institutional source does not establish propagation method or seed protocol. Further species-specific research is needed.","es":"La fuente institucional seleccionada no establece método de propagación ni protocolo de semilla. Hace falta investigación específica de la especie."},"sourceIds":[]},
+    "green-columbine-aquilegia-viridiflora":{"classification":"insufficient_documentation","status":"pending","summary":{"en":"The species page does not document a propagation route; genus-level Aquilegia information is not promoted to this identity.","es":"La página de especie no documenta una vía de propagación; la información del género Aquilegia no se traslada a esta identidad."},"sourceIds":[]},
+    "flowering-tobacco-hybrid-nicotiana-sanderi":{"classification":"insufficient_documentation","status":"source_backed","summary":{"en":"NC State documents easy seed starting and bloom around ten weeks, but the hybrid contains diverse cultivars and no sowing depth or germination conditions are given.","es":"NC State documenta inicio fácil desde semilla y floración cercana a diez semanas, pero el híbrido incluye diversos cultivares y no se indica profundidad ni condiciones de germinación."},"sourceIds":["ncsu-nicotiana-sanderi-wave61"]}
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id":"calif-carnivores-lilac-lollipop-500",
+    "publisher":"California Carnivores",
+    "title":"Pinguicula 'Lilac Lollipop' — Bare Root",
+    "url":"https://www.californiacarnivores.com/products/pinguicula-lilac-lollipop",
+    "type":"product_reference",
+    "tier":2,
+    "scope":"Supplier product identity and description as a cyclosecta hybrid; does not establish full parentage, formal registration, or universal cultivation parameters",
+    "accessed":"2026-10-16",
+    "license":null,
+    "provenance":"Gardenpedia Labs mandatory-coverage reconciliation",
+    "claimKinds":["identity","cultivation","propagation"]
+  },
+  {
+    "id":"kew-pinguicula-cyclosecta-500",
+    "publisher":"Royal Botanic Gardens, Kew",
+    "title":"Pinguicula cyclosecta Casper — Plants of the World Online",
+    "url":"https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A196867-2",
+    "type":"botanical_taxonomy",
+    "tier":1,
+    "scope":"Accepted botanical species identity for Pinguicula cyclosecta; not evidence for the full parentage of Lilac Lollipop",
+    "accessed":"2026-10-16",
+    "license":null,
+    "provenance":"Gardenpedia Labs mandatory-coverage reconciliation",
+    "claimKinds":["identity","taxonomy"]
+  },
+  {
+    "id":"calif-carnivores-pinguicula-propagation-500",
+    "publisher":"California Carnivores",
+    "title":"Pinguicula propagation by leaf pullings",
+    "url":"https://www.youtube.com/watch?v=236j3YU-4Hw",
+    "type":"specialist_grower",
+    "tier":2,
+    "scope":"Specialist grower demonstration of leaf-pulling propagation for Pinguicula generally; not a Lilac Lollipop-specific propagation trial",
+    "accessed":"2026-10-16",
+    "license":null,
+    "provenance":"Gardenpedia Labs mandatory-coverage reconciliation",
+    "claimKinds":["propagation"]
+  }
+]

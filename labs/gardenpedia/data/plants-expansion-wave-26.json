@@ -1,0 +1,102 @@
+[
+  {
+    "id": "hansel-f1-eggplant",
+    "name": "Hansel F1 Eggplant",
+    "spanishName": "Berenjena Hansel F1",
+    "scientificName": "Solanum melongena",
+    "variety": "Hansel F1 hybrid",
+    "category": "fruits",
+    "emoji": "🍆",
+    "tags": ["Hansel", "Hansel F1", "mini eggplant", "compact eggplant", "berenjena mini", "berenjena compacta", "Solanum melongena"],
+    "summary": "A named mini eggplant hybrid with compact plants and clustered, slender dark-purple fruits. Product-specific dimensions and harvest traits are distinguished from crop-level eggplant guidance.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Hansel F1 is a named Solanum melongena hybrid", "guidance": "Kew accepts Solanum melongena as the eggplant species. Johnny's identifies Hansel F1 as its named hybrid selection; the identity does not imply that every mini eggplant is Hansel.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-solanum-melongena-wave26", "johnnys-hansel-f1-eggplant-wave26"]},
+      "cultivation": {"short": "Compact product-listed plants; container suitability is not claimed", "guidance": "Johnny's describes Hansel plants as compact and 24–36 in tall. This product page does not list a container suitability badge, so container performance is not inferred from height alone. Shared eggplant culture guidance is outdoor soil context.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-hansel-f1-eggplant-wave26", "umn-eggplant-wave4"]},
+      "growth": {"short": "Clusters of slender specialty fruit", "guidance": "The product description reports dark-purple fruits in clusters and gives fruit dimensions of 3–4 in long by ¾–1 in diameter. These are Hansel-specific product claims, not dimensions for eggplant generally.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-hansel-f1-eggplant-wave26"]},
+      "harvest": {"short": "Harvest at small size and clip fruit from the plant", "guidance": "Johnny's recommends beginning harvest when fruit is about 3–4 in long; its general eggplant guidance says to clip fruit stems and pick regularly. The listed 55-day maturity is product/transplant context and is not converted into a promise for all growing conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-hansel-f1-eggplant-wave26", "umn-eggplant-wave4"]},
+      "problems": {"short": "Cold-sensitive crop; no cultivar resistance is asserted", "guidance": "University of Minnesota Extension describes eggplant as a warm-season crop vulnerable to cool conditions. No disease resistance is claimed for Hansel in this profile.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-eggplant-wave4"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The cited sources do not validate this cultivar in recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Compact is a size description; the existing controlled habit vocabulary does not encode it."}, "matureSize": {"height": {"status": "known", "value": {"minCm": 61, "maxCm": 91, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["johnnys-hansel-f1-eggplant-wave26"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Supplier lists Hansel F1 compact plants at 24–36 in; converted to centimeters."}]}, "spread": {"status": "unknown", "reason": "No plant spread is provided for this product."}}, "spacing": {"status": "unknown", "reason": "Outdoor row spacing is not indoor pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor exposure guidance is not mapped to indoor grow-light intensity."}}
+  },
+  {
+    "id": "fairy-tale-f1-eggplant",
+    "name": "Fairy Tale F1 Eggplant",
+    "spanishName": "Berenjena Fairy Tale F1",
+    "scientificName": "Solanum melongena",
+    "variety": "Fairy Tale F1 hybrid",
+    "category": "fruits",
+    "emoji": "🍆",
+    "tags": ["Fairy Tale", "Fairy Tale F1", "mini eggplant", "purple white eggplant", "berenjena mini", "berenjena morada y blanca", "Solanum melongena"],
+    "summary": "A named compact mini eggplant hybrid producing purple-and-white fruit. Its listed container suitability and fruit dimensions are cultivar-specific; no indoor hydroponic compatibility is inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Fairy Tale F1 is a named Solanum melongena hybrid", "guidance": "Kew accepts Solanum melongena as the eggplant species. Johnny's identifies Fairy Tale F1 as a purple-and-white mini eggplant hybrid and an AAS winner; those claims apply to the named product.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-solanum-melongena-wave26", "johnnys-fairy-tale-f1-eggplant-wave26"]},
+      "cultivation": {"short": "Container suitability and compact size are product-listed", "guidance": "Johnny's marks Fairy Tale as suitable for containers and describes compact plants 18–24 in tall. This supports ordinary container growing, not compatibility with a particular hydroponic machine.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-fairy-tale-f1-eggplant-wave26"]},
+      "growth": {"short": "Small purple-and-white fruit may form clusters", "guidance": "The supplier describes fruits 2–4 in long and ¾–1¼ in diameter, with some harvestable in clusters. These measurements are specific to Fairy Tale, not all eggplants.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-fairy-tale-f1-eggplant-wave26"]},
+      "harvest": {"short": "Clip fruit and harvest regularly", "guidance": "Johnny's lists 65 days from transplant and recommends clipping fruit stems and picking regularly in its shared eggplant growing guidance. Actual timing depends on establishment and conditions.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-fairy-tale-f1-eggplant-wave26", "umn-eggplant-wave4"]},
+      "problems": {"short": "Cool conditions can weaken eggplant", "guidance": "University of Minnesota Extension describes eggplant as warm-season and cautions against cold conditions. This crop-level warning is not a Fairy Tale disease or stress-resistance claim.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-eggplant-wave4"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Container suitability is not evidence of validated hydroponic compatibility."}, "growthHabits": {"status": "unknown", "reason": "Compact is a size description, not a controlled growth-habit category."}, "matureSize": {"height": {"status": "known", "value": {"minCm": 46, "maxCm": 61, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["johnnys-fairy-tale-f1-eggplant-wave26"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Supplier lists Fairy Tale F1 plants at 18–24 in; converted to centimeters."}]}, "spread": {"status": "unknown", "reason": "No plant spread is given."}}, "spacing": {"status": "unknown", "reason": "Soil spacing does not establish pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor exposure is not an indoor light tier."}}
+  },
+  {
+    "id": "patio-baby-f1-eggplant",
+    "name": "Patio Baby F1 Eggplant",
+    "spanishName": "Berenjena Patio Baby F1",
+    "scientificName": "Solanum melongena",
+    "variety": "Patio Baby F1 hybrid",
+    "category": "fruits",
+    "emoji": "🍆",
+    "tags": ["Patio Baby", "Patio Baby F1", "container eggplant", "mini eggplant", "berenjena de maceta", "berenjena mini", "Solanum melongena"],
+    "summary": "A named, container-oriented mini eggplant hybrid with continuous small fruit set. Its compact dimensions and product claims remain distinct from general eggplant guidance.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Patio Baby F1 is a named eggplant hybrid", "guidance": "Kew accepts Solanum melongena at species level. Johnny's identifies Patio Baby F1 as its compact mini eggplant product and AAS regional winner; no other Patio Baby seed product is implied.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-solanum-melongena-wave26", "johnnys-patio-baby-f1-eggplant-wave26"]},
+      "cultivation": {"short": "Supplier identifies Patio Baby as suited to containers", "guidance": "Johnny's describes this cultivar as a container variety for patios and small spaces, with plants 18–24 in tall. This product-level container claim does not establish compatibility with any indoor hydroponic system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-patio-baby-f1-eggplant-wave26"]},
+      "growth": {"short": "Small purple fruit with a continuous set described by supplier", "guidance": "Johnny's describes 2–3 in fruits and a continuous set of spineless fruit. These are product-specific characteristics; they should not be generalized to eggplants as a species.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-patio-baby-f1-eggplant-wave26"]},
+      "harvest": {"short": "Harvest fruit at the desired mini size", "guidance": "The supplier lists 50 days to maturity and describes repeated fruit set. The 50-day value is product catalog timing under its stated growing conditions, not a guarantee for every environment.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-patio-baby-f1-eggplant-wave26"]},
+      "problems": {"short": "Cool weather and excessive nitrogen are crop-level concerns", "guidance": "Johnny's shared eggplant guidance warns that cool weather may weaken plants and excessive nitrogen may promote foliage at the expense of fruiting. These are crop-level notes, not proven cultivar-specific susceptibility.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-eggplant-wave4", "johnnys-patio-baby-f1-eggplant-wave26"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The product's container claim does not validate hydroponic system suitability."}, "growthHabits": {"status": "unknown", "reason": "Compact describes size but does not match a defined habit value."}, "matureSize": {"height": {"status": "known", "value": {"minCm": 46, "maxCm": 61, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["johnnys-patio-baby-f1-eggplant-wave26"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Supplier lists Patio Baby F1 at 18–24 in; converted to centimeters."}]}, "spread": {"status": "unknown", "reason": "No spread measurement is published on the cited product record."}}, "spacing": {"status": "unknown", "reason": "Outdoor field spacing is not pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor light guidance is not converted to indoor grow-light requirements."}}
+  },
+  {
+    "id": "delicata-js-squash",
+    "name": "Delicata JS Squash",
+    "spanishName": "Calabaza Delicata JS",
+    "scientificName": "Cucurbita pepo",
+    "variety": "Delicata JS open-pollinated Johnny's selection",
+    "category": "vegetables",
+    "emoji": "🎃",
+    "tags": ["Delicata JS", "Delicata squash", "winter squash", "calabaza delicata", "Cucurbita pepo"],
+    "summary": "A named open-pollinated delicata selection of Cucurbita pepo with striped cream fruit and edible tender skin. Its supplier-listed fruit size and maturity are cultivar-specific; field spacing is not indoor spacing.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Delicata JS is a named Cucurbita pepo selection", "guidance": "Kew accepts Cucurbita pepo, a species containing many cultivated squash forms. Johnny's identifies Delicata JS as its open-pollinated delicata strain; it is not a separate species and is distinct from the generic acorn and butternut entries.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-cucurbita-pepo-wave26", "johnnys-delicata-js-wave26"]},
+      "cultivation": {"short": "Vining squash for outdoor soil culture in the cited guidance", "guidance": "Johnny's gives winter-squash culture for fertile, well-drained soil and describes transplant and direct-seeding options. This source does not establish compact/container or recirculating hydroponic suitability for Delicata JS.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-delicata-js-wave26", "johnnys-winter-squash-wave3"]},
+      "growth": {"short": "Cream fruits with dark-green stripes; 1½–2 lb average", "guidance": "Johnny's lists fruit 7–9 in long, about 3 in diameter and averaging 1½–2 lb. These are product-specific harvest traits, not a universal delicata measurement.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-delicata-js-wave26"]},
+      "harvest": {"short": "Product lists about 100 days from direct seeding", "guidance": "Johnny's states 100 days to maturity from direct seeding and describes the tender skin as edible. Harvest and storage instructions are supplier crop guidance; local season and maturity conditions vary.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-delicata-js-wave26", "johnnys-winter-squash-wave3"]},
+      "problems": {"short": "Pollination and common cucurbit issues need attention outdoors", "guidance": "Johnny's notes that poor fruit development may indicate insufficient pollination and lists common cucurbit pests and diseases. This is crop-level guidance and does not claim resistance traits for Delicata JS.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-delicata-js-wave26", "johnnys-winter-squash-wave3"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The sources cover outdoor soil production, not validated recirculating home hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Vine length/habit is not established for the product in the reviewed sources."}, "matureSize": {"height": {"status": "unknown", "reason": "No mature height is supplied."}, "spread": {"status": "unknown", "reason": "No defensible mature spread is supplied."}}, "spacing": {"status": "unknown", "reason": "Outdoor field spacing is not indoor pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor sunlight guidance is not mapped to indoor grow-light tiers."}}
+  },
+  {
+    "id": "honey-bear-f1-acorn-squash",
+    "name": "Honey Bear F1 Acorn Squash",
+    "spanishName": "Calabaza bellota Honey Bear F1",
+    "scientificName": "Cucurbita pepo",
+    "variety": "Honey Bear F1 acorn squash hybrid",
+    "category": "vegetables",
+    "emoji": "🎃",
+    "tags": ["Honey Bear", "Honey Bear F1", "acorn squash", "bush acorn squash", "calabaza bellota", "Cucurbita pepo"],
+    "summary": "A named acorn-squash hybrid with a supplier-described semi-bush habit and single-serving fruit. It adds a verified compact habit distinction to the existing general acorn-squash identity.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Honey Bear F1 is an acorn squash cultivar of Cucurbita pepo", "guidance": "Kew accepts Cucurbita pepo at species level. Johnny's identifies Honey Bear as an F1 acorn squash; it is a named cultivar-level record, not a second species or a replacement for generic acorn squash.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-cucurbita-pepo-wave26", "johnnys-honey-bear-f1-acorn-wave26"]},
+      "cultivation": {"short": "Supplier describes a semi-bush plant; hydroponic fit is unknown", "guidance": "Johnny's describes Honey Bear as semi-bush and gives winter-squash growing information for outdoor soil. Semi-bush habit does not by itself prove suitability for a container or hydroponic system.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-honey-bear-f1-acorn-wave26", "johnnys-winter-squash-wave3"]},
+      "growth": {"short": "Small acorn fruits average about 1–1¼ lb", "guidance": "The product page describes single-serving fruits averaging 1–1¼ lb and identifies Honey Bear as an AAS winner. Johnny's marks intermediate resistance to powdery mildew (PM); the claim is retained only for this cultivar and at the supplier's stated level.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-honey-bear-f1-acorn-wave26"]},
+      "harvest": {"short": "Supplier lists about 85 days from direct seeding", "guidance": "Johnny's product record lists 85 days to maturity from direct seeding and recommends handling winter squash carefully after cutting. The number is product catalog guidance, not a universal calendar.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-honey-bear-f1-acorn-wave26", "johnnys-winter-squash-wave3"]},
+      "problems": {"short": "Powdery-mildew resistance is listed as intermediate", "guidance": "Johnny's explicitly lists intermediate resistance to powdery mildew for Honey Bear. This is not immunity, does not cover other diseases, and is not applied to generic acorn squash.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-honey-bear-f1-acorn-wave26"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "No selected source validates this winter-squash cultivar in recirculating hydroponics."}, "growthHabits": {"status": "unknown", "reason": "Semi-bush is not present in the controlled habit vocabulary; do not coerce it to upright or determinate."}, "matureSize": {"height": {"status": "unknown", "reason": "The source provides no height measurement."}, "spread": {"status": "unknown", "reason": "Semi-bush is qualitative and does not specify mature spread."}}, "spacing": {"status": "unknown", "reason": "Field-spacing ranges are not pod spacing."}, "light": {"status": "unknown", "reason": "Outdoor exposure guidance is not an indoor grow-light category."}}
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "pinguicula-lilac-lollipop",
+    "name": "Pinguicula 'Lilac Lollipop'",
+    "spanishName": "Pinguicula 'Lilac Lollipop'",
+    "scientificName": "Pinguicula hybrid (parentage unresolved)",
+    "variety": "'Lilac Lollipop' — supplier-named horticultural hybrid; cultivar registration not assessed",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": ["pinguicula lilac lollipop", "lilac lollipop butterwort", "butterwort", "planta carnívora"],
+    "summary": "California Carnivores identifies Lilac Lollipop as a cyclosecta hybrid and sells it as bare-root plant material. Its exact parentage and formal cultivar status are not established by the selected evidence.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Supplier-named Pinguicula hybrid",
+        "guidance": "The specialist grower describes Lilac Lollipop as a cyclosecta hybrid. Kew accepts Pinguicula cyclosecta as a species, but does not establish the parentage or nomenclatural status of this horticultural hybrid.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "kew-pinguicula-cyclosecta-500"]
+      },
+      "cultivation": {
+        "short": "Use Mexican butterwort care context cautiously",
+        "guidance": "California Carnivores describes its product as a butterwort and notes purple coloration under bright light. Do not translate that observation into an exact indoor light setpoint or assume every plant colors identically.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500"]
+      },
+      "propagation": {
+        "short": "Leaf pullings are a documented vegetative route for Pinguicula",
+        "guidance": "California Carnivores demonstrates leaf-pulling propagation for Pinguicula generally. A vegetative route is preferable when maintaining a named hybrid identity; the selected sources do not establish a seed protocol for Lilac Lollipop.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-pinguicula-propagation-500"]
+      },
+      "identityReview": {
+        "short": "Parentage and formal naming remain unresolved",
+        "guidance": "The product evidence supports the supplier name and a cyclosecta-hybrid description, but not a complete cross formula or formal registration. Retain this limitation rather than importing community-repeated parentage claims.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status":"unknown","reason":"The selected sources do not establish hydroponic cultivation for this horticultural hybrid."},
+      "growthHabits": {"status":"unknown","reason":"No standardized growth-habit value selected for this named hybrid."},
+      "matureSize": {
+        "height":{"status":"unknown","reason":"No verified mature height for Lilac Lollipop selected."},
+        "spread":{"status":"unknown","reason":"No verified mature spread for Lilac Lollipop selected."}
+      },
+      "spacing":{"status":"unknown","reason":"No planting-spacing evidence selected."},
+      "light":{"status":"unknown","reason":"Bright-light coloration is not an indoor lamp-intensity classification."}
+    }
+  }
+]

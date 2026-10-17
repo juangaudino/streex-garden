@@ -1,0 +1,43 @@
+{
+  "pineapple-mint-mentha-suaveolens-variegata": {
+    "summary": "La menta piña es Mentha suaveolens 'Variegata', una selección de follaje variegado distinta de la menta piperita y la hierbabuena.",
+    "sections": {
+      "identity": { "guidance": "Kew reconoce Mentha suaveolens; RHS identifica 'Variegata' como la forma de menta piña. No se afirma que una semilla reproduzca fielmente el cultivar." },
+      "cultivation": { "guidance": "RHS describe una perenne vigorosa que forma colonias mediante brotes laterales, con hojas de margen crema. Contén el crecimiento en maceta o limita el espacio de raíces; el contexto climático de RHS es británico." },
+      "pruning": { "guidance": "RHS aconseja recorte estacional y documenta división o rizomas para propagar esta forma variegada. No se promete fidelidad varietal mediante semilla." },
+      "problems": { "guidance": "RHS advierte que puede extenderse y recomienda limitar el crecimiento de raíces. Esto describe manejo de expansión, no compatibilidad hidropónica." }
+    }
+  },
+  "rau-ram-persicaria-odorata": {
+    "summary": "Rau ram es Persicaria odorata, hierba culinaria asiática también llamada cilantro vietnamita. RHS documenta propagación por semilla y vegetativa, pero no un calendario numérico de germinación.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Persicaria odorata y registra Polygonum odoratum como sinónimo. RHS incluye rau ram entre sus nombres comunes. No es cilantro botánico (Coriandrum sativum)." },
+      "cultivation": { "guidance": "RHS describe crecimiento en verano al aire libre en posición soleada y protegida, en suelo rico que retenga humedad pero drene bien; en el contexto británico se puede cultivar bajo cubierta durante el resto del año. No aporta receta de nutrientes para hidroponía." },
+      "propagation": { "guidance": "RHS enumera siembra en otoño o primavera, división y esquejes semimaduros de verano que pueden enraizar en suelo o agua. La página revisada no da duración ni temperatura de germinación." },
+      "harvest": { "guidance": "‘Cilantro vietnamita’ es un nombre culinario, no un sinónimo taxonómico de cilantro. No se afirma frecuencia ni rendimiento de cosecha con las fuentes seleccionadas." }
+    }
+  },
+  "bush-nasturtium-tropaeolum-minus": {
+    "summary": "La capuchina enana es Tropaeolum minus, distinta de las formas colgantes de T. majus y del berro de agua (Nasturtium officinale). La guía de siembra compartida se conserva al alcance del grupo de capuchinas de jardín.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus como tipo arbustivo y T. majus como tipo colgante. No debe confundirse con el berro de agua, de otro género y familia." },
+      "cultivation": { "guidance": "Wisconsin Extension describe cultivares arbustivos de T. minus y formas colgantes de T. majus. Su consejo general incluye suelo relativamente pobre y humedad regular durante el crecimiento; no se transfieren dimensiones de cultivares colgantes." },
+      "harvest": { "guidance": "Wisconsin Extension describe flores comestibles para las capuchinas de jardín. La fuente no establece sabor ni calendario de cosecha específico para esta identidad." }
+    }
+  },
+  "romaine-lettuce": {
+    "summary": "La romana es un tipo hortícola de Lactuca sativa, no un cultivar nombrado. Esta identidad general no reemplaza Red Romaine ni los cultivares Breen y Pandero.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Lactuca sativa como la especie de la lechuga cultivada. Romaine/cos se representa como tipo hortícola sin asignarle cultivar. Las identidades de romana roja y de cultivares nombrados permanecen separadas." },
+      "cultivation": { "guidance": "Se usa orientación de lechuga al nivel del cultivo. La temperatura influye en establecimiento y espigado; no se infieren dimensiones, madurez, tolerancia al calor, resistencia a enfermedades ni separación de sistema para este tipo genérico." },
+      "problems": { "guidance": "La respuesta a temperatura y espigado varía con variedad y ambiente. Este perfil de tipo/especie no hereda rasgos de Red Romaine ni de cultivares nombrados." }
+    }
+  },
+  "pinguicula-weser": {
+    "summary": "Pinguicula 'Weser' es un nombre de híbrido cultivado registrado, no una especie botánica. Un estudio informa parentaje P. ehlersiae × P. moranensis, pero no constituye un manual de cultivo.",
+    "sections": {
+      "identity": { "guidance": "La referencia de nomenclatura explica el formato del nombre de cultivar y el papel de registro de ICPS. Un estudio de 2026 identifica 'Weser' como registrado desde 1998 y reporta el cruce P. ehlersiae × P. moranensis. Se conserva el nombre como cultivar, no como especie." },
+      "needsValidation": { "guidance": "Las fuentes seleccionadas establecen identidad y parentaje, pero no un protocolo de cultivo. Luz, sustrato, riego, comportamiento estacional, dimensiones y método fiable de propagación siguen sin establecerse en esta ficha pública." }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "gardenpedia_seed_profile_v0",
+  "profiles": {
+    "american-elderberry-sambucus-canadensis": {
+      "plantIdentityId": "american-elderberry-sambucus-canadensis",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "American elderberry can be propagated from seed, but UF/IFAS says seedlings vary and seed starting is relatively difficult. It documents a cold-stratification requirement followed by a long germination period under warm conditions, without giving a general duration, sowing depth, or temperature target. Use vegetative stock when preserving a selected plant matters.",
+        "es": "El sauco americano puede propagarse desde semilla, pero UF/IFAS indica que las plántulas varían y que iniciar desde semilla es relativamente difícil. Documenta un requisito de estratificación en frío seguido de un período largo de germinación con condiciones cálidas, sin dar una duración, profundidad ni temperatura general. Usa material vegetativo si importa conservar una selección."
+      },
+      "quickFacts": [
+        {
+          "key": "method", "label": { "en": "Propagation", "es": "Propagación" },
+          "value": { "en": "Seed is possible; cuttings are generally preferred", "es": "La semilla es posible; generalmente se prefieren los esquejes" },
+          "note": { "en": "Species-level American Sambucus guidance; seedlings vary", "es": "Orientación para Sambucus americano a nivel de especie; las plántulas varían" },
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-elderberry-florida-wave44"]
+        },
+        {
+          "key": "stratification", "label": { "en": "Cold treatment", "es": "Tratamiento en frío" },
+          "value": { "en": "Cold stratification is required; duration not established here", "es": "Se requiere estratificación en frío; aquí no se establece la duración" },
+          "note": { "en": "UF/IFAS describes overwintering before warm germination but gives no universal number of weeks", "es": "UF/IFAS describe pasar el invierno antes de germinar con calor, sin indicar un número universal de semanas" },
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-elderberry-florida-wave44"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing", "title": { "en": "Sowing", "es": "Siembra" }, "icon": "🌱",
+          "short": { "en": "Do not assume a cultivar-identical seedling", "es": "No supongas que la plántula conserva el cultivar" },
+          "guidance": { "en": "UF/IFAS confirms American elderberry can be propagated by seed, but says seedlings vary and vegetative cuttings are generally preferred for practical propagation. The reviewed source does not establish sowing depth or a complete home seed protocol; those fields remain unresolved.", "es": "UF/IFAS confirma que el sauco americano puede propagarse por semilla, pero indica que las plántulas varían y que suelen preferirse los esquejes para la propagación práctica. La fuente revisada no establece profundidad de siembra ni un protocolo doméstico completo; esos campos quedan sin resolver." },
+          "items": [{ "text": { "en": "Use a named, verified vegetative selection instead of seed if retaining a specific cultivar or fruit phenotype is important.", "es": "Usa una selección vegetativa identificada y verificada en vez de semilla si importa conservar un cultivar o fenotipo de fruto específico." }, "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ufifas-elderberry-florida-wave44"] }],
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-elderberry-florida-wave44"]
+        },
+        {
+          "key": "germination", "title": { "en": "Germination", "es": "Germinación" }, "icon": "⏳",
+          "short": { "en": "Cold stratification, then warmth; timing unknown", "es": "Estratificación en frío y después calor; tiempo desconocido" },
+          "guidance": { "en": "UF/IFAS states that Sambucus seed requires cold stratification and takes a long time to germinate under warm conditions afterward. The source does not give a universal stratification duration, germination temperature, or days-to-emergence range, so Garden leaves those values unfilled.", "es": "UF/IFAS indica que la semilla de Sambucus requiere estratificación en frío y tarda mucho en germinar con condiciones cálidas después. La fuente no da una duración universal de estratificación, temperatura de germinación ni rango de días hasta emergencia, por lo que Garden deja esos valores vacíos." },
+          "items": [{ "text": { "en": "No light-versus-dark germination requirement is established in the reviewed source.", "es": "La fuente revisada no establece un requisito de germinación con luz u oscuridad." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }],
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-elderberry-florida-wave44"]
+        },
+        {
+          "key": "afterEmergence", "title": { "en": "After emergence", "es": "Después de emerger" }, "icon": "🌿",
+          "short": { "en": "Seedling care details need validation", "es": "Los cuidados de plántula requieren validación" },
+          "guidance": { "en": "The selected Extension source focuses on propagation routes for production rather than a complete home seedling-care sequence. It does not establish a universal leaf-stage, spacing, or transplant-readiness rule for seed-grown American elderberry.", "es": "La fuente de Extension seleccionada se centra en vías de propagación de producción, no en una secuencia completa de cuidados domésticos de plántulas. No establece una regla universal de etapa de hojas, separación ni preparación para trasplante de sauco americano cultivado desde semilla." },
+          "items": [],
+          "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []
+        },
+        {
+          "key": "transition", "title": { "en": "Transition to established plant", "es": "Transición a planta establecida" }, "icon": "🪴",
+          "short": { "en": "No seedling handoff threshold supplied", "es": "No se indica un umbral de trasplante de plántula" },
+          "guidance": { "en": "UF/IFAS describes cuttings and field establishment but does not define a seedling age or visible stage for transplanting. Garden leaves the transition threshold unresolved rather than substituting cutting-production instructions.", "es": "UF/IFAS describe esquejes y establecimiento en campo, pero no define edad ni etapa visible de trasplante para plántulas de semilla. Garden deja el umbral sin resolver en vez de sustituirlo por instrucciones de producción de esquejes." },
+          "items": [],
+          "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []
+        }
+      ]
+    }
+  }
+}

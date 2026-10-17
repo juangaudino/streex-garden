@@ -1,4 +1,5 @@
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
+import { gardenPlantProfileCatalog } from "@/generated/garden-plant-profile-index";
 import { gardenSeedProfileIds } from "@/generated/garden-seed-profile-index";
 import type { GardenLibraryEntry } from "@/lib/garden-library";
 import harvestUseData from "../../../../../../labs/gardenpedia/data/harvest-use-v0.1.json";
@@ -168,6 +169,22 @@ type VisualRecord = {
   sourceUrl?: string;
 };
 
+type PublicPlantProfileSection = {
+  evidenceType: "source_backed" | "garden_adaptation" | "needs_validation";
+  confidence: "high" | "medium" | "low" | "pending";
+  sourceIds: readonly string[];
+  en: { short: string; guidance: string; items: readonly string[]; avoid: string; context: string };
+  es: { short: string; guidance: string; items: readonly string[]; avoid: string; context: string };
+};
+type PublicPlantProfile = {
+  summary: { en: string; es: string };
+  metrics: {
+    en: readonly { label: string; value: string; note: string }[];
+    es: readonly { label: string; value: string; note: string }[];
+  };
+  sections: Record<string, PublicPlantProfileSection>;
+};
+
 const harvestDocument = harvestUseData as {
   plants?: Record<string, HarvestRecord>;
   sources?: Record<string, { publisher: string; title: string; url: string }>;
@@ -177,6 +194,7 @@ const harvestSources = harvestDocument.sources ?? {};
 const visualCatalog = visualsData as Record<string, VisualRecord[]>;
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
+const publicPlantProfiles = gardenPlantProfileCatalog as Record<string, PublicPlantProfile>;
 export const seedProfileIds = new Set<string>(gardenSeedProfileIds);
 export const seedProfileCount = gardenSeedProfileIds.length;
 
@@ -186,9 +204,12 @@ const CATEGORY_EMOJI: Record<string, string> = {
   fruits: "🍅",
   fruiting: "🍅",
   flowers: "🌼",
+  ornamentals: "🪴",
   vegetables: "🌱",
   "root vegetables": "🥕",
   alliums: "🌱",
+  legumes: "🫘",
+  "cover crops": "🌱",
 };
 
 const PUBLIC_TAG_EXCLUSIONS = /owned seed|home grown|user zero|uruq|packet|inventory/i;
@@ -282,18 +303,9 @@ function lightRequirement(entry: GardenLibraryEntry): LightRequirement {
   if (/\bmedium\s+light\b|\bluz\s+media\b/.test(explicit)) return "medium";
   if (/\blow\s+light\b|\bluz\s+baja\b/.test(explicit)) return "low";
 
-  const growingRequirements =
-    entry.compatibilityProfile?.light.status === "known"
-      ? entry.compatibilityProfile.light.value.filter((item) => item.phase === "growing")
-      : [];
-  const hasPartialExposure = growingRequirements.some(
-    (item) => "kind" in item.requirement && item.requirement.kind === "partial_sun",
-  );
-  const hasPartialShadeText = /\bpartial\s+shade\b|\bpart\s+shade\b/.test(explicit);
-  if (hasPartialExposure || hasPartialShadeText) return "medium";
-
-  // A growing-phase shade value is retained as outdoor evidence, but is not
-  // silently promoted to low indoor light without an explicit intensity claim.
+  // Outdoor exposure (full sun, partial sun/shade, or shade) is not an indoor
+  // grow-light intensity. Only an explicit indoor/intensity statement above
+  // can classify this independent dimension.
   return "unknown";
 }
 
@@ -608,6 +620,20 @@ export function buildDonorPlantDetail(
   const legacy = legacyCatalog.get(entry.libraryPlantId);
   const legacySpanish = legacySpanishCatalog[entry.libraryPlantId];
   const guideLabels: Record<string, { title: string; emoji: string }> = {
+    identity: { title: language === "es" ? "Identidad" : "Identity", emoji: "🌱" },
+    identityReview: {
+      title: language === "es" ? "Revisión de identidad" : "Identity review",
+      emoji: "🔎",
+    },
+    cultivation: { title: language === "es" ? "Cultivo" : "Cultivation", emoji: "🪴" },
+    care: { title: language === "es" ? "Cuidados" : "Care", emoji: "🌿" },
+    growth: { title: language === "es" ? "Crecimiento" : "Growth", emoji: "🌱" },
+    maintenance: { title: language === "es" ? "Mantenimiento" : "Maintenance", emoji: "🧤" },
+    needsValidation: { title: language === "es" ? "Por validar" : "Needs validation", emoji: "🧭" },
+    propagation: { title: language === "es" ? "Propagación" : "Propagation", emoji: "🌱" },
+    safety: { title: language === "es" ? "Seguridad" : "Safety", emoji: "⚠️" },
+    support: { title: language === "es" ? "Soporte" : "Support", emoji: "🪴" },
+    uses: { title: language === "es" ? "Usos" : "Uses", emoji: "🍽️" },
     germination: { title: language === "es" ? "Germinación" : "Germination", emoji: "🌱" },
     thinning: { title: language === "es" ? "Raleo" : "Thinning", emoji: "✂️" },
     pruning: { title: language === "es" ? "Poda" : "Pruning", emoji: "🌿" },
@@ -637,43 +663,53 @@ export function buildDonorPlantDetail(
       sources: resolvedSources,
     } satisfies DonorGuideSection;
   });
-  const sections = legacySections.length ? legacySections : fallbackSections;
-  const germination = canonicalText(entry.reference.germination);
-  const timeline =
-    germination || entry.reference.harvest
-      ? {
-          note:
-            language === "es"
-              ? "Ventanas publicadas por Gardenpedia; no se convierten en fechas exactas."
-              : "Gardenpedia-published windows; not converted into fake exact dates.",
-          steps: [
-            { label: language === "es" ? "Siembra" : "Sowing", day: "Day 0" },
-            ...(germination
-              ? [
-                  {
-                    label: language === "es" ? "Germinación esperada" : "Expected germination",
-                    day: germination,
-                    backed: entry.reference.sourceIds.length > 0,
-                  },
-                ]
-              : []),
-            ...(entry.reference.harvest
-              ? [
-                  {
-                    label: language === "es" ? "Cosecha" : "Harvest",
-                    day: entry.reference.harvest,
-                    backed: entry.reference.sourceIds.length > 0,
-                  },
-                ]
-              : []),
-          ],
-          decide:
-            entry.reference.harvest ||
-            (language === "es"
-              ? "Observar el desarrollo y conservar la incertidumbre publicada."
-              : "Observe development and preserve published uncertainty."),
-        }
-      : undefined;
+  const publicProfile = publicPlantProfiles[entry.libraryPlantId];
+  const publicSections = Object.entries(publicProfile?.sections ?? {}).map(([id, guide]) => {
+    const label = guideLabels[id] ?? { title: id, emoji: "🌱" };
+    const localized = language === "es" ? guide.es : guide.en;
+    const backing: DonorBacking =
+      guide.evidenceType === "garden_adaptation"
+        ? "garden"
+        : guide.evidenceType === "needs_validation"
+          ? "pending"
+          : "source";
+    const confidence: DonorConfidence =
+      guide.confidence === "high"
+        ? "alta"
+        : guide.confidence === "medium"
+          ? "media"
+          : guide.confidence === "low"
+            ? "baja"
+            : "pendiente";
+    return {
+      id,
+      emoji: label.emoji,
+      title: label.title,
+      subtitle:
+        localized.short ||
+        localized.guidance ||
+        (language === "es" ? "Pendiente de validación." : "Pending validation."),
+      body:
+        localized.guidance ||
+        localized.short ||
+        (language === "es"
+          ? "No establecido por la evidencia actual."
+          : "Not established by current evidence."),
+      bullets: [...localized.items],
+      avoid: localized.avoid || undefined,
+      context: localized.context || undefined,
+      backing,
+      confidence,
+      sources: sourceRefsForIds(entry, guide.sourceIds),
+    } satisfies DonorGuideSection;
+  });
+  const sections = publicProfile
+    ? publicSections
+    : legacySections.length
+      ? legacySections
+      : fallbackSections;
+  // Germination belongs to Seed Profile V0; do not turn it into a Plant lifecycle timeline.
+  const timeline = undefined;
   const visual = visualCatalog[entry.libraryPlantId]?.[0];
   const neighbors = gardenLibraryManifest.neighborRules.researchPairs
     .filter((pair) => pair.a === entry.libraryPlantId || pair.b === entry.libraryPlantId)
@@ -706,20 +742,17 @@ export function buildDonorPlantDetail(
     category: entry.category,
     emoji: CATEGORY_EMOJI[entry.category] ?? "🌱",
     summary:
+      publicProfile?.summary[language] ||
       (language === "es" ? legacySpanish?.summary : legacy?.summary) ||
       entry.reference.recommendations[0] ||
       (language === "es"
         ? "La ficha conserva la información canónica disponible y sus áreas pendientes."
         : "This profile preserves the available canonical information and its pending areas."),
-    metrics:
-      legacy && (language === "es" ? legacySpanish?.metrics : legacy.metrics)
+    metrics: publicProfile
+      ? [...publicProfile.metrics[language]]
+      : legacy && (language === "es" ? legacySpanish?.metrics : legacy.metrics)
         ? (language === "es" ? legacySpanish?.metrics : legacy.metrics)!
         : [
-            germination && {
-              label: language === "es" ? "Germinación" : "Germination",
-              value: germination,
-              note: language === "es" ? "Referencia publicada" : "Published reference",
-            },
             entry.reference.ph && {
               label: language === "es" ? "pH hidro" : "Hydro pH",
               value: entry.reference.ph,

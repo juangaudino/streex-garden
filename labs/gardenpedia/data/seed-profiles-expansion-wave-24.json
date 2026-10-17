@@ -1,0 +1,732 @@
+{
+  "schemaVersion": "gardenpedia_seed_profile_v0",
+  "profiles": {
+    "celeriac-apium-graveolens": {
+      "plantIdentityId": "celeriac-apium-graveolens",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Celeriac seed is very small, needs light to germinate, and may take two weeks or longer to emerge in the cited California home-garden guide. Keep this seed-starting step separate from later root enlargement and mature-plant care.",
+        "es": "La semilla de apionabo es muy pequeña, necesita luz para germinar y puede tardar dos semanas o más en emerger según la guía doméstica de California. Mantén esta etapa separada del posterior ensanchamiento de la raíz y del cuidado de la planta adulta."
+      },
+      "quickFacts": [
+        {
+          "key": "germinationLight",
+          "label": {
+            "en": "Light during germination",
+            "es": "Luz durante la germinación"
+          },
+          "value": {
+            "en": "Required; do not cover completely",
+            "es": "Necesaria; no cubrir por completo"
+          },
+          "note": {
+            "en": "UC ANR home-garden guidance",
+            "es": "Guía doméstica de UC ANR"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-celeriac-500", "umd-celeriac-500"]
+        },
+        {
+          "key": "germination",
+          "label": { "en": "Typical emergence", "es": "Emergencia habitual" },
+          "value": {
+            "en": "About 2 weeks or longer",
+            "es": "Unas 2 semanas o más"
+          },
+          "note": {
+            "en": "Regional guidance; individual seed lots vary",
+            "es": "Guía regional; cada lote puede variar"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["ucanr-celeriac-500", "umd-celeriac-500"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Start indoors well before the outdoor season",
+            "es": "Inicia en interior con anticipación a la temporada exterior"
+          },
+          "guidance": {
+            "en": "UC ANR recommends sowing indoors as early as 10 weeks before the average last frost in its regional guide. Sprinkle a light covering only; seed needs light for germination, so do not bury it fully. No packet-specific depth is established.",
+            "es": "UC ANR recomienda iniciar en interior hasta 10 semanas antes de la última helada promedio en su guía regional. Añade solo una cobertura ligera: la semilla necesita luz para germinar y no debe enterrarse por completo. No se establece profundidad específica para un paquete."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-celeriac-500"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Keep the surface moist and exposed to light",
+            "es": "Mantén la superficie húmeda y expuesta a la luz"
+          },
+          "guidance": {
+            "en": "UC ANR reports that germination may take two weeks or longer and that not all seeds may sprout. Maryland Extension says a growing-medium/air temperature around 75°F can hasten emergence and also confirms the light requirement. This is extension guidance, not a guarantee for every lot.",
+            "es": "UC ANR informa que la germinación puede tardar dos semanas o más y que algunas semillas quizá no broten. Maryland Extension indica que una temperatura del medio y aire de unos 75°F puede acelerar la emergencia y también confirma la necesidad de luz. Es guía de Extension, no garantía para cada lote."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-celeriac-500", "umd-celeriac-500"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Grow seedlings on before transplanting",
+            "es": "Desarrolla las plántulas antes de trasplantar"
+          },
+          "guidance": {
+            "en": "The selected sources support indoor sowing followed by setting plants out after frost risk has passed and conditions are suitable. They do not establish a universal leaf-count or hydroponic transfer stage. Keep the medium evenly moist while seedlings establish; this moisture phrasing is a cautious garden adaptation, not a measured celeriac protocol.",
+            "es": "Las fuentes seleccionadas respaldan la siembra interior y el trasplante al exterior cuando pase el riesgo de heladas y las condiciones sean adecuadas. No establecen un número universal de hojas ni una etapa de transferencia hidropónica. Mantener el medio uniformemente húmedo es una adaptación prudente, no un protocolo de apionabo medido."
+          },
+          "items": [],
+          "evidenceType": "garden_adaptation",
+          "confidence": "low",
+          "sourceIds": ["ucanr-celeriac-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Avoid chilling young plants; root formation is a later crop stage",
+            "es": "Evita enfriar plantas jóvenes; la raíz se forma en una etapa posterior"
+          },
+          "guidance": {
+            "en": "UC ANR warns that cool planting conditions can induce bolting before a large root forms. This concerns established crop development, not seed germination. No indoor-system spacing or nutrient recipe is inferred.",
+            "es": "UC ANR advierte que condiciones frías al plantar pueden inducir floración antes de que se forme una raíz grande. Esto corresponde al desarrollo del cultivo ya establecido, no a la germinación. No se infieren separación entre pods ni receta nutritiva."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-celeriac-500"]
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Seed-lot vigor and exact transplant stage remain unknown",
+            "es": "El vigor del lote y la etapa exacta de trasplante siguen desconocidos"
+          },
+          "guidance": {
+            "en": "The selected sources do not provide a tested protocol for a particular seed lot, exact sowing depth, storage longevity, or indoor hydroponic establishment. Check the actual packet and local Extension advice before relying on a fixed schedule.",
+            "es": "Las fuentes seleccionadas no ofrecen un protocolo probado para un lote concreto, profundidad exacta, longevidad de almacenamiento ni establecimiento hidropónico interior. Consulta el paquete real y la guía local de Extension antes de seguir un calendario fijo."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        }
+      ]
+    },
+    "radicchio-cichorium-intybus": {
+      "plantIdentityId": "radicchio-cichorium-intybus",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Radicchio seed guidance is available at the crop/type level, but planting windows depend strongly on region and type. Do not confuse radicchio with endive (Cichorium endivia) or reuse a generic lettuce schedule as cultivar-specific evidence.",
+        "es": "Hay guía de semilla para el cultivo/tipo de radicchio, pero las fechas de siembra dependen mucho de la región y del tipo. No confundas radicchio con endivia (Cichorium endivia) ni presentes un calendario genérico de lechuga como evidencia específica de cultivar."
+      },
+      "quickFacts": [
+        {
+          "key": "depth",
+          "label": { "en": "Sowing depth", "es": "Profundidad de siembra" },
+          "value": {
+            "en": "¼–½ inch (about 0.6–1.3 cm)",
+            "es": "¼–½ pulgada (aprox. 0,6–1,3 cm)"
+          },
+          "note": {
+            "en": "UC ANR regional radicchio guidance",
+            "es": "Guía regional de radicchio de UC ANR"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-radicchio-500"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Direct sow or raise transplants; use a locally appropriate cool-season window",
+            "es": "Siembra directa o prepara trasplantes en una ventana fresca adecuada a tu región"
+          },
+          "guidance": {
+            "en": "UC ANR gives a ¼–½ inch sowing depth and a September–March window for its coastal California production context; UMN describes indoor starts followed by transplanting in Minnesota. These regional calendars are not interchangeable. Choose timing for the actual radicchio type and local climate.",
+            "es": "UC ANR indica una profundidad de ¼–½ pulgada y una ventana de septiembre a marzo para su contexto costero de California; UMN describe iniciar en interior y trasplantar en Minnesota. Los calendarios regionales no son intercambiables. Ajusta la fecha al tipo de radicchio y clima locales."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": [
+            "ucanr-radicchio-500",
+            "umn-lettuce-endive-radicchio-500"
+          ]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Exact temperature and emergence interval need validation",
+            "es": "La temperatura e intervalo exactos requieren validación"
+          },
+          "guidance": {
+            "en": "The selected sources do not establish a cultivar-specific germination temperature, light/dark requirement, or packet-lot emergence interval for radicchio. Keep the sowing medium from drying during emergence as a cautious general seed-starting adaptation, not a radicchio-specific measured fact.",
+            "es": "Las fuentes seleccionadas no establecen temperatura de germinación específica de cultivar, requisito de luz/oscuridad ni intervalo de emergencia del lote para radicchio. Evitar que el sustrato se seque durante la emergencia es una adaptación prudente general, no un hecho medido específico del radicchio."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Thin or transplant according to the chosen crop plan",
+            "es": "Aclara o trasplanta según el plan de cultivo elegido"
+          },
+          "guidance": {
+            "en": "UC ANR documents both direct seeding and plug/module transplants and reports thinning in its coastal field system. Soil row distances are field recommendations and must not be converted into hydroponic pod spacing. No universal seedling age is established.",
+            "es": "UC ANR documenta tanto siembra directa como trasplantes en módulos y describe el aclareo en su sistema de campo costero. Las distancias entre hileras son recomendaciones de campo y no deben convertirse en separación entre pods. No se establece edad universal de plántula."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["ucanr-radicchio-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Cool-season establishment supports head development",
+            "es": "El establecimiento en clima fresco favorece el desarrollo de la cabeza"
+          },
+          "guidance": {
+            "en": "UMN Extension supports starting plants indoors for later transplanting in its Minnesota context. The selected sources do not define a universal transplant-ready leaf count or indoor system compatibility; later head formation is Plant Profile cultivation, not seed germination.",
+            "es": "UMN Extension respalda iniciar plantas en interior para trasplantarlas después en su contexto de Minnesota. Las fuentes no definen un número universal de hojas para trasplantar ni compatibilidad con sistemas interiores; la formación posterior de la cabeza pertenece al perfil de cultivo adulto, no a germinación."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["umn-lettuce-endive-radicchio-500"]
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Type-specific timing and indoor establishment remain unresolved",
+            "es": "El calendario por tipo y el establecimiento interior siguen pendientes"
+          },
+          "guidance": {
+            "en": "No named radicchio cultivar, packet identity, local planting window, seed longevity, or validated hydroponic seedling protocol is represented. Radicchio types differ, so do not copy one head-type schedule to every seed sold under this crop name.",
+            "es": "No se representa cultivar nombrado, identidad de paquete, ventana local, longevidad de semilla ni protocolo hidropónico validado. Los tipos de radicchio difieren; no copies el calendario de una forma de cabeza a todas las semillas vendidas con este nombre."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        }
+      ]
+    },
+    "jicama-pachyrhizus-erosus": {
+      "plantIdentityId": "jicama-pachyrhizus-erosus",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Jicama is propagated from botanical seed for the crop represented here. Texas A&M supports early-spring sowing in its Texas context, while UF/IFAS reports a long warm-season requirement; detailed seed depth and emergence requirements remain unknown.",
+        "es": "La jícama aquí representada se propaga desde semilla botánica. Texas A&M respalda la siembra a comienzos de primavera en su contexto de Texas y UF/IFAS informa que necesita una temporada cálida larga; la profundidad y requisitos detallados de emergencia siguen desconocidos."
+      },
+      "quickFacts": [],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Sow in a warm-season window; no universal depth is established",
+            "es": "Siembra en temporada cálida; no hay profundidad universal establecida"
+          },
+          "guidance": {
+            "en": "Texas A&M Extension recommends planting seed in early spring in its Texas crop guidance. UF/IFAS says a seed-grown crop needs five to nine months of warm weather to produce edible roots. Neither selected source establishes a universal depth or indoor seed-starting method.",
+            "es": "Texas A&M Extension recomienda sembrar a comienzos de primavera en su guía de Texas. UF/IFAS indica que un cultivo desde semilla necesita cinco a nueve meses cálidos para producir raíces comestibles. Ninguna de las fuentes seleccionadas establece profundidad universal ni método de inicio interior."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["tamu-jicama-500", "ufifas-jicama-500"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Seed-lot timing, temperature and pretreatment need validation",
+            "es": "El tiempo, temperatura y tratamiento del lote requieren validación"
+          },
+          "guidance": {
+            "en": "The selected institutional sources do not give a numeric germination interval, temperature, light/dark requirement, or seed pretreatment. Do not infer that warm-season crop requirements equal a precise germination temperature.",
+            "es": "Las fuentes institucionales seleccionadas no dan intervalo numérico, temperatura, requisito de luz/oscuridad ni tratamiento previo de la semilla. No infieras que la necesidad de temporada cálida equivale a una temperatura precisa de germinación."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Protect seedlings from frost and allow a long warm growing period",
+            "es": "Protege las plántulas de heladas y permite una temporada cálida larga"
+          },
+          "guidance": {
+            "en": "The regional sources describe jicama as a warm-season crop and Texas A&M times planting to the local spring. Frost protection and steady moisture while seedlings establish are garden adaptations; the selected evidence does not specify a tested seedling watering protocol.",
+            "es": "Las fuentes regionales describen la jícama como cultivo de estación cálida y Texas A&M ajusta la siembra a la primavera local. Proteger de heladas y mantener humedad estable durante el establecimiento son adaptaciones de jardín; la evidencia no especifica un protocolo de riego probado para plántulas."
+          },
+          "items": [],
+          "evidenceType": "garden_adaptation",
+          "confidence": "low",
+          "sourceIds": ["tamu-jicama-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Plan for a climbing vine and a long day-length-sensitive root crop",
+            "es": "Planifica una enredadera y un cultivo de raíz de ciclo largo sensible al fotoperiodo"
+          },
+          "guidance": {
+            "en": "Texas A&M describes a climbing vine and reports day-length dependence in root initiation. This is mature-crop development, not a germination treatment. Provide appropriate outdoor support and do not infer suitability for a compact indoor garden.",
+            "es": "Texas A&M describe una enredadera y señala que el inicio de la raíz depende de la duración del día. Esto corresponde al desarrollo del cultivo adulto, no a tratamiento de germinación. Prevé soporte exterior y no infieras idoneidad para un jardín interior compacto."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["tamu-jicama-500"]
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Seed depth, germination and safe propagation details remain unresolved",
+            "es": "La profundidad, germinación y detalles seguros de propagación siguen pendientes"
+          },
+          "guidance": {
+            "en": "No selected source establishes seed depth, germination time/temperature, viable seed storage, or seedling-stage transplant criteria. Only the root is edible according to UF/IFAS; do not use other plant parts as food.",
+            "es": "Ninguna fuente seleccionada establece profundidad, tiempo/temperatura de germinación, almacenamiento viable ni criterios de trasplante. Según UF/IFAS solo la raíz es comestible; no uses otras partes como alimento."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": ["ufifas-jicama-500"]
+        }
+      ]
+    },
+    "scarlet-runner-bean-phaseolus-coccineus": {
+      "plantIdentityId": "scarlet-runner-bean-phaseolus-coccineus",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Scarlet runner bean has a well-described large-seed protocol. Wisconsin Extension reports deep sowing, a minimum soil temperature and a 7–14 day emergence range; its exposed-cotyledon absence is normal hypogeal germination.",
+        "es": "El ayocote escarlata cuenta con un protocolo de semilla bien descrito. Wisconsin Extension informa siembra profunda, temperatura mínima del suelo e intervalo de emergencia de 7–14 días; que los cotiledones no aparezcan sobre el suelo es normal en su germinación hipogea."
+      },
+      "quickFacts": [
+        {
+          "key": "depth",
+          "label": { "en": "Sowing depth", "es": "Profundidad de siembra" },
+          "value": {
+            "en": "2–3 inches (5–7.5 cm)",
+            "es": "2–3 pulgadas (5–7,5 cm)"
+          },
+          "note": {
+            "en": "UW-Madison Extension species-level garden guidance",
+            "es": "Guía de jardín a nivel de especie de UW–Madison Extension"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "germination",
+          "label": { "en": "Typical emergence", "es": "Emergencia habitual" },
+          "value": { "en": "7–14 days", "es": "7–14 días" },
+          "note": {
+            "en": "Outdoor sowing guidance; conditions and seed lots vary",
+            "es": "Guía de siembra exterior; varían las condiciones y lotes"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "soilTemperature",
+          "label": {
+            "en": "Minimum soil temperature",
+            "es": "Temperatura mínima del suelo"
+          },
+          "value": {
+            "en": "At least 50°F (10°C)",
+            "es": "Al menos 50°F (10°C)"
+          },
+          "note": {
+            "en": "UW-Madison Extension; frost-sensitive foliage remains a separate concern",
+            "es": "UW–Madison Extension; la sensibilidad del follaje a heladas es un tema distinto"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Direct sow after soil reaches at least 50°F",
+            "es": "Siembra directamente cuando el suelo alcance al menos 50°F"
+          },
+          "guidance": {
+            "en": "UW-Madison Extension supports sowing in place at 2–3 inches deep once soil is at least 50°F. It also describes indoor starts, but transplanting can disturb seedlings; the cited method is species-level outdoor guidance, not a named-cultivar packet instruction.",
+            "es": "UW–Madison Extension respalda sembrar en sitio a 2–3 pulgadas de profundidad cuando el suelo alcance al menos 50°F. También describe iniciar en interior, aunque el trasplante puede alterar las plántulas; es guía exterior a nivel de especie, no instrucción de un paquete de cultivar nombrado."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Allow 7–14 days and look for shoots, not exposed cotyledons",
+            "es": "Espera 7–14 días y observa brotes, no cotiledones expuestos"
+          },
+          "guidance": {
+            "en": "UW-Madison reports emergence in 7–14 days and describes hypogeal germination: cotyledons remain below ground. The range is field guidance, not a guarantee for every seed lot. No separate light/dark requirement is stated.",
+            "es": "UW–Madison informa emergencia en 7–14 días y describe germinación hipogea: los cotiledones permanecen bajo tierra. El intervalo es guía de campo, no garantía para cada lote. No se indica requisito independiente de luz u oscuridad."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Keep young foliage protected from frost",
+            "es": "Protege el follaje joven de las heladas"
+          },
+          "guidance": {
+            "en": "UW-Madison notes that foliage cannot tolerate frost. Once seedlings emerge, protect them from frost and provide a climbing support as they grow; the support is mature-plant management, not a germination requirement.",
+            "es": "UW–Madison señala que el follaje no tolera heladas. Tras emerger, protege las plántulas y proporciona soporte trepador al crecer; el soporte corresponde al manejo de la planta adulta, no a un requisito de germinación."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Prepare a sturdy trellis before the vigorous vine develops",
+            "es": "Prepara un soporte firme antes de que se desarrolle la enredadera"
+          },
+          "guidance": {
+            "en": "Extension describes a vigorous twining runner bean requiring support. This is a planning note for established growth; do not use it to claim a compact habit, indoor suitability, or pod spacing.",
+            "es": "Extension describe el ayocote como enredadera vigorosa que requiere soporte. Es una nota para planificar el crecimiento adulto; no demuestra porte compacto, idoneidad interior ni separación entre pods."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Packet cultivar, treatment and storage longevity are unspecified",
+            "es": "Cultivar del paquete, tratamiento y longevidad siguen sin especificarse"
+          },
+          "guidance": {
+            "en": "No named cultivar, seed-lot germination percentage, storage longevity, or treated-seed status is represented. Do not assume a particular variety such as Painted Lady or Scarlet Emperor from the species-level identity.",
+            "es": "No se representa cultivar nombrado, porcentaje de germinación del lote, longevidad ni tratamiento de semilla. No supongas una variedad como Painted Lady o Scarlet Emperor a partir de una identidad a nivel de especie."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        }
+      ]
+    },
+    "chickpea-cicer-arietinum": {
+      "plantIdentityId": "chickpea-cicer-arietinum",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Chickpea establishment guidance is crop-level and mainly derived from field production. UW-Madison gives 1–2 inch sowing depth and emphasizes high-quality, undamaged seed; this is not a container or hydroponic recipe.",
+        "es": "La guía de establecimiento del garbanzo corresponde al cultivo y procede principalmente de producción de campo. UW–Madison indica 1–2 pulgadas de profundidad y enfatiza semilla de alta calidad sin daños; no es receta para recipiente o hidroponía."
+      },
+      "quickFacts": [
+        {
+          "key": "depth",
+          "label": { "en": "Sowing depth", "es": "Profundidad de siembra" },
+          "value": {
+            "en": "1–2 inches (2.5–5 cm)",
+            "es": "1–2 pulgadas (2,5–5 cm)"
+          },
+          "note": {
+            "en": "UW-Madison field-crop guidance; not indoor pod spacing",
+            "es": "Guía de cultivo de campo de UW–Madison; no es separación de pods"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-chickpea-500"]
+        },
+        {
+          "key": "seedQuality",
+          "label": {
+            "en": "Seed quality context",
+            "es": "Contexto de calidad de semilla"
+          },
+          "value": {
+            "en": "Use high-germination, undamaged seed",
+            "es": "Usa semilla viable y sin daños"
+          },
+          "note": {
+            "en": "UW-Madison field production target; not a guaranteed home packet specification",
+            "es": "Objetivo de producción de campo de UW–Madison; no garantiza especificación de paquete doméstico"
+          },
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["uwisc-chickpea-500"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Direct sow into a prepared, well-drained seedbed",
+            "es": "Siembra directamente en un lecho preparado y bien drenado"
+          },
+          "guidance": {
+            "en": "UW-Madison recommends planting chickpea seed 1–2 inches deep with equipment that avoids seed damage. That is field-crop guidance; it supports the depth and seed-care claim but does not establish container spacing or an indoor planting layout.",
+            "es": "UW–Madison recomienda sembrar a 1–2 pulgadas de profundidad usando equipo que evite dañar la semilla. Es guía de campo: respalda profundidad y cuidado de semilla, pero no define separación en recipientes ni distribución interior."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-chickpea-500"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Exact emergence time and temperature need validation",
+            "es": "El tiempo y temperatura exactos requieren validación"
+          },
+          "guidance": {
+            "en": "The selected Extension material does not establish a universal germination time, temperature, or light/dark requirement for the unspecified seed class and packet. Use undamaged seed and avoid saturated media as a cautious adaptation; do not present it as a measured chickpea germination formula.",
+            "es": "El material seleccionado de Extension no establece tiempo, temperatura ni requisito de luz/oscuridad universales para una clase y paquete no especificados. Usar semilla sin daños y evitar medios saturados es adaptación prudente, no fórmula de germinación medida para garbanzo."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": ["uwisc-chickpea-500"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Prioritize drainage and avoid waterlogged roots",
+            "es": "Prioriza el drenaje y evita raíces encharcadas"
+          },
+          "guidance": {
+            "en": "UW-Madison reports reduced growth and increased root and stem rot risk under waterlogged field conditions. This informs drainage awareness, but does not justify a fixed indoor watering schedule or disease treatment.",
+            "es": "UW–Madison informa menor crecimiento y mayor riesgo de pudrición radicular y del tallo en suelos de campo encharcados. Esto orienta sobre drenaje, pero no justifica un calendario de riego interior ni tratamiento fitosanitario fijo."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "sourceIds": ["uwisc-chickpea-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Treat crop establishment separately from later dry-seed harvest",
+            "es": "Separa el establecimiento del cultivo de la cosecha posterior de grano seco"
+          },
+          "guidance": {
+            "en": "Chickpea is represented as a seed-grown pulse crop. The selected sources do not validate moving seedlings into hydroponic systems or transplanting them at a particular leaf stage; do not infer such a protocol from field seeding guidance.",
+            "es": "El garbanzo se representa como leguminosa cultivada desde semilla. Las fuentes no validan trasplantar plántulas a hidroponía ni hacerlo en una etapa foliar concreta; no infieras ese protocolo desde la siembra de campo."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Market class, packet treatment and home-scale schedule remain open",
+            "es": "La clase comercial, tratamiento y calendario doméstico siguen pendientes"
+          },
+          "guidance": {
+            "en": "No kabuli/desi class, named cultivar, seed treatment, lot-specific germination, storage longevity, home-container spacing, or indoor compatibility is established. Inoculation and disease advice from commercial field production should not be applied automatically to a home pot.",
+            "es": "No se establece clase kabuli/desi, cultivar, tratamiento, germinación del lote, longevidad, separación doméstica ni compatibilidad interior. La inoculación y el manejo de enfermedades de producción comercial no se aplican automáticamente a una maceta doméstica."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        }
+      ]
+    },
+    "lentil-vicia-lens": {
+      "plantIdentityId": "lentil-vicia-lens",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "Lentil seed evidence is mostly commercial field guidance and uses Lens culinaris, which current POWO treats as a synonym of Vicia lens. The profile preserves that scope and leaves home-garden germination timing unresolved.",
+        "es": "La evidencia de semilla de lenteja procede sobre todo de producción comercial de campo y usa Lens culinaris, que POWO trata actualmente como sinónimo de Vicia lens. El perfil conserva ese alcance y deja pendiente el tiempo de germinación doméstico."
+      },
+      "quickFacts": [],
+      "sections": [
+        {
+          "key": "sowing",
+          "title": { "en": "Sowing", "es": "Siembra" },
+          "icon": "🌱",
+          "short": {
+            "en": "Field sources support cool-season sowing, but not a home-container depth",
+            "es": "Las fuentes respaldan siembra de estación fresca, no profundidad doméstica en recipiente"
+          },
+          "guidance": {
+            "en": "UW-Madison Extension recommends late-April to early-May field seeding in its regional crop guide and describes smooth, firm seedbed preparation. That timing and equipment context are commercial/regional; no home-garden sowing depth is selected.",
+            "es": "UW–Madison Extension recomienda siembra de campo entre fines de abril y comienzos de mayo en su guía regional y describe preparar un lecho liso y firme. El calendario y contexto de equipo son comerciales/regionales; no se asigna profundidad doméstica."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["uwisc-lentil-500"]
+        },
+        {
+          "key": "germination",
+          "title": { "en": "Germination", "es": "Germinación" },
+          "icon": "⏳",
+          "short": {
+            "en": "Packet emergence time and temperature need validation",
+            "es": "El tiempo y la temperatura del paquete requieren validación"
+          },
+          "guidance": {
+            "en": "The selected sources do not provide a reliable home-garden emergence interval, temperature, or light/dark requirement. UW-Madison discusses rapid emergence in field seed-quality context but does not provide a packet-specific schedule. Do not substitute an unrelated bean germination value.",
+            "es": "Las fuentes seleccionadas no aportan intervalo doméstico fiable, temperatura ni requisito de luz/oscuridad. UW–Madison menciona emergencia rápida en contexto de calidad de semilla de campo, no un calendario para un paquete. No sustituyas un valor de germinación de otro frijol."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": ["uwisc-lentil-500"]
+        },
+        {
+          "key": "afterEmergence",
+          "title": { "en": "After emergence", "es": "Después de emerger" },
+          "icon": "🌿",
+          "short": {
+            "en": "Use clean, viable seed and do not automatically apply field treatments",
+            "es": "Usa semilla viable y no apliques tratamientos de campo automáticamente"
+          },
+          "guidance": {
+            "en": "UW-Madison states that good-quality lentil seed does not need insecticide or fungicide treatment in its field context and discusses Rhizobium inoculation when lentil has not recently been grown in a field. These are not default home recommendations; use only packet and locally appropriate Extension instructions.",
+            "es": "UW–Madison indica que semilla de buena calidad no requiere insecticida o fungicida en su contexto de campo y analiza inoculación con Rhizobium si no se cultivó lenteja recientemente en el terreno. No son recomendaciones domésticas por defecto; sigue el paquete y Extension local."
+          },
+          "items": [],
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["uwisc-lentil-500"]
+        },
+        {
+          "key": "transition",
+          "title": {
+            "en": "Transition to an established plant",
+            "es": "Transición a planta establecida"
+          },
+          "icon": "🪴",
+          "short": {
+            "en": "Cultivation beyond seedling establishment remains under-validated for home systems",
+            "es": "El cultivo tras el establecimiento de plántula necesita más validación doméstica"
+          },
+          "guidance": {
+            "en": "The selected evidence is for pulse field production, not indoor seedling-to-hydroponic transfer. No transplant stage, pod layout, nutrient recipe, or container management is inferred.",
+            "es": "La evidencia seleccionada corresponde a producción de legumbres en campo, no a transferencia de plántulas a hidroponía interior. No se infieren etapa de trasplante, distribución de pods, receta nutritiva ni manejo de recipiente."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
+        },
+        {
+          "key": "openQuestions",
+          "title": { "en": "Needs validation", "es": "Requiere validación" },
+          "icon": "❔",
+          "short": {
+            "en": "Seed class, packet protocol and current taxonomic scope need care",
+            "es": "La clase de semilla, protocolo del paquete y alcance taxonómico requieren cuidado"
+          },
+          "guidance": {
+            "en": "POWO accepts Vicia lens and treats Lens culinaris as a synonym, while crop literature continues to use the latter. No macrosperma/microsperma class, cultivar, packet treatment, storage longevity, exact sowing depth, or home-scale germination test is represented.",
+            "es": "POWO acepta Vicia lens y trata Lens culinaris como sinónimo, aunque la literatura de cultivo sigue usando este último. No se representa clase macrosperma/microsperma, cultivar, tratamiento, longevidad, profundidad exacta ni ensayo doméstico de germinación."
+          },
+          "items": [],
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": ["kew-vicia-lens-500"]
+        }
+      ]
+    }
+  }
+}

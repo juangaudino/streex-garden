@@ -1,0 +1,637 @@
+[
+  {
+    "id": "astro-arugula",
+    "name": "Astro Arugula",
+    "spanishName": "Rúcula Astro",
+    "scientificName": "Eruca vesicaria",
+    "variety": "Astro, supplier-listed arugula variety; formal cultivar registration not assessed",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": [
+      "astro arugula",
+      "astro organic salad arugula",
+      "arugula astro",
+      "rúcula astro",
+      "rocket",
+      "roquette"
+    ],
+    "summary": "Astro is a named arugula seed product. Kew accepts Eruca vesicaria; University of Wisconsin Extension's crop guidance is applied only at general arugula scope, not as an Astro-specific performance claim.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Supplier-listed Astro arugula selection",
+        "guidance": "Johnny's lists Astro as a seed product within its arugula offering. Kew accepts Eruca vesicaria as the species name. The seller listing supports product identity, not a formal cultivar-registration claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-astro-arugula-500", "kew-eruca-vesicaria-500"]
+      },
+      "cultivation": {
+        "short": "Use general arugula crop guidance",
+        "guidance": "University of Wisconsin Extension provides crop-level arugula growing guidance. Johnny's marks its Astro listing as a hydroponic performer; that supplier designation is product-scoped and is not a system-specific yield or nutrient prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-arugula-wave1"]
+      },
+      "harvest": {
+        "short": "Crop-level leaf harvest",
+        "guidance": "Follow crop-level arugula guidance and the product packet for harvest timing. No Astro-specific number of harvest days or repeat-cut yield is asserted here.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": ["johnnys-astro-arugula-500"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {"level": "identity"},
+            "note": "Johnny's marks its Astro seed listing as a hydroponic performer. This supports the supplier's product-level designation, not yield in every system or a nutrient recipe."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No cultivar-specific habit value selected."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No supported Astro-specific mature dimensions selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported Astro-specific mature dimensions selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not converted to Garden pod positions."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor crop guidance is not mapped to indoor lamp intensity."
+      }
+    }
+  },
+  {
+    "id": "large-red-cherry-tomato",
+    "name": "Large Red Cherry Tomato",
+    "spanishName": "Tomate cherry rojo grande",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Large Red Cherry, supplier-listed named tomato variety; exact registration status not assessed",
+    "category": "fruits",
+    "emoji": "🍅",
+    "tags": [
+      "large red cherry",
+      "large red cherry tomato",
+      "tomate cherry rojo grande",
+      "cherry tomato"
+    ],
+    "summary": "Large Red Cherry is a named cherry-tomato seed product represented separately from generic Cherry Tomato. Product-specific claims remain attributed to the seller; general tomato care remains crop-scoped.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Named Large Red Cherry seed product",
+        "guidance": "The seed seller lists Large Red Cherry as a named tomato seed product. Kew's accepted species identity is Solanum lycopersicum; the product name is not treated as a species or as evidence of a registered cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seedman-large-red-cherry-500",
+          "kew-solanum-lycopersicum-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Tomato crop guidance; variety traits remain product-scoped",
+        "guidance": "Use the general tomato guide for crop-level cultivation. A vendor describes the Large Red Cherry listing as indeterminate, but no exact Garden support plan, indoor size or hydroponic compatibility follows from that listing.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["seedman-large-red-cherry-500", "johnnys-tomato"]
+      },
+      "harvest": {
+        "short": "Cherry fruit; timing remains an estimate",
+        "guidance": "The seller describes red cherry-sized fruit and gives a product maturity estimate. Treat that figure as a supplier estimate, not a guaranteed indoor harvest date; Garden-specific harvest observations are not available in this public profile.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["seedman-large-red-cherry-500"]
+      },
+      "support": {
+        "short": "Support requirements need local validation",
+        "guidance": "The supplier calls the listed plant indeterminate. That supports planning for continued vine growth, but does not prescribe a specific stake, pruning regime or indoor system configuration.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "low",
+        "sourceIds": ["seedman-large-red-cherry-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No source establishes this named product's performance in a hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The source describes an indeterminate tomato, but the compatibility vocabulary has no indeterminate category; no different habit is inferred."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No reliable variety-specific mature height selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No reliable variety-specific mature spread selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing does not establish indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor tomato light requirements are not mapped to an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "rainbow-mix-coleus",
+    "name": "Rainbow Mix Coleus",
+    "spanishName": "Cóleo mezcla arcoíris",
+    "scientificName": "Coleus scutellarioides",
+    "variety": "Rainbow Mix seed blend; constituent cultivars unspecified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "rainbow mix coleus",
+      "coleus rainbow",
+      "rainbow coleus",
+      "coleus mezcla arcoíris",
+      "painted nettle",
+      "coleus blumei"
+    ],
+    "summary": "Rainbow Mix is a seed-grown mixed-color coleus product, not one uniform named cultivar. University of Minnesota Extension documents species-level coleus care and seed starting; individual seedling colors and habits may vary.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Mixed-color seed blend; component cultivars unknown",
+        "guidance": "The seller lists Rainbow Mix Coleus seed and uses the older botanical label Coleus blumei. Kew accepts Coleus scutellarioides. The mix name does not identify one cultivar or guarantee a particular color pattern.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "sdsc-rainbow-coleus-500",
+          "kew-coleus-scutellarioides-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Bright indoor light or filtered outdoor placement",
+        "guidance": "University of Minnesota Extension describes coleus as adaptable to sun or shade, with plants in full sun needing more frequent water; indoors, bright light is needed. These are species/crop-level directions, not mix-specific color guarantees.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-coleus-500"]
+      },
+      "care": {
+        "short": "Pinch tips; decide whether to retain flower spikes",
+        "guidance": "The Extension guide recommends clipping stem tips when plants are about 6 inches tall to encourage bushier form and clipping flower stalks when prioritizing foliage. Apply these as general coleus care, not as a requirement for every ornamental use.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-coleus-500"]
+      },
+      "propagation": {
+        "short": "Seed starts and cuttings are documented",
+        "guidance": "This record represents a seed blend. For preserving an individual plant's exact appearance later, University of Minnesota Extension also describes stem cuttings; seed-grown descendants from a mix need not reproduce a selected plant identically.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-coleus-500", "sdsc-rainbow-coleus-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources do not establish nutrient-solution suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": ["mounded"],
+        "evidence": [
+          {
+            "sourceIds": ["ncsu-coleus-scutellarioides-500"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Coleus scutellarioides"
+            },
+            "note": "NC State describes coleus as forming a mound; individual Rainbow Mix plants vary."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Species-level size varies substantially among coleus selections and is not assigned to this mix."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No mix-specific mature spread established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No Garden system position count established."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun/shade and indoor bright-light descriptions are not normalized to the Garden indoor-light scale."
+      }
+    }
+  },
+  {
+    "id": "hon-tsai-tai",
+    "name": "Hon Tsai Tai",
+    "spanishName": "Hon Tsai Tai (cai xin)",
+    "scientificName": "Brassica rapa",
+    "variety": "Hon Tsai Tai / Choy Sum crop type; named cultivar not established",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": [
+      "hon tsai tai",
+      "cai xin",
+      "choi sum",
+      "choy sum",
+      "hon tsai tai greens",
+      "brassica rapa parachinensis"
+    ],
+    "summary": "Hon Tsai Tai is a flowering-stem Asian green in the Brassica rapa choy-sum/parachinensis crop group. The seed listing supports the named seed product; the production guide is regional crop-level guidance.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Brassica rapa choy-sum crop type",
+        "guidance": "Fedco sells Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym of that species; the crop group remains a horticultural distinction, not a separate accepted species here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "fedco-hon-tsai-tai-500",
+          "kew-brassica-rapa-500",
+          "ufifas-choy-sum-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Use choy-sum guidance at crop scope",
+        "guidance": "UF/IFAS provides production information for choy sum in Florida. Regional field recommendations should not be converted into indoor Garden spacing, a hydroponic recipe, or Hon Tsai Tai cultivar-specific performance.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ufifas-choy-sum-500"]
+      },
+      "harvest": {
+        "short": "Flowering stems and leaves are the crop focus",
+        "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form harvested for tender flowering stems and young leaves as flowers begin to open. This is crop-type context and not a product-specific harvest date.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["oregonstate-chinese-brassicas-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources do not establish a hydroponic nutrient profile or Garden system compatibility."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No controlled-vocabulary habit selected for this crop type."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No Hon Tsai Tai-specific mature dimensions selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No Hon Tsai Tai-specific mature dimensions selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing does not define indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Regional outdoor guidance is not mapped to indoor grow-light intensity."
+      }
+    }
+  },
+  {
+    "id": "bulls-blood-beet",
+    "name": "Bull's Blood Beet",
+    "spanishName": "Remolacha Bull's Blood",
+    "scientificName": "Beta vulgaris",
+    "variety": "Bull's Blood, named beet variety; Cornell includes community-sourced observations",
+    "category": "root vegetables",
+    "emoji": "🥕",
+    "tags": [
+      "bull's blood",
+      "bulls blood beet",
+      "bull's blood beet",
+      "betabel bull's blood",
+      "remolacha bull's blood",
+      "leaf beet"
+    ],
+    "summary": "Bull's Blood is a named beet variety with red foliage and root use described in Cornell's community variety record. Beet sowing guidance remains crop-level rather than a cultivar-specific germination prescription.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Named Beta vulgaris variety",
+        "guidance": "Cornell Cooperative Extension maintains a Bull's Blood beet listing that identifies it as open-pollinated and dual-purpose. Its record includes user-submitted observations; these are not treated as controlled trial results. Kew accepts Beta vulgaris.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["cornell-bulls-blood-500", "kew-beta-vulgaris-500"]
+      },
+      "cultivation": {
+        "short": "Use beet crop guidance; preserve the cultivar scope",
+        "guidance": "Johnny's beet guide provides crop-level sowing and cultivation instructions. No Bull's Blood-specific indoor size, hydroponic suitability or system spacing is inferred from the general beet guide.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-beets-wave1"]
+      },
+      "harvest": {
+        "short": "Leaves and roots are both described uses",
+        "guidance": "Cornell's variety listing calls Bull's Blood dual-purpose and records glossy red tops as harvestable. A specific Garden harvest date or root size is not inferred from community observations.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["cornell-bulls-blood-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources do not establish this variety's hydroponic performance."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No supported controlled-vocabulary habit selected."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No variety-specific mature height established."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No variety-specific mature spread established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field beet spacing is not converted into system positions."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor crop requirements are not mapped to indoor lamp intensity."
+      }
+    }
+  },
+  {
+    "id": "perpetual-spinach",
+    "name": "Perpetual Spinach",
+    "spanishName": "Espinaca perpetua (acelga de hoja)",
+    "scientificName": "Beta vulgaris",
+    "variety": "'Perpetual Spinach', leaf-beet cultivar",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": [
+      "perpetual spinach",
+      "spinach beet",
+      "beet spinach",
+      "espinaca perpetua",
+      "acelga perpetua"
+    ],
+    "summary": "Perpetual Spinach is a leaf-beet cultivar of Beta vulgaris, not true spinach (Spinacia oleracea). RHS describes it as cut-and-come-again foliage with good bolting resistance in its UK garden context.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Leaf beet cultivar, not true spinach",
+        "guidance": "The RHS cultivar record places Perpetual Spinach under Beta vulgaris subsp. cicla and lists Beta vulgaris subsp. cicla var. flavescens as a synonym. It is a beet/chard-group plant rather than Spinacia oleracea.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-perpetual-spinach-500", "kew-beta-vulgaris-500"]
+      },
+      "cultivation": {
+        "short": "Keep moisture steady in fertile soil",
+        "guidance": "RHS recommends fertile soil, full sun or partial shade, and watering in dry conditions in its UK garden context. This does not define indoor lamp intensity or a hydroponic nutrient target.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      },
+      "harvest": {
+        "short": "Repeated outer-leaf harvest",
+        "guidance": "RHS describes harvest through the year as a cut-and-come-again crop and notes that young leaves may be harvested for salads at around eight weeks. The timing is regional guidance, not a guaranteed indoor date.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      },
+      "problems": {
+        "short": "RHS reports good resistance to bolting in dry conditions",
+        "guidance": "RHS describes very good resistance to bolting even in dry conditions for this cultivar. Do not extend that statement to unrelated beet/chard cultivars or assume drought is desirable for production.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No selected source establishes cultivar-specific hydroponic performance."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": ["clumping"],
+        "evidence": [
+          {
+            "sourceIds": ["rhs-perpetual-spinach-500"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": { "level": "identity" },
+            "note": "RHS records a clump-forming habit for the cultivar."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "RHS range is broad UK garden context and is not adopted as an indoor mature size."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "RHS range is broad UK garden context and is not adopted as an indoor mature size."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No system-specific position count established."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Full sun/partial shade is outdoor exposure and not an indoor light tier."
+      }
+    }
+  },
+  {
+    "id": "wasabina-mustard-greens",
+    "name": "Wasabina Mustard Greens",
+    "spanishName": "Mostaza Wasabina",
+    "scientificName": "Brassica juncea",
+    "variety": "Wasabina supplier-listed mustard selection; formal cultivar status unresolved",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": [
+      "wasabina",
+      "wasabi greens",
+      "wasabi mustard",
+      "mostaza wasabi",
+      "brassica juncea"
+    ],
+    "summary": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). USDA GRIN taxonomy and Kew's alternative treatment differ on the name Brassica juncea; that conflict is retained.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Mustard green product; not botanical wasabi",
+        "guidance": "Hudson Valley Seed Company lists Wasabina: Wasabi Greens and identifies Brassica juncea. The name describes a mustard-green product and is not evidence that the plant is true wasabi. Kew POWO adopts × Brassarda juncea while USDA PLANTS lists Brassica juncea; taxonomy is flagged for review rather than silently choosing one backbone.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "hudson-valley-wasabina-500",
+          "usda-brassica-juncea-500",
+          "kew-brassica-juncea-conflict-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Use mustard-green guidance at crop scope",
+        "guidance": "The selected seller page identifies the seed product but does not establish a complete cultivation schedule. Use an appropriate mustard-green crop guide when available; no cultivar-specific hydroponic suitability or spacing is asserted.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "harvest": {
+        "short": "Product-specific harvest guidance remains open",
+        "guidance": "No reliable harvest stage or timing is selected for this product. Follow the exact packet and add validated crop guidance when available.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No identity-specific hydroponic performance evidence selected."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No normalized habit selected from the product listing."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No identity-specific mature dimensions selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No identity-specific mature dimensions selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No source-supported system position count selected."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No light requirement normalized for this product."
+      }
+    }
+  },
+  {
+    "id": "sunflower-helianthus-annuus",
+    "name": "Sunflower",
+    "spanishName": "Girasol",
+    "scientificName": "Helianthus annuus",
+    "variety": "Species-level sunflower identity; no cultivar specified",
+    "category": "flowers",
+    "emoji": "🌻",
+    "tags": ["sunflower", "girasol", "common sunflower", "helianthus annuus"],
+    "summary": "This species-level entry represents an unspecified common sunflower seed product without assigning it to American Giant, Autumn Beauty, or another named cultivar. Cultivar size, branching and bloom behavior vary.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Species-level identity; cultivar unspecified",
+        "guidance": "Kew accepts Helianthus annuus. This broad profile is intentionally separate from named sunflower selections and does not borrow their size, branching or color traits.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-helianthus-annuus-500"]
+      },
+      "cultivation": {
+        "short": "Warm-season, sunny garden crop",
+        "guidance": "Illinois Extension notes that sunflower types vary in branching and flower number and recommends following the particular seed packet for spacing. This profile does not assert one species-wide mature height or universal Garden placement.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "harvest": {
+        "short": "Flower and seed uses depend on the selection",
+        "guidance": "Sunflowers may be grown for display, cutting, or seed, but the unnamed product's intended use and harvest stage are not established. Keep those choices tied to its packet or an identified cultivar.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources do not establish suitability for indoor hydroponic systems."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Growth habit and branching vary among unnamed sunflower selections."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar is specified and sunflower dimensions vary widely."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar is specified and sunflower dimensions vary widely."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Follow the exact packet; no universal spacing or pod count is valid for the unnamed selection."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          { "phase": "growing", "requirement": { "kind": "full_sun" } }
+        ],
+        "evidence": [
+          {
+            "sourceIds": ["illinois-sunflowers-500"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Helianthus annuus"
+            },
+            "note": "Illinois Extension's general sunflower-growing guidance describes a sunny outdoor site; this is not an indoor lamp intensity tier."
+          }
+        ]
+      }
+    }
+  }
+]

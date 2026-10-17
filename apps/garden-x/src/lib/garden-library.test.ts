@@ -48,9 +48,9 @@ const basil: Plant = {
 
 describe("Garden Library catalog and planting guidance", () => {
   it("publishes the current unique stable identities", () => {
-    expect(catalog.entries).toHaveLength(214);
+    expect(catalog.entries.length).toBeGreaterThanOrEqual(500);
     expect(new Set(catalog.entries.map((entry) => entry.libraryPlantId)).size).toBe(
-      214,
+      catalog.entries.length,
     );
     expect(
       catalog.entries.every((entry) => entry.reference && Array.isArray(entry.reference.sourceIds)),
@@ -64,18 +64,16 @@ describe("Garden Library catalog and planting guidance", () => {
         "es",
       ),
     ).toBe("Albahaca genovesa");
-    expect(
-      catalog.entries.some((entry) => entry.libraryPlantId === "english-thyme"),
-    ).toBe(true);
-    expect(
-      catalog.entries.some((entry) => entry.libraryPlantId === "german-thyme"),
-    ).toBe(true);
+    expect(catalog.entries.some((entry) => entry.libraryPlantId === "english-thyme")).toBe(true);
+    expect(catalog.entries.some((entry) => entry.libraryPlantId === "german-thyme")).toBe(true);
     expect(
       catalog.entries.some((entry) => entry.libraryPlantId === "petunia-dwarf-bedding-mixed"),
     ).toBe(true);
-    expect(
-      catalog.entries.some((entry) => entry.libraryPlantId === "cascading-petunia"),
-    ).toBe(true);
+    expect(catalog.entries.some((entry) => entry.libraryPlantId === "cascading-petunia")).toBe(
+      true,
+    );
+    expect(catalog.entries.some((entry) => entry.libraryPlantId === "basil-ocimum-basilicum")).toBe(true);
+    expect(catalog.entries.some((entry) => entry.libraryPlantId === "bunching-onion-allium-fistulosum")).toBe(true);
   });
 
   it("searches common, scientific, cultivar, and aliases without plant-specific UI code", () => {
@@ -104,6 +102,46 @@ describe("Garden Library catalog and planting guidance", () => {
         (entry) => entry.libraryPlantId === "cascading-petunia",
       ),
     ).toBe(true);
+    expect(
+      searchGardenLibrary(catalog, "papalo").some(
+        (entry) => entry.libraryPlantId === "papalo-porophyllum-ruderale",
+      ),
+    ).toBe(true);
+    expect(
+      searchGardenLibrary(catalog, "culantro").map((entry) => entry.libraryPlantId),
+    ).toContain("culantro");
+    expect(
+      searchGardenLibrary(catalog, "culantro").map((entry) => entry.libraryPlantId),
+    ).not.toContain("cilantro");
+    expect(
+      searchGardenLibrary(catalog, "Albahaca genovesa").some(
+        (entry) => entry.libraryPlantId === "genovese-basil",
+      ),
+    ).toBe(true);
+    expect(
+      searchGardenLibrary(catalog, "camote").map((entry) => entry.libraryPlantId),
+    ).toContain("sweet-potato-ipomoea-batatas");
+    expect(
+      searchGardenLibrary(catalog, "Solanum tuberosum").map(
+        (entry) => entry.libraryPlantId,
+      ),
+    ).toContain("potato-solanum-tuberosum");
+    expect(
+      searchGardenLibrary(catalog, "Solanum tuberosum").map(
+        (entry) => entry.libraryPlantId,
+      ),
+    ).not.toContain("sweet-potato-ipomoea-batatas");
+  });
+
+  it("does not publish private inventory markers as catalog search aliases", () => {
+    const aliases = manifest.entries.flatMap((entry) => entry.aliases);
+    expect(aliases.some((alias) => /owned seed|home grown|user zero|uruq|packet|inventory/i.test(alias))).toBe(false);
+    const lemongrass = manifest.entries.find((entry) => entry.libraryPlantId === "lemongrass-homegrown");
+    expect(lemongrass).toMatchObject({ commonName: "Lemongrass", cultivar: null });
+    expect(lemongrass?.aliases).toContain("Lemongrass");
+    for (const id of ["rosemary", "fragrant-dwarf-dianthus-mix", "mini-lunchbox-sweet-pepper"]) {
+      expect(manifest.entries.find((entry) => entry.libraryPlantId === id)?.cultivar).toBeNull();
+    }
   });
 
   it("uses same-level orthogonal geometry, never display-number adjacency", () => {

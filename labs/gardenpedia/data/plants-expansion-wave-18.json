@@ -1,0 +1,65 @@
+[
+  {
+    "id": "okra-abelmoschus-esculentus",
+    "name": "Okra",
+    "spanishName": "Quimbombó",
+    "scientificName": "Abelmoschus esculentus",
+    "variety": "Species-level crop identity; cultivar unspecified",
+    "category": "vegetables",
+    "emoji": "🌿",
+    "guideCompletion": 58,
+    "tags": ["okra", "lady's fingers", "quimbombó", "Abelmoschus esculentus", "Hibiscus esculentus"],
+    "summary": "A warm-season pod crop harvested while the pods are young and tender. Cultivar-specific size, spinelessness, and regional performance are not assigned to this species-level entry.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Abelmoschus esculentus", "guidance": "Kew accepts Abelmoschus esculentus in Malvaceae. UF/IFAS documents several distinct okra cultivars, but this identity does not represent any one of them.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-abelmoschus-esculentus-500", "uf-ifas-okra-production-500"]},
+      "cultivation": {"short": "Warm-season crop; keep soil moisture appropriate to local soil", "guidance": "UF/IFAS describes okra production in South Florida: seedlings benefit from frequent light irrigation while establishing, whereas mature field plants use less frequent deeper irrigation. Soil type and regional climate affect scheduling; these field amounts are not a home-container or hydroponic prescription.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-okra-production-500"]},
+      "growth": {"short": "Upright plants produce edible seed pods", "guidance": "Okra is grown for its pods. UF/IFAS notes that plant spacing varies with variety and branching habit; no universal mature dimensions or container fit are assigned here.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-okra-production-500"]},
+      "harvest": {"short": "Harvest pods young and often", "guidance": "UF/IFAS recommends harvesting pods at about 2–3 inches while still tender and repeating every two to three days in its South Florida production context. Pods left too long can become overmature and fibrous. Wear protection if handling irritating plant spines.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uf-ifas-okra-production-500"]},
+      "problems": {"short": "Monitor for pests and damping-off in production settings", "guidance": "UF/IFAS reports aphids, thrips, leaf beetles, whiteflies, root rot, and seedling damping-off among South Florida production concerns. This regional list is not a diagnosis for an individual plant or a complete home-garden pest guide.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-okra-production-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Field production guidance does not establish suitability for a home recirculating hydroponic system."}, "growthHabits": {"status": "unknown", "reason": "The selected sources do not establish a controlled-vocabulary habit value for an unspecified cultivar."}, "matureSize": {"height": {"status": "unknown", "reason": "No cultivar-independent mature height is selected."}, "spread": {"status": "unknown", "reason": "Branching and spacing vary by cultivar and production density."}}, "spacing": {"status": "unknown", "reason": "South Florida row spacing is not converted to indoor pod spacing."}, "light": {"status": "unknown", "reason": "The selected crop guide does not establish an indoor grow-light tier."}}
+  },
+  {
+    "id": "vegetable-amaranth-amaranthus-tricolor",
+    "name": "Vegetable Amaranth",
+    "spanishName": "Amaranto de hoja",
+    "scientificName": "Amaranthus tricolor",
+    "variety": "Species-level leafy-vegetable identity; cultivar unspecified",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 60,
+    "tags": ["vegetable amaranth", "leaf amaranth", "Chinese spinach", "amaranto de hoja", "Amaranthus tricolor"],
+    "summary": "A warm-season leafy vegetable distinct from grain amaranths and ornamental cultivars. This entry does not imply a named color or cultivar selection.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Amaranthus tricolor", "guidance": "Kew accepts Amaranthus tricolor in Amaranthaceae. UF/IFAS specifically treats this species as vegetable amaranth and distinguishes leafy vegetable types from grain and ornamental amaranths; no cultivar is specified.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-amaranthus-tricolor-500", "uf-ifas-vegetable-amaranth-500"]},
+      "cultivation": {"short": "Warm-season leafy crop; maintain even moisture", "guidance": "UF/IFAS describes full-sun preference with partial shade tolerated in hot conditions, and regular even irrigation. Severe water deficit can trigger early flowering and reduce yield; standing water may contribute to root rot. Recommendations are from a Florida vegetable-crop guide, not an indoor hydroponic protocol.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-vegetable-amaranth-500"]},
+      "growth": {"short": "Upright leafy growth; support may be needed in some conditions", "guidance": "UF/IFAS reports that vegetable amaranth can grow tall and may need support, but size depends on conditions and selection. The crop guide recommends thinning garden-grown plants as they grow; its field row distances are not indoor pod spacing.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-vegetable-amaranth-500"]},
+      "harvest": {"short": "Grown as a leafy vegetable", "guidance": "UF/IFAS classifies this species as a vegetable amaranth crop and discusses leafy production. A specific first-harvest age or repeat-harvest schedule is not selected from the reviewed evidence.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-vegetable-amaranth-500"]},
+      "problems": {"short": "Avoid severe drought and waterlogged roots", "guidance": "UF/IFAS associates severe water deficiency with early flowering and lower yield, and excessive standing water with root-rot risk. Its regional guidance does not establish cultivar-specific disease resistance.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uf-ifas-vegetable-amaranth-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected source covers soil and field production, not a validated home hydroponic system."}, "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["uf-ifas-vegetable-amaranth-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Amaranthus tricolor"}, "note": "Species-level crop guidance describes an upright stalk that may need support; cultivar form is unspecified."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The broad crop range is not a cultivar-specific or indoor mature-height value."}, "spread": {"status": "unknown", "reason": "No consistent indoor spread is established."}}, "spacing": {"status": "unknown", "reason": "Outdoor garden spacing is not an indoor pod-spacing recommendation."}, "light": {"status": "unknown", "reason": "Outdoor sun exposure is not mapped to an indoor grow-light tier."}}
+  },
+  {
+    "id": "prayer-plant-maranta-leuconeura",
+    "name": "Prayer Plant",
+    "spanishName": "Planta de la oración",
+    "scientificName": "Maranta leuconeura",
+    "variety": "Species-level houseplant identity; no named cultivar represented",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 60,
+    "tags": ["prayer plant", "Maranta leuconeura", "rabbit tracks", "red-veined prayer plant", "planta de la oración"],
+    "summary": "A tropical foliage houseplant with patterned leaves that change position between day and night. This species-level record does not select among named cultivars.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Maranta leuconeura", "guidance": "Kew accepts Maranta leuconeura in Marantaceae and lists several former names as synonyms. NC State documents commonly cultivated forms; no cultivar is assigned to this identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-maranta-leuconeura-500", "ncsu-maranta-leuconeura-500"]},
+      "cultivation": {"short": "Bright indirect light, humidity, and evenly moist growing-season soil", "guidance": "NC State recommends bright indirect light, high humidity, and evenly moist potting soil during active growth, with reduced watering in winter. Too much direct sun can bleach foliage. This is container-houseplant guidance and not a hydroponic specification.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-maranta-leuconeura-500"]},
+      "growth": {"short": "Low, spreading foliage with leaves that move at night", "guidance": "NC State describes horizontal spread and leaf movement from a daytime position to a more upright night position. The source gives broad dimensions across houseplant settings; no single mature size is assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-maranta-leuconeura-500"]},
+      "propagation": {"short": "Rhizomatous division is documented", "guidance": "NC State recommends propagation by rhizomatous division. That is the documented practical route represented here; the source does not provide a seed-starting protocol for this houseplant.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-maranta-leuconeura-500"]},
+      "problems": {"short": "Low humidity, direct sun, and waterlogged soil can damage foliage or roots", "guidance": "NC State notes intolerance of direct sunlight and low humidity, potential leaf burn from fluoride or excess fertilizer, and root-rot risk in poorly drained soil. It reports no serious pest or disease problems, while noting occasional spider mites or mealybugs.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-maranta-leuconeura-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Houseplant soil care and division do not establish long-term recirculating hydroponic suitability."}, "growthHabits": {"status": "known", "value": ["clumping", "spreading"], "evidence": [{"sourceIds": ["ncsu-maranta-leuconeura-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Maranta leuconeura"}, "note": "NC State describes horizontal spread and a clumping/spreading habit; cultivar is unspecified."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The cited height range is not selected as a guaranteed indoor size."}, "spread": {"status": "unknown", "reason": "No single cultivar-independent spread is assigned."}}, "spacing": {"status": "unknown", "reason": "No indoor system-spacing evidence is available."}, "light": {"status": "unknown", "reason": "Bright indirect natural light is not mapped to a grow-light tier."}}
+  }
+]

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "meyer-lemon",
+    "name": "Meyer Lemon",
+    "spanishName": "Limón Meyer",
+    "scientificName": "Citrus × limon 'Meyer'",
+    "variety": "Meyer",
+    "category": "fruits",
+    "emoji": "🍋",
+    "tags": ["Meyer lemon", "limón Meyer", "Citrus × meyeri", "dwarf citrus", "container citrus"],
+    "summary": "North Carolina Extension treats Meyer lemon as Citrus × limon 'Meyer'; Kew treats the name Citrus × meyeri as a synonym of Citrus × limon. Its frost sensitivity makes movable container culture useful in cold regions, but flowering and fruiting still depend on suitable light and care.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Named Meyer lemon selection; Kew accepts Citrus × limon", "guidance": "NC State Extension identifies the horticultural selection as Citrus × limon 'Meyer'. Kew lists Citrus × meyeri as a synonym of Citrus × limon. The profile keeps the commonly used Meyer selection name without treating it as a separate accepted species.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-citrus-meyeri-wave37", "ncsu-meyer-lemon-wave37"]},
+      "growth": {"short": "Small evergreen citrus tree with edible fruit", "guidance": "NC State describes Meyer lemon as a small evergreen flowering woody tree whose fruit is edible. This identity names the Meyer selection; rootstock, dwarfing status, and exact mature dimensions are not established for every plant sold under the name.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-meyer-lemon-wave37"]},
+      "cultivation": {"short": "Full sun supports best fruit production; protect from frost", "guidance": "NC State reports best performance and fruit production in full sun, consistently moist but well-drained soil, and recommends movable container culture in regions where frost is a risk. Its hardiness-zone advice is regional; it is not a universal indoor grow-light prescription.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-meyer-lemon-wave37"]},
+      "care": {"short": "Prune for airflow and manage fruit clusters when needed", "guidance": "NC State recommends pruning branches to improve airflow and maintain a smaller size; fruit clusters may be reduced to one or two fruits for larger, healthier fruit. These are source recommendations, not a fixed pruning calendar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-meyer-lemon-wave37"]},
+      "propagation": {"short": "Citrus cuttings are documented; cultivar-specific rootstock is unknown", "guidance": "University of Minnesota Extension says citrus stem cuttings root easily, but this is citrus-level guidance and does not specify a Meyer-specific protocol or rootstock. Purchased grafted plants and seedlings are not interchangeable with a true-to-name cultivar; the exact propagation history of an individual plant remains unknown.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-citrus-indoors-wave37", "ncsu-meyer-lemon-wave37"]},
+      "harvest": {"short": "Edible citrus fruit; timing is not standardized here", "guidance": "NC State confirms the fruit is edible. The reviewed profile source does not establish one harvest date applicable across climates and container conditions, so no fixed timing is supplied.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-meyer-lemon-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources discuss soil/container citrus and do not validate hydroponic production."},
+      "growthHabits": {"status": "unknown", "reason": "The profile describes a woody tree, which is not represented by the current controlled growth-habit vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "No dimensions applicable across rootstocks and container conditions are established."}, "spread": {"status": "unknown", "reason": "No dimensions applicable across rootstocks and container conditions are established."}},
+      "spacing": {"status": "unknown", "reason": "No container or hydroponic spacing is established for this identity."},
+      "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["ncsu-meyer-lemon-wave37"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State says full sun gives best performance and fruit production; this is outdoor/site exposure evidence, not an indoor grow-light tier."}]}
+    }
+  },
+  {
+    "id": "calamondin",
+    "name": "Calamondin",
+    "spanishName": "Calamondín",
+    "scientificName": "Citrus × microcarpa",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍊",
+    "tags": ["calamondin", "calamondín", "calamondin orange", "naranja calamondín", "Citrofortunella mitis"],
+    "summary": "Kew accepts Citrus × microcarpa as an artificial citrus hybrid; Citrofortunella mitis is among its synonyms. University of Minnesota Extension identifies calamondin as a commonly grown indoor citrus and notes its small, sour fruit can be used as garnish or marmalade; this does not guarantee fruiting indoors.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted hybrid name: Citrus × microcarpa", "guidance": "Kew accepts Citrus × microcarpa and records × Citrofortunella mitis and Citrus × mitis among its synonyms. The catalog uses the Kew-accepted name while retaining the familiar common name Calamondin.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-citrus-microcarpa-wave37"]},
+      "growth": {"short": "Compact citrus commonly grown as an indoor ornamental", "guidance": "University of Minnesota Extension calls calamondin the most common citrus grown indoors in its houseplant guidance. It describes the fruit as small and sour and notes culinary garnish and marmalade uses. The source does not promise indoor fruit production for every plant or home.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-citrus-indoors-wave37"]},
+      "cultivation": {"short": "Use citrus guidance as regional context, not a system specification", "guidance": "UMN includes calamondin among citrus that can be grown indoors and gives general citrus care. That guidance is citrus-level and Minnesota-specific; it does not establish a hydroponic method, exact room-light requirement, or a universal container size for this identity.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-citrus-indoors-wave37", "ufifas-citrus-home-hs132-wave37"]},
+      "propagation": {"short": "Citrus stem cuttings are documented at crop level", "guidance": "UMN Extension states that citrus stem cuttings root easily. This is general citrus propagation guidance rather than a tested Calamondin-specific rooting protocol; cultivar and rootstock identity may differ among nursery plants.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-citrus-indoors-wave37"]},
+      "harvest": {"short": "Small sour fruit has garnish and marmalade uses", "guidance": "UMN Extension describes Calamondin fruit as small and sour and lists marmalade or drink garnish as uses. No harvest timing is established by the reviewed source.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["umn-citrus-indoors-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "No selected source validates hydroponic production for calamondin."},
+      "growthHabits": {"status": "unknown", "reason": "The source describes a citrus tree, outside the current controlled growth-habit vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "No identity-specific indoor dimensions are established."}, "spread": {"status": "unknown", "reason": "No identity-specific indoor dimensions are established."}},
+      "spacing": {"status": "unknown", "reason": "No container or hydroponic spacing is established."},
+      "light": {"status": "unknown", "reason": "Indoor citrus guidance does not provide a controlled grow-light tier for Calamondin."}
+    }
+  },
+  {
+    "id": "passion-fruit",
+    "name": "Passion Fruit",
+    "spanishName": "Maracuyá",
+    "scientificName": "Passiflora edulis",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🟣",
+    "tags": ["passion fruit", "maracuyá", "fruta de la pasión", "Passiflora edulis", "purple passion fruit"],
+    "summary": "Kew accepts Passiflora edulis, a tropical liana with recorded food use. UF/IFAS describes the crop as a vigorous vine for trellises, full sun, and well-drained soil; its Florida production guidance also documents container growing and propagation from both seed and cuttings.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Passiflora edulis", "guidance": "Kew accepts Passiflora edulis Sims in Passifloraceae and describes it as a liana. No cultivar, fruit color form, or named selection is assigned to this species-level identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-passiflora-edulis-wave37"]},
+      "growth": {"short": "Vigorous fruiting vine that needs a support structure", "guidance": "UF/IFAS describes passion fruit as a vigorous vine and recommends locating vines beside a fence or trellis. This is species/crop guidance in a Florida context, not evidence for an exact container trellis dimension.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37", "ufifas-passion-fruit-propagation-wave37"]},
+      "cultivation": {"short": "Full sun and well-drained growing medium are documented", "guidance": "UF/IFAS recommends full sun and well-drained soil for home-landscape passion fruit and reports that it may grow in a 3-gallon pot in its Florida context. The pot example is not a universal mature-plant size or hydroponic compatibility claim.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37", "ufifas-passion-fruit-propagation-wave37"]},
+      "propagation": {"short": "Seeds and vegetative cuttings are both documented", "guidance": "UF/IFAS gives a seed protocol and also documents cuttings as a faster way to produce genetically identical plants with a shorter juvenile phase. Use seed when raising a variable seedling is acceptable; no named cultivar is implied by this catalog identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-passion-fruit-propagation-wave37"]},
+      "harvest": {"short": "Fruit ripening follows pollination; Florida timing is contextual", "guidance": "The UF/IFAS Florida source reports fruit ripening about 70–80 days after pollination. Retain this as a source-region observation, not a universal calendar from sowing or transplanting.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ufifas-passion-fruit-propagation-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources do not validate hydroponic fruit production."},
+      "growthHabits": {"status": "unknown", "reason": "A climbing liana/vine habit is not represented in the current controlled growth-habit vocabulary."},
+      "matureSize": {"height": {"status": "unknown", "reason": "No general mature height is established for trellised vines."}, "spread": {"status": "unknown", "reason": "No general mature spread is established for trellised vines."}},
+      "spacing": {"status": "unknown", "reason": "The reviewed home guide does not supply spacing appropriate to indoor or hydroponic systems."},
+      "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Passiflora edulis"}, "note": "UF/IFAS recommends full sun for passion-fruit vines in a Florida home-landscape context; this is outdoor exposure, not indoor grow-light guidance."}]}
+    }
+  },
+  {
+    "id": "papaya",
+    "name": "Papaya",
+    "spanishName": "Papaya",
+    "scientificName": "Carica papaya",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍈",
+    "tags": ["papaya", "Carica papaya", "fruta bomba", "lechosa"],
+    "summary": "Kew accepts Carica papaya. University of Hawaiʻi and UF/IFAS describe papaya as a seed-grown tropical fruit crop that needs full sun and good drainage; the cited establishment and storage guidance is regional and does not establish one universal germination temperature.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Carica papaya", "guidance": "Kew accepts Carica papaya L. in Caricaceae. This is the species-level papaya record; no cultivar, sex type, or hybrid is implied.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-carica-papaya-wave37"]},
+      "growth": {"short": "Short-lived tropical fruit plant with a soft, upright trunk", "guidance": "UF/IFAS describes papaya as a short-lived plant, commonly lasting 1–3 years in its tropical/subtropical production context, with fruit borne along upright semi-herbaceous trunks. This regional crop description is not a guaranteed lifespan in every container or climate.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37"]},
+      "cultivation": {"short": "Full sun and excellent drainage are emphasized", "guidance": "UF/IFAS says papaya is easiest to grow when sited in full sun with excellent drainage. The University of Hawaiʻi source warns that restricted drainage promotes root disease. These are tropical production recommendations; no indoor or hydroponic suitability is inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37", "ctahr-papaya-propagation-wave37"]},
+      "propagation": {"short": "Seed is the documented propagation route", "guidance": "The University of Hawaiʻi and UF/IFAS describe papaya as grown or easily propagated from seed. The crop may be raised from seeds extracted from fruit, but seed-grown plants do not establish a named cultivar or predictable sex type in this species-level catalog entry.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ctahr-papaya-propagation-wave37", "ufifas-tropical-fruit-home-mg373-wave37"]},
+      "harvest": {"short": "Fruit production depends on seedling type and growing context", "guidance": "The reviewed sources describe papaya as a fruit crop but do not support a single harvest age for this unspecified identity. Fruit timing, plant sex, and outcome remain unresolved for an individual seedling.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "No selected source validates hydroponic papaya production."},
+      "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Carica papaya"}, "note": "UF/IFAS describes papaya as having an upright semi-herbaceous trunk; mapped to the broad upright habit, not to a size class."}]},
+      "matureSize": {"height": {"status": "unknown", "reason": "No single mature height applies to the unselected seed-grown identity."}, "spread": {"status": "unknown", "reason": "No single mature spread applies to the unselected seed-grown identity."}},
+      "spacing": {"status": "unknown", "reason": "Field spacing is production- and sex-management-specific; no container or hydroponic spacing is asserted."},
+      "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["ufifas-tropical-fruit-home-mg373-wave37"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Carica papaya"}, "note": "UF/IFAS recommends full sun for papaya in tropical home-landscape context; this is natural outdoor exposure, not an indoor grow-light tier."}]}
+    }
+  },
+  {
+    "id": "goeppertia-orbifolia",
+    "name": "Orbifolia Prayer Plant",
+    "spanishName": "Calatea orbifolia",
+    "scientificName": "Goeppertia orbifolia",
+    "variety": "Accepted species identity; cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": ["Goeppertia orbifolia", "Calathea orbifolia", "orbifolia calathea", "prayer plant", "calatea orbifolia", "houseplant"],
+    "summary": "Kew accepts Goeppertia orbifolia and lists Calathea orbifolia as a synonym. NC State Extension describes a clumping, broad-leaved houseplant that prefers consistently moist, well-drained potting mix, indirect light and high humidity; these are container-care recommendations, not a hydroponic recipe.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Goeppertia orbifolia", "guidance": "Kew accepts Goeppertia orbifolia in Marantaceae and lists Calathea orbifolia among its synonyms. The familiar Calathea name remains a search alias; no cultivar is assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-goeppertia-orbifolia-wave37"]},
+      "growth": {"short": "Clumping evergreen with large round striped leaves", "guidance": "NC State Extension describes a compact clumping plant, commonly 2–3 ft tall and 1–2 ft wide in its horticultural context, with round silver-green-striped leaves that can reach about 12 inches across. Indoor specimens rarely flower; these are species-level container dimensions, not a pod footprint.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-goeppertia-orbifolia-wave37"]},
+      "cultivation": {"short": "Bright indirect light and evenly moist, draining mix", "guidance": "NC State recommends bright indirect light or partial shade and moist, well-drained, slightly acidic potting mix. Keep the mix consistently moist without leaving it soggy; the page also notes fluoride-related leaf-tip browning and prefers distilled or rain water. Ambient shade guidance is not converted to an indoor grow-light tier.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-goeppertia-orbifolia-wave37"]},
+      "maintenance": {"short": "Avoid cold drafts and wipe broad leaves gently", "guidance": "NC State recommends avoiding cold drafts and temperature fluctuations, raising humidity when needed, and gently wiping dust from the large leaves. Division in spring is the source-listed propagation method; it is not evidence that seed propagation is biologically impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-goeppertia-orbifolia-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected source supports potting-mix houseplant care, not hydroponic production."},
+      "growthHabits": {"status": "known", "value": ["clumping"], "evidence": [{"sourceIds": ["ncsu-goeppertia-orbifolia-wave37"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Goeppertia orbifolia"}, "note": "NC State Extension describes erect clumps."}]},
+      "matureSize": {"height": {"status": "known", "value": {"minCm": 61, "maxCm": 91, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-goeppertia-orbifolia-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Goeppertia orbifolia"}, "note": "NC State lists 2–3 ft; converted to centimeters and retained as general container context."}]}, "spread": {"status": "known", "value": {"minCm": 30, "maxCm": 61, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-goeppertia-orbifolia-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Goeppertia orbifolia"}, "note": "NC State lists 1–2 ft; converted to centimeters for general container context."}]}},
+      "spacing": {"status": "unknown", "reason": "No spacing or Garden-system density is documented."},
+      "light": {"status": "unknown", "reason": "Bright indirect light and partial shade are ambient placement terms, not an indoor grow-light requirement in the current taxonomy."}
+    }
+  },
+  {
+    "id": "croton-codiaeum-variegatum",
+    "name": "Croton",
+    "spanishName": "Croto",
+    "scientificName": "Codiaeum variegatum",
+    "variety": "Accepted species identity; retail cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🍂",
+    "tags": ["Codiaeum variegatum", "garden croton", "variegated croton", "Joseph's coat", "croto", "houseplant"],
+    "summary": "Kew accepts Codiaeum variegatum; NC State Extension notes that hundreds of horticultural cultivars vary in leaf form, color and size. This profile stays at species level rather than implying a particular retail croton. UF/IFAS documents seed propagation as variable and vegetative routes for maintaining named cultivars.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Codiaeum variegatum", "guidance": "Kew accepts Codiaeum variegatum in Euphorbiaceae. “Croton” is a common name for this ornamental species and does not mean the distinct botanical genus Croton. NC State lists many horticultural selections; none is identified here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-codiaeum-variegatum-wave37", "ncsu-codiaeum-variegatum-wave37"]},
+      "growth": {"short": "Evergreen woody shrub with highly variable foliage", "guidance": "NC State describes a woody evergreen shrub, commonly kept as an indoor foliage plant, with cultivar-dependent leaf shapes and colors. The source gives broad outdoor dimensions and an approximate indoor height, but cultivar variation and growing conditions make a single mature-size value inappropriate for this unspecified selection.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-codiaeum-variegatum-wave37"]},
+      "cultivation": {"short": "Bright natural light; protect from cold and chronic shade", "guidance": "NC State recommends bright light, with some direct sun for stronger leaf color, and well-drained, humus-rich soil. It advises bringing plants indoors as temperatures approach 50°F in its regional context. Outdoor full/partial-sun categories are not treated as indoor grow-light tiers, and cultivar-specific light tolerance varies.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-codiaeum-variegatum-wave37"]},
+      "propagation": {"short": "Fresh seed can vary; use vegetative methods to retain a selection", "guidance": "UF/IFAS reports that fresh Codiaeum variegatum seed germinates easily but produces much variability; it lists air layering and softwood, tip or leaf-bud cuttings as vegetative routes. Vegetative propagation is preferable when preserving a named cultivar matters. No exact named selection or germination schedule is implied here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ufifas-codiaeum-propagation-wave37"]},
+      "problems": {"short": "Watch for mites and irritation from broken-plant sap", "guidance": "NC State notes susceptibility to spider mites in interiors and warns that sap from broken leaves or stems can irritate soft tissue. Wash hands after handling and avoid eye contact; the profile does not infer a cultivar-specific pest resistance or medical outcome.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-codiaeum-variegatum-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources discuss houseplant, garden and propagation media rather than a validated hydroponic production system."},
+      "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ncsu-codiaeum-variegatum-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Codiaeum variegatum"}, "note": "NC State describes croton as an upright interior shrub."}]},
+      "matureSize": {"height": {"status": "unknown", "reason": "NC State's dimensions span outdoor plants and many retail cultivars; no single size is assigned to this unspecified selection."}, "spread": {"status": "unknown", "reason": "The broad source range is cultivar- and context-dependent."}},
+      "spacing": {"status": "unknown", "reason": "No applicable indoor-container or hydroponic spacing is established."},
+      "light": {"status": "unknown", "reason": "Bright light and outdoor sun exposure guidance do not map to a defined indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "florist-kalanchoe-kalanchoe-blossfeldiana",
+    "name": "Florist Kalanchoe",
+    "spanishName": "Kalanchoe de flor",
+    "scientificName": "Kalanchoe blossfeldiana",
+    "variety": "Accepted species identity; flower-color cultivar unspecified",
+    "category": "flowers",
+    "emoji": "🌺",
+    "tags": ["Kalanchoe blossfeldiana", "Christmas kalanchoe", "Madagascar widow's thrill", "flaming Katy", "kalanchoe de flor", "flowering succulent", "houseplant"],
+    "summary": "Kew accepts Kalanchoe blossfeldiana. NC State Extension describes a compact flowering succulent with cultivar-dependent flower colors, a rest period of long uninterrupted darkness for bloom scheduling, and stem or leaf cutting propagation. This profile does not assign a named cultivar or color.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Kalanchoe blossfeldiana", "guidance": "Kew accepts Kalanchoe blossfeldiana in Crassulaceae. NC State uses Florist Kalanchoe and Christmas Kalanchoe as common names and lists multiple named cultivars; this record remains an unspecified species identity, not one of those cultivars.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-kalanchoe-blossfeldiana-wave37", "ncsu-kalanchoe-blossfeldiana-wave37"]},
+      "growth": {"short": "Compact succulent with long-lasting flower clusters", "guidance": "NC State describes an upright, multi-branched succulent typically 6–18 inches tall and 6–12 inches wide, with small flowers in clusters. Flower color and single/double form vary among cultivars and are not assigned to this species-level profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"]},
+      "cultivation": {"short": "Let the succulent mix dry between thorough waterings", "guidance": "NC State recommends bright indirect light or partial shade, a well-drained cactus/succulent potting mix, and allowing the mix to dry between deep waterings. To promote flowering, its source describes 6–8 hours of bright light daily and 14 hours of uninterrupted darkness nightly for at least six weeks in fall/winter; that is a flowering cue, not a germination-light rule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"]},
+      "maintenance": {"short": "Deadhead spent flowers; prevent prolonged wetness", "guidance": "NC State recommends removing spent flowers to encourage additional bloom and notes that overwatering can lead to root or stem rot. It lists stem and leaf cuttings as propagation methods; no seed protocol is supplied in this profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"]},
+      "safety": {"short": "Keep away from children and pets that may ingest it", "guidance": "NC State warns that ingestion is toxic to people and pets and advises keeping the plant out of their reach. This source-backed warning is not individualized medical guidance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected source supports succulent potting-mix culture, not hydroponic production."},
+      "growthHabits": {"status": "known", "value": ["upright", "mounded"], "evidence": [{"sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Kalanchoe blossfeldiana"}, "note": "NC State describes the plant as upright and multi-branched and its form as mounding."}]},
+      "matureSize": {"height": {"status": "known", "value": {"minCm": 15, "maxCm": 46, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Kalanchoe blossfeldiana"}, "note": "NC State lists 6–18 inches; converted to rounded centimeters for container context."}]}, "spread": {"status": "known", "value": {"minCm": 15, "maxCm": 30, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-kalanchoe-blossfeldiana-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Kalanchoe blossfeldiana"}, "note": "NC State lists 6–12 inches; converted to rounded centimeters for container context."}]}},
+      "spacing": {"status": "unknown", "reason": "No applicable system spacing is established."},
+      "light": {"status": "unknown", "reason": "Bright indirect light and partial shade are ambient placement terms, not indoor grow-light tiers."}
+    }
+  },
+  {
+    "id": "dwarf-umbrella-tree-heptapleurum-arboricola",
+    "name": "Dwarf Umbrella Tree",
+    "spanishName": "Árbol paraguas enano",
+    "scientificName": "Heptapleurum arboricola",
+    "variety": "Accepted species identity; cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🌿",
+    "tags": ["Heptapleurum arboricola", "Schefflera arboricola", "dwarf schefflera", "umbrella plant", "parasol plant", "houseplant"],
+    "summary": "Kew accepts Heptapleurum arboricola and treats Schefflera arboricola as a synonym; both names remain searchable. NC State Extension describes an evergreen shrub grown indoors in containers, with filtered natural light, drying between waterings, and pet-safety concerns. Cultivars are not selected here.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Heptapleurum arboricola", "guidance": "Kew accepts Heptapleurum arboricola in Araliaceae and lists Schefflera arboricola as a synonym. NC State also uses Dwarf Schefflera and Dwarf Umbrella Tree as common names. The profile does not select one of its named cultivars.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-heptapleurum-arboricola-wave37", "ncsu-heptapleurum-arboricola-wave37"]},
+      "growth": {"short": "Evergreen shrub that can become a substantial container plant", "guidance": "NC State reports that indoor container plants commonly reach about 4–6 ft tall and wide, while outdoor tropical specimens can grow larger. The indoor range is retained as a general container context, not as the size of a countertop appliance or every dwarf cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-heptapleurum-arboricola-wave37"]},
+      "cultivation": {"short": "Use filtered natural light and let the mix dry before soaking", "guidance": "NC State recommends filtered light for several hours daily indoors, warns that strong direct light can burn leaves, and advises allowing the potting medium to dry before thorough watering. It also describes a well-drained, organic-rich medium and higher humidity. These are container recommendations; they do not establish hydroponic compatibility.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-heptapleurum-arboricola-wave37"]},
+      "propagation": {"short": "Seed and stem cuttings are listed; no seed-start protocol is supplied", "guidance": "NC State lists both seed and stem cutting as propagation strategies but gives no sowing or germination protocol on this page. The seed route remains undocumented here; stem cutting is a source-listed alternative, not a claim that seed propagation is impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-heptapleurum-arboricola-wave37"]},
+      "problems": {"short": "Watch for pests, leaf drop and pet ingestion risk", "guidance": "NC State identifies spider mites, mealybugs and scale as possible pests and notes leaf drop when soil is too wet or too dry. It warns that all plant parts are seriously toxic to dogs and cats; keep the plant inaccessible to pets. No disease resistance is inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-heptapleurum-arboricola-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected evidence describes potting-medium houseplant care, not a hydroponic system."},
+      "growthHabits": {"status": "unknown", "reason": "The source describes a shrub with several form descriptors not represented by a single supported compatibility habit value."},
+      "matureSize": {"height": {"status": "known", "value": {"minCm": 122, "maxCm": 183, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-heptapleurum-arboricola-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Heptapleurum arboricola"}, "note": "NC State reports 4–6 ft for indoor container growth; converted to centimeters."}]}, "spread": {"status": "known", "value": {"minCm": 122, "maxCm": 183, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-heptapleurum-arboricola-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Heptapleurum arboricola"}, "note": "NC State reports 4–6 ft for indoor container growth; converted to centimeters."}]}},
+      "spacing": {"status": "unknown", "reason": "No applicable system spacing is documented."},
+      "light": {"status": "unknown", "reason": "Filtered natural exposure is not an indoor grow-light tier."}
+    }
+  },
+  {
+    "id": "weeping-fig-ficus-benjamina",
+    "name": "Weeping Fig",
+    "spanishName": "Ficus llorón",
+    "scientificName": "Ficus benjamina",
+    "variety": "Accepted species identity; cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🌳",
+    "tags": ["Ficus benjamina", "benjamin tree", "Chinese banyan", "fig", "ficus benjamina", "houseplant", "bonsai"],
+    "summary": "Kew accepts Ficus benjamina. NC State Extension describes the species as a popular indoor tree that may be kept about 2–10 ft tall, is sensitive to changes in light or location, and benefits from restrained pruning. Named cultivars such as 'Too Little' remain separate and are not assigned here.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Ficus benjamina", "guidance": "Kew accepts Ficus benjamina in Moraceae. NC State lists Weeping Fig and several other common names, along with named cultivars such as 'Too Little'; this identity represents the species without selecting a cultivar or bonsai form.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-ficus-benjamina-wave37", "ncsu-ficus-benjamina-wave37"]},
+      "growth": {"short": "Evergreen tree with drooping branches; often maintained as a houseplant", "guidance": "NC State describes a large outdoor tree but says indoor plants are usually kept about 2–10 ft tall in containers. Cultivars differ, and miniature forms are separately named; the species profile does not promise a compact size or a bonsai habit.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ficus-benjamina-wave37"]},
+      "cultivation": {"short": "Bright indirect light; allow gradual adjustment after moving", "guidance": "NC State says the plant performs best in bright indirect light but is highly sensitive to light changes; relocation can trigger leaf drop while new leaves adjust. Use a soil-based potting mix and water enough to keep it from drying completely. This is container guidance, not a hydroponic protocol.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ficus-benjamina-wave37"]},
+      "maintenance": {"short": "Prune lightly for shape in late autumn or winter", "guidance": "NC State recommends light shaping and size pruning in late autumn or winter and warns that heavy shearing can reduce longevity. It lists stem cuttings as a propagation strategy; the source does not establish a seed-starting protocol for this houseplant use.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ficus-benjamina-wave37"]},
+      "problems": {"short": "Leaf drop can follow environmental changes; monitor common pests", "guidance": "NC State notes leaf drop after light/location changes and lists scale, aphids, mealybugs, thrips and spider mites as potential pests. A dropped leaf after relocation should not automatically be diagnosed as a nutrient problem.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-ficus-benjamina-wave37"]}
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {"status": "unknown", "reason": "The selected source supports soil-based container culture and does not validate hydroponics."},
+      "growthHabits": {"status": "unknown", "reason": "The source's weeping branch form is not represented by a directly equivalent controlled growth-habit value."},
+      "matureSize": {"height": {"status": "known", "value": {"minCm": 61, "maxCm": 305, "context": "container"}, "evidence": [{"sourceIds": ["ncsu-ficus-benjamina-wave37"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Ficus benjamina"}, "note": "NC State reports an indoor range of 2–10 ft; converted to centimeters for container context."}]}, "spread": {"status": "unknown", "reason": "NC State provides an outdoor tree spread, not an indoor-container spread for the unspecified cultivar."}},
+      "spacing": {"status": "unknown", "reason": "No indoor system or hydroponic spacing is documented."},
+      "light": {"status": "unknown", "reason": "Bright indirect ambient light is not an indoor grow-light tier."}
+    }
+  }
+]

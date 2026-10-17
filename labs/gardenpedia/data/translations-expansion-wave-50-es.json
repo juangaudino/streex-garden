@@ -1,0 +1,105 @@
+{
+  "catnip-nepeta-cataria": {
+    "summary": "Una hierba perenne aromática y útil en cocina y para polinizadores. Puede extenderse con facilidad y su ingestión puede causar molestias gastrointestinales en gatos; esta ficha de especie no ofrece un protocolo de siembra.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Nepeta cataria. NC State enumera hierba gatera, catmint y catswort entre sus nombres comunes; este registro representa la especie, no una selección nombrada."
+      },
+      "growth": {
+        "guidance": "NC State describe una hierba perenne de crecimiento rápido, con formas cespitosas, erguidas o extendidas. Puede volverse invasiva en el jardín; la fuente sugiere considerar el cultivo en recipiente."
+      },
+      "cultivation": {
+        "guidance": "NC State informa que tolera pleno sol o sombra parcial y requiere buen drenaje; acepta diversos suelos. Señala cierta sensibilidad al calor y la humedad, por lo que sugiere sombra por la tarde en esas condiciones. Esta guía exterior no demuestra aptitud hidropónica interior."
+      },
+      "propagation": {
+        "guidance": "NC State enumera división o semilla, pero la ficha consultada no ofrece profundidad, calendario, temperatura ni procedimiento de germinación. Por eso la guía pública deja el establecimiento desde semilla como insuficientemente documentado."
+      },
+      "harvest": {
+        "guidance": "NC State describe las hojas de sabor mentolado como apropiadas para tés, sopas, guisos, salsas, verduras y pasta. La fuente no especifica un calendario de cosecha."
+      },
+      "safety": {
+        "guidance": "NC State advierte que la ingestión puede causar vómitos y diarrea en gatos y que la respuesta varía. Es una precaución de seguridad para mascotas, no una afirmación sobre el contacto habitual en el jardín."
+      }
+    }
+  },
+  "bay-laurel-laurus-nobilis": {
+    "summary": "Un árbol perenne aromático cuyas hojas se usan en cocina, cultivado a menudo en recipiente en climas frescos. La ficha de Extension consultada no establece un protocolo doméstico de propagación, por lo que esa información queda pendiente.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Laurus nobilis, de la familia Lauraceae. El nombre común ‘laurel’ es ambiguo; esta identidad corresponde específicamente al laurel de cocina, no a especies de Kalmia o Quercus que también reciben ese nombre."
+      },
+      "growth": {
+        "guidance": "NC State describe una especie mediterránea perenne que puede alcanzar gran tamaño en su ambiente nativo, pero que suele mantenerse mucho más pequeña en recipientes en el contexto regional de la ficha. Es dioica: solo las plantas femeninas producen frutos."
+      },
+      "cultivation": {
+        "guidance": "NC State informa tolerancia a varios suelos con buen drenaje y a pleno sol o sombra parcial. En regiones más frías que la zona USDA 8b recomienda protegerla durante el invierno en interior; es una indicación regional, no una necesidad universal de cultivo interior."
+      },
+      "harvest": {
+        "guidance": "NC State describe hojas frescas o secas para aromatizar sopas y pasta. Advierte que no se deben ingerir enteras porque su forma puede causar atragantamiento o cortes; retíralas antes de servir."
+      },
+      "propagation": {
+        "guidance": "La ficha de especie de NC State seleccionada no ofrece un procedimiento doméstico para iniciar semillas ni para propagación vegetativa. No se infiere un método ni se crea un Seed Profile V0 a partir de esta ausencia; hace falta evidencia de propagación para esta identidad."
+      }
+    }
+  },
+  "pineapple-ananas-comosus": {
+    "summary": "Una bromelia tropical cultivada por su fruto y sin semillas en sus formas cultivadas habituales; también puede crecer en recipiente. En casa se propaga mediante la corona, hijuelos basales o plántulas del fruto, no por semilla.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Ananas comosus. Las formas y cultivares comerciales varían; esta ficha no asigna un cultivar ni supone que todas las bromelias ornamentales compartan los requisitos de la piña."
+      },
+      "growth": {
+        "guidance": "NC State describe una perenne tropical de crecimiento lento, con roseta basal rígida y espinosa, de aproximadamente 3–4 pies de altura y ancho en el contexto de su ficha. Una planta en recipiente puede tardar años en alcanzar tamaño de fructificación; el plazo depende de las condiciones."
+      },
+      "cultivation": {
+        "guidance": "NC State informa que requiere calor, luz indirecta brillante para el establecimiento de coronas, medio húmedo pero bien drenado y protección contra heladas. La ficha da un intervalo de temperatura de 68–86 °F y humedad ambiental moderada a alta; estas indicaciones de suelo y recipiente no demuestran compatibilidad con solución nutritiva hidropónica."
+      },
+      "propagation": {
+        "guidance": "NC State describe la propagación asexual mediante la corona del fruto, hijuelos basales o plántulas bajo la inflorescencia. Explica el recorte y secado de la corona antes de plantarla y señala que una planta iniciada así puede tardar al menos 24 meses en florecer. Kew describe la piña cultivada como sin semillas; esta identidad no corresponde a propagación por semilla."
+      },
+      "problems": {
+        "guidance": "NC State advierte sobre heladas, humedad prolongada, pudriciones y algunas plagas; los bordes de las hojas pueden causar lesiones. También indica que la bromelina puede causar dermatitis de contacto o irritación de boca y garganta en ciertas circunstancias."
+      }
+    }
+  },
+  "french-tarragon-artemisia-dracunculus-sativa": {
+    "summary": "Una selección culinaria de estragón con aroma anisado, distinta del estragón ruso que se cultiva desde semilla. El verdadero estragón francés se mantiene vegetativamente porque sus flores son estériles y no produce semillas viables.",
+    "sections": {
+      "identity": {
+        "guidance": "University of Illinois identifica el estragón francés como Artemisia dracunculus var. sativa y lo distingue del estragón ruso, cuyas semillas se venden con frecuencia pero cuyo sabor se considera inferior. Kew respalda la especie Artemisia dracunculus; la ficha conserva la variedad o tipo hortícola en el alcance usado por Extension, sin atribuir a Kew la aceptación de esa forma infraespecífica."
+      },
+      "growth": {
+        "guidance": "University of Illinois describe una planta perenne abierta de unos 2–3 pies, con hojas estrechas, verde oscuro y aromáticas. Distingue su sabor y flores estériles de los del estragón ruso."
+      },
+      "cultivation": {
+        "guidance": "Illinois Extension recomienda pleno sol —tolera sombra ligera— y suelo preparado, bien drenado. Advierte que el mal drenaje en invierno puede impedir que la planta sobreviva. La guía exterior no establece aptitud hidropónica interior."
+      },
+      "propagation": {
+        "guidance": "Illinois Extension indica que el verdadero estragón francés se consigue como plantas de esqueje o división de raíz; sus flores son estériles y no puede cultivarse desde semilla. No confundas paquetes rotulados simplemente ‘estragón’, que pueden producir estragón ruso, con este tipo culinario."
+      },
+      "harvest": {
+        "guidance": "Illinois Extension recomienda cosechar puntas jóvenes y hojas según se necesiten durante la temporada y señala que el uso fresco conserva mejor el sabor característico. También ofrece consejos para secarlo, pero no cuantifica rendimiento ni intervalo de cosecha."
+      }
+    }
+  },
+  "wintergreen-gaultheria-procumbens": {
+    "summary": "Una cubierta vegetal perenne de bosque, baja y extendida, con frutos rojos y follaje aromático. Aunque la fuente enumera semilla y esqueje de raíz, no explica cómo sembrar y advierte que ya no recomienda preparar té con sus hojas.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Gaultheria procumbens, de la familia Ericaceae. Aquí los nombres wintergreen y teaberry se refieren a esta cubierta leñosa, no a Mentha ni a otras plantas de sabor parecido."
+      },
+      "growth": {
+        "guidance": "NC State describe una planta perenne de hoja persistente, de unas 4–8 pulgadas de alto, que se extiende formando una alfombra. Produce flores acampanadas blancas o rosadas y frutos rojos; el espaciamiento de paisaje no es una recomendación para pods hidropónicos."
+      },
+      "cultivation": {
+        "guidance": "NC State la describe en ambientes boscosos con sombra ligera o moderada y suelo ácido, húmedo y bien drenado; tolera sombra más intensa. Esta evidencia de hábitat no establece necesidades de luz interior ni de solución nutritiva."
+      },
+      "propagation": {
+        "guidance": "NC State enumera semilla y esqueje de raíz, pero no indica profundidad, tratamiento, duración ni temperatura de germinación en la ficha consultada. El establecimiento desde semilla queda insuficientemente documentado; el esqueje de raíz es una alternativa documentada."
+      },
+      "safety": {
+        "guidance": "NC State afirma explícitamente que el té de hojas, usado antiguamente, ya no se recomienda. No se presenta el uso medicinal tradicional como consejo. La fuente menciona frutos comestibles, pero esta ficha no prescribe consumo ni porciones seguras."
+      }
+    }
+  }
+}

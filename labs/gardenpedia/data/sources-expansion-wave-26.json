@@ -1,0 +1,93 @@
+[
+  {
+    "id": "kew-solanum-melongena-wave26",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Solanum melongena L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/820053-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and classification for eggplant; not evidence for any named cultivar or cultivar-specific horticulture",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "kew-cucurbita-pepo-wave26",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Cucurbita pepo L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/292416-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and taxonomy for Cucurbita pepo; horticultural types and named cultivar traits require separate evidence",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "johnnys-hansel-f1-eggplant-wave26",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Hansel (F1) Eggplant Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/hansel-f1-eggplant-seed-240.51.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Hansel F1 product identity, product-specific compact habit, fruit traits and maturity; shared eggplant sowing instructions only at crop level",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+  },
+  {
+    "id": "johnnys-fairy-tale-f1-eggplant-wave26",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Fairy Tale (F1) Eggplant Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/fairy-tale-f1-eggplant-seed-2260.50.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Fairy Tale F1 product identity, product-specific fruit and compact plant traits; shared eggplant sowing instructions only at crop level",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+  },
+  {
+    "id": "johnnys-patio-baby-f1-eggplant-wave26",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Patio Baby (F1) Eggplant Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/patio-baby-f1-eggplant-seed-3747.54.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Patio Baby F1 product identity, product-specific container suitability and 18–24 inch plant size; shared eggplant sowing instructions only at crop level",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+  },
+  {
+    "id": "johnnys-delicata-js-wave26",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Delicata JS Organic Delicata Squash Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/squash/winter-squash/delicata-js-organic-delicata-squash-seed-675G.11.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Delicata JS product identity, fruit traits and product maturity; winter-squash sowing and storage guidance at crop scope",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "cultivar", "cultivation", "seedling", "harvest", "problems"]
+  },
+  {
+    "id": "johnnys-honey-bear-f1-acorn-wave26",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Honey Bear (F1) Acorn Squash Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/squash/winter-squash/honey-bear-f1-acorn-squash-seed-689.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Honey Bear F1 product identity, semi-bush habit, fruit size and product maturity; winter-squash sowing guidance at crop scope",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs catalog expansion Wave 26",
+    "claimKinds": ["identity", "cultivar", "cultivation", "seedling", "harvest"]
+  }
+]

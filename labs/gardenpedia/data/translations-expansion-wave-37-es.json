@@ -1,0 +1,92 @@
+{
+  "meyer-lemon": {
+    "summary": "NC State Extension trata el limón Meyer como Citrus × limon 'Meyer'; Kew considera Citrus × meyeri sinónimo de Citrus × limon. Su sensibilidad a las heladas hace útil cultivarlo en una maceta que pueda trasladarse en climas fríos, pero la floración y fructificación dependen de luz y cuidados adecuados.",
+    "sections": {
+      "identity": {"guidance": "NC State Extension identifica la selección hortícola como Citrus × limon 'Meyer'. Kew registra Citrus × meyeri como sinónimo de Citrus × limon. El perfil conserva el nombre común de la selección Meyer sin tratarlo como especie aceptada independiente."},
+      "growth": {"guidance": "NC State describe el limón Meyer como un árbol leñoso, perenne y pequeño, con flores y frutos comestibles. Esta identidad nombra la selección Meyer; el portainjerto, el carácter enanizante y el tamaño adulto exacto no se establecen para todas las plantas vendidas con ese nombre."},
+      "cultivation": {"guidance": "NC State informa que el pleno sol ofrece el mejor rendimiento y producción, recomienda un sustrato constantemente húmedo pero bien drenado y el cultivo en recipiente móvil en regiones con riesgo de helada. Sus zonas de rusticidad son regionales; no equivalen a una prescripción universal de luz artificial interior."},
+      "care": {"guidance": "NC State recomienda podar ramas para mejorar la circulación de aire y mantener un tamaño menor; se pueden reducir los racimos a uno o dos frutos para obtener frutos más grandes y saludables. Son recomendaciones de la fuente, no un calendario fijo de poda."},
+      "propagation": {"guidance": "La Extensión de la Universidad de Minnesota indica que los esquejes de tallo de cítricos enraízan con facilidad, pero es una orientación general del grupo y no especifica un protocolo ni portainjerto para Meyer. Las plantas injertadas y los ejemplares de semilla no son equivalentes a un cultivar fiel al nombre; la historia de propagación de una planta individual sigue sin conocerse."},
+      "harvest": {"guidance": "NC State confirma que el fruto es comestible. La fuente revisada no establece una fecha de cosecha aplicable a todos los climas y condiciones de cultivo en recipiente; por eso no se ofrece un calendario fijo."}
+    }
+  },
+  "calamondin": {
+    "summary": "Kew acepta Citrus × microcarpa como híbrido artificial de cítricos; Citrofortunella mitis figura entre sus sinónimos. La Extensión de la Universidad de Minnesota identifica al calamondín como un cítrico de interior común y señala que sus frutos pequeños y ácidos sirven como guarnición o para mermelada; esto no garantiza que fructifique en interiores.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Citrus × microcarpa y registra × Citrofortunella mitis y Citrus × mitis entre sus sinónimos. El catálogo usa el nombre aceptado por Kew y conserva el nombre común familiar Calamondin."},
+      "growth": {"guidance": "La Extensión de la Universidad de Minnesota llama al calamondín el cítrico más común cultivado en interiores dentro de su orientación para plantas de interior. Describe el fruto como pequeño y ácido y menciona su uso en mermelada o como guarnición de bebidas. La fuente no garantiza que cualquier planta o vivienda produzca fruta en interior."},
+      "cultivation": {"guidance": "La Extensión de la Universidad de Minnesota incluye el calamondín entre los cítricos que pueden cultivarse en interiores y ofrece cuidados generales para cítricos. Es orientación regional para Minnesota y a nivel de grupo; no establece hidroponía, un nivel exacto de luz artificial ni un tamaño universal de recipiente para esta identidad."},
+      "propagation": {"guidance": "La Extensión de la Universidad de Minnesota indica que los esquejes de tallo de cítricos enraízan con facilidad. Es una orientación general del grupo, no un protocolo de enraizamiento probado específicamente para Calamondin; las plantas de vivero pueden diferir en cultivar y portainjerto."},
+      "harvest": {"guidance": "La Extensión de la Universidad de Minnesota describe el fruto de Calamondin como pequeño y ácido e indica usos en mermelada o para adornar bebidas. La fuente revisada no establece el momento de cosecha."}
+    }
+  },
+  "passion-fruit": {
+    "summary": "Kew acepta Passiflora edulis, una liana tropical con uso alimentario registrado. UF/IFAS describe el cultivo como una enredadera vigorosa que requiere tutor, pleno sol y suelo bien drenado; su guía de producción en Florida también documenta cultivo en recipiente y propagación por semilla y esquejes.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Passiflora edulis Sims en Passifloraceae y la describe como una liana. Esta identidad corresponde a la especie; no asigna cultivar, forma de color del fruto ni selección nombrada."},
+      "growth": {"guidance": "UF/IFAS describe el maracuyá como una enredadera vigorosa y recomienda ubicarla junto a una cerca o espaldera. Es orientación de especie/cultivo en contexto de Florida, no evidencia de una dimensión exacta de tutor para recipiente."},
+      "cultivation": {"guidance": "UF/IFAS recomienda pleno sol y suelo bien drenado para el maracuyá de jardín y reporta que puede crecer en una maceta de 3 galones en su contexto de Florida. Ese ejemplo no establece el tamaño universal de una planta adulta ni compatibilidad hidropónica."},
+      "propagation": {"guidance": "UF/IFAS documenta tanto un protocolo por semilla como esquejes vegetativos, que pueden producir plantas genéticamente idénticas y con una fase juvenil más corta. La semilla es adecuada si se acepta una plántula variable; esta identidad de especie no implica un cultivar nombrado."},
+      "harvest": {"guidance": "La fuente de UF/IFAS en Florida indica que el fruto madura aproximadamente 70–80 días después de la polinización. Debe conservarse como dato regional de la fuente, no como calendario universal desde la siembra o el trasplante."}
+    }
+  },
+  "papaya": {
+    "summary": "Kew acepta Carica papaya. La Universidad de Hawái y UF/IFAS describen la papaya como un cultivo tropical de fruta que se propaga por semilla y necesita pleno sol y buen drenaje; la guía de establecimiento y almacenamiento citada es regional y no establece una temperatura universal de germinación.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Carica papaya L. en Caricaceae. Este es el registro a nivel de especie; no implica cultivar, tipo sexual ni híbrido."},
+      "growth": {"guidance": "UF/IFAS describe la papaya como una planta de vida relativamente corta, de 1–3 años en su contexto de producción tropical/subtropical, con frutos a lo largo de troncos semileñosos y erguidos. Es una descripción regional del cultivo, no una duración garantizada en cualquier maceta o clima."},
+      "cultivation": {"guidance": "UF/IFAS indica que la papaya se cultiva mejor en pleno sol y con drenaje excelente. La fuente de la Universidad de Hawái advierte que el drenaje restringido favorece enfermedades de raíz. Son recomendaciones de producción tropical; no se infiere aptitud para interiores ni hidroponía."},
+      "propagation": {"guidance": "La Universidad de Hawái y UF/IFAS describen el cultivo de papaya desde semilla. Se pueden sembrar semillas extraídas del fruto, pero las plantas de semilla no garantizan un cultivar nombrado ni un tipo sexual o fruto predecible en este registro de especie."},
+      "harvest": {"guidance": "Las fuentes revisadas describen la papaya como cultivo frutal, pero no respaldan una edad de cosecha única para esta identidad sin selección. El momento, el sexo de la planta y el resultado de una plántula particular siguen sin resolverse."}
+    }
+  },
+  "goeppertia-orbifolia": {
+    "summary": "Kew acepta Goeppertia orbifolia y registra Calathea orbifolia como sinónimo. La Extensión de NC State describe una planta de interior que forma matas y tiene hojas anchas; prefiere sustrato constantemente húmedo pero bien drenado, luz indirecta y humedad alta. Son pautas de cultivo en recipiente, no una receta hidropónica.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Goeppertia orbifolia dentro de Marantaceae y registra Calathea orbifolia entre sus sinónimos. El nombre familiar Calathea se conserva como alias de búsqueda; no se asigna cultivar."},
+      "growth": {"guidance": "NC State describe una planta compacta que forma matas, normalmente de 2–3 pies de alto y 1–2 pies de ancho en su contexto hortícola, con hojas redondas y rayas verde plateadas que pueden alcanzar unas 12 pulgadas de diámetro. Las plantas de interior rara vez florecen; estas dimensiones corresponden a recipientes generales, no a un espacio de pods."},
+      "cultivation": {"guidance": "NC State recomienda luz indirecta brillante o semisombra y un sustrato ligeramente ácido, húmedo y bien drenado. Mantén la mezcla constantemente húmeda sin dejarla empapada; la fuente también relaciona el fluoruro del agua de grifo con puntas marrones y prefiere agua destilada o de lluvia. La semisombra ambiental no se convierte en un nivel de luz artificial."},
+      "maintenance": {"guidance": "NC State recomienda evitar corrientes frías y cambios bruscos de temperatura, elevar la humedad si hace falta y limpiar suavemente el polvo de las hojas grandes. La fuente enumera la división en primavera como método de propagación; esto no demuestra que la propagación por semilla sea biológicamente imposible."}
+    }
+  },
+  "croton-codiaeum-variegatum": {
+    "summary": "Kew acepta Codiaeum variegatum; NC State Extension señala que cientos de cultivares hortícolas varían en forma, color y tamaño de hoja. Este perfil permanece a nivel de especie y no supone un croton comercial particular. UF/IFAS documenta la germinación variable de semilla y las vías vegetativas para conservar cultivares nombrados.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Codiaeum variegatum dentro de Euphorbiaceae. “Croton” es el nombre común de esta especie ornamental y no significa que pertenezca al género botánico Croton, que es distinto. NC State enumera numerosas selecciones hortícolas; aquí no se identifica ninguna."},
+      "growth": {"guidance": "NC State describe un arbusto leñoso perenne, cultivado comúnmente en interiores como planta de follaje, cuyas hojas varían entre cultivares. La fuente ofrece dimensiones exteriores amplias y una altura interior aproximada, pero la variación entre selecciones y condiciones no permite asignar un tamaño adulto único a este croton sin cultivar identificado."},
+      "cultivation": {"guidance": "NC State recomienda luz brillante, con algo de sol directo para intensificar el color, y suelo rico en humus y bien drenado. En su contexto regional aconseja llevar las plantas al interior cuando la temperatura se acerque a 50 °F. La exposición exterior no se traduce en un nivel de lámpara interior y la tolerancia varía entre cultivares."},
+      "propagation": {"guidance": "UF/IFAS informa que las semillas frescas de Codiaeum variegatum germinan con facilidad, pero producen mucha variación; enumera acodo aéreo y esquejes blandos, apicales o de yema foliar como métodos vegetativos. La propagación vegetativa es preferible cuando importa conservar un cultivar nombrado. No se implica un cultivar específico ni un calendario de germinación."},
+      "problems": {"guidance": "NC State señala susceptibilidad a ácaros en interiores y advierte que la savia de hojas o tallos rotos puede irritar tejidos blandos. Lava las manos tras manipular la planta y evita el contacto con los ojos; no se infiere resistencia a plagas para un cultivar particular."}
+    }
+  },
+  "florist-kalanchoe-kalanchoe-blossfeldiana": {
+    "summary": "Kew acepta Kalanchoe blossfeldiana. NC State Extension describe una suculenta compacta de floración, con colores que varían según el cultivar, un periodo de oscuridad larga e ininterrumpida que favorece la programación de la floración y propagación por esquejes de tallo u hoja. No se asignan cultivar ni color.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Kalanchoe blossfeldiana dentro de Crassulaceae. NC State utiliza Florist Kalanchoe y Christmas Kalanchoe como nombres comunes y enumera varios cultivares nombrados; este perfil permanece en la especie sin elegir uno de ellos."},
+      "growth": {"guidance": "NC State describe una suculenta erguida y ramificada, normalmente de 6–18 pulgadas de alto y 6–12 pulgadas de ancho, con pequeñas flores agrupadas. El color floral y la forma simple o doble varían entre cultivares y no se atribuyen a este perfil de especie."},
+      "cultivation": {"guidance": "NC State recomienda luz indirecta brillante o semisombra, mezcla para cactus/suculentas con buen drenaje y dejar que se seque entre riegos profundos. Para favorecer la floración, describe 6–8 horas diarias de luz brillante y 14 horas nocturnas de oscuridad ininterrumpida durante al menos seis semanas en otoño/invierno; es una señal para la floración, no una regla de luz para germinar."},
+      "maintenance": {"guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Enumera esquejes de tallo y hoja como métodos de propagación; aquí no se ofrece protocolo de semilla."},
+      "safety": {"guidance": "NC State advierte que la ingestión es tóxica para personas y mascotas y recomienda mantener la planta fuera de su alcance. Es una advertencia respaldada por la fuente, no orientación médica individual."}
+    }
+  },
+  "dwarf-umbrella-tree-heptapleurum-arboricola": {
+    "summary": "Kew acepta Heptapleurum arboricola y considera Schefflera arboricola un sinónimo; ambos nombres siguen disponibles para búsqueda. NC State Extension describe un arbusto perenne cultivado en recipientes dentro del hogar, con luz natural filtrada, riego abundante después de que se seque el sustrato y precauciones para mascotas. No se elige cultivar.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Heptapleurum arboricola dentro de Araliaceae y registra Schefflera arboricola como sinónimo. NC State también utiliza Dwarf Schefflera y Dwarf Umbrella Tree como nombres comunes. El perfil no selecciona ninguno de sus cultivares nombrados."},
+      "growth": {"guidance": "NC State informa que las plantas de interior en recipiente suelen alcanzar aproximadamente 4–6 pies de alto y ancho, mientras que los ejemplares tropicales exteriores pueden crecer más. El rango interior se conserva como contexto general de recipiente, no como tamaño para un aparato de encimera ni para todo cultivar enano."},
+      "cultivation": {"guidance": "NC State recomienda luz natural filtrada varias horas al día, advierte que la luz directa intensa puede quemar las hojas y aconseja dejar secar el medio antes de regar abundantemente. También describe un sustrato orgánico, bien drenado y humedad ambiental elevada. Son pautas para recipiente; no demuestran compatibilidad hidropónica."},
+      "propagation": {"guidance": "NC State enumera semilla y esqueje de tallo, pero en esta página no da protocolo de siembra ni germinación. La vía por semilla queda sin documentar aquí; el esqueje es una alternativa citada, no una afirmación de que la semilla no pueda propagarse."},
+      "problems": {"guidance": "NC State identifica araña roja, cochinillas y escamas como posibles plagas; también relaciona la caída de hojas con sustrato demasiado húmedo o demasiado seco. Advierte que todas las partes son seriamente tóxicas para perros y gatos; mantén la planta fuera de su alcance. No se infiere resistencia a enfermedades."}
+    }
+  },
+  "weeping-fig-ficus-benjamina": {
+    "summary": "Kew acepta Ficus benjamina. NC State Extension describe la especie como un árbol de interior popular que suele mantenerse entre 2 y 10 pies de alto, es sensible a los cambios de luz o ubicación y admite poda moderada. Cultivares nombrados como 'Too Little' siguen siendo distintos y no se asignan aquí.",
+    "sections": {
+      "identity": {"guidance": "Kew acepta Ficus benjamina dentro de Moraceae. NC State enumera Weeping Fig y otros nombres comunes, además de cultivares nombrados como 'Too Little'; esta identidad representa la especie sin elegir cultivar ni forma de bonsái."},
+      "growth": {"guidance": "NC State describe un árbol perenne de gran tamaño en exterior, pero indica que en interior suele mantenerse de 2–10 pies de alto en recipientes. Los cultivares difieren; las formas miniatura tienen nombres propios, por lo que el perfil de especie no promete tamaño compacto ni hábito de bonsái."},
+      "cultivation": {"guidance": "NC State dice que crece mejor con luz brillante indirecta, pero es muy sensible a cambios de luz; moverla puede causar caída de hojas mientras se adapta. Recomienda mezcla de cultivo para macetas basada en suelo y riego suficiente para evitar que se seque por completo. Es guía de recipiente, no protocolo hidropónico."},
+      "maintenance": {"guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad. Enumera esquejes de tallo como método de propagación; la fuente no establece protocolo de siembra para su uso común como planta de interior."},
+      "problems": {"guidance": "NC State menciona la caída de hojas tras cambios de luz o ubicación y enumera escamas, pulgones, cochinillas, trips y ácaros como plagas posibles. Una hoja caída tras mover la planta no debe diagnosticarse automáticamente como problema de nutrientes."}
+    }
+  }
+}

@@ -1,0 +1,503 @@
+[
+  {
+    "id": "celeriac-apium-graveolens",
+    "name": "Celeriac",
+    "spanishName": "Apionabo",
+    "scientificName": "Apium graveolens",
+    "variety": "Celeriac (celery-root) horticultural type; no named cultivar assigned",
+    "category": "root vegetables",
+    "emoji": "🌱",
+    "guideCompletion": 68,
+    "tags": [
+      "celeriac",
+      "celery root",
+      "celery-root type",
+      "apionabo",
+      "Apium graveolens"
+    ],
+    "summary": "A celery crop grown for its enlarged root-stem rather than leaf stalks. Seed is tiny and slow to emerge; light is required for germination in the cited California home-garden guidance.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Celeriac is a horticultural type of Apium graveolens",
+        "guidance": "Kew accepts Apium graveolens at species level. Extension sources distinguish celeriac/celery root from stalk celery by the enlarged edible root-stem; no cultivar is represented.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-apium-graveolens-500", "ucanr-celeriac-500"]
+      },
+      "cultivation": {
+        "short": "Long-season crop for cool, mild conditions and moisture-retentive soil",
+        "guidance": "UC ANR describes celeriac as a long-season crop and recommends mild temperatures and fertile, moisture-retentive soil in its California guidance. Cool planting conditions can encourage bolting before a large root develops; this regional warning is not a cultivar-specific response.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-celeriac-500"]
+      },
+      "growth": {
+        "short": "Produces an enlarged root-stem rather than celery-like stalks",
+        "guidance": "Oregon State University Extension distinguishes celeriac, which develops an enlarged root-stem, from celery grown for stalks. This profile does not transfer stalk-celery harvest or spacing assumptions to celeriac.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["osu-celery-celeriac-500"]
+      },
+      "harvest": {
+        "short": "Harvest the enlarged root when it reaches useful size",
+        "guidance": "UC ANR gives a broad 100–150 day crop duration in its regional account. Actual harvest timing depends on climate and cultivar; no single date or size is promised here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ucanr-celeriac-500"]
+      },
+      "problems": {
+        "short": "Cold planting conditions may trigger bolting before root enlargement",
+        "guidance": "UC ANR cautions against planting into cool soil because plants may bolt without forming a large root. This is species/crop-type regional guidance, not a disease-resistance or cultivar claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-celeriac-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Sources describe garden soil production; no validated recirculating home-hydroponic protocol was found."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The sources distinguish the edible root-stem but do not establish a controlled habit label."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No useful cultivar-independent mature height is selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible mature spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor soil spacing does not establish indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full-sun guidance is not converted into an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "radicchio-cichorium-intybus",
+    "name": "Radicchio",
+    "spanishName": "Radicchio",
+    "scientificName": "Cichorium intybus",
+    "variety": "Leaf-chicory horticultural type grown for colored heads; no named cultivar assigned",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 68,
+    "tags": [
+      "radicchio",
+      "red chicory",
+      "leaf chicory",
+      "achicoria roja",
+      "Cichorium intybus"
+    ],
+    "summary": "A leafy chicory crop commonly grown for bitter, colored heads. It is distinct from endive (Cichorium endivia); head formation and timing vary among radicchio types and climates.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Radicchio is a cultivated leaf-chicory type of Cichorium intybus",
+        "guidance": "Kew accepts Cichorium intybus. UC ANR describes radicchio within this species and treats it separately from endive and escarole, which are associated with Cichorium endivia in the cited crop grouping. No named cultivar is represented.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-cichorium-intybus-500", "ucanr-radicchio-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season crop; heat may cause bolting or tip burn",
+        "guidance": "UC ANR reports that inland summer heat can cause bolting and tip burn and gives coastal California planting windows. Those dates and bed spacings are regional field guidance, not universal timing or hydroponic layout.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-radicchio-500", "umn-lettuce-endive-radicchio-500"]
+      },
+      "growth": {
+        "short": "Forms leafy heads; head form differs across radicchio types",
+        "guidance": "University of Minnesota Extension groups radicchio with lettuce and endive for home-garden establishment; UC ANR notes variation among types and varieties. No single head shape or mature dimension is assigned to this cultivar-unspecified identity.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ucanr-radicchio-500", "umn-lettuce-endive-radicchio-500"]
+      },
+      "harvest": {
+        "short": "Harvest heads or leaves according to the selected type",
+        "guidance": "The cited sources describe radicchio as a salad crop and report a longer crop period than lettuce in the Salinas region. Exact harvest stage varies by type and local conditions; no cultivar-specific schedule is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ucanr-radicchio-500"]
+      },
+      "problems": {
+        "short": "Heat stress can interfere with head quality",
+        "guidance": "UC ANR specifically identifies bolting and tip burn under hot inland conditions. This regional observation is not a universal disease or resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-radicchio-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Selected sources cover soil-grown field and home-garden production, not a validated indoor hydroponic crop protocol."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Head shape varies among horticultural radicchio types; no single controlled habit value is chosen."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar-independent mature height is supported."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Regional field spacing is not a mature spread measurement."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Soil bed and row spacing must not be represented as pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor exposure information is not mapped to indoor grow-light tiers."
+      }
+    }
+  },
+  {
+    "id": "jicama-pachyrhizus-erosus",
+    "name": "Jicama",
+    "spanishName": "Jícama",
+    "scientificName": "Pachyrhizus erosus",
+    "variety": "Species-level jicama; cultivar unspecified",
+    "category": "root vegetables",
+    "emoji": "🌱",
+    "guideCompletion": 66,
+    "tags": [
+      "jicama",
+      "yam bean",
+      "Mexican turnip",
+      "nabo mexicano",
+      "Pachyrhizus erosus"
+    ],
+    "summary": "A warm-season climbing legume grown for its edible storage root. Seed-grown crops need a long warm season; only the root is edible according to UF/IFAS, so other plant parts should not be treated as food.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Pachyrhizus erosus",
+        "guidance": "Kew POWO accepts Pachyrhizus erosus in Fabaceae and lists jicama/yam-bean synonyms. Texas A&M Extension identifies the crop as a legume grown for its tuberous root; no cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-pachyrhizus-erosus-500", "tamu-jicama-500"]
+      },
+      "cultivation": {
+        "short": "Needs a long, warm season and room for a climbing vine",
+        "guidance": "UF/IFAS reports five to nine months of warm weather from seed for roots large enough to eat and vines that can extend to about 20 feet. Texas A&M notes that tuber initiation depends on day length in its Texas guidance; this is not a compact container or indoor-system recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-jicama-500", "tamu-jicama-500"]
+      },
+      "growth": {
+        "short": "Climbing vine produces an edible storage root",
+        "guidance": "Texas A&M Extension describes jicama as a climbing legume with a tuberous root. UF/IFAS warns that only the root is edible and the rest of the plant is poisonous; do not generalize root use to foliage, pods, or seeds.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["tamu-jicama-500", "ufifas-jicama-500"]
+      },
+      "harvest": {
+        "short": "Harvest roots before frost in the cited Texas production guidance",
+        "guidance": "Texas A&M describes harvesting small tubers before the first killing frost in Texas. UF/IFAS reports that seed-grown roots take months of warm weather; local climate and day length affect usable root development.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["tamu-jicama-500", "ufifas-jicama-500"]
+      },
+      "problems": {
+        "short": "Do not eat plant parts other than the root",
+        "guidance": "UF/IFAS explicitly warns that all parts other than the root are poisonous. This is a food-safety warning for Pachyrhizus erosus, not an inference from other legumes.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-jicama-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Field guidance and seed-grown root production do not establish recirculating home-hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Sources describe a climbing vine, but the controlled compatibility vocabulary has no climbing value; do not substitute an inaccurate habit."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Vine length is not a standardized mature height measurement."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible mature spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor spacing is not converted into indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No normalized indoor-light or outdoor-exposure class is selected."
+      }
+    }
+  },
+  {
+    "id": "scarlet-runner-bean-phaseolus-coccineus",
+    "name": "Scarlet Runner Bean",
+    "spanishName": "Frijol ayocote escarlata",
+    "scientificName": "Phaseolus coccineus",
+    "variety": "Species-level scarlet runner bean; cultivar unspecified",
+    "category": "legumes",
+    "emoji": "🫘",
+    "guideCompletion": 70,
+    "tags": [
+      "scarlet runner bean",
+      "runner bean",
+      "fire bean",
+      "frijol ayocote",
+      "Phaseolus coccineus"
+    ],
+    "summary": "A vigorous climbing bean grown for edible pods or dry beans and often for its flowers. It is distinct from common bean (Phaseolus vulgaris); provide a sturdy outdoor support rather than assuming a compact bean habit.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Phaseolus coccineus",
+        "guidance": "Kew accepts Phaseolus coccineus in Fabaceae. Wisconsin Extension distinguishes runner bean from common bean and notes its edible and ornamental uses; no named cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-phaseolus-coccineus-500",
+          "uwisc-scarlet-runner-bean-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-season climbing crop that needs a substantial support",
+        "guidance": "Wisconsin Extension describes vigorous twining vines and recommends support; its regional guide gives outdoor soil and planting conditions. These field recommendations do not establish indoor hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+      },
+      "growth": {
+        "short": "Twining vine; seed-grown seedlings retain cotyledons below ground",
+        "guidance": "Wisconsin Extension notes the runner bean's hypogeal germination, with cotyledons remaining below ground, and documents a climbing habit. Do not mistake the absent exposed cotyledons for failed emergence when the seedling is otherwise developing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+      },
+      "harvest": {
+        "short": "Pods may be used young or allowed to mature for dry seed",
+        "guidance": "Wisconsin Extension and Maryland Extension describe use as snap or shell beans, while flowers also have ornamental value. Harvest stage depends on intended use; no cultivar-specific yield or date is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-scarlet-runner-bean-500", "umd-beans-home-500"]
+      },
+      "problems": {
+        "short": "Heat can reduce pod quality; protect from frost",
+        "guidance": "Maryland Extension reports reduced yield and pod quality under prolonged high temperatures. Wisconsin Extension identifies the foliage as frost-sensitive; these are regional crop observations, not cultivar resistance ratings.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umd-beans-home-500", "uwisc-scarlet-runner-bean-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Sources support garden trellis growing, not a validated indoor recirculating crop-system method."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Sources describe twining vines, but the controlled compatibility vocabulary has no climbing value; do not substitute an inaccurate habit."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Reported vine lengths vary by source and context; no single cultivar-free mature height is selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible mature spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor planting distance is not indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun guidance is not mapped to an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "chickpea-cicer-arietinum",
+    "name": "Chickpea",
+    "spanishName": "Garbanzo",
+    "scientificName": "Cicer arietinum",
+    "variety": "Species-level chickpea (garbanzo); market class and cultivar unspecified",
+    "category": "legumes",
+    "emoji": "🫘",
+    "guideCompletion": 68,
+    "tags": ["chickpea", "garbanzo bean", "garbanzo", "Cicer arietinum"],
+    "summary": "A cool-season pulse crop grown for immature or dry seeds. Chickpeas need good drainage and are poorly suited to prolonged waterlogging; the field-production evidence here does not imply indoor-system compatibility.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Cicer arietinum",
+        "guidance": "Kew accepts Cicer arietinum in Fabaceae and documents its food use. UW-Madison Extension discusses chickpea agronomy at crop level; no cultivar, seed color, or kabuli/desi market class is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-cicer-arietinum-500", "uwisc-chickpea-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season annual for well-drained soil",
+        "guidance": "UW-Madison Extension describes chickpea as a cool-season annual and warns that waterlogged soil reduces growth and increases root and stem rot risk. This is field crop guidance and is not a hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-chickpea-500"]
+      },
+      "growth": {
+        "short": "Bushy annual with pods containing one or two seeds",
+        "guidance": "Iowa State Extension describes chickpea as a bushy plant and reports one or two seeds per pod. That source's regional dimensions are not treated as cultivar-specific or as indoor spacing guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["iastate-beans-chickpea-500"]
+      },
+      "harvest": {
+        "short": "Harvest immature pods or mature dry seed according to intended use",
+        "guidance": "Kew records chickpea as a food crop, and Iowa State Extension describes mature pods drying and splitting near harvest. No fixed harvest date is assigned because region, cultivar, and use stage vary.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["kew-cicer-arietinum-500", "iastate-beans-chickpea-500"]
+      },
+      "problems": {
+        "short": "Avoid saturated soil and protect seed quality",
+        "guidance": "UW-Madison Extension associates waterlogged field conditions with reduced growth and root/stem rot risk. This is crop-level field evidence, not a universal disease-susceptibility or resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-chickpea-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Selected sources cover pulse field culture; no validated home recirculating hydroponic production protocol was found."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Bushy field habit is reported, but a controlled vocabulary classification for this unspecified crop class is not selected."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "A regional source gives a range but no market class or cultivar is represented."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-independent spread measurement is selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field population and spacing do not establish indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full-sun recommendations are not mapped to an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "lentil-vicia-lens",
+    "name": "Lentil",
+    "spanishName": "Lenteja",
+    "scientificName": "Vicia lens",
+    "variety": "Species-level lentil; crop literature often uses synonym Lens culinaris; cultivar and seed class unspecified",
+    "category": "legumes",
+    "emoji": "🫘",
+    "guideCompletion": 66,
+    "tags": ["lentil", "lenteja", "Lens culinaris", "Vicia lens"],
+    "summary": "A cool-season pulse crop grown for lens-shaped seeds. Current POWO treats the familiar crop name Lens culinaris as a synonym of Vicia lens; agronomic sources may continue to use Lens culinaris.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "POWO accepts Vicia lens; Lens culinaris is a synonym in its current treatment",
+        "guidance": "Kew POWO lists Vicia lens as accepted and Lens culinaris as a synonym, while University of Wisconsin crop guidance uses Lens culinaris. This nomenclatural difference is preserved explicitly; no seed-size class or cultivar is selected.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-vicia-lens-500", "uwisc-lentil-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season pulse; field moisture and disease guidance is regional",
+        "guidance": "UW-Madison Extension describes lentil as adapted to cool conditions and advises field growers on seed inoculation and establishment. Its field disease and equipment recommendations should not be converted into a home indoor growing recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-lentil-500"]
+      },
+      "growth": {
+        "short": "Annual pulse with small pods containing one or two seeds",
+        "guidance": "USDA NRCS describes lentil seed and pod characteristics and distinguishes large-seeded macrosperma from small-seeded microsperma classes. This identity does not select either market class.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usda-nrcs-lentil-500"]
+      },
+      "harvest": {
+        "short": "Harvest dry seed after pods mature",
+        "guidance": "The selected sources describe lentil as a pulse grown for seed, but do not provide a home-garden harvest protocol for an unspecified class. Harvest timing and method remain unresolved rather than borrowed from field machinery guidance.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": ["uwisc-lentil-500"]
+      },
+      "problems": {
+        "short": "Avoid unsupported home-crop disease prescriptions",
+        "guidance": "UW-Madison discusses disease concerns under field production conditions. This profile does not assign disease resistance or translate field fungicide/inoculation advice into a home recommendation.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": ["uwisc-lentil-500"]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No evidence was found for a reliable recirculating home-hydroponic lentil crop protocol."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The sources describe crop growth but do not establish a controlled habit label for an unspecified seed class."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar or seed class is selected and the agronomic source is field-scoped."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible home-garden mature spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Commercial field seeding does not establish indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No indoor light tier or normalized outdoor category is selected."
+      }
+    }
+  }
+]

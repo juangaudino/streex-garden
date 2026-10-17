@@ -39,7 +39,23 @@ const generatedSeedProfileIndex = path.join(
   "generated",
   "garden-seed-profile-index.ts",
 );
+const generatedPlantProfileIndex = path.join(
+  root,
+  "apps",
+  "garden-x",
+  "src",
+  "generated",
+  "garden-plant-profile-index.ts",
+);
 const gardenXProjectRef = "fnhggqqnkhkrfwmnsqmy";
+const PUBLIC_TAG_EXCLUSIONS = /owned seed|home grown|user zero|uruq|packet|inventory/i;
+const NON_CULTIVAR_DESCRIPTORS = /\bpacket\b|species pending|cultivar pending|identity unresolved/i;
+
+function publicCultivar(plant) {
+  const variety = typeof plant.variety === "string" ? plant.variety.trim() : "";
+  if (!variety || NON_CULTIVAR_DESCRIPTORS.test(variety)) return null;
+  return variety;
+}
 
 // These stable Garden system-definition keys are explicitly linked to the
 // corresponding machine-inventory model records. Custom definitions are not
@@ -59,6 +75,63 @@ const plantFiles = [
   "data/plants-expansion-wave-2.json",
   "data/plants-expansion-wave-3.json",
   "data/plants-expansion-wave-4.json",
+  "data/plants-expansion-wave-5.json",
+  "data/plants-expansion-wave-6.json",
+  "data/plants-expansion-wave-7.json",
+  "data/plants-expansion-wave-8.json",
+  "data/plants-expansion-wave-9.json",
+  "data/plants-expansion-wave-10.json",
+  "data/plants-expansion-wave-11.json",
+  "data/plants-expansion-wave-12.json",
+  "data/plants-expansion-wave-13.json",
+  "data/plants-expansion-wave-14.json",
+  "data/plants-expansion-wave-15.json",
+  "data/plants-expansion-wave-16.json",
+  "data/plants-expansion-wave-17.json",
+  "data/plants-expansion-wave-18.json",
+  "data/plants-expansion-wave-19.json",
+  "data/plants-expansion-wave-20.json",
+  "data/plants-expansion-wave-21.json",
+  "data/plants-expansion-wave-22.json",
+  "data/plants-expansion-wave-23.json",
+  "data/plants-expansion-wave-24.json",
+  "data/plants-expansion-wave-25.json",
+  "data/plants-expansion-wave-26.json",
+  "data/plants-expansion-wave-27.json",
+  "data/plants-expansion-wave-28.json",
+  "data/plants-expansion-wave-29.json",
+  "data/plants-expansion-wave-30.json",
+  "data/plants-expansion-wave-31.json",
+  "data/plants-expansion-wave-32.json",
+  "data/plants-expansion-wave-33.json",
+  "data/plants-expansion-wave-34.json",
+  "data/plants-expansion-wave-35.json",
+  "data/plants-expansion-wave-36.json",
+  "data/plants-expansion-wave-37.json",
+  "data/plants-expansion-wave-38.json",
+  "data/plants-expansion-wave-39.json",
+  "data/plants-expansion-wave-40.json",
+  "data/plants-expansion-wave-41.json",
+  "data/plants-expansion-wave-42.json",
+  "data/plants-expansion-wave-43.json",
+  "data/plants-expansion-wave-44.json",
+  "data/plants-expansion-wave-45.json",
+  "data/plants-expansion-wave-46.json",
+  "data/plants-expansion-wave-47.json",
+  "data/plants-expansion-wave-48.json",
+  "data/plants-expansion-wave-49.json",
+  "data/plants-expansion-wave-50.json",
+  "data/plants-expansion-wave-51.json",
+  "data/plants-expansion-wave-52.json",
+  "data/plants-expansion-wave-53.json",
+  "data/plants-expansion-wave-54.json",
+  "data/plants-expansion-wave-55.json",
+  "data/plants-expansion-wave-56.json",
+  "data/plants-expansion-wave-57.json",
+  "data/plants-expansion-wave-58.json",
+  "data/plants-expansion-wave-59.json",
+  "data/plants-expansion-wave-60.json",
+  "data/plants-expansion-wave-61.json",
   "data/plants-requests.json",
 ];
 
@@ -97,6 +170,63 @@ const dataFiles = [
   "data/sources-expansion-wave-2.json",
   "data/sources-expansion-wave-3.json",
   "data/sources-expansion-wave-4.json",
+  "data/sources-expansion-wave-5.json",
+  "data/sources-expansion-wave-6.json",
+  "data/sources-expansion-wave-7.json",
+  "data/sources-expansion-wave-8.json",
+  "data/sources-expansion-wave-9.json",
+  "data/sources-expansion-wave-10.json",
+  "data/sources-expansion-wave-11.json",
+  "data/sources-expansion-wave-12.json",
+  "data/sources-expansion-wave-13.json",
+  "data/sources-expansion-wave-14.json",
+  "data/sources-expansion-wave-15.json",
+  "data/sources-expansion-wave-16.json",
+  "data/sources-expansion-wave-17.json",
+  "data/sources-expansion-wave-18.json",
+  "data/sources-expansion-wave-19.json",
+  "data/sources-expansion-wave-20.json",
+  "data/sources-expansion-wave-21.json",
+  "data/sources-expansion-wave-22.json",
+  "data/sources-expansion-wave-23.json",
+  "data/sources-expansion-wave-24.json",
+  "data/sources-expansion-wave-25.json",
+  "data/sources-expansion-wave-26.json",
+  "data/sources-expansion-wave-27.json",
+  "data/sources-expansion-wave-28.json",
+  "data/sources-expansion-wave-29.json",
+  "data/sources-expansion-wave-30.json",
+  "data/sources-expansion-wave-31.json",
+  "data/sources-expansion-wave-32.json",
+  "data/sources-expansion-wave-33.json",
+  "data/sources-expansion-wave-34.json",
+  "data/sources-expansion-wave-35.json",
+  "data/sources-expansion-wave-36.json",
+  "data/sources-expansion-wave-37.json",
+  "data/sources-expansion-wave-38.json",
+  "data/sources-expansion-wave-39.json",
+  "data/sources-expansion-wave-40.json",
+  "data/sources-expansion-wave-41.json",
+  "data/sources-expansion-wave-42.json",
+  "data/sources-expansion-wave-43.json",
+  "data/sources-expansion-wave-44.json",
+  "data/sources-expansion-wave-45.json",
+  "data/sources-expansion-wave-46.json",
+  "data/sources-expansion-wave-47.json",
+  "data/sources-expansion-wave-48.json",
+  "data/sources-expansion-wave-49.json",
+  "data/sources-expansion-wave-50.json",
+  "data/sources-expansion-wave-51.json",
+  "data/sources-expansion-wave-52.json",
+  "data/sources-expansion-wave-53.json",
+  "data/sources-expansion-wave-54.json",
+  "data/sources-expansion-wave-55.json",
+  "data/sources-expansion-wave-56.json",
+  "data/sources-expansion-wave-57.json",
+  "data/sources-expansion-wave-58.json",
+  "data/sources-expansion-wave-59.json",
+  "data/sources-expansion-wave-60.json",
+  "data/sources-expansion-wave-61.json",
   "data/sources-requests.json",
   "data/translations-es.json",
   "data/translations-owned-seeds-es.json",
@@ -106,6 +236,63 @@ const dataFiles = [
   "data/translations-expansion-wave-2-es.json",
   "data/translations-expansion-wave-3-es.json",
   "data/translations-expansion-wave-4-es.json",
+  "data/translations-expansion-wave-5-es.json",
+  "data/translations-expansion-wave-6-es.json",
+  "data/translations-expansion-wave-7-es.json",
+  "data/translations-expansion-wave-8-es.json",
+  "data/translations-expansion-wave-9-es.json",
+  "data/translations-expansion-wave-10-es.json",
+  "data/translations-expansion-wave-11-es.json",
+  "data/translations-expansion-wave-12-es.json",
+  "data/translations-expansion-wave-13-es.json",
+  "data/translations-expansion-wave-14-es.json",
+  "data/translations-expansion-wave-15-es.json",
+  "data/translations-expansion-wave-16-es.json",
+  "data/translations-expansion-wave-17-es.json",
+  "data/translations-expansion-wave-18-es.json",
+  "data/translations-expansion-wave-19-es.json",
+  "data/translations-expansion-wave-20-es.json",
+  "data/translations-expansion-wave-21-es.json",
+  "data/translations-expansion-wave-22-es.json",
+  "data/translations-expansion-wave-23-es.json",
+  "data/translations-expansion-wave-24-es.json",
+  "data/translations-expansion-wave-25-es.json",
+  "data/translations-expansion-wave-26-es.json",
+  "data/translations-expansion-wave-27-es.json",
+  "data/translations-expansion-wave-28-es.json",
+  "data/translations-expansion-wave-29-es.json",
+  "data/translations-expansion-wave-30-es.json",
+  "data/translations-expansion-wave-31-es.json",
+  "data/translations-expansion-wave-32-es.json",
+  "data/translations-expansion-wave-33-es.json",
+  "data/translations-expansion-wave-34-es.json",
+  "data/translations-expansion-wave-35-es.json",
+  "data/translations-expansion-wave-36-es.json",
+  "data/translations-expansion-wave-37-es.json",
+  "data/translations-expansion-wave-38-es.json",
+  "data/translations-expansion-wave-39-es.json",
+  "data/translations-expansion-wave-40-es.json",
+  "data/translations-expansion-wave-41-es.json",
+  "data/translations-expansion-wave-42-es.json",
+  "data/translations-expansion-wave-43-es.json",
+  "data/translations-expansion-wave-44-es.json",
+  "data/translations-expansion-wave-45-es.json",
+  "data/translations-expansion-wave-46-es.json",
+  "data/translations-expansion-wave-47-es.json",
+  "data/translations-expansion-wave-48-es.json",
+  "data/translations-expansion-wave-49-es.json",
+  "data/translations-expansion-wave-50-es.json",
+  "data/translations-expansion-wave-51-es.json",
+  "data/translations-expansion-wave-52-es.json",
+  "data/translations-expansion-wave-53-es.json",
+  "data/translations-expansion-wave-54-es.json",
+  "data/translations-expansion-wave-55-es.json",
+  "data/translations-expansion-wave-56-es.json",
+  "data/translations-expansion-wave-57-es.json",
+  "data/translations-expansion-wave-58-es.json",
+  "data/translations-expansion-wave-59-es.json",
+  "data/translations-expansion-wave-60-es.json",
+  "data/translations-expansion-wave-61-es.json",
   "data/translations-requests-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
@@ -116,6 +303,54 @@ const dataFiles = [
   "data/seed-profiles-expansion-wave-2.json",
   "data/seed-profiles-expansion-wave-3.json",
   "data/seed-profiles-expansion-wave-4.json",
+  "data/seed-profiles-expansion-wave-5.json",
+  "data/seed-profiles-expansion-wave-6.json",
+  "data/seed-profiles-expansion-wave-7.json",
+  "data/seed-profiles-expansion-wave-8.json",
+  "data/seed-profiles-expansion-wave-9.json",
+  "data/seed-profiles-expansion-wave-10.json",
+  "data/seed-profiles-expansion-wave-13.json",
+  "data/seed-profiles-expansion-wave-15.json",
+  "data/seed-profiles-expansion-wave-16.json",
+  "data/seed-profiles-expansion-wave-17.json",
+  "data/seed-profiles-expansion-wave-18.json",
+  "data/seed-profiles-expansion-wave-19.json",
+  "data/seed-profiles-expansion-wave-20.json",
+  "data/seed-profiles-expansion-wave-21.json",
+  "data/seed-profiles-expansion-wave-23.json",
+  "data/seed-profiles-expansion-wave-24.json",
+  "data/seed-profiles-expansion-wave-25.json",
+  "data/seed-profiles-expansion-wave-26.json",
+  "data/seed-profiles-expansion-wave-28.json",
+  "data/seed-profiles-expansion-wave-29.json",
+  "data/seed-profiles-expansion-wave-30.json",
+  "data/seed-profiles-expansion-wave-31.json",
+  "data/seed-profiles-expansion-wave-32.json",
+  "data/seed-profiles-expansion-wave-37.json",
+  "data/seed-profiles-expansion-wave-38.json",
+  "data/seed-profiles-expansion-wave-39.json",
+  "data/seed-profiles-expansion-wave-40.json",
+  "data/seed-profiles-expansion-wave-41.json",
+  "data/seed-profiles-expansion-wave-42.json",
+  "data/seed-profiles-expansion-wave-43.json",
+  "data/seed-profiles-expansion-wave-44.json",
+  "data/seed-profiles-expansion-wave-45.json",
+  "data/seed-profiles-expansion-wave-46.json",
+  "data/seed-profiles-expansion-wave-47.json",
+  "data/seed-profiles-expansion-wave-48.json",
+  "data/seed-profiles-expansion-wave-49.json",
+  "data/seed-profiles-expansion-wave-50.json",
+  "data/seed-profiles-expansion-wave-51.json",
+  "data/seed-profiles-expansion-wave-52.json",
+  "data/seed-profiles-expansion-wave-53.json",
+  "data/seed-profiles-expansion-wave-54.json",
+  "data/seed-profiles-expansion-wave-56.json",
+  "data/seed-profiles-expansion-wave-57.json",
+  "data/seed-profiles-expansion-wave-58.json",
+  "data/seed-profiles-expansion-wave-59.json",
+  "data/seed-profiles-expansion-wave-60.json",
+  "data/seed-profiles-expansion-wave-61.json",
+  "data/propagation-guidance-v1.json",
 ];
 
 const seedProfileFiles = [
@@ -124,6 +359,48 @@ const seedProfileFiles = [
   "data/seed-profiles-expansion-wave-2.json",
   "data/seed-profiles-expansion-wave-3.json",
   "data/seed-profiles-expansion-wave-4.json",
+  "data/seed-profiles-expansion-wave-5.json",
+  "data/seed-profiles-expansion-wave-6.json",
+  "data/seed-profiles-expansion-wave-7.json",
+  "data/seed-profiles-expansion-wave-8.json",
+  "data/seed-profiles-expansion-wave-9.json",
+  "data/seed-profiles-expansion-wave-10.json",
+  "data/seed-profiles-expansion-wave-13.json",
+  "data/seed-profiles-expansion-wave-15.json",
+  "data/seed-profiles-expansion-wave-16.json",
+  "data/seed-profiles-expansion-wave-17.json",
+  "data/seed-profiles-expansion-wave-18.json",
+  "data/seed-profiles-expansion-wave-19.json",
+  "data/seed-profiles-expansion-wave-20.json",
+  "data/seed-profiles-expansion-wave-21.json",
+  "data/seed-profiles-expansion-wave-23.json",
+  "data/seed-profiles-expansion-wave-24.json",
+  "data/seed-profiles-expansion-wave-25.json",
+  "data/seed-profiles-expansion-wave-26.json",
+  "data/seed-profiles-expansion-wave-28.json",
+  "data/seed-profiles-expansion-wave-29.json",
+  "data/seed-profiles-expansion-wave-30.json",
+  "data/seed-profiles-expansion-wave-31.json",
+  "data/seed-profiles-expansion-wave-32.json",
+  "data/seed-profiles-expansion-wave-37.json",
+  "data/seed-profiles-expansion-wave-43.json",
+  "data/seed-profiles-expansion-wave-44.json",
+  "data/seed-profiles-expansion-wave-45.json",
+  "data/seed-profiles-expansion-wave-46.json",
+  "data/seed-profiles-expansion-wave-47.json",
+  "data/seed-profiles-expansion-wave-48.json",
+  "data/seed-profiles-expansion-wave-49.json",
+  "data/seed-profiles-expansion-wave-50.json",
+  "data/seed-profiles-expansion-wave-51.json",
+  "data/seed-profiles-expansion-wave-52.json",
+  "data/seed-profiles-expansion-wave-53.json",
+  "data/seed-profiles-expansion-wave-54.json",
+  "data/seed-profiles-expansion-wave-56.json",
+  "data/seed-profiles-expansion-wave-57.json",
+  "data/seed-profiles-expansion-wave-58.json",
+  "data/seed-profiles-expansion-wave-59.json",
+  "data/seed-profiles-expansion-wave-60.json",
+  "data/seed-profiles-expansion-wave-61.json",
 ];
 
 function readJson(relativePath) {
@@ -193,36 +470,45 @@ function uniqueStrings(values) {
 
 function metricValue(plant, labels) {
   const metric = (plant.metrics || []).find((item) =>
-    labels.includes(item.label),
+    labels.includes(item.label) &&
+    !/user\s*zero|owned|inventory|purchase|bare[ -]?root/i.test(
+      `${item.label || ""} ${item.value || ""} ${item.note || ""}`,
+    ),
   );
   return metric?.value || null;
 }
 
-function sectionItems(plant, sectionNames) {
+function sectionItems(plant, sectionNames, sourceById = null) {
   return uniqueStrings(
-    sectionNames.flatMap((name) => [
-      plant.sections?.[name]?.short,
-      ...(plant.sections?.[name]?.items || []),
-    ]),
+    sectionNames.flatMap((name) => {
+      const section = plant.sections?.[name];
+      if (
+        sourceById &&
+        !(section?.sourceIds || []).every((sourceId) => sourceById.has(sourceId))
+      ) {
+        return [];
+      }
+      return [section?.short, ...(section?.items || [])];
+    }),
   );
 }
 
-function firstTemperature(plant) {
-  const values = sectionItems(plant, ["germination", "hydroponics"]);
+function firstTemperature(plant, sourceById) {
+  const values = sectionItems(plant, ["germination", "hydroponics"], sourceById);
   return (
     values.find((value) => /temperature|°f|°c|warm|cool/i.test(value)) || null
   );
 }
 
 function buildReference(plant, neighborData, sourceById) {
-  const problems = sectionItems(plant, ["problems"]);
+  const problems = sectionItems(plant, ["problems"], sourceById);
   const recommendations = uniqueStrings([
     ...sectionItems(plant, [
       "pruning",
       "harvest",
       "germination",
       "hydroponics",
-    ]),
+    ], sourceById),
   ]).filter((value) => !problems.includes(value));
   const goodNeighborIds = uniqueStrings(
     (neighborData.meta?.researchPairs || [])
@@ -252,15 +538,18 @@ function buildReference(plant, neighborData, sourceById) {
       );
     }),
   ]);
+  const publicSourceIds = sourceIds.filter((id) => sourceById.has(id));
   return {
     germination: metricValue(plant, ["Germination", "Best germination"]),
     light: metricValue(plant, ["Light"]),
-    temperature: firstTemperature(plant),
+    temperature: firstTemperature(plant, sourceById),
     ph: metricValue(plant, ["Hydro pH", "Hydro pH / EC"]),
     ec: metricValue(plant, ["Hydro EC", "Hydro pH / EC"]),
     spacing: metricValue(plant, ["Leaf spacing"]),
     pruning:
-      metricValue(plant, ["Pruning"]) || plant.sections?.pruning?.short || null,
+      metricValue(plant, ["Pruning"]) ||
+      sectionItems(plant, ["pruning"], sourceById)[0] ||
+      null,
     harvest:
       metricValue(plant, [
         "First harvest",
@@ -268,15 +557,15 @@ function buildReference(plant, neighborData, sourceById) {
         "Harvest style",
         "Leaf harvest",
       ]) ||
-      plant.sections?.harvest?.short ||
+      sectionItems(plant, ["harvest"], sourceById)[0] ||
       null,
     expectedCycle: null,
     commonProblems: problems,
     recommendations,
     goodNeighborIds,
     betterSeparateIds: [],
-    sourceIds,
-    sources: sourceIds
+    sourceIds: publicSourceIds,
+    sources: publicSourceIds
       .map((id) => sourceById.get(id))
       .filter(Boolean)
       .map((source) => ({
@@ -300,6 +589,63 @@ function buildCatalogManifest(plants) {
     "data/sources-expansion-wave-2.json",
     "data/sources-expansion-wave-3.json",
     "data/sources-expansion-wave-4.json",
+    "data/sources-expansion-wave-5.json",
+    "data/sources-expansion-wave-6.json",
+    "data/sources-expansion-wave-7.json",
+    "data/sources-expansion-wave-8.json",
+    "data/sources-expansion-wave-9.json",
+    "data/sources-expansion-wave-10.json",
+    "data/sources-expansion-wave-11.json",
+    "data/sources-expansion-wave-12.json",
+    "data/sources-expansion-wave-13.json",
+    "data/sources-expansion-wave-14.json",
+    "data/sources-expansion-wave-15.json",
+    "data/sources-expansion-wave-16.json",
+    "data/sources-expansion-wave-17.json",
+    "data/sources-expansion-wave-18.json",
+    "data/sources-expansion-wave-19.json",
+    "data/sources-expansion-wave-20.json",
+    "data/sources-expansion-wave-21.json",
+    "data/sources-expansion-wave-22.json",
+    "data/sources-expansion-wave-23.json",
+    "data/sources-expansion-wave-24.json",
+    "data/sources-expansion-wave-25.json",
+    "data/sources-expansion-wave-26.json",
+    "data/sources-expansion-wave-27.json",
+    "data/sources-expansion-wave-28.json",
+    "data/sources-expansion-wave-29.json",
+    "data/sources-expansion-wave-30.json",
+    "data/sources-expansion-wave-31.json",
+    "data/sources-expansion-wave-32.json",
+    "data/sources-expansion-wave-33.json",
+    "data/sources-expansion-wave-34.json",
+    "data/sources-expansion-wave-35.json",
+    "data/sources-expansion-wave-36.json",
+    "data/sources-expansion-wave-37.json",
+    "data/sources-expansion-wave-38.json",
+    "data/sources-expansion-wave-39.json",
+    "data/sources-expansion-wave-40.json",
+    "data/sources-expansion-wave-41.json",
+    "data/sources-expansion-wave-42.json",
+    "data/sources-expansion-wave-43.json",
+    "data/sources-expansion-wave-44.json",
+    "data/sources-expansion-wave-45.json",
+    "data/sources-expansion-wave-46.json",
+    "data/sources-expansion-wave-47.json",
+    "data/sources-expansion-wave-48.json",
+    "data/sources-expansion-wave-49.json",
+    "data/sources-expansion-wave-50.json",
+    "data/sources-expansion-wave-51.json",
+    "data/sources-expansion-wave-52.json",
+    "data/sources-expansion-wave-53.json",
+    "data/sources-expansion-wave-54.json",
+    "data/sources-expansion-wave-55.json",
+    "data/sources-expansion-wave-56.json",
+    "data/sources-expansion-wave-57.json",
+    "data/sources-expansion-wave-58.json",
+    "data/sources-expansion-wave-59.json",
+    "data/sources-expansion-wave-60.json",
+    "data/sources-expansion-wave-61.json",
     "data/sources-requests.json",
   ].flatMap((file) => filterPublicSources(file));
   const sourceById = new Map(
@@ -312,14 +658,14 @@ function buildCatalogManifest(plants) {
       commonName: plant.name,
       spanishName: plant.spanishName || null,
       scientificName: plant.scientificName || null,
-      cultivar: plant.variety || null,
+      cultivar: publicCultivar(plant),
       aliases: uniqueStrings([
         plant.name,
         plant.spanishName,
         plant.scientificName,
-        plant.variety,
-        ...(plant.tags || []),
-      ]),
+        publicCultivar(plant),
+        ...(plant.tags || []).filter((tag) => !PUBLIC_TAG_EXCLUSIONS.test(tag)),
+      ]).filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
       category: plant.category || "uncategorized",
       status: "active",
       provenance: uniqueStrings([
@@ -331,7 +677,7 @@ function buildCatalogManifest(plants) {
             ? claim.evidence.flatMap((item) => item.sourceIds)
             : [],
         ),
-      ]),
+      ]).filter((id) => knownSourceIds.has(id)),
       guidanceProfile: neighborData.profiles?.[plant.id] || null,
       ...(Object.hasOwn(plant, "compatibilityProfile")
         ? {
@@ -374,6 +720,158 @@ function writeGeneratedManifest(manifest) {
   fs.writeFileSync(
     generatedManifest,
     `// Generated by scripts/publish-gardenpedia.mjs. Do not edit manually.\nexport const gardenLibraryManifest = ${JSON.stringify(manifest, null, 2)} as const;\n\nexport type GardenLibraryManifest = typeof gardenLibraryManifest;\n`,
+  );
+}
+
+function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
+  const publicProfileFiles = plantFiles.filter(
+    (file) =>
+      file === "data/plants.json" ||
+      /data\/plants-expansion-(?:batch-[ab]1|wave-\d+)\.json$/.test(file),
+  );
+  const publicPlants = publicProfileFiles.flatMap((file) => readJson(file));
+  if (
+    new Set(publicPlants.map((plant) => plant.id)).size !== publicPlants.length
+  ) {
+    throw new Error("Public Plant Profile inputs contain duplicate identity IDs.");
+  }
+  const translations = new Map();
+  const publicTranslationFiles = [
+    "data/translations-es.json",
+    ...dataFiles.filter(
+      (file) =>
+        /^data\/translations-expansion-batch-[ab]1-es\.json$/.test(file) ||
+        /^data\/translations-expansion-wave-\d+-es\.json$/.test(file),
+    ),
+  ];
+  for (const file of publicTranslationFiles) {
+    for (const [id, record] of Object.entries(readJson(file))) {
+      translations.set(id, { ...(translations.get(id) || {}), ...record });
+    }
+  }
+
+  const textOf = (value, locale) => {
+    if (typeof value === "string") return value;
+    if (value && typeof value === "object")
+      return value[locale] || value.en || "";
+    return "";
+  };
+  const publicText = (value, locale) => {
+    const text = textOf(value, locale);
+    return text
+      .replace(/User Zero[^.!?]*(?:[.!?]|$)/gi, "")
+      .replace(/El material de referencia es planta a raíz desnuda, no semilla;\s*/gi, "")
+      .replace(
+        /El contexto del producto identifica material de fresa a raíz desnuda\.\s*Por eso no se publican instrucciones de semilla; la producción específica de estolones y propagación del cultivar siguen pendientes\./gi,
+        "La propagación específica del cultivar sigue pendiente; no se infiere un protocolo de semilla.",
+      )
+      .replace(/la condición de llegada bare-root también es evidencia prioritaria\.?/gi, "")
+      .replace(/el origen del stock a raíz desnuda\s*/gi, "")
+      .replace(/owner_?id|user_?id|seed_package_?id|system_instance_?id/gi, "")
+      .trim();
+  };
+  const publicSourceIds = new Set(
+    catalogManifest.entries.flatMap((entry) =>
+      entry.reference.sources.map((source) => source.id),
+    ),
+  );
+  const itemsOf = (items, locale, translatedItems) => {
+    const candidates = Array.isArray(translatedItems) ? translatedItems : items;
+    return uniqueStrings(
+      (Array.isArray(candidates) ? candidates : []).map((item) =>
+        typeof item === "string"
+          ? publicText(item, locale)
+          : publicText(item?.text ?? item, locale),
+      ).filter(Boolean),
+    );
+  };
+  const publicMetric = (metric) =>
+    !/germination|sowing|seed|owned|user zero|inventory|purchase|garden position|yCube/i.test(
+      `${metric?.label || ""} ${metric?.value || ""} ${metric?.note || ""}`,
+    );
+  const profiles = Object.fromEntries(
+    publicPlants.map((plant) => {
+      const translated = translations.get(plant.id) || {};
+      const sections = Object.fromEntries(
+        Object.entries(plant.sections || {})
+          .filter(([id]) => !["germination", "sowing", "seed"].includes(id))
+          .filter(([, section]) =>
+            (section.sourceIds || []).every((sourceId) => publicSourceIds.has(sourceId)),
+          )
+          .map(([id, section]) => {
+          const translatedSection = translated.sections?.[id] || {};
+          const localized = (locale) => ({
+            short:
+              locale === "es"
+                ? publicText(translatedSection.short, "es") || publicText(section.short, "en")
+                : publicText(section.short, "en"),
+            guidance:
+              locale === "es"
+                ? publicText(translatedSection.guidance, "es") ||
+                  publicText(section.guidance, "en")
+                : publicText(section.guidance, "en"),
+            items: itemsOf(
+              section.items,
+              locale,
+              locale === "es" ? translatedSection.items : undefined,
+            ),
+            avoid:
+              locale === "es"
+                ? publicText(translatedSection.avoid, "es") || publicText(section.avoid, "en")
+                : publicText(section.avoid, "en"),
+            context:
+              locale === "es"
+                ? publicText(translatedSection.context, "es") ||
+                  publicText(section.context, "en")
+                : publicText(section.context, "en"),
+          });
+          return [
+            id,
+            {
+              evidenceType: section.evidenceType || "needs_validation",
+              confidence: section.confidence || "pending",
+              sourceIds: uniqueStrings(section.sourceIds || []),
+              en: localized("en"),
+              es: localized("es"),
+            },
+          ];
+        }),
+      );
+      const metrics = (locale) =>
+        (locale === "es" ? translated.metrics || plant.metrics : plant.metrics)
+          ?.filter(publicMetric)
+          .map((metric) => ({
+            label: textOf(metric.label, locale),
+            value: textOf(metric.value, locale),
+            note: textOf(metric.note, locale),
+          })) || [];
+      return [
+        plant.id,
+        {
+          summary: {
+            en:
+              publicText(plant.summary, "en") ||
+              publicText(plant.sections?.identity?.short, "en"),
+            es:
+              publicText(translated.summary, "es") ||
+              publicText(translated.sections?.identity?.short, "es") ||
+              publicText(plant.sections?.identity?.short, "en"),
+          },
+          metrics: { en: metrics("en"), es: metrics("es") },
+          sections,
+        },
+      ];
+    }),
+  );
+  const publishedIds = new Set(allPlants.map((plant) => plant.id));
+  for (const id of Object.keys(profiles)) {
+    if (!publishedIds.has(id))
+      throw new Error(`Plant profile index contains unpublished identity: ${id}`);
+  }
+  fs.mkdirSync(path.dirname(generatedPlantProfileIndex), { recursive: true });
+  fs.writeFileSync(
+    generatedPlantProfileIndex,
+    `// Generated by scripts/publish-gardenpedia.mjs from public editorial Plant Profiles only.\nexport const gardenPlantProfileCatalog = ${JSON.stringify(profiles, null, 2)} as const;\n\nexport type GardenPlantProfileCatalog = typeof gardenPlantProfileCatalog;\n`,
   );
 }
 
@@ -464,9 +962,9 @@ function filterPublicSources(relativePath) {
 function loadPublicationManifest() {
   const allPlants = plantFiles.flatMap((file) => readJson(file));
   const ids = new Set(allPlants.map((plant) => plant.id));
-  if (allPlants.length < 43 || ids.size !== allPlants.length) {
+  if (allPlants.length < 500 || ids.size !== allPlants.length) {
     throw new Error(
-      `Gardenpedia library must contain at least 43 unique varieties; got ${allPlants.length}/${ids.size}.`,
+      `Gardenpedia library must contain at least 500 unique varieties; got ${allPlants.length}/${ids.size}.`,
     );
   }
   const catalogManifest = buildCatalogManifest(allPlants);
@@ -475,8 +973,9 @@ function loadPublicationManifest() {
 }
 
 function prepareGeneratedArtifacts() {
-  const { ids, catalogManifest } = loadPublicationManifest();
+  const { ids, allPlants, catalogManifest } = loadPublicationManifest();
   writeGeneratedManifest(catalogManifest);
+  writeGeneratedPlantProfileIndex(allPlants, catalogManifest);
   writeGeneratedMachineFacts();
   writeGeneratedSeedProfileIndex();
   console.log(
@@ -485,7 +984,7 @@ function prepareGeneratedArtifacts() {
 }
 
 function prepareLegacy() {
-  const { ids, catalogManifest } = loadPublicationManifest();
+  const { ids, allPlants, catalogManifest } = loadPublicationManifest();
 
   fs.rmSync(destination, { recursive: true, force: true });
   fs.mkdirSync(destination, { recursive: true });
@@ -518,6 +1017,7 @@ function prepareLegacy() {
   }
   writeJson("data/catalog-manifest.json", catalogManifest);
   writeGeneratedManifest(catalogManifest);
+  writeGeneratedPlantProfileIndex(allPlants, catalogManifest);
   writeGeneratedMachineFacts();
   writeJson("data/seed-inventory.json", {
     capturedAt: null,

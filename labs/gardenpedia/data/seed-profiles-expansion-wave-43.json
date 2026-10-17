@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "gardenpedia_seed_profile_v0",
+  "profiles": {
+    "water-spinach-ipomoea-aquatica": {
+      "plantIdentityId": "water-spinach-ipomoea-aquatica",
+      "label": { "en": "SEED PROFILE", "es": "PERFIL DE SEMILLA" },
+      "summary": {
+        "en": "University of Georgia Extension documents water spinach grown from seed in controlled greenhouse/high-tunnel trials. The source gives a trial-specific seedling-to-transplant timeline, but not a general sowing depth, germination temperature, or days-to-emergence; those fields remain unclaimed. Check current local rules before obtaining or growing this potentially invasive species.",
+        "es": "University of Georgia Extension documenta espinaca de agua cultivada desde semilla en ensayos controlados de invernadero y túnel alto. La fuente ofrece un plazo de ensayo desde siembra hasta trasplante, pero no una profundidad general, temperatura de germinación ni días hasta emergencia; esos campos quedan sin afirmar. Verifica la normativa local vigente antes de adquirir o cultivar esta especie potencialmente invasora."
+      },
+      "quickFacts": [
+        {
+          "key": "method", "label": { "en": "Propagation", "es": "Propagación" },
+          "value": { "en": "Seed-grown in UGA trials", "es": "Cultivada desde semilla en ensayos de UGA" },
+          "note": { "en": "Species-level, controlled regional trials; not a commercial packet guarantee", "es": "Ensayos regionales controlados a nivel de especie; no es garantía de un paquete comercial" },
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"]
+        },
+        {
+          "key": "establishment", "label": { "en": "Trial establishment timing", "es": "Plazo de establecimiento en el ensayo" },
+          "value": { "en": "Seedlings transplanted 3–4 weeks after sowing in one Georgia high-tunnel study", "es": "Plántulas trasplantadas 3–4 semanas después de la siembra en un ensayo de túnel alto de Georgia" },
+          "note": { "en": "This is sowing-to-transplant timing, not germination time or a universal schedule", "es": "Es el plazo desde siembra hasta trasplante, no el tiempo de germinación ni un calendario universal" },
+          "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uga-water-spinach-production-wave43"]
+        }
+      ],
+      "sections": [
+        {
+          "key": "sowing", "title": { "en": "Sowing", "es": "Siembra" }, "icon": "🌱",
+          "short": { "en": "Seed-grown in controlled trials", "es": "Cultivada desde semilla en ensayos controlados" },
+          "guidance": { "en": "UGA reports water spinach production from seed in its Georgia trials. The article does not establish sowing depth, a home-germination medium, or a universal sowing method. Do not fill those gaps by borrowing recommendations for sweet potato or other morning glories.", "es": "UGA informa producción de espinaca de agua desde semilla en sus ensayos de Georgia. El artículo no establece profundidad, medio doméstico de germinación ni método universal de siembra. No completes esos vacíos tomando recomendaciones de batata u otras campanillas." },
+          "items": [{ "text": { "en": "The UGA study used greenhouse-raised seedlings before moving them into enclosed production; it does not establish that open-water sowing is safe or lawful.", "es": "El estudio de UGA produjo plántulas en invernadero antes de trasladarlas a producción cerrada; no establece que sembrar en aguas abiertas sea seguro o legal." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"] }],
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"]
+        },
+        {
+          "key": "germination", "title": { "en": "Germination", "es": "Germinación" }, "icon": "⏳",
+          "short": { "en": "Timing and temperature not established", "es": "Tiempo y temperatura no establecidos" },
+          "guidance": { "en": "The source reports approximately 90% germination in one Georgia high-tunnel study but does not provide a general days-to-emergence range or germination temperature. Treat the reported rate as that study's result, not a seed-lot expectation.", "es": "La fuente informa cerca de 90 % de germinación en un ensayo de túnel alto de Georgia, pero no ofrece un rango general de días hasta emergencia ni temperatura de germinación. Ese porcentaje corresponde al estudio, no a una expectativa para cualquier lote." },
+          "items": [{ "text": { "en": "No light-versus-dark germination requirement is established by the reviewed source.", "es": "La fuente revisada no establece un requisito de germinación con luz u oscuridad." }, "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }],
+          "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["uga-water-spinach-production-wave43"]
+        },
+        {
+          "key": "afterEmergence", "title": { "en": "After emergence", "es": "Después de emerger" }, "icon": "🌿",
+          "short": { "en": "Follow a contained production pathway", "es": "Sigue una vía de producción contenida" },
+          "guidance": { "en": "In UGA's work, seedlings were started in a greenhouse and transferred to enclosed greenhouse or high-tunnel production. The article does not define a universal leaf-count or root-length transplant threshold. Containment is essential because fragments can root and spread.", "es": "En el trabajo de UGA, las plántulas comenzaron en invernadero y pasaron a producción cerrada en invernadero o túnel alto. El artículo no define un umbral universal de número de hojas o longitud de raíces para trasplantar. La contención es esencial porque los fragmentos pueden enraizar y dispersarse." },
+          "items": [{ "text": { "en": "One study transplanted seedlings 3–4 weeks after sowing; another moved seedlings from 1-inch rockwool cubes when roots began emerging from the bottoms after about 2–3 weeks. These are distinct trial contexts, not interchangeable universal thresholds.", "es": "Un estudio trasplantó plántulas 3–4 semanas después de sembrar; otro las movió desde cubos de lana de roca de 1 pulgada cuando las raíces empezaron a salir por debajo, tras unas 2–3 semanas. Son contextos de ensayo distintos, no umbrales universales intercambiables." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"] }],
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"]
+        },
+        {
+          "key": "handling", "title": { "en": "Handling and containment", "es": "Manejo y contención" }, "icon": "⚠️",
+          "short": { "en": "Check local regulation and prevent escape", "es": "Verifica la normativa local y evita escapes" },
+          "guidance": { "en": "Water spinach is regulated differently across jurisdictions and may be invasive. Verify current federal, state, and local rules before sourcing seed. Keep all seed, seedlings, and stem fragments contained; never release or discard them into waterways, storm drains, ponds, or wetlands.", "es": "La regulación de la espinaca de agua varía por jurisdicción y puede ser invasora. Verifica las normas federales, estatales y locales vigentes antes de conseguir semilla. Mantén contenidas semillas, plántulas y fragmentos; nunca los liberes ni deseches en cursos de agua, desagües pluviales, estanques o humedales." },
+          "items": [{ "text": { "en": "UGA's 2026 publication describes state-specific restrictions and ecological spread risk; its legal summary is not a substitute for checking current rules where the grower lives.", "es": "La publicación de UGA de 2026 describe restricciones estatales y riesgo de dispersión ecológica; su resumen legal no sustituye verificar las normas actuales del lugar donde vive quien cultiva." }, "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"] }],
+          "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["uga-water-spinach-production-wave43"]
+        }
+      ]
+    }
+  }
+}

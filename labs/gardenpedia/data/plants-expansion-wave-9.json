@@ -1,0 +1,128 @@
+[
+  {
+    "id": "bronze-arrow-lettuce",
+    "name": "Bronze Arrow Lettuce",
+    "spanishName": "Lechuga Bronze Arrow",
+    "scientificName": "Lactuca sativa",
+    "variety": "Bronze Arrow; named lettuce variety",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["bronze arrow", "bronze arrow lettuce", "lactuca sativa bronze arrow", "lechuga bronze arrow"],
+    "summary": "Bronze Arrow is represented as a named Lactuca sativa variety. Cornell's variety record includes community-submitted observations; those reports are not treated as controlled trial results.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Named variety: Bronze Arrow", "guidance": "Cornell Cooperative Extension maintains a variety record for Bronze Arrow lettuce. The species identity is Lactuca sativa; community reports do not establish a registered cultivar or controlled performance claim.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["cornell-bronze-arrow-500", "kew-lactuca-sativa-500"] },
+      "cultivation": { "short": "Use lettuce crop guidance; variety traits remain limited", "guidance": "General lettuce guidance may inform this variety at crop scope. No exact mature dimensions, heat tolerance, disease resistance, or hydroponic performance is asserted from community observations.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-lettuce", "usu-lettuce"] },
+      "harvest": { "short": "Variety-specific harvest timing not established here", "guidance": "The selected identity record does not provide a controlled maturity estimate. Use the seed supplier's exact packet or trial data when available.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "The selected evidence does not establish hydroponic performance for Bronze Arrow." }, "growthHabits": { "status": "unknown", "reason": "No consistently sourced controlled-vocabulary habit was selected." }, "matureSize": { "height": { "status": "unknown", "reason": "No defensible cultivar dimensions selected." }, "spread": { "status": "unknown", "reason": "No defensible cultivar dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Field spacing is not a hydroponic position count." }, "light": { "status": "unknown", "reason": "Outdoor lettuce guidance is not converted to indoor lamp intensity." } }
+  },
+  {
+    "id": "breen-romaine-lettuce",
+    "name": "Breen Romaine Lettuce",
+    "spanishName": "Lechuga romana Breen",
+    "scientificName": "Lactuca sativa",
+    "variety": "Breen; open-pollinated mini-romaine variety",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["breen", "breen lettuce", "mini romaine breen", "lactuca sativa breen", "lechuga romana breen"],
+    "summary": "Breen is Johnny's named compact red mini-romaine variety. The seller reports an early compact mini head, 45 days to maturity, and an average height near 8 inches; these remain product-scoped claims.",
+    "metrics": [{ "label": "Product-listed maturity", "value": "45 days", "note": "Johnny's estimate from seeding; not a guaranteed indoor harvest date.", "sourceIds": ["johnnys-breen-lettuce-500"] }],
+    "sections": {
+      "identity": { "short": "Named open-pollinated mini-romaine variety", "guidance": "Johnny's identifies Breen as Lactuca sativa, open-pollinated, compact red mini-romaine. It is distinct from generic Romaine and Red Romaine identities.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-breen-lettuce-500", "kew-lactuca-sativa-500"] },
+      "cultivation": { "short": "Compact mini-head habit; seller reports hydroponic performance", "guidance": "Johnny's describes an early compact mini head averaging about 8 inches tall and lists the variety as a hydroponic performer. These are supplier-specific product claims and do not define pod spacing or compatibility with every system.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-breen-lettuce-500"] },
+      "harvest": { "short": "Mini-head or cut-and-come-again use", "guidance": "Johnny's describes Breen for mini heads and also as usable for cut-and-come-again harvest. Its 45-day maturity estimate is product-scoped and not a guaranteed Garden harvest date.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-breen-lettuce-500"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "compatible", "evidence": [{ "sourceIds": ["johnnys-breen-lettuce-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": { "level": "identity" }, "note": "Johnny's labels Breen a hydroponic performer; this is not a system-specific yield guarantee." }] }, "growthHabits": { "status": "known", "value": ["compact"], "evidence": [{ "sourceIds": ["johnnys-breen-lettuce-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": { "level": "identity" }, "note": "Supplier describes an early compact mini head." }] }, "matureSize": { "height": { "status": "unknown", "reason": "The source gives average height for the mini stage, not a mature height range." }, "spread": { "status": "unknown", "reason": "No specific spread value selected." } }, "spacing": { "status": "unknown", "reason": "No pod spacing or universal Garden position count established." }, "light": { "status": "unknown", "reason": "Outdoor crop guidance is not mapped to indoor grow-light intensity." } }
+  },
+  {
+    "id": "muir-lettuce",
+    "name": "Muir Lettuce",
+    "spanishName": "Lechuga Muir",
+    "scientificName": "Lactuca sativa",
+    "variety": "Muir; named open-pollinated Batavian (summer-crisp) variety",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["muir lettuce", "muir batavian", "summer crisp lettuce", "lactuca sativa muir", "lechuga muir"],
+    "summary": "Muir is a named Batavian lettuce variety. Johnny's reports heat tolerance, slower bolting in its summer trials, a compact dense head that can be harvested mini or full-size, and hydroponic performance; these are seller-scoped claims.",
+    "metrics": [{ "label": "Product-listed maturity", "value": "50 days", "note": "Johnny's estimate; conditions and transplant timing affect maturity.", "sourceIds": ["johnnys-muir-lettuce-500"] }],
+    "sections": {
+      "identity": { "short": "Named Batavian lettuce variety", "guidance": "Johnny's lists Muir as Lactuca sativa and technically a Batavian type. This named variety remains distinct from general lettuce or romaine types.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-muir-lettuce-500", "kew-lactuca-sativa-500"] },
+      "cultivation": { "short": "Supplier reports heat tolerance and hydroponic performance", "guidance": "Johnny's describes Muir as heat tolerant and slow to bolt in its summer trials, with dense heads and hydroponic suitability. These are supplier-reported variety claims; they do not establish a precise indoor climate setpoint or system layout.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-muir-lettuce-500"] },
+      "harvest": { "short": "Harvest as a mini head or allow a larger head", "guidance": "Johnny's describes harvest at mini or full-size head stage and lists about 50 days to maturity. The figure is an estimate from the seller, not a guaranteed harvest date.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-muir-lettuce-500"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "compatible", "evidence": [{ "sourceIds": ["johnnys-muir-lettuce-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": { "level": "identity" }, "note": "Johnny's labels Muir a hydroponic performer; no system-specific yield is inferred." }] }, "growthHabits": { "status": "known", "value": ["compact"], "evidence": [{ "sourceIds": ["johnnys-muir-lettuce-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": { "level": "identity" }, "note": "Supplier describes dense heads at small size; compact is used only for the reported mini stage." }] }, "matureSize": { "height": { "status": "unknown", "reason": "No numeric dimensions selected." }, "spread": { "status": "unknown", "reason": "No numeric dimensions selected." } }, "spacing": { "status": "unknown", "reason": "No pod spacing or universal Garden position count established." }, "light": { "status": "unknown", "reason": "Outdoor crop guidance is not mapped to indoor grow-light intensity." } }
+  },
+  {
+    "id": "pandero-romaine-lettuce",
+    "name": "Pandero Romaine Lettuce",
+    "spanishName": "Lechuga romana Pandero",
+    "scientificName": "Lactuca sativa",
+    "variety": "Pandero; supplier-listed red romaine variety",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["pandero", "pandero lettuce", "red romaine pandero", "lactuca sativa pandero", "lechuga romana pandero"],
+    "summary": "Pandero is represented as the named red-romaine lettuce variety listed by Adaptive Seeds. Seller descriptions are kept product-scoped; no cultivar registration, disease resistance, or Garden-system performance is inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Supplier-listed red-romaine variety", "guidance": "Adaptive Seeds lists Pandero as a red-romaine lettuce. Kew provides the accepted species Lactuca sativa; the supplier listing supports the named variety but is not independent cultivar-registration evidence.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["adaptive-pandero-lettuce-500", "kew-lactuca-sativa-500"] },
+      "cultivation": { "short": "Cultivar-specific growing data remain limited", "guidance": "General lettuce guidance may be used at crop scope. No exact Pandero dimensions, heat tolerance, disease resistance, indoor spacing, or hydroponic response is published here.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["adaptive-pandero-lettuce-500", "johnnys-lettuce", "usu-lettuce"] },
+      "harvest": { "short": "Maturity and harvest behavior need cultivar-specific confirmation", "guidance": "The selected sources do not establish a comparable maturity window or repeat-harvest behavior for Pandero in Garden conditions.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "No identity-specific hydroponic evidence selected." }, "growthHabits": { "status": "unknown", "reason": "The red-romaine type is described, but no controlled-vocabulary habit is established for the named product." }, "matureSize": { "height": { "status": "unknown", "reason": "No numeric dimensions selected." }, "spread": { "status": "unknown", "reason": "No numeric dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Field spacing is not converted to system position count." }, "light": { "status": "unknown", "reason": "Outdoor crop guidance is not mapped to indoor lamp intensity." } }
+  },
+  {
+    "id": "lady-murasaki-komatsuna",
+    "name": "Lady Murasaki Komatsuna",
+    "spanishName": "Komatsuna Lady Murasaki",
+    "scientificName": "Brassica rapa",
+    "variety": "Lady Murasaki F1 hybrid",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["lady murasaki", "lady murasaki komatsuna", "komatsuna f1", "brassica rapa lady murasaki", "komatsuna morada"],
+    "summary": "Lady Murasaki is a named F1 komatsuna product from Fedco, within Brassica rapa. Product-level color and maturity statements are not generalized to komatsuna as a species.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Named F1 komatsuna selection", "guidance": "Fedco identifies Lady Murasaki as an F1 komatsuna; Kew accepts Brassica rapa. The hybrid/product designation is retained without treating it as the species name.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["fedco-lady-murasaki-komatsuna-500", "kew-brassica-rapa-500"] },
+      "cultivation": { "short": "Product-specific traits remain supplier scoped", "guidance": "Fedco's listing supports this named product's type and seller-described characteristics. No broad cultivar-family performance, hydroponic suitability, or exact Garden spacing is inferred.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["fedco-lady-murasaki-komatsuna-500"] },
+      "harvest": { "short": "Use supplier maturity as a product estimate only", "guidance": "Any maturity figure on the Fedco product listing is a seller estimate and not a guaranteed indoor or hydroponic harvest date.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["fedco-lady-murasaki-komatsuna-500"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "No evidence establishes this hybrid's hydroponic performance." }, "growthHabits": { "status": "unknown", "reason": "No normalized habit established from the selected evidence." }, "matureSize": { "height": { "status": "unknown", "reason": "No supported cultivar dimensions selected." }, "spread": { "status": "unknown", "reason": "No supported cultivar dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Garden-system position count is not established." }, "light": { "status": "unknown", "reason": "Outdoor crop guidance is not mapped to indoor lamp intensity." } }
+  },
+  {
+    "id": "scarlet-red-tatsoi",
+    "name": "Scarlet Red Tatsoi",
+    "spanishName": "Tatsoi rojo escarlata",
+    "scientificName": "Brassica rapa",
+    "variety": "Scarlet Red Tatsoi; supplier-listed red selection, formal cultivar status not asserted",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["scarlet red tatsoi", "red tatsoi", "brassica rapa scarlet tatsoi", "tatsoi rojo escarlata"],
+    "summary": "Scarlet Red Tatsoi is a supplier-listed red-leaved tatsoi selection within Brassica rapa. Its commercial name is preserved without claiming a formal cultivar registration.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Supplier-listed red tatsoi selection", "guidance": "Hudson Valley Seed Company lists Scarlet Red Tatsoi; Kew accepts Brassica rapa. The product name does not by itself establish formal cultivar registration.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["hudson-valley-scarlet-red-tatsoi-500", "kew-brassica-rapa-500"] },
+      "cultivation": { "short": "Keep supplier instructions at product scope", "guidance": "Supplier instructions support this listed seed selection. Broader Brassica rapa crop guidance may inform general care, but exact dimensions, disease resistance, and hydroponic compatibility are not inferred.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["hudson-valley-scarlet-red-tatsoi-500"] },
+      "harvest": { "short": "Harvest details follow the listed selection's source scope", "guidance": "Use the seed supplier's stated harvest guidance as a product estimate. It is not a guarantee for every climate or indoor system.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["hudson-valley-scarlet-red-tatsoi-500"] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "No selected source establishes hydroponic performance for this supplier-listed selection." }, "growthHabits": { "status": "unknown", "reason": "No normalized mature habit selected." }, "matureSize": { "height": { "status": "unknown", "reason": "No supported numeric dimensions selected." }, "spread": { "status": "unknown", "reason": "No supported numeric dimensions selected." } }, "spacing": { "status": "unknown", "reason": "Field spacing is not a hydroponic position count." }, "light": { "status": "unknown", "reason": "Outdoor exposure does not establish indoor lamp intensity." } }
+  },
+  {
+    "id": "green-salanova-lettuce",
+    "name": "Green Salanova Lettuce",
+    "spanishName": "Lechuga Salanova verde",
+    "scientificName": "Lactuca sativa",
+    "variety": "Green Salanova range/type; exact commercial variety not specified",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "tags": ["green salanova", "salanova lettuce", "salanova verde", "lactuca sativa salanova", "lechuga salanova verde"],
+    "summary": "Salanova is a Rijk Zwaan brand/range containing multiple lettuce types and varieties. This identity represents the green Salanova type named in the reference context, not one exact cultivar.",
+    "metrics": [],
+    "sections": {
+      "identity": { "short": "Green branded lettuce type; exact variety unresolved", "guidance": "Rijk Zwaan describes Salanova as a range with multiple types and varieties. Kew accepts Lactuca sativa. Green Salanova is retained as a useful horticultural/product type; no single cultivar is inferred.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["rijkzwaan-salanova-brand-500", "kew-lactuca-sativa-500"] },
+      "cultivation": { "short": "Cultivar-specific growing traits require exact product identity", "guidance": "General lettuce guidance applies only at crop scope. The selected brand source does not establish which green Salanova variety is represented or provide a universal set of dimensions and hydroponic requirements.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["rijkzwaan-salanova-brand-500", "johnnys-lettuce", "usu-lettuce"] },
+      "needsValidation": { "short": "Exact green Salanova variety remains unresolved", "guidance": "The brand contains multiple varieties. A product/seed packet name is required before publishing cultivar-specific color, head type, maturity, or resistance claims.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": [] }
+    },
+    "compatibilityProfile": { "profileVersion": 1, "hydroponicSuitability": { "status": "unknown", "reason": "Salanova is a range; no exact green product or variety is resolved here." }, "growthHabits": { "status": "unknown", "reason": "The range includes different lettuce types and forms." }, "matureSize": { "height": { "status": "unknown", "reason": "No exact variety or numeric dimensions selected." }, "spread": { "status": "unknown", "reason": "No exact variety or numeric dimensions selected." } }, "spacing": { "status": "unknown", "reason": "No exact product and no Garden system position count established." }, "light": { "status": "unknown", "reason": "General lettuce exposure is not mapped to indoor grow-light intensity." } }
+  }
+]

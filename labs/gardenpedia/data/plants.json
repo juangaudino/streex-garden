@@ -62,7 +62,7 @@
         "avoid": [
           "Presenting 'leave exactly one basil plant' as a sourced universal fact."
         ],
-        "context": "The pod-specific recommendation is a Garden adaptation that still needs validation against the actual systems used by User Zero.",
+        "context": "The pod-specific recommendation is a Garden adaptation that needs validation in the intended growing system before generalizing beyond this setting.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [

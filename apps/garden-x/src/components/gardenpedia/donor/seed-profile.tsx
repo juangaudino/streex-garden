@@ -1,9 +1,19 @@
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight, Eye, Minus, Package, Plus, Sprout, User } from "lucide-react";
+import { useMemo, useState } from "react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Eye,
+  Minus,
+  Package,
+  Plus,
+  Search,
+  Sprout,
+  User,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { buildSeedLibraryCards } from "./seed-library-adapter";
+import { buildSeedLibraryCards, filterSeedLibraryCards } from "./seed-library-adapter";
 import {
   type SeedProfileLanguage,
   type SeedProfileViewModel,
@@ -19,6 +29,7 @@ const copy = {
       "Protocolos canónicos de semilla a plántula, con evidencia visible y estados pendientes conservados.",
     publicProfile: "Perfil público",
     identities: "perfiles de semilla",
+    allIdentities: "identidades",
     familyUnknown: "Familia no establecida por la ficha actual",
     plantCare: "Cuidado de la planta madura",
     seedProfile: "PERFIL DE SEMILLA",
@@ -45,6 +56,24 @@ const copy = {
     noSources: "No hay enlaces de fuente resueltos para este bloque.",
     noProfiles: "No encontramos perfiles de semilla.",
     showMore: "Mostrar más perfiles",
+    seedBrowse: "Perfiles de semilla",
+    propagationBrowse: "Toda propagación",
+    propagationBody:
+      "Incluye todas las identidades públicas: perfiles de semilla, alternativas vegetativas respaldadas y casos donde la evidencia pública aún no alcanza. Un estado pendiente no significa que una vía sea imposible.",
+    searchPlants: "Buscar por nombre, alias o nombre científico",
+    allCategories: "Todas las categorías",
+    seedSupported: "Perfil de semilla",
+    vegetativePreferred: "Preferible vegetativa",
+    propagationPending: "Propagación por validar",
+    insufficientEvidence: "Evidencia insuficiente",
+    evidenceLinked: "Referencias enlazadas",
+    propagationSeedCount: "Perfiles de semilla",
+    propagationVegetativeCount: "Preferible vegetativa",
+    propagationUnknownCount: "Evidencia insuficiente",
+    allPropagationRoutes: "Todas las rutas",
+    openSeedProfile: "Abrir perfil de semilla",
+    openPlantProfile: "Ver perfil de planta",
+    noMatches: "No hay identidades que coincidan con esta búsqueda.",
   },
   en: {
     seeds: "Seeds",
@@ -54,6 +83,7 @@ const copy = {
       "Canonical seed-to-seedling protocols with visible evidence and unresolved states preserved.",
     publicProfile: "Public profile",
     identities: "seed profiles",
+    allIdentities: "identities",
     familyUnknown: "Family not established by the current profile",
     plantCare: "Mature plant care",
     seedProfile: "SEED PROFILE",
@@ -80,10 +110,63 @@ const copy = {
     noSources: "No resolved source links are available for this block.",
     noProfiles: "No seed profiles found.",
     showMore: "Show more profiles",
+    seedBrowse: "Seed Profiles",
+    propagationBrowse: "All propagation",
+    propagationBody:
+      "Includes all public identities: Seed Profiles, source-backed vegetative alternatives, and cases where public evidence is still insufficient. A pending state does not mean a route is impossible.",
+    searchPlants: "Search name, alias, or scientific name",
+    allCategories: "All categories",
+    seedSupported: "Seed Profile",
+    vegetativePreferred: "Vegetative preferred",
+    propagationPending: "Propagation needs review",
+    insufficientEvidence: "Insufficient evidence",
+    evidenceLinked: "References linked",
+    propagationSeedCount: "Seed Profiles",
+    propagationVegetativeCount: "Vegetative preferred",
+    propagationUnknownCount: "Insufficient evidence",
+    allPropagationRoutes: "All propagation routes",
+    openSeedProfile: "Open Seed Profile",
+    openPlantProfile: "View Plant Profile",
+    noMatches: "No identities match this search.",
   },
 } as const;
 
 const SEED_LIBRARY_PAGE_SIZE = 48;
+
+const categoryLabels = {
+  en: {
+    herbs: "Herbs",
+    "leafy greens": "Leafy greens",
+    fruits: "Fruits",
+    fruiting: "Fruiting crops",
+    flowers: "Flowers",
+    ornamentals: "Ornamentals",
+    vegetables: "Vegetables",
+    "root vegetables": "Root vegetables",
+    alliums: "Alliums",
+    legumes: "Legumes",
+    "cover crops": "Cover crops",
+  },
+  es: {
+    herbs: "Hierbas",
+    "leafy greens": "Hojas verdes",
+    fruits: "Frutas",
+    fruiting: "Cultivos de fruto",
+    flowers: "Flores",
+    ornamentals: "Ornamentales",
+    vegetables: "Verduras",
+    "root vegetables": "Raíces y tubérculos",
+    alliums: "Aliáceas",
+    legumes: "Leguminosas",
+    "cover crops": "Cultivos de cobertura",
+  },
+} as const;
+
+function localizedCategory(category: string, language: SeedProfileLanguage) {
+  return (
+    categoryLabels[language][category as keyof (typeof categoryLabels)[typeof language]] ?? category
+  );
+}
 
 function localizedName(profile: SeedProfileViewModel, language: SeedProfileLanguage) {
   return language === "es" ? profile.spanishName : profile.name;
@@ -295,11 +378,18 @@ function PrivateInventoryNotice({
               {labels.accessRequired}
             </span>
             {onPlantSelect ? (
-              <button type="button" onClick={() => onPlantSelect(profile.plantIdentityId)} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+              <button
+                type="button"
+                onClick={() => onPlantSelect(profile.plantIdentityId)}
+                className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
                 {labels.plantCare}
               </button>
             ) : (
-              <a href={profile.plantHref} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+              <a
+                href={profile.plantHref}
+                className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
                 {labels.plantCare}
               </a>
             )}
@@ -341,12 +431,19 @@ function PublicInventoryNotice({
               {labels.publicProfile}
             </span>
             {onPlantSelect ? (
-              <button type="button" onClick={() => onPlantSelect(profile.plantIdentityId)} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+              <button
+                type="button"
+                onClick={() => onPlantSelect(profile.plantIdentityId)}
+                className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
                 {labels.plantCare}
                 <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
               </button>
             ) : (
-              <a href={profile.plantHref} className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary">
+              <a
+                href={profile.plantHref}
+                className="flex min-h-11 items-center rounded-lg border border-border px-4 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
                 {labels.plantCare}
                 <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
               </a>
@@ -365,77 +462,258 @@ export function SeedLibraryView({
   language: SeedProfileLanguage;
   onSeedSelect?: ((id: string) => void) | undefined;
 }) {
-  const profiles = buildSeedLibraryCards(language);
+  const profiles = useMemo(() => buildSeedLibraryCards(language), [language]);
   const [visibleCount, setVisibleCount] = useState(SEED_LIBRARY_PAGE_SIZE);
+  const [browseMode, setBrowseMode] = useState<"seeds" | "propagation">("seeds");
+  const [propagationClass, setPropagationClass] = useState<
+    "all" | "seed_supported" | "vegetative_preferred" | "insufficient_documentation"
+  >("all");
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("all");
   const labels = copy[language];
-  const visibleProfiles = profiles.slice(0, visibleCount);
+  const categories = useMemo(
+    () =>
+      [...new Set(profiles.map((profile) => profile.category))].sort((a, b) =>
+        localizedCategory(a, language).localeCompare(localizedCategory(b, language)),
+      ),
+    [language, profiles],
+  );
+  const filteredProfiles = useMemo(
+    () => filterSeedLibraryCards(profiles, { query, category, mode: browseMode, propagationClass }),
+    [browseMode, category, profiles, propagationClass, query],
+  );
+  const propagationCounts = useMemo(
+    () => ({
+      seed: profiles.filter((profile) => profile.hasSeedProfile).length,
+      vegetative: profiles.filter((profile) => profile.propagationClass === "vegetative_preferred")
+        .length,
+      insufficient: profiles.filter(
+        (profile) => profile.propagationClass === "insufficient_documentation",
+      ).length,
+    }),
+    [profiles],
+  );
+  const visibleProfiles = filteredProfiles.slice(0, visibleCount);
   return (
     <section className="animate-rise py-6">
       <div className="glass-panel p-6 sm:p-8">
         <p className="eyebrow">Gardenpedia</p>
-        <h2 className="mt-2 font-display text-3xl font-bold">{labels.publicKnowledge}</h2>
+        <h2 className="mt-2 font-display text-3xl font-bold">
+          {browseMode === "seeds" ? labels.publicKnowledge : labels.propagationBrowse}
+        </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-          {labels.publicBody}
+          {browseMode === "seeds" ? labels.publicBody : labels.propagationBody}
         </p>
         <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted-foreground">
           <span className="glass-soft px-3 py-1.5">
-            {profiles.length} {labels.identities}
+            {filteredProfiles.length}{" "}
+            {browseMode === "seeds" ? labels.identities : labels.allIdentities}
           </span>
           <span className="glass-soft px-3 py-1.5">{labels.publicProfile}</span>
           <span className="glass-soft px-3 py-1.5">Garden X public</span>
+          {browseMode === "propagation" ? (
+            <>
+              <span className="glass-soft px-3 py-1.5">
+                {propagationCounts.seed} {labels.propagationSeedCount}
+              </span>
+              <span className="glass-soft px-3 py-1.5">
+                {propagationCounts.vegetative} {labels.propagationVegetativeCount}
+              </span>
+              <span className="glass-soft px-3 py-1.5">
+                {propagationCounts.insufficient} {labels.propagationUnknownCount}
+              </span>
+            </>
+          ) : null}
         </div>
       </div>
-      {profiles.length ? (
+      <div
+        className="mt-5 flex flex-wrap gap-2"
+        role="group"
+        aria-label={language === "es" ? "Modo de exploración" : "Browse mode"}
+      >
+        {(["seeds", "propagation"] as const).map((mode) => (
+          <button
+            key={mode}
+            type="button"
+            aria-pressed={browseMode === mode}
+            onClick={() => {
+              setBrowseMode(mode);
+              setVisibleCount(SEED_LIBRARY_PAGE_SIZE);
+            }}
+            className={cn(
+              "min-h-10 rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
+              browseMode === mode
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-background/70 hover:bg-secondary",
+            )}
+          >
+            {mode === "seeds" ? labels.seedBrowse : labels.propagationBrowse}
+          </button>
+        ))}
+      </div>
+      <div
+        className={cn(
+          "mt-4 grid gap-3",
+          browseMode === "propagation"
+            ? "sm:grid-cols-[minmax(0,1fr)_auto_auto]"
+            : "sm:grid-cols-[minmax(0,1fr)_auto]",
+        )}
+      >
+        <label className="relative block">
+          <Search
+            aria-hidden="true"
+            className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.currentTarget.value);
+              setVisibleCount(SEED_LIBRARY_PAGE_SIZE);
+            }}
+            placeholder={labels.searchPlants}
+            aria-label={labels.searchPlants}
+            className="min-h-11 w-full rounded-xl border border-border bg-background/70 pl-10 pr-4 text-sm outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-primary"
+          />
+        </label>
+        <label className="sr-only" htmlFor="seed-propagation-category">
+          {labels.allCategories}
+        </label>
+        <select
+          id="seed-propagation-category"
+          value={category}
+          onChange={(event) => {
+            setCategory(event.currentTarget.value);
+            setVisibleCount(SEED_LIBRARY_PAGE_SIZE);
+          }}
+          className="min-h-11 rounded-xl border border-border bg-background/70 px-4 text-sm"
+        >
+          <option value="all">{labels.allCategories}</option>
+          {categories.map((value) => (
+            <option key={value} value={value}>
+              {localizedCategory(value, language)}
+            </option>
+          ))}
+        </select>
+        {browseMode === "propagation" ? (
+          <>
+            <label className="sr-only" htmlFor="seed-propagation-route">
+              {labels.propagationBrowse}
+            </label>
+            <select
+              id="seed-propagation-route"
+              value={propagationClass}
+              onChange={(event) => {
+                setPropagationClass(event.currentTarget.value as typeof propagationClass);
+                setVisibleCount(SEED_LIBRARY_PAGE_SIZE);
+              }}
+              className="min-h-11 rounded-xl border border-border bg-background/70 px-4 text-sm"
+            >
+              <option value="all">{labels.allPropagationRoutes}</option>
+              <option value="seed_supported">{labels.seedSupported}</option>
+              <option value="vegetative_preferred">{labels.vegetativePreferred}</option>
+              <option value="insufficient_documentation">{labels.insufficientEvidence}</option>
+            </select>
+          </>
+        ) : null}
+      </div>
+      {visibleProfiles.length ? (
         <>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {visibleProfiles.map((profile) => (
-              <article key={profile.id} className="glass-card group">
-                <button
-                  type="button"
-                  onClick={() => onSeedSelect?.(profile.id)}
-                  className="block w-full p-5 text-left"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-3xl" aria-hidden="true">
-                      {profile.emoji}
-                    </span>
-                    <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
-                      {labels.publicProfile}
-                    </span>
-                  </div>
-                  <p className="mt-5 text-[11px] font-semibold text-accent">
-                    {language === "es" ? profile.spanishName : profile.name}
-                  </p>
-                  <h3 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
-                    {language === "es" ? profile.name : profile.spanishName}
-                  </h3>
-                  <p className="mt-1 truncate text-xs italic text-muted-foreground">
-                    {profile.scientificName || labels.notEstablished}
-                  </p>
-                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-muted-foreground">
-                    {profile.summary}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
-                    <span className="font-semibold">
-                      {profile.quickFactCount} {language === "es" ? "métricas" : "facts"} ·{" "}
-                      {profile.sourceCount} {language === "es" ? "fuentes" : "sources"}
-                    </span>
-                    <ArrowUpRight
-                      className="size-4 transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </button>
-              </article>
-            ))}
+            {visibleProfiles.map((profile) => {
+              const primaryName = language === "es" ? profile.spanishName : profile.name;
+              const alternateName = language === "es" ? profile.name : profile.spanishName;
+              return (
+                <article key={profile.id} className="glass-card group">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      profile.hasSeedProfile
+                        ? onSeedSelect?.(profile.id)
+                        : window.location.assign(
+                            `/gardenpedia/?plant=${encodeURIComponent(profile.id)}`,
+                          )
+                    }
+                    className="block w-full p-5 text-left"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-3xl" aria-hidden="true">
+                        {profile.emoji}
+                      </span>
+                      <span
+                        className={cn(
+                          "rounded-full px-2.5 py-1 text-[10px] font-semibold",
+                          profile.propagationStatus === "source_backed"
+                            ? "bg-secondary text-secondary-foreground"
+                            : "bg-muted text-muted-foreground",
+                        )}
+                      >
+                        {profile.propagationClass === "seed_supported"
+                          ? labels.seedSupported
+                          : profile.propagationClass === "vegetative_preferred"
+                            ? labels.vegetativePreferred
+                            : labels.propagationPending}
+                      </span>
+                      {browseMode === "propagation" ? (
+                        <span
+                          className={cn(
+                            "rounded-full border px-2.5 py-1 text-[10px] font-medium",
+                            profile.propagationStatus === "source_backed"
+                              ? "border-border text-muted-foreground"
+                              : "border-amber-500/30 text-amber-800 dark:text-amber-200",
+                          )}
+                        >
+                          {profile.propagationStatus === "source_backed"
+                            ? labels.evidenceLinked
+                            : labels.needsValidation}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-5 text-[11px] font-semibold text-accent">{alternateName}</p>
+                    <h3 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
+                      {primaryName}
+                    </h3>
+                    <p className="mt-1 truncate text-xs italic text-muted-foreground">
+                      {profile.scientificName || labels.notEstablished}
+                    </p>
+                    <p className="mt-4 line-clamp-3 text-sm leading-6 text-muted-foreground">
+                      {browseMode === "propagation" ? profile.propagationSummary : profile.summary}
+                    </p>
+                    {browseMode === "propagation" && profile.sources.length ? (
+                      <p className="mt-3 line-clamp-2 text-[11px] leading-5 text-muted-foreground">
+                        {profile.sources.map((source) => source.label).join(" · ")}
+                      </p>
+                    ) : null}
+                    <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
+                      <span className="font-semibold">
+                        {profile.hasSeedProfile ? labels.openSeedProfile : labels.openPlantProfile}
+                      </span>
+                      <ArrowUpRight
+                        className="size-4 transition-transform group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </button>
+                  {!profile.hasSeedProfile ? (
+                    <a
+                      href={`/gardenpedia/?plant=${encodeURIComponent(profile.id)}`}
+                      className="mx-5 mb-5 inline-flex min-h-10 items-center gap-2 rounded-full border border-border px-3 text-xs font-semibold transition-colors hover:bg-secondary"
+                    >
+                      {labels.openPlantProfile}
+                      <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                    </a>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
-          {visibleCount < profiles.length ? (
+          {visibleCount < filteredProfiles.length ? (
             <div className="mt-6 flex justify-center">
               <button
                 type="button"
                 onClick={() =>
                   setVisibleCount((count) =>
-                    Math.min(count + SEED_LIBRARY_PAGE_SIZE, profiles.length),
+                    Math.min(count + SEED_LIBRARY_PAGE_SIZE, filteredProfiles.length),
                   )
                 }
                 className="rounded-full border border-border bg-background/70 px-4 py-2 text-sm font-semibold transition-colors hover:bg-secondary"
@@ -447,7 +725,7 @@ export function SeedLibraryView({
         </>
       ) : (
         <div className="glass-panel mt-5 grid min-h-48 place-items-center p-8 text-center text-sm text-muted-foreground">
-          {labels.noProfiles}
+          {filteredProfiles.length ? labels.noProfiles : labels.noMatches}
         </div>
       )}
     </section>
@@ -475,12 +753,19 @@ export function SeedProfilePage({
       <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto grid max-w-[1320px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6">
           {onBack ? (
-            <button type="button" onClick={onBack} className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary"
+            >
               <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
               <span className="hidden sm:inline">{labels.seeds}</span>
             </button>
           ) : (
-            <a href="/gardenpedia/" className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary">
+            <a
+              href="/gardenpedia/"
+              className="flex h-10 items-center gap-2 rounded-full border border-border px-3 text-sm font-semibold transition-colors hover:bg-secondary"
+            >
               <ArrowLeft aria-hidden="true" className="size-4 shrink-0" />
               <span className="hidden sm:inline">{labels.seeds}</span>
             </a>
@@ -580,9 +865,17 @@ export function SeedProfilePage({
 
           <div className="flex flex-col gap-5 lg:col-span-7 xl:col-span-8">
             {mode === "member" ? (
-              <PrivateInventoryNotice profile={profile} language={language} onPlantSelect={onPlantSelect} />
+              <PrivateInventoryNotice
+                profile={profile}
+                language={language}
+                onPlantSelect={onPlantSelect}
+              />
             ) : (
-              <PublicInventoryNotice profile={profile} language={language} onPlantSelect={onPlantSelect} />
+              <PublicInventoryNotice
+                profile={profile}
+                language={language}
+                onPlantSelect={onPlantSelect}
+              />
             )}
             <section>
               <p className="eyebrow text-[10px]">{labels.fromSeed}</p>

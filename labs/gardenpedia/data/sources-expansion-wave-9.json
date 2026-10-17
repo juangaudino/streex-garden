@@ -1,0 +1,15 @@
+[
+  {
+    "id": "kew-brassica-rapa-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Brassica rapa L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A279485-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and taxonomy for Brassica rapa; no cultivar-specific traits",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs reference-coverage expansion",
+    "claimKinds": ["identity", "taxonomy"]
+  }
+]

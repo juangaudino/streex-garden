@@ -1,0 +1,32 @@
+{
+  "trailing-nasturtium-tropaeolum-majus": {
+    "summary": "Tipo colgante de capuchina de jardín, botánicamente distinto de la capuchina arbustiva (Tropaeolum minus). Wisconsin Extension documenta su uso en cascada, hojas y flores comestibles, y propagación por semilla; no se representa un cultivar específico.",
+    "sections": {
+      "identity": {"short": "Tipo colgante de jardín de Tropaeolum majus", "guidance": "Kew acepta Tropaeolum majus. Wisconsin Extension distingue T. majus colgante de T. minus arbustiva. Esta identidad representa el tipo hortícola colgante, no un cultivar ni todos los productos vendidos como capuchina."},
+      "cultivation": {"short": "El sol pleno favorece la floración; la semisombra puede reducirla", "guidance": "Wisconsin Extension recomienda suelo bien drenado y sol pleno; indica que la planta crece en semisombra, pero florece menos. Los tipos colgantes sirven para cestas, jardineras o bordes de muro; el artículo advierte que no trepan bien por sí solos. Es guía de jardín y contenedor, no evidencia de aptitud hidropónica."},
+      "growth": {"short": "Colgante, no trepadora por sí sola", "guidance": "La fuente describe formas colgantes y advierte que las llamadas capuchinas trepadoras carecen de zarcillos y no trepan bien sin ayuda. Recorta solo si la planta desplaza a las vecinas; no se afirma un calendario fijo de poda."},
+      "harvest": {"short": "Las hojas jóvenes y las flores son comestibles", "guidance": "Wisconsin Extension describe hojas y flores comestibles, de sabor picante; se prefieren las hojas jóvenes porque las mayores pueden ser amargas. Esto describe uso culinario, no un uso medicinal."},
+      "problems": {"short": "Vigila pulgones y orugas", "guidance": "Wisconsin Extension menciona pulgones, orugas de Pieris rapae y minadores entre las plagas observadas; señala que los rastros del minador normalmente no dañan la planta. Inspecciona primero y no trates un daño cosmético como lesión grave."}
+    }
+  },
+  "purple-kohlrabi": {
+    "summary": "Tipo de color de colinabo, no un cultivar nombrado. Wisconsin Extension indica que los cultivares morados tienen piel coloreada y pulpa blanca; Kew trata el nombre botánico Brassica oleracea var. gongylodes como sinónimo de B. oleracea.",
+    "sections": {
+      "identity": {"short": "Tipo de color de colinabo dentro de Brassica oleracea", "guidance": "Kew acepta Brassica oleracea y sinonimiza el nombre varietal botánico gongylodes con esa especie. Wisconsin Extension describe los cultivares de colinabo morado como de piel púrpura y pulpa blanca. Esta ficha representa solo ese tipo útil; no se infiere un cultivar como Delicacy Purple."},
+      "cultivation": {"short": "Cultivo de estación fresca; mantén humedad uniforme", "guidance": "Wisconsin Extension recomienda sol pleno y suelo húmedo, bien drenado y rico en materia orgánica; describe el colinabo como cultivo de clima fresco que tolera más calor que muchos cultivos de coles. Es guía de suelo abierto; no establece condiciones hidropónicas exactas."},
+      "growth": {"short": "El tallo comestible engrosado crece sobre el suelo", "guidance": "La parte redondeada comestible del colinabo es un tallo engrosado sobre el suelo, no una raíz ni un bulbo verdadero. La fuente describe varios tipos de madurez; no asigna un tamaño específico de cultivar a este tipo de color."},
+      "harvest": {"short": "El momento de cosecha depende del cultivar", "guidance": "Wisconsin Extension enumera estimaciones de madurez distintas para cultivares nombrados. Como esta ficha no resuelve un cultivar, no se copian esos días; consulta el paquete específico para su estimación."},
+      "problems": {"short": "Evita estrés que interrumpa el desarrollo del tallo", "guidance": "La guía seleccionada respalda cultivo fresco y suelo húmedo, pero no establece resistencia a enfermedades específica para este tipo. Observa el tallo engrosado y el follaje; identifica los síntomas antes de intervenir."}
+    }
+  },
+  "resina-calendula": {
+    "summary": "Fedco lista Resina como producto de semilla de Calendula officinalis de polinización abierta, seleccionado por sus flores resinosas. Un ensayo de campo de Montana State University aporta observaciones del cultivar; sus resultados no garantizan el desempeño en jardines domésticos.",
+    "sections": {
+      "identity": {"short": "Identidad de producto Resina dentro de Calendula officinalis", "guidance": "Kew acepta Calendula officinalis. Fedco lista Resina como producto de semilla de polinización abierta; respalda el nombre de producto/cultivar, pero no demuestra registro formal. El ensayo de Montana también identifica Resina como cultivar evaluado."},
+      "cultivation": {"short": "Floración de clima fresco; sol pleno y espacio", "guidance": "Fedco describe la caléndula como una planta que prospera en clima fresco, florece durante una temporada larga y recomienda sol pleno sin amontonamiento. Son instrucciones generales del cultivo del proveedor, no ensayos controlados específicos de Resina. Los 70 días indicados son una estimación comercial, no un calendario garantizado para Garden."},
+      "growth": {"short": "Flores amarillas a anaranjadas y resinosas según el producto", "guidance": "Fedco describe flores sencillas medianas, mayormente amarillo brillante y algunas anaranjadas, y señala su carácter resinoso. La altura que la página aporta para la caléndula general es de alcance de cultivo; por eso no se asigna una dimensión específica de Resina."},
+      "harvest": {"short": "Se documenta la cosecha repetida de flores", "guidance": "El ensayo de Montana cosechó flores a mano repetidamente y observó que Resina comenzó a florecer unos días antes que Erfurter Orangefarbige bajo las condiciones del ensayo. La comparación corresponde a ese ensayo y no es una fecha universal de primera cosecha."},
+      "problems": {"short": "Se observó amarillamiento del áster en el ensayo", "guidance": "El informe de Montana registró síntomas de amarillamiento del áster en parcelas de Resina en 1998 y 1999. Documenta susceptibilidad en esos ensayos, no el nivel de riesgo en cada región. No se afirma resistencia a enfermedades."}
+    }
+  }
+}

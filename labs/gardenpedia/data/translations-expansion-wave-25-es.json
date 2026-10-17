@@ -1,0 +1,43 @@
+{
+  "southern-pea-vigna-unguiculata": {
+    "summary": "Legumbre de clima cálido que se cultiva por sus semillas tiernas o secas. El caupí pertenece a Vigna unguiculata y se distingue del frijol común y de la subespecie yardlong; el cultivar y la clase de semilla no están especificados.",
+    "sections": {
+      "identity": {"short": "Especie Vigna unguiculata; tipo caupí", "guidance": "Kew acepta Vigna unguiculata. University of Minnesota Extension distingue los caupís/frijoles de ojo negro, que se cultivan principalmente por semilla madura, de los yardlong; Kew reconoce por separado la subespecie yardlong. Aquí no se asigna cultivar ni clase de color."},
+      "cultivation": {"short": "Siembra cuando el suelo esté cálido; es un cultivo de calor", "guidance": "UGA Cooperative Extension describe el caupí como cultivo que requiere suelo cálido y, en su guía de producción de Georgia, recomienda esperar a unos 60°F. Ese umbral y calendario regional no se convierten en temperatura interior ni calendario universal."},
+      "growth": {"short": "Hay formas arbustivas y trepadoras dentro del grupo", "guidance": "University of Minnesota Extension indica que los tipos de jardín de caupí/frijol de ojo negro suelen ser arbustivos, mientras que el cultivo yardlong relacionado es una enredadera larga que requiere soporte. No se traslada a esta identidad sin especificar el porte ni longitud de vaina de yardlong."},
+      "harvest": {"short": "Cosecha como frijol tierno o seco", "guidance": "University of Maryland Extension describe cosecha de caupí en etapa tierna o seca. Esta ficha no asigna días a madurez ni afirma un cultivar específico de ojo negro."},
+      "problems": {"short": "El suelo frío puede dificultar el establecimiento", "guidance": "UGA Cooperative Extension advierte que sembrar demasiado temprano puede producir una emergencia deficiente y obligar a resembrar. Es guía regional a nivel de cultivo; no afirma resistencia a enfermedades ni rendimiento garantizado."}
+    }
+  },
+  "mung-bean-vigna-radiata": {
+    "summary": "Legumbre de clima cálido que se cultiva por semilla seca y brotes. Arkansas Extension recomienda siembra directa cuando el suelo se caliente e indica una pulgada de profundidad; no generaliza a toda la especie los tiempos de cultivares listados.",
+    "sections": {
+      "identity": {"short": "Especie aceptada: Vigna radiata", "guidance": "Kew acepta Vigna radiata en Fabaceae. La guía de huerto doméstico de University of Arkansas identifica el frijol mungo con este nombre y describe su uso para grano seco y brotes; no se asigna ningún cultivar citado."},
+      "cultivation": {"short": "Anual de clima cálido para sitios soleados y bien drenados", "guidance": "Arkansas Extension recomienda siembra directa con clima cálido y describe el cultivo como anual sensible al frío. Sus recomendaciones de suelo y plantación corresponden al huerto regional, no a hidroponía."},
+      "growth": {"short": "Se describen formas erectas y rastreras a nivel de especie", "guidance": "Kew describe Vigna radiata como anual o perenne rastrera y cita formas herbáceas erectas en sus descripciones botánicas. No se asigna un porte ni tamaño único al cultivo de jardín porque no se especifica cultivar."},
+      "harvest": {"short": "Vainas secas para frijoles; los brotes son otro uso", "guidance": "Arkansas Extension describe la cosecha de frijol seco y menciona por separado el uso de semilla mungo para brotes. Los tiempos de los cultivares Berken y Mappe Green no se aplican a esta ficha de especie."},
+      "problems": {"short": "Las vainas no maduran todas al mismo tiempo", "guidance": "La guía de Arkansas señala que las vainas maduran en distintos momentos y describe una forma de cosecha. Sus porcentajes de madurez son guía productiva y no se usan aquí como umbral universal de huerto doméstico."}
+    }
+  },
+  "tong-hao-glebionis-coronaria": {
+    "summary": "Cultivo asiático de hoja comestible que también se planta por sus flores. UF/IFAS distingue formas de hoja ancha y estrecha con contextos estacionales diferentes; esta identidad no afirma una forma ni cultivar particular.",
+    "sections": {
+      "identity": {"short": "Nombre aceptado: Glebionis coronaria", "guidance": "Kew acepta Glebionis coronaria y registra Chrysanthemum coronarium como sinónimo. UF/IFAS identifica Tong Hao, shungiku, crisantemo comestible y otros nombres regionales como este cultivo; no se representa un cultivar nombrado."},
+      "cultivation": {"short": "Condiciones frescas a moderadas; el calor puede amargar las hojas", "guidance": "UF/IFAS informa un intervalo de crecimiento óptimo de 68–84°F, tolerancia a sombra parcial y sabor algo amargo durante el calor de verano en Florida. Sus ventanas estacionales son regionales, no universales."},
+      "growth": {"short": "Anual erguida y ramificada con hojas comestibles y flores tipo margarita", "guidance": "UF/IFAS describe Tong Hao como anual erguida y ramificada que puede alcanzar 1–3 pies y formar masas densas. Son observaciones del cultivo; las formas de hoja ancha y estrecha difieren y no se asigna un tamaño único a un cultivar."},
+      "harvest": {"short": "La cosecha de hojas puede ser única o repetida según el tipo", "guidance": "UF/IFAS informa que las formas de hoja ancha pueden cosecharse una o varias veces, dejando ramas basales/hojas para que rebrote; las formas de hoja pequeña se describen para cosecha única. Como la forma no se especifica, son alternativas, no promesas para toda planta."},
+      "problems": {"short": "El calor y las masas densas sin manejo afectan calidad y entorno", "guidance": "UF/IFAS indica que el calor estival puede volver las hojas algo amargas y advierte que masas densas sin manejo pueden desplazar vegetación nativa. Es una precaución de manejo de la fuente en Florida, no una afirmación de invasividad para toda región."},
+      "uses": {"short": "Las hojas se usan frescas o cocidas; las flores son ornamentales", "guidance": "UF/IFAS describe Tong Hao en salteados, hot pot, sopas y ensaladas, y señala que también puede cultivarse por sus flores. Son usos culinarios y ornamentales, no una recomendación medicinal."}
+    }
+  },
+  "honeydew-melon-cucumis-melo": {
+    "summary": "Melón de piel lisa y pulpa verde del grupo cultivado inodorus de Cucumis melo. Es un tipo hortícola, no una especie separada ni un cultivar nombrado; la fructificación depende de condiciones cálidas y polinización.",
+    "sections": {
+      "identity": {"short": "Honeydew es un grupo cultivado de Cucumis melo", "guidance": "Kew acepta Cucumis melo a nivel de especie. Iowa State Extension describe honeydew como tipo cultivado del grupo inodorus, de pulpa verde y cáscara verde lisa. No se asigna un cultivar nombrado."},
+      "cultivation": {"short": "Enredadera de clima cálido que necesita polinización y espacio", "guidance": "Iowa State Extension describe los melones como plantas trepadoras de clima cálido que suelen extenderse por el suelo o guiarse en espaldera con soporte para los frutos. Sus recomendaciones de sol, suelo y plantación son para cultivo exterior, no prueban compatibilidad con sistemas interiores."},
+      "growth": {"short": "Flores masculinas y femeninas separadas requieren polinización", "guidance": "Iowa State Extension explica que honeydew y melones relacionados tienen flores masculinas y femeninas separadas en una misma planta y dependen de polinizadores para cuajar. Es guía de especie/grupo, no rendimiento específico de cultivar."},
+      "harvest": {"short": "Honeydew no se desprende de la vid al madurar", "guidance": "Iowa State Extension distingue honeydew del muskmelon: los indicios de madurez incluyen el cambio de verde pálido a blanco amarillento, leve ablandamiento del extremo floral y aroma ligero. Son indicadores del grupo, no calendario de un cultivar."},
+      "problems": {"short": "La mala polinización y humedad irregular pueden perjudicar el fruto", "guidance": "Iowa State Extension describe bajo cuajado cuando hay poca actividad de polinizadores y señala que la humedad irregular puede afectar el desarrollo del fruto. Los detalles sobre plagas y enfermedades permanecen en el alcance del grupo de melones, no se convierten en afirmaciones de resistencia de honeydew."}
+    }
+  }
+}

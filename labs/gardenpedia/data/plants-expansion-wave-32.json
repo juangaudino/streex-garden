@@ -1,0 +1,44 @@
+[
+  {
+    "id": "lemon-verbena-aloysia-citrodora",
+    "name": "Lemon Verbena",
+    "spanishName": "Hierba luisa",
+    "scientificName": "Aloysia citrodora",
+    "variety": "Species; no cultivar specified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 41,
+    "tags": ["lemon verbena", "hierba luisa", "cedrón", "Aloysia citrodora", "Aloysia triphylla", "Lippia citriodora", "culinary herb", "container shrub"],
+    "summary": "A fragrant South American shrub whose leaves are used in teas and cooking. Extension sources recommend stem cuttings because seed set can be variable in North America; no seed-starting protocol is asserted.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Aloysia citrodora", "guidance": "Kew accepts Aloysia citrodora and lists Aloysia triphylla and Lippia citriodora among its synonyms. NC State Extension uses the accepted name and describes lemon verbena as a fragrant culinary shrub; no cultivar is specified.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-aloysia-citrodora-wave32", "ncsu-lemon-verbena-wave32"]},
+      "cultivation": {"short": "Container growing helps protect it from frost", "guidance": "Illinois Extension recommends container culture in frost-prone climates so the plant can be moved indoors. Its regional guidance describes full sun outdoors, moist but well-drained media and reduced feeding indoors; these are soil/container recommendations, not hydroponic instructions.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["illinois-lemon-verbena-wave32"]},
+      "growth": {"short": "Woody, fragrant perennial shrub", "guidance": "NC State Extension describes a woody perennial shrub and gives ground and potted dimensions in its regional plant profile. Those dimensions depend on growing context and are not represented as a compact indoor-system size.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-lemon-verbena-wave32"]},
+      "maintenance": {"short": "Prune or harvest periodically to maintain form", "guidance": "Illinois Extension says occasional pruning or frequent harvest helps maintain plant form; NC State Extension notes early-spring pruning encourages bushier growth. Timing is guidance for their temperate-region contexts, not a universal calendar.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["illinois-lemon-verbena-wave32", "ncsu-lemon-verbena-wave32"]},
+      "harvest": {"short": "Harvest aromatic leaves for fresh or dried use", "guidance": "Illinois Extension describes harvesting leaves as needed through the season and using them fresh or dried. Leaves are used to flavor beverages and foods; no medicinal efficacy is claimed.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["illinois-lemon-verbena-wave32"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected extension sources describe soil and container growing, not hydroponic production."}, "growthHabits": {"status": "unknown", "reason": "A woody shrub habit is documented, but that alone does not establish fit for a Garden X machine."}, "matureSize": {"height": {"status": "unknown", "reason": "Regional ground and pot dimensions vary and do not establish an indoor-system mature height."}, "spread": {"status": "unknown", "reason": "No indoor mature spread is supported."}}, "spacing": {"status": "unknown", "reason": "No machine pod spacing is established."}, "light": {"status": "unknown", "reason": "Outdoor full-sun guidance is not an indoor grow-light classification."}}
+  },
+  {
+    "id": "cuban-oregano-coleus-amboinicus",
+    "name": "Cuban Oregano",
+    "spanishName": "Orégano cubano",
+    "scientificName": "Coleus amboinicus",
+    "variety": "Species; no cultivar specified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 40,
+    "tags": ["Cuban oregano", "orégano cubano", "Indian borage", "borraja india", "Caribbean oregano", "French thyme", "Coleus amboinicus", "Plectranthus amboinicus", "culinary herb"],
+    "summary": "A fleshy-leaved aromatic herb in the mint family, distinct from true oregano (Origanum). NC State Extension says stem cuttings root easily and recommends protection from intense hot sun; no seed protocol is supplied.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted name: Coleus amboinicus", "guidance": "Kew accepts Coleus amboinicus in Lamiaceae; Plectranthus amboinicus is a historically used alternative taxonomy/name. NC State Extension's page uses Plectranthus amboinicus and lists Cuban oregano among its common names. This plant is not Origanum vulgare.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-coleus-amboinicus-wave32", "ncsu-cuban-oregano-wave32"]},
+      "cultivation": {"short": "Give protection from intense hot sun", "guidance": "NC State Extension describes Cuban oregano as doing best with some protection from hot summer sun because full sun can burn leaves. This is outdoor regional guidance and does not establish an indoor light tier or hydroponic fit.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-cuban-oregano-wave32"]},
+      "growth": {"short": "Succulent stems become semi-woody with age", "guidance": "NC State Extension describes an herbaceous perennial with young succulent stems that become semi-woody, and reports a 1–3 foot height and spread in its regional profile. No cultivar-specific or indoor mature dimensions are claimed.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-cuban-oregano-wave32"]},
+      "maintenance": {"short": "Stem cuttings are an easy documented propagation route", "guidance": "NC State Extension says Cuban oregano is very easy to propagate from stem cuttings and can also be divided in spring. This supports vegetative propagation, not a claim that seed propagation is biologically impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-cuban-oregano-wave32"]},
+      "harvest": {"short": "Use aromatic leaves as a culinary herb", "guidance": "NC State Extension describes fragrant leaves used for flavoring and compares the crushed-leaf aroma with oregano. Common-name similarity does not make this botanically true oregano; no medicinal claim is made.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-cuban-oregano-wave32"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected source describes garden cultivation and cuttings, not hydroponic production."}, "growthHabits": {"status": "unknown", "reason": "Herbaceous perennial and semi-woody stems are documented, but controlled-system fit is not."}, "matureSize": {"height": {"status": "unknown", "reason": "The extension dimensions are regional landscape guidance, not an indoor-system mature height."}, "spread": {"status": "unknown", "reason": "The extension dimensions do not establish a machine-compatible spread."}}, "spacing": {"status": "unknown", "reason": "No pod spacing is established."}, "light": {"status": "unknown", "reason": "Outdoor sun-protection advice is not an indoor grow-light classification."}}
+  }
+]

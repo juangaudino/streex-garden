@@ -1,0 +1,49 @@
+{
+  "water-spinach-ipomoea-aquatica": {
+    "summary": "La Ipomoea aquatica es una verdura de clima cálido con tallos huecos y rastreros, y un riesgo importante de propagación acuática. UGA documenta ensayos en invernadero cerrado con cultivo en agua profunda y producción en túnel alto; también advierte sobre su potencial invasor y restricciones locales. Verifica la normativa vigente y evita liberar fragmentos o semillas en cursos de agua.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Ipomoea aquatica. UGA Extension usa los nombres espinaca de agua, kang kong, water convolvulus y swamp morning-glory; describe fenotipos rojos y blancos, pero esta identidad no selecciona ninguno." },
+      "growth": { "guidance": "UGA describe tallos largos y huecos que pueden flotar o extenderse, con raíces adventicias en los nudos. La fuente indica que puede comportarse como anual o perenne según el clima; esta ficha no fija un ciclo de vida independiente de la región." },
+      "cultivation": { "guidance": "Los ensayos de UGA usaron cultivo en agua profunda/estanques dentro de invernadero o túneles altos cerrados, debido al riesgo de dispersión ambiental. Describe condiciones cálidas y pleno sol; no recomienda cultivo en aguas abiertas ni escapes de fragmentos. El ensayo prueba un contexto de investigación específico, no una receta nutritiva general ni un permiso legal." },
+      "harvest": { "guidance": "En los ensayos de túnel alto de UGA, se cortaron los brotes dejando hojas basales para permitir el rebrote; se documentaron varias cosechas. El calendario y el rendimiento variaron por sitio y fecha de plantación, así que no se generalizan a todo clima o cultivar." },
+      "propagation": { "guidance": "UGA documenta producción desde semilla y enraizamiento de fragmentos de tallo en los nudos. La producción de semillas y los fragmentos flotantes crean vías de escape ecológico; cumple la normativa local vigente y contiene todo el material. El artículo de Georgia señala que, al publicarse, el cultivo no estaba permitido allí." },
+      "problems": { "guidance": "UGA informa naturalización en partes de Estados Unidos, identifica la espinaca de agua como maleza nociva según fuentes federales citadas y describe restricciones en Georgia al publicarse. La normativa depende de la jurisdicción y la fecha; verifica las reglas locales actuales antes de adquirirla o cultivarla. No deseches fragmentos viables ni semillas en desagües, arroyos, estanques o humedales." }
+    }
+  },
+  "black-currant-ribes-nigrum": {
+    "summary": "Ribes nigrum es la grosella negra europea. University of Minnesota Extension describe un arbusto frutal de clima fresco con autofertilidad dependiente del cultivar, renovación anual de cañas y consideraciones regionales sobre la roya vesicular del pino blanco; no se asigna un cultivar.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Ribes nigrum. El perfil es de especie; no se generalizan a una planta sin cultivar la resistencia a la roya ni la autofertilidad descritas para cultivares concretos por la extensión." },
+      "growth": { "guidance": "UMN trata la grosella negra como arbusto leñoso perenne. La fruta crece en cañas de distintas edades; la guía recomienda conservar una estructura equilibrada de edades al podar plantas establecidas." },
+      "cultivation": { "guidance": "UMN Extension indica que las grosellas crecen de pleno sol a sombra parcial, con más fruta a pleno sol, y prefieren suelos ricos y bien drenados. Su guía corresponde a jardines del Alto Medio Oeste; el clima local y las normas sobre roya pueden diferir." },
+      "maintenance": { "guidance": "UMN recomienda poda anual para retirar cañas débiles o muertas y abrir la copa. Las restricciones por roya vesicular del pino blanco dependen de la región; consulta las normas locales y elige cultivares con resistencia documentada cuando corresponda." },
+      "harvest": { "guidance": "UMN señala que las grosellas negras maduras adquieren un color púrpura muy oscuro a negro y documenta el uso culinario de las bayas; también menciona hojas secas para infusión. Es orientación de especie/cultivo, no un calendario para un cultivar concreto." },
+      "propagation": { "guidance": "UMN indica que se pueden cubrir cañas bajas y arqueadas para fomentar el enraizamiento. La fuente no ofrece instrucciones de germinación, por lo que no se asigna un Seed Profile." },
+      "problems": { "guidance": "Ribes puede participar en el ciclo de la roya vesicular del pino blanco, que afecta a los pinos; UMN señala que algunas zonas mantienen restricciones de plantación. La advertencia es regional, no una prohibición universal." }
+    }
+  },
+  "red-currant-ribes-rubrum": {
+    "summary": "Ribes rubrum es una especie de grosella que incluye cultivares de fruto rojo, rosado y blanco. Kew considera Ribes sativum un sinónimo; University of Minnesota Extension describe esas formas de color como una sola especie, no como identidades botánicas distintas.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Ribes rubrum y considera Ribes sativum un sinónimo. UMN usa Ribes sativum para grosellas rojas, rosadas y blancas, y dice que pertenecen a la misma especie; esta identidad representa la especie/cultivo, no un cultivar de color sin especificar." },
+      "growth": { "guidance": "UMN distingue las grosellas de las uvas espina por sus cañas sin espinas y racimos de bayas pequeñas. El perfil cubre Ribes rubrum y no afirma que todos sus cultivares compartan los mismos rasgos." },
+      "cultivation": { "guidance": "UMN Extension indica que las grosellas crecen de pleno sol a sombra parcial, con más fructificación en sitios soleados, y prefieren suelo rico y bien drenado. Las recomendaciones se presentan para el Alto Medio Oeste." },
+      "maintenance": { "guidance": "UMN recomienda poda anual para retirar cañas débiles o muertas y abrir la copa. Las restricciones por roya y la resistencia varían según región y cultivar nombrado." },
+      "harvest": { "guidance": "UMN recomienda evaluar color, sabor, firmeza y facilidad de desprendimiento para determinar la cosecha. Rojo, rosado y blanco son formas hortícolas de color dentro de la especie descrita, no identidades separadas aquí." },
+      "propagation": { "guidance": "UMN menciona cubrir cañas arqueadas para fomentar su enraizamiento. La página no establece un protocolo de germinación, así que no se inventan instrucciones de semilla." },
+      "problems": { "guidance": "UMN indica que Ribes puede participar en el ciclo de la roya vesicular del pino blanco y que algunas zonas de Estados Unidos mantienen restricciones de plantación. Consulta las normas locales; no es una restricción universal." }
+    }
+  },
+  "european-gooseberry-ribes-uva-crispa": {
+    "summary": "Ribes uva-crispa es la especie aceptada de la uva espina europea. UMN Extension la distingue de la uva espina americana (Ribes hirtellum) y sus híbridos; la poda, el color de cosecha y las advertencias regionales sobre roya son orientación doméstica del Alto Medio Oeste.",
+    "sections": {
+      "identity": { "guidance": "Kew acepta Ribes uva-crispa y enumera Ribes grossularia entre sus sinónimos. UMN distingue esta especie europea de R. hirtellum y de los híbridos americanos; no se asigna cultivar." },
+      "growth": { "guidance": "UMN describe las cañas de la uva espina como generalmente espinosas en los nudos de las hojas, con bayas del tamaño de una uva que crecen solas o en grupos pequeños. Son rasgos que ayudan a distinguirla de las grosellas; no implican rasgos de un cultivar concreto." },
+      "cultivation": { "guidance": "UMN Extension indica que las uvas espina crecen de pleno sol a sombra parcial y prefieren suelos ricos y bien drenados. Sus recomendaciones corresponden al Alto Medio Oeste y pueden no trasladarse sin cambios a otros climas." },
+      "maintenance": { "guidance": "UMN recomienda poda anual para abrir la copa y quitar cañas débiles o muertas. Las puntas de cañas arqueadas que tocan el suelo pueden enraizar; contrólalas si no se desea esa expansión." },
+      "harvest": { "guidance": "UMN señala que las uvas espina están listas cuando cambian de color, se ablandan y se desprenden fácilmente; al madurar pierden acidez. El color depende de la variedad y no es un indicador único para todas." },
+      "propagation": { "guidance": "UMN indica que las puntas de las cañas pueden enraizar al tocar el suelo. La página citada no ofrece guía de germinación, así que esta ficha no inventa un método de semilla." },
+      "problems": { "guidance": "UMN señala que algunas zonas restringen Ribes por la roya vesicular del pino blanco y recomienda cultivares de resistencia conocida cuando sea pertinente localmente. Es una advertencia regional, no una prohibición universal ni una afirmación general de resistencia." }
+    }
+  }
+}

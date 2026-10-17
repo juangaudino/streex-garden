@@ -1,0 +1,937 @@
+[
+  {
+    "id": "pomegranate-punica-granatum",
+    "name": "Pomegranate",
+    "spanishName": "Granado (granada)",
+    "scientificName": "Punica granatum",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍎",
+    "tags": [
+      "pomegranate",
+      "granada",
+      "granado",
+      "Punica granatum"
+    ],
+    "summary": "A deciduous fruiting shrub or small tree valued for its edible arils and ornamental flowers. Fruiting reliability depends on climate and pollination; no cultivar is specified.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; no cultivar assigned",
+        "guidance": "Kew accepts Punica granatum. NC State describes the species and lists named cultivars separately; this entry does not represent Nana or Salavatski.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-punica-granatum-wave51",
+          "ncsu-punica-granatum-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Deciduous perennial shrub or small tree",
+        "guidance": "NC State reports about 10–12 ft tall and 8–10 ft wide in its regional profile. These are outdoor landscape dimensions, not a container-size promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-punica-granatum-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Sun to partial shade; moisture and good drainage",
+        "guidance": "NC State reports sun to partial shade, moisture and good drainage, with drought tolerance after establishment. Its North Carolina context notes cold and humidity can limit fruiting; this is not hydroponic evidence.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-punica-granatum-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Eat the juicy arils when fruit is mature",
+        "guidance": "NC State describes edible fleshy arils and reports fruiting may be unreliable in the Southeast, partly due to pollination and humidity. No universal harvest date is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-punica-granatum-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "No home seed protocol established in selected sources",
+        "guidance": "The selected sources do not provide seed depth, germination conditions or a home seedling protocol. Keep propagation unresolved rather than infer a method from seeds inside the fruit.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Fruit set may be unreliable in humid regions",
+        "guidance": "NC State lists possible scale, whiteflies, mealybugs, leaf spot, fruit blotch and root rot. It specifically cautions that Southeast fruiting may be unreliable; this is regional, not universal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-punica-granatum-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor fruit-tree guidance does not establish indoor hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The cited source identifies this plant as a shrub or tree but does not map that form into the existing compatibility habit vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions are not an indoor or container estimate."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions are not an indoor footprint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor spacing evidence."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor exposure is not an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "starfruit-averrhoa-carambola",
+    "name": "Starfruit",
+    "spanishName": "Carambola",
+    "scientificName": "Averrhoa carambola",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "⭐",
+    "tags": [
+      "starfruit",
+      "star fruit",
+      "carambola",
+      "Averrhoa carambola"
+    ],
+    "summary": "A tropical fruit tree whose fruit has a distinctive star-shaped cross-section. This species-level entry does not assign a named cultivar.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; no cultivar assigned",
+        "guidance": "Kew accepts Averrhoa carambola. UF/IFAS describes multiple cultivars separately; none is assigned here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-averrhoa-carambola-wave51",
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Small-to-medium tropical tree",
+        "guidance": "UF/IFAS reports trees up to about 35 ft in South Florida and notes pruning can maintain a smaller landscape tree. Those dimensions are not indoor/container sizes.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun, wind protection and well-drained soil",
+        "guidance": "UF/IFAS recommends a sunny, wind-protected site and well-drained soil. Young trees need regular establishment watering; mature landscape trees are irrigated through flowering and harvest. This is not a hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "South Florida harvest season varies by cultivar",
+        "guidance": "UF/IFAS reports a broad June–February harvest window in South Florida, with variable peaks. Its cultivar table is not generalized to an unnamed plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Cultivars are generally grafted",
+        "guidance": "UF/IFAS reports carambola cultivars are generally grafted on seedling rootstocks and documents veneer grafting and chip budding. Seedlings do not establish a named cultivar identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "safety": {
+        "short": "Kidney-disease dietary caution",
+        "guidance": "UF/IFAS warns that people with diagnosed kidney disease should avoid star fruit unless their physician says it is safe. This is a dietary caution, not a plant-handling hazard.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "A Florida landscape publication does not demonstrate indoor hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ufifas-carambola-wave51"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Averrhoa carambola"
+            },
+            "note": "UF/IFAS describes a small-to-medium tree with spreading growth."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions do not represent indoor/container form."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions do not establish indoor footprint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The outdoor landscape distance is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun is not an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "pawpaw-asimina-triloba",
+    "name": "Pawpaw",
+    "spanishName": "Pawpaw norteamericano",
+    "scientificName": "Asimina triloba",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍈",
+    "tags": [
+      "pawpaw",
+      "common pawpaw",
+      "Asimina triloba",
+      "pawpaw norteamericano"
+    ],
+    "summary": "A deciduous eastern North American understory fruit tree with custard-like fruit. It is distinct from tropical papaya and needs pollen from a genetically different plant for reliable fruit set.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; distinct from papaya",
+        "guidance": "Kew accepts Asimina triloba and lists Annona triloba as a synonym. The common name pawpaw here is not tropical papaya (Carica papaya).",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-asimina-triloba-wave51",
+          "ncsu-asimina-triloba-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Deciduous native understory tree",
+        "guidance": "NC State describes a native deciduous tree of woodland settings. Full sun favors fruiting, though it tolerates dappled sun and partial shade; flowers are self-incompatible and need a genetically different pollen donor.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-asimina-triloba-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Acidic, moisture-retentive, well-drained soil",
+        "guidance": "NC State reports preference for acidic soil that retains moisture but drains well. It tolerates occasional moisture, not permanently saturated conditions. This does not establish hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-asimina-triloba-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Soft, custard-like fruit ripens in late summer to early fall",
+        "guidance": "NC State describes edible sweet fruit and wildlife competition. It recommends gloves at harvest because contact dermatitis has been reported.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-asimina-triloba-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Home seed protocol unresolved",
+        "guidance": "The selected identity-matched sources do not give a home seedling protocol. Do not borrow propagation advice from tropical papaya or another Asimina species.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "problems": {
+        "short": "Root suckers and pollination need attention",
+        "guidance": "NC State notes root suckers can become troublesome and flowers need genetically different pollen for fruit production.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-asimina-triloba-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Woodland fruit-tree guidance does not establish indoor hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The existing compatibility habit vocabulary does not represent understory trees without adding unsupported precision."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No indoor/container size is established."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No indoor footprint is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Landscape spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor shade tolerance is not an indoor light tier."
+      }
+    }
+  },
+  {
+    "id": "american-persimmon-diospyros-virginiana",
+    "name": "American Persimmon",
+    "spanishName": "Caqui americano",
+    "scientificName": "Diospyros virginiana",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🟠",
+    "tags": [
+      "American persimmon",
+      "common persimmon",
+      "Diospyros virginiana",
+      "caqui americano"
+    ],
+    "summary": "A large deciduous North American fruit tree. Its fruit is strongly astringent when unripe and sweet when fully soft; distinct from Asian persimmon.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted North American species; distinct from D. kaki",
+        "guidance": "Kew accepts Diospyros virginiana. NC State lists American and common persimmon as names for this taxon; it is not D. kaki.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-diospyros-virginiana-wave51",
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Large deciduous tree; sexes usually separate",
+        "guidance": "NC State reports 30–80 ft height and 20–35 ft width in landscape settings and says trees are usually dioecious, with occasional perfect flowers. These are not container dimensions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun to partial shade; moist, well-drained soil",
+        "guidance": "NC State describes best growth in moist, well-drained sandy soil and tolerance of broader conditions. The large tree and deep taproot make this a landscape fruit identity, not an indoor hydroponic crop.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Wait until fruit is soft before eating",
+        "guidance": "NC State says unripe fruit is astringent and soft ripe fruit is sweet. Its regional page reports fall fruiting and notes seed-grown trees may take 4–9 years to bear.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Seed, root cuttings and grafting are listed; protocol unresolved",
+        "guidance": "NC State lists seed, root cutting and grafting but no complete home sowing procedure. Seed is a documented route; establishment details remain insufficient for Seed Profile V0.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Sex expression and fruit maturity matter",
+        "guidance": "NC State describes usually separate male and female trees and warns that green fruit is astringent. Root suckers may become a weed problem; no disease resistance is claimed.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Large outdoor tree guidance does not establish indoor hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The source lists several tree forms; no single compatibility habit can be assigned to this identity."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Landscape dimensions are not container/indoor dimensions."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Indoor footprint is not established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor exposure is not an indoor light tier."
+      }
+    }
+  },
+  {
+    "id": "asian-persimmon-diospyros-kaki",
+    "name": "Asian Persimmon",
+    "spanishName": "Caqui asiático",
+    "scientificName": "Diospyros kaki",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🟠",
+    "tags": [
+      "Asian persimmon",
+      "Japanese persimmon",
+      "kaki",
+      "Diospyros kaki",
+      "caqui asiático"
+    ],
+    "summary": "A deciduous East Asian fruit tree with diverse fruit types and cultivars. No named cultivar or astringency class is assigned.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; cultivar not specified",
+        "guidance": "Kew accepts Diospyros kaki. NC State lists Fuyu and Jiro as examples of named cultivars; this species-level record does not represent either one.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-diospyros-kaki-wave51",
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Deciduous fruit tree, about 20–30 ft in cited landscape profile",
+        "guidance": "NC State reports 20–30 ft and says sex expression can vary; some trees can set seedless fruit without pollination. Landscape measurements are not indoor dimensions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun; moist, well-drained loam in regional guidance",
+        "guidance": "NC State reports best growth in full sun and moist, well-drained loam and gives a regional cold-limit context. This does not establish indoor or hydroponic performance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Fruit behavior varies by cultivar",
+        "guidance": "NC State describes non-astringent varieties that can be sliced and eaten raw. Because no cultivar is identified, this trait is not assigned to every D. kaki plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Seed and grafting are listed; no seed-starting protocol",
+        "guidance": "NC State lists seed and grafting but does not give a home seed-starting procedure. Seedlings are not identified as named cultivars, and cultivar fruit traits remain unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Scale, mealybug, leaf spot and fruit drop are possible",
+        "guidance": "NC State lists these problems and notes fruit drop can be messy; root suckers may need removal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor fruit-tree guidance does not establish indoor hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The species is described as a tree, but the current compatibility habit vocabulary does not include tree form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor tree height is not an indoor/container estimate."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Indoor footprint is not established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Landscape spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun is not an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "loquat-eriobotrya-japonica",
+    "name": "Loquat",
+    "spanishName": "Níspero japonés (loquat)",
+    "scientificName": "Eriobotrya japonica",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍊",
+    "tags": [
+      "loquat",
+      "Japanese medlar",
+      "Eriobotrya japonica",
+      "níspero japonés"
+    ],
+    "summary": "An evergreen fruiting tree with leathery leaves and edible fruit in warm climates. Flowering and fruiting are cold-sensitive; no cultivar is assigned.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; common-name ambiguity retained",
+        "guidance": "Kew accepts Eriobotrya japonica and includes Mespilus japonica among synonyms. NC State notes Japanese plum can also mean Prunus salicina; this record is not that plum.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-eriobotrya-japonica-wave51",
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Evergreen shrub or tree with leathery, toothed leaves",
+        "guidance": "NC State describes a tropical evergreen shrub or tree and notes that it usually does not fruit in North Carolina due to cold sensitivity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm site; protect blooms and fruit from cold",
+        "guidance": "NC State reports blooms or fruit likely will not survive below 28°F although the tree may survive to about 10°F. This is regional guidance, not an indoor-light or hydroponic claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Fruit set depends on winter temperatures",
+        "guidance": "A surviving tree does not guarantee a crop in cold regions because blooms and fruit are more sensitive. No universal harvest date or cultivar traits are assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Selected Extension page gives no propagation method",
+        "guidance": "The selected species page provides identity and climate context but no home seed or vegetative propagation procedure. Do not infer a method from another Rosaceae fruit tree.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "A landscape profile for a fruit tree does not establish indoor hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The source describes shrub/tree forms; no single value fits the current compatibility habit vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No indoor/container dimensions are established."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Indoor footprint is not documented."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Landscape spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No indoor grow-light tier is established."
+      }
+    }
+  },
+  {
+    "id": "chinese-jujube-ziziphus-jujuba",
+    "name": "Chinese Jujube",
+    "spanishName": "Azufaifo chino",
+    "scientificName": "Ziziphus jujuba",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🫒",
+    "tags": [
+      "Chinese jujube",
+      "jujube",
+      "Chinese date",
+      "Ziziphus jujuba",
+      "azufaifo"
+    ],
+    "summary": "A deciduous, often thorny fruit tree whose fruit changes from crisp and apple-like when green to date-like when mature. No named cultivar is assigned.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; no cultivar assigned",
+        "guidance": "Kew accepts Ziziphus jujuba Mill. and lists Ziziphus zizyphus as a synonym. NC State uses common jujuba and Chinese date; this does not identify a named variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-ziziphus-jujuba-wave51",
+          "ncsu-ziziphus-jujuba-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Deciduous thorny tree or large shrub",
+        "guidance": "NC State reports a rounded or vase-shaped plant about 15–30 ft tall with thorny branches; it is a landscape-scale plant, not a compact container form.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ziziphus-jujuba-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm, somewhat dry climate; sun to partial shade",
+        "guidance": "NC State reports preference for warm, somewhat dry climates and well-drained but moist soil; the species tolerates drought and poor soils. This does not establish indoor hydroponic performance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ziziphus-jujuba-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Fruit matures from crisp green to date-like brown-purple",
+        "guidance": "NC State describes green fruit with apple-like texture that matures to wrinkled brown-purple fruit, eaten fresh, dried or cooked. In its northern regions the growing season may be too short for fruit set.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ziziphus-jujuba-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Practical propagation route unresolved in selected page",
+        "guidance": "The selected sources describe species and fruit but do not establish a practical home propagation protocol. No seed method is inferred from fruit facts.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Landscape fruit-tree guidance does not establish indoor hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Rounded and vase-shaped tree forms are not represented by the current compatibility habit vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions do not describe container culture."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Indoor footprint is not documented."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor exposure is not an indoor light tier."
+      }
+    }
+  },
+  {
+    "id": "hardy-kiwi-actinidia-arguta",
+    "name": "Hardy Kiwi",
+    "spanishName": "Kiwi resistente",
+    "scientificName": "Actinidia arguta",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🥝",
+    "tags": [
+      "hardy kiwi",
+      "kiwi berry",
+      "Actinidia arguta",
+      "kiwi resistente"
+    ],
+    "summary": "A vigorous, smooth-skinned edible kiwi vine distinct from fuzzy kiwifruit. Many plants require male and female vines to fruit; sex and cultivar are unspecified.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; cultivar and sex unspecified",
+        "guidance": "Kew accepts Actinidia arguta. NC State notes several varieties and cultivars; this profile represents only the species, not a named selection or sexed plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-actinidia-arguta-wave51",
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Vigorous woody climbing vine",
+        "guidance": "NC State says garden vines can grow around 30 ft in a year. A sturdy structure is needed for the vine and fruit; this is not a compact container claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Sun to partial shade; fertile, well-drained soil",
+        "guidance": "NC State recommends full sun to partial shade and well-drained fertile soil. Outdoor pruning guidance is not converted into an indoor trellis or pod-spacing rule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Small smooth-skinned fruit is eaten whole",
+        "guidance": "NC State describes grape-sized fruit that need not be peeled and is sweeter and less acidic than fuzzy kiwi. Fruit production commonly needs male and female plants; sex is unknown for an unspecified plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Seed and cuttings listed; partial cold-stratification fact only",
+        "guidance": "NC State lists seed and stem cuttings and reports 1–2 months of cold stratification. It does not give complete sowing depth, germination window or seedling care, so no Seed Profile is created.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Manage vigorous growth; root rot can occur",
+        "guidance": "NC State notes the vine can become weedy, cats may damage foliage and roots, and root rot can occur.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor climbing-vine guidance does not establish indoor hydroponics."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Climbing vine form is not represented by the current compatibility habit vocabulary; no near-equivalent is inferred."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor vine length is not an indoor height estimate."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Outdoor vine dimensions do not establish an indoor footprint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor exposure is not an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "red-mulberry-morus-rubra",
+    "name": "Red Mulberry",
+    "spanishName": "Moral rojo",
+    "scientificName": "Morus rubra",
+    "variety": null,
+    "category": "fruits",
+    "emoji": "🍇",
+    "tags": [
+      "red mulberry",
+      "Morus rubra",
+      "moral rojo",
+      "native mulberry"
+    ],
+    "summary": "A deciduous North American tree with edible fruit when ripe and wildlife value. The Extension profile warns about unripe fruit and milky sap.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species; distinct from white mulberry",
+        "guidance": "Kew accepts Morus rubra. This entry is not Morus alba or a named fruiting selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-morus-rubra-wave51",
+          "ncsu-morus-rubra-wave51"
+        ]
+      },
+      "growth": {
+        "short": "Deciduous tree with dense, spreading crown",
+        "guidance": "NC State describes a tree with a broad landscape canopy. Summer fruit attracts wildlife and dropped fruit can stain hard surfaces.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-morus-rubra-wave51"
+        ]
+      },
+      "cultivation": {
+        "short": "Rich, moist, well-drained soil; sun to partial shade",
+        "guidance": "NC State reports best growth in rich, moist, well-drained soil and full sun to partial shade; the species does poorly in poor soil. This outdoor tree profile does not establish indoor cultivation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-morus-rubra-wave51"
+        ]
+      },
+      "harvest": {
+        "short": "Consume fruit only when fully ripe",
+        "guidance": "NC State says ripe fruit is harmless and edible, while unripe fruit is poisonous. The fruit can be eaten fresh or used in preserves but has a short shelf life.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-morus-rubra-wave51"
+        ]
+      },
+      "propagation": {
+        "short": "Seed and cuttings listed; seed-starting protocol absent",
+        "guidance": "NC State lists seed and stem cuttings but gives no seed-starting procedure. Seed is a possible route; germination requirements remain undocumented here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-morus-rubra-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Unripe fruit and sap have toxicity cautions",
+        "guidance": "NC State warns that unripe fruit and milky sap may cause hallucinations and stomach upset; ripe fruit is described as harmless. It also lists pests, diseases, messy fruit and self-seeding concerns.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-morus-rubra-wave51"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Landscape tree guidance does not establish indoor hydroponics."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-morus-rubra-wave51"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Morus rubra"
+            },
+            "note": "NC State describes a dense, spreading tree."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Outdoor dimensions are not indoor dimensions."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Indoor footprint is not documented."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor canopy spacing is not pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor light is not indoor grow-light classification."
+      }
+    }
+  }
+]

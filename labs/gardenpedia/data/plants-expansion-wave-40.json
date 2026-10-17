@@ -1,0 +1,104 @@
+[
+  {
+    "id": "ponytail-palm-beaucarnea-recurvata",
+    "name": "Ponytail Palm",
+    "spanishName": "Pata de elefante",
+    "scientificName": "Beaucarnea recurvata",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🌴",
+    "tags": ["ponytail palm", "pata de elefante", "elephant-foot tree", "Beaucarnea recurvata", "Nolina recurvata"],
+    "summary": "Beaucarnea recurvata is an accepted Mexican caudex tree, not a true palm. Its swollen water-storing stem, slow growth and drought tolerance make it a recognizable container specimen, but a mature potted plant can still reach substantial size.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; not a true palm","guidance":"Kew accepts Beaucarnea recurvata and lists Nolina recurvata among its synonyms. The common name Ponytail Palm is horticultural; the plant is an asparagus-family caudex tree, not a palm.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-beaucarnea-recurvata-wave40","ncsu-beaucarnea-recurvata-wave40"]},
+      "growth": {"short":"Slow-growing caudex with cascading narrow leaves","guidance":"NC State describes a swollen water-storage stem and narrow leaves that curl toward their tips. It reports approximately 6–8 ft in a pot and up to 30 ft in native habitat; the larger figure is not presented as a container expectation.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-beaucarnea-recurvata-wave40"]},
+      "cultivation": {"short":"Sunny placement and a fast-draining succulent medium","guidance":"NC State recommends a sunny window, well-drained cactus/succulent-type medium, drying between summer waterings and greatly reduced winter watering. Its 50°F hardiness statement is not a recommended indoor setpoint.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-beaucarnea-recurvata-wave40"]},
+      "maintenance": {"short":"Avoid frequent watering; inspect for common indoor pests","guidance":"The caudex stores water, and NC State describes the plant as drought tolerant. Monitor for mealybugs, scale and spider mites; no routine pruning schedule is established by the source.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-beaucarnea-recurvata-wave40"]},
+      "problems": {"short":"Excess moisture can be more concerning than brief dryness","guidance":"NC State emphasizes dry, well-drained conditions and lists stem rot among possible diseases. Avoid interpreting drought tolerance as proof that all watering schedules are safe.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-beaucarnea-recurvata-wave40"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The sources describe container and succulent-substrate culture, not hydroponic production."},"growthHabits":{"status":"unknown","reason":"The caudex tree form is not represented by the controlled compatibility vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"The 6–8 ft pot-grown range is not established as a typical mature endpoint across container ages and conditions."},"spread":{"status":"unknown","reason":"No container-specific mature spread is established."}},"spacing":{"status":"unknown","reason":"No container or hydroponic spacing is established."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["ncsu-beaucarnea-recurvata-wave40"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"identity"},"note":"NC State lists full sun and recommends a sunny window; full_sun represents the documented outdoor exposure category and is not an indoor fixture specification."}]}}
+  },
+  {
+    "id": "cape-jasmine-gardenia-jasminoides",
+    "name": "Cape Jasmine Gardenia",
+    "spanishName": "Gardenia",
+    "scientificName": "Gardenia jasminoides",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🤍",
+    "tags": ["gardenia", "cape jasmine", "cape jessamine", "jazmín del Cabo", "Gardenia jasminoides", "Gardenia augusta"],
+    "summary": "Gardenia jasminoides is an accepted evergreen shrub known for fragrant white flowers. NC State's species profile describes acidic, well-drained soil, careful root handling and spring pruning; named gardenia cultivars have separate traits and are not assigned here.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; cultivar not specified","guidance":"Kew accepts Gardenia jasminoides and lists historical names including Gardenia augusta and Gardenia florida as synonyms. This profile is the species-level gardenia, not a named compact or cold-hardy cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-gardenia-jasminoides-wave40","ncsu-gardenia-jasminoides-wave40"]},
+      "growth": {"short":"Evergreen woody shrub with fragrant white flowers","guidance":"NC State describes a broadleaf evergreen shrub with glossy foliage and fragrant cream-white flowers. Its general species profile gives 4–8 ft height and spread; named cultivars can differ and are not represented by those generic dimensions.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gardenia-jasminoides-wave40"]},
+      "cultivation": {"short":"Acidic, rich, well-drained soil; bright placement","guidance":"NC State recommends rich, acidic, well-drained soil and bright indirect light or partial shade. Its landscape profile also lists a broader range of outdoor sun exposures; neither statement establishes a measured indoor grow-light tier or hydroponic suitability.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gardenia-jasminoides-wave40"]},
+      "maintenance": {"short":"Prune in spring and remove spent flowers","guidance":"NC State recommends spring pruning to maintain shape, notes flowers appear on new growth, and says spent flowers may be removed to encourage blooming. Avoid root disturbance because the source describes shallow roots and poor tolerance of disturbance.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gardenia-jasminoides-wave40"]},
+      "problems": {"short":"Whiteflies and overly alkaline soil can be concerns","guidance":"NC State notes whiteflies on stressed plants and warns that alkaline soil near concrete can impair growth. Its source does not provide an exact soil-pH target here, so none is supplied.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-gardenia-jasminoides-wave40"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The selected source describes acidic soil and container/landscape culture, not hydroponic production."},"growthHabits":{"status":"unknown","reason":"The source's rounded/mounding descriptions are not mapped to a fixed compatibility habit for every unselected cultivar."},"matureSize":{"height":{"status":"unknown","reason":"The 4–8 ft species range is broad and not a single typical container endpoint."},"spread":{"status":"unknown","reason":"The 4–8 ft species range is broad and not a single typical container endpoint."}},"spacing":{"status":"unknown","reason":"No container or hydroponic spacing is established."},"light":{"status":"unknown","reason":"Bright indirect light and a broad landscape exposure range do not establish a measured indoor tier or one outdoor exposure requirement."}}
+  },
+  {
+    "id": "chinese-hibiscus-hibiscus-rosa-sinensis",
+    "name": "Chinese Hibiscus",
+    "spanishName": "Hibisco chino",
+    "scientificName": "Hibiscus × rosa-sinensis",
+    "variety": null,
+    "category": "flowers",
+    "emoji": "🌺",
+    "tags": ["Chinese hibiscus", "hibisco chino", "Hibiscus rosa-sinensis", "tropical hibiscus", "shoe-black plant"],
+    "summary": "Kew treats Hibiscus × rosa-sinensis as an accepted hybrid cultigen, while NC State commonly presents the ornamental as Hibiscus rosa-sinensis. The identity is kept at the hybrid taxon level; no flower-color cultivar is implied.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted hybrid; many flower-color forms exist","guidance":"Kew accepts Hibiscus × rosa-sinensis as a cultigen derived from artificial hybrids. NC State uses the unmarked spelling H. rosa-sinensis and notes variable forms; this record represents the hybrid ornamental group, not a specific color or named cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-hibiscus-rosa-sinensis-wave40","ncsu-hibiscus-rosa-sinensis-wave40"]},
+      "growth": {"short":"Tropical evergreen woody shrub with large showy flowers","guidance":"NC State describes an evergreen shrub with flowers that can reach about 6 inches. Its general source dimensions are 4–10 ft tall and 5–8 ft wide; indoor plants require substantial container space and may differ from landscape-grown examples.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"]},
+      "cultivation": {"short":"Warm, bright conditions and consistently moist, draining soil","guidance":"NC State recommends full sun to partial shade, rich moist soil with good drainage, humidity, and protection from frost and wind. It says indoor culture needs a large container and bright light; no measured artificial-light target is given.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"]},
+      "maintenance": {"short":"Spring pruning encourages compact growth and new flowering shoots","guidance":"NC State recommends pruning back by about half in early spring to encourage a compact habit and explains that flowers bloom on new growth. Moving the plant can cause leaf and bud drop because it is sensitive to environmental changes.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"]},
+      "harvest": {"short":"Flowers are described as edible; ornamental identity does not establish food-safe treatment","guidance":"NC State lists edible flowers for the species. Do not assume flowers from treated nursery plants are suitable for eating; the reviewed source does not establish pesticide history or food-safety handling.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"]},
+      "problems": {"short":"Scale insects may occur; abrupt environmental changes can trigger bud/leaf drop","guidance":"NC State notes scale and sensitivity to environmental changes that can lead to leaf and bud drop. No generalized disease resistance is claimed.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The selected cultivation guidance describes soil/container culture, not hydroponic flowering."},"growthHabits":{"status":"unknown","reason":"Woody shrub form is not represented by the controlled compatibility vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"The 4–10 ft landscape range is not a reliable indoor-container endpoint."},"spread":{"status":"unknown","reason":"The 5–8 ft landscape range is not a reliable indoor-container endpoint."}},"spacing":{"status":"unknown","reason":"No indoor container or hydroponic spacing is established."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}},{"phase":"growing","requirement":{"kind":"partial_sun"}}],"evidence":[{"sourceIds":["ncsu-hibiscus-rosa-sinensis-wave40"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Hibiscus × rosa-sinensis"},"note":"NC State lists full sun and partial shade for the outdoor plant; this does not quantify indoor grow light."}]}}
+  },
+  {
+    "id": "roselle-sabdariffa-gossypiifolia",
+    "name": "Roselle",
+    "spanishName": "Flor de Jamaica",
+    "scientificName": "Sabdariffa gossypiifolia",
+    "variety": null,
+    "category": "vegetables",
+    "emoji": "🌺",
+    "tags": ["roselle", "flor de Jamaica", "Jamaican tea", "Hibiscus sabdariffa", "red sorrel", "Sabdariffa gossypiifolia"],
+    "summary": "Kew now accepts Sabdariffa gossypiifolia and treats the widely used name Hibiscus sabdariffa as a synonym; NC State has updated its Roselle profile to the accepted combination. The fleshy calyx is the familiar food and tea part, while cultivar-specific claims are not assigned.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted combination; Hibiscus sabdariffa is a synonym","guidance":"Kew accepts Sabdariffa gossypiifolia and lists Hibiscus sabdariffa as a synonym. NC State's current page uses the accepted name but retains the older name in its page imagery and common horticultural literature; search aliases preserve both without treating them as separate species.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-sabdariffa-gossypiifolia-wave40","ncsu-sabdariffa-gossypiifolia-wave40"]},
+      "growth": {"short":"Warm-season edible subshrub with red stems and fleshy calyces","guidance":"NC State describes an edible woody subshrub whose young leaves can be eaten and whose fleshy red calyces are used in tea and other foods. It notes that seasonal behavior depends on climate and that flowering may be too late for productive calyx harvest in cooler short seasons.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"]},
+      "cultivation": {"short":"Full sun and a long warm season support flowering and calyx development","guidance":"NC State states Roselle requires full sun and is a short-day plant that needs 12 or more hours of darkness for abundant flowering. It reports containers or in-ground culture and rapid germination, but provides no numeric seed sowing, temperature, or timing protocol here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"]},
+      "maintenance": {"short":"Allow enough warm-season time before expecting calyces","guidance":"NC State warns that the plant needs a long growing season for pods and calyces to mature, and that cooler zones may not supply enough warm months. No fixed calendar date or maturity interval is generalized across climates.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"]},
+      "harvest": {"short":"Fleshy calyces and young leaves have documented food uses","guidance":"NC State identifies fleshy calyces for tea, drinks, jams and other foods, and young foliage as a vegetable. It does not establish a universal harvest date; timing depends on flowering and local season length.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"]},
+      "problems": {"short":"Insufficient season length can prevent useful calyx production","guidance":"NC State specifically warns that cooler regions may not provide enough warm months for productive flowering and mature pods, and says the plant will not grow without full sun. No unsupported pest or disease resistance is added.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"The selected source documents container and field culture but does not validate hydroponic production."},"growthHabits":{"status":"unknown","reason":"Subshrub habit is not represented by the controlled compatibility vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"No reliable dimensions for the represented type are selected in the source."},"spread":{"status":"unknown","reason":"No reliable spread is established."}},"spacing":{"status":"unknown","reason":"No container or hydroponic spacing is established."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["ncsu-sabdariffa-gossypiifolia-wave40"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"identity"},"note":"NC State says the plant will not grow without full sun; this outdoor exposure does not establish an indoor grow-light tier."}]}}
+  },
+  {
+    "id": "rose-of-sharon-hibiscus-syriacus",
+    "name": "Rose of Sharon",
+    "spanishName": "Rosa de Sarón",
+    "scientificName": "Hibiscus syriacus",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🌸",
+    "tags": ["rose of Sharon", "rosa de Sarón", "shrub althea", "Hibiscus syriacus", "rose of China"],
+    "summary": "Hibiscus syriacus is an accepted deciduous shrub distinct from tropical Chinese hibiscus (H. × rosa-sinensis). NC State describes a large summer-flowering pollinator shrub; species-level landscape dimensions should not be mistaken for a compact container form.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted temperate species; distinct from tropical hibiscus","guidance":"Kew accepts Hibiscus syriacus, native to south China and Taiwan. Common names such as Hibiscus and Rose of China can overlap; this record is specifically H. syriacus, not Chinese hibiscus H. × rosa-sinensis.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-hibiscus-syriacus-wave40","ncsu-hibiscus-syriacus-wave40"]},
+      "growth": {"short":"Large deciduous shrub with summer flowers","guidance":"NC State reports 8–12 ft height and 6–10 ft spread for the species profile and describes a rapidly growing shrub or small tree. These dimensions are landscape-scale and are not a container-size recommendation.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-syriacus-wave40"]},
+      "cultivation": {"short":"Full sun to partial shade; avoid persistently extreme wet or dry soil","guidance":"NC State recommends full sun to partial shade and moist, well-drained soil, while noting tolerance of a range of ordinary soils. The source lists outdoor landscape exposure, not an indoor grow-light requirement.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-syriacus-wave40"]},
+      "maintenance": {"short":"Spring pruning supports flowering on new growth","guidance":"NC State says spring pruning encourages flowers on new growth and can increase flower size. It also describes the species as tolerant of neglect; no cultivar-specific pruning schedule is asserted.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-syriacus-wave40"]},
+      "problems": {"short":"Check local invasive status before planting outdoors","guidance":"NC State notes Rose of Sharon has been reported invasive in some states, including Virginia and Kentucky. That is a region-specific warning; check local guidance rather than assuming the plant is invasive everywhere.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-hibiscus-syriacus-wave40"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Landscape shrub guidance does not establish hydroponic or ordinary indoor culture suitability."},"growthHabits":{"status":"unknown","reason":"The shrub/tree habit is not represented in the controlled compatibility vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"Species landscape size is not an indoor container endpoint."},"spread":{"status":"unknown","reason":"Species landscape size is not an indoor container endpoint."}},"spacing":{"status":"unknown","reason":"Landscape spacing is not indoor pod spacing; no container spacing is established."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}},{"phase":"growing","requirement":{"kind":"partial_sun"}}],"evidence":[{"sourceIds":["ncsu-hibiscus-syriacus-wave40"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"identity"},"note":"NC State recommends full sun to partial shade for outdoor landscape culture; this does not quantify indoor light."}]}}
+  }
+]

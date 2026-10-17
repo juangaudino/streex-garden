@@ -1,0 +1,64 @@
+[
+  {
+    "id": "butterfly-pea-clitoria-ternatea",
+    "name": "Butterfly Pea",
+    "spanishName": "Clitoria azul (butterfly pea)",
+    "scientificName": "Clitoria ternatea",
+    "variety": null,
+    "category": "legumes",
+    "emoji": "🦋",
+    "tags": ["butterfly pea", "blue pea", "Asian pigeonwings", "clitoria azul", "Clitoria ternatea"],
+    "summary": "A tropical climbing legume with vivid blue flowers used for food coloring and tea. The species is seed-propagated; seasonal timing and frost limits depend on climate.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; flower colors vary among cultivars","guidance":"Kew accepts Clitoria ternatea. NC State notes that white or double-flowered cultivars exist; this species profile does not assign one of them.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-clitoria-ternatea-wave53","ncsu-clitoria-ternatea-wave53"]},
+      "growth": {"short":"Climbing perennial in the tropics; often annual in temperate gardens","guidance":"Kew describes a climbing perennial. NC State reports that it is commonly grown as an annual in temperate regions and can reach about 15 ft (4.6 m); this is outdoor species-level context, not a container-size promise.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-clitoria-ternatea-wave53","ncsu-clitoria-ternatea-wave53"]},
+      "cultivation": {"short":"Full sun, drainage and a climbing support","guidance":"NC State recommends full sun, well-drained soil and consistent watering for best growth; UF/IFAS recommends a trellis or fence as the vine grows. These are outdoor growing recommendations, not hydroponic-system evidence.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-clitoria-ternatea-wave53","ufifas-clitoria-ternatea-wave53"]},
+      "harvest": {"short":"Flowers are used for color and tea; tender parts are edible","guidance":"UF/IFAS describes flower use for dye and color-changing tea and reports that leaves, flowers, young shoots and tender pods are edible. This is use information, not a medical claim.","evidenceType":"source_backed","confidence":"high","sourceIds":["ufifas-clitoria-ternatea-wave53"]},
+      "propagation": {"short":"Seed propagation is documented","guidance":"NC State lists seed as the recommended propagation strategy. The linked Seed Profile covers the supported start-to-establishment information and leaves unreported germination measurements unresolved.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-clitoria-ternatea-wave53","ufifas-clitoria-ternatea-wave53"]},
+      "problems": {"short":"Frost exposure is a seasonal limit in temperate regions","guidance":"NC State describes tropical perennial behavior and annual culture in temperate areas. It also lists spider mites and whiteflies among possible pests; these are risks, not a diagnosis or guaranteed occurrence.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-clitoria-ternatea-wave53"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Outdoor soil guidance does not establish performance in nutrient-solution systems."},"growthHabits":{"status":"unknown","reason":"The approved compatibility vocabulary does not represent vining habit; the plant profile retains the source-backed climbing description."},"matureSize":{"height":{"status":"unknown","reason":"The reported outdoor vine length is not a suitable indoor-system height estimate."},"spread":{"status":"unknown","reason":"No indoor footprint is established."}},"spacing":{"status":"unknown","reason":"Outdoor planting distances are not pod spacing."},"light":{"status":"unknown","reason":"Outdoor full-sun guidance is not an indoor grow-light tier."}}
+  },
+  {
+    "id": "moringa-moringa-oleifera",
+    "name": "Moringa",
+    "spanishName": "Moringa",
+    "scientificName": "Moringa oleifera",
+    "variety": null,
+    "category": "vegetables",
+    "emoji": "🌿",
+    "tags": ["moringa", "drumstick tree", "horseradish tree", "Moringa oleifera", "marango"],
+    "summary": "A fast-growing tropical tree cultivated for leaves and young pods. It is cold-sensitive; regional California guidance supports direct sowing or nursery starts, but does not establish indoor hydroponic suitability.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted species; no cultivar assigned","guidance":"Kew accepts Moringa oleifera and describes it as a tree native to the Pakistan–India region. This record represents the species, not a named selection.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-moringa-oleifera-wave53"]},
+      "growth": {"short":"Fast-growing tropical tree; sensitive to cold","guidance":"Kew characterizes the species as a tree of seasonally dry tropical biomes. UC Cooperative Extension describes it as fast-growing and cold-sensitive; its reported behavior reflects Central California conditions.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-moringa-oleifera-wave53","ucanr-moringa-wave53"]},
+      "cultivation": {"short":"Warm conditions; container culture can help in colder climates","guidance":"UC Cooperative Extension reports cultivation in USDA zone 9b and warmer and notes container or annual culture in colder climates. These are regional recommendations, not a universal hardiness guarantee or a hydroponic recommendation.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-moringa-wave53"]},
+      "care": {"short":"Pruning changes the production emphasis","guidance":"UC Cooperative Extension reports that regular pruning promotes bushier growth and increased leaf yield, while unpruned plants produce more pods. This describes the source's crop management context.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-moringa-wave53"]},
+      "harvest": {"short":"Leaves and pods are cultivated uses","guidance":"UC Cooperative Extension describes growing moringa for leaves and/or pods. The source supports these crop uses but does not establish a home harvest calendar or yield estimate.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-moringa-wave53"]},
+      "propagation": {"short":"Seed and nursery starts are documented","guidance":"UC Cooperative Extension says the species may be direct-seeded or nursery-raised and reports a 7–14 day germination range in its Central California article. The linked Seed Profile keeps unsupported temperature and depth values unresolved.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-moringa-wave53"]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Tree crop and regional soil guidance do not establish hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"The current controlled compatibility vocabulary does not encode tree form."},"matureSize":{"height":{"status":"unknown","reason":"No cultivar-specific or container-managed mature height is established for this entry."},"spread":{"status":"unknown","reason":"No indoor footprint is established."}},"spacing":{"status":"unknown","reason":"Regional field spacing is not indoor pod spacing."},"light":{"status":"unknown","reason":"Outdoor tropical cultivation is not an indoor grow-light tier."}}
+  },
+  {
+    "id": "mexican-oregano-lippia-origanoides",
+    "name": "Mexican Oregano",
+    "spanishName": "Orégano mexicano",
+    "scientificName": "Lippia origanoides",
+    "variety": null,
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": ["Mexican oregano", "oregano de monte", "orégano mexicano", "Lippia graveolens", "Lippia origanoides"],
+    "summary": "A tropical and subtropical American shrub used as a culinary herb. Kew treats Lippia graveolens as a synonym of Lippia origanoides; this is distinct from Italian oregano in the genus Origanum.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short":"Accepted name Lippia origanoides; Lippia graveolens is a synonym","guidance":"Kew accepts Lippia origanoides and lists Lippia graveolens among its synonyms. The common name Mexican oregano is used for this Lippia identity; it is not Origanum vulgare or the unresolved Italian Oregano packet identity.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-lippia-origanoides-wave53"]},
+      "growth": {"short":"Shrub native to tropical and subtropical America","guidance":"Kew describes Lippia origanoides as a shrub of tropical and subtropical America. A species-level outdoor habit does not establish a mature container size.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-lippia-origanoides-wave53"]},
+      "harvest": {"short":"Kew records food use","guidance":"Kew's Plants of the World Online record includes use as food. A detailed culinary harvest method and home cultivation protocol are not established by the selected source.","evidenceType":"source_backed","confidence":"medium","sourceIds":["kew-lippia-origanoides-wave53"]},
+      "cultivation": {"short":"Home cultivation guidance not established","guidance":"The selected authoritative record resolves taxonomy and broad ecology but does not provide a home-growing protocol. Light, water, pruning, dimensions and indoor suitability remain unestablished.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
+      "propagation": {"short":"Seed and vegetative methods need a cultivation source","guidance":"The selected source does not establish a reliable home seed-starting or vegetative propagation method. Keep these fields unresolved rather than infer from the shrub habit or its culinary use.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]}
+    },
+    "compatibilityProfile": {"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"No selected source establishes hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"Shrub habit is outside the current compatibility vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"No home-growing dimensions are documented."},"spread":{"status":"unknown","reason":"No indoor footprint is documented."}},"spacing":{"status":"unknown","reason":"No spacing evidence is documented."},"light":{"status":"unknown","reason":"No indoor light evidence is documented."}}
+  }
+]

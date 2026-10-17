@@ -1,0 +1,97 @@
+{
+  "areca-palm-chrysalidocarpus-lutescens": {
+    "name": "Palma areca",
+    "summary": "Chrysalidocarpus lutescens es una palmera de varios tallos originaria de Madagascar que se cultiva en interiores. NC State recomienda luz indirecta brillante, ambiente cálido y húmedo, y sustrato húmedo pero bien drenado; las dimensiones de paisaje exterior no se usan como tamaño de interior.",
+    "sections": {
+      "identity": {"short": "Nombre aceptado: Chrysalidocarpus lutescens", "guidance": "Kew acepta Chrysalidocarpus lutescens; Dypsis lutescens es un sinónimo botánico. NC State usa Areca Palm como nombre común. Los cultivares enanos que menciona NC State no se asignan a esta ficha."},
+      "growth": {"short": "Varios tallos tipo bambú forman una mata", "guidance": "NC State describe una palmera con varios tallos que surgen de una base y hojas pinnadas arqueadas. La altura de paisaje nativo no se usa como dimensión de interior; la fuente no da un límite fijo de interior para una planta sin cultivar especificado."},
+      "cultivation": {"short": "Luz indirecta brillante y ambiente cálido y húmedo", "guidance": "Para cultivo interior, NC State recomienda un lugar luminoso, humedad ambiental alta, suelo húmedo pero no empapado y buen drenaje. Las indicaciones de sol pleno o sombra parcial exterior no definen una categoría de luz de cultivo interior ni aptitud hidropónica."},
+      "maintenance": {"short": "Trasplanta cuando sea necesario; no consumas el corazón de la palmera", "guidance": "NC State sugiere trasplantar cada dos o tres años. Advierte específicamente que la yema terminal (corazón de palmito) contiene compuestos de cianuro y es tóxica; esto no determina por sí solo la seguridad general para mascotas."},
+      "propagation": {"short": "Se documenta división; falta un protocolo de siembra", "guidance": "NC State enumera división y semilla como estrategias de propagación, pero su página no da un protocolo doméstico de siembra. La división está documentada; los requisitos de germinación siguen sin establecerse aquí y por eso no se crea un Seed Profile."},
+      "problems": {"short": "Mantén la zona radicular húmeda, no anegada", "guidance": "La guía de interior de NC State distingue suelo húmedo de suelo empapado. No respalda una afirmación específica de resistencia a enfermedades ni una recomendación de nivel de agua hidropónico."}
+    }
+  },
+  "norfolk-island-pine-araucaria-heterophylla": {
+    "name": "Pino de Norfolk",
+    "summary": "Araucaria heterophylla es una conífera de ramas escalonadas, apreciada como planta de interior. NC State recomienda luz brillante y temperaturas interiores frescas a templadas; poca luz puede causar pérdida de ramas inferiores. La ficha no supone que sea un pino verdadero ni asigna cultivar.",
+    "sections": {
+      "identity": {"short": "Conífera aceptada: Araucaria heterophylla", "guidance": "Kew acepta Araucaria heterophylla y registra sus sinónimos. El nombre común Norfolk Island Pine no la convierte en un Pinus; no se asigna cultivar."},
+      "growth": {"short": "Tronco recto y ramas en niveles", "guidance": "NC State describe un tronco recto con ramas en verticilos que forman una silueta piramidal. En interior puede alcanzar gran tamaño, pero no ofrece un intervalo universal para esta planta sin cultivar ni condiciones definidos."},
+      "cultivation": {"short": "Ubicación interior luminosa y temperatura moderada", "guidance": "NC State recomienda luz brillante para plantas de interior y un ambiente fresco a templado, aproximadamente 55–65 °F. Esta orientación cualitativa no equivale a una intensidad calibrada de lámpara."},
+      "maintenance": {"short": "Evita la luz interior muy baja", "guidance": "NC State advierte que la luz interior muy baja puede causar la pérdida de ramas inferiores. No se ofrece un intervalo de poda que permita recuperar ramas perdidas."},
+      "propagation": {"short": "La ficha enumera semillas, pero no un protocolo de inicio", "guidance": "NC State incluye semilla entre los métodos de propagación, pero no especifica profundidad, temperatura ni cuidados de germinación. La identidad es de semilla posible, pero la evidencia seleccionada no basta para Seed Profile V0."},
+      "problems": {"short": "La pérdida de ramas inferiores puede señalar luz insuficiente", "guidance": "La fuente vincula luz interior muy baja con pérdida de ramas inferiores. Es una señal para revisar el ambiente, no un diagnóstico exclusivo ni una garantía de recuperación."}
+    }
+  },
+  "nerve-plant-fittonia-albivenis": {
+    "name": "Fitonia",
+    "summary": "Fittonia albivenis es una planta de interior rastrera y baja, cultivada por sus hojas verdes con venas blancas, rosas o rojas. NC State describe luz interior brillante a media, suelo húmedo y bien drenado, y pinzado para conservar una forma tupida. Documenta esquejes de tallo, pero no protocolo de semilla ni aptitud hidropónica.",
+    "sections": {
+      "identity": {"short": "Especie aceptada; sin cultivar asignado", "guidance": "Kew acepta Fittonia albivenis y registra nombres históricos como Fittonia verschaffeltii y Fittonia argyroneura entre sus sinónimos. NC State usa Nerve Plant y Mosaic Plant; los colores de las venas varían y no se asigna un cultivar."},
+      "growth": {"short": "Planta baja y rastrera con hojas de venas marcadas", "guidance": "NC State describe una perenne rastrera con hojas verdes y venas blancas, rosas o rojas. Da dimensiones de hábitat nativo de hasta unas 8 pulgadas de alto y 18 de ancho; menciona cultivares enanos para terrarios, pero no los asigna a esta identidad de especie."},
+      "cultivation": {"short": "Luz interior brillante a media y suelo húmedo con drenaje", "guidance": "NC State indica que en interior prospera con luz brillante a media, temperaturas ambientales promedio a frescas y humedad media, y que funciona bajo fluorescentes. Recomienda tierra para maceta bien drenada. Estas observaciones cualitativas no definen un nivel calibrado de lámpara ni prueban compatibilidad con solución nutritiva."},
+      "maintenance": {"short": "Pinza los tallos para mantener una forma tupida", "guidance": "NC State indica que pinzar los tallos puede ayudar a mantener la planta llena. Describe marchitez marcada si se seca demasiado y recuperación al regar; esto no significa que se recomiende secarla repetidamente como método de cuidado."},
+      "propagation": {"short": "Los esquejes de tallo son la vía documentada", "guidance": "NC State enumera esquejes de tallo y señala que los tallos rastreros pueden enraizar. La ficha no proporciona instrucciones de semilla, por lo que no se crea Seed Profile V0 ni se afirma que la semilla sea imposible."},
+      "problems": {"short": "Aire seco, corrientes y sol directo pueden dañar el follaje", "guidance": "NC State relaciona marchitez y caída de hojas con aire seco, corrientes o sol directo; el exceso de agua puede causar pudrición, mojar el follaje puede favorecer manchas y poca luz puede alargar el crecimiento. También enumera cochinillas, escamas, ácaros y babosas. Los síntomas no son diagnósticos únicos."}
+    }
+  },
+  "sweetheart-hoya-hoya-kerrii": {
+    "name": "Hoya corazón",
+    "summary": "Hoya kerrii es una enredadera tropical que puede entrenarse en soporte o dejarse caer. Una hoja en forma de corazón vendida sin un segmento de tallo con nodo puede permanecer como hoja enraizada sin producir una nueva enredadera; verifica el material de propagación antes de comprar.",
+    "sections": {
+      "identity": {"short": "Especie aceptada: Hoya kerrii", "guidance": "Kew acepta Hoya kerrii. El nombre común Sweetheart Plant se refiere a la especie; el producto minorista de una sola hoja no constituye por sí solo evidencia de una planta completa o cultivar."},
+      "growth": {"short": "Enredadera trepadora que puede entrenarse o caer", "guidance": "NC State describe una enredadera que puede crecer sobre soporte o formar tallos colgantes. La presentación comercial de una hoja aislada no debe confundirse con el hábito de la planta adulta."},
+      "cultivation": {"short": "Sigue la guía de interior de la especie, sin extrapolar a hidroponía", "guidance": "La página de NC State ofrece contexto de cultivo de Hoya kerrii como planta de recipiente. No establece compatibilidad con solución nutritiva ni parámetros de Garden hydroponics."},
+      "maintenance": {"short": "Confirma que la hoja de venta incluya tejido con nodo", "guidance": "NC State advierte que una hoja de Hoya kerrii sin un segmento de tallo con nodo puede enraizar pero no desarrollar una enredadera. La propagación vegetativa depende del tejido presente; una hoja ornamental aislada no garantiza una planta completa."},
+      "propagation": {"short": "El nodo del tallo importa para desarrollar una enredadera", "guidance": "La guía de NC State diferencia la hoja sola del tejido de tallo con nodo necesario para crecimiento de enredadera. No se crea un protocolo de semilla porque la fuente seleccionada no lo ofrece."},
+      "problems": {"short": "Una hoja enraizada sin tallo puede no producir brotes", "guidance": "La falta de crecimiento de enredadera en una hoja enraizada no demuestra por sí sola enfermedad: el material puede carecer del nodo necesario. Revisa la procedencia y anatomía de la planta."}
+    }
+  },
+  "rattlesnake-plant-goeppertia-insignis": {
+    "name": "Calatea serpiente de cascabel",
+    "summary": "Goeppertia insignis es una planta de follaje brasileña con hojas onduladas y dibujos contrastantes. NC State recomienda un medio turboso uniformemente húmedo pero bien drenado, humedad ambiental alta y luz de sombra a sombra luminosa; no está establecida su aptitud hidropónica.",
+    "sections": {
+      "identity": {"short": "Nombre aceptado: Goeppertia insignis", "guidance": "Kew acepta Goeppertia insignis y enumera Calathea lancifolia entre sus sinónimos. NC State usa Rattlesnake Plant y Rattlesnake Calathea como nombres comunes; ninguno se trata como cultivar."},
+      "growth": {"short": "Hojas onduladas que se pliegan por la noche", "guidance": "NC State describe hojas delgadas estampadas con envés morado, forma extendida tipo fuente y hojas que se pliegan al atardecer y se abren cerca del amanecer. Las flores en interior son poco comunes y no se prometen como etapa habitual."},
+      "cultivation": {"short": "Humedad uniforme y protección del sol directo", "guidance": "NC State recomienda un medio turboso, húmedo y bien drenado, temperatura de aproximadamente 65–75 °F y exposición de sombra a sombra luminosa. También advierte contra corrientes de aire y cambios bruscos. Estas son indicaciones de maceta, no mediciones de luz artificial ni parámetros de solución nutritiva."},
+      "maintenance": {"short": "Mantén la humedad y limpia el polvo de las hojas", "guidance": "NC State recomienda humedad ambiental y limpiar el polvo de las hojas. Describe riego regular y fertilización mensual equilibrada en primavera/verano, con reducciones en invierno; no se extrapolan estas pautas de suelo a dosis hidropónicas."},
+      "propagation": {"short": "La división es el método práctico documentado", "guidance": "NC State recomienda división. La fuente no da un protocolo de germinación; no se crea Seed Profile ni se afirma que la semilla sea imposible."},
+      "problems": {"short": "Puntas marrones y amarilleo requieren revisar el cuidado", "guidance": "NC State vincula puntas marrones o enrolladas con baja humedad, amarilleo con falta o exceso de agua y pudrición radicular con humedad excesiva. Son señales posibles, no un diagnóstico único. También enumera áfidos, escamas, cochinillas y ácaros."}
+    }
+  },
+  "watermelon-peperomia-peperomia-argyraea": {
+    "name": "Peperomia sandía",
+    "summary": "Peperomia argyraea es una planta de interior compacta, con hojas redondas a rayas verdes que recuerdan la corteza de una sandía. Kew acepta la grafía argyraea; NC State recomienda luz indirecta brillante y advierte sobre extremos de humedad del sustrato.",
+    "sections": {
+      "identity": {"short": "Kew acepta Peperomia argyraea", "guidance": "Kew acepta Peperomia argyraea y enumera Peperomia argyreia, Peperomia arifolia var. argyreia y Peperomia sandersii como sinónimos. NC State usa Watermelon Peperomia; no se asigna un cultivar."},
+      "growth": {"short": "Planta pequeña con hojas redondeadas y rayadas", "guidance": "NC State describe una planta doméstica pequeña y arbustiva de hasta aproximadamente 8 pulgadas, con hojas redondas y franjas verde claro y oscuro. La semejanza con una sandía explica el nombre común; no implica cultivar."},
+      "cultivation": {"short": "Luz indirecta brillante; evita el suelo persistentemente mojado", "guidance": "NC State describe luz indirecta brillante y sensibilidad tanto al suelo mojado como al muy seco. El riego excesivo puede contribuir a pudrición radicular y el insuficiente al marchitamiento; esto no establece hidroponía ni un nivel de luz calibrado."},
+      "propagation": {"short": "El método de propagación específico queda por validar", "guidance": "La ficha de especie de NC State seleccionada no especifica método de propagación. No se promueve consejo general del género Peperomia como protocolo para esta especie; el campo permanece pendiente de validación."},
+      "problems": {"short": "Los extremos de humedad pueden causar pudrición o marchitamiento", "guidance": "NC State relaciona exceso de riego con pudrición radicular e insuficiencia de agua con marchitamiento. Son posibles señales asociadas a humedad, no un diagnóstico diferencial completo."}
+    }
+  },
+  "lipstick-plant-aeschynanthus-radicans": {
+    "name": "Planta lápiz labial",
+    "summary": "Aeschynanthus radicans es una enredadera epífita tropical cultivada por sus flores tubulares rojas. NC State documenta luz indirecta brillante, temperatura cálida en la zona radicular, circulación de aire con humedad y propagación por esqueje blando con tres nodos; no ofrece protocolo de semilla.",
+    "sections": {
+      "identity": {"short": "Especie aceptada: Aeschynanthus radicans", "guidance": "Kew acepta Aeschynanthus radicans. Lipstick Plant es el nombre común; las imágenes de cultivares presentes en páginas de referencia no se asignan a esta ficha de especie."},
+      "growth": {"short": "Enredadera colgante con flores tubulares", "guidance": "NC State describe forma cascada y flores tubulares rojas. También puede usarse soporte; la forma final depende del recipiente y manejo, no de un cultivar identificado aquí."},
+      "cultivation": {"short": "Luz indirecta brillante, calor radicular y circulación de aire", "guidance": "NC State recomienda luz indirecta brillante, temperatura de la zona radicular de aproximadamente 65–70 °F, circulación de aire y humedad. La mezcla de enraizado indicada no constituye evidencia de aptitud en solución nutritiva."},
+      "maintenance": {"short": "Mantén el ambiente cálido y con buena ventilación", "guidance": "El consejo de NC State combina humedad y movimiento del aire para el cultivo de la especie. No se infiere calendario de poda ni frecuencia universal de riego donde la fuente no los establece."},
+      "propagation": {"short": "Esqueje blando de tres nodos documentado", "guidance": "NC State describe esquejes blandos con tres nodos y medio de enraizado. La fuente no da un protocolo de semilla, así que no se crea Seed Profile V0."},
+      "problems": {"short": "Revisa ventilación y condiciones del medio si decae", "guidance": "La fuente recomienda circulación de aire junto con humedad. Esto es una pauta preventiva de ambiente, no una afirmación de resistencia a enfermedades ni diagnóstico de síntomas particulares."}
+    }
+  },
+  "mistletoe-cactus-rhipsalis-baccifera": {
+    "name": "Cactus muérdago",
+    "summary": "Rhipsalis baccifera es un cactus epífito de tallos colgantes, no un cactus desértico típico. NC State recomienda luz indirecta brillante, medio aireado y ligeramente ácido, y humedad sin encharcamiento; la fuente menciona semillas pero no ofrece protocolo de germinación.",
+    "sections": {
+      "identity": {"short": "Especie aceptada: Rhipsalis baccifera", "guidance": "Kew acepta Rhipsalis baccifera. La ficha representa la especie y no extrapola nombres de otros Rhipsalis ni asigna cultivar."},
+      "growth": {"short": "Cactus epífito con tallos colgantes", "guidance": "NC State describe tallos finos y colgantes. El hábito y requerimientos de epífita tropical difieren de la imagen común de cactus desértico; no se le asignan condiciones xerófitas por pertenecer a Cactaceae."},
+      "cultivation": {"short": "Luz indirecta brillante y medio aireado", "guidance": "NC State recomienda luz indirecta brillante, humedad ambiental, medio de cactus ligeramente ácido y bien drenado, y evitar que el sustrato permanezca empapado. Estas pautas de medio no demuestran compatibilidad hidropónica."},
+      "maintenance": {"short": "Riega sin dejar el medio saturado", "guidance": "La guía describe un medio con buen drenaje y humedad para esta epífita. No se transforma en calendario fijo de riego ni en receta de solución nutritiva."},
+      "propagation": {"short": "Hay esquejes y semilla, pero falta protocolo de siembra", "guidance": "NC State menciona esquejes y semillas sin aportar profundidad, temperatura o procedimiento de germinación. Los esquejes son una alternativa documentada; no se crea Seed Profile V0 con la evidencia actual."},
+      "problems": {"short": "Evita confundir sus necesidades con las de cactus desérticos", "guidance": "Su condición epífita y medio húmedo pero bien drenado requieren contexto distinto al de cactus desérticos. La ficha no afirma resistencia a plagas o enfermedades no descritas."}
+    }
+  }
+}

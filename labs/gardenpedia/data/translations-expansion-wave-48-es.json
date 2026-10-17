@@ -1,0 +1,51 @@
+{
+  "stock-matthiola-incana": {
+    "summary":"Matthiola incana es la especie aceptada conocida como stock o alhelí común. Muchas variedades comerciales de stock son híbridos con otras especies de Matthiola, por lo que esta ficha no implica un color o cultivar particular.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; las series comerciales pueden ser híbridos interespecíficos","guidance":"Kew acepta Matthiola incana. NC State señala que muchas variedades de stock son híbridos de M. incana, M. sinuata y M. odorata; el nombre común no identifica un híbrido ni una variedad nombrada."},
+      "growth":{"short":"Planta erecta y fragante de floración fresca","guidance":"NC State describe stock como una planta erecta que suele cultivarse como anual o bienal en su contexto regional, con flores fragantes y altura reportada de hasta 3 pies. El calor superior a unos 80 °F puede acortar su desempeño; no es un tamaño específico de cultivar."},
+      "cultivation":{"short":"Clima fresco, sol pleno y humedad constante con drenaje","guidance":"NC State recomienda sol pleno y suelo promedio a rico en humus, constantemente húmedo pero con buen drenaje, y señala que tolera sombra ligera. Informa deterioro durante el calor estival por encima de 80 °F y bajo noches calurosas; las épocas regionales deben adaptarse localmente."},
+      "propagation":{"short":"La siembra está documentada; la identidad del híbrido puede variar","guidance":"NC State indica que stock puede iniciarse por semilla, sembrando directamente o en interior 6–8 semanas antes de la última helada, y sugiere sembrar en intervalos de dos semanas para prolongar la floración. Advierte que muchas variedades comerciales son híbridos de varias especies de Matthiola; esta ficha no garantiza que la descendencia reproduzca una variedad específica."}
+    }
+  },
+  "four-oclock-mirabilis-jalapa": {
+    "summary":"Mirabilis jalapa es una especie fragante de floración vespertina conocida como dondiego de noche o maravilla del Perú. Las flores varían de color; no se asigna cultivar ni forma de color.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; el color de flor no identifica un cultivar","guidance":"Kew acepta Mirabilis jalapa, nativa desde México hasta Nicaragua. NC State describe flores de múltiples colores y patrones, por lo que la identidad genérica dondiego de noche no especifica un cultivar o color nombrado."},
+      "growth":{"short":"Perenne en climas cálidos; estacional en otros","guidance":"NC State la describe como una perenne semileñosa en sus zonas cálidas de jardinería, cultivada como anual en regiones más frías. Sus flores fragantes en forma de trompeta abren al final del día; las raíces tuberosas pueden rebrotar o almacenarse en algunos climas."},
+      "cultivation":{"short":"Prefiere sol pleno y suelo húmedo con drenaje","guidance":"NC State dice que tolera la mayoría de los suelos y sombra parcial, pero prefiere sol pleno y suelo rico en humus, húmedo y ocasionalmente mojado, con drenaje. El rebrote o almacenamiento regional del tubérculo depende del clima y no es una regla universal de cultivo anual."},
+      "propagation":{"short":"Se documentan semilla y división","guidance":"NC State enumera semilla y división. Indica que remojar las semillas durante la noche puede acelerar la germinación, pero no da profundidad, temperatura ni duración; las plantas viejas también pueden formar raíces tuberosas. Esto no garantiza fidelidad a un cultivar nombrado."},
+      "safety":{"short":"NC State informa toxicidad de baja severidad","guidance":"NC State informa características tóxicas de baja severidad, especialmente en raíces y semillas, y posible irritación cutánea al manipular las raíces. Es una advertencia reportada por la fuente, no una predicción de todo resultado de exposición."}
+    }
+  },
+  "common-morning-glory-ipomoea-purpurea": {
+    "summary":"Ipomoea purpurea es una enredadera anual trepadora de crecimiento rápido y flores que abren por la mañana. Es distinta de la batata y la moonflower, que pertenecen a otras identidades de Ipomoea.",
+    "sections":{
+      "identity":{"short":"Especie aceptada dentro de un género diverso","guidance":"Kew acepta Ipomoea purpurea. El género también incluye batata y moonflower; esta ficha se limita a la campanilla morada y no identifica un cultivar nombrado por color."},
+      "growth":{"short":"Enredadera anual que florece por la mañana","guidance":"NC State describe una enredadera anual trepadora de crecimiento rápido, frecuentemente de 6–10 pies de alto y 3–6 de ancho en una temporada. Las flores abren por la mañana y cierran más tarde; las dimensiones y el color corresponden al contexto de jardinería a nivel de especie, no a una garantía de cultivar."},
+      "cultivation":{"short":"Sol pleno y suelo húmedo con buen drenaje","guidance":"NC State recomienda sol pleno y suelo moderadamente fértil, húmedo pero bien drenado. Puede necesitar poda para controlar su tamaño trepador; proporciona soporte donde se cultive verticalmente. La fuente trata cultivo exterior, no hidroponía interior."},
+      "propagation":{"short":"Propagación por semilla; controlar la resiembra y expansión local","guidance":"NC State enumera propagación por semilla y señala que la especie puede resembrarse con facilidad y es invasora en algunos lugares. La guía del género Ipomoea describe escarificar o hacer una muesca en la cubierta dura y remojar durante la noche; esa práctica se mantiene a nivel de género, sin atribuir una duración o temperatura de germinación específica a I. purpurea."},
+      "safety":{"short":"La fuente reporta toxicidad de baja severidad en semillas","guidance":"NC State advierte características tóxicas de baja severidad y señala que grandes cantidades de semillas pueden causar síntomas. No infieras seguridad por el uso ornamental ni amplíes la afirmación más allá del contexto de exposición de la fuente."}
+    }
+  },
+  "garden-impatiens-impatiens-walleriana": {
+    "summary":"Impatiens walleriana es una especie popular de floración para sombra, a menudo cultivada como anual fuera de climas tropicales. Esta ficha a nivel de especie no identifica un color, serie ni cultivar resistente a enfermedades.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; series y colores nombrados quedan sin especificar","guidance":"Kew acepta Impatiens walleriana y enumera nombres antiguos como I. holstii e I. sultanii. NC State describe gran diversidad de colores y cultivares; no se implica uno en particular."},
+      "growth":{"short":"Planta florífera densa o en mata, de crecimiento rápido","guidance":"NC State la describe como perenne tropical que a menudo se cultiva como anual en jardines templados, generalmente de 0.5–2 pies de alto y ancho similar. Puede florecer desde fines de primavera hasta las heladas en su contexto regional; no es una garantía para una serie nombrada."},
+      "cultivation":{"short":"Semisombra a sombra; mantener humedad sin encharcar","guidance":"NC State recomienda semisombra a sombra completa y suelo húmedo con buen drenaje y materia orgánica. El calor y la sequía pueden marchitarla, mientras que el exceso de agua puede causar pudrición. Esta guía de jardín y maceta no demuestra idoneidad hidropónica."},
+      "maintenance":{"short":"Recorta el crecimiento alargado para renovar el aspecto","guidance":"NC State sugiere recortar aproximadamente el tercio superior al final del verano cuando la planta se alarga, para estimular crecimiento nuevo y mejorar su aspecto. La resistencia a enfermedades varía por cultivar; la ficha de especie no la atribuye."},
+      "propagation":{"short":"Se documentan semillas y esquejes de tallo","guidance":"NC State documenta recolectar semillas de cápsulas maduras, sembrarlas en interior al final del invierno y usar esquejes de tallo. Informa que las plántulas pueden tardar varios meses en florecer y que deben plantarse afuera después de la última helada de primavera; no aporta temperatura numérica ni profundidad de germinación."}
+    }
+  },
+  "cardinal-flower-lobelia-cardinalis": {
+    "summary":"Lobelia cardinalis es una perenne de Norteamérica amante de la humedad, con espigas florales rojas que atraen colibríes y mariposas. Es distinta de otras especies de Lobelia y del cultivar Queen Victoria.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; se excluye el cultivar Queen Victoria","guidance":"Kew acepta Lobelia cardinalis. NC State menciona varios cultivares, incluida Queen Victoria; esta ficha describe la especie y no le atribuye el follaje bronce ni otros rasgos de ese cultivar."},
+      "growth":{"short":"Perenne herbácea alta con espigas de flores rojas","guidance":"NC State informa plantas de aproximadamente 4–5 pies de alto y 1–2 pies de ancho en su contexto regional, con floración desde fines del verano hasta mediados del otoño. Son dimensiones a nivel de especie; los cultivares pueden variar."},
+      "cultivation":{"short":"Mantener el suelo constantemente húmedo; semisombra a sol","guidance":"NC State recomienda suelo rico de humedad media a alta que no debe secarse, con semisombra a sol pleno y sombra por la tarde en veranos calurosos. Tolera inundaciones breves y se adapta a praderas húmedas, sombra de bosque, riberas y jardines de lluvia; esto no establece compatibilidad hidropónica."},
+      "propagation":{"short":"Se documentan semillas y separación de rosetas en primavera","guidance":"NC State enumera propagación por semilla y separación primaveral de rosetas de la planta madre. La página consultada no ofrece un protocolo casero de siembra o germinación; no se toman esos datos de otras especies de Lobelia."},
+      "safety":{"short":"NC State informa toxicidad media si se ingieren grandes cantidades","guidance":"NC State lista toxicidad por ingestión de partes de la planta, incluidas hojas, flores, raíces, semillas y savia. La advertencia se refiere a ingestión y no debe ampliarse a afirmaciones de contacto no respaldadas."}
+    }
+  }
+}

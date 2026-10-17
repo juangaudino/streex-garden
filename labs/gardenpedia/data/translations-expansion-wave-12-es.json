@@ -1,0 +1,41 @@
+{
+  "pothos-epipremnum-aureum": {
+    "summary":"Kew acepta Epipremnum aureum. NC State Extension describe su crecimiento trepador o colgante, preferencia por luz brillante indirecta y propagación por esquejes de tallo; no se representa un cultivar específico.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Epipremnum aureum e incluye Pothos aureus y Scindapsus aureus entre sus sinónimos. NC State distingue E. aureum de E. pinnatum; el nombre común pothos no se usa para unirlos."},
+      "cultivation":{"guidance":"NC State Extension recomienda luz brillante indirecta y dejar secar el sustrato bien drenado entre riegos. La poca luz puede reducir la variegación en algunas formas; no se infiere intensidad de lámpara ni receta hidropónica."},
+      "growth":{"guidance":"NC State describe tallos colgantes y enredaderas que pueden trepar con soporte; como planta de interior suele conservar hojas juveniles. Pode los tallos para manejar la forma; no se infiere tamaño interior a partir de la longitud de una enredadera exterior."},
+      "propagation":{"guidance":"NC State Extension documenta esquejes de tallo y señala que las enredaderas enraízan en agua. Es una vía vegetativa; aquí no se representa un protocolo de siembra para la planta de interior común."},
+      "safety":{"guidance":"NC State Extension identifica cristales de oxalato de calcio y reporta irritación oral y otros síntomas tras ingerir la planta. Manténgala fuera del alcance de niños y mascotas; esto no es consejo médico individual."}
+    }
+  },
+  "zz-plant-zamioculcas-zamiifolia": {
+    "summary":"Kew acepta Zamioculcas zamiifolia. NC State Extension describe su crecimiento rizomatoso y tolerante a la sequía, preferencia por luz brillante indirecta y propagación por división o esquejes de hoja.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Zamioculcas zamiifolia y registra Caladium zamiifolium y Zamioculcas loddigesii entre sus sinónimos. Esta ficha no representa un cultivar."},
+      "cultivation":{"guidance":"NC State Extension describe rizomas carnosos que almacenan agua, recomienda sustrato bien drenado y dejarlo secar entre riegos. Tolera poca luz, pero crece mejor con luz brillante indirecta; el sol directo puede quemar las hojas."},
+      "growth":{"guidance":"NC State informa crecimiento lento y hábito rizomatoso. Las dimensiones exteriores citadas no se tratan como tamaño interior garantizado para todos los recipientes."},
+      "propagation":{"guidance":"NC State Extension enumera la división y los esquejes de hoja como métodos de propagación. Se presentan como vías vegetativas documentadas para esta ficha a nivel de especie."},
+      "safety":{"guidance":"NC State Extension identifica oxalato de calcio y características de toxicidad de nivel medio si se consumen las hojas. Mantenga la planta fuera del alcance de mascotas y niños."}
+    }
+  },
+  "spider-plant-chlorophytum-comosum": {
+    "summary":"Kew acepta Chlorophytum comosum. NC State Extension describe hojas arqueadas y estolones con hijuelos, tolerancia a luz media y propagación mediante hijuelos o división.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Chlorophytum comosum. NC State enumera spider plant, spider ivy y ribbon plant entre los nombres comunes; existen varios cultivares, pero aquí no se selecciona ninguno."},
+      "cultivation":{"guidance":"NC State Extension describe preferencia por luz media y tolerancia a sombra profunda, e indica que la luz solar directa puede dañar las hojas. Mantenga el sustrato húmedo pero bien drenado y reduzca el riego en invierno; son recomendaciones para recipientes y suelo."},
+      "growth":{"guidance":"NC State describe estolones largos que producen flores e hijuelos; una cesta colgante permite que el follaje arqueado caiga. La formación de hijuelos depende de condiciones de duración del día en el contexto descrito por la fuente."},
+      "propagation":{"guidance":"NC State Extension documenta la propagación mediante hijuelos y división. Estas vías vegetativas se presentan sin afirmar que la propagación por semilla sea imposible."}
+    }
+  },
+  "monstera-adansonii": {
+    "summary":"Kew acepta Monstera adansonii. NC State Extension describe una planta tropical trepadora con hojas fenestradas, necesidad de soporte y propagación por esquejes de tallo; es distinta de Monstera deliciosa.",
+    "sections": {
+      "identity":{"guidance":"Kew acepta Monstera adansonii. NC State señala que es una planta más pequeña que Monstera deliciosa pese a la similitud de algunos nombres comunes; esta ficha no afirma subespecie ni cultivar."},
+      "cultivation":{"guidance":"NC State Extension recomienda luz brillante indirecta, condiciones cálidas y húmedas, sustrato húmedo y bien drenado, y protección contra corrientes frías o temperaturas inferiores a 50 °F. Las dimensiones interiores dependen del soporte y no son medidas fijas para un sistema."},
+      "growth":{"guidance":"NC State describe una trepadora perenne que usa raíces aéreas y recomienda tutor, espaldera o poste de musgo. No se infieren geometría de soporte hidropónico ni distancia entre pods."},
+      "propagation":{"guidance":"NC State Extension enumera los esquejes de tallo como método recomendado. Se documenta esta vía vegetativa; aquí no se presenta un protocolo de semilla."},
+      "safety":{"guidance":"NC State Extension reporta riesgo de irritación por contacto y características de toxicidad de baja gravedad asociadas al oxalato de calcio. Evite el contacto con la savia y la ingestión; tome precauciones con niños y mascotas."}
+    }
+  }
+}

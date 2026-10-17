@@ -1,0 +1,83 @@
+[
+  {
+    "id": "cast-iron-plant-aspidistra-elatior",
+    "name": "Cast-Iron Plant",
+    "spanishName": "Aspidistra",
+    "scientificName": "Aspidistra elatior",
+    "variety": "Species; cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🌿",
+    "guideCompletion": 42,
+    "tags": ["cast iron plant", "barroom plant", "iron plant", "aspidistra", "Aspidistra elatior", "houseplant", "shade ornamental"],
+    "summary": "A durable evergreen rhizomatous perennial grown in shady gardens and as a foliage houseplant. NC State Extension documents its shade tolerance and container use; hydroponic or appliance compatibility is not established.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Aspidistra elatior", "guidance": "Kew accepts Aspidistra elatior in Asparagaceae. NC State Extension identifies it as cast-iron plant and describes the species; the named cultivars on that page are not assigned to this record.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-aspidistra-elatior-wave34", "ncsu-aspidistra-elatior-wave34"]},
+      "cultivation": {"short": "Best suited to shade and well-drained soil", "guidance": "NC State Extension recommends partial to full shade and describes rich, well-drained soil. It reports drought tolerance and regular spring-to-autumn watering in its regional landscape guidance. This does not establish an indoor grow-light tier or hydroponic recipe.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-aspidistra-elatior-wave34"]},
+      "growth": {"short": "Evergreen leaves form upright rhizomatous clumps", "guidance": "NC State Extension describes an evergreen perennial spreading by rhizomes and forming upright clumps, with large leathery leaves. Its regional size description is not treated as an indoor-system dimension.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-aspidistra-elatior-wave34"]},
+      "maintenance": {"short": "Protect foliage from direct sun; water less in winter", "guidance": "NC State Extension says the plant is intolerant of direct sun, recommends watering during active spring-to-autumn growth, and sparing watering in winter. These are general species-level recommendations, not a fixed calendar for every indoor environment.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-aspidistra-elatior-wave34"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected evidence covers landscape and container culture, not hydroponic production."}, "growthHabits": {"status": "known", "value": ["clumping"], "evidence": [{"sourceIds": ["ncsu-aspidistra-elatior-wave34"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Aspidistra elatior"}, "note": "NC State Extension describes rhizomatous upright clumps; this does not establish appliance compatibility."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Regional garden height is not an established indoor-system mature height."}, "spread": {"status": "unknown", "reason": "No system-specific spread is supported."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing evidence is available."}, "light": {"status": "unknown", "reason": "Outdoor shade tolerance is not mapped to an indoor grow-light tier."}}
+  },
+  {
+    "id": "parlor-palm-chamaedorea-elegans",
+    "name": "Parlor Palm",
+    "spanishName": "Palma de salón",
+    "scientificName": "Chamaedorea elegans",
+    "variety": "Species; cultivar unspecified",
+    "category": "ornamentals",
+    "emoji": "🌴",
+    "guideCompletion": 43,
+    "tags": ["parlor palm", "parlour palm", "bamboo palm", "neanthe bella palm", "Chamaedorea elegans", "houseplant"],
+    "summary": "A slow-growing understory palm widely grown indoors and tolerant of dimmer rooms than many palms. NC State Extension recommends bright indirect light while noting low-light tolerance; indoor machine compatibility and propagation from seed remain unestablished here.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Chamaedorea elegans", "guidance": "Kew accepts Chamaedorea elegans in Arecaceae. NC State Extension uses parlor/parlour palm and lists several other common names; this identity is species-level and does not specify a cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-chamaedorea-elegans-wave34", "ncsu-chamaedorea-elegans-wave34"]},
+      "cultivation": {"short": "Bright indirect light; tolerates low-light rooms", "guidance": "NC State Extension recommends bright indirect light but says the species tolerates low-light conditions. It also recommends well-drained container mix and allowing soil to dry slightly between waterings. These houseplant conditions do not establish a controlled grow-light category or hydroponic suitability.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-chamaedorea-elegans-wave34"]},
+      "growth": {"short": "Slow-growing, slender-stemmed understory palm", "guidance": "NC State Extension describes a solitary-stemmed understory palm with narrow pinnate fronds, slow growth and indoor height that can reach up to five feet; it notes that actual indoor plants are usually smaller. It also explains that multiple seedlings are often grouped in one pot, which is not a single multi-stem identity.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-chamaedorea-elegans-wave34"]},
+      "maintenance": {"short": "Avoid overwatering and cold drafts", "guidance": "NC State Extension cautions that overwatering can be a problem, recommends well-drained mix and slight drying between waterings, and advises protecting plants from cold drafts. It identifies spider mites and mealybugs as potential pests; these are monitoring concerns, not guaranteed problems.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-chamaedorea-elegans-wave34"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected source describes indoor container culture, not hydroponic production."}, "growthHabits": {"status": "known", "value": ["upright"], "evidence": [{"sourceIds": ["ncsu-chamaedorea-elegans-wave34"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Chamaedorea elegans"}, "note": "The extension source describes erect, slender stems; this does not establish machine fit."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The extension's broad indoor range does not establish a controlled-system height."}, "spread": {"status": "unknown", "reason": "No machine-compatible spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing recommendation is supported."}, "light": {"status": "unknown", "reason": "Ambient low-light tolerance does not define a grow-light tier."}}
+  },
+  {
+    "id": "birds-nest-fern-asplenium-nidus",
+    "name": "Bird's Nest Fern",
+    "spanishName": "Helecho nido de ave",
+    "scientificName": "Asplenium nidus",
+    "variety": "Species; cultivars unspecified",
+    "category": "ornamentals",
+    "emoji": "🌿",
+    "guideCompletion": 43,
+    "tags": ["bird's nest fern", "birds nest fern", "nest fern", "Asplenium nidus", "houseplant", "epiphyte", "fern"],
+    "summary": "A tropical evergreen epiphytic fern with broad strap-shaped fronds forming a central nest. NC State Extension describes humid, moist, porous growing conditions and notes reproduction by spores; a practical home propagation protocol is not supplied by the selected source.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Asplenium nidus", "guidance": "Kew accepts Asplenium nidus in Aspleniaceae. NC State Extension describes bird's nest fern as an epiphytic tropical perennial; named cultivars on the extension page are not assigned to this species-level record.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-asplenium-nidus-wave34", "ncsu-asplenium-nidus-wave34"]},
+      "cultivation": {"short": "Keep evenly moist, humid and out of harsh direct sun", "guidance": "NC State Extension recommends rich, moist, porous fern mix and notes that the plant does not tolerate dry conditions or frost. It describes bright light or light shade as suitable and warns that excess sun may yellow the plant or stop growth. This is ambient horticultural guidance, not a grow-light tier.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-asplenium-nidus-wave34"]},
+      "growth": {"short": "Broad fronds form a funnel-shaped rosette", "guidance": "NC State Extension describes a tropical epiphyte with large strap-shaped fronds, a dark midrib and a funnel-like rosette that catches leaf litter. It reports that cultivated fronds can become several feet long; this landscape/houseplant context does not establish machine dimensions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-asplenium-nidus-wave34"]},
+      "maintenance": {"short": "Handle the fronds gently and avoid dry drafts", "guidance": "NC State Extension describes fragile foliage and advises avoiding direct heat and drafts. It lists scale, mealybugs, bacterial leaf diseases and leaf nematodes as possible issues to monitor; no resistance claim is made.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-asplenium-nidus-wave34"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected evidence supports humid, porous potting media and epiphytic growth, not recirculating hydroponic culture."}, "growthHabits": {"status": "known", "value": ["rosette"], "evidence": [{"sourceIds": ["ncsu-asplenium-nidus-wave34"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Asplenium nidus"}, "note": "The species forms a funnel-shaped rosette; this growth form alone does not establish appliance suitability."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Landscape frond dimensions are not controlled-system height."}, "spread": {"status": "unknown", "reason": "No indoor-system spread or pod spacing is supported."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing evidence is available."}, "light": {"status": "unknown", "reason": "The source gives ambient bright-light/shade descriptions, not indoor grow-light intensity."}}
+  },
+  {
+    "id": "african-violet-streptocarpus-ionanthus",
+    "name": "African Violet",
+    "spanishName": "Violeta africana",
+    "scientificName": "Streptocarpus ionanthus",
+    "variety": "Species; common horticultural name historically uses synonym Saintpaulia ionantha; cultivar unspecified",
+    "category": "flowers",
+    "emoji": "🌸",
+    "guideCompletion": 44,
+    "tags": ["African violet", "violeta africana", "Streptocarpus ionanthus", "Saintpaulia ionantha", "Gesneriaceae", "houseplant", "leaf cutting"],
+    "summary": "A flowering tropical houseplant commonly known under the older name Saintpaulia ionantha. Kew accepts Streptocarpus ionanthus; NC State Extension documents leaf and stem cuttings, while this record does not add a seed-starting protocol.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Kew-accepted name: Streptocarpus ionanthus", "guidance": "Kew accepts Streptocarpus ionanthus and treats Saintpaulia ionantha as a synonym. NC State Extension uses African violet for this horticultural plant and also discusses other species and cultivars; this record does not claim any named cultivar or infraspecific taxon.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-streptocarpus-ionanthus-wave34", "ncsu-streptocarpus-ionanthus-wave34"]},
+      "cultivation": {"short": "Bright shade and careful watering support indoor growth", "guidance": "NC State Extension's African-violet guidance describes shade-tolerant houseplant use and warns that excessive fertilizer can brown leaves. Its broader genus page includes multiple Streptocarpus species; no exact lamp intensity, nutrient concentration or cultivar-specific schedule is inferred here.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-streptocarpus-ionanthus-wave34"]},
+      "growth": {"short": "Basal rosette foliage with ornamental flowers", "guidance": "NC State Extension describes African violet foliage arranged in a basal rosette or singly/oppositely depending on the plants covered by its genus-oriented page. The page includes more than one species; rosette details are kept at its stated African-violet/related-Streptocarpus scope rather than assigned to every cultivar.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-streptocarpus-ionanthus-wave34"]},
+      "maintenance": {"short": "Remove dead leaves; propagate with leaf or stem cuttings", "guidance": "NC State Extension recommends removing dead leaves near the crown and documents leaf or stem cuttings as propagation routes. The same genus page also lists seed, but it does not provide a seed-starting protocol; no germination parameters are inferred.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-streptocarpus-ionanthus-wave34"]},
+      "problems": {"short": "Watch for gray mold on cuttings and leaf issues from excess feeding", "guidance": "NC State Extension warns that over-fertilizing can brown leaves and that cuttings should be removed at the first sign of Botrytis gray mold. The page also lists pests affecting African violets; these are risks to monitor, not claims that every plant is affected.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-streptocarpus-ionanthus-wave34"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The sources address houseplant culture and propagation, not nutrient-film or recirculating hydroponic production."}, "growthHabits": {"status": "unknown", "reason": "The extension source covers African violet and related Streptocarpus forms; a single growth-habit assignment for this species-level identity is not sufficiently isolated."}, "matureSize": {"height": {"status": "unknown", "reason": "Dimensions on the broader African-violet/genus source are not established for this taxonomic species alone."}, "spread": {"status": "unknown", "reason": "No species-isolated indoor spread is established."}}, "spacing": {"status": "unknown", "reason": "No pod-spacing guidance is supported."}, "light": {"status": "unknown", "reason": "Ambient shade guidance is not an indoor grow-light tier."}}
+  }
+]

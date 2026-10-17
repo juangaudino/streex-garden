@@ -6,7 +6,7 @@
     "totals": {
       "SUPPORTED_DIRECT": 0,
       "SUPPORTED_VIA_DEFENSIBLE_MAPPING": 49,
-      "INSUFFICIENT": 165,
+      "INSUFFICIENT": 451,
       "NOT_APPLICABLE": 0
     },
     "rows": [
@@ -15,7 +15,47 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "adzuki-bean-vigna-angularis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "african-marigold-tagetes-erecta",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "african-violet-streptocarpus-ionanthus",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "alaska-nasturtium",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "alice-sundew-drosera-aliciae",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "aloe-vera",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "alpine-strawberry-fragaria-vesca",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "american-cranberry-vaccinium-macrocarpon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "american-elderberry-sambucus-canadensis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "american-gooseberry-ribes-hirtellum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "american-persimmon-diospyros-virginiana",
         "classification": "INSUFFICIENT"
       },
       {
@@ -37,11 +77,55 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "annual-babys-breath-gypsophila-elegans",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "apple-malus-domestica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "apricot-prunus-armeniaca",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "arabian-jasmine-jasminum-sambac",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "areca-palm-chrysalidocarpus-lutescens",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "armenian-cucumber",
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "arrowhead-plant-syngonium-podophyllum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "arugula",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "asian-pear-pyrus-pyrifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "asian-persimmon-diospyros-kaki",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "asparagus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "astro-arugula",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "baby-rubber-plant-peperomia-obtusifolia",
         "classification": "INSUFFICIENT"
       },
       {
@@ -57,6 +141,18 @@
         "plantId": "banana-pepper",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "basil-ocimum-basilicum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bay-laurel-laurus-nobilis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "beautiful-hoya-hoya-bella",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "bee-balm",
@@ -77,6 +173,18 @@
         "evidenceIdentity": "lettuce"
       },
       {
+        "plantId": "bird-of-paradise-strelitzia-reginae",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "birds-nest-fern-asplenium-nidus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bitter-melon-momordica-charantia",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "black-beauty-eggplant",
         "classification": "INSUFFICIENT"
       },
@@ -86,7 +194,19 @@
         "evidenceIdentity": "tomato"
       },
       {
+        "plantId": "black-chokeberry-aronia-melanocarpa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "black-currant-ribes-nigrum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "black-eyed-susan",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "black-hawk-black-raspberry",
         "classification": "INSUFFICIENT"
       },
       {
@@ -95,12 +215,40 @@
         "evidenceIdentity": "tomato"
       },
       {
+        "plantId": "black-pearl-ornamental-pepper",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "black-seeded-simpson",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "lettuce"
       },
       {
+        "plantId": "black-viola",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "blackberry-rubus-canadensis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "blazing-star-liatris-spicata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bloody-dock-rumex-sanguineus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "blue-false-indigo-baptisia-australis",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "blue-lake-pole-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "blush-hibiscus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -109,6 +257,18 @@
       },
       {
         "plantId": "borage-blue",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "boston-fern-nephrolepis-exaltata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bottle-gourd",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "breen-romaine-lettuce",
         "classification": "INSUFFICIENT"
       },
       {
@@ -129,11 +289,31 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "bronze-arrow-lettuce",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "brussels-sprouts",
         "classification": "INSUFFICIENT"
       },
       {
         "plantId": "brussels-sprouts-long-island",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "buckwheat-fagopyrum-esculentum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bulls-blood-beet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "bunching-onion-allium-fistulosum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "burros-tail-sedum-morganianum",
         "classification": "INSUFFICIENT"
       },
       {
@@ -149,12 +329,28 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "bush-nasturtium-tropaeolum-minus",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "buttercrunch-lettuce",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "lettuce"
       },
       {
+        "plantId": "butterfly-pea-clitoria-ternatea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "butterfly-weed-asclepias-tuberosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "butternut-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "calamondin",
         "classification": "INSUFFICIENT"
       },
       {
@@ -170,7 +366,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "cape-jasmine-gardenia-jasminoides",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cape-sundew-drosera-capensis",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "caraway",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cardinal-flower-lobelia-cardinalis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cardoon-cynara-cardunculus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -179,6 +391,18 @@
       },
       {
         "plantId": "cascading-petunia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cast-iron-plant-aspidistra-elatior",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "catnip-nepeta-cataria",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "caucasian-pincushion-lomelosia-caucasica",
         "classification": "INSUFFICIENT"
       },
       {
@@ -196,7 +420,23 @@
         "evidenceIdentity": "tomato"
       },
       {
+        "plantId": "celeriac-apium-graveolens",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "celosia-plumosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "celtuce-lactuca-sativa-augustana",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cereal-rye-secale-cereale",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "chayote",
         "classification": "INSUFFICIENT"
       },
       {
@@ -214,9 +454,33 @@
         "evidenceIdentity": "tomato"
       },
       {
+        "plantId": "chervil-anthriscus-cerefolium",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "chia-salvia-hispanica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "chickpea-cicer-arietinum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "chinese-hibiscus-hibiscus-rosa-sinensis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "chinese-jujube-ziziphus-jujuba",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "chinese-light-green-celery",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "celery"
+      },
+      {
+        "plantId": "chinese-money-plant-pilea-peperomioides",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "chioggia-beet",
@@ -232,6 +496,10 @@
         "evidenceIdentity": "basil"
       },
       {
+        "plantId": "clary-sage-salvia-sclarea",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "collard-greens",
         "classification": "INSUFFICIENT"
       },
@@ -240,7 +508,63 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "common-fenugreek-trigonella-foenum-graecum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-fig",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-foxglove-digitalis-purpurea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-houseleek-sempervivum-tectorum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-hoya-hoya-australis",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "common-mint",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-morning-glory-ipomoea-purpurea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-purslane-portulaca-oleracea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-rue-ruta-graveolens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-sorrel-rumex-acetosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-staghorn-fern-platycerium-bifurcatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "common-yarrow-achillea-millefolium",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "corn-plant-dracaena-fragrans",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "corn-salad-valeriana-locusta",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cornflower-centaurea-cyanus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -252,7 +576,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "crimson-clover-trifolium-incarnatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "crimson-giant-radish",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "croton-codiaeum-variegatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cuban-oregano-coleus-amboinicus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "cuban-oregano-plectranthus-amboinicus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -262,6 +602,10 @@
       },
       {
         "plantId": "cucumber-marketmore",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "culantro",
         "classification": "INSUFFICIENT"
       },
       {
@@ -285,11 +629,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "delicata-js-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "delphinium-magic-fountains-dwarf",
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "delta-maidenhair-fern-adiantum-raddianum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "dill-bouquet",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dumbcane-dieffenbachia-seguine",
         "classification": "INSUFFICIENT"
       },
       {
@@ -298,6 +654,10 @@
       },
       {
         "plantId": "dwarf-sunflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "dwarf-umbrella-tree-heptapleurum-arboricola",
         "classification": "INSUFFICIENT"
       },
       {
@@ -317,6 +677,10 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "english-ivy-hedera-helix",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "english-thyme",
         "classification": "INSUFFICIENT"
       },
@@ -325,7 +689,31 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "escarole",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "european-gooseberry-ribes-uva-crispa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "european-pear-pyrus-communis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "european-plum-prunus-domestica",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "evergreen-bunching-onion-nabuka",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "fairy-tale-f1-eggplant",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "false-african-violet-streptocarpus-saxorum",
         "classification": "INSUFFICIENT"
       },
       {
@@ -337,12 +725,40 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "fiddle-leaf-fig-ficus-lyrata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "flamingo-flower-anthurium-andraeanum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "flat-leaf-parsley",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "parsley"
       },
       {
+        "plantId": "flax-linum-usitatissimum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "florence-fennel",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "florist-kalanchoe-kalanchoe-blossfeldiana",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "flowering-tobacco-hybrid-nicotiana-sanderi",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "flowering-tobacco-nicotiana-alata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "four-oclock-mirabilis-jalapa",
         "classification": "INSUFFICIENT"
       },
       {
@@ -358,7 +774,31 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "french-sorrel-rumex-scutatus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "french-tarragon-artemisia-dracunculus-sativa",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "gai-lan",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "garden-angelica-angelica-archangelica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "garden-cress-lepidium-sativum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "garden-impatiens-impatiens-walleriana",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "garlic-allium-sativum",
         "classification": "INSUFFICIENT"
       },
       {
@@ -387,11 +827,39 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "giant-bamburanta-ctenanthe-oppenheimiana",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "giant-musselburgh-leek",
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "giant-white-bird-of-paradise-strelitzia-nicolai",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "ginger-zingiber-officinale",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "globe-amaranth",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "globe-artichoke-cynara-cardunculus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "globe-thistle-echinops-ritro",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "goeppertia-orbifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "gold-dust-dracaena-dracaena-surculosa",
         "classification": "INSUFFICIENT"
       },
       {
@@ -403,9 +871,21 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "grain-amaranth-amaranthus-hypochondriacus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "grain-sorghum-sorghum-bicolor",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "grape-tomato",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "great-blanketflower-gaillardia-aristata",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "greek-oregano",
@@ -413,6 +893,14 @@
       },
       {
         "plantId": "green-arrow-shelling-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "green-columbine-aquilegia-viridiflora",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "green-salanova-lettuce",
         "classification": "INSUFFICIENT"
       },
       {
@@ -429,7 +917,51 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "hansel-f1-eggplant",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hardy-kiwi-actinidia-arguta",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "heartleaf-philodendron-philodendron-hederaceum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "henderson-bush-lima-bean",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hoja-santa-piper-auritum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hollyhock-alcea-rosea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hon-tsai-tai",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "honey-bear-f1-acorn-squash",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "honeyberry-lonicera-caerulea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "honeydew-melon-cucumis-melo",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "horseradish-armoracia-rusticana",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "hyacinth-bean-lablab-purpureus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -443,6 +975,14 @@
       },
       {
         "plantId": "imperator-carrot",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "inch-plant-tradescantia-zebrina",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "indian-blanket-flower-gaillardia-pulchella",
         "classification": "INSUFFICIENT"
       },
       {
@@ -464,9 +1004,25 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "jade-plant-crassula-ovata",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "jalapeno-pepper",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "japanese-plum-prunus-salicina",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "jicama-pachyrhizus-erosus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "jute-mallow",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "kale-dwarf-blue-curled",
@@ -493,6 +1049,18 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "lady-murasaki-komatsuna",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lambs-ear-stachys-byzantina",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "large-red-cherry-tomato",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "lavender-vera",
         "classification": "INSUFFICIENT"
       },
@@ -513,7 +1081,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "lemon-verbena-aloysia-citrodora",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "lemongrass-homegrown",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lentil-vicia-lens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lingonberry-vaccinium-vitis-idaea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lipstick-plant-aeschynanthus-radicans",
         "classification": "INSUFFICIENT"
       },
       {
@@ -526,7 +1110,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "loquat-eriobotrya-japonica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "lovage-levisticum-officinale",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "love-in-a-mist",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "madagascar-dragon-tree-dracaena-reflexa-angustifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "malabar-spinach-basella-alba",
         "classification": "INSUFFICIENT"
       },
       {
@@ -542,7 +1142,27 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "mexican-oregano-lippia-origanoides",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mexican-snowball-echeveria-elegans",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mexican-sunflower-tithonia-rotundifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "mexican-tarragon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "meyer-lemon",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "micro-tom-tomato",
         "classification": "INSUFFICIENT"
       },
       {
@@ -555,6 +1175,10 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "mistletoe-cactus-rhipsalis-baccifera",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "mizuna",
         "classification": "INSUFFICIENT"
       },
@@ -563,9 +1187,37 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "monstera-adansonii",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "monstera-deliciosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "monterey-strawberry",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "strawberry"
+      },
+      {
+        "plantId": "moonflower-ipomoea-alba",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "moringa-moringa-oleifera",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "moss-rose-portulaca-grandiflora",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "muir-lettuce",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "mung-bean-vigna-radiata",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "mustard-greens",
@@ -580,9 +1232,65 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "nepenthes-x-ventrata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "nerve-plant-fittonia-albivenis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "new-zealand-spinach-tetragonia-tetragonoides",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "norfolk-island-pine-araucaria-heterophylla",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "northern-highbush-blueberry",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "oakleaf-lettuce",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "lettuce"
+      },
+      {
+        "plantId": "oats-avena-sativa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "okra-abelmoschus-esculentus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "orange-hat-micro-dwarf-tomato",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pale-purple-coneflower-echinacea-pallida",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "panda-plant-kalanchoe-tomentosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pandero-romaine-lettuce",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "papalo-porophyllum-ruderale",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "papaya",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "parlor-palm-chamaedorea-elegans",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "parris-island-romaine",
@@ -590,6 +1298,18 @@
       },
       {
         "plantId": "parsnip",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "parsnip-pastinaca-sativa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "passion-fruit",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "patio-baby-f1-eggplant",
         "classification": "INSUFFICIENT"
       },
       {
@@ -602,6 +1322,26 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "pawpaw-asimina-triloba",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "peach-prunus-persica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "peanut-arachis-hypogaea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "peppermint-mentha-piperita",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "perpetual-spinach",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "petunia-dwarf-bedding-mixed",
         "classification": "INSUFFICIENT"
       },
@@ -610,13 +1350,89 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "philippine-evergreen-aglaonema-commutatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "pickling-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pigeon-pea-cajanus-cajan",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pineapple-ananas-comosus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pineapple-mint-mentha-suaveolens-variegata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pineapple-sage-salvia-elegans",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pinguicula-lilac-lollipop",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pinguicula-primuliflora",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pinguicula-weser",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pink-petunia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pink-turtlehead-chelone-obliqua",
         "classification": "INSUFFICIENT"
       },
       {
         "plantId": "poblano-pepper",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "pepper"
+      },
+      {
+        "plantId": "polka-dot-begonia-begonia-maculata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "polka-dot-plant-hypoestes-phyllostachya",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pomegranate-punica-granatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "ponytail-palm-beaucarnea-recurvata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "potato-solanum-tuberosum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "pothos-epipremnum-aureum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "prayer-plant-maranta-leuconeura",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "prickly-pear-opuntia-ficus-indica",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "proso-millet-panicum-miliaceum",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "provider-bush-bean",
@@ -628,7 +1444,23 @@
         "evidenceIdentity": "basil"
       },
       {
+        "plantId": "purple-coneflower-echinacea-purpurea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-heart-tradescantia-pallida",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-kohlrabi",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "purple-of-sicily-cauliflower",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "purple-pitcher-plant-sarracenia-purpurea",
         "classification": "INSUFFICIENT"
       },
       {
@@ -636,7 +1468,31 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "purple-shamrock-oxalis-triangularis",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "purple-sprouting-broccoli",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "quinoa-chenopodium-quinoa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "radicchio-cichorium-intybus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rainbow-mix-coleus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rattlesnake-plant-goeppertia-insignis",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rau-ram-persicaria-odorata",
         "classification": "INSUFFICIENT"
       },
       {
@@ -648,11 +1504,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "red-currant-ribes-rubrum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-mulberry-morus-rubra",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "red-mustard-greens",
         "classification": "INSUFFICIENT"
       },
       {
         "plantId": "red-onion",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "red-raspberry",
         "classification": "INSUFFICIENT"
       },
       {
@@ -674,16 +1542,52 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "resina-calendula",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rhubarb",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rice-oryza-sativa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "ripple-peperomia-peperomia-caperata",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "roma-tomato",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "tomato"
+      },
+      {
+        "plantId": "romaine-lettuce",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "romanesco-cauliflower",
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "rose-of-sharon-hibiscus-syriacus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rose-painted-calathea-goeppertia-roseopicta",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "roselle-sabdariffa-gossypiifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "rosemary",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rubber-plant-ficus-elastica",
         "classification": "INSUFFICIENT"
       },
       {
@@ -692,6 +1596,10 @@
       },
       {
         "plantId": "rutabaga",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "rutabaga-brassica-napus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -708,7 +1616,35 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "saskatoon-serviceberry-amelanchier-alnifolia",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "satin-pothos-scindapsus-pictus",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "savoy-cabbage",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "scarlet-red-tatsoi",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "scarlet-runner-bean-phaseolus-coccineus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "scarlet-star-guzmania-lingulata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "schillers-moth-orchid-phalaenopsis-schilleriana",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sea-thrift-armeria-maritima",
         "classification": "INSUFFICIENT"
       },
       {
@@ -726,12 +1662,28 @@
         "evidenceIdentity": "pepper"
       },
       {
+        "plantId": "sesame-sesamum-indicum",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "shishito-pepper",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "pepper"
       },
       {
+        "plantId": "shiso-perilla-frutescens",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "signet-marigold",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "smooth-luffa-luffa-aegyptiaca",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "snake-plant-dracaena-trifasciata",
         "classification": "INSUFFICIENT"
       },
       {
@@ -743,7 +1695,47 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "snapdragon-antirrhinum-majus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "snow-in-summer-cerastium-tomentosum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "society-garlic-tulbaghia-violacea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sour-cherry-prunus-cerasus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "southern-pea-vigna-unguiculata",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "spathiphyllum-wallisii",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "spearmint",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "spider-plant-chlorophytum-comosum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "spring-barley-hordeum-vulgare",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "stalk-celery-apium-graveolens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "starfruit-averrhoa-carambola",
         "classification": "INSUFFICIENT"
       },
       {
@@ -751,7 +1743,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "stock-matthiola-incana",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "straight-eight-cucumber",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "strawflower-xerochrysum-bracteatum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "string-of-hearts-ceropegia-woodii",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "string-of-pearls-curio-rowleyanus",
         "classification": "INSUFFICIENT"
       },
       {
@@ -788,6 +1796,10 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "sunflower-helianthus-annuus",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "sunrise-sauce-tomato",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "tomato"
@@ -807,12 +1819,28 @@
         "evidenceIdentity": "basil"
       },
       {
+        "plantId": "sweet-cherry-prunus-avium",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "sweet-chocolate-pepper",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "pepper"
       },
       {
+        "plantId": "sweet-corn-zea-mays",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "sweet-pea",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweet-potato-ipomoea-batatas",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweet-scabiosa-scabiosa-atropurpurea",
         "classification": "INSUFFICIENT"
       },
       {
@@ -820,7 +1848,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "sweet-william-dianthus-barbatus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweet-woodruff-galium-odoratum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "sweetheart-hoya-hoya-kerrii",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "swiss-chard-rainbow",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "table-grape-vine",
         "classification": "INSUFFICIENT"
       },
       {
@@ -832,9 +1876,17 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "tennessee-coneflower-echinacea-tennesseensis",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "thai-basil",
         "classification": "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
         "evidenceIdentity": "basil"
+      },
+      {
+        "plantId": "thanksgiving-cactus-schlumbergera-truncata",
+        "classification": "INSUFFICIENT"
       },
       {
         "plantId": "tiny-tim-sweet-alyssum",
@@ -858,7 +1910,35 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "tong-hao-glebionis-coronaria",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "trailing-nasturtium-tropaeolum-majus",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "tulsi-holy-basil-ocimum-tenuiflorum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "turmeric-curcuma-longa",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "turnip-purple-top-white-globe",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "upland-cress",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "vegetable-amaranth-amaranthus-tricolor",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "venus-flytrap-dionaea-muscipula",
         "classification": "INSUFFICIENT"
       },
       {
@@ -874,7 +1954,23 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "wasabina-mustard-greens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "water-spinach-ipomoea-aquatica",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "watercress",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "waterleaf-talinum-fruticosum",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "watermelon-peperomia-peperomia-argyraea",
         "classification": "INSUFFICIENT"
       },
       {
@@ -882,11 +1978,51 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "wax-plant-hoya-carnosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "wax-plant-hoya-pubicalyx",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "weeping-fig-ficus-benjamina",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "white-carolina-pineberry",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "white-clover-trifolium-repens",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "white-lisbon-bunching-onion",
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "wild-bergamot-monarda-fistulosa",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "winged-bean-psophocarpus-tetragonolobus",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "winter-savory",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "wintergreen-gaultheria-procumbens",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "wishbone-flower-torenia-fournieri",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "yardlong-bean-vigna-unguiculata-sesquipedalis",
         "classification": "INSUFFICIENT"
       },
       {
@@ -908,11 +2044,19 @@
         "classification": "INSUFFICIENT"
       },
       {
+        "plantId": "zebra-haworthiopsis-attenuata",
+        "classification": "INSUFFICIENT"
+      },
+      {
         "plantId": "zinnia-lilliput-mixed",
         "classification": "INSUFFICIENT"
       },
       {
         "plantId": "zinnia-state-fair",
+        "classification": "INSUFFICIENT"
+      },
+      {
+        "plantId": "zz-plant-zamioculcas-zamiifolia",
         "classification": "INSUFFICIENT"
       }
     ]

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "kew-ocimum-basilicum-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Ocimum basilicum L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452874-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and taxonomy for Ocimum basilicum; not evidence for a named cultivar",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "kew-allium-fistulosum-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Allium fistulosum L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:528046-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity, synonyms, family, and genus for Allium fistulosum; not a cultivar source",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "umn-growing-scallions-500",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing scallions in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-scallions-in-home-gardens",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Allium fistulosum/scallion group identity, sowing, seedling care, growing, watering, harvest, and regional garden guidance",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": ["identity", "cultivation", "seedling", "seed", "harvest", "problems"]
+  }
+]

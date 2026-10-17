@@ -7,6 +7,13 @@ const growthHabits = new Set([
   "rosette",
   "clumping",
   "mounded",
+  "tree",
+  "shrub",
+  "arching",
+  "erect",
+  "columnar",
+  "rounded",
+  "broad",
 ]);
 const contexts = new Set([
   "in_ground",
@@ -80,7 +87,7 @@ function evidenceList(value, path, knownSourceIds) {
           `${itemPath}.taxonomicScope`,
           "identity scope is supplied by the containing library identity",
         );
-    } else if (["species", "genus", "family"].includes(scope.level)) {
+    } else if (["species", "subspecies", "genus", "family"].includes(scope.level)) {
       exactKeys(scope, ["level", "taxon"], `${itemPath}.taxonomicScope`);
       if (typeof scope.taxon !== "string" || !scope.taxon.trim())
         fail(

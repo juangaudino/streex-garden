@@ -1,0 +1,64 @@
+[
+  {
+    "id": "garden-cress-lepidium-sativum",
+    "name": "Garden Cress",
+    "spanishName": "Mastuerzo de jardín",
+    "scientificName": "Lepidium sativum",
+    "variety": "Species-level garden-cress identity; cultivar unspecified",
+    "category": "leafy greens",
+    "emoji": "🌱",
+    "guideCompletion": 58,
+    "tags": ["garden cress", "curly cress", "peppergrass", "mastuerzo de jardín", "Lepidium sativum"],
+    "summary": "A quick salad-shoot crop with a peppery flavor. This identity is garden cress (Lepidium sativum), not watercress or upland cress, which are different species.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Lepidium sativum", "guidance": "Kew accepts Lepidium sativum in Brassicaceae. Johnny's cress guide treats garden, upland, and watercress as separate crop types; this entry represents garden cress only and does not assign a named product or cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-lepidium-sativum-500", "johnnys-cress-growing-500"]},
+      "cultivation": {"short": "Grow as a fast salad-shoot crop; keep the sowing medium moist", "guidance": "Johnny's describes Wrinkled Crinkled Cress as shallow-sown in a band or indoors in flats year-round, with repeat sowing for a steady supply. The guide groups several cress species and its schedule is specific to that garden-cress crop type, not a universal mature-plant protocol for every Lepidium sativum selection.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-cress-growing-500"]},
+      "growth": {"short": "Harvest young shoots rather than assuming a mature plant size", "guidance": "The selected source describes harvest beginning when the Wrinkled Crinkled Cress shoots are about 2 inches tall. It does not establish a universal mature height, spread, or flowering habit for an unspecified garden-cress cultivar.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-cress-growing-500"]},
+      "harvest": {"short": "Cut young shoots at about 2 inches", "guidance": "Johnny's gives a 7–10 day harvest window for Wrinkled Crinkled Cress when the shoots are around 2 inches tall and suggests sowing every two weeks for a steady supply. That is a product-type harvest recommendation, not a proven germination interval or cultivar identity for this species-level record.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["johnnys-cress-growing-500"]},
+      "problems": {"short": "Species-specific mature-crop problems need validation", "guidance": "The selected growing guide does not provide a diagnostic pest or disease profile for garden cress. Do not transfer the separate upland-cress or watercress guidance to this identity.", "evidenceType": "needs_validation", "confidence": "pending", "sourceIds": []}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Growing shoots in a flat does not establish suitability for a recirculating hydroponic system."}, "growthHabits": {"status": "unknown", "reason": "The selected crop guide describes a young-shoot harvest, not a controlled mature growth-habit classification."}, "matureSize": {"height": {"status": "unknown", "reason": "No species-level mature height is selected for the represented crop use."}, "spread": {"status": "unknown", "reason": "No species-level mature spread is established."}}, "spacing": {"status": "unknown", "reason": "Band sowing and field spacing are not indoor pod-spacing recommendations."}, "light": {"status": "unknown", "reason": "The selected evidence does not establish an indoor grow-light requirement or outdoor sun category."}}
+  },
+  {
+    "id": "corn-salad-valeriana-locusta",
+    "name": "Corn Salad",
+    "spanishName": "Canónigos",
+    "scientificName": "Valeriana locusta",
+    "variety": "Species-level cool-season salad-green identity; cultivar unspecified",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 64,
+    "tags": ["corn salad", "mâche", "lamb's lettuce", "canónigos", "Valeriana locusta", "Valerianella locusta"],
+    "summary": "A compact, cool-season salad green harvested as tender leaves or small rosettes. POWO accepts Valeriana locusta; many horticultural sources use the synonym Valerianella locusta.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "POWO accepted name: Valeriana locusta", "guidance": "Kew POWO accepts Valeriana locusta and treats Valerianella locusta as a synonym. Utah State Extension and many seed and horticultural references use Valerianella locusta for mâche/corn salad; the accepted-name difference is retained here rather than silently normalized away.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-valeriana-locusta-500", "usu-lambs-lettuce-500"]},
+      "cultivation": {"short": "Cool-season crop; heat can suppress germination and trigger flowering", "guidance": "Utah State Extension recommends direct sowing in soil temperatures of 41–68°F (5–20°C), notes that temperatures above 70°F (21°C) can induce dormancy, and says high summer temperatures reduce growth and quality and promote flowering. These are outdoor crop recommendations, not indoor light or hydroponic specifications.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-lambs-lettuce-500"]},
+      "growth": {"short": "Forms small edible-leaf rosettes", "guidance": "Utah State Extension describes corn salad as a cool-season leafy vegetable and gives harvest options for leaves or a whole small plant. The source's outdoor row distances are not converted into indoor pod spacing.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-lambs-lettuce-500"]},
+      "harvest": {"short": "Harvest leaves repeatedly or cut a small whole plant", "guidance": "Utah State Extension says harvest may begin two to three weeks after emergence or transplanting. It recommends cutting leaves when they reach about 4 inches across, allowing new center leaves to form, or cutting the entire plant at about 2–3 inches tall. Timing varies with conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-lambs-lettuce-500"]},
+      "problems": {"short": "Heat, weeds, pests, and damping-off are documented risks", "guidance": "Utah State Extension notes poor weed competition during establishment, heat-related quality loss and flowering, and reports aphids, flea beetles, slugs, leaf miners, Alternaria leaf spot, and damping-off in its crop guide. These are regional production observations, not a diagnosis or cultivar-specific susceptibility claim.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["usu-lambs-lettuce-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Outdoor soil-production guidance does not establish performance in a home recirculating system."}, "growthHabits": {"status": "known", "value": ["rosette"], "evidence": [{"sourceIds": ["usu-lambs-lettuce-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Valerianella locusta (synonym of Valeriana locusta in POWO)"}, "note": "The extension source uses Valerianella locusta and describes a small leafy salad crop; POWO currently accepts Valeriana locusta."}]}, "matureSize": {"height": {"status": "unknown", "reason": "Harvest-size guidance is not a mature-height measurement."}, "spread": {"status": "unknown", "reason": "No supported mature spread is selected."}}, "spacing": {"status": "unknown", "reason": "Outdoor garden spacing is not an indoor pod-spacing recommendation."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}], "evidence": [{"sourceIds": ["usu-lambs-lettuce-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Valeriana locusta (reported as Valerianella locusta)"}, "note": "USU recommends full sunlight for outdoor garden production; this is natural outdoor exposure, not an indoor grow-light tier."}]}}
+  },
+  {
+    "id": "common-sorrel-rumex-acetosa",
+    "name": "Common Sorrel",
+    "spanishName": "Acedera común",
+    "scientificName": "Rumex acetosa",
+    "variety": "Species-level edible sorrel identity; cultivar unspecified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "guideCompletion": 63,
+    "tags": ["common sorrel", "garden sorrel", "Rumex acetosa", "acedera común"],
+    "summary": "A perennial leafy herb grown for tangy leaves. It is distinct from French sorrel (Rumex scutatus), red-veined sorrel, and the existing bloody dock identity.",
+    "metrics": [],
+    "sections": {
+      "identity": {"short": "Accepted species: Rumex acetosa", "guidance": "Kew accepts Rumex acetosa. The RHS growing guide distinguishes common sorrel from French sorrel (R. scutatus) and red-veined sorrel; shared sowing and basic care guidance is identified as applying to these sorrel types collectively, while common-sorrel-specific claims are limited to what the guide explicitly names.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-rumex-acetosa-500", "rhs-sorrel-growing-500"]},
+      "cultivation": {"short": "Perennial; grows in full sun or partial shade", "guidance": "The RHS says sorrel grows well in full sun or partial shade and prefers rich, moisture-retentive soil for leaf production. It recommends regular moisture for seedlings and container plants during dry weather and warns against waterlogging containers in winter. The shared cultivation guidance covers common, French, and red-veined sorrel, not a unique cultivar response.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["rhs-sorrel-growing-500"]},
+      "growth": {"short": "A perennial leaf crop; remove flower stems to maintain fresh growth", "guidance": "Kew describes Rumex acetosa as a herbaceous perennial around 1 m tall in its species profile; this is botanical species context, not a guaranteed garden-cultivar size. The RHS specifically advises removing common sorrel's tall flower stems so plants continue producing fresh leaves, and notes that sorrel dies back over winter and re-sprouts in spring.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-rumex-acetosa-500", "rhs-sorrel-growing-500"]},
+      "harvest": {"short": "Pick young leaves regularly", "guidance": "The RHS recommends regular harvesting for a steady supply of young leaves and notes that older leaves can become tough and bitter. Its page discusses the edible use of sorrel leaves; cultivar-specific flavor intensity is not assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["rhs-sorrel-growing-500"]},
+      "problems": {"short": "Avoid waterlogging and unwanted self-seeding", "guidance": "The RHS advises keeping container compost evenly moist but not waterlogged and removing flower stems when self-seeding is not desired. The selected sources do not establish a species-specific pest or disease list for this identity.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["rhs-sorrel-growing-500"]}
+    },
+    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Garden and container soil guidance does not establish long-term hydroponic suitability."}, "growthHabits": {"status": "unknown", "reason": "The selected sources do not establish a controlled-vocabulary habit value for this species record."}, "matureSize": {"height": {"status": "known", "value": {"maxCm": 100, "context": "outdoor_general"}, "evidence": [{"sourceIds": ["kew-rumex-acetosa-500"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Rumex acetosa"}, "note": "Kew describes the species as about 1 m tall; wild/species context, not a selected garden cultivar's guaranteed size."}]}, "spread": {"status": "unknown", "reason": "No common-sorrel mature spread is selected."}}, "spacing": {"status": "unknown", "reason": "RHS outdoor spacing is not an indoor system-spacing recommendation."}, "light": {"status": "unknown", "reason": "RHS describes full sun or partial shade for sorrel, but the current controlled vocabulary cannot encode partial shade without conflating it with partial sun or shade."}}}
+]

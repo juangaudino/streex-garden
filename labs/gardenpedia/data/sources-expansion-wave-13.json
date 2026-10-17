@@ -1,0 +1,54 @@
+[
+  {
+    "id": "kew-tropaeolum-majus-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Tropaeolum majus L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:310974-2",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity, family, genus, life form and broad uses for Tropaeolum majus; no named cultivar identity",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs coverage reconciliation",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "kew-calendula-officinalis-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Calendula officinalis L. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:187894-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and taxonomy for Calendula officinalis; not cultivar-specific evidence for Resina",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs coverage reconciliation",
+    "claimKinds": ["identity", "taxonomy"]
+  },
+  {
+    "id": "fedco-resina-calendula-500",
+    "publisher": "Fedco Seeds",
+    "title": "Resina Calendula — Organic",
+    "url": "https://fedcoseeds.com/seeds/resina-organic-calendula-4925",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Named Resina product identity and supplier-described product/crop facts, including estimated maturity and general Calendula culture; supplier claims retain their stated scope",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs coverage reconciliation",
+    "claimKinds": ["identity", "cultivar", "cultivation", "seedling", "harvest", "use"]
+  },
+  {
+    "id": "montana-state-calendula-resina-trial-500",
+    "publisher": "Montana State University Western Agricultural Research Center",
+    "title": "Calendula — Cultivar Research Summary",
+    "url": "https://agresearch.montana.edu/warc/research_current/research_past/herbsandoils/calendula.html",
+    "type": "university_research",
+    "tier": 1,
+    "scope": "Montana field-trial observations comparing Resina and Erfurter Orangefarbige in 1998–1999; no universal yield, disease-resistance, or home-garden guarantee",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs coverage reconciliation",
+    "claimKinds": ["cultivar", "cultivation", "harvest", "problems"]
+  }
+]

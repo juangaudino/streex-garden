@@ -1,0 +1,68 @@
+{
+  "african-marigold-tagetes-erecta": {
+    "summary":"Tagetes erecta es una anual florífera tierna con numerosos cultivares de jardín. Esta ficha a nivel de especie no identifica un color, serie ni rango de altura particular.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; sin cultivar asignado","guidance":"Kew acepta Tagetes erecta. NC State enumera múltiples cultivares de tamaño y rasgos variables; esta identidad representa la especie, no una serie nombrada."},
+      "growth":{"short":"Anual florífera tierna; los tamaños varían según el cultivar","guidance":"NC State informa formas de jardín de aproximadamente 1–4 pies de alto y 1–2 pies de ancho. Las formas altas pueden necesitar soporte; no atribuyas esos rangos a todos los cultivares."},
+      "cultivation":{"short":"Sol pleno, humedad uniforme y buen drenaje","guidance":"NC State recomienda sol pleno, suelo uniformemente húmedo y bien drenado, e iniciar semillas en interior 6–8 semanas antes de la última helada en su contexto regional. Esto no demuestra compatibilidad hidropónica interior."},
+      "care":{"short":"Pinza las plantas jóvenes y quita flores marchitas pesadas","guidance":"NC State informa que pinzar tallos jóvenes favorece un crecimiento más tupido y que conviene retirar flores marchitas pesadas para evitar que se rompan tallos. La resistencia a enfermedades varía por cultivar."},
+      "propagation":{"short":"La semilla es el método documentado preferido","guidance":"NC State describe la semilla como el mejor método de propagación y da una ventana de inicio en interior; aquí no se establecen profundidad exacta, temperatura ni duración de germinación."},
+      "problems":{"short":"La susceptibilidad a enfermedades y plagas varía por cultivar","guidance":"NC State enumera posibles botritis, manchas foliares, phytophthora, oídio, pudriciones, trips, babosas y ácaros. La resistencia reportada depende del cultivar y no se atribuye a esta identidad sin especificar."}
+    }
+  },
+  "purple-coneflower-echinacea-purpurea": {
+    "summary":"Una perenne herbácea de Norteamérica utilizada en jardines para polinizadores y plantas nativas. Es distinta de Echinacea pallida y de la equinácea de Tennessee catalogada por separado.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; no es un cultivar de equinácea nombrado","guidance":"Kew acepta Echinacea purpurea. NC State señala numerosos cultivares con tamaño, color y respuesta a enfermedades variables; esta ficha no asigna rasgos de cultivar."},
+      "growth":{"short":"Perenne de floración prolongada, alrededor de 3–4 pies en jardines regionales","guidance":"NC State informa un rango de 3–4 pies a nivel de especie y floración desde el verano hasta mediados del otoño. Las medidas no son una estimación para interior."},
+      "cultivation":{"short":"Suelo húmedo y bien drenado; sol pleno a semisombra","guidance":"NC State describe tolerancia a varios suelos, preferencia por franco húmedo y bien drenado, y cultivo desde sol pleno hasta semisombra. No es evidencia de compatibilidad hidropónica."},
+      "care":{"short":"Deja tallos en pie para las abejas que anidan en ellos","guidance":"NC State recomienda dejar tallos muertos de 12–24 pulgadas hasta que se desintegren para proporcionar hábitat a abejas nativas que anidan en tallos. Es una recomendación para jardines de polinizadores."},
+      "propagation":{"short":"La semilla es posible; aquí no se establece un protocolo doméstico","guidance":"NC State indica que la especie se propaga fácilmente por semilla, pero la página seleccionada no especifica condiciones de germinación ni protocolo de siembra. No tomes instrucciones de otras especies de Echinacea."},
+      "problems":{"short":"Pueden aparecer escarabajos japoneses y manchas foliares; se reporta aster yellows","guidance":"NC State enumera escarabajos japoneses, manchas foliares y susceptibilidad a aster yellows. La resistencia a phytophthora reportada para algunos cultivares no se atribuye a esta identidad."}
+    }
+  },
+  "pale-purple-coneflower-echinacea-pallida": {
+    "summary":"Una equinácea perenne distinta de Echinacea purpurea. NC State documenta el manejo de semilla según estratificación y siembra de otoño o primavera.",
+    "sections":{
+      "identity":{"short":"Especie aceptada; distinta de E. purpurea","guidance":"Kew acepta Echinacea pallida; NC State la distingue de la equinácea púrpura por florecer antes y tener hojas más estrechas y pilosas. También es distinta de E. tennesseensis."},
+      "growth":{"short":"Perenne erecta, alrededor de 3 pies según NC State","guidance":"NC State describe tallos robustos y erectos de alrededor de 3 pies y un periodo breve de floración estival. La raíz pivotante y las medidas exteriores no indican ajuste a sistemas interiores."},
+      "cultivation":{"short":"Sol pleno y suelo con buen drenaje","guidance":"NC State recomienda buen drenaje y sol pleno; la raíz pivotante contribuye a la tolerancia a sequías prolongadas. Son rasgos de cultivo exterior, no evidencia hidropónica."},
+      "care":{"short":"Elige la temporada según si la semilla fue estratificada","guidance":"NC State indica que la semilla sin estratificar debe sembrarse en otoño y la estratificada puede sembrarse en primavera. También señala que los grupos pueden dividirse tras varios años."},
+      "propagation":{"short":"Se documentan semillas y división","guidance":"NC State enumera semilla y división. La guía de semilla se desarrolla en el Seed Profile; no se asigna un cultivar."},
+      "problems":{"short":"Pueden aparecer escarabajos japoneses y manchas foliares","guidance":"NC State informa escarabajos japoneses y manchas foliares. No se hacen afirmaciones de resistencia para esta identidad."}
+    }
+  },
+  "moss-rose-portulaca-grandiflora": {
+    "summary":"Una anual ornamental suculenta, baja y tolerante al calor y la sequía. Mantén esta especie separada de la verdolaga común, Portulaca oleracea.",
+    "sections":{
+      "identity":{"short":"Especie ornamental aceptada; sin cultivar asignado","guidance":"Kew acepta Portulaca grandiflora. NC State distingue otras plantas también llamadas purslane o moss rose, incluida P. oleracea; aquí no se representa una serie nombrada."},
+      "growth":{"short":"Anual rastrera que forma una mata; cerca de 8 pulgadas de alto y 1 pie de ancho","guidance":"NC State informa un hábito bajo y enmarañado con estas dimensiones de jardín. Las flores cierran por la noche y en días nublados o lluviosos; no se afirma una forma de flor de cultivar."},
+      "cultivation":{"short":"Sol pleno y suelo arenoso o rocoso con drenaje rápido","guidance":"NC State describe tolerancia al calor y la sequía, y recomienda suelo arenoso o rocoso bien drenado y sol pleno. Esto no demuestra compatibilidad hidropónica."},
+      "care":{"short":"Manipula las plántulas con cuidado; despunta para reducir la resiembra","guidance":"NC State señala que tolera mal el trasplante y aconseja cuidado al manipular plántulas; retirar flores marchitas puede reducir la resiembra. Esto no aporta un protocolo de siembra."},
+      "propagation":{"short":"Se resiembra, pero no se establece aquí un protocolo práctico","guidance":"NC State informa que se resiembra y que es sensible al trasplante. La fuente seleccionada no establece profundidad, temperatura ni tiempo de germinación; la clasificación pública permanece insuficientemente documentada."},
+      "problems":{"short":"El drenaje deficiente puede causar pudrición de corona; puede haber pulgones y babosas","guidance":"NC State enumera pulgones y babosas ocasionales y pudrición de corona en suelo con drenaje deficiente."}
+    }
+  },
+  "indian-blanket-flower-gaillardia-pulchella": {
+    "summary":"Una Gaillardia anual a nivel de especie, con cabezuelas bicolores y valor para polinizadores. Es distinta de G. aristata perenne y de los híbridos comerciales entre ambas.",
+    "sections":{
+      "identity":{"short":"Especie anual aceptada; no es un híbrido comercial","guidance":"Kew acepta Gaillardia pulchella. NC State señala que otras plantas comparten el nombre blanket flower, como G. aristata y G. × grandiflora; esta ficha corresponde específicamente a G. pulchella."},
+      "growth":{"short":"Anual erecta o perenne de vida corta; cerca de 1.5–2 pies de alto","guidance":"NC State describe una planta erecta de alrededor de 1.5–2 pies de alto y cerca de 1 pie de ancho en su contexto regional, con floración de verano a otoño."},
+      "cultivation":{"short":"Sol pleno, drenaje y humedad constante durante la germinación","guidance":"NC State recomienda sol pleno y suelo bien drenado. Especifica humedad constante para buena germinación; las plantas establecidas toleran calor, sequía y sal en jardines regionales."},
+      "care":{"short":"Decide dejar o retirar las cabezuelas según la resiembra deseada","guidance":"NC State indica que las cabezuelas dejadas durante el invierno sirven a los pájaros cantores. La especie se naturaliza; controla la producción de semilla según el lugar."},
+      "propagation":{"short":"Siembra directa en otoño; cubre con un rastrillado ligero","guidance":"NC State da una instrucción de siembra directa en otoño con cobertura ligera y humedad constante para germinar. No indica profundidad precisa, temperatura ni duración."},
+      "problems":{"short":"Evita el suelo encharcado; pueden aparecer pulgones y trips","guidance":"NC State advierte que no sobrevive en suelo encharcado y enumera pulgones y trips como posibles problemas."}
+    }
+  },
+  "great-blanketflower-gaillardia-aristata": {
+    "summary":"Una flor silvestre perenne de Norteamérica, distinta de la flor de manta india anual (Gaillardia pulchella) y de los híbridos comerciales entre ambas.",
+    "sections":{
+      "identity":{"short":"Especie perenne aceptada; distinta de G. pulchella","guidance":"Kew acepta Gaillardia aristata. NC State señala que G. × grandiflora comercial es híbrida de G. aristata y G. pulchella; esta ficha no representa ese híbrido."},
+      "growth":{"short":"Perenne con raíz pivotante, cerca de 1–3 pies de alto y 1–2 de ancho","guidance":"NC State da estas dimensiones de jardín a nivel de especie y describe tallos pilosos erectos con cabezuelas solitarias. Son rangos exteriores."},
+      "cultivation":{"short":"Sol pleno; sitios cálidos y secos con buen drenaje","guidance":"NC State describe buen desempeño a sol pleno en sitios cálidos y secos, con riego suplementario durante sequías prolongadas. No establece compatibilidad hidropónica."},
+      "care":{"short":"Vigila el drenaje y evita el contacto con los pelos ásperos","guidance":"NC State advierte que el mal drenaje puede causar pudrición de raíces y recomienda guantes para reducir irritación de la piel por las superficies pilosas."},
+      "propagation":{"short":"Se enumeran semillas y división; falta protocolo doméstico de semilla","guidance":"NC State enumera semilla y división, pero la página seleccionada no da instrucciones domésticas de inicio de semilla. La semilla es una vía posible, con requisitos insuficientemente documentados aquí."},
+      "problems":{"short":"Puede aparecer oídio, manchas foliares, aster yellows y pudrición","guidance":"NC State enumera estos problemas y señala que la especie puede resembrarse y volverse maleza; controla la semilla localmente."}
+    }
+  }
+}

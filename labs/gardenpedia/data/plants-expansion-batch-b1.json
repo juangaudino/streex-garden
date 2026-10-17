@@ -516,15 +516,10 @@
     "monterey strawberry",
     "fresa monterey",
     "day neutral strawberry",
-    "bare root strawberry"
+    "Monterey strawberry cultivar"
   ],
-  "summary": "Cultivar de fresa day-neutral de UC Davis. User Zero compró cinco plantas bare-root, no semillas; Garden debe conservar ese tipo de material y registrar el establecimiento real después de recibirlas.",
+  "summary": "Cultivar de fresa day-neutral desarrollado por UC Davis. La evidencia de cultivar se mantiene separada de las recomendaciones generales para fresa.",
   "metrics": [
-    {
-      "label": "Material",
-      "value": "5 bare-root plants",
-      "note": "User Zero purchase"
-    },
     {
       "label": "Flowering type",
       "value": "Day-neutral",
@@ -537,25 +532,6 @@
     }
   ],
   "sections": {
-    "germination": {
-      "short": "Not applicable — purchased as bare-root plants",
-      "guidance": "Do not show seed-germination instructions for this inventory item. The relevant first stage is bare-root establishment after arrival.",
-      "evidenceType": "source_backed",
-      "confidence": "high",
-      "sourceIds": [
-        "etsy-monterey-userzero",
-        "ucd-monterey"
-      ]
-    },
-    "thinning": {
-      "short": "Not a seedling-thinning workflow",
-      "guidance": "Each bare-root crown is an individual plant. Establish crowns separately and evaluate vigor after transplant rather than thinning seedlings.",
-      "evidenceType": "garden_adaptation",
-      "confidence": "high",
-      "sourceIds": [
-        "etsy-monterey-userzero"
-      ]
-    },
     "pruning": {
       "short": "Prioritize crown establishment before runner/leaf management",
       "guidance": "Do not prescribe runner removal or aggressive leaf cleanup automatically. Garden should first observe transplant recovery, crown condition and the actual production goal.",
@@ -567,7 +543,7 @@
     },
     "harvest": {
       "short": "Harvest fully colored ripe berries",
-      "guidance": "Monterey is a fruiting day-neutral cultivar. Use actual fruit color and condition rather than a generic days-from-planting promise for bare-root hydro establishment.",
+      "guidance": "Monterey is a fruiting day-neutral cultivar. Use actual fruit color and condition rather than a generic days-from-planting promise.",
       "evidenceType": "garden_adaptation",
       "confidence": "high",
       "sourceIds": [
@@ -596,7 +572,7 @@
     },
     "problems": {
       "short": "Watch transplant establishment and powdery mildew",
-      "guidance": "UC Davis notes Monterey is susceptible to powdery mildew. Garden should also treat bare-root arrival condition and crown establishment as first-order evidence before diagnosing later decline.",
+      "guidance": "UC Davis notes Monterey is susceptible to powdery mildew. Use observed symptoms and growing conditions before diagnosing later decline.",
       "evidenceType": "source_backed",
       "confidence": "high",
       "sourceIds": [

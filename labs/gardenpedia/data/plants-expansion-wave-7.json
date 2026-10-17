@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "tulsi-holy-basil-ocimum-tenuiflorum",
+    "name": "Tulsi (Holy Basil)",
+    "spanishName": "Tulsi (albahaca sagrada)",
+    "scientificName": "Ocimum tenuiflorum",
+    "variety": "Species identity; no tulsi type or cultivar specified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "tulsi",
+      "holy basil",
+      "holy basil plant",
+      "ocimum tenuiflorum",
+      "ocimum sanctum",
+      "albahaca sagrada"
+    ],
+    "summary": "Tulsi is Ocimum tenuiflorum, a distinct species from culinary sweet basil (O. basilicum). North Carolina Extension documents seed propagation, rapid erect growth, full-sun cultivation and culinary use; no tulsi cultivar is specified.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted identity: Ocimum tenuiflorum",
+        "guidance": "Kew accepts Ocimum tenuiflorum. North Carolina Extension lists Tulsi, Tulasi and Holy Basil as common names and notes the historical name O. sanctum. This is not an Ocimum basilicum cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-ocimum-tenuiflorum-500",
+          "ncsu-ocimum-tenuiflorum-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun; avoid waterlogged soil",
+        "guidance": "NC State Extension describes a rapidly growing, erect, multi-stemmed herb that prefers full sun and moist, well-drained soil. Its regional outdoor guidance does not establish an indoor lamp setting or hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ocimum-tenuiflorum-500"
+        ]
+      },
+      "propagation": {
+        "short": "Seed propagation is documented",
+        "guidance": "NC State lists seed propagation and notes that the plant readily self-seeds. Exact sowing depth, germination time and temperature are not supplied in the reviewed page.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ocimum-tenuiflorum-500"
+        ]
+      },
+      "harvest": {
+        "short": "Leaves have culinary use",
+        "guidance": "NC State Extension describes the leaves as a culinary herb, commonly cooked or used in teas. It distinguishes their spicy flavor from ordinary culinary basil; this is species-level guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ocimum-tenuiflorum-500"
+        ]
+      },
+      "problems": {
+        "short": "Contain spread where needed",
+        "guidance": "The extension profile notes self-seeding and potential weediness outside the native range. This is a regional ecological caution, not a claim of invasive status in every location.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ocimum-tenuiflorum-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The reviewed sources do not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-ocimum-tenuiflorum-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum tenuiflorum"
+            },
+            "note": "Species-level growth habit described by NC State Extension."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "maxCm": 91.44,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-ocimum-tenuiflorum-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Ocimum tenuiflorum"
+              },
+              "note": "Extension reports growth to about 3 ft; only the reported upper size is represented."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "A measured spread was not selected from the reviewed source."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No selected spacing value."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-ocimum-tenuiflorum-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Ocimum tenuiflorum"
+            },
+            "note": "Outdoor exposure, not indoor grow-light intensity."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "common-fenugreek-trigonella-foenum-graecum",
+    "name": "Common Fenugreek",
+    "spanishName": "Fenogreco común",
+    "scientificName": "Trigonella foenum-graecum",
+    "variety": "Species identity; no named cultivar specified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "fenugreek",
+      "common fenugreek",
+      "methi",
+      "trigonella foenum-graecum",
+      "fenogreco"
+    ],
+    "summary": "Common fenugreek is the annual species Trigonella foenum-graecum. NC State Extension documents seed propagation, edible foliage and seeds, and warns that wet soils are unsuitable; no named cultivar is represented.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted identity: Trigonella foenum-graecum",
+        "guidance": "Kew accepts this annual species in Fabaceae. Fenugreek, Greek clover and Greek hay are common names; no cultivar or production type is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-trigonella-foenum-graecum-500",
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun; avoid persistently wet soil",
+        "guidance": "North Carolina Extension lists full sun, good drainage and an erect annual habit. Its soil and climate guidance is regional and is not converted to a hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      },
+      "propagation": {
+        "short": "Seed propagation is documented",
+        "guidance": "NC State lists seed as the propagation strategy. It does not provide a home-germination schedule, sowing depth or temperature in the selected page; those details remain unestablished here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      },
+      "harvest": {
+        "short": "Foliage and mature seed have different uses",
+        "guidance": "NC State describes green plant parts as an herb/spice and mature seeds as a condiment. It cautions that seed harvest timing affects drying and leaf loss; no exact Garden harvest date is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      },
+      "problems": {
+        "short": "Wet soils are a documented concern",
+        "guidance": "NC State warns that wet soils are unsuitable and lists several regional disease and pest concerns. This is a recognition cue, not a universal diagnosis or treatment prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The reviewed sources describe soil cultivation and do not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-trigonella-foenum-graecum-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Trigonella foenum-graecum"
+            },
+            "note": "Species-level habit from NC State Extension."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 38.1,
+            "maxCm": 60.96,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-trigonella-foenum-graecum-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Trigonella foenum-graecum"
+              },
+              "note": "Converted from 1 ft 3 in–2 ft reported by NC State."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The source's displayed width range is internally reversed, so no spread is published."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The source gives a broad available-space range, not a selected universal spacing."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-trigonella-foenum-graecum-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Trigonella foenum-graecum"
+            },
+            "note": "Outdoor sun exposure, not an indoor light tier."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "peppermint-mentha-piperita",
+    "name": "Peppermint",
+    "spanishName": "Menta piperita",
+    "scientificName": "Mentha × piperita",
+    "variety": "Accepted horticultural hybrid; no cultivar specified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "peppermint",
+      "peppermint mint",
+      "mentha piperita",
+      "mentha × piperita",
+      "menta piperita",
+      "hierbabuena piperita"
+    ],
+    "summary": "Peppermint is the accepted hybrid Mentha × piperita, distinct from spearmint (M. spicata) and from the existing broad Common Mint record. NC State documents rhizomatous spread and recommends vegetative propagation.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted hybrid: Mentha × piperita",
+        "guidance": "Kew accepts Mentha × piperita and gives the hybrid formula M. aquatica × M. spicata. It is not interchangeable with the species Mentha spicata or the unresolved broad Common Mint identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-mentha-piperita-500",
+          "ncsu-mentha-piperita-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Moisture and containment matter",
+        "guidance": "NC State describes an upright, rhizomatous perennial that prefers rich, moist soil and partial shade in its regional context. It spreads aggressively; the source suggests container culture as a way to contain the plant, not as a hydroponic recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-mentha-piperita-500"
+        ]
+      },
+      "propagation": {
+        "short": "Vegetative propagation is the recommended route",
+        "guidance": "NC State lists division and stem cuttings as propagation strategies and notes that the plant rarely sets seed. Use vegetative material when preserving the selected hybrid identity; the source does not establish seed-starting instructions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-mentha-piperita-500"
+        ]
+      },
+      "harvest": {
+        "short": "Leaves and flowers have culinary uses",
+        "guidance": "NC State lists fresh or dried leaves and flowers for teas, beverages, sauces and other uses, and reports pinching as a way to encourage bushier growth. This is species-level horticultural guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-mentha-piperita-500"
+        ]
+      },
+      "problems": {
+        "short": "Plan for spreading rhizomes",
+        "guidance": "The extension source characterizes peppermint as an aggressive ground cover. Monitor its spread and contain it where needed; do not infer a specific Garden system compatibility from this habit.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-mentha-piperita-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No cited source establishes peppermint performance in nutrient-solution hydroponics."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright",
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-mentha-piperita-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "Hybrid is described as upright and rhizomatous/spreading."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 30.48,
+            "maxCm": 91.44,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-mentha-piperita-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "Converted from NC State's 1–3 ft range."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 30.48,
+            "maxCm": 60.96,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-mentha-piperita-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "identity"
+              },
+              "note": "NC State gives a 1–2 ft spread and separately warns of aggressive rhizomatous spread; context is outdoor general."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Soil spacing does not establish pod or indoor spacing."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-mentha-piperita-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "Full sun is one of the explicitly listed outdoor options; partial shade is not mapped to indoor-light requirement."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "wishbone-flower-torenia-fournieri",
+    "name": "Wishbone Flower (Torenia)",
+    "spanishName": "Flor de los deseos (Torenia)",
+    "scientificName": "Torenia fournieri",
+    "variety": "Species identity; violet color is not a named cultivar",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "wishbone flower",
+      "torenia",
+      "torenia fournieri",
+      "violet torenia",
+      "torenia violeta",
+      "bluewings"
+    ],
+    "summary": "Torenia fournieri is the species-level identity supported for the reference name Torenia. North Carolina Extension documents seed propagation, container use, shade/part-sun conditions and pinching; a violet cultivar is not established.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Torenia fournieri",
+        "guidance": "Kew accepts Torenia fournieri in Linderniaceae. NC State uses Wishbone Flower as a common name and notes that many cultivars exist; the supplied violet color alone does not establish one.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-torenia-fournieri-500",
+          "ncsu-torenia-fournieri-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Shade and containers are documented options",
+        "guidance": "NC State describes part-sun to shade preference, especially in hot summers, and use in containers, hanging baskets and shade borders. Its soil context is outdoor horticultural guidance, not proof of indoor-system compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-torenia-fournieri-500"
+        ]
+      },
+      "propagation": {
+        "short": "Seed propagation is documented",
+        "guidance": "NC State lists seed as a propagation strategy for the species. The selected source does not provide sowing depth, temperature or germination timing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-torenia-fournieri-500"
+        ]
+      },
+      "pruning": {
+        "short": "Pinching can retain a bushier form",
+        "guidance": "NC State recommends pinching back to retain a bushier shape. The claim is species-level cultivation guidance and does not define a fixed pruning schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-torenia-fournieri-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Shade-garden/container suitability is not evidence for hydroponic compatibility."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright",
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-torenia-fournieri-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Torenia fournieri"
+            },
+            "note": "Both habit forms are listed at species scope."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 45.72,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-torenia-fournieri-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Torenia fournieri"
+              },
+              "note": "Converted from NC State's 0.5–1.5 ft range."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 20.32,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-torenia-fournieri-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Torenia fournieri"
+              },
+              "note": "Converted from NC State's 0.5–0.67 ft range."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Available-space guidance is not being converted to a universal planting distance."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "shade"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-torenia-fournieri-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Torenia fournieri"
+            },
+            "note": "The source explicitly lists shade and partial shade outdoors; the profile uses shade only as a supported exposure category."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "alice-sundew-drosera-aliciae",
+    "name": "Alice Sundew",
+    "spanishName": "Rocío del sol de Alicia",
+    "scientificName": "Drosera aliciae",
+    "variety": "Species identity; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "alice sundew",
+      "drosera aliciae",
+      "alicia sundew",
+      "alice's sundew",
+      "rocío del sol de alicia"
+    ],
+    "summary": "Drosera aliciae is an accepted South African carnivorous perennial. RHS documents fresh-seed propagation, leaf/root cuttings, wet lime-free water and full-light cultivation; no conventional hydroponic compatibility is inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Drosera aliciae",
+        "guidance": "Kew accepts Drosera aliciae. RHS lists the species as a perennial carnivorous plant native to the South African Cape; this identity is separate from Cape Sundew (D. capensis).",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-drosera-aliciae-500",
+          "rhs-drosera-aliciae-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Wet, low-mineral conditions are documented",
+        "guidance": "RHS describes cultivation under glass in full light, with medium kept continually moist to wet during the growing season using lime-free water; it advises less water standing in winter and no fertilizer. These species-specific carnivorous-plant conditions are not a nutrient-solution recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-aliciae-500"
+        ]
+      },
+      "propagation": {
+        "short": "Fresh seed and cuttings are documented",
+        "guidance": "RHS recommends sowing seed as soon as ripe and notes that stored seed rapidly loses viability. Leaf cuttings in the growing season and root cuttings during dormancy are alternatives; no numeric germination schedule is reported.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-aliciae-500",
+          "sanbi-drosera-aliciae-500"
+        ]
+      },
+      "problems": {
+        "short": "Avoid interpreting low mucilage without checking conditions",
+        "guidance": "SANBI describes the species as a carnivorous plant of moist conditions. Do not diagnose a problem from appearance alone; check the documented moisture and water-quality context before intervention.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": [
+          "sanbi-drosera-aliciae-500",
+          "rhs-drosera-aliciae-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Carnivorous-plant wet-media guidance does not establish recirculating hydroponic nutrient-solution suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette",
+          "clumping"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "rhs-drosera-aliciae-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Drosera aliciae"
+            },
+            "note": "RHS describes a dense basal rosette and clumping/mounding habit."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "RHS dimensions are specifically under-glass and that context is not represented by Compatibility Profile v1; the sourced Plant Profile retains the reported size."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported mature spread was selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No spacing recommendation selected."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "rhs-drosera-aliciae-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Drosera aliciae"
+            },
+            "note": "RHS says full light under glass; this does not describe outdoor sun exposure or a grow-light intensity tier."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "tennessee-coneflower-echinacea-tennesseensis",
+    "name": "Tennessee Coneflower",
+    "spanishName": "Equinácea de Tennessee",
+    "scientificName": "Echinacea tennesseensis",
+    "variety": "Accepted species identity; not a cultivar of Echinacea purpurea",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "tennessee coneflower",
+      "tennessee echinacea",
+      "echinacea tennesseensis",
+      "equinácea de tennessee"
+    ],
+    "summary": "Tennessee Coneflower is the accepted species Echinacea tennesseensis, not a Tennessee-selected cultivar of E. purpurea. Kew confirms its narrow native range; University of Tennessee guidance stresses isolation from other Echinacea when maintaining seed genetic integrity.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Echinacea tennesseensis",
+        "guidance": "Kew accepts Echinacea tennesseensis and lists the historic combination E. angustifolia var. tennesseensis as a synonym. The common name is not treated as a cultivar name.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-echinacea-tennesseensis-500",
+          "utk-echinacea-tennesseensis-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Native-range context is specific to Tennessee",
+        "guidance": "Kew gives Tennessee as the native range. This narrow-range fact is not a complete cultivation prescription; light, water, mature dimensions and hydroponic suitability remain unestablished in the selected sources.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-echinacea-tennesseensis-500"
+        ]
+      },
+      "propagation": {
+        "short": "Seed may require isolation to preserve identity",
+        "guidance": "University of Tennessee Extension says seed intended to retain genetic integrity should be harvested from plants isolated from other Echinacea species. The source does not provide a germination protocol or isolation distance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "utk-echinacea-tennesseensis-500"
+        ]
+      },
+      "needsValidation": {
+        "short": "Additional cultivation guidance remains unresolved",
+        "guidance": "The reviewed authoritative sources establish identity and a seed-purity caution but not a full home-growing protocol. Dimensions, soil conditions, light, germination treatment and transplant timing are intentionally not filled speculatively.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "No source reviewed establishes hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No supported controlled-vocabulary habit selected."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No dimensions asserted from the selected sources."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No dimensions asserted from the selected sources."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No spacing recommendation established."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No cultivated light requirement selected from the reviewed sources."
+      }
+    }
+  },
+  {
+    "id": "micro-tom-tomato",
+    "name": "Micro-Tom Tomato",
+    "spanishName": "Tomate Micro-Tom",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Named cultivar 'Micro-Tom'",
+    "category": "fruiting",
+    "emoji": "🍅",
+    "tags": [
+      "micro-tom",
+      "micro tom tomato",
+      "micro-tom tomato",
+      "tomate micro-tom",
+      "dwarf tomato",
+      "mini tomato"
+    ],
+    "summary": "Micro-Tom is a named miniature, determinate cultivar of Solanum lycopersicum developed by the University of Florida. It is distinct from Tiny Tim; NParks reports a very compact plant and fruiting roughly 50–60 days from sowing, while general tomato hydroponic assumptions are not inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Named cultivar: Solanum lycopersicum 'Micro-Tom'",
+        "guidance": "Kew accepts Solanum lycopersicum as the cultivated tomato species. NParks identifies Micro-Tom as a dwarf, determinate cultivar developed by the University of Florida; no claim is made that it is the same cultivar as Tiny Tim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-solanum-lycopersicum-500",
+          "nparks-micro-tom-500",
+          "uf-micro-tom-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Compact determinate habit is cultivar-specific",
+        "guidance": "NParks reports Micro-Tom growing up to about 20 cm and producing a concentrated set of fruit. UF research includes it among compact tomato cultivars studied for indoor production. This does not establish compatibility with every indoor or hydroponic system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-micro-tom-500",
+          "uf-micro-tom-500"
+        ]
+      },
+      "propagation": {
+        "short": "Use verified cultivar seed for the named type",
+        "guidance": "The references identify Micro-Tom as a cultivar and describe a fruiting interval from seed sowing, but the selected institutional sources do not specify sowing depth, germination temperature or transplant stage. Those seed-stage fields remain unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "nparks-micro-tom-500"
+        ]
+      },
+      "harvest": {
+        "short": "NParks reports an early cultivar-specific fruiting window",
+        "guidance": "NParks reports fruit production about 50–60 days from seed sowing. Keep this as a source-reported cultivar estimate; it is not a local harvest guarantee or an exact maturity standard.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "nparks-micro-tom-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "UF indoor compact-tomato research and cultivar size do not establish nutrient-solution compatibility or system-specific pod limits."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Cultivar-specific habit remains documented in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Cultivar-specific dimensions remain in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported spread selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No cultivar-specific spacing was selected; do not infer pod spacing from compact dimensions."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Cultivar indoor-research presence does not provide a numeric or categorical light requirement."
+      }
+    }
+  },
+  {
+    "id": "orange-hat-micro-dwarf-tomato",
+    "name": "Orange Hat Tomato",
+    "spanishName": "Tomate Orange Hat",
+    "scientificName": "Solanum lycopersicum",
+    "variety": "Named cultivar/product identity 'Orange Hat'; supplier documentation scope",
+    "category": "fruiting",
+    "emoji": "🍅",
+    "tags": [
+      "orange hat",
+      "orange hat tomato",
+      "micro dwarf tomato",
+      "tomate orange hat",
+      "solanum lycopersicum orange hat"
+    ],
+    "summary": "Orange Hat is a separately marketed micro-dwarf tomato cultivar, distinct from Micro-Tom and Tiny Tim. Baker Creek's product record supports the named product and gives cultivar-scoped dimensions and sowing instructions; these commercial details are not generalized to tomato species.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Named commercial cultivar identity: Orange Hat",
+        "guidance": "Kew accepts the species Solanum lycopersicum. Baker Creek sells Orange Hat tomato seed as a named product. Its supplier page is used for product/cultivar attributes only; no breeder or formal registration claim is made.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "kew-solanum-lycopersicum-500",
+          "bakercreek-orange-hat-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Supplier describes a 6–9 inch determinate bush",
+        "guidance": "Baker Creek describes Orange Hat as extra-dwarf, determinate and 6–9 inches tall. These are supplier-stated cultivar characteristics, not dimensions for other dwarf tomatoes or a guarantee in all environments.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "bakercreek-orange-hat-500"
+        ]
+      },
+      "propagation": {
+        "short": "Supplier provides a specific sowing protocol",
+        "guidance": "Baker Creek instructs sowing about 1/8 inch deep and reports 7–14 day germination around 75–85°F. This is product-specific supplier guidance; use the purchased packet if its instructions differ.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "bakercreek-orange-hat-500"
+        ]
+      },
+      "harvest": {
+        "short": "Maturity estimate is supplier-reported",
+        "guidance": "Baker Creek lists 55–65 days to maturity for its Orange Hat product. This estimate is retained at product scope and should not be treated as a guaranteed indoor harvest date.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "bakercreek-orange-hat-500"
+        ]
+      },
+      "pruning": {
+        "short": "Heavy pruning is not advised by the supplier",
+        "guidance": "Baker Creek says heavy pruning is unnecessary for this determinate cultivar and describes only light lower-leaf trimming. This is a supplier-specific recommendation, not a universal tomato rule.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "bakercreek-orange-hat-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Supplier references windowsills and containers but do not establish hydroponic nutrient-solution performance."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Cultivar-specific habit remains documented in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Cultivar-specific dimensions remain in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported spread selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Supplier's outdoor/container spacing is not a universal indoor pod-spacing recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The supplier describes full sun but this is not normalized into an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "black-pearl-ornamental-pepper",
+    "name": "Black Pearl Ornamental Pepper",
+    "spanishName": "Pimiento ornamental Black Pearl",
+    "scientificName": "Capsicum annuum",
+    "variety": "Named cultivar 'Black Pearl'",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "black pearl pepper",
+      "black pearl ornamental pepper",
+      "capsicum annuum black pearl",
+      "pimiento ornamental black pearl"
+    ],
+    "summary": "Black Pearl is the USDA-released ornamental cultivar Capsicum annuum 'Black Pearl', selected for dark foliage and upright fruit clusters that mature from black to red. Its ornamental selection does not establish a culinary-use recommendation or hydroponic compatibility.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Named cultivar: Capsicum annuum 'Black Pearl'",
+        "guidance": "Kew accepts Capsicum annuum at species level. USDA ARS identifies Black Pearl as a named ornamental cultivar developed with the U.S. National Arboretum and PanAmerican Seed; it is not a generic black-fruited pepper type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "powo-capsicum-annuum-500",
+          "usda-black-pearl-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Selected for ornamental foliage and fruit",
+        "guidance": "USDA ARS describes black foliage and upright clusters of small fruits that turn red, with compact ornamental performance and limited evaluation for pot culture under high light. The source does not establish a general hydroponic protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usda-black-pearl-500",
+          "usna-black-pearl-500"
+        ]
+      },
+      "propagation": {
+        "short": "The named cultivar is available as seed",
+        "guidance": "USDA ARS reports seed availability for the named cultivar. The reviewed cultivar-release record does not give sowing depth, germination time or temperature; those details remain unverified here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usda-black-pearl-500"
+        ]
+      },
+      "harvest": {
+        "short": "Fruit color transition is an ornamental cue",
+        "guidance": "The USDA Arboretum introduction describes fruit emerging black and turning cherry red. It presents the cultivar for ornamental use; this profile does not infer that the fruits are intended for eating.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usna-black-pearl-500"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Limited pot-culture/high-light evaluations do not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Cultivar-specific habit remains documented in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Cultivar-specific dimensions remain in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No supported spread selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No spacing value selected."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "High-light pot evaluation is not a calibrated indoor light tier or full outdoor exposure specification."
+      }
+    }
+  },
+  {
+    "id": "white-carolina-pineberry",
+    "name": "White Carolina Pineberry",
+    "spanishName": "Pineberry White Carolina",
+    "scientificName": "Fragaria × ananassa",
+    "variety": "Supplier-listed cultivar name 'White Carolina'; cultivar registration not independently verified",
+    "category": "fruits",
+    "emoji": "🍓",
+    "tags": [
+      "white carolina",
+      "white carolina pineberry",
+      "pineberry",
+      "white strawberry",
+      "fresa blanca"
+    ],
+    "summary": "White Carolina is a supplier-listed cultivated-strawberry name within Fragaria × ananassa. The commercial listing supports the marketed name, while independent cultivar registration and cultivar-specific traits remain unverified.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Supplier-listed name; independent cultivar status pending",
+        "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse lists Fragaria × ananassa 'White Carolina' as a pineberry. That commercial listing supports the name used here but is not independent proof of cultivar registration or breeding history.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "kew-fragaria-ananassa-500",
+          "eberts-white-carolina-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Pineberry is a white-fruited garden-strawberry type",
+        "guidance": "University of Illinois Extension describes pineberries as white-to-blush-fruited Fragaria × ananassa and recommends starting with nursery transplants. These are crop/type-level facts, not cultivar-specific performance claims for White Carolina.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "illinois-pineberry-500"
+        ]
+      },
+      "propagation": {
+        "short": "Cultivar-specific propagation remains unverified",
+        "guidance": "The reviewed sources do not establish a cultivar-specific seed-starting protocol or runner behavior for White Carolina. Do not infer either from the broader pineberry type.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      },
+      "needsValidation": {
+        "short": "Verify cultivar status and propagation behavior",
+        "guidance": "The exact White Carolina cultivar status and cultivar-specific runner behavior were not independently established in the reviewed authoritative material.",
+        "evidenceType": "needs_validation",
+        "confidence": "pending",
+        "sourceIds": []
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "General pineberry transplant guidance does not establish compatibility with a hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The cultivar-specific plant habit was not established."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No cultivar-specific dimensions selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-specific dimensions selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No cultivar-specific spacing selected."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "No cultivar-specific light requirement selected."
+      }
+    }
+  }
+]

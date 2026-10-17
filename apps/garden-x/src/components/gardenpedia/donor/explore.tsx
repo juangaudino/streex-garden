@@ -57,6 +57,8 @@ const COPY = {
     ordered: "Ordenadas por identidad canónica · ES/EN",
     varieties: "identidades",
     empty: "No encontramos plantas con esos filtros.",
+    showMore: "Mostrar más plantas",
+    showing: "Mostrando",
     publicSeeds: "Conocimiento público de semillas",
     publicSeedsBody:
       "La navegación conserva la arquitectura del donor. Los paquetes y la propiedad de semillas se muestran únicamente en el contexto privado autorizado.",
@@ -96,6 +98,8 @@ const COPY = {
     ordered: "Ordered by canonical identity · EN/ES",
     varieties: "identities",
     empty: "No plants match those filters.",
+    showMore: "Show more plants",
+    showing: "Showing",
     publicSeeds: "Public seed knowledge",
     publicSeedsBody:
       "This navigation preserves the donor architecture. Packet ownership and personal seed inventory appear only in the authorized private context.",
@@ -113,10 +117,14 @@ const categoryLabels: Record<string, string> = {
   herbs: "Hierbas",
   "leafy greens": "Hojas verdes",
   fruits: "Frutos",
+  fruiting: "Cultivos de fruto",
   alliums: "Alliums",
   flowers: "Flores",
+  ornamentals: "Ornamentales",
   vegetables: "Vegetales",
   "root vegetables": "Raíces",
+  legumes: "Legumbres",
+  "cover crops": "Cultivos de cobertura",
 };
 
 const lightLabels: Record<string, string> = {
@@ -151,6 +159,21 @@ const inventoryLabels: Record<string, string> = {
   all: "Catálogo público",
   owned: "Mis semillas (requiere acceso)",
 };
+
+const PLANT_PAGE_SIZE = 48;
+
+export function getCatalogPage<T>(items: readonly T[], visibleCount: number) {
+  const visible = items.slice(0, visibleCount);
+  return { visible, hasMore: visible.length < items.length };
+}
+
+function normalizeCatalogSearch(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .trim();
+}
 
 function buildEvidenceGroups(plants: readonly Plant[]) {
   const groups = new Map<
@@ -191,10 +214,14 @@ function categoryLabel(category: string, language: GardenpediaLanguage) {
           "leafy greens": "Leafy greens",
           fruiting: "Fruiting",
           fruits: "Fruit",
+          fruiting: "Fruiting crops",
           alliums: "Alliums",
           flowers: "Flowers",
+          ornamentals: "Ornamentals",
           vegetables: "Vegetables",
           "root vegetables": "Root vegetables",
+          legumes: "Legumes",
+          "cover crops": "Cover crops",
         };
   return labels[category] ?? category;
 }
@@ -220,7 +247,7 @@ export function filterDonorPlants({
   inventory: string;
   advisorIds?: readonly string[] | null;
 }) {
-  const normalized = query.trim().toLocaleLowerCase("es");
+  const normalized = normalizeCatalogSearch(query);
   const filtered = plants.filter((plant) => {
     const categoryMatch = category === "all" || plant.categoryKey === category;
     const normalizedLight = normalizeLightFilter(light ?? indoorLight ?? "all");
@@ -235,9 +262,8 @@ export function filterDonorPlants({
     const searchMatch =
       !normalized ||
       [plant.name, plant.spanishName, plant.scientificName, ...plant.tags]
-        .join(" ")
-        .toLocaleLowerCase("es")
-        .includes(normalized);
+        .filter(Boolean)
+        .some((value) => normalizeCatalogSearch(value).includes(normalized));
     return categoryMatch && lightMatch && exposureMatch && inventoryMatch && searchMatch;
   });
   if (!advisorIds?.length) return filtered;
@@ -272,6 +298,7 @@ export function GardenLibrary({
   const [category, setCategory] = useState("all");
   const [light, setLight] = useState("all");
   const [inventory, setInventory] = useState("all");
+  const [visiblePlantCount, setVisiblePlantCount] = useState(PLANT_PAGE_SIZE);
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
   const [SeedLibraryComponent, setSeedLibraryComponent] = useState<SeedLibraryComponent | null>(
     null,
@@ -334,21 +361,29 @@ export function GardenLibrary({
     view,
   ]);
 
-  const categories = useMemo(
-    () => [
-      "all",
-      ...[
-        "vegetables",
-        "leafy greens",
-        "herbs",
-        "fruits",
-        "root vegetables",
-        "alliums",
-        "flowers",
-      ].filter((category) => donorPlants.some((plant) => plant.categoryKey === category)),
-    ],
-    [],
-  );
+  const categories = useMemo(() => {
+    const preferredOrder = [
+      "vegetables",
+      "fruiting",
+      "leafy greens",
+      "herbs",
+      "fruits",
+      "root vegetables",
+      "legumes",
+      "alliums",
+      "flowers",
+      "ornamentals",
+      "cover crops",
+    ];
+    const rank = new Map(preferredOrder.map((value, index) => [value, index]));
+    const available = [...new Set(donorPlants.map((plant) => plant.categoryKey))];
+    available.sort(
+      (a, b) =>
+        (rank.get(a) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b) ?? Number.MAX_SAFE_INTEGER) ||
+        categoryLabel(a, language).localeCompare(categoryLabel(b, language)),
+    );
+    return ["all", ...available];
+  }, [language]);
   const evidenceGroups = useMemo(() => buildEvidenceGroups(donorPlants), []);
   const filteredPlants = useMemo(
     () =>
@@ -362,6 +397,10 @@ export function GardenLibrary({
       }),
     [advisorIds, category, light, inventory, query],
   );
+  useEffect(() => {
+    setVisiblePlantCount(PLANT_PAGE_SIZE);
+  }, [advisorIds, category, inventory, light, query]);
+  const catalogPage = getCatalogPage(filteredPlants, visiblePlantCount);
 
   const subtitle = copy.subtitle
     .replace("catálogo canónico", `${donorPlants.length} ${copy.sheets}`)
@@ -406,6 +445,13 @@ export function GardenLibrary({
               categories={categories}
               category={category}
               filteredPlants={filteredPlants}
+              visiblePlants={catalogPage.visible}
+              hasMorePlants={catalogPage.hasMore}
+              onShowMorePlants={() =>
+                setVisiblePlantCount((count) =>
+                  Math.min(count + PLANT_PAGE_SIZE, filteredPlants.length),
+                )
+              }
               inventory={inventory}
               light={light}
               query={query}
@@ -456,6 +502,9 @@ function LibraryView({
   categories,
   category,
   filteredPlants,
+  visiblePlants,
+  hasMorePlants,
+  onShowMorePlants,
   inventory,
   light,
   query,
@@ -474,6 +523,9 @@ function LibraryView({
   categories: string[];
   category: string;
   filteredPlants: Plant[];
+  visiblePlants: Plant[];
+  hasMorePlants: boolean;
+  onShowMorePlants: () => void;
   inventory: string;
   light: string;
   query: string;
@@ -682,56 +734,73 @@ function LibraryView({
           <p className="hidden text-xs text-muted-foreground sm:block">{copy.ordered}</p>
         </div>
         {filteredPlants.length ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredPlants.map((plant) => (
-              <article key={plant.id} className="glass-card group">
-                <a
-                  href={
-                    onPlantSelect
-                      ? undefined
-                      : `/gardenpedia/?plant=${encodeURIComponent(plant.id)}`
-                  }
-                  onClick={
-                    onPlantSelect
-                      ? (event) => {
-                          event.preventDefault();
-                          onPlantSelect(plant);
-                        }
-                      : undefined
-                  }
-                  className="block w-full p-5 text-left"
+          <>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {visiblePlants.map((plant) => (
+                <article key={plant.id} className="glass-card group">
+                  <a
+                    href={
+                      onPlantSelect
+                        ? undefined
+                        : `/gardenpedia/?plant=${encodeURIComponent(plant.id)}`
+                    }
+                    onClick={
+                      onPlantSelect
+                        ? (event) => {
+                            event.preventDefault();
+                            onPlantSelect(plant);
+                          }
+                        : undefined
+                    }
+                    className="block w-full p-5 text-left"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="text-3xl" aria-hidden="true">
+                        {plant.emoji}
+                      </span>
+                      <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
+                        {categoryLabel(plant.categoryKey, language)}
+                      </span>
+                    </div>
+                    <p className="mt-5 text-[11px] font-semibold text-accent">
+                      {language === "es" ? plant.spanishName : plant.name}
+                    </p>
+                    <h4 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
+                      {language === "es" ? plant.name : plant.spanishName}
+                    </h4>
+                    <p className="mt-1 truncate text-xs italic text-muted-foreground">
+                      {plant.scientificName ||
+                        (language === "es"
+                          ? "Identidad científica pendiente"
+                          : "Scientific identity pending")}
+                    </p>
+                    <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
+                      <span className="flex items-center gap-1.5 font-semibold">
+                        <Check className="size-3.5" /> {plant.sourceCount}{" "}
+                        {language === "es" ? "fuentes" : "sources"}
+                      </span>
+                      <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-col items-center gap-2 text-center">
+              <p className="text-xs text-muted-foreground" aria-live="polite">
+                {copy.showing} {visiblePlants.length} / {filteredPlants.length}
+              </p>
+              {hasMorePlants ? (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onShowMorePlants}
+                  className="min-h-11 rounded-full px-5"
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="text-3xl" aria-hidden="true">
-                      {plant.emoji}
-                    </span>
-                    <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold text-secondary-foreground">
-                      {categoryLabel(plant.categoryKey, language)}
-                    </span>
-                  </div>
-                  <p className="mt-5 text-[11px] font-semibold text-accent">
-                    {language === "es" ? plant.spanishName : plant.name}
-                  </p>
-                  <h4 className="mt-1 min-h-12 font-display text-lg font-semibold leading-tight">
-                    {language === "es" ? plant.name : plant.spanishName}
-                  </h4>
-                  <p className="mt-1 truncate text-xs italic text-muted-foreground">
-                    {plant.scientificName ||
-                      (language === "es"
-                        ? "Identidad científica pendiente"
-                        : "Scientific identity pending")}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between border-t border-border pt-3 text-xs">
-                    <span className="flex items-center gap-1.5 font-semibold">
-                      <Check className="size-3.5" /> {plant.sourceCount}{" "}
-                      {language === "es" ? "fuentes" : "sources"}
-                    </span>
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </a>
-              </article>
-            ))}
-          </div>
+                  {copy.showMore}
+                </Button>
+              ) : null}
+            </div>
+          </>
         ) : (
           <div className="glass-panel grid min-h-48 place-items-center p-8 text-center">
             <div>

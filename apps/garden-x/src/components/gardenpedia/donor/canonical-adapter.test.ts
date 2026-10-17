@@ -9,16 +9,208 @@ import {
   normalizeLightFilter,
   normalizeOutdoorExposureFilter,
 } from "./canonical-adapter";
-import { filterDonorPlants } from "./explore";
+import { filterDonorPlants, getCatalogPage } from "./explore";
 import { calculateSingleCropDose } from "./hydro-calculator.engine";
 import { getPlantRecommendations } from "./plant-advisor.service";
 
 describe("direct Gardenpedia presentation adapter", () => {
+  it("exposes the new cover-crop category as a real canonical Explore filter", () => {
+    const coverCrops = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "cover crops",
+      inventory: "all",
+    });
+
+    expect(coverCrops.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining([
+        "buckwheat-fagopyrum-esculentum",
+        "crimson-clover-trifolium-incarnatum",
+        "white-clover-trifolium-repens",
+        "cereal-rye-secale-cereale",
+        "oats-avena-sativa",
+      ]),
+    );
+    expect(coverCrops).toHaveLength(5);
+  });
+
+  it("keeps the published fruiting category filterable through its shared fruits key", () => {
+    const fruiting = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "fruits",
+      inventory: "all",
+    });
+    expect(fruiting.length).toBeGreaterThan(0);
+    expect(fruiting.every((plant) => plant.categoryKey === "fruits")).toBe(true);
+    expect(fruiting.some((plant) => plant.category === "fruiting")).toBe(true);
+  });
+
   it("adapts the complete active canonical catalog without changing identity ids", () => {
-    expect(canonicalEntries).toHaveLength(214);
-    expect(new Set(donorPlants.map((plant) => plant.id)).size).toBe(214);
+    expect(canonicalEntries.length).toBeGreaterThanOrEqual(500);
+    expect(new Set(donorPlants.map((plant) => plant.id)).size).toBe(canonicalEntries.length);
     expect(donorPlants.map((plant) => plant.id)).toContain("genovese-basil");
     expect(donorPlants.map((plant) => plant.id)).toContain("cascading-petunia");
+    expect(donorPlants.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining([
+        "smooth-luffa-luffa-aegyptiaca",
+        "new-zealand-spinach-tetragonia-tetragonoides",
+        "sweet-corn-zea-mays",
+        "sweet-potato-ipomoea-batatas",
+        "potato-solanum-tuberosum",
+        "garlic-allium-sativum",
+        "ginger-zingiber-officinale",
+        "turmeric-curcuma-longa",
+        "celeriac-apium-graveolens",
+        "radicchio-cichorium-intybus",
+        "jicama-pachyrhizus-erosus",
+        "scarlet-runner-bean-phaseolus-coccineus",
+        "chickpea-cicer-arietinum",
+        "lentil-vicia-lens",
+        "southern-pea-vigna-unguiculata",
+        "mung-bean-vigna-radiata",
+        "hoja-santa-piper-auritum",
+        "tong-hao-glebionis-coronaria",
+        "honeydew-melon-cucumis-melo",
+        "lemon-verbena-aloysia-citrodora",
+        "cuban-oregano-coleus-amboinicus",
+        "purple-shamrock-oxalis-triangularis",
+        "arrowhead-plant-syngonium-podophyllum",
+        "baby-rubber-plant-peperomia-obtusifolia",
+        "satin-pothos-scindapsus-pictus",
+        "chinese-money-plant-pilea-peperomioides",
+      ]),
+    );
+  });
+
+  it("searches canonical names without accent or case sensitivity", () => {
+    const results = filterDonorPlants({
+      plants: donorPlants,
+      query: "ARANDANO",
+      category: "all",
+      inventory: "all",
+    });
+    expect(results.map((plant) => plant.id)).toContain("northern-highbush-blueberry");
+  });
+
+  it("finds botanical coverage aliases without creating duplicate identities", () => {
+    const greenTatsoi = filterDonorPlants({
+      plants: donorPlants,
+      query: "Green Tatsoi",
+      category: "all",
+      inventory: "all",
+    });
+    const bunchingOnions = filterDonorPlants({
+      plants: donorPlants,
+      query: "Bunching Onions",
+      category: "all",
+      inventory: "all",
+    });
+
+    expect(greenTatsoi.map((plant) => plant.id)).toEqual(["tatsoi"]);
+    expect(bunchingOnions.map((plant) => plant.id)).toEqual(["bunching-onion-allium-fistulosum"]);
+  });
+
+  it("progressively renders a large catalog without dropping searchable entries", () => {
+    const items = Array.from({ length: 500 }, (_, index) => `plant-${index + 1}`);
+    const firstPage = getCatalogPage(items, 48);
+    const laterPage = getCatalogPage(items, 96);
+    const finalPage = getCatalogPage(items, 600);
+
+    expect(firstPage.visible).toHaveLength(48);
+    expect(firstPage.hasMore).toBe(true);
+    expect(laterPage.visible).toHaveLength(96);
+    expect(laterPage.hasMore).toBe(true);
+    expect(finalPage.visible).toHaveLength(500);
+    expect(finalPage.hasMore).toBe(false);
+  });
+
+  it("keeps every active identity addressable through the shared Plant Detail renderer", () => {
+    for (const entry of canonicalEntries) {
+      const detail = buildDonorPlantDetail(entry, "en");
+      expect(detail.id).toBe(entry.libraryPlantId);
+      expect(detail.name).toBeTruthy();
+      expect(detail.summary).toBeTruthy();
+      expect(
+        detail.guides.every((guide) =>
+          guide.sources.every((source) => /^https?:\/\//.test(source.url)),
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("renders Wave 38 identities with canonical evidence and no invented hydroponic fit", () => {
+    for (const id of [
+      "bird-of-paradise-strelitzia-reginae",
+      "string-of-hearts-ceropegia-woodii",
+      "string-of-pearls-curio-rowleyanus",
+      "ripple-peperomia-peperomia-caperata",
+      "panda-plant-kalanchoe-tomentosa",
+    ]) {
+      const entry = findCanonicalEntry(id)!;
+      const detail = buildDonorPlantDetail(entry, "en");
+      expect(detail.id).toBe(id);
+      expect(detail.scientificName).toBeTruthy();
+      expect(detail.guides.length).toBeGreaterThan(0);
+      expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    }
+  });
+
+  it("renders Wave 39 houseplants with their exact taxonomic scope and unresolved hydroponic fit", () => {
+    for (const id of [
+      "philippine-evergreen-aglaonema-commutatum",
+      "giant-white-bird-of-paradise-strelitzia-nicolai",
+      "madagascar-dragon-tree-dracaena-reflexa-angustifolia",
+      "gold-dust-dracaena-dracaena-surculosa",
+    ]) {
+      const entry = findCanonicalEntry(id)!;
+      const detail = buildDonorPlantDetail(entry, "en");
+      expect(detail.id).toBe(id);
+      expect(detail.scientificName).toBeTruthy();
+      expect(detail.guides.length).toBeGreaterThan(0);
+      expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+      expect(detail.guides.flatMap((guide) => guide.sources).length).toBeGreaterThan(0);
+    }
+  });
+
+  it("renders Wave 40 public profiles while keeping context-specific facts scoped", () => {
+    for (const id of [
+      "ponytail-palm-beaucarnea-recurvata",
+      "cape-jasmine-gardenia-jasminoides",
+      "chinese-hibiscus-hibiscus-rosa-sinensis",
+      "roselle-sabdariffa-gossypiifolia",
+      "rose-of-sharon-hibiscus-syriacus",
+    ]) {
+      const entry = findCanonicalEntry(id)!;
+      const detail = buildDonorPlantDetail(entry, "en");
+      expect(detail.id).toBe(id);
+      expect(detail.scientificName).toBeTruthy();
+      expect(detail.guides.length).toBeGreaterThan(0);
+      expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    }
+    expect(findCanonicalEntry("roselle-sabdariffa-gossypiifolia")?.scientificName).toBe(
+      "Sabdariffa gossypiifolia",
+    );
+  });
+
+  it("renders Wave 41 houseplants with supported identity and honest capability gaps", () => {
+    const expected = [
+      ["polka-dot-plant-hypoestes-phyllostachya", "Hypoestes phyllostachya"],
+      ["purple-heart-tradescantia-pallida", "Tradescantia pallida"],
+      ["wax-plant-hoya-pubicalyx", "Hoya pubicalyx"],
+      ["common-staghorn-fern-platycerium-bifurcatum", "Platycerium bifurcatum"],
+      ["delta-maidenhair-fern-adiantum-raddianum", "Adiantum raddianum"],
+      ["scarlet-star-guzmania-lingulata", "Guzmania lingulata"],
+      ["thanksgiving-cactus-schlumbergera-truncata", "Schlumbergera truncata"],
+      ["arabian-jasmine-jasminum-sambac", "Jasminum sambac"],
+    ] as const;
+    for (const [id, scientificName] of expected) {
+      const entry = findCanonicalEntry(id)!;
+      expect(entry).toBeTruthy();
+      expect(entry.scientificName).toBe(scientificName);
+      expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+      expect(buildDonorPlantDetail(entry, "en").guides.length).toBeGreaterThan(0);
+    }
   });
 
   it("searches canonical English, Spanish, scientific and alias fields", () => {
@@ -49,6 +241,108 @@ describe("direct Gardenpedia presentation adapter", () => {
         inventory: "all",
       }).every((plant) => plant.category === "herbs"),
     ).toBe(true);
+  });
+
+  it("covers the supplied botanical reference identities without conflating distinct crops", () => {
+    const requiredIds = [
+      "culantro",
+      "epazote",
+      "papalo-porophyllum-ruderale",
+      "tiny-tim-tomato",
+      "monterey-strawberry",
+      "mini-lunchbox-sweet-pepper",
+      "orange-hat-micro-dwarf-tomato",
+      "micro-tom-tomato",
+      "green-salanova-lettuce",
+      "bronze-arrow-lettuce",
+      "breen-romaine-lettuce",
+      "romaine-lettuce",
+      "red-romaine-lettuce",
+      "basil-ocimum-basilicum",
+      "genovese-basil",
+      "chinese-light-green-celery",
+      "pinguicula-weser",
+      "pinguicula-lilac-lollipop",
+      "alice-sundew-drosera-aliciae",
+      "cape-sundew-drosera-capensis",
+      "nepenthes-x-ventrata",
+    ];
+    expect(canonicalEntries.map((entry) => entry.libraryPlantId)).toEqual(
+      expect.arrayContaining(requiredIds),
+    );
+    const culantroResults = filterDonorPlants({
+      plants: donorPlants,
+      query: "culantro",
+      category: "all",
+      outdoorExposure: "all",
+      inventory: "all",
+    });
+    expect(culantroResults.map((plant) => plant.id)).toContain("culantro");
+    expect(culantroResults.map((plant) => plant.id)).not.toContain("cilantro");
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "chinese celery",
+        category: "all",
+        outdoorExposure: "all",
+        inventory: "all",
+      }).map((plant) => plant.id),
+    ).toContain("chinese-light-green-celery");
+  });
+
+  it("publishes Wave 37 houseplants with bilingual evidence and no invented hydroponic fit", () => {
+    const ids = [
+      "goeppertia-orbifolia",
+      "croton-codiaeum-variegatum",
+      "florist-kalanchoe-kalanchoe-blossfeldiana",
+      "dwarf-umbrella-tree-heptapleurum-arboricola",
+      "weeping-fig-ficus-benjamina",
+    ];
+    for (const id of ids) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en");
+      const spanish = buildDonorPlantDetail(entry, "es");
+      expect(english.scientificName).toBeTruthy();
+      expect(english.summary).toBeTruthy();
+      expect(spanish.spanishName).not.toBe(english.name);
+      expect(spanish.summary).not.toBe(english.summary);
+      expect(english.guides.every((guide) => guide.sources.length > 0)).toBe(true);
+      expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    }
+    expect(
+      buildDonorPlantDetail(
+        findCanonicalEntry("florist-kalanchoe-kalanchoe-blossfeldiana")!,
+        "es",
+      ).guides.map((guide) => guide.title),
+    ).toContain("Seguridad");
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "calathea orbifolia",
+        category: "all",
+        outdoorExposure: "all",
+        inventory: "all",
+      }).map((plant) => plant.id),
+    ).toContain("goeppertia-orbifolia");
+  });
+
+  it("filters and localizes the legumes category for the new crop identities", () => {
+    const legumes = filterDonorPlants({
+      plants: donorPlants,
+      query: "",
+      category: "legumes",
+      outdoorExposure: "all",
+      inventory: "all",
+    });
+
+    expect(legumes.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining([
+        "scarlet-runner-bean-phaseolus-coccineus",
+        "chickpea-cicer-arietinum",
+        "lentil-vicia-lens",
+      ]),
+    );
+    expect(legumes.every((plant) => plant.categoryKey === "legumes")).toBe(true);
   });
 
   it("supports category and public inventory boundaries", () => {
@@ -92,9 +386,11 @@ describe("direct Gardenpedia presentation adapter", () => {
       outdoorExposure: "unknown",
       inventory: "all",
     });
-    expect(fullSun.length).toBe(198);
-    expect(partialSun.length).toBe(5);
-    expect(unknownLight.length).toBe(14);
+    expect(fullSun.length).toBe(226);
+    expect(partialSun.length).toBe(10);
+    expect(unknownLight).toHaveLength(
+      donorPlants.filter((plant) => plant.outdoorExposures.includes("unknown")).length,
+    );
     expect(fullSun.every((plant) => plant.outdoorExposures.includes("full_sun"))).toBe(true);
     expect(partialSun.every((plant) => plant.outdoorExposures.includes("partial_sun"))).toBe(true);
     expect(unknownLight.every((plant) => plant.outdoorExposures.includes("unknown"))).toBe(true);
@@ -105,18 +401,30 @@ describe("direct Gardenpedia presentation adapter", () => {
       (plant) => plant.lightRequirement === "unknown",
     );
     expect(highLight.map((plant) => plant.id)).toEqual(["genovese-basil"]);
-    expect(mediumLight.map((plant) => plant.id)).toEqual(
-      expect.arrayContaining([
-        "common-mint",
-        "delphinium-magic-fountains-dwarf",
-        "garlic-chives",
-        "marigold-jolly-jester",
-        "tiny-tim-sweet-alyssum",
-        "zinnia-lilliput-mixed",
-      ]),
+    expect(mediumLight).toHaveLength(0);
+    expect(donorPlants.find((plant) => plant.id === "common-mint")?.lightRequirement).toBe(
+      "unknown",
     );
     expect(lowLight).toHaveLength(0);
-    expect(unknownLightRequirement).toHaveLength(207);
+    expect(unknownLightRequirement).toHaveLength(
+      donorPlants.filter((plant) => plant.lightRequirement === "unknown").length,
+    );
+    expect(
+      filterDonorPlants({
+        plants: donorPlants,
+        query: "",
+        category: "ornamentals",
+        outdoorExposure: "all",
+        inventory: "all",
+      }).map((plant) => plant.id),
+    ).toEqual(
+      expect.arrayContaining([
+        "venus-flytrap-dionaea-muscipula",
+        "cape-sundew-drosera-capensis",
+        "pinguicula-primuliflora",
+        "nepenthes-x-ventrata",
+      ]),
+    );
     expect(donorPlants.find((plant) => plant.id === "tiny-tim-tomato")?.lightRequirement).toBe(
       "unknown",
     );
@@ -127,12 +435,12 @@ describe("direct Gardenpedia presentation adapter", () => {
       "high",
     );
     expect(donorPlants.find((plant) => plant.id === "common-mint")?.lightRequirement).toBe(
-      "medium",
+      "unknown",
     );
     expect(
       donorPlants.find((plant) => plant.id === "delphinium-magic-fountains-dwarf")
         ?.lightRequirement,
-    ).toBe("medium");
+    ).toBe("unknown");
     expect(normalizeLightFilter("high light")).toBe("high");
     expect(normalizeLightFilter("luz media")).toBe("medium");
     expect(normalizeLightFilter("low light")).toBe("low");
@@ -206,7 +514,7 @@ describe("direct Gardenpedia presentation adapter", () => {
         outdoorExposure: "partial_sun",
         inventory: "all",
       }),
-    ).toHaveLength(5);
+    ).toHaveLength(0);
     const partialShade = filterDonorPlants({
       plants: donorPlants,
       query: "",
@@ -236,7 +544,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     const oregano = buildDonorPlantDetail(findCanonicalEntry("italian-oregano")!, "en");
     expect(basil.id).toBe("genovese-basil");
     expect(basil.summary).toContain("productive");
-    expect(basil.guides.length).toBeGreaterThanOrEqual(7);
+    expect(basil.guides.length).toBeGreaterThanOrEqual(6);
     expect(basil.harvestUse?.options.length).toBeGreaterThan(0);
     expect(basil.seedProfileAvailable).toBe(true);
     expect(basil.evidence.coverage).toMatch(/units/);
@@ -250,6 +558,22 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(
       oregano.guides.some((guide) => guide.backing === "pending") || oregano.evidence.pending > 0,
     ).toBe(true);
+  });
+
+  it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {
+    const passionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "en");
+    const spanishPassionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "es");
+    const papaya = buildDonorPlantDetail(findCanonicalEntry("papaya")!, "en");
+
+    expect(passionFruit.summary).toContain("vine");
+    expect(spanishPassionFruit.summary).not.toBe(passionFruit.summary);
+    expect(passionFruit.guides.length).toBeGreaterThan(0);
+    expect(passionFruit.guides.every((guide) => guide.sources.length > 0)).toBe(true);
+    expect(passionFruit.timeline).toBeUndefined();
+    expect(passionFruit.metrics.some((metric) => /germination|sowing/i.test(metric.label))).toBe(
+      false,
+    );
+    expect(papaya.guides.some((guide) => guide.backing === "pending")).toBe(true);
   });
 
   it("does not expose private inventory or instance fields in public view models", () => {

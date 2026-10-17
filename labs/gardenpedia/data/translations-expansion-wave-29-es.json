@@ -106,6 +106,10 @@
       "problems": {
         "short": "Vigila encharcamiento, pudrición de corona y manchas en hojas",
         "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad."
+      },
+      "identity": {
+        "short": "Especie aceptada: Rheum rhabarbarum",
+        "guidance": "Kew acepta Rheum rhabarbarum en Polygonaceae. Esta ficha describe el cultivo a nivel de especie y no una variedad de tallos rojos. UMN señala que las variedades difieren en tamaño, color, acidez y fibra."
       }
     }
   },

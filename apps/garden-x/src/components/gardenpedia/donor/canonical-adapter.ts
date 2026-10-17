@@ -8,6 +8,7 @@ import legacyPlantData from "../../../../../../labs/gardenpedia/data/plants.json
 import legacySpanishTranslations from "../../../../../../labs/gardenpedia/data/translations-es.json";
 import visualsData from "../../../../../../labs/gardenpedia/data/visuals.json";
 import visualGuidesBatch10 from "../../../../../../labs/gardenpedia/data/visual-guides-batch-10.json";
+import editorialScopeBatch100 from "../../../../../../labs/gardenpedia/data/editorial-scope-batch-100.json";
 
 export type DonorSourceRef = { label: string; url: string };
 export type DonorBacking = "source" | "garden" | "pending";
@@ -204,6 +205,8 @@ const visualCatalog: Record<string, VisualRecord[]> = {
 const legacyCatalog = new Map((legacyPlantData as LegacyPlant[]).map((plant) => [plant.id, plant]));
 const legacySpanishCatalog = legacySpanishTranslations as Record<string, SpanishTranslation>;
 const publicPlantProfiles = gardenPlantProfileCatalog as Record<string, PublicPlantProfile>;
+type EditorialScopeSection = { context: { en: string; es: string }; action?: { en: string; es: string } };
+const editorialScopeProfiles = (editorialScopeBatch100.profiles as Record<string, { sections: Record<string, EditorialScopeSection> }>);
 export const seedProfileIds = new Set<string>(gardenSeedProfileIds);
 export const seedProfileCount = gardenSeedProfileIds.length;
 
@@ -676,6 +679,9 @@ export function buildDonorPlantDetail(
   const publicSections = Object.entries(publicProfile?.sections ?? {}).map(([id, guide]) => {
     const label = guideLabels[id] ?? { title: id, emoji: "🌱" };
     const localized = language === "es" ? guide.es : guide.en;
+    const scoped = editorialScopeProfiles[entry.libraryPlantId]?.sections[id];
+    const localizedAction = scoped?.action?.[language];
+    const localizedContext = scoped?.context?.[language];
     const backing: DonorBacking =
       guide.evidenceType === "garden_adaptation"
         ? "garden"
@@ -704,9 +710,9 @@ export function buildDonorPlantDetail(
         (language === "es"
           ? "No establecido por la evidencia actual."
           : "Not established by current evidence."),
-      bullets: [...localized.items],
+      bullets: localized.items.length ? [...localized.items] : localizedAction ? [localizedAction] : [],
       avoid: localized.avoid || undefined,
-      context: localized.context || undefined,
+      context: localized.context || localizedContext || undefined,
       backing,
       confidence,
       sources: sourceRefsForIds(entry, guide.sourceIds),

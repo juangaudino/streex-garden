@@ -85,31 +85,94 @@
     "sections": {
       "cultivation": {
         "short": "Lugar soleado, bien drenado y con espacio para una corona grande",
-        "guidance": "UMN recomienda sol durante todo el día, suelo bien drenado que conserve humedad y suficiente espacio para cada planta. Los suelos francos retienen mejor agua y nutrientes que los arenosos. En los suelos de jardín de Minnesota tolera un rango amplio de pH; esto no determina pH de solución hidropónica, tamaño de maceta ni iluminación interior. Aporta compost o fertilizante según el suelo y el vigor, evitando acumular fósforo innecesariamente."
+        "guidance": "UMN recomienda sol durante todo el día, suelo bien drenado que conserve humedad y suficiente espacio para cada planta. Los suelos francos retienen mejor agua y nutrientes que los arenosos. En los suelos de jardín de Minnesota tolera un rango amplio de pH; esto no determina pH de solución hidropónica, tamaño de maceta ni iluminación interior. Aporta compost o fertilizante según el suelo y el vigor, evitando acumular fósforo innecesariamente.",
+        "items": [
+          "Elige un bancal exterior soleado, con buen drenaje y espacio para que se expanda la corona.",
+          "Mantén humedad suficiente durante el crecimiento activo sin encharcar.",
+          "Decide si necesita compost o fertilizante según el suelo y el vigor de la planta."
+        ],
+        "avoid": [
+          "Convertir el pH del suelo exterior en un objetivo de pH para solución hidropónica.",
+          "Tratar el ruibarbo como una hortaliza compacta apta para cualquier pod interior."
+        ]
       },
       "growth": {
         "short": "La corona persistente forma hojas grandes y grupos de tallos",
-        "guidance": "La corona del ruibarbo se expande y forma yemas para las temporadas siguientes. Una plantación bien cuidada puede durar 15 años o más. Color, longitud, fibra y vigor varían entre variedades, por lo que esta ficha de especie no promete tallos rojos. Las hojas permiten recuperar reservas después de cosechar."
+        "guidance": "La corona del ruibarbo se expande y forma yemas para las temporadas siguientes. Una plantación bien cuidada puede durar 15 años o más. Color, longitud, fibra y vigor varían entre variedades, por lo que esta ficha de especie no promete tallos rojos. Las hojas permiten recuperar reservas después de cosechar.",
+        "items": [
+          "Observa la corona perenne aunque el follaje cambie con las estaciones.",
+          "Conserva hojas sanas suficientes para recuperar las reservas de la corona después de la cosecha primaveral.",
+          "Registra el crecimiento estacional y el vigor, sin usar el color del tallo como único indicador de madurez."
+        ],
+        "avoid": [
+          "Considerar inmaduro un cultivar de tallos verdes solo porque no se vuelve rojo."
+        ]
       },
       "maintenance": {
         "short": "Riega durante el verano, controla malezas y divide coronas viejas",
-        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas."
+        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
+        "items": [
+          "Riega bien durante el crecimiento, también después de la cosecha principal.",
+          "Controla malezas con cuidado alrededor de la corona, especialmente durante el establecimiento.",
+          "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo.",
+          "Considera dividir una corona vieja y poco productiva a principios de primavera, conservando yemas viables en cada división."
+        ],
+        "avoid": [
+          "Retirar hojas sanas después de cosechar cuando la corona necesita recuperar reservas."
+        ]
       },
       "harvest": {
         "short": "Extrae los tallos maduros girando y tirando; descarta las hojas",
-        "guidance": "Espera hasta la segunda temporada para cosechar, o la tercera si se inició desde semilla. Cuando los tallos alcancen su longitud completa, sujétalos cerca de la base, tira y gira en lugar de cortar la corona. Recorta y desecha de inmediato las láminas foliares, que son tóxicas. En Minnesota la cosecha principal va de primavera a principios de verano; después deja de recolectar regularmente para que las hojas restantes recuperen reservas. No es un calendario universal."
+        "guidance": "Espera hasta la segunda temporada para cosechar, o la tercera si se inició desde semilla. Cuando los tallos alcancen su longitud completa, sujétalos cerca de la base, tira y gira en lugar de cortar la corona. Recorta y desecha de inmediato las láminas foliares, que son tóxicas. En Minnesota la cosecha principal va de primavera a principios de verano; después deja de recolectar regularmente para que las hojas restantes recuperen reservas. No es un calendario universal.",
+        "items": [
+          "Evita cosechar regularmente el primer año; si procede de semilla, espera hasta el tercero según la orientación de UMN.",
+          "Selecciona pecíolos maduros de longitud completa; sujétalos cerca de la base, tira y gira para desprenderlos.",
+          "Separa y desecha la lámina de la hoja; utiliza únicamente el pecíolo comestible.",
+          "Termina la cosecha regular tras el período primaveral hasta comienzos de verano descrito para Minnesota, dejando follaje para recuperar la corona."
+        ],
+        "avoid": [
+          "Comer o cocinar hojas de ruibarbo: las láminas foliares son tóxicas.",
+          "Quitar demasiado follaje a una corona joven o en recuperación.",
+          "Aplicar el calendario de Minnesota sin adaptarlo al clima local."
+        ]
       },
       "uses": {
         "short": "Cocina los tallos ácidos; nunca consumas las hojas",
-        "guidance": "La parte comestible es el pecíolo o tallo de la hoja, que suele cocinarse y endulzarse para tartas, salsas, pasteles, conservas o bebidas. Los tallos verdes y rojos pueden ser comestibles; el color rojo no garantiza mayor dulzor. Las láminas foliares son tóxicas y deben desecharse. Las raíces no forman parte de la cosecha alimentaria."
+        "guidance": "La parte comestible es el pecíolo o tallo de la hoja, que suele cocinarse y endulzarse para tartas, salsas, pasteles, conservas o bebidas. Los tallos verdes y rojos pueden ser comestibles; el color rojo no garantiza mayor dulzor. Las láminas foliares son tóxicas y deben desecharse. Las raíces no forman parte de la cosecha alimentaria.",
+        "items": [
+          "Separa inmediatamente los pecíolos comestibles de las láminas foliares tóxicas.",
+          "Lava y corta los tallos; cocínalos en salsas, tartas, conservas u otras preparaciones ácidas.",
+          "No utilices el color rojo o verde como prueba de seguridad alimentaria."
+        ],
+        "avoid": [
+          "Consumir las láminas foliares o las raíces.",
+          "Confundir el pecíolo o tallo de la hoja con la lámina foliar."
+        ]
       },
       "problems": {
         "short": "Vigila encharcamiento, pudrición de corona y manchas en hojas",
-        "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad."
+        "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad.",
+        "items": [
+          "Revisa drenaje y exceso de humedad si la corona decae o aparecen tejidos podridos.",
+          "Examina los orificios en tallos y corona antes de atribuirlos a un insecto concreto.",
+          "Fotografía las manchas y registra su evolución: la apariencia no basta para identificar Ascochyta, Ramularia ni virus.",
+          "Si el deterioro persiste, solicita diagnóstico a extensión agrícola local antes de tratar basándote solo en una foto."
+        ],
+        "avoid": [
+          "Afirmar un patógeno específico a partir de una sola fotografía.",
+          "Tratar todas las manchas foliares como si tuvieran la misma causa."
+        ]
       },
       "identity": {
         "short": "Especie aceptada: Rheum rhabarbarum",
-        "guidance": "Kew acepta Rheum rhabarbarum en Polygonaceae. Esta ficha describe el cultivo a nivel de especie y no una variedad de tallos rojos. UMN señala que las variedades difieren en tamaño, color, acidez y fibra."
+        "guidance": "Kew acepta Rheum rhabarbarum en Polygonaceae. Esta ficha describe el cultivo a nivel de especie y no una variedad de tallos rojos. UMN señala que las variedades difieren en tamaño, color, acidez y fibra.",
+        "items": [
+          "Confirma que la planta tenga una corona perenne y grandes pecíolos; no identifiques el cultivar solo por el color del tallo.",
+          "Registra el cultivar únicamente cuando una etiqueta, paquete de semillas o registro fiable lo confirme."
+        ],
+        "avoid": [
+          "Suponer que solo son comestibles los tallos rojos."
+        ]
       }
     }
   },

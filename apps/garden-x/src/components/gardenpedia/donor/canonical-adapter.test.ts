@@ -564,6 +564,30 @@ describe("direct Gardenpedia presentation adapter", () => {
     ).toBe(true);
   });
 
+  it("renders the sourced fenugreek growth and Harvest Use facts instead of false missing-data placeholders", () => {
+    const entry = findCanonicalEntry("common-fenugreek-trigonella-foenum-graecum")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const growth = english.guides.find((guide) => guide.id === "growth");
+    const spanishGrowth = spanish.guides.find((guide) => guide.id === "growth");
+
+    expect(english.harvestUse?.ediblePart).toMatch(/green plant parts.*mature seeds/i);
+    expect(english.harvestUse?.bestUse).toMatch(/does not specify a universal harvest date/i);
+    expect(english.harvestUse?.quickUses).toContain("Curries (seeds)");
+    expect(english.harvestUse?.options[0]?.sources).toEqual([
+      expect.objectContaining({
+        label: expect.stringContaining("North Carolina State University Extension"),
+        url: "https://plants.ces.ncsu.edu/plants/trigonella-foenum-graecum/common-name/fenugreek/",
+      }),
+    ]);
+    expect(growth?.body).toMatch(/1 ft 3 in–2 ft tall/);
+    expect(growth?.sources).toHaveLength(1);
+    expect(growth?.sources[0]?.label).toContain("North Carolina State University Extension");
+    expect(spanish.harvestUse?.ediblePart).toMatch(/Partes verdes.*semillas maduras/);
+    expect(spanishGrowth?.body).toMatch(/especie anual erecta/);
+    expect(spanishGrowth?.body).not.toContain("1 ft 3 in");
+  });
+
   it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {
     const passionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "en");
     const spanishPassionFruit = buildDonorPlantDetail(findCanonicalEntry("passion-fruit")!, "es");

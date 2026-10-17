@@ -22903,6 +22903,33 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ],
+        "en": {
+          "short": "Erect annual with compound foliage and seed pods",
+          "guidance": "NC State describes an erect, rapidly growing annual about 1 ft 3 in–2 ft tall. Its oval leaflets can reach about 2 in and are hairy underneath; small flowers appear in upper leaf axils, followed by pointed pods up to 4 in long with roughly 10–20 seeds. These are species-level descriptions, not a named cultivar profile.",
+          "items": [
+            "A mature plant may be recognized by its compound foliage and elongated seed pods.",
+            "The source reports summer flowering and summer-to-fall harvest context; it does not establish a fixed local calendar."
+          ],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Porte erecto anual, con follaje compuesto y vainas visibles",
+          "guidance": "NC State describe una especie anual erecta, de crecimiento rápido, de aproximadamente 1 pie 3 pulgadas a 2 pies de altura. Sus folíolos ovalados pueden medir unos 2 pulgadas y tienen vellosidad en el envés; las flores pequeñas aparecen en las axilas superiores y dan lugar a vainas puntiagudas de hasta 4 pulgadas con unas 10–20 semillas. Son descripciones a nivel de especie, no de un cultivar nombrado.",
+          "items": [
+            "La planta adulta se reconoce por sus hojas compuestas y vainas alargadas.",
+            "La fuente informa floración en verano y contexto de cosecha de verano a otoño; no establece un calendario local fijo."
+          ],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",

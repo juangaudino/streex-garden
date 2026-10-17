@@ -186,6 +186,12 @@
       "title": "Herbs for the Home Gardener",
       "url": "https://extension.psu.edu/herbs-for-the-home-gardener",
       "type": "extension"
+    },
+    "ncsu-trigonella-foenum-graecum-500": {
+      "publisher": "North Carolina State University Extension",
+      "title": "Fenugreek — Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/trigonella-foenum-graecum/common-name/fenugreek/",
+      "type": "extension"
     }
   },
   "plants": {
@@ -2444,6 +2450,58 @@
           },
           "sourceIds": [
             "illinois-fennel"
+          ]
+        }
+      ]
+    },
+    "common-fenugreek-trigonella-foenum-graecum": {
+      "edibleParts": {
+        "en": "Green plant parts (herb/spice) and mature seeds (condiment)",
+        "es": "Partes verdes (hierba/especia) y semillas maduras (condimento)"
+      },
+      "bestUse": {
+        "en": "The green parts and mature seeds have distinct uses. NC State describes the green parts as a maple-like flavoring and the seeds as a strongly aromatic, spicy condiment; it does not specify a universal harvest date or recipe.",
+        "es": "Las partes verdes y las semillas maduras tienen usos distintos. NC State describe las partes verdes como un aromatizante de sabor parecido al arce y las semillas como un condimento de aroma intenso y especiado; no fija una fecha universal de cosecha ni una receta."
+      },
+      "quickUses": {
+        "en": [
+          "Curries (seeds)",
+          "Cheese",
+          "Pickles",
+          "Syrup"
+        ],
+        "es": [
+          "Curry (semillas)",
+          "Quesos",
+          "Encurtidos",
+          "Jarabes"
+        ]
+      },
+      "methods": [
+        {
+          "id": "herb-and-condiment-use",
+          "icon": "🌿",
+          "status": "possible",
+          "title": {
+            "en": "Use as herb or condiment",
+            "es": "Usar como hierba o condimento"
+          },
+          "summary": {
+            "en": "The source distinguishes green-part flavoring from mature-seed seasoning.",
+            "es": "La fuente distingue el uso aromatizante de las partes verdes del condimento de semillas maduras."
+          },
+          "steps": {
+            "en": [
+              "Use green parts as an herb/spice or flavoring; the source does not prescribe a specific harvest stage for home use.",
+              "Use mature seeds as a condiment. NC State lists curries, cheese and syrup among example flavoring uses."
+            ],
+            "es": [
+              "Usa las partes verdes como hierba/especia o aromatizante; la fuente no prescribe una etapa específica de cosecha para el hogar.",
+              "Usa las semillas maduras como condimento. NC State menciona curry, queso y jarabe entre los ejemplos de uso."
+            ]
+          },
+          "sourceIds": [
+            "ncsu-trigonella-foenum-graecum-500"
           ]
         }
       ]

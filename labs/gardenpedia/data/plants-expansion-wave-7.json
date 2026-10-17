@@ -186,6 +186,19 @@
           "ncsu-trigonella-foenum-graecum-500"
         ]
       },
+      "growth": {
+        "short": "Erect annual with compound foliage and seed pods",
+        "guidance": "NC State describes an erect, rapidly growing annual about 1 ft 3 in–2 ft tall. Its oval leaflets can reach about 2 in and are hairy underneath; small flowers appear in upper leaf axils, followed by pointed pods up to 4 in long with roughly 10–20 seeds. These are species-level descriptions, not a named cultivar profile.",
+        "items": [
+          "A mature plant may be recognized by its compound foliage and elongated seed pods.",
+          "The source reports summer flowering and summer-to-fall harvest context; it does not establish a fixed local calendar."
+        ],
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-trigonella-foenum-graecum-500"
+        ]
+      },
       "propagation": {
         "short": "Seed propagation is documented",
         "guidance": "NC State lists seed as the propagation strategy. It does not provide a home-germination schedule, sowing depth or temperature in the selected page; those details remain unestablished here.",

@@ -24156,12 +24156,34 @@ export const gardenPlantProfileCatalog = {
   },
   "pinguicula-weser": {
     "summary": {
-      "en": "Pinguicula 'Weser' is a registered cultivated hybrid name, not a botanical species. A research paper reports parentage as P. ehlersiae × P. moranensis; this does not supply a general cultivation or propagation protocol.",
-      "es": "Pinguicula 'Weser' es un nombre de híbrido cultivado registrado, no una especie botánica. Un estudio informa parentaje P. ehlersiae × P. moranensis, pero no constituye un manual de cultivo."
+      "en": "Pinguicula 'Weser' is a registered cultivated hybrid with an RHS-documented rosette, seasonal growth pattern and compact dimensions. RHS care guidance is retained at cultivar scope; no hydroponic or nutrient-solution suitability is established.",
+      "es": "Pinguicula 'Weser' es un híbrido cultivado registrado con roseta, ciclo estacional y dimensiones compactas documentados por RHS. La guía de cultivo se mantiene en alcance de cultivar; no se ha establecido su idoneidad para hidroponía ni solución nutritiva."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "RHS maximum height",
+          "value": "Up to 10 cm",
+          "note": "RHS cultivar profile; not an indoor-system guarantee."
+        },
+        {
+          "label": "RHS maximum spread",
+          "value": "0–10 cm",
+          "note": "RHS lists 0–0.1 m for Pinguicula 'Weser'."
+        }
+      ],
+      "es": [
+        {
+          "label": "Altura máxima según RHS",
+          "value": "Hasta 10 cm",
+          "note": "Perfil del cultivar de RHS; no es una garantía para sistemas interiores."
+        },
+        {
+          "label": "Extensión máxima según RHS",
+          "value": "0–10 cm",
+          "note": "RHS indica 0–0,1 m para Pinguicula 'Weser'."
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -24175,14 +24197,140 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Registered hybrid cultivar: Pinguicula 'Weser'",
-          "guidance": "The Pinguicula naming reference explains the cultivar form and ICPS registration role. A 2026 research paper identifies 'Weser' as registered since 1998 and reports P. ehlersiae × P. moranensis parentage. The name is preserved as a cultivar, not converted into a species name.",
+          "guidance": "The Pinguicula naming reference explains the cultivar form and ICPS registration role. A 2026 research paper identifies 'Weser' as registered since 1998 and reports P. ehlersiae × P. moranensis parentage. The name is preserved as a cultivar, not converted into a botanical species.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Registered hybrid cultivar: Pinguicula 'Weser'",
-          "guidance": "La referencia de nomenclatura explica el formato del nombre de cultivar y el papel de registro de ICPS. Un estudio de 2026 identifica 'Weser' como registrado desde 1998 y reporta el cruce P. ehlersiae × P. moranensis. Se conserva el nombre como cultivar, no como especie.",
+          "guidance": "La referencia de nomenclatura explica el formato del nombre de cultivar y el papel de registro de ICPS. Un estudio de 2026 identifica 'Weser' como registrado desde 1998 y reporta el cruce P. ehlersiae × P. moranensis. Se conserva el nombre como cultivar, no como especie botánica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "Small clump-forming rosette",
+          "guidance": "RHS describes sticky, pale-green rosette leaves that may flush pink in strong light, with small pink flowers on upright stems in summer. The cultivar is listed as clump-forming, up to 10 cm tall and 0–10 cm spread.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Roseta pequeña, de crecimiento cespitoso",
+          "guidance": "RHS describe hojas pegajosas verde pálido en roseta que pueden tomar tonos rosados con luz intensa, y flores rosadas pequeñas sobre tallos erguidos en verano. El cultivar figura como cespitoso, de hasta 10 cm de altura y 0–10 cm de extensión.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "Bright filtered light and an open, moisture-aware mix",
+          "guidance": "RHS recommends a light, open potting mix and bright, filtered light. During active growth, it advises sitting the pot in a shallow saucer of rainwater. In winter dormancy, water sparingly without letting the mix dry out, and keep the plant above 5°C (41°F). These are RHS cultivation directions, not a hydroponic protocol.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Luz brillante filtrada y mezcla abierta con humedad controlada",
+          "guidance": "RHS recomienda una mezcla ligera y abierta y luz brillante filtrada. Durante el crecimiento activo, aconseja colocar la maceta sobre un plato poco profundo con agua de lluvia. En la dormancia invernal, regar poco sin dejar secar la mezcla y mantener la planta por encima de 5 °C. Es una guía de cultivo de RHS, no un protocolo hidropónico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "Small pink summer flowers",
+          "guidance": "RHS describes small pink flowers on slender, upright stems in summer. No flowering schedule beyond that seasonal description is established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Flores pequeñas rosadas en verano",
+          "guidance": "RHS describe flores rosadas pequeñas sobre tallos delgados y erguidos durante el verano. No se establece aquí un calendario más preciso.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "RHS lists seed and offset division",
+          "guidance": "RHS lists propagation by seed and by division of offsets in late winter. Detailed sowing instructions belong in Seed Profile; this profile does not claim that seed-grown offspring retain the named cultivar identity.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "RHS incluye semilla y división de hijuelos",
+          "guidance": "RHS enumera la propagación por semilla y por división de hijuelos a fines del invierno. Las instrucciones detalladas de siembra corresponden al perfil de semillas; esta ficha no afirma que las plantas obtenidas de semilla mantengan el nombre de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "No pruning required",
+          "guidance": "RHS states that pruning is not required for this cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No requiere poda",
+          "guidance": "RHS indica que este cultivar no requiere poda.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "rhs-pinguicula-weser-profile-500"
+        ],
+        "en": {
+          "short": "Watch for slugs and snails",
+          "guidance": "RHS notes that Pinguicula 'Weser' may be susceptible to slugs and snails. No disease issue is added from that source record.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigilar babosas y caracoles",
+          "guidance": "RHS señala que Pinguicula 'Weser' puede ser susceptible a babosas y caracoles. No se añade ningún problema de enfermedad a partir de esa fuente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -24193,15 +24341,15 @@ export const gardenPlantProfileCatalog = {
         "confidence": "pending",
         "sourceIds": [],
         "en": {
-          "short": "General care and propagation remain unresolved",
-          "guidance": "The selected sources establish cultivar identity and parentage but are not a cultivation manual. Light, substrate, watering, seasonal behavior, dimensions, and reliable propagation method remain unestablished in this public profile.",
+          "short": "Garden-system performance remains unverified",
+          "guidance": "RHS gives plant-care guidance but does not validate this cultivar in a Garden hydroponic system or establish nutrient targets. Those fields remain unknown.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "General care and propagation remain unresolved",
-          "guidance": "Las fuentes seleccionadas establecen identidad y parentaje, pero no un protocolo de cultivo. Luz, sustrato, riego, comportamiento estacional, dimensiones y método fiable de propagación siguen sin establecerse en esta ficha pública.",
+          "short": "Desempeño en sistemas Garden sin verificar",
+          "guidance": "RHS ofrece cuidados de la planta, pero no valida este cultivar en un sistema hidropónico Garden ni establece objetivos nutritivos. Esos campos permanecen desconocidos.",
           "items": [],
           "avoid": "",
           "context": ""

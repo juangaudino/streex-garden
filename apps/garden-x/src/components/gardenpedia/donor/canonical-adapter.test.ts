@@ -83,6 +83,19 @@ describe("direct Gardenpedia presentation adapter", () => {
     );
   });
 
+  it("builds a bilingual public Plant Detail for every active catalog identity", () => {
+    for (const entry of canonicalEntries) {
+      const english = buildDonorPlantDetail(entry, "en");
+      const spanish = buildDonorPlantDetail(entry, "es");
+      expect(english.id).toBe(entry.libraryPlantId);
+      expect(spanish.id).toBe(entry.libraryPlantId);
+      expect(english.summary.trim()).not.toBe("");
+      expect(spanish.summary.trim()).not.toBe("");
+      expect(english.guides.length).toBeGreaterThan(0);
+      expect(spanish.guides.length).toBeGreaterThan(0);
+    }
+  });
+
   it("searches canonical names without accent or case sensitivity", () => {
     const results = filterDonorPlants({
       plants: donorPlants,
@@ -227,6 +240,25 @@ describe("direct Gardenpedia presentation adapter", () => {
         inventory: "all",
       }).map((plant) => plant.id),
     ).toContain("german-thyme");
+    const genericBasil = filterDonorPlants({
+      plants: donorPlants,
+      query: "basil",
+      category: "herbs",
+      outdoorExposure: "all",
+      inventory: "all",
+    });
+    expect(genericBasil.every((plant) => plant.category === "herbs")).toBe(true);
+    expect(genericBasil.map((plant) => plant.id)).toEqual(
+      expect.arrayContaining(["basil-ocimum-basilicum", "sweet-basil", "genovese-basil"]),
+    );
+    const specificGenovese = filterDonorPlants({
+      plants: donorPlants,
+      query: "Genovese Basil",
+      category: "all",
+      outdoorExposure: "all",
+      inventory: "all",
+    });
+    expect(specificGenovese.map((plant) => plant.id)).toEqual(["genovese-basil"]);
     expect(
       filterDonorPlants({
         plants: donorPlants,
@@ -236,15 +268,6 @@ describe("direct Gardenpedia presentation adapter", () => {
         inventory: "all",
       }).map((plant) => plant.id),
     ).toContain("cascading-petunia");
-    expect(
-      filterDonorPlants({
-        plants: donorPlants,
-        query: "basil",
-        category: "herbs",
-        outdoorExposure: "all",
-        inventory: "all",
-      }).every((plant) => plant.category === "herbs"),
-    ).toBe(true);
   });
 
   it("covers the supplied botanical reference identities without conflating distinct crops", () => {
@@ -586,6 +609,25 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(spanish.harvestUse?.ediblePart).toMatch(/Partes verdes.*semillas maduras/);
     expect(spanishGrowth?.body).toMatch(/especie anual erecta/);
     expect(spanishGrowth?.body).not.toContain("1 ft 3 in");
+  });
+
+  it("renders cultivar-scoped RHS care for Pinguicula 'Weser' without inferring hydroponic fit", () => {
+    const entry = findCanonicalEntry("pinguicula-weser")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const englishCultivation = english.guides.find((guide) => guide.id === "cultivation");
+    const spanishCultivation = spanish.guides.find((guide) => guide.id === "cultivation");
+
+    expect(englishCultivation?.body).toMatch(/bright, filtered light/i);
+    expect(englishCultivation?.sources[0]?.label).toContain("Royal Horticultural Society");
+    expect(english.metrics.map((metric) => metric.value)).toContain("Up to 10 cm");
+    expect(spanishCultivation?.body).toMatch(/luz brillante filtrada/i);
+    expect(spanish.metrics.map((metric) => metric.value)).toContain("Hasta 10 cm");
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    expect(entry.compatibilityProfile?.light.status).toBe("unknown");
+    expect(english.guides.find((guide) => guide.id === "propagation")?.body).toMatch(
+      /does not claim that seed-grown offspring retain the named cultivar identity/i,
+    );
   });
 
   it("uses bilingual public Plant Profiles for new identities without leaking seed protocols", () => {

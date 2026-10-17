@@ -41,8 +41,9 @@
           "umd-blueberry-home-garden-wave27"
         ],
         "items": [
-          "The Extension source emphasizes site preparation, appropriate soil acidity, moisture, mulch, and cultivar selection.",
-          "These are outdoor soil recommendations; they do not establish a nutrient recipe for hydroponics or a generic container recipe."
+          "Prepare an acidic, well-drained outdoor growing site before planting.",
+          "Keep the shallow root zone supplied with moisture and appropriate mulch.",
+          "Choose a cultivar suited to local conditions; do not infer a hydroponic nutrient formula."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -70,7 +71,8 @@
           "umd-blueberry-home-garden-wave27"
         ],
         "items": [
-          "University of Maryland Extension describes renewal pruning: remove older, declining canes to encourage replacement growth."
+          "Allow young plants to establish before applying mature-bush pruning.",
+          "On established plants, gradually remove older, declining canes to encourage replacement growth."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -83,8 +85,8 @@
           "umd-blueberry-home-garden-wave27"
         ],
         "items": [
-          "The Extension guide describes ripe berries as detaching readily from the pedicel and notes that the bearing wood has an age structure.",
-          "Harvest timing varies by cultivar and local conditions."
+          "Pick berries that are fully ripe and detach readily.",
+          "Check ripening repeatedly: timing depends on cultivar and local weather."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -205,7 +207,8 @@
           "psu-brambles-home-fruit-wave27"
         ],
         "items": [
-          "In summer-bearing raspberries, first-year primocanes generally fruit as floricanes the next season and then die."
+          "Identify whether the cultivar bears on second-year canes or first-year primocanes.",
+          "Record which canes fruited before deciding what to remove."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -218,8 +221,8 @@
           "psu-brambles-home-fruit-wave27"
         ],
         "items": [
-          "Penn State Extension distinguishes summer-bearing from primocane-fruiting types and describes different cane-management approaches.",
-          "Identify the variety and intended crop before choosing a pruning schedule."
+          "Confirm the bearing type before selecting a pruning schedule.",
+          "Remove spent floricanes according to the cultivar's fruiting cycle; do not remove productive primocanes by assumption."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -232,8 +235,8 @@
           "psu-brambles-home-fruit-wave27"
         ],
         "items": [
-          "Summer-bearing and primocane-fruiting raspberries crop at different times.",
-          "The source gives regional examples, not a universal harvest calendar for an unspecified variety."
+          "Harvest according to the cultivar's bearing type rather than a fixed universal date.",
+          "Observe fruit maturity and local conditions during the picking season."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -322,7 +325,8 @@
           "osu-figs-oregon-wave27"
         ],
         "items": [
-          "Oregon State Extension describes a sunny location and well-drained soil for figs in its regional guide."
+          "Choose a sunny outdoor site with good drainage.",
+          "Check the cultivar and local winter conditions before assuming cold hardiness or easy container production."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -349,8 +353,8 @@
           "osu-figs-oregon-wave27"
         ],
         "items": [
-          "The Extension guide discusses retaining productive one-year growth and pruning to maintain light in the canopy.",
-          "It also cautions that figs are vigorous and prefer in-ground planting; container management is not assumed to be effortless."
+          "Plan pruning around the local fruiting pattern and retained productive growth.",
+          "Open the canopy to light without assuming all fig cultivars require identical cuts."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -363,8 +367,8 @@
           "osu-figs-oregon-wave27"
         ],
         "items": [
-          "The regional guide advises patience because fruit may take a few seasons.",
-          "It does not support a fixed first-harvest date for all cultivars and locations."
+          "Expect establishment to take time; do not promise fruit in the first season.",
+          "Record fruit set and ripening by cultivar and location."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -454,8 +458,8 @@
           "osu-table-grapes-wave27"
         ],
         "items": [
-          "Oregon State Extension emphasizes choosing table-grape cultivars suited to the length of the local growing season and establishing a trained vine.",
-          "Its regional guidance is not a universal indoor or hydroponic protocol."
+          "Choose a table-grape cultivar compatible with the local growing-season length.",
+          "Plan a permanent support and training system for the woody vine."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -483,8 +487,9 @@
           "osu-table-grapes-wave27"
         ],
         "items": [
-          "The OSU guide identifies inadequate pruning as a common home-garden issue and explains training.",
-          "The exact system and pruning cuts depend on cultivar, support, and climate."
+          "Train young shoots to the intended support structure.",
+          "Prune annually according to cultivar, training system and local conditions.",
+          "Avoid leaving an unpruned, overcrowded canopy."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -497,7 +502,8 @@
           "osu-table-grapes-wave27"
         ],
         "items": [
-          "The cited guide warns that a growing season too short for a cultivar can result in poorer-quality, lower-sugar fruit at harvest."
+          "Check cultivar maturity and available growing-season length.",
+          "Do not infer sweetness or a harvest date from species identity alone."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },

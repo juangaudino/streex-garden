@@ -422,6 +422,28 @@ function FullSheet({
           </section>
         )}
 
+        {detail.id === "rhubarb" && !detail.neighbors && (
+          <section className="glass-panel p-5 sm:p-6">
+            <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>
+            <h2 className="mt-1 font-display text-2xl font-bold leading-tight">{labels.neighbors}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {language === "es"
+                ? "No hay una pareja beneficiosa específica suficientemente demostrada para este ruibarbo. No confundimos listas tradicionales de plantas compañeras con evidencia de beneficio."
+                : "No specific beneficial companion pair is sufficiently established for this rhubarb. Traditional companion-planting lists are not treated as evidence of a benefit."}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed">
+              {language === "es"
+                ? "Lo comprobable es la compatibilidad física: reserva aproximadamente 3 × 3 pies por planta, sol abundante, suelo bien drenado y un lugar permanente donde no compita por espacio con cultivos vecinos."
+                : "What can be supported is physical compatibility: allow roughly 3 × 3 ft per plant, ample sun, well-drained soil and a permanent position where the crown will not crowd neighboring crops."}
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              <SourceLink label="University of Minnesota Extension · Growing rhubarb in home gardens" url="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-rhubarb" />
+              {" · "}
+              <SourceLink label="University of Minnesota Extension · Companion planting in home gardens" url="https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/companion-planting-in-home-gardens" />
+            </p>
+          </section>
+        )}
+
         {detail.neighbors && (
           <section className="glass-panel p-5 sm:p-6">
             <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>

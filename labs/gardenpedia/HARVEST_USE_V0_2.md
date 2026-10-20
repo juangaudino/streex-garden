@@ -2,7 +2,7 @@
 
 ## Status
 
-Harvest Use V0.2 began with a 41-identity Library snapshot. The public catalog has since grown to 501 Plant identities; the merged runtime layer currently covers **369 / 501** identities. This layer is therefore in progress, not complete.
+Harvest Use V0.2 began with a 41-identity Library snapshot. The public catalog has since grown to 501 Plant identities; the merged runtime layer currently has records for **372 / 501** identities. This is a record-coverage count, not a completion score: some plants are ornamental, unsafe, or otherwise inapplicable to culinary use, and may correctly have no method card. The layer remains in progress.
 
 ## Product rule
 

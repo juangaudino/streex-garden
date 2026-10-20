@@ -356,16 +356,6 @@
         },
         "flowering": {
           "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-            "es": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
-          }
-        },
-        "flowering": {
-          "context": {
             "en": "Flowering and bee attraction are species-level claims from NC State; local bloom timing and color are not established.",
             "es": "La floración y atracción de abejas son afirmaciones de especie de NC State; no se establece fecha local ni color."
           }
@@ -837,12 +827,42 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "growth": { "context": { "en": "Root form and leaf traits are supplier-specific; cool-weather quality guidance is general turnip evidence.", "es": "La forma de la raíz y los rasgos foliares son específicos del proveedor; la calidad en clima fresco es evidencia general del nabo." } },
-        "cultivation": { "context": { "en": "Outdoor soil guidance is not a hydroponic or indoor pod prescription.", "es": "La guía de cultivo exterior en suelo no es una receta hidropónica ni de pods interiores." } },
-        "maintenance": { "context": { "en": "Crop-level drought and pest guidance; no Purple Top resistance claim is established.", "es": "Guía de cultivo sobre sequía y plagas; no se establece resistencia de Purple Top." } },
-        "harvest": { "context": { "en": "UMN crop harvest size and Johnny's product dimensions differ in scope; supplier size is not a required delay cue.", "es": "El tamaño general de cosecha de UMN y las dimensiones del producto de Johnny's tienen alcances distintos; el tamaño comercial no obliga a retrasar la cosecha." } },
-        "uses": { "context": { "en": "Culinary use only; no medicinal or nutrition claim is made.", "es": "Solo se describe uso culinario; no se afirma un uso medicinal ni nutricional." } },
-        "problems": { "context": { "en": "Heat and drought concern turnip quality; named pests are crop-level, with no varietal resistance claim.", "es": "El calor y la sequía afectan la calidad del nabo; las plagas citadas son del cultivo y no implican resistencia varietal." } }
+        "growth": {
+          "context": {
+            "en": "Root form and leaf traits are supplier-specific; cool-weather quality guidance is general turnip evidence.",
+            "es": "La forma de la raíz y los rasgos foliares son específicos del proveedor; la calidad en clima fresco es evidencia general del nabo."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor soil guidance is not a hydroponic or indoor pod prescription.",
+            "es": "La guía de cultivo exterior en suelo no es una receta hidropónica ni de pods interiores."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Crop-level drought and pest guidance; no Purple Top resistance claim is established.",
+            "es": "Guía de cultivo sobre sequía y plagas; no se establece resistencia de Purple Top."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "UMN crop harvest size and Johnny's product dimensions differ in scope; supplier size is not a required delay cue.",
+            "es": "El tamaño general de cosecha de UMN y las dimensiones del producto de Johnny's tienen alcances distintos; el tamaño comercial no obliga a retrasar la cosecha."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Culinary use only; no medicinal or nutrition claim is made.",
+            "es": "Solo se describe uso culinario; no se afirma un uso medicinal ni nutricional."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Heat and drought concern turnip quality; named pests are crop-level, with no varietal resistance claim.",
+            "es": "El calor y la sequía afectan la calidad del nabo; las plagas citadas son del cultivo y no implican resistencia varietal."
+          }
+        }
       }
     },
     "yellow-onion": {
@@ -1122,32 +1142,32 @@
       "sections": {
         "identity": {
           "context": {
-          "en": "RHS identifies the named Pacific Beauty selection; the care sections distinguish that cultivar page from general Calendula officinalis Extension guidance.",
-          "es": "RHS identifica la selección nombrada Pacific Beauty; las secciones de cuidado distinguen esa ficha varietal de la guía general de Extensión para Calendula officinalis."
+            "en": "RHS identifies the named Pacific Beauty selection; the care sections distinguish that cultivar page from general Calendula officinalis Extension guidance.",
+            "es": "RHS identifica la selección nombrada Pacific Beauty; las secciones de cuidado distinguen esa ficha varietal de la guía general de Extensión para Calendula officinalis."
           }
         },
-      "growth": {
-        "context": {
-          "en": "RHS cultivar-size ranges differ from the shorter UNH species description; both scopes and regional contexts are retained, not averaged.",
-          "es": "Los rangos de tamaño del cultivar en RHS difieren de la descripción más baja de especie de UNH; se conservan ambos alcances y contextos regionales, sin promediarlos."
-        }
-      },
+        "growth": {
+          "context": {
+            "en": "RHS cultivar-size ranges differ from the shorter UNH species description; both scopes and regional contexts are retained, not averaged.",
+            "es": "Los rangos de tamaño del cultivar en RHS difieren de la descripción más baja de especie de UNH; se conservan ambos alcances y contextos regionales, sin promediarlos."
+          }
+        },
         "pruning": {
           "context": {
-          "en": "Species-level Extension guidance; no Pacific Beauty-specific pruning interval is published in the cited source.",
-          "es": "Guía de Extensión a nivel de especie; la fuente citada no publica un intervalo de poda específico para Pacific Beauty."
+            "en": "Species-level Extension guidance; no Pacific Beauty-specific pruning interval is published in the cited source.",
+            "es": "Guía de Extensión a nivel de especie; la fuente citada no publica un intervalo de poda específico para Pacific Beauty."
           }
         },
         "harvest": {
           "context": {
-          "en": "Cut-flower stage and edible-petal uses are calendula-wide guidance; they are not a Pacific Beauty-specific taste or medicinal claim.",
-          "es": "La etapa para flor cortada y los usos de pétalos comestibles son guía general de caléndula; no son afirmaciones de sabor o uso medicinal propias de Pacific Beauty."
+            "en": "Cut-flower stage and edible-petal uses are calendula-wide guidance; they are not a Pacific Beauty-specific taste or medicinal claim.",
+            "es": "La etapa para flor cortada y los usos de pétalos comestibles son guía general de caléndula; no son afirmaciones de sabor o uso medicinal propias de Pacific Beauty."
           }
         },
         "problems": {
           "context": {
-          "en": "Listed susceptibilities are possibilities, not a diagnosis or a disease-resistance rating.",
-          "es": "Las susceptibilidades enumeradas son posibilidades, no un diagnóstico ni una calificación de resistencia a enfermedades."
+            "en": "Listed susceptibilities are possibilities, not a diagnosis or a disease-resistance rating.",
+            "es": "Las susceptibilidades enumeradas son posibilidades, no un diagnóstico ni una calificación de resistencia a enfermedades."
           }
         }
       }
@@ -1194,12 +1214,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
@@ -1225,12 +1239,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
           }
         },
         "harvest": {
@@ -1264,16 +1272,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
           }
         },
         "hydroponics": {
@@ -1318,22 +1316,6 @@
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-          }
-        },
-        "hydroponics": {
-          "context": {
-            "en": "System-specific evidence is pending; do not copy nutrient, spacing or light parameters from another plant.",
-            "es": "Falta evidencia para este sistema; no copies nutrientes, distancias ni iluminación de otra planta."
-          }
         }
       }
     },
@@ -1370,16 +1352,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
           }
         },
         "hydroponics": {
@@ -1501,8 +1473,8 @@
             "es": "UMN presenta el despunte como práctica opcional y condicionada cuando los brotes inferiores alcanzan alrededor de una pulgada, no como poda rutinaria."
           },
           "action": {
-          "en": "UMN suggests cutting off the growing top after the lowest sprouts reach about one inch to encourage upper sprouts to enlarge. This is a conditional management option from regional guidance, not a required pruning rule or cultivar-specific guarantee.",
-          "es": "UMN propone cortar la punta de crecimiento cuando los brotes inferiores alcanzan alrededor de una pulgada para favorecer el crecimiento de los superiores. Es una opción condicionada de manejo regional, no una poda obligatoria ni una garantía específica de cultivar."
+            "en": "UMN suggests cutting off the growing top after the lowest sprouts reach about one inch to encourage upper sprouts to enlarge. This is a conditional management option from regional guidance, not a required pruning rule or cultivar-specific guarantee.",
+            "es": "UMN propone cortar la punta de crecimiento cuando los brotes inferiores alcanzan alrededor de una pulgada para favorecer el crecimiento de los superiores. Es una opción condicionada de manejo regional, no una poda obligatoria ni una garantía específica de cultivar."
           }
         },
         "harvest": {
@@ -1511,8 +1483,8 @@
             "es": "El efecto del otoño fresco en el sabor y las fechas de helada proceden de orientación para Minnesota y no deben tratarse como fechas universales de cosecha."
           },
           "action": {
-          "en": "Sprouts enlarge from the bottom upward. Harvest developed lower sprouts as needed or cut and store the stalk when the crop is mature; UMN reports that cool fall weather improves flavor. Its frost thresholds and storage schedule are regional and not cultivar-specific.",
-          "es": "Los brotes aumentan de tamaño desde la base hacia arriba. Puedes cosechar los inferiores ya desarrollados según los necesites o cortar y guardar el tallo cuando la cosecha esté madura. UMN indica que el otoño fresco mejora el sabor; sus umbrales de helada y calendario de almacenamiento son regionales."
+            "en": "Sprouts enlarge from the bottom upward. Harvest developed lower sprouts as needed or cut and store the stalk when the crop is mature; UMN reports that cool fall weather improves flavor. Its frost thresholds and storage schedule are regional and not cultivar-specific.",
+            "es": "Los brotes aumentan de tamaño desde la base hacia arriba. Puedes cosechar los inferiores ya desarrollados según los necesites o cortar y guardar el tallo cuando la cosecha esté madura. UMN indica que el otoño fresco mejora el sabor; sus umbrales de helada y calendario de almacenamiento son regionales."
           }
         },
         "problems": {
@@ -1550,8 +1522,8 @@
             "es": "UMN no prescribe poda rutinaria; mantener visible y sin daños el tallo engrosado es una adaptación práctica de manejo de Garden."
           },
           "action": {
-          "en": "The cited home-garden guide does not prescribe routine pruning. Keep the developing stem visible and avoid burying or damaging it during cultivation; this is a practical handling adaptation, not a cultivar-specific growing rule.",
-          "es": "La guía citada no prescribe poda rutinaria. Mantén visible el tallo en desarrollo y evita cubrirlo o dañarlo durante el cultivo; es una adaptación práctica de manejo, no una regla de crecimiento específica de cultivar."
+            "en": "The cited home-garden guide does not prescribe routine pruning. Keep the developing stem visible and avoid burying or damaging it during cultivation; this is a practical handling adaptation, not a cultivar-specific growing rule.",
+            "es": "La guía citada no prescribe poda rutinaria. Mantén visible el tallo en desarrollo y evita cubrirlo o dañarlo durante el cultivo; es una adaptación práctica de manejo, no una regla de crecimiento específica de cultivar."
           }
         },
         "harvest": {
@@ -1560,8 +1532,8 @@
             "es": "El diámetro de 2–3 pulgadas es una referencia regional de calidad de UMN, no un límite universal; los tallos demasiado grandes pueden volverse fibrosos y amargos."
           },
           "action": {
-          "en": "UMN gives 2–3 inches across as a regional harvest cue and warns that larger kohlrabi can become tough, woody and bitter. Treat size as a guide rather than a universal cutoff; the leaves are edible too.",
-          "es": "UMN da 2–3 pulgadas de diámetro como referencia regional de cosecha y advierte que los colinabos más grandes pueden volverse duros, fibrosos y amargos. Usa el tamaño como orientación, no como límite universal; las hojas también son comestibles."
+            "en": "UMN gives 2–3 inches across as a regional harvest cue and warns that larger kohlrabi can become tough, woody and bitter. Treat size as a guide rather than a universal cutoff; the leaves are edible too.",
+            "es": "UMN da 2–3 pulgadas de diámetro como referencia regional de cosecha y advierte que los colinabos más grandes pueden volverse duros, fibrosos y amargos. Usa el tamaño como orientación, no como límite universal; las hojas también son comestibles."
           }
         },
         "problems": {
@@ -2021,16 +1993,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -2042,16 +2004,6 @@
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-          }
         }
       }
     },
@@ -2062,16 +2014,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
           }
         },
         "harvest": {
@@ -2107,16 +2049,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -2127,16 +2059,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
           }
         }
       }
@@ -2389,12 +2311,6 @@
             "en": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth where repeat harvest is supported.",
             "es": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
           }
-        },
-        "problems": {
-          "context": {
-            "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
-            "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
         }
       }
     },
@@ -2631,16 +2547,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -2651,16 +2557,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
           }
         }
       }
@@ -2692,7 +2588,7 @@
             "es": "La fuente describe un corte de cosecha que puede dejar dos hojas para un posible rebrote; no establece poda rutinaria."
           },
           "action": {
-          "en": "The source does not give a routine pruning schedule. A careful cut can leave two leaves intact, after which some plants may resprout; this repeat growth is reported as possible, not guaranteed for every plant or system.",
+            "en": "The source does not give a routine pruning schedule. A careful cut can leave two leaves intact, after which some plants may resprout; this repeat growth is reported as possible, not guaranteed for every plant or system.",
             "es": "La fuente no establece un calendario de poda rutinaria. Un corte cuidadoso puede dejar dos hojas intactas, tras lo cual algunas plantas vuelven a brotar; no se garantiza que ocurra en todas las plantas o sistemas."
           }
         },
@@ -2702,8 +2598,8 @@
             "es": "La referencia de 10–15 pulgadas procede de Sonoma County y no es un umbral universal."
           },
           "action": {
-          "en": "UC Master Gardener recommends cutting rapini before the buds open; its Sonoma County guide gives 10–15 inches as a local harvest cue, not a universal threshold. Cut where the stem becomes succulent rather than tough. Leaves, stems and buds are all part of the harvest; leaving two leaves may allow some resprouting.",
-          "es": "UC Master Gardener recomienda cosechar antes de que se abran los botones; su guía de Sonoma County usa 10–15 pulgadas como señal local, no como umbral universal. Corta donde el tallo deja de ser fibroso y se vuelve tierno. Se consumen hojas, tallos y botones; dejar dos hojas puede permitir que algunas plantas rebroten."
+            "en": "UC Master Gardener recommends cutting rapini before the buds open; its Sonoma County guide gives 10–15 inches as a local harvest cue, not a universal threshold. Cut where the stem becomes succulent rather than tough. Leaves, stems and buds are all part of the harvest; leaving two leaves may allow some resprouting.",
+            "es": "UC Master Gardener recomienda cosechar antes de que se abran los botones; su guía de Sonoma County usa 10–15 pulgadas como señal local, no como umbral universal. Corta donde el tallo deja de ser fibroso y se vuelve tierno. Se consumen hojas, tallos y botones; dejar dos hojas puede permitir que algunas plantas rebroten."
           }
         },
         "problems": {
@@ -2721,16 +2617,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
           }
         },
         "harvest": {
@@ -2895,16 +2781,6 @@
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-          }
         }
       }
     },
@@ -2942,16 +2818,6 @@
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-          }
         }
       }
     },
@@ -2962,16 +2828,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
           }
         },
         "harvest": {
@@ -3120,16 +2976,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
           }
         },
         "harvest": {
@@ -3580,8 +3426,8 @@
             "es": "UMN no prescribe poda rutinaria; proteger el punto de crecimiento y cortar la cabeza madura por encima de las hojas exteriores es orientación de manejo."
           },
           "action": {
-          "en": "The cited guide does not recommend routine pruning. Protect the growing point and outer leaves; harvest the mature head by cutting above the outer leaves rather than removing the plant's head-forming tissue early.",
-          "es": "La guía citada no recomienda poda rutinaria. Protege el punto de crecimiento y las hojas exteriores; al madurar, corta la cabeza por encima de las hojas externas en vez de retirar temprano el tejido que forma la cabeza."
+            "en": "The cited guide does not recommend routine pruning. Protect the growing point and outer leaves; harvest the mature head by cutting above the outer leaves rather than removing the plant's head-forming tissue early.",
+            "es": "La guía citada no recomienda poda rutinaria. Protege el punto de crecimiento y las hojas exteriores; al madurar, corta la cabeza por encima de las hojas externas en vez de retirar temprano el tejido que forma la cabeza."
           }
         },
         "harvest": {
@@ -3590,8 +3436,8 @@
             "es": "La firmeza y densidad son señales de cosecha; las fechas de plantación y heladas de Minnesota siguen siendo regionales."
           },
           "action": {
-          "en": "UMN recommends cutting Chinese/Napa cabbage when the head reaches usable size and feels firm and dense when pressed. Harvest promptly once mature because it can bolt and lose quality rather than holding in the garden like round cabbage. Minnesota freeze timing is regional.",
-          "es": "UMN recomienda cortar la col china/napa cuando la cabeza alcance tamaño utilizable y se sienta firme y densa al presionarla. Cosecha pronto al madurar: puede espigarse y perder calidad en vez de mantenerse en el huerto como una col redonda. El calendario de heladas de Minnesota es regional."
+            "en": "UMN recommends cutting Chinese/Napa cabbage when the head reaches usable size and feels firm and dense when pressed. Harvest promptly once mature because it can bolt and lose quality rather than holding in the garden like round cabbage. Minnesota freeze timing is regional.",
+            "es": "UMN recomienda cortar la col china/napa cuando la cabeza alcance tamaño utilizable y se sienta firme y densa al presionarla. Cosecha pronto al madurar: puede espigarse y perder calidad en vez de mantenerse en el huerto como una col redonda. El calendario de heladas de Minnesota es regional."
           }
         },
         "problems": {
@@ -3658,16 +3504,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -3695,16 +3531,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -3715,16 +3541,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
           }
         }
       }
@@ -3824,12 +3640,42 @@
             "es": "La fuente de Johnny's identifica explícitamente Hakurei (F1); sus rasgos de producto se distinguen de la guía general del nabo."
           }
         },
-        "growth": { "context": { "en": "Flavor, root shape and best-young harvest cue are Johnny's product descriptions, not universal guarantees.", "es": "El sabor, la forma y la cosecha joven son descripciones del producto de Johnny's, no garantías universales." } },
-        "cultivation": { "context": { "en": "Supplier turnip culture is outdoor soil guidance; no hydroponic compatibility or pod spacing is established.", "es": "La guía del proveedor es para nabos en suelo exterior; no establece compatibilidad hidropónica ni separación de pods." } },
-        "maintenance": { "context": { "en": "Drought and pest notes are crop-level; no Hakurei-specific resistance or indoor treatment is claimed.", "es": "Las notas de sequía y plagas son generales del cultivo; no se afirma resistencia ni tratamiento interior específico de Hakurei." } },
-        "harvest": { "context": { "en": "The 2-inch cue is specific to Johnny's Hakurei product; it is not a fixed calendar date.", "es": "La señal de 2 pulgadas es específica del producto Hakurei de Johnny's; no es una fecha fija." } },
-        "uses": { "context": { "en": "Culinary uses only; no nutrition or health claim is added.", "es": "Solo se describen usos culinarios; no se añade una afirmación nutricional o de salud." } },
-        "problems": { "context": { "en": "General turnip stress and pest notes do not imply Hakurei resistance or diagnosis.", "es": "Las notas generales de estrés y plagas del nabo no implican resistencia ni diagnóstico para Hakurei." } }
+        "growth": {
+          "context": {
+            "en": "Flavor, root shape and best-young harvest cue are Johnny's product descriptions, not universal guarantees.",
+            "es": "El sabor, la forma y la cosecha joven son descripciones del producto de Johnny's, no garantías universales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Supplier turnip culture is outdoor soil guidance; no hydroponic compatibility or pod spacing is established.",
+            "es": "La guía del proveedor es para nabos en suelo exterior; no establece compatibilidad hidropónica ni separación de pods."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Drought and pest notes are crop-level; no Hakurei-specific resistance or indoor treatment is claimed.",
+            "es": "Las notas de sequía y plagas son generales del cultivo; no se afirma resistencia ni tratamiento interior específico de Hakurei."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The 2-inch cue is specific to Johnny's Hakurei product; it is not a fixed calendar date.",
+            "es": "La señal de 2 pulgadas es específica del producto Hakurei de Johnny's; no es una fecha fija."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Culinary uses only; no nutrition or health claim is added.",
+            "es": "Solo se describen usos culinarios; no se añade una afirmación nutricional o de salud."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "General turnip stress and pest notes do not imply Hakurei resistance or diagnosis.",
+            "es": "Las notas generales de estrés y plagas del nabo no implican resistencia ni diagnóstico para Hakurei."
+          }
+        }
       }
     },
     "tokyo-long-white-onion": {
@@ -3839,16 +3685,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
           }
         },
         "harvest": {
@@ -3927,16 +3763,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Use selective harvest, thinning, or removal of damaged tissue as the plant requires. Do not turn field spacing into a fixed pod count.",
-            "es": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -3948,16 +3774,6 @@
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
-        },
-        "thinning": {
-          "context": {
-            "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
-            "es": "Adaptación de manejo de Garden: observa la planta real; no es una regla comprobada de asociaciones ni de un sistema específico."
-          },
-          "action": {
-            "en": "Reduce competition when visible crowding changes the intended edible structure or leaf quality. Outdoor spacing is not a universal Garden system count.",
-            "es": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-          }
         }
       }
     },
@@ -3968,16 +3784,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
-            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
-          },
-          "action": {
-            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
-            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {
@@ -4049,16 +3855,6 @@
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
           }
         },
-        "pruning": {
-          "context": {
-            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
-            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
-          },
-          "action": {
-            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
-            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
-          }
-        },
         "harvest": {
           "context": {
             "en": "Garden management adaptation; observe the actual plant and do not treat this as a proven companion or system-specific rule.",
@@ -4080,16 +3876,6 @@
           "context": {
             "en": "Evidence applies to the cited crop or horticultural type, not an unverified cultivar or hydroponic setup.",
             "es": "La evidencia corresponde al cultivo o tipo hortícola citado, no a un cultivar ni sistema hidropónico sin verificar."
-          }
-        },
-        "pruning": {
-          "context": {
-            "en": "The cited sources cover bean habit, support and harvest, but do not establish a pruning rule; keep this guidance pending.",
-            "es": "Las fuentes citadas cubren el hábito, el soporte y la cosecha del frijol, pero no establecen una regla de poda; esta guía queda pendiente."
-          },
-          "action": {
-            "en": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
-            "es": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
           }
         },
         "harvest": {

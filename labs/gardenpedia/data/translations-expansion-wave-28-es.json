@@ -29,7 +29,6 @@
       "flowering": {
         "short": "Gardyn describe tandas sucesivas; el calendario exterior es a nivel de especie",
         "guidance": "NC State sitúa la floración exterior de la especie entre mediados de verano y comienzos de otoño; cada flor dura poco, aunque el periodo total suele durar alrededor de un mes. La guía de Gardyn dice que cada flor dura un día y después se abren tandas sucesivas de unas 8–12 flores, seguidas de un descanso; con cuidados adecuados, informa dos o tres tandas durante aproximadamente 8–10 meses. Esto es un reporte del fabricante para su producto, no un calendario garantizado para otros cultivares o sistemas. La etiqueta Blush no identifica un cultivar nombrado.",
-        "items": ["Trata el periodo exterior como referencia de especie y región, no como promesa para la selección Gardyn."],
         "context": "El calendario de Gardyn corresponde a su producto; el de NC State es exterior y a nivel de especie."
       },
       "harvest": {

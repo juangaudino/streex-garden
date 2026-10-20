@@ -782,7 +782,7 @@
       },
       "uses": {"short":"A culinary herb with aromatic, pungent leaves","guidance":"NC State identifies Greek oregano primarily as a culinary herb and describes its familiar hot, spicy oregano flavor; the leaves are commonly sold dried. No medicinal effect or cultivar-specific flavor concentration is asserted.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-greek-oregano-2026"]},
       "problems": {
-        "short": "Watch the problems that change management",
+        "short": "Monitor possible mites, aphids, leaf miners, and wet-soil rot",
         "guidance": "NC State reports no serious insect or disease issues generally but lists possible aphids, leaf miners and spider mites, and rot in wet or poorly drained soil. These are risks to watch, not a diagnosis or a claim that this identity is resistant.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -3300,7 +3300,7 @@
         "sourceIds": ["umn-carrots-parsnips-home-wave45", "johnnys-carrots-wave1"]
       },
       "problems": {
-        "short": "Watch the problems that change management",
+        "short": "Compacted soil, crowding, or uneven moisture can deform roots",
         "guidance": "Compacted, rocky or obstructed soil can cause forked or split roots, and drought or uneven moisture can reduce quality. Healthy tops with small roots can indicate crowding or excessive nitrogen. These are crop-level warning signs, not Imperator-specific disease or resistance claims; inspect soil structure and growing history before diagnosing a symptom.",
         "evidenceType": "source_backed",
         "confidence": "high",

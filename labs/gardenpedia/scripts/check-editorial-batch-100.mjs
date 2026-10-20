@@ -16,8 +16,10 @@ for (const id of ids) {
   assert.ok(scope.context.en && scope.context.es,"Missing bilingual scope "+id+"/"+key);
   assert.ok(en.evidenceType && en.confidence,"Missing evidence classification "+id+"/"+key);
   if (scope.action) {
-   assert.equal(scope.action.en,en.guidance,"Changed English source-derived action "+id+"/"+key);
-   assert.equal(scope.action.es,es.guidance,"Changed Spanish source-derived action "+id+"/"+key);
+   assert.ok(scope.action.en && scope.action.es,"Missing bilingual Garden adaptation "+id+"/"+key);
+   assert.ok(en.short || en.guidance,"Missing canonical English claim "+id+"/"+key);
+   assert.ok(es.short || es.guidance,"Missing canonical Spanish claim "+id+"/"+key);
+   if (en.evidenceType === "source_backed") assert.ok(en.sourceIds?.length,"Source-backed claim has no sources "+id+"/"+key);
    actions++;
   }
   sections++;
@@ -27,4 +29,7 @@ const adapter=readFileSync(new URL("../../../apps/garden-x/src/components/garden
 assert.match(adapter,/editorialScopeBatch100/);
 assert.match(adapter,/localizedAction/);
 assert.match(adapter,/localizedContext/);
-console.log("PASS: 100 profiles, "+sections+" bilingual evidence scopes, "+actions+" source-derived guidance actions. Does not certify full plant QA, browser visuals or deployment.");
+assert.match(adapter,/gardenAdaptation: localizedAction/);
+const detail=readFileSync(new URL("../../../apps/garden-x/src/components/gardenpedia/donor/plant-detail.tsx",import.meta.url),"utf8");
+assert.match(detail,/guide\.gardenAdaptation/);
+console.log("PASS: 100 profiles, "+sections+" bilingual evidence scopes, "+actions+" separately represented Garden adaptations. Does not certify full plant QA, browser visuals or deployment.");

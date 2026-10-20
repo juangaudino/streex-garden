@@ -13215,14 +13215,14 @@ export const gardenPlantProfileCatalog = {
           "ncsu-sweet-marjoram-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
+          "short": "Saturated soil can cause rot; winter survival varies by region",
           "guidance": "NC State reports rot in poorly drained saturated soil and notes sweet marjoram may not overwinter reliably in colder regions, where it is often grown as an annual. Do not convert the page's regional hardiness notes into a universal survival guarantee or claim disease resistance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
+          "short": "El suelo saturado puede causar pudrición; la supervivencia invernal varía por región",
           "guidance": "NC State informa de pudrición en suelos saturados y mal drenados, y señala que la mejorana dulce puede no pasar bien el invierno en regiones frías, donde suele cultivarse como anual. Sus notas regionales no son garantía universal de supervivencia ni afirmación de resistencia a enfermedades.",
           "items": [],
           "avoid": "",
@@ -15714,14 +15714,14 @@ export const gardenPlantProfileCatalog = {
           "ncsu-greek-oregano-2026"
         ],
         "en": {
-          "short": "Watch the problems that change management",
+          "short": "Monitor possible mites, aphids, leaf miners, and wet-soil rot",
           "guidance": "NC State reports no serious insect or disease issues generally but lists possible aphids, leaf miners and spider mites, and rot in wet or poorly drained soil. These are risks to watch, not a diagnosis or a claim that this identity is resistant.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
+          "short": "Vigila ácaros, pulgones, minadores y pudrición por suelo húmedo",
           "guidance": "NC State informa que generalmente no hay problemas graves, pero enumera posibles pulgones, minadores y ácaros, además de pudrición en suelos húmedos o mal drenados. Son riesgos a vigilar, no diagnóstico ni prueba de resistencia.",
           "items": [],
           "avoid": "",
@@ -18544,14 +18544,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Watch the problems that change management",
+          "short": "Compacted soil, crowding, or uneven moisture can deform roots",
           "guidance": "Compacted, rocky or obstructed soil can cause forked or split roots, and drought or uneven moisture can reduce quality. Healthy tops with small roots can indicate crowding or excessive nitrogen. These are crop-level warning signs, not Imperator-specific disease or resistance claims; inspect soil structure and growing history before diagnosing a symptom.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
+          "short": "La compactación, el hacinamiento o la humedad irregular pueden deformar raíces",
           "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Imperator; revisa la estructura del suelo y el historial de cultivo antes de diagnosticar.",
           "items": [],
           "avoid": "",
@@ -27490,14 +27490,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Watch the problems that change management",
+          "short": "Compacted soil, crowding, or uneven moisture can deform roots",
           "guidance": "Compacted, rocky or obstructed soil can cause forked or split roots, and drought or uneven moisture can reduce quality. Healthy tops with small roots can indicate crowding or excessive nitrogen. These are crop-level warning signs, not Danvers-specific disease or resistance claims; check soil structure and growing history before diagnosing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
+          "short": "La compactación, el hacinamiento o la humedad irregular pueden deformar raíces",
           "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Danvers; revisa el suelo y el historial de cultivo antes de diagnosticar.",
           "items": [],
           "avoid": "",
@@ -47799,9 +47799,7 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Gardyn describe tandas sucesivas; el calendario exterior es a nivel de especie",
           "guidance": "NC State sitúa la floración exterior de la especie entre mediados de verano y comienzos de otoño; cada flor dura poco, aunque el periodo total suele durar alrededor de un mes. La guía de Gardyn dice que cada flor dura un día y después se abren tandas sucesivas de unas 8–12 flores, seguidas de un descanso; con cuidados adecuados, informa dos o tres tandas durante aproximadamente 8–10 meses. Esto es un reporte del fabricante para su producto, no un calendario garantizado para otros cultivares o sistemas. La etiqueta Blush no identifica un cultivar nombrado.",
-          "items": [
-            "Trata el periodo exterior como referencia de especie y región, no como promesa para la selección Gardyn."
-          ],
+          "items": [],
           "avoid": "",
           "context": "El calendario de Gardyn corresponde a su producto; el de NC State es exterior y a nivel de especie."
         }

@@ -64,6 +64,7 @@ export type DonorGuideSection = {
   subtitle: string;
   body: string;
   bullets: string[];
+  gardenAdaptation?: string | undefined;
   avoid?: string | undefined;
   context?: string | undefined;
   backing: DonorBacking;
@@ -756,7 +757,8 @@ export function buildDonorPlantDetail(
         (language === "es"
           ? "No establecido por la evidencia actual."
           : "Not established by current evidence."),
-      bullets: localized.items.length ? [...localized.items] : localizedAction ? [localizedAction] : [],
+      bullets: [...localized.items],
+      gardenAdaptation: localizedAction || undefined,
       avoid: localized.avoid || undefined,
       context: localized.context || localizedContext || undefined,
       backing,

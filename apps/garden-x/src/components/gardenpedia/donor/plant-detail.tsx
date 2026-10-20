@@ -653,6 +653,12 @@ function GuideAccordion({
               </li>
             )}
           </ul>
+          {guide.gardenAdaptation && (
+            <aside className="mt-3 rounded-xl border border-accent/25 bg-accent/5 p-3">
+              <p className="eyebrow text-[10px]">{labels.gardenAdaptation}</p>
+              <p className="mt-1 text-sm leading-6">{guide.gardenAdaptation}</p>
+            </aside>
+          )}
           {guide.context && (
             <p className="mt-3 text-sm leading-7">
               <strong>{language === "es" ? "Contexto:" : "Context:"}</strong> {guide.context}

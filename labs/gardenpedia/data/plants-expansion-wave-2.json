@@ -3701,7 +3701,7 @@
       },
       "uses": {"short":"Leaves and flowers season soups, stews, sauces, dressings, and vegetables","guidance":"NC State documents edible leaves and flowers and culinary uses including soups, stews, sauces, dressings, vegetables and meats. It describes flavor as sweet-spicy and milder than perennial oregano; this comparison is source-scoped, not a universal sensory guarantee.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sweet-marjoram-2026"]},
       "problems": {
-        "short": "Watch the problems that change management",
+        "short": "Saturated soil can cause rot; winter survival varies by region",
         "guidance": "NC State reports rot in poorly drained saturated soil and notes sweet marjoram may not overwinter reliably in colder regions, where it is often grown as an annual. Do not convert the page's regional hardiness notes into a universal survival guarantee or claim disease resistance.",
         "evidenceType": "source_backed",
         "confidence": "high",

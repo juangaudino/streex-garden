@@ -808,7 +808,7 @@
       },
       "uses": {"short":"Hojas y flores aromatizan sopas, guisos, salsas, aderezos y verduras","guidance":"NC State documenta hojas y flores comestibles y usos en sopas, guisos, salsas, aderezos, verduras y carnes. Describe un sabor dulce y especiado, más suave que el orégano perenne; esta comparación se mantiene dentro del alcance de la fuente."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
+        "short": "El suelo saturado puede causar pudrición; la supervivencia invernal varía por región",
         "guidance": "NC State informa de pudrición en suelos saturados y mal drenados, y señala que la mejorana dulce puede no pasar bien el invierno en regiones frías, donde suele cultivarse como anual. Sus notas regionales no son garantía universal de supervivencia ni afirmación de resistencia a enfermedades."
       }
     }

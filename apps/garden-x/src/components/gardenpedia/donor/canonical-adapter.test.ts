@@ -27,6 +27,19 @@ describe("direct Gardenpedia presentation adapter", () => {
     }
   });
 
+  it("keeps editorial Garden actions distinct from source-backed profile claims", () => {
+    const entry = findCanonicalEntry("arugula")!;
+    const english = buildDonorPlantDetail(entry, "en").guides.find((guide) => guide.id === "pruning");
+    const spanish = buildDonorPlantDetail(entry, "es").guides.find((guide) => guide.id === "pruning");
+
+    expect(english?.backing).toBe("source");
+    expect(english?.body).toMatch(/individual rosette leaves|cutting the whole plant/i);
+    expect(english?.gardenAdaptation).toMatch(/Do not turn field spacing into a fixed pod count/i);
+    expect(english?.bullets).not.toContain(english?.gardenAdaptation);
+    expect(spanish?.gardenAdaptation).toMatch(/No copies una regla de campo/i);
+    expect(english?.sources.some((source) => source.label.includes("University of Wisconsin"))).toBe(true);
+  });
+
   it("exposes the new cover-crop category as a real canonical Explore filter", () => {
     const coverCrops = filterDonorPlants({
       plants: donorPlants,

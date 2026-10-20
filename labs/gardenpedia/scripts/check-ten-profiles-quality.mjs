@@ -1,10 +1,13 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 const read = (file) => JSON.parse(readFileSync(new URL("../data/" + file, import.meta.url), "utf8"));
 const waves = [27,28,29];
 const plants = waves.flatMap(n => read(`plants-expansion-wave-${n}.json`));
 const es = Object.assign({}, ...waves.map(n => read(`translations-expansion-wave-${n}-es.json`)));
-const sources = new Set([...waves.flatMap(n => read(`sources-expansion-wave-${n}.json`)), ...read("sources-owned-seeds.json")].map(x => x.id));
+const sourceFiles = readdirSync(new URL("../data/", import.meta.url)).filter(
+  file => file.startsWith("sources") && file.endsWith(".json"),
+);
+const sources = new Set(sourceFiles.flatMap(file => read(file)).map(source => source.id));
 const visuals = {...read("visuals.json"), ...read("visual-guides-batch-10.json")};
 const ids = ["asparagus","rhubarb","escarole","blush-hibiscus","pink-petunia","black-viola","northern-highbush-blueberry","red-raspberry","common-fig","table-grape-vine"];
 for (const id of ids) {

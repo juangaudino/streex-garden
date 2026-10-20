@@ -168,7 +168,7 @@
       },
       "uses": {"short":"Hierba culinaria de hojas aromáticas y picantes","guidance":"NC State identifica el orégano griego principalmente como hierba culinaria y describe el sabor típico picante del orégano; las hojas suelen venderse secas. No se afirma efecto medicinal ni concentración de sabor propia de un cultivar."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
+        "short": "Vigila ácaros, pulgones, minadores y pudrición por suelo húmedo",
         "guidance": "NC State informa que generalmente no hay problemas graves, pero enumera posibles pulgones, minadores y ácaros, además de pudrición en suelos húmedos o mal drenados. Son riesgos a vigilar, no diagnóstico ni prueba de resistencia."
       }
     }
@@ -700,7 +700,7 @@
         "guidance": "UMN Extension recomienda cosechar zanahorias cuando la raíz alcance un tamaño útil. Riega el día anterior o cosecha después de la lluvia, afloja el suelo junto a la raíz con una horquilla y levántala con cuidado para reducir roturas. Retira las hojas y limpia las raíces antes de guardarlas. Observa las condiciones locales en vez de aplicar una fecha universal o una promesa de madurez exacta para Imperator."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
+        "short": "La compactación, el hacinamiento o la humedad irregular pueden deformar raíces",
         "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Imperator; revisa la estructura del suelo y el historial de cultivo antes de diagnosticar."
       },
       "thinning": {

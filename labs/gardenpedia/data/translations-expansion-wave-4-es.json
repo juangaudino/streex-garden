@@ -238,9 +238,11 @@
         "guidance": "NC State Extension incluye Albahaca morada como nombre común de Ocimum basilicum y describe cultivares de follaje púrpura vistoso. Esta ficha representa el tipo hortícola amplio, no un cultivar nombrado como Purple Ruffles, Dark Opal o Rubin."
       },
       "growth": {
+        "short": "El follaje púrpura varía según el cultivar; hay formas ornamentales documentadas",
         "guidance": "NC State Extension indica que los cultivares de albahaca dulce con follaje púrpura vistoso suelen usarse como ornamentales y son aptos para contenedores. Nombra ejemplos distintos —Dark Opal Purple, Purple Ruffles y Rubin— cuyos rasgos no son intercambiables; ninguno se asigna a esta ficha sin cultivar especificado."
       },
       "cultivation": {
+        "short": "Sol pleno y suelo húmedo con buen drenaje en cultivo exterior",
         "guidance": "NC State Extension recomienda pleno sol y suelo húmedo pero bien drenado para la albahaca dulce a nivel de especie. Esto respalda el contexto de cultivo exterior, no una duración de luz artificial, una receta hidropónica ni un óptimo específico para un cultivar morado."
       },
       "pruning": {
@@ -248,6 +250,7 @@
         "guidance": "NC State Extension recomienda pinzar las puntas de tallos largos y los botones florales para promover una forma ramificada y arbustiva en albahaca dulce. Es orientación a nivel de especie/cultivo, no una regla de momento o cantidad para todos los cultivares morados."
       },
       "flowering": {
+        "short": "Retirar los botones florales es una decisión de manejo, no un diagnóstico",
         "guidance": "NC State Extension incluye pinzar botones florales dentro del manejo general de albahaca dulce. Si se dejan las flores, el color y el momento dependen del cultivar; esta ficha no asigna un color ni calendario a un tipo morado no especificado."
       },
       "harvest": {
@@ -255,6 +258,7 @@
         "guidance": "NC State Extension identifica las hojas de la albahaca dulce como aromáticas y comestibles. La página enlaza a un calendario regional de siembra y cosecha, pero aquí no se asigna un momento único a un cultivar o sistema de cultivo sin identificar."
       },
       "use": {
+        "short": "Usos culinarios y ornamentales documentados para el grupo",
         "guidance": "NC State Extension describe las hojas comestibles de albahaca para sopas, guisos y otros platos, y señala el valor ornamental y en contenedor de los cultivares de hoja púrpura vistosa. El perfil de sabor y el mejor uso culinario varían por cultivar y no están resueltos para esta ficha amplia."
       },
       "problems": {

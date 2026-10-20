@@ -2,13 +2,13 @@
   "butterfly-pea-clitoria-ternatea": {
     "summary": "Leguminosa tropical trepadora con flores azules intensas, usadas para teñir alimentos y preparar té. Se propaga por semilla; el calendario y la sensibilidad a heladas dependen del clima.",
     "sections": {
-      "identity": {"guidance":"Kew acepta Clitoria ternatea. NC State indica que existen cultivares de flor blanca o doble; esta ficha de especie no asigna ninguno."},
-      "growth": {"guidance":"Kew la describe como perenne trepadora. NC State informa que suele cultivarse como anual en regiones templadas y que puede alcanzar unos 4.6 m al aire libre; no es una promesa de tamaño en recipiente."},
-      "cultivation": {"guidance":"NC State recomienda pleno sol, suelo bien drenado y riego constante para mejor crecimiento; UF/IFAS recomienda un enrejado o cerca como soporte. Son recomendaciones para exterior, no evidencia de hidroponía."},
-      "harvest": {"guidance":"UF/IFAS describe el uso de las flores para colorante y té que cambia de color, e informa que hojas, flores, brotes jóvenes y vainas tiernas son comestibles. No se afirma ningún efecto médico."},
+      "identity": {"short":"Especie aceptada: Clitoria ternatea; sin cultivar asignado","guidance":"Kew acepta Clitoria ternatea. NC State indica que existen cultivares de flor blanca o doble; esta ficha de especie no asigna ninguno."},
+      "growth": {"short":"Enredadera perenne tropical; suele ser anual en zonas templadas","guidance":"Kew la describe como perenne trepadora. NC State informa que suele cultivarse como anual en regiones templadas y que puede alcanzar unos 4.6 m al aire libre; no es una promesa de tamaño en recipiente."},
+      "cultivation": {"short":"Sol pleno, suelo drenado y soporte para trepar","guidance":"NC State recomienda pleno sol, suelo bien drenado y riego constante para mejor crecimiento; UF/IFAS recomienda un enrejado o cerca como soporte. Son recomendaciones para exterior, no evidencia de hidroponía."},
+      "harvest": {"short":"Flores para colorante y té; partes tiernas descritas como comestibles","guidance":"UF/IFAS describe el uso de las flores para colorante y té que cambia de color, e informa que hojas, flores, brotes jóvenes y vainas tiernas son comestibles. No se afirma ningún efecto médico."},
       "flowering": {"short":"Las flores azules aparecen de verano a otoño según NC State","guidance":"NC State describe flores azul cielo con centros amarillos que florecen de verano a otoño. Señala que algunos cultivares tienen flores blancas o dobles; esos rasgos no se asignan a esta identidad a nivel de especie."},
-      "propagation": {"guidance":"NC State enumera la semilla como estrategia de propagación recomendada. El Perfil de Semilla asociado incluye únicamente la información respaldada y deja sin resolver las mediciones de germinación no publicadas."},
-      "problems": {"guidance":"NC State describe su ciclo perenne tropical y su cultivo como anual en zonas templadas. También enumera ácaros y moscas blancas entre plagas posibles; son riesgos, no diagnósticos ni ocurrencias garantizadas."}
+      "propagation": {"short":"La propagación por semilla está documentada","guidance":"NC State enumera la semilla como estrategia de propagación recomendada. El Perfil de Semilla asociado incluye únicamente la información respaldada y deja sin resolver las mediciones de germinación no publicadas."},
+      "problems": {"short":"El frío limita su ciclo; vigila ácaros y moscas blancas","guidance":"NC State describe su ciclo perenne tropical y su cultivo como anual en zonas templadas. También enumera ácaros y moscas blancas entre plagas posibles; son riesgos, no diagnósticos ni ocurrencias garantizadas."}
     }
   },
   "moringa-moringa-oleifera": {

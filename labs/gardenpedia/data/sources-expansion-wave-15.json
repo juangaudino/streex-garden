@@ -37,5 +37,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs botanical expansion",
     "claimKinds": ["identity", "cultivation", "seedling", "seed", "harvest", "problems"]
+  },
+  {
+    "id": "ucanr-perennial-bunching-onions-2026",
+    "publisher": "University of California Agriculture and Natural Resources",
+    "title": "Plant Perennial Vegetables in Winter",
+    "url": "https://ucanr.edu/node/127075/printable/print",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Allium fistulosum as a perennial clump in home gardens: mature clump division, moisture and weed management, flower-stalk removal when prioritizing clump multiplication, and harvest-size context; outdoor guidance, not hydroponic spacing",
+    "accessed": "2026-10-20",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment research",
+    "claimKinds": ["growth", "cultivation", "care", "propagation", "flowering", "harvest"]
   }
 ]

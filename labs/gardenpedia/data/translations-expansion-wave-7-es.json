@@ -99,6 +99,7 @@
     "summary": "La menta piperita es el híbrido aceptado Mentha × piperita, distinto de la hierbabuena (M. spicata) y de la identidad amplia Common Mint ya existente. NC State documenta su propagación vegetativa preferida y su expansión por rizomas.",
     "sections": {
       "identity": {
+        "short": "Híbrido aceptado: Mentha × piperita",
         "guidance": "Kew acepta Mentha × piperita y presenta la fórmula híbrida M. aquatica × M. spicata. No es intercambiable con la especie Mentha spicata ni con la identidad amplia no resuelta Common Mint."
       },
       "growth": {
@@ -106,12 +107,15 @@
         "guidance": "NC State describe la menta piperita como un híbrido perenne erguido que forma una cobertura agresiva mediante rizomas. Sus rangos de altura y extensión corresponden a contexto exterior regional, no son garantías para recipientes o sistemas interiores."
       },
       "cultivation": {
+        "short": "La humedad y el control de su expansión son importantes",
         "guidance": "NC State describe una perenne erecta y rizomatosa que prefiere suelo rico y húmedo y semisombra en su contexto regional. Se extiende agresivamente; la fuente sugiere cultivo en recipiente para contenerla, no como recomendación hidropónica."
       },
       "propagation": {
+        "short": "Se recomienda la propagación vegetativa",
         "guidance": "NC State enumera división y esquejes de tallo como estrategias y señala que rara vez produce semilla. Usa material vegetativo para conservar la identidad del híbrido; la fuente no establece instrucciones de siembra."
       },
       "harvest": {
+        "short": "Hojas y flores con usos culinarios",
         "guidance": "NC State enumera hojas y flores frescas o secas para infusiones, bebidas, salsas y otros usos, y señala que pinzar puede favorecer un crecimiento más ramificado. Johnny's ofrece una guía general para Mentha: las hojas individuales pueden recogerse cuando la planta ya está establecida, mientras que la cosecha de la planta completa se realiza justo antes de florecer; para secar, recomienda un lugar cálido, bien ventilado y sin sol directo. El momento y método de secado son guía de cultivo a nivel de género, no una regla de rendimiento o aceite esencial específica de la menta piperita."
       },
       "pruning": {
@@ -123,6 +127,7 @@
         "guidance": "NC State describe flores tubulares pequeñas, rosadas a lavanda, en espigas terminales densas que florecen en verano. Informa que la menta piperita rara vez produce semilla, coherente con mantener vegetativamente el híbrido Mentha × piperita. Es contexto de Carolina del Norte, no un calendario universal de floración."
       },
       "problems": {
+        "short": "Controla los rizomas y considera el acceso de las mascotas",
         "guidance": "NC State caracteriza la menta piperita como una cobertura agresiva por rizomas y registra toxicidad de baja gravedad: una ingestión humana abundante puede causar vómitos o diarrea, y la planta aparece señalada como problemática para gatos, perros y caballos. Contén su expansión y considera el acceso de las mascotas. Esta advertencia no convierte el uso culinario de las hojas en un uso medicinal ni proporciona una dosis; los aceites esenciales concentrados no son equivalentes a las hojas culinarias."
       }
     }
@@ -131,10 +136,12 @@
     "summary": "Torenia fournieri es la identidad a nivel de especie respaldada para el nombre de referencia Torenia. NC State Extension documenta propagación por semilla, cultivo en recipientes, condiciones de sombra/sol parcial y pinzado; no se establece un cultivar violeta.",
     "sections": {
       "identity": {
+        "short": "Especie aceptada: Torenia fournieri",
         "guidance": "Kew acepta Torenia fournieri de la familia Linderniaceae. NC State usa Wishbone Flower como nombre común y señala que existen muchos cultivares; el color violeta suministrado no basta para identificar uno."
       },
       "cultivation": {
-        "guidance": "NC State describe preferencia por sol parcial a sombra, especialmente en veranos calurosos, y uso en macetas, cestas colgantes y bordes sombreados. Recomienda suelo rico y húmedo y acolchado para mantener frescas las raíces. Es una guía hortícola de exterior/recipiente, no prueba de compatibilidad con sistemas de interior."
+        "short": "Sol o sombra parcial según el clima y el contexto",
+        "guidance": "NC State favorece sol parcial a sombra, especialmente en veranos calurosos, y describe su uso en macetas, cestas colgantes y bordes sombreados; RHS indica que la especie rinde mejor al sol, pero tolera algo de sombra. En conjunto, son exposiciones exteriores dependientes del clima y el contexto, no un requisito de lámpara interior. Ambas fuentes describen condiciones fértiles y húmedas, pero con drenaje; NC State recomienda acolchado para mantener frescas las raíces. Ninguna demuestra compatibilidad con sistemas interiores."
       },
       "growth": {
         "short": "Anual baja, de hábito erguido a extendido",
@@ -145,10 +152,16 @@
         "guidance": "NC State describe una floración larga, con flores tubulares bicolores y un par de estambres unidos con forma de espoleta. La página describe tonos violetas/azules para la especie y señala que muchos cultivares amplían la gama; el nombre de referencia violeta no identifica un cultivar."
       },
       "propagation": {
+        "short": "La especie puede propagarse por semilla",
         "guidance": "NC State enumera la semilla como estrategia de propagación de la especie. La fuente seleccionada no indica profundidad, temperatura ni tiempo de germinación."
       },
       "pruning": {
-        "guidance": "NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda."
+        "short": "Pinza para ramificar; recorta si se vuelve larguirucha",
+        "guidance": "NC State recomienda pinzar para conservar una forma más tupida. RHS indica que no necesita poda rutinaria, pero si el crecimiento se vuelve larguirucho recomienda recortar aproximadamente la mitad para favorecer una forma más tupida y posiblemente otra tanda de flores. Son opciones a nivel de especie para situaciones distintas, no un calendario fijo ni una respuesta específica de cultivar."
+      },
+      "problems": {
+        "short": "Vigila plagas comunes y enfermedades relacionadas con la humedad",
+        "guidance": "RHS indica posible susceptibilidad a babosas, caracoles y pulgones, además de pudrición radicular y oídios. Tómalos como aspectos para monitorear, no como diagnóstico ni como afirmación de que todas las plantas sean susceptibles; las fuentes revisadas no establecen un protocolo de tratamiento específico para Torenia."
       }
     }
   },
@@ -189,27 +202,35 @@
     "summary": "Tennessee Coneflower es la especie aceptada Echinacea tennesseensis, no un cultivar de E. purpurea seleccionado en Tennessee. Kew y NC State confirman la identidad y su distribución nativa en Tennessee; la guía de Extension también documenta cultivo exterior y la precaución de cruzamiento al guardar semilla.",
     "sections": {
       "identity": {
+        "short": "Especie aceptada: Echinacea tennesseensis",
         "guidance": "Kew acepta Echinacea tennesseensis y enumera E. angustifolia var. tennesseensis como combinación histórica sinónima. NC State también trata Tennessee Coneflower como el nombre de la especie, no como cultivar de E. purpurea."
       },
       "growth": {
+        "short": "Perenne de crecimiento lento, de unos 30–60 cm de alto y ancho",
         "guidance": "NC State informa crecimiento lento y un rango paisajístico a nivel de especie de 1–2 pies tanto de alto como de ancho. Son datos de jardín exterior, no dimensiones para una máquina o pod interior."
       },
       "cultivation": {
+        "short": "Sol pleno a semisombra; suelos de humedad media a seca",
         "guidance": "NC State informa sol pleno a semisombra y suelos de humedad promedio a seca en su guía regional. Kew y NC State sitúan su distribución nativa en Tennessee; estas condiciones paisajísticas no demuestran compatibilidad hidropónica."
       },
       "flowering": {
+        "short": "Flores rosa-púrpura erguidas de junio a agosto",
         "guidance": "NC State describe flores con radios erectos rosa-púrpura y centro naranja entre junio y agosto. La floración es una etapa estacional normal; el calendario es regional, no una programación interior."
       },
       "care": {
+        "short": "Aísla la semilla de otras Echinacea si quieres conservar su identidad",
         "guidance": "NC State y University of Tennessee Extension advierten que Echinacea tennesseensis se cruza con otras Echinacea; las semillas obtenidas cerca de otras equináceas podrían no reproducir fielmente la identidad. UT recomienda aislamiento cuando se busca conservar la integridad genética de la semilla, pero no establece una distancia exacta. Es una precaución para producir semilla, no una instrucción rutinaria de poda."
       },
       "propagation": {
+        "short": "Puede requerirse aislamiento para conservar la identidad de la semilla",
         "guidance": "NC State enumera la semilla como vía de propagación y advierte que el cruce con otras Echinacea puede producir semillas que no crezcan fieles al tipo. University of Tennessee Extension también recomienda aislamiento para conservar la integridad genética, pero no ofrece una distancia exacta ni protocolo doméstico de germinación; no se crea un Perfil de Semilla sin esa evidencia."
       },
       "uses": {
+        "short": "Para bordes, praderas y jardines de bosque con valor para fauna",
         "guidance": "NC State enumera bordes, praderas y jardines de bosque como usos; informa visitas de polinizadores y que los pinzones comen las semillas. La fuente respalda valor ornamental y para fauna, no uso comestible humano."
       },
       "problems": {
+        "short": "Escarabajos japoneses ocasionales; manchas foliares poco frecuentes",
         "guidance": "NC State no informa problemas graves recurrentes; menciona escarabajos japoneses ocasionales y manchas foliares poco frecuentes. Son observaciones de la fuente, no una afirmación de resistencia a enfermedades."
       }
     }

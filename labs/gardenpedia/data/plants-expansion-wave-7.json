@@ -570,11 +570,12 @@
       },
       "cultivation": {
         "short": "Shade and containers are documented options",
-        "guidance": "NC State describes part-sun to shade preference, especially in hot summers, and use in containers, hanging baskets and shade borders. It recommends rich, moist soil and mulch to keep roots cool. This is outdoor/container horticultural guidance, not proof of indoor-system compatibility.",
+        "guidance": "NC State favors part sun to shade, especially in hot summers, and describes containers, hanging baskets and shade borders; RHS says the species performs best in sun but tolerates some shade. Together these are outdoor, climate/context-dependent positions, not a single indoor grow-light requirement. Both sources describe fertile, moist but drained growing conditions; NC State recommends mulch to keep roots cool. Neither establishes indoor-system compatibility.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-torenia-fournieri-500"
+          "ncsu-torenia-fournieri-500",
+          "rhs-torenia-fournieri-wave64"
         ]
       },
       "growth": {
@@ -606,11 +607,21 @@
       },
       "pruning": {
         "short": "Pinching can retain a bushier form",
-        "guidance": "NC State recommends pinching back to retain a bushier shape. The claim is species-level cultivation guidance and does not define a fixed pruning schedule.",
+        "guidance": "NC State recommends pinching to retain a bushier shape. RHS says routine pruning is not required, but if growth becomes leggy it recommends cutting the plant back by about half to encourage bushier growth and potentially another flush of flowers. These are species-level options for different conditions, not a fixed schedule or cultivar-specific response.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-torenia-fournieri-500"
+          "ncsu-torenia-fournieri-500",
+          "rhs-torenia-fournieri-wave64"
+        ]
+      },
+      "problems": {
+        "short": "Monitor for common pests and moisture-related disease",
+        "guidance": "RHS lists wishbone flower as potentially susceptible to slugs, snails and aphids, as well as root rot and powdery mildews. Treat these as monitoring concerns, not a diagnosis or a claim that every plant is susceptible; the reviewed sources do not establish a Torenia-specific treatment protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "rhs-torenia-fournieri-wave64"
         ]
       }
     },

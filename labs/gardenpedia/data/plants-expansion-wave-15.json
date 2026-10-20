@@ -93,10 +93,10 @@
       },
       "growth": {
         "short": "Green and white stalks without a formed bulb",
-        "guidance": "UMN describes A. fistulosum scallions as green and white stalks that do not form bulbs. This species-level description is not a claim about all green onions, which may also be immature A. cepa.",
+        "guidance": "UMN describes A. fistulosum scallions as green and white stalks that do not form bulbs. UC ANR notes that the species can form a perennial clump. This species-level description is not a claim about all green onions, which may also be immature A. cepa.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-growing-scallions-500"]
+        "sourceIds": ["umn-growing-scallions-500", "ucanr-perennial-bunching-onions-2026"]
       },
       "care": {
         "short": "Keep the shallow-rooted crop evenly moist and weeded",
@@ -114,10 +114,31 @@
       },
       "harvest": {
         "short": "Pull scallions when they reach usable size",
-        "guidance": "UMN advises pulling scallions when they reach usable size and loosening soil first if needed to avoid breaking stalks. No fixed days-to-harvest is assigned to this cultivar-unspecified identity.",
+        "guidance": "UMN advises pulling scallions when they reach usable size and loosening soil first if needed to avoid breaking stalks. For perennial garden clumps, UC ANR says to harvest when the greens reach about ¼–½ inch in diameter and onion flavor is wanted. These are outdoor home-garden contexts, not a fixed days-to-harvest promise or a hydroponic size rule.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-growing-scallions-500"]
+        "sourceIds": ["umn-growing-scallions-500", "ucanr-perennial-bunching-onions-2026"]
+      },
+      "maintenance": {
+        "short": "Divide mature clumps and manage flower stalks to match your goal",
+        "guidance": "UC ANR describes digging and dividing established clumps in fall, then replanting them. It advises removing flower stalks before bloom when the goal is multiplying the clump rather than flowering; this is a management choice, not evidence that flowering is disease or failure. Keep soil moist but not wet and weed regularly, especially while plants are small. The advice is for outdoor garden clumps.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-perennial-bunching-onions-2026"]
+      },
+      "propagation": {
+        "short": "Established clumps can be divided; seed-starting is covered separately",
+        "guidance": "UC ANR documents division of mature Allium fistulosum clumps as a way to replant them. This is vegetative propagation of an established plant; the separate Seed Profile covers the seed-to-established-plant stage.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-perennial-bunching-onions-2026"]
+      },
+      "flowering": {
+        "short": "Flower stalk removal depends on whether you want a larger clump or flowers",
+        "guidance": "UC ANR notes that flower stalks can be cut before bloom when the growing goal is clump multiplication. It does not provide a flowering calendar or describe a cultivar-specific floral display; flowering itself is not automatically a problem.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ucanr-perennial-bunching-onions-2026"]
       }
     },
     "compatibilityProfile": {

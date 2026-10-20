@@ -1774,3 +1774,11 @@ list while avoiding unsupported diagnostics or treatments. Source scope,
 inventory and structural section counts were aligned; North Carolina timing and
 invasive status remain explicitly regional, and indoor/hydroponic unknowns were
 not changed.
+
+White Carolina Pineberry received a source-scoped propagation clarification on
+2026-10-20. University of Missouri Extension lists White Carolina among
+marketed pineberry cultivars and advises buying plants rather than seed to
+maintain the white-fruit type. This does not authenticate current retail stock
+or establish a cultivar-specific vegetative protocol, so the identity and
+propagation disposition remain pending; the profile now carries explicit
+resolving source IDs and remains partial.

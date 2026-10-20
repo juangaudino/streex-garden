@@ -35001,11 +35001,12 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "needs_validation",
         "confidence": "pending",
         "sourceIds": [
+          "mizzou-pineberry-2015",
           "eberts-white-carolina-500"
         ],
         "en": {
-          "short": "Cultivar-specific propagation remains unverified",
-          "guidance": "Ebert's product page reports numerous runners for its White Carolina listing, but no independent source reviewed here verifies that behavior for the selection represented in this catalog. No source establishes a cultivar-specific seed-starting protocol; do not infer one from the broader pineberry type.",
+          "short": "Buy pineberry plants, not seed, to retain the white-fruit type; stock identity remains unverified",
+          "guidance": "University of Missouri Extension lists White Carolina among marketed pineberry cultivars and advises purchasing plants rather than seed to maintain white-fruit character. This is pineberry-type propagation guidance; it does not authenticate current White Carolina retail stock or supply a cultivar-specific vegetative propagation protocol. Ebert's product page reports numerous runners for its White Carolina listing, but no independent source reviewed here verifies that behavior for the selection represented in this catalog.",
           "items": [],
           "avoid": "",
           "context": ""

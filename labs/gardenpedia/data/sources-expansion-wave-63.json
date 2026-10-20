@@ -765,5 +765,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs Harvest Use enrichment for Viola × wittrockiana; source applies to designated edible flowers, not ornamental stock generally",
     "claimKinds": ["harvest", "uses", "safety", "handling"]
+  },
+  {
+    "id": "mizzou-pineberry-2015",
+    "publisher": "University of Missouri Extension, Integrated Pest Management",
+    "title": "Pineberry: A Reintroduced Strawberry",
+    "url": "https://ipm.missouri.edu/meg/2015/2/Pineberry-A-Reintroduced-Strawberry/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Pineberry-type guidance: identifies White Carolina among marketed cultivars, describes full-sun outdoor production, fruit maturity cues and recommends buying plants rather than seed to maintain white-fruit character. Does not authenticate current White Carolina retail stock, establish its exact clonal identity, or provide a cultivar-specific propagation protocol.",
+    "accessed": "2026-10-20",
+    "license": null,
+    "provenance": "Gardenpedia Labs White Carolina propagation-scope follow-up",
+    "claimKinds": ["identity", "cultivation", "harvest", "propagation"]
   }
 ]

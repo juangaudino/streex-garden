@@ -43059,6 +43059,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500"
+        ],
+        "en": {
+          "short": "Male and female flowers are distinct; fruit develops after pollination",
+          "guidance": "UF/IFAS describes smooth luffa as monoecious: male flowers occur in elongated clusters, while female flowers are solitary; both are yellow or orange. The female flower's ovary is visible at its base. Pollinated flowers develop cylindrical fruit, so flowering alone does not mean a fruit has set. These are crop-level observations in a Florida production guide, not a local bloom calendar or a claim about pollination success in every garden.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores masculinas y femeninas son distintas; el fruto se desarrolla tras la polinización",
+          "guidance": "UF/IFAS describe la lufa lisa como monoica: las flores masculinas aparecen en racimos alargados y las femeninas son solitarias; ambas son amarillas o anaranjadas. El ovario de la flor femenina se ve en su base. Las flores polinizadas desarrollan frutos cilíndricos, así que la floración por sí sola no significa que se haya formado un fruto. Son observaciones del cultivo en una guía de producción de Florida, no un calendario local de floración ni una afirmación de éxito de polinización en todos los jardines.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "harvest": {
         "evidenceType": "source_backed",
         "confidence": "high",

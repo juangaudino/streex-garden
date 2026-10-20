@@ -2,7 +2,7 @@
 export const gardenLibraryManifest = {
   "schemaVersion": 1,
   "catalogVersion": "gardenpedia-a2dee12679bf3841",
-  "generatedAt": "2026-10-20T22:13:03.372Z",
+  "generatedAt": "2026-10-20T22:14:46.261Z",
   "entries": [
     {
       "libraryPlantId": "acorn-squash",

@@ -196,8 +196,29 @@
         "reason": "Field bed spacing is not a hydroponic position or pod recommendation."
       },
       "light": {
-        "status": "unknown",
-        "reason": "The outdoor sunny-site advice is not translated into an indoor grow-light tier."
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-asparagus-home-wave29"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Asparagus officinalis"
+            },
+            "note": "UMN recommends a sunny outdoor garden site. This is natural outdoor exposure, not an indoor grow-light tier or evidence of hydroponic suitability."
+          }
+        ]
       }
     }
   },
@@ -396,8 +417,29 @@
         "reason": "The recommended garden area is not converted to a hydroponic position."
       },
       "light": {
-        "status": "unknown",
-        "reason": "All-day outdoor sun advice is not mapped to an indoor grow-light tier."
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-rhubarb-home-wave29"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Rheum rhabarbarum"
+            },
+            "note": "UMN recommends an all-day-sun outdoor garden site. This is natural outdoor exposure, not an indoor grow-light tier or hydroponic guidance."
+          }
+        ]
       }
     }
   },
@@ -434,16 +476,17 @@
       },
       "cultivation": {
         "short": "Cool-season chicory culture; keep shallow roots moist",
-        "guidance": "UMN Extension groups escarole with chicories and gives regional seed-starting, direct-seeding and soil-moisture guidance for the crop group. Minnesota planting dates and field spacing are not generalized to other climates or indoor pods.",
+        "guidance": "UMN Extension groups escarole with chicories and describes them as cool-season crops. Its Minnesota guide gives a 6.0–6.8 soil-pH range for lettuce and chicories and emphasizes well-drained, moisture-retentive soil because most water- and nutrient-absorbing roots are shallow. Treat these as regional garden-soil context, not solution pH or a hydroponic recipe; adapt dates to local climate.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
         ],
         "items": [
-          "Grow as a cool-season leafy crop, adjusting dates to the local climate.",
-          "Maintain adequate soil moisture while plants establish.",
-          "Do not copy Minnesota outdoor spacing into an indoor pod without separate evidence."
+          "Grow as a cool-season leafy crop and adapt planting dates to local climate.",
+          "Keep the shallow root zone adequately moist; dry soil can reduce growth and quality.",
+          "The source's 6.0–6.8 pH range applies to garden soil for lettuce and chicories, not nutrient solution.",
+          "Do not copy Minnesota field spacing into an indoor pod without separate evidence."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -464,31 +507,48 @@
       },
       "harvest": {
         "short": "Use leaves as a salad or cooking green",
-        "guidance": "UMN Extension describes escarole as a salad and cooking green and recommends frequent leaf harvest for fresh salads across the guide's leafy crop scope. No cultivar-specific harvest date is assigned.",
+        "guidance": "UMN Extension notes that recipes usually use escarole cooked. Its chicory/leafy-green guidance supports harvesting usable outer leaves repeatedly while leaving most small inner leaves, or cutting the plant at or just above soil level for a whole-plant harvest. Frequent watering in the days before harvest can improve crispness; no cultivar-specific harvest date is assigned.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
         ],
         "items": [
-          "Pick suitable leaves for salads or cooking.",
-          "Judge readiness from actual leaf growth, not an invented cultivar-specific day count."
+          "Harvest usable leaves as needed, leaving most small inner leaves for continued growth, or cut the whole plant at soil level.",
+          "Use local plant growth rather than an invented cultivar-specific maturity date.",
+          "For crisp leaves, keep soil adequately watered in the days before harvest; use escarole cooked where the recipe calls for it."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
         "short": "Heat, dry soil and bolting can reduce quality",
-        "guidance": "UMN reports that the chicory group performs best in cool conditions and that heat/long days may cause bolting and bitterness. These are regional crop-level concerns, not cultivar-specific resistance claims.",
+        "guidance": "UMN reports that chicories perform best in cool conditions and that heat and long days can trigger bolting, which ends leaf harvest and causes pronounced bitterness. The guide also describes tipburn (browned leaf edges) when watering resumes after a dry spell. These are crop-group warning signs in a Minnesota guide, not cultivar-specific resistance claims.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "umn-lettuce-endive-radicchio-wave29"
         ],
         "items": [
-          "Monitor rising temperatures and long days for premature bolting.",
-          "Check water stress when leaves become unusually bitter or growth declines."
+          "A flowering stalk signals bolting; harvest ends and leaves can become strongly bitter.",
+          "Brown leaf edges after watering resumes from a dry spell may be tipburn; aim for steadier soil moisture.",
+          "Inspect leaves for chewing holes and young plants for cutworms; the guide also identifies slugs/snails and flea beetles in these crops."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "maintenance": {
+        "short": "Optional blanching can produce a paler heart",
+        "guidance": "UMN describes tying the outer leaves of endive around the heart to blanch inner leaves; the process takes about two weeks, and close spacing may partly self-blanch plants. Since escarole is a broad-leaved endive type, this is a type-level technique a grower may choose, not a requirement or cultivar-specific result.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-lettuce-endive-radicchio-wave29"
+        ],
+        "items": [
+          "If a paler center is desired, carefully tie the outer leaves around the heart; UMN's endive guidance says blanching takes about two weeks.",
+          "Blanching is a discretionary management choice, not a required step for growing or harvesting escarole.",
+          "Do not treat Minnesota field spacing or timing as indoor-system instructions."
+        ],
+        "context": "The source describes endive blanching; its use here is scoped to escarole's horticultural type and is not cultivar-specific."
       }
     },
     "compatibilityProfile": {

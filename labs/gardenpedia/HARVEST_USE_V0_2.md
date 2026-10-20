@@ -2,7 +2,7 @@
 
 ## Status
 
-Harvest Use V0.2 expands the approved V0.1 pattern to the complete current Gardenpedia Library catalog: **41 / 41 plant identities**.
+Harvest Use V0.2 began with a 41-identity Library snapshot. The public catalog has since grown to 501 Plant identities; the merged runtime layer currently covers **369 / 501** identities. This layer is therefore in progress, not complete.
 
 ## Product rule
 
@@ -19,7 +19,7 @@ Harvest Use remains a compact post-harvest decision layer, not a recipe collecti
 
 ## Coverage
 
-V0.2 covers all 41 current Library records loaded from:
+The original 41-record snapshot was loaded from:
 
 - `data/plants.json`
 - `data/plants-current-gardens.json`
@@ -27,7 +27,7 @@ V0.2 covers all 41 current Library records loaded from:
 - `data/plants-expansion-batch-a1.json`
 - `data/plants-expansion-batch-b1.json`
 
-The canonical Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration to avoid introducing a second asset path during the Vercel hardening cycle. Its internal version is now `0.2`.
+The base Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration. Its internal version is `0.2`; the file contains 66 plant records. The Gardenpedia adapter also merges `data/harvest-use-richness-additions.json` (311 identities, with eight overlaps), so **369 unique public Plant identities currently have a Harvest Use record in the app**. The 501-row Plant Profile inventory now marks the same 369 identities as covered; a direct ID-set comparison found no unmatched Harvest Use records or inventory flags. This is record coverage, not a claim that all remaining identities need food-use methods: ornamental, toxic, or otherwise inapplicable records may correctly have no method card.
 
 ## Evidence additions
 
@@ -39,6 +39,10 @@ V0.2 adds or reuses institutional evidence from:
 - University of Illinois Extension
 - Colorado State University Extension
 - existing University of Minnesota / Oregon State sources from V0.1
+- Iowa State Extension crop/type guidance for Capsicum harvest, culinary use and handling
+- Iowa State Horticulture Research Station Shishito description
+- Utah State University Extension garlic and shallot harvest/use references
+- UMN Extension and Oregon State crop-level guidance for bunching onions
 
 ## Special handling
 
@@ -55,10 +59,10 @@ V0.2 adds or reuses institutional evidence from:
 
 Before calling V0.2 fully validated in runtime:
 
-1. Confirm every one of the 41 Library cards opens without a Harvest Use rendering error.
-2. Confirm all 41 identities have a Harvest Use record.
+1. Confirm representative Library cards across the full catalog open without a Harvest Use rendering error.
+2. Continue adding identity-appropriate records until all 501 identities have a reviewed record, including explicit non-edible/not-applicable dispositions where evidence supports them.
 3. Confirm every rendered method source ID resolves to a visible source.
-4. Spot-check ES/EN on at least one herb, lettuce, fruiting crop, root crop and ornamental.
+4. Spot-check ES/EN across herbs, leafy crops, fruiting crops, roots and ornamentals in each review batch.
 5. Confirm ornamental records with no useful preservation method do not render an empty method grid.
 6. Confirm Delphinium displays the food-safety warning.
 7. Confirm no new shelf-life number was introduced without a source.

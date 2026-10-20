@@ -2,36 +2,144 @@
   "common-sage-salvia-officinalis": {
     "summary":"La salvia común es una hierba culinaria perenne y leñosa, con hojas aromáticas verde grisáceas. Se distingue de la salvia piña y de otras especies de Salvia; la poda, la cosecha y el tamaño conservan el alcance de especie o de la guía regional.",
     "sections": {
-      "identity":{"guidance":"Kew acepta Salvia officinalis dentro de Lamiaceae. Es la salvia común culinaria, no salvia piña (S. elegans), salvia esclarea (S. sclarea) ni un cultivar nombrado por el color de sus hojas."},
-      "growth":{"guidance":"University Extension describe la salvia común como perenne leñosa, con hojas oblongas, suaves y verde grisáceas, que tiende a volverse leñosa con la edad. Las fuentes hablan de plantas de jardín establecidas; no se infiere tamaño para un sistema interior."},
-      "cultivation":{"guidance":"Maryland Extension recomienda pleno sol y suelo muy bien drenado, en especial para pasar el invierno. Es guía de jardín exterior; no define un nivel de luz de cultivo interior, receta hidropónica ni calendario universal de riego."},
-      "care":{"guidance":"Wisconsin Extension recomienda podar en primavera y durante la temporada para favorecer brotes jóvenes y limitar el crecimiento ralo y leñoso. Advierte que los tallos leñosos maduros pueden no rebrotar si se cortan demasiado. No es una fórmula de poda para un cultivar específico."},
-      "harvest":{"guidance":"NC State recomienda cosechar con moderación durante el primer año mientras la planta se establece. Wisconsin Extension describe cortar brotes y tomar hojas antes de la floración; según esa fuente, no retires más de la mitad de la planta de una vez."},
-      "propagation":{"guidance":"Wisconsin Extension enumera semilla, acodo, división y esquejes para la salvia, y señala que muchas variedades nombradas se propagan vegetativamente y pueden no reproducirse fielmente desde semilla. Esta ficha de especie no promete obtener un cultivar por semilla; consulta su Perfil de Semilla para la evidencia de establecimiento."},
-      "problems":{"guidance":"Maryland Extension enfatiza el suelo muy bien drenado y Wisconsin Extension describe menor calidad de follaje cuando las plantas envejecen y se vuelven leñosas. Son consideraciones de cultivo; no se atribuye resistencia a enfermedades ni se diagnostica una planta individual."}
+      "identity":{"short":"Especie aceptada: Salvia officinalis","guidance":"Kew acepta Salvia officinalis dentro de Lamiaceae. Es la salvia común culinaria, no salvia piña (S. elegans), salvia esclarea (S. sclarea) ni un cultivar nombrado por el color de sus hojas."},
+      "growth":{"short":"Perenne leñosa, de hojas aromáticas verde grisáceas","guidance":"University Extension describe la salvia común como perenne leñosa, con hojas oblongas, suaves y verde grisáceas, que tiende a volverse leñosa con la edad. Las fuentes hablan de plantas de jardín establecidas; no se infiere tamaño para un sistema interior."},
+      "cultivation":{"short":"Pleno sol y suelo muy bien drenado","guidance":"Maryland Extension recomienda pleno sol y suelo muy bien drenado, en especial para pasar el invierno. Es guía de jardín exterior; no define un nivel de luz de cultivo interior, receta hidropónica ni calendario universal de riego."},
+      "care":{"short":"Poda en primavera; evita cortar hasta la madera vieja","guidance":"Wisconsin Extension recomienda podar en primavera y durante la temporada para favorecer brotes jóvenes y limitar el crecimiento ralo y leñoso. Advierte que los tallos leñosos maduros pueden no rebrotar si se cortan demasiado. No es una fórmula de poda para un cultivar específico."},
+      "harvest":{"short":"Cosecha antes de la floración; no retires más de la mitad","guidance":"NC State recomienda cosechar con moderación durante el primer año mientras la planta se establece. Wisconsin Extension describe cortar brotes y tomar hojas antes de la floración; según esa fuente, no retires más de la mitad de la planta de una vez."},
+      "propagation":{"short":"Se documentan semillas y métodos vegetativos; algunos cultivares no reproducen fielmente por semilla","guidance":"Wisconsin Extension enumera semilla, acodo, división y esquejes para la salvia, y señala que muchas variedades nombradas se propagan vegetativamente y pueden no reproducirse fielmente desde semilla. Esta ficha de especie no promete obtener un cultivar por semilla; consulta su Perfil de Semilla para la evidencia de establecimiento."},
+      "problems":{"short":"Evita suelo persistentemente húmedo y madera envejecida","guidance":"Maryland Extension enfatiza el suelo muy bien drenado y Wisconsin Extension describe menor calidad de follaje cuando las plantas envejecen y se vuelven leñosas. Son consideraciones de cultivo; no se atribuye resistencia a enfermedades ni se diagnostica una planta individual."}
     }
   },
   "curry-leaf-tree-bergera-koenigii": {
     "summary":"Un arbusto o arbolito aromático de clima tropical a subtropical, apreciado por sus hojas frescas en la cocina del sur de Asia. Kew acepta Bergera koenigii y registra Murraya koenigii como sinónimo; no es el curry en polvo ni un cultivar compacto nombrado.",
     "sections": {
-      "identity":{"guidance":"Kew acepta Bergera koenigii dentro de Rutaceae y registra Murraya koenigii como sinónimo, nombre que aún aparece en fuentes hortícolas. UC Master Gardeners distingue la planta del curry en polvo y describe sus hojas aromáticas como ingrediente básico de la cocina del sur de Asia."},
-      "growth":{"guidance":"Kew clasifica la especie como arbusto y UC Master Gardeners la describe como arbolito. La fuente señala que existen formas regulares, enanas y compactas, pero esta ficha no asigna un cultivar; no se fija una dimensión única."},
-      "cultivation":{"guidance":"La guía de UC Master Gardeners para el condado de Santa Clara describe una perenne que puede conservar hojas en la zona 10 y perderlas en microclimas más fríos; recomienda protegerla de las heladas. Indica suelo bien drenado y dejar que se seque entre riegos; es orientación regional, no calendario universal de maceta."},
-      "light":{"guidance":"La fuente de UC Master Gardeners indica una exposición exterior entre pleno sol y sombra parcial, y recomienda proteger la planta del sol directo intenso durante el calor del verano en su contexto local. No es un requisito normalizado de luz interior."},
-      "harvest":{"guidance":"UC Master Gardeners indica que las hojas pueden cosecharse cuando se necesiten para uso fresco y congelarse para guardarlas; advierte que secarlas reduce el sabor. La fuente no establece rendimiento, intervalo de poda ni cantidad universal de cosecha."},
-      "propagation":{"guidance":"UC Master Gardeners describe semilla fresca y madura, chupones de raíz y esquejes. La germinación puede ser irregular y tardar más de un mes en esa guía regional; el Perfil de Semilla conserva ese contexto y deja pendientes la profundidad y el calendario de plántula no documentados."},
-      "problems":{"guidance":"La fuente regional advierte sobre las heladas en microclimas fríos y las quemaduras de sol en verano caluroso. También menciona consideraciones locales de cuarentena por el psílido asiático de los cítricos; no se presentan como plaga universal ni como restricción de todo lugar."}
+      "identity":{"short":"Nombre aceptado Bergera koenigii; Murraya koenigii es sinónimo","guidance":"Kew acepta Bergera koenigii dentro de Rutaceae y registra Murraya koenigii como sinónimo, nombre que aún aparece en fuentes hortícolas. UC Master Gardeners distingue la planta del curry en polvo y describe sus hojas aromáticas como ingrediente básico de la cocina del sur de Asia."},
+      "growth":{"short":"Arbusto o arbolito aromático; tamaño variable","guidance":"Kew clasifica la especie como arbusto y UC Master Gardeners la describe como arbolito. La fuente señala que existen formas regulares, enanas y compactas, pero esta ficha no asigna un cultivar; no se fija una dimensión única."},
+      "cultivation":{"short":"Protege de heladas; deja secar el suelo entre riegos","guidance":"La guía de UC Master Gardeners para el condado de Santa Clara describe una perenne que puede conservar hojas en la zona 10 y perderlas en microclimas más fríos; recomienda protegerla de las heladas. Indica suelo bien drenado y dejar que se seque entre riegos; es orientación regional, no calendario universal de maceta."},
+      "light":{"short":"Exposición exterior de pleno sol a sombra parcial","guidance":"La fuente de UC Master Gardeners indica una exposición exterior entre pleno sol y sombra parcial, y recomienda proteger la planta del sol directo intenso durante el calor del verano en su contexto local. No es un requisito normalizado de luz interior."},
+      "harvest":{"short":"Cosecha hojas para uso fresco; la fuente prefiere congelarlas a secarlas","guidance":"UC Master Gardeners indica que las hojas pueden cosecharse cuando se necesiten para uso fresco y congelarse para guardarlas; advierte que secarlas reduce el sabor. La fuente no establece rendimiento, intervalo de poda ni cantidad universal de cosecha."},
+      "propagation":{"short":"Se documentan semillas frescas y métodos vegetativos","guidance":"UC Master Gardeners describe semilla fresca y madura, chupones de raíz y esquejes. La germinación puede ser irregular y tardar más de un mes en esa guía regional; el Perfil de Semilla conserva ese contexto y deja pendientes la profundidad y el calendario de plántula no documentados."},
+      "problems":{"short":"El frío y el sol fuerte de verano pueden causar estrés","guidance":"La fuente regional advierte sobre las heladas en microclimas fríos y las quemaduras de sol en verano caluroso. También menciona consideraciones locales de cuarentena por el psílido asiático de los cítricos; no se presentan como plaga universal ni como restricción de todo lugar."}
     }
   },
   "greater-galangal-alpinia-galanga": {
-    "summary":"Un cultivo tropical rizomatoso usado como especia en la cocina del sudeste asiático. Es botánicamente distinto del jengibre culinario y de la galanga menor; las fuentes seleccionadas documentan material de plantación en forma de rizoma o cultivo de tejidos, no un protocolo de semilla.",
+    "summary":"La galanga mayor (Alpinia galanga) es un cultivo tropical rizomatoso, distinto del jengibre culinario y de la galanga menor. UF/IFAS describe producción y cosecha bajo condiciones de Florida; no es una ficha de hidroponía ni de cultivo desde semilla.",
     "sections": {
       "identity":{"guidance":"Kew acepta Alpinia galanga dentro de Zingiberaceae. UF/IFAS distingue la galanga mayor de la galanga menor (Alpinia officinarum), la raíz dedo (Boesenbergia rotunda) y el jengibre aromático o galanga negra (Kaempferia galanga). No se asigna cultivar."},
-      "growth":{"guidance":"UF/IFAS agrupa la galanga con cultivos tropicales de rizoma y describe su producción en contenedores o camas de campo bajo condiciones de Florida. Aquí no se establecen dimensiones específicas de cultivar ni un hábito compacto para interiores."},
-      "cultivation":{"guidance":"La orientación de producción de UF/IFAS para jengibre y galanga describe condiciones cálidas y sombra parcial en Florida para reducir el estrés del cultivo. Es una recomendación regional para campo o contenedor; no establece intensidad de luz interior, receta hidropónica ni calendario doméstico universal."},
+      "growth":{"guidance":"Kew clasifica Alpinia galanga como geófita rizomatosa de bioma tropical húmedo. UF/IFAS informa que la galanga no ha mostrado dormancia inducida por fotoperiodo; puede florecer y producir rizomas todo el año en zonas tropicales, mientras que en los subtrópicos florece estacionalmente. La fuente no establece una altura o extensión madura portátil."},
+      "cultivation":{"guidance":"UF/IFAS indica 70–85 °F como intervalo óptimo para producir jengibre y galanga y describe sombra de 25–40 % durante el verano de Florida para reducir el estrés por calor sin sombrear en exceso. Una vez establecidas en verano, sus plantas rizomatosas suelen necesitar riego o lluvia diarios; recomienda un sustrato grueso, bien drenado y con retención de humedad. Son referencias de producción en Florida, no parámetros domésticos universales, objetivos de luz interior ni receta hidropónica."},
       "propagation":{"guidance":"UF/IFAS documenta iniciar estos cultivos desde rizomas o plantas de cultivo de tejidos e indica que la galanga muestra vigor a partir de cultivo de tejidos. La fuente seleccionada no documenta propagación por semilla, por lo que no se infiere un método."},
-      "harvestUse":{"guidance":"UF/IFAS describe los rizomas de galanga como producto del cultivo y menciona su uso fresco, conservado o seco. El calendario de producción es regional y en parte comercial; no se fija una fecha universal de cosecha doméstica."},
-      "problems":{"guidance":"La fuente de UF/IFAS trata la galanga como cultivo tropical y enfatiza material de plantación limpio y prevención de enfermedades del sistema radicular. No se afirma resistencia específica ni se ofrece un diagnóstico para sistemas interiores."}
+      "harvestUse":{"guidance":"UF/IFAS indica que, en su contexto productivo de Florida, la galanga para venta fresca se cosecha alrededor de cuatro meses después de plantar; cosechar más tarde aumenta la fibrosidad. Para extraer aceite esencial menciona alrededor de siete meses. La publicación describe venta fresca, conservas y polvo seco, pero esos plazos no son fechas universales de huerto doméstico ni promesas de cultivar."},
+      "flowering":{"guidance":"UF/IFAS informa floración estival en los subtrópicos y producción de flores y rizomas durante todo el año en los trópicos, independientemente del fotoperiodo. Es contexto regional a nivel de especie, no un calendario de floración interior."},
+      "problems":{"guidance":"UF/IFAS describe enrollamiento foliar seguido de quemadura apical o marginal y amarillamiento como señales de estrés por sequía entre sus cultivos rizomatosos; enfatiza usar material sano, higiene y evitar el encharcamiento. Los patógenos enumerados se detectaron específicamente en jengibre y cúrcuma cultivados en Florida, no como diagnósticos propios de la galanga; no se afirma resistencia."}
+    }
+  },
+  "american-gooseberry-ribes-hirtellum": {
+    "sections": {
+      "identity": {"short": "Especie americana, distinta de la uva espina europea"},
+      "growth": {"short": "Arbusto espinoso de cañas, con bayas individuales"},
+      "cultivation": {"short": "Guía de huerto para clima fresco; consulta las normas locales"},
+      "maintenance": {"short": "Aclara las cañas viejas y débiles antes del crecimiento primaveral"},
+      "harvest": {"short": "Cosecha por madurez, no por un color fijo"},
+      "propagation": {"short": "Aquí no se establecen requisitos de siembra"},
+      "problems": {"short": "Vigila el oídio y consulta las restricciones regionales sobre roya"},
+      "uses": {"short": "Cosecha menos maduras para conserva y maduras para comer frescas"}
+    }
+  },
+  "european-gooseberry-ribes-uva-crispa": {
+    "sections": {
+      "identity": {"short": "Especie aceptada: Ribes uva-crispa"},
+      "growth": {"short": "Arbusto leñoso espinoso, con bayas individuales"},
+      "cultivation": {"short": "Sol pleno a parcial en suelo fértil y bien drenado"},
+      "maintenance": {"short": "Poda las cañas cada año y evita que enraícen al tocar el suelo"},
+      "harvest": {"short": "Cosecha cuando las bayas cambian de color y se ablandan"},
+      "propagation": {"short": "Se describe el acodo de puntas; no hay protocolo de semilla"},
+      "problems": {"short": "Consulta las restricciones locales sobre roya vesicular del pino blanco"}
+    }
+  },
+  "black-currant-ribes-nigrum": {
+    "sections": {
+      "identity": {"short": "Especie aceptada: Ribes nigrum"},
+      "growth": {"short": "Arbusto frutal perenne con cañas de distintas edades"},
+      "cultivation": {"short": "Sol pleno a parcial; los sitios soleados favorecen la fruta"},
+      "maintenance": {"short": "Poda las cañas cada año y consulta las restricciones locales sobre roya"},
+      "harvest": {"short": "Cosecha las bayas maduras cuando estén púrpura-negras"},
+      "propagation": {"short": "Se documenta el acodo de puntas; no hay protocolo de semilla"},
+      "problems": {"short": "Las normas sobre roya vesicular del pino blanco varían por región"}
+    }
+  },
+  "red-currant-ribes-rubrum": {
+    "sections": {
+      "identity": {"short": "Especie aceptada: Ribes rubrum"},
+      "growth": {"short": "Arbusto leñoso de grosella con bayas en racimos"},
+      "cultivation": {"short": "Sol pleno a parcial; más sol favorece la fructificación"},
+      "maintenance": {"short": "Renueva las cañas viejas y mantén abierta la copa"},
+      "harvest": {"short": "Cosecha cuando las bayas desarrollen color y sabor"},
+      "propagation": {"short": "Se menciona el acodo de puntas; no se documenta la siembra"},
+      "problems": {"short": "Consulta las restricciones regionales sobre roya vesicular del pino blanco"}
+    }
+  },
+  "pinguicula-lilac-lollipop": {
+    "sections": {
+      "identity": {"short": "Híbrido de Pinguicula con nombre asignado por el proveedor"},
+      "growth": {"short": "Roseta pequeña; el proveedor indica 5–10 cm al crecer por completo"},
+      "flowering": {"short": "El proveedor describe flores de color lila suave"},
+      "cultivation": {"short": "Aplica con cautela la guía para grasillas mexicanas"},
+      "watering": {"short": "Usa agua sin minerales y ajusta la humedad según la fase foliar"},
+      "substrate": {"short": "Usa un medio para Pinguicula, pobre en minerales y drenante"},
+      "maintenance": {"short": "Una roseta invernal de hojas suculentas puede ser normal"},
+      "problems": {"short": "La acumulación de minerales y el exceso de humedad pueden dañarlas"},
+      "propagation": {"short": "Los esquejes de hoja son una vía vegetativa documentada para Pinguicula"},
+      "identityReview": {"short": "Parentaje y denominación formal sin resolver"}
+    }
+  },
+  "pinguicula-primuliflora": {
+    "sections": {
+      "identity": {"short": "Especie aceptada: Pinguicula primuliflora"},
+      "growth": {"short": "Roseta basal compacta, normalmente de 4–16 cm de ancho"},
+      "cultivation": {"short": "Mantén la zona radicular húmeda; se documenta semisombra"},
+      "care": {"short": "Pueden formarse hijuelos donde las puntas de las hojas tocan el medio"},
+      "flowering": {"short": "Flores terminales solitarias, de tonos lila pálido y amarillo"},
+      "propagation": {"short": "Hay hijuelos en las puntas foliares; no se establece un protocolo rutinario de semilla fiable"}
+    }
+  },
+  "saskatoon-serviceberry-amelanchier-alnifolia": {
+    "sections": {
+      "identity": {"short": "Especie aceptada de Saskatoon"},
+      "growth": {"short": "Arbusto erguido caducifolio o arbolito; tamaño adulto muy variable"},
+      "cultivation": {"short": "El sol pleno y el suelo drenado favorecen el fruto; mantén húmeda la zona de establecimiento sin encharcar"},
+      "harvest": {"short": "El fruto azul violáceo madura de forma desigual; cosecha en varias pasadas y enfríalo pronto"},
+      "propagation": {"short": "Se documentan semillas, chupones y esquejes; las plantas de semilla pueden no ser fieles al tipo"},
+      "care": {"short": "Mantén humedad para la calidad del fruto y evita mojar el follaje"},
+      "pruning": {"short": "Poda antes del crecimiento primaveral y conserva madera de edad fructífera"},
+      "flowering": {"short": "Racimos de flores blancas fragantes aparecen en primavera, a menudo antes que las hojas"},
+      "problems": {"short": "Protege los frutos maduros de las aves y vigila manchas foliares y royas"},
+      "uses": {"short": "Bayas comestibles y arbusto ornamental de varias estaciones"}
+    }
+  },
+  "american-elderberry-sambucus-canadensis": {
+    "sections": {
+      "identity": {"short": "Especie aceptada; la literatura también usa un nombre de subespecie"},
+      "growth": {"short": "La forma varía entre arbusto y árbol según la región"},
+      "cultivation": {"short": "Los resultados productivos regionales no son universales"},
+      "maintenance": {"short": "La poda depende del sitio y del objetivo productivo"},
+      "harvest": {"short": "Cosecha y prepara las bayas de saúco con atención a la inocuidad"},
+      "propagation": {"short": "Los esquejes son prácticos; la semilla es posible pero variable"},
+      "problems": {"short": "Confirma el material y manipula los alimentos con cuidado"},
+      "uses": {"short": "Cocina completamente las bayas; no las comas crudas ni mal preparadas"}
+    }
+  },
+  "american-cranberry-vaccinium-macrocarpon": {
+    "sections": {
+      "identity": {"short": "Especie aceptada: Vaccinium macrocarpon"},
+      "growth": {"short": "Enredadera rastrera que forma una cubierta vegetal densa"},
+      "cultivation": {"short": "Suelo ácido, humedad constante y espacio para estolones"},
+      "maintenance": {"short": "Protege las enredaderas de la deshidratación invernal y las heladas primaverales"},
+      "harvest": {"short": "Cosecha a mano bayas rojo oscuro cuando la cubierta esté establecida"},
+      "propagation": {"short": "La semilla es posible, pero no es el método recomendado para el hogar"},
+      "problems": {"short": "El clima, el pH, el drenaje y las heladas pueden limitar el cultivo"},
+      "uses": {"short": "Las bayas ácidas sirven frescas y en recetas probadas de salsa de arándanos"}
     }
   }
 }

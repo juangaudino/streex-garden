@@ -42,6 +42,7 @@ const detailLabels = {
     ediblePart: "Parte comestible",
     bestUse: "Mejor uso",
     quickUses: "Usos rápidos",
+    foodSafety: "Seguridad alimentaria",
     neighbors: "Buenas vecinas / Mejor separar",
     supportedRelations:
       "Relaciones respaldadas por evidencia; no son una promesa universal de companion planting.",
@@ -74,6 +75,7 @@ const detailLabels = {
     ediblePart: "Edible part",
     bestUse: "Best use",
     quickUses: "Quick uses",
+    foodSafety: "Food safety",
     neighbors: "Good neighbors / Better separate",
     supportedRelations:
       "Evidence-backed relationships; not a universal companion-planting promise.",
@@ -370,17 +372,28 @@ function FullSheet({
               </div>
             </div>
 
-            <p className="eyebrow mt-5 text-[10px]">{labels.quickUses}</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {detail.harvestUse.quickUses.map((use) => (
-                <span
-                  key={use}
-                  className="rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-semibold"
-                >
-                  {use}
-                </span>
-              ))}
-            </div>
+            {detail.harvestUse.quickUses.length > 0 && (
+              <>
+                <p className="eyebrow mt-5 text-[10px]">{labels.quickUses}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {detail.harvestUse.quickUses.map((use) => (
+                    <span
+                      key={use}
+                      className="rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-semibold"
+                    >
+                      {use}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {detail.harvestUse.safetyNote && (
+              <aside className="glass-soft mt-4 border border-accent/30 p-4" role="note">
+                <p className="eyebrow text-[10px]">{labels.foodSafety}</p>
+                <p className="mt-2 text-sm leading-6">{detail.harvestUse.safetyNote}</p>
+              </aside>
+            )}
 
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {detail.harvestUse.options.map((option) => (
@@ -616,7 +629,9 @@ function GuideAccordion({
           <span className="block font-display text-base font-semibold leading-tight">
             {guide.title}
           </span>
-          <span className="mt-0.5 block text-xs text-muted-foreground">{guide.subtitle}</span>
+          {guide.subtitle && (
+            <span className="mt-0.5 block text-xs text-muted-foreground">{guide.subtitle}</span>
+          )}
         </span>
         {open ? (
           <Minus aria-hidden="true" className="size-4 shrink-0" />

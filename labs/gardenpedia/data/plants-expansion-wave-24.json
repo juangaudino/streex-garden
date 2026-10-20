@@ -15,7 +15,7 @@
       "apionabo",
       "Apium graveolens"
     ],
-    "summary": "A celery crop grown for its enlarged root-stem rather than leaf stalks. Seed is tiny and slow to emerge; light is required for germination in the cited California home-garden guidance.",
+    "summary": "Celeriac is the root-stem form of Apium graveolens, grown for its enlarged, knobby base rather than celery stalks. It is a long-season crop that needs steady moisture and mild growing conditions; cultivar-specific size and indoor-system performance remain unknown.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -32,6 +32,13 @@
         "confidence": "high",
         "sourceIds": ["ucanr-celeriac-500"]
       },
+      "maintenance": {
+        "short": "Keep shallow roots evenly moist and manage the swollen base as it develops",
+        "guidance": "UC ANR advises keeping the upper few inches of soil moist but not waterlogged because celeriac roots are shallow. Avoid weed competition and cultivate carefully; as the base enlarges, the regional guide describes trimming side roots and hilling soil around it to blanch the exterior. These are outdoor soil practices, not a hydroponic procedure.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ucanr-celeriac-500"]
+      },
       "growth": {
         "short": "Produces an enlarged root-stem rather than celery-like stalks",
         "guidance": "Oregon State University Extension distinguishes celeriac, which develops an enlarged root-stem, from celery grown for stalks. This profile does not transfer stalk-celery harvest or spacing assumptions to celeriac.",
@@ -40,15 +47,15 @@
         "sourceIds": ["osu-celery-celeriac-500"]
       },
       "harvest": {
-        "short": "Harvest the enlarged root when it reaches useful size",
-        "guidance": "UC ANR gives a broad 100–150 day crop duration in its regional account. Actual harvest timing depends on climate and cultivar; no single date or size is promised here.",
+        "short": "Lift the enlarged base when it reaches a useful size",
+        "guidance": "UC ANR describes lifting the swollen celeriac base at about 3–4 inches across or slightly larger; another regional crop table gives a broader 3–5 inch range. Use these as source-specific garden cues, not a universal size or calendar promise. The broad 100–150 day crop duration also varies with climate and cultivar.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["ucanr-celeriac-500"]
       },
       "problems": {
-        "short": "Cold planting conditions may trigger bolting before root enlargement",
-        "guidance": "UC ANR cautions against planting into cool soil because plants may bolt without forming a large root. This is species/crop-type regional guidance, not a disease-resistance or cultivar claim.",
+        "short": "Cold planting can trigger bolting; leaf tunnels may indicate leaf miners",
+        "guidance": "UC ANR cautions that planting into cool soil can trigger bolting before a large base forms. It also describes yellow leaves or small holes and tunnels as possible celery leaf-miner damage, recommending removal of affected leaves; slugs and snails are another listed garden concern. These are regional crop-level warning signs, not cultivar-specific susceptibility claims.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ucanr-celeriac-500"]
@@ -111,8 +118,8 @@
         "sourceIds": ["kew-cichorium-intybus-500", "ucanr-radicchio-500"]
       },
       "cultivation": {
-        "short": "Cool-season crop; heat may cause bolting or tip burn",
-        "guidance": "UC ANR reports that inland summer heat can cause bolting and tip burn and gives coastal California planting windows. Those dates and bed spacings are regional field guidance, not universal timing or hydroponic layout.",
+        "short": "Cool-season chicory; steady moisture and moderate temperatures favor head quality",
+        "guidance": "UC ANR reports that inland summer heat can cause bolting and tip burn and gives coastal California planting windows. University of Minnesota Extension recommends moist, well-drained soil for chicories and reports cool conditions for radicchio; its Minnesota planting windows and soil recommendations are regional outdoor guidance, not universal timing or hydroponic layout.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ucanr-radicchio-500", "umn-lettuce-endive-radicchio-500"]
@@ -125,11 +132,18 @@
         "sourceIds": ["ucanr-radicchio-500", "umn-lettuce-endive-radicchio-500"]
       },
       "harvest": {
-        "short": "Harvest heads or leaves according to the selected type",
-        "guidance": "The cited sources describe radicchio as a salad crop and report a longer crop period than lettuce in the Salinas region. Exact harvest stage varies by type and local conditions; no cultivar-specific schedule is inferred.",
+        "short": "Harvest the head or leaves when useful size is reached; timing varies by type",
+        "guidance": "University of Minnesota Extension describes radicchio as forming dense, bitter heads and gives about 60–70 days to maturity in its Minnesota home-garden guidance. Head form and harvest stage vary among radicchio types and climates, so this is a regional crop-level estimate, not a cultivar-specific guarantee. Leaves can also be harvested as a salad green.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["ucanr-radicchio-500"]
+        "sourceIds": ["ucanr-radicchio-500", "umn-lettuce-endive-radicchio-500"]
+      },
+      "maintenance": {
+        "short": "Keep the shallow root zone moist and weed with shallow cultivation",
+        "guidance": "University of Minnesota Extension notes that chicories use shallow horizontal roots for much of their water and nutrients. It recommends keeping soil moist, watering leafy crops before harvest for crispness, and using frequent shallow cultivation or mulch to manage weeds without injuring plants. These are regional soil-garden practices, not an indoor-system schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
       },
       "problems": {
         "short": "Heat stress can interfere with head quality",
@@ -201,6 +215,13 @@
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ufifas-jicama-500", "tamu-jicama-500"]
+      },
+      "maintenance": {
+        "short": "Reserve generous space for the long vine; support and pruning rules are not established",
+        "guidance": "UF/IFAS says jicama vines can reach about 20 feet and need plenty of room. As a Garden adaptation, keep the vine from crowding neighboring crops by allocating ample outdoor space; the source does not specify a trellis, tying method or pruning schedule, so none is prescribed here.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["ufifas-jicama-500"]
       },
       "growth": {
         "short": "Climbing vine produces an edible storage root",
@@ -291,11 +312,25 @@
         "sourceIds": ["uwisc-scarlet-runner-bean-500"]
       },
       "growth": {
-        "short": "Twining vine; seed-grown seedlings retain cotyledons below ground",
-        "guidance": "Wisconsin Extension notes the runner bean's hypogeal germination, with cotyledons remaining below ground, and documents a climbing habit. Do not mistake the absent exposed cotyledons for failed emergence when the seedling is otherwise developing.",
+        "short": "Vigorous twining vine; Minnesota home-garden guidance reports vines up to 10 ft",
+        "guidance": "Wisconsin Extension describes vigorous twining growth, and University of Minnesota Extension reports runner-bean vines up to 10 ft in its home-garden context. This is not a named-cultivar size guarantee; no single mature footprint is assigned to the unspecified seed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["uwisc-scarlet-runner-bean-500", "umn-beans-home-gardens-wave25"]
+      },
+      "flowering": {
+        "short": "Abundant red, pink, or bicolor flowers have ornamental value",
+        "guidance": "University of Minnesota Extension describes abundant red, pink, or bicolor blooms on scarlet runner beans and notes their ornamental value and appeal to hummingbirds. This is species-level crop guidance, not a guarantee for an unspecified seed lot or a named flower-color cultivar.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uwisc-scarlet-runner-bean-500"]
+        "sourceIds": ["umn-beans-home-gardens-wave25"]
+      },
+      "flowering": {
+        "short": "Abundant red, pink, or bicolor flowers have ornamental value",
+        "guidance": "University of Minnesota Extension describes abundant red, pink, or bicolor blooms on scarlet runner beans and notes their ornamental value and appeal to hummingbirds. The profile represents the species, not a named flower-color cultivar; these color options are not a guarantee for an unspecified seed lot.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-beans-home-gardens-wave25"]
       },
       "harvest": {
         "short": "Pods may be used young or allowed to mature for dry seed",
@@ -376,6 +411,20 @@
         "confidence": "medium",
         "sourceIds": ["iastate-beans-chickpea-500"]
       },
+      "flowering": {
+        "short": "Flower colors vary by chickpea variety",
+        "guidance": "UW–Madison Extension describes chickpea flowers as self-pollinated and borne in groups of two or three; colors may be purple, white, pink, or blue depending on variety. This species-level identity does not select a flower color or kabuli/desi type. The cited Upper Midwest crop guide also warns that hot, dry conditions during flowering can increase flower and pod abortion.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-chickpea-500"]
+      },
+      "flowering": {
+        "short": "Flower colors vary by chickpea variety",
+        "guidance": "UW–Madison Extension describes chickpea flowers as self-pollinated and borne in groups of two or three; colors may be purple, white, pink, or blue depending on variety. This species-level identity does not select a flower color or kabuli/desi type. The cited Upper Midwest crop guide also warns that hot, dry conditions during flowering can increase flower and pod abortion.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwisc-chickpea-500"]
+      },
       "harvest": {
         "short": "Harvest immature pods or mature dry seed according to intended use",
         "guidance": "Kew records chickpea as a food crop, and Iowa State Extension describes mature pods drying and splitting near harvest. No fixed harvest date is assigned because region, cultivar, and use stage vary.",
@@ -442,32 +491,32 @@
         "sourceIds": ["kew-vicia-lens-500", "uwisc-lentil-500"]
       },
       "cultivation": {
-        "short": "Cool-season pulse; field moisture and disease guidance is regional",
-        "guidance": "UW-Madison Extension describes lentil as adapted to cool conditions and advises field growers on seed inoculation and establishment. Its field disease and equipment recommendations should not be converted into a home indoor growing recipe.",
+        "short": "Cool-season pulse; avoid excess water and keep garden spacing distinct from pod spacing",
+        "guidance": "Montana State University Extension's home-garden guide describes lentils as a cool-season crop, recommends thinning established plants to about 4–6 inches apart in garden soil, allows trellising if desired, and warns that excessive watering can kill plants. It advises stopping irrigation as pods begin to dry. These are home-garden/soil recommendations in Montana context, not indoor or hydroponic instructions. UW-Madison's field-crop guidance is retained for regional crop context only; its inoculation, disease and machinery recommendations are not converted into a household recipe.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["uwisc-lentil-500"]
+        "sourceIds": ["msu-lentils-home-garden-2026", "uwisc-lentil-500"]
       },
       "growth": {
-        "short": "Annual pulse with small pods containing one or two seeds",
-        "guidance": "USDA NRCS describes lentil seed and pod characteristics and distinguishes large-seeded macrosperma from small-seeded microsperma classes. This identity does not select either market class.",
+        "short": "Slender, semi-erect annual; short pods usually contain one or two seeds",
+        "guidance": "UW-Madison describes lentil as a slender, semi-erect annual, commonly 12–20 inches tall under field conditions, with height affected by season, moisture and fertility. Flowers progress from lower branches upward; each flower forms a short pod with one or two seeds, and weak stems may lodge at maturity. USDA NRCS distinguishes macrosperma and microsperma seed classes, but this identity selects neither. The field height is context, not a home-system dimension.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["usda-nrcs-lentil-500"]
+        "sourceIds": ["uwisc-lentil-500", "usda-nrcs-lentil-500"]
       },
       "harvest": {
-        "short": "Harvest dry seed after pods mature",
-        "guidance": "The selected sources describe lentil as a pulse grown for seed, but do not provide a home-garden harvest protocol for an unspecified class. Harvest timing and method remain unresolved rather than borrowed from field machinery guidance.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": ["uwisc-lentil-500"]
+        "short": "Choose tender green pods or wait for dry seed; watch for shattering",
+        "guidance": "Montana State University Extension says green pods can be harvested and eaten like shell peas; for dry lentils it gives an approximate 80–100-day maturity context and says to harvest when pods are completely dry, then remove the seeds for storage. Treat the day range as a regional estimate, not a promise for every seed class or location. UW-Madison reports that lower pods mature first and dry pods can shatter, so inspect pod color and dryness rather than waiting for a single calendar date. Field swathing instructions are not household harvest directions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["msu-lentils-home-garden-2026", "uwisc-lentil-500"]
       },
       "problems": {
-        "short": "Avoid unsupported home-crop disease prescriptions",
-        "guidance": "UW-Madison discusses disease concerns under field production conditions. This profile does not assign disease resistance or translate field fungicide/inoculation advice into a home recommendation.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": ["uwisc-lentil-500"]
+        "short": "Too much water, lodging and dry-pod shattering are useful watch points",
+        "guidance": "Montana State University Extension warns that excessive watering can kill lentil plants and advises stopping irrigation as pods begin drying. UW-Madison describes weak stems that may lodge and pods that can shatter as they mature. These are crop-level risks, with the shattering/lodging notes drawn from field production; they do not establish a disease diagnosis, resistance claim, or treatment recommendation for a home plant.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["msu-lentils-home-garden-2026", "uwisc-lentil-500"]
       }
     },
     "compatibilityProfile": {
@@ -491,8 +540,9 @@
         }
       },
       "spacing": {
-        "status": "unknown",
-        "reason": "Commercial field seeding does not establish indoor pod spacing."
+        "status": "known",
+        "value": [{"minCm": 10.16, "maxCm": 15.24, "context": "in_ground", "spacingType": "between_plants"}],
+        "evidence": [{"sourceIds": ["msu-lentils-home-garden-2026"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Vicia lens"}, "note": "Montana State University Extension's home-garden guide recommends thinning to 4–6 inches between plants; converted to 10.16–15.24 cm and kept strictly as in-ground spacing, not pod spacing."}]
       },
       "light": {
         "status": "unknown",

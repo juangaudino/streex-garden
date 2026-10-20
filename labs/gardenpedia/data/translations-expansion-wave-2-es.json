@@ -1,84 +1,74 @@
 {
   "mizuna": {
-    "summary": "Identidad base de Wave 2 para Mizuna. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La mizuna forma una roseta densa de tallos crujientes y hojas dentadas. Es una hoja de temporada fresca que se cosecha como hoja pequeña o con mayor desarrollo; algunas variedades y métodos de producción permiten cortes repetidos, pero el rebrote no está garantizado en todo cultivo doméstico.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo mizuna dentro de Brassica rapa; varían los nombres infraespecíficos",
+        "guidance": "Kew acepta Brassica rapa y trata B. rapa var. nipposinica y subsp. nipposinica como sinónimos. USDA GRIN registra B. rapa subsp. nipposinica y cita el grupo cultivado Mizuna. Penn State usa el nombre var. nipposinica; Oregon State sitúa la mizuna dentro de B. rapa, aunque el pie de una figura dice B. juncea. Por eso la ficha usa B. rapa para el tipo mizuna, conserva los nombres infraespecíficos como contexto nomenclatural y no afirma un cultivar con nombre."
       },
+      "growth": {"short":"Roseta densa, tallos crujientes y hojas muy dentadas","guidance":"Penn State describe tallos largos, finos y crujientes, con hojas muy dentadas dispuestas en roseta. Oregon State describe plantas densas y un sabor ligeramente picante. Son rasgos del tipo mizuna, no dimensiones ni rendimiento de un cultivar concreto."},
+      "cultivation": {"short":"Cultivo de temporada fresca; tolera sombra parcial","guidance":"Penn State recomienda suelo bien drenado y rico en materia orgánica. La mizuna tolera sombra parcial, pero crece mejor a pleno sol (al menos seis horas exteriores según esa guía), tolera heladas ligeras y tarda en espigarse. Sugiere riego suplementario cuando la lluvia no basta. Estas recomendaciones exteriores no determinan iluminación interior ni compatibilidad hidropónica."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Elige entre cosechar la planta entera o cortar para rebrote",
+        "guidance": "Para producción de hojas pequeñas, Johnny's recomienda cortar por encima de la corona basal; Penn State también describe cortar la planta cerca del suelo para una sola cosecha. Son objetivos distintos; el calendario comercial no garantiza el resultado en casa o en interior."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha como hoja pequeña o a tamaño completo",
+        "guidance": "Penn State describe la cosecha desde hojas pequeñas hasta la madurez: se puede cortar la planta cerca del suelo o dejar al menos unas 2 pulgadas para favorecer el rebrote. La guía comercial de Johnny's cita hojas de 3–6 pulgadas y cortes repetidos aproximadamente 5–14 días después, según variedad y temporada; no es un calendario doméstico garantizado. Hojas y tallos son comestibles; las hojas tiernas sirven para ensalada y la verdura cocida para salteados, sopas y guisos."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "El fresco retrasa el espigado; vigila daños de alticinos",
+        "guidance": "Penn State describe la mizuna como tolerante a heladas ligeras y lenta para espigarse. Oregon State señala que los alticinos pueden dejar pequeños agujeros en hojas de brassicas y que una cubierta flotante puede proteger el establecimiento. Es orientación regional para el grupo, no prueba de susceptibilidad o resistencia propia de mizuna."
       },
       "hydroponics": {
-        "short": "Compatibilidad hidropónica pendiente",
-        "guidance": "La evidencia específica para esta identidad sigue pendiente. No copies objetivos de otra especie o cultivar."
+      "short": "Un estudio DWC controlado probó la selección nombrada 'Red Hybrid'",
+      "guidance": "Un estudio de 2025 de investigadores de la Universidad de Tennessee y NASA cultivó la selección nombrada 'Red Hybrid' en un entorno controlado con una fase breve en cultivo de agua profunda (DWC). Es evidencia para ese cultivar en ese experimento, no para todos los tipos de mizuna ni para un aparato Garden. La luz, EC, pH y nutrientes experimentales no son recomendaciones domésticas; la aptitud hidropónica de este tipo general del catálogo sigue siendo desconocida."
       }
     }
   },
   "tatsoi": {
-    "summary": "Identidad base de Wave 2 para Tatsoi. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El tatsoi es el tipo de roseta baja de Brassica rapa, con hojas gruesas, verde oscuro y en forma de cuchara, de sabor suave. Puede cultivarse para hojas pequeñas o como roseta madura; la guía citada de temporada fresca es regional y no establece aptitud para interiores o hidroponía.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de roseta baja dentro de Brassica rapa",
+        "guidance": "Oregon State sitúa el tatsoi en el grupo B. rapa Narinosa y lo distingue de mizuna y otras hojas de mostaza. Esta ficha representa el tipo tatsoi, no un cultivar con nombre."
       },
+      "growth": {"short":"Roseta baja y plana con hojas gruesas en forma de cuchara","guidance":"Oregon State describe el tatsoi como una roseta baja y plana de hojas gruesas, oscuras y con forma de cuchara, de sabor suave y uso común en la cocina de Asia oriental. Esta descripción no fija una dimensión madura única para todas las selecciones."},
+      "cultivation": {"short":"Hoja brassica incluida en referencias regionales de temporada fresca","guidance":"Oregon State incluye el tatsoi entre las hojas de invierno para el oeste de Oregón y Washington, y aconseja seguir las indicaciones del proveedor para cada variedad. Es contexto regional de campo/túnel alto, no calendario doméstico universal, nivel de luz interior ni prueba de aptitud hidropónica."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "El corte de hoja pequeña puede permitir el rebrote",
+        "guidance": "Para producción de hojas pequeñas, Johnny's recomienda cortar por encima de la corona basal; la ventana y el intervalo entre cortes dependen de la variedad y la temporada. Esto describe cosecha baby-leaf, no una instrucción universal para una roseta madura de tatsoi."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Puede cosecharse como hoja pequeña o roseta madura",
+        "guidance": "La guía baby-leaf de Johnny's incluye tatsoi entre las brassicas que se cosechan con hojas de unas 3–6 pulgadas; cortar por encima de la corona basal permite posibles cortes repetidos, cuyo momento depende de variedad y temporada. Oregon State describe la forma madura como una roseta baja, pero no da un tamaño ni calendario doméstico universal."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
-      },
-      "hydroponics": {
-        "short": "Compatibilidad hidropónica pendiente",
-        "guidance": "La evidencia específica para esta identidad sigue pendiente. No copies objetivos de otra especie o cultivar."
+        "short": "Vigila agujeros de alimentación en hojas de brassicas",
+        "guidance": "Oregon State describe daños de alticinos como pequeños agujeros en hojas de brassicas y señala que una cubierta flotante puede proteger el establecimiento. Es orientación para el grupo en un contexto regional, no evidencia de resistencia propia del tatsoi ni diagnóstico de cada hoja dañada."
       }
     }
   },
   "mustard-greens": {
-    "summary": "Identidad base de Wave 2 para Hojas de mostaza. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Esta identidad representa las hojas de mostaza Brassica juncea, no todas las plantas vendidas bajo ese nombre común variable. La forma de las hojas y el picor cambian entre tipos; las hojas jóvenes se cosechan tiernas y la época de cultivo fresco depende de la región. UF/IFAS documenta adaptabilidad del cultivo a varios sistemas hidropónicos, pero no compatibilidad con una unidad Garden o cultivar específico.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Grupo variable; esta identidad representa Brassica juncea",
+        "guidance": "Oregon State advierte que el nombre común hojas de mostaza abarca distintas especies, subespecies e híbridos y que existe confusión entre nombres. Esta identidad de Garden conserva Brassica juncea y el tipo general de mostaza registrado en su taxonomía; no representa todas las plantas comercializadas con ese nombre ni un cultivar específico."
       },
+      "growth": {"short":"La forma de la hoja y el picor cambian entre tipos","guidance":"Oregon State describe B. juncea desde formas más picantes hasta plantas cultivadas por sus pecíolos anchos o engrosados y tallos florales tiernos. La diversidad corresponde al grupo: esta ficha no asigna una forma de hoja, cultivar o intensidad de sabor que no estén identificados."},
+      "cultivation": {"short":"Hoja de temporada fresca; la época exterior depende de la región","guidance":"UMN Extension incluye hojas de mostaza entre los cultivos de temporada fresca para el jardín de otoño y señala tolerancia a heladas ligeras en su contexto de Minnesota. Oregon State trata el grupo como diverso y recomienda consultar las indicaciones de cada proveedor. Estas fuentes exteriores no establecen iluminación interior; consulta abajo la evidencia hidropónica de UF/IFAS, con su alcance específico."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Para baby-leaf, corta por encima de la corona basal si buscas rebrote",
+        "guidance": "La guía de Johnny's incluye mostaza baby entre las brassicas aptas para cosecha de corte y rebrote y recomienda cortar por encima de la corona basal. Es un método de producción de hoja pequeña, no una regla universal de poda para todos los tipos maduros de mostaza."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Las hojas jóvenes pueden cosecharse antes del tamaño completo",
+        "guidance": "UMN Extension señala que las hojas pequeñas de mostaza son más tiernas y sabrosas que las maduras, y sugiere siembras sucesivas cada pocas semanas para mantener el suministro. Para baby-leaf, Johnny's describe cortes con hojas de unas 3–6 pulgadas por encima de la corona basal; el rebrote varía según variedad y temporada. Son referencias del cultivo, no una fecha fija de madurez para un cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Vigila agujeros de alticinos en hojas de brassicas",
+        "guidance": "Oregon State describe el daño de alticinos como pequeños agujeros en el follaje de brassicas y señala que una cubierta flotante puede proteger las plantas durante el establecimiento. Johnny's también enumera alticinos y orugas de la col para brassicas baby-leaf comerciales. Son riesgos del grupo; aquí no se establece resistencia ni susceptibilidad específica de esta identidad."
       },
       "hydroponics": {
         "short": "Compatibilidad hidropónica pendiente",
@@ -87,48 +77,63 @@
     }
   },
   "collard-greens": {
-    "summary": "Identidad base de Wave 2 para Col berza. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La col berza es un cultivo de hojas de Brassica oleracea que no forma una cabeza compacta. Se cosechan hojas individuales o la planta completa; no se afirman dimensiones ni rendimiento de un cultivar sin especificar.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "guidance": "La col berza es un tipo de Brassica oleracea de hojas, sin formación de cabeza. Las fuentes seleccionadas respaldan cosecha y contexto general del cultivo, pero no se afirma un cultivar, tamaño maduro ni desempeño varietal específico."
       },
+      "growth": {"short":"Hojas grandes comestibles; no forma una cabeza compacta","guidance":"Utah State University Extension trata las berzas junto a otras hojas de brassica cosechadas como hojas o planta entera, no como cultivo de cabeza. UF/IFAS informa tallos de casi 3 pies en promedio al madurar, que a veces alcanzan 6 pies con el tiempo; son referencias amplias del cultivo, no dimensiones de un cultivar ni de un sistema compacto. El rendimiento foliar aún depende de la selección y las condiciones."},
+      "cultivation": {"short":"Guía de cultivo exterior; existe producción hidropónica, pero no todo sistema sirve","guidance":"La guía de USU se refiere a producción exterior de berzas y otras brassicas. UF/IFAS documenta berzas en canales hidropónicos exteriores, pero advierte que el crecimiento robusto puede no adaptarse a todos los sistemas. Estas fuentes no convierten la exposición exterior en un nivel de luz artificial ni establecen configuración para un aparato Garden."},
+      "care": {"short":"Cosecha hojas mayores conservando crecimiento joven activo","guidance":"USU informa que retirar individualmente hojas mayores puede permitir que la planta continúe creciendo. Es una práctica de cosecha a nivel de cultivo exterior; no garantiza un número fijo de cortes en casa o en interior."},
       "pruning": {
         "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "guidance": "Las fuentes seleccionadas no establecen una poda de formación para este tipo de berza no especificado. Retira hojas mayores como cosecha y tejido dañado cuando sea necesario; no se infiere un calendario de poda para contenedor o hidroponía."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas tiernas o corta la planta completa",
+        "guidance": "USU describe la cosecha manual de berzas: se puede cortar la planta por la base o retirar hojas mayores individualmente para permitir que siga creciendo. La etapa depende del uso; el calendario comercial de la fuente no se atribuye a esta identidad."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Plagas y enfermedades específicas aún no verificadas",
+        "guidance": "Las fuentes seleccionadas no ofrecen un perfil específico de plagas o enfermedades de la berza. Se deja sin resolver en vez de copiar diagnósticos genéricos de brassicas; identifica síntomas y consulta una fuente local antes de tratar."
       },
       "thinning": {
         "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "guidance": "USU publica espaciamiento en hileras para berzas de campo, pero no una recomendación de pods de Garden. No infieras una regla de una planta por pod sin una fuente para el sistema concreto."
+      },
+      "hydroponics": {
+        "short": "Se han cultivado berzas en hidroponía, pero su porte limita el sistema",
+        "guidance": "UF/IFAS muestra berza Flash en un sistema hidropónico exterior y advierte que no todos los sistemas son adecuados; puede ser necesario entutorar y retirar hojas muertas para manejar tallos y follaje. Es evidencia a nivel de cultivo para algunos sistemas, no garantía para aparatos compactos, una regla de número de pods ni una receta nutritiva."
       }
     }
   },
   "red-cabbage": {
-    "summary": "Identidad base de Wave 2 para Col lombarda. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Identidad de col roja dentro de Brassica oleracea. La guía disponible respalda la formación de cabeza en clima fresco, humedad estable, cosecha a tamaño útil y problemas comunes de calidad, pero no un cultivar ni un desempeño de color específico.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Col roja de Brassica oleracea; tipo, no cultivar identificado",
+        "guidance": "La ficha representa un tipo de col roja dentro de Brassica oleracea. La fuente de cultivo es general para la col y no identifica cultivar ni demuestra intensidad de color o tamaño propios de esta identidad."
+      },
+      "growth": {
+        "short": "Col que forma cabeza; no hay dimensiones específicas de cultivar",
+        "guidance": "UMN Extension describe cabezas formadas por hojas superpuestas y señala que la forma varía. La fuente no establece tamaño de cabeza, intensidad del color ni cultivar para esta identidad."
+      },
+      "cultivation": {
+        "short": "Cultivo de estación fresca; humedad estable favorece cabezas firmes",
+        "guidance": "La col crece mejor con clima fresco. UMN describe suelo fértil, bien drenado y con retención de humedad, además de aporte estable de agua y nutrientes; su pH, calendario y manejo de campo son regionales, no una receta para interior o hidroponía."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Protege el punto central de crecimiento mientras la planta es joven",
+        "guidance": "UMN Extension advierte que dañar el punto central de crecimiento en una col pequeña puede impedir la formación de cabeza. Evita lesionarlo al manipular o cuidar la planta; la fuente no indica poda rutinaria."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta una cabeza firme cuando alcance un tamaño útil",
+        "guidance": "UMN Extension recomienda cosechar la col cuando la cabeza alcance un tamaño útil, cortando por encima de las hojas exteriores. Las cabezas maduras pueden agrietarse, sobre todo tras lluvias fuertes; evalúa la cabeza y el clima local en lugar de esperar una fecha fija."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "La humedad irregular, el agrietamiento y las lesiones pueden afectar la calidad",
+        "guidance": "UMN Extension relaciona el riego inconsistente con textura deficiente y señala que las cabezas maduras pueden agrietarse después de lluvias intensas. Una lesión temprana del punto central puede impedir que se forme la cabeza. Son riesgos del cultivo, no diagnósticos ni susceptibilidad propia de un cultivar."
       }
     }
   },
@@ -191,94 +196,134 @@
     }
   },
   "patio-tomato": {
-    "summary": "Identidad base de Wave 2 para Tomate de patio. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Tomate de patio describe formas enanas o semienanas seleccionadas por su porte bajo y ordenado, que pueden servir para macetas. Es una etiqueta de crecimiento, no un cultivar único: el tamaño, hábito determinado/indeterminado, soporte y poda dependen de la variedad nombrada.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tomate de patio es un tipo enano/semienano, no un cultivar único",
+        "guidance": "Johnny's describe los tomates patio como plantas enanas o semienanas, de porte ordenado y estatura baja, generalmente aptas para cultivo en maceta. El catálogo conserva este tipo hortícola de Solanum lycopersicum sin asignar un cultivar ni dimensiones maduras exactas."
+      },
+      "growth": {
+        "short": "Porte bajo y ordenado; el tamaño varía por variedad nombrada",
+        "guidance": "La etiqueta patio/enano señala un crecimiento menor y más ordenado que el de tomates trepadores de tamaño completo, pero Johnny's indica que los tipos enanos pueden ser determinados o indeterminados. Esta ficha no fija altura o extensión universal; usa las dimensiones de la variedad de semilla exacta cuando estén disponibles."
+      },
+      "cultivation": {
+        "short": "La maceta puede servir, pero debe elegirse para la variedad concreta",
+        "guidance": "Johnny's señala que los tomates patio/enanos suelen ser adecuados para maceta. Para cultivo exterior también aplica la guía general de UMN: calor, sol pleno y una temporada larga sin heladas. La fuente del tipo no especifica tamaño universal de maceta, luz interior ni compatibilidad hidropónica."
+      },
+      "care": {
+        "short": "La humedad de la maceta requiere atención, pero el tipo no tiene intervalo fijo de riego",
+        "guidance": "Iowa State indica que los tomates en maceta pueden secarse rápido y recomienda regar a fondo en un medio con buen drenaje, sin dejar que se seque por completo ni que permanezca anegado. Es guía general de tomate en recipiente, no tamaño, volumen, calendario o instrucción de depósito hidropónico universal para todas las variedades de patio."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No infieras soporte o poda solo por la etiqueta ‘patio’",
+        "guidance": "Las formas enanas pueden ser determinadas o indeterminadas. Consulta la variedad exacta: las determinadas suelen requerir poca poda, mientras que una enana indeterminada puede necesitar soporte y formación selectiva. Esta identidad de tipo no fija un calendario de poda ni garantiza que todas las plantas se sostengan solas."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "El calendario y las señales de cosecha dependen de la variedad nombrada",
+        "guidance": "La etiqueta patio no define un tamaño, color ni días a madurez únicos. UMN recomienda cosechar cuando el fruto alcance tamaño y color aprovechables; consulta la descripción de la variedad elegida para su color maduro y tiempo estimado."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila la humedad en maceta y diagnostica los trastornos antes de intervenir",
+        "guidance": "UMN relaciona las grietas y la pudrición apical con humedad irregular del suelo durante el crecimiento del fruto. Es guía general de tomate; las fuentes del tipo patio no demuestran mayor riesgo de trastornos en maceta ni en una variedad específica. Revisa el sustrato y los síntomas visibles antes de cambiar el manejo."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El movimiento de la flor ayuda al cuajado; el calor sostenido puede causar caída floral",
+        "guidance": "A nivel del cultivo, UMN Extension explica que las partes reproductivas de la flor del tomate están próximas y que el movimiento floral puede transferir polen; el tomate puede producir fruto sin polinización por abejas. Como ejemplo específico de Minnesota, UMN indica que días sostenidos por encima de 85 °F y noches por encima de 70 °F pueden estresar las flores y dificultar el cuajado; después, pueden caer. Tómalo como contexto diagnóstico regional, no como rasgo de todas las variedades patio ni como consigna de temperatura interior."
       }
     }
   },
   "sun-gold-tomato": {
-    "summary": "Identidad base de Wave 2 para Tomate Sun Gold. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Sun Gold F1 es un tomate cherry indeterminado de fruto naranja mandarina y muy dulce. Johnny's indica unos 57 días desde el trasplante y señala que tiende a agrietarse; por eso se aprovecha mejor fresco que para envío.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Sun Gold F1 es un cultivar nombrado de cherry naranja e indeterminado",
+        "guidance": "Johnny's identifica Sun Gold como un F1 de Solanum lycopersicum con crecimiento indeterminado. Su descripción de proveedor especifica frutos cherry naranja brillante; estos rasgos corresponden a Sun Gold, no a todos los tomates o cherry."
+      },
+      "growth": {
+        "short": "Vigorosa enredadera de temporada larga con frutos de 15–20 g",
+        "guidance": "Johnny's describe plantas vigorosas que comienzan a producir temprano y continúan durante la temporada, con frutos naranja mandarina de unos 15–20 g. Son características del producto del proveedor; aquí no se establecen dimensiones maduras de la planta."
       },
       "cultivation": {
-        "short": "Da al tomate establecido calor y sol pleno",
-        "guidance": "UMN Extension describe el tomate como planta amante del calor que requiere sol pleno y una temporada larga sin heladas. Son condiciones de cultivo al aire libre, no un umbral específico de Sun Gold, objetivo de luz interior ni receta hidropónica."
+        "short": "Calor, sol pleno y temporada exterior sin heladas",
+        "guidance": "UMN Extension describe el tomate como amante del calor y del sol pleno, y dependiente de una temporada larga sin heladas. Es guía de cultivo exterior, no un umbral de temperatura para Sun Gold, una meta de luz interior ni una receta hidropónica."
       },
       "care": {
-        "short": "Mantén la humedad uniforme y dirige el riego al suelo",
-        "guidance": "UMN Extension señala que la humedad constante favorece la calidad del fruto y que el riego por aspersión deja el follaje más propenso a enfermedades. Aplica esto a tomates de jardín; no establece un volumen específico ni un intervalo de depósito para Sun Gold."
+        "short": "La humedad uniforme del suelo ayuda a cuidar la calidad del fruto",
+        "guidance": "UMN Extension relaciona la humedad constante del suelo con la calidad del tomate y desaconseja mojar el follaje por aspersión porque puede favorecer enfermedades. Es orientación para cultivo en suelo, no un volumen de agua o intervalo de depósito específico para Sun Gold."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Sujeta la enredadera continua; no la manejes como tomate de mata",
+        "guidance": "Como tomate indeterminado, Sun Gold continúa creciendo y fructificando durante un periodo prolongado. Johnny's recomienda estacar, entutorar o enjaular los tomates indeterminados; su guía general plantea el despunte selectivo de chupones como opción, no como obligación de quitar todos los brotes. Instala el soporte antes de que sea difícil manejar la enredadera."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Recoge frutos con color completo; 57 días es una estimación del proveedor",
+        "guidance": "Johnny's indica 57 días hasta madurez desde el trasplante para su producto Sun Gold y describe una producción temprana y prolongada. Usa el color naranja intenso y la condición del fruto como señales; el plazo varía con la edad del trasplante, el clima y el cultivo y no cuenta desde la siembra."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El agrietamiento del fruto es una limitación conocida de Sun Gold",
+        "guidance": "Johnny's señala que Sun Gold tiende a agrietarse y no es adecuado para envío. UMN Extension explica que las grietas en tomates se asocian al crecimiento rápido y a cambios de humedad del suelo, por ejemplo después de sequía seguida de lluvia o riego abundante. Procura humedad más uniforme en suelo; no diagnostiques todo agrietamiento como enfermedad ni traslades esta guía a un calendario de depósito."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Floración y cuajado continúan en la enredadera indeterminada",
+        "guidance": "Johnny's describe Sun Gold como productivo a lo largo de la temporada. Registra flores, cuajado, racimos en maduración y frutos agrietados como observaciones distintas; una pausa temporal del cuajado puede responder a las condiciones y no debe llamarse enfermedad sin diagnóstico."
+      },
+      "uses": {
+        "short": "Cherry para consumo fresco",
+        "guidance": "Johnny's describe Sun Gold como una opción de mercado fresco porque los frutos maduros tienden a agrietarse y no se envían bien. Su sabor dulce y afrutado favorece el consumo fresco; no se infiere una vida útil o duración de almacenamiento universal."
       }
     }
   },
   "supersweet-100-tomato": {
-    "summary": "Identidad base de Wave 2 para Tomate Supersweet 100. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Supersweet 100 F1 es un tomate cherry rojo indeterminado que produce frutos de 15–20 g en racimos grandes. Johnny's estima unos 60 días desde el trasplante y registra resistencia a la marchitez por Fusarium raza 1 y Verticillium para su producto nombrado.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Supersweet 100 es un tomate cherry F1 nombrado",
+        "guidance": "Johnny's identifica Supersweet 100 como un F1 de Solanum lycopersicum. Los rasgos de fruto, madurez y resistencia que siguen se limitan al producto nombrado del proveedor; no son características genéricas de todos los cherry."
+      },
+      "growth": {
+        "short": "Enredadera indeterminada con frutos rojos en racimos grandes",
+        "guidance": "Johnny's describe un cherry vigoroso y productivo, con racimos de frutos rojos de unos 15–20 g. Es indeterminado, así que continúa creciendo y formando frutos por un periodo prolongado; la fuente no aporta una altura o extensión madura medida."
+      },
+      "cultivation": {
+        "short": "Calor, sol pleno y temporada sin heladas",
+        "guidance": "UMN Extension describe el tomate como amante del calor y dependiente de sol pleno y una temporada larga sin heladas. Son condiciones generales de cultivo exterior, no un umbral térmico para Supersweet 100, una meta de luz interior ni una receta hidropónica."
+      },
+      "care": {
+        "short": "Procura humedad del suelo más estable mientras crecen los frutos",
+        "guidance": "UMN Extension relaciona las fluctuaciones de humedad durante el crecimiento con problemas como grietas y pudrición apical, y recomienda regar el suelo, no el follaje. Son prácticas de huerto en suelo, no un volumen de agua o calendario de depósito para este cultivar."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Sujeta la enredadera y poda selectivamente, no por una regla fija",
+        "guidance": "Johnny's identifica este cultivar como indeterminado. Su guía recomienda entutorar, enjaular o sujetar tomates trepadores y describe como posible manejo quitar chupones bajos debajo de la primera rama fuerte. Esta ficha no prescribe poda intensiva: conserva follaje sano para sostener los frutos y adapta el manejo al porte real."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Recoge los racimos conforme maduran; 60 días es una referencia desde trasplante",
+        "guidance": "Johnny's estima unos 60 días desde el trasplante y señala que los frutos maduran gradualmente desde el extremo de la flor y a lo largo del racimo. Recoge según el grado de madurez deseado; los días varían con el cultivo y no cuentan desde la siembra."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "La resistencia publicada corresponde al producto y no es inmunidad",
+        "guidance": "Johnny's lista resistencia alta a la marchitez por Fusarium raza 1 y a Verticillium para su producto de semilla Supersweet 100 F1. Resistencia no significa que la planta no pueda enfermarse ni cubre otros patógenos. Ante síntomas, identifica el problema antes de tratarlo; UMN advierte que trastornos y enfermedades del tomate pueden parecerse."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Observa el cuajado por racimos a lo largo de una cosecha extensa",
+        "guidance": "Como Supersweet 100 es indeterminado y produce racimos grandes, sigue cada racimo desde la floración hasta el cuajado y la madurez en vez de esperar una sola cosecha sincronizada. Registra la caída de flores aparte de síntomas de enfermedad; sin observación, las fuentes no permiten atribuir una causa única."
+      },
+      "uses": {
+        "short": "Cherry rojo y dulce para comer fresco",
+        "guidance": "Johnny's describe Supersweet 100 como un cherry rojo clásico, dulce y de alto rendimiento, con frutos en racimos. Esto respalda su uso como snack fresco, no que sea la mejor opción para toda receta o forma de almacenamiento."
       }
     }
   },
   "celebrity-tomato": {
-    "summary": "Identidad base de Wave 2 para Tomate Celebrity. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Celebrity es un tomate para rebanar de crecimiento semideterminado: University of Florida IFAS sitúa el cultivar entre la mata y la enredadera, mientras Delaware Extension describe frutos rojos globosos de unos 200–225 g. Esos rasgos y calendarios regionales no son garantías universales.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Celebrity es un cultivar nombrado de Solanum lycopersicum",
+        "guidance": "University of Florida IFAS identifica Celebrity como cultivar semideterminado de tomate. La palabra ‘tipo’ del catálogo no implica que todas las líneas llamadas Celebrity o Celebrity Plus compartan rasgos idénticos; las formas nombradas se mantienen diferenciadas."
+      },
+      "growth": {
+        "short": "Porte semideterminado; fruto rojo globoso de 200–225 g en la lista de Delaware",
+        "guidance": "UF/IFAS clasifica Celebrity como semideterminado, entre una mata compacta y una enredadera continua. Delaware Extension lista frutos rojos globosos de unos 200–225 g. Son características descritas por esas fuentes, no una altura madura ni garantía para cualquier región o lote de semilla."
       },
       "cultivation": {
         "short": "Usa un sitio cálido y de sol pleno para el cultivo exterior",
@@ -289,236 +334,258 @@
         "guidance": "UMN Extension relaciona las fluctuaciones de humedad durante el crecimiento del fruto con la pudrición apical y recomienda regar el suelo en lugar del follaje. Son prácticas generales para tomate, no un calendario o tratamiento nutritivo específico de Celebrity."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Observa el porte semideterminado antes de elegir soporte o poda",
+        "guidance": "Celebrity semideterminado queda entre el crecimiento de mata y el trepador. No apliques automáticamente la regla de no soporte de un determinate ni un programa intenso de poda de indeterminados; observa ramas y carga de frutos y sujeta tallos si se vencen. Las fuentes no establecen un calendario fijo de poda."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha cuando el fruto alcance color rojo y tamaño útil para rebanar",
+        "guidance": "Delaware Extension lista Celebrity con frutos de unos 200–225 g y una referencia regional de madurez; UMN recomienda cosechar al llegar a tamaño y color aprovechables. Los días de catálogo son estimaciones locales, no promesas, sobre todo si cambia el clima o la fecha de trasplante."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "UF/IFAS reporta resistencia varietal; los síntomas aún requieren diagnóstico",
+        "guidance": "UF/IFAS reporta rasgos de resistencia para Celebrity, pero resistencia no significa inmunidad ni protege frente a trastornos no relacionados. UMN describe la pudrición apical y las grietas como problemas ligados al desarrollo del fruto y las fluctuaciones de humedad; observa el fruto y el contexto antes de atribuir un síntoma a un patógeno."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "La floración semideterminada puede coincidir con crecimiento vegetativo",
+        "guidance": "Como Celebrity es semideterminado, observa a la vez el crecimiento nuevo, los racimos de flores y la maduración de frutos en vez de asumir una sola tanda sincronizada. Esto explica el porte documentado; las fuentes no especifican un calendario floral exacto."
+      },
+      "uses": {
+        "short": "Fruto rojo globoso descrito para rebanar",
+        "guidance": "Delaware Extension incluye Celebrity entre tomates tipo slicer y describe frutos rojos globosos. Esto respalda su uso práctico en rebanadas; no afirma que ese sea su único uso ni que sea ideal para una receta concreta."
       }
     }
   },
   "mini-bell-pepper": {
-    "summary": "Identidad base de Wave 2 para Pimiento mini dulce. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Mini Bell representa pimientos dulces de fruto pequeño del tipo bell dentro de Capsicum annuum. La forma y el color de madurez están documentados a nivel de tipo, pero esta ficha no representa un cultivar mini nombrado ni dimensiones exactas.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo mini bell dulce; no se especifica cultivar",
+        "guidance": "Esta ficha representa un tipo mini de pimiento dulce con forma bell, no un cultivar nombrado. Iowa State y Oregon State describen los bell como dulces, de pared gruesa y forma lobulada; el color maduro varía según cultivar. No se trasladan aquí rasgos de otros minis nombrados."
       },
+      "cultivation": {"short":"Mantén humedad uniforme y protege los frutos del calor intenso","guidance":"UMN recomienda humedad constante para la calidad del fruto y describe quemadura solar cuando el follaje no protege al pimiento en condiciones cálidas y secas. Es orientación de cultivo exterior general, no un objetivo de riego para contenedor o hidroponía de Mini Bell."},
+      "care": {"short":"Evita el exceso de nitrógeno que retrasa la fructificación","guidance":"UMN advierte que demasiado nitrógeno puede producir plantas frondosas que fructifican tarde. Adaptación Garden: si hay mucho follaje y poco fruto, revisa abonado y condiciones antes de añadir fertilizante; no hay dosis específica para este tipo mini."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Conserva el follaje sano alrededor de los frutos","guidance":"La falta de hojas puede exponer los frutos a quemadura solar. Evita retirar innecesariamente la copa; no hay calendario de poda ni requisito de soporte establecido para este Mini Bell sin cultivar especificado."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Sigue el color y tamaño indicados para el cultivar real","guidance":"Muchos bell pueden cosecharse verdes o dejarse madurar hasta su color varietal. Como esta ficha no identifica un cultivar mini concreto, no establece tamaño, color final ni días de cosecha; corta el fruto si no se desprende con facilidad."
       },
+      "uses": {"short":"Los pimientos bell dulces se consumen frescos o cocinados","guidance":"Iowa State documenta usos frescos y cocinados; Oregon State también menciona cocinar y rellenar pimientos dulces. La ficha no establece sabor ni dimensiones que hagan adecuado para relleno a un cultivar mini concreto."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Busca quemadura solar, podredumbre apical, pulgones y caída floral","guidance":"UMN describe daño pálido por quemadura solar, lesiones hundidas en el extremo floral, colonias de pulgones con hojas rizadas o pegajosas y caída de flores con calor intenso. Son señales generales del cultivo de pimientos, no susceptibilidades o diagnósticos de Mini Bell."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Los extremos de temperatura pueden causar caída floral","guidance":"UMN informa de caída de flores con días y noches cálidos en jardines de Minnesota. Registra clima y cuajado por separado; esto no predice el rendimiento de un cultivar mini desconocido."
       }
     }
   },
   "poblano-pepper": {
-    "summary": "Identidad base de Wave 2 para Pimiento poblano. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El poblano es un tipo de Capsicum annuum de picor suave a moderado, cosechado verde o rojo; seco se conoce como ancho. Esta ficha trata el fruto fresco y distingue esa forma de su presentación culinaria seca.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo poblano de Capsicum annuum; cultivar no especificado","guidance":"Iowa State describe el tipo Ancho/Poblano como grande, de forma blocky, pared fina y picor suave. Oregon State informa formas representativas acorazonadas y usos verde, rojo o seco como ancho. Son rasgos del tipo, no dimensiones garantizadas de un cultivar."
       },
+      "cultivation": {"short":"Mantén humedad radicular constante durante floración y desarrollo del fruto","guidance":"UMN señala que el suelo seco puede debilitar flores y frutos pequeños y recomienda humedad constante. Sus notas de temperatura y riego describen cultivo exterior en Minnesota, no ajustes específicos de interior o hidroponía para poblano."},
+      "care": {"short":"Evita exceso de nitrógeno y conserva la copa sana","guidance":"UMN advierte que demasiado nitrógeno puede retrasar la fructificación y que la falta de follaje expone frutos a quemadura solar. Adaptación Garden: conserva hojas sanas y revisa nutrición y exposición antes de cambiar el manejo; no hay dosis específica para poblano."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Poda selectivamente para no exponer los frutos","guidance":"La falta de follaje puede favorecer quemadura solar en frutos. Conserva la copa sana, retira tejido dañado con criterio y tutoriza solo si la planta observada lo requiere; es guía general para pimientos, no un régimen de poda poblano."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "El fruto se usa verde o rojo; seco se convierte en ancho","guidance":"Oregon State documenta cosecha verde inmadura, roja madura o seca como ancho. Iowa State describe el tipo como suave. Para tamaño y calendario, sigue el cultivar real; las dimensiones de referencia no son universales."
       },
+      "uses": {"short":"Poblano verde o rojo, incluso para chiles rellenos","guidance":"Oregon State menciona usos verdes, rojos y secos como ancho, además de chiles rellenos como preparación común. Iowa State incluye el tipo para consumo fresco. Esta ficha no prescribe un proceso de secado."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa podredumbre apical, quemadura solar, pulgones y caída floral","guidance":"UMN describe lesiones en el extremo del fruto, daño pálido en frutos expuestos, pulgones con hojas rizadas o pegajosas y caída floral por calor. Son señales de pimientos en general, no diagnóstico de poblano; registra síntomas y condiciones."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor puede coincidir con caída de flores","guidance":"UMN señala que días y noches muy cálidos pueden causar caída floral en jardines de Minnesota. Registra pérdida de flores separada del cuajado; no es una predicción específica para poblano."
       }
     }
   },
   "serrano-pepper": {
-    "summary": "Identidad base de Wave 2 para Pimiento serrano. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El serrano es un tipo pequeño, cónico y de pared gruesa de Capsicum annuum, usado fresco o procesado. Oregon State describe frutos de referencia que pasan de verde oscuro a rojo; tamaño y pungencia pueden variar, por lo que no se promete un calendario único.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo serrano dentro de Capsicum annuum",
+        "guidance": "Iowa State describe Serrano como un tipo pequeño, cónico, de pared gruesa y picante, usado fresco o procesado. Oregon State presenta una descripción de referencia con cambio de verde oscuro a rojo; esas dimensiones no se garantizan para cada serrano o cultivar. Este registro no representa una variedad comercial específica."
       },
       "cultivation": {
-        "short": "Mantén estable la humedad del suelo durante el desarrollo del fruto",
-        "guidance": "UMN Extension relaciona la humedad constante del suelo con frutos de mejor calidad y advierte que el suelo seco puede debilitar flores y frutos pequeños. Es orientación de exterior para Capsicum a nivel de cultivo, no un volumen de riego específico para Serrano ni una recomendación hidropónica."
+        "short": "El calor y la humedad radicular estable favorecen el desarrollo",
+        "guidance": "UMN Extension informa que suelo seco, días por encima de 90°F y noches por debajo de 60°F o por encima de 70°F pueden debilitar el crecimiento del pimiento en huertos de Minnesota. Serrano aparece como tipo picante, pero esos valores no son umbrales propios de Serrano. Mantén humedad uniforme y evita mojar el follaje por aspersión; no traslades la guía de campo a un depósito hidropónico."
       },
       "care": {
-        "short": "Riega la zona radicular en vez de mojar repetidamente las hojas",
-        "guidance": "UMN Extension desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades, y señala que regar solo la superficie puede favorecer raíces superficiales. Mantén humedad constante en las raíces; aquí no se establece cantidad ni intervalo para sistemas interiores."
+        "short": "Evita exceso de nitrógeno y conserva cobertura foliar sana",
+        "guidance": "UMN Extension advierte que demasiado nitrógeno puede producir plantas frondosas que fructifican tarde. También describe quemadura de sol cuando el fruto queda poco cubierto por hojas en tiempo caluroso y seco. Adaptación Garden: conserva hojas sanas y evalúa exposición y fertilización antes de intervenir. No hay una dosis específica para Serrano ni una receta para sistemas interiores."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Da forma con moderación y conserva hojas que cubren frutos",
+        "guidance": "UMN Extension identifica riesgo de quemadura de sol cuando los frutos quedan expuestos en tiempo caluroso y seco. Conserva la cobertura foliar sana al dar forma; retira tejido dañado selectivamente y coloca soporte solo cuando la planta observada lo necesite. No se establece una pauta de poda propia del Serrano."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha al tamaño maduro; el color verde no está confirmado aquí para Serrano",
+        "guidance": "UMN Extension recomienda cosechar los pimientos al alcanzar tamaño maduro y señala que muchos tipos sirven verdes o maduros; su ejemplo explícito de cosecha verde es el jalapeño, no el serrano. Para Serrano, sigue la descripción del tipo o del paquete en vez de trasladar ese ejemplo como regla de color. Corta el pedúnculo si no se desprende con facilidad; la cosecha continua favorece nuevas flores y frutos."
+      },
+      "uses": {
+        "short": "Fresco o procesado; el fruto puede pasar de verde a rojo",
+        "guidance": "Iowa State incluye Serrano entre los tipos para uso fresco y procesado. Oregon State describe tipos de referencia que maduran de verde oscuro a rojo. Las fuentes no establecen un color de cosecha, nivel de pungencia o tamaño universal; elige la etapa según el uso y la descripción del tipo concreto."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Distingue trastornos del fruto, daño por sol y señales de pulgones",
+        "guidance": "UMN Extension describe pudrición apical como lesión hundida canela u oscura en el extremo del fruto, quemadura de sol como daño pálido en frutos expuestos, y pulgones como colonias con hojas rizadas o pegajosas. Los días y noches calurosos también pueden coincidir con caída floral. Son señales generales de pimientos, no diagnóstico del serrano; observa síntomas y condiciones antes de tratar."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Relaciona la caída floral con episodios de calor",
+        "guidance": "UMN Extension indica que días y noches calurosos pueden coincidir con caída de flores y menor producción de pimientos en Minnesota. Registra por separado la caída y el cuajado y anota el calor reciente; no es una predicción específica de rendimiento para Serrano."
       }
     }
   },
   "shishito-pepper": {
-    "summary": "Identidad base de Wave 2 para Pimiento shishito. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Shishito es un tipo pequeño de Capsicum annuum de piel fina, generalmente suave y ligeramente dulce; algún fruto puede resultar inesperadamente picante. Se cocina sobre todo verde, aunque también se aprovechan frutos rojos maduros.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo shishito de Capsicum annuum; sin cultivar nombrado","guidance":"La estación hortícola de Iowa State describe frutos pequeños, verdes, de piel fina, sabor suave y algo dulce, con algún fruto ocasional más picante. Oregon State lo incluye entre los pimientos para freír que suelen cosecharse verdes. No se establece una proporción fija de frutos picantes."
       },
+      "cultivation": {"short":"Aplica la guía general de humedad para pimientos; faltan datos del tipo para sistemas","guidance":"UMN recomienda humedad uniforme para la calidad del fruto y evitar mojar el follaje. Es orientación de cultivo exterior general; no se ha establecido aquí una recomendación específica de interior o hidroponía para Shishito."},
+      "care": {"short":"Evita exceso de nitrógeno y protege frutos con follaje sano","guidance":"UMN advierte que el exceso de nitrógeno retrasa la fructificación y que la poca cobertura foliar puede favorecer quemadura solar. Adaptación Garden: conserva hojas sanas y revisa exposición y abonado antes de intervenir; no hay dosis ni poda específica para Shishito."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No copies pautas de poda de otros cultivares","guidance":"Las fuentes específicas de Shishito describen el fruto, no un régimen de poda. UMN advierte sobre quemadura solar cuando falta follaje; adaptación Garden: conserva la copa sana y usa soporte solo si la planta lo necesita."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Normalmente se cosecha y cocina verde; también puede usarse rojo","guidance":"Iowa State y Oregon State describen Shishito como un tipo verde para cocinar o freír. Johnny's documenta etapas verde y rojo maduro para su producto orgánico nombrado, pero no se trasladan sus días de madurez a todo Shishito."
       },
+      "uses": {"short":"Se cocina verde: salteado, tacos, asado o a la parrilla","guidance":"Iowa State recomienda Shishito para salteados, tacos, asado y parrilla; Oregon State lo describe como pimiento para freír generalmente usado verde. La página de Johnny's apoya otros usos para su producto específico, no para todos los cultivares."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Algún fruto más picante es variación normal; vigila problemas generales de pimiento","guidance":"Iowa State señala que la mayoría son suaves, aunque algunos pueden ser más picantes; no es síntoma de enfermedad. UMN enumera podredumbre apical, quemadura solar, pulgones y caída floral por calor en pimientos, sin atribuir resistencia específica a Shishito."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "Relaciona caída floral con temperatura y cuajado observado","guidance":"UMN informa que días y noches cálidos pueden causar caída de flores en pimientos. Registra temperatura y cuajado por separado; no se establece una respuesta de rendimiento específica para Shishito."
       }
     }
   },
   "habanero-pepper": {
-    "summary": "Identidad base de Wave 2 para Pimiento habanero. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Habanero es un tipo pequeño y cónico de Capsicum chinense, comúnmente clasificado como muy picante, aunque la pungencia varía entre habaneros. Se usa fresco o procesado; no se asigna un cultivar, color, tamaño o fecha de madurez universales.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo habanero dentro de Capsicum chinense",
+        "guidance": "Iowa State describe Habanero como pequeño, cónico, de pared delgada y muy picante; Oregon State advierte que la pungencia varía y que no todos los habaneros son igual de picantes. Ambas fuentes lo ubican en Capsicum chinense. No se asigna un número de pungencia, color maduro ni dimensión universal a este tipo."
       },
       "cultivation": {
-        "short": "Mantén humedad uniforme durante floración y desarrollo del fruto",
-        "guidance": "UMN Extension recomienda humedad constante del suelo para la calidad del fruto y señala que una humedad inadecuada puede debilitar flores y frutos pequeños. La guía cubre el cultivo del pimiento, incluidos tipos picantes, pero no establece un calendario de agua ni un ajuste hidropónico específico para Habanero."
+        "short": "Mantén humedad radicular uniforme y observa el estrés térmico",
+        "guidance": "La guía de UMN Extension cubre explícitamente Capsicum chinense y tipos picantes como habanero. Informa que suelo seco, días por encima de 90°F y noches por debajo de 60°F o por encima de 70°F pueden debilitar pimientos en el contexto exterior de Minnesota. Mantén humedad pareja y evita riego por aspersión; estos datos no son ajustes específicos para Habanero ni parámetros hidropónicos."
       },
       "care": {
-        "short": "Riega las raíces y evita mojar la planta desde arriba",
-        "guidance": "UMN Extension desaconseja el riego por aspersión porque el follaje mojado es más propenso a enfermedades y advierte que mojar solo la superficie favorece raíces poco profundas. Es orientación de jardín; no se afirma una humedad interior ni un intervalo de depósito."
+        "short": "Evita alimentación excesiva y protege los frutos con follaje sano",
+        "guidance": "UMN Extension advierte que el exceso de nitrógeno puede hacer que el pimiento produzca mucho follaje y tarde en fructificar; describe quemadura de sol en frutos poco cubiertos durante tiempo caluroso y seco. Adaptación Garden: conserva follaje sano y revisa nutrición y exposición antes de cambiar el manejo. No se establece dosis específica para habanero ni sistema interior."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Da forma con cuidado y conserva la cobertura foliar",
+        "guidance": "UMN Extension documenta quemadura de sol en frutos expuestos por falta de hojas durante condiciones calurosas y secas. Adaptación Garden: evita retirar follaje sano innecesariamente; quita tejido dañado selectivamente y añade soporte solo si el porte real lo requiere. No hay un calendario de poda propio del habanero."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha el fruto maduro y manipula con protección",
+        "guidance": "UMN Extension recomienda cosechar pimientos al alcanzar tamaño maduro; algunos se usan antes de cambiar por completo de color, pero el ejemplo explícito de verde es jalapeño, no habanero. Sigue las señales del tipo o paquete para el habanero. Usa guantes al cosechar pimientos picantes y lávate las manos antes de tocarte los ojos o la cara. La cosecha continua permite nuevas flores y frutos."
+      },
+      "uses": {
+        "short": "Tipo picante para uso fresco o procesado; manipúlalo con cuidado",
+        "guidance": "Iowa State incluye Habanero para uso fresco y procesado, y clasifica el tipo como muy picante. Oregon State señala que la pungencia y el color maduro varían; menciona ejemplos picantes usados en salsas. Usa guantes al cosechar o preparar frutos picantes y evita tocarte los ojos. La categoría de una fuente no mide la pungencia de cada fruto."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Distingue trastornos del fruto, plagas y caída floral por calor",
+        "guidance": "UMN Extension describe pudrición apical como lesión hundida canela u oscura en el extremo del fruto, quemadura de sol como daño pálido en frutos expuestos y pulgones como colonias con hojas rizadas o pegajosas. Días y noches calurosos también pueden coincidir con caída floral. Estas señales de pimiento no identifican por sí solas la causa en una planta de habanero; revisa síntomas, humedad y calor recientes antes de intervenir."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor puede coincidir con pérdida de flores",
+        "guidance": "UMN Extension señala que días calurosos junto con noches calurosas pueden provocar caída floral y reducir la producción del pimiento. Registra caída y cuajado por separado junto con el tiempo reciente; la fuente no predice el rendimiento de un cultivar concreto de habanero."
       }
     }
   },
   "french-breakfast-radish": {
-    "summary": "Identidad base de Wave 2 para Rábano French Breakfast. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Rábano de mesa del tipo French Breakfast, alargado y cultivado por su raíz crujiente. Conviene mantener un crecimiento fresco y continuo, humedad uniforme y cosechar a tiempo mientras la raíz siga tierna; aquí no se establecen el tamaño de un cultivar concreto ni su desempeño en sistemas.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo French Breakfast alargado dentro de Raphanus sativus",
+        "guidance": "Johnny's describe los rábanos French Breakfast como más largos y rectos que los tipos redondos. Garden conserva esta identidad como un tipo hortícola dentro de Raphanus sativus; no representa una cepa concreta ni traslada dimensiones de un producto comercial."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "cultivation": {
+        "short": "El crecimiento fresco y constante protege la calidad de la raíz",
+        "guidance": "Johnny's señala que el calor y la sequía perjudican a los rábanos: el crecimiento interrumpido puede producir raíces duras, huecas o demasiado picantes. UMN recomienda suelo suelto y bien drenado. Son recomendaciones para cultivo exterior en suelo, no parámetros hidropónicos."
+      },
+      "growth": {
+        "short": "Raíz comestible alargada y follaje compacto",
+        "guidance": "Johnny's describe el tipo French Breakfast como más largo y recto que los tipos redondos. Las fuentes seleccionadas no establecen una altura foliar, longitud de raíz ni extensión madura confiable para esta identidad del catálogo."
+      },
+      "care": {
+        "short": "Revisa las raíces con frecuencia y protege el follaje joven",
+        "guidance": "UMN identifica pequeños agujeros redondos de alticinos en las hojas y galerías de larvas de mosca de la col o gusanos alambre en las raíces. Johnny's menciona la cubierta flotante como medida preventiva al plantar. Inspecciona antes de diagnosticar y sigue las recomendaciones locales de control."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha cuando la raíz esté tierna, antes de que se vuelva hueca",
+        "guidance": "Johnny's recomienda vigilar y cosechar los rábanos a tiempo; UMN advierte que, si permanecen demasiado en el suelo, pueden volverse fibrosos y de sabor intenso. Decide por la condición real de la raíz y no por un calendario fijo: esta ficha no representa una partida de semillas o ambiente determinados."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor, la sequía y los cambios bruscos de humedad dañan la textura",
+        "guidance": "El calor, la sequía o el crecimiento interrumpido pueden producir raíces picantes, duras o huecas. Illinois Extension también relaciona un aumento brusco de humedad después de un periodo seco con raíces maduras partidas. Mantén la humedad razonablemente uniforme y cosecha antes de la sobremadurez; no es un diagnóstico de enfermedad específico del cultivar."
       },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      "management": {
+        "short": "No se establece una poda rutinaria para este cultivo de raíz",
+        "guidance": "Las fuentes seleccionadas no indican una práctica rutinaria de poda. Conserva el follaje sano que sostiene el crecimiento de la raíz y retira hojas dañadas solo cuando exista una razón clara. Es una adaptación conservadora de Garden, no un calendario de poda prescrito por una fuente."
       }
     }
   },
   "daikon-radish": {
-    "summary": "Identidad base de Wave 2 para Rábano daikon. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Daikon es el tipo asiático de raíz larga de Raphanus sativus. Tras establecerse, necesita suelo profundo y suelto y humedad constante para favorecer la calidad; se cosecha con cuidado porque las raíces largas se pueden quebrar. Las dimensiones dependen de la selección concreta.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Daikon: tipo de raíz larga de Raphanus sativus",
+        "guidance": "UMN describe daikon como un tipo asiático de rábano blanco y largo dentro de Raphanus sativus. Las selecciones varían en tamaño y forma; esta identidad no representa un cultivar nombrado ni atribuye una dimensión única a todos los daikon."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "cultivation": {
+        "short": "El suelo profundo y friable favorece raíces más rectas",
+        "guidance": "Johnny's recomienda trabajar profundamente el suelo para los tipos largos; UMN advierte que el suelo pesado o pedregoso puede dejar raíces menos uniformes y tiernas. Mantén humedad adecuada: la sequía puede empeorar el sabor y la textura. Es guía para suelo exterior, no para hidroponía ni separación entre pods."
+      },
+      "growth": {
+        "short": "La estructura cosechada es una raíz pivotante considerable",
+        "guidance": "Las selecciones daikon varían mucho en longitud y forma. UMN describe raíces grandes en este tipo, mientras que la comparación de Johnny's incluye selecciones largas y cortas; por eso la ficha no afirma un tamaño maduro universal."
+      },
+      "care": {
+        "short": "Vigila la emisión de flores y evita dañar la raíz",
+        "guidance": "Johnny's recomienda elegir la temporada adecuada para cada selección y así reducir el riesgo de emisión de tallo floral. Durante el crecimiento, evita trabajar el suelo profundamente cerca de la raíz. No se prescribe un calendario único ni resistencia a enfermedades."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Afloja el suelo y levanta la raíz larga con cuidado",
+        "guidance": "UMN recomienda aflojar el suelo por debajo del daikon antes de levantarlo; Johnny's también aconseja usar una horquilla o herramienta similar. El hombro visible ayuda a valorar el ancho, pero el momento y tamaño objetivo varían según la selección. Las indicaciones de temperatura y humedad de almacenamiento de Johnny's son manejo comercial, no requisitos de cultivo doméstico."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "La compactación, la sequía y el calor afectan la calidad de la raíz",
+        "guidance": "UMN indica que el suelo compacto o pesado puede producir raíces menos uniformes y que la sequía puede volverlas más duras y menos sabrosas; el calor también puede causar raíces leñosas o floración. Si la raíz sale áspera o ramificada, revisa primero la estructura del suelo antes de atribuirlo a una enfermedad."
       },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+      "management": {
+        "short": "No se establece un protocolo rutinario de poda",
+        "guidance": "Las referencias seleccionadas centran el manejo en preparar el suelo, mantener la humedad, controlar hierbas y cosechar sin romper la raíz, no en podar. Conserva el follaje sano y evita dañar la raíz; no se infiere un calendario de cortes."
       }
     }
   },
   "golden-beet": {
-    "summary": "Identidad base de Wave 2 para Remolacha dorada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Remolacha dorada representa un tipo de remolacha de mesa de interior amarillo (Mississippi State Extension describe piel naranja e interior amarillo). Se cultiva por la raíz y sus hojas comestibles; el color no demuestra sabor distinto, nivel de luz interior ni aptitud hidropónica.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de remolacha dorada; no es un cultivar nombrado",
+        "guidance": "Utah State Extension incluye Golden entre las variedades de remolacha de mesa, y Mississippi State Extension describe Golden Beet con piel naranja e interior amarillo. Esta identidad representa una clase de color/tipo, no un cultivar concreto; no se establecen rendimiento, sabor ni madurez propios de un cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
-      },
+      "growth": {"short":"Corona foliar y raíz de mesa con interior amarillo","guidance":"La identidad Golden representa un tipo de remolacha cuyo interior amarillo describe Mississippi State Extension. Las hojas también son comestibles; las fuentes revisadas no establecen tamaño maduro único ni color del follaje para todas las semillas vendidas bajo este nombre amplio."},
+      "cultivation": {"short":"Remolacha de estación fresca para un bancal soleado, profundo y bien drenado","guidance":"Utah State Extension recomienda un sitio soleado y suelo profundo, fértil y bien drenado para la remolacha de mesa; el calor sostenido puede perjudicar la calidad de la raíz. Es guía exterior del cultivo, no un umbral térmico del tipo Golden, un nivel de luz interior ni una recomendación hidropónica."},
+      "care": {"short":"Evita cambios bruscos de humedad durante el crecimiento de la raíz","guidance":"Utah State Extension informa que las fluctuaciones de humedad pueden agrietar las raíces y reducir el crecimiento. Procura humedad del suelo razonablemente uniforme; no se proporciona un calendario de riego interior."},
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Aprovecha hojas jóvenes o levanta raíces mientras engrosan",
+        "guidance": "Utah State Extension describe hojas jóvenes cosechables alrededor de 10–15 cm y raíces utilizables cuando empiezan a engrosar; afloja el suelo con una horquilla antes de levantar. El momento y tamaño varían; no es una promesa de madurez del tipo Golden."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Reconoce el estrés y las señales de trastornos de la raíz",
+        "guidance": "Utah State Extension identifica calor, estrés hídrico y amontonamiento como riesgos para el desarrollo de la raíz, y señala que el enfriamiento puede inducir floración. Las manchas negras hundidas pueden indicar deficiencia de boro, pero no bastan para diagnosticarla; confirma con análisis de suelo o Extension local antes de tratar, porque el exceso puede dañar la planta. Son advertencias del cultivo, no afirmaciones de enfermedad o resistencia del tipo Golden."
       },
       "thinning": {
         "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de raíces. Aclara según la cosecha exterior prevista; el espaciamiento de campo no define posiciones de un sistema Garden."
       }
     }
   },
@@ -529,9 +596,17 @@
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "cultivation": {
+        "short": "Cultivo de estación fresca en suelo profundo, suelto y bien drenado",
+        "guidance": "Utah State University Extension recomienda para la chirivía un lugar soleado y suelo fértil, profundo y bien drenado. Los suelos ligeros favorecen raíces rectas; en terreno pesado puede hacer falta incorporar bastante composta y preparar el suelo a mayor profundidad. Son recomendaciones para cultivo exterior en suelo, no una receta para maceta ni hidroponía."
+      },
+      "growth": {
+        "short": "El clima fresco favorece la calidad de la raíz; las heladas pueden mejorar el sabor",
+        "guidance": "Utah State University Extension describe la chirivía como un cultivo de raíz de estación fresca. El crecimiento y la calidad del sabor disminuyen con el calor intenso del verano; varias semanas de clima fresco y heladas pueden mejorar el sabor. En el contexto regional de la fuente, las plantas establecidas toleran temperaturas cercanas a 32 °F. No se establecen dimensiones de raíz propias de un cultivar."
+      },
+      "care": {
+        "short": "Mantén la humedad del suelo relativamente uniforme mientras se desarrolla la raíz",
+        "guidance": "Utah State University Extension ofrece como referencia regional alrededor de 1–2 pulgadas de agua por semana, según el clima y el suelo, y advierte que las variaciones de humedad pueden contribuir a raíces agrietadas o amargas y otros trastornos. No es un calendario universal; el acolchado puede ayudar a conservar la humedad del suelo."
       },
       "harvest": {
         "short": "Cosecha según la etapa del cultivo",
@@ -540,6 +615,10 @@
       "problems": {
         "short": "Observa las señales que cambian el manejo",
         "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      },
+      "pruning": {
+        "short": "Manejo según porte y observación",
+        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
       },
       "thinning": {
         "short": "Ralea según la forma de cosecha",
@@ -548,69 +627,77 @@
     }
   },
   "red-onion": {
-    "summary": "Identidad base de Wave 2 para Cebolla roja. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La cebolla roja es una clase de color de Allium cepa, no un cultivar identificado. El color del bulbo es independiente de la respuesta a días cortos, intermedios o largos; verifica la variedad nombrada con la guía local en vez de inferir su clase por el color rojo. Las cebollas establecidas tienen raíces superficiales, requieren humedad constante y se cosechan cuando los tallos maduran y caen de forma natural. La aptitud hidropónica y las dimensiones de un cultivar concreto siguen sin establecerse.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Clase de color dentro de Allium cepa; cultivar sin especificar",
+        "guidance": "Illinois Extension señala que algunos bulbos se venden por color sin nombre varietal y que las variedades difieren en el fotoperiodo que necesitan para formar bulbo. Esta ficha representa solo la clase roja: no identifica cultivar, clase de fotoperiodo, intensidad de sabor ni capacidad de almacenamiento."
+      },
+      "growth": {
+        "short": "La formación del bulbo depende del fotoperiodo, no solo del color",
+        "guidance": "USU Extension explica que el color del bulbo (rojo, amarillo o blanco) es un eje de selección distinto de la respuesta a días cortos, intermedios o largos. UMN e Illinois Extension muestran que la clase adecuada depende de la región; el ejemplo de UMN de 14 horas o más corresponde a cebollas de almacenamiento en Minnesota, no a todas las localidades. Para esta identidad genérica roja, revisa la clase de fotoperiodo de la variedad nombrada y compárala con la guía local de Extensión, en vez de inferirla por el color. El lote de semilla concreto sigue sin especificarse."
+      },
+      "cultivation": {
+        "short": "Sol pleno, suelo drenado y humedad constante en cultivo de campo",
+        "guidance": "UMN recomienda sol pleno y suelo bien drenado, y describe raíces superficiales que requieren humedad constante. Sus dosis de fertilizante y distancias entre hileras son recomendaciones regionales para suelo, no instrucciones para macetas, hidroponía ni posiciones de Garden."
+      },
+      "care": {
+        "short": "Mantén la humedad y evita dañar raíces y bulbos superficiales",
+        "guidance": "UMN aconseja mantener humedad durante el crecimiento del bulbo y dejar de regar cuando alcance su tamaño y los tallos empiecen a caer. El deshierbe debe ser superficial: las heridas en los bulbos aumentan el riesgo de enfermedad. Sus volúmenes de riego y dosis de nitrógeno no se trasladan a hidroponía."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "No quiebres los tallos para adelantar la maduración",
+        "guidance": "Illinois Extension recomienda dejar que los tallos maduren y caigan naturalmente. Quebrarlos antes interrumpe el crecimiento y puede producir bulbos más pequeños y con peor conservación. Es manejo de cosecha de cebolla de bulbo, no una poda rutinaria."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Levanta los bulbos cuando los tallos caigan; cura antes de almacenarlos",
+        "guidance": "UMN recomienda cosechar cuando aproximadamente la mitad de los tallos se hayan caído y secado. Para almacenarlos, cúralos en un lugar cálido, seco y ventilado hasta que el cuello quede firme y las escamas exteriores secas. Las fechas y duración dependen de las condiciones regionales, no son una promesa del tipo rojo."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Amarilleo y marchitez pueden indicar daño de mosca de la cebolla",
+        "guidance": "UMN describe que las larvas de mosca de la cebolla perforan los tallos y pueden causar amarilleo y marchitez. También enumera pudrición basal por Fusarium, pudrición del cuello por Botrytis y pudrición blanda bacteriana. Son pistas para diagnosticar, no evidencia de mayor susceptibilidad de cebolla roja."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Aclara las plántulas de campo; no conviertas esa distancia en separación de pods",
+        "guidance": "UMN indica aclarar las plántulas de campo a 3–4 pulgadas para cultivar bulbos. Es una distancia de suelo y no una regla universal de maceta o hidroponía; el número de posiciones en Garden no está establecido."
       }
     }
   },
   "bush-bean-royal-burgundy": {
-    "summary": "Identidad base de Wave 2 para Frijol de mata Royal Burgundy. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
+    "summary": "Royal Burgundy es una selección nombrada de frijol snap de mata con vainas moradas distintivas. Johnny's describe plantas erguidas y vainas de 5–5½ pulgadas; UMN señala que el color morado del frijol se vuelve verde al cocinarse. Estos rasgos del producto y del cultivo no establecen compatibilidad hidropónica ni un tamaño adulto universal.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Selección nombrada de mata con vainas moradas",
+        "guidance": "Johnny's ofrece Royal Burgundy como una selección nombrada de frijol de mata con vainas moradas. Sus descripciones de planta y vaina se tratan como rasgos del producto; la guía general del frijol común mantiene alcance de cultivo."
       },
       "harvest": {
-        "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
-        "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar."
+        "short": "Cosecha las vainas moradas tiernas antes de que abulten las semillas",
+        "guidance": "Johnny's describe vainas Royal Burgundy de unas 5–5½ pulgadas y señala que el color morado facilita encontrarlas; usa la ternura y el abultamiento visible de las semillas, no el tamaño del proveedor, como señal de cosecha. UMN Extension explica que el color morado desaparece al cocinarse y que los frijoles cocidos se ven verde oscuro. Las dimensiones corresponden a la ficha de producto de Johnny's."
       },
       "problems": {
-        "short": "El calor durante la floración puede interrumpir el cuajado",
-        "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad."
+        "short": "Es normal que las vainas moradas se vuelvan verdes al cocinarse",
+        "guidance": "UMN Extension señala que el color morado de las vainas desaparece al cocinarse. Es un cambio normal de color, no pérdida de frescura ni síntoma de enfermedad. La fuente aporta contexto de color a nivel de cultivo y no establece resistencia a enfermedades de Royal Burgundy."
       },
       "cultivation": {
-        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
-        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+        "short": "Ajusta el riego a la rapidez con que se seca el suelo",
+        "guidance": "UMN Extension indica que los suelos que retienen humedad quizá solo necesiten riego en periodos secos, mientras que los arenosos requieren riego más frecuente; su referencia de una pulgada semanal es para jardines de Minnesota. Comprueba la humedad radicular real y no conviertas la lluvia de campo en una dosis para interior o hidroponía."
       },
       "care": {
-        "short": "Adapta el soporte al hábito documentado",
-        "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
+        "short": "Porte erguido de mata; la cosecha regular favorece nuevas vainas",
+        "guidance": "Johnny's describe Royal Burgundy como frijol de mata erguido y recomienda cosechar regularmente para favorecer nuevas vainas. La ficha del producto no establece un calendario universal de poda ni necesidad de soporte; no traslades a esta mata las reglas de tutorado de los frijoles de enrame."
       },
       "growth": {
-        "short": "El hábito de mata es erguido y normalmente no necesita espaldera",
-        "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies, con floración y cuajado más concentrados que los tipos de enrame. Es contexto del tipo de cultivo, no una medida específica del cultivar."
-      },
-      "pruning": {
-        "short": "No se establece una guía de poda",
-        "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
+        "short": "Selección de mata con vainas moradas; dimensiones adultas sin verificar",
+        "guidance": "Johnny's identifica Royal Burgundy como frijol de mata y describe plantas erguidas con follaje verde oscuro teñido de morado. La ficha consultada no ofrece altura o extensión adulta verificadas, por lo que no se asigna a Royal Burgundy la referencia general de dos pies para frijoles de mata."
       }
     }
   },
   "sugar-snap-pea": {
-    "summary": "Identidad base de Wave 2 para Guisante de azúcar. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
+    "summary": "El guisante snap se cultiva por su vaina gruesa, tierna y comestible junto con los guisantes. Esta ficha representa el tipo snap, no el cultivar nombrado Sugar Snap; existen formas arbustivas y de enrame, por lo que no se asigna un porte ni soporte único.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+          "short": "En los guisantes snap se come la vaina entera",
+          "guidance": "El registro representa el tipo de guisante snap, no el cultivar nombrado Sugar Snap. Sus vainas son más gruesas y redondeadas que las de nieve y se comen enteras tras retirar la fibra cuando la tienen; no traslades a este tipo la altura o necesidad de tutor de una selección concreta."
       },
       "harvest": {
         "short": "Cosecha las vainas snap cuando estén llenas pero aún tiernas",
@@ -631,10 +718,6 @@
       "care": {
         "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
         "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas."
-      },
-      "pruning": {
-        "short": "No se establece una guía de poda",
-        "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
       }
     }
   },
@@ -682,6 +765,14 @@
         "short": "Cosecha con cuidado en vez de imponer una poda genérica",
         "guidance": "Las enredaderas pueden producir raíces en sus nudos; evita levantarlas o moverlas repetidamente al recolectar. Se puede guiar un tipo trepador, pero esta orientación general no indica que todo pepino para encurtir necesite soporte o poda."
       },
+      "cultivation": {
+        "short": "Las plantas establecidas crecen con calor y humedad estable en la zona radicular",
+        "guidance": "UMN Extension describe el pepino como cultivo de clima cálido y recomienda un suelo que retenga humedad pero drene bien. Su calendario de Minnesota, espaciamiento de campo, pH del suelo y volumen semanal de riego son pautas regionales de exterior, no ajustes universales para interiores o hidroponía."
+      },
+      "care": {
+        "short": "Riega el suelo y evita dañar raíces superficiales o asumir el porte",
+        "guidance": "Mantén una humedad razonablemente uniforme y dirige el agua al suelo para conservar seco el follaje. El pepino tiene raíces ramificadas superficiales, así que evita cultivar profundamente junto a la planta. Esta identidad no nombra un cultivar; verifica la semilla y el porte observado antes de decidir si necesita enrejado."
+      },
       "harvest": {
         "short": "Recolecta los frutos para encurtir con tamaño preferido uniforme",
         "guidance": "UMN Extension recomienda cosechar los pepinos para encurtir con un tamaño uniforme. Recógelos a menudo y evita que se sobredimensionen; dejar frutos muy grandes puede reducir la producción posterior. No se afirma una longitud única porque depende del producto y del cultivar."
@@ -697,170 +788,259 @@
     }
   },
   "marjoram": {
-    "summary": "Identidad base de Wave 2 para Mejorana. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La mejorana dulce (Origanum majorana) es una hierba compacta y aromática de la familia de la menta, cultivada por sus hojas comestibles antes de florecer. Prefiere sol y buen drenaje; su supervivencia invernal depende del clima y en zonas frías puede cultivarse como anual.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Origanum majorana, mejorana dulce; sin cultivar nombrado",
+        "guidance": "North Carolina State Extension identifica la mejorana dulce como Origanum majorana y lista también los nombres knotted y pot marjoram. Distingue esta especie de los tipos de orégano perenne; esta identidad no representa un cultivar con nombre."
       },
+      "growth": {"short":"Subarbusto compacto y ramificado; la fuente refiere cerca de 1–2 pies de alto y ancho","guidance":"NC State describe la mejorana como subarbusto perenne denso, amacollado y extendido que puede alcanzar unos 2 pies de alto y ancho. Son referencias de paisaje a nivel de especie y región, no dimensiones garantizadas para cualquier maceta o clima."},
+      "cultivation": {"short":"Sol pleno y suelo de drenaje rápido; evita raíces saturadas","guidance":"NC State recomienda sol pleno y suelo bien drenado, de humedad media a seca. Describe tolerancia a calor y sequía después del establecimiento. Es guía de jardín exterior, no receta hidropónica ni ajuste de luz interior."},
+      "care": {"short":"Fertiliza con moderación y evita suelo persistentemente mojado","guidance":"NC State advierte que el suelo saturado y mal drenado puede causar pudrición. La guía general de hierbas de UMN recomienda fertilización ligera y buen drenaje; es orientación de familia, no dosis específica para mejorana. Adaptación Garden: revisa el drenaje antes de aumentar riego o fertilizante."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Recorta antes de florecer para favorecer un porte más tupido",
+        "guidance": "NC State recomienda cortar los tallos antes de que aparezcan las flores para fomentar crecimiento tupido. Es una opción de manejo respaldada para la mejorana dulce, no una obligación de eliminar toda flor si se desean flores o semillas."
       },
+      "flowering": {"short":"Flores pequeñas blancas o rosadas aparecen en verano","guidance":"NC State informa de pequeñas flores en espigas durante el verano; el momento y la abundancia locales dependen de las condiciones. La fuente indica que las hojas tienen mejor sabor antes de florecer, pero no exige retirar todas las flores."},
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+      "short": "Recorta justo antes de florecer; puede formarse una segunda cosecha",
+      "guidance": "NC State describe las hojas como más sabrosas antes de que aparezcan las pequeñas flores estivales. La guía de hierbas de Iowa State ofrece un método de jardín específico para la mejorana dulce: cortar los tallos a unos 2,5 cm del suelo justo antes de florecer; puede formarse una segunda cosecha. Indica que la hierba se puede secar o congelar. Es un método estacional de jardín, no un calendario garantizado de rebrote interior."
       },
+      "uses": {"short":"Hojas y flores aromatizan sopas, guisos, salsas, aderezos y verduras","guidance":"NC State documenta hojas y flores comestibles y usos en sopas, guisos, salsas, aderezos, verduras y carnes. Describe un sabor dulce y especiado, más suave que el orégano perenne; esta comparación se mantiene dentro del alcance de la fuente."},
       "problems": {
         "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "guidance": "NC State informa de pudrición en suelos saturados y mal drenados, y señala que la mejorana dulce puede no pasar bien el invierno en regiones frías, donde suele cultivarse como anual. Sus notas regionales no son garantía universal de supervivencia ni afirmación de resistencia a enfermedades."
       }
     }
   },
   "summer-savory": {
-    "summary": "Identidad base de Wave 2 para Ajedrea de verano. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La ajedrea de verano es una anual Satureja hortensis, de hojas estrechas verde grisáceas y porte en mata. Crece con sol pleno y suelo húmedo pero bien drenado; sus puntas se cosechan alrededor de la formación de botones y sus flores atraen abejas.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Identidad de especie anual: Satureja hortensis",
+        "guidance": "Illinois Extension identifica la ajedrea de verano como Satureja hortensis. Su página describe la especie y menciona ‘Midget’ como otra variedad popular; esta ficha no representa esa variedad nombrada."
+      },
+      "growth": {
+        "short": "Anual en mata de unos 30 cm, con hojas estrechas verde grisáceas",
+        "guidance": "Illinois Extension describe una planta en forma de mata de unos 30 cm, con tallos finos que pueden mostrar tonos púrpura y hojas largas, estrechas y verde grisáceas. Es una referencia de jardín, no una dimensión garantizada para interior o maceta; no implica la variedad ‘Midget’."
+      },
+      "cultivation": {
+        "short": "Sol pleno y suelo húmedo pero bien drenado",
+        "guidance": "Illinois Extension recomienda un lugar soleado y suelo preparado que conserve humedad sin encharcarse; NC State también advierte que la planta no prospera en suelo húmedo/encharcado ni a la sombra. Illinois señala que puede cultivarse en recipientes interiores cerca de un lugar soleado, pero eso no demuestra compatibilidad hidropónica ni una receta de depósito."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Corta las puntas foliares cuando comiencen a aparecer botones",
+        "guidance": "Illinois Extension recomienda cortar las puntas foliares cuando comienzan a aparecer botones; NC State indica que cortar la planta al emerger los botones puede producir una nueva tanda de hojas. Son recomendaciones de jardín para la especie, no una altura fija de corte, intervalo universal de cosechas ni calendario interior."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Usa las puntas foliares frescas o secas",
+        "guidance": "Illinois Extension indica que las puntas foliares pueden usarse frescas o secas en sopas, carnes, verduras, ensaladas y platos con frijoles. NC State describe cosechar en verano cuando la planta está floreciendo, mientras Illinois recomienda cortar puntas al aparecer los botones para favorecer un nuevo brote; son etapas específicas de cada fuente, no un calendario obligatorio único. Ninguna indica tiempo de secado ni duración de almacenamiento."
       },
-      "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+      "flowering": {
+        "short": "Hierba anual; sus flores atraen abejas",
+        "guidance": "NC State identifica la ajedrea de verano como hierba anual con flores y señala que atraen abejas. La fuente seleccionada no establece una fecha local de floración ni un color floral concreto para esta identidad."
       }
     }
   },
   "anise-hyssop": {
-    "summary": "Identidad base de Wave 2 para Hisopo anisado. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Perenne aromática y erguida de Agastache foeniculum, cultivada por sus hojas, flores y semillas. NC State ofrece dimensiones y pautas regionales de jardín; no se representa un cultivar nombrado ni aptitud hidropónica.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Identidad de especie: Agastache foeniculum; sin cultivar especificado",
+        "guidance": "NC State Extension identifica el hisopo anisado como Agastache foeniculum, una perenne de la familia de la menta. Esta ficha representa la especie, no un cultivar con nombre ni un híbrido distinto de Agastache."
+      },
+      "growth": {
+        "short": "Perenne erguida con hojas aromáticas y espigas florales",
+        "guidance": "NC State describe una perenne erguida, agrupada, con follaje fragante y espigas florales. La altura y extensión indicadas son referencias de paisaje para la especie en el contexto de esa fuente, no dimensiones garantizadas en interior o maceta; no se dispone de tamaño específico de cultivar."
+      },
+      "cultivation": {
+        "short": "Lugar soleado, buen drenaje y humedad según establecimiento",
+        "guidance": "NC State recomienda sol pleno a sombra parcial y suelo bien drenado, y describe las plantas establecidas como tolerantes a la sequía. Evita el encharcamiento persistente; la fuente es una guía de jardín y no establece ajustes de depósito, nutrientes ni luz interior."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Recorta tallos florales marchitos si no buscas semillas",
+        "guidance": "NC State indica que cortar los tallos florales después de la floración puede reducir la autosiembra. Es una opción de manejo del jardín, no un calendario obligatorio; conserva las flores si buscas semillas o valor para polinizadores."
+      },
+      "care": {
+        "short": "Evita raíces persistentemente húmedas y revisa antes de regar",
+        "guidance": "La especie prefiere condiciones bien drenadas y tolera periodos secos una vez establecida. Comprueba la humedad real de la zona radicular y el drenaje en vez de aplicar un intervalo fijo; las necesidades durante el establecimiento pueden diferir de las de una planta madura."
+      },
+      "flowering": {
+        "short": "Las espigas florales aportan valor ornamental y para polinizadores",
+        "guidance": "NC State describe las espigas florales de la especie como atractivas para polinizadores. La época de floración depende del clima y las condiciones de cultivo; no se asigna una fecha universal de floración en interior."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "El follaje y las semillas maduras tienen usos culinarios documentados",
+        "guidance": "NC State enumera el follaje aromático como condimento para ensaladas e infusiones, y las semillas para repostería. No especifica fecha, cantidad, método de secado ni duración de almacenamiento, así que no se infieren aquí."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El drenaje importa; las enfermedades enumeradas no son diagnósticos",
+        "guidance": "NC State enumera pudrición de corona o raíz, roya, oídio y manchas foliares entre los problemas posibles. Tómalos como señales para vigilar, no como diagnóstico ni como susceptibilidad en todo entorno; revisa los síntomas y las condiciones antes de actuar."
       }
     }
   },
   "cosmos-sensation": {
-    "summary": "Identidad base de Wave 2 para Cosmos Sensation. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Cosmos Sensation representa la serie Cosmos bipinnatus ‘Sensation’, que NC State Extension describe con flores grandes en tonos rosa, rojo y blanco. La guía general de la especie respalda un sitio soleado y bien drenado, el despunte y el tutorado de plantas altas en lugares ventosos; no establece dimensiones exactas de la serie ni aptitud para sistemas interiores.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Cosmos bipinnatus; evidencia de la serie ‘Sensation’ en su alcance",
+        "guidance": "NC State Extension enumera una serie ‘Sensation’ con flores grandes en tonos rosa, rojo y blanco. El registro se mantiene como identidad de serie/tipo y no asigna un cultivar concreto, color o rendimiento."
+      },
+      "growth": {
+        "short": "Cosmos anual; la especie puede alcanzar 61–122 cm",
+        "guidance": "NC State Extension describe C. bipinnatus como anual, con follaje ligero y profundamente dividido y flores tipo margarita. La ficha de especie informa una altura amplia de 61–122 cm; no establece el tamaño adulto de cada selección de la serie ‘Sensation’."
+      },
+      "cultivation": {
+        "short": "Al menos medio día de sol y suelo bien drenado",
+        "guidance": "NC State Extension recomienda un lugar con al menos medio día de sol directo y buen drenaje. Su ficha de especie indica tolerancia a suelos ocasionalmente secos; esto no determina aptitud hidropónica ni tamaño de recipiente."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Retira flores marchitas; coloca tutor en sitios ventosos si hace falta",
+        "guidance": "NC State Extension indica que retirar flores marchitas favorece nuevas flores y que las variedades altas pueden necesitar tutor en vientos fuertes o tormentas frecuentes. Es orientación general de la especie, no una afirmación de altura para toda selección ‘Sensation’."
+      },
+      "flowering": {
+        "short": "Flores grandes en tonos rosa, rojo y blanco",
+        "guidance": "NC State enumera estos colores para la serie ‘Sensation’ y describe la floración de C. bipinnatus en verano. La fuente no indica una fecha fija para la primera flor ni garantiza todos los colores en cada paquete."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Planta ornamental y flor de corte",
+        "guidance": "NC State Extension recomienda cosmos para bordes, jardines de estilo cottage, jardines de corte y de mariposas. La fuente respalda el uso ornamental; no se afirma un uso comestible para esta identidad."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila mildiu, moho gris, cancro del tallo y pulgones",
+        "guidance": "NC State Extension enumera cancro del tallo, oídio, moho gris, pulgones, chicharritas del áster y oruga gris como problemas posibles del cosmos. Son incidencias reportadas, no un diagnóstico ni una clasificación de susceptibilidad específica del cultivar."
       }
     }
   },
   "french-marigold": {
-    "summary": "Identidad base de Wave 2 para Caléndula francesa. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La caléndula francesa (Tagetes patula) es una ornamental anual compacta para macizos, bordes y recipientes. NC State informa 15–30 cm de alto por 15–46 cm de ancho, mientras Iowa State da un rango de altura más amplio, hasta 46 cm. Retirar flores marchitas es opcional: las fuentes difieren sobre si hace falta para reflorecer. La savia puede irritar piel lesionada tras exposición solar.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tagetes patula; perfil general de especie/tipo francés",
+        "guidance": "NC State Extension identifica la caléndula francesa como Tagetes patula. Este perfil describe el tipo hortícola a nivel de especie y no asigna una serie, forma floral ni color concreto."
+      },
+      "growth": {
+        "short": "Anual compacta y arbustiva; difieren los rangos de altura publicados",
+        "guidance": "NC State Extension informa para Tagetes patula 15–30 cm de alto y 15–46 cm de ancho; Iowa State describe los tagetes franceses con 15–46 cm de altura y cabezuelas que rara vez superan 5 cm. Son rangos del tipo/especie en fuentes distintas, no una garantía dimensional para un cultivar sin nombre. Las formas varían de simples a dobles y los colores también."
+      },
+      "cultivation": {
+        "short": "Sol a sombra parcial; humedad uniforme y buen drenaje",
+        "guidance": "NC State Extension recomienda suelo promedio, uniformemente húmedo y bien drenado, con sol pleno a sombra parcial. Una vez establecida tolera sequía y sirve para macizos, recipientes o bordes. Estos usos de jardín no establecen compatibilidad hidropónica."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Retira flores marchitas para mantenerla ordenada; no siempre hace falta para reflorecer",
+        "guidance": "NC State señala que Tagetes patula puede florecer de primavera a otoño si se retiran flores marchitas. Iowa State dice que los tagetes franceses pueden reflorecer durante el verano sin hacerlo y que muchos jardineros las quitan para mantener la planta ordenada. Considéralo mantenimiento opcional, no requisito universal ni garantía de prolongar la floración; el calendario depende del clima y del estado de la planta."
+      },
+      "flowering": {
+        "short": "Flores de temporada larga con forma y color variables",
+        "guidance": "NC State describe cabezuelas simples, semidobles y dobles en combinaciones de rojo, naranja y amarillo, e incluye los tagetes franceses en jardines de corte y para polinizadores. Iowa State describe una gama más amplia de colores y formas. Ninguna fuente asigna una apariencia floral ni un calendario exacto a este tipo sin cultivar nombrado."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Apto para jardín de flores de corte; la etapa específica no está establecida",
+        "guidance": "NC State incluye Tagetes patula entre las plantas para jardines de corte. Las fuentes revisadas no establecen una etapa de corte ni duración en florero específica para el tagete francés. Para arreglos caseros, Iowa State recomienda tijeras limpias y afiladas, cortar cuando la especie esté en su etapa adecuada (no especificada aquí) y poner pronto los tallos en agua limpia. Esta ficha no afirma que las flores sean comestibles."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila flores deformes, ácaros y problemas fúngicos; la savia puede irritar",
+        "guidance": "Iowa State señala que el amarillamiento del áster puede deformar flores de tagete y recomienda retirar las plantas afectadas; NC State enumera oídio, botritis, manchas foliares, pudriciones, ácaros y trips entre los problemas posibles de Tagetes patula. Son señales para vigilar, no una predicción de que todos aparecerán. NC State también advierte que la savia sobre piel lesionada seguida de exposición solar puede irritar; evita el contacto y lava la zona pronto."
       }
     }
   },
   "zinnia-state-fair": {
-    "summary": "Identidad base de Wave 2 para Zinnia State Fair. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "State Fair es una mezcla de Zinnia elegans cultivada por sus grandes flores coloridas de corte. Johnny's describe su mezcla State Fair con 36–46 pulgadas y flores tipo dalia de 3–5 pulgadas con cortes repetidos, mientras otro proveedor indica hasta 30 pulgadas; conserva las dimensiones vinculadas a cada proveedor, no como medida garantizada. Los cuidados generales de zinnia se distinguen de los rasgos de la mezcla.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "State Fair Mix es una mezcla de Zinnia elegans, no una forma floral uniforme",
+        "guidance": "Johnny's comercializa un producto llamado State Fair Mix Zinnia Seed y lo identifica como Zinnia elegans. Esto respalda la identidad tipo State Fair del catálogo, pero el catálogo no especifica proveedor; los rasgos de cada vendedor no deben generalizarse a todos los productos con este nombre."
+      },
+      "growth": {
+        "short": "Mezcla erguida de flores grandes; las alturas comerciales difieren",
+        "guidance": "Johnny's describe su mezcla State Fair como vigorosa, de tallos largos y flores tipo dalia dobles o semidobles de 8–13 cm, e indica 91–117 cm de altura. Eden Brothers indica hasta 76 cm para State Fair Mix. Son descripciones comerciales discrepantes de mezclas de semillas, no una comparación controlada; la ficha no afirma una altura o anchura madura canónica. El color y la forma floral pueden variar dentro de la mezcla."
+      },
+      "cultivation": {
+        "short": "Pleno sol, suelo drenado y riego regular sin exceso",
+        "guidance": "UMN Extension recomienda para zinnias al menos ocho horas de sol, suelo bien drenado y riego cuando se sequen los primeros 2.5–5 cm; mojar el follaje y el exceso de agua aumentan el riesgo de hongos. Es una guía general del cultivo, no un calendario interior específico del cultivar."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Retira flores viejas; pinza solo si el tallo necesita ramificarse o sostenerse",
+        "guidance": "UMN Extension señala que retirar flores viejas promueve nuevas flores. Sugiere pinzar para lograr una planta más tupida cuando los tallos no sostienen las cabezuelas; no lo presenta como regla universal para todos los portes de zinnia."
+      },
+      "flowering": {
+        "short": "Flores grandes tipo dalia; Johnny's informa cortes repetidos para su mezcla",
+        "guidance": "Johnny's describe su mezcla State Fair con flores tipo dalia dobles y semidobles de 8–13 cm, colores variables y tallos largos; la caracteriza como apta para corte repetido. Es una descripción del producto de ese proveedor, no garantía para todas las ofertas comerciales ni prueba de rendimiento para polinizadores."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Flor de corte para varias cosechas; la etapa recomendada varía según el contexto",
+        "guidance": "Johnny's describe su mezcla State Fair como apta para cortes repetidos. Para el manejo general de zinnias, Rutgers recomienda cortar cuando el centro floral empieza a abrir, usar herramientas limpias e hidratar pronto los tallos; la guía de Mississippi State para floristas productores describe cosechar flores plenamente desarrolladas y conservar dos o tres pares de hojas. Son contextos productivos distintos a nivel de cultivo, no ensayos específicos de State Fair. Elige la etapa según el objetivo; no se establece una única etapa ni duración en florero específica para State Fair."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila el oídio; no se establece resistencia de State Fair",
+        "guidance": "UMN Extension señala el oídio como problema común de zinnias y recomienda mantener seco el follaje y favorecer la ventilación. Mississippi State describe superficies foliares pulverulentas blancas o grises como síntoma. Esto respalda solo el monitoreo a nivel de cultivo; no se afirma resistencia ni susceptibilidad para la mezcla State Fair."
       }
     }
   },
   "viola-pansy": {
-    "summary": "Identidad base de Wave 2 para Pensamiento / viola. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El pensamiento de jardín (Viola × wittrockiana) es un híbrido floral de porte bajo y redondeado, de temporada fresca, apto para canteros y recipientes. Iowa State recomienda sol pleno o parcial, suelo húmedo pero bien drenado y riego constante; tolera heladas ligeras, pero el calor estival puede reducir mucho su desempeño. La aptitud para interiores e hidroponía no está establecida.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Híbrido de pensamiento de jardín, Viola × wittrockiana; no se representa una serie nombrada",
+        "guidance": "Iowa State y Texas Tech identifican el pensamiento de jardín como Viola × wittrockiana. Esta ficha representa el tipo hortícola de pensamiento, no todas las especies de Viola, la violeta cornuda, el pensamiento silvestre, los patrones de color ni una serie comercial nombrada."
+      },
+      "growth": {
+        "short": "Plantas redondeadas y en mata, con flores grandes de colores diversos",
+        "guidance": "Iowa State describe pensamientos redondeados y en mata, normalmente de unos 10–25 cm de altura y una extensión similar; Texas Tech informa unos 10–20 cm de alto y 20–30 cm de ancho. Los rangos difieren ligeramente y describen el tipo hortícola, no una garantía para una serie sin identificar."
+      },
+      "cultivation": {
+        "short": "Cultivo exterior de temporada fresca; suelo húmedo y bien drenado",
+        "guidance": "Iowa State recomienda sol pleno o parcial; el sol parcial puede ayudar cuando las temperaturas son cálidas. Prefiere suelo húmedo y bien drenado. Mantén el riego durante periodos secos; una fertilización ligera puede beneficiar plantas en recipientes. Las fechas y el comportamiento estival de Iowa son regionales, no un calendario universal ni una receta de luz interior."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "Retira flores marchitas para favorecer la floración continua",
+        "guidance": "La ficha de pensamiento de Texas Tech recomienda retirar las flores marchitas para prolongar la floración. No establece un calendario de poda ni una respuesta específica de cultivar o de sistema hidropónico."
+      },
+      "flowering": {
+        "short": "Rinde en temporadas frescas; el calor puede terminar la floración",
+        "guidance": "Iowa State describe los pensamientos como anuales de temporada fresca que toleran heladas ligeras y dan color en primavera u otoño en Iowa. Informa que muchos decaen con el calor estival; el calendario es regional y las series modernas varían en tolerancia al calor."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Flor ornamental; Texas Tech indica que las flores son comestibles",
+        "guidance": "Texas Tech incluye las flores del pensamiento entre las partes comestibles, pero no ofrece un método de preparación ni calidad alimentaria específica de cultivar. Por ello, esta ficha no asigna receta ni uso medicinal."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila el estrés por calor, la pudrición de raíz, antracnosis y babosas",
+        "guidance": "Iowa State menciona pudrición de raíz, antracnosis y babosas como problemas ocasionales, e identifica el calor como la limitación más constante. Son alertas de observación, no un diagnóstico ni una calificación de resistencia de una serie sin identificar."
       }
     }
   },
   "celosia-plumosa": {
-    "summary": "Identidad base de Wave 2 para Celosia plumosa. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La celosia Plumosa es el tipo hortícola de inflorescencias plumosas de Celosia argentea, cultivado para flor fresca y seca. La guía de especie de NC State respalda pleno sol y suelo bien drenado; la guía de flor de corte de Mississippi State describe la respuesta del tipo Plumosa a la duración del día y señala que no requiere pinzado rutinario. La época de floración y las dimensiones varían según selección y producción; la aptitud hidropónica sigue sin establecerse.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Especie aceptada Celosia argentea; Plumosa es un tipo hortícola, no un cultivar nombrado",
+        "guidance": "POWO trata Celosia argentea var. plumosa como sinónimo de la especie aceptada C. argentea. Mississippi State Extension usa el nombre var. plumosa en su guía de flor de corte. Garden conserva la especie aceptada y el tipo Plumosa, sin asignar una serie o cultivar nombrado."
+      },
+      "growth": {
+        "short": "Inflorescencias plumosas en tallos bien ramificados",
+        "guidance": "Mississippi State describe cabezuelas plumosas de unos 8–30 cm sobre tallos de 30–122 cm en producción de flor de corte. Estos rangos amplios dependen de la selección y del cultivo; no garantizan el tamaño doméstico de una serie sin identificar."
+      },
+      "cultivation": {
+        "short": "Pleno sol y suelo drenado; la floración de producción también responde al fotoperiodo",
+        "guidance": "La ficha de especie C. argentea de NC State recomienda pleno sol y suelo mejorado y bien drenado, e indica tolerancia al calor y la humedad. Por separado, la guía de flor de corte de Mississippi State informa floración más rápida con fotoperiodos de 14 horas o menos y tallos más largos con días más largos. Son contextos de especie exterior y producción comercial, no una receta de luz interior ni un protocolo hidropónico; la separación de campo no se convierte en número de pods de Garden."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+        "short": "El pinzado rutinario no es necesario para la celosia Plumosa",
+        "guidance": "Mississippi State indica que el pinzado no es necesario para celosia y distingue las formas cockscomb, para las que sí lo recomienda. No transfieras ese consejo específico de cockscomb al tipo Plumosa."
+      },
+      "flowering": {
+        "short": "NC State describe floración desde fines de primavera hasta las heladas; no es un calendario local garantizado",
+        "guidance": "La ficha general de C. argentea de NC State sitúa la floración desde fines de primavera hasta la primera helada y describe la forma plumosa del grupo Plumosa. La guía separada de flor de corte de Mississippi State explica que el fotoperiodo cambia la velocidad de floración y la longitud del tallo en producción. Ninguna establece un calendario para un paquete o una serie sin identificar."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta los tallos frescos con las plumas plenamente desarrolladas; para secar, usa la misma etapa",
+        "guidance": "Para flor de corte, Mississippi State recomienda cosechar los tallos frescos o secos cuando las flores estén plenamente desarrolladas. Para secarlos, retira el follaje y cuélgalos en un lugar oscuro y bien ventilado. La duración en florero y el almacenamiento publicados dependen del cultivar y del manejo comercial; no se asignan a este tipo sin nombre."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Evita el hacinamiento y la humedad persistente; vigila plagas de producción",
+        "guidance": "NC State advierte que el hacinamiento, la lluvia y la humedad alta pueden pudrir las flores, y que puede presentarse pudrición de raíz; también menciona caracoles y babosas en jardines. La guía de flor de corte de Mississippi State enumera pulgones y trips y describe el oídio como crecimiento blanco y polvoriento en hojas y a veces flores. Son alertas de observación con alcance indicado, no diagnósticos ni afirmaciones de resistencia."
       }
     }
   },
@@ -870,6 +1050,18 @@
       "identity": {
         "short": "Identidad y alcance",
         "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+      },
+      "cultivation": {
+        "short": "La raíz de almacenamiento crece durante el verano y madura con clima fresco",
+        "guidance": "UMN y USU Extension describen el colinabo sueco como un cultivo de estación fresca cuyas raíces necesitan tiempo para desarrollarse y madurar con temperaturas frescas; la guía de Utah lo trata como cultivo de otoño. Ambas recomiendan un lugar soleado y suelo profundo, fértil y bien drenado. Son recomendaciones regionales para exterior y suelo, no una especificación de cultivar ni una receta hidropónica."
+      },
+      "growth": {
+        "short": "Raíz de almacenamiento densa; se distingue del nabo más pequeño y tierno",
+        "guidance": "UMN describe el colinabo sueco como Brassica napus, con raíces normalmente más densas y duras que las del nabo, a menudo de pulpa amarilla y generalmente cocidas. Es contexto del cultivo, no un color o textura garantizados para toda selección; la ficha lo mantiene distinto del nabo Brassica rapa."
+      },
+      "care": {
+        "short": "Evita la sequía y los cambios bruscos de humedad mientras engorda la raíz",
+        "guidance": "UMN y USU advierten que el riego irregular puede perjudicar la calidad de la raíz. UMN señala que el estrés por sequía puede volverla amarga o leñosa; USU también menciona agrietamiento, textura leñosa y esponjosidad. Sus cantidades regionales difieren —aproximadamente 1 pulgada semanal en UMN frente a 1–2 pulgadas en USU—, así que ajústalas al clima y al suelo locales, no como calendario universal."
       },
       "pruning": {
         "short": "Manejo según porte y observación",
@@ -919,31 +1111,39 @@
     }
   },
   "endive": {
-    "summary": "Identidad base de Wave 2 para Escarola. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La endivia es una achicoria de hoja de estación fresca para ensalada y cocina. El calor, los periodos secos y la floración pueden reducir la calidad; no representa endivia belga ni un cultivar con nombre.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Cichorium endivia; tipo general de endivia",
+        "guidance": "Kew acepta Cichorium endivia. Esta ficha representa la endivia como tipo hortícola general de hoja y no identifica un cultivar con nombre, la achicoria belga (Cichorium intybus) ni la ficha distinta de escarola de hoja ancha. La evidencia del cultivo se mantiene en su alcance real de especie, tipo o región."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
+      "cultivation": {
+        "short": "Cultivo de hoja fresca con raíces superficiales",
+        "guidance": "UMN Extension agrupa la endivia con lechugas y achicorias: crecen mejor en condiciones frescas y tienen raíces superficiales que requieren humedad constante del suelo. Sus temperaturas, calendario y espaciamiento en campo corresponden al cultivo exterior de Minnesota; no se trasladan a otros climas ni a sistemas interiores o hidropónicos."
+      },
+      "growth": {
+        "short": "Achicoria de hoja; hay tipos rizados",
+        "guidance": "UMN identifica la endivia entre las achicorias y describe la endivia rizada como una hoja común para ensalada, de sabor suave y ligeramente amargo. Esta identidad general no afirma un cultivar rizado concreto, endivia belga ni las hojas anchas y lisas de la escarola."
+      },
+      "care": {
+        "short": "Mantén la humedad estable y evita pasar de sequía a exceso",
+        "guidance": "UMN señala que estas hojas de raíz superficial necesitan riego regular; un riego abundante después de un periodo seco puede contribuir al tipburn o quemado de bordes. Guíate por la humedad del suelo y el estado de las hojas, no por una cantidad fija de Minnesota para todos los jardines."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Recoge hojas utilizables o corta la planta antes de la floración por calor",
+        "guidance": "UMN recomienda cosechar hojas individuales cuando tengan un tamaño utilizable o cortar la planta completa al nivel del suelo o justo encima. Advierte que el calor y los días largos pueden provocar floración, amargor intenso y el fin de la cosecha. Es orientación general del cultivo, no una fecha de madurez para un tipo de endivia sin cultivar especificado."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila floración, tipburn y daños de insectos en las hojas",
+        "guidance": "UMN informa que el calor y los días largos favorecen la floración con amargor marcado, que las fluctuaciones de humedad pueden causar tipburn y que babosas, caracoles, escarabajos pulga y gusanos cortadores dañan hojas en su grupo de lechuga/endivia/radicchio. Son observaciones regionales del grupo, no un diagnóstico ni una susceptibilidad de cultivar."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Ajusta la distancia al objetivo de cosecha; referencia para suelo exterior",
+        "guidance": "UMN Extension indica 5 pulgadas para cosechar endivia rizada como hoja pequeña, 10–12 pulgadas para plantas de tamaño completo y 8 pulgadas cuando se busca auto-blanqueo. Son referencias de jardín en suelo de Minnesota para las formas descritas; no se aplican a todo tipo de achicoria ni equivalen a posiciones de un sistema Garden."
       },
       "hydroponics": {
-        "short": "Compatibilidad hidropónica pendiente",
-        "guidance": "La evidencia específica para esta identidad sigue pendiente. No copies objetivos de otra especie o cultivar."
+        "short": "Formas de la especie cultivadas en sistema flotante de invernadero",
+        "guidance": "Un ensayo revisado por pares del equipo de la Universidad de Palermo cultivó tanto escarola (Cichorium endivia var. latifolium) como endivia rizada (var. crispum) en un sistema hidropónico flotante. Esto respalda evidencia de producción hidropónica para formas de la especie, pero el tipo general de endivia del catálogo no identifica un cultivar ni demuestra compatibilidad con una máquina Garden X, espaciamiento de cápsulas doméstico o una receta nutritiva transferible."
       }
     }
   }

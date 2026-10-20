@@ -1,12 +1,361 @@
 {
-  "tulsi-holy-basil-ocimum-tenuiflorum":{"summary":"El tulsi es Ocimum tenuiflorum, una especie distinta de la albahaca dulce culinaria (O. basilicum). NC State Extension documenta su propagación por semilla, crecimiento erecto rápido, cultivo a pleno sol y uso culinario; no se especifica cultivar.","sections":{"identity":{"guidance":"Kew acepta Ocimum tenuiflorum. NC State Extension incluye Tulsi, Tulasi y Holy Basil entre sus nombres comunes y señala el nombre histórico O. sanctum. No es un cultivar de Ocimum basilicum."},"cultivation":{"guidance":"NC State Extension describe una hierba erecta, multicaulinar y de crecimiento rápido que prefiere pleno sol y suelo húmedo pero bien drenado. El contexto regional de exterior no establece una intensidad de lámpara ni una receta hidropónica."},"propagation":{"guidance":"NC State indica propagación por semilla y señala que la planta se resiembra con facilidad. La página revisada no aporta profundidad, tiempo ni temperatura de germinación exactos."},"harvest":{"guidance":"NC State Extension describe las hojas como hierba culinaria, comúnmente cocida o utilizada en infusiones. Distingue su sabor especiado del de la albahaca común; la guía es a nivel de especie."},"problems":{"guidance":"La ficha de extensión señala la autosiembra y la posible conducta de maleza fuera del área nativa. Es una advertencia ecológica regional, no una afirmación de invasividad en cualquier lugar."}}},
-  "common-fenugreek-trigonella-foenum-graecum":{"summary":"El fenogreco común es la especie anual Trigonella foenum-graecum, cultivada por sus hojas y semillas maduras. NC State describe la especie y OMAFRA aporta contexto regional de cultivo y cosecha en campo en Ontario; no se representa un cultivar ni una receta hidropónica.","metrics":[{"label":"Altura adulta","value":"38–61 cm","note":"Rango exterior a nivel de especie · NC State Extension"},{"label":"Contexto de campo en Ontario","value":"18–27 °C","note":"Rango regional de producción del cultivo · OMAFRA"},{"label":"Cosecha de hierba","value":"30–40 días","note":"Guía de cultivo en Ontario; no es un plazo universal doméstico · OMAFRA"},{"label":"Producción de semilla","value":"105–140 días","note":"Guía de cultivo en Ontario; distinta de la cosecha de hojas · OMAFRA"}],"sections":{"identity":{"guidance":"Kew acepta esta especie anual de Fabaceae. Fenogreco, Greek clover y Greek hay son nombres comunes; no se infiere cultivar ni tipo productivo."},"cultivation":{"guidance":"NC State recomienda pleno sol y buen drenaje. OMAFRA describe producción en Ontario a 18–27 °C y suelos francos bien drenados; también informa tolerancia a heladas solo durante la fase vegetativa. Son condiciones regionales de campo, no una receta interior o hidropónica."},"growth":{"short":"Porte erecto anual, con follaje compuesto y vainas visibles","guidance":"NC State describe una especie anual erecta, de crecimiento rápido, de aproximadamente 1 pie 3 pulgadas a 2 pies de altura. Sus folíolos ovalados pueden medir unos 2 pulgadas y tienen vellosidad en el envés; las flores pequeñas aparecen en las axilas superiores y dan lugar a vainas puntiagudas de hasta 4 pulgadas con unas 10–20 semillas. Son descripciones a nivel de especie, no de un cultivar nombrado.","items":["La planta adulta se reconoce por sus hojas compuestas y vainas alargadas.","La fuente informa floración en verano y contexto de cosecha de verano a otoño; no establece un calendario local fijo."]},"propagation":{"guidance":"NC State y OMAFRA identifican la semilla como vía de propagación. El detalle de siembra, manejo de semillas y germinación se conserva en el Perfil de Semilla vinculado, sin duplicarlo en los cuidados de la planta establecida."},"harvest":{"short":"Las hojas y la producción de semilla tienen calendarios distintos","guidance":"NC State describe las partes verdes como hierba/especia y las semillas maduras como condimento. Para Ontario, OMAFRA informa 30–40 días para cosecha de hierba y 105–140 días para producción de semilla; en verano puede requerirse cosechar la hierba antes para evitar la floración. Son rangos regionales de cultivo, no una cuenta regresiva universal ni una promesa para un cultivar."},"problems":{"guidance":"NC State advierte que los suelos húmedos no son adecuados. Las observaciones limitadas de OMAFRA en Ontario incluyen chicharritas, chinche lygus, mancha foliar por Alternaria y pudrición de raíz; no son una lista completa ni un diagnóstico individual. OMAFRA destaca la selección del sitio y la circulación de aire como factores para reducir presión de enfermedades."}}},
-  "peppermint-mentha-piperita":{"summary":"La menta piperita es el híbrido aceptado Mentha × piperita, distinto de la hierbabuena (M. spicata) y de la identidad amplia Common Mint ya existente. NC State documenta su propagación vegetativa preferida y su expansión por rizomas.","sections":{"identity":{"guidance":"Kew acepta Mentha × piperita y presenta la fórmula híbrida M. aquatica × M. spicata. No es intercambiable con la especie Mentha spicata ni con la identidad amplia no resuelta Common Mint."},"cultivation":{"guidance":"NC State describe una perenne erecta y rizomatosa que prefiere suelo rico y húmedo y semisombra en su contexto regional. Se extiende agresivamente; la fuente sugiere cultivo en recipiente para contenerla, no como recomendación hidropónica."},"propagation":{"guidance":"NC State enumera división y esquejes de tallo como estrategias y señala que rara vez produce semilla. Usa material vegetativo para conservar la identidad del híbrido; la fuente no establece instrucciones de siembra."},"harvest":{"guidance":"NC State enumera hojas y flores frescas o secas para infusiones, bebidas, salsas y otros usos, y señala que pinzar puede favorecer un crecimiento más ramificado. Es orientación hortícola a nivel de especie/híbrido."},"problems":{"guidance":"La fuente de extensión caracteriza la menta piperita como cobertura agresiva. Vigila y contiene su expansión cuando sea necesario; no infieras compatibilidad con un sistema Garden a partir del hábito."}}},
-  "wishbone-flower-torenia-fournieri":{"summary":"Torenia fournieri es la identidad a nivel de especie respaldada para el nombre de referencia Torenia. NC State Extension documenta propagación por semilla, cultivo en recipientes, condiciones de sombra/sol parcial y pinzado; no se establece un cultivar violeta.","sections":{"identity":{"guidance":"Kew acepta Torenia fournieri de la familia Linderniaceae. NC State usa Wishbone Flower como nombre común y señala que existen muchos cultivares; el color violeta suministrado no basta para identificar uno."},"cultivation":{"guidance":"NC State describe preferencia por sol parcial a sombra, especialmente en veranos calurosos, y uso en macetas, cestas colgantes y bordes sombreados. El contexto de suelo exterior no demuestra compatibilidad con sistemas de interior."},"propagation":{"guidance":"NC State enumera la semilla como estrategia de propagación de la especie. La fuente seleccionada no indica profundidad, temperatura ni tiempo de germinación."},"pruning":{"guidance":"NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda."}}},
-  "alice-sundew-drosera-aliciae":{"summary":"Drosera aliciae es una planta carnívora perenne sudafricana aceptada. RHS documenta propagación desde semilla fresca y esquejes de hoja/raíz, cultivo muy húmedo con agua baja en minerales y exposición luminosa; no se infiere compatibilidad con hidroponía convencional.","sections":{"identity":{"guidance":"Kew acepta Drosera aliciae. RHS la describe como una planta carnívora perenne nativa del Cabo sudafricano; esta identidad es distinta de Cape Sundew (D. capensis)."},"cultivation":{"guidance":"RHS describe cultivo bajo vidrio con mucha luz y el medio continuamente húmedo a mojado durante el crecimiento, usando agua sin cal; aconseja menos agua estancada en invierno y no fertilizar. Estas condiciones para carnívoras no son una receta de solución nutritiva."},"propagation":{"guidance":"RHS recomienda sembrar la semilla apenas madura y señala que almacenada pierde viabilidad rápidamente. También documenta esquejes de hoja en crecimiento y de raíz durante dormancia; no da calendario numérico de germinación."},"problems":{"guidance":"SANBI describe esta especie carnívora en condiciones húmedas. No diagnostiques un problema por la apariencia sola; revisa humedad y calidad de agua antes de intervenir."}}},
-  "tennessee-coneflower-echinacea-tennesseensis":{"summary":"Tennessee Coneflower es la especie aceptada Echinacea tennesseensis, no un cultivar de E. purpurea seleccionado en Tennessee. Kew confirma su rango nativo estrecho; la Universidad de Tennessee aconseja aislarla de otras Echinacea al guardar semilla para conservar la integridad genética.","sections":{"identity":{"guidance":"Kew acepta Echinacea tennesseensis y enumera E. angustifolia var. tennesseensis como combinación histórica sinónima. El nombre común no se trata como cultivar."},"cultivation":{"guidance":"Kew indica Tennessee como área nativa. Este dato de distribución no es una receta completa de cultivo; las dimensiones, luz, agua y compatibilidad hidropónica quedan sin establecer en las fuentes elegidas."},"propagation":{"guidance":"University of Tennessee Extension indica que para conservar la integridad genética de la semilla, las plantas deben aislarse de otras especies de Echinacea. La fuente no aporta distancia de aislamiento ni protocolo de germinación."},"needsValidation":{"guidance":"Las fuentes autorizadas revisadas establecen la identidad y una precaución de pureza de semilla, pero no un protocolo completo doméstico. No se completan especulativamente dimensiones, suelo, luz, tratamiento de germinación ni trasplante."}}},
-  "micro-tom-tomato":{"summary":"Micro-Tom es un cultivar miniatura y determinado de Solanum lycopersicum desarrollado por la Universidad de Florida. Es distinto de Tiny Tim; NParks informa un porte muy compacto y fructificación aproximadamente 50–60 días desde la siembra, sin inferir compatibilidad hidropónica general.","sections":{"identity":{"guidance":"Kew acepta Solanum lycopersicum como tomate cultivado. NParks identifica Micro-Tom como cultivar enano y determinado desarrollado por la Universidad de Florida; no se afirma que sea el mismo cultivar que Tiny Tim."},"cultivation":{"guidance":"NParks informa que Micro-Tom alcanza alrededor de 20 cm y produce una cosecha concentrada. UF lo incluye entre cultivares compactos estudiados para cultivo interior. Esto no establece compatibilidad con todo sistema interior o hidropónico."},"propagation":{"guidance":"Las referencias identifican Micro-Tom como cultivar y describen el intervalo de fructificación desde la siembra, pero las fuentes institucionales seleccionadas no indican profundidad, temperatura de germinación ni etapa de trasplante. Esos campos siguen pendientes."},"harvest":{"guidance":"NParks reporta fructificación aproximadamente 50–60 días desde la siembra. Se conserva como estimación de fuente para el cultivar, no como garantía local ni estándar exacto de madurez."}}},
-  "orange-hat-micro-dwarf-tomato":{"summary":"Orange Hat es un cultivar comercial de tomate microenano distinto de Micro-Tom y Tiny Tim. La ficha de Baker Creek respalda el producto nombrado e indica dimensiones e instrucciones de siembra específicas del cultivar; esos datos comerciales no se generalizan a la especie.","sections":{"identity":{"guidance":"Kew acepta Solanum lycopersicum. Baker Creek comercializa semillas de tomate Orange Hat con ese nombre. Su página respalda atributos del producto/cultivar; no se afirma obtentor ni registro formal."},"cultivation":{"guidance":"Baker Creek describe Orange Hat como determinado, extraenano y de 6–9 pulgadas. Son características del cultivar declaradas por el proveedor, no dimensiones de otros tomates enanos ni garantía para todo entorno."},"propagation":{"guidance":"Baker Creek indica sembrar aproximadamente a 1/8 de pulgada y reporta germinación en 7–14 días cerca de 75–85 °F. Es guía del producto; usa el paquete comprado si difiere."},"harvest":{"guidance":"Baker Creek indica 55–65 días a madurez. La estimación se mantiene al alcance del producto y no representa una fecha garantizada de cosecha interior."},"pruning":{"guidance":"Baker Creek dice que este cultivar determinado no necesita poda intensa y describe solo recortar ligeramente hojas inferiores. Es recomendación específica del proveedor, no regla universal para tomate."}}},
-  "black-pearl-ornamental-pepper":{"summary":"Black Pearl es el cultivar ornamental de USDA, Capsicum annuum 'Black Pearl', seleccionado por follaje oscuro y racimos erectos de frutos que cambian de negro a rojo. Su selección ornamental no establece recomendación culinaria ni compatibilidad hidropónica.","sections":{"identity":{"guidance":"Kew acepta Capsicum annuum a nivel de especie. USDA ARS identifica Black Pearl como cultivar ornamental desarrollado junto con el U.S. National Arboretum y PanAmerican Seed; no es un tipo genérico de pimiento negro."},"cultivation":{"guidance":"USDA ARS describe follaje negro y racimos erectos de frutos pequeños que se vuelven rojos, con desempeño ornamental compacto y evaluación limitada en maceta con luz alta. La fuente no establece protocolo hidropónico general."},"propagation":{"guidance":"USDA ARS informa disponibilidad de semilla para el cultivar nombrado. El registro de liberación revisado no aporta profundidad, tiempo o temperatura de germinación; esos datos siguen sin verificarse."},"harvest":{"guidance":"La introducción del USDA Arboretum describe frutos que aparecen negros y cambian a rojo cereza. Presenta el cultivar para uso ornamental; esta ficha no infiere que los frutos estén destinados a comerse."}}},
-    "white-carolina-pineberry":{"summary":"White Carolina se representa como un nombre comercializado por un proveedor dentro de Fragaria × ananassa. El material de referencia es planta a raíz desnuda, no semilla; la ficha comercial respalda el nombre, mientras que el registro varietal independiente y los rasgos específicos siguen pendientes.","sections":{"identity":{"guidance":"Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse lista Fragaria × ananassa 'White Carolina' como pineberry. La ficha comercial respalda el nombre usado aquí, pero no demuestra por sí sola registro varietal ni linaje."},"cultivation":{"guidance":"University of Illinois Extension describe las pineberries como fresas Fragaria × ananassa blancas a rosadas y recomienda empezar con trasplantes de vivero. Son hechos a nivel de grupo/cultivo, no desempeño específico de White Carolina."},"propagation":{"guidance":"El contexto del producto identifica material de fresa a raíz desnuda. Por eso no se publican instrucciones de semilla; la producción específica de estolones y propagación del cultivar siguen pendientes."},"needsValidation":{"guidance":"No se verificaron independientemente el estado varietal exacto de White Carolina, el origen del stock a raíz desnuda ni el comportamiento de estolones de este cultivar."}}}
+  "tulsi-holy-basil-ocimum-tenuiflorum": {
+    "summary": "El tulsi es la especie Ocimum tenuiflorum, distinta de la albahaca dulce culinaria. NC State Extension describe su crecimiento rápido y multicaulinar, follaje aromático, variación de color floral, uso culinario de las hojas y advertencias regionales sobre propagación y plagas; no se especifica cultivar.",
+    "sections": {
+      "identity": {
+        "short": "Identidad aceptada: Ocimum tenuiflorum",
+        "guidance": "Kew acepta Ocimum tenuiflorum. NC State Extension incluye Tulsi, Tulasi y Holy Basil entre sus nombres comunes y señala el nombre histórico O. sanctum. No es un cultivar de Ocimum basilicum."
+      },
+      "growth": {
+        "short": "Hierba aromática, erecta y de crecimiento rápido, con varios tallos",
+        "guidance": "NC State Extension describe el tulsi como anual o perenne de vida corta/subarbusto aromático, de crecimiento rápido, porte erecto y varios tallos, que puede alcanzar unos 91 cm. Sus hojas opuestas son aromáticas y pueden tener un matiz púrpura; los tallos pueden ser verdes o púrpuras. La fuente lo describe como de vida más corta que la albahaca dulce culinaria; la duración real depende de las condiciones. Son rasgos de especie, no medidas de cultivar."
+      },
+      "cultivation": {
+        "short": "Pleno sol; evita el suelo encharcado",
+        "guidance": "NC State Extension describe una hierba erecta, multicaulinar y de crecimiento rápido que prefiere pleno sol y suelo húmedo pero bien drenado, y recomienda limitar el espacio o usar un recipiente para controlar su expansión. Es guía regional de exterior; no establece intensidad de lámpara ni receta hidropónica."
+      },
+      "propagation": {
+        "short": "Se documenta la propagación por semilla",
+        "guidance": "NC State indica propagación por semilla y señala que la planta se resiembra con facilidad. La página revisada no aporta profundidad, tiempo ni temperatura de germinación exactos."
+      },
+      "harvest": {
+        "short": "Hojas de uso culinario",
+        "guidance": "NC State Extension describe las hojas como hierba culinaria, comúnmente cocida o utilizada en infusiones. Distingue su sabor especiado del de la albahaca común; la guía es a nivel de especie."
+      },
+      "problems": {
+        "short": "Controla su expansión cuando sea necesario",
+        "guidance": "La ficha de extensión señala la autosiembra y la posible conducta de maleza fuera del área nativa; contiene la planta si preocupa que se propague. También informa que los escarabajos japoneses esqueletizan las hojas y recomienda retirarlos a mano. Es una advertencia regional, no una afirmación de que la plaga o la conducta invasora aparezcan en todas partes."
+      },
+      "flowering": {
+        "short": "Flores pequeñas en racimos terminales; el color varía",
+        "guidance": "NC State Extension describe flores tubulares pequeñas en racimos terminales o panículas, y reporta blanco, rosa o púrpura en su descripción de la especie. Es una gama a nivel de especie, no una predicción para un cultivar sin identificar ni una garantía de floración en interior."
+      }
+    }
+  },
+  "common-fenugreek-trigonella-foenum-graecum": {
+    "summary": "El fenogreco común se cultiva como hierba anual de estación fresca por sus hojas y, si se deja completar el ciclo, por sus semillas. La cosecha de hojas y la producción de semilla requieren objetivos de manejo distintos; la aptitud hidropónica sigue sin establecerse.",
+    "metrics": [
+      {
+        "label": "Altura adulta",
+        "value": "38–61 cm",
+        "note": "Rango exterior a nivel de especie · NC State Extension"
+      },
+      {
+        "label": "Contexto de campo en Ontario",
+        "value": "18–27 °C",
+        "note": "Rango regional de producción del cultivo · OMAFRA"
+      },
+      {
+        "label": "Cosecha de hierba",
+        "value": "30–40 días",
+        "note": "Guía de cultivo en Ontario; no es un plazo universal doméstico · OMAFRA"
+      },
+      {
+        "label": "Producción de semilla",
+        "value": "105–140 días",
+        "note": "Guía de cultivo en Ontario; distinta de la cosecha de hojas · OMAFRA"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Identidad aceptada: Trigonella foenum-graecum",
+        "guidance": "Kew acepta esta especie anual de Fabaceae. Fenogreco, Greek clover y Greek hay son nombres comunes; no se infiere cultivar ni tipo productivo."
+      },
+      "cultivation": {
+        "short": "Pleno sol; evita el suelo persistentemente húmedo",
+        "guidance": "NC State recomienda pleno sol y buen drenaje. OMAFRA describe producción en Ontario a 18–27 °C y suelos francos bien drenados; también informa tolerancia a heladas solo durante la fase vegetativa. Son condiciones regionales de campo, no una receta interior o hidropónica."
+      },
+      "growth": {
+        "short": "Porte erecto anual, con follaje compuesto y vainas visibles",
+        "guidance": "NC State describe una especie anual erecta, de crecimiento rápido, de aproximadamente 1 pie 3 pulgadas a 2 pies de altura. Sus folíolos ovalados pueden medir unos 2 pulgadas y tienen vellosidad en el envés; las flores pequeñas aparecen en las axilas superiores y dan lugar a vainas puntiagudas de hasta 4 pulgadas con unas 10–20 semillas. Son descripciones a nivel de especie, no de un cultivar nombrado.",
+        "items": [
+          "La planta adulta se reconoce por sus hojas compuestas y vainas alargadas.",
+          "La fuente informa floración en verano y contexto de cosecha de verano a otoño; no establece un calendario local fijo."
+        ]
+      },
+      "propagation": {
+        "short": "Se documenta la propagación por semilla",
+        "guidance": "NC State y OMAFRA identifican la semilla como vía de propagación. El detalle de siembra, manejo de semillas y germinación se conserva en el Perfil de Semilla vinculado, sin duplicarlo en los cuidados de la planta establecida."
+      },
+      "harvest": {
+        "short": "Las hojas y la producción de semilla tienen calendarios distintos",
+        "guidance": "NC State describe las partes verdes como hierba/especia y las semillas maduras como condimento. Para Ontario, OMAFRA informa 30–40 días para cosecha de hierba y 105–140 días para producción de semilla; en verano puede requerirse cosechar la hierba antes para evitar la floración. Son rangos regionales de cultivo, no una cuenta regresiva universal ni una promesa para un cultivar."
+      },
+      "problems": {
+        "short": "Los suelos húmedos son una preocupación documentada",
+        "guidance": "NC State advierte que los suelos húmedos no son adecuados. Las observaciones limitadas de OMAFRA en Ontario incluyen chicharritas, chinche lygus, mancha foliar por Alternaria y pudrición de raíz; no son una lista completa ni un diagnóstico individual. OMAFRA destaca la selección del sitio y la circulación de aire como factores para reducir presión de enfermedades."
+      },
+      "care": {
+        "short": "Cultivo de estación fresca; evitar exceso de agua",
+        "guidance": "UC Master Gardeners describe el fenogreco como hierba de estación fresca, con necesidad de agua baja a moderada y buen drenaje, y recomienda evitar el riego excesivo. OMAFRA indica que el riego beneficia la producción de hierba bajo condiciones de Ontario. Ninguna fuente establece un calendario fijo de riego interior."
+      },
+      "flowering": {
+        "short": "La floración depende del objetivo: hojas o semilla",
+        "guidance": "UC Master Gardeners señala que el fenogreco empieza a producir semilla cuando aumentan las temperaturas de primavera y recomienda permitir rebrote y floración cuando se busca semilla. OMAFRA indica que en tiempo caluroso la cosecha de hierba puede adelantarse para evitar la floración. No es una instrucción universal de retirar todas las flores."
+      }
+    }
+  },
+  "peppermint-mentha-piperita": {
+    "summary": "La menta piperita es el híbrido aceptado Mentha × piperita, distinto de la hierbabuena (M. spicata) y de la identidad amplia Common Mint ya existente. NC State documenta su propagación vegetativa preferida y su expansión por rizomas.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Mentha × piperita y presenta la fórmula híbrida M. aquatica × M. spicata. No es intercambiable con la especie Mentha spicata ni con la identidad amplia no resuelta Common Mint."
+      },
+      "growth": {
+        "short": "Perenne erguida y vigorosa que se extiende por rizomas",
+        "guidance": "NC State describe la menta piperita como un híbrido perenne erguido que forma una cobertura agresiva mediante rizomas. Sus rangos de altura y extensión corresponden a contexto exterior regional, no son garantías para recipientes o sistemas interiores."
+      },
+      "cultivation": {
+        "guidance": "NC State describe una perenne erecta y rizomatosa que prefiere suelo rico y húmedo y semisombra en su contexto regional. Se extiende agresivamente; la fuente sugiere cultivo en recipiente para contenerla, no como recomendación hidropónica."
+      },
+      "propagation": {
+        "guidance": "NC State enumera división y esquejes de tallo como estrategias y señala que rara vez produce semilla. Usa material vegetativo para conservar la identidad del híbrido; la fuente no establece instrucciones de siembra."
+      },
+      "harvest": {
+        "guidance": "NC State enumera hojas y flores frescas o secas para infusiones, bebidas, salsas y otros usos, y señala que pinzar puede favorecer un crecimiento más ramificado. Johnny's ofrece una guía general para Mentha: las hojas individuales pueden recogerse cuando la planta ya está establecida, mientras que la cosecha de la planta completa se realiza justo antes de florecer; para secar, recomienda un lugar cálido, bien ventilado y sin sol directo. El momento y método de secado son guía de cultivo a nivel de género, no una regla de rendimiento o aceite esencial específica de la menta piperita."
+      },
+      "pruning": {
+        "short": "Pinza las puntas de las ramas para favorecer crecimiento tupido y frondoso",
+        "guidance": "NC State recomienda pinzar regularmente las puntas de las ramas; indica que favorece un crecimiento más tupido y frondoso y aumenta la cosecha disponible. Es manejo de una planta establecida, no un protocolo de plántula."
+      },
+      "flowering": {
+        "short": "Flores pequeñas rosadas a lavanda en verano; rara vez produce semilla",
+        "guidance": "NC State describe flores tubulares pequeñas, rosadas a lavanda, en espigas terminales densas que florecen en verano. Informa que la menta piperita rara vez produce semilla, coherente con mantener vegetativamente el híbrido Mentha × piperita. Es contexto de Carolina del Norte, no un calendario universal de floración."
+      },
+      "problems": {
+        "guidance": "NC State caracteriza la menta piperita como una cobertura agresiva por rizomas y registra toxicidad de baja gravedad: una ingestión humana abundante puede causar vómitos o diarrea, y la planta aparece señalada como problemática para gatos, perros y caballos. Contén su expansión y considera el acceso de las mascotas. Esta advertencia no convierte el uso culinario de las hojas en un uso medicinal ni proporciona una dosis; los aceites esenciales concentrados no son equivalentes a las hojas culinarias."
+      }
+    }
+  },
+  "wishbone-flower-torenia-fournieri": {
+    "summary": "Torenia fournieri es la identidad a nivel de especie respaldada para el nombre de referencia Torenia. NC State Extension documenta propagación por semilla, cultivo en recipientes, condiciones de sombra/sol parcial y pinzado; no se establece un cultivar violeta.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Torenia fournieri de la familia Linderniaceae. NC State usa Wishbone Flower como nombre común y señala que existen muchos cultivares; el color violeta suministrado no basta para identificar uno."
+      },
+      "cultivation": {
+        "guidance": "NC State describe preferencia por sol parcial a sombra, especialmente en veranos calurosos, y uso en macetas, cestas colgantes y bordes sombreados. Recomienda suelo rico y húmedo y acolchado para mantener frescas las raíces. Es una guía hortícola de exterior/recipiente, no prueba de compatibilidad con sistemas de interior."
+      },
+      "growth": {
+        "short": "Anual baja, de hábito erguido a extendido",
+        "guidance": "NC State da un rango general para la especie de 6–18 pulgadas de alto y 6–8 pulgadas de ancho. No es una dimensión de un cultivar violeta sin identificar."
+      },
+      "flowering": {
+        "short": "Flores tubulares bicolores durante verano y otoño",
+        "guidance": "NC State describe una floración larga, con flores tubulares bicolores y un par de estambres unidos con forma de espoleta. La página describe tonos violetas/azules para la especie y señala que muchos cultivares amplían la gama; el nombre de referencia violeta no identifica un cultivar."
+      },
+      "propagation": {
+        "guidance": "NC State enumera la semilla como estrategia de propagación de la especie. La fuente seleccionada no indica profundidad, temperatura ni tiempo de germinación."
+      },
+      "pruning": {
+        "guidance": "NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda."
+      }
+    }
+  },
+  "alice-sundew-drosera-aliciae": {
+    "summary": "Drosera aliciae es una planta carnívora perenne sudafricana aceptada. RHS documenta propagación desde semilla fresca y esquejes de hoja/raíz, cultivo muy húmedo con agua baja en minerales y exposición luminosa; no se infiere compatibilidad con hidroponía convencional.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Drosera aliciae",
+        "guidance": "Kew acepta Drosera aliciae. RHS la describe como una planta carnívora perenne nativa del Cabo sudafricano; esta identidad es distinta de Cape Sundew (D. capensis)."
+      },
+      "growth": {
+        "short": "Roseta basal densa que puede formar un montículo bajo",
+        "guidance": "RHS describe hojas espatuladas con glándulas rojas pegajosas en una roseta basal densa y cespitosa. Las hojas basales viejas pueden acumularse y formar un montículo de 1,5–4 cm; RHS también indica una altura máxima de hasta 10 cm y una extensión de 0,1–0,5 m. Son dimensiones del perfil de RHS, no una huella garantizada en interior."
+      },
+      "cultivation": {
+        "short": "Necesita luz abundante, humedad y agua baja en minerales",
+        "guidance": "RHS describe cultivo bajo vidrio con mucha luz y el medio continuamente húmedo a mojado durante el crecimiento, usando agua sin cal; aconseja menos agua estancada en invierno y no fertilizar. Estas condiciones para carnívoras no son una receta de solución nutritiva."
+      },
+      "flowering": {
+        "short": "Flores rosa intenso sobre la roseta en verano",
+        "guidance": "RHS informa una inflorescencia de verano de hasta 4 cm, con 2–12 flores individuales rosa intenso que abren en orden ascendente. Es una floración normal, no una señal de que la roseta esté fallando."
+      },
+      "pruning": {
+        "short": "No requiere poda rutinaria",
+        "guidance": "RHS indica que Drosera aliciae no requiere poda. La ficha no recomienda retirar hojas sanas ni tallos florales."
+      },
+      "propagation": {
+        "short": "Semilla fresca y esquejes son métodos documentados",
+        "guidance": "RHS recomienda sembrar la semilla apenas madura y señala que almacenada pierde viabilidad rápidamente. También documenta esquejes de hoja en crecimiento y de raíz durante dormancia; no da calendario numérico de germinación."
+      },
+      "problems": {
+        "short": "Revisa la humedad y la calidad del agua antes de intervenir",
+        "guidance": "SANBI describe esta especie carnívora en condiciones húmedas. No diagnostiques un problema por la apariencia sola; revisa humedad y calidad de agua antes de intervenir."
+      }
+    }
+  },
+  "tennessee-coneflower-echinacea-tennesseensis": {
+    "summary": "Tennessee Coneflower es la especie aceptada Echinacea tennesseensis, no un cultivar de E. purpurea seleccionado en Tennessee. Kew y NC State confirman la identidad y su distribución nativa en Tennessee; la guía de Extension también documenta cultivo exterior y la precaución de cruzamiento al guardar semilla.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Echinacea tennesseensis y enumera E. angustifolia var. tennesseensis como combinación histórica sinónima. NC State también trata Tennessee Coneflower como el nombre de la especie, no como cultivar de E. purpurea."
+      },
+      "growth": {
+        "guidance": "NC State informa crecimiento lento y un rango paisajístico a nivel de especie de 1–2 pies tanto de alto como de ancho. Son datos de jardín exterior, no dimensiones para una máquina o pod interior."
+      },
+      "cultivation": {
+        "guidance": "NC State informa sol pleno a semisombra y suelos de humedad promedio a seca en su guía regional. Kew y NC State sitúan su distribución nativa en Tennessee; estas condiciones paisajísticas no demuestran compatibilidad hidropónica."
+      },
+      "flowering": {
+        "guidance": "NC State describe flores con radios erectos rosa-púrpura y centro naranja entre junio y agosto. La floración es una etapa estacional normal; el calendario es regional, no una programación interior."
+      },
+      "care": {
+        "guidance": "NC State y University of Tennessee Extension advierten que Echinacea tennesseensis se cruza con otras Echinacea; las semillas obtenidas cerca de otras equináceas podrían no reproducir fielmente la identidad. UT recomienda aislamiento cuando se busca conservar la integridad genética de la semilla, pero no establece una distancia exacta. Es una precaución para producir semilla, no una instrucción rutinaria de poda."
+      },
+      "propagation": {
+        "guidance": "NC State enumera la semilla como vía de propagación y advierte que el cruce con otras Echinacea puede producir semillas que no crezcan fieles al tipo. University of Tennessee Extension también recomienda aislamiento para conservar la integridad genética, pero no ofrece una distancia exacta ni protocolo doméstico de germinación; no se crea un Perfil de Semilla sin esa evidencia."
+      },
+      "uses": {
+        "guidance": "NC State enumera bordes, praderas y jardines de bosque como usos; informa visitas de polinizadores y que los pinzones comen las semillas. La fuente respalda valor ornamental y para fauna, no uso comestible humano."
+      },
+      "problems": {
+        "guidance": "NC State no informa problemas graves recurrentes; menciona escarabajos japoneses ocasionales y manchas foliares poco frecuentes. Son observaciones de la fuente, no una afirmación de resistencia a enfermedades."
+      }
+    }
+  },
+  "micro-tom-tomato": {
+    "summary": "Micro-Tom es un cultivar enano y determinado de tomate desarrollado por la Universidad de Florida. NParks describe una planta arbustiva de unos 15–20 cm con frutos rojos pequeños que aparecen en una cosecha concentrada. UF incluyó Micro-Tom entre cultivares compactos estudiados en interior; esto no demuestra compatibilidad hidropónica universal.",
+    "sections": {
+      "identity": {
+        "short": "Cultivar nombrado: Solanum lycopersicum 'Micro-Tom'",
+        "guidance": "Kew acepta Solanum lycopersicum como tomate cultivado. NParks identifica Micro-Tom como cultivar enano y determinado desarrollado por la Universidad de Florida; no se afirma que sea el mismo cultivar que Tiny Tim."
+      },
+      "cultivation": {
+        "short": "Sol exterior y cultivo en recipiente están documentados",
+        "guidance": "NParks recomienda al menos 4–6 horas de sol directo, incluye el cultivo en recipiente y describe suelo franco fértil y bien drenado. UF incluyó Micro-Tom entre cultivares compactos evaluados en interior. La cifra de sol exterior no es un nivel de luz de cultivo interior y el estudio no establece compatibilidad hidropónica universal."
+      },
+      "growth": {
+        "short": "Porte arbustivo, enano y determinado; fructificación compacta",
+        "guidance": "NParks describe Micro-Tom como cultivar arbustivo, enano y determinado, de unos 15–20 cm. Sus frutos redondos, rojo intenso, miden cerca de 1.5 cm y suelen aparecer en conjunto, alrededor de 25. Son observaciones de NParks para este cultivar, no dimensiones ni rendimiento esperable de otros tomates enanos."
+      },
+      "harvest": {
+        "short": "Usa la señal del fruto rojo y liso; no se publica un plazo fiable",
+        "guidance": "NParks describe el fruto Micro-Tom maduro como rojo y liso, con una cosecha concentrada. Su página se contradice: el texto narrativo indica unos 50–60 días desde la siembra, mientras que otro campo señala 90–120 días hasta la fructificación típica. Gardenpedia no publica ninguno como calendario fiable; usa la señal visible del fruto y considera desconocido el plazo exacto."
+      },
+      "care": {
+        "short": "Mantén la zona radicular húmeda pero drenada; no hay una pauta fija de riego",
+        "guidance": "NParks registra preferencias de agua moderada y alta, además de raíces en suelo franco fértil y bien drenado, por lo que no establece una cantidad precisa. La orientación general de UMN para tomate favorece humedad estable y riego en la base; decide según el sustrato y la planta, no por calendario o volumen de depósito."
+      },
+      "support": {
+        "short": "Arbusto compacto y determinado; no se establece que necesite tutorado rutinario",
+        "guidance": "NParks identifica Micro-Tom como cultivar enano, determinado y arbustivo. UMN indica que los tomates arbustivos generalmente no requieren estaca o espaldera, pero no probó Micro-Tom específicamente; observa la planta y la carga de frutos en lugar de asumir que nunca necesitará apoyo."
+      },
+      "problems": {
+        "short": "Vigila las plagas chupadoras listadas y evita fertilizar en exceso",
+        "guidance": "NParks enumera pulgones, moscas blancas, ácaros rojos y nematodos agalladores como problemas potenciales, y advierte que el exceso de fertilización puede favorecer los pulgones. Revisa el follaje con regularidad; es una lista de vigilancia de la fuente, no un diagnóstico ni una recomendación de pesticida específica."
+      },
+      "flowering": {
+        "short": "El movimiento de la flor ayuda al cuajado; el calor sostenido puede causar caída floral",
+        "guidance": "A nivel del cultivo de tomate, UMN Extension explica que las partes de la flor están próximas y que el movimiento floral puede transferir polen; el tomate puede producir fruto sin polinización por abejas. Como ejemplo específico de Minnesota, UMN indica que días sostenidos por encima de 85 °F y noches por encima de 70 °F pueden estresar las flores y dificultar el cuajado; después, pueden caer. Tómalo como contexto regional, no como resultado de ensayos de Micro-Tom ni como consigna de temperatura interior."
+      }
+    }
+  },
+  "orange-hat-micro-dwarf-tomato": {
+    "summary": "Orange Hat es un cultivar comercial de tomate microenano distinto de Micro-Tom y Tiny Tim. Baker Creek describe su porte extraenano, fruto naranja y manejo de recipiente; esos datos del producto no se generalizan a la especie.",
+    "sections": {
+      "identity": {
+        "short": "Identidad de cultivar comercial nombrado: Orange Hat",
+        "guidance": "Kew acepta Solanum lycopersicum. Baker Creek comercializa semillas de tomate Orange Hat con ese nombre. Su página respalda atributos del producto/cultivar; no se afirma obtentor ni registro formal."
+      },
+      "cultivation": {
+        "short": "Producto descrito para ventanas soleadas o macetas de patio",
+        "guidance": "Baker Creek describe Orange Hat como determinado, extraenano y de 6–9 pulgadas, apto para patio o recipiente, y recomienda pleno sol. Son características del cultivar declaradas por el proveedor, no dimensiones de otros tomates enanos ni una equivalencia con luz interior o compatibilidad hidropónica."
+      },
+      "growth": {
+        "short": "Arbusto determinado extraenano, listado a 6–9 pulgadas",
+        "guidance": "Baker Creek describe su producto Orange Hat como arbusto determinado extraenano de 6–9 pulgadas, con frutos pequeños anaranjados. Son características del cultivar declaradas por el vendedor y no se generalizan a Micro-Tom, Tiny Tim ni a los tomates enanos como grupo."
+      },
+      "care": {
+        "short": "Riego regular y abonado balanceado ocasional; sin calendario especificado",
+        "guidance": "Baker Creek recomienda riego regular y fertilizante balanceado ocasional para Orange Hat, pero no da intervalo ni dosis medidos. Iowa State indica que los tomates en recipiente pueden secarse rápido, necesitan riego profundo con drenaje y no deben permanecer anegados; esa orientación general no es una receta hidropónica."
+      },
+      "support": {
+        "short": "Baker Creek indica que este producto compacto no requiere estaca",
+        "guidance": "El proveedor afirma que el porte compacto de Orange Hat no requiere tutorado. Es una recomendación al nivel del producto; observa la planta si la carga de frutos o las condiciones hacen que los tallos se inclinen."
+      },
+      "harvest": {
+        "short": "La madurez tiene una estimación del proveedor",
+        "guidance": "Baker Creek lista 55–65 días a madurez y describe frutos naranjas dulces. La cifra es una estimación comercial del producto, no una fecha garantizada ni necesariamente un conteo desde la siembra; usa el color completo del fruto como señal y la referencia general de tomate indica que el fruto maduro cede ligeramente al tacto."
+      },
+      "pruning": {
+        "short": "El proveedor no aconseja poda intensa",
+        "guidance": "Baker Creek dice que este cultivar determinado no necesita poda intensa y describe solo recortar ligeramente hojas inferiores. Es recomendación específica del proveedor, no regla universal para tomate."
+      },
+      "problems": {
+        "short": "Vigila grietas y pudrición apical cuando fluctúe la humedad",
+        "guidance": "Aquí no se establece resistencia ni susceptibilidad varietal específica de Orange Hat. Iowa State describe las grietas y la pudrición apical como problemas relacionados con la humedad irregular en tomates de recipiente; inspecciona los frutos y el medio antes de diagnosticar y no atribuyas estos riesgos a un defecto del cultivar."
+      },
+      "flowering": {
+        "short": "El movimiento de la flor ayuda al cuajado; el calor sostenido puede causar caída floral",
+        "guidance": "A nivel del cultivo de tomate, UMN Extension explica que las partes de la flor están próximas y que el movimiento floral puede transferir polen; el tomate puede producir fruto sin polinización por abejas. Como ejemplo específico de Minnesota, UMN indica que días sostenidos por encima de 85 °F y noches por encima de 70 °F pueden estresar las flores y dificultar el cuajado; después, pueden caer. Tómalo como contexto regional, no como resultado de ensayos de Orange Hat ni como consigna de temperatura interior."
+      }
+    }
+  },
+  "black-pearl-ornamental-pepper": {
+    "summary": "Black Pearl es el cultivar ornamental de USDA, Capsicum annuum 'Black Pearl', seleccionado por follaje oscuro y racimos erectos de frutos que cambian de negro a rojo. Su selección ornamental no establece recomendación culinaria ni compatibilidad hidropónica.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Capsicum annuum a nivel de especie. USDA ARS identifica Black Pearl como cultivar ornamental desarrollado junto con el U.S. National Arboretum y PanAmerican Seed; no es un tipo genérico de pimiento negro."
+      },
+      "cultivation": {
+      "guidance": "USDA ARS describe follaje negro y racimos erectos de frutos pequeños que se vuelven rojos, con desempeño ornamental compacto y evaluación limitada en maceta con luz alta. El National Arboretum recomienda sol pleno para favorecer el crecimiento y el color negro del follaje, además de suelo franco o franco arenoso bien drenado y con algo de materia orgánica. Ninguna fuente establece un protocolo hidropónico general."
+      },
+    "growth": {
+      "short": "Anual compacta y erguida; suele medir 18 in de alto por 12 in de ancho",
+      "guidance": "El U.S. National Arboretum indica un promedio de 18 pulgadas de alto y 12 de diámetro; en regiones cálidas con temporadas de crecimiento más largas puede alcanzar 2–3 pies de altura. Son medidas de jardín exterior específicas del cultivar, no especificaciones de espacio libre interior ni de separación hidropónica."
+    },
+    "care": {
+      "short": "Su forma compacta no requiere poda",
+      "guidance": "El U.S. National Arboretum indica que Black Pearl conserva su forma compacta y erguida sin poda. No apliques automáticamente a este cultivar ornamental las prácticas de poda usadas para otros objetivos de producción de pimientos."
+    },
+    "flowering": {
+      "short": "Las flores púrpuras de verano preceden racimos ornamentales erguidos",
+      "guidance": "El National Arboretum describe flores púrpuras de verano que no son ornamentales por sí mismas, seguidas por racimos erguidos de 6–8 frutos redondos. Los frutos comienzan negros y brillantes y maduran a rojo cereza; la exhibición de frutos maduros dura aproximadamente 80–120 días, ocasionalmente 140. Es información ornamental específica del cultivar, no un calendario de cosecha."
+    },
+      "propagation": {
+        "guidance": "USDA ARS informa disponibilidad de semilla para el cultivar nombrado. El registro de liberación revisado no aporta profundidad, tiempo o temperatura de germinación; esos datos siguen sin verificarse."
+      },
+      "harvest": {
+        "guidance": "La introducción del USDA Arboretum describe frutos que aparecen negros y cambian a rojo cereza. Presenta el cultivar para uso ornamental; esta ficha no infiere que los frutos estén destinados a comerse."
+    },
+    "problems": {
+      "short": "El calor y la humedad irregular pueden afectar floración y frutos de pimiento",
+      "guidance": "La guía de University of Minnesota Extension se refiere a pimientos como cultivo, no específicamente a Black Pearl: los días y noches muy calurosos pueden causar caída de flores, mientras que la humedad irregular del suelo puede debilitar flores y frutos pequeños y contribuir a la pudrición apical. Son señales generales de Capsicum; no se ha establecido susceptibilidad ni resistencia a enfermedades propia de este cultivar."
+      }
+    }
+  },
+  "white-carolina-pineberry": {
+    "summary": "White Carolina es un nombre de pineberry comercializado dentro de Fragaria × ananassa. Una patente estadounidense documenta White Carolina como progenitor de mejora no patentado de fruto blanco, pero no autentica las plantas que hoy venden los viveros como el mismo clon. Las afirmaciones comerciales sobre polinización se contradicen.",
+    "sections": {
+      "identity": {
+        "short": "Nombre comercial con antecedente de mejora; el material actual no está autenticado",
+        "guidance": "Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse y Raintree Nursery comercializan White Carolina como pineberry de ese híbrido. La patente estadounidense USPP34612 documenta White Carolina/White Pine como progenitor no patentado de fruto blanco de Fragaria × ananassa para QBC-1, lo que respalda el uso histórico del nombre en mejora de fresas. No registra White Carolina ni demuestra que el material actual de los viveros sea un clon del progenitor de la patente. El documento da números USDA PI distintos en pasajes separados; aquí no se asigna ninguno."
+      },
+      "cultivation": {
+        "short": "Pineberry es un tipo de fresa de jardín de fruto blanco",
+        "guidance": "University of Illinois Extension indica que las pineberries se pueden cultivar como otras fresas de jardín: a pleno sol, en suelo bien drenado y rico en materia orgánica, con acolchado para reducir malezas y moderar la humedad y temperatura del suelo. Es orientación exterior para el tipo pineberry, no una receta específica de White Carolina ni una recomendación hidropónica."
+      },
+      "growth": {
+        "short": "Fruto maduro pálido a rosado con aquenios rojos; las dimensiones varían por cultivar",
+        "guidance": "Illinois Extension describe el fruto tipo pineberry como generalmente más pequeño y blando que las fresas rojas comunes, con color blanco a rosado al madurar y aquenios rojos. Para la selección White Carolina comercializada, Ebert's y Walters Gardens indican 15–20 cm de alto y 30–46 cm de extensión; Raintree indica 15–25 cm de alto y la misma extensión. Son especificaciones de proveedores, no mediciones de ensayos independientes, y el material actual del catálogo no está autenticado como el mismo clon; por eso no se presentan como tamaño adulto garantizado. Ebert's también informa numerosos estolones; ese rasgo no se ha confirmado de forma independiente para la selección representada."
+      },
+      "harvest": {
+        "short": "Usa el color de los aquenios, no solo la pulpa blanca, para reconocer madurez",
+        "guidance": "Illinois Extension describe las pineberries maduras como blancas a rosadas con aquenios rojos; el cambio de los aquenios de verde a rojo es una señal más fiable de madurez que la textura blanda. Cosecha con un giro o pellizco suave. Es orientación del tipo pineberry, no una fecha específica de White Carolina."
+      },
+      "pollination": {
+        "short": "Una fresa roja compatible es una pareja de polinización precautoria",
+        "guidance": "Illinois Extension recomienda un cultivar de jardín compatible y de fruto rojo para muchas pineberries, con una proporción general de tres pineberries por una fresa común. Para su producto White Carolina, Walters Gardens recomienda una variedad everbearing (de producción continua) por cada cinco plantas para favorecer la polinización y el desempeño en el paisaje. Raintree también recomienda una pareja everbearing con esa proporción, aunque llama autofértil a su producto; Ebert's afirma que se necesita polen de otra fresa. Por tanto, las fuentes coinciden en que una pareja puede ayudar, pero discrepan sobre si es obligatoria y no establecen una proporción universal. Como adaptación de Garden mientras el material representado aquí siga sin autenticarse, cultiva cerca una fresa roja compatible si priorizas el cuajado; no trates ninguna proporción como regla universal ni como compatibilidad verificada para este stock del catálogo."
+      },
+      "propagation": {
+        "short": "La propagación específica del cultivar no está verificada",
+        "guidance": "La ficha comercial de Ebert's informa numerosos estolones en su White Carolina, pero ninguna fuente independiente revisada confirma ese comportamiento para la selección representada en este catálogo. Ninguna fuente establece un protocolo de semilla específico para este cultivar; no se infiere uno a partir del tipo pineberry."
+      },
+      "needsValidation": {
+        "short": "No se autenticó el material comercial como la línea histórica; hay conflicto sobre polinización",
+        "guidance": "La patente documenta un progenitor histórico White Carolina/White Pine no patentado, pero no autentica las plantas que venden actualmente los viveros como ese mismo clon. Illinois Extension describe las pineberries como autoincompatibles y Ebert's dice que su producto White Carolina necesita polen de otra fresa. Raintree llama autofértil a su producto, pero aun así recomienda una pareja de producción continua por cada cinco plantas; Walters Gardens da de forma independiente esa misma recomendación para White Carolina. El beneficio práctico de una pareja tiene respaldo, pero sigue sin resolverse si el stock actual del catálogo la necesita obligatoriamente. Los estolones informados por Ebert's y los rangos de tamaño comercial siguen siendo afirmaciones del vendedor. La patente también imprime números USDA PI distintos en pasajes separados, por lo que no se asigna un número de acceso."
+      }
+    }
+  }
 }

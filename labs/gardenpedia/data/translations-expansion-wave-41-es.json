@@ -1,90 +1,250 @@
 {
   "polka-dot-plant-hypoestes-phyllostachya": {
-    "summary": "Hypoestes phyllostachya es una especie de hojas moteadas que se vende en varios híbridos de color; esta ficha se mantiene a nivel de especie y no asigna un cultivar. NC State la describe como planta de recipiente o de interior, y también como anual en climas cálidos.",
+    "summary": "Hypoestes phyllostachya es una especie de hojas moteadas que se vende en varios híbridos de color; esta ficha se mantiene a nivel de especie y no asigna un cultivar. NC State describe su forma de jardín y la RHS aporta cuidados para la planta de interior comúnmente vendida, sin atribuir medidas a un híbrido concreto.",
     "sections": {
-      "identity": {"short": "Identidad a nivel de especie; sin híbrido de color asignado", "guidance": "Kew acepta Hypoestes phyllostachya. NC State señala que existen varios híbridos cultivados de distintos colores y enumera nombres comunes como Pink Splash; este registro no afirma que corresponda a un híbrido o cultivar concreto."},
-      "growth": {"short": "Hojas verdes con manchas rosas, rojas o claras", "guidance": "NC State describe hojas ovadas verdes con marcas rosa, rosadas o blancas y una forma densa, redondeada y extendida. La floración es secundaria al follaje; la fuente indica que quitar las espigas florales dirige más energía de la planta al follaje."},
-      "cultivation": {"short": "La luz brillante filtrada conserva el color sin exposición intensa", "guidance": "NC State recomienda luz brillante y filtrada: demasiado sol directo puede rizar o arrugar las hojas, y muy poca luz puede desvanecer el color y producir tallos alargados. Las categorías de sombra exterior no se convierten en un nivel de luz artificial interior."},
-      "maintenance": {"short": "Pinza el crecimiento alargado; quita las espigas si priorizas el follaje", "guidance": "NC State indica que pinzar plantas alargadas puede mantener una forma compacta y que retirar flores favorece el follaje. Ninguna acción se presenta como calendario específico de cultivar."},
-      "propagation": {"short": "Los esquejes de tallo enraízan en agua; la semilla no tiene protocolo", "guidance": "NC State documenta esquejes de tallo en agua y menciona resiembra espontánea en lugares cálidos y templados. No ofrece parámetros de siembra o germinación; por eso no se crea un Seed Profile."},
-      "problems": {"short": "Vigila pudrición de raíz, mildiu e insectos chupadores", "guidance": "NC State menciona pudrición de raíz y mildiu polvoriento como problemas posibles, además de pulgones, cochinillas y moscas blancas. La página no establece una resistencia general a plagas."}
+      "identity": {
+        "short": "Identidad a nivel de especie; sin híbrido de color asignado",
+        "guidance": "Kew acepta Hypoestes phyllostachya. NC State señala que existen varios híbridos cultivados de distintos colores y enumera nombres comunes como Pink Splash; este registro no afirma que corresponda a un híbrido o cultivar concreto."
+      },
+      "growth": {
+        "short": "Hojas verdes con manchas rosas, rojas o claras",
+        "guidance": "NC State describe hojas ovadas verdes con marcas rosas, rojas o blancas y una forma densa, redondeada y extendida. Su ficha indica dimensiones de jardín de 1–2 pies de alto y 9–12 pulgadas de ancho; no son un tamaño fijo para maceta interior ni una medición de un híbrido de color nombrado. La RHS describe la planta de interior comúnmente vendida como pequeña y tupida, de unos 30 cm (1 pie) de alto con el tiempo; es una referencia general de interior, no una medida de cultivar ni de sistema hidropónico."
+      },
+      "cultivation": {
+        "short": "Luz indirecta brillante, calor y humedad uniforme favorecen el follaje interior",
+        "guidance": "NC State recomienda luz brillante y filtrada: demasiado sol directo puede rizar o arrugar las hojas, y muy poca luz puede desvanecer el color y producir tallos alargados. Para plantas de interior, la RHS recomienda abundante luz indirecta brillante, una temperatura mínima de 12 °C (54 °F), humedad moderada a alta y sustrato de interior que retenga humedad; mantenlo húmedo y deja que la superficie se seque un poco entre riegos. Son indicaciones cualitativas para interior/maceta, no un nivel medido de luz artificial, calendario de riego ni receta hidropónica."
+      },
+      "maintenance": {
+        "short": "Pinza el crecimiento alargado; quita las espigas si priorizas el follaje",
+        "guidance": "NC State indica que pinzar plantas alargadas puede mantener una forma compacta y que retirar flores favorece el follaje. La RHS también recomienda pinzar brotes altos y desgarbados y tallos florales para mantener las plantas de interior bajas y tupidas. Ninguna fuente da un calendario específico de cultivar."
+      },
+      "propagation": {
+        "short": "Los esquejes enraízan en agua; la RHS también documenta siembra básica de primavera",
+        "guidance": "NC State documenta esquejes de tallo en agua y menciona resiembra espontánea en lugares cálidos y templados. La RHS también indica sembrar en primavera sobre sustrato húmedo, presionar ligeramente y no cubrir porque la luz estimula la germinación. No aporta duración ni temperatura de germinación; esos datos de semilla no se presentan aquí como un protocolo completo de Seed Profile."
+      },
+      "problems": {
+        "short": "Vigila pudrición de raíz, mildiu, bordes secos e insectos chupadores",
+        "guidance": "NC State menciona pudrición de raíz y mildiu polvoriento como problemas posibles, además de pulgones, cochinillas y moscas blancas. La RHS señala que el aire seco puede volver marrones los bordes y que una planta con falta de agua puede decaer o marchitarse y recuperarse tras un riego abundante. Son señales útiles, no un diagnóstico ni una afirmación de resistencia general a plagas."
+      },
+      "flowering": {
+        "short": "Espigas lilas discretas; pueden aparecer esporádicamente en interiores",
+        "guidance": "NC State describe pequeñas flores tubulares lilas a púrpura pálido en espigas, generalmente a fines de primavera y en verano al exterior; su tabla de rasgos indica que dentro de casa pueden florecer esporádicamente durante el año. Suele cultivarse por el follaje; retirar las espigas es una opción si ese es el objetivo."
+      }
     }
   },
   "purple-heart-tradescantia-pallida": {
     "summary": "Tradescantia pallida es la especie aceptada que suele venderse con el nombre común Purple Heart. La ficha se limita a la especie, no a un cultivar nombrado de hojas moradas; el sol exterior puede intensificar el color y la sombra volver el follaje más verde.",
     "sections": {
-      "identity": {"short": "Especie aceptada; Purple Heart se usa como nombre común", "guidance": "Kew acepta Tradescantia pallida y trata Setcreasea pallida entre sus nombres históricos. NC State usa Purple Heart como nombre común; aquí no se asigna un cultivar nombrado."},
-      "growth": {"short": "Tallos y follaje morados extendidos; flores rosas de un día", "guidance": "NC State describe una perenne baja, extendida y de crecimiento rápido, con tallos y hojas morados. Florece a mediados del verano y cada flor dura un día; la ficha es ornamental y no afirma un uso comestible."},
-      "cultivation": {"short": "El sol exterior intensifica el morado; protégela del frío", "guidance": "NC State recomienda pleno sol a sombra parcial en exterior: el pleno sol produce mejor color y la sombra puede volver el follaje más verde. Informa que no tolera temperaturas inferiores a 50 °F; ese umbral es una advertencia de daño por frío, no una temperatura ideal. Para cultivo exterior recomienda suelo húmedo, bien drenado y rico en materia orgánica."},
-      "maintenance": {"short": "Pinza los tallos para estimular una forma más tupida", "guidance": "NC State recomienda pinzar para estimular una forma más tupida. También se cultiva en recipientes colgantes; la fuente no fija un calendario de poda."},
-      "propagation": {"short": "Los esquejes de tallo son la vía documentada", "guidance": "NC State recomienda esquejes de tallo. No proporciona un protocolo de semilla para esta identidad ornamental; se presenta la vía vegetativa documentada sin afirmar que la semilla sea imposible."},
-      "problems": {"short": "Controla su expansión vigorosa y vigila plagas comunes", "guidance": "NC State advierte que puede volverse invasora en canteros y enumera escamas, pulgones, gorgojos de la vid, cochinillas, orugas, babosas y caracoles. El viento fuerte puede dañar los tallos. La página señala características tóxicas de baja gravedad; evita la ingestión y mantén el material vegetal fuera del alcance apropiado."}
+      "identity": {
+        "short": "Especie aceptada; Purple Heart se usa como nombre común",
+        "guidance": "Kew acepta Tradescantia pallida y trata Setcreasea pallida entre sus nombres históricos. NC State usa Purple Heart como nombre común; aquí no se asigna un cultivar nombrado."
+      },
+      "growth": {
+        "short": "Perenne baja y vigorosa de tallos y hojas morados",
+        "guidance": "NC State describe una perenne baja, extendida y de crecimiento rápido, con tallos y hojas morados. Su ficha indica dimensiones de jardín de aproximadamente 1 pie de alto y 1–2 pies de ancho; son medidas de paisaje, no un tamaño fijo para maceta interior. Se usa como cubresuelo ornamental, planta de borde o en recipientes colgantes; la ficha no afirma un uso comestible."
+      },
+      "cultivation": {
+        "short": "El sol exterior intensifica el morado; protégela del frío",
+        "guidance": "NC State recomienda pleno sol a sombra parcial en exterior: el pleno sol produce mejor color y la sombra puede volver el follaje más verde. Informa que no tolera temperaturas inferiores a 50 °F; ese umbral es una advertencia de daño por frío, no una temperatura ideal. Para cultivo exterior recomienda suelo húmedo, bien drenado y rico en materia orgánica."
+      },
+      "maintenance": {
+        "short": "Pinza los tallos para estimular una forma más tupida",
+        "guidance": "NC State recomienda pinzar para estimular una forma más tupida. También se cultiva en recipientes colgantes; la fuente no fija un calendario de poda."
+      },
+      "propagation": {
+        "short": "Los esquejes de tallo son la vía documentada",
+        "guidance": "NC State recomienda esquejes de tallo. No proporciona un protocolo de semilla para esta identidad ornamental; se presenta la vía vegetativa documentada sin afirmar que la semilla sea imposible."
+      },
+      "problems": {
+        "short": "Controla su expansión vigorosa y vigila plagas comunes",
+        "guidance": "NC State advierte que puede volverse invasora en canteros y enumera escamas, pulgones, gorgojos de la vid, cochinillas, orugas, babosas y caracoles. El viento fuerte puede dañar los tallos. Ingerirla puede irritar boca y estómago, y el contacto con hojas o savia puede irritar la piel de personas y mascotas; evita la ingestión y manipula la savia con cuidado."
+      },
+      "flowering": {
+        "short": "Flores rosadas a púrpura pálido en verano; cada una dura un día",
+        "guidance": "NC State describe pequeñas flores de tres pétalos, rosadas a púrpura pálido, generalmente en grupos terminales a mediados del verano. Cada flor dura un día; es un rasgo ornamental normal, no una indicación de uso comestible."
+      }
     }
   },
   "wax-plant-hoya-pubicalyx": {
     "summary": "Hoya pubicalyx es una trepadora epífita de Filipinas, con follaje ceroso y racimos de flores fragantes. ‘Silver Pink’ es una forma hortícola nombrada que aparece en NC State, pero esta ficha no asigna ese cultivar al registro de especie.",
     "sections": {
-      "identity": {"short": "Especie aceptada; sin cultivar especificado", "guidance": "Kew acepta Hoya pubicalyx como especie filipina. La página de NC State muestra una forma llamada ‘Silver Pink’, pero la identidad canónica aquí permanece a nivel de especie y no hereda la apariencia específica de esa forma."},
-      "growth": {"short": "Trepadora epífita con racimos florales fragantes", "guidance": "NC State describe una perenne epífita con tallos trepadores o rastreros, hojas estrechas y gruesas y racimos de flores rosas cuya fragancia se percibe al anochecer. Señala que la madurez y floración pueden tardar hasta dos años; no es un plazo garantizado."},
-      "cultivation": {"short": "Luz brillante filtrada, humedad y sustrato bien drenado", "guidance": "NC State recomienda luz brillante indirecta, luz filtrada y humedad alrededor de 60–70 %; el sol directo puede quemar el follaje. Mantén temperaturas superiores a 50 °F, ofrece soporte para trepar y usa un sustrato bien drenado. Son recomendaciones para plantas de interior, no parámetros hidropónicos."},
-      "maintenance": {"short": "Deja secar el sustrato entre riegos estacionales; conserva los pedúnculos viejos", "guidance": "NC State recomienda riego frecuente durante el crecimiento activo, dejando secar el sustrato entre riegos, y reducir el agua en otoño e invierno. Aconseja no retirar los pedúnculos viejos porque pueden volver a florecer; se puede podar si la planta crece demasiado."},
-      "propagation": {"short": "Los esquejes de tallo son la vía documentada", "guidance": "NC State enumera los esquejes de tallo para Hoya pubicalyx. La fuente elegida no ofrece método de siembra ni guía de germinación; se indica preferencia vegetativa sin declarar imposible la semilla."},
-      "problems": {"short": "El exceso de riego puede causar pudrición de raíz y caída de hojas", "guidance": "NC State enumera cochinillas, pulgones y moscas blancas, y advierte que el exceso de agua puede causar pudrición de raíz y caída de hojas. Mantén la planta alejada de salidas de aire y calefactores que resecan el follaje; la fuente no establece resistencia a enfermedades."}
+      "identity": {
+        "short": "Especie aceptada; sin cultivar especificado",
+        "guidance": "Kew acepta Hoya pubicalyx como especie filipina. La página de NC State muestra una forma llamada ‘Silver Pink’, pero la identidad canónica aquí permanece a nivel de especie y no hereda la apariencia específica de esa forma."
+      },
+      "growth": {
+        "short": "Trepadora epífita con follaje grueso y estrecho",
+        "guidance": "NC State describe una perenne epífita con tallos trepadores o rastreros y follaje grueso, estrecho y brillante que puede mostrar motas plateadas. Esta descripción a nivel de especie no atribuye a todas las Hoya pubicalyx la apariencia de la forma ‘Silver Pink’ mostrada por separado."
+      },
+      "cultivation": {
+        "short": "Luz brillante filtrada, humedad y sustrato bien drenado",
+        "guidance": "NC State recomienda luz brillante indirecta, luz filtrada y humedad alrededor de 60–70 %; el sol directo puede quemar el follaje. Mantén temperaturas superiores a 50 °F, ofrece soporte para trepar y usa un sustrato bien drenado. Son recomendaciones para plantas de interior, no parámetros hidropónicos."
+      },
+      "maintenance": {
+        "short": "Deja secar el sustrato entre riegos estacionales; conserva los pedúnculos viejos",
+        "guidance": "NC State recomienda riego frecuente durante el crecimiento activo, dejando secar el sustrato entre riegos, y reducir el agua en otoño e invierno. Aconseja no retirar los pedúnculos viejos porque pueden volver a florecer; se puede podar si la planta crece demasiado."
+      },
+      "propagation": {
+        "short": "Los esquejes de tallo son la vía documentada",
+        "guidance": "NC State enumera los esquejes de tallo para Hoya pubicalyx. La fuente elegida no ofrece método de siembra ni guía de germinación; se indica preferencia vegetativa sin declarar imposible la semilla."
+      },
+      "problems": {
+        "short": "El exceso de riego puede causar pudrición de raíz y caída de hojas",
+        "guidance": "NC State enumera cochinillas, pulgones y moscas blancas, y advierte que el exceso de agua puede causar pudrición de raíz y caída de hojas. Mantén la planta alejada de salidas de aire y calefactores que resecan el follaje; la fuente no establece resistencia a enfermedades."
+      },
+      "flowering": {
+        "short": "Los racimos rosados son fragantes por la noche; la madurez floral puede tardar hasta dos años",
+        "guidance": "NC State describe racimos de flores rosa empolvado con centros rosados y fragancia nocturna. La planta madura y florece lentamente; la madurez puede tardar hasta dos años, sin que sea un plazo garantizado. La página muestra por separado la forma nombrada ‘Silver Pink’, por lo que su apariencia específica no se asigna a este registro a nivel de especie."
+      }
     }
   },
   "common-staghorn-fern-platycerium-bifurcatum": {
     "summary": "Platycerium bifurcatum es un helecho epífito aceptado, con frondes escudo estériles y frondes fértiles ramificadas como astas. Puede crecer en mezcla epífita con buen drenaje o montado; el montaje no equivale a cultivo en suelo ni a hidroponía.",
     "sections": {
-      "identity": {"short": "Especie epífita de helecho aceptada", "guidance": "Kew acepta Platycerium bifurcatum en Polypodiaceae y enumera combinaciones históricas como Acrostichum bifurcatum. El helecho cuerno de alce común de NC State corresponde a esa especie; no se asigna cultivar."},
-      "growth": {"short": "Las frondes escudo y las fértiles como astas cumplen funciones distintas", "guidance": "NC State describe frondes escudo estériles pegadas al soporte que atrapan restos, y frondes fértiles bifurcadas que fotosintetizan y producen esporas. Las frondes fértiles suelen alcanzar 2–3 pies en cultivo; la fuente señala longitudes mayores en otros contextos."},
-      "cultivation": {"short": "Cultivo epífito con circulación de aire y luz tamizada", "guidance": "NC State recomienda mezcla para orquídeas o musgo esfagno, o montaje en madera o corteza. Riega la corona con regularidad y deja que las raíces se sequen un poco entre riegos sin dejarlas secar por completo; ofrece sol tamizado a sombra parcial. Este sustrato no implica compatibilidad hidropónica recirculante."},
-      "maintenance": {"short": "Conserva las frondes escudo maduras; divide los hijuelos cuando la planta sea grande", "guidance": "Las frondes escudo marrones son una etapa normal y protegen la corona de raíces; no son automáticamente un problema que deba retirarse. NC State indica que los rizomas producen hijuelos y que las plantas grandes pueden dividirse."},
-      "propagation": {"short": "La división de hijuelos rizomatosos es la vía doméstica documentada", "guidance": "NC State describe hijuelos que brotan en los rizomas y división de plantas grandes. El helecho también se reproduce por esporas, pero la fuente seleccionada no ofrece un protocolo doméstico de siembra; no se crea un Seed Profile."},
-      "problems": {"short": "Evita raíces anegadas y aire estancado con humedad excesiva", "guidance": "NC State enumera ácaros, pulgones y cochinillas, y señala que puede aparecer mancha negra con humedad excesiva. El buen drenaje y la circulación de aire forman parte del contexto de cultivo citado; no se afirma resistencia general a enfermedades."}
+      "identity": {
+        "short": "Especie epífita de helecho aceptada",
+        "guidance": "Kew acepta Platycerium bifurcatum en Polypodiaceae y enumera combinaciones históricas como Acrostichum bifurcatum. El helecho cuerno de alce común de NC State corresponde a esa especie; no se asigna cultivar."
+      },
+      "growth": {
+        "short": "Las frondes escudo y las fértiles como astas cumplen funciones distintas",
+        "guidance": "NC State describe frondes escudo estériles pegadas al soporte que atrapan restos, y frondes fértiles bifurcadas que fotosintetizan y producen esporas. Las frondes fértiles suelen alcanzar 2–3 pies en cultivo; la fuente señala longitudes mayores en otros contextos."
+      },
+      "cultivation": {
+        "short": "Cultivo epífito con circulación de aire y luz tamizada",
+        "guidance": "NC State recomienda mezcla para orquídeas o musgo esfagno, o montaje en madera o corteza. Riega la corona con regularidad y deja que las raíces se sequen un poco entre riegos sin dejarlas secar por completo; ofrece sol tamizado a sombra parcial. Este sustrato no implica compatibilidad hidropónica recirculante."
+      },
+      "maintenance": {
+        "short": "Conserva las frondes escudo maduras; divide los hijuelos cuando la planta sea grande",
+        "guidance": "Las frondes escudo marrones son una etapa normal y protegen la corona de raíces; no son automáticamente un problema que deba retirarse. NC State indica que los rizomas producen hijuelos y que las plantas grandes pueden dividirse."
+      },
+      "propagation": {
+        "short": "La división de hijuelos rizomatosos es la vía doméstica documentada",
+        "guidance": "NC State describe hijuelos que brotan en los rizomas y división de plantas grandes. El helecho también se reproduce por esporas, pero la fuente seleccionada no ofrece un protocolo doméstico de siembra; no se crea un Seed Profile."
+      },
+      "problems": {
+        "short": "Evita raíces anegadas y aire estancado con humedad excesiva",
+        "guidance": "NC State enumera ácaros, pulgones y cochinillas, y señala que puede aparecer mancha negra con humedad excesiva. El buen drenaje y la circulación de aire forman parte del contexto de cultivo citado; no se afirma resistencia general a enfermedades."
+      }
     }
   },
   "delta-maidenhair-fern-adiantum-raddianum": {
     "summary": "Adiantum raddianum es un helecho tropical aceptado que suele cultivarse en interior. Sus frondes finas y rizomas rastreros se adaptan a ambientes húmedos y protegidos, pero no se deben dejar secar las raíces y no está demostrada su aptitud hidropónica.",
     "sections": {
-      "identity": {"short": "Especie aceptada de culantrillo", "guidance": "Kew acepta Adiantum raddianum dentro de Pteridaceae. NC State lo denomina culantrillo delta y distingue sus frondes delicadas dispuestas en planos de otros helechos culantrillo; no se especifica cultivar."},
-      "growth": {"short": "Frondes finas y divididas nacen de rizomas rastreros", "guidance": "NC State describe un helecho perenne con frondes muy divididas y rizomas rastreros, de 1–2 pies de alto y ancho en términos generales. Las dimensiones no garantizan la huella de una maceta interior."},
-      "cultivation": {"short": "Mantén húmeda la zona de raíces en sombra parcial o plena", "guidance": "NC State recomienda sombra parcial a sombra y suelo de húmedo a mojado; las raíces no deben secarse. Señala su uso como planta de interior y su adaptación a baños húmedos o terrarios protegidos. No son especificaciones de iluminación artificial ni de hidroponía."},
-      "maintenance": {"short": "Evita que se seque el cepellón; retira solo frondes claramente muertas", "guidance": "El requisito central indicado por NC State es evitar que se sequen las raíces. La ficha seleccionada no prescribe calendario de poda ni de fertilización."},
-      "propagation": {"short": "Se documenta división de rizomas; aquí no hay protocolo de esporas", "guidance": "NC State identifica rizomas rastreros y enumera la división como estrategia de propagación. Las esporas de helecho no son semillas, y no se agrega un procedimiento de siembra de esporas sin una fuente fiable específica."},
-      "problems": {"short": "Las frondes pueden deteriorarse si las raíces se secan o la exposición no es adecuada", "guidance": "La guía de NC State identifica el secado de raíces, demasiada sombra o pleno sol como condiciones inadecuadas. No se agrega diagnóstico de plagas o enfermedades que la ficha de especie seleccionada no establezca."}
+      "identity": {
+        "short": "Especie aceptada de culantrillo",
+        "guidance": "Kew acepta Adiantum raddianum dentro de Pteridaceae. NC State lo denomina culantrillo delta y distingue sus frondes delicadas dispuestas en planos de otros helechos culantrillo; no se especifica cultivar."
+      },
+      "growth": {
+        "short": "Frondes finas y divididas nacen de rizomas rastreros",
+        "guidance": "NC State describe un helecho perenne con frondes muy divididas y rizomas rastreros, de 1–2 pies de alto y ancho en términos generales. Las dimensiones no garantizan la huella de una maceta interior."
+      },
+      "cultivation": {
+        "short": "Mantén húmeda la zona de raíces en sombra parcial o plena",
+        "guidance": "NC State recomienda sombra parcial a sombra y suelo de húmedo a mojado; las raíces no deben secarse. Señala su uso como planta de interior y su adaptación a baños húmedos o terrarios protegidos. No son especificaciones de iluminación artificial ni de hidroponía."
+      },
+      "maintenance": {
+        "short": "Evita que se seque el cepellón; no hay calendario de poda establecido",
+        "guidance": "El requisito central indicado por NC State es evitar que se sequen las raíces. La ficha de especie seleccionada no prescribe un calendario de poda ni de fertilización, así que no se inventa una rutina."
+      },
+      "propagation": {
+        "short": "Se documenta división de rizomas; aquí no hay protocolo de esporas",
+        "guidance": "NC State identifica rizomas rastreros y enumera la división como estrategia de propagación. Las esporas de helecho no son semillas, y no se agrega un procedimiento de siembra de esporas sin una fuente fiable específica."
+      },
+      "problems": {
+        "short": "El secado de raíces y la exposición inadecuada debilitan el helecho; se menciona una oruga",
+        "guidance": "NC State indica que las raíces no deben secarse y que la especie pierde vigor con demasiada sombra o pleno sol. En general no reporta enfermedades o plagas significativas, aunque señala que la oruga del helecho de Florida puede ser un problema. Son pistas para inspeccionar, no un diagnóstico de una planta concreta."
+      }
     }
   },
   "scarlet-star-guzmania-lingulata": {
     "summary": "Guzmania lingulata es una bromelia epífita aceptada, con roseta que forma un tanque y brácteas llamativas. NC State indica que la roseta que florece declina después mientras produce hijuelos, que son la vía doméstica documentada para propagarla.",
     "sections": {
-      "identity": {"short": "Especie aceptada de bromelia epífita", "guidance": "Kew acepta Guzmania lingulata y enumera Tillandsia lingulata entre sus sinónimos. NC State usa Scarlet Star y Vase Plant como nombres comunes; no se asigna ninguno de sus numerosos cultivares de color."},
-      "growth": {"short": "Roseta en forma de tanque con brácteas duraderas", "guidance": "NC State describe hojas coriáceas que forman un tanque central y una inflorescencia con brácteas rojas o naranjas y pequeñas flores blancas. La exhibición puede durar 2–4 meses; después la roseta principal declina y muere mientras produce hijuelos."},
-      "cultivation": {"short": "Bromelia de interior tolerante a sombra con sustrato epífito aireado", "guidance": "NC State indica que crece con sombra parcial a plena y tolera luz artificial; recomienda mezcla para bromelias u orquídeas con aire alrededor de las raíces. Riega poco las raíces y conserva agua en la copa de la roseta, sobre todo en verano; esto no es una receta de nutrientes hidropónicos."},
-      "maintenance": {"short": "Separa los hijuelos cuando la roseta florecida comienza a declinar", "guidance": "NC State describe hijuelos en la base después de florecer y enumera la división como estrategia de propagación. La fuente no establece un tamaño o momento exacto para separarlos."},
-      "propagation": {"short": "Los hijuelos basales reemplazan a la roseta agotada", "guidance": "NC State recomienda división y explica que los hijuelos pueden crecer como nuevas plantas después de que decline la roseta madre. La fuente no cubre producción de semilla ni establecimiento de plántulas, por lo que no se crea un Seed Profile."},
-      "problems": {"short": "Vigila manchas foliares, escamas, ácaros y cochinillas", "guidance": "NC State menciona manchas foliares, escamas, araña roja y cochinillas. No fija un calendario universal de tratamiento ni afirma resistencia."}
+      "identity": {
+        "short": "Especie aceptada de bromelia epífita",
+        "guidance": "Kew acepta Guzmania lingulata y enumera Tillandsia lingulata entre sus sinónimos. NC State usa Scarlet Star y Vase Plant como nombres comunes; no se asigna ninguno de sus numerosos cultivares de color."
+      },
+      "growth": {
+        "short": "Roseta en forma de tanque con brácteas duraderas",
+        "guidance": "NC State describe hojas coriáceas que forman un tanque central y una inflorescencia con brácteas rojas o naranjas y pequeñas flores blancas. La ficha general de especie da dimensiones de 1–2 pies de alto y ancho; no son específicas de un cultivar ni una recomendación de separación entre pods. La exhibición puede durar 2–4 meses; después la roseta principal declina y muere mientras produce hijuelos."
+      },
+      "cultivation": {
+        "short": "Bromelia de interior tolerante a sombra con sustrato epífito aireado",
+        "guidance": "NC State indica que crece con sombra parcial a plena y tolera luz artificial; recomienda mezcla para bromelias u orquídeas con aire alrededor de las raíces. Riega poco las raíces y conserva agua en la copa de la roseta, sobre todo en verano; esto no es una receta de nutrientes hidropónicos."
+      },
+      "maintenance": {
+        "short": "Separa los hijuelos cuando la roseta florecida comienza a declinar",
+        "guidance": "NC State describe hijuelos en la base después de florecer y enumera la división como estrategia de propagación. La fuente no establece un tamaño o momento exacto para separarlos."
+      },
+      "propagation": {
+        "short": "Los hijuelos basales reemplazan a la roseta agotada",
+        "guidance": "NC State recomienda división y explica que los hijuelos pueden crecer como nuevas plantas después de que decline la roseta madre. La fuente no cubre producción de semilla ni establecimiento de plántulas, por lo que no se crea un Seed Profile."
+      },
+      "problems": {
+        "short": "Vigila manchas foliares, escamas, ácaros y cochinillas",
+        "guidance": "NC State menciona manchas foliares, escamas, araña roja y cochinillas. No fija un calendario universal de tratamiento ni afirma resistencia."
+      }
     }
   },
   "thanksgiving-cactus-schlumbergera-truncata": {
     "summary": "Schlumbergera truncata es un cactus epífito brasileño aceptado, conocido como cactus de Acción de Gracias. Los dientes puntiagudos en los márgenes de sus segmentos lo distinguen del cactus de Navidad híbrido de bordes más redondeados que suele venderse junto a él.",
     "sections": {
-      "identity": {"short": "Especie aceptada; distinguirla de híbridos de cactus de Navidad", "guidance": "Kew acepta Schlumbergera truncata e incluye nombres históricos como Zygocactus truncatus. NC State distingue sus márgenes segmentarios puntiagudos de los márgenes redondeados de Schlumbergera × buckleyi; algunas plantas comerciales son híbridos, así que una planta de tienda sin identificar no se asigna automáticamente a S. truncata."},
-      "growth": {"short": "Tallos segmentados colgantes con flores invernales erguidas", "guidance": "NC State describe una epífita arbustiva y cascada cuyos segmentos aplanados tienen proyecciones puntiagudas en los bordes. Informa floración cerca de finales de noviembre y una posible segunda floración al alargarse los días; el momento es estacional, no una fecha garantizada."},
-      "cultivation": {"short": "Luz brillante en invierno, sombra en verano y mezcla drenante", "guidance": "NC State recomienda sombra parcial, mezcla húmeda pero bien drenada para cactus o suculentas y una temperatura ambiental de 70–80 °F. Advierte que el sol directo puede quemar los tallos y el sol de verano amarillearlos. También señala que al menos 13 horas de oscuridad ininterrumpida pueden influir en la floración; no es un requisito de germinación de semilla."},
-      "maintenance": {"short": "Reduce el abono en otoño/invierno y evita el exceso de agua", "guidance": "NC State recomienda abonar mensualmente después de comenzar el crecimiento primaveral, reducir el abono en otoño e inicios del invierno y trasplantar aproximadamente cada tres años porque tolera estar algo apretado en la maceta. Relaciona la pudrición de raíz con exceso de riego; esa guía es para sustrato, no hidroponía."},
-      "propagation": {"short": "Enraíza esquejes cortos de segmentos después de que cicatricen", "guidance": "NC State describe retirar dos o tres segmentos, dejar cicatrizar el corte unos días y plantarlos en mezcla húmeda y drenante. Informa que enraízan en unas semanas; no selecciona un protocolo de semilla."},
-      "problems": {"short": "La caída de botones puede deberse a cambios ambientales o falta de oscuridad", "guidance": "NC State enumera pulgones, ácaros, escamas, cochinillas, pudrición de raíz y moho gris con humedad alta y poca ventilación. Relaciona menor floración o caída de botones con falta de oscuridad ininterrumpida, cambios repentinos de temperatura o luz y variaciones de humedad."}
+      "identity": {
+        "short": "Especie aceptada; distinguirla de híbridos de cactus de Navidad",
+        "guidance": "Kew acepta Schlumbergera truncata e incluye nombres históricos como Zygocactus truncatus. NC State distingue sus márgenes segmentarios puntiagudos de los márgenes redondeados de Schlumbergera × buckleyi; algunas plantas comerciales son híbridos, así que una planta de tienda sin identificar no se asigna automáticamente a S. truncata."
+      },
+      "growth": {
+        "short": "Tallos segmentados colgantes con flores invernales erguidas",
+        "guidance": "NC State describe una epífita arbustiva y cascada cuyos segmentos aplanados tienen proyecciones puntiagudas en los bordes. Informa floración cerca de finales de noviembre y una posible segunda floración al alargarse los días; el momento es estacional, no una fecha garantizada."
+      },
+      "cultivation": {
+        "short": "Luz brillante en invierno, sombra en verano y mezcla drenante",
+        "guidance": "NC State recomienda sombra parcial, mezcla húmeda pero bien drenada para cactus o suculentas y una temperatura ambiental de 70–80 °F. Advierte que el sol directo puede quemar los tallos y el sol de verano amarillearlos. También señala que al menos 13 horas de oscuridad ininterrumpida pueden influir en la floración; no es un requisito de germinación de semilla."
+      },
+      "maintenance": {
+        "short": "Reduce el abono en otoño/invierno y evita el exceso de agua",
+        "guidance": "NC State recomienda abonar mensualmente después de comenzar el crecimiento primaveral, reducir el abono en otoño e inicios del invierno y trasplantar aproximadamente cada tres años porque tolera estar algo apretado en la maceta. Relaciona la pudrición de raíz con exceso de riego; esa guía es para sustrato, no hidroponía."
+      },
+      "propagation": {
+        "short": "Enraíza esquejes cortos de segmentos después de que cicatricen",
+        "guidance": "NC State describe retirar dos o tres segmentos, dejar cicatrizar el corte unos días y plantarlos en mezcla húmeda y drenante. Informa que enraízan en unas semanas; no selecciona un protocolo de semilla."
+      },
+      "problems": {
+        "short": "La caída de botones puede deberse a cambios ambientales o falta de oscuridad",
+        "guidance": "NC State enumera pulgones, ácaros, escamas, cochinillas, pudrición de raíz y moho gris con humedad alta y poca ventilación. Relaciona menor floración o caída de botones con falta de oscuridad ininterrumpida, cambios repentinos de temperatura o luz y variaciones de humedad."
+      }
     }
   },
   "arabian-jasmine-jasminum-sambac": {
     "summary": "Jasminum sambac es un arbusto perenne fragante aceptado, o planta de tallos extendidos, que se cultiva por sus flores blancas. Aquí no se asignan cultivares de flor doble; la ficha describe cultivo de especie en recipiente y en climas cálidos.",
     "sections": {
-      "identity": {"short": "Especie aceptada; forma floral de cultivar no especificada", "guidance": "Kew acepta Jasminum sambac y enumera Mogorium sambac y numerosos nombres históricos como sinónimos. Jazmín árabe es el alcance del nombre común; no se infiere un cultivar de flor doble como Maid of Orleans o Grand Duke of Tuscany."},
-      "growth": {"short": "Arbusto perenne extendido con flores blancas fragantes", "guidance": "Kew describe la especie como arbusto de tallos extendidos. Missouri Botanical Garden informa flores blancas fragantes de verano y dimensiones de 4–5 pies en su ficha paisajística; esas cifras no se tratan como tamaño universal en recipiente interior."},
-      "cultivation": {"short": "Planta de clima cálido; usa un recipiente luminoso que pueda pasar el invierno adentro", "guidance": "Missouri Botanical Garden recomienda suelo suelto, rico en humus, uniformemente húmedo pero bien drenado, y pleno sol a sombra parcial en zonas USDA 9–11. En climas fríos describe el cultivo en recipiente y su resguardo en interior antes de las heladas; no son especificaciones hidropónicas."},
-      "maintenance": {"short": "Guía los tallos con soporte si quieres que trepe; poda para dar forma", "guidance": "Missouri Botanical Garden indica que se pueden atar los tallos a un soporte si se desea que trepe y podar según sea necesario para conservar la forma. Recomienda reducir el riego durante el resguardo invernal en interior; no establece valores exactos de luz o temperatura interior."},
-      "propagation": {"short": "Se documentan esquejes en verano; no hay protocolo de semilla", "guidance": "Missouri Botanical Garden recomienda propagar por esquejes en verano. La referencia seleccionada no aporta parámetros de establecimiento por semilla; no se crea un Seed Profile ni se declara imposible la propagación por semilla."},
-      "problems": {"short": "Protégelo de las heladas y evita el sustrato encharcado", "guidance": "Missouri Botanical Garden limita la recomendación de rusticidad exterior a zonas 9–11 y aconseja llevar las plantas en recipiente adentro antes de la primera helada otoñal. Se conserva su recomendación de sustrato drenante; no se agrega una lista de plagas o enfermedades de otra especie."}
+      "identity": {
+        "short": "Especie aceptada; forma floral de cultivar no especificada",
+        "guidance": "Kew acepta Jasminum sambac y enumera Mogorium sambac y numerosos nombres históricos como sinónimos. Jazmín árabe es el alcance del nombre común; no se infiere un cultivar de flor doble como Maid of Orleans o Grand Duke of Tuscany."
+      },
+      "growth": {
+        "short": "Arbusto perenne extendido con flores blancas fragantes",
+        "guidance": "Kew describe la especie como arbusto de tallos extendidos. Missouri Botanical Garden informa flores blancas fragantes de verano y dimensiones de 4–5 pies en su ficha paisajística; esas cifras no se tratan como tamaño universal en recipiente interior."
+      },
+      "cultivation": {
+        "short": "Planta de clima cálido; usa un recipiente luminoso que pueda pasar el invierno adentro",
+        "guidance": "Missouri Botanical Garden recomienda suelo suelto, rico en humus, uniformemente húmedo pero bien drenado, y pleno sol a sombra parcial en zonas USDA 9–11. En climas fríos describe el cultivo en recipiente y su resguardo en interior antes de las heladas; no son especificaciones hidropónicas."
+      },
+      "maintenance": {
+        "short": "Guía los tallos con soporte si quieres que trepe; poda para dar forma",
+        "guidance": "Missouri Botanical Garden indica que se pueden atar los tallos a un soporte si se desea que trepe y podar según sea necesario para conservar la forma. Recomienda reducir el riego durante el resguardo invernal en interior; no establece valores exactos de luz o temperatura interior."
+      },
+      "propagation": {
+        "short": "Se documentan esquejes en verano; no hay protocolo de semilla",
+        "guidance": "Missouri Botanical Garden recomienda propagar por esquejes en verano. La referencia seleccionada no aporta parámetros de establecimiento por semilla; no se crea un Seed Profile ni se declara imposible la propagación por semilla."
+      },
+      "harvest": {
+        "short": "Se documentan flores secas para aromatizar té; no se establece cuándo cosecharlas",
+        "guidance": "Missouri Botanical Garden informa que las flores secas de Jasminum sambac se usan para aromatizar té de jazmín. Esto describe un uso aromático, no prueba que las flores se consuman; la fuente no da una etapa de cosecha doméstica ni un protocolo de secado. Illinois Extension aconseja confirmar la identidad de la flor y evitar pesticidas o químicos en plantas cuyas flores se destinen a alimentos o té."
+      },
+      "problems": {
+        "short": "Protégelo de las heladas y evita el sustrato encharcado",
+        "guidance": "Missouri Botanical Garden limita la recomendación de rusticidad exterior a zonas 9–11 y aconseja llevar las plantas en recipiente adentro antes de la primera helada otoñal. Se conserva su recomendación de sustrato drenante; no se agrega una lista de plagas o enfermedades de otra especie."
+      }
     }
   }
 }

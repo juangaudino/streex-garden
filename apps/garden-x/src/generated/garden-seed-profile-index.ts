@@ -138,6 +138,7 @@ export const gardenSeedProfileIds = [
   "golden-acre-cabbage",
   "golden-beet",
   "grape-tomato",
+  "great-blanketflower-gaillardia-aristata",
   "greek-oregano",
   "green-arrow-shelling-pea",
   "green-salanova-lettuce",
@@ -223,6 +224,7 @@ export const gardenSeedProfileIds = [
   "poblano-pepper",
   "provider-bush-bean",
   "purple-basil",
+  "purple-coneflower-echinacea-purpurea",
   "purple-kohlrabi",
   "purple-of-sicily-cauliflower",
   "purple-pitcher-plant-sarracenia-purpurea",
@@ -408,7 +410,7 @@ export const gardenSeedProfileCatalog = [
       "es": "Un recorrido desde la semilla hasta una planta establecida de Anís. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "anise-hyssop",
@@ -858,7 +860,7 @@ export const gardenSeedProfileCatalog = [
       "es": "Un recorrido desde la semilla hasta una planta establecida de Alcaravea. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 3
   },
   {
     "id": "carrot-nantes",
@@ -1572,6 +1574,15 @@ export const gardenSeedProfileCatalog = [
     "sourceCount": 5
   },
   {
+    "id": "great-blanketflower-gaillardia-aristata",
+    "summary": {
+      "en": "University of Idaho Extension's Western Native Plants guide says Gaillardia aristata is best grown from seed, needs no stratification or other pretreatment, and transplants well at 3–4 true leaves. It reports high germination but gives no numeric time, temperature, depth, or light requirement.",
+      "es": "La guía Western Native Plants de University of Idaho Extension indica que Gaillardia aristata se cultiva mejor desde semilla, no requiere estratificación ni otro pretratamiento y se trasplanta bien con 3–4 hojas verdaderas. Informa germinación alta, pero no indica tiempo, temperatura, profundidad ni requisito de luz numéricos."
+    },
+    "quickFactCount": 3,
+    "sourceCount": 1
+  },
+  {
     "id": "greek-oregano",
     "summary": {
       "en": "A seed-to-established-plant path for Greek Oregano. Crop-level evidence is kept separate from exact cultivar or system claims.",
@@ -1844,11 +1855,11 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "lady-murasaki-komatsuna",
     "summary": {
-      "en": "Fedco lists Lady Murasaki as a seed product and identifies it as an F1 komatsuna hybrid. The available record does not establish its sowing depth or germination schedule.",
-      "es": "Fedco lista Lady Murasaki como producto de semilla e identifica el F1 como híbrido de komatsuna. La ficha disponible no establece profundidad ni calendario de germinación."
+      "en": "Fedco lists seed for the named Lady Murasaki komatsuna selection, but its 2025 catalog calls it open-pollinated while the current product page calls it F1. Genetic status remains unresolved; sowing depth and germination schedule are also not established by the selected record.",
+      "es": "Fedco lista semillas de la selección nombrada de komatsuna Lady Murasaki, pero su catálogo de 2025 la llama de polinización abierta y la ficha actual la identifica como F1. La condición genética sigue sin resolverse; la fuente seleccionada tampoco establece profundidad ni calendario de germinación."
     },
     "quickFactCount": 3,
-    "sourceCount": 1
+    "sourceCount": 2
   },
   {
     "id": "large-red-cherry-tomato",
@@ -2006,8 +2017,8 @@ export const gardenSeedProfileCatalog = [
   {
     "id": "micro-tom-tomato",
     "summary": {
-      "en": "NParks reports fruiting approximately 50–60 days from seed sowing for Micro-Tom, but the selected institutional sources do not provide the sowing depth, germination temperature, or seedling transfer stage. Do not substitute Tiny Tim instructions.",
-      "es": "NParks informa fructificación aproximadamente 50–60 días desde la siembra para Micro-Tom, pero las fuentes institucionales seleccionadas no indican profundidad, temperatura ni etapa de trasplante. No sustituyas instrucciones de Tiny Tim."
+      "en": "The selected sources establish Micro-Tom's named cultivar identity and compact growth, but do not provide a complete seed-to-seedling protocol. Sowing depth, germination conditions and transfer stage remain unknown; follow the verified packet and do not substitute Tiny Tim instructions.",
+      "es": "Las fuentes seleccionadas establecen la identidad del cultivar Micro-Tom y su crecimiento compacto, pero no ofrecen un protocolo completo de semilla a plántula. Profundidad, condiciones de germinación y etapa de trasplante siguen sin conocerse; sigue el paquete verificado y no sustituyas instrucciones de Tiny Tim."
     },
     "quickFactCount": 3,
     "sourceCount": 1
@@ -2127,7 +2138,7 @@ export const gardenSeedProfileCatalog = [
       "es": "Un recorrido desde la semilla hasta una planta establecida de Lechuga hoja de roble. La evidencia del cultivo se mantiene separada de las afirmaciones exactas de cultivar o sistema."
     },
     "quickFactCount": 4,
-    "sourceCount": 4
+    "sourceCount": 5
   },
   {
     "id": "okra-abelmoschus-esculentus",
@@ -2335,6 +2346,15 @@ export const gardenSeedProfileCatalog = [
     },
     "quickFactCount": 4,
     "sourceCount": 4
+  },
+  {
+    "id": "purple-coneflower-echinacea-purpurea",
+    "summary": {
+      "en": "Clemson Extension's South Carolina guidance supports sowing indoors at 65–70°F, lightly covering seed, keeping the seedbed misted, and expecting germination in about 10–20 days. Seedlings are described as ready to transplant 20–28 days after sowing; allow 2+ years for seed-grown plants to become sizable.",
+      "es": "La guía de Clemson Extension para Carolina del Sur respalda sembrar en interior a 65–70°F, cubrir ligeramente, mantener nebulizado el semillero y esperar germinación en unos 10–20 días. Indica que las plántulas suelen estar listas para trasplante 20–28 días después de la siembra; las plantas iniciadas por semilla pueden tardar 2 años o más en alcanzar tamaño considerable."
+    },
+    "quickFactCount": 4,
+    "sourceCount": 1
   },
   {
     "id": "purple-kohlrabi",

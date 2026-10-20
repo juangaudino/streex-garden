@@ -45,6 +45,19 @@
     "accessed": "2026-09-14"
   },
   {
+    "id": "rhs-florence-fennel-grow-2026",
+    "publisher": "Royal Horticultural Society",
+    "title": "How to grow Florence fennel",
+    "url": "https://www.rhs.org.uk/vegetables/florence-fennel/grow-your-own",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "Home garden and soil-container guidance for Florence fennel: container capacity, moisture checks, bolting context and crop management; not hydroponic fit or pod spacing",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Labs established-plant completion review",
+    "claimKinds": ["cultivation", "care"]
+  },
+  {
     "id": "usu-lemongrass",
     "publisher": "Utah State University Extension",
     "title": "How to Grow Lemongrass in Your Garden",
@@ -70,5 +83,31 @@
     "type": "grower_reference",
     "scope": "Mentha spp.; generic mint culture",
     "accessed": "2026-09-14"
+  },
+  {
+    "id": "illinois-mint-extension-2026",
+    "publisher": "University of Illinois Extension",
+    "title": "Mint",
+    "url": "https://extension.illinois.edu/herbs/mint",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Mentha sp. group-level perennial habit, rhizomatous spread, outdoor/container management, flower removal and repeated leaf harvest; not hydroponic performance or unspecified species-specific dimensions",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Labs established-plant profile review",
+    "claimKinds": ["identity", "cultivation", "maintenance", "harvest"]
+  },
+  {
+    "id": "scielo-mentha-arvensis-nft-2008",
+    "publisher": "Horticultura Brasileira",
+    "title": "Nutrient solution for mint production in hydroponic solution",
+    "url": "https://www.scielo.br/j/hb/a/bPrPLHRrgCrHvkFH84jfK5L/?lang=en",
+    "type": "university_research",
+    "tier": 1,
+    "scope": "Brazilian NFT experiment on Mentha arvensis L. cultivar IAC 701 propagated by cuttings; tests nutrient-solution concentration and channel spacing. Findings do not establish generic Mentha spp. suitability, another seed-lot identity, Garden X system compatibility, or a transferable nutrient recipe.",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Labs established-plant profile review",
+    "claimKinds": ["identity", "cultivation", "propagation", "hydroponics", "nutrients", "spacing"]
   }
 ]

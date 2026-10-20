@@ -333,6 +333,18 @@
     "bibb-lettuce": {
       "source": "plants-current-gardens.json",
       "sections": {
+        "growth": {
+          "context": {
+            "en": "Bibb/butterhead is a soft-head crop type; no specific commercial Bibb cultivar or head size is assigned.",
+            "es": "Bibb/butterhead es un tipo de lechuga de cabeza blanda; no se asigna un cultivar comercial Bibb ni un tamaño de cabeza específico."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "UMN conditions are regional outdoor lettuce guidance, not indoor lighting or a Bibb-specific temperature threshold.",
+            "es": "Las condiciones de UMN son guía regional para lechuga exterior, no iluminación interior ni umbral térmico específico de Bibb."
+          }
+        },
         "germination": {
           "context": {
             "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
@@ -353,14 +365,14 @@
         },
         "harvest": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "UMN supports individual-leaf or whole-plant lettuce harvest; no Bibb head size or date is established.",
+            "es": "UMN respalda cosecha de hojas individuales o de la planta completa; no establece tamaño de cabeza ni fecha para Bibb."
           }
         },
         "flowering": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Heat, long-day and high-light bolting information is crop-level lettuce guidance, not a Bibb tolerance rating.",
+            "es": "La información sobre espigado por calor, días largos y alta luz es guía general de lechuga, no una calificación de tolerancia Bibb."
           }
         },
         "hydroponics": {
@@ -371,8 +383,8 @@
         },
         "problems": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Tipburn is a moisture-associated symptom in this source, not a single-cause nutrient diagnosis.",
+            "es": "En esta fuente el tipburn es un síntoma asociado con humedad, no un diagnóstico nutritivo de causa única."
           }
         }
       }
@@ -380,6 +392,18 @@
     "iceberg-lettuce": {
       "source": "plants-current-gardens.json",
       "sections": {
+        "growth": {
+          "context": {
+            "en": "Crisphead/iceberg is a crop-type description, not a named cultivar or guaranteed home-system head size.",
+            "es": "Crisphead/iceberg es una descripción del tipo de cultivo, no un cultivar nombrado ni un tamaño garantizado en un sistema doméstico."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "UMN cool-season and moisture guidance is regional outdoor lettuce context; system performance remains unknown.",
+            "es": "La guía de UMN sobre clima fresco y humedad es contexto regional para lechuga exterior; el desempeño del sistema sigue desconocido."
+          }
+        },
         "germination": {
           "context": {
             "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
@@ -400,14 +424,14 @@
         },
         "harvest": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "The source supports cutting lettuce whole but sets no universal iceberg head size or harvest date.",
+            "es": "La fuente respalda cortar la lechuga completa, pero no fija tamaño de cabeza ni fecha universal para iceberg."
           }
         },
         "flowering": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Bolting cues are general lettuce evidence and are not iceberg-specific heat-resistance data.",
+            "es": "Las señales de espigado son evidencia general de lechuga y no datos de resistencia térmica específicos de iceberg."
           }
         },
         "hydroponics": {
@@ -418,8 +442,8 @@
         },
         "problems": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Tipburn is a symptom; no countertop-system size limit or unique deficiency is established.",
+            "es": "El tipburn es un síntoma; no se establece un límite de tamaño del sistema de encimera ni una deficiencia única."
           }
         }
       }
@@ -427,6 +451,18 @@
     "buttercrunch-lettuce": {
       "source": "plants-current-gardens.json",
       "sections": {
+        "growth": {
+          "context": {
+            "en": "Cornell's 10-inch figure describes head size in its variety record, not canopy spread or a guarantee for each lot.",
+            "es": "La cifra de 10 pulgadas de Cornell describe el tamaño de cabeza en su registro varietal, no la extensión de copa ni una garantía para cada lote."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Spring/fall and slow-bolting descriptions are source-listed characteristics; they do not guarantee warm indoor performance.",
+            "es": "Las descripciones de primavera/otoño y espigado lento son características registradas por la fuente; no garantizan desempeño cálido en interior."
+          }
+        },
         "germination": {
           "context": {
             "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
@@ -447,14 +483,14 @@
         },
         "harvest": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Cornell's 28–60-day maturity range has no stated uniform starting point; do not use it as an exact date.",
+            "es": "El rango de madurez de 28–60 días de Cornell no indica un punto inicial uniforme; no se usa como fecha exacta."
           }
         },
         "flowering": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Cornell's slow-to-bolt/tolerant descriptors are not immunity or a guarantee for a warm indoor system.",
+            "es": "Las descripciones de Cornell sobre espigado lento/tolerancia no son inmunidad ni garantía para un sistema interior cálido."
           }
         },
         "hydroponics": {
@@ -465,8 +501,8 @@
         },
         "problems": {
           "context": {
-            "en": "Maintain the cited crop or cultivar scope; verify real growing conditions.",
-            "es": "Mantén el alcance del cultivo o cultivar citado; verifica las condiciones reales."
+            "en": "Tipburn remains a moisture-associated symptom requiring diagnosis; Cornell bolting notes are not disease-resistance evidence.",
+            "es": "El tipburn sigue siendo un síntoma asociado a humedad que requiere diagnóstico; las notas de espigado de Cornell no prueban resistencia a enfermedades."
           }
         }
       }

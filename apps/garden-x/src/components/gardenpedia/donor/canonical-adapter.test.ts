@@ -110,7 +110,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     }
   });
 
-  it("keeps fenugreek's established-plant metrics bilingual and separate from seed production", () => {
+  it("keeps fenugreek's mature seed-production metric while excluding seed-starting data", () => {
     const entry = findCanonicalEntry("common-fenugreek-trigonella-foenum-graecum");
     expect(entry).toBeDefined();
     const english = buildDonorPlantDetail(entry!, "en");
@@ -120,16 +120,121 @@ describe("direct Gardenpedia presentation adapter", () => {
       "Mature height",
       "Ontario field context",
       "Herb harvest",
+      "Seed production",
     ]);
     expect(spanish.metrics.map((metric) => metric.label)).toEqual([
       "Altura adulta",
       "Contexto de campo en Ontario",
       "Cosecha de hierba",
+      "Producción de semilla",
     ]);
-    expect(english.metrics.some((metric) => /seed production/i.test(metric.label))).toBe(false);
-    expect(spanish.metrics.some((metric) => /producción de semilla/i.test(metric.label))).toBe(
+    expect(english.metrics.some((metric) => /germination|sowing|seedling/i.test(metric.label))).toBe(
       false,
     );
+    expect(spanish.metrics.some((metric) => /germinación|siembra|plántula/i.test(metric.label))).toBe(
+      false,
+    );
+  });
+
+  it("shows garlic's conditional scape and soil-care guidance in both languages", () => {
+    const entry = findCanonicalEntry("garlic-allium-sativum")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const enCare = english.guides.find((guide) => guide.id === "care");
+    const esCare = spanish.guides.find((guide) => guide.id === "care");
+
+    expect(enCare?.body).toMatch(/if it forms.*redirect more energy toward the bulb/i);
+    expect(enCare?.body).toMatch(/first two months.*shallow cultivation/i);
+    expect(enCare?.sources.map((source) => source.url)).toContain(
+      "https://extension.usu.edu/yardandgarden/research/garlic-in-the-garden",
+    );
+    expect(esCare?.body).toMatch(/si aparece un tallo floral/i);
+    expect(esCare?.body).toMatch(/dos primeros meses.*cultivo superficial/i);
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+  });
+
+  it("preserves species-specific dead-stem habitat guidance for smooth blackberry", () => {
+    const entry = findCanonicalEntry("blackberry-rubus-canadensis")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const enMaintenance = english.guides.find((guide) => guide.id === "maintenance");
+    const esMaintenance = spanish.guides.find((guide) => guide.id === "maintenance");
+
+    expect(enMaintenance?.body).toMatch(/native bees.*dead, hollow stems.*12–24 inches/i);
+    expect(enMaintenance?.body).toMatch(/not justify cutting living canes/i);
+    expect(enMaintenance?.sources.map((source) => source.url)).toContain(
+      "https://plants.ces.ncsu.edu/plants/rubus-canadensis/common-name/blackberry/",
+    );
+    expect(esMaintenance?.body).toMatch(/abejas nativas.*tallos muertos y huecos.*12–24 pulgadas/i);
+    expect(esMaintenance?.body).toMatch(/no justifica cortar cañas vivas/i);
+  });
+
+  it("renders Spanish plant-guide subtitles only when editorially supplied", () => {
+    const alice = buildDonorPlantDetail(findCanonicalEntry("alice-sundew-drosera-aliciae")!, "es");
+    for (const [sectionId, expectedSubtitle] of [
+      ["identity", "Especie aceptada: Drosera aliciae"],
+      ["cultivation", "Necesita luz abundante, humedad y agua baja en minerales"],
+      ["propagation", "Semilla fresca y esquejes son métodos documentados"],
+      ["problems", "Revisa la humedad y la calidad del agua antes de intervenir"],
+    ]) {
+      expect(alice.guides.find((guide) => guide.id === sectionId)?.subtitle).toBe(expectedSubtitle);
+    }
+
+    const lessLocalized = buildDonorPlantDetail(
+      findCanonicalEntry("tennessee-coneflower-echinacea-tennesseensis")!,
+      "es",
+    );
+    const identity = lessLocalized.guides.find((guide) => guide.id === "identity");
+    expect(identity?.subtitle).toBe("");
+    expect(identity?.body).toBeTruthy();
+    expect(identity?.body).not.toBe(identity?.subtitle);
+  });
+
+  it("derives Evidence Health from public Plant Profile sections across rich and pending profiles", () => {
+    for (const entry of canonicalEntries) {
+      const profile = (
+        gardenPlantProfileCatalog as Record<
+          string,
+          { sections: Record<string, { evidenceType: string }> }
+        >
+      )[entry.libraryPlantId];
+      const english = buildDonorPlantDetail(entry, "en");
+      const spanish = buildDonorPlantDetail(entry, "es");
+      const backed = Object.values(profile.sections).filter(
+        (section) => section.evidenceType === "source_backed",
+      ).length;
+      const adapted = Object.values(profile.sections).filter(
+        (section) => section.evidenceType === "garden_adaptation",
+      ).length;
+      const pending = Object.values(profile.sections).filter(
+        (section) => section.evidenceType === "needs_validation",
+      ).length;
+      const assessed = Object.keys(profile.sections).length;
+
+      expect(english.evidence).toMatchObject({ backed, adapted, pending });
+      expect(english.evidence.coverage).toBe(`${backed}/${assessed} units`);
+      expect(spanish.evidence).toMatchObject({ backed, adapted, pending });
+      expect(spanish.evidence.coverage).toBe(`${backed}/${assessed} unidades`);
+    }
+
+    const fenugreek = buildDonorPlantDetail(
+      findCanonicalEntry("common-fenugreek-trigonella-foenum-graecum")!,
+      "en",
+    );
+    expect(fenugreek.evidence).toMatchObject({
+      backed: 8,
+      adapted: 0,
+      pending: 0,
+      coverage: "8/8 units",
+    });
+
+    const unresolved = buildDonorPlantDetail(findCanonicalEntry("italian-oregano")!, "en");
+    expect(unresolved.evidence).toMatchObject({
+      backed: 0,
+      adapted: 0,
+      pending: 1,
+      coverage: "0/1 units",
+    });
   });
 
   it("searches canonical names without accent or case sensitivity", () => {
@@ -351,6 +456,25 @@ describe("direct Gardenpedia presentation adapter", () => {
         inventory: "all",
       }).map((plant) => plant.id),
     ).toContain("chinese-light-green-celery");
+  });
+
+  it("keeps mini sweet pepper at an unnamed horticultural-type scope", () => {
+    const entry = findCanonicalEntry("mini-lunchbox-sweet-pepper")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+
+    expect(entry.scientificName).toBe("Capsicum annuum");
+    expect(entry.cultivar).toMatch(/no named cultivar assigned/i);
+    expect(english.guides.find((guide) => guide.id === "identity")?.body).toMatch(
+      /unnamed horticultural type.*not as a named cultivar/i,
+    );
+    expect(english.metrics.map((metric) => metric.value).join(" ")).not.toMatch(
+      /55–63|75–83/,
+    );
+    expect(spanish.guides.find((guide) => guide.id === "identity")?.body).toMatch(
+      /tipo hortícola sin nombre de cultivar/i,
+    );
+    expect(entry.compatibilityProfile?.matureSize?.height?.status).toBe("unknown");
   });
 
   it("publishes Wave 37 houseplants with bilingual evidence and no invented hydroponic fit", () => {
@@ -647,6 +771,431 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(spanishGrowth?.body).not.toContain("1 ft 3 in");
   });
 
+  it("renders limited, safety-scoped pansy petal use with bilingual source attribution", () => {
+    const entry = findCanonicalEntry("viola-pansy")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+    expect(english?.ediblePart).toMatch(/petals.*grown as an edible flower/i);
+    expect(english?.options[0]?.steps).toEqual(
+      expect.arrayContaining([expect.stringMatching(/do not assume.*ornamental nursery plant/i)]),
+    );
+    expect(english?.options[0]?.sources).toEqual([
+      expect.objectContaining({
+        label: expect.stringContaining("Texas A&M AgriLife Extension Service"),
+        url: "https://aggie-horticulture.tamu.edu/vegetable/guides/specialty-vegetables/edible-flowers/",
+      }),
+    ]);
+    expect(english?.safetyNote).toMatch(/unknown treatment history/i);
+    expect(spanish?.ediblePart).toMatch(/Pétalos.*cultivado como flor comestible/i);
+    expect(spanish?.safetyNote).toMatch(/pensamientos ornamentales.*tratamiento desconocido/i);
+  });
+
+  it("preserves the Moss Rose food-use source conflict without publishing a consumption recommendation", () => {
+    const entry = findCanonicalEntry("moss-rose-portulaca-grandiflora")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const englishUse = english.guides.find((guide) => guide.id === "uses");
+    const spanishUse = spanish.guides.find((guide) => guide.id === "uses");
+
+    expect(english.summary).toMatch(/sources conflict.*no food-use recommendation/i);
+    expect(spanish.summary).toMatch(/fuentes discrepan.*no recomienda su consumo/i);
+    expect(englishUse?.backing).toBe("pending");
+    expect(englishUse?.body).toMatch(/NC State.*edible.*UF\/IFAS.*not edible/i);
+    expect(spanishUse?.backing).toBe("pending");
+    expect(spanishUse?.body).toMatch(/NC State.*comestibles.*UF\/IFAS.*no es comestible/i);
+    expect(english.harvestUse).toBeUndefined();
+  });
+
+  it("preserves White Carolina pollination disagreement while rendering the scoped practical recommendation in EN/ES", () => {
+    const entry = findCanonicalEntry("white-carolina-pineberry")!;
+    const english = buildDonorPlantDetail(entry, "en");
+    const spanish = buildDonorPlantDetail(entry, "es");
+    const enPollination = english.guides.find((guide) => guide.id === "pollination");
+    const esPollination = spanish.guides.find((guide) => guide.id === "pollination");
+    const enPending = english.guides.find((guide) => guide.id === "needsValidation");
+
+    expect(enPollination?.backing).toBe("garden");
+    expect(enPollination?.body).toMatch(/Walters Gardens recommends one everbearing variety per five plants/i);
+    expect(enPollination?.sources.some((source) => source.label.includes("Walters Gardens"))).toBe(true);
+    expect(enPollination?.body).toMatch(/Raintree.*self-fertile/i);
+    expect(esPollination?.body).toMatch(/Walters Gardens recomienda una variedad everbearing.*por cada cinco plantas/i);
+    expect(esPollination?.body).toMatch(/Raintree llama autofértil/i);
+    expect(enPending?.backing).toBe("pending");
+    expect(english.id).toBe("white-carolina-pineberry");
+  });
+
+  it("renders species-appropriate orchard-fruit Harvest Use in English and Spanish with resolving sources", () => {
+    const identities = [
+      "european-pear-pyrus-communis",
+      "european-plum-prunus-domestica",
+      "japanese-plum-prunus-salicina",
+      "sour-cherry-prunus-cerasus",
+      "sweet-cherry-prunus-avium",
+      "hardy-kiwi-actinidia-arguta",
+    ];
+
+    for (const id of identities) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en").harvestUse;
+      const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+      expect(english?.ediblePart).not.toMatch(/not established/i);
+      expect(english?.bestUse.length).toBeGreaterThan(40);
+      expect(english?.options.length).toBeGreaterThan(0);
+      expect(spanish?.ediblePart).not.toMatch(/no establecida/i);
+      expect(spanish?.bestUse.length).toBeGreaterThan(40);
+      expect(spanish?.options.length).toBe(english?.options.length);
+      expect(english?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(spanish?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(
+        english?.options
+          .flatMap((option) => option.sources)
+          .every((source) => source.url.startsWith("https://")),
+      ).toBe(true);
+    }
+
+    const sourCherry = buildDonorPlantDetail(findCanonicalEntry("sour-cherry-prunus-cerasus")!, "en").harvestUse!;
+    const sweetCherry = buildDonorPlantDetail(findCanonicalEntry("sweet-cherry-prunus-avium")!, "en").harvestUse!;
+    expect(sourCherry.options.map((option) => option.title).join(" ")).toMatch(/sour cherries/i);
+    expect(sweetCherry.options.map((option) => option.title).join(" ")).toMatch(/sweet cherries/i);
+  });
+
+  it("renders crop-scoped Harvest Use for Honey Bear, Patio Tomato, and stalk celery in EN/ES", () => {
+    const cases = [
+      {
+        id: "honey-bear-f1-acorn-squash",
+        expectedSource: "University of Illinois Extension",
+        scopeBoundary: /not.*Honey Bear-specific|not a Honey Bear-specific/i,
+      },
+      {
+        id: "patio-tomato",
+        expectedSource: "Utah State University Extension",
+        scopeBoundary: /not a cultivar-specific maturity date|not a cultivar-specific/i,
+      },
+      {
+        id: "stalk-celery-apium-graveolens",
+        expectedSource: "Utah State University Extension",
+        scopeBoundary: /no universal repeat-harvest interval|not fixed cultivar guarantees/i,
+      },
+    ];
+
+    for (const { id, expectedSource, scopeBoundary } of cases) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en").harvestUse;
+      const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+      expect(english?.bestUse.length).toBeGreaterThan(60);
+      expect(spanish?.bestUse.length).toBeGreaterThan(60);
+      expect(english?.options.length).toBeGreaterThan(0);
+      expect(spanish?.options.length).toBe(english?.options.length);
+      expect(english?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(spanish?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(english?.options.flatMap((option) => option.sources).some((source) => source.label.includes(expectedSource))).toBe(true);
+      expect(`${english?.bestUse} ${english?.options.map((option) => option.summary).join(" ")}`).toMatch(scopeBoundary);
+    }
+
+    const celery = buildDonorPlantDetail(findCanonicalEntry("stalk-celery-apium-graveolens")!, "en").harvestUse!;
+    expect(celery.options.map((option) => option.title).join(" ")).toMatch(/outer stalks|freeze celery/i);
+    expect(celery.options.flatMap((option) => option.sources).some((source) => source.label.includes("National Center for Home Food Preservation"))).toBe(true);
+  });
+
+  it("renders evidence-scoped cut-flower Harvest Use for Stock and Sweet William in EN/ES", () => {
+    const cases = [
+      {
+        id: "stock-matthiola-incana",
+        expectedSource: "Mississippi State University Extension Service",
+        scopeBoundary: /not a repeat-cut promise|does not establish a home vase-life guarantee/i,
+      },
+      {
+        id: "sweet-william-dianthus-barbatus",
+        expectedSource: "University of California, Davis",
+        scopeBoundary: /not generalized as home instructions|no home vase-life duration/i,
+      },
+      {
+        id: "annual-babys-breath-gypsophila-elegans",
+        expectedSource: "Oklahoma Cooperative Extension Service",
+        scopeBoundary: /genus-level|not an exact percent-open target/i,
+      },
+      {
+        id: "ivory-princess-calendula",
+        expectedSource: "Oklahoma Cooperative Extension Service",
+        scopeBoundary: /species-level|not a trial of the Ivory Princess selection|food-grade/i,
+      },
+      {
+        id: "dwarf-sunflower",
+        expectedSource: "University of Illinois Extension",
+        scopeBoundary: /species-level advice|not a dwarf-cultivar trial|not.*every dwarf selection/i,
+      },
+      {
+        id: "sweet-pea",
+        expectedSource: "University of Illinois Extension",
+        scopeBoundary: /half the florets open|about half the florets are open/i,
+      },
+      {
+        id: "blazing-star-liatris-spicata",
+        expectedSource: "Oklahoma Cooperative Extension Service",
+        scopeBoundary: /direct-sale|does not promise a vase-life duration/i,
+      },
+    ];
+
+    for (const { id, expectedSource, scopeBoundary } of cases) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en").harvestUse;
+      const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+      expect(english?.bestUse.length).toBeGreaterThan(60);
+      expect(spanish?.bestUse.length).toBeGreaterThan(60);
+      expect(english?.options.length).toBeGreaterThan(0);
+      expect(spanish?.options.length).toBe(english?.options.length);
+      expect(english?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(spanish?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(english?.options.flatMap((option) => option.sources).some((source) => source.label.includes(expectedSource))).toBe(true);
+      expect(`${english?.bestUse} ${english?.options.map((option) => option.summary).join(" ")}`).toMatch(scopeBoundary);
+    }
+
+    const sweetPea = buildDonorPlantDetail(findCanonicalEntry("sweet-pea")!, "en").harvestUse!;
+    const sweetPeaEs = buildDonorPlantDetail(findCanonicalEntry("sweet-pea")!, "es").harvestUse!;
+    expect(sweetPea.safetyNote).toMatch(/pods and seeds are poisonous/i);
+    expect(sweetPeaEs.safetyNote).toMatch(/vainas y semillas.*venenosas/i);
+  });
+
+  it("renders useful, species-scoped herb and ornamental Harvest Use in EN/ES", () => {
+    const cases = [
+      {
+        id: "sweet-woodruff-galium-odoratum",
+        scopeBoundary: /large amounts of flowers|no safe serving amount/i,
+      },
+      {
+        id: "clary-sage-salvia-sclarea",
+        scopeBoundary: /does not provide a serving quantity|no amount or recipe/i,
+      },
+      {
+        id: "wild-bergamot-monarda-fistulosa",
+        scopeBoundary: /no infusion quantity|not a therapeutic recommendation/i,
+      },
+      {
+        id: "feverfew",
+        scopeBoundary: /no universal cutting stage|does not provide medical advice/i,
+      },
+    ];
+
+    for (const { id, scopeBoundary } of cases) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en").harvestUse;
+      const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+      expect(english?.bestUse.length).toBeGreaterThan(60);
+      expect(spanish?.bestUse.length).toBeGreaterThan(60);
+      expect(english?.options.length).toBeGreaterThan(0);
+      expect(spanish?.options.length).toBe(english?.options.length);
+      expect(english?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(spanish?.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(`${english?.bestUse} ${english?.options.map((option) => option.summary).join(" ")}`).toMatch(scopeBoundary);
+    }
+
+    const sweetWoodruff = buildDonorPlantDetail(findCanonicalEntry("sweet-woodruff-galium-odoratum")!, "en").harvestUse!;
+    const clarySage = buildDonorPlantDetail(findCanonicalEntry("clary-sage-salvia-sclarea")!, "en").harvestUse!;
+    const feverfew = buildDonorPlantDetail(findCanonicalEntry("feverfew")!, "en").harvestUse!;
+    expect(sweetWoodruff.safetyNote).toMatch(/blood-thinning effect/i);
+    expect(clarySage.safetyNote).toMatch(/no essential-oil dose/i);
+    expect(feverfew.safetyNote).toMatch(/ornamental flower use only/i);
+  });
+
+  it("renders asparagus Harvest Use in both languages, including its food-safety note and source links", () => {
+    const entry = findCanonicalEntry("asparagus")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.ediblePart).toMatch(/young spears/i);
+    expect(english.options).toHaveLength(4);
+    expect(english.options[2]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Blanching vegetables") }),
+      ]),
+    );
+    expect(english.options[3]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Asparagus, Spears or Pieces") }),
+      ]),
+    );
+    expect(english.safetyNote).toMatch(/pressure canner/i);
+    expect(spanish.ediblePart).toMatch(/turiones jóvenes/i);
+    expect(spanish.safetyNote).toMatch(/envasadora a presión/i);
+  });
+
+  it("renders bean and pea Harvest Use bilingually without collapsing their crop classes", () => {
+    const ids = [
+      "bush-bean-blue-lake",
+      "bush-bean-royal-burgundy",
+      "henderson-bush-lima-bean",
+      "kentucky-wonder-pole-bean",
+      "little-marvel-shelling-pea",
+      "mammoth-melting-sugar-snow-pea",
+      "purple-podded-bean",
+      "snap-pea-oregon-sugar-pod",
+      "sugar-snap-pea",
+    ];
+
+    for (const id of ids) {
+      const entry = findCanonicalEntry(id)!;
+      const en = buildDonorPlantDetail(entry, "en").harvestUse!;
+      const es = buildDonorPlantDetail(entry, "es").harvestUse!;
+      expect(en.options).toHaveLength(3);
+      expect(es.options).toHaveLength(3);
+      expect(en.ediblePart.trim()).not.toBe("");
+      expect(es.ediblePart.trim()).not.toBe("");
+      expect(en.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(es.options.every((option) => option.sources.length > 0)).toBe(true);
+      expect(en.options.every((option) => option.title.trim() && option.steps.length > 0)).toBe(true);
+      expect(es.options.every((option) => option.title.trim() && option.steps.length > 0)).toBe(true);
+    }
+
+    const lima = buildDonorPlantDetail(findCanonicalEntry("henderson-bush-lima-bean")!, "en").harvestUse!;
+    const limaEs = buildDonorPlantDetail(findCanonicalEntry("henderson-bush-lima-bean")!, "es").harvestUse!;
+    expect(lima.safetyNote).toMatch(/never eat raw lima beans/i);
+    expect(limaEs.safetyNote).toMatch(/nunca consumas.*crudos/i);
+
+    const shelling = buildDonorPlantDetail(findCanonicalEntry("little-marvel-shelling-pea")!, "en").harvestUse!;
+    const snow = buildDonorPlantDetail(findCanonicalEntry("snap-pea-oregon-sugar-pod")!, "en").harvestUse!;
+    const snap = buildDonorPlantDetail(findCanonicalEntry("sugar-snap-pea")!, "en").harvestUse!;
+    expect(shelling.bestUse).toMatch(/not as edible-pod peas/i);
+    expect(snow.bestUse).toMatch(/not a sugar-snap type/i);
+    expect(snap.bestUse).toMatch(/nearly filled/i);
+  });
+
+  it("keeps Purple-Podded Bean growth scoped to common bush bean, not fava", () => {
+    const entry = findCanonicalEntry("purple-podded-bean")!;
+    const en = buildDonorPlantDetail(entry, "en").guides.find((guide) => guide.id === "growth");
+    const es = buildDonorPlantDetail(entry, "es").guides.find((guide) => guide.id === "growth");
+
+    expect(en?.body).toMatch(/bush beans as upright plants/i);
+    expect(en?.body).not.toMatch(/fava|Vicia faba/i);
+    expect(es?.body).toMatch(/frijoles de mata/i);
+    expect(es?.body).not.toMatch(/haba|Vicia faba/i);
+  });
+
+  it("keeps Harvest Use crop-scoped for arugula, bok choy, and Detroit Dark Red beet", () => {
+    const arugula = buildDonorPlantDetail(findCanonicalEntry("arugula")!, "en").harvestUse!;
+    const arugulaEs = buildDonorPlantDetail(findCanonicalEntry("arugula")!, "es").harvestUse!;
+    const bokChoy = buildDonorPlantDetail(findCanonicalEntry("bok-choy")!, "en").harvestUse!;
+    const bokChoyEs = buildDonorPlantDetail(findCanonicalEntry("bok-choy")!, "es").harvestUse!;
+    const beet = buildDonorPlantDetail(findCanonicalEntry("beet-detroit-dark-red")!, "en").harvestUse!;
+    const beetEs = buildDonorPlantDetail(findCanonicalEntry("beet-detroit-dark-red")!, "es").harvestUse!;
+
+    expect(arugula.bestUse).toMatch(/Eruca sativa/);
+    expect(arugulaEs.options[0]?.sources[0]?.label).toContain("University of Wisconsin");
+    expect(bokChoy.quickUses).toContain("Kimchi");
+    expect(bokChoyEs.quickUses).toContain("Kimchi");
+    expect(beet.bestUse).toMatch(/does not establish Detroit Dark Red-specific culinary traits/i);
+    expect(beet.options[0]?.sources[0]?.label).toContain("Utah State University Extension");
+    expect(beetEs.bestUse).toMatch(/no establece rasgos culinarios propios de Detroit Dark Red/i);
+  });
+
+  it("renders the new Gai Lan, cauliflower, Greek oregano, and Lacinato Harvest Use in EN/ES with scoped sources", () => {
+    const cases = [
+      {
+        id: "gai-lan",
+        enSource: "Ontario Ministry of Agriculture",
+        esSource: "Ontario Ministry of Agriculture",
+      },
+      {
+        id: "cauliflower-snowball",
+        enSource: "University of Minnesota Extension",
+        esSource: "University of Minnesota Extension",
+      },
+      {
+        id: "greek-oregano",
+        enSource: "North Carolina State",
+        esSource: "North Carolina State",
+      },
+      {
+        id: "lacinato-kale",
+        enSource: "Oregon State University",
+        esSource: "Oregon State University",
+      },
+    ];
+
+    for (const item of cases) {
+      const entry = findCanonicalEntry(item.id)!;
+      const en = buildDonorPlantDetail(entry, "en").harvestUse!;
+      const es = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+      expect(en.options.length).toBeGreaterThan(0);
+      expect(es.options.length).toBeGreaterThan(0);
+      expect(en.options.flatMap((option) => option.sources).some((source) => source.label.includes(item.enSource))).toBe(true);
+      expect(es.options.flatMap((option) => option.sources).some((source) => source.label.includes(item.esSource))).toBe(true);
+      expect(en.ediblePart.length).toBeGreaterThan(0);
+      expect(es.ediblePart.length).toBeGreaterThan(0);
+    }
+
+    expect(buildDonorPlantDetail(findCanonicalEntry("cauliflower-snowball")!, "en").harvestUse?.bestUse).toMatch(/not establish Snowball-specific/i);
+    expect(buildDonorPlantDetail(findCanonicalEntry("greek-oregano")!, "en").harvestUse?.bestUse).toMatch(/subsp\. hirtum/i);
+    expect(buildDonorPlantDetail(findCanonicalEntry("lacinato-kale")!, "en").harvestUse?.bestUse).toMatch(/does not establish a Lacinato-specific/i);
+  });
+
+  it("enriches German thyme with species-scoped cultivation, growth, problem context, and Harvest Use", () => {
+    const entry = findCanonicalEntry("german-thyme")!;
+    const en = buildDonorPlantDetail(entry, "en");
+    const es = buildDonorPlantDetail(entry, "es");
+    const enCultivation = en.guides.find((guide) => guide.id === "cultivation");
+    const esCultivation = es.guides.find((guide) => guide.id === "cultivation");
+    const enProblems = en.guides.find((guide) => guide.id === "problems");
+    const esProblems = es.guides.find((guide) => guide.id === "problems");
+
+    expect(en.summary).toMatch(/common name for Thymus vulgaris/i);
+    expect(enCultivation?.body).toMatch(/full sun/i);
+    expect(esCultivation?.body).toMatch(/sol pleno/i);
+    expect(enProblems?.body).toMatch(/no significant insect, disease/i);
+    expect(esProblems?.body).toMatch(/no reporta problemas significativos/i);
+    expect(en.harvestUse?.bestUse).toMatch(/not as a separate cultivar/i);
+    expect(es.harvestUse?.bestUse).toMatch(/no como cultivar separado/i);
+    expect(en.harvestUse?.options.every((option) => option.sources.length > 0)).toBe(true);
+  });
+
+  it("resolves Harvest Use source links from canonical plant evidence when its display map omits them", () => {
+    const detail = buildDonorPlantDetail(findCanonicalEntry("bronze-arrow-lettuce")!, "en");
+    const sources = detail.harvestUse?.options.flatMap((option) => option.sources) ?? [];
+
+    expect(sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: expect.stringContaining("Cornell Cooperative Extension"),
+          url: "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=2544",
+        }),
+      ]),
+    );
+  });
+
+  it("resolves public Harvest Use sources cited by methods across the catalog", () => {
+    const cases = [
+      { plantId: "common-chives", sourceLabel: "North Carolina State University Extension" },
+      { plantId: "rice-oryza-sativa", sourceLabel: "Tamil Nadu Agricultural University" },
+      { plantId: "rice-oryza-sativa", sourceLabel: "Food and Agriculture Organization" },
+      { plantId: "sunrise-sauce-tomato", sourceLabel: "University of Minnesota Extension" },
+      { plantId: "common-fig", sourceLabel: "Oregon State University Extension" },
+      { plantId: "cosmos-sensation", sourceLabel: "University of Illinois Extension" },
+    ];
+
+    for (const { plantId, sourceLabel } of cases) {
+      for (const language of ["en", "es"] as const) {
+        const detail = buildDonorPlantDetail(findCanonicalEntry(plantId)!, language);
+        const sources = detail.harvestUse?.options.flatMap((option) => option.sources) ?? [];
+        expect(sources.some((source) => source.label.includes(sourceLabel))).toBe(true);
+      }
+    }
+  });
+
+  it("preserves genuinely empty Quick Uses rather than inventing chips", () => {
+    for (const plantId of ["cape-jasmine-gardenia-jasminoides", "chinese-hibiscus-hibiscus-rosa-sinensis"]) {
+      for (const language of ["en", "es"] as const) {
+        const harvestUse = buildDonorPlantDetail(findCanonicalEntry(plantId)!, language).harvestUse;
+        expect(harvestUse?.quickUses).toEqual([]);
+        expect(harvestUse?.bestUse).toBeTruthy();
+      }
+    }
+  });
+
   it("renders cultivar-scoped RHS care for Pinguicula 'Weser' without inferring hydroponic fit", () => {
     const entry = findCanonicalEntry("pinguicula-weser")!;
     const english = buildDonorPlantDetail(entry, "en");
@@ -792,6 +1341,235 @@ describe("direct Gardenpedia presentation adapter", () => {
         return suitability === "compatible" || suitability === "conditional";
       }),
     ).toBe(true);
+  });
+
+  it("shows Santo Cilantro's distinct leaf-freezing and coriander-seed uses bilingually", () => {
+    const entry = findCanonicalEntry("santo-cilantro")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.ediblePart).toMatch(/leaves and tender stems.*mature seeds are coriander/i);
+    expect(spanish.ediblePart).toMatch(/Hojas y tallos tiernos.*semillas maduras son coriandro/i);
+    expect(english.options).toHaveLength(3);
+    expect(english.options[0]?.title).toMatch(/fresh leaves/i);
+    expect(english.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Create Better Health") }),
+      ]),
+    );
+    expect(english.options[1]?.title).toMatch(/freeze leaves/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/cooked dishes/i);
+    expect(english.options[1]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: expect.stringContaining("National Center for Home Food Preservation"),
+        }),
+      ]),
+    );
+    expect(english.options[2]?.steps.join(" ")).toMatch(/paper bag/i);
+    expect(spanish.bestUse).toMatch(/objetivos de cosecha distintos/i);
+    expect(spanish.options[0]?.title).toMatch(/frescas las hojas/i);
+    expect(spanish.options[1]?.title).toMatch(/Congelar las hojas/i);
+    expect(spanish.options[2]?.steps.join(" ")).toMatch(/bolsa de papel/i);
+    expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+  });
+
+  it("presents UMN's edamame harvest and food-safety steps in EN and ES", () => {
+    const entry = findCanonicalEntry("edamame")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(1);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/still-green pods.*boil the beans/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/do not eat raw soybeans/i);
+    expect(spanish.options[0]?.title).toMatch(/cocinarlas en la vaina/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/no comas soja cruda/i);
+    expect(english.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("University of Minnesota Extension") }),
+      ]),
+    );
+    expect(english.safetyNote).toMatch(/not to eat raw soybeans/i);
+    expect(spanish.safetyNote).toMatch(/no se debe comer soja cruda/i);
+  });
+
+  it("provides OSU-backed White Lisbon repeat-harvest and storage guidance in EN/ES", () => {
+    const entry = findCanonicalEntry("white-lisbon-bunching-onion")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(2);
+    expect(english.options[0]?.lead).toMatch(/White Lisbon among bunching-onion types/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/regrow several times/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/within four months/i);
+    expect(spanish.options[0]?.title).toMatch(/cosechas repetidas/i);
+    expect(spanish.options[1]?.steps.join(" ")).toMatch(/cuatro meses/i);
+    expect(
+      english.options.every((option) =>
+        option.sources.some((source) => /Oregon State University/.test(source.label)),
+      ),
+    ).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+  });
+
+  it("adds source-scoped post-harvest storage for both named leek varieties", () => {
+    for (const [id, variety] of [
+      ["king-richard-leek", "King Richard"],
+      ["giant-musselburgh-leek", "Giant Musselburgh"],
+    ] as const) {
+      const entry = findCanonicalEntry(id)!;
+      const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+      const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+      expect(english.options).toHaveLength(1);
+      expect(english.options[0]?.title).toContain(variety);
+      expect(english.options[0]?.lead).toMatch(/UW–Madison says leeks/i);
+      expect(english.options[0]?.steps.join(" ")).toMatch(/refrigerat/i);
+      expect(spanish.options[0]?.steps.join(" ")).toMatch(/Refrigera los puerros/i);
+      expect(english.options[0]?.sources).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ label: expect.stringContaining("University of Wisconsin") }),
+        ]),
+      );
+      expect(spanish.options[0]?.sources.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("presents species-scoped Upland Cress harvest and winter uses in EN and ES", () => {
+    const entry = findCanonicalEntry("upland-cress")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.ediblePart).toBe("Leaves.");
+    expect(english.options).toHaveLength(3);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/about 4 inches tall.*stem and roots intact/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/does not quantify the number or interval/i);
+    expect(english.options[1]?.title).toMatch(/whole plant at once/i);
+    expect(english.options[2]?.lead).toMatch(/cold-hardiest winter greens/i);
+    expect(english.options[2]?.steps.join(" ")).toMatch(/west of the Cascades/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/4 pulgadas.*tallo y las raíces/i);
+    expect(spanish.options[1]?.title).toMatch(/toda la planta de una vez/i);
+    expect(spanish.options[2]?.steps.join(" ")).toMatch(/al oeste de las Cascades/i);
+    expect(english.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("University of Florida IFAS Extension") }),
+      ]),
+    );
+    expect(english.options[2]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Oregon State University Extension Service") }),
+      ]),
+    );
+    expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(english.safetyNote).toMatch(/does not infer.*universal storage life/i);
+    expect(spanish.safetyNote).toMatch(/no infieras.*duración universal de almacenamiento/i);
+  });
+
+  it("keeps Broccolini repeated-shoot harvest scoped to Broccolini evidence in EN and ES", () => {
+    const entry = findCanonicalEntry("broccolini")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(1);
+    expect(english.options[0]?.title).toMatch(/tender shoots as they become ready/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/rather than waiting for one large central broccoli head/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/no Broccolini-specific cooking, storage, or preservation protocol/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/no una sola cabeza central grande/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/no establecen un protocolo específico/i);
+    expect(english.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Illinois Extension") }),
+        expect.objectContaining({ label: expect.stringContaining("University of Minnesota Extension") }),
+        expect.objectContaining({ label: expect.stringContaining("North Carolina State") }),
+      ]),
+    );
+    expect(english.options[0]?.sources.length).toBeGreaterThanOrEqual(3);
+    expect(spanish.options[0]?.sources.length).toBeGreaterThanOrEqual(3);
+  });
+
+  it("enriches Curled Chervil fresh use and tray drying without claiming a cultivar flavor", () => {
+    const entry = findCanonicalEntry("curled-chervil")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(2);
+    expect(english.bestUse).toMatch(/not a flavor guarantee for every curled-leaf seed line/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/few soft young leaves.*another flush/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/just before serving/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/just before the blossoms open.*drying tray/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/do not specify how long dried chervil retains quality/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/otro brote/i);
+    expect(spanish.options[1]?.title).toMatch(/Secar las hojas en bandeja/i);
+    expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(english.options[1]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Iowa State University Extension") }),
+      ]),
+    );
+  });
+
+  it("provides the same evidence at species scope for the general Chervil identity", () => {
+    const entry = findCanonicalEntry("chervil-anthriscus-cerefolium")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(2);
+    expect(english.bestUse).toMatch(/species-level culinary guidance for Anthriscus cerefolium/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/few soft young leaves.*5–7.5 cm/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/Iowa State specifically lists chervil leaves for tray drying/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/otro brote/i);
+    expect(spanish.options[1]?.title).toMatch(/Secar las hojas en bandeja/i);
+    expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+  });
+
+  it("gives rhubarb age-, safety-, and region-scoped harvest/use guidance in EN and ES", () => {
+    const entry = findCanonicalEntry("rhubarb")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.options).toHaveLength(2);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/second season.*third season when plants were started from seed/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/pull and twist rather than cutting/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/discard the leaves because they are toxic/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/Minnesota guide ends routine harvesting around the end of June/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/myth.*stalks become toxic later in summer/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/tercera si la planta se inició desde semilla/i);
+    expect(spanish.options[1]?.summary).toMatch(/corresponde a Minnesota/i);
+    expect(spanish.options[1]?.steps.join(" ")).toMatch(/es un mito que los pecíolos se vuelvan tóxicos/i);
+    expect(english.options.every((option) =>
+      option.sources.some((source) => /University of Minnesota Extension/.test(source.label)),
+    )).toBe(true);
+    expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
+  });
+
+  it("distinguishes Sweet Spanish from Walla Walla onion harvest and storage evidence", () => {
+    const sweetSpanish = buildDonorPlantDetail(findCanonicalEntry("sweet-spanish-onion")!, "en").harvestUse!;
+    const sweetSpanishEs = buildDonorPlantDetail(findCanonicalEntry("sweet-spanish-onion")!, "es").harvestUse!;
+    const wallaWalla = buildDonorPlantDetail(findCanonicalEntry("walla-walla-onion")!, "en").harvestUse!;
+    const wallaWallaEs = buildDonorPlantDetail(findCanonicalEntry("walla-walla-onion")!, "es").harvestUse!;
+
+    expect(sweetSpanish.options).toHaveLength(2);
+    expect(sweetSpanish.options[0]?.steps.join(" ")).toMatch(/tops fall over naturally.*2–3 weeks/i);
+    expect(sweetSpanish.options[0]?.steps.join(" ")).toMatch(/specifically names White Sweet Spanish/i);
+    expect(sweetSpanish.options[1]?.lead).toMatch(/Sweet Spanish onions as mild/i);
+    expect(sweetSpanishEs.options[1]?.steps.join(" ")).toMatch(/complementos crudos/i);
+
+    expect(wallaWalla.options).toHaveLength(2);
+    expect(wallaWalla.options[0]?.lead).toMatch(/specifically lists Walla Walla as a poor keeper/i);
+    expect(wallaWalla.options[0]?.steps.join(" ")).toMatch(/trim tops about 1 inch above the bulb/i);
+    expect(wallaWalla.options[1]?.lead).toMatch(/describes Walla Walla as sweet, mild, and juicy/i);
+    expect(wallaWallaEs.options[0]?.title).toMatch(/curar y usar pronto/i);
+    expect(wallaWallaEs.options[0]?.steps.join(" ")).toMatch(/poca conservación/i);
+    for (const option of [...sweetSpanish.options, ...wallaWalla.options]) {
+      expect(option.sources.length).toBeGreaterThan(0);
+    }
+    for (const option of [...sweetSpanishEs.options, ...wallaWallaEs.options]) {
+      expect(option.sources.length).toBeGreaterThan(0);
+    }
   });
 
   it("keeps the donor calculator pure and uses canonical plant ids", () => {

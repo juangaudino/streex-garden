@@ -1,48 +1,540 @@
 [
   {
-    "id":"venus-flytrap-dionaea-muscipula","name":"Venus Flytrap","spanishName":"Venus atrapamoscas","scientificName":"Dionaea muscipula","variety":"Species identity; no cultivar specified","category":"ornamentals","emoji":"🪴","guideCompletion":50,
-    "tags":["venus flytrap","venus's flytrap","dionaea","dionaea muscipula","venus atrapamoscas"],
-    "summary":"The Venus flytrap is the accepted species Dionaea muscipula, a perennial carnivorous plant native to the Carolinas. North Carolina Extension lists both seed and division propagation.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Dionaea muscipula","guidance":"Kew accepts Dionaea muscipula J.Ellis and places it in Droseraceae. The common name Venus flytrap refers to this species here; no named cultivar is implied.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-dionaea-muscipula-500","ncsu-dionaea-muscipula-500"]},
-      "cultivation":{"short":"Use the cited wet, acidic growing context","guidance":"North Carolina Extension describes full sun or partial shade and persistently moist to occasionally wet, acidic soil. These are outdoor/site conditions, not a hydroponic nutrient recipe or a household watering schedule.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-dionaea-muscipula-500"]},
-      "propagation":{"short":"Seed and division are documented","guidance":"North Carolina Extension lists seed and division as propagation strategies. The source does not specify a home seed-sowing protocol, germination timing, or cultivar fidelity; those details remain unresolved.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-dionaea-muscipula-500"]},
-      "problems":{"short":"Avoid treating carnivory as a fertilizer requirement","guidance":"The cited profile places this species in nutrient-poor acidic wetland conditions. It does not provide a container fertilizer or hydroponic feeding schedule, so none is inferred here.","evidenceType":"garden_adaptation","confidence":"medium","sourceIds":["ncsu-dionaea-muscipula-500"]}
+    "id": "venus-flytrap-dionaea-muscipula",
+    "name": "Venus Flytrap",
+    "spanishName": "Venus atrapamoscas",
+    "scientificName": "Dionaea muscipula",
+    "variety": "Species identity; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 50,
+    "tags": [
+      "venus flytrap",
+      "venus's flytrap",
+      "dionaea",
+      "dionaea muscipula",
+      "venus atrapamoscas"
+    ],
+    "summary": "The Venus flytrap is the accepted species Dionaea muscipula, a clumping perennial carnivore native to coastal North Carolina and a small area of northeastern South Carolina. Its hinged traps close after two trigger hairs are disturbed; use low-mineral water and keep the acidic medium wet, without fertilizer.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Dionaea muscipula",
+        "guidance": "Kew accepts Dionaea muscipula J.Ellis and places it in Droseraceae. The common name Venus flytrap refers to this species here; no named cultivar is implied.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-dionaea-muscipula-500",
+          "ncsu-dionaea-muscipula-500"
+        ]
+      },
+      "growth": {
+        "short": "Low rosette of hinged traps; trap closure is normal prey response",
+        "guidance": "NC State describes a basal rosette of up to eight leaves. Each leaf ends in a two-lobed trap; disturbance of any two of six trigger hairs can close it, and the trap resets after digestion. Trap interiors may be green or red depending on sun exposure. This species description does not assign a cultivar or trap color.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dionaea-muscipula-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Keep the acidic, sandy medium wet and use rain or distilled water",
+        "guidance": "NC State recommends high humidity, wet sandy acidic medium, and full sun to partial shade; it says not to let the medium dry. It recommends rainwater or distilled water because hard or treated water can harm the plant, and says not to fertilize. Container/bog use is documented, but this is not evidence for recirculating hydroponic nutrient solution.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dionaea-muscipula-500"
+        ]
+      },
+      "propagation": {
+        "short": "Seed and division are documented",
+        "guidance": "North Carolina Extension lists seed and division as propagation strategies. The source does not specify a home seed-sowing protocol, germination timing, or cultivar fidelity; those details remain unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dionaea-muscipula-500"
+        ]
+      },
+      "flowering": {
+        "short": "White flowers rise on a leafless stalk in spring",
+        "guidance": "NC State describes clusters of small white flowers on a leafless stalk in May and June in its regional North Carolina context. Flowering is part of the species lifecycle; no indoor calendar is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dionaea-muscipula-500"
+        ]
+      },
+      "problems": {
+        "short": "Watch for aphids, spider mites and black spot",
+        "guidance": "NC State reports no serious insect or disease problems but lists aphids, spider mites and black spot to watch for. It also warns that hard or treated water can harm the plant and identifies the species as endangered, advising against wild collection. Choose nursery-propagated stock; these are source-region conservation notes and monitoring cues, not a diagnosis from trap appearance alone.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dionaea-muscipula-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Wetland ecology does not establish suitability for recirculating hydroponic nutrient solutions."},"growthHabits":{"status":"known","value":["clumping"],"evidence":[{"sourceIds":["ncsu-dionaea-muscipula-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Dionaea muscipula"},"note":"NC State Extension describes the species as clumping."}]},"matureSize":{"height":{"status":"known","value":{"minCm":15.24,"maxCm":30.48,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-dionaea-muscipula-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Dionaea muscipula"},"note":"NC State's 6–12 inch range is converted to centimeters; source scope is species."}]},"spread":{"status":"known","value":{"minCm":15.24,"maxCm":20.32,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-dionaea-muscipula-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Dionaea muscipula"},"note":"NC State's 6–8 inch range is converted to centimeters; source scope is species."}]}},"spacing":{"status":"unknown","reason":"No spacing recommendation was selected."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["ncsu-dionaea-muscipula-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Dionaea muscipula"},"note":"NC State Extension lists full sun and partial shade for outdoor cultivation; the profile reports the supported full-sun category only because v1 does not express partial shade separately."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Wetland ecology does not establish suitability for recirculating hydroponic nutrient solutions."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "clumping"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-dionaea-muscipula-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Dionaea muscipula"
+            },
+            "note": "NC State Extension describes the species as clumping."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 30.48,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-dionaea-muscipula-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Dionaea muscipula"
+              },
+              "note": "NC State's 6–12 inch range is converted to centimeters; source scope is species."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 15.24,
+            "maxCm": 20.32,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ncsu-dionaea-muscipula-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Dionaea muscipula"
+              },
+              "note": "NC State's 6–8 inch range is converted to centimeters; source scope is species."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No spacing recommendation was selected."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-dionaea-muscipula-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Dionaea muscipula"
+            },
+            "note": "NC State Extension lists full sun and partial shade for outdoor cultivation; the profile reports the supported full-sun category only because v1 does not express partial shade separately."
+          }
+        ]
+      }
+    }
   },
   {
-    "id":"cape-sundew-drosera-capensis","name":"Cape Sundew","spanishName":"Rocío del sol del Cabo","scientificName":"Drosera capensis","variety":"Species identity; no cultivar specified","category":"ornamentals","emoji":"🪴","guideCompletion":50,
-    "tags":["cape sundew","drosera capensis","sundew","rocío del sol del cabo"],
-    "summary":"Cape sundew is the accepted perennial species Drosera capensis. The South African National Biodiversity Institute documents moist acidic cultivation and propagation from fresh surface-sown seed or vegetative cuttings.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Drosera capensis","guidance":"Kew accepts Drosera capensis L. and identifies its native range in the South African Cape. The public identity is species-level, not a color-form cultivar.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-drosera-capensis-500","sanbi-drosera-capensis-500"]},
-      "cultivation":{"short":"Keep the growing medium continuously moist","guidance":"SANBI's PlantZAfrica describes moist conditions and full sun to semi-shade outdoors. Its botanical-garden cultivation notes are retained in context; they do not establish a hydroponic recipe.","evidenceType":"source_backed","confidence":"high","sourceIds":["sanbi-drosera-capensis-500"]},
-      "propagation":{"short":"Fresh seed and cuttings are documented","guidance":"SANBI describes sowing fresh seed on the surface of moist growing medium without covering it, and also documents leaf or root cuttings. Seed guidance is species-level; no numeric germination duration or temperature is supplied.","evidenceType":"source_backed","confidence":"high","sourceIds":["sanbi-drosera-capensis-500"]},
-      "problems":{"short":"Drying reduces visible mucilage","guidance":"SANBI notes that drying can cause drooping and reduced mucilage production. This symptom is not by itself a diagnosis of the cause; assess moisture and growing conditions before intervention.","evidenceType":"source_backed","confidence":"medium","sourceIds":["sanbi-drosera-capensis-500"]}
+    "id": "cape-sundew-drosera-capensis",
+    "name": "Cape Sundew",
+    "spanishName": "Rocío del sol del Cabo",
+    "scientificName": "Drosera capensis",
+    "variety": "Species identity; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 50,
+    "tags": [
+      "cape sundew",
+      "drosera capensis",
+      "sundew",
+      "rocío del sol del cabo"
+    ],
+    "summary": "Cape sundew is the accepted evergreen carnivorous species Drosera capensis. SANBI describes a rhizomatous plant with sticky tentacled leaves, pink-to-mauve flowers, a continuously moist potting context and vegetative propagation; dimensions and seasonal dates remain regional source descriptions.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Drosera capensis",
+        "guidance": "Kew accepts Drosera capensis L. and identifies its native range in the South African Cape. The public identity is species-level, not a color-form cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-drosera-capensis-500",
+          "sanbi-drosera-capensis-500"
+        ]
+      },
+      "growth": {
+        "short": "Evergreen sundew with sticky tentacled leaves and pink-mauve flowers",
+        "guidance": "SANBI describes a robust, free-flowering evergreen perennial, usually around 15 cm high, with leaves radiating from a short rhizomatous stem. Sticky glands on the leaf tentacles trap prey; 15–30 pink-to-mauve flowers open in ascending order on a stem. SANBI's December–January flowering note is Southern Hemisphere context, not a universal calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "sanbi-drosera-capensis-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Keep the pot consistently moist with low-mineral water",
+        "guidance": "SANBI's PlantZAfrica recommends a pot standing in a 1–3 cm saucer of fresh water so the medium stays moist, and full sun to semi-shade outdoors. It describes an acidic, low-nutrient medium and an indoor-facing recommendation for its South African context. This botanical-garden/container guidance is not a hydroponic nutrient recipe or a universal indoor-light tier.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "sanbi-drosera-capensis-500"
+        ]
+      },
+      "propagation": {
+        "short": "Leaf and root cuttings are vegetative options",
+        "guidance": "SANBI documents vegetative propagation from leaf or root cuttings. For the seed route and sowing instructions, use the linked Seed Profile; this Plant Profile does not repeat the seed-to-establishment protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "sanbi-drosera-capensis-500"
+        ]
+      },
+      "problems": {
+        "short": "Drying, handling and pests can change appearance",
+        "guidance": "SANBI notes that drying can cause drooping and reduced mucilage, while recent transplanting or touching the leaves can temporarily reduce visible dew before new foliage develops. It lists aphids, mealybugs and thrips as pests that can deform new growth and cautions against soap-based insecticides. These cues should prompt a check of conditions, not diagnosis from appearance alone.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "sanbi-drosera-capensis-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Carnivorous-plant wet-media guidance does not establish suitability for conventional hydroponic nutrient solutions."},"growthHabits":{"status":"unknown","reason":"The selected institutional source does not establish a controlled growth-habit value."},"matureSize":{"height":{"status":"unknown","reason":"No dimensions are asserted from the reviewed selected source set."},"spread":{"status":"unknown","reason":"No dimensions are asserted from the reviewed selected source set."}},"spacing":{"status":"unknown","reason":"No spacing recommendation was selected."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["sanbi-drosera-capensis-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Drosera capensis"},"note":"SANBI lists full sun to semi-shade outdoors; only its explicit full-sun category is carried because v1 does not separately represent partial shade."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Carnivorous-plant wet-media guidance does not establish suitability for conventional hydroponic nutrient solutions."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The selected institutional source does not establish a controlled growth-habit value."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No dimensions are asserted from the reviewed selected source set."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No dimensions are asserted from the reviewed selected source set."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No spacing recommendation was selected."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "sanbi-drosera-capensis-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Drosera capensis"
+            },
+            "note": "SANBI lists full sun to semi-shade outdoors; only its explicit full-sun category is carried because v1 does not separately represent partial shade."
+          }
+        ]
+      }
+    }
   },
   {
-    "id":"pinguicula-primuliflora","name":"Pinguicula primuliflora","spanishName":"Pinguicula primuliflora","scientificName":"Pinguicula primuliflora","variety":"Species identity; no cultivar specified","category":"ornamentals","emoji":"🪴","guideCompletion":38,
-    "tags":["pinguicula primuliflora","primuliflora butterwort","butterwort","grasilla primuliflora"],
-    "summary":"Pinguicula primuliflora is an accepted southeastern U.S. carnivorous perennial. Its leaf-tip plantlets make vegetative propagation a documented, practical route; cultivation notes are attributed to a specialist source.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Pinguicula primuliflora","guidance":"Kew accepts Pinguicula primuliflora C.E.Wood & R.K.Godfrey, in Lentibulariaceae. The common name butterwort is broader than this species and is kept as a search alias, not a replacement identity.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-pinguicula-primuliflora-500"]},
-      "cultivation":{"short":"Moist medium and filtered light in the cited specialist account","guidance":"The specialist species account describes moist, aerated growing medium and indirect or filtered light, with caution against direct sun in its stated habitat context. It is a specialist cultivation account, not an institutional hydroponic recommendation.","evidenceType":"source_backed","confidence":"medium","sourceIds":["pinguicula-org-primuliflora-500"]},
-      "propagation":{"short":"Leaf-tip plantlets are the documented practical route","guidance":"The specialist account describes numerous plantlets forming at leaf tips and rooting before separation. Seed formation is noted as occasional in the described clone, so seed propagation is not presented as a dependable routine method for this identity.","evidenceType":"source_backed","confidence":"medium","sourceIds":["pinguicula-org-primuliflora-500"]}
+    "id": "pinguicula-primuliflora",
+    "name": "Pinguicula primuliflora",
+    "spanishName": "Pinguicula primuliflora",
+    "scientificName": "Pinguicula primuliflora",
+    "variety": "Species identity; no cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 38,
+    "tags": [
+      "pinguicula primuliflora",
+      "primuliflora butterwort",
+      "butterwort",
+      "grasilla primuliflora"
+    ],
+    "summary": "Pinguicula primuliflora is a compact, southeastern U.S. carnivorous perennial with sticky rosette leaves and terminal flowers. NParks documents consistently moist, sometimes waterlogged root conditions and semi-shade; the species also forms plantlets at leaf tips. These garden-botanical facts do not establish conventional hydroponic compatibility.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Pinguicula primuliflora",
+        "guidance": "Kew accepts Pinguicula primuliflora C.E.Wood & R.K.Godfrey, in Lentibulariaceae. NParks gives Primrose Butterwort as a common name; the broader word butterwort remains a search alias, not a replacement identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-pinguicula-primuliflora-500",
+          "nparks-pinguicula-primuliflora-2026"
+        ]
+      },
+      "growth": {
+        "short": "Compact basal rosette, typically reported 4–16 cm across",
+        "guidance": "NParks describes oblong, bright-green leaves in a compact basal rosette, typically 4–16 cm across, with glandular hairs that trap and digest insects. Solitary flower stalks rise from the rosette. The crown-width range is species-level botanical-garden data, not a pot or system-spacing recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-pinguicula-primuliflora-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Keep the root zone consistently moist; semi-shade is documented",
+        "guidance": "NParks recommends a layered sphagnum/peat and sphagnum-perlite medium and says to keep it consistently moist; its record notes tolerance of moist to waterlogged root zones and semi-shade. The specialist account also describes moist, aerated medium and filtered light. Neither source supports a conventional hydroponic nutrient solution, EC/pH target, or dry-out interval.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "nparks-pinguicula-primuliflora-2026",
+          "pinguicula-org-primuliflora-500"
+        ]
+      },
+      "care": {
+        "short": "Plantlets can develop where leaf tips touch the medium",
+        "guidance": "NParks reports plantlets forming at leaf tips where they contact the medium; the specialist account describes them rooting before separation. This is a recognizable vegetative growth feature, not a sign of disease or a seedling protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-pinguicula-primuliflora-2026",
+          "pinguicula-org-primuliflora-500"
+        ]
+      },
+      "flowering": {
+        "short": "Solitary, terminal flowers with a pale-purple and yellow pattern",
+        "guidance": "NParks describes a solitary terminal flower with a light-purple corolla and yellow throat marked by brown veins. The sources reviewed do not establish a universal indoor flowering calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-pinguicula-primuliflora-2026"
+        ]
+      },
+      "propagation": {
+        "short": "Leaf-tip plantlets are documented; reliable routine seed culture is not established here",
+        "guidance": "NParks and the specialist account both describe vegetative plantlets at the leaf tips; the specialist account notes occasional seed formation in its described clone. This supports vegetative propagation but does not prove seed propagation is impossible or establish a reliable seed protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "nparks-pinguicula-primuliflora-2026",
+          "pinguicula-org-primuliflora-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"A moist carnivorous-plant medium is not evidence of hydroponic nutrient-solution compatibility."},"growthHabits":{"status":"unknown","reason":"The selected sources do not map habit to the controlled profile vocabulary."},"matureSize":{"height":{"status":"unknown","reason":"No selected source-backed dimensions."},"spread":{"status":"unknown","reason":"No selected source-backed dimensions."}},"spacing":{"status":"unknown","reason":"No spacing recommendation was selected."},"light":{"status":"unknown","reason":"Specialist light wording was not forced into the current outdoor exposure categories."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Carnivorous-plant medium and waterlogging tolerance do not prove compatibility with a recirculating nutrient solution."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "compact"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "nparks-pinguicula-primuliflora-2026"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Pinguicula primuliflora"
+            },
+            "note": "NParks describes this species as compact and forming a basal rosette."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No mature height value selected from the reviewed sources."
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 4,
+            "maxCm": 16,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "nparks-pinguicula-primuliflora-2026"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Pinguicula primuliflora"
+              },
+              "note": "NParks reports 4–16 cm maximum plant spread/crown width; species-level botanical garden data, not indoor pot or system footprint."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Crown width is not a Garden system spacing or pod-count recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Semi-shade is outdoor/garden guidance and is not an indoor grow-light classification."
+      }
+    }
   },
   {
-    "id":"nepenthes-x-ventrata","name":"Nepenthes × ventrata","spanishName":"Nepenthes × ventrata","scientificName":"Nepenthes × ventrata","variety":"Horticultural hybrid identity; no named cultivar specified","category":"ornamentals","emoji":"🪴","guideCompletion":38,
-    "tags":["nepenthes x ventrata","nepenthes ventrata","tropical pitcher plant","planta jarro tropical"],
-    "summary":"Nepenthes × ventrata is documented by Singapore NParks as a hybrid of N. alata and N. ventricosa. NParks reports tissue-culture propagation and a moist, low-nutrient medium; those details do not establish seed or hydroponic protocols.","metrics":[],
-    "sections":{
-      "identity":{"short":"Hybrid identity, not a species or cultivar claim","guidance":"NParks identifies Nepenthes × ventrata as a natural hybrid between N. alata and N. ventricosa. This record preserves the horticultural hybrid name and does not treat it as a named cultivar or as either parent species.","evidenceType":"source_backed","confidence":"medium","sourceIds":["nparks-nepenthes-ventrata-500"]},
-      "cultivation":{"short":"Moist, low-nutrient, well-drained medium in NParks guidance","guidance":"NParks describes moist but well-drained, low-nutrient media and semi-shade. These are horticultural-medium conditions for this hybrid; they are not converted into recirculating hydroponics, EC, or pH values.","evidenceType":"source_backed","confidence":"medium","sourceIds":["nparks-nepenthes-ventrata-500"]},
-      "propagation":{"short":"Tissue culture is the documented commercial propagation route","guidance":"NParks reports that this hybrid has been widely propagated by tissue culture. This does not establish that seed is impossible; a reliable seed protocol and seed fidelity for the marketed hybrid remain unverified.","evidenceType":"source_backed","confidence":"medium","sourceIds":["nparks-nepenthes-ventrata-500"]}
+    "id": "nepenthes-x-ventrata",
+    "name": "Nepenthes × ventrata",
+    "spanishName": "Nepenthes × ventrata",
+    "scientificName": "Nepenthes × ventrata",
+    "variety": "Horticultural hybrid identity; no named cultivar specified",
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "guideCompletion": 38,
+    "tags": [
+      "nepenthes x ventrata",
+      "nepenthes ventrata",
+      "tropical pitcher plant",
+      "planta jarro tropical"
+    ],
+    "summary": "Nepenthes × ventrata is a natural horticultural hybrid of N. alata and N. ventricosa with climbing stems, tendrils and pitcher traps. NParks documents moist, well-drained, low-nutrient medium and occasional misting; these houseplant/cultivation details do not establish conventional hydroponic compatibility.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Natural hybrid identity, not a species or named cultivar claim",
+        "guidance": "NParks identifies Nepenthes × ventrata as a natural hybrid between N. alata and N. ventricosa. This record preserves the horticultural hybrid name and does not treat it as a named cultivar or either parent species.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      },
+      "growth": {
+        "short": "Climbing stems form tendrils and insect-trapping pitchers",
+        "guidance": "NParks describes glossy, leathery leaves whose tips form tendrils or cylindrical pitchers. The pitchers are yellow-green and may develop a red blush under bright light. This describes the hybrid; it is not a cultivar-specific color guarantee or a diagnosis of plant health.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Moist, drained, low-nutrient medium; semi-shade is the listed care category",
+        "guidance": "NParks describes a moist but well-drained, low-nutrient medium and gives examples using perlite or sand with peat or sphagnum. Its care category lists semi-shade, while the description says 6–8 hours of full sun can develop red pitcher color. These are different contexts within the same source; no single indoor lamp target, EC or pH recipe is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      },
+      "care": {
+        "short": "Maintain humidity; NParks advises occasional misting and avoiding air-conditioned placement",
+        "guidance": "NParks recommends maintaining a humid environment with occasional misting and avoiding an air-conditioned location. This is source-specific horticultural guidance; no exact humidity percentage or misting frequency is supplied.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      },
+      "propagation": {
+        "short": "Tissue culture is the documented commercial propagation route",
+        "guidance": "NParks reports that this hybrid has been widely propagated by tissue culture. That does not establish that seed production is impossible; a reliable seed protocol and fidelity for the marketed hybrid remain unverified.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      },
+      "uses": {
+        "short": "Documented as an indoor ornamental and hanging-basket climber",
+        "guidance": "NParks lists Nepenthes × ventrata as an indoor plant with ornamental foliage and a suitable hanging-basket use. Its climbing/tendril habit supports that placement; the source does not establish a required trellis, mature dimensions or a Garden machine fit.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-nepenthes-ventrata-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Moist, low-nutrient substrate guidance does not support hydroponic system compatibility."},"growthHabits":{"status":"unknown","reason":"No controlled growth-habit value is asserted from the reviewed source."},"matureSize":{"height":{"status":"unknown","reason":"No dimensions established for the hybrid in the selected source."},"spread":{"status":"unknown","reason":"No dimensions established for the hybrid in the selected source."}},"spacing":{"status":"unknown","reason":"No spacing recommendation was selected."},"light":{"status":"unknown","reason":"NParks' semi-shade wording is not mapped to an unsupported indoor-light or outdoor-exposure value."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Moist, low-nutrient substrate guidance does not support conventional recirculating hydroponic compatibility."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The sourced climbing habit is not represented by the controlled Compatibility Profile V1 growth-habit vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No dimensions established for the hybrid in the selected source."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No dimensions established for the hybrid in the selected source."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No system spacing recommendation is selected."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "NParks' semi-shade and bright-light color notes are not mapped to a single indoor lamp requirement."
+      }
+    }
   }
 ]

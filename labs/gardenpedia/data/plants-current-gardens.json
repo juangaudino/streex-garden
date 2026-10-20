@@ -110,7 +110,7 @@
     "emoji": "🌿",
     "guideCompletion": 74,
     "tags": ["thyme", "tomillo", "english thyme", "tea", "herb"],
-    "summary": "A slow young herb that benefits from patience and light tip pinching. Garden should distinguish a young hydroponic plant from the aggressive cut-back practices used on established perennial thyme.",
+    "summary": "A small woody culinary perennial for sunny, sharply drained conditions. Once established, thyme needs modest watering; light pinching and harvest depend on plant age and upright growth type.",
     "metrics": [
       { "label": "Germination", "value": "14–21 days", "note": "65–70°F reference" },
       { "label": "Handling cue", "value": "4 true leaves", "note": "Johnny's transplant checkpoint" },
@@ -155,11 +155,11 @@
         "sourceIds": ["johnnys-thyme"]
       },
       "hydroponics": {
-        "short": "Do not invent a generic herb target",
-        "guidance": "The current source pack does not yet establish thyme-specific hydroponic pH/EC targets, so those fields remain unresolved.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Research floating-system cultivation is documented; home-system targets are not",
+        "guidance": "A 2025 study grew species-level Thymus vulgaris in an aerated floating hydroponic system after seedling establishment in perlite. It documents experimental conditions and salinity responses, not consumer-appliance performance. The study's solution measurements are not adopted as recommended pH/EC targets; Garden-specific nutrient values remain unestablished.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["araku-hydro-thyme-salinity-2025"]
       },
       "problems": {
         "short": "Slow start is normal; wet roots are not",
@@ -172,8 +172,18 @@
     "compatibilityProfile": {
         "profileVersion": 1,
         "hydroponicSuitability": {
-          "status": "unknown",
-          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+          "status": "conditional",
+          "conditions": [{
+            "kind": "system_type",
+            "description": "Thymus vulgaris has been grown in an aerated floating research system after perlite seedling establishment; this does not establish suitability in a home appliance or Garden nutrient targets."
+          }],
+          "evidence": [{
+            "sourceIds": ["araku-hydro-thyme-salinity-2025"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": { "level": "species", "taxon": "Thymus vulgaris" },
+            "note": "A 2025 controlled study supports species-level floating-system cultivation under its specific research conditions; it is not a named English Thyme cultivar or consumer-system validation."
+          }]
         },
         "growthHabits": {
           "status": "unknown",
@@ -181,12 +191,26 @@
         },
         "matureSize": {
           "height": {
-            "status": "unknown",
-            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+            "status": "known",
+            "value": { "minCm": 30.48, "maxCm": 30.48, "context": "outdoor_general" },
+            "evidence": [{
+              "sourceIds": ["psu-thyme-plant-profile-2026"],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": { "level": "species", "taxon": "Thymus vulgaris" },
+              "note": "Penn State Extension reports about 12 in for common thyme; converted to cm. Species-level outdoor garden reference, not a named-cultivar or indoor guarantee."
+            }]
           },
           "spread": {
-            "status": "unknown",
-            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+            "status": "known",
+            "value": { "minCm": 25.4, "maxCm": 30.48, "context": "outdoor_general" },
+            "evidence": [{
+              "sourceIds": ["psu-thyme-plant-profile-2026"],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": { "level": "species", "taxon": "Thymus vulgaris" },
+              "note": "Penn State Extension reports 10–12 in width for common thyme; converted to cm. Species-level outdoor garden reference, not a named-cultivar or indoor guarantee."
+            }]
           }
         },
         "spacing": {
@@ -201,12 +225,19 @@
               "requirement": {
                 "kind": "full_sun"
               }
+            },
+            {
+              "phase": "growing",
+              "requirement": {
+                "kind": "partial_sun"
+              }
             }
           ],
           "evidence": [
             {
               "sourceIds": [
-                "johnnys-thyme"
+                "johnnys-thyme",
+                "psu-thyme-plant-profile-2026"
               ],
               "evidenceType": "source_backed",
               "confidence": "high",
@@ -214,7 +245,7 @@
                 "level": "species",
                 "taxon": "Thymus vulgaris"
               },
-              "note": "Johnny’s general thyme growing guidance specifies full sun; species scope, growing phase only."
+              "note": "Johnny’s general thyme guidance allows sun/part shade and Penn State lists full sun to partial shade for Thymus vulgaris; this is outdoor exposure during growth, not an indoor grow-light tier."
             }
           ]
         }
@@ -230,11 +261,12 @@
     "emoji": "🌿",
     "guideCompletion": 72,
     "tags": ["parsley", "perejil", "italian parsley", "flat leaf", "herb"],
-    "summary": "Parsley is slow to germinate and is managed mostly through selective leaf/stem harvest rather than shaping. Garden should be especially conservative during the long seedling phase.",
+    "summary": "Italian Giant represents flat-leaf parsley, a culinary type valued for its stronger flavor than curly parsley. Once established, harvest outer stems from the base while protecting the rosette center; the biennial plant bolts in its second season and its leaves become tough and bitter.",
     "metrics": [
       { "label": "Germination", "value": "14–30 days", "note": "65–70°F reference" },
       { "label": "Harvest", "value": "Clip as needed", "note": "After establishment" },
       { "label": "Growth habit", "value": "Rosette", "note": "Protect the central crown" },
+      { "label": "Outdoor spacing", "value": "10 in", "note": "Illinois Extension parsley guidance; not pod spacing" },
       { "label": "Hydro pH / EC", "value": "Pending", "note": "Crop-specific hydro source still needed" }
     ],
     "sections": {
@@ -252,6 +284,13 @@
         "confidence": "medium",
         "sourceIds": ["johnnys-parsley"]
       },
+      "cultivation": {
+        "short": "Moist, well-drained soil; full sun to partial shade",
+        "guidance": "Illinois Extension describes parsley as suited to gardens and containers, with full sun to partial shade, moist but well-drained soil, and about 10 inches between outdoor plants. Keep the soil consistently moist while growing; the 10-inch field spacing does not translate to indoor pod placement. These are parsley-type/crop recommendations, not measurements specific to a named Italian Giant selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-parsley-growing-2021"]
+      },
       "pruning": {
         "short": "Harvest is the pruning system",
         "guidance": "Parsley does not need basil-style apical pruning. Maintenance should focus on taking mature outer stems while preserving the central crown and new leaves.",
@@ -261,18 +300,18 @@
         "sourceIds": ["johnnys-parsley"]
       },
       "harvest": {
-        "short": "Clip mature stems as needed",
-        "guidance": "Johnny's recommends clipping parsley leaves as needed. For repeat harvest in a pod, Garden should prioritize mature outer stems and leave active central growth intact.",
+        "short": "Cut outer stems at the base once established",
+        "guidance": "Illinois Extension recommends harvesting throughout the growing season by cutting stems at the plant base; morning after dew dries and before heat softens the foliage is its preferred timing. Preserve the central rosette for continued leaf growth. The source's timing is general parsley guidance, not a cultivar-specific maturity date.",
         "evidenceType": "garden_adaptation",
         "confidence": "high",
-        "sourceIds": ["johnnys-parsley"]
+        "sourceIds": ["illinois-parsley-growing-2021", "johnnys-parsley"]
       },
       "flowering": {
         "short": "A biennial crop; flowering changes leaf production",
-        "guidance": "Parsley is biennial. If reproductive growth eventually appears, Garden should treat it as a stage transition rather than an ordinary pruning event.",
+        "guidance": "Illinois Extension reports that overwintered parsley produces a seed stalk in the following season and that leaves then become tough and bitter. This is a normal biennial transition, not an ordinary pruning event or a cultivar-specific bolting-resistance claim.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-parsley"]
+        "sourceIds": ["illinois-parsley-growing-2021"]
       },
       "hydroponics": {
         "short": "Nutrient targets still need a dedicated source",
@@ -537,8 +576,15 @@
           ]
         },
         "light": {
-          "status": "unknown",
-          "reason": "No phase-specific light claim was established at an applicable taxonomic scope."
+          "status": "known",
+          "value": [{ "phase": "growing", "requirement": { "kind": "full_sun" } }],
+          "evidence": [{
+            "sourceIds": ["usu-chives"],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": { "level": "species", "taxon": "Allium schoenoprasum" },
+            "note": "USU describes common chives as preferring full sun; this is outdoor growing exposure, not an indoor grow-light intensity or duration."
+          }]
         }
       }
   },
@@ -624,8 +670,15 @@
         },
         "matureSize": {
           "height": {
-            "status": "unknown",
-            "reason": "The reviewed Gardenpedia sources do not establish a claim at a scope applicable to this identity."
+            "status": "known",
+            "value": { "minCm": 60.96, "maxCm": 91.44, "context": "outdoor_general" },
+            "evidence": [{
+              "sourceIds": ["psu-dill-2026"],
+              "evidenceType": "source_backed",
+              "confidence": "high",
+              "taxonomicScope": { "level": "identity" },
+              "note": "Penn State Extension gives the named ‘Bouquet’ selection a 24–36 in height; converted to cm. No spread or system/pod spacing is inferred."
+            }]
           },
           "spread": {
             "status": "unknown",
@@ -792,60 +845,66 @@
     "emoji": "🪻",
     "guideCompletion": 78,
     "tags": ["lavender", "lavanda", "vera", "tea", "flower", "herb"],
-    "summary": "English lavender is slow from seed and naturally prefers very well-aerated roots. Vera is explicitly listed among English lavender varieties by USU, giving Garden stronger cultivar confidence than several other packet labels.",
+    "summary": "English lavender is a sun-loving perennial that thrives in dry, well-drained soil and produces harvestable aromatic flower spikes. Utah State lists 'Vera' among English lavender varieties; its general care guidance applies at species/type scope, while Vera-specific size and performance remain undocumented.",
     "metrics": [
-      { "label": "Germination", "value": "14–21 days", "note": "65–70°F reference" },
       { "label": "Best harvest stage", "value": "Buds / first flowers", "note": "Depends on intended use" },
-      { "label": "Root preference", "value": "High aeration", "note": "Strong drainage preference in soil references" },
-      { "label": "Hydro pH / EC", "value": "Pending", "note": "Do not translate soil pH directly" }
+      { "label": "Mature size context", "value": "1–2 ft (30–61 cm)", "note": "USU English-lavender range; varies by variety, not a Vera guarantee" },
+      { "label": "Hydroponics", "value": "Unknown", "note": "No Vera-specific or English-lavender system evidence" }
     ],
     "sections": {
-      "germination": {
-        "short": "Slow seed crop; light helps germination",
-        "guidance": "Johnny's lists 14–21 day germination at 65–70°F. USU likewise reports roughly 14–21 days around 70°F and specifically names Vera among English lavender varieties.",
+      "identity": {
+        "short": "USU lists Vera among English lavender varieties",
+        "guidance": "Utah State University Extension lists Vera among varieties of English lavender (Lavandula angustifolia). This supports the catalog's cultivar association, but does not establish Vera-specific dimensions, hardiness, flowering performance, or hydroponic behavior.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+        "sourceIds": ["usu-lavender"]
       },
-      "thinning": {
-        "short": "Give individual plants room once identifiable",
-        "guidance": "Field references eventually space lavender widely because it becomes a woody shrub. In a countertop pod, Garden should select the strongest individual plant once multiple seedlings begin competing rather than trying to sustain a dense cluster long-term.",
-        "evidenceType": "garden_adaptation",
+      "growth": {
+        "short": "English lavender reaches about 1–2 ft, varying by variety",
+        "guidance": "USU describes English lavender varieties as roughly 1–2 ft tall and wide and notes that plants may take about three years to reach full size. Vera is named in the variety list, but the source does not give a Vera-specific mature size or timeline; treat the range as type-level outdoor context.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-lavender", "usu-lavender"]
+        "sourceIds": ["usu-lavender"]
       },
-      "pruning": {
-        "short": "Young plant strategy differs from mature lavender",
-        "guidance": "USU describes clipping first-year branches to encourage lateral shoots and pruning established lavender after flowering. Garden should not blindly apply mature half-size shearing to a juvenile hydroponic plant.",
-        "items": ["For a young plant, favor light tip management only after clear establishment.", "Never treat woody mature-plant pruning percentages as a seedling instruction."],
-        "evidenceType": "garden_adaptation",
+      "cultivation": {
+        "short": "Full sun and dry, well-drained soil; avoid saturated conditions",
+        "guidance": "USU's English-lavender guide recommends full sun and dry, sandy, well-drained soil, and cautions against soggy sites. Its soil guidance is not an indoor-light prescription or a hydroponic recipe. Mature plants tolerate drought; USU notes that regular water can support more blooms, but the local climate and soil determine irrigation needs.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-lavender"]
+      },
+      "maintenance": {
+        "short": "Prune established plants annually after flowering",
+        "guidance": "USU recommends annual pruning after flowering and describes cutting established plants back to about half their size to stimulate new growth and a bushier form. Apply this as regional English-lavender guidance, not as a rule for seedlings or for every Vera plant in every climate.",
+        "items": ["Time the main shaping cut after flowering, following local growing conditions.", "Do not apply mature-plant pruning guidance to a newly established seedling."],
+        "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["usu-lavender"]
       },
       "harvest": {
         "short": "Flower harvest timing depends on use",
-        "guidance": "Johnny's harvests flower spikes just as flowers are about to open; USU recommends cutting for dried flowers when the first flowers on the spike have opened. Garden should present the timing together with the intended use.",
+        "guidance": "Johnny's recommends cutting flower spikes just as flowers are about to open; USU recommends cutting for dried flowers when the first flowers on a spike have opened. These are distinct harvest stages tied to the intended use, not a Vera-specific flowering calendar.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["johnnys-lavender", "usu-lavender"]
       },
       "flowering": {
-        "short": "Flowers are a desired crop, not a default problem",
-        "guidance": "For Juan's tea/aromatic use case, flowering can be the target. Garden should never copy basil's 'remove flowers' behavior into lavender.",
-        "evidenceType": "garden_adaptation",
+        "short": "Flowering is a normal, harvestable stage",
+        "guidance": "English lavender is grown for its flower spikes, and both USU and Johnny's describe harvesting them at use-dependent stages. Flowering is therefore a normal development and harvest stage, not a default sign of plant failure or a reason to remove all flowers.",
+        "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["usu-lavender"]
+        "sourceIds": ["johnnys-lavender", "usu-lavender"]
       },
       "hydroponics": {
-        "short": "High-aeration preference is clear; pH/EC is not",
-        "guidance": "Both major sources emphasize very well-drained conditions. That supports caution around root oxygen in hydroponics, but soil pH recommendations must not be copied directly into nutrient-solution targets.",
+        "short": "Hydroponic suitability and nutrient targets are not established",
+        "guidance": "The reviewed sources cover soil cultivation and do not establish that Vera or English lavender is suitable for a Garden X countertop hydroponic system or provide solution EC/pH targets. Soil drainage or soil-pH guidance is not converted into a hydroponic recommendation; compatibility remains unknown.",
         "evidenceType": "needs_validation",
-        "confidence": "medium",
+        "confidence": "pending",
         "sourceIds": ["johnnys-lavender", "usu-lavender"]
       },
       "problems": {
         "short": "Excessively wet roots are a key risk",
-        "guidance": "USU specifically warns against saturated conditions and root-rot risk. Future Garden checks should combine root appearance and system conditions before diagnosing.",
+        "guidance": "USU warns that English lavender performs poorly in wet or waterlogged soil and identifies Phytophthora root rot among its soil-disease concerns. The source does not provide a symptom-based diagnosis here; persistent wetness is a reason to review site drainage and seek local diagnosis rather than assume a specific disease.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["usu-lavender"]
@@ -918,7 +977,7 @@
       "butterhead",
       "hydroponic"
     ],
-    "summary": "A butterhead lettuce where Garden can support either selective outer-leaf harvest or a complete soft-head harvest. One final plant per compact pod is a Garden system adaptation, not a universal agronomic law.",
+    "summary": "Bibb is a soft-headed butterhead type of Lactuca sativa. It can be used for individual leaves or as a whole plant; cool conditions and steady moisture support leafy quality, while heat and long days can trigger bolting.",
     "metrics": [
       {
         "label": "Germination",
@@ -942,6 +1001,20 @@
       }
     ],
     "sections": {
+      "growth": {
+        "short": "Bibb belongs to the soft-headed butterhead group",
+        "guidance": "University of Minnesota Extension classifies Bibb and butterhead as soft-head lettuce types. This entry represents the Bibb crop type, not a named commercial selection with a guaranteed head size or maturity date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season lettuce with shallow roots that need steady moisture",
+        "guidance": "UMN Extension explains that lettuce's active roots are shallow and that dry soil can reduce growth and quality. Keep outdoor soil moisture reasonably even and well drained. Its Minnesota timing and temperature context is regional; no indoor light level or Bibb-specific heat tolerance is established here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
+      },
       "germination": {
         "short": "Cool germination conditions",
         "guidance": "General lettuce guidance places optimum germination around 60–68°F. UF/IFAS uses one to two seeds per cube in a small hydroponic lettuce method.",
@@ -973,24 +1046,24 @@
       },
       "harvest": {
         "short": "Outer leaves for continuity or harvest the whole head",
-        "guidance": "Garden should let the user choose between ongoing outer-leaf harvest and a complete butterhead harvest. That choice changes what 'ready' means.",
+        "guidance": "UMN Extension supports harvesting usable individual leaves or cutting the whole lettuce plant at or just above the soil surface. For Bibb, choose leaf harvest or a soft-head harvest according to the desired use; the source does not set a Bibb-specific harvest size or date.",
         "items": [
           "For repeat harvest, take mature outer leaves and preserve the center.",
           "For full harvest, cut the plant at the base when desired size and quality are reached."
         ],
-        "evidenceType": "garden_adaptation",
-        "confidence": "high",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce"
+          "umn-lettuce-endive-radicchio-500"
         ]
       },
       "flowering": {
         "short": "Bolting reduces leaf quality",
-        "guidance": "A rising central seed stalk is a meaningful stage change in lettuce. Garden should flag it as an observation and explain likely quality decline.",
+        "guidance": "UMN Extension reports that heat, long days and high light intensity can trigger a flowering stalk in lettuce. Bolting ends the useful leafy harvest and may make leaves bitter; a rising center is a stage change, not by itself a nutrient diagnosis.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "johnnys-lettuce"
+          "umn-lettuce-endive-radicchio-500"
         ]
       },
       "hydroponics": {
@@ -1004,12 +1077,12 @@
         ]
       },
       "problems": {
-        "short": "Heat and crown damage are high-value checks",
-        "guidance": "Future AI Check should distinguish ordinary outer-leaf aging from crown injury, heat stress, root issues and tip damage using images plus history.",
-        "evidenceType": "garden_adaptation",
+        "short": "Heat, bitterness and tipburn are useful warning signs",
+        "guidance": "UMN Extension describes bitter leaves and bolting under hot conditions, and tipburn after dry soil is followed by renewed water and growth. Tipburn is a symptom requiring context; inspect moisture history before assigning one cause. No Bibb-specific disease resistance is claimed.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce"
+          "umn-lettuce-endive-radicchio-500"
         ]
       }
     },
@@ -1146,7 +1219,7 @@
     "emoji": "🥬",
     "guideCompletion": 84,
     "tags": ["iceberg", "lettuce", "lechuga", "crisphead", "hydroponic"],
-    "summary": "A crisphead lettuce whose natural goal is a denser head. Garden should not assume that the same repeated outer-leaf harvest strategy used for looseleaf lettuce is optimal if the user wants a true head.",
+    "summary": "Iceberg represents the dense, solid crisphead type of Lactuca sativa. Its main harvest goal is a formed head, not repeated looseleaf picking; cool conditions and steady moisture support quality, while heat and long days can trigger bolting.",
     "metrics": [
       { "label": "Germination", "value": "60–68°F optimum", "note": "General lettuce reference" },
       { "label": "Hydro pH", "value": "5.5–6.0*", "note": "UF/IFAS lettuce system example" },
@@ -1154,6 +1227,20 @@
       { "label": "Preferred goal", "value": "Head", "note": "Harvest strategy should protect head formation" }
     ],
     "sections": {
+      "growth": {
+        "short": "Iceberg is the dense, solid-headed crisphead type",
+        "guidance": "UMN Extension distinguishes crisphead or iceberg lettuce by its dense, solid head. This is crop-type context; it does not assign a head size, maturity date or countertop-system outcome to this broad identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
+      },
+      "cultivation": {
+        "short": "Cool conditions and even moisture support head development",
+        "guidance": "UMN Extension describes lettuce as a cool-weather crop with shallow active roots that need steady moisture. Heat, long days and high light can prompt bolting. These are general outdoor lettuce conditions, not an indoor-light prescription or proof that a particular home system will form a market-sized crisphead.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
+      },
       "germination": {
         "short": "Cool germination; heat reduces reliability",
         "guidance": "Iceberg follows the same general lettuce germination biology: cool conditions around 60–68°F are favorable and excessive heat can reduce germination.",
@@ -1177,17 +1264,17 @@
       },
       "harvest": {
         "short": "Full-head harvest is the default goal",
-        "guidance": "If a compact crisp head is the goal, repeated removal of healthy outer leaves should be more conservative than with looseleaf varieties. Harvest the full plant at the base once the head reaches acceptable density and quality.",
-        "evidenceType": "garden_adaptation",
+        "guidance": "Iceberg is represented as a crisphead type, so a whole-plant harvest is appropriate when the head has formed to the grower's intended quality. UMN Extension supports cutting a lettuce plant at or just above the soil; it does not provide a universal iceberg head-size or harvest-date threshold for this identity.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
       },
       "flowering": {
         "short": "Bolting ends the head-quality trajectory",
-        "guidance": "A rising seed stalk indicates the plant has shifted toward reproduction. Garden should flag the stage and explain the likely loss of head quality.",
+        "guidance": "UMN Extension reports that heat, long days and high light intensity can trigger lettuce bolting, ending harvest and making leaves bitter. A rising stalk is a developmental stage change; no iceberg-specific heat-tolerance claim is made.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
       },
       "hydroponics": {
         "short": "General lettuce ranges, system context preserved",
@@ -1197,11 +1284,11 @@
         "sourceIds": ["uf-hydro-lettuce", "okstate-ecph"]
       },
       "problems": {
-        "short": "Heat and space constraints matter strongly for heading",
-        "guidance": "A countertop system may produce a healthy lettuce plant without producing a supermarket-sized iceberg head. Garden should separate plant health from whether the system supports the desired morphology.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "high",
-        "sourceIds": ["johnnys-lettuce"]
+        "short": "Bolting and tipburn can limit head quality",
+        "guidance": "UMN Extension notes that heat and long days can trigger bolting and bitter leaves. Tipburn may follow a dry period and sudden renewed growth; it is a symptom, not proof of one nutrient deficiency. The source does not establish system-size limitations for this broad iceberg identity.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-lettuce-endive-radicchio-500"]
       }
     },
     "compatibilityProfile": {
@@ -1285,7 +1372,7 @@
       "butterhead",
       "hydroponic"
     ],
-    "summary": "A butterhead-type lettuce that works naturally with either repeated outer-leaf harvest or a compact whole-head harvest. Garden should make the user's harvest mode explicit.",
+    "summary": "Buttercrunch is a named butterhead lettuce selection. Cornell's variety record describes compact heads and reports a 28–60-day maturity range; those are source-listed characteristics, not a guarantee for a particular seed lot or growing system.",
     "metrics": [
       {
         "label": "Germination",
@@ -1309,6 +1396,20 @@
       }
     ],
     "sections": {
+      "growth": {
+        "short": "Named Buttercrunch selection forms compact butterhead heads",
+        "guidance": "Cornell Cooperative Extension's variety record describes Buttercrunch as a Bibb/Boston butterhead with compact heads reported at about 10 inches. This is a record-level head description, not a measured canopy spread or a promise for every seed lot.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["cornell-buttercrunch", "umn-lettuce-endive-radicchio-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season lettuce; maintain steady moisture",
+        "guidance": "Cornell lists Buttercrunch for spring and fall crops; UMN Extension describes lettuce generally as a cool-weather crop with shallow roots that need even moisture. These references do not establish an indoor lighting recipe or guarantee bolting resistance in a warm home system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["cornell-buttercrunch", "umn-lettuce-endive-radicchio-500"]
+      },
       "germination": {
         "short": "Cool-season lettuce germination",
         "guidance": "Use the general lettuce germination model: cool conditions around 60–68°F are favorable, and actual emergence is the canonical event.",
@@ -1338,21 +1439,23 @@
         ]
       },
       "harvest": {
-        "short": "Excellent candidate for cut-and-come-again outer leaves",
-        "guidance": "For continuous use, take mature outer leaves while protecting the center. If a whole butterhead is preferred, allow the plant to size up and harvest at the base.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "high",
+        "short": "Harvest usable leaves or the whole plant",
+        "guidance": "UMN Extension supports harvesting usable leaves individually or cutting the whole lettuce plant at or just above the soil. Cornell describes Buttercrunch's compact head and lists 28–60 days to maturity; that database range has no single starting convention and should not be treated as an exact harvest date or household guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce"
+          "cornell-buttercrunch",
+          "umn-lettuce-endive-radicchio-500"
         ]
       },
       "flowering": {
         "short": "Bolting is a quality warning",
-        "guidance": "A rising central stalk is a stage change. Garden should surface it early because eating quality can decline as lettuce bolts.",
+        "guidance": "UMN Extension reports that heat, long days and high light intensity can trigger lettuce bolting. Cornell describes Buttercrunch as slow to bolt but also lists it as bolting tolerant; retain that source wording without treating it as immunity or a warm-system guarantee.",
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce"
+          "cornell-buttercrunch",
+          "umn-lettuce-endive-radicchio-500"
         ]
       },
       "hydroponics": {
@@ -1366,12 +1469,13 @@
         ]
       },
       "problems": {
-        "short": "Watch heat, tip damage and crown health",
-        "guidance": "Future vision checks should compare outer-leaf damage with central growth and root history before recommending nutrient changes.",
-        "evidenceType": "garden_adaptation",
+        "short": "Heat-related bolting and moisture-related tipburn are useful checks",
+        "guidance": "UMN Extension reports bitter leaves and bolting under hot conditions, and tipburn after dry soil is followed by renewed moisture and growth. Treat tipburn as a symptom requiring context, not a single-cause nutrient diagnosis. Cornell's bolting description is a source-listed trait, not a disease-resistance guarantee.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-lettuce"
+          "umn-lettuce-endive-radicchio-500",
+          "cornell-buttercrunch"
         ]
       }
     },

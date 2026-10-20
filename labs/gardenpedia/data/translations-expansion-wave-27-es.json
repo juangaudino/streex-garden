@@ -30,6 +30,15 @@
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
+      "flowering": {
+        "short": "Las flores polinizadas caen; las no polinizadas pueden volverse color vino",
+        "guidance": "University of Maryland Extension describe la floración de los arándanos en general: las yemas florales son más redondas que las yemas foliares, más estrechas, y cada yema floral produce varias flores. Indica que las abejas nativas son polinizadores eficaces, que las flores no polinizadas se vuelven color vino y que las polinizadas caen después de unos 5–6 días. Son señales diagnósticas para arándanos, no una fecha de floración ni garantía de fructificación para un cultivar.",
+        "items": [
+          "Distingue las yemas florales redondeadas de las yemas foliares estrechas.",
+          "Una flor que cambia a color vino puede indicar falta de polinización; la flor polinizada suele caer después de varios días."
+        ],
+        "context": "Las señales de floración se describen para arándanos en general; el momento y cuajado varían según cultivar."
+      },
       "maintenance": {
         "short": "Renueva gradualmente los tallos viejos tras el establecimiento",
         "guidance": "University of Maryland Extension describe poda de renovación: retirar tallos viejos y menos productivos para impulsar reemplazos. Las plantas jóvenes requieren otro manejo; no se aplica poda de arbusto adulto al trasplante nuevo.",
@@ -59,7 +68,7 @@
     }
   },
   "red-raspberry": {
-    "summary": "Zarzamora de raíces perennes cuyos tallos y ciclo de fructificación dependen de la variedad. No se infiere fructificación de verano o primocaña sin identificar el cultivar.",
+    "summary": "Frambuesa de raíces perennes cuyos tallos y ciclo de fructificación dependen del cultivar. No se infiere fructificación de verano o de primocaña sin identificar la variedad.",
     "sections": {
       "identity": {
         "short": "Especie aceptada: Rubus idaeus",
@@ -71,15 +80,17 @@
       },
       "cultivation": {
         "short": "Elige un sitio soleado y con buen drenaje",
-        "guidance": "Penn State Extension describe las zarzas como adecuadas para sitios soleados y suelo bien drenado. Sus separaciones de campo no se trasladan a un sistema interior ni a maceta sin evidencia aparte.",
+        "guidance": "Penn State Extension recomienda pleno sol y suelo bien drenado para las zarzas cultivadas en casa. El sistema de raíces perennes de la frambuesa roja produce cañas nuevas principalmente desde las raíces, por lo que una plantación sin control puede extenderse como hilera densa o manchón. La guía corresponde al cultivo exterior: no establece un nivel de luz de cultivo interior ni una receta para maceta o hidroponía.",
         "items": [
-          "Penn State Extension describe las zarzas como adecuadas para sitios soleados y suelo bien drenado."
+          "Elige un sitio exterior con pleno sol y buen drenaje.",
+          "Espera cañas nuevas desde las raíces y controla el límite del manchón a medida que se extiende.",
+          "No conviertas el espaciamiento de campo en separación para un sistema interior."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "growth": {
         "short": "Raíces perennes; los tallos tienen un ciclo de dos años en variedades de verano",
-        "guidance": "En las variedades de verano, las primocañas del primer año suelen fructificar como floricañas la temporada siguiente y luego mueren. Algunas variedades fructifican en tallos del primer año; sin cultivar, el calendario queda sin resolver.",
+        "guidance": "Las raíces son perennes y las cañas bienales. En las frambuesas rojas de verano, las primocañas del primer año suelen fructificar como floricañas la temporada siguiente y luego morir; muchos cultivares de frambuesa roja también producen en primocañas del primer año. Penn State describe los retoños de la frambuesa roja como procedentes principalmente de las raíces, hasta formar una hilera o un manchón si no se controlan. Esta ficha no asigna un único hábito de fructificación a un cultivar no identificado.",
         "items": [
           "Identifica si el cultivar fructifica en cañas de segundo año o en primocañas.",
           "Registra qué cañas dieron fruto antes de decidir cuáles retirar."
@@ -97,18 +108,21 @@
       },
       "harvest": {
         "short": "La temporada varía con el tipo y las heladas locales",
-        "guidance": "Las frambuesas de verano y las de primocaña producen en épocas distintas. La fuente da ejemplos regionales, no un calendario universal para una variedad no especificada.",
+        "guidance": "Las frambuesas de verano y las de primocaña producen en épocas distintas, así que no se asigna una fecha universal. Penn State Extension indica que las bayas maduras de zarza se desprenden fácilmente; recomienda retirarlas rodándolas con cuidado, sin apretarlas ni tirar, usar recipientes poco profundos y refrigerarlas pronto. La cosecha frecuente ayuda a evitar que queden frutos demasiado maduros en las cañas.",
         "items": [
-          "Cosecha según el tipo de fructificación, no por una fecha universal.",
-          "Observa la madurez de los frutos y las condiciones locales durante la temporada."
+          "Cosecha cuando las bayas se desprendan fácilmente; usa esa señal en vez de una fecha fija para un cultivar no identificado.",
+          "Retira las bayas maduras rodándolas suavemente, sin apretarlas, y colócalas en un recipiente poco profundo para reducir golpes.",
+          "Cosecha con frecuencia y refrigera pronto; la fuente no garantiza una duración de almacenamiento doméstico."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {
         "short": "Drenaje, ventilación y saneamiento oportuno importan",
-        "guidance": "La guía menciona presión de plagas y enfermedades y recomienda selección y manejo del sitio según el tipo. No se afirma resistencia a enfermedades para esta identidad general.",
+        "guidance": "Penn State Extension señala presión de plagas y enfermedades en las zarzas e identifica la antracnosis como una posible enfermedad de las cañas de frambuesa roja. Las primeras señales pueden ser manchas rojo-púrpura en cañas jóvenes que se agrandan y hunden; más tarde puede aparecer corteza gris. Es una señal para reconocer, no una afirmación de que todas las plantas estén infectadas. La eliminación de cañas enfermas y el flujo de aire son medidas de saneamiento descritas por la fuente; no se afirma resistencia.",
         "items": [
-          "La guía menciona presión de plagas y enfermedades y recomienda selección y manejo del sitio según el tipo."
+          "Busca manchas rojo-púrpura que se agrandan y hunden en cañas jóvenes; más adelante puede aparecer corteza gris.",
+          "Poda las cañas visiblemente enfermas y conserva la circulación de aire según las recomendaciones de Penn State.",
+          "Estas señales requieren diagnóstico; no infieras susceptibilidad o resistencia varietal desde este tipo amplio de cultivo."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }
@@ -142,6 +156,18 @@
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
+      "flowering": {
+        "short": "Las flores quedan dentro de la estructura del higo",
+        "guidance": "UGA Extension explica que las flores de la higuera están dentro del higo, no expuestas como flores ornamentales. La ausencia de flores abiertas visibles no demuestra que una planta madura no pueda florecer o fructificar.",
+        "items": ["Las flores quedan encerradas dentro del sicono; no son flores externas llamativas."],
+        "context": "Contexto botánico y de cultivo doméstico a nivel de especie/cultivo según una publicación de Extension de Georgia."
+      },
+      "fruiting": {
+        "short": "Algunos cultivares pueden tener una cosecha temprana y otra principal",
+        "guidance": "Oregon State describe los higos breba formados en crecimiento de la temporada anterior que pasan el invierno, además de la cosecha principal de brotes del año en regiones con veranos cálidos. Que una o ambas cosechas maduren depende del cultivar y el clima; no se promete que toda higuera común produzca dos cosechas.",
+        "items": ["La breba puede desarrollarse en madera de la temporada anterior; la cosecha principal se desarrolla en brotes del año."],
+        "context": "Guía regional de cultivo de Oregon; número y fecha de cosechas dependen del cultivar y clima."
+      },
       "maintenance": {
         "short": "Poda según el crecimiento y la fructificación local",
         "guidance": "La guía recomienda conservar parte del crecimiento de un año, donde se forma fruto, y podar para permitir luz en la copa. También advierte que la higuera es vigorosa y prefiere el suelo; la maceta requiere cautela.",
@@ -152,26 +178,36 @@
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "harvest": {
-        "short": "La fructificación puede tardar varias temporadas tras plantar",
-        "guidance": "La guía regional aconseja paciencia: pueden pasar varias temporadas antes del fruto. No respalda una fecha fija para todos los cultivares y lugares.",
+        "short": "Cosecha el fruto maduro; aplica señales regionales y del cultivar",
+        "guidance": "La guía general de huertos domésticos de Oregon State indica que los higos están maduros cuando están muy blandos y cuelgan del tallo. Illinois Extension ofrece una señal distinta específicamente para Chicago Hardy: fruto morado oscuro o marrón que cede ligeramente; considera pasado el fruto muy blando. Las afirmaciones tienen alcances regionales y varietales distintos, no forman un umbral universal de firmeza. Para una Ficus carica sin cultivar identificado, cosecha el fruto completamente maduro y consulta la descripción del cultivar real cuando esté disponible; no se asigna una fecha ni un límite táctil universal.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "items": [
-          "Da tiempo al establecimiento; no prometas frutos en la primera temporada.",
-          "Registra cuajado y maduración según cultivar y lugar."
+          "En la guía general de huertos domésticos de Oregon, los higos maduros están muy blandos y cuelgan del tallo.",
+          "Para Chicago Hardy, la guía de Illinois describe el fruto maduro como morado oscuro o marrón y ligeramente cedente; considera pasado el fruto muy blando.",
+          "Usa la descripción de madurez del cultivar cuando se conozca; no conviertas ninguna señal regional en un umbral universal."
         ],
-        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+        "context": "Se conservan ambas descripciones en su alcance real: orientación general de cultivo en Oregon y un ejemplo de Chicago Hardy en Illinois."
+      },
+      "uses": {
+        "short": "Se documenta el consumo fresco, horneado y la conservación",
+        "guidance": "UGA Extension describe higos frescos, conservados o usados en repostería y postres. Esto respalda usos culinarios generales del higo maduro, no el sabor de un cultivar, una receta ni un proceso de conservación estable en estantería.",
+        "items": ["Usa higos maduros frescos o en platos horneados; consulta por separado un proceso probado de conservación."],
+        "context": "Uso comestible general en una publicación de huertos domésticos de UGA; aquí no se ofrece receta."
       },
       "problems": {
-        "short": "Vigor y adaptación al frío dependen del cultivar y del sitio",
-        "guidance": "La fuente es específica de Oregon y destaca el vigor de las higueras y su preferencia por el suelo. No establece rusticidad para todo cultivar ni aptitud interior.",
+        "short": "Vigila la caída prematura del fruto y señales de roya foliar",
+        "guidance": "UGA Extension informa que, en Georgia, la caída prematura puede relacionarse con plantas jóvenes o vigorosas, exceso de fertilizante y periodos calurosos y secos; también señala caída de fruto por calor en el cultivar Celeste. Describe la roya como daño foliar amarillo-marrón con puntos elevados rojizo-marrones en el envés; una defoliación intensa puede reducir el tamaño y calidad del fruto. Son señales regionales o de cultivar, no susceptibilidad universal ni diagnóstico.",
         "items": [
-          "La fuente es específica de Oregon y destaca el vigor de las higueras y su preferencia por el suelo."
+          "Observa la caída del fruto junto con el vigor de la planta, el calor/sequedad recientes y el cultivar identificado.",
+          "Revisa el envés de las hojas en busca de puntos elevados rojizo-marrones si hay amarilleo o defoliación."
         ],
-        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+        "context": "Las señales y causas de UGA son regionales; inspecciona la planta y las condiciones locales antes de tratar."
       }
     }
   },
   "table-grape-vine": {
-    "summary": "Enredadera perenne representada a nivel del cultivo de uva de mesa. La selección de cultivar, clima, conducción y poda determinan su fructificación en un huerto doméstico.",
+    "summary": "Enredadera perenne representada como uva de mesa. Para producir bien al aire libre necesita sol pleno; la cosecha depende del cultivar, el clima, la conducción y la poda.",
     "sections": {
       "identity": {
         "short": "Especie aceptada: Vitis vinifera",
@@ -182,9 +218,10 @@
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "cultivation": {
-        "short": "Ajusta el cultivar y la temporada de crecimiento al clima local",
-        "guidance": "Oregon State Extension destaca elegir cultivares adecuados a la duración de la temporada local y formar la vid. La guía regional no es un protocolo universal de interior o hidroponía.",
+        "short": "Sol pleno y suelo bien drenado; ajusta el cultivar a la temporada local",
+        "guidance": "Oregon State Extension indica que la uva de mesa necesita sol pleno para producir bien y recomienda suelo bien drenado. Elige un cultivar que alcance a madurar durante la temporada local y conduce la vid leñosa en un soporte permanente. Los ejemplos de duración de temporada son específicos de Oregón, no un calendario universal ni un protocolo de interior o hidroponía.",
         "items": [
+          "Elige un sitio soleado y con buen drenaje para producir fruta al aire libre.",
           "Elige una variedad de uva de mesa compatible con la duración de la temporada local.",
           "Prepara un soporte permanente y un sistema de formación para la vid."
         ],
@@ -201,20 +238,23 @@
       },
       "maintenance": {
         "short": "La poda anual es central para la vid manejada",
-        "guidance": "La guía de OSU identifica la poda insuficiente como un problema frecuente y explica la conducción. El sistema y los cortes dependen de cultivar, soporte y clima.",
+        "guidance": "Poda la vid conducida cada año durante la dormancia. OSU indica de enero a comienzos de marzo para Oregón, no como fecha universal. La poda de caña o de pulgar depende del cultivar y del sistema de conducción; la fuente advierte que algunos tipos producen poca fruta tras una poda corta de pulgares. Esta identidad no especifica un método ni número de yemas.",
         "items": [
           "Guía los brotes jóvenes por la estructura de soporte elegida.",
-          "Poda cada año según cultivar, sistema de formación y condiciones locales.",
+          "Poda cada año durante la dormancia; usa enero–comienzos de marzo solo como referencia regional de Oregón.",
+          "Elige poda de caña o de pulgar según el cultivar nombrado y la conducción; aquí no se asignan método ni número de yemas.",
           "Evita mantener una copa sin podar y excesivamente densa."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "harvest": {
-        "short": "La calidad depende del cultivar y la duración de temporada",
-        "guidance": "La guía advierte que una temporada demasiado corta puede producir fruta de menor calidad y azúcar al cosechar. No se asigna una fecha de madurez a un cultivar no especificado.",
+        "short": "Prueba bayas de la punta del racimo; no maduran tras cortarlas",
+        "guidance": "OSU señala que el color de la uva varía por cultivar y solo orienta cuando se acerca la madurez; el tallito del racimo se vuelve marrón y las semillas oscurecen en uvas con semilla. Prueba bayas de la punta del racimo, que maduran al final. Al madurar, la uva se endulza y pierde acidez, pero no sigue madurando tras cosecharla. Corta los racimos con tijeras de poda y refrigéralos en bolsas ventiladas según la guía doméstica de OSU. La fecha depende del cultivar y la temporada local.",
         "items": [
-          "Comprueba la madurez del cultivar y la duración de la temporada.",
-          "No deduzcas dulzor ni fecha de cosecha solo por la especie."
+          "Usa el color propio del cultivar solo como indicio; prueba las bayas de la punta del racimo.",
+          "Corta el racimo maduro con tijeras de poda; la uva no sigue madurando después de cosecharla.",
+          "Refrigera los racimos en una bolsa ventilada, según la orientación doméstica de OSU.",
+          "No asignes fecha universal ni nivel de azúcar a este cultivar no especificado."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },

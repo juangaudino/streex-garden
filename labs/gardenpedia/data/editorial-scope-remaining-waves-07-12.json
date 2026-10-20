@@ -6,32 +6,44 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Species-level identity is Ocimum tenuiflorum; do not treat it as an O. basilicum cultivar or assign a named tulsi type.",
+            "es": "La identidad es la especie Ocimum tenuiflorum; no tratarla como cultivar de O. basilicum ni asignarle un tipo de tulsi con nombre."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Habit, leaf/stem traits and approximate height are NC State's species-level description, not cultivar-specific dimensions.",
+            "es": "El porte, los rasgos de hojas/tallos y la altura aproximada proceden de la descripción de especie de NC State, no de dimensiones de cultivar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "NC State's white/pink/purple range describes the species account and is not assigned to an unnamed cultivar or treated as a bloom guarantee.",
+            "es": "La gama blanca/rosa/púrpura de NC State describe la especie y no se asigna a un cultivar sin identificar ni se trata como garantía de floración."
           }
         },
         "cultivation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Full sun, moist well-drained soil and using a confined area/container to manage spread are NC State outdoor recommendations; no indoor lamp or hydroponic specification is established.",
+            "es": "Pleno sol, suelo húmedo bien drenado y limitar el espacio/usar recipiente para controlar la expansión son recomendaciones de exterior de NC State; no se establece especificación de lámpara ni hidroponía."
           }
         },
         "propagation": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "harvest": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "NC State documents seed propagation and self-seeding; exact sowing and germination parameters remain in the Seed Profile or unknown.",
+            "es": "NC State documenta propagación por semilla y autosiembra; los parámetros exactos de siembra y germinación permanecen en el Perfil de Semilla o como desconocidos."
           }
         },
         "problems": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Self-seeding/weediness is a regional caution; Japanese beetle leaf skeletonization and hand removal are reported by NC State, not a universal pest forecast.",
+            "es": "La autosiembra/conducta de maleza es una advertencia regional; NC State informa esqueletización por escarabajo japonés y retirada manual, no un pronóstico universal de plagas."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Culinary use refers to leaves of O. tenuiflorum; no medicinal effect, dose or therapeutic claim is made.",
+            "es": "El uso culinario se refiere a hojas de O. tenuiflorum; no se afirma efecto medicinal, dosis ni beneficio terapéutico."
           }
         }
       }
@@ -86,6 +98,12 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "growth": {
+          "context": {
+            "en": "NC State describes the peppermint hybrid in regional outdoor terms; keep its hybrid identity distinct from Mentha spicata and generic mint guidance.",
+            "es": "NC State describe el híbrido de menta piperita en contexto exterior regional; mantén su identidad híbrida distinta de Mentha spicata y de la orientación genérica sobre menta."
+          }
+        },
         "cultivation": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
@@ -102,6 +120,12 @@
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "The pinch-tip recommendation applies to established peppermint plants; it is not a seed-starting instruction.",
+            "es": "La recomendación de pinzar las puntas corresponde a plantas establecidas de menta piperita; no es una instrucción de siembra."
           }
         },
         "problems": {

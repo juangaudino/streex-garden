@@ -39,6 +39,27 @@
       }
     ],
     "sections": {
+    "identity": {
+      "short": "Genovese is a named cultivar of Ocimum basilicum",
+      "guidance": "NC State Extension lists Genovese among the cultivars of sweet basil. Johnny's distinguishes the Genovese type by its classic pesto-associated flavor and characteristically cupped, spoon-shaped leaves. These type notes do not identify a particular seed lot or guarantee its performance.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["kew-ocimum-basilicum-500", "ncsu-ocimum-basilicum-2026", "johnnys-basil-type-comparison-2026"]
+    },
+    "growth": {
+      "short": "Genovese has larger leaves than traditional basil; NC State reports about 2 ft tall",
+      "guidance": "NC State Extension describes Genovese as having larger leaves than traditional basil and lists a height of about 2 ft. This is an extension reference for the named cultivar, not a controlled-system or guaranteed mature-size value.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-ocimum-basilicum-2026"]
+    },
+    "cultivation": {
+      "short": "Full sun and moist, well-drained soil in outdoor guidance",
+      "guidance": "NC State Extension gives full sun and moist, well-drained soil as sweet-basil crop guidance. Keep this separate from the hydroponic production references below: it does not convert outdoor sun into artificial-light hours or establish a Genovese-only nutrient target.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-ocimum-basilicum-2026"]
+    },
       "germination": {
         "short": "Fast emergence in warm conditions",
         "guidance": "Basil commonly germinates in about 5–10 days when kept warm. In Garden, germination timing should remain a range rather than a hard deadline.",
@@ -132,18 +153,25 @@
         ]
       },
       "problems": {
-        "short": "Watch crowding, flowering and weak structure",
-        "guidance": "The prototype should eventually connect symptoms to the real plant history. For V0, the guide only flags common management risks rather than diagnosing from text alone.",
+      "short": "Recognize common basil pests and diseases; do not infer cultivar resistance",
+      "guidance": "NC State Extension lists aphids and Japanese beetles as occasional basil insect problems and Fusarium wilt and basil downy mildew among diseases. It names resistant cultivars separately; this Genovese record has no cultivar-specific resistance claim. Crowding, flowering, or weak stems are observations to assess in context, not diagnoses by themselves.",
         "items": [
-          "Crowding can reduce airflow.",
-          "Delayed pruning can produce a tall, less-branched plant.",
-          "Flowering shifts the plant away from maximum tender-leaf production."
+        "Watch for aphids or Japanese beetle feeding, both listed as occasional basil insect problems by NC State Extension.",
+        "Fusarium wilt and basil downy mildew are documented disease risks; symptoms need identification before choosing a response."
         ],
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "evidenceType": "source_backed",
+      "confidence": "high",
         "sourceIds": [
-          "johnnys-basil-pruning"
+        "ncsu-ocimum-basilicum-2026",
+        "johnnys-basil-pruning"
         ]
+    },
+    "use": {
+      "short": "Classic pesto-associated flavor and cupped leaves",
+      "guidance": "Johnny's type comparison describes Genovese basil as prized for classic pesto flavor and characteristic cupped, spoon-shaped leaves. This distinguishes the type from Italian Large Leaf in that comparison; it is not a claim that every recipe or grower prefers one type.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["johnnys-basil-type-comparison-2026"]
       }
     },
     "compatibilityProfile": {
@@ -303,76 +331,75 @@
     "emoji": "☘️",
     "guideCompletion": 76,
     "tags": ["cilantro", "coriander", "coriandro", "herb", "cool season"],
-    "summary": "A cool-season herb where crowding, root disturbance and bolting matter more than elaborate pruning. The current pilot deliberately avoids inventing hydroponic pH/EC ranges until a stronger crop-specific source is added.",
+    "summary": "A cool-season leaf herb that grows best in sunny, fertile, well-drained soil. Keep the established crop from becoming waterlogged or overheated; harvest leaves at a useful size, or allow flowering and seed heads to mature when coriander is the goal. The reviewed sources do not establish crop-specific hydroponic nutrient targets.",
     "metrics": [
-      { "label": "Germination", "value": "~21 days", "note": "USU garden reference" },
+      { "label": "Outdoor height", "value": "1–3 ft", "note": "USU regional garden guide; not a controlled-system dimension" },
       { "label": "Leaf harvest", "value": "4–6 in", "note": "USU harvest guidance" },
-      { "label": "Leaf spacing", "value": "2 in", "note": "Field/soil reference, not a pod rule" },
-      { "label": "Hydro pH / EC", "value": "Pending", "note": "Not yet crop-validated in this prototype" }
+      { "label": "Hydro pH / EC", "value": "Not mapped", "note": "UCR experiment values are not Calculator targets" }
     ],
     "sections": {
-      "germination": {
-        "short": "Slower than basil; avoid premature failure labels",
-        "guidance": "USU notes cilantro seed can take about three weeks to germinate. Garden should use that as a broad expectation and combine it with actual emergence observations.",
-        "items": ["Minimize root disturbance once seedlings establish.", "Cooler growing conditions help cilantro remain vegetative longer."],
+      "cultivation": {
+        "short": "Cool-season crop; use sun and well-drained soil",
+        "guidance": "USU Extension describes cilantro as a cool-season crop for full sun and fertile, well-drained soil. Its Utah guide reports plants about 1–3 feet tall. Water regularly during establishment; once established, water only as needed and avoid persistently damp or humid conditions. USU gives different moisture advice by context: its FAQ recommends keeping plants well watered and the soil cool to reduce bolting, while its watering section cautions against overwatering. The guide does not quantify a universal schedule.",
+        "items": ["For leaf production, USU advises planting in cool weather and mulching to help keep soil cool; its indoor note says to keep soil temperature below 75°F. This is soil-temperature guidance, not an indoor grow-light requirement.", "USU recommends light seasonal nitrogen fertilization and warns that over-fertilizing can reduce flavor; no rate is prescribed here for containers or hydroponics."],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       },
       "thinning": {
-        "short": "Reduce crowding without disturbing the roots",
-        "guidance": "USU recommends approximately 2-inch spacing for leaf production in soil. A countertop hydroponic pod does not map perfectly to that spacing, so Garden should translate crowding visually rather than copy the field number as a hard pod rule.",
-        "items": ["If several seedlings compete tightly in one pod, keep the strongest cluster or seedlings according to available canopy space.", "Cut unwanted seedlings at the base when pulling would disturb neighboring roots."],
-        "context": "The 2-inch source value is confirmed for garden production; the exact number of seedlings per hydroponic pod remains a Garden adaptation.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Spacing depends on whether leaves or coriander seed are the goal",
+        "guidance": "For outdoor soil production, USU lists about 2 inches between plants for leaf harvest and 8–10 inches for coriander seed production, with rows at least 15 inches apart. These are field/garden spacings, not countertop pod counts or hydroponic recommendations.",
+        "items": ["Choose the spacing for the intended harvest: foliage or mature coriander seed."],
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       },
       "pruning": {
         "short": "Harvest management matters more than shaping",
-        "guidance": "Cilantro is not managed like basil. Garden should avoid suggesting decorative or branching-focused pruning. The practical intervention is harvesting leaves while monitoring the transition to flowering.",
+        "guidance": "The reviewed USU guide does not prescribe structural pruning for cilantro. For a leaf crop, harvest usable foliage and manage the cool-season conditions that delay bolting; do not apply basil-style pinching or branching rules. Flowering is expected when the crop is being grown for coriander seed.",
         "avoid": ["Applying basil-style node pruning rules to cilantro."],
-        "evidenceType": "garden_adaptation",
+        "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       },
       "harvest": {
         "short": "Begin once foliage reaches useful size",
-        "guidance": "USU recommends harvesting cilantro foliage when leaves are roughly 4–6 inches tall. Garden should still inspect plant vigor before recommending a heavy cut.",
-        "items": ["Favor usable outer foliage while preserving enough active growth for continued production.", "Record the harvest only after the user confirms it happened."],
+        "guidance": "USU recommends harvesting cilantro leaves at about 4–6 inches. For coriander seed, allow flowering and wait until the plant begins turning brown; cut the seed heads, place them in a paper bag, and let them dry until the seeds fall. These are distinct harvest goals.",
+        "items": ["Harvest foliage for fresh use, or leave the plant to complete flowering and seed development when coriander is wanted."],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       },
       "flowering": {
         "short": "Bolting changes the crop goal",
-        "guidance": "Cilantro is a cool-season crop and eventually shifts toward flowering and coriander seed production. If the user's goal is leaves, Garden should flag bolting as a meaningful stage change rather than simply calling it a problem.",
-        "items": ["Cool conditions and avoiding stress help extend leaf production.", "If seed is the goal, flowering is expected and should not be suppressed."],
+        "guidance": "Cilantro eventually flowers and sets coriander seed. For leaf production, USU recommends planting while conditions are cool and mulching to help keep soil cool; it identifies slow-bolting cultivars as a selection option. Flowering is normal when seed is the goal, not a disease by itself.",
+        "items": ["USU's soil-temperature note for indoor growing is below 75°F; it is not an exact flowering threshold or a grow-light prescription."],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       },
       "hydroponics": {
-        "short": "Crop-specific nutrient targets still need sourcing",
-        "guidance": "This pilot intentionally leaves cilantro-specific hydroponic pH and EC targets unresolved rather than borrowing a generic herb range without evidence.",
-        "items": ["Garden can still track the system's measured pH/EC as facts.", "Recommendations should remain conservative until a crop-specific hydroponic source is added."],
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
-      },
-      "problems": {
-        "short": "Heat, bolting and root disturbance",
-        "guidance": "The most relevant management risks are premature bolting, excessive moisture and damage during thinning/transplanting. Future AI Check integration should connect those risks to photos and history rather than infer them from age alone.",
+        "short": "Substrate-based hydroponic production is documented; universal nutrient targets are not",
+        "guidance": "A peer-reviewed Universidad de Costa Rica study evaluated Coriandrum sativum cultivar Caribe in hydroponic stone-powder substrate with drip fertigation during rainy-season trials in 2015 and 2016. It compared two nutrient concentrations and protective-cover conditions. The reported solution values (pH 6.41 / EC 1.06 mS/cm and pH 5.89 / EC 2.672 mS/cm) describe those experimental treatments only; they are not recommendations for this unspecified leaf-cilantro identity, a recirculating water system, or the Garden Nutrient Engine.",
+        "items": ["The study supports a conditional, substrate-based hydroponic production context; it does not validate countertop systems or deep-water culture.", "Do not map either experimental pH/EC pair into Calculator or present it as a target. Crop-specific nutrient recommendations remain INSUFFICIENT."],
         "evidenceType": "source_backed",
         "confidence": "medium",
+        "sourceIds": ["ucr-coriandrum-hydroponics-2026"]
+      },
+      "problems": {
+        "short": "Watch for early flowering and leafhopper-associated yellows",
+        "guidance": "USU identifies leafhoppers as sap-feeding insects that can transmit aster yellows. Its warning signs are yellow flowers and tall, spindly growth, followed by sterility. Distinguish this pattern from expected flowering in a crop intentionally grown for coriander seed. USU also lists damping-off as a seedling problem; that seed-stage issue is not repeated here and belongs with establishment guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": ["usu-cilantro"]
       }
     },
     "compatibilityProfile": {
         "profileVersion": 1,
         "hydroponicSuitability": {
-          "status": "unknown",
-          "reason": "No sufficiently scoped crop-specific hydroponic evidence was identified."
+          "status": "conditional",
+          "conditions": [{"kind":"system_type","description":"Evidence is limited to substrate-based hydroponic stone-powder culture with drip fertigation; recirculating water culture, countertop appliances, and specific Garden models remain unverified."}],
+          "evidence": [{"sourceIds":["ucr-coriandrum-hydroponics-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Coriandrum sativum"},"note":"The experiment used the named commercial cultivar Caribe; the compatibility claim is limited to the demonstrated species-level substrate-production context and does not establish cultivar-specific performance or nutrient targets."}]
         },
         "growthHabits": {
           "status": "unknown",
@@ -456,7 +483,7 @@
       "leafy green",
       "hydroponic"
     ],
-    "summary": "A cool-season leafy crop that can be managed either for repeated outer-leaf harvest or for a fuller head. Garden must know the intended harvest style before recommending cuts.",
+    "summary": "Red Romaine represents the red-leaved romaine/cos type of Lactuca sativa, not a named cultivar. Grow it as a cool-season leafy crop with steady moisture; harvest can target outer leaves or a fuller head, while heat and long days can trigger bolting and bitter leaves.",
     "metrics": [
       {
         "label": "Best germination",
@@ -480,6 +507,27 @@
       }
     ],
     "sections": {
+      "identity": {
+        "short": "Red Romaine is a red-leaved romaine/cos type within cultivated lettuce",
+        "guidance": "Kew accepts Lactuca sativa as the cultivated lettuce species. UMN Extension classifies romaine/cos as a tall, compact-headed type; this catalog identity represents red romaine at crop-type scope, not a named cultivar or cultivar-specific dimensions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-lactuca-sativa-500", "umn-lettuce-home-gardens-2024"]
+      },
+      "growth": {
+        "short": "Romaine/cos forms a tall, compact lettuce head",
+        "guidance": "University of Minnesota Extension classifies romaine as a tall, compact-headed lettuce type. This entry represents a red romaine crop type within Lactuca sativa; the general type description is not a size claim for an unnamed seed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-home-gardens-2024"]
+      },
+      "cultivation": {
+        "short": "Cool conditions and steady moisture support leaf quality",
+        "guidance": "UMN Extension notes that lettuce has shallow active roots near the soil surface and that dry soil can reduce growth and quality. Its Minnesota guide describes cool-weather performance and reports that heat, long days and high light intensity can trigger bolting. Those regional outdoor observations do not define an indoor light requirement or a cultivar-specific heat tolerance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-lettuce-home-gardens-2024"]
+      },
       "germination": {
         "short": "Cool conditions improve germination",
         "guidance": "Lettuce germinates best under cool conditions. Johnny's notes optimum germination around 60–68°F and poorer germination at high temperatures.",
@@ -537,12 +585,12 @@
       },
       "flowering": {
         "short": "Bolting is a stage change and quality warning",
-        "guidance": "Lettuce quality declines as the plant transitions toward a seed stalk, especially under heat stress. Garden should flag a visible central stalk as a stage observation and explain the likely effect on eating quality.",
+        "guidance": "UMN Extension reports that heat, long days and high light intensity can trigger a flowering stalk in lettuce; bolting ends harvest and leaves can become bitter. A visible central stalk is a developmental change and a harvest-quality warning, not by itself a diagnosis of nutrient deficiency.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "usu-lettuce",
-          "usu-lettuce-physiological-problems"
+          "umn-lettuce-home-gardens-2024",
+          "usu-lettuce"
         ]
       },
       "hydroponics": {
@@ -561,12 +609,12 @@
       },
       "problems": {
         "short": "Heat stress, bitterness and tip issues matter",
-        "guidance": "Lettuce is highly sensitive to heat and water stress, which can increase bitterness and bolting. Tipburn and brown-rib symptoms are recognized physiological warning signs in leafy greens; use moisture, root-zone and nutrient history before assigning a cause to damaged edges or midribs.",
+        "guidance": "UMN Extension documents bitter leaves and bolting under hot conditions, and tipburn after plants resume growth following a dry spell. Tipburn is a warning sign, not a diagnosis of one nutrient problem; review moisture and root-zone conditions before assigning a cause. No red-romaine-specific resistance claim is made.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
+          "umn-lettuce-home-gardens-2024",
           "usu-lettuce",
-          "johnnys-lettuce",
           "usu-lettuce-physiological-problems"
         ]
       }
@@ -709,95 +757,115 @@
       "tea",
       "herb"
     ],
-    "summary": "A vigorous perennial herb that tolerates regular harvesting. The general pruning pattern is well documented, but this pilot still needs stronger crop-specific hydroponic nutrient references.",
+    "summary": "A perennial mint-group herb with fast, rhizomatous spread in outdoor beds. This record remains at Mentha genus scope: flavor, size and performance vary among mints, and no species or cultivar is assigned.",
     "metrics": [
       {
         "label": "First harvest",
         "value": "3–4 in",
-        "note": "USU plant-height reference"
+        "note": "USU outdoor mint reference; not a system-specific threshold"
       },
       {
         "label": "Harvest style",
         "value": "Leaves + stems",
-        "note": "Repeated cutting is normal"
+        "note": "Repeated harvest is documented for mint generally"
       },
       {
-        "label": "Flower control",
+        "label": "Flower management",
         "value": "Pinch blooms",
         "note": "Supports leaf flavor"
       },
       {
         "label": "Hydro pH / EC",
-        "value": "Pending",
-        "note": "Not yet crop-validated in V0"
+        "value": "Unknown",
+        "note": "No applicable canonical target established"
       }
     ],
     "sections": {
-      "germination": {
-        "short": "Seed behavior varies by mint type",
-        "guidance": "USU notes that mint can be grown from seed or transplants, but seed-grown plants may not remain true to a named variety because mints hybridize readily. Garden should avoid promising a cultivar identity from seed unless it is known.",
+      "identity": {
+        "short": "This profile represents mint at genus level",
+        "guidance": "The catalog identity is Mentha spp.; it does not identify peppermint, spearmint, or a named cultivar. Utah State notes that mint varieties differ in taste and scent and that seed-grown mints may not remain true to type. Do not assign species-specific flavor, size, or performance to this record.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-mint",
+          "illinois-mint-extension-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Outdoor mint prefers sun to partial shade and moist, well-drained soil",
+        "guidance": "For garden-bed cultivation, USU describes mint as growing in full sun to partial shade and preferring moist soil; excess water can promote root and leaf disease. These are outdoor soil recommendations and do not establish indoor-light or hydroponic requirements.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "usu-mint"
         ]
       },
-      "thinning": {
-        "short": "Manage canopy crowding, not just seedling count",
-        "guidance": "The current source set does not define a hydroponic pod thinning rule for mint. Garden should base any thinning recommendation on actual crowding, vigor and available canopy space.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+      "growth": {
+        "short": "Mint spreads rapidly by rhizomes in open soil",
+        "guidance": "USU and Illinois Extension describe mints as vigorous, rhizomatous spreaders that can become invasive in garden beds. Containment advice applies to outdoor soil; it should not be treated as evidence that every mint is unsuitable for a contained growing system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-mint"
+          "usu-mint",
+          "illinois-mint-extension-2026"
         ]
       },
       "pruning": {
-        "short": "Mint handles repeated cutting well",
-        "guidance": "USU describes mint as tolerant of substantial pruning and recommends pinching blossoms when they appear if leaf quality is the goal. In soil production, plants can be cut back heavily several times a season.",
+        "short": "Pinch flowers for leaf quality; heavy cutback is an outdoor-bed reference",
+        "guidance": "USU reports that flowering can reduce leaf oil and flavor and describes cutting garden-grown mint back to about 1 inch before bloom, two or three times a season. Illinois Extension also recommends removing flower spikes when maintaining leaf flavor. The field cutback schedule is not a rule for a small container or hydroponic unit.",
         "items": [
-          "For a countertop hydroponic plant, begin with lighter stem harvests and evaluate regrowth.",
-          "Use the aggressive one-inch cut-back reference as context, not an automatic instruction for a small pod."
+          "Pinch flower spikes when the goal is flavorful foliage.",
+          "Treat USU's near-ground seasonal cutback as outdoor-bed guidance, not an automatic indoor or pod-system instruction."
         ],
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-mint"
+          "usu-mint",
+          "illinois-mint-extension-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest once plants are established and 3–4 in tall",
-        "guidance": "USU notes that fresh leaves and stems can be harvested throughout the season once plants reach roughly 3–4 inches tall. Younger leaves and stems are described as especially flavorful.",
+        "short": "Harvest leaves and stems after establishment; repeated cutting promotes new growth",
+        "guidance": "USU says fresh leaves and stems can be harvested through the season once plants reach roughly 3–4 inches tall, with younger growth especially flavorful. Illinois Extension notes that more frequent stem cutting produces more new growth. These references describe mint generally and do not define a safe cutting fraction or indoor schedule for an unspecified species.",
         "items": [
-          "Use clean scissors or a sharp knife for stem harvests.",
-          "Preserve enough active growth for rapid regrowth in a small indoor system."
+          "Use clean scissors or a sharp knife for leaves and stems.",
+          "Do not interpret the outdoor 3–4-inch reference as a hydroponic harvest threshold."
         ],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "usu-mint"
+          "usu-mint",
+          "illinois-mint-extension-2026"
         ]
       },
       "flowering": {
-        "short": "Pinch blooms when leaf flavor is the goal",
-        "guidance": "USU notes that allowing mint to bloom can reduce leaf oil content and flavor. Pinching blossoms is therefore a practical recommendation when growing for culinary leaves or tea.",
+        "short": "Remove flower spikes when leaf flavor is the priority",
+        "guidance": "USU reports lower leaf oil content and flavor when mint is allowed to bloom; Illinois Extension likewise recommends removing flower spikes to maintain leaf flavor. This is a culinary-leaf management choice, not a requirement when flowers are desired.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "usu-mint"
+          "usu-mint",
+          "illinois-mint-extension-2026"
         ]
       },
       "hydroponics": {
-        "short": "Nutrient targets intentionally unresolved",
-        "guidance": "This prototype has not yet accepted a mint-specific pH/EC range as canonical. The interface therefore shows the gap instead of silently copying a generic herb target.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Hydroponic research exists for a named mint, not this unresolved Mentha record",
+        "guidance": "A Brazilian NFT study tested stem-propagated Mentha arvensis cultivar IAC 701 with specified nutrient-solution concentrations and channel spacing. It demonstrates a hydroponic production trial for that named mint only; it does not identify this Mentha spp. record or establish its suitability, pH/EC targets, pod-management needs, or compatibility with Garden X systems. Keep those values pending and do not reuse the study recipe or field spacing.",
+      "evidenceType": "source_backed",
+      "confidence": "medium",
+        "sourceIds": [
+          "scielo-mentha-arvensis-nft-2008"
+        ]
       },
       "problems": {
-        "short": "Fast growth can become crowding",
-        "guidance": "Mint's vigor is an advantage until it overwhelms neighboring plants or blocks airflow. In Garden, this should eventually be evaluated from canopy photos plus system geometry rather than a generic timer.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Recognize rust-like leaf spots and wilt symptoms; confirm before treating",
+        "guidance": "USU describes mint rust as small, raised pale spots that become orange or brown on leaf undersides. It describes Verticillium wilt as marginal yellowing followed by leaf curling and death. These are warning signs, not a remote diagnosis; the source's soil-based prevention guidance should not be transferred wholesale to hydroponic systems.",
+        "items": [
+          "For suspected mint rust, inspect leaf undersides for orange-brown spots.",
+          "Marginal yellowing with curling and dieback is a Verticillium-wilt warning pattern in USU's mint guide; verify the cause before choosing a response."
+        ],
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
           "usu-mint"
         ]
@@ -807,7 +875,7 @@
       "profileVersion": 1,
       "hydroponicSuitability": {
         "status": "pending",
-        "reason": "Reviewed sources do not establish hydroponic suitability for this Mentha identity; do not infer it from current Garden use."
+        "reason": "A peer-reviewed NFT experiment covers Mentha arvensis cv. IAC 701, not this unspecified Mentha spp. identity; species/seed-lot applicability and Garden X system compatibility remain unresolved."
       },
       "growthHabits": {
         "status": "known",
@@ -923,22 +991,17 @@
       "fruiting",
       "hydroponic"
     ],
-    "summary": "A fruiting crop where the first question is not 'how do I prune?' but 'is this cultivar determinate or indeterminate?'. Garden should make that identity explicit before applying sucker-removal rules.",
+    "summary": "Cherry tomato is a fruit-size/type group within Solanum lycopersicum, not a single cultivar or plant habit. Established plants need warm, sunny conditions outdoors; support and pruning depend on the actual selection, while hydroponic crop references do not establish performance for every cherry cultivar.",
     "metrics": [
-      {
-        "label": "Germination",
-        "value": "5–7 days",
-        "note": "Johnny's tomato reference"
-      },
       {
         "label": "Hydro pH",
         "value": "6.0–6.5",
-        "note": "OSU reference table"
+        "note": "OSU crop-level reference; not cultivar-specific"
       },
       {
         "label": "Hydro EC",
         "value": "2.0–4.0 mS/cm",
-        "note": "OSU reference table"
+        "note": "OSU crop-level reference; not cultivar-specific"
       },
       {
         "label": "Pruning",
@@ -947,30 +1010,33 @@
       }
     ],
     "sections": {
-      "germination": {
-        "short": "Fast germination under warm propagation conditions",
-        "guidance": "Johnny's notes tomatoes typically germinate in about 5–7 days. Garden should still use visible emergence as the canonical event rather than infer germination from age.",
+      "identity": {
+        "short": "Cherry is a fruit type, not one cultivar or growth habit",
+        "guidance": "The identity represents cherry-fruited Solanum lycopersicum without specifying a seed selection. Tomato varieties differ in determinate, semi-determinate and indeterminate growth; fruit size alone does not establish support needs, mature dimensions or harvest timing.",
         "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
-      },
-      "thinning": {
-        "short": "One fruiting plant usually needs the pod's full capacity",
-        "guidance": "A compact hydroponic opening has limited root and canopy capacity. Garden's working adaptation is to select one vigorous tomato plant per final growing position unless the specific system explicitly supports more.",
-        "avoid": [
-          "Treating this adaptation as a universal tomato spacing fact."
-        ],
-        "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "johnnys-tomato",
+          "kew-solanum-lycopersicum-500"
         ]
+      },
+      "cultivation": {
+        "short": "Warm, full-sun outdoor conditions; exact cultivar context matters",
+        "guidance": "UMN Extension describes tomatoes as heat-loving outdoor crops that need full sun and a long frost-free season. This is species/crop-level garden guidance, not a cherry-cultivar temperature limit, indoor light tier or hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "care": {
+        "short": "Keep outdoor soil moisture steadier as fruit grows",
+        "guidance": "UMN Extension links fluctuating soil moisture with blossom-end rot and advises keeping water off foliage where possible. Its advice concerns soil-grown garden tomatoes; it does not define a watering volume or nutrient-solution schedule for a system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomato-disorders-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
         "short": "First identify determinate vs. indeterminate",
-        "guidance": "Johnny's states determinate tomatoes generally do not need pruning, while indeterminate plants benefit from support and pruning. OSU's hydroponic guidance for indeterminate tomatoes favors one main stem with suckers removed regularly.",
+        "guidance": "Identify the actual variety's growth habit before deciding whether it needs a cage, stake, trellis or sucker removal. Johnny's distinguishes determinate from indeterminate tomato care, and OSU discusses pruning for indeterminate tomatoes in its hydroponic context; neither supports applying one pruning routine to every cherry tomato.",
         "items": [
           "Confirm growth habit before recommending sucker removal.",
           "For indeterminate hydroponic tomatoes, remove small side shoots while they are easy to detach.",
@@ -987,21 +1053,22 @@
         ]
       },
       "harvest": {
-        "short": "For home use, allow fruit to ripen on the vine",
-        "guidance": "Johnny's recommends fully vine-ripened tomatoes for local use. Garden can use fruit color and cultivar expectations as observations, but should not mark fruit harvested until the user confirms the action.",
+        "short": "Pick fruit fully colored but still firm, then harvest as it ripens",
+        "guidance": "UMN and USU describe tomato harvest by usable or fully developed color while fruit remains firm, with fruit picked as it ripens. The color and timing are cultivar-dependent; this generic cherry record makes no fixed days-to-harvest promise.",
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "umn-tomatoes-home-gardens-2024",
+          "usu-tomatoes-garden"
         ]
       },
       "flowering": {
-        "short": "Flowering is expected; fruit set changes maintenance needs",
-        "guidance": "For tomato, flowering is not something to suppress by default. It marks the transition into reproductive growth and should affect support, pruning and nutrient context.",
-        "evidenceType": "garden_adaptation",
+        "short": "Flowering pattern depends on the selected tomato's growth habit",
+        "guidance": "Tomato flowers develop into fruit, but the crop includes determinate and indeterminate habits: UMN describes bush types as setting a concentrated crop and vining types as continuing to flower and ripen over a longer period. This generic cherry-fruit identity does not specify which habit your seed selection has, so check the named variety before planning support or harvest cadence.",
+        "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "okstate-pruning",
+          "umn-tomatoes-home-gardens-2024",
           "johnnys-tomato"
         ]
       },
@@ -1020,12 +1087,12 @@
         ]
       },
       "problems": {
-        "short": "Support, vigor and pruning errors compound quickly",
-        "guidance": "Tomato management should eventually combine variety, growth habit, photos and maintenance history. A generic timer cannot reliably decide whether a shoot is a sucker, a main leader or a damaged branch.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "high",
+        "short": "Recognize blossom-end rot and growth cracks without assuming a cause",
+        "guidance": "Blossom-end rot appears as a tan-to-black flattened area at the blossom end; it can reflect interrupted calcium movement and does not by itself prove calcium-poor soil. Growth cracks can follow rapid fruit growth or uneven soil moisture. These are outdoor tomato warning signs, not a cultivar diagnosis or hydroponic nutrient rule.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": [
-          "okstate-pruning"
+          "umn-tomato-disorders-2024"
         ]
       }
     },
@@ -1095,8 +1162,29 @@
         ]
       },
       "light": {
-        "status": "unknown",
-        "reason": "No light value is assigned to this unspecified cultivar in the reviewed sources."
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "umn-tomatoes-home-gardens-2024"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Solanum lycopersicum"
+            },
+            "note": "UMN lists full sun for outdoor tomatoes at crop/species scope; this does not resolve indoor grow-light intensity or the unspecified cherry cultivar's growth habit."
+          }
+        ]
       }
     },
     "lifeCapabilities": {

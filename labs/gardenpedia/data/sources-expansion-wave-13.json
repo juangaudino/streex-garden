@@ -50,5 +50,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs coverage reconciliation",
     "claimKinds": ["cultivar", "cultivation", "harvest", "problems"]
+  },
+  {
+    "id": "umn-edible-flowers-calendula-2025",
+    "publisher": "University of Minnesota Extension",
+    "title": "Edible flowers and late-summer herbs",
+    "url": "https://extension.umn.edu/about/our-stories/news/yard-and-garden-news/edible-flowers-and-late-summer-herbs",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level Calendula officinalis flowering, petal use, harvest-before-fade and deadheading context in a Minnesota gardening article; not cultivar-specific Resina trial evidence or a preservation recipe",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia 500 content research",
+    "claimKinds": ["flowering", "harvest", "harvestUse", "care"]
   }
 ]

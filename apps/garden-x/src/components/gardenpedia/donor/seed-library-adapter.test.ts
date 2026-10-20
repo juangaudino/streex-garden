@@ -251,7 +251,7 @@ describe("lightweight public Seed library adapter", () => {
       sources: [],
     });
     expect(filterSeedLibraryCards(cards, { mode: "propagation" })).toHaveLength(cards.length);
-    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(326);
+    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(328);
   });
 
   it("presents Wave 43 seed and vegetative propagation evidence without conflating the routes", () => {
@@ -277,7 +277,7 @@ describe("lightweight public Seed library adapter", () => {
     }
     expect(filterSeedLibraryCards(cards, { query: "grosella roja", mode: "propagation" }).map((card) => card.id)).toContain("red-currant-ribes-rubrum");
     expect(filterSeedLibraryCards(cards, { query: "Ipomoea aquatica", mode: "seeds" }).map((card) => card.id)).toContain("water-spinach-ipomoea-aquatica");
-    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(326);
+    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(328);
     expect(filterSeedLibraryCards(cards, { mode: "propagation" })).toHaveLength(cards.length);
   });
 
@@ -301,7 +301,7 @@ describe("lightweight public Seed library adapter", () => {
     const all = buildSeedLibraryCards("en");
     const seedCards = all.filter((card) => card.hasSeedProfile);
     expect(all).toHaveLength(gardenLibraryManifest.entries.length);
-    expect(seedCards).toHaveLength(326);
+    expect(seedCards).toHaveLength(328);
     expect(
       all.find((card) => card.id === "pineapple-mint-mentha-suaveolens-variegata"),
     ).toMatchObject({
@@ -385,7 +385,7 @@ describe("lightweight public Seed library adapter", () => {
       propagationClass: "insufficient_documentation",
     });
 
-    expect(seedSupported).toHaveLength(323);
+    expect(seedSupported).toHaveLength(325);
     expect(vegetative.length).toBeGreaterThan(0);
     expect(needsReview.length).toBeGreaterThan(0);
     expect(seedSupported.every((card) => card.hasSeedProfile)).toBe(true);
@@ -410,7 +410,7 @@ describe("lightweight public Seed library adapter", () => {
         hasSeedProfile: false,
       });
     }
-    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(326);
+    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(328);
     expect(filterSeedLibraryCards(cards, { mode: "propagation" })).toHaveLength(cards.length);
     expect(cards.find((card) => card.id === "waterleaf-talinum-fruticosum")).toMatchObject({
       hasSeedProfile: true,

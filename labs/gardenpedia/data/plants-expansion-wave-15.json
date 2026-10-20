@@ -40,6 +40,13 @@
         "confidence": "high",
         "sourceIds": ["usu-basil"]
       },
+      "maintenance": {
+        "short": "Regular leaf harvest before flowering supports continued foliage",
+        "guidance": "USU Extension says regular leaf removal before flowers form encourages more leaves and branches. Its FAQ cautions that pinching flowers alone does not stimulate new foliage and may encourage flowers in leaf axils. This is general O. basilicum guidance, not a cultivar-specific pruning schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-basil"]
+      },
       "problems": {
         "short": "Heat and water stress can promote flowering; watch for rot and leaf injury",
         "guidance": "USU Extension notes that high summer temperature and water stress can promote flowering and that root rot and basil shoot blight may occur. These are crop-level observations; no cultivar-specific resistance is claimed.",
@@ -67,7 +74,7 @@
     "emoji": "🧅",
     "guideCompletion": 63,
     "tags": ["bunching onion", "bunching onions", "scallion", "green onion", "Welsh onion", "cebolla de verdeo", "cebolla larga", "Allium fistulosum"],
-    "summary": "The non-bulbing scallion species Allium fistulosum, kept separate from the named Nebuka selection and from Allium cepa bunching types such as White Lisbon.",
+    "summary": "Allium fistulosum is a non-bulbing scallion grown for green and white stalks. Keep it distinct from immature bulb onions and Egyptian walking onion; the cited water and weed guidance is regional outdoor Extension advice.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -89,6 +96,20 @@
         "guidance": "UMN describes A. fistulosum scallions as green and white stalks that do not form bulbs. This species-level description is not a claim about all green onions, which may also be immature A. cepa.",
         "evidenceType": "source_backed",
         "confidence": "high",
+        "sourceIds": ["umn-growing-scallions-500"]
+      },
+      "care": {
+        "short": "Keep the shallow-rooted crop evenly moist and weeded",
+        "guidance": "UMN Extension notes that scallions are shallow-rooted, need steady moisture, and are easily outcompeted by weeds while small. Weed gently and frequently; the page's weekly rainfall target is Minnesota outdoor guidance, not a universal indoor or hydroponic instruction.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-growing-scallions-500"]
+      },
+      "problems": {
+        "short": "Yellowing and wilting need diagnosis, not an automatic disease label",
+        "guidance": "UMN lists onion maggot as one cause of yellowing and wilting in scallions and also notes several possible rots. These are crop-group possibilities, not a diagnosis of this identity; inspect roots and stalks and seek local diagnostic help before treatment.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": ["umn-growing-scallions-500"]
       },
       "harvest": {

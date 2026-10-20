@@ -32,11 +32,11 @@
     "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/hansel-f1-eggplant-seed-240.51.html",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "Hansel F1 product identity, product-specific compact habit, fruit traits and maturity; shared eggplant sowing instructions only at crop level",
+    "scope": "Hansel F1 product identity, product-specific compact habit, fruit traits, culinary description and maturity; the page's shared eggplant growing information supports crop-level cultivation, care, maintenance, pest and harvest guidance, not Hansel-specific trials",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 26",
-    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+    "claimKinds": ["identity", "cultivar", "cultivation", "care", "maintenance", "problems", "harvest", "uses", "seedling"]
   },
   {
     "id": "johnnys-fairy-tale-f1-eggplant-wave26",
@@ -45,11 +45,11 @@
     "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/fairy-tale-f1-eggplant-seed-2260.50.html",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "Fairy Tale F1 product identity, product-specific fruit and compact plant traits; shared eggplant sowing instructions only at crop level",
+    "scope": "Fairy Tale F1 product identity, product-specific fruit and compact plant traits; the page's shared eggplant growing information supports crop-level cultivation, care, maintenance, pest and harvest guidance, not Fairy Tale-specific trials",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 26",
-    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+    "claimKinds": ["identity", "cultivar", "cultivation", "care", "maintenance", "problems", "harvest", "uses", "seedling"]
   },
   {
     "id": "johnnys-patio-baby-f1-eggplant-wave26",
@@ -58,11 +58,11 @@
     "url": "https://www.johnnyseeds.com/vegetables/eggplant/mini-eggplants/patio-baby-f1-eggplant-seed-3747.54.html",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "Patio Baby F1 product identity, product-specific container suitability and 18–24 inch plant size; shared eggplant sowing instructions only at crop level",
+    "scope": "Patio Baby F1 product identity, product-specific container suitability, 18–24 inch plant size and fruiting claims; the page's shared eggplant growing information supports crop-level cultivation, care, maintenance, pest and harvest guidance, not Patio Baby-specific trials",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 26",
-    "claimKinds": ["identity", "cultivar", "cultivation", "harvest", "seedling"]
+    "claimKinds": ["identity", "cultivar", "cultivation", "care", "maintenance", "problems", "harvest", "uses", "seedling"]
   },
   {
     "id": "johnnys-delicata-js-wave26",
@@ -71,11 +71,24 @@
     "url": "https://www.johnnyseeds.com/vegetables/squash/winter-squash/delicata-js-organic-delicata-squash-seed-675G.11.html",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "Delicata JS product identity, fruit traits and product maturity; winter-squash sowing and storage guidance at crop scope",
+    "scope": "Delicata JS product identity, fruit dimensions, maturity, sweet flavor, tender edible skin, and recommended stuffing/baking use; winter-squash sowing and storage guidance at crop scope",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 26",
-    "claimKinds": ["identity", "cultivar", "cultivation", "seedling", "harvest", "problems"]
+    "claimKinds": ["identity", "cultivar", "cultivation", "seedling", "harvest", "problems", "uses"]
+  },
+  {
+    "id": "umn-winter-squash-home-gardens-2026",
+    "publisher": "University of Minnesota Extension",
+    "title": "Cultivo de calabazas y calabacines de invierno en los huertos familiares",
+    "url": "https://es.extension.umn.edu/jard%C3%ADn-y-hogar/patio-y-jard%C3%ADn/jardiner%C3%ADa-en-Minnesota-a/calabazas-y-calabacines-de-invierno",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Minnesota home-garden guidance for winter squash at crop level: soil watering, shallow weed management, flowering and pollination cues, maturity, harvest, curing, and storage; not Delicata JS cultivar trials or indoor/hydroponic compatibility",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment Wave 26 follow-up",
+    "claimKinds": ["cultivation", "care", "flowering", "harvest", "problems"]
   },
   {
     "id": "johnnys-honey-bear-f1-acorn-wave26",

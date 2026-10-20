@@ -59,14 +59,20 @@
         },
         "harvest": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Kohlrabi crop-level harvest cue; no cultivar-specific maturity date or final size is assigned to this unspecified purple type.",
+            "es": "Señal de cosecha a nivel de cultivo; no se asigna fecha de madurez ni tamaño final de cultivar a este tipo morado sin especificar."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Wisconsin home-garden soil guidance; not a hydroponic irrigation prescription.",
+            "es": "Orientación de suelo para huerto doméstico de Wisconsin; no es una receta de riego hidropónico."
           }
         },
         "problems": {
           "context": {
-            "en": "Unverified for this identity or growing system.",
-            "es": "Sin verificar para esta identidad o sistema de cultivo."
+            "en": "Crop-level pest and disease observations from Wisconsin home gardens; not a purple-type resistance or risk estimate for every region.",
+            "es": "Observaciones de plagas y enfermedades a nivel de cultivo en huertos de Wisconsin; no son una afirmación de resistencia del tipo morado ni una estimación para toda región."
           }
         }
       }
@@ -605,6 +611,12 @@
             "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
           }
         },
+        "care": {
+          "context": {
+            "en": "Use soil-test-led regional fertilizer guidance; do not generalize example rates or convert them into a hydroponic dose.",
+            "es": "Usa recomendaciones regionales de fertilización basadas en análisis del suelo; no generalices las dosis de ejemplo ni las conviertas en una dosis hidropónica."
+          }
+        },
         "growth": {
           "context": {
             "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
@@ -677,8 +689,14 @@
         },
         "growth": {
           "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+            "en": "Leaf movement and rolled new leaves are species-account traits; listed cultivar patterns are not generalized.",
+            "es": "El movimiento foliar y las hojas nuevas enrolladas son rasgos descritos para la especie; no se generalizan patrones de cultivares listados."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "NC State says flowers are small and rarely appear indoors; no cultivar color is assigned.",
+            "es": "NC State señala que las flores son pequeñas y rara vez aparecen en interior; no se asigna color de cultivar."
           }
         },
         "propagation": {

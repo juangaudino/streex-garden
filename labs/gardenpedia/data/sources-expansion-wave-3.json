@@ -1,19 +1,31 @@
 [
   {
+    "id": "umn-tomato-heat-response-2026",
+    "publisher": "University of Minnesota Extension",
+    "title": "How vegetables respond to heat",
+    "url": "https://blog-fruit-vegetable-ipm.extension.umn.edu/2021/07/vegetables-not-yielding-well-blame-heat.html",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "University of Minnesota Extension describes sustained hot day and night conditions above 85°F and 70°F, respectively, as stress that can impair tomato pollination during the roughly 50-hour flower window and cause blossoms to drop before fruit set. General outdoor tomato heat-response guidance; not a named-cultivar tolerance rating, indoor setpoint, or hydroponic prescription.",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia public-profile editorial enrichment",
+    "claimKinds": ["flowering", "problems", "cultivation"]
+  },
+  {
     "id": "illinois-oregano-wave3",
     "publisher": "University of Illinois Extension",
     "title": "Oregano",
     "url": "https://extension.illinois.edu/herbs/oregano",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Greek and Mexican oregano identity context; species/type scope remains explicit",
-    "accessed": "2026-10-01",
+    "scope": "Illinois Extension distinguishes Greek true oregano (Origanum vulgare var. hirtum) from the Mexican oregano listing Lippia graveolens and directly supports that type's use in chili and Mexican dishes. Its cultivation and general oregano harvest instructions on this page primarily describe Greek/Origanum oregano and are not transferred to Lippia origanoides. Kew reconciles Lippia graveolens as a synonym of the accepted Lippia origanoides used by this Gardenpedia identity.",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 3 source registry",
     "claimKinds": [
       "identity",
-      "cultivation",
-      "harvest"
+      "uses"
     ]
   },
   {
@@ -58,14 +70,18 @@
     "url": "https://extension.illinois.edu/herbs/caraway",
     "type": "university_extension",
     "tier": 1,
-    "scope": "caraway herb identity and crop context",
+    "scope": "Species-level Carum carvi identity, biennial growth and flowering, first-season rosette and second-season seed stalk, direct sowing, slow germination/moist seedbed, transplant sensitivity from a long taproot, cultivation and culinary harvest/use; no packet-specific germination days, sowing depth or hydroponic recipe",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 3 source registry",
     "claimKinds": [
       "identity",
+      "seedling",
       "cultivation",
-      "harvest"
+      "flowering",
+      "harvest",
+      "uses",
+      "problems"
     ]
   },
   {
@@ -75,15 +91,18 @@
     "url": "https://extension.illinois.edu/herbs/epazote",
     "type": "university_extension",
     "tier": 1,
-    "scope": "epazote seed, habit, harvest and culinary-use context",
-    "accessed": "2026-10-01",
+    "scope": "University of Illinois Extension's epazote garden profile under the synonym Chenopodium ambrosioides: annual garden use, branched habit and dimensions, full-sun/moist well-drained culture, free self-seeding, repeated tip harvest, leaf flavor and traditional culinary uses. Illinois garden context; not taxonomic authority, food-safety dosing, a named-cultivar claim, indoor-light classification or hydroponic guidance",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 3 source registry",
     "claimKinds": [
       "identity",
-      "seedling",
+      "growth",
       "cultivation",
-      "harvest"
+      "care",
+      "harvest",
+      "uses",
+      "problems"
     ]
   },
   {
@@ -127,7 +146,7 @@
     "url": "https://www.johnnyseeds.com/vegetables/tomatoes/paste-tomatoes/sunrise-sauce-f1-tomato-seed-3376.html",
     "type": "product_reference",
     "tier": 2,
-    "scope": "Sunrise Sauce identity and product-specific determinate/container facts",
+    "scope": "Sunrise Sauce F1 identity and product-specific determinate/container facts, harvest estimate, and supplier-rated high resistance to Fusarium wilt races 1 and Verticillium wilt; ratings are not immunity and do not cover other tomato disorders",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 3 source registry",
@@ -135,7 +154,8 @@
       "identity",
       "cultivar",
       "cultivation",
-      "harvest"
+      "harvest",
+      "problems"
     ]
   },
   {
@@ -196,15 +216,115 @@
     "url": "https://extension.illinois.edu/flowers/snapdragon",
     "type": "university_extension",
     "tier": 1,
-    "scope": "snapdragon identity, exposure, seasonal habit and deadheading context",
+    "scope": "Illinois home-garden guidance for Antirrhinum majus snapdragon types: identity, full sun to light shade, cool-season performance, range of forms and heights, flowering colors/season, deadheading, staking and drainage; the seasonal calendar is regional and the page does not describe one named cultivar",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 3 source registry",
     "claimKinds": [
       "identity",
       "cultivation",
+      "growth",
       "flowering",
+      "care",
       "harvest"
     ]
+  },
+  {
+    "id": "illinois-bachelors-button-wave3",
+    "publisher": "University of Illinois Extension",
+    "title": "Bachelor's Button",
+    "url": "https://extension.illinois.edu/flowers/bachelors-button",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Illinois home-garden guidance for Centaurea cyanus bachelor-button type: full sun, moist well-drained soil, reported 12–18 inch height, flower colors and regional bloom season, deadheading, possible staking, cut-flower use and late-season decline; no named cultivar is represented",
+    "accessed": "2026-10-20",
+    "license": null,
+    "provenance": "Gardenpedia Labs plant-profile completion review",
+    "claimKinds": ["identity", "cultivation", "growth", "flowering", "care", "harvest"]
+  },
+  {
+    "id": "rhs-russian-tarragon-2026",
+    "publisher": "Royal Horticultural Society",
+    "title": "How to Grow Tarragon",
+    "url": "https://www.rhs.org.uk/herbs/tarragon/grow-your-own",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "Russian tarragon type: established-plant habit, dimensions, cultivation, care, harvest and problems; French-tarragon comparisons preserve type distinction only",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "rhs-russian-tarragon-profile-2026",
+    "publisher": "Royal Horticultural Society",
+    "title": "Artemisia dracunculus dracunculoides | Russian tarragon",
+    "url": "https://www.rhs.org.uk/plants/50719/artemisia-dracunculus-dracunculoides/details",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "RHS-listed Russian tarragon taxon and synonyms; type-level habit, dimensions, growing conditions and pruning; UK hardiness is not generalized",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "problems"
+    ]
+  },
+  {
+    "id": "rhs-little-gem-lettuce-2026",
+    "publisher": "Royal Horticultural Society",
+    "title": "Lactuca sativa 'Little Gem' | lettuce (Cos) 'Little Gem'",
+    "url": "https://www.rhs.org.uk/plants/112416/lactuca-sativa-little-gem/details",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "RHS-listed Little Gem cultivar identity and cos type, compact head characteristics, outdoor cultivation and listed pests/diseases; horticultural and hardiness guidance remains UK-scoped",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "problems"
+    ]
+  },
+  {
+    "id": "cornell-little-gem-variety-record-2026",
+    "publisher": "Cornell Cooperative Extension Vegetable Varieties for Gardeners",
+    "title": "'Little Gem' Lettuce — Variety Details",
+    "url": "https://vegvariety.cce.cornell.edu/main/detail.php?filterBy=0&variety_id=2681",
+    "type": "university_research",
+    "tier": 1,
+    "scope": "Cornell's public variety record describes Little Gem as cos/romaine; the record is used to document classification only, not as controlled cultivar performance research",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": ["identity", "cultivar"]
+  },
+  {
+    "id": "illinois-little-gem-trial-2025",
+    "publisher": "University of Illinois Extension",
+    "title": "Lettuce Varieties for Spring",
+    "url": "https://extension.illinois.edu/blogs/commercial-fruit-and-vegetable-growers/2025-04-30-lettuce-varieties-spring",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Illinois Extension 2025 spring variety comparison labels Little Gem as bibb; classification reported as a source conflict and not generalized beyond that trial/report",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": ["identity", "cultivar"]
   }
 ]

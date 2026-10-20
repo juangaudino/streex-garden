@@ -2153,11 +2153,7 @@
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2",
-            "usu-water-vegetables-wave2",
-            "johnnys-seed-starting"
-          ]
+          "sourceIds": ["illinois-herbs-wave2", "usu-water-vegetables-wave2", "johnnys-seed-starting"]
         },
         {
           "key": "seedType",
@@ -2202,16 +2198,12 @@
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
-              "sourceIds": [
-                "illinois-herbs-wave2"
-              ]
+              "sourceIds": ["illinois-herbs-wave2"]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2"
-          ]
+          "sourceIds": ["illinois-herbs-wave2"]
         },
         {
           "key": "germination",
@@ -2343,9 +2335,7 @@
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "umn-seed-storage"
-          ]
+          "sourceIds": ["umn-seed-storage"]
         },
         {
           "key": "troubleshooting",
@@ -2375,10 +2365,7 @@
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2",
-            "usu-water-vegetables-wave2"
-          ]
+          "sourceIds": ["illinois-herbs-wave2", "usu-water-vegetables-wave2"]
         }
       ]
     },
@@ -2990,16 +2977,16 @@
             "es": "Germinación"
           },
           "value": {
-            "en": "Crop-specific range pending",
-            "es": "Rango específico del cultivo pendiente"
+            "en": "17–25 days reported as a normal range",
+            "es": "17–25 días como rango normal reportado"
           },
           "note": {
-            "en": "Do not turn a general crop window into a packet guarantee",
-            "es": "No conviertas una ventana general del cultivo en garantía del paquete"
+            "en": "PROSEA crop reference; not a packet-specific guarantee",
+            "es": "Referencia agrícola de PROSEA; no es garantía del paquete"
           },
-          "evidenceType": "needs_validation",
-          "confidence": "pending",
-          "sourceIds": []
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["prosea-pimpinella-anisum-2016"]
         },
         {
           "key": "temperature",
@@ -3008,19 +2995,16 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "Not established in the reviewed species sources",
+            "es": "No establecida en las fuentes de especie revisadas"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 4",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 4"
+            "en": "Do not substitute a temperature from another herb or crop",
+            "es": "No sustituyas con la temperatura de otra hierba o cultivo"
           },
-          "evidenceType": "source_backed",
-          "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2",
-            "usu-water-vegetables-wave2"
-          ]
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
         },
         {
           "key": "depth",
@@ -3029,20 +3013,16 @@
             "es": "Profundidad de siembra"
           },
           "value": {
-            "en": "Follow the crop-specific guide",
-            "es": "Sigue la guía específica del cultivo"
+            "en": "1–3 cm in the PROSEA soil-crop reference",
+            "es": "1–3 cm en la referencia agrícola de suelo de PROSEA"
           },
           "note": {
-            "en": "Packet depth should win when the actual packet is available",
-            "es": "La profundidad del paquete debe prevalecer cuando el paquete real esté disponible"
+            "en": "Soil sowing depth only; the actual packet and growing medium take precedence",
+            "es": "Profundidad solo para siembra en suelo; prevalecen el paquete real y el medio de cultivo"
           },
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2",
-            "usu-water-vegetables-wave2",
-            "johnnys-seed-starting"
-          ]
+          "sourceIds": ["prosea-pimpinella-anisum-2016"]
         },
         {
           "key": "seedType",
@@ -3076,27 +3056,23 @@
             "es": "Empieza con un medio limpio y uniformemente húmedo"
           },
           "guidance": {
-            "en": "Use the Anise crop guide for method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Anís para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "Iowa State says anise does not transplant well, and PROSEA recommends direct sowing because seedlings are harmed by transplanting. PROSEA gives 1–3 cm as a field-soil depth and says an overnight water soak can facilitate germination; treat both as crop references, not packet or indoor-medium instructions. Keep field spacing separate from Garden positions.",
+            "es": "Iowa State indica que el anís no tolera bien el trasplante y PROSEA recomienda siembra directa porque el trasplante daña las plántulas. PROSEA da 1–3 cm como profundidad en suelo de campo y señala que remojar las semillas durante la noche puede facilitar la germinación; son referencias del cultivo, no instrucciones del paquete ni del medio interior. Mantén la separación de campo separada de las posiciones de Garden."
           },
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related types.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de tipos relacionados."
+                "en": "Sow directly where the plant will grow when practical; use the actual packet instructions if available.",
+                "es": "Si es posible, siembra directamente donde crecerá la planta; si tienes el paquete real, sigue sus instrucciones."
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
-              "sourceIds": [
-                "illinois-herbs-wave2"
-              ]
+                "sourceIds": ["iastate-herbs-growing-harvesting-2026", "prosea-pimpinella-anisum-2016"]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2"
-          ]
+            "sourceIds": ["iastate-herbs-growing-harvesting-2026", "prosea-pimpinella-anisum-2016"]
         },
         {
           "key": "germination",
@@ -3106,18 +3082,18 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "The crop reference reports 17–25 days; early growth is slow",
+            "es": "La referencia agrícola informa 17–25 días; el crecimiento inicial es lento"
           },
           "guidance": {
-            "en": "The reviewed Anise evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Anís respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "PROSEA reports germination normally taking 17–25 days and slow initial growth, with stem emergence 35–40 days after germination in its crop account. Conditions and seed lots vary; these figures are context, not a delivery-date promise.",
+            "es": "PROSEA informa una germinación normalmente de 17–25 días y crecimiento inicial lento, con emergencia del tallo 35–40 días después de germinar en su descripción agrícola. Las condiciones y lotes de semilla varían; estas cifras son contexto, no una promesa de fecha."
           },
           "items": [
             {
               "text": {
-                "en": "Light/dark requirement and exact emergence window: needs validation.",
-                "es": "Requisito de luz/oscuridad y ventana exacta de emergencia: requiere validación."
+                "en": "Species-specific germination temperature and light/dark requirement: needs validation.",
+                "es": "Temperatura específica de germinación y requisito de luz/oscuridad: requieren validación."
               },
               "evidenceType": "needs_validation",
               "confidence": "pending",
@@ -3126,10 +3102,7 @@
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2",
-            "usu-water-vegetables-wave2"
-          ]
+            "sourceIds": ["prosea-pimpinella-anisum-2016"]
         },
         {
           "key": "afterEmergence",
@@ -3139,32 +3112,27 @@
           },
           "icon": "🌿",
           "short": {
-            "en": "Protect the young root zone and compare vigor",
-            "es": "Protege la zona radicular joven y compara el vigor"
+            "en": "Field thinning is described; do not reuse it as pod spacing",
+            "es": "Se describe el raleo de campo; no lo reutilices como separación de pods"
           },
           "guidance": {
-            "en": "After emergence, preserve even moisture, adequate light, and airflow. Reduce competition only when visible crowding changes seedling development.",
-            "es": "Después de emerger, conserva humedad uniforme, luz suficiente y circulación de aire. Reduce la competencia solo cuando el amontonamiento visible cambie el desarrollo."
+            "en": "PROSEA describes thinning field-grown seedlings at about 30 days from sowing or when they are 5–8 cm tall, with final field spacing of 10–30 cm. Those soil-production distances are not machine-pod or indoor-system recommendations.",
+            "es": "PROSEA describe el raleo de plántulas de campo aproximadamente a los 30 días de la siembra o cuando miden 5–8 cm, con separación final de 10–30 cm. Esas distancias de producción en suelo no son recomendaciones para pods ni sistemas interiores."
           },
           "items": [
             {
               "text": {
-                "en": "Cut unwanted crowded seedlings at the base when pulling would disturb the plant being kept.",
-                "es": "Corta en la base las plántulas sobrantes cuando arrancarlas pueda alterar la planta conservada."
+                "en": "If field-grown plants are crowded, apply the source's soil spacing only in that context; system spacing remains unestablished.",
+                "es": "Si las plantas de campo están amontonadas, aplica la distancia de suelo solo en ese contexto; la separación en sistemas sigue sin establecerse."
               },
-              "evidenceType": "garden_adaptation",
+              "evidenceType": "source_backed",
               "confidence": "medium",
-              "sourceIds": [
-                "illinois-herbs-wave2",
-                "usu-water-vegetables-wave2"
-              ]
+              "sourceIds": ["prosea-pimpinella-anisum-2016"]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
-          "sourceIds": [
-            "illinois-herbs-wave2"
-          ]
+            "sourceIds": ["prosea-pimpinella-anisum-2016"]
         },
         {
           "key": "transition",

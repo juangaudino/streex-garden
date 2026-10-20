@@ -1,123 +1,207 @@
 {
   "arugula": {
-    "summary": "Identidad base de Wave 1 para Rúcula. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La rúcula es una roseta de estación fresca y crecimiento rápido, cosechada por sus hojas picantes. UW–Madison describe espigado con días largos, calor o suelo seco, cosecha repetida y daños de altica; su artículo usa Eruca sativa mientras Garden conserva Eruca vesicaria como nombre aceptado del catálogo.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Identidad de catálogo Eruca vesicaria; Extension también usa Eruca sativa",
+        "guidance": "Garden conserva Eruca vesicaria como identidad aceptada del catálogo. El artículo de UW–Madison se titula Eruca sativa y menciona E. vesicaria subsp. sativa como uso alternativo; registramos esta diferencia nomenclatural sin cambiar silenciosamente la identidad. No se representa un cultivar."
+      },
+      "growth": {
+        "short": "Roseta de hojas lobuladas; el tallo floral puede alcanzar 2–3 pies",
+        "guidance": "UW–Madison describe una roseta de hojas verde apagado, generalmente de 3–8 pulgadas. Los días largos, el calor y/o la sequedad pueden provocar un tallo floral ramificado de 2–3 pies. Son observaciones de especie/cultivo, no dimensiones de cultivar."
+      },
+      "cultivation": {
+        "short": "Cultivo de estación fresca; sol pleno y sombra ligera pueden retrasar el espigado estival",
+        "guidance": "UW–Madison recomienda suelo fértil y bien drenado y sol pleno; algo de sombra puede ralentizar el espigado durante el periodo más caluroso. También documenta el cultivo en recipientes, incluso en una ventana luminosa. Esto no demuestra rendimiento hidropónico ni un objetivo de luz artificial."
+      },
+      "care": {
+        "short": "Las siembras sucesivas pueden prolongar la cosecha de hojas jóvenes",
+        "guidance": "UW–Madison describe siembras exteriores sucesivas cada 2–3 semanas desde primavera temprana hasta otoño para mantener el suministro, o dejar algunas plantas florecer y resiembrarse. El calendario es guía regional de exterior, no garantía de producción interior durante todo el año."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Corta hojas selectivamente o la roseta sobre la corona para permitir rebrote",
+        "guidance": "UW–Madison describe retirar hojas individuales o cortar la planta completa a 1–2 pulgadas del suelo y luego cosechar el rebrote de forma secuencial. Es una opción de cultivo exterior, no una garantía de rebrote en todo sistema."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas de pocos centímetros; el calor y la sequía intensifican el sabor",
+        "guidance": "UW–Madison indica que las hojas pueden cosecharse cuando miden unos pocos centímetros; las jóvenes son tiernas y picantes, y las mayores se vuelven más fuertes y amargas. En su contexto exterior, la planta entera puede cortarse tras unas 3–4 semanas y cosecharse luego el rebrote. La recolección frecuente puede retrasar la formación de tallo floral; calor y sequía intensifican el sabor."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Calor, días largos y sequedad pueden causar espigado; la altica deja pequeños orificios",
+        "guidance": "UW–Madison relaciona días largos, calor y/o suelo seco con la formación rápida del tallo floral. Las alticas dejan pequeños orificios y pueden dañar gravemente plantas jóvenes; las cubiertas son una opción, pero los insectos que pasan el invierno en el suelo pueden emerger debajo de ellas si se instalan demasiado pronto. Confirma el síntoma antes de intervenir."
+      },
+      "thinning": {
+        "short": "La distancia exterior depende de cosechar plantas individuales o como corte repetido",
+        "guidance": "UW–Madison indica 3–6 pulgadas entre plantas individuales y permite siembras más densas para cosecha repetida. Son instrucciones de campo/recipiente, no un número de pods hidropónicos ni una regla universal para interior."
       },
       "hydroponics": {
-        "short": "Compatibilidad hidropónica pendiente",
-        "guidance": "La evidencia hidropónica específica para esta identidad sigue pendiente en Wave 1. No copies objetivos de otra especie o cultivar."
+        "short": "La rúcula está documentada en NFT y en sistemas DWC de investigación",
+        "guidance": "Virginia Cooperative Extension incluye la rúcula entre las hojas que funcionan bien en técnica de película nutritiva (NFT). Un estudio de invernadero de University of Georgia también cultivó la selección nombrada Slow Bolt en cultivo de agua profunda (DWC); demuestra uso de ese cultivo/sistema, no rendimiento de cada cultivar o aparato doméstico. No se infieren cantidad de pods, compatibilidad con una máquina, receta nutritiva ni objetivo de EC."
       }
     }
   },
   "kale-dwarf-blue-curled": {
-    "summary": "Identidad base de Wave 1 para Col rizada enana azul rizada. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Dwarf Blue Curled representa un tipo de col rizada rizada dentro de Brassica oleracea; el catálogo no afirma que este registro sea un cultivar nombrado verificado ni fija sus dimensiones. La col rizada es un cultivo foliar de estación fresca y puede cosecharse repetidamente retirando hojas viejas mientras las jóvenes continúan creciendo.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de col rizada Brassica oleracea; cultivar y dimensiones exactas no establecidos",
+        "guidance": "Garden representa un tipo hortícola Dwarf Blue Curled dentro de Brassica oleracea, no un cultivar nombrado verificado. Las fuentes disponibles describen la col rizada en general; no prueban una altura, extensión ni desempeño específico para este registro."
+      },
+      "growth": {
+        "short": "Cultivo foliar sin cabeza; tamaño maduro de este tipo desconocido",
+        "guidance": "Penn State describe la col rizada como cultivo de brassica que no forma cabeza; UW–Madison señala que existen distintos tipos hortícolas. Las fuentes respaldan el hábito foliar, pero no dan altura o extensión madura medida para este tipo Dwarf Blue Curled del catálogo."
+      },
+      "cultivation": {
+        "short": "Cultivo exterior de estación fresca que tolera heladas; el calor estival puede limitarlo",
+        "guidance": "UW–Madison Extension describe la col rizada como planta de estación fresca que puede tolerar heladas y nieve, pero no prospera con el calor del verano. Es contexto exterior del cultivo, no un objetivo climático interior ni parámetros hidropónicos para este tipo."
+      },
+      "care": {
+        "short": "Conserva las hojas jóvenes durante la cosecha repetida",
+        "guidance": "UW–Madison recomienda cortar las hojas más viejas y grandes y permitir que las jóvenes sigan creciendo durante la temporada. Es una pauta de mantenimiento del cultivo, no evidencia de una respuesta especial de poda del tipo Dwarf Blue Curled."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira hojas exteriores viejas; no se establece un calendario de formación propio del tipo",
+        "guidance": "Aplica la pauta de cosecha repetida citada: retira hojas viejas y conserva el crecimiento joven activo. Las fuentes revisadas no establecen un calendario separado de formación o despunte para este tipo del catálogo."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Empieza cuando se desarrollen varias hojas; recoge las más viejas",
+        "guidance": "UW–Madison aconseja empezar cuando haya varias hojas, cortar las mayores y dejar crecer las jóvenes. Penn State describe distintas etapas de cosecha, con hojas tiernas para ensalada y hojas mayores que suelen cocinarse. El tiempo y tamaño varían; no se establece aquí una fecha de madurez específica del cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor de verano puede ralentizar el cultivo o reducir calidad; observa antes de diagnosticar",
+        "guidance": "UW–Madison señala que la col rizada no prospera con calor estival. La fuente del cultivo no establece resistencia a enfermedades ni susceptibilidad a plagas específicas de Dwarf Blue Curled; inspecciona los síntomas y busca diagnóstico local antes de tratar."
+      },
+      "thinning": {
+        "short": "La distancia de campo de UW no equivale a cantidad de pods de Garden",
+        "guidance": "La distancia exterior aproximada de 8 pulgadas publicada por UW–Madison es guía de campo para col rizada. No se establece el espaciamiento exacto de este tipo en recipiente o sistema Garden, por lo que no se convierte a cantidad de pods."
       }
     }
   },
   "swiss-chard-rainbow": {
-    "summary": "Identidad base de Wave 1 para Acelga arcoíris. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La acelga Rainbow es una mezcla de variedades de colores, no un cultivar uniforme. Se cultiva por sus hojas anchas y pecíolos vistosos; las plantas establecidas pueden producir varias cosechas de hojas exteriores. Extension describe el freno estival y plagas manejables, pero no establece un tamaño maduro único para esta mezcla.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Rainbow es una mezcla de variedades de colores de Beta vulgaris de hoja",
+        "guidance": "UW–Madison describe ‘Rainbow’ como una mezcla de varias variedades de acelga de colores. La acelga es una forma de Beta vulgaris cultivada por sus hojas; el artículo también usa el nombre hortícola var. cicla. Garden representa una mezcla de color, no un cultivar genéticamente uniforme, y no aplica dimensiones o días de madurez publicados para otras variedades."
+      },
+      "growth": {
+        "short": "Hojas grandes y rizadas con pecíolos prominentes, a menudo coloridos",
+        "guidance": "UW–Madison describe una roseta de hojas grandes y rizadas, con nervaduras centrales ensanchadas y pecíolos robustos; los colores varían entre variedades de blanco/verde a amarillo, naranja, rojo y rosa. Esto explica la mezcla Rainbow, pero no fija una combinación exacta ni el tamaño de cada paquete."
+      },
+      "cultivation": {
+        "short": "Prefiere sol pleno; tolera sombra parcial en suelo fértil y drenado",
+        "guidance": "UW–Madison recomienda sol pleno, aunque señala tolerancia a sombra parcial, suelo fértil y bien trabajado y buen drenaje. Indica que el calor alto ralentiza la producción de hojas y que la acelga tolera más calor que la espinaca. Son observaciones de cultivo, no especificaciones de luz interior o hidroponía para Rainbow."
+      },
+      "care": {
+        "short": "Mantén humedad pareja para seguir produciendo hojas; el crecimiento puede ralentizarse en verano",
+        "guidance": "UW–Madison indica que la acelga tolera cierta sequedad, pero produce mejor con suelo uniformemente húmedo. UMN señala que los periodos secos detienen la producción y expansión de hojas, y que el crecimiento se reanuda al mejorar la humedad. Es guía de suelo, no volumen fijo de depósito ni fórmula nutritiva."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira hojas exteriores viejas sin dañar la corona ni el crecimiento interno",
+        "guidance": "UW–Madison aconseja cortar o quebrar las hojas exteriores cerca de la base, evitando dañar hojas internas y puntos de crecimiento. Es mantenimiento ligado a la cosecha, no un calendario fijo de poda; retira las plantas que comienzan a espigar si ya no producen hojas útiles."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas exteriores cuando alcanzan tamaño útil para repetir la recolección",
+        "guidance": "UW–Madison indica que se pueden recoger unas pocas hojas de alrededor de 3 pulgadas a la vez y mantener cosechas sucesivas; corta o quiebra las exteriores cerca de la base sin dañar el punto de crecimiento. En verano las hojas pueden volverse más amargas y suavizarse de nuevo al refrescar. Los 55–65 días y alturas del artículo corresponden a otras variedades, no a esta mezcla Rainbow."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Pulgones o minadores ocasionales; revisa las hojas antes de retirarlas",
+        "guidance": "UW–Madison informa pocos problemas graves en acelga; pueden aparecer pulgones y minadores de la espinaca. Los pulgones se agrupan en el follaje; los minadores dejan túneles internos y las hojas afectadas pueden retirarse y desecharse. La fuente no establece resistencia a plagas o enfermedades para la mezcla Rainbow."
+      },
+      "thinning": {
+        "short": "La distancia de campo cambia con el tamaño de hoja deseado; no es espaciado de pods",
+        "guidance": "UW–Madison publica distancias de suelo exterior y señala que la acelga agrupada produce hojas menores, mientras que una separación menor puede servir para hoja baby. Las distancias exactas no se convierten en cantidad de pods ni recomendación universal de interior."
       }
     }
   },
   "bok-choy": {
-    "summary": "Identidad base de Wave 1 para Bok choy. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El bok choy o pak choi forma una mata erguida de hojas oscuras con pecíolos gruesos y pálidos. UMN Extension describe la necesidad de humedad constante, el riesgo de espigado por frío y la cosecha de hojas exteriores antes de perder calidad; las fechas y distancias son guía de campo para Minnesota, no ajustes hidropónicos.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Bok choy / pak choi; UMN identifica el tipo como Brassica rapa chinensis",
+        "guidance": "El catálogo representa bok choy al nivel de especie Brassica rapa y tipo de cultivo. UMN Extension distingue bok choy (B. rapa chinensis), con pecíolos gruesos, de la col china/Napa de cabeza cilíndrica (B. rapa pekinensis). UMN no informa ensayos locales de variedades de bok choy; aquí no se afirma un cultivar."
+      },
+      "growth": {
+        "short": "Mata erguida de hojas oscuras con pecíolos gruesos blancos o verde claro",
+        "guidance": "UMN Extension describe bok choy como una mata erguida de hojas verde oscuro, cada una con un pecíolo muy grueso blanco o verde claro. Es morfología del tipo de cultivo, no tamaño de un cultivar nombrado."
+      },
+      "cultivation": {
+        "short": "Suelo fértil, drenado y capaz de retener humedad para un crecimiento constante",
+        "guidance": "UMN recomienda suelo fértil que drene y a la vez retenga humedad, y enfatiza la absorción constante de agua y nutrientes. Su pH, calendario y distancias son guía de huerto para Minnesota; no establecen receta nutritiva, luz interior ni separación hidropónica."
+      },
+      "care": {
+        "short": "Evita periodos fríos prolongados que pueden inducir espigado; mantén humedad estable",
+        "guidance": "UMN informa que una helada tardía o más de una semana con noches bajo 50°F puede hacer que el bok choy espigue cuando vuelve el calor; el tiempo cálido también puede inducir floración. Son referencias de cultivo exterior en Minnesota, no valores universales de control interior. La humedad irregular reduce calidad; observa hojas y pecíolos antes de atribuir una causa."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira hojas exteriores individualmente o corta la mata madura",
+        "guidance": "UMN describe cosechar las hojas exteriores más viejas y grandes mientras las jóvenes continúan creciendo, o cortar la planta entera cerca del tamaño maduro. Es manejo de cosecha, no una necesidad de poda de formación rutinaria."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas exteriores mientras sigue el crecimiento joven; no la dejes perder calidad",
+        "guidance": "UMN indica que se puede cosechar bok choy hoja por hoja empezando por las exteriores más viejas. Los tipos enanos pueden medir unos 6 pulgadas y los de tamaño completo alrededor de un pie, pero el catálogo no atribuye ninguna dimensión a un cultivar de esta identidad. Si espiga, cosecha la planta antes de que abran las flores; UMN señala que la calidad no se conserva si permanece mucho tiempo en el huerto."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila orificios de altica, orugas que comen hojas y espigado",
+        "guidance": "UMN identifica orificios de altica, alimentación de gusanos de la col/medidores/polilla dorso de diamante, y raíz hinchada con planta enana por hernia de la col como problemas del bok choy. Las plantas jóvenes son especialmente vulnerables a insectos. El calor puede causar floración; diagnostica antes de atribuir el daño a una enfermedad."
+      },
+      "thinning": {
+        "short": "Las distancias de aclareo de UMN no son separación de pods interiores",
+        "guidance": "La guía UMN de 12–18 pulgadas corresponde a plantaciones exteriores de col china/bok choy en Minnesota. No es espaciamiento universal de cultivar ni debe convertirse en cantidad de pods de Garden."
       }
     }
   },
   "baby-spinach": {
-    "summary": "Identidad base de Wave 1 para Espinaca baby. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La espinaca baby es una etapa/tipo de cosecha de Spinacia oleracea, no otra especie ni un cultivar nombrado. USU Extension describe la espinaca como cultivo de estación fresca: calor y días largos favorecen el espigado y el sabor amargo, mientras que retirar hojas viejas permite que sigan creciendo las jóvenes.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo de cosecha baby de Spinacia oleracea; sin cultivar especificado",
+        "guidance": "Esta identidad representa espinaca cosechada como hoja baby, no una especie botánica distinta ni un cultivar nombrado. La agronomía de USU Extension corresponde a la espinaca en general y no establece rasgos únicos de un cultivar baby."
+      },
+      "growth": {
+        "short": "Roseta foliar; calor y días largos favorecen la floración",
+        "guidance": "USU Extension describe la espinaca como cultivo foliar de estación fresca. Los días largos y las temperaturas cálidas de verano pueden provocar floración y hojas amargas o de sabor anómalo. Es comportamiento de especie/cultivo, no una afirmación de resistencia al espigado de un cultivar concreto."
+      },
+      "cultivation": {
+        "short": "Estación fresca, suelo fértil y drenado, humedad constante",
+        "guidance": "USU recomienda suelo fértil y bien drenado y riego regular; las fluctuaciones de humedad pueden endurecer las hojas, ralentizar su desarrollo y afectar el sabor. Las temperaturas y cantidades de agua de la fuente son guía exterior para Utah, no objetivos de luz interior ni nutrientes hidropónicos."
+      },
+      "care": {
+        "short": "Evita estrés por calor y falta de agua para proteger la calidad",
+        "guidance": "USU informa mejor crecimiento por debajo de aproximadamente 75°F y menor calidad, floración y sabores amargos/anómalos con el calor estival. Mantén humedad constante y controla malezas con cultivo superficial; son recomendaciones de huerto, no una receta climática para un sistema específico."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira las hojas viejas sin dañar el punto de crecimiento",
+        "guidance": "USU aconseja retirar primero las hojas viejas para que las jóvenes continúen creciendo; también permite cortar el follaje cerca del suelo si no se daña el punto de crecimiento. La fuente describe espinaca de campo, así que no se garantiza rebrote en todo recipiente o sistema."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas útiles antes de que aparezca el tallo floral",
+        "guidance": "USU indica que las hojas individuales pueden recogerse antes de que aparezca el tallo floral, comenzando por las hojas viejas. La etiqueta baby expresa la etapa de cosecha prevista; la fuente no fija un tamaño ni una fecha universal para todas las siembras baby."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Calor/días largos inducen espigado; pulgones, babosas y alticas dejan señales",
+        "guidance": "USU relaciona condiciones cálidas y días largos con floración y sabores anómalos. Describe pulgones blandos bajo las hojas con follaje arrugado o enrollado, babosas que mastican agujeros y alticas que dejan pequeños orificios en plántulas. Confirma el organismo y las recomendaciones locales antes de tratar."
+      },
+      "thinning": {
+        "short": "Aclara las hileras de campo por etapa; no reutilices las distancias como pods",
+        "guidance": "USU aconseja aclarar las plantas de espinaca exterior al tener 3–4 hojas verdaderas y publica distancias entre plantas/hileras de campo. No establecen el espaciamiento de espinaca baby en un aparato hidropónico o recipiente interior."
       },
       "hydroponics": {
-        "short": "Compatibilidad hidropónica pendiente",
-        "guidance": "La evidencia hidropónica específica para esta identidad sigue pendiente en Wave 1. No copies objetivos de otra especie o cultivar."
+        "short": "La espinaca baby está documentada en hidroponía, con advertencias de sistema y calor",
+        "guidance": "UGA Extension informa producción de espinaca en invernadero con cultivo de agua profunda y cultivares seleccionados, y recomienda elegir cultivar y sistema según el calor. UF/IFAS advierte que el calor de la solución y la presión de enfermedades pueden volver más problemáticos los sistemas DWC/raft que los sistemas verticales con sustrato en Florida. Son contextos regionales de producción, no garantía para cada selección baby-leaf o aparato doméstico; aquí no se transfiere receta nutritiva ni valor de EC."
       }
     }
   },
   "roma-tomato": {
-    "summary": "Identidad base de Wave 1 para Tomate Roma. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Roma designa una clase de tomate paste/plum, no un solo cultivar: Johnny's la describe como generalmente más carnosa y menos jugosa, útil para salsas y procesamiento, y ofrece variedades determinadas e indeterminadas. Esta ficha no asigna un hábito ni un resultado de procesamiento único a toda selección Roma.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Clase hortícola Roma/paste; no es un cultivar nombrado",
+        "guidance": "Johnny's agrupa Roma con tomates paste, plum, de procesamiento y salsa, y su catálogo incluye productos determinados e indeterminados. Por eso, la identidad Roma de Garden es de tipo: no implica cultivar, hábito, tamaño ni rendimiento específicos."
+      },
+      "growth": {
+        "short": "El fruto de tipo paste suele ser más carnoso y menos jugoso que otras clases",
+        "guidance": "Johnny's describe la clase paste/plum/Roma con frutos generalmente más carnosos y menos jugosos y usos de procesamiento. Es una descripción de tipo, no una medida ni un rasgo universal de toda variedad llamada Roma."
       },
       "cultivation": {
         "short": "Cultiva con calor y sol pleno después del riesgo de heladas",
@@ -128,29 +212,33 @@
         "guidance": "UMN Extension relaciona las fluctuaciones de humedad del suelo durante el crecimiento del tomate con la pudrición apical y aconseja regar el suelo en vez de mojar las hojas. Es orientación general de jardín, no un volumen específico para Roma ni una regla de depósito hidropónico."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Elegir el soporte según el hábito de la variedad concreta",
+        "guidance": "Johnny's ofrece variedades determinadas e indeterminadas dentro de la clase paste/Roma. Comprueba la variedad exacta antes de decidir si necesita soporte o cómo guiarla; esta ficha no prescribe poda ni soporte únicos para todas las Roma."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha frutos de tamaño y color utilizables; los maduros-verdes pueden madurar dentro",
+        "guidance": "UMN Extension recomienda cosechar los tomates cuando alcanzan tamaño y color utilizables; muchos se desprenden fácilmente al madurar o casi, mientras que algunos se cortan en racimos. Recoge los frutos restantes cuando amenace la helada. Los frutos maduros-verdes, ya desarrollados pero sin color, suelen madurar dentro a temperatura ambiente; los muy verdes quizá no alcancen buen sabor. Son señales generales de huerto en Minnesota, no una fecha fija ni una garantía de maduración para un cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Identifica trastornos del fruto y manchas foliares",
+        "guidance": "En tomates de jardín al aire libre, la pudrición apical forma una mancha aplanada o corchosa de color canela a negro en el extremo floral; las oscilaciones de humedad del suelo pueden contribuir, pero el síntoma por sí solo no demuestra falta de calcio en el suelo. Las grietas pueden irradiar desde el pedúnculo o rodear el fruto tras un crecimiento rápido con lluvias intensas o calor, o al volver el riego después de sequía. Mantén más uniforme la humedad con riego regular en la raíz y acolchado. Las manchas foliares marrones o negras suelen aparecer primero en hojas bajas; tizón temprano, Septoria y mancha bacteriana pueden parecerse al inicio. Mantén el follaje seco, mejora la circulación con soportes, retira pronto las hojas afectadas y confirma el diagnóstico antes de aplicar un tratamiento. UMN indica que los tipos slicer grandes suelen ser más propensos que los cherry a la pudrición apical; es una comparación entre tipos, no una predicción de susceptibilidad o resistencia de esta identidad. Guía para jardín exterior, no diagnóstico hidropónico."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor sostenido puede hacer caer las flores antes del cuajado",
+        "guidance": "UMN Extension informa que un calor sostenido superior a 85°F durante el día y 70°F por la noche puede estresar el tomate y dificultar la polinización durante su ventana floral de aproximadamente 50 horas; las flores afectadas pueden secarse, caer y no cuajar. Si caen flores antes de formarse frutos, compara las temperaturas recientes de día y noche. Es orientación general sobre respuesta al calor en tomate de exterior, no una calificación de tolerancia de un cultivar ni un diagnóstico. La fuente señala que noches más frescas pueden mejorar las condiciones para flores posteriores."
       }
     }
   },
   "beefsteak-tomato": {
-    "summary": "Identidad base de Wave 1 para Tomate beefsteak. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Beefsteak es una clase de tomate de fruto grande que suele usarse en rodajas, sándwiches y hamburguesas; no es un solo cultivar. UMN señala que los tipos slicer grandes presentan más pudrición apical que los cherry, pero aquí no se establece susceptibilidad, hábito ni tamaño maduro de una variedad Beefsteak concreta.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Clase de fruto grande para rebanar; no un único cultivar Beefsteak",
+        "guidance": "Johnny's describe beefsteak como una clase de tomates grandes, carnosos y jugosos, usados comúnmente en rodajas para sándwiches y hamburguesas, con selecciones de polinización abierta, heirloom e híbridas. Es una identidad de tipo; no asigna hábito de enredadera ni tamaño exacto universal."
+      },
+      "growth": {
+        "short": "Frutos grandes y carnosos que suelen consumirse en rodajas",
+        "guidance": "La clase beefsteak incluye tipos de fruto grande, pero el tamaño y la forma varían entre cultivares distintos. No conviertas la descripción de clase en un peso o fecha de madurez garantizados para una selección sin especificar."
       },
       "cultivation": {
         "short": "Elige un sitio cálido y soleado para cultivar al aire libre",
@@ -165,25 +253,29 @@
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha frutos de tamaño y color utilizables; los maduros-verdes pueden madurar dentro",
+        "guidance": "UMN Extension recomienda cosechar los tomates cuando alcanzan tamaño y color utilizables; muchos se desprenden fácilmente al madurar o casi, mientras que algunos se cortan en racimos. Recoge los frutos restantes cuando amenace la helada. Los frutos maduros-verdes, ya desarrollados pero sin color, suelen madurar dentro a temperatura ambiente; los muy verdes quizá no alcancen buen sabor. Son señales generales de huerto en Minnesota, no una fecha fija ni una garantía de maduración para un cultivar."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Identifica trastornos del fruto y manchas foliares",
+        "guidance": "En tomates de jardín al aire libre, la pudrición apical forma una mancha aplanada o corchosa de color canela a negro en el extremo floral; las oscilaciones de humedad del suelo pueden contribuir, pero el síntoma por sí solo no demuestra falta de calcio en el suelo. Las grietas pueden irradiar desde el pedúnculo o rodear el fruto tras un crecimiento rápido con lluvias intensas o calor, o al volver el riego después de sequía. Mantén más uniforme la humedad con riego regular en la raíz y acolchado. Las manchas foliares marrones o negras suelen aparecer primero en hojas bajas; tizón temprano, Septoria y mancha bacteriana pueden parecerse al inicio. Mantén el follaje seco, mejora la circulación con soportes, retira pronto las hojas afectadas y confirma el diagnóstico antes de aplicar un tratamiento. UMN indica que los tipos slicer grandes suelen ser más propensos que los cherry a la pudrición apical; es una comparación entre tipos, no una predicción de susceptibilidad o resistencia de esta identidad. Guía para jardín exterior, no diagnóstico hidropónico."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor sostenido puede hacer caer las flores antes del cuajado",
+        "guidance": "UMN Extension informa que un calor sostenido superior a 85°F durante el día y 70°F por la noche puede estresar el tomate y dificultar la polinización durante su ventana floral de aproximadamente 50 horas; las flores afectadas pueden secarse, caer y no cuajar. Si caen flores antes de formarse frutos, compara las temperaturas recientes de día y noche. Es orientación general sobre respuesta al calor en tomate de exterior, no una calificación de tolerancia de un cultivar ni un diagnóstico. La fuente señala que noches más frescas pueden mejorar las condiciones para flores posteriores."
       }
     }
   },
   "yellow-pear-tomato": {
-    "summary": "Identidad base de Wave 1 para Tomate pera amarilla. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Yellow Pear es un heirloom de frutos pequeños, dorados y con forma de pera; UF/IFAS los describe de unos 1–2 pulgadas. Sus enredaderas vigorosas pueden superar 8 pies y necesitan soporte; mantén estable la humedad del suelo para reducir grietas. Son rasgos de jardín descritos por la fuente, no dimensiones interiores ni recomendación hidropónica.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Heirloom nombrado Yellow Pear, de fruto dorado y claramente piriforme",
+        "guidance": "UF/IFAS describe Yellow Pear como variedad heirloom de frutos dorados, de aproximadamente 1–2 pulgadas y forma de pera marcada, con sabor suave. La fuente se refiere a la variedad nombrada; el contexto de Florida no es garantía universal de desempeño."
+      },
+      "growth": {
+        "short": "Frutos dorados pequeños; las enredaderas vigorosas pueden superar 8 pies",
+        "guidance": "UF/IFAS informa frutos dorados piriformes de 1–2 pulgadas y enredaderas vigorosas que pueden superar 8 pies, para las que recomienda soporte. Esa longitud no es una altura o extensión interior estable; no implica aptitud hidropónica."
       },
       "cultivation": {
         "short": "Los tomates necesitan calor, sol pleno y una temporada sin heladas",
@@ -191,89 +283,88 @@
       },
       "care": {
         "short": "Riega las raíces con regularidad y mantén secas las hojas",
-        "guidance": "UMN Extension recomienda humedad constante para la calidad del fruto y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. Es guía general de suelo exterior; no establece una cantidad para Yellow Pear ni una regla hidropónica."
+        "guidance": "UMN Extension recomienda humedad constante para la calidad del tomate y desaconseja el riego por aspersión porque las hojas mojadas son más propensas a enfermedades. UF/IFAS también aconseja mantener húmedo el suelo para reducir grietas en Yellow Pear. Son prácticas de suelo exterior, no una cantidad interior medida ni una regla de depósito hidropónico."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Apoyar las enredaderas vigorosas; no hay pauta de poda establecida",
+        "guidance": "UF/IFAS describe enredaderas vigorosas de más de 8 pies y recomienda soporte. No ofrece un calendario de poda para Yellow Pear; no se infiere que haya que quitar chupones o follaje."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosechar el fruto dorado y piriforme al alcanzar tamaño útil",
+        "guidance": "UF/IFAS describe frutos Yellow Pear dorados, piriformes, de unos 1–2 pulgadas y listos para ensaladas durante el verano. UMN recomienda cosechar tomates al alcanzar color y tamaño útiles; ninguna fuente fija un calendario Yellow Pear para todas las regiones o sistemas."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Identifica trastornos del fruto y manchas foliares",
+        "guidance": "En tomates de jardín al aire libre, la pudrición apical forma una mancha aplanada o corchosa de color canela a negro en el extremo floral; las oscilaciones de humedad pueden contribuir, pero el síntoma no demuestra por sí solo falta de calcio en el suelo. UF/IFAS advierte específicamente que el fruto de Yellow Pear puede agrietarse si el suelo no se mantiene húmedo; es una observación de manejo para esta variedad, no un diagnóstico ni una garantía de prevención. Las manchas foliares marrones o negras pueden tener causas distintas; confirma el problema antes de tratar. Guía para jardín exterior, no diagnóstico hidropónico."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor sostenido puede hacer caer las flores antes del cuajado",
+        "guidance": "UMN Extension informa que un calor sostenido superior a 85°F durante el día y 70°F por la noche puede estresar el tomate y dificultar la polinización durante su ventana floral de aproximadamente 50 horas; las flores afectadas pueden secarse, caer y no cuajar. Si caen flores antes de formarse frutos, compara las temperaturas recientes de día y noche. Es orientación general sobre respuesta al calor en tomate de exterior, no una calificación de tolerancia de un cultivar ni un diagnóstico. La fuente señala que noches más frescas pueden mejorar las condiciones para flores posteriores."
       }
     }
   },
   "jalapeno-pepper": {
-    "summary": "Identidad base de Wave 1 para Pimiento jalapeño. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El jalapeño es un tipo de fruto compacto y pared gruesa de Capsicum annuum, usado fresco o procesado. Puede cosecharse verde al tamaño maduro o dejarse cambiar de color; esta identidad de tipo no fija un cultivar, tamaño, fecha ni pungencia únicos.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo jalapeño dentro de Capsicum annuum",
+        "guidance": "Este registro representa el tipo jalapeño de Capsicum annuum, no un cultivar comercial específico. Iowa State lo describe como pequeño, oblongo-rombo, de pared gruesa y picante, con usos frescos y procesados. UMN Extension confirma específicamente que puede cosecharse y consumirse verde; estas referencias no fijan tamaño, pungencia ni fecha para un cultivar particular."
       },
       "cultivation": {
-        "short": "Mantén uniforme la humedad de las raíces y evita mojar el follaje",
-        "guidance": "UMN Extension recomienda humedad constante del suelo para obtener frutos de calidad y desaconseja el riego por aspersión sobre la planta porque el follaje mojado es más propenso a enfermedades. Es una guía de Capsicum en exterior; las temperaturas y condiciones de campo de Minnesota no definen un ajuste interior o hidropónico para el jalapeño."
+        "short": "El calor y la humedad radicular estable favorecen floración y cuajado",
+        "guidance": "UMN Extension informa que el suelo seco, los días por encima de 90°F y las noches por debajo de 60°F o por encima de 70°F pueden debilitar el crecimiento del pimiento en el contexto de huertos de Minnesota. Mantén humedad uniforme en las raíces y evita el riego por aspersión. Son observaciones regionales de exterior, no umbrales específicos del jalapeño ni ajustes para interior o hidroponía."
       },
       "care": {
-        "short": "Evita la sequía y el riego superficial",
-        "guidance": "UMN Extension señala que el suelo seco puede debilitar el crecimiento del pimiento y que un riego ligero solo superficial puede favorecer raíces poco profundas. Comprueba la humedad en la zona radicular; no conviertas el calendario de jardín en un volumen universal para recipientes o sistemas."
-      },
-      "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
-      },
-      "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Evita el exceso de nitrógeno y conserva follaje sano sobre los frutos",
+        "guidance": "UMN Extension advierte que demasiado nitrógeno produce plantas frondosas y retraso en la fructificación. También describe la quemadura de sol como daño pálido en frutos poco cubiertos por hojas durante tiempo caluroso y seco. Adaptación Garden: no retires hojas sanas por estética y revisa nutrición y exposición antes de atribuir la fructificación lenta a un defecto del jalapeño. La fuente no establece una dosis para macetas o hidroponía."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Poda selectiva para conservar sombra sobre los frutos",
+        "guidance": "UMN Extension relaciona la falta de cobertura foliar con quemadura de sol en frutos expuestos durante tiempo caluroso y seco. Conserva el follaje sano al dar forma; retira tejido dañado de manera selectiva y coloca soporte solo si la planta observada lo necesita. Es una adaptación de la guía de huerto, no un calendario de poda del cultivar."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "El jalapeño puede cosecharse verde al alcanzar tamaño maduro",
+        "guidance": "UMN Extension indica que los pimientos pueden cosecharse al alcanzar su tamaño maduro sin esperar a que se pongan rojos, y cita específicamente el jalapeño como apto para uso verde. Corta el tallo con tijeras limpias si no se desprende con facilidad; seguir cosechando permite que la planta continúe floreciendo y cuajando. El tamaño y el momento dependen del tipo real y las condiciones; no se promete un número fijo de días."
+      },
+      "uses": {
+        "short": "Se usa fresco verde o maduro, y también procesado",
+        "guidance": "Iowa State incluye usos frescos y procesados; UMN Extension cita el jalapeño como apto para consumirse verde. Oregon State documenta maduración de verde a rojo en cultivares de referencia. Ese cambio de color no establece un tamaño ni plazo únicos para todas las plantas del catálogo."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa extremos del fruto, hojas, tallos y flores antes de diagnosticar",
+        "guidance": "UMN Extension describe la pudrición apical como una lesión hundida, de color canela a oscuro, en el extremo del fruto, a menudo asociada con humedad irregular; la quemadura de sol como manchas pálidas en frutos expuestos; y los pulgones como colonias con hojas rizadas o pegajosas. El calor diurno y nocturno también puede coincidir con caída de flores. Son señales de alerta del cultivo, no prueba de una causa concreta: registra síntomas y condiciones antes de intervenir."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor puede coincidir con caída de flores",
+        "guidance": "UMN Extension señala que los días calurosos junto con noches calurosas pueden provocar caída de flores y reducir la producción de pimientos en Minnesota. Registra por separado la caída floral y el cuajado, junto con la temperatura reciente; no diagnostiques una enfermedad por una caída aislada ni retires flores productivas como si fuera una hierba de hoja."
       }
     }
   },
   "cayenne-pepper": {
-    "summary": "Identidad base de Wave 1 para Pimiento cayena. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La cayena es un tipo de Capsicum annuum alargado, estrecho y arrugado, usado fresco o seco y molido. Su picor intenso y sus usos la distinguen de los pimientos dulces, pero la forma, el tamaño y el picor exactos varían.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Tipo cayena: Capsicum annuum, sin cultivar especificado",
+        "guidance": "Iowa State describe la cayena como mediana, muy estrecha, puntiaguda y muy picante; Oregon State también la describe alargada y arrugada. Son referencias del tipo, no medidas ni valor Scoville de un cultivar concreto."
       },
+      "cultivation": {"short":"Pimiento de estación cálida; mantén humedad uniforme en la zona radicular","guidance":"UMN Extension señala que el suelo seco y los extremos de temperatura debilitan el crecimiento, y que la humedad constante favorece la calidad del fruto. Riega el suelo, no el follaje. Su guía de exterior en Minnesota no establece valores para Cayena en interior o hidroponía."},
+      "care": {"short":"Evita exceso de nitrógeno y conserva follaje protector","guidance":"UMN advierte que el exceso de nitrógeno puede retrasar la fructificación y describe quemadura solar en frutos expuestos por falta de hojas. Adaptación Garden: revisa nutrición y exposición antes de intervenir; no se documenta una dosis específica para Cayena."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Poda selectiva; conserva hojas alrededor de los frutos",
+        "guidance": "La escasez de follaje puede exponer los frutos a quemadura solar en condiciones cálidas y secas. Conserva el follaje sano, retira tejido dañado de forma selectiva y tutoriza solo si la planta observada lo necesita; no hay un calendario de poda específico para Cayena."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha el fruto desarrollado; el rojo puede secarse o molerse",
+        "guidance": "Oregon State describe frutos que pasan de verde a rojo brillante y se usan frescos, secos o molidos. Es una referencia del tipo, no una fecha fija. UMN recomienda cortar con tijeras si el fruto no se desprende fácilmente; la recolección repetida permite que continúe la floración y fructificación."
       },
+      "uses": {"short":"Uso fresco, seco, molido o en salsas picantes","guidance":"Iowa State incluye la cayena entre los pimientos para uso fresco o procesado; Oregon State documenta el secado, molido y uso en salsas picantes. Son usos del tipo. Manipula los frutos picantes con cuidado y evita tocarte los ojos."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Revisa extremos del fruto, zonas expuestas y hojas pegajosas o rizadas",
+        "guidance": "UMN describe podredumbre apical como lesión hundida en el extremo del fruto, quemadura solar como daño pálido en superficies expuestas y pulgones como colonias asociadas con hojas rizadas o pegajosas. Son señales generales de pimiento, no diagnóstico de Cayena."
       },
       "flowering": {
-        "short": "Registra floración y cuajado",
-        "guidance": "Anota botones, primeras flores, cuajado o caída floral como eventos separados. No suprimas una etapa productiva sin evidencia específica."
+        "short": "El calor puede coincidir con caída de flores y menor cuajado",
+        "guidance": "UMN informa que días y noches muy cálidos pueden causar caída floral en pimientos cultivados en Minnesota. Registra la caída por separado del cuajado y anota el clima reciente; no es una predicción específica para Cayena."
       }
     }
   },
@@ -373,382 +464,489 @@
     }
   },
   "cauliflower-snowball": {
-    "summary": "Identidad base de Wave 1 para Coliflor Snowball. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La coliflor Snowball se cosecha por su pella compacta antes de que se abran las flores. El nombre no identifica aquí un cultivar específico; calor y falta de agua pueden perjudicar la calidad.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Snowball se representa como tipo de coliflor, no como cultivar resuelto",
+        "guidance": "La identidad del catálogo es Brassica oleracea, tipo Snowball. Las fuentes seleccionadas no determinan qué selección Snowball ni qué paquete representa el nombre; por eso no se atribuyen tamaño, madurez ni tolerancia al calor a un cultivar concreto."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+      "growth": {
+        "short": "La parte comestible es una pella floral densa y compacta",
+        "guidance": "La coliflor forma una pella densa y redondeada a partir del tallo floral en desarrollo. Es información del cultivo de coliflor, no establece un diámetro ni días a cosecha específicos para Snowball."
+      },
+      "cultivation": {
+        "short": "Favorece condiciones frescas y crecimiento constante durante la formación de la pella",
+        "guidance": "UMN Extension describe que la pella se desarrolla mejor en condiciones frescas y recomienda mantener el aporte de agua y nutrientes sin interrupciones. Su orientación de suelo y calendario es regional y exterior; no es una receta hidropónica ni un umbral térmico específico de Snowball."
+      },
+      "care": {
+        "short": "Cubre una pella blanca en formación; no blanquees tipos de color",
+        "guidance": "En la coliflor blanca, junta las hojas externas sobre la pella visible para reducir el sol directo y la decoloración. UMN indica que los tipos de color y Romanesco necesitan luz para desarrollar su color; aplica esta práctica solo si la planta forma una pella blanca."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta la pella compacta antes de que se abran las flores o se afloje",
+        "guidance": "Cosecha cuando la cabeza tenga tamaño utilizable y siga compacta, antes de que se abran los botones o la superficie se vuelva suelta o granulosa. Corta el tallo principal bajo la pella; a diferencia del brócoli, la coliflor se cosecha como una cabeza central, no por brotes laterales sucesivos."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El calor, la sequía o una interrupción del crecimiento pueden dañar la pella",
+        "guidance": "Las temperaturas altas y el estrés hídrico pueden producir cabezas abiertas, descoloridas o de baja calidad; el estrés temprano también puede causar pellas pequeñas prematuras (buttoning). Son riesgos del cultivo, no afirmaciones de resistencia o susceptibilidad especial de Snowball."
+      },
+      "uses": {
+        "short": "La pella sin abrir es la cosecha comestible",
+        "guidance": "La pella se consume cruda o cocida y también puede encurtirse o congelarse. La etapa de cosecha importa: la calidad disminuye cuando se abren las flores o se afloja la pella."
       }
     }
   },
   "carrot-nantes": {
-    "summary": "Identidad base de Wave 1 para Zanahoria Nantes. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Nantes es un tipo de zanahoria descrito como cilíndrico y de longitud media, no un cultivar único. Esta ficha usa orientación general de cultivo y cosecha de zanahoria; no atribuye sabor, tamaño exacto ni desempeño en sistemas interiores específicos de Nantes.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "guidance": "Nantes es un tipo hortícola de zanahoria, no un cultivar único. Johnny's describe raíces Nantes de longitud media y forma cilíndrica; esa descripción del tipo no establece las dimensiones ni el desempeño de toda selección vendida con ese nombre."
       },
+      "growth": {"short":"El tipo Nantes forma raíces cilíndricas de longitud media","guidance":"Johnny's describe el tipo Nantes con raíces cilíndricas de longitud media. Es una característica del tipo, no una medida exacta aplicable a cada cultivar con nombre Nantes."},
+      "cultivation": {"short":"Un suelo suelto y profundo favorece raíces rectas","guidance":"University of Minnesota Extension recomienda suelo suelto y trabajable para las zanahorias; los suelos pesados, compactados u obstruidos pueden producir raíces deformes. Es guía de cultivo exterior: no demuestra aptitud hidropónica ni una configuración de pods de Garden."},
+      "care": {"short":"Mantén humedad uniforme mientras se desarrollan las raíces","guidance":"UMN Extension relaciona la humedad insuficiente o irregular con una menor calidad de la raíz. Mantén humedad razonablemente uniforme en el medio de cultivo; la fuente no prescribe un calendario de riego interior."},
       "pruning": {
         "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "guidance": "La zanahoria se maneja por su raíz en desarrollo, no mediante poda rutinaria de tallos. Aclara para reducir el amontonamiento y retira follaje dañado solo cuando haga falta; no conviertas las distancias de campo en un conteo fijo de pods."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha las raíces cuando alcancen un tamaño útil",
+        "guidance": "UMN Extension recomienda cosechar las zanahorias cuando la raíz alcance un tamaño útil; el momento varía según variedad y condiciones. Riega el día anterior o cosecha después de la lluvia, afloja el suelo junto a la raíz con una horquilla y levántala con cuidado para reducir roturas. Retira las hojas y limpia las raíces antes de guardarlas. La forma Nantes no establece una fecha universal, así que observa la raíz en vez de prometer un calendario fijo."
       },
       "problems": {
         "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Nantes; revisa el medio y el historial de cultivo antes de asignar otra causa."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Aclara las plantas amontonadas; no es una medida de pods",
+        "guidance": "UMN Extension recomienda aclarar las zanahorias para dejar espacio al desarrollo de la raíz. Esta recomendación corresponde a hileras exteriores y no define el espaciamiento de un sistema Garden."
       }
     }
   },
   "beet-detroit-dark-red": {
-    "summary": "Identidad base de Wave 1 para Remolacha Detroit Dark Red. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Detroit Dark Red es una remolacha de mesa clásica, redonda, lisa y uniforme, de color rojo oscuro, con raíces y hojas jóvenes comestibles. Mississippi State Extension respalda esos rasgos de la variedad; el manejo y la cosecha general siguen en el ámbito del cultivo, no son una receta hidropónica.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "guidance": "Detroit Dark Red se trata aquí como un tipo de remolacha dentro de Beta vulgaris. Utah State Extension lo incluye entre las variedades de remolacha de mesa; la guía de cultivo de esta ficha no es una prescripción de desempeño específica del cultivar."
       },
+      "growth": {"short":"Corona foliar sobre una raíz globular, lisa y roja oscura","guidance":"Mississippi State Extension describe la raíz de Detroit Dark Red como globular, lisa, uniforme y rojo oscuro. Utah State Extension documenta la cosecha de hojas jóvenes y raíces en desarrollo. La forma de la raíz no establece altura de follaje ni extensión total de la planta."},
+      "cultivation": {"short":"Remolacha de estación fresca para un bancal soleado, profundo y bien drenado","guidance":"Utah State Extension recomienda un sitio soleado y suelo profundo, fértil y bien drenado para la remolacha de mesa; su guía exterior también advierte que el calor sostenido puede perjudicar la calidad de la raíz. Son condiciones del cultivo, no un umbral térmico específico de Detroit Dark Red, un nivel de luz interior ni una receta hidropónica."},
+      "care": {"short":"La humedad más uniforme ayuda a proteger las raíces en desarrollo","guidance":"Utah State Extension informa que las fluctuaciones de humedad pueden agrietar las raíces y estresar el crecimiento. Mantén la humedad del suelo razonablemente uniforme; esto no es un calendario cuantificado de riego interior."},
       "pruning": {
         "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "guidance": "La remolacha se maneja con cosecha selectiva de hojas o raíces y aclareo, no con poda rutinaria de tallos. Retira hojas dañadas cuando sea necesario; la separación exterior no es un conteo fijo de pods interiores."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha hojas jóvenes o levanta raíces mientras engrosan",
+        "guidance": "Utah State Extension indica que las hojas jóvenes pueden cosecharse alrededor de 10–15 cm y que las raíces se pueden usar cuando comienzan a engrosar. Afloja el suelo con una horquilla antes de levantar la raíz para evitar tirar contra suelo compacto. Son señales y técnicas generales, no un calendario ni tamaño exacto de Detroit Dark Red."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Reconoce el estrés y las señales de trastornos de la raíz",
+        "guidance": "Utah State Extension identifica el calor y el estrés hídrico como riesgos para la calidad de la raíz y advierte que el enfriamiento temprano puede inducir floración antes de que esta se desarrolle bien. Las manchas negras hundidas pueden indicar deficiencia de boro, pero su aspecto no basta para diagnosticarla; confirma con análisis de suelo o Extension local antes de tratar, porque el exceso de boro puede dañar la planta. Son riesgos del cultivo, no afirmaciones de resistencia de Detroit Dark Red."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Aclara las plantas amontonadas para permitir el desarrollo de la raíz",
+        "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de la raíz de remolacha. Aclara según la guía exterior y la cosecha prevista; no conviertas las distancias de hilera en espaciamiento de pods."
       }
     }
   },
   "turnip-purple-top-white-globe": {
-    "summary": "Identidad base de Wave 1 para Nabo Purple Top White Globe. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Nabo de doble uso, cultivado por su raíz redondeada y sus hojas comestibles. Johnny's documenta la variedad Purple Top White Globe; el manejo general del cultivo se mantiene separado de las dimensiones indicadas por el proveedor.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Variedad nombrada Purple Top White Globe de Brassica rapa",
+        "guidance": "Johnny's comercializa Purple Top White Globe como variedad de nabo y especifica Brassica rapa. La fuente respalda rasgos visibles de la raíz y las hojas, pero no demuestra respuesta en sistemas Garden."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+      "growth": {
+        "short": "Cultivo fresco de raíz redondeada y hojas lobuladas",
+        "guidance": "El proveedor describe raíces lisas y redondas, blancas bajo el suelo y moradas por encima, con hojas grandes y lobuladas. UMN Extension advierte que el calor y el exceso de tamaño pueden reducir la calidad; las dimensiones dependen del cultivo."
+      },
+      "cultivation": {
+        "short": "Favorece condiciones frescas y suelo fértil con buen drenaje",
+        "guidance": "Johnny's indica tolerancia a heladas moderadas y recomienda suelo fértil y bien drenado. La ventana de primavera/otoño de UMN corresponde a Minnesota. Ninguna fuente establece idoneidad hidropónica ni separación para pods interiores."
+      },
+      "maintenance": {
+        "short": "Mantén estable la humedad del suelo durante el desarrollo de la raíz",
+        "guidance": "UMN Extension recomienda alrededor de 1 pulgada de agua por semana para el nabo en jardines exteriores y advierte que la sequía puede volver las raíces amargas o leñosas. Ajusta según la lluvia y el suelo local; esta referencia regional para suelo no es un programa de riego interior o hidropónico."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Usa el tamaño de la raíz y el estado de las hojas, no una fecha fija",
+        "guidance": "UMN recomienda cosechar la raíz cuando mide aproximadamente 2–3 pulgadas; las raíces mayores pueden volverse más fuertes, leñosas o fibrosas. Johnny's describe 3–4 pulgadas para Purple Top White Globe: es una característica comercial, no una razón para retrasar la cosecha. Las hojas también son comestibles."
+      },
+      "uses": {
+        "short": "Se aprovechan tanto la raíz como las hojas",
+        "guidance": "Johnny's indica que las hojas grandes y lobuladas son aptas para cocinar. UMN también recomienda cocinar las hojas y separarlas de la raíz al cosechar para guardarlas por separado. No es una afirmación medicinal."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
-      },
-      "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Calor, sequía y dos insectos pueden afectar el cultivo",
+        "guidance": "UMN relaciona calor y sequía con raíces amargas o leñosas. Johnny's incluye alticas y gusanos de la raíz entre las plagas del cultivo. Las fuentes no establecen resistencia de esta variedad."
       }
     }
   },
   "yellow-onion": {
-    "summary": "Identidad base de Wave 1 para Cebolla amarilla. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La cebolla amarilla es una clase de color de Allium cepa, no un cultivar identificado. El color del bulbo es independiente de la respuesta a días cortos, intermedios o largos; verifica la variedad nombrada con la guía local en vez de inferir su clase por el color amarillo. Las cebollas establecidas tienen raíces superficiales, requieren humedad constante y se cosechan cuando los tallos maduran y caen de forma natural. La aptitud hidropónica y las dimensiones de un cultivar concreto siguen sin establecerse.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Clase de color dentro de Allium cepa; cultivar sin especificar",
+        "guidance": "Illinois Extension señala que algunos bulbos se venden por color sin nombre varietal y que las variedades difieren en el fotoperiodo que necesitan para formar bulbo. Esta ficha representa solo la clase amarilla: no identifica cultivar, clase de fotoperiodo, sabor ni capacidad de almacenamiento."
+      },
+      "growth": {
+        "short": "La formación del bulbo depende del fotoperiodo, no solo del color",
+        "guidance": "USU Extension explica que el color del bulbo (rojo, amarillo o blanco) es un eje de selección distinto de la respuesta a días cortos, intermedios o largos. UMN e Illinois Extension muestran que la clase adecuada depende de la región; el ejemplo de UMN de 14 horas o más corresponde a cebollas de almacenamiento en Minnesota, no a todas las localidades. Para esta identidad genérica amarilla, revisa la clase de fotoperiodo de la variedad nombrada y compárala con la guía local de Extensión, en vez de inferirla por el color. El lote de semilla concreto sigue sin especificarse."
+      },
+      "cultivation": {
+        "short": "Sol pleno, suelo drenado y humedad constante en cultivo de campo",
+        "guidance": "UMN recomienda sol pleno y suelo bien drenado, y describe raíces superficiales que requieren humedad constante. Sus dosis de fertilizante y distancias entre hileras son recomendaciones regionales para suelo, no instrucciones para macetas, hidroponía ni posiciones de Garden."
+      },
+      "care": {
+        "short": "Mantén la humedad y evita dañar raíces y bulbos superficiales",
+        "guidance": "UMN aconseja mantener humedad durante el crecimiento del bulbo y dejar de regar cuando alcance su tamaño y los tallos empiecen a caer. El deshierbe debe ser superficial: las heridas en los bulbos aumentan el riesgo de enfermedad. Sus volúmenes de riego y dosis de nitrógeno no se trasladan a hidroponía."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "No quiebres los tallos para adelantar la maduración",
+        "guidance": "Illinois Extension recomienda dejar que los tallos maduren y caigan naturalmente. Quebrarlos antes interrumpe el crecimiento y puede producir bulbos más pequeños y con peor conservación. Es manejo de cosecha de cebolla de bulbo, no una poda rutinaria."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Levanta los bulbos cuando los tallos caigan; cura antes de almacenarlos",
+        "guidance": "UMN recomienda cosechar cuando aproximadamente la mitad de los tallos se hayan caído y secado. Para almacenarlos, cúralos en un lugar cálido, seco y ventilado hasta que el cuello quede firme y las escamas exteriores secas. Las fechas y duración dependen de las condiciones regionales, no son una promesa del tipo amarillo."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Amarilleo y marchitez pueden indicar daño de mosca de la cebolla",
+        "guidance": "UMN describe que las larvas de mosca de la cebolla perforan los tallos y pueden causar amarilleo y marchitez. También enumera pudrición basal por Fusarium, pudrición del cuello por Botrytis y pudrición blanda bacteriana. Son pistas para diagnosticar, no evidencia de mayor susceptibilidad de cebolla amarilla."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "Aclara las plántulas de campo; no conviertas esa distancia en separación de pods",
+        "guidance": "UMN indica aclarar las plántulas de campo a 3–4 pulgadas para cultivar bulbos. Es una distancia de suelo y no una regla universal de maceta o hidroponía; el número de posiciones en Garden no está establecido."
       }
     }
   },
   "leek-american-flag": {
-    "summary": "Identidad base de Wave 1 para Puerro American Flag. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "American Flag es una variedad de puerro nombrada en la guía de UW–Madison Extension, con tallos blanqueados descritos de 7–9 pulgadas y sabor suave y dulce. Como puerro, desarrolla un tallo largo y hojas planas, no un bulbo de cebolla. Para blanquear la parte inferior se aporca tierra o se rellena gradualmente una zanja; la aptitud hidropónica y el espaciamiento para Garden no están establecidos.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Variedad de puerro ‘American Flag’; nombre aceptado reconciliado como Allium porrum",
+        "guidance": "Kew POWO acepta Allium porrum y lista Allium ampeloprasum var. porrum como sinónimo. USDA GRIN registra ese sinónimo y señala el tratamiento hortícola alternativo Leek/Porrum Group. Gardenpedia usa el nombre aceptado por POWO y conserva ese contexto nomenclatural; UW–Madison incluye ‘American Flag’ (también Broad American Flag, Broad London o Large London) como variedad nombrada. Los rasgos varietales se limitan a la entrada de UW–Madison."
+      },
+      "growth": {
+        "short": "Forma un tallo blanco blanqueado y hojas verde azuladas",
+        "guidance": "Para American Flag, UW–Madison informa tallos blanqueados de 7–9 pulgadas y hojas azul verdosas, y lo caracteriza con sabor suave y dulce, parecido a la cebolla. Son rasgos atribuidos a esta variedad por esa fuente, no dimensiones garantizadas en un sistema Garden."
+      },
+      "cultivation": {
+        "short": "Cultivo de estación fresca; aporca para blanquear el tallo",
+        "guidance": "La guía de Wisconsin recomienda sol pleno y suelo bien drenado en su contexto regional. Describe aporcar gradualmente la tierra o rellenar una zanja mientras crece el puerro para blanquear la parte inferior. Son técnicas de cultivo en suelo, no una posición de pod ni un método hidropónico. La página lista 130 días para American Flag; es una referencia de madurez de esa fuente, no una fecha universal de cosecha."
+      },
+      "care": {
+        "short": "Aumenta gradualmente la cobertura del tallo inferior",
+        "guidance": "UW–Madison describe el aporcado o el relleno gradual de la zanja para obtener un tallo blanco; recomienda no rellenar directamente con tierra el hoyo inicial del trasplante. La práctica regional de cortar hojas a mitad de temporada no se presenta como poda obligatoria para toda línea de semillas American Flag."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Se describe un corte foliar opcional a mitad de temporada para el cultivo",
+        "guidance": "UW–Madison indica que cortar la mitad superior de las hojas del puerro a mitad del verano puede favorecer el crecimiento del tallo. Es una práctica opcional a nivel del cultivo, no evidencia de una respuesta específica de American Flag ni una pauta repetida; no se establece una poda rutinaria."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cava cuando el tallo alcance aproximadamente 1 pulgada de diámetro",
+        "guidance": "UW–Madison ofrece alrededor de 1 pulgada de diámetro como referencia de cosecha para el puerro en general y señala que puede permanecer en tierra hasta que se necesite si no se congela el suelo. No es una fecha ni una dimensión garantizada para American Flag."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Punteado plateado puede indicar trips; marchitez, daño de larvas",
+        "guidance": "UW–Madison informa que los trips de la cebolla pueden causar pequeñas manchas blancas plateadas, sobre todo con calor y sequedad; las larvas de mosca de la cebolla pueden causar marchitez y crecimiento reducido. Son pistas de diagnóstico, no afirmaciones de resistencia varietal."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
-        "guidance": "Reduce la competencia cuando el amontonamiento visible perjudique el desarrollo. La separación exterior no se convierte automáticamente en número de posiciones de Garden."
+        "short": "La distancia de campo no determina posiciones de Garden",
+        "guidance": "UW–Madison documenta distancias en hileras para aporcar y blanquear puerros en suelo. No se convierten en número de pods ni en recomendación universal para cultivo interior; el espaciamiento en Garden sigue desconocido."
       }
     }
   },
   "bush-bean-blue-lake": {
-    "summary": "Identidad base de Wave 1 para Frijol de mata Blue Lake. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
+    "summary": "Frijol de mata Blue Lake representa el tipo de mata Blue Lake, no una selección verificada concreta como Blue Lake 274. Las plantas de mata crecen erguidas, normalmente sin espaldera, y suelen florecer y formar vainas durante un periodo más concentrado que las de enrame; la cosecha regular puede prolongar la producción. No se establece aptitud hidropónica ni una dimensión de cultivar.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "guidance": "Garden representa esta ficha al nivel del tipo hortícola, no como una línea nombrada verificada. Blue Lake 274 de Burpee es una selección de mata identificada por separado; esta ficha no afirma que todo paquete Blue Lake de mata sea esa selección."
       },
       "harvest": {
-        "short": "Cosecha las vainas tiernas antes de que abulten las semillas",
-        "guidance": "Para ejotes, UMN Extension recomienda cosechar mientras las vainas siguen jugosas y antes de que las semillas individuales se hinchen visiblemente. La cosecha frecuente puede prolongar la producción, especialmente en tipos de enrame; no es una fecha específica del cultivar."
+        "short": "Cosecha las vainas jugosas; la ventana de mata suele ser más concentrada",
+        "guidance": "UMN Extension recomienda cosechar los ejotes antes de que las semillas interiores formen bultos visibles, mientras las vainas siguen jugosas y tiernas. Los frijoles de mata suelen formar buena parte de la cosecha en un periodo más corto que los de enrame; recoger regularmente puede prolongar la producción, pero no garantiza una cosecha continua ni es una fecha de cultivar."
       },
       "problems": {
         "short": "El calor durante la floración puede interrumpir el cuajado",
         "guidance": "UMN Extension señala que el calor intenso durante la floración puede reducir el cuajado. Considera la falta de vainas como una posible respuesta al clima, no como diagnóstico de enfermedad ni como afirmación sobre la tolerancia al calor de esta variedad."
       },
       "cultivation": {
-        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
-        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+        "short": "Mantén humedad suficiente en el suelo mientras se desarrollan flores y vainas",
+        "guidance": "UMN Extension señala que los suelos que retienen humedad quizá solo necesiten riego durante periodos secos, mientras que los arenosos requieren riego más frecuente; una pulgada de lluvia semanal es una referencia para jardines de Minnesota. Comprueba la humedad de la zona radicular en vez de aplicar esa cantidad de campo a macetas, cultivo interior o un depósito."
       },
       "care": {
         "short": "Adapta el soporte al hábito documentado",
         "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
       },
       "growth": {
-        "short": "El hábito de mata es erguido y normalmente no necesita espaldera",
-        "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies, con floración y cuajado más concentrados que los tipos de enrame. Es contexto del tipo de cultivo, no una medida específica del cultivar."
-      },
-      "pruning": {
-        "short": "No se establece una guía de poda",
-        "guidance": "La guía citada para frijoles explica el hábito, el soporte y la cosecha, pero no prescribe poda para este tipo. No infieras un calendario de cortes a partir del hábito de mata o de enrame; requiere validación."
+        "short": "Porte erguido de mata; normalmente no requiere espaldera",
+        "guidance": "UMN Extension describe los frijoles de mata como plantas erguidas de alrededor de dos pies que generalmente no necesitan soporte. La floración y el cuajado son más concentrados que en los de enrame, aunque la cosecha regular puede favorecer la producción continua. Son observaciones del tipo de frijol común, no medidas de una selección Blue Lake ni una garantía para interiores."
       }
     }
   },
   "snap-pea-oregon-sugar-pod": {
-    "summary": "Identidad base de Wave 1 para Guisante tirabeque Oregon Sugar Pod. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema. La guía de la planta establecida se respalda a nivel de cultivo/tipo; no se infieren dimensiones del cultivar ni ajustes hidropónicos.",
+      "summary": "Oregon Sugar Pod II es un guisante de nieve de vaina comestible. Oregon State lo clasifica como tipo arbustivo; West Coast Seeds describe vainas grandes y planas y ofrece un plazo de madurez propio de su producto. La guía exterior del guisante no establece ajustes interiores ni hidropónicos.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+          "short": "Oregon Sugar Pod II es una selección de guisante de vaina comestible",
+          "guidance": "Oregon State incluye Oregon Sugar Pod II entre los guisantes orientales de vaina comestible y lo identifica como tipo arbustivo. La fuente respalda esta selección nombrada, pero no establece dimensiones verificadas ni compatibilidad con un sistema Garden."
       },
       "harvest": {
-        "short": "Cosecha los tirabeques cuando la vaina ya tenga su largo pero siga plana",
-        "guidance": "Cosecha las vainas comestibles cuando alcancen el largo descrito para la variedad y las semillas internas apenas se noten; las vainas más maduras pueden endurecerse. Es una señal del tipo, no una fecha para esta entrada con nombre."
+          "short": "Recoge las vainas planas antes de que las semillas internas crezcan",
+          "guidance": "Cosecha las vainas planas cuando las semillas internas aún sean pequeñas; las vainas maduras y abultadas pueden endurecerse. West Coast Seeds describe vainas Oregon Sugar Pod II de unos 4 pulgadas: es una referencia de producto, no una fecha límite fija para cualquier cultivo."
       },
       "problems": {
-        "short": "El calor puede detener la floración y la producción de vainas",
-        "guidance": "UMN Extension informa que, en su contexto de Minnesota, los guisantes dejan de crecer y no florecen ni cuajan cuando las temperaturas superan 85°F. Usa el calor como posible señal de estrés del cultivo, no como umbral universal para todo microclima o cultivar."
+          "short": "Oregon State registra resistencia a varias enfermedades del guisante",
+          "guidance": "Oregon State registra resistencia de Oregon Sugar Pod II al enrollamiento de la hoja del guisante, mildiu polvoriento y virus del mosaico del guisante. Son descripciones de resistencia de esa fuente, no inmunidad ni garantía frente a otros problemas. UMN también señala que el calor puede interrumpir la floración y producción de vainas en su contexto de Minnesota."
       },
       "growth": {
-        "short": "Enredadera de estación fresca, con hábito según el tipo",
-        "guidance": "UMN Extension describe los guisantes como cultivos de estación fresca: los tipos altos y trepadores necesitan espaldera, mientras que los tipos bajos pueden sostenerse entre sí en una hilera ancha. Esta distinción del cultivo no establece la altura exacta de una variedad con nombre."
+          "short": "Oregon State clasifica Oregon Sugar Pod II como tipo arbustivo",
+          "guidance": "Oregon State identifica Oregon Sugar Pod II como tipo arbustivo, distinto de las selecciones altas y trepadoras. La fuente no indica aquí una altura madura específica; Garden no asigna una ni infiere que toda planta se sostenga sola en cualquier sistema."
       },
       "cultivation": {
         "short": "Cultiva en condiciones frescas y con humedad uniforme del suelo",
         "guidance": "UMN Extension indica 55–65°F como un rango favorable para el crecimiento de guisantes y recomienda sol pleno y suelo bien drenado. Son referencias de cultivo exterior para Minnesota, no ajustes de interior o hidroponía."
       },
       "care": {
-        "short": "Sostén las guías trepadoras y evita mojar el follaje al regar",
-        "guidance": "Usa una espaldera para los guisantes altos y trepadores; riega el suelo en vez de mojar las guías para reducir condiciones favorables a enfermedades. No conviertas las distancias de hileras exteriores en separación de plantas interiores o cápsulas hidropónicas."
-      },
-      "pruning": {
-        "short": "No se establece una guía de poda",
-        "guidance": "La guía citada para guisantes explica el crecimiento de estación fresca, el soporte, el riego y la cosecha, pero no prescribe poda. No infieras un calendario de cortes a partir del hábito trepador; requiere validación."
+        "short": "Riega el suelo, no el follaje de los guisantes",
+        "guidance": "UMN Extension recomienda regar los guisantes a nivel del suelo en vez de mojar el follaje para reducir condiciones favorables a enfermedades. Oregon State clasifica Oregon Sugar Pod II como tipo arbustivo, pero las fuentes revisadas no establecen una regla universal de soporte para cada planta o sistema."
       }
     }
   },
   "flat-leaf-parsley": {
-    "summary": "Identidad base de Wave 1 para Perejil de hoja plana. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El perejil de hoja plana es una hierba bienal cultivada por sus hojas planas y aromáticas. UMN describe el tipo italiano como más alto y de sabor más intenso que el rizado; Garden conserva su identidad actual Petroselinum crispum y registra aparte el nombre varietal usado por la fuente.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Petroselinum crispum, tipo italiano de hoja plana; sin cultivar nombrado",
+        "guidance": "UMN Extension describe el perejil italiano de hoja plana como un tipo popular y lo denomina P. neapolitanum en el texto. El catálogo conserva Petroselinum crispum y registra la diferencia de nomenclatura sin cambiar silenciosamente la identidad."
       },
+      "growth": {"short":"Planta erguida y abierta; el tipo italiano puede alcanzar 2–3 pies en exterior","guidance":"UMN informa que el tipo italiano de hoja plana puede alcanzar 2–3 pies y tiene porte más abierto que el rizado. Es una referencia regional de exterior para ese tipo, no un tamaño garantizado en interior o hidroponía."},
+      "cultivation": {"short":"Luz abundante y suelo húmedo pero bien drenado","guidance":"UMN describe el perejil como hierba de estación fresca que tolera sombra ligera, aunque crece mejor con 6–8 horas de sol directo; recomienda suelo rico, bien drenado y humedad estable. Sus valores de pH y separación de campo no se convierten en objetivos hidropónicos ni distancia entre pods."},
+      "care": {"short":"Evita que la zona radicular establecida se seque por completo","guidance":"UMN recomienda riego profundo al menos semanal al aire libre y evitar que el suelo se seque por completo entre riegos. En maceta o interior, revisa el sustrato real en vez de aplicar un calendario de campo; no se fija un riego de reservorio."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Cosecha los tallos exteriores cerca de la base; no recortes solo las puntas",
+        "guidance": "UMN indica cortar cerca del suelo, comenzando por los tallos exteriores, para favorecer nuevo crecimiento. Cortar solo las puntas y dejar los tallos foliares resulta menos productivo. Es manejo mediante cosecha, no un calendario de formación."
       },
+      "flowering": {"short":"El tallo semillero del segundo año marca la transición bienal","guidance":"UMN describe el perejil como bienal: puede producir durante la primera temporada y después emitir un tallo semillero y completar su ciclo; las hojas del segundo año pueden ser más amargas. Es desarrollo reproductivo normal, no enfermedad ni calendario fijo para interior."},
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta tallos exteriores maduros cerca del suelo; puede rebrotar en temporada",
+        "guidance": "UMN recomienda empezar por los tallos exteriores y cortarlos cerca de la base. La planta puede producir nuevos tallos durante la temporada si se cosecha así. El perejil fresco conserva mejor calidad; secarlo o congelarlo es posible, aunque pierde sabor."
       },
+      "uses": {"short":"La hoja plana se valora por un sabor más intenso y dulce al cocinar","guidance":"UMN distingue el tipo italiano de hoja plana por un sabor más fuerte y dulce que el de otros tipos, y señala su uso en cocina. El perejil también se usa fresco como guarnición y en platos y ensaladas; no se añaden promesas de conservación más allá de la salvedad de calidad."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "El tallo semillero y el sabor más amargo del segundo año son cambios normales",
+        "guidance": "UMN informa que el perejil del segundo año puede ser más amargo y que la planta finalmente emite un tallo semillero al completar su ciclo bienal. No diagnostiques esa transición esperada como plaga o deficiencia; no se establece resistencia específica del tipo."
       }
     }
   },
   "lemon-balm": {
-    "summary": "Identidad base de Wave 1 para Toronjil. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El toronjil (Melissa officinalis) es una hierba perenne aromática con hojas acorazonadas y tallos cuadrados. La cosecha repetida puede favorecer la ramificación; su expansión por rizomas y semilla conviene manejarla activamente en el jardín.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Melissa officinalis; especie común, no cultivar dorado nombrado",
+        "guidance": "Utah State University Extension identifica el toronjil cultivado como Melissa officinalis y lo describe como hierba perenne de aroma cítrico. Aurea y All Gold son variedades nombradas distintas; esta identidad general no representa ninguna de ellas."
       },
+      "growth": {"short":"Hierba perenne ramificada, con hojas redondeadas y aroma a limón","guidance":"USU describe hojas acorazonadas a redondeadas, tallos cuadrados y aroma cítrico intenso; la planta puede alcanzar unos 2–3 pies de altura. Es una referencia de especie en jardín, no una dimensión garantizada en toda maceta o sistema."},
+      "cultivation": {"short":"Prefiere sol pleno, aunque tolera sombra ligera","guidance":"USU recomienda suelo enriquecido, húmedo pero bien drenado, y describe preferencia por sol pleno con tolerancia a sombra ligera; algo de sombra puede producir hojas mayores y más tiernas. No equivale a horas de luz interior ni a una receta hidropónica."},
+      "care": {"short":"Mantén la tierra húmeda, no saturada, y controla su expansión","guidance":"USU advierte que el estrés hídrico no conviene, pero que un suelo permanentemente mojado puede provocar pudrición de raíces. El toronjil puede extenderse por raíces y semilla; una maceta ayuda a limitarlo y, en suelo, se pueden cosechar hojas y retirar flores antes de que produzcan semilla. Adaptación Garden: elige según si deseas resiembra espontánea."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "La cosecha frecuente favorece la ramificación y una mata más compacta",
+        "guidance": "USU recomienda cosechar con regularidad y señala que ayuda a mantener la planta tupida y compacta. También describe retirar flores antes de que formen semilla cuando se busca contener la expansión en suelo; no es una obligación de eliminar toda floración."
       },
+      "flowering": {"short":"Las flores pueden producir semilla y plántulas espontáneas","guidance":"USU recomienda retirar las flores antes de la formación de semilla cuando se busca limitar la expansión. Si se desea recolectar semilla o permitir resiembra, no corresponde aplicar esa medida; la fuente no fija un calendario de floración universal."},
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+      "short": "Corta hojas frescas según necesites; cosecha para secar o congelar antes de florecer",
+      "guidance": "Iowa State indica que las hojas frescas de toronjil se pueden recoger según se necesiten y recomienda cosechar antes de la floración si se van a secar o congelar. Propone colgar pequeños ramos o secar las hojas en bandejas; USU describe retirar cerca de un tercio del follaje aproximadamente una vez al mes como método de jardín. Son referencias de jardín, no una frecuencia universal de cosecha interior ni una promesa de rendimiento."
       },
+      "uses": {"short":"Las hojas frescas aromatizan bebidas, ensaladas y otros platos; secas se usan en infusión","guidance":"USU documenta ramitas frescas para bebidas, ensaladas y platos principales, y hojas secas para infusiones y sopas. La fuente menciona usos medicinales tradicionales, pero aquí no se presentan como eficacia sanitaria demostrada."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila pudrición en tierra húmeda, oídio y plagas ocasionales","guidance":"USU señala que suele tener pocos problemas, pero informa pudriciones y oídio con exceso de agua y casos ocasionales de pulgones o ácaros. Son posibilidades, no diagnóstico ni prueba de resistencia; inspecciona la planta y sus condiciones antes de tratar."
       }
     }
   },
   "santo-cilantro": {
-    "summary": "Identidad base de Wave 1 para Cilantro Santo. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Santo es una selección de cilantro vendida para cosechar hojas y descrita por Johnny's como de floración tardía; esa afirmación del proveedor no cuantifica el retraso ni garantiza el resultado en todos los climas. La guía de especie describe el cilantro como cultivo de estación fresca, recomienda cosechar hojas jóvenes y señala la floración prematura y el amarillamiento del áster transmitido por chicharritas como aspectos de manejo. La aptitud hidropónica y las dimensiones maduras no están establecidas.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Selección Santo nombrada dentro de Coriandrum sativum",
+        "guidance": "Johnny's incluye Santo como selección de semilla de cilantro/coriandro. Su página de producto la describe como una selección de floración tardía para cosecha de hojas; no se infiere una ventaja cuantificada, ni garantía de comportamiento o certeza de cultivar más allá de lo documentado."
       },
+      "growth": {"short": "Crecimiento foliar de estación fresca; aún puede espigarse", "guidance": "USU describe el cilantro como hierba de estación fresca e indica que elegir una variedad de floración tardía puede ayudar cuando se buscan hojas. Johnny's comercializa Santo específicamente como tardío, pero no cuantifica la ventaja; el calor y la duración del día siguen requiriendo observación."},
+      "cultivation": {"short": "Prefiere un sitio exterior fresco, soleado y bien drenado", "guidance": "USU recomienda para el cilantro un lugar soleado y bien drenado y sembrar en periodos más frescos según el clima local. Es orientación de cultivo exterior a nivel de especie, no define horas de luz artificial, ajustes hidropónicos ni un calendario universal."},
+      "care": {"short": "Mantén humedad adecuada sin saturar la zona radicular", "guidance": "USU recomienda riego regular durante el establecimiento y menos agua una vez establecida la planta; advierte que el cilantro no prospera en condiciones persistentemente húmedas o muy húmedas. Las dosis de fertilizante para campo no se trasladan a contenedores o hidroponía."},
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Cosecha hojas selectivamente; no des por hecho que podar evita el espigado",
+        "guidance": "La guía de USU se centra en cosecha y época fresca, no en un calendario especial de poda. Retira hojas útiles limpiamente y no trates los cortes como método para detener la floración; no está establecida la respuesta exacta de rebrote de este lote Santo."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta las hojas cuando midan aproximadamente 4–6 pulgadas",
+        "guidance": "USU da 4–6 pulgadas como señal para cosechar hojas de cilantro y distingue esa cosecha de dejar madurar flores y cabezuelas para obtener coriandro. Es una referencia del cultivo, no una promesa de madurez para Santo; la siembra escalonada se menciona como método para mantener el suministro."
       },
+      "uses": {"short": "Cosecha hojas para cilantro o deja madurar semillas de coriandro", "guidance": "USU distingue las hojas de cilantro para uso fresco o conservación de las semillas de coriandro, que se cosechan cuando las cabezuelas se vuelven marrones. Son objetivos de cosecha distintos y requieren etapas diferentes; no deben tratarse sus calendarios como intercambiables."},
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila el espigado y el amarillamiento del áster asociado a chicharritas",
+        "guidance": "USU señala que el cilantro puede espigarse y describe para el amarillamiento del áster flores amarillas y crecimiento alto y débil; las chicharritas pueden transmitir la enfermedad. Son posibilidades diagnósticas, no prueba de causa ni evidencia de resistencia específica de Santo."
       }
     }
   },
   "lemon-thyme": {
-    "summary": "Identidad base de Wave 1 para Tomillo limón. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El tomillo limón se representa aquí como el híbrido aceptado Thymus × citriodorus: un subarbusto culinario siempreverde y aromático, con hojas comestibles y flores rosadas de verano. No se asigna un cultivar nombrado. Se documentan luz y drenaje exterior, poda y cosecha estacional; la aptitud interior e hidropónica sigue desconocida.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "POWO acepta el tomillo limón como el híbrido Thymus × citriodorus",
+        "guidance": "Kew POWO acepta Thymus × citriodorus como el híbrido T. pulegioides × T. vulgaris; Iowa State Extension también identifica el tomillo limón con este nombre híbrido. El título y los atributos estructurados de la página de NC State coinciden, aunque una frase narrativa de esa página lo llama especie distinta. Esta ficha sigue el tratamiento híbrido aceptado por POWO y conserva la discrepancia interna de la fuente para mayor transparencia; no asigna un cultivar nombrado."
+      },
+      "growth": {
+        "short": "Subarbusto siempreverde redondeado de unos 15–30 cm",
+        "guidance": "NC State describe el tomillo limón como subarbusto siempreverde y redondeado, de unos 15–30 cm de alto y hasta 30 cm de ancho, con hojas pequeñas y aromáticas. Son dimensiones regionales de jardín para el taxón de la página, no garantía de cultivar ni de sistema interior. La fila estructurada de altura de NC State está mal formada (6 pies a 1 pie) y no se usa; la ficha sigue únicamente el rango narrativo claro."
+      },
+      "cultivation": {
+        "short": "Sol pleno a parcial y suelo con buen drenaje",
+        "guidance": "NC State recomienda sol pleno a parcial y suelo arenoso o rocoso bien drenado; también menciona contenedores, jardines rocosos y cobertura de suelo. Es guía exterior regional de Carolina del Norte. No establece intensidad de luz interior, compatibilidad hidropónica, separación de pods ni objetivos nutritivos."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Poda o recorta ligeramente después de florecer para mantener una forma compacta",
+        "guidance": "Iowa State Extension recomienda una poda ligera después de la floración para mantener una forma compacta y estimular crecimiento nuevo. Es una recomendación general para tomillos de exterior, no una instrucción de poda intensa para un cultivar de tomillo limón ni para un sistema interior."
+      },
+      "flowering": {
+        "short": "Flores tubulares rosadas pequeñas en verano",
+        "guidance": "NC State describe flores tubulares rosadas en verticilos terminales hacia mediados del verano y valor de néctar para polinizadores. El momento corresponde a contexto regional de jardín, no a un calendario interior."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha tallos frondosos según necesidad; el mejor sabor coincide con el inicio de la floración",
+        "guidance": "Iowa State Extension indica que el tomillo puede cosecharse según necesidad durante la temporada y recomienda cortar tallos frondosos poco antes de florecer o cuando abren las primeras flores para obtener mejor sabor. NC State identifica como comestibles las hojas y flores del tomillo limón. Son pautas generales de cosecha para tomillo más evidencia de uso alimentario de este taxón, no un calendario fijo para un cultivar o una planta interior."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Evita el suelo saturado; vigila arañuelas o pulgones ocasionales",
+        "guidance": "NC State informa pudrición de raíz en suelos demasiado húmedos; Iowa State Extension señala que el suelo saturado puede favorecer enfermedades radiculares y que ocasionalmente aparecen arañuelas cuando hace calor y sequedad, o pulgones. Son riesgos generales del cultivo exterior, no un diagnóstico ni una afirmación de resistencia o susceptibilidad garantizada para esta identidad."
       }
     }
   },
   "nasturtium-empress-of-india": {
-    "summary": "Identidad base de Wave 1 para Capuchina Empress of India. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Empress of India es una selección nombrada de Tropaeolum con porte arbustivo documentado, hojas verde azulado oscuro y flores escarlata. Las fuentes discrepan entre T. majus y T. minus; por eso esta ficha se mantiene a nivel de género/selección y no asigna especie. Se desconoce su compatibilidad hidropónica interior.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Selección nombrada de Tropaeolum; especie no resuelta",
+        "guidance": "RHS registra la selección nombrada como Tropaeolum majus 'Empress of India' en una ficha, mientras otra usa el nombre a nivel de género Tropaeolum 'Empress of India'. UW–Madison, Takii y Johnny's sitúan la selección bajo T. minus. Las fuentes respaldan la selección hortícola Empress of India, pero discrepan sobre su especie; por eso Gardenpedia conserva Tropaeolum sp. y no elige una especie. La ficha de planta establecida está completa a nivel de género/selección; los cuidados conservan el alcance de cada fuente y el conflicto de especie sigue registrado para la revisión taxonómica."
+      },
+      "growth": {
+        "short": "Anual arbustiva con hojas verde azulado oscuro y flores escarlata",
+        "guidance": "RHS describe una planta anual arbustiva de unos 30 cm, con hojas redondeadas verde azulado oscuro y flores escarlata en forma de embudo. El rango de extensión de 0,1–0,5 m es amplio y corresponde al contexto de jardines del Reino Unido, no una huella garantizada para todo jardín."
+      },
+      "cultivation": {
+        "short": "Sol pleno y suelo pobre y bien drenado favorecen la floración",
+        "guidance": "RHS recomienda sol pleno y suelo pobre y bien drenado; un suelo demasiado rico puede producir más follaje a expensas de las flores. Es guía para cultivo exterior y no establece compatibilidad con sistemas hidropónicos interiores."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira flores marchitas para prolongar la floración",
+        "guidance": "RHS recomienda específicamente retirar flores marchitas de 'Empress of India' para prolongar la floración. La fuente no establece un calendario universal de poda ni una respuesta en sistemas interiores."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "RHS informa flores escarlata de verano a comienzos de otoño en Reino Unido",
+        "guidance": "RHS describe una floración prolongada desde verano hasta comienzos de otoño en el Reino Unido. Otra guía RHS indica que hojas, semillas y botones florales jóvenes de muchas capuchinas anuales, incluida T. majus, son comestibles. Como la ubicación de esta selección a nivel de especie no está resuelta, esa información es contexto general del cultivo, no una confirmación de uso comestible para esta identidad."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "RHS señala posible alergia cutánea al manipular",
+        "guidance": "La ficha de RHS advierte de un posible riesgo de alérgeno cutáneo al manipular este cultivar. Tómalo como precaución, no como diagnóstico ni como predicción de una reacción universal."
       }
     }
   },
   "calendula-pacific-beauty": {
-    "summary": "Identidad base de Wave 1 para Caléndula Pacific Beauty. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Pacific Beauty es una selección nombrada de Calendula officinalis cultivada por sus flores. RHS describe flores amarillas con centro naranja y condiciones exteriores de sol a sombra parcial; Extensión documenta humedad, desflorado y cosecha a nivel de especie. No está establecida su respuesta hidropónica.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "RHS registra Calendula officinalis 'Pacific Beauty'",
+        "guidance": "RHS publica Pacific Beauty como selección nombrada de Calendula officinalis y describe flores amarillo dorado con centros naranjas. Los cuidados generales de caléndula que siguen son recomendaciones de Extensión a nivel de especie, no afirmaciones de rendimiento del cultivar."
+      },
+      "growth": {
+        "short": "Anual o bienal; RHS indica un rango amplio de 0,5–1 m",
+        "guidance": "RHS describe Pacific Beauty como anual o bienal y da una altura máxima amplia de 0,5–1 m y una extensión de 0,1–0,5 m en jardines del Reino Unido. Son rangos del perfil varietal RHS, no una garantía de tamaño compacto en interior. UNH Extension describe una altura menor de 10–12 pulgadas para la caléndula general; se conservan los distintos alcances y contextos en vez de promediarlos."
+      },
+      "cultivation": {
+        "short": "Exterior: sol o sombra parcial; suelo drenado y humedad uniforme",
+        "guidance": "RHS indica sol o sombra parcial y suelo bien drenado de tipo franco, arenoso o calcáreo para Pacific Beauty. UNH Extension aconseja mantener el suelo uniformemente húmedo. Son condiciones hortícolas de exterior; ninguna fuente establece una intensidad de luz de cultivo interior, receta hidropónica ni compatibilidad con un sistema."
+      },
+      "care": {
+        "short": "Pinza si buscas una forma más tupida y retira flores marchitas",
+        "guidance": "NC State Extension indica que se puede pinzar la caléndula al madurar para estimular una forma compacta y ramificada, y retirar flores marchitas para promover más floración. Es orientación de exterior a nivel de especie; no establece una respuesta ni un calendario de poda específico de Pacific Beauty."
+      },
+      "flowering": {
+        "short": "Flores amarillo dorado con centros naranjas",
+        "guidance": "RHS describe las flores de Pacific Beauty como amarillo dorado con centros naranjas y señala floración desde verano hasta otoño en condiciones del Reino Unido. Las fechas varían con el clima y la siembra; no se asigna un calendario universal."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+        "short": "Retira flores marchitas para favorecer nuevas floraciones",
+        "guidance": "NC State Extension respalda retirar las flores marchitas de la caléndula para promover floración adicional. Retira las cabezuelas cuando se desvanezcan; la fuente no prescribe un intervalo exacto ni garantiza una cantidad fija de refloraciones de Pacific Beauty."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Corta flores medio abiertas; los pétalos tienen usos culinarios a nivel de especie",
+        "guidance": "UNH Extension indica que las flores cortadas de caléndula duran más si se cosechan medio abiertas y describe pétalos de Calendula officinalis frescos para decorar ensaladas o pasteles, o secos para sopas, guisos e infusiones. Son usos comestibles de la especie, no una afirmación de sabor o efecto medicinal de Pacific Beauty."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "No se establece aquí susceptibilidad o resistencia propia del cultivar",
+        "guidance": "Las fuentes seleccionadas no establecen una calificación de resistencia o susceptibilidad de Pacific Beauty. No atribuyas el descenso de floración a una enfermedad sin más señales; evalúa síntomas observables y condiciones de cultivo antes de diagnosticar."
       }
     }
   },
   "borage-blue": {
-    "summary": "Identidad base de Wave 1 para Borraja azul. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "Borraja azul representa la especie anual de flores azules Borago officinalis, no un cultivar nombrado verificado. Maryland Extension describe follaje áspero y velloso, flores estrelladas azul celeste y plantas de unos 60–90 cm; NC State Extension también indica una extensión de unos 30–41 cm a nivel de especie. Se resiembra y atrae polinizadores. Sus flores y hojas tienen usos culinarios documentados, pero deben usarse con moderación porque NC State advierte riesgo de daño hepático.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Borago officinalis de flor azul; no se asigna cultivar nombrado",
+        "guidance": "POWO acepta Borago officinalis. Maryland Extension describe las flores azul celeste de la especie; la etiqueta del catálogo 'Borraja azul' se trata como tipo por color, no como identidad de cultivar."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+      "growth": {
+        "short": "Anual de hojas ásperas y vellosas y flores estrelladas azul celeste",
+        "guidance": "Maryland Extension describe tallos y hojas ásperos y vellosos y flores estrelladas azul celeste; en su guía de jardín, las plantas alcanzan unos 60–90 cm. NC State Extension indica una altura de especie de unos 48–97 cm y una extensión de 30–41 cm. Son rangos de referencia para Borago officinalis, no garantías para una selección azul nombrada."
+      },
+      "cultivation": {
+        "short": "Sitio soleado y bien drenado; puede resiembrarse",
+        "guidance": "Maryland Extension recomienda lugares soleados y relativamente secos y señala que la borraja se resiembra con facilidad. NC State Extension indica que prefiere sol pleno, tolera sombra ligera y puede crecer en suelos variados, incluso pobres; registra buen drenaje y tolerancia a sequedad ocasional. En conjunto, se favorece un sitio soleado y bien drenado sin afirmar que la sequía sea necesaria. Maryland también indica que puede ser difícil trasplantarla; el inicio desde semilla queda en la ficha de semillas."
+      },
+      "maintenance": {
+        "short": "Controla las plántulas voluntarias solo si no deseas que se resiembre",
+        "guidance": "Maryland Extension informa que la borraja se resiembra con facilidad. Retirar flores marchitas antes de que formen semilla es una adaptación de Garden solo si no se desean plantas voluntarias; dejar flores conserva el valor documentado para polinizadores."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Recoge las flores al abrir; usa hojas y flores con moderación",
+        "guidance": "Maryland Extension recomienda recoger las flores cuando se abren e indica que las hojas se pueden usar frescas. Describe flores y hojas de borraja para aportar un sabor parecido al pepino a bebidas de verano. NC State Extension advierte que las hojas y flores comestibles deben usarse solo con moderación porque puede ocurrir daño hepático; no se afirma eficacia medicinal ni un sabor específico del tipo azul."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Puede aparecer oídio, aunque no se enumeran plagas específicas",
+        "guidance": "NC State Extension no informa problemas específicos de insectos o enfermedades para Borago officinalis, pero señala que a veces aparece oídio. Es una observación a nivel de especie, no una garantía de resistencia; inspecciona el follaje si aparece un recubrimiento blanco y no diagnostiques solo por la apariencia."
       }
     }
   },
   "german-chamomile": {
-    "summary": "Identidad base de Wave 1 para Manzanilla alemana. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La manzanilla alemana (Matricaria chamomilla) es una anual de hojas aromáticas finamente divididas y capítulos florales similares a margaritas. Wisconsin Extension recomienda sol pleno y suelo bien drenado; cosecha las flores cerca de su plena floración para usarlas frescas o secas. Retirar flores marchitas puede prolongar la floración, mientras dejarlas formar semilla favorece la resiembra. Aptitud hidropónica desconocida.",
     "sections": {
       "identity": {
-        "short": "Identidad y alcance",
-        "guidance": "Garden publica esta identidad en el alcance de especie y tipo hortícola documentado, sin convertir una guía general en certeza de cultivar."
+        "short": "Especie aceptada Matricaria chamomilla; distinta de otras manzanillas",
+        "guidance": "POWO acepta Matricaria chamomilla e incluye M. recutita en su tratamiento de sinónimos. Wisconsin Extension advierte que varias Asteraceae reciben el nombre común de manzanilla; esta ficha corresponde a la especie alemana, sin un cultivar de jardín seleccionado."
       },
-      "pruning": {
-        "short": "Manejo según porte y observación",
-        "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
+      "growth": {
+        "short": "Anual de tallos ramificados y hojas aromáticas finamente divididas",
+        "guidance": "Wisconsin Extension describe tallos erguidos y ramificados, hojas escasas finamente divididas y raíces superficiales y extendidas. Los capítulos tienen un centro amarillo abombado rodeado por flores liguladas blancas; no se asigna tamaño de cultivar."
+      },
+      "cultivation": {
+        "short": "Sol pleno, suelo bien drenado y humedad en la capa superficial",
+        "guidance": "Wisconsin Extension recomienda sol pleno y suelo bien drenado; la planta tolera suelos pobres y necesita poco fertilizante. Como las raíces son superficiales, riega según haga falta para mantener húmeda, pero no empapada, la capa superior. Es guía de suelo exterior, no parámetros hidropónicos."
+      },
+      "maintenance": {
+        "short": "Retira flores marchitas para alargar la floración o déjalas formar semilla",
+        "guidance": "Wisconsin Extension informa que la floración puede continuar hasta que maduren las semillas o llegue la helada si se retiran las flores marchitas; las plantas se resiembran si se dejan cabezuelas. Es una decisión de manejo de jardín exterior."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios de la fuente son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha los capítulos cerca de la plena floración; úsalos frescos o secos",
+        "guidance": "Wisconsin Extension recomienda cosechar los capítulos cerca de la plena floración para obtener mejor calidad y cortar solo la inflorescencia del tallo; las flores se pueden usar frescas o secas. Es un uso herbario/culinario a nivel de especie, no una afirmación de eficacia medicinal."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Se mencionan pulgones; Extension registra pocas otras plagas",
+        "guidance": "Wisconsin Extension menciona pulgones como uno de los pocos problemas de plagas en su guía de jardín. Esta observación regional no equivale a una afirmación universal de ausencia de plagas o resistencia a enfermedades."
       }
     }
   }

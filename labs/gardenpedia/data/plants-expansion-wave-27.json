@@ -62,6 +62,18 @@
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
+      "flowering": {
+        "short": "Pollinated flowers drop; unpollinated blooms can turn wine-colored",
+        "guidance": "University of Maryland Extension describes blueberry flowering generally: plump flower buds differ from slender leaf buds, and each flower bud produces several flowers. It notes that native bees are effective pollinators, unpollinated blooms turn wine-colored, and pollinated flowers drop after about 5–6 days. These are blueberry-level diagnostic cues, not a cultivar-specific bloom date or a guarantee of fruit set.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umd-blueberry-home-garden-wave27"],
+        "items": [
+          "Distinguish plump flower buds from slender leaf buds.",
+          "A bloom changing wine-color can indicate it was not pollinated; a pollinated flower normally drops after several days."
+        ],
+        "context": "Flowering cues are described for blueberries generally; exact cultivar timing and fruit set vary."
+      },
       "maintenance": {
         "short": "Renew old canes gradually after establishment",
         "guidance": "University of Maryland Extension describes renewal pruning: remove older, declining canes to encourage replacement growth. Young plants are managed differently from established bushes; do not apply mature-bush pruning immediately to a new transplant.",
@@ -187,20 +199,22 @@
       },
       "cultivation": {
         "short": "Choose a sunny, well-drained site",
-        "guidance": "Penn State Extension describes brambles as suited to sunny sites with well-drained soil. Its field spacings are not transferable to an indoor system or container without separate evidence.",
+        "guidance": "Penn State Extension recommends full sun and well-drained soil for home-grown brambles. Red raspberry's perennial root system produces new canes primarily from roots, so an unmanaged planting can expand into a hedgerow or patch. Keep soil and cultivar context in view: the cited outdoor guidance does not establish an indoor light tier or container/hydroponic recipe.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "psu-brambles-home-fruit-wave27"
         ],
         "items": [
-          "Penn State Extension describes brambles as suited to sunny sites with well-drained soil."
+          "Choose an outdoor site with full sun and good drainage.",
+          "Expect red raspberry canes to emerge from roots and manage the patch boundary as it expands.",
+          "Do not convert field spacing into indoor-system spacing."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
         "short": "Perennial roots produce canes with a two-year cycle in summer-bearing types",
-        "guidance": "In summer-bearing raspberries, first-year primocanes generally fruit as floricanes the next season and then die. Some varieties fruit on first-year canes; without a cultivar, the record keeps the bearing schedule unresolved.",
+        "guidance": "The roots are perennial and canes are biennial. In summer-bearing red raspberries, first-year primocanes generally fruit as floricanes the next season and then die; many red raspberry cultivars also fruit on first-year primocanes. Penn State describes red raspberry suckers as arising primarily from roots, eventually forming a hedgerow or unmanaged patch. This record does not assign one bearing habit to an unspecified cultivar.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -228,28 +242,33 @@
       },
       "harvest": {
         "short": "Season varies by bearing type and local frost",
-        "guidance": "Summer-bearing and primocane-fruiting raspberries crop at different times. The source gives regional examples, not a universal harvest calendar for an unspecified variety.",
+        "guidance": "Summer-bearing and primocane-fruiting raspberries crop at different times, so no universal date is assigned. Penn State Extension says ripe bramble berries detach easily; pick them gently by rolling them off rather than squeezing or pulling, use shallow containers, and refrigerate promptly. Frequent picking helps avoid overripe fruit remaining on canes.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "psu-brambles-home-fruit-wave27"
+          "psu-brambles-home-fruit-wave27",
+          "psu-brambles-harvest-postharvest-2026"
         ],
         "items": [
-          "Harvest according to the cultivar's bearing type rather than a fixed universal date.",
-          "Observe fruit maturity and local conditions during the picking season."
+          "Harvest only when berries detach readily; use this cue instead of a fixed date for an unspecified cultivar.",
+          "Roll ripe berries off gently, do not squeeze, and place them in a shallow container to reduce crushing.",
+          "Pick frequently and refrigerate promptly; the source does not guarantee one household storage life."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "problems": {
         "short": "Airflow, drainage, and prompt sanitation matter",
-        "guidance": "The Extension guidance notes disease and insect pressure in brambles and recommends site selection and management appropriate to the type. No disease resistance is asserted for this generic crop identity.",
+        "guidance": "Penn State Extension notes disease and insect pressure in brambles and identifies anthracnose as a possible red-raspberry cane disease. Early signs can include reddish-purple spots on young canes that enlarge and become sunken; later, gray bark may appear. This is a recognition cue, not a claim that every plant is infected. Diseased cane removal and airflow are source-backed sanitation measures; no disease resistance is asserted.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "psu-brambles-home-fruit-wave27"
+          "psu-brambles-home-fruit-wave27",
+          "psu-bramble-anthracnose-home-2026"
         ],
         "items": [
-          "The Extension guidance notes disease and insect pressure in brambles and recommends site selection and management appropriate to the type."
+          "Look for enlarging, sunken reddish-purple spots on young canes; gray bark may develop later in the season.",
+          "Prune out visibly diseased canes and maintain airflow as Penn State's home-planting guidance recommends.",
+          "These symptoms warrant diagnosis; do not infer cultivar susceptibility or resistance from this broad crop identity."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }
@@ -344,6 +363,24 @@
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
+      "flowering": {
+        "short": "The flowers are enclosed inside the fig structure",
+        "guidance": "UGA Extension explains that fig flowers are inside the fig rather than displayed as showy external blossoms. Do not treat the absence of visible open flowers as proof that a mature fig plant cannot flower or fruit.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uga-home-garden-figs-2026"],
+        "items": ["Fig flowers are enclosed within the syconium; they are not showy external blooms."],
+        "context": "Species/crop-level botanical and home-garden context from a Georgia Extension publication."
+      },
+      "fruiting": {
+        "short": "Some cultivars can carry an early and a main crop",
+        "guidance": "Oregon State describes breba fruit formed on the previous season's growth and overwintered, plus a main crop from current-season growth in warm-summer regions. Whether either crop ripens depends on cultivar and climate; this is not a promise that every common fig produces two harvests.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["osu-fig-fruiting-pnw400-2026"],
+        "items": ["A breba crop may develop on previous-season wood; the main crop develops on current-season growth."],
+        "context": "Oregon-region fig crop guidance; crop count and timing are cultivar- and climate-dependent."
+      },
       "maintenance": {
         "short": "Prune with the local fruiting and growth habit in mind",
         "guidance": "The Extension guide discusses retaining productive one-year growth and pruning to maintain light in the canopy. It also cautions that figs are vigorous and prefer in-ground planting; container management is not assumed to be effortless.",
@@ -359,31 +396,43 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "harvest": {
-        "short": "Fruit may take several seasons after planting",
-        "guidance": "The regional guide advises patience because fruit may take a few seasons. It does not support a fixed first-harvest date for all cultivars and locations.",
+        "short": "Harvest fully ripe fruit; use regional and cultivar-scoped cues",
+        "guidance": "Oregon State's general home-orchard guidance says figs are ripe when very soft and drooping on the stem. Illinois Extension gives a different cue specifically for Chicago Hardy: deep-purple or brown fruit that yields slightly, with very soft fruit considered overripe. These statements have different regional and cultivar scopes, not one universal firmness threshold. For an unidentified Ficus carica, harvest fully ripe fruit and use the actual cultivar's description where available; no universal date or tactile cutoff is assigned.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "osu-figs-oregon-wave27"
+          "osu-fig-harvest-home-orchard-2026",
+          "uiuc-chicago-hardy-fig-maturity-2025"
         ],
         "items": [
-          "Expect establishment to take time; do not promise fruit in the first season.",
-          "Record fruit set and ripening by cultivar and location."
+          "In Oregon's general home-orchard guide, ripe figs are very soft and droop on the stem.",
+          "For Chicago Hardy in Illinois guidance, ripe fruit is deep purple or brown and yields slightly; the source calls very soft fruit overripe.",
+          "Use cultivar-specific maturity guidance where known; do not transfer either regional cue as a universal threshold."
         ],
-        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+        "context": "Both Extension descriptions are retained at their actual scope: Oregon crop-level guidance and an Illinois Chicago Hardy example."
+      },
+      "uses": {
+        "short": "Fresh fruit, baking and preservation are documented uses",
+        "guidance": "UGA Extension describes figs used fresh, preserved, or in baking and desserts. This supports general culinary use of ripe figs, not a particular cultivar's flavor, recipe, or shelf-stable preservation process.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uga-home-garden-figs-2026"],
+        "items": ["Use ripe figs fresh or in cooked/baked dishes; select a tested preservation process separately."],
+        "context": "General edible-fig use in a Georgia Extension home-garden publication; no recipe is supplied here."
       },
       "problems": {
-        "short": "Cold adaptation and container vigor remain cultivar- and site-dependent",
-        "guidance": "The selected guide is for Oregon and notes fig vigor and a preference for in-ground growth. It does not establish cold hardiness for every fig cultivar or indoor suitability.",
+        "short": "Watch premature fruit drop and leaf-rust signs",
+        "guidance": "UGA Extension reports premature fruit drop in Georgia from factors including young/vigorous or over-fertilized plants and hot, dry periods; it also notes cultivar-specific Celeste fruit drop in heat. The guide describes fig rust as yellow-brown leaf damage with raised reddish-brown spots beneath leaves; severe leaf loss can reduce fruit size and quality. These are regional/cultivar-scoped signals, not universal susceptibility or a diagnosis.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "osu-figs-oregon-wave27"
+          "uga-home-garden-figs-2026"
         ],
         "items": [
-          "The selected guide is for Oregon and notes fig vigor and a preference for in-ground growth."
+          "Observe fruit drop together with plant vigor, recent heat/dryness, and the identified cultivar.",
+          "Check the underside of leaves for raised reddish-brown spots when yellowing or defoliation occurs."
         ],
-        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+        "context": "Georgia Extension symptoms and causes remain regional; inspect the plant and local conditions before treatment."
       }
     },
     "compatibilityProfile": {
@@ -450,14 +499,15 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
-        "short": "Match cultivar and growing season to the local climate",
-        "guidance": "Oregon State Extension emphasizes choosing table-grape cultivars suited to the length of the local growing season and establishing a trained vine. Its regional guidance is not a universal indoor or hydroponic protocol.",
+        "short": "Full sun, well-drained soil; match cultivar to the local season",
+        "guidance": "Oregon State Extension says full sunlight is required for good table-grape production and recommends well-drained soil. Choose a cultivar that can ripen within the local growing season and train the woody vine on a permanent support. Its season-length examples are Oregon-specific, not a universal calendar or indoor/hydroponic protocol.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "osu-table-grapes-wave27"
         ],
         "items": [
+          "Choose a sunny site with well-drained soil for outdoor fruit production.",
           "Choose a table-grape cultivar compatible with the local growing-season length.",
           "Plan a permanent support and training system for the woody vine."
         ],
@@ -480,7 +530,7 @@
       },
       "maintenance": {
         "short": "Annual pruning is central to managed grape production",
-        "guidance": "The OSU guide identifies inadequate pruning as a common home-garden issue and explains training. The exact system and pruning cuts depend on cultivar, support, and climate.",
+        "guidance": "Prune the trained vine annually while dormant. OSU gives January to early March for Oregon, not a universal date. Cane versus spur pruning depends on cultivar and training system; the source warns that some types produce little fruit after short-spur pruning. This unspecified identity therefore does not prescribe one cut method or bud count.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -488,22 +538,25 @@
         ],
         "items": [
           "Train young shoots to the intended support structure.",
-          "Prune annually according to cultivar, training system and local conditions.",
+          "Prune annually during dormancy; use Oregon's January–early March window only as a regional reference.",
+          "Choose cane or spur pruning from the named cultivar's guidance and training system; no method or bud count is assigned here.",
           "Avoid leaving an unpruned, overcrowded canopy."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "harvest": {
-        "short": "Fruit quality depends on cultivar and season length",
-        "guidance": "The cited guide warns that a growing season too short for a cultivar can result in poorer-quality, lower-sugar fruit at harvest. No fixed maturity date is assigned to an unspecified cultivar.",
+        "short": "Taste berries at the cluster tip; grapes do not ripen after picking",
+        "guidance": "OSU notes that grape color varies by cultivar and is only a near-maturity clue; the supporting cluster stem browns, and seeds darken in seeded grapes. Taste berries at the cluster tip because they ripen last. Grapes sweeten and lose acidity as they mature, but do not ripen further after harvest. Cut clusters with pruning shears; the source recommends refrigeration in vented plastic bags. Timing remains dependent on cultivar and local season.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "osu-table-grapes-wave27"
         ],
         "items": [
-          "Check cultivar maturity and available growing-season length.",
-          "Do not infer sweetness or a harvest date from species identity alone."
+          "Use cultivar-appropriate color only as a near-maturity clue; taste berries at the tip of the cluster.",
+          "Cut a ripe cluster with pruning shears; grapes do not continue ripening after harvest.",
+          "Refrigerate clusters in a vented bag, following OSU's home-garden guidance.",
+          "Do not assign a universal date or sugar level to this unspecified cultivar."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
@@ -546,8 +599,29 @@
         "reason": "Field trellis spacing is not a machine position or pod count."
       },
       "light": {
-        "status": "unknown",
-        "reason": "Outdoor site selection is not mapped to indoor grow-light intensity."
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "osu-table-grapes-wave27"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Vitis vinifera"
+            },
+            "note": "OSU requires full sunlight for good outdoor table-grape production. This natural exposure is not an indoor grow-light tier or hydroponic claim."
+          }
+        ]
       }
     }
   }

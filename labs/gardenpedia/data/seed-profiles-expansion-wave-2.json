@@ -8582,8 +8582,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula",
-            "johnnys-marigold"
+            "ncsu-tagetes-patula-public",
+            "johnnys-marigold-public"
           ]
         },
         {
@@ -8603,8 +8603,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula",
-            "johnnys-marigold",
+            "ncsu-tagetes-patula-public",
+            "johnnys-marigold-public",
             "johnnys-seed-starting"
           ]
         },
@@ -8652,14 +8652,14 @@
               "evidenceType": "source_backed",
               "confidence": "medium",
               "sourceIds": [
-                "ncsu-tagetes-patula"
+                "ncsu-tagetes-patula-public"
               ]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula"
+            "ncsu-tagetes-patula-public"
           ]
         },
         {
@@ -8691,8 +8691,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula",
-            "johnnys-marigold"
+            "ncsu-tagetes-patula-public",
+            "johnnys-marigold-public"
           ]
         },
         {
@@ -8719,15 +8719,15 @@
               "evidenceType": "garden_adaptation",
               "confidence": "medium",
               "sourceIds": [
-                "ncsu-tagetes-patula",
-                "johnnys-marigold"
+                "ncsu-tagetes-patula-public",
+                "johnnys-marigold-public"
               ]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula"
+            "ncsu-tagetes-patula-public"
           ]
         },
         {
@@ -8754,14 +8754,14 @@
               "evidenceType": "source_backed",
               "confidence": "medium",
               "sourceIds": [
-                "ncsu-tagetes-patula"
+                "ncsu-tagetes-patula-public"
               ]
             }
           ],
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula"
+            "ncsu-tagetes-patula-public"
           ]
         },
         {
@@ -8825,8 +8825,8 @@
           "evidenceType": "source_backed",
           "confidence": "medium",
           "sourceIds": [
-            "ncsu-tagetes-patula",
-            "johnnys-marigold"
+            "ncsu-tagetes-patula-public",
+            "johnnys-marigold-public"
           ]
         }
       ]

@@ -232,6 +232,12 @@
             "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
           }
         },
+        "care": {
+          "context": {
+            "en": "The shallow-cultivation guidance comes from an Iowa State home-garden article published in 1997 that warns it may be outdated; present it as cautious corroboration, not universal current advice.",
+            "es": "La recomendación de cultivo superficial procede de un artículo de Iowa State para huertos domésticos publicado en 1997, que advierte que podría estar desactualizado; preséntala como corroboración cautelosa, no como consejo actual universal."
+          }
+        },
         "harvest": {
           "context": {
             "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
@@ -271,6 +277,12 @@
           "context": {
             "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
             "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flowering and seed-release observations are species-level reports from UW–Madison Extension, not a universal flowering calendar.",
+            "es": "Las observaciones de floración y liberación de semillas son informes a nivel de especie de UW–Madison Extension, no un calendario universal de floración."
           }
         },
         "problems": {
@@ -374,8 +386,8 @@
         },
         "harvest": {
           "context": {
-            "en": "No identity-specific evidence establishes this recommendation for the system.",
-            "es": "No hay evidencia específica que valide esta recomendación para el sistema."
+            "en": "USU's harvest and use guidance is crop-level for sweet corn; it is not a cultivar-specific calendar or a hydroponic harvest rule.",
+            "es": "La guía de cosecha y uso de USU corresponde al maíz dulce como cultivo; no es un calendario de cultivar ni una regla de cosecha hidropónica."
           }
         },
         "problems": {
@@ -792,6 +804,12 @@
             "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
           }
         },
+        "flowering": {
+          "context": {
+            "en": "The Minnesota Extension flower colors and ornamental/pollinator notes are crop-level descriptions, not a named cultivar guarantee.",
+            "es": "Los colores florales y las notas ornamentales/de polinizadores de Minnesota Extension describen el cultivo, no garantizan un cultivar nombrado."
+          }
+        },
         "harvest": {
           "context": {
             "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
@@ -825,6 +843,12 @@
           "context": {
             "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
             "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flower colors vary by variety; this identity does not select a kabuli/desi class or a specific flower color. Heat/drought caution is Upper Midwest field-crop context.",
+            "es": "El color floral varía por variedad; esta identidad no selecciona clase kabuli/desi ni un color específico. La advertencia de calor/sequía corresponde al cultivo de campo del Alto Medio Oeste."
           }
         },
         "harvest": {
@@ -938,10 +962,10 @@
             "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
           }
         },
-        "problems": {
+        "maintenance": {
           "context": {
-            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
-            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+            "en": "Arkansas home-garden shallow cultivation and fertility notes are regional soil guidance; do not convert product rates into universal or hydroponic recommendations.",
+            "es": "Las notas de cultivo superficial y fertilidad para jardín doméstico de Arkansas son orientación regional de suelo; no conviertas dosis de producto en recomendaciones universales o hidropónicas."
           }
         }
       }

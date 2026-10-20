@@ -15,58 +15,94 @@
       "eruca vesicaria",
       "arugula / roquette"
     ],
-    "summary": "Arugula is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Arugula is a fast-growing cool-season rosette harvested for peppery leaves. UW–Madison describes bolting under long days, heat or dry soil, repeat leaf harvest, and flea-beetle shot holes; its article uses Eruca sativa while Garden retains the accepted catalog name Eruca vesicaria.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Arugula identity is resolved at Eruca vesicaria and Arugula / roquette type scope",
-        "guidance": "Arugula is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Catalog identity Eruca vesicaria; Extension also uses Eruca sativa",
+        "guidance": "Garden retains Eruca vesicaria as the accepted catalog identity. UW–Madison's article is titled Eruca sativa and notes E. vesicaria subsp. sativa as an alternative usage; this nomenclatural difference is recorded rather than silently changing the identity. No cultivar is represented.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-arugula-wave1"
+          "uw-arugula-extension-2026"
         ]
       },
+      "growth": {
+        "short": "Rosette of lobed leaves; flowering stem can reach 2–3 feet",
+        "guidance": "UW–Madison describes a rosette of dull-green leaves, commonly 3–8 inches long. Long days, high temperatures and/or dry soil can trigger a branched flowering stem 2–3 feet tall. These are species/crop observations, not cultivar dimensions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uw-arugula-extension-2026"]
+      },
+      "cultivation": {
+        "short": "Cool-season crop; full sun, with light shade sometimes slowing summer bolting",
+        "guidance": "UW–Madison recommends fertile, well-drained soil and full sun; light shade may slow bolting during the hottest part of the season. It also documents container growing, including a bright windowsill. These are outdoor/crop-level observations, not evidence for hydroponic performance or an artificial-light target.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uw-arugula-extension-2026"]
+      },
+      "care": {
+        "short": "Succession sowing can extend the supply of young leaves",
+        "guidance": "UW–Madison describes sowing successive outdoor plantings every 2–3 weeks from early spring through fall for a continued supply, or allowing some plants to flower and self-seed. The schedule is regional outdoor guidance, not a year-round indoor production guarantee.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["uw-arugula-extension-2026"]
+      },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Cut leaves selectively or cut the rosette above the crown for regrowth",
+        "guidance": "UW–Madison describes removing individual rosette leaves or cutting the whole plant 1–2 inches above the ground, followed by sequential harvest from regrowth. Use this as an outdoor crop option, not a guarantee of repeat regrowth in every system.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-arugula-wave1"
+          "uw-arugula-extension-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Harvest leaves a few inches long; heat and drought intensify flavor",
+        "guidance": "UW–Madison says leaves can be picked at a few inches long; younger leaves are tender and peppery, while older leaves become stronger and more bitter. Whole plants may be cut after roughly 3–4 weeks in the described outdoor context, with sequential harvest from regrowth. Regular picking can delay seed-stalk development; heat and drought intensify flavor.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-arugula-wave1"
+          "uw-arugula-extension-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Heat, long days and dry soil can trigger bolting; flea beetles leave shot holes",
+        "guidance": "UW–Madison links long days, heat and/or dry soil with rapid flowering-stem formation. Flea beetles can chew small shot holes and may severely damage young plants; row covers are described as an option, but beetles overwintering in soil may emerge beneath covers installed too early. Diagnose the actual symptom before intervention.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-arugula-wave1"
+          "uw-arugula-extension-2026"
         ]
       },
+      "thinning": {
+        "short": "Outdoor spacing varies with individual-plant or cut-and-come-again harvest",
+        "guidance": "UW–Madison gives 3–6 inches between individual plants and allows denser planting for cut-and-come-again harvest. These are field/container crop instructions, not a count of hydroponic pods or a universal indoor spacing rule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uw-arugula-extension-2026"]
+      },
       "hydroponics": {
-        "short": "Hydroponic evidence remains explicitly pending",
-        "guidance": "Crop-level hydroponic performance is plausible but this Wave 1 identity has no accepted system-specific evidence.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Arugula is documented in NFT and research-scale DWC systems",
+        "guidance": "Virginia Cooperative Extension lists arugula among salad greens that work well in nutrient-film technique (NFT). A University of Georgia greenhouse study also grew the named Slow Bolt selection in deep-water culture (DWC); this demonstrates crop/system use, not performance for every cultivar or consumer appliance. No pod count, machine fit, nutrient recipe, or EC target is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["vce-hydroponic-nft-salad-greens", "uga-arugula-hydroponic-substrate-trials-2023"]
       }
     },
     "compatibilityProfile": {
       "profileVersion": 1,
       "hydroponicSuitability": {
-        "status": "pending",
-        "reason": "Crop-level hydroponic performance is plausible but this Wave 1 identity has no accepted system-specific evidence."
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": ["vce-hydroponic-nft-salad-greens", "uga-arugula-hydroponic-substrate-trials-2023"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {"level": "species", "taxon": "Eruca vesicaria subsp. sativa / arugula crop type"},
+            "note": "Crop-level NFT guidance plus a named Slow Bolt DWC research case. Does not establish compatibility with every cultivar, appliance, pod layout, or nutrient formula."
+          }
+        ]
       },
       "growthHabits": {
         "status": "known",
@@ -76,7 +112,7 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-arugula-wave1"
+              "uw-arugula-extension-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
@@ -115,7 +151,7 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-arugula-wave1"
+              "uw-arugula-extension-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
@@ -145,44 +181,64 @@
       "brassica oleracea",
       "dwarf blue curled type"
     ],
-    "summary": "Dwarf Blue Curled Kale is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Dwarf Blue Curled represents a curly kale type within Brassica oleracea; the catalog does not claim a verified named cultivar or measured size for this record. Kale is a cool-season leafy crop, and established plants can be harvested repeatedly by removing older leaves while younger leaves continue.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Dwarf Blue Curled Kale identity is resolved at Brassica oleracea and Dwarf blue curled type type scope",
-        "guidance": "Dwarf Blue Curled Kale is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Brassica oleracea kale type; cultivar and exact dimensions are not established",
+        "guidance": "Garden represents a Dwarf Blue Curled horticultural type within Brassica oleracea, not a verified named cultivar. The available crop-level sources describe kale generally; they do not prove that this catalog record has a specific dwarf height, spread, or cultivar performance.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-kale-wave1"
-        ]
+        "sourceIds": ["uwmadison-kale-harvest-2021"]
+      },
+      "growth": {
+        "short": "Leafy, non-heading crop; exact mature size for this type is unknown",
+        "guidance": "Penn State describes kale as a non-heading cole crop, while UW–Madison notes multiple horticultural kale types. Those sources support leafy crop habit but do not supply a measured mature height or spread for this Dwarf Blue Curled catalog type.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["psu-cole-crops-home-garden-2026", "uwmadison-kale-harvest-2021"]
+      },
+      "cultivation": {
+        "short": "Cool-season outdoor crop that tolerates frost; summer heat can limit performance",
+        "guidance": "UW–Madison Extension describes kale as a cool-season plant that can withstand frost and snowfall but does not thrive in summer heat. This is crop-level outdoor context; it does not establish an indoor climate target or hydroponic production parameters for this type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-kale-harvest-2021"]
+      },
+      "care": {
+        "short": "Keep younger leaves growing during repeated harvest",
+        "guidance": "UW–Madison recommends cutting older, larger leaves and allowing younger leaves to continue growing through the season. That is a crop-level maintenance pattern, not evidence of a special pruning response in the Dwarf Blue Curled type.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-kale-harvest-2021"]
       },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Remove older outer leaves; no type-specific shaping schedule is established",
+        "guidance": "Use the cited repeated-leaf harvest pattern: remove older leaves while protecting younger active growth. The sources reviewed do not establish a separate shaping or topping schedule for this catalog type.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-kale-wave1"
-        ]
+        "sourceIds": ["uwmadison-kale-harvest-2021", "psu-cole-crops-home-garden-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-kale-wave1"
-        ]
+        "short": "Begin after several leaves develop; harvest older leaves as they grow",
+        "guidance": "UW–Madison advises harvesting once several leaves have developed, cutting older larger leaves and letting younger leaves continue. Penn State describes kale leaves at multiple harvest stages, with young tender leaves suitable for salads and older leaves commonly cooked. Timing and leaf size vary; no cultivar-specific maturity date is established here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-kale-harvest-2021", "psu-cole-crops-home-garden-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Summer heat may slow or reduce quality; check the plant before diagnosing other stress",
+        "guidance": "UW–Madison notes kale does not thrive in summer heat. The crop-level source does not establish a Dwarf Blue Curled disease-resistance claim or a specific pest susceptibility; inspect actual symptoms and use local diagnosis before treating.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-kale-wave1"
-        ]
+        "sourceIds": ["uwmadison-kale-harvest-2021"]
+      },
+      "thinning": {
+        "short": "UW field spacing is not a Garden pod count",
+        "guidance": "UW–Madison's approximately 8-inch outdoor planting distance is field guidance for kale. The exact spacing of this type in a container or Garden system is not established, so field distance is not converted into pod count.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["uwmadison-kale-harvest-2021"]
       }
     },
     "compatibilityProfile": {
@@ -268,44 +324,70 @@
       "beta vulgaris",
       "rainbow type"
     ],
-    "summary": "Rainbow Swiss Chard is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Rainbow Swiss chard is a blend of colored chard varieties, not one uniform cultivar. It is grown for broad leaves and colorful stalks; established plants can provide repeat outer-leaf harvests. Extension sources describe summer slowing and manageable pests, but do not establish a single mature size for this blend.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Rainbow Swiss Chard identity is resolved at Beta vulgaris and Rainbow type type scope",
-        "guidance": "Rainbow Swiss Chard is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Rainbow is a blend of colored varieties of Beta vulgaris leaf beet",
+        "guidance": "UW–Madison describes ‘Rainbow’ as a blend of several colored Swiss chard varieties. Chard is a leafy beet form of Beta vulgaris; the article also uses the horticultural name var. cicla. Garden represents a color blend, not one genetically uniform named cultivar, and does not apply dimensions or maturity dates listed for other chard varieties.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-chard-wave1"
+          "uwmadison-swiss-chard-2026"
         ]
       },
+      "growth": {
+        "short": "Large crinkled leaves with prominent, often colorful stalks",
+        "guidance": "UW–Madison describes chard as a rosette of large, crinkled leaves with enlarged midribs and stout petioles; colors vary among varieties from white/green through yellow, orange, red and pink. That range explains the Rainbow blend but is not a fixed color set or plant-size specification for every packet.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-swiss-chard-2026"]
+      },
+      "cultivation": {
+        "short": "Full sun is preferred; partial shade is tolerated in fertile, drained soil",
+        "guidance": "UW–Madison recommends full sun, while noting tolerance of partial shade, fertile well-worked soil and good drainage. It reports that high temperatures slow leaf production and that chard tolerates heat better than spinach. These are crop-level garden observations, not indoor-light or hydroponic specifications for the Rainbow blend.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-swiss-chard-2026", "umn-spinach-swiss-chard-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Keep moisture even for continued leaf production; summer growth may slow",
+        "guidance": "UW–Madison says chard tolerates some drying but produces best with evenly moist soil. UMN notes that dry spells stop new-leaf production and expansion, with growth resuming after soil moisture improves. This is soil-moisture guidance; it does not imply a fixed reservoir volume or nutrient formula.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-swiss-chard-2026", "umn-spinach-swiss-chard-home-gardens-2026"]
+      },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Remove older outer leaves without damaging the crown or inner growth",
+        "guidance": "UW–Madison advises breaking or cutting outer leaves near the base while avoiding inner leaves and growing points. This is a harvest-led maintenance practice, not a fixed pruning schedule; remove a bolting plant when it begins flowering if it is no longer producing useful leaves.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-chard-wave1"
+          "uwmadison-swiss-chard-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick outer leaves as they reach usable size for repeat harvest",
+        "guidance": "UW–Madison says leaves around 3 inches long can be picked a few at a time, with continuous harvest possible; individual leaves should be cut or broken near the base without damaging the growing point. Leaves may become more bitter in midsummer and milder again as cooler weather returns. The article's 55–65 day and height figures belong to other named varieties, not this Rainbow blend.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-chard-wave1"
+          "uwmadison-swiss-chard-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Occasional aphids or leafminers; inspect leaves before removing them",
+        "guidance": "UW–Madison reports few serious chard problems; aphids and spinach leafminers may occur. Aphids cluster on foliage; leafminers leave internal tunnels, and affected leaves can be removed and discarded. The source does not establish pest or disease resistance for the Rainbow blend.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-swiss-chard-2026"]
+      },
+      "thinning": {
+        "short": "Outdoor row spacing varies with desired leaf size; it is not indoor pod spacing",
+        "guidance": "UW–Madison gives outdoor soil spacing and notes crowded chard tends to produce smaller leaves, while closer spacing can suit baby-leaf harvest. The exact field distances are not mapped to a Garden system pod count or a universal indoor recommendation.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-chard-wave1"
-        ]
+        "sourceIds": ["uwmadison-swiss-chard-2026"]
       }
     },
     "compatibilityProfile": {
@@ -391,44 +473,72 @@
       "brassica rapa",
       "bok choy type"
     ],
-    "summary": "Bok Choy is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Bok choy (pak choi) forms an upright clump of dark leaves with thick pale stalks. UMN Extension describes steady moisture, cold-triggered bolting risk, and harvesting outer leaves before the plant loses quality; its planting dates and spacing are Minnesota field guidance, not hydroponic settings.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Bok Choy identity is resolved at Brassica rapa and Bok choy type type scope",
-        "guidance": "Bok Choy is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Bok choy / pak choi; UMN identifies the type as Brassica rapa chinensis",
+        "guidance": "The catalog represents bok choy at Brassica rapa species and crop-type scope. UMN Extension distinguishes bok choy (B. rapa chinensis), with thick stalks, from barrel-headed Chinese/Napa cabbage (B. rapa pekinensis). UMN reports no local bok-choy variety trials; no cultivar is asserted here.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-chinese-cabbage-home-gardens-2026"
         ]
       },
+      "growth": {
+        "short": "Upright clump of dark leaves with thick white or light-green stalks",
+        "guidance": "UMN Extension describes bok choy as an upright clump of dark-green leaves, each with a thick white or light-green stalk. This is crop-type morphology, not a named-cultivar size specification.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "Fertile, well-drained but moisture-retentive soil supports steady growth",
+        "guidance": "UMN recommends fertile soil that drains while retaining moisture and emphasizes steady water and nutrient uptake. Its pH range, planting calendar and row distances are Minnesota home-garden guidance; they do not establish a nutrient recipe, indoor light requirement or hydroponic spacing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Avoid prolonged cold exposure that can trigger bolting; keep moisture steady",
+        "guidance": "UMN reports that late spring frost or more than a week of nights below 50°F can lead bok choy to bolt after warm weather returns; warm weather can also trigger flowering. The thresholds are Minnesota outdoor guidance, not universal indoor control values. Uneven moisture can reduce quality; monitor leaves and stalks rather than assuming a single cause.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
+      },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Remove outer leaves individually or cut the mature clump",
+        "guidance": "UMN describes harvesting the oldest, largest outer leaves while younger leaves continue growing, or cutting the whole plant near mature size. This is harvest management, not a routine shaping-pruning requirement.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-chinese-cabbage-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick outer leaves while young growth continues; harvest before quality declines",
+        "guidance": "UMN says bok choy can be harvested a few leaves at a time, beginning with older outer leaves. Dwarf types may be about 6 inches tall and full-size types about a foot, but the catalog does not represent either as this identity's cultivar-specific mature size. Harvest the whole plant before open flowering if it bolts; UMN notes quality will not hold if left in the garden too long.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-brassicas-wave1"
+          "umn-chinese-cabbage-home-gardens-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Scout for flea-beetle holes, leaf-feeding caterpillars and bolting",
+        "guidance": "UMN identifies flea-beetle holes, feeding by cabbageworm/looper/diamondback-moth larvae, and clubroot swelling with stunting as issues affecting bok choy. Young plants are especially vulnerable to insects. Warm weather can cause flowering; diagnose symptoms before attributing them to disease.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-chinese-cabbage-home-gardens-2026"
+        ]
+      },
+      "thinning": {
+        "short": "UMN field thinning distances are not indoor pod spacing",
+        "guidance": "UMN's 12–18 inch thinning guidance is for outdoor Chinese cabbage/bok-choy plantings in Minnesota. It is not a universal bok-choy cultivar spacing and must not be translated into Garden system pod counts.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-chinese-cabbage-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -514,21 +624,42 @@
       "spinacia oleracea",
       "baby-leaf type"
     ],
-    "summary": "Baby Spinach is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Baby spinach is a harvest stage/type of Spinacia oleracea, not a separate species or named cultivar. USU Extension describes spinach as a cool-season crop: heat and long days promote bolting and bitter flavor, while older leaves can be picked to let younger ones continue.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Baby Spinach identity is resolved at Spinacia oleracea and Baby-leaf type type scope",
-        "guidance": "Baby Spinach is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Baby-leaf harvest type of Spinacia oleracea; no cultivar specified",
+        "guidance": "This identity represents spinach harvested as baby leaves, not a distinct botanical species or named cultivar. USU Extension's agronomy applies to spinach crop generally; it does not establish unique baby-spinach cultivar traits.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "usu-spinach"
         ]
       },
+      "growth": {
+        "short": "Leafy rosette; warm, long-day conditions encourage flowering",
+        "guidance": "USU Extension describes spinach as a cool-season leafy crop. Long days and warm summer temperatures can cause flowering and off-flavored or bitter leaves. This is species/crop-level behavior, not a claim about a specific slow-bolting cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-spinach"]
+      },
+      "cultivation": {
+        "short": "Cool-season growth in fertile, well-drained soil with consistent moisture",
+        "guidance": "USU recommends fertile, well-drained soil and regular watering; moisture fluctuations can toughen leaves, slow development and contribute to off-flavors. The source's temperature and water amounts are outdoor Utah guidance, not indoor light or hydroponic nutrient targets.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-spinach"]
+      },
+      "care": {
+        "short": "Protect quality by avoiding heat and water stress",
+        "guidance": "USU reports best growth below about 75°F and reduced quality, flowering and bitter/off flavors in high summer heat. Maintain steady moisture and control weeds with shallow cultivation; these are crop-level garden recommendations, not a system-specific climate recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-spinach"]
+      },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Remove older leaves without damaging the growing point",
+        "guidance": "USU advises picking older leaves first so younger leaves continue growing; the whole leaf canopy can be cut close to the soil only if the growing point is not damaged. The source describes field spinach, so regrowth is not guaranteed in every container or system.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
@@ -536,36 +667,51 @@
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Pick usable leaves before the flower stalk forms",
+        "guidance": "USU says individual leaves may be picked before the flower stalk forms, with older leaves removed first. The profile's baby-leaf label indicates intended harvest stage; the source does not define a single universal leaf size or harvest date for every baby-leaf planting.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
           "usu-spinach"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Heat/long days cause bolting; aphids, slugs and flea beetles leave clues",
+        "guidance": "USU links hot, long-day conditions with flowering and off-flavors. It describes aphids as soft-bodied insects under leaves with crinkled/curling foliage, slugs as chewing holes, and flea beetles as small shot holes on seedlings. Confirm the organism and local guidance before treatment.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
           "usu-spinach"
         ]
       },
+      "thinning": {
+        "short": "Thin field stands by plant stage; row distances are not pod spacing",
+        "guidance": "USU advises thinning outdoor spinach stands at 3–4 true leaves and gives field row distances. These measurements describe garden soil production and do not establish baby-spinach spacing in a hydroponic appliance or indoor container.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-spinach"]
+      },
       "hydroponics": {
-        "short": "Hydroponic evidence remains explicitly pending",
-        "guidance": "Crop-level hydroponic performance is plausible but this Wave 1 identity has no accepted system-specific evidence.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Hydroponic baby spinach is documented, with important system and heat caveats",
+        "guidance": "UGA Extension reports greenhouse spinach production in deep-water culture using selected cultivars and recommends matching cultivar and system to heat conditions. UF/IFAS cautions that warm solution and disease pressure can make DWC/raft production more problematic than media-based vertical systems in Florida. These are regional production contexts, not a guarantee for every baby-leaf selection or home appliance; no nutrient/EC recipe is transferred here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["uga-spinach-greenhouse-hydroponics-c1304", "ufifas-leafy-greens-hydroponics-hs1279"]
       }
     },
     "compatibilityProfile": {
       "profileVersion": 1,
       "hydroponicSuitability": {
-        "status": "pending",
-        "reason": "Crop-level hydroponic performance is plausible but this Wave 1 identity has no accepted system-specific evidence."
+        "status": "compatible",
+        "evidence": [
+          {
+            "sourceIds": ["uga-spinach-greenhouse-hydroponics-c1304", "ufifas-leafy-greens-hydroponics-hs1279"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {"level": "species", "taxon": "Spinacia oleracea; baby-leaf harvest type"},
+            "note": "Hydroponic spinach is documented in controlled production; system, cultivar, heat, oxygen and disease conditions matter. Not a universal appliance or nutrient prescription."
+          }
+        ]
       },
       "growthHabits": {
         "status": "known",
@@ -644,17 +790,25 @@
       "solanum lycopersicum",
       "roma type"
     ],
-    "summary": "Roma Tomato is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Roma denotes a paste/plum tomato class rather than one cultivar: Johnny's describes this class as generally meatier and less juicy, suited to sauce and processing, and offered in both determinate and indeterminate varieties. This record does not assign one growth habit or processing result to every Roma selection.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Roma Tomato identity is resolved at Solanum lycopersicum and Roma type type scope",
-        "guidance": "Roma Tomato is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Roma/paste horticultural class; not one named cultivar",
+        "guidance": "Johnny's groups Roma with paste, plum, processing, and sauce tomatoes, while its catalog includes both determinate and indeterminate products. Garden's Roma identity is therefore a type-level record; specific cultivar, habit, size, and performance are not implied.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "johnnys-tomato",
+          "johnnys-paste-tomato-types-2026"
         ]
+      },
+      "growth": {
+        "short": "Paste-type fruit is typically meatier and less juicy than other tomato classes",
+        "guidance": "Johnny's describes paste/plum/Roma as a broad class with typically meatier, less juicy fruit and processing uses. This is a type-level description, not a measurement or universal trait of every Roma-named variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-paste-tomato-types-2026"]
       },
       "cultivation": {
         "short": "Grow in warmth and full sun after frost risk has passed",
@@ -671,40 +825,37 @@
         "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
-      },
-      "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Choose support from the actual cultivar's growth habit",
+        "guidance": "Johnny's offers determinate and indeterminate varieties within the paste/Roma class. Check the exact seed variety before deciding whether it needs staking or how to shape it; this profile does not prescribe one Roma-wide pruning or support rule.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "johnnys-paste-tomato-types-2026"
+        ]
+      },
+      "harvest": {
+        "short": "Pick usable-size, usable-color fruit; mature-green fruit may ripen indoors",
+        "guidance": "UMN Extension recommends harvesting tomatoes at usable size and color; many detach easily when ripe or nearly ripe, while some are cut from the plant in clusters. Pick remaining fruit when frost threatens. Fully developed mature-green fruit can often ripen indoors at room temperature, while truly green fruit may not ripen to good flavor. These are Minnesota home-garden crop cues, not a fixed calendar or cultivar-specific ripening guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
+      },
+      "problems": {
+        "short": "Recognize fruit disorders and leaf spots early",
+        "guidance": "On outdoor garden tomatoes, blossom-end rot appears as a tan-to-black flattened or scabbed patch at the blossom end; fluctuating soil moisture can contribute, and the symptom alone does not show that soil lacks calcium. Growth cracks may radiate from the stem or encircle fruit after rapid growth during heavy rain or heat, or after water returns following drought. Keep soil moisture steadier with regular root-zone watering and mulch. Brown-to-black leaf spots often start on lower leaves; early blight, Septoria, and bacterial spot can look alike at first. Keep foliage dry, improve airflow with support, remove spotted leaves early, and seek diagnosis before targeted treatment. UMN reports that larger slicer types are usually more prone to blossom-end rot than cherry types; this crop-type comparison does not establish this identity's susceptibility or resistance. This is outdoor garden guidance, not a hydroponic diagnosis.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-tomato-disorders-2024",
+          "umn-tomato-leaf-spots-2024"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
+        "short": "Sustained heat can cause tomato flowers to drop before fruit set",
+        "guidance": "UMN Extension reports that sustained heat above 85°F by day and 70°F at night can stress tomatoes and make flowers harder to pollinate during their roughly 50-hour pollination window; affected blossoms may dry, drop, and fail to set fruit. If flowers fall before fruit develops, compare recent day and night conditions. This is general outdoor tomato heat-response guidance, not a cultivar-specific tolerance rating or a diagnosis. The source notes that cooler nights can improve conditions for later flowers.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomato-heat-response-2026"]
       }
     },
     "compatibilityProfile": {
@@ -714,24 +865,8 @@
         "reason": "Wave 1 did not establish crop-specific system suitability for this identity."
       },
       "growthHabits": {
-        "status": "known",
-        "value": [
-          "bushy"
-        ],
-        "evidence": [
-          {
-            "sourceIds": [
-              "johnnys-tomato"
-            ],
-            "evidenceType": "source_backed",
-            "confidence": "medium",
-            "taxonomicScope": {
-              "level": "species",
-              "taxon": "Solanum lycopersicum"
-            },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
-          }
-        ]
+        "status": "unknown",
+        "reason": "The Roma/paste class includes both determinate and indeterminate varieties; this type-level identity does not specify one growth habit."
       },
       "matureSize": {
         "height": {
@@ -790,17 +925,25 @@
       "solanum lycopersicum",
       "beefsteak type"
     ],
-    "summary": "Beefsteak Tomato is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Beefsteak is a large-fruited tomato class commonly used for slices, sandwiches, and burgers—not one cultivar. UMN notes larger slicer types are more prone to blossom-end rot than cherry types, but no individual Beefsteak variety's susceptibility, growth habit, or mature dimensions are established here.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Beefsteak Tomato identity is resolved at Solanum lycopersicum and Beefsteak type type scope",
-        "guidance": "Beefsteak Tomato is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Large-fruited slicing class; not a single Beefsteak cultivar",
+        "guidance": "Johnny's describes beefsteak as a large-fruited, meaty, juicy tomato class commonly sliced for sandwiches and burgers, with multiple open-pollinated, heirloom, and hybrid selections. This record is type-level and does not assign a universal vine habit or exact fruit size.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "johnnys-tomato",
+          "johnnys-beefsteak-tomato-types-2026"
         ]
+      },
+      "growth": {
+        "short": "Large, meaty fruits are commonly used as slicers",
+        "guidance": "The beefsteak class includes large-fruited types; fruit size and shape vary among the distinct cultivars in this group. Do not convert a class descriptor into a weight or maturity promise for an unnamed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["johnnys-beefsteak-tomato-types-2026"]
       },
       "cultivation": {
         "short": "Choose a warm, sunny outdoor position",
@@ -826,31 +969,28 @@
         ]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
+        "short": "Pick usable-size, usable-color fruit; mature-green fruit may ripen indoors",
+        "guidance": "UMN Extension recommends harvesting tomatoes at usable size and color; many detach easily when ripe or nearly ripe, while some are cut from the plant in clusters. Pick remaining fruit when frost threatens. Fully developed mature-green fruit can often ripen indoors at room temperature, while truly green fruit may not ripen to good flavor. These are Minnesota home-garden crop cues, not a fixed calendar or cultivar-specific ripening guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomatoes-home-gardens-2024"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Recognize fruit disorders and leaf spots early",
+        "guidance": "On outdoor garden tomatoes, blossom-end rot appears as a tan-to-black flattened or scabbed patch at the blossom end; fluctuating soil moisture can contribute, and the symptom alone does not show that soil lacks calcium. Growth cracks may radiate from the stem or encircle fruit after rapid growth during heavy rain or heat, or after water returns following drought. Keep soil moisture steadier with regular root-zone watering and mulch. Brown-to-black leaf spots often start on lower leaves; early blight, Septoria, and bacterial spot can look alike at first. Keep foliage dry, improve airflow with support, remove spotted leaves early, and seek diagnosis before targeted treatment. UMN reports that larger slicer types are usually more prone to blossom-end rot than cherry types; this crop-type comparison does not establish this identity's susceptibility or resistance. This is outdoor garden guidance, not a hydroponic diagnosis.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "umn-tomato-disorders-2024",
+          "umn-tomato-leaf-spots-2024"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
+        "short": "Sustained heat can cause tomato flowers to drop before fruit set",
+        "guidance": "UMN Extension reports that sustained heat above 85°F by day and 70°F at night can stress tomatoes and make flowers harder to pollinate during their roughly 50-hour pollination window; affected blossoms may dry, drop, and fail to set fruit. If flowers fall before fruit develops, compare recent day and night conditions. This is general outdoor tomato heat-response guidance, not a cultivar-specific tolerance rating or a diagnosis. The source notes that cooler nights can improve conditions for later flowers.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomato-heat-response-2026"]
       }
     },
     "compatibilityProfile": {
@@ -860,24 +1000,8 @@
         "reason": "Wave 1 did not establish crop-specific system suitability for this identity."
       },
       "growthHabits": {
-        "status": "known",
-        "value": [
-          "spreading"
-        ],
-        "evidence": [
-          {
-            "sourceIds": [
-              "johnnys-tomato"
-            ],
-            "evidenceType": "source_backed",
-            "confidence": "medium",
-            "taxonomicScope": {
-              "level": "species",
-              "taxon": "Solanum lycopersicum"
-            },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
-          }
-        ]
+        "status": "unknown",
+        "reason": "Beefsteak is a fruit-type class with multiple varieties; this identity does not resolve one determinate or indeterminate habit."
       },
       "matureSize": {
         "height": {
@@ -936,17 +1060,25 @@
       "solanum lycopersicum",
       "yellow pear type"
     ],
-    "summary": "Yellow Pear Tomato is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Yellow Pear is an heirloom with small golden, pear-shaped fruits, reported by UF/IFAS at about 1–2 inches long. Its vigorous vines may exceed 8 feet and need support; keep soil moisture steady to reduce cracking. These are source-described garden traits, not indoor dimensions or a hydroponic recommendation.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Yellow Pear Tomato identity is resolved at Solanum lycopersicum and Yellow pear type type scope",
-        "guidance": "Yellow Pear Tomato is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Named heirloom Yellow Pear with golden, distinctly pear-shaped fruit",
+        "guidance": "UF/IFAS describes Yellow Pear as an heirloom bearing golden fruit about 1–2 inches long with a distinct pear shape and mild flavor. The source is specific to the named variety; its Florida context is not a universal performance guarantee.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "johnnys-tomato",
+          "ufifas-yellow-pear-tomato-2026"
         ]
+      },
+      "growth": {
+        "short": "Small golden fruits; vigorous vines may exceed 8 feet",
+        "guidance": "UF/IFAS reports 1–2-inch golden, pear-shaped fruit and vigorous vines that can grow above 8 feet, recommending support. The vine-length figure is not a stable indoor height or footprint; no hydroponic fit follows from it.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-yellow-pear-tomato-2026"]
       },
       "cultivation": {
         "short": "Tomatoes need warmth, full sun and a frost-free growing window",
@@ -957,46 +1089,44 @@
       },
       "care": {
         "short": "Water the root zone consistently and keep leaves dry",
-        "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and advises against overhead sprinkling because wet leaves are more disease-prone. Apply this as outdoor soil guidance; no Yellow Pear irrigation quantity or hydroponic rule is established.",
+        "guidance": "UMN Extension recommends steady soil moisture for tomato fruit quality and advises against overhead sprinkling because wet leaves are more disease-prone. UF/IFAS also advises keeping soil moist to reduce cracking in Yellow Pear fruit. These are outdoor soil recommendations, not a measured indoor watering quantity or hydroponic reservoir rule.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
+        "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024", "ufifas-yellow-pear-tomato-2026"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
-        "evidenceType": "garden_adaptation",
+        "short": "Support vigorous vines; no pruning schedule is established",
+        "guidance": "UF/IFAS reports vigorous vines above 8 feet and recommends support. It does not provide a Yellow Pear pruning schedule; do not infer that removing suckers or foliage is required.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "ufifas-yellow-pear-tomato-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
+        "short": "Pick golden pear-shaped fruit as it reaches usable color and size",
+        "guidance": "UF/IFAS describes Yellow Pear fruit as golden, pear-shaped, about 1–2 inches long, and salad-ready through summer. UMN's general tomato guidance recommends harvesting at usable size and color; neither source sets a fixed Yellow Pear calendar for every region or system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-yellow-pear-tomato-2026", "umn-tomatoes-home-gardens-2024"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Recognize fruit disorders and leaf spots early",
+        "guidance": "On outdoor garden tomatoes, blossom-end rot appears as a tan-to-black flattened or scabbed patch at the blossom end; fluctuating soil moisture can contribute, and the symptom alone does not show that soil lacks calcium. Growth cracks may radiate from the stem or encircle fruit after rapid growth during heavy rain or heat, or after water returns following drought. UF/IFAS specifically warns that Yellow Pear fruit may crack if soil is not kept moist; this is a named-variety management cue, not proof of disease or a guarantee that cracking can be prevented. Brown-to-black leaf spots often start on lower leaves; early blight, Septoria, and bacterial spot can look alike at first. Keep foliage dry, improve airflow with support, remove spotted leaves early, and seek diagnosis before targeted treatment. This is outdoor garden guidance, not a hydroponic diagnosis.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-tomato"
+          "umn-tomato-disorders-2024",
+          "umn-tomato-leaf-spots-2024",
+          "ufifas-yellow-pear-tomato-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-tomato"
-        ]
+        "short": "Sustained heat can cause tomato flowers to drop before fruit set",
+        "guidance": "UMN Extension reports that sustained heat above 85°F by day and 70°F at night can stress tomatoes and make flowers harder to pollinate during their roughly 50-hour pollination window; affected blossoms may dry, drop, and fail to set fruit. If flowers fall before fruit develops, compare recent day and night conditions. This is general outdoor tomato heat-response guidance, not a cultivar-specific tolerance rating or a diagnosis. The source notes that cooler nights can improve conditions for later flowers.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomato-heat-response-2026"]
       }
     },
     "compatibilityProfile": {
@@ -1013,15 +1143,14 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-tomato"
+              "ufifas-yellow-pear-tomato-2026"
             ],
             "evidenceType": "source_backed",
-            "confidence": "medium",
+            "confidence": "high",
             "taxonomicScope": {
-              "level": "species",
-              "taxon": "Solanum lycopersicum"
+              "level": "identity"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "UF/IFAS describes vigorous vines and recommends support; the controlled-vocabulary spreading value is not a numerical footprint."
           }
         ]
       },
@@ -1082,66 +1211,77 @@
       "capsicum annuum",
       "jalapeño type"
     ],
-    "summary": "Jalapeño Pepper is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Jalapeño is a compact-fruited, thick-walled Capsicum annuum type used fresh or processed. It can be harvested green at mature size or left to ripen; no single cultivar size, harvest date, or heat value is implied by this type-level record.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Jalapeño Pepper identity is resolved at Capsicum annuum and Jalapeño type type scope",
-        "guidance": "Jalapeño Pepper is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "guidance": "This record represents the Jalapeño horticultural type within Capsicum annuum, not a named seed cultivar. Iowa State describes the type as small, blunt-oblong, thick-walled, and hot, with fresh and processed uses. UMN Extension specifically confirms that jalapeños can be harvested and eaten green; these type references do not establish a cultivar-specific size, heat value, or harvest date.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "usu-peppers"
+          "usu-peppers",
+          "umn-peppers-home-gardens-2026",
+          "iastate-growing-peppers-home-garden-2026"
         ]
       },
       "cultivation": {
-        "short": "Keep the root zone evenly moist; avoid wetting foliage",
-        "guidance": "UMN Extension recommends consistent soil moisture for quality pepper fruit and discourages overhead sprinkling because wet foliage is more disease-prone. This is outdoor Capsicum guidance; Minnesota temperatures and field conditions do not define an indoor or hydroponic setpoint for Jalapeño.",
+        "short": "Warmth and steady root-zone moisture support flowering and fruit set",
+        "guidance": "UMN Extension reports that dry soil, daytime temperatures above 90°F, and nights below 60°F or above 70°F can weaken pepper growth in its Minnesota garden context. Maintain even root-zone moisture and avoid overhead sprinkling. Treat those temperature observations as regional outdoor guidance, not Jalapeño-specific thresholds or indoor/hydroponic setpoints.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["umn-peppers-home-gardens-2026"]
       },
       "care": {
-        "short": "Avoid drought stress and shallow surface-only watering",
-        "guidance": "UMN Extension notes that dry soil can weaken pepper growth and light, surface-only watering can encourage shallow roots. Check moisture through the root zone; do not convert its garden watering schedule into a universal container or system volume.",
-        "evidenceType": "source_backed",
-        "confidence": "high",
+        "short": "Avoid excess nitrogen and protect healthy fruit-covering foliage",
+        "guidance": "UMN Extension warns that excess nitrogen can produce leafy, bushy plants that bear fruit slowly. It also describes sunscald as pale, damaged patches on fruit exposed by an insufficient leaf canopy in hot, dry weather. Garden adaptation: avoid removing healthy leaves solely for appearance, and investigate nutrition or exposure before treating slow fruiting as a Jalapeño-specific defect. The source does not establish a fertilizer dose for pots or hydroponics.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
         "sourceIds": ["umn-peppers-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
+        "short": "Avoid removing foliage that shades developing peppers",
+        "guidance": "UMN Extension links inadequate leaf cover with sunscald on exposed fruit during hot, dry weather. Preserve healthy canopy when pruning; remove damaged growth selectively and use support only if the actual plant needs it. This is a Garden adaptation from outdoor pepper guidance, not a cultivar-specific pruning schedule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "usu-peppers"
+          "usu-peppers",
+          "umn-peppers-home-gardens-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Jalapeños can be picked green once mature size is reached",
+        "guidance": "UMN Extension says peppers may be harvested at mature size without waiting for red color, and specifically names jalapeños as usable while green. Clip the stem with clean, sharp shears when it does not release easily; continued picking allows the plant to keep flowering and setting fruit. Mature size and timing vary by the actual type and growing conditions, so this is not a fixed day-count promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-peppers"
+          "usu-peppers",
+          "umn-peppers-home-gardens-2026"
         ]
       },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+      "uses": {
+        "short": "Usable fresh while green or ripe; also suited to processing",
+        "guidance": "Iowa State lists Jalapeño for fresh and processed use, and UMN Extension names it as a pepper that can be used while green. Oregon State documents green-to-red ripening in representative jalapeño cultivars; that color progression does not mean every cataloged type has one fixed size or day-count.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
+        "sourceIds": ["iastate-growing-peppers-home-garden-2026", "umn-peppers-home-gardens-2026", "osu-peppers-horticulture-2026"]
+      },
+      "problems": {
+        "short": "Check fruit ends, leaves, stems, and flowers before diagnosing",
+        "guidance": "UMN Extension describes blossom-end rot as a sunken, tan-to-dark lesion at the fruit end, often associated with uneven water; sunscald as pale patches on exposed fruit; aphids as colonies with curled or sticky leaves; and hot-day/night flower drop as a cause of reduced set. These are crop-level warning signs, not proof of a particular cause on an individual plant. Record the symptom and conditions before intervening.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-peppers"
+          "umn-peppers-home-gardens-2026"
         ]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Heat-related flower drop can reduce fruit set",
+        "guidance": "UMN Extension notes that hot days together with hot nights can cause pepper flowers to drop and reduce production in Minnesota gardens. Record whether flowers fall before or after setting fruit and the recent temperature context; do not treat isolated flower drop as a disease diagnosis or apply leaf-herb flower-removal practices to this fruiting crop.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "usu-peppers"
+          "umn-peppers-home-gardens-2026"
         ]
       }
     },
@@ -1228,53 +1368,68 @@
       "capsicum annuum",
       "cayenne type"
     ],
-    "summary": "Cayenne Pepper is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Cayenne is a long, thin, wrinkled Capsicum annuum type used fresh or dried and ground. Its high pungency and harvest form distinguish it from sweet peppers, but exact fruit dimensions and heat vary by cultivar and growing conditions.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Cayenne Pepper identity is resolved at Capsicum annuum and Cayenne type type scope",
-        "guidance": "Cayenne Pepper is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "guidance": "Iowa State describes Cayenne as medium-sized, very thin and tapered, very hot, and useful fresh or processed. Oregon State also describes the type as slender and wrinkled and notes fresh or dried/powdered uses. These are type references, not a guarantee of one cultivar's exact fruit size or Scoville value.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "usu-peppers"
+          "usu-peppers",
+          "iastate-growing-peppers-home-garden-2026",
+          "osu-peppers-horticulture-2026"
         ]
+      },
+      "cultivation": {
+        "short": "Warm-season pepper; keep root-zone moisture even",
+        "guidance": "UMN Extension reports that dry soil and temperature extremes can weaken pepper growth, and that consistent moisture supports fruit quality. Water the soil rather than wetting foliage. Its outdoor Minnesota thresholds are regional observations, not Cayenne-specific greenhouse or hydroponic setpoints.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Avoid excess nitrogen and preserve protective foliage",
+        "guidance": "UMN Extension warns that excess nitrogen can produce leafy plants that fruit slowly and describes sunscald on exposed peppers with insufficient leaf cover. Garden adaptation: assess nutrition and exposure before intervening; avoid removing healthy canopy without a reason. No Cayenne-specific fertilizer rate is established.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
-        "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
+        "short": "Shape selectively and retain leaf cover around fruit",
+        "guidance": "UMN Extension describes sunscald on fruit exposed when pepper foliage is sparse in hot, dry weather. Retain healthy canopy while shaping, remove damaged growth selectively, and support only if the observed plant needs it. This is crop-level outdoor guidance, not a Cayenne pruning schedule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "usu-peppers"
-        ]
+        "sourceIds": ["usu-peppers", "umn-peppers-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest by crop maturity cues, not a fixed calendar promise",
-        "guidance": "Use firmness, color, size, and plant condition as the harvest signals. Source calendars remain crop/type references rather than guarantees for every system.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-peppers"
-        ]
+        "short": "Pick mature fruit; red-ripe fruit can be dried or powdered",
+        "guidance": "Oregon State describes Cayenne fruit as ripening green to bright red and used fresh or dried and powdered. It provides a type-level reference, not a fixed harvest date for this catalog identity. UMN advises clipping fruit with shears when it does not separate readily; repeated picking allows continued flowering and fruit set.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["osu-peppers-horticulture-2026", "umn-peppers-home-gardens-2026"]
+      },
+      "uses": {
+        "short": "Fresh, dried, powdered, or used in hot sauces",
+        "guidance": "Iowa State lists Cayenne for fresh and processed uses; Oregon State notes fresh use, drying/powdering, and bottled hot sauces. These are type-level culinary uses. Wear gloves when handling hot peppers and avoid touching eyes.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["iastate-growing-peppers-home-garden-2026", "osu-peppers-horticulture-2026", "umn-peppers-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Inspect fruit ends, exposed surfaces, and sticky or curled leaves",
+        "guidance": "UMN Extension describes blossom-end rot as a sunken tan-to-dark lesion at the fruit end, sunscald as pale damage on exposed fruit, and aphids as colonies with curled or sticky leaves. These are pepper-crop warning signs, not a diagnosis of Cayenne; record symptoms and recent conditions before treatment.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-peppers"
-        ]
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
       },
       "flowering": {
-        "short": "Flowering and fruit set are useful lifecycle events",
-        "guidance": "Record first flowers, fruit set, and any flower drop as separate observations. Do not suppress productive flowering by copying leaf-herb care rules.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "usu-peppers"
-        ]
+        "short": "Heat can coincide with flower drop and reduced set",
+        "guidance": "UMN Extension reports that hot days with hot nights can cause pepper flowers to drop in Minnesota gardens. Track flower loss separately from fruit set and note recent heat; this is not a Cayenne-specific prediction.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-peppers-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -1286,7 +1441,8 @@
       "growthHabits": {
         "status": "known",
         "value": [
-          "upright"
+          "upright",
+          "spreading"
         ],
         "evidence": [
           {
@@ -1436,24 +1592,8 @@
         "reason": "Wave 1 did not establish crop-specific system suitability for this identity."
       },
       "growthHabits": {
-        "status": "known",
-        "value": [
-          "trailing"
-        ],
-        "evidence": [
-          {
-            "sourceIds": [
-              "johnnys-cucumber-wave1"
-            ],
-            "evidenceType": "source_backed",
-            "confidence": "medium",
-            "taxonomicScope": {
-              "level": "species",
-              "taxon": "Cucumis sativus"
-            },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
-          }
-        ]
+        "status": "unknown",
+        "reason": "The catalog's Marketmore type does not identify a numbered cultivar, and general cucumber sources describe both bush and vining habits. Confirm the seed selection's actual growth form before assigning layout or support."
       },
       "matureSize": {
         "height": {
@@ -1795,44 +1935,57 @@
       "brassica oleracea",
       "snowball type"
     ],
-    "summary": "Snowball Cauliflower is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Snowball cauliflower is harvested for its compact curd before the flowers open. The name is not resolved here to a specific cultivar, and heat or water stress can reduce crop quality.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Snowball Cauliflower identity is resolved at Brassica oleracea and Snowball type type scope",
-        "guidance": "Snowball Cauliflower is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Snowball is represented as a cauliflower type, not a resolved named cultivar",
+        "guidance": "The catalog identity is Brassica oleracea, Snowball type. The selected sources do not resolve which specific Snowball selection or packet the name represents, so cultivar-specific size, maturity, and heat performance are not assigned.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
       },
-      "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
+      "growth": {
+        "short": "The edible part is a dense, compact flower curd",
+        "guidance": "Cauliflower forms a dense, mounded curd made from the developing flowering stalk. This is crop-level Brassica oleracea var. botrytis information; the Snowball label here does not establish a particular head diameter or time to maturity.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "Favor cool conditions and steady growth while the curd forms",
+        "guidance": "UMN Extension describes cauliflower curds as developing best in cool conditions and calls for steady water and nutrient uptake. Its soil and seasonal directions are regional outdoor guidance, not a hydroponic recipe or a Snowball-specific temperature guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Shade a forming white curd; do not blanch colored types",
+        "guidance": "For white cauliflower, gather the outer leaves over a visible curd to reduce sun exposure and discoloration. UMN explicitly says colored and Romanesco types need sunlight for color; the general instruction applies only if the plant is producing a white curd.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Cut the compact curd before flower buds open or loosen",
+        "guidance": "Harvest when the head has reached usable size and remains compact, before the buds open or the surface becomes loose or ricey. Cut the main stem below the curd; unlike broccoli, cauliflower is harvested as one central head rather than a series of side shoots.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-brassicas-wave1"
-        ]
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
+      },
+      "problems": {
+        "short": "Heat, drought, or growth interruption can damage curd quality",
+        "guidance": "High temperatures and water stress can lead to open, discolored, or poor-quality heads; early stress can also cause premature small heads (buttoning). These are cauliflower crop risks, not claims that the Snowball type is resistant or unusually susceptible.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
+      },
+      "uses": {
+        "short": "Use the unopened curd as the edible harvest",
+        "guidance": "The harvested curd is commonly eaten raw or cooked and can also be pickled or frozen. Harvest stage matters: once flower buds open or the curd loosens, quality declines.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-cauliflower-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -1918,53 +2071,68 @@
       "daucus carota",
       "nantes type"
     ],
-    "summary": "Nantes Carrot is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Nantes is a carrot type described as medium-length and cylindrical, not one named cultivar. This profile uses general carrot guidance for cultivation and harvest; it does not assign a Nantes-specific flavor, exact root size, or indoor-system performance.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Nantes Carrot identity is resolved at Daucus carota and Nantes type type scope",
-        "guidance": "Nantes Carrot is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "guidance": "Nantes is a carrot horticultural type, not a single cultivar. Johnny's describes Nantes roots as medium-length and cylindrical; that type description does not establish the dimensions or performance of every Nantes-named selection.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "johnnys-carrots-wave1"
         ]
+      },
+      "growth": {
+        "short": "Nantes type: medium-length, cylindrical storage root",
+        "guidance": "Johnny's describes the Nantes type as producing medium-length, cylindrical roots. This is a type-level distinction, not an exact size claim for every cultivar sold under a Nantes name.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-carrots-wave1"]
+      },
+      "cultivation": {
+        "short": "Loose, deep soil supports straight root development",
+        "guidance": "University of Minnesota Extension recommends loose, workable soil for carrots and notes that heavy, compacted or obstructed soil can produce misshapen roots. This is outdoor crop guidance; it does not establish hydroponic suitability or a Garden pod configuration.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-carrots-parsnips-home-wave45"]
+      },
+      "care": {
+        "short": "Keep root-zone moisture even as roots develop",
+        "guidance": "UMN Extension links uneven or inadequate moisture with poorer carrot root quality. Maintain reasonably even moisture in the growing medium; the source does not prescribe an indoor irrigation schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "pruning": {
         "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "guidance": "Carrots are managed for the developing root rather than by routine stem pruning. Remove damaged foliage only when needed and use thinning to relieve crowding; do not translate field spacing into a fixed pod count.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-carrots-wave1"
+          "umn-carrots-parsnips-home-wave45"
         ]
       },
       "harvest": {
-        "short": "Harvest the usable root or basal structure at the crop stage",
-        "guidance": "The Nantes type type is managed toward its edible root, bulb, or pseudostem. The exact harvest date depends on temperature, planting method, and the actual plant.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-carrots-wave1"
-        ]
+        "short": "Harvest roots when they reach a usable size",
+        "guidance": "UMN Extension advises harvesting carrots when roots reach a useful size; exact timing varies with variety and growing conditions. Water the day before or harvest after rain, loosen soil beside the root with a garden fork, then lift gently to reduce breakage. Remove tops and clean roots before storage. Nantes-type shape does not supply a universal maturity date, so use the actual root rather than a fixed calendar promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-carrots-parsnips-home-wave45", "johnnys-carrots-wave1"]
       },
       "problems": {
         "short": "Watch the few problems that change management",
-        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and growing context before assigning a cause.",
+        "guidance": "Compacted, rocky or obstructed soil can cause forked or split roots, and drought or uneven moisture can reduce quality. Healthy tops with small roots can indicate crowding or excessive nitrogen. These are crop-level warning signs, not Nantes-specific disease or resistance claims; inspect the growing medium and growing history before diagnosing another cause.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-carrots-wave1"
-        ]
+        "confidence": "high",
+        "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
-        "guidance": "Root and bulb crops need enough space for the intended edible structure. Use visible crowding and the crop guide rather than a universal Garden system count.",
+        "short": "Thin crowded roots; field spacing is not a pod count",
+        "guidance": "UMN Extension recommends thinning carrots so roots have room to develop. Apply that advice to outdoor rows only; it does not define a Garden system spacing or number of hydroponic pods.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-carrots-wave1"
-        ]
+        "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       }
     },
     "compatibilityProfile": {
@@ -2050,53 +2218,70 @@
       "beta vulgaris",
       "detroit dark red type"
     ],
-    "summary": "Detroit Dark Red Beet is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Detroit Dark Red is a classic round, smooth, uniform dark-red table beet, with edible roots and young greens. Mississippi State Extension supports those named-variety traits; general care and harvest remain at beet-crop scope, not a hydroponic recipe.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Detroit Dark Red Beet identity is resolved at Beta vulgaris and Detroit Dark Red type type scope",
-        "guidance": "Detroit Dark Red Beet is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Named table-beet variety: round, smooth, uniform, deep-red roots",
+        "guidance": "Mississippi State Extension describes Detroit Dark Red as an old standard with globular, smooth, uniform, deep-red roots. Utah State Extension also lists the variety among table beets. These are named-variety appearance/identity facts, not a yield, maturity, or indoor-system guarantee.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-beets-wave1"
+          "johnnys-beets-wave1",
+          "usu-vegetable-varieties-wave2",
+          "msstate-beets-home-garden-2026"
         ]
+      },
+      "growth": {
+        "short": "A rosette of beet leaves above an edible storage root",
+        "guidance": "The plant forms a leafy crown over an edible storage root. Mississippi State Extension identifies the Detroit Dark Red root as globular and smooth; Utah State Extension documents harvest of both young beet greens and developing roots. No leaf-height or whole-plant spread value is inferred from the named root shape.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020", "msstate-beets-home-garden-2026"]
+      },
+      "cultivation": {
+        "short": "Cool-season beet for a sunny, deep, well-drained bed",
+        "guidance": "Utah State Extension recommends a sunny site and deep, fertile, well-drained soil for table beets; its outdoor crop guidance also warns that sustained heat can impair root quality. These are beet-crop conditions, not a Detroit Dark Red-specific temperature threshold, indoor light tier or hydroponic prescription.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
+      },
+      "care": {
+        "short": "Steadier moisture helps protect developing roots",
+        "guidance": "Utah State Extension reports that moisture fluctuations can crack beet roots and stress growth. Keep soil moisture reasonably even during root development; do not read this as a quantified indoor watering schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "pruning": {
         "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "guidance": "Beets are managed through selective leaf harvest, root harvest and thinning rather than routine stem pruning. Remove damaged foliage only as needed; outdoor spacing is not a fixed indoor pod count.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-beets-wave1"
+          "usu-beets-home-gardens-2020"
         ]
       },
       "harvest": {
-        "short": "Harvest the usable root or basal structure at the crop stage",
-        "guidance": "The Detroit Dark Red type type is managed toward its edible root, bulb, or pseudostem. The exact harvest date depends on temperature, planting method, and the actual plant.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beets-wave1"
-        ]
+        "short": "Harvest young greens or lift roots as they size",
+        "guidance": "Utah State Extension describes young beet leaves as harvestable around 4–6 inches and roots as usable once they begin sizing. Loosen soil with a digging fork before lifting to avoid pulling against compacted soil. These are crop-level cues and technique, not a guaranteed Detroit Dark Red calendar or exact final size.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and growing context before assigning a cause.",
+        "short": "Recognize heat, water and root-disorder signals",
+        "guidance": "Utah State Extension identifies heat and moisture stress as risks to root quality and notes that chilling can induce bolting before good root development. Black, sunken spots on or in a beet root may indicate boron deficiency, but appearance alone is not a diagnosis; confirm with a soil test or local Extension before treatment because excess boron can injure plants. These are table-beet crop risks, not Detroit Dark Red resistance claims.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beets-wave1"
-        ]
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
-        "guidance": "Root and bulb crops need enough space for the intended edible structure. Use visible crowding and the crop guide rather than a universal Garden system count.",
+        "short": "Thin crowded plants to allow root development",
+        "guidance": "Utah State Extension notes that crowding limits beet root development. Thin according to the outdoor crop guidance and intended harvest; do not convert row spacing into Garden pod spacing.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beets-wave1"
-        ]
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       }
     },
     "compatibilityProfile": {
@@ -2182,54 +2367,16 @@
       "brassica rapa",
       "purple top white globe type"
     ],
-    "summary": "Purple Top White Globe Turnip is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "A dual-purpose turnip grown for its rounded root and edible greens. Johnny's identifies the named Purple Top White Globe variety; crop-level care remains distinct from its supplier-reported root dimensions.",
     "metrics": [],
     "sections": {
-      "identity": {
-        "short": "Purple Top White Globe Turnip identity is resolved at Brassica rapa and Purple Top White Globe type type scope",
-        "guidance": "Purple Top White Globe Turnip is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-turnips-wave1"
-        ]
-      },
-      "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-turnips-wave1"
-        ]
-      },
-      "harvest": {
-        "short": "Harvest the usable root or basal structure at the crop stage",
-        "guidance": "The Purple Top White Globe type type is managed toward its edible root, bulb, or pseudostem. The exact harvest date depends on temperature, planting method, and the actual plant.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-turnips-wave1"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and growing context before assigning a cause.",
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-turnips-wave1"
-        ]
-      },
-      "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
-        "guidance": "Root and bulb crops need enough space for the intended edible structure. Use visible crowding and the crop guide rather than a universal Garden system count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-turnips-wave1"
-        ]
-      }
+      "identity": { "short": "Named Purple Top White Globe turnip within Brassica rapa", "guidance": "Johnny's sells Purple Top White Globe as a named turnip variety and lists Brassica rapa. The product evidence supports the variety's visible root and greens characteristics; it does not establish a Garden-system response.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-purple-top-white-globe-2026"] },
+      "growth": { "short": "Cool-season root crop with a purple shoulder and leafy tops", "guidance": "The supplier describes smooth, round roots that are white below the soil and purple above it, with large lobed greens. UMN Extension notes turnip quality declines in hot weather and when roots become oversized; exact dimensions vary with growing conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-purple-top-white-globe-2026", "umn-turnips-rutabagas-home-2026"] },
+      "cultivation": { "short": "Favor cool conditions and fertile, well-drained soil", "guidance": "Johnny's describes turnips as frost tolerant and recommends fertile, well-drained soil. UMN recommends spring or fall production in Minnesota; that calendar is regional. Neither source establishes hydroponic suitability or indoor pod spacing.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-turnips-wave1", "umn-turnips-rutabagas-home-2026"] },
+      "maintenance": { "short": "Keep soil moisture steady while the roots develop", "guidance": "UMN Extension recommends about 1 inch of water per week for turnips in outdoor gardens and notes that drought stress can make roots bitter or woody. Adjust for rainfall and local soil; this regional soil-bed reference is not an indoor or hydroponic schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-turnips-rutabagas-home-2026"] },
+      "harvest": { "short": "Use root size and leaf condition, not a fixed date", "guidance": "UMN recommends harvesting turnip roots around 2–3 inches wide because larger roots are more likely to become strong-flavored, woody or fibrous. Johnny's lists 3–4 inches as a supplier characteristic for Purple Top White Globe; treat that as product description, not a requirement to delay harvest. The leaves are also edible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-turnips-rutabagas-home-2026", "johnnys-purple-top-white-globe-2026"] },
+      "uses": { "short": "Both roots and greens are edible", "guidance": "Johnny's describes the large lobed greens as suitable for cooking; UMN also describes turnip tops as a cooked vegetable and advises separating greens from roots at harvest for storage. These are culinary uses, not a medicinal claim.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-purple-top-white-globe-2026", "umn-turnips-rutabagas-home-2026"] },
+      "problems": { "short": "Heat, drought and turnip pests can affect quality", "guidance": "UMN associates hot weather and drought stress with bitter or woody roots. Johnny's lists flea beetles and root maggots among turnip pests. The selected sources do not establish resistance for this variety or a mature-plant treatment protocol.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["umn-turnips-rutabagas-home-2026", "johnnys-turnips-wave1"] }
     },
     "compatibilityProfile": {
       "profileVersion": 1,
@@ -2314,53 +2461,67 @@
       "allium cepa",
       "yellow bulb onion type"
     ],
-    "summary": "Yellow Onion is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Yellow onion is a color-class bulb onion within Allium cepa, not a named cultivar. Bulb color is separate from short-, intermediate-, or long-day response; check the named seed variety against local guidance rather than infer its class from yellow color. Established onions have shallow roots and need steady moisture; harvest when tops mature and fall naturally, then cure bulbs before storage. Hydroponic suitability and cultivar-specific dimensions remain unknown.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Yellow Onion identity is resolved at Allium cepa and Yellow bulb onion type type scope",
-        "guidance": "Yellow Onion is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Yellow color-class bulb onion within Allium cepa; cultivar unspecified",
+        "guidance": "Illinois Extension notes that onion sets may be sold by color without a named variety and that different varieties require different day lengths to bulb. This record represents a yellow bulb-onion color/type category only; it does not identify a cultivar, photoperiod class, or guaranteed flavor/storage trait.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-onions-wave1"
+          "kew-powo-wave1",
+          "illinois-onion-home-garden-2026"
         ]
+      },
+      "growth": {
+        "short": "Bulb formation depends on day length, not color label alone",
+        "guidance": "USU Extension explains that bulb color (red, yellow, or white) is a separate selection axis from short-, intermediate-, or long-day response. UMN and Illinois Extension show that the suitable class depends on region; UMN's 14-hour-or-more example applies to storage onions in Minnesota, not every location. For this generic yellow-color identity, check the named seed variety's photoperiod class against local Extension guidance rather than inferring it from color. The actual seed line remains unspecified.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-onion-varietal-selection-2026", "umn-onions-home-gardens-2026", "illinois-onion-home-garden-2026"]
+      },
+      "cultivation": {
+        "short": "Full sun, well-drained soil and consistent moisture in field guidance",
+        "guidance": "UMN recommends full sun and well-drained soil for onions and describes their shallow roots and need for steady moisture. Its field fertility rates and row spacing are regional soil-culture advice, not container prescriptions, hydroponic settings or Garden pod spacing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-onions-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Keep moisture steady and avoid injuring shallow roots or bulbs",
+        "guidance": "UMN advises maintaining moisture during bulb growth, stopping irrigation as mature bulbs begin to fall over, and cultivating weeds shallowly because injured bulbs are more prone to disease. The source's soil-water amounts and nitrogen rates are not translated to hydroponics or another substrate.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-onions-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-onions-wave1"
-        ]
+        "short": "Do not break tops to force maturity",
+        "guidance": "Illinois Extension says to allow onion tops to mature and fall naturally; breaking them early interrupts growth and can produce smaller bulbs with poorer storage. This is harvest management for bulb onions, not a routine pruning task.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-onion-home-garden-2026"]
       },
       "harvest": {
-        "short": "Harvest the usable root or basal structure at the crop stage",
-        "guidance": "The Yellow bulb onion type type is managed toward its edible root, bulb, or pseudostem. The exact harvest date depends on temperature, planting method, and the actual plant.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-onions-wave1"
-        ]
+        "short": "Lift bulbs after tops fall and dry; cure before long storage",
+        "guidance": "UMN recommends harvesting when about half the tops have fallen and dried. If storing, cure in a warm, dry, ventilated place until the neck is tight and outer scales are dry; stop watering as mature tops begin to fall. Calendar dates and curing duration are regional guidance, not a cultivar-specific promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-onions-home-gardens-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and growing context before assigning a cause.",
+        "short": "Yellowing and wilt can indicate onion maggot; bulb rots have multiple causes",
+        "guidance": "UMN describes onion maggot feeding as a cause of yellowing and wilt and lists Fusarium basal rot, Botrytis neck rot and bacterial soft rot among onion problems. These signs require diagnosis; the record does not imply yellow onions are more susceptible or resistant than other color classes.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-onions-wave1"
-        ]
+        "sourceIds": ["umn-onions-home-gardens-2026"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
-        "guidance": "Root and bulb crops need enough space for the intended edible structure. Use visible crowding and the crop guide rather than a universal Garden system count.",
-        "evidenceType": "garden_adaptation",
+        "short": "Thin field seedlings for bulb development; do not convert to pod spacing",
+        "guidance": "UMN's outdoor guidance thins seedlings to 3–4 inches for bulb culture. That is field-row spacing, not a universal container or hydroponic spacing rule; exact Garden position count remains unestablished.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-onions-wave1"
-        ]
+        "sourceIds": ["umn-onions-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -2434,8 +2595,8 @@
     "id": "leek-american-flag",
     "name": "American Flag Leek",
     "spanishName": "Puerro American Flag",
-    "scientificName": "Allium ampeloprasum",
-    "variety": "American Flag type",
+    "scientificName": "Allium porrum",
+    "variety": "Named leek variety ‘American Flag’ (UW–Madison Extension also lists Broad American Flag, Broad London and Large London)",
     "category": "alliums",
     "emoji": "🧅",
     "guideCompletion": 68,
@@ -2443,56 +2604,72 @@
       "leek-american-flag",
       "american flag leek",
       "puerro american flag",
-      "allium ampeloprasum",
+      "allium porrum",
+      "allium ampeloprasum var. porrum",
       "american flag type"
     ],
-    "summary": "American Flag Leek is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "UW–Madison Extension documents ‘American Flag’ as a named leek variety with mild, sweet onion-like flavor and blanched stems described at 7–9 inches. Like other leeks, it forms a long stalk rather than an onion-like bulb; blanching the lower stem uses soil hilling or a gradually filled trench. Garden-system spacing and hydroponic suitability remain unestablished.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "American Flag Leek identity is resolved at Allium ampeloprasum and American Flag type type scope",
-        "guidance": "American Flag Leek is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+      "short": "Named leek variety ‘American Flag’; accepted name reconciled as Allium porrum",
+      "guidance": "Kew POWO accepts Allium porrum and lists Allium ampeloprasum var. porrum as a synonym. USDA GRIN records the same synonym and notes the alternative horticultural Leek/Porrum Group treatment. Gardenpedia uses the POWO accepted name while retaining that nomenclatural context; UW–Madison lists ‘American Flag’ (also Broad American Flag, Broad London or Large London) as a named variety. Variety traits below remain scoped to UW–Madison’s entry.",
+      "evidenceType": "source_backed",
+      "confidence": "medium",
+      "sourceIds": [
+        "kew-powo-allium-porrum-2026",
+        "usda-grin-allium-porrum-leek-group-2026",
+        "wisc-leeks-home-gardens-2026"
+      ]
+      },
+      "growth": {
+        "short": "American Flag has blanched stems described at 7–9 inches and blue-green leaves",
+        "guidance": "UW–Madison Extension describes American Flag stems as 7–9 inches long, blanched snowy white, with blue-green leaves, and reports a mild, sweet onion-like flavor. These are variety-description traits from the extension page, not guaranteed dimensions in Garden systems. The broader leek crop forms a long stalk with thick flat leaves and little bulb development.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
+      },
+      "cultivation": {
+        "short": "Cool-season outdoor crop; blanch the lower stalk for a white stem",
+        "guidance": "Wisconsin Extension recommends full sun and well-drained soil in its regional guide. It describes blanching the lower stem by gradually hilling soil or filling a planting trench as the leek grows. These are soil-culture techniques and do not imply a Garden pod position or hydroponic blanching method. The page lists 130 days for American Flag; treat that as a source-specific maturity reference, not a universal harvest date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
+      },
+      "care": {
+        "short": "Keep soil from covering the leaf junction while blanching",
+        "guidance": "The Wisconsin guide describes hilling or gradually filling a trench to whiten the lower stalk and cautions against filling transplant holes directly with soil. Its mid-summer leaf-cutting practice is a regional crop recommendation, not a universal pruning requirement for every American Flag seed line.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-leeks-wave1"
-        ]
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-leeks-wave1"
-        ]
+      "short": "An optional midseason leaf cut is described at crop level",
+      "guidance": "UW–Madison says cutting the top half of leek leaves in midsummer may encourage greater stalk growth. This is an optional crop-level practice, not evidence of an American Flag-specific response or a repeated pruning schedule; routine pruning is not established.",
+      "evidenceType": "source_backed",
+      "confidence": "medium",
+      "sourceIds": ["wisc-leeks-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest the usable root or basal structure at the crop stage",
-        "guidance": "The American Flag type type is managed toward its edible root, bulb, or pseudostem. The exact harvest date depends on temperature, planting method, and the actual plant.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-leeks-wave1"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Irregular moisture, compaction, and temperature can change root or bulb development. Record the visible symptom and growing context before assigning a cause.",
+        "short": "Dig after the stalk reaches about 1 inch across",
+        "guidance": "Wisconsin Extension gives about 1 inch diameter as a home-garden leek harvest cue and notes leeks can remain in the ground until use if the soil is not frozen. That is crop-level regional guidance, not an American Flag maturity date or guaranteed size.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-leeks-wave1"
-        ]
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
+      },
+      "problems": {
+        "short": "Silvery leaf spotting may indicate thrips; wilt can accompany maggot injury",
+        "guidance": "Wisconsin Extension reports onion thrips can cause small silvery-white spots, especially in hot, dry conditions, and onion maggot feeding can cause wilting and reduced growth. It lists several diseases as possible but uncommon in home gardens; these are diagnostic leads, not cultivar resistance claims.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
-        "guidance": "Root and bulb crops need enough space for the intended edible structure. Use visible crowding and the crop guide rather than a universal Garden system count.",
-        "evidenceType": "garden_adaptation",
+        "short": "Field spacing is documented; Garden spacing is not",
+        "guidance": "Wisconsin Extension reports outdoor row spacings for hilling and blanching, but those values are not converted into a pod count or indoor container recommendation. Garden-system spacing remains unknown.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-leeks-wave1"
-        ]
+        "sourceIds": ["wisc-leeks-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -2501,26 +2678,10 @@
         "status": "unknown",
         "reason": "Wave 1 did not establish crop-specific system suitability for this identity."
       },
-      "growthHabits": {
-        "status": "known",
-        "value": [
-          "upright"
-        ],
-        "evidence": [
-          {
-            "sourceIds": [
-              "johnnys-leeks-wave1"
-            ],
-            "evidenceType": "source_backed",
-            "confidence": "medium",
-            "taxonomicScope": {
-              "level": "species",
-              "taxon": "Allium ampeloprasum"
-            },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
-          }
-        ]
-      },
+    "growthHabits": {
+      "status": "unknown",
+      "reason": "Available leek guidance describes the leaf fan and stalk but does not define a Garden growthHabits classification for this variety."
+    },
       "matureSize": {
         "height": {
           "status": "unknown",
@@ -2547,16 +2708,16 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-leeks-wave1"
-            ],
+          "sourceIds": [
+            "wisc-leeks-home-gardens-2026"
+          ],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
               "level": "species",
-              "taxon": "Allium ampeloprasum"
+            "taxon": "Allium porrum"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+          "note": "Outdoor full-sun guidance for leeks; it does not specify an indoor grow-light tier or system response."
           }
         ]
       }
@@ -2578,21 +2739,21 @@
       "phaseolus vulgaris",
       "blue lake bush type"
     ],
-    "summary": "Blue Lake Bush Bean is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at bean crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+    "summary": "Blue Lake Bush Bean represents the bush-growing Blue Lake type, not one verified selection such as Blue Lake 274. Bush beans stay upright without a trellis and tend to flower and set pods over a shorter window than pole beans; regular picking can extend production. No hydroponic fit or cultivar-specific dimensions are established.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Blue Lake Bush Bean identity is resolved at Phaseolus vulgaris and Blue Lake bush type type scope",
-        "guidance": "Blue Lake Bush Bean is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "guidance": "Blue Lake Bush Bean is represented at horticultural-type scope, not as a verified named strain. Burpee's Blue Lake 274 is one named bush selection; this record does not claim that every Blue Lake bush packet is that selection.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-beans-wave1"
+          "burpee-blue-lake-274-bush-bean-2026"
         ]
       },
       "harvest": {
-        "short": "Pick snap pods before seeds bulge",
-        "guidance": "For snap beans, UMN Extension recommends harvesting while pods remain succulent and before the individual seeds swell visibly. Frequent picking can extend production, especially on pole types; this is not a cultivar-specific harvest date.",
+        "short": "Harvest pods while succulent; expect a more concentrated bush-bean window",
+        "guidance": "UMN Extension recommends picking snap beans before the seeds inside become visible as bulges, while the pods are still juicy and tender. Bush beans commonly set much of their crop over a shorter period than pole beans; picking regularly may extend production, but does not make the harvest window continuous or cultivar-specific.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -2609,8 +2770,8 @@
         ]
       },
       "cultivation": {
-        "short": "Wait for warm soil before outdoor sowing",
-        "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+        "short": "Keep soil moisture adequate as flowers and pods develop",
+        "guidance": "UMN Extension notes that moisture-retentive soils may need water only during dry weather, while sandy soils need more frequent watering; about one inch of rain per week is a Minnesota garden reference. Check the root-zone soil rather than applying that field amount to containers, indoor growing, or a reservoir.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -2627,20 +2788,13 @@
         ]
       },
       "growth": {
-        "short": "An upright bush habit usually needs no trellis",
-        "guidance": "UMN Extension describes bush beans as upright plants around two feet tall, with a shorter, more concentrated flowering and pod-set period than pole beans. This is crop-type context, not cultivar-specific measurement.",
+        "short": "Upright bush habit; no trellis is usually needed",
+        "guidance": "UMN Extension describes bush beans as upright plants around two feet tall that generally need no support. Flowering and pod set are more concentrated than in pole beans, although regular harvest may encourage continued production. These are common-bean type observations, not a measured Blue Lake selection or indoor-space guarantee.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "umn-beans-home-gardens-2026"
         ]
-      },
-      "pruning": {
-        "short": "Pruning guidance is not established",
-        "guidance": "The cited bean guidance explains growth habit, support and harvest, but does not prescribe pruning for this type. Do not infer a cutting schedule from bush or pole habit; needs validation.",
-        "evidenceType": "needs_validation",
-        "confidence": "low",
-        "sourceIds": []
       }
     },
     "compatibilityProfile": {
@@ -2657,7 +2811,7 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-beans-wave1"
+              "umn-beans-home-gardens-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
@@ -2665,7 +2819,7 @@
               "level": "species",
               "taxon": "Phaseolus vulgaris"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "UMN describes common-bean bush types as upright; this catalog identity is the Blue Lake bush horticultural type, not a verified named strain or cultivar measurement."
           }
         ]
       },
@@ -2696,15 +2850,15 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-beans-wave1"
+              "ncsu-phaseolus-vulgaris-toolbox-2026"
             ],
             "evidenceType": "source_backed",
-            "confidence": "medium",
+            "confidence": "high",
             "taxonomicScope": {
               "level": "species",
               "taxon": "Phaseolus vulgaris"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "NCSU recommends full sun for the species in outdoor garden culture; this is natural exposure, not an indoor grow-light or hydroponic prescription."
           }
         ]
       }
@@ -2712,57 +2866,61 @@
   },
   {
     "id": "snap-pea-oregon-sugar-pod",
-    "name": "Oregon Sugar Pod Snap Pea",
-    "spanishName": "Guisante tirabeque Oregon Sugar Pod",
+    "name": "Oregon Sugar Pod II Snow Pea",
+    "spanishName": "Guisante de nieve Oregon Sugar Pod II",
     "scientificName": "Pisum sativum",
-    "variety": "Oregon Sugar Pod type",
+    "variety": "Oregon Sugar Pod II",
     "category": "vegetables",
     "emoji": "🫛",
     "guideCompletion": 68,
     "tags": [
       "snap-pea-oregon-sugar-pod",
-      "oregon sugar pod snap pea",
-      "guisante tirabeque oregon sugar pod",
+      "oregon sugar pod ii snow pea",
+      "oregon sugar pod snow pea",
+      "guisante de nieve oregon sugar pod ii",
       "pisum sativum",
       "oregon sugar pod type"
     ],
-    "summary": "Oregon Sugar Pod Snap Pea is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence. Established-plant guidance is supported at pea crop/type scope; no cultivar-specific dimensions or hydroponic settings are inferred.",
+    "summary": "Oregon Sugar Pod II is an edible-pod snow pea. Oregon State classifies it as a bush type; West Coast Seeds describes large, flat pods and a supplier maturity estimate. Outdoor pea guidance applies, but these sources do not establish indoor or hydroponic settings.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Oregon Sugar Pod Snap Pea identity is resolved at Pisum sativum and Oregon Sugar Pod type type scope",
-        "guidance": "Oregon Sugar Pod Snap Pea is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Oregon Sugar Pod II is an edible-pod pea selection",
+        "guidance": "Oregon State lists Oregon Sugar Pod II among Oriental edible-pod peas and identifies it as a bush type. The catalog’s common name is retained; this evidence supports the named selection without assigning unverified dimensions or a Garden-system compatibility claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
+          "osu-edible-pod-peas-2026",
           "johnnys-peas-wave1"
         ]
       },
       "harvest": {
         "short": "Pick snow peas while pods are full-length and flat",
-        "guidance": "Harvest edible pods when they reach the length described for the variety but peas inside are only small traces; older pods can become tough. The source gives a type-level cue, not a date for this named entry.",
+        "guidance": "Pick the flat edible pods while the peas inside are still small; mature, bulging pods become tougher. West Coast Seeds describes Oregon Sugar Pod II pods at about 4 inches, a product reference rather than a fixed harvest deadline for every growing condition.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "umn-peas-home-gardens-2026"
+          "umn-peas-home-gardens-2026",
+          "wcs-oregon-sugar-pod-ii-2026"
         ]
       },
       "problems": {
-        "short": "Heat can end flowering and pod production",
-        "guidance": "UMN Extension reports that peas stop growing and fail to flower or set pods once temperatures rise above 85°F in its Minnesota context. Use heat as a plausible crop-stress clue, not a universal threshold for every microclimate or cultivar.",
+        "short": "Oregon State lists resistance to several pea diseases",
+        "guidance": "Oregon State lists resistance to pea leaf roll, powdery mildew, and enation virus for Oregon Sugar Pod II. These are source-specific resistance descriptions, not immunity or a guarantee against other pea problems. UMN also notes that hot weather can interrupt pea flowering and pod set in its Minnesota guidance.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "osu-edible-pod-peas-2026",
           "umn-peas-home-gardens-2026"
         ]
       },
       "growth": {
-        "short": "A cool-season vine, with habit varying by type",
-        "guidance": "UMN Extension describes peas as cool-season crops: tall vining types need a trellis, while shorter bush types can support one another in a broad row. This crop-level distinction does not establish the exact height of a named variety.",
+        "short": "Oregon State classifies Oregon Sugar Pod II as a bush type",
+        "guidance": "Oregon State identifies Oregon Sugar Pod II as a bush type, distinguishing it from tall climbing pea selections. The source does not give a cultivar-specific mature height here, so Garden does not assign one or infer that every plant will remain self-supporting in every setup.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "umn-peas-home-gardens-2026"
+          "osu-edible-pod-peas-2026"
         ]
       },
       "cultivation": {
@@ -2775,20 +2933,14 @@
         ]
       },
       "care": {
-        "short": "Support climbing vines and keep irrigation off foliage",
-        "guidance": "Use a trellis for tall vining peas; water the soil rather than wetting vines to reduce disease-conducive conditions. Avoid treating outdoor row spacing as indoor plant or hydroponic pod spacing.",
+        "short": "Water the soil rather than wetting pea foliage",
+        "guidance": "UMN Extension recommends watering peas at the soil rather than wetting foliage to reduce disease-conducive conditions. Oregon State classifies Oregon Sugar Pod II as a bush type, but the reviewed sources do not establish a universal support rule for every plant or setup.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "osu-edible-pod-peas-2026",
           "umn-peas-home-gardens-2026"
         ]
-      },
-      "pruning": {
-        "short": "Pruning guidance is not established",
-        "guidance": "The cited pea guidance explains cool-season growth, support, watering and harvest, but does not prescribe pruning. Do not infer a cutting schedule from the vine habit; needs validation.",
-        "evidenceType": "needs_validation",
-        "confidence": "low",
-        "sourceIds": []
       }
     },
     "compatibilityProfile": {
@@ -2800,20 +2952,19 @@
       "growthHabits": {
         "status": "known",
         "value": [
-          "trailing"
+          "bushy"
         ],
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-peas-wave1"
+              "osu-edible-pod-peas-2026"
             ],
             "evidenceType": "source_backed",
-            "confidence": "medium",
+            "confidence": "high",
             "taxonomicScope": {
-              "level": "species",
-              "taxon": "Pisum sativum"
+              "level": "identity"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "Oregon State identifies Oregon Sugar Pod II as a bush type; this does not establish exact mature dimensions or a universal support rule."
           }
         ]
       },
@@ -2874,43 +3025,49 @@
       "petroselinum crispum",
       "flat-leaf type"
     ],
-    "summary": "Flat-Leaf Parsley is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Flat-leaf parsley is a biennial leafy herb grown for its aromatic, flat, serrated leaves. UMN describes the Italian flat-leaf type as taller and more strongly flavored than curly parsley; Garden retains its current Petroselinum crispum identity while recording the source's alternative varietal name separately.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Flat-Leaf Parsley identity is resolved at Petroselinum crispum and Flat-leaf type type scope",
-        "guidance": "Flat-Leaf Parsley is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Petroselinum crispum, Italian flat-leaf type; no named cultivar",
+        "guidance": "UMN Extension describes Italian flat-leaf parsley as a popular type and labels it P. neapolitanum in its text. This catalog identity remains Petroselinum crispum; the naming difference is recorded rather than silently changing its accepted identity.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-parsley"
+          "johnnys-parsley",
+          "umn-parsley-home-gardens-2026"
         ]
       },
+      "growth": {"short":"Upright, open plant; the Italian flat-leaf type may reach 2–3 ft outdoors","guidance":"UMN reports the Italian flat-leaf type can grow 2–3 ft and has a more open, somewhat ungainly habit than curly parsley. This is a regional outdoor reference for the named type, not a guaranteed indoor or hydroponic mature size.","evidenceType":"source_backed","confidence":"medium","sourceIds":["umn-parsley-home-gardens-2026"]},
+      "cultivation": {"short":"Bright light, moisture-retentive but well-drained soil","guidance":"UMN describes parsley as a cool-season herb that tolerates light shade but grows best with 6–8 hours of direct sun; it recommends rich, well-drained soil and steady moisture. Its outdoor pH and row-spacing figures are not treated as hydroponic targets or pod spacing.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-parsley-home-gardens-2026"]},
+      "care": {"short":"Do not let the established root zone dry completely","guidance":"UMN recommends deep watering at least weekly outdoors and avoiding complete drying between waterings. In containers or indoors, check the actual substrate rather than applying a fixed field schedule; this profile does not provide a reservoir or indoor irrigation prescription.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-parsley-home-gardens-2026"]},
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-parsley"
-        ]
-      },
-      "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-parsley"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Harvest outer stalks near the base rather than shearing the tops",
+        "guidance": "UMN Extension says cutting stalks close to the ground, starting with outer stalks, supports new growth; simply clipping the tops while leaving leaf stalks is less productive. This is a harvest-led management practice, not a shaping schedule.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-parsley"
+          "umn-parsley-home-gardens-2026"
+        ]
+      },
+      "flowering": {"short":"Second-year seed stalk marks the end of the biennial cycle","guidance":"UMN describes parsley as biennial: plants may remain productive through the first growing season, then produce a seed stalk and die; second-year leaves can taste more bitter. This is normal reproductive development, not a disease symptom or a fixed indoor calendar.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-parsley-home-gardens-2026"]},
+      "harvest": {
+        "short": "Cut mature outer stalks close to the soil; new growth continues in season",
+        "guidance": "UMN recommends starting with outer stalks and cutting near the ground. The plant can produce new growth through the season when harvested this way. Fresh leaves have the best quality; the source says drying or freezing is possible but flavor is lost.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-parsley-home-gardens-2026"
+        ]
+      },
+      "uses": {"short":"Flat leaves are especially valued for a stronger, sweeter cooking flavor","guidance":"UMN distinguishes Italian flat-leaf parsley from curly types by stronger, sweeter flavor and use in cooking. Parsley is also used fresh as a garnish and in dishes and salads; no preservation claim beyond the source's quality caveat is added.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-parsley-home-gardens-2026"]},
+      "problems": {
+        "short": "A seed stalk and stronger bitterness in year two are normal lifecycle changes",
+        "guidance": "UMN reports that second-year parsley becomes more bitter and eventually produces a seed stalk as it completes its biennial cycle. Do not diagnose that expected transition as a pest or nutrient disorder; the profile does not establish cultivar-specific disease resistance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-parsley-home-gardens-2026"
         ]
       }
     },
@@ -2986,7 +3143,7 @@
     "name": "Lemon Balm",
     "spanishName": "Toronjil",
     "scientificName": "Melissa officinalis",
-    "variety": "Lemon balm",
+    "variety": "Species-level identity; no named cultivar assigned",
     "category": "herbs",
     "emoji": "🌿",
     "guideCompletion": 68,
@@ -2997,43 +3154,50 @@
       "melissa officinalis",
       "lemon balm"
     ],
-    "summary": "Lemon Balm is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Lemon balm (Melissa officinalis) is a lemon-scented perennial herb with heart-shaped leaves and square stems. Repeated harvest can encourage branching, while its spreading habit and self-seeding deserve active management in a garden bed.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Lemon Balm identity is resolved at Melissa officinalis and Lemon balm type scope",
-        "guidance": "Lemon Balm is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Melissa officinalis; common species, not a named golden-leaf cultivar",
+        "guidance": "Utah State University Extension identifies cultivated lemon balm as Melissa officinalis and describes a perennial herb with lemon aroma. Aurea and All Gold are separate named varieties; neither is represented by this general identity.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lemon-balm-wave1"
+          "johnnys-lemon-balm-wave1",
+          "usu-lemon-balm-garden-2026"
         ]
       },
+      "growth": {"short":"Perennial, branching herb with rounded, lemon-scented leaves","guidance":"USU describes heart-shaped to rounded leaves, square stems and a strong lemon aroma; plants may grow about 2–3 ft high. This is the source's species-level garden reference, not a guaranteed size in every pot or system.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-lemon-balm-garden-2026"]},
+      "cultivation": {"short":"Full sun is preferred; light shade is tolerated","guidance":"USU recommends enriched, moist but well-drained soil and reports full sun preference with tolerance of light shade; some shade may produce larger, more succulent leaves. These are garden observations, not an indoor light-hour or hydroponic prescription.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-lemon-balm-garden-2026"]},
+      "care": {"short":"Keep soil moist but not saturated; manage spread","guidance":"USU warns that water stress is undesirable but persistently wet soil can cause root rot. Lemon balm can spread by roots and seed; containers can help limit spread, while regular leaf harvest and removal of flowers before seed set are options for an in-ground plant. Garden adaptation: choose the control method according to whether self-seeding is wanted.","evidenceType":"garden_adaptation","confidence":"high","sourceIds":["usu-lemon-balm-garden-2026"]},
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-lemon-balm-wave1"
-        ]
-      },
-      "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-lemon-balm-wave1"
-        ]
-      },
-      "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Frequent harvest encourages branching and a bushier shape",
+        "guidance": "USU recommends regular harvest and reports that it helps keep the plant bushy and compact. It also describes removing flowers before seed set when controlling in-ground spread is the goal; this is a management choice, not a universal requirement to remove all blooms.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-lemon-balm-wave1"
+          "usu-lemon-balm-garden-2026"
+        ]
+      },
+      "flowering": {"short":"Small pale flowers can produce seed and volunteer seedlings","guidance":"USU advises removing flowers before they set seed when gardeners want to limit spread. If seed collection or self-sowing is desired, that action is not appropriate; the source does not establish a fixed bloom calendar for all climates.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-lemon-balm-garden-2026"]},
+      "harvest": {
+      "short": "Cut fresh leaves as needed; gather for drying or freezing before bloom",
+      "guidance": "Iowa State says fresh lemon-balm leaves can be picked as needed and recommends harvesting before flowering when drying or freezing. It lists hanging small bunches or drying leaves on trays; USU describes removing about one-third of the foliage at roughly monthly intervals as one garden method. These are garden references, not a universal indoor harvest cadence or yield promise.",
+        "evidenceType": "source_backed",
+      "confidence": "high",
+        "sourceIds": [
+        "usu-lemon-balm-garden-2026",
+        "iastate-herbs-growing-harvesting-2026"
+        ]
+      },
+      "uses": {"short":"Fresh leaves flavor drinks, salads, and other foods; dried leaves are used for tea","guidance":"USU documents fresh sprigs as flavoring for drinks, salads and main dishes, and dried leaves for tea and soup flavoring. Traditional medicinal use is mentioned by the source but is not presented here as proven health efficacy.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-lemon-balm-garden-2026"]},
+      "problems": {
+        "short": "Watch for root rot in wet soil, powdery mildew, and occasional sap-feeding pests",
+        "guidance": "USU says lemon balm is generally little affected by pests and diseases, but reports root rots and powdery mildew when overwatered and occasional aphid or mite issues. These are possibilities, not a diagnosis or proof of resistance; inspect the plant and growing conditions before treatment.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-lemon-balm-garden-2026"
         ]
       }
     },
@@ -3065,8 +3229,9 @@
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature height was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 60.96, "maxCm": 91.44, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["usu-lemon-balm-garden-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Melissa officinalis"}, "note": "USU's 2–3 ft garden reference converted to 60.96–91.44 cm; not a guaranteed pot or indoor-system height."}]
         },
         "spread": {
           "status": "unknown",
@@ -3080,25 +3245,21 @@
       "light": {
         "status": "known",
         "value": [
-          {
-            "phase": "growing",
-            "requirement": {
-              "kind": "full_sun"
-            }
-          }
+          {"phase": "growing", "requirement": {"kind": "full_sun"}},
+          {"phase": "growing", "requirement": {"kind": "partial_sun"}}
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-lemon-balm-wave1"
-            ],
+          "sourceIds": [
+            "usu-lemon-balm-garden-2026"
+          ],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
               "level": "species",
               "taxon": "Melissa officinalis"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "USU lists full sun and light shade as outdoor options; neither is converted to an indoor grow-light level."
           }
         ]
       }
@@ -3120,43 +3281,71 @@
       "coriandrum sativum",
       "santo"
     ],
-    "summary": "Santo Cilantro is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Santo is a named cilantro selection sold for leaf harvest and described by Johnny's as slow-bolting; that supplier claim does not quantify a delay or guarantee performance in every climate. Species-level garden guidance describes cilantro as a cool-season crop, advises harvesting leaves while young, and identifies bolting and leafhopper-transmitted aster yellows as management concerns. Hydroponic suitability and mature dimensions remain unestablished.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Santo Cilantro identity is resolved at Coriandrum sativum and Santo type scope",
-        "guidance": "Santo Cilantro is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Named Santo selection within Coriandrum sativum",
+        "guidance": "Johnny's lists Santo as a cilantro/coriander seed selection. Its product page describes Santo as a slow-bolting selection grown for leaves; no stronger cultivar identity, quantified bolting advantage, or performance guarantee is inferred.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cilantro-seed"
+          "johnnys-santo-cilantro-product-2026"
         ]
       },
+      "growth": {
+        "short": "Cool-season leafy growth; bolting remains possible",
+        "guidance": "USU describes cilantro as a cool-season herb and notes that selecting a slow-bolting variety can help when the goal is leaf harvest. Johnny's markets Santo specifically as slow-bolting, but does not quantify the advantage; heat and day length still require observation.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["usu-cilantro-home-garden-2026", "johnnys-santo-cilantro-product-2026"]
+      },
+      "cultivation": {
+        "short": "Favor a cool, sunny, well-drained outdoor setting",
+        "guidance": "USU recommends a sunny, well-drained site for cilantro and advises planting in cooler periods according to local climate. This is crop-level outdoor soil guidance; it does not define indoor grow-light hours, hydroponic settings, or a universal planting calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro-home-garden-2026"]
+      },
+      "care": {
+        "short": "Keep moisture even without leaving the root zone persistently wet",
+        "guidance": "USU recommends regular watering during establishment and less water once plants are established, warning that cilantro does poorly in damp or humid conditions. Its field fertilizer rates are not transferred to containers or hydroponic systems.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro-home-garden-2026"]
+      },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
+        "short": "Harvest leaves selectively; do not assume pruning prevents bolting",
+        "guidance": "USU's guidance focuses on harvest and cool-season timing rather than a special pruning schedule. Remove usable leaves cleanly and avoid treating cuts as a way to stop flowering; the exact repeat-harvest response of this Santo seed lot is not established.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cilantro-seed"
+          "usu-cilantro-home-garden-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Cut leaf harvest while leaves are roughly 4–6 inches tall",
+        "guidance": "USU gives 4–6 inches as a leaf-harvest cue for cilantro and distinguishes leaf harvest from allowing flowers and seed heads to mature for coriander. This is crop-level guidance, not an exact Santo maturity promise; sequential sowing is one cited way to maintain a supply.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-cilantro-seed"
+          "usu-cilantro-home-garden-2026"
         ]
       },
+      "uses": {
+        "short": "Harvest leaves for cilantro or leave plants to mature coriander seed",
+        "guidance": "USU distinguishes fresh or preserved cilantro leaves from coriander seed harvested after the heads turn brown. Those are different harvest goals and require different plant development; the choice should be made before treating leaf and seed schedules as interchangeable.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro-home-garden-2026"]
+      },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Watch for bolting and leafhopper-associated aster yellows",
+        "guidance": "USU notes that cilantro can bolt and describes aster yellows symptoms including yellow flowers and tall, spindly growth; leafhoppers can transmit the disease. These are diagnostic possibilities, not proof that a symptom has this cause or evidence of Santo-specific resistance.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-cilantro-seed"
+          "usu-cilantro-home-garden-2026"
         ]
       }
     },
@@ -3231,8 +3420,8 @@
     "id": "lemon-thyme",
     "name": "Lemon Thyme",
     "spanishName": "Tomillo limón",
-    "scientificName": "Thymus citriodorus",
-    "variety": "Lemon thyme type",
+    "scientificName": "Thymus × citriodorus",
+    "variety": "Lemon thyme group; no named cultivar assigned",
     "category": "herbs",
     "emoji": "🌿",
     "guideCompletion": 68,
@@ -3241,46 +3430,60 @@
       "lemon thyme",
       "tomillo limón",
       "thymus citriodorus",
+      "Thymus × citriodorus",
       "lemon thyme type"
     ],
-    "summary": "Lemon Thyme is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Lemon thyme is treated here as the accepted hybrid Thymus × citriodorus: an evergreen, aromatic culinary subshrub with edible leaves and pink summer flowers. No named cultivar is assigned. Outdoor light, drainage, pruning and seasonal harvest are documented; indoor and hydroponic fit remain unknown.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Lemon Thyme identity is resolved at Thymus citriodorus and Lemon thyme type type scope",
-        "guidance": "Lemon Thyme is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "POWO accepts lemon thyme as the hybrid Thymus × citriodorus",
+        "guidance": "Kew POWO accepts Thymus × citriodorus as the hybrid T. pulegioides × T. vulgaris; Iowa State Extension also identifies lemon thyme by this hybrid name. NC State's page title and structured attributes agree, although one narrative sentence on that page calls it a distinct species. This record follows the accepted POWO hybrid treatment and retains the source-internal disagreement for transparency; no named cultivar is assigned.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-thyme"
-        ]
+        "sourceIds": ["kew-thymus-x-citriodorus-2026", "ncsu-lemon-thyme-2026", "iastate-all-about-thyme-2026"]
+      },
+      "growth": {
+        "short": "Evergreen mounding subshrub, about 6–12 in tall",
+        "guidance": "NC State describes lemon thyme as an evergreen, mounding subshrub about 6–12 in (15–30 cm) tall and up to about 1 ft (30 cm) wide, with small aromatic leaves. These are regional garden dimensions for the page's lemon-thyme taxon, not a named-cultivar or indoor-system guarantee. NC State's structured height row is malformed (6 ft to 1 ft) and is deliberately not used; the profile follows the clear narrative range only.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-lemon-thyme-2026"]
+      },
+      "cultivation": {
+        "short": "Full to partial sun and sharply drained soil",
+        "guidance": "NC State recommends full to partial sun and well-drained sandy or rocky soil, and lists container, rock-garden and ground-cover uses. This is outdoor North Carolina guidance. It does not establish an indoor grow-light tier, hydroponic compatibility, pod spacing or nutrient targets.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-lemon-thyme-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest and visible crowding",
-        "guidance": "Use selective harvest, thinning, or removal of damaged tissue as the visible plant requires. Do not turn field spacing into a fixed pod count.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-thyme"
-        ]
+        "short": "Prune or shear lightly after flowering to maintain a compact plant",
+        "guidance": "Iowa State Extension recommends light pruning or shearing after flowering to maintain a compact habit and encourage new growth. This is general outdoor thyme guidance, not a hard-pruning instruction for a named lemon-thyme cultivar or an indoor system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["iastate-all-about-thyme-2026"]
+      },
+      "flowering": {
+        "short": "Small pink flowers appear in summer",
+        "guidance": "NC State describes small tubular pink flowers in terminal whorls around mid-summer and reports nectar value to pollinators. Timing is regional garden context, not an indoor calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-lemon-thyme-2026"]
       },
       "harvest": {
-        "short": "Harvest selectively while preserving the growing point",
-        "guidance": "Remove usable leaves or stems cleanly and preserve enough active tissue for continued growth when the crop supports repeat harvest.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-thyme"
-        ]
+        "short": "Harvest leafy stems as needed; flavor is strongest near the start of flowering",
+        "guidance": "Iowa State Extension says thyme can be harvested as needed through the growing season and recommends cutting leafy stems shortly before flowering or when the first blossoms open for best flavor. NC State identifies lemon-thyme leaves and flowers as edible. These are general thyme harvest cues plus lemon-thyme food-use evidence, not a fixed schedule for a named cultivar or indoor plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-lemon-thyme-2026", "iastate-all-about-thyme-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Heat, moisture stress, crowding, and poor airflow can change growth. Use the source-backed crop context plus actual observations before choosing an intervention.",
+        "short": "Avoid saturated soil; watch for occasional spider mites or aphids",
+        "guidance": "NC State reports root rot in overly moist soil; Iowa State Extension notes root diseases in saturated soil and occasional spider mites in hot, dry weather or aphids. These are general outdoor thyme risks, not a diagnosis or a claim that this identity is resistant or susceptible to a guaranteed degree.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-thyme"
-        ]
+        "confidence": "high",
+        "sourceIds": ["ncsu-lemon-thyme-2026", "iastate-all-about-thyme-2026"]
       }
     },
     "compatibilityProfile": {
@@ -3297,26 +3500,28 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-thyme"
+              "ncsu-lemon-thyme-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
               "level": "species",
-              "taxon": "Thymus citriodorus"
+              "taxon": "Thymus × citriodorus"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "NC State describes the taxon as mounding; not a named-cultivar measurement."
           }
         ]
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature height was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 15, "maxCm": 30, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["ncsu-lemon-thyme-2026"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Thymus × citriodorus"}, "note": "Rounded conversion of NC State's clear 6–12 in narrative range; ignores its malformed structured height row and is not an indoor-system size guarantee."}]
         },
         "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature spread was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"maxCm": 30, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["ncsu-lemon-thyme-2026"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Thymus × citriodorus"}, "note": "NC State's lemon-thyme narrative reports spread up to about 1 ft; rounded to 30 cm for outdoor garden context, not a cultivar or indoor-system guarantee."}]
         }
       },
       "spacing": {
@@ -3325,28 +3530,8 @@
       },
       "light": {
         "status": "known",
-        "value": [
-          {
-            "phase": "growing",
-            "requirement": {
-              "kind": "full_sun"
-            }
-          }
-        ],
-        "evidence": [
-          {
-            "sourceIds": [
-              "johnnys-thyme"
-            ],
-            "evidenceType": "source_backed",
-            "confidence": "medium",
-            "taxonomicScope": {
-              "level": "species",
-              "taxon": "Thymus citriodorus"
-            },
-            "note": "Crop-level light context; exact system response remains context-dependent."
-          }
-        ]
+        "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}, {"phase": "growing", "requirement": {"kind": "partial_sun"}}],
+        "evidence": [{"sourceIds": ["ncsu-lemon-thyme-2026"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Thymus × citriodorus"}, "note": "NC State reports full to partial sun outdoors; this is not an indoor-light intensity classification."}]
       }
     }
   },
@@ -3354,7 +3539,7 @@
     "id": "nasturtium-empress-of-india",
     "name": "Empress of India Nasturtium",
     "spanishName": "Capuchina Empress of India",
-    "scientificName": "Tropaeolum majus",
+    "scientificName": "Tropaeolum sp.",
     "variety": "Empress of India",
     "category": "flowers",
     "emoji": "🌺",
@@ -3363,46 +3548,58 @@
       "nasturtium-empress-of-india",
       "empress of india nasturtium",
       "capuchina empress of india",
-      "tropaeolum majus",
       "empress of india"
     ],
-    "summary": "Empress of India Nasturtium is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Empress of India is a named Tropaeolum selection with documented bushy growth, dark blue-green leaves and scarlet flowers. Sources conflict on whether it belongs to T. majus or T. minus, so this profile stays at genus/selection scope and assigns no species. Its indoor hydroponic fit is unknown.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Empress of India Nasturtium identity is resolved at Tropaeolum majus and Empress of India type scope",
-        "guidance": "Empress of India Nasturtium is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Named Tropaeolum selection; species attribution unresolved",
+        "guidance": "RHS records the named selection as Tropaeolum majus 'Empress of India' on one profile, while another RHS profile uses the genus-level name Tropaeolum 'Empress of India'. UW–Madison, Takii and Johnny's place the named selection under T. minus. The sources support the Empress of India horticultural selection but conflict on its species placement, so Gardenpedia keeps Tropaeolum sp. and does not choose a species. The established-plant profile is complete at genus/selection scope; source-specific care remains scoped, and the species conflict remains recorded for taxonomy review.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-nasturtium-wave1"
-        ]
+        "confidence": "high",
+        "sourceIds": ["rhs-empress-of-india-nasturtium-2026", "rhs-empress-of-india-genus-2026", "uw-tropaeolum-garden-nasturtium-500", "takii-empress-of-india-2026", "johnnys-empress-of-india-2026"]
+      },
+      "growth": {
+        "short": "Bushy annual with dark blue-green leaves and scarlet flowers",
+        "guidance": "RHS describes a bushy annual around 30 cm tall, with rounded dark blue-green leaves and scarlet funnel-shaped flowers. Its reported 0.1–0.5 m spread range is broad and UK-contextual, not a guaranteed footprint for every garden.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-empress-of-india-nasturtium-2026"]
+      },
+      "cultivation": {
+        "short": "Full sun and poor, well-drained soil favor flowering",
+        "guidance": "RHS recommends full sun and poor, well-drained soil; overly rich soil can produce foliage at the expense of flowers. This is outdoor garden guidance and does not establish compatibility with an indoor hydroponic system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-empress-of-india-nasturtium-2026"]
       },
       "pruning": {
-        "short": "Shape only when the plant's growth habit calls for it",
-        "guidance": "Deadheading or light shaping may be useful for the documented ornamental type, but the exact response remains source- and plant-dependent.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "short": "Deadhead spent flowers to prolong flowering",
+        "guidance": "RHS specifically recommends deadheading 'Empress of India' to prolong flowering. The source does not establish a universal pruning schedule or response in an indoor system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-nasturtium-wave1"
+          "rhs-empress-of-india-nasturtium-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest or enjoy flowers as an ornamental crop",
-        "guidance": "Wave 1 treats this identity primarily as ornamental. Culinary use is not inferred without identity-specific edible-flower evidence.",
+        "short": "RHS reports scarlet flowers from summer into early autumn in the UK",
+        "guidance": "RHS reports a long flowering period from summer into early autumn under UK conditions. A separate RHS guide says leaves, seeds and young flower buds of many annual nasturtiums, including T. majus, are edible. Because the species placement of this named selection is unresolved, treat that food-use guidance as crop-level context, not confirmed edible-use guidance for this identity.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-nasturtium-wave1"
+          "rhs-empress-of-india-nasturtium-2026",
+          "rhs-annual-nasturtiums-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Watch for stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "short": "RHS flags possible skin allergy when handling",
+        "guidance": "The RHS cultivar profile flags potential skin-allergen risk during handling. Treat this as a handling precaution, not a disease claim or a universal reaction prediction.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-nasturtium-wave1"
+          "rhs-empress-of-india-nasturtium-2026"
         ]
       }
     },
@@ -3414,33 +3611,22 @@
       },
       "growthHabits": {
         "status": "known",
-        "value": [
-          "trailing"
-        ],
+        "value": ["bushy"],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-nasturtium-wave1"
-            ],
+            "sourceIds": ["rhs-empress-of-india-nasturtium-2026"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
-              "level": "species",
-              "taxon": "Tropaeolum majus"
+              "level": "identity"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+          "note": "RHS reports a bushy habit for the named cultivar."
           }
         ]
       },
       "matureSize": {
-        "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature height was accepted for this type in Wave 1."
-        },
-        "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature spread was accepted for this type in Wave 1."
-        }
+        "height": {"status":"known","value":{"maxCm":30,"context":"outdoor_general"},"evidence":[{"sourceIds":["rhs-empress-of-india-nasturtium-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"identity"},"note":"RHS reports around 30 cm height for this named cultivar in UK garden context."}]},
+        "spread": {"status":"known","value":{"minCm":10,"maxCm":50,"context":"outdoor_general"},"evidence":[{"sourceIds":["rhs-empress-of-india-nasturtium-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"identity"},"note":"RHS lists a broad 0.1–0.5 m spread range for this named cultivar in UK garden conditions."}]}
       },
       "spacing": {
         "status": "unknown",
@@ -3458,16 +3644,13 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-nasturtium-wave1"
-            ],
+            "sourceIds": ["rhs-empress-of-india-nasturtium-2026"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
-              "level": "species",
-              "taxon": "Tropaeolum majus"
+              "level": "identity"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "RHS cultivar profile reports full sun for outdoor cultivation; this is not an indoor grow-light tier."
           }
         ]
       }
@@ -3489,43 +3672,73 @@
       "calendula officinalis",
       "pacific beauty"
     ],
-    "summary": "Pacific Beauty Calendula is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Pacific Beauty is a named Calendula officinalis selection grown for its flowers. RHS describes a yellow flower with an orange center and outdoor sun-to-partial-shade conditions; Extension guidance covers moisture, deadheading and flower harvest at species scope. No hydroponic performance is established.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Pacific Beauty Calendula identity is resolved at Calendula officinalis and Pacific Beauty type scope",
-        "guidance": "Pacific Beauty Calendula is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "RHS lists Calendula officinalis 'Pacific Beauty'",
+        "guidance": "RHS publishes Pacific Beauty as a named Calendula officinalis selection. Its cultivar page describes golden-yellow flowers with orange centers. General calendula care below is species-level Extension guidance, not a cultivar-specific performance claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-calendula-wave1"
+          "rhs-calendula-pacific-beauty-2026",
+          "ncsu-calendula-officinalis-2026"
         ]
       },
-      "pruning": {
-        "short": "Shape only when the plant's growth habit calls for it",
-        "guidance": "Deadheading or light shaping may be useful for the documented ornamental type, but the exact response remains source- and plant-dependent.",
-        "evidenceType": "garden_adaptation",
+      "growth": {
+        "short": "Annual or biennial; RHS lists a broad 0.5–1 m height range",
+        "guidance": "RHS describes 'Pacific Beauty' as annual or biennial and gives a broad maximum height of 0.5–1 m and spread of 0.1–0.5 m under UK garden conditions. These are RHS cultivar-profile ranges, not a compact indoor size guarantee. UNH Extension's shorter 10–12 in description is for calendula generally; the differing scopes and contexts are retained rather than averaged.",
+        "evidenceType": "source_backed",
         "confidence": "medium",
+        "sourceIds": ["rhs-calendula-pacific-beauty-2026", "unh-calendula-grow-2026"]
+      },
+      "cultivation": {
+        "short": "Outdoor full sun or partial shade; use evenly moist, well-drained soil",
+        "guidance": "RHS lists full sun or partial shade and well-drained loam, sand or chalk for Pacific Beauty. UNH Extension advises calendula grows best in evenly moist soil. These are outdoor/container horticultural conditions; neither source establishes an indoor grow-light tier, hydroponic recipe or system compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-calendula-pacific-beauty-2026", "unh-calendula-grow-2026"]
+      },
+      "care": {
+        "short": "Pinch young growth if a bushier form is wanted; deadhead spent blooms",
+        "guidance": "NC State Extension says calendula may be pinched as it matures to encourage compact, bushy growth and that deadheading spent flowers promotes additional bloom. This is species-level outdoor guidance; it does not establish a Pacific Beauty-specific pruning response or schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-calendula-officinalis-2026"]
+      },
+      "flowering": {
+        "short": "Golden-yellow flowers with orange centers",
+        "guidance": "RHS describes Pacific Beauty's golden-yellow flowers with orange centers and flowering from summer into autumn under UK conditions. Flowering dates vary with climate and sowing; no universal calendar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-calendula-pacific-beauty-2026"]
+      },
+      "pruning": {
+        "short": "Remove spent flower heads to encourage further bloom",
+        "guidance": "NC State Extension supports deadheading spent calendula flowers to promote additional blooms. Remove flower heads as they fade; the source does not prescribe an exact interval or promise a fixed number of reblooms for Pacific Beauty.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-calendula-wave1"
+          "ncsu-calendula-officinalis-2026"
         ]
       },
       "harvest": {
-        "short": "Harvest or enjoy flowers as an ornamental crop",
-        "guidance": "Wave 1 treats this identity primarily as ornamental. Culinary use is not inferred without identity-specific edible-flower evidence.",
+        "short": "Cut flowers about half open; petals have species-level culinary uses",
+        "guidance": "UNH Extension says calendula cut flowers last longer when harvested about half open and describes Calendula officinalis petals used fresh to decorate salads or cakes, or dried for soups, stews and tea. These edible-petal uses are species-level, not a Pacific Beauty-specific flavor or medicinal claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-calendula-wave1"
+          "unh-calendula-grow-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Watch for stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "short": "RHS lists aphids, powdery mildew and a virus as possible issues",
+        "guidance": "RHS lists possible susceptibility to aphids, powdery mildews and a virus for Pacific Beauty; NC State Extension also lists powdery mildew, slugs, snails, aphids and whiteflies for calendula generally. These are possible species/cultivar-page concerns, not a diagnosis or a resistance rating. Check symptoms and growing conditions before choosing a response.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-calendula-wave1"
+          "rhs-calendula-pacific-beauty-2026",
+          "ncsu-calendula-officinalis-2026"
         ]
       }
     },
@@ -3557,12 +3770,14 @@
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature height was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 50, "maxCm": 100, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["rhs-calendula-pacific-beauty-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "identity"}, "note": "RHS gives a broad 0.5–1 m maximum-height range for this named selection in UK conditions; UNH's shorter range is general calendula guidance, so the values are not averaged."}]
         },
         "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature spread was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 10, "maxCm": 50, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["rhs-calendula-pacific-beauty-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "identity"}, "note": "RHS gives a broad 0.1–0.5 m spread range for this named selection in UK conditions; not a container or Garden-system spacing recommendation."}]
         }
       },
       "spacing": {
@@ -3577,20 +3792,26 @@
             "requirement": {
               "kind": "full_sun"
             }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
           }
         ],
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-calendula-wave1"
+              "rhs-calendula-pacific-beauty-2026"
             ],
             "evidenceType": "source_backed",
-            "confidence": "medium",
+            "confidence": "high",
             "taxonomicScope": {
               "level": "species",
               "taxon": "Calendula officinalis"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "RHS lists full sun or partial shade outdoors for Pacific Beauty; this is not an indoor grow-light tier."
           }
         ]
       }
@@ -3612,44 +3833,53 @@
       "borago officinalis",
       "blue flower type"
     ],
-    "summary": "Blue Borage is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Blue Borage represents the blue-flowered annual species Borago officinalis, not a verified named cultivar. Maryland Extension describes coarse hairy foliage, star-shaped sky-blue flowers and plants about 2–3 ft tall; NC State Extension also reports a species-level spreading width of about 1–1⅓ ft. It self-seeds and attracts pollinators. Its flowers and leaves have documented culinary uses but should be used sparingly because NC State warns of liver-damage risk.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Blue Borage identity is resolved at Borago officinalis and Blue flower type type scope",
-        "guidance": "Blue Borage is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Blue-flowered Borago officinalis; no named cultivar assigned",
+        "guidance": "POWO accepts Borago officinalis. Maryland Extension describes the species' sky-blue flowers; the catalog label 'Blue Borage' is treated as a flower-color type, not cultivar-level identity.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-borage-wave1"
+          "kew-borago-officinalis-2026",
+          "umd-borage-2026"
         ]
       },
-      "pruning": {
-        "short": "Shape only when the plant's growth habit calls for it",
-        "guidance": "Deadheading or light shaping may be useful for the documented ornamental type, but the exact response remains source- and plant-dependent.",
+      "growth": {
+        "short": "Annual with coarse hairy leaves and star-shaped sky-blue flowers",
+        "guidance": "Maryland Extension describes coarse, hairy stems and leaves and sky-blue star-shaped flowers; plants reach about 2–3 ft in its garden guidance. NC State Extension lists a species-level height range of about 1 ft 7 in to 3 ft 2 in and a width of 1–1 ft 4 in. These are reference ranges for Borago officinalis, not guarantees for a named blue selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umd-borage-2026", "ncsu-borago-officinalis-2026"]
+      },
+      "cultivation": {
+        "short": "Sunny, well-drained site; established plants readily reseed",
+        "guidance": "Maryland Extension recommends sunny, relatively dry places and notes that borage readily reseeds. NC State Extension says full sun is best but light shade is tolerated, and the species grows in varied soils including poor soil; it lists good drainage and occasional dryness. The combined guidance favors a sunny, well-drained site without claiming drought is required. Maryland also notes transplanting can be difficult; seed-starting details remain in the Seed Profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umd-borage-2026", "ncsu-borago-officinalis-2026"]
+      },
+      "maintenance": {
+        "short": "Manage volunteer seedlings only if self-seeding is unwanted",
+        "guidance": "Maryland Extension reports that borage readily reseeds. Removing spent flower heads before seed development is a practical Garden adaptation only when volunteers are not wanted; leaving flowers supports the documented pollinator value.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-borage-wave1"
-        ]
+        "sourceIds": ["umd-borage-2026"]
       },
       "harvest": {
-        "short": "Harvest or enjoy flowers as an ornamental crop",
-        "guidance": "Wave 1 treats this identity primarily as ornamental. Culinary use is not inferred without identity-specific edible-flower evidence.",
+        "short": "Pick blossoms as they open; use leaves and flowers sparingly",
+        "guidance": "Maryland Extension advises picking blossoms as they open and says leaves may be used fresh. It describes borage flowers and leaves for cucumber-like flavor in summer drinks. NC State Extension warns that edible leaves and flowers should be used only sparingly because liver damage can occur; no medicinal efficacy or Blue-cultivar-specific flavor claim is made.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-borage-wave1"
-        ]
+        "confidence": "high",
+        "sourceIds": ["umd-borage-2026", "ncsu-borago-officinalis-2026"]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Watch for stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "short": "Powdery mildew can occur, though no specific pest problem is listed",
+        "guidance": "NC State Extension reports no specific insect or disease problems for Borago officinalis but notes that powdery mildew sometimes occurs. Treat this as a species-level observation, not a guarantee of resistance; inspect foliage if a white powdery coating appears and avoid diagnosing from appearance alone.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-borage-wave1"
-        ]
+        "sourceIds": ["ncsu-borago-officinalis-2026"]
       }
     },
     "compatibilityProfile": {
@@ -3660,32 +3890,33 @@
       },
       "growthHabits": {
         "status": "known",
-        "value": [
-          "upright"
-        ],
+        "value": ["upright", "spreading"],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-borage-wave1"
-            ],
+            "sourceIds": ["umd-borage-2026"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
               "level": "species",
               "taxon": "Borago officinalis"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "Maryland Extension describes this species as an annual with tall, upright stems; dimensions remain contextual."
+          },
+          {
+            "sourceIds": ["ncsu-borago-officinalis-2026"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {"level": "species", "taxon": "Borago officinalis"},
+            "note": "NC State classifies the overall species habit as spreading; Maryland describes tall upright stems, so stem posture and whole-plant habit are both retained."
           }
         ]
       },
       "matureSize": {
-        "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature height was accepted for this type in Wave 1."
-        },
+        "height": {"status":"known","value":{"minCm":61,"maxCm":91,"context":"outdoor_general"},"evidence":[{"sourceIds":["umd-borage-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Borago officinalis"},"note":"Maryland Extension reports 2–3 ft in its regional garden guidance."}]},
         "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature spread was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 30.48, "maxCm": 40.64, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["ncsu-borago-officinalis-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Borago officinalis"}, "note": "NC State lists a species-level width of 1–1 ft 4 in; converted to centimeters, not a Blue Borage cultivar measurement."}]
         }
       },
       "spacing": {
@@ -3704,16 +3935,14 @@
         ],
         "evidence": [
           {
-            "sourceIds": [
-              "johnnys-borage-wave1"
-            ],
+            "sourceIds": ["umd-borage-2026"],
             "evidenceType": "source_backed",
             "confidence": "medium",
             "taxonomicScope": {
               "level": "species",
               "taxon": "Borago officinalis"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "Maryland Extension describes sunny sites; this is outdoor exposure, not an indoor grow-light tier."
           }
         ]
       }
@@ -3735,43 +3964,56 @@
       "matricaria chamomilla",
       "german chamomile"
     ],
-    "summary": "German Chamomile is a Wave 1 baseline identity with useful crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "German chamomile (*Matricaria chamomilla*) is an annual with finely divided aromatic foliage and daisy-like flower heads. Wisconsin Extension recommends full sun and well-drained soil; harvest flower heads near full bloom for fresh or dried use. Deadheading can extend flowering, while allowing heads to set seed encourages self-seeding. Hydroponic fit remains unknown.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "German Chamomile identity is resolved at Matricaria chamomilla and German chamomile type scope",
-        "guidance": "German Chamomile is published as a useful horticultural type. Wave 1 does not promote a generic crop guide into named-cultivar certainty.",
+        "short": "Accepted species Matricaria chamomilla; distinct from other chamomiles",
+        "guidance": "POWO accepts Matricaria chamomilla and includes M. recutita in its synonym treatment. Wisconsin Extension cautions that several Asteraceae are called chamomile; this profile is the German chamomile species, with no selected garden cultivar.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-chamomile-wave1"
+          "kew-matricaria-chamomilla-2026",
+          "uwmadison-german-chamomile-2026"
         ]
       },
-      "pruning": {
-        "short": "Shape only when the plant's growth habit calls for it",
-        "guidance": "Deadheading or light shaping may be useful for the documented ornamental type, but the exact response remains source- and plant-dependent.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
-        "sourceIds": [
-          "johnnys-chamomile-wave1"
-        ]
+      "growth": {
+        "short": "Annual with branching stems and finely divided aromatic leaves",
+        "guidance": "Wisconsin Extension describes erect, branched stems, sparse finely divided leaves and shallow, spreading roots. Flower heads have a domed yellow center surrounded by white ray flowers; no cultivar-specific size is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-german-chamomile-2026"]
+      },
+      "cultivation": {
+        "short": "Full sun, well-drained soil and moisture in the upper root zone",
+        "guidance": "Wisconsin Extension recommends full sun and well-drained soil; the plant grows in poor soil and needs little fertilizer. Because its roots are shallow, irrigate as needed to keep upper soil moist but not wet. These are garden-soil recommendations, not hydroponic parameters.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-german-chamomile-2026"]
+      },
+      "maintenance": {
+        "short": "Deadhead to continue flowering, or leave heads to mature for self-seeding",
+        "guidance": "Wisconsin Extension reports flowering can continue until seeds ripen or frost when deadheaded and that plants readily self-seed if flower heads are not removed. Choose between continued bloom and allowing seed; this is an outdoor garden-management tradeoff.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uwmadison-german-chamomile-2026"]
       },
       "harvest": {
-        "short": "Harvest or enjoy flowers as an ornamental crop",
-        "guidance": "Wave 1 treats this identity primarily as ornamental. Culinary use is not inferred without identity-specific edible-flower evidence.",
+        "short": "Harvest flower heads near full bloom; use fresh or dried",
+        "guidance": "Wisconsin Extension recommends harvesting flower heads when near full bloom for best quality, snipping the inflorescence from the stem; flowers may be used fresh or dried. This is species-level herbal/culinary use, not a medicinal efficacy claim.",
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "johnnys-chamomile-wave1"
+          "uwmadison-german-chamomile-2026"
         ]
       },
       "problems": {
-        "short": "Watch the few problems that change management",
-        "guidance": "Watch for stress, poor airflow, and flower loss. Do not diagnose a disease from a single visual symptom.",
+        "short": "Aphids are a reported pest; few other pest problems are noted by Extension",
+        "guidance": "Wisconsin Extension reports few pest problems other than aphids in its garden account. This regional observation is not a universal pest-free or disease-resistance claim.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-chamomile-wave1"
+          "uwmadison-german-chamomile-2026"
         ]
       }
     },
@@ -3784,12 +4026,12 @@
       "growthHabits": {
         "status": "known",
         "value": [
-          "mounded"
+          "upright"
         ],
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-chamomile-wave1"
+              "uwmadison-german-chamomile-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
@@ -3797,7 +4039,7 @@
               "level": "species",
               "taxon": "Matricaria chamomilla"
             },
-            "note": "Crop/type-level growth habit; not a named-cultivar measurement."
+            "note": "Wisconsin Extension describes erect, branched stems; no compact cultivar is represented."
           }
         ]
       },
@@ -3807,8 +4049,9 @@
           "reason": "No identity-specific mature height was accepted for this type in Wave 1."
         },
         "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature spread was accepted for this type in Wave 1."
+          "status": "known",
+          "value": {"minCm": 30.48, "maxCm": 40.64, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["ncsu-borago-officinalis-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Borago officinalis"}, "note": "NC State lists a species-level width of 1–1 ft 4 in; converted to centimeters, not a Blue Borage cultivar measurement."}]
         }
       },
       "spacing": {
@@ -3828,7 +4071,7 @@
         "evidence": [
           {
             "sourceIds": [
-              "johnnys-chamomile-wave1"
+              "uwmadison-german-chamomile-2026"
             ],
             "evidenceType": "source_backed",
             "confidence": "medium",
@@ -3836,7 +4079,7 @@
               "level": "species",
               "taxon": "Matricaria chamomilla"
             },
-            "note": "Crop-level light context; exact system response remains context-dependent."
+            "note": "Wisconsin Extension's full-sun recommendation is outdoor context, not an indoor grow-light tier."
           }
         ]
       }

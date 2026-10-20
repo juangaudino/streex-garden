@@ -12,8 +12,8 @@
         },
         "cultivation": {
           "context": {
-            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
-            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+            "en": "Missouri's ivy-specific ambient-light/moisture guidance is distinct from its general houseplant potting-medium advice; neither specifies grow-light intensity or hydroponics. NC State's outdoor containment recommendation is regional.",
+            "es": "La guía de Missouri sobre luz ambiental/humedad para hiedra se distingue de su consejo general de medio para plantas de interior; ninguna especifica intensidad de lámpara ni hidroponía. La recomendación exterior de contención de NC State es regional."
           }
         },
         "growth": {
@@ -852,8 +852,26 @@
         },
         "harvest": {
           "context": {
-            "en": "This growing-system claim remains unverified.",
-            "es": "Esta afirmación sobre el sistema sigue sin verificarse."
+            "en": "Harvest and storage cues come from a Florida home-landscape guide; they do not promise fruiting or a fixed calendar for an individual seed-grown plant.",
+            "es": "Las señales de cosecha y almacenamiento proceden de una guía de paisaje doméstico de Florida; no prometen fructificación ni un calendario fijo para una planta individual nacida de semilla."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Water and mulch guidance is from Florida home landscapes and should not be converted into a universal container watering schedule.",
+            "es": "La orientación de riego y mantillo procede de jardines domésticos de Florida y no debe convertirse en un calendario universal de riego para maceta."
+          }
+        },
+        "pollination": {
+          "context": {
+            "en": "Flower-sex and pollination descriptions are species-level observations from a Florida guide; sex expression and fruit set vary among plants and conditions.",
+            "es": "La descripción de tipos florales y polinización es una observación a nivel de especie en una guía de Florida; la expresión sexual y el cuajado varían entre plantas y condiciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pest and disease signs are reported for Florida papaya landscapes; local diagnosis and current regional advice are needed before control decisions.",
+            "es": "Las señales de plagas y enfermedades se reportan para papayas de paisaje en Florida; antes de decidir controles se necesita diagnóstico local y orientación regional vigente."
           }
         }
       }

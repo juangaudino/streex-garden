@@ -520,32 +520,32 @@
         },
         "growth": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "NC State garden dimensions and the RHS estimate for the commonly sold houseplant describe different contexts; neither is a fixed indoor-container or hydroponic-system size, and RHS does not assign a measurement to a color cultivar.",
+            "es": "Las dimensiones de jardín de NC State y la estimación de RHS para la planta de interior comúnmente vendida describen contextos distintos; ninguna fija el tamaño de una maceta interior o sistema hidropónico, y RHS no asigna una medida a un cultivar de color."
           }
         },
         "cultivation": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "RHS houseplant guidance for commonly sold Hypoestes; minimum temperature is a cold-warning threshold, and indirect light, moisture, and humidity are qualitative—not a grow-light tier or hydroponic recipe.",
+            "es": "Guía RHS de interior para Hypoestes comúnmente vendida; la temperatura mínima es un umbral de frío, y la luz indirecta, humedad del sustrato y humedad ambiental son cualitativas, no un nivel de luz artificial ni una receta hidropónica."
           }
         },
         "maintenance": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "RHS and NC State both support pinching for a bushier or more compact ornamental plant; neither supplies a cultivar-specific schedule.",
+            "es": "RHS y NC State respaldan el pinzado para una planta ornamental más tupida o compacta; ninguna fuente establece un calendario específico de cultivar."
           }
         },
         "propagation": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "NC State documents water-rooted stem cuttings; RHS provides only a basic spring sowing method and no germination duration or temperature, so the public Seed Profile V0 remains uncreated.",
+            "es": "NC State documenta esquejes de tallo en agua; RHS solo ofrece un método básico de siembra primaveral y no indica duración ni temperatura de germinación, por lo que no se crea Seed Profile V0."
           }
         },
         "problems": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "Dry-air edge browning and underwatering wilt are RHS houseplant cues; root rot, powdery mildew, and listed insects come from NC State and are not resistance claims.",
+            "es": "Los bordes marrones por aire seco y el marchitamiento por falta de agua son señales de interior descritas por RHS; pudrición, mildiu e insectos enumerados proceden de NC State y no implican resistencia."
           }
         }
       }
@@ -1569,38 +1569,44 @@
       "sections": {
         "identity": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "Kew supports species-level Brassica napus; rutabaga is represented as a crop type, not a separate taxon.",
+            "es": "Kew respalda Brassica napus a nivel de especie; rutabaga se representa como tipo de cultivo, no como taxón separado."
           }
         },
         "growth": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "Cool-season timing and crop distinction are supported at rutabaga/turnip crop scope, not named-cultivar scope.",
+            "es": "La estación fresca y la distinción entre cultivos corresponden al alcance de rutabaga/nabo, no a un cultivar nombrado."
           }
         },
         "cultivation": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "USU and UMN dates are Utah/Minnesota outdoor soil calendars; do not generalize them to indoor systems.",
+            "es": "Las fechas de USU y UMN son calendarios de cultivo exterior en suelo para Utah/Minnesota; no se generalizan a sistemas interiores."
           }
         },
         "maintenance": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "Moisture guidance refers to field soil; no hydroponic solution or pod-spacing rule is established.",
+            "es": "La guía de humedad corresponde al suelo de campo; no establece solución hidropónica ni separación de pods."
           }
         },
         "harvest": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "USU size cue and UMN frost timing are regional crop guidance; cultivar-specific maturity remains unknown.",
+            "es": "El tamaño de USU y el momento tras heladas de UMN son guía regional del cultivo; la madurez varietal específica sigue desconocida."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "The edible root and leaf uses are crop-level; no cultivar-specific nutrition or medicinal claim is made.",
+            "es": "Los usos comestibles de raíz y hojas son generales del cultivo; no se afirma nutrición o uso medicinal de un cultivar."
           }
         },
         "problems": {
           "context": {
-            "en": "Apply guidance only within the cited plant and cultivation context.",
-            "es": "Aplica la orientación solo al contexto de planta y cultivo citado."
+            "en": "Heat, moisture stress and listed pests are rutabaga/turnip crop concerns, not variety resistance claims.",
+            "es": "Calor, estrés hídrico y plagas citadas son problemas del cultivo de rutabaga/nabo, no afirmaciones de resistencia varietal."
           }
         }
       }

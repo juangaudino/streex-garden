@@ -39,12 +39,26 @@
         "confidence": "high",
         "sourceIds": ["rhs-piper-auritum-wave36"]
       },
-      "harvest": {
-        "short": "Aromatic leaves; food use is documented",
-        "guidance": "Kew records Piper auritum as used for food, and RHS describes its aromatic leaves. The reviewed sources do not establish a harvest-start time or a species-specific harvesting schedule, so neither is supplied.",
+        "harvest": {
+        "short": "Harvest leaves as needed; no fixed interval is established",
+        "guidance": "SARE's Hoja Santa entry says to harvest leaves as needed; Kew records Piper auritum as used for food and RHS describes its aromatic foliage. These sources support leaf harvest and culinary use, but not a universal first-harvest age, amount, or repeat interval.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-piper-auritum-wave36", "rhs-piper-auritum-wave36", "sare-ethnic-vegetable-guide-hoja-santa-wave62"]
+      },
+      "uses": {
+        "short": "Leaves are documented as a culinary ingredient",
+        "guidance": "Kew records food use and SARE's guide lists Hoja Santa as an edible leafy crop with leaves harvested as needed. The profile does not infer a recipe, medicinal effect, or safety advice beyond those source statements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["kew-piper-auritum-wave36", "sare-ethnic-vegetable-guide-hoja-santa-wave62"]
+      },
+      "problems": {
+        "short": "Tenderness and cold exposure matter; RHS reports few routine pest issues",
+        "guidance": "RHS classifies Piper auritum as a tender shrub, recommends a sheltered warm/filtered growing context, and describes it as generally pest- and disease-free in its horticultural profile. This is not a guarantee of immunity or a numeric cold threshold.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["kew-piper-auritum-wave36", "rhs-piper-auritum-wave36"]
+        "sourceIds": ["rhs-piper-auritum-wave36"]
       }
     },
     "compatibilityProfile": {

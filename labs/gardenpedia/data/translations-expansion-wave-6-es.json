@@ -1,6 +1,100 @@
 {
-  "venus-flytrap-dionaea-muscipula":{"summary":"La Venus atrapamoscas es la especie aceptada Dionaea muscipula, una planta carnívora perenne nativa de las Carolinas. NC State Extension enumera propagación por semilla y división.","sections":{"identity":{"guidance":"Kew acepta Dionaea muscipula J.Ellis y la ubica en Droseraceae. Aquí el nombre Venus atrapamoscas se refiere a esta especie; no implica un cultivar nombrado."},"cultivation":{"guidance":"NC State Extension describe pleno sol o sombra parcial y suelo ácido persistentemente húmedo o temporalmente inundado. Son condiciones de sitio/exterior, no una receta hidropónica ni un calendario doméstico de riego."},"propagation":{"guidance":"NC State Extension enumera semilla y división como estrategias de propagación. No especifica protocolo doméstico de siembra, duración de germinación ni fidelidad varietal; esos detalles quedan sin resolver."},"problems":{"guidance":"La ficha citada sitúa la especie en condiciones húmedas y ácidas con pocos nutrientes. No ofrece un calendario de fertilización en maceta o hidroponía, así que no se infiere ninguno."}}},
-  "cape-sundew-drosera-capensis":{"summary":"El rocío del sol del Cabo es la especie perenne aceptada Drosera capensis. El Instituto Sudafricano de Biodiversidad documenta cultivo húmedo y ácido y propagación con semillas frescas sembradas en superficie o esquejes.","sections":{"identity":{"guidance":"Kew acepta Drosera capensis L. e identifica su distribución nativa en el Cabo sudafricano. La identidad pública es a nivel de especie, no un cultivar de color."},"cultivation":{"guidance":"PlantZAfrica de SANBI describe condiciones húmedas y pleno sol a semisombra al aire libre. El contexto de jardín botánico se conserva; no establece una receta hidropónica."},"propagation":{"guidance":"SANBI describe sembrar semilla fresca sobre la superficie del medio húmedo, sin cubrirla, y también documenta esquejes de hoja o raíz. La guía es a nivel de especie; no aporta duración numérica ni temperatura de germinación."},"problems":{"guidance":"SANBI señala que la desecación puede causar decaimiento y menor producción de mucílago. El síntoma no diagnostica por sí solo la causa; evalúa la humedad y las condiciones antes de intervenir."}}},
-  "pinguicula-primuliflora":{"summary":"Pinguicula primuliflora es una planta carnívora perenne aceptada, nativa del sureste de Estados Unidos. Sus plántulas en las puntas de las hojas hacen de la propagación vegetativa una vía práctica documentada; el cultivo se atribuye a una fuente especialista.","sections":{"identity":{"guidance":"Kew acepta Pinguicula primuliflora C.E.Wood & R.K.Godfrey, de Lentibulariaceae. Butterwort/grasilla es un nombre más amplio y se conserva como alias de búsqueda, no como sustituto de la identidad."},"cultivation":{"guidance":"La ficha especialista describe medio húmedo y aireado, y luz indirecta o filtrada, con precaución frente al sol directo en el contexto de hábitat indicado. Es una fuente especialista, no una recomendación hidropónica institucional."},"propagation":{"guidance":"La ficha especialista describe numerosos hijuelos que se forman en las puntas de las hojas y desarrollan raíces antes de separarse. Menciona formación ocasional de semillas en el clon descrito; no presenta la semilla como método rutinario confiable."}}},
-  "nepenthes-x-ventrata":{"summary":"NParks documenta Nepenthes × ventrata como híbrido de N. alata y N. ventricosa. Informa propagación por cultivo de tejidos y medio húmedo de pocos nutrientes; esto no establece protocolos de semilla ni de hidroponía.","sections":{"identity":{"guidance":"NParks identifica Nepenthes × ventrata como híbrido natural entre N. alata y N. ventricosa. El registro conserva ese nombre híbrido hortícola y no lo presenta como cultivar ni como una de las especies parentales."},"cultivation":{"guidance":"NParks describe un medio húmedo, bien drenado y de pocos nutrientes, y semisombra. Estas condiciones hortícolas no se convierten en hidroponía recirculante ni en valores de EC o pH."},"propagation":{"guidance":"NParks informa que este híbrido se ha propagado ampliamente mediante cultivo de tejidos. Esto no demuestra que producir semilla sea imposible; siguen sin verificarse un protocolo confiable de semilla y su fidelidad para el híbrido comercial."}}}
+  "venus-flytrap-dionaea-muscipula": {
+    "summary": "La Venus atrapamoscas es la especie aceptada Dionaea muscipula, una perenne carnívora cespitosa nativa de la costa de Carolina del Norte y una pequeña zona del noreste de Carolina del Sur. Sus trampas articuladas se cierran al tocar dos pelos sensores; requiere agua baja en minerales y medio ácido húmedo, sin fertilizante.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Dionaea muscipula J.Ellis y la ubica en Droseraceae. Aquí el nombre Venus atrapamoscas se refiere a esta especie; no implica un cultivar nombrado."
+      },
+      "growth": {
+        "short": "Roseta baja de trampas articuladas; el cierre es una respuesta normal a presas",
+        "guidance": "NC State describe una roseta basal de hasta ocho hojas. Cada hoja termina en una trampa de dos lóbulos; la estimulación de dos de seis pelos sensores puede cerrarla y, tras digerir la presa, la trampa se reinicia. El interior puede ser verde o rojo según la exposición al sol. Esta descripción de especie no asigna cultivar ni color de trampa."
+      },
+      "cultivation": {
+        "short": "Mantén húmedo el medio ácido y arenoso y usa agua de lluvia o destilada",
+        "guidance": "NC State recomienda humedad ambiental alta, un medio ácido, arenoso y húmedo, y pleno sol a sombra parcial; indica que no debe secarse. Aconseja agua de lluvia o destilada porque el agua dura o tratada puede dañarla, y no fertilizar. Se documenta el cultivo en recipiente o turbera, pero no la solución nutritiva hidropónica recirculante."
+      },
+      "propagation": {
+        "guidance": "NC State enumera semilla y división como estrategias de propagación. Para el protocolo de semilla y el establecimiento, consulta el perfil de semillas enlazado; esta ficha de planta no duplica esas instrucciones."
+      },
+      "flowering": {
+        "short": "Flores blancas sobre un tallo sin hojas en primavera",
+        "guidance": "NC State describe racimos de pequeñas flores blancas en un tallo sin hojas durante mayo y junio en su contexto regional de Carolina del Norte. La floración es parte del ciclo normal; no se infiere un calendario interior."
+      },
+      "problems": {
+        "short": "Vigila pulgones, ácaros y mancha negra",
+        "guidance": "NC State no informa problemas graves habituales de plagas o enfermedades, pero recomienda vigilar pulgones, ácaros y mancha negra. También advierte que el agua dura o tratada puede dañarla e identifica la especie como amenazada, desaconsejando recolectarla en estado silvestre. Elige ejemplares propagados en vivero; la nota de conservación se refiere a la región de la fuente, y las señales son para observar, no para diagnosticar solo por la apariencia de las trampas."
+      }
+    }
+  },
+  "cape-sundew-drosera-capensis": {
+    "summary": "El rocío del sol del Cabo es la especie perenne siempreverde aceptada Drosera capensis. SANBI describe una planta rizomatosa con hojas tentaculadas pegajosas, flores rosadas a malva, cultivo en maceta constantemente húmedo y propagación vegetativa; las dimensiones y fechas estacionales conservan el contexto regional de la fuente.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Drosera capensis L. e identifica su distribución nativa en el Cabo sudafricano. La identidad pública es a nivel de especie, no un cultivar de color."
+      },
+      "growth": {
+        "short": "Rocío del sol siempreverde con hojas tentaculadas y flores rosadas-malva",
+        "guidance": "SANBI describe una perenne robusta y de floración libre, normalmente de unos 15 cm de altura, con hojas que nacen alrededor de un tallo rizomatoso corto. Las glándulas pegajosas de los tentáculos foliares atrapan presas; de 15 a 30 flores rosadas o malva se abren en orden ascendente sobre un tallo. La floración de diciembre a enero corresponde al hemisferio sur, no a un calendario universal."
+      },
+      "cultivation": {
+        "short": "Mantén la maceta húmeda con agua de bajo contenido mineral",
+        "guidance": "PlantZAfrica de SANBI recomienda colocar la maceta sobre un plato con 1–3 cm de agua fresca para mantener húmedo el medio y pleno sol a semisombra al aire libre. Describe un medio ácido y pobre en nutrientes, además de una orientación interior para su contexto sudafricano. Es guía de maceta/jardín botánico; no establece receta hidropónica ni nivel universal de luz interior."
+      },
+      "propagation": {
+        "short": "Los esquejes de hoja y raíz son opciones vegetativas",
+        "guidance": "SANBI documenta propagación vegetativa mediante esquejes de hoja o raíz. Para la vía de semilla y sus instrucciones de siembra, consulta el perfil de semillas enlazado; esta ficha de planta no repite el protocolo de semilla a establecimiento."
+      },
+      "problems": {
+        "short": "La desecación, la manipulación y algunas plagas alteran el aspecto",
+        "guidance": "SANBI señala que secarse puede causar decaimiento y menor mucílago; trasplantar o tocar las hojas también puede reducir temporalmente el rocío hasta que aparezca follaje nuevo. Enumera pulgones, cochinillas y trips que deforman el crecimiento nuevo y desaconseja insecticidas a base de jabón. Estas señales invitan a revisar las condiciones, no a diagnosticar solo por apariencia."
+      }
+    }
+  },
+  "pinguicula-primuliflora": {
+    "summary": "Pinguicula primuliflora es una perenne carnívora compacta del sureste de Estados Unidos, con hojas pegajosas en roseta y flores terminales. NParks documenta raíces constantemente húmedas, incluso tolerancia a suelos anegados, y semisombra; también forma hijuelos en las puntas foliares. Esto no demuestra compatibilidad con hidroponía recirculante.",
+    "sections": {
+      "identity": {
+        "guidance": "Kew acepta Pinguicula primuliflora C.E.Wood & R.K.Godfrey, de Lentibulariaceae. NParks da Primrose Butterwort como nombre común; butterwort/grasilla se conserva como término más amplio de búsqueda, no como sustituto de la identidad."
+      },
+      "growth": {
+        "guidance": "NParks describe hojas oblongas y verdes en una roseta basal compacta, normalmente de 4–16 cm de ancho, con pelos glandulares que atrapan y digieren insectos. De la roseta emergen tallos florales solitarios. El ancho de corona es un dato botánico de la especie, no una recomendación de tamaño de maceta o separación entre posiciones."
+      },
+      "cultivation": {
+        "guidance": "NParks recomienda una capa inferior de turba de sphagnum, una capa superior de sphagnum y perlita, y mantener el medio constantemente húmedo; registra tolerancia a raíces en suelo húmedo o anegado y preferencia de semisombra. La fuente especialista también describe medio húmedo y aireado y luz filtrada. Ninguna fuente establece solución nutritiva hidropónica convencional, objetivos de EC/pH o intervalo de secado."
+      },
+      "care": {
+        "guidance": "NParks informa que se forman hijuelos en las puntas de las hojas cuando estas tocan el medio; la fuente especialista describe que enraízan antes de separarse. Es una característica de crecimiento vegetativo reconocible, no una señal de enfermedad ni un protocolo de plántulas."
+      },
+      "flowering": {
+        "guidance": "NParks describe una flor terminal solitaria, lila clara, con garganta amarilla y venas marrones. Las fuentes revisadas no establecen un calendario universal de floración en interior."
+      },
+      "propagation": {
+        "guidance": "NParks y la fuente especialista describen hijuelos vegetativos en las puntas de las hojas. La fuente especialista menciona formación ocasional de semillas en el clon descrito; esto no prueba que la semilla sea imposible ni establece un protocolo fiable de siembra."
+      }
+    }
+  },
+  "nepenthes-x-ventrata": {
+    "summary": "Nepenthes × ventrata es un híbrido hortícola natural de N. alata y N. ventricosa, con tallos trepadores, zarcillos y trampas de jarro. NParks describe medio húmedo, bien drenado y pobre en nutrientes, nebulización ocasional y uso ornamental en interior o cestas colgantes; no se infiere compatibilidad hidropónica convencional.",
+    "sections": {
+      "identity": {
+        "guidance": "NParks identifica Nepenthes × ventrata como híbrido natural entre N. alata y N. ventricosa. La ficha conserva el nombre híbrido hortícola, sin presentarlo como especie aceptada ni cultivar nombrado."
+      },
+      "growth": {
+        "guidance": "NParks describe hojas brillantes y coriáceas cuyos extremos forman zarcillos o jarros cilíndricos que capturan insectos. Los jarros son amarillo verdosos y pueden adquirir un rubor rojo con luz intensa; no es una garantía de color para un cultivar ni un indicador único de salud."
+      },
+      "cultivation": {
+        "guidance": "NParks recomienda un medio húmedo pero bien drenado y pobre en nutrientes, con ejemplos de perlita o arena mezcladas con turba o sphagnum. Su categoría de cuidado indica semisombra, mientras que la descripción dice que 6–8 horas de sol pleno pueden desarrollar el color rojo de los jarros. Son contextos distintos en la misma fuente; no se convierten en un único objetivo de luz interior ni en valores de EC o pH."
+      },
+      "care": {
+        "guidance": "NParks aconseja mantener un ambiente húmedo mediante nebulización ocasional y evitar colocar la planta en un entorno con aire acondicionado. No aporta porcentaje de humedad ni frecuencia exacta de nebulización."
+      },
+      "propagation": {
+        "guidance": "NParks informa que este híbrido se ha propagado ampliamente mediante cultivo de tejidos. Esto no demuestra que producir semillas sea imposible; no quedan establecidos aquí un protocolo confiable de semilla ni su fidelidad para el híbrido comercial."
+      },
+      "uses": {
+        "short": "Ornamental de interior y trepadora apta para cestas colgantes",
+        "guidance": "NParks la clasifica como planta de interior, de follaje ornamental y apropiada para cestas colgantes. Su hábito trepador y los zarcillos respaldan esa presentación; la fuente no establece necesidad de tutor, dimensiones adultas ni compatibilidad con una máquina Garden."
+      }
+    }
+  }
 }

@@ -113,6 +113,7 @@ export type DonorPlantDetail = {
         bestUse: string;
         quickUses: string[];
         options: DonorHarvestOption[];
+        safetyNote?: string | undefined;
       }
     | undefined;
   neighbors?:
@@ -138,6 +139,7 @@ type HarvestRecord = {
   edibleParts?: { en?: string; es?: string };
   bestUse?: { en?: string; es?: string };
   quickUses?: { en?: string[]; es?: string[] };
+  safetyNote?: { en?: string; es?: string };
   methods?: {
     id: string;
     icon: string;
@@ -440,6 +442,24 @@ export type EvidenceHealth = {
 };
 
 function evidenceHealth(entry: GardenLibraryEntry): EvidenceHealth {
+  const publicProfile = publicPlantProfiles[entry.libraryPlantId];
+  if (publicProfile) {
+    const sections = Object.values(publicProfile.sections);
+    const backed = sections.filter((section) => section.evidenceType === "source_backed").length;
+    const adapted = sections.filter((section) => section.evidenceType === "garden_adaptation").length;
+    const pending = sections.filter((section) => section.evidenceType === "needs_validation").length;
+    const assessed = sections.length;
+    return {
+      backed,
+      adapted,
+      pending,
+      assessed,
+      coverage: assessed ? Math.round((backed / assessed) * 100) : 0,
+    };
+  }
+
+  // Compatibility/lifecycle evidence is a separate capability layer. Only use
+  // those signals for legacy profiles that do not have a public profile record.
   const records = evidenceRecords(entry);
   const legacy = legacyCatalog.get(entry.libraryPlantId);
   for (const guide of Object.values(legacy?.sections ?? {})) {
@@ -564,7 +584,9 @@ function harvestDetail(entry: GardenLibraryEntry, language: "en" | "es") {
     const steps = method.steps[locale] || method.steps.en || [];
     const sourceRefs = method.sourceIds
       .map((sourceId) => {
-        const source = harvestSources[sourceId];
+        const source =
+          harvestSources[sourceId] ??
+          entry.reference.sources.find((candidate) => candidate.id === sourceId);
         return source
           ? { label: `${source.publisher} · ${source.title}`, url: source.url }
           : undefined;
@@ -591,7 +613,8 @@ function harvestDetail(entry: GardenLibraryEntry, language: "en" | "es") {
       sources: sourceRefs,
     };
   });
-  return { ediblePart, bestUse, quickUses, options };
+  const safetyNote = record?.safetyNote?.[locale] || undefined;
+  return { ediblePart, bestUse, quickUses, options, safetyNote };
 }
 
 export function buildDonorPlantDetail(
@@ -691,7 +714,7 @@ export function buildDonorPlantDetail(
       id,
       emoji: label.emoji,
       title: label.title,
-      subtitle: value.short || value.guidance || "",
+      subtitle: value.short || "",
       body: value.guidance || value.short || "",
       bullets: value.items ?? [],
       avoid: value.avoid?.join(" "),
@@ -726,10 +749,7 @@ export function buildDonorPlantDetail(
       id,
       emoji: label.emoji,
       title: label.title,
-      subtitle:
-        localized.short ||
-        localized.guidance ||
-        (language === "es" ? "Pendiente de validación." : "Pending validation."),
+      subtitle: localized.short || "",
       body:
         localized.guidance ||
         localized.short ||

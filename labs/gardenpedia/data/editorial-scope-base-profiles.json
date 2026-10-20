@@ -98,6 +98,18 @@
     "red-romaine-lettuce": {
       "source": "plants.json",
       "sections": {
+        "growth": {
+          "context": {
+            "en": "The tall, compact cos/romaine habit is crop-type guidance from UMN, not a Red Romaine cultivar measurement.",
+            "es": "El porte alto y compacto cos/romana es una guía del tipo de cultivo de UMN, no una medición del cultivar Red Romaine."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "UMN conditions and bolting observations are regional outdoor lettuce guidance; do not convert them into indoor lighting or cultivar guarantees.",
+            "es": "Las condiciones y observaciones de espigado de UMN son guía regional para lechuga exterior; no se convierten en iluminación interior ni garantías de cultivar."
+          }
+        },
         "germination": {
           "context": {
             "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
@@ -124,8 +136,8 @@
         },
         "flowering": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Heat, long-day and high-light bolting notes are scoped to lettuce guidance; do not assert Red Romaine-specific resistance.",
+            "es": "Las notas de espigado por calor, días largos y alta luz corresponden a guía de lechuga; no afirman resistencia específica de Red Romaine."
           }
         },
         "hydroponics": {
@@ -136,8 +148,8 @@
         },
         "problems": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Tipburn is a symptom requiring context, not a diagnosis of a single nutrient deficiency.",
+            "es": "El tipburn es un síntoma que requiere contexto, no un diagnóstico de una deficiencia nutritiva única."
           }
         }
       }
@@ -1097,6 +1109,9 @@
     "spearmint": {
       "source": "plants-expansion-batch-a1.json",
       "sections": {
+        "identity": {"context": {"en": "Species-level Mentha spicata evidence; the common name is not a named cultivar and does not include peppermint.", "es": "Evidencia a nivel de la especie Mentha spicata; el nombre común no es un cultivar nombrado ni incluye la menta piperita."}},
+        "growth": {"context": {"en": "NC State's 1–2 ft dimensions are regional outdoor species guidance; do not treat them as indoor or hydroponic limits.", "es": "Las dimensiones de 30–61 cm de NC State son orientación regional exterior para la especie; no las trates como límites de interior o hidroponía."}},
+        "cultivation": {"context": {"en": "Outdoor soil and sun exposure guidance only; no indoor grow-light requirement or hydroponic compatibility is established.", "es": "Solo orientación de suelo y exposición solar exterior; no se establece requisito de lámpara interior ni compatibilidad hidropónica."}},
         "germination": {
           "context": {
             "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
@@ -1414,46 +1429,52 @@
     "seaside-f1-spinach": {
       "source": "plants-expansion-batch-b1.json",
       "sections": {
-        "germination": {
+        "identity": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Seaside-specific identity and traits come from Johnny's product profile; crop-level guidance remains labeled separately.",
+            "es": "La identidad y los rasgos específicos de Seaside proceden de la ficha de Johnny's; la guía general del cultivo se distingue por separado."
           }
         },
-        "thinning": {
+        "growth": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Compact habit and leaf description are cultivar-specific; no numeric mature dimensions are supplied.",
+            "es": "El porte compacto y la descripción de las hojas son específicos del cultivar; no se indican dimensiones maduras numéricas."
           }
         },
-        "pruning": {
+        "cultivation": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "USU's outdoor temperature and soil guidance applies to spinach in its Utah context, not to an indoor schedule or device prescription.",
+            "es": "La guía exterior de temperatura y suelo de USU corresponde a espinaca en su contexto de Utah, no a un programa de interior ni a la receta de un dispositivo."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "USU's weekly water amount is a field-soil reference; it is not converted to container or reservoir volume.",
+            "es": "La cantidad semanal de agua de USU es una referencia para suelo de campo; no se convierte en volumen para maceta o depósito."
           }
         },
         "harvest": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Harvest technique is for established plants; days counted from direct sowing remain seed-stage timing.",
+            "es": "La técnica de cosecha corresponde a plantas establecidas; los días contados desde la siembra directa siguen siendo tiempos de la etapa de semilla."
           }
         },
         "flowering": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Slow-bolting is a relative cultivar trait, not immunity to heat- or day-length-driven bolting.",
+            "es": "El espigado lento es un rasgo relativo del cultivar, no inmunidad al espigado inducido por calor o duración del día."
           }
         },
         "hydroponics": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "OSU's EC/pH values are spinach crop-table references only; they do not establish Seaside-specific or Garden X device performance.",
+            "es": "Los valores de EC/pH de OSU son solo referencias de tabla para espinaca; no establecen rendimiento específico de Seaside ni de un dispositivo Garden X."
           }
         },
         "problems": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Downy-mildew resistance is reported by race and level; visible symptoms still require diagnosis.",
+            "es": "La resistencia al mildiu velloso se informa por raza y nivel; los síntomas visibles aun requieren diagnóstico."
           }
         }
       }

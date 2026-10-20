@@ -1,5 +1,256 @@
 [
-  {"id":"sesame-sesamum-indicum","name":"Sesame","spanishName":"Sésamo","scientificName":"Sesamum indicum","variety":null,"category":"vegetables","emoji":"🌱","tags":["sesame","benne","Sesamum indicum","sésamo","ajonjolí"],"summary":"A warm-season annual grown for edible seeds and oil, with flowers that attract pollinators. UF/IFAS gives home-garden planting guidance; variety, shattering behavior, and mature size vary, so no benne cultivar or harvest trait is assumed.","metrics":[],"sections":{"identity":{"short":"Accepted species Sesamum indicum","guidance":"Kew POWO accepts Sesamum indicum L. UF/IFAS describes sesame as a home-garden seed crop and distinguishes heirloom benne from modern sesame types. This record is species-level and does not claim a particular seed color, cultivar, or shattering trait.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-sesamum-indicum-wave57","ufifas-sesame-wave57"]},"growth":{"short":"Warm-season annual with upright stems and tubular flowers","guidance":"UF/IFAS describes an upright annual with showy bell-shaped flowers and reports typical plant sizes varying with cultivar and conditions. NC State's production profile gives an even wider field range. No single mature dimension is assigned to an unspecified seed source.","evidenceType":"source_backed","confidence":"high","sourceIds":["ufifas-sesame-wave57","ncsu-sesame-wave57"]},"cultivation":{"short":"Warm soil, full sun and drainage; avoid waterlogged conditions","guidance":"UF/IFAS recommends planting after soil exceeds 68°F and full sun, and describes poor performance in overly moist soils in Florida. NC State's field production guidance likewise warns against waterlogging. These regional soil recommendations do not establish hydroponic suitability.","evidenceType":"source_backed","confidence":"high","sourceIds":["ufifas-sesame-wave57","ncsu-sesame-wave57"]},"care":{"short":"Watch capsules as they mature because some types shatter","guidance":"UF/IFAS notes that mature capsules can burst and spill seed, while shatter-resistant cultivars exist. Harvest timing and capsule behavior depend on cultivar; this identity does not assume non-shattering genetics.","evidenceType":"source_backed","confidence":"high","sourceIds":["ufifas-sesame-wave57","ncsu-sesame-wave57"]},"harvestUse":{"short":"Edible seeds used whole or for oil","guidance":"UF/IFAS describes sesame seed use as a condiment, in pastes and for oil. It also describes harvesting dry stalks carefully to limit capsule shattering; no universal harvest date is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["ufifas-sesame-wave57"]},"problems":{"short":"Waterlogging and capsule shattering are important risks","guidance":"NC State reports poor tolerance of saturated soil; UF/IFAS describes capsule shattering at maturity. These are crop management risks and vary with site and variety.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sesame-wave57","ufifas-sesame-wave57"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Field and soil home-garden evidence does not validate hydroponic sesame production."},"growthHabits":{"status":"known","value":["upright"],"evidence":[{"sourceIds":["ufifas-sesame-wave57"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Sesamum indicum"},"note":"UF/IFAS describes an upright growth habit."}]},"matureSize":{"height":{"status":"unknown","reason":"Sources report broad cultivar- and environment-dependent ranges; no seed source or cultivar is specified."},"spread":{"status":"unknown","reason":"No cultivar-specific spread established."}},"spacing":{"status":"unknown","reason":"Field-row spacing does not establish container or pod capacity."},"light":{"status":"unknown","reason":"Outdoor full sun is not normalized into an indoor grow-light tier."}}},
-  {"id":"purple-pitcher-plant-sarracenia-purpurea","name":"Purple Pitcher Plant","spanishName":"Sarracenia púrpura","scientificName":"Sarracenia purpurea","variety":null,"category":"ornamentals","emoji":"🪴","tags":["purple pitcher plant","northern pitcher plant","Sarracenia purpurea","planta jarra púrpura","planta carnívora"],"summary":"A North American carnivorous bog perennial with upward-facing pitchers. NC State Extension documents high-sun, persistently wet, acidic, low-nutrient conditions and cold-stratified seed; never collect wild plants because the species is protected in the wild.","metrics":[],"sections":{"identity":{"short":"Accepted species Sarracenia purpurea","guidance":"Kew POWO accepts Sarracenia purpurea L. and recognizes two subspecies. NC State uses purple pitcher plant and northern pitcher plant. This entry does not assign a subspecies, cultivar, or source population.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-sarracenia-purpurea-wave57","ncsu-sarracenia-purpurea-wave57"]},"growth":{"short":"Carnivorous perennial with rosette pitchers and rhizome offsets","guidance":"NC State describes pitchers that recline near the ground with openings upward and rhizome offsets that form small colonies. Its dimensions are regional species ranges and are not a container-system capacity claim.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sarracenia-purpurea-wave57"]},"cultivation":{"short":"Full sun and continuously wet, acidic, low-nutrient medium","guidance":"NC State recommends moist-to-wet acidic conditions, says containers must not dry out, and advises rain or distilled water because the plant is sensitive to minerals and household-water chemicals. It says not to fertilize or feed the plant. This is bog/container horticulture, not evidence for nutrient-solution hydroponics.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sarracenia-purpurea-wave57"]},"propagation":{"short":"Rhizome division and seed are documented routes","guidance":"NC State lists division and seed propagation and notes that seeds germinate after cold stratification; it does not give the stratification duration here. Purchase plants from reputable carnivorous-plant nurseries and do not collect wild specimens, as the source notes wild protection.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sarracenia-purpurea-wave57"]},"problems":{"short":"Mineral-rich tap water, drying and fertilizer can harm this bog-adapted plant","guidance":"NC State warns about sensitivity to minerals and chemicals in household water, drying, and fertilizer/feeding. Monitor for listed pests and root rot; the source does not claim a disease-free species.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sarracenia-purpurea-wave57"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Bog container culture and mineral-sensitive water requirements do not establish a suitable hydroponic system."},"growthHabits":{"status":"known","value":["rosette","clumping"],"evidence":[{"sourceIds":["ncsu-sarracenia-purpurea-wave57"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Sarracenia purpurea"},"note":"NC State describes rosette pitchers and rhizome offsets forming colonies."}]},"matureSize":{"height":{"status":"unknown","reason":"Regional species range is not a standardized indoor/cultivar height."},"spread":{"status":"unknown","reason":"A bog colony's landscape spread is not a single-container footprint."}},"spacing":{"status":"unknown","reason":"Bog-garden spacing is not Garden pod capacity."},"light":{"status":"unknown","reason":"Outdoor full sun does not establish an indoor light tier."}}
+  {
+    "id": "sesame-sesamum-indicum",
+    "name": "Sesame",
+    "spanishName": "Sésamo",
+    "scientificName": "Sesamum indicum",
+    "variety": null,
+    "category": "vegetables",
+    "emoji": "🌱",
+    "tags": [
+      "sesame",
+      "benne",
+      "Sesamum indicum",
+      "sésamo",
+      "ajonjolí"
+    ],
+    "summary": "A warm-season annual grown for edible seeds and oil, with flowers that attract pollinators. UF/IFAS gives home-garden planting guidance; variety, shattering behavior, and mature size vary, so no benne cultivar or harvest trait is assumed.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Sesamum indicum",
+        "guidance": "Kew POWO accepts Sesamum indicum L. UF/IFAS describes sesame as a home-garden seed crop and distinguishes heirloom benne from modern sesame types. This record is species-level and does not claim a particular seed color, cultivar, or shattering trait.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-sesamum-indicum-wave57",
+          "ufifas-sesame-wave57"
+        ]
+      },
+      "growth": {
+        "short": "Warm-season annual with upright stems and tubular flowers",
+        "guidance": "UF/IFAS describes an upright annual with showy bell-shaped flowers and reports typical plant sizes varying with cultivar and conditions. NC State's production profile gives an even wider field range. No single mature dimension is assigned to an unspecified seed source.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-sesame-wave57",
+          "ncsu-sesame-wave57"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm soil, full sun and drainage; avoid waterlogged conditions",
+        "guidance": "UF/IFAS recommends planting after soil exceeds 68°F and full sun, and describes poor performance in overly moist soils in Florida. NC State's field production guidance likewise warns against waterlogging. These regional soil recommendations do not establish hydroponic suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-sesame-wave57",
+          "ncsu-sesame-wave57"
+        ]
+      },
+      "care": {
+        "short": "Watch capsules as they mature because some types shatter",
+        "guidance": "UF/IFAS notes that mature capsules can burst and spill seed, while shatter-resistant cultivars exist. Harvest timing and capsule behavior depend on cultivar; this identity does not assume non-shattering genetics.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-sesame-wave57",
+          "ncsu-sesame-wave57"
+        ]
+      },
+      "harvestUse": {
+        "short": "Edible seeds used whole or for oil",
+        "guidance": "UF/IFAS describes sesame seed use as a condiment, in pastes and for oil. It also describes harvesting dry stalks carefully to limit capsule shattering; no universal harvest date is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-sesame-wave57"
+        ]
+      },
+      "problems": {
+        "short": "Waterlogging and capsule shattering are important risks",
+        "guidance": "NC State reports poor tolerance of saturated soil; UF/IFAS describes capsule shattering at maturity. These are crop management risks and vary with site and variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sesame-wave57",
+          "ufifas-sesame-wave57"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Field and soil home-garden evidence does not validate hydroponic sesame production."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "upright"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ufifas-sesame-wave57"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Sesamum indicum"
+            },
+            "note": "UF/IFAS describes an upright growth habit."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Sources report broad cultivar- and environment-dependent ranges; no seed source or cultivar is specified."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No cultivar-specific spread established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field-row spacing does not establish container or pod capacity."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full sun is not normalized into an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "purple-pitcher-plant-sarracenia-purpurea",
+    "name": "Purple Pitcher Plant",
+    "spanishName": "Sarracenia púrpura",
+    "scientificName": "Sarracenia purpurea",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "purple pitcher plant",
+      "northern pitcher plant",
+      "Sarracenia purpurea",
+      "planta jarra púrpura",
+      "planta carnívora"
+    ],
+    "summary": "A North American carnivorous bog perennial with rosettes of upward-facing pitchers and rhizome offsets. NC State Extension describes persistently wet, acidic, low-nutrient cultivation, regional size and flowering, and use in bog and pollinator gardens; wild collection is not appropriate because the species is protected in the wild.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Sarracenia purpurea",
+        "guidance": "Kew POWO accepts Sarracenia purpurea L. and recognizes two subspecies. NC State uses purple pitcher plant and northern pitcher plant. This entry does not assign a subspecies, cultivar, or source population.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-sarracenia-purpurea-wave57",
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "growth": {
+        "short": "Carnivorous perennial with rosette pitchers and rhizome offsets",
+        "guidance": "NC State describes evergreen, ground-hugging pitchers with upward-facing openings, usually green with purple veins or reddish-purple coloration, and rhizome offsets that form small colonies. Its North Carolina profile lists 23–46 cm (9–18 in) height and 30–61 cm (1–2 ft) width as regional species ranges; these are not a guaranteed container footprint.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "flowering": {
+        "short": "Solitary nodding flowers appear in late spring to early summer",
+        "guidance": "NC State describes a single, nodding red-to-purple flower on a stem, usually blooming from late spring into early summer in its regional account. Flowering is normal development and should not be confused with pitcher damage.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun and continuously wet, acidic, low-nutrient medium",
+        "guidance": "NC State recommends moist-to-wet acidic conditions, says containers must not dry out, and advises rain or distilled water because the plant is sensitive to minerals and household-water chemicals. It says not to fertilize or feed the plant. This is bog/container horticulture, not evidence for nutrient-solution hydroponics.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "propagation": {
+        "short": "Rhizome division is a documented vegetative route",
+        "guidance": "NC State lists division as a propagation strategy. Seed germination and cold treatment belong in the linked Seed Profile; the source does not specify stratification duration. Obtain nursery-propagated plants and never collect wild specimens, as the source notes wild protection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "uses": {
+        "short": "A bog-garden feature and documented insect nectar source",
+        "guidance": "NC State lists purple pitcher plant for carnivorous-plant, rain/bog and pollinator gardens and identifies it as a nectar source for insects. This is ornamental and wildlife value, not evidence of human food use.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      },
+      "problems": {
+        "short": "Mineral-rich tap water, drying and fertilizer can harm this bog-adapted plant",
+        "guidance": "NC State warns about sensitivity to minerals and chemicals in household water, drying, and fertilizer/feeding. Monitor for listed pests and root rot; the source does not claim a disease-free species.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sarracenia-purpurea-wave57"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Bog container culture and mineral-sensitive water requirements do not establish a suitable hydroponic system."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "rosette",
+          "clumping"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-sarracenia-purpurea-wave57"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Sarracenia purpurea"
+            },
+            "note": "NC State describes rosette pitchers and rhizome offsets forming colonies."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Regional species range is not a standardized indoor/cultivar height."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "A bog colony's landscape spread is not a single-container footprint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Bog-garden spacing is not Garden pod capacity."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full sun does not establish an indoor light tier."
+      }
+    }
   }
 ]

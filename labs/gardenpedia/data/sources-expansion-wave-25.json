@@ -23,7 +23,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "harvest"]
+    "claimKinds": ["identity", "cultivation", "harvest", "flowering"]
   },
   {
     "id": "uga-southern-peas-wave25",
@@ -62,7 +62,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "seedling", "harvest"]
+    "claimKinds": ["identity", "cultivation", "maintenance", "seedling", "harvest"]
   },
   {
     "id": "kew-glebionis-coronaria-wave25",
@@ -110,10 +110,10 @@
     "url": "https://yardandgarden.extension.iastate.edu/how-to/growing-cantaloupe-muskmelon-and-other-melons-home-garden",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Home-garden honeydew/inodorus crop-group identity, melon cultivation, sowing, pollination and harvest; regional Iowa calendar and soil spacing remain regional field guidance",
+    "scope": "Home-garden honeydew/inodorus crop-group identity, melon cultivation, sowing, pollination, irrigation care and harvest; regional Iowa calendar and soil spacing remain regional field guidance",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "seedling", "harvest", "problems"]
+    "claimKinds": ["identity", "cultivation", "growth", "seedling", "harvest", "problems", "care"]
   }
 ]

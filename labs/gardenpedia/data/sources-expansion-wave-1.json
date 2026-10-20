@@ -72,13 +72,13 @@
     ]
   },
   {
-    "id": "johnnys-arugula-wave1",
-    "publisher": "University of Wisconsin Extension",
+    "id": "uw-arugula-extension-2026",
+    "publisher": "University of Wisconsin–Madison Extension",
     "title": "Arugula, Eruca sativa",
     "url": "https://hort.extension.wisc.edu/articles/arugula/",
     "type": "university_extension",
     "tier": 1,
-    "scope": "arugula crop-level sowing, harvest and problems; not named-cultivar proof",
+    "scope": "University of Wisconsin–Madison arugula article: identity/name usage, species/crop growth, outdoor cultivation, succession planting, container context, leaf/flower/young-pod harvest and culinary use, flea-beetle clues, and seed collection; not named-cultivar proof or hydroponic compatibility evidence",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 1 source registry",
@@ -89,6 +89,7 @@
       "physical_characteristics",
       "flowering",
       "harvest",
+      "uses",
       "problems"
     ]
   },
@@ -167,14 +168,16 @@
     "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/carrots/",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "carrot crop-level direct sowing and harvest guidance; includes Nantes type context",
+    "scope": "carrot crop-level growing and harvest guidance; identifies Nantes as a medium-length cylindrical root type and Imperator as long/slender requiring deep worked soil; these type descriptions do not establish a named cultivar's exact dimensions",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 1 source registry",
     "claimKinds": [
       "identity",
+      "growth",
       "cultivation",
-      "seedling"
+      "seedling",
+      "harvest"
     ]
   },
   {
@@ -197,18 +200,21 @@
   {
     "id": "johnnys-turnips-wave1",
     "publisher": "Johnny's Selected Seeds",
-    "title": "Turnips — crop growing information",
-    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetable-library/turnips/",
+    "title": "Turnips — Key Growing Information",
+    "url": "https://www.johnnyseeds.com/growers-library/vegetables/turnips/turnips-key-growing-information.html",
     "type": "grower_reference",
     "tier": 2,
-    "scope": "turnip crop-level sowing and root harvest guidance",
+    "scope": "Johnny's research-team turnip crop guidance: moderate-frost tolerance, fertile well-drained soil, outdoor sowing, field row cover against flea beetles/root maggots, root harvest and storage. Seedling/field directions are not indoor pod spacing; harvest timing is crop-level, while Purple Top storage is specifically named.",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 1 source registry",
     "claimKinds": [
       "identity",
       "cultivation",
-      "seedling"
+      "seedling",
+      "problems",
+      "harvest",
+      "uses"
     ]
   },
   {

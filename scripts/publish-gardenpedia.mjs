@@ -855,13 +855,33 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
       ).filter(Boolean),
     );
   };
-  const publicMetric = (metric, translatedMetric) =>
-    !/germination|sowing|seed|germinaci[oó]n|siembra|semillas?|owned|user zero|inventory|purchase|garden position|yCube/i.test(
-      [metric, translatedMetric]
-        .flatMap((item) => [item?.label, item?.value, item?.note])
-        .filter(Boolean)
-        .join(" "),
-    );
+  const publicMetric = (metric, translatedMetric) => {
+    const labels = [metric?.label, translatedMetric?.label]
+      .flatMap((value) =>
+        typeof value === "string"
+          ? [value]
+          : value && typeof value === "object"
+            ? Object.values(value)
+            : [],
+      )
+      .filter((value) => typeof value === "string")
+      .join(" ");
+    const allFields = [metric, translatedMetric]
+      .flatMap((item) => [item?.label, item?.value, item?.note])
+      .flatMap((value) =>
+        typeof value === "string"
+          ? [value]
+          : value && typeof value === "object"
+            ? Object.values(value)
+            : [],
+      )
+      .filter((value) => typeof value === "string")
+      .join(" ");
+    const seedStageMetric =
+      /germination|sowing|emergence|seedling|seed packet|seed type|seed form|seed storage|seed treatment|transplant|germinaci[oó]n|siembra|emergencia|pl[aá]ntula|paquete de semillas|tipo de semilla|forma de semilla|almacenamiento de semillas|tratamiento de semillas|trasplante/i;
+    const privateMetric = /owned|user zero|inventory|purchase|garden position|yCube/i;
+    return !seedStageMetric.test(labels) && !privateMetric.test(allFields);
+  };
   const profiles = Object.fromEntries(
     publicPlants.map((plant) => {
       const translated = translations.get(plant.id) || {};

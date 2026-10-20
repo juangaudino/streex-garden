@@ -15,7 +15,7 @@
       "hierba gatera",
       "menta de gato"
     ],
-    "summary": "A perennial culinary and pollinator herb with aromatic foliage. Catnip can spread readily and may cause gastrointestinal effects in cats; this species profile does not prescribe a seed-starting protocol.",
+  "summary": "A perennial culinary and pollinator herb with aromatic gray-green, heart-shaped, scalloped leaves and blue flowers through the season. Illinois Extension describes an open mound about 2–3 feet tall in its regional garden context; size varies with conditions. Catnip can spread through a garden and ingestion may cause gastrointestinal effects in cats.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -27,10 +27,10 @@
       },
       "growth": {
         "short": "Clumping, erect-to-spreading perennial herb",
-        "guidance": "NC State describes a rapidly growing herbaceous perennial with clumping and erect or spreading habit. It may become weedy; the page suggests considering container culture.",
+        "guidance": "NC State describes a rapidly growing herbaceous perennial with clumping and erect or spreading habit. Illinois Extension gives a regional home-garden reference of about 2–3 feet tall with an open mound form; this is not a cultivar-specific or guaranteed size. Catnip can spread readily and may become weedy, so consider a container or regular division where containment matters.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+        "sourceIds": ["ncsu-nepeta-cataria-wave50", "illinois-catnip-herbs-2026"]
       },
       "cultivation": {
         "short": "Full sun to partial shade; good drainage",
@@ -38,6 +38,13 @@
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ncsu-nepeta-cataria-wave50"]
+      },
+      "maintenance": {
+        "short": "Cut back to manage the mound and divide older clumps",
+        "guidance": "Illinois Extension recommends cutting catnip back in spring as growth resumes and notes that in-season cutting helps keep it more compact and neat; it also suggests regular division as plants age. NC State separately recommends shearing spent flower spikes after the first bloom to encourage continued flowering. These are species-level outdoor garden practices, not a fixed indoor schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-catnip-herbs-2026", "ncsu-nepeta-cataria-wave50"]
       },
       "propagation": {
         "short": "Seed and division are listed; sowing details unresolved",
@@ -48,7 +55,14 @@
       },
       "harvest": {
         "short": "Leaves used as a culinary herb",
-        "guidance": "NC State describes the minty-flavored leaves as usable in teas, soups, stews, sauces, vegetables and pasta. No harvest schedule is specified by this source.",
+        "guidance": "NC State documents the minty leaves in teas, soups, stews, sauces, vegetables and pasta. Illinois Extension says catnip's flavor and aroma peak at full bloom; it recommends cutting stems then and hanging them in a cool, well-ventilated place to dry, then stripping the leaves from coarse stems and storing them in a sealed container. This is species-level herb guidance, not a yield or fixed calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-nepeta-cataria-wave50", "illinois-catnip-herbs-2026"]
+      },
+      "flowering": {
+        "short": "Shear spent flower spikes to encourage continued bloom",
+        "guidance": "NC State recommends shearing the flower spikes after the initial flowering to promote continued bloom. This is species-level outdoor garden guidance; it does not establish a fixed indoor or hydroponic schedule.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ncsu-nepeta-cataria-wave50"]
@@ -82,8 +96,9 @@
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "The source does not provide a single species-level mature height for this identity."
+          "status": "known",
+          "value": {"minCm": 61, "maxCm": 91, "context": "outdoor_general"},
+          "evidence": [{"sourceIds":["illinois-catnip-herbs-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Nepeta cataria"},"note":"Illinois Extension reports about 2–3 ft for species-level catnip in its regional herb-garden context; converted to cm and not a cultivar guarantee."}]
         },
         "spread": {
           "status": "unknown",
@@ -117,7 +132,7 @@
       "laurel de cocina",
       "laurel"
     ],
-    "summary": "An aromatic evergreen culinary tree often kept in a container in cooler climates. The selected Extension profile does not establish a home propagation protocol, so propagation details remain unresolved.",
+  "summary": "An aromatic evergreen culinary tree or shrub often kept in a container in cooler climates. Its leaves flavor cooked foods but whole leaves should be removed before serving; it tolerates pruning for form. RHS documents vegetative propagation options, while seed-start details remain a separate Seed Profile question. Container dimensions and hydroponic fit are not established.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -148,12 +163,26 @@
         "confidence": "high",
         "sourceIds": ["ncsu-laurus-nobilis-wave50"]
       },
+      "pruning": {
+        "short": "Can be shaped as a topiary; no fixed pruning calendar is established",
+        "guidance": "NC State documents bay laurel as suitable for topiary and formal garden forms, but the selected species page does not prescribe pruning dates, frequency, or an intensity. Do not turn the shaping use into a mandatory schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-laurus-nobilis-wave50"]
+      },
+      "problems": {
+        "short": "Watch for scale, psyllids, and root-disease concerns",
+        "guidance": "NC State lists scale and psyllids as occasional pests and notes susceptibility to laurel wilt, Phytophthora, and root rot. The page does not provide diagnostic symptom criteria or a treatment protocol; inspect the plant and consult local Extension before assigning a cause or treating.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-laurus-nobilis-wave50"]
+      },
       "propagation": {
-        "short": "Home propagation method not established here",
-        "guidance": "The selected NC State species page provides no home seed-starting or vegetative propagation procedure. Do not infer a method or create Seed Profile V0 from this absence; the propagation route needs identity-matched evidence.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Semi-ripe cuttings are the easiest RHS-listed route; layering and suckers also work",
+        "guidance": "RHS lists seed, layering, and semi-hardwood cuttings for Laurus nobilis. Its herb-propagation guide identifies semi-ripe cuttings in late summer or early autumn as the easiest method; dividing suckers in spring and simple layering are also possible. These are UK seasonal recommendations for vegetative propagation. Seed-to-plant germination details are not supplied here and belong in Seed Profile, not this established-plant guidance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-laurus-nobilis-profile-2026", "rhs-herbs-propagating-bay-2026"]
       }
     },
     "compatibilityProfile": {
@@ -225,6 +254,13 @@
         "confidence": "high",
         "sourceIds": ["ncsu-ananas-comosus-wave50"]
       },
+      "harvest": {
+        "short": "One mature fruit forms; rind color changes as it ripens",
+        "guidance": "NC State describes the fused fruit units changing from green toward yellow or slightly brown as the fruit ripens. The exact appearance varies among cultivated forms, so use development and the plant's fruit rather than a fixed calendar; after producing one fruit, the mother plant declines while pups provide vegetative continuation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ananas-comosus-wave50"]
+      },
       "propagation": {
         "short": "Crown, basal suckers or fruitlet plantlets",
         "guidance": "NC State describes asexual propagation from the fruit crown, basal suckers or plantlets below the inflorescence. It explains crown trimming and drying before planting and notes crown-grown plants may take at least 24 months to flower. Kew describes cultivated pineapple as seedless; this is not a seed-propagated identity for the represented crop.",
@@ -234,7 +270,7 @@
       },
       "problems": {
         "short": "Avoid cold, standing water and sharp leaf margins",
-        "guidance": "NC State warns against frost and prolonged wet conditions, notes possible rot and pests, and cautions that the leaf edges can injure. It also reports that bromelain may cause contact dermatitis or mouth/throat irritation in some circumstances.",
+        "guidance": "NC State warns against frost and prolonged wet conditions, notes possible rot and pests, and cautions that the leaf edges can injure. It lists mature pineapple fruit as edible, while also warning that bromelain can irritate sensitive skin or the mouth and throat, particularly with large amounts; this is not generalized as a claim that ripe fruit is poisonous.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["ncsu-ananas-comosus-wave50"]
@@ -321,6 +357,13 @@
         "confidence": "high",
         "sourceIds": ["illinois-french-tarragon-wave50"]
       },
+      "care": {
+        "short": "Cut back as spring growth resumes; divide aging clumps",
+        "guidance": "Illinois Extension recommends cutting plants back in spring as growth resumes and dividing them every 3–4 years to maintain vigor and productivity. Its advice to leave tops standing over winter is regional cold-season guidance, not a universal indoor schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
       "propagation": {
         "short": "Cuttings or root division; no viable seed",
         "guidance": "Illinois Extension says true French tarragon is available as plants grown from cuttings or root divisions and its flowers are sterile, so it cannot be grown from seed. Do not confuse seed packets labeled simply “tarragon,” which may produce Russian tarragon, with this culinary type.",
@@ -331,6 +374,20 @@
       "harvest": {
         "short": "Harvest young tips and leaves as needed",
         "guidance": "Illinois Extension describes harvesting young stem tips and leaves through the season and says fresh use best preserves the characteristic flavor. It also gives drying and storage advice, but no yield or harvest interval is quantified.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
+      "use": {
+        "short": "Fresh leaves best preserve the anise-like culinary flavor",
+        "guidance": "Illinois Extension says tarragon flavor is quickly lost when leaves are dried and recommends fresh use when possible. It lists vinegars, oils, marinades and salads as uses. These are culinary-use examples, not measured flavor-retention or storage-duration claims.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-french-tarragon-wave50"]
+      },
+      "problems": {
+        "short": "Poor drainage, especially winter wetness, threatens survival",
+        "guidance": "Illinois Extension warns French tarragon does not tolerate poorly drained soil, particularly over winter, and may fail to overwinter in those conditions. This is a site-management concern; the source does not provide a disease diagnosis or resistance rating.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["illinois-french-tarragon-wave50"]
@@ -407,6 +464,13 @@
         "guidance": "NC State describes wintergreen in light-to-moderate woodland shade and acidic, moist, well-drained soils, with tolerance of heavier shade. This habitat evidence does not establish indoor grow-light or nutrient-solution needs.",
         "evidenceType": "source_backed",
         "confidence": "high",
+        "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
+      },
+      "harvest": {
+        "short": "Red fruit is present in fall; the source describes the fruit as edible",
+        "guidance": "NC State lists fall as the fruit display/harvest period and describes the red, berry-like fruit as edible raw or cooked. This does not establish a serving amount or food-safety guarantee; the same source says wintergreen-leaf tea is no longer recommended.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": ["ncsu-gaultheria-procumbens-wave50"]
       },
       "propagation": {

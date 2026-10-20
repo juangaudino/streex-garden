@@ -2,11 +2,12 @@
   "basil-ocimum-basilicum": {
     "summary": "Perfil a nivel de especie para registros identificados solo como «Basil». Es distinto de Genovese, Sweet Basil y otros tipos nombrados; no se infieren rasgos de un cultivar.",
     "sections": {
-      "identity": {"guidance": "Kew acepta Ocimum basilicum. Este perfil representa albahaca cuando no se identifica cultivar ni tipo hortícola. Genovese, Sweet, Thai y otros tipos nombrados permanecen como identidades separadas."},
-      "cultivation": {"guidance": "USU Extension recomienda pleno sol, condiciones cálidas, humedad regular y suelo bien drenado para la albahaca en general. Es guía del cultivo, no de un cultivar específico, y no establece idoneidad hidropónica ni requerimientos de nutrientes."},
-      "growth": {"guidance": "Kew describe O. basilicum como anual o subarbusto y señala variación entre cultivares. No se asigna una altura ni forma madura única a este perfil sin cultivar especificado."},
-      "harvest": {"guidance": "USU Extension ofrece 6–8 hojas como indicación de inicio de cosecha para albahaca y aconseja cortar tallos conservando varias hojas. Es una guía general del cultivo, no una fecha específica de cosecha para un cultivar."},
-      "problems": {"guidance": "USU Extension señala que el calor estival y el estrés hídrico pueden favorecer la floración, y que pueden presentarse pudrición de raíz y tizón del tallo. Son observaciones del cultivo, no afirmaciones de resistencia de un cultivar."}
+      "identity": {"short": "Especie Ocimum basilicum; cultivar no especificado", "guidance": "Kew acepta Ocimum basilicum. Este perfil representa albahaca cuando no se identifica cultivar ni tipo hortícola. Genovese, Sweet, Thai y otros tipos nombrados permanecen como identidades separadas."},
+      "cultivation": {"short": "Hierba de temporada cálida; sitio soleado y bien drenado", "guidance": "USU Extension recomienda pleno sol, condiciones cálidas, humedad regular y suelo bien drenado para la albahaca en general. Es guía del cultivo, no de un cultivar específico, y no establece idoneidad hidropónica ni requerimientos de nutrientes."},
+      "growth": {"short": "Anual o subarbusto; la forma varía entre cultivares", "guidance": "Kew describe O. basilicum como anual o subarbusto y señala variación entre cultivares. No se asigna una altura ni forma madura única a este perfil sin cultivar especificado."},
+      "harvest": {"short": "USU inicia la cosecha al desarrollar 6–8 hojas", "guidance": "USU Extension ofrece 6–8 hojas como indicación de inicio de cosecha para albahaca y aconseja cortar tallos conservando varias hojas. Es una guía general del cultivo, no una fecha específica de cosecha para un cultivar."},
+      "maintenance": {"short": "Cosechar hojas con regularidad antes de la floración favorece el follaje", "guidance": "USU Extension indica que retirar hojas con regularidad antes de que aparezcan flores favorece la producción de hojas y ramas. Su sección de preguntas frecuentes advierte que pinzar solo las flores no estimula follaje nuevo y puede favorecer flores en las axilas de las hojas. Es orientación general para O. basilicum, no un calendario de poda de un cultivar."},
+      "problems": {"short": "Calor y estrés hídrico pueden adelantar la floración; vigila daños", "guidance": "USU Extension señala que el calor estival y el estrés hídrico pueden favorecer la floración, y que pueden presentarse pudrición de raíz y tizón del tallo. Son observaciones del cultivo, no afirmaciones de resistencia de un cultivar."}
     }
   },
   "bunching-onion-allium-fistulosum": {
@@ -15,7 +16,9 @@
       "identity": {"guidance": "Kew acepta Allium fistulosum. UMN Extension identifica las cebollas de verdeo/scallions como A. fistulosum y distingue la cebolla egipcia (A. cepa var. proliferum). Esta entrada no representa un cultivar nombrado ni reemplaza Nebuka o White Lisbon."},
       "cultivation": {"guidance": "UMN recomienda un lugar soleado, regar cuando la lluvia no sea suficiente y controlar con cuidado las malezas mientras las plantas son pequeñas. Son recomendaciones de jardín exterior, no especificaciones de un sistema hidropónico."},
       "growth": {"guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura."},
-      "harvest": {"guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojando el suelo antes si hace falta para evitar que se quiebren. No se asigna un número fijo de días a este perfil sin cultivar especificado."}
+      "harvest": {"guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojando el suelo antes si hace falta para evitar que se quiebren. No se asigna un número fijo de días a este perfil sin cultivar especificado."},
+      "care": {"short":"Mantén humedad estable y controla las malezas con cuidado","guidance":"UMN Extension señala que los scallions tienen raíces poco profundas, necesitan humedad constante y compiten mal con las malezas cuando son pequeños. Deshierba con cuidado y frecuencia; la referencia semanal de lluvia de la página corresponde al cultivo exterior en Minnesota, no a un sistema interior o hidropónico."},
+      "problems": {"short":"El amarilleo y el marchitamiento requieren diagnóstico","guidance":"UMN enumera la mosca de la cebolla como una posible causa de amarilleo y marchitamiento en scallions, además de varias pudriciones posibles. Son posibilidades del grupo de cultivo, no un diagnóstico de esta identidad; revisa raíces y tallos y busca orientación diagnóstica local antes de tratar."}
     }
   }
 }

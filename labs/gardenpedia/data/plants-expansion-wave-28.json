@@ -18,7 +18,7 @@
       "Hibiscus moscheutos",
       "gardyn"
     ],
-    "summary": "Gardyn’s Blush Hibiscus product selection is documented under the historical botanical name Hibiscus moscheutos. Kew now accepts Muenchhusia moscheutos; the product page does not establish a named cultivar.",
+    "summary": "Gardyn's Hibiscus (Blush & Red) guide identifies this pink-flowered product selection as Hibiscus moscheutos; Kew accepts Muenchhusia moscheutos. No named cultivar is established. Gardyn documents its own light-zone setting, approximate product size, root checks, topping, support, bloom waves and cut-flower harvest. NC State adds species-level outdoor care; those landscape dimensions and conditions do not predict another cultivar or hydroponic system.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -37,13 +37,11 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
-        "short": "Gardyn-specific establishment notes only",
-        "guidance": "Gardyn’s product page supplies instructions for its own pod and growing system. Those instructions are not generalized to outdoor hibiscus cultivation or other systems; field conditions, mature dimensions and broader care remain unvalidated here.",
+        "short": "Gardyn lists a Medium Light Zone; outdoor species guidance is separate",
+        "guidance": "For its Hibiscus (Blush & Red) product, Gardyn lists a Medium Light Zone and recommends checking roots twice monthly, trimming roots that are brown or extend beyond the yPod. Treat the light-zone label and root directions as Gardyn-system guidance, not a standardized indoor light tier or a rule for other systems. For outdoor Muenchhusia moscheutos, NC State recommends full to partial sun and moist to occasionally wet soil, with better flowering in full sun, wind shelter and good air circulation. These outdoor conditions do not establish performance of this unnamed selection outdoors.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "gardyn-blush-hibiscus-wave28"
-        ],
+        "sourceIds": ["gardyn-blush-hibiscus-wave28", "ncsu-muenchhusia-moscheutos-wave28-2026"],
         "items": [
           "Follow Gardyn instructions only when using the documented Gardyn pod and system.",
           "Record the actual system and plant response before adapting instructions elsewhere."
@@ -51,28 +49,50 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
-        "short": "Species is perennial; product habit is not resolved",
-        "guidance": "Kew classifies Muenchhusia moscheutos as perennial or helophytic. The source does not establish the mature habit or dimensions of Gardyn’s Blush product selection, so no product-specific size is assigned.",
+        "short": "Gardyn lists 2–3 ft for its product; outdoor species dimensions are broader",
+        "guidance": "Kew classifies Muenchhusia moscheutos as perennial or helophytic. NC State describes an upright, multi-stemmed herbaceous perennial about 2–6 ft tall and 2–5 ft wide outdoors. Separately, Gardyn lists 2–3 ft as the size for its Hibiscus (Blush & Red) product. Keep that approximate product listing distinct from the broad outdoor species range; neither establishes dimensions for an unnamed cultivar in another system.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "kew-muenchhusia-moscheutos-wave28"
-        ],
+        "sourceIds": ["kew-muenchhusia-moscheutos-wave28", "ncsu-muenchhusia-moscheutos-wave28-2026", "gardyn-blush-hibiscus-wave28"],
         "items": [
           "Kew classifies Muenchhusia moscheutos as perennial or helophytic."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
+      "care": {
+        "short": "Use Gardyn's topping, deadheading and support directions only in that system",
+        "guidance": "For its Gardyn plant, the manufacturer recommends checking roots twice monthly; trimming brown roots or roots extending past the yPod; and, after several sets of leaves but before flowering, topping the main stem while retaining about two-thirds of its height. Gardyn warns that topping may delay flower buds by a few weeks. It recommends pinching faded flowers below the flower head to encourage another bloom wave, pruning after flowering to manage height or shading while retaining two-thirds, and using a Plant Belt for the tall stem. These are product-specific instructions. For outdoor plants, NC State says pinching can encourage bushier growth and deadheading improves appearance. NC State gives conflicting fall cleanup directions—cut nearly to ground level, but also leave dead stems 12–24 inches for stem-nesting bees—so no universal fall cutback is prescribed.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["gardyn-blush-hibiscus-wave28", "ncsu-muenchhusia-moscheutos-wave28-2026"],
+        "items": ["Pinch growing tips only if a bushier species form is desired.", "Deadhead spent flowers for appearance; do not apply a blanket autumn cutback without accounting for local stem-nesting-bee guidance."],
+        "context": "Species-level NC State guidance; not a Gardyn-specific or named-cultivar response."
+      },
+      "flowering": {
+        "short": "Gardyn describes successive bloom waves; outdoor timing is species-level",
+        "guidance": "NC State places outdoor species flowering from midsummer to early fall and says each flower is short-lived while the overall bloom period generally lasts about a month. Gardyn's product guide says each flower lasts one day, followed by successive groups of about 8–12 blooms, a rest, and—under proper care—two or three waves over roughly 8–10 months. The latter is the manufacturer's report for its offered product, not a guaranteed schedule for other cultivars or systems. The Blush label does not establish a named cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-muenchhusia-moscheutos-wave28-2026", "gardyn-blush-hibiscus-wave28"]
+      },
+      "harvest": {
+        "short": "Cut flowers just before opening; product food-use claims stay source-scoped",
+        "guidance": "For a Gardyn cut flower, the manufacturer says to cut the flower at its stem just before it opens, when petals are beginning to show. The same product guide describes the petals and young leaves as edible and says petals may be separated from the flower center and young leaves eaten raw or cooked. This is a Gardyn product claim, not independent food-safety verification for every plant sold as hibiscus; do not treat ornamental plants with unknown growing or treatment history as food.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["gardyn-blush-hibiscus-wave28"],
+        "context": "Harvest directions are limited to Gardyn's Hibiscus (Blush & Red) product guide; culinary eligibility and treatment history are not independently verified."
+      },
       "problems": {
-        "short": "Product-specific issues remain to be validated",
-        "guidance": "No product-specific pest, disease or physiological-problem evidence is represented in this profile. Do not infer a diagnosis from species identity alone.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "short": "Distinguish Gardyn-described leaf discoloration from outdoor species stress and pests",
+        "guidance": "For its Gardyn hibiscus, the manufacturer says yellow or brown areas between veins or near leaf edges may occur without preventing continued growth and flowering. This product-specific note does not mean every discoloration is harmless. Outdoors, NC State says drying soil can cause leaf scorch and lists Japanese beetles and sawfly larvae as potentially severe foliage feeders; whiteflies, aphids and scales may also occur, along with leaf spots, blights, rust and canker. These are species-level monitoring cues, not a diagnosis or a susceptibility claim for the unnamed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["gardyn-blush-hibiscus-wave28", "ncsu-muenchhusia-moscheutos-wave28-2026"],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar.",
         "items": [
-          "Document symptoms with photographs and dates.",
-          "Avoid a specific pest or disease diagnosis without supporting evidence."
+          "Look for chewing damage before suspecting Japanese beetles or sawfly larvae.",
+          "Check moisture if leaves show scorch; record spots or rust-like symptoms before assigning a disease."
         ]
       }
     },
@@ -82,28 +102,16 @@
         "status": "unknown",
         "reason": "The Gardyn product guide is limited to its named system and does not establish compatibility across hydroponic methods."
       },
-      "growthHabits": {
-        "status": "unknown",
-        "reason": "No controlled growth-habit value is established for the Gardyn product selection."
-      },
+      "growthHabits": {"status":"known","value":["upright"],"evidence":[{"sourceIds":["ncsu-muenchhusia-moscheutos-wave28-2026"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Muenchhusia moscheutos"},"note":"NC State describes the accepted species as upright and multi-stemmed; this does not guarantee the Gardyn selection's hydroponic form."}]},
       "matureSize": {
-        "height": {
-          "status": "unknown",
-          "reason": "No defensible product-selection height is established."
-        },
-        "spread": {
-          "status": "unknown",
-          "reason": "No defensible product-selection spread is established."
-        }
+        "height": {"status":"known","value":{"minCm":61,"maxCm":183,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-muenchhusia-moscheutos-wave28-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Muenchhusia moscheutos"},"note":"NC State gives 2–6 ft for the species outdoors; rounded to 61–183 cm, not a named-cultivar or Gardyn-system prediction."}]},
+        "spread": {"status":"known","value":{"minCm":61,"maxCm":152,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-muenchhusia-moscheutos-wave28-2026"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Muenchhusia moscheutos"},"note":"NC State gives 2–5 ft for the species outdoors; rounded to 61–152 cm, not a named-cultivar or Gardyn-system prediction."}]}
       },
       "spacing": {
         "status": "unknown",
         "reason": "Gardyn pod thinning guidance is not a general plant-spacing value."
       },
-      "light": {
-        "status": "unknown",
-        "reason": "A Gardyn light-zone placement is not mapped to the canonical indoor grow-light requirement."
-      }
+      "light": {"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}},{"phase":"growing","requirement":{"kind":"partial_sun"}}],"evidence":[{"sourceIds":["ncsu-muenchhusia-moscheutos-wave28-2026"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Muenchhusia moscheutos"},"note":"NC State recommends full to partial outdoor sun; this does not translate Gardyn's light-zone placement into a grow-light tier."}]}
     }
   },
   {
@@ -123,7 +131,7 @@
       "garden petunia",
       "Gardyn"
     ],
-    "summary": "Gardyn’s Pink Petunia is a pink-flowered product selection identified as Petunia × hybrida, the synonym of Kew’s accepted Petunia × atkinsiana. No named cultivar is established.",
+    "summary": "Gardyn's Pink Petunia guide describes a pink, fragrant, naturally cascading product selection identified as Petunia × hybrida; Kew accepts Petunia × atkinsiana. No named cultivar or horticultural group is established. Gardyn documents a Medium Light Zone, temperature context, root checks, support, deadheading, pruning and a clear non-edible warning. University of Minnesota and Clemson add separate outdoor Petunia care; none of these product instructions establish performance in other systems.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -132,7 +140,7 @@
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "kew-petunia-atkinsiana",
+          "kew-petunia-atkinsiana-public",
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
@@ -142,13 +150,13 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
-        "short": "Separate product instructions from general petunia guidance",
-        "guidance": "Gardyn describes conditions and care for its own pod. General Extension petunia guidance can inform the broader hybrid crop, but does not establish this selection’s outdoor performance or exact cultivar requirements.",
+        "short": "Separate Gardyn's Medium Light Zone and temperature notes from outdoor sun guidance",
+        "guidance": "For its Pink Petunia product, Gardyn lists a Medium Light Zone and prefers 70–80°F (21–27°C) days with cooler 60–65°F (16–18°C) nights. These are product instructions for the Gardyn system, not a normalized grow-light tier or a general temperature trial for Petunia. Separately, University of Minnesota Extension says outdoor petunias need at least 5–6 hours of good sunlight and reasonably well-drained soil; watering differs by horticultural group and container. The product's unknown group and Gardyn light setting are not converted into other system requirements.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "gardyn-pink-petunia-wave28",
-          "umn-petunias"
+          "umn-petunia-bouquet-public-wave64-20261018"
         ],
         "items": [
           "Distinguish the Gardyn product care from general outdoor petunia guidance.",
@@ -157,8 +165,8 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
-        "short": "Pink flower selection; exact habit and dimensions unresolved",
-        "guidance": "Gardyn describes this product as spreading before bloom and gives a product size classification. These are product-page claims, not evidence for a named cultivar or a universal mature dimension; no exact height or spread is assigned.",
+        "short": "Gardyn describes a 7–10 in cascading plant; treat this as product context",
+        "guidance": "Gardyn describes its Pink Petunia as about 7–10 inches tall, soft pink, fragrant and spreading before bloom; its product facts list an approximate 1 ft plant size and say the flowers naturally cascade. These are product-level descriptions, not a named cultivar's universal mature dimensions or a validated growth-habit mapping for other systems. Kew's accepted hybrid name remains separate from Gardyn's product label.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -167,12 +175,12 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "maintenance": {
-        "short": "Deadheading and trimming are documented at crop scope",
-        "guidance": "University Extension describes deadheading and light trimming for petunias generally. Gardyn gives its own pod-care instructions. The guidance is not evidence that all petunia types respond identically, and no named cultivar is inferred.",
+        "short": "In Gardyn, check roots monthly, deadhead, and trim while leaving at least one-third",
+        "guidance": "For its Gardyn product, the manufacturer recommends checking roots monthly and trimming roots that are brown or extend beyond the yPod. Deadhead spent flower heads to encourage new buds; trim branches to the desired length while leaving at least one-third of the plant, as Gardyn says trimmed branches can produce new flower-bud clusters. The product naturally cascades; a Plant Belt can support it upward if desired. Gardyn also notes that petunias feel somewhat sticky. Separately, UMN's pinching guidance differs by horticultural group; because this selection's group is unknown, do not apply a group-specific pinching rule.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "umn-petunias",
+          "umn-petunia-bouquet-public-wave64-20261018",
           "gardyn-pink-petunia-wave28"
         ],
         "items": [
@@ -181,19 +189,41 @@
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
+    "pruning": {
+      "short": "If established shoots become leggy or stop blooming, a regional source describes a restorative cutback",
+      "guidance": "Clemson Cooperative Extension advises cutting petunia shoots back to about half their length when plants become leggy or stop flowering; if needed, they may be cut to within a few inches of the base, but not stripped of all leaves. The source recommends watering and liquid fertilizer to encourage new growth. This is general outdoor petunia guidance for South Carolina, not a fixed schedule or validated response for Gardyn's unidentified pink selection or a hydroponic system.",
+      "evidenceType": "source_backed",
+      "confidence": "medium",
+      "sourceIds": ["clemson-petunia-garden-guide-2026"]
+    },
       "problems": {
-        "short": "Product page notes spider mites",
-        "guidance": "Gardyn names spider mites as a common pest in its product-care guidance. This is retained as a product-care note, not a claim that this selection is uniquely susceptible or that the list is exhaustive.",
+      "short": "Monitor product-noted spider mites and general petunia stress/pest cues",
+      "guidance": "Gardyn names spider mites as a common pest in its product-care guidance. Separately, Clemson Extension reports that shaded petunias may become spindly and flower poorly; it lists aphids and slugs and notes petal blight during rainy, very humid weather, with viruses occurring occasionally. Avoiding wet foliage and flowers while watering can help reduce disease risk. Clemson's are general Petunia monitoring cues from South Carolina, not a diagnosis or a susceptibility claim for Gardyn's selection; the spider-mite note remains product-scoped.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "gardyn-pink-petunia-wave28"
+        "gardyn-pink-petunia-wave28",
+        "clemson-petunia-garden-guide-2026"
         ],
         "items": [
-          "Inspect leaves for mites if damage suggests pest activity.",
-          "Do not diagnose spider mites from the product name alone."
+        "Inspect for spider mites only as indicated by the product guidance; check for aphids or slug feeding when visible damage occurs.",
+        "In rainy, very humid outdoor conditions, watch flowers for petal blight; do not diagnose a virus from nonspecific symptoms."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "flowering": {
+        "short": "Gardyn describes soft-pink fragrant flowers and a naturally cascading product habit",
+        "guidance": "Gardyn describes trumpet-shaped flowers with a soft-pink hue and delicate fragrance; it says the plant spreads before bloom and naturally cascades. These observations are specific to its Pink Petunia product description. UMN Extension notes that flower size and habit vary among horticultural groups; Gardyn's listing does not establish a named cultivar or formal grandiflora, multiflora, milliflora or spreading-group identity, and no exact flowering schedule is supplied.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018", "gardyn-pink-petunia-wave28"]
+      },
+      "harvest": {
+        "short": "Cut stems for arrangements; Gardyn explicitly says its petunia is not edible",
+        "guidance": "UMN Extension suggests cutting petunia stems for bouquets and removing leaves that would sit below the water line. Gardyn's Pink Petunia guide explicitly says the flowers are not edible. Keep the cut-flower use ornamental; do not infer culinary use from the broader Petunia genus or other ornamental-flower profiles.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018"]
       }
     },
     "compatibilityProfile": {
@@ -220,10 +250,7 @@
         "status": "unknown",
         "reason": "Gardyn's yCube thinning count is not a general spacing recommendation."
       },
-      "light": {
-        "status": "unknown",
-        "reason": "Gardyn's Medium light zone is system-specific and is not converted to a general indoor grow-light tier."
-      }
+      "light": {"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["umn-petunia-bouquet-public-wave64-20261018"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"genus","taxon":"Petunia"},"note":"UMN's 5–6-hour statement is outdoor natural sun guidance for Petunia, not an indoor lamp tier and not equivalent to Gardyn's Medium zone."}]}
     }
   },
   {
@@ -243,7 +270,7 @@
       "Viola cornuta",
       "Gardyn"
     ],
-    "summary": "Gardyn identifies its Black Viola product as Viola cornuta and describes dark flowers. Kew accepts Viola cornuta as a species; the product does not establish a named cultivar.",
+    "summary": "Black Viola is Gardyn's dark-flowered product selection identified as Viola cornuta; no cultivar is named. NC State describes horned violet as a cool-season perennial or annual with creeping/ascending stems, moist, well-drained soil and full sun to part shade. Its species dimensions and landscape care are not measurements or performance guarantees for the Gardyn pod.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -262,8 +289,8 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "cultivation": {
-        "short": "Species context plus Gardyn-specific pod care",
-        "guidance": "NC State Extension describes Viola cornuta as a cool-season ornamental used in beds and groundcover. Gardyn’s darkness and temperature directions apply to its seed pod/system context and should not be generalized as a full outdoor protocol.",
+        "short": "Moist, drained soil and cool-season conditions for outdoor species care",
+        "guidance": "NC State recommends humusy, moist but well-drained soil and full sun to part shade for V. cornuta; flowering can decline during extended summer heat. Those are species-level outdoor conditions. Gardyn's pod darkness and temperature directions remain limited to that product's seed/system context and are not translated into outdoor or general grow-light categories.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -277,8 +304,8 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "growth": {
-        "short": "Compact species context; product dimensions unverified",
-        "guidance": "Extension describes creeping and ascending stems for Viola cornuta. Gardyn lists a product size under one foot, but that label is kept at product scope and is not converted into a universal mature-height range.",
+        "short": "Creeping and ascending stems; size range is species-level only",
+        "guidance": "NC State describes creeping, ascending stems to about 12 inches long and lists typical species dimensions around 6–9 inches high and 6–12 inches wide. Gardyn also lists a product size under one foot, but that product label is not treated as an exact mature dimension or a cultivar-specific guarantee.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -290,12 +317,28 @@
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
+      "care": {
+        "short": "Deadhead or cut back after heat to encourage another cool-weather bloom",
+        "guidance": "NC State says deadheading can prompt new buds and cutting plants back may allow another bloom when temperatures decline. It also notes that an established bed can act as groundcover and may need early weeding. These are species-level landscape practices, not Gardyn pod instructions.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-viola-cornuta-wave28"],
+        "items": ["Remove faded flowers if encouraging new buds is useful.", "If heat suppresses bloom, cut back only when the outdoor plant and local season support renewed cool-weather growth."],
+        "context": "NC State species guidance; no named-cultivar or Gardyn-system response is established."
+      },
+      "flowering": {
+        "short": "Spring and cooler-weather flowers may decline in prolonged summer heat",
+        "guidance": "NC State describes spring flowering and says horned violet tends to bloom in cooler weather, with extended heat reducing flowering; the species can bloom again as temperatures fall. The dark flower selection's exact color stability and calendar are not documented.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-viola-cornuta-wave28"]
+      },
       "harvest": {
-        "short": "Ornamental use represented; food use not asserted",
-        "guidance": "This identity is presented as an ornamental product. Although the manufacturer discusses edible-garnish use, Gardenpedia does not make a food-safety or edibility claim for the unspecified product selection in this baseline profile.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
+        "short": "Ornamental bedding/groundcover; food use for the Gardyn selection is not verified",
+        "guidance": "NC State lists V. cornuta flowers and leaves as edible at species level, but the Gardyn product is an unspecified dark-flowered selection and its growing inputs/food-use handling are not established here. This profile therefore presents the product for ornamental beds, borders or groundcover and does not recommend consuming it.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-viola-cornuta-wave28", "gardyn-black-viola-wave28"],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar.",
         "items": [
           "Treat the unidentified commercial selection as ornamental.",
@@ -303,8 +346,8 @@
         ]
       },
       "problems": {
-        "short": "Species-level pests and disease context",
-        "guidance": "NC State Extension lists slugs and snails and fungal leaf diseases as possible issues for Viola cornuta. This is species-level context, not a diagnosis or product-specific susceptibility claim.",
+        "short": "Watch for slugs, snails and fungal leaf disease",
+        "guidance": "NC State lists slugs and snails and fungal leaf diseases as possible issues for V. cornuta. This is species-level monitoring context, not a diagnosis or product-specific susceptibility claim.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -328,23 +371,14 @@
         "reason": "The controlled compatibility vocabulary does not encode the species' creeping/ascending ornamental form."
       },
       "matureSize": {
-        "height": {
-          "status": "unknown",
-          "reason": "The Gardyn size label is product-specific and not reconciled to a general mature-size value."
-        },
-        "spread": {
-          "status": "unknown",
-          "reason": "No supported product-selection spread is available."
-        }
+        "height": {"status":"known","value":{"minCm":15,"maxCm":23,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-viola-cornuta-wave28"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Viola cornuta"},"note":"NC State lists 6–9 in for the species, rounded to 15–23 cm; not a named cultivar or Gardyn-system measurement."}]},
+        "spread": {"status":"known","value":{"minCm":15,"maxCm":30,"context":"outdoor_general"},"evidence":[{"sourceIds":["ncsu-viola-cornuta-wave28"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Viola cornuta"},"note":"NC State lists 6–12 in for the species, rounded to 15–30 cm; not an outdoor spacing rule or Gardyn-system measurement."}]}
       },
       "spacing": {
         "status": "unknown",
         "reason": "Gardyn thinning to multiple plants per yCube is not a general outdoor spacing recommendation."
       },
-      "light": {
-        "status": "unknown",
-        "reason": "The Gardyn Medium zone is not equivalent to outdoor partial shade or a general grow-light tier."
-      }
+      "light": {"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}}],"evidence":[{"sourceIds":["ncsu-viola-cornuta-wave28"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Viola cornuta"},"note":"NC State includes full sun to part shade outdoors; only the explicit full-sun option is represented. Part shade is not converted to partial-sun hours or an indoor grow-light tier, and Gardyn's Medium zone remains system-specific."}]}
     }
   }
 ]

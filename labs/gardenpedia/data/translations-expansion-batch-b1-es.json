@@ -1,1 +1,358 @@
-{"tiny-tim-tomato":{"summary":"Tomate cherry micro-enano y determinado, especialmente útil para espacios pequeños. Garden separa sus datos varietales de las reglas generales del tomate.","metrics":[{"label":"Referencia de madurez","note":"Referencia varietal; depende del contexto"},{"label":"Porte","note":"Específico de la variedad"},{"label":"Referencia de tamaño RHS","note":"Referencia del cultivar Tiny Tim; no es una regla de separación del pod"},{"label":"pH / EC hidro","note":"Referencia OSU a nivel de cultivo tomate"}],"sections":{"germination":{"short":"Germinación cálida de tomate","guidance":"Trátalo como tomate para germinación y plántula temprana; no inventar días específicos del sobre antes de recibirlo."},"thinning":{"short":"Deja una planta final vigorosa","guidance":"Tiny Tim es compacto pero sigue siendo un tomate de fruto. En una posición hidro pequeña conserva la planta más fuerte."},"pruning":{"short":"No aplicar automáticamente poda de tomate indeterminado","guidance":"Tiny Tim es un tomate determinado, de porte arbustivo y micro-enano. RHS indica que los cultivares arbustivos no necesitan retirar brotes laterales; conserva el follaje sano y elimina solo crecimiento dañado o claramente problemático."},"harvest":{"short":"Cosecha frutos totalmente coloreados y firmes","guidance":"Usa color y firmeza como señales principales. Tiny Tim produce muchos tomates cherry rojos pequeños durante el verano según RHS; los ~45 días siguen siendo una referencia varietal, no una promesa para todo sistema interior."},"flowering":{"short":"Floración y cuajado son etapas productivas esperadas","guidance":"Registra primeras flores y primer cuajado como eventos reales; aquí la floración no se suprime como en hierbas de hoja."},"hydroponics":{"short":"Hay objetivos hidro a nivel de tomate","guidance":"OSU ubica tomate en EC 2.0–4.0 mS/cm y pH 6.0–6.5. Úsalo como referencia de cultivo y respeta límites del sistema real."},"problems":{"short":"Vigila carga de fruto, luz, calor y espacio radicular","guidance":"Una copa pequeña no implica poca demanda radicular o nutricional. RHS enumera podredumbre apical, deficiencia de magnesio, virus del marchitamiento manchado del tomate y moho gris entre posibles problemas en este contexto varietal; usa síntomas e historial antes de asignar una causa o tratamiento."}}},"fragrant-dwarf-dianthus-mix":{"summary":"Dianthus compacto de flores mixtas. Garden mantiene la especie exacta pendiente hasta revisar el sobre recibido; D. chinensis es solo contexto.","metrics":[{"label":"Identidad","note":"Especie exacta pendiente del sobre"},{"label":"Uso","note":"Contexto de género apto para contenedor"},{"label":"pH / EC hidro","note":"No mapear clavel a una mezcla enana sin resolver"}],"sections":{"germination":{"short":"Tiempo específico pendiente del sobre","guidance":"No asignar una ventana precisa hasta resolver la identidad del mix comprado."},"thinning":{"short":"Ralea por vigor tras observar emergencia","guidance":"Reduce hacinamiento fuerte conservando las plántulas más vigorosas; no copies spacing exterior."},"pruning":{"short":"Deadheading puede favorecer refloración en contexto Dianthus","guidance":"NC State recomienda retirar flores pasadas y recortar tras floración fuerte para D. chinensis; aplicar solo si la planta real coincide."},"harvest":{"short":"Flor ornamental; sin guía de cosecha alimentaria","guidance":"Garden la trata como cultivo ornamental de floración."},"flowering":{"short":"La floración es la etapa objetivo","guidance":"Registra botones, primera flor y ciclos de floración. Las decisiones de deadheading dependen de la planta real."},"hydroponics":{"short":"Sin objetivo hidro exacto aceptado","guidance":"No usar el rango de clavel de OSU mientras esta mezcla de Dianthus no esté identificada a ese nivel."},"problems":{"short":"Evita saturación crónica de corona y raíz","guidance":"D. chinensis es susceptible a problemas de corona/raíz con mal drenaje; úsalo como cautela, no como diagnóstico."}}},"mini-lunchbox-sweet-pepper":{"summary":"Pimiento dulce mini comprado como tipo Lunchbox. Garden no asume que sea la serie propietaria de Johnny's hasta ver el paquete.","metrics":[{"label":"Identidad","note":"Cultivar exacto pendiente"},{"label":"Contexto Lunchbox","note":"Serie Johnny's; todavía no es hecho del sobre"},{"label":"pH / EC hidro","note":"Referencia OSU a nivel de cultivo pimiento"}],"sections":{"germination":{"short":"Germinación cálida; el frío la ralentiza","guidance":"USU recomienda germinación cálida alrededor de 80°F. El tiempo específico del cultivar queda pendiente."},"thinning":{"short":"Deja una planta fructífera fuerte por posición","guidance":"Con hojas verdaderas, conserva la plántula más fuerte; no copies pulgadas de campo como regla de pod."},"pruning":{"short":"Sin poda agresiva por defecto","guidance":"Conserva follaje suficiente para sostener fruto. Garden solo debe recomendar forma después de observar la arquitectura real."},"harvest":{"short":"Cosecha firme, verde o a color según objetivo","guidance":"USU admite cosecha verde o completamente coloreada. Usa el color real del cultivar comprado cuando se confirme."},"flowering":{"short":"Protege el cuajado del estrés térmico","guidance":"Frío nocturno o calor extremo pueden provocar caída floral. Registra primero la observación antes de inferir nutrientes."},"hydroponics":{"short":"Hay objetivos hidro a nivel de pimiento","guidance":"OSU ubica pimientos en EC 0.8–1.8 mS/cm y pH 5.5–6.0; no es receta exacta del cultivar."},"problems":{"short":"Vigila caída floral y blossom-end rot","guidance":"Temperatura, humedad irregular y disponibilidad de calcio son riesgos relevantes; separar síntoma observado de causa inferida."}}},"chinese-light-green-celery":{"summary":"Apio chino de tallos finos y follaje aromático. Las fuentes discrepan entre var. secalinum y var. dulce; Garden conserva Apium graveolens como identidad segura.","metrics":[{"label":"Contexto de madurez varietal","note":"Referencia comercial especializada"},{"label":"Temperatura de apio","note":"Referencia USU a nivel de cultivo"},{"label":"pH / EC hidro","note":"Referencia OSU a nivel de cultivo apio"}],"sections":{"germination":{"short":"La semilla de apio puede ser lenta e irregular","guidance":"USU señala germinación irregular y que remojar puede ayudar. No convertir tiempos comerciales en resultado garantizado del sobre."},"thinning":{"short":"Favorece una corona fuerte sin dañar raíces temprano","guidance":"Ralea competencia severa según vigor; no copies spacing exterior."},"pruning":{"short":"Cosecha tallos externos y conserva el centro","guidance":"El mantenimiento es cosecha selectiva de pecíolos externos, no poda de puntas."},"harvest":{"short":"Los tallos externos pueden cosecharse selectivamente","guidance":"USU permite retirar pecíolos externos mientras continúa el crecimiento interno; el tipo chino produce tallos más finos."},"flowering":{"short":"Frío prolongado puede inducir espigado","guidance":"Registra tallo floral como etapa/estrés observado, no automáticamente como problema nutricional."},"hydroponics":{"short":"Existe referencia hidro para apio","guidance":"OSU ubica apio en EC 1.8–2.4 mS/cm y pH 6.5; el subtipo chino puede comportarse distinto en reservorio pequeño."},"problems":{"short":"Importan humedad estable y disponibilidad de calcio","guidance":"USU relaciona estrés hídrico con calidad y blackheart con calcio; diagnosticar solo con síntomas e historial."}}},"tiny-tim-sweet-alyssum":{"summary":"Aliso dulce compacto de flor blanca y fragante. Lobularia maritima está respaldada por el listing comprado y Extension.","metrics":[{"label":"Germinación del vendedor","note":"Listing comprado; no verificado por Extension a nivel de cultivar"},{"label":"Altura del vendedor","note":"Listing Tiny Tim"},{"label":"Porte de especie","note":"UW–Madison Extension"},{"label":"pH / EC hidro","note":"Sin objetivo específico aceptado"}],"sections":{"germination":{"short":"El vendedor reporta emergencia rápida de 5–7 días","guidance":"Conservar 5–7 días como guía de vendedor hasta tener evidencia real de User Zero."},"thinning":{"short":"Ralea solo para evitar hacinamiento severo","guidance":"Sweet alyssum forma una mata baja y ramificada; puede conservar un pequeño grupo al inicio y reducir débiles según densidad real."},"pruning":{"short":"Recorta tras caída de floración para favorecer refloración","guidance":"Extension apoya recortar sweet alyssum cuando cae la floración; evita cortar la corona."},"harvest":{"short":"Ornamental de floración; sin cosecha alimentaria rutinaria","guidance":"Garden trata Tiny Tim como ornamental y no genera uso culinario desde afirmaciones no relacionadas."},"flowering":{"short":"La floración blanca y fragante es el objetivo","guidance":"Registra primer botón, primera flor y refloración después del recorte."},"hydroponics":{"short":"Sin objetivo hidro exacto aceptado","guidance":"No hay una fuente hidropónica fuerte y específica para Tiny Tim alyssum; mantener pendiente."},"problems":{"short":"El calor puede reducir la floración","guidance":"Extension describe mejor desempeño en clima fresco; usa temperatura y historial real antes de intervenir."}}},"monterey-strawberry":{"summary":"Cultivar day-neutral de UC Davis. User Zero compró cinco plantas bare-root, no semillas; Garden conserva explícitamente ese tipo de material.","metrics":[{"label":"Material","note":"Compra User Zero"},{"label":"Tipo de floración","note":"Autoridad varietal UC Davis"},{"label":"pH / EC hidro","note":"Referencia OSU a nivel de cultivo fresa"}],"sections":{"germination":{"short":"No aplica: comprada como plantas bare-root","guidance":"No mostrar instrucciones de germinación. La primera etapa relevante es establecimiento tras la llegada."},"thinning":{"short":"No es un flujo de raleo de plántulas","guidance":"Cada corona bare-root es una planta individual; evaluar vigor tras establecimiento."},"pruning":{"short":"Prioriza establecimiento antes de manejar runners u hojas","guidance":"No prescribir retiro de runners o limpieza agresiva automáticamente; primero observar recuperación y corona."},"harvest":{"short":"Cosecha frutos completamente coloreados","guidance":"Usa color y condición real del fruto, no una promesa genérica de días desde plantación."},"flowering":{"short":"La floración day-neutral define al cultivar","guidance":"UC Davis identifica Monterey como day-neutral. Registra primeras flores y cuajado como eventos importantes."},"hydroponics":{"short":"Hay evidencia hidro directa con Monterey","guidance":"Illinois Extension cultivó Monterey hidropónicamente. OSU ubica fresa en EC 1.8–2.2 mS/cm y pH 6.0 como referencia de cultivo."},"problems":{"short":"Vigila establecimiento y oídio","guidance":"UC Davis señala susceptibilidad de Monterey a powdery mildew; la condición de llegada bare-root también es evidencia prioritaria."}}},"seaside-f1-spinach":{"summary":"Espinaca F1 de hoja lisa, erguida y verde oscura, lenta para espigar y con ventana extendida de baby leaf. Johnny's documenta exactamente el cultivar.","metrics":[{"label":"Madurez","note":"Johnny's cultivar exacto"},{"label":"Contexto de germinación","note":"USU a nivel de cultivo espinaca"},{"label":"pH / EC hidro","note":"OSU a nivel de cultivo espinaca"}],"sections":{"germination":{"short":"Germinación fresca; referencia de 7–10 días","guidance":"USU reporta 7–10 días y mejor germinación a 55–65°F; por encima de 80°F disminuye."},"thinning":{"short":"Ralea tras hojas verdaderas según objetivo de hoja","guidance":"USU ralea con 3–4 hojas verdaderas. En hidro no copies pulgadas de campo; deja espacio según baby leaf o hoja mayor."},"pruning":{"short":"Sin poda de forma; cosecha hojas protegiendo el punto de crecimiento","guidance":"La espinaca se maneja por cosecha de hojas. Conserva el punto basal para rebrote."},"harvest":{"short":"Baby leaf o cosecha repetida de hojas mayores","guidance":"Johnny's da ~30 días y ventana extendida de baby leaf; cortar sobre la placa basal permite cut-and-come-again."},"flowering":{"short":"Calor y días largos aumentan espigado","guidance":"Seaside es slow-bolting, no inmune al espigado. USU relaciona calor y días largos con espigado y amargor."},"hydroponics":{"short":"Hay objetivos hidro para espinaca","guidance":"OSU ubica espinaca en EC 1.8–2.3 mS/cm y pH 6.0–7.0. Johnny's no marca Seaside como su cultivar Hydroponic Performer; no inventar ese badge."},"problems":{"short":"Calor, espigado y mildiu son señales clave","guidance":"Seaside tiene resistencias documentadas a razas de downy mildew, pero resistencia no significa inmunidad ni diagnóstico."}}}}
+{
+  "tiny-tim-tomato": {
+    "summary": "Tiny Tim es un cultivar nombrado de tomate cherry enano y arbustivo, útil para espacios pequeños. La ficha separa sus rasgos varietales de la guía general del tomate; no publica días exactos a madurez porque la página del proveedor se contradice.",
+    "metrics": [
+      {
+        "label": "Madurez exacta",
+        "value": "No establecida",
+        "note": "El titular y la tabla general de Reimer se contradicen; no se usa un plazo exacto"
+      },
+      {
+        "label": "Porte",
+        "value": "Microenano · determinado",
+        "note": "Específico de la variedad"
+      },
+      {
+        "label": "Referencia de tamaño RHS",
+        "value": "10–50 cm de altura/extensión",
+        "note": "Referencia del cultivar Tiny Tim; no es una regla de separación del pod"
+      },
+      {
+        "label": "pH / EC hidro",
+        "value": "6.0–6.5 / 2.0–4.0",
+        "note": "Referencia OSU a nivel de cultivo tomate"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Tiny Tim es un tomate cherry enano y arbustivo nombrado",
+        "guidance": "RHS registra Solanum lycopersicum 'Tiny Tim' como tomate cherry enano y de porte arbustivo. Es un cultivar distinto de otros tomates microenanos; el rango RHS de altura y extensión es amplio y no debe usarse como distancia de plantación ni de pod."
+      },
+      "growth": {
+        "short": "Porte arbustivo compacto; RHS informa 10–50 cm de altura y extensión",
+        "guidance": "La ficha RHS describe una planta arbustiva con altura máxima y extensión de 0.1–0.5 m cada una. El rango es específico del cultivar, pero amplio; el listado comercial de Reimer indica 10–18 pulgadas de altura. No se combinan ambas fuentes en una sola dimensión adulta garantizada."
+      },
+      "cultivation": {
+        "short": "Pleno sol y medio húmedo pero bien drenado",
+        "guidance": "RHS recomienda pleno sol y condiciones húmedas pero bien drenadas, y menciona Tiny Tim para patio y maceta. Es orientación hortícola exterior; no establece duración de lámpara, volumen de maceta ni compatibilidad con un dispositivo hidropónico específico."
+      },
+      "care": {
+        "short": "Mantén humedad estable y evita mojar el follaje",
+        "guidance": "Para el tomate en general, UMN recomienda humedad constante del suelo y regar en la base; relaciona las fluctuaciones de humedad durante el crecimiento del fruto con la pudrición apical y el follaje mojado con mayor riesgo de enfermedad. Es guía de cultivo en suelo o recipiente, no un calendario de depósito para Tiny Tim."
+      },
+      "pruning": {
+        "short": "No aplicar automáticamente poda de tomate indeterminado",
+        "guidance": "Tiny Tim es un tomate determinado, de porte arbustivo y micro-enano. RHS indica que los cultivares arbustivos no necesitan retirar brotes laterales; conserva el follaje sano y elimina solo crecimiento dañado o claramente problemático."
+      },
+      "harvest": {
+        "short": "Cosecha frutos uniformemente rojos que empiezan a ablandarse; los días exactos no se establecen",
+        "guidance": "RHS describe los frutos cherry rojos de Tiny Tim como producción de verano, e Iowa State recomienda cosechar tomates cuando todo el fruto tiene color uniforme y está algo blando, no duro. La página de Reimer se contradice entre un titular de 45 días y una tabla genérica de 60–90 días sin indicar claramente desde cuándo se cuenta; Gardenpedia omite el plazo y conserva la señal observable de cosecha."
+      },
+      "flowering": {
+        "short": "La floración determinada produce una cosecha más concentrada",
+        "guidance": "Reimer identifica Tiny Tim como determinado, y UMN describe los tomates arbustivos determinados como tipos que producen una cantidad definida de frutos que maduran en un periodo concentrado. Es contexto del hábito, no un número de frutos ni un calendario garantizado para cada planta."
+      },
+      "hydroponics": {
+        "short": "Hay objetivos hidro a nivel de tomate",
+        "guidance": "OSU ubica tomate en EC 2.0–4.0 mS/cm y pH 6.0–6.5. Úsalo como referencia de cultivo y respeta límites del sistema real."
+      },
+      "problems": {
+        "short": "Vigila el fruto y diagnostica antes de intervenir",
+        "guidance": "RHS enumera para Tiny Tim la pudrición apical, deficiencia de magnesio, virus del marchitamiento manchado del tomate y moho gris bajo cubierta entre problemas posibles. UMN describe la pudrición apical como una zona oscura, acorchada o mohosa en el extremo floral y relaciona las grietas con crecimiento rápido durante períodos cálidos y húmedos. Son señales de vigilancia, no diagnósticos; confirma síntomas y condiciones antes de actuar."
+      }
+    }
+  },
+  "fragrant-dwarf-dianthus-mix": {
+    "summary": "Dianthus compacto de flores mixtas. Garden mantiene la especie exacta pendiente hasta revisar el sobre recibido; D. chinensis es solo contexto.",
+    "metrics": [
+      {
+        "label": "Identidad",
+        "note": "Especie exacta pendiente del sobre"
+      },
+      {
+        "label": "Uso",
+      "note": "Especie exacta pendiente; aptitud para maceta no establecida"
+      },
+      {
+        "label": "pH / EC hidro",
+        "note": "No mapear clavel a una mezcla enana sin resolver"
+      }
+    ],
+    "sections": {
+      "germination": {
+        "short": "Tiempo específico pendiente del sobre",
+        "guidance": "No asignar una ventana precisa hasta resolver la identidad del mix comprado."
+      },
+      "thinning": {
+        "short": "Ralea por vigor tras observar emergencia",
+        "guidance": "Reduce hacinamiento fuerte conservando las plántulas más vigorosas; no copies spacing exterior."
+      },
+      "pruning": {
+        "short": "Deadheading puede favorecer refloración en contexto Dianthus",
+        "guidance": "NC State recomienda retirar flores pasadas y recortar tras floración fuerte para D. chinensis; aplicar solo si la planta real coincide."
+      },
+      "harvest": {
+        "short": "Flor ornamental; sin guía de cosecha alimentaria",
+        "guidance": "Garden la trata como cultivo ornamental de floración."
+      },
+      "flowering": {
+        "short": "La floración es la etapa objetivo",
+        "guidance": "Registra botones, primera flor y ciclos de floración. Las decisiones de deadheading dependen de la planta real."
+      },
+      "hydroponics": {
+        "short": "Sin objetivo hidro exacto aceptado",
+        "guidance": "No usar el rango de clavel de OSU mientras esta mezcla de Dianthus no esté identificada a ese nivel."
+      },
+      "problems": {
+        "short": "Evita saturación crónica de corona y raíz",
+        "guidance": "D. chinensis es susceptible a problemas de corona/raíz con mal drenaje; úsalo como cautela, no como diagnóstico."
+      }
+    }
+  },
+  "mini-lunchbox-sweet-pepper": {
+    "summary": "Tipo no nombrado de pimiento dulce mini dentro de la especie aceptada Capsicum annuum. Esta ficha describe el cultivo y el tipo general, no la serie Lunchbox de Johnny's ni un lote de semillas concreto. El tamaño adulto y los plazos varían según el cultivar y no se especifican aquí.",
+    "metrics": [
+      {
+        "label": "Especie aceptada",
+        "value": "Capsicum annuum",
+        "note": "Kew acepta la especie; no se asigna cultivar"
+      },
+      {
+        "label": "pH / EC hidro",
+        "value": "5.5–6.0 / 0.8–1.8",
+        "note": "Referencia de OSU para el cultivo; no es receta de cultivar ni de dispositivo"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Capsicum annuum; sin cultivar asignado",
+        "guidance": "Kew acepta Capsicum annuum dentro de Solanaceae. “Pimiento dulce mini” se representa aquí como un tipo hortícola sin nombre de cultivar, no como un cultivar nombrado ni como la serie Lunchbox de Johnny's."
+      },
+      "growth": {
+        "short": "La forma general del pimiento varía; fruto mini no define el tamaño de la planta",
+        "guidance": "University of Maryland Extension describe los pimientos en general como plantas arbustivas que pueden alcanzar 3–4 pies, con hábitos compactos, erguidos o postrados; los tallos pueden volverse quebradizos y quizá requieran jaulas o tutores bajos. Es contexto del cultivo de Capsicum, no una altura medida ni una necesidad de soporte demostrada para este tipo mini de identidad pendiente. Las dimensiones maduras exactas siguen desconocidas."
+      },
+      "cultivation": {
+        "short": "Mantén humedad del suelo estable; evita mojar el follaje",
+        "guidance": "UMN Extension recomienda humedad constante para la calidad del fruto y reducir trastornos asociados a la humedad. Evita el riego por aspersión sobre la planta: las hojas mojadas y las salpicaduras de suelo pueden favorecer enfermedades. Es una guía para pimiento al aire libre, no una prescripción de cultivar ni de hidroponía."
+      },
+      "harvest": {
+        "short": "Cosecha frutos desarrollados y firmes, verdes o maduros",
+        "guidance": "Los pimientos pueden cosecharse verdes o cuando desarrollan su color maduro; usa la firmeza y el color real del tipo cultivado, sin asumir que sea la mezcla Lunchbox nombrada. Los plazos y dimensiones de Johnny's solo aplican si se confirma esa serie."
+      },
+      "flowering": {
+        "short": "Varios factores de estrés pueden interrumpir el cuajado",
+        "guidance": "University of Maryland Extension enumera el suelo demasiado seco o húmedo durante períodos prolongados, las temperaturas muy altas o bajas, la sombra excesiva, el exceso de nitrógeno y los vientos secos y cálidos como posibles causas de un cuajado deficiente en pimientos. También informa que las flores y los frutitos pueden caer cuando las noches bajan de 60 °F o superan 75 °F, o los días exceden 95 °F, según su guía de huerto doméstico. Son posibilidades diagnósticas a nivel del cultivo, no umbrales específicos de este cultivar ni una causa segura; revisa las condiciones antes de intervenir."
+      },
+      "hydroponics": {
+        "short": "Los valores hidropónicos son referencias del cultivo",
+        "guidance": "Oklahoma State publica EC de 0.8–1.8 mS/cm y pH de 5.5–6.0 para el cultivo de pimiento. No son valores específicos de este cultivar de lote no resuelto ni demuestran por sí solos compatibilidad con un sistema."
+      },
+      "problems": {
+        "short": "Reconoce pudrición apical, quemadura solar y manchas",
+        "guidance": "La pudrición apical se ve como tejido beige y blando que puede oscurecerse y hundirse en el extremo del fruto; la humedad irregular es un riesgo relevante. La quemadura solar forma áreas planas beige en frutos expuestos. La mancha bacteriana puede producir lesiones en hojas y frutos. Mantén humedad uniforme, evita mojar el follaje y conserva hojas sanas; confirma los síntomas antes de elegir un tratamiento."
+      }
+    }
+  },
+  "chinese-light-green-celery": {
+    "summary": "Chinese Light Green es el nombre de proveedor para una selección frondosa de Apium graveolens. Gardenpedia la representa como tipo hortícola de apio chino o de hoja; no afirma una varietas exacta ni un cultivar formal. La guía de la planta establecida se limita a ese tipo o al cultivo de apio y no constituye una receta para un sistema controlado.",
+    "metrics": [
+      {
+        "label": "Contexto de madurez indicado por el proveedor",
+        "note": "Referencia comercial especializada"
+      },
+      {
+        "label": "Temperatura de apio",
+        "note": "Referencia USU a nivel de cultivo"
+      },
+      {
+        "label": "pH / EC hidro",
+        "note": "Referencia OSU a nivel de cultivo apio"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Kew acepta Apium graveolens; el apio chino se representa como tipo hortícola, no como cultivar nombrado",
+        "guidance": "Kew acepta Apium graveolens y trata A. graveolens var. secalinum como sinónimo de la especie. USDA GRIN registra el apio chino como cercano o idéntico a var. secalinum y lo asocia con el grupo de apio de hoja; la Universidad de Hawái describe el apio chino como tipo asiático, de tallos finos y huecos, cuyas pencas foliares se usan como verdura. Por eso Gardenpedia resuelve esta ficha a Apium graveolens y al tipo hortícola de apio chino/de hoja, mientras conserva Chinese Light Green solo como selección indicada por el proveedor. No se asigna cultivar formal ni varietas exacta."
+      },
+      "growth": {
+        "short": "El proveedor describe una selección frondosa, no acanalada y de tallos finos y tiernos",
+        "guidance": "FreeHeirloomSeeds indica 50–60 días para su apio chino verde claro CE1 y lo describe como apio no acanalado, de follaje parecido al cilantro, tallos finos y tiernos y cosecha de corte y rebrote. Esto documenta la descripción y el plazo estimado de ese proveedor; no establece un cultivar formal ni garantiza la fecha de cosecha."
+      },
+      "cultivation": {
+        "short": "Mantén el cultivo establecido en suelo húmedo, fértil y bien drenado",
+        "guidance": "USU describe el apio como cultivo a pleno sol, en suelo fértil y bien drenado, y señala sus raíces superficiales y su necesidad de humedad uniforme. El estrés hídrico puede volver las pencas fibrosas y de sabor más fuerte. Es orientación de cultivo de Apium graveolens a nivel de especie, no prueba de respuesta de un cultivar chino concreto ni requisito para sistemas interiores."
+      },
+      "thinning": {
+        "short": "Favorece una corona fuerte sin dañar raíces temprano",
+        "guidance": "Las fuentes comerciales describen Chinese Light Green como un tipo de tallos más finos que el apio de penca, pero no establecen cantidad de pods para Garden. Evita el amontonamiento visible y las alteraciones innecesarias de raíces; es una adaptación conservadora de Garden, no una distancia medida."
+      },
+      "pruning": {
+        "short": "Cosecha tallos externos y conserva el centro",
+        "guidance": "El mantenimiento es cosecha selectiva de pecíolos externos, no poda de puntas."
+      },
+      "harvest": {
+        "short": "Los tallos externos pueden cosecharse selectivamente",
+        "guidance": "USU respalda retirar pecíolos exteriores mientras continúa el crecimiento interno. La referencia del producto describe Light Green como tipo frondoso de tallos finos y da una madurez comercial aproximada de 50–60 días; no lo trates como fecha garantizada para este sobre ni como afirmación de cultivar plenamente resuelto."
+      },
+      "flowering": {
+        "short": "Frío prolongado puede inducir espigado",
+        "guidance": "USU informa que varias semanas de temperaturas frescas pueden inducir floración en apio. Registra el tallo floral como transición reproductiva y posible cambio de calidad, no automáticamente como problema nutricional. La fuente no establece una respuesta específica de cultivar."
+      },
+      "hydroponics": {
+        "short": "Hay una referencia de apio a nivel de cultivo; el subtipo y el sistema compacto siguen inciertos",
+        "guidance": "La tabla de OSU ofrece para apio una referencia de cultivo de EC 1.8–2.4 mS/cm y pH 6.5. Esta referencia a nivel del cultivo no establece el rendimiento en un depósito compartido pequeño ni la cantidad de pods; no es una receta de sistema."
+      },
+      "problems": {
+        "short": "Importan humedad estable y disponibilidad de calcio",
+        "guidance": "USU describe que el estrés hídrico puede producir pencas fibrosas y de sabor más fuerte. También describe el corazón negro como ennegrecimiento gradual y muerte de hojas jóvenes en el centro, asociado con un trastorno localizado de calcio. Inspecciona la corona y el historial de riego antes de diagnosticar; la evidencia es del cultivo de apio, no de susceptibilidad de un cultivar concreto."
+      }
+    }
+  },
+  "tiny-tim-sweet-alyssum": {
+    "summary": "Tiny Tim se conserva como la etiqueta del catálogo para este registro de aliso dulce dentro de Lobularia maritima. UW–Madison Extension respalda el porte bajo y extendido y el manejo de la planta establecida a nivel de especie; no se han establecido dimensiones ni desempeño en sistemas controlados específicos del cultivar.",
+    "metrics": [
+      {
+        "label": "Altura de la especie",
+        "value": "3–9 in",
+        "note": "UW–Madison Extension; no es una medida de Tiny Tim"
+      },
+      {
+        "label": "Porte",
+        "value": "Mata baja y extendida",
+        "note": "Descripción a nivel de especie; su extensión supera la altura"
+      },
+      {
+        "label": "Floración",
+        "value": "Durante la temporada de crecimiento",
+        "note": "Guía de UW–Madison Extension a nivel de especie"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Aliso dulce a nivel de especie; Tiny Tim sigue como etiqueta del catálogo, no como cultivar verificado",
+        "guidance": "UW–Madison Extension identifica el aliso dulce como Lobularia maritima y describe la planta a nivel de especie. Gardenpedia conserva Tiny Tim como la etiqueta del catálogo recibida para este registro, pero aquí no se ha establecido un registro varietal independiente ni dimensiones o rendimiento específicos del cultivar."
+      },
+      "growth": {
+        "short": "Anual baja y rastrera, más extendida que alta",
+        "guidance": "UW–Madison describe el aliso dulce como una anual baja, extendida y ramificada, generalmente de 3–9 pulgadas de altura y con mayor extensión lateral. Son dimensiones de exterior a nivel de especie, no una medida garantizada de Tiny Tim ni una recomendación de separación hidropónica."
+      },
+      "cultivation": {
+        "short": "Cultívalo al aire libre con buena luz, humedad uniforme y drenaje",
+        "guidance": "UW–Madison Extension indica que el aliso dulce crece bien a pleno sol en climas frescos y puede responder mejor a sombra parcial en climas calurosos. Prefiere suelo común, bien drenado y con humedad media, además de riego constante; el exceso de fertilizante favorece el follaje sobre las flores. Esta es guía exterior de la especie, no una prescripción de luz interior o solución nutritiva."
+      },
+      "flowering": {
+        "short": "Los racimos pequeños pueden florecer durante la temporada de crecimiento",
+        "guidance": "El aliso dulce produce racimos densos de flores pequeñas durante la temporada; las flores de la especie suelen ser blancas, aunque hay otros colores en cultivares seleccionados. UW–Madison informa que el calor puede frenar la floración y que la planta puede reanudar el crecimiento y la floración cuando refresca. Son rasgos a nivel de especie; no se asigna a Tiny Tim una duración de floración específica."
+      },
+      "pruning": {
+        "short": "Retira flores marchitas o recorta si cae la floración o los tallos se alargan",
+        "guidance": "UW–Madison recomienda quitar flores marchitas para favorecer una floración más abundante y recortar plantas demasiado grandes o alargadas, o con más vainas que flores, para mejorar su aspecto y promover una nueva floración. Durante el calor, un recorte ligero y el riego constante pueden ayudar a la recuperación; no confundas una pausa temporal por calor con una enfermedad."
+      },
+      "problems": {
+        "short": "El calor, el hacinamiento y el exceso persistente de humedad pueden reducir su vigor",
+        "guidance": "UW–Madison informa que el calor ralentiza el crecimiento y la floración, y que las plantas densas cultivadas demasiado húmedas o apretadas pueden pudrirse. Favorece el drenaje y evita el hacinamiento; diagnostica según los síntomas y las condiciones observadas. No se ha establecido resistencia ni susceptibilidad a enfermedades específica de Tiny Tim."
+      },
+      "hydroponics": {
+        "short": "No se ha establecido su aptitud interior o hidropónica",
+        "guidance": "Las fuentes revisadas describen cultivo exterior en jardines y recipientes, no producción hidropónica controlada. No hay valores validados de EC, pH, luz interior o separación para Tiny Tim; estos datos quedan desconocidos y no se deducen de las dimensiones exteriores."
+      }
+    }
+  },
+  "monterey-strawberry": {
+    "summary": "Monterey es un cultivar day-neutral de fresa de jardín desarrollado por UC Davis. La ficha separa la evidencia varietal de las recomendaciones generales para fresa y de las observaciones hidropónicas directas.",
+    "metrics": [
+      {
+        "label": "Tipo de floración",
+        "note": "Autoridad varietal UC Davis"
+      },
+      {
+        "label": "pH / EC hidro",
+        "note": "Referencia OSU a nivel de cultivo fresa"
+      }
+    ],
+    "sections": {
+      "cultivation": {
+        "short": "Pleno sol, suelo drenado y humedad regular en huertos",
+        "guidance": "UMN Extension recomienda pleno sol para lograr la máxima fructificación de la fresa, suelo bien drenado y humedad regular en camas de huerto. Son recomendaciones para suelo exterior en Minnesota; no establecen nivel de luz interior, receta hidropónica ni distancia específica de Monterey."
+      },
+      "growth": {
+        "short": "Forma corona y estolones; no hay extensión adulta medida",
+        "guidance": "UMN describe la corona, las hojas y los estolones como partes de la planta de fresa. En una comparación de UC Davis, líneas day-neutral más recientes produjeron menos estolones que Monterey. Esto respalda producción de estolones frente a esas líneas del ensayo, no una extensión adulta fija ni un resultado garantizado en todos los sistemas."
+      },
+      "pollination": {
+        "short": "Las flores son autofértiles y se benefician del polen transportado por insectos",
+        "guidance": "UMN Extension indica que las fresas de jardín son autofértiles, pero dependen de las abejas para la polinización; el polen debe llegar a los numerosos estigmas de cada flor para formar un fruto bien desarrollado. Es orientación general del cultivo, no un requisito específico de Monterey de tener otro cultivar."
+      },
+      "pruning": {
+        "short": "Prioriza establecimiento antes de manejar runners u hojas",
+        "guidance": "La guía de UMN para fresas day-neutral recomienda retirar los estolones durante la temporada cuando el objetivo sea producir fruto; los ensayos de UC Davis indican que Monterey puede producir más estolones que líneas de comparación más recientes. Conserva solo los estolones seleccionados si buscas expansión vegetativa. Es una recomendación condicional de manejo, no una medida de extensión adulta ni una regla para pods interiores."
+      },
+      "harvest": {
+        "short": "Cosecha frutos completamente coloreados",
+        "guidance": "UC Davis identifica Monterey como day-neutral. La guía de huerto de UMN recomienda cosechar las fresas cuando estén rojas y revisarlas con frecuencia al empezar a tomar color. Usa el color y el estado reales, no una promesa genérica de días desde la plantación; la señal de madurez es del cultivo, no un calendario específico de Monterey."
+      },
+      "flowering": {
+        "short": "La floración day-neutral define al cultivar",
+        "guidance": "UC Davis identifica Monterey como day-neutral. Registra primeras flores y cuajado como eventos importantes."
+      },
+      "hydroponics": {
+        "short": "Hay evidencia hidro directa con Monterey",
+        "guidance": "Illinois Extension cultivó Monterey hidropónicamente. OSU ubica fresa en EC 1.8–2.2 mS/cm y pH 6.0 como referencia de cultivo."
+      },
+      "problems": {
+        "short": "Vigila establecimiento y oídio",
+        "guidance": "La tabla de cultivares de UC IPM para California califica a Monterey como susceptible al oídio y advierte que la susceptibilidad depende de condiciones favorables al patógeno. Es una señal de riesgo específica del cultivar, no un diagnóstico ni una garantía de infección."
+      }
+    }
+  },
+  "seaside-f1-spinach": {
+    "summary": "Seaside F1 es un híbrido anual de espinaca de hoja lisa. Johnny's describe una planta erguida y compacta, con hojas verde oscuro de forma algo similar a una pala, una ventana extendida para cosecha baby leaf y espigado lento. El cuidado general de la espinaca establecida se mantiene a nivel de cultivo.",
+    "metrics": [
+      {
+        "label": "Ciclo de vida",
+        "value": "Anual",
+        "note": "Ficha de cultivar de Johnny's"
+      },
+      {
+        "label": "Referencia hidropónica para espinaca",
+        "value": "pH 6.0–7.0 · EC 1.8–2.3 mS/cm",
+        "note": "pH / EC a nivel de cultivo según OSU; no específico de Seaside ni de un dispositivo"
+      }
+    ],
+    "sections": {
+      "identity": {
+        "short": "Híbrido F1 Seaside de Spinacia oleracea",
+        "guidance": "Johnny's identifica Seaside como Spinacia oleracea, un híbrido F1 y anual. Las afirmaciones específicas del cultivar en esta ficha se limitan a los rasgos que Johnny's atribuye a Seaside; el cuidado general se marca como evidencia de espinaca a nivel de cultivo."
+      },
+      "growth": {
+        "short": "Planta compacta y erguida, con hojas verde oscuro de forma algo similar a una pala",
+        "guidance": "Johnny's describe las hojas de Seaside como erguidas, verde oscuro y de forma algo similar a una pala, y dice que la planta se mantiene pequeña, lo que extiende la ventana de cosecha baby leaf. La fuente no da altura ni extensión maduras numéricas, así que no se asignan."
+      },
+      "cultivation": {
+        "short": "Espinaca de estación fresca; sitio soleado y suelo fértil con buen drenaje",
+        "guidance": "USU describe la espinaca en general como un cultivo de estación fresca para sitios soleados y suelos fértiles con buen drenaje. Crece mejor cuando la temperatura no supera aproximadamente 75°F; las plantas jóvenes toleran hasta cerca de 32°F. Son referencias regionales de cultivo exterior en Utah, no afirmaciones de rendimiento específico de Seaside en interior o hidroponía."
+      },
+      "care": {
+        "short": "Mantén estable la humedad del suelo y evita el estrés de crecimiento",
+        "guidance": "USU recomienda riego regular para espinaca en campo e informa que las fluctuaciones de humedad pueden endurecer las hojas, ralentizar su desarrollo y producir sabores indeseados. La referencia de 1–2 pulgadas por semana corresponde al suelo de jardín en Utah; no la reutilices como pauta para maceta o depósito hidropónico."
+      },
+      "harvest": {
+        "short": "Cosecha hojas exteriores o corta por encima del punto de crecimiento para repetir",
+        "guidance": "En la espinaca establecida, USU indica que se pueden cosechar hojas individuales antes de que aparezca el tallo floral; retirar primero las hojas mayores permite que las jóvenes sigan creciendo. También describe cortar las hojas dejando unas 2 pulgadas sobre el suelo para conservar el punto de crecimiento. Johnny's detalla métodos de cosecha baby leaf y de hoja completa para Seaside. El tiempo de cosecha contado desde la siembra directa se mantiene en el Perfil de Semilla y no se repite aquí."
+      },
+      "flowering": {
+        "short": "Calor y días largos aumentan espigado",
+        "guidance": "USU informa que el calor y los días largos favorecen la floración/espigado y pueden volver amargas o de sabor extraño las hojas. Johnny's describe Seaside como de espigado lento para primavera y verano; eso retrasa el riesgo, pero no implica inmunidad ni garantiza que no espigue."
+      },
+      "hydroponics": {
+        "short": "Los rangos hidropónicos publicados son referencias para espinaca como cultivo",
+        "guidance": "Oklahoma State incluye espinaca con EC 1.8–2.3 mS/cm y pH 6.0–7.0 en su tabla de cultivos hidropónicos. Es una referencia amplia de espinaca, no un ensayo específico de Seaside, un óptimo garantizado, una instrucción de dosificación ni prueba de compatibilidad con un dispositivo Garden X concreto. No se afirma rendimiento hidropónico específico del cultivar."
+      },
+      "problems": {
+        "short": "Vigila el espigado, señales de pulgones/babosas y la resistencia documentada al mildiu",
+        "guidance": "USU identifica como señales de alerta en espinaca las hojas arrugadas o rizadas con pulgones alimentándose por debajo, y los agujeros mordidos por babosas; estas señales no constituyen un diagnóstico. Johnny's enumera resistencia de Seaside al mildiu velloso para las razas 1–11, 15, 16, 19 y 20 en nivel alto, y para las razas 12 y 14 en nivel intermedio. La resistencia depende de la raza, no es inmunidad ni sustituye un diagnóstico."
+      }
+    }
+  }
+}

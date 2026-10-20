@@ -8,7 +8,8 @@
   "git": {
     "deploymentEnabled": {
       "prototype/grow-guide": true,
-      "garden-x/v1-migration-current": true
+      "garden-x/v1-migration-current": true,
+      "work/gardenpedia-rhubarb-completion-gate-20261017": true
     }
   }
 }

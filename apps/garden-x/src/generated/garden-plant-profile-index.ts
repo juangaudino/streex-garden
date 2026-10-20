@@ -8779,8 +8779,20 @@ export const gardenPlantProfileCatalog = {
       "es": "La manzanilla alemana (Matricaria chamomilla) es una anual de hojas aromáticas finamente divididas y capítulos florales similares a margaritas. Wisconsin Extension recomienda sol pleno y suelo bien drenado; cosecha las flores cerca de su plena floración para usarlas frescas o secas. Retirar flores marchitas puede prolongar la floración, mientras dejarlas formar semilla favorece la resiembra. Aptitud hidropónica desconocida."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Outdoor height",
+          "value": "up to 2 ft (61 cm)",
+          "note": "Species-level Wisconsin garden description; not a cultivar or indoor-size guarantee · Wisconsin Extension"
+        }
+      ],
+      "es": [
+        {
+          "label": "Altura exterior",
+          "value": "hasta 61 cm (2 ft)",
+          "note": "Descripción de especie para jardín en Wisconsin; no es una garantía para cultivar o interior · Wisconsin Extension"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -8792,14 +8804,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Accepted species Matricaria chamomilla; distinct from other chamomiles",
-          "guidance": "POWO accepts Matricaria chamomilla and includes M. recutita in its synonym treatment. Wisconsin Extension cautions that several Asteraceae are called chamomile; this profile is the German chamomile species, with no selected garden cultivar.",
+          "guidance": "POWO accepts Matricaria chamomilla and includes M. recutita in its synonym treatment. Wisconsin Extension cautions that several Asteraceae are called chamomile; pineappleweed (M. discoidea) lacks the white ray flowers around its yellow center, while Roman chamomile is Chamaemelum nobile. This profile is M. chamomilla, with no selected garden cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Especie aceptada Matricaria chamomilla; distinta de otras manzanillas",
-          "guidance": "POWO acepta Matricaria chamomilla e incluye M. recutita en su tratamiento de sinónimos. Wisconsin Extension advierte que varias Asteraceae reciben el nombre común de manzanilla; esta ficha corresponde a la especie alemana, sin un cultivar de jardín seleccionado.",
+          "guidance": "POWO acepta Matricaria chamomilla e incluye M. recutita en su tratamiento de sinónimos. Wisconsin Extension advierte que varias Asteraceae reciben el nombre común de manzanilla; la piña de tierra (M. discoidea) carece de las flores liguladas blancas, mientras que la manzanilla romana es Chamaemelum nobile. Esta ficha corresponde a M. chamomilla, sin un cultivar de jardín seleccionado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -8813,14 +8825,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Annual with branching stems and finely divided aromatic leaves",
-          "guidance": "Wisconsin Extension describes erect, branched stems, sparse finely divided leaves and shallow, spreading roots. Flower heads have a domed yellow center surrounded by white ray flowers; no cultivar-specific size is assigned.",
+          "guidance": "Wisconsin Extension describes erect, branched stems, sparse finely divided leaves and shallow, spreading roots; its species-level outdoor account reports plants up to 2 ft tall. Flower heads have a domed yellow center surrounded by white ray flowers. Pineappleweed (M. discoidea) lacks those white ray flowers, so it is a distinct lookalike, not this identity. The height is not a named-cultivar or indoor-size guarantee.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Anual de tallos ramificados y hojas aromáticas finamente divididas",
-          "guidance": "Wisconsin Extension describe tallos erguidos y ramificados, hojas escasas finamente divididas y raíces superficiales y extendidas. Los capítulos tienen un centro amarillo abombado rodeado por flores liguladas blancas; no se asigna tamaño de cultivar.",
+          "guidance": "Wisconsin Extension describe tallos erguidos y ramificados, hojas escasas finamente divididas y raíces superficiales y extendidas; su descripción de especie para exterior informa plantas de hasta 61 cm. Los capítulos tienen un centro amarillo abombado rodeado por flores liguladas blancas. La piña de tierra (M. discoidea) carece de esas flores blancas, por lo que es un parecido distinto. La altura no garantiza el tamaño de interior ni corresponde a un cultivar nombrado.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -3965,11 +3965,13 @@
       "german chamomile"
     ],
     "summary": "German chamomile (*Matricaria chamomilla*) is an annual with finely divided aromatic foliage and daisy-like flower heads. Wisconsin Extension recommends full sun and well-drained soil; harvest flower heads near full bloom for fresh or dried use. Deadheading can extend flowering, while allowing heads to set seed encourages self-seeding. Hydroponic fit remains unknown.",
-    "metrics": [],
+    "metrics": [
+      {"label":"Outdoor height","value":"up to 2 ft (61 cm)","note":"Species-level Wisconsin garden description; not a cultivar or indoor-size guarantee · Wisconsin Extension"}
+    ],
     "sections": {
       "identity": {
         "short": "Accepted species Matricaria chamomilla; distinct from other chamomiles",
-        "guidance": "POWO accepts Matricaria chamomilla and includes M. recutita in its synonym treatment. Wisconsin Extension cautions that several Asteraceae are called chamomile; this profile is the German chamomile species, with no selected garden cultivar.",
+        "guidance": "POWO accepts Matricaria chamomilla and includes M. recutita in its synonym treatment. Wisconsin Extension cautions that several Asteraceae are called chamomile; pineappleweed (M. discoidea) lacks the white ray flowers around its yellow center, while Roman chamomile is Chamaemelum nobile. This profile is M. chamomilla, with no selected garden cultivar.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -3979,7 +3981,7 @@
       },
       "growth": {
         "short": "Annual with branching stems and finely divided aromatic leaves",
-        "guidance": "Wisconsin Extension describes erect, branched stems, sparse finely divided leaves and shallow, spreading roots. Flower heads have a domed yellow center surrounded by white ray flowers; no cultivar-specific size is assigned.",
+        "guidance": "Wisconsin Extension describes erect, branched stems, sparse finely divided leaves and shallow, spreading roots; its species-level outdoor account reports plants up to 2 ft tall. Flower heads have a domed yellow center surrounded by white ray flowers. Pineappleweed (M. discoidea) lacks those white ray flowers, so it is a distinct lookalike, not this identity. The height is not a named-cultivar or indoor-size guarantee.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["uwmadison-german-chamomile-2026"]
@@ -4049,9 +4051,8 @@
           "reason": "No identity-specific mature height was accepted for this type in Wave 1."
         },
         "spread": {
-          "status": "known",
-          "value": {"minCm": 30.48, "maxCm": 40.64, "context": "outdoor_general"},
-          "evidence": [{"sourceIds": ["ncsu-borago-officinalis-2026"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Borago officinalis"}, "note": "NC State lists a species-level width of 1–1 ft 4 in; converted to centimeters, not a Blue Borage cultivar measurement."}]
+          "status": "unknown",
+          "reason": "Wisconsin Extension describes shallow, spreading roots but does not establish mature aerial spread for German chamomile."
         }
       },
       "spacing": {

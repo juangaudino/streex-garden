@@ -923,14 +923,17 @@
   },
   "german-chamomile": {
     "summary": "La manzanilla alemana (Matricaria chamomilla) es una anual de hojas aromáticas finamente divididas y capítulos florales similares a margaritas. Wisconsin Extension recomienda sol pleno y suelo bien drenado; cosecha las flores cerca de su plena floración para usarlas frescas o secas. Retirar flores marchitas puede prolongar la floración, mientras dejarlas formar semilla favorece la resiembra. Aptitud hidropónica desconocida.",
+    "metrics": [
+      {"label":"Altura exterior","value":"hasta 61 cm (2 ft)","note":"Descripción de especie para jardín en Wisconsin; no es una garantía para cultivar o interior · Wisconsin Extension"}
+    ],
     "sections": {
       "identity": {
         "short": "Especie aceptada Matricaria chamomilla; distinta de otras manzanillas",
-        "guidance": "POWO acepta Matricaria chamomilla e incluye M. recutita en su tratamiento de sinónimos. Wisconsin Extension advierte que varias Asteraceae reciben el nombre común de manzanilla; esta ficha corresponde a la especie alemana, sin un cultivar de jardín seleccionado."
+        "guidance": "POWO acepta Matricaria chamomilla e incluye M. recutita en su tratamiento de sinónimos. Wisconsin Extension advierte que varias Asteraceae reciben el nombre común de manzanilla; la piña de tierra (M. discoidea) carece de las flores liguladas blancas, mientras que la manzanilla romana es Chamaemelum nobile. Esta ficha corresponde a M. chamomilla, sin un cultivar de jardín seleccionado."
       },
       "growth": {
         "short": "Anual de tallos ramificados y hojas aromáticas finamente divididas",
-        "guidance": "Wisconsin Extension describe tallos erguidos y ramificados, hojas escasas finamente divididas y raíces superficiales y extendidas. Los capítulos tienen un centro amarillo abombado rodeado por flores liguladas blancas; no se asigna tamaño de cultivar."
+        "guidance": "Wisconsin Extension describe tallos erguidos y ramificados, hojas escasas finamente divididas y raíces superficiales y extendidas; su descripción de especie para exterior informa plantas de hasta 61 cm. Los capítulos tienen un centro amarillo abombado rodeado por flores liguladas blancas. La piña de tierra (M. discoidea) carece de esas flores blancas, por lo que es un parecido distinto. La altura no garantiza el tamaño de interior ni corresponde a un cultivar nombrado."
       },
       "cultivation": {
         "short": "Sol pleno, suelo bien drenado y humedad en la capa superficial",

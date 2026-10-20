@@ -190,8 +190,8 @@
     "id": "florence-fennel",
     "name": "Florence Fennel",
     "spanishName": "Hinojo de Florencia",
-    "scientificName": "Foeniculum vulgare var. azoricum",
-    "variety": "Florence / bulb fennel",
+    "scientificName": "Foeniculum vulgare",
+    "variety": "Florence / bulbing fennel horticultural type; no named cultivar specified",
     "category": "vegetables",
     "emoji": "🌱",
     "guideCompletion": 93,
@@ -203,6 +203,8 @@
       {"label": "Hydro pH / EC", "value": "Pending", "note": "No accepted crop-specific hydro target"}
     ],
     "sections": {
+      "identity": {"short": "Accepted species Foeniculum vulgare; Florence/bulbing fennel type", "guidance": "Kew accepts Foeniculum vulgare and lists Foeniculum azoricum and F. vulgare var. azoricum as synonyms. USU and RHS use var. azoricum for Florence fennel, the bulbing horticultural type grown for its swollen leaf bases; common fennel is generally grown for foliage or seed. This identity represents the Florence/bulbing type, not a named cultivar or a separate accepted species.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-foeniculum-vulgare-wave64", "usu-fennel", "rhs-florence-fennel-grow-2026"]},
+      "growth": {"short": "Feathery fronds rise from overlapping leaf bases that swell into the edible bulb-like base", "guidance": "RHS describes the edible Florence fennel 'bulb' as overlapping, swollen leaf bases at ground level; it is not a true botanical bulb. USU distinguishes this crop type from common fennel grown mainly for foliage and seed. The profile has no named cultivar, and these sources do not establish indoor mature dimensions or pod spacing.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel", "rhs-florence-fennel-grow-2026"]},
       "cultivation": {"short": "Outdoor soil and container cultivation; no hydroponic recipe", "guidance": "USU specifically distinguishes Florence fennel, grown for its swollen base, from common fennel grown mainly for foliage and seed. For established plants it recommends full sun and fertile, well-drained, moisture-retentive soil; letting the soil dry or fluctuate can contribute to bolting or split stalks. It reports 8–12 inches as outdoor soil thinning after bulbing begins; this is not indoor pod spacing. RHS says up to three mature plants can be grown in a container about 40 cm wide and cautions that containers dry rapidly, so regular moisture checks matter because drying can trigger bolting. The container advice is for soil-based growing and does not establish hydroponic suitability or pod spacing.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb", "rhs-florence-fennel-grow-2026"]},
       "thinning": {"short": "A bulbing crop needs one strong final crown per position", "guidance": "Unlike chives or bunching onion, Florence fennel needs room for one swollen base. USU thins to about 8–12 inches after bulbs begin forming in soil; in a pod or container, keep the strongest final crown and do not copy that outdoor distance literally.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["usu-fennel", "johnnys-fennel-bulb"]},
       "pruning": {"short": "No routine shaping prune", "guidance": "Do not prune Florence fennel like basil. Preserve the active crown and fronds; if a seed stalk forms early, treat that as bolting rather than a normal shaping opportunity.", "evidenceType": "garden_adaptation", "confidence": "high", "sourceIds": ["johnnys-fennel-bulb", "usu-fennel"]},

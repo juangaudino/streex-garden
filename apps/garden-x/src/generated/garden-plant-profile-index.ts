@@ -1829,6 +1829,51 @@ export const gardenPlantProfileCatalog = {
       ]
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-foeniculum-vulgare-wave64",
+          "usu-fennel",
+          "rhs-florence-fennel-grow-2026"
+        ],
+        "en": {
+          "short": "Accepted species Foeniculum vulgare; Florence/bulbing fennel type",
+          "guidance": "Kew accepts Foeniculum vulgare and lists Foeniculum azoricum and F. vulgare var. azoricum as synonyms. USU and RHS use var. azoricum for Florence fennel, the bulbing horticultural type grown for its swollen leaf bases; common fennel is generally grown for foliage or seed. This identity represents the Florence/bulbing type, not a named cultivar or a separate accepted species.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Especie aceptada Foeniculum vulgare; tipo Florence/hinojo de bulbo",
+          "guidance": "Kew acepta Foeniculum vulgare y lista Foeniculum azoricum y F. vulgare var. azoricum como sinónimos. USU y RHS usan var. azoricum para Florence fennel, el tipo hortícola de bulbo cultivado por sus bases foliares engrosadas; el hinojo común suele cultivarse por el follaje o la semilla. Esta identidad representa el tipo Florence/de bulbo, no un cultivar nombrado ni una especie aceptada distinta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-fennel",
+          "rhs-florence-fennel-grow-2026"
+        ],
+        "en": {
+          "short": "Feathery fronds rise from overlapping leaf bases that swell into the edible bulb-like base",
+          "guidance": "RHS describes the edible Florence fennel 'bulb' as overlapping, swollen leaf bases at ground level; it is not a true botanical bulb. USU distinguishes this crop type from common fennel grown mainly for foliage and seed. The profile has no named cultivar, and these sources do not establish indoor mature dimensions or pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las frondas plumosas crecen sobre bases foliares superpuestas que se engrosan",
+          "guidance": "RHS describe el 'bulbo' comestible de Florence fennel como bases foliares superpuestas y engrosadas al nivel del suelo; no es un bulbo botánico verdadero. USU distingue este tipo de cultivo del hinojo común, cultivado principalmente por el follaje y la semilla. El perfil no representa un cultivar nombrado y estas fuentes no establecen dimensiones adultas para interior ni separación entre pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",

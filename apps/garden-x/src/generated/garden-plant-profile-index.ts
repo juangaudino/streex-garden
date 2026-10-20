@@ -2697,15 +2697,15 @@ export const gardenPlantProfileCatalog = {
   },
   "fragrant-dwarf-dianthus-mix": {
     "summary": {
-      "en": "Dianthus compacto de flores mixtas. La compra confirma un tipo mini/mixto, pero Garden mantiene la especie exacta en espera hasta revisar el sobre recibido; Dianthus chinensis se usa solo como contexto, no como identidad canónica.",
-      "es": "Dianthus compacto de flores mixtas. Garden mantiene la especie exacta pendiente hasta revisar el sobre recibido; D. chinensis es solo contexto."
+      "en": "This catalog entry represents an unresolved mixed dwarf Dianthus type. D. chinensis is contextual evidence only and is not assigned as the canonical identity.",
+      "es": "Esta ficha representa una mezcla de Dianthus enana cuya especie exacta no está resuelta. D. chinensis es evidencia contextual y no se asigna como identidad canónica."
     },
     "metrics": {
       "en": [
         {
           "label": "Identity",
           "value": "Dianthus spp.",
-          "note": "Exact species pending packet"
+          "note": "Exact species unresolved"
         },
         {
           "label": "Use",
@@ -2722,7 +2722,7 @@ export const gardenPlantProfileCatalog = {
         {
           "label": "Identidad",
           "value": "",
-          "note": "Especie exacta pendiente del sobre"
+          "note": "Especie exacta no resuelta"
         },
         {
           "label": "Uso",
@@ -2766,14 +2766,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Deadheading can support repeat bloom in Dianthus context",
-          "guidance": "NC State notes deadheading and trimming after heavy bloom for D. chinensis. Apply this only after the actual plant matches that growth pattern; do not assume the purchased mix is D. chinensis yet.",
+          "guidance": "NC State notes deadheading and trimming after heavy bloom for D. chinensis. Apply this only if the observed plant matches that growth pattern; do not assume this catalog entry is D. chinensis.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Deadheading puede favorecer refloración en contexto Dianthus",
-          "guidance": "NC State recomienda retirar flores pasadas y recortar tras floración fuerte para D. chinensis; aplicar solo si la planta real coincide.",
+          "guidance": "NC State recomienda retirar flores pasadas y recortar tras una floración intensa para D. chinensis. Aplícalo solo si la planta observada coincide con ese patrón; no asumas que esta ficha corresponde a D. chinensis.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -2827,14 +2827,14 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [],
         "en": {
           "short": "No accepted exact hydro target yet",
-          "guidance": "OSU has a hydroponic carnation range, but this purchased dwarf Dianthus mix is not confirmed as a carnation cultivar. Garden therefore leaves EC/pH pending rather than collapsing genus and crop type.",
+          "guidance": "OSU has a hydroponic carnation range, but this unresolved dwarf Dianthus entry is not confirmed as a carnation cultivar. Garden therefore leaves EC/pH pending rather than collapsing genus and crop type.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Sin objetivo hidro exacto aceptado",
-          "guidance": "No usar el rango de clavel de OSU mientras esta mezcla de Dianthus no esté identificada a ese nivel.",
+          "guidance": "No uses el rango hidropónico de clavel de OSU: esta identidad enana de Dianthus no está confirmada como un cultivar de clavel.",
           "items": [],
           "avoid": "",
           "context": ""

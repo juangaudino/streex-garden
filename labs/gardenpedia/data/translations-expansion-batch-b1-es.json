@@ -63,11 +63,11 @@
     }
   },
   "fragrant-dwarf-dianthus-mix": {
-    "summary": "Dianthus compacto de flores mixtas. Garden mantiene la especie exacta pendiente hasta revisar el sobre recibido; D. chinensis es solo contexto.",
+    "summary": "Esta ficha representa una mezcla de Dianthus enana cuya especie exacta no está resuelta. D. chinensis es evidencia contextual y no se asigna como identidad canónica.",
     "metrics": [
       {
         "label": "Identidad",
-        "note": "Especie exacta pendiente del sobre"
+        "note": "Especie exacta no resuelta"
       },
       {
         "label": "Uso",
@@ -80,8 +80,8 @@
     ],
     "sections": {
       "germination": {
-        "short": "Tiempo específico pendiente del sobre",
-        "guidance": "No asignar una ventana precisa hasta resolver la identidad del mix comprado."
+        "short": "Tiempo específico de esta identidad no establecido",
+        "guidance": "No se ha establecido una ventana precisa de germinación para esta mezcla de identidad no resuelta. La propagación por semilla está documentada para D. chinensis, pero eso no resuelve esta ficha."
       },
       "thinning": {
         "short": "Ralea por vigor tras observar emergencia",
@@ -89,7 +89,7 @@
       },
       "pruning": {
         "short": "Deadheading puede favorecer refloración en contexto Dianthus",
-        "guidance": "NC State recomienda retirar flores pasadas y recortar tras floración fuerte para D. chinensis; aplicar solo si la planta real coincide."
+        "guidance": "NC State recomienda retirar flores pasadas y recortar tras una floración intensa para D. chinensis. Aplícalo solo si la planta observada coincide con ese patrón; no asumas que esta ficha corresponde a D. chinensis."
       },
       "harvest": {
         "short": "Flor ornamental; sin guía de cosecha alimentaria",
@@ -101,7 +101,7 @@
       },
       "hydroponics": {
         "short": "Sin objetivo hidro exacto aceptado",
-        "guidance": "No usar el rango de clavel de OSU mientras esta mezcla de Dianthus no esté identificada a ese nivel."
+        "guidance": "No uses el rango hidropónico de clavel de OSU: esta identidad enana de Dianthus no está confirmada como un cultivar de clavel."
       },
       "problems": {
         "short": "Evita saturación crónica de corona y raíz",

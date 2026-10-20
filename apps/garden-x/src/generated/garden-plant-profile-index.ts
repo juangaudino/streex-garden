@@ -67244,6 +67244,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54"
+        ],
+        "en": {
+          "short": "Leaf-topped stalks rise together from one crown",
+          "guidance": "Utah State Extension describes celery as leaf-topped stalks arranged in a cone and joined at a common base; the edible stalks are petioles, not separate stems. This profile represents stalk celery, not Chinese leaf celery or celeriac, whose harvested parts and growth forms differ. USU classifies celery as biennial, but does not provide a compact indoor size or system-clearance specification.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las pencas con hojas crecen juntas desde una corona común",
+          "guidance": "Utah State Extension describe el apio como pencas con hojas dispuestas en cono y unidas en una base común; las pencas comestibles son pecíolos, no tallos independientes. Este perfil representa apio de penca, no apio chino de hoja ni apionabo, cuyos órganos cosechados y formas de crecimiento difieren. USU clasifica el apio como bienal, pero no aporta dimensiones compactas para interior ni una especificación de espacio libre para sistemas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -67282,6 +67303,28 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Mantén húmedo el suelo de raíces superficiales; el calor y el frío prolongado afectan la calidad",
           "guidance": "USU aconseja riego profundo y regular porque el apio tiene raíces superficiales; el estrés hídrico puede volver las pencas fibrosas y de sabor más fuerte. Su guía regional da 55–65°F como rango ideal del cultivo, señala que varias semanas de frío pueden inducir floración y aconseja regar con más frecuencia por encima de 85°F para reducir estrés y fibra. Son referencias de cultivo exterior, no parámetros de un sistema interior. La fuente también advierte que cultivar superficialmente puede dañar las raíces.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54",
+          "osu-celery-wave54"
+        ],
+        "en": {
+          "short": "Prolonged cool exposure can trigger premature bolting",
+          "guidance": "USU notes that several weeks of cool exposure can prompt celery to flower; Oregon State reports that extended mean temperatures below 55°F, especially brief exposure below 45°F during transplant production, can predispose the crop to bolting, with varietal susceptibility differences. Treat these as regional crop-production warnings, not universal indoor thresholds or a forecast for this unspecified selection. A rising central seed stalk marks a shift away from the leafy-stalk harvest stage.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La exposición prolongada al frío puede provocar espigado prematuro",
+          "guidance": "USU señala que varias semanas de exposición al frío pueden inducir la floración del apio; Oregon State informa que temperaturas medias prolongadas por debajo de 55°F, especialmente exposiciones breves por debajo de 45°F durante la producción de trasplantes, pueden predisponer al cultivo al espigado, con diferencias de susceptibilidad entre variedades. Son advertencias regionales de producción del cultivo, no umbrales universales de interior ni un pronóstico para esta selección no especificada. Un tallo central con semillas marca el cambio respecto de la etapa de cosecha de pencas foliares.",
           "items": [],
           "avoid": "",
           "context": ""

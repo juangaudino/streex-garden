@@ -50383,7 +50383,7 @@ export const gardenPlantProfileCatalog = {
   "baby-rubber-plant-peperomia-obtusifolia": {
     "summary": {
       "en": "A compact tropical evergreen houseplant with glossy, fleshy, oval leaves. NC State Extension recommends bright indirect light and cautions that overwatering can yellow leaves and lead to root rot; leaf and stem cuttings are documented propagation methods.",
-      "es": "Planta de interior tropical compacta y siempreverde, con hojas ovaladas, carnosas y brillantes. NC State Extension recomienda luz indirecta brillante y advierte que el exceso de riego puede amarillear hojas y favorecer pudrición de raíz; documenta esquejes de hoja y tallo."
+      "es": "Planta de interior tropical compacta y siempreverde, con hojas ovaladas, carnosas y brillantes. NC State Extension recomienda luz indirecta brillante y advierte que el exceso de riego puede amarillear hojas y favorecer pudrición de raíz; documenta su propagación por esquejes de hoja y tallo."
     },
     "metrics": {
       "en": [],
@@ -50454,22 +50454,23 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
+      "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-peperomia-obtusifolia-wave33"
+          "ncsu-peperomia-obtusifolia-wave33",
+          "iastate-leaf-petiole-cuttings-2025"
         ],
         "en": {
-          "short": "Use leaf or stem cuttings for vegetative propagation",
-          "guidance": "NC State Extension lists leaf and stem cuttings as propagation strategies. The source does not provide a seed-starting protocol, so no seed germination claims are made.",
+          "short": "Leaf or stem cuttings; a leaf-petiole method is documented for peperomias",
+          "guidance": "NC State Extension lists leaf and stem cuttings for Peperomia obtusifolia. Iowa State's general houseplant guide identifies peperomias as suitable for leaf-petiole propagation: select a firm leaf, leave about 1–1½ inches of petiole, place it in a moist, airy rooting medium, and keep it warm, humid, and in bright indirect light. Iowa State reports roots in about 3–4 weeks and plantlets in 6–8 weeks for this method overall; those are group-level estimates, not a Peperomia obtusifolia timetable or guarantee. The method is vegetative and does not imply seed-starting instructions.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Propaga mediante esquejes de hoja o de tallo",
-          "guidance": "NC State Extension enumera esquejes de hoja y tallo como métodos de propagación. La fuente no proporciona protocolo de siembra, por lo que no se incluyen afirmaciones de germinación.",
+          "short": "Esquejes de hoja o tallo; hay un método general de esqueje foliar para peperomias",
+          "guidance": "NC State Extension enumera esquejes de hoja y tallo para Peperomia obtusifolia. La guía general de Iowa State identifica las peperomias como aptas para esquejes foliares con pecíolo: elige una hoja firme, deja unos 2.5–4 cm de pecíolo, colócala en un medio húmedo y aireado y mantenla cálida, húmeda y con luz indirecta brillante. Iowa State informa raíces en unas 3–4 semanas y nuevas plantas en 6–8 semanas para este método en general; son estimaciones grupales, no un calendario ni una garantía para Peperomia obtusifolia. Es propagación vegetativa, no una instrucción de germinación de semillas.",
           "items": [],
           "avoid": "",
           "context": ""

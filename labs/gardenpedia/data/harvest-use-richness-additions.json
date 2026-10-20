@@ -1,5 +1,29 @@
 {
   "sources": {
+    "usda-nrcs-sorghum-food-use-2026": {
+      "publisher": "USDA Natural Resources Conservation Service",
+      "title": "Sorghum (Sorghum bicolor L.) — Plant Guide",
+      "url": "https://www.nrcs.usda.gov/plantmaterials/azpmcpg11583.pdf",
+      "type": "extension"
+    },
+    "usda-fas-ethiopia-sorghum-food-2025": {
+      "publisher": "USDA Foreign Agricultural Service",
+      "title": "Grain and Feed Annual: Addis Ababa, Ethiopia (ET2025-0011)",
+      "url": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Grain+and+Feed+Annual_Addis+Ababa_Ethiopia_ET2025-0011.pdf",
+      "type": "government_agriculture_report"
+    },
+    "usda-ers-sorghum-feed-trade-2025": {
+      "publisher": "USDA Economic Research Service",
+      "title": "Despite fluctuations, U.S. sorghum exports address global demand for feed grain",
+      "url": "https://www.ers.usda.gov/data-products/charts-of-note/111306",
+      "type": "government_agriculture_report"
+    },
+    "unl-proso-millet-home-kitchen-2026": {
+      "publisher": "Nebraska Extension, University of Nebraska–Lincoln",
+      "title": "Millet Recipes for Home Kitchen (G2367)",
+      "url": "https://extensionpubs.unl.edu/publication/g2367/millet-recipes-for-home-kitchen",
+      "type": "extension"
+    },
     "mu-extension-buckwheat-grain-covercrop-2026": {
       "publisher": "University of Missouri Extension",
       "title": "Growing Buckwheat for Grain or Cover Crop Use",
@@ -929,6 +953,79 @@
     "osu-pnw548-winter-cress": {"publisher":"Oregon State University Extension Service; Washington State University Extension; University of Idaho Extension","title":"Winter vegetable production on small farms and gardens west of the Cascades (PNW 548) — Winter cress","url":"https://extension.oregonstate.edu/catalog/pnw-548-winter-vegetable-production-small-farms-gardens-west-cascades","type":"extension"}
   },
   "plants": {
+    "grain-sorghum-sorghum-bicolor": {
+      "edibleParts": {
+        "en": "Grain from cultivated grain-sorghum types; the catalog does not identify a particular hybrid or food-grade lot",
+        "es": "Grano de tipos cultivados de sorgo granífero; el catálogo no identifica un híbrido ni un lote específico de calidad alimentaria"
+      },
+      "bestUse": {
+        "en": "USDA NRCS describes sorghum as a global food grain, while USDA's 2025 Ethiopia report documents regional uses including injera, porridge and boiled grain. Those examples are crop- and region-scoped; USDA ERS notes that U.S. sorghum is primarily traded as feed grain. This profile does not identify its seed lot as food grade or provide a household processing protocol.",
+        "es": "USDA NRCS describe el sorgo como grano alimentario de uso mundial, mientras que el informe de USDA de 2025 sobre Etiopía documenta usos regionales como injera, gachas y grano hervido. Esos ejemplos corresponden a cultivos y regiones concretos; USDA ERS señala que el sorgo estadounidense se comercializa principalmente como grano forrajero. Esta ficha no identifica su lote de semilla como de calidad alimentaria ni ofrece un protocolo doméstico de procesamiento."
+      },
+      "quickUses": {
+        "en": ["Injera in the documented Ethiopian food context", "Porridge", "Boiled grain"],
+        "es": ["Injera en el contexto alimentario etíope documentado", "Gachas", "Grano hervido"]
+      },
+      "methods": [],
+      "safetyNote": {
+        "en": "Food uses are documented for grain sorghum generally and regionally, but this profile does not establish food-grade status for the represented seed lot or provide preparation instructions. Do not assume sowing seed is ready for food use.",
+        "es": "Los usos alimentarios están documentados para el sorgo granífero en general y en contextos regionales, pero esta ficha no establece la calidad alimentaria del lote representado ni ofrece instrucciones de preparación. No supongas que la semilla de siembra está lista para consumo."
+      },
+      "referenceSourceIds": [
+        "usda-nrcs-sorghum-food-use-2026",
+        "usda-fas-ethiopia-sorghum-food-2025",
+        "usda-ers-sorghum-feed-trade-2025"
+      ],
+      "culinaryStatus": "supported"
+    },
+    "proso-millet-panicum-miliaceum": {
+      "edibleParts": {
+        "en": "Hulled proso millet grain",
+        "es": "Grano descascarado de mijo proso"
+      },
+      "bestUse": {
+        "en": "Nebraska Extension's 2026 home-kitchen guide features proso millet in porridge, patties, polenta and pasta dishes. These are food uses of prepared grain; the publication does not give a home-scale process for harvesting, threshing or hulling a garden crop.",
+        "es": "La guía de Nebraska Extension de 2026 para la cocina doméstica presenta el mijo proso en gachas, tortitas, polenta y platos de pasta. Son usos alimentarios del grano preparado; la publicación no ofrece un proceso doméstico para cosechar, trillar o descascarar el cultivo del jardín."
+      },
+      "quickUses": {
+        "en": ["Porridge", "Millet patties", "Polenta-style dishes", "Proso-based pasta"],
+        "es": ["Gachas", "Tortitas de mijo", "Platos tipo polenta", "Pasta a base de proso"]
+      },
+      "methods": [
+        {
+          "id": "proso-millet-porridge-unl-2026",
+          "icon": "🥣",
+          "status": "good",
+          "title": {
+            "en": "Cook hulled proso millet as porridge",
+            "es": "Cocinar mijo proso descascarado como gachas"
+          },
+          "summary": {
+            "en": "Nebraska Extension's example rinses hulled millet, cooks it with about twice its volume of water, simmers briefly, then rests it covered; the source recipe is an example, not a universal grain ratio or timing guarantee.",
+            "es": "El ejemplo de Nebraska Extension enjuaga el mijo descascarado, lo cocina con aproximadamente el doble de su volumen de agua, lo hierve a fuego lento brevemente y luego lo deja reposar tapado; es una receta de ejemplo, no una proporción ni un tiempo universal garantizado."
+          },
+          "steps": {
+            "en": [
+              "Start with hulled proso millet intended for food and rinse it, as the guide's porridge example directs.",
+              "Follow a tested recipe for the specific grain product. Nebraska Extension's example uses about twice as much water as millet, simmers for roughly 5 minutes, then rests covered for about 10 minutes; product form and recipe can change the result.",
+              "The guide does not provide a home process for dehulling grain harvested from a garden or certify sowing seed for food use."
+            ],
+            "es": [
+              "Empieza con mijo proso descascarado destinado a consumo y enjuágalo, como indica el ejemplo de gachas de la guía.",
+              "Sigue una receta probada para el producto de grano específico. El ejemplo de Nebraska Extension usa aproximadamente el doble de agua que de mijo, cocina a fuego lento unos 5 minutos y luego reposa tapado unos 10 minutos; la forma del producto y la receta pueden cambiar el resultado.",
+              "La guía no ofrece un proceso doméstico para descascarar el grano cosechado en el jardín ni certifica la semilla de siembra para consumo."
+            ]
+          },
+          "sourceIds": ["unl-proso-millet-home-kitchen-2026"]
+        }
+      ],
+      "safetyNote": {
+        "en": "The cited home-kitchen recipes use hulled grain; they do not establish that seed sold for sowing is suitable for food or provide a home-scale post-harvest hulling process.",
+        "es": "Las recetas domésticas citadas usan grano descascarado; no establecen que la semilla vendida para siembra sea apta para consumo ni ofrecen un proceso doméstico de descascarado poscosecha."
+      },
+      "referenceSourceIds": ["unl-proso-millet-home-kitchen-2026"],
+      "culinaryStatus": "supported"
+    },
     "buckwheat-fagopyrum-esculentum": {
       "edibleParts": {
         "en": "Mature seeds; the hull is normally removed before the groats are used as food",

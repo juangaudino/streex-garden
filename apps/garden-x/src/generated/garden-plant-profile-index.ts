@@ -51576,8 +51576,8 @@ export const gardenPlantProfileCatalog = {
   },
   "flamingo-flower-anthurium-andraeanum": {
     "summary": {
-      "en": "A tropical epiphytic subshrub with showy ornamental inflorescences; Kew accepts Anthurium andraeanum, a species used in floral arrangements. NC State's cultivation page covers Anthurium broadly, so its care guidance is kept at genus scope rather than presented as species-specific measurements.",
-      "es": "Subarbusto epífito tropical de inflorescencias ornamentales llamativas; Kew acepta Anthurium andraeanum, especie utilizada en arreglos florales. La página de cultivo de NC State abarca Anthurium en general, por lo que sus recomendaciones se mantienen a nivel de género y no se presentan como medidas específicas de la especie."
+      "en": "A tropical epiphytic subshrub with showy ornamental inflorescences; Kew accepts Anthurium andraeanum. NC State's species page supports flower structure and color variation, while its separate genus care page is kept at genus scope rather than presented as species-specific measurements.",
+      "es": "Subarbusto epífito tropical de inflorescencias ornamentales llamativas; Kew acepta Anthurium andraeanum. La página de especie de NC State respalda la estructura y variación de sus flores, mientras que su guía separada del género se mantiene como referencia general de cuidados y no como medidas específicas de la especie."
     },
     "metrics": {
       "en": [],
@@ -51623,6 +51623,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Subarbusto epífito tropical siempreverde",
           "guidance": "El registro taxonómico aceptado de Kew describe Anthurium andraeanum como subarbusto epífito de biomas tropicales húmedos. La página más amplia de Anthurium de NC State describe gran variación de hábito y hojas dentro del género; por ello no se asignan a esta especie la altura y el ancho generales del género.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-anthurium-andraeanum-wave52"
+        ],
+        "en": {
+          "short": "Waxy spathes surround the spadix; repeat blooms depend on suitable conditions",
+          "guidance": "NC State's species profile describes a broad, waxy spathe around a creamy-yellow spadix bearing tiny flowers. Spathes may be red, pink, orange, white, or green; some cultivars are variegated, so no color is assigned to this unspecified selection. The profile reports inflorescences lasting up to four weeks and multiple blooms per year under proper conditions. It also notes that insufficient light or nutrient deficiencies can reduce flower production; these are possible care signals, not a diagnosis or a rebloom guarantee.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las espatas cerosas rodean el espádice; la repetición depende de las condiciones",
+          "guidance": "El perfil de especie de NC State describe una espata ancha y cerosa alrededor de un espádice amarillo crema con flores diminutas. Las espatas pueden ser rojas, rosadas, naranjas, blancas o verdes; algunos cultivares son variegados, por lo que no se asigna un color a esta selección sin identificar. La ficha informa que las inflorescencias pueden durar hasta cuatro semanas y que la planta puede florecer varias veces al año en condiciones adecuadas. También señala que la luz insuficiente o las deficiencias de nutrientes pueden reducir la producción floral; son posibles señales de manejo, no un diagnóstico ni una garantía de refloración.",
           "items": [],
           "avoid": "",
           "context": ""

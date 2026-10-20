@@ -6526,14 +6526,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Watch the few problems that change management",
+          "short": "Compacted soil, crowding, or uneven moisture can deform roots",
           "guidance": "Compacted, rocky or obstructed soil can cause forked or split roots, and drought or uneven moisture can reduce quality. Healthy tops with small roots can indicate crowding or excessive nitrogen. These are crop-level warning signs, not Nantes-specific disease or resistance claims; inspect the growing medium and growing history before diagnosing another cause.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Observa las señales que cambian el manejo",
+          "short": "La compactación, el hacinamiento o la humedad irregular pueden deformar raíces",
           "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Nantes; revisa el medio y el historial de cultivo antes de asignar otra causa.",
           "items": [],
           "avoid": "",

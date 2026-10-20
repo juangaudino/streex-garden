@@ -613,8 +613,8 @@
         "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Las larvas pueden perforar raíces; el follaje húmedo favorece manchas",
+        "guidance": "Utah State University Extension describe larvas de mosca de la chirivía como pequeños gusanos blancos que se alimentan de las raíces en desarrollo. También relaciona las manchas de tizón foliar con periodos prolongados de follaje húmedo. La podredumbre puede deteriorar o deformar las raíces. Son señales para observar, no un diagnóstico definitivo ni una recomendación de pesticida."
       },
       "pruning": {
         "short": "Manejo según porte y observación",
@@ -1072,8 +1072,8 @@
         "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
       },
       "problems": {
-        "short": "Observa las señales que cambian el manejo",
-        "guidance": "Vigila calor, humedad, hacinamiento y circulación de aire. Registra primero el síntoma y el contexto antes de asignar una causa."
+        "short": "Vigila agujeros en hojas, túneles en raíces y trastornos del cultivo",
+        "guidance": "UMN Extension enumera escarabajos pulga que dejan pequeños agujeros redondos en las hojas, larvas de mosca de la raíz que dañan raíces en desarrollo y enfermedades del grupo de cultivos, como manchas foliares por Alternaria, podredumbre negra y hernia de la col. Son señales y causas posibles, no un diagnóstico de una planta individual; confirma los síntomas y el contexto antes de elegir cómo manejar el problema."
       },
       "thinning": {
         "short": "Ralea según la forma de cosecha",

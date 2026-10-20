@@ -1,5 +1,11 @@
 {
   "sources": {
+    "mu-extension-buckwheat-grain-covercrop-2026": {
+      "publisher": "University of Missouri Extension",
+      "title": "Growing Buckwheat for Grain or Cover Crop Use",
+      "url": "https://extension.missouri.edu/publications/g4163",
+      "type": "extension"
+    },
     "usu-preserve-cherries-2026": {
       "publisher": "Utah State University Extension — Preserve the Harvest",
       "title": "How to Preserve Cherries",
@@ -923,6 +929,52 @@
     "osu-pnw548-winter-cress": {"publisher":"Oregon State University Extension Service; Washington State University Extension; University of Idaho Extension","title":"Winter vegetable production on small farms and gardens west of the Cascades (PNW 548) — Winter cress","url":"https://extension.oregonstate.edu/catalog/pnw-548-winter-vegetable-production-small-farms-gardens-west-cascades","type":"extension"}
   },
   "plants": {
+    "buckwheat-fagopyrum-esculentum": {
+      "edibleParts": {
+        "en": "Mature seeds; the hull is normally removed before the groats are used as food",
+        "es": "Semillas maduras; normalmente se retira la cáscara antes de usar el grano descascarado como alimento"
+      },
+      "bestUse": {
+        "en": "Missouri Extension describes buckwheat as a pseudocereal: its dehulled groats are used whole as kasha or milled into flour for pancakes and soba-style noodles. This is species-level food-use guidance, not a claim that every cover-crop or sowing-seed lot is food grade. The source's grain-harvest cues are field-scale and are not a household storage protocol.",
+        "es": "Missouri Extension describe el trigo sarraceno como un pseudocereal: sus granos descascarados se usan enteros como kasha o se muelen para harina destinada a panqueques y fideos tipo soba. Es una orientación de uso alimentario a nivel de especie, no una afirmación de que todo lote de cobertura o de siembra sea apto para consumo. Las señales de cosecha de grano de la fuente son de escala agrícola y no constituyen un protocolo doméstico de almacenamiento."
+      },
+      "quickUses": {
+        "en": ["Cook dehulled groats as kasha", "Use buckwheat flour in pancakes", "Buckwheat flour is also used for soba-style noodles"],
+        "es": ["Cocinar el grano descascarado como kasha", "Usar harina de trigo sarraceno en panqueques", "La harina de trigo sarraceno también se usa en fideos tipo soba"]
+      },
+      "methods": [
+        {
+          "id": "buckwheat-cook-dehulled-groats",
+          "icon": "🌾",
+          "status": "good",
+          "title": {
+            "en": "Cook dehulled groats as kasha",
+            "es": "Cocinar el grano descascarado como kasha"
+          },
+          "summary": {
+            "en": "Missouri Extension describes whole buckwheat groats cooked in water for about 20 minutes; dehulling is a separate processing step.",
+            "es": "Missouri Extension describe cocinar el grano entero descascarado en agua durante unos 20 minutos; retirar la cáscara es una etapa de procesamiento aparte."
+          },
+          "steps": {
+            "en": [
+              "Use dehulled groats; the Extension account says the hull is normally removed before buckwheat seed is used in food.",
+              "The source's kasha example simmers whole groats in water for about 20 minutes. It does not provide a home dehulling method or certify a garden sowing-seed lot for food use."
+            ],
+            "es": [
+              "Usa el grano descascarado; la guía de Extension indica que normalmente se retira la cáscara antes de usar la semilla de trigo sarraceno como alimento.",
+              "El ejemplo de kasha de la fuente cocina el grano entero en agua durante unos 20 minutos. No ofrece un método doméstico para retirar la cáscara ni certifica que un lote de siembra del jardín sea apto para consumo."
+            ]
+          },
+          "sourceIds": ["mu-extension-buckwheat-grain-covercrop-2026"]
+        }
+      ],
+      "safetyNote": {
+        "en": "The cited guide does not establish food-grade status for seed sold for sowing or a household grain-storage procedure.",
+        "es": "La guía citada no establece que la semilla vendida para siembra sea apta para consumo ni proporciona un procedimiento doméstico para almacenar el grano."
+      },
+      "referenceSourceIds": ["mu-extension-buckwheat-grain-covercrop-2026"],
+      "culinaryStatus": "supported"
+    },
     "rice-oryza-sativa": {
       "edibleParts": {"en":"Mature grain (rough rice/paddy; remove the hull before cooking)","es":"Grano maduro (arroz con cáscara; retirar la cáscara antes de cocinar)"},
       "bestUse": {"en":"Rice is used as a food grain after post-harvest processing. FAO describes rough rice, dehulling to brown rice, milling and home preparation; this species-level profile does not assign a grain type, flavor, cooking time, or storage life.","es":"El arroz se utiliza como grano alimentario después del procesamiento poscosecha. La FAO describe el arroz con cáscara, su descascarado para obtener arroz integral, la molienda y la preparación doméstica; esta ficha a nivel de especie no asigna tipo de grano, sabor, tiempo de cocción ni duración de almacenamiento."},

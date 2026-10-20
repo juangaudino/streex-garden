@@ -45,11 +45,11 @@
     "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
     "type": "botanical_taxonomy",
     "tier": 1,
-    "scope": "Accepted species identity and taxonomic context for mung bean; no cultivar-specific cultivation claims",
-    "accessed": "2026-10-16",
+    "scope": "Accepted species identity and taxonomy; Kew's included Flora descriptions also support species-level habit and reproductive morphology, not cultivar-specific traits, flowering schedules, or garden-production instructions",
+    "accessed": "2026-10-20",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": ["identity", "taxonomy", "growth", "flowering"]
   },
   {
     "id": "uaex-mungbeans-wave25",

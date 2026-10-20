@@ -45814,6 +45814,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-vigna-radiata-wave25"
+        ],
+        "en": {
+          "short": "Axillary clusters of greenish-yellow flowers precede the pods",
+          "guidance": "Kew's Flora-based species description records axillary inflorescences with several flowers (reported range 4 to about 25) and a greenish-yellow flower standard. The page describes Vigna radiata morphology, not a garden cultivar or flowering schedule. Flowering followed by pod development is a normal reproductive stage; no pollination intervention or crop-timing rule is established by this source.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Racimos axilares de flores verde-amarillentas preceden a las vainas",
+          "guidance": "La descripción de Flora incluida por Kew registra inflorescencias axilares con varias flores (rango indicado de 4 a cerca de 25) y una corola amarillo-verdosa. La página describe la morfología de Vigna radiata, no un cultivar de jardín ni un calendario de floración. La floración seguida de formación de vainas es una etapa reproductiva normal; esta fuente no establece intervención de polinización ni reglas de calendario del cultivo.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "harvest": {
         "evidenceType": "source_backed",
         "confidence": "high",

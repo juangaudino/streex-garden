@@ -308,8 +308,8 @@
         "guidance": "NC State Extension identifica el anís como Pimpinella anisum, de la familia Apiaceae. PROSEA distingue esta hierba culinaria de los árboles de anís estrellado del género Illicium y de selecciones de hinojo llamadas a veces anís. Este registro representa la especie, no un cultivar nombrado."
       },
       "growth": {
-        "short": "Anual erecta, con hojas divididas, flores pequeñas y frutos tipo semilla",
-        "guidance": "NC State Extension describe follaje verde fragante y flores pequeñas blancas en verano. PROSEA detalla hojas inferiores lobuladas y hojas superiores más divididas, flores pequeñas en umbelas compuestas y frutos ovoides usados como especia. El tamaño adulto publicado varía: University of Maryland Extension indica aproximadamente 1½–2 ft, mientras PROSEA da un rango típico de 15–50 cm con ejemplares excepcionalmente más altos; no se asigna un tamaño único ni una altura fija para interior."
+        "short": "Anual erecta, con follaje aromático y frutos ovoides",
+        "guidance": "NC State Extension describe follaje verde fragante. PROSEA detalla hojas inferiores lobuladas y hojas superiores más divididas, con frutos ovoides usados como especia. El tamaño adulto publicado varía: University of Maryland Extension indica aproximadamente 1½–2 ft, mientras PROSEA da un rango típico de 15–50 cm con ejemplares excepcionalmente más altos; no se asigna un tamaño único ni una altura fija para interior."
       },
       "cultivation": {
         "short": "Pleno sol y suelo bien drenado documentados; sistema no establecido",
@@ -322,6 +322,10 @@
       "care": {
         "short": "Permite un inicio lento; sostén las copas cargadas si se inclinan",
         "guidance": "PROSEA informa un desarrollo inicial lento y señala que las copas maduras pueden cargarse de frutos y quizá requieran soporte. Son observaciones de producción agrícola, no una obligación ni una prescripción para sistemas interiores; coloca soporte solo si la planta establecida se inclina."
+      },
+      "flowering": {
+        "short": "Flores pequeñas y pálidas en verano; hay poca evidencia sobre polinización de la semilla",
+        "guidance": "NC State Extension describe flores pequeñas blancas en verano; el manual de polinización de cultivos del USDA Agricultural Research Service describe umbelas sueltas amarillo blanquecinas y floración a finales del verano, unos tres meses después de una siembra primaveral, dentro de su contexto de cultivo templado. El manual indica que hay poca evidencia directa que vincule los agentes polinizadores con la producción de semilla de anís y no recomienda una práctica concreta; solo sugiere que la visita de insectos podría beneficiar el rendimiento. Considera regional el calendario y no supongas que el anís requiere polinización manual ni un sistema específico para atraer polinizadores."
       }
     }
   },

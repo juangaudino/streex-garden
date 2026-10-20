@@ -1462,8 +1462,8 @@
         "sourceIds": ["ncsu-pimpinella-anisum-wave4", "prosea-pimpinella-anisum-2016"]
       },
       "growth": {
-        "short": "Erect annual with divided leaves, small flowers, and seed-like fruits",
-        "guidance": "NC State Extension describes fragrant green foliage and small white summer flowers. PROSEA details lower leaves that are lobed and upper leaves that become more divided, with small flowers in compound umbels and ovoid fruits used as spice. Reported mature size differs by source: University of Maryland Extension gives about 1½–2 ft, while PROSEA describes a typical 15–50 cm range with taller exceptional plants; no single cultivar or fixed indoor height is assigned.",
+        "short": "Erect annual with aromatic, increasingly divided foliage and ovoid fruits",
+        "guidance": "NC State Extension describes fragrant green foliage. PROSEA details lower leaves that are lobed and upper leaves that become more divided, with ovoid fruits used as spice. Reported mature size differs by source: University of Maryland Extension gives about 1½–2 ft, while PROSEA describes a typical 15–50 cm range with taller exceptional plants; no single cultivar or fixed indoor height is assigned.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["ncsu-pimpinella-anisum-wave4", "umd-anise-pimpinella-2023", "prosea-pimpinella-anisum-2016"]
@@ -1488,6 +1488,13 @@
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["prosea-pimpinella-anisum-2016"]
+      },
+      "flowering": {
+        "short": "Small pale flowers appear in summer; seed-pollination evidence is limited",
+        "guidance": "NC State Extension describes small white summer flowers; USDA Agricultural Research Service's crop-pollination handbook describes loose yellowish-white umbels, with late-summer bloom about three months after spring sowing in its temperate crop context. The handbook says direct evidence linking pollinating agents to anise seed production is scarce and gives no pollination practice recommendation; it only suggests insect visitation may benefit seed yield. Treat bloom timing as regional, and do not assume anise requires hand pollination or a specific pollinator setup.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["ncsu-pimpinella-anisum-wave4", "usda-ars-anise-pollination-handbook-2008"]
       }
     },
     "compatibilityProfile": {

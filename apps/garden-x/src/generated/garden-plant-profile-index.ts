@@ -23782,15 +23782,15 @@ export const gardenPlantProfileCatalog = {
           "prosea-pimpinella-anisum-2016"
         ],
         "en": {
-          "short": "Erect annual with divided leaves, small flowers, and seed-like fruits",
-          "guidance": "NC State Extension describes fragrant green foliage and small white summer flowers. PROSEA details lower leaves that are lobed and upper leaves that become more divided, with small flowers in compound umbels and ovoid fruits used as spice. Reported mature size differs by source: University of Maryland Extension gives about 1½–2 ft, while PROSEA describes a typical 15–50 cm range with taller exceptional plants; no single cultivar or fixed indoor height is assigned.",
+          "short": "Erect annual with aromatic, increasingly divided foliage and ovoid fruits",
+          "guidance": "NC State Extension describes fragrant green foliage. PROSEA details lower leaves that are lobed and upper leaves that become more divided, with ovoid fruits used as spice. Reported mature size differs by source: University of Maryland Extension gives about 1½–2 ft, while PROSEA describes a typical 15–50 cm range with taller exceptional plants; no single cultivar or fixed indoor height is assigned.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Anual erecta, con hojas divididas, flores pequeñas y frutos tipo semilla",
-          "guidance": "NC State Extension describe follaje verde fragante y flores pequeñas blancas en verano. PROSEA detalla hojas inferiores lobuladas y hojas superiores más divididas, flores pequeñas en umbelas compuestas y frutos ovoides usados como especia. El tamaño adulto publicado varía: University of Maryland Extension indica aproximadamente 1½–2 ft, mientras PROSEA da un rango típico de 15–50 cm con ejemplares excepcionalmente más altos; no se asigna un tamaño único ni una altura fija para interior.",
+          "short": "Anual erecta, con follaje aromático y frutos ovoides",
+          "guidance": "NC State Extension describe follaje verde fragante. PROSEA detalla hojas inferiores lobuladas y hojas superiores más divididas, con frutos ovoides usados como especia. El tamaño adulto publicado varía: University of Maryland Extension indica aproximadamente 1½–2 ft, mientras PROSEA da un rango típico de 15–50 cm con ejemplares excepcionalmente más altos; no se asigna un tamaño único ni una altura fija para interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -23859,6 +23859,28 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Permite un inicio lento; sostén las copas cargadas si se inclinan",
           "guidance": "PROSEA informa un desarrollo inicial lento y señala que las copas maduras pueden cargarse de frutos y quizá requieran soporte. Son observaciones de producción agrícola, no una obligación ni una prescripción para sistemas interiores; coloca soporte solo si la planta establecida se inclina.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-pimpinella-anisum-wave4",
+          "usda-ars-anise-pollination-handbook-2008"
+        ],
+        "en": {
+          "short": "Small pale flowers appear in summer; seed-pollination evidence is limited",
+          "guidance": "NC State Extension describes small white summer flowers; USDA Agricultural Research Service's crop-pollination handbook describes loose yellowish-white umbels, with late-summer bloom about three months after spring sowing in its temperate crop context. The handbook says direct evidence linking pollinating agents to anise seed production is scarce and gives no pollination practice recommendation; it only suggests insect visitation may benefit seed yield. Treat bloom timing as regional, and do not assume anise requires hand pollination or a specific pollinator setup.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Flores pequeñas y pálidas en verano; hay poca evidencia sobre polinización de la semilla",
+          "guidance": "NC State Extension describe flores pequeñas blancas en verano; el manual de polinización de cultivos del USDA Agricultural Research Service describe umbelas sueltas amarillo blanquecinas y floración a finales del verano, unos tres meses después de una siembra primaveral, dentro de su contexto de cultivo templado. El manual indica que hay poca evidencia directa que vincule los agentes polinizadores con la producción de semilla de anís y no recomienda una práctica concreta; solo sugiere que la visita de insectos podría beneficiar el rendimiento. Considera regional el calendario y no supongas que el anís requiere polinización manual ni un sistema específico para atraer polinizadores.",
           "items": [],
           "avoid": "",
           "context": ""

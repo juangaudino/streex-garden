@@ -98,7 +98,7 @@
     "accessed": "2026-10-17",
     "license": null,
     "provenance": "Gardenpedia Labs profile enrichment research",
-    "claimKinds": ["identity", "growth", "cultivation", "harvest", "uses"]
+    "claimKinds": ["identity", "growth", "flowering", "cultivation", "harvest", "uses"]
   },
   {
     "id": "umd-anise-pimpinella-2023",
@@ -255,5 +255,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs targeted Plant Profile completion review",
     "claimKinds": ["harvest", "uses"]
+  },
+  {
+    "id": "usda-ars-anise-pollination-handbook-2008",
+    "publisher": "USDA Agricultural Research Service",
+    "title": "Insect Pollination of Cultivated Crop Plants — Anise",
+    "url": "https://www.ars.usda.gov/arsuserfiles/20220500/onlinepollinationhandbook.pdf",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "USDA ARS handbook chapter specifically about Pimpinella anisum: temperate-crop flowering description and cautious discussion of insect pollination. The chapter states that direct evidence linking pollinating agents to anise seed production is scarce and gives no pollination practice recommendation; its possible yield benefit is explicitly tentative, not proof that insects are required or a household pollination prescription.",
+    "accessed": "2026-10-20",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted Plant Profile completion review",
+    "claimKinds": ["flowering"]
   }
 ]

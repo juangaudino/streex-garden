@@ -456,41 +456,6 @@
         }
       }
     },
-    "fiddle-leaf-fig-ficus-lyrata": {
-      "wave": 17,
-      "sections": {
-        "identity": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "cultivation": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "growth": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "propagation": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        },
-        "problems": {
-          "context": {
-            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
-            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
-          }
-        }
-      }
-    },
     "wax-plant-hoya-carnosa": {
       "wave": 17,
       "sections": {

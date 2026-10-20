@@ -40960,6 +40960,48 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ficus-lyrata-500"
+        ],
+        "en": {
+          "short": "Flowering and fruiting are rare indoors",
+          "guidance": "NC State reports that fiddle-leaf fig rarely flowers or fruits as a houseplant. A lack of indoor flowers or figs is therefore ordinary for this use; the source does not set a bloom schedule or promise fruiting in a home.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La floración y fructificación son raras en interiores",
+          "guidance": "NC State informa que el ficus lira rara vez florece o fructifica como planta de interior. Por eso, que no produzca flores ni higos en casa es normal; la fuente no establece un calendario de floración ni promete fructificación doméstica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ficus-lyrata-500"
+        ],
+        "en": {
+          "short": "Prune as needed; protect skin from milky sap",
+          "guidance": "NC State describes this as a relatively low-maintenance houseplant that may be pruned as needed. Its milky sap can irritate skin, so the source recommends gloves when pruning or propagating. It does not prescribe a season, amount, or shaping schedule.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Poda según sea necesario; protege la piel de la savia",
+          "guidance": "NC State describe esta planta de interior como de mantenimiento relativamente bajo y señala que puede podarse cuando sea necesario. Su savia lechosa puede irritar la piel, por lo que la fuente recomienda usar guantes al podar o propagar. No prescribe estación, intensidad ni calendario de poda.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",

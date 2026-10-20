@@ -27,7 +27,7 @@ The original 41-record snapshot was loaded from:
 - `data/plants-expansion-batch-a1.json`
 - `data/plants-expansion-batch-b1.json`
 
-The base Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration. Its internal version is `0.2`; the file contains 66 plant records. The Gardenpedia adapter also merges `data/harvest-use-richness-additions.json` (311 identities, with eight overlaps), so **369 unique public Plant identities currently have a Harvest Use record in the app**. The 501-row Plant Profile inventory now marks the same 369 identities as covered; a direct ID-set comparison found no unmatched Harvest Use records or inventory flags. This is record coverage, not a claim that all remaining identities need food-use methods: ornamental, toxic, or otherwise inapplicable records may correctly have no method card.
+The base Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration. Its internal version is `0.2`; the file contains 67 plant records. The Gardenpedia adapter also merges `data/harvest-use-richness-additions.json` (320 identities, with 18 overlaps), so **369 unique public Plant identities currently have a Harvest Use record in the app**. The 501-row Plant Profile inventory marks the same 369 identities as covered; a direct ID-set comparison found no unmatched Harvest Use records or inventory flags. This is record coverage, not a claim that all remaining identities need food-use methods: ornamental, toxic, or otherwise inapplicable records may correctly have no method card.
 
 ## Evidence additions
 

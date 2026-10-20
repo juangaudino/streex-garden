@@ -4656,7 +4656,7 @@
   "catalogCoverage": {
     "version": "0.2",
     "expectedPlantCount": 501,
-    "coveredPlantCount": 372,
-    "rule": "This is an in-progress coverage audit, not a complete-catalog claim: 372 of 501 published Plant identities currently have Harvest Use records across the base catalog and additive enrichment layer. Methods appear only when supported and useful; ornamental/identity-sensitive records may intentionally have no preservation methods."
+    "coveredPlantCount": 373,
+    "rule": "This is an in-progress coverage audit, not a complete-catalog claim: 373 of 501 published Plant identities currently have Harvest Use records across the base catalog and additive enrichment layer. Methods appear only when supported and useful; ornamental/identity-sensitive records may intentionally have no preservation methods."
   }
 }

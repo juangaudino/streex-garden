@@ -1037,6 +1037,28 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(spanish.safetyNote).toMatch(/envasadora a presión/i);
   });
 
+  it("keeps flax seed/oil food use conditional and separate from fiber flax in EN/ES", () => {
+    const entry = findCanonicalEntry("flax-linum-usitatissimum")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse!;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse!;
+
+    expect(english.ediblePart).toMatch(/does not specify seed\/oil versus fiber type/i);
+    expect(english.bestUse).toMatch(/not.*food-grade/i);
+    expect(english.options).toHaveLength(1);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/produced and labeled for food/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/low smoke point \(225°F\)/i);
+    expect(english.safetyNote).toMatch(/large quantities.*minor contact irritation/i);
+    expect(english.options[0]?.sources.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://cropsandsoils.extension.wisc.edu/flax/",
+        "https://plants.ces.ncsu.edu/plants/linum-usitatissimum/common-name/flax/",
+      ]),
+    );
+    expect(spanish.ediblePart).toMatch(/no especifica si el tipo es de semilla\/aceite o de fibra/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/producidos y etiquetados para consumo/i);
+    expect(spanish.safetyNote).toMatch(/grandes cantidades.*irritación leve por contacto/i);
+  });
+
   it("renders bean and pea Harvest Use bilingually without collapsing their crop classes", () => {
     const ids = [
       "bush-bean-blue-lake",

@@ -65980,6 +65980,27 @@ export const gardenPlantProfileCatalog = {
           "avoid": "",
           "context": ""
         }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-black-chokeberry-wave52"
+        ],
+        "en": {
+          "short": "White spring flowers, autumn color and fruit that may persist",
+          "guidance": "UMN describes showy white flower clusters about 2–3 inches across with pink anthers in spring. The deciduous foliage changes from green to red, orange and purple in autumn; dark fruit may persist into winter and feed wildlife. These are seasonal cues from UMN's Minnesota species profile, not fixed dates or traits assigned to an unnamed cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Flores blancas de primavera, color otoñal y frutos que pueden persistir",
+          "guidance": "La Extensión de Minnesota describe racimos vistosos de flores blancas de unos 5–8 cm, con anteras rosadas, en primavera. El follaje caducifolio cambia del verde a tonos rojos, naranjas y morados en otoño; los frutos oscuros pueden persistir hasta el invierno y alimentar a la fauna. Son señales estacionales del perfil de especie de Minnesota, no fechas fijas ni rasgos asignados a un cultivar sin identificar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
       }
     }
   },

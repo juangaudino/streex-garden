@@ -62727,8 +62727,8 @@ export const gardenPlantProfileCatalog = {
   },
   "moss-rose-portulaca-grandiflora": {
     "summary": {
-      "en": "A low-growing, heat- and drought-tolerant ornamental succulent annual, distinct from common purslane (Portulaca oleracea). Human food-use sources conflict: NC State lists flowers and seeds as edible, while UF/IFAS says moss rose is not edible. Gardenpedia makes no food-use recommendation while this remains unresolved.",
-      "es": "Una anual ornamental suculenta, baja y tolerante al calor y la sequía, distinta de la verdolaga común (Portulaca oleracea). Las fuentes discrepan sobre su uso alimentario humano: NC State incluye flores y semillas como comestibles, mientras que UF/IFAS afirma que la rosa de musgo no es comestible. Gardenpedia no recomienda su consumo mientras no se resuelva esta discrepancia."
+      "en": "A low-growing, heat- and drought-tolerant ornamental succulent annual, distinct from common purslane (Portulaca oleracea). Institutional sources disagree about human food use, so Gardenpedia treats this identity as ornamental and does not recommend consumption; this is a cautious editorial policy, not a claim of human toxicity.",
+      "es": "Una anual ornamental suculenta, baja y tolerante al calor y la sequía, distinta de la verdolaga común (Portulaca oleracea). Las fuentes institucionales discrepan sobre su uso alimentario humano; por eso Gardenpedia la trata como ornamental y no recomienda consumirla. Es una política editorial prudente, no una afirmación de toxicidad humana."
     },
     "metrics": {
       "en": [],
@@ -62842,46 +62842,23 @@ export const gardenPlantProfileCatalog = {
         }
       },
       "uses": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+        "evidenceType": "garden_adaptation",
+        "confidence": "high",
         "sourceIds": [
           "ncsu-portulaca-grandiflora-wave49",
           "wisc-moss-rose-edible-seeds-wave49",
           "ufifas-moss-rose-edibility-conflict-2026"
         ],
         "en": {
-          "short": "Human food-use evidence conflicts; no consumption guidance is published",
-          "guidance": "NC State's species profile lists P. grandiflora flowers and seeds as edible, and Wisconsin Extension says its seeds may be eaten raw or cooked. A 2026 UF/IFAS Charlotte County article says moss rose (P. grandiflora) is not edible and distinguishes it from edible common purslane (P. oleracea). These sources conflict; Gardenpedia does not recommend consuming moss rose or treat the animal-toxicity note as proof of human toxicity.",
+          "short": "Ornamental use; Gardenpedia does not recommend consumption",
+          "guidance": "NC State's species profile lists P. grandiflora flowers and seeds as edible, and Wisconsin Extension says its seeds may be eaten raw or cooked. A 2026 UF/IFAS Charlotte County article says moss rose (P. grandiflora) is not edible and distinguishes it from edible common purslane (P. oleracea). Because these institutional sources conflict and no preparation guidance resolves the disagreement, Gardenpedia makes no food-use recommendation for this ornamental identity. This precaution does not establish human toxicity; the UF/IFAS pet-toxicity note is not generalized to people.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Las fuentes discrepan sobre el uso alimentario humano; no se publica una recomendación de consumo",
-          "guidance": "La ficha de NC State para P. grandiflora incluye flores y semillas como comestibles, y Wisconsin Extension indica que sus semillas pueden comerse crudas o cocidas. Un artículo de UF/IFAS Charlotte County de 2026 afirma que la rosa de musgo (P. grandiflora) no es comestible y la distingue de la verdolaga común (P. oleracea), que sí se cultiva como alimento. Las fuentes discrepan; Gardenpedia no recomienda consumir la rosa de musgo ni toma la nota sobre toxicidad para animales como prueba de toxicidad humana.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "needsValidation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [
-          "ncsu-portulaca-grandiflora-wave49",
-          "wisc-moss-rose-edible-seeds-wave49",
-          "ufifas-moss-rose-edibility-conflict-2026"
-        ],
-        "en": {
-          "short": "Do not infer human edibility while authoritative sources conflict",
-          "guidance": "The species is represented as Portulaca grandiflora, but institutional references disagree about food use: NC State lists flowers and seeds as edible, Wisconsin Extension lists seeds as edible, and UF/IFAS Charlotte County says moss rose is not edible. Keep this ornamental profile without a Harvest Use recommendation until the conflict is resolved; the UF/IFAS report of toxicity to pets does not establish human toxicity.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "No inferir comestibilidad humana mientras haya desacuerdo entre fuentes",
-          "guidance": "La ficha representa Portulaca grandiflora, pero las referencias institucionales discrepan sobre su uso alimentario: NC State incluye flores y semillas como comestibles, Wisconsin Extension incluye sus semillas, y UF/IFAS Charlotte County afirma que la rosa de musgo no es comestible. Mantén este perfil ornamental sin recomendación de Harvest Use hasta resolver el desacuerdo; el informe de UF/IFAS sobre toxicidad para mascotas no establece toxicidad humana.",
+          "short": "Uso ornamental; Gardenpedia no recomienda su consumo",
+          "guidance": "La ficha de NC State para P. grandiflora incluye flores y semillas como comestibles, y Wisconsin Extension indica que sus semillas pueden comerse crudas o cocidas. Un artículo de UF/IFAS Charlotte County de 2026 afirma que la rosa de musgo (P. grandiflora) no es comestible y la distingue de la verdolaga común (P. oleracea), que sí se cultiva como alimento. Como estas fuentes institucionales discrepan y ninguna pauta de preparación resuelve el desacuerdo, Gardenpedia no recomienda su consumo en esta identidad ornamental. Esta precaución no establece toxicidad humana; la nota de UF/IFAS sobre mascotas no se generaliza a las personas.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -2085,3 +2085,18 @@ Kew supports the annual-or-subshrub life-form description as well as taxonomy,
 while its listed species-height range remains intentionally unassigned because
 the page notes cultivar variation. No cultivar-specific basil dimensions were
 introduced.
+
+In the 2026-10-21 follow-up review, Moss Rose (*Portulaca grandiflora*) remains
+explicitly unresolved for human edibility: NC State and Wisconsin Extension
+list food-use claims, while UF/IFAS says the ornamental is not edible without
+establishing a human-toxicity mechanism. Because this catalog identity is an
+ornamental profile and no food use is represented, Gardenpedia now expresses
+its high-confidence editorial precaution not to recommend consumption as a
+`garden_adaptation`, while preserving the source conflict and not claiming
+human toxicity. This closes the ornamental Plant Profile gate without claiming
+the edibility question itself is scientifically resolved. The inventory is
+now 495 complete, 3 partial, and 3 pending. The six remaining records are
+Alaska Nasturtium, Cassava, Fragrant Dwarf Dianthus Mix, Italian Oregano,
+Jolly Jester Marigold, and White Carolina Pineberry; their specific identity,
+type, or material cultivation/safety conflicts remain open and were not
+cosmetically promoted.

@@ -272,6 +272,10 @@
       }
     ],
     "sections": {
+      "identity": {
+        "short": "Cultivar day-neutral de fresa de jardín desarrollado por UC Davis",
+        "guidance": "UC Davis identifica a Monterey como un cultivar day-neutral de Fragaria × ananassa, publicado en 2008. Esta evidencia corresponde a identidad y cultivar; la orientación de huerto y las observaciones hidropónicas del resto de la ficha conservan sus propios alcances. La fuente de identidad no establece dimensiones adultas de la planta."
+      },
       "cultivation": {
         "short": "Pleno sol, suelo drenado y humedad regular en huertos",
         "guidance": "UMN Extension recomienda pleno sol para lograr la máxima fructificación de la fresa, suelo bien drenado y humedad regular en camas de huerto. Son recomendaciones para suelo exterior en Minnesota; no establecen nivel de luz interior, receta hidropónica ni distancia específica de Monterey."

@@ -268,5 +268,18 @@
     "license": null,
     "provenance": "Gardenpedia Labs targeted Plant Profile completion review",
     "claimKinds": ["flowering"]
+  },
+  {
+    "id": "wcs-tip-top-alaska-mix-2026",
+    "publisher": "West Coast Seeds",
+    "title": "Tip Top Alaska Mix Nasturtium Seeds",
+    "url": "https://www.westcoastseeds.com/products/tip-top-alaska-mix",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Product-specific evidence for West Coast Seeds' Tip Top Alaska Mix. The product description names Tropaeolum majus, while the detailed Latin field lists T. majus & T. minus; supports the inconsistent taxonomic labeling on that product page only and does not identify Gardenpedia's unspecified Alaska seed line or establish universal cultivar traits.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile identity-conflict review",
+    "claimKinds": ["identity", "cultivar"]
   }
 ]

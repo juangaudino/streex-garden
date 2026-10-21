@@ -83,6 +83,10 @@
   },
   "watercress": {
     "summary": "El berro de agua (Nasturtium officinale) es una planta perenne acuática cultivada por sus hojas y brotes picantes. Requiere raíces constantemente mojadas o agua poco profunda; las instrucciones de recipiente no prueban compatibilidad con hidroponía recirculante cerrada.",
+    "metrics": [
+      {"label":"Señal de calor y sabor","value":"El sabor disminuye sobre unos 85 °F","note":"Observación regional de Utah State Extension; no es un punto de ajuste para interior"},
+      {"label":"Corte exterior para rebrote","value":"Aprox. 4 pulg","note":"Método exterior de cosecha de USU; no es una altura universal ni garantiza rebrote hidropónico"}
+    ],
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -92,7 +96,7 @@
       "cultivation": {"short":"Mantén la raíz saturada o en agua poco profunda y móvil","guidance":"USU indica que crece mejor en suelo saturado y rico en materia orgánica o en agua sumergida/poco profunda en movimiento. Describe cultivo en recipiente con la maceta siempre mojada dentro de un plato o cubeta con agua. Estos métodos exteriores no prueban seguridad ni rendimiento en un sistema hidropónico cerrado de Garden."},
       "care": {"short":"No dejes secar el sustrato; renueva el agua estancada con frecuencia","guidance":"Para el método en cubeta, USU recomienda mantener 5–8 cm de agua alrededor de la maceta para conservar mojado el sustrato y sumergir las raíces, y cambiar el agua una o dos veces por semana. Es el método exterior de recipiente de la fuente, no un calendario general de recirculación."},
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "Corta hasta unos 10 cm para favorecer el rebrote exterior",
         "guidance": "USU describe cortar la planta hasta unos 10 cm para que rebrote y permitir una cosecha posterior. Aplica solo como método exterior de berro de agua descrito por la fuente; no garantiza rebrote uniforme en cualquier ambiente."
       },
       "harvest": {
@@ -104,7 +108,7 @@
         "guidance": "USU enumera mosca blanca, ácaros y caracoles entre las plagas comunes; describe insectos bajo las hojas y punteado, decoloración o quemado en hojas por ácaros. También desaconseja recolectar berro silvestre por riesgo de contaminación. Confirma la plaga y la seguridad del agua antes de intervenir o cosechar."
       },
       "thinning": {
-        "short": "La separación exterior de trasplantes no es separación de pods",
+        "short": "No conviertas los 20 cm de exterior en separación de pods",
         "guidance": "USU indica 20 cm entre trasplantes en sus instrucciones de jardín exterior. Esa distancia de hilera/cama no debe usarse como intervalo de pods ni capacidad de un recipiente hidropónico."
       }
     }
@@ -864,31 +868,31 @@
     }
   },
   "red-acre-cabbage": {
-    "summary": "Red Acre se cataloga como una identidad nombrada de col roja Brassica oleracea. La guía general de la col respalda consejos útiles de cultivo y cosecha; no demuestra tamaño, madurez ni rendimiento específicos del cultivar.",
+    "summary": "Red Acre es un cultivar nombrado de col roja de polinización abierta, Brassica oleracea. University of Arkansas Extension indica unos 75 días hasta la madurez y una cabeza roja de tres libras; Fedco describe plantas compactas con cabezas de 3–5 lb y hasta unas 7 pulgadas. Son descripciones de fuentes y contextos distintos, no resultados garantizados. Cultívala como col de estación fresca, mantén la humedad estable y cosecha las cabezas firmes antes de que se agrieten.",
     "sections": {
       "identity": {
-        "short": "Red Acre, identidad nombrada de col dentro de Brassica oleracea",
-        "guidance": "Se conserva el nombre Red Acre, pero la fuente de cultivo citada es general para la col y no demuestra rasgos del cultivar. No se infieren tamaño, fecha de madurez ni resistencia a enfermedades."
+        "short": "Red Acre es un cultivar nombrado de col roja de polinización abierta",
+        "guidance": "Fedco registra Red Acre como col Brassica oleracea (capitata group) de polinización abierta. University of Arkansas Extension también incluye Red Acre en su tabla de cultivares. Esto respalda la identidad varietal nombrada, pero las medidas que siguen son descripciones propias de cada fuente y contexto de cultivo."
       },
       "growth": {
-        "short": "Col roja formadora de cabeza; no hay medidas de Red Acre verificadas aquí",
-        "guidance": "UMN Extension describe cabezas de col hechas de hojas superpuestas y señala que su forma varía. La guía no establece dimensiones, intensidad de color ni madurez exactas de Red Acre, por lo que esos valores quedan sin definir."
+        "short": "Plantas compactas; las fuentes describen cabezas rojas de unos 3 lb a 3–5 lb",
+        "guidance": "La tabla de cultivares de University of Arkansas Extension indica para Red Acre 75 días hasta la madurez y una cabeza roja de tres libras. La ficha actual de semillas de Fedco describe una planta compacta y cabezas de 3–5 lb de hasta unas 7 pulgadas de diámetro. Los pesos difieren ligeramente y son descripciones de fuente, no una garantía para cada lote o huerto; el espaciamiento y las condiciones afectan el tamaño. No se establece una altura ni extensión maduras exactas."
       },
       "cultivation": {
-        "short": "Cultivo de estación fresca; evita humedad irregular durante el desarrollo de la cabeza",
-        "guidance": "La col es un cultivo de clima fresco. La guía de UMN enfatiza el aporte estable de agua y nutrientes en suelo que retenga humedad y drene bien; las fechas, el suelo y la separación de campo de Minnesota son regionales, no una receta hidropónica para Red Acre."
+        "short": "Col de estación fresca; sol y humedad estable favorecen la calidad de la cabeza",
+        "guidance": "Arkansas Extension describe la col como cultivo de clima fresco para lugares soleados y suelo fértil, húmedo y bien drenado; UMN también enfatiza la humedad constante durante el desarrollo de la cabeza. Son recomendaciones para cultivo exterior en suelo, no ajustes de luz interior ni instrucciones hidropónicas. Las fechas y distancias de Arkansas son orientación regional para el cultivo, no una receta de sistema para Red Acre."
       },
       "pruning": {
         "short": "Protege el punto central de crecimiento mientras se forma la cabeza",
         "guidance": "UMN Extension señala que una lesión en el punto central de una col pequeña puede impedir que forme cabeza. Evita dañarlo durante el manejo; la guía citada no recomienda poda rutinaria."
       },
       "harvest": {
-        "short": "Cosecha una cabeza firme a tamaño útil antes de que se agriete",
-        "guidance": "UMN Extension recomienda cortar por encima de las hojas exteriores cuando la cabeza tenga un tamaño útil. Las cabezas maduras pueden agrietarse, sobre todo tras lluvia intensa; la fuente no da un plazo ni diámetro específico de Red Acre."
+        "short": "Toma unos 75 días como referencia y cosecha cuando la cabeza esté firme",
+        "guidance": "La tabla de cultivares de University of Arkansas indica 75 días hasta la madurez y una cabeza Red Acre de tres libras, pero no especifica desde qué etapa cuenta los días. Fedco indica 75 días desde el trasplante y describe cabezas de 3–5 lb; trata el calendario y el tamaño como referencias de proveedor/región, no garantías. En la col en general, cosecha cuando la cabeza esté firme y antes de que se agriete; UMN recomienda cortar por encima de las hojas exteriores cuando alcance un tamaño útil."
       },
       "problems": {
-        "short": "El agrietamiento y la mala formación dependen de las condiciones",
-        "guidance": "UMN Extension señala que la humedad inconsistente puede reducir la calidad o impedir la formación de la cabeza, mientras que la lluvia intensa puede agrietar cabezas maduras. Son observaciones del cultivo, no una diagnosis ni una afirmación de resistencia de Red Acre."
+        "short": "Vigila cabezas flojas, espigado prematuro o agrietamiento según las condiciones",
+        "guidance": "UMN Extension relaciona la humedad irregular y la lluvia intensa con menor calidad de la cabeza o agrietamiento. Arkansas Extension añade que el calor, el exceso de fertilizante o el riego irregular pueden contribuir a cabezas flojas y esponjosas, y que una exposición prolongada a unos 35–45 °F después de iniciar las plantas puede provocar la formación prematura del tallo floral. Son señales de riesgo de la col, no una afirmación de resistencia a enfermedades ni un diagnóstico de Red Acre; las temperaturas y el calendario son orientación regional."
       }
     }
   },
@@ -993,6 +997,9 @@
   },
   "brussels-sprouts-long-island": {
     "summary": "Long Island Improved es una variedad nombrada de coles de Bruselas que forma botones comestibles a lo largo de un tallo erguido. El fresco y la humedad constante favorecen su calidad; la altura varietal exacta no está resuelta.",
+    "metrics": [
+      {"label":"Señal para cosechar brotes inferiores","value":"Botones firmes de aprox. 1 pulg","note":"Guía de UMN para el cultivo de coles de Bruselas; no garantiza el tamaño del cultivar Long Island Improved"}
+    ],
     "sections": {
       "identity": {
         "short": "Long Island Improved es una variedad nombrada de coles de Bruselas",
@@ -1039,7 +1046,7 @@
       "cultivation": {"short":"El suelo suelto y trabajable evita obstruir el desarrollo de la raíz","guidance":"UMN Extension describe el desarrollo de la raíz de zanahoria en huertos y señala que el suelo compactado u obstruido puede producir raíces deformes. Es guía regional de cultivo exterior, no receta específica de Danvers ni recomendación hidropónica."},
       "care": {"short":"Mantén humedad uniforme durante el desarrollo de la raíz","guidance":"UMN Extension relaciona la humedad insuficiente o irregular con menor calidad de la raíz de zanahoria. Mantén el medio de cultivo razonablemente constante; la fuente no define un horario ni volumen de riego interior."},
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "Aclara para reducir el amontonamiento; no podes tallos de rutina",
         "guidance": "La zanahoria se cultiva por su raíz, no por poda rutinaria de tallos. Aclara para reducir el amontonamiento y retira follaje dañado solo si hace falta; el espaciamiento exterior no es un conteo de pods."
       },
       "harvest": {
@@ -1051,7 +1058,7 @@
         "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Danvers; revisa el suelo y el historial de cultivo antes de diagnosticar."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
+        "short": "Aclara las zanahorias para dejar espacio a las raíces",
         "guidance": "UMN Extension recomienda aclarar las zanahorias para dejar espacio al desarrollo de las raíces. Aplica esto como guía para hileras exteriores; no infieras separación de pods de Garden."
       }
     }
@@ -1683,7 +1690,7 @@
       },
       "needsValidation": {
         "short": "Identificar la serie o línea Alaska representada",
-        "guidance": "RHS y Jekka describen sus Alaska Series como T. majus, mientras UW–Madison y Johnny's identifican material Alaska/Alaska Mix como T. minus. Como esta ficha no especifica proveedor ni serie, las fuentes no establecen qué producto representa. Mantén sin asignar el porte, tamaño adulto y rendimiento varietal dependientes de especie hasta identificar la línea del catálogo."
+        "guidance": "RHS y Jekka describen sus Alaska Series como T. majus, mientras UW–Madison y Johnny's identifican material Alaska/Alaska Mix como T. minus. La página de West Coast Seeds para su producto distinto Tip Top Alaska Mix también es inconsistente: la descripción dice T. majus, pero el campo latino detallado enumera T. majus y T. minus. Ninguna identifica el proveedor o la serie no especificados en esta ficha. Mantén sin asignar el porte, tamaño adulto y rendimiento varietal dependientes de especie hasta identificar la línea representada."
       }
     }
   },

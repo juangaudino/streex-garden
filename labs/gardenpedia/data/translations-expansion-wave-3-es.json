@@ -121,6 +121,9 @@
   },
   "komatsuna": {
     "summary": "Komatsuna es una verdura asiática en manojos de Brassica rapa, con hojas oscuras y pecíolos verdes delgados. Puede cultivarse para hojas baby o plantas más grandes; la guía de producción del Medio Oeste ofrece tiempos por grupo de cultivo, no una garantía para este tipo sin nombre varietal. El calor y los días más largos pueden aumentar el riesgo de espigado, mientras que las dimensiones maduras y la aptitud hidropónica siguen desconocidas.",
+    "metrics": [
+      {"label":"Tiempo de cosecha orientativo del grupo","value":"Unos 20 días para hoja baby; unos 45 para planta completa","note":"Guía comercial del Medio Oeste para verduras asiáticas; estimación del grupo, no promesa de paquete ni calendario interior"}
+    ],
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -692,7 +695,7 @@
       "cultivation": {"short":"El suelo profundo y trabajable importa para tipos de raíz larga","guidance":"Johnny's señala que las raíces largas tipo Imperator necesitan suelo profundo y bien trabajado; UMN Extension también relaciona el suelo compactado u obstruido con raíces deformes. Es guía de suelo/campo, no evidencia de aptitud hidropónica ni del espacio de un sistema."},
       "care": {"short":"Mantén humedad uniforme mientras se desarrolla la raíz de almacenamiento","guidance":"UMN Extension relaciona la humedad insuficiente o irregular con una menor calidad de la raíz de zanahoria. Mantén el medio razonablemente húmedo de forma constante; la fuente no establece un calendario de riego interior."},
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "Cultivo de raíz: aclara; no podes tallos de rutina",
         "guidance": "La zanahoria se maneja por su raíz, no mediante poda rutinaria de tallos. Usa el aclareo para reducir el amontonamiento y retira follaje dañado solo cuando sea necesario; el espaciamiento de campo no es una regla de pods."
       },
       "harvest": {
@@ -704,7 +707,7 @@
         "guidance": "El suelo compactado, pedregoso u obstruido puede causar raíces bifurcadas o partidas; la sequía o humedad irregular también reduce su calidad. Follaje sano con raíces pequeñas puede indicar hacinamiento o exceso de nitrógeno. Son señales de riesgo del cultivo, no afirmaciones de enfermedad o resistencia de Imperator; revisa la estructura del suelo y el historial de cultivo antes de diagnosticar."
       },
       "thinning": {
-        "short": "Aclara las zanahorias para dejar espacio a las raíces",
+        "short": "Aclara las zanahorias para dejar espacio al desarrollo de la raíz",
         "guidance": "UMN Extension recomienda aclarar las zanahorias para permitir el desarrollo de la raíz. Aplica la recomendación a hileras exteriores; no se infiere un espaciamiento hidropónico de pods."
       }
     }
@@ -720,7 +723,7 @@
       "cultivation": {"short":"Remolacha de estación fresca para un bancal soleado, profundo y bien drenado","guidance":"Utah State Extension recomienda un sitio soleado y suelo profundo, fértil y bien drenado para la remolacha de mesa; el calor sostenido puede perjudicar la calidad de la raíz. Es guía exterior del cultivo, no un umbral térmico de Cylindra, un nivel de luz interior ni una recomendación hidropónica."},
       "care": {"short":"Mantén la humedad razonablemente estable mientras engrosan las raíces","guidance":"Utah State Extension informa que las fluctuaciones de humedad pueden agrietar raíces de remolacha y reducir crecimiento. Procura humedad del suelo uniforme; no es un calendario cuantificado de riego interior."},
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "Cosecha hojas o raíces; no requiere poda rutinaria de tallos",
         "guidance": "La remolacha se maneja con cosecha selectiva de hojas/raíces y aclareo, no con poda rutinaria de tallos. Retira hojas dañadas si hace falta; la distancia exterior no es un conteo de pods del sistema."
       },
       "harvest": {
@@ -732,7 +735,7 @@
         "guidance": "Utah State Extension identifica calor y estrés hídrico como riesgos para la calidad de la raíz y señala que el enfriamiento puede inducir floración antes de que esta se desarrolle bien. Las manchas negras hundidas pueden indicar deficiencia de boro, pero no bastan para diagnosticarla; confirma con análisis de suelo o Extension local antes de tratar, porque el exceso puede dañar la planta. Son cautelas del cultivo, no afirmaciones de resistencia de Cylindra."
       },
       "thinning": {
-        "short": "Aclara las plantas amontonadas para permitir el desarrollo de la raíz",
+        "short": "Aclara las remolachas exteriores para reducir competencia entre raíces",
         "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de la raíz de remolacha. Aclara según la guía exterior y la cosecha prevista; no conviertas distancias de campo en separación de pods Garden."
       }
     }
@@ -883,7 +886,7 @@
         "guidance": "UMN Extension indica que los suelos que retienen humedad quizá solo necesiten riego en periodos secos, mientras que los arenosos requieren riego más frecuente. Su referencia de una pulgada de lluvia semanal corresponde a jardines de Minnesota; revisa la humedad del suelo local y no la conviertas en calendario para maceta o depósito."
       },
       "care": {
-        "short": "Adapta el soporte al hábito documentado",
+        "short": "Instala una espaldera al plantar este tipo de enrame",
         "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
       },
       "growth": {
@@ -951,7 +954,7 @@
     }
   },
   "henderson-bush-lima-bean": {
-    "summary": "Henderson se representa como frijol lima de mata (Phaseolus lunatus), no como frijol común (P. vulgaris). Para consumir las semillas frescas desgranadas, cosecha las vainas cuando empiecen a hincharse y las semillas pasen de verde a crema o blanco; para grano seco, deja que las vainas se sequen en la planta. La guía es del cultivo/tipo, sin dimensiones ni ajustes hidropónicos propios de Henderson.",
+    "summary": "Henderson representa un frijol lima de mata (Phaseolus lunatus), no un frijol común (P. vulgaris). El lima necesita suelo más cálido y una temporada más larga que el frijol común; cosecha las vainas frescas cuando las semillas comiencen a hincharse o déjalas secar. La guía sigue siendo del cultivo/tipo, sin dimensiones ni ajustes hidropónicos propios de Henderson.",
     "sections": {
       "identity": {
         "short": "Phaseolus lunatus; tipo Henderson de frijol lima de mata",
@@ -962,11 +965,11 @@
         "guidance": "UMN Extension recomienda cosechar las limas para desgranar frescas cuando las semillas cambian de verde hacia crema o blanco y las vainas comienzan a abultarse. Para uso seco, deja que las vainas se sequen por completo. Son señales del cultivo, no una fecha específica de Henderson."
       },
       "cultivation": {
-        "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
-        "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
+        "short": "El lima necesita una temporada más cálida y larga que el frijol común",
+        "guidance": "UMN Extension recomienda sembrar los frijoles después de que se caliente el suelo y, en su apartado específico del lima, indica que Phaseolus lunatus necesita suelo y clima más cálidos y una temporada algo más larga que el frijol común; un verano más fresco de lo normal en Minnesota puede reducir su rendimiento. No fija un umbral exacto de temperatura; este contexto exterior regional no es una consigna para interior o hidroponía."
       },
       "care": {
-        "short": "Adapta el soporte al hábito documentado",
+        "short": "Tipo lima de mata: crecimiento erguido, normalmente sin espaldera",
         "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
       },
       "growth": {
@@ -999,7 +1002,7 @@
         "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior."
       },
       "care": {
-        "short": "Adapta el soporte al hábito documentado",
+        "short": "Tipo de mata: crecimiento erguido, normalmente sin espaldera",
         "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
       },
       "growth": {

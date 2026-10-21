@@ -1,56 +1,564 @@
 [
   {
-    "id":"stalk-celery-apium-graveolens","name":"Stalk Celery","spanishName":"Apio de penca","scientificName":"Apium graveolens","variety":null,"category":"vegetables","emoji":"🥬","tags":["stalk celery","celery","apio de penca","apio común","Apium graveolens","Dulce celery type"],"summary":"The familiar stalk-and-leaf celery crop within Apium graveolens, distinct horticulturally from Chinese leaf celery and celeriac. Extension sources describe a cool-season, water-demanding crop usually established from transplants.","metrics":[],
-    "sections":{
-      "identity":{"short":"Stalk celery crop type within the accepted species","guidance":"Kew accepts Apium graveolens at species rank. WSU Extension labels stalk celery Apium graveolens var. dulce, while Kew's current backbone treats the species as A. graveolens; this profile records the horticultural stalk-celery type without asserting a separate accepted botanical species. Chinese celery and celeriac remain separate catalog identities because they represent different crop uses.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-apium-graveolens-wave54","wsu-stalk-celery-wave54"]},
-      "growth":{"short":"Leaf-topped stalks rise together from one crown","guidance":"Utah State Extension describes celery as leaf-topped stalks arranged in a cone and joined at a common base; the edible stalks are petioles, not separate stems. This profile represents stalk celery, not Chinese leaf celery or celeriac, whose harvested parts and growth forms differ. USU classifies celery as biennial, but does not provide a compact indoor size or system-clearance specification.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-celery-wave54"]},
-      "cultivation":{"short":"Cool-season crop usually started as transplants","guidance":"WSU describes celery as a cool-weather crop commonly started indoors and transplanted; its Washington schedule is regional. Utah State Extension likewise describes transplanting established seedlings and emphasizes regular water. These sources do not establish an indoor hydroponic recipe or a system pod count.","evidenceType":"source_backed","confidence":"high","sourceIds":["wsu-stalk-celery-wave54","usu-celery-wave54"]},
-      "care":{"short":"Keep the shallow-rooted crop evenly moist; heat and prolonged cold affect quality","guidance":"USU advises thorough, regular watering because celery has shallow roots; water stress can make stalks stringy and stronger-flavored. Its regional guide gives 55–65°F as an ideal crop range, says several weeks of cool exposure can trigger flowering, and advises closer watering above 85°F to limit stress and fiber development. These are outdoor crop references, not indoor-system setpoints. The source also warns that shallow cultivation can damage roots.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-celery-wave54"]},
-      "flowering":{"short":"Prolonged cool exposure can trigger premature bolting","guidance":"USU notes that several weeks of cool exposure can prompt celery to flower; Oregon State reports that extended mean temperatures below 55°F, especially brief exposure below 45°F during transplant production, can predispose the crop to bolting, with varietal susceptibility differences. Treat these as regional crop-production warnings, not universal indoor thresholds or a forecast for this unspecified selection. A rising central seed stalk marks a shift away from the leafy-stalk harvest stage.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-celery-wave54","osu-celery-wave54"]},
-      "harvest":{"short":"Pick outer petioles selectively or harvest the whole crown at usable size","guidance":"USU says outer petioles can be removed when about 12 inches or longer; a whole plant is usable at roughly 3 inches in diameter. The inner stalks are especially tender for raw use. Repeated outer-stalk picking preserves the center for continued growth; hot, dry-weather harvest may be tough, stringy, or bitter. WSU's cut-and-come-again framing is home-garden guidance, not a fixed yield or calendar promise.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-celery-wave54","wsu-stalk-celery-wave54"]},
-      "problems":{"short":"Watch the crown for blackheart and older leaves for powdery mildew","guidance":"USU describes blackheart as gradual black discoloration and death of young leaves at the plant center, associated with a localized calcium disorder; it recommends avoiding water stress as risk reduction. It also describes powdery mildew as white patches beginning on older leaves, and aphids as soft-bodied insects under leaves associated with curling or crinkling. These signs warrant inspection, not an automatic diagnosis from appearance alone. The advice is crop-level soil-garden evidence, not cultivar-specific resistance information.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-celery-wave54"]}
+    "id": "stalk-celery-apium-graveolens",
+    "name": "Stalk Celery",
+    "spanishName": "Apio de penca",
+    "scientificName": "Apium graveolens",
+    "variety": null,
+    "category": "vegetables",
+    "emoji": "🥬",
+    "tags": [
+      "stalk celery",
+      "celery",
+      "apio de penca",
+      "apio común",
+      "Apium graveolens",
+      "Dulce celery type"
+    ],
+    "summary": "The familiar stalk-and-leaf celery crop within Apium graveolens, distinct horticulturally from Chinese leaf celery and celeriac. Extension sources describe a cool-season, water-demanding crop usually established from transplants.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Stalk celery crop type within the accepted species",
+        "guidance": "Kew accepts Apium graveolens at species rank. WSU Extension labels stalk celery Apium graveolens var. dulce, while Kew's current backbone treats the species as A. graveolens; this profile records the horticultural stalk-celery type without asserting a separate accepted botanical species. Chinese celery and celeriac remain separate catalog identities because they represent different crop uses.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-apium-graveolens-wave54",
+          "wsu-stalk-celery-wave54"
+        ]
+      },
+      "cultivation": {
+        "short": "Cool-season crop usually transplanted; full sun and fertile, well-drained soil outdoors",
+        "guidance": "WSU describes celery as a cool-weather crop commonly started indoors and transplanted; its Washington schedule is regional. Utah State Extension recommends full sun and fertile, well-drained soil rich in organic matter for home-garden plants, and notes the crop has a small, shallow root system. This is outdoor soil guidance, not an indoor grow-light tier or hydroponic recipe; field row spacing is not a system pod count.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "wsu-stalk-celery-wave54",
+          "usu-celery-wave54"
+        ]
+      },
+      "care": {
+        "short": "Keep the shallow-rooted crop evenly moist; heat and prolonged cold affect quality",
+        "guidance": "USU advises thorough, regular watering because celery has shallow roots; water stress can make stalks stringy and stronger-flavored. Its regional guide gives 55–65°F as an ideal crop range, says several weeks of cool exposure can trigger flowering, and advises closer watering above 85°F to limit stress and fiber development. These are outdoor crop references, not indoor-system setpoints. The source also warns that shallow cultivation can damage roots.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54"
+        ]
+      },
+      "harvest": {
+        "short": "Pick outer petioles selectively or harvest the whole crown at usable size",
+        "guidance": "USU says outer petioles can be removed when about 12 inches or longer; a whole plant is usable at roughly 3 inches in diameter. The inner stalks are especially tender for raw use. Repeated outer-stalk picking preserves the center for continued growth; hot, dry-weather harvest may be tough, stringy, or bitter. WSU's cut-and-come-again framing is home-garden guidance, not a fixed yield or calendar promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54",
+          "wsu-stalk-celery-wave54"
+        ]
+      },
+      "problems": {
+        "short": "Watch the crown for blackheart and older leaves for powdery mildew",
+        "guidance": "USU describes blackheart as gradual black discoloration and death of young leaves at the plant center, associated with a localized calcium disorder; it recommends avoiding water stress as risk reduction. It also describes powdery mildew as white patches beginning on older leaves, and aphids as soft-bodied insects under leaves associated with curling or crinkling. These signs warrant inspection, not an automatic diagnosis from appearance alone. The advice is crop-level soil-garden evidence, not cultivar-specific resistance information.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54"
+        ]
+      },
+      "growth": {
+        "short": "Biennial rosette of leaf-topped stalks; garden plants can reach about 18–24 inches",
+        "guidance": "Utah State Extension describes celery as a biennial with edible petioles arranged in a cone and joined at a common base; the petioles are not separate stems. Its home-garden guide gives 18–24 inches as a typical height range. This is species/crop-level outdoor context, not a cultivar-specific or indoor footprint; no exact spread, system clearance, or pod spacing is established. Stalk celery remains distinct from Chinese leaf celery and celeriac.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54"
+        ]
+      },
+      "flowering": {
+        "short": "Prolonged cool exposure can trigger premature bolting in this biennial crop",
+        "guidance": "Utah State Extension notes that several weeks of cool exposure can prompt celery to flower. Oregon State reports that extended mean temperatures below 55°F, especially brief exposure below 45°F during transplant production, can predispose celery to bolting, with varietal susceptibility differences. These are regional crop-production observations, not universal indoor thresholds or a prediction for an unspecified selection; USU does not define a universal temperature-duration trigger. A rising central seed stalk marks a shift away from leafy-stalk harvest.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54",
+          "osu-celery-wave54"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Soil-grown celery guidance does not establish performance or nutrient requirements in hydroponic systems."},"growthHabits":{"status":"unknown","reason":"The controlled compatibility vocabulary does not encode celery's crop form."},"matureSize":{"height":{"status":"unknown","reason":"No single mature dimension was selected for this crop type."},"spread":{"status":"unknown","reason":"No indoor footprint is documented."}},"spacing":{"status":"unknown","reason":"Field spacing is not a Garden pod count."},"light":{"status":"unknown","reason":"Outdoor position advice is not an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Soil-grown celery guidance does not establish performance or nutrient requirements in hydroponic systems."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The controlled compatibility vocabulary does not encode celery's crop form."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No single mature dimension was selected for this crop type."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No indoor footprint is documented."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not a Garden pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor position advice is not an indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"chia-salvia-hispanica","name":"Chia","spanishName":"Chía","scientificName":"Salvia hispanica","variety":null,"category":"herbs","emoji":"🌱","tags":["chia","chía","Salvia hispanica","chia seeds"],"summary":"Chia (Salvia hispanica) is a seed-bearing Salvia with frost- and daylength-sensitive flowering. Kew treats it as annual, while UCANR notes it may persist in frost-free microclimates; seed maturity in temperate regions depends on the selected line, so no unnamed packet is assumed adapted.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species Salvia hispanica","guidance":"Kew accepts Salvia hispanica, native from Mexico to Guatemala. It is distinct from golden/desert chia, Salvia columbariae; no seed color or named cultivar is assigned to this profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-salvia-hispanica-wave54","ucanr-chia-wave54"]},
-      "growth":{"short":"Usually annual; frost and day length affect seed maturity","guidance":"Kew records Salvia hispanica as annual. UCANR describes it as usually grown as an annual but potentially perennial in frost-free microclimates and frost-sensitive in Santa Clara County. University of Kentucky explains that ordinary chia is short-day flowering; selected long-day lines were developed for temperate seed production. Those breeding lines are not assigned to unidentified seed.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-salvia-hispanica-wave54","ucanr-chia-wave54","uky-chia-wave54"]},
-      "cultivation":{"short":"Established plants prefer full sun to partial shade and drained soil","guidance":"For established plants, UCANR reports full sun to partial shade, well-drained soil, and low water in its Santa Clara County garden context; its listed dimensions are about 2–3 ft tall and 1–2 ft wide. Frost and day length can determine whether seed matures. This is outdoor guidance, not a hydroponic recipe; seed-starting instructions belong in Seed Profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-chia-wave54","uky-chia-wave54"]},
-      "harvest":{"short":"Collect browning seed pods; dry and separate the seeds","guidance":"UCANR recommends collecting pods in late fall as they begin to turn brown, drying them in a well-ventilated place, then crushing the pods to release seed and separating the chaff. This is regional guidance, not a universal calendar date or yield promise.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-chia-wave54"]},
-      "propagation":{"short":"Cuttings and division are documented; seed protocol is separate","guidance":"UCANR lists cuttings and divisions as vegetative propagation options as well as seed. The separate Seed Profile owns seed-to-seedling instructions; that sowing window is not repeated here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-chia-wave54"]},
-      "flowering":{"short":"Flowering response to day length affects seed maturity","guidance":"The University of Kentucky Extension publication says chia ordinarily flowers under short days and describes selected long-day flowering lines developed for Kentucky and Midwest seed production. No flowering calendar or long-day trait is assigned to an unidentified seed selection.","evidenceType":"source_backed","confidence":"high","sourceIds":["uky-chia-wave54"]},
-      "problems":{"short":"Frost or unsuitable day-length response can prevent mature seed harvest","guidance":"UCANR reports frost sensitivity in its regional garden context; Kentucky Extension explains that ordinary short-day flowering chia may be killed by frost before seed matures in temperate regions. Harvest success depends on climate and the actual selection; no yield or adaptation is promised for an unnamed packet.","evidenceType":"source_backed","confidence":"high","sourceIds":["ucanr-chia-wave54","uky-chia-wave54"]}
+    "id": "chia-salvia-hispanica",
+    "name": "Chia",
+    "spanishName": "Chía",
+    "scientificName": "Salvia hispanica",
+    "variety": null,
+    "category": "herbs",
+    "emoji": "🌱",
+    "tags": [
+      "chia",
+      "chía",
+      "Salvia hispanica",
+      "chia seeds"
+    ],
+    "summary": "Chia (Salvia hispanica) is a seed-bearing Salvia with frost- and daylength-sensitive flowering. Kew treats it as annual, while UCANR notes it may persist in frost-free microclimates; seed maturity in temperate regions depends on the selected line, so no unnamed packet is assumed adapted.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Salvia hispanica",
+        "guidance": "Kew accepts Salvia hispanica, native from Mexico to Guatemala. It is distinct from golden/desert chia, Salvia columbariae; no seed color or named cultivar is assigned to this profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-salvia-hispanica-wave54",
+          "ucanr-chia-wave54"
+        ]
+      },
+      "growth": {
+        "short": "Usually annual; frost and day length affect seed maturity",
+        "guidance": "Kew records Salvia hispanica as annual. UCANR describes it as usually grown as an annual but potentially perennial in frost-free microclimates and frost-sensitive in Santa Clara County. University of Kentucky explains that ordinary chia is short-day flowering; selected long-day lines were developed for temperate seed production. Those breeding lines are not assigned to unidentified seed.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-salvia-hispanica-wave54",
+          "ucanr-chia-wave54",
+          "uky-chia-wave54"
+        ]
+      },
+      "cultivation": {
+        "short": "Established plants prefer full sun to partial shade and drained soil",
+        "guidance": "For established plants, UCANR reports full sun to partial shade, well-drained soil, and low water in its Santa Clara County garden context; its listed dimensions are about 2–3 ft tall and 1–2 ft wide. Frost and day length can determine whether seed matures. This is outdoor guidance, not a hydroponic recipe; seed-starting instructions belong in Seed Profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-chia-wave54",
+          "uky-chia-wave54"
+        ]
+      },
+      "harvest": {
+        "short": "Collect browning seed pods; dry and separate the seeds",
+        "guidance": "UCANR recommends collecting pods in late fall as they begin to turn brown, drying them in a well-ventilated place, then crushing the pods to release seed and separating the chaff. This is regional guidance, not a universal calendar date or yield promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-chia-wave54"
+        ]
+      },
+      "propagation": {
+        "short": "Cuttings and division are documented; seed protocol is separate",
+        "guidance": "UCANR lists cuttings and divisions as vegetative propagation options as well as seed. The separate Seed Profile owns seed-to-seedling instructions; that sowing window is not repeated here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-chia-wave54"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering response to day length affects seed maturity",
+        "guidance": "The University of Kentucky Extension publication says chia ordinarily flowers under short days and describes selected long-day flowering lines developed for Kentucky and Midwest seed production. No flowering calendar or long-day trait is assigned to an unidentified seed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uky-chia-wave54"
+        ]
+      },
+      "problems": {
+        "short": "Frost or unsuitable day-length response can prevent mature seed harvest",
+        "guidance": "UCANR reports frost sensitivity in its regional garden context; Kentucky Extension explains that ordinary short-day flowering chia may be killed by frost before seed matures in temperate regions. Harvest success depends on climate and the actual selection; no yield or adaptation is promised for an unnamed packet.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-chia-wave54",
+          "uky-chia-wave54"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Outdoor seed-crop guidance does not establish hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"No controlled-vocabulary growth habit was selected from the reviewed sources."},"matureSize":{"height":{"status":"known","value":{"minCm":61,"maxCm":91,"context":"outdoor_general"},"evidence":[{"sourceIds":["ucanr-chia-wave54"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Salvia hispanica"},"note":"UCANR reports 2–3 ft for its regional garden profile; converted approximately to centimeters, not an indoor-system height."}]},"spread":{"status":"known","value":{"minCm":30,"maxCm":61,"context":"outdoor_general"},"evidence":[{"sourceIds":["ucanr-chia-wave54"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Salvia hispanica"},"note":"UCANR reports 1–2 ft for its regional garden profile; converted approximately to centimeters, not a pod-spacing value."}]}},"spacing":{"status":"unknown","reason":"Outdoor garden spacing is not pod spacing."},"light":{"status":"known","value":[{"phase":"growing","requirement":{"kind":"full_sun"}},{"phase":"growing","requirement":{"kind":"partial_sun"}}],"evidence":[{"sourceIds":["ucanr-chia-wave54"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Salvia hispanica"},"note":"UCANR gives full sun to partial shade outdoors; this is not an indoor grow-light tier."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor seed-crop guidance does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No controlled-vocabulary growth habit was selected from the reviewed sources."
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 61,
+            "maxCm": 91,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ucanr-chia-wave54"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Salvia hispanica"
+              },
+              "note": "UCANR reports 2–3 ft for its regional garden profile; converted approximately to centimeters, not an indoor-system height."
+            }
+          ]
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "minCm": 30,
+            "maxCm": 61,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ucanr-chia-wave54"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Salvia hispanica"
+              },
+              "note": "UCANR reports 1–2 ft for its regional garden profile; converted approximately to centimeters, not a pod-spacing value."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor garden spacing is not pod spacing."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ucanr-chia-wave54"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Salvia hispanica"
+            },
+            "note": "UCANR gives full sun to partial shade outdoors; this is not an indoor grow-light tier."
+          }
+        ]
+      }
+    }
   },
   {
-    "id":"quinoa-chenopodium-quinoa","name":"Quinoa","spanishName":"Quinua (quinoa)","scientificName":"Chenopodium quinoa","variety":null,"category":"grains","emoji":"🌾","tags":["quinoa","quinua","Chenopodium quinoa","Andean grain"],"summary":"Quinoa is an annual broadleaved pseudocereal grown for grain and, in small amounts, edible young leaves. Height, flowering response and maturity vary by variety and region; the seed crop needs well-drained soil and careful timing around flowering and grain fill.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species Chenopodium quinoa","guidance":"Kew accepts Chenopodium quinoa and records quinoa/quinua among common names. The profile represents the species and does not assign a seed color, cultivar, or regional landrace.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-chenopodium-quinoa-wave54","wsu-quinoa-wave54"]},
-      "growth":{"short":"Annual broadleaf crop with variety-dependent height and maturity","guidance":"Kew describes the species as annual. WSU describes quinoa as a broadleaved pseudocereal that can reach roughly 3–6 feet in home-garden conditions. Varieties differ in day-length adaptation; WSU's long-day/cool-summer guidance is Pacific Northwest-specific, and day-neutral types are also documented. No named cultivar is assigned.","evidenceType":"source_backed","confidence":"medium","sourceIds":["kew-chenopodium-quinoa-wave54","wsu-quinoa-wave54"]},
-      "cultivation":{"short":"Full sun, well-drained soil; manage moisture and container fertility","guidance":"WSU recommends full sun and a well-drained garden site; waterlogging can stunt plants and contribute to damping-off. Soil moisture is especially important during flowering and grain fill, while high heat at flowering can impair seed formation. In WSU's regional evidence, temperatures above 95°F during flowering caused severe yield loss in eastern Washington, with losses also reported in Colorado and Minnesota; this is not a universal cutoff. Avoid excess nitrogen, which WSU links to delayed maturity, excess foliage and lodging. For containers, WSU cautions that the smaller soil volume offers less buffering against fertilizer toxicity and recommends checking the potting mix's initial nutrient level before adding more. These are soil/container crop recommendations, not hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["wsu-quinoa-wave54"]},
-      "harvest":{"short":"Harvest when seed is hard; branched panicles may mature in stages","guidance":"WSU's home-garden guide gives a broad 90–150-day harvest range depending on variety. Seeds should resist a fingernail dent and release readily from dry panicles; branched plants may need staged picking. Mature grain can sprout on the panicle after rain, so if wet weather threatens, cut and dry harvested plants in a sheltered place. The calendar and drying practice remain source-scoped, not a promise for an unnamed variety.","evidenceType":"source_backed","confidence":"high","sourceIds":["wsu-quinoa-wave54"]},
-      "propagation":{"short":"Seed-grown; seed-starting belongs to the linked Seed Profile","guidance":"This species is raised from seed. Use the linked Seed Profile for the seed-to-established-plant protocol; this Plant Profile does not duplicate germination or early seedling instructions. Variety and day-length adaptation matter, but no cultivar is represented here.","evidenceType":"source_backed","confidence":"high","sourceIds":["wsu-quinoa-wave54"]},
-      "flowering":{"short":"Flowering and seed set are sensitive growth stages","guidance":"WSU reports that varieties differ in day-length response and that heat during flowering can reduce pollination and seed set. The cited high-temperature results are regional trial observations, not a universal cultivar threshold or flowering calendar.","evidenceType":"source_backed","confidence":"medium","sourceIds":["wsu-quinoa-wave54"]},
-      "problems":{"short":"Watch for waterlogging, downy mildew and aphids","guidance":"WSU describes waterlogging-related stunting/damping-off; downy mildew can cause irregular yellow or pink leaf patches with gray growth, especially in cool, rainy conditions. Aphids cluster on leaf undersides; affected leaves may curl or distort and stems/leaves can become sticky with honeydew. Lambsquarters can resemble young quinoa, compete with it and contaminate saved seed if allowed to flower alongside it. No cultivar resistance or pesticide recommendation is inferred.","evidenceType":"source_backed","confidence":"medium","sourceIds":["wsu-quinoa-wave54"]}
+    "id": "quinoa-chenopodium-quinoa",
+    "name": "Quinoa",
+    "spanishName": "Quinua (quinoa)",
+    "scientificName": "Chenopodium quinoa",
+    "variety": null,
+    "category": "grains",
+    "emoji": "🌾",
+    "tags": [
+      "quinoa",
+      "quinua",
+      "Chenopodium quinoa",
+      "Andean grain"
+    ],
+    "summary": "Quinoa is an annual broadleaved pseudocereal grown for grain and, in small amounts, edible young leaves. Height, flowering response and maturity vary by variety and region; the seed crop needs well-drained soil and careful timing around flowering and grain fill.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Chenopodium quinoa",
+        "guidance": "Kew accepts Chenopodium quinoa and records quinoa/quinua among common names. The profile represents the species and does not assign a seed color, cultivar, or regional landrace.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-chenopodium-quinoa-wave54",
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "growth": {
+        "short": "Annual broadleaf crop with variety-dependent height and maturity",
+        "guidance": "Kew describes the species as annual. WSU describes quinoa as a broadleaved pseudocereal that can reach roughly 3–6 feet in home-garden conditions. Varieties differ in day-length adaptation; WSU's long-day/cool-summer guidance is Pacific Northwest-specific, and day-neutral types are also documented. No named cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "kew-chenopodium-quinoa-wave54",
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun, well-drained soil; manage moisture and container fertility",
+        "guidance": "WSU recommends full sun and a well-drained garden site; waterlogging can stunt plants and contribute to damping-off. Soil moisture is especially important during flowering and grain fill, while high heat at flowering can impair seed formation. In WSU's regional evidence, temperatures above 95°F during flowering caused severe yield loss in eastern Washington, with losses also reported in Colorado and Minnesota; this is not a universal cutoff. Avoid excess nitrogen, which WSU links to delayed maturity, excess foliage and lodging. For containers, WSU cautions that the smaller soil volume offers less buffering against fertilizer toxicity and recommends checking the potting mix's initial nutrient level before adding more. These are soil/container crop recommendations, not hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest when seed is hard; branched panicles may mature in stages",
+        "guidance": "WSU's home-garden guide gives a broad 90–150-day harvest range depending on variety. Seeds should resist a fingernail dent and release readily from dry panicles; branched plants may need staged picking. Mature grain can sprout on the panicle after rain, so if wet weather threatens, cut and dry harvested plants in a sheltered place. The calendar and drying practice remain source-scoped, not a promise for an unnamed variety.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "propagation": {
+        "short": "Seed-grown; seed-starting belongs to the linked Seed Profile",
+        "guidance": "This species is raised from seed. Use the linked Seed Profile for the seed-to-established-plant protocol; this Plant Profile does not duplicate germination or early seedling instructions. Variety and day-length adaptation matter, but no cultivar is represented here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "flowering": {
+        "short": "Flowering and seed set are sensitive growth stages",
+        "guidance": "WSU reports that varieties differ in day-length response and that heat during flowering can reduce pollination and seed set. The cited high-temperature results are regional trial observations, not a universal cultivar threshold or flowering calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "wsu-quinoa-wave54"
+        ]
+      },
+      "problems": {
+        "short": "Watch for waterlogging, downy mildew and aphids",
+        "guidance": "WSU describes waterlogging-related stunting/damping-off; downy mildew can cause irregular yellow or pink leaf patches with gray growth, especially in cool, rainy conditions. Aphids cluster on leaf undersides; affected leaves may curl or distort and stems/leaves can become sticky with honeydew. Lambsquarters can resemble young quinoa, compete with it and contaminate saved seed if allowed to flower alongside it. No cultivar resistance or pesticide recommendation is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "wsu-quinoa-wave54"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Field-grain guidance does not establish hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"No controlled-vocabulary growth habit was selected from the reviewed sources."},"matureSize":{"height":{"status":"known","value":{"minCm":91,"maxCm":183,"context":"outdoor_general"},"evidence":[{"sourceIds":["wsu-quinoa-wave54"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Chenopodium quinoa"},"note":"WSU home-garden guide gives a broad 3–6 ft crop range; no cultivar is assigned."}]},"spread":{"status":"unknown","reason":"No defensible species-level home-garden spread range is given."}},"spacing":{"status":"unknown","reason":"Field spacing is not a Garden pod count."},"light":{"status":"unknown","reason":"Outdoor full-sun guidance is not an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Field-grain guidance does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "No controlled-vocabulary growth habit was selected from the reviewed sources."
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "minCm": 91,
+            "maxCm": 183,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "wsu-quinoa-wave54"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Chenopodium quinoa"
+              },
+              "note": "WSU home-garden guide gives a broad 3–6 ft crop range; no cultivar is assigned."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible species-level home-garden spread range is given."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field spacing is not a Garden pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full-sun guidance is not an indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"grain-amaranth-amaranthus-hypochondriacus","name":"Grain Amaranth","spanishName":"Amaranto de grano","scientificName":"Amaranthus hypochondriacus","variety":null,"category":"grains","emoji":"🌾","tags":["grain amaranth","Prince's feather","amaranto de grano","Amaranthus hypochondriacus"],"summary":"A seed-grown amaranth species used ornamentally and for edible leaves and grain. It is distinct from vegetable amaranth, Amaranthus tricolor; no named cultivar or grain-production protocol is implied.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species, distinct from vegetable amaranth","guidance":"Kew accepts Amaranthus hypochondriacus. NC State describes Prince's feather and edible seed use; this record is not the separately cataloged vegetable amaranth Amaranthus tricolor, and no specific grain cultivar is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-amaranthus-hypochondriacus-wave54","ncsu-amaranthus-hypochondriacus-wave54","uwisc-grain-amaranth-wave54"]},
-      "growth":{"short":"Upright, clumping grain crop; about 5–7 ft in a Wisconsin field-crop context","guidance":"NC State describes a clumping, multi-stemmed herbaceous plant and its species record lists both annual and perennial life-cycle terms (the narrative says annual or short-lived perennial). University of Wisconsin–Madison includes A. hypochondriacus among grain amaranths and reports mature grain-crop plants about 5–7 ft tall in its Upper Midwest context. Treat that as a crop-context range, not a guarantee for every selection. Grain production is managed as a warm-season annual crop; no cultivar is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54","uwisc-grain-amaranth-wave54"]},
-      "cultivation":{"short":"Warm-season, sunny site; crop details remain selection-dependent","guidance":"NC State recommends full sun (at least 6 hours of direct sun), fertile soil and good drainage for the species. Wisconsin Extension describes grain amaranth as a warm-season crop that responds to high sunlight and warm temperatures; its drought-tolerance note is conditional on enough moisture for establishment. These are outdoor contexts, not an indoor grow-light or hydroponic prescription. The field-crop source does not establish a universal home-garden planting rate or harvest schedule for an unnamed selection.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54","uwisc-grain-amaranth-wave54"]},
-      "harvest":{"short":"Leaves and seeds have distinct documented uses and harvest contexts","guidance":"NC State describes young leaves cooked like spinach and seeds eaten raw or cooked, used as a cereal substitute, or popped. Its structured record places seed display/harvest in fall. Wisconsin Extension describes grain harvest after a killing frost followed by a dry week in its Upper Midwest field-crop context, and warns that wet plants and shattering can cause losses; this is not a universal household maturity cue or date. NC State also cautions against eating plants grown on land where chemical fertilizers were used; no safe threshold or mitigation is supplied here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54","uwisc-grain-amaranth-wave54"]},
-      "propagation":{"short":"Seed is a documented propagation route; sowing details are outside this plant-care profile","guidance":"NC State lists seed propagation for the species. Detailed germination and seedling-establishment instructions belong in a Seed Profile when one is available; the field-crop source's seedbed methods are not presented as a universal home protocol for an unnamed selection.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54"]},
-      "care":{"short":"Avoid excessive nitrogen; field guidance warns of lodging","guidance":"Wisconsin Extension warns that high nitrogen can make grain amaranth lodge severely. Its fertilizer rates are field-crop recommendations and are not transferred to a home bed or container; this profile gives no household rate.","evidenceType":"source_backed","confidence":"high","sourceIds":["uwisc-grain-amaranth-wave54"]},
-      "flowering":{"short":"Showy terminal flower spikes; color varies","guidance":"NC State describes dense, usually terminal, erect or pendulous catkin-like flower clusters in summer and autumn. Flowers may be red, purple, deep beet-red, or less commonly other colors, so the profile does not assign one color to an unnamed seed selection. The species is monoecious and wind-pollinated.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54"]},
-      "problems":{"short":"Watch for aphids and keep the source's nitrate warning in view","guidance":"NC State identifies aphids as a possible problem and warns that leaves can accumulate nitrates on nitrogen-rich soil; it advises against eating plants grown on land where chemical fertilizers were used. Wisconsin Extension's grain-field review also identifies flea beetles as leaf-feeding pests and tarnished plant bugs as potential seed-head pests during seed fill. These are reported risks, not a diagnosis, expected infestation, treatment recommendation, or home-garden threshold. No safe nitrate limit is established here.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54","uwisc-grain-amaranth-wave54"]},
-      "uses":{"short":"Ornamental flower spikes and edible leaves or seed are documented","guidance":"NC State describes Prince's feather as an ornamental with showy flowers and reports young leaves cooked like spinach and seeds eaten or used as a cereal substitute. Flower color varies across the species, and the food-use note retains the source's fertilizer/nitrate caution; neither use is a cultivar-specific promise.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-amaranthus-hypochondriacus-wave54"]}
+    "id": "grain-amaranth-amaranthus-hypochondriacus",
+    "name": "Grain Amaranth",
+    "spanishName": "Amaranto de grano",
+    "scientificName": "Amaranthus hypochondriacus",
+    "variety": null,
+    "category": "grains",
+    "emoji": "🌾",
+    "tags": [
+      "grain amaranth",
+      "Prince's feather",
+      "amaranto de grano",
+      "Amaranthus hypochondriacus"
+    ],
+    "summary": "A seed-grown amaranth species used ornamentally and for edible leaves and grain. It is distinct from vegetable amaranth, Amaranthus tricolor; no named cultivar or grain-production protocol is implied.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species, distinct from vegetable amaranth",
+        "guidance": "Kew accepts Amaranthus hypochondriacus. NC State describes Prince's feather and edible seed use; this record is not the separately cataloged vegetable amaranth Amaranthus tricolor, and no specific grain cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-amaranthus-hypochondriacus-wave54",
+          "ncsu-amaranthus-hypochondriacus-wave54",
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "growth": {
+        "short": "Upright, clumping grain crop; about 5–7 ft in a Wisconsin field-crop context",
+        "guidance": "NC State describes a clumping, multi-stemmed herbaceous plant and its species record lists both annual and perennial life-cycle terms (the narrative says annual or short-lived perennial). University of Wisconsin–Madison includes A. hypochondriacus among grain amaranths and reports mature grain-crop plants about 5–7 ft tall in its Upper Midwest context. Treat that as a crop-context range, not a guarantee for every selection. Grain production is managed as a warm-season annual crop; no cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54",
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-season, sunny site; crop details remain selection-dependent",
+        "guidance": "NC State recommends full sun (at least 6 hours of direct sun), fertile soil and good drainage for the species. Wisconsin Extension describes grain amaranth as a warm-season crop that responds to high sunlight and warm temperatures; its drought-tolerance note is conditional on enough moisture for establishment. These are outdoor contexts, not an indoor grow-light or hydroponic prescription. The field-crop source does not establish a universal home-garden planting rate or harvest schedule for an unnamed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54",
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "harvest": {
+        "short": "Leaves and seeds have distinct documented uses and harvest contexts",
+        "guidance": "NC State describes young leaves cooked like spinach and seeds eaten raw or cooked, used as a cereal substitute, or popped. Its structured record places seed display/harvest in fall. Wisconsin Extension describes grain harvest after a killing frost followed by a dry week in its Upper Midwest field-crop context, and warns that wet plants and shattering can cause losses; this is not a universal household maturity cue or date. NC State also cautions against eating plants grown on land where chemical fertilizers were used; no safe threshold or mitigation is supplied here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54",
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "propagation": {
+        "short": "Seed is a documented propagation route; sowing details are outside this plant-care profile",
+        "guidance": "NC State lists seed propagation for the species. Detailed germination and seedling-establishment instructions belong in a Seed Profile when one is available; the field-crop source's seedbed methods are not presented as a universal home protocol for an unnamed selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54"
+        ]
+      },
+      "care": {
+        "short": "Avoid excessive nitrogen; field guidance warns of lodging",
+        "guidance": "Wisconsin Extension warns that high nitrogen can make grain amaranth lodge severely. Its fertilizer rates are field-crop recommendations and are not transferred to a home bed or container; this profile gives no household rate.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "flowering": {
+        "short": "Showy terminal flower spikes; color varies",
+        "guidance": "NC State describes dense, usually terminal, erect or pendulous catkin-like flower clusters in summer and autumn. Flowers may be red, purple, deep beet-red, or less commonly other colors, so the profile does not assign one color to an unnamed seed selection. The species is monoecious and wind-pollinated.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54"
+        ]
+      },
+      "problems": {
+        "short": "Watch for aphids and keep the source's nitrate warning in view",
+        "guidance": "NC State identifies aphids as a possible problem and warns that leaves can accumulate nitrates on nitrogen-rich soil; it advises against eating plants grown on land where chemical fertilizers were used. Wisconsin Extension's grain-field review also identifies flea beetles as leaf-feeding pests and tarnished plant bugs as potential seed-head pests during seed fill. These are reported risks, not a diagnosis, expected infestation, treatment recommendation, or home-garden threshold. No safe nitrate limit is established here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54",
+          "uwisc-grain-amaranth-wave54"
+        ]
+      },
+      "uses": {
+        "short": "Ornamental flower spikes and edible leaves or seed are documented",
+        "guidance": "NC State describes Prince's feather as an ornamental with showy flowers and reports young leaves cooked like spinach and seeds eaten or used as a cereal substitute. Flower color varies across the species, and the food-use note retains the source's fertilizer/nitrate caution; neither use is a cultivar-specific promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-amaranthus-hypochondriacus-wave54"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Ornamental and grain crop sources do not establish hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"Clumping is described in an ornamental context but is not treated as a useful compatibility recommendation."},"matureSize":{"height":{"status":"unknown","reason":"No single dimension was selected for the species across ornamental and grain contexts."},"spread":{"status":"unknown","reason":"No indoor footprint is documented."}},"spacing":{"status":"unknown","reason":"Field crop density is not hydroponic pod spacing."},"light":{"status":"unknown","reason":"Outdoor full-sun advice is not an indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Ornamental and grain crop sources do not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Clumping is described in an ornamental context but is not treated as a useful compatibility recommendation."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No single dimension was selected for the species across ornamental and grain contexts."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No indoor footprint is documented."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Field crop density is not hydroponic pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full-sun advice is not an indoor grow-light tier."
+      }
+    }
   }
 ]

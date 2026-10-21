@@ -594,7 +594,13 @@
       "komatsuna type"
     ],
     "summary": "Komatsuna is a bunching Asian green of Brassica rapa, with dark leaves and slender green petioles. It can be grown for baby leaves or larger plants; the Midwestern production guide gives crop-group timing rather than a guarantee for this unnamed type. Heat and lengthening days can increase bolting risk, while mature dimensions and hydroponic fit remain unknown.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Crop-group harvest timing",
+        "value": "About 20 days for baby leaves; about 45 days for full-size plants",
+        "note": "Midwest commercial Asian-greens guide; estimates are group-level, not a Komatsuna packet promise or indoor schedule"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Komatsuna is resolved at Brassica rapa and Komatsuna type type scope",
@@ -1826,8 +1832,7 @@
         "confidence": "medium",
         "sourceIds": [
           "umn-tomato-disorders-2024",
-          "umn-tomato-leaf-spots-2024",
-          "johnnys-sunrise-sauce-wave3"
+          "umn-tomato-leaf-spots-2024"
         ]
       },
       "flowering": {
@@ -3286,7 +3291,7 @@
         "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
+        "short": "Root crop: thin rather than prune stems routinely",
         "guidance": "Carrots are managed for their roots, not by routine stem pruning. Use thinning to reduce crowding and remove damaged foliage only when needed; soil row spacing is not a pod-count rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -3307,7 +3312,7 @@
         "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
+        "short": "Thin carrots to leave room for root growth",
         "guidance": "UMN Extension recommends thinning carrots to leave room for root development. Apply this as outdoor row advice only; no hydroponic pod spacing is inferred.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -3435,7 +3440,7 @@
         "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
+        "short": "Harvest leaves or roots; routine stem pruning is not needed",
         "guidance": "Beets are managed through selective leaf/root harvest and thinning rather than routine stem pruning. Remove damaged leaves as needed; outdoor row spacing is not a fixed system pod count.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -3456,7 +3461,7 @@
         "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
+        "short": "Thin outdoor beets to reduce crowding around roots",
         "guidance": "Utah State Extension notes that crowding limits beet root development. Thin according to outdoor crop guidance and intended harvest; do not convert field distances into Garden pod spacing.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -4107,7 +4112,7 @@
         ]
       },
       "care": {
-        "short": "Match support to the documented growth habit",
+        "short": "Install a trellis at planting for the climbing pole type",
         "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -4528,7 +4533,7 @@
       "phaseolus lunatus",
       "henderson bush type"
     ],
-    "summary": "Henderson is represented as a bush-type lima bean (Phaseolus lunatus), not common bean (P. vulgaris). Harvest fresh pods as seeds swell toward cream or white, or leave pods to dry; the available guidance is crop/type-level and does not establish Henderson-specific dimensions or hydroponic settings.",
+    "summary": "Henderson represents a bush-type lima bean (Phaseolus lunatus), not common bean (P. vulgaris). Lima beans need warmer soil and a longer season than common beans; harvest fresh pods as seeds swell toward cream or white, or leave them to dry. Guidance remains crop/type-level, with no Henderson-specific dimensions or hydroponic settings.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -4536,31 +4541,24 @@
         "guidance": "This identity represents lima bean (Phaseolus lunatus) and the Henderson bush type. It is distinct from common bean (P. vulgaris); the cited sources do not resolve an exact seed strain, cultivar-specific dimensions, or hydroponic performance.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "johnnys-beans-wave1",
-          "usu-water-vegetables-wave2"
-        ]
+        "sourceIds": ["johnnys-beans-wave1", "usu-water-vegetables-wave2"]
       },
       "harvest": {
         "short": "Harvest fresh lima beans as seeds swell in green pods",
         "guidance": "UMN Extension recommends picking lima beans for fresh shelling after seeds change from green toward cream or white and pods begin to bulge. For dry use, leave pods until completely dry. These are species/crop cues, not a Henderson-specific date.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": [
-          "umn-beans-home-gardens-2026"
-        ]
+        "sourceIds": ["umn-beans-home-gardens-2026"]
       },
       "cultivation": {
-        "short": "Wait for warm soil before outdoor sowing",
-        "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+        "short": "Lima beans need a warmer, longer season than common beans",
+        "guidance": "UMN Extension recommends sowing beans after soil has warmed and its lima-specific guidance says Phaseolus lunatus needs warmer soil and weather and a somewhat longer growing season than common beans; cooler-than-normal Minnesota summers can reduce performance. The source sets no exact temperature threshold; this regional outdoor guidance is not an indoor or hydroponic set point.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": [
-          "umn-beans-home-gardens-2026"
-        ]
+        "sourceIds": ["umn-beans-home-gardens-2026"]
       },
       "care": {
-        "short": "Match support to the documented growth habit",
+        "short": "Bush lima habit: upright plants generally need no trellis",
         "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -4713,7 +4711,7 @@
         ]
       },
       "care": {
-        "short": "Match support to the documented growth habit",
+        "short": "Bush type: upright growth generally needs no trellis",
         "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
         "evidenceType": "source_backed",
         "confidence": "high",

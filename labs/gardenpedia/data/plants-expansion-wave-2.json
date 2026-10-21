@@ -498,7 +498,7 @@
         "sourceIds": ["usu-brassica-harvest-handling-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
+        "short": "Harvest older leaves; routine shaping is not established",
         "guidance": "Routine shaping cuts are not established for this unspecified collard type. Remove older leaves as harvest, and remove damaged tissue when needed; do not infer a container or hydroponic pruning schedule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -524,7 +524,7 @@
         "sourceIds": ["ufifas-collards-2026"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
+        "short": "Field row spacing does not set Garden pod count",
         "guidance": "USU publishes row-spacing guidance for field collards, but it is not a Garden pod-spacing recommendation. Do not infer a one-plant-per-pod rule without a system-specific source.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -1332,7 +1332,18 @@
       "supersweet 100 f1"
     ],
     "summary": "Supersweet 100 F1 is an indeterminate red cherry tomato that bears 15–20 g fruits in large clusters. Johnny's lists about 60 days from transplant and reports resistance to Fusarium wilt race 1 and Verticillium wilt for its named product.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Fruit weight",
+        "value": "About 15–20 g",
+        "note": "Johnny's named F1 product description; individual fruits vary"
+      },
+      {
+        "label": "Days to maturity",
+        "value": "About 60 days from transplant",
+        "note": "Johnny's product estimate; not counted from sowing and varies with conditions"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Supersweet 100 is a named F1 cherry tomato",
@@ -2747,7 +2758,7 @@
         "sourceIds": ["usu-beets-home-gardens-2020"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
+        "short": "Thin outdoor beets to relieve crowding; don't infer pod spacing",
         "guidance": "Utah State Extension notes that crowding limits beet root development. Thin for the intended outdoor harvest; field spacing does not define Garden system positions.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -2839,7 +2850,7 @@
       "pastinaca sativa",
       "parsnip type"
     ],
-    "summary": "Parsnip is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Parsnip (Pastinaca sativa) is a cool-season crop grown for a long storage root. Deep, loose soil and steady moisture support straighter roots; harvest after roots reach full size, with cool weather improving flavor. This is crop-level outdoor guidance, not a named-cultivar or hydroponic profile.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -3738,12 +3749,34 @@
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "Identity-specific mature height remains unresolved."
+          "status": "known",
+          "value": {
+            "minCm": 30,
+            "maxCm": 61,
+            "context": "outdoor_general"
+          },
+          "evidence": [{
+            "sourceIds": ["ncsu-sweet-marjoram-2026"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": { "level": "species", "taxon": "Origanum majorana" },
+            "note": "Rounded conversion of NC State regional species-level reference of about 1–2 ft tall; not guaranteed for a container or indoor system."
+          }]
         },
         "spread": {
-          "status": "unknown",
-          "reason": "Identity-specific mature spread remains unresolved."
+          "status": "known",
+          "value": {
+            "minCm": 30,
+            "maxCm": 61,
+            "context": "outdoor_general"
+          },
+          "evidence": [{
+            "sourceIds": ["ncsu-sweet-marjoram-2026"],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": { "level": "species", "taxon": "Origanum majorana" },
+            "note": "Rounded conversion of NC State regional species-level reference of about 1–2 ft wide; not guaranteed for a container or indoor system."
+          }]
         }
       },
       "spacing": {
@@ -4783,7 +4816,7 @@
       "brassica napus",
       "rutabaga type"
     ],
-    "summary": "Rutabaga is a Wave 2 baseline identity with crop/type guidance. Exact cultivar performance, system response, and dimensions remain scoped to the cited evidence.",
+    "summary": "Rutabaga is the Brassica napus storage-root crop, distinct from turnip (Brassica rapa). It needs a long cool-season window and steady moisture; roots commonly mature in fall, and cool weather can improve flavor. Regional crop guidance is not a named-cultivar or hydroponic specification.",
     "metrics": [],
     "sections": {
       "identity": {

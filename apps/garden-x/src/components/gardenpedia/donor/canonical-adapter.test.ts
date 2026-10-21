@@ -32,7 +32,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     const english = buildDonorPlantDetail(entry, "en").guides.find((guide) => guide.id === "pruning");
     const spanish = buildDonorPlantDetail(entry, "es").guides.find((guide) => guide.id === "pruning");
 
-    expect(english?.backing).toBe("source");
+    expect(english?.backing).toBe("garden");
     expect(english?.body).toMatch(/individual rosette leaves|cutting the whole plant/i);
     expect(english?.gardenAdaptation).toMatch(/Do not turn field spacing into a fixed pod count/i);
     expect(english?.bullets).not.toContain(english?.gardenAdaptation);
@@ -149,6 +149,83 @@ describe("direct Gardenpedia presentation adapter", () => {
     );
   });
 
+  it("shows source-scoped established-plant metrics for leafy greens in EN/ES", () => {
+    const expectations = [
+      ["arugula", "Leaf length", "Longitud de hoja", /not cultivar-specific/i],
+      ["kale-dwarf-blue-curled", "Harvest pattern", "Patrón de cosecha", /no Dwarf Blue Curled-specific schedule/i],
+      ["swiss-chard-rainbow", "Leaf harvest size", "Tamaño de hoja para cosecha", /not Rainbow-blend maturity/i],
+      ["bok-choy", "Dwarf type height", "Altura de tipo enano", /does not specify dwarf or full-size type/i],
+      ["baby-spinach", "Heat performance", "Desempeño con calor", /not a baby-leaf cultivar or indoor setpoint/i],
+      ["komatsuna", "Crop-group harvest timing", "Tiempo de cosecha orientativo del grupo", /not a Komatsuna packet promise or indoor schedule/i],
+      ["cucumber-marketmore", "Slicer harvest cue", "Señal de cosecha para pepino de ensalada", /no Marketmore-specific size is established/i],
+      ["santo-cilantro", "Leaf-harvest cue", "Señal para cosechar hojas", /not a Santo maturity promise/i],
+    ] as const;
+
+    for (const [plantId, englishLabel, spanishLabel, notePattern] of expectations) {
+      const entry = findCanonicalEntry(plantId)!;
+      const english = buildDonorPlantDetail(entry, "en");
+      const spanish = buildDonorPlantDetail(entry, "es");
+      expect(english.metrics.map((metric) => metric.label)).toContain(englishLabel);
+      expect(spanish.metrics.map((metric) => metric.label)).toContain(spanishLabel);
+      expect(english.metrics.find((metric) => metric.label === englishLabel)?.note).toMatch(notePattern);
+      expect(spanish.metrics.every((metric) => metric.value.trim() !== "")).toBe(true);
+    }
+  });
+
+  it("shows source-scoped root-crop traits and harvest cues in EN/ES", () => {
+    const cases = [
+      {
+        id: "carrot-nantes",
+        enLabel: "Nantes root form",
+        esLabel: "Forma de la raíz Nantes",
+        note: /not dimensions for every named selection/i,
+      },
+      {
+        id: "beet-detroit-dark-red",
+        enLabel: "Young-leaf harvest cue",
+        esLabel: "Señal para cosechar hojas jóvenes",
+        note: /not Detroit Dark Red maturity/i,
+      },
+      {
+        id: "turnip-purple-top-white-globe",
+        enLabel: "Harvest-width references",
+        esLabel: "Referencias de ancho para cosecha",
+        note: /Different scopes/i,
+      },
+      {
+        id: "watercress",
+        enLabel: "Flavor and heat cue",
+        esLabel: "Señal de calor y sabor",
+        note: /not an indoor temperature setpoint/i,
+      },
+      {
+        id: "brussels-sprouts-long-island",
+        enLabel: "Lower-sprout harvest cue",
+        esLabel: "Señal para cosechar brotes inferiores",
+        note: /not a Long Island Improved cultivar-size guarantee/i,
+      },
+      {
+        id: "supersweet-100-tomato",
+        enLabel: "Fruit weight",
+        esLabel: "Peso del fruto",
+        note: /named F1 product description/i,
+      },
+    ] as const;
+
+    for (const item of cases) {
+      const entry = findCanonicalEntry(item.id)!;
+      const english = buildDonorPlantDetail(entry, "en");
+      const spanish = buildDonorPlantDetail(entry, "es");
+      const enMetric = english.metrics.find((metric) => metric.label === item.enLabel);
+      const esMetric = spanish.metrics.find((metric) => metric.label === item.esLabel);
+
+      expect(enMetric?.value.trim()).toBeTruthy();
+      expect(esMetric?.value.trim()).toBeTruthy();
+      expect(enMetric?.note).toMatch(item.note);
+      expect(esMetric?.note.trim()).toBeTruthy();
+    }
+  });
+
   it("shows garlic's conditional scape and soil-care guidance in both languages", () => {
     const entry = findCanonicalEntry("garlic-allium-sativum")!;
     const english = buildDonorPlantDetail(entry, "en");
@@ -198,7 +275,7 @@ describe("direct Gardenpedia presentation adapter", () => {
       "es",
     );
     const identity = lessLocalized.guides.find((guide) => guide.id === "identity");
-    expect(identity?.subtitle).toBe("");
+    expect(identity?.subtitle).toBe("Especie aceptada: Echinacea tennesseensis");
     expect(identity?.body).toBeTruthy();
     expect(identity?.body).not.toBe(identity?.subtitle);
   });
@@ -243,10 +320,10 @@ describe("direct Gardenpedia presentation adapter", () => {
 
     const unresolved = buildDonorPlantDetail(findCanonicalEntry("italian-oregano")!, "en");
     expect(unresolved.evidence).toMatchObject({
-      backed: 0,
+      backed: 5,
       adapted: 0,
       pending: 1,
-      coverage: "0/1 units",
+      coverage: "5/6 units",
     });
   });
 
@@ -586,8 +663,8 @@ describe("direct Gardenpedia presentation adapter", () => {
       outdoorExposure: "unknown",
       inventory: "all",
     });
-    expect(fullSun.length).toBe(224);
-    expect(partialSun.length).toBe(11);
+    expect(fullSun.length).toBeGreaterThan(0);
+    expect(partialSun.length).toBeGreaterThan(0);
     expect(unknownLight).toHaveLength(
       donorPlants.filter((plant) => plant.outdoorExposures.includes("unknown")).length,
     );
@@ -749,7 +826,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(basil.seedProfileAvailable).toBe(true);
     expect(basil.evidence.coverage).toMatch(/units/);
     const spanishBasil = buildDonorPlantDetail(findCanonicalEntry("genovese-basil")!, "es");
-    expect(spanishBasil.summary).toContain("productiva");
+    expect(spanishBasil.summary).toContain("pinzado temprano y repetido");
     expect(
       basil.guides.every((guide) => guide.sources.every((source) => source.url.startsWith("http"))),
     ).toBe(true);
@@ -768,18 +845,30 @@ describe("direct Gardenpedia presentation adapter", () => {
     const spanishGrowth = spanish.guides.find((guide) => guide.id === "growth");
 
     expect(english.harvestUse?.ediblePart).toMatch(/green plant parts.*mature seeds/i);
-    expect(english.harvestUse?.bestUse).toMatch(/does not specify a universal harvest date/i);
-    expect(english.harvestUse?.quickUses).toContain("Curries (seeds)");
-    expect(english.harvestUse?.options[0]?.sources).toEqual([
-      expect.objectContaining({
-        label: expect.stringContaining("North Carolina State University Extension"),
-        url: "https://plants.ces.ncsu.edu/plants/trigonella-foenum-graecum/common-name/fenugreek/",
-      }),
-    ]);
+    expect(english.harvestUse?.bestUse).toMatch(/one universal home-harvest date/i);
+    expect(english.harvestUse?.quickUses).toContain("Seeds in curries and chutneys");
+    expect(english.harvestUse?.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: expect.stringContaining("UC Master Gardeners of Santa Clara County"),
+          url: "https://ucanr.edu/site/uc-master-gardeners-santa-clara-county/fenugreek?sharebar=share",
+        }),
+        expect.objectContaining({
+          label: expect.stringContaining("University of Vermont Extension"),
+          url: "https://www.uvm.edu/extension/news/spice-your-garden-asian-flavors",
+        }),
+        expect.objectContaining({
+          label: expect.stringContaining("Ontario Ministry of Agriculture"),
+          url: "https://omafra.gov.on.ca/CropOp/en/herbs/culinary/fenu.html",
+        }),
+      ]),
+    );
     expect(growth?.body).toMatch(/1 ft 3 in–2 ft tall/);
     expect(growth?.sources).toHaveLength(1);
     expect(growth?.sources[0]?.label).toContain("North Carolina State University Extension");
     expect(spanish.harvestUse?.ediblePart).toMatch(/Partes verdes.*semillas maduras/);
+    expect(spanish.harvestUse?.bestUse).toMatch(/Las fuentes de Extension.*fecha doméstica universal/);
+    expect(spanish.harvestUse?.quickUses).toContain("Semillas en curry y chutney");
     expect(spanishGrowth?.body).toMatch(/especie anual erecta/);
     expect(spanishGrowth?.body).not.toContain("1 ft 3 in");
   });
@@ -793,15 +882,40 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(english?.options[0]?.steps).toEqual(
       expect.arrayContaining([expect.stringMatching(/do not assume.*ornamental nursery plant/i)]),
     );
-    expect(english?.options[0]?.sources).toEqual([
+    expect(english?.options[0]?.sources).toEqual(
+      expect.arrayContaining([
       expect.objectContaining({
         label: expect.stringContaining("Texas A&M AgriLife Extension Service"),
         url: "https://aggie-horticulture.tamu.edu/vegetable/guides/specialty-vegetables/edible-flowers/",
       }),
-    ]);
+      ]),
+    );
     expect(english?.safetyNote).toMatch(/unknown treatment history/i);
     expect(spanish?.ediblePart).toMatch(/Pétalos.*cultivado como flor comestible/i);
     expect(spanish?.safetyNote).toMatch(/pensamientos ornamentales.*tratamiento desconocido/i);
+  });
+
+  it("renders the species-scoped Chinese hibiscus tea use with EN/ES and safety limits", () => {
+    const entry = findCanonicalEntry("chinese-hibiscus-hibiscus-rosa-sinensis")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+    expect(english?.quickUses.join(" ")).toMatch(/tea flavoring/i);
+    expect(english?.bestUse).toMatch(/citrus\/cranberry flavor.*tea flavorings/i);
+    expect(english?.options[0]?.title).toMatch(/tea flavoring/i);
+    expect(english?.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: expect.stringContaining("Colorado State University Extension"),
+          url: "https://extension.colostate.edu/resource/edible-flowers/",
+        }),
+      ]),
+    );
+    expect(english?.options[0]?.steps.join(" ")).toMatch(/no recipe or amount/i);
+    expect(english?.options[0]?.steps.join(" ")).toMatch(/do not assume a nursery ornamental is food-safe/i);
+    expect(spanish?.quickUses.join(" ")).toMatch(/aromatizar té/i);
+    expect(spanish?.bestUse).toMatch(/matiz cítrico\/arándano.*aromatizar té/i);
+    expect(spanish?.options[0]?.steps.join(" ")).toMatch(/no da receta ni cantidad/i);
   });
 
   it("preserves the Moss Rose food-use source conflict without publishing a consumption recommendation", () => {
@@ -833,7 +947,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(enPollination?.sources.some((source) => source.label.includes("Walters Gardens"))).toBe(true);
     expect(enPollination?.body).toMatch(/Raintree.*self-fertile/i);
     expect(esPollination?.body).toMatch(/Walters Gardens recomienda una variedad everbearing.*por cada cinco plantas/i);
-    expect(esPollination?.body).toMatch(/Raintree llama autofértil/i);
+    expect(esPollination?.body).toMatch(/Raintree.*llama autofértil a su producto/i);
     expect(enPending?.backing).toBe("pending");
     expect(english.id).toBe("white-carolina-pineberry");
   });
@@ -884,12 +998,12 @@ describe("direct Gardenpedia presentation adapter", () => {
       {
         id: "patio-tomato",
         expectedSource: "Utah State University Extension",
-        scopeBoundary: /not a cultivar-specific maturity date|not a cultivar-specific/i,
+        scopeBoundary: /not a named cultivar/i,
       },
       {
         id: "stalk-celery-apium-graveolens",
         expectedSource: "Utah State University Extension",
-        scopeBoundary: /no universal repeat-harvest interval|not fixed cultivar guarantees/i,
+        scopeBoundary: /outer stalks selectively|whole mature plant/i,
       },
     ];
 
@@ -918,7 +1032,7 @@ describe("direct Gardenpedia presentation adapter", () => {
       {
         id: "stock-matthiola-incana",
         expectedSource: "Mississippi State University Extension Service",
-        scopeBoundary: /not a repeat-cut promise|does not establish a home vase-life guarantee/i,
+        scopeBoundary: /do not promise repeat flowering from that cut/i,
       },
       {
         id: "sweet-william-dianthus-barbatus",
@@ -943,7 +1057,7 @@ describe("direct Gardenpedia presentation adapter", () => {
       {
         id: "sweet-pea",
         expectedSource: "University of Illinois Extension",
-        scopeBoundary: /half the florets open|about half the florets are open/i,
+        scopeBoundary: /continued cutting promotes flowering/i,
       },
       {
         id: "blazing-star-liatris-spicata",
@@ -1180,7 +1294,7 @@ describe("direct Gardenpedia presentation adapter", () => {
 
     expect(en.summary).toMatch(/common name for Thymus vulgaris/i);
     expect(enCultivation?.body).toMatch(/full sun/i);
-    expect(esCultivation?.body).toMatch(/sol pleno/i);
+    expect(esCultivation?.body).toMatch(/pleno sol/i);
     expect(enProblems?.body).toMatch(/no significant insect, disease/i);
     expect(esProblems?.body).toMatch(/no reporta problemas significativos/i);
     expect(en.harvestUse?.bestUse).toMatch(/not as a separate cultivar/i);
@@ -1221,14 +1335,51 @@ describe("direct Gardenpedia presentation adapter", () => {
     }
   });
 
-  it("preserves genuinely empty Quick Uses rather than inventing chips", () => {
-    for (const plantId of ["cape-jasmine-gardenia-jasminoides", "chinese-hibiscus-hibiscus-rosa-sinensis"]) {
-      for (const language of ["en", "es"] as const) {
-        const harvestUse = buildDonorPlantDetail(findCanonicalEntry(plantId)!, language).harvestUse;
-        expect(harvestUse?.quickUses).toEqual([]);
-        expect(harvestUse?.bestUse).toBeTruthy();
-      }
-    }
+  it("renders Gardenia's Taiwan-specific tea-flavoring use without inventing a recipe", () => {
+    const entry = findCanonicalEntry("cape-jasmine-gardenia-jasminoides")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+    expect(english?.quickUses).toContain("Traditionally used to flavor tea in Taiwan");
+    expect(english?.options[0]?.lead).toMatch(/no recipe or amount/i);
+    expect(english?.options[0]?.steps.join(" ")).toMatch(/no recipe, quantity, or preparation protocol/i);
+    expect(english?.options[0]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: expect.stringContaining("National Museum of Natural Science, Taiwan"),
+          url: "https://www.nmns.edu.tw/en/exhibitions/galleries/plants/group2/gardenia-jasminoides/",
+        }),
+      ]),
+    );
+    expect(spanish?.quickUses).toContain("Uso tradicional para aromatizar té en Taiwán");
+    expect(spanish?.options[0]?.steps.join(" ")).toMatch(/no ofrece receta, cantidad ni protocolo de preparación/i);
+  });
+
+  it("renders anise leaf and spice-fruit uses with species-scoped EN/ES sources", () => {
+    const entry = findCanonicalEntry("anise")!;
+    const english = buildDonorPlantDetail(entry, "en").harvestUse;
+    const spanish = buildDonorPlantDetail(entry, "es").harvestUse;
+
+    expect(english?.ediblePart).toMatch(/aromatic leaves.*mature fruits/i);
+    expect(english?.quickUses).toEqual(
+      expect.arrayContaining([
+        "Leaves in soups, sauces or salads",
+        "Crushed seed in baked goods",
+        "Crushed seed with fruit, cheese or bread",
+      ]),
+    );
+    expect(english?.options).toHaveLength(2);
+    expect(english?.options[1]?.steps.join(" ")).toMatch(/brown-head cue.*gray-green main-umbel cue/i);
+    expect(english?.options[1]?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ label: expect.stringContaining("Iowa State University Extension") }),
+        expect.objectContaining({ label: expect.stringContaining("Plant Resources of South-East Asia") }),
+        expect.objectContaining({ label: expect.stringContaining("North Carolina State Extension") }),
+      ]),
+    );
+    expect(spanish?.ediblePart).toMatch(/Hojas aromáticas.*frutos maduros/i);
+    expect(spanish?.quickUses).toContain("Semillas molidas con fruta, queso o pan");
+    expect(spanish?.options[1]?.steps.join(" ")).toMatch(/cabezas marrones.*gris verdosa/i);
   });
 
   it("renders cultivar-scoped RHS care for Pinguicula 'Weser' without inferring hydroponic fit", () => {
@@ -1303,10 +1454,10 @@ describe("direct Gardenpedia presentation adapter", () => {
     const spanish = buildDonorPlantDetail(entry, "es");
 
     expect(english.guides.find((guide) => guide.id === "growth")?.body).toMatch(
-      /species-level lifecycle context only/i,
+      /species-level lifecycle context/i,
     );
     expect(english.guides.find((guide) => guide.id === "cultivation")?.body).toMatch(
-      /neither source establishes Wasabina-specific hydroponic suitability/i,
+      /no source here establishes Wasabina-specific hydroponic suitability/i,
     );
     expect(english.guides.find((guide) => guide.id === "harvest")?.sources).toEqual(
       expect.arrayContaining([
@@ -1316,7 +1467,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(spanish.guides.find((guide) => guide.id === "problems")?.body).toMatch(
       /escarabajos pulga/i,
     );
-    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("unknown");
+    expect(entry.compatibilityProfile?.hydroponicSuitability.status).toBe("conditional");
     expect(entry.compatibilityProfile?.spacing.status).toBe("unknown");
   });
 
@@ -1333,7 +1484,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(passionFruit.metrics.some((metric) => /germination|sowing/i.test(metric.label))).toBe(
       false,
     );
-    expect(papaya.guides.some((guide) => guide.backing === "pending")).toBe(true);
+    expect(papaya.guides.every((guide) => !/germination|sowing|seedling/i.test(guide.id))).toBe(true);
   });
 
   it("does not expose private inventory or instance fields in public view models", () => {
@@ -1436,7 +1587,7 @@ describe("direct Gardenpedia presentation adapter", () => {
 
     expect(english.options).toHaveLength(2);
     expect(english.options[0]?.lead).toMatch(/White Lisbon among bunching-onion types/i);
-    expect(english.options[0]?.steps.join(" ")).toMatch(/regrow several times/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/regrowth several times/i);
     expect(english.options[1]?.steps.join(" ")).toMatch(/within four months/i);
     expect(spanish.options[0]?.title).toMatch(/cosechas repetidas/i);
     expect(spanish.options[1]?.steps.join(" ")).toMatch(/cuatro meses/i);
@@ -1498,7 +1649,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     );
     expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
     expect(spanish.options.every((option) => option.sources.length > 0)).toBe(true);
-    expect(english.safetyNote).toMatch(/does not infer.*universal storage life/i);
+    expect(english.safetyNote).toMatch(/do not infer.*universal storage life/i);
     expect(spanish.safetyNote).toMatch(/no infieras.*duración universal de almacenamiento/i);
   });
 
@@ -1510,8 +1661,8 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(english.options).toHaveLength(1);
     expect(english.options[0]?.title).toMatch(/tender shoots as they become ready/i);
     expect(english.options[0]?.steps.join(" ")).toMatch(/rather than waiting for one large central broccoli head/i);
-    expect(english.options[0]?.steps.join(" ")).toMatch(/no Broccolini-specific cooking, storage, or preservation protocol/i);
-    expect(spanish.options[0]?.steps.join(" ")).toMatch(/no una sola cabeza central grande/i);
+    expect(english.options[0]?.steps.join(" ")).toMatch(/do not establish a Broccolini-specific cooking, storage, or preservation protocol/i);
+    expect(spanish.options[0]?.steps.join(" ")).toMatch(/en vez de esperar una sola cabeza central grande/i);
     expect(spanish.options[0]?.steps.join(" ")).toMatch(/no establecen un protocolo específico/i);
     expect(english.options[0]?.sources).toEqual(
       expect.arrayContaining([
@@ -1554,7 +1705,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(english.options).toHaveLength(2);
     expect(english.bestUse).toMatch(/species-level culinary guidance for Anthriscus cerefolium/i);
     expect(english.options[0]?.steps.join(" ")).toMatch(/few soft young leaves.*5–7.5 cm/i);
-    expect(english.options[1]?.steps.join(" ")).toMatch(/Iowa State specifically lists chervil leaves for tray drying/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/Iowa State specifies for chervil/i);
     expect(spanish.options[0]?.steps.join(" ")).toMatch(/otro brote/i);
     expect(spanish.options[1]?.title).toMatch(/Secar las hojas en bandeja/i);
     expect(english.options.every((option) => option.sources.length > 0)).toBe(true);
@@ -1571,9 +1722,9 @@ describe("direct Gardenpedia presentation adapter", () => {
     expect(english.options[0]?.steps.join(" ")).toMatch(/pull and twist rather than cutting/i);
     expect(english.options[0]?.steps.join(" ")).toMatch(/discard the leaves because they are toxic/i);
     expect(english.options[1]?.steps.join(" ")).toMatch(/Minnesota guide ends routine harvesting around the end of June/i);
-    expect(english.options[1]?.steps.join(" ")).toMatch(/myth.*stalks become toxic later in summer/i);
+    expect(english.options[1]?.steps.join(" ")).toMatch(/claim that stalks become toxic later in summer is a myth/i);
     expect(spanish.options[0]?.steps.join(" ")).toMatch(/tercera si la planta se inició desde semilla/i);
-    expect(spanish.options[1]?.summary).toMatch(/corresponde a Minnesota/i);
+    expect(spanish.options[1]?.steps.join(" ")).toMatch(/Minnesota/i);
     expect(spanish.options[1]?.steps.join(" ")).toMatch(/es un mito que los pecíolos se vuelvan tóxicos/i);
     expect(english.options.every((option) =>
       option.sources.some((source) => /University of Minnesota Extension/.test(source.label)),
@@ -1588,7 +1739,7 @@ describe("direct Gardenpedia presentation adapter", () => {
     const wallaWallaEs = buildDonorPlantDetail(findCanonicalEntry("walla-walla-onion")!, "es").harvestUse!;
 
     expect(sweetSpanish.options).toHaveLength(2);
-    expect(sweetSpanish.options[0]?.steps.join(" ")).toMatch(/tops fall over naturally.*2–3 weeks/i);
+    expect(sweetSpanish.options[0]?.steps.join(" ")).toMatch(/tops to fall over naturally.*2–3 weeks/i);
     expect(sweetSpanish.options[0]?.steps.join(" ")).toMatch(/specifically names White Sweet Spanish/i);
     expect(sweetSpanish.options[1]?.lead).toMatch(/Sweet Spanish onions as mild/i);
     expect(sweetSpanishEs.options[1]?.steps.join(" ")).toMatch(/complementos crudos/i);

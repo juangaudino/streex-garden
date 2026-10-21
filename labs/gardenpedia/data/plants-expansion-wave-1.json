@@ -16,7 +16,10 @@
       "arugula / roquette"
     ],
     "summary": "Arugula is a fast-growing cool-season rosette harvested for peppery leaves. UW–Madison describes bolting under long days, heat or dry soil, repeat leaf harvest, and flea-beetle shot holes; its article uses Eruca sativa while Garden retains the accepted catalog name Eruca vesicaria.",
-    "metrics": [],
+    "metrics": [
+      {"label":"Leaf length","value":"3–8 in","note":"UW–Madison species/crop description; not cultivar-specific"},
+      {"label":"Flowering stem","value":"2–3 ft","note":"UW–Madison; may develop with long days, heat and/or dry soil; not normal rosette height"}
+    ],
     "sections": {
       "identity": {
         "short": "Catalog identity Eruca vesicaria; Extension also uses Eruca sativa",
@@ -182,7 +185,9 @@
       "dwarf blue curled type"
     ],
     "summary": "Dwarf Blue Curled represents a curly kale type within Brassica oleracea; the catalog does not claim a verified named cultivar or measured size for this record. Kale is a cool-season leafy crop, and established plants can be harvested repeatedly by removing older leaves while younger leaves continue.",
-    "metrics": [],
+    "metrics": [
+      {"label":"Harvest pattern","value":"Cut older outer leaves; retain young growth","note":"UW–Madison crop guidance; no Dwarf Blue Curled-specific schedule"}
+    ],
     "sections": {
       "identity": {
         "short": "Brassica oleracea kale type; cultivar and exact dimensions are not established",
@@ -325,7 +330,10 @@
       "rainbow type"
     ],
     "summary": "Rainbow Swiss chard is a blend of colored chard varieties, not one uniform cultivar. It is grown for broad leaves and colorful stalks; established plants can provide repeat outer-leaf harvests. Extension sources describe summer slowing and manageable pests, but do not establish a single mature size for this blend.",
-    "metrics": [],
+    "metrics": [
+      {"label":"Leaf harvest size","value":"About 3 in","note":"UW–Madison general harvest cue; not Rainbow-blend maturity"},
+      {"label":"Repeat harvest","value":"Pick a few outer leaves at a time","note":"UW–Madison; cut near the base without damaging the growing point"}
+    ],
     "sections": {
       "identity": {
         "short": "Rainbow is a blend of colored varieties of Beta vulgaris leaf beet",
@@ -474,7 +482,10 @@
       "bok choy type"
     ],
     "summary": "Bok choy (pak choi) forms an upright clump of dark leaves with thick pale stalks. UMN Extension describes steady moisture, cold-triggered bolting risk, and harvesting outer leaves before the plant loses quality; its planting dates and spacing are Minnesota field guidance, not hydroponic settings.",
-    "metrics": [],
+    "metrics": [
+      {"label":"Dwarf type height","value":"About 6 in","note":"UMN crop guidance; this catalog identity does not specify dwarf or full-size type"},
+      {"label":"Full-size type height","value":"About 1 ft","note":"UMN crop guidance; not a size assigned to this unspecified identity"}
+    ],
     "sections": {
       "identity": {
         "short": "Bok choy / pak choi; UMN identifies the type as Brassica rapa chinensis",
@@ -625,7 +636,18 @@
       "baby-leaf type"
     ],
     "summary": "Baby spinach is a harvest stage/type of Spinacia oleracea, not a separate species or named cultivar. USU Extension describes spinach as a cool-season crop: heat and long days promote bolting and bitter flavor, while older leaves can be picked to let younger ones continue.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Heat performance",
+        "value": "Best growth below about 75°F",
+        "note": "USU spinach-crop guidance; not a baby-leaf cultivar or indoor setpoint"
+      },
+      {
+        "label": "Leaf harvest cue",
+        "value": "Pick usable leaves before the flower stalk forms",
+        "note": "USU crop guidance; pick older leaves first; no universal leaf size or date"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Baby-leaf harvest type of Spinacia oleracea; no cultivar specified",
@@ -960,7 +982,7 @@
         "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
+        "short": "Choose support for the actual habit; no universal pruning plan",
         "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -1517,7 +1539,13 @@
       "marketmore type"
     ],
     "summary": "The catalog records Marketmore type within Cucumis sativus. The cultivation guidance is cucumber-level; cultivar-specific dimensions, performance and indoor-system advice are not established here.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Slicer harvest cue",
+        "value": "Pick before fruits become oversized, yellow and seedy; harvest often",
+        "note": "UMN cucumber-crop guidance; no Marketmore-specific size is established"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Marketmore type is recorded within Cucumis sativus",
@@ -2072,7 +2100,18 @@
       "nantes type"
     ],
     "summary": "Nantes is a carrot type described as medium-length and cylindrical, not one named cultivar. This profile uses general carrot guidance for cultivation and harvest; it does not assign a Nantes-specific flavor, exact root size, or indoor-system performance.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Nantes root form",
+        "value": "Medium-length, cylindrical",
+        "note": "Johnny's Nantes-type description; not dimensions for every named selection"
+      },
+      {
+        "label": "Harvest cue",
+        "value": "Lift when the root reaches usable size",
+        "note": "UMN crop guidance; no universal size or calendar"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Nantes Carrot identity is resolved at Daucus carota and Nantes type type scope",
@@ -2219,7 +2258,18 @@
       "detroit dark red type"
     ],
     "summary": "Detroit Dark Red is a classic round, smooth, uniform dark-red table beet, with edible roots and young greens. Mississippi State Extension supports those named-variety traits; general care and harvest remain at beet-crop scope, not a hydroponic recipe.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Named-variety root",
+        "value": "Smooth, globular, deep red",
+        "note": "Mississippi State Extension description; not a measured diameter"
+      },
+      {
+        "label": "Young-leaf harvest cue",
+        "value": "About 4–6 in",
+        "note": "Utah State beet-crop guidance; not Detroit Dark Red maturity"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Named table-beet variety: round, smooth, uniform, deep-red roots",
@@ -2368,7 +2418,13 @@
       "purple top white globe type"
     ],
     "summary": "A dual-purpose turnip grown for its rounded root and edible greens. Johnny's identifies the named Purple Top White Globe variety; crop-level care remains distinct from its supplier-reported root dimensions.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Harvest-width references",
+        "value": "2–3 in (UMN crop cue); 3–4 in (Johnny's product description)",
+        "note": "Different scopes: crop-quality harvest guidance versus named-variety supplier characteristic"
+      }
+    ],
     "sections": {
       "identity": { "short": "Named Purple Top White Globe turnip within Brassica rapa", "guidance": "Johnny's sells Purple Top White Globe as a named turnip variety and lists Brassica rapa. The product evidence supports the variety's visible root and greens characteristics; it does not establish a Garden-system response.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-purple-top-white-globe-2026"] },
       "growth": { "short": "Cool-season root crop with a purple shoulder and leafy tops", "guidance": "The supplier describes smooth, round roots that are white below the soil and purple above it, with large lobed greens. UMN Extension notes turnip quality declines in hot weather and when roots become oversized; exact dimensions vary with growing conditions.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["johnnys-purple-top-white-globe-2026", "umn-turnips-rutabagas-home-2026"] },
@@ -2779,7 +2835,7 @@
         ]
       },
       "care": {
-        "short": "Match support to the documented growth habit",
+        "short": "Bush plants stay upright and usually need no trellis",
         "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -3282,7 +3338,18 @@
       "santo"
     ],
     "summary": "Santo is a named cilantro selection sold for leaf harvest and described by Johnny's as slow-bolting; that supplier claim does not quantify a delay or guarantee performance in every climate. Species-level garden guidance describes cilantro as a cool-season crop, advises harvesting leaves while young, and identifies bolting and leafhopper-transmitted aster yellows as management concerns. Hydroponic suitability and mature dimensions remain unestablished.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Leaf-harvest cue",
+        "value": "Leaves around 4–6 in",
+        "note": "USU cilantro-crop guidance; not a Santo maturity promise"
+      },
+      {
+        "label": "Coriander seed cue",
+        "value": "Allow seed heads to mature and turn brown",
+        "note": "USU crop guidance; distinct from harvesting leaves for cilantro"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Named Santo selection within Coriandrum sativum",

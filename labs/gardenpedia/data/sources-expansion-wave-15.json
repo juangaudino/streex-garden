@@ -6,11 +6,11 @@
     "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452874-1",
     "type": "botanical_taxonomy",
     "tier": 1,
-    "scope": "Accepted species identity and taxonomy for Ocimum basilicum; not evidence for a named cultivar",
-    "accessed": "2026-10-16",
+    "scope": "Kew POWO accepted name and taxonomy for Ocimum basilicum; its General Information also describes the species as annual or subshrub and notes cultivar variation. Kew's listed species-level height range is not assigned to this cultivar-unspecified profile; this is not cultivation or hydroponic guidance",
+    "accessed": "2026-10-21",
     "license": null,
     "provenance": "Gardenpedia Labs botanical expansion",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": ["identity", "taxonomy", "growth"]
   },
   {
     "id": "kew-allium-fistulosum-500",

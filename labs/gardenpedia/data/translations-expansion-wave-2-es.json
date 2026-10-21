@@ -87,7 +87,7 @@
       "cultivation": {"short":"Guía de cultivo exterior; existe producción hidropónica, pero no todo sistema sirve","guidance":"La guía de USU se refiere a producción exterior de berzas y otras brassicas. UF/IFAS documenta berzas en canales hidropónicos exteriores, pero advierte que el crecimiento robusto puede no adaptarse a todos los sistemas. Estas fuentes no convierten la exposición exterior en un nivel de luz artificial ni establecen configuración para un aparato Garden."},
       "care": {"short":"Cosecha hojas mayores conservando crecimiento joven activo","guidance":"USU informa que retirar individualmente hojas mayores puede permitir que la planta continúe creciendo. Es una práctica de cosecha a nivel de cultivo exterior; no garantiza un número fijo de cortes en casa o en interior."},
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "Cosecha hojas mayores; no se establece poda rutinaria de formación",
         "guidance": "Las fuentes seleccionadas no establecen una poda de formación para este tipo de berza no especificado. Retira hojas mayores como cosecha y tejido dañado cuando sea necesario; no se infiere un calendario de poda para contenedor o hidroponía."
       },
       "harvest": {
@@ -99,7 +99,7 @@
         "guidance": "Las fuentes seleccionadas no ofrecen un perfil específico de plagas o enfermedades de la berza. Se deja sin resolver en vez de copiar diagnósticos genéricos de brassicas; identifica síntomas y consulta una fuente local antes de tratar."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
+        "short": "El espaciamiento en hileras no determina los pods de Garden",
         "guidance": "USU publica espaciamiento en hileras para berzas de campo, pero no una recomendación de pods de Garden. No infieras una regla de una planta por pod sin una fuente para el sistema concreto."
       },
       "hydroponics": {
@@ -275,6 +275,10 @@
   },
   "supersweet-100-tomato": {
     "summary": "Supersweet 100 F1 es un tomate cherry rojo indeterminado que produce frutos de 15–20 g en racimos grandes. Johnny's estima unos 60 días desde el trasplante y registra resistencia a la marchitez por Fusarium raza 1 y Verticillium para su producto nombrado.",
+    "metrics": [
+      {"label":"Peso del fruto","value":"Aprox. 15–20 g","note":"Descripción del producto F1 nombrado de Johnny's; el peso varía entre frutos"},
+      {"label":"Días hasta madurez","value":"Aprox. 60 días desde el trasplante","note":"Estimación del producto Johnny's; no cuenta desde la siembra y varía con las condiciones"}
+    ],
     "sections": {
       "identity": {
         "short": "Supersweet 100 es un tomate cherry F1 nombrado",
@@ -584,13 +588,13 @@
         "guidance": "Utah State Extension identifica calor, estrés hídrico y amontonamiento como riesgos para el desarrollo de la raíz, y señala que el enfriamiento puede inducir floración. Las manchas negras hundidas pueden indicar deficiencia de boro, pero no bastan para diagnosticarla; confirma con análisis de suelo o Extension local antes de tratar, porque el exceso puede dañar la planta. Son advertencias del cultivo, no afirmaciones de enfermedad o resistencia del tipo Golden."
       },
       "thinning": {
-        "short": "Ralea según la forma de cosecha",
+        "short": "Aclara las remolachas exteriores para aliviar el amontonamiento",
         "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de raíces. Aclara según la cosecha exterior prevista; el espaciamiento de campo no define posiciones de un sistema Garden."
       }
     }
   },
   "parsnip": {
-    "summary": "Identidad base de Wave 2 para Chirivía. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "La chirivía (Pastinaca sativa) es un cultivo de estación fresca que se aprovecha por su raíz larga de almacenamiento. El suelo profundo y suelto y la humedad relativamente constante favorecen raíces más rectas; se cosecha cuando alcanza su tamaño, y el clima fresco puede mejorar el sabor. Es guía de cultivo exterior, no una ficha de cultivar ni de hidroponía.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -609,8 +613,8 @@
         "guidance": "Utah State University Extension ofrece como referencia regional alrededor de 1–2 pulgadas de agua por semana, según el clima y el suelo, y advierte que las variaciones de humedad pueden contribuir a raíces agrietadas o amargas y otros trastornos. No es un calendario universal; el acolchado puede ayudar a conservar la humedad del suelo."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Levanta las raíces desarrolladas después del clima fresco",
+        "guidance": "Utah State University Extension recomienda cosechar cuando las raíces hayan alcanzado su tamaño y aflojar la tierra con una horquilla antes de levantarlas. El clima fresco de otoño puede mejorar el sabor. Se pueden dejar bajo un acolchado grueso, pero conviene cosecharlas antes del rebrote de primavera, que vuelve las raíces leñosas. Los 100–120 días que menciona la fuente son una referencia, no un calendario garantizado para toda variedad o lugar."
       },
       "problems": {
         "short": "Las larvas pueden perforar raíces; el follaje húmedo favorece manchas",
@@ -1045,7 +1049,7 @@
     }
   },
   "rutabaga": {
-    "summary": "Identidad base de Wave 2 para Colinabo sueco. La guía mantiene separadas la evidencia del cultivo, el cultivar y la respuesta del sistema.",
+    "summary": "El colinabo sueco es un cultivo de raíz de almacenamiento de Brassica napus, distinto del nabo Brassica rapa. Necesita una temporada larga y fresca, suelo profundo y humedad constante; el calor y la sequía pueden perjudicar la textura y el sabor. Las fechas y dimensiones citadas son referencias regionales, no garantías de cultivar.",
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -1068,8 +1072,8 @@
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo."
       },
       "harvest": {
-        "short": "Cosecha según la etapa del cultivo",
-        "guidance": "Usa señales visibles de desarrollo y condición de la planta. Los calendarios son referencias del cultivo, no promesas para cada sistema."
+        "short": "Cosecha las raíces desarrolladas en otoño y afloja el suelo",
+        "guidance": "UMN Extension recomienda mantener las rutabagas en el suelo hasta septiembre u octubre y señala que una helada fuerte puede mejorar el sabor. USU describe raíces de alrededor de 4 pulgadas y una referencia de madurez de 60–80 días; son señales y rangos regionales, no un calendario fijo para esta identidad sin cultivar nombrado. Afloja el suelo con una horquilla antes de levantar la raíz, en vez de tirar con fuerza de las hojas."
       },
       "problems": {
         "short": "Vigila agujeros en hojas, túneles en raíces y trastornos del cultivo",

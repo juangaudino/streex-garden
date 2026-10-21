@@ -187,7 +187,8 @@ export const gardenPlantProfileCatalog = {
           "guidance": "Comienza con cosechas ligeras una vez que la planta esté establecida. Para una planta que seguirá produciendo, los cortes de tallo sobre brotes laterales sanos favorecen mejor la ramificación que quitar hojas aisladas repetidamente.",
           "items": [
             "Manipular las hojas con cuidado; la albahaca se magulla con facilidad.",
-            "Una cosecha mayor suele hacerse antes de la floración."
+            "Una cosecha mayor suele hacerse antes de la floración.",
+            "Para un corte completo de tipo productivo, Johnny’s indica cortar a 4–6 pulgadas del suelo para favorecer el rebrote; Garden no debería aplicar automáticamente ese corte intenso a cada pod de encimera."
           ],
           "avoid": "",
           "context": ""
@@ -213,8 +214,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Retirar flores para favorecer la producción de hojas",
           "guidance": "Si el objetivo es seguir produciendo hojas, retira las espigas florales que aparezcan y mantén la poda para favorecer la ramificación. La floración es un evento real de la planta y debe registrarse por separado de la recomendación de retirarla.",
           "items": [
-            "Treat visible flower buds as an observation.",
-            "Record flower removal only after the user confirms the action."
+            "Trata los botones florales visibles como una observación.",
+            "Registra la retirada de flores solo después de que el usuario confirme la acción."
           ],
           "avoid": "",
           "context": ""
@@ -247,7 +248,7 @@ export const gardenPlantProfileCatalog = {
             "Johnny's sugiere al menos 14 horas de luz por día en condiciones de producción."
           ],
           "avoid": "",
-          "context": "Ranges can vary by system, nutrient formulation, cultivar and growth stage."
+          "context": "Los rangos pueden variar según el sistema, la formulación nutritiva, el cultivar y la etapa de crecimiento."
         }
       },
       "problems": {
@@ -271,8 +272,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Reconocer plagas y enfermedades comunes; no inferir resistencia del cultivar",
           "guidance": "NC State Extension enumera pulgones y escarabajos japoneses como problemas ocasionales de insectos, y marchitez por Fusarium y mildiu velloso de la albahaca entre las enfermedades. La fuente identifica cultivares resistentes por separado; esta ficha no afirma resistencia específica de Genovese. Confirma los síntomas antes de elegir una respuesta.",
           "items": [
-            "Watch for aphids or Japanese beetle feeding, both listed as occasional basil insect problems by NC State Extension.",
-            "Fusarium wilt and basil downy mildew are documented disease risks; symptoms need identification before choosing a response."
+            "Vigila pulgones o daños por escarabajo japonés; NC State Extension incluye ambos entre los problemas ocasionales de insectos en albahaca.",
+            "La marchitez por Fusarium y el mildiu velloso de la albahaca son riesgos de enfermedad documentados; hay que identificar los síntomas antes de elegir una respuesta."
           ],
           "avoid": "",
           "context": ""
@@ -343,6 +344,27 @@ export const gardenPlantProfileCatalog = {
       ]
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-cilantro"
+        ],
+        "en": {
+          "short": "One species, two harvest goals: cilantro leaves or coriander seed",
+          "guidance": "Utah State University Extension presents cilantro/coriander as Coriandrum sativum and describes harvesting its leaves or allowing the same plant to flower and mature seed. This identity represents the leaf-cilantro crop type; coriander seed is a later use of the same species, not a separate plant or cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Una especie, dos objetivos de cosecha: hojas de cilantro o semillas de coriandro",
+          "guidance": "Utah State University Extension presenta el cilantro/coriandro como Coriandrum sativum y describe la cosecha de sus hojas o dejar que la misma planta florezca y madure semillas. Esta identidad representa el tipo de cultivo para hojas de cilantro; la semilla de coriandro es un uso posterior de la misma especie, no otra planta ni un cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -643,8 +665,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Una cabeza necesita espacio; baby leaf es otro modo",
           "guidance": "Para una lechuga destinada a formar cabeza en un pod compacto, Garden normalmente debe favorecer una planta vigorosa una vez establecida. La producción baby leaf sigue reglas distintas.",
           "items": [
-            "Select the strongest, centered seedling when the goal is a full romaine plant.",
-            "For baby-leaf production, denser culture follows a different set of rules and should be treated as another grow mode."
+            "Elige la plántula más vigorosa y centrada si buscas una planta romana completa.",
+            "Para producir hojas baby se usa una densidad mayor y un manejo distinto; debe tratarse como otro modo de cultivo."
           ],
           "avoid": "",
           "context": ""
@@ -693,8 +715,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Hojas externas para continuidad o corte de la cabeza",
           "guidance": "USU señala que la lechuga de hoja puede cosecharse retirando primero las hojas externas maduras para que las jóvenes sigan creciendo. La romana también puede cosecharse como cabeza.",
           "items": [
-            "For repeated harvest, remove mature outer leaves and preserve the center.",
-            "For a head harvest, cut at the base when the plant has reached the desired size."
+            "Para cosechas repetidas, retira las hojas exteriores maduras y conserva el centro.",
+            "Para cosechar una cabeza, corta por la base cuando la planta alcance el tamaño deseado."
           ],
           "avoid": "",
           "context": ""
@@ -743,8 +765,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Objetivos de cultivo fresco con rangos dependientes del sistema",
           "guidance": "UF/IFAS muestra un sistema de lechuga no circulante cerca de pH 5.5–6.0 y ~1.25 mS/cm; OSU ofrece un rango más amplio de EC de 1.2–1.8 mS/cm. Garden debe conservar el contexto de cada fuente.",
           "items": [
-            "Use the nutrient manufacturer's instructions as part of the operating context.",
-            "Treat measured pH/EC as canonical observations; treatment recommendations remain separate."
+            "Usa las instrucciones del fabricante de nutrientes como parte del contexto operativo.",
+            "Registra el pH/EC medido como observación canónica; las recomendaciones de tratamiento se mantienen por separado."
           ],
           "avoid": "",
           "context": ""
@@ -837,7 +859,9 @@ export const gardenPlantProfileCatalog = {
         "en": {
           "short": "This profile represents mint at genus level",
           "guidance": "The catalog identity is Mentha spp.; it does not identify peppermint, spearmint, or a named cultivar. Utah State notes that mint varieties differ in taste and scent and that seed-grown mints may not remain true to type. Do not assign species-specific flavor, size, or performance to this record.",
-          "items": [],
+          "items": [
+            "The species and cultivar represented by this catalog identity remain unresolved."
+          ],
           "avoid": "",
           "context": ""
         },
@@ -860,7 +884,9 @@ export const gardenPlantProfileCatalog = {
         "en": {
           "short": "Outdoor mint prefers sun to partial shade and moist, well-drained soil",
           "guidance": "For garden-bed cultivation, USU describes mint as growing in full sun to partial shade and preferring moist soil; excess water can promote root and leaf disease. These are outdoor soil recommendations and do not establish indoor-light or hydroponic requirements.",
-          "items": [],
+          "items": [
+            "Do not transfer garden-soil watering guidance directly to a hydroponic system."
+          ],
           "avoid": "",
           "context": ""
         },
@@ -884,7 +910,9 @@ export const gardenPlantProfileCatalog = {
         "en": {
           "short": "Mint spreads rapidly by rhizomes in open soil",
           "guidance": "USU and Illinois Extension describe mints as vigorous, rhizomatous spreaders that can become invasive in garden beds. Containment advice applies to outdoor soil; it should not be treated as evidence that every mint is unsuitable for a contained growing system.",
-          "items": [],
+          "items": [
+            "Outdoor rhizome-containment guidance does not establish hydroponic compatibility."
+          ],
           "avoid": "",
           "context": ""
         },
@@ -964,7 +992,9 @@ export const gardenPlantProfileCatalog = {
         "en": {
           "short": "Remove flower spikes when leaf flavor is the priority",
           "guidance": "USU reports lower leaf oil content and flavor when mint is allowed to bloom; Illinois Extension likewise recommends removing flower spikes to maintain leaf flavor. This is a culinary-leaf management choice, not a requirement when flowers are desired.",
-          "items": [],
+          "items": [
+            "If flowers are desired, removing them to prioritize leaf flavor is not the relevant management goal."
+          ],
           "avoid": "",
           "context": ""
         },
@@ -1157,9 +1187,9 @@ export const gardenPlantProfileCatalog = {
           "short": "Identificar el hábito de la selección antes de podar",
           "guidance": "Confirma el hábito de la variedad antes de decidir entre jaula, estaca, espaldera o eliminación de chupones. Johnny's distingue el manejo de tomates determinados e indeterminados; OSU trata la poda de tomates indeterminados en su contexto hidropónico. Ninguna fuente respalda una rutina única para todos los tomates cherry.",
           "items": [
-            "Confirm growth habit before recommending sucker removal.",
-            "For indeterminate hydroponic tomatoes, remove small side shoots while they are easy to detach.",
-            "Remove older yellow lower leaves as part of sanitation and airflow management."
+            "Confirma el hábito de crecimiento antes de recomendar quitar brotes laterales.",
+            "En tomates hidropónicos indeterminados, retira los brotes laterales pequeños mientras aún se desprendan con facilidad.",
+            "Retira las hojas inferiores viejas y amarillas como parte del saneamiento y del manejo de la circulación de aire."
           ],
           "avoid": "",
           "context": ""
@@ -1230,8 +1260,8 @@ export const gardenPlantProfileCatalog = {
           "short": "Mayor demanda nutritiva que las hojas verdes",
           "guidance": "La tabla hidropónica de OSU sitúa el tomate cerca de pH 6.0–6.5 y EC 2.0–4.0 mS/cm. Son rangos amplios que deben contextualizarse por etapa y programa nutritivo.",
           "items": [
-            "Provide physical support as the plant and fruit load increase.",
-            "Track lower-leaf condition and sucker growth during routine maintenance."
+            "Añade soporte físico a medida que aumentan el tamaño de la planta y la carga de frutos.",
+            "Durante el mantenimiento rutinario, observa el estado de las hojas inferiores y el crecimiento de los brotes laterales."
           ],
           "avoid": "",
           "context": ""
@@ -1286,17 +1316,17 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Ventana de cosecha",
-          "value": "",
+          "value": "~64–90 días",
           "note": "Depende de fuente/cultivar"
         },
         {
           "label": "Altura de referencia",
-          "value": "",
+          "value": "12–36 pulgadas",
           "note": "Home Grown vs. contexto varietal de UMN"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "5.5–6.0 / 1.0–1.6",
           "note": "Referencia OSU para cultivo de albahaca"
         }
       ]
@@ -1549,17 +1579,17 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Punto de cosecha",
-          "value": "",
+          "value": "6–8 pulgadas",
           "note": "Guía varietal Home Grown"
         },
         {
           "label": "Altura",
-          "value": "",
+          "value": "12–24 pulgadas",
           "note": "Referencia varietal del fabricante"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "5.5–6.0 / 1.0–1.6",
           "note": "Referencia OSU para cultivo de albahaca"
         }
       ]
@@ -1813,67 +1843,22 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Madurez",
-          "value": "",
+          "value": "60–90 días",
           "note": "USU; fabricante indica 90–120"
         },
         {
           "label": "Punto de cosecha",
-          "value": "",
-          "note": "USU Florence fennel"
+          "value": "Base firme de <4 pulgadas de ancho",
+          "note": "USU, hinojo de Florencia"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "Pendiente",
           "note": "Sin objetivo hidropónico específico aceptado"
         }
       ]
     },
     "sections": {
-      "identity": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "kew-foeniculum-vulgare-wave64",
-          "usu-fennel",
-          "rhs-florence-fennel-grow-2026"
-        ],
-        "en": {
-          "short": "Accepted species Foeniculum vulgare; Florence/bulbing fennel type",
-          "guidance": "Kew accepts Foeniculum vulgare and lists Foeniculum azoricum and F. vulgare var. azoricum as synonyms. USU and RHS use var. azoricum for Florence fennel, the bulbing horticultural type grown for its swollen leaf bases; common fennel is generally grown for foliage or seed. This identity represents the Florence/bulbing type, not a named cultivar or a separate accepted species.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Especie aceptada Foeniculum vulgare; tipo Florence/hinojo de bulbo",
-          "guidance": "Kew acepta Foeniculum vulgare y lista Foeniculum azoricum y F. vulgare var. azoricum como sinónimos. USU y RHS usan var. azoricum para Florence fennel, el tipo hortícola de bulbo cultivado por sus bases foliares engrosadas; el hinojo común suele cultivarse por el follaje o la semilla. Esta identidad representa el tipo Florence/de bulbo, no un cultivar nombrado ni una especie aceptada distinta.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "growth": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "usu-fennel",
-          "rhs-florence-fennel-grow-2026"
-        ],
-        "en": {
-          "short": "Feathery fronds rise from overlapping leaf bases that swell into the edible bulb-like base",
-          "guidance": "RHS describes the edible Florence fennel 'bulb' as overlapping, swollen leaf bases at ground level; it is not a true botanical bulb. USU distinguishes this crop type from common fennel grown mainly for foliage and seed. The profile has no named cultivar, and these sources do not establish indoor mature dimensions or pod spacing.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Las frondas plumosas crecen sobre bases foliares superpuestas que se engrosan",
-          "guidance": "RHS describe el 'bulbo' comestible de Florence fennel como bases foliares superpuestas y engrosadas al nivel del suelo; no es un bulbo botánico verdadero. USU distingue este tipo de cultivo del hinojo común, cultivado principalmente por el follaje y la semilla. El perfil no representa un cultivar nombrado y estas fuentes no establecen dimensiones adultas para interior ni separación entre pods.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -2027,6 +2012,52 @@ export const gardenPlantProfileCatalog = {
           "avoid": "",
           "context": ""
         }
+      },
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-foeniculum-vulgare-wave64",
+          "usu-fennel",
+          "rhs-florence-fennel-grow-2026"
+        ],
+        "en": {
+          "short": "Accepted species Foeniculum vulgare; Florence/bulbing fennel type",
+          "guidance": "Kew accepts Foeniculum vulgare and lists Foeniculum azoricum and F. vulgare var. azoricum as synonyms. USU and RHS use var. azoricum for Florence fennel, the bulbing horticultural type grown for its swollen leaf bases; common fennel is generally grown for foliage or seed. This identity represents the Florence/bulbing type, not a named cultivar or a separate accepted species.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Especie aceptada Foeniculum vulgare; tipo Florence/de hinojo de bulbo",
+          "guidance": "Kew acepta Foeniculum vulgare y lista Foeniculum azoricum y F. vulgare var. azoricum como sinónimos. USU y RHS usan var. azoricum para el hinojo de Florencia, el tipo hortícola de bulbo cultivado por sus bases foliares engrosadas; el hinojo común suele cultivarse por el follaje o la semilla. Esta ficha representa el tipo Florence/de bulbo, no un cultivar nombrado ni una especie aceptada distinta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-fennel",
+          "rhs-florence-fennel-grow-2026",
+          "johnnys-fennel-bulb"
+        ],
+        "en": {
+          "short": "Feathery fronds rise from swollen, overlapping leaf bases; production guides give about 2 ft as context",
+          "guidance": "RHS describes the edible Florence fennel “bulb” as overlapping, swollen leaf bases at ground level; it is not a true botanical bulb. USU distinguishes this crop type from common fennel grown mainly for foliage or seed. Johnny’s reports about 2 ft as production context, not a guaranteed mature dimension for an unnamed seed selection or a controlled system. The profile has no named cultivar, and these sources do not establish indoor dimensions or pod spacing.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Frondas plumosas sobre bases foliares superpuestas y engrosadas",
+          "guidance": "RHS describe el “bulbo” comestible del hinojo de Florencia como bases foliares superpuestas y engrosadas a nivel del suelo; no es un bulbo botánico verdadero. USU distingue este tipo de cultivo del hinojo común, cultivado principalmente por follaje o semilla. Johnny’s da unos 2 pies como referencia de producción, no como dimensión adulta garantizada para una selección de semilla sin especificar ni para un sistema controlado. No hay cultivar nombrado ni se establecen dimensiones de interior o separación entre pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
       }
     }
   },
@@ -2056,17 +2087,17 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Identidad",
-          "value": "",
+          "value": "Cymbopogon spp.",
           "note": "El paquete solo identifica el género; no se asigna especie ni cultivar"
         },
         {
           "label": "Punto de cosecha",
-          "value": "",
+          "value": "Tallos exteriores establecidos",
           "note": "El diámetro varía por fuente/especie"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "Pendiente",
           "note": "Sin objetivo hidropónico específico aceptado"
         }
       ]
@@ -2766,17 +2797,17 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Identidad",
-          "value": "",
+          "value": "Dianthus spp.",
           "note": "Especie exacta no resuelta"
         },
         {
           "label": "Uso",
-          "value": "",
+          "value": "Floración / ornamental",
           "note": "Especie exacta pendiente; aptitud para maceta no establecida"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "Pendiente",
           "note": "No mapear clavel a una mezcla enana sin resolver"
         }
       ]
@@ -3117,17 +3148,17 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Contexto de madurez indicado por el proveedor",
-          "value": "",
+          "value": "~50–60 días",
           "note": "Referencia comercial especializada"
         },
         {
           "label": "Temperatura de apio",
-          "value": "",
+          "value": "55–65°F como rango ideal",
           "note": "Referencia USU a nivel de cultivo"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "6.5 / 1.8–2.4",
           "note": "Referencia OSU a nivel de cultivo apio"
         }
       ]
@@ -3540,17 +3571,38 @@ export const gardenPlantProfileCatalog = {
       "es": [
         {
           "label": "Tipo de floración",
-          "value": "",
+          "value": "De día neutro",
           "note": "Autoridad varietal UC Davis"
         },
         {
           "label": "pH / EC hidro",
-          "value": "",
+          "value": "6.0 / 1.8–2.2",
           "note": "Referencia OSU a nivel de cultivo fresa"
         }
       ]
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucd-monterey"
+        ],
+        "en": {
+          "short": "UC Davis day-neutral garden-strawberry cultivar",
+          "guidance": "UC Davis identifies Monterey as a day-neutral cultivar of Fragaria × ananassa released in 2008. This is identity- and cultivar-level evidence; the crop-level garden guidance and hydroponic observations elsewhere in this profile retain their own scopes. The identity source does not establish mature plant dimensions.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Cultivar day-neutral de fresa de jardín desarrollado por UC Davis",
+          "guidance": "UC Davis identifica a Monterey como un cultivar day-neutral de Fragaria × ananassa, publicado en 2008. Esta evidencia corresponde a identidad y cultivar; la orientación de huerto y las observaciones hidropónicas del resto de la ficha conservan sus propios alcances. La fuente de identidad no establece dimensiones adultas de la planta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -3938,8 +3990,30 @@ export const gardenPlantProfileCatalog = {
       "es": "La rúcula es una roseta de estación fresca y crecimiento rápido, cosechada por sus hojas picantes. UW–Madison describe espigado con días largos, calor o suelo seco, cosecha repetida y daños de altica; su artículo usa Eruca sativa mientras Garden conserva Eruca vesicaria como nombre aceptado del catálogo."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Leaf length",
+          "value": "3–8 in",
+          "note": "UW–Madison species/crop description; not cultivar-specific"
+        },
+        {
+          "label": "Flowering stem",
+          "value": "2–3 ft",
+          "note": "UW–Madison; may develop with long days, heat and/or dry soil; not normal rosette height"
+        }
+      ],
+      "es": [
+        {
+          "label": "Longitud de hoja",
+          "value": "3–8 pulg",
+          "note": "Descripción de UW–Madison a nivel de especie/cultivo; no es específica de un cultivar"
+        },
+        {
+          "label": "Tallo floral",
+          "value": "2–3 pies",
+          "note": "UW–Madison; puede desarrollarse con días largos, calor y/o suelo seco; no es la altura normal de la roseta"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -4140,8 +4214,20 @@ export const gardenPlantProfileCatalog = {
       "es": "Dwarf Blue Curled representa un tipo de col rizada rizada dentro de Brassica oleracea; el catálogo no afirma que este registro sea un cultivar nombrado verificado ni fija sus dimensiones. La col rizada es un cultivo foliar de estación fresca y puede cosecharse repetidamente retirando hojas viejas mientras las jóvenes continúan creciendo."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Harvest pattern",
+          "value": "Cut older outer leaves; retain young growth",
+          "note": "UW–Madison crop guidance; no Dwarf Blue Curled-specific schedule"
+        }
+      ],
+      "es": [
+        {
+          "label": "Patrón de cosecha",
+          "value": "Cortar hojas exteriores viejas y conservar el crecimiento joven",
+          "note": "Guía de cultivo de UW–Madison; no establece un calendario propio de Dwarf Blue Curled"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -4323,8 +4409,30 @@ export const gardenPlantProfileCatalog = {
       "es": "La acelga Rainbow es una mezcla de variedades de colores, no un cultivar uniforme. Se cultiva por sus hojas anchas y pecíolos vistosos; las plantas establecidas pueden producir varias cosechas de hojas exteriores. Extension describe el freno estival y plagas manejables, pero no establece un tamaño maduro único para esta mezcla."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Leaf harvest size",
+          "value": "About 3 in",
+          "note": "UW–Madison general harvest cue; not Rainbow-blend maturity"
+        },
+        {
+          "label": "Repeat harvest",
+          "value": "Pick a few outer leaves at a time",
+          "note": "UW–Madison; cut near the base without damaging the growing point"
+        }
+      ],
+      "es": [
+        {
+          "label": "Tamaño de hoja para cosecha",
+          "value": "Aprox. 3 pulg",
+          "note": "Señal general de cosecha de UW–Madison; no es madurez específica de la mezcla Rainbow"
+        },
+        {
+          "label": "Cosecha repetida",
+          "value": "Recoger unas pocas hojas exteriores a la vez",
+          "note": "UW–Madison; cortar cerca de la base sin dañar el punto de crecimiento"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -4505,8 +4613,30 @@ export const gardenPlantProfileCatalog = {
       "es": "El bok choy o pak choi forma una mata erguida de hojas oscuras con pecíolos gruesos y pálidos. UMN Extension describe la necesidad de humedad constante, el riesgo de espigado por frío y la cosecha de hojas exteriores antes de perder calidad; las fechas y distancias son guía de campo para Minnesota, no ajustes hidropónicos."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Dwarf type height",
+          "value": "About 6 in",
+          "note": "UMN crop guidance; this catalog identity does not specify dwarf or full-size type"
+        },
+        {
+          "label": "Full-size type height",
+          "value": "About 1 ft",
+          "note": "UMN crop guidance; not a size assigned to this unspecified identity"
+        }
+      ],
+      "es": [
+        {
+          "label": "Altura de tipo enano",
+          "value": "Aprox. 6 pulg",
+          "note": "Guía de cultivo de UMN; esta identidad del catálogo no especifica tipo enano o de tamaño completo"
+        },
+        {
+          "label": "Altura de tipo grande",
+          "value": "Aprox. 1 pie",
+          "note": "Guía de cultivo de UMN; no se asigna este tamaño a la identidad sin tipo especificado"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -4685,8 +4815,30 @@ export const gardenPlantProfileCatalog = {
       "es": "La espinaca baby es una etapa/tipo de cosecha de Spinacia oleracea, no otra especie ni un cultivar nombrado. USU Extension describe la espinaca como cultivo de estación fresca: calor y días largos favorecen el espigado y el sabor amargo, mientras que retirar hojas viejas permite que sigan creciendo las jóvenes."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Heat performance",
+          "value": "Best growth below about 75°F",
+          "note": "USU spinach-crop guidance; not a baby-leaf cultivar or indoor setpoint"
+        },
+        {
+          "label": "Leaf harvest cue",
+          "value": "Pick usable leaves before the flower stalk forms",
+          "note": "USU crop guidance; pick older leaves first; no universal leaf size or date"
+        }
+      ],
+      "es": [
+        {
+          "label": "Desempeño con calor",
+          "value": "Mejor crecimiento por debajo de unos 75 °F",
+          "note": "Guía de USU para el cultivo de espinaca; no es un cultivar baby ni un punto de ajuste interior"
+        },
+        {
+          "label": "Señal para cosechar hojas",
+          "value": "Recoge hojas útiles antes de que aparezca el tallo floral",
+          "note": "Guía de cultivo de USU; comienza por hojas viejas; no hay tamaño ni fecha universal"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -5167,14 +5319,14 @@ export const gardenPlantProfileCatalog = {
           "johnnys-tomato"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
+          "short": "Choose support for the actual habit; no universal pruning plan",
           "guidance": "Keep healthy foliage and use support or shaping only when the actual plant architecture requires it; standard field practice is not automatically a compact-system rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "El soporte depende del porte real; no hay una poda universal",
           "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema.",
           "items": [],
           "avoid": "",
@@ -5811,8 +5963,20 @@ export const gardenPlantProfileCatalog = {
       "es": "El catálogo registra el tipo Marketmore dentro de Cucumis sativus. La guía de cultivo corresponde al pepino en general; aquí no se establecen dimensiones, rendimiento ni manejo interior propios del cultivar."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Slicer harvest cue",
+          "value": "Pick before fruits become oversized, yellow and seedy; harvest often",
+          "note": "UMN cucumber-crop guidance; no Marketmore-specific size is established"
+        }
+      ],
+      "es": [
+        {
+          "label": "Señal de cosecha para pepino de ensalada",
+          "value": "Cosecha antes de que el fruto crezca demasiado, amarillee y forme semillas grandes; recoge a menudo",
+          "note": "Guía de UMN para el cultivo del pepino; no establece tamaño propio de Marketmore"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -6433,8 +6597,30 @@ export const gardenPlantProfileCatalog = {
       "es": "Nantes es un tipo de zanahoria descrito como cilíndrico y de longitud media, no un cultivar único. Esta ficha usa orientación general de cultivo y cosecha de zanahoria; no atribuye sabor, tamaño exacto ni desempeño en sistemas interiores específicos de Nantes."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Nantes root form",
+          "value": "Medium-length, cylindrical",
+          "note": "Johnny's Nantes-type description; not dimensions for every named selection"
+        },
+        {
+          "label": "Harvest cue",
+          "value": "Lift when the root reaches usable size",
+          "note": "UMN crop guidance; no universal size or calendar"
+        }
+      ],
+      "es": [
+        {
+          "label": "Forma de la raíz Nantes",
+          "value": "Cilíndrica, de longitud media",
+          "note": "Descripción de Johnny's para el tipo Nantes; no son dimensiones de cada selección nombrada"
+        },
+        {
+          "label": "Señal de cosecha",
+          "value": "Levanta cuando alcance un tamaño útil",
+          "note": "Guía de cultivo de UMN; no hay tamaño ni calendario universal"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -6614,8 +6800,30 @@ export const gardenPlantProfileCatalog = {
       "es": "Detroit Dark Red es una remolacha de mesa clásica, redonda, lisa y uniforme, de color rojo oscuro, con raíces y hojas jóvenes comestibles. Mississippi State Extension respalda esos rasgos de la variedad; el manejo y la cosecha general siguen en el ámbito del cultivo, no son una receta hidropónica."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Named-variety root",
+          "value": "Smooth, globular, deep red",
+          "note": "Mississippi State Extension description; not a measured diameter"
+        },
+        {
+          "label": "Young-leaf harvest cue",
+          "value": "About 4–6 in",
+          "note": "Utah State beet-crop guidance; not Detroit Dark Red maturity"
+        }
+      ],
+      "es": [
+        {
+          "label": "Raíz de la variedad",
+          "value": "Lisa, globular y rojo oscuro",
+          "note": "Descripción de Mississippi State Extension; no es un diámetro medido"
+        },
+        {
+          "label": "Señal para cosechar hojas jóvenes",
+          "value": "Aprox. 4–6 pulg",
+          "note": "Guía de cultivo de Utah State para remolachas; no indica madurez de Detroit Dark Red"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -6797,8 +7005,20 @@ export const gardenPlantProfileCatalog = {
       "es": "Nabo de doble uso, cultivado por su raíz redondeada y sus hojas comestibles. Johnny's documenta la variedad Purple Top White Globe; el manejo general del cultivo se mantiene separado de las dimensiones indicadas por el proveedor."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Harvest-width references",
+          "value": "2–3 in (UMN crop cue); 3–4 in (Johnny's product description)",
+          "note": "Different scopes: crop-quality harvest guidance versus named-variety supplier characteristic"
+        }
+      ],
+      "es": [
+        {
+          "label": "Referencias de ancho para cosecha",
+          "value": "2–3 pulg (señal de UMN); 3–4 pulg (descripción comercial de Johnny's)",
+          "note": "Alcances distintos: guía de calidad del cultivo y característica del proveedor para la variedad"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -7421,14 +7641,14 @@ export const gardenPlantProfileCatalog = {
           "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Match support to the documented growth habit",
+          "short": "Bush plants stay upright and usually need no trellis",
           "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Adapta el soporte al hábito documentado",
+          "short": "Las plantas de mata crecen erguidas y normalmente no requieren espaldera",
           "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
           "items": [],
           "avoid": "",
@@ -8011,8 +8231,30 @@ export const gardenPlantProfileCatalog = {
       "es": "Santo es una selección de cilantro vendida para cosechar hojas y descrita por Johnny's como de floración tardía; esa afirmación del proveedor no cuantifica el retraso ni garantiza el resultado en todos los climas. La guía de especie describe el cilantro como cultivo de estación fresca, recomienda cosechar hojas jóvenes y señala la floración prematura y el amarillamiento del áster transmitido por chicharritas como aspectos de manejo. La aptitud hidropónica y las dimensiones maduras no están establecidas."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Leaf-harvest cue",
+          "value": "Leaves around 4–6 in",
+          "note": "USU cilantro-crop guidance; not a Santo maturity promise"
+        },
+        {
+          "label": "Coriander seed cue",
+          "value": "Allow seed heads to mature and turn brown",
+          "note": "USU crop guidance; distinct from harvesting leaves for cilantro"
+        }
+      ],
+      "es": [
+        {
+          "label": "Señal para cosechar hojas",
+          "value": "Hojas de unos 4–6 pulg",
+          "note": "Guía de USU para el cultivo de cilantro; no es promesa de madurez para Santo"
+        },
+        {
+          "label": "Señal para cosechar coriandro",
+          "value": "Deja madurar las cabezuelas hasta que se vuelvan marrones",
+          "note": "Guía de cultivo de USU; objetivo distinto de cosechar hojas de cilantro"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -9546,14 +9788,14 @@ export const gardenPlantProfileCatalog = {
           "umn-fall-greens-wave2"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
+          "short": "Harvest older leaves; routine shaping is not established",
           "guidance": "Routine shaping cuts are not established for this unspecified collard type. Remove older leaves as harvest, and remove damaged tissue when needed; do not infer a container or hydroponic pruning schedule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "Cosecha hojas mayores; no se establece poda rutinaria de formación",
           "guidance": "Las fuentes seleccionadas no establecen una poda de formación para este tipo de berza no especificado. Retira hojas mayores como cosecha y tejido dañado cuando sea necesario; no se infiere un calendario de poda para contenedor o hidroponía.",
           "items": [],
           "avoid": "",
@@ -9610,14 +9852,14 @@ export const gardenPlantProfileCatalog = {
           "umn-fall-greens-wave2"
         ],
         "en": {
-          "short": "Thin or separate according to the intended harvest form",
+          "short": "Field row spacing does not set Garden pod count",
           "guidance": "USU publishes row-spacing guidance for field collards, but it is not a Garden pod-spacing recommendation. Do not infer a one-plant-per-pod rule without a system-specific source.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Ralea según la forma de cosecha",
+          "short": "El espaciamiento en hileras no determina los pods de Garden",
           "guidance": "USU publica espaciamiento en hileras para berzas de campo, pero no una recomendación de pods de Garden. No infieras una regla de una planta por pod sin una fuente para el sistema concreto.",
           "items": [],
           "avoid": "",
@@ -10457,8 +10699,30 @@ export const gardenPlantProfileCatalog = {
       "es": "Supersweet 100 F1 es un tomate cherry rojo indeterminado que produce frutos de 15–20 g en racimos grandes. Johnny's estima unos 60 días desde el trasplante y registra resistencia a la marchitez por Fusarium raza 1 y Verticillium para su producto nombrado."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Fruit weight",
+          "value": "About 15–20 g",
+          "note": "Johnny's named F1 product description; individual fruits vary"
+        },
+        {
+          "label": "Days to maturity",
+          "value": "About 60 days from transplant",
+          "note": "Johnny's product estimate; not counted from sowing and varies with conditions"
+        }
+      ],
+      "es": [
+        {
+          "label": "Peso del fruto",
+          "value": "Aprox. 15–20 g",
+          "note": "Descripción del producto F1 nombrado de Johnny's; el peso varía entre frutos"
+        },
+        {
+          "label": "Días hasta madurez",
+          "value": "Aprox. 60 días desde el trasplante",
+          "note": "Estimación del producto Johnny's; no cuenta desde la siembra y varía con las condiciones"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -12280,14 +12544,14 @@ export const gardenPlantProfileCatalog = {
           "usu-beets-home-gardens-2020"
         ],
         "en": {
-          "short": "Thin or separate according to the intended harvest form",
+          "short": "Thin outdoor beets to relieve crowding; don't infer pod spacing",
           "guidance": "Utah State Extension notes that crowding limits beet root development. Thin for the intended outdoor harvest; field spacing does not define Garden system positions.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Ralea según la forma de cosecha",
+          "short": "Aclara las remolachas exteriores para aliviar el amontonamiento",
           "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de raíces. Aclara según la cosecha exterior prevista; el espaciamiento de campo no define posiciones de un sistema Garden.",
           "items": [],
           "avoid": "",
@@ -14611,7 +14875,7 @@ export const gardenPlantProfileCatalog = {
           "guidance": "UMN Extension agrupa la endivia con lechugas y achicorias: crecen mejor en condiciones frescas y tienen raíces superficiales que requieren humedad constante del suelo. Sus temperaturas, calendario y espaciamiento en campo corresponden al cultivo exterior de Minnesota; no se trasladan a otros climas ni a sistemas interiores o hidropónicos.",
           "items": [],
           "avoid": "",
-          "context": "Crop-group guidance from a Minnesota home-garden source; adjust timing to local conditions."
+          "context": "Orientación para el grupo de cultivo procedente de una fuente de huerto doméstico de Minnesota; ajusta el calendario a las condiciones locales."
         }
       },
       "growth": {
@@ -15402,8 +15666,20 @@ export const gardenPlantProfileCatalog = {
       "es": "Komatsuna es una verdura asiática en manojos de Brassica rapa, con hojas oscuras y pecíolos verdes delgados. Puede cultivarse para hojas baby o plantas más grandes; la guía de producción del Medio Oeste ofrece tiempos por grupo de cultivo, no una garantía para este tipo sin nombre varietal. El calor y los días más largos pueden aumentar el riesgo de espigado, mientras que las dimensiones maduras y la aptitud hidropónica siguen desconocidas."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Crop-group harvest timing",
+          "value": "About 20 days for baby leaves; about 45 days for full-size plants",
+          "note": "Midwest commercial Asian-greens guide; estimates are group-level, not a Komatsuna packet promise or indoor schedule"
+        }
+      ],
+      "es": [
+        {
+          "label": "Tiempo de cosecha orientativo del grupo",
+          "value": "Unos 20 días para hoja baby; unos 45 para planta completa",
+          "note": "Guía comercial del Medio Oeste para verduras asiáticas; estimación del grupo, no promesa de paquete ni calendario interior"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -16891,8 +17167,7 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "umn-tomato-disorders-2024",
-          "umn-tomato-leaf-spots-2024",
-          "johnnys-sunrise-sauce-wave3"
+          "umn-tomato-leaf-spots-2024"
         ],
         "en": {
           "short": "Recognize fruit disorders and leaf spots early",
@@ -18558,14 +18833,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
+          "short": "Root crop: thin rather than prune stems routinely",
           "guidance": "Carrots are managed for their roots, not by routine stem pruning. Use thinning to reduce crowding and remove damaged foliage only when needed; soil row spacing is not a pod-count rule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "Cultivo de raíz: aclara; no podes tallos de rutina",
           "guidance": "La zanahoria se maneja por su raíz, no mediante poda rutinaria de tallos. Usa el aclareo para reducir el amontonamiento y retira follaje dañado solo cuando sea necesario; el espaciamiento de campo no es una regla de pods.",
           "items": [],
           "avoid": "",
@@ -18622,14 +18897,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Thin or separate according to the intended harvest form",
+          "short": "Thin carrots to leave room for root growth",
           "guidance": "UMN Extension recommends thinning carrots to leave room for root development. Apply this as outdoor row advice only; no hydroponic pod spacing is inferred.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Aclara las zanahorias para dejar espacio a las raíces",
+          "short": "Aclara las zanahorias para dejar espacio al desarrollo de la raíz",
           "guidance": "UMN Extension recomienda aclarar las zanahorias para permitir el desarrollo de la raíz. Aplica la recomendación a hileras exteriores; no se infiere un espaciamiento hidropónico de pods.",
           "items": [],
           "avoid": "",
@@ -18742,14 +19017,14 @@ export const gardenPlantProfileCatalog = {
           "usu-beets-home-gardens-2020"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
+          "short": "Harvest leaves or roots; routine stem pruning is not needed",
           "guidance": "Beets are managed through selective leaf/root harvest and thinning rather than routine stem pruning. Remove damaged leaves as needed; outdoor row spacing is not a fixed system pod count.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "Cosecha hojas o raíces; no requiere poda rutinaria de tallos",
           "guidance": "La remolacha se maneja con cosecha selectiva de hojas/raíces y aclareo, no con poda rutinaria de tallos. Retira hojas dañadas si hace falta; la distancia exterior no es un conteo de pods del sistema.",
           "items": [],
           "avoid": "",
@@ -18805,14 +19080,14 @@ export const gardenPlantProfileCatalog = {
           "usu-beets-home-gardens-2020"
         ],
         "en": {
-          "short": "Thin or separate according to the intended harvest form",
+          "short": "Thin outdoor beets to reduce crowding around roots",
           "guidance": "Utah State Extension notes that crowding limits beet root development. Thin according to outdoor crop guidance and intended harvest; do not convert field distances into Garden pod spacing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Aclara las plantas amontonadas para permitir el desarrollo de la raíz",
+          "short": "Aclara las remolachas exteriores para reducir competencia entre raíces",
           "guidance": "Utah State Extension señala que el amontonamiento limita el desarrollo de la raíz de remolacha. Aclara según la guía exterior y la cosecha prevista; no conviertas distancias de campo en separación de pods Garden.",
           "items": [],
           "avoid": "",
@@ -19567,14 +19842,14 @@ export const gardenPlantProfileCatalog = {
           "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Match support to the documented growth habit",
+          "short": "Install a trellis at planting for the climbing pole type",
           "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Adapta el soporte al hábito documentado",
+          "short": "Instala una espaldera al plantar este tipo de enrame",
           "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
           "items": [],
           "avoid": "",
@@ -19898,8 +20173,8 @@ export const gardenPlantProfileCatalog = {
   },
   "henderson-bush-lima-bean": {
     "summary": {
-      "en": "Henderson is represented as a bush-type lima bean (Phaseolus lunatus), not common bean (P. vulgaris). Harvest fresh pods as seeds swell toward cream or white, or leave pods to dry; the available guidance is crop/type-level and does not establish Henderson-specific dimensions or hydroponic settings.",
-      "es": "Henderson se representa como frijol lima de mata (Phaseolus lunatus), no como frijol común (P. vulgaris). Para consumir las semillas frescas desgranadas, cosecha las vainas cuando empiecen a hincharse y las semillas pasen de verde a crema o blanco; para grano seco, deja que las vainas se sequen en la planta. La guía es del cultivo/tipo, sin dimensiones ni ajustes hidropónicos propios de Henderson."
+      "en": "Henderson represents a bush-type lima bean (Phaseolus lunatus), not common bean (P. vulgaris). Lima beans need warmer soil and a longer season than common beans; harvest fresh pods as seeds swell toward cream or white, or leave them to dry. Guidance remains crop/type-level, with no Henderson-specific dimensions or hydroponic settings.",
+      "es": "Henderson representa un frijol lima de mata (Phaseolus lunatus), no un frijol común (P. vulgaris). El lima necesita suelo más cálido y una temporada más larga que el frijol común; cosecha las vainas frescas cuando las semillas comiencen a hincharse o déjalas secar. La guía sigue siendo del cultivo/tipo, sin dimensiones ni ajustes hidropónicos propios de Henderson."
     },
     "metrics": {
       "en": [],
@@ -19956,15 +20231,15 @@ export const gardenPlantProfileCatalog = {
           "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Wait for warm soil before outdoor sowing",
-          "guidance": "UMN Extension advises direct sowing common beans after the garden soil has warmed. Its Minnesota timing is regional; this soil-based advice is not a hydroponic temperature or indoor-starting prescription.",
+          "short": "Lima beans need a warmer, longer season than common beans",
+          "guidance": "UMN Extension recommends sowing beans after soil has warmed and its lima-specific guidance says Phaseolus lunatus needs warmer soil and weather and a somewhat longer growing season than common beans; cooler-than-normal Minnesota summers can reduce performance. The source sets no exact temperature threshold; this regional outdoor guidance is not an indoor or hydroponic set point.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Espera a que el suelo se caliente antes de sembrar al aire libre",
-          "guidance": "UMN Extension recomienda sembrar directamente los frijoles comunes después de que se caliente el suelo del jardín. El calendario de Minnesota es regional; esta recomendación para suelo no es una temperatura hidropónica ni una instrucción de germinación en interior.",
+          "short": "El lima necesita una temporada más cálida y larga que el frijol común",
+          "guidance": "UMN Extension recomienda sembrar los frijoles después de que se caliente el suelo y, en su apartado específico del lima, indica que Phaseolus lunatus necesita suelo y clima más cálidos y una temporada algo más larga que el frijol común; un verano más fresco de lo normal en Minnesota puede reducir su rendimiento. No fija un umbral exacto de temperatura; este contexto exterior regional no es una consigna para interior o hidroponía.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -19977,14 +20252,14 @@ export const gardenPlantProfileCatalog = {
           "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Match support to the documented growth habit",
+          "short": "Bush lima habit: upright plants generally need no trellis",
           "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Adapta el soporte al hábito documentado",
+          "short": "Tipo lima de mata: crecimiento erguido, normalmente sin espaldera",
           "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
           "items": [],
           "avoid": "",
@@ -20137,14 +20412,14 @@ export const gardenPlantProfileCatalog = {
           "umn-beans-home-gardens-2026"
         ],
         "en": {
-          "short": "Match support to the documented growth habit",
+          "short": "Bush type: upright growth generally needs no trellis",
           "guidance": "For pole beans, install a trellis or other support when planting because the vines climb. Bush beans are upright and generally do not need support. These are crop-type distinctions, not a measured dimension for this named entry.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Adapta el soporte al hábito documentado",
+          "short": "Tipo de mata: crecimiento erguido, normalmente sin espaldera",
           "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre.",
           "items": [],
           "avoid": "",
@@ -22574,8 +22849,30 @@ export const gardenPlantProfileCatalog = {
       "es": "El berro de agua (Nasturtium officinale) es una planta perenne acuática cultivada por sus hojas y brotes picantes. Requiere raíces constantemente mojadas o agua poco profunda; las instrucciones de recipiente no prueban compatibilidad con hidroponía recirculante cerrada."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Flavor and heat cue",
+          "value": "Flavor weakens above about 85°F",
+          "note": "Utah State Extension regional observation; not an indoor temperature setpoint"
+        },
+        {
+          "label": "Outdoor cut-back for regrowth",
+          "value": "About 4 in",
+          "note": "USU's outdoor watercress harvest method; not a universal cut height or hydroponic regrowth guarantee"
+        }
+      ],
+      "es": [
+        {
+          "label": "Señal de calor y sabor",
+          "value": "El sabor disminuye sobre unos 85 °F",
+          "note": "Observación regional de Utah State Extension; no es un punto de ajuste para interior"
+        },
+        {
+          "label": "Corte exterior para rebrote",
+          "value": "Aprox. 4 pulg",
+          "note": "Método exterior de cosecha de USU; no es una altura universal ni garantiza rebrote hidropónico"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -22669,14 +22966,14 @@ export const gardenPlantProfileCatalog = {
           "usu-watercress-home-gardens-2026"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
+          "short": "Cut plants back to about 4 inches for outdoor regrowth",
           "guidance": "USU's harvest method cuts the plant back to about 4 inches so it can regrow for a later harvest. Use this only as the described outdoor watercress method; it is not a promise of uniform regrowth in another environment.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "Corta hasta unos 10 cm para favorecer el rebrote exterior",
           "guidance": "USU describe cortar la planta hasta unos 10 cm para que rebrote y permitir una cosecha posterior. Aplica solo como método exterior de berro de agua descrito por la fuente; no garantiza rebrote uniforme en cualquier ambiente.",
           "items": [],
           "avoid": "",
@@ -22732,14 +23029,14 @@ export const gardenPlantProfileCatalog = {
           "usu-watercress-home-gardens-2026"
         ],
         "en": {
-          "short": "USU outdoor transplant spacing is not system spacing",
+          "short": "Keep 8-inch outdoor spacing separate from pod spacing",
           "guidance": "USU gives 8 inches between transplants for its outdoor garden instructions. That row/bed distance must not be treated as a hydroponic pod interval or container-system capacity.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La separación exterior de trasplantes no es separación de pods",
+          "short": "No conviertas los 20 cm de exterior en separación de pods",
           "guidance": "USU indica 20 cm entre trasplantes en sus instrucciones de jardín exterior. Esa distancia de hilera/cama no debe usarse como intervalo de pods ni capacidad de un recipiente hidropónico.",
           "items": [],
           "avoid": "",
@@ -23466,7 +23763,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El follaje púrpura varía según el cultivar; hay formas ornamentales documentadas",
+          "short": "El color púrpura del follaje varía según el cultivar; hay formas ornamentales documentadas",
           "guidance": "NC State Extension indica que los cultivares de albahaca dulce con follaje púrpura vistoso suelen usarse como ornamentales y son aptos para contenedores. Nombra ejemplos distintos —Dark Opal Purple, Purple Ruffles y Rubin— cuyos rasgos no son intercambiables; ninguno se asigna a esta ficha sin cultivar especificado.",
           "items": [],
           "avoid": "",
@@ -23487,7 +23784,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno y suelo húmedo con buen drenaje en cultivo exterior",
+          "short": "Las guías de cultivo exterior documentan pleno sol y suelo húmedo, pero bien drenado",
           "guidance": "NC State Extension recomienda pleno sol y suelo húmedo pero bien drenado para la albahaca dulce a nivel de especie. Esto respalda el contexto de cultivo exterior, no una duración de luz artificial, una receta hidropónica ni un óptimo específico para un cultivar morado.",
           "items": [],
           "avoid": "",
@@ -23529,7 +23826,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retirar los botones florales es una decisión de manejo, no un diagnóstico",
+          "short": "Los botones florales son una decisión de manejo, no un diagnóstico",
           "guidance": "NC State Extension incluye pinzar botones florales dentro del manejo general de albahaca dulce. Si se dejan las flores, el color y el momento dependen del cultivar; esta ficha no asigna un color ni calendario a un tipo morado no especificado.",
           "items": [],
           "avoid": "",
@@ -23571,7 +23868,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Usos culinarios y ornamentales documentados para el grupo",
+          "short": "Hay usos culinarios y ornamentales documentados para el cultivo",
           "guidance": "NC State Extension describe las hojas comestibles de albahaca para sopas, guisos y otros platos, y señala el valor ornamental y en contenedor de los cultivares de hoja púrpura vistosa. El perfil de sabor y el mejor uso culinario varían por cultivar y no están resueltos para esta ficha amplia.",
           "items": [],
           "avoid": "",
@@ -24471,7 +24768,7 @@ export const gardenPlantProfileCatalog = {
           "umn-tomatoes-home-gardens-2024"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
+          "short": "Support the indeterminate vine; one-stem pruning is not required",
           "guidance": "Cornell identifies Black Krim as indeterminate. In an outdoor garden, plan for a stake, cage, or trellis that can support continuing vine growth; the selected sources do not establish a Black Krim-specific pruning schedule or make one-stem pruning mandatory.",
           "items": [],
           "avoid": "",
@@ -24656,7 +24953,7 @@ export const gardenPlantProfileCatalog = {
           "johnnys-tomato-catalog-wave2"
         ],
         "en": {
-          "short": "Manage structure without assuming a universal pruning rule",
+          "short": "Check the exact selection's habit before training or pruning",
           "guidance": "Johnny's lists both determinate and indeterminate selections within paste/Roma tomatoes. Identify the exact seed selection before choosing support or pruning; this profile does not prescribe one habit or pruning regime for all San Marzano-labeled plants.",
           "items": [],
           "avoid": "",
@@ -26613,8 +26910,8 @@ export const gardenPlantProfileCatalog = {
   },
   "red-acre-cabbage": {
     "summary": {
-      "en": "Red Acre is cataloged as a named red-cabbage identity within Brassica oleracea. General cabbage guidance supports head development, steady moisture, harvest and common quality concerns; cultivar-specific size and performance are not established by those crop sources.",
-      "es": "Red Acre se cataloga como una identidad nombrada de col roja Brassica oleracea. La guía general de la col respalda consejos útiles de cultivo y cosecha; no demuestra tamaño, madurez ni rendimiento específicos del cultivar."
+      "en": "Red Acre is a named open-pollinated red-cabbage cultivar of Brassica oleracea. University of Arkansas Extension lists about 75 days to maturity and a three-pound red head; Fedco describes compact plants with 3–5 lb heads up to about 7 inches. These are source-specific field/product descriptions, not guaranteed outcomes. Grow it as a cool-season cabbage, keep moisture steady, and harvest firm heads before they split.",
+      "es": "Red Acre es un cultivar nombrado de col roja de polinización abierta, Brassica oleracea. University of Arkansas Extension indica unos 75 días hasta la madurez y una cabeza roja de tres libras; Fedco describe plantas compactas con cabezas de 3–5 lb y hasta unas 7 pulgadas. Son descripciones de fuentes y contextos distintos, no resultados garantizados. Cultívala como col de estación fresca, mantén la humedad estable y cosecha las cabezas firmes antes de que se agrieten."
     },
     "metrics": {
       "en": [],
@@ -26625,19 +26922,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1",
-          "usu-brassica-varietal-wave2"
+          "fedco-red-acre-cabbage-2026",
+          "uaex-cabbage-cultivar-table-2009"
         ],
         "en": {
-          "short": "Red Acre Cabbage is resolved at Brassica oleracea and Red Acre type type scope",
-          "guidance": "Red Acre Cabbage is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+          "short": "Red Acre is a named, open-pollinated red-cabbage cultivar",
+          "guidance": "Fedco lists Red Acre as an open-pollinated Brassica oleracea (capitata group) cabbage. University of Arkansas Extension also names Red Acre in its cultivar table. This supports the named cultivar identity, but the reported measurements below remain specific to each source and growing context.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Red Acre, identidad nombrada de col dentro de Brassica oleracea",
-          "guidance": "Se conserva el nombre Red Acre, pero la fuente de cultivo citada es general para la col y no demuestra rasgos del cultivar. No se infieren tamaño, fecha de madurez ni resistencia a enfermedades.",
+          "short": "Red Acre es un cultivar nombrado de col roja de polinización abierta",
+          "guidance": "Fedco registra Red Acre como col Brassica oleracea (capitata group) de polinización abierta. University of Arkansas Extension también incluye Red Acre en su tabla de cultivares. Esto respalda la identidad varietal nombrada, pero las medidas que siguen son descripciones propias de cada fuente y contexto de cultivo.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26647,18 +26944,20 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "uaex-cabbage-cultivar-table-2009",
+          "fedco-red-acre-cabbage-2026",
           "umn-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Head-forming red cabbage; no Red Acre measurement is established here",
-          "guidance": "UMN Extension describes cabbage heads as overlapping leaves and says head shapes vary. The cited crop guide does not establish Red Acre's exact dimensions, color intensity or maturity, so those values remain unknown.",
+          "short": "Compact plants; sources describe roughly three-pound to 3–5 lb red heads",
+          "guidance": "The University of Arkansas Extension cultivar table lists Red Acre at 75 days to maturity with a three-pound red head. Fedco's current seed listing describes a compact plant and 3–5 lb heads up to about 7 inches across. The reported head weights differ slightly and are source descriptions, not a guaranteed range for every seed lot or garden; plant spacing and growing conditions affect head size. No exact mature plant height or spread is established.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Col roja formadora de cabeza; no hay medidas de Red Acre verificadas aquí",
-          "guidance": "UMN Extension describe cabezas de col hechas de hojas superpuestas y señala que su forma varía. La guía no establece dimensiones, intensidad de color ni madurez exactas de Red Acre, por lo que esos valores quedan sin definir.",
+          "short": "Plantas compactas; las fuentes describen cabezas rojas de unos 3 lb a 3–5 lb",
+          "guidance": "La tabla de cultivares de University of Arkansas Extension indica para Red Acre 75 días hasta la madurez y una cabeza roja de tres libras. La ficha actual de semillas de Fedco describe una planta compacta y cabezas de 3–5 lb de hasta unas 7 pulgadas de diámetro. Los pesos difieren ligeramente y son descripciones de fuente, no una garantía para cada lote o huerto; el espaciamiento y las condiciones afectan el tamaño. No se establece una altura ni extensión maduras exactas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26668,18 +26967,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "uaex-cabbage-cultivar-table-2009",
           "umn-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Cool-season crop; avoid inconsistent moisture during head growth",
-          "guidance": "Cabbage is a cool-weather crop. UMN's home-garden guide emphasizes steady water and nutrient uptake in moisture-retentive, well-drained soil; Minnesota soil, timing and field-spacing advice is regional, not a hydroponic recipe for Red Acre.",
+          "short": "Cool-season cabbage; sunny placement and steady moisture support head quality",
+          "guidance": "Arkansas Extension describes cabbage as a cool-season crop for sunny conditions and moist, well-drained, fertile soil; UMN likewise emphasizes consistent moisture during head development. These are outdoor soil-culture recommendations, not indoor-light settings or hydroponic instructions. Arkansas dates and spacing are regional crop guidance, not a Red Acre-specific system prescription.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cultivo de estación fresca; evita humedad irregular durante el desarrollo de la cabeza",
-          "guidance": "La col es un cultivo de clima fresco. La guía de UMN enfatiza el aporte estable de agua y nutrientes en suelo que retenga humedad y drene bien; las fechas, el suelo y la separación de campo de Minnesota son regionales, no una receta hidropónica para Red Acre.",
+          "short": "Col de estación fresca; sol y humedad estable favorecen la calidad de la cabeza",
+          "guidance": "Arkansas Extension describe la col como cultivo de clima fresco para lugares soleados y suelo fértil, húmedo y bien drenado; UMN también enfatiza la humedad constante durante el desarrollo de la cabeza. Son recomendaciones para cultivo exterior en suelo, no ajustes de luz interior ni instrucciones hidropónicas. Las fechas y distancias de Arkansas son orientación regional para el cultivo, no una receta de sistema para Red Acre.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26710,18 +27010,20 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "uaex-cabbage-cultivar-table-2009",
+          "fedco-red-acre-cabbage-2026",
           "umn-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Harvest a firm head at usable size before splitting",
-          "guidance": "UMN Extension advises cutting above the outer leaves when the head reaches a usable size. Mature heads may split, particularly after heavy rain; the source gives no Red Acre-specific day count or head diameter.",
+          "short": "Use about 75 days as a reference, then harvest when the head is firm",
+          "guidance": "The University of Arkansas cultivar table lists 75 days to maturity and a three-pound Red Acre head; it does not state the starting point for that count. Fedco lists 75 days from transplant and describes 3–5 lb heads, so treat timing and size as supplier/region references rather than guarantees. Across cabbage, harvest when the head is firm and before cracking or splitting; UMN advises cutting above the outer leaves at a useful size.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cosecha una cabeza firme a tamaño útil antes de que se agriete",
-          "guidance": "UMN Extension recomienda cortar por encima de las hojas exteriores cuando la cabeza tenga un tamaño útil. Las cabezas maduras pueden agrietarse, sobre todo tras lluvia intensa; la fuente no da un plazo ni diámetro específico de Red Acre.",
+          "short": "Toma unos 75 días como referencia y cosecha cuando la cabeza esté firme",
+          "guidance": "La tabla de cultivares de University of Arkansas indica 75 días hasta la madurez y una cabeza Red Acre de tres libras, pero no especifica desde qué etapa cuenta los días. Fedco indica 75 días desde el trasplante y describe cabezas de 3–5 lb; trata el calendario y el tamaño como referencias de proveedor/región, no garantías. En la col en general, cosecha cuando la cabeza esté firme y antes de que se agriete; UMN recomienda cortar por encima de las hojas exteriores cuando alcance un tamaño útil.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -26731,18 +27033,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "uaex-cabbage-cultivar-table-2009",
           "umn-cabbage-home-gardens-2026"
         ],
         "en": {
-          "short": "Head splitting and poor formation are context-dependent warning signs",
-          "guidance": "UMN Extension notes that inconsistent moisture can reduce head quality or prevent formation, while heavy rain can split mature heads. These observations are crop-level and do not establish disease resistance or a diagnosis for Red Acre.",
+          "short": "Watch for loose heads, premature bolting or splitting as conditions change",
+          "guidance": "UMN Extension links inconsistent moisture and heavy rain with reduced head quality or splitting. Arkansas Extension adds that heat, excess fertilizer or irregular water can contribute to loose, puffy heads, and prolonged exposure to roughly 35–45°F after plants are started can trigger premature seed-stalk formation. These are cabbage-level warning signs, not Red Acre disease-resistance claims or a diagnosis; the temperatures and calendar context are regional guidance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "El agrietamiento y la mala formación dependen de las condiciones",
-          "guidance": "UMN Extension señala que la humedad inconsistente puede reducir la calidad o impedir la formación de la cabeza, mientras que la lluvia intensa puede agrietar cabezas maduras. Son observaciones del cultivo, no una diagnosis ni una afirmación de resistencia de Red Acre.",
+          "short": "Vigila cabezas flojas, espigado prematuro o agrietamiento según las condiciones",
+          "guidance": "UMN Extension relaciona la humedad irregular y la lluvia intensa con menor calidad de la cabeza o agrietamiento. Arkansas Extension añade que el calor, el exceso de fertilizante o el riego irregular pueden contribuir a cabezas flojas y esponjosas, y que una exposición prolongada a unos 35–45 °F después de iniciar las plantas puede provocar la formación prematura del tallo floral. Son señales de riesgo de la col, no una afirmación de resistencia a enfermedades ni un diagnóstico de Red Acre; las temperaturas y el calendario son orientación regional.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -27245,8 +27548,20 @@ export const gardenPlantProfileCatalog = {
       "es": "Long Island Improved es una variedad nombrada de coles de Bruselas que forma botones comestibles a lo largo de un tallo erguido. El fresco y la humedad constante favorecen su calidad; la altura varietal exacta no está resuelta."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Lower-sprout harvest cue",
+          "value": "Firm buds around 1 in",
+          "note": "UMN Brussels-sprout crop guidance; not a Long Island Improved cultivar-size guarantee"
+        }
+      ],
+      "es": [
+        {
+          "label": "Señal para cosechar brotes inferiores",
+          "value": "Botones firmes de aprox. 1 pulg",
+          "note": "Guía de UMN para el cultivo de coles de Bruselas; no garantiza el tamaño del cultivar Long Island Improved"
+        }
+      ]
     },
     "sections": {
       "identity": {
@@ -27527,14 +27842,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Manage by harvest, thinning, and visible crowding",
+          "short": "Thin carrots to reduce crowding; don't routinely prune stems",
           "guidance": "Carrots are grown for their root, not routine stem pruning. Thin to relieve crowding and remove damaged foliage only when needed; outdoor row spacing is not a system pod count.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Manejo según porte y observación",
+          "short": "Aclara para reducir el amontonamiento; no podes tallos de rutina",
           "guidance": "La zanahoria se cultiva por su raíz, no por poda rutinaria de tallos. Aclara para reducir el amontonamiento y retira follaje dañado solo si hace falta; el espaciamiento exterior no es un conteo de pods.",
           "items": [],
           "avoid": "",
@@ -27590,14 +27905,14 @@ export const gardenPlantProfileCatalog = {
           "umn-carrots-parsnips-home-wave45"
         ],
         "en": {
-          "short": "Thin or separate according to the intended harvest form",
+          "short": "Thin carrots to leave room for root development",
           "guidance": "UMN Extension recommends thinning carrots to leave room for root growth. Apply that as outdoor row guidance only; do not infer a Garden pod spacing from it.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Ralea según la forma de cosecha",
+          "short": "Aclara las zanahorias para dejar espacio a las raíces",
           "guidance": "UMN Extension recomienda aclarar las zanahorias para dejar espacio al desarrollo de las raíces. Aplica esto como guía para hileras exteriores; no infieras separación de pods de Garden.",
           "items": [],
           "avoid": "",
@@ -30753,18 +31068,19 @@ export const gardenPlantProfileCatalog = {
           "jekkas-alaska-series-nasturtium-2026",
           "johnnys-alaska-mix-nasturtium-2026",
           "uw-tropaeolum-garden-nasturtium-500",
-          "uaex-alaska-nasturtium-2006"
+          "uaex-alaska-nasturtium-2006",
+          "wcs-tip-top-alaska-mix-2026"
         ],
         "en": {
           "short": "Identify the represented Alaska series or seed line",
-          "guidance": "RHS and Jekka describe their Alaska Series as T. majus, while UW–Madison and Johnny's identify Alaska/Alaska Mix material as T. minus. Since this catalog entry does not specify the supplier or series, sources do not establish which product it represents. Keep species-dependent growth habit, mature size and cultivar performance unassigned until the catalog's represented line is identified.",
+          "guidance": "RHS and Jekka describe their Alaska Series as T. majus, while UW–Madison and Johnny's identify Alaska/Alaska Mix material as T. minus. West Coast Seeds' distinct Tip Top Alaska Mix page is itself inconsistent: its product description says T. majus, while its detailed Latin field lists T. majus and T. minus. None identifies this catalog's unspecified supplier or series. Keep species-dependent growth habit, mature size and cultivar performance unassigned until the represented line is identified.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Identificar la serie o línea Alaska representada",
-          "guidance": "RHS y Jekka describen sus Alaska Series como T. majus, mientras UW–Madison y Johnny's identifican material Alaska/Alaska Mix como T. minus. Como esta ficha no especifica proveedor ni serie, las fuentes no establecen qué producto representa. Mantén sin asignar el porte, tamaño adulto y rendimiento varietal dependientes de especie hasta identificar la línea del catálogo.",
+          "guidance": "RHS y Jekka describen sus Alaska Series como T. majus, mientras UW–Madison y Johnny's identifican material Alaska/Alaska Mix como T. minus. La página de West Coast Seeds para su producto distinto Tip Top Alaska Mix también es inconsistente: la descripción dice T. majus, pero el campo latino detallado enumera T. majus y T. minus. Ninguna identifica el proveedor o la serie no especificados en esta ficha. Mantén sin asignar el porte, tamaño adulto y rendimiento varietal dependientes de especie hasta identificar la línea representada.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -32618,7 +32934,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Especie aceptada; la fuente discrepa sobre el ciclo de vida",
+          "short": "Especie aceptada; la tabla de la fuente presenta una inconsistencia sobre el ciclo de vida",
           "guidance": "Kew acepta Rumex sanguineus L. y no se establece un cultivar nombrado para esta identidad. La narración y el campo de ciclo de vida de NC State la describen como perenne, aunque su lista de rasgos también incluye Annual; UW–Madison la describe de forma independiente como perenne herbácea que también puede cultivarse como anual. Se conserva perenne como ciclo de vida de la especie y se deja anotada la inconsistencia de la tabla.",
           "items": [],
           "avoid": "",
@@ -32640,7 +32956,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol o semisombra y humedad constante con buen drenaje",
+          "short": "Pleno sol a sombra parcial; mantén el suelo uniformemente húmedo y bien drenado",
           "guidance": "NC State Extension describe pleno sol y suelo húmedo pero bien drenado. UW–Madison indica que crece a pleno sol o sombra parcial y rinde mejor con humedad constante, sin dejar que el suelo se seque. Son condiciones de jardín exterior, no una receta de luz interior o hidroponía. Corta los tallos florales si buscas más follaje basal o menos autosiembra; retira el follaje viejo en primavera antes de que emerjan las hojas nuevas.",
           "items": [],
           "avoid": "",
@@ -32662,7 +32978,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Roseta perenne compacta con venas foliares rojas o púrpuras",
+          "short": "Roseta perenne en mata, con venas foliares rojo púrpura",
           "guidance": "UW–Madison describe una roseta compacta de unos 30 cm de altura, con venas rojas o púrpuras. NC State indica una altura y anchura generales de 30–46 cm. Las medidas de los tallos florales difieren: UW–Madison informa unos 30–46 cm, mientras que NC State describe tallos de 61–91 cm; no se debe tratar una altura floral como dimensión universal del follaje.",
           "items": [],
           "avoid": "",
@@ -32684,7 +33000,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La división está documentada; la siembra va en el perfil de semilla",
+          "short": "La división es una vía vegetativa documentada; las instrucciones de semilla corresponden al Seed Profile",
           "guidance": "NC State Extension y UW–Madison enumeran la división como método de propagación vegetativa para esta perenne. La época de siembra y el establecimiento desde semilla se mantienen en el Perfil de Semilla vinculado, sin duplicarlos aquí.",
           "items": [],
           "avoid": "",
@@ -32706,7 +33022,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retira tallos florales si buscas más hojas o menos autosiembra",
+          "short": "Puedes retirar los tallos florales de verano para favorecer el follaje o limitar la resiembra",
           "guidance": "NC State describe tallos florales de comienzos del verano y UW–Madison panículas de finales de primavera a comienzos del verano. Ambas fuentes indican que retirarlos puede favorecer un crecimiento foliar más tupido o reducir la autosiembra. Sus alturas florales difieren; quítalos solo si ese es el objetivo, no como regla universal.",
           "items": [],
           "avoid": "",
@@ -32728,7 +33044,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila babosas, roya y oídio; considera sensibilidad cutánea",
+          "short": "Vigila babosas, roya y oídio; considera la sensibilidad al manipular la planta",
           "guidance": "UW–Madison enumera babosas, roya y oídio como problemas comunes, pero aquí no aporta un protocolo diagnóstico o de tratamiento. NC State advierte posible irritación cutánea en personas sensibles y malestar estomacal leve con cantidades grandes por el ácido oxálico; la guía Harvest Use conserva la precaución alimentaria. No se establece resistencia de cultivar ni comportamiento de enfermedades en hidroponía.",
           "items": [],
           "avoid": "",
@@ -32749,7 +33065,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha hojas jóvenes; las maduras se vuelven amargas y duras",
+          "short": "Las hojas jóvenes son la etapa comestible respaldada por las fuentes",
           "guidance": "NC State Extension indica que las hojas jóvenes pueden comerse crudas o cocidas y que las maduras se vuelven amargas y duras. También menciona posible malestar estomacal leve e irritación cutánea en personas sensibles, especialmente con grandes cantidades; no debe interpretarse como autorización irrestricta de consumo.",
           "items": [],
           "avoid": "",
@@ -32770,7 +33086,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Usa las hojas jóvenes crudas o cocidas; son ácidas",
+          "short": "Usa las hojas jóvenes y ácidas crudas o cocidas; las más viejas son más fibrosas",
           "guidance": "NC State Extension describe las hojas jóvenes como comestibles crudas o cocidas y de sabor ácido; las hojas maduras se vuelven amargas y duras. La página menciona el ácido oxálico y posible malestar leve en personas sensibles o con cantidades grandes, por lo que no se afirma que el consumo sea ilimitado.",
           "items": [],
           "avoid": "",
@@ -32804,7 +33120,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Dionaea muscipula",
+          "short": "Especie aceptada: Dionaea muscipula",
           "guidance": "Kew acepta Dionaea muscipula J.Ellis y la ubica en Droseraceae. Aquí el nombre Venus atrapamoscas se refiere a esta especie; no implica un cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -32867,7 +33183,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and division are documented",
+          "short": "Se documentan la semilla y la división",
           "guidance": "NC State enumera semilla y división como estrategias de propagación. Para el protocolo de semilla y el establecimiento, consulta el perfil de semillas enlazado; esta ficha de planta no duplica esas instrucciones.",
           "items": [],
           "avoid": "",
@@ -32920,8 +33236,8 @@ export const gardenPlantProfileCatalog = {
   },
   "cape-sundew-drosera-capensis": {
     "summary": {
-      "en": "Cape sundew is the accepted evergreen carnivorous species Drosera capensis. SANBI describes a rhizomatous plant with sticky tentacled leaves, pink-to-mauve flowers, a continuously moist potting context and vegetative propagation; dimensions and seasonal dates remain regional source descriptions.",
-      "es": "El rocío del sol del Cabo es la especie perenne siempreverde aceptada Drosera capensis. SANBI describe una planta rizomatosa con hojas tentaculadas pegajosas, flores rosadas a malva, cultivo en maceta constantemente húmedo y propagación vegetativa; las dimensiones y fechas estacionales conservan el contexto regional de la fuente."
+      "en": "Cape sundew is the accepted evergreen carnivorous species Drosera capensis. SANBI describes its sticky tentacled leaves and continuously moist, low-nutrient growing context; RHS adds glasshouse/bog guidance, seasonal flowering, and no-pruning advice. Keep regional dimensions and flowering dates attached to their sources.",
+      "es": "El rocío del sol del Cabo es la especie carnívora perenne siempreverde aceptada Drosera capensis. SANBI describe sus hojas tentaculadas pegajosas y un medio de cultivo constantemente húmedo y pobre en nutrientes; RHS añade pautas para invernadero/turbera, floración estacional y ausencia de poda necesaria. Las dimensiones y fechas se mantienen vinculadas al contexto de cada fuente."
     },
     "metrics": {
       "en": [],
@@ -32943,7 +33259,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Drosera capensis",
+          "short": "Especie aceptada: Drosera capensis",
           "guidance": "Kew acepta Drosera capensis L. e identifica su distribución nativa en el Cabo sudafricano. La identidad pública es a nivel de especie, no un cultivar de color.",
           "items": [],
           "avoid": "",
@@ -32954,11 +33270,12 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ],
         "en": {
           "short": "Evergreen sundew with sticky tentacled leaves and pink-mauve flowers",
-          "guidance": "SANBI describes a robust, free-flowering evergreen perennial, usually around 15 cm high, with leaves radiating from a short rhizomatous stem. Sticky glands on the leaf tentacles trap prey; 15–30 pink-to-mauve flowers open in ascending order on a stem. SANBI's December–January flowering note is Southern Hemisphere context, not a universal calendar.",
+          "guidance": "SANBI describes a robust, free-flowering evergreen perennial, usually around 15 cm high, with leaves radiating from a short rhizomatous stem. Sticky glands on the leaf tentacles trap prey; 15–30 pink-to-mauve flowers open in ascending order on a stem. RHS lists a broader 10–50 cm maximum-height and spread range. These source descriptions differ in scope and context, so neither is presented as a guaranteed indoor footprint. SANBI's December–January flowering note is Southern Hemisphere context; RHS describes spring-to-autumn flowering, occasionally into winter, in its UK context.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -32975,17 +33292,18 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ],
         "en": {
           "short": "Keep the pot consistently moist with low-mineral water",
-          "guidance": "SANBI's PlantZAfrica recommends a pot standing in a 1–3 cm saucer of fresh water so the medium stays moist, and full sun to semi-shade outdoors. It describes an acidic, low-nutrient medium and an indoor-facing recommendation for its South African context. This botanical-garden/container guidance is not a hydroponic nutrient recipe or a universal indoor-light tier.",
+          "guidance": "SANBI's PlantZAfrica recommends a pot standing in a 1–3 cm saucer of fresh water so the medium stays moist, and full sun to semi-shade outdoors. It describes an acidic, low-nutrient medium. RHS advises continually moist conditions with rainwater under glass in frost-prone areas, shading from hot sun, or wet acidic bog conditions in warmer climates. These are regional container/garden contexts, not a hydroponic nutrient recipe or universal indoor-light tier.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Mantén la maceta húmeda con agua de bajo contenido mineral",
+          "short": "Mantén húmeda la maceta con agua de bajo contenido mineral",
           "guidance": "PlantZAfrica de SANBI recomienda colocar la maceta sobre un plato con 1–3 cm de agua fresca para mantener húmedo el medio y pleno sol a semisombra al aire libre. Describe un medio ácido y pobre en nutrientes, además de una orientación interior para su contexto sudafricano. Es guía de maceta/jardín botánico; no establece receta hidropónica ni nivel universal de luz interior.",
           "items": [],
           "avoid": "",
@@ -32996,11 +33314,12 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ],
         "en": {
-          "short": "Leaf and root cuttings are vegetative options",
-          "guidance": "SANBI documents vegetative propagation from leaf or root cuttings. For the seed route and sowing instructions, use the linked Seed Profile; this Plant Profile does not repeat the seed-to-establishment protocol.",
+          "short": "Seed and vegetative propagation are documented",
+          "guidance": "SANBI documents leaf or root cuttings; RHS lists seed, softwood cuttings, and root cuttings taken when dormant. For the seed route and sowing instructions, use the linked Seed Profile; this Plant Profile does not repeat the seed-to-establishment protocol.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33013,15 +33332,38 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "pruning": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-capensis-2026",
+          "sanbi-drosera-capensis-500"
+        ],
+        "en": {
+          "short": "Routine pruning is not required",
+          "guidance": "RHS states that no pruning is required. Do not remove healthy leaves solely because the traps have temporarily lost visible mucilage; check moisture and recent handling first.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Routine pruning is not required",
+          "guidance": "RHS states that no pruning is required. Do not remove healthy leaves solely because the traps have temporarily lost visible mucilage; check moisture and recent handling first.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "problems": {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ],
         "en": {
           "short": "Drying, handling and pests can change appearance",
-          "guidance": "SANBI notes that drying can cause drooping and reduced mucilage, while recent transplanting or touching the leaves can temporarily reduce visible dew before new foliage develops. It lists aphids, mealybugs and thrips as pests that can deform new growth and cautions against soap-based insecticides. These cues should prompt a check of conditions, not diagnosis from appearance alone.",
+          "guidance": "SANBI notes that drying can cause drooping and reduced mucilage, while recent transplanting or touching the leaves can temporarily reduce visible dew before new foliage develops. It lists aphids, mealybugs and thrips as pests that can deform new growth and cautions against soap-based insecticides. RHS describes the plant as generally pest- and disease-free in its profile; that broad assessment does not rule out the specific pests SANBI records. Check conditions and growth before intervening; these cues are not diagnoses from appearance alone.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33062,7 +33404,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada: Pinguicula primuliflora",
-          "guidance": "Kew accepts Pinguicula primuliflora C.E.Wood & R.K.Godfrey, in Lentibulariaceae. NParks gives Primrose Butterwort as a common name; the broader word butterwort remains a search alias, not a replacement identity.",
+          "guidance": "Kew acepta Pinguicula primuliflora C.E.Wood & R.K.Godfrey, de Lentibulariaceae. NParks da Primrose Butterwort como nombre común; butterwort/grasilla se conserva como término más amplio de búsqueda, no como sustituto de la identidad.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33083,7 +33425,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Roseta basal compacta, normalmente de 4–16 cm de ancho",
-          "guidance": "NParks describes oblong, bright-green leaves in a compact basal rosette, typically 4–16 cm across, with glandular hairs that trap and digest insects. Solitary flower stalks rise from the rosette. The crown-width range is species-level botanical-garden data, not a pot or system-spacing recommendation.",
+          "guidance": "NParks describe hojas oblongas y verdes en una roseta basal compacta, normalmente de 4–16 cm de ancho, con pelos glandulares que atrapan y digieren insectos. De la roseta emergen tallos florales solitarios. El ancho de corona es un dato botánico de la especie, no una recomendación de tamaño de maceta o separación entre posiciones.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33105,7 +33447,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Mantén la zona radicular húmeda; se documenta semisombra",
-          "guidance": "NParks recommends a layered sphagnum/peat and sphagnum-perlite medium and says to keep it consistently moist; its record notes tolerance of moist to waterlogged root zones and semi-shade. The specialist account also describes moist, aerated medium and filtered light. Neither source supports a conventional hydroponic nutrient solution, EC/pH target, or dry-out interval.",
+          "guidance": "NParks recomienda una capa inferior de turba de sphagnum, una capa superior de sphagnum y perlita, y mantener el medio constantemente húmedo; registra tolerancia a raíces en suelo húmedo o anegado y preferencia de semisombra. La fuente especialista también describe medio húmedo y aireado y luz filtrada. Ninguna fuente establece solución nutritiva hidropónica convencional, objetivos de EC/pH o intervalo de secado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33127,7 +33469,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Pueden formarse hijuelos donde las puntas de las hojas tocan el medio",
-          "guidance": "NParks reports plantlets forming at leaf tips where they contact the medium; the specialist account describes them rooting before separation. This is a recognizable vegetative growth feature, not a sign of disease or a seedling protocol.",
+          "guidance": "NParks informa que se forman hijuelos en las puntas de las hojas cuando estas tocan el medio; la fuente especialista describe que enraízan antes de separarse. Es una característica de crecimiento vegetativo reconocible, no una señal de enfermedad ni un protocolo de plántulas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33148,7 +33490,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Flores terminales solitarias, de tonos lila pálido y amarillo",
-          "guidance": "NParks describes a solitary terminal flower with a light-purple corolla and yellow throat marked by brown veins. The sources reviewed do not establish a universal indoor flowering calendar.",
+          "guidance": "NParks describe una flor terminal solitaria, lila clara, con garganta amarilla y venas marrones. Las fuentes revisadas no establecen un calendario universal de floración en interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33170,7 +33512,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Hay hijuelos en las puntas foliares; no se establece un protocolo rutinario de semilla fiable",
-          "guidance": "NParks and the specialist account both describe vegetative plantlets at the leaf tips; the specialist account notes occasional seed formation in its described clone. This supports vegetative propagation but does not prove seed propagation is impossible or establish a reliable seed protocol.",
+          "guidance": "NParks y la fuente especialista describen hijuelos vegetativos en las puntas de las hojas. La fuente especialista menciona formación ocasional de semillas en el clon descrito; esto no prueba que la semilla sea imposible ni establece un protocolo fiable de siembra.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33180,8 +33522,8 @@ export const gardenPlantProfileCatalog = {
   },
   "nepenthes-x-ventrata": {
     "summary": {
-      "en": "Nepenthes × ventrata is a natural horticultural hybrid of N. alata and N. ventricosa with climbing stems, tendrils and pitcher traps. NParks documents moist, well-drained, low-nutrient medium and occasional misting; these houseplant/cultivation details do not establish conventional hydroponic compatibility.",
-      "es": "Nepenthes × ventrata es un híbrido hortícola natural de N. alata y N. ventricosa, con tallos trepadores, zarcillos y trampas de jarro. NParks describe medio húmedo, bien drenado y pobre en nutrientes, nebulización ocasional y uso ornamental en interior o cestas colgantes; no se infiere compatibilidad hidropónica convencional."
+      "en": "Nepenthes × ventrata is a natural horticultural hybrid of N. alata and N. ventricosa with climbing stems, tendrils and pitcher traps. NParks documents this hybrid's moist, drained, low-nutrient medium; RHS adds genus-level indoor context for tropical Nepenthes. Neither source establishes a conventional hydroponic nutrient protocol.",
+      "es": "Nepenthes × ventrata es un híbrido hortícola natural de N. alata y N. ventricosa, con tallos trepadores, zarcillos y trampas de jarro. NParks documenta para este híbrido un medio húmedo, drenado y pobre en nutrientes; RHS añade contexto de interior a nivel de género para Nepenthes tropicales. Ninguna fuente establece una receta hidropónica convencional."
     },
     "metrics": {
       "en": [],
@@ -33202,7 +33544,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Natural hybrid identity, not a species or named cultivar claim",
+          "short": "Identidad de híbrido natural; no es una especie ni un cultivar nombrado",
           "guidance": "NParks identifica Nepenthes × ventrata como híbrido natural entre N. alata y N. ventricosa. La ficha conserva el nombre híbrido hortícola, sin presentarlo como especie aceptada ni cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -33223,7 +33565,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Climbing stems form tendrils and insect-trapping pitchers",
+          "short": "Los tallos trepadores forman zarcillos y jarros para capturar insectos",
           "guidance": "NParks describe hojas brillantes y coriáceas cuyos extremos forman zarcillos o jarros cilíndricos que capturan insectos. Los jarros son amarillo verdosos y pueden adquirir un rubor rojo con luz intensa; no es una garantía de color para un cultivar ni un indicador único de salud.",
           "items": [],
           "avoid": "",
@@ -33234,18 +33576,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "nparks-nepenthes-ventrata-500"
+          "nparks-nepenthes-ventrata-500",
+          "rhs-nepenthes-tropical-care-2026"
         ],
         "en": {
           "short": "Moist, drained, low-nutrient medium; semi-shade is the listed care category",
-          "guidance": "NParks describes a moist but well-drained, low-nutrient medium and gives examples using perlite or sand with peat or sphagnum. Its care category lists semi-shade, while the description says 6–8 hours of full sun can develop red pitcher color. These are different contexts within the same source; no single indoor lamp target, EC or pH recipe is inferred.",
+          "guidance": "NParks describes a moist but well-drained, low-nutrient medium and gives examples using perlite or sand with peat or sphagnum. Its care category lists semi-shade, while the description says 6–8 hours of full sun can develop red pitcher color. RHS gives genus-level context that tropical Nepenthes need warm, humid, partly shaded conditions indoors year-round; it does not specify a hybrid-level temperature, humidity percentage, indoor lamp target, EC or pH recipe. Treat the full-sun color note as a color observation, not the general exposure recommendation.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Moist, drained, low-nutrient medium; semi-shade is the listed care category",
-          "guidance": "NParks recomienda un medio húmedo pero bien drenado y pobre en nutrientes, con ejemplos de perlita o arena mezcladas con turba o sphagnum. Su categoría de cuidado indica semisombra, mientras que la descripción dice que 6–8 horas de sol pleno pueden desarrollar el color rojo de los jarros. Son contextos distintos en la misma fuente; no se convierten en un único objetivo de luz interior ni en valores de EC o pH.",
+          "short": "Medio húmedo, drenado y pobre en nutrientes; semisombra es la categoría indicada",
+          "guidance": "NParks recomienda un medio húmedo pero bien drenado y pobre en nutrientes, con ejemplos de perlita o arena mezcladas con turba o sphagnum. Su categoría de cuidado indica semisombra, mientras que la descripción dice que 6–8 horas de sol pleno pueden desarrollar el color rojo de los jarros. RHS ofrece contexto a nivel de género: las Nepenthes tropicales requieren condiciones cálidas, húmedas y parcialmente sombreadas en interior durante todo el año; no especifica temperatura, humedad, lámpara, EC ni pH para este híbrido. Interpreta la nota de sol pleno como observación sobre el color, no como recomendación general de exposición.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33255,18 +33598,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "nparks-nepenthes-ventrata-500"
+          "nparks-nepenthes-ventrata-500",
+          "rhs-nepenthes-tropical-care-2026"
         ],
         "en": {
           "short": "Maintain humidity; NParks advises occasional misting and avoiding air-conditioned placement",
-          "guidance": "NParks recommends maintaining a humid environment with occasional misting and avoiding an air-conditioned location. This is source-specific horticultural guidance; no exact humidity percentage or misting frequency is supplied.",
+          "guidance": "NParks recommends maintaining a humid environment with occasional misting and avoiding an air-conditioned location. RHS separately describes tropical Nepenthes as needing warm, humid indoor conditions; neither source supplies a hybrid-specific humidity percentage, temperature, or misting frequency.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Maintain humidity; NParks advises occasional misting and avoiding air-conditioned placement",
-          "guidance": "NParks aconseja mantener un ambiente húmedo mediante nebulización ocasional y evitar colocar la planta en un entorno con aire acondicionado. No aporta porcentaje de humedad ni frecuencia exacta de nebulización.",
+          "short": "Mantén la humedad; NParks aconseja nebulizar ocasionalmente y evitar el aire acondicionado",
+          "guidance": "NParks aconseja mantener un ambiente húmedo mediante nebulización ocasional y evitar colocar la planta en un entorno con aire acondicionado. RHS describe por separado a las Nepenthes tropicales como plantas de interior cálido y húmedo; ninguna fuente proporciona porcentaje de humedad, temperatura ni frecuencia de nebulización específicos para este híbrido.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33286,7 +33630,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tissue culture is the documented commercial propagation route",
+          "short": "El cultivo de tejidos es la vía de propagación comercial documentada",
           "guidance": "NParks informa que este híbrido se ha propagado ampliamente mediante cultivo de tejidos. Esto no demuestra que producir semillas sea imposible; no quedan establecidos aquí un protocolo confiable de semilla ni su fidelidad para el híbrido comercial.",
           "items": [],
           "avoid": "",
@@ -33821,7 +34165,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hojas y flores con usos culinarios",
+          "short": "Las hojas y flores tienen usos culinarios",
           "guidance": "NC State enumera hojas y flores frescas o secas para infusiones, bebidas, salsas y otros usos, y señala que pinzar puede favorecer un crecimiento más ramificado. Johnny's ofrece una guía general para Mentha: las hojas individuales pueden recogerse cuando la planta ya está establecida, mientras que la cosecha de la planta completa se realiza justo antes de florecer; para secar, recomienda un lugar cálido, bien ventilado y sin sol directo. El momento y método de secado son guía de cultivo a nivel de género, no una regla de rendimiento o aceite esencial específica de la menta piperita.",
           "items": [],
           "avoid": "",
@@ -33884,7 +34228,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Controla los rizomas y considera el acceso de las mascotas",
+          "short": "Planifica cómo contener los rizomas que se extienden",
           "guidance": "NC State caracteriza la menta piperita como una cobertura agresiva por rizomas y registra toxicidad de baja gravedad: una ingestión humana abundante puede causar vómitos o diarrea, y la planta aparece señalada como problemática para gatos, perros y caballos. Contén su expansión y considera el acceso de las mascotas. Esta advertencia no convierte el uso culinario de las hojas en un uso medicinal ni proporciona una dosis; los aceites esenciales concentrados no son equivalentes a las hojas culinarias.",
           "items": [],
           "avoid": "",
@@ -33940,8 +34284,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol o sombra parcial según el clima y el contexto",
-          "guidance": "NC State favorece sol parcial a sombra, especialmente en veranos calurosos, y describe su uso en macetas, cestas colgantes y bordes sombreados; RHS indica que la especie rinde mejor al sol, pero tolera algo de sombra. En conjunto, son exposiciones exteriores dependientes del clima y el contexto, no un requisito de lámpara interior. Ambas fuentes describen condiciones fértiles y húmedas, pero con drenaje; NC State recomienda acolchado para mantener frescas las raíces. Ninguna demuestra compatibilidad con sistemas interiores.",
+          "short": "La sombra y el cultivo en recipiente son opciones documentadas",
+          "guidance": "NC State describe preferencia por sol parcial a sombra, especialmente en veranos calurosos, y uso en macetas, cestas colgantes y bordes sombreados. Recomienda suelo rico y húmedo y acolchado para mantener frescas las raíces. Es una guía hortícola de exterior/recipiente, no prueba de compatibilidad con sistemas de interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -34003,7 +34347,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La especie puede propagarse por semilla",
+          "short": "Se documenta la propagación por semilla",
           "guidance": "NC State enumera la semilla como estrategia de propagación de la especie. La fuente seleccionada no indica profundidad, temperatura ni tiempo de germinación.",
           "items": [],
           "avoid": "",
@@ -34025,8 +34369,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pinza para ramificar; recorta si se vuelve larguirucha",
-          "guidance": "NC State recomienda pinzar para conservar una forma más tupida. RHS indica que no necesita poda rutinaria, pero si el crecimiento se vuelve larguirucho recomienda recortar aproximadamente la mitad para favorecer una forma más tupida y posiblemente otra tanda de flores. Son opciones a nivel de especie para situaciones distintas, no un calendario fijo ni una respuesta específica de cultivar.",
+          "short": "El pinzado ayuda a conservar una forma más tupida",
+          "guidance": "NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -34046,8 +34390,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila plagas comunes y enfermedades relacionadas con la humedad",
-          "guidance": "RHS indica posible susceptibilidad a babosas, caracoles y pulgones, además de pudrición radicular y oídios. Tómalos como aspectos para monitorear, no como diagnóstico ni como afirmación de que todas las plantas sean susceptibles; las fuentes revisadas no establecen un protocolo de tratamiento específico para Torenia.",
+          "short": "Monitor for common pests and moisture-related disease",
+          "guidance": "RHS lists wishbone flower as potentially susceptible to slugs, snails and aphids, as well as root rot and powdery mildews. Treat these as monitoring concerns, not a diagnosis or a claim that every plant is susceptible; the reviewed sources do not establish a Torenia-specific treatment protocol.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -34286,7 +34630,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno a semisombra; suelos de humedad media a seca",
+          "short": "Sol pleno a sombra parcial; suelo de humedad media a seco",
           "guidance": "NC State informa sol pleno a semisombra y suelos de humedad promedio a seca en su guía regional. Kew y NC State sitúan su distribución nativa en Tennessee; estas condiciones paisajísticas no demuestran compatibilidad hidropónica.",
           "items": [],
           "avoid": "",
@@ -34307,7 +34651,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores rosa-púrpura erguidas de junio a agosto",
+          "short": "Radios erectos rosa-púrpura florecen de junio a agosto",
           "guidance": "NC State describe flores con radios erectos rosa-púrpura y centro naranja entre junio y agosto. La floración es una etapa estacional normal; el calendario es regional, no una programación interior.",
           "items": [],
           "avoid": "",
@@ -34329,7 +34673,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Aísla la semilla de otras Echinacea si quieres conservar su identidad",
+          "short": "Aísla la fuente de semilla de otras equináceas para conservar la identidad",
           "guidance": "NC State y University of Tennessee Extension advierten que Echinacea tennesseensis se cruza con otras Echinacea; las semillas obtenidas cerca de otras equináceas podrían no reproducir fielmente la identidad. UT recomienda aislamiento cuando se busca conservar la integridad genética de la semilla, pero no establece una distancia exacta. Es una precaución para producir semilla, no una instrucción rutinaria de poda.",
           "items": [],
           "avoid": "",
@@ -34351,7 +34695,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Puede requerirse aislamiento para conservar la identidad de la semilla",
+          "short": "La semilla puede requerir aislamiento para conservar la identidad",
           "guidance": "NC State enumera la semilla como vía de propagación y advierte que el cruce con otras Echinacea puede producir semillas que no crezcan fieles al tipo. University of Tennessee Extension también recomienda aislamiento para conservar la integridad genética, pero no ofrece una distancia exacta ni protocolo doméstico de germinación; no se crea un Perfil de Semilla sin esa evidencia.",
           "items": [],
           "avoid": "",
@@ -34372,7 +34716,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Para bordes, praderas y jardines de bosque con valor para fauna",
+          "short": "Para bordes, praderas o jardines arbolados; atrae polinizadores y pinzones",
           "guidance": "NC State enumera bordes, praderas y jardines de bosque como usos; informa visitas de polinizadores y que los pinzones comen las semillas. La fuente respalda valor ornamental y para fauna, no uso comestible humano.",
           "items": [],
           "avoid": "",
@@ -34393,7 +34737,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Escarabajos japoneses ocasionales; manchas foliares poco frecuentes",
+          "short": "Escarabajos japoneses ocasionales; rara vez se reporta mancha foliar",
           "guidance": "NC State no informa problemas graves recurrentes; menciona escarabajos japoneses ocasionales y manchas foliares poco frecuentes. Son observaciones de la fuente, no una afirmación de resistencia a enfermedades.",
           "items": [],
           "avoid": "",
@@ -34817,7 +35161,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Named cultivar: Capsicum annuum 'Black Pearl'",
+          "short": "Cultivar nombrado: Capsicum annuum 'Black Pearl'",
           "guidance": "Kew acepta Capsicum annuum a nivel de especie. USDA ARS identifica Black Pearl como cultivar ornamental desarrollado junto con el U.S. National Arboretum y PanAmerican Seed; no es un tipo genérico de pimiento negro.",
           "items": [],
           "avoid": "",
@@ -34860,7 +35204,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Selected for ornamental foliage and fruit",
+          "short": "Seleccionado por su follaje y frutos ornamentales",
           "guidance": "USDA ARS describe follaje negro y racimos erectos de frutos pequeños que se vuelven rojos, con desempeño ornamental compacto y evaluación limitada en maceta con luz alta. El National Arboretum recomienda sol pleno para favorecer el crecimiento y el color negro del follaje, además de suelo franco o franco arenoso bien drenado y con algo de materia orgánica. Ninguna fuente establece un protocolo hidropónico general.",
           "items": [],
           "avoid": "",
@@ -34923,7 +35267,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "The named cultivar is available as seed",
+          "short": "El cultivar nombrado se ofrece en forma de semilla",
           "guidance": "USDA ARS informa disponibilidad de semilla para el cultivar nombrado. El registro de liberación revisado no aporta profundidad, tiempo o temperatura de germinación; esos datos siguen sin verificarse.",
           "items": [],
           "avoid": "",
@@ -34944,7 +35288,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fruit color transition is an ornamental cue",
+          "short": "El cambio de color del fruto es una señal ornamental",
           "guidance": "La introducción del USDA Arboretum describe frutos que aparecen negros y cambian a rojo cereza. Presenta el cultivar para uso ornamental; esta ficha no infiere que los frutos estén destinados a comerse.",
           "items": [],
           "avoid": "",
@@ -35173,7 +35517,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivar variegado: Mentha suaveolens 'Variegata'",
+          "short": "Cultivar nombrado: Mentha suaveolens 'Variegata'",
           "guidance": "Kew reconoce Mentha suaveolens y describe Variegata como menta piña; RHS registra el nombre del cultivar y los alias de menta manzana variegada. Se distingue de la menta piperita (Mentha × piperita) y la hierbabuena (M. spicata). La propagación vegetativa es la vía documentada para conservar esta forma variegada; no se afirma que la semilla reproduzca fielmente el cultivar.",
           "items": [],
           "avoid": "",
@@ -35195,7 +35539,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Menta vigorosa con hojas aromáticas de borde crema",
+          "short": "Perenne que forma brotes laterales, con hojas aromáticas de borde crema",
           "guidance": "RHS describe una colonia vigorosa con hojas verde pálido, suaves y aromáticas, con margen crema, y espigas florales pequeñas. UW–Madison describe hojas blandas, arrugadas y variegadas, y rizomas superficiales. Las alturas publicadas difieren (RHS: 0.1–0.5 m; UW–Madison: 2–3 pies); se conserva el conflicto en vez de reducirlo a una medida única del cultivar.",
           "items": [],
           "avoid": "",
@@ -35217,7 +35561,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Suelo húmedo con drenaje; contiene los rizomas",
+          "short": "Suelo húmedo y bien drenado; contiene los rizomas que se extienden",
           "guidance": "RHS recomienda suelo húmedo pero bien drenado y pleno sol o sol parcial; aconseja limitar el crecimiento de raíces en un recipiente profundo o elegir un sitio donde pueda extenderse. UW–Madison indica que el pleno sol funciona en climas frescos, pero que conviene dar sombra en climas calurosos para evitar quemaduras en las hojas. Es guía regional para exteriores y recipientes, no una receta hidropónica.",
           "items": [],
           "avoid": "",
@@ -35238,7 +35582,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Espigas malvas pequeñas a finales del verano según RHS",
+          "short": "En el contexto de RHS, aparecen espigas pequeñas malva a fines del verano",
           "guidance": "RHS describe flores pequeñas malvas en espigas densas a finales del verano para Mentha suaveolens 'Variegata'. El periodo se conserva como contexto de jardín británico, no como calendario universal.",
           "items": [],
           "avoid": "",
@@ -35259,7 +35603,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Divide rizomas o enraíza esquejes para conservar el cultivar",
+          "short": "Divide los rizomas o enraíza esquejes apicales de primavera para conservar el cultivar",
           "guidance": "RHS documenta dividir y plantar rizomas durante la temporada de crecimiento y tomar esquejes de punta de raíz en primavera. Estas vías vegetativas conservan el cultivar variegado; no se presenta la semilla como fiel al tipo.",
           "items": [],
           "avoid": "",
@@ -35280,7 +35624,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha hojas cuando las necesites, frescas o secas",
+          "short": "Las hojas de menta pueden cosecharse según necesidad; se documenta su uso fresco o seco",
           "guidance": "La guía de menta de UCANR incluye la menta piña entre las variedades de Mentha y señala que las hojas pueden cosecharse en cualquier momento para uso fresco o seco. Es práctica general del grupo, no intervalo de rebrote ni rendimiento propio del cultivar.",
           "items": [],
           "avoid": "",
@@ -35302,7 +35646,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Recorta al final de temporada; renueva tallos leñosos",
+          "short": "Recorta al final de la temporada y elimina madera vieja cuando sea necesario",
           "guidance": "RHS recomienda recortar la planta al final de la temporada. UW–Madison señala que retirar plantas viejas y leñosas permite que nuevos tallos llenen el espacio; ninguna fuente establece una altura fija de poda ni un calendario interior.",
           "items": [],
           "avoid": "",
@@ -35324,7 +35668,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Contén su expansión y vigila plagas, roya y oídio",
+          "short": "Controla la expansión y vigila plagas de menta, roya y oídio",
           "guidance": "RHS advierte que el cultivar puede volverse invasivo si no se limita el espacio de raíces y enumera susceptibilidad a escarabajos de la menta, polilla de la menta, chicharrita de la salvia, oídio y roya de la menta, sobre todo en condiciones secas. UW–Madison también advierte que el sol intenso en climas calurosos puede quemar las hojas variegadas. Son señales para vigilar, no afirmaciones de resistencia.",
           "items": [],
           "avoid": "",
@@ -35379,7 +35723,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivo cálido en recipiente o lugar protegido",
+          "short": "Cultivo de estación cálida en recipiente o en un lugar protegido",
           "guidance": "RHS describe crecimiento en verano al aire libre en posición soleada y protegida, en suelo rico que retenga humedad pero drene bien; en el contexto británico se puede cultivar bajo cubierta durante el resto del año. No aporta receta de nutrientes para hidroponía.",
           "items": [],
           "avoid": "",
@@ -35400,7 +35744,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Documentadas la semilla, la división y los esquejes",
+          "short": "Se documentan semillas, división y esquejes",
           "guidance": "RHS enumera siembra en otoño o primavera, división y esquejes semimaduros de verano que pueden enraizar en suelo o agua. La página revisada no da duración ni temperatura de germinación.",
           "items": [],
           "avoid": "",
@@ -35421,7 +35765,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El aroma de la hoja se intensifica al madurar",
+          "short": "El aroma de las hojas se intensifica a medida que maduran",
           "guidance": "RHS describe las hojas aromáticas como parecidas al cilantro cuando son jóvenes y cada vez más picantes e intensas con la edad. Esto aporta una señal de sabor relacionada con la madurez, pero no establece un intervalo fijo ni un rendimiento de cosecha.",
           "items": [],
           "avoid": "",
@@ -35442,7 +35786,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hierba aromática usada en la cocina del sudeste asiático",
+          "short": "Las hojas se usan en la cocina del sudeste asiático",
           "guidance": "RHS indica que las hojas se usan en la cocina del sudeste asiático y describe un aroma pungente parecido al cilantro cuando son jóvenes, que se vuelve más picante e intenso con la edad. Es contexto culinario a nivel de especie; el nombre común cilantro vietnamita no la convierte en cilantro botánico.",
           "items": [],
           "avoid": "",
@@ -35518,7 +35862,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Tropaeolum minus",
+          "short": "Especie aceptada: Tropaeolum minus",
           "guidance": "Kew acepta Tropaeolum minus. Wisconsin Extension distingue T. minus arbustiva de T. majus colgante. No debe confundirse con berro de agua, que pertenece a otro género y familia.",
           "items": [],
           "avoid": "",
@@ -35842,7 +36186,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Registered hybrid cultivar: Pinguicula 'Weser'",
+          "short": "Cultivar híbrido registrado: Pinguicula 'Weser'",
           "guidance": "La referencia de nomenclatura explica el formato del nombre de cultivar y el papel de registro de ICPS. Un estudio de 2026 identifica 'Weser' como registrado desde 1998 y reporta el cruce P. ehlersiae × P. moranensis. Se conserva el nombre como cultivar, no como especie botánica.",
           "items": [],
           "avoid": "",
@@ -36133,9 +36477,9 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Product-listed maturity",
-          "value": "45 days",
-          "note": "Johnny's estimate from seeding; not a guaranteed indoor harvest date."
+          "label": "Madurez indicada por el proveedor",
+          "value": "45 días",
+          "note": "Estimación de Johnny’s desde la siembra; no garantiza la fecha de cosecha en interior."
         }
       ]
     },
@@ -36286,9 +36630,9 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Product-listed maturity",
-          "value": "50 days",
-          "note": "Johnny's estimate; conditions and transplant timing affect maturity."
+          "label": "Madurez indicada por el proveedor",
+          "value": "50 días",
+          "note": "Estimación de Johnny’s; las condiciones y el momento del trasplante influyen en la madurez."
         }
       ]
     },
@@ -36438,9 +36782,9 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Supplier maturity estimate",
-          "value": "30 days baby leaf; 60 days full head",
-          "note": "Adaptive Seeds product estimate; not a guaranteed indoor or local harvest date."
+          "label": "Estimación de madurez del proveedor",
+          "value": "30 días para hoja baby; 60 días para cabeza completa",
+          "note": "Estimación del producto de Adaptive Seeds; no garantiza una fecha local ni de cosecha en interior."
         }
       ]
     },
@@ -36888,7 +37232,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Green Salanova brand group; exact variety unresolved",
+          "short": "Grupo comercial Green Salanova; variedad exacta sin resolver",
           "guidance": "Rijk Zwaan describe Salanova como una marca con varios tipos y variedades de lechuga, disponibles en verde y rojo. Kew acepta Lactuca sativa. Esta ficha representa el grupo Salanova verde indicado en el contexto de referencia; no lo convierte en un cultivar ni en una forma específica de hoja o cabeza.",
           "items": [],
           "avoid": "",
@@ -37027,7 +37371,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Supplier-listed Astro arugula selection",
+          "short": "Selección de rúcula Astro listada por un proveedor",
           "guidance": "Johnny's lista Astro como producto de semilla de rúcula. Kew acepta Eruca vesicaria; la ficha comercial respalda la identidad del producto, no un registro formal del cultivar.",
           "items": [],
           "avoid": "",
@@ -37188,7 +37532,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Named Large Red Cherry seed product",
+          "short": "Producto de semilla con el nombre Large Red Cherry",
           "guidance": "Kew acepta Solanum lycopersicum. El nombre Large Red Cherry identifica el producto del proveedor, no una especie distinta ni un registro varietal verificado.",
           "items": [],
           "avoid": "",
@@ -37210,7 +37554,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tomato crop guidance; variety traits remain product-scoped",
+          "short": "Guía de cultivo para tomate; las características de esta variedad siguen limitadas a la información del producto",
           "guidance": "La guía general aplica al tomate. El proveedor describe esta selección como indeterminada, pero eso no establece un sistema de soporte o poda específico para Garden.",
           "items": [],
           "avoid": "",
@@ -37276,7 +37620,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cherry fruit; timing remains an estimate",
+          "short": "Fruto tipo cherry; el momento de cosecha es una estimación",
           "guidance": "El vendedor describe frutos rojos tipo cherry y proporciona un estimado de madurez; tómalo como estimación del proveedor, no como fecha garantizada para interior. La señal general de USU Extension es que el fruto tenga su color completo y aún esté firme. El momento varía según el lote y las condiciones; esta ficha pública no contiene observaciones específicas de Garden.",
           "items": [],
           "avoid": "",
@@ -37375,7 +37719,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Mixed-color seed blend; component cultivars unknown",
+          "short": "Mezcla de semillas de varios colores; se desconocen los cultivares componentes",
           "guidance": "La mezcla se vende como Coleus blumei; Kew acepta Coleus scutellarioides. Los cultivares que componen la mezcla no están especificados.",
           "items": [],
           "avoid": "",
@@ -37417,7 +37761,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pinch tips; decide whether to retain flower spikes",
+          "short": "Pinza las puntas y decide si conservar las espigas florales",
           "guidance": "Para obtener una planta más ramificada, University of Minnesota Extension recomienda cortar los 5 cm (2 pulgadas) superiores justo encima de un nudo cuando la planta mida alrededor de 15 cm (6 pulgadas). Retira las espigas florales al formarse si se busca favorecer el follaje en vez de las flores o semillas. Son opciones generales para el cóleo; el aspecto de la mezcla y el objetivo ornamental pueden variar.",
           "items": [],
           "avoid": "",
@@ -37439,7 +37783,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed starts and cuttings are documented",
+          "short": "Se documentan el inicio desde semilla y los esquejes",
           "guidance": "UMN Extension documenta tanto el cultivo desde semilla como los esquejes para el cóleo. Para conservar la apariencia de una planta individual, el esqueje permite propagarla vegetativamente; las plantas de semilla de una mezcla no tienen por qué reproducir una selección idéntica.",
           "items": [],
           "avoid": "",
@@ -37460,7 +37804,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El color del follaje y el tamaño maduro varían entre selecciones",
+          "short": "El color del follaje y el tamaño maduro varían entre selecciones de cóleo",
           "guidance": "University of Minnesota Extension describe el cóleo como una planta cultivada principalmente por su follaje variado y ofrece un rango general de unos 6–36 pulgadas de alto, a menudo casi igual de ancho. Como no se identifican los cultivares que componen Rainbow Mix, ese rango describe la diversidad del cóleo, no garantiza el tamaño de cada planta del paquete.",
           "items": [],
           "avoid": "",
@@ -37822,7 +38166,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Mantén humedad estable en suelo fértil",
+          "short": "Mantén humedad constante en suelo fértil",
           "guidance": "RHS recomienda suelo fértil, sol pleno o sombra parcial y riego durante periodos secos en el contexto de jardín del Reino Unido. Esto no define intensidad de lámpara ni objetivos de nutrientes hidropónicos.",
           "items": [],
           "avoid": "",
@@ -37864,7 +38208,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Permite cosechas repetidas de hojas exteriores",
+          "short": "Cosecha repetidamente las hojas exteriores",
           "guidance": "RHS describe cosecha de hojas de tipo corte y rebrote y uso de hojas jóvenes alrededor de ocho semanas en su contexto de cultivo. El plazo puede variar por ambiente.",
           "items": [],
           "avoid": "",
@@ -37906,7 +38250,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "RHS informa buena resistencia al espigado en sequía",
+          "short": "RHS informa buena resistencia a la floración prematura en condiciones secas",
           "guidance": "RHS describe resistencia al espigado en su propio contexto de cultivo. No se amplía a resistencia a plagas o enfermedades no documentada.",
           "items": [],
           "avoid": "",
@@ -37927,7 +38271,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hojas jóvenes para ensalada; los tallos también son comestibles",
+          "short": "Las hojas jóvenes sirven para ensalada; los tallos comestibles distinguen este cultivar de la espinaca verdadera",
           "guidance": "RHS describe las hojas jóvenes para ensaladas y señala que los tallos gruesos son comestibles. Esto corresponde al cultivar nombrado de acelga de hoja Perpetual Spinach; el nombre no la convierte en Spinacia oleracea y no se infiere cómo preparar los tallos.",
           "items": [],
           "avoid": "",
@@ -37963,7 +38307,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Mustard green product; not botanical wasabi",
+          "short": "Producto de hojas de mostaza; no es wasabi botánico",
           "guidance": "Hudson Valley Seed Company identifica el producto Wasabina como Brassica juncea. Su nombre alude al sabor de una mostaza, no demuestra que sea wasabi verdadero. NC State describe Brassica juncea como anual; Kew acepta × Brassarda juncea y lista Brassica × juncea como sinónimo, mientras USDA PLANTS y el proveedor usan Brassica juncea. Garden adopta el nombre aceptado por Kew y conserva el uso de USDA y del proveedor como nombre alternativo; esto no demuestra un registro formal del cultivar.",
           "items": [],
           "avoid": "",
@@ -38107,7 +38451,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species-level identity; cultivar unspecified",
+          "short": "Identidad a nivel de especie; cultivar no especificado",
           "guidance": "Kew acepta Helianthus annuus. Esta ficha general se mantiene separada de cultivares nombrados y no toma prestados sus tamaños, ramificación ni colores.",
           "items": [],
           "avoid": "",
@@ -38268,7 +38612,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Híbrido de Pinguicula con nombre asignado por el proveedor",
-          "guidance": "California Carnivores identifies the product as a cyclosecta hybrid named Lilac Lollipop. Kew accepts Pinguicula cyclosecta as a species but does not establish this hybrid's exact parentage or formal cultivar status. The profile therefore treats Lilac Lollipop as a supplier-named horticultural product, not a formally registered cultivar or a fully resolved botanical cross.",
+          "guidance": "California Carnivores identifica el producto como un híbrido de cyclosecta llamado Lilac Lollipop. Kew acepta Pinguicula cyclosecta como especie, pero no establece el parentaje exacto ni el estatus formal de cultivar de este híbrido. La ficha trata Lilac Lollipop como producto hortícola nombrado por el proveedor, no como cultivar registrado ni como cruce botánico completamente resuelto.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38289,7 +38633,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Roseta pequeña; el proveedor indica 5–10 cm al crecer por completo",
-          "guidance": "California Carnivores reports this named product at about 2–4 inches across when fully grown and says it may arrive much smaller in its winter succulent-leaf phase. The size is supplier-reported for Lilac Lollipop, not an independent trial or a height measurement.",
+          "guidance": "California Carnivores indica que este producto nombrado alcanza aproximadamente 5–10 cm de ancho al crecer por completo y que puede llegar mucho más pequeño durante la fase invernal de hojas suculentas. Es una medida informada por el proveedor para Lilac Lollipop, no un ensayo independiente ni una medida de altura.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38310,7 +38654,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "El proveedor describe flores de color lila suave",
-          "guidance": "The supplier names Lilac Lollipop for its lilac-colored flowers and describes abundant flowering. This is the product description; it does not guarantee flower count, timing, or repeat bloom under every home condition.",
+          "guidance": "El proveedor nombra Lilac Lollipop por sus flores lilas y describe floración abundante. Es una descripción del producto; no garantiza cantidad, época ni repetición de floración en todas las condiciones domésticas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38332,7 +38676,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Aplica con cautela la guía para grasillas mexicanas",
-          "guidance": "California Carnivores groups this product with Mexican/Tropical Pinguicula and recommends full-to-part sun, including a sunny indoor windowsill or grow lights, while protecting plants from strong afternoon sun. The seller reports a purple blush under bright light; UC Davis notes that light needs and color response vary among species and hybrids. Neither source gives a quantified lamp intensity, so no indoor light tier or setpoint is assigned.",
+          "guidance": "California Carnivores agrupa este producto con las Pinguicula mexicanas/tropicales y recomienda sol pleno a parcial, incluso una ventana interior soleada o luces de cultivo, protegiendo la planta del sol fuerte de la tarde. El proveedor informa un tono púrpura con luz brillante; UC Davis señala que las necesidades de luz y el color varían entre especies e híbridos. Ninguna fuente cuantifica la intensidad de lámpara, así que no se asigna un nivel o valor de luz interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38354,7 +38698,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Usa agua sin minerales y ajusta la humedad según la fase foliar",
-          "guidance": "California Carnivores and UC Davis advise deionized, reverse-osmosis, or distilled water for Pinguicula because dissolved minerals can damage plants. UC Davis describes Mexican/tropical butterworts as moist but not bog plants; its general tray guidance allows the medium to dry between refills. The supplier advises reducing water as a succulent winter rosette begins and warns that seasonal transitions are a rot-risk period. Exact species-level seasonal watering needs vary, so observe the plant rather than applying a calendar recipe.",
+          "guidance": "California Carnivores y UC Davis recomiendan agua desionizada, de ósmosis inversa o destilada para Pinguicula por su sensibilidad a minerales disueltos. UC Davis describe las mexicanas/tropicales como plantas que prefieren humedad, pero no son de pantano; su guía general de bandeja permite que el medio se seque entre recargas. El proveedor aconseja reducir el riego al comenzar la roseta suculenta invernal y advierte riesgo de pudrición durante transiciones. Las necesidades estacionales varían, así que observa la planta y no apliques un calendario universal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38376,7 +38720,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Usa un medio para Pinguicula, pobre en minerales y drenante",
-          "guidance": "California Carnivores recommends its sandy Pinguicula mix for Mexican/Tropical plants; UC Davis gives a general tropical Pinguicula medium based on coarse sand, peat and perlite and warns against pre-fertilized media. These are source-specific formulations, not a single proven recipe for every hybrid. The guidance concerns a potted carnivorous plant, not hydroponics.",
+          "guidance": "California Carnivores recomienda su mezcla arenosa de Pinguicula para plantas mexicanas/tropicales; UC Davis describe un medio general para Pinguicula tropicales con partes iguales de arena gruesa, turba y perlita, y desaconseja medios prefertilizados. Son formulaciones de fuentes distintas, no una receta probada para todos los híbridos. Se trata de cultivo en maceta, no de hidroponía.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38398,7 +38742,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Una roseta invernal de hojas suculentas puede ser normal",
-          "guidance": "The supplier says Lilac Lollipop may form small, tight succulent leaves in winter and return to larger carnivorous leaves in spring; it does not require inducing this phase. UC Davis confirms that some tropical Mexican Pinguicula, including P. cyclosecta, can change leaf form seasonally, while care differs by species. A compact succulent rosette alone should not be treated as failure; follow the plant's observed transition and avoid overwatering during it.",
+          "guidance": "El proveedor indica que Lilac Lollipop puede formar hojas suculentas pequeñas y apretadas en invierno y volver a hojas carnívoras mayores en primavera; no es necesario inducir la fase. UC Davis confirma que algunas Pinguicula mexicanas tropicales, incluida P. cyclosecta, cambian de forma foliar según la estación, pero el cuidado varía por especie. Una roseta suculenta compacta por sí sola no significa que la planta haya fallado; sigue la transición observada y evita el exceso de agua.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38420,7 +38764,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "La acumulación de minerales y el exceso de humedad pueden dañarlas",
-          "guidance": "The seller warns that Pinguicula are highly sensitive to dissolved minerals and salts; UC Davis likewise recommends mineral-free water and cautions against keeping tropical pings too wet. The supplier flags seasonal transition as a higher-risk period for rot. No specific pest or disease diagnosis for Lilac Lollipop is established by these sources.",
+          "guidance": "El proveedor advierte que Pinguicula son muy sensibles a minerales y sales disueltos; UC Davis también recomienda agua sin minerales y advierte que las mexicanas tropicales no deben mantenerse demasiado mojadas. El proveedor señala mayor riesgo de pudrición durante la transición estacional. Estas fuentes no establecen una plaga o enfermedad específica para Lilac Lollipop.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38441,7 +38785,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Los esquejes de hoja son una vía vegetativa documentada para Pinguicula",
-          "guidance": "California Carnivores demonstrates leaf-pulling propagation for Pinguicula generally. A vegetative route is preferable when maintaining a named hybrid identity; the selected sources do not establish a seed protocol for Lilac Lollipop.",
+          "guidance": "California Carnivores muestra la propagación por hojas para Pinguicula en general. La vía vegetativa es preferible para conservar una identidad híbrida nombrada; las fuentes seleccionadas no establecen un protocolo de semilla para Lilac Lollipop.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -38474,7 +38818,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pothos species; not Epipremnum pinnatum",
+          "short": "Especie pothos; distinta de Epipremnum pinnatum",
           "guidance": "Kew acepta Epipremnum aureum e incluye Pothos aureus y Scindapsus aureus entre sus sinónimos. NC State distingue E. aureum de E. pinnatum; el nombre común pothos no se usa para unirlos.",
           "items": [],
           "avoid": "",
@@ -38495,7 +38839,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light; let potting medium dry between waterings",
+          "short": "Luz brillante indirecta; deja secar el sustrato entre riegos",
           "guidance": "NC State Extension recomienda luz brillante indirecta y dejar secar el sustrato bien drenado entre riegos. La poca luz puede reducir la variegación en algunas formas; no se infiere intensidad de lámpara ni receta hidropónica.",
           "items": [],
           "avoid": "",
@@ -38516,7 +38860,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Trailing or climbing vine",
+          "short": "Enredadera colgante o trepadora",
           "guidance": "NC State describe tallos colgantes y enredaderas que pueden trepar con soporte; como planta de interior suele conservar hojas juveniles. Pode los tallos para manejar la forma; no se infiere tamaño interior a partir de la longitud de una enredadera exterior.",
           "items": [],
           "avoid": "",
@@ -38579,7 +38923,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Stem cuttings",
+          "short": "Esquejes de tallo",
           "guidance": "NC State Extension documenta esquejes de tallo y señala que las enredaderas enraízan en agua. Es una vía vegetativa; aquí no se representa un protocolo de siembra para la planta de interior común.",
           "items": [],
           "avoid": "",
@@ -38600,7 +38944,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Toxic if ingested",
+          "short": "Tóxica si se ingiere",
           "guidance": "NC State Extension identifica cristales de oxalato de calcio y reporta irritación oral y otros síntomas tras ingerir la planta. Manténgala fuera del alcance de niños y mascotas; esto no es consejo médico individual.",
           "items": [],
           "avoid": "",
@@ -38634,7 +38978,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species identity",
+          "short": "Identidad aceptada a nivel de especie",
           "guidance": "Kew acepta Zamioculcas zamiifolia y registra Caladium zamiifolium y Zamioculcas loddigesii entre sus sinónimos. Esta ficha no representa un cultivar.",
           "items": [],
           "avoid": "",
@@ -38655,7 +38999,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Allow the potting mix to dry between waterings",
+          "short": "Deja secar la mezcla para maceta entre riegos",
           "guidance": "NC State Extension describe rizomas carnosos que almacenan agua, recomienda sustrato bien drenado y dejarlo secar entre riegos. Tolera poca luz, pero crece mejor con luz brillante indirecta; el sol directo puede quemar las hojas.",
           "items": [],
           "avoid": "",
@@ -38697,7 +39041,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow-growing, rhizomatous perennial",
+          "short": "Perenne rizomatosa de crecimiento lento",
           "guidance": "NC State informa crecimiento lento y hábito rizomatoso. Las dimensiones exteriores citadas no se tratan como tamaño interior garantizado para todos los recipientes.",
           "items": [],
           "avoid": "",
@@ -38718,7 +39062,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Division or leaf cuttings",
+          "short": "División o esquejes de hoja",
           "guidance": "NC State Extension enumera la división y los esquejes de hoja como métodos de propagación. Se presentan como vías vegetativas documentadas para esta ficha a nivel de especie.",
           "items": [],
           "avoid": "",
@@ -38760,7 +39104,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Keep away from pets and children",
+          "short": "Mantenla fuera del alcance de niños y mascotas",
           "guidance": "NC State Extension identifica oxalato de calcio y características de toxicidad de nivel medio si se consumen las hojas. Mantenga la planta fuera del alcance de mascotas y niños.",
           "items": [],
           "avoid": "",
@@ -38794,7 +39138,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species-level spider plant",
+          "short": "Planta araña a nivel de especie",
           "guidance": "Kew acepta Chlorophytum comosum. NC State enumera spider plant, spider ivy y ribbon plant entre los nombres comunes; existen varios cultivares, pero aquí no se selecciona ninguno.",
           "items": [],
           "avoid": "",
@@ -38815,7 +39159,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Medium light; protect from direct sun",
+          "short": "Luz media; protege del sol directo",
           "guidance": "NC State Extension describe preferencia por luz media y tolerancia a sombra profunda, e indica que la luz solar directa puede dañar las hojas. Mantenga el sustrato húmedo pero bien drenado y reduzca el riego en invierno; son recomendaciones para recipientes y suelo.",
           "items": [],
           "avoid": "",
@@ -38836,7 +39180,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hojas arqueadas y acintadas; estolones largos llevan flores e hijuelos",
+          "short": "Hojas arqueadas en forma de cinta; los estolones llevan flores e hijuelos",
           "guidance": "NC State describe hojas verdes o rayadas, estrechas y parecidas a cintas, que suelen arquearse desde un tallo corto, y estolones largos que pueden caer desde una cesta colgante. Los estolones pueden llevar flores e hijuelos; en el contexto doméstico de la fuente, su formación responde a la duración del día.",
           "items": [],
           "avoid": "",
@@ -38878,7 +39222,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evita el exceso de fertilizante si quieres favorecer los hijuelos",
+          "short": "Evita fertilizar en exceso si quieres favorecer los hijuelos",
           "guidance": "NC State señala que fertilizar en exceso reduce la formación de hijuelos. También recomienda reducir el riego en invierno; estas prácticas pertenecen al cultivo de interior en recipiente descrito por la fuente, no a una receta hidropónica.",
           "items": [],
           "avoid": "",
@@ -38920,7 +39264,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Plantlets or division",
+          "short": "Hijuelos o división",
           "guidance": "NC State Extension documenta la propagación mediante hijuelos y división. Estas vías vegetativas se presentan sin afirmar que la propagación por semilla sea imposible.",
           "items": [],
           "avoid": "",
@@ -38954,7 +39298,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Distinct from Monstera deliciosa",
+          "short": "Distinta de Monstera deliciosa",
           "guidance": "Kew acepta Monstera adansonii. NC State señala que es una planta más pequeña que Monstera deliciosa pese a la similitud de algunos nombres comunes; esta ficha no afirma subespecie ni cultivar.",
           "items": [],
           "avoid": "",
@@ -38975,7 +39319,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light, warmth and humidity",
+          "short": "Luz brillante indirecta, calor y humedad",
           "guidance": "NC State Extension recomienda luz brillante indirecta, condiciones cálidas y húmedas, sustrato húmedo y bien drenado, y protección contra corrientes frías o temperaturas inferiores a 50 °F. Las dimensiones interiores dependen del soporte y no son medidas fijas para un sistema.",
           "items": [],
           "avoid": "",
@@ -38996,7 +39340,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Climbing vine; supported houseplants can become several feet tall",
+          "short": "Trepadora; con soporte, una planta de interior puede alcanzar varios pies",
           "guidance": "NC State describe una trepadora perenne que usa raíces aéreas y recomienda tutor, espaldera o poste de musgo. Su ejemplo de planta de interior con soporte puede alcanzar unos 0,9–2,4 m de altura y 0,3–0,9 m de ancho; las dimensiones dependen del soporte y las condiciones, y no representan capacidad fija de un sistema ni distancia entre pods.",
           "items": [],
           "avoid": "",
@@ -39059,7 +39403,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Stem cuttings",
+          "short": "Esquejes de tallo",
           "guidance": "NC State Extension enumera los esquejes de tallo como método recomendado. Se documenta esta vía vegetativa; aquí no se presenta un protocolo de semilla.",
           "items": [],
           "avoid": "",
@@ -39080,7 +39424,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid ingestion and sap contact",
+          "short": "Evita ingerirla o tocar la savia",
           "guidance": "NC State Extension reporta riesgo de irritación por contacto y características de toxicidad de baja gravedad asociadas al oxalato de calcio. Evite el contacto con la savia y la ingestión; tome precauciones con niños y mascotas.",
           "items": [],
           "avoid": "",
@@ -40249,7 +40593,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cebolla de verdeo sin bulbo: Allium fistulosum",
+          "short": "Cebolla de verdeo a nivel de especie: Allium fistulosum",
           "guidance": "Kew acepta Allium fistulosum. UMN Extension identifica las cebollas de verdeo/scallions como A. fistulosum y distingue la cebolla egipcia (A. cepa var. proliferum). Esta entrada no representa un cultivar nombrado ni reemplaza Nebuka o White Lisbon.",
           "items": [],
           "avoid": "",
@@ -40270,7 +40614,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno; humedad estable y control cuidadoso de malezas",
+          "short": "Pleno sol; mantén el suelo uniformemente húmedo y controla las malezas entre plántulas",
           "guidance": "UMN recomienda un lugar soleado, regar cuando la lluvia no sea suficiente y controlar con cuidado las malezas mientras las plantas son pequeñas. Son recomendaciones de jardín exterior, no especificaciones de un sistema hidropónico.",
           "items": [],
           "avoid": "",
@@ -40292,8 +40636,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tallos verdes y blancos sin bulbo; puede formar mata perenne",
-          "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. UC ANR señala que la especie puede formar una mata perenne. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
+          "short": "Tallos verdes y blancos sin formar un bulbo",
+          "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40356,8 +40700,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha al tamaño útil o según necesites sabor a cebolla",
-          "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojar el suelo antes si hace falta para evitar que se quiebren. Para matas perennes de jardín, UC ANR recomienda cosechar cuando las hojas alcanzan unos 6–13 mm de diámetro y se desea sabor a cebolla. Son contextos de huerto exterior, no una promesa fija de días a cosecha ni una regla de tamaño hidropónico.",
+          "short": "Cosecha las cebollas de verdeo cuando alcancen un tamaño útil",
+          "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojando el suelo antes si hace falta para evitar que se quiebren. No se asigna un número fijo de días a este perfil sin cultivar especificado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40377,8 +40721,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Divide matas establecidas y maneja los tallos florales según tu objetivo",
-          "guidance": "UC ANR describe desenterrar y dividir las matas establecidas en otoño para replantarlas. Aconseja retirar los tallos florales antes de abrirse cuando el objetivo es multiplicar la mata en vez de favorecer la floración; es una decisión de manejo, no evidencia de enfermedad o fallo. Mantén el suelo húmedo, pero no empapado, y controla malezas con frecuencia, sobre todo cuando las plantas son pequeñas. Es una guía para matas de jardín exterior.",
+          "short": "Divide mature clumps and manage flower stalks to match your goal",
+          "guidance": "UC ANR describes digging and dividing established clumps in fall, then replanting them. It advises removing flower stalks before bloom when the goal is multiplying the clump rather than flowering; this is a management choice, not evidence that flowering is disease or failure. Keep soil moist but not wet and weed regularly, especially while plants are small. The advice is for outdoor garden clumps.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40398,8 +40742,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Las matas establecidas se pueden dividir; la siembra se trata aparte",
-          "guidance": "UC ANR documenta la división de matas maduras de Allium fistulosum para replantarlas. Es propagación vegetativa de una planta establecida; el Perfil de Semilla separado cubre la etapa desde semilla hasta planta establecida.",
+          "short": "Established clumps can be divided; seed-starting is covered separately",
+          "guidance": "UC ANR documents division of mature Allium fistulosum clumps as a way to replant them. This is vegetative propagation of an established plant; the separate Seed Profile covers the seed-to-established-plant stage.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40419,8 +40763,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retirar el tallo floral depende de si buscas una mata mayor o flores",
-          "guidance": "UC ANR señala que se pueden cortar los tallos florales antes de que abran cuando el objetivo de cultivo es multiplicar la mata. No proporciona un calendario de floración ni describe una exhibición floral específica de cultivar; florecer no es automáticamente un problema.",
+          "short": "Flower stalk removal depends on whether you want a larger clump or flowers",
+          "guidance": "UC ANR notes that flower stalks can be cut before bloom when the growing goal is clump multiplication. It does not provide a flowering calendar or describe a cultivar-specific floral display; flowering itself is not automatically a problem.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -41113,15 +41457,57 @@ export const gardenPlantProfileCatalog = {
           "ncsu-ficus-lyrata-500"
         ],
         "en": {
-          "short": "Large lyre-shaped leaves on an upright woody plant",
-          "guidance": "NC State describes a tropical evergreen tree with broad lyre-shaped leaves up to 18 inches long; as a houseplant it gives a broad height range of 2–10 feet. Actual size depends on growing conditions, so this species range is not a guaranteed room-size endpoint and no compact cultivar is implied.",
+          "short": "Large lyre-shaped leaves on an upright woody plant; flowering is rare indoors",
+          "guidance": "NC State describes a tropical evergreen tree with broad lyre-shaped leaves up to 18 inches long; as a houseplant it gives a broad height range of 2–10 feet. It notes that houseplants rarely flower or fruit. Actual size depends on growing conditions, so this species range is not a guaranteed room-size endpoint and no compact cultivar is implied.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Hojas grandes en forma de lira sobre una planta leñosa erecta",
-          "guidance": "NC State describe un árbol tropical perenne con hojas anchas en forma de lira de hasta 46 cm; como planta de interior da un rango amplio de 60–305 cm de altura. El tamaño real depende de las condiciones, así que el rango no garantiza el tamaño final en una habitación ni implica un cultivar compacto.",
+          "short": "Hojas grandes en forma de lira sobre una planta leñosa erecta; rara vez florece en interiores",
+          "guidance": "NC State describe un árbol tropical perenne con hojas anchas en forma de lira de hasta 46 cm; como planta de interior da un rango amplio de 60–305 cm de altura y señala que rara vez florece o fructifica en casa. El tamaño real depende de las condiciones, así que el rango no garantiza el tamaño final en una habitación ni implica un cultivar compacto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ficus-lyrata-500"
+        ],
+        "en": {
+          "short": "Stem cutting is the documented route",
+          "guidance": "NC State lists stem cutting as a propagation strategy. Seed collection or germination instructions are not supplied by the selected source.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documentan esquejes de tallo",
+          "guidance": "NC State enumera esquejes de tallo como estrategia de propagación. La fuente seleccionada no proporciona instrucciones de recolección o germinación de semillas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ficus-lyrata-500"
+        ],
+        "en": {
+          "short": "Watch for leaf scorch, leaf drop, and common indoor pests",
+          "guidance": "NC State notes that excess direct sun can scorch leaves and watering extremes or temperature changes can contribute to leaf drop. Scale, aphids, mealybugs, thrips, and spider mites may occur; sap may irritate skin and the plant is toxic if ingested.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila quemaduras, caída de hojas y plagas domésticas",
+          "guidance": "NC State indica que demasiado sol directo puede quemar las hojas y que los extremos de riego o cambios de temperatura pueden causar caída de hojas. Puede haber escamas, pulgones, cochinillas, trips y araña roja; la savia irrita la piel y la planta es tóxica si se ingiere.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -41169,43 +41555,22 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "propagation": {
+      "maintenance": {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-ficus-lyrata-500"
         ],
         "en": {
-          "short": "Stem cutting is the documented route",
-          "guidance": "NC State lists stem cutting as a propagation strategy. Seed collection or germination instructions are not supplied by the selected source.",
+          "short": "Prune only as needed; protect skin from irritating sap",
+          "guidance": "NC State describes fiddle-leaf fig as a relatively low-maintenance houseplant that may be pruned as needed. Its milky sap can irritate skin, so wear gloves when pruning or propagating. The source does not prescribe a routine pruning calendar or a particular shaping technique.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Se documentan esquejes de tallo",
-          "guidance": "NC State enumera esquejes de tallo como estrategia de propagación. La fuente seleccionada no proporciona instrucciones de recolección o germinación de semillas.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "problems": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-ficus-lyrata-500"
-        ],
-        "en": {
-          "short": "Watch for leaf scorch, leaf drop, and common indoor pests",
-          "guidance": "NC State notes that excess direct sun can scorch leaves and watering extremes or temperature changes can contribute to leaf drop. Scale, aphids, mealybugs, thrips, and spider mites may occur; sap may irritate skin and the plant is toxic if ingested.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Vigila quemaduras, caída de hojas y plagas domésticas",
-          "guidance": "NC State indica que demasiado sol directo puede quemar las hojas y que los extremos de riego o cambios de temperatura pueden causar caída de hojas. Puede haber escamas, pulgones, cochinillas, trips y araña roja; la savia irrita la piel y la planta es tóxica si se ingiere.",
+          "short": "Poda solo cuando haga falta y protege la piel de la savia irritante",
+          "guidance": "NC State describe el ficus lira como una planta de interior de bajo mantenimiento que puede podarse cuando sea necesario. Su savia lechosa puede irritar la piel, así que recomienda usar guantes al podar o propagar. La fuente no prescribe un calendario rutinario ni una técnica específica de formación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -43214,27 +43579,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "flowering": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "uf-ifas-luffa-500"
-        ],
-        "en": {
-          "short": "Male and female flowers are distinct; fruit develops after pollination",
-          "guidance": "UF/IFAS describes smooth luffa as monoecious: male flowers occur in elongated clusters, while female flowers are solitary; both are yellow or orange. The female flower's ovary is visible at its base. Pollinated flowers develop cylindrical fruit, so flowering alone does not mean a fruit has set. These are crop-level observations in a Florida production guide, not a local bloom calendar or a claim about pollination success in every garden.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Las flores masculinas y femeninas son distintas; el fruto se desarrolla tras la polinización",
-          "guidance": "UF/IFAS describe la lufa lisa como monoica: las flores masculinas aparecen en racimos alargados y las femeninas son solitarias; ambas son amarillas o anaranjadas. El ovario de la flor femenina se ve en su base. Las flores polinizadas desarrollan frutos cilíndricos, así que la floración por sí sola no significa que se haya formado un fruto. Son observaciones del cultivo en una guía de producción de Florida, no un calendario local de floración ni una afirmación de éxito de polinización en todos los jardines.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "harvest": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -43272,6 +43616,28 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Evita suelo frío y saturado y que el fruto toque el suelo",
           "guidance": "UF/IFAS señala riesgo de damping-off en condiciones frías y húmedas, minadores de hojas como plaga frecuente y pudrición del fruto cuando crece cerca del suelo. Son problemas observados en guías de cultivo, no una afirmación de susceptibilidad específica de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500",
+          "ucanr-santa-clara-luffa-pollination-2026"
+        ],
+        "en": {
+          "short": "Male flower clusters generally appear first; female blooms follow, and fruit develops after pollination",
+          "guidance": "UF/IFAS describes smooth luffa as monoecious: male flowers occur in racemes of roughly 10–16, while female flowers are solitary; both are yellow or orange. The female flower has a visible ovary at its base, and pollinated flowers develop cylindrical fruit. UC Master Gardeners of Santa Clara County report that male blossoms generally appear first, female blossoms later, and fruit follows; bees and other insects pollinate, and a small brush is an optional hand-pollination aid when needed. These are source observations, not a fixed bloom calendar, expected sex ratio, or guarantee of fruit set.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los racimos de flores masculinas suelen aparecer primero; después las femeninas y, tras la polinización, se desarrolla el fruto",
+          "guidance": "UF/IFAS describe la lufa lisa como monoica: las flores masculinas aparecen en racimos de unas 10–16 y las femeninas son solitarias; ambas son amarillas o anaranjadas. El ovario de la flor femenina se ve en su base y las flores polinizadas desarrollan frutos cilíndricos. UC Master Gardeners del condado de Santa Clara informa que suelen aparecer primero las flores masculinas y luego las femeninas; abejas y otros insectos polinizan, y un pincel pequeño es una ayuda opcional cuando hace falta. Son observaciones de las fuentes, no un calendario fijo, una proporción sexual esperada ni una garantía de fructificación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -45866,15 +46232,15 @@ export const gardenPlantProfileCatalog = {
           "uaex-mungbeans-wave25"
         ],
         "en": {
-          "short": "Warm-season annual for sunny, well-drained sites",
-          "guidance": "Arkansas Extension recommends direct seeding in warm weather and describes the crop as tender annual. Its soil and planting guidance is regional home-garden information, not a hydroponic recommendation.",
+          "short": "Warm-season annual; full sun and well-drained loam in the Arkansas home-garden guide",
+          "guidance": "Arkansas Extension describes mung bean as a tender annual for sunny sites and well-drained loam, with average moisture and a soil-pH range of 5.8–7.0. This is crop-level home-garden soil guidance from Arkansas, not a hydroponic prescription or indoor grow-light tier. The guide's outdoor row-spacing figures are not translated into pod counts.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Anual de clima cálido para sitios soleados y bien drenados",
-          "guidance": "Arkansas Extension recomienda siembra directa con clima cálido y describe el cultivo como anual sensible al frío. Sus recomendaciones de suelo y plantación corresponden al huerto regional, no a hidroponía.",
+          "short": "Anual de clima cálido; pleno sol y suelo franco bien drenado según la guía doméstica de Arkansas",
+          "guidance": "Arkansas Extension describe el frijol mungo como anual sensible al frío para sitios soleados y suelo franco bien drenado, con humedad media y un rango de pH del suelo de 5,8–7,0. Es orientación de cultivo doméstico para suelo en Arkansas, no una receta hidropónica ni un nivel de luz de cultivo interior. Las cifras de espaciamiento entre hileras del huerto no se convierten en cantidades de pods.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -48046,7 +48412,7 @@ export const gardenPlantProfileCatalog = {
           "guidance": "NC State places outdoor species flowering from midsummer to early fall and says each flower is short-lived while the overall bloom period generally lasts about a month. Gardyn's product guide says each flower lasts one day, followed by successive groups of about 8–12 blooms, a rest, and—under proper care—two or three waves over roughly 8–10 months. The latter is the manufacturer's report for its offered product, not a guaranteed schedule for other cultivars or systems. The Blush label does not establish a named cultivar.",
           "items": [],
           "avoid": "",
-          "context": ""
+          "context": "Gardyn's flowering calendar applies to its product; NC State's timing is for outdoor plants at species scope."
         },
         "es": {
           "short": "Gardyn describe tandas sucesivas; el calendario exterior es a nivel de especie",
@@ -48233,7 +48599,7 @@ export const gardenPlantProfileCatalog = {
           "guidance": "Clemson Cooperative Extension advises cutting petunia shoots back to about half their length when plants become leggy or stop flowering; if needed, they may be cut to within a few inches of the base, but not stripped of all leaves. The source recommends watering and liquid fertilizer to encourage new growth. This is general outdoor petunia guidance for South Carolina, not a fixed schedule or validated response for Gardyn's unidentified pink selection or a hydroponic system.",
           "items": [],
           "avoid": "",
-          "context": ""
+          "context": "General Petunia guidance for outdoor conditions in South Carolina; not specific to Gardyn's product."
         },
         "es": {
           "short": "Si los tallos establecidos se alargan débilmente o dejan de florecer, una fuente regional describe una poda de recuperación",
@@ -48283,7 +48649,7 @@ export const gardenPlantProfileCatalog = {
           "guidance": "Gardyn describes trumpet-shaped flowers with a soft-pink hue and delicate fragrance; it says the plant spreads before bloom and naturally cascades. These observations are specific to its Pink Petunia product description. UMN Extension notes that flower size and habit vary among horticultural groups; Gardyn's listing does not establish a named cultivar or formal grandiflora, multiflora, milliflora or spreading-group identity, and no exact flowering schedule is supplied.",
           "items": [],
           "avoid": "",
-          "context": ""
+          "context": "General Petunia guidance, not specific to a cultivar."
         },
         "es": {
           "short": "Gardyn describe flores fragantes rosa suave y porte colgante natural",
@@ -48304,7 +48670,7 @@ export const gardenPlantProfileCatalog = {
           "guidance": "UMN Extension suggests cutting petunia stems for bouquets and removing leaves that would sit below the water line. Gardyn's Pink Petunia guide explicitly says the flowers are not edible. Keep the cut-flower use ornamental; do not infer culinary use from the broader Petunia genus or other ornamental-flower profiles.",
           "items": [],
           "avoid": "",
-          "context": ""
+          "context": "General Petunia guidance, not specific to a cultivar."
         },
         "es": {
           "short": "Corta tallos para arreglos; Gardyn indica que esta petunia no es comestible",
@@ -52246,7 +52612,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Selección Meyer; Kew acepta Citrus × limon",
+          "short": "Selección de limón Meyer; Kew acepta Citrus × limon",
           "guidance": "NC State Extension identifica la selección hortícola como Citrus × limon 'Meyer'. Kew registra Citrus × meyeri como sinónimo de Citrus × limon. El perfil conserva el nombre común de la selección Meyer sin tratarlo como especie aceptada independiente.",
           "items": [],
           "avoid": "",
@@ -52267,7 +52633,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Árbol cítrico perenne y pequeño, con fruto comestible",
+          "short": "Pequeño cítrico perenne de follaje siempre verde y fruto comestible",
           "guidance": "NC State describe el limón Meyer como un árbol leñoso, perenne y pequeño, con flores y frutos comestibles. Esta identidad nombra la selección Meyer; el portainjerto, el carácter enanizante y el tamaño adulto exacto no se establecen para todas las plantas vendidas con ese nombre.",
           "items": [],
           "avoid": "",
@@ -52288,7 +52654,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno para producir fruta; protege de las heladas",
+          "short": "El pleno sol favorece la producción de frutos; protégelo de las heladas",
           "guidance": "NC State informa que el pleno sol ofrece el mejor rendimiento y producción, recomienda un sustrato constantemente húmedo pero bien drenado y el cultivo en recipiente móvil en regiones con riesgo de helada. Sus zonas de rusticidad son regionales; no equivalen a una prescripción universal de luz artificial interior.",
           "items": [],
           "avoid": "",
@@ -52309,7 +52675,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Poda para aireación; poliniza a mano si hace falta en interior",
+          "short": "Poda para mejorar la ventilación; si hace falta, poliniza a mano las flores de interior",
           "guidance": "NC State recomienda podar ramas para mejorar la circulación de aire y mantener un tamaño menor; se pueden reducir los racimos a uno o dos frutos para obtener frutos más grandes y saludables. Para fructificación en interior aconseja polinizar las flores a mano y fertilizar cada tres meses; son indicaciones de la fuente, no una garantía de cuajado ni un calendario fijo para exterior.",
           "items": [],
           "avoid": "",
@@ -52331,7 +52697,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hay esquejes de cítricos; el portainjerto Meyer no está establecido",
+          "short": "Se documentan esquejes de cítricos; el portainjerto específico del cultivar no está establecido",
           "guidance": "La Extensión de la Universidad de Minnesota indica que los esquejes de tallo de cítricos enraízan con facilidad, pero es una orientación general del grupo y no especifica un protocolo ni portainjerto para Meyer. Las plantas injertadas y los ejemplares de semilla no son equivalentes a un cultivar fiel al nombre; la historia de propagación de una planta individual sigue sin conocerse.",
           "items": [],
           "avoid": "",
@@ -52352,7 +52718,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El fruto amarillo-anaranjado está maduro; puede tardar 6–9 meses",
+          "short": "El fruto amarillo a anaranjado está maduro; puede tardar 6–9 meses",
           "guidance": "NC State describe el fruto verde cuando aún no madura y amarillo a anaranjado al madurar; puede tardar unos 6–9 meses y sabe más dulce que los limones comunes cuando está maduro. Su ficha regional indica producción principalmente en otoño e invierno, aunque puede haber frutos en primavera en plantas de interior. Estas señales son más útiles que una fecha fija, que depende de las condiciones de cultivo.",
           "items": [],
           "avoid": "",
@@ -52373,7 +52739,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila plagas cítricas; las hormigas pueden indicar escamas",
+          "short": "Vigila las plagas de cítricos; al aire libre, las hormigas pueden señalar cochinillas",
           "guidance": "NC State enumera ácaros, escamas, moscas blancas, pulgones y orugas entre las plagas a vigilar. Señala que las hormigas en una planta exterior durante la primavera pueden indicar escamas; las hormigas por sí solas no las confirman. Inspecciona la planta y confirma la plaga antes de elegir una respuesta.",
           "items": [],
           "avoid": "",
@@ -52406,7 +52772,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Híbrido aceptado: Citrus × microcarpa",
+          "short": "Nombre híbrido aceptado: Citrus × microcarpa",
           "guidance": "Kew acepta Citrus × microcarpa y registra × Citrofortunella mitis y Citrus × mitis entre sus sinónimos. El catálogo usa el nombre aceptado por Kew y conserva el nombre común familiar Calamondin.",
           "items": [],
           "avoid": "",
@@ -52427,7 +52793,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cítrico cultivado en interior; fructificar no está garantizado",
+          "short": "Cítrico que suele cultivarse en interior; la fructificación no está garantizada",
           "guidance": "La Extensión de la Universidad de Minnesota llama al calamondín el cítrico más cultivado en interiores en su orientación para Minnesota. Describe el fruto como pequeño y ácido. La fuente advierte que lograr que los cítricos fructifiquen dentro de casa puede ser difícil; conviene considerar el fruto como una posibilidad, no como resultado esperado.",
           "items": [],
           "avoid": "",
@@ -52448,7 +52814,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Algo de sol directo y noches interiores más frescas",
+          "short": "Ofrece sol directo parte del día y noches frescas en interior",
           "guidance": "La guía de cítricos de interior de UMN recomienda algo de sol directo durante parte del día y unos 65°F de día, con noches 5–10°F más frescas. Describe una mezcla ácida con materia orgánica; es orientación para cítricos de interior en Minnesota, no una prescripción hidropónica específica para Calamondin ni una categoría universal de luz artificial. Al trasladar la planta al exterior en verano, aconseja aclimatarla gradualmente al sol y volver gradualmente a menor luz antes de entrarla.",
           "items": [],
           "avoid": "",
@@ -52469,7 +52835,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Lava las hojas; poliniza a mano en interior si hace falta",
+          "short": "Inspecciona y lava las hojas; la polinización puede limitar el cuajado en interior",
           "guidance": "UMN aconseja lavar periódicamente las hojas de cítricos, también por debajo, y fertilizar solo mientras la planta crece activamente (su guía de Minnesota indica de abril a agosto o septiembre). Las flores de interior pueden no cuajar si faltan polinizadores; la fuente sugiere sacudirlas suavemente o pasar polen de una flor a otra a mano. Son prácticas generales de cítricos de interior, no una garantía de cosecha para Calamondin.",
           "items": [],
           "avoid": "",
@@ -52490,7 +52856,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Inspecciona hojas por escamas, mosca blanca y ácaros",
+          "short": "Revisa las hojas por cochinillas, mosca blanca y ácaros",
           "guidance": "UMN enumera escamas, moscas blancas y ácaros entre las plagas comunes de cítricos. Recomienda inspeccionar y lavar periódicamente la parte superior e inferior de las hojas; la página no ofrece una clave de síntomas ni un calendario de tratamiento específico para Calamondin.",
           "items": [],
           "avoid": "",
@@ -52511,7 +52877,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Esquejes documentados para cítricos en general",
+          "short": "Se documentan esquejes de cítricos a nivel del cultivo, no de este cultivar en particular",
           "guidance": "UMN Extension indica que los esquejes de tallo de cítricos enraízan con facilidad y describe un método general para cítricos. Es una orientación de grupo, no un ensayo específico de Calamondin; el cultivar y portainjerto de una planta de vivero pueden variar.",
           "items": [],
           "avoid": "",
@@ -52532,7 +52898,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fruto pequeño y ácido; madurez y temporada no establecidas",
+          "short": "Los frutos pequeños y ácidos sirven para adornar bebidas o preparar mermelada",
           "guidance": "UMN Extension describe el fruto de Calamondin como pequeño y ácido y recomienda usos como mermelada o guarnición de bebidas. La guía revisada no establece color de madurez, temporada de cosecha ni garantía de fructificación en interior; esos datos quedan sin especificar.",
           "items": [],
           "avoid": "",
@@ -52565,7 +52931,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Especie aceptada: Passiflora edulis; sin cultivar asignado",
+          "short": "Especie aceptada: Passiflora edulis",
           "guidance": "Kew acepta Passiflora edulis Sims en Passifloraceae y la describe como una liana. Esta identidad corresponde a la especie; no asigna cultivar, forma de color del fruto ni selección nombrada.",
           "items": [],
           "avoid": "",
@@ -52587,7 +52953,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Enredadera vigorosa que necesita una cerca o espaldera",
+          "short": "Enredadera vigorosa que produce fruto y necesita soporte",
           "guidance": "UF/IFAS describe el maracuyá como una enredadera vigorosa y recomienda ubicarla junto a una cerca o espaldera. Es orientación de especie/cultivo en contexto de Florida, no evidencia de una dimensión exacta de tutor para recipiente.",
           "items": [],
           "avoid": "",
@@ -52609,7 +52975,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno y suelo bien drenado en cultivo exterior",
+          "short": "Se documentan pleno sol y un medio de cultivo bien drenado",
           "guidance": "UF/IFAS recomienda pleno sol y suelo bien drenado para el maracuyá de jardín y reporta que puede crecer en una maceta de 3 galones en su contexto de Florida. Ese ejemplo no establece el tamaño universal de una planta adulta ni compatibilidad hidropónica.",
           "items": [],
           "avoid": "",
@@ -52630,7 +52996,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Semillas y esquejes documentados; la plántula puede variar",
+          "short": "Se documentan tanto semillas como esquejes vegetativos",
           "guidance": "UF/IFAS documenta tanto un protocolo por semilla como esquejes vegetativos, que pueden producir plantas genéticamente idénticas y con una fase juvenil más corta. La semilla es adecuada si se acepta una plántula variable; esta identidad de especie no implica un cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -52652,7 +53018,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Reconoce la madurez por cambio de color del fruto",
+          "short": "El cambio de color del fruto señala madurez; el calendario de Florida es contextual",
           "guidance": "UF/IFAS informa que en Florida transcurren aproximadamente 70–80 días desde la floración/polinización hasta la cosecha y explica que la madurez se reconoce cuando la cáscara cambia del verde hacia el color esperado para el tipo de fruto. Como esta identidad no asigna una forma púrpura o amarilla, no se prescribe un único color maduro; el plazo es regional y no un calendario universal desde la siembra o el trasplante.",
           "items": [],
           "avoid": "",
@@ -52727,7 +53093,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Frutal tropical de vida corta y tronco erguido blando",
+          "short": "Frutal tropical de vida relativamente corta, con tronco blando y erguido",
           "guidance": "UF/IFAS describe la papaya como una planta de vida relativamente corta, de 1–3 años en su contexto de producción tropical/subtropical, con frutos a lo largo de troncos semileñosos y erguidos. Es una descripción regional del cultivo, no una duración garantizada en cualquier maceta o clima.",
           "items": [],
           "avoid": "",
@@ -52749,7 +53115,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno y drenaje excelente",
+          "short": "Se destacan el pleno sol y un drenaje excelente",
           "guidance": "UF/IFAS indica que la papaya se cultiva mejor en pleno sol y con drenaje excelente. La fuente de la Universidad de Hawái advierte que el drenaje restringido favorece enfermedades de raíz. Son recomendaciones de producción tropical; no se infiere aptitud para interiores ni hidroponía.",
           "items": [],
           "avoid": "",
@@ -52792,7 +53158,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Mantén humedad sin saturar; separa el mantillo del tronco",
+          "short": "Mantén la humedad sin saturar el suelo de forma persistente; aleja el acolchado del tronco",
           "guidance": "UF/IFAS informa que la sequía puede causar caída de flores, hojas y frutos jóvenes; el riego excesivo frecuente en suelos que retienen humedad puede favorecer la pudrición de raíz. Su guía para paisaje doméstico en Florida sugiere una capa de mantillo de 2–6 pulgadas, separada 8–12 pulgadas del tronco. Es orientación regional de paisaje, no un calendario fijo para maceta.",
           "items": [],
           "avoid": "",
@@ -52813,7 +53179,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El tipo de flor influye en el cuajado y la forma del fruto",
+          "short": "El sexo de las flores influye en el cuajado y la forma del fruto",
           "guidance": "UF/IFAS describe flores femeninas y bisexuales con formas de fruto distintas; las plantas bisexuales pueden autopolinizarse, mientras otras dependen de insectos o viento. La expresión floral puede variar con temperatura, duración del día y humedad del suelo. Como este es un registro de especie propagada por semilla, el tipo sexual y el resultado de una planta individual siguen siendo desconocidos.",
           "items": [],
           "avoid": "",
@@ -52834,7 +53200,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha verde como hortaliza o espera el cambio de color de la cáscara",
+          "short": "Cosecha verde para uso como vegetal o espera a que cambie el color de la cáscara",
           "guidance": "UF/IFAS indica que la papaya puede cosecharse verde como hortaliza o cuando la cáscara desarrolla tonos amarillos a anaranjados; como señal en paisaje doméstico de Florida, menciona que el amarillo cubra aproximadamente 10–33% de la cáscara, y que más color en la planta se asocia con mayor azúcar. También describe maduración a temperatura ambiente después de cosechar y refrigeración del fruto maduro. Son señales regionales del cultivo, no una edad de cosecha prometida para una plántula sin tipo sexual conocido.",
           "items": [],
           "avoid": "",
@@ -52855,7 +53221,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila síntomas de mancha anular y caída prematura de frutos",
+          "short": "Vigila síntomas de mancha anular y amarilleo o caída prematura del fruto",
           "guidance": "UF/IFAS describe el virus de la mancha anular de papaya con moteado amarillo y aclaramiento de nervaduras, hojas deformadas, vetas oscuras en tallos y marcas oscuras circulares o en C en los frutos. En su guía de Florida, también indica que la mosca de la fruta de papaya puede causar zonas amarillas y caída prematura; allí se describe embolsar frutos jóvenes como control. Estos signos requieren diagnóstico local y no significan que toda planta tenga la plaga o el virus.",
           "items": [],
           "avoid": "",
@@ -52888,7 +53254,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Goeppertia orbifolia",
+          "short": "Especie aceptada: Goeppertia orbifolia",
           "guidance": "Kew acepta Goeppertia orbifolia dentro de Marantaceae y registra Calathea orbifolia entre sus sinónimos. El nombre familiar Calathea se conserva como alias de búsqueda; no se asigna cultivar.",
           "items": [],
           "avoid": "",
@@ -52909,7 +53275,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping evergreen with large round striped leaves",
+          "short": "Perenne cespitosa con grandes hojas redondas y rayadas",
           "guidance": "NC State describe una planta compacta que forma matas, normalmente de 2–3 pies de alto y 1–2 pies de ancho en su contexto hortícola, con hojas redondas y rayas verde plateadas que pueden alcanzar unas 12 pulgadas de diámetro. Las plantas de interior rara vez florecen; estas dimensiones corresponden a recipientes generales, no a un espacio de pods.",
           "items": [],
           "avoid": "",
@@ -52930,7 +53296,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light and evenly moist, draining mix",
+          "short": "Luz brillante indirecta y mezcla húmeda pero bien drenada",
           "guidance": "NC State recomienda luz indirecta brillante o semisombra y un sustrato ligeramente ácido, húmedo y bien drenado. Mantén la mezcla constantemente húmeda sin dejarla empapada; la fuente también relaciona el fluoruro del agua de grifo con puntas marrones y prefiere agua destilada o de lluvia. La semisombra ambiental no se convierte en un nivel de luz artificial.",
           "items": [],
           "avoid": "",
@@ -52951,7 +53317,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid drafts; clean leaves and divide in spring",
+          "short": "Evita corrientes; limpia las hojas y divide en primavera",
           "guidance": "NC State recomienda evitar corrientes frías y cambios bruscos de temperatura, mantener humedad alta y limpiar suavemente el polvo de las hojas grandes. La fuente recomienda la división en primavera; esto no demuestra que la propagación por semilla sea biológicamente imposible.",
           "items": [],
           "avoid": "",
@@ -53027,7 +53393,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Codiaeum variegatum",
+          "short": "Especie aceptada: Codiaeum variegatum",
           "guidance": "Kew acepta Codiaeum variegatum dentro de Euphorbiaceae. “Croton” es el nombre común de esta especie ornamental y no significa que pertenezca al género botánico Croton, que es distinto. NC State enumera numerosas selecciones hortícolas; aquí no se identifica ninguna.",
           "items": [],
           "avoid": "",
@@ -53048,7 +53414,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evergreen woody shrub with highly variable foliage",
+          "short": "Arbusto leñoso perenne con follaje muy variable",
           "guidance": "NC State describe un arbusto leñoso perenne, cultivado comúnmente en interiores como planta de follaje, cuyas hojas varían entre cultivares. La fuente ofrece dimensiones exteriores amplias y una altura interior aproximada, pero la variación entre selecciones y condiciones no permite asignar un tamaño adulto único a este croton sin cultivar identificado.",
           "items": [],
           "avoid": "",
@@ -53069,7 +53435,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright natural light; protect from cold and chronic shade",
+          "short": "Luz natural intensa; protégelo del frío y la sombra persistente",
           "guidance": "NC State recomienda luz brillante, con algo de sol directo para intensificar el color, y suelo rico en humus y bien drenado. En su contexto regional aconseja llevar las plantas al interior cuando la temperatura se acerque a 50 °F. La exposición exterior no se traduce en un nivel de lámpara interior y la tolerancia varía entre cultivares.",
           "items": [],
           "avoid": "",
@@ -53111,7 +53477,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fresh seed can vary; use vegetative methods to retain a selection",
+          "short": "La semilla fresca produce variación; usa métodos vegetativos para conservar una selección",
           "guidance": "UF/IFAS informa que las semillas frescas de Codiaeum variegatum germinan con facilidad, pero producen mucha variación; enumera acodo aéreo y esquejes blandos, apicales o de yema foliar como métodos vegetativos. La propagación vegetativa es preferible cuando importa conservar un cultivar nombrado. No se implica un cultivar específico ni un calendario de germinación.",
           "items": [],
           "avoid": "",
@@ -53166,7 +53532,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Kalanchoe blossfeldiana",
+          "short": "Especie aceptada: Kalanchoe blossfeldiana",
           "guidance": "Kew acepta Kalanchoe blossfeldiana dentro de Crassulaceae. NC State utiliza Florist Kalanchoe y Christmas Kalanchoe como nombres comunes y enumera varios cultivares nombrados; este perfil permanece en la especie sin elegir uno de ellos.",
           "items": [],
           "avoid": "",
@@ -53187,7 +53553,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Compact succulent with long-lasting flower clusters",
+          "short": "Suculenta compacta con racimos florales duraderos",
           "guidance": "NC State describe una suculenta erguida y ramificada, normalmente de 6–18 pulgadas de alto y 6–12 pulgadas de ancho, con pequeñas flores agrupadas. El color floral y la forma simple o doble varían entre cultivares y no se atribuyen a este perfil de especie.",
           "items": [],
           "avoid": "",
@@ -53208,7 +53574,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Let the succulent mix dry between thorough waterings",
+          "short": "Deja secar la mezcla para suculentas entre riegos abundantes",
           "guidance": "NC State recomienda luz indirecta brillante o semisombra, mezcla para cactus/suculentas con buen drenaje y dejar que se seque entre riegos profundos. Para favorecer la floración, describe 6–8 horas diarias de luz brillante y 14 horas nocturnas de oscuridad ininterrumpida durante al menos seis semanas en otoño/invierno; es una señal para la floración, no una regla de luz para germinar.",
           "items": [],
           "avoid": "",
@@ -53229,7 +53595,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Deadhead spent flowers; prevent prolonged wetness",
+          "short": "Retira las flores marchitas y evita que permanezca demasiado húmeda",
           "guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Enumera esquejes de tallo y hoja como métodos de propagación; aquí no se ofrece protocolo de semilla.",
           "items": [],
           "avoid": "",
@@ -53250,7 +53616,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Keep away from children and pets that may ingest it",
+          "short": "Mantenla fuera del alcance de niños y mascotas que puedan ingerirla",
           "guidance": "NC State advierte que la ingestión es tóxica para personas y mascotas y recomienda mantener la planta fuera de su alcance. Es una advertencia respaldada por la fuente, no orientación médica individual.",
           "items": [],
           "avoid": "",
@@ -53284,7 +53650,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Heptapleurum arboricola",
+          "short": "Especie aceptada: Heptapleurum arboricola",
           "guidance": "Kew acepta Heptapleurum arboricola dentro de Araliaceae y registra Schefflera arboricola como sinónimo. NC State también utiliza Dwarf Schefflera y Dwarf Umbrella Tree como nombres comunes. El perfil no selecciona ninguno de sus cultivares nombrados.",
           "items": [],
           "avoid": "",
@@ -53305,7 +53671,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evergreen shrub that can become a substantial container plant",
+          "short": "Arbusto perenne que puede convertirse en una planta grande de recipiente",
           "guidance": "NC State informa que las plantas de interior en recipiente suelen alcanzar aproximadamente 4–6 pies de alto y ancho, mientras que los ejemplares tropicales exteriores pueden crecer más. El rango interior se conserva como contexto general de recipiente, no como tamaño para un aparato de encimera ni para todo cultivar enano.",
           "items": [],
           "avoid": "",
@@ -53326,7 +53692,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Use filtered natural light and let the mix dry before soaking",
+          "short": "Usa luz natural filtrada y deja secar la mezcla antes de regar abundantemente",
           "guidance": "NC State recomienda unas 3–4 horas diarias de luz natural filtrada en interior, advierte que la luz directa intensa puede quemar las hojas y aconseja dejar secar el sustrato antes de regar abundantemente. También describe un medio orgánico, bien drenado y humedad ambiental elevada. Son pautas para cultivo en recipiente; no establecen compatibilidad hidropónica ni un nivel de intensidad para lámparas.",
           "items": [],
           "avoid": "",
@@ -53347,7 +53713,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and stem cuttings are listed; no seed-start protocol is supplied",
+          "short": "Se documentan semillas y esquejes de tallo; no hay protocolo de inicio desde semilla",
           "guidance": "NC State enumera semilla y esqueje de tallo, pero en esta página no da protocolo de siembra ni germinación. La vía por semilla queda sin documentar aquí; el esqueje es una alternativa citada, no una afirmación de que la semilla no pueda propagarse.",
           "items": [],
           "avoid": "",
@@ -53389,7 +53755,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sácala al exterior solo si las noches se mantienen sobre 60 °F",
+          "short": "Sácala al exterior solo cuando las noches se mantengan sobre 60 °F",
           "guidance": "NC State indica que puede colocarse en un sitio exterior protegido cuando las temperaturas no bajen de 60 °F (16 °C). Esta es una precaución para sacarla al exterior, no una temperatura mínima declarada para cultivarla dentro de casa.",
           "items": [],
           "avoid": "",
@@ -53465,7 +53831,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Ficus benjamina",
+          "short": "Especie aceptada: Ficus benjamina",
           "guidance": "Kew acepta Ficus benjamina dentro de Moraceae. NC State enumera Weeping Fig y otros nombres comunes, además de cultivares nombrados como 'Too Little'; esta identidad representa la especie sin elegir cultivar ni forma de bonsái.",
           "items": [],
           "avoid": "",
@@ -53486,7 +53852,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evergreen tree with drooping branches; often maintained as a houseplant",
+          "short": "Árbol perenne de ramas colgantes; suele mantenerse como planta de interior",
           "guidance": "NC State describe un árbol perenne de gran tamaño en exterior, pero indica que en interior suele mantenerse de 2–10 pies de alto en recipientes. Los cultivares difieren; las formas miniatura tienen nombres propios, por lo que el perfil de especie no promete tamaño compacto ni hábito de bonsái.",
           "items": [],
           "avoid": "",
@@ -53507,7 +53873,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light; allow gradual adjustment after moving",
+          "short": "Luz brillante indirecta; aclimátalo gradualmente después de moverlo",
           "guidance": "NC State dice que crece mejor con luz brillante indirecta, pero es muy sensible a cambios de luz; moverla puede causar caída de hojas mientras se adapta. Recomienda mezcla de cultivo para macetas basada en suelo y riego suficiente para evitar que se seque por completo. Es guía de recipiente, no protocolo hidropónico.",
           "items": [],
           "avoid": "",
@@ -53528,7 +53894,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Prune lightly for shape in late autumn or winter",
+          "short": "Poda ligera para dar forma a fines de otoño o invierno",
           "guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad. Enumera esquejes de tallo como método de propagación; la fuente no establece protocolo de siembra para su uso común como planta de interior.",
           "items": [],
           "avoid": "",
@@ -53549,7 +53915,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Leaf drop can follow environmental changes; monitor common pests",
+          "short": "Los cambios ambientales pueden provocar caída de hojas; vigila plagas comunes",
           "guidance": "NC State menciona la caída de hojas tras cambios de luz o ubicación y enumera escamas, pulgones, cochinillas, trips y ácaros como plagas posibles. Una hoja caída tras mover la planta no debe diagnosticarse automáticamente como problema de nutrientes.",
           "items": [],
           "avoid": "",
@@ -53604,7 +53970,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; distinct from giant white bird of paradise",
+          "short": "Especie aceptada; distinta del ave del paraíso gigante blanca",
           "guidance": "Kew acepta Strelitzia reginae y registra Strelitzia regalis como sinónimo. El nombre común ave del paraíso también se usa para otras especies, incluida S. nicolai; esta identidad del catálogo corresponde específicamente a S. reginae.",
           "items": [],
           "avoid": "",
@@ -53625,7 +53991,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping tropical perennial with large leaves and showy flowers",
+          "short": "Perenne tropical en mata, con hojas grandes y flores vistosas",
           "guidance": "NC State describe una perenne sudafricana que forma matas, con hojas verde grisáceas que nacen de rizomas subterráneos y una inflorescencia distintiva anaranjada y azul con aspecto de ave. Indica una altura y anchura típicas de 3–4 pies en contexto de paisaje; en interior las dimensiones pueden variar según edad y recipiente.",
           "items": [],
           "avoid": "",
@@ -53646,7 +54012,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores llamativas anaranjadas y azules; no hay un calendario preciso",
+          "short": "Flores vistosas anaranjadas y azules; no hay un calendario preciso",
           "guidance": "NC State describe una inflorescencia grande, anaranjada y azul, con forma de ave, y señala floración intermitente durante el año; sus atributos estructurados indican verano y otoño. Como las descripciones temporales difieren en precisión, esta ficha no promete una temporada específica de floración en interior. Plant Toolbox indica que las flores pueden usarse como flor cortada.",
           "items": [],
           "avoid": "",
@@ -53667,7 +54033,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright, sunny placement; keep the potting medium well drained",
+          "short": "Ubicación luminosa y soleada; conserva bien drenado el sustrato de la maceta",
           "guidance": "NC State recomienda un sitio interior soleado y bien iluminado, con suelo fértil y bien drenado, riego y fertilización regulares en primavera y verano y condiciones más secas en invierno. La recomendación de temperatura nocturna de 55–65 °F pertenece al contexto de la fuente, no es un punto de ajuste universal para interiores.",
           "items": [],
           "avoid": "",
@@ -53688,7 +54054,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Division is listed; no seed-starting protocol is supplied",
+          "short": "Se menciona la división; no se proporciona protocolo para iniciar desde semilla",
           "guidance": "NC State enumera la división como estrategia de propagación. La ficha consultada no ofrece instrucciones de siembra o germinación; por eso los requisitos de semilla quedan sin documentar y no se consideran imposibles.",
           "items": [],
           "avoid": "",
@@ -53709,7 +54075,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid waterlogged media and keep pets from eating plant material",
+          "short": "Evita el medio encharcado y que las mascotas ingieran la planta",
           "guidance": "NC State advierte sobre el riesgo de pudrición de raíces en suelo mal drenado y señala características tóxicas de baja gravedad para mascotas y caballos. Plant Toolbox también informa náuseas leves, vómitos o somnolencia si las personas ingieren frutos o semillas. Mantén el material vegetal fuera del alcance de niños y mascotas; esta advertencia de la fuente no sustituye consejo médico o veterinario individual.",
           "items": [],
           "avoid": "",
@@ -53743,7 +54109,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; former name remains searchable",
+          "short": "Especie aceptada; el nombre anterior sigue siendo útil para búsquedas",
           "guidance": "Kew acepta Ceropegia woodii y enumera Ceropegia linearis subsp. woodii entre sus sinónimos. NC State usa Cadena de corazones y Enredadera rosario como nombres comunes. El perfil no selecciona un cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -53764,7 +54130,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Trailing succulent vine with bead-like aerial tubers",
+          "short": "Enredadera suculenta colgante con tubérculos aéreos parecidos a cuentas",
           "guidance": "NC State describe tallos largos y colgantes con hojas pequeñas en forma de corazón y tubérculos aéreos que pueden enraizar al tocar el suelo. En recipiente, los tallos cuelgan alrededor de 3 pies; la longitud mucho mayor de la enredadera nativa no se presenta como tamaño garantizado en maceta.",
           "items": [],
           "avoid": "",
@@ -53806,7 +54172,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light and a well-drained, dry-between-watering mix",
+          "short": "Luz brillante indirecta y mezcla bien drenada que se seca entre riegos",
           "guidance": "NC State recomienda luz indirecta brillante, sustrato arenoso y bien drenado y dejar que se seque por completo entre riegos, con menos agua durante la dormancia invernal. El exceso de sol puede quemar las hojas y el exceso de agua causar pudrición de raíces.",
           "items": [],
           "avoid": "",
@@ -53827,7 +54193,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Layering, stem cuttings and seed are listed propagation routes",
+          "short": "Se documentan acodo, esquejes de tallo y propagación por semilla",
           "guidance": "NC State enumera acodo, semilla y esquejes de tallo, y señala que los tubérculos aéreos enraízan cuando tocan el suelo. Los tallos colgantes funcionan en macetas suspendidas o pueden guiarse por un pequeño enrejado; la planta tolera estar apretada, así que conviene trasplantar solo cuando sea necesario. La propagación vegetativa puede conservar una forma seleccionada; la página no ofrece un protocolo detallado de germinación, así que no se agregan parámetros.",
           "items": [],
           "avoid": "",
@@ -53848,7 +54214,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Watch for stretched growth, scorch and rot",
+          "short": "Vigila crecimiento estirado, quemaduras y pudrición",
           "guidance": "NC State relaciona hojas muy separadas con luz insuficiente, hojas quemadas con exceso de sol y amarillamiento o pudrición con problemas de riego. Son indicios contextuales, no un diagnóstico por sí solos.",
           "items": [],
           "avoid": "",
@@ -53882,7 +54248,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted name Curio rowleyanus; Senecio rowleyanus is a synonym",
+          "short": "Nombre aceptado Curio rowleyanus; Senecio rowleyanus es sinónimo",
           "guidance": "Kew acepta Curio rowleyanus y registra Senecio rowleyanus como sinónimo. NC State usa Collar de perlas y otros nombres comunes relacionados; la especie distinta Curio radicans no está incluida en esta identidad.",
           "items": [],
           "avoid": "",
@@ -53903,7 +54269,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cascading succulent with bead-like leaves",
+          "short": "Suculenta colgante con hojas en forma de cuentas",
           "guidance": "NC State describe tallos colgantes con hojas esféricas como guisantes y una ventana epidérmica translúcida que participa en la fotosíntesis. La página da rangos contradictorios para la longitud colgante: la descripción indica 1–2 pies y la sección de identificación rápida 1–3 pies; se conservan como estimaciones de la fuente, sin elegir una medida interior garantizada. La forma colgante cambia las dimensiones aparentes.",
           "items": [],
           "avoid": "",
@@ -53924,7 +54290,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light; prevent both soggy and bone-dry conditions",
+          "short": "Luz brillante indirecta; evita tanto el encharcamiento como la sequedad extrema",
           "guidance": "NC State recomienda luz indirecta brillante en interior y una mezcla para cactus bien drenada o tierra combinada con arena/perlita. Advierte contra el exceso de riego y contra dejar secar por completo el sustrato; la frecuencia depende del ambiente, así que no se prescribe un calendario fijo.",
           "items": [],
           "avoid": "",
@@ -53945,7 +54311,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Stem cuttings are the quick, documented renewal method",
+          "short": "Los esquejes de tallo son el método rápido y documentado para renovarla",
           "guidance": "NC State describe esquejes de tallo de 3–5 pulgadas, cubriendo varios nudos con mezcla para macetas, como método rápido. Considera más lenta y menos confiable la propagación a partir de una hoja sola. Después de florecer puede producir semillas, pero la página no da un protocolo de siembra.",
           "items": [],
           "avoid": "",
@@ -53966,7 +54332,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid soggy/dry extremes, harsh sun and ingestion",
+          "short": "Evita extremos de humedad, sol intenso y la ingestión",
           "guidance": "NC State describe las hojas y la savia como ligeramente tóxicas, aconseja evitar la ingestión, usar guantes si la manipulación causa irritación y vigilar a niños y mascotas. Informa marchitez tanto por falta como por exceso de agua, hojas amarillas o grises asociadas a insectos, quemaduras con sol directo y pudrición con suelo empapado; revisa el contexto completo en vez de tratar una señal aislada como diagnóstico. Recomienda vigilar pulgones, moscas blancas, mosquitas, hormigas y cochinillas; no se afirma resistencia.",
           "items": [],
           "avoid": "",
@@ -54000,7 +54366,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; named foliage cultivars remain distinct",
+          "short": "Especie aceptada; los cultivares de follaje nombrados son distintos",
           "guidance": "Kew acepta Peperomia caperata y registra Peperomia argentea como sinónimo. NC State describe múltiples cultivares con colores y formas de hoja distintos; este perfil representa la especie y no asigna 'Emerald Ripple' ni otro cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -54021,7 +54387,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Small evergreen herb with deeply furrowed heart-shaped leaves",
+          "short": "Hierba perenne pequeña con hojas acorazonadas y muy surcadas",
           "guidance": "NC State describe una hierba tropical perenne, erecta y tupida que suele cultivarse como planta de interior y que alcanza hasta unas 8 pulgadas en los trópicos. El follaje oscuro arrugado y las espigas florales color crema son característicos; los colores varían según cultivar.",
           "items": [],
           "avoid": "",
@@ -54042,7 +54408,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Filtered medium light and a porous mix that dries between watering",
+          "short": "Luz media filtrada y mezcla porosa que se seca entre riegos",
           "guidance": "NC State señala que la luz media filtrada es ideal y que la planta tolera luz baja durante varios meses; la mezcla debe secarse entre riegos. Advierte que el suelo empapado o extremadamente seco y las corrientes frías pueden estresarla. La referencia a iluminación fluorescente de oficina no implica compatibilidad con un dispositivo Garden X específico.",
           "items": [],
           "avoid": "",
@@ -54063,7 +54429,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spring leaf or stem-tip cuttings are documented",
+          "short": "Se documentan esquejes de hoja o de punta de tallo en primavera",
           "guidance": "NC State recomienda esquejes de hoja o de punta de tallo en primavera. Esta orientación vegetativa para la especie no ofrece protocolo de germinación; tampoco se debe asumir que las plántulas conserven el patrón de un cultivar elegido.",
           "items": [],
           "avoid": "",
@@ -54084,7 +54450,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Wet soil can lead to root rot; watch for common indoor pests",
+          "short": "El suelo húmedo puede causar pudrición de raíz; vigila plagas comunes de interior",
           "guidance": "NC State identifica riesgo de pudrición de raíces en mezclas mal drenadas y menciona moscas blancas, cochinillas y ácaros como posibles plagas. Recomienda evitar mojar las hojas y mantener circulación de aire para reducir el riesgo de manchas; esto no afirma resistencia a enfermedades.",
           "items": [],
           "avoid": "",
@@ -54118,7 +54484,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; cultivar unspecified",
+          "short": "Especie aceptada; cultivar sin especificar",
           "guidance": "Kew acepta Kalanchoe tomentosa en Crassulaceae y registra Bryophyllum triangulare como sinónimo. NC State usa Planta panda y nombres comunes relacionados. No se asigna una selección hortícola nombrada.",
           "items": [],
           "avoid": "",
@@ -54139,7 +54505,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow-growing succulent with soft, fuzzy leaves",
+          "short": "Suculenta de crecimiento lento y hojas suaves y vellosas",
           "guidance": "NC State describe una suculenta perenne erecta cuyas hojas verde pálido están cubiertas de vello gris blanquecino y tienen bordes marrones. Puede producir panículas estivales de flores pequeñas, aunque rara vez florece en interior. Indica unos 1–3 pies de altura y 2–3 pies de anchura en su contexto de paisaje; el tamaño interior varía con la edad y el recipiente.",
           "items": [],
           "avoid": "",
@@ -54160,7 +54526,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light and a fast-draining succulent mix",
+          "short": "Luz brillante indirecta y mezcla para suculentas de drenaje rápido",
           "guidance": "NC State recomienda luz indirecta brillante, mezcla para cactus/suculentas bien drenada y dejar secar la tierra entre riegos. Señala sensibilidad al calor extremo, preferencia por baja humedad y sensibilidad al frío; sus zonas y temperaturas exteriores son regionales y no una prescripción de luz artificial interior.",
           "items": [],
           "avoid": "",
@@ -54181,7 +54547,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Leaf cuttings or offshoots are the documented alternatives",
+          "short": "Esquejes de hoja o hijuelos son las alternativas documentadas",
           "guidance": "NC State describe esquejes de hoja o hijuelos como métodos de propagación y señala que esta especie vellosa es más difícil de propagar que algunas otras suculentas. La ficha consultada no ofrece un protocolo de siembra.",
           "items": [],
           "avoid": "",
@@ -54202,7 +54568,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Keep away from children and pets that may ingest it",
+          "short": "Mantenla fuera del alcance de niños y mascotas que puedan ingerirla",
           "guidance": "NC State advierte que es tóxica por ingestión y recomienda mantenerla fuera del alcance de niños y mascotas. Se conserva la advertencia sin agregar indicaciones de tratamiento médico.",
           "items": [],
           "avoid": "",
@@ -54223,7 +54589,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Shriveling and mushy leaves can indicate water stress",
+          "short": "Hojas arrugadas o blandas pueden indicar estrés por agua",
           "guidance": "NC State relaciona las hojas arrugadas con falta de agua y las hojas o tallos amarillos y blandos con exceso de agua; también menciona cochinillas y ácaros. Son señales posibles, no un diagnóstico sin revisar la planta y su entorno.",
           "items": [],
           "avoid": "",
@@ -54257,7 +54623,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species identity; cultivar not specified",
+          "short": "Identidad de especie; cultivar sin especificar",
           "guidance": "Kew acepta Aglaonema commutatum dentro de Araceae y registra Aglaonema marantifolium var. commutatum como sinónimo. Este registro corresponde a la especie y no a uno de los numerosos cultivares hortícolas que enumera NC State.",
           "items": [],
           "avoid": "",
@@ -54279,7 +54645,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tropical evergreen foliage plant",
+          "short": "Planta tropical perenne de follaje",
           "guidance": "Kew clasifica la especie como subarbusto de biomas tropicales húmedos. La descripción de NC State para el género caracteriza Aglaonema como planta perenne de follaje, cespitosa y con varios tallos; esos rasgos de género no son dimensiones específicas de esta especie.",
           "items": [],
           "avoid": "",
@@ -54300,7 +54666,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Genus-level indoor guidance: indirect light and season-aware watering",
+          "short": "Guía de interior a nivel de género: luz indirecta y riego según la estación",
           "guidance": "La guía de NC State para el género describe luz difusa o indirecta, mezcla húmeda pero bien drenada desde primavera hasta otoño y menos riego en invierno. Señala sensibilidad al frío y un rango diurno preferido de 70–80 °F. Estas recomendaciones siguen siendo de género; no establecen un nivel medido de luz artificial, aptitud hidropónica ni requisitos exactos para cada cultivar.",
           "items": [],
           "avoid": "",
@@ -54321,7 +54687,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Division or stem cuttings are documented for the genus",
+          "short": "Se documentan división o esquejes de tallo para el género",
           "guidance": "NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar.",
           "items": [],
           "avoid": "",
@@ -54342,7 +54708,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Watch for root rot, pests and browning in dry or drafty sites",
+          "short": "Vigila pudrición de raíz, plagas y hojas marrones en ambientes secos o con corrientes",
           "guidance": "NC State informa que el exceso de riego puede causar pudrición de raíces, enumera pulgones, cochinillas, ácaros y escamas para vigilar, y señala que el aire muy seco o las corrientes pueden hacer que las hojas se tornen marrones. Son riesgos a nivel de género, no un diagnóstico ni una afirmación de resistencia de cultivar.",
           "items": [],
           "avoid": "",
@@ -54363,7 +54729,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Keep plant material away from children and pets",
+          "short": "Mantén el material vegetal fuera del alcance de niños y mascotas",
           "guidance": "NC State señala toxicidad y riesgos por contacto o ingestión para Aglaonema. Mantén el material vegetal lejos de niños y mascotas; es información a nivel de género y no cuantifica el riesgo de exposición de un cultivar concreto.",
           "items": [],
           "avoid": "",
@@ -54397,7 +54763,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; distinct from S. reginae",
+          "short": "Especie aceptada; distinta de S. reginae",
           "guidance": "Kew acepta Strelitzia nicolai y registra Strelitzia alba subsp. nicolai y Strelitzia quensonii como sinónimos. El nombre común puede aplicarse a otras especies de Strelitzia; este registro se refiere específicamente a S. nicolai.",
           "items": [],
           "avoid": "",
@@ -54418,7 +54784,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Very large, clumping tropical perennial with banana-like leaves",
+          "short": "Perenne tropical muy grande y cespitosa, con hojas similares a las del banano",
           "guidance": "NC State informa una altura de 20–30 pies y anchura de 6–10 pies en contextos de paisaje o hábitat, y hojas de hasta 6.5 pies. Esas dimensiones exteriores no se presentan como dimensiones de maceta interior; una planta madura puede ser demasiado grande para una habitación típica.",
           "items": [],
           "avoid": "",
@@ -54460,7 +54826,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light and moist, well-drained medium",
+          "short": "Luz brillante indirecta y medio húmedo con buen drenaje",
           "guidance": "NC State recomienda luz brillante indirecta, suelo húmedo pero bien drenado y regar cuando se seque la capa superior; indica 65–85 °F como rango preferido y advierte que no tolera menos de 50 °F. Son recomendaciones para cultivo en suelo o recipiente, no especificaciones hidropónicas.",
           "items": [],
           "avoid": "",
@@ -54481,7 +54847,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Remove torn leaves; allow substantial space for mature growth",
+          "short": "Retira hojas rasgadas y deja espacio suficiente para el crecimiento adulto",
           "guidance": "NC State señala que el viento puede rasgar las hojas grandes y recomienda retirar las hojas rasgadas. El tamaño adulto y las raíces agresivas importan al elegir un sitio exterior permanente; no se debe asumir que la poda interior normal mantendrá pequeño un ejemplar maduro.",
           "items": [],
           "avoid": "",
@@ -54536,7 +54902,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted variety; Dracaena marginata is a synonym",
+          "short": "Variedad aceptada; Dracaena marginata es sinónimo",
           "guidance": "Kew acepta Dracaena reflexa var. angustifolia. Entre sus sinónimos figuran Dracaena marginata, Cordyline marginata y Pleomele marginata. NC State usa el nombre aceptado; Dracaena marginata se conserva como alias de búsqueda, no como identidad separada.",
           "items": [],
           "avoid": "",
@@ -54557,7 +54923,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow-growing evergreen shrub/tree with narrow red-edged leaves",
+          "short": "Arbusto o arbolito perenne de crecimiento lento, con hojas estrechas de bordes rojos",
           "guidance": "NC State informa que puede alcanzar aproximadamente 6 pies como planta de interior, frente a hasta 20 pies en contextos nativos o de paisaje; describe hojas estrechas, acintadas y con bordes rojizos. También señala que los tallos suelen ramificarse tras la poda.",
           "items": [],
           "avoid": "",
@@ -54599,7 +54965,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light and well-drained potting mix",
+          "short": "Luz brillante indirecta y mezcla para maceta bien drenada",
           "guidance": "NC State recomienda luz brillante indirecta, sustrato bien drenado y dejar que se seque entre riegos sin permitir que se reseque en exceso. Señala sensibilidad al fluoruro y recomienda agua destilada o sin fluoruro; es cuidado en maceta, no una receta hidropónica.",
           "items": [],
           "avoid": "",
@@ -54620,7 +54986,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pruning can reduce height and encourage branching",
+          "short": "La poda puede reducir la altura y fomentar la ramificación",
           "guidance": "NC State indica que se puede podar para reducir la altura y que los tallos podados suelen producir dos o más ramas. Trenzar o dar forma en espiral son técnicas de entrenamiento, no identidades de cultivar inherentes.",
           "items": [],
           "avoid": "",
@@ -54641,7 +55007,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Decoloración por fluoruro; mantén la planta lejos de personas y mascotas",
+          "short": "Decoloración por fluoruro; mantén el material vegetal lejos de personas y mascotas",
           "guidance": "NC State identifica la sensibilidad al fluoruro como causa de decoloración foliar y menciona ácaros, trips, insectos masticadores y manchas foliares. También clasifica la variedad como tóxica de baja gravedad: la ingestión puede causar irritación bucal o estomacal y síntomas gastrointestinales en personas y animales; la savia puede irritar la piel. Mantén el material vegetal fuera del alcance de niños y mascotas. No se afirma resistencia propia de un cultivar.",
           "items": [],
           "avoid": "",
@@ -54675,7 +55041,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; not the Madagascar dragon tree",
+          "short": "Especie aceptada; distinta de la drácena de Madagascar",
           "guidance": "Kew acepta Dracaena surculosa y registra Draco surculosa y Pleomele surculosa como sinónimos. El nombre Gold Dust Dracaena se refiere aquí a D. surculosa, no a Dracaena reflexa var. angustifolia.",
           "items": [],
           "avoid": "",
@@ -54696,7 +55062,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow-growing branched foliage plant with spotted leaves",
+          "short": "Planta de follaje ramificada y de crecimiento lento, con hojas moteadas",
           "guidance": "NC State describe ramas delgadas y erguidas, a veces arqueadas, con hojas verde oscuro brillantes y manchas crema o amarillas. Su ficha indica 2–3 pies de altura y 3–4 pies de anchura; son dimensiones de la ficha paisajística, no garantías para una maceta interior.",
           "items": [],
           "avoid": "",
@@ -54738,7 +55104,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Bright indirect light; avoid direct sun and waterlogging",
+          "short": "Luz brillante indirecta; evita sol directo y encharcamiento",
           "guidance": "NC State recomienda luz brillante sin sol directo y mantener el suelo húmedo durante el crecimiento activo, evitando encharcamientos y exceso de riego. Indica que demasiada luz puede causar pardeamiento o caída de hojas y muy poca puede reducir la intensidad del color; son señales cualitativas, no umbrales calibrados de luz interior. Para colocarla en maceta en un patio durante el verano, aconseja llevarla al interior cuando las noches bajen de 50 °F.",
           "items": [],
           "avoid": "",
@@ -54759,7 +55125,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Trim overgrown winter stems or propagate by division/cuttings",
+          "short": "Recorta en invierno los tallos alargados o propaga por división o esquejes",
           "guidance": "NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura, y enumera esquejes apicales o de tallo y división. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta.",
           "items": [],
           "avoid": "",
@@ -54780,7 +55146,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El exceso de riego puede pudrir raíces; evita que personas y mascotas la ingieran",
+          "short": "El exceso de riego puede pudrir las raíces; mantén la planta lejos de personas y mascotas",
           "guidance": "NC State advierte que el agua estancada y el exceso de riego pueden causar pudrición de raíces, y que las cochinillas de raíz pueden frenar el crecimiento. Su Plant Toolbox clasifica la planta como tóxica si la ingieren personas, gatos o perros; mantén el material vegetal fuera del alcance de niños y mascotas. No se afirma resistencia a enfermedades.",
           "items": [],
           "avoid": "",
@@ -54814,7 +55180,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; not a true palm",
+          "short": "Especie aceptada; no es una palmera verdadera",
           "guidance": "Kew acepta Beaucarnea recurvata y registra Nolina recurvata entre sus sinónimos. El nombre común pata de elefante es hortícola; es un árbol caudiciforme de la familia del espárrago, no una palmera.",
           "items": [],
           "avoid": "",
@@ -54835,7 +55201,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow-growing caudex with cascading narrow leaves",
+          "short": "Caudex de crecimiento lento con hojas estrechas y colgantes",
           "guidance": "NC State describe un tallo engrosado que almacena agua y hojas estrechas curvadas en las puntas. Informa aproximadamente 6–8 pies en maceta y hasta 30 pies en su hábitat nativo; no se presenta la cifra mayor como expectativa en recipiente.",
           "items": [],
           "avoid": "",
@@ -54856,7 +55222,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sunny placement and a fast-draining succulent medium",
+          "short": "Ubicación soleada y medio para suculentas de drenaje rápido",
           "guidance": "NC State recomienda una ventana soleada, sustrato de cactus o suculentas bien drenado, dejar secar entre riegos estivales y reducir mucho el riego en invierno. La tolerancia indicada de 50 °F no es una temperatura interior recomendada.",
           "items": [],
           "avoid": "",
@@ -54877,7 +55243,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid frequent watering; inspect for common indoor pests",
+          "short": "Evita el riego frecuente y revisa plagas comunes de interior",
           "guidance": "El caudex almacena agua y NC State describe la planta como tolerante a la sequía. Vigila cochinillas, escamas y araña roja; la fuente no establece un calendario de poda.",
           "items": [],
           "avoid": "",
@@ -54898,7 +55264,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Excess moisture can be more concerning than brief dryness",
+          "short": "El exceso de humedad puede ser más problemático que una sequedad breve",
           "guidance": "NC State enfatiza las condiciones secas y bien drenadas y menciona la pudrición del tallo entre los problemas posibles. La tolerancia a la sequía no significa que cualquier rutina de riego sea segura.",
           "items": [],
           "avoid": "",
@@ -54953,7 +55319,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; cultivar not specified",
+          "short": "Especie aceptada; cultivar sin especificar",
           "guidance": "Kew acepta Gardenia jasminoides y registra nombres históricos como Gardenia augusta y Gardenia florida como sinónimos. Este perfil es de la especie, no de un cultivar enano o especialmente resistente al frío.",
           "items": [],
           "avoid": "",
@@ -54974,7 +55340,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evergreen woody shrub with fragrant white flowers",
+          "short": "Arbusto leñoso perenne con flores blancas fragantes",
           "guidance": "NC State describe un arbusto perenne de hoja ancha, brillante y con flores fragantes de color blanco crema. Su ficha general de especie indica 4–8 pies de altura y extensión; los cultivares nombrados pueden diferir y no heredan automáticamente esas dimensiones.",
           "items": [],
           "avoid": "",
@@ -54995,7 +55361,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Acidic, rich, well-drained soil; bright placement",
+          "short": "Suelo ácido, rico y bien drenado; sitio luminoso",
           "guidance": "NC State recomienda suelo rico, ácido y bien drenado, con luz brillante indirecta o sombra parcial. La ficha paisajística incluye además un rango más amplio de exposición exterior; ninguna afirmación establece un nivel medido de luz artificial interior o aptitud hidropónica.",
           "items": [],
           "avoid": "",
@@ -55016,7 +55382,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Prune in spring and remove spent flowers",
+          "short": "Poda en primavera y retira las flores marchitas",
           "guidance": "NC State recomienda podar en primavera para mantener la forma, señala que las flores aparecen en crecimiento nuevo y permite retirar las flores marchitas para favorecer la floración. Evita alterar las raíces, descritas como superficiales y poco tolerantes a las molestias.",
           "items": [],
           "avoid": "",
@@ -55037,7 +55403,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species-level propagation routes include seed and vegetative methods",
+          "short": "Las vías de propagación de la especie incluyen semilla y métodos vegetativos",
           "guidance": "NC State enumera injerto, acodo, semilla y esqueje de tallo para Gardenia jasminoides. Es una descripción general de rutas de propagación; no aporta un protocolo de semilla a plántula ni demuestra que todos los métodos funcionen igual en cada cultivar.",
           "items": [],
           "avoid": "",
@@ -55058,7 +55424,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Whiteflies and overly alkaline soil can be concerns",
+          "short": "La mosca blanca y el suelo demasiado alcalino pueden ser problemáticos",
           "guidance": "NC State señala mosca blanca en plantas estresadas y advierte que el suelo alcalino junto al concreto puede dificultar el crecimiento. La fuente revisada no establece un objetivo numérico de pH, por lo que no se añade uno.",
           "items": [],
           "avoid": "",
@@ -55092,7 +55458,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted hybrid; many flower-color forms exist",
+          "short": "Híbrido aceptado; existen numerosas formas de color floral",
           "guidance": "Kew acepta Hibiscus × rosa-sinensis como cultígeno derivado de híbridos artificiales. NC State usa la grafía sin signo H. rosa-sinensis y señala que existen muchas formas; este registro representa el grupo híbrido ornamental, no un color ni cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -55113,7 +55479,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tropical evergreen woody shrub with large showy flowers",
+          "short": "Arbusto tropical leñoso y perenne con flores grandes y vistosas",
           "guidance": "NC State describe un arbusto perenne de hoja perenne con flores que pueden alcanzar unas 6 pulgadas. La ficha general da 4–10 pies de altura y 5–8 pies de anchura; las plantas de interior necesitan espacio amplio y pueden diferir de las cultivadas en paisaje.",
           "items": [],
           "avoid": "",
@@ -55134,7 +55500,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm, bright conditions and consistently moist, draining soil",
+          "short": "Condiciones cálidas y luminosas, con suelo siempre húmedo pero bien drenado",
           "guidance": "NC State recomienda sol pleno o sombra parcial, suelo rico, húmedo y bien drenado, humedad ambiental y protección contra heladas y viento. En interior requiere recipiente grande y luz brillante; no indica una intensidad artificial medida.",
           "items": [],
           "avoid": "",
@@ -55155,7 +55521,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spring pruning encourages compact growth and new flowering shoots",
+          "short": "La poda de primavera favorece un crecimiento compacto y nuevos brotes florales",
           "guidance": "NC State recomienda reducir aproximadamente a la mitad la altura a comienzos de primavera para promover una forma compacta y explica que las flores aparecen en crecimiento nuevo. Trasladar la planta puede provocar caída de hojas y botones por su sensibilidad a los cambios ambientales.",
           "items": [],
           "avoid": "",
@@ -55176,7 +55542,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Stem cuttings are the documented propagation route",
+          "short": "Los esquejes de tallo son el método de propagación documentado",
           "guidance": "NC State indica el esqueje de tallo como método de propagación del hibisco chino. La ficha no añade calendario ni tasa de éxito, y esta orientación de planta establecida no sustituye un protocolo específico de semillas.",
           "items": [],
           "avoid": "",
@@ -55197,7 +55563,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flowers are described as edible; ornamental identity does not establish food-safe treatment",
+          "short": "Las flores se describen como comestibles; la identidad ornamental no confirma su inocuidad alimentaria",
           "guidance": "NC State enumera las flores como comestibles. No presupongas que las flores de una planta ornamental de vivero son seguras para comer: la fuente no establece el historial de pesticidas ni las condiciones de inocuidad alimentaria.",
           "items": [],
           "avoid": "",
@@ -55218,7 +55584,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Scale insects may occur; abrupt environmental changes can trigger bud/leaf drop",
+          "short": "Puede haber escamas; los cambios bruscos pueden provocar caída de botones u hojas",
           "guidance": "NC State menciona escamas y sensibilidad a cambios ambientales que pueden provocar caída de hojas y botones. No se afirma resistencia general a enfermedades.",
           "items": [],
           "avoid": "",
@@ -55252,7 +55618,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted combination; Hibiscus sabdariffa is a synonym",
+          "short": "Combinación aceptada; Hibiscus sabdariffa es sinónimo",
           "guidance": "Kew acepta Sabdariffa gossypiifolia y registra Hibiscus sabdariffa como sinónimo. La página actual de NC State usa el nombre aceptado, aunque conserva el anterior en imágenes y la literatura hortícola; los alias de búsqueda incluyen ambos sin tratarlos como especies distintas.",
           "items": [],
           "avoid": "",
@@ -55275,7 +55641,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm-season edible subshrub with red stems and fleshy calyces",
+          "short": "Subarbusto comestible de estación cálida, con tallos rojos y cálices carnosos",
           "guidance": "NC State describe tallos rojos y hojas con venas rojizas; las hojas jóvenes son simples antes de desarrollar entre tres y cinco lóbulos. El cáliz carnoso es la parte alimentaria conocida. Los ejemplos de tamaño de UF/IFAS difieren: Pasco informa 1,2–2,1 m de altura y 0,9–1,5 m de ancho; una ficha de jardín demostrativo de Santa Rosa indica 0,6–0,9 m en ambas dimensiones. Son ejemplos regionales, no límites universales ni datos de cultivar.",
           "items": [],
           "avoid": "",
@@ -55298,7 +55664,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun, drainage and a long warm season support flowering",
+          "short": "Sol pleno, drenaje y una temporada cálida larga favorecen la floración",
           "guidance": "NC State y UF/IFAS describen cultivo exterior a pleno sol, tanto en recipiente como en suelo. UF/IFAS recomienda suelo con buen drenaje y riego complementario cuando la lluvia no basta; no proporciona un intervalo de riego específico para recipientes. Roselle es de día corto: las fuentes describen más floración con al menos 12 horas de oscuridad. No se extrapola esto a una receta de luz artificial ni a hidroponía.",
           "items": [],
           "avoid": "",
@@ -55321,7 +55687,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Protect the warm-season window; early pruning is regional guidance",
+          "short": "Protege la temporada cálida; la poda temprana es una recomendación regional",
           "guidance": "NC State advierte que una temporada fresca y corta puede no aportar suficientes meses cálidos para una floración útil y vainas maduras. UF/IFAS informa sensibilidad a heladas y daño bajo 40 °F en su contexto de Florida; también indica que la poda temprana puede aumentar la ramificación y los brotes florales, sin fijar dónde cortar ni un calendario universal. No se trasladan fechas de Florida a otros climas.",
           "items": [],
           "avoid": "",
@@ -55343,7 +55709,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Harvest plump calyces before browning; leave foliage for continued calyx production",
+          "short": "Cosecha cálices carnosos antes de que se pongan marrones; deja follaje para que siga produciendo",
           "guidance": "UF/IFAS recomienda recoger los cálices tiernos y llenos antes de que se tornen marrones, y señala que la cosecha favorece nuevos botones florales. Octubre/noviembre y cerca de una semana de frescura son datos de Florida, no universales. Las hojas jóvenes también están documentadas como alimento. Para usar el cáliz en recetas, separa la cápsula de semillas; no se afirma una fecha ni duración de conservación universal.",
           "items": [],
           "avoid": "",
@@ -55366,7 +55732,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cold, shade, waterlogging and root-knot nematodes can limit growth",
+          "short": "Frío, sombra, encharcamiento y nematodos agalladores pueden limitar el crecimiento",
           "guidance": "UF/IFAS informa daño por heladas, bajo rendimiento en sombra o suelos anegados y nematodos agalladores como plaga importante en su guía de Florida. NC State también indica que la planta no crece sin sol pleno y que temporadas frescas y cortas pueden impedir una producción útil de cálices. La presión regional de plagas no se convierte en una clasificación universal de resistencia o susceptibilidad.",
           "items": [],
           "avoid": "",
@@ -55400,7 +55766,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted temperate species; distinct from tropical hibiscus",
+          "short": "Especie templada aceptada; distinta del hibisco tropical",
           "guidance": "Kew acepta Hibiscus syriacus, nativo del sur de China y Taiwán. Nombres comunes como Hibiscus y Rose of China pueden solaparse; este registro es específicamente H. syriacus, no el hibisco chino H. × rosa-sinensis.",
           "items": [],
           "avoid": "",
@@ -55421,7 +55787,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Large deciduous shrub with summer flowers",
+          "short": "Arbusto caducifolio grande con flores estivales",
           "guidance": "NC State informa una altura de 8–12 pies y extensión de 6–10 pies en su ficha de especie, y describe un arbusto o arbolito de crecimiento rápido. Son dimensiones de paisaje, no una recomendación de tamaño para maceta.",
           "items": [],
           "avoid": "",
@@ -55463,7 +55829,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun to partial shade; avoid persistently extreme wet or dry soil",
+          "short": "Sol pleno a sombra parcial; evita suelos persistentemente muy secos o encharcados",
           "guidance": "NC State recomienda sol pleno o sombra parcial y suelo húmedo y bien drenado; señala tolerancia a distintos suelos normales. La ficha describe exposición de paisaje exterior, no una necesidad de luz artificial interior.",
           "items": [],
           "avoid": "",
@@ -55484,7 +55850,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spring pruning supports flowering on new growth",
+          "short": "La poda de primavera favorece la floración en brotes nuevos",
           "guidance": "NC State indica que la poda primaveral favorece las flores sobre crecimiento nuevo y puede aumentar el tamaño floral. También describe tolerancia al descuido; no se afirma un calendario de poda específico de cultivar.",
           "items": [],
           "avoid": "",
@@ -55505,7 +55871,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Check local invasive status before planting outdoors",
+          "short": "Consulta si está clasificado como invasor en tu zona antes de plantarlo al exterior",
           "guidance": "NC State señala que Rose of Sharon se ha reportado como invasora en algunos estados, entre ellos Virginia y Kentucky. Es una advertencia regional: consulta las recomendaciones locales y no supongas que la planta es invasora en todas partes.",
           "items": [],
           "avoid": "",
@@ -57938,7 +58304,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tallos huecos rastreros o flotantes que enraízan en los nudos",
+          "short": "Los tallos huecos, flotantes o rastreros enraízan en los nudos",
           "guidance": "UGA describe tallos largos y huecos que pueden flotar o extenderse, con raíces adventicias en los nudos. La fuente indica que puede comportarse como anual o perenne según el clima; esta ficha no fija un ciclo de vida independiente de la región.",
           "items": [],
           "avoid": "",
@@ -57959,7 +58325,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivo cálido documentado en instalaciones cerradas",
+          "short": "Cultivo de clima cálido; UGA documenta producción en espacios estrictamente contenidos",
           "guidance": "Los ensayos de UGA usaron cultivo en agua profunda/estanques dentro de invernadero o túneles altos cerrados, debido al riesgo de dispersión ambiental. Describe condiciones cálidas y pleno sol; no recomienda cultivo en aguas abiertas ni escapes de fragmentos. El ensayo prueba un contexto de investigación específico, no una receta nutritiva general ni un permiso legal.",
           "items": [],
           "avoid": "",
@@ -57980,7 +58346,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha brotes y conserva hojas basales para permitir el rebrote",
+          "short": "Cosecha los brotes y conserva el crecimiento basal para que rebrote",
           "guidance": "En los ensayos de túnel alto de UGA, se cortaron los brotes dejando hojas basales para permitir el rebrote; se documentaron varias cosechas. El calendario y el rendimiento variaron por sitio y fecha de plantación, así que no se generalizan a todo clima o cultivar.",
           "items": [],
           "avoid": "",
@@ -58001,7 +58367,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Se documentan semillas y fragmentos de tallo que enraízan",
+          "short": "Se documentan la semilla y fragmentos de tallo que enraízan en los nudos",
           "guidance": "UGA documenta producción desde semilla y enraizamiento de fragmentos de tallo en los nudos. La producción de semillas y los fragmentos flotantes crean vías de escape ecológico; cumple la normativa local vigente y contiene todo el material. El artículo de Georgia señala que, al publicarse, el cultivo no estaba permitido allí.",
           "items": [],
           "avoid": "",
@@ -58024,7 +58390,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Maleza nociva federal; verifica permisos y normas locales",
+          "short": "Maleza nociva federal; verifica permisos y normativa local",
           "guidance": "La regulación federal vigente 7 CFR § 360.200 incluye Ipomoea aquatica entre las malezas nocivas federales; USDA APHIS explica los permisos para importarla o trasladarla entre estados. Las reglas estatales de cultivo son independientes y pueden cambiar. En mayo de 2026, UGA informó que el cultivo no estaba permitido en Georgia al publicarse su guía. Verifica los requisitos federales y estatales vigentes antes de adquirir o cultivar esta especie. Por su potencial invasor, UGA limitó sus ensayos a instalaciones cerradas o semicerradas.",
           "items": [],
           "avoid": "",
@@ -58059,7 +58425,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada: Ribes nigrum",
-          "guidance": "Kew accepts Ribes nigrum. The profile is species-level; extension cultivar names and their rust resistance or self-fertility are not generalized to an unspecified plant.",
+          "guidance": "Kew acepta Ribes nigrum. El perfil es de especie; no se generalizan a una planta sin cultivar la resistencia a la roya ni la autofertilidad descritas para cultivares concretos por la extensión.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58080,7 +58446,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Arbusto frutal perenne con cañas de distintas edades",
-          "guidance": "UMN treats black currant as a woody perennial shrub. Fruit is borne on canes of different ages; the guide recommends retaining a balanced age structure when pruning established plants.",
+          "guidance": "UMN trata la grosella negra como arbusto leñoso perenne. La fruta crece en cañas de distintas edades; la guía recomienda conservar una estructura equilibrada de edades al podar plantas establecidas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58101,7 +58467,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Sol pleno a parcial; los sitios soleados favorecen la fruta",
-          "guidance": "UMN Extension says currants grow in full sun to partial shade, with more fruit in full sun, and perform best in rich, well-drained soil. Its advice is scoped to Upper Midwest home gardens; local climate and rust regulations may differ.",
+          "guidance": "UMN Extension indica que las grosellas crecen de pleno sol a sombra parcial, con más fruta a pleno sol, y prefieren suelos ricos y bien drenados. Su guía corresponde a jardines del Alto Medio Oeste; el clima local y las normas sobre roya pueden diferir.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58122,7 +58488,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Poda las cañas cada año y consulta las restricciones locales sobre roya",
-          "guidance": "UMN recommends annual pruning to remove weak/dead canes and open the canopy. White pine blister rust restrictions apply in some US areas; consult current local rules and select cultivars with documented resistance where relevant.",
+          "guidance": "UMN recomienda poda anual para retirar cañas débiles o muertas y abrir la copa. Las restricciones por roya vesicular del pino blanco dependen de la región; consulta las normas locales y elige cultivares con resistencia documentada cuando corresponda.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58143,7 +58509,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha las bayas maduras cuando estén púrpura-negras",
-          "guidance": "UMN notes ripe black currants develop a deep purple-black color and documents culinary use of the berries; it also notes leaves may be dried for tea. This is species/crop guidance, not a named cultivar harvest calendar.",
+          "guidance": "UMN señala que las grosellas negras maduras adquieren un color púrpura muy oscuro a negro y documenta el uso culinario de las bayas; también menciona hojas secas para infusión. Es orientación de especie/cultivo, no un calendario para un cultivar concreto.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58164,7 +58530,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Se documenta el acodo de puntas; no hay protocolo de semilla",
-          "guidance": "UMN notes that low, drooping canes can be covered to encourage rooting. The source does not provide seed-germination instructions, so no Seed Profile is assigned.",
+          "guidance": "UMN indica que se pueden cubrir cañas bajas y arqueadas para fomentar el enraizamiento. La fuente no ofrece instrucciones de germinación, por lo que no se asigna un Seed Profile.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58185,7 +58551,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Las normas sobre roya vesicular del pino blanco varían por región",
-          "guidance": "Ribes can participate in the white pine blister rust disease cycle, which may affect white pines; UMN states some areas retain planting restrictions. The warning is regional, not a universal prohibition.",
+          "guidance": "Ribes puede participar en el ciclo de la roya vesicular del pino blanco, que afecta a los pinos; UMN señala que algunas zonas mantienen restricciones de plantación. La advertencia es regional, no una prohibición universal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58219,7 +58585,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada: Ribes rubrum",
-          "guidance": "Kew accepts Ribes rubrum and treats Ribes sativum as a synonym. UMN uses Ribes sativum for red, pink and white currants and says these are the same species; this identity represents the species/crop, not an unnamed color cultivar.",
+          "guidance": "Kew acepta Ribes rubrum y considera Ribes sativum un sinónimo. UMN usa Ribes sativum para grosellas rojas, rosadas y blancas, y dice que pertenecen a la misma especie; esta identidad representa la especie/cultivo, no un cultivar de color sin especificar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58240,7 +58606,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Arbusto leñoso de grosella con bayas en racimos",
-          "guidance": "UMN distinguishes currants from gooseberries by their spineless canes and clusters of small berries. This profile covers Ribes rubrum and does not claim that all commercial redcurrant cultivars share identical traits.",
+          "guidance": "UMN distingue las grosellas de las uvas espina por sus cañas sin espinas y racimos de bayas pequeñas. El perfil cubre Ribes rubrum y no afirma que todos sus cultivares compartan los mismos rasgos.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58261,7 +58627,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Sol pleno a parcial; más sol favorece la fructificación",
-          "guidance": "UMN Extension states currants grow in full sun to partial shade, with greater fruiting in full sun, and prefer rich, well-drained soil. These recommendations are presented in Upper Midwest context.",
+          "guidance": "UMN Extension indica que las grosellas crecen de pleno sol a sombra parcial, con más fructificación en sitios soleados, y prefieren suelo rico y bien drenado. Las recomendaciones se presentan para el Alto Medio Oeste.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58282,7 +58648,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Renueva las cañas viejas y mantén abierta la copa",
-          "guidance": "UMN recommends annual pruning to remove weak or dead canes and open the canopy. Rust restrictions and cultivar resistance vary by place and named selection.",
+          "guidance": "UMN recomienda poda anual para retirar cañas débiles o muertas y abrir la copa. Las restricciones por roya y la resistencia varían según región y cultivar nombrado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58303,7 +58669,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha cuando las bayas desarrollen color y sabor",
-          "guidance": "UMN recommends judging currants by color, flavor, firmness and ease of separation. Red, pink and white are horticultural fruit-color forms within the described species, not separate identities here.",
+          "guidance": "UMN recomienda evaluar color, sabor, firmeza y facilidad de desprendimiento para determinar la cosecha. Rojo, rosado y blanco son formas hortícolas de color dentro de la especie descrita, no identidades separadas aquí.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58324,7 +58690,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Se menciona el acodo de puntas; no se documenta la siembra",
-          "guidance": "UMN notes that drooping canes may be covered to encourage rooting. The page does not establish a seed-starting protocol for this identity, so none is invented.",
+          "guidance": "UMN menciona cubrir cañas arqueadas para fomentar su enraizamiento. La página no establece un protocolo de germinación, así que no se inventan instrucciones de semilla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58345,7 +58711,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Consulta las restricciones regionales sobre roya vesicular del pino blanco",
-          "guidance": "UMN notes that Ribes can participate in the white pine blister rust cycle and that planting remains restricted in some US areas. This is jurisdiction-specific and should be checked locally.",
+          "guidance": "UMN indica que Ribes puede participar en el ciclo de la roya vesicular del pino blanco y que algunas zonas de Estados Unidos mantienen restricciones de plantación. Consulta las normas locales; no es una restricción universal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58379,7 +58745,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada: Ribes uva-crispa",
-          "guidance": "Kew accepts Ribes uva-crispa and lists Ribes grossularia among synonyms. UMN distinguishes this European species from American R. hirtellum and hybrids; no cultivar is assigned.",
+          "guidance": "Kew acepta Ribes uva-crispa y enumera Ribes grossularia entre sus sinónimos. UMN distingue esta especie europea de R. hirtellum y de los híbridos americanos; no se asigna cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58400,7 +58766,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Arbusto leñoso espinoso, con bayas individuales",
-          "guidance": "UMN describes gooseberry canes as normally bearing a spine at each leaf node, with grape-sized berries singly or in small groups. These traits distinguish the crop from currants; individual cultivar traits are not implied.",
+          "guidance": "UMN describe las cañas de la uva espina como generalmente espinosas en los nudos de las hojas, con bayas del tamaño de una uva que crecen solas o en grupos pequeños. Son rasgos que ayudan a distinguirla de las grosellas; no implican rasgos de un cultivar concreto.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58421,7 +58787,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Sol pleno a parcial en suelo fértil y bien drenado",
-          "guidance": "UMN Extension says gooseberries grow from full sun to partial shade and perform best in rich, well-drained soil. Its recommendations are scoped to the Upper Midwest and may not transfer unchanged to other climates.",
+          "guidance": "UMN Extension indica que las uvas espina crecen de pleno sol a sombra parcial y prefieren suelos ricos y bien drenados. Sus recomendaciones corresponden al Alto Medio Oeste y pueden no trasladarse sin cambios a otros climas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58442,7 +58808,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Poda las cañas cada año y evita que enraícen al tocar el suelo",
-          "guidance": "UMN recommends annual pruning to open the canopy and remove weak/dead canes. Gooseberry canes arching toward the soil may root at the tips; prune/manage them if that spread is not desired.",
+          "guidance": "UMN recomienda poda anual para abrir la copa y quitar cañas débiles o muertas. Las puntas de cañas arqueadas que tocan el suelo pueden enraizar; contrólalas si no se desea esa expansión.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58463,7 +58829,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha cuando las bayas cambian de color y se ablandan",
-          "guidance": "UMN says gooseberries are ready when they change color, become less firm and separate easily; ripening reduces tartness. Color depends on variety and is not a universal single-color maturity marker.",
+          "guidance": "UMN señala que las uvas espina están listas cuando cambian de color, se ablandan y se desprenden fácilmente; al madurar pierden acidez. El color depende de la variedad y no es un indicador único para todas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58484,7 +58850,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Se describe el acodo de puntas; no hay protocolo de semilla",
-          "guidance": "UMN notes gooseberry cane tips can root where they touch soil. The cited page does not provide seed germination guidance, so this public profile does not invent a seed method.",
+          "guidance": "UMN indica que las puntas de las cañas pueden enraizar al tocar el suelo. La página citada no ofrece guía de germinación, así que esta ficha no inventa un método de semilla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58505,7 +58871,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Consulta las restricciones locales sobre roya vesicular del pino blanco",
-          "guidance": "UMN notes some areas restrict Ribes due to white pine blister rust; it recommends varieties with known resistance where locally relevant. This is regional regulation/advice, not a universal restriction or blanket resistance claim.",
+          "guidance": "UMN señala que algunas zonas restringen Ribes por la roya vesicular del pino blanco y recomienda cultivares de resistencia conocida cuando sea pertinente localmente. Es una advertencia regional, no una prohibición universal ni una afirmación general de resistencia.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58539,7 +58905,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie americana, distinta de la uva espina europea",
-          "guidance": "Kew accepts Ribes hirtellum. UMN Extension identifies American-origin gooseberries as R. hirtellum or hybrids derived from it and distinguishes them from European R. uva-crispa. No cultivar or hybrid is assigned here.",
+          "guidance": "Kew acepta Ribes hirtellum. UMN Extension identifica las grosellas espinosas de origen americano como R. hirtellum o sus híbridos, y las distingue de R. uva-crispa europea. Aquí no se asigna cultivar ni híbrido.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58560,7 +58926,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Arbusto espinoso de cañas, con bayas individuales",
-          "guidance": "The shared UMN gooseberry description says canes commonly have a spine at each leaf node and bear grape-sized berries singly or in small groups. The botanical distinction is American gooseberry; the source does not claim that all R. hirtellum selections share identical fruit traits.",
+          "guidance": "La descripción general de uva espina de UMN indica que las cañas suelen tener una espina en cada nudo foliar y bayas del tamaño de una uva solas o en grupos pequeños. La identidad botánica es la especie americana; la fuente no afirma que todas sus selecciones tengan frutos idénticos.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58581,7 +58947,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Guía de huerto para clima fresco; consulta las normas locales",
-          "guidance": "UMN recommends full sun to partial shade, rich well-drained soil and at least three feet between currant or gooseberry plants in its Upper Midwest home-garden guidance. It also advises annual pruning. Ribes planting restrictions for white pine blister rust vary by jurisdiction; check current local rules before sourcing a plant. Spacing is soil-garden guidance, not hydroponic placement.",
+          "guidance": "UMN recomienda de pleno sol a sombra parcial, suelo rico y bien drenado y al menos tres pies entre plantas de grosella o uva espina en su guía doméstica para el Alto Medio Oeste. También aconseja podar cada año. Las restricciones por roya vesicular del pino blanco dependen de la jurisdicción; consulta la normativa local vigente. La distancia corresponde al cultivo en suelo, no a la colocación hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58602,7 +58968,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Aclara las cañas viejas y débiles antes del crecimiento primaveral",
-          "guidance": "UMN advises pruning established gooseberry shrubs annually in late winter or early spring before growth begins. After the first three years, remove the oldest and weak new canes to maintain a productive open shrub; also remove arching tips that could root when they touch the ground. Its mature-shrub cane targets are crop-level guidance, not a species-specific yield guarantee.",
+          "guidance": "UMN recomienda podar los arbustos establecidos cada año a finales del invierno o principios de la primavera, antes de que empiece el crecimiento. Después de los primeros tres años, retira las cañas más viejas y los brotes nuevos débiles para mantener un arbusto productivo y abierto; elimina también las puntas arqueadas que podrían enraizar al tocar el suelo. El número de cañas maduras es una guía general del cultivo, no una garantía de rendimiento para esta especie.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58623,7 +58989,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha por madurez, no por un color fijo",
-          "guidance": "UMN says gooseberries are ready when fruit changes color, softens and separates readily; color depends on variety. The page covers gooseberries as a crop group and does not give a species-specific calendar for R. hirtellum.",
+          "guidance": "UMN indica que las uvas espina están listas cuando cambian de color, se ablandan y se desprenden fácilmente; el color depende de la variedad. La guía trata el cultivo en general, no ofrece un calendario específico para R. hirtellum.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58644,7 +59010,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Aquí no se establecen requisitos de siembra",
-          "guidance": "The cited home-garden page discusses obtaining bare-root or potted plants and tip layering, but does not supply a seed protocol for R. hirtellum. Garden does not infer seed behavior from related Ribes species.",
+          "guidance": "La página doméstica de UMN habla de comprar plantas a raíz desnuda o en maceta y de acodar puntas de cañas, pero no ofrece un protocolo de semilla para R. hirtellum. Garden no infiere el comportamiento de semillas a partir de otros Ribes.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58665,7 +59031,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Vigila el oídio y consulta las restricciones regionales sobre roya",
-          "guidance": "UMN notes powdery mildew can appear in some years and locations as a soft powdery layer on leaves; good airflow, open-canopy pruning and removing affected leaves or shoots help limit spread. Some regions also restrict Ribes because of white pine blister rust, so check local rules. These are regional crop-level cautions, not claims that R. hirtellum is resistant or universally restricted.",
+          "guidance": "UMN señala que el oídio puede aparecer algunos años y lugares como una capa blanca polvorienta en las hojas; recomienda buena ventilación, poda para abrir la copa y retirar hojas o brotes afectados. Algunas regiones también restringen Ribes por la roya vesicular del pino blanco, así que consulta la normativa local. Son precauciones regionales para el cultivo, no afirmaciones de resistencia ni restricciones universales para R. hirtellum.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58686,7 +59052,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha menos maduras para conserva y maduras para comer frescas",
-          "guidance": "UMN Extension distinguishes use by maturity: gooseberries picked before full ripeness retain more natural pectin for jam, while ripe berries are sweeter, less tart and suitable for fresh eating. It also documents preserving fruit as juice or preserves and freezing berry clusters for drinks. This is shared crop-level guidance, not a cultivar-specific flavor or yield claim.",
+          "guidance": "UMN Extension distingue el uso según la madurez: las uvas espina cosechadas antes de madurar por completo conservan más pectina natural para mermeladas, mientras que las maduras son más dulces, menos ácidas y aptas para comer frescas. También documenta conservarlas como jugo o conserva y congelar racimos para bebidas. Es guía compartida para el cultivo, no una afirmación de sabor o rendimiento de un cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58719,7 +59085,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivar Black Hawk de Rubus occidentalis",
+          "short": "Cultivar nombrado de Rubus occidentalis",
           "guidance": "Kew acepta Rubus occidentalis como especie. UMN Extension incluye Black Hawk entre los cultivares de frambuesa negra y lo identifica como floricane. No se añade ninguna afirmación de resistencia o rendimiento más allá de la fuente.",
           "items": [],
           "avoid": "",
@@ -58740,7 +59106,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Raíces perennes y cañas de dos temporadas",
+          "short": "Raíces perennes y cañas con ciclo de dos temporadas",
           "guidance": "UMN describe raíces y coronas de frambuesa como perennes y las cañas con una vida de dos veranos. Para Black Hawk, su tabla identifica fructificación en floricanes; las frambuesas negras forman matas, no las filas de chupones radicales descritas para las rojas.",
           "items": [],
           "avoid": "",
@@ -58761,7 +59127,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno, suelo drenado y soporte para las cañas",
+          "short": "Sol pleno, humedad constante y soporte para las cañas",
           "guidance": "UMN recomienda pleno sol para una mejor producción y suelo rico y bien drenado para frambuesas de jardín. Su guía general aconseja alrededor de 1–1.5 pulgadas de agua por semana desde la floración hasta la cosecha y soporte para evitar que las cañas largas se doblen, quiebren o se extiendan; son recomendaciones generales para frambuesas en Minnesota, no umbrales probados para Black Hawk. Revisa la adaptación climática local del cultivar.",
           "items": [],
           "avoid": "",
@@ -58782,7 +59148,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Despunta primocanes y retira floricanes ya cosechadas",
+          "short": "Despunta y renueva las cañas que ya fructificaron",
           "guidance": "UMN recomienda despuntar las cañas de frambuesas negras y moradas cuando los primocanes miden alrededor de 24–30 pulgadas, seleccionar 4–5 cañas por mata y retirar al ras las floricanes que ya fructificaron. El momento depende de la temporada local; la fuente del cultivar confirma que Black Hawk es floricane.",
           "items": [],
           "avoid": "",
@@ -58803,7 +59169,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha cuando estén llenas, tiernas y se desprendan fácil",
+          "short": "Recoge bayas completamente coloreadas, tiernas y fáciles de desprender",
           "guidance": "UMN describe las frambuesas maduras como totalmente coloreadas, llenas y tiernas, y listas para desprenderse con un tirón suave. La fecha depende de la temporada; no se asigna un calendario específico al cultivar.",
           "items": [],
           "avoid": "",
@@ -58824,7 +59190,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Compra plantas sanas; no hay protocolo de semilla aquí",
+          "short": "Empieza con plantas de vivero verificadas; el protocolo de semilla sigue sin resolverse",
           "guidance": "UMN recomienda obtener plantas sanas de viveros confiables porque el material infectado puede introducir virus difíciles de controlar. La guía doméstica no establece un protocolo de semilla para Black Hawk y no se inventa uno.",
           "items": [],
           "avoid": "",
@@ -58845,7 +59211,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila antracnosis; no se afirma resistencia del cultivar",
+          "short": "Vigila enfermedades de caña y daños invernales",
           "guidance": "UMN indica que la antracnosis suele ser más grave en frambuesas negras y recomienda mantener plantaciones abiertas y retirar cañas afectadas o ya fructificadas según corresponda. La resistencia y el calendario de plagas son regionales; no se atribuye resistencia al cultivar.",
           "items": [],
           "avoid": "",
@@ -58880,7 +59246,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada; la literatura también usa un nombre de subespecie",
-          "guidance": "Kew accepts Sambucus canadensis. UF/IFAS discusses American Sambucus and notes that the American elderberry has also been referred to as S. nigra subsp. canadensis; its Florida native phenotypes and northern American material are not assumed interchangeable here.",
+          "guidance": "Kew acepta Sambucus canadensis. UF/IFAS analiza el sauco americano y señala que también se lo ha llamado S. nigra subsp. canadensis; los fenotipos nativos de Florida y el material americano del norte no se consideran intercambiables automáticamente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58901,7 +59267,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "La forma varía entre arbusto y árbol según la región",
-          "guidance": "UF/IFAS describes American elderberry growth form as varying from shrub to tree across North America. No fixed mature height or cultivar form is assigned to this species-level record.",
+          "guidance": "UF/IFAS describe una forma de crecimiento que varía entre arbusto y árbol según la región de Norteamérica. No se asigna una altura madura ni una forma de cultivar fija a este registro de especie.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58922,7 +59288,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Los resultados productivos regionales no son universales",
-          "guidance": "UF/IFAS provides Florida cultivation context and says establishment depends on irrigation, weed control and tested selection. It notes limited documentation and meaningful variation among American elderberry material; do not transfer Florida calendar, yield or cultivar claims unchanged to other regions.",
+          "guidance": "UF/IFAS ofrece contexto de producción para Florida y señala que el establecimiento depende del riego, control de malezas y selección probada. También describe documentación limitada y variación entre materiales americanos; no se transfieren sin cambios a otras regiones los calendarios, rendimientos ni recomendaciones de cultivares de Florida.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58943,7 +59309,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "La poda depende del sitio y del objetivo productivo",
-          "guidance": "UF/IFAS describes dormant-season removal of dead, damaged or diseased wood for backyard/small-orchard management and discusses coppicing as a commercial option with variety-dependent results. This profile does not recommend a universal coppicing schedule.",
+          "guidance": "UF/IFAS describe poda en dormancia para retirar tallos muertos, dañados o enfermos en huertos domésticos y analiza el rebaje total de cañas como una opción comercial cuyos resultados dependen de la variedad. No se recomienda el rebaje anual como regla universal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58965,7 +59331,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha y prepara las bayas de saúco con atención a la inocuidad",
-          "guidance": "UF/IFAS notes uneven ripening and recommends sorting green/unripe berries and pedicels. UMN warns that raw elderflowers, as well as raw berries and other plant parts, contain compounds that can release cyanide during digestion; dried elderflowers also need heat treatment before consumption. The sources support thoroughly cooking berries and give no flower-preparation method in this profile.",
+          "guidance": "UF/IFAS señala que el sauco madura de forma irregular y recomienda separar bayas verdes/no maduras y pedicelos. UMN advierte que las flores crudas, al igual que las bayas crudas y otras partes, contienen compuestos que pueden liberar cianuro durante la digestión; las flores deshidratadas también necesitan tratamiento térmico antes de consumirse. Las fuentes respaldan cocinar bien las bayas, pero esta ficha no ofrece un método para preparar flores.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -58986,7 +59352,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Los esquejes son prácticos; la semilla es posible pero variable",
-          "guidance": "UF/IFAS documents hardwood and softwood cuttings, stolons and seed. It says seed-grown populations vary and that cuttings are usually preferred for easier, lower-cost propagation at scale; this does not mean seed propagation is impossible.",
+          "guidance": "UF/IFAS documenta esquejes leñosos y blandos, estolones y semillas. Advierte que las poblaciones de plántulas varían y que los esquejes suelen preferirse por su facilidad y menor costo a escala; esto no significa que la propagación por semilla sea imposible.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59008,7 +59374,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Confirma el material y manipula los alimentos con cuidado",
-          "guidance": "UF/IFAS warns that Sambucus names and propagated material can be confused across regions and selections. UMN food-safety guidance clarifies that raw elderberries, stems, leaves, seeds and flowers can contain compounds that may release cyanide during digestion; improperly prepared material may cause illness. Thoroughly cook berries and heat-treat dried flowers before use; this genus-level safety warning is not a cultivar claim.",
+          "guidance": "UF/IFAS advierte sobre la confusión de nombres y materiales propagados entre regiones y selecciones. UMN aclara que las bayas crudas, tallos, hojas, semillas y flores del sauco pueden contener compuestos que liberan cianuro durante la digestión; el material mal preparado puede causar enfermedad. Cocina bien las bayas y aplica tratamiento térmico a las flores deshidratadas antes de usarlas. Esta advertencia de seguridad es para el género/cultivo, no una afirmación de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59030,7 +59396,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cocina completamente las bayas; no las comas crudas ni mal preparadas",
-          "guidance": "UMN Extension's genus-level elderberry food-safety guidance says raw or improperly prepared berries and other plant parts may cause illness, and recommends removing stems, leaves and unripe berries and boiling berries for at least 10 minutes. It advises using a research-based recipe for canning and acidifying elderberry products; this is food-safety guidance for elderberries, not a cultivar-specific culinary claim.",
+          "guidance": "La guía de seguridad alimentaria de UMN Extension para el género Sambucus indica que las bayas crudas o mal preparadas y otras partes de la planta pueden causar enfermedad. Recomienda retirar tallos, hojas y bayas verdes y hervir las bayas durante al menos 10 minutos. Para conservas, aconseja usar recetas basadas en investigación y acidificar los productos de sauco; es orientación de seguridad para saucos, no una afirmación culinaria específica de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59064,7 +59430,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada: Vaccinium macrocarpon",
-          "guidance": "Kew accepts Vaccinium macrocarpon as the American cranberry species. UMass describes it as a low-growing, woody, trailing perennial vine; its commercial flooding/harvest context should not be mistaken for a permanent submerged growth requirement.",
+          "guidance": "Kew acepta Vaccinium macrocarpon como el cranberry americano. UMass lo describe como una enredadera perenne rastrera y leñosa; el contexto comercial de cosecha con inundación no significa que la planta deba crecer siempre sumergida.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59085,7 +59451,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Enredadera rastrera que forma una cubierta vegetal densa",
-          "guidance": "UMass says cranberry vines colonize open ground and can form a thick vegetation mat. It describes them as growing out of water on land; growth is not represented as an aquatic plant profile.",
+          "guidance": "UMass indica que las enredaderas colonizan terreno abierto y pueden formar una cubierta vegetal densa. Crecen en tierra, no dentro del agua, según la guía.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59107,7 +59473,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Suelo ácido, humedad constante y espacio para estolones",
-          "guidance": "UMass recommends soil below pH 5 and good drainage; it also identifies winter chilling and alkaline irrigation water as factors in home production. Penn State Extension's Pennsylvania home-garden guide recommends a sunny site, average moisture and spacing rooted plants 2–3 feet apart because runners spread; its stated soil range is pH 4–5.5. Both sources call for strongly acidic soil, but their numeric ranges differ; test the site and follow locally appropriate guidance rather than treating one threshold as universal. Spacing and moisture details are soil-garden guidance, not container or hydroponic placement rules; cranberry fruiting remains demanding and climate-dependent.",
+          "guidance": "UMass recomienda suelo con pH inferior a 5 y buen drenaje; también identifica el frío invernal y el agua de riego alcalina como factores del cultivo doméstico. La guía de jardín doméstico de Penn State para Pensilvania recomienda un sitio soleado, humedad promedio y plantas enraizadas separadas 2–3 pies porque se extienden por estolones; indica un rango de pH de 4–5.5. Ambas fuentes piden suelo muy ácido, pero sus rangos numéricos difieren; analiza el sitio y sigue la orientación local, sin tratar un umbral como universal. El espaciamiento y la humedad corresponden al cultivo en suelo, no a maceta o hidroponía; producir fruta sigue siendo exigente y depende del clima.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59128,7 +59494,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Protege las enredaderas de la deshidratación invernal y las heladas primaverales",
-          "guidance": "UMass discusses winter dehydration injury and spring frost protection. Flooding or mulch may be used for winter protection in its regional guidance; flooding is a management method, not a claim that cranberries should grow permanently underwater.",
+          "guidance": "UMass describe protección frente a deshidratación invernal y heladas de primavera. Según la región, se puede usar inundación contenida o acolchado como protección invernal; inundar es una técnica de manejo, no una afirmación de crecimiento permanentemente acuático.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59150,7 +59516,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Cosecha a mano bayas rojo oscuro cuando la cubierta esté establecida",
-          "guidance": "UMass notes that fruiting requires suitable pollinators and established vine cover. Penn State Extension says home growers gently remove berries once they ripen dark red and notes plants usually take about three years to produce in its Pennsylvania context; this is not a cultivar-specific calendar, yield promise or universal timeline.",
+          "guidance": "UMass indica que para fructificar se requiere polinización y una cobertura establecida de vides. Penn State Extension señala que en jardines domésticos se retiran suavemente las bayas cuando maduran a rojo oscuro y que las plantas suelen tardar unos tres años en producir en su contexto de Pensilvania. No es un calendario específico de cultivar, una promesa de rendimiento ni un plazo universal.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59171,7 +59537,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "La semilla es posible, pero no es el método recomendado para el hogar",
-          "guidance": "UMass says starting cranberry vines from seed takes extreme patience and is not recommended; its homeowner guidance instead explains rooted and unrooted cuttings. This is a propagation recommendation, not evidence that seed propagation is biologically impossible, and it does not supply a Seed Profile protocol.",
+          "guidance": "UMass indica que iniciar cranberry desde semilla requiere mucha paciencia y no se recomienda; su guía doméstica explica en cambio el uso de esquejes enraizados y no enraizados. Es una recomendación de propagación, no evidencia de que la semilla sea biológicamente imposible, y no ofrece un protocolo de Seed Profile.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59192,7 +59558,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "El clima, el pH, el drenaje y las heladas pueden limitar el cultivo",
-          "guidance": "UMass identifies insufficient winter chilling, alkaline water, poor drainage, winter dehydration and spring frost as practical constraints. These are site/climate conditions, not disease-resistance claims.",
+          "guidance": "UMass identifica como límites prácticos el frío invernal insuficiente, agua alcalina, mal drenaje, deshidratación invernal y heladas de primavera. Son condiciones de sitio y clima, no afirmaciones de resistencia a enfermedades.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59214,7 +59580,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Las bayas ácidas sirven frescas y en recetas probadas de salsa de arándanos",
-          "guidance": "The National Center for Home Food Preservation describes ripe cranberries as firm, glossy and brightly colored; their tart fruit can be used fresh in recipes or cooked preparations. Its tested cranberry-sauce canning recipe includes a boiling-water process table with altitude adjustments. That procedure is linked as a recipe, not generalized into improvised canning advice. Commercial harvest months are not presented as a home-growing calendar.",
+          "guidance": "El National Center for Home Food Preservation describe los arándanos maduros como firmes, brillantes y de color intenso; su fruto ácido puede usarse fresco en recetas o en preparaciones cocidas. Su receta probada para salsa de arándanos incluye una tabla de procesamiento en agua hirviendo con ajustes por altitud. Se enlaza como receta de conserva probada; no se generaliza para improvisar otros procesos. Los meses de cosecha comercial no se presentan como calendario para el cultivo doméstico.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -59551,7 +59917,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Lablab purpureus",
+          "short": "Especie aceptada: Lablab purpureus",
           "guidance": "Kew acepta Lablab purpureus y enumera Dolichos purpureus como sinónimo. Frijol jacinto es la identidad ornamental/alimentaria a nivel de especie; no se asigna un cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -59573,7 +59939,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Twining vine with showy flowers and colorful pods",
+          "short": "Enredadera voluble con flores vistosas y vainas coloridas",
           "guidance": "NCSU describe una enredadera trepadora de tallos morados, con flores de fines del verano seguidas por vainas coloridas. Los rangos de altura publicados difieren: Illinois informa crecimiento de hasta 30 pies, mientras NCSU da 10–25 pies. Trátala como enredadera vigorosa que requiere espacio vertical, no como una medida fija para Garden.",
           "items": [],
           "avoid": "",
@@ -59594,7 +59960,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun, moist but well-drained soil, and frost-free establishment",
+          "short": "Pleno sol, suelo húmedo pero bien drenado y establecimiento sin riesgo de heladas",
           "guidance": "NCSU recomienda sol, suelo ligero, húmedo y bien drenado, un soporte resistente y plantar después del riesgo de heladas; también señala que crece bien con calor y humedad. Son condiciones de cultivo exterior, no una clasificación de luz interior ni una indicación hidropónica.",
           "items": [],
           "avoid": "",
@@ -59616,7 +59982,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Train the vigorous vine on sturdy support",
+          "short": "Guía la enredadera vigorosa sobre un soporte resistente",
           "guidance": "NCSU recomienda un enrejado resistente para sostener el peso de la enredadera e Illinois describe su crecimiento vigoroso. Ninguna fuente da un calendario rutinario de poda; no se impone como requisito de la especie.",
           "items": [],
           "avoid": "",
@@ -59715,7 +60081,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Psophocarpus tetragonolobus",
+          "short": "Especie aceptada: Psophocarpus tetragonolobus",
           "guidance": "Kew acepta Psophocarpus tetragonolobus. UF/IFAS identifica el frijol alado por su hábito trepador y las cuatro alas longitudinales de sus vainas; nombres como goa bean se conservan como aliases, no como identidades separadas.",
           "items": [],
           "avoid": "",
@@ -59736,7 +60102,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Climbing tropical legume with distinctive winged pods",
+          "short": "Leguminosa tropical trepadora con vainas aladas características",
           "guidance": "UF/IFAS describe una planta trepadora con tallos débiles y vainas con cuatro alas angulares. Señala sensibilidad al fotoperíodo en tipos tradicionales y disponibilidad de cultivares de día neutro; este perfil no representa un cultivar particular.",
           "items": [],
           "avoid": "",
@@ -59757,7 +60123,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Heat-loving crop with regional seasonal limits",
+          "short": "Cultivo de clima cálido con límites estacionales según la región",
           "guidance": "UF/IFAS describe el cultivo en condiciones cálidas y húmedas de Florida, sensible a las heladas y necesitado de riego en épocas secas. Estas condiciones no establecen idoneidad en todos los jardines ni en sistemas hidropónicos.",
           "items": [],
           "avoid": "",
@@ -59875,7 +60241,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species: Salvia elegans",
+          "short": "Especie aceptada: Salvia elegans",
           "guidance": "Kew acepta Salvia elegans. Este perfil es a nivel de especie y no asigna cultivares como Golden Delicious o Honey Melon, cuyas selecciones vegetativas tienen rasgos propios.",
           "items": [],
           "avoid": "",
@@ -59897,7 +60263,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tender perennial subshrub with late flowers",
+          "short": "Subarbusto perenne sensible al frío, con floración tardía",
           "guidance": "Kew caracteriza la especie como subarbusto. UW–Madison Extension describe una planta abierta y erguida con flores escarlatas tardías; puede cultivarse como anual en climas fríos y morir hasta el suelo tras heladas.",
           "items": [],
           "avoid": "",
@@ -59918,7 +60284,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and consistent moisture",
+          "short": "Pleno sol y humedad constante",
           "guidance": "UW–Madison Extension recomienda pleno sol y suelo húmedo pero bien drenado; las hojas pueden caer o marchitarse cuando la planta se seca. La guía regional de invernada depende del clima local y no se infiere idoneidad hidropónica.",
           "items": [],
           "avoid": "",
@@ -59939,7 +60305,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pinch young plants; remove old wood when regrowth begins",
+          "short": "Pinza las plantas jóvenes; elimina la madera vieja cuando comience el rebrote",
           "guidance": "UW–Madison Extension indica que despuntar plantas jóvenes fomenta ramificación y crecimiento más denso; los tallos leñosos viejos pueden retirarse cuando aparece crecimiento nuevo. También señala que tallos altos pueden dañarse por viento.",
           "items": [],
           "avoid": "",
@@ -59961,7 +60327,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Leaves and flowers have culinary and ornamental uses",
+          "short": "Las hojas y las flores tienen usos culinarios y ornamentales",
           "guidance": "UW–Madison Extension describe hojas y flores como comestibles y sugiere usar hojas tiernas frescas; NCSU Extension también describe flores comestibles. Usa plantas correctamente identificadas y prácticas habituales de manipulación de alimentos; no se hacen afirmaciones medicinales.",
           "items": [],
           "avoid": "",
@@ -59983,7 +60349,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed is possible; cuttings retain named selections",
+          "short": "La semilla es posible; los esquejes conservan las selecciones nombradas",
           "guidance": "UW–Madison Extension dice que la especie puede cultivarse desde semilla, pero que los cultivares se propagan mediante esquejes terminales. NCSU desaconseja la siembra rutinaria salvo que se inicie en interior y se plante como una planta bien desarrollada. Las fuentes difieren en la fuerza de la recomendación; la semilla es posible, pero se prefieren vías vegetativas para conservar cultivares nombrados.",
           "items": [],
           "avoid": "",
@@ -60004,7 +60370,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Drought and late flowering can limit performance",
+          "short": "La sequía y la floración tardía pueden limitar el desempeño",
           "guidance": "UW–Madison Extension informa marchitez, curvatura o caída de hojas cuando falta agua, y señala que la floración puede ocurrir tan tarde que las heladas la interrumpan en regiones frías. Las plagas de invernadero no se generalizan a todas las plantas exteriores.",
           "items": [],
           "avoid": "",
@@ -60964,7 +61330,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Planta erecta y fragante de floración fresca",
+          "short": "Planta erecta y fragante de floración en temporada fresca",
           "guidance": "NC State describe stock como una planta erecta que suele cultivarse como anual o bienal en su contexto regional, con flores fragantes y altura reportada de hasta 3 pies. El calor superior a unos 80 °F puede acortar su desempeño; no es un tamaño específico de cultivar.",
           "items": [],
           "avoid": "",
@@ -60985,7 +61351,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clima fresco, sol pleno y humedad constante con drenaje",
+          "short": "Clima fresco, sol pleno y humedad constante con buen drenaje",
           "guidance": "NC State recomienda sol pleno y suelo promedio a rico en humus, constantemente húmedo pero con buen drenaje, y señala que tolera sombra ligera. Informa deterioro durante el calor estival por encima de 80 °F y bajo noches calurosas; las épocas regionales deben adaptarse localmente.",
           "items": [],
           "avoid": "",
@@ -61006,7 +61372,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La siembra está documentada; la identidad del híbrido puede variar",
+          "short": "Siembra documentada; la identidad híbrida puede variar",
           "guidance": "NC State indica que stock puede iniciarse por semilla, sembrando directamente o en interior 6–8 semanas antes de la última helada, y sugiere sembrar en intervalos de dos semanas para prolongar la floración. Advierte que muchas variedades comerciales son híbridos de varias especies de Matthiola; esta ficha no garantiza que la descendencia reproduzca una variedad específica.",
           "items": [],
           "avoid": "",
@@ -61112,7 +61478,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Ornamental cut-flower use is documented; culinary use is not established by the cited profile.",
+          "short": "Se documenta su uso ornamental como flor de corte; la ficha citada no establece uso culinario",
           "guidance": "NC State considera el stock una buena flor de corte. La ficha de especie citada no aborda el uso culinario, así que este registro no afirma que sea comestible.",
           "items": [],
           "avoid": "",
@@ -63262,7 +63628,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; cultivated fruit forms not specified",
+          "short": "Especie aceptada; no se especifica una forma frutal cultivada",
           "guidance": "Kew acepta Ananas comosus. Las formas y cultivares comerciales varían; esta ficha no asigna un cultivar ni supone que todas las bromelias ornamentales compartan los requisitos de la piña.",
           "items": [],
           "avoid": "",
@@ -63283,7 +63649,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Slow tropical rosette-forming perennial",
+          "short": "Perenne tropical de crecimiento lento que forma una roseta",
           "guidance": "NC State describe una perenne tropical de crecimiento lento, con roseta basal rígida y espinosa, de aproximadamente 3–4 pies de altura y ancho en el contexto de su ficha. Una planta en recipiente puede tardar años en alcanzar tamaño de fructificación; el plazo depende de las condiciones.",
           "items": [],
           "avoid": "",
@@ -63304,7 +63670,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warmth, bright light and fast drainage",
+          "short": "Calor, luz brillante y drenaje rápido",
           "guidance": "NC State informa que requiere calor, luz indirecta brillante para el establecimiento de coronas, medio húmedo pero bien drenado y protección contra heladas. La ficha da un intervalo de temperatura de 68–86 °F y humedad ambiental moderada a alta; estas indicaciones de suelo y recipiente no demuestran compatibilidad con solución nutritiva hidropónica.",
           "items": [],
           "avoid": "",
@@ -63347,7 +63713,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Crown, basal suckers or fruitlet plantlets",
+          "short": "Corona, hijuelos basales o plántulas que aparecen bajo el fruto",
           "guidance": "NC State describe la propagación asexual mediante la corona del fruto, hijuelos basales o plántulas bajo la inflorescencia. Explica el recorte y secado de la corona antes de plantarla y señala que una planta iniciada así puede tardar al menos 24 meses en florecer. Kew describe la piña cultivada como sin semillas; esta identidad no corresponde a propagación por semilla.",
           "items": [],
           "avoid": "",
@@ -63368,7 +63734,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Avoid cold, standing water and sharp leaf margins",
+          "short": "Evita el frío y el agua estancada; los bordes de las hojas son afilados",
           "guidance": "NC State advierte sobre heladas, humedad prolongada, pudriciones y algunas plagas; los bordes de las hojas pueden causar lesiones. La fuente enumera el fruto maduro como comestible y también advierte que la bromelina puede irritar piel sensible o boca y garganta, especialmente en grandes cantidades; no se generaliza esto como una afirmación de que el fruto maduro sea venenoso.",
           "items": [],
           "avoid": "",
@@ -63583,7 +63949,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; not a generic mint or tea herb",
+          "short": "Especie aceptada; no es una menta ni una hierba de té genérica",
           "guidance": "Kew acepta Gaultheria procumbens, de la familia Ericaceae. Aquí los nombres wintergreen y teaberry se refieren a esta cubierta leñosa, no a Mentha ni a otras plantas de sabor parecido.",
           "items": [],
           "avoid": "",
@@ -63604,7 +63970,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Low, spreading evergreen subshrub",
+          "short": "Subarbusto perenne bajo y extendido",
           "guidance": "NC State describe una planta perenne de hoja persistente, de unas 4–8 pulgadas de alto, que se extiende formando una alfombra. Produce flores acampanadas blancas o rosadas y frutos rojos; el espaciamiento de paisaje no es una recomendación para pods hidropónicos.",
           "items": [],
           "avoid": "",
@@ -63625,7 +63991,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Acidic, moist, well-drained shade-garden conditions",
+          "short": "Condiciones de jardín sombreado, con suelo ácido, húmedo y bien drenado",
           "guidance": "NC State la describe en ambientes boscosos con sombra ligera o moderada y suelo ácido, húmedo y bien drenado; tolera sombra más intensa. Esta evidencia de hábitat no establece necesidades de luz interior ni de solución nutritiva.",
           "items": [],
           "avoid": "",
@@ -63667,7 +64033,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and root cuttings are listed; seed protocol absent",
+          "short": "Se enumeran semillas y esquejes de raíz; falta el protocolo de semilla",
           "guidance": "NC State enumera semilla y esqueje de raíz, pero no indica profundidad, tratamiento, duración ni temperatura de germinación en la ficha consultada. El establecimiento desde semilla queda insuficientemente documentado; el esqueje de raíz es una alternativa documentada.",
           "items": [],
           "avoid": "",
@@ -63688,7 +64054,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Do not recommend wintergreen-leaf tea",
+          "short": "No recomiendes preparar té con las hojas de wintergreen",
           "guidance": "NC State afirma explícitamente que el té de hojas, usado antiguamente, ya no se recomienda. No se presenta el uso medicinal tradicional como consejo. La fuente menciona frutos comestibles, pero esta ficha no prescribe consumo ni porciones seguras.",
           "items": [],
           "avoid": "",
@@ -65228,7 +65594,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; no cultivar assigned",
+          "short": "Especie aceptada; sin cultivar asignado",
           "guidance": "Kew acepta Fagopyrum esculentum. Esta ficha representa el trigo sarraceno común, no una variedad nombrada de grano o cobertura.",
           "items": [],
           "avoid": "",
@@ -65249,7 +65615,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Annual, quick-establishing broadleaf cover crop",
+          "short": "Cultivo de cobertura anual de hoja ancha y establecimiento rápido",
           "guidance": "La Extensión de Minnesota describe el trigo sarraceno como rápido para establecerse y útil contra malezas. Esta guía regional no demuestra desempeño interior ni hidropónico.",
           "items": [],
           "avoid": "",
@@ -65270,7 +65636,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Useful in a warm-season cover-crop window",
+          "short": "Útil durante una ventana de cultivo de cobertura de estación cálida",
           "guidance": "La Extensión de Minnesota indica del 10 de junio al 15 de agosto como ventana de siembra regional y ofrece tasas de campo. No es un calendario universal ni una dosis para recipientes.",
           "items": [],
           "avoid": "",
@@ -65291,7 +65657,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Deja florecer y termina antes de que produzca semilla",
+          "short": "Permite la floración, pero termina el cultivo antes de que produzca semilla",
           "guidance": "UMN Extension informa que las flores del trigo sarraceno atraen polinizadores y enemigos naturales, pero también produce semilla con rapidez. Para usarlo como cobertura, planifica terminarlo al comenzar la floración, antes de que cuaje la semilla, para reducir plantas voluntarias. UMN describe una ventana de unas 45–50 jornadas en su rotación regional; no es una fecha de madurez específica de un cultivar ni una garantía para cada jardín.",
           "items": [],
           "avoid": "",
@@ -65312,7 +65678,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sowing is documented; home seedling protocol incomplete",
+          "short": "Se documenta la siembra; el protocolo doméstico de plántulas está incompleto",
           "guidance": "Las fuentes documentan ventanas y tasas de siembra de campo, pero no un protocolo completo de profundidad, temperatura de germinación o cuidado de plántulas en huerto doméstico. Esos datos quedan pendientes.",
           "items": [],
           "avoid": "",
@@ -65333,7 +65699,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La producción rápida de semilla puede dejar plantas voluntarias",
+          "short": "La producción rápida de semilla puede dejar plantas voluntarias de trigo sarraceno",
           "guidance": "UMN Extension advierte que el trigo sarraceno puede producir semilla pronto y recomienda segarlo o terminarlo al florecer para evitar que se resiembre. Es un riesgo de manejo de cobertura, no un diagnóstico de enfermedad ni una afirmación sobre una variedad nombrada.",
           "items": [],
           "avoid": "",
@@ -65366,7 +65732,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; no cultivar assigned",
+          "short": "Especie aceptada; sin cultivar asignado",
           "guidance": "Kew acepta Trifolium incarnatum, de Fabaceae. La ficha no representa un cultivar ni producto de semilla nombrado.",
           "items": [],
           "avoid": "",
@@ -65388,7 +65754,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Annual cover-crop legume",
+          "short": "Leguminosa anual para cultivo de cobertura",
           "guidance": "La Extensión de Minnesota describe el trébol encarnado como leguminosa de cobertura y señala su aporte de nitrógeno. La evidencia corresponde a mezclas de cobertura en agricultura y huertos de Minnesota.",
           "items": [],
           "avoid": "",
@@ -65410,7 +65776,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Planting dates and rate depend on region and mix",
+          "short": "Las fechas y la tasa de siembra dependen de la región y la mezcla",
           "guidance": "La Extensión recomienda sembrar el trébol antes que los pastos en una mezcla para que estos no lo superen. Las fechas y tasas de campo son referencias regionales, no un calendario universal.",
           "items": [],
           "avoid": "",
@@ -65453,7 +65819,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seeded cover crop; detailed home protocol unresolved",
+          "short": "Cobertura sembrada; falta validar el protocolo doméstico detallado",
           "guidance": "Las fuentes confirman la siembra y ofrecen contexto regional, pero no un protocolo doméstico completo de profundidad, germinación o cuidado de plántulas.",
           "items": [],
           "avoid": "",
@@ -65474,7 +65840,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Un monocultivo puede volverse maleza",
+          "short": "Un monocultivo puede convertirse en maleza",
           "guidance": "UMN Extension advierte que el trébol encarnado puede volverse maleza cuando se cultiva solo. Conviene considerar su función dentro de una mezcla planificada y la necesidad local de terminarlo; la fuente no establece un calendario universal de control para jardines domésticos.",
           "items": [],
           "avoid": "",
@@ -65507,7 +65873,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; no cultivar assigned",
+          "short": "Especie aceptada; sin cultivar asignado",
           "guidance": "Kew acepta Trifolium repens. Esta ficha representa la especie, no una selección de césped o microtrébol nombrada.",
           "items": [],
           "avoid": "",
@@ -65551,7 +65917,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Suelo fresco y húmedo, con sol parcial, favorece esta cubierta",
+          "short": "Suelo fresco y húmedo, con sol parcial, favorece esta cubierta vegetal",
           "guidance": "UMN Extension indica que el trébol blanco prospera en suelo fresco y húmedo con sol parcial, y que crece mal a la sombra y con tráfico intenso. Describe condiciones exteriores de paisaje; no establece un nivel de luz de cultivo interior ni aptitud hidropónica.",
           "items": [],
           "avoid": "",
@@ -65573,7 +65939,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Puede servir como cubierta, acolchado vivo o planta para polinizadores",
+          "short": "Útil como cubierta vegetal, acolchado vivo o plantación para polinizadores",
           "guidance": "UMN Extension describe el uso del trébol blanco en céspedes para abejas, pasturas, coberturas, abonos verdes y acolchados vivos. Como se extiende por estolones, puede persistir más allá de una cobertura corta; UMN recomienda cavar o arrancar a mano los parches pequeños no deseados. No se representa un cultivar de césped ni un método universal de terminación.",
           "items": [],
           "avoid": "",
@@ -65594,7 +65960,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seeded cover crop; establishment details need validation",
+          "short": "Cobertura sembrada; los detalles de establecimiento requieren validación",
           "guidance": "La guía de coberturas respalda su establecimiento por siembra, pero el material consultado no ofrece un protocolo doméstico completo de germinación y cuidado inicial. Profundidad y manejo de plántulas quedan pendientes.",
           "items": [],
           "avoid": "",
@@ -65648,7 +66014,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted cultivated cereal species",
+          "short": "Especie de cereal cultivado aceptada",
           "guidance": "Kew acepta Secale cereale como cereal cultivado. Esta ficha corresponde al centeno de cereal, no al raigrás anual (Lolium) ni a un cultivar de grano nombrado.",
           "items": [],
           "avoid": "",
@@ -65669,7 +66035,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cool-season cereal used for winter soil cover",
+          "short": "Cereal de estación fresca usado como cobertura invernal del suelo",
           "guidance": "La Extensión de Minnesota describe el centeno como cobertura común regional: germina en temperaturas frescas, se establece de forma confiable y sobrevive el invierno en la región. El resultado depende del clima y fecha de siembra.",
           "items": [],
           "avoid": "",
@@ -65690,7 +66056,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Field timing is regional and rotation-dependent",
+          "short": "El momento de siembra en campo depende de la región y la rotación",
           "guidance": "La Extensión ofrece fechas regionales y tasas de campo. No deben convertirse en calendario universal, tasa de recipiente ni separación hidropónica.",
           "items": [],
           "avoid": "",
@@ -65712,7 +66078,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Planifica la terminación primaveral antes del siguiente cultivo",
+          "short": "Planifica terminarlo en primavera antes del siguiente cultivo",
           "guidance": "UMN Extension describe un crecimiento primaveral vigoroso y recomienda planificar la terminación antes del cultivo siguiente. En su guía de campo, la siega o el rodillo-crimper funcionan mejor al florecer o espigar; cuando esa guía de rotación aplica, deja unas tres semanas para que se descompongan los residuos antes de plantar. Son métodos de campo regionales, no un calendario universal para jardines pequeños.",
           "items": [],
           "avoid": "",
@@ -65733,7 +66099,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seeded crop; home-scale protocol incomplete",
+          "short": "Cultivo sembrado; el protocolo a escala doméstica está incompleto",
           "guidance": "Las fuentes documentan siembra y establecimiento en campo, pero no un protocolo doméstico completo para iniciar plántulas. Las tasas y distancias de campo no son indicaciones para macetas o pods.",
           "items": [],
           "avoid": "",
@@ -65787,7 +66153,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted cultivated cereal species; cover-crop use represented",
+          "short": "Especie de cereal cultivado aceptada; aquí se representa como cobertura",
           "guidance": "Kew acepta Avena sativa. Esta ficha de Gardenpedia representa la especie dentro de la categoría de cultivos de cobertura; no especifica cultivar de grano, selección forrajera ni lote de semilla.",
           "items": [],
           "avoid": "",
@@ -65809,7 +66175,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivo anual de estación fresca; establecimiento rápido como cobertura",
+          "short": "Cultivo anual de estación fresca; se establece rápido como cobertura",
           "guidance": "Kew identifica Avena sativa como especie cultivada anual. UMN Extension describe el establecimiento rápido de la avena como cobertura para huertos hortícolas. En Minnesota, esta planta anual no sobrevive al invierno; esa muerte invernal regional puede ser útil cuando se busca cobertura sin mantener plantas vivas en primavera.",
           "items": [],
           "avoid": "",
@@ -65830,7 +66196,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cobertura rápida, captura de nitrógeno y residuos de descomposición rápida",
+          "short": "Cobertura rápida, captura de nitrógeno y residuos que se descomponen pronto",
           "guidance": "Para productores hortícolas de Minnesota, UMN Extension describe la avena como una opción accesible y económica que captura nitrógeno, previene erosión y ayuda a controlar malezas. La página advierte que estas funciones pueden ser algo menores que las de cereales que sobreviven el invierno, mientras que los residuos se descomponen con rapidez suficiente para permitir una siembra más temprana en primavera. También documenta mezclas de avena con guisantes o trébol de Berseem. Son funciones de cobertura en un contexto regional de campo/huerto, no una afirmación de rendimiento de grano, una tasa para maceta ni una promesa universal.",
           "items": [],
           "avoid": "",
@@ -65851,7 +66217,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Elegir la terminación según el papel de la cobertura",
+          "short": "Elige el momento de terminación según la función de la cobertura",
           "guidance": "UMN Extension indica que la avena usada como cobertura de primavera temprana puede terminarse en cualquier momento; a diferencia de la cebada o el trigo de primavera en la misma guía, la terminación mecánica no exige esperar a la floración. La avena también puede actuar como cultivo nodriza al reducir la presión de malezas mientras se establece el trébol. Como la avena muere en invierno en Minnesota, UMN señala que quizá no convenga en camas permanentes que necesitan una cobertura viva perenne; una gramínea perenne como la festuca puede ajustarse mejor a ese papel. Son distinciones de manejo según el sistema, no indicaciones de pesticidas.",
           "items": [],
           "avoid": "",
@@ -65873,7 +66239,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cobertura sembrada; el protocolo doméstico exacto no queda establecido aquí",
+          "short": "Cobertura sembrada; aquí no se establece el protocolo doméstico exacto",
           "guidance": "UMN documenta la avena sembrada como cobertura y cultivo nodriza en rotaciones hortícolas. Su página regional de selección no establece una profundidad de siembra doméstica universal, un protocolo de germinación en interior ni una tasa para maceta; las tasas de campo no deben convertirse en espaciamiento de pods hidropónicos.",
           "items": [],
           "avoid": "",
@@ -65928,7 +66294,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species, distinct from garden strawberry cultivars",
+          "short": "Especie aceptada, distinta de los cultivares de fresa de jardín",
           "guidance": "Kew acepta Fragaria vesca. La Extensión de Minnesota identifica la fresa alpina o del bosque como especie/tipo distinto, no como cultivar de Monterey; aquí no se asigna una selección.",
           "items": [],
           "avoid": "",
@@ -65949,7 +66315,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Compacta en general; los estolones pueden variar en plantas de semilla",
+          "short": "Generalmente compacta; la producción de estolones puede variar en plantas de semilla",
           "guidance": "UMN describe Fragaria vesca como fresa del bosque o alpina, de día neutro y fruto pequeño y dulce. La misma guía indica que las plantas de semilla pueden producir estolones o no, mientras que su tabla del tipo alpino dice que no produce estolones. Como aquí no se representa una selección específica, la producción de estolones se considera variable y no un rasgo universal de la especie.",
           "items": [],
           "avoid": "",
@@ -65970,7 +66336,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Suitable for beds, walkways or containers in its regional guide",
+          "short": "La guía regional la recomienda para canteros, senderos o recipientes",
           "guidance": "UMN Extension indica que las fresas del bosque toleran sitios más sombreados y pueden plantarse en canteros perennes, senderos o recipientes. Su guía general para fresas de jardín de Minnesota recomienda humedad regular (aproximadamente 2.5 cm de lluvia por semana); es una referencia para suelo, no un calendario fijo de riego para maceta o hidroponía.",
           "items": [],
           "avoid": "",
@@ -65991,7 +66357,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Small, sweet berries; yield differs from large-fruited types",
+          "short": "Bayas pequeñas y dulces; el rendimiento difiere del de tipos de fruto grande",
           "guidance": "La Extensión describe frutos pequeños y dulces e informa un rendimiento aproximado de dos a tres bayas por planta por semana para este tipo. No se generaliza a otras especies o cultivares de fresa.",
           "items": [],
           "avoid": "",
@@ -66012,7 +66378,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed-grown plants are represented; germination protocol not established",
+          "short": "Se representan plantas iniciadas desde semilla; el protocolo de germinación no está establecido",
           "guidance": "La Extensión señala que muchas plantas alpinas se cultivan desde semilla, pero no ofrece profundidad, temperatura ni protocolo completo de germinación. Esos detalles quedan sin establecer.",
           "items": [],
           "avoid": "",
@@ -66033,7 +66399,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Revisar estolones y manejarlos solo si aparecen",
+          "short": "Revisa si aparecen estolones y manéjalos solo cuando sea necesario",
           "guidance": "UMN indica que Fragaria vesca cultivada desde semilla puede producir estolones o no, mientras que su guía general para fresas recomienda retirar los estolones no deseados para controlar la expansión. En esta selección de semilla no especificada, revisa la planta establecida y córtalos solo si aparecen y no se desea que se extienda.",
           "items": [],
           "avoid": "",
@@ -66088,7 +66454,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Especie aceptada: Aronia melanocarpa; distinta de chokecherry",
+          "short": "Especie aceptada; distinta del chokecherry (Prunus virginiana)",
           "guidance": "Kew acepta Aronia melanocarpa y registra el nombre black chokeberry. No es chokecherry (Prunus virginiana) ni se le asigna un cultivar como ‘Viking’ o ‘Autumn Magic’.",
           "items": [],
           "avoid": "",
@@ -66109,7 +66475,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Arbusto caducifolio que puede extenderse mediante chupones",
+          "short": "Arbusto caducifolio que produce chupones",
           "guidance": "La Extensión de Minnesota describe un arbusto caducifolio de unos 0.9–2.4 m de alto y 0.6–1.8 m de ancho en su perfil regional. Puede producir chupones y formar masas densas; no son medidas para recipiente.",
           "items": [],
           "avoid": "",
@@ -66130,7 +66496,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tolera sol o sombra parcial y distintos niveles de humedad",
+          "short": "Se adapta al cultivo exterior, incluso en sitios húmedos",
           "guidance": "La Extensión informa pleno sol, tolerancia a sombra parcial y adaptación a una variedad de suelos y humedad, incluso húmedos, en Minnesota. No demuestra aptitud interior ni hidropónica.",
           "items": [],
           "avoid": "",
@@ -66151,7 +66517,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Frutos oscuros para procesar; crudos pueden ser muy astringentes",
+          "short": "Procesa la fruta astringente",
           "guidance": "La Extensión indica que los frutos oscuros se usan en mermeladas, jugos, vino y repostería; son demasiado astringentes para la mayoría de las personas al comerlos crudos. No ofrece un calendario universal.",
           "items": [],
           "avoid": "",
@@ -66172,7 +66538,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Controla chupones y vigila el ramoneo de ciervos y conejos",
+          "short": "Los chupones y el ramoneo son señales útiles para el manejo",
           "guidance": "La Extensión informa que los arbustos cultivados pueden producir más chupones y que ciervos y conejos pueden ramonearlos; no lista plagas graves en su perfil regional. Eso no garantiza ausencia de problemas.",
           "items": [],
           "avoid": "",
@@ -66193,7 +66559,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La producción frutícola documenta semilla y esquejes",
+          "short": "En producción frutícola, Aronia se propaga por semilla o esquejes",
           "guidance": "University of Wisconsin–Madison Extension indica que Aronia se propaga comúnmente por semilla o esquejes. Es orientación de producción frutícola, no un protocolo doméstico completo; aquí no se infieren calendarios de siembra ni de esquejado.",
           "items": [],
           "avoid": "",
@@ -66214,8 +66580,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores blancas primaverales; follaje otoñal y frutos persistentes",
-          "guidance": "La Extensión de Minnesota describe racimos vistosos de flores blancas de unos 5–8 cm, con anteras rosadas, en primavera. El follaje caducifolio cambia del verde a tonos rojos, naranjas y morados en otoño; los frutos oscuros pueden persistir hasta el invierno y alimentar a la fauna. Son señales estacionales del perfil de especie de Minnesota, no fechas fijas ni rasgos asignados a un cultivar sin identificar.",
+          "short": "White spring flowers, autumn color and fruit that may persist",
+          "guidance": "UMN describes showy white flower clusters about 2–3 inches across with pink anthers in spring. The deciduous foliage changes from green to red, orange and purple in autumn; dark fruit may persist into winter and feed wildlife. These are seasonal cues from UMN's Minnesota species profile, not fixed dates or traits assigned to an unnamed cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66270,7 +66636,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; cultivar and subspecies unspecified",
+          "short": "Especie aceptada; subespecie y cultivar sin especificar",
           "guidance": "Kew acepta Lonicera caerulea. Honeyberry e haskap son nombres del cultivo de madreselva azul comestible; esta ficha no asigna subespecie ni cultivar.",
           "items": [],
           "avoid": "",
@@ -66292,7 +66658,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cold-hardy shrub; form and size vary by variety",
+          "short": "Arbusto resistente al frío; la forma y el tamaño varían según la variedad",
           "guidance": "USask describe un arbusto redondeado de jardín de unos 1,2–2 m de alto y cerca de 1,2 m de ancho. USU indica que la forma varía de baja a erguida y puede alcanzar alrededor de 1,8 m tanto de alto como de ancho. Son descripciones regionales que dependen de la variedad, no dimensiones de un cultivar sin identificar; tiene raíces anchas y superficiales.",
           "items": [],
           "avoid": "",
@@ -66315,7 +66681,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and compatible, overlapping bloom for fruit",
+          "short": "Sol pleno y variedades compatibles con floración coincidente para producir fruta",
           "guidance": "Para jardines domésticos, USask recomienda pleno sol para una mejor fructificación; con sol parcial puede producir menos. Tolera varios suelos, pero prefiere franco o franco arenoso bien drenado; la arcilla solo sirve si drena bien. Mantén húmedo, sin encharcar, el arbusto recién plantado durante sus primeras 2–3 semanas. Deja al menos 1 m entre arbustos exteriores, como indica USask; no es una distancia para pods interiores. Haskap es autoincompatible: planta otra variedad diferente y compatible cuya floración coincida. Esta ficha no identifica una pareja para su cultivar desconocido; confirma la compatibilidad con el vivero o una tabla varietal antes de comprar.",
           "items": [],
           "avoid": "",
@@ -66339,7 +66705,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Harvest dark-blue fruit when ripe; timing is regional and variety-dependent",
+          "short": "Cosecha la fruta azul oscura madura; la fecha depende de la región y la variedad",
           "guidance": "USask informa una cosecha entre fines de junio y comienzos de julio en Saskatchewan; no es un calendario universal. La Extensión de Minnesota describe una ventana breve que depende de la variedad y recomienda probar el sabor, pues el color por sí solo puede confundir. Para fruta fresca, la guía de producción U-Pick de Minnesota favorece la cosecha manual para conservar la integridad; el sacudido mecánico se trata para congelado o venta mayorista, no como método doméstico universal.",
           "items": [],
           "avoid": "",
@@ -66362,7 +66728,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Watch for birds, powdery mildew and warm-site stress",
+          "short": "Vigila aves, oídio y estrés en sitios cálidos",
           "guidance": "UMN menciona aves y oídio como posibles problemas. USU informa que los sitios cálidos pueden causar escaldadura, oídio y caída prematura de hojas, con distinta susceptibilidad entre tipos rusos y japoneses; esta ficha no asigna subespecie, así que son riesgos regionales, no síntomas garantizados. USU señala que la poda para mejorar circulación de aire puede ayudar con el oídio. No se atribuye resistencia a un cultivar.",
           "items": [],
           "avoid": "",
@@ -66383,7 +66749,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Trasplantes de vivero y esquejes son vías comunes de producción",
+          "short": "Los trasplantes de vivero y los esquejes son vías comunes de producción",
           "guidance": "La guía de cultivos especiales de Ontario enumera trasplantes de cultivo de tejidos y esquejes tiernos o leñosos como métodos comunes de propagación del haskap. Esto respalda vías vegetativas a nivel del cultivo, no un tutorial doméstico paso a paso ni un protocolo de germinación; si importa conservar un cultivar e instalar una pareja compatible, busca plantas de vivero correctamente identificadas.",
           "items": [],
           "avoid": "",
@@ -66406,7 +66772,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Una poda ligera en dormancia facilita el acceso a la fruta",
+          "short": "Una poda ligera durante la dormancia facilita el acceso a las ramas con fruta",
           "guidance": "UMN describe la poda en dormancia para evitar que las ramas bajas se inclinen bajo el peso de la fruta; abrir la copa para acceso y aireación se presenta específicamente para operaciones U-Pick. USU también menciona la poda para aumentar la circulación de aire y ayudar con el oídio. No se establece un calendario ni una poda fuerte universal para un cultivar desconocido.",
           "items": [],
           "avoid": "",
@@ -66439,7 +66805,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; common name cowberry is also used",
+          "short": "Especie aceptada; también se conoce como cowberry",
           "guidance": "Kew acepta Vaccinium vitis-idaea y reconoce cowberry como nombre común inglés. No es arándano rojo americano (Vaccinium macrocarpon), ya representado por separado.",
           "items": [],
           "avoid": "",
@@ -66461,7 +66827,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Low-growing evergreen subshrub",
+          "short": "Subarbusto perenne de bajo porte",
           "guidance": "Kew describe la especie como subarbusto. La Extensión de Minnesota incluye lingonberry entre las frutas de paisaje de bajo crecimiento; no se asigna cultivar.",
           "items": [],
           "avoid": "",
@@ -66545,7 +66911,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cultivares compatibles en floración favorecen el tamaño y la producción de bayas",
+          "short": "Cultivares compatibles que florecen a la vez favorecen el tamaño y la producción de bayas",
           "guidance": "Oregon State informa que la producción de lingonberry se beneficia de cultivares polinizadores e insectos polinizadores. La proporción de campo y los polinizadores nombrados son recomendaciones comerciales del noroeste del Pacífico; esta ficha de especie sin cultivar no asigna una pareja de cultivares ni una proporción para jardines domésticos.",
           "items": [],
           "avoid": "",
@@ -66587,7 +66953,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila la pérdida de bayas, la pudrición radicular y enfermedades foliares o de ramas reportadas localmente",
+          "short": "Vigila pérdida de bayas, pudrición de raíz y enfermedades foliares o de ramas reportadas localmente",
           "guidance": "La guía del noroeste del Pacífico informa daño de aves en bayas maduras y varias enfermedades fúngicas en plantaciones regionales; también relaciona el suelo encharcado con riesgo de pudrición radicular. Úsalo como señales de monitoreo, no como afirmación de que toda planta esté afectada ni como diagnóstico de patógeno a partir de un síntoma. La guía recomienda diagnóstico de laboratorio cuando importa identificar la enfermedad.",
           "items": [],
           "avoid": "",
@@ -66622,7 +66988,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Especie aceptada de Saskatoon",
-          "guidance": "Kew accepts Amelanchier alnifolia. NC State Extension names Saskatoon serviceberry and Juneberry for this species; the broader common name ‘serviceberry’ can refer to several Amelanchier species. No cultivar is assigned.",
+          "guidance": "Kew acepta Amelanchier alnifolia. NC State Extension identifica esta especie como Saskatoon serviceberry y Juneberry; el nombre común serviceberry también puede referirse a otras especies de Amelanchier. No se asigna cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66644,7 +67010,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Arbusto erguido caducifolio o arbolito; tamaño adulto muy variable",
-          "guidance": "NC State describes this species as an erect deciduous shrub, commonly listed at 3–18 ft tall; its structured table gives 6–10 ft width, while the page narrative says 6–8 ft and notes exceptional height up to 30 ft in rich, moist soil. These are broad landscape ranges, not a named cultivar's dimensions. Utah State Extension also cautions that serviceberry size depends on species and cultivar.",
+          "guidance": "NC State describe esta especie como arbusto caducifolio erguido, por lo común de 3–18 pies; su tabla estructurada indica 6–10 pies de ancho, mientras que la narración dice 6–8 pies y señala que puede llegar excepcionalmente a 30 pies en suelos ricos y húmedos. Son rangos amplios de paisaje, no medidas de un cultivar. Utah State Extension también advierte que el tamaño de serviceberries depende de la especie y el cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66666,7 +67032,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "El sol pleno y el suelo drenado favorecen el fruto; mantén húmeda la zona de establecimiento sin encharcar",
-          "guidance": "NC State recommends full sun and rich, well-drained loam for best berries and long-lasting flowers, while noting tolerance across a range of light and moisture conditions. Utah State Extension's genus-level home-garden guide advises keeping the first-season root zone moist but not wet; clay soil and poor drainage can promote root problems. It recommends watering at the base and mulching to retain moisture. The Utah schedule is regional; no cultivar-specific irrigation amount or hydroponic recipe is implied.",
+          "guidance": "NC State recomienda pleno sol y suelo franco, fértil y bien drenado para obtener mejores bayas y flores duraderas, aunque señala tolerancia a distintas condiciones de luz y humedad. La guía de huerto de Utah State Extension, a nivel del género, aconseja mantener la zona radicular húmeda pero no saturada durante el primer año; la arcilla y el drenaje deficiente pueden favorecer problemas de raíz. Recomienda regar en la base y usar acolchado para conservar humedad. El calendario de Utah es regional; no se infiere una cantidad universal ni una receta hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66689,7 +67055,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "El fruto azul violáceo madura de forma desigual; cosecha en varias pasadas y enfríalo pronto",
-          "guidance": "NC State describes sweet, edible blue-purple fruit ripening in early summer. The University of Saskatchewan reports uneven ripening and repeated picking for Saskatoon; its prairie dates are not universal. Utah State Extension's broader serviceberry guide recommends harvesting when about two-thirds of the fruit is ripe, by hand while fruit is dry and cool, then sorting, washing and drying it before refrigeration or freezing. Prompt cooling matters because USask reports rapid quality decline after harvest.",
+          "guidance": "NC State describe bayas dulces comestibles, azul violáceas, que maduran al inicio del verano. La Universidad de Saskatchewan señala que los Saskatoon maduran de forma desigual y requieren varias cosechas; sus fechas de pradera no se generalizan. La guía de Utah State Extension para serviceberries recomienda empezar cuando cerca de dos tercios del fruto esté maduro y cosechar a mano con las bayas secas y frescas. Clasifica, lava y seca el fruto antes de refrigerarlo o congelarlo. Enfríalo pronto porque USask informa que la calidad puede deteriorarse rápidamente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66711,7 +67077,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Se documentan semillas, chupones y esquejes; las plantas de semilla pueden no ser fieles al tipo",
-          "guidance": "NC State lists seed, sucker separation, spring hardwood cuttings and summer softwood cuttings for A. alnifolia. Utah State Extension describes transplanting suckers from a healthy established serviceberry before bud break as a practical vegetative route; it cautions that seedlings may not reproduce the parent and that hardwood/softwood cutting success is limited. These are species/genus-level options, not a cultivar-preserving guarantee for an unidentified plant.",
+          "guidance": "NC State enumera semilla, separación de chupones, esquejes de madera dura en primavera y esquejes tiernos en verano para A. alnifolia. Utah State Extension describe como opción práctica trasplantar chupones de una planta sana antes de la brotación; advierte que las plántulas pueden diferir de la planta madre y que los esquejes de madera dura o tierna tienen éxito limitado. Son opciones de la especie/género, no una garantía de conservar un cultivar sin identificar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66732,7 +67098,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Mantén humedad para la calidad del fruto y evita mojar el follaje",
-          "guidance": "Utah State Extension says established serviceberries can survive with little water, but irrigation supports maximum yield and desirable fruit; extra water may be needed in hot, dry weather. Watering at the shrub base helps keep foliage dry, and mulch helps conserve soil moisture. Its quantitative schedule is Utah guidance, not a universal requirement for every site or cultivar.",
+          "guidance": "Utah State Extension indica que serviceberries establecidas sobreviven con poca agua, pero el riego favorece el rendimiento y la calidad deseables; puede hacer falta más agua con calor y sequía. Regar a la base ayuda a mantener el follaje seco, y el acolchado conserva humedad. Su calendario cuantitativo es regional, no una exigencia universal para cada sitio o cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66753,7 +67119,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Poda antes del crecimiento primaveral y conserva madera de edad fructífera",
-          "guidance": "Utah State Extension's genus-level guide recommends pruning in late winter or early spring before new growth. It notes that serviceberry flowers form on 2–4-year-old stems; removing about one-third of older growth annually is offered as a way to maintain younger fruiting wood and an open canopy. Apply this as general serviceberry guidance, not a cultivar-specific pruning prescription.",
+          "guidance": "La guía de Utah State Extension para el género recomienda podar a fines del invierno o comienzos de primavera, antes del nuevo crecimiento. Indica que las flores se forman en tallos de 2–4 años; retirar alrededor de un tercio del crecimiento viejo cada año se propone para mantener madera joven fructífera y una copa abierta. Es orientación general para serviceberries, no una receta de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66774,7 +67140,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Racimos de flores blancas fragantes aparecen en primavera, a menudo antes que las hojas",
-          "guidance": "NC State describes compact clusters of fragrant white flowers appearing in spring before the shrub's leaves. The same source notes summer fruit and yellow-to-red fall foliage, giving the species ornamental interest beyond flowering. No fixed local bloom date is assigned.",
+          "guidance": "NC State describe racimos compactos de flores blancas y fragantes en primavera, a menudo antes de que aparezcan las hojas. La misma fuente señala frutos de verano y follaje otoñal amarillo a rojo. No se asigna una fecha local fija de floración.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66796,7 +67162,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Protege los frutos maduros de las aves y vigila manchas foliares y royas",
-          "guidance": "Utah State Extension reports birds as a major fruit-loss risk; its guide also describes angular brown Entomosporium leaf spots with yellow rings, gray spots on affected fruit, white powdery mildew and Saskatoon-juniper rust. Rust may begin as yellow spots/swelling and develop yellow spiky growths; the guide advises avoiding nearby junipers where this disease is a concern. NC State lists additional pests and diseases for the species. These are monitoring cues, not proof of diagnosis or a claim that every plant is affected; no pesticide prescription is made.",
+          "guidance": "Utah State Extension señala a las aves como una causa importante de pérdida de fruto; también describe manchas foliares angulares marrones de Entomosporium con anillos amarillos, manchas grises en frutos, oídio blanco y roya Saskatoon-enebro. La roya puede iniciar con manchas y abultamientos amarillos y producir después crecimientos amarillos espinosos; la guía aconseja evitar enebros cercanos cuando esta enfermedad sea un problema. NC State también enumera otras plagas y enfermedades para la especie. Son señales para vigilar, no un diagnóstico ni una afirmación de que toda planta se afectará; no se prescribe pesticida.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66818,7 +67184,7 @@ export const gardenPlantProfileCatalog = {
         },
         "es": {
           "short": "Bayas comestibles y arbusto ornamental de varias estaciones",
-          "guidance": "NC State and Minnesota Extension describe the fruit as edible and useful fresh or in preserves. Fragrant spring flowers, summer berries and fall foliage also support ornamental and wildlife value. Food preparation details are handled separately in Harvest Use; this profile does not imply medicinal benefits.",
+          "guidance": "NC State y la Extensión de Minnesota describen el fruto como comestible, para consumo fresco o conservas. Las flores fragantes de primavera, las bayas de verano y el follaje de otoño también aportan valor ornamental y para la fauna. Los detalles culinarios se presentan aparte en Harvest Use; no se implican beneficios medicinales.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66851,7 +67217,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Especie aceptada: Clitoria ternatea; sin cultivar asignado",
+          "short": "Especie aceptada; el color de las flores varía entre cultivares",
           "guidance": "Kew acepta Clitoria ternatea. NC State indica que existen cultivares de flor blanca o doble; esta ficha de especie no asigna ninguno.",
           "items": [],
           "avoid": "",
@@ -66873,7 +67239,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Enredadera perenne tropical; suele ser anual en zonas templadas",
+          "short": "Perenne trepadora en los trópicos; suele cultivarse como anual en jardines templados",
           "guidance": "Kew la describe como perenne trepadora. NC State informa que suele cultivarse como anual en regiones templadas y que puede alcanzar unos 4.6 m al aire libre; no es una promesa de tamaño en recipiente.",
           "items": [],
           "avoid": "",
@@ -66895,7 +67261,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno, suelo drenado y soporte para trepar",
+          "short": "Sol pleno, buen drenaje y soporte para trepar",
           "guidance": "NC State recomienda pleno sol, suelo bien drenado y riego constante para mejor crecimiento; UF/IFAS recomienda un enrejado o cerca como soporte. Son recomendaciones para exterior, no evidencia de hidroponía.",
           "items": [],
           "avoid": "",
@@ -66916,7 +67282,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores para colorante y té; partes tiernas descritas como comestibles",
+          "short": "Las flores se usan para dar color y preparar té; las partes tiernas son comestibles",
           "guidance": "UF/IFAS describe el uso de las flores para colorante y té que cambia de color, e informa que hojas, flores, brotes jóvenes y vainas tiernas son comestibles. No se afirma ningún efecto médico.",
           "items": [],
           "avoid": "",
@@ -66937,7 +67303,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Las flores azules aparecen de verano a otoño según NC State",
+          "short": "Según NC State, las flores azules aparecen de verano a otoño",
           "guidance": "NC State describe flores azul cielo con centros amarillos que florecen de verano a otoño. Señala que algunos cultivares tienen flores blancas o dobles; esos rasgos no se asignan a esta identidad a nivel de especie.",
           "items": [],
           "avoid": "",
@@ -66959,7 +67325,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "La propagación por semilla está documentada",
+          "short": "Se documenta la propagación por semilla",
           "guidance": "NC State enumera la semilla como estrategia de propagación recomendada. El Perfil de Semilla asociado incluye únicamente la información respaldada y deja sin resolver las mediciones de germinación no publicadas.",
           "items": [],
           "avoid": "",
@@ -66980,7 +67346,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El frío limita su ciclo; vigila ácaros y moscas blancas",
+          "short": "La exposición a heladas limita su temporada en regiones templadas",
           "guidance": "NC State describe su ciclo perenne tropical y su cultivo como anual en zonas templadas. También enumera ácaros y moscas blancas entre plagas posibles; son riesgos, no diagnósticos ni ocurrencias garantizadas.",
           "items": [],
           "avoid": "",
@@ -67013,7 +67379,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; no cultivar assigned",
+          "short": "Especie aceptada; sin cultivar asignado",
           "guidance": "Kew acepta Moringa oleifera y la describe como árbol originario de la región entre Pakistán e India. Esta ficha representa la especie, no una selección nombrada.",
           "items": [],
           "avoid": "",
@@ -67035,7 +67401,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fast-growing tropical tree; sensitive to cold",
+          "short": "Árbol tropical de crecimiento rápido y sensible al frío",
           "guidance": "Kew caracteriza la especie como árbol de biomas tropicales estacionalmente secos. La Extensión Cooperativa de California la describe como de crecimiento rápido y sensible al frío; su respuesta corresponde al contexto del centro de California.",
           "items": [],
           "avoid": "",
@@ -67056,7 +67422,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm conditions; container culture can help in colder climates",
+          "short": "Condiciones cálidas; el cultivo en recipiente puede ayudar en climas fríos",
           "guidance": "La Extensión Cooperativa de California reporta cultivo en zona USDA 9b y más cálidas, y señala el uso de recipientes o cultivo anual en climas más fríos. Es recomendación regional, no garantía universal de rusticidad ni recomendación hidropónica.",
           "items": [],
           "avoid": "",
@@ -67098,7 +67464,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Leaves and pods are cultivated uses",
+          "short": "Se cultiva para aprovechar sus hojas y vainas",
           "guidance": "La Extensión describe el cultivo de moringa por hojas y/o vainas. La fuente respalda esos usos, pero no establece un calendario de cosecha doméstico ni un rendimiento.",
           "items": [],
           "avoid": "",
@@ -67119,7 +67485,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and nursery starts are documented",
+          "short": "Se documentan semillas y plantas iniciadas en vivero",
           "guidance": "La Extensión informa que puede sembrarse directamente o iniciarse en vivero y reporta 7–14 días para germinar en su artículo del centro de California. El Perfil de Semilla asociado deja sin resolver la temperatura y profundidad que la fuente no especifica.",
           "items": [],
           "avoid": "",
@@ -67353,27 +67719,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "growth": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "usu-celery-wave54"
-        ],
-        "en": {
-          "short": "Leaf-topped stalks rise together from one crown",
-          "guidance": "Utah State Extension describes celery as leaf-topped stalks arranged in a cone and joined at a common base; the edible stalks are petioles, not separate stems. This profile represents stalk celery, not Chinese leaf celery or celeriac, whose harvested parts and growth forms differ. USU classifies celery as biennial, but does not provide a compact indoor size or system-clearance specification.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Las pencas con hojas crecen juntas desde una corona común",
-          "guidance": "Utah State Extension describe el apio como pencas con hojas dispuestas en cono y unidas en una base común; las pencas comestibles son pecíolos, no tallos independientes. Este perfil representa apio de penca, no apio chino de hoja ni apionabo, cuyos órganos cosechados y formas de crecimiento difieren. USU clasifica el apio como bienal, pero no aporta dimensiones compactas para interior ni una especificación de espacio libre para sistemas.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -67382,15 +67727,15 @@ export const gardenPlantProfileCatalog = {
           "usu-celery-wave54"
         ],
         "en": {
-          "short": "Cool-season crop usually started as transplants",
-          "guidance": "WSU describes celery as a cool-weather crop commonly started indoors and transplanted; its Washington schedule is regional. Utah State Extension likewise describes transplanting established seedlings and emphasizes regular water. These sources do not establish an indoor hydroponic recipe or a system pod count.",
+          "short": "Cool-season crop usually transplanted; full sun and fertile, well-drained soil outdoors",
+          "guidance": "WSU describes celery as a cool-weather crop commonly started indoors and transplanted; its Washington schedule is regional. Utah State Extension recommends full sun and fertile, well-drained soil rich in organic matter for home-garden plants, and notes the crop has a small, shallow root system. This is outdoor soil guidance, not an indoor grow-light tier or hydroponic recipe; field row spacing is not a system pod count.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Cultivo de estación fresca, normalmente iniciado como trasplante",
-          "guidance": "WSU describe el apio como cultivo de clima fresco, normalmente iniciado en interior y trasplantado; su calendario de Washington es regional. Utah State Extension también recomienda trasplantar plántulas establecidas y enfatiza el riego regular. Estas fuentes no establecen una receta hidropónica interior ni número de pods.",
+          "short": "Cultivo de estación fresca, normalmente trasplantado; pleno sol y suelo fértil bien drenado al aire libre",
+          "guidance": "WSU describe el apio como cultivo de clima fresco, normalmente iniciado en interior y trasplantado; su calendario de Washington es regional. Utah State Extension recomienda pleno sol y suelo fértil, bien drenado y rico en materia orgánica para el huerto, y señala que la planta tiene un sistema radicular pequeño y superficial. Es orientación para cultivo exterior en suelo, no un nivel de luz de cultivo interior ni una receta hidropónica; el espaciamiento de campo no equivale a pods de un sistema.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -67412,28 +67757,6 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Mantén húmedo el suelo de raíces superficiales; el calor y el frío prolongado afectan la calidad",
           "guidance": "USU aconseja riego profundo y regular porque el apio tiene raíces superficiales; el estrés hídrico puede volver las pencas fibrosas y de sabor más fuerte. Su guía regional da 55–65°F como rango ideal del cultivo, señala que varias semanas de frío pueden inducir floración y aconseja regar con más frecuencia por encima de 85°F para reducir estrés y fibra. Son referencias de cultivo exterior, no parámetros de un sistema interior. La fuente también advierte que cultivar superficialmente puede dañar las raíces.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "flowering": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "usu-celery-wave54",
-          "osu-celery-wave54"
-        ],
-        "en": {
-          "short": "Prolonged cool exposure can trigger premature bolting",
-          "guidance": "USU notes that several weeks of cool exposure can prompt celery to flower; Oregon State reports that extended mean temperatures below 55°F, especially brief exposure below 45°F during transplant production, can predispose the crop to bolting, with varietal susceptibility differences. Treat these as regional crop-production warnings, not universal indoor thresholds or a forecast for this unspecified selection. A rising central seed stalk marks a shift away from the leafy-stalk harvest stage.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "La exposición prolongada al frío puede provocar espigado prematuro",
-          "guidance": "USU señala que varias semanas de exposición al frío pueden inducir la floración del apio; Oregon State informa que temperaturas medias prolongadas por debajo de 55°F, especialmente exposiciones breves por debajo de 45°F durante la producción de trasplantes, pueden predisponer al cultivo al espigado, con diferencias de susceptibilidad entre variedades. Son advertencias regionales de producción del cultivo, no umbrales universales de interior ni un pronóstico para esta selección no especificada. Un tallo central con semillas marca el cambio respecto de la etapa de cosecha de pencas foliares.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -67477,6 +67800,49 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Revisa el centro por corazón negro y las hojas viejas por oídio",
           "guidance": "USU describe el corazón negro como un ennegrecimiento gradual y muerte de hojas jóvenes en el centro, asociado con un trastorno localizado de calcio; recomienda evitar el estrés hídrico para reducir el riesgo. También describe el oídio como parches blancos que comienzan en hojas viejas y los pulgones como insectos blandos bajo las hojas que pueden causar enrollamiento o arrugamiento. Estas señales justifican inspeccionar, no diagnosticar automáticamente solo por apariencia. La evidencia es del cultivo en huerto de suelo, no de resistencia varietal específica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54"
+        ],
+        "en": {
+          "short": "Biennial rosette of leaf-topped stalks; garden plants can reach about 18–24 inches",
+          "guidance": "Utah State Extension describes celery as a biennial with edible petioles arranged in a cone and joined at a common base; the petioles are not separate stems. Its home-garden guide gives 18–24 inches as a typical height range. This is species/crop-level outdoor context, not a cultivar-specific or indoor footprint; no exact spread, system clearance, or pod spacing is established. Stalk celery remains distinct from Chinese leaf celery and celeriac.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Roseta bienal de pencas con hojas; alcanza unos 46–61 cm en huerto doméstico",
+          "guidance": "Utah State Extension describe el apio como una planta bienal cuyas pencas comestibles, que son pecíolos y no tallos independientes, se disponen en cono y se unen en una base común. Su guía doméstica da 46–61 cm como rango de altura habitual. Es contexto exterior a nivel de especie/cultivo, no una dimensión de cultivar o huella interior; no establece ancho, despeje de sistema ni pods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-celery-wave54",
+          "osu-celery-wave54"
+        ],
+        "en": {
+          "short": "Prolonged cool exposure can trigger premature bolting in this biennial crop",
+          "guidance": "Utah State Extension notes that several weeks of cool exposure can prompt celery to flower. Oregon State reports that extended mean temperatures below 55°F, especially brief exposure below 45°F during transplant production, can predispose celery to bolting, with varietal susceptibility differences. These are regional crop-production observations, not universal indoor thresholds or a prediction for an unspecified selection; USU does not define a universal temperature-duration trigger. A rising central seed stalk marks a shift away from leafy-stalk harvest.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "La exposición prolongada al frío puede provocar espigado prematuro en este cultivo bienal",
+          "guidance": "Utah State Extension señala que varias semanas de exposición al frío pueden inducir la floración del apio. Oregon State informa que temperaturas medias prolongadas por debajo de 55°F, especialmente exposiciones breves por debajo de 45°F durante la producción de trasplantes, pueden predisponer al cultivo al espigado, con diferencias de susceptibilidad entre variedades. Son observaciones regionales de producción, no umbrales universales para interior ni un pronóstico para una selección no especificada; USU no define un umbral universal de temperatura y duración. Un tallo central con semillas marca el cambio respecto de la cosecha de pencas foliares.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -71013,8 +71379,8 @@ export const gardenPlantProfileCatalog = {
   },
   "apricot-prunus-armeniaca": {
     "summary": {
-      "en": "A deciduous fruit tree with early spring bloom and edible stone fruit. Cultivars differ in chill needs and frost exposure; this species-level record does not choose one.",
-      "es": "Árbol frutal caducifolio con floración temprana y fruto de hueso comestible. Los cultivares difieren en frío requerido y exposición a heladas; aquí no se selecciona uno."
+      "en": "A deciduous apricot tree with early spring bloom and edible stone fruit. USU Extension says most cultivars are self-fruitful, though a nearby cultivar blooming at the same time may improve yield. Early bloom remains frost-sensitive; this species-level record does not select a cultivar or promise fruit set.",
+      "es": "Árbol caducifolio de albaricoque, con floración temprana y fruto de hueso comestible. USU Extension indica que la mayoría de los cultivares son autofértiles, aunque otra variedad cercana con floración coincidente puede mejorar la cosecha. La floración temprana sigue expuesta a heladas; esta ficha a nivel de especie no elige cultivar ni garantiza fructificación."
     },
     "metrics": {
       "en": [],
@@ -71068,18 +71434,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-prunus-armeniaca-wave59"
+          "ncsu-prunus-armeniaca-wave59",
+          "usu-apricots-home-garden-2015"
         ],
         "en": {
-          "short": "Full sun, well-drained soil and a frost-aware site",
-          "guidance": "NC State recommends full sun and moist, well-drained soil. Apricots bloom early and are vulnerable to spring frost; cultivar chill requirements and local conditions affect success.",
+          "short": "Full sun, well-drained soil and a frost-aware site; check cultivar pollination needs",
+          "guidance": "NC State recommends full sun and moist, well-drained soil. Apricots bloom early and are vulnerable to spring frost; cultivar chill requirements and local conditions affect success. USU Extension says most apricot cultivars are self-fruitful, but a nearby cultivar with overlapping bloom may improve yield. Because this record does not identify a cultivar, confirm the requirements of the actual tree rather than assuming every apricot is self-fruitful.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Pleno sol, suelo drenado y ubicación protegida de heladas",
-          "guidance": "NC State recomienda pleno sol y suelo húmedo y bien drenado. Florece pronto y es vulnerable a heladas primaverales; los requerimientos de frío dependen de cultivar y clima.",
+          "short": "Pleno sol, suelo drenado y sitio protegido de heladas; verifica la polinización del cultivar",
+          "guidance": "NC State recomienda pleno sol y suelo húmedo y bien drenado. El albaricoquero florece pronto y es vulnerable a heladas primaverales; los requerimientos de frío dependen del cultivar y del clima. USU Extension indica que la mayoría de los cultivares son autofértiles, pero otra variedad cercana con floración coincidente puede mejorar la cosecha. Como esta ficha no identifica cultivar, verifica las necesidades del árbol concreto en vez de asumir que todo albaricoquero es autofértil.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -71134,15 +71501,15 @@ export const gardenPlantProfileCatalog = {
           "usu-apricots-home-garden-2015"
         ],
         "en": {
-          "short": "Prune in late winter and preserve productive spurs",
-          "guidance": "USU Extension describes annual late-winter pruning and open-vase training for apricots, while noting that fruiting spurs can remain productive for several years. Remove dead or damaged wood and avoid indiscriminate removal of fruiting wood; exact timing should follow local climate.",
+          "short": "Prune in late winter, retain productive spurs and thin an over-set crop",
+          "guidance": "USU Extension describes annual late-winter pruning and open-vase training for apricots. Fruiting spurs can remain productive for several years, so avoid indiscriminate removal of fruiting wood. Apricots may over-set: when fruit is grape-sized (about 4–6 weeks after full bloom in USU's guidance), thin to roughly one fruit every 4–6 inches along each branch. This can improve the size of remaining fruit and reduce stress on the tree; timing is regional guidance, not a fixed calendar for every climate.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Poda a fines del invierno y conserva las ramas fructíferas",
-          "guidance": "USU Extension describe poda anual a fines del invierno y formación en vaso abierto para el albaricoquero; las ramas cortas fructíferas pueden seguir produciendo varios años. Retira madera muerta o dañada y evita eliminar sin criterio la madera fructífera; ajusta la época al clima local.",
+          "short": "Poda a fines del invierno, conserva ramas fructíferas y aclara el exceso de fruto",
+          "guidance": "USU Extension describe poda anual a fines del invierno y formación en vaso abierto. Las ramas cortas fructíferas pueden producir varios años, por lo que conviene evitar eliminarlas sin criterio. El árbol puede cuajar demasiado fruto: cuando los albaricoques tengan tamaño de uva (aproximadamente 4–6 semanas después de la floración plena según la guía de USU), aclara hasta dejar alrededor de un fruto cada 10–15 cm de rama. Así puede aumentar el tamaño del fruto restante y reducir la carga del árbol; el calendario es orientación regional, no una fecha fija para todo clima.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -71152,18 +71519,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-prunus-armeniaca-wave59"
+          "ncsu-prunus-armeniaca-wave59",
+          "usu-apricots-home-garden-2015"
         ],
         "en": {
-          "short": "Early bloom increases exposure to spring frost",
-          "guidance": "NC State emphasizes frost damage to early flowers and fruit buds and lists common insect and disease risks. No cultivar resistance is claimed.",
+          "short": "Early bloom risks frost loss; wet roots can signal poor drainage or overwatering",
+          "guidance": "NC State emphasizes frost damage to early flowers and fruit buds. USU reports root-rot risk in wet, heavy soils or under overwatering; its Utah guidance also notes iron chlorosis in alkaline soils. These are context-dependent risks, not diagnoses: check recent weather, drainage, watering and local soil conditions before attributing decline, and no cultivar resistance is claimed.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La floración temprana aumenta el riesgo de heladas",
-          "guidance": "NC State destaca el daño por heladas tempranas a flores y yemas y enumera plagas y enfermedades comunes. No se atribuye resistencia a un cultivar.",
+          "short": "La floración temprana arriesga la cosecha; raíces mojadas pueden indicar drenaje deficiente o exceso de riego",
+          "guidance": "NC State destaca el daño por heladas tempranas a flores y yemas. USU documenta riesgo de pudrición de raíces en suelos pesados y húmedos o por exceso de riego; su guía de Utah también señala clorosis férrica en suelos alcalinos. Son riesgos contextuales, no diagnósticos: revisa clima reciente, drenaje, riego y suelo local antes de atribuir el deterioro; no se atribuye resistencia a un cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -71358,7 +71726,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Lactuca sativa; Augustana/stem-lettuce crop type",
+          "short": "Lactuca sativa; tipo Augustana o lechuga de tallo",
           "guidance": "UC Davis y NC State identifican la celtuce como lechuga de tallo dentro de Lactuca sativa. POWO reconoce la especie; el nombre del grupo de cultivo no establece otra especie ni un cultivar.",
           "items": [],
           "avoid": "",
@@ -71380,7 +71748,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Leafy top with an enlarged, tender edible stem",
+          "short": "Follaje superior y tallo comestible ensanchado y tierno",
           "guidance": "UC Davis y UC Cooperative Extension distinguen la celtuce por su tallo comestible engrosado, cuyas hojas también se usan como alimento. El tamaño del tallo varía según la línea y la etapa de cosecha; no se asignan dimensiones maduras fijas al grupo.",
           "items": [],
           "avoid": "",
@@ -71402,7 +71770,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Long photoperiods can shorten the useful stem-growing season",
+          "short": "Los días largos pueden acortar la temporada útil de engrosamiento del tallo",
           "guidance": "UC Davis informa que los fotoperiodos largos promueven la floración prematura de la celtuce; UC Cooperative Extension describe el sol intenso como presión regional en la Sierra Central y allí sugiere sol parcial o malla de sombra. Es contexto estacional de cultivo exterior, no una receta de luz interior. El espaciamiento específico, un calendario universal y la compatibilidad hidropónica siguen sin establecerse.",
           "items": [],
           "avoid": "",
@@ -71425,7 +71793,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "The tender stem is primary; leaves are also edible",
+          "short": "El tallo tierno es la cosecha principal; las hojas también se comen",
           "guidance": "La cosecha se centra en el tallo grueso; UC Davis lo identifica como el principal producto comestible y documenta su uso crudo y cocido, mientras UC Cooperative Extension también reconoce las hojas como comestibles. La floración prematura por días largos puede amargar el cultivo antes de cosechar el tallo. No se asigna un tamaño universal ni días fijos a madurez.",
           "items": [],
           "avoid": "",
@@ -71446,7 +71814,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Long days can trigger premature stem elongation",
+          "short": "Los días largos pueden provocar espigado prematuro",
           "guidance": "UC Davis describe la celtuce como sensible al fotoperiodo: los días largos pueden inducir la floración prematura y el alargamiento del tallo. Es una respuesta del desarrollo, no un objetivo para producir el tallo comestible.",
           "items": [],
           "avoid": "",
@@ -71468,7 +71836,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Premature bolting can make the crop bitter before harvest",
+          "short": "El espigado prematuro puede volver amargo el cultivo antes de la cosecha",
           "guidance": "UC Davis informa que los días largos pueden hacer que la celtuce florezca y se vuelva amarga antes de cosechar el tallo, acortando la temporada útil. UC Cooperative Extension describe el sol intenso como presión local en la Sierra Central; esa nota regional no equivale a un calendario universal ni a una respuesta a la luz interior.",
           "items": [],
           "avoid": "",
@@ -71503,7 +71871,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species; fiber flax and linseed are production types",
+          "short": "Especie aceptada; lino textil y lino para semilla son tipos de producción",
           "guidance": "POWO acepta Linum usitatissimum. NDSU y Wisconsin Extension distinguen el lino para fibra del lino para semilla/aceite dentro de la misma especie; esta ficha no identifica una variedad ni el uso previsto del lote.",
           "items": [],
           "avoid": "",
@@ -71525,7 +71893,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Annual, upright crop; height and branching vary with production type",
+          "short": "Cultivo anual y erguido; la altura y ramificación varían según el tipo de producción",
           "guidance": "NDSU describe una planta anual de tallo principal que suele medir 60–90 cm en su contexto de campo de Dakota del Norte. Las variedades de fibra suelen ser más altas y menos ramificadas; las de semilla, más cortas y ramificadas. Wisconsin Extension también informa cerca de 90 cm, pero destaca diferencias por tipo y densidad. Estas cifras de campo no fijan dimensiones de jardín o maceta para un lote sin identificar.",
           "items": [],
           "avoid": "",
@@ -71547,7 +71915,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and well-drained soil; select guidance for the intended flax type",
+          "short": "Pleno sol y suelo bien drenado; elige la guía adecuada para el tipo de lino",
           "guidance": "NC State Extension describe el lino común como una planta de pleno sol que prefiere suelo húmedo y bien drenado; también tolera sequía, lo cual no significa que convenga mantenerla seca. Las fechas de inicio de primavera, densidades y tasas de siembra de Wisconsin corresponden a producción de campo regional y difieren mucho entre lino de fibra y de semilla. No se trasladan esas tasas a macetas ni se infiere aptitud hidropónica.",
           "items": [],
           "avoid": "",
@@ -71569,7 +71937,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Annual crop propagated by seed; this is not a seed-starting protocol",
+          "short": "Cultivo anual propagado por semilla; esto no es un protocolo de siembra inicial",
           "guidance": "NC State Extension indica propagación por semilla para el lino común y las fuentes agrícolas describen su establecimiento desde semilla. Esto confirma la modalidad, no un protocolo de germinación: profundidad, temperatura y cuidado de plántulas requieren un perfil de semilla sustentado o una guía local y no se especifican aquí.",
           "items": [],
           "avoid": "",
@@ -71592,7 +71960,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fiber and seed crops are harvested at different stages",
+          "short": "Los cultivos para fibra y para semilla se cosechan en etapas distintas",
           "guidance": "Wisconsin Extension informa que el lino para fibra suele cosecharse antes de madurar la semilla, alrededor de 90–100 días después de sembrar; el lino para semilla puede tardar 90–120 días según variedad y condiciones. La guía de campo de NDSU para Dakota del Norte usa como señal de cosecha de semilla que cerca del 90% de las cápsulas se tornen marrones, aunque los tallos sigan verdes. Son referencias regionales de producción, no un calendario universal de huerto. El lino para fibra se arranca tradicionalmente y requiere enriado y más procesamiento; la linaza también se consume entera o molida, y su aceite se usa en aderezos/salsas, no para cocinar a alta temperatura. NC State advierte sobre ingestión de grandes cantidades e irritación por contacto; aquí no se infieren cantidades de consumo, duración de almacenamiento doméstico ni reglas de procesamiento seguro.",
           "items": [],
           "avoid": "",
@@ -71615,7 +71983,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Pale-blue flowers appear over a crop flowering period",
+          "short": "Las flores azul pálido aparecen durante el periodo de floración del cultivo",
           "guidance": "NC State describe flores azul pálido en tallos delgados desde fines de primavera hasta mediados del verano en su contexto regional. Wisconsin señala que cada flor dura un día; NDSU describe una fase de floración cercana a 25 días en producción de campo, que puede prolongarse con humedad favorable. El momento varía por región y tipo de cultivo; no es una fecha fija.",
           "items": [],
           "avoid": "",
@@ -71638,7 +72006,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Scout for occasional cutworms and grasshoppers; no resistance is claimed",
+          "short": "Vigila orugas cortadoras y saltamontes ocasionales; no se afirma resistencia",
           "guidance": "NC State menciona gusanos cortadores y saltamontes como plagas ocasionales. Wisconsin Extension identifica competencia temprana de malezas y manejo de hongos como asuntos de producción de campo, incluida la rotación para ayudar a controlar la roya Fusarium y otros hongos. NC State también advierte sobre ingestión de grandes cantidades e irritación por contacto; como las fuentes del cultivo describen usos alimentarios pero no aportan aquí un umbral de seguridad, esta ficha no indica dosis ni procesamiento para consumo. No se afirma resistencia de un cultivar. NDSU enumera varios riesgos de insectos y enfermedades de campo, pero su tabla de resistencias por variedad no se aplica a esta identidad sin cultivar especificado.",
           "items": [],
           "avoid": "",
@@ -72746,7 +73114,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species Rumex scutatus",
+          "short": "Especie aceptada: Rumex scutatus",
           "guidance": "POWO acepta Rumex scutatus. No es Oxalis ni se confunde aquí con otras especies de Rumex que también reciben el nombre sorrel.",
           "items": [],
           "avoid": "",
@@ -72791,7 +73159,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Outdoor herb for sunny sites and suitable soil moisture",
+          "short": "Hierba de exterior para sitios soleados y humedad adecuada del suelo",
           "guidance": "Illinois Extension recomienda pleno sol y suelo rico y húmedo. NC State describe suelo promedio, de humedad media y bien drenado, y en sus rasgos estructurados da un rango regional de pleno sol a sombra parcial. Son referencias exteriores; ninguna establece compatibilidad hidropónica ni requisitos de luz interior.",
           "items": [],
           "avoid": "",
@@ -72813,7 +73181,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and division are documented; no seed-starting protocol is asserted here",
+          "short": "Se documentan semilla y división; aquí no se afirma un protocolo de germinación",
           "guidance": "Illinois Extension describe la siembra en el jardín durante la primavera y la división cada 3–4 años; NC State enumera la propagación por semilla. Esta ficha de planta establecida registra únicamente las vías de propagación. Los detalles de siembra pertenecen a un Perfil de Semilla separado cuando esté respaldado.",
           "items": [],
           "avoid": "",
@@ -72835,7 +73203,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tart leaves are used fresh or in cooked dishes",
+          "short": "Las hojas ácidas se usan frescas o en platos cocinados",
           "guidance": "Illinois Extension enumera ensaladas mixtas, salsas, sopas, platillos con queso, cerdo y pescado; indica que la acedera se aprovecha mejor fresca, aunque las hojas se congelan bien. La acidez puede decolorar algunos utensilios metálicos. Las hojas contienen ácido oxálico, una precaución que la fuente señala para personas con ciertas condiciones de salud; no es consejo médico personalizado.",
           "items": [],
           "avoid": "",
@@ -72857,7 +73225,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Regional sources report no known pests, but this is not a guarantee",
+          "short": "Fuentes regionales no reportan plagas conocidas; no es una garantía",
           "guidance": "NC State no reporta plagas de insectos ni enfermedades conocidas en su ficha regional. Tómalo como un reporte limitado, no como garantía de que no ocurran problemas. Illinois Extension también señala el ácido oxálico como precaución dietética para algunas condiciones de salud, sin ofrecer consejo individual.",
           "items": [],
           "avoid": "",
@@ -72935,7 +73303,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cynara cardunculus; cardoon type, no named cultivar",
+          "short": "Cynara cardunculus; tipo cardo, sin cultivar nombrado",
           "guidance": "POWO acepta Cynara cardunculus. La guía de NC State distingue el cardoon de la alcachofa de globo por su forma hortícola y parte cosechada, aunque comparten el complejo de especie.",
           "items": [],
           "avoid": "",
@@ -72956,7 +73324,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Large, upright herbaceous perennial, sometimes grown as an annual",
+          "short": "Perenne herbácea grande y erguida, que a veces se cultiva como anual",
           "guidance": "NC State informa una altura regional de unos 3–6 pies (0.9–1.8 m) y una extensión de 2–3 pies (0.6–0.9 m), además de follaje profundamente dividido y espinoso. Son dimensiones exteriores regionales, no medidas de maceta.",
           "items": [],
           "avoid": "",
@@ -72977,7 +73345,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun, moist well-drained soil; allow substantial space",
+          "short": "Pleno sol y suelo húmedo pero bien drenado; deja espacio suficiente",
           "guidance": "NC State recomienda pleno sol y suelo rico, húmedo pero bien drenado. La página también advierte sobre las espinas, el daño por viento y la posible naturalización; la conveniencia de cultivarlo depende del clima y de su condición local.",
           "items": [],
           "avoid": "",
@@ -73019,7 +73387,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and vegetative routes are documented",
+          "short": "Se documentan vías de propagación por semilla y vegetativas",
           "guidance": "La fuente describe vías de propagación de cardoon, pero esta identidad no tiene instrucciones de germinación de semilla suficientemente detalladas para una guía completa.",
           "items": [],
           "avoid": "",
@@ -73040,7 +73408,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Blanch and cook the young leaf stalks",
+          "short": "Blanquea y cocina los pecíolos jóvenes",
           "guidance": "Se cosechan principalmente los tallos foliares/pecíolos, a menudo blanqueados. No se presenta como alcachofa cosechada por sus capítulos florales.",
           "items": [],
           "avoid": "",
@@ -73061,7 +73429,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spines, wind damage and regional spread are relevant",
+          "short": "Las espinas, el daño por viento y la expansión regional son aspectos relevantes",
           "guidance": "NC State informa tallos espinosos, posible daño por viento, pudrición de raíz, moho gris, oídio, babosas, caracoles y pulgones; también advierte que el cardoon puede extenderse en algunas regiones. Comprueba la condición invasora local: la ficha no generaliza la advertencia de Carolina del Norte a todos los lugares.",
           "items": [],
           "avoid": "",
@@ -73280,7 +73648,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Accepted species Opuntia ficus-indica",
+          "short": "Especie aceptada: Opuntia ficus-indica",
           "guidance": "POWO acepta Opuntia ficus-indica. El nombre prickly pear se aplica a muchas especies, por lo que esta ficha se limita al nopal comestible identificado.",
           "items": [],
           "avoid": "",
@@ -73302,7 +73670,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Succulent shrub/tree with flattened cladodes",
+          "short": "Arbusto o árbol suculento con cladodios aplanados",
           "guidance": "Kew describe la especie como un cactus suculento de porte arbustivo o arbóreo. La forma adulta varía por clima y selección.",
           "items": [],
           "avoid": "",
@@ -73323,7 +73691,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm, arid-adapted crop; use a well-drained site",
+          "short": "Cultivo adaptado al calor y la aridez; necesita un sitio bien drenado",
           "guidance": "La referencia de Arizona describe cultivo en condiciones áridas y establecimiento de pencas. No se generaliza esa recomendación a climas húmedos ni a hidroponía.",
           "items": [],
           "avoid": "",
@@ -73344,7 +73712,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Rooted pads are the documented practical route",
+          "short": "Las pencas enraizadas son la vía práctica documentada",
           "guidance": "La Universidad de Arizona documenta iniciar plantas desde pencas: se deja cicatrizar el corte y luego se establece en suelo seco. Es propagación vegetativa; no se inventa protocolo de semilla.",
           "items": [],
           "avoid": "",
@@ -73386,7 +73754,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spines and glochids are a handling hazard; container spread needs control",
+          "short": "Las espinas y los gloquidios son un riesgo al manipular; controla la expansión en recipiente",
           "guidance": "Las espinas y gloquidios presentan riesgo durante manejo y preparación. La fuente no establece un diagnóstico de plagas o enfermedades específico para esta ficha.",
           "items": [],
           "avoid": "",
@@ -73419,7 +73787,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Tulbaghia violacea",
+          "short": "Especie: Tulbaghia violacea",
           "guidance": "NC State identifica el ajo social como Tulbaghia violacea, de la familia Amaryllidaceae, y advierte que puede confundirse con Allium tuberosum. Esta ficha es de especie, no un cultivar de Allium.",
           "items": [],
           "avoid": "",
@@ -73440,7 +73808,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping bulbous perennial",
+          "short": "Perenne bulbosa que crece en mata",
           "guidance": "La ficha de Extensión describe una planta arqueada y en grupos, de unos 30–60 cm de alto y ancho en jardines de su región; no son dimensiones para sistemas interiores.",
           "items": [],
           "avoid": "",
@@ -73461,7 +73829,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun to partial shade; protect from prolonged cold",
+          "short": "Pleno sol a sombra parcial; protégela del frío prolongado",
           "guidance": "NC State informa tolerancia al calor y la sequía, con mejor crecimiento si recibe humedad durante la estación de crecimiento. En regiones frías puede cultivarse como anual o protegerse en maceta. No se establece compatibilidad hidropónica.",
           "items": [],
           "avoid": "",
@@ -73482,7 +73850,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vegetative propagation is the documented practical route",
+          "short": "La propagación vegetativa es la vía práctica documentada",
           "guidance": "La página de especie enumera esquejes de raíz; el perfil del género de NC State también describe división. No se infiere propagación por semilla a partir de que tenga bulbo.",
           "items": [],
           "avoid": "",
@@ -73524,7 +73892,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flowers and leaves have a mild garlic flavor",
+          "short": "Las flores y las hojas tienen un suave sabor a ajo",
           "guidance": "NC State indica que hojas y flores son comestibles y describe un sabor suave a cebolla o pimienta en las flores. Esto no hace intercambiables las especies parecidas de Allium.",
           "items": [],
           "avoid": "",
@@ -73578,7 +73946,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Ipomoea alba",
+          "short": "Especie: Ipomoea alba",
           "guidance": "NC State distingue Ipomoea alba como moonflower y menciona Datura stramonium como otra planta con ese nombre común; esta entrada corresponde únicamente a Ipomoea alba.",
           "items": [],
           "avoid": "",
@@ -73599,7 +73967,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Twining vine with nocturnal flowers",
+          "short": "Enredadera voluble con flores nocturnas",
           "guidance": "La ficha describe una trepadora de crecimiento rápido que puede alcanzar unos 4.5 m en condiciones regionales; el tamaño depende del clima y del soporte.",
           "items": [],
           "avoid": "",
@@ -73620,7 +73988,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and a sturdy vertical support",
+          "short": "Sol pleno y un soporte vertical resistente",
           "guidance": "NC State recomienda suelo bien drenado, sol pleno y una cerca, pérgola o espaldera resistente. La fuente describe crecimiento cálido-estacional; no establece aptitud para maceta pequeña ni hidroponía.",
           "items": [],
           "avoid": "",
@@ -73641,7 +74009,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fórmala sobre un soporte resistente; introduce la maceta para invernarla",
+          "short": "Guíala sobre un soporte firme; lleva la maceta al interior para invernarla",
           "guidance": "NC State describe una enredadera vertical que requiere cerca, pérgola o espaldera. Para conservarla durante el invierno, recomienda cultivarla en un recipiente grande y llevarlo al interior; no prescribe una poda rutinaria.",
           "items": [],
           "avoid": "",
@@ -73938,7 +74306,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Scabiosa atropurpurea",
+          "short": "Especie: Scabiosa atropurpurea",
           "guidance": "NC State identifica la escabiosa morada como Scabiosa atropurpurea, anual ornamental. ‘Pincushion flower’ también se usa para otros taxones, como Lomelosia caucasica.",
           "items": [],
           "avoid": "",
@@ -73980,7 +74348,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno, suelo alcalino rico y drenaje eficaz",
+          "short": "Sol pleno, suelo alcalino rico y buen drenaje",
           "guidance": "NC State recomienda sol pleno y suelo alcalino, rico en materia orgánica y con buen drenaje; la planta no tolera raíces encharcadas. Son condiciones de jardín exterior y no demuestran aptitud hidropónica.",
           "items": [],
           "avoid": "",
@@ -74001,7 +74369,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed propagation is listed",
+          "short": "Se menciona la propagación por semilla",
           "guidance": "NC State enumera la semilla como estrategia de propagación, pero esta ficha no asigna profundidad, temperatura ni fecha de trasplante que la fuente no documenta.",
           "items": [],
           "avoid": "",
@@ -74022,7 +74390,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Ornamental pincushion-like flowers",
+          "short": "Flores ornamentales con forma de acerico",
           "guidance": "La fuente describe flores ornamentales con forma de acerico; no establece uso culinario para esta especie.",
           "items": [],
           "avoid": "",
@@ -74107,7 +74475,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Para venta como flor cortada, cortar medio abierta (guía de Scabiosa spp.)",
+          "short": "Para venta directa como flor cortada, corta cuando esté medio abierta (guía de Scabiosa spp.)",
           "guidance": "NC State incluye la escabiosa morada entre las flores adecuadas para corte y secado. La tabla de floricultura de Oklahoma State Extension indica la etapa medio abierta para Scabiosa spp. destinada a venta directa. Es una pauta productiva a nivel de género, no una afirmación específica de cultivar ni una garantía de duración en jarrón doméstico; las fuentes no establecen un tratamiento poscosecha para esta identidad sin cultivar.",
           "items": [],
           "avoid": "",
@@ -74128,7 +74496,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Evita el encharcamiento; vigila pulgones/ácaros ocasionales y la autosiembra local",
+          "short": "Evita el encharcamiento; vigila pulgones, ácaros ocasionales y autosiembra local",
           "guidance": "NC State identifica el mal drenaje como riesgo de pudrición de raíz y menciona pulgones y ácaros como problemas menores. También informa autosiembra y condición de maleza invasora en algunos países. Consulta la guía local antes de permitir que forme semillas; no se afirma que la especie sea invasora en todas partes.",
           "items": [],
           "avoid": "",
@@ -74321,7 +74689,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Lomelosia caucasica; synonym Scabiosa caucasica",
+          "short": "Especie: Lomelosia caucasica; Scabiosa caucasica es un sinónimo",
           "guidance": "NC State usa Lomelosia caucasica y señala explícitamente Scabiosa caucasica como nombre anterior. Es distinta de la escabiosa anual Scabiosa atropurpurea.",
           "items": [],
           "avoid": "",
@@ -74342,7 +74710,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping perennial, about 2 ft tall and wide",
+          "short": "Perenne en mata, de unos 60 cm de alto y ancho",
           "guidance": "NC State describe una perenne en grupos o en forma de alfombra, con dimensiones regionales cercanas a 60 cm.",
           "items": [],
           "avoid": "",
@@ -74363,7 +74731,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and light, well-drained soil",
+          "short": "Sol pleno y suelo ligero con buen drenaje",
           "guidance": "La fuente favorece suelo arenoso o franco, ligero y bien drenado, de neutro a ligeramente alcalino, y sol pleno. No establece hidroponía ni parámetros interiores.",
           "items": [],
           "avoid": "",
@@ -74384,7 +74752,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Se documentan siembra en primavera/verano y división primaveral",
+          "short": "Se documentan la siembra en primavera/verano y la división primaveral",
           "guidance": "NC State enumera siembra en primavera o verano y división en primavera. La página no especifica temperatura de germinación, profundidad, tratamiento previo ni tiempo de emergencia; esos detalles de semilla quedan sin establecer.",
           "items": [],
           "avoid": "",
@@ -74480,7 +74848,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Ruta graveolens",
+          "short": "Especie: Ruta graveolens",
           "guidance": "NC State identifica la ruda común como Ruta graveolens, de Rutaceae, y la describe principalmente como subarbusto ornamental.",
           "items": [],
           "avoid": "",
@@ -74501,7 +74869,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Woody perennial subshrub with blue-green foliage",
+          "short": "Subarbusto perenne leñoso con follaje verde azulado",
           "guidance": "NC State describe un subarbusto perenne leñoso de 60–90 cm de alto y ancho, con follaje aromático verde azulado y semejante a helecho. En el contexto de jardín de la fuente vive alrededor de cinco años, puede resembrarse para reemplazarse y conserva el follaje en inviernos más cálidos.",
           "items": [],
           "avoid": "",
@@ -74522,7 +74890,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sun to partial shade; avoid wet soil",
+          "short": "Sol a sombra parcial; evita el suelo encharcado",
           "guidance": "NC State recomienda sol pleno a sombra parcial y suelo moderadamente fértil, húmedo pero bien drenado. Tolera sequía y suelos secos o rocosos, pero el suelo encharcado puede causar pudrición de raíz. La guía regional sugiere acolchado invernal en zonas del norte.",
           "items": [],
           "avoid": "",
@@ -74543,7 +74911,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed, stem cutting and division are listed",
+          "short": "Se enumeran semillas, esquejes de tallo y división",
           "guidance": "La fuente enumera semilla, esquejes de tallo y división; no especifica aquí parámetros de germinación.",
           "items": [],
           "avoid": "",
@@ -74564,7 +74932,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Wear gloves and avoid unsafe ingestion",
+          "short": "Usa guantes y evita la ingestión insegura",
           "guidance": "NC State no reporta problemas graves de insectos o enfermedades, pero señala que puede aparecer pudrición de raíz en suelos con mal drenaje. El follaje puede irritar la piel y la ingestión de grandes cantidades causar intoxicación grave. Usa guantes al manipularla y no infieras una dosis culinaria segura a partir de usos históricos o tradicionales.",
           "items": [],
           "avoid": "",
@@ -74639,7 +75007,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Angelica archangelica",
+          "short": "Especie: Angelica archangelica",
           "guidance": "NC State identifica la angélica de jardín como Angelica archangelica, de Apiaceae, y advierte sobre plantas tóxicas de aspecto parecido; verificar la identidad antes de usarla.",
           "items": [],
           "avoid": "",
@@ -74660,7 +75028,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Biennial or short-lived perennial; flowering usually follows first-year foliage",
+          "short": "Bienal o perenne de vida corta; la floración suele seguir al primer año de follaje",
           "guidance": "NC State describe una hierba robusta bienal o perenne de vida corta: forma follaje el primer año y suele florecer y producir semilla el segundo. Su tabla indica 0,9–1,8 m de alto y 0,6–1,2 m de ancho, mientras la prosa dice que los tallos florales pueden alcanzar 2,1 m; son dimensiones de jardín, no predicciones para maceta.",
           "items": [],
           "avoid": "",
@@ -74682,7 +75050,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cool climate, moist well-drained soil and room for a deep taproot",
+          "short": "Clima fresco, suelo húmedo y bien drenado, y espacio para una raíz principal profunda",
           "guidance": "NC State recomienda suelo constantemente húmedo y condiciones moderadamente frescas, con sombra parcial o pleno sol en climas norteños. RHS recomienda suelo húmedo pero bien drenado, separación exterior de 60–90 cm, y señala que Angelica no es adecuada para recipientes por su raíz principal profunda; también indica que la planta tolera mal la alteración de raíces. Estas son recomendaciones de jardín, no dimensiones para interior o hidroponía.",
           "items": [],
           "avoid": "",
@@ -74703,7 +75071,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and second-year root cuttings are listed",
+          "short": "Se enumeran semillas y esquejes de raíz del segundo año",
           "guidance": "La fuente enumera semillas y esquejes de raíz en el segundo año; no proporciona tiempo fiable de germinación ni protocolo interior.",
           "items": [],
           "avoid": "",
@@ -74725,7 +75093,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tender leaves and stalks; ripe seed; root timing not established",
+          "short": "Hojas y tallos tiernos; semilla madura; época de cosecha de raíz no establecida",
           "guidance": "UNH Extension indica que las hojas y los tallos se aprovechan mejor cuando son jóvenes y tiernos; las semillas se recogen maduras a fines del verano o principios del otoño. NC State también enumera las raíces como parte culinaria, pero no indica cuándo ni cómo cosecharlas. La identificación correcta es esencial, y la savia puede causar fotosensibilidad o dermatitis.",
           "items": [],
           "avoid": "",
@@ -74746,7 +75114,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sap may cause photosensitivity/contact dermatitis; verify identity",
+          "short": "La savia puede causar fotosensibilidad o dermatitis; verifica la identidad",
           "guidance": "NC State advierte fotosensibilidad y dermatitis por contacto, además de parecido con Apiaceae venenosas. Evita el contacto de savia con piel expuesta y verifica la identidad antes de consumir cualquier parte.",
           "items": [],
           "avoid": "",
@@ -74767,7 +75135,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Umbelas grandes en verano, normalmente en el segundo año",
+          "short": "Grandes umbelas estivales aparecen en el año de floración",
           "guidance": "NC State describe umbelas terminales grandes, con flores pequeñas amarillentas o blancas y a veces rosadas, en verano; después se forman semillas aromáticas. En la forma bienal, florecer en el segundo año es desarrollo normal.",
           "items": [],
           "avoid": "",
@@ -74791,7 +75159,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hojas/tallos tiernos y semilla madura; la cosecha de raíz varía según fuente y producción",
+          "short": "Hojas y tallos tiernos, y semilla madura; el momento de cosechar raíz varía según la fuente y el sistema productivo",
           "guidance": "UNH Extension indica que las hojas y los tallos se aprovechan jóvenes y tiernos, y que las semillas se recogen maduras a fines del verano o principios del otoño. NC State enumera las raíces como parte culinaria, pero no ofrece un método de cosecha. Para producción comercial en Ontario, OMAFRA describe una cosecha única de raíz al comienzo del otoño después del segundo año y especifica una cosechadora de papa modificada; es orientación regional de cultivo, no un método doméstico. University of Missouri Extension da fechas incompatibles para la raíz dentro de una misma publicación: la sección general recomienda fines de otoño o comienzos de primavera, mientras que la entrada de angélica dice fines del verano del segundo año. Se conservan separados esos contextos; no se establece una fecha ni técnica doméstica universal.",
           "items": [],
           "avoid": "",
@@ -74812,7 +75180,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Corta la planta después de florecer; retirar flores antes de que formen semilla puede prolongar su vida",
+          "short": "Córtala tras la floración; quitar las flores antes de que produzcan semilla puede prolongar la vida",
           "guidance": "RHS recomienda cortar la angélica hasta la base después de florecer. Aunque Angelica archangelica suele ser monocárpica, RHS indica que puede vivir otro año si se retiran las flores poco después de abrir o antes de que formen semillas; no se garantiza que esto prolongue la vida de todas las plantas.",
           "items": [],
           "avoid": "",
@@ -75072,7 +75440,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Perenne baja que forma alfombra y se extiende por estolones",
+          "short": "Perenne baja que forma una alfombra y se extiende por estolones",
           "guidance": "La fuente regional describe una alfombra de unos 15 cm de altura con tallos florales por encima; el crecimiento se extiende mediante estolones subterráneos.",
           "items": [],
           "avoid": "",
@@ -75093,7 +75461,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Sol pleno; suelo drenante, de seco a moderadamente húmedo",
+          "short": "Sol pleno y suelo bien drenado, de seco a moderadamente húmedo",
           "guidance": "NC State recomienda sol pleno y suelo seco a moderadamente húmedo, bien drenado. El desempeño disminuye con calor y humedad intensos; la poda se recomienda en primavera, no en otoño.",
           "items": [],
           "avoid": "",
@@ -75114,7 +75482,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Puede resembrarse, dividirse o propagarse por esqueje",
+          "short": "Se documentan semillas/autosiembra, división y esquejes",
           "guidance": "La planta puede resembrarse si quedan flores marchitas, y también propagarse por división o esquejes a comienzos del verano. No se proporciona protocolo de germinación.",
           "items": [],
           "avoid": "",
@@ -75210,7 +75578,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Stachys byzantina",
+          "short": "Especie: Stachys byzantina",
           "guidance": "NC State identifica Oreja de cordero como Stachys byzantina y enumera Stachys lanata y S. olympica como nombres anteriores.",
           "items": [],
           "avoid": "",
@@ -75231,7 +75599,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Low-spreading perennial foliage clump",
+          "short": "Mata perenne de follaje bajo y extendido",
           "guidance": "La fuente describe grupos densos de hojas gruesas, lanosas y plateadas; tamaño y dimensiones foliares varían entre cultivares, ninguno de los cuales se especifica aquí.",
           "items": [],
           "avoid": "",
@@ -75252,7 +75620,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun to partial shade; keep foliage dry and roots drained",
+          "short": "Sol pleno a sombra parcial; mantén seco el follaje y drenadas las raíces",
           "guidance": "La referencia recomienda suelo seco a medianamente húmedo y muy bien drenado; las hojas húmedas y veranos de alta humedad favorecen enfermedad. En jardines describe división cada 2–4 años.",
           "items": [],
           "avoid": "",
@@ -75273,7 +75641,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Division is documented; seed details are not provided",
+          "short": "Se documenta la división; no se proporcionan detalles de semilla",
           "guidance": "NC State identifica división como método práctico. También enumera semilla, pero aquí no ofrece protocolo; no se afirma que la especie no pueda crecer desde semilla.",
           "items": [],
           "avoid": "",
@@ -75294,7 +75662,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Excess moisture can cause leaf rot",
+          "short": "El exceso de humedad puede causar pudrición foliar",
           "guidance": "NC State señala susceptibilidad a pudrición foliar con humedad alta o lluvia excesiva; drenaje y evitar hojas constantemente mojadas son claves de la guía.",
           "items": [],
           "avoid": "",
@@ -75369,7 +75737,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Echinops ritro",
+          "short": "Especie: Echinops ritro",
           "guidance": "NC State identifica Blue Hedgehog/Globe Thistle como Echinops ritro, de Asteraceae.",
           "items": [],
           "avoid": "",
@@ -75390,7 +75758,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping perennial with spiny foliage and globe-shaped flowers",
+          "short": "Perenne en mata, con follaje espinoso y flores globulares",
           "guidance": "La ficha de Extensión informa unos 90–120 cm de alto y 60–75 cm de ancho en condiciones de jardín, con follaje rígido espinoso y cabezuelas azules.",
           "items": [],
           "avoid": "",
@@ -75411,7 +75779,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and well-drained soil; rich shade can cause flopping",
+          "short": "Sol pleno y suelo bien drenado; la sombra fértil puede debilitar los tallos",
           "guidance": "NC State recomienda sol pleno y suelo bien drenado, de humedad media a seca; sombra parcial o suelo demasiado rico puede producir tallos débiles. Puede requerirse soporte.",
           "items": [],
           "avoid": "",
@@ -75432,7 +75800,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Root cuttings/division are listed; seed protocol not supplied",
+          "short": "Se enumeran esquejes de raíz o división; no se proporciona protocolo de semilla",
           "guidance": "La fuente enumera división y esqueje de raíz, pero señala dificultad asociada a la raíz pivotante. No ofrece aquí un protocolo de semilla.",
           "items": [],
           "avoid": "",
@@ -75453,7 +75821,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Ornamental flowerheads attract butterflies",
+          "short": "Las cabezuelas ornamentales atraen mariposas",
           "guidance": "NC State describe cabezuelas ornamentales que atraen mariposas; la fuente no establece uso comestible.",
           "items": [],
           "avoid": "",
@@ -75495,7 +75863,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retira flores marchitas para rebrotar o limitar la resiembra",
+          "short": "Retira flores marchitas para favorecer otra floración o limitar la resiembra",
           "guidance": "NC State señala que retirar flores marchitas puede favorecer otra floración y recomienda cortarlas antes de que produzcan semilla si no se quieren plántulas. Para arreglos secos, aconseja cortar las cabezuelas jóvenes; es un uso ornamental, no alimentario.",
           "items": [],
           "avoid": "",
@@ -75729,7 +76097,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Asclepias tuberosa",
+          "short": "Especie: Asclepias tuberosa",
           "guidance": "NC State identifica Butterfly Weed como Asclepias tuberosa, una especie de raíz tuberosa de Apocynaceae, distinta de otras milkweeds.",
           "items": [],
           "avoid": "",
@@ -75750,7 +76118,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Upright perennial in clumps, about 1–3 ft tall",
+          "short": "Perenne erecta en matas, de unos 30–90 cm de alto",
           "guidance": "La ficha regional describe grupos erectos de unos 30–90 cm y raíz pivotante profunda; las plantas iniciadas desde semilla pueden tardar de dos a tres años en florecer.",
           "items": [],
           "avoid": "",
@@ -75771,7 +76139,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and well-drained, often dry-to-medium soil",
+          "short": "Sol pleno y suelo bien drenado, a menudo seco o de humedad media",
           "guidance": "NC State describe buen desempeño con sol pleno y suelo bien drenado, incluso seco y pobre. Advierte que trasplantar plantas establecidas es difícil por la raíz profunda.",
           "items": [],
           "avoid": "",
@@ -75792,7 +76160,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed grows readily; avoid disturbing established taproots",
+          "short": "Crece fácilmente desde semilla; evita alterar la raíz principal establecida",
           "guidance": "La fuente indica que crece fácilmente desde semilla y puede resembrarse; las plantas establecidas no se trasplantan bien. No da un tratamiento previo o tiempo de germinación.",
           "items": [],
           "avoid": "",
@@ -75813,7 +76181,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila pulgones y pudrición de corona; sus orugas hospedadas son normales",
+          "short": "Vigila pulgones y pudrición de corona; las orugas hospedadas son normales",
           "guidance": "NC State informa pulgones, pudrición de corona en suelos húmedos y mal drenados, roya y manchas foliares. Las larvas de monarca y de la polilla tussock de milkweed usan esta especie como hospedera; su presencia no demuestra por sí sola un problema de salud vegetal. La savia clara puede irritar la piel.",
           "items": [],
           "avoid": "",
@@ -75834,7 +76202,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Racimos amarillo-anaranjados; puede prolongarse la floración",
+          "short": "Racimos amarillo-anaranjados; retirar flores marchitas puede prolongar la floración",
           "guidance": "NC State describe racimos vistosos amarillo-anaranjados y sitúa la floración entre mayo y agosto en su calendario regional. Indica que retirar flores marchitas puede favorecer más floraciones; la época local puede variar.",
           "items": [],
           "avoid": "",
@@ -75855,7 +76223,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retira los folículos antes de que se abran si no quieres resiembra",
+          "short": "Retira los folículos antes de que se abran si quieres limitar la resiembra",
           "guidance": "Después de florecer, retira los folículos antes de que se abran si quieres limitar nuevas plántulas; déjalos madurar si buscas resiembra. NC State también indica que retirar flores marchitas puede favorecer más floración. Evita alterar la raíz pivotante ya establecida.",
           "items": [],
           "avoid": "",
@@ -75909,7 +76277,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Monarda fistulosa",
+          "short": "Especie: Monarda fistulosa",
           "guidance": "NC State identifica Wild Bergamot como Monarda fistulosa y la diferencia de Monarda didyma y sus numerosos cultivares, a menudo llamados bee balm.",
           "items": [],
           "avoid": "",
@@ -75930,7 +76298,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping perennial, commonly 2–4 ft in regional gardens",
+          "short": "Perenne en mata, normalmente de 60–120 cm en jardines de la región",
           "guidance": "La ficha de Extensión describe una perenne en grupos, con flores durante el verano; las variedades regionales difieren en color y pubescencia de las hojas.",
           "items": [],
           "avoid": "",
@@ -75951,7 +76319,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and moderately moist soil; maintain airflow",
+          "short": "Sol pleno y suelo moderadamente húmedo; mantén la circulación de aire",
           "guidance": "NC State describe sol pleno y suelo moderadamente húmedo. Aunque tolera sequía ocasional, las plantas estresadas por falta de agua son más susceptibles al oídio; recomienda conservar tallos muertos para abejas que anidan en tallos.",
           "items": [],
           "avoid": "",
@@ -75972,7 +76340,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed is listed; protocol is not detailed here",
+          "short": "Se menciona la semilla; aquí no se detallan instrucciones",
           "guidance": "La fuente enumera semillas, pero no especifica profundidad, temperatura o duración de germinación. No se copia el protocolo de otras especies de Monarda.",
           "items": [],
           "avoid": "",
@@ -75993,7 +76361,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Aromatic leaves are used in teas",
+          "short": "Las hojas aromáticas se usan en infusiones",
           "guidance": "La fuente describe hojas aromáticas usadas para té y flores visitadas por polinizadores. La guía se mantiene al nivel de especie y contexto regional.",
           "items": [],
           "avoid": "",
@@ -76014,7 +76382,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Powdery mildew and rust can occur",
+          "short": "Puede presentarse oídio y roya",
           "guidance": "NC State lista oídio, especialmente en plantaciones densas o con estrés hídrico, y óxido. Informa resistencia relativa al oídio, no inmunidad.",
           "items": [],
           "avoid": "",
@@ -76035,7 +76403,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El color floral varía entre variedades regionales",
+          "short": "El color de las flores estivales varía entre variedades regionales",
           "guidance": "NC State describe tres variedades de Monarda fistulosa en Carolina del Norte que difieren en color floral y pubescencia foliar. Esta ficha continúa como especie sin variedad asignada, por lo que no atribuye un color único.",
           "items": [],
           "avoid": "",
@@ -76275,7 +76643,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Achillea millefolium",
+          "short": "Especie: Achillea millefolium",
           "guidance": "NC State identifica la milenrama común como Achillea millefolium y señala que el color de las flores varía en variedades de jardín; esta ficha es de especie, no de cultivar.",
           "items": [],
           "avoid": "",
@@ -76296,7 +76664,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Spreading perennial with fern-like foliage",
+          "short": "Perenne extendida con follaje parecido al de un helecho",
           "guidance": "La ficha regional informa aproximadamente 30–90 cm de porte y describe propagación por rizomas y semillas; los cultivares pueden variar.",
           "items": [],
           "avoid": "",
@@ -76338,7 +76706,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed, division and rhizomes are documented",
+          "short": "Se documentan semilla, división y rizomas",
           "guidance": "La fuente documenta propagación por semilla y rizomas y división fácil. No especifica aquí condiciones de inicio de semillas.",
           "items": [],
           "avoid": "",
@@ -76360,7 +76728,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Corta antes de caída excesiva de polen",
+          "short": "Para tallos frescos, corta antes de que caiga demasiado polen",
           "guidance": "Para flor de corte fresca, Mississippi State recomienda cosechar cuando la mayoría de las flores del racimo estén abiertas, antes de que se desprenda demasiado polen; corta durante las horas frescas de la mañana e hidrata pronto. Para secar, cosecha las cabezuelas con todo su color antes de que se tornen pardas. Es guía para floricultura de producción, no una garantía de conservación doméstica. NC State describe su uso en flor de corte y seca y su valor para polinizadores; aconseja guantes porque puede causar dermatitis por contacto.",
           "items": [],
           "avoid": "",
@@ -76381,7 +76749,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Se extiende agresivamente; suelo mojado y contacto son cautelas",
+          "short": "Se extiende con fuerza; el suelo mojado y el contacto requieren precaución",
           "guidance": "NC State advierte que la especie puede extenderse agresivamente por rizomas y semillas, e informa pudrición de raíz en suelos demasiado húmedos; la pudrición de tallo y el oídio se describen como raros. También recomienda guantes porque el contacto puede causar dermatitis.",
           "items": [],
           "avoid": "",
@@ -76402,7 +76770,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Corimbos pálidos pueden florecer desde verano hasta otoño",
+          "short": "Los corimbos pálidos pueden seguir floreciendo hasta el otoño",
           "guidance": "NC State describe pequeñas flores radiales y centrales blanquecinas en corimbos aplanados, desde comienzos/mediados del verano hasta el otoño. Las variedades de jardín pueden tener otros colores; esta ficha de especie no asigna uno.",
           "items": [],
           "avoid": "",
@@ -76423,7 +76791,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Retira flores marchitas para prolongar la floración y reducir semillas",
+          "short": "Retira flores marchitas para prolongar la floración y reducir la dispersión de semillas",
           "guidance": "NC State recomienda retirar flores marchitas para prolongar la floración y reducir la dispersión por semilla. La especie también se extiende por rizomas, así que esta práctica por sí sola no contiene su crecimiento.",
           "items": [],
           "avoid": "",
@@ -76456,7 +76824,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Baptisia australis",
+          "short": "Especie: Baptisia australis",
           "guidance": "NC State identifica Blue False Indigo como Baptisia australis, de Fabaceae; hay otras especies e híbridos de Baptisia, ninguno asignado aquí.",
           "items": [],
           "avoid": "",
@@ -76477,7 +76845,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Clumping perennial with a deep taproot",
+          "short": "Perenne en mata con una raíz pivotante profunda",
           "guidance": "La fuente informa unos 90–120 cm de alto y 60–120 cm de ancho en jardines regionales; la raíz pivotante aporta tolerancia a sequía, pero dificulta el trasplante.",
           "items": [],
           "avoid": "",
@@ -76498,7 +76866,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun to part shade in well-drained soil",
+          "short": "Sol pleno a sombra parcial en suelo bien drenado",
           "guidance": "NC State describe suelos promedio bien drenados y tolerancia a sequía. En sombra puede volverse alargada o caer; son observaciones de cultivo exterior regional.",
           "items": [],
           "avoid": "",
@@ -76519,7 +76887,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Seed and stem cuttings are listed",
+          "short": "Se enumeran semillas y esquejes de tallo",
           "guidance": "La fuente enumera semillas y esquejes de tallo y advierte que la raíz pivotante dificulta el trasplante. No ofrece condiciones de germinación.",
           "items": [],
           "avoid": "",
@@ -76540,7 +76908,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Ornamental flowers and seed pods; pollinator host",
+          "short": "Flores y vainas ornamentales; planta hospedera de polinizadores",
           "guidance": "La referencia describe flores azules y vainas ornamentales secas. También informa toxicidad leve si se ingieren partes en cantidad; no usar como alimento.",
           "items": [],
           "avoid": "",
@@ -76616,19 +76984,19 @@ export const gardenPlantProfileCatalog = {
       ],
       "es": [
         {
-          "label": "Height",
+          "label": "Altura",
           "value": "3–5 ft",
-          "note": "NC State species account; regional garden range"
+          "note": "Ficha de especie de NC State; rango de jardín regional"
         },
         {
-          "label": "Spread",
+          "label": "Extensión",
           "value": "1–2 ft",
-          "note": "NC State species account; garden range"
+          "note": "Ficha de especie de NC State; rango de jardín"
         },
         {
-          "label": "Plant spacing",
+          "label": "Distancia entre plantas",
           "value": "12–14 in",
-          "note": "NC State recommendation for outdoor planting; not pod spacing"
+          "note": "Recomendación de NC State para plantación exterior; no es distancia entre pods"
         }
       ]
     },
@@ -76647,7 +77015,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Nicotiana alata",
+          "short": "Especie: Nicotiana alata",
           "guidance": "NC State distingue la especie N. alata de híbridos compactos de vivero, como Nicotiana × sanderi; esta ficha no incluye dichos híbridos.",
           "items": [],
           "avoid": "",
@@ -76668,7 +77036,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Porte alto; dimensiones de jardín regionales",
+          "short": "Planta alta, anual o perenne tierna; dimensiones de jardines regionales",
           "guidance": "NC State indica 90–150 cm de alto y 30–60 cm de ancho en su ficha de especie. Son dimensiones regionales de jardín, no un tamaño garantizado para todo clima ni una especificación para interior. La verdadera N. alata supera en altura a algunos híbridos compactos; no se atribuyen a esta especie las dimensiones de esos híbridos.",
           "items": [],
           "avoid": "",
@@ -76710,7 +77078,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores tubulares fragantes: abren de noche desde verano hasta las heladas",
+          "short": "Flores tubulares fragantes que abren de noche desde verano hasta las heladas",
           "guidance": "NC State describe la verdadera N. alata con flores tubulares vistosas que abren durante una sola noche y una temporada larga, desde comienzos del verano hasta la primera helada; su fragancia atrae polillas nocturnas. El color varía. Híbridos compactos como N. × sanderi pueden ser más bajos, no tener fragancia y abrir de día; esos rasgos no se transfieren a esta ficha de especie.",
           "items": [],
           "avoid": "",
@@ -76752,7 +77120,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Keep ornamental tobacco separate from edible crops",
+          "short": "Mantén el tabaco ornamental separado de los cultivos alimentarios",
           "guidance": "La fuente advierte sobre riesgo de virus del mosaico del tabaco compartidos con otros cultivos solanáceos. Se trata como ornamental; no se afirma uso alimentario.",
           "items": [],
           "avoid": "",
@@ -77145,7 +77513,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Aquilegia viridiflora",
+          "short": "Especie: Aquilegia viridiflora",
           "guidance": "NC State identifica la aguileña verde como Aquilegia viridiflora, de Ranunculaceae y nativa de Asia. Esta ficha corresponde a la especie, no a los híbridos genéricos de Aquilegia.",
           "items": [],
           "avoid": "",
@@ -77166,7 +77534,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Compact, mounding perennial; green nodding flowers",
+          "short": "Perenne compacta en mata, con flores verdes colgantes",
           "guidance": "NC State describe una perenne compacta con una mata basal de hojas compuestas azul-verdosas y flores colgantes amarillo-verdosas. La descripción narrativa indica aproximadamente 30–90 cm de alto y 30 cm de ancho; la tabla de rasgos da 20–90 cm de alto y 20–30 cm de ancho. Se conserva la diferencia en vez de fingir una medida precisa de cultivar.",
           "items": [],
           "avoid": "",
@@ -77187,7 +77555,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Moist, well-drained soil; full sun to dappled or partial shade",
+          "short": "Suelo húmedo y bien drenado; sol pleno a sombra moteada o parcial",
           "guidance": "NC State indica suelo de humedad media a rica, húmedo pero bien drenado; no tolera suelo pesado con drenaje deficiente. Crece de sol pleno a sombra moteada o parcial; la sombra ligera puede prolongar la floración. Es orientación para exterior, no una recomendación hidropónica ni de luz de cultivo.",
           "items": [],
           "avoid": "",
@@ -77208,7 +77576,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Fragrant green flowers in late spring to early summer",
+          "short": "Flores verdes fragantes desde fines de primavera hasta comienzos del verano",
           "guidance": "NC State describe flores pequeñas, colgantes, amarillo-verdosas y fragantes, generalmente de finales de primavera a comienzos del verano. La sombra ligera puede prolongar la floración; las fechas varían con el clima.",
           "items": [],
           "avoid": "",
@@ -77229,7 +77597,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Remove spent flowers for another flush; cut back declining foliage later",
+          "short": "Retira flores marchitas para otra floración; corta el follaje cuando decaiga",
           "guidance": "NC State recomienda retirar flores para estimular más floración. El follaje azul-verde puede mantenerse atractivo después de florecer con riego regular; córtalo a ras cuando empiece a decaer hacia finales del verano. Decide por el estado de la planta, no por un calendario fijo.",
           "items": [],
           "avoid": "",
@@ -77250,7 +77618,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Perennial that can self-seed; no germination protocol assigned here",
+          "short": "Perenne que puede auto-sembrarse; aquí no se asigna un protocolo de germinación",
           "guidance": "NC State incluye la semilla como método de propagación y señala que puede auto-sembrarse en condiciones favorables. La fuente no especifica profundidad, temperatura ni duración fiable de germinación; esos datos no se inventan.",
           "items": [],
           "avoid": "",
@@ -77271,7 +77639,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Occasional leafminer, aphid and columbine-borer issues",
+          "short": "Puede sufrir minadores, pulgones y barrenador de aguileña",
           "guidance": "NC State menciona minadores, pulgones y barrenador de aguileña como problemas ocasionales, y reporta resistencia al daño de ciervos y conejos. Vigila esas señales; resistencia no significa inmunidad. No se atribuye resistencia a enfermedades de un cultivar.",
           "items": [],
           "avoid": "",
@@ -77304,7 +77672,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Hybrid: Nicotiana × sanderi",
+          "short": "Híbrido: Nicotiana × sanderi",
           "guidance": "NC State identifica N. × sanderi como híbrido de N. alata y N. forgetiana y lo distingue de la especie N. alata.",
           "items": [],
           "avoid": "",
@@ -77326,7 +77694,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Híbrido erecto; UMass informa 46–91 cm entre variedades, no una medida garantizada del cultivar",
+          "short": "Híbrido erecto; UMass informa 46–91 cm entre variedades, no como garantía de cultivar",
           "guidance": "NC State lista porte erecto y crecimiento rápido. UMass Extension describe el tabaco ornamental como anual y reporta 46–91 cm de altura entre variedades. Como esta identidad no especifica cultivar, conserva ese rango como variación entre variedades, no como altura o extensión asegurada de cada selección N. × sanderi.",
           "items": [],
           "avoid": "",
@@ -77348,7 +77716,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Full sun and average, well-drained soil; annual bedding/container use is documented",
+          "short": "Sol pleno y suelo promedio bien drenado; se documenta su uso anual en macizos o recipientes",
           "guidance": "NC State describe el mejor crecimiento del híbrido a pleno sol en suelo promedio bien drenado, con tolerancia a sombra ligera. UMass Extension lo describe como anual para macizos y recipientes. La tabla de NC State también incluye herbácea perenne como tipo de planta junto al dato de ciclo anual; Garden conserva el uso anual documentado y no promete que pase el invierno. Ninguna fuente establece dimensiones mínimas de maceta ni aptitud hidropónica.",
           "items": [],
           "avoid": "",
@@ -77370,7 +77738,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flores tubulares verdes, rosas o blancas en verano/otoño; tamaño y fragancia varían por cultivar",
+          "short": "Flores tubulares verdes, rosas o blancas en verano y otoño; tamaño y aroma varían según cultivar",
           "guidance": "NC State describe flores tubulares verdes, rosas o blancas de 2.5–7.6 cm, con corolas largas que terminan en una estrella de cinco puntas, y señala floración en verano y otoño. UMass describe floración de verano. Solo para 'Sensation Mixed' se especifican fragancia y floración vespertina; esos rasgos no se generalizan a todos los cultivares de N. × sanderi.",
           "items": [],
           "avoid": "",
@@ -77391,7 +77759,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Se documenta la propagación por semilla; los rasgos varían por cultivar",
+          "short": "Se documenta la propagación por semilla; los rasgos varían según el cultivar",
           "guidance": "NC State describe este híbrido como fácil de propagar por semilla. Su referencia a unas 10 semanas corresponde al periodo desde semilla hasta flor, no a un calendario para la planta establecida ni a una garantía para un cultivar no especificado. La fuente no aporta un protocolo numérico de germinación.",
           "items": [],
           "avoid": "",
@@ -77412,7 +77780,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "All plant parts are poisonous",
+          "short": "Todas las partes de la planta son venenosas",
           "guidance": "NC State advierte que todas las partes de este híbrido son venenosas. Mantener lejos de niños y mascotas; no usar como alimento.",
           "items": [],
           "avoid": "",
@@ -77446,7 +77814,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Especie: Colocasia esculenta; no confundir con otras aráceas llamadas taro",
+          "short": "Especie: Colocasia esculenta",
           "guidance": "Kew acepta Colocasia esculenta. NC State describe el taro como una perenne herbácea tierna de Araceae que crece desde un cormo. Nombres comunes como oreja de elefante y malanga también pueden referirse a otras aráceas; esta ficha se limita a C. esculenta.",
           "items": [],
           "avoid": "",
@@ -77467,7 +77835,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Perenne que forma cormos y hojas grandes",
+          "short": "Perenne que forma cormos y tiene hojas grandes",
           "guidance": "NC State describe una perenne en grupos con hojas grandes, acorazonadas a sagitadas. Las dimensiones de jardín varían según el cultivo y no se presentan como tamaño de maceta o sistema interior.",
           "items": [],
           "avoid": "",
@@ -77489,7 +77857,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Calor y suelo húmedo que retenga agua sin anegarse",
+          "short": "Condiciones cálidas y suelo rico que retenga la humedad",
           "guidance": "NC State recomienda sombra parcial o luz filtrada y suelo rico que retenga humedad. UF/IFAS documenta producción de taro tanto en contextos húmedos como secos; esos sistemas agrícolas no demuestran aptitud hidropónica. En el contexto paisajístico citado, evita que la planta se seque y protégela del viento fuerte.",
           "items": [],
           "avoid": "",
@@ -77533,7 +77901,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cormos, cormelos o división; no es cultivo desde semilla aquí",
+          "short": "Cormos, cormelos o división; no es un protocolo de inicio desde semilla",
           "guidance": "NC State enumera la división como método práctico y UF/IFAS describe material de propagación en forma de cormo. Como ejemplo regional, CTAHR de la Universidad de Hawái describe la propagación vegetativa mediante huli (una sección del pecíolo inferior con una pequeña parte del cormo superior) y explica que también se puede obtener material al hacer brotar los puntos de crecimiento del cormo. Las dimensiones del huli corresponden a una práctica hawaiana, no a una especificación universal para el hogar. Esta ficha no afirma un protocolo de semilla para el cultivo alimentario representado.",
           "items": [],
           "avoid": "",
@@ -77556,7 +77924,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El cormo es el producto principal; cocina bien las partes antes de comerlas",
+          "short": "El cormo es la cosecha alimentaria principal; cocina bien las partes de la planta",
           "guidance": "El cormo comestible es un cultivo alimentario rico en almidón. UF/IFAS informa que la mayoría del taro en su contexto productivo de Florida madura en unos 6–10 meses; es una referencia regional, no una fecha garantizada para el hogar, y la fuente no establece una señal visual universal de madurez. CTAHR de la Universidad de Hawái indica que los cormos, hojas y pecíolos de taro deben cocinarse antes de comerlos por la acritud asociada a cristales de oxalato de calcio; no los comas crudos. Esto no certifica la seguridad de otras plantas llamadas taro.",
           "items": [],
           "avoid": "",
@@ -77578,7 +77946,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El tejido crudo puede irritar la boca; no lo consumas crudo",
+          "short": "El tejido crudo puede causar irritación oral",
           "guidance": "NC State informa irritación oral relacionada con oxalato de calcio y clasifica todas las partes de la planta como tóxicas salvo que se cocinen. Mantén el material crudo lejos de niños y mascotas; sigue orientación alimentaria para taro correctamente identificado, en vez de usar hojas o cormos crudos.",
           "items": [],
           "avoid": "",
@@ -77612,7 +77980,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Species: Manihot esculenta",
+          "short": "Especie: Manihot esculenta",
           "guidance": "Kew acepta Manihot esculenta. UF/IFAS usa cassava para esta especie y enumera yuca, mandioca y manioc entre sus nombres comunes. La ficha no asigna tipo dulce/amargo ni un cultivar nombrado.",
           "items": [],
           "avoid": "",
@@ -77634,7 +78002,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Erect tropical shrub grown for starchy storage roots",
+          "short": "Arbusto tropical erguido que se cultiva por sus raíces de reserva ricas en almidón",
           "guidance": "UF/IFAS describe la yuca como arbusto perenne de tallos erectos y raíces de reserva ricas en almidón. NC State Extension describe una especie erecta y arbustiva que puede alcanzar 10 pies en su referencia regional; UF/IFAS indica 6–8 pies en Florida. Son descripciones generales de exterior, no medidas de un cultivar ni promesas de tamaño para interior o maceta.",
           "items": [],
           "avoid": "",
@@ -77656,7 +78024,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm, bright site and moist, well-drained soil outdoors",
+          "short": "Sitio cálido y luminoso, con suelo húmedo y bien drenado al aire libre",
           "guidance": "NC State Extension describe pleno sol o sombra parcial y suelo húmedo, fértil, arenoso y con buen drenaje para la especie. UF/IFAS informa que las raíces comestibles requieren aproximadamente ocho a once meses sin heladas en su contexto floridano; NC State describe 8–9 meses sin heladas ni temperaturas inferiores a 60 °F en su contexto de clima más fresco. Son ventanas regionales de cultivo de campo, no una garantía universal de cosecha ni una categoría de luz artificial para interior.",
           "items": [],
           "avoid": "",
@@ -77698,7 +78066,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Established from stem sections",
+          "short": "Se establece mediante secciones de tallo",
           "guidance": "UF/IFAS recomienda plantar segmentos cortos de tallo para propagar. Esta ficha representa un cultivo de material vegetativo; no ofrece protocolo de germinación o plántula.",
           "items": [],
           "avoid": "",
@@ -77732,18 +78100,19 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "ufifas-cassava-wave62",
           "ufifas-root-crops-wave62",
-          "fao-cassava-cyanogenic-guidance-wave62"
+          "fao-cassava-cyanogenic-guidance-wave62",
+          "fao-cassava-processing-ch5-wave62"
         ],
         "en": {
           "short": "Starchy roots are the main food harvest; safe processing depends on type",
-          "guidance": "UF/IFAS identifies the roots as the principal food product and notes that harvested roots deteriorate quickly. It warns that cassava contains cyanogenic compounds and must not be eaten raw. FAO documents wide variation among cultivars and growing conditions and notes that perceived sweetness or bitterness does not directly predict cyanide content. The represented type and a complete safe-processing protocol remain unknown.",
+          "guidance": "UF/IFAS identifies the roots as the principal food product and notes that harvested roots deteriorate quickly. It warns that cassava contains cyanogenic compounds and must not be eaten raw. FAO documents cultivar/environment variation and says taste does not reliably indicate cyanide content. Its processing chapter documents regional, multi-step methods for specific products, combining operations such as peeling, grating, soaking/fermentation, pressing/washing, and heat treatment or drying; sequences and efficacy depend on product and process. These technical examples are not a home recipe for this unidentified type. A complete type-appropriate safe-processing protocol remains unknown.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Starchy roots are the main food harvest; safe processing depends on type",
-          "guidance": "UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. FAO documenta variación entre cultivares y condiciones de cultivo; el sabor dulce o amargo no permite predecir de forma fiable el contenido de cianuro. Las raíces y hojas no deben comerse crudas. El tipo representado y un proceso completo de preparación segura siguen sin establecerse; la referencia general no es una receta.",
+          "short": "Las raíces ricas en almidón son la cosecha principal; el procesamiento seguro depende del tipo",
+          "guidance": "UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. FAO documenta variación entre cultivares y condiciones de cultivo; el sabor dulce o amargo no predice de forma fiable el cianuro. Las raíces y hojas no deben comerse crudas. El capítulo técnico de FAO describe procesos regionales de varias etapas para productos específicos, con combinaciones y secuencias que importan; no son una receta universal para el hogar ni para esta yuca sin tipo identificado. Un proceso completo de preparación segura apropiado para el tipo sigue sin establecerse.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -77779,18 +78148,19 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "ufifas-cassava-wave62",
           "ncsu-cassava-plant-toolbox-2026",
-          "fao-cassava-cyanogenic-guidance-wave62"
+          "fao-cassava-cyanogenic-guidance-wave62",
+          "fao-cassava-processing-ch5-wave62"
         ],
         "en": {
           "short": "The represented plant's cyanogenic type and safe preparation are unknown",
-          "guidance": "UF/IFAS distinguishes lower- and higher-cyanogenic cassava types. FAO reports substantial cultivar/environment variation and says taste does not directly indicate cyanide content. The public identity names only the species, so neither taste nor a generic boiling instruction resolves its food-safety status. A complete type-appropriate processing protocol remains unavailable for this record; keep the issue unresolved and do not improvise.",
+          "guidance": "UF/IFAS distinguishes lower- and higher-cyanogenic cassava types. FAO reports substantial cultivar/environment variation and says taste does not directly indicate cyanide content. Its technical processing chapter describes product- and region-specific multi-step processing rather than one universal method. The public identity names only the species, so neither taste nor a generic boiling instruction resolves its food-safety status. A complete type-appropriate processing protocol remains unavailable for this record; keep the issue unresolved and do not improvise.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Se desconocen el tipo cianogénico y la preparación segura",
-          "guidance": "UF/IFAS distingue tipos de yuca con menor y mayor contenido cianogénico. FAO documenta variación según cultivar y ambiente, y señala que ni el sabor ni una ebullición simple permiten resolver por sí solos el riesgo. La identidad pública solo especifica la especie: no indica tipo ni cultivar, y no hay un proceso completo de preparación apropiado para este material. Mantén la incertidumbre y no improvises.",
+          "guidance": "UF/IFAS distingue tipos de yuca con menor y mayor contenido cianogénico. FAO documenta variación según cultivar y ambiente, y señala que ni el sabor ni una ebullición simple permiten resolver por sí solos el riesgo. Su capítulo técnico muestra que los procesos tradicionales dependen del producto y combinan varias etapas; no proporciona una receta universal para esta planta sin tipo identificado. La identidad pública solo especifica la especie: no indica tipo ni cultivar, y no hay un proceso completo de preparación apropiado para este material. Mantén la incertidumbre y no improvises.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -77823,7 +78193,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Blackeye crop form of Vigna unguiculata subsp. unguiculata",
+          "short": "Forma blackeye de Vigna unguiculata subsp. unguiculata",
           "guidance": "Kew acepta Vigna unguiculata y enumera subsp. unguiculata entre sus taxones infraespecíficos aceptados. Clemson Extension agrupa el guisante de ojo negro, el guisante sureño y el caupí dentro de este cultivo. La ficha no es de un cultivar nombrado y se distingue por su uso del frijol espárrago, asociado a otra subespecie.",
           "items": [],
           "avoid": "",
@@ -77844,7 +78214,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Warm-season annual legume",
+          "short": "Leguminosa anual de estación cálida",
           "guidance": "Clemson Extension describe los guisantes sureños como legumbres anuales de temporada cálida que producen vainas y semillas comestibles. Las formas de caupí varían entre arbustivas y trepadoras; esta ficha de cultivo a nivel de especie no asigna porte ni dimensiones de un cultivar no especificado.",
           "items": [],
           "avoid": "",
@@ -77866,7 +78236,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Plant after frost danger has passed and the soil has warmed",
+          "short": "Planta después del riesgo de heladas y cuando el suelo se haya calentado",
           "guidance": "University of Maryland Extension describe los guisantes sureños como cultivos de estación cálida: espera a que pase el riesgo de heladas y se caliente el suelo; necesitan pleno sol (al menos 6 horas y, según esa guía, prefieren 8–10). Las profundidades y separaciones de campo de Virginia Cooperative Extension para tipos arbustivos o trepadores no son separaciones de pods interiores; no se representa un cultivar exacto.",
           "items": [],
           "avoid": "",
@@ -77909,7 +78279,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Direct seed is the documented crop method",
+          "short": "La siembra directa es el método de cultivo documentado",
           "guidance": "La guía de Extensión seleccionada establece los guisantes sureños desde semilla en suelo cálido. Consulta el Perfil de Semilla para indicaciones de siembra; esta sección solo describe el método de propagación y no implica que la germinación y el cultivo adulto compartan los mismos requisitos.",
           "items": [],
           "avoid": "",
@@ -77931,7 +78301,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Harvest full-size green peas or let pods dry before they split",
+          "short": "Cosecha los granos verdes cuando alcancen su tamaño completo o deja que las vainas se sequen antes de abrirse",
           "guidance": "Clemson Extension describe los guisantes sureños desgranados como alimento fresco, procesado en estado verde o seco en la planta. University of Maryland Extension recomienda desgranar los frescos cuando alcanzan su tamaño completo y dejar secar las vainas hasta que la planta se marchite, antes de que se abran. Son señales del cultivo, no fechas de madurez de un cultivar específico.",
           "items": [],
           "avoid": "",
@@ -78009,7 +78379,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Perenne rizomatosa tropical; su ciclo varía según región",
+          "short": "Perenne rizomatosa tropical; su ciclo regional difiere del jengibre",
           "guidance": "Kew clasifica Alpinia galanga como geófita rizomatosa de bioma tropical húmedo. UF/IFAS informa que la galanga no ha mostrado dormancia inducida por fotoperiodo; puede florecer y producir rizomas todo el año en zonas tropicales, mientras que en los subtrópicos florece estacionalmente. La fuente no establece una altura o extensión madura portátil.",
           "items": [],
           "avoid": "",
@@ -78030,7 +78400,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Calor, humedad y aireación; guía productiva de Florida",
+          "short": "Condiciones cálidas y húmedas con aireación; producción descrita por UF/IFAS en Florida",
           "guidance": "UF/IFAS indica 70–85 °F como intervalo óptimo para producir jengibre y galanga y describe sombra de 25–40 % durante el verano de Florida para reducir el estrés por calor sin sombrear en exceso. Una vez establecidas en verano, sus plantas rizomatosas suelen necesitar riego o lluvia diarios; recomienda un sustrato grueso, bien drenado y con retención de humedad. Son referencias de producción en Florida, no parámetros domésticos universales, objetivos de luz interior ni receta hidropónica.",
           "items": [],
           "avoid": "",
@@ -78051,7 +78421,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Se plantan rizomas o material de cultivo de tejidos",
+          "short": "Se documentan rizomas o plantas de cultivo de tejidos como material de propagación",
           "guidance": "UF/IFAS documenta iniciar estos cultivos desde rizomas o plantas de cultivo de tejidos e indica que la galanga muestra vigor a partir de cultivo de tejidos. La fuente seleccionada no documenta propagación por semilla, por lo que no se infiere un método.",
           "items": [],
           "avoid": "",
@@ -78072,7 +78442,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha el rizoma fresco antes de que aumente su fibrosidad",
+          "short": "Cosecha los rizomas frescos antes de que se vuelvan cada vez más fibrosos",
           "guidance": "UF/IFAS indica que, en su contexto productivo de Florida, la galanga para venta fresca se cosecha alrededor de cuatro meses después de plantar; cosechar más tarde aumenta la fibrosidad. Para extraer aceite esencial menciona alrededor de siete meses. La publicación describe venta fresca, conservas y polvo seco, pero esos plazos no son fechas universales de huerto doméstico ni promesas de cultivar.",
           "items": [],
           "avoid": "",
@@ -78114,7 +78484,7 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Vigila estrés por sequía y riesgo de pudrición sin asumir patógenos",
+          "short": "Vigila estrés por sequía y posible pudrición; no generalices patógenos de otros cultivos",
           "guidance": "UF/IFAS describe enrollamiento foliar seguido de quemadura apical o marginal y amarillamiento como señales de estrés por sequía entre sus cultivos rizomatosos; enfatiza usar material sano, higiene y evitar el encharcamiento. Los patógenos enumerados se detectaron específicamente en jengibre y cúrcuma cultivados en Florida, no como diagnósticos propios de la galanga; no se afirma resistencia.",
           "items": [],
           "avoid": "",
@@ -78630,14 +79000,56 @@ export const gardenPlantProfileCatalog = {
   },
   "black-seeded-simpson": {
     "summary": {
-      "en": "Black Seeded Simpson is a looseleaf lettuce identity. Its documented management references remain at lettuce or crop-type scope unless a source names the cultivar.",
-      "es": "Black Seeded Simpson es una identidad de lechuga de hoja suelta. Sus referencias de manejo se mantienen al nivel de lechuga o tipo de cultivo, salvo que una fuente nombre el cultivar."
+      "en": "Black Seeded Simpson is a named, open-pollinated looseleaf lettuce selection with tender, curled light-green leaves. General care remains scoped to lettuce unless a source specifically documents this selection.",
+      "es": "Black Seeded Simpson es una selección nombrada de lechuga de hoja suelta, de polinización abierta y con hojas tiernas, rizadas y verde claro. El manejo general sigue enmarcado como lechuga salvo cuando una fuente documenta específicamente esta selección."
     },
     "metrics": {
       "en": [],
       "es": []
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-black-seeded-simpson-product-2026"
+        ],
+        "en": {
+          "short": "Named looseleaf selection of Lactuca sativa",
+          "guidance": "Johnny's lists Black Seeded Simpson as an open-pollinated, annual leaf-lettuce product and describes light-green, curled, tender leaves. This supports the named seed selection and leaf type; it does not establish a formal botanical cultivar registration or make the supplier's product details universal beyond the listing's scope.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Selección nombrada de hoja suelta de Lactuca sativa",
+          "guidance": "Johnny's presenta Black Seeded Simpson como un producto anual de lechuga de hoja, de polinización abierta, y describe hojas verde claro, rizadas y tiernas. Esto respalda la selección de semilla nombrada y su tipo foliar; no demuestra un registro botánico formal de cultivar ni vuelve universales los detalles del producto fuera del alcance de la ficha.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "growth": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "johnnys-black-seeded-simpson-product-2026"
+        ],
+        "en": {
+          "short": "Tender, curled, light-green leaves; no compact head expected",
+          "guidance": "The Johnny's listing describes this selection as an early producer of light-green, curled, tender leaves and classifies it as leaf lettuce. That is the useful cultivar/product-level morphology; the listing gives no measured mature height or spread, so those dimensions remain unknown.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Hojas tiernas, rizadas y verde claro; no se espera una cabeza compacta",
+          "guidance": "La ficha de Johnny's describe esta selección como productora temprana de hojas verde claro, rizadas y tiernas, y la clasifica como lechuga de hoja. Esa es la morfología útil a nivel de selección/producto; la ficha no aporta altura ni extensión maduras medidas, por lo que esas dimensiones siguen siendo desconocidas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "flowering": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -78729,7 +79141,7 @@ export const gardenPlantProfileCatalog = {
         "confidence": "medium",
         "sourceIds": [
           "umn-lettuce-home-gardens-2024",
-          "johnnys-lettuce"
+          "johnnys-black-seeded-simpson-product-2026"
         ],
         "en": {
           "short": "Pick usable leaves repeatedly or cut the plant whole",
@@ -79791,6 +80203,28 @@ export const gardenPlantProfileCatalog = {
       "es": []
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-cucurbita-pepo-wave26",
+          "ferry-dark-green-zucchini-public"
+        ],
+        "en": {
+          "short": "Named product selection within Cucurbita pepo",
+          "guidance": "Kew accepts Cucurbita pepo as the species; Ferry-Morse markets SKU 0799 as Dark Green Zucchini. The catalog identity is this named commercial selection, not a separately established botanical taxon or a claim that all similarly named products are identical.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Selección de producto nombrada dentro de Cucurbita pepo",
+          "guidance": "Kew acepta Cucurbita pepo como especie; Ferry-Morse comercializa el SKU 0799 como Dark Green Zucchini. La identidad del catálogo es esta selección comercial nombrada, no un taxón botánico separado ni una afirmación de que todos los productos con nombre similar sean idénticos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -80267,6 +80701,28 @@ export const gardenPlantProfileCatalog = {
       "es": []
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "psu-thyme-plant-profile-2026",
+          "johnnys-thyme"
+        ],
+        "en": {
+          "short": "Thymus vulgaris species identity; English Thyme remains the catalog label",
+          "guidance": "Penn State's common-thyme account and Johnny's general thyme guide support guidance at Thymus vulgaris/species or crop-type scope. The reviewed sources do not establish that this catalog's “English Thyme” label is a distinct formally documented cultivar, so traits or performance of named selections are not assigned to it.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Identidad de especie Thymus vulgaris; English Thyme se conserva como etiqueta del catálogo",
+          "guidance": "La ficha de tomillo común de Penn State y la guía general de tomillo de Johnny's respaldan orientación a nivel de Thymus vulgaris/especie o tipo de cultivo. Las fuentes revisadas no establecen que la etiqueta “English Thyme” del catálogo sea un cultivar distinto con documentación formal; por ello no se le atribuyen rasgos ni rendimiento de selecciones nombradas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -81710,8 +82166,8 @@ export const gardenPlantProfileCatalog = {
   },
   "marigold-jolly-jester": {
     "summary": {
-      "en": "Jolly Jester is represented as a named Tagetes patula trade variety. NC State Extension supports general French-marigold care; sellers describe striped yellow/red flowers but disagree on product height and botanical label, so no single cultivar size or taxonomic claim is assigned.",
-      "es": "Jolly Jester se representa como una variedad comercial nombrada de Tagetes patula. NC State Extension respalda el cuidado general de la caléndula francesa; vendedores describen flores amarillas y rojas rayadas, pero discrepan sobre la altura y la etiqueta botánica, por lo que no se asigna un tamaño único de cultivar ni una conclusión taxonómica."
+      "en": "Jolly Jester is a marigold trade name recorded under both Tagetes patula and T. erecta in seed listings. NC State Extension supports general French-marigold care, but the exact line represented here remains unresolved; no single cultivar size is assigned.",
+      "es": "Jolly Jester es un nombre comercial de caléndula registrado bajo Tagetes patula y T. erecta en listados de semillas. NC State Extension respalda el cuidado general de la caléndula francesa, pero la línea exacta representada aquí sigue sin resolverse; no se asigna un tamaño único de cultivar."
     },
     "metrics": {
       "en": [],
@@ -81720,20 +82176,22 @@ export const gardenPlantProfileCatalog = {
     "sections": {
       "identity": {
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
-          "ncsu-tagetes-patula-public"
+          "ncsu-tagetes-patula-public",
+          "impecta-jolly-jester-tagetes-patula-2013",
+          "nargs-seedex-jolly-jester-tagetes-erecta-2026"
         ],
         "en": {
-          "short": "Tagetes patula packet variety; no cultivar trial data assigned",
-          "guidance": "The packet record represents Jolly Jester within T. patula. NC State Extension's French-marigold guidance applies at species level and does not establish this variety's exact habit, flower mix, or performance.",
+          "short": "Current record carries a T. patula packet label; trade listings vary",
+          "guidance": "The current Gardenpedia record carries a Tagetes patula packet label. Impecta's 2013 seed catalog also lists a striped Jolly Jester under T. patula, while the 2025–2026 NARGS Seed Exchange lists an offering under T. erecta. These entries document their respective listings; they do not prove the offerings are the same line. NC State Extension's French-marigold guidance remains species-level and does not establish cultivar-specific habit or performance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Variedad comercial de Tagetes patula; no se asignan datos de ensayo de cultivar",
-          "guidance": "El registro del paquete representa Jolly Jester dentro de T. patula. La guía de caléndula francesa de NC State Extension aplica a nivel de especie y no establece el porte exacto, mezcla floral ni rendimiento de esta variedad.",
+          "short": "El registro actual lleva etiqueta T. patula; los listados comerciales varían",
+          "guidance": "El registro actual de Gardenpedia lleva una etiqueta de paquete Tagetes patula. El catálogo de semillas de Impecta de 2013 también incluye una Jolly Jester rayada bajo T. patula, mientras que el Seed Exchange 2025–2026 de NARGS registra una oferta bajo T. erecta. Estas entradas documentan sus respectivos listados; no prueban que sean la misma línea. La guía de caléndula francesa de NC State Extension sigue siendo de nivel de especie y no establece porte ni rendimiento específicos del cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -81832,18 +82290,20 @@ export const gardenPlantProfileCatalog = {
         "sourceIds": [
           "agrisupply-ferry-jolly-jester-2026-public",
           "rohrer-jolly-jester-2026-public",
-          "moreveg-jolly-jester-2026-public"
+          "moreveg-jolly-jester-2026-public",
+          "impecta-jolly-jester-tagetes-patula-2013",
+          "nargs-seedex-jolly-jester-tagetes-erecta-2026"
         ],
         "en": {
-          "short": "Seller listings conflict on Jolly Jester's height and taxonomic label",
-          "guidance": "Agri Supply's Ferry-Morse listing gives 6–10 inches; Rohrer Seeds gives 24 inches and labels the product Tagetes erecta; MoreVeg reports up to 65 cm without naming a botanical taxon. These product claims cannot establish one mature height or settle the botanical identity represented by this catalog record. The current catalog's Tagetes patula scope and species-level NC State dimensions are not silently replaced; cultivar-specific dimensions and taxonomic reconciliation remain pending.",
+          "short": "Jolly Jester line and mature size remain unresolved",
+          "guidance": "Seed listings differ: Impecta's 2013 catalog places its striped Jolly Jester under Tagetes patula, while the 2025–2026 NARGS Seed Exchange lists a T. erecta offering at 75 cm. Current seller pages also vary: Agri Supply's Ferry-Morse listing gives 6–10 inches, Rohrer Seeds gives 24 inches and labels its product T. erecta, and MoreVeg reports up to 65 cm without naming a botanical taxon. These sources describe their own listings and cannot establish which botanical line or mature dimensions belong to the unspecified material represented by this catalog record. Preserve the uncertainty; do not combine the offerings as one cultivar profile.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Los vendedores discrepan sobre la altura y la etiqueta taxonómica de Jolly Jester",
-          "guidance": "El listado Ferry-Morse de Agri Supply indica 6–10 pulgadas; Rohrer Seeds indica 24 pulgadas y etiqueta el producto como Tagetes erecta; MoreVeg informa hasta 65 cm sin nombrar un taxón botánico. Estas afirmaciones de producto no establecen una única altura adulta ni resuelven la identidad botánica representada por este registro. No se reemplazan en silencio el alcance actual Tagetes patula del catálogo ni las dimensiones de especie de NC State; las dimensiones del cultivar y la reconciliación taxonómica siguen pendientes.",
+          "short": "La línea Jolly Jester y su tamaño adulto siguen sin resolverse",
+          "guidance": "Los listados de semillas difieren: el catálogo de Impecta de 2013 clasifica su Jolly Jester rayada bajo Tagetes patula, mientras que el Seed Exchange 2025–2026 de NARGS ofrece una T. erecta de 75 cm. Las páginas comerciales actuales también varían: el listado Ferry-Morse de Agri Supply indica 6–10 pulgadas, Rohrer Seeds indica 24 pulgadas y etiqueta su producto como T. erecta, y MoreVeg informa hasta 65 cm sin nombrar un taxón botánico. Estas fuentes describen sus propios listados y no establecen qué línea botánica ni qué dimensiones adultas corresponden al material no especificado de este registro. Conserva la incertidumbre; no combines las ofertas en una sola ficha de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82505,6 +82965,27 @@ export const gardenPlantProfileCatalog = {
       "es": []
     },
     "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ferry-zinnia-lilliput-public"
+        ],
+        "en": {
+          "short": "Lilliput Mixed Colors is a supplier-named Zinnia elegans mix",
+          "guidance": "Ferry-Morse identifies its Lilliput Mixed Colors product as Zinnia elegans. This record represents that named mixed-color seed product, not one uniform color, flower form, or formally verified single cultivar; exact mix composition is not specified here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Lilliput Mixed Colors es una mezcla de Zinnia elegans nombrada por el proveedor",
+          "guidance": "Ferry-Morse identifica su producto Lilliput Mixed Colors como Zinnia elegans. Este registro representa ese producto de semillas de mezcla de colores, no un color, forma floral o cultivar único verificado de manera uniforme; la composición exacta de la mezcla no se especifica aquí.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "pruning": {
         "evidenceType": "source_backed",
         "confidence": "high",

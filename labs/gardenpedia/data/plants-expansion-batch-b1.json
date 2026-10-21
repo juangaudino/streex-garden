@@ -539,6 +539,13 @@
     }
   ],
   "sections": {
+    "identity": {
+      "short": "UC Davis day-neutral garden-strawberry cultivar",
+      "guidance": "UC Davis identifies Monterey as a day-neutral cultivar of Fragaria × ananassa released in 2008. This is identity- and cultivar-level evidence; the crop-level garden guidance and hydroponic observations elsewhere in this profile retain their own scopes. The identity source does not establish mature plant dimensions.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ucd-monterey"]
+    },
     "cultivation": {
       "short": "Full sun, drained soil and steady moisture in home gardens",
       "guidance": "UMN Extension recommends full sun for maximum strawberry fruiting, well-drained soil, and regular moisture in home-garden beds. These are Minnesota outdoor-soil recommendations; they do not specify an indoor light level, hydroponic recipe, or Monterey-specific spacing.",

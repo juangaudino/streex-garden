@@ -62,7 +62,7 @@
     "accessed": "2026-10-17",
     "license": null,
     "provenance": "Gardenpedia Labs flower cohort review; source reference integrity repair",
-    "claimKinds": ["identity", "cultivation", "harvest", "uses", "problems"]
+    "claimKinds": ["identity", "cultivation", "harvest", "harvestUse", "uses", "problems"]
   },
   {
     "id": "ncsu-colocasia-esculenta-wave62",
@@ -258,5 +258,18 @@
     "license": null,
     "provenance": "FAO technical monograph; Gardenpedia cassava food-safety scope review",
     "claimKinds": ["safety", "uses"]
+  },
+  {
+    "id": "fao-cassava-processing-ch5-wave62",
+    "publisher": "Food and Agriculture Organization of the United Nations",
+    "title": "Roots, Tubers, Plantains and Bananas in Human Nutrition — Chapter 5: Processing of Roots and Tubers",
+    "url": "https://www.fao.org/4/x5415e/x5415e05.htm",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "FAO technical overview of regional cassava processing methods and their sequence, including peeling, grating, soaking/fermentation, pressing/washing, heat treatment and drying. Supports that processing is multi-step and context-dependent; not a home recipe or evidence that an unknown cassava lot is safe.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs cassava Harvest Use enrichment; FAO technical monograph",
+    "claimKinds": ["safety", "uses", "harvest"]
   }
 ]

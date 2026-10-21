@@ -67,7 +67,10 @@ Plant Profile incomplete.
 
 1. Use `plant-profile-inventory-501-20261017.csv` as the single queue. Do not
    infer completion from its structural counters; update status only after
-   individual review against this rubric.
+   individual review against this rubric. Keep the `editorial_status` column
+   in `profile-section-gap-matrix-501-20261017.csv` synchronized with the
+   inventory; its section flags are structural signals, not independent review
+   dispositions. Both files must remain valid CSV with the same 501 unique IDs.
 2. Select a bounded batch of 8–12 related identities (crop family, shared
    harvest/use question, or common evidence gap). Read all existing records in
    that batch before researching.
@@ -85,6 +88,21 @@ Plant Profile incomplete.
    template was applied.
 
 ## Current audit baseline
+
+The content validator reads 506 source Plant records, while the public catalog
+intentionally publishes 501 canonical identities. The difference is exactly
+five reviewed aliases in `data/plant-identity-aliases-v1.json`; each target is
+present in both the public manifest and generated Plant Profile index, and no
+alias is published as a second identity:
+
+- `parsnip` → `parsnip-pastinaca-sativa`
+- `rutabaga` → `rutabaga-brassica-napus`
+- `snapdragon` → `snapdragon-antirrhinum-majus`
+- `bachelor-button` → `cornflower-centaurea-cyanus`
+- `cuban-oregano-plectranthus-amboinicus` → `cuban-oregano-coleus-amboinicus`
+
+This is identity reconciliation, not a five-profile omission. The generated
+manifest and public Plant Profile index each contain 501 entries.
 
 The inventory currently contains 501 identities and is not a completion claim.
 After individual review of the radish, leafy-green, four-identity berry,
@@ -1596,6 +1614,12 @@ among bush T. minus cultivars; the source may describe a different line or
 naming scope. The profile remains pending and does not inherit cultivar size,
 habit, or compatibility claims.
 
+On 2026-10-21, West Coast Seeds' distinct Tip Top Alaska Mix listing was also
+checked. Its product description names T. majus, while the detailed Latin field
+lists T. majus and T. minus. This is product-specific and internally
+inconsistent labeling; it does not identify the catalog's unspecified Alaska
+line. The pending disposition remains unchanged.
+
 Heartleaf philodendron received a species-scoped care addition on 2026-10-18
 using UF/IFAS: indoor display may trail or use a support, with training and
 pruning shaping the plant; the source does not prescribe a schedule. Its
@@ -1775,6 +1799,240 @@ inventory and structural section counts were aligned; North Carolina timing and
 invasive status remain explicitly regional, and indoor/hydroponic unknowns were
 not changed.
 
+Three ornamental profiles received evidence-scoped Harvest Use records: NC
+State lists *Lomelosia caucasica* as a good cut flower and describes strong,
+stiff stems; UW–Madison Extension says *Armeria maritima* flowers can be used
+as cut flowers; and a qualitative 1997 field evaluation reports cultivar-level
+Teddy Bear sunflower cut-stem and lateral-branch observations. None of these
+sources establishes a universal cut stage or vase-life figure. The Teddy Bear
+trial is treated as one regional grower evaluation, not a household yield
+guarantee; no edible use is inferred. EN/ES Harvest Use, source IDs, registry
+scope and inventory/gap-matrix coverage flags were aligned. Current inventory:
+494 complete, 4 partial, 3 pending (501 total); Harvest Use record coverage:
+379/501.
+
+Smooth Luffa received a sixth established-plant section for normal flowering and
+fruit set. UF/IFAS distinguishes male racemes from solitary female flowers;
+UC Master Gardeners of Santa Clara County describe the typical male-first
+sequence, insect pollination, and optional hand-pollination aid. EN/ES now
+explain these stages without assigning dates, a sex ratio, or a fruit-set
+guarantee. Seed-stage guidance and the separate immature-food/mature-fiber
+Harvest Use remain unchanged. The profile stays complete at the same species
+scope; controlled-system compatibility remains unknown.
+
+Three more ornamental Harvest Use records were added without implying food use:
+Common Foxglove documents cut-flower use with the source's ingestion-toxicity
+and skin-irritation warnings; Flamingo Flower documents floral-arrangement use
+while distinguishing the species-specific statement from broader Anthurium
+florist longevity; Purple Coneflower uses Iowa State 4-H exhibit guidance only
+for fully-open bloom stage and cool-time cutting/preparation, not as a
+commercial harvest or vase-life protocol. All three are bilingual and keep
+source references and inventory flags aligned. Harvest Use record coverage is
+now 378/501 (329 addition-file identities, 18 overlapping the base dataset).
+
+Common Yarrow's existing source-backed cut/dried profile guidance was also
+formalized into Harvest Use. Mississippi State's farmer-florist publication
+supports the fresh-cut maturity cue, cool-morning harvest, immediate hydration,
+conditional 3–4 day vase-life range, and dried-flower sequence; NC State supports
+species cut/dried use and warns of contact dermatitis. The food-use field
+faithfully records NC State's limited edible listing but does not invent a
+recipe, dose, or medicinal use. No named cultivar is represented. Harvest Use
+record coverage is now 379/501 (330 addition-file identities, 18 overlapping
+the base dataset).
+
+On 2026-10-21, source-backed established-plant additions were made for Stalk
+Celery (biennial morphology, outdoor soil/light context, and a bounded cool-
+exposure flowering warning), Mung Bean (Arkansas home-garden soil pH/moisture
+context), and Fiddle-Leaf Fig (rare indoor flowering and as-needed pruning/sap
+precaution). EN/ES and source scopes were updated. Seed-stage instructions,
+indoor-light tiers, and hydroponic compatibility were not inferred from outdoor
+crop or container guidance. The public publisher still exposes 501 identities;
+the catalog validator resolves 1,265 sources with no dangling references.
+
+A 2026-10-21 profile-text audit found 30 groups of identical long guidance
+strings among public profiles. The reviewed examples are repeated within the
+same crop groups (tomatoes, peas, onions, and beans) and explicitly state crop-
+level scope; no cross-crop copy was treated as canonical cultivar evidence.
+Eight short-section indoor foliage profiles sampled from the published index
+were already individually reviewed and marked complete in the inventory; no
+content was added solely to raise section or word counts. The current inventory
+still records 494 complete, 4 partial, and 3 pending (501 total). The seven
+non-complete identities remain open for material reasons recorded in their
+inventory notes: unresolved planting-stock/identity questions for Alaska
+Nasturtium, Fragrant Dwarf Dianthus Mix, and Italian Oregano; type-dependent
+cassava food safety; Jolly Jester material identity; conflicting Moss Rose
+human-edibility advice; and unauthenticated White Carolina stock with unresolved
+pollination/propagation claims. These are not closed by cosmetic profile edits.
+
+Globe Amaranth received an evidence-scoped Harvest Use record based on Utah
+State University Extension's Gomphrena cut-flower production guide. It adds
+visible fresh-cut maturity cues, prompt clean-water handling, and drying use;
+the source's 7–14 day vase-life range is explicitly regional and not promised
+for an unspecified cultivar. No culinary use is inferred. Harvest Use coverage
+was 380/501 before the next addition.
+
+Black-Eyed Susan (*Rudbeckia hirta*) received a species-scoped ornamental
+Harvest Use record based on the Rudbeckia row in the University of Kentucky /
+University of Tennessee cut-flower guide. It records only the supported cut
+stage (terminal bloom fully open) and explicitly leaves vase life and
+postharvest handling unspecified. It does not imply edible use. Harvest Use
+coverage is now 381/501; inventory and gap-matrix record flags match, while
+Plant Profile completeness status is unchanged.
+
+Mexican Sunflower (*Tithonia rotundifolia*) received a bilingual ornamental
+Harvest Use record from its existing University of Kentucky / University of
+Tennessee cut-flower evidence: petals unfurling from the center is the cut
+stage, and the stem's delicate neck is noted. No vase-life estimate, handling
+sequence, or edible use is inferred. The gap-matrix note was corrected to
+match the already-complete inventory disposition and resolved cut-stage
+evidence; Harvest Use coverage is now 382/501.
+
+Lemon Queen Sunflower received a cut-flower Harvest Use record using Illinois
+Extension's general Helianthus annuus guidance. The source lists Lemon Queen
+among sunflower selections, but the harvest method is explicitly crop-level:
+cut as ray petals begin to rise, in cooler morning conditions, angle-cut the
+stem, and remove foliage below the water line. The record does not claim a
+Lemon Queen-specific vase life or edible-seed suitability. Harvest Use
+coverage was 383/501 before the next addition.
+
+Strawflower (*Xerochrysum bracteatum*) received a detailed bilingual
+ornamental Harvest Use record from Utah State University Extension's 2026
+production guide. It distinguishes the partly open fresh-cut stage, a tactile
+firmness check, weather-related bloom closure, leaving three nodes for
+regrowth, and drying suitable stems. Utah production evidence is not
+generalized into home yield, cultivar, or vase-life guarantees. Harvest Use
+coverage is now 384/501; inventory and gap-matrix flags match.
+
+Flax (*Linum usitatissimum*) now has structured Harvest Use guidance that
+keeps the seed/oil and fiber routes separate. UW–Madison Extension's Wisconsin
+crop guidance supports the mature seed-capsule cue and the earlier fiber
+harvest/ retting distinction; it is not converted into a home calendar or
+dual-purpose claim. NC State Extension's large-quantity ingestion warning is
+preserved. No seed lot is called food grade, and no dose, household processing,
+or storage guarantee is invented. Harvest Use coverage is now 385/501;
+inventory and gap-matrix flags match, while the existing Plant Profile
+completeness status is unchanged.
+
+Also on 2026-10-21, a whole-catalog generated-index language-parity audit
+found 278 exact English/Spanish short-label matches and one untranslated
+Harvest Use guidance string. Spanish overlays were added for the affected
+identity labels while preserving every other effective Spanish section value;
+the cowpea Harvest Use sentence was translated from its existing reviewed
+claim set. Re-publishing now yields 501 profiles with no empty or exactly
+identical EN/ES summary, section-short, or section-guidance fields. This is a
+mechanical parity check, not semantic review of every translation. A separate
+exact-text scan found no long English guidance paragraph duplicated across
+different catalog categories; same-category repetitions remain subject to
+crop-scope review and are not presumed erroneous. Publisher and content
+validation pass with 501 public identities, 1,267 normalized source records,
+328 Seed Profiles, 458 taxonomy records, and zero unresolved source IDs.
+Plant Profile dispositions remain 494 complete, 4 partial, and 3 pending.
+The remaining seven records stay open for the material identity, product-stock,
+or safety/evidence conflicts recorded in the inventory; no status was raised
+by translation or text-length checks.
+
+The generated-index parity audit was extended to metric labels/notes/values,
+section item counts, and section context/avoid fields. It found a positional
+translation issue in the Thai basil and Italian Large Leaf Basil metric overlays:
+the hidden germination row had been omitted, shifting Spanish labels onto later
+metrics. The overlays now preserve the source metric order, including the hidden
+germination slot. Re-published English/Spanish metric arrays have matching
+lengths; no metric label, note, section field, or item is blank or an exact
+English copy. The remaining identical metric values are scientific names or
+numeric/range values whose notation is language-neutral. This remains a
+structural parity check, not a claim that every Spanish translation received
+native-speaker editorial review.
+
+Florence Fennel was further enriched in the established-plant profile with
+bilingual identity and mature-growth sections, using existing Utah State
+University Extension and Johnny's source records. They distinguish bulb fennel
+from herb/seed fennel and explain that the culinary “bulb” is overlapping leaf
+stalk bases, while keeping the supplier's approximate height scoped to its
+production context. Seed germination remains in Seed Profile; unknown
+hydroponic fit and the existing Garden adaptation were not changed. Its
+inventory now reflects 9 sections (6 source-backed, 3 Garden adaptations), with
+no profile-status promotion.
+
+Cilantro now has an explicit bilingual identity section clarifying that the
+leaf-cilantro and coriander-seed goals refer to the same Coriandrum sativum
+plant, based on its existing Utah State University Extension source. No
+germination instructions were copied into the Plant Profile, and no extra
+growth section was added because the relevant height and normal flowering
+transition are already covered in cultivation and flowering without a
+nonredundant mature-morphology claim. The inventory and gap matrix now record
+eight sections; the profile disposition is unchanged.
+
+English Thyme also gained a bilingual identity section. It locates the profile at
+Thymus vulgaris/species or crop-type scope and explicitly does not treat the
+“English Thyme” catalog label as proof of a distinct formal cultivar. Existing
+Penn State and Johnny's sources support the scope statement; cultivar
+performance, consumer-system fit, and hydroponic targets remain unclaimed. The
+inventory and gap matrix now record eight sections, with editorial status
+unchanged.
+
+Monterey Strawberry now exposes its identity as UC Davis's day-neutral
+Fragaria × ananassa cultivar (released in 2008) in a dedicated bilingual
+section. The source record was already part of the profile; cultivar identity
+is kept distinct from crop-level garden care and direct hydroponic observations.
+The existing bare-root disposition still makes Seed Profile not applicable;
+unknown mature dimensions and spacing remain unknown. The inventory/gap matrix
+now records the added identity section without a status promotion.
+
+Three additional identity gaps were closed without converting structural
+coverage into editorial completion claims. Black Seeded Simpson now cites
+Johnny's specific product listing for its open-pollinated leaf-lettuce
+selection, curled/tender light-green leaves, and supplier maturity references
+(32 days baby leaf; 46 days full size); those dates remain non-guaranteed and
+product-scoped. The existing harvest claim now points to that direct listing
+instead of relying on a general lettuce source for its cultivar-specific
+figures. Dark Green Zucchini now distinguishes the Kew-accepted species from
+Ferry-Morse's named commercial SKU. Lilliput Mixed Colors now records Ferry-
+Morse's Zinnia elegans mixed-color product identity without implying a uniform
+flower form or fixed mix composition. All three entries remain bilingual;
+unmeasured spread, identity uncertainty for the Dianthus mix, and other
+unsupported facts remain open rather than inferred. Inventory and gap-matrix
+counts were synchronized; overall completion status was not promoted.
+
+Publisher-scope source-attribution audit: the generated public Plant Profile
+catalog contains 501 identities and 120 Garden adaptations; all 120 have at
+least one resolvable source reference. Fourteen public sections are explicitly
+marked `needs_validation`. Sixteen profiles currently have five sections, but
+section count alone is not a completion criterion: their content must be judged
+by plant-specific relevance, supported evidence, and whether an applicable
+Harvest Use record exists. A separate `plants-owned-seeds.json` input contains
+ten legacy Garden-adaptation entries with empty source lists, but this file is
+not included in the publisher's public Plant Profile inputs. Its entries were
+not edited or promoted into public knowledge; the generated public catalog was
+audited directly instead. No private or seed-ownership data was changed.
+
+Current inventory disposition remains 494 complete, 4 partial, and 3 pending
+(501 total). Public Plant Profile section counts are distributed as 16 with 5,
+169 with 6, 154 with 7, 123 with 8, 34 with 9, and 5 with 10 sections. These
+counts are diagnostic only, not a target to fill by adding non-applicable
+sections. A focused review of the unresolved Cassava safety gate reaffirmed
+that the cited FAO material describes method-dependent cyanide reduction and
+warns that simple boiling is not always reliable; it does not justify a
+universal home-preparation recipe for an unidentified type. Moss Rose remains
+partial because direct institutional sources still conflict on human
+edibility; keep that conflict visible and do not make a food-use recommendation.
+
+Targeted repeated-content audit on the generated 501-profile index found no
+duplicate English summaries and 15 groups of identical section guidance. A
+review of the legume group found one scope mismatch: Henderson lima bean was
+using common-bean-only sowing guidance despite the same UMN source documenting
+warmer soil/weather and a longer season for lima. The Henderson summary and
+cultivation copy were corrected bilingually; generic support guidance shared
+across bush/pole bean forms remains crop-type scoped.
+
+Structured-size audit also surfaced source-backed outdoor dimensions already
+described in four Plant Profiles but left unknown in Compatibility Profile V1.
+Four-o'clock, sweet marjoram, garden impatiens, and cardinal flower now expose
+those reported species/type ranges as `outdoor_general`, with citations and
+explicit caveats that they do not establish indoor or hydroponic size. The
+compatibility engine only compares a known size when its context matches an
+explicit system clearance; no nutrient mapping or hydroponic suitability was
+added.
+
 White Carolina Pineberry received a source-scoped propagation clarification on
 2026-10-20. University of Missouri Extension lists White Carolina among
 marketed pineberry cultivars and advises buying plants rather than seed to
@@ -1782,3 +2040,48 @@ maintain the white-fruit type. This does not authenticate current retail stock
 or establish a cultivar-specific vegetative protocol, so the identity and
 propagation disposition remain pending; the profile now carries explicit
 resolving source IDs and remains partial.
+
+On 2026-10-21, the Jolly Jester review added an archived Impecta 2013 seed
+catalog listing under *Tagetes patula* and a 2025–2026 NARGS Seed Exchange
+listing under *T. erecta*. Both are scoped to their respective offerings; the
+trade-name conflict is now directly sourced but still does not identify the
+exact line represented by this catalog entry. Jolly Jester remains partial,
+with no single cultivar size or cross-listing identity asserted. A whole-index
+duplicate scan found no exact duplicate Plant Profile bodies. Eight exact
+duplicate Seed Profile groups were found, all among varieties within the same
+tomato, pepper, or squash crop groups and using crop-scoped seed guidance; no
+cross-category seed-profile clones were found. The Sunrise Sauce tomato
+problems section also no longer cites its cultivar product page for unrelated
+crop-level disease guidance. Publisher/content validation currently reports
+501 public identities, 1,278 unique sources, 328 Seed Profiles, 458 taxonomy
+records, and zero unresolved source references. Editorial dispositions remain
+494 complete, 4 partial, and 3 pending; no identity status was promoted by this
+audit.
+
+On 2026-10-21, Red Acre Cabbage was upgraded from generic crop-only support after
+checking University of Arkansas Extension's cultivar table and Fedco's current
+Red Acre listing. Arkansas reports 75 days and a three-pound red head without
+specifying the day-count start point; Fedco reports 75 days from transplant,
+compact plants, and 3–5 lb heads up to about 7 inches. The profile retains these
+as distinct source-specific references, not guarantees, and keeps exact plant
+height/spread and hydroponic suitability unknown. General cabbage light, soil,
+moisture and stress guidance remains explicitly crop/regional. EN/ES and source
+IDs were updated; no Seed Profile or unrelated cabbage identity changed.
+
+The same review found that the existing USU apricot source record was scoped
+only to harvest/use despite the article also supporting pollination, frost,
+soil drainage, irrigation, pruning and fruit thinning. Its source metadata was
+expanded to match the full peer-reviewed article. The Apricot profile now
+distinguishes USU's “most cultivars self-fruitful, overlapping bloom partner may
+improve yield” from cultivar-specific certainty; adds the source's grape-size
+fruit-thinning interval; and identifies regional wet-soil/root-rot and Utah
+alkaline-soil chlorosis cautions. These remain species/crop-level or regional,
+with no cultivar/rootstock traits, local calendar or universal pollination
+guarantee inferred. EN/ES are aligned.
+
+Also on 2026-10-21, the Kew POWO source record used by the cultivar-unspecified
+Basil profile was updated after verifying the page's General Information:
+Kew supports the annual-or-subshrub life-form description as well as taxonomy,
+while its listed species-height range remains intentionally unassigned because
+the page notes cultivar variation. No cultivar-specific basil dimensions were
+introduced.

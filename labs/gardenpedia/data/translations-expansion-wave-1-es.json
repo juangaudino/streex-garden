@@ -1,6 +1,10 @@
 {
   "arugula": {
     "summary": "La rúcula es una roseta de estación fresca y crecimiento rápido, cosechada por sus hojas picantes. UW–Madison describe espigado con días largos, calor o suelo seco, cosecha repetida y daños de altica; su artículo usa Eruca sativa mientras Garden conserva Eruca vesicaria como nombre aceptado del catálogo.",
+    "metrics": [
+      {"label":"Longitud de hoja","value":"3–8 pulg","note":"Descripción de UW–Madison a nivel de especie/cultivo; no es específica de un cultivar"},
+      {"label":"Tallo floral","value":"2–3 pies","note":"UW–Madison; puede desarrollarse con días largos, calor y/o suelo seco; no es la altura normal de la roseta"}
+    ],
     "sections": {
       "identity": {
         "short": "Identidad de catálogo Eruca vesicaria; Extension también usa Eruca sativa",
@@ -42,6 +46,9 @@
   },
   "kale-dwarf-blue-curled": {
     "summary": "Dwarf Blue Curled representa un tipo de col rizada rizada dentro de Brassica oleracea; el catálogo no afirma que este registro sea un cultivar nombrado verificado ni fija sus dimensiones. La col rizada es un cultivo foliar de estación fresca y puede cosecharse repetidamente retirando hojas viejas mientras las jóvenes continúan creciendo.",
+    "metrics": [
+      {"label":"Patrón de cosecha","value":"Cortar hojas exteriores viejas y conservar el crecimiento joven","note":"Guía de cultivo de UW–Madison; no establece un calendario propio de Dwarf Blue Curled"}
+    ],
     "sections": {
       "identity": {
         "short": "Tipo de col rizada Brassica oleracea; cultivar y dimensiones exactas no establecidos",
@@ -79,6 +86,10 @@
   },
   "swiss-chard-rainbow": {
     "summary": "La acelga Rainbow es una mezcla de variedades de colores, no un cultivar uniforme. Se cultiva por sus hojas anchas y pecíolos vistosos; las plantas establecidas pueden producir varias cosechas de hojas exteriores. Extension describe el freno estival y plagas manejables, pero no establece un tamaño maduro único para esta mezcla.",
+    "metrics": [
+      {"label":"Tamaño de hoja para cosecha","value":"Aprox. 3 pulg","note":"Señal general de cosecha de UW–Madison; no es madurez específica de la mezcla Rainbow"},
+      {"label":"Cosecha repetida","value":"Recoger unas pocas hojas exteriores a la vez","note":"UW–Madison; cortar cerca de la base sin dañar el punto de crecimiento"}
+    ],
     "sections": {
       "identity": {
         "short": "Rainbow es una mezcla de variedades de colores de Beta vulgaris de hoja",
@@ -116,6 +127,10 @@
   },
   "bok-choy": {
     "summary": "El bok choy o pak choi forma una mata erguida de hojas oscuras con pecíolos gruesos y pálidos. UMN Extension describe la necesidad de humedad constante, el riesgo de espigado por frío y la cosecha de hojas exteriores antes de perder calidad; las fechas y distancias son guía de campo para Minnesota, no ajustes hidropónicos.",
+    "metrics": [
+      {"label":"Altura de tipo enano","value":"Aprox. 6 pulg","note":"Guía de cultivo de UMN; esta identidad del catálogo no especifica tipo enano o de tamaño completo"},
+      {"label":"Altura de tipo grande","value":"Aprox. 1 pie","note":"Guía de cultivo de UMN; no se asigna este tamaño a la identidad sin tipo especificado"}
+    ],
     "sections": {
       "identity": {
         "short": "Bok choy / pak choi; UMN identifica el tipo como Brassica rapa chinensis",
@@ -153,6 +168,10 @@
   },
   "baby-spinach": {
     "summary": "La espinaca baby es una etapa/tipo de cosecha de Spinacia oleracea, no otra especie ni un cultivar nombrado. USU Extension describe la espinaca como cultivo de estación fresca: calor y días largos favorecen el espigado y el sabor amargo, mientras que retirar hojas viejas permite que sigan creciendo las jóvenes.",
+    "metrics": [
+      {"label":"Desempeño con calor","value":"Mejor crecimiento por debajo de unos 75 °F","note":"Guía de USU para el cultivo de espinaca; no es un cultivar baby ni un punto de ajuste interior"},
+      {"label":"Señal para cosechar hojas","value":"Recoge hojas útiles antes de que aparezca el tallo floral","note":"Guía de cultivo de USU; comienza por hojas viejas; no hay tamaño ni fecha universal"}
+    ],
     "sections": {
       "identity": {
         "short": "Tipo de cosecha baby de Spinacia oleracea; sin cultivar especificado",
@@ -249,7 +268,7 @@
         "guidance": "UMN Extension informa que las fluctuaciones de humedad del suelo durante el desarrollo del fruto pueden contribuir a la pudrición apical y recomienda no mojar el follaje. Son prácticas generales de jardín, no un programa de riego específico para Beefsteak."
       },
       "pruning": {
-        "short": "Manejo según porte y observación",
+        "short": "El soporte depende del porte real; no hay una poda universal",
         "guidance": "Ajusta la poda, la cosecha o la eliminación de tejido dañado según el porte real y la evidencia del cultivo. No copies una regla de campo como regla universal del sistema."
       },
       "harvest": {
@@ -370,6 +389,9 @@
   },
   "cucumber-marketmore": {
     "summary": "El catálogo registra el tipo Marketmore dentro de Cucumis sativus. La guía de cultivo corresponde al pepino en general; aquí no se establecen dimensiones, rendimiento ni manejo interior propios del cultivar.",
+    "metrics": [
+      {"label":"Señal de cosecha para pepino de ensalada","value":"Cosecha antes de que el fruto crezca demasiado, amarillee y forme semillas grandes; recoge a menudo","note":"Guía de UMN para el cultivo del pepino; no establece tamaño propio de Marketmore"}
+    ],
     "sections": {
       "identity": {
         "short": "El tipo Marketmore se registra dentro de Cucumis sativus",
@@ -498,6 +520,10 @@
   },
   "carrot-nantes": {
     "summary": "Nantes es un tipo de zanahoria descrito como cilíndrico y de longitud media, no un cultivar único. Esta ficha usa orientación general de cultivo y cosecha de zanahoria; no atribuye sabor, tamaño exacto ni desempeño en sistemas interiores específicos de Nantes.",
+    "metrics": [
+      {"label":"Forma de la raíz Nantes","value":"Cilíndrica, de longitud media","note":"Descripción de Johnny's para el tipo Nantes; no son dimensiones de cada selección nombrada"},
+      {"label":"Señal de cosecha","value":"Levanta cuando alcance un tamaño útil","note":"Guía de cultivo de UMN; no hay tamaño ni calendario universal"}
+    ],
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -526,6 +552,10 @@
   },
   "beet-detroit-dark-red": {
     "summary": "Detroit Dark Red es una remolacha de mesa clásica, redonda, lisa y uniforme, de color rojo oscuro, con raíces y hojas jóvenes comestibles. Mississippi State Extension respalda esos rasgos de la variedad; el manejo y la cosecha general siguen en el ámbito del cultivo, no son una receta hidropónica.",
+    "metrics": [
+      {"label":"Raíz de la variedad","value":"Lisa, globular y rojo oscuro","note":"Descripción de Mississippi State Extension; no es un diámetro medido"},
+      {"label":"Señal para cosechar hojas jóvenes","value":"Aprox. 4–6 pulg","note":"Guía de cultivo de Utah State para remolachas; no indica madurez de Detroit Dark Red"}
+    ],
     "sections": {
       "identity": {
         "short": "Identidad y alcance",
@@ -554,6 +584,9 @@
   },
   "turnip-purple-top-white-globe": {
     "summary": "Nabo de doble uso, cultivado por su raíz redondeada y sus hojas comestibles. Johnny's documenta la variedad Purple Top White Globe; el manejo general del cultivo se mantiene separado de las dimensiones indicadas por el proveedor.",
+    "metrics": [
+      {"label":"Referencias de ancho para cosecha","value":"2–3 pulg (señal de UMN); 3–4 pulg (descripción comercial de Johnny's)","note":"Alcances distintos: guía de calidad del cultivo y característica del proveedor para la variedad"}
+    ],
     "sections": {
       "identity": {
         "short": "Variedad nombrada Purple Top White Globe de Brassica rapa",
@@ -679,7 +712,7 @@
         "guidance": "UMN Extension señala que los suelos que retienen humedad quizá solo necesiten riego durante periodos secos, mientras que los arenosos requieren riego más frecuente; una pulgada de lluvia semanal es una referencia para jardines de Minnesota. Comprueba la humedad de la zona radicular en vez de aplicar esa cantidad de campo a macetas, cultivo interior o un depósito."
       },
       "care": {
-        "short": "Adapta el soporte al hábito documentado",
+        "short": "Las plantas de mata crecen erguidas y normalmente no requieren espaldera",
         "guidance": "En los frijoles de enrame, instala un tutor o soporte al plantar porque las guías trepan. Los frijoles de mata son erguidos y generalmente no necesitan soporte. Son diferencias entre tipos de cultivo, no dimensiones medidas para esta entrada con nombre."
       },
       "growth": {
@@ -770,6 +803,10 @@
   },
   "santo-cilantro": {
     "summary": "Santo es una selección de cilantro vendida para cosechar hojas y descrita por Johnny's como de floración tardía; esa afirmación del proveedor no cuantifica el retraso ni garantiza el resultado en todos los climas. La guía de especie describe el cilantro como cultivo de estación fresca, recomienda cosechar hojas jóvenes y señala la floración prematura y el amarillamiento del áster transmitido por chicharritas como aspectos de manejo. La aptitud hidropónica y las dimensiones maduras no están establecidas.",
+    "metrics": [
+      {"label":"Señal para cosechar hojas","value":"Hojas de unos 4–6 pulg","note":"Guía de USU para el cultivo de cilantro; no es promesa de madurez para Santo"},
+      {"label":"Señal para cosechar coriandro","value":"Deja madurar las cabezuelas hasta que se vuelvan marrones","note":"Guía de cultivo de USU; objetivo distinto de cosechar hojas de cilantro"}
+    ],
     "sections": {
       "identity": {
         "short": "Selección Santo nombrada dentro de Coriandrum sativum",

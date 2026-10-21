@@ -2,7 +2,7 @@
 
 ## Status
 
-Harvest Use V0.2 began with a 41-identity Library snapshot. The public catalog has since grown to 501 Plant identities; the merged runtime layer currently has records for **373 / 501** identities. This is a record-coverage count, not a completion score: some plants are ornamental, unsafe, or otherwise inapplicable to culinary use, and may correctly have no method card. The layer remains in progress.
+Harvest Use V0.2 began with a 41-identity Library snapshot. The public catalog has since grown to 501 Plant identities; the merged runtime layer currently has records for **385 / 501** identities. This is a record-coverage count, not a completion score: some plants are ornamental, unsafe, or otherwise inapplicable to culinary use, and may correctly have no method card. The layer remains in progress.
 
 ## Product rule
 
@@ -27,7 +27,7 @@ The original 41-record snapshot was loaded from:
 - `data/plants-expansion-batch-a1.json`
 - `data/plants-expansion-batch-b1.json`
 
-The base Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration. Its internal version is `0.2`; the file contains 67 plant records. The Gardenpedia adapter also merges `data/harvest-use-richness-additions.json` (324 identities, with 18 overlaps), so **373 unique public Plant identities currently have a Harvest Use record in the app**. The 501-row Plant Profile inventory marks the same 373 identities as covered; a direct ID-set comparison found no unmatched Harvest Use records or inventory flags. This is record coverage, not a claim that all remaining identities need food-use methods: ornamental, toxic, or otherwise inapplicable records may correctly have no method card.
+The base Harvest Use dataset remains `data/harvest-use-v0.1.json` for this iteration. Its internal version is `0.2`; the file contains 67 plant records. The Gardenpedia adapter also merges `data/harvest-use-richness-additions.json` (336 identities, with 18 overlaps), so **385 unique public Plant identities currently have a Harvest Use record in the app**. The 501-row Plant Profile inventory marks the same 385 identities as covered; a direct ID-set comparison found no unmatched Harvest Use records or inventory flags. This is record coverage, not a claim that all remaining identities need food-use methods: ornamental, toxic, or otherwise inapplicable records may correctly have no method card.
 
 ## Evidence additions
 

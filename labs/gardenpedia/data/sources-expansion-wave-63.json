@@ -10,7 +10,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["harvest", "uses", "storage"]
+    "claimKinds": [
+      "harvest",
+      "uses",
+      "storage"
+    ]
   },
   {
     "id": "usu-gooseberries-home-garden-2014",
@@ -23,7 +27,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["harvest", "uses", "storage"]
+    "claimKinds": [
+      "harvest",
+      "uses",
+      "storage"
+    ]
   },
   {
     "id": "kew-alpinia-galanga-wave63",
@@ -36,7 +44,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
   },
   {
     "id": "kew-salvia-officinalis-wave63",
@@ -49,7 +60,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
   },
   {
     "id": "uw-sage-salvia-officinalis-wave63",
@@ -62,7 +76,14 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "umd-sage-wave63",
@@ -75,7 +96,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "harvest"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "harvest"
+    ]
   },
   {
     "id": "kew-bergera-koenigii-wave63",
@@ -88,7 +115,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
   },
   {
     "id": "ucanr-curry-leaf-wave63",
@@ -101,7 +131,14 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 63",
-    "claimKinds": ["identity", "growth", "cultivation", "propagation", "harvest", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "propagation",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "osu-blackberry-home-garden-harvest-2026",
@@ -114,7 +151,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["harvest", "uses", "storage"]
+    "claimKinds": [
+      "harvest",
+      "uses",
+      "storage"
+    ]
   },
   {
     "id": "uw-madison-aronia-berries-2026",
@@ -127,7 +168,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["growth", "propagation", "cultivation", "harvest", "uses"]
+    "claimKinds": [
+      "growth",
+      "propagation",
+      "cultivation",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "osu-lingonberry-pnw583-wave64",
@@ -140,7 +187,15 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["growth", "cultivation", "pollination", "propagation", "harvest", "problems", "uses"]
+    "claimKinds": [
+      "growth",
+      "cultivation",
+      "pollination",
+      "propagation",
+      "harvest",
+      "problems",
+      "uses"
+    ]
   },
   {
     "id": "aces-pawpaw-production-anr3095-wave64",
@@ -153,7 +208,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["cultivation", "pollination", "propagation", "harvest", "uses"]
+    "claimKinds": [
+      "cultivation",
+      "pollination",
+      "propagation",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "ncsu-small-orchard-guide-peach-wave64",
@@ -166,7 +227,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["cultivation", "propagation", "pruning", "harvest", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "propagation",
+      "pruning",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "uga-pomegranate-c997-wave64",
@@ -179,7 +246,14 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["cultivation", "propagation", "pruning", "harvest", "uses", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "propagation",
+      "pruning",
+      "harvest",
+      "uses",
+      "problems"
+    ]
   },
   {
     "id": "ncsu-lablab-purpureus-wave66",
@@ -192,7 +266,14 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "harvest", "uses", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest",
+      "uses",
+      "problems"
+    ]
   },
   {
     "id": "ufifas-legume-handbook-2025-2026",
@@ -205,7 +286,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion cohort",
-    "claimKinds": ["identity", "taxonomy", "cultivation", "growth"]
+    "claimKinds": [
+      "identity",
+      "taxonomy",
+      "cultivation",
+      "growth"
+    ]
   },
   {
     "id": "osuext-broccoli-2010",
@@ -218,7 +304,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth", "cultivation", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "illinois-broccolini-2024",
@@ -231,7 +323,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth", "cultivation", "harvest", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "umn-broccolini-trial-2022",
@@ -244,7 +342,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth", "harvest", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "ncstate-broccolini-2026",
@@ -257,7 +360,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "purdue-midwest-veg-guide-2024",
@@ -270,7 +378,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["cultivation", "care", "harvest", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "care",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "ucanr-mustard-greens-home-2026",
@@ -283,7 +396,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth", "harvest", "uses", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "harvest",
+      "uses",
+      "problems"
+    ]
   },
   {
     "id": "jshs-hydroponic-chinese-chive-2004",
@@ -296,7 +415,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion research",
-    "claimKinds": ["cultivation"]
+    "claimKinds": [
+      "cultivation"
+    ]
   },
   {
     "id": "ashs-chives-nft-light-2016",
@@ -309,7 +430,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion research",
-    "claimKinds": ["cultivation", "growth"]
+    "claimKinds": [
+      "cultivation",
+      "growth"
+    ]
   },
   {
     "id": "jarmap-parsley-hydroponic-2022",
@@ -322,7 +446,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion research",
-    "claimKinds": ["cultivation", "growth"]
+    "claimKinds": [
+      "cultivation",
+      "growth"
+    ]
   },
   {
     "id": "ufifas-freshcut-herbs-vertical-hydroponic-2001",
@@ -335,7 +462,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion research",
-    "claimKinds": ["cultivation", "growth", "harvest"]
+    "claimKinds": [
+      "cultivation",
+      "growth",
+      "harvest"
+    ]
   },
   {
     "id": "farmfleet-ferry-morse-dark-green-0799-2026",
@@ -348,7 +479,10 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs Plant Profile completion review",
-    "claimKinds": ["identity", "growth"]
+    "claimKinds": [
+      "identity",
+      "growth"
+    ]
   },
   {
     "id": "umn-petunia-bouquet-public-wave64-20261018",
@@ -361,7 +495,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant and Harvest Use review, Petunia cohort",
-    "claimKinds": ["harvest", "uses"]
+    "claimKinds": [
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "kew-powo-origanum-majoricum-2026-public",
@@ -374,7 +511,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano identity reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "usda-grin-origanum-majoricum-2026-public",
@@ -387,7 +526,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano identity reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "ufifas-italian-oregano-2023-public",
@@ -400,7 +541,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano identity reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "udel-oregano-2024-public",
@@ -413,7 +556,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano identity reconciliation",
-    "claimKinds": ["identity", "cultivation"]
+    "claimKinds": [
+      "identity",
+      "cultivation"
+    ]
   },
   {
     "id": "homegrown-hg10h-italian-oregano-2025-public",
@@ -426,7 +572,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano identity reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "kew-petunia-genus-public",
@@ -439,7 +587,9 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs Cascading Petunia genus-level reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "kew-petunia-atkinsiana-public",
@@ -452,7 +602,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Petunia identity and established-plant cohort",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "ncsu-tagetes-patula-public",
@@ -465,7 +617,15 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs French marigold profile review",
-    "claimKinds": ["identity", "cultivation", "growth", "flowering", "problems", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "growth",
+      "flowering",
+      "problems",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "johnnys-marigold-public",
@@ -478,7 +638,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs French marigold profile review",
-    "claimKinds": ["cultivation", "pruning", "harvest", "uses"]
+    "claimKinds": [
+      "cultivation",
+      "pruning",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "aerogarden-indoor-plant-faq-pests",
@@ -491,7 +656,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant review, Petunia cohort",
-    "claimKinds": ["problems", "maintenance"]
+    "claimKinds": [
+      "problems",
+      "maintenance"
+    ]
   },
   {
     "id": "ferry-petunia-dwarf-public",
@@ -504,7 +672,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant review, Petunia cohort",
-    "claimKinds": ["identity", "flowering", "cultivation", "maintenance"]
+    "claimKinds": [
+      "identity",
+      "flowering",
+      "cultivation",
+      "maintenance"
+    ]
   },
   {
     "id": "rohrer-jolly-jester-2026-public",
@@ -517,7 +690,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Jolly Jester source-conflict review",
-    "claimKinds": ["identity", "growth", "flowering"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering"
+    ]
   },
   {
     "id": "agrisupply-ferry-jolly-jester-2026-public",
@@ -530,7 +707,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Jolly Jester source-conflict review",
-    "claimKinds": ["identity", "growth", "flowering"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering"
+    ]
   },
   {
     "id": "moreveg-jolly-jester-2026-public",
@@ -543,7 +724,44 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs Jolly Jester source-conflict review",
-    "claimKinds": ["identity", "growth", "flowering"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering"
+    ]
+  },
+  {
+    "id": "impecta-jolly-jester-tagetes-patula-2013",
+    "publisher": "Impecta Fröhandel",
+    "title": "Impecta Seed Catalog 2013 — Tagetes patula 'Jolly Jester'",
+    "url": "https://www.impecta.se/info/filer/Impecta2013_150px.pdf",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Archived 2013 seed-catalog entry lists a Jolly Jester marigold under Tagetes patula and describes striped red/yellow flowers; supports only that historical supplier listing, not identity of unspecified current stock or universal cultivar dimensions",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Jolly Jester identity-conflict review",
+    "claimKinds": [
+      "identity",
+      "flowering"
+    ]
+  },
+  {
+    "id": "nargs-seedex-jolly-jester-tagetes-erecta-2026",
+    "publisher": "North American Rock Garden Society Seed Exchange",
+    "title": "2025–2026 Seed List — Tagetes erecta 'Jolly Jester'",
+    "url": "https://www.nargs.org/seedex?title=T&title_1=e",
+    "type": "seed_reference",
+    "tier": 2,
+    "scope": "Seed-exchange listing identifies one offered lot as Tagetes erecta 'Jolly Jester' and reports maroon/yellow flowers and 75 cm; documents that listing only, not botanical verification or identity of the catalog's unspecified stock",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Jolly Jester identity-conflict review",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering"
+    ]
   },
   {
     "id": "ferry-dark-green-zucchini-public",
@@ -556,7 +774,12 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, zucchini cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "harvest"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest"
+    ]
   },
   {
     "id": "walmart-delphinium-magic-fountains-public",
@@ -569,7 +792,9 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, Delphinium cohort",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "unh-garlic-chives-public",
@@ -582,7 +807,15 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, garlic chive cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "propagation", "maintenance", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "propagation",
+      "maintenance",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "ncsu-thymus-vulgaris-public",
@@ -595,7 +828,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, thyme cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "problems"
+    ]
   },
   {
     "id": "ferry-sunflower-american-giant-public",
@@ -608,7 +847,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, sunflower cohort",
-    "claimKinds": ["identity", "growth", "flowering", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "ferry-sunflower-autumn-beauty-public",
@@ -621,7 +866,15 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, sunflower cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "flowering", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "flowering",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "ferry-zinnia-lilliput-public",
@@ -634,7 +887,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, zinnia cohort",
-    "claimKinds": ["identity", "growth", "flowering", "harvest", "uses"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "flowering",
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "illinois-zinnia-cutflowers-2026-public",
@@ -647,7 +906,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, zinnia cohort",
-    "claimKinds": ["harvest", "uses"]
+    "claimKinds": [
+      "harvest",
+      "uses"
+    ]
   },
   {
     "id": "usu-pumpkins-in-the-garden-2026",
@@ -660,7 +922,12 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, pumpkin type follow-up",
-    "claimKinds": ["cultivation", "growth", "harvest", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "growth",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "illinois-extension-cucurbits-2020",
@@ -673,7 +940,11 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, pumpkin type follow-up",
-    "claimKinds": ["cultivation", "flowering", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "flowering",
+      "problems"
+    ]
   },
   {
     "id": "umn-pollination-vegetables-2026",
@@ -686,7 +957,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, compact tomato cohort",
-    "claimKinds": ["flowering", "problems"]
+    "claimKinds": [
+      "flowering",
+      "problems"
+    ]
   },
   {
     "id": "umn-excessive-heat-vegetables-2026",
@@ -699,7 +973,10 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, compact tomato cohort",
-    "claimKinds": ["flowering", "problems"]
+    "claimKinds": [
+      "flowering",
+      "problems"
+    ]
   },
   {
     "id": "usu-parsnips-garden-wave63",
@@ -712,7 +989,13 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, root-crop cohort",
-    "claimKinds": ["cultivation", "growth", "care", "harvest", "problems"]
+    "claimKinds": [
+      "cultivation",
+      "growth",
+      "care",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "umn-turnips-rutabagas-home-2026",
@@ -725,7 +1008,15 @@
     "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs established-plant profile review, root-crop cohort",
-    "claimKinds": ["identity", "growth", "cultivation", "care", "harvest", "uses", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "care",
+      "harvest",
+      "uses",
+      "problems"
+    ]
   },
   {
     "id": "kew-powo-cymbopogon-genus-2026",
@@ -738,7 +1029,9 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs lemongrass genus-scope reconciliation",
-    "claimKinds": ["identity"]
+    "claimKinds": [
+      "identity"
+    ]
   },
   {
     "id": "rhs-oregano-genus-growing-guide-2026-public",
@@ -751,7 +1044,14 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs Italian oregano profile enrichment; identity remains unresolved",
-    "claimKinds": ["identity", "growth", "cultivation", "care", "harvest", "problems"]
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "care",
+      "harvest",
+      "problems"
+    ]
   },
   {
     "id": "tamu-edible-flowers-pansy-2026-public",
@@ -764,7 +1064,30 @@
     "accessed": "2026-10-19",
     "license": null,
     "provenance": "Gardenpedia Labs Harvest Use enrichment for Viola × wittrockiana; source applies to designated edible flowers, not ornamental stock generally",
-    "claimKinds": ["harvest", "uses", "safety", "handling"]
+    "claimKinds": [
+      "harvest",
+      "uses",
+      "safety",
+      "handling"
+    ]
+  },
+  {
+    "id": "colostate-edible-flowers-hibiscus-rosa-sinensis-2025",
+    "publisher": "Colorado State University Extension",
+    "title": "Edible Flowers",
+    "url": "https://extension.colostate.edu/resource/edible-flowers/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-specific edible-flower table lists Hibiscus rosa-sinensis and reports a citrus/cranberry flavor and use in tea flavorings; general edible-flower identity and pesticide cautions. Does not provide a Chinese-hibiscus-specific harvest stage, recipe, quantity, or cultivar assurance.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Harvest Use enrichment for Chinese hibiscus; direct species-level culinary reference, no recipe inferred",
+    "claimKinds": [
+      "identity",
+      "harvest",
+      "uses",
+      "safety"
+    ]
   },
   {
     "id": "mizzou-pineberry-2015",
@@ -777,6 +1100,71 @@
     "accessed": "2026-10-20",
     "license": null,
     "provenance": "Gardenpedia Labs White Carolina propagation-scope follow-up",
-    "claimKinds": ["identity", "cultivation", "harvest", "propagation"]
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "harvest",
+      "propagation"
+    ]
+  },
+  {
+    "id": "usu-gomphrena-cut-flower-production-2026",
+    "publisher": "Utah State University Extension",
+    "title": "Gomphrena Cut Flower Production in Utah",
+    "url": "https://extension.usu.edu/productionhort/research/gomphrena-cut-flower-production-in-utah",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Utah cut-flower production guide covering Gomphrena globosa and G. haageana among cut-flower species. Supports ornamental fresh/dried use, the gomphrena flower-stage cue, early-morning cutting, immediate clean-water handling, and a locally reported 7–14 day fresh-flower range that varies by context. Does not establish culinary safety or cultivar-independent home vase life.",
+    "taxonomicScope": {
+      "level": "genus",
+      "taxon": "Gomphrena"
+    },
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Harvest Use enrichment for Gomphrena globosa; production guidance retained at the source's gomphrena and Utah-production scope",
+    "claimKinds": [
+      "harvest",
+      "handling",
+      "storage",
+      "uses"
+    ]
+  },
+  {
+    "id": "johnnys-black-seeded-simpson-product-2026",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Black Seeded Simpson Lettuce Seed",
+    "url": "https://www.johnnyseeds.com/vegetables/lettuce/leaf-lettuce/black-seeded-simpson-lettuce-seed-425N.11.html",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Johnny's specific Black Seeded Simpson seed-product listing: identifies its Lactuca sativa looseleaf selection and supplier-described curled, tender, light-green leaves, annual/open-pollinated status, and 32-day baby-leaf / 46-day full-size maturity figures. These are listing-specific product facts, not universal cultivar performance, a current-availability claim, or general lettuce agronomy.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment; cultivar/product-scoped evidence for Black Seeded Simpson",
+    "claimKinds": [
+      "identity",
+      "cultivar",
+      "growth",
+      "harvest"
+    ]
+  },
+  {
+    "id": "nmns-gardenia-tea-flavoring-2025",
+    "publisher": "National Museum of Natural Science, Taiwan",
+    "title": "Gardenia jasminoides",
+    "url": "https://www.nmns.edu.tw/en/exhibitions/galleries/plants/group2/gardenia-jasminoides/",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "Species-specific botanical garden profile for Gardenia jasminoides; documents the traditional use of its flowers in Taiwan to flavor tea. It provides no recipe, quantity, preparation protocol, cultivar scope, or food-safety instructions.",
+    "taxonomicScope": {
+      "level": "species",
+      "taxon": "Gardenia jasminoides"
+    },
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Harvest Use enrichment; traditional Taiwanese tea-flavoring use retained at species and cultural-context scope, without a recipe or dose",
+    "claimKinds": [
+      "identity",
+      "uses"
+    ]
   }
 ]

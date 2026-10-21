@@ -409,7 +409,18 @@
       "watercress type"
     ],
     "summary": "Watercress (Nasturtium officinale) is a perennial aquatic leafy herb grown for its peppery leaves and shoots. It needs persistently wet or shallow-water conditions; container guidance does not establish compatibility with a closed-loop indoor hydroponic system.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Flavor and heat cue",
+        "value": "Flavor weakens above about 85°F",
+        "note": "Utah State Extension regional observation; not an indoor temperature setpoint"
+      },
+      {
+        "label": "Outdoor cut-back for regrowth",
+        "value": "About 4 in",
+        "note": "USU's outdoor watercress harvest method; not a universal cut height or hydroponic regrowth guarantee"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Watercress is resolved at Nasturtium officinale and Watercress type type scope",
@@ -442,7 +453,7 @@
         "sourceIds": ["usu-watercress-home-gardens-2026"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
+        "short": "Cut plants back to about 4 inches for outdoor regrowth",
         "guidance": "USU's harvest method cuts the plant back to about 4 inches so it can regrow for a later harvest. Use this only as the described outdoor watercress method; it is not a promise of uniform regrowth in another environment.",
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -467,7 +478,7 @@
         "sourceIds": ["usu-watercress-home-gardens-2026"]
       },
       "thinning": {
-        "short": "USU outdoor transplant spacing is not system spacing",
+        "short": "Keep 8-inch outdoor spacing separate from pod spacing",
         "guidance": "USU gives 8 inches between transplants for its outdoor garden instructions. That row/bed distance must not be treated as a hydroponic pod interval or container-system capacity.",
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -2029,7 +2040,7 @@
         "sourceIds": ["umn-tomatoes-home-gardens-2024"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
+        "short": "Support the indeterminate vine; one-stem pruning is not required",
         "guidance": "Cornell identifies Black Krim as indeterminate. In an outdoor garden, plan for a stake, cage, or trellis that can support continuing vine growth; the selected sources do not establish a Black Krim-specific pruning schedule or make one-stem pruning mandatory.",
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -2169,7 +2180,7 @@
         "sourceIds": ["umn-tomatoes-home-gardens-2024", "umn-tomato-leaf-spots-2024"]
       },
       "pruning": {
-        "short": "Manage structure without assuming a universal pruning rule",
+        "short": "Check the exact selection's habit before training or pruning",
         "guidance": "Johnny's lists both determinate and indeterminate selections within paste/Roma tomatoes. Identify the exact seed selection before choosing support or pruning; this profile does not prescribe one habit or pruning regime for all San Marzano-labeled plants.",
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -3893,7 +3904,7 @@
     "name": "Red Acre Cabbage",
     "spanishName": "Col Red Acre",
     "scientificName": "Brassica oleracea",
-    "variety": "Red Acre type",
+    "variety": "Red Acre",
     "category": "vegetables",
     "emoji": "🥬",
     "guideCompletion": 68,
@@ -3904,32 +3915,32 @@
       "brassica oleracea",
       "red acre type"
     ],
-    "summary": "Red Acre is cataloged as a named red-cabbage identity within Brassica oleracea. General cabbage guidance supports head development, steady moisture, harvest and common quality concerns; cultivar-specific size and performance are not established by those crop sources.",
+    "summary": "Red Acre is a named open-pollinated red-cabbage cultivar of Brassica oleracea. University of Arkansas Extension lists about 75 days to maturity and a three-pound red head; Fedco describes compact plants with 3–5 lb heads up to about 7 inches. These are source-specific field/product descriptions, not guaranteed outcomes. Grow it as a cool-season cabbage, keep moisture steady, and harvest firm heads before they split.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Red Acre Cabbage is resolved at Brassica oleracea and Red Acre type type scope",
-        "guidance": "Red Acre Cabbage is published as a practical horticultural type. Crop or species evidence is not promoted into unsupported named-cultivar certainty.",
+        "short": "Red Acre is a named, open-pollinated red-cabbage cultivar",
+        "guidance": "Fedco lists Red Acre as an open-pollinated Brassica oleracea (capitata group) cabbage. University of Arkansas Extension also names Red Acre in its cultivar table. This supports the named cultivar identity, but the reported measurements below remain specific to each source and growing context.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "johnnys-brassicas-wave1",
-          "usu-brassica-varietal-wave2"
+          "fedco-red-acre-cabbage-2026",
+          "uaex-cabbage-cultivar-table-2009"
         ]
       },
       "growth": {
-        "short": "Head-forming red cabbage; no Red Acre measurement is established here",
-        "guidance": "UMN Extension describes cabbage heads as overlapping leaves and says head shapes vary. The cited crop guide does not establish Red Acre's exact dimensions, color intensity or maturity, so those values remain unknown.",
+        "short": "Compact plants; sources describe roughly three-pound to 3–5 lb red heads",
+        "guidance": "The University of Arkansas Extension cultivar table lists Red Acre at 75 days to maturity with a three-pound red head. Fedco's current seed listing describes a compact plant and 3–5 lb heads up to about 7 inches across. The reported head weights differ slightly and are source descriptions, not a guaranteed range for every seed lot or garden; plant spacing and growing conditions affect head size. No exact mature plant height or spread is established.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-cabbage-home-gardens-2026"]
+        "sourceIds": ["uaex-cabbage-cultivar-table-2009", "fedco-red-acre-cabbage-2026", "umn-cabbage-home-gardens-2026"]
       },
       "cultivation": {
-        "short": "Cool-season crop; avoid inconsistent moisture during head growth",
-        "guidance": "Cabbage is a cool-weather crop. UMN's home-garden guide emphasizes steady water and nutrient uptake in moisture-retentive, well-drained soil; Minnesota soil, timing and field-spacing advice is regional, not a hydroponic recipe for Red Acre.",
+        "short": "Cool-season cabbage; sunny placement and steady moisture support head quality",
+        "guidance": "Arkansas Extension describes cabbage as a cool-season crop for sunny conditions and moist, well-drained, fertile soil; UMN likewise emphasizes consistent moisture during head development. These are outdoor soil-culture recommendations, not indoor-light settings or hydroponic instructions. Arkansas dates and spacing are regional crop guidance, not a Red Acre-specific system prescription.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-cabbage-home-gardens-2026"]
+        "sourceIds": ["uaex-cabbage-cultivar-table-2009", "umn-cabbage-home-gardens-2026"]
       },
       "pruning": {
         "short": "Protect the central growing point while the head is forming",
@@ -3939,18 +3950,18 @@
         "sourceIds": ["umn-cabbage-home-gardens-2026"]
       },
       "harvest": {
-        "short": "Harvest a firm head at usable size before splitting",
-        "guidance": "UMN Extension advises cutting above the outer leaves when the head reaches a usable size. Mature heads may split, particularly after heavy rain; the source gives no Red Acre-specific day count or head diameter.",
+        "short": "Use about 75 days as a reference, then harvest when the head is firm",
+        "guidance": "The University of Arkansas cultivar table lists 75 days to maturity and a three-pound Red Acre head; it does not state the starting point for that count. Fedco lists 75 days from transplant and describes 3–5 lb heads, so treat timing and size as supplier/region references rather than guarantees. Across cabbage, harvest when the head is firm and before cracking or splitting; UMN advises cutting above the outer leaves at a useful size.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-cabbage-home-gardens-2026"]
+        "sourceIds": ["uaex-cabbage-cultivar-table-2009", "fedco-red-acre-cabbage-2026", "umn-cabbage-home-gardens-2026"]
       },
       "problems": {
-        "short": "Head splitting and poor formation are context-dependent warning signs",
-        "guidance": "UMN Extension notes that inconsistent moisture can reduce head quality or prevent formation, while heavy rain can split mature heads. These observations are crop-level and do not establish disease resistance or a diagnosis for Red Acre.",
+        "short": "Watch for loose heads, premature bolting or splitting as conditions change",
+        "guidance": "UMN Extension links inconsistent moisture and heavy rain with reduced head quality or splitting. Arkansas Extension adds that heat, excess fertilizer or irregular water can contribute to loose, puffy heads, and prolonged exposure to roughly 35–45°F after plants are started can trigger premature seed-stalk formation. These are cabbage-level warning signs, not Red Acre disease-resistance claims or a diagnosis; the temperatures and calendar context are regional guidance.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": ["umn-cabbage-home-gardens-2026"]
+        "sourceIds": ["uaex-cabbage-cultivar-table-2009", "umn-cabbage-home-gardens-2026"]
       }
     },
     "compatibilityProfile": {
@@ -4457,7 +4468,13 @@
       "long island improved type"
     ],
     "summary": "Long Island Improved is a named Brussels sprouts variety that forms edible buds along an upright stalk. Cool conditions and steady moisture support quality; harvest lower sprouts as they firm, while exact cultivar dimensions remain unresolved.",
-    "metrics": [],
+    "metrics": [
+      {
+        "label": "Lower-sprout harvest cue",
+        "value": "Firm buds around 1 in",
+        "note": "UMN Brussels-sprout crop guidance; not a Long Island Improved cultivar-size guarantee"
+      }
+    ],
     "sections": {
       "identity": {
         "short": "Long Island Improved is a named Brussels sprouts variety",
@@ -4635,7 +4652,7 @@
         "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "pruning": {
-        "short": "Manage by harvest, thinning, and visible crowding",
+        "short": "Thin carrots to reduce crowding; don't routinely prune stems",
         "guidance": "Carrots are grown for their root, not routine stem pruning. Thin to relieve crowding and remove damaged foliage only when needed; outdoor row spacing is not a system pod count.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -4656,7 +4673,7 @@
         "sourceIds": ["umn-carrots-parsnips-home-wave45"]
       },
       "thinning": {
-        "short": "Thin or separate according to the intended harvest form",
+        "short": "Thin carrots to leave room for root development",
         "guidance": "UMN Extension recommends thinning carrots to leave room for root growth. Apply that as outdoor row guidance only; do not infer a Garden pod spacing from it.",
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
@@ -7268,7 +7285,7 @@
       "flowering": {"short":"Bloom may continue until frost in the UW garden context","guidance":"The UW–Madison guide reports nasturtium flowering through frost and says removing faded flowers or picking blooms can prolong flowering. The frost endpoint is a garden-context observation, not a universal Alaska-series season or indoor schedule.","evidenceType":"source_backed","confidence":"medium","sourceIds":["uw-tropaeolum-garden-nasturtium-500"]},
       "harvest": {"short":"UW reports garden nasturtium leaves and flowers as edible","guidance":"UW–Madison's general guide for garden nasturtiums describes leaves and flowers as edible: young leaves taste better, older leaves may be bitter, and flowers are milder than leaves. This is crop-level guidance for the two common garden species, not an Alaska-series or seed-lot-specific culinary claim.","evidenceType":"source_backed","confidence":"medium","sourceIds":["uw-tropaeolum-garden-nasturtium-500"]},
       "problems": {"short":"Look for cabbageworm caterpillars, aphids, or leafminer trails","guidance":"UW–Madison lists imported cabbageworm caterpillars and aphids among common nasturtium pests. It notes that leafminers can leave serpentine trails on leaves without damaging the plant. These are crop-level monitoring cues, not a diagnosis or a claim of Alaska-specific susceptibility.","evidenceType":"source_backed","confidence":"medium","sourceIds":["uw-tropaeolum-garden-nasturtium-500"]},
-      "needsValidation": {"short":"Identify the represented Alaska series or seed line","guidance":"RHS and Jekka describe their Alaska Series as T. majus, while UW–Madison and Johnny's identify Alaska/Alaska Mix material as T. minus. Since this catalog entry does not specify the supplier or series, sources do not establish which product it represents. Keep species-dependent growth habit, mature size and cultivar performance unassigned until the catalog's represented line is identified.","evidenceType":"needs_validation","confidence":"pending","sourceIds":["rhs-alaska-series-nasturtium-2026","jekkas-alaska-series-nasturtium-2026","johnnys-alaska-mix-nasturtium-2026","uw-tropaeolum-garden-nasturtium-500","uaex-alaska-nasturtium-2006"]}
+      "needsValidation": {"short":"Identify the represented Alaska series or seed line","guidance":"RHS and Jekka describe their Alaska Series as T. majus, while UW–Madison and Johnny's identify Alaska/Alaska Mix material as T. minus. West Coast Seeds' distinct Tip Top Alaska Mix page is itself inconsistent: its product description says T. majus, while its detailed Latin field lists T. majus and T. minus. None identifies this catalog's unspecified supplier or series. Keep species-dependent growth habit, mature size and cultivar performance unassigned until the represented line is identified.","evidenceType":"needs_validation","confidence":"pending","sourceIds":["rhs-alaska-series-nasturtium-2026","jekkas-alaska-series-nasturtium-2026","johnnys-alaska-mix-nasturtium-2026","uw-tropaeolum-garden-nasturtium-500","uaex-alaska-nasturtium-2006","wcs-tip-top-alaska-mix-2026"]}
     },
     "compatibilityProfile": {
       "profileVersion": 1,

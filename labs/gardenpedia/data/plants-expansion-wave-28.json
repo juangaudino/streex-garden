@@ -73,7 +73,8 @@
         "guidance": "NC State places outdoor species flowering from midsummer to early fall and says each flower is short-lived while the overall bloom period generally lasts about a month. Gardyn's product guide says each flower lasts one day, followed by successive groups of about 8–12 blooms, a rest, and—under proper care—two or three waves over roughly 8–10 months. The latter is the manufacturer's report for its offered product, not a guaranteed schedule for other cultivars or systems. The Blush label does not establish a named cultivar.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["ncsu-muenchhusia-moscheutos-wave28-2026", "gardyn-blush-hibiscus-wave28"]
+        "sourceIds": ["ncsu-muenchhusia-moscheutos-wave28-2026", "gardyn-blush-hibiscus-wave28"],
+        "context": "Gardyn's flowering calendar applies to its product; NC State's timing is for outdoor plants at species scope."
       },
       "harvest": {
         "short": "Cut flowers just before opening; product food-use claims stay source-scoped",
@@ -194,7 +195,8 @@
       "guidance": "Clemson Cooperative Extension advises cutting petunia shoots back to about half their length when plants become leggy or stop flowering; if needed, they may be cut to within a few inches of the base, but not stripped of all leaves. The source recommends watering and liquid fertilizer to encourage new growth. This is general outdoor petunia guidance for South Carolina, not a fixed schedule or validated response for Gardyn's unidentified pink selection or a hydroponic system.",
       "evidenceType": "source_backed",
       "confidence": "medium",
-      "sourceIds": ["clemson-petunia-garden-guide-2026"]
+        "sourceIds": ["clemson-petunia-garden-guide-2026"],
+        "context": "General Petunia guidance for outdoor conditions in South Carolina; not specific to Gardyn's product."
     },
       "problems": {
       "short": "Monitor product-noted spider mites and general petunia stress/pest cues",
@@ -216,14 +218,16 @@
         "guidance": "Gardyn describes trumpet-shaped flowers with a soft-pink hue and delicate fragrance; it says the plant spreads before bloom and naturally cascades. These observations are specific to its Pink Petunia product description. UMN Extension notes that flower size and habit vary among horticultural groups; Gardyn's listing does not establish a named cultivar or formal grandiflora, multiflora, milliflora or spreading-group identity, and no exact flowering schedule is supplied.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018", "gardyn-pink-petunia-wave28"]
+        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018", "gardyn-pink-petunia-wave28"],
+        "context": "General Petunia guidance, not specific to a cultivar."
       },
       "harvest": {
         "short": "Cut stems for arrangements; Gardyn explicitly says its petunia is not edible",
         "guidance": "UMN Extension suggests cutting petunia stems for bouquets and removing leaves that would sit below the water line. Gardyn's Pink Petunia guide explicitly says the flowers are not edible. Keep the cut-flower use ornamental; do not infer culinary use from the broader Petunia genus or other ornamental-flower profiles.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018"]
+        "sourceIds": ["umn-petunia-bouquet-public-wave64-20261018"],
+        "context": "General Petunia guidance, not specific to a cultivar."
       }
     },
     "compatibilityProfile": {

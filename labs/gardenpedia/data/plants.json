@@ -338,6 +338,13 @@
       { "label": "Hydro pH / EC", "value": "Not mapped", "note": "UCR experiment values are not Calculator targets" }
     ],
     "sections": {
+      "identity": {
+        "short": "One species, two harvest goals: cilantro leaves or coriander seed",
+        "guidance": "Utah State University Extension presents cilantro/coriander as Coriandrum sativum and describes harvesting its leaves or allowing the same plant to flower and mature seed. This identity represents the leaf-cilantro crop type; coriander seed is a later use of the same species, not a separate plant or cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-cilantro"]
+      },
       "cultivation": {
         "short": "Cool-season crop; use sun and well-drained soil",
         "guidance": "USU Extension describes cilantro as a cool-season crop for full sun and fertile, well-drained soil. Its Utah guide reports plants about 1–3 feet tall. Water regularly during establishment; once established, water only as needed and avoid persistently damp or humid conditions. USU gives different moisture advice by context: its FAQ recommends keeping plants well watered and the soil cool to reduce bolting, while its watering section cautions against overwatering. The guide does not quantify a universal schedule.",
@@ -784,6 +791,9 @@
       "identity": {
         "short": "This profile represents mint at genus level",
         "guidance": "The catalog identity is Mentha spp.; it does not identify peppermint, spearmint, or a named cultivar. Utah State notes that mint varieties differ in taste and scent and that seed-grown mints may not remain true to type. Do not assign species-specific flavor, size, or performance to this record.",
+        "items": [
+          "The species and cultivar represented by this catalog identity remain unresolved."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -794,6 +804,9 @@
       "cultivation": {
         "short": "Outdoor mint prefers sun to partial shade and moist, well-drained soil",
         "guidance": "For garden-bed cultivation, USU describes mint as growing in full sun to partial shade and preferring moist soil; excess water can promote root and leaf disease. These are outdoor soil recommendations and do not establish indoor-light or hydroponic requirements.",
+        "items": [
+          "Do not transfer garden-soil watering guidance directly to a hydroponic system."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -803,6 +816,9 @@
       "growth": {
         "short": "Mint spreads rapidly by rhizomes in open soil",
         "guidance": "USU and Illinois Extension describe mints as vigorous, rhizomatous spreaders that can become invasive in garden beds. Containment advice applies to outdoor soil; it should not be treated as evidence that every mint is unsuitable for a contained growing system.",
+        "items": [
+          "Outdoor rhizome-containment guidance does not establish hydroponic compatibility."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -841,6 +857,9 @@
       "flowering": {
         "short": "Remove flower spikes when leaf flavor is the priority",
         "guidance": "USU reports lower leaf oil content and flavor when mint is allowed to bloom; Illinois Extension likewise recommends removing flower spikes to maintain leaf flavor. This is a culinary-leaf management choice, not a requirement when flowers are desired.",
+        "items": [
+          "If flowers are desired, removing them to prioritize leaf flavor is not the relevant management goal."
+        ],
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [

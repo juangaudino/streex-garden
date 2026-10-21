@@ -58,11 +58,11 @@
     "url": "https://www.uaex.uada.edu/publications/PDF/FSA-6090.pdf",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Home-garden mung bean identity, direct sowing in warm soil, crop care and dry-seed harvest; cultivar-table values are not generalized to the species",
-    "accessed": "2026-10-16",
+    "scope": "Home-garden mung bean identity, crop-level sunny-site/well-drained-loam and pH preferences, warm-weather cultivation, crop care and dry-seed harvest; cultivar-table values are not generalized to the species, and outdoor row spacing is not hydroponic pod guidance",
+    "accessed": "2026-10-21",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "maintenance", "seedling", "harvest"]
+    "claimKinds": ["identity", "cultivation", "growth", "maintenance", "seedling", "harvest"]
   },
   {
     "id": "kew-glebionis-coronaria-wave25",

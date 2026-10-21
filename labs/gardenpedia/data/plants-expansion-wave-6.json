@@ -192,7 +192,7 @@
       "sundew",
       "rocío del sol del cabo"
     ],
-    "summary": "Cape sundew is the accepted evergreen carnivorous species Drosera capensis. SANBI describes a rhizomatous plant with sticky tentacled leaves, pink-to-mauve flowers, a continuously moist potting context and vegetative propagation; dimensions and seasonal dates remain regional source descriptions.",
+    "summary": "Cape sundew is the accepted evergreen carnivorous species Drosera capensis. SANBI describes its sticky tentacled leaves and continuously moist, low-nutrient growing context; RHS adds glasshouse/bog guidance, seasonal flowering, and no-pruning advice. Keep regional dimensions and flowering dates attached to their sources.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -207,38 +207,52 @@
       },
       "growth": {
         "short": "Evergreen sundew with sticky tentacled leaves and pink-mauve flowers",
-        "guidance": "SANBI describes a robust, free-flowering evergreen perennial, usually around 15 cm high, with leaves radiating from a short rhizomatous stem. Sticky glands on the leaf tentacles trap prey; 15–30 pink-to-mauve flowers open in ascending order on a stem. SANBI's December–January flowering note is Southern Hemisphere context, not a universal calendar.",
+        "guidance": "SANBI describes a robust, free-flowering evergreen perennial, usually around 15 cm high, with leaves radiating from a short rhizomatous stem. Sticky glands on the leaf tentacles trap prey; 15–30 pink-to-mauve flowers open in ascending order on a stem. RHS lists a broader 10–50 cm maximum-height and spread range. These source descriptions differ in scope and context, so neither is presented as a guaranteed indoor footprint. SANBI's December–January flowering note is Southern Hemisphere context; RHS describes spring-to-autumn flowering, occasionally into winter, in its UK context.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ]
       },
       "cultivation": {
         "short": "Keep the pot consistently moist with low-mineral water",
-        "guidance": "SANBI's PlantZAfrica recommends a pot standing in a 1–3 cm saucer of fresh water so the medium stays moist, and full sun to semi-shade outdoors. It describes an acidic, low-nutrient medium and an indoor-facing recommendation for its South African context. This botanical-garden/container guidance is not a hydroponic nutrient recipe or a universal indoor-light tier.",
+        "guidance": "SANBI's PlantZAfrica recommends a pot standing in a 1–3 cm saucer of fresh water so the medium stays moist, and full sun to semi-shade outdoors. It describes an acidic, low-nutrient medium. RHS advises continually moist conditions with rainwater under glass in frost-prone areas, shading from hot sun, or wet acidic bog conditions in warmer climates. These are regional container/garden contexts, not a hydroponic nutrient recipe or universal indoor-light tier.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ]
       },
       "propagation": {
-        "short": "Leaf and root cuttings are vegetative options",
-        "guidance": "SANBI documents vegetative propagation from leaf or root cuttings. For the seed route and sowing instructions, use the linked Seed Profile; this Plant Profile does not repeat the seed-to-establishment protocol.",
+        "short": "Seed and vegetative propagation are documented",
+        "guidance": "SANBI documents leaf or root cuttings; RHS lists seed, softwood cuttings, and root cuttings taken when dormant. For the seed route and sowing instructions, use the linked Seed Profile; this Plant Profile does not repeat the seed-to-establishment protocol.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
+        ]
+      },
+      "pruning": {
+        "short": "Routine pruning is not required",
+        "guidance": "RHS states that no pruning is required. Do not remove healthy leaves solely because the traps have temporarily lost visible mucilage; check moisture and recent handling first.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-capensis-2026",
           "sanbi-drosera-capensis-500"
         ]
       },
       "problems": {
         "short": "Drying, handling and pests can change appearance",
-        "guidance": "SANBI notes that drying can cause drooping and reduced mucilage, while recent transplanting or touching the leaves can temporarily reduce visible dew before new foliage develops. It lists aphids, mealybugs and thrips as pests that can deform new growth and cautions against soap-based insecticides. These cues should prompt a check of conditions, not diagnosis from appearance alone.",
+        "guidance": "SANBI notes that drying can cause drooping and reduced mucilage, while recent transplanting or touching the leaves can temporarily reduce visible dew before new foliage develops. It lists aphids, mealybugs and thrips as pests that can deform new growth and cautions against soap-based insecticides. RHS describes the plant as generally pest- and disease-free in its profile; that broad assessment does not rule out the specific pests SANBI records. Check conditions and growth before intervening; these cues are not diagnoses from appearance alone.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "sanbi-drosera-capensis-500"
+          "sanbi-drosera-capensis-500",
+          "rhs-drosera-capensis-2026"
         ]
       }
     },
@@ -255,11 +269,11 @@
       "matureSize": {
         "height": {
           "status": "unknown",
-          "reason": "No dimensions are asserted from the reviewed selected source set."
+          "reason": "RHS lists a broad profile size range, while SANBI describes typical regional height; a single controlled mature size is not selected for this context-sensitive species."
         },
         "spread": {
           "status": "unknown",
-          "reason": "No dimensions are asserted from the reviewed selected source set."
+          "reason": "RHS lists a broad profile size range, but a standardized garden/system footprint is not established."
         }
       },
       "spacing": {
@@ -449,7 +463,7 @@
       "tropical pitcher plant",
       "planta jarro tropical"
     ],
-    "summary": "Nepenthes × ventrata is a natural horticultural hybrid of N. alata and N. ventricosa with climbing stems, tendrils and pitcher traps. NParks documents moist, well-drained, low-nutrient medium and occasional misting; these houseplant/cultivation details do not establish conventional hydroponic compatibility.",
+    "summary": "Nepenthes × ventrata is a natural horticultural hybrid of N. alata and N. ventricosa with climbing stems, tendrils and pitcher traps. NParks documents this hybrid's moist, drained, low-nutrient medium; RHS adds genus-level indoor context for tropical Nepenthes. Neither source establishes a conventional hydroponic nutrient protocol.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -472,20 +486,22 @@
       },
       "cultivation": {
         "short": "Moist, drained, low-nutrient medium; semi-shade is the listed care category",
-        "guidance": "NParks describes a moist but well-drained, low-nutrient medium and gives examples using perlite or sand with peat or sphagnum. Its care category lists semi-shade, while the description says 6–8 hours of full sun can develop red pitcher color. These are different contexts within the same source; no single indoor lamp target, EC or pH recipe is inferred.",
+        "guidance": "NParks describes a moist but well-drained, low-nutrient medium and gives examples using perlite or sand with peat or sphagnum. Its care category lists semi-shade, while the description says 6–8 hours of full sun can develop red pitcher color. RHS gives genus-level context that tropical Nepenthes need warm, humid, partly shaded conditions indoors year-round; it does not specify a hybrid-level temperature, humidity percentage, indoor lamp target, EC or pH recipe. Treat the full-sun color note as a color observation, not the general exposure recommendation.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "nparks-nepenthes-ventrata-500"
+          "nparks-nepenthes-ventrata-500",
+          "rhs-nepenthes-tropical-care-2026"
         ]
       },
       "care": {
         "short": "Maintain humidity; NParks advises occasional misting and avoiding air-conditioned placement",
-        "guidance": "NParks recommends maintaining a humid environment with occasional misting and avoiding an air-conditioned location. This is source-specific horticultural guidance; no exact humidity percentage or misting frequency is supplied.",
+        "guidance": "NParks recommends maintaining a humid environment with occasional misting and avoiding an air-conditioned location. RHS separately describes tropical Nepenthes as needing warm, humid indoor conditions; neither source supplies a hybrid-specific humidity percentage, temperature, or misting frequency.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "nparks-nepenthes-ventrata-500"
+          "nparks-nepenthes-ventrata-500",
+          "rhs-nepenthes-tropical-care-2026"
         ]
       },
       "propagation": {
